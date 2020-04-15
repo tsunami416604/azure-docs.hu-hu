@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e22641e9d4f9959c26cd2043ea2acd7e260e0f0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660665"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314042"
 ---
 # <a name="message-sessions"></a>Üzenet-munkamenetek
 A Microsoft Azure Service Bus-munkamenetek lehetővé teszik a kapcsolódó üzenetek nem kötött sorozatainak közös és rendezett kezelését. A munkamenetek első be, első ként (FIFO) és kérés-válasz mintákban használhatók. Ez a cikk bemutatja, hogyan használhatja a munkamenetek ezeket a mintákat a Service Bus használatakor. 
@@ -68,7 +68,7 @@ A munkamenet-fogadó által tartott *munkamenet-zárolás a betekintési zárol�
 
 ### <a name="message-session-state"></a>Üzenetmunkamenet állapota
 
-Ha a munkafolyamatokat nagy méretű, magas rendelkezésre állású felhőrendszerekben dolgozzák fel, az adott munkamenethez társított munkafolyamat-kezelőnek képesnek kell lennie a váratlan hibák utáni helyreállításra, és egy másik folyamaton vagy gépen folytathatja a részlegesen befejezett munkát ahol a munka elkezdődött.
+Amikor a munkafolyamatokat nagy méretű, magas rendelkezésre állású felhőrendszerekben dolgozzák fel, az adott munkamenethez társított munkafolyamat-kezelőnek képesnek kell lennie a váratlan hibák utáni helyreállításra, és folytathatja a részlegesen befejezett munkát egy másik folyamaton vagy gépen, ahonnan a munka kezdődött.
 
 A munkamenet-állapot eszköz lehetővé teszi egy alkalmazás által definiált jegyzetelés egy üzenet munkamenet a brókeren belül, hogy a rögzített feldolgozási állapot képest, hogy a munkamenet azonnal elérhetővé válik, ha a munkamenet beszerzése egy új processzor.
 
@@ -78,7 +78,7 @@ A session state ( [SetState](/dotnet/api/microsoft.servicebus.messaging.messages
 
 A munkamenet-állapot mindaddig megmarad, amíg nincs törölve **(null értéket**ad vissza), még akkor is, ha a munkamenet összes üzenete felhasználásra kerül.
 
-A várólistában vagy előfizetésben lévő összes munkamenet a Java API **SessionBrowser** metódusával, a .NET-ügyfél [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) és [SubscriptionClient ügyfélen](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) lévő [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) metódusával is számbavehet.
+A várólistában vagy előfizetésben lévő összes munkamenet számbavehethető a Java API **SessionBrowser** metódusával, a .NET Framework ügyfél [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) és [SubscriptionClient ügyfélen](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) lévő [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) metódussal.
 
 A várólistában vagy előfizetésben tárolt munkamenet-állapot beleszámít az entitás tárolási kvótájába. Ha az alkalmazás befejeződött egy munkamenettel, ezért ajánlott, hogy az alkalmazás törölje a megőrzött állapotát a külső felügyeleti költségek elkerülése érdekében.
 

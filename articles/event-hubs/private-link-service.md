@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: cff1b3b79b34d3f0bed27a2ea50799185958a8ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc360bbe4dd58200993b9377317ccb608b3529d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477849"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383646"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Az Azure Event Hubs integrálása az Azure Private Link (előzetes verzió) szolgáltatással
 Az Azure Private Link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és az Azure Cosmos DB) és az Azure által üzemeltetett ügyfél-/partnerszolgáltatások elérését a virtuális hálózat **egy privát végpontján** keresztül.
@@ -45,7 +45,7 @@ A privát végpont egy privát IP-címet használ a virtuális hálózatban.
 ### <a name="steps"></a>Lépések
 Ha már rendelkezik Eseményközpont-névtérrel, az alábbi lépésekkel hozhat létre privát kapcsolatkapcsolatot:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 2. A keresősávba írja be az **eseményközpontokat**.
 3. Jelölje ki azt a **névteret** a listából, amelyhez saját végpontot szeretne hozzáadni.
 4. Válassza a **Hálózat** lapot a **Beállítások csoportban.**
@@ -151,6 +151,32 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 (Get-AzResource -ResourceId $namespaceResource.ResourceId -ExpandProperties).Properties
 
 
+```
+
+### <a name="configure-the-private-dns-zone"></a>A privát DNS-zóna konfigurálása
+Hozzon létre egy privát DNS-zónát az Event Hubs tartományhoz, és hozzon létre társítási kapcsolatot a virtuális hálózattal:
+
+```azurepowershell-interactive
+$zone = New-AzPrivateDnsZone -ResourceGroupName $rgName `
+                            -Name "privatelink.servicebus.windows.net" 
+ 
+$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName $rgName `
+                                            -ZoneName "privatelink.servicebus.windows.net" `
+                                            -Name "mylink" `
+                                            -VirtualNetworkId $virtualNetwork.Id  
+ 
+$networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
+ 
+foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
+    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
+        Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
+        $recordName = $fqdn.split('.',2)[0] 
+        $dnsZone = $fqdn.split('.',2)[1] 
+        New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.servicebus.windows.net"  `
+                                -ResourceGroupName $rgName -Ttl 600 `
+                                -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
+    } 
+}
 ```
 
 ## <a name="manage-private-endpoints-using-azure-portal"></a>Privát végpontok kezelése az Azure Portal használatával

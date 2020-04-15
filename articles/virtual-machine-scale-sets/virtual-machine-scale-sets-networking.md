@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
-ms.openlocfilehash: 7e6b8ea702d28fcd2747115710a8b1a8ec2bb1b2
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f048c7d89da0ab75c321cd8e3932ea97c7ed09c
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270519"
+ms.locfileid: "81310016"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése
 
@@ -69,6 +69,14 @@ az vmss create \
 
 >[!NOTE]
 > A méretezési készlet létrehozása után a háttérport nem módosítható a terheléselosztó állapotminta által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapotminta az Azure virtuálisgép-méretezési készlet frissítésével, frissítse a portot, majd konfigurálja újra az állapotminta. 
+
+A terheléselosztóról és a virtuálisgép-méretezési készletekről további információt az [Azure virtuális hálózatai és virtuális gépei című témakörben talál.](../../articles/virtual-machines/windows/network-overview.md)
+
+A következő módszerek kelthetegy virtuálisgép-méretezési készlet üzembe helyezéséhez egy meglévő Azure-terheléselosztóval.
+
+* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure Portal használatával.](../../articles/load-balancer/configure-vm-scale-set-portal.md)
+* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure PowerShell használatával.](../../articles/load-balancer/configure-vm-scale-set-powershell.md)
+* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure CLI használatával.](../../articles/load-balancer/configure-vm-scale-set-cli.md)
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway-re hivatkozó méretezési csoport létrehozása
 Ha alkalmazásátjárót használó méretezési csoportot szeretne létrehozni, akkor hivatkozzon az alkalmazásátjáró háttércímkészletére a méretezési csoport ipConfigurations szakaszában, mint ebben az ARM-sablonkonfigurációban:

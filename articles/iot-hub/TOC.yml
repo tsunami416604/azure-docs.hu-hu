@@ -85,8 +85,6 @@
   items:
     - name: TLS-támogatás
       href: iot-hub-tls-support.md
-    - name: Megszűnik a TLS 1.0 és 1.1 támogatása
-      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: Virtuális hálózatok támogatása
       href: virtual-network-support.md
     - name: Az üzenetbővítések áttekintése
@@ -444,6 +442,8 @@
           href: iot-hub-operations-monitoring.md
         - name: Migrálás a diagnosztikai beállításokba
           href: iot-hub-migrate-to-diagnostics-settings.md
+        - name: Megszűnik a TLS 1.0 és 1.1 támogatása
+          href: iot-hub-tls-deprecating-1-0-and-1-1.md
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek

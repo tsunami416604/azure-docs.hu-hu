@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198939"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381395"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Az Apache Hadoop-fürtök elérhetősége és megbízhatósága a HDInsightban
 
@@ -33,7 +33,7 @@ A HDInsight-fürt csomópontjai az Azure virtuális gépei használatával vanna
 
 A Hadoop-szolgáltatások magas rendelkezésre állásának biztosítása érdekében a HDInsight két főcsomópontot biztosít. Mindkét főcsomópont aktív és fut a HDInsight-fürtön belül egyszerre. Egyes szolgáltatások, például az Apache HDFS vagy az Apache Hadoop YARN, egy adott időpontban csak egy főcsomóponton "aktívak". Más szolgáltatások, például a HiveServer2 vagy a Hive MetaStore egyszerre mindkét főcsomóponton aktívak.
 
-A fürt különböző csomóponttípusainak állomásneveinek beszerzéséhez használja az [Ambari REST API-t.](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)
+A fürt különböző csomóponttípusainak állomásneveinek beszerzéséhez használja az [Ambari REST API-t.](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)
 
 > [!IMPORTANT]  
 > Ne társítsa a numerikus értéket ahhoz, hogy egy csomópont elsődleges vagy másodlagos. A numerikus érték csak akkor van jelen, hogy egyedi nevet adjon az egyes csomópontoknak.

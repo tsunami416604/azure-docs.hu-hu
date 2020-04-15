@@ -1,19 +1,19 @@
 ---
 title: Apache Hadoop-fürtök létrehozása webböngészővel, Azure HDInsight
-description: Ismerje meg, hogyan hozhat létre Apache Hadoop, Apache HBase, Apache Storm vagy Apache Spark-fürtöket Linux for HDInsight-alapú webböngészőés az Azure Portal használatával.
+description: Ismerje meg, hogyan hozhat létre Apache Hadoop, Apache HBase, Apache Storm vagy Apache Spark-fürtöket a HDInsighton. Használja a webböngészőt és az Azure Portalt.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/19/2020
-ms.openlocfilehash: bcc71b7244ba3498b2fcde023d372e67f41d6117
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623183"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313809"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux alapú fürtök létrehozása a HDInsightban az Azure Portal használatával
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. A felső menüben válassza a **+ Erőforrás létrehozása**lehetőséget.
 
@@ -51,7 +51,7 @@ Az **Alapok** lapon adja meg a következő információkat:
 |Erőforráscsoport|A legördülő listában jelölje ki a meglévő erőforráscsoportot, vagy válassza **az Új létrehozása lehetőséget.**|
 |Fürt neve|Adjon meg egy globálisan egyedi nevet.|
 |Régió|A legördülő listából válassza ki azt a régiót, ahol a fürt létrejön.|
-|Fürt típusa|Lista megnyitásához válassza **a Fürttípus kiválasztása** lehetőséget. A listából válassza ki a kívánt fürttípust. A HDInsight-fürtök számos típusban léteznek. Ezek megfelelnek a számítási feladatok vagy a technológia, amely a fürt van hangolva. Nincs támogatott módszer több típust egyesítő fürt létrehozására.|
+|Fürt típusa|Kattintson **a Fürttípus kiválasztása** gombra a lista megnyitásához. A listából válassza ki a kívánt fürttípust. A HDInsight-fürtök különböző típusúak. Ezek megfelelnek a számítási feladatok vagy a technológia, amely a fürt van hangolva. Nincs támogatott módszer több típust egyesítő fürt létrehozására.|
 |Verzió|A legördülő listából válasszon egy **verziót.** Használja az alapértelmezett verziót, ha nem tudja, mit válasszon. További tájékoztatás a [HDInsight cluster versions](hdinsight-component-versioning.md) (A HDInsight-fürtök verziói) című cikkben olvasható.|
 |Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett **admin**.|
 |Fürt bejelentkezési jelszava|Adja meg a jelszót.|
@@ -67,7 +67,7 @@ Válassza a **Tovább: Storage >>** gombot a következő lapra való ugráshoz.
 
 ### <a name="primary-storage"></a>Elsődleges tárolás
 
-Az **Elsődleges tárolótípus**legördülő listájából válassza ki az alapértelmezett tárolási típust. A következő kitölteni nek kitölteni a kiválasztott mezők a ttól függően változnak, hogy mi történt. **Azure Storage**esetén:
+Az **Elsődleges tárolótípus**legördülő listájából válassza ki az alapértelmezett tárolási típust. A később kitölteni kitölteni a kivégezhető mezők a kijelöléstől függően változnak. **Azure Storage**esetén:
 
 1. A **Kijelölés módszer listában**válassza a Kijelölés a **listából**vagy **a Hozzáférési kulcs használata lehetőséget.**
     * A **Kijelölés a listából listában**válassza ki az elsődleges **tárfiókot** a legördülő listából, vagy válassza az Új létrehozása **lehetőséget.**
@@ -81,7 +81,7 @@ Nem kötelező: Válassza **az Azure Storage hozzáadása** további fürttárol
 
 ### <a name="metastore-settings"></a>Metaáruház beállításai
 
-Nem kötelező: Adjon meg egy meglévő SQL-adatbázist az Apache Hive, az Apache Oozie és/vagy az Apache Ambari metaadatok fürtön kívüli mentéséhez. A metastore-hoz használt Azure SQL-adatbázisnak engedélyeznie kell a kapcsolatot más Azure-szolgáltatásokkal, például az Azure HDInsight-mal. Metatároló létrehozásakor ne nevezzen el kötőjellel vagy kötőjellel rendelkező adatbázist. Ezek a karakterek a fürt létrehozási folyamatának sikertelensedését okozhatják.
+Nem kötelező: Adjon meg egy meglévő SQL-adatbázist az Apache Hive, az Apache Oozie és az Apache Ambari metaadatok fürtön kívüli mentéséhez. A metastore-hoz használt Azure SQL-adatbázisnak engedélyeznie kell a kapcsolatot más Azure-szolgáltatásokkal, például az Azure HDInsight-mal. Metatároló létrehozásakor ne nevezzen el kötőjellel vagy kötőjellel rendelkező adatbázist. Ezek a karakterek a fürt létrehozási folyamatának sikertelensedését okozhatják.
 
 Válassza a **Tovább: Biztonság + hálózati >>** lehetőséget a következő lapra való ugráshoz.
 
@@ -158,25 +158,7 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 Sikeresen létrehozott egy HDInsight-fürtöt. Most már megtanulják, hogyan kell dolgozni a fürt.
 
-### <a name="apache-hadoop-clusters"></a>Apache Hadoop-fürtök
-
 * [Az Apache Hive használata a HDInsight segítségével](hadoop/hdinsight-use-hive.md)
-* [A MapReduce használata a HDInsightsegítségével](hadoop/hdinsight-use-mapreduce.md)
-
-### <a name="apache-hbase-clusters"></a>Apache HBase-fürtök
-
 * [Ismerkedés az Apache HBase-lel a HDInsight-on](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Java alkalmazások fejlesztése Apache HBase alkalmazáshoz a HDInsight-on](hbase/apache-hbase-build-java-maven-linux.md)
-
-### <a name="apache-storm-clusters"></a>Apache Storm-fürtök
-
 * [Java topológiák fejlesztése apache stormhoz a HDInsighton](storm/apache-storm-develop-java-topology.md)
-* [Python-összetevők használata az Apache Storm ban a HDInsighton](storm/apache-storm-develop-python-topology.md)
-* [Topológiák üzembe helyezése és figyelése az Apache Storm segítségével a HDInsighton](storm/apache-storm-deploy-monitor-topology-linux.md)
-
-### <a name="apache-spark-clusters"></a>Apache Spark-fürtök
-
 * [Önálló alkalmazás létrehozása a Scala használatával](spark/apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása Apache Spark-fürtön az Apache Livy használatával](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark bi-val: Interaktív adatelemzés végezhet a Spark használatával a HDInsightban az üzletiintelligencia-eszközökkel](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark a Machine Learningsegítségével: A Spark használata a HDInsightban az élelmiszer-ellenőrzési eredmények előrejelzéséhez](spark/apache-spark-machine-learning-mllib-ipython.md)

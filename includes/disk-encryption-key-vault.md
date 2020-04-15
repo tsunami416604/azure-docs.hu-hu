@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: f2133524f57576c4646de9d4bf7f37b573a77e6d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80813703"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314096"
 ---
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -40,7 +40,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 Hozzon létre egy key vault segítségével az [az keyvault hozzon létre](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) az Azure CLI parancs, a [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell parancs, az [Azure Portal](https://portal.azure.com), vagy egy Resource [Manager sablon.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 
 >[!WARNING]
-> Annak érdekében, hogy a titkosítási titkos kulcsok ne lépjék át a területi határokat, az Azure Disk Encryption megköveteli, hogy a Key Vault és a virtuális gépek ugyanabban a régióban és ugyanazon az előfizetésben legyenek. Hozzon létre és használjon egy Key Vault, amely ugyanabban a régióban, mint a virtuális gépek titkosítani kell. 
+> A key vault és a virtuális gépek ugyanabban az előfizetésben kell lennie. Annak érdekében is, hogy a titkosítási titkos kulcsok ne lépjék át a regionális határokat, az Azure Disk Encryption megköveteli, hogy a Key Vault és a virtuális gépek ugyanabban a régióban legyenek. Hozzon létre és használjon egy Key Vault, amely ugyanabban az előfizetésben és régióban, mint a virtuális gépek titkosítani kell. 
 
 Minden Key Vault kell egy egyedi nevet. Cserélje le <egyedi keyvault-neve> a kulcstartó nevét az alábbi példákban.
 
@@ -120,7 +120,7 @@ Használja [az keyvault frissítés](/cli/azure/keyvault#az-keyvault-update) a k
 1. Válassza ki a kulcstartót, nyissa meg az **Access Policies**lehetőséget, és **kattintson ide a speciális hozzáférési házirendek megjelenítéséhez.**
 2. Jelölje be az **Azure Disk Encryption hozzáférés engedélyezése kötettitkosításhoz**feliratú jelölőnégyzetet.
 3. Válassza **a Hozzáférés engedélyezése az Azure virtuális gépek üzembe helyezéshez** és/vagy az Access engedélyezése az Azure Resource Manager a sablon **telepítéséhez**, ha szükséges. 
-4. Kattintson a **Mentés** gombra.
+4. Kattintson a **Save** (Mentés) gombra.
 
     ![Az Azure key vault speciális hozzáférési szabályzatai](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 

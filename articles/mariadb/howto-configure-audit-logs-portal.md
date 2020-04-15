@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: d31b7531e00199ea63c7b057dacff1b67d7cedc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528931"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382970"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Naplózási naplók konfigurálása és elérése az Azure Portalon
 
@@ -30,7 +30,7 @@ Az útmutató útmutatón való átlépéshez a következőkre van szükség:
 
 A naplózás engedélyezése és konfigurálása.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Válassza ki az Azure-adatbázis Tiamikiszolgálóhoz.
 
@@ -69,4 +69,5 @@ A naplózás engedélyezése és konfigurálása.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a MariaDB Azure Database [naplóinak naplózásáról.](concepts-audit-logs.md)
+- További információ a MariaDB Azure Database [naplóiról](concepts-audit-logs.md)
+- Ismerje meg, hogyan konfigurálhatja a naplónaplókat az [Azure CLI-ben](howto-configure-audit-logs-cli.md)

@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – ETL-műveletek végrehajtása az Azure Databricks használatával
-description: Ebben az oktatóanyagban megtudhatja, hogyan nyerheti ki az adatokat a Data Lake Storage Gen2-ből az Azure Databricks-be, hogyan alakíthatja át az adatokat, majd töltheti be az adatokat az Azure SQL Data Warehouse-ba.
+description: Ebben az oktatóanyagban megtudhatja, hogyan nyerheti ki az adatokat a Data Lake Storage Gen2-ből az Azure Databricks-be, hogyan alakíthatja át az adatokat, majd töltheti be az adatokat az Azure Synapse Analytics szolgáltatásba.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,22 +8,22 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239410"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382738"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
 
-Ebben az oktatóanyagban egy ETL (kibontás, átalakítás és adatok betöltése) műveletet hajt végre az Azure Databricks használatával. Az Azure Data Lake Storage Gen2-ből azure Databricks-be bontja ki az adatokat, átalakításokat futtat az Azure Databricks-ben, és betölti az átalakított adatokat az Azure SQL Data Warehouse-ba.
+Ebben az oktatóanyagban egy ETL (kibontás, átalakítás és adatok betöltése) műveletet hajt végre az Azure Databricks használatával. Az Azure Data Lake Storage Gen2-ből azure Databricks-be bontja ki az adatokat, átalakításokat futtat az Azure Databricks-ben, és betölti az átalakított adatokat az Azure Synapse Analytics szolgáltatásba.
 
-A jelen oktatóanyagban szereplő lépések az Azure Databricks SQL Data Warehouse-összekötőjét használják az adatok Azure Databricksbe való átviteléhez. Az összekötő ezután az Azure Blob Storage-ot használja ideiglenes tárolóként az Azure Databricks-fürt és az Azure SQL Data Warehouse között átvitt adatokhoz.
+Az oktatóanyag lépései az Azure Databricks Azure Databricks Azure Synaps-összekötőhasználatával adatokat továbbítanak az Azure Databricks számára. Ez az összekötő viszont az Azure Blob Storage-ot használja ideiglenes tárolóként az Azure Databricks-fürt és az Azure Synapse között átvitt adatokhoz.
 
 Az alábbi ábrán az alkalmazásfolyam látható:
 
-![Azure Databricks a Data Lake Store és az SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks a Data Lake Store és az SQL Data Warehouse")
+![Azure Databricks a Data Lake Store és az Azure Synapse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks a Data Lake Store és az Azure Synapse")
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Hozzon létre egy egyszerű szolgáltatás.
 > * Adatok kinyerése az Azure Data Lake Storage Gen2 fiókból.
 > * Adatok átalakítása az Azure Databricks-ben.
-> * Adatok betöltése az Azure SQL Data Warehouse ba.
+> * Adatok betöltése az Azure Synapse-ba.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
@@ -47,9 +47,9 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 Az oktatóanyag megkezdése előtt végezze el az alábbi feladatokat:
 
-* Hozzon létre egy Azure SQL-adatraktárt, hozzon létre egy kiszolgálószintű tűzfalszabályt, és csatlakozzon a kiszolgálóhoz kiszolgálói rendszergazdaként. Lásd: [Rövid útmutató: Azure SQL-adattárház létrehozása és lekérdezése az Azure Portalon.](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
+* Hozzon létre egy Azure Synapse, hozzon létre egy kiszolgálószintű tűzfalszabályt, és csatlakozzon a kiszolgálóhoz kiszolgálói rendszergazdaként. Lásd: [Rövid útmutató: Szinapszid SQL-készlet létrehozása és lekérdezése az Azure Portalhasználatával.](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
 
-* Hozzon létre egy főkulcsot az Azure SQL-adattárházhoz. Lásd: [Adatbázis-főkulcs létrehozása](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Hozzon létre egy fő kulcsot az Azure Synapse számára. Lásd: [Adatbázis-főkulcs létrehozása](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
 * Hozzon létre egy Azure Blob Storage-fiókot, benne egy tárolóval. A hozzáférési kulcsot is kérje le a tárfiók eléréséhez. Lásd: [Gyorsútmutató: Blobok feltöltése, letöltése és listázása az Azure Portalon.](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -63,9 +63,9 @@ Az oktatóanyag megkezdése előtt végezze el az alábbi feladatokat:
 
       Ha egy hozzáférés-vezérlési listát (ACL) szeretne használni a szolgáltatásnév egy adott fájlhoz vagy könyvtárhoz társítására, hivatkozzon [az Azure Data Lake Storage Gen2 hozzáférés-vezérlésére.](../storage/blobs/data-lake-storage-access-control.md)
 
-   * Amikor végrehajtja a cikk [bejelentkezési értékeinek bekerülési értékeit,](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) illessze be a bérlői azonosítót, az alkalmazásazonosítót és a titkos értékeket egy szöveges fájlba. Hamarosan szükséged lesz rá.
+   * Amikor végrehajtja a cikk [bejelentkezési értékeinek bekerülési értékeit,](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) illessze be a bérlői azonosítót, az alkalmazásazonosítót és a titkos értékeket egy szöveges fájlba.
 
-* Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+* Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Gyűjtse össze a szükséges információkat
 
@@ -73,7 +73,7 @@ Győződjön meg arról, hogy az oktatóanyag előfeltételeit befejezte.
 
    Mielőtt elkezdené, rendelkeznie kell az alábbi információkkal:
 
-   :heavy_check_mark: Az adatbázis neve, adatbázis-kiszolgáló neve, felhasználóneve és az Azure SQL Data-raktár jelszava.
+   :heavy_check_mark: Az adatbázis neve, adatbázis-kiszolgáló neve, felhasználóneve és az Azure Synapse jelszava.
 
    :heavy_check_mark: A blob storage-fiók hozzáférési kulcsa.
 
@@ -316,11 +316,11 @@ A nyers mintaadatok **small_radio_json.json** fájl rögzíti a közönséget eg
    +---------+----------+------+--------------------+-----------------+
    ```
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Adatok betöltése az Azure SQL Data Warehouse-ba
+## <a name="load-data-into-azure-synapse"></a>Adatok betöltése az Azure Synapse-ba
 
-Ebben a szakaszban feltölti az átalakított adatokat az Azure SQL Data Warehouse-ba. Az Azure Databricks Azure SQL DataWarehouse-összekötőhasználatával közvetlenül feltöltheti az adatkeretet egy SQL-adattárházban lévő táblaként.
+Ebben a szakaszban feltölti az átalakított adatokat az Azure Synapse-ba. Az Azure Databricks Azure Synapse-összekötő használatával közvetlenül feltöltheti az adatkeretet egy synapse Spark-készlet táblaként.
 
-Ahogy korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob storage-ot használja ideiglenes tárolóként az Azure Databricks és az Azure SQL Data Warehouse közötti adatok feltöltéséhez. Ezért első lépésként adja meg a tárfiókhoz való csatlakozáshoz szükséges konfigurációt. A cikk előfeltételeinek részeként már létre kell hoznia a fiókot.
+Ahogy korábban említettük, az Azure Synapse-összekötő az Azure Blob-tárolót használja ideiglenes tárolóként az Azure Databricks és az Azure Synapse közötti adatok feltöltéséhez. Ezért első lépésként adja meg a tárfiókhoz való csatlakozáshoz szükséges konfigurációt. A cikk előfeltételeinek részeként már létre kell hoznia a fiókot.
 
 1. Adja meg az Azure Storage-fiók Azure Databricksből való eléréséhez szükséges konfigurációt.
 
@@ -330,7 +330,7 @@ Ahogy korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob s
    val blobAccessKey =  "<access-key>"
    ```
 
-2. Adjon meg egy ideiglenes mappát, amelyet az Azure Databricks és az Azure SQL Data Warehouse közötti adatok áthelyezése közben használhat.
+2. Adjon meg egy ideiglenes mappát, amelyet az Azure Databricks és az Azure Synapse közötti adatok áthelyezése közben használhat.
 
    ```scala
    val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
@@ -343,10 +343,10 @@ Ahogy korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob s
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Adja meg az Azure SQL Data Warehouse-példányhoz való csatlakozáshoz szükséges értékeket. Előfeltételként létre kell hoznia egy SQL-adatraktárt. Használja a **dwServer**teljesen minősített kiszolgálónevét. Például: `<servername>.database.windows.net`.
+4. Adja meg az Azure Synapse-példányhoz való csatlakozáshoz. Előfeltételként létre kell hoznia egy Azure Synapse Analytics szolgáltatást. Használja a **dwServer**teljesen minősített kiszolgálónevét. Például: `<servername>.database.windows.net`.
 
    ```scala
-   //SQL Data Warehouse related settings
+   //Azure Synapse related settings
    val dwDatabase = "<database-name>"
    val dwServer = "<database-server-name>"
    val dwUser = "<user-name>"
@@ -357,7 +357,7 @@ Ahogy korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob s
    val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
-5. Futtassa a következő kódrészletet az átalakított **adatkeret (ColumnsDF**) sql adatraktárban lévő táblaként való betöltéséhez. Ez a kódrészlet létrehoz egy **SampleTable** nevű táblát az SQL-adatbázisban.
+5. Futtassa a következő kódrészletet az átalakított dataframe, **az újneveColumnsDF**betöltéséhez, az Azure Synapse-ban egy táblaként. Ez a kódrészlet létrehoz egy **SampleTable** nevű táblát az SQL-adatbázisban.
 
    ```scala
    spark.conf.set(
@@ -368,9 +368,9 @@ Ahogy korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob s
    ```
 
    > [!NOTE]
-   > Ez a `forward_spark_azure_storage_credentials` minta a jelzőt használja, amely nek köszönhetően az SQL Data Warehouse access key használatával fér hozzá a blobstorage-ból származó adatokhoz. Ez az egyetlen támogatott hitelesítési módszer.
+   > Ez a `forward_spark_azure_storage_credentials` minta a jelzőt használja, amely nek az Azure Synapse hozzáférést biztosít a blob storage-ból egy hozzáférési kulcs használatával. Ez az egyetlen támogatott hitelesítési módszer.
    >
-   > Ha az Azure Blob Storage csak virtuális hálózatok kiválasztására van korlátozva, az SQL Data Warehouse [access keys helyett felügyelt szolgáltatásidentitást](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)igényel. Ez a következő hibaüzenetet okozza: "Ez a kérés nem jogosult a művelet végrehajtására."
+   > Ha az Azure Blob Storage csak a virtuális hálózatok kiválasztására van korlátozva, az Azure Synapse [access keys helyett felügyelt szolgáltatásidentitást](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)igényel. Ez a következő hibaüzenetet okozza: "Ez a kérés nem jogosult a művelet végrehajtására."
 
 6. Csatlakozzon az SQL-adatbázishoz, és ellenőrizze, hogy **megjelenik-e**a SampleTable nevű adatbázis.
 
@@ -398,7 +398,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Jegyzetfüzet létrehozása az Azure Databricksben
 > * Adatok kinyerése Data Lake Storage Gen2 fiókból
 > * Adatok átalakítása az Azure Databricksben
-> * Adatok betöltése az Azure SQL Data Warehouse-ba
+> * Adatok betöltése az Azure Synapse-ba
 
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan streamelhetők valós időben az adatok az Azure Databricksbe az Azure Event Hubs használatával.
 

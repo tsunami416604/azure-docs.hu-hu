@@ -3,18 +3,18 @@ title: Automatikus virtuális géptelepítés az Azure App Konfigurációs rövi
 description: Ez a rövid útmutató bemutatja, hogyan használhatja az Azure PowerShell-modult és az Azure Resource Manager-sablonokat egy Azure App Configuration Store üzembe helyezéséhez. Ezután használja az értékeket az üzletben egy virtuális gép üzembe helyezéséhez.
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 03/05/2020
+ms.date: 04/14/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 02afa2cb36323e0c3c38c2451b1924b636f7faed
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126379"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309096"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Rövid útmutató: Automatikus virtuális gép telepítés alkalmazáskonfigurációs és erőforrás-kezelő sablonnal
 
@@ -152,6 +152,9 @@ Létrehozhat egy Alkalmazáskonfigurációs áruházat egy Azure Resource Manage
 ## <a name="deploy-vm-using-stored-key-values"></a>Virtuális gép telepítése tárolt kulcsértékek használatával
 
 Most, hogy kulcsértékeket adott hozzá az áruházhoz, készen áll egy virtuális gép üzembe helyezésére egy Azure Resource Manager-sablon használatával. A sablon a létrehozott **windowsOsVersion** és **diskSizeGB** kulcsokra hivatkozik.
+
+> [!WARNING]
+> Az ARM-sablonok nem hivatkozhatnak kulcsokra olyan alkalmazáskonfigurációs tárolóban, amelyen engedélyezve van a Privát hivatkozás.
 
 1. Másolja és illessze be a következő jsonkódot egy *azuredeploy.json*nevű új fájlba, vagy töltse le a fájlt az [Azure gyorsindítási sablonjaiból.](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)
 
@@ -423,13 +426,13 @@ Most, hogy kulcsértékeket adott hozzá az áruházhoz, készen áll egy virtu�
    |storageAccountName|A virtuális géphez társított tárfiók egyedi neve.|
    |tartományNévfelirat|Egyedi tartománynév.|
 
-1. A PowerShell-ablakban futtassa a következő parancsot az Azure App Configuration Store üzembe helyezéséhez. Ne felejtse el lecserélni az erőforráscsoport nevét, a sablonfájl elérési útját és a sablon paraméterfájl elérési útját.
+1. A PowerShell-ablakban futtassa a következő parancsot a virtuális gép üzembe helyezéséhez. Ne felejtse el lecserélni az erőforráscsoport nevét, a sablonfájl elérési útját és a sablon paraméterfájl elérési útját.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
+       -ResourceGroupName "<your resource group>"
+       -TemplateFile "<path to azuredeploy.json>" `
+       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
    ```
 
 Gratulálunk! Virtuális gép üzembe helyezése az Azure App konfigurációjában tárolt konfigurációk használatával.

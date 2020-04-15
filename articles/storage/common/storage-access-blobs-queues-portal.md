@@ -6,26 +6,28 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 602be49ef0c60274f1cd016c4f8e870cf033ec7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e556e21238db5de7dddce13ea912dae30723fe8c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75866893"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383688"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Blob- vagy várólista-adatok eléréséhez használja az Azure Portalt
 
 Amikor az [Azure Portal](https://portal.azure.com)használatával fér hozzá a blob- vagy várólista-adatokhoz, a portál a feldolgozási jog alatt kéri az Azure Storage-t. Az Azure Storage-ra vonatkozó kérés az Azure AD-fiók vagy a tárfiók hozzáférési kulcshasználatával is engedélyezhető. A portál jelzi, hogy melyik módszert használja, és lehetővé teszi a kettő közötti váltást, ha rendelkezik a megfelelő engedélyekkel.  
 
+Azt is megadhatja, hogyan engedélyezhet egy adott blob feltöltési műveletet az Azure Portalon. Alapértelmezés szerint a portál használja bármelyik módszert már használ egy blob feltöltési művelet engedélyezéséhez, de lehetősége van módosítani ezt a beállítást, amikor feltölt egy blobot.
+
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>A blob- vagy várólista-adatok eléréséhez szükséges engedélyek
 
 Attól függően, hogy hogyan szeretné engedélyezni a blob- vagy várólista-adatokhoz való hozzáférést az Azure Portalon, speciális engedélyekre van szüksége. A legtöbb esetben ezek az engedélyek szerepköralapú hozzáférés-vezérlésen (RBAC) keresztül érhetők el. Az RBAC-ről a [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md)
 
-### <a name="account-access-key"></a>Fiókhozzáférési kulcs
+### <a name="use-the-account-access-key"></a>A fiókhozzáférési kulcs használata
 
 A blob- és várólista-adatok fiókhozzáférési kulccsal való eléréséhez rendelkeznie kell egy RBAC-szerepkörrel, amely tartalmazza a **Microsoft.Storage/storageAccounts/listkeys/action**RBAC műveletet. Ez az RBAC szerepkör lehet beépített vagy egyéni szerepkör. A **Microsoft.Storage/storageAccounts/listkeys/action** beépített szerepkörei a következők:
 
@@ -36,9 +38,9 @@ A blob- és várólista-adatok fiókhozzáférési kulccsal való eléréséhez 
 Amikor megpróbál hozzáférni a blob- vagy várólista-adatokhoz az Azure Portalon, a portál először ellenőrzi, hogy van-e szerepkör a **Microsoft.Storage/storageAccounts/listkeys/action szolgáltatással.** Ha ezzel a művelettel szerepkört kapott, akkor a portál a fiókkulcsot használja a blob- és várólista-adatok eléréséhez. Ha nem kapott szerepkört ezzel a művelettel, majd a portál megkísérli az adatok elérését az Azure AD-fiók használatával.
 
 > [!NOTE]
-> A klasszikus előfizetés-rendszergazdai szerepkörök Service Administrator és társ-rendszergazda tartalmazza az Azure Resource Manager [owner](../../role-based-access-control/built-in-roles.md#owner) szerepkör megfelelője. A **tulajdonosi** szerepkör tartalmazza az összes műveletet, beleértve a **Microsoft.Storage/storageAccounts/listkeys/action,** így a felhasználó egy ilyen felügyeleti szerepkörök is hozzáférhet nek blob és várólista adatait a fiókkulcs. További információt a [Klasszikus előfizetéses rendszergazdai szerepkörök című témakörben](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)talál.
+> A klasszikus előfizetés-rendszergazdai szerepkörök Service Administrator és társ-rendszergazda tartalmazza az Azure Resource Manager [owner](../../role-based-access-control/built-in-roles.md#owner) szerepkör megfelelője. A **tulajdonosi** szerepkör tartalmazza az összes műveletet, beleértve a **Microsoft.Storage/storageAccounts/listkeys/action,** így a felhasználó egy ilyen felügyeleti szerepkörök is hozzáférhet nek blob és várólista adatait a fiókkulcs. További információ: [Klasszikus előfizetéses rendszergazdai szerepkörök, Azure RBAC-szerepkörök és Azure AD-rendszergazdai szerepkörök.](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
-### <a name="azure-ad-account"></a>Azure AD-fiók
+### <a name="use-your-azure-ad-account"></a>Az Azure AD-fiók használata
 
 Ha az Azure AD-fiókjával szeretné elérni a blob- vagy várólista-adatokat az Azure Portalról, mindkét alábbi utasításnak igaznak kell lennie:
 
@@ -54,7 +56,7 @@ A blob- vagy várólista-adatokhoz való hozzáférést támogató beépített s
 - [Storage Blob Data Reader:](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)Csak olvasási engedélyek blobok.
 - [Storage Queue Data Contributor](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): A várólisták olvasási/írási/törlési engedélyei.
 - [Tárolóvárólista-adatolvasó:](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader)Csak olvasható engedélyek a várólistákhoz.
-    
+
 Az egyéni szerepkörök a beépített szerepkörök által biztosított engedélyek különböző kombinációit támogathatják. Az egyéni RBAC-szerepkörök létrehozásáról további információt az [Egyéni szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/custom-roles.md) és [az Azure-erőforrások szerepkör-definícióinak ismertetése című](../../role-based-access-control/role-definitions.md)témakörben talál.
 
 A klasszikus előfizetés-rendszergazdai szerepkörrel rendelkező várólisták listázása nem támogatott. A várólisták listázásához a felhasználónak hozzá kell rendelnie az Azure Resource Manager **Reader** szerepkört, a **storage-várólista-adatolvasó** szerepkört vagy a **storage-várólista-adatközreműködői** szerepkört.
@@ -74,7 +76,7 @@ Amikor egy tárolóhoz vagy egy várólistához navigál, az Azure Portal jelzi,
 
 Ebben a szakaszban a példák egy tároló és a blobok elérését mutatják be, de a portál ugyanazt az üzenetet jeleníti meg, amikor egy várólistához és annak üzeneteihez, vagy a várólisták listázásához fér hozzá.
 
-### <a name="account-access-key"></a>Fiókhozzáférési kulcs
+### <a name="authenticate-with-the-account-access-key"></a>Hitelesítés a fiókhozzáférési kulccsal
 
 Ha a fiókhozzáférési kulccsal hitelesíti a hitelesítési kulcsot, a portálon hitelesítési módszerként az **Access Key** lesz megadva:
 
@@ -86,7 +88,7 @@ Az Azure AD-fiók használatára való váltáshoz kattintson a képen kiemelt h
 
 Figyelje meg, hogy nem jelennek meg blobok a listában, ha az Azure AD-fiók nem rendelkezik engedélyekkel azok megtekintéséhez. Kattintson a **Kapcsoló gombra a kulcs eléréséhez** linket használni a hozzáférési kulcsot a hitelesítéshez újra.
 
-### <a name="azure-ad-account"></a>Azure AD-fiók
+### <a name="authenticate-with-your-azure-ad-account"></a>Hitelesítés Az Azure AD-fiókkal
 
 Ha az Azure AD-fiókjával hitelesíti a hitelesítést, a portálon hitelesítési módszerként megadva az **Azure AD felhasználói fiók** jelenik meg:
 
@@ -97,6 +99,19 @@ Ha a fiókelérési kulcs használatára szeretne váltani, kattintson a képen 
 ![Hiba jelenik meg, ha nincs hozzáférése a fiókkulcshoz](media/storage-access-blobs-queues-portal/auth-error-access-key.png)
 
 Figyelje meg, hogy nem blobok jelennek meg a listában, ha nem rendelkezik a fiókkulcsok. Kattintson a Váltás az **Azure AD felhasználói fiókra** hivatkozásra az Azure AD-fiók ismételt hitelesítéséhez.
+
+## <a name="specify-how-to-authorize-a-blob-upload-operation"></a>Blob-feltöltési művelet engedélyezésének megadása
+
+Amikor feltölt egy blobot az Azure Portalról, megadhatja, hogy hitelesítse és engedélyezze a műveletet a fiók hozzáférési kulccsal vagy az Azure AD-hitelesítő adatokkal. Alapértelmezés szerint a portál az aktuális hitelesítési módszert használja, [ahogy az Az aktuális hitelesítési módszer meghatározása](#determine-the-current-authentication-method)című részben látható.
+
+A blobfeltöltési művelet engedélyezésének engedélyezéséhez hajtsa végre az alábbi lépéseket:
+
+1. Az Azure Portalon keresse meg azt a tárolót, amelyben szeretne feltölteni egy blobot.
+1. Kattintson a **Feltöltés** gombra.
+1. **Bontsa** ki a Speciális szakaszt a blob speciális tulajdonságainak megjelenítéséhez.
+1. A **Hitelesítés típusa** mezőben adja meg, hogy engedélyezni kívánja-e a feltöltési műveletet az Azure AD-fiók vagy a fiók hozzáférési kulcsa használatával, ahogy az az alábbi képen látható:
+
+    :::image type="content" source="media/storage-access-blobs-queues-portal/auth-blob-upload.png" alt-text="Képernyőkép, amely bemutatja, hogyan módosítható kvantisza engedélyezési módszer a blob feltöltésekén":::
 
 ## <a name="next-steps"></a>További lépések
 

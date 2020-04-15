@@ -1,25 +1,19 @@
 ---
 title: Mintaszintaxis hivatkozása - LUIS
-titleSuffix: Azure Cognitive Services
 description: Entitások létrehozása a kulcsadatok kinyerése a felhasználói utterances a language understanding (LUIS) alkalmazásokban. A kinyert adatokat az ügyfélalkalmazás használja.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219730"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382144"
 ---
 # <a name="pattern-syntax"></a>Minta szintaxisa
 
-Minta szintaxis egy sablon egy utterance (kifejezés) . A sablonnak tartalmaznia kell az egyeztetni kívánt szavakat és entitásokat, valamint a figyelmen kívül hagyni kívánt szavakat és írásjeleket. Ez **nem** egy reguláris kifejezés.
+Minta szintaxis egy sablon egy utterance (kifejezés) . A sablonnak tartalmaznia kell az egyeztetni kívánt szavakat és entitásokat, valamint a figyelmen kívül hagyni kívánt szavakat és [írásjeleket.](luis-reference-application-settings.md#punctuation-normalization) Ez **nem** egy reguláris kifejezés.
 
 > [!CAUTION]
 > A minták csak a gép által megtanult entitás szülőket tartalmazzák, az alösszetevőket nem.

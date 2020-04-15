@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3237fe7d87ad058f255d1c77cb6d814bcd1c292e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262247"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383907"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
 
@@ -324,6 +324,30 @@ Hiba: '1359 rendszerhiba történt. Belső hiba történik, ha olyan AAD DS-hite
 Jelenleg érdemes lehet újratelepíteni az AAD DS egy új domain DNS-név, amely az alábbi szabályokkal:
 - A nevek nem kezdődhetnek numerikus karakterrel.
 - A nevek nek 3 és 63 karakter között kell lenniük.
+
+## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>Nem lehet csatlakoztatni az Azure Files-t AD-hitelesítő adatokkal 
+
+### <a name="self-diagnostics-steps"></a>Öndiagnosztika lépései
+Először győződjön meg arról, hogy mind a négy lépést végigkövette az [Azure Files AD-hitelesítés engedélyezéséhez.](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)
+
+Másodszor próbálja meg [az Azure-fájlmegosztást a tárfiók kulcsával.](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) Ha nem sikerült csatlakoztatni, töltse le [az AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) fájlt, hogy segítsen az ügyfél futó környezetének érvényesítésében, észlelje az inkompatibilis ügyfélkonfigurációt, amely az Azure Files hozzáférési hibáját okozhatja, előíró útmutatást ad az önjavításhoz, és gyűjtse össze a diagnosztikai nyomkövetéseket.
+
+Harmadszor, futtathatja a Debug-AzStorageAccountAuth parancsmag, hogy végezzen egy sor alapvető ellenőrzéseket az AD-konfiguráció a bejelentkezett AD-felhasználó. Ez a parancsmag az [AzFilesHybrid v0.1.2+ verzióban](https://github.com/Azure-Samples/azure-files-samples/releases)támogatott. Ezt a parancsmacélt egy olyan AD-felhasználóval kell futtatnia, amely tulajdonosi engedéllyel rendelkezik a céltárfiókhoz.  
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
+```
+A parancsmag az alábbi ellenőrzéseket sorrendben hajtja végre, és útmutatást ad a hibákhoz:
+1. CheckPort445Connectivity: ellenőrizze, hogy a 445-ös port meg van-e nyitva az SMB-kapcsolathoz
+2. CheckDomainJoined: ellenőrizze, hogy az ügyfélszámítógép tartomány csatlakozik-e az AD-hez
+3. CheckADObject: ellenőrizze, hogy a bejelentkezett felhasználó érvényes reprezentációval rendelkezik-e abban az AD-tartományban, amelyhez a tárfiók társítva van.
+4. CheckGetKerberosTicket: kerberos jegy et próbál szerezni a tárfiókhoz való csatlakozáshoz 
+5. CheckADObjectPasswordIsCorrect: győződjön meg arról, hogy a tárfiókot jelképező AD-identitáson konfigurált jelszó megfelel a tárfiók szegélykulcsának.
+6. CheckSidHasAadUser: ellenőrizze, hogy a bejelentkezett AD-felhasználó szinkronizálva van-e az Azure AD-vel
+
+Aktívan dolgozunk a diagnosztikai parancsmag kiterjesztésén, hogy jobb hibaelhárítási útmutatást nyújtsunk.
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 Ha továbbra is segítségre van szüksége, lépjen kapcsolatba az [ügyfélszolgálattal,](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) hogy gyorsan megoldódjon a probléma.

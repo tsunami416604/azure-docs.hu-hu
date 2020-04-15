@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.author: aahi
-ms.openlocfilehash: 4d597b872cf31a823f314d9f3c67c9f45201c542
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258473"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383087"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>A beszédszolgáltatások tárolói gyakran feltett kérdések (GYIK)
 
@@ -379,7 +379,7 @@ A doki azt mondja, hogy tegye ki egy másik port, amit én, de a LUIS konténer 
 <b>Hogyan kaphatok nem kötegelt API-kat a 15 másodperces hang &lt;kezelésére?</b>
 </summary>
 
-**Válasz:** Ez interaktív módban van. Ha diktálást vagy beszélgetést használ, az nem jelent problémát.
+**Válasz:** `RecognizeOnce()` interaktív módban csak legfeljebb 15 másodperces hangot dolgoz fel, mivel a mód beszédvezérlésre szolgál, ahol az utterances várhatóan rövid lesz. Ha diktálásra vagy beszélgetésre használja, `StartContinuousRecognition()` nincs 15 másodperces korlát.
 
 
 <br>

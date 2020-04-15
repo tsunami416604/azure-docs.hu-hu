@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80afbeb5668d43ac7bb0b12fadb88a93c68e0ddb
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74422528"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383718"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Adatok szinkronizálása több felhőbeli és helyszíni adatbázisban az SQL Data Sync segítségével
 
@@ -144,7 +144,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 
 #### <a name="unsupported-column-types"></a>Nem támogatott oszloptípusok
 
-Az adatszinkronizálás nem szinkronizálható írásvédett vagy a rendszer által létrehozott oszlopokat. Példa:
+Az adatszinkronizálás nem szinkronizálható írásvédett vagy a rendszer által létrehozott oszlopokat. Például:
 
 - Számított oszlopok.
 - Rendszer által létrehozott oszlopok a temporális táblákhoz.

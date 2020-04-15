@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ad821036047dcf46821b2b2722e3dd17f8e318c2
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: cb2302637efb16fc31bd420bf8c4ead19d7f598d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80386082"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81385002"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>A felhasználónak rendelkeznie kell hubés beszélt SD-WAN/VPN-eszközök kel az Azure Virtual WAN használatához?
 
@@ -131,6 +131,8 @@ Igen. Lásd a [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-
 
 * Ha expressroute-átjáró miatt ExpressRoute-áramkörök egy virtuális hubhoz csatlakozik, majd meg kell fizetnie a méretezési egységár. Az ER minden méretezési egysége 2 Gb/s, és minden egyes csatlakozási egységet a VPN-kapcsolati egységgel azonos sebességgel számítunk fel.
 
+* Ha a küllők VNET-ek csatlakoztak a hubhoz, a küllők vnet-jein lévő társviszony-létesítési díjak továbbra is érvényesek. 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hogyan készülhetnek elő a szolgáltatásra a meglévő partnerek listáján még nem szereplő új partnerek?
 
 Minden virtuális WAN API nyitott API. A dokumentációt átveheti a műszaki megvalósíthatóság értékeléséhez. Ha bármilyen kérdése van, küldjön egy e-mailt a . azurevirtualwan@microsoft.com Ideális esetben a partner olyan eszközzel rendelkezik, amely támogatja az IKEv1 vagy az IKEv2 IPsec-kapcsolatot.
@@ -149,7 +151,7 @@ A virtuális hálózat a virtuális WAN-tól eltérő régióban is csatlakoztat
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>A virtuális hubhoz csatlakoztatott küllővirtuális hálózatok kommunikálhatnak egymással (V2V-átvitel)?
 
-Igen. Standard Virtual WAN támogatja a virtuális hálózat és a virtuális hálózat tranzitív kapcsolat a virtuális WAN hub, amely a virtuális hálózatok csatlakoznak. A Virtual WAN terminológiában ezeket az elérési utakat "helyi virtuális WAN virtuális hálózat-átvitelnek" nevezzük az egy régión belül virtual wan-elosztóhoz csatlakoztatott virtuális hálózatok esetében, és "globális virtuális WAN virtuális hálózati átvitelként" a több virtuális WAN-csomóponton keresztül több virtuális WAN-csomóponton keresztül csatlakoztatott virtuális hálózatok esetében. Régiók. A virtuális hálózatok átvitele legfeljebb 3 Gb/s átviteli sebességet támogat a nyilvános előzetes verzióban. Átviteli lesz kibővült, ha a globális átvitel megy GA.
+Igen. Standard Virtual WAN támogatja a virtuális hálózat és a virtuális hálózat tranzitív kapcsolat a virtuális WAN hub, amely a virtuális hálózatok csatlakoznak. A Virtual WAN terminológiában ezeket az elérési utakat "helyi virtuális WAN virtuális hálózat-átvitelnek" nevezzük egy virtuális wan-elosztóhoz egyetlen régión belül, és "globális virtuális WAN virtuális hálózati átvitelt" a virtuális hálózatokhoz, amelyek több virtuális WAN-csomóponton keresztül, két vagy több régióban keresztül csatlakoznak. A virtuális hálózatok átvitele legfeljebb 3 Gb/s átviteli sebességet támogat a nyilvános előzetes verzióban. Átviteli lesz kibővült, ha a globális átvitel megy GA.
 
 MEGJEGYZÉS: Jelenleg a V2V-átvitel előzetes verziójához egy VPN GW-t kell telepíteni egy virtuális központban az útválasztási elemek elindításához. Ez a VPN GW nem használható a V2V tranzitútvonalhoz. Ez egy ismert korlátozás, és el kell távolítani idején V2V GA. A VPN-átjáró a hub(ok)on keresztül teljes indításután törölhető, mivel a V2V-átvitel funkcióhoz nincs szükség. 
 

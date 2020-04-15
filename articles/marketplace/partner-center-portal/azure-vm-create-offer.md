@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 706a8c554dafbf792471729929d6e6484dfa35ae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266083"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383802"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Azure virtuálisgép-ajánlat létrehozása
 
@@ -116,9 +116,9 @@ A folytatás előtt válassza **a Vázlat mentése** lehetőséget.
 
 Ezen az oldalon meghatározhatja az ajánlata csoportosításához használt kategóriákat és iparágakat a piactéren, az alkalmazás verzióján és az ajánlatot támogató jogi szerződéseken.
 
-### <a name="category"></a>Kategória
+### <a name="categories"></a>Kategóriák
 
-Válasszon legalább egy és legfeljebb három kategóriát. Ezek a kategóriák az ajánlat megfelelő piactérkeresési területeken való elhelyezésére szolgálnak. Az ajánlat leírásában ismertesse, hogyan támogatja az ajánlat ezeket a kategóriákat. A virtuálisgép-ajánlatok az Azure Marketplace **Számítási** kategóriájában jelennek meg.
+Válasszon legalább egy és legfeljebb öt kategóriát. Ezek a kategóriák az ajánlat megfelelő piactérkeresési területeken való elhelyezésére szolgálnak. Az ajánlat leírásában ismertesse, hogyan támogatja az ajánlat ezeket a kategóriákat. A virtuálisgép-ajánlatok az Azure Marketplace **Számítási** kategóriájában jelennek meg.
 
 ### <a name="legal"></a>Jogi tudnivalók
 
@@ -234,7 +234,6 @@ Adja meg a támogatási webhelyet, ahol az ügyfelek elérhetik a támogatási c
 
 - Az Azure Global támogatási webhelye
 - Az Azure Government támogatási webhelye
-- és így tovább
 
 ### <a name="partner-support-contact"></a>Partnertámogatási kapcsolattartó
 
@@ -389,6 +388,8 @@ Minden tervnek legalább egy piacon elérhetőnek kell lennie. Jelölje be a jel
 
 Ha már beállította a csomag árait amerikai dollárban (USD), és egy másik piaci helyszínt adott meg, az új piac árát az aktuális árfolyamok alapján számítja ki a rendszer. Közzététel előtt mindig tekintse át az egyes piacok árát. A módosítások mentése után tekintse át az árakat az **Exportárak (xlsx)** hivatkozás használatával.
 
+Amikor eltávolít egy piacot, az aktív központi telepítések használatával az ügyfelek nem hozhatnak létre új központi telepítéseket, és nem skálázhatják a meglévő központi telepítések. A meglévő központi telepítések nem érinti.
+
 #### <a name="pricing"></a>Díjszabás
 
 **Licencmodell** – Válassza **a Használat alapú havi számlázott csomag** lehetőséget a csomag díjszabásának konfigurálásához, vagy saját licenc **hez,** hogy az ügyfelek a meglévő licenccel használhassák ezt a csomagot.
@@ -421,16 +422,16 @@ Az egyes terveket úgy tervezheti meg, hogy mindenki vagy csak egy előre kivál
 
 #### <a name="hide-plan"></a>Terv elrejtése
 
-Ha a virtuális gép célja, hogy csak közvetetten, ha hivatkozott egy másik megoldás sablon vagy felügyelt alkalmazás, jelölje be ezt a jelölőnégyzetet, hogy tegye közzé a virtuális gép vagy ajánlat, de elrejteni az ügyfelek keresnek és böngészés közvetlenül.
+Ha a virtuális gép célja, hogy csak közvetetten, ha hivatkozott egy másik megoldás sablon vagy felügyelt alkalmazás, jelölje be ezt a jelölőnégyzetet, hogy tegye közzé a virtuális gépet, de elrejteni az ügyfelek keresnek és böngészik közvetlenül.
 
 > [!NOTE]
-> A rejtett tervek nem támogatják az előnézeti hivatkozásokat.
+> A rejtett csomagok nem támogatják az előnézeti hivatkozásokat.
 
 A folytatás előtt válassza **a Vázlat mentése** lehetőséget.
 
 ### <a name="technical-configuration"></a>Műszaki konfiguráció
 
-Adja meg a rendszerképeket és a csomaghoz kapcsolódó egyéb technikai tulajdonságokat.
+Adja meg a rendszerképeket és a csomaghoz kapcsolódó egyéb technikai tulajdonságokat. További információt az Azure virtuális gép technikai eszközének létrehozása című [témakörben talál.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)
 
 > [!NOTE]
 > Ez a lap nem jelenik meg, ha úgy állította be ezt a csomagot, hogy a **Terv beállítása** lapon egy másik csomagból származó csomagokat használjon fel újra.
@@ -459,7 +460,7 @@ Nyilvános vagy privát portokat nyithat egy telepített virtuális gépen.
 
 #### <a name="vm-images"></a>Virtuálisgép-rendszerképek
 
-Adja meg a lemezverzióját és a SAS URI-t a virtuálisgép-lemezképekhez. Minden virtuálisgép-lemezhez legfeljebb 16 adatlemez t adhat hozzá. Tervenként csak egy új lemezkép-verziót adjon meg egy adott beküldésben. A kép közzététele után nem szerkesztheti, de törölheti. Egy verzió törlése megakadályozza, hogy a felhasználók a törölt verzió új példányát telepítsék.
+Adja meg a lemezverzióját és a SAS URI-t a virtuálisgép-lemezképekhez. Minden virtuálisgép-lemezhez legfeljebb 16 adatlemez t adhat hozzá. Tervenként csak egy új lemezkép-verziót adjon meg egy adott beküldésben. A kép közzététele után nem szerkesztheti, de törölheti. A verzió törlése megakadályozza, hogy az új és a meglévő felhasználók is telepítsék a törölt verzió új példányát.
 
 - **A lemezverzió** a lemezkép által biztosított verzió.
 - **SAS URI** az a hely, az Azure Storage, ahol az operációs rendszer virtuális merevlemez tárolta.

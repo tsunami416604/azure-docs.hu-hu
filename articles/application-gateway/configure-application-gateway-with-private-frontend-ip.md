@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198598"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312369"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Alkalmazásátjáró konfigurálása belső terheléselosztó (ILB) végponttal
 
 Az Azure Application Gateway konfigurálható egy internetre néző VIP vagy egy belső végpont, amely nincs kitéve az interneten. A belső végpont az előtér privát IP-címét használja, amely *belső terheléselosztó (ILB) végpontként*is ismert.
 
-Az átjáró konfigurálása előtér-privát IP-cím használatával hasznos az internetnek nem elérhető belső üzletági alkalmazások esetében. Ez is hasznos a szolgáltatások és a rétegek egy többrétegű alkalmazás, amely egy biztonsági határ, amely nem elérhető az interneten, de továbbra is szükség ciklikus multiplexelés terheléselosztás, munkamenet stickiness, vagy secure sockets layer (SSL) megszüntetése.
+Az átjáró konfigurálása előtér-privát IP-cím használatával hasznos az internetnek nem elérhető belső üzletági alkalmazások esetében. Ez olyan többrétegű alkalmazásokon belüli szolgáltatások és rétegek esetében is hasznos, amelyek olyan biztonsági határon vannak, amely nincs kitéve az internetnek, de továbbra is ciklikus multiplexeléses terheléselosztást, munkamenet-ragacsosságot vagy Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL) végződést igényelnek.
 
 Ez a cikk végigvezeti a lépéseket egy előtér-privát IP-címmel rendelkező alkalmazásátjáró konfigurálásához az Azure Portal használatával.
 

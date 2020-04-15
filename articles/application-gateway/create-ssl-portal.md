@@ -1,22 +1,22 @@
 ---
-title: 'Oktatóanyag: SSL-végződés konfigurálása a portálon – Azure Application Gateway'
-description: Ebben az oktatóanyagban megtudhatja, hogyan konfigurálhat egy alkalmazásátjárót, és hogyan adhat hozzá tanúsítványt az SSL-megszüntetéshez az Azure Portal használatával.
+title: 'Oktatóanyag: A TLS-végződtetés konfigurálása a portálon – Azure Application Gateway'
+description: Ebben az oktatóanyagban megtudhatja, hogyan konfigurálhat egy alkalmazásátjárót, és adhat hozzá tanúsítványt a TLS-megszüntetéshez az Azure Portalhasználatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74012308"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312378"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Oktatóanyag: Alkalmazásátjáró konfigurálása SSL-végződtetéssel az Azure Portal használatával
+# <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Oktatóanyag: Alkalmazásátjáró konfigurálása TLS-végződtetéssel az Azure Portal használatával
 
-Az Azure Portal segítségével konfigurálhat egy [alkalmazásátjárót](overview.md) egy SSL-végződési tanúsítvánnyal, amely virtuális gépeket használ a háttérkiszolgálókhoz.
+Az Azure Portal segítségével konfigurálhat egy [alkalmazásátjárót](overview.md) egy TLS-végződési tanúsítvánnyal, amely virtuális gépeket használ a háttérkiszolgálókhoz.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -265,4 +265,4 @@ Ebben a példában csak az Azure sikeres létrehozásához telepítse az IIS-t a
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ az Application Gateway SSL-támogatásról](ssl-overview.md)
+> [További információ az Application Gateway TLS támogatásáról](ssl-overview.md)

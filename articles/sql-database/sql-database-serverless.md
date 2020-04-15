@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 4/3/2020
-ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657066"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310127"
 ---
 # <a name="azure-sql-database-serverless"></a>Az Azure SQL Database kiszolgáló nélküli
 
@@ -138,6 +138,8 @@ Az automatikus újraszövegezés akkor aktiválódik, ha az alábbi feltételek 
 |SQL-adatok szinkronizálása|Konfigurálható ütemezés szerint futó vagy manuálisan végrehajtott hub- és tagadatbázisok közötti szinkronizálás|
 |Adatbázis bizonyos metaadatainak módosítása|Új adatbáziscímkék hozzáadása.<br>Max virtuális magok, min virtuális magok vagy automatikus szüneteltetés módosítása.|
 |SQL Server Management Studio (SSMS)|A 18.1-nél korábbi SSMS-verziók használata és a kiszolgáló bármely adatbázisának új lekérdezési ablakának megnyitása minden automatikusan szüneteltetett adatbázist folytat ugyanazon a kiszolgálón. Ez a jelenség nem fordul elő, ha az SSMS 18.1-es vagy újabb verzióját használja.|
+
+A fent felsorolt műveletek bármelyikét végző figyelés, felügyelet vagy más megoldások automatikus folytatást eredményeznek.
 
 Az automatikus újratelepítés egyes szolgáltatásfrissítések telepítése során is aktiválódik, amelyek megkövetelik, hogy az adatbázis online állapotban legyen.
 

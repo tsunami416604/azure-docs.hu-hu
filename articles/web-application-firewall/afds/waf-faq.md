@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2019
 ms.author: victorh
-ms.openlocfilehash: c40210f3a6f0fb10be1f20deef87b2acfa076a4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fefbb038cec0c061f1fd191a77164880372555a0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460636"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314322"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Gyakori kérdések az Azure Web Application Firewall szolgáltatással kapcsolatban az Azure Bejárati ajtó szolgáltatáson
 
@@ -31,7 +31,7 @@ Az Azure Front Door egy jól méretezhető, globálisan terjeszthető alkalmazá
 
 ## <a name="does-azure-waf-support-https"></a>Támogatja az Azure WAF a HTTPS protokollt?
 
-Bejárati ajtó kínál SSL kiszervezés. A WAF natívmódon integrálva van a Bejárati ajtóval, és a visszafejtés után megvizsgálhatja a kérelmeket.
+Bejárati ajtó kínál TLS kiszervezés. A WAF natívmódon integrálva van a Bejárati ajtóval, és a visszafejtés után megvizsgálhatja a kérelmeket.
 
 ## <a name="does-azure-waf-support-ipv6"></a>Támogatja az Azure WAF az IPv6 protokollt?
 

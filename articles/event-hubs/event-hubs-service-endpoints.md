@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: 6de51c23bd6358a6f54fe3baf9e9b256047d4ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abd7940551f7a8182364475b0cf50b60afb5e1b7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064894"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313795"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtuális hálózati szolgáltatásvégpontok használata az Azure Event Hubs szolgáltatással
 
@@ -25,6 +25,22 @@ Az Event Hubs és a [Virtuális hálózat szolgáltatásvégpontok][vnet-sep] in
 Miután úgy konfigurálták, hogy legalább egy virtuális hálózati alhálózati szolgáltatás végponthoz kötődjön, a megfelelő Event Hubs névtér már nem fogadja el a forgalmat bárhonnan, csak a virtuális hálózatok engedélyezett alhálózatai. A virtuális hálózati perspektíva, az Event Hubs névtér és a szolgáltatás végpontja konfigurálja egy elszigetelt hálózati alagút a virtuális hálózati alhálózat az üzenetküldő szolgáltatás. 
 
 Az eredmény egy privát és elkülönített kapcsolat az alhálózathoz és a megfelelő Event Hubs névtérhez kötött munkaterhelések között, annak ellenére, hogy az üzenetküldő szolgáltatás végpontjának megfigyelhető hálózati címe nyilvános IP-tartományban van. Ez alól a viselkedés alól kivétel van. A szolgáltatásvégpont engedélyezése alapértelmezés szerint engedélyezi `denyall` a virtuális hálózathoz társított [IP-tűzfalszabályát.](event-hubs-ip-filtering.md) Adott IP-címeket adhat hozzá az IP-tűzfalhoz, hogy engedélyezze a hozzáférést az Event Hub nyilvános végpontjához. 
+
+>[!WARNING]
+> Virtuális hálózatok integrációja megakadályozhatja, hogy más Azure-szolgáltatások együttműködjenek az Event Hubs.
+>
+> A megbízható Microsoft-szolgáltatások nem támogatottak a virtuális hálózatok megvalósításakor.
+>
+> A virtuális hálózatokkal nem működik gyakori Azure-forgatókönyvek (vegye figyelembe, hogy a lista **nem** teljes) -
+> - Azure Stream Analytics
+> - Integráció az Azure Event Griddel
+> - Az Azure IoT Hub-útvonalak
+> - Azure IoT eszközkezelő
+>
+> A következő Microsoft-szolgáltatásoknak virtuális hálózaton kell lenniük
+> - Azure Web Apps
+> - Azure Functions
+
 
 > [!IMPORTANT]
 > A virtuális hálózatokat az Event Hubs **szabványos** és **dedikált** szintjei támogatják. Nem támogatott az **alapszinten.**
@@ -35,7 +51,7 @@ A szűk és széttagolt biztonságot igénylő megoldások, amelyeken a virtuál
 
 A rekeszek közötti bármely közvetlen IP-útvonal, beleértve a TCP/IP-n keresztül https-t hordozókat is, magában hordozza a biztonsági rések kihasználásának kockázatát a hálózati rétegből felfelé. Az üzenetküldő szolgáltatások szigetelt kommunikációs útvonalakat biztosítanak, ahol az üzenetek et még a felek közötti átmenet során is lemezre írják. Két különböző virtuális hálózat munkaterhelései, amelyek ugyanahhoz az Event Hubs-példányhoz vannak kötve, hatékonyan és megbízhatóan kommunikálhatnak az üzeneteken keresztül, miközben a megfelelő hálózati elkülönítési határ integritása megmarad.
  
-Ez azt jelenti, hogy a biztonsági szempontból érzékeny felhőalapú megoldásai nem csak az Azure iparágvezető megbízható és skálázható aszinkron üzenetkezelési képességeihez férnek hozzá, hanem mostantól az üzenetküldés segítségével kommunikációs útvonalakat hozhatnak létre a biztonságos megoldási rekeszek között, amelyek eredendően biztonságosabbak, mint bármely peer-to-peer kommunikációs mód, beleértve a HTTPS-t és más TLS-vel védett szoftvercsatorna protokollokat.
+Ez azt jelenti, hogy a biztonsági szempontból érzékeny felhőalapú megoldásai nem csak az Azure iparágvezető megbízható és skálázható aszinkron üzenetkezelési képességeihez férnek hozzá, hanem mostantól az üzenetküldés segítségével kommunikációs útvonalakat hozhatnak létre a biztonságos megoldási rekeszek között, amelyek természetüknél fogva biztonságosabbak, mint bármely egyenrangú kommunikációs mód, beleértve a HTTPS-t és más TLS-védelemmel rendelkező szoftvercsatorna-protokollokat.
 
 ## <a name="bind-event-hubs-to-virtual-networks"></a>Eseményközpontok kötése virtuális hálózatokhoz
 

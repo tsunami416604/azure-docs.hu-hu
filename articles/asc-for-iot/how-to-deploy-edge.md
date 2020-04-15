@@ -1,5 +1,5 @@
 ---
-title: Az Azure Security Center telepítése az IoT Edge modulhoz| Microsoft dokumentumok
+title: Az IoT Edge biztonsági modul telepítése
 description: Ismerje meg, hogyan telepíthet egy Azure Security Center for IoT biztonsági ügynök ioT Edge.Learn about how to deploy an Azure Security Center for IoT security agent on IoT Edge.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 3aee30e8ad82f9657c3bc9e97a7657a1e8c7989d
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548912"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311277"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése az IoT Edge-eszközön
-
 
 **Az Azure Security Center for IoT** modul átfogó biztonsági megoldást nyújt az IoT Edge-eszközökhöz.
 A biztonsági modul összegyűjti, összesíti és elemzi az operációs rendszer és a tárolórendszer nyers biztonsági adatait, és végrehajtható biztonsági javaslatokat és riasztásokat elemez.
@@ -42,14 +41,13 @@ Az alábbi lépésekkel üzembe helyezheti az Azure Security Center for IoT bizt
 1. Az Azure Security Center for IoT Edge modul megköveteli, hogy az [AuditD keretrendszer](https://linux.die.net/man/8/auditd) telepítve van az IoT Edge-eszközön.
 
     - Telepítse a keretrendszert a következő parancs futtatásával az IoT Edge-eszközön:
-   
+
     `sudo apt-get install auditd audispd-plugins`
 
-    - Ellenőrizze, hogy a Naplózás aktív-e a következő parancs futtatásával: 
-   
+    - Ellenőrizze, hogy a Naplózás aktív-e a következő parancs futtatásával:
+
     `sudo systemctl status auditd`<br>
-    - A várt válasz:`active (running)` 
-        
+    - A várt válasz:`active (running)`
 
 ### <a name="deployment-using-azure-portal"></a>Üzembe helyezés az Azure Portal használatával
 
@@ -59,14 +57,14 @@ Az alábbi lépésekkel üzembe helyezheti az Azure Security Center for IoT bizt
 
    ![Válassza ki az Azure Security Center for IoT-t](media/howto/edge-onboarding-8.png)
 
-1. A központi telepítés konfigurálásához kattintson a **Létrehozás** gombra. 
+1. A központi telepítés konfigurálásához kattintson a **Létrehozás** gombra.
 
-1. Válassza ki az IoT Hub **Azure-előfizetését,** majd válassza ki az **IoT Hubot.**<br>Válassza **a Telepítés eszközre** lehetőséget egyetlen eszköz célzásához, vagy válassza **a Telepítés skálán** lehetőséget több eszköz célzásához, majd kattintson a **Létrehozás gombra.** A nagy méretű üzembe helyezésről további információt [a Telepítés című témakörben talál.](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor) 
+1. Válassza ki az IoT Hub **Azure-előfizetését,** majd válassza ki az **IoT Hubot.**<br>Válassza **a Telepítés eszközre** lehetőséget egyetlen eszköz célzásához, vagy válassza **a Telepítés skálán** lehetőséget több eszköz célzásához, majd kattintson a **Létrehozás gombra.** A nagy méretű üzembe helyezésről további információt [a Telepítés című témakörben talál.](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor)
 
-    >[!Note] 
-    >Ha a **Telepítés méretarányosan**lehetőséget választotta, adja hozzá az eszköz nevét és adatait, mielőtt folytatná a **Modulok hozzáadása** lapot az alábbi utasításokban.     
+    >[!Note]
+    >Ha a **Telepítés méretarányosan**lehetőséget választotta, adja hozzá az eszköz nevét és adatait, mielőtt folytatná a **Modulok hozzáadása** lapot az alábbi utasításokban.
 
-Az IoT Edge üzembe helyezésének befejezéséhez hajtsa végre az IoT Edge-et az IoT-alapú IoT-központszámára. 
+Az IoT Edge üzembe helyezésének befejezéséhez hajtsa végre az IoT Edge-et az IoT-alapú IoT-központszámára.
 
 #### <a name="step-1-modules"></a>1. lépés: Modulok
 
@@ -90,11 +88,11 @@ Az IoT Edge üzembe helyezésének befejezéséhez hajtsa végre az IoT Edge-et 
                 "/:/host"
             ]
         }
-    }    
+    }
     ```
-    
+
 1. A **Modul ikerbeállítások** lapján adja hozzá a következő konfigurációt:
-      
+
     ``` json
       "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
     ```
@@ -105,24 +103,24 @@ Az IoT Edge üzembe helyezésének befejezéséhez hajtsa végre az IoT Edge-et 
 
 1. Válassza a **Futásidejű beállítások lehetőséget.**
 1. Az **Edge Hub csoportban**módosítsa a **képet** **mcr.microsoft.com/azureiotedge-hub:1.0.8.3.**
-1. A **Beállítások létrehozása ellenőrzése** a következő konfigurációra van beállítva: 
-         
+1. A **Beállítások létrehozása ellenőrzése** a következő konfigurációra van beállítva:
+
     ``` json
-    { 
-       "HostConfig":{ 
-          "PortBindings":{ 
-             "8883/tcp":[ 
-                { 
+    {
+       "HostConfig":{
+          "PortBindings":{
+             "8883/tcp":[
+                {
                    "HostPort":"8883"
                 }
              ],
-             "443/tcp":[ 
-                { 
+             "443/tcp":[
+                {
                    "HostPort":"443"
                 }
              ],
-             "5671/tcp":[ 
-                { 
+             "5671/tcp":[
+                {
                    "HostPort":"5671"
                 }
              ]
@@ -130,26 +128,26 @@ Az IoT Edge üzembe helyezésének befejezéséhez hajtsa végre az IoT Edge-et 
        }
     }
     ```
-    
-1. Kattintson a **Mentés** gombra.
-   
-1. Válassza a **Tovább lehetőséget.**
 
-#### <a name="step-3-specify-routes"></a>3. lépés: Útvonalak megadása 
+1. Kattintson a **Mentés** gombra.
+
+1. Kattintson a **Tovább** gombra.
+
+#### <a name="step-3-specify-routes"></a>3. lépés: Útvonalak megadása
 
 1. Az **Útvonalak megadása** lapon győződjön meg arról, hogy rendelkezik egy útvonallal (explicit vagy implicit), amely továbbítja az üzeneteket az **azureiotsecurity** modulból **$upstream** a következő példák szerint. Csak akkor, ha az útvonal a helyén van, válassza a **Tovább**gombot.
 
    Példa útvonalak:
 
-    ~~~Default implicit route
-    "route": "FROM /messages/* INTO $upstream" 
-    ~~~
+    ```Default implicit route
+    "route": "FROM /messages/* INTO $upstream"
+    ```
 
-    ~~~Explicit route
+    ```Explicit route
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-    ~~~
+    ```
 
-1. Válassza a **Tovább lehetőséget.**
+1. Kattintson a **Tovább** gombra.
 
 #### <a name="step-4-review-deployment"></a>4. lépés: A telepítés áttekintése
 
@@ -162,29 +160,29 @@ Ha problémát tapasztal, a tárolónaplók a legjobb módja az IoT Edge biztons
 ### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>Ellenőrizze, hogy a szükséges tárolók telepítve vannak-e és működnek-e a várt módon
 
 1. Futtassa a következő parancsot az IoT Edge-eszközön:
-    
+
     `sudo docker ps`
-   
+
 1. Ellenőrizze, hogy a következő tárolók futnak-e:
-   
+
    | Név | KÉP |
    | --- | --- |
    | azureiotsecurity (azureiotsecurity) | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0.1 |
-   
+
    Ha a minimálisan szükséges tárolók nincsenek jelen, ellenőrizze, hogy az IoT Edge-telepítési jegyzék fájlja igazodik-e az ajánlott beállításokhoz. További információ: [Deploy IoT Edge module.](#deployment-using-azure-portal)
 
 ### <a name="inspect-the-module-logs-for-errors"></a>A modulnaplók ban hibák at keresnek
-   
+
 1. Futtassa a következő parancsot az IoT Edge-eszközön:
 
    `sudo docker logs azureiotsecurity`
-   
+
 1. További részletes naplók, adja hozzá a következő környezeti változó az **azureiotsecurity** modul központi telepítése: `logLevel=Debug`.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a konfigurációs beállításokról, folytassa a modulkonfiguráció útmutatójával. 
+Ha többet szeretne megtudni a konfigurációs beállításokról, folytassa a modulkonfiguráció útmutatójával.
 > [!div class="nextstepaction"]
 > [Modulkonfiguráció útmutatója](./how-to-agent-configuration.md)

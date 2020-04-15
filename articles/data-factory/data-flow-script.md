@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 92421125ecb5f4336922c6e6b4508fcdaf92be6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 251507c5740af69bd0818391dd2e8f857338b6cf
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246398"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313911"
 ---
 # <a name="data-flow-script-dfs"></a>Adatfolyam-parancsfájl (DFS)
 
@@ -139,6 +139,11 @@ derive1 sink(allowSchemaDrift: true,
 ```
 
 ## <a name="script-snippets"></a>Parancsfájl-kódrészletek
+
+A parancsfájlkódrészletek az adatfolyam-parancsfájl megosztható kódjai, amelyek segítségével megoszthatja az adatfolyamokat. Ez az alábbi videó aparancsfájlok kódrészletek használatáról és az adatfolyam-parancsfájl használatával másolja és illessze be a parancsfájl egyes részeit az adatfolyam-grafikonok mögé:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tA9b]
+
 
 ### <a name="aggregated-summary-stats"></a>Összesített összefoglaló statisztika
 Adjon hozzá egy összesített átalakítást az "SummaryStats" nevű adatfolyamhoz, majd illessze be az alábbi kódot a parancsfájl összesített függvényéhez, és cserélje le a meglévő SummaryStats-ot. Ez általános mintát biztosít az adatprofil-összefoglaló statisztikákhoz.

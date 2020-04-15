@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 49b41715d95a5f210e6e70faf09aa016d1478728
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75e5a28f7ec56750432e74ee48ba68491a5e481
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158755"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310284"
 ---
 # <a name="configure-the-application-dashboard"></a>Az alkalmazás-irányítópult konfigurálása
 
@@ -74,7 +74,7 @@ Az alábbi táblázat összefoglalja a csempék használatát az Azure IoT Centr
 | Tartalom | Alkalmazás- és eszközkészlet-irányítópultok |A markdown által támogatott csempék olyan kattintható csempék, amelyek címsor- és leírásszöveget jelenítenek meg. Ezt a csempét hivatkozáscsempeként is használhatja, hogy a felhasználó az alkalmazáshoz kapcsolódó URL-címre navigálhasson.|
 | Kép | Alkalmazás- és eszközkészlet-irányítópultok |A képcsempék egyéni képet jelenítenek meg, és kattinthatók. Képcsempe használatával grafikákat adhat az irányítópulthoz, és lehetővé teszi, hogy a felhasználó az alkalmazásnak megfelelő URL-címre navigáljon.|
 | Címke | Alkalmazás-irányítópultok |A címkecsempék egyéni szöveget jelenítenek meg az irányítópulton. Megadhatja a szöveg méretét. Címkecsempével releváns információkat adhat hozzá az irányítópulthoz, például leírásokat, elérhetőségeket vagy súgót.|
-| Térkép | Alkalmazás- és eszközkészlet-irányítópultok |A térképcsempék az eszköz helyét és állapotát jelenítik meg a térképen. Megjelenítheti például, hogy hol van az eszköz, és hogy be van-e kapcsolva a ventilátora.|
+| Térkép | Alkalmazás- és eszköz-irányítópultok |A térképcsempék az eszköz helyét jelenítik meg a térképen. Az eszköz helyelőzményeinek legfeljebb 100 pontját is megjelenítheti. Például megjelenítheti a mintavételezett útvonalat abból, ahol egy eszköz az elmúlt héten volt.|
 | Vonaldiagram | Alkalmazás- és eszköz-irányítópultok |A vonaldiagram-csempék egy adott időszakra vonatkozó összesítő mérési diagramot jelenítenek meg az eszközre vonatkozóan. Megjeleníthetünk például egy vonaldiagramot, amely egy eszköz átlagos hőmérsékletét és nyomását mutatja az elmúlt órában.|
 | Sávdiagram | Alkalmazás- és eszköz-irányítópultok |A sávdiagram-csempék egy adott időszakra vonatkozó összesítő mérések diagramját jelenítik meg. Megjeleníthetünk például egy sávdiagramot, amely egy eszköz átlagos hőmérsékletét és nyomását mutatja az elmúlt órában.|
 | Kördiagram | Alkalmazás- és eszközkészlet-irányítópultok |A kördiagram csempéi egy adott időszakra vonatkozó összesítő mérések diagramját jelenítik meg.|

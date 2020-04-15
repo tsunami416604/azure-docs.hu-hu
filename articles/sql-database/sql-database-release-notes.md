@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/14/2020
 ms.author: sstein
-ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 7d922aa0727ad28054d050a29039951d3f04985f
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011446"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383373"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database kiadási megjegyzések
 
@@ -49,6 +49,7 @@ Ez a cikk az SQL Database jelenleg nyilvános előzetes verzióban elérhető sz
 | <a href="https://aka.ms/managed-instance-aadlogins">Példányszintű Azure AD-kiszolgálói egyszerű (bejelentkezési adatok)</a> | Kiszolgálószintű bejelentkezések létrehozása <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső szolgáltatóból származó bejelentkezés létrehozása</a> utasítással. |
 | [Tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) | Replikálja a táblákból származó módosításokat más, felügyelt példányokon, egyetlen adatbázisokon vagy SQL Server-példányokon elhelyezett adatbázisokba, vagy frissítse a táblákat, ha egyes sorok más felügyelt példányokban vagy SQL Server-példányokban módosulnak. További információt a [Replikáció konfigurálása Azure SQL Database felügyelt példányadatbázisában](replication-with-sql-database-managed-instance.md)című témakörben talál. |
 | Fenyegetések észlelése |További információt a [Fenyegetésészlelés konfigurálása az Azure SQL Database felügyelt példányában című témakörben talál.](sql-database-managed-instance-threat-detection.md)|
+| Biztonsági mentés hosszú távú megőrzése | További információt a [Hosszú távú biztonsági másolatok megőrzésének konfigurálása az Azure SQL Database felügyelt példányában című témakörben talál.](sql-database-managed-instance-long-term-backup-retention-configure.md) | 
 
 ---
 
@@ -167,7 +168,7 @@ Az adatbázisközi service broker párbeszédek a szolgáltatásréteg-művelet 
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Az Azure AD bejelentkezési típusok beszemélyesítése nem támogatott
 
 Az AAD-rendszer-biztonsági tagok használatával `EXECUTE AS USER` vagy `EXECUTE AS LOGIN` a következő abokkal történő megszemélyesítés nem támogatott:
--   AliasaD-felhasználók. Ebben az esetben a `15517`következő hibaüzenet jelenik meg.
+-    AliasaD-felhasználók. Ebben az esetben a `15517`következő hibaüzenet jelenik meg.
 - AAD bejelentkezések és a felhasználók alapján AAD alkalmazások vagy egyszerű szolgáltatás. Ebben az esetben `15517` a következő `15406`hibákjelennek meg, és a .
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querya paraméter nem támogatott a sp_send_db_mail

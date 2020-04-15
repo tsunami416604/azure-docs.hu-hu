@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 6abb4f632535f1bda7e9f337f111ba372a624f2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239622"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383043"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes szolgáltatás használata az Apache Kafkával a HDInsighton
 
@@ -163,7 +163,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes-szolgáltatás a társviszony-lét
     * `var topic = 'mytopic'`: `mytopic` Cserélje ki az alkalmazás által használt Kafka-témakör nevét.
     * `var brokerHost = '176.16.0.13:9092`: `176.16.0.13` Cserélje le a fürt egyik brókerállomásának belső IP-címét.
 
-        A közvetítői állomások (workernodes) belső IP-címének megkereséséhez tekintse meg az [Apache Ambari REST API-dokumentumot.](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) Válassza ki az onkóbejegyzés ek valamelyikének IP-címét, amelynek a tartománynév kezdődik. `wn`
+        A közvetítői állomások (workernodes) belső IP-címének megkereséséhez tekintse meg az [Apache Ambari REST API-dokumentumot.](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-internal-ip-address-of-cluster-nodes) Válassza ki az onkóbejegyzés ek valamelyikének IP-címét, amelynek a tartománynév kezdődik. `wn`
 
 4. A címtár parancssorából telepítse a `src` függőségeket, és a Docker segítségével hozzon létre egy lemezképet a telepítéshez:
 

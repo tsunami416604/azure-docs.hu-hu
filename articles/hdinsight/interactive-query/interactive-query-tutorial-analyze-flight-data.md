@@ -1,23 +1,23 @@
 ---
 title: 'Oktatóanyag: ETL-műveletek interaktív lekérdezéssel – Azure HDInsight'
-description: Oktatóanyag – Ismerje meg, hogyan nyerhetki ki adatokat egy nyers CSV-adatkészletből, hogyan alakíthatja át azokat a HDInsight interaktív lekérdezése használatával, majd az átalakított adatokat az Azure SQL-adatbázisba az Apache Sqoop használatával.
+description: Oktatóanyag – Ismerje meg, hogyan nyerhetki ki adatokat egy nyers CSV-adatkészletből. Alakítsa át a HDInsight interaktív lekérdezésével. Ezután töltse be az átalakított adatokat az Azure SQL-adatbázisba az Apache Sqoop használatával.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 07/02/2019
-ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/02/2019
+ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494162"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313739"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure HDInsight interaktív lekérdezésével
 
-Ebben az oktatóanyagban a nyilvánosan elérhető repülési adatok nyers CSV-adatfájlját, importálja a HDInsight-fürttárolóba, majd átalakítja az adatokat az Azure HDInsight interaktív lekérdezése használatával. Az adatok átalakítása után az adatokat az Apache [Sqoop](https://sqoop.apache.org/)használatával töltheti be egy Azure SQL-adatbázisba.
+Ebben az oktatóanyagban a nyilvánosan elérhető repülési adatok nyers CSV-adatfájlját tölti le. Importálja a HDInsight fürttárolóba, majd alakítsa át az adatokat az Azure HDInsight interaktív lekérdezése segítségével. Az adatok átalakítása után az adatokat az Apache [Sqoop](https://sqoop.apache.org/)használatával töltheti be egy Azure SQL-adatbázisba.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -46,7 +46,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
    | --- | --- |
    | Filter Year (Szűrési év) |2019 |
    | Filter Period (Szűrési időszak) |January |
-   | Mezők |Év, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Mezők |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
 3. Válassza a **Download** (Letöltés) lehetőséget. Egy .zip fájlt kap, amely a kiválasztott adatmezőket tartalmazza.
 
@@ -60,7 +60,7 @@ Számos különböző módon tölthet fel adatokat egy HDInsight-fürthöz tarto
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Ha a folytatáshoz igen vagy nem megadására kéri a parancsot, írja be az igen parancsot a parancssorba, és nyomja meg az Enter billentyűt. A szöveg gépelés közben nem látható az ablakban.
+    Írja be az igen vagy a nem értéket a folytatáshoz, ha a rendszer kéri. A szöveg gépelés közben nem látható az ablakban.
 
 2. Ha a feltöltés befejeződött, csatlakozzon a fürthöz az SSH-val. Az alábbi parancs szerkesztése a HDInsight-fürt nevének cseréjével. `CLUSTERNAME` Ezután írja be a következő parancsot:
 
@@ -283,13 +283,13 @@ Az előző szakaszok során átmásolta az átalakított adatokat a következő 
     GO
     ```
 
-    A táblában látnia kell az adatok listáját. A tábla a városok nevét és az egyes városokhoz tartozó átlagos késések idejét tartalmazza. 
+    A táblában látnia kell az adatok listáját. A tábla a városok nevét és az egyes városokhoz tartozó átlagos késések idejét tartalmazza.
 
     A tsql eszközből való kilépéshez írja be az `exit` parancsot.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
+Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight segítségével az adatok az Azure Storage-ban tárolódnak, így biztonságosan törölheti a fürtöt, ha nincs használatban. A HDInsight-fürtért is díjat kell fizetnie, még akkor is, ha nincs használatban. Mivel a fürt díjai sokszor több, mint a tárolási díjak, célszerű törölni a fürtöket, ha nincsenek használatban.
 
 Fürt törléséről a [HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával című](../hdinsight-delete-cluster.md)témakörben jelenik meg.
 
@@ -298,4 +298,4 @@ Fürt törléséről a [HDInsight-fürt törlése a böngésző, a PowerShell va
 Ebben az oktatóanyagban egy nyers CSV-adatfájlt vett, importálta egy HDInsight-fürttárolóba, majd átalakította az adatokat az Azure HDInsight interaktív lekérdezése használatával.  Továbbkell lépnie a következő oktatóanyaghoz, és ismerje meg az Apache Hive-raktárösszekötőt.
 
 > [!div class="nextstepaction"]
->[Integrálja az Apache Sparkot és az Apache Hive-t a Hive Raktár összekötővel](./apache-hive-warehouse-connector.md)
+> [Integrálja az Apache Sparkot és az Apache Hive-t a Hive Raktár összekötővel](./apache-hive-warehouse-connector.md)

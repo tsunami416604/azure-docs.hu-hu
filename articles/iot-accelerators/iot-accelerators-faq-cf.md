@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: c84452ff71fa34a65b2e56ec753b68bf551c7e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73826278"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313588"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések a Csatlakoztatott gyári megoldásgyorsítóval kapcsolatban
 
@@ -76,7 +76,7 @@ Ha üzembe helyezte a megoldást www.azureiotsolutions.com, nem tud bejelentkezn
 1. Annak ellenőrzéséhez, hogy mely `docker ps`tárolók aktívak, futtassa a következőket: .
 1. Az összes szimulációs tároló `./stopsimulation`leállításához futtassa a következőket: .
 1. Az összes szimulációs tároló indítása:
-    * Exportálja a **IOTHUB_CONNECTIONSTRING**nevű rendszerhéj-változót. Használja az **IotHubOwnerConnectionString** beállítás értékét `<name of your deployment>.config.user` a fájlban. Példa:
+    * Exportálja a **IOTHUB_CONNECTIONSTRING**nevű rendszerhéj-változót. Használja az **IotHubOwnerConnectionString** beállítás értékét `<name of your deployment>.config.user` a fájlban. Például:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -125,7 +125,7 @@ Másik lehetőségként jelentkezzen be a virtuális gépre SSH-n keresztül, é
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hogyan ellenőrizhetem, hogy a szimuláció adatokat küld-e a felhőbe?
 
-A [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy az [Azure IoT CLI-bővítmény monitor-események](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) parancs, megvizsgálhatja az adatokat küldött Az IoT Hub bizonyos eszközökről. Ezeknek az eszközöknek a használatához ismernie kell az IoT hub kapcsolati karakterláncát a központi telepítésben. Lásd: [Hogyan találhatom meg a megoldásom által használt IoT hub kapcsolati karakterláncát?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+A [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy az [Azure IoT CLI-bővítmény monitor-események](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) parancs, megvizsgálhatja az adatokat küldött Az IoT Hub bizonyos eszközökről. Ezeknek az eszközöknek a használatához ismernie kell az IoT hub kapcsolati karakterláncát a központi telepítésben. Lásd: [Hogyan találhatom meg a megoldásom által használt IoT hub kapcsolati karakterláncát?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Vizsgálja meg az egyik közzétevő eszköz által küldött adatokat:
 

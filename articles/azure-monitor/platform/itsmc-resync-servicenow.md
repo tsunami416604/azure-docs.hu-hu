@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 9d32b66b7e3ab27012ee671ba8d70735dce73884
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274275"
+ms.locfileid: "81313669"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>A ServiceNow szinkronizálási problémáinak manuális javítása
 
-Az Azure Monitor külső informatikai szolgáltatáskezelő (ITSM) szolgáltatókhoz tud csatlakozni. ServiceNow egyike azoknak a szolgáltatóknak. 
+Az Azure Monitor külső informatikai szolgáltatáskezelő (ITSM) szolgáltatókhoz tud csatlakozni. ServiceNow egyike azoknak a szolgáltatóknak.
 
 Biztonsági okokból előfordulhat, hogy frissítenie kell a ServiceNow-kapcsolathoz használt hitelesítési jogkivonatot.
-A következő szinkronizálási folyamat segítségével aktiválja újra a kapcsolatot, és frissítse a jogkivonatot: 
+A következő szinkronizálási folyamat segítségével aktiválja újra a kapcsolatot, és frissítse a jogkivonatot:
 
 
 1. Keresse meg a megoldást a felső keresési szalagcímben, majd válassza ki a megfelelő megoldásokat

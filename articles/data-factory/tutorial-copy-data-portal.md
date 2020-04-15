@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 0e4214466a2650df833cebd704577114b8818690
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9e81efd826c78bfa1af5624272ae9b190cb54348
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259661"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313873"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Azure Data Factory segítségével
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adat-előállító ban lévő folyamat adatokat másol az Azure Blob storage-ból egy Azure SQL-adatbázisba. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
@@ -199,11 +199,11 @@ Ebben a lépésben manuálisan fogja aktiválni az előző lépésben közzétet
 
 1. Lépjen a bal oldali **Figyelés** lapra. Itt láthat egy manuális eseményindító által aktivált folyamatfuttatást. A **FOLYAMAT NEVE** oszlopban lévő hivatkozások segítségével megtekintheti a tevékenység részleteit, és újra futtathatja a folyamatot.
 
-    ![Folyamatfuttatások monitorozása](./media/tutorial-copy-data-portal/monitor-pipeline.png)
+    [![Folyamatfuttatások monitorozása](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
 
 1. A folyamatfutáshoz társított tevékenységfuttatások megtekintéséhez válassza a **CopyPipeline** kapcsolatot a **FOLYAMAT NEVE** oszlopban. Ebben a példában csak egy tevékenység van, így csak egy bejegyzés jelenik meg a listában. A másolási művelettel kapcsolatos részletekért válassza a **Részletek** hivatkozást (szemüveg ikon) a **ACTIVITY NAME** oszlopban. Válassza le **az Összes folyamat fut** a tetején, hogy visszatérjen a folyamat futtatása nézetben. A nézet frissítéséhez válassza a **Frissítés** parancsot.
 
-    ![Tevékenységfuttatások monitorozása](./media/tutorial-copy-data-portal/view-activity-runs.png)
+    [![Tevékenységfuttatások monitorozása](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
 1. Ellenőrizze, hogy hozzá lett-e adva két további sor az SQL Database **emp** táblájához.
 
@@ -243,7 +243,7 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
 1. Lépjen a bal oldali **Figyelés** lapra az aktivált folyamatfuttatások megtekintéséhez.
 
-    ![Aktivált folyamatfuttatások](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)   
+    [![Aktivált folyamatfuttatások](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
 
 1. Ha a **folyamatfuttatások** nézetről az **Eseményindító futtatások** nézetre szeretne váltani, válassza az **Eseményindítófuttatások** lehetőséget az ablak bal oldalán.
 

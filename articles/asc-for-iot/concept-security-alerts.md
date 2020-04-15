@@ -1,5 +1,5 @@
 ---
-title: Biztonsági riasztási útmutató az Azure Security Center for IoT| Microsoft dokumentumok
+title: Beépített & egyéni riasztások listája
 description: Ismerje meg a biztonsági riasztásokat és az ajánlott szervizelést az Azure Security Center for IoT-funkciók és -szolgáltatások használatával.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 7a319baeba3d34f3d3056ce9b42f2e733b5a874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74a6adbd2415cfcf7d5d48cff01d189cfd8b73a5
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78296133"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311489"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center for IoT – biztonsági riasztások
 
@@ -32,11 +32,9 @@ Ebben a cikkben található a beépített riasztások listáját, amelyek az IoT
 A beépített riasztások mellett az Azure Security Center for IoT lehetővé teszi, hogy egyéni riasztásokat határozzon meg a várt IoT Hub és/vagy az eszköz viselkedése alapján.
 További részleteket a [testreszabható riasztások ban](concept-customizable-security-alerts.md)talál.
 
-
-
 ## <a name="built-in-alerts-for-iot-devices"></a>Beépített riasztások IoT-eszközökhöz
 
-| Név | Severity | Adatforrás | Leírás | Javasolt javítási lépések|                  
+| Név | Severity | Adatforrás | Leírás | Javasolt javítási lépések|
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Nagy** súlyosságú|  |  |  |
 |   Bináris parancssor   | Magasság | Ügynök | A rendszer a parancssorból hívt/végrehajtott LA Linux bináris t észlelte. Ez a folyamat lehet jogszerű tevékenység, vagy annak jelzése, hogy az eszköz biztonsága sérült.|   Tekintse át a parancsot a felhasználóval, aki futtatta, és ellenőrizze, hogy ez valami jogosan várhatóan fut az eszközön. Ha nem, terjesszék ki a riasztást az információbiztonsági csapathoz. |
@@ -52,7 +50,7 @@ További részleteket a [testreszabható riasztások ban](concept-customizable-s
 |  A fairware zsarolóprogramokhoz hasonló viselkedés észlelve  | Közepes | Ügynök       | A gazdaadatok elemzésével észlelt gyanús helyekre alkalmazott rm -rf parancsok végrehajtása. Mivel az rm -rf rekurzívan törli a fájlokat, általában csak különálló mappákban használatos. Ebben az esetben olyan helyen használják, amely nagy mennyiségű adatot távolíthat el. Fairware zsarolóprogramok ismert, hogy végre rm -rf parancsokat ebben a mappában. |Tekintse át a parancsot futtató felhasználóval, hogy az eszközön várhatóan látható jogszerű tevékenység volt. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.
 |  Az észlelt zsarolóprogramokhoz hasonló viselkedés  | Közepes | Ügynök       | Az ismert zsarolóprogramokhoz hasonló fájlok végrehajtása, amelyek megakadályozhatják a felhasználókhozzáférését a rendszerükhöz vagy a személyes fájljaikhoz, és váltságdíjat követelhetnek a hozzáférés visszaszerzéséhez.|Tekintse át a parancsot futtató felhasználóval, hogy ez olyan jogszerű tevékenység volt-e, amelyet az eszközön várhatóan látni fog. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.
 |   Crypto érme bányász konténer kép észlelt | Közepes                   | Ügynök       | Az ismert digitális pénzbányászati képek futtatását észlelő tároló. |  1. Ha ez a viselkedés nem szándékos, törölje a megfelelő tárolórendszerképet.<br> 2. Győződjön meg arról, hogy a Docker démon nem érhető el nem biztonságos TCP szoftvercsatornán keresztül.<br> 3. A riasztást az információbiztonsági csapathoz kell elterülni.|
-|  Crypto érme bányász kép  | Közepes| Ügynök       | Az észlelt digitális valutabányászattal általában összefüggő folyamat végrehajtása.| Ellenőrizze a parancsot futtató felhasználóval, hogy ez jogszerű tevékenység volt-e az eszközön. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.| 
+|  Crypto érme bányász kép  | Közepes| Ügynök       | Az észlelt digitális valutabányászattal általában összefüggő folyamat végrehajtása.| Ellenőrizze a parancsot futtató felhasználóval, hogy ez jogszerű tevékenység volt-e az eszközön. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.|
 |   A nohup parancs gyanús használatát észlelte | Közepes | Ügynök       | A nohup parancs gyanús használata az állomáson észlelt. A rosszindulatú szereplők gyakran futtatják a nohup parancsot egy ideiglenes könyvtárból, így a végrehajtható fájlok a háttérben futnak. Ha ezt a parancsot egy ideiglenes könyvtárban található fájlokon futtatja, az nem várható vagy nem szokásos. |Tekintse át a parancsot futtató felhasználóval, hogy ez olyan jogszerű tevékenység volt-e, amelyet az eszközön várhatóan látni fog. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.
 |   A useradd parancs gyanús használatát észlelte  | Közepes      | Ügynök       | Az eszközön észlelt useradd parancs gyanús használata. |Tekintse át a parancsot futtató felhasználóval, hogy ez olyan jogszerű tevékenység volt-e, amelyet az eszközön várhatóan látni fog. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.
 |  Kitett Docker démon a TCP-szoftvercsatornával  | Közepes | Ügynök | A gépnaplók azt jelzik, hogy a Docker démon (dockerd) tcp-szoftvercsatornát tesz elérhetővé. Alapértelmezés szerint a Docker-konfiguráció nem használ titkosítást vagy hitelesítést, ha a TCP-szoftvercsatorna engedélyezve van. Az alapértelmezett Docker-konfiguráció lehetővé teszi a teljes hozzáférést a Docker démonhoz, bárki számára, aki hozzáfér a megfelelő porthoz.|Tekintse át a parancsot futtató felhasználóval, hogy ez olyan jogszerű tevékenység volt-e, amelyet az eszközön várhatóan látni fog. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.
@@ -60,7 +58,7 @@ További részleteket a [testreszabható riasztások ban](concept-customizable-s
 |  Fájlletöltések egy ismert rosszindulatú forrásból   | Közepes  | Ügynök       |  Egy ismert kártevőforrásból származó fájl letöltése.|Tekintse át a parancsot futtató felhasználóval, hogy ez olyan jogszerű tevékenység volt-e, amelyet az eszközön várhatóan látni fog. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.
 |   htaccess fájlhozzáférés észlelve | Közepes                       | Ügynök       | A gazdagépadatok elemzése egy htaccess-fájl lehetséges manipulációját észlelte. A Htaccess egy hatékony konfigurációs fájl, amely lehetővé teszi, hogy több módosítást hajtson végre az Apache Web szoftvert futtató webkiszolgálón, beleértve az alapvető átirányítási funkciókat és a fejlettebb funkciókat, például az alapvető jelszavas védelmet. A rosszindulatú szereplők gyakran módosítják a htaccess-fájlokat a feltört gépeken, hogy perzisztenciát nyerjenek. |Ellenőrizze, hogy ez jogos-e várt tevékenység a gazdagépen. Ha nem, terjesszék ki a riasztást az információbiztonsági csapathoz.|
 |  Ismert támadó eszköz  | Közepes                                   | Ügynök       | A rendszer gyakran olyan eszközt észlelt, amely rosszindulatú felhasználókkal hozható kapcsolatba, akik valamilyen módon más gépeket támadnak meg. |Tekintse át a parancsot futtató felhasználóval, hogy ez olyan jogszerű tevékenység volt-e, amelyet az eszközön várhatóan látni fog. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.|
-|  IoT-ügynök megkísérelte, de nem sikerült elemezni a modul ikerkonfigurációját | Közepes  | Ügynök       | Az Azure Security Center for IoT biztonsági ügynök nem tudta elemezni a modul ikerkonfigurációját a konfigurációs objektum típuseltérései miatt|Ellenőrizze a modul ikerkonfigurációját az IoT-ügynök konfigurációs sémájával szemben, javítsa ki az összes eltérést. 
+|  IoT-ügynök megkísérelte, de nem sikerült elemezni a modul ikerkonfigurációját | Közepes  | Ügynök       | Az Azure Security Center for IoT biztonsági ügynök nem tudta elemezni a modul ikerkonfigurációját a konfigurációs objektum típuseltérései miatt|Ellenőrizze a modul ikerkonfigurációját az IoT-ügynök konfigurációs sémájával szemben, javítsa ki az összes eltérést.
 |  Helyi állomásfelderítés észlelve  | Közepes | Ügynök       | A rendszerint a gyakori Linux-robot felderítéshez társított parancs végrehajtása. |Tekintse át a gyanús parancssort, és ellenőrizze, hogy egy megbízható felhasználó hajtotta-e végre. Ha nem, terjesszék ki a riasztást az információbiztonsági csapathoz.
 |  A parancsfájlértelmező és a fájlkiterjesztés közötti eltérés  | Közepes | Ügynök       | Eltérés a parancsfájlértelmező és a bemenetként megadott parancsfájl kiterjesztése között. Ez a fajta eltérés általában a támadó parancsfájl-végrehajtásokkal van társítva. |Tekintse át a parancsot futtató felhasználóval, hogy ez olyan jogszerű tevékenység volt-e, amelyet az eszközön várhatóan látni fog. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.
 |  Lehetséges hátsó ajtó észlelve  | Közepes | Ügynök |Egy gyanús fájlt letöltött, majd futtatott egy gazdagépen az előfizetésben. Ez a tevékenységtípus általában egy hátsó ajtó telepítéséhez kapcsolódik. |Tekintse át a parancsot futtató felhasználóval, hogy ez olyan jogszerű tevékenység volt-e, amelyet az eszközön várhatóan látni fog. Ha nem, a riasztást az információbiztonsági csapathoz kell elterjessni.

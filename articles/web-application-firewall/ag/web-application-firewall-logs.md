@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 1b807908c9fb54ecf15de6d44a04760659196a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb1af86e04c0b4ba0b59398161fa111fd8065042
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75980969"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310054"
 ---
 # <a name="diagnostic-logs-for-azure-web-application-firewall"></a>Diagnosztikai naplók az Azure webalkalmazás tűzfalához
 
@@ -101,7 +101,7 @@ A hozzáférési napló csak akkor jön létre, ha az előző lépésekben rész
 |fogadott bájt     | A fogadott csomag mérete bájtban.        |
 |sentBytes| Az elküldött csomag mérete bájtban.|
 |időtaken| A kérelem feldolgozásához és válaszának elküldéséhez szükséges időtartam (ezredmásodpercben). Ezt a rendszer aHTTP-kérelem első bájtjának fogadása korától addig az időpontig számítja ki, amikor a válaszküldési művelet befejeződik. Fontos megjegyezni, hogy az Időtaken mező általában azt az időt tartalmazza, amikor a kérési és válaszcsomagok a hálózaton keresztül haladnak. |
-|sslEnabled| Azt jelzi, hogy a háttér-készletekkel való kommunikáció ssl-t használt-e. Az érvényes értékek be- és kivannak kapcsolva.|
+|sslEnabled| Azt jelzi, hogy a háttér-készletekkel való kommunikáció tls/SSL-t használt-e. Az érvényes értékek be- és kivannak kapcsolva.|
 |gazda| Az a állomásnév, amellyel a kérés t a háttérkiszolgálónak lett elküldve. Ha a háttér-állomásnév felülbírálva van, ez a név ezt fogja tükrözni.|
 |originalHost| Az állomásnév, amellyel az alkalmazásátjáró az ügyféltől megkapta a kérelmet.|
 ```json
@@ -144,9 +144,9 @@ Az Application Gateway és a WAF v2 esetében a naplók egy kicsit több inform�
 |fogadott bájt     | A fogadott csomag mérete bájtban.        |
 |sentBytes| Az elküldött csomag mérete bájtban.|
 |időtaken| A kérelem feldolgozásához és válaszának elküldéséhez szükséges időtartam (ezredmásodpercben). Ezt a rendszer aHTTP-kérelem első bájtjának fogadása korától addig az időpontig számítja ki, amikor a válaszküldési művelet befejeződik. Fontos megjegyezni, hogy az Időtaken mező általában azt az időt tartalmazza, amikor a kérési és válaszcsomagok a hálózaton keresztül haladnak. |
-|sslEnabled| Azt jelzi, hogy a háttér-készletekkel való kommunikáció ssl-t használt-e. Az érvényes értékek be- és kivannak kapcsolva.|
-|sslCipher között| Az SSL-kommunikációhoz használt titkosítási csomag (ha az SSL engedélyezve van).|
-|sslprotokoll| SSL protokoll t használ (ha az SSL engedélyezve van).|
+|sslEnabled| Azt jelzi, hogy a háttérkészletekkel való kommunikáció tls-t használt-e. Az érvényes értékek be- és kivannak kapcsolva.|
+|sslCipher között| A TLS-kommunikációhoz használt titkosítási csomag (ha a TLS engedélyezve van).|
+|sslprotokoll| TLS protokoll thasználja (ha a TLS engedélyezve van).|
 |kiszolgálórouteszerint| Az alkalmazásátjárót használó háttérkiszolgáló a kérést irányítja.|
 |kiszolgáló állapota| A háttérkiszolgáló HTTP-állapotkódja.|
 |kiszolgálóResponseLatency| A háttérkiszolgáló válaszának késése.|

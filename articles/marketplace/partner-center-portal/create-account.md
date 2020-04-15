@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 03/10/2020
-ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/14/2020
+ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261737"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383762"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactéri fiók létrehozása a Partnerközpontban
 
@@ -100,7 +100,7 @@ Győződjön meg róla, hogy a fiókadatok kéznél vannak.
 
 Ha már regisztrált a Microsoft Partner Network szolgáltatásban, ebben a szakaszban közvetlenül a Partnerközpontból hozhatja létre fiókját.
 
-Jelentkezzen be [a Partnerközpontba](https://partner.microsoft.com/) a Microsoft Partner Network-fiókjával, hogy összekapcsolja a vállalat munkahelyi e-mail-fiókjának tartományát az új Partnerközpont-fiókkal. A fiókok társításával a vállalati alkalmazottak bejelentkezhetnek a Partnerközpontba a munkahelyi fiókfelhasználóneveikkel és jelszavaikkal.
+Jelentkezzen be [a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a Microsoft Partner Network-fiókjával, hogy összekapcsolja a vállalat munkahelyi e-mail-fiókjának tartományát az új Partnerközpont-fiókkal. A fiókok társításával a vállalati alkalmazottak bejelentkezhetnek a Partnerközpontba a munkahelyi fiókfelhasználóneveikkel és jelszavaikkal.
 
 >[!NOTE]
 >Annak ellenőrzéséhez, hogy vállalata rendelkezik-e már Partnerközpont-munkafiókkal, hogyan hozhat létre új munkahelyi fiókot, vagy hogyan állíthat be több munkafiókot a Partnerközponttal, látogasson [el a Vállalati munkafiók és a Partnerközpont oldalra.](./company-work-accounts.md)
@@ -130,7 +130,7 @@ Ha már regisztrált egy Partnerközpont fejlesztői programban, ebben a szakasz
 >
 >Az egyéni fiókok a saját maguk által dolgozó fejlesztők számára készültek. A vállalati számlák szervezeteknek és vállalkozásoknak valók. A vállalati fiókok hozzáférést biztosítanak a további funkciókkal rendelkező alkalmazások elküldéséhez. A regisztrációt követően nagyobb ellenőrzést kérünk a vállalati fiókokra vonatkozóan annak megerősítéséhez, hogy ön jogosult-e a fiók beállítására. Ez az ellenőrzés néhány naptól néhány hétig is eltarthat, és gyakran tartalmaz telefonhívást a vállalathoz. Mindkét fióktípus lehetővé teszi alkalmazások, bővítmények és szolgáltatások küldését. További információ: [Fióktípusok, helyek és díjak](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
 
-Jelentkezzen be [a Partnerközpontba](https://partner.microsoft.com/) A Microsoft Partner Center-fiókjával, és regisztráljon a Kereskedelmi piactér programba ugyanazzal a fiókkal. Ha ugyanazzal a fiókkal regisztrál a Kereskedelmi piactérre, a Partnerközpont bal oldali navigációs menüjében láthatja a meglévő programregisztrációkat és a Kereskedelmi piacteret is.
+Jelentkezzen be [a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) A Microsoft Partner Center-fiókjával, és regisztráljon a Kereskedelmi piactér programba ugyanazzal a fiókkal. Ha ugyanazzal a fiókkal regisztrál a Kereskedelmi piactérre, a Partnerközpont bal oldali navigációs menüjében láthatja a meglévő programregisztrációkat és a Kereskedelmi piacteret is.
 
 A bejelentkezés után a fiók beállításának befejezéséhez kövesse az alábbi lépéseket:
 

@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 01/21/2020
+ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: eceb4a9d4e0cc84166280f30b094b82088f53a4a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4641c50f0579e2a8db514df58c0401eb2173d793
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79475306"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309054"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Oktatóanyag: Key Vault-hivatkozások használata egy ASP.NET Core alkalmazásban
 
@@ -82,7 +82,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, csak néhány további lép
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Kulcstartóhivatkozás hozzáadása az alkalmazás konfigurációjához
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza az **Összes erőforrás**lehetőséget, majd válassza ki a rövid útmutatóban létrehozott Alkalmazáskonfigurációs tároló példányt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza az **Összes erőforrás**lehetőséget, majd válassza ki a rövid útmutatóban létrehozott Alkalmazáskonfigurációs tároló példányt.
 
 1. Válassza a **Configuration Explorer**lehetőséget.
 
@@ -160,14 +160,12 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, csak néhány további lép
 1. Adjon hozzá hivatkozást a szükséges NuGet csomagokra a következő parancs futtatásával:
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.KeyVault
     dotnet add package Azure.Identity
     ```
 
 1. Nyissa *meg Program.cs,* és adjon hivatkozásokat a következő szükséges csomagokhoz:
 
     ```csharp
-    using Microsoft.Azure.KeyVault;
     using Azure.Identity;
     ```
 

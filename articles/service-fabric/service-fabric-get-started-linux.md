@@ -3,12 +3,12 @@ title: A fejlesztői környezet beállítása Linuxon
 description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258433"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309111"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "79258433"
 
 Az [Azure Service Fabric-alkalmazásoknak](service-fabric-application-model.md) a linuxos fejlesztői gépen való üzembe helyezéséhez és futtatásához telepítse a futtatókörnyezetet és az általános SDK-t. A Javához és a .NET Core-fejlesztéshez készült opcionális SDK-kat is telepítheti. 
 
-A cikkben ismertetett lépések azt feltételezik, hogy natív telepítést végez Linuxon, vagy a Service Fabric-tároló beépített rendszerképét használja (`microsoft/service-fabric-onebox`).
+A cikkben ismertetett lépések azt feltételezik, hogy natív telepítést végez Linuxon, vagy a Service Fabric-tároló beépített rendszerképét használja (`mcr.microsoft.com/service-fabric/onebox:latest`).
 
 A Service Fabric-futtatókörnyezet és az SDK telepítése nem támogatott a Linuxra készült Windows alrendszeren. A felhőben máshol vagy a helyszínen üzemeltetett Service Fabric-entitásokat kezelheti az Azure Service Fabric parancssori felületével (CLI), mely támogatott. A parancssori felület telepítési módját a [Service Fabric parancssori felület telepítését](./service-fabric-cli.md) ismertető témakörben találja.
 

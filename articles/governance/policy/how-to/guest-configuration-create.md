@@ -3,12 +3,12 @@ title: Vendégkonfigurációs házirendek létrehozása a Windows rendszerhez
 description: Ismerje meg, hogyan hozhat létre egy Azure Policy Vendég konfigurációs szabályzatot a Windows hoz létre.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24069ff6518c4244026378e48216d4568fffeb8a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365472"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313983"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs házirendek létrehozása a Windows rendszerhez
 
@@ -73,7 +73,11 @@ A DSC-fogalmak és terminológia áttekintését a [PowerShell DSC – áttekint
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>A vendégkonfigurációs modulok eltérése a Windows PowerShell DSC-moduloktól
 
-Amikor a Vendég konfiguráció naplózza `Test-TargetResource` a gépet, először fut annak megállapítására, hogy a megfelelő állapotban van-e. A függvény által visszaadott logikai érték határozza meg, hogy a vendég-hozzárendelés Azure Resource Manager-állapota megfelelő/nem megfelelő legyen-e. Ezután a `Get-TargetResource` szolgáltató fut, hogy visszatérjen az aktuális állapotát az egyes beállítások, így a részletek is elérhetők arról, hogy miért a számítógép nem megfelelő, vagy annak ellenőrzésére, hogy az aktuális állapot megfelelő.
+Amikor a Vendég konfigurációja naplóz egy gépet:
+
+1. Az ügynök `Test-TargetResource` először fut, hogy meghatározza, ha a konfiguráció a megfelelő állapotban van.
+1. A függvény által visszaadott logikai érték határozza meg, hogy a vendég-hozzárendelés Azure Resource Manager-állapota megfelelő/nem megfelelő legyen-e.
+1. A szolgáltató `Get-TargetResource` fut, hogy visszatérjen az aktuális állapotát az egyes beállítások, így a részletek is elérhetők arról, hogy miért nem megfelelő a számítógép, és annak ellenőrzésére, hogy az aktuális állapot megfelelő.
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource követelmények
 
@@ -102,6 +106,25 @@ return @{
     reasons = $reasons
 }
 ```
+
+Az Okok tulajdonságot is hozzá kell adni az erőforrás mof sémájához beágyazott osztályként.
+
+```mof
+[ClassVersion("1.0.0.0")] 
+class Reason
+{
+    [Read] String Phrase;
+    [Read] String Code;
+};
+
+[ClassVersion("1.0.0.0"), FriendlyName("ResourceName")]
+class ResourceName : OMI_BaseResource
+{
+    [Key, Description("Example description")] String Example;
+    [Read, EmbeddedInstance("Reason")] String Reasons[];
+};
+```
+
 ### <a name="configuration-requirements"></a>Konfigurációs követelmények
 
 Az egyéni konfiguráció nevének mindenhol konzisztensnek kell lennie. A tartalomcsomag .zip fájljának nevének, a MOF-fájlkonfigurációs nevének és az Erőforrás-kezelő sablonban szereplő vendéghozzárendelés nevének meg kell egyeznie.
@@ -134,7 +157,7 @@ A [szolgáltatásvégpontot](../../../storage/common/storage-network-security.md
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Lépésről lépésre, egyéni vendégkonfiguráció-naplózási házirend létrehozása a Windows rendszerhez
 
-Hozzon létre egy DSC-konfigurációt. A következő PowerShell-parancsfájl-példa létrehoz egy **AuditBitLocker**nevű konfigurációt, importálja `Service` a **PsDscResources erőforrásmodult,** és az erőforrást használja egy futó szolgáltatás naplózásához. A konfigurációs parancsfájl Windows vagy macOS rendszerű gépekről hajtható végre.
+Hozzon létre egy DSC-konfigurációt a naplózási beállításokhoz. A következő PowerShell-parancsfájl-példa létrehoz egy **AuditBitLocker**nevű konfigurációt, importálja `Service` a **PsDscResources erőforrásmodult,** és az erőforrást használja egy futó szolgáltatás naplózásához. A konfigurációs parancsfájl Windows vagy macOS rendszerű gépekről hajtható végre.
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -160,7 +183,7 @@ A `Node AuditBitlocker` parancs technikailag nem kötelező, de az `AuditBitlock
 
 A MOF fordítása után a segédfájlokat össze kell csomagolni. A kitöltött csomagot a Vendég konfiguráció az Azure Policy-definíciók létrehozásához használja.
 
-A `New-GuestConfigurationPackage` parancsmag hozza létre a csomagot. A parancsmag `New-GuestConfigurationPackage` paraméterei A Windows-tartalom létrehozásakor:
+A `New-GuestConfigurationPackage` parancsmag hozza létre a csomagot. A konfigurációáltal szükséges moduloknak a rendszerben `$Env:PSModulePath`kell rendelkezésre állniuk. A parancsmag `New-GuestConfigurationPackage` paraméterei A Windows-tartalom létrehozásakor:
 
 - **Név**: Vendég konfigurációs csomag neve.
 - **Konfiguráció**: A DSC konfigurációs dokumentum teljes elérési útja.
@@ -176,7 +199,7 @@ New-GuestConfigurationPackage `
 
 A konfigurációs csomag létrehozása után, de az Azure-ban való közzététele előtt tesztelheti a csomagot a munkaállomásról vagy ci/CD-környezetből. A GuestConfiguration parancsmag `Test-GuestConfigurationPackage` ugyanazt az ügynököt tartalmazza a fejlesztői környezetben, mint az Azure-gépeken. Ezzel a megoldással helyileg is elvégezheti az integrációtesztelést, mielőtt a számlázott felhőalapú környezetekben feladná.
 
-Mivel az ügynök ténylegesen kiértékeli a helyi környezetben, a legtöbb esetben a teszt-parancsmag futtatásához ugyanazon az operációs platformon, mint azt tervezi, hogy a naplózás.
+Mivel az ügynök ténylegesen kiértékeli a helyi környezetben, a legtöbb esetben a teszt-parancsmag futtatásához ugyanazon az operációs platformon, mint azt tervezi, hogy a naplózás. A teszt csak a tartalomcsomagban található modulokat használja.
 
 A `Test-GuestConfigurationPackage` parancsmag paraméterei:
 

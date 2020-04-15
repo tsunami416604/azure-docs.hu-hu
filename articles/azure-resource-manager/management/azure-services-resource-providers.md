@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók az Azure-szolgáltatások szerint
 description: Felsorolja az Azure Resource Manager összes erőforrás-szolgáltatónévterét, és megjeleníti az azure-szolgáltatást a névtérhez.
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 9cf18a1e4c0dd40ae9106d32547ba4795ea9fbb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55fbe4ae383e5275d185e2a03224e77660a01ef5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472962"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382512"
 ---
 # <a name="resource-providers-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-szolgáltatói
 
@@ -18,7 +18,7 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltató névterek leképezése az 
 
 | Erőforrásszolgáltató névtere | Azure-szolgáltatás |
 | --------------------------- | ------------- |
-| Microsoft.AAD | [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) |
+| Microsoft.AAD | [Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/index.yml) |
 | Microsoft.Addons | Core |
 | Microsoft.ADHybridHealthService | [Azure Active Directory](/azure/active-directory/) |
 | Microsoft.Advisor | [Azure Advisor](../../advisor/index.yml) |
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltató névterek leképezése az 
 | Microsoft.AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft.Attestation | Azure tanúsítványszolgáltatás |
 | Microsoft.Authorization | [Azure Resource Manager](../index.yml) |
-| Microsoft.Automation | [Automatizálás](../../automation/index.yml) |
+| Microsoft.Automation | [Automation](../../automation/index.yml) |
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
 | Microsoft.AzureData | SQL Server rendszerleíró adatbázis |
 | Microsoft.AzureStack | Core |
@@ -49,15 +49,15 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltató névterek leképezése az 
 | Microsoft.ClassicNetwork | Klasszikus üzembe helyezési modell virtuális hálózat |
 | Microsoft.ClassicStorage | Klasszikus üzembe helyezési modell tárolása |
 | Microsoft.ClassicElőfizetés | Klasszikus üzemi modell |
-| Microsoft.CognitiveServices | [Kognitív szolgáltatások](/azure/cognitive-services/) |
+| Microsoft.CognitiveServices | [Cognitive Services](/azure/cognitive-services/) |
 | Microsoft.Commerce | Core |
 | Microsoft.Compute | [Virtuális gépek](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
-| Microsoft.Fogyasztás | [Cost Management](/azure/cost-management/) |
+| Microsoft.Fogyasztás | [Költségkezelés](/azure/cost-management/) |
 | Microsoft.ContainerInstance | [Tárolópéldányok](/azure/container-instances/) |
-| Microsoft.ContainerRegistry | [Tároló beállításjegyzéke](/azure/container-registry/) |
+| Microsoft.ContainerRegistry | [Container Registry](/azure/container-registry/) |
 | Microsoft.ContainerService | [Azure Kubernetes Service (AKS)](/azure/aks/) |
-| Microsoft.CostManagement | [Cost Management](/azure/cost-management/) |
-| Microsoft.CostManagementExports | [Cost Management](/azure/cost-management/) |
+| Microsoft.CostManagement | [Költségkezelés](/azure/cost-management/) |
+| Microsoft.CostManagementExports | [Költségkezelés](/azure/cost-management/) |
 | Microsoft.CustomerLockbox | Ügyfélszéf a Microsoft Azure-hoz |
 | Microsoft.CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
 | Microsoft.DataBox | [Azure Data Box](/azure/databox-family/) |
@@ -65,7 +65,7 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltató névterek leképezése az 
 | Microsoft.Databricks | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft.DataCatalog | [Data Catalog](/azure/data-catalog/) |
 | Microsoft.DataFactory | [Data Factory](/azure/data-factory/) |
-| Microsoft.DataLakeAnalytics | [Data Lake analitikai szolgáltatás](/azure/data-lake-analytics/) |
+| Microsoft.DataLakeAnalytics | [Data Lake Analytics](/azure/data-lake-analytics/) |
 | Microsoft.DataLakeStore | [2. generációs Azure Data Lake Storage](../../storage/blobs/data-lake-storage-introduction.md) |
 | Microsoft.DataMigration | [Azure Database Migration Service](/azure/dms/) |
 | Microsoft.DataShare | [Azure Data Share](/azure/data-share/) |
@@ -80,12 +80,12 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltató névterek leképezése az 
 | Microsoft.DevTestLab | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft.DigitalTwins | [Azure Digital Twins](../../digital-twins/about-digital-twins.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
-| Microsoft.DomainRegistration | [APP SERVICE](/azure/app-service/) |
+| Microsoft.DomainRegistration | [App Service](/azure/app-service/) |
 | Microsoft.EnterpriseKnowledgeGraph | Vállalati tudásgrafikon |
 | Microsoft.EventGrid | [Event Grid](/azure/event-grid/) |
-| Microsoft.EventHub | [Eseményközpontok](../../event-hubs/index.yml) |
+| Microsoft.EventHub | [Event Hubs](../../event-hubs/index.yml) |
 | Microsoft.Szolgáltatások | [Azure Resource Manager](../index.yml) |
-| Microsoft.GuestKonfiguráció | [Azure szabályzat](../../governance/policy/index.yml) |
+| Microsoft.GuestKonfiguráció | [Azure Policy](../../governance/policy/index.yml) |
 | Microsoft.HanaOnAzure | [SAP HANA on Azure Large Instances](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft.HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
@@ -98,7 +98,7 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltató névterek leképezése az 
 | Microsoft.IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
 | Microsoft.KeyVault | [Key Vault](../../key-vault/index.yml) |
 | Microsoft.Kubernetes | [Azure Kubernetes Service (AKS)](/azure/aks/) |
-| Microsoft.Kusto | [Azure Data Explorer](../../data-explorer/index.yml) |
+| Microsoft.Kusto | [Azure Data Explorer](/azure/data-explorer/) |
 | Microsoft.LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logic Apps](../../logic-apps/index.yml) |
 | Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/studio/index.yml) |
@@ -111,21 +111,21 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltató névterek leképezése az 
 | Microsoft.Piactér | Core |
 | Microsoft.MarketplaceApps | Core |
 | Microsoft.MarketplaceRendelés | Core |
-| Microsoft.Media | [Médiaszolgáltatások](../../media-services/index.yml) |
+| Microsoft.Media | [Media Services](../../media-services/index.yml) |
 | Microsoft.Áttelepítés | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft.MixedReality | [Azure Spatial Anchors](/azure/spatial-anchors/) |
 | Microsoft.NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](/azure/bastion/)<br />[Azure DDoS védelem](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Terheléselosztó](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Forgalomkezelő](../../traffic-manager/index.yml)<br />[Virtuális hálózat](../../virtual-network/index.yml)<br />[Virtuális WAN](../../virtual-wan/index.yml)<br />[VPN-átjáró](../../vpn-gateway/index.yml)<br /> |
-| Microsoft.NotificationHubs | [Értesítési központ](../../notification-hubs/index.yml) |
+| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](/azure/bastion/)<br />[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Virtual Network](../../virtual-network/index.yml)<br />[Virtuális WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
+| Microsoft.NotificationHubs | [Notification Hubs](../../notification-hubs/index.yml) |
 | Microsoft.OffAzure | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft.OperationalInsights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.Társviszony-létesítés | [Azure-társviszony-létesítési szolgáltatás](../../peering-service/index.yml) |
-| Microsoft.PolicyInsights | [Azure szabályzat](../../governance/policy/index.yml) |
-| Microsoft.Portal | [Azure-portál](/azure/azure-portal/) |
+| Microsoft.PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
+| Microsoft.Portal | [Azure Portal](/azure/azure-portal/) |
 | Microsoft.PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft.PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
-| Microsoft.RecoveryServices | [Az Azure webhely helyreállítása](../../site-recovery/index.yml) |
+| Microsoft.RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
 | Microsoft.RedHatOpenShift | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
 | Microsoft.Relay | [Azure Relay](../../service-bus-relay/relay-what-is-it.md) |
 | Microsoft.ResourceGraph | [Azure Resource Graph](/azure/governance/resource-graph/) |
@@ -145,9 +145,9 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltató névterek leképezése az 
 | Microsoft.Megoldások | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../sql-database/index.yml)<br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.SqlVirtualMachine | [SQL Server az Azure Virtual Machines szolgáltatásban](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
-| Microsoft.Storage | [Tárterület](../../storage/index.yml) |
+| Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft.StorageCache | [Azure HPC Cache](/azure/hpc-cache/) |
-| Microsoft.StorageSync | [Tárterület](../../storage/index.yml) |
+| Microsoft.StorageSync | [Storage](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](/azure/storsimple/) |
 | Microsoft.StreamAnalytics | [Azure Stream Analytics](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | Core |
@@ -158,7 +158,7 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltató névterek leképezése az 
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft.VMwareCloudSimple | [Azure VMware Solution by CloudSimple](/azure/vmware-cloudsimple/) |
 | Microsoft.Web | [APP SERVICE](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
-| Microsoft.WindowsIoT | [Windows 10 IoT alapvető szolgáltatások](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
+| Microsoft.WindowsIoT | [Windows 10 IoT Core Services](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
 | Microsoft.WorkloadFigyelő | [Azure Monitor](../../azure-monitor/index.yml) |
 
 ## <a name="next-steps"></a>További lépések

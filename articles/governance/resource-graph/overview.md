@@ -3,16 +3,16 @@ title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogy az Azure Resource Graph szolgáltatás hogyan teszi lehetővé az erőforrások összetett lekérdezését az előfizetések és a bérlők között.
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240057"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381519"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az az Azure Resource Graph?
 
-Az Azure Resource Graph egy olyan azure-szolgáltatás, amelynek célja az Azure Erőforrás-kezelés kiterjesztése azáltal, hogy hatékony és eredményes erőforrás-feltárást biztosít, és lehetővé teszi a lekérdezést nagy méretekben egy adott előfizetés-készleten keresztül, hogy hatékonyan szabályozhassa Környezet. Ezek a lekérdezések a következő funkciókat biztosítják:
+Az Azure Resource Graph egy olyan azure-szolgáltatás, amelynek célja az Azure Resource Management kiterjesztése azáltal, hogy hatékony és hatékony erőforrás-feltárást biztosít, és képes nagy méretű lekérdezést egy adott előfizetés-készleten keresztül, hogy hatékonyan szabályozhassa a környezetet. Ezek a lekérdezések a következő funkciókat biztosítják:
 
 - Erőforrások lekérdezése az erőforrás-tulajdonságok alapján végzett összetett szűréssel, csoportosítással és rendezéssel.
 - Képes iteratív módon feltárni az erőforrásokat a cégirányítási követelmények alapján.
@@ -50,7 +50,7 @@ Az Resource Graph ezután frissíti az adatbázist. Resource Graph is csinál eg
 
 Most, hogy jobban megértheti, hogy mi az Azure Resource Graph, vessünk egy kis betekintést a lekérdezések létrehozásához.
 
-Fontos megérteni, hogy az Azure Resource Graph lekérdezési nyelve az Azure Data Explorer által használt [Kusto lekérdezési nyelvalapján](../../data-explorer/data-explorer-overview.md) történik.
+Fontos megérteni, hogy az Azure Resource Graph lekérdezési nyelve az Azure Data Explorer által használt [Kusto lekérdezési nyelvalapján](/azure/data-explorer/data-explorer-overview) történik.
 
 Első lépésként olvassa el az Azure Resource Graphfal használható műveleteket és funkciókat ismertető, [a Resource Graph lekérdezőnyelve](./concepts/query-language.md) című cikket.
 Az erőforrások tallózását az [erőforrások kezeléséről](./concepts/explore-resources.md) szóló cikk írja le.

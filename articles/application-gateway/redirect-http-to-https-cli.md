@@ -1,23 +1,23 @@
 ---
 title: HTTP-RŐL HTTPS-re történő átirányítás CLI használatával
 titleSuffix: Azure Application Gateway
-description: Megismerheti, hogyan hozhat létre alkalmazásátjárót és adhat hozzá egy tanúsítványt az SSL leállításához az Azure CLI használatával.
+description: Ismerje meg, hogyan hozhat létre egy alkalmazásátjárót, és hogyan adhat hozzá tanúsítványt a TLS-megszüntetéshez az Azure CLI használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: 41b2fb754f1d6ead3a7475ca146ab99758aa8134
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bf8f3b7bfb446db78f0c97a246977fec6cd54cb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246874"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312148"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Alkalmazásátjáró létrehozása HTTP-HTTPS átirányítással az Azure CLI használatával
 
-Az Azure CLI segítségével hozzon létre egy [alkalmazásátjáró](overview.md) ssl-végződési tanúsítvánnyal. Az útválasztási szabály segítségével átirányítják a HTTP-forgalmat az alkalmazásátjáró HTTPS-portjára. Ebben a példában egy [virtuálisgép-méretezési csoportot](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) is létrehozhat az alkalmazásátjáró háttérkészletéhez, amely két virtuálisgép-példányt tartalmaz.
+Az Azure CLI segítségével létrehozhat egy [alkalmazásátjárót](overview.md) a TLS/SSL-végződési tanúsítvánnyal. Az útválasztási szabály segítségével átirányítják a HTTP-forgalmat az alkalmazásátjáró HTTPS-portjára. Ebben a példában egy [virtuálisgép-méretezési csoportot](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) is létrehozhat az alkalmazásátjáró háttérkészletéhez, amely két virtuálisgép-példányt tartalmaz.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 

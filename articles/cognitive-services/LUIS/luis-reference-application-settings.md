@@ -1,26 +1,20 @@
 ---
 title: Alkalmazásbeállítások - LUIS
-titleSuffix: Azure Cognitive Services
 description: Az Azure Cognitive Services nyelvtudási alkalmazásai alkalmazásbeállításait az alkalmazás és a portál tárolja.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/12/2019
-ms.author: diberry
-ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270806"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382202"
 ---
 # <a name="application-settings"></a>Alkalmazásbeállítások
 
 Ezeket az alkalmazásbeállításokat az [exportált](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) alkalmazás tárolja, és [frissíti](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) a REST API-kkal. Az alkalmazás verzióbeállításainak módosítása visszaállítja az alkalmazás betanítási állapotát képzetlenre.
+
+Ismerje meg a mellékjelek és írásjelek [fogalmait.](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation)
 
 |Beállítás|Alapértelmezett érték|Megjegyzések|
 |--|--|--|
@@ -183,3 +177,7 @@ A következő írásjelek et `NormalizePunctuation` a rendszer eltávolítja, é
 |`}`|
 |`+`|
 |`¡`|
+
+## <a name="next-steps"></a>További lépések
+
+* Ismerje meg a mellékjelek és írásjelek [fogalmait.](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation)

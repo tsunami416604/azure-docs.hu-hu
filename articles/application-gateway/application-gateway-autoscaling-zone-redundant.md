@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4cd2969f9a56c96af2b2c6db216f6829a080260c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7feb0f00c5431048d19d4ad6cb3860f6eb8ed052
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371276"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312711"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
@@ -26,16 +26,16 @@ Az új v2 termékváltozat a következő fejlesztéseket tartalmazza:
   A zónaredundancia csak ott érhető el, ahol az Azure Zones elérhető. Más régiókban az összes többi szolgáltatás támogatott. További információ: [Mik a rendelkezésre állási zónák az Azure-ban?](../availability-zones/az-overview.md#services-support-by-region)
 - **Statikus VIP**: Az Application Gateway v2 termékváltozat kizárólag a statikus VIP-típust támogatja. Ez biztosítja, hogy az alkalmazásátjáróhoz társított IP-címzés nem változik a központi telepítés életciklusa során, még újraindítás után sem.  Nincs statikus VIP a v1-ben, ezért az alkalmazásátjáró URL-címét kell használnia az alkalmazásnév-továbbítás ip-cím helyett az alkalmazásátjárón keresztül.
 - **Fejléc újraírása**: Az Application Gateway lehetővé teszi, hogy http-kérelem- és válaszfejléceket adjon hozzá, távolítson el vagy frissítsen a v2 Termékváltozattal. További információ: [HTTP-fejlécek újraírása az Application Gateway alkalmazással című témakörben.](rewrite-http-headers.md)
-- **Key Vault-integráció:** Az Application Gateway v2 támogatja a Key Vaultmal való integrációt a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok esetében. További információt az [SSL-végződtetés key vault-tanúsítványokkal című témakörben talál.](key-vault-certs.md)
+- **Key Vault-integráció:** Az Application Gateway v2 támogatja a Key Vaultmal való integrációt a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok esetében. További információt a [TLS-végződtetés key vault-tanúsítványokkal című témakörben talál.](key-vault-certs.md)
 - **Azure Kubernetes service ingress controller:** Az Application Gateway v2 ingress controller lehetővé teszi, hogy az Azure Application Gateway az Azure Kubernetes-szolgáltatás (AKS) AKS-fürt néven a be- és be- és azOn imázsaként használható. További információ: [Mi az Application Gateway ingress controller?](ingress-controller-overview.md).
-- **Teljesítménybeli fejlesztések:** A v2 termékváltozat akár 5-nél is jobb SSL-kiszervezési teljesítményt kínál, mint a Standard/WAF termékváltozat.
+- **Teljesítménybeli fejlesztések:** A v2 termékváltozat akár 5-nél is jobb TLS-kiszervezési teljesítményt kínál a Standard/WAF termékváltozathoz képest.
 - **Gyorsabb üzembe helyezési és frissítési idő** A v2 termékváltozat a Standard/WAF termékváltozathoz képest gyorsabb üzembe helyezési és frissítési időt biztosít. Ez magában foglalja a WAF konfigurációs módosításait is.
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-A Standard_v2 és WAF_v2 SKU a következő régiókban érhető el: USA északi középső régiója, USA déli középső régiója, USA nyugati régiója 2, USA keleti régiója, USA keleti régiója 2, USA középső része, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Franciaország Közép-, Egyesült Királyság-Nyugat, Japán-kelet, Nyugat-Japán, Ausztrália Kelet- , Ausztrália Délkeleti, Brazília Déli, Kanada Középső, Kanada Kelet-Ázsia, Korea Központi, Korea Déli, Egyesült Királyság Déli, Közép-India, Nyugat-India, Dél-India.
+A Standard_v2 és WAF_v2 Termékváltozat a következő régiókban érhető el: Usa északi középső középső régiója, USA délnyugati régiója, USA nyugati régiója 2, USA keleti régiója 2, USA középső része, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Franciaország Közép-Franciaország, Az Egyesült Királyság nyugati része, Japán kelet- és Nyugat-Japán, Ausztrália Kelet-, Ausztrália délkeleti, Délkeleti, Brazília Déli, Kanada Közép-, Kanada, Kanada Kelet-Ázsia, Korea Közép-Korea, Dél-Korea , Egyesült Királyság Dél, Közép-India, Nyugat-India, Dél-India.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -77,7 +77,7 @@ Teljes ár = $148.8 + $297.6 = $446.4
 
 **2. példa**
 
-Az Application Gateway standard_v2 egy hónapra van kiépítve, minimális nulla példánysal, és ez idő alatt 25 új SSL-kapcsolatot kap/mp, átlagosan 8,88 Mb/s adatátvitelt. Feltételezve, hogy a kapcsolatok rövid életűek, az ár a következő lenne:
+Az Application Gateway standard_v2 egy hónapra van kiépítve, minimális nulla példánysal, és ez idő alatt 25 új TLS-kapcsolatot kap/mp, átlagosan 8,88 Mb/s adatátvitelt. Feltételezve, hogy a kapcsolatok rövid életűek, az ár a következő lenne:
 
 Fix ár = 744(óra) * $0.20 = $148.8
 
@@ -105,7 +105,7 @@ Ebben az esetben az öt példány teljes egészét számlázunk, még akkor is, 
 
 **4. példa**
 
-Az Application Gateway standard_v2 egy hónapra van kiépítve, legalább öt példányban, de ezúttal átlagosan 125 mb/s adatátvitel, és 25 SSL-kapcsolat másodpercenként. Feltételezve, hogy nincs forgalom, és a kapcsolatok rövid életű, az ár lenne:
+Az Application Gateway standard_v2 egy hónapra van kiépítve, legalább öt példányban, de ezúttal átlagosan 125 mbps adatátvitel, és 25 TLS-kapcsolatok másodpercenként. Feltételezve, hogy nincs forgalom, és a kapcsolatok rövid életű, az ár lenne:
 
 Fix ár = 744(óra) * $0.20 = $148.8
 
@@ -117,7 +117,7 @@ Ebben az esetben a teljes öt példányért, valamint hét kapacitásegységért
 
 **5. példa**
 
-Egy alkalmazásátjáró WAF_v2 egy hónapra van kiépítve. Ez idő alatt 25 új SSL-kapcsolatot kap másodpercenként, átlagosan 8,88 Mb/s adatátvitelt, és másodpercenként 80 kérést küld. Feltételezve, hogy a kapcsolatok rövid életűek, és hogy az alkalmazás számítási egységének számítása 10 RPS-t támogat számítási egységenként, az ön ára a következő:
+Egy alkalmazásátjáró WAF_v2 egy hónapra van kiépítve. Ez idő alatt 25 új TLS-kapcsolatot kap másodpercenként, átlagosan 8,88 Mb/s adatátvitelt, és másodpercenként 80 kérést küld. Feltételezve, hogy a kapcsolatok rövid életűek, és hogy az alkalmazás számítási egységének számítása 10 RPS-t támogat számítási egységenként, az ön ára a következő:
 
 Fix ár = 744(óra) * $0.36 = $267.84
 
@@ -152,8 +152,8 @@ Az alábbi táblázat összehasonlítja az egyes termékváltozatokkal elérhet�
 | Forgalom átirányítása                               | &#x2713; | &#x2713; |
 | Webalkalmazási tűzfal (WAF)                    | &#x2713; | &#x2713; |
 | WAF egyéni szabályok                                  |          | &#x2713; |
-| Secure Sockets Layer- (SSL-) lezárás            | &#x2713; | &#x2713; |
-| Végpontok közötti SSL-titkosítás                         | &#x2713; | &#x2713; |
+| Transport Layer Security (TLS)/Secure Sockets Layer (SSL) végződés            | &#x2713; | &#x2713; |
+| Végpontok közötti TLS-titkosítás                         | &#x2713; | &#x2713; |
 | Munkamenet-affinitás                                  | &#x2713; | &#x2713; |
 | Egyéni hibalapok                                | &#x2713; | &#x2713; |
 | WebSocket támogatás                                 | &#x2713; | &#x2713; |
@@ -167,7 +167,7 @@ Az alábbi táblázat összehasonlítja az egyes termékváltozatokkal elérhet�
 
 |Különbség|Részletek|
 |--|--|
-|Hitelesítési tanúsítvány|Nem támogatott.<br>További információt a [Végpontok között SSL áttekintése az Application Gateway segítségével című témakörben talál.](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)|
+|Hitelesítési tanúsítvány|Nem támogatott.<br>További információt a [Végpontok között a TLS áttekintése az Application Gateway alkalmazásátjáróval című témakörben talál.](ssl-overview.md#end-to-end-tls-with-the-v2-sku)|
 |Standard_v2 és a Standard Application Gateway keverése ugyanazon az alhálózaton|Nem támogatott|
 |Felhasználó által definiált útvonal (UDR) az Application Gateway alhálózaton|Támogatott (adott forgatókönyvek). Előzetesverzióban.<br> A támogatott forgatókönyvekről az [Application Gateway konfigurációjának áttekintése című témakörben olvashat bővebben.](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)|
 |NSG bejövő porttartományhoz| - 65200 és 65535 között Standard_v2 termékváltozat esetében<br>- 65503-tól 65534-ig a standard termékváltozatok esetében.<br>További információt a [GYAKORI KÉRDÉSEK című témakörben talál.](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)|

@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f70c24c91e048270696b244bb9775cb24f0ef30d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257249"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383477"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Biztonságos Azure ML-kísérletezés és következtetési feladatok az Azure virtuális hálózaton belül
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -484,6 +484,21 @@ A parancs `body.json` által hivatkozott fájl tartalma hasonló a következő J
 > Jelenleg nem konfigurálható a terheléselosztó, ha __csatolási__ műveletet hajt végre egy meglévő fürtön. Először csatolnia kell a fürtöt, majd egy frissítési műveletet kell végrehajtania a terheléselosztó módosításához.
 
 A belső terheléselosztó AKS-szal való használatáról a [Belső terheléselosztó használata az Azure Kubernetes szolgáltatással című](/azure/aks/internal-lb)témakörben talál további információt.
+
+## <a name="use-azure-container-instances-aci"></a>Azure Container-példányok (ACI) használata
+
+Az Azure Container-példányok dinamikusan jönnek létre egy modell üzembe helyezésekor. Ahhoz, hogy az Azure Machine Learning a virtuális hálózaton belül hozzon létre ACI-t, engedélyeznie kell az __alhálózati delegálást__ a központi telepítés által használt alhálózathoz.
+
+Ha az ACI-t virtuális hálózatban szeretné használni a munkaterülethez, kövesse az alábbi lépéseket:
+
+1. Ha engedélyezni szeretné az alhálózati delegálást a virtuális hálózaton, használja az [alhálózati delegálás hozzáadása vagy eltávolítása](../virtual-network/manage-subnet-delegation.md) című cikkben található információkat. Engedélyezheti a delegálást, amikor virtuális hálózatot hoz létre, vagy hozzáadhatja egy meglévő hálózathoz.
+
+    > [!IMPORTANT]
+    > A delegálás `Microsoft.ContainerInstance/containerGroups` engedélyezésekor használja __a Delegált alhálózat ot a szolgáltatás__ értékéhez.
+
+2. Telepítse a modellt az [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)használatával, használja a `vnet_name` és `subnet_name` a paramétereket. Állítsa be ezeket a paramétereket arra a virtuális hálózatnévre és alhálózatra, ahol engedélyezte a delegálást.
+
+
 
 ## <a name="use-azure-firewall"></a>Az Azure tűzfal használata
 

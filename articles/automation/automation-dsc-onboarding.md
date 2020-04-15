@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: c718b9a66b378044618c8c52eec3a1a498ace83c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410936"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383208"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Bevezetési gépek az Azure Automation állapotkonfigurációja általi kezeléshez
 
@@ -39,6 +39,9 @@ Ha nem áll készen a gépkonfiguráció kontrájának kezelésére a felhőből
 > Az Azure-beli virtuális gépek kezelése az Azure Automation állapotkonfigurációval díjmentesen biztosított, ha a telepített Azure VM kívánt állapotkonfigurációs bővítmény verziója nagyobb, mint 2,70. További információ: [**Automation pricing page**](https://azure.microsoft.com/pricing/details/automation/).
 
 A cikk következő szakaszai ismertetik, hogyan lehet a fent felsorolt gépeket az Azure Automation-állapot konfigurációba.
+
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
 
 ## <a name="onboarding-azure-vms"></a>Bevezetés az Azure virtuális gépeibe
 
@@ -280,15 +283,15 @@ A metakonfigurációk proxytámogatását az LCM, a Windows PowerShell DSC-motor
 Ha a PowerShell DSC LCM alapértelmezett beállításai megfelelnek a használati esetnek, és azt szeretné, hogy a gépek et az Azure Automation-állapot konfigurációjából való lekérése és jelentése egyaránt bekapcsolja, és a szükséges DSC-metakonfigurációkat egyszerűbben hozhatja létre az Azure Automation-parancsmagok használatával.
 
 1. Nyissa meg a PowerShell-konzolt vagy a VSCode-ot rendszergazdaként a helyi környezetben lévő számítógépen.
-2. Csatlakozás az Azure Resource Manager szolgáltatáshoz`Connect-AzAccount`
+2. Csatlakozzon az Azure Resource Managerhez a [Connect-AzAccount segítségével.](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0)
 3. Töltse le a PowerShell DSC metaconfigurations a gépek kívánt a fedélzeti az Automation-fiók, amelyben a csomópontok beállítása.
 
    ```powershell
    # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
    $Params = @{
-       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation Account
-       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
-       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
+       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation account
+       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation account where you want a node on-boarded to
+       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the metaconfiguration will be generated for
        OutputFolder = "$env:UserProfile\Desktop\";
    }
    # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
@@ -296,7 +299,7 @@ Ha a PowerShell DSC LCM alapértelmezett beállításai megfelelnek a használat
    Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
-1. Most rendelkeznie kell egy **DscMetaConfigs**nevű mappával, amely tartalmazza a PowerShell DSC metakonfigurációit a gépek számára (rendszergazdaként).
+1. Most rendelkeznie kell egy **DscMetaConfigs** mappával, amely a PowerShell DSC metakonfigurációit tartalmazza a gépek számára (rendszergazdaként).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
@@ -325,7 +328,7 @@ Miután egy gépet DSC-csomópontként regisztrált az Azure Automation-állapot
 
 - **A DSC LCM értékek módosítása.** Előfordulhat, hogy módosítania kell a [PowerShell DSC LCM](/powershell/scripting/dsc/managing-nodes/metaConfig4) beállított értékeit a csomópont kezdeti regisztrációja során, `ConfigurationMode`például. Jelenleg ezek a DSC-ügynökértékek csak újraregisztrálás útján módosíthatók. Az egyetlen kivétel a csomóponthoz rendelt csomópontkonfigurációs érték. Ezt közvetlenül az Azure Automation DSC-ben módosíthatja.
 
-A csomópontot ugyanúgy újra regisztrálhatja, mint a csomópontot, a jelen dokumentumban ismertetett bármely bevezetési módszerrel. Nem kell törölnie egy csomópontot az Azure Automation-állapotkonfigurációból, mielőtt újra regisztrálna.
+A csomópontot ugyanúgy újra regisztrálhatja, ahogy először regisztrálta a csomópontot, a jelen dokumentumban leírt bevezetési módszerek bármelyikének használatával. Nem kell törölnie egy csomópontot az Azure Automation-állapotkonfigurációból, mielőtt újra regisztrálna.
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Az Azure virtuális gépek bevezetésével kapcsolatos hibák elhárítása
 
@@ -347,6 +350,7 @@ A hibaelhárításról az [Azure Automation kívánt állapotkonfigurációjáva
 
 - Első lépések: [Az Azure Automation állapotkonfigurációjának első lépései.](automation-dsc-getting-started.md)
 - A DSC-konfigurációk összeállításáról a célcsomópontokhoz való hozzárendelésről a [Konfigurációk összeállítása az Azure Automation állapotkonfigurációjában](automation-dsc-compile.md)témakörben olvashat.
-- A PowerShell-parancsmagok hivatkozásáról az [Azure Automation állapotkonfigurációs parancsmagjai.](/powershell/module/az.automation#automation)
+- A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
 - Díjszabási információkért lásd: [Azure Automation state configuration fortaring.](https://azure.microsoft.com/pricing/details/automation/)
 - Az Azure Automation State Configuration folyamatos üzembe helyezési folyamatban való használatának példáját a [Használati példa: Az Azure Automation állapotkonfigurációját és a Csokoládét használó virtuális gépeken történő folyamatos üzembe helyezés](automation-dsc-cd-chocolatey.md)című témakörben talál.

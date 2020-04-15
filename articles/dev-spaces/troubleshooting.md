@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Megtudhatja, hogy miként háríthatja el és oldhatja meg a gyakori problémákat az Azure Dev Spaces engedélyezése és használata során
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, Helm, szolgáltatásháló, szolgáltatásháló útválasztás, kubectl, k8s '
-ms.openlocfilehash: c12dfd385962d8dd7de8239a0d4ecd46746499c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fcf14bf42fc843a126fea269038087ee7fb0c6c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239766"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382048"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure Dev Spaces hibaelhárítása
 
@@ -52,13 +52,13 @@ A vezérlő újbóli létrehozása a CLI-ből vagy a Visual Studio-ból végezhe
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>A vezérlő létrehozása sikertelen a vezérlő nevének hossza miatt
 
-Az Azure Dev Spaces-vezérlő neve nem lehet hosszabb 31 karakternél. Ha a vezérlő neve meghaladja a 31 karaktert, amikor engedélyezi a fejlesztői szóközöket egy AKS-fürtön, vagy létrehoz egy vezérlőt, hibaüzenetet fog kapni. Példa:
+Az Azure Dev Spaces-vezérlő neve nem lehet hosszabb 31 karakternél. Ha a vezérlő neve meghaladja a 31 karaktert, amikor engedélyezi a fejlesztői szóközöket egy AKS-fürtön, vagy létrehoz egy vezérlőt, hibaüzenetet fog kapni. Például:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-A probléma megoldásához hozzon létre egy másik nevű vezérlőt. Példa:
+A probléma megoldásához hozzon létre egy másik nevű vezérlőt. Például:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -95,7 +95,7 @@ A probléma megoldásához frissítse az [Azure CLI](/cli/azure/install-azure-cl
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>Hiba: "Nem érhető el a kube-apiserver"
 
-Ez a hiba akkor jelenhet meg, ha az Azure Dev Spaces nem tud csatlakozni az AKS-fürt API-kiszolgálójához. 
+Ez a hiba akkor jelenhet meg, ha az Azure Dev Spaces nem tud csatlakozni az AKS-fürt API-kiszolgálójához.
 
 Ha az AKS-fürt API-kiszolgálójához való hozzáférés zárolva van, vagy ha az [API-kiszolgáló által engedélyezett IP-címtartományok](../aks/api-server-authorized-ip-ranges.md) engedélyezve vannak az AKS-fürthöz, [akkor a fürtöt](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) is létre kell hoznia vagy [frissítenie](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) kell, hogy [a régión alapuló további tartományokat engedélyezhessen.](https://github.com/Azure/dev-spaces/tree/master/public-ips)
 
@@ -162,7 +162,7 @@ Tegyük fel például, hogy egy Helm paranccsal futtatja a teljes alkalmazást e
 
 Az Azure dev spaces konfigurálható, hogy pont egy adott _Docker-fájl_ a projektben. Ha úgy tűnik, hogy az Azure Dev Spaces nem használja a tárolók létrehozásához várt _Docker-fájlt,_ előfordulhat, hogy explicit módon meg kell mondania az Azure Dev Spaces-nek, hogy melyik Dockerfile melyik Dockerfile-t használja. 
 
-A probléma megoldásához nyissa meg az Azure Dev Spaces által a projektben létrehozott _azds.yaml_ fájlt. Konfigurációk *frissítése: fejlesztés: build: dockerfile* a használni kívánt Docker-fájlra mutat. Példa:
+A probléma megoldásához nyissa meg az Azure Dev Spaces által a projektben létrehozott _azds.yaml_ fájlt. Konfigurációk *frissítése: fejlesztés: build: dockerfile* a használni kívánt Docker-fájlra mutat. Például:
 
 ```yaml
 ...
@@ -209,7 +209,7 @@ install:
 
 Ez a hiba akkor jelenhet meg, ha a szolgáltatáskód nem indul el. Az ok gyakran a felhasználói kódban van. További diagnosztikai információk, engedélyezze a részletesebb naplózás a szolgáltatás indításakor.
 
-A parancssorból használja `--verbose` a részletesebb naplózást. A használatával `--output`kimeneti formátumot is megadhat. Példa:
+A parancssorból használja `--verbose` a részletesebb naplózást. A használatával `--output`kimeneti formátumot is megadhat. Például:
 
 ```cmd
 azds up --verbose --output json
@@ -271,6 +271,113 @@ Például a *Windows BranchCache* szolgáltatás leállításához és letiltás
 * Kattintson *a Leállítás gombra.*
 * Szükség esetén letilthatja azt, ha az *Indítás típusát* Letiltott értékre *állítja.*
 * Kattintson az *OK* gombra.
+
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Hiba "nincs AzureAssignedIdentity található pod:azds/azds-webhook-deployment-\<id\> hozzárendelt állapotban"
+
+Ha egy szolgáltatást azure dev spaces egy AKS-fürt [felügyelt identitás](../aks/use-managed-identity.md) és [pod felügyelt identitások](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) telepítve, a folyamat lefagyhat a *diagram telepítési* lépés után. Ha megvizsgálja az *azds-injektor-webhook* az *azds* névtér, akkor ez a hiba.
+
+Az Azure Dev Spaces szolgáltatások a fürtön fut a fürt felügyelt identitását, hogy beszéljen az Azure Dev Spaces háttérszolgáltatások a fürtön kívül. A pod felügyelt identitásának telepítésekor a fürt csomópontjain hálózati szabályok vannak konfigurálva, hogy a felügyelt identitáshitelesítő adatok összes hívását átirányítsák [a fürtre telepített Node Managed Identity (NMI) DaemonSet daemonSet rendszerbe.](https://github.com/Azure/aad-pod-identity#node-managed-identity) Ez az NMI-daemonSet azonosítja a hívó podot, és biztosítja, hogy a pod megfelelően van címkézve a kért felügyelt identitás eléréséhez. Az Azure Dev Spaces nem észleli, ha egy fürt pod felügyelt identitás telepítve van, és nem tudja végrehajtani a szükséges konfigurációt, hogy az Azure Dev Spaces-szolgáltatások hozzáférjenek a fürt felügyelt identitásához. Mivel az Azure Dev Spaces-szolgáltatások nincsenek konfigurálva a fürt felügyelt identitásának eléréséhez, az NMI DaemonSet nem teszi lehetővé számukra, hogy a felügyelt identitás Hozegy AAD-jogkivonatot, és nem kommunikálnak az Azure Dev Spaces háttérszolgáltatásokkal.
+
+A probléma megoldásához alkalmazzon egy [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) az *azds-injektor-webhook* és frissítse podok az Azure Dev Spaces által a felügyelt identitás eléréséhez.
+
+Hozzon létre egy *webhookException.yaml* nevű fájlt, és másolja a következő YAML-definíciót:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: azds-infrastructure-exception
+  namespace: azds
+spec:
+  PodLabels:
+    azds.io/uses-cluster-identity: "true"
+```
+
+A fenti fájl létrehoz egy *AzurePodIdentityException* objektumot az *azds-injector-webhook*számára. Az objektum központi `kubectl`telepítéséhez használja a következőket:
+
+```cmd
+kubectl apply -f webhookException.yaml
+```
+
+Az Azure Dev Spaces által a felügyelt identitás eléréséhez műszeres podok frissítéséhez frissítse `kubectl` a *névteret* az alábbi YAML-definícióban, és használja az egyes fejlesztési területekhez való alkalmazáshoz.
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: azds-infrastructure-exception
+  namespace: myNamespace
+spec:
+  PodLabels:
+    azds.io/instrumented: "true"
+```
+
+Másik lehetőségként *azureidentity* és *AzureIdentityBinding* objektumokat hozhat létre, és frissítheti az Azure Dev Spaces által irányított terekben futó számítási feladatok podcímkéit az AKS-fürt által létrehozott felügyelt identitás eléréséhez.
+
+A felügyelt identitás részleteinek listázásához futtassa a következő parancsot az AKS-fürthöz:
+
+```azurecli
+az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
+```
+
+A fenti parancs a felügyelt identitás *ügyfélazonosítóját* és *erőforrásazonosítóját* adja ki. Például:
+
+```json
+{
+  "clientId": "<clientId>",
+  "resourceId": "/subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>"
+}
+```
+
+*AzureIdentity-objektum* létrehozásához hozzon létre egy *fürtidentitás.yaml* nevű fájlt, és használja a következő YAML-definíciót, amely az előző parancs felügyelt identitásának részleteivel frissült:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+  name: my-cluster-mi
+spec:
+  type: 0
+  ResourceID: /subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>
+  ClientID: <clientId>
+```
+
+*AzureIdentityBinding* objektum létrehozásához hozzon létre egy *fürtidentitybinding.yaml* nevű fájlt, és használja a következő YAML-definíciót:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+  name: my-cluster-mi-binding
+spec:
+  AzureIdentity: my-cluster-mi
+  Selector: my-label-value
+```
+
+*Az AzureIdentity* és az *AzureIdentityBinding* objektumok üzembe helyezéséhez használja a következőket: `kubectl`
+
+```cmd
+kubectl apply -f clusteridentity.yaml
+kubectl apply -f clusteridentitybinding.yaml
+```
+
+Az *AzureIdentity* és az *AzureIdentityBinding-objektumok* üzembe helyezése után az *aadpodidbinding: my-label-value* label használatával rendelkező munkaterhelés hozzáférhet a fürt felügyelt identitásához. Adja hozzá ezt a címkét, és telepítse újra az összes számítási feladatok bármely fejlesztői térben futó. Például:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample
+        aadpodidbinding: my-label-value
+    spec:
+      [...]
+```
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Gyakori problémák a Visual Studio és a Visual Studio kódhasználatával az Azure Dev Spaces szolgáltatással
 
@@ -338,7 +445,7 @@ A probléma megoldása:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>"Microsoft.DevSpaces/register/action" engedélyezési hiba
 
-Az Azure Dev Spaces kezeléséhez *tulajdonosi* vagy *közreműködői* hozzáférésre van szüksége az Azure-előfizetésben. Ha fejlesztői tárolókat próbál kezelni, és nem rendelkezik *tulajdonosi* vagy *közreműködői* hozzáféréssel a társított Azure-előfizetéshez, előfordulhat, hogy engedélyezési hiba jelenik meg. Példa:
+Az Azure Dev Spaces kezeléséhez *tulajdonosi* vagy *közreműködői* hozzáférésre van szüksége az Azure-előfizetésben. Ha fejlesztői tárolókat próbál kezelni, és nem rendelkezik *tulajdonosi* vagy *közreműködői* hozzáféréssel a társított Azure-előfizetéshez, előfordulhat, hogy engedélyezési hiba jelenik meg. Például:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
@@ -397,7 +504,7 @@ A felhasználó RBAC szerepkörének frissítése a vezérlőhöz:
     * A *Szerepkör csoportban*válassza a *Közreműködő* vagy *a Tulajdonos*lehetőséget.
     * A *Hozzáférés hozzárendelése a területen*válassza az Azure *AD felhasználó, csoport vagy egyszerű szolgáltatás*lehetőséget.
     * A *Select területen*keresse meg az engedélyeket adni kívánt felhasználót.
-1. Kattintson a *Mentés* gombra.
+1. Kattintson a *Save* (Mentés) gombra.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>A DNS-névfeloldás sikertelen a fejlesztői tárolóhelyek szolgáltatáshoz társított nyilvános URL-cím esetén
 
@@ -497,7 +604,7 @@ A probléma megoldása:
 
 Az [AKS-fürt tanúsítványainak elforgatása](../aks/certificate-rotation.md)után bizonyos `azds space list` műveletek, például a műveletek `azds up` sikertelenek lesznek. Az Azure Dev Spaces-vezérlő tanúsítványait is frissítenie kell, miután elforgatta a tanúsítványokat a fürtön.
 
-A probléma megoldásához győződjön meg arról, `az aks get-credentials` hogy a `azds controller refresh-credentials` *kubeconfig* rendelkezik a frissített tanúsítványokkal, majd futtassa a parancsot. Példa:
+A probléma megoldásához győződjön meg arról, `az aks get-credentials` hogy a `azds controller refresh-credentials` *kubeconfig* rendelkezik a frissített tanúsítványokkal, majd futtassa a parancsot. Például:
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>

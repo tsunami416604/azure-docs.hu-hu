@@ -1,5 +1,5 @@
 ---
-title: Készítse elő az Azure Container technikai eszközeit
+title: Azure virtuális gép technikai eszközének létrehozása
 description: Ez a cikk ismerteti a lépéseket és a követelmények egy tároló ajánlat konfigurálása az Azure Marketplace-en.
 author: anbene
 ms.author: mingshen
@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 62c77681accb19183b5e8aa3ae8d80c225b2d284
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 262129084be5c6a68bfd8d8708c9a10fbb606144
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266018"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383732"
 ---
-# <a name="prepare-your-azure-container-technical-assets"></a>Készítse elő az Azure Container technikai eszközeit
+# <a name="create-an-azure-vm-technical-asset"></a>Azure virtuális gép technikai eszközének létrehozása
 
 > [!IMPORTANT]
 > Az Azure Container-ajánlatok kezelését áthelyezzük a Cloud Partner Portalról a Partnerközpontba. Az ajánlatok áttelepítéséig kövesse a Container technikai eszközeinek előkészítése a Cloud Partner Portal számára az ajánlatok kezeléséhez című, a [Tároló technikai eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) című részben található utasításokat.

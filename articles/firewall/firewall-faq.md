@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113560"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383073"
 ---
 # <a name="azure-firewall-faq"></a>Gyakori kérdések az Azure tűzfalról
 
@@ -72,9 +72,9 @@ A webalkalmazás-tűzfal (WAF) az Application Gateway egyik szolgáltatása, ame
 
 Az Azure Firewall szolgáltatás kiegészíti a hálózati biztonsági csoport funkcióit. Együtt jobb "mélyreható védelmi" hálózati biztonságot nyújtanak. A hálózati biztonsági csoportok elosztott hálózati rétegforgalom-szűrést biztosítanak, hogy az egyes előfizetésekben a virtuális hálózatokon belüli erőforrásokra irányuló forgalom korlátozása. Az Azure Firewall egy teljesen állapotalapú, központi hálózati tűzfal szolgáltatásként, amely hálózati és alkalmazásszintű védelmet biztosít a különböző előfizetések és virtuális hálózatok között.
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>A hálózati biztonsági csoportok (NSG-k) támogatottak az Azure Tűzfal alhálózatban?
+## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>A hálózati biztonsági csoportok (NSG-k) támogatottak az AzureFirewallSubnet?
 
-Az Azure Firewall egy felügyelt szolgáltatás több védelmi réteget, beleértve a platformvédelem hálózati hálózati szintű NSG-k (nem látható).  Alhálózati szintű NSG-k nem szükségesek az Azure Tűzfal alhálózaton, és le vannak tiltva, hogy ne szakadjon meg a szolgáltatás.
+Az Azure Firewall egy felügyelt szolgáltatás több védelmi réteget, beleértve a platformvédelem hálózati hálózati szintű NSG-k (nem látható).  Alhálózati szintű NSG-k nem szükségesek az AzureFirewallSubnet, és le vannak tiltva, hogy ne szakadjon meg a szolgáltatás megszakítása.
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hogyan állíthatom be az Azure Firewall szolgáltatást a szolgáltatásvégpontokkal?
 

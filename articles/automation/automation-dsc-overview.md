@@ -1,5 +1,5 @@
 ---
-title: Állapotkonfiguráció áttekintése
+title: Az Azure Automation állapotkonfigurációja – áttekintés
 description: Az Azure Automation állapotkonfigurációjának (DSC), a feltételeinek és az ismert problémáknak a áttekintése
 keywords: powershell dsc, kívánt állapotkonfiguráció, powershell dsc azure
 services: automation
@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010256"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383184"
 ---
 # <a name="state-configuration-overview"></a>Állapotkonfiguráció áttekintése
 
@@ -123,6 +123,7 @@ Az Azure ExpressRoute-felhasználóknak meg kell jegyezniük, hogy ez a fájl az
 - A DSC használatának első lépései az Azure Automation állapotkonfigurációjában az [Azure Automation állapotkonfiguráció használatának első lépései.](automation-dsc-getting-started.md)
 - A csomópontok alaplapi állapotáról a [Bevezetési gépek az Azure Automation állapotkonfigurációáltali kezelésről](automation-dsc-onboarding.md)olvashat.
 - A DSC-konfigurációk összeállításáról a célcsomópontokhoz való hozzárendelésről a [Konfigurációk összeállítása az Azure Automation állapotkonfigurációjában](automation-dsc-compile.md)témakörben olvashat.
-- A PowerShell-parancsmagok hivatkozásáról az [Azure Automation állapotkonfigurációs parancsmagjai.](/powershell/module/azurerm.automation/#automation)
+- A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
 - Díjszabási információkért lásd: [Azure Automation state configuration fortaring.](https://azure.microsoft.com/pricing/details/automation/)
 - Az Azure Automation State Configuration folyamatos üzembe helyezési folyamatban való használatára példa: [Folyamatos üzembe helyezés az Azure Automation állapotkonfiguráció és csokoládéhasználatával.](automation-dsc-cd-chocolatey.md)

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63271567e70955f6dfb0b10a5c882b6dce9545ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74932488"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309208"
 ---
 # <a name="blocking-legacy-authentication"></a>Örökölt hitelesítés blokkolása
  
@@ -31,11 +31,11 @@ Ma az összes kompromittáló bejelentkezési kísérlet többsége örökölt h
 
 Mielőtt letiltaná az örökölt hitelesítést a címtárban, először meg kell értenie, hogy a felhasználók rendelkeznek-e olyan alkalmazásokkal, amelyek örökölt hitelesítést használnak, és hogy ez hogyan befolyásolja a teljes könyvtárat. Az Azure AD bejelentkezési naplók segítségével megismerheti, ha örökölt hitelesítést használ.
 
-1. Keresse meg az Azure Portalon > Azure Active Directory > bejelentkezések.
-1. Adja hozzá az Ügyfélalkalmazás oszlopot, ha az nem jelenik meg, ha az oszlopok > ügyfélalkalmazásra kattint.
-1. Szűrés ügyfélalkalmazás szerint, > ellenőrizze az összes egyéb ügyfél beállítást, és kattintson az Alkalmaz gombra.
-1. Szűrj állapot szerint > sikeres, és kattintson az Alkalmaz gombra. 
-1. Szükség esetén bővítse a dátumtartományt a Dátum szűrő vel.
+1. Nyissa meg az **Azure** >Active **Directory** >bejelentkezések azure **portalját.**
+1. Adja hozzá az **Ügyfélalkalmazás** oszlopot, ha az nem jelenik meg az **Oszlopok** > **ügyfélalkalmazásra**kattintva.
+1. Szűrés **ügyfélalkalmazás szerint**  > ellenőrizze az összes **bemutatott örökölt hitelesítési ügyfél** beállítást.
+1. Szűrés **sikeres állapot** > **szerint.** 
+1. Szükség esetén bővítse a dátumtartományt a **Dátum** szűrő vel.
 
 A szűrés csak a kiválasztott örökölt hitelesítési protokollok által végrehajtott sikeres bejelentkezési kísérleteket jeleníti meg. Az egyes bejelentkezési próbálkozásokra kattintva további részleteket jeleníthet meg. Az Ügyfélalkalmazás oszlop vagy az Alapszintű adatok lap Ügyfélalkalmazás mezője, miután kiválasztotta az egyes adatsorokat, jelzi, hogy melyik örökölt hitelesítési protokollt használta. Ezek a naplók jelzik, hogy mely felhasználók továbbra is az örökölt hitelesítéstől függően vannak, és mely alkalmazások használnak örökölt protokollokat a hitelesítési kérelmek hez. Azon felhasználók számára, akik nem jelennek meg ezekben a naplókban, és megerősítést nyer, hogy nem használnak örökölt hitelesítést, valósítson meg egy feltételes hozzáférési házirendet, vagy engedélyezze az Alapkonfiguráció házirendet: csak ezeknek a felhasználóknak tiltsa le az örökölt hitelesítést.
 
@@ -62,7 +62,7 @@ Ha Office 2013 Windows-ügyfeleket vagy régebbi verziókat használ, javasoljuk
 
 Az Office 2010 nem támogatja a modern hitelesítést. Az Office 2010-es verzióval rendelkező felhasználókat frissítenie kell az Office újabb verziójára. Javasoljuk, hogy frissítsen az Office 2016-ra vagy újabb verzióra, mivel alapértelmezés szerint blokkolja az örökölt hitelesítést.
 
-MacOS használata esetén javasoljuk, hogy frissítsen a Mac Office 2016-os vagy újabb verzióra. Ha a natív levelezőprogramot használja, minden eszközön rendelkeznie kell a MacOS 10.14-es vagy újabb verziójával.
+MacOS használata esetén javasoljuk, hogy frissítsen a Mac Office 2016-os vagy újabb verzióra. Ha a natív levelezőprogramot használja, minden eszközön rendelkeznie kell a macOS 10.14-es vagy újabb verziójával.
 
 ### <a name="step-3-exchange-and-sharepoint"></a>3. lépés: Exchange és SharePoint
 

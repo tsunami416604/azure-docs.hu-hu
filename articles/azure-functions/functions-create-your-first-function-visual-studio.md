@@ -1,22 +1,22 @@
 ---
 title: 'Rövid útmutató: Az első függvény létrehozása az Azure-ban a Visual Studio használatával'
-description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre és tehet közzé HTTP-eseményindító Azure-függvényt a Visual Studio használatával.
+description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre és tehet közzé http-aktivált Azure-függvényt a Visual Studio használatával.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: dadb705e8b756418be40d738aa81b3e77961aead
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e58414fa94a4ef54eb2f288b2cd636c10611460d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657602"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308931"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rövid útmutató: Az első függvény létrehozása az Azure-ban a Visual Studio használatával
 
 Az Azure Functions lehetővé teszi a kód futtatását kiszolgáló nélküli környezetben anélkül, hogy először létre kell hoznia egy virtuális számítógépet, vagy közzé kell tennie egy webalkalmazást.
 
-Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre és tesztelhet helyileg egy "hello world" HTTP-trigger C# függvényalkalmazást, amelyet ezután közzétesz az Azure-ban. 
+Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre és tesztelhet helyileg egy "hello world" HTTP-triggered C# függvényalkalmazást, amelyet ezután közzétesz az Azure-ban. 
 
 ![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -28,7 +28,7 @@ Az oktatóanyag befejezéséhez először telepítse a [Visual Studio 2019-et.](
 
 ![A Visual Studio telepítése az Azure fejlesztési munkaterhelésével](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Ha nem rendelkezik [Azure-előfizetéssel](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/dotnet/).
 
 ## <a name="create-a-function-app-project"></a>Függvényalkalmazás-projekt létrehozása
 
@@ -38,7 +38,7 @@ A Visual Studio létrehoz egy projektet és osztályt, amely a HTTP trigger funk
 
 Bővítse ki a funkció képességeit bemeneti és kimeneti kötésekkel a megfelelő attribútumok alkalmazásával a metódusra. További információkért lásd az [Azure Functions C#-fejlesztői referenciaanyagának](functions-dotnet-class-library.md)[Eseményindítók és kötések](functions-dotnet-class-library.md#triggers-and-bindings) szakaszát.
 
-Most, hogy létrehozta a függvényprojektet és egy HTTP-eseményindító funkciót, tesztelheti azt a helyi számítógépen.
+Most, hogy már létrehozott egy függvényprojektet és egy HTTP-eseményindítóval aktivált függvényt, tesztelheti a helyi számítógépen.
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
@@ -58,7 +58,7 @@ A projekt közzététele előtt rendelkeznie kell egy függvényalkalmazással a
 
 1. Másolja a függvényalkalmazás alap URL-címét a **Profil közzététele** lapról. Cserélje `localhost:port` le az URL-címnek azt a részét, amelyet a függvény helyi teszteléséhez használt az új alap URL-címre. Fűzze hozzá `?name=<YOUR_NAME>` a lekérdezési karakterláncot ehhez az URL-címhez, és futtassa a kérelmet.
 
-    A HTTP-eseményindító funkciót meghívja URL-cím formátuma a következő:
+    A HTTP által aktivált függvényt meghívja URL-cím formátuma a következő:
 
     `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
@@ -72,7 +72,7 @@ A projekt közzététele előtt rendelkeznie kell egy függvényalkalmazással a
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban a Visual Studio segítségével hozhat létre és tehet közzé egy C# függvényalkalmazást az Azure-ban egy egyszerű HTTP-eseményindító funkcióval. 
+Ebben a rövid útmutatóban a Visual Studio segítségével hozhat létre és tehet közzé egy C# függvényalkalmazást az Azure-ban egy egyszerű HTTP-aktivált funkcióval. 
 
 A következő cikkre való ugrással megtudhatja, hogyan adhat hozzá egy Azure Storage-várólista-kötést a függvényhez:
 > [!div class="nextstepaction"]

@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/14/2020
+ms.openlocfilehash: 18f8b0732e4af0229ff225d9c3b423e27bf342a8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409847"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382804"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Az adatfolyamok teljesítményének és hangolási útmutatójának leképezése
 
@@ -37,7 +37,7 @@ A leképezési adatfolyamok tervezésekor egyesítheti az egyes átalakításoka
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Növekvő számítási méret az Azure-integrációs futásidőben
 
-A több maggal rendelkező integrációs futásidő növeli a csomópontok számát a Spark számítási környezetekben, és nagyobb feldolgozási teljesítményt biztosít az adatok olvasásához, írásához és átalakításához.
+A több maggal rendelkező integrációs futásidő növeli a csomópontok számát a Spark számítási környezetekben, és nagyobb feldolgozási teljesítményt biztosít az adatok olvasásához, írásához és átalakításához. Az ADF-adatfolyamok a Sparkot használják a számítási motorhoz. A Spark-környezet nagyon jól működik a memória optimalizált erőforrásokon.
 * Ha azt szeretné, hogy a feldolgozási arány magasabb legyen, mint a bemeneti arány, **próbálkozzon a számítási optimalizált** fürttel.
 * Ha több adatot szeretne gyorsítótárazni a memóriában, próbálkozzon **a memóriaoptimalizált** fürttel. A memória optimalizált memória magonkénti ár-pont, mint a számítási optimalizált, de valószínűleg gyorsabb átalakítási sebességet eredményez.
 
@@ -49,7 +49,11 @@ Az integrációs futásidejűek létrehozásáról az [Integrációs futásidő 
 
 Alapértelmezés szerint a hibakeresés bekapcsolása az alapértelmezett Azure-integrációs futásidőt fogja használni, amely automatikusan létrejön az egyes adat-előállítókhoz. Ez az alapértelmezett Azure IR van beállítva nyolc mag, négy egy illesztőprogram-csomópont és négy egy feldolgozó csomópont, általános számítási tulajdonságok használatával. A nagyobb adatokkal való tesztelés során növelheti a hibakeresési fürt méretét egy nagyobb konfigurációkkal rendelkező Azure IR létrehozásával, és válassza ezt az új Azure IR-t a hibakeresés bekapcsolásakor. Ez arra utasítja az ADF-et, hogy használja ezt az Azure IR-t az adatok előnézetéhez és a folyamat hibakereséséhez az adatfolyamokkal.
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optimalizálás az Azure SQL Database és az Azure SQL Data Warehouse számára
+### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>Fürtszámítási indítási idejének csökkentése a TTL-lel
+
+Van egy tulajdonság az Azure IR adatfolyam-tulajdonságok alatt, amely lehetővé teszi, hogy a fürt számítási erőforrások készletének a gyárban álló készlet. Ezzel a készlettel egymás után küldhet idáig adatfolyam-tevékenységeket a végrehajtáshoz. A készlet létrehozása után minden további feladat 1-2 percet vesz igénybe, amíg az igény szerinti Spark-fürt végrehajtja a feladatot. Az erőforráskészlet kezdeti beállítása körülbelül 6 percet vesz igénybe. Adja meg, hogy mennyi időt kíván fenntartani az erőforráskészletet az élő (TTL) beállításban.
+
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimalizálás az Azure SQL Database és az Azure SQL Data Warehouse Synapse számára
 
 ### <a name="partitioning-on-source"></a>Particionálás a forráson
 

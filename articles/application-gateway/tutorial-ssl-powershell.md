@@ -1,7 +1,7 @@
 ---
-title: SSL-megszüntetés a PowerShell használatával
+title: TLS-megszüntetés a PowerShell használatával
 titleSuffix: Azure Application Gateway
-description: Megismerheti, hogyan hozhat létre alkalmazásátjárót és adhat hozzá egy tanúsítványt az SSL leállításához az Azure PowerShell használatával.
+description: Ismerje meg, hogyan hozhat létre alkalmazásátjárót, és hogyan adhat hozzá tanúsítványt a TLS-megszüntetéshez az Azure PowerShell használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2ce5b8472fe10b51cff34677c9ce5a89888bdc01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bd625982ebd051b92df2f66515fd5b0d0612303
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075064"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311921"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Alkalmazásátjáró létrehozása az SSL leállításával az Azure PowerShell használatával
+# <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Alkalmazásátjáró létrehozása TLS-végződtetéssel az Azure PowerShell használatával
 
-Az Azure PowerShell használatával létrehozhat egy [alkalmazásátjárót](overview.md) egy [SSL leállítási](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) tanúsítvánnyal, amely egy [virtuálisgép-méretezési csoportot](ssl-overview.md) használ háttérkiszolgálókként. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez. 
+Az Azure PowerShell segítségével létrehozhat egy [alkalmazásátjárót](overview.md) a [TLS/SSL-végződéstanúsítványsal,](ssl-overview.md) amely [egy virtuálisgép-méretezési készletet](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használ a háttérkiszolgálókhoz. Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 

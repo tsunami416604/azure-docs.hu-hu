@@ -1,132 +1,334 @@
 ---
-title: 'Oktatóanyag: Linux Python alkalmazás postgre-vel'
-description: Megtudhatja, hogyan szerezhet be egy Linux Python-alkalmazást az Azure App Service szolgáltatásban, amely kapcsolatban áll egy PostgreSQL-adatbázissal az Azure-ban. A Django az oktatóanyagban használatos.
+title: 'Oktatóanyag: Linux Python alkalmazás a Postgres-szel'
+description: Megtudhatja, hogyan szerezhet be egy Linux Python-alkalmazást az Azure App Service szolgáltatásban, amely kapcsolatban áll egy PostgreSQL-adatbázissal az Azure-ban. Az oktatóanyag egy Django mintaalkalmazás használatával szemlélteti.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/23/2020
+ms.date: 04/14/2020
 ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 13431b62e64774a4c31cf95200def3ba77f973d7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 47beb964f87fb7a68a4c12b0e35f17038cdf16f8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77523934"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380697"
 ---
-# <a name="tutorial-run-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Python (Django) webalkalmazás futtatása a PostgreSQL szolgáltatással az Azure App Service-ben
+# <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Python (Django) webalkalmazás üzembe helyezése a PostgreSQL alkalmazással az Azure App Service-ben
 
-Az [Azure App Service](app-service-linux-intro.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez az oktatóanyag bemutatja, hogyan kapcsolhat össze egy adatközpontú Python Django webalkalmazást egy Azure Database for PostgreSQL-adatbázishoz, és hogyan telepítheti és futtathatja az alkalmazást az Azure App Service-en.
+Ez az oktatóanyag bemutatja, hogyan telepíthet egy adatközpontú Python (Django) webalkalmazást az [Azure App Service szolgáltatásba,](app-service-linux-intro.md) és hogyan csatlakoztathatja egy Azure-adatbázispostgreSQL-adatbázishoz. Az App Service rendkívül skálázható, önjavító webhosting szolgáltatást nyújt. 
 
-![Python Django webalkalmazás az Azure App Service-ben](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
+![Python Django webalkalmazás telepítése az Azure App Service szolgáltatásba](./media/tutorial-python-postgresql-app/deploy-python-django-app-in-azure.png)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Azure-adatbázis létrehozása postgreSQL-adatbázishoz és webalkalmazás csatlakoztatása
-> * A webalkalmazás üzembe helyezése az Azure App Service szolgáltatásban
+> * Azure-adatbázis létrehozása postgreSQL-adatbázishoz
+> * Kód üzembe helyezése az Azure App Service szolgáltatásban, és csatlakozás a Postgres-hez
+> * A kód frissítése és újratelepítés
 > * Diagnosztikai naplók megtekintése
 > * A webalkalmazás kezelése az Azure Portalon
 
-A cikk lépéseit macOS, Linux vagy Windows rendszeren követheti. A lépések hasonlóak a legtöbb esetben, bár a különbségek nem részletesebben az oktatóanyagban. Az alábbi példák `bash` többsége terminálablakot használ Linuxon. 
+A cikk lépéseit macOS, Linux vagy Windows rendszeren követheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag megkezdése előtt:
 
 - [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+- Telepítse [az Azure CLI-t](/cli/azure/install-azure-cli).
 - Telepítse [a Git](https://git-scm.com/)- alkalmazást.
 - Telepítse [a Python 3-at](https://www.python.org/downloads/).
-- Telepítse és futtassa [a PostgreSQL-t.](https://www.postgresql.org/download/)
 
-## <a name="test-postgresql-installation-and-create-a-database"></a>Tesztelje a PostgreSQL telepítését és hozzon létre egy adatbázist
-
-Először is, csatlakozzon a helyi PostgreSQL szerverhez, és hozzon létre egy adatbázist: 
-
-A helyi terminálablakban `psql` `postgres` futtassa a helyi PostgreSQL-kiszolgálóhoz való csatlakozáshoz beépített felhasználóként való csatlakozáshoz.
-
-```bash
-sudo su - postgres
-psql
-```
-vagy
-```PowerShell
-psql -U postgres
-```
-
-Ha a kapcsolat létrejött, a PostgreSQL-adatbázis fut. Ha nem, mindenképp a [Letöltések – PostgreSQL központi kiadással](https://www.postgresql.org/download/) foglalkozó szakaszban ismertetett, az operációs rendszerére vonatkozó utasításokat követve indítsa el a helyi PostgreSQL-adatbázist.
-
-Hozzon létre egy új adatbázisnevű *pollsdb*, és hozzon létre egy adatbázis felhasználó neve *manager* jelszóval *szupertitkos pass*:
-
-```sql
-CREATE DATABASE pollsdb;
-CREATE USER manager WITH PASSWORD 'supersecretpass';
-GRANT ALL PRIVILEGES ON DATABASE pollsdb TO manager;
-```
-
-A PostgreSQL-ügyfél bezárásához írja be a `\q` parancsot.
-
-<a name="step2"></a>
-## <a name="create-and-run-the-local-python-app"></a>A helyi Python-alkalmazás létrehozása és futtatása
-
-Ezután állítsa be és futtassa a minta Python Django webalkalmazást.
-
-A [djangoapp](https://github.com/Azure-Samples/djangoapp) mintatár tartalmazza az adatközpontú [Django](https://www.djangoproject.com/) szavazási alkalmazást, amelyet az [első Django alkalmazás](https://docs.djangoproject.com/en/2.1/intro/tutorial01/) djangoi dokumentációban való írása követve kap.
-
-### <a name="clone-the-sample-app"></a>A mintaalkalmazás klónozása
+## <a name="clone-the-sample-app"></a>A mintaalkalmazás klónozása
 
 Terminálablakban futtassa a következő parancsokat a mintaalkalmazás-tárház klónozásához, és váltson az új munkakönyvtárra:
 
-```bash
-git clone https://github.com/Azure-Samples/djangoapp.git
+```
+git clone https://github.com/Azure-Samples/djangoapp
 cd djangoapp
 ```
 
-### <a name="configure-the-python-virtual-environment"></a>A Python virtuális környezet konfigurálása
+A djangoapp mintatár tartalmazza az adatközpontú [Django](https://www.djangoproject.com/) szavazási alkalmazást, amelyet az [első Django alkalmazás](https://docs.djangoproject.com/en/2.1/intro/tutorial01/) djangoi dokumentációban való írása követve kap.
 
-Hozzon létre és aktiváljon egy Python virtuális környezetet az alkalmazás futtatásához.
+## <a name="prepare-app-for-app-service"></a>Alkalmazás előkészítése az App Service szolgáltatásra
+
+Mint sok Python webes keretrendszerek, Django [igényel bizonyos módosításokat, mielőtt azok futtathatók az éles kiszolgálón,](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/)és ez nem különbözik az App Service. Módosítania kell, és hozzá kell adnia néhány beállítást az alapértelmezett *azuresite/settings.py* fájlban, hogy az alkalmazás az App Service-be való üzembe helyezése után is működjön. 
+
+Vessen egy pillantást *az azuresite/production.py,* amely leteszi a szükséges konfigurációt az App Service. Ez hozzá a kényelem, de még nem használja az alkalmazás. Röviden a következőket teszi:
+
+- Örökölje az összes beállítást az *azuresite/settings.py*webhelyről.
+- Adja hozzá az App Service alkalmazás teljesen minősített tartománynevét az engedélyezett állomásokhoz. 
+- A [WhiteNoise](https://whitenoise.evans.io/en/stable/) használatával engedélyezheti a statikus fájlok kiszolgálását éles környezetben, mert a Django alapértelmezés szerint nem szolgál statikus fájlokat éles környezetben. A WhiteNoise csomag már szerepel *a requirements.txt*.
+- Adja hozzá a PostgreSQL adatbázis konfigurációját. Alapértelmezés szerint a Django az Sqlite3-ot használja adatbázisként, de nem alkalmas éles alkalmazásokhoz. A [psycopg2-bináris](https://pypi.org/project/psycopg2-binary/) csomag már szerepel a *requirements.txt*fájlban.
+
+Hajtsa végre a következő módosításokat az alkalmazáson úgy, hogy *az azuresite/production.py-t* használja az App Service-ben.
+
+1. A *manage.py*módosítsa a következő sort:
+
+    ```python
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'azuresite.settings')
+    ```
+
+    A következő kódra:
+
+    ```python
+    if os.environ.get('DJANGO_ENV') == 'production':
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'azuresite.production')
+    else:
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'azuresite.settings')
+    ```
+
+    Az App Service-alkalmazás `DJANGO_ENV` konfigurálásakor később be kell állítania a környezeti változót.
+
+1. Az *azuresite/wsgi.py*alkalmazásban ugyanazt a módosítást kell elkészíteni, mint fent.
+
+    Az App Service-ben *manage.py* használatával futtathatja az adatbázis-áttelepítéseket, és az App Service *az azuresite/wsgi.py* használatával futtatja a Django-alkalmazást éles környezetben. Ez a módosítás mindkét fájlban biztosítja, hogy a termelési beállítások mindkét esetben használatosak legyenek.
+
+## <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
+
+Az Azure CLI-t már telepítenie kell. [Az Azure CLI](/cli/azure/what-is-azure-cli) lehetővé teszi, hogy a parancssori terminálról származó Azure-erőforrásokkal dolgozzon. 
+
+Az Azure-ba való [`az login`](/cli/azure/reference-index#az-login) bejelentkezéshez futtassa a következő parancsot:
+
+```azurecli
+az login
+```
+
+Kövesse a terminál on utasításokat, hogy jelentkezzen be az Azure-fiókba. Ha elkészült, az előfizetések a következőképpen jelennek meg:
+
+```
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "00000000-0000-0000-0000-000000000000",
+    "id": "00000000-0000-0000-0000-000000000000",
+    "isDefault": false,
+    "managedByTenants": [],
+    "name": "<subscription-name>",
+    "state": "Enabled",
+    "tenantId": "00000000-0000-0000-0000-000000000000",
+    "user": {
+      "name": "<azure-account-name>",
+      "type": "user"
+    }
+  },
+  ...
+]
+```
+
+## <a name="create-postgres-database-in-azure"></a>Postgres-adatbázis létrehozása az Azure-ban
+
+<!-- > [!NOTE]
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
+
+Ebben a szakaszban hozzon létre egy Azure-adatbázist a PostgreSQL-kiszolgálóhoz és -adatbázishoz. A kezdéshez `db-up` telepítse a bővítményt a következő paranccsal:
+
+```azurecli
+az extension add --name db-up
+```
+
+Hozza létre a Postgres [`az postgres up`](/cli/azure/ext/db-up/postgres?view=azure-cli-latest#ext-db-up-az-postgres-up) adatbázist az Azure-ban a paranccsal, ahogy az a következő példában látható. Cserélje le * \<a postgresql-név>* *egyedi* névre (a kiszolgálóvégpont *https://\<postgresql-név>.postgres.database.azure.com*). A * \<rendszergazdai felhasználónév>* és * \<a rendszergazdai jelszó>* esetén adja meg az adatbázis-rendszergazdai fiók hitelesítő adatait.
+
+<!-- Issue: without --location -->
+```azurecli
+az postgres up --resource-group myResourceGroup --location westus --server-name <postgresql-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
+```
+
+Ez a parancs eltarthat egy ideig, mert a következőket teszi:
+
+- Létrehoz egy `myResourceGroup`, ha nem létező erőforráscsoportot. A(z) `--resource-group` nem kötelező.
+- Postgres-kiszolgálót hoz létre a rendszergazda felhasználóval.
+- Létrehoz `pollsdb` egy adatbázist.
+- Hozzáférést biztosít a helyi IP-címről.
+- Lehetővé teszi a hozzáférést az Azure-szolgáltatásokból.
+- Hozzon létre egy `pollsdb` olyan felhasználót, aki hozzáfér az adatbázishoz.
+
+Az összes lépést külön-külön `az postgres` is `psql`megteheti `az postgres up` más parancsokkal és a , de mindegyiket egy lépésben végzi el.
+
+Amikor a parancs befejeződik, keresse meg az adatbázis-felhasználót létrehozó parancsfájlt a felhasználónévvel `root` és jelszóval, `Pollsdb1`amelyet később az adatbázishoz való csatlakozáshoz fog használni:
+
+```
+Successfully Connected to PostgreSQL.
+Ran Database Query: `CREATE USER root WITH ENCRYPTED PASSWORD 'Pollsdb1'`
+Ran Database Query: `GRANT ALL PRIVILEGES ON DATABASE pollsdb TO root`
+```
+
+<!-- not all locations support az postgres up -->
+> [!TIP]
+> A Postgres-kiszolgáló helyének megadásához `--location <location-name>`adja `<location_name>` meg az argumentumot, ahol az Azure egyik [régiója.](https://azure.microsoft.com/global-infrastructure/regions/) A parancs segítségével beszerezheti az [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) előfizetéshez elérhető régiókat.
+
+## <a name="deploy-the-app-service-app"></a>Az App Service-alkalmazás telepítése
+
+Ebben a szakaszban hozza létre az App Service-alkalmazást. Ezt az alkalmazást csatlakoztatja a létrehozott Postgres adatbázishoz, és telepíti a kódot.
+
+### <a name="create-the-app-service-app"></a>Az App Service-alkalmazás létrehozása
+
+<!-- validation error: Parameter 'ResourceGroup.location' can not be None. -->
+<!-- --resource-group is not respected at all -->
+
+```azurecli
+az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
+```
+<!-- !!! without --sku creates PremiumV2 plan!! -->
+
+Ez a parancs eltarthat egy ideig, mert a következőket teszi:
+
+<!-- - Create the resource group if it doesn't exist. `--resource-group` is optional. -->
+<!-- No it doesn't. az webapp up doesn't respect --resource-group -->
+- Automatikusan létrehoz egy erőforráscsoportot.
+- Létrehozza az App Service-terv *myAppServicePlan* alapszintű (B1) rétegben, ha nem létezik. `--plan`és `--sku` nem kötelező.
+- Létrehozza az App Service-alkalmazást, ha nem létezik.
+- Engedélyezi az alapértelmezett naplózást az alkalmazáshoz, ha még nincs engedélyezve.
+- Feltölti a tárházat a ZIP-telepítés használatával, engedélyezve van a buildautomatizálás.
+
+A központi telepítés befejezése után megjelenik egy JSON-kimenet, mint például a következő:
+
+```json
+{
+  "URL": "http://<app-name>.azurewebsites.net",
+  "appserviceplan": "myAppServicePlan",
+  "location": "westus",
+  "name": "<app-name>",
+  "os": "Linux",
+  "resourcegroup": "<app-resource-group>",
+  "runtime_version": "python|3.7",
+  "runtime_version_detected": "-",
+  "sku": "BASIC",
+  "src_path": "//var//lib//postgresql//djangoapp"
+}
+```
+
+Másolja az * \<alkalmazás-erőforráscsoport>* értékét. Szüksége van rá, hogy később konfigurálja az alkalmazást. 
+
+> [!TIP]
+> Ugyanezt a parancsot később is használhatja a módosítások üzembe helyezéséhez, és azonnal engedélyezheti a diagnosztikai naplókat a következőkkel:
+> 
+> ```azurecli
+> az webapp up --name <app-name>
+> ```
+
+A mintakód már telepítve van, de az alkalmazás még nem csatlakozik a Postgres-adatbázishoz az Azure-ban. Ezt fogod csinálni legközelebb.
+
+### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
+
+Ha helyileg futtatja az alkalmazást, beállíthatja a környezeti változókat a terminálmunkamenetben. Az Azure App Service-ben *ezt az alkalmazásbeállításokkal,* az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs használatával.
+
+Futtassa a következő parancsot az adatbázis-kapcsolat részleteinek alkalmazásbeállításokként való megadásához. Cserélje le * \<az alkalmazásnevet>*, * \<az alkalmazás-erőforráscsoport>* és * \<a postgresql-name>* a saját értékeire. Ne feledje, `root` hogy `Pollsdb1` a felhasználói `az postgres up`hitelesítő adatokat a .
+
+```azurecli
+az webapp config appsettings set --name <app-name> --resource-group <app-resource-group> --settings DJANGO_ENV="production" DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="root@<postgresql-name>" DBPASS="Pollsdb1" DBNAME="pollsdb"
+```
+
+Arról, hogy a kód hogyan fér hozzá ezekhez az alkalmazásbeállításokhoz, olvassa el [az Access környezeti változóit.](how-to-configure-python.md#access-environment-variables)
+
+### <a name="run-database-migrations"></a>Adatbázis-áttelepítések futtatása
+
+Az Adatbázis-áttelepítések app service-ben való futtatásához nyisson meg egy SSH-munkamenetet a böngészőben úgy, hogy *https://\<alkalmazásnévre>.scm.azurewebsites.net/webssh/host:*
+
+<!-- doesn't work when container not started -->
+<!-- ```azurecli
+az webapp ssh --resource-group myResourceGroup --name <app-name>
+``` -->
+
+Az SSH munkamenetben futtassa a következő parancsokat:
 
 ```bash
+cd site/wwwroot
+
+# Activate virtual environment
 python3 -m venv venv
 source venv/bin/activate
-```
-vagy
-```PowerShell
-py -3 -m venv venv
-venv\scripts\activate
-```
-
-A `venv` környezetben futtassa *a env.sh* vagy *env.ps1* parancsot az *azuresite/settings.py* által az adatbázis-kapcsolat beállításaihoz használt környezeti változók beállításához.
-
-```bash
-source ./env.sh
-```
-vagy
-```PowerShell
-.\env.ps1
-```
-
-Telepítse a szükséges csomagokat *a requirements.txt*fájlból, futtassa a [Django-áttelepítéseket](https://docs.djangoproject.com/en/2.1/topics/migrations/), és [hozzon létre egy rendszergazdai felhasználót:](https://docs.djangoproject.com/en/2.1/intro/tutorial02/#creating-an-admin-user)
-
-```bash
+# Install requirements in environment
 pip install -r requirements.txt
+# Run database migrations
 python manage.py migrate
+# Create the super user (follow prompts)
 python manage.py createsuperuser
 ```
 
-### <a name="run-the-web-app"></a>A webalkalmazás futtatása
+### <a name="browse-to-the-azure-app"></a>Tallózás az Azure alkalmazásban
 
-A rendszergazdai felhasználó létrehozása után futtassa a Django-kiszolgálót.
+Tallózással keresse meg a telepített alkalmazást AZ *URL-címmel\//\<http: app-name>.azurewebsites.net* böngészőben. Megjelenik a **Nincs szavazás.** 
+
+Tallózással keresse meg a *\//\<http: app-name>.azurewebsites.net/admin* és jelentkezzen be az utolsó lépésben létrehozott rendszergazdai felhasználóhasználatával. Válassza a **Hozzáadás** lehetőséget a **Kérdések**csoportban, és hozzon létre néhány választási lehetőséget.
+
+Tallózással keresse meg a telepített alkalmazást AZ *URL-címmel\//\<http: app-name>.azurewebsites.net/admin*, és hozzon létre néhány szavazási kérdést. A kérdéseket a *\//\<http: app-name>.azurewebsites.net/ címen láthatja.* 
+
+![Python Django alkalmazás futtatása az Azure-beli App Services szolgáltatásban](./media/tutorial-python-postgresql-app/deploy-python-django-app-in-azure.png)
+
+Tallózással keresse meg a telepített alkalmazást AZ *URL-címmel\//\<http: app-name>.azurewebsites.net* újra a szavazási kérdés megtekintéséhez és a kérdés megválaszolásához.
+
+Az App Service észleli a Django-projektet *wsgi.py* a tárházban, ha `manage.py startproject` minden alkönyvtárban wsgi.py fájlt keres, amely alapértelmezés szerint létrehoz. Amikor az App Service megtalálja a fájlt, betölti a Django webalkalmazást. Arról, hogy az App Service hogyan tölti be a Python-alkalmazásokat, olvassa [el a Beépített Python-lemezkép konfigurálása című témakört.](how-to-configure-python.md)
+
+**Gratulálok!** Python (Django) webalkalmazást futtat az Azure App Service Linux szolgáltatásában.
+
+## <a name="develop-app-locally-and-redeploy"></a>Alkalmazás helyi fejlesztése és újratelepítés
+
+Ebben a szakaszban a helyi környezetben fejleszti az alkalmazást, és újratelepíti a kódot az App Service-be.
+
+### <a name="set-up-locally-and-run"></a>Helyi beállítás és futtatás
+
+A helyi fejlesztési környezet beállításához és a mintaalkalmazás első futtatásához futtassa a következő parancsokat:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
+# Configure the Python virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install packages
+pip install -r requirements.txt
+# Run Django migrations
+python manage.py migrate
+# Create Django superuser (follow prompts)
+python manage.py createsuperuser
+# Run the dev server
 python manage.py runserver
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+# Configure the Python virtual environment
+py -3 -m venv venv
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+venv\scripts\activate
+
+# Install packages
+pip install -r requirements.txt
+# Run Django migrations
+python manage.py migrate
+# Create Django superuser (follow prompts)
+python manage.py createsuperuser
+# Run the dev server
+python manage.py runserver
+```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```CMD
+:: Configure the Python virtual environment
+py -3 -m venv venv
+venv\scripts\activate
+
+:: Install packages
+pip install -r requirements.txt
+:: Run Django migrations
+python manage.py migrate
+:: Create Django superuser (follow prompts)
+python manage.py createsuperuser
+:: Run the dev server
+python manage.py runserver
+```
+---
+
 Amikor a Django webalkalmazás teljesen be van töltve, a következőhez hasonló üzenetet ad vissza:
 
-```bash
+```
 Performing system checks...
 
 System check identified no issues (0 silenced).
@@ -142,273 +344,87 @@ Nyissa meg a *\/http: /localhost:8000/admin* lehetőséget, és jelentkezzen be 
 
 ![Python Django alkalmazás futtatása az App Servicesben helyileg](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
-Ugrás *a\/http: /localhost:8000* újra, hogy a szavazás kérdésére, és válaszoljon a kérdésre. A helyi Django mintaalkalmazás felhasználói adatokat ír és tárol a helyi PostgreSQL-adatbázisba.
+Ugrás *a\/http: /localhost:8000* újra, hogy a szavazás kérdésére, és válaszoljon a kérdésre. A helyi Django mintaalkalmazás írja és tárolja a felhasználói adatokat egy helyi Sqlite3 adatbázisba, így nem kell aggódnia az éles adatbázis elcseszése miatt. Ha azt szeretné, hogy a fejlesztői környezet megfeleljen az Azure-környezetnek, fontolja meg egy Postgres-adatbázis helyi használatával.
 
-A Django kiszolgáló leállításához írja be a Ctrl+C billentyűkombinációt a terminálba.
+A Django kiszolgáló leállításához írja be a Ctrl+C billentyűkombinációt.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+### <a name="update-the-app"></a>Az alkalmazás frissítése
 
-Ebben a cikkben a fennmaradó lépések az Azure CLI-parancsok at az Azure Cloud Shell. 
+Csak hogy lássa, hogyan működik az alkalmazásfrissítések készítése, készítsen egy kis módosítást a alkalmazásban. `polls/models.py` Keresse meg a sort:
 
-## <a name="create-and-connect-to-azure-database-for-postgresql"></a>Létrehozása és csatlakozás a PostgreSQL Azure-adatbázisához
-
-Ebben a szakaszban hozzon létre egy Azure Database for PostgreSQL-kiszolgáló és -adatbázis, és csatlakoztassa a webalkalmazást hozzá. Amikor telepíti a webalkalmazást az Azure App Service-ben, az alkalmazás ezt a felhőalapú adatbázist használja. 
-
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-
-Létrehozhat egy új erőforráscsoportot az Azure Database for PostgreSQL-kiszolgálóhoz, vagy használhat egy meglévő erőforráscsoportot. 
-
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
-
-### <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
-
-Hozzon létre egy PostgreSQL szervert az [az postgres kiszolgáló létrehozása](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) paranccsal a Cloud Shellben.
-
-> [!NOTE]
-> Mielőtt létrehozna egy Azure Database for PostgreSQL-kiszolgálót, ellenőrizze, hogy melyik [számítási generáció](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) érhető el az Ön régiójában. Ha a régió nem támogatja a Gen4 hardvert, módosítsa a *--sku-name parancsot* a következő parancssorban egy olyan értékre, amely et a régióban támogat, például a Gen5.If your region doesn't support Gen4 hardware, change --sku-name in the following command line to a value that's supported in your region, suchas Gen5. 
-
-A következő parancsban cserélje le * \<a postgresql-name>* egyedi kiszolgálónévre. A kiszolgálónév a *PostgreSQL-végpont\<része, https:// postgresql-name>.postgres.database.azure.com,* ezért a névnek egyedinek kell lennie az Azure összes kiszolgálóján. 
-
-Cserélje le * \<az erőforráscsoport nevét>* és * \<a régió>* a használni kívánt erőforráscsoport nevére és régiójára. A * \<rendszergazdai felhasználónév>* és * \<a rendszergazdai jelszó>* esetén hozza létre az adatbázis-rendszergazdai fiók felhasználói hitelesítő adatait. Ne * \<* feledje, hogy a>és * \<a rendszergazdai jelszó>* később a PostgreSQL kiszolgálóra és adatbázisokba való bejelentkezéshez használható.
-
-```azurecli-interactive
-az postgres server create --resource-group <resourcegroup-name> --name <postgresql-name> --location "<region>" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen5_1
+```python
+choice_text = models.CharField(max_length=200)
 ```
 
-Az Azure Database for PostgreSQL-kiszolgáló létrehozásakor az Azure CLI a következő példához hasonló JSON-kódot ad vissza:
+És változtassa meg a következőre:
 
-```json
-{
-  "administratorLogin": "myusername",
-  "earliestRestoreDate": "2020-01-22T19:02:15.727000+00:00",
-  "fullyQualifiedDomainName": "myservername.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforPostgreSQL/servers/myservername",
-  "location": "westeurope",
-  "masterServerId": "",
-  "name": "myservername",
-  "replicaCapacity": 5,
-  "replicationRole": "None",
-  "resourceGroup": "myresourcegroup",
-  "sku": {
-    "capacity": 1,
-    "family": "Gen5",
-    "name": "B_Gen5_1",
-    "size": null,
-    "tier": "Basic"
-  },
-  < JSON data removed for brevity. >
-}
+```python
+choice_text = models.CharField(max_length=100)
 ```
 
-### <a name="create-firewall-rules-for-the-azure-database-for-postgresql-server"></a>Tűzfalszabályok létrehozása az Azure Database for PostgreSQL kiszolgálóhoz
+Az adatmodell módosításával létre kell hoznia egy új Django-áttelepítést. Tegye meg a következő paranccsal:
 
-Futtassa az [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#az-postgres-server-firewall-rule-create) parancsot, hogy az Azure-erőforrásokból hozzáférést biztosítson az adatbázishoz. Cserélje le a * \<postgresql-név>* és * \<erőforráscsoport-nevét>* helyőrzők az értékeket.
-
-```azurecli-interactive
-az postgres server firewall-rule create --resource-group <resourcegroup-name> --server-name <postgresql-name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAllAzureIPs
+```
+python manage.py makemigrations
 ```
 
-> [!NOTE]
-> Az előző beállítás lehetővé teszi a hálózati kapcsolatok az Azure-hálózaton belüli összes IP-címről. Éles használatra próbálja meg beállítani a lehető legszigorúbb tűzfalszabályokat, [ha csak az alkalmazás által használt kimenő IP-címeket engedélyezi.](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)
+A módosításokat helyileg tesztelheti az áttelepítések futtatásával, a fejlesztői kiszolgáló futtatásával és a *\/http: /localhost:8000/admin*címen való navigálással:
 
-Futtassa újra a `firewall-rule create` parancsot a helyi számítógépről való hozzáférés engedélyezéséhez. Cserélje * \<le az ip-cím>* [a helyi IPv4 IP-címre.](https://www.whatsmyip.org/) Cserélje le a * \<postgresql-név>* és * \<erőforráscsoport-név>* helyőrzők a saját értékeket.
-
-```azurecli-interactive
-az postgres server firewall-rule create --resource-group <resourcegroup-name> --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
 ```
-
-### <a name="create-and-connect-to-the-azure-database-for-postgresql-database"></a>Az Azure-adatbázis létrehozása és csatlakozás a PostgreSQL-adatbázishoz
-
-Csatlakozzon az Azure Database for PostgreSQL-kiszolgálóhoz a következő parancs futtatásával. Használja a saját * \<postgresql-név>* és * \<admin-username>*, és jelentkezzen be a jelszót létrehozott.
-
-```bash
-psql -h <postgresql-name>.postgres.database.azure.com -U <admin-username>@<postgresql-name> postgres
-```
-
-Csakúgy, mint a helyi PostgreSQL-kiszolgálón, hozzon létre egy adatbázist és egy felhasználót az Azure Database for PostgreSQL kiszolgálón:
-
-```sql
-CREATE DATABASE pollsdb;
-CREATE USER manager WITH PASSWORD 'supersecretpass';
-GRANT ALL PRIVILEGES ON DATABASE pollsdb TO manager;
-```
-
-> [!NOTE]
-> Ajánlott eljárás, ha a rendszergazdai felhasználó használata helyett korlátozott engedélyekkel rendelkező adatbázis-felhasználókat hoz létre bizonyos alkalmazásokhoz. A `manager` felhasználó teljes jogosultsággal `pollsdb` *rendelkezik,* hogy csak az adatbázis.
-
-A PostgreSQL-ügyfél bezárásához írja be a `\q` parancsot.
-
-### <a name="test-app-connectivity-to-the-azure-postgresql-database"></a>Az alkalmazáskapcsolat tesztelése az Azure PostgreSQL-adatbázissal
-
-A helyi *env.sh* vagy *env.ps1* fájlja a felhőpostgreSQL-adatbázisra mutat, és a * \<postgresql-név>* lecseréli az Azure Database for PostgreSQL kiszolgálónevére.
-
-```bash
-export DBHOST="<postgresql-name>.postgres.database.azure.com"
-export DBUSER="manager@<postgresql-name>"
-export DBNAME="pollsdb"
-export DBPASS="supersecretpass"
-```
-vagy
-```powershell
-$Env:DBHOST = "<postgresql-name>.postgres.database.azure.com"
-$Env:DBUSER = "manager@<postgresql-name>"
-$Env:DBNAME = "pollsdb"
-$Env:DBPASS = "supersecretpass"
-```
-
-A `venv` helyi terminálablakban lévő környezetben futtassa a szerkesztett *env.sh* vagy *az env.ps1 .* 
-```bash
-source ./env.sh
-```
-vagy
-```PowerShell
-.\env.ps1
-```
-
-Futtassa a Django-áttelepítést az Azure-adatbázisba, és hozzon létre egy rendszergazdai felhasználót.
-
-```bash
 python manage.py migrate
-python manage.py createsuperuser
-```
-
-A rendszergazdai felhasználó létrehozása után futtassa a Django kiszolgálót.
-
-```bash
 python manage.py runserver
 ```
 
-A böngészőben nyissa meg *a http:\//localhost:8000*, és meg kell jelennie az üzenet **Nincs szavazás oka** újra. 
+### <a name="redeploy-code-to-azure"></a>Kód újratelepítése az Azure-ba
 
-Ugrás a *\/http: /localhost:8000/admin*, jelentkezzen be a rendszergazda felhasználó által létrehozott, és hozzon létre egy szavazáskérdés, mint korábban.
+A módosítások újratelepítéséhez futtassa a következő parancsot a tárház gyökéréből:
 
-![Python Django alkalmazás futtatása az App Servicesben helyileg](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
-
-Ugrás *a\/http: /localhost:8000* újra, és látni a szavazás kérdés jelenik meg. Az alkalmazás most adatokat ír az Azure Database for PostgreSQL adatbázisba.
-
-A Django kiszolgáló leállításához írja be a Ctrl+C billentyűkombinációt a terminálba.
-
-## <a name="deploy-the-web-app-to-azure-app-service"></a>A webalkalmazás üzembe helyezése az Azure App Service szolgáltatásban
-
-Ebben a lépésben telepíti az Azure Database for PostgreSQL adatbázis-csatlakoztatott Python alkalmazást az Azure App Service-be.
-
-### <a name="configure-repository"></a>Az adattár konfigurálása
-
-Mivel ez az oktatóanyag egy Django-mintát használ, módosítania kell, és hozzá kell adnia néhány beállítást a *djangoapp/azuresite/settings.py* fájlban az Azure App Service-rel való munkához. 
-
-1. A Django `HTTP_HOST` ellenőrzi a fejlécet a bejövő kérelmekben. Ahhoz, hogy a Django webalkalmazás működjön az App Service-ben, hozzá kell adnia az alkalmazás teljesen minősített tartománynevét az engedélyezett állomásokhoz. 
-   
-   Az *azuresite/settings.py* szerkesztéséhez `ALLOWED_HOSTS` módosítsa a sort az alábbiak szerint:
-   
-   ```python
-   ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
-   ```
-   
-1. A Django nem támogatja [a statikus fájlok éles környezetben való kiszolgálását.](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/) Ebben az oktatóanyagban a [WhiteNoise](https://whitenoise.evans.io/en/stable/) segítségével engedélyezheti a fájlok kiszolgálását. A WhiteNoise csomag már telepítve volt *a requirements.txt*. 
-   
-   Konfigurálása Django használni WhiteNoise, az *azuresite/settings.py*, keresse meg a `MIDDLEWARE` beállítást, és adja hozzá `whitenoise.middleware.WhiteNoiseMiddleware` a listához, közvetlenül a `django.middleware.security.SecurityMiddleware` sor után. A `MIDDLEWARE` beállításnak így kell kinéznie:
-   
-   ```python
-   MIDDLEWARE = [
-       'django.middleware.security.SecurityMiddleware',
-       'whitenoise.middleware.WhiteNoiseMiddleware',
-       ...
-   ]
-   ```
-   
-1. Az *azuresite/settings.py*végén adja hozzá a következő sorokat:
-   
-   ```python
-   STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-   STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-   ```
-   
-   A WhiteNoise konfigurálásáról a [WhiteNoise dokumentációjában](https://whitenoise.evans.io/en/stable/)olvashat bővebben.
-
-> [!IMPORTANT]
-> Az adatbázis-beállítások szakasz már követi a környezeti változók használatának ajánlott biztonsági gyakorlatát. A teljes telepítési javaslatokat a [Django dokumentációja: telepítési ellenőrzőlista tartalmazza.](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/)
-
-Véglegesítse a módosításokat a *djangoapp-tárház* elágazásában:
-
-```bash
-git commit -am "configure for App Service"
+```azurecli
+az webapp up --name <app-name>
 ```
 
-### <a name="configure-a-deployment-user"></a>Üzembe helyező felhasználó konfigurálása
+Az App Service észleli, hogy az alkalmazás létezik, és csak telepíti a kódot.
 
-[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user-no-h.md)]
+### <a name="rerun-migrations-in-azure"></a>Áttelepítések újrafuttatása az Azure-ban
 
-### <a name="create-app-service-plan"></a>App Service-csomag létrehozása
+Mivel módosította az adatmodellt, újra kell futtatnia az adatbázis-áttelepítéseket az App Service-ben. Nyisson meg egy SSH-munkamenetet a böngészőben, és navigáljon *https://\<alkalmazásnévre>.scm.azurewebsites.net/webssh/host*. Futtassa az alábbi parancsot:
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
+```
+cd site/wwwroot
 
-### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
-
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
-
-### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
-
-Az oktatóanyag korábbi részében meghatároztunk környezeti változókat a PostgreSQL-adatbázishoz való kapcsolódáshoz.
-
-Az Azure App Service-ben a környezeti változókat *alkalmazásbeállításokként*állíthatja be, az [az webapp-appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs használatával.
-
-Az Azure Cloud Shell, futtassa a következő parancsot az adatbázis-kapcsolat részleteinek megadása alkalmazásbeállításokként. Cserélje le * \<az alkalmazásnevet>*, * \<erőforráscsoport-név>* és * \<a postgresql-név>* a saját értékeire.
-
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group <resourcegroup-name> --settings DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="manager@<postgresql-name>" DBPASS="supersecretpass" DBNAME="pollsdb"
+# Activate the virtual environment
+source venv/bin/activate
+# Run database migrations
+python manage.py migrate
 ```
 
-Arról, hogy a kód hogyan fér hozzá ezekhez az alkalmazásbeállításokhoz, olvassa el [az Access környezeti változóit.](how-to-configure-python.md#access-environment-variables)
+### <a name="review-app-in-production"></a>Alkalmazás áttekintése éles környezetben
 
-### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
-
-[!INCLUDE [app-service-plan-no-h](../../../includes/app-service-web-git-push-to-azure-no-h.md)]
-
-```bash 
-Counting objects: 60, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (51/51), done.
-Writing objects: 100% (60/60), 15.37 KiB | 749.00 KiB/s, done.
-Total 60 (delta 9), reused 0 (delta 0)
-remote: Deploy Async
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id '06f3f7c0cb'.
-remote: Repository path is /home/site/repository
-remote: Running oryx build...
-remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
-remote: You can report issues at https://github.com/Microsoft/Oryx/issues
-. 
-. 
-. 
-remote: Done in 100 sec(s).
-remote: Running post deployment command(s)...
-remote: Triggering recycle (preview mode disabled).
-remote: Deployment successful.
-remote: Deployment Logs : 'https://<app-name>.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/06f3f7c0cb52ce3b4aff85c2b5099fbacb65ab94/log'
-To https://<app-name>.scm.azurewebsites.net/<app-name>.git 
- * [new branch]      master -> master
-```  
-
-Az App Service központi telepítési kiszolgálója látja *a requirements.txt* `git push`fájlt a tárház gyökérében, és a .
-
-### <a name="browse-to-the-azure-app"></a>Tallózás az Azure alkalmazásban
-
-Tallózással keresse meg a telepített alkalmazást az URL-címmel *\//\<http: app-name>.azurewebsites.net*. Az indítás némi időt vesz igénybe, mert a tárolót le kell tölteni, és futtatni kell, amikor az alkalmazás először kéri. Ha a lapon túllépi az időkorlátot vagy egy hibaüzenet jelenik meg, várjon néhány percet, és frissítse az oldalt.
-
-A korábban létrehozott szavazási kérdéseknek meg kell jelennie. 
-
-Az App Service észleli a Django-projektet *wsgi.py* a tárházban, ha `manage.py startproject` minden alkönyvtárban wsgi.py fájlt keres, amely alapértelmezés szerint létrehoz. Amikor az App Service megtalálja a fájlt, betölti a Django webalkalmazást. Arról, hogy az App Service hogyan tölti be a Python-alkalmazásokat, olvassa [el a Beépített Python-lemezkép konfigurálása című témakört.](how-to-configure-python.md)
-
-Nyissa meg *a\//\<http: app-name>.azurewebsites.net/admin* webhelyet, és jelentkezzen be a létrehozott rendszergazdai felhasználóval. Ha szeretné, hozzon létre még néhány szavazási kérdést.
-
-![Python Django alkalmazás futtatása az Azure-beli App Services szolgáltatásban](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
-
-**Gratulálok!** Python (Django) webalkalmazást futtat az Azure App Service Linux szolgáltatásában.
+Tallózással keresse meg *a\//\<http: app-name>.azurewebsites.net* és tekintse meg a változásokfutó élőben éles környezetben. 
 
 ## <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+A tárolón belülről létrehozott konzolnaplók at érheti el.
+
+> [!TIP]
+> `az webapp up`bekapcsolja az alapértelmezett naplózást. A teljesítmény miatt ez a naplózás egy idő után kikapcsol, `az webapp up` de minden alkalommal, amikor újra fut, újra bekapcsol. A kézi bekapcsoláshoz futtassa a következő parancsot:
+>
+> ```azurecli
+> az webapp log config --name <app-name> --resource-group <app-resource-group> --docker-container-logging filesystem
+> ```
+
+Futtassa a következő Azure CLI parancsot a naplófolyam megtekintéséhez:
+
+```azurecli
+az webapp log tail --name <app-name> --resource-group <app-resource-group>
+```
+
+Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
+
+> [!NOTE]
+> A naplófájlokat a böngészőből `https://<app-name>.scm.azurewebsites.net/api/logs/docker`is megtekintheti a(.
+
+Ha bármikor le szeretné állítani `Ctrl` + `C`a naplóstreamelést, írja be a következőt:
 
 ## <a name="manage-your-app-in-the-azure-portal"></a>Az alkalmazás kezelése az Azure Portalon
 
@@ -420,9 +436,25 @@ Alapértelmezés szerint a portál megjeleníti az alkalmazás **áttekintése**
 
 ![A Python Django alkalmazás kezelése az Azure Portal Áttekintés lapján](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
-[!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha a jövőben nem várható, hogy ezekre az erőforrásokra szüksége lesz, törölje az erőforráscsoportokat a következő parancsok futtatásával:
+
+```azurecli
+az group delete --name myResourceGroup
+az group delete --name <app-resource-group>
+```
 
 ## <a name="next-steps"></a>További lépések
+
+Ebben az oktatóanyagban a következőket tanulta meg:
+
+> [!div class="checklist"]
+> * Azure-adatbázis létrehozása postgreSQL-adatbázishoz
+> * Kód üzembe helyezése az Azure App Service szolgáltatásban, és csatlakozás a Postgres-hez
+> * A kód frissítése és újratelepítés
+> * Diagnosztikai naplók megtekintése
+> * A webalkalmazás kezelése az Azure Portalon
 
 A következő oktatóanyagból megtudhatja, hogyan képezheti le az egyéni DNS-nevet az alkalmazáshoz:
 

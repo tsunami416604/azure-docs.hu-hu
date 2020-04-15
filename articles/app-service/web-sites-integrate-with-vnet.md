@@ -1,22 +1,22 @@
 ---
-title: Alkalmazások integrálása az Azure virtuális hálózatával
-description: Integrálja az alkalmazásokat az Azure App Service-ben az Azure virtuális hálózataival.
+title: Alkalmazás integrálása az Azure virtuális hálózatával
+description: Integrálja az alkalmazást az Azure App Service-be az Azure virtuális hálózataival.
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 02/27/2020
+ms.date: 04/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a1a9739c444db2e41d55b8876011c066f2e71ca3
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: cb5747c6780da134dfb2f5ab088348b848c5f04a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421370"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312805"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure virtuális hálózatával
 
-Ez a cikk ismerteti az Azure App Service virtuális hálózat integrációs funkcióját, és azt, hogy miként állíthatja be az [Azure App Service-beli](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazásokkal. Az [Azure Virtual Network][VNETOverview]segítségével számos Azure-erőforrást nem internetes irányítható hálózatba helyezhet.
+Ez a cikk ismerteti az Azure App Service virtuális hálózat integrációs funkcióját, és azt, hogy miként állíthatja be az [Azure App Service-beli](https://go.microsoft.com/fwlink/?LinkId=529714)alkalmazásokkal. Az [Azure virtuális hálózat][VNETOverview] (VNets) segítségével számos Azure-erőforrást elhelyezhet egy nem internetes irányítható hálózatban.
 
 Az Azure App Service két változatban:
 
@@ -30,19 +30,19 @@ Az Azure App Service két változatban:
 
    ![Virtuális hálózat-integráció kiválasztása][1]
 
-1. A legördülő lista tartalmazza az összes Azure Resource Manager virtuális hálózatok az előfizetés ugyanabban a régióban. Alatta az erőforrás-kezelő i virtuális hálózatainak listája látható az összes többi régióban. Válassza ki azt a virtuális hálózatot, amelybe integrálni szeretné.
+1. A legördülő lista tartalmazza az összes Azure Resource Manager virtuális hálózatok az előfizetés ugyanabban a régióban. Alatta az erőforrás-kezelő i virtuális hálózatainak listája látható az összes többi régióban. Válassza ki azt a virtuális hálózatot, amelyhez integrálni szeretné.
 
-   ![A virtuális hálózat kiválasztása][2]
+   ![Válassza ki a virtuális hálózatot][2]
 
    * Ha a virtuális hálózat ugyanabban a régióban található, hozzon létre egy új alhálózatot, vagy válasszon ki egy üres, már létező alhálózatot.
-   * Egy másik régióban lévő virtuális hálózat kiválasztásához rendelkeznie kell egy virtuális hálózati átjárókiépítéssel, amelyen a pont-hely engedélyezve van.
-   * Ha klasszikus virtuális hálózattal szeretne integrálódni, a **Virtuális hálózat** legördülő lista kiválasztása helyett válassza a Kattintson ide lehetőséget **a klasszikus virtuális hálózathoz való csatlakozáshoz.** Válassza ki a kívánt klasszikus virtuális hálózatot. A célvirtuális hálózatnak már rendelkeznie kell olyan virtuális hálózati átjáróval, amelyen engedélyezve van a pont-hely.
+   * Ha egy másik régióban lévő virtuális hálózatot szeretne kijelölni, rendelkeznie kell egy olyan virtuális hálózat átjáróval, amelyen a pont-hely engedélyezve van.
+   * Ha egy klasszikus virtuális hálózattal szeretne integrálni, a **Virtuális hálózat** legördülő lista kiválasztása helyett válassza a Kattintson ide lehetőséget a klasszikus **virtuális hálózathoz való csatlakozáshoz.** Válassza ki a kívánt klasszikus virtuális hálózatot. A cél virtuális hálózatnak már rendelkeznie kell egy olyan virtuális hálózati átjáróval, amelyen engedélyezve van a pont-hely.
 
     ![Klasszikus virtuális hálózat kiválasztása][3]
 
-Az integráció során az alkalmazás újraindul. Amikor az integráció befejeződött, látni fogja a részleteket a virtuális hálózaton, amelybe integrálva van.
+Az integráció során az alkalmazás újraindul. Az integráció befejezése után a részleteket a virtuális hálózat, amely integrálva van.
 
-Miután az alkalmazás integrálva van a virtuális hálózattal, ugyanazt a DNS-kiszolgálót használja, amelyhez a virtuális hálózat van konfigurálva, kivéve, ha az Azure DNS-hálózati zónák. Jelenleg nem használhatja a virtuális hálózat-integrációt az Azure DNS-hálózati zónákkal.
+Miután az alkalmazás integrálva van a virtuális hálózattal, ugyanazt a DNS-kiszolgálót használja, amelyhez a virtuális hálózat konfigurált, kivéve, ha az Azure DNS-beli privát zónák. Jelenleg nem használhatja a virtuális hálózat-integrációt az Azure DNS-hálózati zónákkal.
 
 ## <a name="regional-vnet-integration"></a>Regionális virtuális hálózatok integrációja
 
@@ -50,25 +50,25 @@ Miután az alkalmazás integrálva van a virtuális hálózattal, ugyanazt a DNS
 
 ### <a name="how-regional-vnet-integration-works"></a>A regionális virtuális hálózatok integrációja működése
 
-Az App Service-ben lévő alkalmazások feldolgozói szerepkörökön vannak tárolva. Az alapszintű és a magasabb díjszabási csomagok dedikált tárhelycsomagok, ahol nincsenek más ügyfelek számítási feladatai ugyanazon a dolgozókon. A regionális virtuális hálózat integrációja a delegált alhálózatban lévő címekkel rendelkező virtuális összeköttetések csatlakoztatásával működik. Mivel a from address a virtuális hálózatban van, a virtuális hálózaton vagy a virtuális hálózaton keresztül a legtöbb dolog elérhető, mint ha a virtuális hálózat virtuális gépe tenné. A hálózati megvalósítás más, mint a virtuális gép futtatása a virtuális hálózatban. Ezért egyes hálózati funkciók még nem érhetők el ehhez a funkcióhoz.
+Az App Service-ben lévő alkalmazások feldolgozói szerepkörökön vannak tárolva. Az alapszintű és a magasabb díjszabási csomagok dedikált tárhelycsomagok, ahol nincsenek más ügyfelek számítási feladatai ugyanazon a dolgozókon. A regionális virtuális hálózat integrációja a delegált alhálózatban lévő címekkel rendelkező virtuális összeköttetések csatlakoztatásával működik. Mivel a from address a virtuális hálózatban található, a virtuális hálózaton vagy a virtuális hálózaton keresztül a legtöbb dolog elérhető, például a virtuális hálózat virtuális gépe. A hálózati megvalósítás más, mint egy virtuális gép futtatása a virtuális hálózatban. Ezért egyes hálózati funkciók még nem érhetők el ehhez a funkcióhoz.
 
 ![A regionális virtuális hálózatok integrációja működése][5]
 
-Ha a regionális virtuális hálózat integrációja engedélyezve van, az alkalmazás kimenő hívásokat kezdeményez az internetre ugyanazon a csatornán keresztül, mint a normál. Az alkalmazás tulajdonságaiportálon felsorolt kimenő címek azok a címek, amelyeket az alkalmazás továbbra is használ. Milyen változások at az alkalmazás a hívások szolgáltatás végpont biztonságos szolgáltatások, vagy RFC 1918 címek bemegy a virtuális hálózatba. Ha WEBSITE_VNET_ROUTE_ALL 1-re van állítva, az összes kimenő forgalom elküldhető a virtuális hálózatba.
+Ha a regionális virtuális hálózat integrációja engedélyezve van, az alkalmazás kimenő hívásokat kezdeményez az internetre ugyanazon a csatornán keresztül, mint a normál. Az alkalmazás tulajdonságaiportálon felsorolt kimenő címek azok a címek, amelyeket az alkalmazás továbbra is használ. Milyen változások az alkalmazás a hívások a végpont biztonságos szolgáltatások, vagy Az RFC 1918 címek bemegy a virtuális hálózatba. Ha WEBSITE_VNET_ROUTE_ALL 1-re van állítva, az összes kimenő forgalom elküldhető a virtuális hálózatba.
 
-A szolgáltatás dolgozónként csak egy virtuális felületet támogat. Dolgozónként egy virtuális felület egy regionális virtuális hálózat-integrációt jelent az App Service-csomagonként. Az összes alkalmazás ugyanabban az App Service-csomagban használhatja ugyanazt a virtuális hálózat-integráció. Ha egy másik virtuális hálózathoz való csatlakozáshoz szüksége van egy alkalmazásra, létre kell hoznia egy másik App Service-csomagot. A használt virtuális felület nem olyan erőforrás, amelyhez az ügyfelek közvetlen hozzáféréssel rendelkeznek.
+A szolgáltatás dolgozónként csak egy virtuális felületet támogat. Dolgozónként egy virtuális felület egy regionális virtuális hálózat-integrációt jelent az App Service-csomagonként. Az összes alkalmazás ugyanabban az App Service-csomagban használhatja ugyanazt a virtuális hálózat-integráció. Ha egy alkalmazásra van szüksége egy további virtuális hálózathoz való csatlakozáshoz, létre kell hoznia egy másik App Service-csomagot. A használt virtuális felület nem olyan erőforrás, amelyhez az ügyfelek közvetlen hozzáféréssel rendelkeznek.
 
 A technológia működésének jellege miatt a virtuális hálózat-integrációval használt forgalom nem jelenik meg az Azure Network Watcher vagy az NSG folyamatnaplóiban.
 
 ## <a name="gateway-required-vnet-integration"></a>Átjáróhoz szükséges virtuális hálózat integrációja
 
-Az átjáróáltal igényelt virtuális hálózati integráció támogatja a virtuális hálózathoz való csatlakozást egy másik régióban vagy egy klasszikus virtuális hálózathoz. Átjáró által igényelt virtuális hálózat integrációja:
+Az átjáróáltal igényelt virtuális hálózat-integráció támogatja a virtuális hálózathoz való csatlakozást egy másik régióban vagy egy klasszikus virtuális hálózathoz. Átjáró által igényelt virtuális hálózat integrációja:
 
 * Lehetővé teszi, hogy egy alkalmazás egyszerre csak egy virtuális hálózathoz csatlakozzon.
-* Lehetővé teszi, hogy legfeljebb öt virtuális hálózat integrálható legyen egy App Service-csomagba.
-* Lehetővé teszi, hogy ugyanazt a virtuális hálózatot több alkalmazás használja egy App Service-csomagban anélkül, hogy befolyásolná az App Service-csomag által használható teljes számot. Ha hat alkalmazás használja ugyanazt a virtuális hálózatot ugyanabban az App Service-csomagban, amely egy használatban lévő virtuális hálózatnak számít.
+* Legfeljebb öt virtuális hálózat integrálható egy App Service-csomagba.
+* Lehetővé teszi, hogy ugyanazt a virtuális hálózatot több alkalmazás használja egy App Service-csomagban anélkül, hogy befolyásolná az App Service-csomag által használható teljes számot. Ha hat alkalmazás ugyanazt a virtuális hálózatot használja ugyanabban az App Service-csomagban, amely egy használatban lévő virtuális hálózatnak számít.
 * Támogatja a 99,9%-os SLA miatt az SLA az átjárón.
-* Lehetővé teszi, hogy az alkalmazások azt a DNS-t használják, amelyhez a virtuális hálózat konfigurálva van.
+* Lehetővé teszi, hogy az alkalmazások a virtuális hálózat által konfigurált DNS-t használják.
 * Az alkalmazáshoz való csatlakozáshoz szükséges az SSTP-pont-hely VPN-nel konfigurált virtuális hálózati útvonalalapú átjáró szükséges.
 
 Az átjáróáltal igényelt virtuális hálózat-integráció nem használható:
@@ -78,11 +78,11 @@ Az átjáróáltal igényelt virtuális hálózat-integráció nem használható
 * A szolgáltatásvégpont biztonságos erőforrásainak elérése.
 * Olyan együttélési átjáróval, amely támogatja az ExpressRoute és a pont-hely vagy a helyek közötti VPN-eket is.
 
-### <a name="set-up-a-gateway-in-your-virtual-network"></a>Átjáró beállítása a virtuális hálózatban ###
+### <a name="set-up-a-gateway-in-your-azure-virtual-network"></a>Átjáró beállítása az Azure virtuális hálózatában ###
 
 Átjáró létrehozása:
 
-1. [Hozzon létre egy átjáró alhálózatot][creategatewaysubnet] a virtuális hálózatban.  
+1. [Hozzon létre egy átjáró-alhálózatot][creategatewaysubnet] a virtuális hálózatban.  
 
 1. [Hozza létre a VPN-átjárót.][creategateway] Válasszon útvonalalapú VPN-típust.
 
@@ -92,7 +92,7 @@ Ha az átjárót az App Service virtuális hálózat-integrációval való haszn
 
 ### <a name="how-gateway-required-vnet-integration-works"></a>Az átjáró által igényelt virtuális hálózat integrációjának működése
 
-Az átjáróáltal igényelt virtuális hálózat-integráció a pont-hely VPN technológiára épül. A pont-hely VPN-ek korlátozzák az alkalmazást tároló virtuális gép hálózati hozzáférését. Az alkalmazások csak hibrid kapcsolatokon vagy virtuális hálózatok integráción keresztül küldhetnek forgalmat az internetre. Ha az alkalmazás úgy van konfigurálva a portállal, hogy az átjáróáltal igényelt virtuális hálózati integrációt használjon, az Ön nevében egy összetett egyeztetést kezel nek az átjárón és az alkalmazásoldalon lévő tanúsítványok létrehozásához és hozzárendeléséhez. Az eredmény az, hogy az alkalmazások üzemeltetéséhez használt dolgozók közvetlenül csatlakozhatnak a kiválasztott virtuális hálózat virtuális hálózati átjárójához.
+Az átjáróáltal igényelt virtuális hálózat-integráció a pont-hely VPN technológiára épül. A pont-hely VPN-ek korlátozzák az alkalmazást tároló virtuális gép hálózati hozzáférését. Az alkalmazások csak hibrid kapcsolatokon vagy virtuális hálózatok integráción keresztül küldhetnek forgalmat az internetre. Ha az alkalmazás úgy van konfigurálva a portállal, hogy az átjáróáltal igényelt virtuális hálózati integrációt használjon, az Ön nevében egy összetett egyeztetést kezel nek az átjárón és az alkalmazásoldalon lévő tanúsítványok létrehozásához és hozzárendeléséhez. Az eredmény az, hogy az alkalmazások üzemeltetéséhez használt dolgozók képesek közvetlenül csatlakozni a virtuális hálózati átjáróhoz a kiválasztott virtuális hálózatban.
 
 ![Az átjáró által igényelt virtuális hálózat integrációjának működése][6]
 
@@ -100,10 +100,10 @@ Az átjáróáltal igényelt virtuális hálózat-integráció a pont-hely VPN t
 
 Az alkalmazások a helyek közötti kapcsolattal rendelkező virtuális hálózatokkal való integrációval érhetik el a helyszíni erőforrásokat. Ha átjáró által igényelt virtuális hálózat-integrációt használ, frissítse a helyszíni VPN-átjáró útvonalakat a pont-hely címblokkokkal. A helyek közötti VPN első beállításakor a konfiguráláshoz használt parancsfájlok nak megfelelően kell beállítaniuk az útvonalakat. Ha a helyek közötti VPN létrehozása után adja hozzá a pont-hely címeket, manuálisan kell frissítenie az útvonalakat. Ennek az átjárónkénti eltérő részletei itt nem ismertetésre. A BGP nem konfigurálható helyek közötti VPN-kapcsolattal.
 
-Nincs szükség további konfigurációra ahhoz, hogy a regionális virtuális hálózat integrációs szolgáltatás a virtuális hálózaton keresztül eljusson a helyszíni erőforrásokhoz. Egyszerűen csak csatlakoztatnia kell a virtuális hálózatot a helyszíni erőforrásokhoz az ExpressRoute vagy a helyek közötti VPN használatával.
+Nincs szükség további konfigurációra ahhoz, hogy a regionális virtuális hálózat integrációs szolgáltatás a virtuális hálózaton keresztül elérje a helyszíni erőforrásokat. Egyszerűen csak csatlakoztatnia kell a virtuális hálózatot a helyszíni erőforrások expressroute vagy egy hely közötti VPN használatával.
 
 > [!NOTE]
-> Az átjáró által igényelt virtuális hálózati integrációs szolgáltatás nem integrálja az alkalmazást egy ExpressRoute-átjáróval rendelkező virtuális hálózattal. Még akkor is, ha az ExpressRoute-átjáró [együttélési módban][VPNERCoex]van konfigurálva, a virtuális hálózat integrációja nem működik. Ha ExpressRoute-kapcsolaton keresztül kell erőforrásokat elérnie, használja a regionális virtuális hálózati integrációs szolgáltatást vagy egy [App Service-környezetet,][ASE]amely a virtuális hálózatban fut.
+> Az átjáró által igényelt virtuális hálózati integrációs szolgáltatás nem integrálja az alkalmazást egy ExpressRoute-átjáróval rendelkező virtuális hálózattal. Még akkor is, ha az ExpressRoute-átjáró [együttélési módban][VPNERCoex]van konfigurálva, a virtuális hálózat integrációja nem működik. Ha expressRoute-kapcsolaton keresztül kell erőforrásokat elérnie, használja a regionális virtuális hálózati integrációs szolgáltatást vagy egy [App Service-környezetet,][ASE]amely a virtuális hálózaton fut.
 > 
 > 
 
@@ -113,23 +113,23 @@ Ha a regionális virtuális hálózat-integrációval társviszony-létesítést
 
 Ha átjáró által igényelt virtuális hálózat integrációtárs-létesítés, konfigurálnia kell néhány további elemeket. A társviszony-létesítés konfigurálása az alkalmazással való együttműködésre:
 
-1. Társviszony-létesítési kapcsolat hozzáadása azon a virtuális hálózaton, amelyhez az alkalmazás csatlakozik. A társviszony-létesítési kapcsolat hozzáadásakor engedélyezze a **virtuális hálózati hozzáférés engedélyezése lehetőséget,** és válassza a Továbbított forgalom **engedélyezése** és **az átjáró-átvitel engedélyezése lehetőséget.**
-1. Vegyen fel egy társviszony-létesítési kapcsolatot a virtuális hálózaton, amely a virtuális hálózathoz csatlakozik. Amikor hozzáadja a társviszony-létesítési kapcsolatot a célvirtuális hálózaton, engedélyezze a **virtuális hálózati hozzáférés engedélyezése lehetőséget,** és válassza a Továbbított forgalom **engedélyezése** és a **Távoli átjárók engedélyezése lehetőséget.**
-1. Nyissa > meg az App **Service-csomag** > **hálózati****virtuálishálózat-integrációs** felhasználói felületét a portálon. Válassza ki azt a virtuális hálózatot, amelyhez az alkalmazás csatlakozik. Az útválasztási szakaszban adja hozzá annak a virtuális hálózatnak a címtartományát, amely az alkalmazáshoz csatlakozik.
+1. Vegyen fel egy társviszony-létesítési kapcsolatot a virtuális hálózaton, amelyhez az alkalmazás csatlakozik. A társviszony-létesítési kapcsolat hozzáadásakor engedélyezze a **virtuális hálózati hozzáférés engedélyezése lehetőséget,** és válassza a Továbbított forgalom **engedélyezése** és **az átjáró-átvitel engedélyezése lehetőséget.**
+1. Vegyen fel egy társviszony-létesítési kapcsolatot a virtuális hálózaton, amely a virtuális hálózathoz csatlakozik. Amikor hozzáadja a társviszony-létesítési kapcsolatot a célvirtuális hálózathoz, engedélyezze a **virtuális hálózati hozzáférés engedélyezése lehetőséget,** és válassza a Továbbított forgalom **engedélyezése** és a **Távoli átjárók engedélyezése lehetőséget.**
+1. Nyissa > meg az App **Service-csomag** > **hálózati****virtuálishálózat-integrációs** felhasználói felületét a portálon. Válassza ki azt a virtuális hálózatot, amelyhez az alkalmazás csatlakozik. Az útválasztási szakaszban adja hozzá a virtuális hálózat címtartományát, amely az alkalmazás hoz csatlakozik.
 
 ## <a name="manage-vnet-integration"></a>Virtuális hálózat integrációjának kezelése
 
-A virtuális hálózathoz való csatlakozás és a kapcsolat bontása alkalmazásszinten történik. A virtuális hálózatok több alkalmazás közötti integrációját befolyásoló műveletek az App Service-csomag szintjén vannak. Az alkalmazás > **hálózati** > **virtuálishálózati integrációs** portál, a virtuális hálózat részleteit kaphat. Hasonló információkat az App Service-csomag > szintjén az App **Service-csomag** > **hálózati****vnet-integrációs** portálon láthatja.
+A virtuális hálózathoz való csatlakozás és a kapcsolat bontása alkalmazásszinten történik. A virtuális hálózatok több alkalmazás közötti integrációját befolyásoló műveletek az App Service-csomag szintjén vannak. Az alkalmazás > **hálózati** > **virtuálishálózati integrációs** portálon, a virtuális hálózat adatait kaphat. Hasonló információkat az App Service-csomag > szintjén az App **Service-csomag** > **hálózati****vnet-integrációs** portálon láthatja.
 
-Az egyetlen művelet, amelyet a VNet-integrációs példány alkalmazásnézetében elvihet, az alkalmazás leválasztása a virtuális hálózatról, amelyhez jelenleg csatlakozik. Ha le szeretné választani az alkalmazást a virtuális hálózatról, válassza a **Kapcsolat bontása**lehetőséget. Az alkalmazás újraindul, amikor bontja a kapcsolatot egy virtuális hálózattal. A kapcsolat bontása nem változtatja meg a virtuális hálózatot. Az alhálózat vagy az átjáró nem törlődik. Ha ezután törölni szeretné a virtuális hálózatot, először válassza le az alkalmazást a virtuális hálózatról, és törölje a benne lévő erőforrásokat, például az átjárókat.
+Az egyetlen művelet, amelyet a virtuális hálózat integrációs példányának alkalmazásnézetében az alkalmazás leválasztása a virtuális hálózatról, amelyhez jelenleg csatlakozik. Ha le szeretné választani az alkalmazást a virtuális hálózatról, válassza a **Kapcsolat bontása**lehetőséget. Az alkalmazás újraindul, ha bontja a virtuális hálózatot. A kapcsolat bontása nem módosítja a virtuális hálózatot. Az alhálózat vagy az átjáró nem törlődik. Ha ezután törölni szeretné a virtuális hálózatot, először válassza le az alkalmazást a virtuális hálózatról, és törölje a benne lévő erőforrásokat, például az átjárókat.
 
-Az App Service-csomag virtuális hálózat integrációs felhasználói felülete megmutatja az app szolgáltatáscsomagban az alkalmazások által használt összes virtuális hálózati integrációt. Az egyes virtuális hálózatok részleteinek megtekintéséhez válassza ki az önt érdeklő virtuális hálózatot. Az átjárók által igényelt virtuális hálózat-integrációhoz itt két műveletet hajthat végre:
+Az App Service-csomag virtuális hálózat integrációs felhasználói felülete megmutatja az app szolgáltatáscsomagban az alkalmazások által használt összes virtuális hálózat-integrációt. Az egyes virtuális hálózatok részleteinek megtekintéséhez válassza ki az önt érdeklő virtuális hálózatot. Az átjárók által igényelt virtuális hálózat-integrációhoz itt két műveletet hajthat végre:
 
-* **Szinkronizálási hálózat**: A szinkronizálási hálózati művelet csak az átjárófüggő virtuális hálózat integrációs szolgáltatásához használatos. A szinkronizálási hálózati művelet biztosítja, hogy a tanúsítványok és a hálózati adatok szinkronban legyenek. Ha hozzáadja vagy módosítja a virtuális hálózat DNS-ét, hajtson végre szinkronizálási hálózati műveletet. Ez a művelet újraindítja a virtuális hálózatot használó alkalmazásokat.
-* **Útvonalak hozzáadása:** Útvonalak hozzáadása kimenő forgalmat generál a virtuális hálózatba.
+* **Szinkronizálási hálózat**: A szinkronizálási hálózati művelet csak az átjárófüggő virtuális hálózat integrációs szolgáltatásához használatos. A szinkronizálási hálózati művelet biztosítja, hogy a tanúsítványok és a hálózati adatok szinkronban legyenek. Ha hozzáadja vagy módosítja a virtuális hálózat DNS-ét, hajtson végre egy szinkronizálási hálózati műveletet. Ez a művelet újraindítja a virtuális hálózatot használó alkalmazásokat.
+* **Útvonalak hozzáadása:** Útvonalak hozzáadása meghajtók kimenő forgalmat a virtuális hálózatba.
 
 ### <a name="gateway-required-vnet-integration-routing"></a>Átjáróáltal igényelt virtuális hálózati integrációs útválasztás
-A virtuális hálózatban definiált útvonalak segítségével irányíthatja a forgalmat a virtuális hálózatba az alkalmazásból. További kimenő forgalom küldése a virtuális hálózatba, adja hozzá ezeket a címblokkokat itt. Ez a funkció csak átjáróáltal igényelt virtuális hálózat-integrációval működik. Az útvonaltáblák nem befolyásolják az alkalmazás forgalmát, ha átjáróáltal igényelt virtuális hálózati integrációt használ, ahogy a regionális virtuális hálózat-integrációval teszik.
+A virtuális hálózatban definiált útvonalak az alkalmazásból irányítják a virtuális hálózatba irányuló forgalmat. További kimenő forgalom küldése a virtuális hálózatba, adja hozzá ezeket a címblokkokat itt. Ez a funkció csak átjáróáltal igényelt virtuális hálózat-integrációval működik. Az útvonaltáblák nem befolyásolják az alkalmazás forgalmát, ha átjáróáltal igényelt virtuális hálózati integrációt használ, ahogy a regionális virtuális hálózat-integrációval teszik.
 
 ### <a name="gateway-required-vnet-integration-certificates"></a>Átjáróhoz szükséges virtuális hálózati integrációs tanúsítványok
 Ha az átjáró által igényelt virtuális hálózat integrációja engedélyezve van, a kapcsolat biztonságának biztosítása érdekében szükség van a tanúsítványok cseréjére. A tanúsítványok mellett a DNS-konfiguráció, útvonalak és más hasonló dolgok, amelyek leírják a hálózatot.
@@ -142,7 +142,7 @@ A regionális virtuális hálózat integrációs funkció nem rendelkezik továb
 Az átjáróhoz szükséges Virtuálishálózat-integráció funkció használatához három díj kapcsolódik:
 
 * **App Service-csomag díjszabási díja:** Az alkalmazásoknak standard, prémium vagy PremiumV2 App Service-csomagban kell lenniük. Ezekről a költségekről további információt az [App Service díjszabása][ASPricing]című témakörben talál.
-* **Adatátviteli költségek**: Az adatforgalom díja akkor is, ha a virtuális hálózat ugyanabban az adatközpontban van. Ezeket a díjakat az [adatátviteli díjak részletei][DataPricing]ismertetik.
+* **Adatátviteli költségek:** Az adatforgalom díja, még akkor is, ha a virtuális hálózat ugyanabban az adatközpontban található. Ezeket a díjakat az [adatátviteli díjak részletei][DataPricing]ismertetik.
 * **VPN-átjáró költségek:** A virtuális hálózati átjáró nak olyan költsége van, amely a pont-hely VPN-hez szükséges. További információ: [VPN-átjáró díjszabása][VNETPricing].
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

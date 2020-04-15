@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: f06480767b697dca8fe41e484c02aefc58f040bf
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3a885f071c89ff6d9bb79d908b19c9451b4ed735
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261329"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383300"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -92,11 +92,11 @@ Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automat
 | AzureRunAsCertificate |Olyan tanúsítványeszköz, amely automatikusan létrejön az Automation-fiók létrehozásakor, vagy egy meglévő fiók PowerShell-parancsfájljával. A tanúsítvány hitelesíti magát az Azure Resource Manager erőforrásait runbookokból. Ennek a tanúsítványnak egy éves időtartama van. |
 | AzureRunAsConnection |Olyan kapcsolati eszköz, amely automatikusan létrejön az Automation-fiók létrehozásakor, vagy egy meglévő fiók PowerShell-parancsfájljával. |
 
-## <a name="create-a-classic-run-as-account"></a>Klasszikus futtatási fiók létrehozása
+## <a name="create-a-classic-run-as-account"></a>Klasszikus futtatás mint fiók létrehozása
 
-Klasszikus Run-As-fiókok már nem jönnek létre, alapértelmezés szerint, amikor létrehoz egy Azure Automation-fiókot. Ha továbbra is szüksége van egy Klasszikus Run-As-fiókra, hajtsa végre a következő lépéseket.
+Klasszikus futtatási fiókok alapértelmezés szerint már nem jönnek létre, amikor létrehoz egy Azure Automation-fiókot. Ha továbbra is szüksége van egy Klasszikus futtatás mint fiókra:
 
-1. Az **Automation-fiók** lapon válassza a **Futtatás fiókként** lehetőséget a **Fiókbeállítások területen.**
+1. Az Automation-fiókban válassza a **Futtatás fiókként** lehetőséget a **Fiókbeállítások csoportban.**
 2. Válassza az **Azure Classic Futtatás fiókként lehetőséget.**
 3. Kattintson a **Létrehozás** gombra a Klasszikus futtatás mint fiók létrehozásához.
 
@@ -105,5 +105,6 @@ Klasszikus Run-As-fiókok már nem jönnek létre, alapértelmezés szerint, ami
 * A grafikus szerzői jogról további információ: [Grafikus szerzői jog az Azure Automationben.](automation-graphical-authoring-intro.md)
 * A PowerShell-forgatókönyvek használatának megismeréséhez tekintse meg a következőt: [Az első PowerShell-runbookom](automation-first-runbook-textual-powershell.md).
 * A PowerShell-alapú munkafolyamat-runbookok első lépéseit [Az első PowerShell-alapú munkafolyamat-runbookom](automation-first-runbook-textual.md) című témakör ismerteti.
-* A Python2-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első Python2-forgatókönyvem](automation-first-runbook-textual-python2.md).
-
+* A Python 2 runbookokkal való ismerkedésről [az Első Python2-runbook](automation-first-runbook-textual-python2.md)című témakörben van.
+* A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

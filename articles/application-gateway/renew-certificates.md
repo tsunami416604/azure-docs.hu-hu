@@ -7,20 +7,20 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c0c0ab84e60335f58ac075459b95cfabb9135ac
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277997"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311960"
 ---
 # <a name="renew-application-gateway-certificates"></a>Alkalmazásátjáró-tanúsítványok megújítása
 
-Egy bizonyos ponton meg kell újítania a tanúsítványokat, ha az alkalmazásátjárót SSL-titkosításra konfigurálta.
+Egy bizonyos ponton meg kell újítania a tanúsítványokat, ha az alkalmazásátjárót TLS/SSL titkosításra konfigurálta.
 
 Megújíthatja a figyelőhöz társított tanúsítványt az Azure Portalon, az Azure PowerShellen vagy az Azure CLI-n keresztül:
 
-## <a name="azure-portal"></a>Azure portál
+## <a name="azure-portal"></a>Azure Portal
 
 Ha meg szeretne újítani egy figyelő tanúsítványt a portálról, keresse meg az alkalmazásátjáró-figyelők. Kattintson arra a figyelőre, aki rendelkezik megújítani kívánt tanúsítvánnyal, majd kattintson **a Kijelölt tanúsítvány megújítása vagy szerkesztése parancsra.**
 
@@ -62,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>További lépések
 
-Az SSL-kiszervezés azure-alkalmazásátjáróval történő konfigurálásáról az [SSL-kiszervezés konfigurálása című](application-gateway-ssl-portal.md) témakörben olvashat.
+A TLS-kiszervezés azure-alkalmazásátjáróval történő konfigurálásáról a [TLS-kiszervezés konfigurálása című](application-gateway-ssl-portal.md) témakörben olvashat.

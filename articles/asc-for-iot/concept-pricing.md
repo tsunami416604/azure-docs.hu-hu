@@ -1,5 +1,5 @@
 ---
-title: Az Azure Security Center megismerése az IoT-költségekhez| Microsoft dokumentumok
+title: Díjszabás és kapcsolódó költségek
 description: Ismerje meg az Azure Security Center for IoT-val kapcsolatos költségeket, és hogyan szabályozhatja azokat.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71348522"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311566"
 ---
 # <a name="pricing-and-associated-costs"></a>Díjszabás és kapcsolódó költségek
 
@@ -34,13 +34,11 @@ Az Azure Security Center for IoT díjszabási modell két részből áll, és a 
 
 - Költség üzenetszerint – továbbfejlesztett biztonsági képességek az IoT Edge-ről vagy a levéleszközökről érkező biztonsági üzenetek alapján.
 
-
 További információt a [Security Center díjszabása](https://azure.microsoft.com/pricing/details/security-center/)című témakörben talál.
 
 ## <a name="associated-costs"></a>Kapcsolódó költségek
 
 Az Azure Security Center for IoT kapcsolódó költségekkel rendelkezik, amelyek nem részei a közvetlen díjszabásnak:
-
 
 - A Log Analytics tárolási költségei
 
@@ -50,9 +48,9 @@ A beállítások módosítása:
 
 1. Nyissa meg az IoT hubot.
 
-2. A **Biztonság**csoportban kattintson **az Áttekintés gombra.**
+1. A **Biztonság**csoportban kattintson **az Áttekintés gombra.**
 
-3. Kattintson a **Beállítások** elemre.
+1. Kattintson a **Beállítások** elemre.
 
 Az alábbi táblázat az egyes lehetőségek kapcsolódó költségeit és következményeit tartalmazza.
 
@@ -64,8 +62,8 @@ Az alábbi táblázat az egyes lehetőségek kapcsolódó költségeit és köve
 |
 
 >[!Important]
-> A leiratkozás súlyos következményekkel jár az Azure Security Center for IoT biztonsági funkciók elérhetőségére nézve. 
-  
+> A leiratkozás súlyos következményekkel jár az Azure Security Center for IoT biztonsági funkciók elérhetőségére nézve.
+
 | Leiratkozás | Következmények |
 | --- | --- |
 | _Kettős metaadat-gyűjtés_ | [Egyéni riasztások letiltása](quickstart-create-custom-alerts.md) |
@@ -74,7 +72,6 @@ Az alábbi táblázat az egyes lehetőségek kapcsolódó költségeit és köve
 | _Nyers eszközbiztonsági események tárolása_ | Az eszköz operációs rendszerére vonatkozó alapjavaslatok részletei nem érhetők el |
 | | A [riasztási](concept-security-alerts.md) és [ajánlási](concept-recommendations.md) vizsgálatokkal kapcsolatos részletek nem állnak rendelkezésre |
 |
-
 
 ## <a name="see-also"></a>Lásd még
 

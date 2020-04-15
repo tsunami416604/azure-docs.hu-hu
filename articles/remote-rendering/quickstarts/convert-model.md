@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b1bf2c365229a418870250a78a733f9870fb5bb0
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892376"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312991"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Rövid útmutató: Modell konvertálása rendereléshez
 
@@ -72,10 +72,10 @@ Töltse ki az űrlapot a következő módon:
 * Hozzon létre egy új erőforráscsoportot a legördülő lista alatti hivatkozásból, és nevezze el ezt a **ARR_Tutorial**
 * A **Storage-fiók nevéhez**itt adjon meg egy egyedi nevet. **Ennek a névnek globálisan egyedinek kell lennie,** ellenkező esetben egy üzenet jelenik meg, amely tájékoztatja, hogy a név készen áll. A program a rövid útmutató hatókörében **arrtutorialstorage-nak**nevezzük. Ennek megfelelően le kell cserélnie a nevére minden olyan esemény ebben a rövid útmutatóban.
 * Válasszon egy önhöz közeli **helyet.** Ideális esetben ugyanazt a helyet használja, mint a többi rövid útmutatóban a renderelés beállítására.
-* **Normál teljesítményre** állítva
-* **Fiókfajta** storagev2 értékre állítva (általános célú v2)
-* **Olvasási** hozzáférésű georedundáns tárolásra (RA-GRS) beállított replikációs készlet
-* **A hozzáférési szint** be van állítva a gyakori elérésű
+* **"Standard"** teljesítményre állítva
+* "StorageV2 (általános célú v2)" típusú **fiókfajta**
+* "Read-access georedundáns tárolás (RA-GRS)" lesz a **replikációs** replikációs
+* **"Forró" hozzáférési szint**
 
 A többi lap egyik tulajdonságát sem kell módosítani, így folytathatja a **"Véleményezés + létrehozás"** kifejezést, majd a telepítés befejezéséhez kövesse a lépéseket.
 

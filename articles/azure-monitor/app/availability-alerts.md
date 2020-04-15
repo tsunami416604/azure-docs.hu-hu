@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654953"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382887"
 ---
 # <a name="availability-alerts"></a>Rendelkezésre állási riasztások
 
@@ -33,6 +33,9 @@ A riasztások alapértelmezés szerint automatikusan engedélyezve vannak, de a 
 2. Állítsa be a kívánt súlyossági szintet, a szabály leírását és ami a legfontosabb - azt a műveletcsoportot, amely rendelkezik a riasztási szabályhoz használni kívánt értesítési beállításokkal.
 
    ![Szerkesztés mentés után](./media/availability-alerts/set-action-group.png)
+
+> [!NOTE]
+> Az ezen a felületen keresztül létrehozott rendelkezésre állási riasztások állapotalapúak. Ez azt jelenti, hogy ha a riasztási feltételek teljesülnek, egyetlen riasztás jön létre, ha a hely nem érhető el. Ha a hely továbbra is le a következő alkalommal, amikor a riasztási feltételek kiértékelése ez nem hoz létre új riasztást. Tehát, ha a webhely egy órára leállt, és beállított egy e-mail értesítést, akkor csak akkor kap e-mailt, amikor a webhely leállt, és egy későbbi e-mailt, amikor a webhely biztonsági másolatot kapott. Nem kap folyamatos figyelmeztetéseket, amelyek emlékeztetik arra, hogy a webhely még mindig nem érhető el.
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Riasztás x-re az Y helyekről hibákat jelent
 

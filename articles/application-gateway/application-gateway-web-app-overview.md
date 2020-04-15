@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: efa2885ce0534c5d78bb08bbf24da59850f6ea22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075178"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312321"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Az Application Gateway támogatása több-bérlős háttérrendszerek, például az App Service
 
@@ -30,9 +30,9 @@ Az Application Gatewayben elérhető egy olyan funkció, amely lehetővé teszi 
 
 Az állomásfelülbírálás megadása a [HTTP-beállításokban](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) van definiálva, és a szabály létrehozása során bármely háttérkészletre alkalmazható. A következő két módszer támogatja az állomásfejléc és az SNI-bővítmény több-bérlős háttérrendszerek esetén történő felülbírálását:
 
-- Az állomásnév beállítása a HTTP-beállításokban kifejezetten megadott rögzített értékre. Ez a képesség biztosítja, hogy az állomásfejléc felüllegyen ezzel az értékkel a háttérkészletminden olyan forgalmában, ahol az adott HTTP-beállítások at alkalmazzák. Végpontok közötti SSL alkalmazása esetén az SNI-bővítményben a rendszer a felülírt gazdanevet használja. Ez a funkció olyan eseteket tesz lehetővé, amelyekben a háttérkészlet-farm a bejövő ügyfélállomás-fejléctől eltérő gazdagépfejlécet vár.
+- Az állomásnév beállítása a HTTP-beállításokban kifejezetten megadott rögzített értékre. Ez a képesség biztosítja, hogy az állomásfejléc felüllegyen ezzel az értékkel a háttérkészletminden olyan forgalmában, ahol az adott HTTP-beállítások at alkalmazzák. A végpontok végéig TLS használataesetén ez a felülbírált állomásnév az SNI-bővítményben használatos. Ez a funkció olyan eseteket tesz lehetővé, amelyekben a háttérkészlet-farm a bejövő ügyfélállomás-fejléctől eltérő gazdagépfejlécet vár.
 
-- Az állomásnév származtatása a háttérkészlet-tagok IP-címéből vagy teljes tartománynevéből. A HTTP-beállítások azt is lehetővé teszik, hogy dinamikusan válassza ki az állomásnevet egy háttérkészlet-tag teljes tartománynevéből, ha úgy van beállítva, hogy az állomásnevet egy adott háttérkészlet-tagból származtathassa. Végpontok közötti SSL alkalmazása esetén az SNI-bővítményben a rendszer a teljes tartománynévből származtatott gazdanevet használja. Ez a képesség lehetővé teszi, hogy egy háttérkészlet két vagy több több-bérlős PaaS-szolgáltatással, például az Azure-webalkalmazásokkal rendelkezzen, és a kérelem gazdagépfejléce az egyes tagoknak tartalmazza a teljes tartománynévből származtatott állomásnevet. Ebben a forgatókönyvben egy kapcsolót használunk a HTTP-beállítások nevű [Pick állomásnév a háttércímből,](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) amely dinamikusan felülbírálja a gazdagép fejlécét az eredeti kérelemben, hogy a háttérkészletben említett.  Ha például a háttérkészlet teljes tartományneve "contoso11.azurewebsites.net" és "contoso22.azurewebsites.net" azonosítót tartalmaz, az eredeti kérelem gazdagépfejléce, amely contoso.com, contoso11.azurewebsites.net vagy contoso22.azurewebsites.net amikor a kérést elküldi a megfelelő háttérkiszolgálóra. 
+- Az állomásnév származtatása a háttérkészlet-tagok IP-címéből vagy teljes tartománynevéből. A HTTP-beállítások azt is lehetővé teszik, hogy dinamikusan válassza ki az állomásnevet egy háttérkészlet-tag teljes tartománynevéből, ha úgy van beállítva, hogy az állomásnevet egy adott háttérkészlet-tagból származtathassa. Végpontok között a TLS használatakor ez az állomásnév az FQDN-ből származik, és az SNI-bővítményben használatos. Ez a képesség lehetővé teszi, hogy egy háttérkészlet két vagy több több-bérlős PaaS-szolgáltatással, például az Azure-webalkalmazásokkal rendelkezzen, és a kérelem gazdagépfejléce az egyes tagoknak tartalmazza a teljes tartománynévből származtatott állomásnevet. Ebben a forgatókönyvben egy kapcsolót használunk a HTTP-beállítások nevű [Pick állomásnév a háttércímből,](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) amely dinamikusan felülbírálja a gazdagép fejlécét az eredeti kérelemben, hogy a háttérkészletben említett.  Ha például a háttérkészlet teljes tartományneve "contoso11.azurewebsites.net" és "contoso22.azurewebsites.net" azonosítót tartalmaz, az eredeti kérelem állomásfejlécét, amely contoso.com, a rendszer felülbírálja, hogy contoso11.azurewebsites.net vagy contoso22.azurewebsites.net, amikor a kérést elküldi a megfelelő háttérkiszolgálónak. 
 
   ![webalkalmazás-forgatókönyv](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -40,11 +40,11 @@ Ezzel a képességgel az ügyfelek megadhatják a HTTP-beállítások és az egy
 
 ## <a name="special-considerations"></a>Különleges szempontok
 
-### <a name="ssl-termination-and-end-to-end-ssl-with-multi-tenant-services"></a>SSL-végződés és végponttól végpontig ssl több-bérlős szolgáltatásokkal
+### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>TLS-megszüntetés és a tls vége több-bérlős szolgáltatásokkal
 
-Az SSL-végződtetés és a végpontok közötti SSL-titkosítás is támogatott a több-bérlős szolgáltatások. Az alkalmazásátjáró SSL-végződtetése esetén az SSL-tanúsítványt továbbra is hozzá kell adni az alkalmazásátjáró figyelőjéhez. Azonban a végpontok közötti SSL esetén a megbízható Azure-szolgáltatások, például az Azure App-szolgáltatás webalkalmazásai nem igénylik a háttérrendszerek engedélyezési listázását az alkalmazásátjáróban. Ezért nincs szükség hitelesítési tanúsítványok hozzáadására. 
+A több-bérlős szolgáltatások a TLS-végződtetést és a végpontok közötti TLS-titkosítást is támogatják. A TLS-végződés az alkalmazás átjárón, TLS-tanúsítvány továbbra is hozzá kell adni az alkalmazás átjáró figyelője. Azonban a végpontok közötti TLS esetén a megbízható Azure-szolgáltatások, például az Azure App-szolgáltatás webalkalmazásai nem igénylik a háttérrendszerek engedélyezési listázását az alkalmazásátjáróban. Ezért nincs szükség hitelesítési tanúsítványok hozzáadására. 
 
-![végponttól végpontig SSL](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
+![végponttól végpontig TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 
 Figyelje meg, hogy a fenti képen nincs követelmény hitelesítési tanúsítványok hozzáadása, ha az App Service háttérrendszerként van kiválasztva.
 

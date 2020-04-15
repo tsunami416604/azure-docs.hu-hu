@@ -4,12 +4,12 @@ description: Ismerje meg az Azure-erőforrásnaplók támogatott szolgáltatása
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248813"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380520"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrásnaplókhoz
 
@@ -54,7 +54,7 @@ Az erőforrásdiagnosztikai naplók sémája az erőforrás- és naplókategóri
 | Azure Batch |[Azure Batch naplózás](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL diagnosztikai naplók](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure-adatbázis a PostgreSQL-naplókhoz](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Data Explorer | [Az Azure Data Explorer naplói](../../data-explorer/using-diagnostic-logs.md) |
+| Azure Data Explorer | [Az Azure Data Explorer naplói](/azure/data-explorer/using-diagnostic-logs) |
 | Cognitive Services | [Naplózás az Azure Cognitive Services szolgáltatáshoz](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Az Azure Container Registry naplózása](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [Azure-naplók a CDN-hez](../../cdn/cdn-azure-diagnostic-logs.md) |

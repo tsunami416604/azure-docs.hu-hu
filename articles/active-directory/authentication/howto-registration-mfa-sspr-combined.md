@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f454b0296a3463d7346c2945b21162e5a38c0eb7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e22871114f260417e8a1514546c88ec4541064a4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652508"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309749"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>A kombinált biztonsági adatok regisztrációjának engedélyezése (előzetes verzió)
 
@@ -89,7 +89,7 @@ A következő házirend minden kiválasztott felhasználóra vonatkozik, akik a 
 
 ## <a name="next-steps"></a>További lépések
 
-[A felhasználók kényszerítése a hitelesítési módszerek újbóli regisztrálására](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[A felhasználók kényszerítése a hitelesítési módszerek újbóli regisztrálására](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
 
 [A többtényezős hitelesítéshez és az SSPR-hez rendelkezésre álló módszerek](concept-authentication-methods.md)
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: f5aaf8adf33d27f8ebb99c8ca3a873d958632a4f
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616849"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314312"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Modellkezelés, -telepítés és figyelés az Azure Machine Learning segítségével
 
@@ -124,6 +124,16 @@ A modell webszolgáltatásként való üzembe helyezéséhez a következő eleme
 
 További információ: [Modellek telepítése.](how-to-deploy-and-where.md)
 
+#### <a name="controlled-rollout"></a>Ellenőrzött bevezetés
+
+Az Azure Kubernetes szolgáltatásüzembe helyezésekor a következő forgatókönyvek engedélyezéséhez használhatja az ellenőrzött bevezetést:
+
+* Végpont több verziójának létrehozása központi telepítéshez
+* A/B tesztelés végrehajtása a végpont különböző verzióira irányuló forgalom útválasztásával.
+* Váltás a végpontverziók között a végpontkonfigurációban lévő forgalmi százalék frissítésével.
+
+További információ: [Controlled rollout of ML models](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview).
+
 #### <a name="iot-edge-devices"></a>IoT Edge-eszközök
 
 Az **Azure IoT Edge-modulokon**keresztül iot-eszközökkel rendelkező modelleket is használhat. Az IoT Edge-modulok egy hardvereszközre vannak telepítve, amely lehetővé teszi a következtetések levonását vagy a modell pontozását az eszközön.
@@ -136,12 +146,20 @@ A Microsoft Power BI támogatja a gépi tanulási modellek használatát az adat
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>A végpontok között a végpontok életciklusának rögzítéséhez szükséges cégirányítási adatok rögzítése
 
-Az Azure ML lehetővé teszi az összes ml-es eszközösszes rendszer-ellenőrzési nyomvonal nyomon követését. Ezek a következők:
+Az Azure ML lehetővé teszi az összes ml-es eszközösszes rendszer-eredményeképpen végzett naplózási nyomvonal nyomon követését metaadatok használatával.
 
 - Az Azure ML [integrálja a Git-et,](how-to-set-up-training-targets.md#gitintegration) hogy nyomon követhesse, hogy melyik tárház / ág / véglegesítés i kód származik.
-- [Az Azure ML-adatkészletek](how-to-create-register-datasets.md) segítségével nyomon követheti, profil- és verzióadatokat. 
+- [Az Azure ML-adatkészletek](how-to-create-register-datasets.md) segítségével nyomon követheti, profil- és verzióadatokat.
+- [Az értelmezhetőség](how-to-machine-learning-interpretability.md) lehetővé teszi, hogy elmagyarázza modelljeit, megfeleljen a jogszabályi megfelelőségnek, és megértse, hogy a modellek hogyan jutnak el az adott bemenet eredményéhez.
 - Az Azure ML-futtatási előzmények egy pillanatképet tárol a modell betanításához használt kódról, adatokról és számítási feladatokról.
 - Az Azure ML-modell beállításjegyzék rögzíti a modellhez társított összes metaadatot (melyik kísérlet betanítása, ahol üzembe helyezése alatt áll, ha a központi telepítések kifogástalanok).
+- [Az Azure Event Griddel való integráció](concept-event-grid-integration.md) lehetővé teszi, hogy az ml életciklus eseményeit. Például modellregisztráció, üzembe helyezés, adateltolódás és betanítási (futtatási) események.
+
+> [!TIP]
+> A modellekre és adatkészletekre vonatkozó egyes információk automatikus rögzítése esetén további információkat adhat hozzá a __címkék__használatával. Ha regisztrált modelleket és adatkészleteket keres a munkaterületen, a címkéket szűrőként használhatja.
+>
+> Az adatkészlet és a regisztrált modell társítása nem kötelező lépés. Az adatkészletek modell regisztrálásakor történő hivatkozásáról a [Modell](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) osztályhivatkozás című témakörben talál további információt.
+
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Értesítés, automatizálás és riasztás az ml-életciklus eseményeiről
 Az Azure ML közzéteszi a legfontosabb eseményeket az Azure EventGridben, amely a gépidő-életciklus eseményeinek értesítésére és automatizálására használható. További információkért tekintse meg [ezt a dokumentumot](how-to-use-event-grid.md).
@@ -157,7 +175,7 @@ További információ: [A modelladatgyűjtés engedélyezése.](how-to-enable-da
 
 ## <a name="retrain-your-model-on-new-data"></a>A modell újratanítása új adatokra
 
-Gyakran érdemes frissíteni a modellt, vagy akár újrabetanítását a semmiből, ahogy új információkat kap. Néha az új adatok fogadása a tartomány várható része. Máskor, ahogy azt az [adateltolódás (előzetes verzió) észlelése az adatkészleteken](how-to-monitor-datasets.md)című részében tárgyaljuk, a modell teljesítménye romolhat olyan dolgokkal szemben, mint egy adott érzékelő módosítása, a természetes adatok változásai, például a szezonális hatások, vagy a más funkciókhoz való viszonyulva változó funkciók. 
+Gyakran érdemes érvényesíteni a modellt, frissíteni, vagy akár újrabetanítását a semmiből, ahogy új információkat kap. Néha az új adatok fogadása a tartomány várható része. Máskor, ahogy azt az [adateltolódás (előzetes verzió) észlelése az adatkészleteken](how-to-monitor-datasets.md)című részében tárgyaljuk, a modell teljesítménye romolhat olyan dolgokkal szemben, mint egy adott érzékelő módosítása, a természetes adatok változásai, például a szezonális hatások, vagy a más funkciókhoz való viszonyulva változó funkciók. 
 
 Nincs általános válasz a "Honnan tudom, ha kell átképezni?" de az Azure ML-esemény- és figyelési eszközök, amelyekről korábban tárgyaltak, jó kiindulópontot jelentenek az automatizáláshoz. Miután úgy döntött, hogy átképezi, akkor: 
 

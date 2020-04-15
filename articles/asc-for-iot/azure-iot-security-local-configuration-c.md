@@ -1,5 +1,5 @@
 ---
-title: Az Azure Security Center ismertetése a C | Microsoft dokumentumok
+title: A biztonsági ügynök helyi konfigurációja (C)
 description: Ismerje meg az Azure Security Center ügynök helyi konfigurációk C.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,26 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2725a824da26dafcbc215e4c302ec38ad4b5a699
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd344b9bebb69af210c482f46af6b2dd7edf7816
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68600539"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311707"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>A LocalConfiguration.json fájl ismertetése – C-ügynök
 
 Az Azure Security Center for IoT biztonsági ügynök konfigurációkat használ egy helyi konfigurációs fájlból.
 A biztonsági ügynök egyszer olvassa be a konfigurációt az ügynök indításakor.
 A helyi konfigurációs fájlban található konfiguráció hitelesítési konfigurációt és más ügynökkel kapcsolatos konfigurációkat tartalmaz.
-A fájl "Kulcs-érték" párokkonfigurációit tartalmazza JSON jelölésben, és a konfigurációk feltöltődnek az ügynök telepítésekor. 
+A fájl "Kulcs-érték" párokkonfigurációit tartalmazza JSON jelölésben, és a konfigurációk feltöltődnek az ügynök telepítésekor.
 
 Alapértelmezés szerint a fájl a következő helyen található: /var/ASCIoTAgent/LocalConfiguration.json
 
-A konfigurációs fájl módosításaaz ügynök újraindításakor történik. 
+A konfigurációs fájl módosításaaz ügynök újraindításakor történik.
 
 ## <a name="security-agent-configurations-for-c"></a>Biztonsági ügynök konfigurációk C
-| Konfiguráció neve | Lehetséges értékek | Részletek | 
+
+| Konfiguráció neve | Lehetséges értékek | Részletek |
 |:-----------|:---------------|:--------|
 | Ügynökazonosító | GUID | Az ügynök egyedi azonosítója |
 | TriggerdEventsInterval | ISO8601 karakterlánc | Az aktivált események gyűjteményének ütemezői időköze |
@@ -53,6 +54,7 @@ A konfigurációs fájl módosításaaz ügynök újraindításakor történik.
 | DiagnosticEventMinimumSeverity | 0 <= <szám = 4 | az ilyen súlyosságú és annál magasabb naplóüzenetek diagnosztikai eseményekként lesznek elküldve (a 0 a legalacsonyabb súlyosság) |
 
 ## <a name="security-agent-configurations-code-example"></a>Példa a biztonsági ügynök konfigurációinak kódjára
+
 ```JSON
 {
     "Configuration" : {
@@ -79,6 +81,7 @@ A konfigurációs fájl módosításaaz ügynök újraindításakor történik.
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 - Olvassa el az Azure Security Center for IoT szolgáltatás [áttekintését](overview.md)
 - További információ az Azure Security Center for IoT [Architecture szolgáltatásról](architecture.md)
 - Az Azure Security Center [ioT-szolgáltatás](quickstart-onboard-iot-hub.md) engedélyezése

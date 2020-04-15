@@ -1,5 +1,5 @@
 ---
-title: Az Azure Security Center megismerése az IoT biztonsági javaslataihoz| Microsoft dokumentumok
+title: Biztonsági javaslatok
 description: Ismerje meg a biztonsági javaslatok koncepcióját és használatuk módját az Azure Security Center for IoT-ben.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,22 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: a8de821abcedf6bb9a331852a2c0af9b6439667a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 213595ac69efc90ec855b2891641e1f00bd1ba92
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303579"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311546"
 ---
 # <a name="security-recommendations"></a>Biztonsági javaslatok
 
-Az Azure Security Center for IoT megvizsgálja az Azure-erőforrásokat és az IoT-eszközöket, és biztonsági javaslatokat nyújt a támadási felület csökkentésére. A biztonsági ajánlások végrehajthatók, és arra irányulnak, hogy segítsék az ügyfeleket a legjobb biztonsági eljárások betartásában.
+Az Azure Security Center for IoT megvizsgálja az Azure-erőforrásokat és az IoT-eszközöket, és biztonsági javaslatokat nyújt a támadási felület csökkentésére.
+A biztonsági ajánlások végrehajthatók, és arra irányulnak, hogy segítsék az ügyfeleket a legjobb biztonsági eljárások betartásában.
 
 Ebben a cikkben az IoT Hub és/vagy az IoT-eszközök által aktiválható javaslatok listáját találja.
 
 ## <a name="recommendations-for-iot-devices"></a>Javaslatok az IoT-eszközökhöz
 
-Az eszközjavaslatok elemzéseket és javaslatokat nyújtanak az eszköz biztonsági állapotának javításához. 
+Az eszközjavaslatok elemzéseket és javaslatokat nyújtanak az eszköz biztonsági állapotának javításához.
 
 | Severity | Név                                                      | Adatforrás | Leírás                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -53,7 +54,7 @@ A működési javaslatok elemzéseket és javaslatokat nyújtanak a biztonsági 
 
 ## <a name="recommendations-for-iot-hub"></a>Javaslatok az IoT Hub
 
-Az ajánlási riasztások betekintést és javaslatokat nyújtanak a környezet biztonsági helyzetének javítására irányuló műveletekhez.  
+Az ajánlási riasztások betekintést és javaslatokat nyújtanak a környezet biztonsági helyzetének javítására irányuló műveletekhez.
 
 | Severity | Név                                                     | Adatforrás | Leírás                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

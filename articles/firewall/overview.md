@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 04/08/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 60d936d9c2785e4723cdc09e55927fe13af8d8a1
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: bb4b654bd0b3591ebaa1bd217020095319a4938c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892308"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381916"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -53,7 +53,7 @@ Az Azure Firewall akármeddig felskálázható a változó hálózati forgalom k
 
 ## <a name="application-fqdn-filtering-rules"></a>Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok
 
-Korlátozhatja a kimenő HTTP/S-forgalmat vagy az Azure SQL-forgalmat (előzetes verzió) a teljesen minősített tartománynevek (FQDN) megadott listájára, beleértve a helyettesítő karaktereket is. Ez a funkció nem igényel SSL-megszüntetést.
+Korlátozhatja a kimenő HTTP/S-forgalmat vagy az Azure SQL-forgalmat (előzetes verzió) a teljesen minősített tartománynevek (FQDN) megadott listájára, beleértve a helyettesítő karaktereket is. Ez a funkció nem igényel TLS-megszüntetést.
 
 ## <a name="network-traffic-filtering-rules"></a>Hálózati forgalomra vonatkozó szűrési szabályok
 
@@ -116,7 +116,7 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |A rendelkezésre állási zónák csak a központi telepítés során konfigurálhatók.|A rendelkezésre állási zónák csak a központi telepítés során konfigurálhatók. A tűzfal telepítése után nem konfigurálható a rendelkezésre állási zónák.|Ez az elvárt működés.|
 |SNAT bejövő kapcsolatokon|A DNST mellett a tűzfalon keresztüli (bejövő) kapcsolatok a tűzfal egyik privát IP-címéhez snated.Addition to DNAT, connections via the firewall public IP address (inbound) are SNATed to one of the firewall private IP. Ez a követelmény ma (aktív/aktív nva-k esetében is) a szimmetrikus útválasztás biztosítása érdekében.|A HTTP/S eredeti forrásának megőrzéséhez érdemes [lehet XFF-fejléceket](https://en.wikipedia.org/wiki/X-Forwarded-For) használni. Például használjon egy szolgáltatást, például [az Azure bejárati ajtaját](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) vagy az [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) a tűzfal előtt. WaF-ot is hozzáadhat az Azure Bejárati ajtajához és láncolatához.
 |Az SQL FQDN-szűrés támogatása csak proxy módban (1433-as port)|Az Azure SQL Database, az Azure SQL Data Warehouse és az Azure SQL felügyelt példány esetén:<br><br>Az előzetes verzió során az SQL FQDN-szűrés csak proxy módban (1433-as port) támogatott.<br><br>Az Azure SQL IaaS esetén:<br><br>Ha nem szabványos portokat használ, megadhatja ezeket a portokat az alkalmazásszabályokban.|Sql átirányítási módban (az alapértelmezett, ha az Azure-on belülről csatlakozik), ehelyett szűrheti a hozzáférést az SQL szolgáltatáscímke használatával az Azure Firewall hálózati szabályok részeként.
-|A 25-ös TCP-port kimenő forgalma nem engedélyezett| A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok le vannak tiltva. A 25-ös portot elsősorban a nem hitelesített e-mailek kézbesítéséhez használják. Ez a virtuális gépek alapértelmezett platformviselkedése. További információt a [Kimenő SMTP-kapcsolattal kapcsolatos problémák elhárítása az Azure-ban](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)című témakörben talál. Azonban a virtuális gépekkel ellentétben jelenleg nem lehetséges ez a funkció az Azure Firewall.|Kövesse az ajánlott módszert az E-mail küldéséhez az SMTP hibaelhárítási cikkben dokumentált módon. Vagy zárja ki azt a virtuális gépet, amelynek kimenő SMTP-hozzáférést kell biztosítania az alapértelmezett útvonalról a tűzfalra. Ehelyett konfigurálja a kimenő hozzáférést közvetlenül az internethez.
+|A 25-ös TCP-port kimenő forgalma nem engedélyezett| A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok le vannak tiltva. A 25-ös portot elsősorban a nem hitelesített e-mailek kézbesítéséhez használják. Ez a virtuális gépek alapértelmezett platformviselkedése. További információt a [Kimenő SMTP-kapcsolattal kapcsolatos problémák elhárítása az Azure-ban](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)című témakörben talál. Azonban a virtuális gépekkel ellentétben jelenleg nem lehetséges ez a funkció az Azure Firewall. Megjegyzés: ha a hitelesített SMTP -t (587-es port) vagy az SMTP-t 25-től eltérő porton szeretné engedélyezni, győződjön meg arról, hogy hálózati szabályt konfigurál, és nem egy alkalmazásszabályt, mivel az SMTP-ellenőrzés jelenleg nem támogatott.|Kövesse az ajánlott módszert az e-mailek küldéséhez, az SMTP hibaelhárítási cikkben dokumentált módon. Vagy zárja ki azt a virtuális gépet, amelynek kimenő SMTP-hozzáférést kell biztosítania az alapértelmezett útvonalról a tűzfalra. Ehelyett konfigurálja a kimenő hozzáférést közvetlenül az internethez.
 |Az aktív FTP nem támogatott|Az aktív FTP le van tiltva az Azure Tűzfalon az FTP-port paranccsal történő FTP-visszafordulási támadások elleni védelem érdekében.|Használhatja passzív FTP helyett. A tűzfalon továbbra is kifejezetten meg kell nyitnia a 20-as és 21-es TCP-portokat.
 |Az SNAT-port kihasználtsági mutatója 0%-ot mutat|Az Azure Firewall SNAT-port kihasználtsági metrikája 0%-os használatot mutathat még SNAT-portok használata esetén is. Ebben az esetben a metrika használata a tűzfal állapotmetrika részeként helytelen eredményt ad.|Ezt a problémát kijavították, és a termelésre való bevezetés 2020 májusára irányul. Bizonyos esetekben a tűzfal újratelepítése megoldja a problémát, de nem konzisztens. Köztes megoldásként csak a tűzfal állapotával keresse meg az *állapot=degradálódott*, az *állapot=nem kifogástalan.* Port kimerültség jelenik meg *a leromlott*. *Nem kifogástalan* van fenntartva a későbbi használatra, ha a több metrikák hatással van a tűzfal állapotát.
 |A DNST nem támogatott a kényszerített bújtatás engedélyezve|A kényszerített bújtatásengedélyezéssel telepített tűzfalak az aszimmetrikus útválasztás miatt nem támogatják az internetről érkező bejövő hozzáférést.|Ez szándékosan az aszimmetrikus útválasztás miatt van. A bejövő kapcsolatok visszatérési útvonala a helyszíni tűzfalon keresztül történik, amely nem látta a létrehozott kapcsolatot.

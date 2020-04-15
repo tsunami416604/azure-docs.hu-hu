@@ -7,20 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 04/14/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8cee874106598c7d81b923d7dd32ba91902d9326
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745187"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383629"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Erőforrásosztályok konvertálása munkaterhelés-csoportokká
 
 A számítási feladatok csoportjai a rendszererőforrások elkülönítésére és tárolására szolgálnak.  Emellett a számítási feladatok csoportjai lehetővé teszik, hogy végrehajtási szabályokat állítson be a bennük futó kérelmekhez.  A lekérdezési időout végrehajtási szabály lehetővé teszi a futtatott lekérdezések felhasználói beavatkozás nélkül történő megszakítását.  Ez a cikk bemutatja, hogyan vehet egy meglévő erőforrásosztályt, és hozzon létre egy hasonló konfigurációjú munkaterhelési csoportot.  Emellett egy választható lekérdezési időmegadási szabály is hozzáadódik.
+
+> [!NOTE]
+> Tekintse meg az [erőforrásosztály-hozzárendelések keverése osztályozókkal](sql-data-warehouse-workload-classification.md#mixing-resource-class-assignments-with-classifiers) című szakaszát a [Számítási feladatok besorolása](sql-data-warehouse-workload-classification.md) koncepciódokumentumban a számítási feladatok csoportjainak és erőforrásosztályai egyidejű használatával kapcsolatos útmutatásnak.
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>A meglévő erőforrásosztály-konfiguráció ismertetése
 
@@ -86,4 +89,6 @@ SELECT request_id, [label], classifier_name, group_name, command
 ## <a name="next-steps"></a>További lépések
 
 - [Munkaterhelés elkülönítése](sql-data-warehouse-workload-isolation.md)
-- [Hogyan hozzon létre számítási feladatok csoport-linkjét](quickstart-configure-workload-isolation-tsql.md)
+- [Hogyan hozzon létre egy számítási feladatcsoport](quickstart-configure-workload-isolation-tsql.md)
+- [MUNKATERHELÉS-OSZTÁLYOZÓ LÉTREHOZÁSA (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
+- [SZÁMÍTÁSI FELADATCSOPORT LÉTREHOZÁSA (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)

@@ -1,5 +1,5 @@
 ---
-title: A biztonsági üzenetek küldése az Azure Security Center for IoT| Microsoft dokumentumok
+title: Eszközbiztonsági üzenetek küldése
 description: Ismerje meg, hogyan küldhetbiztonsági üzeneteket az Azure Security Center for IoT használatával.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76963818"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310991"
 ---
 # <a name="send-security-messages-sdk"></a>Biztonsági üzenetek küldése SDK
 
-Ez az útmutató ismerteti az Azure Security Center for IoT szolgáltatás képességeit, amikor úgy dönt, hogy összegyűjti és elküldi az eszköz biztonsági üzeneteket az Azure Security Center for IoT-ügynök használata nélkül, és elmagyarázza, hogyan kell ezt megtenni.  
+Ez az útmutató ismerteti az Azure Security Center for IoT szolgáltatás képességeit, amikor úgy dönt, hogy összegyűjti és elküldi az eszköz biztonsági üzeneteket az Azure Security Center for IoT-ügynök használata nélkül, és elmagyarázza, hogyan kell ezt megtenni.
 
-Ebből az útmutatóból a következőket tanulhatja meg: 
+Ebből az útmutatóból a következőket tanulhatja meg:
+
 > [!div class="checklist"]
 > * Biztonsági üzenetek küldése az Azure IoT C SDK használatával
 > * Biztonsági üzenetek küldése az Azure IoT C# SDK használatával
 > * Biztonsági üzenetek küldése az Azure IoT Python SDK használatával
 > * Biztonsági üzenetek küldése az Azure IoT-node.js SDK használatával
 > * Biztonsági üzenetek küldése az Azure IoT Java SDK használatával
-
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>Az Azure Security Center az IoT-képességekhez
 
@@ -42,6 +42,7 @@ Az Azure Security Center for IoT bármilyen típusú biztonsági üzenetadatot f
 ## <a name="security-message"></a>Biztonsági üzenet
 
 Az Azure Security Center for IoT a következő feltételekkel definiál egy biztonsági üzenetet:
+
 - Ha az üzenetet az Azure IoT SDK-val küldték
 - Ha az üzenet megfelel a [biztonsági üzenetsémának](https://aka.ms/iot-security-schemas)
 - Ha az üzenet biztonsági üzenetként lett beállítva a küldés előtt
@@ -49,10 +50,10 @@ Az Azure Security Center for IoT a következő feltételekkel definiál egy bizt
 Minden biztonsági üzenet tartalmazza a feladó metaadatait, például `AgentId`a `AgentVersion`, a, `MessageSchemaVersion` és a biztonsági események listáját.
 A séma határozza meg a biztonsági üzenet érvényes és szükséges tulajdonságait, beleértve az események típusait is.
 
->[!Note]
-> A sémának meg nem felelő üzeneteket a rendszer figyelmen kívül hagyja. Győződjön meg arról, hogy ellenőrizze a sémát, mielőtt az adatok küldését figyelmen kívül hagyott üzenetekként való indítása jelenleg nem tárolja. 
+> [!NOTE]
+> A sémának meg nem felelő üzeneteket a rendszer figyelmen kívül hagyja. Győződjön meg arról, hogy ellenőrizze a sémát, mielőtt az adatok küldését figyelmen kívül hagyott üzenetekként való indítása jelenleg nem tárolja.
 
->[!Note]
+> [!NOTE]
 > Az Azure IoT SDK használatával nem biztonsági üzenetként beállított üzenetek nem lesznek átirányítva az Azure Security Center for IoT-folyamathoz.
 
 ## <a name="valid-message-example"></a>Példa érvényes üzenetre
@@ -89,62 +90,63 @@ Miután beállította a biztonsági üzenetet, és elküldte, ezt az üzenetet a
 ]
 ```
 
-## <a name="send-security-messages"></a>Biztonsági üzenetek küldése 
+## <a name="send-security-messages"></a>Biztonsági üzenetek küldése
 
 Biztonsági üzenetek küldése az Azure Security Center for IoT-ügynök használata *nélkül* az [Azure IoT C-eszköz SDK,](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) [Az Azure IoT C# eszköz SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), [Azure IoT Node.js SDK,](https://github.com/Azure/azure-iot-sdk-node) [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)vagy [az Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java)használatával.
 
-Ha az eszközök adatait az Azure Security Center for IoT-hoz történő feldolgozásra elküldi, az alábbi API-k egyikével jelölje meg az üzeneteket az Azure Security Center ioT-feldolgozási folyamathoz történő helyes útválasztáshoz. 
+Ha az eszközök adatait az Azure Security Center for IoT-hoz történő feldolgozásra elküldi, az alábbi API-k egyikével jelölje meg az üzeneteket az Azure Security Center ioT-feldolgozási folyamathoz történő helyes útválasztáshoz.
 
-Minden elküldött adatnak, még akkor is, ha a megfelelő fejléccel van megjelölve, meg kell felelnie az [Azure Security Center for IoT üzenetsémának](https://aka.ms/iot-security-schemas)is. 
+Minden elküldött adatnak, még akkor is, ha a megfelelő fejléccel van megjelölve, meg kell felelnie az [Azure Security Center for IoT üzenetsémának](https://aka.ms/iot-security-schemas)is.
 
-### <a name="send-security-message-api"></a>Biztonsági üzenet küldése API 
+### <a name="send-security-message-api"></a>Biztonsági üzenet küldése API
 
-A **biztonsági üzenetek küldése** API jelenleg C és C#, Python, Node.js és Java nyelven érhető el.  
+A **biztonsági üzenetek küldése** API jelenleg C és C#, Python, Node.js és Java nyelven érhető el.
 
 #### <a name="c-api"></a>C API
 
 ```c
 bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
- 
+
     bool success = true;
     IOTHUB_MESSAGE_HANDLE messageHandle = NULL;
- 
+
     messageHandle = IoTHubMessage_CreateFromByteArray(data, dataSize);
- 
+
     if (messageHandle == NULL) {
         success = false;
         goto cleanup;
     }
- 
+
     if (IoTHubMessage_SetAsSecurityMessage(messageHandle) != IOTHUB_MESSAGE_OK) {
         success = false;
         goto cleanup;
     }
- 
+
     if (IoTHubModuleClient_SendEventAsync(iotHubAdapter->moduleHandle, messageHandle, SendConfirmCallback, iotHubAdapter) != IOTHUB_CLIENT_OK) {
         success = false;
         goto cleanup;
     }
- 
+
 cleanup:
     if (messageHandle != NULL) {
         IoTHubMessage_Destroy(messageHandle);
     }
- 
+
     return success;
 }
- 
+
 static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback) {
     if (userContextCallback == NULL) {
         //error handling
         return;
     }
- 
+
     if (result != IOTHUB_CLIENT_CONFIRMATION_OK){
         //error handling
     }
 }
 ```
+
 #### <a name="c-api"></a>C# API
 
 ```cs
@@ -157,6 +159,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
     await client.SendEventAsync(securityMessage);
 }
 ```
+
 #### <a name="nodejs-api"></a>Node.js API
 
 ```typescript
@@ -194,7 +197,7 @@ function SendSecurityMessage(messageContent)
 
 A Python API használatához telepítenie kell a csomagot [az azure-iot-device.](https://pypi.org/project/azure-iot-device/)
 
-A Python API használatakor elküldheti a biztonsági üzenetet a modulon keresztül vagy az eszközön keresztül az egyedi eszköz vagy modul kapcsolati karakterlánc használatával. Ha a következő Python-parancsfájlpéldát használja egy eszközzel, használja **az IoTHubDeviceClient**programot, és egy modullal használja az **IoTHubModuleClient programot.** 
+A Python API használatakor elküldheti a biztonsági üzenetet a modulon keresztül vagy az eszközön keresztül az egyedi eszköz vagy modul kapcsolati karakterlánc használatával. Ha a következő Python-parancsfájlpéldát használja egy eszközzel, használja **az IoTHubDeviceClient**programot, és egy modullal használja az **IoTHubModuleClient programot.**
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
@@ -224,8 +227,8 @@ public void SendSecurityMessage(string message)
 }
 ```
 
-
 ## <a name="next-steps"></a>További lépések
+
 - Olvassa el az Azure Security Center for IoT szolgáltatás [áttekintését](overview.md)
 - További információ az Azure Security Center for IoT [Architecture szolgáltatásról](architecture.md)
 - A [szolgáltatás](quickstart-onboard-iot-hub.md) engedélyezése

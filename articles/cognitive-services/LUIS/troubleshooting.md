@@ -1,22 +1,15 @@
 ---
 title: Gyakori kérdések (GYIK) - LUIS
-titleSuffix: Azure Cognitive Services
 description: Ez a cikk a nyelvi ismeretekkel (LUIS) kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 235eba7f80778b8a60ba880616cf80f2c14ccba1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219708"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382187"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nyelvismertetés – gyakori kérdések
 
@@ -59,7 +52,10 @@ Az előző **Minta funkció** jelenleg elavult, helyébe **[minták](luis-concep
 Lásd [az entitásokat](luis-concept-entity-types.md) és [az adatok kinyerését.](luis-concept-data-extraction.md)
 
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Egy példa utterance (kifejezés) változatok tartalmaznak írásjeleket?
-Vagy adja hozzá a különböző változatokat példautterances a szándékot, vagy adja hozzá a mintát a példa utterance (kifejezés) a [szintaxis figyelmen kívül hagyja](luis-concept-patterns.md#pattern-syntax) az írásjeleket.
+Használja az alábbi megoldások egyikét:
+* [Írásjelek](luis-reference-application-settings.md#punctuation-normalization) figyelmen kívül hagyása
+* Adja hozzá a különböző változatokat példaként a szándékhoz.
+* Adja hozzá a példa utterance (kifejezés) mintáját a [szintaxissal az](luis-concept-patterns.md#pattern-syntax) írásjelek figyelmen kívül hagyásához.
 
 ### <a name="does-luis-currently-support-cortana"></a>A LUIS jelenleg támogatja Cortanát?
 
@@ -68,11 +64,11 @@ A Cortana előre elkészített alkalmazásai 2017-ben elavultak. Ezek már nem t
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hogyan ruházhatok át egy LUIS-alkalmazás tulajdonjogát?
 Ha egy LUIS-alkalmazást át szeretne vinni egy másik Azure-előfizetésbe, exportálja a LUIS alkalmazást, és importálja egy új fiókkal. Frissítse a LUIS-alkalmazásazonosítót az azt minősítő ügyfélalkalmazásban. Az új alkalmazás az eredeti alkalmazástól kissé eltérő LUIS-pontszámokat adhat vissza.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Egy előre összeállított entitás van címkézve egy példa utterance (kifejezés) az egyéni entitás helyett. Hogyan tudom ezt helyrehozni? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Egy előre összeállított entitás van címkézve egy példa utterance (kifejezés) az egyéni entitás helyett. Hogyan tudom ezt helyrehozni?
 
-A LUIS-portálon címkézheti a szöveget a pontos entitás, amely et ki szeretne vonni. Ha a LUIS-portál nem jeleníti meg a megfelelő entitás-előrejelzést, előfordulhat, hogy további kimondott szöveget kell hozzáadnia, és fel kell címkéznie az entitást a szövegen belül, vagy hozzá kell adnia egy leírót (például egy jellemzőt). 
+A LUIS-portálon címkézheti a szöveget a pontos entitás, amely et ki szeretne vonni. Ha a LUIS-portál nem jeleníti meg a megfelelő entitás-előrejelzést, előfordulhat, hogy további kimondott szöveget kell hozzáadnia, és fel kell címkéznie az entitást a szövegen belül, vagy hozzá kell adnia egy leírót (például egy jellemzőt).
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Megpróbáltam importálni egy alkalmazást vagy verziófájlt, de hibaüzenetet kaptam, mi történt? 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Megpróbáltam importálni egy alkalmazást vagy verziófájlt, de hibaüzenetet kaptam, mi történt?
 
 További információ a [verzióimportálási hibákról](luis-how-to-manage-versions.md#import-errors).
 
@@ -82,7 +78,7 @@ További információ a [verzióimportálási hibákról](luis-how-to-manage-ver
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Hogyan adhatok hozzáférést a közreműködőknek a LUIS-hoz az Azure Active Directory (Azure AD) vagy a szerepköralapú hozzáférés-vezérlés (RBAC) segítségével?
 
-Tekintse meg [az Azure Active Directory-erőforrások](luis-how-to-collaborate.md#azure-active-directory-resources) és [az Azure Active Directory bérlői felhasználó,](luis-how-to-collaborate.md#azure-active-directory-tenant-user) hogyan adhat hozzáférést a közreműködők. 
+Tekintse meg [az Azure Active Directory-erőforrások](luis-how-to-collaborate.md#azure-active-directory-resources) és [az Azure Active Directory bérlői felhasználó,](luis-how-to-collaborate.md#azure-active-directory-tenant-user) hogyan adhat hozzáférést a közreműködők.
 
 <a name="luis-endpoint"></a>
 
@@ -92,7 +88,7 @@ Tekintse meg [az Azure Active Directory-erőforrások](luis-how-to-collaborate.m
 
 403-as és 429-es hibaállapot-kódokat kap, ha túllépi a másodpercenkénti tranzakciókat vagy a tarifacsomag havonta lebonyolított tranzakcióit. Növelje a tarifacsomagot, vagy használja a Nyelvtudás [tárolókat.](luis-container-howto.md)
 
-Ha az összes ingyenes 1000 végpontlekérdezést használja, vagy túllépi a tarifacsomag havi tranzakciókvótáját, http 403-as hibaállapot-kódot kap. 
+Ha az összes ingyenes 1000 végpontlekérdezést használja, vagy túllépi a tarifacsomag havi tranzakciókvótáját, http 403-as hibaállapot-kódot kap.
 
 A hiba megoldásához vagy magasabb szintre kell [módosítania a tarifacsomagot,](luis-how-to-azure-subscription.md#change-pricing-tier) vagy létre kell [hoznia egy új erőforrást,](get-started-portal-deploy-app.md#create-the-endpoint-resource) és [hozzá kell rendelnie az alkalmazáshoz.](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)
 
@@ -105,23 +101,23 @@ A hiba megoldásai a következők:
 
 403-as és 429-es hibaállapot-kódokat kap, ha túllépi a másodpercenkénti tranzakciókat vagy a tarifacsomag havonta lebonyolított tranzakcióit. Növelje a tarifacsomagot, vagy használja a Nyelvtudás [tárolókat.](luis-container-howto.md)
 
-Ez az állapotkód akkor kerül visszaadásra, ha a másodpercenkénti tranzakciók meghaladják a tarifacsomagot.  
+Ez az állapotkód akkor kerül visszaadásra, ha a másodpercenkénti tranzakciók meghaladják a tarifacsomagot.
 
 A megoldások a következők:
 
 * Növelheti [a tarifacsomagot,](luis-how-to-azure-subscription.md#change-pricing-tier)ha nem a legmagasabb szinten van.
 * Ha a használat meghaladja a legmagasabb tarifacsomagot, adjon hozzá további nyelvi megértési erőforrásokat egy terheléselosztóval előttük. A [Language Understanding tároló](luis-container-howto.md) Kubernetes vagy Docker Compose segíthet ebben.
-* Az ügyfélalkalmazás-kérelmek et egy [újrapróbálkozási szabályzattal](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) biztosíthatja, amelyet saját maga valósít meg, amikor megkapja ezt az állapotkódot. 
+* Az ügyfélalkalmazás-kérelmek et egy [újrapróbálkozási szabályzattal](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) biztosíthatja, amelyet saját maga valósít meg, amikor megkapja ezt az állapotkódot.
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>A végponti lekérdezés nem várt eredményt adott vissza. Mit tegyek?
 
-A nem várt lekérdezés-előrejelzési eredmények a közzétett modell állapotán alapulnak. A modell javításához szükség lehet a modell módosítására, a betanításra és a közzététel újbóli közzétételére. 
+A nem várt lekérdezés-előrejelzési eredmények a közzétett modell állapotán alapulnak. A modell javításához szükség lehet a modell módosítására, a betanításra és a közzététel újbóli közzétételére.
 
 A modell javítása az [aktív tanulással](luis-how-to-review-endpoint-utterances.md)kezdődik.
 
 Eltávolíthatja a nem determinisztikus betanítást az [alkalmazás verzióbeállítási API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) frissítésével az összes betanítási adat használatához.
 
-Tekintse át az egyéb tippekért az [ajánlott eljárásokat.](luis-concept-best-practices.md) 
+Tekintse át az egyéb tippekért az [ajánlott eljárásokat.](luis-concept-best-practices.md)
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Miért a LUIS szóközöket ad a lekérdezéshez a szavak körül vagy közepén?
 A LUIS [tokenizes az](luis-glossary.md#token) utterance (kifejezés) a [kultúra](luis-language-support.md#tokenization)alapján. Mind az eredeti érték, mind a tokenizált érték elérhető az [adatok kinyeréséhez.](luis-concept-data-extraction.md#tokenized-entity-returned)
@@ -145,7 +141,7 @@ A Végpontkvóta megtekintéséhez powershell-paranccsal is megtekintheti a vég
 
 ```powershell
 Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
-``` 
+```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Saját LUIS app működött tegnap, de ma kapok 403 hibákat. Nem változtattam meg az alkalmazást. Hogyan lehet kijavítani a hibát?
 Kövesse az [alábbi utasításokat](#how-do-i-create-and-assign-a-luis-endpoint-key) a LUIS-végpontkulcs létrehozásához és az alkalmazáshoz való hozzárendeléséhez. Ezután módosítania kell az ügyfélalkalmazás HTTP-kérelmét a végpontra [az új végpontkulcs használatához.](luis-concept-keys.md) Ha új erőforrást hozott létre egy másik régióban, módosítsa a HTTP-ügyfélkérelem régióját is.
@@ -186,7 +182,7 @@ Tekintse meg a [Kötegelt tesztelés](luis-tutorial-batch-testing.md) oktatóany
 
 Lásd: [Előrejelzési különbségek ugyanazon alkalmazás példányai között.](luis-concept-prediction-score.md#review-intents-with-similar-scores)
 
-### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Néhány kimondott szöveg rossz szándékkal történik, miután módosítottam az alkalmazást. A kérdés úgy tűnik, hogy eltűnik véletlenszerűen. Hogyan lehet kijavítani a hibát? 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Néhány kimondott szöveg rossz szándékkal történik, miután módosítottam az alkalmazást. A kérdés úgy tűnik, hogy eltűnik véletlenszerűen. Hogyan lehet kijavítani a hibát?
 
 Lásd: [Vonat az összes adattal.](luis-how-to-train.md#train-with-all-data)
 
@@ -202,27 +198,27 @@ Az Azure-ban a bérlő képviseli a szolgáltatáshoz társított ügyfelet vagy
 
 
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Miért van több végpontkulcs hozzárendelve az alkalmazásomhoz, mint én?
-Minden LUIS-alkalmazás rendelkezik a szerzői/kezdő kulcs a végpontlistában a kényelem érdekében. Ez a kulcs csak néhány végpontlekérést tesz lehetővé, így kipróbálhatja a LUIS-t.  
+Minden LUIS-alkalmazás rendelkezik a szerzői/kezdő kulcs a végpontlistában a kényelem érdekében. Ez a kulcs csak néhány végpontlekérést tesz lehetővé, így kipróbálhatja a LUIS-t.
 
 Ha az alkalmazás létezett, mielőtt LUIS általánosan elérhető (GA), LUIS végpontkulcsok az előfizetésben automatikusan hozzá van rendelve. Ez azért történt, hogy megkönnyítse a GA-áttelepítést. Az Azure Portalon lévő új LUIS-végpontkulcsok _nem_ lesznek automatikusan hozzárendelve a LUIS-hoz.
 
 ## <a name="key-management"></a>Kulcskezelés
 
-### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Honnan tudhatom, hogy milyen kulcsra van szükségem, hol kapom meg, és mit csinálok vele? 
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Honnan tudhatom, hogy milyen kulcsra van szükségem, hol kapom meg, és mit csinálok vele?
 
-[A SZERZŐI és lekérdezési előrejelzési végpontkulcsok a LUIS-ban](luis-concept-keys.md) a szerzői kulcs és az előrejelzési futásidejű kulcs közötti különbségek megismerése. 
+[A SZERZŐI és lekérdezési előrejelzési végpontkulcsok a LUIS-ban](luis-concept-keys.md) a szerzői kulcs és az előrejelzési futásidejű kulcs közötti különbségek megismerése.
 
-### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Van egy hiba, hogy ki a kvótát. Hogyan lehet kijavítani a hibát? 
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Van egy hiba, hogy ki a kvótát. Hogyan lehet kijavítani a hibát?
 
 További információért tekintse meg a [403-as](#i-received-an-http-403-error-status-code-how-do-i-fix-it) és [429-es](#i-received-an-http-429-error-status-code-how-do-i-fix-it) HTTP-állapotkód javítását.
 
-### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>További végpontlekérdezéseket kell kezelnem. Mit kell tennem ehhez? 
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>További végpontlekérdezéseket kell kezelnem. Mit kell tennem ehhez?
 
 További információért tekintse meg a [403-as](#i-received-an-http-403-error-status-code-how-do-i-fix-it) és [429-es](#i-received-an-http-429-error-status-code-how-do-i-fix-it) HTTP-állapotkód javítását.
 
 ### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>Létrehoztam egy szerzői kulcsot, de az nem jelenik meg a LUIS-portálon. Mi történt?
 
-A szerzői kulcsok a LUIS-portálon érhetők el [a szerzői kulcsélménybe való áttelepítés](luis-migration-authoring.md)után.  
+A szerzői kulcsok a LUIS-portálon érhetők el [a szerzői kulcsélménybe való áttelepítés](luis-migration-authoring.md)után.
 
 ## <a name="app-management"></a>Alkalmazáskezelés
 
@@ -266,28 +262,28 @@ A szerzői/kezdőkulcs csak 1000 végpontlekérdezést engedélyezett havonta. H
 
 ### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>A LUIS-robot nem működik. Mit tegyek?
 
-Az első kérdés az, hogy elkülöníteni, ha a probléma a LUIS vagy a LUIS köztes szoftveren kívül történik. 
+Az első kérdés az, hogy elkülöníteni, ha a probléma a LUIS vagy a LUIS köztes szoftveren kívül történik.
 
 #### <a name="resolve-issue-in-luis"></a>Probléma megoldása a LUIS-ban
 Adja át ugyanazt az utterance (pont) a LUIS a [LUIS végpont.](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) Ha hibaüzenetet kap, oldja meg a problémát a LUIS-ban, amíg a hibát már nem adja vissza. Gyakori hibák a következők:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`- Ez a probléma azt jelzi, hogy vagy át kell váltania egy szerzői kulcsról [egy végpontkulcsra,](luis-how-to-azure-subscription.md) vagy módosítania kell a [szolgáltatási szinteket.](luis-how-to-azure-subscription.md#change-pricing-tier) 
+* `Out of call volume quota. Quota will be replenished in <time>.`- Ez a probléma azt jelzi, hogy vagy át kell váltania egy szerzői kulcsról [egy végpontkulcsra,](luis-how-to-azure-subscription.md) vagy módosítania kell a [szolgáltatási szinteket.](luis-how-to-azure-subscription.md#change-pricing-tier)
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probléma megoldása az Azure Bot Service szolgáltatásban
 
 Ha az Azure Bot Service-t használja, és a probléma az, hogy a **Web Chat-ben való tesztelés** visszaküldi `Sorry, my bot code is having an issue`a naplóit:
 
 1. Az Azure Portalon a robot, a **Robot felügyeleti** szakaszban válassza **a Build**lehetőséget.
-1. Nyissa meg az online kódszerkesztőt. 
+1. Nyissa meg az online kódszerkesztőt.
 1. A felső, kék navigációs sávon válassza ki a robot nevét (a második elem jobbra).
 1. Az eredményül kapott legördülő listában válassza a **Kudu konzol megnyitása**lehetőséget.
-1. Válassza **a LogFiles (Naplófájlok)** lehetőséget, majd az **Alkalmazás**lehetőséget. Tekintse át az összes naplófájlt. Ha a hiba nem jelenik meg az alkalmazásmappában, tekintse át az összes naplófájlt a **LogFiles területen.** 
+1. Válassza **a LogFiles (Naplófájlok)** lehetőséget, majd az **Alkalmazás**lehetőséget. Tekintse át az összes naplófájlt. Ha a hiba nem jelenik meg az alkalmazásmappában, tekintse át az összes naplófájlt a **LogFiles területen.**
 1. Ne felejtse el újraépíteni a projektet, ha olyan lefordított nyelvet használ, mint a C#.
 
-> [!Tip] 
-> A konzol csomagokat is telepíthet. 
+> [!Tip]
+> A konzol csomagokat is telepíthet.
 
-#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Oldja meg a problémát, miközben a Bot Framework helyi gépen hibakeresést folytat. 
+#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Oldja meg a problémát, miközben a Bot Framework helyi gépen hibakeresést folytat.
 
 Ha többet szeretne megtudni a robot helyi hibakereséséről, olvassa el [a Robot hibakeresése](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
 
@@ -303,19 +299,19 @@ Ha kiválaszt egy LUIS-sablont, és a sablon ablaktáblában a Kijelölés gombo
 
 ## <a name="api-programming-strategies"></a>API programozási stratégiák
 
-### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Hogyan kaphatom meg programozott módon egy erőforrás LUIS-régióját? 
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Hogyan kaphatom meg programozott módon egy erőforrás LUIS-régióját?
 
-A LUIS-minta segítségével a C# vagy a Node.Js használatával programozott módon [keresheti meg](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) a régiót. 
+A LUIS-minta segítségével a C# vagy a Node.Js használatával programozott módon [keresheti meg](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) a régiót.
 
 ## <a name="luis-service"></a>LUIS szolgáltatás
 
 ### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>A Language Understanding (LUIS) elérhető a helyszínen vagy a magánfelhőben?
 
-Igen, használhatja a [LUIS-tárolót](luis-container-howto.md) ezekhez a forgatókönyvekhez, ha rendelkezik a szükséges kapcsolatmérő-használathoz. 
+Igen, használhatja a [LUIS-tárolót](luis-container-howto.md) ezekhez a forgatókönyvekhez, ha rendelkezik a szükséges kapcsolatmérő-használathoz.
 
 ## <a name="migrating-to-the-next-version"></a>Áttelepítés a következő verzióra
 
-### <a name="how-do-i-migrate-to-preview-v3-api"></a>Hogyan telepíthetem át a V3 API előnézetét? 
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>Hogyan telepíthetem át a V3 API előnézetét?
 
 Lásd: [API-v2–v3 áttelepítési útmutató a LUIS-alkalmazásokhoz](luis-migration-api-v3.md)
 
@@ -325,7 +321,7 @@ A Build 2019 konferencián a következő funkciók jelentek meg:
 
 * [A V3 API áttelepítési útmutatójának előzetes verziója](luis-migration-api-v3.md)
 * [Továbbfejlesztett elemzési irányítópult](luis-how-to-use-dashboard.md)
-* [Továbbfejlesztett előre összeállított tartományok](luis-reference-prebuilt-domains.md) 
+* [Továbbfejlesztett előre összeállított tartományok](luis-reference-prebuilt-domains.md)
 * [Dinamikus listaentitások](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Külső entitások](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 

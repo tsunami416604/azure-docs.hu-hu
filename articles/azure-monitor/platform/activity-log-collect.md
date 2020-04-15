@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/24/2020
-ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 04/14/2020
+ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396776"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382870"
 ---
 # <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Azure-tevékenységnapló gyűjtése és elemzése az Azure Monitorban
 Az [Azure-tevékenységnapló](platform-logs-overview.md) egy [platformnapló,](platform-logs-overview.md) amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekbe. Bár megtekintheti a tevékenységnaplót az Azure Portalon, konfigurálnia kell, hogy küldjön egy Log Analytics-munkaterületre az Azure Monitor további funkcióinak engedélyezéséhez. Ez a cikk ismerteti, hogyan hajthatja végre ezt a konfigurációt, és hogyan küldheti el a tevékenységnaplót az Azure storage és eseményközpontok.
@@ -25,7 +25,8 @@ A tevékenységnapló gyűjtése a Log Analytics-munkaterületen a következő e
 - 90 napnál hosszabb ideig tárolja a tevékenységnapló-bejegyzéseket.
 - Konszolidálja a több Azure-előfizetésből és bérlőből származó naplóbejegyzéseket egy helyre elemzésre.
 
-
+> [!IMPORTANT]
+> A bérlők közötti naplók gyűjtése [azure-világítótoronyhoz](/azure/lighthouse)szükséges.
 
 ## <a name="collecting-activity-log"></a>Tevékenységnapló gyűjtése
 A tevékenységnapló automatikusan frissül [az Azure Portalon való megtekintéshez.](activity-log-view.md) Ha egy Log Analytics-munkaterületen szeretné összegyűjteni, vagy el szeretné küldeni neki az Azure storage- vagy eseményközpontokat, hozzon létre egy [diagnosztikai beállítást.](diagnostic-settings.md) Ez ugyanaz a módszer, amelyet az erőforrásnaplók használnak, így az összes [platformnaplóban](platform-logs-overview.md)konzisztens.  

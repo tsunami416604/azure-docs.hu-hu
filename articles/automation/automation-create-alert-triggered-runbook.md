@@ -5,16 +5,19 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: df28116c588ed77f02c78a42a85feb91ca339e7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5eb330cd6e5d02432298a5b58e84ae7d24ee7e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366700"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383322"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Egy Azure Automation-runbook aktiválásához használjon riasztást
 
 Az [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) segítségével figyelheti az azure-beli szolgáltatások többségének alapszintű metrikáit és naplóit. Az Azure Automation-runbookok hívható [műveletcsoportok](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) használatával vagy klasszikus riasztások használatával a riasztásokon alapuló feladatok automatizálásához. Ez a cikk bemutatja, hogyan konfigurálhatja és futtathatja a runbook riasztások használatával.
+
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
 
 ## <a name="alert-types"></a>Riasztástípusok
 
@@ -45,7 +48,7 @@ Az előző szakaszban leírtak szerint minden típusú riasztás egy másik sém
 
 Ez a példa egy virtuális gép riasztását használja. Lekéri a virtuális gép adatait a hasznos adat, majd használja ezt az információt a virtuális gép leállításához. A kapcsolatot be kell állítani az Automation-fiókban, ahol a runbook fut. Amikor riasztások használatával runbookok, fontos, hogy ellenőrizze a riasztás állapotát a runbook, amely aktiválódik. A runbook minden alkalommal aktiválódik, amikor a riasztás állapota megváltozik. A riasztások nak több állapota van, `Activated` `Resolved`a két leggyakoribb állapot és a . Ellenőrizze ezt az állapotot a runbook logikájában, hogy a runbook nem fut-e egynél többször. Ebben a cikkben például `Activated` bemutatja, hogyan kereshet csak riasztásokat.
 
-A runbook az **AzureRunAsConnection** [Run As fiók használatával](automation-create-runas-account.md) hitelesíti magát az Azure-ral a virtuális gép en végrehajtott felügyeleti művelet végrehajtásához.
+A runbook `AzureRunAsConnection` a [Futtatás másként fiók használatával](automation-create-runas-account.md) hitelesíti magát az Azure-ral a virtuális gép en végrehajtott felügyeleti művelet végrehajtásához.
 
 Ebben a példában hozzon létre egy Runbook nevű **Stop-AzureVmInResponsetoVMAlert.** Módosíthatja a PowerShell-parancsfájlt, és számos különböző erőforrással használhatja.
 
@@ -139,13 +142,13 @@ Ebben a példában hozzon létre egy Runbook nevű **Stop-AzureVmInResponsetoVMA
                     throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
                 }
                 Write-Verbose "Authenticating to Azure with service principal." -Verbose
-                Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
+                Add-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
                 Write-Verbose "Setting subscription to work against: $SubId" -Verbose
-                Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
+                Set-AzContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
 
                 # Stop the Resource Manager VM
                 Write-Verbose "Stopping the VM - $ResourceName - in resource group - $ResourceGroupName -" -Verbose
-                Stop-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
+                Stop-AzVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
                 # [OutputType(PSAzureOperationResponse")]
             }
             else {
@@ -195,3 +198,5 @@ A riasztások műveletcsoportokat használnak, amelyek a riasztás által kivál
 * A runbookok indításának különböző módjairól a [Runbook indítása című témakörben talál részleteket.](automation-starting-a-runbook.md)
 * A tevékenységnapló-riasztások létrehozásáról a [Tevékenységnapló-riasztások létrehozása című témakörben](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)olvashat.
 * Ha tudni szeretné, hogyan hozhat létre közel valós idejű riasztást, [olvassa el a Riasztási szabály létrehozása az Azure Portalon című témakört.](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)
+* A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

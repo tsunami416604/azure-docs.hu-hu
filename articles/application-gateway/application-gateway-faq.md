@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544509"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312472"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések az Alkalmazásátjáróval kapcsolatban
 
@@ -28,11 +28,11 @@ Az Azure Application Gateway szolgáltatásként biztosít egy alkalmazáskézbe
 
 ### <a name="what-features-does-application-gateway-support"></a>Milyen szolgáltatásokat támogat az Application Gateway?
 
-Az Application Gateway támogatja az automatikus skálázást, az SSL-továbbítást és a végpontok közötti SSL-t, a webalkalmazás tűzfalát (WAF), a cookie-alapú munkamenet-affinitást, az URL-elérési útválasztást, a többhelyes üzemeltetést és egyéb funkciókat. A támogatott szolgáltatások teljes listáját az Alkalmazásátjáró – bevezetés című témakörben [tetszését tartalmazza.](application-gateway-introduction.md)
+Az Application Gateway támogatja az automatikus skálázást, a TLS-kiszervezést és a végpontok közötti TLS-t, a webalkalmazás tűzfalát (WAF), a cookie-alapú munkamenet-affinitást, az URL-elérési út-alapú útválasztást, a többhelyes üzemeltetést és egyéb funkciókat. A támogatott szolgáltatások teljes listáját az Alkalmazásátjáró – bevezetés című témakörben [tetszését tartalmazza.](application-gateway-introduction.md)
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Miben különbözik az Application Gateway és az Azure Load Balancer?
 
-Az Application Gateway egy 7-es réteges terheléselosztó, ami azt jelenti, hogy csak webes forgalommal működik (HTTP, HTTPS, WebSocket és HTTP/2). Támogatja az olyan képességeket, mint az SSL-végződés, a cookie-alapú munkamenet-affinitás és a ciklikus multiplexelés a terheléselosztási forgalomhoz. A terheléselosztó terheléselosztása a 4.
+Az Application Gateway egy 7-es réteges terheléselosztó, ami azt jelenti, hogy csak webes forgalommal működik (HTTP, HTTPS, WebSocket és HTTP/2). Támogatja a képességek, mint például a TLS-végződés, a cookie-alapú munkamenet-affinitás, és ciklikus multiplexelés a terheléselosztási forgalom. A terheléselosztó terheléselosztása a 4.
 
 ### <a name="what-protocols-does-application-gateway-support"></a>Milyen protokollokat támogat az Application Gateway?
 
@@ -216,7 +216,7 @@ Nem.
 
 Az Application Gateway v2 jelenleg nem támogatja az IPv6 protokollt. Csak iPv4-et használó kétveremű virtuális hálózatban működhet, de az átjáró alhálózatának csak IPv4-nek kell lennie. Az Application Gateway v1 nem támogatja a kétverédes virtuális hálózatokat. 
 
-## <a name="configuration---ssl"></a>Konfiguráció - SSL
+## <a name="configuration---tls"></a>Konfiguráció - TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Milyen tanúsítványokat támogat az Application Gateway?
 
@@ -255,13 +255,13 @@ Az Application Gateway a következő titkosítási csomagokat támogatja.
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-Az SSL-beállítások testreszabásáról az [SSL-házirendverziók és titkosítási csomagok konfigurálása az Application Gateway alkalmazásban](application-gateway-configure-ssl-policy-powershell.md)című témakörben talál további információt.
+A TLS-beállítások testreszabásáról a [TLS-házirendverziók és titkosítási csomagok konfigurálása az Application Gateway alkalmazásban](application-gateway-configure-ssl-policy-powershell.md)című témakörben talál további információt.
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>Támogatja az Application Gateway a háttérrendszer forgalmának újratitkosítását?
 
-Igen. Az Application Gateway támogatja az SSL-kiszervezést és a végpontok között lévő SSL-t, amely újratitkosítja a forgalmat a háttérrendszerhez.
+Igen. Az Application Gateway támogatja a TLS-kiszervezést és a végpontok között lévő TLS-t, amely újratitkosítja a forgalmat a háttérrendszerhez.
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Konfigurálhatom az SSL-házirendet az SSL protokollverziók vezérlésére?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Konfigurálhatom a TLS-házirendet a TLS protokollverziók vezérlésére?
 
 Igen. Az Application Gateway konfigurálható a TLS1.0, a TLS1.1 és a TLS1.2 megtagadására. Alapértelmezés szerint az SSL 2.0 és a 3.0 már le van tiltva, és nem konfigurálható.
 
@@ -278,9 +278,9 @@ Igen. Az Application Gateway alkalmazásban beállíthatja a [titkosítási csom
 
 Az Application Gateway az SHA256-ot használja a háttérrendszer-kezeléshez.
 
-### <a name="how-many-ssl-certificates-does-application-gateway-support"></a>Hány SSL-tanúsítványt támogat az Application Gateway?
+### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>Hány TLS/SSL-tanúsítványt támogat az Application Gateway?
 
-Az Application Gateway legfeljebb 100 SSL-tanúsítványt támogat.
+Az Application Gateway legfeljebb 100 TLS/SSL tanúsítványt támogat.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Hány hitelesítési tanúsítványt támogat az Application Gateway a háttérrendszer-újratitkosításhoz?
 
@@ -288,7 +288,7 @@ Az Application Gateway legfeljebb 100 hitelesítési tanúsítványt támogat.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Az Application Gateway natív módon integrálható az Azure Key Vaultszolgáltatással?
 
-Igen, az Application Gateway v2 termékváltozat támogatja a Key Vault. További információt az [SSL-végződtetés key vault-tanúsítványokkal című témakörben talál.](key-vault-certs.md)
+Igen, az Application Gateway v2 termékváltozat támogatja a Key Vault. További információt a [TLS-végződtetés key vault-tanúsítványokkal című témakörben talál.](key-vault-certs.md)
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Hogyan konfigurálhatom a HTTPS-figyelők konfigurálását .com és .net webhelyekhez? 
 
@@ -338,7 +338,7 @@ Igen. Engedélyezheti a DDoS-védelmet azon a virtuális hálózaton, ahol az al
 
 ### <a name="what-is-an-ingress-controller"></a>Mi az a ingress vezérlő?
 
-Kubernetes lehetővé `deployment` `service` teszi létrehozása és erőforrás-készlet a fürtön belüli podok egy csoportját. Ugyanazon szolgáltatás külső elérhetővé [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) tétele érdekében egy erőforrás van definiálva, amely terheléselosztást, SSL-végződést és névalapú virtuális üzemeltetést biztosít.
+Kubernetes lehetővé `deployment` `service` teszi létrehozása és erőforrás-készlet a fürtön belüli podok egy csoportját. Ugyanazon szolgáltatás külső elérhetővé [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) tétele érdekében egy erőforrás van definiálva, amely terheléselosztást, TLS-végződtetést és névalapú virtuális üzemeltetést biztosít.
 Az `Ingress` erőforrás kielégítéséhez egy be- éselőtér-vezérlőre van `Ingress` szükség, amely figyeli az erőforrások változásait, és konfigurálja a terheléselosztó házirendeket.
 
 Az Application Gateway ingress controller lehetővé teszi, hogy az [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) egy Azure [Kubernetes-szolgáltatás,](https://azure.microsoft.com/services/kubernetes-service/) más néven AKS-fürt be- és be- és be- és be- és be- és be- és be- és be- és áttéréseként használható.

@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668649"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383445"
 ---
 # <a name="connect-to-azure-storage-services"></a>Csatlakozás az Azure-tárolási szolgáltatásokhoz
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -73,7 +73,7 @@ Javasoljuk, hogy hozzon létre egy adattár egy [Azure Blob-tároló.](https://d
 Amikor létrehoz egy munkaterületet, egy Azure blob-tároló és egy Azure-fájlmegosztás automatikusan regisztrálva lesz a munkaterületre. A neve, `workspaceblobstore` `workspacefilestore`illetve a neve. `workspaceblobstore`a munkaterületi összetevők és a gépi tanulási kísérletnaplói tárolására szolgál. `workspacefilestore`[a számítási példányon](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)keresztül engedélyezett jegyzetfüzetek és R-parancsfájlok tárolására szolgál. A `workspaceblobstore` tároló alapértelmezett adattárként van beállítva.
 
 > [!IMPORTANT]
-> Az Azure Machine Learning tervezője (előzetes verzió) létrehoz egy **azureml_globaldatasets** nevű adattalapot, amikor megnyit egy mintát a tervező kezdőlapján. Ez az adattár csak mintaadatkészleteket tartalmaz. **Kérjük, ne** használja ezt az adattárasemmilyen bizalmas adathozzáféréshez!
+> Az Azure Machine Learning tervezője (előzetes verzió) létrehoz egy **azureml_globaldatasets** nevű adattalapot, amikor megnyit egy mintát a tervező kezdőlapján. Ez az adattár csak mintaadatkészleteket tartalmaz. **Kérjük, ne** használja ezt az adattáratot bizalmas adathozzáférésre.
 > ![Automatikusan létrehozott adattár tervezői mintaadatkészletekhez](media/how-to-access-data/datastore-designer-sample.png)
 
 <a name="access"></a>
@@ -94,7 +94,7 @@ Az összes regisztermódszer az [`Datastore`](https://docs.microsoft.com/python/
 A metódus feltöltéséhez szükséges információkat az `register()` Azure [Portalon](https://portal.azure.com)találja.
 Válassza **a storage fiókok** a bal oldali ablaktáblában, és válassza ki a regisztrálni kívánt tárfiókot. Az **Áttekintés** lap olyan információkat tartalmaz, mint például a fiók neve, a tároló és a fájlmegosztás neve. 
 
-* Hitelesítési elemek, például fiókkulcs vagy SAS-jogkivonat esetén nyissa meg a **Fiókkulcsok lapot** a **Beállítások** ablaktáblán. 
+* Hitelesítési elemek, például fiókkulcs vagy SAS-jogkivonat esetén nyissa meg az **Access-kulcsok lapot** a **Beállítások** ablaktáblán. 
 
 * Az egyszerű szolgáltatáscikkek, például a bérlői azonosító és az ügyfélazonosító, nyissa meg az **alkalmazásregisztrációkat,** és válassza ki, hogy melyik alkalmazást szeretné használni. A megfelelő áttekintés oldal tartalmazza ezeket **az** elemeket.
 
@@ -107,13 +107,13 @@ Az alábbi példák bemutatják, hogyan regisztrálhat egy Azure blob-tárolót,
 
 Ha egy Azure blob-tárolót szeretne [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)adattárként regisztrálni, használja a használatát.
 
-A következő kód létrehozza `blob_datastore_name` és regisztrálja `ws` az adattatárolót a munkaterületre. Ez az adattár `my-container-name` a megadott `my-account-name` fiókkulcs használatával éri el a blob-tárolót a tárfiókban.
+A következő kód létrehozza `blob_datastore_name` és regisztrálja `ws` az adattatárolót a munkaterületre. Ez az adattár `my-container-name` a megadott `my-account-name` fiók hozzáférési kulcs használatával éri el a blob-tárolót a tárfiókban.
 
 ```Python
 blob_datastore_name='azblobsdk' # Name of the datastore to workspace
 container_name=os.getenv("BLOB_CONTAINER", "<my-container-name>") # Name of Azure blob container
 account_name=os.getenv("BLOB_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 blob_datastore = Datastore.register_azure_blob_container(workspace=ws, 
                                                          datastore_name=blob_datastore_name, 
@@ -126,13 +126,13 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 Ha egy Azure-fájlmegosztást adattárként szeretne regisztrálni, használja a használatát. [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) 
 
-A következő kód létrehozza `file_datastore_name` és regisztrálja `ws` az adattatárolót a munkaterületre. Ez az `my-fileshare-name` adattár a megadott `my-account-name` fiókkulcs használatával fér hozzá a tárfiók fájlmegosztásához.
+A következő kód létrehozza `file_datastore_name` és regisztrálja `ws` az adattatárolót a munkaterületre. Ez az `my-fileshare-name` adattár a megadott `my-account-name` fiókhozzáférési kulcs használatával fér hozzá a tárfiók fájlmegosztásához.
 
 ```Python
 file_datastore_name='azfilesharesdk' # Name of the datastore to workspace
 file_share_name=os.getenv("FILE_SHARE_CONTAINER", "<my-fileshare-name>") # Name of Azure file share container
 account_name=os.getenv("FILE_SHARE_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      datastore_name=file_datastore_name, 
@@ -181,7 +181,7 @@ Hozzon létre egy új adattaboltot néhány lépésben az Azure Machine Learning
   
 Az űrlap feltöltéséhez szükséges információkat az Azure [Portalon](https://portal.azure.com)találja. Válassza **a storage fiókok** a bal oldali ablaktáblában, és válassza ki a regisztrálni kívánt tárfiókot. Az **Áttekintés** lap olyan információkat tartalmaz, mint például a fiók neve, a tároló és a fájlmegosztás neve. 
 
-* Hitelesítési elemek, például fiókkulcs vagy SAS-jogkivonat esetén nyissa meg a **Fiókkulcsok lapot** a **Beállítások** ablaktáblán. 
+* Hitelesítési elemek, például fiókkulcs vagy SAS-jogkivonat esetén nyissa meg az **Access-kulcsok lapot** a **Beállítások** ablaktáblán. 
 
 * Az egyszerű szolgáltatáscikkek, például a bérlői azonosító és az ügyfélazonosító, nyissa meg az **alkalmazásregisztrációkat,** és válassza ki, hogy melyik alkalmazást szeretné használni. A megfelelő áttekintés oldal tartalmazza ezeket **az** elemeket. 
 

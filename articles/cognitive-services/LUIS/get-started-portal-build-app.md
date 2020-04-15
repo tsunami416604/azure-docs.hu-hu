@@ -2,13 +2,13 @@
 title: 'Rövid útmutató: Új alkalmazás létrehozása a LUIS portálon'
 description: Ebben a rövid útmutatóban hozzon létre egy alkalmazás, leképezések és entitások alapvető részeit, valamint a LUIS-portálon a minta utterance (kifejezés) tesztelése.
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.openlocfilehash: 2d601646c43c0f0d99dc6934cf1f1c960e0b0f79
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244614"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382573"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rövid útmutató: Új alkalmazás létrehozása a LUIS portálon
 
@@ -88,11 +88,10 @@ Adja hozzá a következő 15 `FindForm` példa utterances a szándékhoz.
 Ezek a példautterances változhat a következő módokon:
 
 * utterance kifejezés hossza
-* Írásjelek
+* [Írásjelek](luis-reference-application-settings.md#punctuation-normalization)
 * szó választás
 * igeidő (van, volt, lesz)
 * szósorrend
-
 
 
 ## <a name="create-a-regular-expression-entity"></a>Reguláris kifejezés entitás létrehozása

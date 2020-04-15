@@ -1,22 +1,14 @@
 ---
 title: Az alkalmazás megtervezése - LUIS
-titleSuffix: Azure Cognitive Services
 description: Vázolja a releváns alkalmazásleképezéseket és entitásokat, majd hozza létre az alkalmazásterveket az intelligens szolgáltatások (LANGUAGE Understanding Intelligent Services, LUIS) szolgáltatásban.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/20/2019
-ms.author: diberry
-ms.openlocfilehash: 6a155f4c43da03ccdc40d289742918973aa6da7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74326771"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382309"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>A LUIS-alkalmazásséma megtervezése a tulajdonostartományés az adatok kinyerése segítségével
 
@@ -44,7 +36,7 @@ Ha nem kell azonosítania az általános felhasználói szándékot, adja hozzá
 
 ## <a name="create-example-utterances-for-each-intent"></a>Példakimondottszövegek létrehozása az egyes leképezésekhez
 
-Először is, ne hozzon létre túl sok kimondott szöveget az egyes szándékok. Miután megállapította a szándékok, hozzon létre 15–30 példa utterances egy szándékot. Minden utterance (kifejezés) különböznie kell a korábban megadott utterances. A kimondott szövegek jó változatossága az általános szószám, a szóválasztás, az igei idő és az írásjelek.
+Először is, ne hozzon létre túl sok kimondott szöveget az egyes szándékok. Miután megállapította a szándékok, hozzon létre 15–30 példa utterances egy szándékot. Minden utterance (kifejezés) különböznie kell a korábban megadott utterances. A kimondott szövegek jó változatossága az általános szószám, a szóválasztás, az igei idő és [az írásjelek](luis-reference-application-settings.md#punctuation-normalization)közé tartozik.
 
 További információkért tekintse meg [a LUIS-alkalmazások helyes kimondott szövegének megértését.](luis-concept-utterance.md)
 

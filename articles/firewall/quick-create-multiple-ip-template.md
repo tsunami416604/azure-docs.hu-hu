@@ -5,22 +5,24 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
-ms.date: 04/13/2020
+ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: b14ff2e94e9df25186a13ae8fbd63d8d4044b538
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 76211014f96aee864412fd19686d58d0338ec5c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274241"
+ms.locfileid: "81310241"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Rövid útmutató: Hozzon létre egy Azure-tűzfalat több nyilvános IP-címmel – Erőforrás-kezelő sablon
 
 Ebben a rövid útmutatóban egy Erőforrás-kezelő sablon használatával több nyilvános IP-címmel rendelkező Azure-tűzfalat telepíthet.
 
-A Hálózati attaszabály-gyűjtési szabályok két Windows Server 2019 virtuális géppel létesíthetnek RDP-kapcsolatokat.
+A telepített tűzfal nat-szabálygyűjtési szabályokkal rendelkezik, amelyek lehetővé teszik az RDP-kapcsolatokat két Windows Server 2019 virtuális géppel.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+A több nyilvános IP-címmel rendelkező Azure Firewall ről további információt az [Azure-tűzfal telepítése több nyilvános IP-címmel az Azure PowerShell használatával című](deploy-multi-public-ip-powershell.md)témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

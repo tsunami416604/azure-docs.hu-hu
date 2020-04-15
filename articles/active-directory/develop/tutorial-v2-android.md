@@ -12,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 309e1278959a917f0cef2f419aec1f4f3afcef60
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991024"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380064"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Oktatóanyag: Jelentkezzen be a felhasználókhoz, és hívja fel a Microsoft Graphot androidos alkalmazásból 
 
@@ -91,7 +91,7 @@ Ha még nem rendelkezik Android-alkalmazással, az alábbi lépésekkel új proj
 
 1. Az Android Studio projektablaktábláján keresse meg **az app\src\main\res mappát.**
 2. Kattintson a jobb gombbal, és válassza az Új > **könyvtár** **parancsot.** **New** Írja `raw` be az új könyvtárnevet, és kattintson az **OK**gombra.
-3. Az **app** > **src** > **main** > **res** > **raw**, hozzon létre egy új JSON fájlt nevű, `auth_configbn_single_account.json` és illessze be a MSAL konfiguráció, amely korábban mentett. 
+3. Az **app** > **src** > **main** > **res** > **raw**, hozzon létre egy új JSON fájlt nevű, `auth_config_single_account.json` és illessze be a MSAL konfiguráció, amely korábban mentett. 
 
     Az átirányítási URI alatt illessze be a következőt: 
     ```json
@@ -190,7 +190,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>PublicClientApplication példányos példányosítása
 #### <a name="initialize-variables"></a>Változók inicializálása 
 ```java
-private final static String[] SCOPES = {"File.Read"};
+private final static String[] SCOPES = {"Files.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;

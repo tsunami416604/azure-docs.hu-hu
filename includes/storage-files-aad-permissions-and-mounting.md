@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: b6a8bc083b589463b67f2e25e262b15456355d05
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011420"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383838"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Hozzáférési engedélyek hozzárendelése identitáshoz
 
@@ -98,7 +98,7 @@ Az NTFS-engedélyek beállításához és a támogatott engedélyek különböz�
 
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>Fájlmegosztás csatlakoztatása a parancssorból
 
-Az **Azure-fájlmegosztás** csatlakoztatása a Windows net use paranccsal csatlakoztathatja. Ne felejtse el lecserélni a helyőrző értékeket a következő példában a saját értékeire. A fájlmegosztások csatlakoztatásáról az [Azure-fájlmegosztás használata a Windows rendszerrel](../articles/storage/files/storage-how-to-use-files-windows.md)című témakörben talál további információt.
+Az **Azure-fájlmegosztás** csatlakoztatása a Windows net use paranccsal csatlakoztathatja. Ne felejtse el lecserélni a helyőrző értékeket a következő példában a saját értékeire. A fájlmegosztások csatlakoztatásáról az [Azure-fájlmegosztás használata a Windows rendszerrel](../articles/storage/files/storage-how-to-use-files-windows.md)című témakörben talál további információt. 
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -123,7 +123,7 @@ Jelentkezzen be a virtuális gépaz Azure AD-identitás használatával, amelyhe
 
 ![Az Azure AD bejelentkezési képernyőjét bemutató képernyő a felhasználói hitelesítéshez](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-Az Azure-fájlmegosztás csatlakoztatása a következő paranccsal csatlakoztathatja az Azure-fájlmegosztást. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire. Mivel már hitelesített, nem kell megadnia a tárfiók kulcs, az AD hitelesítő adatait, vagy az Azure AD hitelesítő adatait. Egyszeri bejelentkezési élmény az AD vagy az Azure AD DS hitelesítéséhez támogatott.
+Az Azure-fájlmegosztás csatlakoztatása a következő paranccsal csatlakoztathatja az Azure-fájlmegosztást. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire. Mivel már hitelesített, nem kell megadnia a tárfiók kulcs, az AD hitelesítő adatait, vagy az Azure AD hitelesítő adatait. Egyszeri bejelentkezési élmény az AD vagy az Azure AD DS hitelesítéséhez támogatott. Ha problémákba ütközik az AD-hitelesítő adatok csatlakoztatása során, ellenőrizze az [Azure Files problémák elhárítása a Windows rendszerben](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) az öndiagnosztikai útmutatásért.
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: Azure automation, DSC, powershell, kívánt állapotkonfiguráció, frissítéskezelés, változáskövetés, leltár, runbookok, python, grafikus, hibrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: a441b80e4d7dd9604aa2ca69da320e462859a486
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 5fa39028f1041a063bab295adabf8145a8b46ae4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261219"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308773"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Mi az Azure Arc kiszolgálókhoz (előzetes verzió)
 
@@ -143,7 +143,7 @@ Az Azure Connected Machine ügynökcsomag Windows és Linux az alább felsorolt 
 >[!NOTE]
 >Az előnézet során csak egy csomag jelent meg, amely alkalmas az Ubuntu 16.04 vagy az 18.04 számára.
 
-A Windows és Linux Azure Connected Machine ügynök manuálisan vagy automatikusan frissíthető a legújabb kiadásra a követelményektől függően. További információkért lásd [itt](manage-agent.md)
+A Windows és Linux Azure Connected Machine ügynök manuálisan vagy automatikusan frissíthető a legújabb kiadásra a követelményektől függően. További információ: [itt](manage-agent.md).
 
 ### <a name="agent-status"></a>Ügynök állapota
 

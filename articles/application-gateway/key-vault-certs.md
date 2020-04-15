@@ -1,5 +1,5 @@
 ---
-title: SSL-megszüntetés Az Azure Key Vault-tanúsítványokkal
+title: A TLS megszüntetése az Azure Key Vault-tanúsítványokkal
 description: Megtudhatja, hogyan integrálhatja az Azure Application Gateway-t a Key Vault-tal a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványokhoz.
 services: application-gateway
 author: vhorne
@@ -7,32 +7,32 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26093d051da8f2182a40f80837acbd9ef7dd008f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137702"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312070"
 ---
-# <a name="ssl-termination-with-key-vault-certificates"></a>SSL-megszüntetés Key Vault-tanúsítványokkal
+# <a name="tls-termination-with-key-vault-certificates"></a>TLS-megszüntetés Key Vault-tanúsítványokkal
 
-[Az Azure Key Vault](../key-vault/key-vault-overview.md) egy platform által felügyelt titkos tároló, amely segítségével titkos kulcsok, kulcsok és SSL-tanúsítványok védelme. Az Azure Application Gateway támogatja a Key Vaultdal való integrációt a HTTPS-kompatibilis figyelőkhöz csatlakoztatott kiszolgálói tanúsítványok esetében. Ez a támogatás az Application Gateway v2 Termékváltozatára korlátozódik.
+[Az Azure Key Vault](../key-vault/key-vault-overview.md) egy platform által felügyelt titkos tároló, amely segítségével titkos kulcsok, kulcsok és TLS/SSL-tanúsítványok védelme. Az Azure Application Gateway támogatja a Key Vaultdal való integrációt a HTTPS-kompatibilis figyelőkhöz csatlakoztatott kiszolgálói tanúsítványok esetében. Ez a támogatás az Application Gateway v2 Termékváltozatára korlátozódik.
 
-A Key Vault-integráció két modellt kínál az SSL-megszüntetéshez:
+A Key Vault-integráció két modellt kínál a TLS-megszüntetéshez:
 
-- Explicit módon a figyelőhöz csatolt SSL-tanúsítványokat is megadhat. Ez a modell a hagyományos módja annak, hogy ssl-tanúsítványokat adjon át az Application Gateway ssl-végződésre.
+- Explicit módon a figyelőhöz csatolt TLS/SSL-tanúsítványokat is megadhat. Ez a modell a hagyományos módja annak, hogy tls/Ssl tanúsítványokat adjaát át az Application Gateway tls-végződéshez.
 - Adott esetben megadhat egy meglévő Key Vault-tanúsítványra vagy titkos kulcsra mutató hivatkozást, amikor https-kompatibilis figyelőt hoz létre.
 
 Az Application Gateway és a Key Vault integrációja számos előnnyel jár, többek között:
 
-- Nagyobb biztonság, mivel az SSL-tanúsítványokat közvetlenül nem kezeli az alkalmazásfejlesztői csapat. Az integráció lehetővé teszi, hogy egy külön biztonsági csapat:
+- Nagyobb biztonság, mivel a TLS/SSL-tanúsítványokat közvetlenül nem kezeli az alkalmazásfejlesztő csapat. Az integráció lehetővé teszi, hogy egy külön biztonsági csapat:
   * Alkalmazásátjárók beállítása.
   * Az alkalmazásátjáró életciklusának szabályozása.
   * Engedélyeket adhat a kijelölt alkalmazásátjáróknak a kulcstartóban tárolt tanúsítványok eléréséhez.
 - Meglévő tanúsítványok importálásának támogatása a kulcstartóba. Vagy használja a Key Vault API-kat, hogy hozzon létre és kezelje az új tanúsítványok bármelyik megbízható Key Vault-partnerekkel.
 - A kulcstartóban tárolt tanúsítványok automatikus megújításának támogatása.
 
-Az Application Gateway jelenleg csak a szoftveráltal ellenőrzött tanúsítványokat támogatja. A hardveres biztonsági modul (HSM) által ellenőrzött tanúsítványok nem támogatottak. Miután az Application Gateway úgy van beállítva, hogy használja a Key Vault-tanúsítványokat, a példányok lekérik a tanúsítványt a Key Vaultból, és helyileg telepítik őket az SSL-végződéshez. A példányok is lekérdezéskey Vault 24 órás időközönként a tanúsítvány megújult verziójának lekéréséhez, ha létezik. Ha frissített tanúsítványt talál, a HTTPS-figyelőhöz jelenleg társított SSL-tanúsítvány automatikusan elfordul.
+Az Application Gateway jelenleg csak a szoftveráltal ellenőrzött tanúsítványokat támogatja. A hardveres biztonsági modul (HSM) által ellenőrzött tanúsítványok nem támogatottak. Miután az Application Gateway úgy van beállítva, hogy használja a Key Vault-tanúsítványokat, a példányok lekérik a tanúsítványt a Key Vaultból, és helyileg telepítik őket a TLS-végződéshez. A példányok is lekérdezéskey Vault 24 órás időközönként a tanúsítvány megújult verziójának lekéréséhez, ha létezik. Ha frissített tanúsítványt talál, a HTTPS-figyelőhöz jelenleg társított TLS/SSL-tanúsítvány automatikusan elfordul.
 
 > [!NOTE]
 > Az Azure Portal csak a KeyVault-tanúsítványokat támogatja, a titkos kulcsokat nem. Az Application Gateway továbbra is támogatja a KeyVault titkos kulcsainak hivatkozását, de csak nem portálon keresztül, például PowerShell, CLI, API, ARM sablonok stb. 
@@ -51,10 +51,10 @@ Az Application Gateway és a Key Vault integrációja háromlépéses konfigurá
 
 1. **Az Application Gateway konfigurálása**
 
-   Miután elvégezte az előző két lépést, beállíthat vagy módosíthat egy meglévő alkalmazásátjárót a felhasználó által hozzárendelt felügyelt identitás használatához. A HTTP-figyelő SSL-tanúsítványát is beállíthatja úgy, hogy a Key Vault-tanúsítvány vagy titkos azonosító teljes URI-jára mutasson.
+   Miután elvégezte az előző két lépést, beállíthat vagy módosíthat egy meglévő alkalmazásátjárót a felhasználó által hozzárendelt felügyelt identitás használatához. A HTTP-figyelő TLS/SSL-tanúsítványát is beállíthatja úgy, hogy a Key Vault-tanúsítvány vagy titkos azonosító teljes URI-jára mutasson.
 
    ![Kulcstartó-tanúsítványok](media/key-vault-certs/ag-kv.png)
 
 ## <a name="next-steps"></a>További lépések
 
-[SSL-megszüntetés konfigurálása Key Vault-tanúsítványokkal az Azure PowerShell használatával](configure-keyvault-ps.md)
+[A TLS-megszüntetés konfigurálása Key Vault-tanúsítványokkal az Azure PowerShell használatával](configure-keyvault-ps.md)

@@ -18,7 +18,3 @@
       items:
         - name: Ügynök kezelése
           href: ./servers/manage-agent.md
-- name: Referencia
-  items:
-    - name: Azure-beli csatlakoztatottgép-ügynök parancssori felülete
-      href: ./servers/azcmagent-reference.md

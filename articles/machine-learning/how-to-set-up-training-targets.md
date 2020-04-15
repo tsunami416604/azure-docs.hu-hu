@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24c0d9955a857e8bbc1e1c09e600031a7541026c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fcfac923da1c0daee58b10d92cbc6a6ad5e7910
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296968"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383405"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modellbetanításhoz 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -152,32 +152,19 @@ Használja az Azure Data Science virtuális gép (DSVM) az Azure virtuális gép
     > [!WARNING]
     > Az Azure Machine Learning csak az Ubuntut futtató virtuális gépeket támogatja. Amikor virtuális gép, vagy válasszon egy meglévő virtuális gép, ki kell választania egy virtuális gép, amely ubuntut használ.
 
-1. **Csatolás:** Meglévő virtuális gép számítási célként való csatolásához meg kell adnia a teljesen minősített tartománynevet (FQDN), a felhasználónevet és a virtuális gép jelszavát. A példában \<cserélje le az fqdn> a virtuális gép nyilvános teljes tartományna, vagy a nyilvános IP-cím. Cserélje \<le a \<felhasználónevet> és a jelszó> a virtuális gép SSH felhasználónevére és jelszavára.
+1. **Csatolás:** Meglévő virtuális gép számítási célként való csatolásához meg kell adnia az erőforrás-azonosítót, a felhasználónevet és a virtuális gép jelszavát. A virtuális gép erőforrás-azonosítója az előfizetés-azonosító, az erőforráscsoport neve és a virtuális gép nevének használatával a következő karakterláncformátum használatával alakítható ki:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
-    > [!IMPORTANT]
-    > A következő Azure-régiók nem támogatják a virtuális gép csatolását a virtuális gép nyilvános IP-címhasználatával. Ehelyett használja a virtuális gép Azure Resource Manager-azonosítóját a `resource_id` következő paraméterrel:
-    >
-    > * USA keleti régiója
-    > * USA 2. nyugati régiója
-    > * USA déli középső régiója
-    >
-    > A virtuális gép erőforrásazonosítója az előfizetés-azonosító, az erőforráscsoport neve és a virtuális gép `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`nevével a következő karakterlánc-formátumban alakítható ki: .
-
-
+ 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
-                                                    ssh_port=22,
-                                                    username='<username>',
-                                                    password="<password>")
-   # If in US East, US West 2, or US South Central, use the following instead:
-   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
-   #                                                 ssh_port=22,
-   #                                                 username='<username>',
-   #                                                 password="<password>")
+   
+   attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+                                                   ssh_port=22,
+                                                   username='<username>',
+                                                   password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -211,16 +198,7 @@ Az Azure HDInsight a big data-elemzések népszerű platformja. A platform apach
     
     A fürt létrehozása után csatlakozzon hozzá \<a>-ssh.azurehdinsight.net állomásnévvel, ahol \<a fürtnév> a fürthöz megadott név. 
 
-1. **Csatolás:** HdInsight-fürt számítási célként való csatolásához meg kell adnia a HDInsight-fürt állomásnevét, felhasználónevét és jelszavát. A következő példa az SDK segítségével fürtöt csatol a munkaterülethez. A példában \<cserélje le a fürtnév> a fürt nevére. Cserélje \<le> \<és jelszó> a fürt SSH felhasználónevét és jelszavát.
-
-    > [!IMPORTANT]
-    > A következő Azure-régiók nem támogatják a HDInsight-fürt csatolását a fürt nyilvános IP-címe használatával. Ehelyett használja a fürt Azure Resource Manager-azonosítóját a `resource_id` következő paraméterrel:
-    >
-    > * USA keleti régiója
-    > * USA 2. nyugati régiója
-    > * USA déli középső régiója
-    >
-    > A fürt erőforrásazonosítója az előfizetés-azonosító, az erőforráscsoport neve és a fürtnév használatával `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`a következő karakterlánc-formátumban alakítható ki: . .
+1. **Csatolás:** HdInsight-fürt számítási célként való csatolásához meg kell adnia a HDInsight-fürt erőforrás-azonosítóját, felhasználónevét és jelszavát. A HDInsight-fürt erőforrásazonosítója az előfizetés-azonosító, az erőforráscsoport neve és a HDInsight-fürtneve használatával a következő karakterláncformátumban alakítható ki:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -228,15 +206,11 @@ Az Azure HDInsight a big data-elemzések népszerű platformja. A platform apach
 
    try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
-    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azurehdinsight.net', 
+
+    attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
-    # If you are in US East, US West 2, or US South Central, use the following instead:
-    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
-    #                                                      ssh_port=22, 
-    #                                                      username='<ssh-username>', 
-    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)

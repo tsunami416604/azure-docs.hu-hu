@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276893"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382525"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Erőforrás-telepítés automatizálása a függvényalkalmazáshoz az Azure Functionsben
 
@@ -33,7 +33,7 @@ Az Azure Functions központi telepítése általában a következő erőforráso
 | [Az Application Insights](../azure-monitor/app/app-insights-overview.md) egyik összetevője | Optional    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | A [tárhely terv](./functions-scale.md)                                             | Választható<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1 1</sup> A tárhelycsomagcsak akkor szükséges, ha úgy dönt, hogy a függvényalkalmazást [prémium csomagon](./functions-premium-plan.md) (előzetes verzióban) vagy [Egy App Service-csomagon futtatja.](../app-service/overview-hosting-plans.md)
+<sup>1 1</sup> A tárhelycsomagcsak akkor szükséges, ha úgy dönt, hogy a függvényalkalmazást [prémium csomagon](./functions-premium-plan.md) vagy [App Service-csomagon futtatja.](../app-service/overview-hosting-plans.md)
 
 > [!TIP]
 > Bár nem szükséges, erősen ajánlott az Application Insights konfigurálása az alkalmazáshoz.
@@ -111,7 +111,7 @@ Emellett a műszerezési kulcsot az alkalmazásbeállítás használatával `APP
 
 A tárhelycsomag meghatározása változó, és a következők egyike lehet:
 * [Felhasználási terv](#consumption) (alapértelmezett)
-* [Prémium csomag](#premium) (előzetes verzióban)
+* [Prémium szintű csomag](#premium)
 * [App Szolgáltatási csomag](#app-service-plan)
 
 ### <a name="function-app"></a>Függvényalkalmazás
@@ -647,9 +647,9 @@ Egy függvényalkalmazás számos gyermekerőforrással rendelkezik, amelyeket h
 
 A sablon üzembe helyezésének az alábbi módjai közül választhat:
 
-* [Powershell](../azure-resource-manager/templates/deploy-powershell.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure-portál](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Üzembe helyezés az Azure-ban gomb

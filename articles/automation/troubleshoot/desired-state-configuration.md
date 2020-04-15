@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8e0b874e0ce56d7b4ed9fce15b2d88503d6c49b7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631483"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309147"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Az Azure Automation kívánt állapotkonfigurációjával (DSC) kapcsolatos problémák elhárítása
 
@@ -114,6 +114,8 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 ### <a name="cause"></a>Ok
 
 A problémát hibás vagy lejárt tanúsítvány okozza.  További információt a [Tanúsítvány lejárata és újbóli regisztrálása című témakörben talál.](../automation-dsc-onboarding.md#re-registering-a-node)
+
+A problémát az is okozhatja, hogy egy proxykonfiguráció nem engedélyezi a hozzáférést a ***.azure-automation.net**. További információ: [A magánhálózatok konfigurálása](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Megoldás:
 

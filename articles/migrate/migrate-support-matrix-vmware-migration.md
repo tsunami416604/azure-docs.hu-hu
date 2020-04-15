@@ -3,12 +3,12 @@ title: A VMware-áttelepítés támogatása az Azure Áttelepítésében
 description: Ismerje meg a VMware virtuálisgép-áttelepítés támogatását az Azure Áttelepítésben.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269509"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313998"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-áttelepítés támogatási mátrixa
 
@@ -47,7 +47,7 @@ Tekintse át [ezt a cikket,](server-migrate-overview.md) hogy megtudja, melyik m
 **Az Azure szükséges módosításai** | Egyes virtuális gépek szükség lehet a módosításokat, hogy azok az Azure-ban futtatható. Az Azure Migrate automatikusan módosítja ezeket a módosításokat a következő operációs rendszereken:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS, 16.04LTS, 18.04LTS<br/> - Debian 7, 8<br/><br/> Más operációs rendszerek esetében az áttelepítés előtt manuálisan kell elvégeznia a módosításokat. A vonatkozó cikkek utasításokat tartalmaznak erre vonatkozóan.
 **Linux rendszerindítás** | Ha a /boot egy dedikált partíción található, akkor az operációs rendszer lemezén kell lennie, és nem szabad több lemezre osztani.<br/> Ha a /boot a gyökérpartíció (/) része, akkor a '/' partíciónak az operációs rendszer lemezén kell lennie, és nem kell más lemezekre is kiterjednie.
 **UEFI rendszerindítás** | UEFI-rendszerindítással rendelkező virtuális gépek áttelepítése nem támogatott.
-**Lemezméret** | 2 TB operációs rendszer lemeze; 4 TB adatlemezek esetén.
+**Lemezméret** | 2 TB operációs rendszer lemeze; 8 TB adatlemezek esetén.
 **Lemezkorlátok** |  Virtuális gépenként legfeljebb 60 lemez.
 **Titkosított lemezek/kötetek** | A titkosított lemezekkel/kötetekkel rendelkező virtuális gépek áttelepítése nem támogatott.
 **Megosztott lemezfürt** | Nem támogatott.

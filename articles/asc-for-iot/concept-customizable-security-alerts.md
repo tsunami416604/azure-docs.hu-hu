@@ -1,5 +1,5 @@
 ---
-title: Testre szabható biztonsági riasztási útmutató az Azure Security Center for IoT- hoz| Microsoft dokumentumok
+title: Testreszabható biztonsági riasztások
 description: Ismerje meg a testreszabható biztonsági riasztásokat és az ajánlott szervizelést az Azure Security Center for IoT-funkciók és -szolgáltatások használatával.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299573"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311643"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center for IoT – biztonsági riasztások
 
 Az Azure Security Center for IoT folyamatosan elemzi az IoT-megoldást fejlett elemzési és fenyegetési intelligencia használatával, hogy figyelmeztesse Önt a rosszindulatú tevékenységekre.
 
-Javasoljuk, hogy hozzon létre egyéni riasztásokat a várható eszközviselkedés ismerete alapján, hogy a riasztások az egyedi szervezeti üzembe helyezés és a környezet lehetséges veszélyeztetésének leghatékonyabb mutatóiként működjenek. 
+Javasoljuk, hogy hozzon létre egyéni riasztásokat a várható eszközviselkedés ismerete alapján, hogy a riasztások az egyedi szervezeti üzembe helyezés és a környezet lehetséges veszélyeztetésének leghatékonyabb mutatóiként működjenek.
 
 Az alábbi lista az Azure Security Center for IoT riasztások az Ön által meghatározható a várt IoT Hub és/vagy eszköz viselkedését. Az egyes riasztások testreszabásáról az [Egyéni riasztások létrehozása című](quickstart-create-custom-alerts.md)témakörben talál további információt.
 
-## <a name="iot-hub-alerts-available-for-customization"></a>Az IoT Hub riasztásai elérhetők a testreszabáshoz 
-
-
+## <a name="iot-hub-alerts-available-for-customization"></a>Az IoT Hub riasztásai elérhetők a testreszabáshoz
 
 | Severity | Riasztás neve | Adatforrás | Leírás | Javasolt szervizelés|
 |---|---|---|---|---|
@@ -51,7 +49,7 @@ Az alábbi lista az Azure Security Center for IoT riasztások az Ön által megh
 | Alacsony      | Egyéni riasztás - a jogosulatlan műveletek száma kívül esik a megengedett tartományon  | IoT Hub     | Egy adott időablakon belüli jogosulatlan műveletek mennyisége kívül esik az aktuálisan konfigurált és engedélyezett tartományon.|
 |
 
-## <a name="agent-alerts-available-for-customization"></a>A testreszabáshoz rendelkezésre álló ügyintézői riasztások 
+## <a name="agent-alerts-available-for-customization"></a>A testreszabáshoz rendelkezésre álló ügyintézői riasztások
 
 | Severity | Riasztás neve | Adatforrás | Leírás | Javasolt szervizelés|
 |---|---|---|---|---|

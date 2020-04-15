@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: bfe8aa088538663ac3e64f5913ff031e6160b045
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877915"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382645"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -228,12 +228,11 @@ Az ezzel a szerepkörrel rendelkező felhasználók hozzáférhetnek az Azure Ac
 
 ### <a name="global-reader"></a>[Globális olvasó](#global-reader-permissions)
 
-A szerepkörben lévő felhasználók olvashatják a beállításokat és a felügyeleti információkat a Microsoft 365-szolgáltatásokban, de nem tudnak felügyeleti műveleteket eljárni. A globális olvasó a globális adminisztrátor írásvédett megfelelője. Globális olvasó hozzárendelése globális rendszergazda helyett tervezéshez, auditokhoz vagy vizsgálatokhoz. A Globális olvasó és más korlátozott rendszergazdai szerepkörök, például az Exchange-rendszergazda együttes használatával megkönnyítse a munka elvégzését a Globális rendszergazda szerepkör hozzárendelése nélkül. A Globális olvasó együttműködik a Microsoft 365 Felügyeleti központtal, az Exchange Felügyeleti központtal, a Teams felügyeleti központtal, a Biztonsági központtal, a Megfelelőségi központtal, az Azure AD felügyeleti központtal és az Eszközkezelési felügyeleti központtal.
+A szerepkörben lévő felhasználók olvashatják a beállításokat és a felügyeleti információkat a Microsoft 365-szolgáltatásokban, de nem tudnak felügyeleti műveleteket eljárni. A globális olvasó a globális adminisztrátor írásvédett megfelelője. Globális olvasó hozzárendelése globális rendszergazda helyett tervezéshez, auditokhoz vagy vizsgálatokhoz. A Globális olvasó és más korlátozott rendszergazdai szerepkörök, például az Exchange-rendszergazda együttes használatával megkönnyítse a munka elvégzését a Globális rendszergazda szerepkör hozzárendelése nélkül. A Globális olvasó együttműködik a Microsoft 365 Felügyeleti központtal, az Exchange Felügyeleti központtal, a SharePoint Felügyeleti központtal, a Teams felügyeleti központtal, a Biztonsági központtal, a Megfelelőségi központtal, az Azure AD felügyeleti központtal és az Eszközkezelési felügyeleti központtal.
 
 > [!NOTE]
 > Globális olvasó szerepe van néhány korlátozás most -
 >
->- SharePoint Felügyeleti központ – A SharePoint Felügyeleti központ nem támogatja a Globális olvasó szerepkört. A "SharePoint" nem jelenik meg a bal oldali ablaktáblában a [Microsoft 365 Felügyeleti központ](https://admin.microsoft.com/Adminportal/Home#/homepage)Felügyeleti központok csoportában.
 >- [OneDrive Felügyeleti központ](https://admin.onedrive.com/) – A OneDrive Felügyeleti központ nem támogatja a Globális olvasó szerepkört.
 >- [Azure AD portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) – A globális olvasó nem tudja olvasni a vállalati alkalmazások kiépítési módját.
 >- [M365 felügyeleti központ](https://admin.microsoft.com/Adminportal/Home#/homepage) – A globális olvasó nem tudja olvasni az ügyfélszéf-kérelmeket. Az M365 Felügyeleti központ bal oldali ablaktáblájában a **Támogatás** csoportban nem találja az **Ügyfél széfkérelmek** lapot.

@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280533"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382919"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory-integráció az Azure Red Hat OpenShift szolgáltatáshoz
 
@@ -25,13 +25,13 @@ Az [Azure Portalon](https://portal.azure.com)győződjön meg arról, hogy a bé
 
 ![Képernyőkép a jobb felső sarokban lévő bérlőről: Ha nem a megfelelő](./media/howto-create-tenant/tenant-callout.png) bérlő jelenik meg, kattintson a felhasználónevére a jobb felső sarokban, majd kattintson a **Címtár váltása** **parancsra,** és válassza ki a megfelelő bérlőt a Minden könyvtár listájából.
 
-Hozzon létre egy új Azure Active Directory globális rendszergazdai felhasználót, aki bejelentkezik az Azure Red Hat OpenShift fürtbe.
+Hozzon létre egy új Azure Active Directory "tulajdonos" felhasználót, hogy jelentkezzen be az Azure Red Hat OpenShift fürtbe.
 
 1. Nyissa meg a [Felhasználók – Minden felhasználó](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) panelt.
 2. Kattintson **az +Új felhasználó** gombra a **Felhasználó** ablaktábla megnyitásához.
 3. Adja meg a felhasználó **nevét.**
 4. Hozzon létre egy **felhasználónevet** a létrehozott bérlő `.onmicrosoft.com` neve alapján, a végén hozzáfűzve. Például: `yourUserName@yourTenantName.onmicrosoft.com`. Írja le ezt a felhasználónevet. Szüksége lesz rá, hogy jelentkezzen be a fürtbe.
-5. Kattintson **a Címtárszerepkör** gombra a címtárszerep-ablaktábla megnyitásához, válassza a **Globális rendszergazda** lehetőséget, majd kattintson az ablaktábla alján az **Ok** gombra.
+5. Kattintson **a Címtárszerepkör** gombra a címtárszerep-ablaktábla megnyitásához, majd válassza a **Tulajdonos** lehetőséget, majd kattintson az ablaktábla alján az **Ok** gombra.
 6. A **Felhasználó** ablaktáblán kattintson a **Jelszó megjelenítése** elemre, és rögzítse az ideiglenes jelszót. Miután első alkalommal bejelentkezett, a rendszer kéri, hogy állítsa alaphelyzetbe.
 7. Az ablaktábla alján kattintson a **Létrehozás** gombra a felhasználó létrehozásához.
 
@@ -112,7 +112,7 @@ Az új Azure AD-alkalmazás létrehozásáról az [Alkalmazás regisztrálása a
 
 A rendszergazdák és egyéb szerepkörök kezeléséről az [Azure-előfizetés-rendszergazdák hozzáadása és módosítása](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)című témakörben talál részleteket.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 * [Alkalmazások és egyszerű szolgáltatásobjektumok az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 * [Rövid útmutató: Alkalmazás regisztrálása az Azure Active Directory 1.0-s verziójú végpontján](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)

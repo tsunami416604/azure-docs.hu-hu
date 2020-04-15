@@ -1,5 +1,5 @@
 ---
-title: Az Azure Security Center megismerése az IoT alapkonfigurációhoz| Microsoft dokumentumok
+title: Alap- és egyéni ellenőrzések
 description: Ismerje meg az Azure Security Center for IoT alapkonfiguráció koncepcióját.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c52a3e55e3801eaaac885b9a3c364283f74906ba
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72176615"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311660"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Azure Security Center az IoT alapkonfigurációjának és egyéni ellenőrzésének
 
@@ -28,11 +28,11 @@ Ez a cikk ismerteti az Azure Security Center az IoT alapkonfigurációját, és 
 
 ## <a name="baseline"></a>Alapkonfiguráció
 
-Az alapterv minden eszköz szabványos viselkedését hozza létre, és megkönnyíti a szokatlan viselkedés vagy a várt normáktól való eltérés megállapítását.  
+Az alapterv minden eszköz szabványos viselkedését hozza létre, és megkönnyíti a szokatlan viselkedés vagy a várt normáktól való eltérés megállapítását.
 
 ## <a name="baseline-custom-checks"></a>Alaptervegyéni ellenőrzések
 
-Az alapkonfigurációs egyéni ellenőrzések az eszköz alapkonfigurációjának ellenőrzéseit egyéni listát hoznak létre az eszköz **modulidentitásikerének** használatával. 
+Az alapkonfigurációs egyéni ellenőrzések az eszköz alapkonfigurációjának ellenőrzéseit egyéni listát hoznak létre az eszköz **modulidentitásikerének** használatával.
 
 ## <a name="setting-baseline-properties"></a>Alapvonal-tulajdonságok beállítása
 

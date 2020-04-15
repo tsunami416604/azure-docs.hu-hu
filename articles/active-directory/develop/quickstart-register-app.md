@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 1625b48d86eebaf5d8fcd4c100d89b83716ba459
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79983678d13b810a521a00ba2c1978de92a5029f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79408368"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309510"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rövid útmutató: Alkalmazás regisztrálása a Microsoft identitásplatformmal
 
@@ -28,7 +28,7 @@ Az alkalmazás integrálva van a Microsoft identitásplatformregisztrálásával
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* [Egy Azure AD sátor.](quickstart-create-new-tenant.md)
+* Egy [Azure AD-bérlő.](quickstart-create-new-tenant.md)
 
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Új alkalmazás regisztrálása az Azure Portal használatával
 

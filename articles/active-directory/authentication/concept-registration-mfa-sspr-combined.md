@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942897"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309917"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinált biztonsági adatok regisztrálása (előzetes verzió)
 
@@ -96,7 +96,7 @@ Az alábbi esetekben a rendszer kérheti a felhasználókat a biztonsági adatai
 
 A regisztráció kényszerítésekén él a felhasználók a többtényezős hitelesítéshez és az SSPR-házirendeknek való megfeleléshez szükséges minimális számú módszer, a legtöbbtől a legkevésbé biztonságosig.
 
-Példa:
+Például:
 
 - Egy felhasználó engedélyezve van az SSPR-hez. Az SSPR-házirend két módszert igényelt az alaphelyzetbe állításhoz, és engedélyezte a mobilalkalmazás-kódot, az e-mailt és a telefont.
    - Ennek a felhasználónak két módszert kell regisztrálnia.
@@ -139,7 +139,7 @@ Az a felhasználó, aki korábban már beállított legalább egy módszert, [ht
 
 ## <a name="next-steps"></a>További lépések
 
-[A felhasználók kényszerítése a hitelesítési módszerek újbóli regisztrálására](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[A felhasználók kényszerítése a hitelesítési módszerek újbóli regisztrálására](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
 
 [Kombinált regisztráció engedélyezése a bérlőben](howto-registration-mfa-sspr-combined.md)
 

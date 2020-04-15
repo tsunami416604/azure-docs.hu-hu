@@ -1,5 +1,5 @@
 ---
-title: Az IoT-biztonsági modul Hoz készült Azure Security Center ismertetése az IoT Edge-hez| Microsoft dokumentumok
+title: Az IoT Edge biztonsági modulja
 description: Ismerje meg az Azure Security Center for IoT biztonsági modul architektúráját és képességeit az IoT Edge-hez.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0eb68f517c4c5b04dd4f92dd1a804dcf5ad24362
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71315894"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310628"
 ---
 # <a name="azure-iot-edge-security-module"></a>Az Azure IoT Edge biztonsági modulja
 
@@ -36,7 +36,7 @@ További információ az [ügynök konfigurálása](how-to-agent-configuration.m
 Az IoT Edge-hez készült Azure Security Center for IoT biztonsági modul a következő funkciókat kínálja:
 
 - Nyers biztonsági események gyűjtése az alapul szolgáló operációs rendszer (Linux) és az IoT Edge tárolórendszerek.
-  
+
   Tekintse meg [az Azure Security Center for IoT ügynök konfigurációját,](how-to-agent-configuration.md) ha többet szeretne megtudni az elérhető biztonsági adatgyűjtőkről.
 
 - IoT Edge-telepítés jegyzékfájljainak elemzése.
@@ -52,7 +52,7 @@ Kiemelt mód szükséges ahhoz, hogy a modul figyelhesse az operációs rendszer
 
 ## <a name="module-supported-platforms"></a>Modul által támogatott platformok
 
-Az IoT Edge-hez készült Azure Security Center for IoT Security Module jelenleg csak Linuxon érhető el. 
+Az IoT Edge-hez készült Azure Security Center for IoT Security Module jelenleg csak Linuxon érhető el.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475172"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312049"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Az Azure Application Gateway és a webalkalmazás tűzfalának áttelepítése a v1-ről a v2-re
 
@@ -36,7 +36,7 @@ Egy Azure PowerShell-parancsfájl érhető el, amely a következőket teszi:
 
 * Az új v2 átjáró új nyilvános és privát IP-címekkel rendelkezik. Nem lehet áthelyezni a meglévő v1 átjáróhoz társított IP-címeket zökkenőmentesen a v2-be. Azonban egy meglévő (fel nem osztott) nyilvános vagy privát IP-címet is lefoglalhat az új v2 átjáróhoz.
 * Meg kell adnia egy IP-címterületet egy másik alhálózat számára a virtuális hálózaton belül, ahol a v1 átjáró található. A parancsfájl nem hozhat létre a v2 átjáró t olyan meglévő alhálózatokban, amelyek már rendelkeznek v1-es átjáróval. Azonban ha a meglévő alhálózat már rendelkezik egy v2-átjáróval, amely továbbra is működhet, feltéve, hogy elegendő IP-címterület áll rendelkezésre.
-* SSL-konfiguráció áttelepítéséhez meg kell adnia a v1 átjáróban használt összes SSL-tanúsítványt.
+* TLS/SSL-konfiguráció áttelepítéséhez meg kell adnia a v1 átjáróban használt összes TLS/SSL tanúsítványt.
 * Ha a V1-átjáró fips-módban engedélyezve van, akkor nem lesz áttelepítve az új v2 átjáróra. A FIPS-mód nem támogatott a v2-ben.
 * A v2 nem támogatja az IPv6 protokollt, ezért az IPv6-kompatibilis v1-es átjárók áttelepítése nem történik meg. Ha futtatja a parancsfájlt, előfordulhat, hogy nem fejeződik be.
 * Ha a v1-es átjáró csak egy privát IP-címmel rendelkezik, a parancsfájl létrehoz egy nyilvános IP-címet és egy privát IP-címet az új v2 átjáróhoz. a v2 átjárók jelenleg nem csak a privát IP-címeket támogatják.
@@ -101,7 +101,7 @@ A szkript futtatása:
 
    * **subnetAddressRange: [String]: Kötelező** – Ez az az IP-címterület, amelyet az új v2 átjárót tartalmazó új alhálózathoz lefoglalt (vagy lefoglalni szeretne). Ezt a CIDR jelölésben kell megadni. Például: 10.0.0.0/24. Nem kell előre létrehoznia ezt az alhálózatot. A szkript létrehozza az Ön számára, ha nem létezik.
    * **appgwName: [String]: Nem kötelező**. Ezt a karakterláncot az új Standard_v2 vagy WAF_v2 átjáró neveként kell használni. Ha ez a paraméter nincs megadva, a meglévő v1 átjáró nevét fogja használni az utótag *_v2* hozzáfűzve.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Nem kötelező**.  A PSApplicationGatewaySslCertificate objektumok vesszővel tagolt listáját, amelyet a v1-es átjáró SSL-tanúsítványainak ábrázolására hoz létre, fel kell tölteni az új v2 átjáróba. A standard v1 vagy WAF v1 átjáróhoz konfigurált ssl-tanúsítványok mindegyikéhez létrehozhat egy új PSApplicationGatewaySslCertificate objektumot az `New-AzApplicationGatewaySslCertificate` itt látható parancs segítségével. Szüksége van az SSL tanúsítványfájl elérési útvonalára és a jelszóra.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Nem kötelező**.  A v1 átjáróT/SSL-tanúsítványokat jelképező PSApplicationGatewaySslCertificate objektumok vesszővel tagolt listáját fel kell tölteni az új v2 átjáróra. A Standard v1 vagy WAF v1 átjáróhoz konfigurált tls/SSL-tanúsítványok mindegyikéhez létrehozhat egy új PSApplicationGatewaySslCertificate objektumot az `New-AzApplicationGatewaySslCertificate` itt látható parancs segítségével. Szüksége van a TLS/SSL cert fájl elérési útvonalára és a jelszóra.
 
      Ez a paraméter csak akkor választható, ha nincs HTTPS-figyelők konfigurálva a v1 átjáró vagy a WAF. Ha legalább egy HTTPS-figyelő beállítással rendelkezik, meg kell adnia ezt a paramétert.
 

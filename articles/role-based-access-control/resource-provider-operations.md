@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c56e6729307a1cad998a060202f51cb8f29bf94a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 16fa33999a38b21fd2016c986dd2db81f7d84051
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548322"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383749"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatóműveletei
 
@@ -2392,7 +2392,7 @@ Azure-szolgáltatás: [Költségkezelés](../cost-management-billing/index.yml)
 > | Műveletek | Microsoft.Fogyasztás/foglalásÖsszegzések/olvasás | A fenntartott példányok kihasználtsági összegzésének felsorolása foglalási sorrend vagy felügyeleti csoportok szerint. Az összefoglaló adatok havi vagy napi szinten vannak. |
 > |  | **reservationTransactions** |  |
 > | Műveletek | Microsoft.Fogyasztás/foglalásTranzakciók/olvasás | A fenntartott példányok tranzakcióelőzményeinek listázása felügyeleti csoportok szerint. |
-> |  | **címkét** |  |
+> |  | **Címkék** |  |
 > | Műveletek | Microsoft.Fogyasztás/címkék/olvasás | Címkék listázása az EA-hoz és az előfizetésekhez. |
 > |  | **Bérlők** |  |
 > | Műveletek | Microsoft.Fogyasztás/bérlő/regiszter/művelet | Regisztráljon műveletet a Microsoft hatóköre.Fogyasztás bérlő által. |
@@ -5180,7 +5180,7 @@ Azure-szolgáltatás: [Key Vault](../key-vault/index.yml)
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
-Azure-szolgáltatás: [Azure Data Explorer](../data-explorer/index.yml)
+Azure-szolgáltatás: [Azure Data Explorer](/azure/data-explorer/)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelet típusa | Művelet | Leírás |
@@ -7744,7 +7744,7 @@ Azure-szolgáltatás: [Azure Monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft.OperationsManagement/managementConfigurations/write | Új felügyeleti konfiguráció létrehozása |
 > | Műveletek | Microsoft.OperationsManagement/managementConfigurations/read | Meglévő felügyeleti konfiguráció beszerezni |
 > | Műveletek | Microsoft.OperationsManagement/managementConfigurations/delete | Meglévő felügyeleti konfiguráció törlése |
-> |  | **megoldások** |  |
+> |  | **Megoldások** |  |
 > | Műveletek | Microsoft.OperationsManagement/solutions/write | Új OMS-megoldás létrehozása |
 > | Műveletek | Microsoft.OperationsManagement/solutions/read | Kilépés az OMS-megoldásból |
 > | Műveletek | Microsoft.OperationsManagement/solutions/delete | Meglévő OMS-megoldás törlése |
@@ -8324,7 +8324,7 @@ Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.y
 > | Műveletek | Microsoft.Resources/subscriptions/tagNames/tagValues/read | Előfizetési címke értékek leése vagy listázása. |
 > | Műveletek | Microsoft.Resources/subscriptions/tagNames/tagValues/write | Előfizetési címke értékét adja hozzá. |
 > | Műveletek | Microsoft.Resources/subscriptions/tagNames/tagValues/delete | Előfizetési címke értékének törlése. |
-> |  | **címkét** |  |
+> |  | **Címkék** |  |
 > | Műveletek | Microsoft.Resources/tags/read | Leveszi egy erőforrás összes címkéjének le. |
 > | Műveletek | Microsoft.Resources/tags/write | Frissíti egy erőforrás címkéit a meglévő címkék új címkékkel való cseréjével vagy egyesítésével, vagy a meglévő címkék eltávolításával. |
 > | Műveletek | Microsoft.Resources/tags/delete | Eltávolítja az erőforrás összes címkéit. |

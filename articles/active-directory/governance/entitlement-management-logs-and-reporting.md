@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 070b7c5e0fef7d50f84271190432a65d29699bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128625"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380199"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archiválási naplók és jelentések az Azure AD-jogosultságok kezeléséről az Azure Monitorban
 
@@ -49,6 +49,38 @@ Az Azure AD-naplónaplók archiválásához az Azure Monitornak rendelkeznie kel
 1. Válassza **a Felhasználás és a becsült költségek** lehetőséget, és kattintson az **Adatmegőrzés gombra.** Módosítsa a csúszkát arra a napokra, amoráink számát, hogy az adatok megfeleljenek a naplózási követelményeknek.
 
     ![A Log Analytics munkaterületeinek ablaktáblája](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
+
+1. Később az Archivált naplódátumtartomány munkafüzetét az *Archivált naplódátumtartomány* munkafüzetét használhatja:  
+    
+    1. Válassza az **Azure Active Directory** lehetőséget, majd kattintson a **Munkafüzetek gombra.** 
+    
+    1. Bontsa ki az **Azure Active Directory hibaelhárításszakaszát,** és kattintson az **Archivált naplódátumtartomány ra.** 
+
+
+## <a name="view-events-for-an-access-package"></a>Hozzáférési csomag eseményeinek megtekintése  
+
+Egy hozzáférési csomag eseményeinek megtekintéséhez hozzáféréssel kell rendelkeznie az alapul szolgáló Azure-figyelő munkaterületéhez (az [Azure Monitor naplóadataihoz és munkaterületeihez való hozzáférés kezelése](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) az alábbi szerepkörök egyikében) és az alábbi szerepkörök egyikében: 
+
+- Globális rendszergazda  
+- Biztonsági rendszergazda  
+- Biztonsági olvasó  
+- Jelentésolvasó  
+- Alkalmazás-rendszergazda  
+
+Az események megtekintéséhez kövesse az alábbi eljárást: 
+
+1. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget, majd kattintson a **Munkafüzetek**elemre. Ha csak egy előfizetéssel rendelkezik, folytassa a 3. 
+
+1. Ha több előfizetéssel rendelkezik, válassza ki a munkaterületet tartalmazó előfizetést.  
+
+1. Jelölje ki az Access Package Activity nevű *munkafüzetet.* 
+
+1. Ebben a munkafüzetben válasszon ki egy időtartományt (módosítsa **az Összeset,** ha nem biztos benne), és válasszon ki egy hozzáférési csomagazonosítót az adott időtartományban tevékenységet folytató összes hozzáférési csomag legördülő listájából. A kijelölt időtartomány ban történt hozzáférési csomaghoz kapcsolódó események jelennek meg.  
+
+    ![Hozzáférési csomag eseményeinek megtekintése](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
+
+    Minden sor tartalmazza a műveletet elindító felhasználó idejét, hozzáférési csomagazonosítóját, nevét, az objektumazonosítót, az upn-t és a műveletet elindító felhasználó megjelenítendő nevét.  További részleteket a JSON tartalmaz.   
+
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>Egyéni Azure Monitor-lekérdezések létrehozása az Azure Portal használatával
 Saját lekérdezéseket hozhat létre az Azure AD naplózási eseményein, beleértve a jogosultságkezelési eseményeket is.  
@@ -86,6 +118,7 @@ A PowerShellen keresztül is elérheti a naplókat, miután konfigurálta az Azu
 Győződjön meg arról, hogy az Azure AD-ben hitelesítést végző felhasználó vagy szolgáltatásnév a Megfelelő Azure-szerepkörben van a Log Analytics-munkaterületen. A szerepkör-beállítások vagy a Log Analytics-olvasó vagy a Log Analytics közreműködője. Ha már az egyik ilyen szerepkörben van, ugorjon [a Log Analytics-azonosító lekérése egyetlen Azure-előfizetéssel című részre.](#retrieve-log-analytics-id-with-one-azure-subscription)
 
 A szerepkör-hozzárendelés beállításához és lekérdezés létrehozásához tegye a következő lépéseket:
+
 1. Az Azure Portalon keresse meg a [Log Analytics-munkaterületet.](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces
 )
 
@@ -128,7 +161,7 @@ $subs | ft
 A PowerShell-munkamenetet újra hitelesítheti és társíthatja `Connect-AzAccount –Subscription $subs[0].id`az adott előfizetéshez egy paranccsal, például . Ha többet szeretne megtudni arról, hogyan hitelesítheti magát az Azure-ba a PowerShellből, beleértve a nem interaktív adatokat is, olvassa el [a Bejelentkezés az Azure PowerShellhasználatával témakört.](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
 )
 
-Ha több Log Analytics-munkaterület van az adott előfizetésben, akkor a [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) parancsmag visszaadja a munkaterületek listáját. Ezután megtalálhatja azt, amelyik rendelkezik az Azure AD-naplók. A `CustomerId` parancsmag által visszaadott mező megegyezik a "Workspace id" értéke jelenik meg az Azure Portalon a Log Analytics munkaterület áttekintése.
+Ha több Log Analytics-munkaterület van az adott előfizetésben, akkor a [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) parancsmag visszaadja a munkaterületek listáját. Ezután megtalálhatja azt, amelyik rendelkezik az Azure AD-naplók. A `CustomerId` parancsmag által visszaadott mező megegyezik a "Workspace-azonosító" értékével, amely az Azure Portalon jelenik meg a Log Analytics munkaterület áttekintése során.
  
 ```powershell
 $wks = Get-AzOperationalInsightsWorkspace
@@ -150,7 +183,7 @@ $aResponse.Results |ft
 A jogosultságkezelési eseményeket a következő lekérdezéssel is lekérheti:
 
 ```azurepowershell
-$bQuery = = 'AuditLogs | where Category == "EntitlementManagement"'
+$bQuery = 'AuditLogs | where Category == "EntitlementManagement"'
 $bResponse = Invoke-AzOperationalInsightsQuery -WorkspaceId $wks[0].CustomerId -Query $Query
 $bResponse.Results |ft 
 ```

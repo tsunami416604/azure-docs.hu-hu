@@ -1,28 +1,20 @@
 ---
 title: Előrejelzési pontszámok - LUIS
-titleSuffix: Azure Cognitive Services
 description: Az előrejelzési pontszám azt jelzi, hogy a LUIS API-szolgáltatás megbízhatósági foka a felhasználói utterance (kifejezés) alapján az előrejelzési eredmények.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74280827"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382378"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Az előrejelzési pontszámok a szándék és az entitások előrejelzési pontosságát jelzik
 
 Az előrejelzési pontszám azt jelzi, hogy a LUIS milyen megbízhatósággal rendelkezik a felhasználói utterance (kifejezés) előrejelzési eredményeihez.
 
-Az előrejelzési pontszám nulla (0) és egy (1) között van. Egy rendkívül magabiztos LUIS-pontszám például 0,99. Egy példa a pontszám az alacsony megbízhatósági 0,01. 
+Az előrejelzési pontszám nulla (0) és egy (1) között van. Egy rendkívül magabiztos LUIS-pontszám például 0,99. Egy példa a pontszám az alacsony megbízhatósági 0,01.
 
 |Pontszám értéke|Megbízhatóság|
 |--|--|
@@ -33,11 +25,11 @@ Az előrejelzési pontszám nulla (0) és egy (1) között van. Egy rendkívül 
 
 ## <a name="top-scoring-intent"></a>A gólszerzési szándék
 
-Minden kimondott szöveg előrejelzése egy csúcspontozási szándékot ad vissza. Ez az előrejelzés az előrejelzési pontszámok számszerű összehasonlítása. 
+Minden kimondott szöveg előrejelzése egy csúcspontozási szándékot ad vissza. Ez az előrejelzés az előrejelzési pontszámok számszerű összehasonlítása.
 
 ## <a name="proximity-of-scores-to-each-other"></a>Pontszámok egymáshoz való közelsége
 
-A top 2 pontszámok lehet egy nagyon kis különbség közöttük. A LUIS nem jelzi ezt a közelséget, csak a legmagasabb pontszám visszaadása.  
+A top 2 pontszámok lehet egy nagyon kis különbség közöttük. A LUIS nem jelzi ezt a közelséget, csak a legmagasabb pontszám visszaadása.
 
 ## <a name="return-prediction-score-for-all-intents"></a>Visszatérési előrejelzési pontszám az összes leképezéshez
 
@@ -74,9 +66,11 @@ Az előrejelzési pontszámok exponens jelöléssel _jelenhetnek meg,_ amely `9.
 |--|--|
 |9.910309E-07|.0000009910309|
 
-## <a name="punctuation"></a>Írásjelek
+<a name="punctuation"></a>
 
-[További információ](luis-concept-utterance.md#punctuation-marks) az írásjelek használatáról és figyelmen kívül hagyásáról. 
+## <a name="application-settings"></a>Alkalmazásbeállítások
+
+Az [alkalmazásbeállítások segítségével](luis-reference-application-settings.md) szabályozhatja, hogy a mellékjelek és az írásjelek hogyan befolyásolják az előrejelzési pontszámokat.
 
 ## <a name="next-steps"></a>További lépések
 

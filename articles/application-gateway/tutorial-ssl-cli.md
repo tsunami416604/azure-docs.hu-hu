@@ -1,6 +1,6 @@
 ---
-title: SSL-megszüntetés cli használatával – Azure Application Gateway
-description: Megismerheti, hogyan hozhat létre alkalmazásátjárót és adhat hozzá egy tanúsítványt az SSL leállításához az Azure CLI használatával.
+title: TLS-megszüntetés a CLI használatával – Azure Application Gateway
+description: Ismerje meg, hogyan hozhat létre egy alkalmazásátjárót, és hogyan adhat hozzá tanúsítványt a TLS-megszüntetéshez az Azure CLI használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c297a7d34e8b85420329abaca0e15029ce207861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246615"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311978"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Alkalmazásátjáró létrehozása SSL-végződtetéssel az Azure CLI használatával
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Alkalmazásátjáró létrehozása TLS-végződtetéssel az Azure CLI használatával
 
-Az Azure CLI segítségével létrehozhat egy [alkalmazásátjárót](overview.md) [az SSL-megszüntetési](ssl-overview.md)tanúsítvánnyal. Háttérkiszolgálók esetén [használhat virtuálisgép-méretezési készletet.](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
+Az Azure CLI segítségével létrehozhat egy [alkalmazásátjárót](overview.md) a [TLS-megszüntetési](ssl-overview.md)tanúsítvánnyal. Háttérkiszolgálók esetén [használhat virtuálisgép-méretezési készletet.](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) Ebben a példában a méretezési csoport két virtuálisgép-példányt tartalmaz, amelyek hozzá lesznek adva az alkalmazásátjáró alapértelmezett háttérkészletéhez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 

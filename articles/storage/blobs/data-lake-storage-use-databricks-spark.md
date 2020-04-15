@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: be5a2f76a99149fde378d29f2ef7748ebe60b038
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5889afa033b30606f8981ddb826aa192f24efa10
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303239"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312916"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Oktatóanyag: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -47,7 +47,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
   > [!IMPORTANT]
   > Győződjön meg arról, hogy rendelje hozzá a szerepkört a Data Lake Storage Gen2 tárfiók hatókörében. Szerepkört rendelhet a fölérendelt erőforráscsoporthoz vagy -előfizetéshez, de engedélyekkel kapcsolatos hibákat fog kapni, amíg ezek a szerepkör-hozzárendelések propagálnak a tárfiókba.
 
-  :heavy_check_mark: A cikk bejelentkezési [értékeinek bekerülési értékeinek](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) végrehajtásakor illessze be a bérlői azonosítót, az alkalmazásazonosítót és a jelszóértékeket egy szöveges fájlba. Hamarosan szükséged lesz rá.
+  :heavy_check_mark: A cikk bejelentkezési [értékeinek bekerülési értékeinek](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) végrehajtásakor illessze be a bérlői azonosítót, az alkalmazásazonosítót és az ügyféltitkos értékeket egy szöveges fájlba. Hamarosan szükséged lesz rá.
 
 ### <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
@@ -151,7 +151,7 @@ Ebben a szakaszban hozzon létre egy tárolót és egy mappát a tárfiókban.
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
            "fs.azure.account.oauth2.client.id": "<appId>",
-           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.secret": "<clientSecret>",
            "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
@@ -161,7 +161,7 @@ Ebben a szakaszban hozzon létre egy tárolót és egy mappát a tárfiókban.
     extra_configs = configs)
     ```
 
-18. Ebben a kódblokkban `appId` `password`cserélje `tenant`le `storage-account-name` a , , , és helyőrző értékeket ebben a kódblokkban az oktatóanyag előfeltételeinek végrehajtása során gyűjtött értékekre. Cserélje `container-name` le a helyőrző értéket a tároló nevére.
+18. Ebben a kódblokkban `appId` `clientSecret`cserélje `tenant`le `storage-account-name` a , , , és helyőrző értékeket ebben a kódblokkban az oktatóanyag előfeltételeinek végrehajtása során gyűjtött értékekre. Cserélje `container-name` le a helyőrző értéket a tároló nevére.
 
 19. A **BLOKKban** lévő kód futtatásához nyomja le a SHIFT + ENTER billentyűket.
 

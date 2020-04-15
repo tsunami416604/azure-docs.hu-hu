@@ -1,5 +1,5 @@
 ---
-title: Az Azure Security Center ioT-ügynökhöz való kijelölése és üzembe helyezése| Microsoft dokumentumok
+title: Biztonsági ügynökök kijelölése és telepítése
 description: Ismerje meg, hogyan választhatja ki és telepítheti az Azure Security Center t IoT-biztonsági ügynökökhöz IoT-eszközökön.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770016"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311217"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Biztonsági ügynök kiválasztása és üzembe helyezése az IoT-eszközön
 
@@ -29,7 +29,8 @@ További információ: [Security agent reference architecture](security-agent-ar
 
 Ügynökök fejlesztik a nyílt forráskódú projektek, és rendelkezésre állnak két ízben: <br> [C](https://aka.ms/iot-security-github-c)és [C#](https://aka.ms/iot-security-github-cs).
 
-Ebben a cikkben az alábbiakkal ismerkedhet meg: 
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
+
 > [!div class="checklist"]
 > * Biztonsági ügynökök ízének összehasonlítása
 > * Támogatott ügynökplatformok felfedezése
@@ -37,9 +38,9 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="understand-security-agent-options"></a>A biztonsági ügynökök beállításainak ismertetése
 
-Minden Azure Security Center for IoT biztonsági ügynök íz ugyanazokat a funkciókat kínálja, és támogatja a hasonló konfigurációs lehetőségeket. 
+Minden Azure Security Center for IoT biztonsági ügynök íz ugyanazokat a funkciókat kínálja, és támogatja a hasonló konfigurációs lehetőségeket.
 
-A C-alapú biztonsági ügynök alacsonyabb memóriaigényű, és az ideális választás a kevesebb rendelkezésre álló erőforrásokkal rendelkező eszközök számára. 
+A C-alapú biztonsági ügynök alacsonyabb memóriaigényű, és az ideális választás a kevesebb rendelkezésre álló erőforrásokkal rendelkező eszközök számára.
 
 |     | C-alapú biztonsági ügynök | C#-alapú biztonsági ügynök |
 | --- | ----------- | --------- |
@@ -59,20 +60,19 @@ A C-alapú biztonsági ügynök alacsonyabb memóriaigényű, és az ideális v�
 
 ## <a name="security-agent-installation-guidelines"></a>A biztonsági ügynökök telepítésére vonatkozó irányelvek
 
-**Windows**esetén: A SecurityAgent.ps1 telepítése parancsfájlt rendszergazdai PowerShell-ablakból kell végrehajtani. 
+**Windows**esetén: A SecurityAgent.ps1 telepítése parancsfájlt rendszergazdai PowerShell-ablakból kell végrehajtani.
 
 **Linux esetén:** A InstallSecurityAgent.sh rendszergazdaként kell futtatni. Javasoljuk, hogy a telepítési parancsot a "sudo" segítségével rögzítse.
 
-
-## <a name="choose-an-agent-flavor"></a>Válasszon egy ügynök íz 
+## <a name="choose-an-agent-flavor"></a>Válasszon egy ügynök íz
 
 Válaszoljon a következő kérdésekre az IoT-eszközökkel kapcsolatban a megfelelő ügynök kiválasztásához:
 
-- _Windows Server_ vagy _Windows IoT Core rendszert_használ? 
+- _Windows Server_ vagy _Windows IoT Core rendszert_használ?
 
     [C#-alapú biztonsági ügynök telepítése Windows rendszerhez](how-to-deploy-windows-cs.md).
 
-- X86 architektúrával rendelkező Linux disztribúciót használ? 
+- X86 architektúrával rendelkező Linux disztribúciót használ?
 
     [Telepítsen egy C-alapú biztonsági ügynököt Linuxra.](how-to-deploy-linux-c.md)
 
@@ -90,10 +90,10 @@ Az alábbi lista tartalmazza az összes jelenleg támogatott platformot.
 
 |Azure Security Center ioT-ügynökhöz |Operációs rendszer |Architektúra |
 |--------------|------------|--------------|
-|C#|Ubuntu 16.04 |   x64|
-|C#|Ubuntu 18.04 |   x64, ARMv7|
-|C#|Debian 9 |   x64, x86|
-|C#|Ubuntu 16.04    |x64|
+|C#|Ubuntu 16.04 |    x64|
+|C#|Ubuntu 18.04 |    x64, ARMv7|
+|C#|Debian 9 |    x64, x86|
+|C#|Ubuntu 16.04     |x64|
 |C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
@@ -102,6 +102,6 @@ Az alábbi lista tartalmazza az összes jelenleg támogatott platformot.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a konfigurációs beállításokról, folytassa az útmutatóval az ügynök konfigurációjához. 
+Ha többet szeretne megtudni a konfigurációs beállításokról, folytassa az útmutatóval az ügynök konfigurációjához.
 > [!div class="nextstepaction"]
 > [Az ügynök konfigurációja útmutató](./how-to-agent-configuration.md)

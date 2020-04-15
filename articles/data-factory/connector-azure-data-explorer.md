@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 4c265cb0cdc665ef52f4dc6e69440e83c22db449
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0eada5184f2c8e36b0deb5a9d27a8a9230776d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77460977"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382763"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Explorer be- vagy kii-kezelőprogramból az Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogy miként használhatja a másolási tevékenységet az Azure Data Factoryban az [Azure Data Explorer](../data-explorer/data-explorer-overview.md)be vagy onnan történő másoláshoz. A [másolási tevékenység áttekintéséről](copy-activity-overview.md) szóló cikkre épül, amely általános áttekintést nyújt a másolási tevékenységről.
+Ez a cikk azt ismerteti, hogy miként használhatja a másolási tevékenységet az Azure Data Factoryban az [Azure Data Explorer](/azure/data-explorer/data-explorer-overview)be vagy onnan történő másoláshoz. A [másolási tevékenység áttekintéséről](copy-activity-overview.md) szóló cikkre épül, amely általános áttekintést nyújt a másolási tevékenységről.
 
 >[!TIP]
->Az Azure Data Factory és az Azure Data Explorer integrációjához általában az [Azure Data Explorer integrálása az Azure Data Factory szolgáltatással](../data-explorer/data-factory-integration.md)című cikkből olvashat bővebben.
+>Az Azure Data Factory és az Azure Data Explorer integrációjához általában az [Azure Data Explorer integrálása az Azure Data Factory szolgáltatással](/azure/data-explorer/data-factory-integration)című cikkből olvashat bővebben.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Ez az Azure Data Explorer-összekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 Bármely támogatott forrásadattárból adatokat másolhat az Azure Data Explorerbe. Az Azure Data Explorerből adatokat is másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként vagy fogadóként támogatott adattárolók listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 
@@ -47,7 +47,7 @@ Az Azure Data Explorer-összekötővel a következőket teheti:
 ## <a name="getting-started"></a>Első lépések
 
 >[!TIP]
->Az Azure Data Explorer-összekötő forgatókönyve: [Adatok másolása/az Azure Data Explorerből az Azure Data Factory használatával,](../data-explorer/data-factory-load-data.md) [valamint az adatbázisból az Azure Data Explorerbe történő tömeges másolása](../data-explorer/data-factory-template.md)című témakörben található.
+>Az Azure Data Explorer-összekötő forgatókönyve: [Adatok másolása/az Azure Data Explorerből az Azure Data Factory használatával,](/azure/data-explorer/data-factory-load-data) [valamint az adatbázisból az Azure Data Explorerbe történő tömeges másolása](/azure/data-explorer/data-factory-template)című témakörben található.
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -63,7 +63,7 @@ Az Azure Data Explorer-összekötő egyszerű szolgáltatáshitelesítést haszn
     - Alkalmazáskulcs
     - Bérlőazonosító
 
-2. Adja meg a szolgáltatásnév a megfelelő engedélyeket az Azure Data Explorerben. A szerepkörökkel és engedélyekkel, valamint az engedélyek kezelésével kapcsolatos részletes információkért tekintse meg az [Azure Data Explorer adatbázis-engedélyeinek kezelése](../data-explorer/manage-database-permissions.md) című témakört. Általában a következőket kell tennie:
+2. Adja meg a szolgáltatásnév a megfelelő engedélyeket az Azure Data Explorerben. A szerepkörökkel és engedélyekkel, valamint az engedélyek kezelésével kapcsolatos részletes információkért tekintse meg az [Azure Data Explorer adatbázis-engedélyeinek kezelése](/azure/data-explorer/manage-database-permissions) című témakört. Általában a következőket kell tennie:
 
     - **Forrásként**legalább az **adatbázis-megjelenítő** szerepkört adja meg az adatbázisnak
     - **Fogadóként**legalább az **adatbázis betöltési** szerepkörét adja meg az adatbázisnak

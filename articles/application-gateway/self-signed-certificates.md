@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548868"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311945"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Azure Application Gateway önaláírt tanúsítvány létrehozása egyéni legfelső szintű hitelesítésszolgáltatóval
 
-Az Application Gateway v2 termékváltozat bevezeti a megbízható főtanúsítványok használatát a háttérkiszolgálók engedélyezéséhez. Ezzel eltávolítja a v1 termékváltozatban szükséges hitelesítési tanúsítványokat. A *főtanúsítvány* egy Base-64 kódolású X.509(. CER) a háttértanúsítvány-kiszolgálóról származó gyökértanúsítvány formázása. Azonosítja a kiszolgálói tanúsítványt kiállító legfelső szintű hitelesítésszolgáltatót, majd a kiszolgálói tanúsítványt használja az SSL-kommunikációhoz.
+Az Application Gateway v2 termékváltozat bevezeti a megbízható főtanúsítványok használatát a háttérkiszolgálók engedélyezéséhez. Ezzel eltávolítja a v1 termékváltozatban szükséges hitelesítési tanúsítványokat. A *főtanúsítvány* egy Base-64 kódolású X.509(. CER) a háttértanúsítvány-kiszolgálóról származó gyökértanúsítvány formázása. Azonosítja a kiszolgálói tanúsítványt kiállító legfelső szintű hitelesítésszolgáltatót, majd a kiszolgálói tanúsítványt használja a TLS/SSL-kommunikációhoz.
 
-Az Application Gateway alapértelmezés szerint megbízik a webhely tanúsítványátban, ha azt egy jól ismert hitelesítésszolgáltató (például GoDaddy vagy DigiCert) írta alá. Ebben az esetben nem kell explicit módon feltöltenie a főtanúsítványt. További információt az [SSL-végződtetés áttekintése és az SSL és az Application Gateway végpontok között című témakörben talál.](ssl-overview.md) Ha azonban fejlesztői/tesztelési környezettel rendelkezik, és nem szeretne ellenőrzött hitelesítésszolgáltatói aláírt tanúsítványt vásárolni, létrehozhat ja saját egyéni hitelesítésszolgáltatóját, és létrehozhat vele egy önaláírt tanúsítványt. 
+Az Application Gateway alapértelmezés szerint megbízik a webhely tanúsítványátban, ha azt egy jól ismert hitelesítésszolgáltató (például GoDaddy vagy DigiCert) írta alá. Ebben az esetben nem kell explicit módon feltöltenie a főtanúsítványt. További információt a [TLS-végződtetés áttekintése és a tls és az application gateway végpontok között című témakörben talál.](ssl-overview.md) Ha azonban fejlesztői/tesztelési környezettel rendelkezik, és nem szeretne ellenőrzött hitelesítésszolgáltatói aláírt tanúsítványt vásárolni, létrehozhat ja saját egyéni hitelesítésszolgáltatóját, és létrehozhat vele egy önaláírt tanúsítványt. 
 
 > [!NOTE]
 > Az önaláírt tanúsítványok alapértelmezés szerint nem megbízhatók, és nehezen karbantarthatók. Emellett elavult kivonatoló és rejtjel-csomagokat is használhatnak, amelyek nem feltétlenül erősek. A nagyobb biztonság érdekében vásároljon egy jól ismert hitelesítésszolgáltató által aláírt tanúsítványt.
@@ -125,15 +125,15 @@ Az csr egy nyilvános kulcs, amelytanúsítvány igénylésekor kap egy hiteles�
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>A tanúsítvány konfigurálása a webkiszolgáló SSL-beállításaiban
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>A tanúsítvány konfigurálása a webkiszolgáló TLS-beállításaiban
 
-A webkiszolgálón konfigurálja az SSL-t a fabrikam.crt és a fabrikam.key fájlokkal. Ha a webkiszolgáló nem tud két fájlt bevenni, az OpenSSL parancsokkal egyetlen .pem vagy .pfx fájlba egyesítheti őket.
+A webkiszolgálón konfigurálja a TLS fájlt a fabrikam.crt és a fabrikam.key fájlokkal. Ha a webkiszolgáló nem tud két fájlt bevenni, az OpenSSL parancsokkal egyetlen .pem vagy .pfx fájlba egyesítheti őket.
 
 ### <a name="iis"></a>IIS
 
 A tanúsítványok iIS-re történő importálásáról és kiszolgálói tanúsítványként való feltöltésével kapcsolatos tudnivalókat a [Következő témakörben találja: Importált tanúsítványok telepítése webkiszolgálóra Windows Server 2003 rendszerben.](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)
 
-Az SSL-kötési utasításokról az [SSL beállítása az IIS 7-en ( SSL beállítása) témakörben](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)talál.
+A TLS-kötési utasításokat az [SSL beállítása az IIS 7-en (Útmutató az SSL beállítása) témakörben találja.](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)
 
 ### <a name="apache"></a>Apache
 
@@ -151,9 +151,9 @@ A következő konfiguráció egy példa [az Apache-ban ssl-hez konfigurált virt
 
 ### <a name="nginx"></a>NGINX
 
-A következő konfiguráció egy példa [NGINX kiszolgálóblokk](https://nginx.org/docs/http/configuring_https_servers.html) SSL-konfigurációval:
+A következő konfiguráció egy példa [NGINX kiszolgálóblokk](https://nginx.org/docs/http/configuring_https_servers.html) TLS konfigurációval:
 
-![NGINX SSL-lel](media/self-signed-certificates/nginx-ssl.png)
+![NGINX TLS-sel](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>A kiszolgáló elérése a konfiguráció ellenőrzéséhez
 
@@ -232,7 +232,7 @@ $probe = Get-AzApplicationGatewayProbeConfig `
 
 ## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server's certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -272,5 +272,5 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni az SSL\TLS alkalmazásátjáróban című témakörből: [Az SSL-végződés áttekintése és az SSL végpontok között ssl-e az Application Gateway alkalmazásátjáróval című témakörben.](ssl-overview.md)
+Ha többet szeretne tudni az SSL\TLS alkalmazásátjáróban című témakörből: [A TLS-végződés áttekintése és a végpontok között a TLS az Application Gateway alkalmazásátjáróval](ssl-overview.md)című témakörben olvashat bővebben.
 

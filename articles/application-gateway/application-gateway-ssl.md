@@ -1,28 +1,28 @@
 ---
-title: SSL-kiszervezés a PowerShell használatával – Azure Application Gateway
-description: Ez a cikk utasításokat ad egy alkalmazásátjáró SSL-kiszervezéssel az Azure klasszikus telepítési modell használatával
+title: TLS-kiszervezés a PowerShell használatával – Azure Application Gateway
+description: Ez a cikk utasításokat ad egy alkalmazásátjáró tls-kiszervezéssel az Azure klasszikus telepítési modell használatával
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: c456a0856adb0d36349b5f96ba0ab8bab3eec5c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ead16b61784b8073d50b7e0e6079805a1e48e9b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047923"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312328"
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Alkalmazásátjáró konfigurálása SSL-kiszervezéshez a klasszikus telepítési modell használatával
+# <a name="configure-an-application-gateway-for-tls-offload-by-using-the-classic-deployment-model"></a>Alkalmazásátjáró konfigurálása a TLS-kiszervezéshez a klasszikus telepítési modell használatával
 
 > [!div class="op_single_selector"]
-> * [Azure-portál](application-gateway-ssl-portal.md)
+> * [Azure Portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Azure klasszikus PowerShell](application-gateway-ssl.md)
 > * [Azure CLI](application-gateway-ssl-cli.md)
 
-Az Azure Application Gateway konfigurálható úgy, hogy leállítsa a Secure Sockets Layer (SSL) munkamenetét az átjárónál, így elkerülhetők a költséges SSL visszafejtési feladatok a webfarmon. Az SSL-alapú kiszervezés emellett leegyszerűsíti az előtér-kiszolgáló számára webalkalmazás telepítését és kezelését.
+Az Azure Application Gateway beállítható úgy, hogy megszakítsa a Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL), munkamenet az átjárón, hogy elkerülje a költséges TLS-visszafejtési feladatokat a webfarmon. A TLS-kiszervezés leegyszerűsíti a webalkalmazás előtér-kiszolgálóbeállítását és kezelését is.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -30,10 +30,10 @@ Az Azure Application Gateway konfigurálható úgy, hogy leállítsa a Secure So
 2. Ellenőrizze, hogy rendelkezik-e működő virtuális hálózattal és hozzá tartozó érvényes alhálózattal. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
 3. Az alkalmazásátjáró használatára konfigurált kiszolgálóknak létezniük kell, vagy rendelkezniük kell a virtuális hálózatban, illetve nyilvános IP-címmel vagy virtuális IP-címmel (VIP) létrehozott végpontokkal.
 
-Az SSL-kiszervezés alkalmazásátjárón történő konfigurálásához hajtsa végre a következő lépéseket a felsorolt sorrendben:
+A TLS-kiszervezés alkalmazásátjárón történő konfigurálásához hajtsa végre a következő lépéseket a felsorolt sorrendben:
 
 1. [Alkalmazásátjáró létrehozása](#create-an-application-gateway)
-2. [Ssl-tanúsítványok feltöltése](#upload-ssl-certificates)
+2. [TLS/SSL-tanúsítványok feltöltése](#upload-tlsssl-certificates)
 3. [Az átjáró konfigurálása](#configure-the-gateway)
 4. [Az átjáró konfigurációjának beállítása](#set-the-gateway-configuration)
 5. [Az átjáró indítása](#start-the-gateway)
@@ -55,7 +55,7 @@ A mintában a **Leírás**, **InstanceCount**és **GatewaySize** nem kötelező 
 Get-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="upload-ssl-certificates"></a>Ssl-tanúsítványok feltöltése
+## <a name="upload-tlsssl-certificates"></a>TLS/SSL-tanúsítványok feltöltése
 
 Adja `Add-AzureApplicationGatewaySslCertificate` meg a kiszolgálói tanúsítvány PFX formátumban történő feltöltéséhez az alkalmazásátjáróba. A tanúsítvány név egy felhasználó által választott név, és egyedinek kell lennie az alkalmazásátjárón belül. Erre a néven hivatkoznak erre a néven az alkalmazásátjáró összes tanúsítványkezelési műveletében.
 
@@ -95,12 +95,12 @@ Az értékek a következők:
 * **Háttérkiszolgáló-készlet**: A háttérkiszolgálók IP-címeinek listája. A felsorolt IP-címeknek a virtuális hálózat alhálózatához kell tartozniuk, vagy nyilvános IP- vagy VIP-címnek kell lenniük.
 * **Háttérkiszolgáló-készlet beállításai:** Minden készlet rendelkezik olyan beállításokkal, mint a port, a protokoll és a cookie-alapú affinitás. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
 * **Előtér-port**: Ez a port az alkalmazásátjárón megnyitott nyilvános port. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
-* **Figyelő:** A figyelő rendelkezik egy előtér-port, egy protokoll (Http vagy Https; ezek az értékek a kis- és nagybetűk megkülönböztetése), és az SSL tanúsítvány neve (ha egy SSL-kiszervezés konfigurálása).
+* **Figyelő:** A figyelő rendelkezik egy előtér-port, egy protokoll (Http vagy Https; ezek az értékek a kis- és nagybetűk megkülönböztetése), és a TLS/SSL tanúsítvány neve (ha egy TLS-kiszervezés konfigurálása).
 * **Szabály**: A szabály köti a figyelő és a háttér-kiszolgáló készlet, és meghatározza, hogy melyik háttér-kiszolgáló készlet irányítani a forgalmat, amikor eléri egy adott figyelő. Jelenleg csak a *basic* szabály támogatott. A *basic* szabály a ciklikus időszeleteléses terheléselosztás.
 
 **További konfigurációs megjegyzések**
 
-Az SSL-tanúsítványok konfigurálásához **Https**-re kell módosítani a **HttpListener** protokollját (megkülönböztetve a kis- és nagybetűket). Adja hozzá a **SslCert** elemet a **HttpListener** hez úgy, hogy az érték az [SSL-tanúsítványok feltöltése](#upload-ssl-certificates) szakaszban használt névre van beállítva. Az előtér-portot **443-ra**kell frissíteni.
+A TLS/SSL tanúsítványok konfigurációja esetén a **HttpListener** protokolljának https-re (kis- és nagybetűk megkülönböztetése) kell **változnia.** Adja hozzá a **SslCert** elemet a **HttpListener** hez úgy, hogy az érték a [TLS/SSL-tanúsítványok feltöltése](#upload-tlsssl-certificates) szakaszban használt névre van beállítva. Az előtér-portot **443-ra**kell frissíteni.
 
 **Cookie-alapú affinitás engedélyezése**: Konfigurálhat egy alkalmazásátjárót annak biztosítására, hogy az ügyfélmunkamenetből érkező kérés mindig ugyanarra a virtuális gépre irányuljon a webfarmban. Ehhez helyezzen be egy munkamenet-cookie-t, amely lehetővé teszi, hogy az átjáró megfelelően irányítsa a forgalmat. A cookie-alapú affinitás engedélyezéséhez a **CookieBasedAffinity** paraméter beállítása legyen **Enabled** a **BackendHttpSettings** elemen belül.
 

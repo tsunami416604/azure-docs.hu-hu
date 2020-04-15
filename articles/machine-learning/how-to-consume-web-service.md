@@ -1,7 +1,7 @@
 ---
 title: Webszolgáltatásként telepített modell hez ügyfél létrehozása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használható fel egy webszolgáltatás, amely akkor jött létre, amikor egy modell tlett üzembe az Azure Machine Learning-modell. A webszolgáltatás elérhetővé teszi a REST API-t. Hozzon létre ügyfeleket ehhez az API-hoz az Ön által választott programozási nyelv használatával.
+description: Ismerje meg, hogyan hívhatja meg a webszolgáltatás-végpontot, amely akkor jött létre, amikor egy modellt telepített ek az Azure Machine Learningből. A végpont elérhetővé teszi a REST API-t, amely et a modellel való következtetés végrehajtásához hívhat meg. Hozzon létre ügyfeleket ehhez az API-hoz az Ön által választott programozási nyelv használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/07/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: a86b8ddb59719db9bdaffea44aecd5428ad16834
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282664"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383396"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Az Azure Machine Learning-modell webszolgáltatásként történő üzembe helyezése rest API-t hoz létre. Adatokat küldhet erre az API-ra, és fogadhatja a modell által visszaadott előrejelzést. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a C#, a Go, a Java és a Python használatával.
+Az Azure Machine Learning-modell webszolgáltatásként való üzembe helyezése egy REST API-végpontot hoz létre. Adatokat küldhet erre a végpontra, és fogadhatja a modell által visszaadott előrejelzést. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a C#, a Go, a Java és a Python használatával.
 
-Hozzon létre egy webszolgáltatást, amikor egy lemezképet üzembe helyez az Azure Container Instances, az Azure Kubernetes service vagy a mező-programozható kaputömbök (FPGA). Képeket hozhat létre a regisztrált modellekből és a pontozási fájlokból. A webszolgáltatás eléréséhez használt URI-t az [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)használatával szerezheti be. Ha a hitelesítés engedélyezve van, az SDK-t is használhatja a hitelesítési kulcsok vagy tokenek lekéréséhez.
+Hozzon létre egy webszolgáltatást, amikor egy modellt telepít a helyi környezetben, az Azure Container Instances, az Azure Kubernetes-szolgáltatás vagy a mező-programozható kaputömbök (FPGA). A webszolgáltatás eléréséhez használt URI-t az [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)használatával szerezheti be. Ha a hitelesítés engedélyezve van, az SDK-t is használhatja a hitelesítési kulcsok vagy tokenek lekéréséhez.
 
 A gépi tanulási webszolgáltatást használó ügyfél létrehozásának általános munkafolyamata a következő:
 
@@ -174,6 +174,17 @@ A webszolgáltatás egy kérelemben több adathalmazt is elfogadhat. Egy válasz
 ### <a name="binary-data"></a>Bináris adatok
 
 A bináris adatok szolgáltatásban való támogatásának engedélyezéséről a [Bináris adatok](how-to-deploy-and-where.md#binary)című témakörben talál további információt.
+
+> [!TIP]
+> A bináris adatok támogatásának engedélyezése az üzembe helyezett modell által használt score.py fájlban történik. Az ügyféltől használja a programozási nyelv HTTP-funkcióját. A következő kódrészlet például egy JPG-fájl tartalmát küldi el egy webszolgáltatásnak:
+>
+> ```python
+> import requests
+> # Load image data
+> data = open('example.jpg', 'rb').read()
+> # Post raw data to scoring URI
+> res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/> octet-stream'})
+> ```
 
 ### <a name="cross-origin-resource-sharing-cors"></a>Több forrásból származó erőforrás-megosztás (CORS)
 

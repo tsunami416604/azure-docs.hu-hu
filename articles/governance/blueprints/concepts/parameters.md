@@ -1,14 +1,14 @@
 ---
 title: Paraméterek használata dinamikus tervrajzok létrehozásához
 description: Ismerje meg a statikus és dinamikus paramétereket, és hogyan használhatja őket biztonságos és dinamikus tervrajzok létrehozásához.
-ms.date: 03/12/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677585"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383618"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paramétereken keresztül
 
@@ -28,8 +28,7 @@ A REST API-n keresztül paraméterek hozhatók létre a tervtervezeten. Ezek a p
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>SecureString és secureObject paraméterek használata
 
-Míg a Resource Manager-sablon _műtermék_ támogatja a **secureString** és **secureObject** típusok paramétereit, az Azure Blueprints megköveteli, hogy mindegyik hez egy Azure Key Vault.
-Ez a biztonsági intézkedés megakadályozza a titkok tárolásának nem biztonságos gyakorlatát a blueprint-el együtt, és ösztönzi a biztonságos minták foglalkoztatását. Az Azure Blueprints támogatja ezt a biztonsági intézkedést, észlelve, hogy a beépített biztonságos paraméter egy Resource Manager sablon _műtermék._ A szolgáltatás ezután a következő Key Vault-tulajdonságok hozzárendelése során kéri az észlelt biztonságos paraméterenkénti lekérdezést:
+Míg a Resource Manager-sablon _műtermék_ támogatja a **secureString** és **secureObject** típusok paramétereit, az Azure Blueprints megköveteli, hogy mindegyik hez egy Azure Key Vault. Ez a biztonsági intézkedés megakadályozza a titkok tárolásának nem biztonságos gyakorlatát a blueprint-el együtt, és ösztönzi a biztonságos minták foglalkoztatását. Az Azure Blueprints támogatja ezt a biztonsági intézkedést, észlelve, hogy a beépített biztonságos paraméter egy Resource Manager sablon _műtermék._ A szolgáltatás ezután a következő Key Vault-tulajdonságok hozzárendelése során kéri az észlelt biztonságos paraméterenkénti lekérdezést:
 
 - Key Vault-erőforrás azonosítója
 - Key Vault titkos neve
@@ -62,11 +61,11 @@ A tervezet definíciójában definiált paraméterértéket **statikus paraméte
 
 1. A tervezethez hozzáadott, paraméterbeállításokkal rendelkező összetevők **x y paramétert jelenítenek meg** a **Paraméterek** oszlopban. Kattintson a műtermék sorra a műtermék-paraméterek szerkesztéséhez.
 
-   ![Tervrajz-paraméterek egy tervezetdefinícióban](../media/parameters/parameter-column.png)
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Tervrajz-paraméterek egy tervezetdefinícióban" border="false":::
 
 1. A **Műtermék szerkesztése** lap megjeleníti a leadott műterméknek megfelelő értékbeállításokat. A műtermék minden paraméterének van egy címe, egy értékmezője és egy jelölőnégyzetje. Állítsa be a négyzetet bejelölve, hogy **statikus paraméter**legyen. Az alábbi példában csak a _Hely_ **egy statikus paraméter,** mivel nincs bejelölve, és az _erőforráscsoport neve_ be van jelölve.
 
-   ![A tervezet összetevőjének statikus paramétereinek tervezetrajza](../media/parameters/static-parameter.png)
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="A tervezet összetevőjének statikus paramétereinek tervezetrajza" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Statikus paraméterek beállítása a REST API-ból
 
@@ -177,7 +176,7 @@ A statikus paraméter ellentéte a **dinamikus paraméter**. Ez a paraméter nin
 
 1. A **Blueprint hozzárendelése** lapon keresse meg a **Műtermék paramétereit szakaszt.** Minden legalább egy **dinamikus paraméterrel** rendelkező műtermék megjeleníti a műtermék és a konfigurációs beállításokat. Adja meg a szükséges értékeket a paraméterekhez a terv hozzárendelése előtt. Az alábbi példában a _Név_ egy **dinamikus paraméter,** amelyet meg kell határozni a tervhozzárendelés befejezéséhez.
 
-   ![A tervezet dinamikus paramétere a tervezet hozzárendelése során](../media/parameters/dynamic-parameter.png)
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="A tervezet dinamikus paramétere a tervezet hozzárendelése során" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dinamikus paraméterek beállítása a REST API-ból
 

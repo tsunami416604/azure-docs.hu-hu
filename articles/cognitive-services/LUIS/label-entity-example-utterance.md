@@ -1,21 +1,14 @@
 ---
 title: Címkeentitás példa utterance
-titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan címkézhet egy gép megtanult entitás alösszetevők egy példa utterance (kifejezés) a LUIS-portál leképezési részletes lapján.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898371"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382407"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>A machine-learned entitás címkéje egy példa utterance
 
@@ -72,7 +65,7 @@ Az entitáspaletta alternatívát kínál az előző címkézési élményhez k�
 
 ## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Egy gép által megtanult entitás alösszetevőinek címkézése
 
-Az entitások alösszetevői pontosan ugyanúgy vannak címkézve, mint a legfelső szintű entitások. Szöveg kijelölésétorként az előugró ablakban elérhető entitások a szöveg szövegének környezetéhez viszonyítva jelennek meg. Ha például egy 5 szintű, gép megtanult entitással rendelkezik, és olyan szöveget választ, amely az első és a 2. a harmadik szint összetevőinek összefüggésében. Ha a szöveget más entitásokkal szeretné címkézni, válassza a **Címke másik entitásként** lehetőséget.
+Az entitások alösszetevői pontosan ugyanúgy vannak címkézve, mint a legfelső szintű entitások. Szöveg kijelölésétorként az előugró ablakban elérhető entitások a szöveg szövegének környezetéhez viszonyítva jelennek meg. Ha például egy 5-szintű, gép megtanult entitással rendelkezik, és olyan szöveget választ ki, amely az első és a 2. szintfelirattal van megjelölve (amelyet a példa utterance alatt egy címkézett entitás név jelez), az előugró ablakban elérhető entitások a 3. Ha a szöveget más entitásokkal szeretné címkézni, válassza a **Címke másik entitásként** lehetőséget.
 
 > [!div class="mx-imgBorder"]
 > ![Entitáspaletta gépmegtanult entitáshoz](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
@@ -88,6 +81,10 @@ Az entitásszerepkörök az entitáspaletta használatával vannak címkézve.
 1. Lépjen az **Entitásfelügyelőre**, és válasszon ki egy meglévő szerepkört, vagy hozzon létre egy új szerepkört.
 1. A példa utterance (kifejezés) szöveget, felirata a szöveget az entitás szerepkör.
 
+## <a name="labeling-for-punctuation"></a>Írásjelek címkézése
+
+Az írásjeleket nem kell címkézni. [Alkalmazásbeállítások](luis-reference-application-settings.md) segítségével szabályozhatja, ha az írásjelek hatással vannak az utterance (kifejezés) előrejelzések.
+
 ## <a name="unlabel-entities"></a>Címke nélküli entitások
 
 Entitás címzésének megszüntetéséhez jelölje ki az entitás nevét a szöveg alatt, és válassza a **Címke megszüntetése**lehetőséget. Ha az entitás, amelyet le szeretne vonni a felirattal, feliratozott alösszetevőkkel rendelkezik, akkor az alösszetevőket először nem kell címkézni.
@@ -96,7 +93,7 @@ Entitás címzésének megszüntetéséhez jelölje ki az entitás nevét a szö
 
 Ha hibát követ el a címkézés során, az entitáspaletta egy egyszerű eszköz, amely lehetővé teszi a gyors szerkesztést. Ha például egy entitáscímke véletlenül egy további szót ölel fel, és már rendelkezik címkézett alösszetevőkkel, akkor az entitáspalettával ecsettel átsöpörhet a kívánt rövidebb szavakra.
 
-Példa:
+Például:
 
 1. Pizza Típus alkomponens ível "sajt pizza", amely magában foglalja egy extra helytelen szó - "a"
 

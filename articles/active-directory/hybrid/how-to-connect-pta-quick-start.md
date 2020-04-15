@@ -1,5 +1,5 @@
 ---
-title: Azure AD átmenő hitelesítés – gyorsindítás | Microsoft dokumentumok
+title: Azure AD áthaladási hitelesítés – rövid útmutató | Microsoft dokumentumok
 description: Ez a cikk ismerteti, hogyan lehet elkezdeni az Azure Active Directory (Azure AD) áthaladási hitelesítés.
 services: active-directory
 keywords: Azure AD Connect áthaladási hitelesítés, active directory telepítése, szükséges összetevők az Azure AD, Egyszeri bejelentkezés, Egyszeri bejelentkezés hez
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc45033cdf1bdaa6d4ecd6ab58cc7f90ff9c1ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331421"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312854"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory átadó hitelesítése: Gyorsindítás
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory átadó hitelesítése: Rövid útmutató
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>Az Azure AD áthaladási hitelesítésének üzembe helyezése
 
@@ -66,9 +66,14 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben.
      | **8080** (nem kötelező) | A hitelesítési ügynökök tízpercenként jelentik az állapotukat a 8080-as porton keresztül, ha a 443-as port nem érhető el. Ez az állapot jelenik meg az Azure AD portálon. A 8080-as port _nem_ használható a felhasználói bejelentkezéshez. |
      
      Ha a tűzfal a rendszertől függően kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futó Windows-szolgáltatásokból érkező forgalom számára.
-   - Ha a tűzfal vagy a proxy engedélyezi a DNS engedélyezési listáját, az ** \*engedélyezési** lista a .msappproxy.net és ** \*a .servicebus.windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure-adatközpont IP-tartományaihoz,](https://www.microsoft.com/download/details.aspx?id=41653)amelyek hetente frissülnek.
+   - Ha a tűzfal vagy a proxy engedélyezi a DNS-engedélyezési listát, adjon kapcsolatokat ** \*a .msappproxy.net** és ** \*a .servicebus.windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure-adatközpont IP-tartományaihoz,](https://www.microsoft.com/download/details.aspx?id=41653)amelyek hetente frissülnek.
    - A hitelesítési ügynököknek hozzáférésre van szükségük **login.windows.net** és **login.microsoftonline.com** a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-ek számára is.
    - A tanúsítványok érvényesítéséhez a következő URL-címek blokkolásának feloldásához: **mscrl.microsoft.com:80,** **crl.microsoft.com:80,** **ocsp.msocsp.com:80**és **\.www microsoft.com:80**. Mivel ezeket az URL-címeket más Microsoft-termékek tanúsítvány-ellenőrzésre használják, előfordulhat, hogy ezeket az URL-címeket már feloldotta.
+
+### <a name="azure-government-cloud-prerequisite"></a>Az Azure Government felhőbeli előfeltétele
+Mielőtt engedélyezné az átmenő hitelesítést az Azure AD Connect 2 lépéssel, töltse le a PTA-ügynök legújabb kiadását az Azure Portalról.  Meg kell győződnie arról, hogy az ügynök **x.x.xxx.x** vagy újabb verzió.  Az ügynök ellenőrzéséhez lásd: [Frissítési hitelesítési ügynökök](how-to-connect-pta-upgrade-preview-authentication-agents.md)
+
+Az ügynök legújabb kiadásának letöltése után folytassa az alábbi utasításokat az átmenő hitelesítés konfigurálásához az Azure AD Connecten keresztül.
 
 ## <a name="step-2-enable-the-feature"></a>2. lépés: A funkció engedélyezése
 
@@ -114,8 +119,8 @@ Ha éles környezetben kívánja üzembe helyezni az átmenő hitelesítést, to
 Több átmenő hitelesítési ügynök telepítése biztosítja a magas rendelkezésre állást, de nem determinisztikus terheléselosztást a hitelesítési ügynökök között. Annak meghatározásához, hogy hány hitelesítési ügynökök van szüksége a bérlő, fontolja meg a maximális és átlagos terhelésbejelentkezési kérelmek, amelyek várhatóan látni a bérlőn. Viszonyítási alapként egyetlen hitelesítési ügynök képes kezelni 300–400 hitelesítésmásodpercenként egy szabványos 4-magos CPU, 16 GB RAM-kiszolgáló.
 
 A hálózati forgalom becsléséhez használja a következő méretezési útmutatót:
-- Minden kérelem hasznos mérete (0,5 K + 1K * num_of_agents) bájt; azaz az Azure AD-ből a hitelesítési ügynökre vonatkozó adatok. Itt a "num_of_agents" a bérlőn regisztrált hitelesítési ügynökök számát jelzi.
-- Minden válasz hasznos mérete 1K bájt; azaz a hitelesítési ügynök től az Azure AD-ig.
+- Minden kérelem hasznos adatmérete (0.5K + 1K * num_of_agents) bájt, azaz az Azure AD-ből a hitelesítési ügynökhöz. Itt a "num_of_agents" a bérlőn regisztrált hitelesítési ügynökök számát jelzi.
+- Minden válasz 1K bájt méretű, azaz a hitelesítési ügynök és az Azure AD adatai.
 
 A legtöbb ügyfél számára összesen három hitelesítési ügynök elegendő a magas rendelkezésre álláshoz és kapacitáshoz. A bejelentkezési késés javítása érdekében telepítse a tartományvezérlők közelében lévő hitelesítési ügynököket.
 
