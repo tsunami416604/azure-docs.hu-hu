@@ -2,13 +2,13 @@
 title: 'Oktatóanyag: Minták - LUIS'
 description: Minták használatával növelheti a szándék ot és az entitás előrejelzését, miközben kevesebb példa utterances ebben az oktatóanyagban. A minta sablon kimondott szöveg példaként szolgál, amely tartalmazza az entitások és a figyelmen kívül hagyható szöveg azonosítására szolgáló szintaxist.
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.openlocfilehash: 10f0ade45dedb3413887cc4b4dea89e857c1bde7
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/14/2020
+ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545990"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380771"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Oktatóanyag: Az előrejelzések javításához adja hozzá a gyakori mintasablon-kimondott szövegformátumokat
 
@@ -198,7 +198,7 @@ A minták segítségével jelentősen megnövelheti a megfelelő szándék ponts
 Ne zárja be ezt a második böngészőablakot. Az oktatóanyag későbbi részében még használni fogja.
 
 ## <a name="template-utterances"></a>Kimondottszöveg-sablon
-Az emberi erőforrás tárgytartományának jellege miatt a szervezetekben az alkalmazotti kapcsolatokról néhány gyakori mód van. Példa:
+Az emberi erőforrás tárgytartományának jellege miatt a szervezetekben az alkalmazotti kapcsolatokról néhány gyakori mód van. Például:
 
 |Beszédmódok|
 |--|
@@ -214,7 +214,7 @@ A szándék sablonként szolgáló kimondott szövegeinek példái a következő
 |`Who does {Employee} report to[?]`|Cserélhető`{Employee}`<br>Figyelmen kívül hagyja`[?]`|
 |`Who reports to {Employee}[?]`|Cserélhető`{Employee}`<br>Figyelmen kívül hagyja`[?]`|
 
-Az `{Employee}` szintaxis jelöli az entitás helyét a kimondottszöveg-sablonban, továbbá azonosítja az entitást is. A választható szintaxis , `[?]`a szavakat vagy az írásjeleket jelöli, amely nem kötelező. A LUIS egyezteti a kimondott szöveget, kihagyva a szögletes zárójelek közötti elhagyható szövegeket.
+Az `{Employee}` szintaxis jelöli az entitás helyét a kimondottszöveg-sablonban, továbbá azonosítja az entitást is. A választható szintaxis , `[?]`a szavakat vagy az [írásjeleket](luis-reference-application-settings.md#punctuation-normalization) jelöli, amely nem kötelező. A LUIS egyezteti a kimondott szöveget, kihagyva a szögletes zárójelek közötti elhagyható szövegeket.
 
 Bár a szintaxis reguláris kifejezésnek tűnik, nem reguláris kifejezés. Csak a kapcsos (`{}`) és a szögletes (`[]`) zárójelek használata támogatott a szintaxisban. Ezek legfeljebb két szinten ágyazhatók be.
 

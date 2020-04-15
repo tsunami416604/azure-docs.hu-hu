@@ -4,12 +4,12 @@ description: Az Azure Application Insights ILogger-szolgáltató ASP.NET Core é
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f40c1c1a8ee7f20c769a62e9746da43face4cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276376"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313660"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider a .NET Core ILogger naplóihoz
 
@@ -213,7 +213,7 @@ Továbbra is használhatja a régi szolgáltatót. (Ez lesz távolítva csak egy
 - A ASP.NET Core (2.0 és újabb), az ajánlott módja annak, hogy [a naplózásszolgáltatók](https://github.com/aspnet/Announcements/issues/255) segítségével kiterjesztése módszerek ILoggingBuilder **Program.cs** is.
 
 > [!Note]
-> Az új szolgáltató a NETSTANDARD2.0-s vagy újabb verziót célzó alkalmazásokhoz érhető el. Ha az alkalmazás a régebbi .NET Core verziókat ( például .NET Core 1.1) célozza meg, vagy ha a .NET keretrendszert célozza, továbbra is használja a régi szolgáltatót.
+> Az új szolgáltató a NETSTANDARD2.0-s vagy újabb verziót célzó alkalmazásokhoz érhető el. A [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 2.14.0-s verziójától kezdve új szolgáltató is elérhető a .NET Framework NET461 vagy újabb célalkalmazások hoz. Ha az alkalmazás a régebbi .NET Core verziókat ( például .NET Core 1.1) célozza meg, vagy ha a .NET Framework kisebb, mint A NET46, továbbra is használja a régi szolgáltatót.
 
 ## <a name="console-application"></a>Konzolalkalmazás
 

@@ -1,22 +1,26 @@
 ---
-title: A TLS 1.0 és 1.1 elavulttá importálása az IoT Hub és az eszközkiépítési szolgáltatásban (DPS) | Microsoft dokumentumok
-description: A TLS 1.0 és 1.1, valamint az IoT Hub és a DPS által támogatott titkosítások e-deprecációjára vonatkozó irányelvek.
-author: rezasherafat
-ms.author: rezas
+title: A TLS 1.0 és 1.1 elavulttá importálása az IoT Hubban | Microsoft dokumentumok
+description: A TLS 1.0 és 1.1 és a támogatott titkosítások idomai az IoT Hubban történő e-deprecációjára vonatkozó irányelvek.
+author: jlian
+ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: d61ca8fe7c6f5e7cc400714d7c31a0a7e50b8a88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: a887dd4df44ba58b0e6646ffb1c10eb21edf3e69
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402790"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381298"
 ---
-# <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>A TLS 1.0 és 1.1 evesztője az IoT Hub és az Eszközkiépítési szolgáltatásban
+# <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>A TLS 1.0 és 1.1 evesztője az IoT Hubban
 
-A kategóriájában legjobb titkosítás biztosítása érdekében az IoT Hub és az Eszközlétesítési szolgáltatás (DPS) a Transport Layer Security (TLS) 1.2-re kerül, mint az IoT-eszközök és -szolgáltatások titkosítási mechanizmusa. 
+A kategóriájában legjobb titkosítás biztosítása érdekében az IoT Hub áthelyezi a Transport Layer Security (TLS) 1.2-es átviteli rétegre (TLS) az IoT-eszközök és -szolgáltatások által választott titkosítási mechanizmust. 
+
+## <a name="timeline"></a>Idővonal
+
+Az IoT Hub további értesítésig továbbra is támogatja a TLS 1.0/1.1-et. Javasoljuk azonban, hogy minden ügyfél a lehető leghamarabb térjen át a TLS 1.2-re.
 
 ## <a name="supported-ciphers"></a>Támogatott rejtjelek
 
@@ -26,7 +30,6 @@ A TLS kézfogásban használt különböző rejtjelek elérhetőségének idővo
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (2020 második felében támogatott)
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (2020 második felében támogatott)
 * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (2020 második felében támogatott)
-
 
 ## <a name="customer-feedback"></a>Vásárlói visszajelzések
 

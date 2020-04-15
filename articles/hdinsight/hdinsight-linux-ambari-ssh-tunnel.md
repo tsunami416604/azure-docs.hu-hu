@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72991353"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314163"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Az Apache Ambari webes felhasználói felületének, a JobHistory, a NameNode, az Apache Oozie és más ui-k eléréséhez SSH bújtatás használata
 
-A HDInsight-fürtök az interneten keresztül biztosítják az Apache Ambari webes felhasználói felületének elérését, de egyes funkciók hoz egy SSH-alagutat. Például az Apache Oozie szolgáltatás webes felhasználói felülete nem érhető el az interneten ssh alagút nélkül.
+A HDInsight-fürtök az interneten keresztül biztosítják az Apache Ambari webes felhasználói felületének elérését. Egyes funkciók hoz egy SSH alagút. Például az Apache Oozie webes felhasználói felület nem érhető el az interneten keresztül SSH-alagút nélkül.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Miért érdemes SSH-alagutat használni?
 
@@ -31,7 +31,7 @@ A következő webes felhasználói felülethez SSH-alagút szükséges:
 * Oozie webes felhasználói felület
 * HBase főkiszolgáló és naplók felhasználói felülete
 
-Ha parancsfájlműveletek segítségével szabja testre a fürtöt, a webszolgáltatást elérhetővé tett szolgáltatásokat vagy segédprogramokat SSH-alagútra van szükség. Ha például a Hue-t parancsfájlművelettel telepíti, ssh-alagutat kell használnia a Hue webes felhasználói felület eléréséhez.
+A webszolgáltatást elérhetőparancsfájl-műveletekkel telepített szolgáltatásokhoz SSH-alagútra lesz szükség. A Script Action alkalmazással telepített színárnyalat hoz egy SSH-alagutat a webes felhasználói felület eléréséhez.
 
 > [!IMPORTANT]  
 > Ha közvetlen hozzáféréssel rendelkezik a HDInsight-hoz egy virtuális hálózaton keresztül, nem kell SSH-alagutakat használnia. A HDInsight virtuális hálózaton keresztüli közvetlen elérésének például a [HDInsight csatlakoztatása a helyszíni hálózati dokumentumhoz](connect-on-premises-network.md) című témakörben található.
@@ -64,14 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 Ez a parancs olyan kapcsolatot hoz létre, amely a forgalmat a 9876-os helyi portra irányítja a fürthöz SSH-n keresztül. A következő lehetőségek közül választhat:
 
-* **D 9876** - A helyi kikötő, amely a forgalmat az alagúton keresztül irányítja.
-* **C** - Tömöríteni az összes adatot, mert a webes forgalom többnyire szöveg.
-* **2** - Kényszerítse az SSH-t, hogy csak a protokoll 2-es verzióját próbálja meg.
-* **q** - Csendes mód.
-* **T** - Tiltsa le a pszeudo-tty allokációt, mivel csak egy portot továbbít.
-* **n** - Megakadályozza az STDIN olvasását, mivel csak egy portot továbbít.
-* **N** - Ne hajtson végre távoli parancsot, mivel csak egy portot továbbít.
-* **f** - Fuss a háttérben.
+    |Beállítás |Leírás |
+    |---|---|
+    |D 9876|A helyi kikötő, amely az alagúton keresztül irányítja a forgalmat.|
+    |C#|Tömöríteni az összes adatot, mert a webes forgalom többnyire szöveg.|
+    |2|Kényszerítse az SSH-t, hogy csak a protokoll 2-es verzióját próbálja meg.|
+    |q|Csendes módban.|
+    |T|Tiltsa le a pszeudo-tty foglalást, mivel csak egy portot továbbít.|
+    |p|Az STDIN olvasásának megakadályozása, mivel csak egy portot továbbít.|
+    |N|Ne hajtson végre távoli parancsot, mivel csak egy portot továbbít.|
+    |nő|Fuss a háttérben.|
 
 A parancs befejezése után a helyi számítógépen a 9876-os portra küldött forgalom a fürtfőcsomópontra lesz irányítva.
 

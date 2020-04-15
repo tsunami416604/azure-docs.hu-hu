@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/03/2020
-ms.openlocfilehash: 0cadf3930008868fe223e6e1024a2d14d17d8131
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657125"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313962"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Külső metaadattárak használata az Azure HDInsightban
 
@@ -63,7 +63,7 @@ A HDInsight támogatja az egyéni metaboltokat is, amelyek éles fürtökhöz aj
 
 Hozzon létre vagy hozzon létre egy meglévő Azure SQL-adatbázist, mielőtt egy HDInsight-fürthöz egyéni Hive metatárolót állítana be.  További információ: [Rövid útmutató: Egyetlen adatbázis létrehozása az Azure SQL DB-ben című témakörben.](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)
 
-Konfigurálja az Azure SQL Database tűzfalszabályait, hogy az Azure-szolgáltatások és -erőforrások hozzáférhessenek a kiszolgálóhoz. Engedélyezze ezt a beállítást az Azure Portalon a **Kiszolgálótűzfal beállítása**lehetőséget választva. Ezután válassza **az ON** lehetőséget az **Azure-szolgáltatások és -erőforrások elérése az** Azure SQL Database-kiszolgálóvagy -adatbázis kiszolgálóeléréséhez. További információt az [IP-tűzfalszabályok létrehozása és kezelése](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) című témakörben talál.
+A fürt létrehozása során a HDInsight-szolgáltatásnak csatlakoznia kell a külső metatárhoz, és ellenőriznie kell a hitelesítő adatait. Konfigurálja az Azure SQL Database tűzfalszabályait, hogy az Azure-szolgáltatások és -erőforrások hozzáférhessenek a kiszolgálóhoz. Engedélyezze ezt a beállítást az Azure Portalon a **Kiszolgálótűzfal beállítása**lehetőséget választva. Ezután válassza a **Nem** lehetőséget a **Nyilvános hálózati hozzáférés megtagadása**csoportban, és az **Igen** lehetőséget az **Azure-szolgáltatások és -erőforrások az** Azure SQL Database-kiszolgáló vagy -adatbázis kiszolgálójához való hozzáférés engedélyezése alatt. További információt az [IP-tűzfalszabályok létrehozása és kezelése](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) című témakörben talál.
 
 ![kiszolgáló tűzfalának beállítása gomb](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 

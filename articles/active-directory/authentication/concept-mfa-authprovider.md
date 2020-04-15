@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a275e5ab394b54960a2340848152741762b28f8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269381"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309903"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Mikor kell azure-os többtényezős hitelesítési szolgáltatót használni?
+
+> [!IMPORTANT]
+> Szeptember 1-i hatállyal előfordulhat, hogy 2018. A meglévő hitelesítésszolgáltatók továbbra is használhatók és frissíthetők, de az áttelepítés már nem lehetséges. A többtényezős hitelesítés továbbra is elérhető lesz az Azure AD Premium-licencek szolgáltatásaként.
 
 A kétlépéses ellenőrzés alapértelmezés szerint elérhető az Azure Active Directory- és Office 365-felhasználókkal rendelkező globális adminisztrátorok számára. De ha ki szeretné használni a [speciális szolgáltatásokat](howto-mfa-mfasettings.md), az Azure Multi-Factor Authentication (MFA) teljes verzióját meg kell vásárolnia.
 
 Az Azure multifaktor hitelesítésszolgáltatója az Azure többtényezős hitelesítésáltal nyújtott funkciók előnyeit használja **a licenccel nem rendelkező**felhasználók számára.
-
-> [!NOTE]
-> Szeptember 1-i hatállyal előfordulhat, hogy 2018. A meglévő hitelesítésszolgáltatók továbbra is használhatók és frissíthetők, de az áttelepítés már nem lehetséges. A többtényezős hitelesítés továbbra is elérhető lesz az Azure AD Premium-licencek szolgáltatásaként.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Az Azure MFA SDK-val kapcsolatos kikötések
 

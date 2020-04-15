@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966804"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312555"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Egyéni mintavétel létrehozása az Azure Application Gateway (klasszikus) számára a PowerShell használatával
 
 > [!div class="op_single_selector"]
-> * [Azure-portál](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasszikus Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -200,7 +200,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a Secure Sockets Layer (SSL) kiszervezését szeretné konfigurálni, olvassa el [az Alkalmazásátjáró konfigurálása SSL-kiszervezéshez](application-gateway-ssl.md)című témakört.
+Ha a Transport Layer Security (TLS) korábbi nevén Secure Sockets Layer (SSL) kiszervezést szeretné konfigurálni, olvassa el az [Alkalmazásátjáró konfigurálása a TLS-kiszervezéshez](application-gateway-ssl.md)című témakört.
 
 Ha konfigurálni szeretne egy ILB-vel használni kívánt Application Gateway-t: [Application Gateway létrehozása belső terheléselosztóval (ILB)](application-gateway-ilb.md).
 

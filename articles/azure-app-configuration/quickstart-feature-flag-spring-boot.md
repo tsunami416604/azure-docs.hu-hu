@@ -4,14 +4,14 @@ description: Funkciójelzők hozzáadása a tavaszi rendszerindítási alkalmaz�
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.author: lcozzens
-ms.openlocfilehash: 489bc0234580e8df8dcc85c1d3cc0add547818b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 398005b37660cfa68936a0c8b3a3d90da8160e49
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78944341"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309073"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rövid útmutató: Szolgáltatásjelzők hozzáadása tavaszi rendszerindítási alkalmazáshoz
 
@@ -103,7 +103,7 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
 1. Nyissa meg `resources` az alkalmazás könyvtárát, és nyissa meg a alkalmazást. `bootstrap.properties`  Ha a fájl nem létezik, hozza létre. Adja hozzá a következő sort a fájlhoz.
 
     ```properties
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. A config store alkalmazáskonfigurációs portálján válasszon `Access keys` az oldalsávból. Válassza az Írásvédett billentyűk lapot.
@@ -283,7 +283,7 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
     mvn spring-boot:run
     ```
 
-1. Nyisson meg egy böngészőablakot, és lépjen egy helyileg üzemeltetett webalkalmazás alapértelmezett URL-címére: `https://localhost:8080`.
+1. Nyisson meg egy böngészőablakot, `http://localhost:8080/welcome`és nyissa meg az URL-címet: .
 
     ![A gyorsindítási alkalmazás helyi indítása](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 

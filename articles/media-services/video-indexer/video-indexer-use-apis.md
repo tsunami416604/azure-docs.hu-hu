@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 04/13/2020
 ms.author: juliako
-ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82bdb177cf4d9c400d1b13ba7178658089950557
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245849"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314338"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
@@ -142,9 +142,9 @@ var videoUrl = "VIDEO_URL"; // replace with the video URL
 // as an alternative to specifying video URL, you can upload a file.
 // remove the videoUrl parameter from the query string below and add the following lines:
   //FileStream video =File.OpenRead(Globals.VIDEOFILE_PATH);
-  //byte[] buffer =newbyte[video.Length];
+  //byte[] buffer = new byte[video.Length];
   //video.Read(buffer, 0, buffer.Length);
-  //content.Add(newByteArrayContent(buffer));
+  //content.Add(new ByteArrayContent(buffer));
 
 var uploadRequestResult = client.PostAsync($"{apiUrl}/{location}/Accounts/{accountId}/Videos?accessToken={accountAccessToken}&name=some_name&description=some_description&privacy=private&partition=some_partition&videoUrl={videoUrl}", content).Result;
 var uploadResult = uploadRequestResult.Content.ReadAsStringAsync().Result;
@@ -215,5 +215,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>További lépések
 
 - [Vizsgálja meg a kimeneti JSON részleteit](video-indexer-output-json-v2.md)
-- Tekintse meg a [mintakódot,](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/API) amely bemutatja a videó feltöltésének és indexelésének fontos aspektusát. A kódot követve jó ötlet, hogyan kell használni az API-t az alapvető funkciókat. Győződjön meg róla, hogy olvassa el a inline megjegyzéseket, és figyelje meg a legjobb gyakorlatok tanácsok.
+- Tekintse meg a [mintakódot,](https://github.com/Azure-Samples/media-services-video-indexer) amely bemutatja a videó feltöltésének és indexelésének fontos aspektusát. A kódot követve jó ötlet, hogyan kell használni az API-t az alapvető funkciókat. Győződjön meg róla, hogy olvassa el a inline megjegyzéseket, és figyelje meg a legjobb gyakorlatok tanácsok.
 

@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed7bbbf55956d655115b94c8ac46432b3e36c49b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62095982"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312632"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Alkalmazásátjáró létrehozása az Azure CLI használatával
 
-Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az alkalmazásátjáró a következő alkalmazáskézbesítési funkciókkal rendelkezik: HTTP-terheléselosztás, cookie-alapú munkamenet-affinitás és Secure Sockets Layer (SSL) kiszervezés, egyéni állapotminta és a többtelephelyes támogatás.
+Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az alkalmazásátjáró a következő alkalmazáskézbesítési funkciókkal rendelkezik: HTTP-terheléselosztás, cookie-alapú munkamenet-affinitás és Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL), kiszervezés, egyéni állapotminta-mintavételek és a többtelephelytámogatása.
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Előfeltétel: Telepítse az Azure CLI-t
 
@@ -135,7 +135,7 @@ Ha már rendelkezik a webalkalmazás definiálva a háttérkészlet az előző l
 
 Ismerje meg, hogyan hozhat létre egyéni állapotmintaképeket [az Egyéni állapotminta létrehozása című ellátogat](application-gateway-create-probe-portal.md)
 
-Ismerje meg, hogyan konfigurálhatja az SSL-kiszervezést, és hogyan veheti le a költséges SSL-visszafejtést a webkiszolgálókról az [SSL-kiszervezés konfigurálása](application-gateway-ssl-arm.md) webhelyen.
+Ismerje meg, hogyan konfigurálhatja a TLS kiszervezését, és hogyan veheti le a költséges TLS-visszafejtést a webkiszolgálókról a [TLS kiszervezés konfigurálása](application-gateway-ssl-arm.md) webhelyen.
 
 <!--Image references-->
 

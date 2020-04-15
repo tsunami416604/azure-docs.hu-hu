@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ca742483bc8977327003ee18e9716ef9c43ebfe3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d905be7c4a922a1a7eb3d1318be28da896e8a7e9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77251719"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312011"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Alkalmazásátjáró létrehozása HTTP-HTTPS átirányítással az Azure PowerShell használatával
 
-Az Azure PowerShell segítségével hozzon létre egy [alkalmazásátjáró](overview.md) t SSL-megszüntetési tanúsítvánnyal. Az útválasztási szabály segítségével átirányítják a HTTP-forgalmat az alkalmazásátjáró HTTPS-portjára. Ebben a példában egy [virtuálisgép-méretezési csoportot](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) is létrehozhat az alkalmazásátjáró háttérkészletéhez, amely két virtuálisgép-példányt tartalmaz. 
+Az Azure PowerShell segítségével létrehozhat egy [alkalmazásátjárót](overview.md) a TLS/SSL-végződési tanúsítvánnyal. Az útválasztási szabály segítségével átirányítják a HTTP-forgalmat az alkalmazásátjáró HTTPS-portjára. Ebben a példában egy [virtuálisgép-méretezési csoportot](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) is létrehozhat az alkalmazásátjáró háttérkészletéhez, amely két virtuálisgép-példányt tartalmaz. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 

@@ -1,22 +1,22 @@
 ---
-title: Új SaaS-ajánlat létrehozása a kereskedelmi piacon
-description: Új szoftver szolgáltatásként (SaaS) ajánlat létrehozása az Azure Marketplace-en, az AppSource-ban vagy a Felhőszolgáltató (CSP) programon keresztül a Microsoft Partner Center Kereskedelmi piactér portálján keresztül.
+title: Új SaaS-ajánlat létrehozása a Microsoft kereskedelmi piacszámára
+description: Új szoftver szolgáltatásként (SaaS) ajánlat létrehozása a Microsoft AppSource, az Azure Marketplace vagy a Felhőszolgáltató (CSP) programon keresztül a Microsoft Partner Center Microsoft kereskedelmi piactér programjának használatával történő listázáshoz vagy értékesítéshez.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 3f2201db4b78ba61ba15608a676a8b9f8f5e612a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286200"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314091"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
-A Szoftver szolgáltatásként (SaaS) ajánlatként való létrehozásának megkezdéséhez győződjön meg arról, hogy először [hozzon létre partnerközpont-fiókot,](./create-account.md) és nyissa meg a [Kereskedelmi piactér irányítópultját,](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)és az **Áttekintés** lapon.
+A Szoftver szolgáltatásként (SaaS) ajánlatként való létrehozásának megkezdéséhez győződjön meg arról, hogy először [hozzon létre egy Partnerközpont-fiókot,](./create-account.md) és nyissa meg a [Kereskedelmi piactér irányítópultját,](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)és az **Áttekintés** lapot választotta.
 
 ![Kereskedelmi piactér irányítópultja a Partnerközpontban](./media/new-offer-overview.png)
 
@@ -82,6 +82,7 @@ Annak érdekében, hogy a Szoftver szolgáltatásként (SaaS) a Partnercenter ke
 - A szélesebb körű követelményekért tekintse meg a [SaaS ajánlatközzétételi útmutatóját.](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS-díjszabási és számlázási lehetőségek
+
 A kiadó Azure-előfizetésében futó SaaS-megoldásokkal az ügyfelek által fizetett licencdíjak tartalmazzák annak az infrastruktúrának a költségét, amelyre a szoftver telepítve van. Az Azure-infrastruktúra használatát közvetlenül Ön, a partner kezeli és számlázja. A tényleges infrastruktúra-használati díjakat az ügyfél nem látja. A kiadóknak az Azure-infrastruktúra használati díjait a szoftverlicenc-díjszabásukba kell befizetniük. 
 
 A SaaS havi vagy éves számlázást kínál átalánydíj alapján, felhasználónként, vagy a forgalmi díjas számlázási szolgáltatás használatával a fogyasztási díjak alapján. A Microsoft kereskedelmi piactere egy ügynökségi modellen működik, amelynek során a kiadók beállítják az árakat, a Microsoft kiszámlázza az ügyfeleket, a Microsoft pedig bevételt fizet a kiadónak, miközben visszatartja az ügynökségi díjat.
@@ -109,16 +110,19 @@ Népszerűsítse vállalkozását a Microsofttal egy piactéri adatlap létrehoz
 
 - **Hogyan szeretné, hogy a potenciális ügyfelek kapcsolatba lépjenek ezzel a hirdetésajánlattal?**
 
-##### <a name="get-it-now-free"></a>Szerezd meg most (ingyenes)
+#### <a name="get-it-now-free"></a>Szerezd meg most (ingyenes)
+
 Az ügyfeleknek szóló ajánlat ingyenes listázása egy érvényes URL-cím megadásával *(a http* vagy *https-től*kezdve), ahol [az Azure Active Directory (Azure AD) használatával egykattintásos hitelesítéssel](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)kaphatnak próbaverziót.  Például:`https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>Ingyenes próbaverzió (lista)
+#### <a name="free-trial-listing"></a>Ingyenes próbaverzió (lista)
+
 Az ingyenes próbaverzióra mutató hivatkozással sorolja fel az ügyfeleknek adott ajánlatát egy érvényes URL-cím megadásával *(a http* vagy *https*kezdetével), ahol [az Azure Active Directory (Azure AD) használatával egykattintásos hitelesítéssel](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)kaphatnak próbaverziót.  Például: `https://contoso.com/trial/saas-app`. Az ingyenes próbaverziókat a szolgáltatás hozlétre, kezeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
 
 > [!NOTE]
 > A jogkivonatok az alkalmazás kap a próba-linken keresztül csak akkor használható, hogy a felhasználói adatok az Azure AD-n keresztül, hogy automatizálják a fiók létrehozása az alkalmazásban. A Microsoft-fiókok (MSA) nem támogatottak a token használatával történő hitelesítéshez.
 
-##### <a name="contact-me"></a>Kapcsolat
+#### <a name="contact-me"></a>Kapcsolat
+
 Az ügyfélkapcsolati adatok at az ügyfélkapcsolat-kezelés (CRM) rendszer összekapcsolásával gyűjtheti. Az ügyfélengedélyt kér adatai megosztásához. Ezek az ügyféladatok, valamint az ajánlat neve, azonosítója és piactéri forrás, ahol az ajánlat található, a rendszer elküldi a CRM rendszer, amely már konfigurált. A CRM konfigurálásáról további információt az [Érdeklődőkezelés csatlakoztatása](#connect-lead-management)című témakörben talál.
 
 ## <a name="example-marketplace-offer-listing"></a>Példa a piactéri hirdetésekre
@@ -127,16 +131,16 @@ Az ügyfélkapcsolati adatok at az ügyfélkapcsolat-kezelés (CRM) rendszer ös
 
 ## <a name="enable-a-test-drive"></a>Tesztvezetés engedélyezése
 
-A tesztvezetés nagyszerű módja annak, hogy bemutassa ajánlatát a potenciális ügyfeleknek azáltal, hogy lehetőséget ad nekik arra, hogy "vásárlás előtt próbáljanak ki", ami fokozott konverziót és magasan képzett érdeklődők létrehozását eredményezi. [További információ a tesztvezetésekről.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+A tesztvezetés nagyszerű módja annak, hogy bemutassa ajánlatát a potenciális ügyfeleknek azáltal, hogy lehetőséget ad nekik arra, hogy "vásárlás előtt próbáljanak ki", ami fokozott konverziót és magasan képzett érdeklődők létrehozását eredményezi. További információ: [Az ügyfelek tesztelhetik az ajánlat vezetését.](./test-drive.md)
 
 - **Tesztvezetés engedélyezése** (jelölőnégyzet)
 
 A tesztvezetés engedélyezésével a rendszer megkéri, hogy állítson be egy demonstrációs környezetet az ügyfelek számára, hogy meghatározott ideig kipróbálhatják az ajánlatot. 
 
-#### <a name="test-drive-resources"></a>Tesztmeghajtó-erőforrások
-- [A tesztvezetés műszaki gyakorlati gyakorlatai](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [A Test Drive marketingjének bevált módszerei](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Tesztvezetés – áttekintés egy pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+### <a name="test-drive-resources"></a>Tesztmeghajtó-erőforrások
+
+- [A Test Drive marketinggel kapcsolatos bevált gyakorlatai a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)- [Test Drive műszaki bevált módszerei](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [A Test Drive áttekintése (PDF letöltés)](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
 ## <a name="connect-lead-management"></a>Csatlakoztassa az érdeklődőkezelést
 
@@ -299,7 +303,7 @@ Az **Előnézet** lapon korlátozott **előnézeti közönséget** határozhat m
 
 - **Előnézeti célközönség definiálása: Soronként egyetlen AAD/MSA-fióke-mail-cím hozzáadása, valamint egy nem kötelező leírás.**
 
-A meglévő Microsoft-fiókhoz (MSA) vagy Azure Active Directory-fiókokhoz legfeljebb tíz (10) e-mail-címet adhat hozzá manuálisan, illetve csv-fájl feltöltésekor húsz (20) címet a meglévő Microsoft-fiókhoz (MSA) vagy Azure Active Directory-fiókokhoz, hogy segítsen az ajánlat érvényesítésében az élő közzététel előtt. Ezekkel a fiókokkal olyan közönséget határoz meg, amely előzetes hozzáférést kap az ajánlathoz, mielőtt közzétesszük a piactér(ek)ben. Ha az ajánlat már él, továbbra is megadhat egy előnézeti közönséget az ajánlat módosításainak vagy frissítéseinek teszteléséhez.
+Adjon hozzá legfeljebb 10 e-mail címet manuálisan, vagy 20-at CSV-fájl feltöltésekor a meglévő Microsoft-fiókhoz (MSA) vagy Azure Active Directory-fiókokhoz, hogy segítsen az ajánlat érvényesítésében az élő közzététel előtt. Ezekkel a fiókokkal olyan közönséget határoz meg, amely előzetes hozzáférést kap az ajánlathoz, mielőtt közzétesszük a piactér(ek)ben. Ha az ajánlat már él, továbbra is megadhat egy előnézeti közönséget az ajánlat módosításainak vagy frissítéseinek teszteléséhez.
 
 > [!NOTE]
 > Az előnézeti közönség eltér a privát közönségtől. Az előnézeti közönség hozzáférhet az ajánlathoz, _mielőtt_ élőben közzétesszük őket a piactereken. Dönthet úgy is, hogy létrehoz egy csomagot, és csak privát közönség számára teszi elérhetővé. A **Terv listaelemlapján** privát közönséget definiálhat az **Ez egy privát csomag** jelölőnégyzet. Ezután az Azure tenant-id-azonosítók használatával legfeljebb 20 000 ügyfélből álló privát közönséget határozhat meg.
@@ -359,12 +363,12 @@ A Kereskedelmi piacon keresztül kínálson SaaS-ajánlatokat, amelyek lehetőv�
 >[!Note]
 >Ha az ügyfél úgy dönt, hogy ingyenes próbaverzió nélkül konvertál egy csomagra, az átalakítás megtörténik, de az ingyenes próbaverzió azonnal elveszik.  Is, ha egy ügyfél elkezd fizetni egy csomag, akkor már nem kap ingyenes próbaugyanazon az előfizetést újra, akkor is, ha konvertálni egy termékváltozat, amely támogatja az ingyenes próbaverziók.
 
-Az ingyenes próbaverzió konfigurálásának lehetősége az ajánlat minden egyes csomagja számára elérhető. Egyszerűen keresse meg az egyes ajánlatárak és elérhetőségi adatokat, és jelölje be a jelölőnégyzetet, hogy egy hónapos próbaverziót engedélyezhet.
+Az ingyenes próbaverzió konfigurálásának lehetősége az ajánlat minden egyes csomagja számára elérhető. Keresse meg az egyes ajánlatdíjszabást és elérhetőséget, és jelölje be a jelölőnégyzetet, ha engedélyezni szeretné az egy hónapos próbaverziót.
 
 ![Egy hónapos ingyenes próbaverzió jelölőnégyzet](./media/free-trial-enable.png)
 
 >[!Note]
->Miután a tranzakciós ajánlat megjelent egy ingyenes próbaverzió nem lehet letiltani, hogy a terv. Győződjön meg arról, hogy ez a beállítás az első közzétételkor megfelelő, hogy ne kelljen újra létrehoznia a tervet.
+>Miután a tranzakciós ajánlat megjelent egy ingyenes próbaverzió, nem lehet letiltani, hogy a terv. Győződjön meg arról, hogy ez a beállítás az első közzétételkor megfelelő, hogy ne kelljen újra létrehoznia a tervet.
 
 Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos `isFreeTrial`információk megszerzéséhez használja az új API-tulajdonságot, amely igazként vagy hamisként lesz megjelölve. További információt a [SaaS Előfizetés beolvassa.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)
 
@@ -377,7 +381,7 @@ Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel ka
 
 Minden tervnek legalább egy piacon elérhetőnek kell lennie. Jelölje be a jelölőnégyzetet minden olyan piacon, ahol ezt a csomagot elérhetővé szeretné tenni. A súgó ban szerepel egy keresőmező és gomb az "Adóelengedési" országok kiválasztásához, amelyekben a Microsoft az Ön nevében átutalja az értékesítési és használati adót.
 
-Ha már beállította a terv árait amerikai dollárban (USD), és egy másik piaci helyszínt ad meg, az új piac árát az aktuális árfolyamok alapján számítjuk ki. A közzététel előtt mindig tekintse át az egyes piacok árát. Az árak felülvizsgálhatók az "Export árak (xlsx)" hivatkozással a módosítások mentése után.
+Ha már beállította a terv árait amerikai dollárban (USD), és egy másik piaci helyszínt ad meg, az új piac árát az aktuális árfolyamok alapján számítjuk ki. A közzététel előtt tekintse át az egyes piacok árát. Az árak felülvizsgálhatók az "Export árak (xlsx)" hivatkozással a módosítások mentése után.
 
 #### <a name="pricing"></a>Díjszabás
 
@@ -418,7 +422,7 @@ Jelölje be ezt a jelölőnégyzetet, ha a csomagot privátá szeretné tenni, �
 
 Rendelje hozzá azt a közönséget, amely nek hozzáférése lesz ehhez a privát csomaghoz. Az access bérlői azonosítók használatával van hozzárendelve, és minden hozzárendelt bérlői azonosító leírását tartalmazza. Legfeljebb 10 bérlői azonosító adható hozzá, vagy 20 000 ügyfél bérlői azonosítót adhat hozzá .csv számolótábla-fájl importálása esetén.
 
-A bérlő egy szervezet reprezentációja, amelynek azonosítója GUID azonosítóként jelenik meg (globálisan egyedi azonosító, egy 128 bites egész szám, amely et az erőforrások azonosítására használják). Az Azure AD egy dedikált példánya, amelyet a szervezetek vagy alkalmazásfejlesztők kapnak, amikor kapcsolatot hoznak létre a Microsofttal, például regisztrálnak az Azure, a Microsoft Intune vagy a Microsoft 365 szolgáltatásra. Mindegyik Azure AD-bérlő önálló, és elkülönül a többi Azure AD-bérlőtől. A bérlő ellenőrzéséhez jelentkezzen be az Azure Portalra az alkalmazás felügyeletéhez használni kívánt fiókkal. Ha rendelkezik bérlővel, automatikusan bejelentkezik, és közvetlenül a fióknév alatt láthatja a bérlő nevét. Ha a fiókja neve fölé helyezi a kurzort az Azure Portal jobb felső részén, megjelenik a neve, e-mail-címe, címtár-/bérlőazonosítója (egy GUID), valamint a tartománya. Ha a fiók több bérlővel van társítva, a fiók nevének kiválasztásával megnyithat egy menüt, ahol válthat a bérlők között. Minden bérlő saját bérlőazonosítóval rendelkezik. A szervezet bérlői azonosítóját a tartománynév URL-címének [https://www.whatismytenantid.com](https://www.whatismytenantid.com)használatával is megkeresheti a következő címen: .
+A bérlő egy szervezet reprezentációja, amelynek azonosítója GUID azonosítóként jelenik meg (globálisan egyedi azonosító, egy 128 bites egész szám, amely et az erőforrások azonosítására használják). Az Azure AD egy dedikált példánya, amelyet egy szervezet vagy alkalmazásfejlesztő kap, amikor a szervezet vagy az alkalmazás fejlesztője kapcsolatot hoz létre a Microsofttal, például amikor regisztrál az Azure-ra, a Microsoft Intune-ra vagy a Microsoft 365-re. Mindegyik Azure AD-bérlő önálló, és elkülönül a többi Azure AD-bérlőtől. A bérlő ellenőrzéséhez jelentkezzen be az Azure Portalra az alkalmazás felügyeletéhez használni kívánt fiókkal. Ha rendelkezik bérlővel, automatikusan bejelentkezik, és közvetlenül a fióknév alatt láthatja a bérlő nevét. Ha a fiókja neve fölé helyezi a kurzort az Azure Portal jobb felső részén, megjelenik a neve, e-mail-címe, címtár-/bérlőazonosítója (egy GUID), valamint a tartománya. Ha a fiók több bérlővel van társítva, a fiók nevének kiválasztásával megnyithat egy menüt, ahol válthat a bérlők között. Minden bérlő saját bérlőazonosítóval rendelkezik. A szervezet bérlői azonosítóját a tartománynév URL-címének [https://www.whatismytenantid.com](https://www.whatismytenantid.com)használatával is megkeresheti a következő címen: .
 
 Míg az SaaS-ajánlatok bérlői azonosítók használatával definiálják a privát közönséget, más ajánlattípusok azure-előfizetési azonosítókat használhatnak (amelyek GUID-ként is vannak jelölve).
 
@@ -429,19 +433,15 @@ Míg az SaaS-ajánlatok bérlői azonosítók használatával definiálják a pr
 
 ![Példa piactéri csomag hirdetése jegyzetekkel](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>Tesztvezetés
-
-[!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Felhőszolgáltató (CSP) viszonteladói közönsége
 
 Ha úgy dönt, hogy ajánlatát elérhetővé teszi a CSP-programban, a felhőszolgáltató lehetővé teszi, hogy a terméket egy csomagban kínált megoldás részeként értékesítsék ügyfeleiknek. További információ: [Cloud Solution Providers](https://go.microsoft.com/fwlink/?linkid=2111109).
 
 ## <a name="publish"></a>Közzététel
 
-Miután elvégezte az ajánlat összes szükséges szakaszát, válassza a **közzététel** lehetőséget a portál jobb felső sarkában. A közzététel és a **közzététel** lapra irányítjuk.
+Miután elvégezte az ajánlat összes szükséges szakaszát, válassza a **közzététel** lehetőséget a portál jobb felső sarkában. A bizottság átirányítja a **Véleményezés és közzététel** lapra.
 
-#### <a name="submit-offer-to-preview"></a>Ajánlat küldése előnézetbe
+### <a name="submit-offer-to-preview"></a>Ajánlat küldése előnézetbe
 
 Ha ez az első alkalom, hogy közzéteszi ezt az ajánlatot, a következőket teheti:
 

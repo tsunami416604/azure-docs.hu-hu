@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3202c2fbfedfce0b0b52be94b1e0d165a6e72546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481313"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312952"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Az alkalmazásproxy-csatlakozók és -alkalmazások magas rendelkezésre állása és terheléselosztása
 
@@ -40,16 +40,12 @@ Az összekötők a magas rendelkezésre állás elvein alapuló kapcsolataikat h
 1. Az ügyféleszközön lévő felhasználó megpróbál hozzáférni egy alkalmazásproxyn keresztül közzétett helyszíni alkalmazáshoz.
 2. A kérelem egy Azure Load Balancer-en keresztül történik, hogy meghatározza, melyik alkalmazásproxy-szolgáltatáspéldánynak kell megkérnie a kérelmet. Régiónként több tíz példány áll rendelkezésre a kérelem fogadásához. Ez a módszer segít a forgalom egyenletes elosztásában a szolgáltatáspéldányok között.
 3. A rendszer elküldi a kérelmet a [Service Bus rendszernek.](https://docs.microsoft.com/azure/service-bus-messaging/)
-4. A Service Bus ellenőrzi, hogy a kapcsolat korábban használt-e egy meglévő összekötőt az összekötőcsoportban. Ha igen, akkor újra felhasználja a kapcsolatot. Ha még nincs összekötő párosítva a kapcsolattal, akkor véletlenszerűen egy rendelkezésre álló csatlakozót választ, amelynek jelez. Az összekötő ezután felveszi a kérelmet a Service Bus.
-
+4. A Service Bus egy elérhető csatlakozóhoz jelzi a szervizbuszt. Az összekötő ezután felveszi a kérelmet a Service Bus.
    - A 2. Ennek eredményeképpen az összekötőket szinte egyenletesen használják a csoporton belül.
-
-   - A kapcsolat csak akkor jön létre, ha a kapcsolat megszakad, vagy 10 perces tétlen ség következik be. Például a kapcsolat megszakadhat, ha egy gép vagy összekötő szolgáltatás újraindul, vagy hálózati zavar van.
-
 5. Az összekötő továbbítja a kérelmet az alkalmazás háttérkiszolgálójára. Ezután az alkalmazás elküldi a választ az összekötőnek.
 6. Az összekötő befejezi a választ egy kimenő kapcsolat megnyitásával a szolgáltatáspéldányhoz, ahonnan a kérelem érkezett. Ezután ez a kapcsolat azonnal megszakad. Alapértelmezés szerint minden összekötő legfeljebb 200 egyidejű kimenő kapcsolat.
 7. A válasz ezután visszakerül az ügyfélnek a szolgáltatáspéldányból.
-8. Az azonos kapcsolatból érkező további kérések addig ismétlődnek, amíg a kapcsolat megszakad vagy 10 percig tétlen.
+8. Az azonos kapcsolatból érkező további kérések megismétlik a fenti lépéseket.
 
 Egy alkalmazás gyakran sok erőforrást, és megnyit több kapcsolatot, amikor bevan töltve. Minden kapcsolat végigmegy a fenti lépéseket, hogy lelegyen foglalva egy szolgáltatáspéldány, válasszon ki egy új elérhető összekötőt, ha a kapcsolat még nem párosított egy összekötőt.
 

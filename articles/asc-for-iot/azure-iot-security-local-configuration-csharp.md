@@ -1,5 +1,5 @@
 ---
-title: Az Azure Security Center for IoT security agent helyi konfigurációs fájljának ismertetése C# | Microsoft dokumentumok
+title: A biztonsági ügynök helyi konfigurációja (C#)
 description: További információ az Azure Security Center for IoT biztonsági szolgáltatás, a biztonsági ügynök helyi konfigurációs fájl C#.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74664193"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311661"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>A helyi konfigurációs fájl (C# ügynök) ismertetése
-
 
 Az Azure Security Center for IoT biztonsági ügynök konfigurációkat használ egy helyi konfigurációs fájlból.
 
@@ -35,18 +34,21 @@ A C# biztonsági ügynök több konfigurációs fájlt használ:
 - **Authentication.config** - Hitelesítéssel kapcsolatos konfiguráció (beleértve a hitelesítés részleteit).
 - **SecurityIotInterface.config** - IoT-vel kapcsolatos konfigurációk.
 
-A konfigurációs fájlok tartalmazzák az alapértelmezett konfigurációt. A hitelesítési konfiguráció az ügynök telepítése során történik, és az ügynök újraindításakor a konfigurációs fájl módosítása történik. 
+A konfigurációs fájlok tartalmazzák az alapértelmezett konfigurációt. A hitelesítési konfiguráció az ügynök telepítése során történik, és az ügynök újraindításakor a konfigurációs fájl módosítása történik.
 
 ## <a name="configuration-file-location"></a>Konfigurációs fájl helye
+
 Linux esetén:
+
 - Az operációs rendszer konfigurációs fájljai a rendszerben `/var/ASCIoTAgent`találhatók.
 
 Windows esetén:
-- Az operációs rendszer konfigurációs fájljai a biztonsági ügynök könyvtárában találhatók. 
+
+- Az operációs rendszer konfigurációs fájljai a biztonsági ügynök könyvtárában találhatók.
 
 ### <a name="generalconfig-configurations"></a>General.config konfigurációk
 
-| Konfiguráció neve | Lehetséges értékek | Részletek | 
+| Konfiguráció neve | Lehetséges értékek | Részletek |
 |:-----------|:---------------|:--------|
 | ügynökazonosító | GUID | Ügynök egyedi azonosítója |
 | readRemoteConfigurationTimeout | időtartam | A távoli konfiguráció nak az IoT Hubról való lehívásának időszaka. Ha az ügynök nem tudja beolvasni a konfigurációt a megadott időn belül, a művelet időtúlmarad.|
@@ -61,6 +63,7 @@ Windows esetén:
 | defaultEventPriority | "Magas", "Alacsony", "Ki" | Alapértelmezett eseményprioritás. |
 
 ### <a name="generalconfig-example"></a>Példa a General.config
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -80,7 +83,7 @@ Windows esetén:
 
 ### <a name="authenticationconfig"></a>Hitelesítés.config
 
-| Konfiguráció neve | Lehetséges értékek | Részletek | 
+| Konfiguráció neve | Lehetséges értékek | Részletek |
 |:-----------|:---------------|:--------|
 | modulNeve | sztring | A biztonsági modul identitásának neve. Ennek a névnek meg kell felelnie az eszközben lévő modul identitásnevének. |
 | deviceId | sztring | Az eszköz azonosítója (az Azure IoT Hubban regisztrált). || schedulerInterval | TimeSpan karakterlánc | Belső ütemező intervallum. |
@@ -94,6 +97,7 @@ Windows esetén:
 |
 
 ### <a name="authenticationconfig-example"></a>Például Authentication.config példa
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +112,16 @@ Windows esetén:
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
+
 ### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
-| Konfiguráció neve | Lehetséges értékek | Részletek | 
+| Konfiguráció neve | Lehetséges értékek | Részletek |
 |:-----------|:---------------|:--------|
 | transportType (transportType) | "Ampq" "Mqtt" | IoT Hub átviteli típusa. |
 |
 
 ### <a name="securityiotinterfaceconfig-example"></a>Példa a SecurityIotInterface.config
+
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -124,6 +130,7 @@ Windows esetén:
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 - Olvassa el az Azure Security Center for IoT szolgáltatás [áttekintését](overview.md)
 - További információ az Azure Security Center for IoT [Architecture szolgáltatásról](architecture.md)
 - Az Azure Security Center [ioT-szolgáltatás](quickstart-onboard-iot-hub.md) engedélyezése

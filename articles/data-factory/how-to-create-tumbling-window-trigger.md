@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f9e31b8f0fce1af8408b80afb1049dae8c8ecf1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a634c81273c26722d53610a13e362e5e453f7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73673716"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380114"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Átfedésmentes ablakban folyamatot futtató trigger létrehozása
 Ez a cikk a bukdácsoló ablakeseményindító létrehozásának, indításának és figyelésének lépéseit ismerteti. Az eseményindítókról és a támogatott típusokról a [Folyamat végrehajtása és az eseményindítók](concepts-pipeline-execution-triggers.md)című témakörben talál általános információkat.
@@ -96,8 +96,8 @@ Az alábbi táblázat magas szintű áttekintést nyújt a főbb JSON-elemekről
 |:--- |:--- |:--- |:--- |:--- |
 | **Típus** | A ravasz típusa. A típus a "TumblingWindowTrigger" rögzített érték. | Sztring | "TumblingWindowTrigger" | Igen |
 | **runtimeState** | Az eseményindító futási idejének aktuális állapota.<br/>**Megjegyzés:** Ez \<az elem olvashatóCsak>. | Sztring | "Elindítva", "Leállítva", "Letiltva" | Igen |
-| **frequency** | Olyan karakterlánc, amely azt a frekvenciaegységet (perc vagy óra) jelöli, amelynél az eseményindító ismétlődik. Ha a **kezdőidő** dátumértékei részletesebbek, mint a **gyakorisági** érték, a program figyelembe veszi a **kezdési idő** dátumokat az ablakhatárok kiszámításakor. Ha például a **gyakorisági** érték óránkénti, és a **startTime** érték 2017-09-01T10:10:10Z, az első ablak a következő (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Sztring | "perc", "óra"  | Igen |
-| **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **intervallum** 3, a **gyakoriságpedig** "óra", az eseményindító 3 óránként ismétlődik. <br/>**Megjegyzés:** A minimális ablakintervallum 15 perc. | Egész szám | Pozitív egész szám. | Igen |
+| **Frekvencia** | Olyan karakterlánc, amely azt a frekvenciaegységet (perc vagy óra) jelöli, amelynél az eseményindító ismétlődik. Ha a **kezdőidő** dátumértékei részletesebbek, mint a **gyakorisági** érték, a program figyelembe veszi a **kezdési idő** dátumokat az ablakhatárok kiszámításakor. Ha például a **gyakorisági** érték óránkénti, és a **startTime** érték 2017-09-01T10:10:10Z, az első ablak a következő (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Sztring | "perc", "óra"  | Igen |
+| **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **intervallum** 3, a **gyakoriságpedig** "óra", az eseményindító 3 óránként ismétlődik. <br/>**Megjegyzés:** A minimális ablakintervallum 5 perc. | Egész szám | Pozitív egész szám. | Igen |
 | **startTime**| Az első előfordulás, amely lehet a múltban. Az első eseményindító időköz (**startTime**, **startTime** + **interval**). | DateTime | DateTime érték. | Igen |
 | **endTime**| Az utolsó előfordulás, ami lehet a múltban. | DateTime | DateTime érték. | Igen |
 | **Késleltetés** | Az ablak adatfeldolgozásának elhalasztására szánt idő. A folyamat futtatása a várt végrehajtási idő és a **késleltetés**mértéke után indul el. A **késleltetés** határozza meg, hogy az eseményindító mennyi ideig várjon a megfelelő idő után, mielőtt új futtatást indítana. A **késleltetés** nem változtatja meg az ablak **startTime**. A 00:10:00 **késleltetési** érték például 10 perces késést jelent. | Időtartomány<br/>(óó:pp:ss)  | Olyan időfesztávolságérték, amelyben az alapértelmezett érték 00:00:00. | Nem |

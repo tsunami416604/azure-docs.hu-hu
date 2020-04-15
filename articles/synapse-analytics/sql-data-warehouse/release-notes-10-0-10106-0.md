@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 7e05458214732a1835dd73b85dad871683ef5bbe
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: acfca3f41cc8bf69572843c3f035a67e8df9e0fe
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743119"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313610"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Az Azure Synapse Analytics kiadási megjegyzések
 
@@ -40,18 +40,13 @@ Az azonosított verzióval ellenőrizze, hogy melyik kiadás lett alkalmazva az 
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
-## <a name="march-2020"></a>2020. március
-
-| A szolgáltatások fejlesztései                                         | Részletek                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) – SQL Server adateszközök (SSDT)** | Ez a kiadás a következő fejlesztéseket és javításokat tartalmazza: </br> </br> - Kijavítottuk azt a problémát, amely miatt a Materializált nézet (MV) által hivatkozott tábla módosítása alter view utasítások létrejöttét okozza, amely nem támogatott az MV-k esetében<br/><br/> - Végrehajtott egy módosítást annak biztosítására, hogy a séma összehasonlítása művelet ne sikertelen legyen, ha sorszintű biztonsági objektumok vannak jelen az adatbázisban vagy a projektben. Az SSDT jelenleg nem támogatja a sorszintű biztonsági objektumokat.  <br/><br/> - Az SQL Server Object Explorer időtúloldalának küszöbértéke megnőtt, hogy elkerülje az időtúljárdákat, amikor nagy számú objektumot sorol fel az adatbázisban<br/><br/> - Optimalizált, ahogy az SQL Server Object Explorer lekéri az adatbázis-objektumok listáját, hogy csökkentse az instabilitást és növelje a teljesítményt, amikor feltölti az objektum-kezelő |
-
-## <a name="february-2020"></a>2020. február
+## <a name="april-2020"></a>2020. április
 
 | A szolgáltatások fejlesztései | Részletek |
 | --- | --- |
 |**Adatbázis-kompatibilitási szint (előzetes verzió)**| Ezzel a kiadással a felhasználók most már beállíthatja az adatbázis kompatibilitási szintjét, hogy a Transact-SQL nyelvi és lekérdezésfeldolgozási viselkedések egy adott változata a Synapse SQL motor. További információ: [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) és [Alter Database Scoped Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
 |**Sp_describe_undeclared_parameters**| A transact-SQL kötegben láthatja a nem deklarált paraméterek metaadatait. További információ: [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
+|**[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) – SQL Server adateszközök (SSDT)** | Ez a kiadás a következő fejlesztéseket és javításokat tartalmazza az SSDT-hez: </br> </br> - Kijavítottuk azt a problémát, amely miatt a Materializált nézet (MV) által hivatkozott tábla módosítása alter view utasítások létrejöttét okozza, amely nem támogatott az MV-k esetében<br/><br/> - Végrehajtott egy módosítást annak biztosítására, hogy a séma összehasonlítása művelet ne sikertelen legyen, ha sorszintű biztonsági objektumok vannak jelen az adatbázisban vagy a projektben. Az SSDT jelenleg nem támogatja a sorszintű biztonsági objektumokat.  <br/><br/> - Az SQL Server Object Explorer időtúloldalának küszöbértéke megnőtt, hogy elkerülje az időtúljárdákat, amikor nagy számú objektumot sorol fel az adatbázisban<br/><br/> - Optimalizált, ahogy az SQL Server Object Explorer lekéri az adatbázis-objektumok listáját, hogy csökkentse az instabilitást és növelje a teljesítményt, amikor feltölti az objektum-kezelő |
 
 ## <a name="january-2020"></a>2020. január
 

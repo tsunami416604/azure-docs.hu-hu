@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 46ffe61028e40b17d31ceba34ee58b8f25c0c471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b1dfbe026b7f30344d49cc2d49881c885227019d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80501353"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314185"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -83,7 +83,7 @@ using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 
 ## <a name="recognize-speech"></a>Beszéd felismerése
 
-A [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotne) beszédsdk a beszédfelismerési SDK-osztálya néhány olyan módszert tartalmaz, amelyeket a beszédfelismeréshez használhat.
+A [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) beszédsdk a beszédfelismerési SDK-osztálya néhány olyan módszert tartalmaz, amelyeket a beszédfelismeréshez használhat.
 
 * Egylövéses felismerés (aszinkron) – Nem blokkoló (aszinkron) módban végzi a felismerést. Ez felismeri az egyetlen utterance (kifejezés). Az egyetlen utterance (kifejezés) végét a csend figyelése határozza meg a végén, vagy amíg legfeljebb 15 másodpercnyi hang feldolgozása meg nem történik.
 * Folyamatos felismerés (aszinkron) – Aszinkron módon folyamatos felismerési műveletet kezdeményez. A felhasználó regisztrálja az eseményeket, és kezeli a különböző alkalmazásállapot. Az aszinkron folyamatos felismerés leállításához [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet)hívja meg a hívást.

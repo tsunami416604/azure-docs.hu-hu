@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2c33fbed6c547897847c79cc1260d2bdc9ec6b17
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: eb285d15814f1105462c414541657d43b5371d98
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010324"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383242"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Ismerkedés az Azure Automation állapotkonfigurációjával
 
@@ -59,7 +59,7 @@ Hozzon létre egy egyszerű [DSC-konfigurációt,](/powershell/scripting/dsc/con
         }
     }
     ```
-1. Mentse a fájlt `TestConfig.ps1` néven.
+1. Mentse a fájlt **TestConfig.ps1 néven.**
 
 Ez a konfiguráció minden csomópontblokkban egy erőforrást, a [WindowsFeature erőforrást](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)hív meg, amely biztosítja a **Web-Server** szolgáltatás jelenlétét vagy hiányát.
 
@@ -105,7 +105,7 @@ A konfigurációk összeállításáról a [DSC-konfigurációk](/powershell/scr
    ![Képernyőkép a TestConfig konfigurációs lapjáról, amely kihangsúlyozza a fordításgombot](./media/automation-dsc-getting-started/CompileConfig.png)
 
 > [!NOTE]
-> Amikor lefordít egy konfigurációt az Azure Automationben, automatikusan telepíti a létrehozott csomópontkonfigurációs MÓB-ket a lekéréses kiszolgálóra.
+> Amikor lefordít egy konfigurációt az Azure Automationben, automatikusan telepíti a létrehozott csomópontkonfigurációs MOF-fájlokat a lekéréses kiszolgálóra.
 
 ## <a name="viewing-a-compilation-job"></a>Fordítási feladat megtekintése
 
@@ -123,7 +123,7 @@ A fordítás megkezdése után megtekintheti azt a Konfiguráció **lap** **Ford
 
 ## <a name="viewing-node-configurations"></a>Csomópont-konfigurációk megtekintése
 
-A fordítási feladat sikeres befejezése egy vagy több új csomópontkonfigurációt hoz létre. A csomópontkonfiguráció egy MOF-dokumentum, amely a lekéréses kiszolgálóra van telepítve, és készen áll egy vagy több csomópont lehúzására és alkalmazására. A csomópontkonfigurációk az Automation-fiók ban az **állapotkonfiguráció (DSC)** lapon tekintheti meg. A csomópontkonfiguráció nak *konfigurációs név*nevű neve van. *NodeName*.
+A fordítási feladat sikeres befejezése egy vagy több új csomópontkonfigurációt hoz létre. A csomópontkonfiguráció egy MOF-dokumentum, amely a lekéréses kiszolgálóra van telepítve, és készen áll egy vagy több csomópont lehúzására és alkalmazására. A csomópontkonfigurációk az Automation-fiók ban az **állapotkonfiguráció (DSC)** lapon tekintheti meg. A csomópontkonfigurációnak neve van `ConfigurationName.NodeName`az űrlappal.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 8d43851a6a546bd23881c4d0a72185ca03e63092
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983619"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314360"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure webalkalmazás-tűzfal az Azure Application Gateway-en
 
@@ -28,9 +28,9 @@ Az alább felsorolt ÖSSZES WAF-szolgáltatás a WAF-házirenden belül találha
 
 ![Alkalmazásátjáró WAF-diagramja](../media/ag-overview/waf1.png)
 
-Az Application Gateway alkalmazáskézbesítési vezérlőként (ADC) működik. Kínál Secure Sockets Layer (SSL) megszüntetése, cookie-alapú munkamenet affinitás, ciklikus multiplexelés terheléselosztás, tartalom-alapú útválasztás, képes a fogadó több honlapok, és a biztonsági fejlesztések.
+Az Application Gateway alkalmazáskézbesítési vezérlőként (ADC) működik. Kínál Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL), megszüntetése, cookie-alapú munkamenet affinitás, ciklikus multiplexelés terheléselosztás, tartalom-alapú routing, képes a fogadó több honlapok, és a biztonsági fejlesztések.
 
-Az Application Gateway biztonsági fejlesztései közé tartozik az SSL-házirendek kezelése és a végpontok között ssl-támogatás. Az alkalmazásbiztonságot a WAF alkalmazásátjáróba való integrációja erősíti. A kombináció megvédi a webes alkalmazásokat a gyakori biztonsági résektől. És ez biztosítja a könnyen konfigurálható központi helyen kezelni.
+Az Application Gateway biztonsági fejlesztései közé tartozik a TLS-házirend-kezelés és a végpontok között a TLS-támogatás. Az alkalmazásbiztonságot a WAF alkalmazásátjáróba való integrációja erősíti. A kombináció megvédi a webes alkalmazásokat a gyakori biztonsági résektől. És ez biztosítja a könnyen konfigurálható központi helyen kezelni.
 
 ## <a name="benefits"></a>Előnyök
 

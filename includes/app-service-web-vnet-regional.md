@@ -2,26 +2,26 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 02/27/2020
+ms.date: 04/15/2020
 ms.author: ccompy
-ms.openlocfilehash: e0db3ce7d31b838ca6f7d566083a33ee215d3399
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7f2b011b2de5af0e4ace9cbeb4399911d8e83b7f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419526"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312817"
 ---
 A regionális virtuális hálózat-integráció használata lehetővé teszi az alkalmazás számára a következők elérését:
 
-* A virtuális hálózat erőforrásai ugyanabban a régióban, amelyintegrálható.
-* A virtuális hálózatokban lévő erőforrások, amelyek ugyanabban a régióban vannak a virtuális hálózatban.
+* Erőforrások egy virtuális hálózatban ugyanabban a régióban, mint az alkalmazás.
+* A virtuális hálózatokban az alkalmazás ba integrált virtuális hálózatra társviszonyba épített erőforrások.
 * Szolgáltatásvégpont biztonságos szolgáltatásai.
 * Erőforrások az Azure ExpressRoute-kapcsolatokon keresztül.
-* A virtuális hálózat erőforrásai, amelyekhez csatlakozik.
+* A virtuális hálózatban lévő erőforrások, amelyekkel integrálva van.
 * Erőforrások társviszony-létesítési kapcsolatok között, amely magában foglalja az Azure ExpressRoute-kapcsolatokat.
-* Privát végpontok.
+* Privát végpontok – Megjegyzés: A DNS-t külön kell kezelni az Azure DNS privát zónái helyett.
 
-Ha a virtuális hálózat integrációja a virtuális hálózatok ugyanabban a régióban, használhatja a következő Azure hálózati funkciók:
+Ha a virtuális hálózat tal való integrációt használja ugyanabban a régióban, a következő Azure hálózati funkciókat használhatja:
 
 * **Hálózati biztonsági csoportok (NSG-k):** Az integrációs alhálózaton elhelyezett NSG-vel letilthatja a kimenő forgalmat. A bejövő szabályok nem vonatkoznak, mert nem használhatja a Virtuálishálózat-integráció az alkalmazás hoz való bejövő hozzáférést.
 * **Útvonaltáblák (UDRs):** Az integrációs alhálózaton elhelyezhet egy útvonaltáblát, hogy a kimenő forgalmat a kívánt helyre küldje.
@@ -36,9 +36,9 @@ Alapértelmezés szerint az alkalmazás csak az RFC1918 forgalmat irányítja a 
 1. Válassza **az OK gombot.**
 1. Kattintson a **Mentés** gombra.
 
-Ha az összes kimenő forgalmat a virtuális hálózatra irányítja, az integrációs alhálózatra alkalmazott NSG-k és UD-k hatálya alá tartozik. Amikor az összes kimenő forgalmat a virtuális hálózatba irányítja, a kimenő címek továbbra is azok a kimenő címek, amelyek szerepelnek az alkalmazás tulajdonságaiban, kivéve, ha útvonalakat biztosít a forgalom máshol történő elküldéséhez.
+Ha az összes kimenő forgalmat a virtuális hálózatra irányítja, az integrációs alhálózatra alkalmazott NSG-k és UDRs-ek függvényében van kitéve. Amikor az összes kimenő forgalmat a virtuális hálózatba irányítja, a kimenő címek továbbra is azok a kimenő címek, amelyek szerepelnek az alkalmazás tulajdonságaiban, kivéve, ha útvonalakat biztosít a forgalom máshol való küldéséhez.
 
-A virtuális hálózat integrációja az ugyanabban a régióban lévő virtuális hálózatokkal való használata bizonyos korlátozásokat alkalmaz:
+A virtuális hálózatok virtuális hálózatokkal való integrációja ugyanabban a régióban bizonyos korlátozásokat alkalmaz:
 
 * Globális társviszony-létesítési kapcsolatokon keresztül nem érhető el erőforrás.
 * A funkció csak a PremiumV2 App Service-csomagokat támogató újabb Azure App Service-méretezési egységekből érhető el.
@@ -46,14 +46,15 @@ A virtuális hálózat integrációja az ugyanabban a régióban lévő virtuál
 * A funkciót nem használhatják az App Service-környezetben lévő elkülönített csomagalkalmazások.
 * A szolgáltatás hoz egy nem használt alhálózat, amely egy /27 32-es vagy nagyobb egy Azure Resource Manager virtuális hálózat.
 * Az alkalmazásnak és a virtuális hálózatnak ugyanabban a régióban kell lennie.
-* Integrált alkalmazással nem törölhetvirtuális hálózatot. A virtuális hálózat törlése előtt távolítsa el az integrációt.
+* Nem törölheti a virtuális hálózat integrált alkalmazással. A virtuális hálózat törlése előtt távolítsa el az integrációt.
 * Csak az alkalmazással azonos előfizetésben integrálható a virtuális hálózatokkal.
 * Az App Service-csomagonként csak egy regionális virtuális hálózat-integrációt rendelkezhet. Ugyanabban az App Service-csomagban több alkalmazás is használhatja ugyanazt a virtuális hálózatot.
 * Nem módosíthatja egy alkalmazás vagy csomag előfizetését, amíg van egy olyan alkalmazás, amely regionális virtuális hálózat-integrációt használ.
+* Az alkalmazás nem tudja feloldani a címeket az Azure DNS-beli privát zónákban.
 
 Minden csomagpéldányhoz egy cím használatos. Ha az alkalmazást öt példányra méretezi, akkor öt címet használ. Mivel az alhálózat mérete nem módosítható a hozzárendelés után, olyan alhálózatot kell használnia, amely elég nagy ahhoz, hogy az alkalmazás által elérhető méreteket elférjen. A /26 64 címmel az ajánlott méret. A /26 64 címmel egy 30 példányú prémium csomag nak ad helyet. Amikor egy tervet fel- vagy leskáláz, rövid ideig kétszer annyi címre van szüksége.
 
-Ha azt szeretné, hogy egy másik csomagban lévő alkalmazásai olyan virtuális hálózatot érjenek el, amelyhez már egy másik csomagban lévő alkalmazások csatlakoznak, válasszon egy másik alhálózatot, mint amelyet a már meglévő virtuális hálózat-integráció használ.
+Ha azt szeretné, hogy egy másik csomagban lévő alkalmazások elérjék azt a virtuális hálózatot, amelyhez már egy másik csomagban lévő alkalmazások csatlakoznak, válasszon egy másik alhálózatot, mint amelyet a már meglévő virtuális hálózat-integráció használ.
 
 A funkció előzetes verzióban érhető el Linux esetén. A funkció Linux formája csak az 1918-as RFC-címekre (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) történő hívásokat támogatja.
 
@@ -63,11 +64,14 @@ Ha az alkalmazást Linuxon, a beépített rendszerképek, regionális virtuális
 
 ### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
-A regionális virtuális hálózat-integráció, a szolgáltatás végpontok. Ha szolgáltatásvégpontokat szeretne használni az alkalmazással, használja a regionális virtuális hálózat integrációját a kijelölt virtuális hálózathoz való csatlakozáshoz. Ezután konfigurálja a szolgáltatásvégpontokat az integrációhoz használt alhálózaton.
+A regionális virtuális hálózat-integráció lehetővé teszi a szolgáltatásvégpontok használatát. A szolgáltatásvégpontok az alkalmazással, a regionális virtuális hálózat integráció használatával csatlakozzon egy kijelölt virtuális hálózathoz, majd konfigurálja a szolgáltatásvégpontok a célszolgáltatás az integrációhoz használt alhálózaton. Ha ezután egy szolgáltatáshoz szeretne hozzáférni a szolgáltatás végpontjai felett:
+
+1. konfigurálja a helyi virtuális hálózat integrációját a webalkalmazással
+1. lépjen a célszolgáltatásra, és konfigurálja a szolgáltatásvégpontokat az integrációhoz használt alhálózattal
 
 ### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
-A hálózati biztonsági csoportok segítségével blokkolhatja a virtuális hálózat erőforrásaiba irányuló bejövő és kimenő forgalmat. A regionális virtuális hálózat integrációt használó alkalmazások [hálózati biztonsági csoport][VNETnsg] segítségével blokkolhatják a virtuális hálózat vagy az internet erőforrásainak kimenő forgalmát. A nyilvános címekre irányuló forgalom blokkolásához az alkalmazásbeállításWEBSITE_VNET_ROUTE_ALL 1-re kell állítva. Az NSG bejövő szabályai nem vonatkoznak az alkalmazásra, mert a virtuális hálózat integrációja csak az alkalmazásból érkező kimenő forgalmat érinti.
+A hálózati biztonsági csoportok segítségével blokkolhatja a virtuális hálózat erőforrásainak bejövő és kimenő forgalmát. A regionális virtuális hálózat integrációt használó alkalmazások [egy hálózati biztonsági csoport][VNETnsg] segítségével blokkolhatják a virtuális hálózaton vagy az interneten lévő erőforrások kimenő forgalmát. A nyilvános címekre irányuló forgalom blokkolásához az alkalmazásbeállításWEBSITE_VNET_ROUTE_ALL 1-re kell állítva. Az NSG bejövő szabályai nem vonatkoznak az alkalmazásra, mert a virtuális hálózat integrációja csak az alkalmazásból érkező kimenő forgalmat érinti.
 
 Az alkalmazás baérkező forgalom szabályozásához használja a Hozzáférési korlátozások funkciót. Az integrációs alhálózatra alkalmazott NSG érvényben van, függetlenül az integrációs alhálózatra alkalmazott útvonalaktól. Ha WEBSITE_VNET_ROUTE_ALL 1-re van állítva, és nincs olyan útvonala, amely befolyásolja a nyilvános cím forgalmát az integrációs alhálózaton, akkor a kimenő forgalom egészére továbbra is az integrációs alhálózathoz rendelt NSG-k vonatkoznak. Ha WEBSITE_VNET_ROUTE_ALL nincs beállítva, az NSG-k csak az RFC1918 forgalomra lesznek alkalmazva.
 

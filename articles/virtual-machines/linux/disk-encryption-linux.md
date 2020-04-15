@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d860b557c5c2d6b73fad53cdf84ee8b32182d1ee
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985456"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313629"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez
 
 
 Az Azure Disk Encryption for Linux virtuális gépek (VM-ek) a Linux DM-Crypt szolgáltatását használja az operációs rendszer lemezének és adatlemezeinek teljes lemeztitkosításának biztosításához. Emellett biztosítja a rövid élettartamú erőforráslemez titkosítását az EncryptFormatAll szolgáltatás használatakor.
 
-Az Azure Disk Encryption integrálva van az [Azure Key Vaultszolgáltatással,](disk-encryption-key-vault.md) így szabályozhatja és kezelheti a lemeztitkosítási kulcsokat és titkos kulcsokat. A szolgáltatás áttekintését az [Azure Lemeztitkosítás Windows-gépekhez című témakörben találja.](disk-encryption-overview.md)
+Az Azure Disk Encryption integrálva van az [Azure Key Vaultszolgáltatással,](disk-encryption-key-vault.md) így szabályozhatja és kezelheti a lemeztitkosítási kulcsokat és titkos kulcsokat. A szolgáltatás áttekintését az Azure Disk Encryption for Linux virtuális gépek című [témakörben találja.](disk-encryption-overview.md)
 
 Csak a [támogatott virtuális gépméretű és operációs rendszerű](disk-encryption-overview.md#supported-vms-and-operating-systems)virtuális gépekre alkalmazhat lemeztitkosítást. Az alábbi előfeltételeknek is meg kell felelnie:
 
