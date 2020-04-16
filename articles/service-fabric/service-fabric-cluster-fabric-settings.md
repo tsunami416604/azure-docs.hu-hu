@@ -3,12 +3,12 @@ title: Az Azure Service Fabric fürtbeállításainak módosítása
 description: Ez a cikk ismerteti a háló beállításait és a háló frissítési szabályzatok, amelyek testre szabhatók.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 3eb558c7d0745ada43696fd4189a7ac663867849
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c2e280af814a3e10ad84c5ba07fc376868fcd851
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80753983"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416243"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
 Ez a cikk ismerteti a különböző háló beállításait a Service Fabric-fürt, amely testre szabható. Az Azure-ban üzemeltetett fürtök esetében testreszabhatja a beállításokat az [Azure Portalon](https://portal.azure.com) keresztül vagy egy Azure Resource Manager-sablon használatával. További információ: [Az Azure-fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md)című témakörben talál. Önálló fürtök esetén a *fürtökConfig.json* fájl frissítésével és a fürt konfigurációs frissítésével testreszabhatja a beállításokat. További információt [az Önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md)című témakörben talál.

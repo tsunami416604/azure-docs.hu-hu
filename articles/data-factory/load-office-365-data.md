@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: cd2b530375beb3e8fa1f79e004f4f1ac7fd4d0bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443911"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415799"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Adatok betöltése az Office 365-ből az Azure Data Factory használatával
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez a cikk bemutatja, hogyan használhatja a Data Factory _betöltési adatait az Office 365-ből az Azure Blob storage-ba._ Hasonló lépéseket követhet az Azure Data Lake Gen1 vagy Gen2 adatok másolásához. Az [Office 365-összekötő általános](connector-office-365.md) adatok másolásáról szóló cikkben olvashat.
 
@@ -97,7 +99,7 @@ Ez a cikk bemutatja, hogyan használhatja a Data Factory _betöltési adatait az
 
 5. Nyissa meg a Tulajdonságok ablak **Kapcsolat lapját.** A Társított szolgáltatások szövegbeviteli mező mellett válassza az **+ Új** lehetőséget.
 
-6. Az Új csatolt szolgáltatás ablakban adja meg az "AzureStorageLinkedService" nevet, válassza a "Szolgáltatásnév" lehetőséget a hitelesítési módszerek legördülő listájából, töltse ki a szolgáltatásvégpontot, a bérlőt, az egyszerű szolgáltatásazonosítót és az egyszerű szolgáltatáskulcsot, majd válassza a Mentés a a csatolt szolgáltatás üzembe helyezéséhez.  Tekintse meg [itt,](connector-azure-blob-storage.md#service-principal-authentication) hogyan állíthatja be az egyszerű szolgáltatás hitelesítése az Azure Blob Storage.
+6. Az Új csatolt szolgáltatás ablakban adja meg az "AzureStorageLinkedService" nevet, válassza ki a "Szolgáltatásegyszerű" lehetőséget a hitelesítési módszerek legördülő listájából, töltse ki a Szolgáltatásvégpontot, a Bérlőt, az egyszerű szolgáltatásazonosítót és az egyszerű szolgáltatáskulcsot, majd válassza a Mentés lehetőséget a csatolt szolgáltatás üzembe helyezéséhez.  Tekintse meg [itt,](connector-azure-blob-storage.md#service-principal-authentication) hogyan állíthatja be az egyszerű szolgáltatás hitelesítése az Azure Blob Storage.
 
     ![Új Blob-csatolt szolgáltatás](./media/load-office-365-data/configure-blob-linked-service.png)
 

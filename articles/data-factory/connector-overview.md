@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 7b01e9936189a40fcf1400d3e6ee948032786d3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 623ee15c5071fdc7a36677481e98872b8c2bd562
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444174"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410415"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory-összekötő – áttekintés
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az Azure Data Factory a másolási, adatfolyam-, a look-up, a metaadatok bemásolása és a törlési tevékenységek révén támogatja a következő adattárakat és formátumokat. Kattintson az egyes adattáraira a támogatott képességek és a megfelelő konfigurációk részletes megismeréséhez.
 
@@ -32,6 +33,6 @@ Az Azure Data Factory a másolási, adatfolyam-, a look-up, a metaadatok bemáso
 
 - [Tevékenység másolása](copy-activity-overview.md)
 - [Leképezési adatfolyam](concepts-data-flow-overview.md)
-- [Keresstevékenységet](control-flow-lookup-activity.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
 - [Tevékenység törlése](delete-activity.md)

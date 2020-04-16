@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721506"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393181"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Feliratkozás eseményekre a portálon keresztül
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan hozhat létre Event Grid-előfizetéseket a portálo
 
 ## <a name="create-event-subscriptions"></a>Esemény-előfizetések létrehozása
 
-Ha eseményrács-előfizetést szeretne létrehozni a támogatott [eseményforrások](event-sources.md)bármelyikéhez, kövesse az alábbi lépéseket. Ez a cikk bemutatja, hogyan hozhat létre egy Event Grid-előfizetés t egy Azure-előfizetéshez.
+Ha eseményrács-előfizetést szeretne létrehozni a támogatott [eseményforrások](overview.md#event-sources)bármelyikéhez, kövesse az alábbi lépéseket. Ez a cikk bemutatja, hogyan hozhat létre egy Event Grid-előfizetés t egy Azure-előfizetéshez.
 
 1. Válassza az **Összes szolgáltatás** elemet.
 

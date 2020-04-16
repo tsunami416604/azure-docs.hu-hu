@@ -3,14 +3,14 @@ title: Alkalmazás központi telepítése felhasználó által hozzárendelt fel
 description: Ez a cikk bemutatja, hogyan telepítheti a Service Fabric-alkalmazást egy felhasználó által hozzárendelt felügyelt identitással
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610335"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415629"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Service Fabric-alkalmazás központi telepítése felhasználó által hozzárendelt felügyelt identitással (előzetes verzió)
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Service Fabric-alkalmazás központi telepítése felhasználó által hozzárendelt felügyelt identitással
 
 A Service Fabric-alkalmazás felügyelt identitással való üzembe helyezéséhez az alkalmazást az Azure Resource Manageren keresztül kell üzembe helyezni, általában egy Azure Resource Manager-sablonnal. A Service Fabric-alkalmazás Azure Resource Manageren keresztüli üzembe helyezéséről az [Alkalmazások és szolgáltatások kezelése Azure Resource Manager-erőforrásokként című](service-fabric-application-arm-resource.md)témakörben talál további információt.
 

@@ -7,14 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
-ms.openlocfilehash: 251507c5740af69bd0818391dd2e8f857338b6cf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313911"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413450"
 ---
 # <a name="data-flow-script-dfs"></a>Adatfolyam-parancsfájl (DFS)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az adatfolyam-parancsfájl (DFS) a kódolási nyelvhez hasonló mögöttes metaadat, amely a leképezési adatfolyamban szereplő átalakítások végrehajtására szolgál. Minden átalakítást olyan tulajdonságok sorozata képvisel, amelyek biztosítják a feladat megfelelő futtatásához szükséges információkat. A szkript látható és szerkeszthető az ADF-ből, ha a böngésző felhasználói felületének felső menüszalagján található "script" gombra kattint.
 

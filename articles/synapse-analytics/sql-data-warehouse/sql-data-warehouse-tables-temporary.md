@@ -10,13 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 64490bbd44066389186a59e851045b6becbe7acc
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632468"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408030"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Ideiglenes táblák a Synapse SQL-készletben
 Ez a cikk alapvető útmutatást tartalmaz az ideiglenes táblák használatával, és kiemeli a munkamenetszintű ideiglenes táblák alapelveit. 
@@ -30,8 +29,15 @@ Az ideiglenes táblák csak azon a munkameneten láthatók, amelyben létrehozt�
 
 Az ideiglenes táblák teljesítménybeli előnyöket biztosítanak, mivel eredményeik a távtároló helyett a helyi tárolóba vannak írva.
 
-## <a name="create-a-temporary-table"></a>Ideiglenes tábla létrehozása
-Az ideiglenes táblák úgy jönnek létre, hogy a táblanevét előrögzítik egy `#`.  Példa:
+Az ideiglenes táblák akkor hasznosak, ha adatokat dolgoz fel, különösen az átalakítás során, ahol a köztes eredmények átmenetiek. Az SQL Analytics szolgáltatással ideiglenes táblák léteznek a munkamenet szintjén.  Csak az on-dikált munkamenet számára láthatók. Így a rendszer automatikusan eldobja őket, amikor a munkamenet kijelentkezik. 
+
+## <a name="temporary-tables-in-sql-pool"></a>Ideiglenes táblák az SQL-készletben
+
+Az SQL-készlet erőforrás ideiglenes táblák teljesítményelőnyt kínálnak, mert az eredmények írása a helyi, nem pedig a távtároló.
+
+### <a name="create-a-temporary-table"></a>Ideiglenes tábla létrehozása
+
+Az ideiglenes táblák úgy jönnek létre, hogy a táblanevét előrögzítik egy `#`.  Például:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -89,7 +95,7 @@ GROUP BY
 ,        st.[has_filter]
 )
 ;
-``` 
+```
 
 > [!NOTE]
 > `CTAS`egy erős parancs, és a hozzáadott előnye, hogy hatékony annak használata tranzakciónapló helyet. 
@@ -226,5 +232,6 @@ Az SQL-készlet néhány korlátozást ír elő az ideiglenes táblák megvalós
 Emellett a nézetek nem hozhatók létre ideiglenes táblákon.  Ideiglenes táblák csak kivonatoló vagy ciklikus multiplexeléssel hozhatók létre.  A replikált ideiglenes táblaterjesztés nem támogatott. 
 
 ## <a name="next-steps"></a>További lépések
-A táblázatok fejlesztéséről a Táblázat áttekintése című témakörben olvashat [bővebben.](sql-data-warehouse-tables-overview.md)
+
+A táblák fejlesztéséről a [Táblák tervezése az SQL Analytics-erőforrások cikkében](sql-data-warehouse-tables-overview.md) olvashat bővebben.
 

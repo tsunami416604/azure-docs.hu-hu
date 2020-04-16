@@ -9,16 +9,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f04955fb910a6159dc09ac40a87a398e67d59d6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260812"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414118"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Séma-hozzárendelés másolási tevékenységben
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk azt ismerteti, hogy az Azure Data Factory másolási tevékenység hogyan séma- és adattípus-leképezést végez a forrásadatokról a fogadóadatokra az adatmásolás végrehajtásakor.
 
@@ -278,11 +279,7 @@ A másolási tevékenység forrástípusokat hajt végre a következő kétlép�
 1. Konvertálás natív forrástípusokról Azure Data Factory köztes adattípusokra
 2. Átalakítás az Azure Data Factory köztes adattípusaiból natív fogadótípussá
 
-A natív típus köztes típus közötti leképezés t az egyes összekötőtémakör "Adattípus-leképezés" szakaszában találhatja meg.
-
-### <a name="supported-data-types"></a>Támogatott adattípusok
-
-A Data Factory a következő köztes adattípusokat támogatja: Az alábbi értékeket adhatja meg az [adatkészletszerkezet-konfigurációban](concepts-datasets-linked-services.md#dataset-structure-or-schema) a típusadatok konfigurálásakor:
+A Másolási tevékenység a következő köztes adattípusokat támogatja: 
 
 * Bájt[]
 * Logikai

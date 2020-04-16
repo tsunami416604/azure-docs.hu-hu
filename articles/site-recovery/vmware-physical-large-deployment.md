@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256938"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409766"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Vészhelyreállítás beállítása méretezési szinten vmware virtuális gépekhez/fizikai kiszolgálókhoz
 
@@ -210,7 +210,7 @@ A feladatátvételre az alábbiak szerint készülhet fel előre:
 Nagyszabású feladatátvétel futtatásához a következőket javasoljuk:
 
 1. Hozzon létre helyreállítási terveket a számítási feladatok feladatátvételhez.
-    - Minden helyreállítási terv legfeljebb 50 gép feladatátvételét válthatja ki.
+    - Minden helyreállítási terv legfeljebb 100 gép feladatátvételét válthatja ki.
     - [További információ](recovery-plan-overview.md) a helyreállítási tervekről.
 2. Azure Automation runbook-parancsfájlok hozzáadása helyreállítási tervekhez, az Azure-beli manuális feladatok automatizálásához. A tipikus feladatok közé tartozik a terheléselosztók konfigurálása, a DNS frissítése stb. [További információ](site-recovery-runbook-automation.md)
 2. Feladatátvétel előtt készítse elő a Windows-gépeket, hogy azok megfeleljenek az Azure-környezetnek. [A feladatátvételi korlátok](#plan-azure-subscriptions-and-quotas) magasabbak a megfelelő gépek esetében. [További információ](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) a runbookokról.

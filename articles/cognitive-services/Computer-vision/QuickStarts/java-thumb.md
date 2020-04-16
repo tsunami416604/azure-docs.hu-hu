@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01dd03eb0ed17fc43e62c8f749dfa2de78e38f69
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a1354bc74d13e02e5e0982a8f5d98b01fab67b4b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974580"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404774"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>Rövid útmutató: Miniatűr létrehozása a Computer Vision REST API és a Java használatával
 
-Ebben a rövid útmutatóban a Computer Vision REST API használatával létrehoz egy képminiatűrt. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. A Computer Vision intelligens vágással intelligensen azonosítja a fontos területet, és az adott régió alapján vágási koordinátákat hoz létre.
+Ebben a rövid útmutatóban a Computer Vision REST API használatával létrehoz egy képképet. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. A Computer Vision intelligens vágással intelligensen azonosítja a fontos területet, és az adott régió alapján vágási koordinátákat hoz létre.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) mielőtt elkezdené.
 
@@ -161,7 +161,9 @@ A rendszer bináris formátumban adja vissza a sikeres választ, ahol a bináris
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy Java Swing-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Fedezze fel a Java Swing alkalmazás, amely a Computer Vision elvégzésére optikai karakterfelismerés (OCR); intelligens körülvágott bélyegképek létrehozása; és észlelheti, kategorizálhatja, címkézheti és leírhatja a képek vizuális jellemzőit.
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – Java-oktatóanyag](../Tutorials/java-tutorial.md)
+
+* A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).

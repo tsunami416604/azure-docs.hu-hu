@@ -3,12 +3,12 @@ title: – gyakori kérdések az Azure Áttelepítési kiszolgáló áttelepít�
 description: Válaszok az Azure Migrate Server Migration használatával a gépek áttelepítésével kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc78d2087dcaad2922ca6b6d9c090a8decdb6e84
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127804"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393795"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Áttelepítési kiszolgáló: Gyakori kérdések
 
@@ -77,7 +77,7 @@ Jelenleg a vCenter-kiszolgáló példányonkénti 100 virtuális gépet telepít
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Hogyan szabályozhatom a replikációt az Azure Migrate appliance ügynök nélküli VMware-replikációhoz való használatában?  
 
-A NetQosPolicy használatával szabályozást is használhat. Példa:
+A NetQosPolicy használatával szabályozást is használhat. Például:
 
 A NetQosPolicy alkalmazásban használandó AppNamePrefix a "GatewayWindowsService.exe". Létrehozhat egy szabályzatot az Azure Migrate appliance-on a replikációs forgalom szabályozására a készülékről egy ilyen házirend létrehozásával, például:
  
@@ -92,6 +92,10 @@ A gépek fizikai kiszolgálóként való áttelepítése számos esetben hasznos
 - Hyper-V vagy VMware virtuális gépek áttelepítéséhez, ha valamilyen okból nem tudja használni a normál áttelepítési folyamatot a [Hyper-V](tutorial-migrate-hyper-v.md)vagy a [VMware](server-migrate-overview.md) áttelepítéshez. Ha például nem a VMware vCenter t futtatja, és csak ESXi-állomásokat használ.
 - Privát felhőkben futó virtuális gépek áttelepítése az Azure-ba
 - Ha nyilvános felhőkben, például az Amazon Web Services (AWS) vagy a Google Cloud Platform (GCP) szolgáltatásban futó virtuális gépeket szeretne áttelepíteni az Azure-ba.
+
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>Két (vagy több) készüléket telepítettem a virtuális gépek felderítésére a vCenter-kiszolgálón. Azonban, amikor megpróbálom áttelepíteni a virtuális gépek, én csak látni a készülék egyikének megfelelő virtuális gépek.
+
+Bár ez lehet egy jó használati eset, jelenleg nem támogatja azt. Két (vagy több) készülék üzembe helyezése ugyanazon virtuális gépek felderítéséhez szolgáltatásproblémát okoz, amelyben a virtuális gépek tulajdonjoga folyamatosan válthat a két készülék között. Ez az oka annak, hogy megjelennek és eltűnnek a virtuális gépek. Ilyen esetekben a probléma megoldásához törölnie kell egy készüléket, és gyorsfrissítést kell végeznie.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Szükségem van vMware vCenter-re a VMware virtuális gépek áttelepítéséhez?
 A [VMware virtuális gépek](server-migrate-overview.md) VMware-ügynökalapú vagy ügynök nélküli áttelepítéssel történő áttelepítéséhez a vCenter Server által kezelt ESXi-állomásokat, amelyeken a virtuális gépek találhatók, kezelniük kell. Ha nem rendelkezik vCenter Server, telepítheti vmware virtuális gépek áttelepítésével őket fizikai kiszolgálók. [További információ](migrate-support-matrix-physical-migration.md).

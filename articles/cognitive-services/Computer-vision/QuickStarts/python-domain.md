@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9fa9d414b89c7229b0577faad778f6cc8b87fa99
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8aa49b044abcbd65a67a854a9da85cbc1471cda6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244818"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404433"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Rövid útmutató: Tartománymodell használata a REST és a Python használatával a Computer Visionben
 
-Ebben a rövid útmutatóban egy tartománymodellsegítségével azonosíthatja a tereptárgyakat, vagy adott esetben a távoli anamandós lemezkép hírességeit a Computer Vision REST API használatával. A [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) metódussal egy tartományspecifikus modellel ismerheti fel a képek tartalmait azonosíthat egy képen.
+Ebben a rövid útmutatóban egy tartománymodell segítségével azonosíthatja a tereptárgyakat, vagy adott esetben a távoli anamandós lemezkép hírességeit a Computer Vision REST API használatával. A [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) metódussal egy tartományspecifikus modellel ismerheti fel a képek tartalmait azonosíthat egy képen.
 
 Ezt a rövid útmutatót futtathatja lépésenként egy Jupyter-notebook segítségével a [MyBinderben](https://mybinder.org). A Binder indításához válassza az alábbi gombot:
 
@@ -203,7 +203,9 @@ Ha már nincs rá szükség, törölje mindkét minta fájljait.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy Python-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ezután fedezze fel a Python-alkalmazást, amely a Computer Vision segítségével optikai karakterfelismerést (OCR) hajt végre; intelligens körülvágott bélyegképek létrehozása; és észlelheti, kategorizálhatja, címkézheti és leírhatja a képek vizuális jellemzőit.
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – Python-oktatóanyag](../Tutorials/PythonTutorial.md)
+
+* A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).

@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3733a641bc116b57556c5ad4f5750bec69e10e9b
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251348"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393732"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid-sémák a Media Services-eseményekhez
 
 Ez a cikk a Media Services-események sémákat és tulajdonságait tartalmazza.
 
-A mintaparancsfájlok és oktatóanyagok listáját a [Media Services eseményforrásában tésszet.](../../event-grid/event-sources.md#azure-subscriptions)
+A mintaparancsfájlok és oktatóanyagok listáját a [Media Services eseményforrásában tésszet.](../../event-grid/event-schema-subscriptions.md)
 
 ## <a name="job-related-event-types"></a>Feladattal kapcsolatos eseménytípusok
 
@@ -674,4 +674,4 @@ Egy esemény legfelső szintű adatokat rendelkezik:
 
 - [Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [A Media Services eseményeinek meghatározásai](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Élő esemény hibakódjai](live-event-error-codes.md)
+- [Élő események hibakódjai](live-event-error-codes.md)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a042897ecbe35935c1832a53f523eb0597ebafc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6fd8a0c3688e5056c7941d334da8caee9f21ba82
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654250"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407267"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory tanúsítványalapú hitelesítés iOS rendszeren
 
@@ -27,7 +27,7 @@ Az iOS-eszközök tanúsítványalapú hitelesítéssel (CBA) hitelesíthetik ma
 
 A szolgáltatás konfigurálásával nincs szükség felhasználónév és jelszó kombináció megadására bizonyos levelezési és Microsoft Office-alkalmazásokban a mobileszközön.
 
-Ez a témakör az Office 365 Enterprise, Business, Education, US Government, China és Germany csomagok bérlőinek felhasználói számára iOS(Android) eszközön a CBA konfigurálásának követelményeit és támogatott forgatókönyveit tartalmazza.
+Ez a témakör ismerteti a CBA konfigurálásának követelményeit és támogatott forgatókönyveit egy iOS-eszközön az Office 365 Enterprise, Business, Education, Us Government, China és Germany csomagok bérlői számára.
 
 Ez a funkció előzetes verzióban érhető el az Office 365-beli egyesült államokbeli kormányzati védelmi és szövetségi csomagokban.
 

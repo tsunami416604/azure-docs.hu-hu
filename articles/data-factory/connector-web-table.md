@@ -11,17 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 76f0dbb48ca5e250a383e8427ce2dd0c9dd618c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930931"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410216"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Adatok másolása webtáblából az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-web-table-connector.md)
-> * [Aktuális verzió](connector-web-table.md)
+> * [Jelenlegi verzió](connector-web-table.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása egy webtábla-adatbázisból. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
@@ -36,7 +37,7 @@ A különbség a webtábla-összekötő, a [REST-összekötő](connector-rest.md
 Ez a webtábla-összekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 A webtábla-adatbázisból adatokat másolhat bármely támogatott fogadóadattárba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 

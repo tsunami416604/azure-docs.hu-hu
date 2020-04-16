@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7ac1b85ee44627990931cfc7b3a65f6f7a661b3f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5ac36e47efd2e121126cd740dba0818feb39f5fb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76165814"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402878"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rövid útmutató: Face-ügyfélkódtár pythonhoz
 
@@ -40,12 +40,9 @@ A Python Face ügyfélkönyvtárának használatával:
 
 ### <a name="create-a-face-azure-resource"></a>Face Azure-erőforrás létrehozása
 
-Az Azure Cognitive Servicest olyan Azure-erőforrások képviselik, amelyekre előfizet. Hozzon létre egy erőforrást a Face az [Azure Portalon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) a helyi gépen. További lehetőségek:
+Az Azure Cognitive Servicest olyan Azure-erőforrások képviselik, amelyekre előfizet. Hozzon létre egy erőforrást a Face az [Azure Portalon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) a helyi gépen. Ön is kap egy [próbakulcs](https://azure.microsoft.com/try/cognitive-services/#decision) érvényes hét napig ingyen. A regisztráció után elérhető lesz az [Azure webhelyén.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
 
-* Kap egy [próbakulcs](https://azure.microsoft.com/try/cognitive-services/#decision) érvényes részére hét napok részére szabad. A regisztráció után elérhető lesz az [Azure webhelyén.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
-* Az erőforrás megtekintése az [Azure Portalon](https://portal.azure.com/)
-
-Miután bekért egy kulcsot a próba-előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcshoz, amelynek neve . `FACE_SUBSCRIPTION_KEY`
+Miután lekért egy kulcsot a próba-előfizetés vagy erőforrás, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont, nevű `FACE_SUBSCRIPTION_KEY` és `FACE_ENDPOINT`, illetve.
  
 ### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
@@ -53,7 +50,7 @@ Hozzon létre&mdash;például egy új Python-parancsfájlt*quickstart-file.py.* 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
-Ezután hozzon létre változókat az erőforrás Azure-végpontjának és kulcsának. Előfordulhat, hogy módosítania kell a végpont`westus`első részét ( ) az előfizetésének megfelelően.
+Ezután hozzon létre változókat az erőforrás Azure-végpontjának és kulcsának.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_subvars)]
 
@@ -72,7 +69,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 A következő osztályok és felületek a Face Python SDK néhány főbb funkcióját kezelik.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |[FaceClient (FaceClient)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden Face funkcióhoz szüksége van rá. Az előfizetési adatokkal azonnal létrehozhatja azt, és más osztályok példányainak létrehozásához használhatja őket. |
 |[FaceOperations (FaceOperations)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Ez az osztály kezeli az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat. |

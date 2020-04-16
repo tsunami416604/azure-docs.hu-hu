@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 09569be88daa6295834e58da6b51656d0438bed4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270927"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404221"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Video- és átiratmoderálás
 
@@ -227,7 +227,7 @@ A `GenerateVTT` jelölő használatakor hangátirat is készül.
 
 ## <a name="create-a-human-review"></a>Emberi vélemény létrehozása
 
-A moderálási folyamat visszaadja a videó kulcskockáinak listáját, valamint a hangsávok átiratát. A következő lépés egy emberi moderátoroknak szóló értékelés elkészítése a Content Moderator felülvizsgálati eszközben. Ha visszatér a `Program.cs``ProcessVideo()` metódusához, láthatja a `CreateVideoReviewInContentModerator()` metódus meghívását. Ez a metódus a `videoReviewApi` osztályba tartozik, amely a `VideoReviewAPI.cs` fájlban található, és itt látható.
+A moderálási folyamat visszaadja a videó kulcskockáinak listáját, valamint a hangsávok átiratát. A következő lépés az, hogy hozzon létre egy felülvizsgálatot a Tartalommoderátor Review eszköz az emberi moderátorok. Ha visszatér a `Program.cs``ProcessVideo()` metódusához, láthatja a `CreateVideoReviewInContentModerator()` metódus meghívását. Ez a metódus a `videoReviewApi` osztályba tartozik, amely a `VideoReviewAPI.cs` fájlban található, és itt látható.
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
@@ -299,7 +299,7 @@ Első lépésként inicializálja az összes változót és gyűjteményt.
 
 ### <a name="parse-the-transcript-for-captions"></a>Az átirat elemzése feliratok kereséséhez
 
-Következő lépésként elemezze a VTT formátumú átiratot feliratok és időbélyegek kereséséhez. A felülvizsgálati eszköz ezeket a feliratokat a videoértékelési képernyő Átirat lapján jeleníti meg. Az időbélyegek a feliratok a megfelelő képkockákkal való szinkronizálását szolgálják.
+Következő lépésként elemezze a VTT formátumú átiratot feliratok és időbélyegek kereséséhez. A Véleményezés eszköz ezeket a feliratokat a videó-ellenőrzés képernyőjén, az Átirat lapon jeleníti meg. Az időbélyegek a feliratok a megfelelő képkockákkal való szinkronizálását szolgálják.
 
 [!code-csharp[TextScreen2](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=528-567)]
 

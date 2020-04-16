@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 6e2a90b8f81b9b945905ee98beb1686c54a62e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063762"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411148"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Cosmos-fiókhoz az Azure Key Vault segítségével
 
@@ -231,7 +231,7 @@ Jelenleg nem, de a tárolószintű kulcsok at is figyelembe veszik.
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Hogyan befolyásolják az ügyfél által felügyelt kulcsok a biztonsági mentést?
 
-Az Azure Cosmos DB [rendszeres és automatikus biztonsági mentést](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) készít a fiókjában tárolt adatokról. Ez a művelet biztonsági másolatot ad a titkosított adatokról. A visszaállított biztonsági másolat használatához szükség van a biztonsági mentés idején használt titkosítási kulcsra. Ez azt jelenti, hogy nem történt visszavonás, és a biztonsági mentés időpontjában használt kulcs verziója továbbra is engedélyezve lesz.
+Az Azure Cosmos DB [rendszeres és automatikus biztonsági mentést](./online-backup-and-restore.md) készít a fiókjában tárolt adatokról. Ez a művelet biztonsági másolatot ad a titkosított adatokról. A visszaállított biztonsági másolat használatához szükség van a biztonsági mentés idején használt titkosítási kulcsra. Ez azt jelenti, hogy nem történt visszavonás, és a biztonsági mentés időpontjában használt kulcs verziója továbbra is engedélyezve lesz.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Hogyan vonhatok vissza egy titkosítási kulcsot?
 

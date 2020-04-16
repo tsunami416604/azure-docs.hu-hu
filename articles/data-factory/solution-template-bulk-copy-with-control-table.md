@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6d634d9a32ae1728e1122d863ddabd94f73ee27
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439918"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414829"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Vezérlőtáblával rendelkező adatbázis ból történő tömeges másolás
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ha adatokat szeretne másolni az Oracle Server, netezza, Teradata vagy SQL Server adattárházából az Azure SQL Data Warehouse-ba, hatalmas mennyiségű adatot kell betöltenie több táblából. Az adatokat általában minden táblában particionálni kell, hogy egyetlen táblából párhuzamosan több szálat tartalmazó sorokat tölthessen be. Ez a cikk az ilyen esetekben használható sablont ismerteti.
 

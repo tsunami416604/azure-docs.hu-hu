@@ -9,13 +9,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: c6303b494c7ea3a15a38cd5fb8bf6a77b0320363
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.openlocfilehash: 4ab1515c2f724d80b7c1f3b5f7869e85da431c26
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170132"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404012"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Rövid útmutató: Objektumészlelési projekt létrehozása a Custom Vision Go SDK-val
 
@@ -285,7 +285,7 @@ Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti
 
 ## <a name="next-steps"></a>További lépések
 
-Láthatta, hogyan hajthatók végre az objektumészlelési folyamat lépései kódok használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran előfordulhat, hogy a nagyobb pontosság érdekében többször is be kell tanítania és tesztelnie kell a modellt. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
+Most már látta, hogy az objektumészlelési folyamat minden lépése hogyan végezhető el kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran többször is be kell képeznie és tesztelnie kell a modellt annak érdekében, hogy pontosabb legyen. A következő betanítási útmutató a képbesorolással foglalkozik, de alapelvei hasonlóak az objektumészleléshez.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](test-your-model.md)

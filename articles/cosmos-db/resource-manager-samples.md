@@ -1,17 +1,17 @@
 ---
 title: Azure Resource Manager-sablonok az Azure Cosmos DB-hez
 description: Azure Resource Manager-sablonok használatával hozhatja létre és konfigurálhatja az Azure Cosmos DB-t.
-author: TheovanKraay
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.author: thvankra
-ms.openlocfilehash: 7b08ca98f25b079d831033b9393effd4ee4b65e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.author: mjbrown
+ms.openlocfilehash: 1c4f1a1920d98052231eaa3a7d5c0454441c88ee
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73961853"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390882"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Resource Manager-sablonok az Azure Cosmos DB-hez
 
@@ -23,6 +23,7 @@ Az alábbi táblázatok az Azure Cosmos DB Azure Resource Manager-sablonjaira mu
 |---|---|
 |[Hozzon létre egy Azure Cosmos-fiókot, adatbázist, tárolót](manage-sql-with-resource-manager.md#create-resource) | Ez a sablon két régióban hoz létre egy SQL (Core) API-fiókot két tárolóval, megosztott adatbázis-átviteli fokkal és egy dedikált átviteli fokkal rendelkező tárolóval. Átviteli átviteli lehet frissíteni a sablon újbóli elküldésével frissített átviteli tulajdonság értéke. |
 |[Hozzon létre egy Azure Cosmos-fiókot, adatbázist és tárolót tárolt eljárással, eseményindítóval és UDF-fel](manage-sql-with-resource-manager.md#create-sproc) | Ez a sablon egy SQL (Core) API-fiókot hoz létre két régióban egy tárolt eljárás, eseményindító és UDF egy tárolóhoz. |
+|[Privát végpont létrehozása egy meglévő Azure Cosmos-fiókhoz](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  Ez a sablon létrehoz egy privát végpontot egy meglévő Azure Cosmos SQL API-fiókhoz egy meglévő virtuális hálózatban. |
 
 ## <a name="mongodb-api"></a>MongoDB API
 
@@ -42,7 +43,7 @@ Az alábbi táblázatok az Azure Cosmos DB Azure Resource Manager-sablonjaira mu
 |---| ---|
 |[Hozzon létre egy Azure Cosmos-fiókot, adatbázist, grafikont](manage-gremlin-with-resource-manager.md#create-resource) | Ez a sablon egy Gremlin API-fiókot hoz létre két régióban, ahol a többfőkiszolgálós engedélyezve van. Az Azure Cosmos-fiók két gráfok, amelyek megosztják az adatbázis-szintű átviteli. |
 
-## <a name="table-api"></a>Tábla API
+## <a name="table-api"></a>Table API
 
 |**Sablon**|**Leírás**|
 |---| ---|

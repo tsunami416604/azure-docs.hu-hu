@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: 820af2d8ddf03997eea559fbc5270e84f30a805a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2d69676121fcb26f7d2f796e6de42435447084cd
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632880"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392753"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Rövid útmutató: Fejlesztés az Azure Kubernetes szolgáltatáson (AKS) a vázlattal
 
@@ -306,7 +306,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket.
+> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Ha felügyelt identitást használt, az identitást a platform kezeli, és nem igényel eltávolítást.
 
 ## <a name="next-steps"></a>További lépések
 

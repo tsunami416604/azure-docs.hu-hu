@@ -11,15 +11,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440442"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415283"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Folyamattevékenység végrehajtása az Azure Data Factoryban
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 A Folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyamat számára egy másik folyamat meghívását.
+
+
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -256,5 +261,5 @@ Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamattevék
 
 - [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
-- [Keresstevékenységet](control-flow-lookup-activity.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)

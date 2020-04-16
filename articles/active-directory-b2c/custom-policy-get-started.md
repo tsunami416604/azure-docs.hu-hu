@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc87628d8b47435012c3d20ec2e72ac186983555
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 856bd6c2a3546a438293e89a0b576e1392d9c6a5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189327"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407296"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal az Azure Active Directory B2C-ben
 
@@ -32,7 +32,7 @@ ms.locfileid: "78189327"
 
 ## <a name="add-signing-and-encryption-keys"></a>Aláíró és titkosítási kulcsok hozzáadása
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **Könyvtár + Előfizetés** ikont a portál eszköztárán, majd válassza ki az Azure AD B2C-bérlőt tartalmazó könyvtárat.
 1. Az Azure Portalon keresse meg és válassza ki **az Azure AD B2C parancsot.**
 1. Az áttekintő lap **Házirendek**területén válassza **az Identitásélmény-keretrendszert**.
@@ -78,7 +78,7 @@ Egy alkalmazás regisztrálásához az Azure AD B2C-bérlőben használhatja az 
 
 #### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Az Azure Portalon keresse meg és válassza az **Azure Active Directoryt.**
 1. Az **Azure Active Directory** áttekintése menü **Kezelése**területén válassza **az Alkalmazásregisztrációk (Örökölt)** lehetőséget.
 1. Válassza az **Új alkalmazás regisztrálása** elemet.
@@ -116,7 +116,7 @@ Ezután tegye elérhetővé az API-t egy hatókör hozzáadásával:
 1. Az **Alkalmazásregisztrációk (Örökölt)** területen válassza az **Új alkalmazás regisztrációja**lehetőséget.
 1. A **Név** `ProxyIdentityExperienceFramework`mezőbe írja be a mezőbe.
 1. Az **Alkalmazástípus mezőben**válassza a **Natív**lehetőséget.
-1. Az **átirányításURI,adja**meg, `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`ahol `your-tenant-name` az Azure AD B2C bérlő.
+1. Az **Átirányítás**URI `myapp://auth`mezőbe írja be a .
 1. Kattintson a **Létrehozás** gombra. Létrehozása után másolja az alkalmazás azonosítóját, és mentse későbbi használatra.
 1. Válassza a **Beállítások**lehetőséget, majd a **Szükséges engedélyek**lehetőséget, majd a **Hozzáadás**lehetőséget.
 1. Válassza **az API kiválasztása**lehetőséget, keresse meg az **IdentityExperienceFramework**elemet, és kattintson **a Kijelölés gombra.**
@@ -129,7 +129,7 @@ Ezután tegye elérhetővé az API-t egy hatókör hozzáadásával:
 1. A **Név** `ProxyIdentityExperienceFramework`mezőbe írja be a mezőbe.
 1. A **Támogatott fióktípusok csoportban**válassza **a Csak ebben a szervezeti címtárban a Fiókok**lehetőséget.
 1. Az **Átirányítás URI csoportban**válassza a **Nyilvános ügyfél/natív (mobil & asztali)** lehetőséget a legördülő menüben.
-1. Az **átirányításURI,adja**meg, `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`ahol `your-tenant-name` az Azure AD B2C bérlő.
+1. Az **Átirányítás**URI `myapp://auth`mezőbe írja be a .
 1. **Az Engedélyek csoportban**jelölje be a Rendszergazda hozzájárulása a *nyílt és offline_access engedélyekhez* jelölőnégyzetet.
 1. Kattintson a **Register** (Regisztrálás) elemre.
 1. Rögzítse az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.

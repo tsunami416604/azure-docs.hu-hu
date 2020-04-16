@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – Java Spring alkalmazás előkészítése az Azure Spring Cloudban való üzembe helyezéshez
-description: Ebben az oktatóanyagban előkészíti a Java Spring alkalmazást az Azure Spring Cloud üzembe helyezéséhez.
+title: Útmutató – Java Spring-alkalmazás előkészítése az Azure Spring Cloudban való üzembe helyezéshez
+description: Ebben a témakörben előkészíti a Java Spring alkalmazást az Azure Spring Cloud üzembe helyezéséhez.
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 49ebfec131c8b9fa7b8535163c03eb7cb692790d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 025dbc56fb46ef5b6225d35564b8e4ac3c82e6e3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78200022"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414459"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring alkalmazás előkészítése az Azure Spring Cloudban való telepítéshez
 
-Ez a rövid útmutató bemutatja, hogyan készíthet elő egy meglévő Java Spring alkalmazást az Azure Spring Cloud üzembe helyezéséhez. Ha megfelelően van konfigurálva, az Azure Spring Cloud robusztus szolgáltatásokat nyújt a Java Spring Cloud-alkalmazás figyeléséhez, méretezéséhez és frissítéséhez.
+Ez a témakör bemutatja, hogyan készíthet elő egy meglévő Java Spring alkalmazást az Azure Spring Cloud üzembe helyezéséhez. Ha megfelelően van konfigurálva, az Azure Spring Cloud robusztus szolgáltatásokat nyújt a Java Spring Cloud-alkalmazás figyeléséhez, méretezéséhez és frissítéséhez.
 
 További példák bemutatják, hogyan telepíthet egy alkalmazást az Azure Spring Cloud szolgáltatásba a POM-fájl konfigurálásakor. 
 * [Alkalmazás indítása az Azure Portalon](spring-cloud-quickstart-launch-app-portal.md)
@@ -225,7 +225,7 @@ A következő `spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` és f�
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja a Java Spring alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A Config Server-példány beállításáról a következő oktatóanyagról tudhat meg.
+Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A Config Server-példány beállításáról az alábbi cikkben olvashat.
 
 > [!div class="nextstepaction"]
 > [További információ a Config Server-példány beállításáról](spring-cloud-tutorial-config-server.md)

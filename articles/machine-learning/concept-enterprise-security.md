@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 9f3a1c3455aadfbd243cdc6ab2920849c8558841
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756566"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414630"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Nagyvállalati biztonság az Azure Machine Learning számára
 
@@ -243,9 +243,9 @@ Az Azure Databricks azure Machine Learning-folyamatokban is használható. Alap�
 
 ### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
 
-A TLS használatával biztonságos belső kommunikáció azure Machine Learning mikroszolgáltatások és a pontozási végpont külső hívások biztonságossá tétele. Minden Azure Storage-hozzáférés is történik egy biztonságos csatornán keresztül.
+Az Azure Machine Learning a TLS segítségével biztosítja a különböző Azure Machine Learning mikroszolgáltatások közötti belső kommunikációt. Minden Azure Storage-hozzáférés is történik egy biztonságos csatornán keresztül.
 
-További információ: [A TLS használata webszolgáltatás védelméhez az Azure Machine Learningen keresztül.](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)
+A pontozási végpont külső hívásainak biztonságossá tétele azure Machine Learning tls-t használ. További információ: [A TLS használata webszolgáltatás védelméhez az Azure Machine Learningen keresztül.](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)
 
 ### <a name="using-azure-key-vault"></a>Az Azure Key Vault használata
 

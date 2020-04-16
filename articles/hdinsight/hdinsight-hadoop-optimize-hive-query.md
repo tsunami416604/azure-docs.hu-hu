@@ -5,27 +5,27 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272330"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390297"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive-lekérdezések optimalizálása az Azure HDInsightban
 
-Az Azure HDInsightban számos fürttípus és -technológia futtatható Apache Hive-lekérdezések. A HDInsight-fürt létrehozásakor válassza ki a megfelelő fürttípust a számítási feladatok igényeinek megfelelő teljesítmény optimalizálásához.
+Az Azure HDInsightban számos fürttípus és -technológia futtatható Apache Hive-lekérdezések. Válassza ki a megfelelő fürttípust a számítási feladatok igényeinek megfelelő teljesítmény optimalizálásához.
 
-Válassza például **az Interaktív lekérdezés** fürttípusát az ad hoc, interaktív lekérdezésekre való optimalizáláshoz. Válassza az Apache **Hadoop** fürttípusát a kötegelt folyamatként használt Hive-lekérdezésekhez való optimalizáláshoz. **A Spark** és **a HBase** fürttípusok is futtathatnak Hive-lekérdezéseket. A Hive-lekérdezések különböző HDInsight-fürttípusokon való futtatásáról a [Mi az Apache Hive és a HiveQL az Azure HDInsight-on című témakörben.](hadoop/hdinsight-use-hive.md)
+Válassza például **az Interaktív lekérdezés** `ad hoc`fürttípusát az optimalizáláshoz az interaktív lekérdezésekre. Válassza az Apache **Hadoop** fürttípusát a kötegelt folyamatként használt Hive-lekérdezésekhez való optimalizáláshoz. **A Spark** és **a HBase** fürttípusok is futtathatnak Hive-lekérdezéseket. A Hive-lekérdezések különböző HDInsight-fürttípusokon való futtatásáról a [Mi az Apache Hive és a HiveQL az Azure HDInsight-on című témakörben.](hadoop/hdinsight-use-hive.md)
 
 A Hadoop-fürttípusú HDInsight-fürtök alapértelmezés szerint nincsenek teljesítményre optimalizálva. Ez a cikk a Hive teljesítményoptimalizálási módszereit ismerteti, amelyeket a lekérdezésekre alkalmazhat.
 
 ## <a name="scale-out-worker-nodes"></a>Munkavégző csomópontok horizontális felskálázása
 
-A HDInsight-fürt munkavégző csomópontjaiszámának növelése lehetővé teszi, hogy a munka több leképezőt és szűkítőt használhat párhuzamosan. A HDInsight ban kétféleképpen növelheti a horizontális felskálázást:
+A HDInsight-fürt munkavégző csomópontjaiszámának növelése lehetővé teszi, hogy a munka több leképezőt és szűkítőt használjon párhuzamosan. A HDInsight ban kétféleképpen növelheti a horizontális felskálázást:
 
 * Fürt létrehozásakor megadhatja a feldolgozócsomópontok számát az Azure Portalon, az Azure PowerShellben vagy a parancssori felületen.  További információ: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md). Az alábbi képernyőképen látható a munkavégző csomópont konfigurációja az Azure Portalon:
   
@@ -45,10 +45,10 @@ A HDInsight méretezéséről a [HDInsight-fürtök méretezése című](hdinsig
 
 Tez gyorsabb, mert:
 
-* **Irányított aciklikus gráf (DAG) végrehajtása egyetlen feladatként a MapReduce motorban.** A DAG megköveteli, hogy minden egyes leképezőkészletet egy szűkítőkészlet kövessen. Ez azt eredményezi, hogy minden Hive-lekérdezéshez több MapReduce-feladat kerül kiforgatva. Tez nem rendelkezik ilyen korlátozás, és képes feldolgozni összetett DAG, mint egy feladat, így minimalizálva feladat indítási terhelést.
+* **Irányított aciklikus gráf (DAG) végrehajtása egyetlen feladatként a MapReduce motorban.** A DAG megköveteli, hogy minden egyes leképezőkészletet egy szűkítőkészlet kövessen. Ez a követelmény hatására több MapReduce feladatok ki vannak kapcsolva minden Hive-lekérdezés. Tez nem rendelkezik ilyen korlátozás, és képes feldolgozni összetett DAG, mint egy feladat minimalizálja a feladat indítási terhelést.
 * **Elkerüli a felesleges írásokat**. Több feladat ugyanazt a Hive-lekérdezést a MapReduce motorban dolgozza fel. Az egyes MapReduce-feladat kimenete a hdfs-be íródik a köztes adatokhoz. Mivel a Tez minimálisra csökkenti az egyes Hive-lekérdezések feladatainak számát, képes elkerülni a szükségtelen írásokat.
 * **Minimálisra csökkenti az indítási késleltetést.** A Tez jobban tudja minimalizálni az indítási késleltetést azáltal, hogy csökkenti a kezdéshez szükséges leképezők számát, és javítja az optimalizálást.
-* **Újrafelhasználása konténerek**. Amikor csak lehetséges, a Tez újra fel tudja használni a tárolókat annak érdekében, hogy a tárolók indítása miatti késés csökkenjen.
+* **Újrafelhasználása konténerek**. Amikor csak lehetséges, a Tez újra felhasználja a tárolókat annak érdekében, hogy a tárolók indításának késése csökkenjen.
 * **Folyamatos optimalizálási technikák**. Hagyományosan optimalizálás történt fordítási fázisban. Azonban további információ áll rendelkezésre a bemenetek, amelyek lehetővé teszik a jobb optimalizálás futásidőben. A Tez folyamatos optimalizálási technikákat használ, amelyek lehetővé teszik a terv további optimalizálását a futásidejű fázisban.
 
 Ezekről a fogalmakról további információt az [Apache TEZ .](https://tez.apache.org/)
@@ -69,8 +69,8 @@ Hive particionálás valósítja meg a nyers adatok átrendezése az új könyvt
 
 Néhány particionálási szempont:
 
-* **Ne partíció alatt** - Particionálás oszlopok csak néhány értéket okozhat néhány partíciót. Például a nemek szerinti particionálás csak két létrehozandó partíciót hoz létre (férfi és női), így csak a késés legfeljebb a felére csökken.
-* **Ne a partíció n –** A másik véglet, egy partíció létrehozása egy oszlopban egy egyedi érték (például userid) okoz több partíciót. Partíción keresztül okoz sok stresszt a fürt namenode, mivel kezelnie kell a nagy számú könyvtárak.
+* **Ne partíció alatt** – A csak néhány értékkel rendelkező oszlopok particionálása néhány partíciót okozhat. Például a nemek particionálása csak két létrehozandó partíciót hoz létre (férfi és női), így a késés legfeljebb a felére csökken.
+* **Ne a partíción keresztül** – A másik véglet, egy partíció létrehozása egy oszlopban egy egyedi érték (például userid) okoz több partíciót. Partíción keresztül okoz sok stresszt a fürt namenode, mivel kezelnie kell a nagy számú könyvtárak.
 * **Elkerülése adatdöntés** - Válassza ki a particionálási kulcsot bölcsen, hogy az összes partíció egyenletes méretű legyen. Például az *Állapot* oszlop particionálása torzíthatja az adatok eloszlását. Mivel Kalifornia állam lakossága majdnem 30-szor, hogy a Vermont, a partíció mérete potenciálisan ferde és a teljesítmény változhat rettenetesen.
 
 Partíciós tábla létrehozásához használja a *Partitioned By záradékot:*
@@ -122,7 +122,7 @@ További információt a [Particionált táblák című témakörben talál.](ht
 
 ## <a name="use-the-orcfile-format"></a>Az ORCFile formátum használata
 
-A Hive különböző fájlformátumokat támogat. Példa:
+A Hive különböző fájlformátumokat támogat. Például:
 
 * **Szöveg**: az alapértelmezett fájlformátum, és a legtöbb forgatókönyvvel működik.
 * **Avro**: jól működik az együttműködési forgatókönyvek.
@@ -148,7 +148,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Ezután az előkészítési táblából szúrhat be adatokat az ORC táblába. Példa:
+Ezután az előkészítési táblából szúrhat be adatokat az ORC táblába. Például:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
@@ -198,5 +198,5 @@ Több optimalizálási módszert is figyelembe vehet, például:
 Ebben a cikkben számos gyakori Hive-lekérdezésoptimalizálási módszert ismertettél meg. További információ: a következő cikkek:
 
 * [Az Apache Hive használata a HDInsightban](hadoop/hdinsight-use-hive.md)
-* [A járatkésési adatok elemzése a HDInsight interaktív lekérdezése segítségével](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [A járatkésési adatok elemzése a HDInsight interaktív lekérdezése segítségével](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Twitter-adatok elemzése az Apache Hive használatával a HDInsightban](hdinsight-analyze-twitter-data-linux.md)

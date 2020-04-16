@@ -11,14 +11,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: fbac52d65433f2137d565ca60fcf754e49199640
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffebb8f82a69f0404974e6c8ea91bec951ca80e1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931397"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415770"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS Integration Runtime újrakonfigurálása
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Ez a cikk ismerteti, hogyan konfigurálhatja újra a meglévő Azure-SSIS-integrációs futásidejű. Ha Azure-SSIS-integrációs futásidejűt (IR) szeretne létrehozni az Azure Data Factoryban, olvassa [el az Azure-SSIS-integrációs futásidő létrehozása című témakört.](create-azure-ssis-integration-runtime.md)  
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete 

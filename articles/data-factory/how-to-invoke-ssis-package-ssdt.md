@@ -12,14 +12,17 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e76fea87c60ae2b56cc15d5827be6e1b2b5a01
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927711"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399431"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSIS-csomagok végrehajtása az Azure-ban az SSDT-től
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Ez a cikk az Azure-kompatibilis SQL Server Integration Services (SSIS) projektek szolgáltatását ismerteti az SQL Server Data Tools (SSDT) szolgáltatásban, amely lehetővé teszi a csomagok futtatását az Azure-SSIS-integrációs futásidőben (IR) az Azure Data Factoryban (ADF).  Ezzel a funkcióval tesztelheti meglévő SSIS-csomagjait, mielőtt felemelne & áthelyezi/áttelepítheti őket az Azure-ba, vagy új SSIS-csomagokat fejleszthet az Azure-ban való futtatásra.
 
 Ezzel a funkcióval létrehozhat egy új Azure-SSIS-ir-t, vagy csatolhat egy meglévőt az SSIS-projektekhez, majd végrehajthatja a csomagokat.  Támogatjuk az SSIS-katalógusba (SSISDB) a Project Deployment Model ben telepítendő csomagok, valamint a fájlrendszerekbe/fájlmegosztásokba/Azure-fájlokba a csomagtelepítési modellben telepítendő csomagok futtatását. 

@@ -1,5 +1,5 @@
 ---
-title: Gépi tanulási algoritmus cheat sheet
+title: Gépi tanulási algoritmus Cheat Sheet - tervező
 titleSuffix: Azure Machine Learning
 description: A nyomtatható Machine Learning algoritmus Cheat Sheet segítségével kiválaszthatja a megfelelő algoritmust a prediktív modell az Azure Machine Learning designer.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: accc4766f25f5d58ba2f31c153fe1c5d23413170
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78328615"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399085"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Gépi tanulási algoritmus cheat sheet az Azure Machine Learning tervező
 
-Az **Azure Machine Learning algoritmus cheat sheet** segít kiválasztani a megfelelő algoritmust a prediktív elemzési modell.
+Az **Azure Machine Learning algoritmus cheat sheet** segítségével kiválaszthatja a megfelelő algoritmust a tervező egy prediktív elemzési modell.
 
 Az Azure Machine Learning a ***besorolási***, ***ajánlói rendszerekből,*** ***fürtözésből,*** ***anomáliadetektálásból,*** ***regresszióból***és ***szövegelemzési*** családokból származó algoritmusok nagy könyvtárával rendelkezik. Mindegyik egy másik típusú gépi tanulási probléma megoldására szolgál.
 
@@ -38,7 +38,7 @@ A javaslatok kínált ebben az algoritmus cheat sheet hozzávetőleges szabályo
 
 Minden gépi tanulási algoritmusnak saját stílusa vagy induktív elfogultsága van. Egy adott probléma esetén több algoritmus is megfelelő lehet, és egy algoritmus jobban illeszkedhet, mint mások. De ez nem mindig lehet tudni előre, melyik a legjobb illeszkedést. Az ilyen esetekben számos algoritmus szerepel együtt a csalólapon. A megfelelő stratégia az lenne, hogy megpróbál egy algoritmust, és ha az eredmények még nem kielégítő, próbálja meg a többit. 
 
-Ha többet szeretne megtudni az Azure Machine Learning algoritmusairól, nyissa meg az [Algoritmus és a modulhivatkozás című részt.](algorithm-module-reference/module-reference.md)
+Ha többet szeretne megtudni az Azure Machine Learning tervezőjének algoritmusairól, nyissa meg az [Algoritmus és a modulhivatkozás című részt.](algorithm-module-reference/module-reference.md)
 
 ## <a name="kinds-of-machine-learning"></a>Gépi tanulás típusai
 

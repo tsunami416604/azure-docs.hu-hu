@@ -11,14 +11,17 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 006d4fa9ed09170a423e796e893b817e079e861b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261931"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414332"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services-csomagok futtatása az Azure-kompatibilis dtexec segédprogrammal
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Ez a cikk az Azure-kompatibilis dtexec (AzureDTExec) parancssori segédprogramot ismerteti. Az SQL Server Integration Services (SSIS) csomagok futtatására szolgál az Azure-Data Factory Ban az Azure-SSIS-integrációs futásidőben (IR).
 
 A hagyományos dtexec segédprogram az SQL Server szolgáltatással rendelkezik. További információ: [dtexec utility](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017). Gyakran hivatkoznak külső orchestrators vagy ütemezők, például az ActiveBatch és a Control-M, ssis-csomagok helyszíni futtatásához. 

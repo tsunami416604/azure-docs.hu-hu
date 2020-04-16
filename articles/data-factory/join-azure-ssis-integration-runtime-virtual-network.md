@@ -11,14 +11,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: e94eef3072b9636c8022a5949b05519c1554cb9e
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: cf13dbe17738ca1ae658c73bb0092a219b4823d1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585792"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415910"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ha az Azure Data Factoryban használja az SQL Server Integration Services (SSIS) szolgáltatást, a következő esetekben kell csatlakoznia az Azure-SSIS-integrációs futásidejéhez (IR) egy Azure virtuális hálózathoz:
 
@@ -336,7 +338,7 @@ A portál használatával konfigurálhatja az Azure Resource Manager virtuális 
 
 1. Indítsa el a Microsoft Edge-et vagy a Google Chrome-ot. Jelenleg csak ezek a webböngészők támogatják a Data Factory felhasználói felületét. 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 1. Válassza az **További szolgáltatások lehetőséget.** Szűrje ki és válassza a **Virtuális hálózatok lehetőséget.** 
 
@@ -366,7 +368,7 @@ A portál használatával konfigurálhatja a klasszikus virtuális hálózat, mi
 
 1. Indítsa el a Microsoft Edge-et vagy a Google Chrome-ot. Jelenleg csak ezek a webböngészők támogatják a Data Factory felhasználói felületét. 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 1. Válassza az **További szolgáltatások lehetőséget.** Szűrje és válassza a **Virtuális hálózatok (klasszikus)** lehetőséget. 
 

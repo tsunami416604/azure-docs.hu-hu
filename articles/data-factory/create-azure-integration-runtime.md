@@ -10,14 +10,16 @@ ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: cf3bb7e6733ef55a85d0b4ae26a4ce05059a8fb9
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887151"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414067"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Az Azure-integrációs futásidő létrehozása és konfigurálása
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Az integrációs futásidejű (IR) az Azure Data Factory által a különböző hálózati környezetekben az adatintegrációs képességek biztosításához használt számítási infrastruktúra. Az infravörös kapcsolatról további információt az [Integrációs futásidő](concepts-integration-runtime.md)című témakörben talál.
 
 Az Azure IR teljes körűen felügyelt számítási lehetőséget biztosít az adatáthelyezési és adatátalakítási tevékenységek natív végrehajtásához az olyan számítási szolgáltatásokhoz, mint a HDInsight. Az Azure-környezetben üzemelteti, és támogatja a nyilvános hálózati környezetben lévő erőforrásokhoz való csatlakozást nyilvános elérhető végpontokkal.

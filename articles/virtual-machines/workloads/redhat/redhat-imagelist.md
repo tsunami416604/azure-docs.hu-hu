@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e6109a87750e588b12bfc9836c5db3db55420ec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40a715ea27be161f09dea59e57799b08406e8ca7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133800"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393774"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>A Red Hat Enterprise Linux (RHEL) lemezképei elérhetők az Azure-ban
 Az Azure különböző RHEL-lemezképeket kínál a különböző használati esetekhez.
@@ -76,6 +76,9 @@ rhel-byos     |rhel-lvm74| Lvm    | Linux-ügynök | Az RHEL 7.4 BYOS-képek, am
 |             |rhel-lvm76| Lvm    | Linux-ügynök | Az RHEL 7.6 BYOS-képek, amelyek nem kapcsolódnak semmilyen frissítési forráshoz, nem számítanak fel RHEL-díjat.
 |             |rhel-lvm77| Lvm    | Linux-ügynök | Az RHEL 7.7 BYOS-képek, amelyek nem kapcsolódnak semmilyen frissítési forráshoz, nem számítanak fel RHEL-díjat.
 |             |rhel-lvm8 | Lvm    | Linux-ügynök | Rhel 8 BYOS-lemezképek (az RHEL alverzió a kép verzióértékében jelenik meg), amely nem kapcsolódik semmilyen frissítési forráshoz, nem számít fel RHEL-prémiumot.
+
+> [!NOTE]
+> Az RHEL-SAP-HANA termékkínálatot a Red Hat élettartama alatt tartja. A meglévő telepítések továbbra is normálisan működnek, de a Red Hat azt javasolja, hogy az ügyfelek migrálni az RHEL-SAP-HANA rendszerképek az RHEL-SAP-HA rendszerképek, amely tartalmazza az SAP HANA-tárolók, valamint a HA-bővítmény. A Red Hat SAP felhőajánlatairól [bővebben itt](https://access.redhat.com/articles/3751271)olvashat.
 
 ## <a name="next-steps"></a>További lépések
 * További információ a [Red Hat-képekről az Azure-ban.](./redhat-images.md)

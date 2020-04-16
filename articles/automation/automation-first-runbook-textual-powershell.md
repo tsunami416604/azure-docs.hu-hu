@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: e0c48137f5eecc96b6e7b1cbce5f0c683b2a976a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0df2680a9f17fc0af950b0ce744a655348b4cbf7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367312"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406066"
 ---
 # <a name="my-first-powershell-runbook"></a>Az első PowerShell-forgatókönyvem
 
 > [!div class="op_single_selector"]
 > * [Grafikus](automation-first-runbook-graphical.md)
-> * [Powershell](automation-first-runbook-textual-powershell.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell-munkafolyamat](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
 
@@ -77,7 +77,7 @@ Mielőtt közzétenné a runbookot, hogy elérhetővé tegye éles környezetben
 2. Kattintson az **Indítás** gombra a teszt elindításához. Elvileg ez az egyetlen engedélyezett lehetőség.
 3. Vegye figyelembe, hogy létrejön egy [runbook-feladat,](automation-runbook-execution.md) és állapota megjelenik az ablaktáblán.
 
-   A feladat állapota `Queued`kezdődik , jelezve, hogy a feladat arra vár, hogy a runbook-dolgozó a felhőben elérhetővé válik. Az állapot `Starting` akkor változik, amikor egy dolgozó igényt tart a feladatra. Végül az állapot `Running` akkor válik, amikor a runbook ténylegesen elindul.
+   A feladat állapota várólistára kerülése, jelezve, hogy a feladat arra vár, hogy a felhőben lévő runbook-dolgozó elérhetővé váljon. Az állapot akkor változik, amikor egy dolgozó igényt tart a feladatra. Végül az állapot fut, amikor a runbook ténylegesen elindul.
 
 4. Amikor a runbook-feladat befejeződik, a Teszt ablaktábla megjeleníti a kimenetét. Ebben az esetben, `Hello World`látod .
 
@@ -91,7 +91,7 @@ A létrehozott runbook továbbra is Vázlat módban van. Az üzemi környezetben
 
 1. A forgatókönyv közzétételéhez kattintson a **Közzététel** lehetőségre, és ha a rendszer kéri, kattintson az **Igen** gombra.
 1. Görgessen balra a Runbook oklapon lévő runbook megtekintéséhez, és vegye figyelembe, hogy a **Szerzői állapot** értéke **Közzétéve**érték.
-1. Görgessen vissza jobbra a **MyFirstRunbook-PowerShell** panel megtekintéséhez.
+1. Görgessen vissza jobbra a **MyFirstRunbook-PowerShell**oldalának megtekintéséhez.
    
    A beállítások a felső lehetővé teszi, hogy indítsa el a runbook most, ütemezése egy jövőbeli kezdési időpont, vagy hozzon létre egy [webhook,](automation-webhooks.md) hogy a runbook lehet indítani egy HTTP-hívás.
 1. Válassza **a Start,** majd **az Igen** lehetőséget, amikor a runbook indítására kéri. 
@@ -99,7 +99,7 @@ A létrehozott runbook továbbra is Vázlat módban van. Az üzemi környezetben
 
    ![Feladat összegzése](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
 
-1. Miután a runbook állapota megjelenik, `Completed`kattintson a `Hello World` **Kimenet** gombra a Kimenet lap megnyitásához, ahol megjelenik a megjelenítés.
+1. Miután a runbook állapota **Output** látható befejeződött, kattintson a `Hello World` Kimenet gombra a Kimenet lap megnyitásához, ahol megjelenik a megjelenítés.
 
    ![Feladat kimenete](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
 
@@ -110,7 +110,7 @@ A létrehozott runbook továbbra is Vázlat módban van. Az üzemi környezetben
 
    ![Minden napló](media/automation-first-runbook-textual-powershell/job-pane-status-blade-alllogstile.png)
 
-1. Zárja be a Streams és a Feladat ablaktáblát a **MyFirstRunbook-PowerShell** lapra való visszatéréshez.
+1. Zárja be a Streams és a Feladat ablaktáblát a MyFirstRunbook-PowerShell lapra való visszatéréshez.
 1. A **Részletek csoportban**kattintson a **Feladatok** elemre a runbook Feladatok lapjának megnyitásához. Ez a lap a runbook által létrehozott összes feladatot megjeleníti. Csak egy feladat jelenik meg a listában, mivel csak egyszer futtatta a feladatot.
 
    ![Feladatlista](media/automation-first-runbook-textual-powershell/runbook-control-job-tile.png)
@@ -151,7 +151,7 @@ Az alábbi példában látható módon a Futtatás másként kapcsolat a [Connec
 
    Get-AzVM -ResourceGroupName myResourceGroup -AzContext $AzureContext
    ```
-1. Nyissa meg a szöveges **szerkesztőt** a Szerkesztés gombra kattintva a **MyFirstRunbook-PowerShell** lapon.
+1. Nyissa meg a szöveges **szerkesztőt** a Szerkesztés gombra kattintva a MyFirstRunbook-PowerShell lapon.
 1. Már nincs szükséged `Write-Output` a vonalra. Csak rajta, töröld ki.
 1. Írja be vagy másolja be a következő kódot, amely kezeli a hitelesítést az Automation Run As fiókkal.
 
@@ -182,7 +182,7 @@ Az alábbi példában látható módon a Futtatás másként kapcsolat a [Connec
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>6. lépés: Kód hozzáadása a virtuális gép indításához
 
-Most, hogy a runbook hitelesíti az Azure-előfizetését, kezelheti az erőforrásokat. Adjunk hozzá egy parancsot egy virtuális gép indításához. Az Azure-előfizetésben bármelyik virtuális gépet kiválaszthatja, és egyelőre csak a nevet kódolhatja a runbookban.
+Most, hogy a runbook hitelesíti az Azure-előfizetését, kezelheti az erőforrásokat. Adjunk hozzá egy parancsot egy virtuális gép indításához. Az Azure-előfizetésben bármelyik virtuális gépet kiválaszthatja, és egyelőre csak a nevet kódolja a runbookban.
 
 1. A runbook-parancsfájlhoz adja hozzá a [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) parancsmast a virtuális gép elindításához. Az alábbiakban látható módon a parancsmag egy `VMName` virtuális gépet indít `ResourceGroupName`el a nevével és egy erőforráscsoporttal.
 
@@ -212,7 +212,7 @@ Most, hogy a runbook hitelesíti az Azure-előfizetését, kezelheti az erőforr
 
 ## <a name="step-7---add-an-input-parameter"></a>7. lépés - Bemeneti paraméter hozzáadása
 
-A runbook jelenleg elindítja a virtuális gépet, amely a runbookban kódolt. A runbook hasznosabb lesz, ha megadja a virtuális gépet a runbook indításakor. Adjunk hozzá bemeneti paramétereket a runbookhoz, hogy ezt a funkciót biztosítsuk.
+A runbook jelenleg elindítja a virtuális gépet, amely a runbookban kódolt. A runbook hasznosabb, ha megadja a virtuális gépet a runbook indításakor. Adjunk hozzá bemeneti paramétereket a runbookhoz, hogy ezt a funkciót biztosítsuk.
 
 1. A szövegszerkesztőben módosítsa `Start-AzVM` a parancsmatot úgy, `VMName` hogy `ResourceGroupName`a paraméterekhez és a hoz. 
 
@@ -252,6 +252,8 @@ A runbook jelenleg elindítja a virtuális gépet, amely a runbookban kódolt. A
 ## <a name="next-steps"></a>További lépések
 
 * A PowerShellről további információt, beleértve a nyelvi referencia- és tanulási modulokat, tekintse meg a [PowerShell-dokumentumok című témakört.](/powershell/scripting/overview)
+* A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
 * A grafikus runbookok első lépései [Az Első grafikus runbook című témakörben](automation-first-runbook-graphical.md)látható.
 * A PowerShell-munkafolyamat-runbookok első [lépései: Az első PowerShell-munkafolyamat-runbook.](automation-first-runbook-textual.md)
 * Ha többet szeretne tudni a runbook-típusokról, azok előnyeiről és korlátairól, olvassa el az [Azure Automation runbook-típusok című témakört.](automation-runbook-types.md)

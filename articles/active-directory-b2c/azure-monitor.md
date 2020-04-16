@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190058"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392881"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Az Azure AD B2C figyelése az Azure Monitorsegítségével
 
@@ -84,8 +84,8 @@ Az Azure AD-bérlő (az **ügyfél)** fedélzetre vételéhez hozzon létre egy 
 
 Töltse le az Azure Resource Manager sablont és paraméterfájlokat:
 
-- [rgDelegatedResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 Ezután frissítse a paraméterfájlt a korábban rögzített értékekkel. A következő JSON-kódrészlet egy Azure Resource Manager-sablon paraméterfájlpéldáját mutatja be. A `authorizations.value.roleDefinitionId`esetén használja a *közreműködői szerepkör* `b24988ac-6180-42a0-ab88-20f7382dd24c` [beépített szerepkörértékét](../role-based-access-control/built-in-roles.md) .
 
@@ -223,7 +223,7 @@ Készen áll a [diagnosztikai beállítások létrehozása](../active-directory/
 
 Az Azure AD B2C tevékenységnaplók figyelési beállításainak konfigurálása:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza ki a **Könyvtár + Előfizetés** ikont a portál eszköztárán, majd válassza ki az Azure AD B2C-bérlőt tartalmazó könyvtárat.
 1. **Az Azure Active Directory** kiválasztása
 1. A **Monitorozás** területen kattintson a **Diagnosztikai beállítások** elemre.

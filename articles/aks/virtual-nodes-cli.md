@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan használhatja az Azure CLI-t egy Azure Kubernet
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b6d44ceb9b447d670c4e51c951b547e90dfce38f
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b3dec8a7d46226b9d6f4416c98332f0023c0c294
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984674"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392590"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Hozzon létre és konfiguráljon egy Azure Kubernetes-szolgáltatás (AKS) fürtöt virtuális csomópontok használatára az Azure CLI használatával
 
@@ -108,9 +108,9 @@ az network vnet subnet create \
     --address-prefixes 10.241.0.0/16
 ```
 
-## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
+## <a name="create-a-service-principal-or-use-a-managed-identity"></a>Egyszerű szolgáltatás létrehozása vagy felügyelt identitás használata
 
-Ahhoz, hogy egy AKS-fürt kommunikálhasson más Azure-erőforrásokkal, Azure Active Directory-szolgáltatásnevet kell használnia. A szolgáltatásnév automatikusan létrehozható az Azure CLI-vel vagy a portállal, vagy létrehozhat egyet előre, és hozzárendelhet további engedélyeket.
+Ahhoz, hogy egy AKS-fürt kommunikálhasson más Azure-erőforrásokkal, Azure Active Directory-szolgáltatásnevet kell használnia. A szolgáltatásnév automatikusan létrehozható az Azure CLI-vel vagy a portállal, vagy létrehozhat egyet előre, és hozzárendelhet további engedélyeket. Azt is megteheti, hogy egy felügyelt identitás engedélyek helyett egy egyszerű szolgáltatás. További információ: [Felügyelt identitások használata.](use-managed-identity.md)
 
 Hozzon létre egy szolgáltatásnevet az [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] paranccsal. A `--skip-assignment` paraméter korlátozza a további engedélyek hozzárendelését.
 

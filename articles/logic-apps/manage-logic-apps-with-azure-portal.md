@@ -8,13 +8,13 @@ ms.author: ladolan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/06/2020
-ms.openlocfilehash: a35f34ed27299077dca78630511ea3c291caff60
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 04/13/2020
+ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804974"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415994"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Logikai alkalmazások kezelése az Azure Portalon
 
@@ -177,6 +177,46 @@ A logikai alkalmazás törlése a következő módokon befolyásolja a munkafoly
    ![A logikai alkalmazások törlésének megerősítése](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
    Az Azure Portalon megjelenik egy értesítés a fő Azure-eszköztáron, amely megerősíti, hogy a művelet sikeres vagy sikertelen volt.
+
+<a name="manage-logic-app-versions"></a>
+
+## <a name="manage-logic-app-versions"></a>Logikai alkalmazásverziók kezelése
+
+Használhatja az Azure Portalon a logikai alkalmazások verziószabályozásához. Megtalálhatja a logikai alkalmazás verzióelőzményeit, és előléptetheti a korábbi verziókat.
+
+<a name="find-version-history"></a>
+
+### <a name="find-and-view-previous-versions"></a>Korábbi verziók keresése és megtekintése
+
+1. Az Azure Portalon [keresse meg a kezelni kívánt logikai alkalmazást.](#find-logic-app)
+
+1. A logikai alkalmazás menüjében, a **Fejlesztőeszközök**csoportban válassza a **Verziók lehetőséget.**
+
+   ![A logikai alkalmazás menüjében válassza a "Verziók" lehetőséget a "Fejlesztői eszközök" területen.](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+
+1. Válassza ki a logikai alkalmazás a listából kezelni kívánt **verzióját.** A lista szűréséhez **megadhatja** a verzióazonosítót a keresősávban.
+
+1. Az **Előzmények verziólapján** az előző verzió részletei olvasható képpen jelennek meg. A Logic Apps **Designer** és a **Code nézet** módok közül választhat.
+
+   ![A logikai alkalmazás kódnézettel és logikai alkalmazások tervezői nézetével rendelkező előzményverziói lapja](./media/manage-logic-apps-with-azure-portal/history-version.png)
+
+<a name="promote-previous-versions"></a>
+
+### <a name="promote-previous-versions"></a>Korábbi verziók népszerűsítése
+
+1. A logikai alkalmazás verzióelőzményeiközött [keresse meg és válassza ki az előléptetni kívánt verziót.](#find-version-history)
+
+1. Az **Előzmények verziólapon** válassza **a Reklám lehetőséget.**
+
+   ![Előléptetés gomb a logikai alkalmazás verzióelőzményeiközött](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+
+1. A **megnyíló Logic Apps Designer** lapon szükség szerint szerkesztheti a előléptetett verziót. Válthat a **Tervező** és a **Kód nézet** mód között. **A paramétereket,** **sablonokat**és **összekötőket**is frissítheti.
+
+   ![Logic Apps Designer lap egy korábbi verzió népszerűsítéséhez](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+
+1. A frissítések mentéséhez és az előző verzió előléptetésének befejezéséhez válassza a **Mentés gombot.** (Vagy a módosítások megszakításához válassza az **Elvetés**lehetőséget.) 
+
+   Amikor ismét [megtekinti a logikai alkalmazás verzióelőzményeit,](#find-version-history) az előléptetett verzió a lista tetején jelenik meg, és új azonosítóval rendelkezik.
 
 ## <a name="next-steps"></a>További lépések
 

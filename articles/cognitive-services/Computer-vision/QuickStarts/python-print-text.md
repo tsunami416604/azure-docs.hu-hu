@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af755af9404cc98c650164e5f891661f2530f77b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 7daa630c47fc677f6659fa51cca6583a0b583865
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244773"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404384"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Rövid útmutató: Nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és a Python használatával
 
 > [!NOTE]
-> Ha angol nyelvű szöveget használ, fontolja meg az új [Olvasás művelet használatát.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) [Python-gyorsindítás](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) érhető el. 
+> Ha angol nyelvű szöveget szeretne kinyerni, fontolja meg az új [Olvasás művelet használatát.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) [Python-gyorsindítás](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) érhető el. 
 
 Ebben a rövid útmutatóban a számítógép-látás rest API-val optikai karakterfelismeréssel (OCR) rendelkező nyomtatott szöveget nyerhet ki egy képből. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) módszerrel észlelheti a kép nyomtatott szövegét, és kinyerheti a felismert karaktereket egy gép által használható karakterfolyamba.
 
@@ -226,7 +226,9 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely kiel
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy Python-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ezután fedezze fel a Python-alkalmazást, amely a Computer Vision segítségével optikai karakterfelismerést (OCR) hajt végre; intelligens körülvágott bélyegképek létrehozása; és észlelheti, kategorizálhatja, címkézheti és leírhatja a képek vizuális jellemzőit.
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – Python-oktatóanyag](../Tutorials/PythonTutorial.md)
+
+* A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).

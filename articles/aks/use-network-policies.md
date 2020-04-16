@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan biztosíthat a podokba be- és kiáramló forga
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a2794f53407be3ce3d7e69caa8039c13217a0356
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886704"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392614"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Biztonságos forgalom a podok között az Azure Kubernetes-szolgáltatás (AKS) hálózati szabályzatai használatával
 
@@ -82,6 +82,8 @@ A következő példaparancsfájl:
 * *Közreműködői* engedélyek hozzárendelése az AKS fürtegyszerűszolgáltatás egyszerű szolgáltatásához a virtuális hálózaton.
 * Létrehoz egy AKS-fürtöt a definiált virtuális hálózatban, és engedélyezi a hálózati házirendet.
     * Az *azure* hálózati házirend beállítás használatos. Ha a Calico-t szeretné hálózati `--network-policy calico` házirend-beállításként használni, használja a paramétert. Megjegyzés: A Calico használható `--network-plugin azure` `--network-plugin kubenet`a vagy a.
+
+Vegye figyelembe, hogy egyszerű szolgáltatás használata helyett felügyelt identitást használhat az engedélyekhez. További információ: [Felügyelt identitások használata.](use-managed-identity.md)
 
 Adja meg saját biztonságos *SP_PASSWORD.* A *RESOURCE_GROUP_NAME* és *CLUSTER_NAME* változókat lecserélheti:
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad2032497b4b01476389428f5a2ef4a3961a1c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481245"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406733"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő karakteres alkalmazások az Azure Active Directory alkalmazásproxyjában
 
@@ -116,7 +116,7 @@ A helyettesítő karakter alkalmazás csak egy csempével jelenik meg a [MyApps 
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos korlátozott delegálás
 
-A [kerberos korlátozott delegálást (KCD) sso metódusként](application-proxy-configure-single-sign-on-with-kcd.md)használó alkalmazások esetében az SSO metódushoz felsorolt SPN-nek is szüksége lehet helyettesítő karakterre. Az spn például a `HTTP/*.adventure-works.com`következő lehet: . Továbbra is konfigurálnia kell az egyes SPN-eket `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`a háttérkiszolgálókon (például).
+A [kerberos korlátozott delegálást (KCD) sso metódusként](application-proxy-configure-single-sign-on-with-kcd.md)használó alkalmazások esetében az SSO metódushoz felsorolt SPN-nek is szüksége lehet helyettesítő karakterre. Az spn például a `HTTP/*.adventure-works.com`következő lehet: . Továbbra is konfigurálnia kell az egyes SPN-eket `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`a háttérkiszolgálókon (például).
 
 ## <a name="scenario-1-general-wildcard-application"></a>1. forgatókönyv: Általános helyettesítő alkalmazás
 

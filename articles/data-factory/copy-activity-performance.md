@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 231b0d77dc441e70dc0ec8de313291bb6b4f9292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79261397"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414172"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>A tevékenység teljesítményének és méretezhetőségének másolása útmutató
 
@@ -25,7 +25,9 @@ ms.locfileid: "79261397"
 > * [1-es verzió](v1/data-factory-copy-activity-performance.md)
 > * [Aktuális verzió](copy-activity-performance.md)
 
-Akár a Data Lake-ből vagy a nagyvállalati adattárházból (EDW) az Azure-ba szeretne nagyméretű adatáttelepítést végrehajtani, akár különböző forrásokból nagy méretű adatokat szeretne beadni az Azure-ba a big data-elemzéshez, az optimális teljesítmény elérése és Skálázhatóság.  Az Azure Data Factory egy teljesítményalapú, rugalmas és költséghatékony mechanizmust biztosít az adatok nagy méretekben történő betöltéséhez, így kiválóan alkalmas az adatmérnökök számára, akik nagy teljesítményt és skálázható adatbetöltési folyamatokat szeretnének építeni.
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Akár a Data Lake-ből vagy a nagyvállalati adattárházból (EDW) az Azure-ba szeretne nagyméretű adatáttelepítést végrehajtani, akár különböző forrásokból az Azure-ba szeretné bedolgozni az adatokat a big data-elemzéshez, elengedhetetlen az optimális teljesítmény és méretezhetőség elérése érdekében.  Az Azure Data Factory egy teljesítményalapú, rugalmas és költséghatékony mechanizmust biztosít az adatok nagy méretekben történő betöltéséhez, így kiválóan alkalmas az adatmérnökök számára, akik nagy teljesítményt és skálázható adatbetöltési folyamatokat szeretnének építeni.
 
 A cikk elolvasása után a következő kérdésekre válaszolhat:
 

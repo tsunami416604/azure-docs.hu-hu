@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 570d55c8523e1c1deca3242a8841b0cc34322786
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f28f2bcf5d04c9a6354b8135bd39546b9d8b9bf3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053880"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404296"
 ---
 # <a name="what-is-azure-content-moderator"></a>Mi az az Azure Content Moderator?
 
@@ -38,7 +38,7 @@ A szoftverfejlesztőknek vagy a csapatoknak például a következő néhány alk
 
 ## <a name="what-it-includes"></a>Mit tartalmaz?
 
-A Content Moderator szolgáltatás számos webszolgáltatás API-t tartalmaz, amelyek REST-hívásokkal és .NET SDK-val is elérhetőek. Ezek között az emberi felülvizsgálati eszköz is szerepel, amely lehetővé teszi, hogy emberi felülvizsgálók segítsék a szolgáltatást és végezzenek finomhangolást a moderálási funkción.
+A Content Moderator szolgáltatás számos webszolgáltatás API-t tartalmaz, amelyek REST-hívásokkal és .NET SDK-val is elérhetőek. Ez is beleértve a Áttekintés szerszám, melyik megenged emberi látogató -hoz segítség a szolgáltatás és tökéletesít vagy finom- finomít -a mértékletesség függvény.
 
 ## <a name="moderation-apis"></a>Moderálási API-k
 
@@ -58,18 +58,18 @@ Az alábbi táblázat a moderálási API-k különböző típusait ismerteti.
 
 ## <a name="review-apis"></a>API-k áttekintése
 
-Az API-k áttekintése lehetővé teszi a moderálási folyamat integrálását az emberi ellenőrzőkkel. A [Feladatok,](review-api.md#jobs) [Vélemények](review-api.md#reviews)és [Munkafolyamat](review-api.md#workflows) műveletekkel a [felülvizsgálati eszközzel](#the-review-tool) (lent) ember-in-the-loop munkafolyamatokat hozhat létre és automatizálhat.
+Az API-k áttekintése lehetővé teszi a moderálási folyamat integrálását az emberi ellenőrzőkkel. A [Feladatok,](review-api.md#jobs) [Vélemények](review-api.md#reviews)és [Munkafolyamat](review-api.md#workflows) műveletekkel a [felülvizsgálati eszközzel](#review-tool) (lent) ember-in-the-loop munkafolyamatokat hozhat létre és automatizálhat.
 
 > [!NOTE]
 > A workflow API még nem érhető el a .NET SDK, de használható a REST végpont.
 
 ![blokkdiagram a tartalommoderátor ok-ellenőrzési API-ihoz](images/content-moderator-rev-api.png)
 
-## <a name="the-review-tool"></a>A Véleményezés eszköz
+## <a name="review-tool"></a>Felülvizsgálati eszköz
 
 A Tartalommoderátor szolgáltatás magában foglalja a webalapú [felülvizsgálati eszközt](Review-Tool-User-Guide/human-in-the-loop.md)is, amely az emberi moderátorok tartalom-értékelését tartalmazza. Az emberi input nem tanítja be a szolgáltatást, de a szolgáltatás és az emberi felülvizsgálati csapatok együttes munkája lehetővé teszi a fejlesztők számára, hogy megfelelő egyensúlyt találjanak a hatékonyság és a pontosság között. A Felülvizsgálati eszköz felhasználóbarát előlapot is biztosít számos tartalommoderátor-erőforráshoz.
 
-![A Content Moderator emberi felülvizsgálati eszköz kezdőlapja](images/homepage.PNG)
+![Tartalommoderátor-ellenőrző eszköz kezdőlapja](images/homepage.PNG)
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
 

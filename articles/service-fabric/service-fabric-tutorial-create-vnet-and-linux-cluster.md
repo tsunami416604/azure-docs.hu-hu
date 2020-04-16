@@ -4,12 +4,12 @@ description: Megismerheti, hogyan helyezhet üzembe egy Linux-alapú Service Fab
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251788"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411008"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Linux Service Fabric-fürt üzembe helyezése Azure virtuális hálózatba
 
@@ -31,8 +31,17 @@ A következő eljárások hozzon létre egy hét csomópontos Service Fabric-fü
 
 Töltse az alábbi Resource Manager-sablonfájlokat:
 
+Ubuntu 16.04 LTS esetén:
+
 * [AzureDeploy.json][template]
 * [AzureDeploy.Parameters.json][parameters]
+
+Ubuntu 18.04 LTS esetén:
+
+* [AzureDeploy.json][template2]
+* [AzureDeploy.Parameters.json][parameters2]
+
+A különbség a két sablon a **vmImageSku** attribútum beállítása "18.04-LTS" és minden csomópont **typeHandlerVersion** beállítása 1.1.
 
 Ez a sablon egy hét virtuális gépből és három csomóponttípusból álló biztonságos fürtöt telepít egy virtuális hálózatba.  További mintasablonokat a [GitHubon](https://github.com/Azure-Samples/service-fabric-cluster-templates) talál. Az [AzureDeploy.json][template] több erőforrást is üzembe helyez, többek között az alábbiakat.
 
@@ -42,7 +51,7 @@ A **Microsoft.ServiceFabric/clusters** erőforrásban a rendszer üzembe helyez 
 
 * három csomóponttípus
 * öt csomópont az elsődleges csomópont típusában (konfigurálható a sablon paraméterekben), egy-egy csomópont a többi csomóponttípusban
-* Ubuntu 16.04 LTS operációs rendszer (a sablon paramétereiben konfigurálható);
+* OS: (Ubuntu 16.04 LTS / Ubuntu 18.04 LTS) (konfigurálható a sablon paraméterek)
 * tanúsítványon alapuló védelem (a sablon paramétereiben konfigurálható);
 * engedélyezve van a [DNS szolgáltatás](service-fabric-dnsservice.md);
 * bronz szintű [tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (a sablon paramétereiben konfigurálható);
@@ -70,7 +79,7 @@ Ha további alkalmazásportokra van szükség, akkor módosítania kell a Micros
 
 ## <a name="set-template-parameters"></a>Sablon paramétereinek megadása
 
-Az [AzureDeploy.Parameters][parameters] paraméterfájl számos, a fürt és a társított erőforrások üzembe helyezéséhez használt értéket meghatároz. Néhány paraméter, amelyeket lehet, hogy módosítani kell az üzembe helyezéshez:
+Az **AzureDeploy.Parameters** fájl deklarálja a fürt és a kapcsolódó erőforrások üzembe helyezéséhez használt számos értéket. Néhány paraméter, amelyeket lehet, hogy módosítani kell az üzembe helyezéshez:
 
 |Paraméter|Példaérték|Megjegyzések|
 |---|---||
@@ -86,7 +95,7 @@ Az [AzureDeploy.Parameters][parameters] paraméterfájl számos, a fürt és a t
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>A virtuális hálózat és a fürt üzembe helyezése
 
-Ezután állítsa be a hálózati topológiát, és helyezze üzembe a Service Fabric-fürtöt. Az [AzureDeploy.json][template] Resource Manager-sablon egy virtuális hálózatot (VNET-et) hoz létre a Service Fabric számára. A sablon emellett egy fürtöt is üzembe helyez engedélyezett tanúsítványalapú biztonsággal.  Éles fürtök esetén hitelesítésszolgáltatótól (CA) származó tanúsítványt használjon fürttanúsítványként. A tesztfürtök számára önaláírt tanúsítvánnyal is biztosítható védelem.
+Ezután állítsa be a hálózati topológiát, és helyezze üzembe a Service Fabric-fürtöt. Az **AzureDeploy.json** Resource Manager-sablon egy virtuális hálózatot (VNET-et) hoz létre a Service Fabric számára. A sablon emellett egy fürtöt is üzembe helyez engedélyezett tanúsítványalapú biztonsággal.  Éles fürtök esetén hitelesítésszolgáltatótól (CA) származó tanúsítványt használjon fürttanúsítványként. A tesztfürtök számára önaláírt tanúsítvánnyal is biztosítható védelem.
 
 A cikkben szereplő sablon olyan fürtöt telepít, amely a tanúsítvány ujjlenyomatát használja a fürttanúsítvány azonosítására.  Két tanúsítvány nem rendelkezhet ugyanazzal az ujjlenyomattal, ami megnehezíti a tanúsítványkezelést. Az üzembe helyezett fürt tanúsítványujjlenyomatok használatáról a tanúsítvány közös neveinek használatára való váltása sokkal egyszerűbbé teszi a tanúsítványkezelést.  Ha meg szeretné tudni, hogyan frissítheti a fürtöt úgy, hogy tanúsítványneveket használjon a tanúsítványkezeléshez, olvassa el [a változásfürtben a tanúsítvány közös névkezelésének használatát.](service-fabric-cluster-change-cert-thumbprint-to-cn.md)
 
@@ -163,3 +172,5 @@ A cikkben szereplő sablon olyan fürtöt telepít, amely a tanúsítvány ujjle
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
+[template2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.json
+[parameters2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.Parameters.json

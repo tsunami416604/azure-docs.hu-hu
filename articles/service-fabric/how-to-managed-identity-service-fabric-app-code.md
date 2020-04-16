@@ -1,16 +1,16 @@
 ---
 title: Felügyelt identitás használata alkalmazással
-description: Felügyelt identitások használata az Azure Service Fabric alkalmazáskódjában az Azure Services eléréséhez. Ez a funkció nyilvános előzetes verzióban érhető el.
+description: Felügyelt identitások használata az Azure Service Fabric alkalmazáskódjában az Azure Services eléréséhez.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbdb1190ec3238a6accd34db3025e08c194d60b8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610318"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415623"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>A Service Fabric-alkalmazások felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez (előzetes verzió)
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>A Service Fabric-alkalmazások felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez
 
 A Service Fabric-alkalmazások kihasználhatják a felügyelt identitásokat az Azure Active Directory-alapú hitelesítést támogató azure-erőforrások eléréséhez. Az alkalmazások beszerezhetnek egy [hozzáférési jogkivonatot,](../active-directory/develop/developer-glossary.md#access-token) amely az identitását képviseli, amely rendszer- vagy felhasználó-hozzárendelt lehet, és "tulajdonosi" jogkivonatként használhatják egy másik szolgáltatás , más néven [védett erőforrás-kiszolgáló](../active-directory/develop/developer-glossary.md#resource-server)hitelesítéséhez. A jogkivonat a Service Fabric-alkalmazáshoz rendelt identitást jelöli, és csak az azure-erőforrásoknak (beleértve az SF-alkalmazásokat is) lesz kiadva, amelyek megosztják az identitást. A [felügyelt identitások részletes](../active-directory/managed-identities-azure-resources/overview.md) leírását, valamint a rendszerhez rendelt és a felhasználó által hozzárendelt identitások közötti különbséget a felügyelt identitások részletes leírását olvassa el. A cikkben egy felügyelt identitás-alapú Service Fabric-alkalmazást fogunk az [ügyfélalkalmazásként](../active-directory/develop/developer-glossary.md#client-application) hivatkozni.
 
@@ -24,19 +24,18 @@ A Service Fabric-alkalmazások kihasználhatják a felügyelt identitásokat az 
 A felügyelt identitásra engedélyezett fürtökben a Service Fabric futásidejű egy localhost-végpontot tesz elérhetővé, amelyet az alkalmazások hozzáférési jogkivonatok beszerzésére használhatnak. A végpont a fürt minden csomópontján elérhető, és az adott csomópont összes entitása számára elérhető. A jogosult hívók hozzáférési jogkivonatokat kaphatnak a végpont hívásával és egy hitelesítési kód bemutatásával; a kódot a Service Fabric futásideje hozza létre minden egyes egyes egyes szolgáltatáskód-csomag aktiválásához, és az adott szolgáltatáskódcsomagot üzemeltető folyamat élettartamához van kötve.
 
 Pontosabban a felügyelt identitás-kompatibilis Service Fabric-szolgáltatás környezete a következő változókkal lesz elmezve:
-- 'MSI_ENDPOINT': a localhost végpont, elérési úttal, API-verzióval és a szolgáltatás felügyelt identitásának megfelelő paraméterekkel
-- "MSI_SECRET": egy hitelesítési kód, amely egy átlátszatlan karakterlánc, és egyedileg képviseli a szolgáltatást az aktuális csomóponton
-
-> [!NOTE]
-> A "MSI_ENDPOINT" és a "MSI_SECRET" nevek a felügyelt identitások korábbi megnevezésére ("felügyelt szolgáltatásidentitás") vonatkoznak, és amely már elavult. A nevek is konzisztensek a más Azure-szolgáltatások által használt egyenértékű környezeti változónevekkel, amelyek támogatják a felügyelt identitásokat.
+- 'IDENTITY_ENDPOINT': a szolgáltatás felügyelt identitásának megfelelő localhost végpont
+- 'IDENTITY_HEADER': a szolgáltatást az aktuális csomóponton jelölő egyedi hitelesítési kód
+- 'IDENTITY_SERVER_THUMBPRINT': A szolgáltatásháló felügyelt identitáskiszolgálójának ujjlenyomata
 
 > [!IMPORTANT]
-> Az alkalmazáskódnak bizalmas adatként kell tekintenie az "MSI_SECRET" környezeti változó értékét – nem szabad naplózni vagy más módon terjeszteni. A hitelesítési kód nem rendelkezik értékkel a helyi csomóponton kívül, vagy a szolgáltatás tői a szolgáltatás által üzemeltetett folyamat leállítása után, de a Service Fabric szolgáltatás identitását képviseli, és így ugyanolyan óvintézkedéseket kell kezelni, mint maga a hozzáférési jogkivonat.
+> Az alkalmazáskódnak bizalmas adatként kell tekintenie a "IDENTITY_HEADER" környezeti változó értékét – nem szabad naplózni vagy más módon terjeszteni. A hitelesítési kód nem rendelkezik értékkel a helyi csomóponton kívül, vagy a szolgáltatás tői a szolgáltatás által üzemeltetett folyamat leállítása után, de a Service Fabric szolgáltatás identitását képviseli, és így ugyanolyan óvintézkedéseket kell kezelni, mint maga a hozzáférési jogkivonat.
 
 Jogkivonat beszerzéséhez az ügyfél a következő lépéseket hajtja végre:
-- URI-t hoz, ha összefűzi a felügyelt identitásvégpontot (MSI_ENDPOINT érték) az API-verzióval és a jogkivonathoz szükséges erőforrással (közönséggel).
-- get http-kérelmet hoz létre a megadott URI-hoz
-- hozzáadja a hitelesítési kódot (MSI_SECRET érték) fejlécként a kérelemhez
+- URI-t hoz, ha összefűzi a felügyelt identitásvégpontot (IDENTITY_ENDPOINT érték) az API-verzióval és a jogkivonathoz szükséges erőforrással (közönséggel).
+- get http(s) kérelmet hoz létre a megadott URI-hoz
+- hozzáadja a megfelelő kiszolgálói tanúsítvány-ellenőrzési logikát
+- hozzáadja a hitelesítési kódot (IDENTITY_HEADER értéket) fejlécként a kérelemhez
 - benyújtja a kérelmet
 
 A sikeres válasz egy JSON-hasznos adatot tartalmaz, amely az eredményül kapott hozzáférési jogkivonatot, valamint az azt leíró metaadatokat tartalmaz. A sikertelen válasz a hiba magyarázatát is tartalmazza. A hibakezelésről az alábbiakban olvashat.
@@ -44,19 +43,22 @@ A sikeres válasz egy JSON-hasznos adatot tartalmaz, amely az eredményül kapot
 A hozzáférési jogkivonatokat a Service Fabric különböző szinteken (csomópont, fürt, erőforrás-szolgáltató szolgáltatás) gyorsítótárazja, így a sikeres válasz nem feltétlenül jelenti azt, hogy a jogkivonat közvetlenül a felhasználói alkalmazás kérésére lett kiadva. A jogkivonatok élettartamuknál rövidebb ideig lesznek gyorsítótárazva, így egy alkalmazás garantáltan kap egy érvényes jogkivonatot. Javasoljuk, hogy az alkalmazáskód gyorsítótárazza magát minden általa beszerzett hozzáférési jogkivonatot; a gyorsítótárazási kulcsnak tartalmaznia kell (a közönség származtatását). 
 
 
+> [!NOTE]
+> Az egyetlen elfogadott API-verzió jelenleg `2019-07-01-preview`, és változhat.
+
 Mintakérelem:
 ```http
-GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://keyvault.azure.com/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
+GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
 ```
 ahol:
 
 | Elem | Leírás |
 | ------- | ----------- |
 | `GET` | A HTTP-művelet, amely azt jelzi, hogy adatokat szeretne beolvasni a végpontból. Ebben az esetben egy OAuth hozzáférési jogkivonat. | 
-| `http://localhost:2377/metadata/identity/oauth2/token` | A Service Fabric-alkalmazások felügyelt identitásvégpontja, amely et a MSI_ENDPOINT környezeti változón keresztül biztosít. |
+| `https://localhost:2377/metadata/identity/oauth2/token` | A Service Fabric-alkalmazások felügyelt identitásvégpontja, amelyet a IDENTITY_ENDPOINT környezeti változó n keresztül biztosít. |
 | `api-version` | Egy lekérdezési karakterlánc-paraméter, amely a felügyelt identitástoken-szolgáltatás API-verzióját adja meg; jelenleg az egyetlen `2019-07-01-preview`elfogadott érték a , és változhat. |
-| `resource` | A lekérdezési karakterlánc paraméter, amely a célerőforrás alkalmazásazonosítóuri-ját jelzi. Ez a kiadott jogkivonat `aud` (közönség) jogcímének lesz a megfelelő jogcím. Ebben a példában egy jogkivonatot kér az Azure Key\/Vault eléréséhez, amelynek alkalmazásazonosító URI-ja https: /keyvault.azure.com/. |
-| `Secret` | Egy HTTP-kérelem fejléce mező, amelyet a Service Fabric felügyelt identitásjogkivonat-szolgáltatás a Service Fabric-szolgáltatások a hívó hitelesítéséhez szükséges. Ezt az értéket az SF futásidejű MSI_SECRET környezeti változón keresztül biztosítja. |
+| `resource` | A lekérdezési karakterlánc paraméter, amely a célerőforrás alkalmazásazonosítóuri-ját jelzi. Ez a kiadott jogkivonat `aud` (közönség) jogcímének lesz a megfelelő jogcím. Ebben a példában egy jogkivonatot kér az Azure Key\/Vault eléréséhez, amelynek alkalmazásazonosító URI-ja https: /vault.azure.net/. |
+| `Secret` | Egy HTTP-kérelem fejléce mező, amelyet a Service Fabric felügyelt identitásjogkivonat-szolgáltatás a Service Fabric-szolgáltatások a hívó hitelesítéséhez szükséges. Ezt az értéket az SF futásidejű IDENTITY_HEADER környezeti változón keresztül biztosítja. |
 
 
 Mintaválasz:
@@ -67,7 +69,7 @@ Content-Type: application/json
     "token_type":  "Bearer",
     "access_token":  "eyJ0eXAiO...",
     "expires_on":  1565244611,
-    "resource":  "https://keyvault.azure.com/"
+    "resource":  "https://vault.azure.net/"
 }
 ```
 ahol:
@@ -124,20 +126,33 @@ namespace Azure.ServiceFabric.ManagedIdentity.Samples
         /// <returns>Access token</returns>
         public static async Task<string> AcquireAccessTokenAsync()
         {
-            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("MSI_ENDPOINT");
-            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("MSI_SECRET");
+            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("IDENTITY_ENDPOINT");
+            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("IDENTITY_HEADER");
+            var managedIdentityServerThumbprint = Environment.GetEnvironmentVariable("IDENTITY_SERVER_THUMBPRINT");
+            // Latest api version, 2019-07-01-preview is still supported.
+            var managedIdentityApiVersion = Environment.GetEnvironmentVariable("IDENTITY_API_VERSION");
             var managedIdentityAuthenticationHeader = "secret";
-            var managedIdentityApiVersion = "2019-07-01-preview";
             var resource = "https://management.azure.com/";
 
             var requestUri = $"{managedIdentityEndpoint}?api-version={managedIdentityApiVersion}&resource={HttpUtility.UrlEncode(resource)}";
 
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, requestUri);
             requestMessage.Headers.Add(managedIdentityAuthenticationHeader, managedIdentityAuthenticationCode);
+            
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, certChain, policyErrors) =>
+            {
+                // Do any additional validation here
+                if (policyErrors == SslPolicyErrors.None)
+                {
+                    return true;
+                }
+                return 0 == string.Compare(cert.GetCertHashString(), managedIdentityServerThumbprint, StringComparison.OrdinalIgnoreCase);
+            };
 
             try
             {
-                var response = await new HttpClient().SendAsync(requestMessage)
+                var response = await new HttpClient(handler).SendAsync(requestMessage)
                     .ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();

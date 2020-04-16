@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: jingwang
-ms.openlocfilehash: b73cd73a18d286f221c7be2c624719e1d23d7c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ce1b85394a7bb604841f7fb941bdebf12c0bca2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153828"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414159"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Metaadatok és AC-k megőrzése másolási tevékenység használatával az Azure Data Factoryban
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ha az Azure Data Factory másolási tevékenység segítségével másolja az adatokat a forrásból a fogadóba, a következő esetekben is megőrizheti a metaadatokat és a acl-k mentén.
 
@@ -146,4 +148,4 @@ Ha a forrást bináris formátumú Data Lake Storage Gen1/Gen2 néven állítja 
 Lásd a többi Másolási tevékenység cikkeket:
 
 - [Tevékenység másolása – áttekintés](copy-activity-overview.md)
-- [Tevékenységteljesítmény másolása](copy-activity-performance.md)
+- [Másolási tevékenység teljesítménye](copy-activity-performance.md)

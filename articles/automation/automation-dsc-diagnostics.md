@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a75b71d43b072d366ef2fcb15bf4c901680d48fb
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: badd8ba676ef25c33a5034bb04d616faeb4ef1b0
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383217"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392104"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Az Azure Automation állapotkonfigurációs jelentési adatainak továbbítása az Azure Monitor naplóiba
 
@@ -87,6 +87,7 @@ A Naplókeresés ablaktábla megnyílik egy lekérdezési terület hatóköre az
 | where OperationName contains 'DSCNodeStatusData'
 | where ResultType != 'Compliant'
 ```
+
 Szűrésrészletei:
 
 * Szűrje `DscNodeStatusData` az egyes állapotkonfigurációs csomópontok műveleteinek visszaadásához.
@@ -104,7 +105,7 @@ Riasztási szabály létrehozásához először hozzon létre egy naplókeresés
 1. A Log Analytics munkaterület – áttekintés lapon kattintson a **Naplók gombra.**
 1. Naplókeresési lekérdezés létrehozása a riasztáshoz a következő keresés beírásával a lekérdezésmezőbe:`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
-   Ha több Automation-fiókból vagy a munkaterületre való előfizetésből állított be naplókat, az értesítéseket előfizetési és Automation-fiók szerint csoportosíthatja. A `Resource` **DscNodeStatusData** rekordok keresésében az Automation-fiók nevének származtatása a mezőből.
+   Ha több Automation-fiókból vagy a munkaterületre való előfizetésből állított be naplókat, az értesítéseket előfizetési és Automation-fiók szerint csoportosíthatja. A rekordok keresésének `Resource` mezőjéből származtathatja az `DscNodeStatusData` Automation-fiók nevét.
 1. A **Szabály létrehozása** képernyő megnyitásához kattintson a lap tetején az **Új riasztási szabály** elemre. 
 
 A riasztás konfigurálásának lehetőségeiről a [Riasztási szabály létrehozása című](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)témakörben talál további információt.
@@ -128,46 +129,46 @@ Ez a lekérdezés a csomópont állapotának diagramját jeleníti meg az idő m
 
 Az Azure Automation-diagnosztika két rekordkategóriát hoz létre az Azure Monitor naplóiban:
 
-* Csomópont állapotadatai (**DscNodeStatusData**)
-* Erőforrás állapotadatai (**DscResourceStatusData**)
+* Csomópont állapotadatai`DscNodeStatusData`( )
+* Erőforrás állapotadatai`DscResourceStatusData`( )
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
 | Tulajdonság | Leírás |
 | --- | --- |
 | TimeGenerated |A megfelelőségi ellenőrzés letöltésének dátuma és időpontja. |
-| OperationName |DscNodeStatusData. |
-| ResultType (Eredménytípusa) |Azt jelzi, hogy a csomópont megfelelő-e. |
+| OperationName |`DscNodeStatusData`. |
+| ResultType (Eredménytípusa) |Érték, amely azt jelzi, hogy a csomópont megfelelő-e. |
 | NodeName_s |A kezelt csomópont neve. |
-| NodeComplianceStatus_s |Azt jelzi, hogy a csomópont megfelelő-e. |
-| DscReportStatus |Azt jelzi, hogy a megfelelőségi ellenőrzés sikeresen lefutott-e. |
-| ConfigurationMode (Konfigurációs mód) | A konfiguráció alkalmazásának van a csomópontra. Lehetséges értékek: <ul><li>`ApplyOnly`: A DSC alkalmazza a konfigurációt, és nem tesz tovább semmit, kivéve, ha egy új konfiguráció tolt a célcsomópontra, vagy ha egy új konfigurációt lekért egy kiszolgálóról. Az új konfiguráció kezdeti alkalmazása után a DSC nem ellenőrzi a korábban konfigurált állapotból való eltolódást. A DSC addig próbálja alkalmazni a `ApplyOnly` konfigurációt, amíg az sikeres nem lesz, mielőtt az érték érvénybe lépne. </li><li>`ApplyAndMonitor`: Ez az alapértelmezett érték. Az LCM minden új konfigurációt alkalmaz. Egy új konfiguráció kezdeti alkalmazása után, ha a célcsomópont a kívánt állapottól elsodródik, a DSC jelenti az eltérést a naplókban. A DSC addig próbálja alkalmazni a `ApplyAndMonitor` konfigurációt, amíg az sikeres nem lesz, mielőtt az érték érvénybe lépne.</li><li>`ApplyAndAutoCorrect`: A DSC minden új konfigurációt alkalmaz. Egy új konfiguráció kezdeti alkalmazása után, ha a célcsomópont a kívánt állapotból sodródik, a DSC jelenti az eltérést a naplókban, majd újra alkalmazza az aktuális konfigurációt.</li></ul> |
+| NodeComplianceStatus_s |Állapotérték, amely megadja, hogy a csomópont megfelelő-e. |
+| DscReportStatus |Állapotérték, amely jelzi, hogy a megfelelőségi ellenőrzés sikeresen lefutott-e. |
+| ConfigurationMode (Konfigurációs mód) | A konfiguráció nak a csomópontra való alkalmazásához használt mód. Lehetséges értékek: <ul><li>`ApplyOnly`: A DSC alkalmazza a konfigurációt, és nem tesz tovább semmit, kivéve, ha egy új konfiguráció tolt a célcsomópontra, vagy ha egy új konfigurációt lekért egy kiszolgálóról. Az új konfiguráció kezdeti alkalmazása után a DSC nem ellenőrzi a korábban konfigurált állapotból való eltolódást. A DSC addig próbálja alkalmazni a `ApplyOnly` konfigurációt, amíg az sikeres nem lesz, mielőtt az érték érvénybe lépne. </li><li>`ApplyAndMonitor`: Ez az alapértelmezett érték. Az LCM minden új konfigurációt alkalmaz. Egy új konfiguráció kezdeti alkalmazása után, ha a célcsomópont a kívánt állapottól elsodródik, a DSC jelenti az eltérést a naplókban. A DSC addig próbálja alkalmazni a `ApplyAndMonitor` konfigurációt, amíg az sikeres nem lesz, mielőtt az érték érvénybe lépne.</li><li>`ApplyAndAutoCorrect`: A DSC minden új konfigurációt alkalmaz. Egy új konfiguráció kezdeti alkalmazása után, ha a célcsomópont a kívánt állapotból sodródik, a DSC jelenti az eltérést a naplókban, majd újra alkalmazza az aktuális konfigurációt.</li></ul> |
 | HostName_s | A kezelt csomópont neve. |
 | IPAddress | A felügyelt csomópont IPv4-címe. |
-| Kategória | DscNodeStatus. |
+| Kategória | `DscNodeStatus`. |
 | Erőforrás | Az Azure Automation-fiók neve. |
 | Tenant_g | GUID, amely azonosítja a bérlő a hívó. |
-| NodeId_g |A felügyelt csomópontot azonosító GUID azonosító. |
-| DscReportId_g |A jelentést azonosító GUID. |
-| LastSeenTime_t |A jelentés utolsó megtekintésének dátuma és időpontja |
-| ReportStartTime_t |A jelentés kezdésének dátuma és időpontja. |
-| ReportEndTime_t |A jelentés befejezésének dátuma és időpontja. |
-| NumberOfResources_d |A csomópontra alkalmazott konfigurációban meghívott DSC-erőforrások száma. |
-| SourceSystem | Hogyan gyűjtötte az Azure Monitor az adatokat. Mindig "Azure" az Azure-diagnosztika. |
-| ResourceId |Az Azure Automation-fiók azonosítója. |
-| Eredményleírása | A művelet leírása. |
+| NodeId_g | A felügyelt csomópontot azonosító GUID azonosító. |
+| DscReportId_g | A jelentést azonosító GUID. |
+| LastSeenTime_t | A jelentés utolsó megtekintésének dátuma és időpontja |
+| ReportStartTime_t | A jelentés kezdésének dátuma és időpontja. |
+| ReportEndTime_t | A jelentés befejezésének dátuma és időpontja. |
+| NumberOfResources_d | A csomópontra alkalmazott konfigurációban meghívott DSC-erőforrások száma. |
+| SourceSystem | A forrásrendszer azonosítja, hogy az Azure Monitor naplók gyűjtötte az adatokat. Mindig `Azure` az Azure-diagnosztika. |
+| ResourceId |Az Azure Automation-fiók erőforrás-azonosítója. |
+| Eredményleírása | A művelet erőforrásleírása. |
 | SubscriptionId | Az Automation-fiók Azure-előfizetésazonosítója (GUID). |
 | ResourceGroup | Az Automation-fiók erőforráscsoportjának neve. |
 | ResourceProvider | Microsoft. Automatizálás. |
 | ResourceType | AUTOMATIONACCOUNTS. |
-| CorrelationId |GUID, amely a megfelelőségi jelentés korrelációs azonosítója. |
+| CorrelationId | A megfelelőségi jelentés korrelációs azonosítóját tartalmazó GUID. |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
 | Tulajdonság | Leírás |
 | --- | --- |
 | TimeGenerated |A megfelelőségi ellenőrzés letöltésének dátuma és időpontja. |
-| OperationName |DscResourceStatusData.|
+| OperationName |`DscResourceStatusData`.|
 | ResultType (Eredménytípusa) |Azt jelzi, hogy az erőforrás megfelelő-e. |
 | NodeName_s |A kezelt csomópont neve. |
 | Kategória | DscNodeStatus. |
@@ -185,7 +186,7 @@ Az Azure Automation-diagnosztika két rekordkategóriát hoz létre az Azure Mon
 | ErrorMessage_s |A hibaüzenet, ha az erőforrás meghibásodott. |
 | DscResourceDuration_d |A DSC-erőforrás által futtatott idő másodpercben. |
 | SourceSystem | Hogyan gyűjtötte az Azure Monitor az adatokat. Mindig `Azure` az Azure-diagnosztika. |
-| ResourceId |Megadja az Azure Automation-fiókot. |
+| ResourceId |Az Azure Automation-fiók azonosítója. |
 | Eredményleírása | A művelet leírása. |
 | SubscriptionId | Az Automation-fiók Azure-előfizetésazonosítója (GUID). |
 | ResourceGroup | Az Automation-fiók erőforráscsoportjának neve. |

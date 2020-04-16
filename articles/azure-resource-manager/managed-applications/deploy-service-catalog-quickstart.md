@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9a69296ddfc93fd7e8a6650df91876829631f5d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce58fc69496f54c078b0a0a55a8a3c7cad82a051
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473064"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391713"
 ---
 # <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>Rövid útmutató: Szolgáltatáskatalógus-alkalmazás üzembe helyezése az Azure Portalon keresztül
 
-Az [előző rövid útmutatóban](publish-managed-app-definition-quickstart.md)felügyelt alkalmazásdefiníciót tett közzé. Ebben a rövid útmutatóban hozzon létre egy szolgáltatáskatalógus-alkalmazást ebből a definícióból.
+Az [előző rövid útmutatóban](publish-service-catalog-app.md)felügyelt alkalmazásdefiníciót tett közzé. Ebben a rövid útmutatóban hozzon létre egy szolgáltatáskatalógus-alkalmazást ebből a definícióból.
 
 ## <a name="create-service-catalog-app"></a>Szolgáltatáskatalógus-alkalmazás létrehozása
 

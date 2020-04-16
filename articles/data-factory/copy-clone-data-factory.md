@@ -11,14 +11,16 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: bafe70655f05b5dda32f51393591f82b4b5625f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e44bda8648fbf26487b04cf36a8fd0ec085c411
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73678132"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414113"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Adatgyár másolása vagy klónozása az Azure Data Factoryban
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez a cikk ismerteti, hogyan másolhatja vagy klónozhatja az Azure Data Factory adat-előállító.
 

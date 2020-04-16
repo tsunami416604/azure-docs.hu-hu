@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0be98ac60e11b3e21a864aa4ca18fcac2c7f014c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 69d3f1a7f0c455275a212401110459abb1b8d8d0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053409"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403413"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Rövid útmutató: Arcok észlelése egy lemezképen a Face REST API és a C használatával #
 
-Ebben a rövid útmutatóban az Azure Face REST API C# használatával észleli az emberi arcokat egy lemezképben.
+Ebben a rövid útmutatóban az Azure Face REST API C# használatával észlelheti az emberi arcokat egy lemezképben.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
@@ -244,7 +244,7 @@ Adja hozzá a következő módszert a **Program** osztályhoz. Ez a módszer úg
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-A sikeres válasz a Face adatokat könnyen olvasható JSON formátumban jeleníti meg. Példa:
+A sikeres válasz a Face adatokat könnyen olvasható JSON formátumban jeleníti meg. Például:
 
 ```json
 [

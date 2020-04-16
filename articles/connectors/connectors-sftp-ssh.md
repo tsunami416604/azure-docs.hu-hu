@@ -4,16 +4,16 @@ description: SSH és Azure Logic Apps alkalmazásokkal automatizálhatja az SFTP
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/7/2020
+ms.date: 04/13/2020
 tags: connectors
-ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128413"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393631"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése SSH és Azure Logic Apps használatával
 
@@ -127,7 +127,7 @@ Ha a személyes kulcs PuTTY formátumban van, amely a .ppk (PuTTY Private Key) f
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Példa:
+   Például:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
@@ -146,6 +146,16 @@ Ha a személyes kulcs PuTTY formátumban van, amely a .ppk (PuTTY Private Key) f
    ![Válassza az "OpenSSH kulcs exportálása" lehetőséget](./media/connectors-sftp-ssh/export-openssh-key.png)
 
 1. Mentse a személyes kulcsfájlt a `.pem` fájlnévkiterjesztéssel.
+
+## <a name="considerations"></a>Megfontolandó szempontok
+
+Ez a szakasz az összekötő eseményindítóinak és műveleteinek áttekintése szempontokat ismerteti.
+
+<a name="create-file"></a>
+
+### <a name="create-file"></a>Fájl létrehozása
+
+Ha fájlt szeretne létrehozni az SFTP-kiszolgálón, **használhatja** az SFTP-SSH Create file műveletet. Amikor ez a művelet létrehozza a fájlt, a Logic Apps szolgáltatás is automatikusan meghívja az SFTP-kiszolgálót a fájl metaadatainak lekéréséhez. Ha azonban az újonnan létrehozott fájlt áthelyezi, mielőtt a Logic Apps szolgáltatás hívást `404` kezdeményezne `'A reference was made to a file or folder which does not exist'`a metaadatok lehívására, hibaüzenet jelenik meg: . Ha ki szeretné hagyni a fájl metaadatainak olvasását a fájl létrehozása után, kövesse a [hozzáadáslépéseit, és állítsa az Összes fájl **metaadat-fájl beolvasása** tulajdonságot **Nem**értékre.](#file-does-not-exist)
 
 <a name="connect"></a>
 
@@ -211,9 +221,27 @@ Ez az eseményindító logikai alkalmazás munkafolyamatát indítja el, amikor 
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH művelet: Tartalom beszerezni elérési útját
+### <a name="sftp---ssh-action-get-file-content-using-path"></a>SFTP - SSH művelet: Fájltartalom beszerezni e-útja segítségével
 
-Ez a művelet leveszi a tartalmat egy SFTP-kiszolgálón lévő fájlból. Így például hozzáadhatja az előző példából származó eseményindítót, és egy olyan feltételt, amelynek a fájl tartalmának meg kell felelnie. Ha a feltétel igaz, a művelet, amely megkapja a tartalmat futtathatja.
+Ez a művelet a fájl elérési útjának megadásával leveszi a tartalmat egy SFTP-kiszolgálón lévő fájlból. Így például hozzáadhatja az előző példából származó eseményindítót, és egy olyan feltételt, amelynek a fájl tartalmának meg kell felelnie. Ha a feltétel igaz, a művelet, amely megkapja a tartalmat futtathatja.
+
+<a name="troubleshooting-errors"></a>
+
+## <a name="troubleshoot-errors"></a>Hibák elhárítása
+
+Ez a szakasz a gyakori hibák vagy problémák lehetséges megoldásait ismerteti.
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 hiba: "Nem létező fájlra vagy mappára hivatkoztak"
+
+Ez a hiba akkor fordulhat elő, ha a logikai alkalmazás új fájlt hoz létre az SFTP-kiszolgálón az SFTP-SSH **Create fájlműveleten** keresztül, de az újonnan létrehozott fájl azonnal áthelyeződik, mielőtt a Logic Apps szolgáltatás letudná szerezni a fájl metaadatait. Amikor a logikai alkalmazás futtatja a **Fájl létrehozása** műveletet, a Logic Apps szolgáltatás is automatikusan meghívja az SFTP-kiszolgálót a fájl metaadatainak lekéréséhez. Ha azonban a fájlt áthelyezik, a Logic Apps szolgáltatás már `404` nem találja a fájlt, így a hibaüzenet jelenik meg.
+
+Ha nem tudja elkerülni vagy késleltetni a fájl áthelyezését, az alábbi lépésekkel kihagyhatja a fájl metaadatainak olvasását a fájl létrehozása után:
+
+1. A **Fájl létrehozása** műveletben nyissa meg az **Új paraméter hozzáadása** listát, jelölje ki az Összes fájl **metaadat-beadása** tulajdonságot, és állítsa az értéket **Nem**értékre.
+
+1. Ha később szüksége lesz erre a fájlmetaadatra, használhatja a **Fájl metaadatának beszerezni** műveletét.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 

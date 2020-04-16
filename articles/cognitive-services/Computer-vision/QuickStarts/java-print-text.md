@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b976002ee185a87daedf37a93f3d02a166eb6f8a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4a9d2453d1f2dbb1f7efe942eb7a4b813a28783c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974597"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404797"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Rövid útmutató: Nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és a Java használatával
 
 > [!NOTE]
-> Ha angol nyelvű szöveget használ, fontolja meg az új [Olvasás művelet használatát.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) [Java-gyorsútmutató](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/java-hand-text) is elérhető. 
+> Ha angol nyelvű szöveget szeretne kinyerni, fontolja meg az új [Olvasás művelet használatát.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) [Java-gyorsútmutató](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/java-hand-text) is elérhető. 
 
-Ebben a rövid útmutatóban a számítógép-látás rest API-val optikai karakterfelismeréssel (OCR) rendelkező nyomtatott szöveget nyerhet ki egy képből. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) módszerrel észlelheti a kép nyomtatott szövegét, és kinyerheti a felismert karaktereket egy gép által használható karakterfolyamba.
+Ebben a rövid útmutatóban optikai karakterfelismeréssel (OCR) rendelkező nyomtatott szöveget nyerhet ki egy képből a Computer Vision REST API használatával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) módszerrel észlelheti a kép nyomtatott szövegét, és kinyerheti a felismert karaktereket egy gép által használható karakterfolyamba.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) mielőtt elkezdené.
 
@@ -215,7 +215,9 @@ REST Response:
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy Java Swing-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Fedezze fel a Java Swing alkalmazás, amely a Computer Vision elvégzésére optikai karakterfelismerés (OCR); intelligens körülvágott bélyegképek létrehozása; és észlelheti, kategorizálhatja, címkézheti és leírhatja a képek vizuális jellemzőit.
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – Java-oktatóanyag](../Tutorials/java-tutorial.md)
+
+* A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).

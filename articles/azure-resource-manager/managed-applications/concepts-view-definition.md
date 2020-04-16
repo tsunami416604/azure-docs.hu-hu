@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: d0c60f5738bf634f9d43d6d4f0d78c1239b7ff3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a3d2234a140d1fb2eede50e3fe2eef5575da648
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650694"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391696"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Definíciós összetevő megtekintése az Azure felügyelt alkalmazásaiban
 
@@ -20,7 +20,7 @@ Ez a cikk áttekintést nyújt a nézetdefiníciós összetevőről és annak k�
 
 ## <a name="view-definition-artifact"></a>Meghatározás megtekintése összetevő
 
-A nézetdefiníciós összetevőnek **viewDefinition.json** névre kell esnie, és ugyanazon a szinten kell elhelyezni, mint a **createUiDefinition.json** és a **mainTemplate.json** a .zip csomagban, amely felügyelt alkalmazásdefiníciót hoz létre. A .zip csomag létrehozásáról és a felügyelt alkalmazásdefiníció közzétételéről az [Azure felügyelt alkalmazásdefiníció közzététele című](publish-managed-app-definition-quickstart.md) témakörben olvashat.
+A nézetdefiníciós összetevőnek **viewDefinition.json** névre kell esnie, és ugyanazon a szinten kell elhelyezni, mint a **createUiDefinition.json** és a **mainTemplate.json** a .zip csomagban, amely felügyelt alkalmazásdefiníciót hoz létre. A .zip csomag létrehozásáról és a felügyelt alkalmazásdefiníció közzétételéről az [Azure felügyelt alkalmazásdefiníció közzététele című](publish-service-catalog-app.md) témakörben olvashat.
 
 ## <a name="view-definition-schema"></a>Definícióséma megtekintése
 

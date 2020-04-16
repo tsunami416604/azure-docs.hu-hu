@@ -11,12 +11,12 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 104b377d9a1318a7320ea382580aaeedf9ac25f9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d673c5afcaece9b1cfe50d800ea9eeca96532ae8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745142"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411617"
 ---
 # <a name="system-views-supported-in-synapse-sql-pool"></a>A Synapse SQL-készletáltal támogatott rendszernézetek
 
@@ -150,16 +150,16 @@ A következő DMV-k a szinapszid SQL-készletre vonatkoznak, de a **fő** adatb�
 * [sys.types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-synapse-sql-pool"></a>A Synapse SQL-készletben elérhető SQL Server DMV-k
+## <a name="sql-server-dmvs-available-in-sql-pool"></a>Sql Server DMV-k sql készletben érhetők el
 
-A Synapse SQL-készlet számos SQL Server dinamikus felügyeleti nézetet (DMV) elérhetővé. Ezek a nézetek a Synapse SQL-készletben lekérdezve a disztribúciókon futó SQL-adatbázisok állapotát jelentik.
+Az SQL-készlet számos SQL Server dinamikus felügyeleti nézetet (DMV) elérhetővé teszi. Ezek a nézetek az SQL-készletben lekérdezve a disztribúciókon futó SQL-adatbázisok állapotát jelentik.
 
 A Synapse SQL-készlet és a párhuzamos adattárház (PDW) ugyanazokat a rendszernézeteket használja. Minden dmv rendelkezik egy pdw_node_id nevű oszlopmal, amely a számítási csomópont azonosítója.
 
 > [!NOTE]
 > A nézetek használatához szúrja be a "pdw_nodes_" nevet a következő táblázatban látható módon:
 
-| DMV-név a Synapse SQL-készletben | SQL Server Transact-SQL cikk|
+| DMV-név az SQL-készletben | SQL Server Transact-SQL cikk|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -221,9 +221,9 @@ A Synapse SQL-készlet és a párhuzamos adattárház (PDW) ugyanazokat a rendsz
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-synapse-sql-pool"></a>Az SQL Server 2016 PolyBase dmv-ek a Synapse SQL-készletben érhetők el
+## <a name="sql-server-2016-polybase-dmvs-available-in-sql-pool"></a>Az SQL Server 2016 PolyBase dmv-ek sql készletben érhetők el
 
-A következő DMV-k a szinapszid SQL-készletre vonatkoznak, de a **fő** adatbázishoz való csatlakozással kell végrehajtani őket.
+A következő DMV-k az SQL-készletre vonatkoznak, de a **fő** adatbázishoz való csatlakozással kell végrehajtani őket.
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

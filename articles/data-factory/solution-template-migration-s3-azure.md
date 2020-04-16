@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e918fe01426202746f0225d25304b9c1b26cb74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927329"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414763"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Adatok áttelepítése az Amazon S3-ról az Azure Data Lake Storage Gen2 szolgáltatásba
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 A sablonok segítségével több száz millió fájlt tartalmazó petabájtnyi adatot telepíthet át az Amazon S3-ról az Azure Data Lake Storage Gen2-re. 
 
@@ -71,7 +73,7 @@ A sablon két paramétert tartalmaz:
 
     > [!NOTE]
     > A tábla neve s3_partition_control_table.
-    > A vezérlőtábla sémája PartitionPrefix és SuccessOrFailure, ahol a PartitionPrefix az S3 előtagja az Amazon S3 mappáinak és fájljainak név szerinti szűrésére, és a SuccessOrFailure az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem másolt az Azure-ba, és 1 azt jelenti, hogy ez a partíció sikeresen átmásolt az Azure-ba.
+    > A vezérlőtábla sémája partitionprefix és SuccessOrFailure, ahol PartitionPrefix az előtag az S3 a mappák és fájlok szűréséhez az Amazon S3 név szerint, és SuccessOrFailure az állapota az egyes partíciók másolása: 0 azt jelenti, hogy ez a partíció nem másolt az Azure-ba, és 1 azt jelenti, hogy ez a partíció sikeresen átmásolta az Azure-ba.
     > A vezérlőtáblában 5 partíció van definiálva, és az egyes partíciók másolásának alapértelmezett állapota 0.
 
     ```sql
@@ -132,7 +134,7 @@ A sablon két paramétert tartalmaz:
 
     > [!NOTE]
     > A tábla neve s3_partition_delta_control_table.
-    > A vezérlőtábla sémája partitionprefix, JobRunTime és SuccessOrFailure, ahol a PartitionPrefix az S3 előtag beállítása az Amazon S3 mappáinak és fájljainak név szerinti szűrésére, a JobRunTime a datetime érték a feladatok másolásakor, a SuccessOrFailure pedig az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem lett átmásolva az Azure-ba, és 1 azt jelenti, hogy ez a partíció sikeresen átlett másolva az Azure-ba.
+    > A vezérlőtábla sémája a PartitionPrefix, a JobRunTime és a SuccessOrFailure, ahol a PartitionPrefix az S3 előtag az Amazon S3-ban lévő mappák és fájlok név szerinti szűrésére, a JobRunTime a datetime érték a másolási feladatok futtatásakor, a SuccessOrFailure pedig az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem lett átmásolva az Azure-ba, és 1 azt jelenti, hogy ez a partíció sikeresen átlett másolva az Azure-ba.
     > A vezérlőtáblában 5 partíció van definiálva. A JobRunTime alapértelmezett értéke lehet az egyszeri előzményadat-áttelepítés indítása. Az ADF másolási tevékenysége az AWS S3-on lévő azon fájlokat másolja, amelyeket utoljára módosítottak ezen időpont után. Az egyes partíciók másolásának alapértelmezett állapota 1.
 
     ```sql

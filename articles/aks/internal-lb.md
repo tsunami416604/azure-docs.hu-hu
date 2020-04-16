@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan hozhat létre és használhat belső terhelése
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 4decd66a558b031f1aaaf9c64556dae545ed05d3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 9c2966215d07c4ddf052d30a5757a2deee2e0b5c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668410"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392776"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Belső terheléselosztó használata az Azure Kubernetes szolgáltatással (AKS)
 
@@ -25,7 +25,7 @@ Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürttel. Ha AKS-für
 
 Az Azure CLI 2.0.59-es vagy újabb verziójára is szüksége van telepítve és konfigurálva. Futtassa `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni kell, olvassa el [az Azure CLI telepítése][install-azure-cli]című témakört.
 
-Meglévő alhálózat vagy erőforráscsoport használata esetén az AKS-fürt egyszerű szolgáltatásának engedélyre van szüksége a hálózati erőforrások kezeléséhez. Általában rendelje hozzá a *hálózat közreműködői* szerepkört a szolgáltatásnévhez a delegált erőforrásokon. Az engedélyekről további információt az [AKS-hozzáférés delegálása más Azure-erőforrásokhoz című témakörben talál.][aks-sp]
+Meglévő alhálózat vagy erőforráscsoport használata esetén az AKS-fürt egyszerű szolgáltatásának engedélyre van szüksége a hálózati erőforrások kezeléséhez. Általában rendelje hozzá a *hálózat közreműködői* szerepkört a szolgáltatásnévhez a delegált erőforrásokon. Egyszerű szolgáltatás helyett használhatja a rendszer hozzárendelt felügyelt identitás engedélyeket. További információ: [Felügyelt identitások használata.](use-managed-identity.md) Az engedélyekről további információt az [AKS-hozzáférés delegálása más Azure-erőforrásokhoz című témakörben talál.][aks-sp]
 
 ## <a name="create-an-internal-load-balancer"></a>Hozzon létre egy belső terheléselosztót
 

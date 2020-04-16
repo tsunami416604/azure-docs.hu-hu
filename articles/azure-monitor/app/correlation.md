@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 6ceace1ee93fab8c0a46ed4a67850fc87a5cdad2
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 2e862410e2bf12e09e1a6388bbb6f7105b5b2edf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991228"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405267"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriai korreláció az Application Insightsban
 
@@ -314,7 +314,7 @@ Az idő múlásával a .NET számos módot határozott meg a telemetriai és dia
 
 De ezek a módszerek nem engedélyezték az automatikus elosztott nyomkövetési támogatást. `DiagnosticSource`támogatja az automatikus gépközi korrelációt. A .NET `DiagnosticSource` függvénytárak támogatják és lehetővé teszik a korrelációs környezet automatikus, gépek közötti terjesztését az átvitelen keresztül, például http.
 
-A [tevékenységfelhasználói](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) `DiagnosticSource` útmutató ismerteti a nyomon követési tevékenységek alapjait.
+A [tevékenységfelhasználói](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) `DiagnosticSource` útmutató ismerteti a nyomon követési tevékenységek alapjait.
 
 ASP.NET Core 2.0 támogatja a HTTP-fejlécek kinyerését és az új tevékenységek megkezdését.
 

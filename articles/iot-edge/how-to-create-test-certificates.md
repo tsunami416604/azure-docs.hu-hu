@@ -4,16 +4,16 @@ description: Hozzon létre teszttanúsítványokat, és ismerje meg, hogyan tele
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5afb9b7a6ba1ffb99df064c9f92780dc820b2e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 364846f6cef196f6cefa7872af48f262b387db4f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535986"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393820"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Demótanúsítványok létrehozása az IoT Edge-eszköz funkcióinak teszteléséhez
 
@@ -247,8 +247,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 A parancsnak adott nevet az IoT Edge-eszköz az IoT Hub eszközazonosítója lesz.
 
-Az új eszközidentitás-parancs több tanúsítványt és kulcsfájlt hoz létre, köztük kettőt, amelyet a DPS-ben való egyéni regisztráció létrehozásakor és az IoT Edge futásidejének telepítésekor fog használni:
+Az új eszközidentitás-parancs több tanúsítványt és kulcsfájlt hoz létre, köztük hármat, amelyet a DPS-ben való egyéni regisztráció létrehozásakor és az IoT Edge futásidejének telepítésekor fog használni:
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
@@ -262,8 +263,9 @@ Hozza létre az IoT Edge-eszköz identitástanúsítványát és a személyes ku
 
 A parancsnak adott nevet az IoT Edge-eszköz az IoT Hub eszközazonosítója lesz.
 
-A parancsfájl több tanúsítványt és kulcsfájlt hoz létre, köztük kettőt, amelyet a DPS-ben való egyéni igénylések létrehozásakor és az IoT Edge futásidejének telepítésekor fog használni:
+A parancsfájl több tanúsítványt és kulcsfájlt hoz létre, köztük hármat, amelyet a DPS-ben való egyéni igénylések létrehozásakor és az IoT Edge futásidejének telepítésekor fog használni:
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 
@@ -290,7 +292,7 @@ Az IoT-eszköz is szüksége van egy másolatot az eszköz tanúsítványok, hog
 
 1. Keresse meg azt a munkakönyvtárat, amely rendelkezik a tanúsítványgenerálási parancsfájlokkal és a legfelső szintű hitelesítésszolgáltatói tanúsítvánnyal.
 
-2. Hozzon létre két (elsődleges és másodlagos) tanúsítványt az alsóbb rétegbeli eszközhöz. Egy egyszerű elnevezési konvenció használata a tanúsítványok létrehozása az IoT-eszköz nevével, majd az elsődleges vagy másodlagos címke. Példa:
+2. Hozzon létre két (elsődleges és másodlagos) tanúsítványt az alsóbb rétegbeli eszközhöz. Egy egyszerű elnevezési konvenció használata a tanúsítványok létrehozása az IoT-eszköz nevével, majd az elsődleges vagy másodlagos címke. Például:
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -320,7 +322,7 @@ Az IoT-eszköz is szüksége van egy másolatot az eszköz tanúsítványok, hog
 
 1. Keresse meg azt a munkakönyvtárat, amely rendelkezik a tanúsítványgenerálási parancsfájlokkal és a legfelső szintű hitelesítésszolgáltatói tanúsítvánnyal.
 
-2. Hozzon létre két (elsődleges és másodlagos) tanúsítványt az alsóbb rétegbeli eszközhöz. Egy egyszerű elnevezési konvenció használata a tanúsítványok létrehozása az IoT-eszköz nevével, majd az elsődleges vagy másodlagos címke. Példa:
+2. Hozzon létre két (elsődleges és másodlagos) tanúsítványt az alsóbb rétegbeli eszközhöz. Egy egyszerű elnevezési konvenció használata a tanúsítványok létrehozása az IoT-eszköz nevével, majd az elsődleges vagy másodlagos címke. Például:
 
    ```bash
    ./certGen.sh create_device_certificate "<device name>-primary"

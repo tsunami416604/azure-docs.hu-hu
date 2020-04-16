@@ -6,20 +6,20 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 03/25/2020
+ms.date: 04/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: 913bc16f7408acebb0e65359e8845ce0f6a3a2f4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: b99bd20b9b9e18bbc09edd5bb49f34147ccfaabd
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314250"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390244"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
 > [!div class="op_single_selector"]
-> * [Helyek szolgáltató alapján](expressroute-locations.md)
-> * [Szolgáltatók hely alapján](expressroute-locations-providers.md)
+> * [Helyek szolgáltató szerint](expressroute-locations.md)
+> * [Szolgáltatók hely szerint](expressroute-locations-providers.md)
 
 
 Az ebben a cikkben található táblák az ExpressRoute földrajzi lefedettségéről és helyéről, az ExpressRoute-kapcsolatszolgáltatókról és az ExpressRoute rendszerintegrátorokról (SI) nyújtanak tájékoztatást.
@@ -81,7 +81,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Ais](https://business.ais.co.th/solution/en/azure-expressroute.html)** | Támogatott | Támogatott | Bangkok |
 | **[Aryaka Networks](https://www.aryaka.com/)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Hong Kong SAR, Sao Paulo, Seattle, Szilícium-völgy, Szingapúr, Tokió, Washington DC |
 | **[Ascenty Data Centers](https://www.ascenty.com/en/cloud/microsoft-express-route)** |Támogatott |Támogatott |Sao Paulo |
-| **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, London, Szilícium-völgy, Szingapúr, Sydney, Tokió, Toronto, Washington, D.C. |
+| **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Frankfurt, London, Szilícium-völgy, Szingapúr, Sydney, Tokió, Toronto, Washington DC |
 | **[TOKIÓBAN](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | Támogatott | Támogatott | Tokió2 |
 | **[BBIX KÖZÖTT](https://www.bbix.net/en/service/ix/)** | Támogatott | Támogatott | Tokió |
 | **[BCX](https://www.bcx.co.za/solutions)** |Támogatott |Támogatott |Fokváros|
@@ -138,7 +138,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Dubai2, Frankfurt, Hong Kong SAR, Johannesburg, London, Párizs, Sao Paulo, Szilícium-völgy, Szingapúr, Sydney, Tokió, Washington DC |
 | **[Orixcom között](https://www.orixcom.com/cloud-solutions/)** | Támogatott | Támogatott | Dubaj2 |
 | **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |Támogatott |Támogatott |Chicago, Szilícium-völgy, Washington, D.C. |
-| **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Támogatott |Támogatott |Chicago, Hongkong KKT, London |
+| **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Támogatott |Támogatott |Chicago, Hongkong KKT, London, Szingapúr2 |
 | **[Sejong Telekommunikáció](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Támogatott |Támogatott |Szöul |
 | **[Ses](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Támogatott |Támogatott | Washington DC |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Támogatott |Támogatott |Csennai, Mumbai2 |

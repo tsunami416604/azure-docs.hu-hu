@@ -1,29 +1,30 @@
 ---
-title: Az Azure Event Grid blobtárolási eseménysémája
+title: Az Azure Blob Storage eseményrács forrásaként
 description: A blobstorage-eseményekhez az Azure Event Griddel biztosított tulajdonságok ismertetése
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: cfc6e4790b67137b423cc90d93874d4914f81251
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756007"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393375"
 ---
-# <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid eseménysémája a Blob storage-hoz
+# <a name="azure-blob-storage-as-an-event-grid-source"></a>Az Azure Blob Storage eseményrács-forrásként
 
-Ez a cikk a blob tárolási események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
+Ez a cikk a blob tárolási események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md) Emellett az Azure Blob Storage eseményforrásként való használatához fontos útmutatók listáját is tartalmazza.
 
-A mintaparancsfájlok és oktatóanyagok listáját a [Tárolási eseményforrás ban](event-sources.md#storage)láthatja.
 
 >[!NOTE]
 > Csak **storageV2 típusú (általános célú v2)**, **BlockBlobStorage**és **BlobStorage** támogatási esemény integráció. **A storage (genral purpose v1)** *nem* támogatja az Event Griddel való integrációt.
 
-## <a name="list-of-events-for-blob-rest-apis"></a>A Blob REST API-k eseményeinek listája
+## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
+
+### <a name="list-of-events-for-blob-rest-apis"></a>A Blob REST API-k eseményeinek listája
 
 Ezek az események akkor aktiválódnak, amikor egy ügyfél létrehoz, lecserél vagy töröl egy blobot a Blob REST API-k hívásával.
 
@@ -35,7 +36,7 @@ Ezek az események akkor aktiválódnak, amikor egy ügyfél létrehoz, lecseré
 > [!NOTE]
 > Ha biztosítani szeretné, hogy a **Microsoft.Storage.BlobCreated** esemény csak akkor aktiválódjon, amikor egy `CopyBlob` `PutBlob`blokkblob `PutBlockList` teljesen véglegesítve van, szűrje a , és a REST API-hívások eseményét. Ezek az API-hívások csak akkor indítják el a **Microsoft.Storage.BlobCreated** eseményt, ha az adatok teljes mértékben véglegesítve vannak egy blokkblobban. A szűrő létrehozásáról az [Eseményrács eseményeinek szűrése](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)című témakörben olvashat.
 
-## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Az Azure Data Lake Storage Gen 2 REST API-k eseményeinek listája
+### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Az Azure Data Lake Storage Gen 2 REST API-k eseményeinek listája
 
 Ezek az események akkor aktiválódnak, ha engedélyezi a hierarchikus névteret a tárfiókon, és az ügyfelek meghívják az Azure Data Lake Storage Gen2 REST API-kat. Az Azure Data Lake Storage Gen2 bemutatása [az Azure Data Lake Storage Gen2 bemutatása című témakörben található.](../storage/blobs/data-lake-storage-introduction.md)
 
@@ -53,7 +54,7 @@ Ezek az események akkor aktiválódnak, ha engedélyezi a hierarchikus névtere
 
 <a id="example-event" />
 
-## <a name="the-contents-of-an-event-response"></a>Az eseményre adott válasz tartalma
+### <a name="the-contents-of-an-event-response"></a>Az eseményre adott válasz tartalma
 
 Esemény aktiválásakor az Event Grid szolgáltatás adatokat küld az adott eseményről az előfizetési végpontnak.
 
@@ -288,7 +289,7 @@ Ha a blob tárfiók hierarchikus névtérrel rendelkezik, az adatok az előző p
 }]
 ```
 
-## <a name="event-properties"></a>Esemény tulajdonságai
+### <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény legfelső szintű adatokat rendelkezik:
 
@@ -321,6 +322,17 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | Rekurzív | sztring | `True`a művelet végrehajtása az összes gyermekkönyvtáron; ellenkező `False`esetben . <br>Csak a hierarchikus névtérrel rendelkező blobstorage-fiókokon aktivált események esetén jelenik meg. |
 | Sequencer | sztring | Egy átlátszatlan karakterlánc-érték, amely egy adott blobnév események logikai sorrendjét jelöli.  A felhasználók szabványos karakterlánc-összehasonlításhasználatával megismerhetik az ugyanazon a blobnéven lévő két esemény relatív sorrendjét. |
 | storageDiagnostics (tárolásDiagnosztika | objektum | Az Azure Storage szolgáltatás által alkalmanként biztosított diagnosztikai adatok. Ha jelen van, figyelmen kívül kell hagyni az esemény fogyasztók. |
+
+## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
+|Cím  |Leírás  |
+|---------|---------|
+| [Rövid útmutató: Blob-tárolási események irányítása egyéni webes végpontra az Azure CLI-vel](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan azure CLI blob tárolási események küldése a WebHook. |
+| [Rövid útmutató: Blob-tárolási események irányítása egy egyéni webes végpontra a PowerShell segítségével](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan használhatja az Azure PowerShell tblob-tárolási eseményeket egy WebHook-ra. |
+| [Rövid útmutató: Blob-tárolási események létrehozása és irányítása az Azure Portalon](blob-event-quickstart-portal.md) | Bemutatja, hogyan használhatja a portálblob-tárolási események et a WebHook-nak. |
+| [Azure CLI: Előfizetni eseményekre egy Blob storage-fiók](./scripts/event-grid-cli-blob.md) | Minta parancsfájl, amely előfizet egy blob tárfiók eseményére. Az eseményt egy WebHook-ra küldi. |
+| [PowerShell: előfizetni eseményekre egy Blob storage-fiók](./scripts/event-grid-powershell-blob.md) | Minta parancsfájl, amely előfizet egy blob tárfiók eseményére. Az eseményt egy WebHook-ra küldi. |
+| [Erőforrás-kezelő sablon: Blob-tárterület és -előfizetés létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Üzembe helyez egy Azure Blob Storage-fiókot, és feliratkozik a vele kapcsolatos eseményekre. Eseményeket küld egy WebHook.It sends events to a WebHook. |
+| [Áttekintés: reagálás a Blob storage eseményeire](../storage/blobs/storage-blob-event-overview.md) | A Blob storage és az Event Grid integrálásának áttekintése. |
 
 ## <a name="next-steps"></a>További lépések
 

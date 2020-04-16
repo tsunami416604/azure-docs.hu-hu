@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271114"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405389"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
@@ -28,7 +28,7 @@ Az Azure [Application Insights][start] díjszabása egy használatra szánt **fi
 
 [A többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.md) további díjat vonnak maga után. A többlépéses webes tesztek olyan webes tesztek, amelyek műveletek sorozatát hajtják végre. Egyetlen oldal *pingtesztjeiért* nem számítunk fel külön díjat. A pingtesztekből és a többlépéses tesztekből származó telemetriai adatok at az alkalmazás más telemetriai adataival megegyezik.
 
-Az Application Insights beállítás [egyéni metrikadimenziók riasztási engedélyezése](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) is okozhat további költségeket, mert ez további előzetes összesítési metrikák létrehozását eredményezheti. [További információ] az Application Insights naplóalapú és előre összesített metrikáiról, valamint az Azure Monitor egyéni metrikák [díjszabásáról.](https://azure.microsoft.com/pricing/details/monitor/)
+Az Application Insights beállítás [egyéni metrikadimenziók riasztási engedélyezése](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) is okozhat további költségeket, mert ez további előzetes összesítési metrikák létrehozását eredményezheti. [További információ](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics) a naplóalapú és az előre összesített metrikákról az Application Insightsban, valamint az Azure Monitor egyéni metrikák [díjszabásáról.](https://azure.microsoft.com/pricing/details/monitor/)
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Az alkalmazás kezelésével járandó költségek becslése
 
@@ -218,7 +218,9 @@ Az adatmegőrzés módosításához az Application Insights-erőforrásból lép
 
 ![A napi telemetriai kötetkorlát beállítása](./media/pricing/pricing-005.png)
 
-A megőrzési is [beállítható programozott módon a PowerShell](powershell.md#set-the-data-retention) a `retentionInDays` paraméter használatával. A megőrzés csökkentése kor van egy több napos türelmi időszak a legrégebbi adatok eltávolítása előtt. Ha az adatmegőrzést 30 napra állítja be, a paraméter `immediatePurgeDataOn30Days` használatával azonnal kiürítheti a régebbi adatokat, ami hasznos lehet a megfelelőségi forgatókönyvek esetén. Ez a tisztítási funkció csak az Azure Resource Manager en keresztül érhető el, és rendkívül óvatosan kell használni. Az adatkötet-korlát napi visszaállítási ideje konfigurálható az `dailyQuotaResetTime` Azure Resource Manager használatával a paraméter beállításához.
+A megőrzés csökkentése kor van egy több napos türelmi időszak a legrégebbi adatok eltávolítása előtt.
+
+A megőrzési is [beállítható programozott módon a PowerShell](powershell.md#set-the-data-retention) a `retentionInDays` paraméter használatával. Ha az adatmegőrzést 30 napra állítja be, a paraméter `immediatePurgeDataOn30Days` használatával azonnal kiürítheti a régebbi adatokat, ami hasznos lehet a megfelelőségi forgatókönyvek esetén. Ez a tisztítási funkció csak az Azure Resource Manager en keresztül érhető el, és rendkívül óvatosan kell használni. Az adatkötet-korlát napi visszaállítási ideje konfigurálható az `dailyQuotaResetTime` Azure Resource Manager használatával a paraméter beállításához.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Adatátviteli díjak az Application Insights használatával
 

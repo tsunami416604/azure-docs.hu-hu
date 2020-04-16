@@ -11,19 +11,19 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e986515a911cf1bbd88dfc73c56efcc6e81826d6
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351406"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416049"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Csatlakozás az Azure Synapse Analytics szolgáltatáshoz a Visual Studio és az SSDT segítségével
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-> * [Vizuális stúdió](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
@@ -35,7 +35,7 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
 * Egy meglévő SQL-készlet. A létrehozáshoz olvassa el az [SQL-készlet létrehozása című témakört.](create-data-warehouse-portal.md)
 * SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studio-val, akkor valószínűleg már rendelkezik SSDT for Visual Studio-val. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése](sql-data-warehouse-install-visual-studio.md) című cikkben olvashat bővebben.
-* Az Azure SQL-kiszolgáló teljes neve. Az adatok megkereséséhez olvassa el [a Csatlakozás az SQL-készlethez című témakört.](sql-data-warehouse-connect-overview.md)
+* Az Azure SQL-kiszolgáló teljes neve. Az adatok megkereséséhez olvassa el [a Csatlakozás az SQL-készlethez című témakört.](../sql/connect-overview.md)
 
 ## <a name="1-connect-to-your-sql-pool"></a>1. Csatlakozás az SQL-készlethez
 1. Nyissa meg a Visual Studio 2019-et.

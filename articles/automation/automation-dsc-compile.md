@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3145c7db064432e443aae5dcd503905b865ffe46
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f7558745442ac26fc33a063ff66fe170d08487ac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383256"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392091"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-konfigurációk fordítása az Azure Automation állapotkonfigurációjában
 
@@ -130,12 +130,12 @@ Az objektumok `PSCredential` paraméterként való átadásáról a [Hitelesít�
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>ConfigurationData kezelése konfigurációk összeállításakor az Azure Automationben
 
-**ConfigurationData** lehetővé teszi, hogy a powershell-dsc használata közben a szerkezeti konfiguráció t bármely környezet-specifikus konfigurációjától elkülönítheti. További információ: ["Mi" és "Hol" a PowerShell DSC-ben.](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)
+`ConfigurationData`egy beépített DSC-paraméter, amely lehetővé teszi a szerkezeti konfiguráció elkülönítése bármely környezetspecifikus konfigurációtól a PowerShell DSC használata közben. További információ: ["Mi" és "Hol" a PowerShell DSC-ben.](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)
 
 > [!NOTE]
-> Az Azure Automation-állapot konfigurációja összeállításakor **használhatja a ConfigurationData-t** az Azure PowerShellben, de az Azure Portalon nem.
+> Az Azure Automation-állapot konfigurációja összeállításakor használhatja `ConfigurationData` az Azure PowerShellben, de az Azure Portalon nem.
 
-A következő példa A DSC-konfiguráció `$AllNodes` **a ConfigurationData-t** használja a és a `$ConfigurationData` kulcsszavakon keresztül. Ehhez a példához az [xWebAdministration modulra](https://www.powershellgallery.com/packages/xWebAdministration/) is szüksége van.
+A következő példa DSC `$ConfigurationData` konfiguráció `$AllNodes` segítségével `ConfigurationData` a és a kulcsszavakat. Ehhez a példához az [xWebAdministration modulra](https://www.powershellgallery.com/packages/xWebAdministration/) is szüksége van.
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -198,7 +198,7 @@ Az Azure Automation DSC-konfigurációi a `Get-AutomationPSCredential` parancsma
 
 A hitelesítő adatok biztonságának megőrzése csomópontkonfigurációkban (MOF konfigurációs dokumentumok) a hitelesítő adatok titkosítását igényli a csomópont konfigurációs MOF-fájljában. Jelenleg meg kell adnia a PowerShell DSC engedélyt kimeneti hitelesítő adatok egyszerű szövegben csomópont konfigurációja mof generálása során. A PowerShell DSC nincs tudatában annak, hogy az Azure Automation egy fordítási feladaton keresztül titkosítja a teljes MOF-fájlt a létrehozás után.
 
-Megmondhatja a PowerShell DSC-nek, hogy a hitelesítő adatok egyszerű szövegben történő kimenetele a konfigurációs adatok használatával a létrehozott csomópontkonfigurációs MIF-ek ben történik. A DSC-konfigurációban megjelenő és hitelesítő adatokat használó minden csomópontblokknévhez át kell adni `PSDscAllowPlainTextPassword = $true` a **ConfigurationData-on** keresztül.
+Megmondhatja a PowerShell DSC-nek, hogy a hitelesítő adatok egyszerű szövegben történő kimenetele a konfigurációs adatok használatával a létrehozott csomópontkonfigurációs MIF-ek ben történik. Át kell `PSDscAllowPlainTextPassword = $true` `ConfigurationData` adnia a DSC-konfigurációban megjelenő és hitelesítő adatokat használó csomópontblokkneveket.
 
 A következő példa egy DSC-konfigurációt mutat be, amely egy Automation hitelesítő adatokat használ.
 
@@ -264,7 +264,7 @@ Ezt a folyamatot fejlesztői munkaállomásról vagy egy buildszolgáltatáson, 
 
 1. Az Automation-fiókban kattintson **az Állapotkonfiguráció (DSC)** elemre a **Konfigurációkezelés csoportban.**
 1. Az Állapotkonfiguráció (DSC) lapon kattintson a **Konfigurációk** fülre, majd a **Hozzáadás**gombra.
-1. Az Importálás lapon kattintson a **Csomópontkonfigurációs fájl** szövegmező melletti mappaikonra a csomópont konfigurációs fájljának (MOF) kereséséhez a helyi számítógépen.
+1. Az Importálás lapon kattintson a **Csomópontkonfigurációs fájl** mező melletti mappaikonra, ha a helyi számítógépen meg szeretne keresni egy csomópontkonfigurációs MOF-fájlt.
 
    ![Helyi fájl tallózása](./media/automation-dsc-compile/import-browse.png)
 

@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: e0116c1cfe61b49f2d5aff46fab9cadc0e423ecc
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 18212726f0ab921a05a3b640a32754c62958d047
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310172"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393144"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>IP-tűzfalszabályok konfigurálása Egy Azure Event Hubs névtérhez
 Alapértelmezés szerint az Event Hubs névterek elérhetők az internetről, amíg a kérelem érvényes hitelesítéssel és engedélyezéssel érkezik. Az IP-tűzfal lal tovább korlátozhatja a [CIDR (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelölésben lévő IPv4-címek vagy IPv4-címtartományok készletére.
@@ -29,6 +29,7 @@ Ez a funkció olyan esetekben hasznos, amelyekben az Azure Event Hubs csak bizon
 > A megbízható Microsoft-szolgáltatások nem támogatottak a virtuális hálózatok megvalósításakor.
 >
 > A virtuális hálózatokkal nem működik gyakori Azure-forgatókönyvek (vegye figyelembe, hogy a lista **nem** teljes) -
+> - Azure Monitor (diagnosztikai beállítás)
 > - Azure Stream Analytics
 > - Integráció az Azure Event Griddel
 > - Az Azure IoT Hub-útvonalak

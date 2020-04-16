@@ -7,14 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71df574602518fdc252d9d86859ed772a17be443
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77048362"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408982"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Mik azok a huzavona adatfolyamok?
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A szervezeteknek adatelőkészítést és huzavonát kell végezniük az összetett adatok pontos elemzéséhez, amelyek napról napra növekednek. Az adatok előkészítése szükséges ahhoz, hogy a szervezetek felhasználhassák az adatokat a különböző üzleti folyamatokban, és csökkenthessék az értékhez szükséges időt.
 

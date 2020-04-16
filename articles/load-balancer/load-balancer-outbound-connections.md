@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886976"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393107"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -168,7 +168,7 @@ Az alábbi táblázat a háttérkészlet-méretek rétegeinek SNAT-port-előfogl
 | 801-1,000 | 32 |
 
 >[!NOTE]
-> Ha [több előtér-számlálót](load-balancer-multivip-overview.md)használ, minden előtér-IP-cím megszorozza az előző táblázatban elérhető SNAT-portok számát. Például egy 50 virtuális gépből álló háttérkészlet 2 terheléselosztási szabállyal, amelyek mindegyike külön előtér-IP-címmel rendelkezik, 2048 (2x 1024) SNAT-portot fog használni IP-konfigurációnként. Több [előtér-témakör](#multife)részleteinek megtekintése.
+> Ha [több előtér-számlálót](load-balancer-multivip-overview.md)használ, minden előtér-IP-cím megszorozza az előző táblázatban elérhető SNAT-portok számát. Például egy 50 virtuális gépből álló háttérkészlet 2 terheléselosztási szabályokkal, amelyek mindegyike külön előtér-IP-címmel rendelkezik, szabályonként 2048 (2x 1024) SNAT-portot fog használni. Több [előtér-témakör](#multife)részleteinek megtekintése.
 
 Ne feledje, hogy a rendelkezésre álló SNAT-portok száma nem fordítja közvetlenül a folyamatok számát. Egyetlen SNAT-port több egyedi célhoz is felhasználható. A portok csak akkor kerülnek felhasználásra, ha a folyamatok egyedivé állításához szükséges. A tervezési és kockázatcsökkentési útmutatásért tekintse meg a [kimeríthető erőforrás kezeléséről](#snatexhaust) szóló szakaszt, valamint a [PAT-ot](#pat)ismerő szakaszt.
 

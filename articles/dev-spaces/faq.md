@@ -5,16 +5,20 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Válaszok az Azure Dev Spaces-sel kapcsolatos gyakori kérdésekre
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, Helm, szolgáltatásháló, szolgáltatásháló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 1fd176084cd0737a290e037ed19af510fcab3e78
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381998"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414314"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Gyakori kérdések az Azure dev spaces-ről
 
 Ez az Azure Dev Spaces-sel kapcsolatos gyakori kérdéseket címek.
+
+## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>A Kubernetes mely verziói támogatottak az Azure dev spaces- ben?
+
+Az Azure Dev Spaces támogatja a [Kubernetes összes jelenleg támogatott általános rendelkezésre állási (GA) verzióját az AKS-ben.][aks-supported-k8s]
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Mely Azure-régiók biztosítják jelenleg az Azure dev spaces-t?
 
@@ -89,6 +93,10 @@ A Visual Studio-kódban lehetőség van [külön projektek megnyitására egyetl
 
 A Visual Studio-ban konfigurálható a .NET Core megoldások az Azure Dev Spaces-en keresztüli hibakereséshez.
 
+## <a name="can-i-use-azure-dev-spaces-with-a-service-mesh"></a>Használhatom az Azure Dev Spaces szolgáltatáshálóval?
+
+Jelenleg nem használhatja az Azure Dev Spaces szolgáltatást nyújtó szemekkel, például [Istio][istio] vagy [Linkerd.][linkerd] Futtathatja az Azure Dev Spaces és a szolgáltatásháló ugyanazon az AKS-fürtön, de nem lehet mind az Azure Dev Spaces és a szolgáltatás háló javunkra ugyanabban a névtérben.
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
@@ -97,6 +105,7 @@ A Visual Studio-ban konfigurálható a .NET Core megoldások az Azure Dev Spaces
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
+[aks-supported-k8s]: ../aks/supported-kubernetes-versions.md#list-currently-supported-versions
 [bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [dev-spaces-pod-managed-id-steps]: troubleshooting.md#error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
@@ -105,6 +114,8 @@ A Visual Studio-ban konfigurálható a .NET Core megoldások az Azure Dev Spaces
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-nginx]: how-to/ingress-https-nginx.md#configure-the-nginx-ingress-controller-to-use-https
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
+[istio]: https://istio.io/
+[linkerd]: https://linkerd.io/
 [quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces

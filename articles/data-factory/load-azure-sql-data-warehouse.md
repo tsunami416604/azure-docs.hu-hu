@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: dc6d8c9da749e7ee60713f4357dc6d46051d89f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1943c16c678d0783b99a0f16c25fa72137defc8a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131278"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415889"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok betöltése az SQL Data Warehouse-ba Azure Data Factory használatával
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 [Az Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővített adatbázis, amely képes nagy mennyiségű adat feldolgozására, relációs és nem relációs. Az SQL Data Warehouse a nagyvállalati adattárház-munkaterhelésekre optimalizált masszívan párhuzamos feldolgozási (MPP) architektúrára épül. Felhőrugalmasságot kínál a tárhely és az önálló számítási kapacitás méretezésének rugalmasságával.
 

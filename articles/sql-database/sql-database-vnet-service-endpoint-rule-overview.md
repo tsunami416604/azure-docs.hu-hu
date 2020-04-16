@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4faead13c10171c31e76fe2dd59be32a93a12f86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124755"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414400"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatás végpontjainak és szabályainak használata adatbázis-kiszolgálókhoz
 
@@ -64,6 +64,7 @@ Lehetősége van [szerepköralapú hozzáférés-vezérlés (RBAC)][rbac-what-is
 
 > [!NOTE]
 > Bizonyos esetekben az Azure SQL Database és a virtuális hálózat-alhálózat különböző előfizetésekben vannak. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
+>
 > - Mindkét előfizetésnek ugyanabban az Azure Active Directory-bérlőben kell lennie.
 > - A felhasználó rendelkezik a műveletek kezdeményezéséhez szükséges engedélyekkel, például a szolgáltatásvégpontok engedélyezéséhez és a virtuális hálózat adott kiszolgálóhoz való hozzáadásához szükséges engedélyekkel.
 > - Mindkét előfizetéshez regisztrálni kell a Microsoft.Sql szolgáltatót.
@@ -134,7 +135,7 @@ A PolyBase gyakran használható adatok azure Storage-fiókokból az Azure SQL D
    > [!NOTE]
    > - Ha általános célú v1- vagy blobtár-fiókkal rendelkezik, **először frissítenie** kell a v2-re ezzel az [útmutatóval.](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)
    > - Az Azure Data Lake Storage Gen2 használatával kapcsolatos ismert problémákat ebben az [útmutatóban](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)talál.
-    
+
 1. A tárfiók alatt keresse meg a **Hozzáférés-vezérlés (IAM)**, és kattintson **a Szerepkör-hozzárendelés hozzáadása gombra.** **Rendeljen Storage Blob Data Contributor** RBAC szerepkört az Azure SQL Server üzemelteti az Azure Active Data Warehouse, amely regisztrált az Azure Active Directory (AAD) az 1.
 
    > [!NOTE]
@@ -235,7 +236,7 @@ Már rendelkeznie kell egy alhálózattal, amely az Azure SQL Database-hez tarto
 
 ## <a name="azure-portal-steps"></a>Az Azure Portal lépései
 
-1. Jelentkezzen be az [Azure Portalra.][http-azure-portal-link-ref-477t]
+1. Jelentkezzen be az [Azure Portalra][http-azure-portal-link-ref-477t].
 
 2. Keresse meg és jelölje ki **az SQL-kiszolgálókat,** majd jelölje ki a kiszolgálót. A **Biztonság**csoportban válassza a **Tűzfalak és a virtuális hálózatok**lehetőséget.
 
@@ -264,6 +265,7 @@ Már rendelkeznie kell egy alhálózattal, amely az Azure SQL Database-hez tarto
 
 > [!NOTE]
 > A következő állapotok vagy állapotok vonatkoznak a szabályokra:
+>
 > - **Kész:** Azt jelzi, hogy a kezdeményezett művelet sikeres volt.
 > - **Sikertelen:** Azt jelzi, hogy a kezdeményezett művelet sikertelen volt.
 > - **Törölve:** Csak a Törlés műveletre vonatkozik, és azt jelzi, hogy a szabály törölve lett, de már nem érvényes.

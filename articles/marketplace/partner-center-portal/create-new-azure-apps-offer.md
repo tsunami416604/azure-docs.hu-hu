@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262264"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390350"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -58,7 +58,7 @@ Tekintse át az alábbi Azure-alkalmazás dokumentációt, amely rövid útmutat
 
     * [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/)
     * [GitHub Azure gyorsindítási sablonjai](https://github.com/azure/azure-quickstart-templates)
-    * [Alkalmazásdefiníció közzététele](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+    * [Alkalmazásdefiníció közzététele](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
 * Oktatóanyagok:
@@ -168,7 +168,7 @@ Meg kell adnia a piactér adatait (ajánlat neve, leírása, képek stb.) az egy
 > [!NOTE]
 > Az ajánlat tartalma (például leírás, dokumentumok, képernyőképek, használati feltételek stb.) nem szükséges angol nyelven, amennyiben az ajánlat leírása a következő mondattal kezdődik: "Ez az alkalmazás csak [nem angol nyelven] érhető el." Az is elfogadható, hogy *egy hasznos link URL-t* kínál tartalmat más nyelven, mint amelyet az ajánlat lista tartalmát.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlathirdetés címeként jelenik meg az ügyfelek számára. Ez a mező előre ki van töltve az **Ajánlat aliashoz** az ajánlat létrehozásakor megadott szöveggel, de ezt az értéket módosíthatja. Ez a név védjeggyel is ellátott lehet (és ön védjegy- vagy szerzői jogi szimbólumokat is tartalmazhat). A név nem lehet több 50 karakternél, és nem tartalmazhat hangulatjeleket.
 
@@ -308,7 +308,7 @@ Az Azure Government szolgáltatásai olyan adatokat kezelnek, amelyekre bizonyos
 
 A **Terv listaelem** lapja megjeleníti a tervspecifikus listainformációkat, amelyek különbözőek lehetnek az ugyanazon ajánlathoz tartozó különböző tervek között.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 A név alapján előre kitöltött csomag a létrehozáskor.  Ez a név jelenik meg a piactéren megjelenő "Szoftvercsomag" címeként.  Legfeljebb 100 karaktert tartalmazhat.
 

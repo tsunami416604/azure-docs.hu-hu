@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: ffb12af93e249b0b9bb510d3507a30e67d6cd19f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2654b61ac4489d8257020923a77800745027f303
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76169133"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403482"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>Rövid útmutató: Képosztályozási projekt létrehozása a Custom Vision Python SDK-val
 
@@ -177,7 +177,7 @@ Ezután ellenőrizheti, hogy a tesztkép **(<base_image_url>images/Test/**) megf
 
 ## <a name="next-steps"></a>További lépések
 
-Láthatta, hogyan hajthatók végre a képosztályozási folyamat lépései kód használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran előfordulhat, hogy a nagyobb pontosság érdekében többször is be kell tanítania és tesztelnie kell a modellt.
+Most már látta, hogy az objektumészlelési folyamat minden lépése hogyan végezhető el kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran többször is be kell képeznie és tesztelnie kell a modellt annak érdekében, hogy pontosabb legyen.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](test-your-model.md)

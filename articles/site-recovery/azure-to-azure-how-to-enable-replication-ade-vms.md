@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772227"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408639"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Az Azure Disk Encryption-t engedélyező virtuális gépek replikálása egy másik Azure-régióba
 
 Ez a cikk ismerteti, hogyan replikálható az Azure-beli virtuális gépek az Azure Disk Encryption (ADE) engedélyezve van, az egyik Azure-régióból a másikba.
 
 >[!NOTE]
-> A Site Recovery jelenleg támogatja az ADE-t, az Azure Active Directory (AAD) használatával és anélkül Windows és Linux operációs rendszereket futtató virtuális gépekhez.  Az ADE 1.1-et futtató gépek (AAD nélkül) a virtuális gépeknek felügyelt lemezeket kell használniuk. A nem felügyelt lemezekkel rendelkező virtuális gépek nem támogatottak. Ha Az ADE 0.1-ről (AAD-vel) 1.1-re vált, az 1.1 engedélyezése után le kell tiltania a replikációt, és engedélyeznie kell a virtuális gép replikációját.
+> A Site Recovery jelenleg támogatja az ADE szolgáltatást, az Azure Active Directory (AAD) használatával és anélkül windowsos operációs rendszereket futtató virtuális gépekhez. Linux operációs rendszerek esetén csak AAD nélküli ADE-t támogatunk. Ezenkívül az ADE 1.1-et futtató gépek (AAD nélkül) a virtuális gépeknek felügyelt lemezeket kell használniuk. A nem felügyelt lemezekkel rendelkező virtuális gépek nem támogatottak. Ha Az ADE 0.1-ről (AAD-vel) 1.1-re vált, az 1.1 engedélyezése után le kell tiltania a replikációt, és engedélyeznie kell a virtuális gép replikációját.
 
 
 ## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>Szükséges felhasználói engedélyek

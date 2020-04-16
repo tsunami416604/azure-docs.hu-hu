@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 1941cca7c13cb3d84b623222e11c13e793cee0f9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3cb583502f1ccf3d88cf8307bb62ab5ed261ce03
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76169306"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403381"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a JavaScript használatával
 
-Ebben a rövid útmutatóban az Azure Face REST API JavaScript használatával észleli az emberi arcokat egy lemezképben.
+Ebben a rövid útmutatóban az Azure Face REST API JavaScript használatával észlelheti az emberi arcokat egy lemezképben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

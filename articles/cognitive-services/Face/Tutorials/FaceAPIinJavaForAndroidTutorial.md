@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd986a7557f468b939aefe1da825c9834618047f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76165963"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402915"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Android-alkalmazás készítése képeken lévő arcok észleléséhez és bekeretezéséhez
 
-Ebben az oktatóanyagban egy Android-alkalmazást hoz létre, amely az Azure Face szolgáltatást használja a Java SDK-n keresztül, hogy észlelje az emberi arcokat egy lemezképben. Az alkalmazás megjeleníti a kijelölt képet, és rajzol egy keretet körül minden észlelt arc.
+Ebben az oktatóanyagban egy Android-alkalmazást hoz létre, amely az Azure Face szolgáltatást használja a Java SDK-n keresztül a rendszerkép emberi arcfelismeréséhez. Az alkalmazás megjeleníti a kijelölt képet, és rajzol egy keretet körül minden észlelt arc.
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 - Face-előfizetési kulcs. Ingyenes próba-előfizetési kulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=face-api)szerezhetbe. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Face szolgáltatásra, és levegye a kulcsot. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `FACE_SUBSCRIPTION_KEY` kulcs- és szolgáltatásvégpont-karakterlánchoz, amelyet elnevezett, illetve `FACE_ENDPOINT`a.
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/)bármely kiadása.
-- [Android Studio](https://developer.android.com/studio/) 22-es vagy újabb API-szinttel (a Face ügyfélkönyvtár által megkövetelt).
+- [Android Studio](https://developer.android.com/studio/) API-szint 22 vagy újabb.
 
 ## <a name="create-the-android-studio-project"></a>Az Android Studio projekt létrehozása
 
@@ -123,7 +123,7 @@ Futtassa az alkalmazást, és keressen egy képet, amelyen egy arc látható. V�
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta a Face Java SDK használatának alapvető folyamatát, és létrehozott egy alkalmazást a lemezképek arcának észlelésére és keretezésére. Ezután tudjon meg többet az arcfelismerés részleteiről.
+Ebben az oktatóanyagban megtanulta, hogyan használhatja a Face Java SDK-t egy alkalmazás létrehozásához a kép arcok észlelésére és keretezésére. Ezután tudjon meg többet az arcfelismerés részleteiről.
 
 > [!div class="nextstepaction"]
 > [Arcok észlelése egy képen](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 8e721b3dc2f2dca12ae7983676c7a090cf053893
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2c036cc8538fbceb21da7c5166df52b3a04e12e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440608"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414984"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Adatok másolása a MariaDB-ből az Azure Data Factory használatával
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolása a MariaDB-ből. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
@@ -27,7 +28,7 @@ Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure
 Ez a MariaDB-összekötő a következő tevékenységekhez támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 A MariaDB-ből adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 

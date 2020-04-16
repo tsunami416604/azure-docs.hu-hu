@@ -2,13 +2,13 @@
 title: Bevezetés a megbízható gyűjtemények
 description: A Service Fabric állapotalapú szolgáltatásai megbízható gyűjteményeket biztosítanak, amelyek lehetővé teszik magas rendelkezésre állású, méretezhető és alacsony késésű felhőalkalmazások írását.
 ms.topic: conceptual
-ms.date: 1/3/2019
-ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/10/2020
+ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609723"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398431"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Bevezetés a megbízható gyűjtemények az Azure Service Fabric állapotalapú szolgáltatások
 
@@ -24,10 +24,9 @@ A megbízható gyűjtemények és más magas rendelkezésre állású technológ
 Megbízható gyűjtemények lehet tekinteni, mint a természetes fejlődése **system.Collections** osztályok: egy új gyűjtemények, amelyek célja a felhő és a több számítógépes alkalmazások növelése nélkül bonyolultak a fejlesztő számára. Mint ilyen, megbízható gyűjtemények a következők:
 
 * Replikált: Az állapotmódosítások replikálódnak a magas rendelkezésre állás érdekében.
-* Tartós: Az adatok megmaradnak a lemezen a nagy méretű kimaradások (például egy adatközpont áramkimaradások) tartóssága érdekében.
-* Mivel az írási műveletek megmaradnak és replikálódnak, nem hozhat létre olyan felejtő ReliableDictionary, ReliableQueue vagy más megbízható gyűjteményt, amely csak a memóriában lévő adatokat őrizi meg.
 * Aszinkron: Az API-k aszinkron, hogy a szálak nem blokkolja, ha az IO felmerülő.
 * Tranzakciós: API-k a tranzakciók absztrakcióját használják, így egy szolgáltatáson belül több megbízható gyűjtemény tkezelhet.
+* Megőrzött vagy volatilis: Az adatok megőrizhetők a lemezen a nagyméretű kimaradások (például egy adatközpont áramkimaradás) tartóssága érdekében. Egyes megbízható gyűjtemények is támogatja a felejtő mód [(a kikötések](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)), ahol az összes adat a memóriában, például egy replikált memóriában gyorsítótár.
 
 A Megbízható gyűjtemények erős konzisztenciagaranciákat biztosítanak a dobozból, hogy megkönnyítsék az alkalmazásállapotával kapcsolatos érvelést.
 Az erős konzisztencia csak akkor érhető el, ha a tranzakcióvéglegesítések csak akkor fejeződnek be, ha a teljes tranzakció a replikák többségi kvórumába lett bejelentkezve, beleértve az elsődlegest is.
@@ -57,5 +56,5 @@ Ma a **Microsoft.ServiceFabric.Data.Collections** három gyűjteményt tartalmaz
   * [Szerializálás és frissítés](service-fabric-application-upgrade-data-serialization.md)
   * [Megbízható állapotkezelő-konfiguráció](service-fabric-reliable-services-configuration.md)
 * Egyéb
-  * [Megbízható szolgáltatások – gyorsindítás](service-fabric-reliable-services-quick-start.md)
+  * [Megbízható szolgáltatások rövid útmutató](service-fabric-reliable-services-quick-start.md)
   * [Fejlesztői referencia a megbízható gyűjtemények](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

@@ -1,20 +1,20 @@
 ---
-title: Azure Event Grid erőforráscsoport-eseménysémája
+title: Az Azure-erőforráscsoport eseményrács-forrásként
 description: Az Azure Event Grid erőforráscsoport-eseményeihez megadott tulajdonságok ismertetése
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561693"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393252"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid eseménysémája erőforráscsoportokhoz
+# <a name="azure-resource-group-as-an-event-grid-source"></a>Az Azure-erőforráscsoport eseményrács-forrásként
 
 Ez a cikk az erőforráscsoport-események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
@@ -28,9 +28,10 @@ Az események programozott kezeléséhez az eseményeket az `operationName` ért
 
 Az esemény tárgya a művelet célját képező erőforrás erőforrásazonosítója. Egy erőforrás eseményeinek szűréséhez adja meg az erőforrás-azonosítót az esemény-előfizetés létrehozásakor.  Erőforrástípus szerinti szűréshez használja a következő formátumú értéket:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-A mintaparancsfájlok és oktatóanyagok listáját az [Erőforráscsoport eseményforrása (Erőforráscsoport eseményforrása) ismerteti.](event-sources.md#resource-groups)
 
-## <a name="available-event-types"></a>Elérhető eseménytípusok
+## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
+
+### <a name="available-event-types"></a>Elérhető eseménytípusok
 
 Az erőforráscsoportok felügyeleti eseményeket bocsátanak ki az Azure Resource Managerből, például amikor virtuális gép jön létre, vagy egy tárfiókot törölnek.
 
@@ -46,7 +47,7 @@ Az erőforráscsoportok felügyeleti eseményeket bocsátanak ki az Azure Resour
 | Microsoft.Resources.ResourceWriteFailure | A létrehozási vagy frissítési művelet sikertelensítése esetén keletkezik. |
 | Microsoft.Resources.ResourceWriteSuccess | Ha a létrehozási vagy frissítési művelet sikeres. |
 
-## <a name="example-event"></a>Példa esemény
+### <a name="example-event"></a>Példa esemény
 
 A következő példa egy **ResourceWriteSuccess** esemény sémáját mutatja be. Ugyanaz a séma használatos a **ResourceWriteFailure** és a `eventType` **ResourceWriteCancel** eseményekhez, amelyek különböző értékeit használják.
 
@@ -230,7 +231,7 @@ A következő példa egy **ResourceActionSuccess** esemény sémáját mutatja b
 }]
 ```
 
-## <a name="event-properties"></a>Esemény tulajdonságai
+### <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény legfelső szintű adatokat rendelkezik:
 
@@ -259,6 +260,16 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | status | sztring | A művelet állapota. |
 | subscriptionId | sztring | Az erőforrás előfizetési azonosítója. |
 | tenantId | sztring | Az erőforrás bérlői azonosítója. |
+
+## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
+|Cím  |Leírás  |
+|---------|---------|
+| [Oktatóanyag: a virtuális gépek változásainak figyelése az Azure Event Grid és a Logic Apps alkalmazásokkal](monitor-virtual-machine-changes-event-grid-logic-app.md) | A logikai alkalmazás figyeli a virtuális gép módosításait, és e-maileket küld ezekről a változásokról. |
+| [Azure CLI: előfizetni eseményekre egy erőforráscsoport](./scripts/event-grid-cli-resource-group.md)| Mintaparancsfájl, amely előfizet egy erőforráscsoport eseményeire. Eseményeket küld egy WebHook.It sends events to a WebHook. |
+| [Azure CLI: előfizetni események egy erőforráscsoport és szűrő egy erőforrás](./scripts/event-grid-cli-resource-group-filter.md) | Minta parancsfájl, amely előfizet egy erőforráscsoport eseményeire, és szűri az eseményeket egy erőforráshoz. |
+| [PowerShell: előfizetni eseményekegy erőforráscsoport](./scripts/event-grid-powershell-resource-group.md) | Mintaparancsfájl, amely előfizet egy erőforráscsoport eseményeire. Eseményeket küld egy WebHook.It sends events to a WebHook. |
+| [PowerShell: előfizetni események egy erőforráscsoport és szűrő egy erőforrás](./scripts/event-grid-powershell-resource-group-filter.md) | Minta parancsfájl, amely előfizet egy erőforráscsoport eseményeire, és szűri az eseményeket egy erőforráshoz. |
+| [Erőforrás-kezelő sablon: erőforrás-előfizetés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Előfizet egy Azure-előfizetés vagy erőforráscsoport eseményeire. Eseményeket küld egy WebHook.It sends events to a WebHook. |
 
 ## <a name="next-steps"></a>További lépések
 

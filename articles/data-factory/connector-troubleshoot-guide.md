@@ -8,14 +8,16 @@ ms.topic: troubleshooting
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 9f3a13a097d7cce87aead4ec2d76ce7cbbb1a206
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62ad337646cf3fc0bbe4305dccad5adb56f8ee15
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75778226"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410234"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhárítási módszereket ismerteti.
   
@@ -509,7 +511,7 @@ Ez a cikk az Azure Data Factory összekötőivel kapcsolatos gyakori hibaelhár�
 
 
 
-## <a name="parquet-format"></a>Parquet formátum
+## <a name="parquet-format"></a>Parketta formátuma
 
 ### <a name="error-code--parquetjavainvocationexception"></a>Hibakód: ParquetJavaInvocationException
 
@@ -675,7 +677,7 @@ További hibaelhárítási segítségért próbálkozzon az alábbi forrásokkal
 *  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory szolgáltatáskérések](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN fórum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
 *  [Stack túlcsordulás fórum Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter információk a Data Factory-ról](https://twitter.com/hashtag/DataFactory)
             

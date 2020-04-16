@@ -8,14 +8,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: makromer
-ms.openlocfilehash: 3fe3403ad06d82ba5ccd33d2718bf0e5eff64490
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73166537"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414360"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>SQL csonkolási hibasorok kezelése a Data Factory leképezési adatfolyamaiban
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A Data Factory gyakori forgatókönyve az adatfolyamok leképezése során, hogy az átalakított adatokat egy Azure SQL-adatbázisba írja. Ebben az esetben egy gyakori hibafeltétel, amelyet meg kell akadályoznia, lehetséges oszlopcsonkolás. Az alábbi lépésekkel biztosíthatja az olyan oszlopok naplózását, amelyek nem férnek bele a célkarakterlánc-oszlopba, lehetővé téve az adatfolyam folytatását ezekben az esetekben.
 

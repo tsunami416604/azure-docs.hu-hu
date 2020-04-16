@@ -1,24 +1,26 @@
 ---
-title: Azure Event Grid Azure Maps eseményséma
+title: Az Azure Maps eseményrács forrásaként
 description: Az Azure Maps-események és az Azure Event Grid szolgáltatásban megadott tulajdonságok és séma ismertetése
 services: event-grid
-author: femila
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 02/08/2019
-ms.author: femila
-ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: e879ec3442f2e7912acb450a97079d80d7d95a01
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77486359"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393404"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Event Grid eseménysémája az Azure Maps-hez
+# <a name="azure-maps-as-an-event-grid-source"></a>Az Azure Maps eseményrács-forrásként
 
-Ez a cikk az Azure Maps-események tulajdonságait és sémáját tartalmazza. Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](https://docs.microsoft.com/azure/event-grid/event-schema)
+Ez a cikk az Azure Maps-események tulajdonságait és sémáját tartalmazza. Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](https://docs.microsoft.com/azure/event-grid/event-schema) Emellett az Azure Maps eseményforrásként való használatához az Azure Maps használatával használható gyorsindítások és oktatóanyagok listáját is tartalmazza.
 
-## <a name="available-event-types"></a>Elérhető eseménytípusok
+## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
+
+### <a name="available-event-types"></a>Elérhető eseménytípusok
 
 Az Azure Maps-fiók a következő eseménytípusokat bocsátja ki:
 
@@ -28,7 +30,7 @@ Az Azure Maps-fiók a következő eseménytípusokat bocsátja ki:
 | Microsoft.Maps.GeofenceKilépett | Akkor emelkedik, ha a kapott koordináták egy adott geokerítésen belülről külső |
 | Microsoft.Maps.GeofenceEredmény | Minden alkalommal, amikor egy geofencing lekérdezés eredményt ad vissza, függetlenül az állapottól |
 
-## <a name="event-examples"></a>Példák eseményre
+### <a name="event-examples"></a>Példák eseményre
 
 A következő példa egy **GeofenceEntered** esemény sémáját mutatja be.
 
@@ -98,7 +100,7 @@ A következő példa a **GeofenceResult** sémáját mutatja be.
 }
 ```
 
-## <a name="event-properties"></a>Esemény tulajdonságai
+### <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény legfelső szintű adatokat rendelkezik:
 
@@ -162,6 +164,12 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | Geometriák | geometriák[] |Felsorolja azokat a kerítésgeometriákat, amelyek tartalmazzák a koordináta-pozíciót, vagy átfedik a keresőpuffert a pozíció körül. |
 | invalidPeriodGeofenceGeometryId | karakterlánc[]  | A geokerítés geometriaazonosítójának listája, amely a kérelemben szereplő felhasználói időhöz képest érvénytelen. |
 | isEventPublished | logikai | Igaz, ha legalább egy eseményt közzé tesznek az Azure Maps esemény-előfizető, hamis, ha nincs esemény közzé téve az Azure Maps esemény-előfizető. |
+
+## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
+|Cím  |Leírás  |
+|---------|---------|
+| [Reagálás az Azure Maps-eseményekre az Event Grid használatával](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Az Azure Maps és az Event Grid integrálásának áttekintése. |
+| [Oktatóanyag: Geokerítés beállítása](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ez az oktatóanyag végigvezeti a geokerítés azure Maps használatával történő beállításának alaplépéseit. Az Azure Event Grid segítségével streamelheti a geokerítés eredményeit, és a geokerítés-eredmények alapján értesítést állíthat be. |
 
 ## <a name="next-steps"></a>További lépések
 

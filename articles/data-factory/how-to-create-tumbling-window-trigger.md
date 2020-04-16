@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 2a634c81273c26722d53610a13e362e5e453f7e9
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 97c8f8a5bb2111264e9459a7d2128c1ab7c2503d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380114"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414436"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Átfedésmentes ablakban folyamatot futtató trigger létrehozása
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Ez a cikk a bukdácsoló ablakeseményindító létrehozásának, indításának és figyelésének lépéseit ismerteti. Az eseményindítókról és a támogatott típusokról a [Folyamat végrehajtása és az eseményindítók](concepts-pipeline-execution-triggers.md)című témakörben talál általános információkat.
 
 Az átfedésmentes ablakos eseményindítók olyan eseményindítók, amelyek rendszeres időközönként aktiválódnak a megadott kezdési időponttól kezdve, az állapot megőrzése mellett. Az átfedésmentes ablakok rögzített méretű, egymást nem fedő és összefüggő időintervallumok. A bukdácsoló ablakeseményindító egy-az-egyhez kapcsolatban áll egy folyamattal, és csak egy egyes számú folyamatra hivatkozhat.
@@ -229,5 +231,5 @@ Az eseményindítók és a folyamatfuttatások figyelése az Azure Portalon, [l�
 
 ## <a name="next-steps"></a>További lépések
 
-* Az eseményindítókról a [Folyamat végrehajtása és az eseményindítók](concepts-pipeline-execution-triggers.md#triggers)című témakörben talál részletes információt.
+* Az eseményindítókról a [Folyamat végrehajtása és az eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution)című témakörben talál részletes információt.
 * [Függőség létrehozása átfedésmentes ablak eseményindítójához](tumbling-window-trigger-dependency.md)

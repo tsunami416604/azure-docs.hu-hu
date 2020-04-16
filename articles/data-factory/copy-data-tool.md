@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: a6de5c28115d3a451256cc43d26552c269ba245a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df078673aed60086a88961ff64f9bfa596d96346
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927498"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414086"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Adatok másolása eszköz az Azure Data Factoryben
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Az Azure Data Factory Copy Data eszköz megkönnyíti és optimalizálja az adatok adattóba történő betöltésének folyamatát, ami általában az első lépés egy teljes körű adatintegrációs forgatókönyvben.  Időt takarít meg, különösen akkor, ha az Azure Data Factory segítségével adatokat kell beadni a adatforrásból az első alkalommal. Az eszköz használatának néhány előnye:
 
 - Az Azure Data Factory Copy Data eszköz használatakor nem kell megértenie a Data Factory definícióit a csatolt szolgáltatásokhoz, adatkészletekhez, folyamatokhoz, tevékenységekhez és eseményindítókhoz. 

@@ -2,13 +2,13 @@
 title: A Reliable Collections használata
 description: Ismerje meg az Azure Service Fabric-alkalmazások megbízható gyűjteményeivel való együttműködés ajánlott eljárásokat.
 ms.topic: conceptual
-ms.date: 02/22/2019
-ms.openlocfilehash: 4a1f48d9523e5d753c222f0526e210a30e1927e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/10/2020
+ms.openlocfilehash: 94836a37a62e3eeffb94d891980cc02694bd973e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645973"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409812"
 ---
 # <a name="working-with-reliable-collections"></a>A Reliable Collections használata
 A Service Fabric egy állapotalapú programozási modellt kínál a .NET fejlesztők számára a Reliable Collections rendszeren keresztül. Pontosabban a Service Fabric megbízható szótárat és megbízható várólista-osztályokat biztosít. Ha ezeket az osztályokat használja, az állapot particionálva lesz (a méretezhetőség érdekében), replikálódik (a rendelkezésre állás érdekében), és egy partíción belül (ACID szemantika) tranzakciós. Nézzük meg egy megbízható szótárobjektum tipikus használatát, és nézzük meg, hogy valójában mit csinál.
@@ -50,6 +50,19 @@ A fenti kódban a CommitAsync hívásvéglegesíti a tranzakció összes művele
 
 Ha a CommitAsync nem kerül megnevezésre (általában egy kivétel miatt), akkor az ITransaction objektum ot megsemmisíti. Egy nem véglegesített ITransaction-objektum ártalmatlanításakor a Service Fabric hozzáfűzi a megszakítási adatokat a helyi csomópont naplófájljához, és semmit sem kell küldeni a másodlagos replikáknak. És akkor, minden zár kapcsolódó kulcsokat, amelyek manipulálták a tranzakció nkeresztül szabadulnak fel.
 
+## <a name="volatile-reliable-collections"></a>Illékony megbízható gyűjtemények 
+Egyes számítási feladatokban, például egy replikált gyorsítótárban például, az alkalmi adatvesztés is elviselhető. A lemezre történő adatmegőrzés elkerülése jobb késéseket és átviteli réseket tesz lehetővé a Megbízható szótárak írásakor. A perzisztencia hiányának kompromisszuma az, hogy ha a kvórum vesztesége bekövetkezik, teljes adatvesztés következik be. Mivel a kvórum elvesztése ritka jelenség, a megnövekedett teljesítmény érdemes lehet a ritka lehetőségét adatvesztés az ilyen számítási feladatok.
+
+Jelenleg az illékony támogatás csak megbízható szótárak és megbízható várólisták, és nem ReliableConcurrentQueues érhető el. Kérjük, olvassa el a [kifogások](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections) listáját, hogy tájékoztassa a döntést arról, hogy használja illékony gyűjtemények.
+
+Ha engedélyezni szeretné az illékony ```HasPersistedState``` támogatást a szolgáltatásban, állítsa a jelzőt a szolgáltatástípus-deklarációban a beállításra, ```false```így:
+```xml
+<StatefulServiceType ServiceTypeName="MyServiceType" HasPersistedState="false" />
+```
+
+>[!NOTE]
+>A meglévő megőrzött szolgáltatások nem tehetők volatilissé, és fordítva. Ha ezt szeretné, törölnie kell a meglévő szolgáltatást, majd telepítenie kell a szolgáltatást a frissített jelzővel. Ez azt jelenti, hogy hajlandónak kell lennie arra, ```HasPersistedState``` hogy teljes adatvesztést okozzon, ha meg szeretné változtatni a jelzőt. 
+
 ## <a name="common-pitfalls-and-how-to-avoid-them"></a>Gyakori buktatókat, és hogyan lehet elkerülni őket
 Most, hogy megértette, hogyan működnek a megbízható gyűjtemények belsőleg, vessünk egy pillantást néhány gyakori visszaélések őket. Lásd az alábbi kódot:
 
@@ -60,7 +73,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
    // & sends the bytes to the secondary replicas.
    await m_dic.AddAsync(tx, name, user);
 
-   // The line below updates the property’s value in memory only; the
+   // The line below updates the property's value in memory only; the
    // new value is NOT serialized, logged, & sent to secondary replicas.
    user.LastLogin = DateTime.UtcNow;  // Corruption!
 
@@ -87,13 +100,13 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction())
 {
-   // Use the user’s name to look up their data
+   // Use the user's name to look up their data
    ConditionalValue<User> user = await m_dic.TryGetValueAsync(tx, name);
 
    // The user exists in the dictionary, update one of their properties.
    if (user.HasValue)
    {
-      // The line below updates the property’s value in memory only; the
+      // The line below updates the property's value in memory only; the
       // new value is NOT serialized, logged, & sent to secondary replicas.
       user.Value.LastLogin = DateTime.UtcNow; // Corruption!
       await tx.CommitAsync();
@@ -110,7 +123,7 @@ Az alábbi kód bemutatja, hogyan lehet egy értéket megbízható gyűjteményb
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction())
 {
-   // Use the user’s name to look up their data
+   // Use the user's name to look up their data
    ConditionalValue<User> currentUser = await m_dic.TryGetValueAsync(tx, name);
 
    // The user exists in the dictionary, update one of their properties.
@@ -124,7 +137,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
       // In the new object, modify any properties you desire
       updatedUser.LastLogin = DateTime.UtcNow;
 
-      // Update the key’s value to the updateUser info
+      // Update the key's value to the updateUser info
       await m_dic.SetValue(tx, name, updatedUser);
       await tx.CommitAsync();
    }
@@ -138,7 +151,7 @@ Az alábbi UserInfo típus bemutatja, hogyan definiálható egy megváltoztathat
 
 ```csharp
 [DataContract]
-// If you don’t seal, you must ensure that any derived classes are also immutable
+// If you don't seal, you must ensure that any derived classes are also immutable
 public sealed class UserInfo
 {
    private static readonly IEnumerable<ItemId> NoBids = ImmutableList<ItemId>.Empty;
@@ -200,7 +213,7 @@ Továbbá a szolgáltatáskód egyszerre egy frissítési tartománnyal frissül
 
 Azt is megteheti, amit általában két frissítésnek neveznek. A kétfázisú frissítés, a szolgáltatás frissítése v1-ről V2: V2 tartalmazza a kódot, amely tudja, hogyan kell kezelni az új séma változás, de ez a kód nem hajtható végre. Amikor a V2-kód v1-es adatokat olvas be, akkor működik rajta, és v1-es adatokat ír. Ezután a frissítés befejezése után az összes frissítési tartományok, valahogy jelezheti a futó V2-példányok, hogy a frissítés befejeződött. (Ennek egyik jelzése a konfigurációs frissítés bevezetése; ez teszi ezt kétfázisú frissítéssé.) Most a V2-példányok olvashatják a V1-adatokat, v2-es adatokká alakíthatják, működtethetik, és V2-adatként írhatják ki. Amikor más példányok v2-adatokat olvasnak, nem kell konvertálniuk, csak működnek rajta, és kiírják a V2-adatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A kompatibilis adategyezmények továbbítása című témakörben [olvashat.](https://msdn.microsoft.com/library/ms731083.aspx)
 
 Az adatszerződések verziószámozásával kapcsolatos gyakorlati tanácsokról az [Adatszerződés-verziószámozás című](https://msdn.microsoft.com/library/ms731138.aspx) témakörben olvashat.

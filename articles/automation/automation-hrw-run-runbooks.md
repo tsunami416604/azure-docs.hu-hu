@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 902734ddc7195d643c3aedb4054f57723d1a51c2
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: b65c72e0c65cf9aa84cb614478fbdf78258f3054
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632139"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405830"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid runbook-feldolgozón
 
@@ -27,7 +27,7 @@ A nem Azure-erőforrások elérése, a hibrid Runbook-feldolgozón futó runbook
 
 ### <a name="runbook-authentication"></a>Runbook-hitelesítés
 
-Alapértelmezés szerint a runbookok a helyi számítógépen futnak. A Windows rendszerben a helyi rendszerfiók környezetében futnak. Linux esetén az **nxautomation**speciális felhasználói fiók kal összefüggésében futnak. Mindkét esetben a runbookok saját hitelesítést kell biztosítaniuk az általuk elért erőforrásokhoz.
+Alapértelmezés szerint a runbookok a helyi számítógépen futnak. A Windows rendszerben a helyi **rendszerfiók** környezetében futnak. Linux esetén az **nxautomation**speciális felhasználói fiók kal összefüggésében futnak. Mindkét esetben a runbookok saját hitelesítést kell biztosítaniuk az általuk elért erőforrásokhoz.
 
 A [runbookban használhatja a Hitelesítő adatok](automation-credentials.md) és [a tanúsítvány](automation-certificates.md) eszközeit olyan parancsmagokkal, amelyek lehetővé teszik a hitelesítő adatok megadását, hogy a runbook hitelesíthesse magát a különböző erőforrások számára. A következő példa a runbook egy olyan részét mutatja be, amely újraindítja a számítógépet. Hitelesítő adatokat kér le egy hitelesítő egységből és a számítógép nevét egy `Restart-Computer` változó eszközből, majd ezeket az értékeket használja a parancsmaggal.
 
@@ -84,7 +84,7 @@ Kövesse a következő lépéseket az Azure-erőforrások felügyelt identitás�
 ```
 
 > [!NOTE]
-> `Connect-AzAccount -Identity`Hibrid Runbook-feldolgozóhoz működik, rendszeráltal hozzárendelt identitást és egyetlen felhasználó által hozzárendelt identitást használva. Ha több felhasználó által hozzárendelt identitást használ a hibrid Runbook-feldolgozón, a `Connect-AzAccount` runbooknak meg kell adnia a *AccountId paramétert* egy adott felhasználó által hozzárendelt identitás kiválasztásához.
+> `Connect-AzAccount -Identity`Hibrid Runbook-feldolgozóhoz működik, rendszeráltal hozzárendelt identitást és egyetlen felhasználó által hozzárendelt identitást használva. Ha több felhasználó által hozzárendelt identitást használ a hibrid Runbook-feldolgozón, a runbooknak meg kell adnia egy `AccountId` adott felhasználó által hozzárendelt identitás kiválasztásához `Connect-AzAccount` szükséges paramétert.
 
 ### <a name="automation-run-as-account"></a><a name="runas-script"></a>Automatizálás futtatása fiókként
 
@@ -166,7 +166,7 @@ A Futtatás másként fiók előkészítésének befejezése:
 
 1. Mentse az **Export-RunAsCertificateToHybridWorker** runbookot a számítógépre **.ps1** kiterjesztéssel.
 2. Importálja az Automation-fiókba.
-3. Módosítsa a runbookot, és `Password` módosítsa a saját jelszavának o változó értékét. 
+3. Módosítsa a runbookot, és `Password` módosítsa a változó értékét a saját jelszavára. 
 4. Tegye közzé a runbookot.
 5. Futtassa a runbookot, amely a hibrid Runbook-feldolgozó csoportot célozza meg, amely fut, és hitelesíti a runbookokat a Futtatás másként fiók használatával. 
 6. Vizsgálja meg a feladatstreamet, és nézze meg, hogy jelenti-e a tanúsítvány importálási kísérletét a helyi számítógéptárolóba, és több sort követ. Ez a viselkedés attól függ, hogy hány Automation-fiókot határoz meg az előfizetésben, és a hitelesítés sikerességi fokát.
@@ -185,14 +185,14 @@ Ne feledje, hogy a hibrid runbook-feldolgozók feladatai a windowsos helyi rends
 
 Amikor elindít egy runbookot az Azure Portalon, megjelenik a **Futtatás a futtatás a** beállítás, amelyhez kiválaszthatja az **Azure-t** vagy **a hibrid feldolgozót.** Ha a **Hibrid feldolgozó**lehetőséget választja, a hibrid Runbook-feldolgozó csoportot egy legördülő menüből választhatja ki.
 
-Használja `RunOn` a paramétert a `Start-AzureAutomationRunbook` parancsmaggal. A következő példa a Windows PowerShell segítségével indítegy **Teszt-Runbook** nevű runbookot egy MyHybridGroup nevű hibrid Runbook-feldolgozó csoporton.
+Használja `RunOn` a paramétert a [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) parancsmaggal. A következő példa a Windows PowerShell segítségével indítegy **Teszt-Runbook** nevű runbookot egy MyHybridGroup nevű hibrid Runbook-feldolgozó csoporton.
 
 ```azurepowershell-interactive
-Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
+Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
 > [!NOTE]
-> A `RunOn` paraméter hozzá `Start-AzureAutomationRunbook` lett adva a Microsoft Azure PowerShell 0.9.1-es verziójához. Ha van egy korábbi telepítve, [töltse le a legújabb verziót.](https://azure.microsoft.com/downloads/) Csak telepítse ezt a verziót arra a munkaállomásra, ahol a runbookot a PowerShellből indítja. Nem kell telepítenie a hibrid Runbook feldolgozó számítógépre, hacsak nem kívánja elindítani a runbookokat erről a számítógépről.
+> Töltse [le a legújabb PowerShell-verziót,](https://azure.microsoft.com/downloads/) ha egy korábbi telepítve van. Csak telepítse ezt a verziót arra a munkaállomásra, ahol a runbookot a PowerShellből indítja. Nem kell telepítenie a hibrid Runbook feldolgozó számítógépre, hacsak nem kívánja elindítani a runbookokat erről a számítógépről.
 
 ## <a name="working-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>Aláírt runbookok futtatása Windows hibrid runbook-feldolgozón
 
@@ -307,7 +307,7 @@ Miután konfigurálta az aláírás-érvényesítést, a következő GPG-parancc
 gpg –-clear-sign <runbook name>
 ```
 
-Az aláírt runbook `<runbook name>.asc`neve .
+Az aláírt runbook neve ** <runbook name>.asc**.
 
 Most már feltöltheti az aláírt runbookot az Azure Automationbe, és úgy hajthatja végre, mint egy normál runbookot.
 
@@ -317,3 +317,5 @@ Most már feltöltheti az aláírt runbookot az Azure Automationbe, és úgy haj
 * Ha tudni szeretné, hogyan használhatja a szöveges szerkesztőt a PowerShell-runbookokkal való együttműködésre az Azure Automationben, olvassa el [a Runbook szerkesztése az Azure Automationben című témakört.](automation-edit-textual-runbook.md)
 * Ha a runbookok nem futnak sikeresen, tekintse át a hibaelhárítási útmutatót a [Runbook végrehajtási hibák.](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)
 * A PowerShellről további információt, beleértve a nyelvi referencia- és tanulási modulokat, olvassa el a [PowerShell-dokumentumok című dokumentumban.](https://docs.microsoft.com/powershell/scripting/overview)
+* A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

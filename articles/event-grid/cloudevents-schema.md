@@ -7,15 +7,14 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 0efccd2851885dad209d5548a76737c25777b891
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404052984cb99e37f7404a47f3ac374088d32d6c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372448"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393472"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents 1.0-s verzióját használja az Eseményrácsgal
-
 Az alapértelmezett [eseményséma](event-schema.md)mellett az Azure Event Grid natív módon támogatja a [CloudEvents 1.0-s és HTTP protokollkötési JSON-implementációjának](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) [eseményeit.](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md) [A CloudEvents](https://cloudevents.io/) egy [nyílt specifikáció](https://github.com/cloudevents/spec/blob/v1.0/spec.md) az eseményadatok leírására.
 
 A CloudEvents leegyszerűsíti az interoperabilitást azáltal, hogy közös eseménysémát biztosít a közzétételhez és a felhőalapú események fogyasztásához. Ez a séma lehetővé teszi az egységes szerszámozást, az események & kezelés szabványos módjait, valamint a külső eseményséma deszerializálásának univerzális módjait. A közös sémával könnyebben integrálhatja a munkát a platformok között.

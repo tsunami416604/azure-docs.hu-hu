@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: 94013b735f70358d0c49512e6d90cd1d03e78d5f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 18cf714ba7ee0a2bf5251c6e109bf997ba6834af
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705717"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403632"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Rövid útmutató: Objektumészlelési projekt létrehozása az egyéni látótérnok.js SDK-val
 
@@ -233,7 +233,7 @@ Az alkalmazás kimenetének meg kell jelennie a konzolon. Ezután ellenőrizheti
 
 ## <a name="next-steps"></a>További lépések
 
-Láthatta, hogyan hajthatók végre az objektumészlelési folyamat lépései kódok használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran előfordulhat, hogy a nagyobb pontosság érdekében többször is be kell tanítania és tesztelnie kell a modellt. Az alábbi útmutató a képosztályozással foglalkozik, az alapelvei azonban hasonlóak az objektumészlelés alapelveihez.
+Most már látta, hogy az objektumészlelési folyamat minden lépése hogyan végezhető el kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran többször is be kell képeznie és tesztelnie kell a modellt annak érdekében, hogy pontosabb legyen. A következő betanítási útmutató a képbesorolással foglalkozik, de alapelvei hasonlóak az objektumészleléshez.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](test-your-model.md)

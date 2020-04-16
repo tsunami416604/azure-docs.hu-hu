@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/26/2020
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cca5680d307874a565dec47f643bf9320192c270
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 35988f10703967bd5986015ccb0fb480679b94e9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656102"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404750"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-javascript"></a>Rövid útmutató: Nyomtatott és kézzel írt szöveg kinyerése a Computer Vision 2.0 és 2.1 REST API és a JavaScript használatával
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Rövid útmutató: Nyomtatott és kézzel írt szöveg kinyerése a Computer Vision REST API és a JavaScript használatával
 
-Ebben a rövid útmutatóban a Computer Vision REST API használatával kinyeri a nyomtatott és/vagy kézzel írt szöveget egy képből. A [Kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszerekkel észlelheti a kép szövegét, és kinyerheti a felismert karaktereket egy géppel olvasható karakterfolyamba. Az API határozza meg, hogy melyik felismerési modellt használja az egyes szövegsorokhoz, így támogatja a nyomtatott és kézzel írt szöveggel rendelkező képeket.
+Ebben a rövid útmutatóban a Computer Vision REST API használatával kinyerheti a nyomtatott és/vagy kézzel írt szöveget egy képből. A [Kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszerekkel észlelheti a kép szövegét, és kinyerheti a felismert karaktereket egy géppel olvasható karakterfolyamba. Az API határozza meg, hogy melyik felismerési modellt használja az egyes szövegsorokhoz, így támogatja a nyomtatott és kézzel írt szöveggel rendelkező képeket.
 
-A Computer Vision 2.0-val és 2.1-es verziójával összehasonlítva a Computer Vision 3.0 Nyilvános előzetes verzió a következőket biztosítja:
+Ez a funkció egy v2.1 API-ban és egy v3.0-s nyilvános előzetes verzióban is elérhető. A 2.1-es játékhoz képest a 3.0 API a következőket:
 
-* még nagyobb pontosság
-* megváltozott kimeneti formátum
-* megbízhatósági pontszám a szavakhoz
-* spanyol és angol nyelvek támogatása a kiegészítő nyelvi paraméterrel
+* Jobb pontosság
+* A szavak megbízhatósági pontszámai
+* Spanyol és angol támogatás a `language` kiegészítő paraméterrel
+* Más kimeneti formátum
+
+Válassza ki az alábbi lapot a használt verzióhoz.
 
 #### <a name="version-2"></a>[2-es verzió](#tab/version-2)
 
@@ -784,7 +786,9 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemz
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy JavaScript-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Fedezze fel a JavaScript alkalmazás, amely a Computer Vision elvégzésére optikai karakterfelismerés (OCR); intelligens körülvágott bélyegképek létrehozása; és észlelheti, kategorizálhatja, címkézheti és leírhatja a képek vizuális jellemzőit. 
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – JavaScript-oktatóanyag](../Tutorials/javascript-tutorial.md)
+
+* A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).

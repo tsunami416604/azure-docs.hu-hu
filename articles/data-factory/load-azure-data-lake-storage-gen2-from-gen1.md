@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668851"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415825"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Adatok másolása az Azure Data Lake Storage Gen1-ről a Gen2 szolgáltatásba az Azure Data Factory segítségével
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Az Azure Data Lake Storage Gen2 az [Azure Blob storage-ba](../storage/blobs/storage-blobs-introduction.md)beépített big data-elemzési képességek összeskészlete. Segítségével kapcsolatba léphet az adatokkal a fájlrendszer és az objektumtárolási paradigmák használatával.
 
@@ -65,7 +67,7 @@ Ez a cikk bemutatja, hogyan használhatja a Data Factory adatmásolási eszközt
 1. Az **Első lépések** lapon válassza az **Adatok másolása** csempét az adatmásolási eszköz elindításához. 
 
    ![Adateszköz csempéjéhez másolva](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-tile.png)
-2. A **Tulajdonságok** lapon adja meg a **CopyFromADLSGen1ToGen2** értéket a **Tevékenység neve** mezőhöz. Válassza a **Tovább lehetőséget.**
+2. A **Tulajdonságok** lapon adja meg a **CopyFromADLSGen1ToGen2** értéket a **Tevékenység neve** mezőhöz. Kattintson a **Tovább** gombra.
 
     ![Tulajdonságok lap](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-properties-page.png)
 3. A **Forrásadattár** lapon válassza a **+ Új kapcsolat létrehozása**lehetőséget.
@@ -82,7 +84,7 @@ Ez a cikk bemutatja, hogyan használhatja a Data Factory adatmásolási eszközt
   
    b. A beállítások érvényesítéséhez válassza a **Kapcsolat tesztelése** lehetőséget. Ezután kattintson a **Befejezés** gombra.
   
-   c. Láthatja, hogy új kapcsolat jött létre. Válassza a **Tovább lehetőséget.**
+   c. Láthatja, hogy új kapcsolat jött létre. Kattintson a **Tovább** gombra.
    
    > [!IMPORTANT]
    > Ebben az átjárási, az Azure-erőforrások felügyelt identitás használatával hitelesíti az Azure Data Lake Storage Gen1. A felügyelt identitás megfelelő engedélyeket az Azure Data Lake Storage Gen1, kövesse [az alábbi utasításokat.](connector-azure-data-lake-store.md#managed-identity)
@@ -93,7 +95,7 @@ Ez a cikk bemutatja, hogyan használhatja a Data Factory adatmásolási eszközt
 
     ![Bemeneti fájl vagy mappa kiválasztása](./media/load-azure-data-lake-storage-gen2-from-gen1/choose-input-folder.png)
 
-7. Adja meg a másolási viselkedést a **rekurzív fájlok másolása** és a **bináris másolás** idomulása beállítás kiválasztásával. Válassza a **Tovább lehetőséget.**
+7. Adja meg a másolási viselkedést a **rekurzív fájlok másolása** és a **bináris másolás** idomulása beállítás kiválasztásával. Kattintson a **Tovább** gombra.
 
     ![Kimeneti mappa megadása](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     

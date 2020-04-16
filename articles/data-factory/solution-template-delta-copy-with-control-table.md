@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 3c077e2c04cae94d2e1a2a84ccd7d09c7a0829b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01a6d796a9a8306da5bb707111b07786136a66cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439749"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414786"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Különbözeti másolás vezérlőtáblával rendelkező adatbázisból
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk egy sablont, amely elérhető növekményesen betölteni az új vagy frissített sorokat egy adatbázistábla az Azure-ba egy külső vezérlőtábla, amely tárolja a magas vízjel érték.
 

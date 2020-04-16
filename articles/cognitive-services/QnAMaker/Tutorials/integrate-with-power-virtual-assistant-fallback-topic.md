@@ -1,209 +1,215 @@
 ---
-title: 'Oktatóanyag: Integrálható a Power Virtual Agent - QnA Maker'
-description: Ebben az oktatóanyagban javíthatja a tudásbázis minőségét az aktív tanulással. Tekintse át, fogadja el vagy utasítsa el, adja hozzá a meglévő kérdések eltávolítása vagy módosítása nélkül.
+title: 'Oktatóanyag: Integrálható a virtuális power ügynökökkel - QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Ebben az oktatóanyagban javíthatja a tudásbázis minőségét az aktív tanulással. A meglévő kérdések eltávolítása vagy módosítása nélkül tekintse át, fogadja el vagy utasítsa el, illetve adja hozzá.
+services: cognitive-services
+author: diberry
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 03/11/2020
-ms.openlocfilehash: 283667c587e395a1d712f82f3385582b4c5c3227
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: diberry
+ms.openlocfilehash: 4557dee995c8a01067f7e6ad0e79bb7115b6ecdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398876"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402819"
 ---
-# <a name="tutorial-add-knowledge-base-to-power-virtual-agent"></a>Oktatóanyag: Tudásbázis hozzáadása a Power Virtual Agent hez
-Hozzon létre és bővítsen egy [virtuális ügynök](https://powervirtualagents.microsoft.com/) robotot, hogy válaszokat adjon a tudásbázisból.
+# <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Oktatóanyag: Adja hozzá tudásbázisát a virtuális virtuális ügynökök höz
+Hozzon létre és bővítsen egy [virtuális virtuális ügynökök robotot,](https://powervirtualagents.microsoft.com/) hogy válaszokat adjon a tudásbázisból.
 
-**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Virtuális energiaügynök létrehozása
-> * Rendszertartalék témakör létrehozása
-> * Add QnA Maker műveletként a témakörhöz, mint Power Automate flow
+> * Virtuális energiaügynökök robot létrehozása
+> * Rendszertartalék-témakör létrehozása
+> * QnA Maker hozzáadása műveletként egy témakörhöz Power Automate folyamatként
 > * Power Automate megoldás létrehozása
-> * Power Automate folyamat hozzáadása a megoldáshoz
-> * Virtuális energiaügynök közzététele
-> * Teszt Power Virtuális Ügynök, választ kap a QnA Maker tudásbázisától
+> * Power Automate-folyamat hozzáadása a megoldáshoz
+> * Virtuális nagy teljesítményű ügynökök közzététele
+> * Tesztelje a virtuális teljesítményügynököket, és kapjon választ a QnA Maker tudásbázisától
 
-## <a name="integrate-a-power-virtual-agent-with-a-knowledge-base"></a>Virtuális virtuális ügynök integrálása tudásbázissal
+## <a name="integrate-an-agent-with-a-knowledge-base"></a>Ügynök integrálása tudásbázissal
 
-[A Power Virtual Agents](https://powervirtualagents.microsoft.com/) lehetővé teszi a csapatok számára, hogy könnyedén hozzanak létre hatékony robotokat egy irányított, kódnélküli grafikus felület segítségével anélkül, hogy adatszakértőkre vagy fejlesztőkre lenne szükség.
+[Power virtuális ügynökök](https://powervirtualagents.microsoft.com/) lehetővé teszi a csapatok, hogy hozzon létre erős botok segítségével irányított, no-code grafikus felület. Nincs szükség adatszakértőkre vagy fejlesztőkre.
 
-A Power Virtual Agent jön létre egy sor témakörök (tárgyi területek), annak érdekében, hogy válaszoljon a felhasználói kérdésekre műveletek végrehajtásával. Ha a válasz nem található, a rendszer tartalék visszaadhat választ.
+A Virtuális power ügynökök, hozzon létre egy ügynök egy sor témakörök (tárgyi területek), annak érdekében, hogy válaszoljon a felhasználói kérdésekre műveletek végrehajtásával. Ha a válasz nem található, a rendszer tartalék visszaadhat választ.
 
-Konfigurálja úgy az ügynököt, hogy a kérdést a témakör műveletének részeként vagy a **Rendszertartalék** témakör elérési útjának részeként küldje el a tudásbázisnak. Mindketten ugyanazt a műveletmechanizmust használják, hogy csatlakozzanak a tudásbázishoz, és választ adjanak vissza.
+Konfigurálja úgy az ügynököt, hogy a kérdést a témakör műveletének részeként vagy a *Rendszertartalék* témakör elérési útjának részeként küldje el a tudásbázisnak. Mindketten egy műveletsegítségével csatlakoznak a tudásbázishoz, és választ adnak vissza.
 
-## <a name="power-automate-connects-to-generateanswer-action"></a>A Power Automate a GenerateAnswer művelethez csatlakozik
+## <a name="power-automate-connects-to-generateanswer-action"></a>A Power Automate `GenerateAnswer` a művelethez csatlakozik
 
-Ha az ügynököt a tudásbázisához szeretné csatlakoztatni, a Power Automate segítségével hozza létre a műveletet. A Power Automate **folyamatfolyamatot**biztosít, amely a QnA Maker GenerateAnswer API-jához csatlakozik.
+Ha az ügynököt a tudásbázisához szeretné csatlakoztatni, a Power Automate segítségével hozza létre a műveletet. A Power Automate folyamatfolyamatot biztosít, amely a `GenerateAnswer` QnA Maker API-jához csatlakozik.
 
-Miután az **áramlást** megtervezték és mentette, power automate **megoldásból**érhető el.  Miután a GenerateAnswer folyamat ot hozzáadta a megoldáshoz, használja ezt a megoldást műveletként az ügynökben.
+Miután megtervezte és mentette a folyamatot, power automate megoldásból érhető el. Használja ezt a megoldást műveletként az ügynökében.
 
-## <a name="process-steps-to-connect-an-agent-to-your-knowledge-base"></a>Az ügynök nek a tudásbázishoz való csatlakoztatásának lépései
+## <a name="connect-an-agent-to-your-knowledge-base"></a>Ügynök csatlakoztatása a tudásbázishoz
 
-A következő lépések áttekintésként jelennek meg, amelyek segítségével megismerheti, hogy a lépések hogyan kapcsolódnak a Virtuális virtuális ügynök qna maker tudásbázishoz való csatlakoztatásának céljához.
+Az alábbiakban áttekintést olvashat a power virtuális ügynökök ben lévő ügynökök nek a QnA Maker egyik tudásbázisához való csatlakoztatásához.
 
-Virtuális energiaügynök és a QnA Maker használatának lépései:
-* A [QnA Maker](https://www.qnamaker.ai/) portálon
-    * Tudásbázis létrehozása és közzététele
-    * Tudásbázis részleteinek másolása, beleértve a tudásbázis-azonosítót, a futásidejű végpontkulcsot és a futásidejű végpontgazdat.
-* A [Power Virtual Agent](https://powerva.microsoft.com/) portálon
-    * Ügynök témakörének létrehozása
-    * Művelet hívása (a Power Automate Flow-hoz)
-* A [Power Automate](https://us.flow.microsoft.com/) portálon
-    * A [QnA Maker GenerateAnswer-hez](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/) csatlakozóval rendelkező folyamat létrehozása
-        * A QnA Maker közzétette a tudásbázis adatait
+* A [QnA Maker](https://www.qnamaker.ai/) portálon:
+    * Hozza létre és tegye közzé tudásbázisát.
+    * Másolja a tudásbázis adatait, beleértve az azonosítót, a futásidejű végpontkulcsot és a futásidejű végpontgazdat.
+* A [virtuális energiaügynökök portálon:](https://powerva.microsoft.com/)
+    * Ügynöktémakör létrehozása.
+    * Művelet hívása (a Power Automate flow-hoz).
+* A [Power Automate](https://us.flow.microsoft.com/) portálon:
+    * Hozzon létre egy folyamatot a [QnA Maker GenerateAnswer című üzenetéhez](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)csatlakozóval.
+        * A QnA Maker közzétette a tudásbázis adatait:
             * Tudásbázis azonosítója
             * QnA Maker erőforrás-végpontgazda
             * QnA Maker erőforrás-végpontkulcs
         * Bemenet - felhasználói lekérdezés
         * Kimenet - tudásbázis válasz
-    * Megoldás létrehozása és folyamat hozzáadása
-* Visszatérés a virtuális ügynök höz
-    * Válassza ki a megoldás kimenetét üzenetként a témakörhöz
+    * Hozzon létre egy megoldást, és adja hozzá a folyamatot.
+* Visszatérés a virtuális ügynökök áramellátásához:
+    * Válassza ki a megoldás kimenetét egy témakör üzenetében.
 
 ## <a name="create-and-publish-a-knowledge-base"></a>Tudásbázis létrehozása és közzététele
 
-1. Kövesse a [rövid útmutatót](../Quickstarts/create-publish-knowledge-base.md) a tudásbázis létrehozásához. Ne fejezze be az utolsó szakaszt, hogy hozzon létre egy bot. Ez az oktatóanyag helyettesíti a rövid útmutató utolsó szakaszát, mivel ez az oktatóanyag a Power Virtual Agent segítségével hoz létre egy robotot a Robotkeret robot helyett a rövid útmutatóban.
+1. Kövesse a [rövid útmutatót](../Quickstarts/create-publish-knowledge-base.md) a tudásbázis létrehozásához. Ne töltse ki az utolsó szakaszt a robot létrehozásáról. Ehelyett használja ezt az oktatóanyagot, hogy hozzon létre egy robot power virtuális ügynökök.
 
     > [!div class="mx-imgBorder"]
-    > ![Adja meg a közzétett tudásbázis-beállításokat a [QnA Maker]https://www.qnamaker.ai/) (portál) **Beállítások** lapján.](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
+    > ![Képernyőkép a tudásbázis közzétett beállításairól](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
 
-    Erre az információra szüksége lesz a [Power Automate lépéshez](#create-power-automate-flow-to-connect-to-your-knowledge-base) a QnA Maker GenerateAnswer kapcsolat konfigurálásához.
+    Adja meg a [QnA Maker](https://www.qnamaker.ai/) portál **Beállítások** lapján található közzétett tudásbázis-beállításokat. Erre az információra szüksége lesz a [Power Automate lépéshez](#create-a-power-automate-flow-to-connect-to-your-knowledge-base) a QnA Maker-kapcsolat `GenerateAnswer` konfigurálásához.
 
-1. Keresse meg a végpontkulcsot, a végpontállomást és a tudásbázis-azonosítót a QnA Maker portál **Beállítások** lapján.
+1. A QnA Maker portál **Beállítások** lapján keresse meg a végpontkulcsot, a végpontállomást és a tudásbázis-azonosítót.
 
-## <a name="create-power-virtual-agent"></a>Virtuális energiaügynök létrehozása
+## <a name="create-an-agent-in-power-virtual-agents"></a>Ügynök létrehozása a virtuális energiaügynökök ben
 
-1. Jelentkezzen be a Power Virtual Agent [alkalmazásba](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409) iskolai vagy munkahelyi e-mail fiókjával.
-1. Ha ez az első bot, akkor kell a **honlapon** az ügynök. Ha nem ez az első Power Virtual Agent, válassza ki a bot a jobb felső navigációs és válassza **+ Új bot**.
+1. [Jelentkezzen be a virtuális energiaügynökök bekapcsolása.](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409) Használja iskolai vagy munkahelyi e-mail fiókját.
+1. Ha ez az első bot, akkor a **honlapon** az ügynök. Ha nem ez az első robot, válassza ki a bot ot az oldal jobb felső részén, és válassza a **+ Új robot**lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![Adja meg a közzétett tudásbázis-beállításokat a [QnA Maker]https://www.qnamaker.ai/) (portál) **Beállítások** lapján.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-home.png)
+    > ![Képernyőkép a Virtuális teljesítményügynökök kezdőlapról](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-home.png)
 
-## <a name="several-topics-are-provided-in-the-bot"></a>Számos téma áll rendelkezésre a bot
+1. Adja meg a közzétett tudásbázis-beállításokat, amelyek a [QnA Maker](https://www.qnamaker.ai/) portál **Beállítások** lapján találhatók.
 
-Az ügynök a témakörgyűjtemény segítségével válaszol a tárgyterületen lévő kérdésekre. Ebben a bemutatóban az ügynök számos témakört biztosít az Ön számára, osztva **felhasználói témák** és a **rendszer témák**.
+## <a name="topics-provided-in-the-bot"></a>Témák a bot
+
+Az ügynök a témakörgyűjtemény segítségével válaszol a tárgyterületen lévő kérdésekre. Ebben az oktatóanyagban az ügynök számos témakört biztosít az Ön számára, felhasználói témákra és rendszertémakörökre osztva.
 
 > [!div class="mx-imgBorder"]
-> ![Az ügynök a témakörgyűjtemény segítségével válaszol a tárgyterületen lévő kérdésekre. Ebben az oktatóanyagban az ügynök számos témakört biztosít a **Felhasználói témákra** és **Rendszertémákra**.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topics-provided.png)
+> ![Képernyőkép az ügynökben található témakörökről](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topics-provided.png)
 
 
-## <a name="create-power-virtual-agents-system-fallback-topic"></a>A Power Virtual Agent rendszertartalék-témakörének létrehozása
+## <a name="create-the-system-fallback-topic"></a>A rendszertartalék témakör létrehozása
 
-Bár az ügynök bármely témakörből csatlakozhat a tudásbázishoz, ez az oktatóanyag a **Rendszertartalék témakört** használja. A tartalék témakör akkor használatos, ha az ügynök nem talál választ. Az ügynök továbbítja a felhasználó szövegét a QnA Maker GenerateAnswer API-jának, megkapja a választ a tudásbázisból, és üzenetként jeleníti meg a felhasználónak.
+Bár az ügynök bármely témakörből csatlakozhat a tudásbázishoz, ez az oktatóanyag a *rendszertartalék témakört* használja. A tartalék témakör akkor használatos, ha az ügynök nem talál választ. Az ügynök továbbítja a felhasználó szövegét a `GenerateAnswer` QnA Maker API-jának, megkapja a választ a tudásbázisból, és üzenetként jeleníti meg a felhasználónak.
 
-1. A [Virtuális energiagazdálkodási ügynökök](https://powerva.microsoft.com/#/) portálon a navigáció jobb felső sarkában válassza a **Beállítások** lapot. Az oldal ikonja a fogaskerék. Válassza **a Rendszertartalék lehetőséget.**
-
-    > [!div class="mx-imgBorder"]
-    > ![Power Virtual ügynök menüpont a rendszer tartalék](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-system-fallback.png)
-
-1. Az előugró **ablakok beállításai** ablakban válassza a **+ Hozzáadás** lehetőséget a Rendszertartalék témakör hozzáadásához.
+1. A [Power Virtual Agents](https://powerva.microsoft.com/#/) portál jobb felső sarkában válassza a **Beállítások** (a fogaskerék ikon) lehetőséget. Ezután válassza **a Rendszertartalék lehetőséget.**
 
     > [!div class="mx-imgBorder"]
-    > ![A Beállítások ablakban adja hozzá a tartalék témakört.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-add-fallback-topic.png)
+    > ![Képernyőkép a Virtuális energiaminőségkezelők virtuális eszközök menüeleméről a Rendszertartalékhoz](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-system-fallback.png)
+
+1. A **+ Add lehetőséget** választva hozzáadhat egy tartalék témakört.
+
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép egy tartalék témakör hozzáadásáról.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-add-fallback-topic.png)
 
 1. A témakör hozzáadása után válassza a **Go to Fallback témakört** a tartalék témakör szerzői a szerzői vásznon.
 
     > [!TIP]
-    > Ha vissza kell térnie a Tartalék témakörhöz, az a **Rendszer** témaköreinek részeként a **Témakörök** szakaszban érhető el.
+    > Ha vissza kell térnie a tartalék témakörhöz, az a **Rendszer** témaköreinek részeként a **Témakörök témakörei** szakaszban érhető el.
 
-## <a name="use-authoring-canvas-to-add-an-action"></a>Művelet hozzáadása szerzői vászon használata
+## <a name="use-the-authoring-canvas-to-add-an-action"></a>Művelet hozzáadása a szerzői vászon használatával
 
-A Virtuális energiagazdálkodási ügynökök készítő vászon használatával csatlakoztathatja a tartalék témakört a tudásbázishoz. A témakör az **ismeretlen felhasználói szöveggel**kezdődik. Adjon hozzá egy műveletet, amely átadja a szöveget a QnA Makernek, majd a választ üzenetként jeleníti meg. A válasz megjelenítésének utolsó lépése az oktatóanyag későbbi részében [külön lépésként](#add-solutions-flow-to-power-virtual-agent) történik.
+A Power Virtual Agents authoring canvas használatával csatlakoztathatja a tartalék témakört a tudásbázishoz. A témakör az ismeretlen felhasználói szöveggel kezdődik. Adjon hozzá egy műveletet, amely átadja a szöveget a QnA Makernek, majd a választ üzenetként jeleníti meg. A válasz megjelenítésének utolsó lépése külön [lépésként](#add-your-solutions-flow-to-power-virtual-agents)történik , az oktatóanyag későbbi részében.
 
 Ez a szakasz létrehozza a tartalék témakör beszélgetési folyamat.
 
-1. Előfordulhat, hogy az új tartalék művelet már rendelkezik beszélgetési folyamatelemekkel. Törölje az **Eszkalálás** elemet a Beállítások menü kiválasztásával.
+1. Előfordulhat, hogy az új tartalék művelet már rendelkezik beszélgetési folyamatelemekkel. Törölje az **Eszkalálás** elemet a **Beállítások** menü kiválasztásával.
 
     > [!div class="mx-imgBorder"]
-    > ![Tartalék művelet indítása eseményindító-kifejezésekkel](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fallback-topic-delete-escalate.png)
+    > ![Képernyőkép a Virtuális power ügynökök tartalék témaköréről](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fallback-topic-delete-escalate.png)
 
 1. Jelölje **+** ki az **Üzenet** mezőből áramló összekötőt, majd válassza **a Művelet hívása**lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![Művelet felhívása](../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png)
+    > ![Képernyőkép: Művelet hívása](../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png)
 
-1. Kattintson a **Folyamat létrehozása** elemre. A folyamat a **Power Automate**, egy másik böngésző-alapú portál.
+1. Kattintson a **Folyamat létrehozása** elemre. A folyamat a Power Automate portálra vezet.
 
     > [!div class="mx-imgBorder"]
-    > ![Művelet felhívása](../media/how-to-integrate-power-virtual-agent/create-a-flow.png)
+    > ![Képernyőkép: Folyamat létrehozása](../media/how-to-integrate-power-virtual-agent/create-a-flow.png)
 
-## <a name="create-power-automate-flow-to-connect-to-your-knowledge-base"></a>Hozzon létre Power Automate Flow-t, hogy csatlakozzon a tudásbázishoz
+## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>Hozzon létre egy Power Automate folyamatot a tudásbázishoz való csatlakozáshoz
 
-Az alábbi eljárás létrehoz egy **Power Automate** folyamatot, amely:
-* veszi a bejövő felhasználói szöveget
-* elküldi a QnA Makernek
-* hozzárendeli a QnA Maker felső válaszát egy változóhoz
-* elküldi a változót (felső válasz) válaszként az ügynökének
+Az alábbi eljárás létrehoz egy Power Automate folyamatot, amely:
+* Fogja a bejövő felhasználói szöveget, és elküldi a QnA Makernek.
+* Hozzárendeli a QnA Maker felső válasz egy változó, és elküldi a változó (felső válasz) a válasz vissza az ügynök.
 
 1. A **Power Automate**alkalmazásban a **Folyamatsablon** elindul. A **virtuális energiaügynökök** folyamatelemében válassza a **Szerkesztés** lehetőséget az ügynöktől a tudásbázisba érkező bemeneti változó konfigurálásához. A szövegalapú beviteli változó az ügynök felhasználó által benyújtott szöveges kérdése.
 
     > [!div class="mx-imgBorder"]
-    > ![A bemeneti változó konfigurálása szöveges karakterláncként](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable.png)
+    > ![Képernyőkép a Power Automate beállításról, amely en a bemeneti változót szöveges karakterláncként konfigurálhatja](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable.png)
 
-1. Adjon hozzá egy szövegbevitelt, és nevezze el a változót `InputText` a leírásával. `IncomingUserQuestion` Ez az elnevezés segít megkülönböztetni a bemeneti szöveget a később létrehozott kimeneti szövegtől.
-
-    > [!div class="mx-imgBorder"]
-    > ![Adjon hozzá egy szövegbevitelt, és nevezze el a "InputText" változót a "UserQuestion" leírásával](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable-name-and-description.png)
-
-1. Jelölje **+** ki a **Virtuális energiaügynökök** mezőből áramló összekötőt egy új lépés beszúrásához (mielőtt a **Visszatérési érték(ek) a virtuális energiaügynöknek**lenne), majd válassza **a Művelet hozzáadása**lehetőséget.
-
-1. Keresse `Qna` meg a **QnA Maker-műveletek** megkereséséhez, majd válassza a Válasz **generálása lehetőséget.**
+1. Adjon hozzá egy szövegbevitelt, és nevezze el a változót `InputText`a `IncomingUserQuestion`leírásával. Ez az elnevezés segít megkülönböztetni a bemeneti szöveget a később létrehozott kimeneti szövegtől.
 
     > [!div class="mx-imgBorder"]
-    > ![Keressen rá a "Qna" kifejezésre a **QnA Maker** műveletek megkereséséhez, majd válassza a **Generate answer**](../media/how-to-integrate-power-virtual-agent/generate-answer-action-selected.png)
+    > ![Képernyőkép a Power Automate beállításról a bemeneti változó nevének és leírásának konfigurálásához](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable-name-and-description.png)
 
-    A QnA Maker három (3) szükséges csatlakozási beállítása megjelenik a műveletben és a virtuális energiaügynök kérdésbeállításaiban.
+1. A **+** **Virtuális energiaügynökök** mezőből áramló összekötő kiválasztásával új lépést szúrhat be a folyamatba (a **Visszatérési érték(ek) a virtuális energiaügynökhöz.** Ezután válassza **a Művelet hozzáadása**lehetőséget.
 
-    > [!div class="mx-imgBorder"]
-    > ![A QnA Maker kapcsolatbeállításai megjelennek a műveletben.](../media/how-to-integrate-power-virtual-agent/generate-answer-knowledge-base-settings.png)
-
-1. Konfigurálja a műveletet a tudásbázis-azonosítóval, a végpontgazdagép-állomással és a végpontkulkkal. Ezek a tudásbázis **Beállítások** lapján, a QnA Maker portálon találhatók.
+1. Keresse `Qna` meg a **QnA** Maker-műveleteket, és válassza **a Válasz generálása**lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![Adja meg a közzétett tudásbázis-beállításokat a [QnA Maker]https://www.qnamaker.ai/) (portál) **Beállítások** lapján.](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
+    > ![Képernyőkép: Válasz generálása](../media/how-to-integrate-power-virtual-agent/generate-answer-action-selected.png)
 
-1. A **Kérdés**beállításához jelölje ki a `InputText` szövegdobozt, majd a listából.
+    A QnA Maker szükséges csatlakozási beállításai megjelennek a műveletben és az ügynök kérdésbeállításaiban.
 
-1. Ha új lépést szeretne beszúrni **+** a folyamatba, jelölje ki a **válasz létrehozása** műveletmezőből áramló összekötőt, majd kattintson **a Művelet hozzáadása gombra.**
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép a szükséges csatlakozási beállításokról](../media/how-to-integrate-power-virtual-agent/generate-answer-knowledge-base-settings.png)
 
-1. A GenerateAnswer szolgáltatásból visszaadott válaszszöveg rögzítéséhez változóhozzáadásához keresse meg és jelölje ki a `Initialize variable` műveletet.
+1. Konfigurálja a műveletet a tudásbázis-azonosítóval, a végpontállomással és a végpontkulkkal. Ezek a tudásbázis **Beállítások** lapján, a QnA Maker portálon találhatók.
+
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép a tudásbázis közzétett beállításairól](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
+
+1. A **Kérdés**beállításához jelölje ki a szövegdobozt, majd a `InputText` listából.
+
+1. Ha új lépést szeretne beszúrni **+** a folyamatba, jelölje ki a **válasz generálása** műveletmezőből áramló összekötőt. Ezután válassza **a Művelet hozzáadása**lehetőséget.
+
+1. Ha változót szeretne hozzáadni a `GenerateAnswer`visszaadott válaszszöveg `Initialize variable` rögzítéséhez, keresse meg és jelölje ki a műveletet.
 
     Állítsa a változó nevét `OutgoingQnAAnswer`a beállításra, és válassza ki a **karakterláncot String**néven. Ne állítsa be az **Értéket**.
 
     > [!div class="mx-imgBorder"]
-    > ![Állítsa a változó nevét "QnAAnswer" (QnAAnswer) karakterre, és válassza ki a **String** típust.](../media/how-to-integrate-power-virtual-agent/initialize-output-variable-for-qna-answer.png)
+    > ![Képernyőkép a kimeneti változó inicializálásáról](../media/how-to-integrate-power-virtual-agent/initialize-output-variable-for-qna-answer.png)
 
-1. Ha új lépést szeretne beszúrni **+** a folyamatba, jelölje ki a **változó inicializálása** műveletmezőből áramló összekötőt, majd válassza **a Művelet hozzáadása**lehetőséget.
+1. Ha új lépést szeretne beszúrni **+** a folyamatba, jelölje ki az **Inicializálás változó** műveletmezőjéből áramló összekötőt. Ezután válassza **a Művelet hozzáadása**lehetőséget.
 
-1. A teljes tudásbázis JSON-válaszának a változóra`Apply to each` való beállításához keresse meg és jelölje ki a műveletet. Válassza a `answers`GenerateAnswer lehetőséget .
+1. A teljes tudásbázis JSON-válaszának a változóra`Apply to each` való beállításához keresse meg és jelölje ki a műveletet. Válassza `GenerateAnswer` `answers`ki a lehetőséget.
 
 1. Ha csak a legfelső választ szeretné visszaadni, ugyanabban az **Alkalmazás az egyes** mezőben válassza a Művelet **hozzáadása**lehetőséget. Keresse meg a Változó **beállítása parancsot,** és válassza a Változó beállítása lehetőséget.
 
     A **Változó beállítása** mezőben jelölje ki a **Név**mezőt, majd válassza a List ából a **KimenőqnAAnswer** elemet.
 
-    Jelölje ki az **Érték**szövegmezőt, majd a listából válassza a **Válaszok válaszok lehetőséget.**
+    Jelölje ki az **Érték**szövegmezőt, majd a listából válassza a **Válaszok válaszok** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![A változó nevének és értékének beállítása](../media/how-to-integrate-power-virtual-agent/power-automate-flow-apply-to-each-set-variable.png)
+    > ![Képernyőkép: a változó nevének és értékének beállítása](../media/how-to-integrate-power-virtual-agent/power-automate-flow-apply-to-each-set-variable.png)
 
-1. A változó (és értéke) visszaadására jelölje ki a **Visszatérési értéket a virtuális ügynök folyamatelembe,** majd kattintson a **Szerkesztés gombra,** majd **a Kimenet hozzáadása**parancsra. Jelöljön ki egy **szövegkimeneti** típust, majd írja be a `FinalAnswer` **címét.** Jelölje ki az **Érték**szövegmezőjét, majd a `OutgoingQnAAnswer` változót.
+1. A változó (és értéke) visszaadására válassza a **Visszatérési érték(ek)et** a Virtuális ügynök folyamatelembe. Ezután válassza **a** > **Kimenet hozzáadása**lehetőséget. Jelöljön ki egy **szövegkimeneti** típust, majd írja be a `FinalAnswer` **címet.** Jelölje ki az **Érték**szövegmezőjét, `OutgoingQnAAnswer` majd a változót.
 
     > [!div class="mx-imgBorder"]
-    > ![A visszatérési érték beállítása](../media/how-to-integrate-power-virtual-agent/power-automate-flow-return-value.png)
+    > ![Képernyőkép a visszatérési érték beállításáról](../media/how-to-integrate-power-virtual-agent/power-automate-flow-return-value.png)
 
-1. A Folyamat mentéséhez válassza a **Mentés** lehetőséget.
+1. A folyamat mentéséhez válassza a **Mentés** lehetőséget.
 
-## <a name="create-solution-and-add-flow"></a>Megoldás létrehozása és folyamat hozzáadása
+## <a name="create-a-solution-and-add-the-flow"></a>Megoldás létrehozása és a folyamat hozzáadása
 
-Annak érdekében, hogy a virtuális energiaügynök megtalálja és csatlakozzon a folyamathoz, a folyamatnak szerepelnie kell egy Power Automate megoldásban.
+Ahhoz, hogy az ügynök megtalálja és csatlakozzon az áramláshoz, az áramlást tartalmaznia kell egy Power Automate megoldásban.
 
 1. Miközben még mindig a Power Automate portálon tartózkodik, válassza a **megoldások lehetőséget** a bal oldali navigációs sávon.
 
 1. Válassza az **+ Új megoldás** elemet.
 
-1. Adjon meg egy megjelenítendő nevet. A megoldások listája a szervezet vagy az iskola minden megoldását tartalmazza. Válasszon olyan elnevezési konvenciót, amely segít a szűrésben, hogy `jondoe-power-virtual-agent-qnamaker-fallback`csak a megoldások, mint például az e-mail előrögzítése a megoldás neve: .
+1. Adjon meg egy megjelenítendő nevet. A megoldások listája a szervezet vagy az iskola minden megoldását tartalmazza. Válasszon egy elnevezési konvenciót, amely segít a szűrést, hogy csak a megoldásokat. Előfordulhat például, hogy az e-mailt `jondoe-power-virtual-agent-qnamaker-fallback`előtaggal rögzíti a megoldás nevére: .
 
 1. Válassza ki a közzétevőt a választási lehetőségek listájából.
 
@@ -211,75 +217,75 @@ Annak érdekében, hogy a virtuális energiaügynök megtalálja és csatlakozzo
 
 1. A folyamat befejezéséhez válassza a **Létrehozás** gombot.
 
-## <a name="add-flow-to-solution"></a>Folyamat hozzáadása a megoldáshoz
+## <a name="add-your-flow-to-the-solution"></a>Adja hozzá az áramlást a megoldáshoz
 
 1. A megoldások listájában válassza ki az imént létrehozott megoldást. A lista élén kell lennie. Ha nem, keressen az e-mail neve alapján, amely a megoldás nevének része.
 
-1. A megoldásban válassza a **+ Add existing**lehetőséget, majd válassza a **folyamat** elemet a listából.
+1. A megoldásban válassza a **+ Létező hozzáadása**lehetőséget, majd válassza a **folyamat** elemet a listából.
 
 1. Keresse meg a folyamatot, majd a **Hozzáadás gombra** a folyamat befejezéséhez. Ha sok folyamat van, tekintse meg a **Módosított** oszlopot a legutóbbi folyamat megkereséséhez.
 
-## <a name="add-solutions-flow-to-power-virtual-agent"></a>Megoldás folyamatának hozzáadása a power virtual ügynökhöz
+## <a name="add-your-solutions-flow-to-power-virtual-agents"></a>A megoldás folyamatának hozzáadása a virtuális energiaügynökökhöz
 
-1. Térjen vissza a böngészőlapra a Power Virtual Agent segítségével. A szerzői vászonnak továbbra is nyitva kell lennie.
+1. Térjen vissza a böngészőlapra az ügynökével a Virtuális power ügynökökben. A szerzői vászonnak továbbra is nyitva kell lennie.
 
-1. Jelölje **+** ki az összekötőt az **Üzenet** műveletmező alatt, ha új lépést szeretne beszúrni a folyamatba, majd válassza **a Művelet hívása**lehetőséget.
+1. Ha új lépést szeretne beszúrni **Message** a folyamatba, **+** az Üzenet műveletmező alatt jelölje ki az összekötőt. Ezután válassza **a Művelet hívása**lehetőséget.
 
 1. Az új műveletben válassza ki az **UnrecognizedTriggerPhrase**bemeneti értékét. Ezzel átadja a szöveget az ügynöktől a folyamathoz.
 
     > [!div class="mx-imgBorder"]
-    > ![Az új műveletben válassza ki a **UnrecognizedTriggerPhrase**bemeneti értékét.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-select-unrecognized-trigger-phrase.png)
+    > ![Képernyőkép: A virtuális energiaügynökök lehetőség az ismeretlen eseményindító kifejezés kiválasztásához](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-select-unrecognized-trigger-phrase.png)
 
-1. Jelölje **+** ki az **összekötőt** a Művelet mező ben, ha új lépést szeretne beszúrni a folyamatba, majd kattintson az **Üzenet megjelenítése gombra.**
+1. Ha új lépést szeretne beszúrni **Action** a folyamatba, **+** a Művelet mező alatt jelölje ki az összekötőt. Ezután válassza **az Üzenet megjelenítése**lehetőséget.
 
-1. Írja be az `Your answer is:`üzenet `FinalAnswer` szövegét , és jelölje ki környezeti változóként a helyi eszköztár funkciójával.
+1. Írja be az `Your answer is:`üzenet szövegét, . Környezeti `FinalAnswer` változóként jelöljön ki a helyben lévő eszköztár funkciójával.
 
     > [!div class="mx-imgBorder"]
-    > ![Írja be az üzenet szövegét és a "FinalAnswer" a Power Automate Flow.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-show-message-final-answer.png)
+    > ![Képernyőkép: Virtuális energiaügynökök lépnek be az üzenet szövegére](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-show-message-final-answer.png)
 
-1. Válassza a **Környezet eszköztármentés parancsát** a témakör szerzői vászonrészleteinek mentéséhez.
+1. A környezet eszköztárán válassza a **Mentés**lehetőséget a témakör szerzői vászonrészleteinek mentéséhez.
 
-A végső vászon alább látható.
-
-> [!div class="mx-imgBorder"]
-> ![Végső ügynök vászon](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
-
-## <a name="test-power-virtual-agent"></a>Virtuális ügynök tesztelése
-
-1. A tesztablakban kapcsolja be a **Sávot a témakörök között**. Ez lehetővé teszi, hogy nézni a progresszió a témák között, valamint egy témát.
-
-1. Tesztelje az ügynököt a felhasználói szöveg beírásával az alábbi sorrendben. A szerzői vászon zöld pipával jelenti a sikeres lépéseket.
-
-|Kérdés sorrendje|Kérdések tesztelése|Cél|
-|--|--|--|
-|1|helló|Beszélgetés megkezdése|
-|2|Nyitvatartási idő|Minta téma - konfigurálva az Ön számára anélkül, hogy további munkát az Ön részéről.|
-|3|Igen|Válaszul a`Did that answer your question?`|
-|4|Kiváló|Válaszul a`Please rate your experience.`|
-|5|Igen|Válaszul a`Can I help with anything else?`|
-|6|Mi az a tudásbázis?|Ez a kérdés elindítja a tartalék műveletet, amely elküldi a szöveget a tudásbázisnak, hogy válaszoljon, majd megjelenik a válasz. |
+Így néz ki az utolsó ügynökvászon.
 
 > [!div class="mx-imgBorder"]
-> ![Végső ügynök vászon](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png)
+> ![Képernyőkép a végső ügynök vászonról](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+
+## <a name="test-the-agent"></a>Az ügynök tesztelése
+
+1. A tesztablakban kapcsolja be a **Sávot a témakörök között**. Ez lehetővé teszi, hogy nézni a progresszió a témák között, valamint egy adott témakörben.
+
+1. Tesztelje az ügynököt a felhasználói szöveg megadásával a következő sorrendben. A szerzői vászon zöld pipával jelenti a sikeres lépéseket.
+
+    |Kérdés sorrendje|Kérdések tesztelése|Cél|
+    |--|--|--|
+    |1|helló|Beszélgetés megkezdése|
+    |2|Nyitvatartási idő|Minta téma. Ez az Ön számára van konfigurálva, anélkül, hogy további munkát végezne az Ön részéről.|
+    |3|Igen|Válaszul a`Did that answer your question?`|
+    |4|Kiváló|Válaszul a`Please rate your experience.`|
+    |5|Igen|Válaszul a`Can I help with anything else?`|
+    |6|Mi az a tudásbázis?|Ez a kérdés elindítja a tartalék műveletet, amely elküldi a szöveget a tudásbázisnak, hogy válaszoljon. Ezután megjelenik a válasz. |
+
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép a végső ügynök vászonról](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png)
 
 ## <a name="publish-your-bot"></a>A robot közzététele
 
-Annak érdekében, hogy az ügynök elérhető legyen az iskola vagy szervezet minden tagja számára, közzé kell tennie azt.
+Ahhoz, hogy az ügynök elérhető legyen az iskola vagy szervezet minden tagja számára, közzé kell tennie azt.
 
-1. Válassza a **közzététel** lehetőséget a bal oldali navigációs sávon, majd a Lapon válassza a **Közzététel** lehetőséget.
+1. A bal oldali navigációs sávon válassza a **Közzététel**lehetőséget. Ezután válassza a **Közzététel** lehetőséget a lapon.
 
-1. Próbálja ki a bot a demo honlapján, feltéve, mint egy link alatt a **Közzététel** gombra .
+1. Próbálja ki a bot a demo honlapján (keresse meg a linket **a Közzététel**).
 
     Egy új weboldal nyílik meg a robottal. Kérdezze meg a bot ugyanazt a vizsgálati kérdést:`What is a knowledge base?`
 
     > [!div class="mx-imgBorder"]
-    > ![Végső ügynök vászon](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)
+    > ![Képernyőkép a végső ügynök vászonról](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)
 
 ## <a name="share-your-bot"></a>Ossza meg a bot
 
 A bemutató webhely megosztásához konfiguráld csatornaként.
 
-1. Válassza a Bal oldali navigációs sáv **Csatornák ezután** **történő** kezelése lehetőséget.
+1. A bal oldali navigációs sávon válassza a**Csatornák** **kezelése** > lehetőséget.
 
 1. Válassza a **Demó webhelylehetőséget** a csatornák listájából.
 

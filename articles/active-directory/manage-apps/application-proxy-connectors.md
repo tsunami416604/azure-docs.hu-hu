@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b097ce3781a77a8c5e8a94b9c2bf0977f3efcfd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481330"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406832"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD alkalmazásproxy-összekötők megismerése
 
@@ -153,12 +153,17 @@ A biztonságos szolgáltatás biztosításához az összekötőknek hitelesíten
 
 A használt tanúsítványok az alkalmazásproxy szolgáltatásra vonatkoznak. A kezdeti regisztráció során jönnek létre, és az összekötők néhány havonta automatikusan megújulnak.
 
+Az első sikeres tanúsítványmegújítás után az Azure AD Application Proxy Connector szolgáltatás (Network Service) nem rendelkezik a régi tanúsítvány eltávolításához a helyi számítógép tárolójából. Ha a tanúsítvány lejárt, vagy a szolgáltatás már nem fogja használni, biztonságosan törölheti.
+
+A tanúsítvány megújításával kapcsolatos problémák elkerülése érdekében győződjön meg arról, hogy az összekötő ről a [dokumentált célállomások](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) felé irányuló hálózati kommunikáció engedélyezve van.
+
 Ha egy összekötő több hónapig nem csatlakozik a szolgáltatáshoz, a tanúsítványok elavultak lehetnek. Ebben az esetben távolítsa el és telepítse újra az összekötőt a regisztráció elindításához. A következő PowerShell-parancsokat futtathatja:
 
 ```
 Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
+A tanúsítvány ellenőrzéséről és a hibák elhárításáról a [Számítógép- és háttérösszetevők ellenőrzése az alkalmazásproxy megbízhatósági tanúsítványához című témakörben olvashat bővebben.](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)
 
 ## <a name="under-the-hood"></a>technikai részletek
 

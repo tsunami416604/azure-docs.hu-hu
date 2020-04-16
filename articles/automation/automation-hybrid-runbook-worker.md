@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: cb1444261a2ba4810f4fddb3d7aa3bc172f09654
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e4470ce5ac69390cf8d361577b9ebf0013e4e51
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278869"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405789"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Erőforrások automatizálása az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó használatával
 
@@ -20,23 +20,23 @@ Az alábbi képen ez a funkció látható:
 
 ![Hibrid runbook-feldolgozó – áttekintés](media/automation-hybrid-runbook-worker/automation.png)
 
-Minden hibrid Runbook-feldolgozó egy hibrid Runbook-feldolgozó csoport tagja, amelyet az ügynök telepítésekor megadott. Egy csoport tartalmazhat egyetlen ügynököt, de a magas rendelkezésre állás érdekében több ügynököt is telepíthet egy csoportban. Minden gép egy hibrid feldolgozójelentést üzemeltethet egy Automation-fióknak.
+Minden hibrid Runbook-feldolgozó egy hibrid Runbook-feldolgozó csoport tagja, amelyet az ügynök telepítésekor megadott. Egy csoport tartalmazhat egyetlen ügynököt, de a magas rendelkezésre állás érdekében több ügynököt is telepíthet egy csoportban. Minden gép egy hibrid feldolgozó jelentést egy Automation-fiókhoz üzemeltethet.
 
-Amikor egy hibrid Runbook-feldolgozó runbookot indít el, megadhatja azt a csoportot, amelyen fut. A csoport minden egyes dolgozója lekérdezi az Azure Automationt, hogy lássa, van-e elérhető feladat. Ha egy feladat elérhető, az első dolgozó, aki megkapja a munkát veszi azt. A feladatok várólistájának feldolgozási ideje a hibrid feldolgozó hardverprofiljától és terhelésátótól függ. Egy adott dolgozót nem adhat meg. A hibrid Runbook-feldolgozók nem osztoznak az Azure sandbox-ok által meghatározott korlátokon. A lemezterületre, a memóriára vagy a hálózati szoftvercsatornákra vonatkozóan nem ugyanazok a korlátok vonatkoznak. Hibrid Runbook-feldolgozók csak korlátozza az erőforrásokat a hibrid Runbook-feldolgozó maga. Emellett a hibrid Runbook-feldolgozók nem osztják meg a 180 perces [méltányos megosztási](automation-runbook-execution.md#fair-share) időkorlátot, amelyet az Azure sandboxes csinál. Ha többet szeretne megtudni az Azure sandboxes és a hibrid Runbook-feldolgozók szolgáltatáskorlátairól, tekintse meg a [feladatkorlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) lapot.
+Amikor egy hibrid Runbook-feldolgozó runbookot indít el, megadhatja azt a csoportot, amelyen fut. A csoport minden egyes dolgozója lekérdezi az Azure Automationt, hogy lássa, van-e elérhető feladat. Ha egy feladat elérhető, az első dolgozó, aki megkapja a munkát veszi azt. A feladatok várólistájának feldolgozási ideje a hibrid feldolgozó hardverprofiljától és terhelésátótól függ. Egy adott dolgozót nem adhat meg. A hibrid Runbook-feldolgozók nem osztoznak az Azure sandbox-ok által meghatározott korlátokon. A lemezterületre, a memóriára vagy a hálózati szoftvercsatornákra vonatkozóan nem ugyanazok a korlátok vonatkoznak. Hibrid Runbook-feldolgozók csak korlátozza az erőforrásokat a hibrid Runbook-feldolgozó maga. Emellett a hibrid Runbook-feldolgozók nem osztják meg az Azure sandboxes 180 perces [méltányos megosztási](automation-runbook-execution.md#fair-share) időkorlátot. Ha többet szeretne megtudni az Azure sandboxes és a hibrid runbook-feldolgozók szolgáltatáskorlátairól, tekintse meg a [feladatkorlátokat.](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Hibrid Runbook-feldolgozó telepítése
 
-A hibrid Runbook-feldolgozó telepítésének folyamata az operációs rendszertől függ. Az alábbi táblázat a telepítéshez használható módszerekre mutató hivatkozásokat tartalmaz.
-
-A Windows hibrid runbook-feldolgozó telepítéséhez és konfigurálásához két módszert használhat. Az ajánlott módszer egy Automation runbook használatával teljesen automatizálja a Windows-számítógép konfigurálásának folyamatát. A második módszer a szerepkör manuális telepítésének és konfigurálásának lépésről lépésre történik. Linux-gépek, futtatja a Python-parancsfájlt az ügynök telepítéséhez a gépen.
+A hibrid Runbook-feldolgozó telepítésének folyamata az operációs rendszertől függ. Az alábbi táblázat határozza meg a központi telepítési típusokat.
 
 |Operációs rendszer  |Telepítési típusok  |
 |---------|---------|
-|Windows     | [Powershell](automation-windows-hrw-install.md#automated-deployment)<br>[Kézi](automation-windows-hrw-install.md#manual-deployment)        |
+|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Kézi](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
+Az ajánlott telepítési módszer egy Automation runbook használata a Windows-számítógépek konfigurálásának teljes automatizálásához. A második módszer a szerepkör manuális telepítésének és konfigurálásának lépésről lépésre végzett lépése. Linux-gépek, futtatja a Python-parancsfájlt az ügynök telepítéséhez a gépen.
+
 > [!NOTE]
-> A hibrid runbook-feldolgozószerepkört a kívánt állapotkonfigurációval (DSC) támogató kiszolgálók konfigurációjának kezeléséhez hozzá kell adnia őket DSC-csomópontként. A DSC-vel való felügyelethez való bevezetésükről további információt a Bevezetési gépek az [Azure Automation DSC általi felügyelethez](automation-dsc-onboarding.md)című témakörben talál.
+> A hibrid runbook-feldolgozószerepkört a kívánt állapotkonfigurációval (DSC) támogató kiszolgálók konfigurációjának kezeléséhez a kiszolgálókat DSC-csomópontként kell hozzáadnia. A DSC-vel való felügyelethez való bevezetésükről további információt a Bevezetési gépek az [Azure Automation DSC általi felügyelethez](automation-dsc-onboarding.md)című témakörben talál.
 >
 >Ha engedélyezi az [Update Management megoldás,](automation-update-management.md)minden olyan számítógép, amely csatlakozik az Azure Log Analytics-munkaterület automatikusan konfigurálva van, mint egy hibrid Runbook feldolgozó támogatja runbookok ebben a megoldásban. A számítógép azonban nincs regisztrálva az Automation-fiókban már definiált hibrid feldolgozói csoportokkal. A számítógép hozzáadható egy hibrid Runbook-feldolgozó csoporthoz az Automation-fiókban az Automation runbookok támogatásához, feltéve, hogy ugyanazt a fiókot használja mind a megoldáshoz, mind a hibrid Runbook-feldolgozó csoporttagsághoz. Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziója lett hozzáadva.
 
@@ -44,44 +44,38 @@ Tekintse át a [hálózat megtervezéséhez szükséges információkat,](#netwo
 
 A számítógép hozzáadható egy hibrid Runbook-feldolgozó csoporthoz az Automation-fiókban az Automation runbookok támogatásához, feltéve, hogy ugyanazt a fiókot használja mind a megoldáshoz, mind a hibrid Runbook-feldolgozó csoporttagsághoz. Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziójától érhető el.
 
-## <a name="remove-a-hybrid-runbook-worker"></a>Hibrid Runbook-feldolgozó eltávolítása
+## <a name="a-nameremove-a-hybrid-runbook-workerremove-a-hybrid-runbook-worker-from-an-on-premises-computer"></a><a name="remove-a-hybrid-runbook-worker">Hibrid Runbook-feldolgozó eltávolítása helyszíni számítógépről
 
-Eltávolíthat egy vagy több hibrid Runbook-feldolgozót egy csoportból, vagy eltávolíthatja a csoportot, a követelményektől függően. Hibrid Runbook-feldolgozó helyszíni számítógépről való eltávolításához kövesse az alábbi lépéseket:
+A hibrid runbook-feldolgozót eltávolíthatja egy helyszíni számítógépről a Windows és Linux ebben a szakaszban leírtak szerint.
+
+### <a name="remove-the-worker-on-windows"></a>A dolgozó eltávolítása a Windows rendszeren
 
 1. Az Azure Portalon nyissa meg az Automation-fiók.
-2. A **Fiókbeállítások csoportban**válassza a **Kulcsok** lehetőséget, és jegyezze fel az **URL-** és **elsődleges hozzáférési kulcs értékeit.** Erre az információra van szüksége a következő lépéshez.
+2. A **Fiókbeállítások csoportban**válassza a **Kulcsok** lehetőséget, és jegyezze fel az **URL-** és **elsődleges hozzáférési kulcs értékeit.**
 
-### <a name="windows"></a>Windows
-
-Nyisson meg egy PowerShell-munkamenetet Rendszergazda módban, és futtassa a következő parancsot. Az eltávolítási folyamat részletes naplójának részletes naplójával használja a **-Verbose** kapcsolót.
-
-```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
-```
-
-Az elavult gépek eltávolítása a hibrid feldolgozó `machineName` csoport, használja a választható paraméter.
+3. Nyisson meg egy PowerShell-munkamenetet Rendszergazda módban, és futtassa a következő parancsot az URL-cím és az elsődleges hozzáférési kulcs értékeivel. Használja `Verbose` a paramétert az eltávolítási folyamat részletes naplójához. Az elavult gépek eltávolítása a hibrid feldolgozó `machineName` csoport, használja a választható paraméter.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
 ```
 
-### <a name="linux"></a>Linux
+### <a name="remove-the-worker-on-linux"></a>A dolgozó eltávolítása Linuxon
 
-Használhatja a `ls /var/opt/microsoft/omsagent` parancsot a hibrid Runbook feldolgozó a munkaterület lekért. Van egy mappa a könyvtárban, amelyben a mappa neve a munkaterület-azonosító.
+Használhatja a `ls /var/opt/microsoft/omsagent` parancsot a hibrid Runbook feldolgozó a munkaterület-azonosító lekért. Létrejön egy mappa, amelynek neve a munkaterület-azonosítóval van elnevezve.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
 ```
 
 > [!NOTE]
-> Ez a kód nem távolítja el a Microsoft Monitoring Agent a számítógépről, csak a funkcionalitás és a konfiguráció a hibrid Runbook feldolgozó szerepkör.
+> Ez a kód nem távolítja el a Microsoft Monitoring Agent-et a számítógépről. Csak eltávolítja a hibrid Runbook feldolgozó szerepkör funkcióit és konfigurációját.
 
 ## <a name="remove-a-hybrid-worker-group"></a>Hibridfeldolgozó-csoport eltávolítása
 
-Egy csoport eltávolításához először el kell távolítania a hibrid Runbook-feldolgozót minden olyan számítógépről, amely a csoport tagja a korábban bemutatott eljárással. Ezután az alábbi lépésekkel távolíthatja el a csoportot:
+Hibrid Runbook-feldolgozó csoport eltávolításához először el kell távolítania a hibrid Runbook-feldolgozót minden olyan számítógépről, amely a csoport tagja. Ezután a következő lépésekkel távolítsa el a csoportot:
 
 1. Nyissa meg az Automation-fiókot az Azure Portalon.
-2. A **Folyamatautomatizálás**csoportban válassza a **Hibrid munkavégző csoportok lehetőséget.** Jelölje ki a törölni kívánt csoportot. Megjelenik a csoport tulajdonságlapja.
+2. Válassza a **Hibrid munkavégző csoportok lehetőséget** a **Folyamatautomatizálás csoportban.** Jelölje ki a törölni kívánt csoportot. Megjelenik a csoport tulajdonságlapja.
 
    ![Tulajdonságok lap](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
@@ -152,5 +146,4 @@ A hibrid Runbook-feldolgozó által igényelt szabványos címek és portok mell
 ## <a name="next-steps"></a>További lépések
 
 * Ha tudni szeretné, hogyan konfigurálhatja a runbookokat a folyamatok automatizálására a helyszíni adatközpontban vagy más felhőbeli környezetben, olvassa [el a Runbookok futtatása hibrid runbook-feldolgozón](automation-hrw-run-runbooks.md)című témakört.
-* A hibrid runbook-feldolgozók hibaelhárításáról a [Hibrid Runbook-dolgozók hibaelhárítása című](troubleshoot/hybrid-runbook-worker.md#general) témakörben olvashat.
-
+* A hibrid runbook-feldolgozók hibaelhárításáról a [Hibrid Runbook-feldolgozók hibaelhárítása című](troubleshoot/hybrid-runbook-worker.md#general)témakörben olvashat.

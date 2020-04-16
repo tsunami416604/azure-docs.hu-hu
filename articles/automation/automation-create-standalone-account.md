@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3a885f071c89ff6d9bb79d908b19c9451b4ed735
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 72a40363edf0e83eea26ee697ce992226da0db4f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383300"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392289"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -18,29 +18,28 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure Automation-fiókot az Azure 
 
 Automation-fiókkal hitelesítheti a runbookokat az Azure Resource Manager vagy a klasszikus üzembe helyezési modell erőforrásainak kezelésével. Egy Automation-fiókkal egy adott bérlő több régiójában és előfizetésén is kezelhetők erőforrások.
 
-Amikor létrehoz egy Automation-fiókot az Azure Portalon, ezek a fiókok automatikusan létrejönnek:
+Amikor létrehoz egy Automation-fiókot az Azure Portalon, a **Futtatás másként** fiók automatikusan létrejön. Ez a fiók a következő feladatokat végzi:
 
-* **Futtatás mint fiók**. Ez a fiók a következő feladatokat végzi:
-  * Egyszerű szolgáltatás létrehozása az Azure Active Directoryban (Azure AD).
-  * Létrehoz egy tanúsítványt.
-  * Hozzárendeli a közreműködői szerepköralapú hozzáférés-vezérlés (RBAC), amely kezeli az Azure Resource Manager erőforrásait runbookok használatával.
+* Egyszerű szolgáltatás létrehozása az Azure Active Directoryban (Azure AD).
+* Létrehoz egy tanúsítványt.
+* Hozzárendeli a közreműködői szerepköralapú hozzáférés-vezérlés (RBAC), amely kezeli az Azure Resource Manager erőforrásait runbookok használatával.
 
-Ezekkel a fiókokat hozva létre az Ön számára, gyorsan elkezdheti a runbookok létrehozását és üzembe helyezését az automatizálási igények kielégítésére.
+Ezzel a fiókkal létrehozott az Ön számára, gyorsan elkezdheti a runbookok létrehozását és üzembe helyezését az automatizálási igények kielégítésére.
 
 ## <a name="permissions-required-to-create-an-automation-account"></a>Automation-fiók létrehozásához szükséges engedélyek
 
 Automation-fiók létrehozásához vagy frissítéséhez, valamint a cikkben ismertetett feladatok végrehajtásához a következő jogosultságokkal és engedélyekkel kell rendelkeznie:
 
-* Automation-fiók létrehozásához az Azure AD felhasználói fiókját hozzá kell adni egy szerepkörhöz, amelynek a Microsoft tulajdonosi szerepkörével egyenértékű engedélyekkel **rendelkezik. Automatizálási** erőforrások. További információt az [Azure Automation szerepköralapú hozzáférés-vezérlése című témakörben talál.](automation-role-based-access-control.md)
+* Automation-fiók létrehozásához az Azure AD felhasználói fiókját hozzá kell adni egy `Microsoft.Automation` szerepkörhöz, amely nek megfelelő engedélyekkel egyenértékű az erőforrások tulajdonosi szerepköre. További információt az [Azure Automation szerepköralapú hozzáférés-vezérlése című témakörben talál.](automation-role-based-access-control.md)
 * Az Azure Portalon az **Azure Active Directory** > **MANAGE** > **felhasználói beállításai**csoportban, ha az **alkalmazásregisztrációk** **igen,** az Azure AD-bérlő nem rendszergazdai felhasználói regisztrálhatják az [Active Directory-alkalmazásokat.](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions) Ha **az alkalmazásregisztrációk** beállítása **Nem,** a műveletet végző felhasználónak globális rendszergazdának kell lennie az Azure AD-ben.
 
-Ha nem tagja az előfizetés Active Directory-példányának, mielőtt hozzáadna az előfizetés globális rendszergazdai/társrendszergazdai szerepköréhez, vendégként hozzáadódik az Active Directoryhoz. Ebben az esetben ez az üzenet jelenik meg az **Automation-fiók hozzáadása** lapon: "Nincs engedélye a létrehozáshoz."
+Ha nem tagja az előfizetés Active Directory-példányának, mielőtt hozzákerül az előfizetés globális rendszergazdai/társadminisztrátori szerepkörébe, vendégként hozzáadódik az Active Directoryhoz. Ebben az esetben ez az üzenet jelenik meg az Automation-fiók hozzáadása ablaktáblán:`You do not have permissions to create.`
 
-Ha először egy felhasználót ad hozzá a globális rendszergazdai/társrendszergazdai szerepkörhöz, eltávolíthatja őket az előfizetés Active Directory-példányából, majd felolvashatja őket az Active Directory teljes felhasználói szerepkörébe.
+Ha először egy felhasználót ad hozzá a globális rendszergazdai/társrendszergazdai szerepkörhöz, eltávolíthatja a felhasználót az előfizetés Active Directory-példányából. A felhasználó tarolhat az Active Directory felhasználói szerepkörében.
 
 A felhasználói szerepkörök ellenőrzése:
 
-1. Az Azure Portalon nyissa meg az **Azure Active Directory** ablaktábláját.
+1. Az Azure Portalon nyissa meg az Azure Active Directory ablaktábláját.
 1. Válassza a **Felhasználók és csoportok** elemet.
 1. Válassza az **Összes felhasználó lehetőséget.**
 1. Miután kijelölt egy adott felhasználót, válassza **a Profil**lehetőséget. A felhasználó profiljában lévő **User type** attribútum értéke nem lehet **Vendég**.
@@ -55,30 +54,34 @@ Ha azure Automation-fiókot szeretne létrehozni az Azure Portalon, hajtsa végr
 
    ![Az Automation & Control keresése és kiválasztása az Azure Piactéren](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
-1. A következő képernyőn válassza a **Létrehozás gombot.**
+1. A következő képernyőn válassza az **Új létrehozása lehetőséget.**
 
    ![Automatizálási fiók hozzáadása](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
    > [!NOTE]
-   > Ha a következő üzenet jelenik meg az **Automation-fiók hozzáadása** ablaktáblán, a fiók nem tagja az előfizetésrendszergazdák szerepkörnek és az előfizetés társrendszergazdájának.
+   > Ha a következő üzenet jelenik meg az Automation-fiók hozzáadása ablaktáblán, a fiók nem tagja az előfizetésrendszergazdák szerepkörnek és az előfizetés társrendszergazdájának.
    >
    > ![Automation-fiók hozzáadása – figyelmeztetés](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. Az **Automatizálási fiók hozzáadása** ablaktáblán a **Név** mezőben adja meg az új Automation-fiók nevét. Ez a név nem módosítható a kiválasztása után. *Automation A fióknevek régiónként és erőforráscsoportonként egyediek. Előfordulhat, hogy a törölt Automation-fiókok nevei nem érhetők el azonnal.*
-1. Ha egynél több előfizetéssel rendelkezik, az **Előfizetés** mezőben adja meg az új fiókhoz használni kívánt előfizetést.
+1. Az Automatizálási fiók hozzáadása ablaktáblán adja meg az új Automation-fiók nevét a **Név** mezőben. A választott név után nem módosíthatja ezt a nevet. 
+
+    > [!NOTE]
+    > Az automatizálási fióknevek régiónként és erőforráscsoportonként egyediek. Előfordulhat, hogy a törölt Automation-fiókok nevei nem érhetők el azonnal.
+
+1. Ha egynél több előfizetéssel rendelkezik, az **Előfizetés** mezőben adhatja meg az új fiókhoz használandó előfizetést.
 1. Az **Erőforráscsoport**csoportban adjon meg vagy jelöljön ki egy új vagy meglévő erőforráscsoportot.
 1. A **Hely**területen válasszon ki egy Azure-adatközpont-helyet.
-1. Az **Azure Run As fiók létrehozása beállításnál** győződjön meg arról, hogy az **Igen** jelölőnégyzet be van jelölve, majd válassza a **Létrehozás lehetőséget.**
+1. Az **Azure Run As fiók létrehozása beállításnál** győződjön meg arról, hogy az **Igen** jelölőnégyzet be van jelölve, majd kattintson a **Létrehozás gombra.**
 
    > [!NOTE]
-   > Ha úgy dönt, hogy nem hozza létre a Futtatás másként fiókot az **Azure-futtatás létrehozása fiók** **létrehozása** lehetőséghez lehetőséget választva, egy üzenet jelenik meg az **Automatizálási fiók hozzáadása** ablaktáblán. Bár a fiók az Azure Portalon jön létre, a fiók nem rendelkezik a megfelelő hitelesítési identitás a klasszikus üzembe helyezési modell előfizetés, vagy az Azure Resource Manager előfizetési címtárszolgáltatásban. Ezért az Automation-fiók nem fér hozzá az előfizetésben lévő erőforrásokhoz. Ez megakadályozza, hogy a fiókra hivatkozó runbookok hitelesítsék magukat, és feladatokat hajtsanak végre az adott telepítési modellek erőforrásaival.
+   > Ha úgy dönt, hogy nem hozza létre a Futtatás másként fiókot az **Azure-futtatás létrehozása fiók** **létrehozása** lehetőséghez lehetőséget választva, egy üzenet jelenik meg az Automatizálási fiók hozzáadása ablaktáblán. Bár a fiók az Azure Portalon jön létre, a fiók nem rendelkezik a megfelelő hitelesítési identitás a klasszikus üzembe helyezési modell előfizetés, vagy az Azure Resource Manager előfizetési címtárszolgáltatásban. Ezért az Automation-fiók nem fér hozzá az előfizetésben lévő erőforrásokhoz. Ez megakadályozza, hogy a fiókra hivatkozó runbookok hitelesítsék magukat, és feladatokat hajtsanak végre az adott telepítési modellek erőforrásaival.
    >
    > ![Automation-fiók hozzáadása – figyelmeztetés](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
    >
    > Ha az egyszerű szolgáltatás nincs létrehozva, a közreműködői szerepkör nincs hozzárendelve.
    >
 
-1. Az Automation-fiók létrehozásának előrehaladásának nyomon követéséhez a menüben válassza az **Értesítések**lehetőséget.
+1. Az Automation-fiók létrehozásának előrehaladásának nyomon követéséhez válassza az **Értesítések menüben** az Értesítések lehetőséget.
 
 ### <a name="resources-included"></a>Érintett erőforrások
 

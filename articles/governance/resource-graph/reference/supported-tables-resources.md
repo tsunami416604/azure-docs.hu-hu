@@ -1,14 +1,14 @@
 ---
 title: Támogatott Erőforrás-kezelő erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Változási előzmények által támogatott Erőforrás-kezelő erőforrástípusok listáját.
-ms.date: 04/06/2020
+ms.date: 04/15/2020
 ms.topic: reference
-ms.openlocfilehash: 85cab92981568f5ea3770e1102c3480ae4f3e638
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677051"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415139"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph tábla és erőforrástípus-hivatkozás
 
@@ -392,7 +392,6 @@ Az Azure Resource Graph az [Azure Resource Manager](../../../azure-resource-mana
 - microsoft.storagesyncint/storagesyncservices
 - microsoft.storsimple/managers
 - microsoft.streamanalytics/streamingjobs
-- microsoft.support/supporttickets
 - microsoft.synapse/munkaterületek
 - microsoft.synapse/workspaces/bigdatapools
 - microsoft.synapse/workspaces/sqlpools

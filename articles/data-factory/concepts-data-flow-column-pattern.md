@@ -7,14 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: bfb4eeef482c4944e75b7805642bc93c23195208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e1c0eb1c4f1fc74e56db8f83f1bab6406ec5306
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065524"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415551"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Oszlopminták használata az adatfolyam leképezésében
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Számos leképezési adatfolyam-átalakítás lehetővé teszi, hogy a sablonoszlopokra a minták alapján hivatkozzon a kódolt oszlopnevek helyett. Ezt az egyezést *oszlopmintáknak nevezzük.* A pontos mezőnevek megkövetelése helyett mintákat is definiálhat az oszlopok nak a név, adattípus, adatfolyam vagy pozíció alapján. Két olyan forgatókönyv létezik, ahol az oszlopminták hasznosak:
 

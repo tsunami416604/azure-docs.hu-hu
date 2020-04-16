@@ -9,14 +9,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 03/16/2020
-ms.openlocfilehash: 115cb3e499117457629e130b6432a1cbc2224edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32088dd712cd0c70fc01de48add17a0b6a828dc8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79463050"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415337"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység az Azure Data Factoryban
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az adatfolyam-tevékenység segítségével átalakíthatja és áthelyezi az adatokat az adatfolyamok leképezésével. Ha még nem ért hozzá az adatfolyamok, olvassa el [az Adatfolyam leképezése – áttekintés című témakört.](concepts-data-flow-overview.md)
 
@@ -163,6 +165,6 @@ Lásd: A Data Factory által támogatott vezérlési folyamat tevékenységek:
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)
 - [Minden egyes tevékenységhez](control-flow-for-each-activity.md)
 - [Metaadatok beolvasása tevékenység](control-flow-get-metadata-activity.md)
-- [Keresstevékenységet](control-flow-lookup-activity.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)
 - [Until tevékenység](control-flow-until-activity.md)

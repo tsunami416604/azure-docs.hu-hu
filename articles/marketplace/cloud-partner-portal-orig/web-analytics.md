@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6d6375b19689c582c0f129378c76936e624e04
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285333"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416283"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -40,7 +40,7 @@ Két módon hozhat létre saját kampányt.
 
 1. Adja hozzá az URL-címhez az **mktcmpid** lekérdezési paramétert, amely leírja, hogy mi a kampány, és milyen oldalból/eseményből érkeznek ezek az ügyfelek.
 
-Használhatja például a következőket:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+Használhatja például a következőket:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign```
 
 1. (Speciális): Használja az egyik támogatott, általános kampányazonosítónkat az URL-ben. Azt akarjuk, hogy alkalmazkodjanak a további ref címkéket, hogy meg kell használni, ezért támogatjuk az egyezményt, hogy automatikusan felismeri ezeket a további címkéket:
     
@@ -49,14 +49,14 @@ Használhatja például a következőket:<https://appsource.microsoft.com/produc
     3. **Ref**
     4. **src**
 
-Használhatja például a következőket:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+Használhatja például a következőket:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign```
 
 Választhat, hogy több ilyen kampányazonosító kombinációjával is rendelkezik, hogy tovább azonosítsa a kampány forgalmát hajtó több forrást, például azt, hogy honnan érkezett az ügyfél (e-mail, blog, közösségi média forrás stb.).
 
-Példa:
+Például:
 
-1. Hírlevél ajánlója:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. LinkedIn-ajánló:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Hírlevél ajánlója:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter```
+2. LinkedIn-ajánló:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn```
 
 ### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Annak biztosítása, hogy a kampányok az összes oldalon áthaladjanak**
 
@@ -64,13 +64,13 @@ Előfordulhat, hogy a kampányok rendelkeznek egy köztes oldallal, amelyhez for
 
 Például:
 
-1. Marketing alkalmazott vásárol hirdetéseket a Google-tól, hogy a forgalom a cég\'céloldal <https://contoso.com>. Ez a céloldal \"egy\" megpróbál az <https://appsource.com>én termék linket, hogy megy .
+1. Marketing alkalmazott vásárol hirdetéseket a Google-tól, hogy a forgalom a cég\'céloldal ```https://contoso.com```. Ez a céloldal \"egy\" megpróbál az ```https://appsource.com```én termék linket, hogy megy .
 2. A felhasználó rákattint a hirdetésre,\'és a vállalat céloldalára landol.
     1.  Hivatkozó URL = google.com
-    2.  Céloldal URL-címe =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2.  Céloldal URL-címe =```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
 3. A felhasználó rákattint \"a\" próbálja ki a terméket linket, és bemegy AppSource.
-    1. Hivatkozó URL =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Céloldal URL-címe (**Győződjön\_meg arról, hogy ez az URL-cím utm kampányt és utm forrást\_ad hozzá ehhez az URL-hez**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm\_campaign=MyCampaignAdName&utm\_source=SajdName](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    1. Hivatkozó URL =```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
+    2. Céloldal URL-címe (**Győződjön\_meg arról, hogy az URL-címhez utm kampány és utm\_forrás van hozzáadva**) =```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**```
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>A kampány sikerének értékelése
 -----------------------------------------

@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 1854465c463d78999674080048207cfa0916da3b
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 3720d917d71fa4e8c5a14bb60fdc7c405be4bfdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992164"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410456"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Adatok másolása a Hive-ból az Azure Data Factory használatával 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása a Hive.This article ismerteti, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása a Hive.This article ismerteti, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása a Hiv A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
@@ -27,7 +28,7 @@ Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység az Azure Da
 Ez a Hive-összekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 Adatokat másolhat a Hive bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 

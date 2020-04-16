@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: e51937dfe2afa0e92ce98b4c305555b53896e5f1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5e0073bd14744338ff28c9c45193f126a1bba717
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78401754"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403036"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Rövid útmutató: Face ügyféltár a .NET-hez
 
@@ -39,12 +39,9 @@ A .NET Face ügyféltár segítségével:
 
 ### <a name="create-a-face-azure-resource"></a>Face Azure-erőforrás létrehozása
 
-Az Azure Cognitive Servicest olyan Azure-erőforrások képviselik, amelyekre előfizet. Hozzon létre egy erőforrást a Face az [Azure Portalon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) a helyi gépen. További lehetőségek:
+Az Azure Cognitive Servicest olyan Azure-erőforrások képviselik, amelyekre előfizet. Hozzon létre egy erőforrást a Face az [Azure Portalon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) a helyi gépen. Ön is kap egy [próbakulcs](https://azure.microsoft.com/try/cognitive-services/#decision) érvényes hét napig ingyen. A regisztráció után elérhető lesz az [Azure webhelyén.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
 
-* Kap egy [próbakulcs](https://azure.microsoft.com/try/cognitive-services/#decision) érvényes részére hét napok részére szabad. A regisztráció után elérhető lesz az [Azure webhelyén.](https://azure.microsoft.com/try/cognitive-services/my-apis/)  
-* Tekintse meg az erőforrást az [Azure Portalon.](https://portal.azure.com/)
-
-Miután bekésel egy kulcsot a próba-előfizetésvagy erőforrás, [hozzon létre egy környezeti változóak](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címet, nevű, `FACE_SUBSCRIPTION_KEY` illetve. `FACE_ENDPOINT`
+Miután lekért egy kulcsot a próba-előfizetés vagy erőforrás, [hozzon létre környezeti változók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) at a kulcs és a végpont URL-cím, nevű, `FACE_SUBSCRIPTION_KEY` illetve. `FACE_ENDPOINT`
 
 ### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
 
@@ -94,7 +91,7 @@ Ha a Visual Studio IDE-t használja, az ügyfélkönyvtár letölthető NuGet cs
 
 A face .NET SDK néhány főbb jellemzőjét a következő osztályok és felületek kezelik:
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |[FaceClient (FaceClient)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden Face funkcióhoz szüksége van rá. Az előfizetési adatokkal azonnal létrehozhatja azt, és más osztályok példányainak létrehozásához használhatja őket. |
 |[FaceOperations (FaceOperations)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Ez az osztály kezeli az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat. |

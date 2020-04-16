@@ -1,38 +1,66 @@
 ---
-title: Adatfolyamat leképezése Rendezési transzformáció
+title: Transzformáció rendezése az adatfolyam leképezésében
 description: Azure-adat-előképezési adatok rendezésének átalakítása
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/08/2018
-ms.openlocfilehash: c09439c5f54ae4b0884e9e25ae9a5a488f935bac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 381c6573dff1b3f1638af9090a535d9a1e59b2b5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930226"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413170"
 ---
-# <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure-adat-előállító adatfolyamat rendezési transzformációi
+# <a name="sort-transformation-in-mapping-data-flow"></a>Transzformáció rendezése az adatfolyam leképezésében
 
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
+A rendezési transzformáció lehetővé teszi az aktuális adatfolyam bejövő sorainak rendezését. Kiválaszthatja az egyes oszlopokat, és növekvő vagy csökkenő sorrendbe rendezheti őket.
+
+> [!NOTE]
+> Az adatfolyamok leképezése szikrafürtökön történik, amelyek több csomópont és partíció között osztják el az adatokat. Ha úgy dönt, hogy egy későbbi átalakítás során újraparticionálja az adatokat, az adatok átrendezése miatt elveszhet a rendezés.
+
+## <a name="configuration"></a>Konfiguráció
 
 ![Beállítások rendezése](media/data-flow/sort.png "Rendezés")
 
-A Rendezés transzformáció lehetővé teszi az aktuális adatfolyam bejövő sorainak rendezését. A rendezési átalakítás kimenő sorai ezt követően a beállított rendezési szabályokat követik. Az egyes oszlopokat kiválaszthatja, és rendezheti őket ASC vagy DEC, az egyes mező melletti nyíljelző segítségével. Ha módosítania kell az oszlopot a rendezés alkalmazása előtt, kattintson a "Számított oszlopok" gombra a kifejezésszerkesztő elindításához. Ez lehetőséget ad arra, hogy a rendezési művelethez kifejezést hozzon létre ahelyett, hogy egyszerűen egy oszlopot alkalmazna a rendezéshez.
+**A kis- és nagybetűk megkülönböztetése:** Azt jelzi, hogy figyelmen kívül hagyja-e a kis- és nagybetűket a karakterlánc- vagy szövegmezők rendezésekor
 
-## <a name="case-insensitive"></a>Kis- és nagybetűk megkülönböztetése nélkül
-Bekapcsolhatja a "Kis- és nagybetűk megkülönböztetése" lehetőséget, ha a karakterlánc- vagy szövegmezők rendezésekor figyelmen kívül szeretné hagyni a kis- és nagybetűket.
+**Rendezés csak partíciókon belül:** Az adatfolyamok spark on futnak, minden adatfolyam partíciókra van osztva. Ez a beállítás csak a bejövő partíciókon belül rendezi az adatokat, nem pedig a teljes adatfolyamot. 
 
-A "Csak partíciókon belül rendezés" a Spark-adatok particionálását használja. A bejövő adatok csak az egyes partíciókon belül rendezésével az adatfolyamok rendezheti particionált adatok helyett a teljes adatfolyam rendezése.
+**Rendezési feltételek:** Válassza ki, hogy mely oszlopok szerint rendez, és milyen sorrendben történik a rendezés. A sorrend határozza meg a rendezési prioritást. Adja meg, hogy a null értékek megjelenjenek-e az adatfolyam elején vagy végén.
 
-A Rendezési transzformáció minden egyes rendezési feltétele átrendezhető. Ha tehát magasabbra kell helyeznie egy oszlopot a rendezési sorrendben, fogja meg a sort az egérrel, és mozgassa magasabbra vagy lejjebb a rendezési listában.
+### <a name="computed-columns"></a>Számított oszlopok
 
-Particionálási effektusok rendezése
+Ha a rendezés alkalmazása előtt módosítani vagy kibontani egy oszlopértéket, vigye az egérmutatót az oszlop fölé, és válassza a "számított oszlop" lehetőséget. Ezzel megnyitja a kifejezésszerkesztőt, hogy oszlopérték helyett kifejezést hozzon létre a rendezési művelethez.
 
-Az ADF-adatfolyam a big data Spark-fürtökön történik, több csomópont és partíció között elosztott adatokkal. Fontos, hogy ezt szem előtt tartsa az adatfolyam megtervezésekor, ha a Rendezés átalakítástól függ, hogy az adatok ugyanabban a sorrendben maradjanak. Ha úgy dönt, hogy egy későbbi átalakítás során újraparticionálja az adatokat, az adatok átrendezése miatt elveszhet a rendezés.
+## <a name="data-flow-script"></a>Adatfolyamszkript
+
+### <a name="syntax"></a>Szintaxis
+
+```
+<incomingStream>
+    sort(
+        desc(<sortColumn1>, { true | false }),
+        asc(<sortColumn2>, { true | false }),
+        ...
+    ) ~> <sortTransformationName<>
+```
+
+### <a name="example"></a>Példa
+
+![Beállítások rendezése](media/data-flow/sort.png "Rendezés")
+
+A fenti rendezési konfiguráció adatfolyam-parancsfájlja az alábbi kódrészletben található.
+
+```
+BasketballStats sort(desc(PTS, true),
+    asc(Age, true)) ~> Sort1
+```
 
 ## <a name="next-steps"></a>További lépések
 

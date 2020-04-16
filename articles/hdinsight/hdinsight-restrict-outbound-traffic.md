@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3432f981df3f666d6276eee4564ef33000faa6b1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370185"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410896"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Kimenő hálózati forgalom konfigurálása az Azure HDInsight-fürtökhöz tűzfal használatával
 
@@ -62,19 +62,19 @@ Hozzon létre egy alkalmazásszabály-gyűjteményt, amely lehetővé teszi a f�
 
     | Tulajdonság|  Érték|
     |---|---|
-    |Név| FwAppRule|
+    |Name (Név)| FwAppRule|
     |Prioritás|200|
     |Műveletek|Engedélyezés|
 
     **Teljes tartománynév-címkék szakasz**
 
-    | Név | Forrás címe | Teljes tartománynév-címke | Megjegyzések |
+    | Name (Név) | Forrás címe | Teljes tartománynév-címke | Megjegyzések |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate és HDInsight | Hdi-szolgáltatásokhoz szükséges |
 
     **Cél teljes tartománynaszakasz**
 
-    | Név | Forráscímek | protokoll:port | Cél FQDNS | Megjegyzések |
+    | Name (Név) | Forráscímek | protokoll:port | Cél FQDNS | Megjegyzések |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Engedélyezi a Windows bejelentkezési tevékenységét |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Engedélyezi a Windows bejelentkezési tevékenységét |
@@ -96,13 +96,13 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     | Tulajdonság|  Érték|
     |---|---|
-    |Név| FwNetRule|
+    |Name (Név)| FwNetRule|
     |Prioritás|200|
     |Műveletek|Engedélyezés|
 
     **IP-címek szakasz**
 
-    | Név | Protocol (Protokoll) | Forráscímek | Célcímek | Célportok | Megjegyzések |
+    | Name (Név) | Protocol (Protokoll) | Forráscímek | Célcímek | Célportok | Megjegyzések |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Időszolgáltatás |
     | Rule_2 | Bármelyik | * | DC_IP_Address_2. DC_IP_Address_1. | * | Vállalati biztonsági csomag (ESP) használata esetén, majd adjon hozzá egy hálózati szabályt az IP-címek szakaszban, amely lehetővé teszi az ESP-fürtök AAD-DS szolgáltatással való kommunikációt. A tartományvezérlők IP-címeit az AAD-DS szakasz AAD-DS szakaszában találja a portálon |
@@ -111,7 +111,7 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     **Szolgáltatás címkék szakasz**
 
-    | Név | Protocol (Protokoll) | Forráscímek | Szolgáltatáscímkék | Célportok | Megjegyzések |
+    | Name (Név) | Protocol (Protokoll) | Forráscímek | Szolgáltatáscímkék | Célportok | Megjegyzések |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Konfiguráljon egy hálózati szabályt az SQL Szolgáltatáscímkék szakaszában, amely lehetővé teszi az SQL-forgalom naplózását és naplózását, kivéve, ha a HDInsight alhálózaton konfigurálta az SQL Server szolgáltatásvégpontjait, amely megkerüli a tűzfalat. |
 
@@ -221,7 +221,7 @@ Az előző utasítások segítségével konfigurálhatja az Azure Firewall a HDI
 #### <a name="fqdn-httphttps-dependencies"></a>Teljes qdn HTTP/HTTPS-függőségek
 
 > [!Important]
-> Az alábbi lista csak néhányat ad a legfontosabb teljes tartománynévből. Az NVA konfigurálásához szükséges teljes tartománynév-listát [ebben a fájlban](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)kaphatja meg.
+> Az alábbi lista csak néhányat ad a legfontosabb teljes tartománynévből. További teljes tartománynokat (főként az Azure Storage-t és az Azure Service Bus-t) is beszerezhet idáig az NVA konfigurálásához [ebben a fájlban.](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)
 
 | **Végpont**                                                          |
 |---|

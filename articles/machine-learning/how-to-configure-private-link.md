@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4f39ff5726c23db32c7b039335f406641ee090cb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754263"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411203"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Az Azure Private Link konfigurálása egy Azure Machine Learning-munkaterülethez (előzetes verzió)
 
@@ -47,8 +47,7 @@ Sablon telepítésekor a következő információkat kell megadnia:
 * Munkaterületi kiadás (alapszintű vagy nagyvállalati)
 * Ha engedélyezni kell a munkaterület magas bizalmas sági beállításait
 * Ha engedélyezni kell az ügyfél által felügyelt kulccsal rendelkező munkaterület titkosítását, és a kulcshoz társított értékeket kell
-* Virtuális hálózat neve és alhálózata
-* Alhálózat neve
+* Virtuális hálózat és alhálózat neve, sablon új virtuális hálózatot és alhálózatot hoz létre
 
 A sablon elküldése és kiépítés befejezése után a munkaterületet tartalmazó erőforráscsoport három új, a Privát kapcsolathoz kapcsolódó műterméktípust fog tartalmazni:
 

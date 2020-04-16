@@ -1,29 +1,27 @@
 ---
-title: Azure Event Grid-séma az IoT Hubhoz | Microsoft dokumentumok
+title: Az Azure IoT Hub eseményrács forrásaként
 description: Ez a cikk az Azure IoT Hub-események tulajdonságait és sémáját tartalmazza. Felsorolja a rendelkezésre álló eseménytípusokat, egy példaeseményt és az esemény tulajdonságait.
 services: iot-hub
 documentationcenter: ''
-author: kgremban
-manager: timlt
+author: spelluru
 editor: ''
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/21/2020
-ms.author: kgremban
-ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513031"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393327"
 ---
-# <a name="azure-event-grid-event-schema-for-iot-hub"></a>Azure Event Grid eseménysémája az IoT Hubnak
-
+# <a name="azure-iot-hub-as-an-event-grid-source"></a>Az Azure IoT Hub eseményrács-forrásként
 Ez a cikk az Azure IoT Hub-események tulajdonságait és sémáját tartalmazza. Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md) 
 
-A mintaparancsfájlok és oktatóanyagok listáját az [IoT Hub eseményforrásában](event-sources.md#iot-hub)láthatja.
+## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
 
-## <a name="available-event-types"></a>Elérhető eseménytípusok
+### <a name="available-event-types"></a>Elérhető eseménytípusok
 
 Az Azure IoT Hub a következő eseménytípusokat bocsátja ki:
 
@@ -37,7 +35,7 @@ Az Azure IoT Hub a következő eseménytípusokat bocsátja ki:
 
 Az eszköztelemetriai események kivételével minden eszközesemény általánosan elérhető az Event Grid által támogatott összes régióban. Az eszköztelemetriai esemény nyilvános előzetes verzióban érhető el, és az USA keleti régiói, az USA nyugati régiója, Nyugat-Európa, [az Azure Government](../azure-government/documentation-government-welcome.md), az Azure China [21Vianet](/azure/china/china-welcome)és az [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/)kivételével minden régióban elérhető.
 
-## <a name="example-event"></a>Példa esemény
+### <a name="example-event"></a>Példa esemény
 
 A DeviceConnected és a DeviceDisconnected események sémája azonos struktúrával rendelkezik. Ez a mintaesemény egy olyan esemény sémáját jeleníti meg, amely akkor jelenik meg, amikor egy eszköz egy IoT-központhoz csatlakozik:
 
@@ -205,6 +203,13 @@ Az **Eszköz létrehozva** és **az Eszköz törölt** IoT Hub-események eseté
 | Kívánt | objektum | A tulajdonságok egy részét, amely et csak az alkalmazás háttér-, és olvassa el az eszköz által. | 
 | Jelentett | objektum | A tulajdonságok egy részét, amely et csak az eszköz írhatja, és az alkalmazás háttér-háttér-olvasni. |
 | lastUpdated | sztring | Az eszköz ikertulajdonságának utolsó frissítésének ISO8601 időbélyege. | 
+
+## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
+|Cím  |Leírás  |
+|---------|---------|
+| [Azure IoT Hub-eseményekkel kapcsolatos e-mail-értesítések küldése a Logic Apps használatával](publish-iot-hub-events-to-logic-apps.md) | A logikai alkalmazás értesítést küld e-mailt minden alkalommal, amikor egy eszköz hozzá adódik az IoT Hubhoz. |
+| [Reagálás az IoT Hub-eseményekre az Event Grid használatával műveletek et indíthat el](../iot-hub/iot-hub-event-grid.md) | Az IoT Hub és az Event Grid integrálásának áttekintése. |
+| [Eszköz csatlakoztatva és az eszköz leválasztott eseményeinek megrendelése](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Az eszközkapcsolat állapoteseményeinek rendelése. |
 
 ## <a name="next-steps"></a>További lépések
 

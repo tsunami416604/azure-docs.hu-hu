@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/17/2020
-ms.openlocfilehash: 50e82362f39da2d3f3ecfad2de1ed07b68f8a6a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cc089a1efc3f5960a8bca8a36063bb1019bbcc6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501660"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409398"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Új fájlok növekményes másolása az idő particionált fájlneve alapján az Adatok másolása eszközzel
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezután az Adatok másolása eszközzel hozzon létre egy folyamatot, amely növekményesen másolja az új fájlokat az Azure Blob storage-ból az Azure Blob storage-ból az Azure Blob storage-ba történő particionált fájlnév alapján.
 
@@ -99,7 +101,7 @@ Készítse elő a Blob storage az oktatóanyag ezekkel a lépésekkel.
 
     d. Az **Ismétlődés**csoportban adja meg **az 1 óra(ok)** értéket.
 
-    e. Válassza a **Tovább lehetőséget.**
+    e. Kattintson a **Tovább** gombra.
 
     A Data Factory felhasználói felülete létrehoz egy folyamatot a megadott feladatnéven.
 

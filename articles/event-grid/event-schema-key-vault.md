@@ -1,24 +1,26 @@
 ---
-title: Azure Event Grid eseménysémája az Azure Key Vaulthoz
+title: Az Azure Key Vault eseményrács forrásaként
 description: Az Azure Key Vault-események és az Azure Event Grid szolgáltatásban biztosított tulajdonságok és séma ismertetése
 services: event-grid
-author: msmbaldwin
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/25/2019
-ms.author: mbaldwin
-ms.openlocfilehash: fe186e2ba8f3cafeb4d186066ba65ae036302f70
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 36b7b81a18c8725929ab5676b844e1ee319e287f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010511"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393311"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Event Grid eseménysémája az Azure Key Vaulthoz (előzetes verzió)
+# <a name="azure-key-vault-as-event-grid-source"></a>Az Azure Key Vault eseményrács forrásaként
 
 Ez a cikk az Azure Key [Vault](../key-vault/index.yml)eseményeinek tulajdonságait és sémáját tartalmazza, jelenleg előzetes verzióban. Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
-## <a name="available-event-types"></a>Elérhető eseménytípusok
+## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
+
+### <a name="available-event-types"></a>Elérhető eseménytípusok
 
 Az Azure Key Vault-fiók a következő eseménytípusokat hozza létre:
 
@@ -34,7 +36,7 @@ Az Azure Key Vault-fiók a következő eseménytípusokat hozza létre:
 | Microsoft.KeyVault.SecretLey közelében | Titkos lejárat közelében | Akkor aktiválódik, amikor egy titkos titok aktuális verziója hamarosan lejár. (Az esemény 30 nappal a lejárati dátum előtt következik be.) |
 | Microsoft.KeyVault.SecretExpired | Titkos lejárt | Egy titkos titok lejártakor aktiválódik. |
 
-## <a name="event-examples"></a>Példák eseményre
+### <a name="event-examples"></a>Példák eseményre
 
 A következő példa a **Microsoft.KeyVault.SecretNewVersionCreated**sémáját mutatja be:
 
@@ -61,7 +63,7 @@ A következő példa a **Microsoft.KeyVault.SecretNewVersionCreated**sémáját 
 ]
 ```
 
-## <a name="event-properties"></a>Esemény tulajdonságai
+### <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény legfelső szintű adatokat rendelkezik:
 
@@ -74,6 +76,12 @@ Egy esemény legfelső szintű adatokat rendelkezik:
 | version | sztring | Az eseményt kiváltó objektum verziója |
 | nbf | szám | Az eseményt kiváltó objektum 1970-01-01T00:00:00Z óta eltelt másodpercek előtti dátuma |
 | Exp | szám | Az eseményt kiváltó objektum 1970-01-01T00:00:00Z ideje másodpercben |
+
+## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
+|Cím  |Leírás  |
+|---------|---------|
+| [Key Vault-események figyelése az Azure Event Griddel](../key-vault/event-grid-overview.md) | A Key Vault és az Event Grid integrálásának áttekintése. |
+| [Oktatóanyag: Key Vault-események létrehozása és figyelése az Event Grid segítségével](../key-vault/event-grid-tutorial.md) | További információ az Event Grid-értesítések key vaulthoz való beállításáról. |
 
 
 ## <a name="next-steps"></a>További lépések

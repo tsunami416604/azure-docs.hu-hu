@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ac97ae1d3eb260a9e0c70d3f831efb8b56a5c29d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d2226e161d96a52834dc3d0c16a1a053d39f02e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973815"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404479"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-nodejs"></a>Rövid útmutató: Miniatűr létrehozása a Computer Vision REST API és a Node.js használatával
 
@@ -95,7 +95,7 @@ A rendszer bináris formátumban adja vissza a sikeres választ, ahol a bináris
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a Computer Vision API-t, amellyel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ezután fedezze fel a Computer Vision API-t, amely egy kép elemzésére, hírességek és tereptárgyak észlelésére, miniatűrlétrehozására, valamint nyomtatott és kézzel írt szöveg kinyerésére szolgál.
 
 > [!div class="nextstepaction"]
 > [Tekintse át a Computer Vision API-t](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

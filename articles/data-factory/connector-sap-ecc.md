@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.openlocfilehash: f875d8f4603a8f51b8b8fed2438e6f3a30c87aeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad26fca94527864af10bb0051336c372ea65b3e0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931170"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413797"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Adatok másolása az SAP ECC-ből az Azure Data Factory használatával
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása az SAP Enterprise Central Component (ECC). További információt a [Tevékenység másolása – áttekintés című témakörben talál.](copy-activity-overview.md)
 
@@ -30,7 +31,7 @@ Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység az Azure Da
 Ez az SAP ECC-összekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 Az SAP ECC-ből adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként vagy fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában láthatja.
 
@@ -146,7 +147,7 @@ A másolási tevékenység `source` szakasza a következő tulajdonságokat tám
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | `type` | A `type` másolási tevékenység szakaszának tulajdonságát `source` `SapEccSource`a beállításra kell állítani. | Igen |
-| `query` | Az Adatok lekérdezési beállításai az adatok szűréséhez. Példa:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő adatokat másol a kombinált URL-címről:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| `query` | Az Adatok lekérdezési beállításai az adatok szűréséhez. Például:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő adatokat másol a kombinált URL-címről:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 ### <a name="example"></a>Példa
 

@@ -4,14 +4,14 @@ description: Ismerje meg az Azure Functions fogalmait és technikáit, amelyek a
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276620"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405356"
 ---
-# <a name="azure-functions-developers-guide"></a>Útmutató az Azure Functions fejlesztőinek
+# <a name="azure-functions-developer-guide"></a>Azure Functions – fejlesztői útmutató
 Az Azure Functionsben bizonyos függvények néhány alapvető műszaki koncepciót és összetevőt osztanak meg, függetlenül a használt nyelvtől vagy kötéstől. Mielőtt beleugranál egy adott nyelvre vagy kötésre vonatkozó tanulási részletekbe, mindenképpen olvasd el ezt az áttekintést, amely mindegyikre vonatkozik.
 
 Ez a cikk feltételezi, hogy már elolvasta az [Azure Functions áttekintését.](functions-overview.md)

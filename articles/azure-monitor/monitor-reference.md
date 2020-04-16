@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 27503defa23b2a35e767156139228aa2e177652f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255328"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405184"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mit figyel az Azure Monitor?
 Ez a cikk ismerteti a különböző alkalmazások és szolgáltatások, amelyek az Azure Monitor által figyelt. 
@@ -205,7 +205,6 @@ Más megoldások is rendelkezésre állnak a különböző alkalmazások és szo
 | [Igény szerinti értékelések](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Mérje fel és optimalizálja a helyszíni, hibrid és felhőalapú Microsoft-technológiai környezetek rendelkezésre állását, biztonságát és teljesítményét. |
 | [SQL állapot-ellenőrzés](insights/sql-assessment.md) | Mérje fel az SQL Server-környezetek kockázatát és állapotát.  |
 | [Átviteli adatok](insights/wire-data.md) | A Log Analytics-ügynökkel windowsos és Linuxhoz csatlakoztatott számítógépekről gyűjtött összevont hálózati és teljesítményadatok. |
-
 
 ## <a name="third-party-integration"></a>Harmadik fél integrációja
 

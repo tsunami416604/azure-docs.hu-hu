@@ -5,12 +5,12 @@ description: Ismerje meg a fürtüzemeltető bevált módszereit a virtuális h�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: c8aee9967e09d2ae8bec3ee170756d8d22de0fe4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1eed6f1f82a8a91b2335760e99ea6b895d15547e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668209"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392719"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolatra és biztonságra vonatkozó ajánlott eljárások az Azure Kubernetes Service-ben (AKS)
 
@@ -43,7 +43,7 @@ Az Azure CNI-hálózat használatakor a virtuális hálózati erőforrás az AKS
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-Az AKS-szolgáltatáselső delegálásról további információt a [Más Azure-erőforrásokhoz való hozzáférés delegálása][sp-delegation]című témakörben talál.
+Az AKS-szolgáltatáselső delegálásról további információt a [Más Azure-erőforrásokhoz való hozzáférés delegálása][sp-delegation]című témakörben talál. Egyszerű szolgáltatás helyett használhatja a rendszer hez rendelt felügyelt identitás engedélyeket is használhatja. További információ: [Felügyelt identitások használata.](use-managed-identity.md)
 
 Mivel minden csomópont és pod saját IP-címet kap, tervezze meg az AKS-alhálózatok címtartományait. Az alhálózatnak elég nagynak kell lennie ahhoz, hogy ip-címeket adjon meg minden üzembe helyezett csomóponthoz, podhoz és hálózati erőforráshoz. Minden AKS-fürtnek a saját alhálózatába kell helyezni. A helyszíni vagy társviszony-létesített hálózatokhoz való kapcsolódás engedélyezéséhez az Azure-ban ne használjon olyan IP-címtartományokat, amelyek átfedésben vannak a meglévő hálózati erőforrásokkal. Az egyes csomópontok kubenet és Azure CNI-hálózattal futtatott podok száma alapértelmezett korlátokat állapít meg. A horizontális felskálázási események vagy a fürtfrissítések kezeléséhez további IP-címekre is szüksége van a hozzárendelt alhálózatban való használatra. Ez a további címterület különösen fontos, ha Windows Server-tárolókat használ (jelenleg előzetes verzióban az AKS-ben), mivel ezek a csomópontkészletek frissítést igényelnek a legújabb biztonsági javítások telepítéséhez. A Windows Server-csomópontokról az [AKS csomópontkészletének frissítése][nodepool-upgrade]című témakörben talál további információt.
 

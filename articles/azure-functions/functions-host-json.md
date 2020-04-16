@@ -3,12 +3,12 @@ title: host.json hivatkozás az Azure Functions 2.x-hez
 description: Az Azure Functions host.json fájl referenciadokumentációja a v2 futásidejű.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 1a861d500f0b8cc31b8312d6c955916ab741b649
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878246"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405487"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json hivatkozás az Azure Functions 2.x és újabb függvényekhez 
 
@@ -141,7 +141,7 @@ Szabályozza az Application Insights beállításait, beleértve a [mintavételi
 A teljes JSON-struktúrát lásd a korábbi [példa host.json fájlban.](#sample-hostjson-file)
 
 > [!NOTE]
-> Naplómintavételi előfordulhat, hogy egyes végrehajtások nem jelennek meg az Application Insights figyelő panelen. A naplómintavétel elkerülése `samplingExcludedTypes: "Request"` érdekében adja hozzá az `applicationInsights` értéket.
+> Naplómintavételi előfordulhat, hogy egyes végrehajtások nem jelennek meg az Application Insights figyelő panelen. A naplómintavétel elkerülése `excludedTypes: "Request"` érdekében adja hozzá az `samplingSettings` értéket.
 
 | Tulajdonság | Alapértelmezett | Leírás |
 | --------- | --------- | --------- | 
@@ -166,8 +166,8 @@ A teljes JSON-struktúrát lásd a korábbi [példa host.json fájlban.](#sample
 | minSamplingSzázalék | 0,1 | A mintavételi százalék változó, ez a tulajdonság határozza meg a minimálisan engedélyezett mintavételi százalék. |
 | maxSamplingSzázalék | 0,1 | A mintavételi százalék változó, ez a tulajdonság határozza meg a maximálisan megengedett mintavételi százalék. |
 | mozgóÁtlagarány | 1.0 | A mozgóátlag kiszámításakor a legutóbbi értékhez rendelt súly. Használjon 1-es vagy annál kisebb értéket. A kisebb értékek miatt az algoritmus kevésbé reagál a hirtelen változásokra. |
-| kizárttípusok | null | Pontosvesszővel tagolt lista azokról a típusokról, amelyekről nem szeretne mintát venni. A felismert típusok a következők: Függőség, Esemény, Kivétel, PageView, Kérés, Nyomkövetés. A megadott típusok összes példánya továbbításra kerül; a nem megadott típusok mintavételezése. |
-| includedTypes | null | A mintavételezett típusok pontosvesszővel tagolt listája; egy üres lista minden típust magában foglalja. Az itt `excludedTypes` felsorolt felülbírálási típusokban felsorolt típus. A felismert típusok a következők: Függőség, Esemény, Kivétel, PageView, Kérés, Nyomkövetés. A megadott típusok összes példánya továbbításra kerül; a nem megadott típusok mintavételezése. |
+| kizárttípusok | null | Pontosvesszővel tagolt lista azokról a típusokról, amelyekről nem szeretne mintát venni. A felismert `Dependency` `Event`típusok `Exception` `PageView`a `Request`következők: , , , , és `Trace`. A megadott típusok összes példánya továbbításra kerül; a nem megadott típusok mintavételezése. |
+| includedTypes | null | A mintavételezett típusok pontosvesszővel tagolt listája; egy üres lista minden típust magában foglalja. Az itt `excludedTypes` felsorolt felülbírálási típusokban felsorolt típus. A felismert `Dependency` `Event`típusok `Exception` `PageView`a `Request`következők: , , , , és `Trace`. A megadott típusok példányai ból mintavételezésre kerülnek; a nem megadott vagy hallgatólagos típusok mintavétel nélkül továbbítódnak. |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights.httpAutoCollectionOptions
 

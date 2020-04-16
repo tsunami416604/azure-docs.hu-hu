@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: 44efd0d402d6cb9f1ee44c583c88140121ca3001
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: d96b2b1f8465132549c59ac5555adf99e7758a3b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011616"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415222"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából az Azure Data Factory használatával
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolása egy SAP-táblából. További információt a [Tevékenység másolása – áttekintés című témakörben talál.](copy-activity-overview.md)
 
@@ -30,7 +31,7 @@ Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység et az Azure
 Ez az SAP-táblaösszekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 Az SAP-táblából adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként vagy fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 

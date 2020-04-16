@@ -5,18 +5,20 @@ description: Megtudhatja, hogy miként frissíti vagy alaphelyzetbe állítja az
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 0203321af32bcc2ae70b726737b85870d08be86f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 8420771e32aa792aa79a07fdf4362ad0d9b45d48
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886755"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392634"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) hitelesítő adatainak frissítése vagy elforgatása
 
 Alapértelmezés szerint az AKS-fürtök egy egyéves lejárati idővel rendelkező egyszerű szolgáltatással jönnek létre. A lejárati dátum közeledtével alaphelyzetbe állíthatja a hitelesítő adatokat, hogy a szolgáltatásnév további időtartamra meghosszabbítsa. Előfordulhat, hogy egy meghatározott biztonsági házirend részeként szeretné frissíteni vagy elforgatni a hitelesítő adatokat. Ez a cikk ismerteti, hogyan frissítheti ezeket a hitelesítő adatokat egy AKS-fürthöz.
 
-Előfordulhat, hogy [az AKS-fürtöt is integrálta az Azure Active Directoryval,][aad-integration]és a fürt hitelesítési szolgáltatójaként használhatja. Ebben az esetben további 2 identitást hoz létre a fürthöz, az AAD-kiszolgáló alkalmazáshoz és az AAD-ügyfélalkalmazáshoz, és alaphelyzetbe állíthatja ezeket a hitelesítő adatokat is. 
+Előfordulhat, hogy [az AKS-fürtöt is integrálta az Azure Active Directoryval,][aad-integration]és a fürt hitelesítési szolgáltatójaként használhatja. Ebben az esetben további 2 identitást hoz létre a fürthöz, az AAD-kiszolgáló alkalmazáshoz és az AAD-ügyfélalkalmazáshoz, és alaphelyzetbe állíthatja ezeket a hitelesítő adatokat is.
+
+Azt is megteheti, hogy egy felügyelt identitás engedélyek helyett egy egyszerű szolgáltatás. A felügyelt identitások kezelése könnyebb, mint a szolgáltatástagok, és nem igényelnek frissítéseket vagy rotációkat. További információ: [Felügyelt identitások használata.](use-managed-identity.md)
 
 ## <a name="before-you-begin"></a>Előkészületek
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 243fea8fae071368a91bf482190442f15c372fc1
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271301"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390398"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Az Azure-ból Azure-ba irányuló virtuális gép replikációs hibáinak elhárítása
 
@@ -404,21 +404,20 @@ A virtuális gép replikációjának engedélyezéséhez a létesítési állapo
 
 ### <a name="issue-1-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>1. probléma: A virtuális gép olyan hálózathoz van csatlakoztatva, amely már le van képezve egy célhálózatra
 
-Ha a forrás virtuális gép egy virtuális hálózat része, és egy másik virtuális gép ugyanabból a virtuális hálózatból már le van képezve a célerőforrás-csoportban lévő hálózattal, a hálózatkijelöléslegördülő lista alapértelmezés szerint nem érhető el (halványan jelenik meg).
+A vész-helyreállítási konfiguráció során, ha a forrás virtuális gép egy virtuális hálózat része, és egy másik virtuális gép ugyanabból a virtuális hálózatból már le van képezve a célerőforrás-csoport ban lévő hálózattal, a hálózatkijelölés legördülő lista alapértelmezés szerint nem érhető el (halványan jelenik meg).
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="A hálózati kijelölési lista nem érhető el.":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>2. probléma: Korábban megvédte a virtuális gép, majd letiltotta a replikációt
 
-A virtuális gép replikációjának letiltása nem törli a hálózati hozzárendelést. A leképezést törölni kell a Recovery Services tárolóból, ahol a virtuális gép védett volt. Nyissa meg a **Helyreállítási szolgáltatások tárolója** > **helyhelyreállítási infrastruktúra** > **hálózati leképezése webhelyre való ugrását.**
+A virtuális gép replikációjának letiltása nem törli a hálózati hozzárendelést. A leképezést törölni kell a Recovery Services tárolóból, ahol a virtuális gép védett volt. Válassza ki a **Helyreállítási szolgáltatások tárolóját,** és nyissa meg **a Site** > **Recovery Infrastructure** > **for Azure virtuális gépek** > **hálózati leképezése című**területet.
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Hálózati hozzárendelés törlése.":::
 
-A vész-helyreállítási telepítés során konfigurált célhálózat a kezdeti telepítés után és a virtuális gép védelme után módosítható:
+A vész-helyreállítási telepítés során konfigurált célhálózat a kezdeti telepítés után és a virtuális gép védelme után módosítható. A **hálózati hozzárendelés módosítása esetén** válassza ki a hálózat nevét:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="Hálózati hozzárendelés módosítása.":::
 
-A hálózati leképezés módosítása hatással van az összes olyan védett virtuális gépre, amely ugyanazt a hálózati hozzárendelést használja.
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ vagy VSS (hibakód: 151025)
 

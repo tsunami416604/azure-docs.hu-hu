@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: 84b935d1646ea4f13d5926fc68797fd8efd03dea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3460c789909c6acd0537ef89a9ec8509bf6e135d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930357"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413727"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Transzformáció szűrése az adatfolyam leképezésében
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 A Szűrő átalakítások lehetővé teszik a sorszűrést egy feltétel alapján. A kimeneti adatfolyam tartalmazza a szűrési feltételnek megfelelő összes sort. A szűrőátalakítás hasonló az SQL WHERE záradékához.
 

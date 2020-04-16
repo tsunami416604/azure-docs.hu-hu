@@ -11,14 +11,15 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 6645c2672e15c562216b4347f779ef3634a2f124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2108f2f9098fe6da8ee4666b30605bed14164484
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130871"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414724"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Forrásvezérlés az Azure Data Factoryban
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az Azure Data Factory felhasználói felülete (UX) két vizuális szerzői élménytel rendelkezik:
 
@@ -187,7 +188,7 @@ Ha készen áll a módosítások egyesítésére a szolgáltatáságból az egy�
 
 ### <a name="configure-publishing-settings"></a>Közzétételi beállítások konfigurálása
 
-A közzétételi ág – azaz az Erőforrás-kezelő sablonjainak `publish_config.json` mentéséhez való ág – konfigurálásához adjon hozzá egy fájlt az együttműködési ág gyökérmappájához. A Data Factory beolvassa ezt `publishBranch`a fájlt, megkeresi a mezőt, és létrehoz egy új ágat (ha még nem létezik) a megadott értékkel. Ezután az összes Erőforrás-kezelő sablont a megadott helyre menti. Példa:
+A közzétételi ág – azaz az Erőforrás-kezelő sablonjainak `publish_config.json` mentéséhez való ág – konfigurálásához adjon hozzá egy fájlt az együttműködési ág gyökérmappájához. A Data Factory beolvassa ezt `publishBranch`a fájlt, megkeresi a mezőt, és létrehoz egy új ágat (ha még nem létezik) a megadott értékkel. Ezután az összes Erőforrás-kezelő sablont a megadott helyre menti. Például:
 
 ```json
 {
@@ -231,7 +232,7 @@ Megnyílik egy oldalsó ablaktábla, ahol meggyőződik arról, hogy a közzét�
 Általában nem szeretné, hogy minden csapattag nak legyen engedélye a gyár frissítésére. A következő engedélybeállítások ajánlottak:
 
 *   Minden csapattagnak olvasási engedéllyel kell rendelkeznie az adat-előállítóba.
-*   Csak egy kiválasztott csoport az emberek számára lehetővé kell tenni, hogy tegye közzé a gyárban. Ehhez rendelkezniük kell a **Data Factory közreműködői** szerepkört a gyárban. Az engedélyekről az [Azure Data Factory szerepkörei és engedélyei](concepts-roles-permissions.md)című témakörben talál további információt.
+*   Csak egy kiválasztott csoport az emberek számára lehetővé kell tenni, hogy tegye közzé a gyárban. Ehhez rendelkezniük kell a **Data Factory közreműködői** szerepkört az erőforráscsoportban, amelyben a gyár található. Az engedélyekről az [Azure Data Factory szerepkörei és engedélyei](concepts-roles-permissions.md)című témakörben talál további információt.
    
 Javasoljuk, hogy ne engedélyezze a közvetlen bejelentkezéseket az együttműködési ágba. Ez a korlátozás segíthet megelőzni a hibákat, mivel minden bejelentkezés a [Szolgáltatáságak létrehozása című](source-control.md#creating-feature-branches)témakörben leírt lekéréses kérelem-ellenőrzési folyamaton megy keresztül.
 

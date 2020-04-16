@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 16ac76c32acfdd72533a82e3958475f2e09e34a5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2afec329204e6ae3eb0f04fbc51acd8b4c7ca7f5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770407"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405137"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Rövid útmutató: Nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és a C használatával #
 
 > [!NOTE]
-> Ha angol nyelvű szöveget használ, fontolja meg az új [Olvasás művelet használatát.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) C# [rövid útmutató](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) érhető el. 
+> Ha angol nyelvű szöveget szeretne kinyerni, fontolja meg az új [Olvasás művelet használatát.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) C# [rövid útmutató](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) érhető el. 
 
-Ebben a rövid útmutatóban a számítógép-látás rest API-val optikai karakterfelismeréssel (OCR) rendelkező nyomtatott szöveget nyerhet ki egy képből. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) funkcióval észlelheti a kép nyomtatott szövegét, és kinyerheti a felismert karaktereket egy gép által használható karakterfolyamba.
+Ebben a rövid útmutatóban optikai karakterfelismeréssel (OCR) rendelkező nyomtatott szöveget nyerhet ki egy képből a Computer Vision REST API használatával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) funkcióval észlelheti a kép nyomtatott szövegét, és kinyerheti a felismert karaktereket egy gép által használható karakterfolyamba.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) mielőtt elkezdené.
 

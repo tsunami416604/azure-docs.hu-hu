@@ -5,18 +5,18 @@ services: container-service
 author: saudas
 manager: saudas
 ms.topic: article
-ms.date: 03/10/2019
+ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 85efc6d9d203ca06c5f7566376993b4c13950788
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a150e2f197f24db5da331195290d11ad925c47e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369973"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392654"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
-Jelenleg egy Azure Kubernetes-szolgáltatás (AKS) fürt (különösen a Kubernetes felhőszolgáltató) igényel egy *egyszerű szolgáltatás* hoz létre további erőforrásokat, például a terheléselosztók és a felügyelt lemezek az Azure-ban. Vagy meg kell adnia egy egyszerű szolgáltatás, vagy az AKS létrehoz egyet az Ön nevében. A szolgáltatásnévi tagok nak általában lejárati dátuma van. A fürtök végül elérik azt az állapotot, amelyben a szolgáltatásegyszerű szolgáltatást meg kell újítani a fürt működésének fenntartásához. A szolgáltatásnévi tagok kezelése összetetté teszi a szolgáltatást.
+Jelenleg egy Azure Kubernetes Service (AKS) fürt (különösen a Kubernetes felhőszolgáltató) további erőforrások, például terheléselosztók és felügyelt lemezek létrehozásához szükséges az Azure-ban, ez az identitás lehet *felügyelt identitás* vagy *egyszerű szolgáltatás.* Ha egyszerű [szolgáltatást](kubernetes-service-principal.md)használ, meg kell adnia egyet, vagy az AKS létrehoz egyet az Ön nevében. Ha felügyelt identitást használ, az AKS automatikusan létrehozza ezt. A szolgáltatásnévi tagokat használó fürtök végül elérik azt az állapotot, amelyben a szolgáltatásegyszerű szolgáltatást meg kell újítani a fürt működésének fenntartásához. A szolgáltatásegyszerű szolgáltatások kezelése összetettséget ad hozzá, ezért egyszerűbb a felügyelt identitások használata. Ugyanazok az engedélykövetelmények vonatkoznak a szolgáltatásnévi és a felügyelt identitásokra is.
 
 *A felügyelt identitások* lényegében a szolgáltatástagok köré, és egyszerűbbé teszik a felügyeletüket. További információ: [Azure-erőforrások felügyelt identitások.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 

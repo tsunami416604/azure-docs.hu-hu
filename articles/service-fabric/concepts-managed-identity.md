@@ -4,14 +4,14 @@ description: Ismerje meg a felügyelt identitások azure-beli Service Fabric has
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6f3736bed4d3d59bce08d4df3ee0aa164a0a764
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76986750"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415115"
 ---
-# <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Felügyelt identitások használata az Azure-hoz a Service Fabric (előzetes verzió) használatával
+# <a name="using-managed-identities-for-azure-with-service-fabric"></a>Felügyelt identitások használata az Azure-hoz a Service Fabric
 
 A felhőalapú alkalmazások létrehozásakor gyakori kihívás, hogy hogyan kezelheti biztonságosan a kódban lévő hitelesítő adatokat a különböző szolgáltatások hitelesítéséhez anélkül, hogy helyben mentené őket egy fejlesztői munkaállomáson vagy a forrásvezérlőben. *Felügyelt identitások az Azure-hoz* megoldja ezt a problémát az Azure Active Directoryban (Azure AD) lévő összes erőforráshoz azáltal, hogy automatikusan felügyelt identitásokat biztosít számukra az Azure AD-n belül. A szolgáltatás identitását használhatja hitelesítést minden olyan szolgáltatás, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault, anélkül, hogy a kódban tárolt hitelesítő adatok.
 
@@ -47,7 +47,7 @@ A Service Fabric felügyelt identitásai csak az Azure által üzembe helyezett 
 
 Az alkalmazás rendszeráltal hozzárendelt identitása az adott alkalmazásra egyedi; a felhasználó által hozzárendelt identitás önálló erőforrás, amely több alkalmazáshoz is hozzárendelhető. Az alkalmazáson belül egyetlen identitás (akár rendszerhez rendelt, akár felhasználóhoz rendelt) rendelhető az alkalmazás több szolgáltatásához, de minden egyes szolgáltatáshoz csak egy identitás rendelhető hozzá. Végül egy szolgáltatásnak explicit módon identitást kell rendelnie ahhoz, hogy hozzáférjen ehhez a funkcióhoz. Valójában az alkalmazás identitásainak az összetevő szolgáltatásaihoz való hozzárendelése lehetővé teszi az alkalmazáson belüli elkülönítést – a szolgáltatás csak a hozzá leképezett identitást használhatja.  
 
-Jelenleg a következő forgatókönyvek támogatottak ehhez az előzetes verzióhoz:
+Jelenleg a következő forgatókönyvek támogatottak ehhez a funkcióhoz:
 
 - Új alkalmazás telepítése egy vagy több szolgáltatással és egy vagy több hozzárendelt identitással
 
@@ -57,12 +57,7 @@ A következő forgatókönyvek nem támogatottak vagy nem ajánlottak; vegye fig
 
 - Távolítsa el vagy módosítsa az alkalmazáshoz rendelt identitásokat; ha módosításokat kell végrehajtania, küldjön külön központi telepítéseket, hogy először új identitás-hozzárendelést adjon hozzá, majd távolítsa el a korábban hozzárendeltet. Egy identitás eltávolítása egy meglévő alkalmazás nemkívánatos hatások, beleértve az alkalmazás nem frissíthető állapotban hagyása. A kérelem teljes törlése biztonságos, ha a személyazonosság eltávolítása szükséges; vegye figyelembe, hogy ez törli az alkalmazáshoz társított rendszeráltal hozzárendelt identitást (ha úgy van definiálva), és eltávolítja az alkalmazáshoz rendelt felhasználóhoz rendelt identitásokkal való társításokat.
 
-- A felügyelt identitások Service Fabric-támogatása jelenleg nincs integrálva az [AzureServiceTokenProvider szolgáltatásba](../key-vault/service-to-service-authentication.md); az integráció a felügyelt identitásfunkció előzetes időszakának végére érhető el.
-
->
-> [!NOTE]
->
-> Ez a funkció előzetes verzióban érhető el. Gyakori változásoknak lehet nek kitéve, és nem alkalmas éles környezetek beüzemelésére.
+- A felügyelt identitások Service Fabric-támogatása jelenleg nincs integrálva az [AzureServiceTokenProvider szolgáltatásba.](../key-vault/service-to-service-authentication.md)
 
 ## <a name="next-steps"></a>További lépések
 

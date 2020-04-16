@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.openlocfilehash: 1325910877d1e030b3bf4114e16d0f81ecea8cf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443977"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415853"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen1 szolgáltatásba az Azure Data Factory használatával
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 [Az Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (korábbi nevén Azure Data Lake Store) egy nagyvállalati szintű, nagyméretű tárház big data-elemzési számítási feladatokhoz. A Data Lake Storage Gen1 segítségével bármilyen méretű, típusú és betöltési sebességű adatokat rögzíthet. Az adatok at egy helyen rögzítik a működési és feltáró elemzések.
 
@@ -88,7 +90,7 @@ Ez a cikk bemutatja, hogyan tölthet be adatokat az _Amazon S3-ból a Data Lake 
    
       ![Amazon S3 fiók megadása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. Új kapcsolatot fog látni. Válassza a **Tovább lehetőséget.**
+   4. Új kapcsolatot fog látni. Kattintson a **Tovább** gombra.
    
    ![Amazon S3 fiók megadása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
@@ -108,7 +110,7 @@ Ez a cikk bemutatja, hogyan tölthet be adatokat az _Amazon S3-ból a Data Lake 
 
    1. Válassza ki a Data Lake Storage Gen1 fiókját a **Data Lake Store-fiók nevéhez.**
    2. Adja meg a **bérlőt**, és válassza a Befejezés gombot.
-   3. Válassza a **Tovább lehetőséget.**
+   3. Kattintson a **Tovább** gombra.
    
    > [!IMPORTANT]
    > Ebben a forgatókönyvben az Azure-erőforrások felügyelt identitását használja a Data Lake Storage Gen1 fiók hitelesítéséhez. Ügyeljen arra, hogy az MSI a megfelelő engedélyeket a Data Lake Storage Gen1 az [alábbi utasításokat](connector-azure-data-lake-store.md#managed-identity)követve .

@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: f1c0d8f72fe59ff9a8c0fdba86d97ea588a9a808
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 2a7da34238af6d1936c680cd5a063e9ad49ee889
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366622"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403620"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Rövid útmutató: Hozzon létre egy képbesorolási projektet az egyéni látótérnode.js SDK-val
 
@@ -176,7 +176,7 @@ Ezután ellenőrizheti, hogy a tesztkép (az **<base_image_url>/Images/Test/** m
 
 ## <a name="next-steps"></a>További lépések
 
-Láthatta, hogyan hajthatók végre a képosztályozási folyamat lépései kód használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran előfordulhat, hogy a nagyobb pontosság érdekében többször is be kell tanítania és tesztelnie kell a modellt.
+Most már látta, hogy az objektumészlelési folyamat minden lépése hogyan végezhető el kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran többször is be kell képeznie és tesztelnie kell a modellt annak érdekében, hogy pontosabb legyen.
 
 > [!div class="nextstepaction"]
 > [Modell tesztelése és újratanítása](test-your-model.md)

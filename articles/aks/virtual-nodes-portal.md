@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre az Azure Kubernetes Services (AKS
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 62d8fec4c5c3ff35fb46826cb7118946f66948b2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259119"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392581"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Hozzon létre és konfiguráljon egy Azure Kubernetes-szolgáltatás (AKS) fürtöt virtuális csomópontok használatára az Azure Portalon
 
@@ -89,7 +89,7 @@ A **Méretezés** lapon válassza az *Engedélyezve* lehetőséget a **Virtuáli
 
 ![AKS-fürt létrehozása és a virtuális csomópontok engedélyezése](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-Alapértelmezés szerint egy Azure Active Directory szolgáltatásnév jön létre. Ez a szolgáltatásnév fürtkommunikációra és más Azure-szolgáltatásokkal való integrációra szolgál.
+Alapértelmezés szerint egy Azure Active Directory szolgáltatásnév jön létre. Ez a szolgáltatásnév fürtkommunikációra és más Azure-szolgáltatásokkal való integrációra szolgál. Azt is megteheti, hogy egy felügyelt identitás engedélyek helyett egy egyszerű szolgáltatás. További információ: [Felügyelt identitások használata.](use-managed-identity.md)
 
 A fürt speciális hálózatkezelésre is be van állítva. A virtuális csomópontok saját Azure virtuális hálózati alhálózathasználatára vannak konfigurálva. Ez az alhálózat delegált engedélyekkel rendelkezik az Azure-erőforrások AKS-fürt közötti csatlakoztatásához. Ha még nem rendelkezik delegált alhálózattal, az Azure Portal létrehozza és konfigurálja az Azure virtuális hálózatot és alhálózatot a virtuális csomópontokkal való használatra.
 

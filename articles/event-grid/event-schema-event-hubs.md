@@ -1,30 +1,30 @@
 ---
-title: Az Azure Event Grid eseményközpontok eseménysémája
+title: Az Azure Event Hubs mint Eseményrács forrása
 description: Az Eseményközpontok eseményeihez az Azure Event Grid del biztosított tulajdonságok ismertetése
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561828"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393341"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid eseménysémája eseményközpontokhoz
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>Az Azure Event Hubs eseményrács-forrásként
 
 Ez a cikk az eseményközpontok eseményeinek tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
-A mintaparancsfájlok és oktatóanyagok listáját az [Event Hubs eseményforrásában](event-sources.md#event-hubs)található.
+## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
 
 ### <a name="available-event-types"></a>Elérhető eseménytípusok
 
 Az Event Hubs a **Microsoft.EventHub.CaptureFileCreated** eseménytípust bocsátki rögzítési fájl létrehozásakor.
 
-## <a name="example-event"></a>Példa esemény
+### <a name="example-event"></a>Példa esemény
 
 Ez a mintaesemény egy eseményközpontok eseményének sémáját jeleníti meg, amely akkor jelenik meg, amikor a rögzítési szolgáltatás egy fájlt tárol: 
 
@@ -53,7 +53,7 @@ Ez a mintaesemény egy eseményközpontok eseményének sémáját jeleníti meg
 ]
 ```
 
-## <a name="event-properties"></a>Esemény tulajdonságai
+### <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény legfelső szintű adatokat rendelkezik:
 
@@ -81,6 +81,12 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | lastSequenceNumber | egész szám | A várólista utolsó sorszáma. |
 | firstEnqueueTime | sztring | Az első alkalom a várólistából. |
 | lastEnqueueTime | sztring | Utoljára a várólistából. |
+
+## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
+
+|Cím  |Leírás  |
+|---------|---------|
+| [Oktatóanyag: big data streamelése adattárházba](event-grid-event-hubs-integration.md) | Amikor az Event Hubs rögzítési fájlt hoz létre, az Event Grid eseményt küld egy függvényalkalmazásnak. Az alkalmazás lekéri a Capture fájlt, és áttelepíti az adatokat egy adattárházba. |
 
 ## <a name="next-steps"></a>További lépések
 

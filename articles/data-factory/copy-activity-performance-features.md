@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/09/2020
-ms.openlocfilehash: d37b4648c0a37f16fe5c9d8794bd78417c5780ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd7844340553809e1429097a9dda70f6bdb3e075
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257886"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414188"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Tevékenységteljesítmény-optimalizálási funkciók másolása
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk ismerteti a másolási tevékenység teljesítményoptimalizálási funkciókat, amelyeket az Azure Data Factoryban használhat.
 
@@ -134,7 +136,7 @@ Az átmeneti szolgáltatás aktiválásakor először az adatokat másolja a for
 
 ![Szakaszos másolás](media/copy-activity-performance/staged-copy.png)
 
-Ha átmeneti tároló használatával aktiválja az adatmozgást, megadhatja, hogy az adatok tömörítése a forrás-adattárból egy köztes vagy átmeneti adattárba történő áthelyezése előtt, majd a kibontás után kibontva legyen-e, mielőtt áthelyezi az adatokat egy köztes vagy átmeneti adattárolót a fogadó adattárba.
+Ha átmeneti tároló használatával aktiválja az adatmozgást, megadhatja, hogy az adatok tömörítése a forrás-adattárból egy köztes vagy átmeneti adattárba történő áthelyezése előtt, majd a kibontott állapotba kerüljön-e, mielőtt az adatokat áthelyezi egy köztes vagy átmeneti adattárból a fogadó adattárba.
 
 Jelenleg nem másolhat adatokat két adattár között, amelyek különböző saját üzemeltetésű írási adatokon keresztül kapcsolódnak, sem szakaszos másolással, sem anélkül. Ilyen esetben konfigurálhat két explicit módon láncolt másolási tevékenységet a forrásból az átmeneti, majd az átmeneti fogadóba történő másoláshoz.
 
@@ -187,7 +189,7 @@ Az alábbiakban egy másolási tevékenység mintadefinícióját ismertetik az 
 A díjat két lépés alapján terheljük meg: a másolás időtartama és a másolás típusa alapján.
 
 * Ha egy felhőalapú másolat során használja az előkészítést, amely adatokat másol egy felhőbeli adattárból egy másik felhőbeli adattárba, mindkét szakaszban, amelyet az Azure integrációs futásidő hatalma tart, akkor a [másolási időtartam összege az 1. és a 2. lépés] x [felhőalapú másolási egységár].
-* Ha egy hibrid példány során használja az átmeneti példányt, amely adatokat másol egy helyszíni adattárból egy felhőalapú adattárba, amely egy saját üzemeltetésű integrációs futásidejű által felhatalmazott szakasz, akkor a [hibrid másolás időtartama] x [hibrid másolási egységár] + [felhőalapú másolás időtartama] x [felhőcopy egységár].
+* Ha egy hibrid példány során használja az előkészítést, amely adatokat másol egy helyszíni adattárból egy felhőalapú adattárba, amely egy saját üzemeltetésű integrációs futásidejű által felhatalmazott szakasz, akkor a [hibrid másolás időtartama] x [hibrid másolási egységára] + [felhőalapú másolási időtartam] x [felhőalapú másolási egységára] díjat számítunk fel.
 
 ## <a name="next-steps"></a>További lépések
 Lásd a többi másolási tevékenységcikkeket:

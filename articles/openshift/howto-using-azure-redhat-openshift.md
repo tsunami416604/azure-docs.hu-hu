@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro, openshift, az aro, piros kalap, cli
-ms.openlocfilehash: 9488ef593cf4ec8600dcb42ea4a2cefa4fcb1446
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: f909c5870be6e394e457ad8f44ea5a253054ffe6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998800"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398895"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4.3-as fürt létrehozása, elérése és kezelése
 
@@ -68,7 +68,19 @@ A `az aro` bővítmény lehetővé teszi az Azure Red Hat OpenShift fürtök lé
    aro                                0.3.0
    ...
    ```
-  
+
+### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat pull titkos (nem kötelező)
+
+A Red Hat lekéréses titkos lehetővé teszi, hogy a fürt hozzáférjen a Red Hat tárolónyilvántartások hoz és további tartalmakat. A lekéréses titkos kulcsot használata nem kötelező, de ajánlott.
+
+Ahhoz, hogy a pull titok:
+
+1. Nyissa meg a következőt: https://cloud.redhat.com/openshift/install/azure/aro-provisioned.
+1. Jelentkezzen be Red Hat-fiókjába, vagy hozzon létre egy új Red Hat-fiókot az üzleti e-mail címével; elfogadja a feltételeket.
+1. Válassza **a Lekéréses titok letöltése**lehetőséget.
+
+Mentse a *pull-secret.txt* fájlt biztonságos helyre; fürt létrehozásakor a fájlt fogja használni.
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Két üres alhálózatot tartalmazó virtuális hálózat létrehozása
 
 Két üres alhálózatot tartalmazó virtuális hálózat létrehozásához kövesse az alábbi lépéseket.
@@ -79,15 +91,7 @@ Két üres alhálózatot tartalmazó virtuális hálózat létrehozásához köv
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
-   PULL_SECRET="<optional-pull-secret>"
    ```
-   >[!NOTE]
-   > Az opcionális lekéréses titok lehetővé teszi, hogy a fürt hozzáférjen a Red Hat tárolójegyzékek és további tartalom eléréséhez.
-   >
-   > A lekéréses titok https://cloud.redhat.com/openshift/install/azure/installer-provisioned elérése a *Lekéréses titok másolása*gombra kattintva.
-   >
-   > Be kell jelentkeznie Red Hat-fiókjába, vagy létre kell hoznia egy új Red Hat-fiókot az üzleti e-mail címével, és el kell fogadnia a feltételeket.
- 
 
 2. Hozzon létre egy erőforráscsoportot a fürthöz.
 
@@ -143,7 +147,7 @@ az aro create \
   --worker-subnet "$CLUSTER-worker" \
   --cluster-resource-group "aro-$CLUSTER" \
   --domain "$CLUSTER" \
-  --pull-secret "$PULL_SECRET"
+  --pull-secret @pull-secret.txt
 ```
 
 >[!NOTE]

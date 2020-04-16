@@ -11,14 +11,15 @@ ms.author: abnarain
 author: nabhishek
 manager: shwang
 ms.date: 03/15/2018
-ms.openlocfilehash: 20858069b745beeaf64951c4ef23c2eb85251985
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929115"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414610"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Adatok átalakítása Jar-tevékenység futtatásával az Azure Databricks-ben
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az Azure Databricks Jar tevékenység egy [data factory folyamat](concepts-pipelines-activities.md) egy Spark Jar az Azure Databricks-fürtben fut. Ez a cikk az [adatátalakítási tevékenységek](transform-data.md) cikkre épül, amely általános áttekintést nyújt az adatok átalakításáról és a támogatott átalakítási tevékenységekről.Az Azure Databricks egy felügyelt platform az Apache Spark futtatásához.
 

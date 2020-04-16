@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742539"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408055"
 ---
 # <a name="data-warehouse-units-dwus"></a>Adattárház-egységek (DWUs-ok)
 
@@ -32,7 +32,7 @@ A szolgáltatási szint módosítása megváltoztatja a rendszer számára rende
 
 Nagyobb teljesítmény érdekében növelheti az adattárház egységek számát. A kisebb teljesítmény érdekében csökkentse az adattárház-egységeket. A tár és a számítási feladatok költségeinek számlázása külön történik, ezért az adattárházegységek számának módosítása nem befolyásolja a tárolási költségeket.
 
-Az adatraktár-egységek teljesítménye a következő számítási feladatok mérőszámain alapul:
+Az adatraktár-egységek teljesítménye az adatraktári munkaterhelési metrikákon alapul:
 
 - Milyen gyorsan képes egy szabványos SQL-készletlekérdezés nagy számú sort beszkapogatni, majd összetett összesítést végrehajtani. Ez a művelet I/O és CPU-igényes.
 - Milyen gyorsan tudja az SQL-készlet adatokat betöltése az Azure Storage Blobs vagy az Azure Data Lake. Ez a művelet hálózati és CPU-igényes.
@@ -46,21 +46,37 @@ Növekvő DMU-k:
 
 ## <a name="service-level-objective"></a>Service Level Objective
 
+A szolgáltatási szint célkitűzés (SLO) az adattárház költség- és teljesítményszintjét meghatározó méretezhetőségi beállítás. A Gen2 szervizszintjeit számítási adattárház egységekben (cDWU) mérik, például DW2000c. A Gen1 szolgáltatásszinteket DWUs-okban mérik, például DW2000-ben.
+
 A szolgáltatási szint célkitűzés (SLO) a méretezhetőségi beállítás, amely meghatározza az SQL-készlet költség- és teljesítményszintjét. A Gen2 SQL-készlet szolgáltatási szintjeit adattárházegységekben (DWU) mérik, például DW2000c.
 
-A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg az SQL-készlet szolgáltatási szintjét.
+> [!NOTE]
+> Az Azure SQL Data Warehouse Gen2 nemrégiben további méretezési képességekkel egészítettki a számítási szintek 100 cDWU-ig terjedő támogatásához. A Gen1-en jelenleg meglévő, alacsonyabb számítási szinteket igénylő adattárházak mostantól további költségek nélkül frissíthetnek a Gen2-re azokban a régiókban, amelyek jelenleg elérhetők.  Ha a régió még nem támogatott, továbbra is frissíthet egy támogatott régióra. További információt a [Frissítés a Gen2 rendszerre](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakörben talál.
+
+A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg az SQL-készlet szolgáltatási szintjét és teljesítményszintjét.
 
 ```sql
 CREATE DATABASE mySQLDW
-( EDITION = 'Datawarehouse'
+(Edition = 'Datawarehouse'
  ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
-## <a name="capacity-limits"></a>Kapacitási korlátok
+## <a name="performance-tiers-and-data-warehouse-units"></a>Teljesítményszintek és adattárházegységek
+
+Minden egyes teljesítményszint kissé eltérő mértékegységet használ az adattárházegységeikhez. Ez a különbség tükröződik a számlán, mivel a skálázási egység közvetlenül fordítja a számlázás.
+
+- A Gen1 adatraktárakat adatraktáregységekben (DWUs) mérik.
+- A Gen2 adatraktárakat számítási adattárházegységekben (cDWUs) mérik.
+
+Mind a DWUs-ok, mind a cDWUs-ok támogatják a számítási skálázást fel- vagy leskálázást, és szüneteltetik a számítást, ha nem kell használnia az adatraktárt. Ezek a műveletek mind igény szerint. A Gen2 helyi lemezalapú gyorsítótárat használ a számítási csomópontokon a teljesítmény javítása érdekében. A rendszer méretezésekor vagy szüneteltetésekor a gyorsítótár érvénytelenné válik, így az optimális teljesítmény elérése előtt szükség van a gyorsítótár felmelegedésének időszakára.  
 
 Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik egy [adatbázis-tranzakciós egység (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kvótával, amely lehetővé teszi az adattárház egységek meghatározott számát. További információt a [munkaterhelés-kezelési kapacitáskorlátok](sql-data-warehouse-service-capacity-limits.md#workload-management)című témakörben talál.
+
+## <a name="capacity-limits"></a>Kapacitási korlátok
+
+Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik egy [adatbázis-tranzakciós egység (DTU)](../../sql-database/sql-database-what-is-a-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kvótával, amely lehetővé teszi az adattárház egységek meghatározott számát. További információt a [munkaterhelés-kezelési kapacitáskorlátok](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)című témakörben talál.
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Hány adattárházegységre van szükségem
 
@@ -113,19 +129,19 @@ DWUs módosítása:
 
 2. A **Méretezés csoportban**mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
 
-3. Kattintson a **Mentés** gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
+3. Kattintson a **Save** (Mentés) gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
 
-### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-A DWUs-ok módosításához használja a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell parancsmag. A következő példa a szolgáltatásszint-célkitűzést DW1000c-re állítja a MyServer kiszolgálón üzemeltetett MySQLDW adatbázishoz.
+A DWUs-ok módosításához használja a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell parancsmag. A következő példa a szolgáltatásszint-célkitűzést DW1000-re állítja a MyServer kiszolgálón üzemeltetett MySQLDW adatbázishoz.
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-További információ: [PowerShell-parancsmagok az SQL Data Warehouse-hoz](sql-data-warehouse-reference-powershell-cmdlets.md)
+További információ: [PowerShell-parancsmagok az SQL Data Warehouse-hoz](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -152,12 +168,12 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000c
+        "requestedServiceObjectiveName": DW1000
     }
 }
 ```
 
-További REST API-példákért az [SQL Data Warehouse REST API-k című témakörben talál.](sql-data-warehouse-manage-compute-rest-api.md)
+További REST API-példákért az [SQL Data Warehouse REST API-k című témakörben talál.](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ## <a name="check-status-of-dwu-changes"></a>DWU-módosítások állapotának ellenőrzése
 
@@ -170,14 +186,13 @@ Az Azure Portalon nem ellenőrizheti az adatbázis-állapot horizontális felsk�
 A DWU-módosítások állapotának ellenőrzése:
 
 1. Csatlakozzon a logikai SQL-adatbázis-kiszolgálóhoz társított főadatbázishoz.
+2. Küldje el a következő lekérdezést az adatbázis állapotának ellenőrzéséhez.
 
-1. Küldje el a következő lekérdezést az adatbázis állapotának ellenőrzéséhez.
-
-    ```sql
-    SELECT    *
-    FROM      sys.databases
-    ;
-    ```
+```sql
+SELECT    *
+FROM      sys.databases
+;
+```
 
 1. A következő lekérdezés elküldése a művelet állapotának ellenőrzéséhez
 

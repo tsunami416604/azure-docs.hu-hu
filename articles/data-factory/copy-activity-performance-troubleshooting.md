@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421037"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414147"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Másolási tevékenység teljesítményének – problémamegoldás
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk ismerteti, hogyan háríthatja el a másolási tevékenység teljesítményével kapcsolatos problémát az Azure Data Factoryban. 
 
@@ -140,7 +142,7 @@ Ha a másolási teljesítmény nem felel meg az elvárásoknak, az Azure Integra
 
   - Tekintse meg az önüzemeltetésű infravörös kapcsolat processzor- és memóriahasználati trendjét az Azure Portalon – > az adatgyárat > áttekintő lap. Fontolja meg a [fel-/ki-é-e infravörös skálázást,](create-self-hosted-integration-runtime.md#high-availability-and-scalability) ha a CPU-használat magas vagy a rendelkezésre álló memória alacsony.
 
-  - Fogadja el az összekötő-specifikus adatok betöltése ajánlott eljárás, ha vonatkozik. Példa:
+  - Fogadja el az összekötő-specifikus adatok betöltése ajánlott eljárás, ha vonatkozik. Például:
 
     - Az [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP Table](connector-sap-table.md#sap-table-as-source)és SAP [Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)adatainak másolásakor engedélyezze az adatpartíció-beállítások párhuzamos másolását.
 

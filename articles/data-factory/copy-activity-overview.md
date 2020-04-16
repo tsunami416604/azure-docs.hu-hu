@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: edb80c604951a140d21e3775eec3f1dc6d55af73
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421414"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414224"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Tevékenység másolása az Azure Data Factoryban
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Adatgyár verzióját:"]
 > * [1-es verzió](v1/data-factory-data-movement-activities.md)
 > * [Aktuális verzió](copy-activity-overview.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az Azure Data Factoryban a Másolási tevékenység segítségével adatokat másolhat a helyszínen és a felhőben található adattárak között. Az adatok másolása után más tevékenységekkel tovább alakíthatja és elemezheti azokat. A Másolás tevékenység segítségével közzéteheti az üzleti intelligencia (BI) és az alkalmazások felhasználásának átalakítási és elemzési eredményeit.
 
@@ -181,7 +183,7 @@ A [Séma- és adattípus-hozzárendelés](copy-activity-schema-and-type-mapping.
 
 ## <a name="add-additional-columns-during-copy"></a>További oszlopok hozzáadása másolás közben
 
-A forrásadattárból a fogadóba történő másolásmellett beállíthatja azt is, hogy további adatoszlopokat adjon hozzá a fogadóba másolandó adatokhoz. Példa:
+A forrásadattárból a fogadóba történő másolásmellett beállíthatja azt is, hogy további adatoszlopokat adjon hozzá a fogadóba másolandó adatokhoz. Például:
 
 - Fájlalapú forrásból történő másoláskor tárolja a relatív fájl elérési útját további oszlopként, hogy nyomon követhesse, honnan származnak az adatok.
 - Adjon hozzá egy oszlopot ADF-kifejezéssel, csatolja az ADF rendszerváltozókat, például a folyamat nevét/folyamatazonosítóját, vagy más dinamikus értéket tároljon az upstream tevékenység kimenetéből.

@@ -4,15 +4,15 @@ description: Bemutatja, hogyan használhatja az Azure Analysis Services REST API
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273721"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406285"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Aszinkron frissítés a REST API-val
 
@@ -97,7 +97,7 @@ A test hasonlíthat a következő:
 
 Paraméterek megadása nem szükséges. A program az alapértelmezett értéket alkalmazza.
 
-| Név             | Típus  | Leírás  |Alapértelmezett  |
+| Name (Név)             | Típus  | Leírás  |Alapértelmezett  |
 |------------------|-------|--------------|---------|
 | `Type`           | Felsorolás  | A végrehajtandó feldolgozás típusa. A típusok a TMSL [frissítési parancstípusokkal](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) vannak igazítva: teljes, clearValues, calculate, dataOnly, automatic és töredezettségmentesítés. A hozzáadástípusa nem támogatott.      |   Automatikus      |
 | `CommitMode`     | Felsorolás  | Azt határozza meg, hogy az objektumok véglegesítése kötegekben lesz-e, vagy csak akkor, ha befejeződnek. A módok a következők: alapértelmezett, tranzakciós, részleges Batch.  |  Tranzakciós       |
@@ -208,8 +208,8 @@ A `syncstate`következő értékek:
 
 ### <a name="to-use-the-code-sample"></a>A kódminta használata
 
-1.  Klónozza vagy töltse le a tárta. Nyissa meg a RestApiSample megoldást.
-2.  Keresse meg a vonal **ügyfelet. BaseAddress = ...** és adja meg az [alap URL-t](#base-url).
+1.    Klónozza vagy töltse le a tárta. Nyissa meg a RestApiSample megoldást.
+2.    Keresse meg a vonal **ügyfelet. BaseAddress = ...** és adja meg az [alap URL-t](#base-url).
 
 A kódminta [egyszerű szolgáltatáshitelesítést](#service-principal) használ.
 
@@ -217,9 +217,9 @@ A kódminta [egyszerű szolgáltatáshitelesítést](#service-principal) haszná
 
 [Egyszerű szolgáltatás létrehozása – Az Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) és az egyszerű szolgáltatás hozzáadása a [kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md) című témakörben további információt talál arról, hogyan állíthat be egyszerű szolgáltatást, és hogyan rendelheti hozzá a szükséges engedélyeket az Azure AS-ben. A lépések elvégzése után hajtsa végre az alábbi további lépéseket:
 
-1.  A kódmintában keresse meg a **karakterlánc-jogosultság = ...**, cserélje le a szervezet bérlői azonosítójával. **common**
-2.  Megjegyzés/megjegyzés visszavonása, hogy a ClientCredential osztály a cred objektum példányosítására szolgáljon. Győződjön \<meg arról, hogy az alkalmazásazonosító> és \<az alkalmazáskulcs> értékek biztonságos módon érhetők el, vagy használja a tanúsítványalapú hitelesítést a szolgáltatásnévi tagokhoz.
-3.  Futtassa a mintát.
+1.    A kódmintában keresse meg a **karakterlánc-jogosultság = ...**, cserélje le a szervezet bérlői azonosítójával. **common**
+2.    Megjegyzés/megjegyzés visszavonása, hogy a ClientCredential osztály a cred objektum példányosítására szolgáljon. Győződjön \<meg arról, hogy az alkalmazásazonosító> és \<az alkalmazáskulcs> értékek biztonságos módon érhetők el, vagy használja a tanúsítványalapú hitelesítést a szolgáltatásnévi tagokhoz.
+3.    Futtassa a mintát.
 
 
 ## <a name="see-also"></a>Lásd még

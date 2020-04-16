@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 706ab128af4379a56223ff65fb12f29d37b524f7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383278"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392120"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Folyamatos üzembe helyezés a virtuális gépeken az Automation State Configuration és a Chocolatey használatával
 
@@ -95,7 +95,7 @@ Keresse meg a kívánt erőforrást, és kattintson a "Üzembe helyezés az Azur
 
 Egy másik, az Azure Portalhoz nemrég hozzáadott módszer lehetővé teszi, hogy új modulokat kér, vagy frissítse a meglévő modulokat. Kattintson az Automation-fiók erőforrás, az Eszközök csempe, és végül a modulok csempe. A Galéria tallózása ikon lehetővé teszi a modulok listájának megtekintését a katalógusban, a részletek részletezését és végső soron az Automation-fiókba való importálást. Ez egy nagyszerű módja annak, hogy a modulok at up to date időről időre. És az importálási funkció ellenőrzi a függőségeket más modulokkal, hogy megbizonyosodjon arról, semmi sem kerül ki a szinkronból.
 
-Vagy ott van a kézi megközelítés. Ez a megközelítés erőforrásonként csak egyszer használatos, kivéve, ha később szeretné frissíteni. A PowerShell-integrációs modulok szerzőiről az [Azure Automation integrációs modulok készítése](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)című témakörben talál további információt.
+Van egy manuális megközelítés is, amelyet csak egyszer használnak erőforrásonként, hacsak nem szeretné később frissíteni. A PowerShell-integrációs modulok szerzőiről az [Azure Automation integrációs modulok készítése](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)című témakörben talál további információt.
 
 >[!NOTE]
 >A Windows-rendszerű számítógépekHez készült PowerShell-integrációs modul mappastruktúrája egy kicsit eltér az Azure Automation által elvárt mappastruktúrától. 
@@ -121,7 +121,7 @@ Vagy ott van a kézi megközelítés. Ez a megközelítés erőforrásonként cs
     ```azurepowershell-interactive
     New-AzAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-      -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+      -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
 A mellékelt példa megvalósítja ezeket a lépéseket a cChoco és xNetworking. 
@@ -196,18 +196,18 @@ Ezek a lépések azt eredményezik, hogy egy **isvboxconfig.isvbox** nevű új c
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>5. lépés: Csomag metaadatainak létrehozása és karbantartása
 
-A csomagtárba helyezett minden egyes csomaghoz szüksége van egy olyan nuspecra, amely leírja azt.
-Ezt a nuspec-t össze kell állítani és tárolni kell a NuGet szerveren. Ezt a folyamatot [itt](https://docs.nuget.org/create/creating-and-publishing-a-package)ismerteti . A MyGet.org nuget kiszolgálóként is használhatja. Eladják ezt a szolgáltatást, de van egy kezdő Termékváltozat, amely ingyenes. A NuGet.org utasításokat talál a saját NuGet szerver ének privát csomagokhoz való telepítéséhez.
+A csomagtárba helyezett minden egyes csomaghoz szüksége van egy Nuspec-re, amely leírja azt. Le kell fordítani és tárolni kell a NuGet szerveren. Ezt a folyamatot [itt](https://docs.nuget.org/create/creating-and-publishing-a-package)ismerteti . 
+
+A **MyGet.org** nuget kiszolgálóként is használhatja. Lehet kapni ezt a szolgáltatást, de te egy ingyenes kezdő Termékváltozat. A [NuGet-nél](https://www.nuget.org/)útmutatást találsz a saját NuGet szervered privát csomagjaidhoz való telepítéséhez.
 
 ## <a name="step-6-tie-it-all-together"></a>6. lépés: Tie az egészet együtt
 
-Minden alkalommal, amikor egy verzió sikeres en megy, és jóváhagyásra van jóváhagyva a telepítéshez, a csomag létrejön, és a nuspec és a nupkg frissül, és a NuGet kiszolgálóra kerül. A konfigurációt (a fenti 4. lépés) is frissíteni kell, hogy egyetértsen az új verziószámmal. Ezután el kell küldeni a lekéréses kiszolgálóra, és le kell fordítani.
+Minden alkalommal, amikor egy verzió sikeres en megy, és jóváhagyásra van jóváhagyva a telepítéshez, a csomag létrejön, és a nuspec és a nupkg frissül, és a NuGet kiszolgálóra kerül. A konfigurációt (4. lépés) is frissíteni kell, hogy egyetértsen az új verziószámmal. Ezután el kell küldeni a lekéréses kiszolgálóra, és le kell fordítani.
 
 Ettől a ponttól kezdve a virtuális gépek, amelyek attól függ, hogy a konfiguráció lekéri a frissítést, és telepítse azt. Ezek a frissítések egyszerűek - csak egy-két sor a PowerShell. Az Azure DevOps esetében ezek közül néhány olyan buildfeladatokba van beágyazva, amelyek egy buildben összeláncolhatók. Ez [a cikk](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) további részleteket tartalmaz. Ez a [GitHub-tár-tárlaton](https://github.com/Microsoft/vso-agent-tasks) a rendelkezésre álló buildfeladatok részleteit.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Az Azure Automation dsc áttekintése](automation-dsc-overview.md)
-* [Azure Automation DSC-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
+* [Az Azure Automation DSC áttekintése](automation-dsc-overview.md)
 * [Bevezetési gépek az Azure Automation DSC általi kezeléshez](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>További lépések

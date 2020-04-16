@@ -10,17 +10,20 @@ ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d2ea5c0b7354867086fc0cce43732f2d73c53ab
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79261137"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398966"
 ---
-# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Integrációs modul monitorozása az Azure Data Factoryben  
+# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Integrációs modul monitorozása az Azure Data Factoryben
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+  
 **Az integrációs futásidejű** az Azure Data Factory által a különböző hálózati környezetekben különböző adatintegrációs képességek biztosításához használt számítási infrastruktúra. A Data Factory háromféle integrációs futtatási lehetőséget kínál:
 
-- Azure integrációs modul
+- Azure-beli integrációs modul
 - Saját üzemeltetésű integrációs modul
 - Azure SSIS integrációs modul
 
@@ -34,7 +37,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGr
 
 A parancsmag különböző információkat ad vissza a különböző típusú integrációs futásidejű. Ez a cikk ismerteti az egyes integrációs futásidejű típusok tulajdonságait és állapotát.  
 
-## <a name="azure-integration-runtime"></a>Azure integrációs modul
+## <a name="azure-integration-runtime"></a>Azure-beli integrációs modul
 Az Azure-integrációs futásidejű számítási erőforrás teljes körűen felügyelt az Azure-ban. Az alábbi táblázat a **Get-AzDataFactoryV2IntegrationRuntime** parancs által visszaadott tulajdonságok leírását tartalmazza:
 
 ### <a name="properties"></a>Tulajdonságok
@@ -42,7 +45,7 @@ Az alábbi táblázat a parancsmag által egy Azure-integrációs futásidejű r
 
 | Tulajdonság | Leírás |
 -------- | ------------- | 
-| Név | Az Azure-integrációs futásidejű neve. |  
+| Name (Név) | Az Azure-integrációs futásidejű neve. |  
 | Állapot | Az Azure-integrációs futásidejű állapot. | 
 | Hely | Az Azure-integrációs futásidejű ek helye. Az Azure-integrációs futásidejűek helyéről a [Bevezetés az integrációs futásidejű című témakörben](concepts-integration-runtime.md)talál további információt. |
 | DataFactoryName | Annak az adatgyárnak a neve, amelyhez az Azure-integrációs futásidejű tartozik. | 
@@ -69,7 +72,7 @@ Az alábbi táblázat az egyes csomópontok figyelési tulajdonságainak **leír
 
 | Tulajdonság | Leírás | 
 | -------- | ----------- | 
-| Név | Az önkiszolgáló integrációs futásidejű és a hozzá társított csomópontok neve. A Csomópont egy helyszíni Windows-gép, amelyen telepítve van az önkiszolgáló integrációs futásidő. |  
+| Name (Név) | Az önkiszolgáló integrációs futásidejű és a hozzá társított csomópontok neve. A Csomópont egy helyszíni Windows-gép, amelyen telepítve van az önkiszolgáló integrációs futásidő. |  
 | status | A teljes saját üzemeltetésű integrációs futásidő és az egyes csomópontok állapota. Példa: Online/Offline/Limited/etc. Ezekről az állapotokról a következő szakaszban talál további információt. | 
 | Verzió | A saját üzemeltetésű integrációs futásidejű és az egyes csomópontok verziója. A saját üzemeltetésű integrációs futásidejű verziója a csoport ban lévő csomópontok többségének verziója alapján kerül meghatározásra. Ha vannak olyan csomópontok, amelyek különböző verziójú a saját üzemeltetésű integrációs futásidejű telepítő, csak a csomópontok azonos verziószámmal, mint a logikai saját üzemeltetésű integrációs futásidejű függvény megfelelően. Mások a korlátozott módban, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés sikertelen). | 
 | Igénybe vehető memória | Saját üzemeltetésű integrációs futásidejű csomóponton rendelkezésre álló memória. Ez az érték egy közel valós idejű pillanatkép. | 
@@ -177,7 +180,7 @@ Az Azure-SSIS-integrációs futásidejű az SSIS-csomagok futtatására kijelöl
 | Típus | Az Azure-SSIS-integrációs futásidejű típusa (felügyelt/saját üzemeltetett). |
 | ResourceGroupName | Az Azure Resource Group neve, amelyben az adatgyár és az Azure-SSIS-integrációs futásidő jött létre. |
 | DataFactoryName | Az Azure-adat-előállító neve. |
-| Név | Az Azure-SSIS-integrációs futásidejű neve. |
+| Name (Név) | Az Azure-SSIS-integrációs futásidejű neve. |
 | Leírás | Az Azure-SSIS-integrációs futásidejű leírása. |
 
   

@@ -8,14 +8,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: d6885e9b30cc71bda822a29574c4d574f2b020a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d629a9031f032a77efc953311a45b55996568191
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72387050"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414375"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Rögzített hosszúságú szövegfájlok feldolgozása adatfeldolgozó adatfolyamok használatával
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 A Microsoft Azure Data Factory ban a leképezési adatfolyamok használatával átalakíthatja az adatokat rögzített szélességű szövegfájlokból. A következő feladatban egy határolójel nélküli szövegfájl adatkészletét határozunk meg, majd a sorpozíció alapján beállítjuk a karakterláncalatti felosztásokat.
 

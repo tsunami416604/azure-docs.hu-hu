@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 17e474de9c221126d67cc2982ba11c6ff75e7aa3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c1d2c0e48394fbde1b595ae4b405d84f437dc5e4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668494"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392811"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Szabványos termékváltozat terheléselosztó használata az Azure Kubernetes szolgáltatásban (AKS)
 
@@ -32,7 +32,7 @@ Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, ez a cikk megköv
 
 Ez a cikk feltételezi, hogy rendelkezik egy AKS-fürt a *standard* termékváltozat Azure Load Balancer. Ha AKS-fürtre van szüksége, tekintse meg az AKS [gyorsútmutatót az Azure CLI használatával][aks-quickstart-cli] vagy az Azure Portal [használatával.][aks-quickstart-portal]
 
-Meglévő alhálózat vagy erőforráscsoport használata esetén az AKS-fürt egyszerű szolgáltatásának is szüksége van a hálózati erőforrások kezeléséhez. Általában rendelje hozzá a *hálózat közreműködői* szerepkört a szolgáltatásnévhez a delegált erőforrásokon. Az engedélyekről további információt az [AKS-hozzáférés delegálása más Azure-erőforrásokhoz című témakörben talál.][aks-sp]
+Meglévő alhálózat vagy erőforráscsoport használata esetén az AKS-fürt egyszerű szolgáltatásának is szüksége van a hálózati erőforrások kezeléséhez. Általában rendelje hozzá a *hálózat közreműködői* szerepkört a szolgáltatásnévhez a delegált erőforrásokon. Egyszerű szolgáltatás helyett használhatja a rendszer hez rendelt felügyelt identitás engedélyeket is használhatja. További információ: [Felügyelt identitások használata.](use-managed-identity.md) Az engedélyekről további információt az [AKS-hozzáférés delegálása más Azure-erőforrásokhoz című témakörben talál.][aks-sp]
 
 ### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Áttérés egyszerű termékváltozatterhelés-elosztóról szabványos termékváltozatra
 
@@ -189,7 +189,7 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 A példakimenet a *AllocatedOutboundPorts* és az *IdleTimeoutInMinutes*alapértelmezett értékét jeleníti meg. A 2-es érték a *hozzárendeltkimenő portok* esetében beállítja az automatikus hozzárendelést használó kimenő portok számát a háttérkészlet mérete alapján. Ha például a fürt 50 vagy kevesebb csomót foglal el, minden csomóponthoz 1024 port van lefoglalva.
 
-Fontolja meg a *lefoglaltOutboundPorts* vagy *az IdleTimeoutInMinutes* beállításának módosítását, ha a fenti alapértelmezett konfiguráció alapján az SNAT-kimerültség várható. Minden további IP-cím 64 000 további portot tesz lehetővé a leosztáshoz, azonban az Azure Standard Load Balancer nem növeli automatikusan a csomópontonkénti portokat, ha több IP-címet ad hozzá. Ezeket az értékeket módosíthatja a *terheléselosztó kimenő portok* és a *terheléselosztó-üresjárati időtúllépésre* paraméterek beállításával. Példa:
+Fontolja meg a *lefoglaltOutboundPorts* vagy *az IdleTimeoutInMinutes* beállításának módosítását, ha a fenti alapértelmezett konfiguráció alapján az SNAT-kimerültség várható. Minden további IP-cím 64 000 további portot tesz lehetővé a leosztáshoz, azonban az Azure Standard Load Balancer nem növeli automatikusan a csomópontonkénti portokat, ha több IP-címet ad hozzá. Ezeket az értékeket módosíthatja a *terheléselosztó kimenő portok* és a *terheléselosztó-üresjárati időtúllépésre* paraméterek beállításával. Például:
 
 ```azurecli-interactive
 az aks update \
@@ -202,7 +202,7 @@ az aks update \
 > [!IMPORTANT]
 > A kapcsolati és méretezési problémák elkerülése érdekében ki kell [számítania a szükséges kvótát a][calculate-required-quota] *lefoglaltkimenőportok* testreszabása előtt. A *lefoglaltKimenőportokhoz* megadott értéknek szintén 8 többszörösének kell lennie.
 
-Fürt létrehozásakor használhatja a *terheléselosztó kimenő portokat* és a *terheléselosztó-üresjárati időtúlterhelési* paramétereket is, de meg kell adnia a *terheléselosztó által kezelt-kimenő ip-szám,* *a terheléselosztó-kimenő ips,* vagy *a terhelés-elosztó-kimenő-ip-előtagok* at is.  Példa:
+Fürt létrehozásakor használhatja a *terheléselosztó kimenő portokat* és a *terheléselosztó-üresjárati időtúlterhelési* paramétereket is, de meg kell adnia a *terheléselosztó által kezelt-kimenő ip-szám,* *a terheléselosztó-kimenő ips,* vagy *a terhelés-elosztó-kimenő-ip-előtagok* at is.  Például:
 
 ```azurecli-interactive
 az aks create \

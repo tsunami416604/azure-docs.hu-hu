@@ -7,22 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053581"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403470"
 ---
 # <a name="what-is-the-azure-face-service"></a>Mi az Azure Face szolgáltatás?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Az Azure Cognitive Services Face szolgáltatás algoritmusokat biztosít, amelyek a képeken lévő emberi arcok észlelésére, felismerésére és elemzésére szolgálnak. Az emberi arc információk feldolgozásának képessége számos különböző szoftveres forgatókönyvben fontos. Példa: biztonság, természetes felhasználói felület, képtartalom-elemzés és -kezelés, mobilalkalmazások és robotika.
+Az Azure Cognitive Services Face szolgáltatás olyan algoritmusokat biztosít, amelyek észlelik, felismerik és elemzik a képekemberi arcát. Az emberi arc információk feldolgozásának képessége számos különböző szoftveres forgatókönyvben fontos. Példa forgatókönyvek közé tartozik a biztonság, a természetes felhasználói felület, a képtartalom-elemzés és -kezelés, a mobilalkalmazások és a robotika.
 
-A Face szolgáltatás számos különböző funkciót biztosít. Az egyes függvényeket a következő szakaszok ismertetik. Olvasson tovább, hogy többet tudjon meg róluk.
+A Face szolgáltatás számos különböző funkciót biztosít, amelyek mindegyike a következő szakaszokban található.
 
 ## <a name="face-detection"></a>Arcfelismerés
 
@@ -69,7 +69,7 @@ Az adatbázis létrehozása és betanítása után egy új észlelt arccal azono
 
 A személyek azonosításáról további információt az [Arcfelismerési](concepts/face-recognition.md) útmutatóban vagy az [API azonosítása hivatkozási](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) dokumentációban talál.
 
-## <a name="use-containers"></a>Tárolók használata
+## <a name="containers"></a>Containers
 
 [A Face-tároló segítségével](face-how-to-install-containers.md) észlelheti, felismerheti és azonosíthatja az arcokat egy szabványosított Docker-tároló, amely közelebb van az adatokhoz.
 

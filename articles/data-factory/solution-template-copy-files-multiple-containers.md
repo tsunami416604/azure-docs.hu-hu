@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 383b70bbb02e7a200c7ec0a994f7cf11e9b9520e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439752"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414822"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Fájlok másolása több tárolóból az Azure Data Factory segítségével
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk egy megoldássablont ismertet, amelyekkel fájlokat másolhat több tárolóból a fájltárolók között. Például használhatja a data lake áttelepítésére a AWS S3 az Azure Data Lake Store. Vagy használhatja a sablont, hogy replikáljon mindent az egyik Azure Blob-tárfiókból a másikba.
 

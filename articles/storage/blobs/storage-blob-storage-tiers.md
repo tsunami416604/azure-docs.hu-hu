@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255508"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393701"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek
 
@@ -141,7 +141,7 @@ Ebben a szakaszban a következő forgatókönyvek az Azure Portal és a PowerShe
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2- vagy Blob Storage-fiók alapértelmezett hozzáférési szintjének módosítása
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Az Azure Portalon keresse meg és válassza az **Összes erőforrás lehetőséget.**
 
@@ -155,7 +155,7 @@ Ebben a szakaszban a következő forgatókönyvek az Azure Portal és a PowerShe
 
 ![Tárfiók-szint módosítása](media/storage-tiers/account-tier.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 A következő PowerShell-parancsfájl segítségével módosíthatja a fiókréteget. A `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a tárfiók nevével. 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -169,7 +169,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Blob rétegének módosítása GPv2- vagy Blob-tárfiókban
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Az Azure Portalon keresse meg és válassza az **Összes erőforrás lehetőséget.**
 
@@ -185,7 +185,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![Tárfiók-szint módosítása](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 A következő PowerShell-parancsfájl a blobszint módosításához használható. A `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a tárfiók nevével. A `$containerName` változót inicializálni kell a tároló nevével. A `$blobName` változót inicializálni kell a blob nevével. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
@@ -199,7 +199,7 @@ $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountN
 $ctx = $storageAccount.Context
 
 #Select the blob from a container
-$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 
 #Change the blob’s access tier to archive
 $blob.ICloudBlob.SetStandardBlobTier("Archive")
@@ -234,7 +234,7 @@ Igen. A fiók szintjén beállított **Access Tier** attribútum az alapértelme
 
 **Módosíthatom a Blob- vagy GPv2-tárfiókom alapértelmezett hozzáférési szintjét?**
 
-Igen, módosíthatja az alapértelmezett fiókréteget az **Access tier** attribútum beállításával a tárfiókban. A fiókszint módosítása a fiókban tárolt összes olyan objektumra vonatkozik, amely nem rendelkezik explicit szintkészlettel (például **Gyakori elérés (kikövetkeztetett)** vagy **Ritka elérés (kikövetkeztetett)**). A fiókszint gyakori elérésűről a ritka elérésűre való váltása írási műveleteket (10 000-re) von maga után az összes olyan blob esetében, amelyben csak a GPv2-fiókokban nincs beállított szint, és a ritka elérésűről a gyakori elérésűre való váltás olvasási műveleteket (10 000-re) és a Blob-tárolóban lévő összes blob (GB-onként) adatlekérési (GB-onkénti) díját is kivonják. és GPv2-fiókok.
+Igen, módosíthatja az alapértelmezett fiókréteget az **Access tier** attribútum beállításával a tárfiókban. A fiókszint módosítása a fiókban tárolt összes olyan objektumra vonatkozik, amely nem rendelkezik explicit szintkészlettel (például **Gyakori elérés (kikövetkeztetett)** vagy **Ritka elérés (kikövetkeztetett)**). A fiókszint gyakori elérésűről a ritka elérésűre való váltása írási műveleteket (10 000-re) von maga után a Blob-tárban és a GPv2-fiókokban beállított szint nélküli összes blobesetében, és a ritka elérésűről a gyakori elérésűre való váltás olvasási műveleteket (10 000 főre) és adatlekérési (GB-onkénti) díjakat von maga után a Blob-tárban és a GPv2-fiókokban lévő összes blobesetében.
 
 **Beállíthatom a fiók alapértelmezett hozzáférési szintjét archív szintre?**
 
@@ -279,7 +279,7 @@ Az adattárolás és az egyéb korlátok a fiók szintjén vannak beállítva, n
 Kiértékelheti a forró, hűvösebb és archiválási rendszereket a GPv2- és blobtárfiókokban
 
 - [A gyakori és ritka elérésű, valamint az archív tárolási szint rendelkezésre állásának ellenőrzése régiónként](https://azure.microsoft.com/regions/#services)
-- [Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)
+- [Az Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)
 - [Ismerje meg a blobadatok újrahidratálását az archív rétegből](storage-blob-rehydration.md)
 - [Annak meghatározása, hogy a prémium teljesítmény előnyös lenne-e az alkalmazás számára](storage-blob-performance-tiers.md)
 - [Aktuális tárfiókjai használatának értékelése az Azure Storage mérőszámainak engedélyezésével](../common/storage-enable-and-view-metrics.md)

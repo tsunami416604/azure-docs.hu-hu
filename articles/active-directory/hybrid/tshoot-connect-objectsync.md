@@ -15,12 +15,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e56d4d94e38e5095ef2223d0cc2875cbf1dcd46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64919120"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407024"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Objektumszinkronizálás hibaelhárítása Azure AD Connect-szinkronizálással
 Ez a cikk az objektum-szinkronizálással kapcsolatos problémák hibaelhárítási lépéseit ismerteti a hibaelhárítási feladat használatával. Ha meg szeretné tudni, hogyan működik a hibaelhárítás az Azure Active Directory (Azure AD) Connect szolgáltatásban, tekintse meg [ezt a rövid videót.](https://aka.ms/AADCTSVideo)
@@ -61,11 +61,6 @@ A szakasz többi része a feladat által visszaadott konkrét eredményeket isme
 Ha a UserPrincipalName (UPN)/Alternate Login Iutófix nincs ellenőrizve az Azure AD-bérlővel, akkor az Azure Active Directory lecseréli az UPN-utótagokat az alapértelmezett "onmicrosoft.com" tartománynévre.
 
 ![Az Azure AD felváltja az UPN-t](media/tshoot-connect-objectsync/objsynch2.png)
-
-### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>UPN-utótag módosítása egyik összevont tartományról egy másik összevont tartományra
-Az Azure Active Directory nem teszi lehetővé a UserPrincipalName (UPN)/Alternate Login ID utótag szinkronizálását egyik összevont tartományról egy másik összevont tartományra. Ez az Azure AD-bérlővel ellenőrzött és a hitelesítési típust összevontként rendelkező tartományokra vonatkozik.
-
-![Nincs upn-szinkronizálás egyik összevont tartományból a másikba](media/tshoot-connect-objectsync/objsynch3.png) 
 
 ### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Az Azure AD-bérlődirSync szolgáltatása "SyncUpnForManagedUsers" le van tiltva
 Ha az Azure AD-bérlődirSync szolgáltatás "SyncUpnForManagedUsers" le van tiltva, az Azure Active Directory nem engedélyezi a szinkronizálási frissítéseket UserPrincipalName/alternatív bejelentkezési azonosító felügyelt hitelesítéssel rendelkező licenccel rendelkező felhasználói fiókok.

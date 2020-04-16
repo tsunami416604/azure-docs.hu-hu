@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cb9dadc107c6907f1ccb28a876270e577f10395
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d60f1101fc858e9dcaa22162be97417544e13693
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74977301"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405046"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Rövid útmutató: Miniatűr létrehozása a Computer Vision REST API és a cURL használatával
 
@@ -28,23 +28,6 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 - Rendelkeznie kell a [cURL-lel](https://curl.haxx.se/windows).
 - Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Ingyenes próbakulcsot a [Cognitive Services kipróbálásával](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)szerezheti be. Vagy kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című részben található utasításokat, hogy előiratkozzon a Computer Vision szolgáltatásra, és bekésezse a kulcsot.
-
-## <a name="get-thumbnail-request"></a>Miniatűrbeszerzési kérés
-
-A [Miniatűrök beszerezése módszerrel](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)létrehozhat egy kép miniatűrjét.
-
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
-
-1. Másolja az alábbi kódot egy szerkesztőbe.
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. A `<File>` helyére írja be a miniatűr mentési útvonalát és fájlnevét.
-1. Ha szükséges, változtassa meg a kérés URL-címét (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`) arra a címre, ahonnan beszerezte az előfizetési kulcsot.
-1. Az elemezni kívánt képet (`{\"url\":\"...`) is módosíthatja.
-1. Nyisson meg egy parancssorablakot egy számítógépen, amelyen a cURL telepítve van.
-1. Másolja be a kódot, és futtassa a parancsot.
-
->[!NOTE]
->A REST-hívásban ugyanazt a helyet kell használnia, ahonnan az előfizetési kulcsot beszerezte. Ha például a westus régióból szerezte be az előfizetési kulcsot, cserélje le az alábbi URL-címben látható „westcentralus” elemet a „westus” elemre.
 
 ## <a name="create-and-run-the-sample-command"></a>A mintaparancs létrehozása és futtatása
 

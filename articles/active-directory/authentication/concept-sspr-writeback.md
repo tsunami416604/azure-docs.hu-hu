@@ -1,67 +1,43 @@
 ---
-title: Helyszíni jelszó-visszaírási integráció az Azure AD SSPR-rel – Azure Active Directory
-description: Felhőbeli jelszavak visszaírása a helyszíni AD-infrastruktúrába
+title: Helyszíni jelszó-visszaírás önkiszolgáló jelszó-visszaállítással – Azure Active Directory
+description: Megtudhatja, hogy az Azure Active Directoryban hogyan lehet jelszómódosítási vagy -visszaállítási eseményeket visszaírni egy helyszíni címtárkörnyezetbe
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 04/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fe58ae95c8d9c6b93c7e92e093541af009781ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 787c15c11c995c7eb30662131302658175c7f877
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454431"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393017"
 ---
-# <a name="what-is-password-writeback"></a>Mi az a jelszó-visszaírás?
+# <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Hogyan működik az önkiszolgáló jelszó-visszaállítási visszaírás az Azure Active Directoryban?
 
-Miután a felhő-alapú jelszó-visszaállítási segédprogram nagy, de a legtöbb vállalat még mindig van egy helyszíni könyvtár, ahol a felhasználók léteznek. Hogyan támogatja a Microsoft, hogy a hagyományos helyszíni Active Directory (AD) szinkronban maradjon a felhőben végrehajtott jelszómódosításokkal? A jelszó-visszaírás az [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) szolgáltatással engedélyezett szolgáltatás, amely lehetővé teszi a felhőbeli jelszómódosítások valós idejű visszaírását egy meglévő helyszíni címtárba.
+Az Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) lehetővé teszi a felhasználók számára, hogy alaphelyzetbe állítják jelszavukat a felhőben, de a legtöbb vállalat rendelkezik egy helyszíni Active Directory tartományi szolgáltatások (AD DS) környezettel is, ahol a felhasználók léteznek. A jelszó-visszaírás az [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) szolgáltatással engedélyezett szolgáltatás, amely lehetővé teszi a felhőbeli jelszómódosítások valós idejű visszaírását egy meglévő helyszíni címtárba. Ebben a konfigurációban, amikor a felhasználók módosítják vagy alaphelyzetbe állítják jelszavukat az SSPR használatával a felhőben, a frissített jelszavakat is visszaírt a helyszíni AD DS környezetbe
 
-A jelszóvisszaírás t a következő környezetekben támogatja:
+A jelszóvisszaírás a következő hibrid identitásmodelleket használó környezetekben támogatott:
 
-* [Active Directory összevonási szolgáltatások](../hybrid/how-to-connect-fed-management.md)
 * [Jelszókivonat szinkronizálása](../hybrid/how-to-connect-password-hash-synchronization.md)
 * [Átmenő hitelesítés](../hybrid/how-to-connect-pta.md)
+* [Active Directory összevonási szolgáltatások](../hybrid/how-to-connect-fed-management.md)
 
-> [!WARNING]
-> A jelszó-visszaírás nem fog működni az Azure AD Connect 1.0.8641.0-s és újabb verzióit használó ügyfelek számára, ha az [Azure Access Control szolgáltatás (ACS) 2018.](../azuread-dev/active-directory-acs-migration.md) Az Azure AD Connect 1.0.8641.0-s és újabb verziói már nem engedélyezik a jelszó-visszaírást, mert az adott funkcióhoz az ACS-től függenek.
->
-> A szolgáltatás zavarainak elkerülése érdekében frissítsen az Azure AD Connect egy korábbi verziójáról egy újabb verzióra, olvassa el az [Azure AD Connect: Frissítés egy korábbi verzióról a legújabbverzióra című](../hybrid/how-to-upgrade-previous-version.md) cikket.
->
+A jelszóvisszaírás a következő szolgáltatásokat nyújtja:
 
-A jelszóvisszaírás a következőket biztosítja:
-
-* **Helyszíni Active Directory-jelszóházirendek kényszerítése**: Amikor a felhasználó alaphelyzetbe állítja a jelszavát, ellenőrzi, hogy megfelel-e a helyszíni Active Directory-házirendnek, mielőtt véglegesítené azt a címtárban. Ez az ellenőrzés magában foglalja az előzmények, az összetettség, az életkor, a jelszószűrők és a helyi Active Directoryban megadott egyéb jelszókorlátozások ellenőrzését.
+* **Helyszíni Active Directory tartományi szolgáltatások (AD DS) jelszóházirendek kényszerítése**: Amikor egy felhasználó alaphelyzetbe állítja a jelszavát, ellenőrzi, hogy megfelel-e a helyszíni Active Directory tartományi szolgáltatások házirendjének, mielőtt véglegesíti azt a címtárban. Ez az ellenőrzés magában foglalja az előzmények, az összetettség, az életkor, a jelszószűrők és az AD DS-ben megadott egyéb jelszókorlátozások ellenőrzését.
 * **Nulla késleltetésű visszajelzés:** A jelszóvisszaírás szinkron művelet. A felhasználók azonnal értesítést kapnak, ha jelszavuk nem felel meg a házirendnek, vagy bármilyen okból nem állíthatók alaphelyzetbe vagy módosíthatók.
-* **Támogatja a jelszómódosításokat a hozzáférési panelről és az Office 365-ből:** Ha összevont vagy jelszókivonatos szinkronizált felhasználók módosítják lejárt vagy nem lejárt jelszavukat, ezek a jelszavak visszakerülnek a helyi Active Directory-környezetbe.
-* **Támogatja a jelszó-visszaírás, amikor egy rendszergazda alaphelyzetbe állítja őket az Azure Portalon:** Amikor egy rendszergazda alaphelyzetbe állítja a felhasználó jelszavát az [Azure Portalon,](https://portal.azure.com)ha a felhasználó összevont vagy jelszókivonat szinkronizálva, a jelszó visszaírása a helyszíni. Ez a funkció jelenleg nem támogatott az Office felügyeleti portálon.
+* **Támogatja a jelszómódosításokat a hozzáférési panelről és az Office 365-ből:** Ha összevont vagy jelszókivonatos szinkronizált felhasználók módosítják lejárt vagy nem lejárt jelszavukat, a rendszer visszaírja ezeket a jelszavakat az Active Árkok ds-be.
+* **Támogatja a jelszó-visszaírás, amikor egy rendszergazda alaphelyzetbe állítja őket az Azure Portalon:** Ha egy rendszergazda alaphelyzetbe állítja a felhasználó jelszavát az [Azure Portalon,](https://portal.azure.com)ha a felhasználó összevont vagy jelszókivonat szinkronizálva, a jelszó visszaírása a helyszíni. Ez a funkció jelenleg nem támogatott az Office felügyeleti portálon.
 * **Nem igényel bejövő tűzfalszabályokat:** A jelszó-visszaírás az Azure Service Bus-továbbítót használja alapul szolgáló kommunikációs csatornaként. Minden kommunikáció a 443-as porton keresztül történik.
 
 > [!NOTE]
-> A helyszíni AD-ben a védett csoportokon belül létező rendszergazdai fiókok jelszó-visszaírással használhatók. A rendszergazdák módosíthatják jelszavukat a felhőben, de nem használhatják a jelszó-visszaállítást az elfelejtett jelszó visszaállításához. A védett csoportokról további információt a Védett fiókok és csoportok az Active Directoryban című [témakörben talál.](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)
-
-## <a name="licensing-requirements-for-password-writeback"></a>A jelszó-visszaírás licencelési követelményei
-
-**Az önkiszolgáló jelszó-visszaállítási/-módosítási/feloldási szolgáltatás a helyszíni visszaírással az Azure AD prémium funkciója.** A licencelésről az [Azure Active Directory díjszabási webhelyén talál](https://azure.microsoft.com/pricing/details/active-directory/)további információt.
-
-A jelszó-visszaírás használatához rendelkeznie kell az alábbi licencek egyikével a bérlőhöz:
-
-* Prémium szintű Azure AD P1
-* Prémium szintű Azure AD P2
-* Vállalati mobilitás + E3 vagy A3 biztonság
-* Vállalati mobilitás + E5 vagy A5 biztonság
-* Microsoft 365 E3 vagy A3
-* Microsoft 365 E5 vagy A5
-* Microsoft 365 F1
-* Microsoft 365 Business
-
-> [!WARNING]
-> Az önálló Office 365-licencelési csomagok *nem támogatják az "Önkiszolgáló jelszó-visszaállítást/-módosítást/feloldást helyszíni visszaírással", és megkövetelik,* hogy rendelkezik az előző tervek egyikével ehhez a funkcióhoz.
+> A helyszíni AD-ben a védett csoportokon belül létező rendszergazdai fiókok jelszó-visszaírással használhatók. A rendszergazdák módosíthatják jelszavukat a felhőben, de a jelszó-visszaállítással nem állíthatják alaphelyzetbe az elfelejtett jelszót. A védett csoportokról további információt a Védett fiókok és csoportok az Active Directoryban című [témakörben talál.](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)
 
 ## <a name="how-password-writeback-works"></a>A jelszóvisszaíró működése
 
@@ -75,30 +51,31 @@ Amikor egy összevont vagy jelszókivonatos szinkronizált felhasználó megpró
 1. Amikor a felhasználó a **Küldés**lehetőséget választja, az egyszerű szöveges jelszó a visszaírási beállítási folyamat során létrehozott szimmetrikus kulccsal lesz titkosítva.
 1. A titkosított jelszó szerepel a hasznos adat, amely egy HTTPS-csatornán keresztül küldi el a bérlő-specifikus szolgáltatásbusz-továbbító (amely be van állítva az Ön számára a visszaírási telepítési folyamat során). Ezt a továbbítót egy véletlenszerűen generált jelszó védi, amelyet csak a helyszíni telepítés tud.
 1. Miután az üzenet elérte a szolgáltatásbuszt, a jelszó-visszaállítási végpont automatikusan felébred, és látja, hogy egy alaphelyzetbe állítási kérelem függőben van.
-1. A szolgáltatás ezután megkeresi a felhasználót a felhőhorgony attribútum használatával. A sikeres keresl:
+1. A szolgáltatás ezután megkeresi a felhasználót a felhőhorgony attribútum használatával. Ahhoz, hogy ez a kérdés sikeres legyen, a következő feltételeknek kell teljesülniük:
 
    * A felhasználói objektumnak léteznie kell az Active Directory összekötő térben.
    * A felhasználói objektumot a megfelelő metaverzum (MV) objektumhoz kell kapcsolni.
    * A felhasználói objektumot csatolni kell a megfelelő Azure Active Directory-összekötő objektumhoz.
    * Az Active Directory-összekötő objektumból az MV-hez való `Microsoft.InfromADUserAccountEnabled.xxx` kapcsolódásnak rendelkeznie kell a kapcsolaton a szinkronizálási szabállyal.
-   
+
    Amikor a hívás érkezik a felhőből, a szinkronizálási motor a **cloudAnchor** attribútum ot használja az Azure Active Directory-összekötő űrobjektum. Ezután követi a hivatkozást vissza az MV-objektum, majd követi a kapcsolatot vissza az Active Directory objektumot. Mivel ugyanahhoz a felhasználóhoz több Active Directory-objektum (több erdő) `Microsoft.InfromADUserAccountEnabled.xxx` is létezhet, a szinkronizálási motor a hivatkozásra támaszkodva a megfelelőt választja ki.
 
 1. Miután megtalálta a felhasználói fiókot, a rendszer megkísérli a jelszó visszaállítását közvetlenül a megfelelő Active Directory erdőben.
 1. Ha a jelszókészlet sikeres, a felhasználó nak azt a felhasználó nak kell mondania, hogy a jelszó megváltozott.
-   > [!NOTE]
-   > Ha a felhasználó jelszókivonata jelszókivonat-szinkronizálással szinkronizálódik az Azure AD-vel, akkor fennáll annak az esélye, hogy a helyszíni jelszóházirend gyengébb, mint a felhőjelszó-házirend. Ebben az esetben a helyszíni házirend kényszerítve. Ez a szabályzat biztosítja, hogy a helyszíni szabályzat a felhőben, függetlenül attól, hogy jelszókivonat-szinkronizálás vagy összevonás i használatával egyszeri bejelentkezés.
 
-1. Ha a jelszókészlet műveletsikertelen, egy hiba miatt a felhasználó újra próbálkozik. A művelet a következő okból hibásulthat meg:
+   > [!NOTE]
+   > Ha a felhasználó jelszókivonata jelszókivonat-szinkronizálással szinkronizálódik az Azure AD-vel, akkor fennáll annak az esélye, hogy a helyszíni jelszóházirend gyengébb, mint a felhőjelszó-szabályzat. Ebben az esetben a helyszíni házirend kényszerítve. Ez a szabályzat biztosítja, hogy a helyszíni szabályzat a felhőben, függetlenül attól, hogy jelszókivonat-szinkronizálás vagy összevonás i használatával egyszeri bejelentkezés.
+
+1. Ha a jelszókészlet műveletsikertelen, egy hiba miatt a felhasználó újra próbálkozik. A művelet a következő okok miatt sikertelen lehet:
     * A szolgáltatás nem volt.
-    * A kiválasztott jelszó nem felelt meg a szervezet házirendjének.
+    * A kiválasztott jelszó nem felel meg a szervezet irányelveinek.
     * Nem található a felhasználó a helyi Active Directoryban.
 
-      A hibaüzenetek útmutatást nyújtanak a felhasználóknak, hogy rendszergazdai beavatkozás nélkül kísérelhessék meg a probléma megoldását.
+   A hibaüzenetek útmutatást nyújtanak a felhasználóknak, hogy rendszergazdai beavatkozás nélkül kísérelhessék meg a probléma megoldását.
 
 ## <a name="password-writeback-security"></a>Jelszóvisszaírás biztonsága
 
-A jelszóvisszaírás rendkívül biztonságos szolgáltatás. Az adatok védelmének biztosítása érdekében a négyszintű biztonsági modell az alábbiak szerint engedélyezve van:
+A jelszóvisszaírás rendkívül biztonságos szolgáltatás. Az adatok védelme érdekében a négyszintű biztonsági modell az alábbiak szerint engedélyezve van:
 
 * **Bérlő-specifikus szolgáltatás-busz relé**
    * A szolgáltatás beállításakor egy bérlő-specifikus szolgáltatásbusz-továbbító van beállítva, amely et egy véletlenszerűen generált erős jelszó véd, amelyhez a Microsoft soha nem fér hozzá.
@@ -106,7 +83,7 @@ A jelszóvisszaírás rendkívül biztonságos szolgáltatás. Az adatok védelm
    * A szolgáltatásbusz-továbbító létrehozása után létrejön egy erős szimmetrikus kulcs, amely a jelszó titkosítására szolgál, ahogy az a vezetéken keresztül érkezik. Ez a kulcs csak a vállalat titkos tárolójában él a felhőben, amely erősen zárolva van és naplózva van, csakúgy, mint bármely más jelszó a címtárban.
 * **Iparági szabvány szállítási réteg biztonsága (TLS)**
    1. Amikor jelszó-visszaállítási vagy -módosítási művelet történik a felhőben, az egyszerű szöveges jelszó titkosítva lesz a nyilvános kulccsal.
-   1. A titkosított jelszó egy HTTPS-üzenetbe kerül, amelyet a microsofttls/Ssl-tanúsítványokkal küld el egy titkosított csatornán keresztül a szolgáltatásbusz-továbbítónak.
+   1. A titkosított jelszó egy HTTPS-üzenetbe kerül, amelyet egy titkosított csatornán keresztül küld a service bus relay microsoft TLS/SSL tanúsítványai segítségével.
    1. Miután az üzenet megérkezik a szolgáltatásbuszba, a helyszíni ügynök felébred, és hitelesíti magát a szolgáltatásbuszon a korábban létrehozott erős jelszó használatával.
    1. A helyszíni ügynök felveszi a titkosított üzenetet, és visszafejti azt a személyes kulcs használatával.
    1. A helyszíni ügynök megpróbálja beállítani a jelszót az AD DS SetPassword API-n keresztül. Ez a lépés teszi lehetővé az Active Directory helyszíni jelszóházirendjének (például a felhő összetettségének, korának, előzményeinek és szűrőinek) a kényszerítését.
@@ -117,10 +94,10 @@ A jelszóvisszaírás rendkívül biztonságos szolgáltatás. Az adatok védelm
 
 Miután a felhasználó beküldi a jelszó-visszaállítást, az alaphelyzetbe állítási kérelem több titkosítási lépésen megy keresztül, mielőtt megérkezik a helyszíni környezetbe. Ezek a titkosítási lépések maximális megbízhatóságot és biztonságot biztosítanak a szolgáltatás ban. Ezek leírása a következő:
 
-* **1. lépés: Jelszótitkosítás 2048 bites RSA-kulccsal:** Miután a felhasználó beküldte a jelszót, amelyet vissza kell írni a helyszíni rendszerbe, maga a beküldött jelszó egy 2048 bites RSA-kulccsal van titkosítva.
-* **2. lépés: Csomagszintű titkosítás AES-GCM-mel:** A teljes csomag, a jelszó és a szükséges metaadatok az AES-GCM használatával titkosítva vannak. Ez a titkosítás megakadályozza, hogy bárki, aki közvetlen hozzáféréssel rendelkezik az alapul szolgáló ServiceBus csatornához, megtekintse vagy meghamisítsa a tartalmat.
-* **3. lépés: Minden kommunikáció TLS/SSL-en keresztül történik:** A ServiceBus-szal való minden kommunikáció SSL/TLS-csatornán történik. Ez a titkosítás védi a tartalmat a jogosulatlan harmadik felek.
-* **Automatikus kulcsváltás hathavonta:** Minden kulcs hathavonta átvált, vagy minden alkalommal, amikor a jelszó-visszaírás le van tiltva, majd újra engedélyezve van az Azure AD Connecten, a maximális szolgáltatásbiztonság és -biztonság érdekében.
+1. **Jelszótitkosítás 2048 bites RSA-kulccsal:** Miután a felhasználó beküldte a szükséges jelszót a helyszíni rendszerbe, maga a beküldött jelszó egy 2048 bites RSA-kulccsal van titkosítva.
+1. **Csomagszintű titkosítás AES-GCM-mel:** A teljes csomag, a jelszó és a szükséges metaadatok az AES-GCM használatával titkosítva vannak. Ez a titkosítás megakadályozza, hogy bárki, aki közvetlen hozzáféréssel rendelkezik az alapul szolgáló ServiceBus csatornához, megtekintse vagy meghamisítsa a tartalmat.
+1. **Minden kommunikáció TLS/SSL-en keresztül történik:** A ServiceBus-szal való minden kommunikáció SSL/TLS-csatornán történik. Ez a titkosítás védi a tartalmat a jogosulatlan harmadik felek.
+1. **Automatikus kulcsváltás hathavonta:** Minden kulcs hathavonta átvált, vagy minden alkalommal, amikor a jelszó-visszaírás le van tiltva, majd újra engedélyezve van az Azure AD Connecten, a maximális szolgáltatásbiztonság és -biztonság érdekében.
 
 ### <a name="password-writeback-bandwidth-usage"></a>Jelszóvisszaírás sávszélesség-használata
 
@@ -144,28 +121,32 @@ A korábban leírt üzenetek mérete általában 1 KB alatt van. Még extrém te
 A jelszavak at a következő helyzetekben írják vissza:
 
 * **Támogatott végfelhasználói műveletek**
-   * Bármely végfelhasználói önkiszolgáló önkéntes jelszómódosítási művelet
-   * Bármely végfelhasználói önkiszolgáló kényszerítés, jelszómódosítás, például jelszólejárat
-   * Bármely végfelhasználói önkiszolgáló jelszó-visszaállítás, amely a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com) származik
+   * Bármely végfelhasználói önkiszolgáló önkéntes jelszómódosítási művelet.
+   * A végfelhasználói önkiszolgáló kényszerítési kényszerítés módosítja a jelszóműveletet, például a jelszó lejárata.
+   * A [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com)származó végfelhasználói önkiszolgáló jelszó-visszaállítási beállítások visszaállítása.
+
 * **Támogatott rendszergazdai műveletek**
-   * Bármely rendszergazdai önkiszolgáló önkéntes jelszómódosítási művelet
-   * Bármely rendszergazdai önkiszolgáló kényszerítés módosítja a jelszóműveletet, például a jelszó lejárata
-   * A [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com) származó rendszergazdai önkiszolgáló jelszó-visszaállítási beállítások
-   * A rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása az [Azure](https://portal.azure.com) Portalról
+   * Minden rendszergazda önkiszolgáló önkéntes változás jelszó művelet.
+   * A rendszergazda imitátora módosítja a jelszóműveletet, például a jelszó lejárata.
+   * A [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com)származó rendszergazdai önkiszolgáló jelszó-visszaállítási beállítások visszaállítása .
+   * A rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása az [Azure](https://portal.azure.com)Portalról.
 
 ## <a name="unsupported-writeback-operations"></a>Nem támogatott visszaírási műveletek
 
-A jelszavak at a következő helyzetekben *nem* írják vissza:
+A jelszavakat a rendszer nem írja vissza az alábbi helyzetekben:
 
 * **Nem támogatott végfelhasználói műveletek**
-   * Bármely végfelhasználó alaphelyzetbe állítja saját jelszavát a PowerShell 1-es, 2-es verziójával vagy a Microsoft Graph API-val
+   * Bármely végfelhasználó alaphelyzetbe saját jelszavát a PowerShell 1-es, 2-es vagy a Microsoft Graph API használatával.
 * **Nem támogatott rendszergazdai műveletek**
-   * A rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a PowerShell 1-es, 2-es verziójából vagy a Microsoft Graph API-ból
-   * A rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a [Microsoft 365 felügyeleti központból](https://admin.microsoft.com)
+   * A rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a PowerShell 1-es, 2-es vagy Microsoft Graph API-jából.
+   * A rendszergazda által kezdeményezett végfelhasználói jelszó-visszaállítás a [Microsoft 365 felügyeleti központból.](https://admin.microsoft.com)
 
 > [!WARNING]
-> Használja a "Felhasználónak meg kell változtatnia a jelszót a következő bejelentkezéskor" a helyszíni Active Directory felügyeleti eszközök, például az Active Directory – felhasználók és számítógépek vagy az Active Directory felügyeleti központ az Azure AD Connect előzetes szolgáltatásaként . További információt a [Jelszó-kivonat szinkronizálásmegvalósításmegvalósítása az Azure AD Connect-szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md)című cikkben talál.
+> Használja a "Felhasználónak meg kell változtatnia a jelszót a következő bejelentkezéskor" a helyszíni Active Directory tartományi szolgáltatások felügyeleti eszközeiben, például az Active Directory – felhasználók és számítógépek vagy az Active Directory felügyeleti központ az Azure AD Connect előzetes verzióbeli szolgáltatásaként. További információ: [Jelszókivonat-szinkronizálás megvalósítása az Azure AD Connect-szinkronizálással.](../hybrid/how-to-connect-password-hash-synchronization.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Jelszó-visszaírás engedélyezése az oktatóanyag használatával: [Jelszó-visszaírás engedélyezése](tutorial-enable-writeback.md)
+Az SSPR-visszaírás első lépéseivel hajtsa végre a következő oktatóanyagot:
+
+> [!div class="nextstepaction"]
+> [Oktatóanyag: Önkiszolgáló jelszó-visszaállítás (SSPR) visszaírásának engedélyezése](tutorial-enable-writeback.md)

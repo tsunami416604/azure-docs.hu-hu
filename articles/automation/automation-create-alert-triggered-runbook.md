@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d5eb330cd6e5d02432298a5b58e84ae7d24ee7e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e8ddcaf6a5c9ab51147e540e2426ef8c4a1fdd3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383322"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392371"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Egy Azure Automation-runbook aktiválásához használjon riasztást
 
@@ -35,8 +35,8 @@ Amikor egy riasztás egy runbookot hív meg, a tényleges hívás egy HTTP POST-
 |Riasztás  |Leírás|Hasznos adatséma  |
 |---------|---------|---------|
 |[Gyakori riasztás](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|A közös riasztási séma, amely ma egységesíti a riasztási értesítések felhasználási élményét.|Gyakori riasztási hasznos adatséma|
-|[Tevékenységnapló riasztása](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítést küld, ha az Azure-tevékenységnaplóbármely új eseménye megfelel bizonyos feltételeknek. Például ha `Delete VM` egy művelet történik **a myProductionResourceGroup,** vagy ha egy új Azure Service Health esemény **aktív** állapottal jelenik meg.| [Tevékenységnapló riasztási hasznos adatsémája](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Közel valós idejű metrikariasztás](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Riasztást küld gyorsabban, mint a metrikariasztások, ha egy vagy több platformszintű metrika megfelel a megadott feltételeknek. Ha például egy virtuális gép **CPU%-ának** értéke nagyobb, mint **90**, és a Hálózati be értéke az elmúlt 5 **percben** **500 MB-nál** nagyobb.| [Közel valós idejű metrika riasztási hasznos adatséma](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[Tevékenységnapló riasztása](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítést küld, ha az Azure-tevékenységnaplóbármely új eseménye megfelel bizonyos feltételeknek. Például ha `Delete VM` egy művelet történik **a myProductionResourceGroup,** vagy ha egy új Azure Service Health esemény aktív állapottal jelenik meg.| [Tevékenységnapló riasztási hasznos adatsémája](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[Közel valós idejű metrikariasztás](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Riasztást küld gyorsabban, mint a metrikariasztások, ha egy vagy több platformszintű metrika megfelel a megadott feltételeknek. Ha például egy virtuális gép **CPU%-ának** értéke nagyobb, mint 90, és a Hálózati be értéke az elmúlt 5 **percben** 500 MB-nál nagyobb.| [Közel valós idejű metrika riasztási hasznos adatséma](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 Mivel az egyes riasztástípusok által megadott adatok eltérőek, az egyes riasztástípusok kezelése eltérő. A következő szakaszban megtudhatja, hogyan hozhat létre egy runbook ot a különböző típusú riasztások kezeléséhez.
 
@@ -44,11 +44,11 @@ Mivel az egyes riasztástípusok által megadott adatok eltérőek, az egyes ria
 
 Az Automation riasztások használatával, szüksége van egy runbook, amely rendelkezik a logika, amely kezeli a riasztási JSON-hasznos, amely átadott a runbook. A következő példa runbook kell hívni egy Azure-riasztás.
 
-Az előző szakaszban leírtak szerint minden típusú riasztás egy másik séma. A parancsfájl a webhook-adatokat a `WebhookData` runbook bemeneti paraméter egy riasztást. Ezután a parancsfájl kiértékeli a JSON hasznos adat határozza meg, hogy melyik riasztástípust használták.
+Az előző szakaszban leírtak szerint minden típusú riasztás egy másik séma. A parancsfájl a webhook-adatokat `WebhookData` a runbook bemeneti paraméteréből veszi át. Ezután a parancsfájl kiértékeli a JSON hasznos adat határozza meg, hogy melyik riasztástípust használja.
 
-Ez a példa egy virtuális gép riasztását használja. Lekéri a virtuális gép adatait a hasznos adat, majd használja ezt az információt a virtuális gép leállításához. A kapcsolatot be kell állítani az Automation-fiókban, ahol a runbook fut. Amikor riasztások használatával runbookok, fontos, hogy ellenőrizze a riasztás állapotát a runbook, amely aktiválódik. A runbook minden alkalommal aktiválódik, amikor a riasztás állapota megváltozik. A riasztások nak több állapota van, `Activated` `Resolved`a két leggyakoribb állapot és a . Ellenőrizze ezt az állapotot a runbook logikájában, hogy a runbook nem fut-e egynél többször. Ebben a cikkben például `Activated` bemutatja, hogyan kereshet csak riasztásokat.
+Ez a példa egy virtuális gép riasztását használja. Lekéri a virtuális gép adatait a hasznos adat, majd használja ezt az információt a virtuális gép leállításához. A kapcsolatot be kell állítani az Automation-fiókban, ahol a runbook fut. Amikor riasztások használatával runbookok, fontos, hogy ellenőrizze a riasztásállapotát a runbook, amely aktiválódik. A runbook minden alkalommal aktiválódik, amikor a riasztás állapota megváltozik. A riasztások több állapottal rendelkeznek, a két leggyakoribb aktiválás és megoldás. Ellenőrizze, hogy a runbook-logika állapot-e, és győződjön meg arról, hogy a runbook nem fut egynél többször. Ebben a cikkben a példa bemutatja, hogyan kereshet riasztások csak aktivált állapottal.
 
-A runbook `AzureRunAsConnection` a [Futtatás másként fiók használatával](automation-create-runas-account.md) hitelesíti magát az Azure-ral a virtuális gép en végrehajtott felügyeleti művelet végrehajtásához.
+A runbook a `AzureRunAsConnection` Run As fiók a virtuális gépen végrehajtott felügyeleti művelet végrehajtásához használja a Kapcsolati eszköz [futtatása másként fiókot.](automation-create-runas-account.md)
 
 Ebben a példában hozzon létre egy Runbook nevű **Stop-AzureVmInResponsetoVMAlert.** Módosíthatja a PowerShell-parancsfájlt, és számos különböző erőforrással használhatja.
 

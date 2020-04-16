@@ -11,12 +11,12 @@ ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: edae17c2686e3b9cae3f75ad3b6a8a2354e9d3ef
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 90da0931b950fe18c079534c48693cae651e978e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745484"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411593"
 ---
 # <a name="t-sql-statements-supported-in-synapse-sql-pool"></a>A Synapse SQL-készletben támogatott T-SQL utasítások
 
@@ -42,7 +42,7 @@ A Synapse SQL-készletben támogatott T-SQL utasítások dokumentációjára mut
 * [ELJÁRÁS LÉTREHOZÁSA](/sql/t-sql/statements/create-procedure-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [SCHEMA LÉTREHOZÁSA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [STATISZTIKÁK LÉTREHOZÁSA](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [NÉZET LÉTREHOZÁSA](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [SZÁMÍTÁSI FELADATOK OSZTÁLYOZÓJÁNAK LÉTREHOZÁSA](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -65,7 +65,7 @@ A Synapse SQL-készletben támogatott T-SQL utasítások dokumentációjára mut
 
 * [Töröl](/sql/t-sql/statements/delete-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [Beszúrása](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [UPDATE](/sql/t-sql/queries/update-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [Frissítés](/sql/t-sql/queries/update-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="database-console-commands"></a>Adatbázis-konzol parancsai
 
@@ -82,7 +82,7 @@ A Synapse SQL-készletben támogatott T-SQL utasítások dokumentációjára mut
 
 ## <a name="query-statements"></a>Utasítások lekérdezése
 
-* [Válassza ki](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [A common_table_expression](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [EXCEPT és INTERSECT](/sql/t-sql/language-elements/set-operators-except-and-intersect-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [Magyarázni](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -131,4 +131,4 @@ A Synapse SQL-készletben támogatott T-SQL utasítások dokumentációjára mut
 
 ## <a name="next-steps"></a>További lépések
 
-További információt a [Synapse SQL-készlet T-SQL nyelvi elemei](sql-data-warehouse-reference-tsql-language-elements.md)és [a Rendszernézetek a Synapse SQL-készletben című témakörben talál.](sql-data-warehouse-reference-tsql-system-views.md)
+További információt a [Synapse SQL-készlet T-SQL nyelvi elemei](sql-data-warehouse-reference-tsql-language-elements.md)és [a Rendszernézetek a Synapse SQL-készletben című témakörben talál.](../sql/reference-tsql-system-views.md)

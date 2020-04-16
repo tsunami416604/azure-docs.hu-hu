@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6113759cc68d07af4c22edf03b3274d92dcbe780
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281765"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416298"
 ---
 # <a name="azure-application-marketplace-tab"></a>Az Azure alkalmazás piactere lapja
 
@@ -29,10 +29,10 @@ Az alábbi táblázat az ajánlat kirakatának létrehozásához használt beál
 |      Mező         |    Leírás    |
 |  ---------------   |  ---------------  |
 | **Cím\***        | Az ajánlat címe. Ez lesz látható jól látható a piacon. A maximális hossz 50 karakter. |
-| **Összefoglaló\***      | Az ajánlat rövid összefoglalása. A maximális hossz 100 karakter.           |
+| **Összefoglalás\***      | Az ajánlat rövid összefoglalása. A maximális hossz 100 karakter.           |
 | **Hosszú összegzés\*** | Hosszabb összefoglaló az ajánlat (bár lehet ugyanaz, mint az összefoglaló). A maximális hossz 256 karakter.           |
 | **Leírás\***  | Az ajánlat leírása. A maximális hossz 3000 karakter. Egyszerű HTML formázás megengedett, beleértve &lt;a&gt; &lt;p&gt;&gt; &lt;,&gt; &lt;em&gt;, ul , &lt;li , ol és fejléc címkéket.  |
-| **Marketing azonosító\*** | Az ajánlathoz társítani rakandó egyedi URL-cím általában tartalmazza a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú. Válasszon egy rövid, rövid, rövid marketingazonosítót a szolgáltatásához. Ezt fogja használni a piactéri URL-címek ebben az ajánlatban. Ha például a közzétevő azonosítója "contoso", és a marketingazonosítója "sampleApp", az Azure Marketplace-en az ajánlat URL-címehttps://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Marketing azonosító\*** | Az ajánlathoz társítani rakandó egyedi URL-cím általában tartalmazza a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú. Válasszon egy rövid, rövid, rövid marketingazonosítót a szolgáltatásához. Ezt fogja használni a piactéri URL-címek ebben az ajánlatban. Ha például a közzétevő azonosítója "contoso", és a marketingazonosítója "sampleApp", az Azure Marketplace-en az ajánlat URL-címe`https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  
 | **Előfizetés-azonosítók előzetes verzió\*** | Adja hozzá egy-100 előfizetés-azonosítók előnézetek. Ezek a fehérlistán szereplő előfizetések hozzáférhetnek az ajánlathoz, amíg az előzetes verzióban érhető el a közzététel után, mielőtt élesben lépne.          |
 | **Hasznos linkek**    | Opcionálisan különböző erőforrásokra mutató hivatkozásokat is megadhat az ajánlat felhasználóinak, például támogatást, dokumentációt, fórumokat stb.  Javasoljuk, hogy legalább egy hivatkozást adjon a dokumentációhoz.            |
 | **Javasolt kategóriák (max. 5)\*** | Válasszon egy-öt kategóriát. A kiválasztott kategóriák segítségével az azure-piactéren és az Azure Portalon elérhető termékkategóriákhoz rendelheti az ajánlatot. Ezek a böngészési oldalakon és a termékadatok oldalon jelennek meg. |
@@ -50,7 +50,7 @@ Az alábbi táblázat a marketingösszetevőket ismerteti.
 |      Mező         |    Leírás    |
 |  ---------------   |  ---------------  |
 | **Kicsi\***        | Kis embléma: 40x40 pixel PNG formátumban     |
-| **Közepes\***       | Közepes embléma: 90x90 képpont PNG formátumban    |
+| **Medium\***       | Közepes embléma: 90x90 képpont PNG formátumban    |
 | **Nagy\***        | Nagy logó: 115x115 képpont PNG formátumban   |
 | **Széles\***         | Széles embléma: 255x115 pixel PNG formátumban    |
 | **Hős**           | Választható hősembléma: 815x290 pixel PNG formátumban. **Megjegyzés:** A hős ikon nem törölhető a feltöltés után. |

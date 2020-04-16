@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
-ms.openlocfilehash: 524ae203a311d538431205bf8c6498de45aeb4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d64c8460f5653f28b96396025f29ea13af15c8c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280303"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416323"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Érdeklődőkezelés konfigurálása a Dynamics CRM online rendszeréhez
 
@@ -139,7 +139,7 @@ Az utolsó lépés az, hogy a felhasználó létrehozott írni az érdeklődőke
 
 ## <a name="wrap-up"></a>Letekerés
 
-Fejezze be a Dynamics CRM konfigurálását az érdeklődőkezeléshez a létrehozott fiókadatok felhőpartneri portálhoz való hozzáadásával. Példa:
+Fejezze be a Dynamics CRM konfigurálását az érdeklődőkezeléshez a létrehozott fiókadatok felhőpartneri portálhoz való hozzáadásával. Például:
 
 -   **Azure Active Directory** - **alkalmazásazonosító** (például: *23456052-aaaa-bbbb-8662-1234df56788f*), **címtárazonosító** (például: *12345678-8af1-4as f-1234-12234d01db47*), valamint **alkalmazáskulcs** (például: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*).
--   **Office 365** - **url-címe** (például: *https://contoso.crm4.dynamics.com*), **Felhasználónév** (például *contoso\@contoso.onmicrosoft.com*) és **Jelszó** (például: P *\@ssw0rd*).
+-   **Az Office 365** - **`https://contoso.crm4.dynamics.com`** **url-címe** (például: ), **felhasználónév** (példa: **`contoso\@contoso.onmicrosoft.com`**) és **jelszó** (például: *P\@ssw0rd*).

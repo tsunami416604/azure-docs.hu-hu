@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 526cc8ca002b3b6c2821eb842b0c6a7794f2cd33
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f68c58c16c4efd75941e00b859784f810915b575
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74968986"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404869"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Rövid útmutató: Távoli lemezkép elemzése a Computer Vision REST API és a Java használatával
 
-Ebben a rövid útmutatóban egy távolról tárolt lemezképet elemezhet a vizuális funkciók kinyeréséhez a Java és a Computer Vision REST API használatával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
+Ebben a rövid útmutatóban elemezhet egy távolról tárolt lemezképet, hogy kinyerje a vizuális funkciókat a Java és a Computer Vision REST API használatával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) mielőtt elkezdené.
 

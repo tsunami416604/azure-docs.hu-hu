@@ -1,27 +1,26 @@
 ---
-title: Az Azure Event Grid Service Bus eseménysémája
+title: Az Azure Service Bus eseményrács forrásaként
 description: A Service Bus-események Azure Event Griddel való szolgáltatásához megadott tulajdonságok ismertetése
 services: event-grid
 author: banisadr
-manager: darosa
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: babanisa
-ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561761"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393245"
 ---
-# <a name="azure-event-grid-event-schema-for-service-bus"></a>Azure Event Grid eseménysémája a Service Bus-hoz
+# <a name="azure-service-bus-as-an-event-grid-source"></a>Az Azure Service Bus eseményrács-forrásként
 
 Ez a cikk a Service Bus-események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
-A mintaparancsfájlok és oktatóanyagok listáját a [Service Bus eseményforrásában téssze](event-sources.md#service-bus)el.
+## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
 
-## <a name="available-event-types"></a>Elérhető eseménytípusok
+### <a name="available-event-types"></a>Elérhető eseménytípusok
 
 A Service Bus a következő eseménytípusokat bocsátja ki:
 
@@ -30,7 +29,7 @@ A Service Bus a következő eseménytípusokat bocsátja ki:
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | Akkor merül fel, ha aktív üzenetek vannak egy várólistában vagy előfizetésben, és nem figyelnek a fogadók. |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | Ha aktív üzenetek vannak a Kézbesítetlen levelek várólistájában, és nincsenek aktív figyelők. |
 
-## <a name="example-event"></a>Példa esemény
+### <a name="example-event"></a>Példa esemény
 
 A következő példa a figyelők esemény nélküli aktív üzenetek sémáját mutatja be:
 
@@ -76,7 +75,7 @@ A kézbesítetlen levelek várólistájának eseményének sémája hasonló:
 }]
 ```
 
-## <a name="event-properties"></a>Esemény tulajdonságai
+### <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény legfelső szintű adatokat rendelkezik:
 
@@ -101,6 +100,12 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | queueName (sornév) | sztring | Az aktív üzeneteket tartalmazó várólista, ha várólistára iratkozik. Érték null, ha a témakörök / előfizetések. |
 | topicName (témakör neve) | sztring | A témakör, amelyhez a Service Bus-előfizetés aktív üzeneteket tartalmaz. Null érték, ha várólistát használ. |
 | subscriptionName | sztring | A Service Bus-előfizetés aktív üzenetekkel. Null érték, ha várólistát használ. |
+
+## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
+|Cím  |Leírás  |
+|---------|---------|
+| [Oktatóanyag: Azure Service Bus az Azure Event Grid integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Az Event Grid üzeneteket küld a Service Bus témakörből a függvényalkalmazásnak és a logikai alkalmazásnak. |
+| [Az Azure Service Bus –Event Grid integráció](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | A Service Bus és az Event Grid integrálásának áttekintése. |
 
 ## <a name="next-steps"></a>További lépések
 

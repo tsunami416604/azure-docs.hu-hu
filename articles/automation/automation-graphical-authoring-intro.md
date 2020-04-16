@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 09afca7eaf385795baf9c4a3c94232622527e357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf8ced05066923c94e80628651d8983560601d69
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501054"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406054"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus szerzői jog az Azure Automationben
 
@@ -263,7 +263,7 @@ Az egyes bemeneti paramétereket a következő táblázatban szereplő tulajdons
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Név | Kötelező. A paraméter neve. A névnek egyedinek kell lennie a runbookon belül. Betűvel kell kezdődnie, és csak betűket, számokat és aláhúzásjeleket tartalmazhat. A név nem tartalmazhat szóközt. |
+| Name (Név) | Kötelező. A paraméter neve. A névnek egyedinek kell lennie a runbookon belül. Betűvel kell kezdődnie, és csak betűket, számokat és aláhúzásjeleket tartalmazhat. A név nem tartalmazhat szóközt. |
 | Leírás |Választható. A bemeneti paraméter céljának leírása. |
 | Típus | Választható. A paraméterértékhez adattípusra van felszámítva. Az Azure Portal biztosítja a megfelelő vezérlőt az adattípus minden paraméter, amikor a bemeneti kér. A támogatott paramétertípusok a következők: Karakterlánc, Int32, Int64, Decimális, Logikai, DateTime és Objektum. Ha egy adattípus nincs kijelölve, akkor az alapértelmezett érték a Karakterlánc.|
 | Kötelező | Választható. Beállítás, amely megadja, hogy meg kell-e adni egy értéket a paraméterhez. Ha úgy `yes`dönt, meg kell adni egy értéket a runbook indításakor. Ha úgy `no`dönt, a runbook indításakor nincs szükség értékre, és alapértelmezett érték is használható. A runbook nem indítható el, ha nem ad meg értéket minden olyan kötelező paraméterhez, amelyhez nincs megadva alapértelmezett érték. |
@@ -395,7 +395,7 @@ A következő `Connect-AzAccount`tevékenység , hozzáadja a hitelesített Futt
 >[!NOTE]
 >A PowerShell runbookok, `Add-AzAccount` és `Connect-AzAccount` `Add-AzureRMAccount` aliasok. Vegye figyelembe, hogy ezek az aliasok nem érhetők el a grafikus runbookok. A grafikus runbookcsak `Connect-AzAccount` önmagát használhatja.
 
-Az **APPLICATIONID**, **CERTIFICATETHUMBPRINT**és **TENANTID**paramétermezőkhöz adja meg a Mező elérési út tulajdonságának nevét, mivel a tevékenység több tulajdonsággal rendelkező objektumot ad ki. Ellenkező esetben a runbook végrehajtásakor sikertelen, miközben hitelesítést próbál végrehajtani. Ez az, amire legalább a Run As fiókkal való hitelesítéséhez szüksége van a runbook hitelesítéséhez.
+Az **APPLICATIONID**, **CERTIFICATETHUMBPRINT**és **TENANTID**paramétermezőkben adja meg a mezőelérési út tulajdonságának nevét, mivel a tevékenység több tulajdonsággal rendelkező objektumot ad ki. Ellenkező esetben a runbook végrehajtásakor sikertelen, miközben hitelesítést próbál végrehajtani. Ez az, amire legalább a Run As fiókkal való hitelesítéséhez szüksége van a runbook hitelesítéséhez.
 
 Egyes előfizetők egy Azure [AD felhasználói fiók](automation-create-aduser-account.md) használatával hoznak létre egy Automation-fiókot az Azure klasszikus üzembe helyezésének vagy az Azure Resource Manager-erőforrások kezeléséhez. Ezen előfizetők visszamenőleges kompatibilitásának fenntartása érdekében a runbookban `Add-AzureAccount` használandó hitelesítési mechanizmus a [hitelesítő adatokkal](automation-credentials.md)rendelkező parancsmag. Az eszköz egy Azure-fiókhoz hozzáféréssel rendelkező Active Directory-felhasználót jelöl.
 
@@ -441,3 +441,5 @@ Lehetősége van arra, hogy visszatérjen a runbook közzétett verziójához. E
 * A grafikus runbookok első lépései [Az Első grafikus runbook című témakörben](automation-first-runbook-graphical.md)látható.
 * Ha többet szeretne tudni a runbook-típusokról, azok előnyeiről és korlátairól, olvassa el az [Azure Automation runbook-típusok című témakört.](automation-runbook-types.md)
 * Az Automation Run As fiók használatával történő hitelesítésről az [Azure Run as account konfigurálása című témakörben](automation-sec-configure-azure-runas-account.md)tekinthető meg.
+* A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

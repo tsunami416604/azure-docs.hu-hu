@@ -1,26 +1,26 @@
 ---
-title: Azure Event Grid Machine Learning eseményséma
+title: Az Azure Machine Learning eseményrács forrásaként
 description: A Machine Learning Workspace-események hez az Azure Event Grid del biztosított tulajdonságok ismertetése
 services: event-grid
-author: jenns
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/18/2019
-ms.author: jenns
-ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79202144"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393279"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Event Grid eseménysémája az Azure Machine Learninghez
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>Az Azure Machine Learning eseményrács-forrásként
 
 Ez a cikk a gépi tanulási munkaterületi események tulajdonságait és sémáját tartalmazza. Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
-A mintaparancsfájlok és oktatóanyagok listáját az [AzureML eseményforrása](event-sources.md#azure-machine-learning)tartalmazza.
+## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
 
-## <a name="available-event-types"></a>Elérhető eseménytípusok
+### <a name="available-event-types"></a>Elérhető eseménytípusok
 
 Az Azure Machine Learning a következő eseménytípusokat bocsátja ki:
 
@@ -32,7 +32,7 @@ Az Azure Machine Learning a következő eseménytípusokat bocsátja ki:
 | Microsoft.MachineLearningServices.DatasetDriftDetected | Ha az adatkészlet-eltolódásfigyelő elsodródást észlel. |
 | Microsoft.MachineLearningServices.RunStatusChanged | Ha a futtatási állapot "sikertelen" lesz. |
 
-## <a name="the-contents-of-an-event-response"></a>Az eseményre adott válasz tartalma
+### <a name="the-contents-of-an-event-response"></a>Az eseményre adott válasz tartalma
 
 Esemény aktiválásakor az Event Grid szolgáltatás adatokat küld az adott eseményről az előfizetési végpontnak.
 
@@ -186,10 +186,7 @@ Ez a szakasz egy példát tartalmaz arra, hogy az adatok hogyan fognak kinézni 
 }]
 ```
 
-
-
-
-## <a name="event-properties"></a>Esemény tulajdonságai
+### <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény legfelső szintű adatokat rendelkezik:
 
@@ -260,6 +257,11 @@ Az adatobjektum az egyes eseménytípusokhoz a következő tulajdonságokkal ren
 | RunTagok | objektum | A befejezett futtatás címkéi. |
 | RunProperties (Futtatástulajdonságai) | objektum | A befejezett futtatás tulajdonságai. |
 | RunStatus (Futtatásállapota) | sztring | A Futtatás állapota. |
+
+## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
+| Cím | Leírás |
+| ----- | ----- |
+| [Azure Machine Learning-események felhasználása](../machine-learning/concept-event-grid-integration.md) | Az Azure Machine Learning és az Event Grid integrálásának áttekintése. |
 
 ## <a name="next-steps"></a>További lépések
 

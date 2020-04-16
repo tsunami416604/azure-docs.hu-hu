@@ -2,13 +2,13 @@
 title: Speciális alkalmazásfrissítési témakörök
 description: Ez a cikk a Service Fabric-alkalmazások frissítésével kapcsolatos néhány speciális témakört ismerteti.
 ms.topic: conceptual
-ms.date: 1/28/2020
-ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 03/11/2020
+ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422811"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414498"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>A Service Fabric alkalmazásfrissítése: Speciális témakörök
 
@@ -18,13 +18,13 @@ Ha egy frissítés részeként egy közzétett alkalmazáshoz új szolgáltatás
 
 Hasonlóképpen a szolgáltatástípusok is eltávolíthatók az alkalmazásból a frissítés részeként. A frissítés folytatása előtt azonban el kell távolítani a eltávolítandó szolgáltatástípus összes szolgáltatáspéldányát [(lásd: Remove-ServiceFabricService).](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>A kapcsolatleejtés elkerülése állapot nélküli szolgáltatás tervezett állásidejének (előzetes verzió)
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Kerülje a kapcsolateséseket az állapotmentes szolgáltatás tervezett állásidejének elkerülése
 
 A tervezett állapotmentes példány állásidők, például az alkalmazás/fürt frissítése vagy a csomópont-deaktiválás esetén a kapcsolatok megszakadhatnak a kitett végpont eltávolítása miatt a példány leállítása után, ami kényszerített kapcsolatlezárásokat eredményez.
 
 Ennek elkerülése érdekében konfigurálja a *RequestDrain* (előzetes verzió) szolgáltatást úgy, hogy egy *példány közeli késleltetési időtartamot* ad hozzá a szolgáltatáskonfigurációban, hogy lehetővé tegye a kiürítést, miközben a fürt más szolgáltatásaitól érkező kéréseket kap, és fordított proxyt használ, vagy az API feloldása értesítési modellt használ a végpontok frissítéséhez. Ez biztosítja, hogy az állapotnélküli példány által hirdetett végpontot a rendszer eltávolítja a késés megkezdése *előtt* a példány bezárása előtt. Ez a késleltetés lehetővé teszi, hogy a meglévő kérelmek kiürítése kecsesen, mielőtt a példány ténylegesen leáll. Az ügyfelek a késleltetés indításakor egy visszahívási függvény értesítik a végpont változásáról, hogy újra feloldhassák a végpontot, és elkerülhessék, hogy új kérelmeket küldjenek a leálló példánynak.
 
-### <a name="service-configuration"></a>Szolgáltatás konfigurációja
+### <a name="service-configuration"></a>Szolgáltatáskonfiguráció
 
 A késés konfigurálása többféleképpen is konfigurálható a szolgáltatási oldalon.
 

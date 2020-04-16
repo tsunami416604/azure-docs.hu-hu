@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: f14cbef2ab568962601b3a407fa979e8f982598d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 508eac08284f91821223a78cafdfee7b4c9c540b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75483010"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410883"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Azonosító-broker használata (előzetes verzió) a hitelesítő adatok kezeléséhez
 
@@ -38,7 +38,7 @@ Id Broker lehetővé teszi, hogy jelentkezzen be ESP klaszterek segítségével 
 
 Ha olyan ESP-fürtöt szeretne létrehozni, amelyen engedélyezve van az ID Broker, tegye a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Kövesse az ESP-fürt alapvető létrehozási lépéseit. További információt a [HDInsight-fürt létrehozása ESP-vel](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)című témakörben talál.
 1. Válassza **a HDInsight ID Broker engedélyezése**lehetőséget.
 
@@ -55,6 +55,14 @@ A HDInsight [IntelliJ beépülő modul](https://docs.microsoft.com/azure/hdinsig
 Az ID Broker engedélyezése után továbbra is szüksége lesz egy jelszókivonatra az Azure AD DS-ben a tartományi fiókkal rendelkező SSH-forgatókönyvekhez. Az SSH-hoz egy tartományhoz csatlakozó virtuális `kinit` géphez, vagy a parancs futtatásához meg kell adnia egy jelszót. 
 
 SSH-hitelesítés hez a kivonatnak elérhetőnek kell lennie az Azure AD DS-ben. Ha csak felügyeleti forgatókönyvekhez szeretné használni az SSH-t, létrehozhat egy csak felhőalapú fiókot, és használhatja azt az SSH-hoz a fürthöz. Más felhasználók továbbra is használhatják az Ambari vagy HDInsight eszközöket (például az IntelliJ beépülő modult) anélkül, hogy az Azure AD DS-ben elérhető jelszókivonat ot rendelkezne.
+
+## <a name="clinets-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clinets segítségével OAuth csatlakozni HDInsight átjáró ID Broker beállítás
+
+Az azonosító közvetítő i. telepítése kor az egyéni alkalmazások és az átjáróhoz csatlakozó ügyfelek frissíthetők a szükséges OAuth-token beszerzéséhez. A [jogkivonat](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) beszerzéséhez kövesse a dokumentum lépéseit a következő információkkal:
+
+*   OAuth erőforrás uri:https://hib.azurehdinsight.net 
+* Alkalmazási d: 7865c1d2-f040-46cc-875f-831a1ef6a28a
+*   Engedély: (név: Cluster.ReadWrite, id:8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,14 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: d536b706db85603624e0fa2362df7c537958f6f2
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 79e277cb3d512ee17da866a61e9d6d66a50cd902
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991603"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415024"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Adatok másolása a Google AdWords szolgáltatásból az Azure Data Factory használatával
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenységet az Azure Data Factory-ban a Google AdWords-ből történő adatok másolásához. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
@@ -27,7 +30,7 @@ Ez a cikk bemutatja, hogyan használhatja a másolási tevékenységet az Azure 
 Ez a Google AdWords-összekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 
 A Google AdWords szolgáltatásból adatokat másolhat bármely támogatott fogadóadattárba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.

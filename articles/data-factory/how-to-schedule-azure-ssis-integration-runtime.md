@@ -13,14 +13,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f758b779e7c4935feab2424be16b829db8e46b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440324"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399517"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS integrációs modul indítása és leállítása ütemezés szerint
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Ez a cikk ismerteti, hogyan ütemezheti az Azure-SSIS-integrációs futásidejű (IR) indítása és leállítása az Azure Data Factory (ADF) használatával. Az Azure-SSIS IR az SQL Server Integration Services (SSIS) csomagok végrehajtására szolgáló ADF számítási erőforrás. Az Azure-SSIS IR futtatásához költségek járnak. Ezért általában csak akkor szeretné futtatni az infravörös szolgáltatást, ha SSIS-csomagokat kell végrehajtania az Azure-ban, és le kell állítania az infravörös szolgáltatást, ha már nincs rá szüksége. Az ADF felhasználói felület (UI)/app vagy az Azure PowerShell segítségével [manuálisan indíthatja el vagy állíthatja le az infravörös szolgáltatást.](manage-azure-ssis-integration-runtime.md)
 
 Másik lehetőségként létrehozhat webes tevékenységeket az ADF-folyamatokban, hogy elindítsa/leállítsa az infravörös kapcsolat ütemezését, például reggel indítsa el a napi ETL-munkaterhelések végrehajtása előtt, és állítsa le délután, miután azok elkészült.  Az SSIS-csomag végrehajtása tevékenységet két olyan webes tevékenység között is láncolhatja, amelyek elindítják és leállítják az infravörös kapcsolatot, így az infravörös rendszer igény szerint elindul/leáll, éppen a csomag végrehajtása előtt/után. Az SSIS-csomagtevékenység végrehajtásáról további információt az [SSIS-csomag futtatása SSIS-csomag tevékenység végrehajtásával című témakörben talál az ADF-folyamat cikkében.](how-to-invoke-ssis-package-ssis-activity.md)
@@ -41,7 +44,7 @@ A folyamatok létrehozása és tesztelése után létrehozhat egy ütemezési es
 
 Létrehozhat például két eseményindítót, az első takarásban van ütemezve, és naponta 6 órakor fut, és az első folyamathoz van társítva, míg a második a napi futtatást 18:00 órakor futtatja, és a második folyamathoz van társítva.  Ily módon van egy időszak között 06:00-18:00 minden nap, amikor az infravörös fut, készen áll a napi ETL számítási feladatok végrehajtására.  
 
-Ha létrehoz egy harmadik eseményindítót, amely a tervek szerint naponta éjfélkor fut, és a harmadik folyamathoz van társítva, a folyamat minden nap éjfélkor fog futni, és az infravörös csomagot közvetlenül a csomag végrehajtása előtt indítja el, majd végrehajtja a csomagot, és azonnal az infravörös szolgáltatás leállítása közvetlenül a csomag végrehajtása után, így az infravörös nem fog futni.
+Ha létrehoz egy harmadik eseményindítót, amely a tervek szerint naponta éjfélkor fut, és a harmadik folyamathoz társítva van, akkor a folyamat minden nap éjfélkor fog futni, és közvetlenül a csomag végrehajtása előtt elindítja az infravörös csomagot, majd végrehajtja a csomagot, és azonnal leállítja az infravörös csomagot közvetlenül a csomag végrehajtása után, így az infravörös nem fog futni.
 
 ### <a name="create-your-adf"></a>Az ADF létrehozása
 
@@ -114,7 +117,7 @@ Ha létrehoz egy harmadik eseményindítót, amely a tervek szerint naponta éjf
     1. A **Role (Szerepkör) területen**válassza a **Közreműködő**lehetőséget. 
     2. A **Hozzáférés hozzárendelése a területen**válassza az Azure **AD felhasználó, csoport vagy egyszerű szolgáltatás**lehetőséget. 
     3. A **Select területen**keresse meg az ADF-nevet, és jelölje ki. 
-    4. Kattintson a **Mentés** gombra.
+    4. Kattintson a **Save** (Mentés) gombra.
     
    ![ADF felügyelt identitásszerepkör-hozzárendelés](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
@@ -160,7 +163,7 @@ Most, hogy a folyamatok a várt módon működnek, létrehozhat eseményindító
     4. Az **Ismétlődés**mezőbe írja be az eseményindító pedálfordulatát. A következő példában a **Napi** egyszer látható. 
     5. A **Befejezés csoportban**válassza a **Nincs befejezés** lehetőséget, vagy adja meg a befejezési dátumot és az időt a **Dátum**kiválasztása után. 
     6. Válassza **az Aktiválva** lehetőséget, ha az eseményindítót a teljes ADF-beállítások közzététele után azonnal aktiválhatja. 
-    7. Válassza a **Tovább lehetőséget.**
+    7. Kattintson a **Tovább** gombra.
 
    ![Eseményindító -> Új/Szerkesztés](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     

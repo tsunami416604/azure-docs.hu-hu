@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4840b135587ae776cfb80258ce513a48a79efa43
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 7a6fc2bd5cb6f5c7ae5bef9e9741fae92518d885
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383337"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392396"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Az Azure Automation kapcsolati adategységei
 
@@ -89,7 +89,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-A parancsfájl segítségével létrehozhatja a kapcsolati eszközt, mert az Automation-fiók létrehozásakor alapértelmezés szerint automatikusan `AzureServicePrincipal` több `AzureRunAsConnection` globális modult is tartalmaz a kapcsolattípussal együtt a kapcsolati eszköz létrehozásához. Ezt fontos szem előtt tartani, mert ha megpróbál létrehozni egy új kapcsolati eszközt, hogy egy másik hitelesítési módszerrel csatlakozzon egy szolgáltatáshoz vagy alkalmazáshoz, az sikertelen lesz, mert a kapcsolat típusa még nincs definiálva az Automation-fiókban. Ha többet szeretne tudni arról, hogy miként hozhat létre saját kapcsolattípust egyéni vagy moduljához a [PowerShell-galériából,](https://www.powershellgallery.com)olvassa el [az Integrációs modulok című témakört.](automation-integration-modules.md)
+A parancsfájl segítségével létrehozhatja a kapcsolati eszközt, mert az Automation-fiók létrehozásakor alapértelmezés szerint automatikusan `AzureServicePrincipal` több `AzureRunAsConnection` globális modult is tartalmaz a kapcsolattípussal együtt a kapcsolati eszköz létrehozásához. Ezt fontos szem előtt tartani, mert ha megpróbál létrehozni egy új kapcsolati eszközt, hogy egy másik hitelesítési módszerrel csatlakozzon egy szolgáltatáshoz vagy alkalmazáshoz, az sikertelen lesz, mert a kapcsolat típusa még nincs definiálva az Automation-fiókban. Ha többet szeretne tudni arról, hogy miként hozhat létre saját kapcsolattípust egyéni vagy modulhoz a [PowerShell-galériából,](https://www.powershellgallery.com)olvassa el az Integrációs modulok című [témakört.](automation-integration-modules.md)
 
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Kapcsolat használata runbook- vagy DSC-konfigurációban
 
@@ -113,7 +113,7 @@ Tevékenység `Get-AutomationConnection` hozzáadása grafikus runbookhoz úgy, 
 
 ![hozzáadás vászonhoz](media/automation-connections/connection-add-canvas.png)
 
-Az alábbi képen egy példa egy kapcsolat használata egy grafikus runbook. Ez ugyanaz a fenti példa a Futtatás másként fiók szöveges runbookkal való hitelesítéséhez. Ez a `Constant value` példa a `Get RunAs Connection` kapcsolatobjektumot hitelesítéshez használó tevékenység adatkészletét használja. A [folyamatkapcsolat](automation-graphical-authoring-intro.md#links-and-workflow) itt használatos, mivel a `ServicePrincipalCertificate` paraméterkészlet egyetlen objektumot vár.
+Az alábbi képen egy példa egy kapcsolat használata egy grafikus runbook. Ez ugyanaz a példa, mint a fent látható a Futtatás másként fiók szöveges runbookhasználatával történő hitelesítéséhez. Ez a `Constant value` példa a `Get RunAs Connection` kapcsolatobjektumot hitelesítéshez használó tevékenység adatkészletét használja. A [folyamatkapcsolat](automation-graphical-authoring-intro.md#links-and-workflow) itt használatos, mivel a `ServicePrincipalCertificate` paraméterkészlet egyetlen objektumot vár.
 
 ![kapcsolatok bekapcsolása](media/automation-connections/automation-get-connection-object.png)
 

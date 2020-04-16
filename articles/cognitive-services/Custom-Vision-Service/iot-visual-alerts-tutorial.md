@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978032"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403721"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Oktatóanyag: Egyéni látás használata IoT-eszközzel a vizuális állapotok jelentéséhez
 
-Ez a mintaalkalmazás bemutatja, hogyan használhatja a Custom Vision segítségével a vizuális állapotok észlelésére szolgáló eszközt kamerával. Ezt az észlelési forgatókönyvet ioT-eszközön futtathatja a Custom Vision szolgáltatásból exportált ONNX-modell használatával.
+Ez a mintaalkalmazás bemutatja, hogyan használhatja a Custom Vision segítségével a vizuális állapotok észlelésére szolgáló eszközt kamerával. Ezt az észlelési forgatókönyvet egy IoT-eszközön futtathatja egy exportált ONNX-modell használatával.
 
-A vizuális állapot a kép tartalmát írja le: egy üres szobát vagy egy szobát emberekkel, egy üres műút vagy egy teherautóval ellátott műút, és így tovább. Az alábbi képen látható, hogy az alkalmazás észleli, ha egy banán vagy egy alma kerül a kamera elé.
+A vizuális állapot a kép tartalmát írja le: egy üres szobát vagy egy szobát emberekkel, egy üres műút teherautóval, és így tovább. Az alábbi képen látható, hogy az alkalmazás észleli, ha egy banán vagy egy alma kerül a kamera elé.
 
 ![Animáció egy felhasználói felület címkézés gyümölcs a kamera előtt](./media/iot-visual-alerts-tutorial/scoring.gif)
 
@@ -92,7 +92,7 @@ Modell beállításához az alkalmazást a **Betanítási képek rögzítése** 
 * Ha az alkalmazást pc-n futtatja, használja a felhasználói felület jobb felső sarkában található gombot.
 * Ha az alkalmazást IoT-eszközön futtatja, `EnterLearningMode` hívja meg a metódust az eszközön az IoT Hubon keresztül. Az Azure Portal IoT Hub menüjében vagy egy olyan eszközzel, mint az [IoT Hub eszközkezelője](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)keresztül hívhatja meg.
  
-Amikor az alkalmazás belép a **Rögzítés idomítási képek** állapotába, másodpercenként körülbelül két képet fog rögzíteni, amíg el nem éri a képek célszámát. Alapértelmezés szerint ez 30 kép, de beállíthatja ezt a paramétert a `EnterLearningMode` kívánt szám átadásával az IoT Hub metódus. 
+Amikor az alkalmazás belép a **Rögzítés idomítási képek** állapotába, másodpercenként körülbelül két képet fog rögzíteni, amíg el nem éri a képek célszámát. Alapértelmezés szerint a cél 30 kép, de beállíthatja ezt a paramétert `EnterLearningMode` a kívánt számot argumentumként az IoT Hub metódus. 
 
 Miközben az alkalmazás képeket készít, meg kell mutatnia a fényképezőgépet az észlelni kívánt vizuális állapotok típusainak (például egy üres szoba, egy szoba emberekkel, egy üres asztal, egy asztal egy játékteherautóval, és így tovább).
 

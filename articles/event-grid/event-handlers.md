@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 7ea00d663264e902c1818f7a4684e90eccd97b28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73118823aec9b8d4bd872986b13f19496240c0b9
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265050"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393442"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Eseménykezelők az Azure Event Gridben
 
@@ -52,8 +52,6 @@ Az Event Hubs eseményforrásként vagy eseménykezelőként működhet. A köve
 |---------|---------|
 | [Rövid útmutató: egyéni események irányítása az Azure Event Hubs-ba az Azure CLI és az Event Grid segítségével](custom-event-to-eventhub.md) | Egyéni eseményt küld egy eseményközpontba egy alkalmazás általi feldolgozásra. |
 | [Erőforrás-kezelő sablon: egyéni témakör és Eseményközpontok végpontja](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Erőforrás-kezelő sablon, amely előfizetést hoz létre egy egyéni témakörhöz. Eseményeket küld egy Azure Event Hubs. |
-
-Az Event Hubs adatforrásként való [példázata: Event Hubs source](event-sources.md#event-hubs).
 
 ## <a name="hybrid-connections"></a>Hibrid kapcsolatok
 

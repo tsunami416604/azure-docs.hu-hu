@@ -3,14 +3,14 @@ title: Service Fabric-alkalmazás központi telepítése rendszeráltal hozzáre
 description: Ez a cikk bemutatja, hogyan rendelhet hozzá egy rendszer által hozzárendelt felügyelt identitást egy Azure Service Fabric-alkalmazáshoz
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614825"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415653"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Service Fabric-alkalmazás központi telepítése rendszerhez rendelt felügyelt identitással (előzetes verzió)
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Service Fabric-alkalmazás központi telepítése rendszeráltal hozzárendelt felügyelt identitással
 
 Az Azure Service Fabric-alkalmazások felügyelt identitásfunkciójának eléréséhez először engedélyeznie kell a felügyelt identitásjogkivonat-szolgáltatást a fürtön. Ez a szolgáltatás felelős a Service Fabric-alkalmazások felügyelt identitások használatával történő hitelesítésért, valamint a hozzáférési jogkivonatok nevükben történő beszerzéséért. Ha a szolgáltatás engedélyezve van, láthatja, hogy a Service Fabric Explorer a **rendszer** szakaszban a bal oldali ablaktáblában, fut a neve **fabric:/System/ManagedIdentityTokenService** mellett más rendszerszolgáltatások.
 

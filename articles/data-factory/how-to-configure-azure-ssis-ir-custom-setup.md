@@ -11,15 +11,17 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: d6252b7a0ecce553bc3a1519055375fd4cd034f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 3aabf68b6763e5815a03021cb02683d509c26190
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336189"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415050"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Az Azure-SSIS-integrációs futásidejű beállítás testreszabása
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Az Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) egyéni beállítása felületet biztosít a saját lépések hozzáadásához az Azure-SSIS IR beállítása vagy újrakonfigurálása során. 
 
@@ -32,7 +34,7 @@ Az Azure-SSIS ir-en az egyéni beállításokat kétféleképpen teheti meg:
 Telepítheti mind az ingyenes, engedély nélküli összetevők és a fizetett, licencelt alkatrészek expressz és szabványos egyéni beállításokat. Ha Ön független szoftverszállító (ISV), olvassa el a Fizetett vagy licencelt összetevők fejlesztése Azure-SSIS ir.If you're a independent software vendor (ISV), see [Develop paid or licensed components for an Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md).
 
 > [!IMPORTANT]
-> Mivel az Azure-SSIS IR v2-sorozatú csomópontjai nem alkalmasak egyéni beállításra, használjon v3-sorozatú csomópontokat. Ha már használ v2-sorozatú csomópontok, váltson v3-sorozat csomópontok a lehető leghamarabb.
+> A jövőbeli fejlesztések előnyeinek kihasználása érdekében azt javasoljuk, hogy az Azure-SSIS-ir-hez az Azure-SSIS-ir-hez használjon v3-as vagy újabb csomópont-sorozatot egyéni beállítással.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
@@ -72,7 +74,7 @@ Az Azure-SSIS IR testreszabásához a következő elemekre van szükség:
 
    a. A **(Helyi és csatolt)** területen kattintson a jobb gombbal **a Tárfiókok**elemre, majd válassza **a Csatlakozás az Azure storage-hoz parancsot.**
 
-      ![Csatlakozás az Azure Storage szolgáltatáshoz](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
+      ![Csatlakozás az Azure Storage-hoz](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
    b. Válassza **a Tárfiók nevének és kulcsának használata**lehetőséget, majd a **Tovább**gombot.
 

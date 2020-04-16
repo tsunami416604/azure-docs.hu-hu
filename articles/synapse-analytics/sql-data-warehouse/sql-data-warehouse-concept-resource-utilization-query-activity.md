@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011106"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416220"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Erőforrás-kihasználtság és lekérdezési tevékenység figyelése az Azure Synapse Analytics szolgáltatásban
 
@@ -56,14 +56,14 @@ A mérőszámok megtekintésekor és a riasztások beállításakor figyelembe v
 
 Az SQL Analytics T-SQL-en keresztüli figyelése programozott élménye érdekében a szolgáltatás dinamikus felügyeleti nézetek (DMV-k) készletét biztosítja. Ezek a nézetek akkor hasznosak, ha aktívan hibaelhárításés és a teljesítmény szűk keresztmetszetek azonosítása a számítási feladatok.
 
-Az SQL Analytics által biztosított DMV-k listájának megtekintéséhez tekintse meg ezt a [dokumentációt.](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs)
+A Synapse SQL-re vonatkozó DMV-k listájának megtekintéséhez tekintse meg ezt a [dokumentációt.](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs) 
 
-## <a name="metrics-and-diagnostics-logging"></a>Metrikák és diagnosztikai naplózás
+## <a name="metrics-and-diagnostics-logging"></a>Metrikák és diagnosztikai naplózás 
 
 A metrikák és a naplók egyaránt exportálhatók az Azure Monitorba, különösen az [Azure Monitor naplói](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) összetevőbe, és programozott módon érhetők el [a naplólekérdezéseken](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)keresztül. Az SQL Analytics naplókése körülbelül 10–15 perc. A késést befolyásoló tényezőkről az alábbi dokumentációban olvashat bővebben.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi útmutatók ismertetik az adattárház figyelése és kezelése során előforduló gyakori forgatókönyveket és használati eseteket:
+Az alábbi útmutató ismerteti az adattárház figyelése és kezelése során előforduló gyakori forgatókönyveket és használati eseteket:
 
 - [Az adattárház-munkaterhelés figyelése DMV-kkel](sql-data-warehouse-manage-monitor.md)

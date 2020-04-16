@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: a8ba8b212a504a8f8e4e29fbd50126189998e81a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61bb8fe950de8cd9be91bc76bd24aa0151f3fb79
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065464"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415411"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Adatok másolása az Azure Data Lake Storage Gen1 szolgáltatásba vagy onnan az Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Azure Data Factory által használt verziót:"]
 > * [1-es verzió](v1/data-factory-azure-datalake-connector.md)
 > * [Aktuális verzió](connector-azure-data-lake-store.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk bemutatja, hogyan másolhat adatokat az Azure Data Lake Storage Gen1-be és onnan. Az Azure Data Factory ról a [bevezető cikkben](introduction.md)olvashat.
 
@@ -32,7 +34,7 @@ Ez az Azure Data Lake Storage Gen1-összekötő a következő tevékenységek es
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md) 
 - [Adatfolyam leképezése](concepts-data-flow-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 - [Tevékenység törlése](delete-activity.md)
 

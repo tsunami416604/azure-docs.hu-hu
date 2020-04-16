@@ -7,14 +7,14 @@ ms.custom: include file
 ms.topic: include
 author: peterclu
 ms.author: peterclu
-ms.date: 03/12/2020
-ms.openlocfilehash: 900eea5b7807b718274690bc34a32213bfe7ea7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 1ae0b4bda584e86bc3a25f6cd5181175fc7fa282
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204059"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411900"
 ---
 > [!NOTE]
-> A Notebooks (előzetes verzió) funkció a Studio (klasszikus) le áll április 13, 2020. Április 13-a után a Jegyzetfüzetek lap a mentett jegyzetfüzetekkel együtt eltávolításra kerül. A jegyzetfüzetek letöltésével kapcsolatos tudnivalókért olvassa el [ezt a cikket.](../articles/machine-learning/studio/download-notebooks-data.md)
+> A Notebookok (előzetes verzió) funkciót *2020. április 13-án*távolították el. A Jegyzetfüzetek lap és a felhasználói jegyzetfüzetfájlok eltávolítása jelenleg világszerte elérhető az Azure-régiókban.
       

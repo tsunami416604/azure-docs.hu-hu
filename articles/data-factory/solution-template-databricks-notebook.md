@@ -1,5 +1,5 @@
 ---
-title: Átalakítás az Azure Databricks segítségével
+title: Átalakítás az Azure Databricks szolgáltatással
 description: Ismerje meg, hogyan használhat megoldássablont az adatok átalakításához egy Databricks-jegyzetfüzet használatával az Azure Data Factoryban.
 services: data-factory
 ms.author: abnarain
@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
-ms.openlocfilehash: 9a05b09f958d741fa56c586fbc7f5c5908dbbce6
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 65b89a13637f5a4e1712995a6ac58d88b4421806
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384381"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414851"
 ---
-# <a name="transformation-with-azure-databricks"></a>Átalakítás az Azure Databricks segítségével
+# <a name="transformation-with-azure-databricks"></a>Átalakítás az Azure Databricks szolgáltatással
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ebben az oktatóanyagban egy teljes körű folyamatot hoz létre, amely tartalmazza az **Érvényesítési**, **Adatok másolása**és **jegyzetfüzet-tevékenységek** et az Azure Data Factoryban.
 

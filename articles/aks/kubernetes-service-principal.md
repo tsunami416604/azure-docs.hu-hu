@@ -3,17 +3,17 @@ title: Az Azure Kubernetes Services (AKS) szolgáltatásnevei
 description: Az Azure Kubernetes Service-ben található fürthöz tartozó Azure Active Directory szolgáltatásnév létrehozása és felügyelete
 services: container-service
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: 523f08ddbf22e175af5b0604b04d4a2460ffd634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259421"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392724"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
-Az AKS-fürtöknek szükségük van egy [Azure Active Directory (AS) szolgáltatásnévre][aad-service-principal] az Azure API-kkal való kommunikációhoz. A szolgáltatásnévvel dinamikusan hozhat létre és kezelhet olyan egyéb Azure-erőforrásokat, mint az Azure Load Balancer vagy a tárolóregisztrációs adatbázis (ACR).
+Az Azure API-k használatához az AKS-fürthöz egy [Azure Active Directory (AD) egyszerű szolgáltatásra][aad-service-principal] vagy egy [felügyelt identitásra](use-managed-identity.md)van szükség. Egy egyszerű szolgáltatás vagy felügyelt identitás szükséges más Azure-erőforrások, például egy Azure-terheléselosztó vagy a tároló beállításjegyzék (ACR) dinamikus létrehozásához és kezeléséhez.
 
 Ez a cikk azt mutatja be, hogyan lehet létrehozni és használni egy szolgáltatásnevet az AKS-fürtökhöz.
 

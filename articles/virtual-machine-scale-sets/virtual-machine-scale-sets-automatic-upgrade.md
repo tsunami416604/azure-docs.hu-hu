@@ -5,14 +5,14 @@ author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 04/14/2020
 ms.author: mimckitt
-ms.openlocfilehash: b1e5ad60041e9d3b902a06a4875206fa061c73e6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: ee6a25ac5a4cc7de8b8340afb186d170cc147a38
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269907"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393793"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Az Azure virtuálisgép-méretezési készlet automatikus operációsrendszer-lemezkép-frissítések
 
@@ -109,7 +109,7 @@ GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/M
 Miután a szolgáltatás regisztrálva lett az előfizetéshez, fejezze be az opt-in folyamatot a módosítás nak a számítási erőforrás-szolgáltatóba való propagálásával.
 
 ```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-10-01`
+POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -168,7 +168,7 @@ Az operációs rendszer automatikus lemezkép-frissítésének konfigurálásáh
 A következő példa bemutatja, hogyan állíthatók be az operációs rendszer automatikus frissítései egy méretezési csoport modelljén:
 
 ```
-PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2018-10-01`
+PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2019-12-01`
 ```
 
 ```json
@@ -247,7 +247,7 @@ Ellenőrizheti a legújabb operációsrendszer-frissítés előzményeit a mére
 A következő példa a [REST API-t](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) használja a *myResourceGroup*nevű erőforráscsoport *myScaleSet* nevű méretezési csoportjának állapotának ellenőrzésére:
 
 ```
-GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2018-10-01`
+GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
 ```
 
 A GET hívás a következő példakimenethez hasonló tulajdonságokat ad vissza:
@@ -307,7 +307,7 @@ Az alábbi példák segítségével beszerezheti az automatikus operációsrends
 
 ### <a name="rest-api"></a>REST API
 ```
-GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2018-10-01`
+GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -332,7 +332,7 @@ Olyan konkrét esetekben, amikor nem szeretné megvárni, hogy az orchestrator a
 Az [operációs rendszer frissítésének indítása](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API-hívással indítsa el a működés közbeni frissítést, és helyezze át az összes virtuálisgép-méretezési példányt a legújabb elérhető lemezkép-operációs rendszer verziójára. A legújabb elérhető operációsrendszer-verziót már futtató példányokat ez nem érinti. A következő példa bemutatja, hogyan indíthatja el az operációs rendszer folyamatos frissítését a *myResourceGroup*nevű erőforráscsoportban a *myScaleSet* nevű méretezési csoporton:
 
 ```
-POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell

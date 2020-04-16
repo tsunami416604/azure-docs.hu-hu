@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 6de6f23fe9564b28a5d436ac00999dbb3e9183e1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.openlocfilehash: fe7d076fab6a70736843fc644cd56bef44a55df2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548965"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415126"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Biztonság és adatvédelem az Azure Cognitive Search szolgáltatásban
 
@@ -31,7 +31,6 @@ Az Azure Cognitive Search a [2018 júniusában bejelentett](https://azure.micros
 + [GxP (21 CFR 11. rész)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST (HITRUST)](https://en.wikipedia.org/wiki/HITRUST)
 + [1. szintű PCI DSS](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [Ausztrália IRAP Be nem sorolt DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 A szabványoknak való megfelelés az általánosan elérhető funkciókra vonatkozik. Az előzetes verziójú funkciók akkor tanúsíthatók, amikor áttérnek az általános rendelkezésre állásra, és nem használhatók szigorú szabványokkal rendelkező megoldásokban. A megfelelőségi tanúsítványt [a Microsoft Azure-megfelelőség áttekintése](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) és az [Adatvédelmi központ dokumentálja.](https://www.microsoft.com/en-us/trustcenter) 
 

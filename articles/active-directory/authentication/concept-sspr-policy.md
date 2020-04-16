@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fba4dae66b5adcea6cc33e61d8cf88946e29546e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f5987bee82dc22d3742cb5d87040930e5d2c52d
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051172"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393039"
 ---
 # <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Önkiszolgáló jelszó-alaphelyzetbe állítási házirendek és korlátozások az Azure Active Directoryban
 
@@ -160,16 +160,6 @@ Első lépésekhez [töltse le és telepítse az Azure AD PowerShell-modult.](ht
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi cikkek további információt nyújtanak az Azure AD-n keresztüli jelszó-alaphelyzetbe állításról:
+Az SSPR használatának első [lépései: Oktatóanyag: A felhasználók zárolásának engedélyezése a fiók zárolásához vagy a jelszavak alaphelyzetbe állításához az Azure Active Directory önkiszolgáló jelszó-visszaállításhasználatával.](tutorial-enable-sspr.md)
 
-* [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
-* [Új jelszó kérése vagy jelszó módosítása](../user-help/active-directory-passwords-update-your-own-password.md).
-* [Regisztráció új jelszó önkiszolgáló kérésére](../user-help/active-directory-passwords-reset-register.md).
-* [Van engedélyezési kérdése?](concept-sspr-licensing.md)
-* [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
-* [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)
-* [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
-* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](howto-sspr-reporting.md)
-* [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
-* [Azt hiszem, valami eltört. Hogyan háríthatók el az SSPR hibái?](active-directory-passwords-troubleshoot.md)
-* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
+Ha Önnek vagy felhasználóinak problémái vannak az SSPR-rel, olvassa el [az Önkiszolgáló jelszó-visszaállítás hibaelhárítása című témakört.](active-directory-passwords-troubleshoot.md)

@@ -1,20 +1,20 @@
 ---
-title: Azure Event Grid-előfizetési eseménysémája
+title: Azure-előfizetés eseményrács-forrásként
 description: Az Azure Event Grid del az előfizetéses eseményekhez megadott tulajdonságok ismertetése
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/12/2019
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561676"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393229"
 ---
-# <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid eseménysémája előfizetésekhez
+# <a name="azure-subscription-as-an-event-grid-source"></a>Azure-előfizetés eseményrács-forrásként
 
 Ez a cikk az Azure-előfizetési események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
@@ -28,9 +28,10 @@ Az események programozott kezeléséhez az eseményeket az `operationName` ért
 
 Az esemény tárgya a művelet célját képező erőforrás erőforrásazonosítója. Egy erőforrás eseményeinek szűréséhez adja meg az erőforrás-azonosítót az esemény-előfizetés létrehozásakor. Erőforrástípus szerinti szűréshez használja a következő formátumú értéket:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-A mintaparancsfájlok és oktatóanyagok listáját az [Azure-előfizetés eseményforrásában](event-sources.md#azure-subscriptions)láthatja.
 
-## <a name="available-event-types"></a>Elérhető eseménytípusok
+## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
+
+### <a name="available-event-types"></a>Elérhető eseménytípusok
 
 Az Azure-előfizetések az Azure Resource Manager felügyeleti eseményeit bocsátják ki, például amikor virtuális gép jön létre, vagy egy tárfiók törlődik.
 
@@ -46,7 +47,7 @@ Az Azure-előfizetések az Azure Resource Manager felügyeleti eseményeit bocs�
 | Microsoft.Resources.ResourceWriteFailure | A létrehozási vagy frissítési művelet sikertelensítése esetén keletkezik. |
 | Microsoft.Resources.ResourceWriteSuccess | Ha a létrehozási vagy frissítési művelet sikeres. |
 
-## <a name="example-event"></a>Példa esemény
+### <a name="example-event"></a>Példa esemény
 
 A következő példa egy **ResourceWriteSuccess** esemény sémáját mutatja be. Ugyanaz a séma használatos a **ResourceWriteFailure** és a `eventType` **ResourceWriteCancel** eseményekhez, amelyek különböző értékeit használják.
 
@@ -230,7 +231,7 @@ A következő példa egy **ResourceActionSuccess** esemény sémáját mutatja b
 }]
 ```
 
-## <a name="event-properties"></a>Esemény tulajdonságai
+### <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény legfelső szintű adatokat rendelkezik:
 
@@ -259,6 +260,14 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | status | sztring | A művelet állapota. |
 | subscriptionId | sztring | Az erőforrás előfizetési azonosítója. |
 | tenantId | sztring | Az erőforrás bérlői azonosítója. |
+
+## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
+|Cím |Leírás  |
+|---------|---------|
+| [Oktatóanyag: Azure Automation az Event Griddel és a Microsoft Teamssegítségével](ensure-tags-exists-on-new-virtual-machines.md) |Hozzon létre egy virtuális gépet, amely egy eseményt küld. Az esemény elindítja az Automation runbookot, amely a virtuális gépet címkézi, és egy Microsoft Teams-csatornának küldött üzenetet indít el. |
+| [Hogyan: feliratkozás eseményekre a portálon keresztül](subscribe-through-portal.md) | A portál használatával előfizethet egy Azure-előfizetés eseményeire. |
+| [Azure CLI: Előfizetés eseményekre egy Azure-előfizetéshez](./scripts/event-grid-cli-azure-subscription.md) |Minta parancsfájl, amely létrehoz egy Event Grid-előfizetés egy Azure-előfizetés, és eseményeket küld a WebHook. |
+| [PowerShell: előfizetés eseményekre egy Azure-előfizetéshez](./scripts/event-grid-powershell-azure-subscription.md)| Minta parancsfájl, amely létrehoz egy Event Grid-előfizetés egy Azure-előfizetés, és eseményeket küld a WebHook. |
 
 ## <a name="next-steps"></a>További lépések
 

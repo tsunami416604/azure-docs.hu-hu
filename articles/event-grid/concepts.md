@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265063"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393466"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Fogalmak az Azure Event Gridben
 
@@ -35,7 +35,7 @@ A közzétevő az a felhasználó vagy szervezet, amely úgy dönt, hogy esemén
 
 Az eseményforrás az, ahol az esemény történik. Minden eseményforráshoz egy vagy több eseménytípus tartozik. Például a blob által létrehozott események tekintetében az Azure Storage az eseményforrás. Az eszközök által létrehozott események tekintetében az IoT Hub az eseményforrás. A saját megadott egyéni eseményei tekintetében a saját alkalmazása az eseményforrás. Az eseményforrások feladata, hogy eseményeket küldjenek az Event Grid számára.
 
-A támogatott Event Grid-források megvalósításáról az Eseményforrások az [Azure Event Grid ben című témakörben](event-sources.md)talál további információt.
+A támogatott Event Grid-források megvalósításáról az Eseményforrások az [Azure Event Grid ben című témakörben](overview.md#event-sources)talál további információt.
 
 ## <a name="topics"></a>Témakörök
 

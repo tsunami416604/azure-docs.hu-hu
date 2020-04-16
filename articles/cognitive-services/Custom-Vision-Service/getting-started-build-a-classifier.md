@@ -3,19 +3,19 @@ title: Rövid útmutató Osztályozó létrehozása – Egyéni vision szolgált
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban megtudhatja, hogyan használhatja a Custom Vision webhelyet egy lemezkép-besorolási modell létrehozásához.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.author: anroth
-ms.openlocfilehash: b664a586398e297a00ea9cd8fe68dc65e6ade5c8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: 56bdaa324420bf274e7cda8ac1c6506e4bc9ad21
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170008"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404058"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Rövid útmutató: Osztályozó készítése egyéni látással
 

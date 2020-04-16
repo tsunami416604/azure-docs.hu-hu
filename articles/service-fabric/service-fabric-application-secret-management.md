@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259057"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414515"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Titkosított titkos kulcsok kezelése a Service Fabric-alkalmazásokban
 Ez az útmutató bemutatja a service fabric-alkalmazások titkos titkainak kezelésének lépéseit. A titkos kulcsok lehetnek bizalmas információk, például tárolási kapcsolati karakterláncok, jelszavak vagy más értékek, amelyeket nem szabad egyszerű szövegként kezelni.
@@ -57,6 +57,11 @@ A titkos kulcsokat is szerepelnie kell a Service Fabric-alkalmazásban egy tanú
   </Certificates>
 </ApplicationManifest>
 ```
+> [!NOTE]
+> Egy alkalmazást aktiválva, amely meghatározza a SecretsCertificate, Service Fabric megtalálja a megfelelő tanúsítványt, és megadja az identitás az alkalmazás fut a tanúsítvány személyes kulcsának teljes engedélyével. A Service Fabric is figyeli a tanúsítvány t, és ennek megfelelően újra alkalmazza az engedélyeket. A common name deklarált tanúsítványok változásainak észleléséhez a Service Fabric egy időszakos feladatot futtat, amely megkeresi az összes egyező tanúsítványt, és összehasonlítja az ujjlenyomatok gyorsítótárazott listájával. Új ujjlenyomat észlelésekor ez azt jelenti, hogy a tulajdonos tanúsítványa meglett újulva. A feladat percenként egyszer fut a fürt minden csomópontján.
+>
+> Bár a SecretsCertificate lehetővé teszi a tárgyalapú deklarációkat, vegye figyelembe, hogy a titkosított beállítások ahhoz a kulcspárhoz vannak kötve, amelyet az ügyfélen lévő beállítás titkosításához használtak. Meg kell győződnie arról, hogy az eredeti titkosítási tanúsítvány (vagy azzal egyenértékű) megegyezik a tárgyalapú deklarációval, és hogy telepítve van-e a fürt minden olyan csomópontján, amely képes az alkalmazást üzemeltetni. Minden, a tulajdonosi deklarációnak megfelelő és az eredeti titkosítási tanúsítvánnyal azonos kulcspárból készült tanúsítványok egyenértékűnek minősülnek.
+>
 
 ### <a name="inject-application-secrets-into-application-instances"></a>Alkalmazástitkok befecskendezése alkalmazáspéldányokba
 Ideális esetben a különböző környezetekben történő telepítésnek a lehető legautomatizáltabbnak kell lennie. Ez úgy valósítható meg, hogy titkos titkosítást hajt végre egy buildkörnyezetben, és a titkosított titkos kulcsokat paraméterekként biztosítja az alkalmazáspéldányok létrehozásakor.

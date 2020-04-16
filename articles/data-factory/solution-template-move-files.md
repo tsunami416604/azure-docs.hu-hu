@@ -11,19 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b36eb2615e98ee8ea7751c836fd43e81a5a0f4e2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74941918"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414744"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Fájlok áthelyezése az Azure Data Factory segítségével
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk egy olyan megoldássablont ismertet, amelyekkel fájlokat helyezhet át egyik mappából a másikba a fájlalapú tárolók között. A sablon használatának egyik gyakori forgatókönyve: A fájlok folyamatosan a forrástároló egy célmappájába kerülnek. Ütemezési eseményindító létrehozásával az ADF-folyamat rendszeresen áthelyezheti ezeket a fájlokat a forrásból a céltárolóba.  Az ADF-folyamat "fájlok áthelyezésének" módja a fájlok beszerzése a célmappából, mindegyik másolása a céltároló egy másik mappájába, majd ugyanazokat a fájlokat a forrástároló célmappájából.
 
 > [!NOTE]
-> Ne feledje, hogy ez a sablon a mappák áthelyezése helyett a fájlok áthelyezésére szolgál.  Ha úgy szeretné áthelyezni a mappát, hogy az adatkészlet et úgy szeretné áthelyezni, hogy az csak egy mappa elérési útját tartalmazza, majd a másolási tevékenység és a törlési tevékenység használatával ugyanarra az adatkészletre hivatkozik, amely egy mappát ábrázol, nagyon óvatosnak kell lennie. Ez azért van, mert meg kell győződnie arról, hogy nem lesz új fájlok érkeznek a mappába a másolási művelet és a törlési művelet között. Ha új fájlok érkeznek a mappába abban a pillanatban, amikor a másolási tevékenység éppen befejezte a másolási feladatot, de a Törlés tevékenység nem nézett, lehetséges, hogy a Törlés tevékenység törli ezt az új érkező fájlt, amely nem másolt a a teljes mappa törlésével.
+> Ne feledje, hogy ez a sablon a mappák áthelyezése helyett a fájlok áthelyezésére szolgál.  Ha úgy szeretné áthelyezni a mappát, hogy az adatkészlet et úgy szeretné áthelyezni, hogy az csak egy mappa elérési útját tartalmazza, majd a másolási tevékenység és a törlési tevékenység használatával ugyanarra az adatkészletre hivatkozik, amely egy mappát ábrázol, nagyon óvatosnak kell lennie. Ez azért van, mert meg kell győződnie arról, hogy nem lesz új fájlok érkeznek a mappába a másolási művelet és a törlési művelet között. Ha vannak új fájlok érkeznek a mappába abban a pillanatban, amikor a másolási tevékenység csak befejezte a másolási feladatot, de a Törlés tevékenység nem nézett, lehetséges, hogy a Törlés tevékenység törli ezt az új érkező fájlt, amely még nem másolt a célba a teljes mappa törlésével.
 
 ## <a name="about-this-solution-template"></a>A megoldássablon – kapcsolat
 

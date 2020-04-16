@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: dcefe6a6144c9a8f9c6ab7daf5b34b2d81a73c3f
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743000"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416074"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (korábban SQL DW) gyakori kérdések
 
@@ -92,7 +92,7 @@ A. Igen. Az SQL Database-ben használható LEGTÖBB REST-funkció a Synapse SQL-
 
 K. Milyen ügyfél-illesztőprogramokat támogat?
 
-A. A Synapse SQL-készlet illesztőprogram-támogatása megtalálható a [Kapcsolati karakterláncok](sql-data-warehouse-connection-strings.md) lapon
+A. A Synapse SQL-készlet illesztőprogram-támogatása megtalálható a [Kapcsolati karakterláncok](../sql/connection-strings.md) lapon
 
 K: Milyen fájlformátumokat támogat a PolyBase?
 

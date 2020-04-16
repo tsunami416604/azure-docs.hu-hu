@@ -11,14 +11,16 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c85a652cde840336c51e1a5b5459f9dc591e0be
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187478"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414689"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Csomagvégrehajtás – problémamegoldás az SSIS-integrációs futásidőben
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez a cikk az OKAT a leggyakoribb hibákat tartalmazza, amelyek az SQL Server Integration Services (SSIS) csomagok SSIS-integrációs futásidejű végrehajtásakor találhatók. Leírja a hibák megoldásának lehetséges okait és lépéseit.
 
@@ -144,7 +146,7 @@ Győződjön meg arról, hogy a saját üzemeltetésű integrációs futásidej�
 
 Győződjön meg arról, hogy a csomagban lévő OLE DB-összekötők által használt megfelelő szolgáltató megfelelően van telepítve a saját üzemeltetésű integrációs futásidejű gépen. További részletek a [Saját üzemeltetésű infravörös kapcsolat konfigurálása az Azure-SSIS IR proxyjaként az ADF-ben](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Hiba: "Átmeneti feladat hiba: Hibakód: 2906, ErrorMessage: A csomag végrehajtása nem sikerült., Kimenet: {"OperationErrorMessages": "Hiba: System.IO.FileLoadException: Nem tölthető be a fájl vagy a következő szerelvény::Microsoft.WindowsAzure.Storage, Version=..., Kultúra=semleges, PublicKeyToken=31bf3856ad364e35' vagy annak egyik függősége. A található szerelvény jegyzékfájljának definíciója nem egyezik meg a kódösszeállítás-hivatkozással." ..."
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Hiba: "Átmeneti feladat hiba: Hibakód: 2906, ErrorMessage: A csomag végrehajtása nem sikerült., Kimenet: {"OperationErrorMessages": "Hiba: System.IO.FileLoadException: Nem tölthető be a fájl vagy a következő szerelvény::::Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35" vagy annak egyik függősége. A található szerelvény jegyzékfájljának definíciója nem egyezik meg a kódösszeállítás-hivatkozással." ..."
 
 Az egyik lehetséges ok a saját üzemeltetésű integrációs futásidejű nincs megfelelően telepítve vagy frissítve. Javasoljuk, hogy töltse le és telepítse újra a legújabb self-hosted integrációs runtime. További részletek találhatók [létrehozása és konfigurálása saját üzemeltetésű integrációs runtime](create-self-hosted-integration-runtime.md#installation-best-practices)
 

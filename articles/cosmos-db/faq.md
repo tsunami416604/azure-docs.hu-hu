@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672462"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414236"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 
@@ -236,7 +236,7 @@ A közös MongoDB hibakódokkal együtt az Azure Cosmos DB MongoDB API-ja saját
 
 Igen, használhatja a Simba Mongo ODBC illesztőprogramját az Azure Cosmos DB MongoDB API-jával
 
-## <a name="table-api"></a><a id="table"></a>Tábla API
+## <a name="table-api"></a><a id="table"></a>Table API
 
 ### <a name="how-can-i-use-the-table-api-offering"></a>Hogyan használhatom a Table API-ajánlatot?
 
@@ -404,7 +404,7 @@ Annyi régiót adhat hozzá, amennyit csak szeretne a fiókhoz, és azt a vezér
 
 ### <a name="is-the-table-api-enabled-for-backups"></a>Engedélyezve van a Table API a biztonsági mentéshez?
 
-Igen, a table API az Azure Cosmos DB platformját használja a biztonsági mentések készítéséhez. A biztonsági mentések automatikusan készülnek. További információ: [Online biztonsági mentés és visszaállítás az Azure Cosmos DB-vel.](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)
+Igen, a table API az Azure Cosmos DB platformját használja a biztonsági mentések készítéséhez. A biztonsági mentések automatikusan készülnek. További információ: [Online biztonsági mentés és visszaállítás az Azure Cosmos DB-vel.](online-backup-and-restore.md)
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>A Table API alapértelmezés szerint indexeli az entitás összes attribútumát?
 
@@ -761,7 +761,7 @@ Jelenleg az Azure Cosmos DB egy optimalizált élményt felhőalapú környezetb
 ### <a name="does-cassandra-api-provide-full-backups"></a>A Cassandra API teljes biztonsági mentést biztosít?
 
 Az Azure Cosmos DB két ingyenes teljes biztonsági mentést biztosít, amelyeket ma négy órás időközönként az összes API-ban készít. Ez biztosítja, hogy nem kell biztonsági mentési ütemezést és egyéb dolgokat beállítania.
-Ha módosítani szeretné a megőrzést és [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) a gyakoriságot, küldjön egy e-mailt, vagy emelje fel a támogatási esetet. A biztonsági mentési képességről az Automatikus online biztonsági mentés és visszaállítás az [Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) cikkben található.
+Ha módosítani szeretné a megőrzést és [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) a gyakoriságot, küldjön egy e-mailt, vagy emelje fel a támogatási esetet. A biztonsági mentési képességről az Automatikus online biztonsági mentés és visszaállítás az [Azure Cosmos DB](online-backup-and-restore.md) cikkben található.
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Hogyan kezeli a Cassandra API-fiók feladatátvételt, ha egy régió leáll?
 

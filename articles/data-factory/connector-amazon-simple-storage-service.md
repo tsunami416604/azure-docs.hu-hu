@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/13/2019
-ms.openlocfilehash: 56cc7425eea184cd26010cde48e42e38b27e68a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6975c876bb31e36b7b6268d284f747fd51803d63
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75893296"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415473"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Adatok másolása az Amazon Simple Storage Szolgáltatásból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 >
 > * [1-es verzió](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [Aktuális verzió](connector-amazon-simple-storage-service.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk bemutatja, hogyan másolhat adatokat az Amazon Simple Storage Service (Amazon S3) szolgáltatásból. Az Azure Data Factory ról a [bevezető cikkben](introduction.md)olvashat.
 
@@ -34,7 +36,7 @@ Ez a cikk bemutatja, hogyan másolhat adatokat az Amazon Simple Storage Service 
 Ez az Amazon S3 csatlakozó a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 - [Tevékenység törlése](delete-activity.md)
 

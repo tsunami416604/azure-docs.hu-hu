@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f35a5da15ca1a672046844282626a6cb7b8ecbdf
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583533"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414006"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Az Azure Synapse Analytics (korábban SQL DW) kapacitáskorlátai
 
@@ -27,7 +27,7 @@ Az Azure Synapse különböző összetevőihez engedélyezett maximális érték
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
 | [Adattárház-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximális DWU egyetlen SQL-készlet (adattárház) egységhez | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Adattárház-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Alapértelmezett DTU kiszolgálónként |54,000<br></br>Alapértelmezés szerint minden SQL-kiszolgáló (például myserver.database.windows.net) 54 000 DTU-kvótával rendelkezik, amely legfeljebb DW5000c értéket tesz lehetővé. Ez a kvóta egyszerűen egy biztonsági korlát. Növelheti a kvótát egy [támogatási jegy létrehozásával,](sql-data-warehouse-get-started-create-support-ticket.md) és a *kvóta* kérelemtípusként kiválasztásával.  A DTU-igények kiszámításához szorozza meg a 7,5-öt a szükséges teljes DWU-val, vagy szorozza meg a 9,5-öt a szükséges teljes cDWU-val. Példa:<br></br>DW6000 x 7,5 = 45 000 DSZ<br></br>DW5000c x 9,5 = 47 500 DTUs.<br></br>Megtekintheti az aktuális DTU-felhasználás az SQL-kiszolgáló beállítás a portálon. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
+| [Adattárház-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Alapértelmezett DTU kiszolgálónként |54,000<br></br>Alapértelmezés szerint minden SQL-kiszolgáló (például myserver.database.windows.net) 54 000 DTU-kvótával rendelkezik, amely legfeljebb DW5000c értéket tesz lehetővé. Ez a kvóta egyszerűen egy biztonsági korlát. Növelheti a kvótát egy [támogatási jegy létrehozásával,](sql-data-warehouse-get-started-create-support-ticket.md) és a *kvóta* kérelemtípusként kiválasztásával.  A DTU-igények kiszámításához szorozza meg a 7,5-öt a szükséges teljes DWU-val, vagy szorozza meg a 9,5-öt a szükséges teljes cDWU-val. Például:<br></br>DW6000 x 7,5 = 45 000 DSZ<br></br>DW5000c x 9,5 = 47 500 DTUs.<br></br>Megtekintheti az aktuális DTU-felhasználás az SQL-kiszolgáló beállítás a portálon. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
 | Adatbázis-kapcsolat |Egyidejű nyílt munkamenetek maximális száma |1024<br/><br/>Az egyidejű nyitott munkamenetek száma a kiválasztott DWU-tól függően változik. A DWU600c és a felettlévők legfeljebb 1024 nyílt munkamenetet támogatnak. DWU500c és az alatt, támogatja a maximális egyidejű nyílt munkamenet határ 512. Megjegyzés: az egyidejűleg végrehajtható lekérdezések száma korlátozott. Az egyidejűségi korlát túllépése esetén a kérelem egy belső várólistába kerül, ahol a feldolgozásra vár. |
 | Adatbázis-kapcsolat |Az előkészített utasítások maximális memóriája |20 MB |
 | [Számítási feladatok kezelése](resource-classes-for-workload-management.md) |Egyidejű lekérdezések maximális |128<br/><br/>  Legfeljebb 128 egyidejű lekérdezés t fut le, és a fennmaradó lekérdezések várólistára kerülnek.<br/><br/>Az egyidejű lekérdezések száma csökkenhet, ha a felhasználók magasabb erőforrásosztályokhoz vannak rendelve, vagy ha az [adatraktáregység](memory-concurrency-limits.md) beállítása csökken. Egyes lekérdezések, például a DMV-lekérdezések, mindig futtathatóak, és nem befolyásolják az egyidejű lekérdezési korlátot. Az egyidejű lekérdezések végrehajtásával kapcsolatos további részletekért tekintse meg az [egyidejűségi maximumok](memory-concurrency-limits.md) című cikket. |
@@ -42,7 +42,7 @@ Az Azure Synapse különböző összetevőihez engedélyezett maximális érték
 | Tábla |Maximális méret |Korlátlan méret az oszlopcentrikus táblákhoz. <br>60 TB a lemezre tömörített sortárolótáblák esetén. |
 | Tábla |Táblák adatbázisonként | 100 000 |
 | Tábla |Oszlopok táblázatonként |1024 oszlop |
-| Tábla |Oszloponkénti bájtok |Az oszlop [adattípusától](sql-data-warehouse-tables-data-types.md)függ . Karakteradattípusok esetén a MAX Limit legfeljebb 2 GB-ot tárolhat az oldalon kívüli (sortúlcsordulás) tárolóban.  A unicode-ot nem formátumú karakterek, például a char vagy a varchar korlát 8000 az adatlapon, a Unicode karakterek (például nchar vagy nvarchar) 4000 az adatlapon.  A teljesítmény növelése érdekében használja az adatlap-tárolóméreteket. |
+| Tábla |Oszloponkénti bájtok |Az oszlop [adattípusától](sql-data-warehouse-tables-data-types.md)függ . A korlát 8000 karakteradattípusok, 4000 nvarchar, illetve 2 GB a MAX adattípusok esetében. |
 | Tábla |Soronkénti bájt, meghatározott méret |8060 bájt<br/><br/>A soronkénti bájtok számát a program ugyanúgy számítja ki, mint az SQL Server esetében az oldaltömörítéssel. Az SQL Server hez hasonlóan a sortúlcsordulásos tároló is támogatott, ami lehetővé teszi a **változó hosszúságú oszlopok** sorral történő lelökését. Ha a változó hosszúságú sorokat a soron kívülre tolják, a fő rekordban csak 24 bájtos gyökér tárolódik. További információ: [8 KB-ot meghaladó sortúlcsordulási adatok.](https://msdn.microsoft.com/library/ms186981.aspx) |
 | Tábla |Partíciók táblaként |15 000<br/><br/>A nagy teljesítmény érdekében azt javasoljuk, hogy minimalizálja a szükséges partíciók számát, miközben továbbra is támogatja az üzleti követelményeket. A partíciók számának növekedésével az adatdefiníciós nyelv (DDL) és az adatkezelési nyelv (DML) műveletek többletterhelése nő, és lassabb teljesítményt eredményez. |
 | Tábla |Karakterek partícióhatárértékenként. |4000 |

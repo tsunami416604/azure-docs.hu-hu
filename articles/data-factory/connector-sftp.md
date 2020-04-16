@@ -12,18 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/02/2020
-ms.openlocfilehash: 06428d4a9c4a4178212d16d42b8b3adffb5c9718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6d29f73716b04699e0cd250396df7f7d744d4c4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250290"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415248"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Adatok másolása SFTP-kiszolgálóról és sftp-kiszolgálóra az Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-sftp-connector.md)
-> * [Aktuális verzió](connector-sftp.md)
+> * [Jelenlegi verzió](connector-sftp.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk az SFTP-kiszolgálóról és az SFTP-kiszolgálóra történő másolást ismerteti. Az Azure Data Factory ról a [bevezető cikkben](introduction.md)olvashat.
 
@@ -32,7 +33,7 @@ Ez a cikk az SFTP-kiszolgálóról és az SFTP-kiszolgálóra történő másol�
 Ez az SFTP-összekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 - [Tevékenység törlése](delete-activity.md)
 
@@ -287,7 +288,7 @@ Az SFTP a következő `storeSettings` tulajdonságokat támogatja a formátumala
 | type                     | A típustulajdonságot `storeSettings` **SftpWriteSettings (SftpWriteSettings )** tulajdonságra kell állítani. | Igen      |
 | copyBehavior (Másként)             | Azt a másolási viselkedést határozza meg, amikor a forrás fájlalapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>- MegőrzéseHierarchy (alapértelmezett)</b>: Megőrzi a fájlhierarchiát a célmappában. A forrásfájl forrásmappához viszonyított elérési útja megegyezik a célfájl nak a célmappához viszonyított elérési útvonalával.<br/><b>- Ahierarcha összeolvasztása</b>: A forrásmappából származó összes fájl a célmappa első szintjén található. A célfájlok nak automatikusan generált neve van. <br/><b>- MergeFiles</b>: Egyesíti az összes fájlt a forrás mappát egy fájlt. Ha a fájlnév meg van adva, az egyesített fájlnév a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájlnév. | Nem       |
 | maxConcurrentConnections | Az adattárhoz egyidejűleg csatlakozó kapcsolatok száma. Csak akkor adja meg, ha korlátozni szeretné az egyidejű kapcsolatot az adattárhoz. | Nem       |
-| useTempFileRename | Adja meg, hogy ideiglenes fájlba (fájlokba) szeretne-e feltölteni és átnevezni, vagy közvetlenül írni a célmappába/fájlhelyére. Alapértelmezés szerint az ADF először ír az ideiglenes fájl(ok)ba, majd a feltöltés befejezésekor átnevezi a fájlt, hogy 1) elkerülje az ütközéses írást, ami sérült fájlt eredményez, ha más folyamat írja ugyanazt a fájlt, és 2) biztosítja a fájl eredeti verzióját a a teljes átutalást. Ha az SFTP-kiszolgáló nem támogatja az átnevezési műveletet, tiltsa le ezt a beállítást, és győződjön meg arról, hogy nincs egyidejű írás a célfájlba. Lásd a hibaelhárítási tippet a táblázat alatt. | Nem. Az alapértelmezett érték igaz. |
+| useTempFileRename | Adja meg, hogy ideiglenes fájlba (fájlokba) szeretne-e feltölteni és átnevezni, vagy közvetlenül írni a célmappába/fájlhelyére. Alapértelmezés szerint az ADF először ír az ideiglenes fájl(ok)ba, majd a feltöltés befejezésekor átnevezi a fájlt, hogy 1) elkerülje az ütközéses írást, ami sérült fájlt eredményez, ha más folyamat írja ugyanazt a fájlt, és 2) biztosítja, hogy a fájl eredeti verziója létezik a teljes átvitel során. Ha az SFTP-kiszolgáló nem támogatja az átnevezési műveletet, tiltsa le ezt a beállítást, és győződjön meg arról, hogy nincs egyidejű írás a célfájlba. Lásd a hibaelhárítási tippet a táblázat alatt. | Nem. Az alapértelmezett érték igaz. |
 | operationTimeout | Az SFTP-kiszolgálóra küldött minden írási kérelem előtti várakozási idő idő. Az alapértelmezett érték 60 min (01:00:00).|Nem |
 
 >[!TIP]

@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875928"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406975"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD hitelesítési és engedélyezési hibakódok
 
@@ -27,6 +27,49 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatásból (
 > Ezek az információk előzetesek, és változhat a tartalmuk. Kérdése van, vagy nem találja, amit keres? Hozzon létre egy GitHub-problémát, vagy olvassa el [a Támogatási és súgólehetőségeket a fejlesztők számára,](active-directory-develop-help-support.md) hogy megismerje a segítség és támogatás egyéb lehetőségeit.
 >
 > Ez a dokumentáció fejlesztői és rendszergazdai útmutatáshoz szolgál, de az ügyfél nek soha nem szabad használnia. A hibakódok bármikor változhatnak annak érdekében, hogy részletesebb hibaüzeneteket adjanak, amelyek célja, hogy segítsék a fejlesztőt az alkalmazás létrehozása során. Azok az alkalmazások, amelyek a szöveg- vagy hibakódszámoktól függenek, idővel megszakadnak.
+
+## <a name="handling-error-codes-in-your-application"></a>Hibakódok kezelése az alkalmazásban
+
+Az [OAuth2.0 specifikáció](https://tools.ietf.org/html/rfc6749#section-5.2) útmutatást nyújt a hibák `error` kezeléséhez a hibaválasz részének használatával történő hitelesítés során. 
+
+Itt van egy minta hiba válasz:
+
+```json
+{
+  "error": "invalid_scope",
+  "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://example.contoso.com/activity.read is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
+  "error_codes": [
+    70011
+  ],
+  "timestamp": "2016-01-09 02:02:12Z",
+  "trace_id": "255d1aef-8c98-452f-ac51-23d051240864",
+  "correlation_id": "fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7", 
+  "error_uri":"https://login.microsoftonline.com/error?code=70011"
+}
+```
+
+| Paraméter         | Leírás    |
+|-------------------|----------------|
+| `error`       | Hibakód-karakterlánc, amely a előforduló hibatípusok osztályozására használható, és a hibákra való reagáláshoz használható. |
+| `error_description` | Egy adott hibaüzenet, amely segíthet a fejlesztőnek a hitelesítési hiba kiváltó okának azonosításában. Soha ne használja ezt a mezőt a kódban szereplő hibára való reagáláshoz. |
+| `error_codes` | Az STS-specifikus hibakódok listája, amelyek segíthetnek a diagnosztikában.  |
+| `timestamp`   | A hiba bekövetkezésének időpontja. |
+| `trace_id`    | A kérelem egyedi azonosítója, amely segíthet a diagnosztikában. |
+| `correlation_id` | A kérelem egyedi azonosítója, amely segíthet az összetevők közötti diagnosztikában. |
+| `error_uri` |  A hibakövetési lapra mutató hivatkozás, amely további információkat tartalmaz a hibáról.  Ez csak a fejlesztői használatra, ne mutassa be a felhasználóknak.  Csak akkor jelenik meg, ha a hibakövetési rendszer további információkat tartalmaz a hibáról - nem minden hiba tartalmaz további információkat.|
+
+A `error` mező számos lehetséges értéket tartalmaz - tekintse át a protokoll dokumentációs hivatkozásait és `authorization_pending` az OAuth 2.0 specifikációit, hogy többet tudjon meg a konkrét hibákról (például az [eszközkód-áramlásban),](v2-oauth2-device-code.md)és hogyan reagáljon rájuk.  Néhány gyakori is itt felsorolt:
+
+| Hibakód         | Leírás        | Ügyfélművelet    |
+|--------------------|--------------------|------------------|
+| `invalid_request`  | Protokollhiba, például hiányzó szükséges paraméter. | Javítsa ki és küldje el újra a kérelmet.|
+| `invalid_grant`    | A hitelesítési anyagok egy része (hitelesítéskód, frissítési jogkivonat, hozzáférési jogkivonat, PKCE-kihívás) érvénytelen, nem methető, hiányzó vagy más módon használhatatlan volt. | Próbálkozzon egy új `/authorize` kérelemmel a végpontra, hogy új engedélyezési kódot kapjon.  Fontolja meg a protokollok alkalmazásáltali használatának áttekintését és érvényesítését. |
+| `unauthorized_client` | A hitelesített ügyfél nem jogosult az engedélyezési engedély típusának használatára. | Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül hozzá a felhasználó Azure AD-bérlőhöz. Az alkalmazás kérheti a felhasználóutasítást az alkalmazás telepítéséhez és az Azure AD-hez való hozzáadásához. |
+| `invalid_client` | Az ügyfélhitelesítés nem sikerült.  | Az ügyfél hitelesítő adatai érvénytelenek. A javításhoz az alkalmazás rendszergazdája frissíti a hitelesítő adatokat.   |
+| `unsupported_grant_type` | Az engedélyezési kiszolgáló nem támogatja az engedélyezési engedély típusát. | Módosítsa a támogatás típusát a kérelemben. Ez a hibatípus csak a fejlesztés során fordulhat elő, és a kezdeti tesztelés során észlelhető. |
+| `invalid_resource` | A célerőforrás érvénytelen, mert nem létezik, az Azure AD nem találja, vagy nincs megfelelően konfigurálva. | Ez azt jelzi, hogy az erőforrás, ha létezik, nincs konfigurálva a bérlőben. Az alkalmazás kérheti a felhasználóutasítást az alkalmazás telepítéséhez és az Azure AD-hez való hozzáadásához.  A fejlesztés során ez általában azt jelzi, helytelenül beállít teszt bérlő vagy elírás a kért hatókör nevében. |
+| `interaction_required` | A kérelem felhasználói beavatkozást igényel. Például egy további hitelesítési lépés szükséges. | Próbálja meg újra a kérelmet ugyanazzal az erőforrással, együttműködve, hogy a felhasználó teljesíthesse a szükséges kihívásokat.  |
+| `temporarily_unavailable` | A kiszolgáló átmenetileg túl elfoglalt a kérés kezeléséhez. | Próbálkozzon újra a kéréssel. Az ügyfélalkalmazás elmagyarázhatja a felhasználónak, hogy a válasz egy ideiglenes feltétel miatt késik. |
 
 ## <a name="lookup-current-error-code-information"></a>Az aktuális hibakód adatainak felkésése
 A hibakódok és az üzenetek változhatnak.  A legfrissebb információkért tekintse meg az `https://login.microsoftonline.com/error` oldalt, és keresse meg az AADSTS hibaleírásokat, javításokat és néhány javasolt kerülő megoldást.  

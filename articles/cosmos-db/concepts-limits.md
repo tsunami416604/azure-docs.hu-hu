@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652185"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415708"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Az Azure Cosmos DB szolgáltatáskvótái
 
@@ -70,7 +70,7 @@ Az [Azure Cosmos-fiókot](how-to-manage-database-account.md) az Azure Portalon, 
 > [!NOTE]
 > A regionális feladatátvételek csak egy régiós írási fiókokra vonatkoznak. Többrégiós írási fiókok nem igényelnek, vagy bármilyen korlátozást az írási régió módosítása.
 
-Cosmos DB automatikusan rendszeres időközönként biztonsági mentést készít az adatokról. A biztonsági mentési adatmegőrzési időközökről és az ablakokról az [Online biztonsági mentés és az igény szerinti adat-visszaállítás az Azure Cosmos DB-ben.](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)
+Cosmos DB automatikusan rendszeres időközönként biztonsági mentést készít az adatokról. A biztonsági mentési adatmegőrzési időközökről és az ablakokról az [Online biztonsági mentés és az igény szerinti adat-visszaállítás az Azure Cosmos DB-ben.](online-backup-and-restore.md)
 
 ## <a name="per-account-limits"></a>Számlánkénti korlátok
 

@@ -16,12 +16,12 @@ ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59bf7ae5914f5cc886d95f25b36abccfdf09c4a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 661d4f622dce45aeca1d41ead60f05ccdcfbc9c9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331289"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406878"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átadó hitelesítés: gyakori kérdések
 
@@ -121,7 +121,7 @@ Ha az AD FS-ről (vagy más összevonási technológiákról) átmenő hitelesí
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>Használhatom az átadó hitelesítést többerdős Active Directory környezetben?
 
-Igen. A többerdős környezetek akkor támogatottak, ha az Active Directory-erdők között erdőszintű bizalmi kapcsolatok vannak, és ha a névutótag-útválasztás megfelelően van konfigurálva.
+Igen. A többerdős környezetek akkor támogatottak, ha az Active Directory-erdők között erdőszintű megbízhatósági kapcsolatok (kétirányúak) vannak, és ha a névutótag-útválasztás megfelelően van konfigurálva.
 
 ## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>Átmenő hitelesítés biztosít terheléselosztás több hitelesítési ügynökök között?
 

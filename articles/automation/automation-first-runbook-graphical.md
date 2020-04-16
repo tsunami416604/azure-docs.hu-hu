@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6bd360b2075c337e3ed3d69d84368d16571a9335
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcef0574e16e0b4d28755716c32670b00c65af14
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536054"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406092"
 ---
 # <a name="my-first-graphical-runbook"></a>Az első grafikus forgatókönyvem
 
 > [!div class="op_single_selector"]
 > * [Grafikus](automation-first-runbook-graphical.md)
-> * [Powershell](automation-first-runbook-textual-powershell.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell-munkafolyamat](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
@@ -100,7 +100,7 @@ A létrehozott runbook továbbra is Vázlat módban van. Az üzemi környezetben
 1. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. Csak a `Hello World` kimeneti adatfolyamban jelenik meg. 
 
     Vegye figyelembe, hogy a Streams ablaktábla más adatfolyamokat is megjeleníthet egy runbook-feladathoz, például a részletes és a hibaadatfolyamokat, ha a runbook ír nekik.
-1. Zárja be a Streams és a Feladat ablaktáblát a **MyFirstRunbook-Graphic** lapra való visszatéréshez.
+1. Zárja be a Streams és a Feladat ablaktáblát a MyFirstRunbook-Graphic lapra való visszatéréshez.
 1. A runbook összes feladatának megtekintéséhez válassza a **Feladatok** az **Erőforrások**csoportban lehetőséget. A Feladatok lap felsorolja a runbook által létrehozott összes feladatot. Csak egy feladat jelenik meg a listában, mivel csak egyszer futtatta a feladatot.
 1. Kattintson a feladat nevére, ha meg szeretné nyitni ugyanazt a feladat ablaktáblát, amelyet a runbook indításakor megtekintett. Ezen az ablaktáblán megtekintheti a runbookhoz létrehozott feladat részleteit.
 
@@ -126,7 +126,7 @@ Most, hogy rendelkezik egy változóaz előfizetés-azonosító, konfigurálhatj
 >[!NOTE]
 >A PowerShell runbookok, `Add-AzAccount` és `Connect-AzAccount` `Add-AzureRMAccount` aliasok. Vegye figyelembe, hogy ezek az aliasok nem érhetők el a grafikus runbookok. A grafikus runbookcsak `Connect-AzAccount`önmagát használhatja.
 
-1. Nyissa meg a runbookot, és válassza a **Szerkesztés** lehetőséget a **MyFirstRunbook-Graphic** lapon.
+1. Nyissa meg a runbookot, és válassza a **Szerkesztés** lehetőséget a MyFirstRunbook-Graphic lapon.
 1. Már nincs szükséged `Write Hello World to output` a bejegyzésre. Csak kattintson a három pontra, és válassza **a Törlés**lehetőséget.
 1. A Könyvtár vezérlőben bontsa ki az **ASSETS**elemet, majd **a Kapcsolatok elemet.** A `AzureRunAsConnection` Vászonhoz adás a **Hozzáadás a vászonhoz**lehetőséget választva.
 1. Nevezze `AzureRunAsConnection` át `Get Run As Connection`a névre.
@@ -185,7 +185,7 @@ Most hozzá kell `Start-AzVM` adnia egy tevékenységet a virtuális gép indít
 
 A runbook jelenleg elindítja a virtuális gép az `Start-AzVM` erőforráscsoportban, amely a parancsmaghoz megadott. A runbook hasznosabb lesz, ha a runbook indításakor a nevet és az erőforráscsoportot is megadja. Adjunk hozzá bemeneti paramétereket a runbookhoz, hogy ezt a funkciót biztosítsuk.
 
-1. A grafikus szerkesztő megnyitásához kattintson a **Szerkesztés** gombra a **MyFirstRunbook-Graphic** ablaktáblán.
+1. Nyissa meg a grafikus szerkesztőt a MyFirstRunbook-Graphic lap **Szerkesztés** gombjára kattintva.
 1. Válassza **a Bemenet és kimenet lehetőséget,** majd a Bemenet hozzáadása **lehetőséget** a Runbook bemeneti paraméter ablaktábla megnyitásához.
 1. Tegye a következő beállításokat a megadott mezőkben, majd kattintson az **OK**gombra.
    * **Név** - `VMName`adja meg.
@@ -243,7 +243,7 @@ Most már módosíthatja a runbookot, hogy csak akkor próbálja elindítani a v
 1. Az első `Write-Output` vezérlőhöz kattintson a **Paraméterek** elemre, és módosítsa a **Címke** értékét **A virtuális gép indítása értesítése**értékre.
 1. Az **InputObject**esetében módosítsa **az adatforrást** **PowerShell-kifejezésre**, és írja be a kifejezést. `$VMName successfully started.`
 1. A második `Write-Output` vezérlőn kattintson a **Paraméterek gombra,** és módosítsa a **Címke** értékét **A virtuális gép indítása sikertelen**értesítésértékre.
-1. Az **InputObject**esetében módosítsa **az adatforrást** **PowerShell-kifejezésre**, és írja be a kifejezést. `$VMName could not start.`
+1. Az **InputObject**esetében módosítsa **az adatforrást** **PowerShell-kifejezésre**, és írja be a kifejezést. `$VMName could not start`
 1. Hivatkozások létrehozása `Start-AzVM` `Notify VM Started` a `Notify VM Start Failed`és a csoportból.
 1. Jelölje ki `Notify VM Started` a hivatkozást, és módosítsa **a Feltétel alkalmazása igaz értékre.**
 1. A **Feltétel kifejezéshez**írja be a következőt: `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true`. Ez `Write-Output` a vezérlő most már csak akkor fut, ha a virtuális gép sikeresen elindul.
@@ -259,3 +259,5 @@ Most már módosíthatja a runbookot, hogy csak akkor próbálja elindítani a v
 * A grafikus szerzői jogról további információ: [Grafikus szerzői jog az Azure Automationben.](automation-graphical-authoring-intro.md)
 * A PowerShell-forgatókönyvek használatának megismeréséhez tekintse meg a következőt: [Az első PowerShell-runbookom](automation-first-runbook-textual-powershell.md).
 * A PowerShell-munkafolyamat-runbookok első [lépései: Az első PowerShell-munkafolyamat-runbook.](automation-first-runbook-textual.md)
+* A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

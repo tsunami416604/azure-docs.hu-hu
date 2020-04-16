@@ -11,15 +11,17 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: 9a1923057bc318869f491791520aacb4d0d17591
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/15/2020
+ms.openlocfilehash: ecfdf2a11f31c18064be9a607f2bb3938d26e661
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346622"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414901"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Saját üzemeltetésű infravörös kapcsolat konfigurálása az Azure-SSIS ir proxyjaként az Azure Data Factoryban
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez a cikk ismerteti, hogyan futtatható az SQL Server Integration Services (SSIS) csomagok egy Azure-SSIS-integrációs runtime (Azure-SSIS IR) az Azure Data Factory egy saját üzemeltetésű integrációs futásidejű (saját üzemeltetésű IR) proxyként konfigurált. 
 
@@ -52,7 +54,7 @@ Végül töltse le és telepítse a saját üzemeltetésű infravörös szolgál
 
 Ha még nem tette meg, hozzon létre egy Azure Blob-storage-kapcsolt szolgáltatást ugyanabban az adat-előszobában, ahol az Azure-SSIS IR van beállítva. Ehhez olvassa el [Az Azure-adatokhoz kapcsolt szolgáltatás létrehozása](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)című témakört. Ügyeljen arra, hogy tegye a következőket:
 - Az **Adattárban**válassza az **Azure Blob Storage lehetőséget.**  
-- Az **integrációs futásidejű csatlakozáshoz**válassza az **AutoResolveIntegrationRuntime** lehetőséget (nem az Azure-SSIS IR-t vagy a saját üzemeltetésű infravörös modult), mert az alapértelmezett Azure IR-t használjuk az Azure Blob Storage hozzáférési hitelesítő adatainak lehívásához.  
+- A **Connect keresztül integrációs futásidejű,** válassza **autoresolveintegrationruntime** (nem az Azure-SSIS IR vagy a saját üzemeltetésű IR), mert az alapértelmezett Azure IR-hozzáféréssel az Azure Blob Storage hozzáférési hitelesítő adatok lekéréséhez.
 - A **Hitelesítési módszer**hez válassza **a Fiókkulcs**, **a SAS URI**vagy a **Szolgáltatásnév lehetőséget.**  
 
     >[!TIP]
@@ -171,7 +173,7 @@ Ha erős titkosítást/biztonságosabb hálózati protokollt (TLS 1.2) kell hasz
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-- Jelenleg csak az ODBC (OPENBC)/OLEDB/Flat File forrásokkal rendelkező adatfolyam-feladatok támogatottak. 
+- Jelenleg csak az ODBC(ODBC)/OLEDB/Flat File sources vagy OLEDB célállomással rendelkező adatfolyam-feladatok támogatottak. 
 - Jelenleg csak a *Fiókkulccsal,* *a Megosztott hozzáférés-aláírás (SAS) URI-val*vagy az egyszerű *szolgáltatáshitelesítéssel* konfigurált Azure Blob-tárolóhoz kapcsolódó szolgáltatások támogatottak.
 - Az OLEDB-forrás *parametermapping-ja* még nem támogatott. Kerülő megoldásként használja az *SQL Command From Variable* metódust *AccessMode-ként,* és a *Kifejezés* segítségével szúrja be a változókat/paramétereket egy SQL parancsba. Szemléltetésképpen tekintse meg a *ParameterMappingSample.dtsx* csomagot, amely a nyilvános előzetes verziótároló *SelfHostedIRProxy/Limitations* mappájában található. Az Azure Storage Explorer használatával a fenti SAS URI-kiszolgáló megadásával csatlakozhat a nyilvános előzetes verziós tárolóhoz.
 

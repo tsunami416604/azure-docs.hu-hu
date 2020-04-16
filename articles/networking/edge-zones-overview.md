@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: ganesr
-ms.openlocfilehash: 2f2311adc231eac4260e26f0d5d1f2115f43d2eb
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: aaa849633591bfd34a9fca026c820ec2f9137844
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618714"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410843"
 ---
 # <a name="about-azure-edge-zones---preview"></a>Az Azure Edge zónák – előzetes verzió
 
@@ -38,7 +38,7 @@ Az Azure Edge zónák három különálló ajánlatban érkeznek:
 
 ![Szegélyzónák](./media/edge-zones-overview/edge-zones.png "Szegélyzónák")
 
-Az Azure Edge zónák az Azure kis helyigényű bővítményei, amelyek az Azure-régióktól távol lévő népességi központokba kerülnek. Az Azure Edge-zónák támogatják a virtuális gépeket, a tárolókat és az Azure-szolgáltatások bizonyos készletét, amelyek lehetővé teszik a késésérzékeny és átviteli igényű alkalmazások futtatását a végfelhasználók közelében. Az Azure Edge-zónák a Microsoft globális hálózatának részét képezik, és biztonságos, megbízható és nagy sávszélességű kapcsolatot biztosítanak a felhasználóhoz közeli Edge Zone-ban futó alkalmazások és az Azure-régiókon belül futó Azure-szolgáltatások teljes készlete között. Az Azure Edge-zónák tulajdonosa és üzemeltetője a Microsoft, és lehetővé teszi, hogy ugyanazokat az Azure-eszközöket és portálokat használja a szolgáltatások kezeléséhez és üzembe helyezéséhez az Edge zónákban.
+Az Azure Edge zónák az Azure kis helyigényű bővítményei, amelyek az Azure-régióktól távol lévő népességi központokba kerülnek. Az Azure Edge-zónák támogatják a virtuális gépeket, a tárolókat és az Azure-szolgáltatások kiválasztott készletét, amelyek lehetővé teszik a késésérzékeny és átviteli igényű alkalmazások futtatását a végfelhasználók közelében. Az Azure Edge-zónák a Microsoft globális hálózatának részét képezik, és biztonságos, megbízható és nagy sávszélességű kapcsolatot biztosítanak a felhasználóhoz közeli Edge Zone-ban futó alkalmazások és az Azure-régiókon belül futó Azure-szolgáltatások teljes készlete között. Az Azure Edge-zónák tulajdonosa és üzemeltetője a Microsoft, és lehetővé teszi, hogy ugyanazokat az Azure-eszközöket és portálokat használja a szolgáltatások kezeléséhez és üzembe helyezéséhez az Edge zónákban.
 
 A tipikus használati esetek a következők:
 

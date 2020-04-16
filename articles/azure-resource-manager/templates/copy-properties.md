@@ -2,13 +2,13 @@
 title: Egy tulajdonság több példányának definiálása
 description: Az Azure Resource Manager-sablonban használt másolási műveletet többször idotere, amikor egy erőforráson hoz létre egy tulajdonságot.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: e86d38b0e5d2e39d54b3c419b6eebdcda74022db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258107"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391341"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Tulajdonság ismétlése ARM sablonokban
 
@@ -30,7 +30,9 @@ A másolási elem általános formátuma a következő:
 ]
 ```
 
-A **névhez**adja meg a létrehozni kívánt erőforrástulajdonság nevét. A **Count** tulajdonság megadja a tulajdonsághoz kívánt ismétlések számát.
+A **névhez**adja meg a létrehozni kívánt erőforrástulajdonság nevét.
+
+A **Count** tulajdonság megadja a tulajdonsághoz kívánt ismétlések számát.
 
 A **bemeneti** tulajdonság határozza meg az ismétlődő tulajdonságokat. A **bemeneti** tulajdonság értékéből létrehozott elemek tömbjét hozza létre.
 
@@ -78,11 +80,7 @@ A következő példa bemutatja, hogyan alkalmazható `copy` a dataDisks tulajdon
 }
 ```
 
-Figyelje meg, hogy egy tulajdonságiteráción belül történő használat során `copyIndex` meg kell adnia az iteráció nevét.
-
-> [!NOTE]
-> A tulajdonságismétlés egy eltolási argumentumot is támogat. Az eltolásnak az iteráció neve után kell származnia, például copyIndex('dataDisks', 1).
->
+Figyelje meg, hogy egy tulajdonságiteráción belül történő használat során `copyIndex` meg kell adnia az iteráció nevét. A tulajdonságismétlés egy eltolási argumentumot is támogat. Az eltolásnak az iteráció neve után kell származnia, például copyIndex('dataDisks', 1).
 
 Az Erőforrás-kezelő `copy` kibővíti a tömböt az üzembe helyezés során. A tömb neve lesz a tulajdonság neve. A bemeneti értékek válnak az objektum tulajdonságait. Az üzembe helyezett sablon a következőlesz:
 
@@ -111,6 +109,66 @@ Az Erőforrás-kezelő `copy` kibővíti a tömböt az üzembe helyezés során.
         }
       ],
       ...
+```
+
+A másolási művelet akkor hasznos, ha tömbökkel dolgozik, mert a tömb minden elemén végighaladhat. A `length` tömb függvényével adja meg az ismétlések számát, és `copyIndex` olvassa el a tömb aktuális indexét.
+
+A következő példasablon létrehoz egy feladatátvételi csoportot a tömbként átadott adatbázisokhoz.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "primaryServerName": {
+            "type": "string"
+        },
+        "secondaryServerName": {
+            "type": "string"
+        },
+        "databaseNames": {
+            "type": "array",
+            "defaultValue": [
+                "mydb1",
+                "mydb2",
+                "mydb3"
+            ]
+        }
+    },
+    "variables": {
+        "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Sql/servers/failoverGroups",
+            "apiVersion": "2015-05-01-preview",
+            "name": "[variables('failoverName')]",
+            "properties": {
+                "readWriteEndpoint": {
+                    "failoverPolicy": "Automatic",
+                    "failoverWithDataLossGracePeriodMinutes": 60
+                },
+                "readOnlyEndpoint": {
+                    "failoverPolicy": "Disabled"
+                },
+                "partnerServers": [
+                    {
+                        "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
+                    }
+                ],
+                "copy": [
+                    {
+                        "name": "databases",
+                        "count": "[length(parameters('databaseNames'))]",
+                        "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {
+    }
+}
 ```
 
 A másolási elem egy tömb, így az erőforráshoz több tulajdonságot is megadhat.

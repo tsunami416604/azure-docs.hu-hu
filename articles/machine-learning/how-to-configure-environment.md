@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5f46f5af723e1245afbc6bca90d25ae9036d646
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472426"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399009"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztői környezet konfigurálása az Azure Machine Learninghez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -201,7 +201,7 @@ Ha helyi számítógépet használ (amely egyben távoli virtuális gép is lehe
     pip install <new package>
     ```
 
-### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter notebookok
+### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter-notebookok
 
 Jupyter Notebooks része a [Jupyter Project](https://jupyter.org/). Interaktív kódolási élményt nyújtanak, ahol olyan dokumentumokat hozhat létre, amelyek az élő kódot narratív szöveggel és grafikával keverik. A Jupyter Notebooks nagyszerű módja annak, hogy megossza az eredményeket másokkal, mivel a kódszakaszok kimenetét mentheti a dokumentumban. A Jupyter notebookokat számos platformra telepítheti.
 
@@ -243,7 +243,7 @@ Ezeknek az összetevőknek a jupyteri notebookkörnyezetben való engedélyezés
 
 1. Ha a Jupyter-jegyzetfüzetet az Azure Machine Learning-munkaterület használatára szeretné konfigurálni, nyissa meg a [Munkaterület konfigurációs fájllétrehozása](#workspace) szakaszt.
 
-### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio kód
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
 Visual Studio Code egy nagyon népszerű platformfüggetlen kód szerkesztő, amely támogatja a széles körű programozási nyelvek és eszközök révén elérhető kiterjesztések a [Visual Studio piacon.](https://marketplace.visualstudio.com/vscode) Az [Azure Machine Learning-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) telepíti a [Python-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-python.python) a kódoláshoz minden típusú Python-környezetben (virtuális, Anaconda stb.). Emellett kényelmi funkciókat biztosít az Azure Machine Learning-erőforrásokkal való munkához és az Azure Machine Learning-kísérletek futtatásához anélkül, hogy elhagyná a Visual Studio-kódot.
 
@@ -288,7 +288,7 @@ Használja ezeket a beállításokat:
 | Beállítás |A következőkre vonatkozik:| Érték |
 |----|---|---|
 | Fürt neve |Mindig| aclustername |
-| A Databricks futtatókörnyezete |Mindig|Nem ML Runtime 6.0 (scala 2.11, szikra 2.4.3) |
+| A Databricks futtatókörnyezete |Mindig|Nem ML Runtime 6.5 (scala 2.11, szikra 2.4.3) |
 | Python-verzió |Mindig| 3 |
 | Munkavállalók |Mindig| 2 vagy magasabb |
 | Munkavégző csomópont virtuálisgép-típusai <br>(meghatározza az egyidejű ismétlések maximális számának meghatározását) |Automatizált ML<br>Csak| Memória optimalizált virtuális gép előnyben részesített |
@@ -365,7 +365,7 @@ A konfigurációs fájlt háromféleképpen hozhatja létre:
 
 * **Töltse le a fájlt:** Az [Azure Portalon](https://ms.portal.azure.com)válassza **a Config.json letöltése lehetőséget** a munkaterület Áttekintés **szakaszában.**
 
-     ![Azure portál](./media/how-to-configure-environment/configure.png)
+     ![Azure Portal](./media/how-to-configure-environment/configure.png)
 
 * **A fájl létrehozása programozott módon:** A következő kódrészletben az előfizetés-azonosító, az erőforráscsoport és a munkaterület nevének megadásával csatlakozhat egy munkaterülethez. Ezután menti a munkaterület konfigurációját a fájlba:
 

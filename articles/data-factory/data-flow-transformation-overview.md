@@ -7,28 +7,30 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 94f7277c1b741fb5ef6d2807fabbb266c0109415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68423bee6096357add9b5d4b107c984ac67c9cab
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086925"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81412970"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Adatfolyam-transzformáció leképezése – áttekintés
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Az alábbi lista az adatfolyam leképezése jelenleg támogatott átalakításokat tartalmazza. Kattintson az egyes átalakítások, hogy megtanulják a konfigurációrészleteit.
 
-| Név | Kategória | Leírás |
+| Name (Név) | Kategória | Leírás |
 | ---- | -------- | ----------- |
-| [Összesített](data-flow-aggregate.md) | Sémamódosító | Definiáljon különböző típusú összesítéseket, például SZUM, MIN, MAX és DARAB meglévő vagy számított oszlopok szerint csoportosítva. | 
+| [Összesítés](data-flow-aggregate.md) | Sémamódosító | Definiáljon különböző típusú összesítéseket, például SZUM, MIN, MAX és DARAB meglévő vagy számított oszlopok szerint csoportosítva. | 
 | [Sor módosítása](data-flow-alter-row.md) | Sormódosító | Állítson be beszúrási, törlési, frissítési és upsert házirendeket a sorokra. |
 | [Feltételes felosztás](data-flow-conditional-split.md) | Több bemenet/kimenet | Adatsorok at irányítson különböző adatfolyamokba az egyeztetési feltételek alapján. |
 | [Származtatott oszlop](data-flow-derived-column.md) | Sémamódosító | új oszlopokat hozhat létre, vagy módosíthatja a meglévő mezőket az adatfolyam-kifejezés nyelvével. | 
 | [Létezik](data-flow-exists.md) | Több bemenet/kimenet | Ellenőrizze, hogy az adatok léteznek-e más forrásban vagy adatfolyamban. | 
 | [Szűrő](data-flow-filter.md) | Sormódosító | Sor szűrése feltétel alapján. |
-| [Lelapul](data-flow-flatten.md) | Sémamódosító |  A hierarchikus struktúrákon , például a JSON-on belül vegye be a tömbértékeket, és állítsa le őket az egyes sorokba. |
+| [Egybesimítás](data-flow-flatten.md) | Sémamódosító |  A hierarchikus struktúrákon , például a JSON-on belül vegye be a tömbértékeket, és állítsa le őket az egyes sorokba. |
 | [Csatlakozás](data-flow-join.md) | Több bemenet/kimenet |  Két forrásból vagy adatfolyamból származó adatok kombinálása. |
-| [Keresési](data-flow-lookup.md) | Több bemenet/kimenet | Hivatkozási adatok egy másik forrásból. |
+| [Keresés](data-flow-lookup.md) | Több bemenet/kimenet | Hivatkozási adatok egy másik forrásból. |
 | [Új ág](data-flow-new-branch.md) | Több bemenet/kimenet | Több művelet- és átalakítást alkalmazhat ugyanarra az adatfolyamra. |
 | [Kimutatás](data-flow-pivot.md) | Sémamódosító | Olyan összesítés, amelyben egy vagy több csoportosítási oszlop különböző sorértékeit egyedi oszlopokká alakítják át. |
 | [Kiválasztás](data-flow-select.md) | Sémamódosító | Aliasoszlopok és adatfolyamnevek, valamint oszlopok eldobása vagy átrendezése |

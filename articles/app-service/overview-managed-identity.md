@@ -3,24 +3,25 @@ title: Felügyelt identitások
 description: Ismerje meg, hogyan működnek a felügyelt identitások az Azure App Service és az Azure Functions szolgáltatásban, hogyan konfigurálhat egy felügyelt identitást, és hogyan hozhat létre jogkivonatot egy háttér-erőforráshoz.
 author: mattchenderson
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/14/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6e3169f2bfcba0a02af1490f875cbab8a14d02f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 875d2bbebdfa95c6d180979399d876eb2afc01b4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280026"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392529"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata az App Service és az Azure Functions szolgáltatáshoz
 
 > [!Important] 
 > Az App Service és az Azure Functions felügyelt identitások nem a várt módon fognak elmélkedni, ha az alkalmazás áttelepül az előfizetések/bérlők között. Az alkalmazásnak új identitást kell beszereznie, amely a funkció letiltásával és újbóli engedélyezésével végezhető el. Lásd: Az [identitás eltávolítása](#remove) alább. Az alsóbb rétegbeli erőforrásoknak is frissíteniük kell a hozzáférési házirendeket az új identitás használatához.
 
-Ez a témakör bemutatja, hogyan hozhat létre felügyelt identitást az App Service- és Az Azure Functions-alkalmazásokhoz, és hogyan használhatja azt más erőforrások eléréséhez. Az Azure Active Directory (AAD) felügyelt identitása lehetővé teszi, hogy az alkalmazás egyszerűen hozzáférhessen más AAD-védelemmel ellátott erőforrásokhoz, például az Azure Key Vaulthoz. Az identitás t an azure platform kezeli, és nem követeli meg, hogy kiépítse vagy forgassa a titkos kulcsokat. A felügyelt identitások Az AAD-ban további információkért lásd: [Felügyelt identitások az Azure-erőforrásokhoz.](../active-directory/managed-identities-azure-resources/overview.md)
+Ez a témakör bemutatja, hogyan hozhat létre felügyelt identitást az App Service- és Az Azure Functions-alkalmazásokhoz, és hogyan használhatja azt más erőforrások eléréséhez. Az Azure Active Directory (Azure AD) felügyelt identitása lehetővé teszi, hogy az alkalmazás egyszerűen hozzáférhessen más Azure AD-védett erőforrásokhoz, például az Azure Key Vaulthoz. Az identitás t an azure platform kezeli, és nem követeli meg, hogy kiépítse vagy forgassa a titkos kulcsokat. Az Azure AD felügyelt identitásairól az [Azure-erőforrások felügyelt identitásai.](../active-directory/managed-identities-azure-resources/overview.md)
 
-A kérelem kétféle identitást kaphat: 
+A kérelem kétféle identitást kaphat:
+
 - A **rendszer által hozzárendelt identitás** az alkalmazáshoz van kötve, és törlődik, ha az alkalmazás törlődik. Egy alkalmazás csak egy rendszer-hozzárendelt identitással rendelkezhet.
 - A **felhasználó által hozzárendelt identitás** egy önálló Azure-erőforrás, amely hozzárendelhető az alkalmazáshoz. Egy alkalmazás több felhasználó által hozzárendelt identitással is rendelkezhet.
 
@@ -38,7 +39,7 @@ Felügyelt identitás beállítása a portálon, először hozzon létre egy alk
 
 3. Válassza **az Identitás**lehetőséget.
 
-4. A **Rendszer hozzárendelt** lapján kapcsolja be az **Állapot szolgáltatást** **bekapcsolva**állásra. Kattintson a **Mentés** gombra.
+4. A **Rendszer hozzárendelt** lapján kapcsolja be az **Állapot szolgáltatást** **bekapcsolva**állásra. Kattintson a **Save** (Mentés) gombra.
 
     ![Felügyelt identitás az App Service-ben](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
@@ -57,6 +58,7 @@ A következő lépések végigvezetik egy webalkalmazás létrehozásán és ide
     ```azurecli-interactive
     az login
     ```
+
 2. Hozzon létre egy webalkalmazást a CLI használatával. A CLI App Service szolgáltatással való használatának további példáit az [App Service CLI-mintái című témakörben talál:](../app-service/samples-cli.md)
 
     ```azurecli-interactive
@@ -84,10 +86,10 @@ A következő lépések végigvezetik egy webalkalmazás létrehozásán, és id
     ```azurepowershell-interactive
     # Create a resource group.
     New-AzResourceGroup -Name myResourceGroup -Location $location
-    
+
     # Create an App Service plan in Free tier.
     New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
-    
+
     # Create a web app.
     New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
@@ -103,18 +105,20 @@ A következő lépések végigvezetik egy webalkalmazás létrehozásán, és id
 Az Azure Resource Manager-sablon segítségével automatizálható az Azure-erőforrások üzembe helyezésének. Az App Service és a Functions szolgáltatásban való üzembe helyezésről az [Erőforrás-telepítés automatizálása az App Service-ben](../app-service/deploy-complex-application-predictably.md) és [az erőforrások üzembe helyezésének automatizálása az Azure Functions ben.](../azure-functions/functions-infrastructure-as-code.md)
 
 Bármilyen típusú `Microsoft.Web/sites` erőforrás létrehozható identitással, ha a következő tulajdonságot is beírja az erőforrás-definícióba:
+
 ```json
 "identity": {
     "type": "SystemAssigned"
-}    
+}
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Egy alkalmazás egyszerre rendelkezhet rendszer- és felhasználóhoz rendelt identitásokkal is. Ebben az esetben `type` az ingatlan`SystemAssigned,UserAssigned`
 
 A rendszer által hozzárendelt típus hozzáadása lekéri az Azure-t, hogy hozza létre és kezelje az alkalmazás identitását.
 
 Egy webalkalmazás például a következőkre néz ki:
+
 ```json
 {
     "apiVersion": "2016-08-01",
@@ -138,6 +142,7 @@ Egy webalkalmazás például a következőkre néz ki:
 ```
 
 A hely létrehozásakor a következő további tulajdonságokkal rendelkezik:
+
 ```json
 "identity": {
     "type": "SystemAssigned",
@@ -146,8 +151,7 @@ A hely létrehozásakor a következő további tulajdonságokkal rendelkezik:
 }
 ```
 
-A tenantId tulajdonság azonosítja, hogy az identitás melyik AAD-bérlőhöz tartozik. A rendszerazonosító az alkalmazás új identitásának egyedi azonosítója. Az AAD-n belül az egyszerű szolgáltatás ugyanaz a név, amelyet az App Service- vagy az Azure Functions-példánynak adott.
-
+A tenantId tulajdonság azonosítja, hogy az Azure AD-bérlő az identitás tartozik. A rendszerazonosító az alkalmazás új identitásának egyedi azonosítója. Az Azure AD-n belül az egyszerű szolgáltatás ugyanaz a név, amelyet az App Service- vagy az Azure Functions-példánynak adott.
 
 ## <a name="add-a-user-assigned-identity"></a>Felhasználó által hozzárendelt identitás hozzáadása
 
@@ -167,7 +171,7 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 
 5. A **Felhasználó hozzárendelt** lapján kattintson a **Hozzáadás**gombra.
 
-6. Keresse meg a korábban létrehozott identitást, és jelölje ki. Kattintson a **Hozzáadás** gombra.
+6. Keresse meg a korábban létrehozott identitást, és jelölje ki. Kattintson a **Hozzáadás** parancsra.
 
     ![Felügyelt identitás az App Service-ben](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -176,21 +180,23 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 Az Azure Resource Manager-sablon segítségével automatizálható az Azure-erőforrások üzembe helyezésének. Az App Service és a Functions szolgáltatásban való üzembe helyezésről az [Erőforrás-telepítés automatizálása az App Service-ben](../app-service/deploy-complex-application-predictably.md) és [az erőforrások üzembe helyezésének automatizálása az Azure Functions ben.](../azure-functions/functions-infrastructure-as-code.md)
 
 Bármilyen típusú `Microsoft.Web/sites` erőforrás létrehozható identitással, ha a következő blokkot `<RESOURCEID>` beírja az erőforrás-definícióba, és a kívánt identitás erőforrásazonosítójával helyettesíti:
+
 ```json
 "identity": {
     "type": "UserAssigned",
     "userAssignedIdentities": {
         "<RESOURCEID>": {}
     }
-}    
+}
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Egy alkalmazás egyszerre rendelkezhet rendszer- és felhasználóhoz rendelt identitásokkal is. Ebben az esetben `type` az ingatlan`SystemAssigned,UserAssigned`
 
 A felhasználó által hozzárendelt típus hozzáadása lekéri az Azure-t, hogy használja az alkalmazáshoz megadott felhasználó által hozzárendelt identitást.
 
 Egy webalkalmazás például a következőkre néz ki:
+
 ```json
 {
     "apiVersion": "2016-08-01",
@@ -218,6 +224,7 @@ Egy webalkalmazás például a következőkre néz ki:
 ```
 
 A hely létrehozásakor a következő további tulajdonságokkal rendelkezik:
+
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -230,12 +237,11 @@ A hely létrehozásakor a következő további tulajdonságokkal rendelkezik:
 }
 ```
 
-A rendszerazonosító az AAD-felügyelethez használt identitás egyedi azonosítója. Az ügyfélazonosító az alkalmazás új identitásának egyedi azonosítója, amely a futásidejű hívások során használandó identitás megadására szolgál.
-
+A rendszeri azonosító az Azure AD-felügyelethez használt identitás egyedi azonosítója. Az ügyfélazonosító az alkalmazás új identitásának egyedi azonosítója, amely a futásidejű hívások során használandó identitás megadására szolgál.
 
 ## <a name="obtain-tokens-for-azure-resources"></a>Az Azure-erőforrások jogkivonatai
 
-Az alkalmazások a felügyelt identitás segítségével jogkivonatok eléréséhez más, AAD által védett erőforrások, például az Azure Key Vault eléréséhez. Ezek a jogkivonatok az erőforráshoz hozzáférő alkalmazást jelölik, és nem az alkalmazás bármely felhasználóját. 
+Egy alkalmazás a felügyelt identitás használatával get jogkivonatok eléréséhez más erőforrások által védett Azure AD, például az Azure Key Vault. Ezek a jogkivonatok az erőforráshoz hozzáférő alkalmazást jelölik, és nem az alkalmazás bármely felhasználóját. 
 
 Előfordulhat, hogy konfigurálnia kell a célerőforrást az alkalmazásból való hozzáférés engedélyezéséhez. Ha például jogkivonatot kér a Key Vault eléréséhez, meg kell győződnie arról, hogy hozzáadott egy hozzáférési szabályzatot, amely tartalmazza az alkalmazás identitását. Ellenkező esetben a Key Vault-hívások at elutasítjuk, még akkor is, ha tartalmazzák a jogkivonatot. Ha többet szeretne megtudni arról, hogy mely erőforrások támogatják az Azure Active Directory-tokeneket, olvassa el az [Azure AD-hitelesítést támogató Azure-szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)című témakört.
 
@@ -248,56 +254,61 @@ Van egy egyszerű REST protokoll egy jogkivonat beszerzéséhez az App Service �
 
 A felügyelt identitással rendelkező alkalmazások két környezeti változót határoztak meg:
 
-- MSI_ENDPOINT – a helyi jogkivonat-szolgáltatás URL-címe.
-- MSI_SECRET – a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadások csökkentésére szolgáló fejléc. Az értéket a platform elforgatja.
+- IDENTITY_ENDPOINT – a helyi jogkivonat-szolgáltatás URL-címe.
+- IDENTITY_HEADER – a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadások csökkentésére szolgáló fejléc. Az értéket a platform elforgatja.
 
-A **MSI_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat kérhet. Egy erőforrás jogkivonatának lekéréséhez http GET-kérelmet kell benyújtania erre a végpontra, beleértve a következő paramétereket:
+A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat kérhet. Egy erőforrás jogkivonatának lekéréséhez http GET-kérelmet kell benyújtania erre a végpontra, beleértve a következő paramétereket:
 
-> |Paraméter neve|A|Leírás|
-> |-----|-----|-----|
-> |Erőforrás|Lekérdezés|Annak az erőforrásnak az AAD-erőforrás URI-ja, amelyhez jogkivonatot kell beszerezni. Ez lehet az Egyik [Azure-szolgáltatások, amelyek támogatják az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármely más erőforrás URI.|
-> |api-verzió|Lekérdezés|A jogkivonat API-t használni kell. A "2017-09-01" jelenleg az egyetlen támogatott verzió.|
-> |titkos kód|Fejléc|A MSI_SECRET környezeti változó értéke. Ez a fejléc a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadások csökkentésére szolgál.|
-> |ügyfélazonosító|Lekérdezés|(Nem kötelező, kivéve, ha a felhasználó által kijelölt) A használandó felhasználó által hozzárendelt identitás azonosítója. Ha nincs megadva, a rendszer által hozzárendelt identitás t használja a rendszer.|
+> | Paraméter neve    | A     | Leírás                                                                                                                                                                                                                                                                                                                                |
+> |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> | Erőforrás          | Lekérdezés  | Az erőforrás Azure AD-erőforrás URI-ja, amelyhez jogkivonatot kell beszerezni. Ez lehet az Egyik [Azure-szolgáltatások, amelyek támogatják az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármely más erőforrás URI.    |
+> | api-verzió       | Lekérdezés  | A jogkivonat API-t használni kell. Kérjük, használja a "2019-08-01" vagy újabb.                                                                                                                                                                                                                                                                 |
+> | X-IDENTITY-FEJLÉC | Fejléc | A IDENTITY_HEADER környezeti változó értéke. Ez a fejléc a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadások csökkentésére szolgál.                                                                                                                                                                                                    |
+> | client_id         | Lekérdezés  | (Nem kötelező) A használandó felhasználó által hozzárendelt identitás ügyfélazonosítója. Nem használható olyan kérésre, `mi_res_id`amely `object_id`tartalmazza `principal_id`a , vagy a . Ha az összes azonosító`client_id` `principal_id`paraméter `object_id`( `mi_res_id`, , , és ) nincs megadva, a rendszer által hozzárendelt identitás lesz használatban.                                             |
+> | principal_id      | Lekérdezés  | (Nem kötelező) A használandó felhasználó által hozzárendelt identitás fő azonosítója. `object_id`egy olyan alias, amelyet helyette használhat. Nem használható olyan kérésre, amely client_id, mi_res_id vagy object_id tartalmaz. Ha az összes azonosító`client_id` `principal_id`paraméter `object_id`( `mi_res_id`, , , és ) nincs megadva, a rendszer által hozzárendelt identitás lesz használatban. |
+> | mi_res_id         | Lekérdezés  | (Nem kötelező) A felhasználó által hozzárendelt identitás Azure-erőforrásazonosítója. Nem használható olyan kérésre, `client_id`amely `object_id`tartalmazza `principal_id`a , vagy a . Ha az összes azonosító`client_id` `principal_id`paraméter `object_id`( `mi_res_id`, , , és ) nincs megadva, a rendszer által hozzárendelt identitás lesz használatban.                                      |
 
 > [!IMPORTANT]
-> Ha a felhasználó által hozzárendelt identitások jogkivonatait próbálja `clientid` megszerezni, meg kell adnia a tulajdonságot. Ellenkező esetben a jogkivonat-szolgáltatás megkísérli a rendszer által hozzárendelt identitás jogkivonatának beszerzését, amely létezhet vagy nem létezik.
+> Ha a felhasználó által hozzárendelt identitások jogkivonatait próbálja megszerezni, meg kell adnia a választható tulajdonságok egyikét. Ellenkező esetben a jogkivonat-szolgáltatás megkísérli a rendszer által hozzárendelt identitás jogkivonatának beszerzését, amely létezhet vagy nem létezik.
 
 A sikeres 200 OK válasz tartalmaz egy JSON-törzset a következő tulajdonságokkal:
 
-> |Tulajdonság neve|Leírás|
-> |-------------|----------|
-> |access_token|A kért hozzáférési jogkivonat. A hívó webszolgáltatás használhatja ezt a jogkivonatot a fogadó webszolgáltatás hitelesítéséhez.|
-> |expires_on|A hozzáférési jogkivonat lejártának időpontja. A dátum az 1970-01-01T0:0:0Z UTC és a lejárati idő között eltelt másodpercek számaként jelenik meg. Ez az érték határozza meg a gyorsítótárazott jogkivonatok élettartamát.|
-> |Erőforrás|A fogadó webszolgáltatás alkalmazásazonosító-URI-ja.|
-> |token_type|A token típusának értékét jelzi. Az Azure AD által támogatott egyetlen típus a bemutatóra. A tulajdonosi jogkivonatokról további információt [az OAuth 2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat-használat (RFC 6750) című](https://www.rfc-editor.org/rfc/rfc6750.txt)témakörben talál.|
+> | Tulajdonság neve | Leírás                                                                                                                                                                                                                                        |
+> |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> | access_token  | A kért hozzáférési jogkivonat. A hívó webszolgáltatás használhatja ezt a jogkivonatot a fogadó webszolgáltatás hitelesítéséhez.                                                                                                                               |
+> | client_id     | A használt identitás ügyfélazonosítója.                                                                                                                                                                                                       |
+> | expires_on    | A hozzáférési jogkivonat lejáratának időtartománya. A dátum az "1970-01-01T0:0:0Z UTC" (a jogkivonat jogcímének `exp` megfelelő) másodpercek számaként jelenik meg.                                                                                |
+> | not_before    | A hozzáférési jogkivonat érvénybe lépésének és elfogadott időtartamának. A dátum az "1970-01-01T0:0:0Z UTC" (a jogkivonat jogcímének `nbf` megfelelő) másodpercek számaként jelenik meg.                                                      |
+> | Erőforrás      | Az erőforrás, amelyhez hozzáférési jogkivonatot kértek, amely megfelel a `resource` kérelem lekérdezési karakterlánc paraméterének.                                                                                                                               |
+> | token_type    | A token típusának értékét jelzi. Az Azure AD által támogatott egyetlen típus az FBearer. A tulajdonosi jogkivonatokról további információt [az OAuth 2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat-használat (RFC 6750) című](https://www.rfc-editor.org/rfc/rfc6750.txt)témakörben talál. |
 
-Ez a válasz megegyezik az [AAD szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelemre adott válaszsal.](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token)
+Ez a válasz megegyezik [az Azure AD szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelemre adott válaszsal.](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)
 
 > [!NOTE]
-> A környezeti változók a folyamat első indításakor vannak beállítva, így az alkalmazás felügyelt identitásának engedélyezése után előfordulhat, hogy újra kell indítania az alkalmazást, vagy újra kell telepítenie a kódot, mielőtt `MSI_ENDPOINT` elérhető `MSI_SECRET` vé válik a kód számára.
+> A protokoll egy régebbi verziója a "2017-09-01" API-verzióval a fejlécet használta, `secret` `X-IDENTITY-HEADER` és csak a `clientid` felhasználó által hozzárendelt tulajdonságot fogadta el. Időbélyeg `expires_on` formátumban is visszaadta. MSI_ENDPOINT IDENTITY_ENDPOINT aliasaként is használható, MSI_SECRET pedig IDENTITY_HEADER aliasként.
 
 ### <a name="rest-protocol-examples"></a>Példák REST protokollra
 
 Egy példakérés a következőkre néz ki:
 
-```
-GET /MSI/token?resource=https://vault.azure.net&api-version=2017-09-01 HTTP/1.1
+```http
+GET /MSI/token?resource=https://vault.azure.net&api-version=2019-08-01 HTTP/1.1
 Host: localhost:4141
-Secret: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
+X-IDENTITY-HEADER: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
 ```
 
 A mintaválasz pedig a következőnek tűnhet:
 
-```
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
     "access_token": "eyJ0eXAi…",
-    "expires_on": "09/14/2017 00:00:00 PM +00:00",
+    "expires_on": "1586984735",
     "resource": "https://vault.azure.net",
-    "token_type": "Bearer"
+    "token_type": "Bearer",
+    "client_id": "5E29463D-71DA-4FE0-8E69-999B57DB23B0"
 }
 ```
 
@@ -313,21 +324,21 @@ private readonly HttpClient _client;
 // ...
 public async Task<HttpResponseMessage> GetToken(string resource)  {
     var request = new HttpRequestMessage(HttpMethod.Get, 
-        String.Format("{0}/?resource={1}&api-version=2017-09-01", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource));
-    request.Headers.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
+        String.Format("{0}/?resource={1}&api-version=2019-08-01", Environment.GetEnvironmentVariable("IDENTITY_ENDPOINT"), resource));
+    request.Headers.Add("X-IDENTITY-HEADER", Environment.GetEnvironmentVariable("IDENTITY_HEADER"));
     return await _client.SendAsync(request);
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
 const getToken = function(resource, cb) {
     let options = {
-        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=2017-09-01`,
+        uri: `${process.env["IDENTITY_ENDPOINT"]}/?resource=${resource}&api-version=2019-08-01`,
         headers: {
-            'Secret': process.env["MSI_SECRET"]
+            'X-IDENTITY-HEADER': process.env["IDENTITY_HEADER"]
         }
     };
     rp(options)
@@ -341,12 +352,12 @@ const getToken = function(resource, cb) {
 import os
 import requests
 
-msi_endpoint = os.environ["MSI_ENDPOINT"]
-msi_secret = os.environ["MSI_SECRET"]
+identity_endpoint = os.environ["IDENTITY_ENDPOINT"]
+identity_header = os.environ["IDENTITY_HEADER"]
 
 def get_bearer_token(resource_uri):
-    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version=2017-09-01"
-    head_msi = {'Secret':msi_secret}
+    token_auth_uri = f"{identity_endpoint}?resource={resource_uri}&api-version=2019-08-01"
+    head_msi = {'X-IDENTITY-HEADER':identity_header}
 
     resp = requests.get(token_auth_uri, headers=head_msi)
     access_token = resp.json()['access_token']
@@ -354,12 +365,12 @@ def get_bearer_token(resource_uri):
     return access_token
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
-$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=2017-09-01"
-$tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
+$tokenAuthURI = $env:IDENTITY_ENDPOINT + "?resource=$resourceURI&api-version=2019-08-01"
+$tokenResponse = Invoke-RestMethod -Method Get -Headers @{"X-IDENTITY-HEADER"="$env:IDENTITY_HEADER"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
 
@@ -423,7 +434,7 @@ A rendszer által hozzárendelt identitás eltávolítható a szolgáltatás let
 }
 ```
 
-Ha ily módon eltávolítja a rendszerhez rendelt identitást, az az AAD-ből is törlődik. A rendszer által hozzárendelt identitások is automatikusan törlődnek az AAD-ből az alkalmazáserőforrás törlésekor.
+A rendszer által hozzárendelt identitás ily módon eltávolítja azt is törli az Azure AD-ből. A rendszer által hozzárendelt identitások is automatikusan törlődnek az Azure AD-ből, amikor az alkalmazás-erőforrás törlődik.
 
 > [!NOTE]
 > Van is egy alkalmazás beállítás, amely beállítható, WEBSITE_DISABLE_MSI, amely csak letiltja a helyi jogkivonat-szolgáltatás. Azonban az identitás a helyén marad, és az eszközkezelés továbbra is "on" vagy "enabled" formában jeleníti meg a felügyelt identitást. Ennek eredményeképpen nem ajánlott ezt a beállítást használni.

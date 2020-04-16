@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 15c84b0c4cd4311300b951c3bf86b2bd62d48bfd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: aaaa382d41990b801d1c451b2bf416493a7ba7c6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77566131"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404933"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-java"></a>Rövid útmutató: Nyomtatott és kézzel írt szöveg kinyerése a Computer Vision 2.0 és 2.1 REST API és a Java használatával
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>Rövid útmutató: Nyomtatott és kézzel írt szöveg kinyerése a Computer Vision REST API és a Java használatával
 
-Ebben a rövid útmutatóban a Computer Vision REST API használatával kinyeri a nyomtatott és/vagy kézzel írt szöveget egy képből. A [Kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszerekkel észlelheti a kép szövegét, és kinyerheti a felismert karaktereket egy géppel olvasható karakterfolyamba. Az API határozza meg, hogy melyik felismerési modellt használja az egyes szövegsorokhoz, így támogatja a nyomtatott és kézzel írt szöveggel rendelkező képeket.
+Ebben a rövid útmutatóban a Computer Vision REST API használatával kinyerheti a nyomtatott és/vagy kézzel írt szöveget egy képből. A [Kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) és [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszerekkel észlelheti a kép szövegét, és kinyerheti a felismert karaktereket egy géppel olvasható karakterfolyamba. A szolgáltatás határozza meg, hogy melyik felismerési modellt használja az egyes szövegsorokhoz, így támogatja a nyomtatott és kézzel írt szöveggel rendelkező képeket.
 
-A Computer Vision 2.0-val és 2.1-es verziójával összehasonlítva a Computer Vision 3.0 Nyilvános előzetes verzió a következőket biztosítja:
+Ez a funkció egy v2.1 API-ban és egy v3.0-s nyilvános előzetes verzióban is elérhető. A 2.1-es játékhoz képest a 3.0 API a következőket:
 
-* még nagyobb pontosság
-* megváltozott kimeneti formátum
-* megbízhatósági pontszám a szavakhoz
-* spanyol és angol nyelvek támogatása a kiegészítő nyelvi paraméterrel
+* Jobb pontosság
+* A szavak megbízhatósági pontszámai
+* Spanyol és angol támogatás a `language` kiegészítő paraméterrel
+* Más kimeneti formátum
+
+Válassza ki az alábbi lapot a használt verzióhoz.
 
 #### <a name="version-2"></a>[2-es verzió](#tab/version-2)
 
@@ -765,13 +767,11 @@ Text recognition result response:
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha már nincs rá szükség, törölje a Java-projektet a lefordított osztállyal és az importált kódtárakkal együtt.
-
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy Java Swing-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ezután fedezze fel a Java Swing alkalmazást, amely a Computer Vision segítségével optikai karakterfelismerést (OCR) hajt végre; intelligens körülvágott bélyegképek létrehozása; és észlelheti, kategorizálhatja, címkézheti és leírhatja a képek vizuális jellemzőit.
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – Java-oktatóanyag](../Tutorials/java-tutorial.md)
+
+* A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).

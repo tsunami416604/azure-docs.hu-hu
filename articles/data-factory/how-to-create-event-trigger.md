@@ -11,14 +11,15 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: e4301afafb48fb9a1b0c9e36dde9800e2b8390f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d697fb8afe3e92dfe54eb5d89a2ef59425cb0cde
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443924"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414918"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Eseményre válaszul futó folyamatot futtató eseményindító létrehozása
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk ismerteti az eseményalapú eseményindítók, amelyek a Data Factory folyamatok hozhat létre.
 
@@ -81,7 +82,7 @@ Az alábbi táblázat áttekintést nyújt az eseményalapú eseményindítókho
 | **JSON elem** | **Leírás** | **Típus** | **Engedélyezett értékek** | **Szükséges** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **Hatókör** | A tárfiók Azure Resource Manager erőforrásazonosítója. | Sztring | Azure erőforrás-kezelőazonosítója | Igen |
-| **események** | Az esemény típusa, amely az eseményindítót tüzelésre készteti. | Tömb    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Igen, ezeknek az értékeknek bármilyen kombinációja. |
+| **Események** | Az esemény típusa, amely az eseményindítót tüzelésre készteti. | Tömb    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Igen, ezeknek az értékeknek bármilyen kombinációja. |
 | **blobPathBeginsWith** | A blob elérési útjának az eseményindító indításához megadott mintával kell kezdődnie. Például `/records/blobs/december/` csak a `december` `records` tároló alatti mappában lévő blobok eseményindítóját indítja el. | Sztring   | | A tulajdonságok közül legalább az egyikhez meg `blobPathBeginsWith` `blobPathEndsWith`kell adnia egy értéket: vagy . |
 | **blobPathEndsWith** | A blob elérési útja véget kell vetni a minta az eseményindító a tűz. Például `december/boxes.csv` csak egy `boxes` `december` mappában elnevezett blobok eseményindítóját indítja el. | Sztring   | | A tulajdonságok közül legalább az egyikhez meg `blobPathBeginsWith` `blobPathEndsWith`kell adnia egy értéket: vagy . |
 | **ignoreEmptyBlobs** | Azt jelzi, hogy a nulla bájtos blobok elindítják-e a folyamatfuttatást. Alapértelmezés szerint ez igaz értékre van állítva. | Logikai | true (igaz) vagy false (hamis) | Nem |
@@ -104,4 +105,4 @@ Ez a szakasz példákat mutat be az eseményalapú eseményindító-beállítás
 | **A blob elérési útja** | `foldername/file.txt` | Események fogadása egy `file.txt` mappában `foldername` nevű blob bármely tároló alatt. |
 
 ## <a name="next-steps"></a>További lépések
-Az eseményindítókról a [Folyamat végrehajtása és az eseményindítók](concepts-pipeline-execution-triggers.md#triggers)című témakörben talál részletes információt.
+Az eseményindítókról a [Folyamat végrehajtása és az eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution)című témakörben talál részletes információt.

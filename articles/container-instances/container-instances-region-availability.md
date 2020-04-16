@@ -4,12 +4,12 @@ description: Számítási és memória-erőforrások rendelkezésre állása az 
 ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
-ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c84ab7833f7c90d5d4b3c340c268fd9f75e20da9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247136"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399401"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Az Azure Container-példányok erőforrások elérhetősége az Azure-régiókban
 
@@ -18,7 +18,7 @@ Ez a cikk részletezi az Azure Container Instances számítási, memória- és t
 A bemutatott értékek a [tárolócsoport](container-instances-container-groups.md)telepítésénként rendelkezésre álló maximális erőforrások. Az értékek a közzététel időpontjában aktuálisak. 
 
 > [!NOTE]
-> Az erőforráskorlátokon belül létrehozott tárolócsoportok a központi telepítési régión belüli rendelkezésre állástól függenek. Amikor egy régió nagy terhelés alatt áll, hibát észlelhet a példányok üzembe helyezésekor. Egy ilyen központi telepítési hiba csökkentése érdekében próbálja meg alacsonyabb erőforrás-beállításokkal telepíteni a példányokat, vagy próbálja meg később a központi telepítést.
+> Az erőforráskorlátokon belül létrehozott tárolócsoportok a központi telepítési régión belüli rendelkezésre állástól függenek. Amikor egy régió nagy terhelés alatt áll, hibát észlelhet a példányok üzembe helyezésekor. Az ilyen központi telepítési hiba csökkentése érdekében próbálja meg alacsonyabb erőforrás-beállításokkal telepíteni a példányokat, vagy próbálja meg a központi telepítést egy későbbi időpontban vagy egy másik régióban a rendelkezésre álló erőforrásokkal.
 
 A kvótákról és a központi telepítések egyéb korlátairól az [Azure Container-példányok kvótái és korlátai](container-instances-quotas.md)című témakörben talál.
 

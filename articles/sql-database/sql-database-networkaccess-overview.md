@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945383"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414408"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Az Azure SQL Database és a Data Warehouse hálózati hozzáférés-vezérlései
 
@@ -29,7 +29,7 @@ ms.locfileid: "78945383"
 
 Amikor új Azure SQL Servert hoz létre az [Azure Portalról,](sql-database-single-database-get-started.md)az eredmény egy nyilvános végpont a *yourservername.database.windows.net*formátumban.
 
-A következő hálózati hozzáférés-vezérlők segítségével szelektíven engedélyezheti a hozzáférést az SQl-adatbázishoz a nyilvános végponton keresztül:
+A következő hálózati hozzáférés-vezérlők segítségével szelektíven engedélyezheti az SQL-adatbázishoz való hozzáférést a nyilvános végponton keresztül:
 - Az Azure Services engedélyezése: Ha be van állítva, az Azure-határon belüli egyéb erőforrások, például egy Azure virtuális gép hozzáférhetnek az SQL Database-hez
 
 - IP-tűzfalszabályok: Ezzel a funkcióval explicit módon engedélyezheti a kapcsolatokat egy adott IP-címről, például helyszíni gépekről
@@ -59,10 +59,10 @@ Ha **az ON-ra** van állítva, az Azure SQL Server lehetővé teszi az Azure-hat
 Sok esetben az **ON** beállítás megengedőbb, mint amit a legtöbb ügyfél szeretne. Előfordulhat, hogy ezt a beállítást **KI-ra** szeretnék állítani, és szigorúbb IP-tűzfalszabályokkal vagy virtuális hálózati tűzfalszabályokkal szeretnék helyettesíteni. Ezzel hatással van a következő funkciók, amelyek futnak a virtuális gépek az Azure-ban, hogy nem része a virtuális hálózat, és így csatlakozik az Sql Database egy Azure-BELI IP-cím.
 
 ### <a name="import-export-service"></a>Exportálási szolgáltatás importálása
-Az Import Export Szolgáltatás nem **működik: Az Azure-szolgáltatások hozzáférhetnek** a kiszolgáló ki-ki beállításához. Azonban megoldhatja a problémát [manuálisan futtatva az sqlpackage.exe-t egy Azure-beli virtuális gépről, vagy az exportálást](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) közvetlenül a kódban a DACFx API használatával.
+Az Import Export Szolgáltatás nem működik, ha az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** ki van **állítva.** Azonban megoldhatja a problémát [manuálisan futtatva az sqlpackage.exe-t egy Azure-beli virtuális gépről, vagy az exportálást](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) közvetlenül a kódban a DACFx API használatával.
 
 ### <a name="data-sync"></a>Adatszinkronizálás
-Az Adatok szinkronizálása szolgáltatás használatához az **Azure-szolgáltatások elérhetőkiszolgáló-beállítással** a kiszolgáló off- beállításával létre kell hoznia az egyes tűzfalszabály-bejegyzéseket, hogy [ip-címeket adjon hozzá](sql-database-server-level-firewall-rule.md) a **Hub-adatbázist** üzemeltető régió SQL **szolgáltatáscímkéjéből.**
+Az Adatok szinkronizálása szolgáltatás használatához az **Azure-szolgáltatások elérésének engedélyezése** **beállítással ki**van állítva, létre kell hoznia az egyes tűzfalszabály-bejegyzéseket, hogy [ip-címeket adjon hozzá](sql-database-server-level-firewall-rule.md) a **Hub-adatbázist** üzemeltető régió SQL **szolgáltatáscímkéből.**
 Adja hozzá ezeket a kiszolgálószintű tűzfalszabályokat a **hub-** és **tagadatbázisokat** egyaránt tároló logikai kiszolgálókhoz (amelyek különböző régiókban lehetnek)
 
 A következő PowerShell-parancsfájl használatával hozza létre az SQL szolgáltatáscímkének megfelelő IP-címeket az USA nyugati régiójához

@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 32100e9cad86f12dc8111ee8a0282a515540a4db
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0c0e35f7f06afd0cafa4a1e353b7eda84ed226f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346616"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413668"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Illesztés átalakítása az adatfolyam leképezésében
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Az illesztési transzformációsegítségével két forrásból vagy adatfolyamból származó adatokat egyesíthet egy leképezési adatfolyamban. A kimeneti adatfolyam tartalmazza a két forrás összes oszlopát, amelyek illesztési feltétel alapján egyeztetve. 
 

@@ -1,25 +1,27 @@
 ---
-title: Azure Event Grid Container Registry eseménysémája
+title: Azure Container Registry eseményrács-forrásként
 description: Az Azure Event Grid tárolóbeállítási eseményeihez megadott tulajdonságok ismertetése
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60345464"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393366"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Azure Event Grid eseménysémája a tárolóbeállítási rendszerhez
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry eseményrács-forrásként
 
 Ez a cikk a tárolóbeállítási események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md)
 
-## <a name="available-event-types"></a>Elérhető eseménytípusok
+## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
+
+### <a name="available-event-types"></a>Elérhető eseménytípusok
 
 Az Azure Container Registry a következő eseménytípusokat bocsátja ki:
 
@@ -30,7 +32,7 @@ Az Azure Container Registry a következő eseménytípusokat bocsátja ki:
 | Microsoft.ContainerRegistry.ChartPushed | A Helm-diagram megnyomásakor emelkedik. |
 | Microsoft.ContainerRegistry.ChartDeleted | Helm-diagram törlésekor előáll. |
 
-## <a name="example-event"></a>Példa esemény
+### <a name="example-event"></a>Példa esemény
 
 A következő példa egy leadott rendszersémáját mutatja be: 
 
@@ -151,7 +153,7 @@ A diagram törölt eseményének sémája hasonló a rendszerképekáltal törö
 }]
 ```
 
-## <a name="event-properties"></a>Esemény tulajdonságai
+### <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény legfelső szintű adatokat rendelkezik:
 
@@ -198,6 +200,12 @@ A kérelemobjektum a következő tulajdonságokkal rendelkezik:
 | gazda | sztring | A beállításjegyzék-példány külsőleg elérhető állomásneve, ahogy azt a http állomásfejléc a bejövő kérelmeknél meghatározta. |
 | method | sztring | Az eseményt létrehozó kérelemmetódus. |
 | Useragent | sztring | A kérelem felhasználói ügynökfejléce. |
+
+## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
+|Cím |Leírás  |
+|---------|---------|
+| [Rövid útmutató: tárolóbeállítási események küldése](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan azure CLI container registry események küldéséhez. |
+
 
 ## <a name="next-steps"></a>További lépések
 
