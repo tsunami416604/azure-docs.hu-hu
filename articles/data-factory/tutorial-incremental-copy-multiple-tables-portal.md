@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75439297"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419255"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL-adatbázisba.    
 
@@ -177,7 +179,7 @@ Futtassa a következő lekérdezést két tárolt eljárás és két adattípus 
 
 Annak érdekében, hogy az utazás könnyen indulhasson, ezeket a Tárolt eljárásokat közvetlenül használjuk, amelyek a delta adatokat egy táblaváltozón keresztül továbbítják, majd egyesítik őket a céltárolóba. Legyen óvatos, hogy nem számít a táblaváltozóban "nagy" számú (több mint 100) delta sor tárolására.  
 
-Ha nagy számú delta sort kell egyesítenie a céltárolóba, javasoljuk, hogy másolási tevékenység használatával másolja át az összes különbözeti adatot egy ideiglenes "átmeneti" táblába a céltárolóban, majd a tábla használata nélkül saját tárolt eljárást készítsen. az "átmeneti" táblából a "végleges" táblába való egyesítéshez. 
+Ha nagy számú delta sort kell egyesítenie a céltárolóba, javasoljuk, hogy másolási tevékenység használatával másolja át az összes különbözeti adatot egy ideiglenes "átmeneti" táblába a céltárolóban, majd a saját tárolt eljárást anélkül, hogy táblaváltozót használna az "átmeneti" táblából a "végleges" táblába való egyesítéshez. 
 
 
 ```sql
@@ -467,7 +469,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     1. Válassza az **Importálási paraméter** lehetőséget. 
     1. Adja meg a következő értékeket a paraméterekhez: 
 
-        | Név | Típus | Érték | 
+        | Name (Név) | Típus | Érték | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
