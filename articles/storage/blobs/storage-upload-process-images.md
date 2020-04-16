@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 49078d2f374203a9fab4fe0f5e3881f6b1b22959
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e2ee959fb6fc7e8454919c71cfa20e2bb9055dfb
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79130329"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393849"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: Képadatok feltöltése a felhőben az Azure Storage segítségével
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag egy sorozat első része. Ebben az oktatóanyagban megtudhatj
 A sorozat első részében a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Tárfiók létrehozása
 > * Tároló létrehozása és az engedélyek beállítása
 > * Hozzáférési kulcs lekérése
 > * Webalkalmazás üzembe helyezése az Azure-ban
@@ -55,7 +55,7 @@ A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscso
 az group create --name myResourceGroup --location southeastasia
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 A minta képeket tölt fel egy Blob-tárolóba egy Azure-tárfiókban. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez. Az [az storage account create](/cli/azure/storage/account) paranccsal hozzon létre egy tárfiókot a létrehozott erőforráscsoportban.
 
@@ -134,12 +134,12 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 ```
 
 # <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
-Az App Service több módszert is támogat tartalmak webalkalmazásba való üzembe helyezésére. Ebben az oktatóanyagban a webalkalmazást egy [nyilvános GitHub-mintaadattárból](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node) telepítheti. Konfigurálja a GitHubról való telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.
+Az App Service több módszert is támogat tartalmak webalkalmazásba való üzembe helyezésére. Ebben az oktatóanyagban a webalkalmazást egy [nyilvános GitHub-mintaadattárból](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10) telepítheti. Konfigurálja a GitHubról való telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node
+  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
 ```
 
 ---
@@ -300,7 +300,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>Ellenőrizze, hogy a kép megjelenik-e a tárfiókban
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) A bal oldali menüben válassza a **Tárfiókok** lehetőséget, majd válassza ki saját tárfiókja nevét. Válassza **a Tárolók**lehetőséget, majd jelölje ki a **lemezképek** tárolóját.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com). A bal oldali menüben válassza a **Tárfiókok** lehetőséget, majd válassza ki saját tárfiókja nevét. Válassza **a Tárolók**lehetőséget, majd jelölje ki a **lemezképek** tárolóját.
 
 Ellenőrizze, hogy a kép megjelenik-e a tárolóban.
 
@@ -310,7 +310,7 @@ Ellenőrizze, hogy a kép megjelenik-e a tárolóban.
 
 A miniatűrök megtekintésének teszteléséhez töltsön fel egy képet a **miniatűrök** tárolóba, hogy ellenőrizze, hogy az alkalmazás képes-e olvasni a **miniatűrök** tárolóját.
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) A bal oldali menüben válassza a **Tárfiókok** lehetőséget, majd válassza ki saját tárfiókja nevét. Válassza **a Tárolók**lehetőséget, majd jelölje ki a **bélyegképek tárolóját.** Válassza a **Feltöltés** lehetőséget a **Blob feltöltése** panel megnyitásához.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com). A bal oldali menüben válassza a **Tárfiókok** lehetőséget, majd válassza ki saját tárfiókja nevét. Válassza **a Tárolók**lehetőséget, majd jelölje ki a **bélyegképek tárolóját.** Válassza a **Feltöltés** lehetőséget a **Blob feltöltése** panel megnyitásához.
 
 Válasszon ki egy fájlt a fájlválasztóval, és válassza a **Feltöltés**lehetőséget.
 

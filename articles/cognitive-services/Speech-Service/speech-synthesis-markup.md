@@ -3,19 +3,19 @@ title: Beszédszintetizáló nyelv (SSML) – beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
 description: A beszédszintetizáló nyelv használata a kiejtés és a proodikia szabályozására a szövegfelolvasásban.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7d5dd79399b15ade90173a55aeb71dacbc61fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: dc11d26c73c52b5e6c4d8e05cc27dd6ebce0c5d8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80365808"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399822"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis javítása a beszédszintetizáló nyelvi (SSML) segítségével
 
@@ -145,7 +145,7 @@ speech_config.set_property_by_name(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 További információ: <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
@@ -154,7 +154,7 @@ speechConfig.setProperty(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="objective-c"></a>[Célkitűzés-C](#tab/objectivec)
+# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
 További információ: <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
@@ -196,7 +196,6 @@ Alapértelmezés szerint a szövegfelolvasó szolgáltatás semleges beszédstí
 Jelenleg a beszédstílus-beállítások támogatottak az alábbi neurális hangokesetén:
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
-* `pt-BR-FranciscaNeural`
 
 A módosítások a mondat szintjén lesznek alkalmazva, és a stílus hangonként változik. Ha egy stílus nem támogatott, a szolgáltatás az alapértelmezett semleges beszédstílusban adja vissza a beszédet.
 
@@ -214,18 +213,17 @@ A módosítások a mondat szintjén lesznek alkalmazva, és a stílus hangonkén
 
 Ebben a táblázatban határozhatja meg, hogy mely beszédstílusok támogatottak az egyes neurális hangok esetében.
 
-| Hang | Stílus | Leírás |
-|-------|------|-------------|
-| `en-US-AriaNeural` | `style="newscast"` | Kifejezi a formális és szakmai hangon narrátor hírek |
-| | `style="customerservice"` | Barátságos és segítőkész hangnemet ad az ügyfélszolgálatnak |
-| | `style="chat"` | Alkalmi és nyugodt hangot ad |
-| | `style="cheerful"` | Pozitív és boldog hangot ad |
-| | `style="empathetic"` | Kifejezi a törődés és a megértés érzését |
-| `zh-CN-XiaoxiaoNeural` | `style="newscast"` | Kifejezi a formális és szakmai hangon narrátor hírek |
-| | `style="customerservice"` | Barátságos és segítőkész hangnemet ad az ügyfélszolgálatnak |
-| | `style="assistant"` | Meleg és nyugodt hangot ad a digitális asszisztensek számára  |
-| | `style="lyrical"` | Dallamos és szentimentális módon fejezi ki az érzelmeket |
-| `pt-BR-FranciscaNeural` | `style="cheerful"` | Pozitív és boldog hangot ad |
+| Hang                   | Stílus                     | Leírás                                                 |
+|-------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-AriaNeural`      | `style="newscast"`        | Kifejezi a formális és szakmai hangon narrátor hírek |
+|                         | `style="customerservice"` | Barátságos és segítőkész hangnemet ad az ügyfélszolgálatnak  |
+|                         | `style="chat"`            | Alkalmi és nyugodt hangot ad                         |
+|                         | `style="cheerful"`        | Pozitív és boldog hangot ad                         |
+|                         | `style="empathetic"`      | Kifejezi a törődés és a megértés érzését               |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Kifejezi a formális és szakmai hangon narrátor hírek |
+|                         | `style="customerservice"` | Barátságos és segítőkész hangnemet ad az ügyfélszolgálatnak  |
+|                         | `style="assistant"`       | Meleg és nyugodt hangot ad a digitális asszisztensek számára    |
+|                         | `style="lyrical"`         | Dallamos és szentimentális módon fejezi ki az érzelmeket         |
 
 **Példa**
 
@@ -263,15 +261,14 @@ Az `break` elem segítségével szüneteket (vagy töréseket) szúrhat be a sza
 | `strength` | A szünet relatív időtartamát az alábbi értékek egyikének használatával adja meg:<ul><li>Nincs</li><li>x-gyenge</li><li>Gyenge</li><li>közepes (alapértelmezett)</li><li>Erős</li><li>x-erős</li></ul> | Optional |
 | `time` | A szünet abszolút időtartamát adja meg másodpercben vagy ezredmásodpercben. Az érvényes értékek `2s` repronyai:`500` | Optional |
 
-| Erejét | Leírás |
-|----------|-------------|
-| Nincs, vagy ha nincs megadva érték | 0 ms |
-| x-gyenge | 250 ms |
-| Gyenge | 500 ms |
-| közepes | 750 ms |
-| Erős | 1000 ms |
-| x-erős | 1250 ms |
-
+| Erejét                      | Leírás |
+|-------------------------------|-------------|
+| Nincs, vagy ha nincs megadva érték | 0 ms        |
+| x-gyenge                        | 250 ms      |
+| Gyenge                          | 500 ms      |
+| közepes                        | 750 ms      |
+| Erős                        | 1000 ms     |
+| x-erős                      | 1250 ms     |
 
 **Példa**
 
@@ -372,9 +369,9 @@ Néha a TTS nem tud pontosan kiejteni egy szót, például egy vállalatot vagy 
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező / Nem kötelező |
-|-----------|-------------|---------------------|
-| `uri` | A külső PLS-dokumentum címe. | Kötelező. |
+| Attribútum | Leírás                               | Kötelező / Nem kötelező |
+|-----------|-------------------------------------------|---------------------|
+| `uri`     | A külső PLS-dokumentum címe. | Kötelező.           |
 
 **Használat**
 
@@ -472,7 +469,7 @@ Mivel a prozodikus attribútumértékek széles tartományban változhatnak, a b
 | Attribútum | Leírás | Kötelező / Nem kötelező |
 |-----------|-------------|---------------------|
 | `pitch` | A szöveg alapvonal-hangmagasságát jelzi. A hangmagasságot a következőképpen fejezheti ki:<ul><li>Abszolút érték, számban kifejezve, amelyet "Hz" (Hertz) követ. Például 600 Hz.</li><li>Relatív érték, számban kifejezve, amelyet "+" vagy "-" előz meg, majd "Hz" vagy "st", amely a hangmagasság megváltoztatására vonatkozó összeget határoz meg. Például: +80 Hz vagy -2st. Az "st" azt jelzi, hogy a változásegység szemiton, amely a standard diatonikus skálán lévő hang (fél lépés) fele.</li><li>Állandó érték:<ul><li>x-alacsony</li><li>Alacsony</li><li>közepes</li><li>magas</li><li>x-magas</li><li>alapértelmezett</li></ul></li></ul>. | Optional |
-| `contour` | A kontúr nem támogatott az idegi hangok esetében. A kontúr a hangmagasság változásait jelöli. Ezek a változások a beszédkimenet megadott időpozícióiban céltömbként jelennek meg. Minden cél paraméterpárok készletei határozzák meg. Példa: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Az egyes paraméterek első értéke a szöveg időtartamának százalékában határozza meg a hangmagasság-változás helyét. A második érték a szurok emeléséhez vagy csökkentéséhez használt összeget adja meg, relatív érték vagy a szurok felsorolási értéke alapján (lásd `pitch`). | Optional |
+| `contour` | A kontúr nem támogatott az idegi hangok esetében. A kontúr a hangmagasság változásait jelöli. Ezek a változások a beszédkimenet megadott időpozícióiban céltömbként jelennek meg. Minden cél paraméterpárok készletei határozzák meg. Például: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Az egyes paraméterek első értéke a szöveg időtartamának százalékában határozza meg a hangmagasság-változás helyét. A második érték a szurok emeléséhez vagy csökkentéséhez használt összeget adja meg, relatív érték vagy a szurok felsorolási értéke alapján (lásd `pitch`). | Optional |
 | `range` | A szöveg hangmagassági tartományát jelölő érték. A leírásához használt abszolút értékeket, relatív értékeket vagy `pitch`felsorolási értékeket használva is kifejezheti. `range` | Optional |
 | `rate` | A szöveg beszédi sebességét jelzi. A következőképpen fejezheti ki: `rate`<ul><li>Relatív érték, számban kifejezve, amely az alapértelmezett szorzóként működik. Az *1* érték például nem eredményez irát. A *0,5-ös* érték az arány felére csökken. A *3-as* érték az arány megháromszorozását eredményezi.</li><li>Állandó érték:<ul><li>x-lassú</li><li>Lassú</li><li>közepes</li><li>Gyors</li><li>x-gyors</li><li>alapértelmezett</li></ul></li></ul> | Optional |
 | `duration` | Az az időtartam, amelynek el kell telnie, miközben a beszédszintézis (TTS) szolgáltatás másodpercben vagy ezredmásodpercben olvassa be a szöveget. Például *2s* vagy *1800ms*. | Optional |
@@ -614,9 +611,9 @@ Az SSML-dokumentumban található hanganyagoknak meg kell felelniük az alábbi 
 
 **Attribútumok**
 
-| Attribútum | Leírás | Kötelező / Nem kötelező |
-|-----------|-------------|---------------------|
-| `src` | Megadja a hangfájl helyét/URL-címét. | Az SSML-dokumentum hangelemének használata esetén szükséges. |
+| Attribútum | Leírás                                   | Kötelező / Nem kötelező                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+| `src`     | Megadja a hangfájl helyét/URL-címét. | Az SSML-dokumentum hangelemének használata esetén szükséges. |
 
 **Példa**
 

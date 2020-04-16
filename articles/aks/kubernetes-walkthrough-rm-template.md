@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: e8117eb1b521dc2e3fa9eaca1316e0b9c14f0e98
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c5ea54a33ee027de0b11c59c53085b9d20ca6a3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80129459"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392836"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Rövid útmutató: Azure Kubernetes-szolgáltatás (AKS) fürt telepítése Azure Resource Manager-sablon használatával
 
@@ -30,7 +30,7 @@ Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, ez a rövid útmu
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha egy Erőforrás-kezelő sablon használatával aKS-fürt, meg kell adnia egy SSH nyilvános kulcs és az Azure Active Directory egyszerű szolgáltatás. Ha ezekre az erőforrásokra szüksége van, olvassa el a következő szakaszt; ellenkező esetben ugorjon az [AKS-fürt létrehozása](#create-an-aks-cluster) szakaszra.
+Ha egy Erőforrás-kezelő sablon használatával aKS-fürt, meg kell adnia egy SSH nyilvános kulcs és az Azure Active Directory egyszerű szolgáltatás.  Azt is megteheti, hogy egy [felügyelt identitás](use-managed-identity.md) helyett egy egyszerű szolgáltatás engedélyeket. Ha ezekre az erőforrásokra szüksége van, olvassa el a következő szakaszt; ellenkező esetben ugorjon az [AKS-fürt létrehozása](#create-an-aks-cluster) szakaszra.
 
 ### <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
 
@@ -48,7 +48,7 @@ Az SSH-kulcsok létrehozásáról az [SSH-kulcsok létrehozása és kezelése az
 
 ### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Ahhoz, hogy egy AKS-fürt kommunikálhasson más Azure-erőforrásokkal, Azure Active Directory-szolgáltatásnevet kell használnia. Hozzon létre egy szolgáltatásnevet az [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] paranccsal. A `--skip-assignment` paraméter korlátozza a további engedélyek hozzárendelését. Alapértelmezés szerint ez a szolgáltatásnév egy évig érvényes.
+Ahhoz, hogy egy AKS-fürt kommunikálhasson más Azure-erőforrásokkal, Azure Active Directory-szolgáltatásnevet kell használnia. Hozzon létre egy szolgáltatásnevet az [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] paranccsal. A `--skip-assignment` paraméter korlátozza a további engedélyek hozzárendelését. Alapértelmezés szerint ez a szolgáltatásnév egy évig érvényes. Vegye figyelembe, hogy egyszerű szolgáltatás helyett felügyelt identitást is használhat. További információ: [Felügyelt identitások használata.](use-managed-identity.md)
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -281,7 +281,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket.
+> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Ha felügyelt identitást használt, az identitást a platform kezeli, és nem igényel eltávolítást.
 
 ## <a name="get-the-code"></a>A kód letöltése
 

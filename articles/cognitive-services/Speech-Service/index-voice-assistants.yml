@@ -1,22 +1,22 @@
 ### YamlMime:Landing
-title: Hangasszisztensek dokumentációja
+title: A hangvezérelt asszisztensek dokumentációja
 summary: A Beszédszolgáltatást használó hangasszisztensek lehetővé teszik a fejlesztők számára, hogy természetes, emberszerű társalgási felületeket hozzanak létre alkalmazásaikhoz és felhasználói élményeikhez.
 metadata:
   title: Hangasszisztensek dokumentációja - Oktatóanyagok, API-referencia - Azure Cognitive Services | Microsoft dokumentumok
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: dapine
-  ms.openlocfilehash: 6ae919317269753cbc3c8bf5b0df11e19a47989f
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.author: trbye
+  ms.openlocfilehash: cbef289ebc79e20b928db684af01a4eaeb1c0ce8
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "79415155"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81401432"
 landingContent:
 - title: Hangasszisztensek –
   linkLists:
@@ -38,19 +38,19 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Egyéni parancsok alkalmazás létrehozása
+    - text: Custom Commands-alkalmazás létrehozása
       url: quickstart-custom-speech-commands-create-new.md
     - text: Egyéni parancs létrehozása paraméterekkel
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: Egyéni parancsok használata egyéni hanggal
+    - text: Egyéni parancsok használata Custom Voice szolgáltatással
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Egyéni parancsok használata a beszédfelismerési SDK-val
+    - text: Egyéni parancsok használata a Speech SDK-val
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Az ügyfél parancsainak teljesítése
+    - text: Ügyféltől származó parancsok végrehajtása
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Paraméter-érvényesítés hozzáadása
+    - text: Paraméter-ellenőrzés hozzáadása
       url: how-to-custom-speech-commands-validations.md
     - text: Megerősítés hozzáadása
       url: how-to-custom-speech-commands-confirmations.md

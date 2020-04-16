@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73044104"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404270"
 ---
 # <a name="learn-image-moderation-concepts"></a>Képmoderálási fogalmak megismerése
 
@@ -139,9 +139,9 @@ Példa kivonat:
     ....
     }
 
-## <a name="human-review-tool"></a>Emberi felülvizsgálati eszköz
+## <a name="review-tool"></a>Felülvizsgálati eszköz
 
-További árnyaltabb esetekben használja a Tartalommoderátor [felülvizsgálati eszközt](Review-Tool-User-Guide/human-in-the-loop.md) és annak API-ját, hogy felszínre hozhassa a moderálás eredményeit és tartalmát az emberi moderátorok véleményezésében. Áttekintik a géppel hozzárendelt címkéket, és megerősítik a végső döntésüket.
+További árnyaltabb esetekben használja a [Tartalommoderátor-ellenőrző eszközt](Review-Tool-User-Guide/human-in-the-loop.md) és annak API-ját, hogy felszínre hozhassa a moderálás eredményeit és tartalmát az emberi moderátorok véleményezésében. Áttekintik a géppel hozzárendelt címkéket, és megerősítik a végső döntésüket.
 
 ![Képek felülvizsgálata emberi moderátorok által](images/moderation-reviews-quickstart-dotnet.PNG)
 

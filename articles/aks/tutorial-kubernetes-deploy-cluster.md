@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 72d7d3b8a4dc2831f397326d54560358c19b9b92
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616811"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392698"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Oktatóanyag: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag megköveteli, hogy az Azure CLI 2.0.53-as vagy újabb verzió
 
 Az AKS-fürtök képesek a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatára. Ezekkel a vezérlőkkel a felhasználókhoz rendelt szerepkörök alapján definiálható az erőforrásokhoz való hozzáférés. Az engedélyek akkor lesznek kombinálva, ha egy felhasználóhoz több szerepkör van rendelve, és az engedélyek egyetlen névtérre vagy a teljes fürtre is hatókörözhetők. Alapértelmezés szerint az Azure CLI automatikusan engedélyezi az RBAC-t az AKS-fürtök létrehozásakor.
 
-AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ezt az erőforráscsoportot [az előző oktatóanyagban][aks-tutorial-prepare-acr] hoztuk létre. Annak érdekében, hogy egy AKS-fürt más Azure-erőforrásokkal kommunikáljon, automatikusan létrejön egy Azure Active Directory egyszerű szolgáltatás, mivel nem adott meg egyet. Itt ez a szolgáltatásegyszerű [jogosult lekérése lemezképek][container-registry-integration] az Azure Container Registry (ACR) az előző oktatóanyagban létrehozott példányból.
+AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ezt az erőforráscsoportot [az előző oktatóanyagban][aks-tutorial-prepare-acr] hoztuk létre. Annak érdekében, hogy egy AKS-fürt más Azure-erőforrásokkal kommunikáljon, automatikusan létrejön egy Azure Active Directory egyszerű szolgáltatás, mivel nem adott meg egyet. Itt ez a szolgáltatásegyszerű [jogosult lekérése lemezképek][container-registry-integration] az Azure Container Registry (ACR) az előző oktatóanyagban létrehozott példányból. Vegye figyelembe, hogy a szolgáltatásnév helyett [felügyelt identitást](use-managed-identity.md) is használhat a könnyebb kezelés érdekében.
 
 ```azurecli
 az aks create \

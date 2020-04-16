@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: dea6a1afaa2348fc5054bee20c534936dcafe5b5
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.author: trbye
+ms.openlocfilehash: 138a9ef9d483ca0d460bab7185d646669650f83e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656600"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400052"
 ---
 :::row:::
     :::column span="3":::
@@ -39,7 +39,7 @@ Mikrofonbevitel esetén telepíteni kell a Media Foundation tárakat. Ezek a tá
 
 A szükséges beszédsdka-fájlok az alkalmazással azonos könyvtárban telepíthetők. Így az alkalmazás közvetlenül hozzáférhet a könyvtárakhoz. Győződjön meg arról, hogy az alkalmazásnak megfelelő verziót (x86/x64) válassza ki.
 
-| Név                                            | Függvény                                             |
+| Name (Név)                                            | Függvény                                             |
 |-------------------------------------------------|------------------------------------------------------|
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Core SDK, a natív és felügyelt telepítéshez szükséges |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Felügyelt telepítéshez szükséges                      |

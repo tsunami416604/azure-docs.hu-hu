@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
-ms.author: dapine
-ms.openlocfilehash: 1269ff3e21a794fddc2e0f0dc5d62816fa98215b
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.author: trbye
+ms.openlocfilehash: df29ecf0a4ddb30aea1c1ab9ceed44a93fc61eb8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80658967"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400122"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre beszédfelismerést támogató terméket a Beszédfelismerési eszközök SDK-val beszédfelismerésre képes termékként, illetve hogyan [használhatja azt beszélgetés-átírási](../conversation-transcription-service.md) eszközként. A beszélgetés átírása csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott. Más beszédek esetén használjon lineáris mikrofontömböket, amelyek mikrofontömb-geometriát biztosítanak.
 

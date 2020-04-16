@@ -3,19 +3,19 @@ title: Szövegfelolvasó API-hivatkozás (REST) – Beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan használhatja a szöveg-beszéd REST API-t. Ebben a cikkben megtudhatja, engedélyezési beállítások, lekérdezési beállítások, hogyan strukturálhatja a kérelmet, és választ kap.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 977c6ec9aa1cd6a8b8a545d123c5308bb8c51651
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.author: trbye
+ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409023"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400169"
 ---
 # <a name="text-to-speech-rest-api"></a>Szövegfelolvasás REST API
 

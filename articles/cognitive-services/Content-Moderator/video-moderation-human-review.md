@@ -1,25 +1,25 @@
 ---
 title: Videómoderálás emberi értékeléssel - Tartalommoderátor
 titleSuffix: Azure Cognitive Services
-description: Gépi segítségre adott videomoderálás és emberi ellenőrző eszközök használata a nem megfelelő tartalom moderálásához
+description: Gépi videomoderálás és a Véleményezés eszköz használata a nem megfelelő tartalom moderálásához
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72754161"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404240"
 ---
 # <a name="video-moderation-with-human-review"></a>Videómoderálás emberi értékeléssel
 
-A Tartalommoderátor gépi támogatású [videómoderálási](video-moderation-api.md) és [emberi ellenőrző eszközével](Review-Tool-User-Guide/human-in-the-loop.md) mérsékelheti a felnőtteknek készült (explicit) és pikáns (szuggesztív) tartalmakról készült videókat és átiratokat, hogy a legjobb eredményt hozhatja vállalkozása számára.
+A Tartalommoderátor gépi támogatású [videómoderálási](video-moderation-api.md) és [-felülvizsgálati eszközével](Review-Tool-User-Guide/human-in-the-loop.md) moderálhatja a felnőtteknek készült (explicit) és pikáns (szuggesztív) tartalmakról készült videókat és átiratokat, hogy a legjobb eredményt hozhatja vállalkozása számára.
 
 ## <a name="video-trained-classifier-preview"></a>Videóval betanított osztályozó (előzetes verzió)
 

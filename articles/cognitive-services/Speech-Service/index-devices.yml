@@ -1,28 +1,28 @@
 ### YamlMime:Landing
-title: Beszédeszközök dokumentációja
+title: A Speech Devices dokumentációja
 summary: A beszédfelismerési eszközök SDK egy előre hangolt könyvtár, amely párosítva van a célra épített, mikrofontömb fejlesztői készletek.
 metadata:
   title: Beszédeszközök dokumentációja – Oktatóanyagok, API-referencia – Azure Cognitive Services | Microsoft dokumentumok
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: IEvangelist
+  author: trevorbye
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: dapine
-  ms.openlocfilehash: 5fc9e045162c03585f20e0b06a01524480070050
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.author: trbye
+  ms.openlocfilehash: 76bb63654778a08244e2207839e12812b7227dff
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "79415359"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81401387"
 landingContent:
 - title: A beszédfelismerési eszközök SDK-
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az SDK beszédeszközök?
+    - text: Mi az a Beszédeszközök SDK?
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:

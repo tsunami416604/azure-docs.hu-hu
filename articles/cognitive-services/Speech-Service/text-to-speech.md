@@ -3,19 +3,19 @@ title: Text-to-speech - Beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
 description: A beszédfelismerési szolgáltatás szövegfelolvasó funkciója lehetővé teszi, hogy alkalmazásai, eszközei vagy eszközei a szöveget természetes, emberszerű szintetizált beszédté alakítsák át. Válasszon előre beállított hangokat, vagy hozzon létre saját egyéni hangot.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7c7574ee4e9f75b9b650ff63a10666c5e379fca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131558"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399501"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 

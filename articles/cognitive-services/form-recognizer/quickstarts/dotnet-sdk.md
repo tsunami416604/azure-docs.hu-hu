@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b9db9daf06b59e1a26a9b03a93aff63984841862
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8d05f5ad07f9b3affba9442d6caa6e63162b813c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118360"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399424"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Rövid útmutató: Űrlapfelismerő ügyféltár a .NET-hez
 
@@ -42,7 +42,7 @@ A .NET űrlapfelismerő ügyféltár segítségével:
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Miután lekért egy kulcsot a próba-előfizetés vagy erőforrás, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont, nevű `FORM_RECOGNIZER_KEY` és `FORM_RECOGNIZER_ENDPOINT`, illetve.
+Miután lekért egy kulcsot és egy végpontot, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcshoz és a végponthoz, amelyet elnevezett `FORM_RECOGNIZER_KEY` és `FORM_RECOGNIZER_ENDPOINT`.
 
 ### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
 
@@ -90,7 +90,7 @@ Ha a Visual Studio IDE-t használja, az ügyfélkönyvtár letölthető NuGet cs
 
 A következő osztályok kezelik a Form Recognizer SDK fő funkcióit.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Ez az osztály szükséges az összes Űrlapfelismerő funkcióhoz. Az előfizetési adatokkal azonnal létrehozhatja azt, és más osztályok példányainak létrehozásához használhatja őket.|
 |[TrainRequest (TrainRequest)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Ezzel az osztállyal egyéni űrlapfelismerő modellt taníthatja be a saját betanítási bemeneti adataival. |
@@ -99,12 +99,6 @@ A következő osztályok kezelik a Form Recognizer SDK fő funkcióit.
 |[Kibontott oldal](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.extractedpage?view=azure-dotnet-preview)| Ez az osztály az egyetlen űrlapdokumentumból kinyert összes adatot jelöli.|
 
 ## <a name="code-examples"></a>Kódpéldák
-
-<!--
-    Include code snippets and short descriptions for each task you list in the the bulleted list. Briefly explain each operation, but include enough clarity to explain complex or otherwise tricky operations.
-
-    Include links to the service's reference content when introducing a class for the first time
--->
 
 Ezek a kódrészletek bemutatják, hogyan kell elvégezni a következő feladatokat a .NET Űrlapfelismerő ügyféltárban:
 
@@ -193,7 +187,7 @@ Ha betanított egy egyéni modellt, amelyet törölni szeretne a fiókjából, f
 Ebben a rövid útmutatóban az Űrlapfelismerő .NET ügyfélkódtár segítségével betanításra és űrlapok elemzésére használt. Ezután ismerje meg a tippeket, hogy hozzon létre egy jobb betanítási adatkészletet, és pontosabb modelleket készítsen.
 
 > [!div class="nextstepaction"]
->[Betanítási adathalmaz létrehozása](../build-training-data-set.md)
+> [Betanítási adathalmaz létrehozása](../build-training-data-set.md)
 
 * [Mi a Form Recognizer?](../overview.md)
 * A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer)

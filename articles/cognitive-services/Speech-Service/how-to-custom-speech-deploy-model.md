@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: e41653e4644b09cc357510223e5ee86c3806ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74806113"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402185"
 ---
 # <a name="deploy-a-custom-model"></a>Egyéni modell üzembe helyezése
 
@@ -42,7 +42,7 @@ Az adatok naplózása az **Endpoint > Details**( Végpont> részletek ) alatt t�
 
 ## <a name="next-steps"></a>További lépések
 
-* Az egyéni végpont használata a [beszédfelismerési SDK-val](speech-sdk.md)
+* Itt megtudhatja, hogyan [here](how-to-specify-source-language.md)használhatja az egyéni modellt.
 
 ## <a name="additional-resources"></a>További források
 

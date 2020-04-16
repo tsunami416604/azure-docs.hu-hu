@@ -3,20 +3,20 @@ title: Az automatikus nyelvfelismerés használata beszéd-szövegként
 titleSuffix: Azure Cognitive Services
 description: A beszédsdk támogatja az automatikus nyelvfelismerést a beszéd-szöveg hez. A szolgáltatás használatakor a rendszer összehasonlítja a megadott hanganyagokat a megadott nyelvek listájával, és a legvalószínűbb egyezést határozza meg. A visszaadott érték segítségével kiválaszthatja a beszéd-szöveg nyelvmodellt.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 5592fc3e50db892c6abb09fc2516b8e1c03f0f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239603"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402206"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatikus nyelvfelismerés a beszéd-szöveg hez
 

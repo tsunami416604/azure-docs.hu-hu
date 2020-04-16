@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b6f987eb283edea7f2d8e6b207b5b4e5b14f9120
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77505909"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393185"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -32,30 +32,29 @@ Ez a kép azt mutatja be, hogy az Event Grid hogyan kapcsolja össze a források
 
 ## <a name="event-sources"></a>Eseményforrások
 
-Az egyes források képességeire és a kapcsolódó cikkekre vonatkozó részletekért tekintse meg az [eseményforrásokat](event-sources.md). Jelenleg az alábbi Azure-szolgáltatások támogatják az események Event Gridbe való küldését:
+Jelenleg az alábbi Azure-szolgáltatások támogatják az események Event Gridbe való küldését:
 
-* [Azure-előfizetések (kezelési műveletek)](event-sources.md#azure-subscriptions)
-* [Tároló beállításjegyzéke](event-sources.md#container-registry)
-* [Egyéni témakörök](event-sources.md#custom-topics)
-* [Eseményközpontok](event-sources.md#event-hubs)
-* [IoT Hub](event-sources.md#iot-hub)
-* [Key Vault (előzetes verzió)](event-sources.md#key-vault-preview)
-* [Médiaszolgáltatások](event-sources.md#media-services)
-* [Erőforráscsoportok (kezelési műveletek)](event-sources.md#resource-groups)
-* [Service Bus](event-sources.md#service-bus)
-* [Storage Blob](event-sources.md#storage)
-* [Azure Maps](event-sources.md#maps)
-* [Alkalmazás konfigurációja](event-sources.md#app-configuration)
-* [R jel](event-sources.md#azure-signalr)
-* [Machine Learning](event-sources.md#azure-machine-learning)
+- [Azure App Configuration](event-schema-app-configuration.md)
+- [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure container-beállításjegyzék](event-schema-container-registry.md)
+- [Azure Event Hubs](event-schema-event-hubs.md)
+- [Azure IoT Hub](event-schema-iot-hub.md)
+- [Azure Key Vault](event-schema-key-vault.md)
+- [Azure Machine Learning](event-schema-machine-learning.md)
+- [Azure Maps](event-schema-azure-maps.md)
+- [Azure Media Services](event-schema-media-services.md)
+- [Azure-erőforráscsoportok](event-schema-resource-groups.md)
+- [Azure Service Bus](event-schema-service-bus.md)
+- [Azure SignalR](event-schema-azure-signalr.md)
+- [Azure-előfizetések](event-schema-subscriptions.md)
 
 ## <a name="event-handlers"></a>Eseménykezelők
 
 Az egyes kezelők képességeire és a kapcsolódó cikkekre vonatkozó részletekért tekintse meg az [eseménykezelőket](event-handlers.md). Jelenleg az alábbi Azure-szolgáltatások támogatják az Event Gridből származó események kezelését: 
 
-* [Azure-automatizálás](event-handlers.md#azure-automation)
+* [Azure Automation](event-handlers.md#azure-automation)
 * [Azure Functions](event-handlers.md#azure-functions)
-* [Eseményközpontok](event-handlers.md#event-hubs)
+* [Event Hubs](event-handlers.md#event-hubs)
 * [Hibrid kapcsolatok](event-handlers.md#hybrid-connections)
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Power Automate (korábbi nevén Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)

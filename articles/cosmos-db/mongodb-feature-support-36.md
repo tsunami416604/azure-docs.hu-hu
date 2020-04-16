@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: fe80b7343f67b06981707081931e35142985688e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 5df21b2c1926803a65eca911c66b059f36ee18aa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668785"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393622"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.6-os verzió): támogatott funkciók és szintaxis
 
@@ -95,8 +95,8 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |dataSize (dataSize)     |   Nem      |
 |dbHash között    |    Nem     |
 |dbStats     |   Igen      |
-|Magyarázni     | Nem        |
-|magyarázza: executionStats     |     Nem    |
+|Magyarázni     |   Igen      |
+|magyarázza: executionStats     |   Igen      |
 |funkciók     |    Nem     |
 |hostInfo     |   Nem      |
 |listDatabases         |   Igen      |

@@ -3,19 +3,19 @@ title: Szövegfelolvasás, Python – Beszédszolgáltatás konvertálása
 titleSuffix: Azure Cognitive Services
 description: Ebből a cikkből megtudhatja, hogyan konvertálhatja a szövegfelolvasást a Python és a Text-to-Speech REST API használatával. Az útmutatóban szereplő mintaszöveg beszédszintetizáló nyelvi (SSML) formában van felépítve. Ez lehetővé teszi a beszédválasz hangjának és nyelvének kiválasztását.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
-ms.author: dapine
-ms.openlocfilehash: 6ea3f63bea0701dcd0f4b38f6584816d9a1bfbc7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: trbye
+ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258432"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400832"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Szövegfelolvasás konvertálása Pythonnal
 

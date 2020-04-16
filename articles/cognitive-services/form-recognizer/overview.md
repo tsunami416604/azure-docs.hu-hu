@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6b19dc11438274ecf6218d5c0bd8c9ef3dafbf01
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052433"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399449"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -74,7 +74,7 @@ Rövid útmutatóként ismerkedjen meg az űrlapokból való adatok kinyerésév
 
 A következő API-k at fogja használni a modellek betanításához és a strukturált adatok űrlapokból való kinyeréséhez.
 
-|Név |Leírás |
+|Name (Név) |Leírás |
 |---|---|
 | **Egyéni modell betanítása**| Új modell betanítása az űrlapok elemzéséhez öt azonos típusú űrlap használatával. Állítsa be a _useLabelFile_ paramétert `true` a manuálisan címkézett adatokkal való betanításhoz. |
 | **Űrlap elemzése** |Elemezze az adatfolyamként átadott egyetlen dokumentumot, és bontsa ki a szöveget, a kulcs-/értékpárokat és a táblázatokat az űrlapról az egyéni modellel.  |

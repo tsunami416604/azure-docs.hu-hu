@@ -3,12 +3,12 @@ title: QnA Maker szolgáltatás beállítása - QnA Maker
 description: A QnA Maker tudásbázisai létrehozása előtt először be kell állítania egy QnA Maker szolgáltatást az Azure-ban. Bárki, aki engedéllyel rendelkezik új erőforrások létrehozására egy előfizetésben, beállíthat egy QnA Maker szolgáltatást.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 8ec57f441ba58227e45398c35c7931dc75fa658f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131709"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402991"
 ---
 # <a name="manage-qna-maker-resources"></a>A QnA Maker erőforrásainak kezelése
 
@@ -89,7 +89,7 @@ A végpontkulcsok a [QnA Maker portálról kezelhetők.](https://qnamaker.ai)
     >[!NOTE]
     >Frissítse a kulcsokat, ha úgy gondolja, hogy feltörték őket. Ez szükség lehet az ügyfélalkalmazás vagy a robotkód megfelelő módosítására.
 
-### <a name="upgrade-qna-maker-sku"></a>QnA Maker termékváltozatának frissítése
+## <a name="upgrade-qna-maker-sku"></a>QnA Maker termékváltozatának frissítése
 
 Ha további kérdéseket és válaszokat szeretne kapni a tudásbázisában, az aktuális szinten túl, frissítse a QnA Maker szolgáltatás tarifacsomagját.
 
@@ -103,7 +103,7 @@ A QnA Maker felügyeleti termékváltozatának frissítése:
 
     ![QnA Maker árképzés](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-### <a name="upgrade-app-service"></a>Az alkalmazásszolgáltatás frissítése
+## <a name="upgrade-app-service"></a>Az alkalmazásszolgáltatás frissítése
 
  Ha a tudásbázisnak több kérést kell kiszolgálnia az ügyfélalkalmazásból, frissítse az App Service tarifacsomagját.
 
@@ -113,7 +113,7 @@ Nyissa meg az App Service-erőforrást az Azure Portalon, és szükség szerint 
 
 ![QnA Maker App Service-skála](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-cognitive-search-service"></a>Az Azure Cognitive Search szolgáltatás frissítése
+## <a name="upgrade-the-azure-cognitive-search-service"></a>Az Azure Cognitive Search szolgáltatás frissítése
 
 Ha azt tervezi, hogy számos tudásbázissal rendelkezik, frissítse az Azure Cognitive Search szolgáltatás díjszabási szintjét.
 
@@ -197,7 +197,7 @@ Az alkalmazásszolgáltatás, amely a QnA Maker előrejelzési futásidejű egy 
 
 Annak érdekében, hogy az előrejelzési végpont alkalmazás betöltve akkor is, ha nincs forgalom, állítsa az ajárati járat, hogy mindig be.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keresse meg és válassza ki a QnA Maker erőforrás alkalmazásszolgáltatását. Ugyanaz lesz a neve, mint a QnA Maker erőforrásnak, de más típusú App **Service-t** fog rendelkezni.
 1. Keresse meg **a Beállítások lehetőséget,** majd válassza a **Konfiguráció**lehetőséget.
 1. A Konfiguráció ablaktáblán válassza az **Általános beállítások**lehetőséget, majd a **Mindig bekapcsolva**lehetőséget, majd a **Be** értéket.

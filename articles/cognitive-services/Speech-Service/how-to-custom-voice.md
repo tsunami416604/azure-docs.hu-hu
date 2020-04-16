@@ -3,19 +3,19 @@ title: A szintézis javítása az Egyéni hang - Beszédszolgáltatás segítsé
 titleSuffix: Azure Cognitive Services
 description: Custom Voice egy sor online eszközök, amelyek lehetővé teszik, hogy hozzon létre egy felismerhető, egy-az-egy-fajta hang a márka. Mindössze annyit kell tenni az induláshoz, hogy egy maroknyi audio fájlokat és a kapcsolódó átiratok. Az alábbi hivatkozásokra kattintva egyéni beszéd-szöveg élmény jön létre.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: dapine
-ms.openlocfilehash: 786cf687e569af172eabfaa9068ae61ffd6b2988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 2aacf8881a57f0677177cd341a0ddc63224b26b6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220478"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402053"
 ---
 # <a name="get-started-with-custom-voice"></a>Bevezetés a Custom Voice szolgáltatásba
 

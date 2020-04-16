@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: e91e5e2701b02ab4c705cd80117dfc7689c7d054
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: e4ac5a953b5d88d0074c3cfb7f1bd45331577238
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668454"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392806"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rövid útmutató: Egy Azure Kubernetes-szolgáltatás (AKS) fürt üzembe helyezése az Azure Portalhasználatával
 
@@ -25,7 +25,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
@@ -52,6 +52,8 @@ AKS-fürt létrehozásához hajtsa végre a következő lépéseket:
 5. A **Hitelesítés** lapon adja meg a következő beállításokat:
     - Hozzon létre egy új egyszerű szolgáltatást úgy, hogy az Egyszerű **szolgáltatás** mezőt **(új) alapértelmezett szolgáltatásnévvel**hagyja el. Vagy *választhatja az Egyszerű szolgáltatás konfigurálása* meglévő használata. Ha egy meglévőt használ, meg kell adnia az SPN-ügyfélazonosítót és a titkos kulcsot.
     - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatát. Ez részletesebb hozzáférést biztosít az AKS-fürtben üzembe helyezett Kubernetes-erőforrásokhoz való hozzáféréshez.
+
+    Azt is megteheti, hogy egy felügyelt identitás helyett egy egyszerű szolgáltatás. További információt a [felügyelt identitások használata](use-managed-identity.md) című témakörben talál.
 
 Alapértelmezés szerint *az alapszintű* hálózatkezelés használatos, és az Azure Monitor tárolók engedélyezve van. Kattintson **a Véleményezés + létrehozás,** majd a **Létrehozás gombra,** amikor az ellenőrzés befejeződik.
 
@@ -250,7 +252,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
 
 > [!NOTE]
-> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket.
+> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Ha felügyelt identitást használt, az identitást a platform kezeli, és nem igényel eltávolítást.
 
 ## <a name="get-the-code"></a>A kód letöltése
 

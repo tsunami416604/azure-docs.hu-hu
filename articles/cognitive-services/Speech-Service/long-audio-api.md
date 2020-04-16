@@ -3,19 +3,19 @@ title: Hosszú hang API (előzetes verzió) – beszédfelismerési szolgáltat�
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan készült a Long Audio API a hosszú formátumú szöveg-beszéd aszinkron szintéziséhez.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.author: dapine
-ms.openlocfilehash: 033103e10971be2f6c220ccdb2c3586c7dc2ef05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: b7cca314ec59e46cf17751b1aec28b5c3ea029ed
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76900247"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81401063"
 ---
 # <a name="long-audio-api-preview"></a>Hosszú audio API (előzetes verzió)
 

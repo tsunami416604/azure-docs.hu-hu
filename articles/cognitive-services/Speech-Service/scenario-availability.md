@@ -10,19 +10,25 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 6f8f892e7ca81881b0cc00e1708e3f05052c573c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a72e5055a3b0f858a732ec28eeab511b09dd450c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76264203"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400148"
 ---
 # <a name="scenario-availability"></a>A helyzet rendelkezésre állása
 
 A beszédközbeni SDK számos forgatókönyvet kínál a programozási nyelvek és környezetek széles körében. Nem minden forgatókönyv érhető el még minden programozási nyelven vagy az összes környezetben. Az alábbiakban felsorolunk az egyes forgatókönyvek elérhetőségét.
 
 - **Beszédfelismerés (SR), kifejezéslista, szándék, fordítás és helyszíni tárolók**
-  - Minden olyan programozási nyelv/környezet, ahol van nyílkapcsolat <img src="media/index/link.jpg" height="15" width="15"></img> a rövid útmutató táblázatban [itt.](https://aka.ms/csspeech)
+  - C++/Windows & Linux & macOS
+  - C# (Framework & .NET Core)/Windows & UWP & Unity & Xamarin & Linux & macOS
+  - Java (Jre és Android)
+  - JavaScript (Brower és NodeJS)
+  - Python
+  - Swift
+  - Objective-C  
 - **Szövegfelolvasás (TTS)**
   - C++/Windows & Linux
   - C#/Windows & UWP & Unity

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79473030"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391581"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
 
@@ -75,7 +75,7 @@ A [felügyelt alkalmazás piactéren](publish-marketplace-app.md)való közzét�
 
 Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törlődik.
 
-## <a name="azure-policy"></a>Azure szabályzat
+## <a name="azure-policy"></a>Azure Policy
 
 A felügyelt alkalmazásra [Azure-szabályzatot](../../governance/policy/overview.md) alkalmazhat. Szabályzatokat alkalmazhat annak érdekében, hogy a felügyelt alkalmazás üzembe helyezett példányai megfeleljenek a biztonsági és adatkövetelményeknek. Ha az alkalmazás bizalmas adatokkal lép interakcióba, mindenképpen értékelje ki, hogyan kell védeni az adatokat. Ha például az alkalmazás az Office 365-ből származó adatokat használ, alkalmazzon egy szabályzatot az adattitkosítás engedélyezése érdekében.
 
@@ -84,4 +84,4 @@ A felügyelt alkalmazásra [Azure-szabályzatot](../../governance/policy/overvie
 Ebben a cikkben megismerkedett a felügyelt alkalmazások használatának előnyeivel. A következő cikkben egy felügyelt alkalmazás definícióját hozza létre.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Azure-beli felügyelt alkalmazás definíciójának közzététele](publish-managed-app-definition-quickstart.md)
+> [Rövid útmutató: Azure-beli felügyelt alkalmazás definíciójának közzététele](publish-service-catalog-app.md)

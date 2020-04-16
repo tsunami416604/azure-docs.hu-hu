@@ -2,19 +2,19 @@
 title: 'Rövid útmutató: Beszédfelismerés hangfájlból – Beszédszolgáltatás'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
-ms.author: dapine
-ms.openlocfilehash: 2b6270535c0cf69549a7412bd38d9207454e5500
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.author: trbye
+ms.openlocfilehash: a7c91775411f100a92dfcb0a7199dd4b25f6eca4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76037780"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400545"
 ---
 Ebben a rövid útmutatóban a [Beszéd SDK-t](~/articles/cognitive-services/speech-service/speech-sdk.md) fogja használni a hangfájlból érkező beszéd felismerésére. Néhány előfeltétel teljesítése után a fájlból származó beszéd felismerése csak néhány lépést tesz leve:
 > [!div class="checklist"]

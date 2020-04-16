@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan konfigurálhatja az Azure Analysis Services ren
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fa3a6fefce808e51c2ad1d9d18bf4766cdf689c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273678"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406231"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
 
@@ -67,7 +67,7 @@ A további feladatokban az SSMS használatával csatlakozhat a kiszolgálóhoz �
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Felhasználói fiók hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz
 
-Ebben a feladatban Azure AD-jából fog felhasználói vagy csoportfiókot hozzáadni a kiszolgáló-rendszergazdai szerepkörhöz. Biztonsági csoport hozzáadása esetében a `MailEnabled` tulajdonsághoz a `True` értéket kell beállítani.
+Ebben a feladatban Azure AD-jából fog felhasználói vagy csoportfiókot hozzáadni a kiszolgáló-rendszergazdai szerepkörhöz. Biztonsági csoport hozzáadása esetében a `MailEnabled` tulajdonsághoz a `True` értéket kell beállítani. Csoport e-mail cím szerint `obj:groupid@tenantid`történő megadásakor használja a használatát.
 
 1. Az **Object Explorerben** kattintson a jobb gombbal a kiszolgáló nevére, majd a **Tulajdonságok** lehetőségre. 
 2. Az **Analysis Server-tulajdonságok** ablakban kattintson a **Biztonság** > **Hozzáadás** lehetőségre.

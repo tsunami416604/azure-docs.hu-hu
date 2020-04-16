@@ -3,21 +3,21 @@ title: Adatok előkészítése egyéni beszédfelismeréshez – Beszédszolgál
 titleSuffix: Azure Cognitive Services
 description: A Microsoft beszédfelismerésének pontosságának tesztelése vagy az egyéni modellek betanítása során hang- és szöveges adatokra lesz szüksége. Ezen az oldalon bemutatjuk az adatok típusát, a felhasználásmódját és kezelését.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: d6e377ca4f33c0160267b23daaaaef5e07c271bb
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398688"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402140"
 ---
-# <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése egyéni beszédfelismerésre
+# <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése a Custom Speech szolgáltatáshoz
 
 A Microsoft beszédfelismerésének pontosságának tesztelése vagy az egyéni modellek betanítása során hang- és szöveges adatokra lesz szüksége. Ezen az oldalon bemutatjuk az adatok típusát, a felhasználásmódját és kezelését.
 
@@ -98,7 +98,7 @@ A Microsoft beszéd-szöveg pontosságának pontosságának méréséhez a hangf
 
 Az olyan problémák megoldásához, mint a szó törlése vagy helyettesítése, jelentős mennyiségű adatra van szükség a felismerés javításához. Általában, ez ajánlott, hogy szóról-szóra átiratok nagyjából 10-1000 órányi hang. Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
 
-  Példa:
+  Például:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place

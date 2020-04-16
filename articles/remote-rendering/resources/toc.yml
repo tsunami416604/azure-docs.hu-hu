@@ -1,6 +1,10 @@
+- name: Kibocsátási megjegyzések
+  href: 'https://github.com/Azure/azure-remote-rendering/releases'
 - name: Eszközök
   href: tools/toc.yml
 - name: Hibaelhárítás
   href: troubleshoot.md
 - name: Termékkel kapcsolatos visszajelzés küldése
   href: 'https://feedback.azure.com/forums/928696-azure-remote-rendering'
+- name: Stack Overflow
+  href: 'https://stackoverflow.com/questions/tagged/azure-remote-rendering'
