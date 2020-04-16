@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: e23268d21b01435aa71d4f471afc6d37ee9e9c1d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 327aadbc2996e91ef0f7639da86a647ddd42247c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73672708"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410942"
 ---
 # <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 A big data világában a nyers, rendezetlen adatok tárolása leggyakrabban relációs, nem relációs vagy egyéb tárolórendszerekben történik. A nyers adatok önmagukban azonban nem biztosítanak megfelelő környezetet, sem értelmezhető elemzési lehetőségeket az elemzők, adatelemzők vagy üzleti döntéshozók számára. 
 
@@ -113,9 +115,9 @@ Az alábbiakban a következő lépéssel kapcsolatos dokumentumokat kell feltár
 - [Adatfolyamok leképezése](concepts-data-flow-overview.md)
 - [Data Factory felhasználói felülete az Azure Portalon](quickstart-create-data-factory-portal.md)
 - [Adatok másolása eszköz az Azure Portalon](quickstart-create-data-factory-copy-data-tool.md)
-- [Powershell](quickstart-create-data-factory-powershell.md)
+- [PowerShell](quickstart-create-data-factory-powershell.md)
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
-- [Többi](quickstart-create-data-factory-rest-api.md)
+- [REST](quickstart-create-data-factory-rest-api.md)
 - [Azure Resource Manager-sablon](quickstart-create-data-factory-resource-manager-template.md)
  

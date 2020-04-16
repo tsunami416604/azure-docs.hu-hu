@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/25/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee1ea7d2623d6315007257218ddfc4e6ce445e65
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 5abc1e093dc7d4e8da823227dc3e3caa556e37e4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668908"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406849"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fcm-hub"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az FCM HUB-mal
 
@@ -93,6 +93,15 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
     > Az érték nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Lépjen kapcsolatba az Önhöz rendelt fiókkezelővel, vagy lépjen kapcsolatba az [FCM HUB ügyféltámogatási csapatával](mailto:fcmssoadmin@us.fcm.travel) az érték lefelvételéhez. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
 1. Kattintson a **Mentés** gombra.
+
+1. A **Jogcím kezelése** lap **Felhasználói attribútumok & Jogcímek** csoportban adja hozzá az alábbi egyéni attribútumokat:
+   - **Név**: PortalID
+   - **Forrás**: Attribútum
+   - **Forrásattribútum**: PortalID, az FCM által megadott érték
+
+1. Az **SAML aláíró tanúsítvány csoportban** a szerkesztési beállítással jelölje ki vagy írja be a következő beállításokat, majd válassza a **Mentés**lehetőséget:
+   - **Aláírási lehetőség**: SAML-válasz aláírása
+   - **Aláírási algoritmus**: SHA-256
 
 1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 

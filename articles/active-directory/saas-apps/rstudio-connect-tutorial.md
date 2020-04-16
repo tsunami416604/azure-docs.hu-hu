@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a9b49f75ad377a9377a2311ed16c17ca3d749e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2bb5dd845b03bd94f0a94db50c01b804cf6f55c2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67092572"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Oktatóanyag: Az Azure Active Directory integrációja az RStudio Connecttel
 
@@ -158,9 +158,9 @@ IdPAttributeProfile = azure
 SSOInitiated = IdPAndSP
 ```
 
-Tárolja a **kiszolgálócímét** az `Server.Address` értékben, és az App `SAML.IdPMetaData` Federation **metaadat-url-címét** az értékben.
+Tárolja a **kiszolgálócímét** az `Server.Address` értékben, és az App `SAML.IdPMetaData` Federation **metaadat-url-címét** az értékben. Vegye figyelembe, hogy ez a mintakonfiguráció titkosítatlan HTTP-kapcsolatot használ, míg az Azure AD titkosított HTTPS-kapcsolat használatát igényli. Használhatja a [fordított proxy](https://docs.rstudio.com/connect/admin/proxy/) előtt RStudio Connect vagy konfigurálása RStudio Connect [használata HTTPS közvetlenül](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS). 
 
-Ha problémája van a konfigurációval, olvassa el az [RStudio Connect felügyeleti útmutatót,](https://docs.rstudio.com/connect/admin/authentication.html#authentication-saml) vagy írjon e-mailt az [RStudio támogatási csapatának](mailto:support@rstudio.com) segítségért.
+Ha problémája van a konfigurációval, olvassa el az [RStudio Connect felügyeleti útmutatót,](https://docs.rstudio.com/connect/admin/authentication/saml/) vagy írjon e-mailt az [RStudio támogatási csapatának](mailto:support@rstudio.com) segítségért.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 

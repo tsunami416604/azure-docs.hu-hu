@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
-ms.openlocfilehash: 5654e1f8b8a55c705798368df70ce300241c9dff
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aa4dbfbaff620c25042d2603dab543661ec2cd14
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76989083"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410011"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Az SQL Server több táblájából származó adatok növekményes betöltése egy Azure SQL-adatbázisba
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ebben az oktatóanyagban egy Azure-adatfeldolgozó üzemet hoz létre egy folyamattal, amely a helyszíni SQL Server több táblájából a különbözeti adatokat egy Azure SQL-adatbázisba tölti be.    
 
@@ -810,7 +812,7 @@ A folyamat táblanevek listáját használja paraméterként. A **ForEach tevék
 
 ## <a name="monitor-the-pipeline"></a>A folyamat figyelése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Kattintson a **Minden szolgáltatás** elemre, végezzen keresést az *Adat-előállítók* kulcsszóval, és válassza az **Adat-előállítók** lehetőséget. 
 
