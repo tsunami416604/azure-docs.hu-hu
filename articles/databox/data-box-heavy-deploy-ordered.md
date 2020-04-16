@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4e9077d06341ce5ecf6b2238374ce1ac8e13dca3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70241392"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415167"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>Oktatóanyag: Az Azure Data Box Heavy megrendelése
 
@@ -41,17 +41,9 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 - Ha az üzembe helyezés nem a földszinten történik, lifttel vagy rámpával férhet hozzá az eszközhöz. Az eszköz tömege körülbelül 226,8 kg.
 - Győződjön meg arról, hogy az adatközpontban található olyan vízszintes hely, amelynek közelében van elérhető hálózati csatlakozási lehetőség, és ahol elfér az ilyen helyigényű eszköz.
 
-
 ### <a name="for-service"></a>A szolgáltatás esetén
 
-Mielőtt hozzákezd, győződjön meg az alábbiakról:
-- Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
-- Győződjön meg róla, hogy a Data Box szolgáltatáshoz használt előfizetés a következő típusok valamelyikébe tartozik:
-    - Microsoft nagyvállalati szerződés (EA). További információk az [EA-előfizetésekről](https://azure.microsoft.com/pricing/enterprise-agreement/).
-    - Felhőszolgáltató (CSP). További információk az [Azure CSP programjáról](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-    - Microsoft Azure szponzorálás. További információk az [Azure szponzorálási programjáról](https://azure.microsoft.com/offers/ms-azr-0036p/).
-
-- A Data Box Heavy-rendelések létrehozásához tulajdonosi vagy közreműködői jogosultsággal kell rendelkeznie az előfizetésen.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Az eszköz esetén
 
