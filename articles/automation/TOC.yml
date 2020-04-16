@@ -10,19 +10,19 @@
   items:
     - name: Automation-fiók létrehozása
       href: automation-quickstart-create-account.md
-    - name: Önálló Automation-fiók létrehozása
+    - name: Különálló Automation-fiók létrehozása
       href: automation-create-standalone-account.md
-    - name: Automation futtató fiók kezelése
+    - name: Automation-futtatófiók kezelése
       href: manage-runas-account.md
       displayName: certificate renewal
     - name: Szerepköralapú hozzáférés-vezérlés kezelése
       href: automation-role-based-access-control.md
       displayName: RBAC
-    - name: Az Azure AD használata Azure Automationben az Azure-beli hitelesítéshez
+    - name: Az Azure AD használata az Azure-beli hitelesítéshez
       href: automation-use-azure-ad.md
-    - name: Office 365-szolgáltatások kezelése az Azure Automation használatával
+    - name: Office 365-szolgáltatások kezelése
       href: manage-office-365.md
-    - name: Hitelesítés beállítása az AWS használatával
+    - name: Azure Automation-forgatókönyvek hitelesítése az Amazon Web Services segítségével
       href: automation-config-aws-account.md
     - name: Biztonságos eszközök titkosítása az Azure Automationben
       href: automation-secure-asset-encryption.md
@@ -42,6 +42,9 @@
           displayName: troubleshoot
 - name: Folyamatautomatizálás
   items:
+    - name: Runbook végrehajtása az Azure Automationben
+      href: automation-runbook-execution.md
+      displayName: 'fair share, activity log'
     - name: Hibrid runbook-feldolgozó áttekintése
       href: automation-hybrid-runbook-worker.md
     - name: Runbook-katalógus
@@ -111,9 +114,6 @@
             - name: Runbook kimenete
               href: automation-runbook-output-and-messages.md
               displayName: 'message streams, progress records, preference'
-            - name: Runbook-feladat nyomon követése
-              href: automation-runbook-execution.md
-              displayName: 'fair share, activity log'
             - name: Hibakezelés grafikus runbookokban
               href: automation-runbook-graphical-error-handling.md
         - name: hibrid runbook-feldolgozó

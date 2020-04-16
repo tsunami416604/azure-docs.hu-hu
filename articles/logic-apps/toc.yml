@@ -83,10 +83,12 @@
           href: logic-apps-author-definitions.md
         - name: Tartalomtípusok kezelése
           href: logic-apps-content-type.md
-        - name: Hibák és kivételek kezelése
+        - name: Kivételek kezelése
           href: logic-apps-exception-handling.md
         - name: Nagyméretű üzenetek kezelése
           href: logic-apps-handle-large-messages.md
+        - name: Szabályozási problémák vagy 429-es hibák kezelése
+          href: handle-throttling-problems-429-errors.md
         - name: Biztonságos
           items:
             - name: A biztonság javítása logikai alkalmazások esetében
