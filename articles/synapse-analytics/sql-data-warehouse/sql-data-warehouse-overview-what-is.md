@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 397eb6fbfea88b0eab0648275fc59764505f7d42
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633109"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416025"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Mi az Azure Synapse Analytics (korábban SQL DW)?
 
-Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure Synapse egyesíti ezt a két világot egy egységes felhasználói felülettel, amely lenyeli, előkészíti, kezeli és kiszolgálja az adatokat az azonnali BI- és gépi tanulási igényekhez
+Az Azure Synapse egy olyan elemzési szolgáltatás, amely egyesíti a vállalati adattárházat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure Synapse egyesíti ezt a két világot egy egységes felhasználói felülettel, amely lenyeli, előkészíti, kezeli és kiszolgálja az adatokat az azonnali BI és gépi tanulási igényekhez.
 
 Az Azure Synapse négy összetevőből áll:
 
@@ -27,11 +27,13 @@ Az Azure Synapse négy összetevőből áll:
   - SQL-készlet (kiépített DWU-nkénti fizetés)
   - SQL on-demand (fizetés feldolgozott TB-nként) – (előzetes verzió)
 - Spark: Mélyen integrált Apache Spark (előzetes verzió)
-- Adatintegráció: Hibrid adatintegráció (előzetes verzió)
+- Szinapszis folyamatok: Hibrid adatintegráció (előzetes verzió)
 - Stúdió: Egységes felhasználói élmény.  (Előzetes verzió)
 
 > [!NOTE]
 > Az Azure Synapse előzetes funkcióinak eléréséhez kérjen hozzáférést [itt.](https://aka.ms/synapsepreview) A Microsoft minden kérést betartat, és a lehető leghamarabb válaszol.
+>
+> Tekintse meg az [Azure Synapse előzetes verzió dokumentációját.](../overview-what-is.md)
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Szinapszis SQL-készlet az Azure Synapse-ban
 

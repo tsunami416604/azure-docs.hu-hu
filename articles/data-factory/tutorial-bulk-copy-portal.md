@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/27/2020
-ms.openlocfilehash: 5108335c0b5d0a51559653d51bfe6154237731f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 04469fa1bd0473710d9fa0bf0190c6459f1f8a07
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78162654"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418779"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez az oktatóanyag **bemutatja, hogy több táblát másol az Azure SQL Database-ből az Azure Synapse Analytics (korábban SQL DW) rendszerbe.** A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolása az SQL Server/Oracle az Azure SQL Database/Azure Synapse Analytics (korábban SQL DW)/Azure Blob, másolása különböző elérési utak blob az Azure SQL Database-táblák.
 
@@ -79,7 +81,7 @@ A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg az Azure SQL-k
  
    Az Azure-adat-előállító nevének **globálisan egyedinek**kell lennie. Ha a névmezőnél az alábbi hiba jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialBulkCopyDF). A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
-       `Data factory name “ADFTutorialBulkCopyDF” is not available`
+       `Data factory name "ADFTutorialBulkCopyDF" is not available`
 1. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 1. Az **erőforráscsoport esetében**tegye az alábbi lépések egyikét:
      

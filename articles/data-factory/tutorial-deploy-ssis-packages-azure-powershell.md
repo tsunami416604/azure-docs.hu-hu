@@ -14,14 +14,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0eb3a3d6c988746c1174398005463d25911c11e1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ada3762b6daae86033903f72ad9865ca66904ead
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336147"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418643"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Azure-SSIS-ir beállítása az Azure Data Factoryban a PowerShell használatával
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez az oktatóanyag bemutatja, hogyan lehet egy Azure-SQL Server integration Services Integration Runtime (Azure-SSIS IR) az Azure Data Factory ban. Az Azure-SSIS ir támogatja a futó csomagok, amelyek üzembe helyezése:
 * Egy SSIS-katalógus (SSISDB), amely egy Azure SQL Database-kiszolgálópéldány vagy egy felügyelt példány (a projekt telepítési modell) által üzemeltetett.
@@ -49,7 +51,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 - (Nem kötelező) Azure SQL Database-kiszolgáló. Ha még nem rendelkezik adatbázis-kiszolgálóval, először hozzon létre egyet az Azure Portalon. Az Azure Data Factory viszont létrehozza az SSISDB-t ezen az adatbázis-kiszolgálón. Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi, hogy az integrációs modul Azure-régiók határainak átlépése nélkül írjon végrehajtási naplókat a katalógusadatbázisba. 
     - A kiválasztott adatbázis-kiszolgáló alapján az SSISDB egyetlen adatbázisként, rugalmas készlet részeként vagy felügyelt példányként hozható létre, és nyilvános hálózatban vagy virtuális hálózathoz való csatlakozással érhető el. Az SSISDB üzemeltetéséhez szükséges adatbázis-kiszolgáló típusának kiválasztásához az [Azure SQL Database egyetlen adatbázis, a rugalmas készlet és a felügyelt példány összehasonlítása című témakörben](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)talál útmutatást. 
     
-      Ha egy Azure SQL Database-kiszolgálót HASZNÁL IP-tűzfallal vagy virtuális hálózati szolgáltatás végpontokkal, vagy egy felügyelt példányt egy privát végpontdal az SSISDB üzemeltetéséhez, vagy ha saját üzemeltetésű infravörös szolgáltatás konfigurálása nélkül szeretne hozzáférni a helyszíni adatokhoz, csatlakozzon az Azure-SSIS ir-hez virtuális hálózathoz. További információ: [Azure-SSIS ir létrehozása virtuális hálózatban.](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
+      Ha egy Azure SQL Database-kiszolgálót ip-tűzfallal vagy virtuális hálózati szolgáltatás végpontokkal, vagy egy felügyelt példányt használ az SSISDB üzemeltetéséhez, vagy ha saját üzemeltetésű infravörös szolgáltatás konfigurálása nélkül szeretne hozzáférni a helyszíni adatokhoz, csatlakozzon az Azure-SSIS IR-hez egy virtuális hálózathoz. További információ: [Azure-SSIS ir létrehozása virtuális hálózatban.](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
     - Ellenőrizze, hogy az **Azure-szolgáltatások hoz való hozzáférés engedélyezése** beállítás engedélyezve van-e az adatbázis-kiszolgálón. Ez a beállítás nem alkalmazható, ha egy Azure SQL Database-kiszolgáló IP-tűzfal szabályok vagy virtuális hálózati szolgáltatás végpontok, vagy egy felügyelt példány egy privát végpont ssisdb üzemeltetéséhez. További információkért lásd: [Az Azure SQL-adatbázis védelme](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Ha engedélyezni szeretné ezt a beállítást a PowerShell használatával, olvassa el a [New-AzSqlServerFirewallRule című témakört.](/powershell/module/az.sql/new-azsqlserverfirewallrule)
     - Adja hozzá az ügyfélgép IP-címét vagy az IP-címek egy tartományát, beleértve az ügyfélgép IP-címét is, az adatbázis-kiszolgáló tűzfalbeállításaiban szereplő ügyfél IP-címlistájához. További információkért lásd: [Kiszolgáló- és adatbázisszintű Azure SQL Database-tűzfalszabályok](../sql-database/sql-database-firewall-configure.md).
     - Csatlakozhat az adatbázis-kiszolgálóhoz sql-hitelesítés használatával a kiszolgáló felügyeleti hitelesítő adataival vagy az Azure Active Directory (Azure AD) hitelesítéssel az adat-előállító felügyelt identitásával. Az Azure AD-hitelesítés, az adatgyár felügyelt identitásának hozzáadásához egy Azure AD-csoport hozzáférési engedélyekkel az adatbázis-kiszolgálóhoz, [lásd: Hozzon létre egy Azure-SSIS IR Azure AD-hitelesítéssel.](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)

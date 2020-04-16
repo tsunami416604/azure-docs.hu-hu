@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 3fe4dc76e8ece0d525f307626b1772a3239805db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ff9e5ff099bba7af9cac9862103ef63aa0169545
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977508"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418747"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ebben az oktatóanyagban egy olyan adat-előállító folyamatot hoz létre, amely bemutat néhány folyamvezérlési funkciót. A folyamat egy egyszerű másolást hajt végre egy Azure Blob Storage-beli tárolóból egy másik tárolóba, amely ugyanazon tárfiókban található. Ha a másolási tevékenység sikeres, a folyamat egy e-mailt küld a sikeres műveletről, amelyben szerepelnek a sikeres másolási művelet részletei (például az írt adatok mennyisége). Ha a másolási tevékenység sikertelen, a folyamat egy e-mailt küld a sikertelen műveletről, amelyben szerepelnek a sikertelen másolás részletei (például a hibaüzenet). Az oktatóanyag során megismerheti, hogyan adhatók át a paraméterek.
 
@@ -195,7 +197,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 
     1. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.
     2. A **Storage-fiók neve** elemnél válassza ki saját Azure Storage-fiókját.
-    3. Kattintson a **Mentés** gombra.
+    3. Kattintson a **Save** (Mentés) gombra.
 
    ![Új Azure Storage-beli társított szolgáltatás](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Adja meg a `@pipeline().parameters.sourceBlobContainer` mappanevet és az `emp.txt` fájlnevet. A sourceBlobContainer folyamatparaméterrel adhatja meg az adatkészlet mappájának elérési útját.

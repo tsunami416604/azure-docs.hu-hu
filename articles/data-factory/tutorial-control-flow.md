@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7ba921656d0dad059b1d15f443bcefeff03ade50
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977391"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418728"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ebben az oktatóanyagban egy Data Factory-folyamatot hoz létre, amely bemutatja a vezérlési folyamat néhány funkcióját. Ez a folyamat az Azure Blob Storage egy tárolóból egy másik tárolóba másolja az azonos tárfiókban. Ha a másolási tevékenység sikeres, a folyamat e-mailben elküldi a sikeres másolási művelet részleteit. Ez az információ magában foglalhatja az írott adatok mennyiségét is. Ha a másolási tevékenység sikertelen, a másolási hiba részleteit, például a hibaüzenetet e-mailben küldi el. Az oktatóanyag során megismerheti, hogyan adhatók át a paraméterek.
 

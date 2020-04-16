@@ -12,14 +12,17 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e81efd826c78bfa1af5624272ae9b190cb54348
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 655a98ef1b6b8b2d4086b472ee7ce4d67346e5ca
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313873"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418711"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Azure Data Factory segítségével
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adat-előállító ban lévő folyamat adatokat másol az Azure Blob storage-ból egy Azure SQL-adatbázisba. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
 
 > [!NOTE]

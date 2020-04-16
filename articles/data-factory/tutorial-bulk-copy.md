@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 4ab467c0dc5014ec6c8a543fe7e8ecc136dfa02d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0f73095f72d07989cdfa309454a2b54efa8e5f95
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239818"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418762"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
 

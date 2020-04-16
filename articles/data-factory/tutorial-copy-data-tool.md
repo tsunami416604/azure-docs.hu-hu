@@ -12,18 +12,20 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
-ms.openlocfilehash: 52ed43277eef84de826d2f4fa41ba860211a1531
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be9395b908461b54b607fff32747ca0d9f20f45c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78969905"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418660"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob storage-ból egy SQL-adatbázisba az Adatok másolása eszközzel
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](tutorial-copy-data-tool.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezután az Adatok másolása eszközzel hozzon létre egy folyamatot, amely adatokat másol az Azure Blob storage-ból egy SQL-adatbázisba.
 
@@ -132,7 +134,7 @@ Készítse elő a Blob storage és az SQL-adatbázis az oktatóanyag ezekkel a l
 
     b. A következő lépéshez kattintson a **Tovább** gombra.
 
-1. A **Fájlformátum beállításai** lapon engedélyezze az *Első sor fejlécként jelölőnégyzetét.* Figyelje meg, hogy az eszköz automatikusan észleli az oszlop- és sorhatárolókat. Válassza a **Tovább lehetőséget.** Megtekintheti az adatok előnézetét is, és megtekintheti a bemeneti adatok sémáját ezen az oldalon.
+1. A **Fájlformátum beállításai** lapon engedélyezze az *Első sor fejlécként jelölőnégyzetét.* Figyelje meg, hogy az eszköz automatikusan észleli az oszlop- és sorhatárolókat. Kattintson a **Tovább** gombra. Megtekintheti az adatok előnézetét is, és megtekintheti a bemeneti adatok sémáját ezen az oldalon.
 
     ![A Fájlformátum beállításai](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. A **Céladattár** oldalon hajtsa végre a következő lépéseket:

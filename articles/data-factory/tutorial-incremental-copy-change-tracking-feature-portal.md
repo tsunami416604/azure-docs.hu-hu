@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: a1f76987580bc4235a290c8aa18110f8257e74a7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 40e4fed9755edc2204c7b6b24a003995a14212d0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75982670"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415423"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be a forrás Azure SQL-adatbázisban lévő **változáskövetési** adatok alapján egy Azure Blob Storage-be.  
 
@@ -201,7 +203,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 
     1. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.
     2. A **Storage-fiók neve** elemnél válassza ki saját Azure Storage-fiókját.
-    3. Kattintson a **Mentés** gombra.
+    3. Kattintson a **Save** (Mentés) gombra.
 
    ![Azure Storage-fiók beállításai](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -414,7 +416,7 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
     2. Válassza az **Importálási paraméter** lehetőséget.
     3. A **tárolt eljárás paramétereinél** adja meg az alábbi értékeket a paraméterekhez:
 
-        | Név | Típus | Érték |
+        | Name (Név) | Típus | Érték |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | Sztring | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

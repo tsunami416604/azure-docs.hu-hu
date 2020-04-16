@@ -7,16 +7,20 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76156726"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415930"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció az Azure Data Factory és az Azure Data Share használatával
 
-Ahogy az ügyfelek belekezdenek a modern adattárház- és elemzési projektekbe, nem csak több adatra van szükségük, hanem jobban rálátásuk van az adatterületükön lévő adataikra. Ez a műhely bemutatja, hogy az Azure Data Factory és az Azure Data Share fejlesztései hogyan egyszerűsítik az adatok integrációját és kezelését az Azure-ban. A kódmentes ETL/ELT engedélyezésétől az adatok átfogó nézetének létrehozásáig az Azure Data Factory fejlesztései lehetővé teszik az adatmérnökök számára, hogy magabiztosan hozzanak be több adatot, és így több értéket a vállalatszámára. Az Azure Data Share lehetővé teszi, hogy az üzleti és üzleti megosztás tegyék lehetővé a szabályozott módon.
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Ahogy az ügyfelek belekezdenek a modern adattárház- és elemzési projektekbe, nem csak több adatra van szükségük, hanem jobban rálátásuk van az adatterületükön lévő adataikra. Ez a műhely bemutatja, hogy az Azure Data Factory és az Azure Data Share fejlesztései hogyan egyszerűsítik az adatok integrációját és kezelését az Azure-ban. 
+
+A kódmentes ETL/ELT engedélyezésétől az adatok átfogó nézetének létrehozásáig az Azure Data Factory fejlesztései lehetővé teszik az adatmérnökök számára, hogy magabiztosan hozzanak be több adatot, és így több értéket a vállalatszámára. Az Azure Data Share lehetővé teszi, hogy az üzleti és üzleti megosztás tegyék lehetővé a szabályozott módon.
 
 Ebben a műhelyben az Azure Data Factory (ADF) használatával fogja beadni az Azure SQL-adatbázisból (SQL DB) származó adatokat az Azure Data Lake Storage gen2 (ADLS gen2) rendszerbe. Miután leszállt a tóban, átfogja alakítani azokat az adatfolyamok leképezésével, az adatgyár natív átalakítási szolgáltatásával, és az Azure Synapse Analytics (korábban SQL DW) szolgáltatásba kell besülnie. Ezután megosztja a táblát az átalakított adatokkal, valamint néhány további adatot az Azure Data Share használatával. 
 

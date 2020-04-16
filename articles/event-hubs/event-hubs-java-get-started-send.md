@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 5a34ac2d1b7401d31ae518334aedc15c626b66a3
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 379739533e15e60bc47bfc883a67037d4a58d0e0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529493"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417625"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>A Java használatával eseményeket küldhet vagy fogadhat az Azure Event Hubs-ból (azure-eventhubs)
 
@@ -176,7 +176,7 @@ Az oktatóanyagban található kód a [GitHubOn található EventProcessorSample
 
 **Az EventProcessorHost** egy Java-osztály, amely leegyszerűsíti az események fogadását az Event Hubs-ból az állandó ellenőrzőpontok és az ilyen eseményközpontoktól érkező párhuzamos fogadások kezelésével. Az EventProcessorHost használatával feloszthatja az eseményeket több fogadóra, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az EventProcessorHost egyetlen fogadóhoz.
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Az EventProcessorHost használatához [Azure Storage-fiókkal][Azure Storage-fiókkal] kell rendelkeznie:
 
@@ -314,7 +314,8 @@ A különböző típusú buildkörnyezetek esetén explicit módon beszerezheti 
         
            System.out.println("End of sample");
        }
-    ```
+   }
+   ```
 3. Hozzon létre `EventProcessor`még egy osztályt, amelyet a következő kóddal hozzon létre:
    
     ```java

@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 09/25/2019
-  ms.openlocfilehash: bdda8aca71f09cfe570ffea7e03c63d7c87abbb5
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/14/2020
+  ms.openlocfilehash: 6d209715a86e580d402361189f4484e762c43706
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77212584"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81414294"
 landingContent:
 - title: Az Azure Lighthouse ismertetése
   linkLists:
@@ -29,7 +29,7 @@ landingContent:
       url: ./concepts/azure-delegated-resource-management.md
     - text: Bérlők közötti felügyeleti megoldások
       url: ./concepts/cross-tenant-management-experience.md
-- title: Első lépések
+- title: Bevezetés
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -43,6 +43,8 @@ landingContent:
       url: ./concepts/cloud-solution-provider.md
     - text: Nagyvállalati forgatókönyvek
       url: ./concepts/enterprise.md
+    - text: Bérlők, szerepkörök és felhasználók
+      url: ./concepts/tenants-users-roles.md
 - title: Ajánlatok a Marketplace-en
   linkLists:
   - linkListType: how-to-guide
@@ -61,14 +63,6 @@ landingContent:
       url: https://github.com/Azure/Azure-Lighthouse-samples/
     - text: Azure Lighthouse-minták indexe
       url: ./samples/index.md
-- title: Az Azure-szolgáltatások használata
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Az Azure Monitor-naplók nagy léptékű használata
-      url: ./how-to/monitor-at-scale.md
-    - text: Az Azure Policy nagy léptékű üzembe helyezése
-      url: ./how-to/policy-at-scale.md
 - title: Azure Portal-használati tapasztalatok
   linkLists:
   - linkListType: how-to-guide
@@ -77,16 +71,18 @@ landingContent:
       url: ./how-to/view-manage-customers.md
     - text: Szolgáltatók megtekintése és kezelése
       url: ./how-to/view-manage-service-providers.md
-- title: Referencia – Letöltések
+- title: Az Azure-szolgáltatások használata
   linkLists:
-  - linkListType: download
+  - linkListType: how-to-guide
     links:
-    - text: OpenAPI – 2019.06.01.
-      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
-    - text: .NET-hez készült SDK – NuGet
-      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
-    - text: Pythonhoz készült SDK – PyPi
-      url: https://pypi.org/project/azure-mgmt-managedservices/
+    - text: Az Azure Monitor-naplók nagy léptékű használata
+      url: ./how-to/monitor-at-scale.md
+    - text: Delegálási módosítások monitorozása
+      url: ./how-to/monitor-at-scale.md
+    - text: Az Azure Policy nagy léptékű üzembe helyezése
+      url: ./how-to/policy-at-scale.md
+    - text: Javítható szabályzat telepítése
+      url: ./how-to/deploy-policy-remediation.md
 - title: Referencia – SDK-k
   linkLists:
   - linkListType: reference
@@ -101,6 +97,16 @@ landingContent:
       url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
     - text: Python
       url: /python/api/azure-mgmt-managedservices
+- title: Referencia – Letöltések
+  linkLists:
+  - linkListType: download
+    links:
+    - text: OpenAPI – 2019.06.01.
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
+    - text: .NET-hez készült SDK – NuGet
+      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
+    - text: Pythonhoz készült SDK – PyPi
+      url: https://pypi.org/project/azure-mgmt-managedservices/
 - title: Közösségi részvétel
   linkLists:
   - linkListType: get-started

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 3ec52c5274891619cf7976e99b5241bfc67a4076
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633022"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415083"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Forrásvezérlés integrációja AZ SQL-készlethez
 
@@ -81,4 +81,4 @@ Ez az oktatóanyag bemutatja, hogyan integrálható az SQL Server Data tools (SS
 
 ## <a name="next-steps"></a>További lépések
 
-- [Fejlesztés AZ SQL-készlethez](sql-data-warehouse-overview-develop.md)
+- [Fejlesztés az SQL-készlet fejlesztéséhez](sql-data-warehouse-overview-develop.md)
