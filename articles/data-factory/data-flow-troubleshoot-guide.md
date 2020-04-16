@@ -8,14 +8,16 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 04/02/2020
-ms.openlocfilehash: a5244086c185c111762496086f8044f12f52be14
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e9e9b10cc9bae029fe11fb2bd1f8b76cf120744a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632596"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417810"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Adatfolyamok – problémamegoldás az Azure Data Factoryban
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez a cikk az Azure Data Factory adatfolyamainak gyakori hibaelhárítási módszereit ismerteti.
 
@@ -80,7 +82,7 @@ További hibaelhárítási segítségért próbálkozzon az alábbi forrásokkal
 *  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory szolgáltatáskérések](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN fórum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
 *  [Stack túlcsordulás fórum Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter információk a Data Factory-ról](https://twitter.com/hashtag/DataFactory)
 *  [ADF-hozzárendelési adatfolyamok Teljesítményútmutató](concepts-data-flow-performance.md)

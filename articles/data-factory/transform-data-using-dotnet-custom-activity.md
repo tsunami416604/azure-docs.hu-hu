@@ -10,18 +10,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260578"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418949"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-use-custom-activities.md)
-> * [Aktuális verzió](transform-data-using-dotnet-custom-activity.md)
+> * [Jelenlegi verzió](transform-data-using-dotnet-custom-activity.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az Azure Data Factory-folyamatban kétféle tevékenységet használhat.
 
@@ -115,7 +116,7 @@ Az alábbi táblázat a tevékenységre jellemző tulajdonságok nevét és leí
 &#42; A `resourceLinkedService` `folderPath` tulajdonságokat, és mindkettőt meg kell adni, vagy mindkettőt ki kell hagyni.
 
 > [!NOTE]
-> Ha a csatolt szolgáltatásokat referenciaobjektumként adja át az egyéni tevékenységben, akkor jó biztonsági gyakorlat az Azure Key Vault-kompatibilis csatolt szolgáltatás átadása (mivel nem tartalmaz biztonságos karakterláncokat), és a hitelesítő adatokat a titkos név használatával közvetlenül a kulcsból kell lekérni Páncélterem a kódból. Itt talál egy [példát,](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) amely hivatkozik az AKV-kompatibilis csatolt szolgáltatásra, lekéri a hitelesítő adatokat a Key Vaultból, majd hozzáfér a kódban lévő tárolóhoz.
+> Ha a csatolt szolgáltatások referenciaobjektumokként az egyéni tevékenység, célszerű átadni egy Azure Key Vault-kompatibilis csatolt szolgáltatás (mivel nem tartalmaz semmilyen biztonságos karakterláncok), és lekéri a hitelesítő adatokat titkos név használatával közvetlenül a Key Vault a kódból. Itt talál egy [példát,](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) amely hivatkozik az AKV-kompatibilis csatolt szolgáltatásra, lekéri a hitelesítő adatokat a Key Vaultból, majd hozzáfér a kódban lévő tárolóhoz.
 
 ## <a name="custom-activity-permissions"></a>Egyéni tevékenységengedélyek
 
@@ -309,7 +310,7 @@ Egyéni értékeket küldhet a kódból egy egyéni tevékenységben az Azure Da
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString kimenetek lekérése
 
-A *SecureString*típusúként kijelölt bizalmas tulajdonságértékek , amint az ebben a cikkben szereplő példákban látható, a Data Factory felhasználói felületének Figyelés lapján maszkolt.  A tényleges folyamatvégrehajtás során azonban egy *SecureString* tulajdonság jSON-ként van szerializálva a `activity.json` fájlon belül egyszerű szövegként. Példa:
+A *SecureString*típusúként kijelölt bizalmas tulajdonságértékek , amint az ebben a cikkben szereplő példákban látható, a Data Factory felhasználói felületének Figyelés lapján maszkolt.  A tényleges folyamatvégrehajtás során azonban egy *SecureString* tulajdonság jSON-ként van szerializálva a `activity.json` fájlon belül egyszerű szövegként. Például:
 
 ```json
 "extendedProperties": {

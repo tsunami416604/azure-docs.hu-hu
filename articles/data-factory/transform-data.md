@@ -10,14 +10,16 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 1f920f2672c19455a8e8ac979e8d6d1eb14d4c35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 024d61c5bcc38c78dc5a2bd5e01cba43d7b5267e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74924300"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418830"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factoryben
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector"]
 > * [Adatfolyam leképezése](data-flow-create.md)
@@ -26,14 +28,14 @@ ms.locfileid: "74924300"
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
 > * [HDInsight-adatfolyam](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
-> * [Machine Learning](transform-data-using-machine-learning.md) 
+> * [Gépi tanulás](transform-data-using-machine-learning.md) 
 > * [Tárolt eljárás](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
 > * [Databricks notebook](transform-data-databricks-notebook.md)
 > * [Databricks Jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET egyéni](transform-data-using-dotnet-custom-activity.md)
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 ## <a name="overview"></a>Áttekintés
 Ez a cikk ismerteti az Azure Data Factory adatátalakítási tevékenységeit, amelyek segítségével átalakíthatja és feldolgozhatja a nyers adatokat előrejelzésekké és nagy méretű elemzésekké. Az átalakítási tevékenység végrehajtása egy számítógépes környezetben, például az Azure Databricks vagy az Azure HDInsight. Az egyes átalakítási tevékenységekre vonatkozó részletes információkat mutató cikkekre mutató hivatkozásokat tartalmaz.
 

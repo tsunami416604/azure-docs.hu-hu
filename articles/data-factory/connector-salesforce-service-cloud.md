@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: 4540b27a9241a14b3d1a153d11bf43900e8ae0ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec2aa5b1492534908adb55544623110242717609
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153852"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416674"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Adatok másolása a Salesforce Service Cloud szolgáltatásból az Azure Data Factory használatával
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure Data Factory-ban az adatok másolásához a Salesforce Service Cloud-ból és a Salesforce Service Cloud-ba. A [Másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
@@ -27,7 +28,7 @@ Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure
 Ez a Salesforce Service Cloud-összekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 A Salesforce Service Cloud szolgáltatásból adatokat másolhat bármely támogatott fogadó adattárba. Bármely támogatott forrásadattárból adatokat másolhat a Salesforce Service Cloud szolgáltatásba. Az adattárak listáját, amelyek által támogatott forrásként vagy fogadóként a Másolás tevékenység, lásd: A [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
@@ -297,7 +298,7 @@ Adatok másolásakor a Salesforce Service Cloud, használhatja soql lekérdezés
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Adatok beolvasása a DateTime oszlop where záradékával
 
-Az SOQL vagy SQL lekérdezés megadásakor figyeljen a DateTime formátumkülönbségre. Példa:
+Az SOQL vagy SQL lekérdezés megadásakor figyeljen a DateTime formátumkülönbségre. Például:
 
 * **SOQL minta:**`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL-minta**:`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`

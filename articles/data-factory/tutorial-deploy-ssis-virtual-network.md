@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7470af23059ccd07e48050e6dc34521e299a986f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76841097"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418609"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Az Azure-SQL Server Integration Services (SSIS) integrációs futásidejű (IR) konfigurálása virtuális hálózathoz való csatlakozáshoz
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez az oktatóanyag alapvető lépéseket tartalmaz az Azure-Portal használatával az Azure-SQL Server Integration Services (SSIS) integrációs futásidejű (IR) virtuális hálózathoz való csatlakozásához.
 
@@ -70,7 +72,7 @@ Az Azure Portal használatával konfigurálhatja a virtuális hálózatot, miel�
 
 1. Indítsa el a Microsoft Edge-et vagy a Google Chrome-ot. Jelenleg csak ezek a webböngészők támogatják a Data Factory felhasználói felületét.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza az **További szolgáltatások lehetőséget.** Szűrje ki és válassza a **Virtuális hálózatok lehetőséget.**
 

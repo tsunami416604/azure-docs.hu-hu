@@ -10,19 +10,18 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743171"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417026"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-finomhangolás tényleges táblán alapuló nézetekkel
 
 A synapsze-i SQL-készlet ben materializált nézetek alacsony karbantartási módszert biztosítanak az összetett analitikus lekérdezések gyors teljesítményéhez lekérdezésmódosítás nélkül. Ez a cikk ismerteti a materializált nézetek használatával kapcsolatos általános útmutatást.
 
-Az Azure SQL Data Warehouse materializált nézetei alacsony karbantartási igényű módszert biztosítanak az összetett analitikus lekérdezésekhez, hogy gyors teljesítményt nyújtsanak a lekérdezésmódosítása nélkül. Ez a cikk ismerteti a materializált nézetek használatával kapcsolatos általános útmutatást.
+Az SQL-készletben materializált nézetek alacsony karbantartási módszert biztosítanak az összetett analitikus lekérdezésekhez, hogy gyors teljesítményt nyújtsanak a lekérdezésmódosítása nélkül. Ez a cikk ismerteti a materializált nézetek használatával kapcsolatos általános útmutatást.
 
 ## <a name="materialized-views-vs-standard-views"></a>Materializált nézetek és szabványos nézetek
 
@@ -45,7 +44,7 @@ A szabványos nézetre vonatkozó követelmények többsége továbbra is érvé
 
 ## <a name="benefits-of-using-materialized-views"></a>A materializált nézetek használatának előnyei
 
-A megfelelően megtervezett materializált nézet a következő előnyökkel járhat:
+A megfelelően megtervezett materializált nézet a következő előnyökkel jár:
 
 - Csökkentse a joinokkal és az összesítő függvényekkel rendelkező összetett lekérdezések végrehajtási idejét. Minél összetettebb a lekérdezés, annál nagyobb a végrehajtási időmegtakarítás lehetősége. A legtöbb előny akkor érhető el, ha a lekérdezés számítási költsége magas, és az eredményül kapott adatkészlet kicsi.  
 - Az SQL-készletben lévő optimalizáló automatikusan használhatja az üzembe helyezett materializált nézeteket a lekérdezésvégrehajtási tervek javításához.  Ez a folyamat átlátható a gyorsabb lekérdezési teljesítményt biztosító felhasználók számára, és nem igényel lekérdezéseket a materializált nézetekre való közvetlen hivatkozáshoz.
@@ -118,7 +117,7 @@ A materializált nézetek számának csökkentésére adott lehetőségek:
 
 - Dobja el az alacsony használatú vagy már nem szükséges materializált nézeteket.  A letiltott materializált nézet nem marad meg, de továbbra is tárolási költségekkel jár.  
 
-- Az azonos vagy hasonló alaptáblákon létrehozott materializált nézetek kombinálása akkor is, ha adataik nem fedik át egymást.  A materializált nézetek fésülése nagyobb méretet eredményezhet, mint a különálló nézetek összege, azonban a nézet karbantartási költségének csökkentenie kell.  Példa:
+- Az azonos vagy hasonló alaptáblákon létrehozott materializált nézetek kombinálása akkor is, ha adataik nem fedik át egymást.  A materializált nézetek egyesítése nagyobb méretet eredményezhet, mint a különálló nézetek összege, azonban a nézet karbantartási költségének csökkentenie kell.  Például:
 
 ```sql
 

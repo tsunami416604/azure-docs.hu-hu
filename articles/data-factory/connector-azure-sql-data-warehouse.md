@@ -11,18 +11,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7fb1560fb9be809d816dde7dd69f1ec8afe5649f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422184"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417580"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure Synapse Analytics (korábbi években Azure SQL Data Warehouse) szolgáltatásban az Azure Data Factory használatával 
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1. verzió](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Aktuális verzió](connector-azure-sql-data-warehouse.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolásához és az Azure Synapse Analytics, és az adatfolyam segítségével az azure Data Lake Storage Gen2 adatok átalakítása. Az Azure Data Factory ról a [bevezető cikkben](introduction.md)olvashat.
+
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolásához és az Azure SQL Data Warehouse- ba, és az Adatfolyam használatával az Azure Data Lake Storage Gen2-ben lévő adatok átalakításához. Az Azure Data Factory ról a [bevezető cikkben](introduction.md)olvashat.
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolásához és az Azure Synapse Analytics, és az adatfolyam segítségével az azure Data Lake Storage Gen2 adatok átalakítása. Az Azure Data Factory ról a [bevezető cikkben](introduction.md)olvashat.
 
@@ -32,7 +41,7 @@ Ez az Azure Synapse Analytics-összekötő a következő tevékenységek esetén
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrix](copy-activity-overview.md) táblával
 - [Adatfolyam leképezése](concepts-data-flow-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 
 A másolási tevékenység, ez az Azure Synapse Analytics-összekötő támogatja ezeket a funkciókat:
@@ -531,7 +540,7 @@ A funkció használatához hozzon létre egy [Azure Blob Storage-kapcsolt szolg�
 
 ### <a name="best-practices-for-using-polybase"></a>Gyakorlati tanácsok a PolyBase használatához
 
-Az alábbi szakaszok az [Azure Synapse Analytics ajánlott eljárásokon](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)kívül gyakorlati tanácsokat is kínálnak.
+Az alábbi szakaszok az [Azure Synapse Analytics ajánlott eljárásokon](../synapse-analytics/sql/best-practices-sql-pool.md)kívül gyakorlati tanácsokat is kínálnak.
 
 #### <a name="required-database-permission"></a>Szükséges adatbázis-engedély
 
@@ -740,7 +749,7 @@ Az Azure Synapse Analytics-beállítások a fogadó **átalakításának Beáll�
 Amikor adatokat másol az Azure Synapse Analytics szolgáltatásból vagy az Azure Synapse Analytics szolgáltatásba, a következő leképezéseket használja a rendszer az Azure Synapse Analytics adattípusaiból az Azure Data Factory köztes adattípusaihoz. Tekintse meg [a séma- és adattípus-hozzárendeléseket,](copy-activity-schema-and-type-mapping.md) amelyekből megtudhatja, hogy a Másolási tevékenység hogyan képezi le a forrássémát és az adattípust a fogadóhoz.
 
 >[!TIP]
->Tekintse meg [az Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) az ON SQL DW által támogatott adattípusokról és a nem támogatott agazatok megoldási cikkét.
+>Tekintse meg [az Azure Synapse Analytics](../synapse-analytics/sql/develop-tables-data-types.md) az ON SQL DW által támogatott adattípusokról és a nem támogatott agazatok megoldási cikkét.
 
 | Az Azure Synapse Analytics adattípusa    | Adatgyár köztes adattípusa |
 | :------------------------------------ | :----------------------------- |

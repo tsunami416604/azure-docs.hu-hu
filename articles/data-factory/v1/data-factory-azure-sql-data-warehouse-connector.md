@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2df49e65603573e4a3adcdda0635982252e70b18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130821"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419323"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása az Azure SQL Data Warehouse-ba és onnan az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
@@ -227,7 +227,7 @@ Ha a követelmények nem teljesülnek, az Azure Data Factory ellenőrzi a beáll
 Ha a forrásadatok nem felelnek meg az előző szakaszban bevezetett feltételeknek, engedélyezheti az adatok másolását egy köztes átmeneti Azure Blob Storage-on keresztül (nem lehet prémium szintű storage). Ebben az esetben az Azure Data Factory automatikusan elvégzi az átalakításokat az adatokon, hogy megfeleljen a PolyBase adatformátum-követelményeinek, majd a PolyBase segítségével adatokat tölt be az SQL Data Warehouse-ba, és végül a Blob storage-ból származó ideiglenes adatok karbantartása. Tekintse meg [a Szakaszos másolás](data-factory-copy-activity-performance.md#staged-copy) t, hogy az átmeneti Azure Blobon keresztül történő másolás általában hogyan működik.
 
 > [!NOTE]
-> Ha adatokat másol egy helyszíni adattárból az Azure SQL Data Warehouse-ba polybase és átmeneti használatával, ha az adatkezelési átjáró verziója 2.4 alatt van, jre (Java runtime környezet) szükséges az átjárógépen, amely a forrás átalakítására szolgál adatokat megfelelő formátumba kell alakítani. Javasoljuk, hogy frissítse az átjárót a legújabbra, hogy elkerülje az ilyen függőségeket.
+> Ha adatokat másol egy helyszíni adattárból az Azure SQL Data Warehouse-ba polybase és átmeneti használatával, ha az adatkezelési átjáró verziója 2.4 alatt van, jre (Java runtime environment) szükséges az átjárógépen, amely a forrásadatok megfelelő formátumba való átalakításához használható. Javasoljuk, hogy frissítse az átjárót a legújabbra, hogy elkerülje az ilyen függőségeket.
 >
 
 A szolgáltatás használatához hozzon létre egy [Azure Storage-kapcsolt szolgáltatást,](data-factory-azure-blob-connector.md#azure-storage-linked-service) amely az Azure Storage-fiókra hivatkozik, amely rendelkezik az ideiglenes blobtár-tárral, majd adja meg a `enableStaging` másolási tevékenység `stagingSettings` tulajdonságait a következő kódban látható módon:
@@ -295,7 +295,7 @@ All columns of the table must be specified in the INSERT BULK statement.
 A NULL érték az alapértelmezett érték egy speciális formája. Ha az oszlop nullázható, az adott oszlop bemeneti adatai (blobban) üresek lehetnek (nem hiányozhatnak a bemeneti adatkészletből). A PolyBase null értéket szúr be számukra az Azure SQL Data Warehouse-ban.
 
 ## <a name="auto-table-creation"></a>Automatikus táblalétrehozása
-Ha a Másolás varázslóval másolja az adatokat az SQL Server vagy az Azure SQL Database adatbázisából az Azure SQL Data Warehouse-ba, és a forrástáblának megfelelő tábla nem létezik a céltárolóban, a Data Factory automatikusan létrehozhatja a táblát az adattárban a forrástábla sémája használatával.
+Ha a Másolás varázsló segítségével másolja az adatokat az SQL Server vagy az Azure SQL Database az Azure SQL Data Warehouse és a tábla, amely megfelel a forrástábla nem létezik a céltárolóban, a Data Factory automatikusan létrehozhatja a táblát az adatraktárban a forrástábla sémája használatával.
 
 A Data Factory ugyanazzal a táblanévvel hozza létre a táblát a céltárolóban a forrásadattárban. Az oszlopok adattípusai a következő típusleképezés alapján kerülnek kiválasztásra. Szükség esetén típuskonverziókat hajt végre a forrás- és a céltárolók közötti inkompatibilitás okának kijavítása érdekében. Körfelbés táblaeloszlást is használ.
 

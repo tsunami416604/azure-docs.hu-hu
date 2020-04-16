@@ -9,14 +9,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 47d26ad452b8494e591ee919076e5ade8bf19cd7
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 696c175f55ecdb09b1b88f9766c4c678afe2c4ec
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011395"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417089"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tagolt szövegformátum az Azure Data Factoryban
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Kövesse ezt a cikket, ha elemezni szeretné **a tagolt szövegfájlokat, vagy az adatokat tagolt szövegformátumba**szeretné írni. 
 
@@ -114,5 +115,5 @@ Ismerje meg a [részleteket a forrás átalakítása](data-flow-source.md) és [
 
 - [Tevékenység másolása – áttekintés](copy-activity-overview.md)
 - [Adatfolyam leképezése](concepts-data-flow-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)

@@ -11,14 +11,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 18555fbffbc48594793163894c010998094b3b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c3f58d42b6f311e4e238dcffe7da42afd8a5306
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336232"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416729"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Hozzon létre egy Azure-SSIS-integrációs futásidőt az Azure Data Factoryban
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez a cikk az Azure-SQL Server Integration Services (SSIS) integrációs futásidejű (IR) azure Data Factory kiépítésének lépéseit ismerteti. Az Azure-SSIS ir a következőket támogatja:
 
@@ -118,7 +120,7 @@ Az adatgyár létrehozása után nyissa meg az áttekintő lapot az Azure Portal
 
    1. A **Pénzmegtakarítás**lehetőséghez válassza az Azure Hybrid Benefit lehetőséget az integrációs futásidejű: **Igen** vagy **Nem**. Válassza az **Igen** lehetőséget, ha saját SQL Server-licencet szeretne a Frissítési Garanciával, hogy a hibrid használat tal kapcsolatos költségmegtakarításelőnyeit élvezhesse.
 
-   1. Válassza a **Tovább lehetőséget.**
+   1. Kattintson a **Tovább** gombra.
 
 1. Az **SQL-beállítások** szakaszban hajtsa végre az alábbi lépéseket.
 

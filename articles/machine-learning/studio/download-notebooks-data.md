@@ -7,17 +7,17 @@ ms.subservice: studio
 ms.topic: how-to
 author: xiaoharper
 ms.author: amlstudiodocs
-ms.date: 03/12/2020
-ms.openlocfilehash: 9c4215d2c2e811b4c6369ee3773fb811695da4fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: a342ef86817f4f66a6e74b72b4d167fa548b6345
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204358"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419187"
 ---
 # <a name="download-notebookspreview-data"></a>Jegyzetfüzetek(előzetes verziós) adatainak letöltése
 
-A Notebooks(preview) funkció *2020.* Ezen időpont után a Jegyzetfüzetek(előzetes verzió) lap eltűnik, és a jegyzetfüzetek adatai nem állíthatók vissza. Töltse le jegyzetfüzeteadatait 2020.
+A Notebooks(preview) funkciót *2020.* A Jegyzetfüzetek(előzetes verzió) lap és a felhasználói jegyzetfüzetfájlok eltávolítása jelenleg világszerte elérhető az Azure-régiókban.
 
 Ez a cikk lépésenként bemutatja, hogyan töltheti le a Jegyzetfüzetek(előzetes verzió adatait).
 

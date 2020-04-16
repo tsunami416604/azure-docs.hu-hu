@@ -10,16 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: a0c07aaf27825254f776a03b9b9ca2cbeddca02d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250274"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417109"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadat-tevékenység beszereznie az Azure Data Factoryban
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A Metaadat-szolgáltatás beolvasása tevékenység segítségével lekérheti az Azure Data Factory bármely adatmetaadatait. Ezt a tevékenységet a következő esetekben használhatja:
 
@@ -46,7 +47,7 @@ A Metaadat beszerezése tevékenység egy adatkészletet vesz fel bemenetként, 
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure Blob-tárhely](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [2. generációs Azure Data Lake Storage](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -54,6 +55,7 @@ A Metaadat beszerezése tevékenység egy adatkészletet vesz fel bemenetként, 
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
+- Ha metaadat-tevékenység beszedése van egy mappában, győződjön meg arról, hogy list/EXECUTE engedéllyel rendelkezik az adott mappához.
 - Az Amazon S3 és `lastModified` a Google Cloud Storage, vonatkozik a vödröt és a kulcsot, de nem a virtuális mappát, és `exists` vonatkozik a vödör és a kulcs, de nem az előtag vagy virtuális mappát.
 - Az Azure Blob `lastModified` storage, vonatkozik a tároló és a blob, de nem a virtuális mappát.
 - `lastModified`a szűrő jelenleg a gyermekelemek szűrésére vonatkozik, de magára a mappára/fájlra nem.
@@ -198,5 +200,5 @@ További információ a Data Factory által támogatott egyéb vezérlési folya
 
 - [Folyamattevékenység végrehajtása](control-flow-execute-pipeline-activity.md)
 - [ForEach tevékenység](control-flow-for-each-activity.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 - [Webes tevékenység](control-flow-web-activity.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cb2302637efb16fc31bd420bf8c4ead19d7f598d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a2d79391832bbb5424c6d4096eb5c1a597623367
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81385002"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81421726"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>A felhasználónak rendelkeznie kell hubés beszélt SD-WAN/VPN-eszközök kel az Azure Virtual WAN használatához?
 
@@ -208,6 +208,13 @@ Igen. Internetkapcsolat és fizikai eszköz, amely támogatja az IPsec-et, lehet
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Hogyan engedélyezhetem az alapértelmezett útvonalat (0.0.0.0/0) egy kapcsolatban (VPN, ExpressRoute vagy Virtuális hálózat):
 
 A virtuális elosztók a megtanult alapértelmezett útvonalat virtuális hálózatra/helyekről helyekre VPN/ExpressRoute-kapcsolatra terjeszthetik, ha a jelző "Engedélyezve" a kapcsolaton. Ez a jelző akkor látható, ha a felhasználó virtuális hálózati kapcsolatot, VPN-kapcsolatot vagy ExpressRoute-kapcsolatot jelöl. Alapértelmezés szerint ez a jelző le van tiltva, ha egy hely vagy egy ExpressRoute-kapcsolat hubhoz csatlakozik. Alapértelmezés szerint engedélyezve van, ha virtuális hálózati kapcsolatot ad hozzá egy virtuális hálózat virtuális elosztóhoz való csatlakoztatásához. Az alapértelmezett útvonal nem a Virtual WAN hubból származik; az alapértelmezett útvonal at propagálja a rendszer, ha azt a Virtual WAN hub már megtanulta a tűzfal központi telepítésének eredményeként, vagy ha egy másik csatlakoztatott hely kényszerített bújtatása engedélyezve van.
+
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hogyan választja ki a virtuális WAN virtuális központja a legjobb útvonalat egy útvonalhoz több hubról?
+
+Ha egy virtuális központ ugyanazt az útvonalat több távoli hubról tanulja meg, a rendezési sorrend a következő:
+1) Route Origin a) Hálózati útvonalak – A Virtuális központ átjárói által közvetlenül megtanult VNET-előtagok b) BGP c) Hub RouteTable (statikusan konfigurált útvonalak) d) InterHub-útvonalak
+2)  Útvonal-metrika: A Virtual WAN az ExpressRoute-ot részesíti előnyben a VPN-nel szemben. Az ExpressRoute-társ nagyobb súlyú, mint a VPN-társ
+3)  AS görbe hossza
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Mi a különbség a Virtual WAN típusok (Alap- és Standard)között?
 

@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5753336eeef115038de4eb0b5ade0651b1fa293e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979156"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419459"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Adatgyárak riasztása és figyelése az Azure Monitor használatával
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 A felhőalapú alkalmazások összetettek és sok mozgó elhatással rendelkeznek. A figyelők adatokat szolgáltatnak annak érdekében, hogy az alkalmazások kifogástalan állapotban maradjanak. A monitorok segítenek elkerülni a lehetséges problémákat, és elháríthatják a korábbiproblémákat.
 
@@ -117,7 +119,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **storageAccountId** |Sztring | Annak a tárfióknak az erőforrás-azonosítója, amelyre diagnosztikai naplókat szeretne küldeni. |
 | **szolgáltatásBusRuleId** |Sztring | A szolgáltatásbusz-névtér szolgáltatásbusz-névtér szolgáltatás-busz szabályazonosítója, amelyben szeretné, hogy az Eseményközpontok létre legyenek a streamelési diagnosztikai naplókhoz. A szabályazonosító formátuma `{service bus resource ID}/authorizationrules/{key name}`a .|
 | **workspaceId** | Összetett típus | Metrikus időszemcsék és azok megőrzési házirendjei tömbje. A tulajdonság értéke üres. |
-|**metrics**| A megmeghívott folyamatnak átadandó folyamat futtatásparaméter-értékei| JSON-objektum, amely a paraméterneveket argumentumértékekhez rendeli. |
+|**Mutatókat**| A megmeghívott folyamatnak átadandó folyamat futtatásparaméter-értékei| JSON-objektum, amely a paraméterneveket argumentumértékekhez rendeli. |
 | **Naplók**| Összetett típus| Egy erőforrástípus diagnosztikai naplókategóriájának neve. Egy erőforrás diagnosztikai naplókategóriáinak listájának lekérnie, hajtsa végre a GET diagnosztikai beállítások műveletet. |
 | **Kategória**| Sztring| Naplókategóriák és azok adatmegőrzési házirendjei tömbje. |
 | **timeGrain** | Sztring | A metrikák részletessége, amelyek ISO 8601 időtartam formátumban vannak rögzítve. A tulajdonság értékének `PT1M`, amely egy percet határoz meg. |

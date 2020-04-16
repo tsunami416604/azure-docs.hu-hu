@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 96d0a5b2fb59e4612107d8ccbf7285fff7576585
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128386"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418541"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>A csapatadat-elemzési folyamat működés közben: az Azure Synapse Analytics használata
 Ebben az oktatóanyagban bemutatjuk, hogy az Azure Synapse Analytics használatával egy gépi tanulási modellt hoz létre és telepít egy nyilvánosan elérhető adatkészlet – a [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) adatkészlet – használatával. A bináris osztályozási modell épített előre jelzi, hogy egy tipp fizetik-e az utazás.  A modellek közé tartozik a többosztályos besorolás (függetlenül attól, hogy van-e tipp) és a regresszió (a kifizetett tippösszegek elosztása).
@@ -84,7 +84,7 @@ Kövesse az Azure Synapse Analytics-példány [létrehozásához és lekérdezé
 
 **Telepítse a Visual Studio és az SQL Server Data Tools alkalmazást.** További információt a [Visual Studio 2019 for SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)– első lépései című témakörben talál.
 
-**Csatlakozzon az Azure Synapse Analytics szolgáltatáshoz a Visual Studióval.** További információt a Csatlakozás az [Azure SQL Data Warehouse 1](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-connect-overview.md)& 2.
+**Csatlakozzon az Azure Synapse Analytics szolgáltatáshoz a Visual Studióval.** További információt az [1](../../synapse-analytics/sql/connect-overview.md)& 2.
 
 > [!NOTE]
 > Futtassa a következő SQL-lekérdezést az Azure Synapse Analytics szolgáltatásban létrehozott adatbázison (a csatlakozási témakör 3. lépésében megadott lekérdezés helyett), hogy **hozzon létre egy főkulcsot.**
@@ -126,7 +126,7 @@ A *-DestDir*játékban hajtsa végre a következő PowerShell-parancsfájlt rend
 Amikor a PowerShell-parancsfájl első alkalommal fut, a rendszer megkéri, hogy adja meg az adatokat az Azure Synapse Analytics és az Azure blob storage-fiók. Amikor ez a PowerShell-parancsfájl első alkalommal fut, a bevitt hitelesítő adatok a jelenlegi munkakönyvtárban lévő SQLDW.conf konfigurációs fájlba lesznek írva. A PowerShell-parancsfájl jövőbeli futtatása lehetővé teszi az összes szükséges paraméter olvasását ebből a konfigurációs fájlból. Ha módosítania kell néhány paramétert, a paramétereket a képernyőn a rendszer kérésre adja meg a konfigurációs fájl törlésével és a paraméterek értékeinek kérésként történő bevitelével, vagy módosíthatja a paraméterértékeket a *-DestDir* könyvtársSQLDW.conf fájl jának szerkesztésével.
 
 > [!NOTE]
-> Annak elkerülése érdekében, hogy a sémanév ütközzen az Azure Azure Synapse Analytics-ben már meglévőkkel, amikor a paramétereket közvetlenül a SQLDW.conf fájlból olvassa, a sqldw.conf fájlból egy háromjegyű véletlen számot ad hozzá a sémanevéhez alapértelmezett sémaként. nevet az egyes futtatásokhoz. A PowerShell-parancsfájl sémanév rekedése lehet: a nevet a felhasználó belátása szerint megadhatja.
+> Annak elkerülése érdekében, hogy a sémanév ütközik azokkal, amelyek már léteznek az Azure Azure Synapse Analytics, amikor a paraméterek olvasása közvetlenül a SQLDW.conf fájlt, egy háromjegyű véletlen számot ad hozzá a séma nevét a SQLDW.conf fájlt, mint az alapértelmezett séma nevét minden futtatáskor. A PowerShell-parancsfájl sémanév rekedése lehet: a nevet a felhasználó belátása szerint megadhatja.
 >
 >
 
@@ -310,7 +310,7 @@ Ez a **PowerShell-parancsfájl** a következő feladatokat hajtja végre:
 A tárfiókok földrajzi helye befolyásolja a betöltési időket.
 
 > [!NOTE]
-> A privát blobtár-fiók földrajzi helyétől függően a nyilvános blobból a privát tárfiókba történő adatmásolás folyamata körülbelül 15 percet vagy akár hosszabb időt is igénybe vehet, és az adatok betöltésének folyamata a tárfiókból az Azure-ba Az Azure Synapse Analytics 20 percet vagy hosszabb időt vehet igénybe.
+> A privát blob-tárfiók földrajzi helyétől függően a nyilvános blobból a privát tárfiókba történő másolás folyamata körülbelül 15 percet vagy még tovább is eltarthat, és az adatok betöltése a tárfiókból az Azure Azure Synapse Analytics-be 20 percet vagy tovább is eltarthat.
 >
 >
 
@@ -330,7 +330,7 @@ Használhatja a saját adatait. Ha az adatok a helyszíni gép a valós életben
 >
 >
 
-Ez a PowerShell-parancsfájl az Azure Synapse Analytics-adatokat is csatlakoztatja az adatfeltárási példafájlokhoz SQLDW_Explorations.sql, SQLDW_Explorations.ipynb és SQLDW_Explorations_Scripts.py fájlokkal, hogy ez a három fájl készen álljon a kipróbálásra a PowerShell-parancsfájl befejezése után azonnal.
+Ez a PowerShell-parancsfájl az Azure Synapse Analytics-adatokat is csatlakoztatja az adatfeltárási példafájlokhoz SQLDW_Explorations.sql, SQLDW_Explorations.ipynb és SQLDW_Explorations_Scripts.py, hogy ez a három fájl azonnal kipróbálható legyen a PowerShell-parancsfájl befejezése után.
 
 A sikeres végrehajtás után az alábbihoz hasonló képernyő jelenik meg:
 
@@ -839,7 +839,7 @@ Ebben a gyakorlatban már megvizsgáltuk és megterveztük az adatokat az Azure 
 5. Írja be az *SQL-felhasználónevet* a **Kiszolgáló felhasználói fiók nevébe**, a *jelszót* pedig a Kiszolgáló **felhasználói fiókjának jelszavába.**
 7. Az **Adatbázis-lekérdezés** szerkesztése szövegterületen illessze be a szükséges adatbázismezőket kibontó lekérdezést (beleértve a számított mezőket, például a címkéket is), és vegye le az adatokat a kívánt mintaméretre.
 
-Egy példa egy bináris besorolási kísérlet olvasása adatokat közvetlenül az Azure Synapse Analytics adatbázis az alábbi ábrán (ne feledje, hogy cserélje ki a táblanevek et nyctaxi_trip és nyctaxi_fare a séma nevét és a tábla neveket használt a forgatókönyv). Hasonló kísérletek et lehet kialakítani a többosztályos osztályozási és regressziós problémákhoz.
+Egy példa egy bináris besorolási kísérlet adatok at közvetlenül az Azure Synapse Analytics adatbázis az alábbi ábrán (ne feledje, hogy cserélje ki a táblanevek nyctaxi_trip és nyctaxi_fare a séma nevét és a forgatókönyvben használt táblanevek). Hasonló kísérletek et lehet kialakítani a többosztályos osztályozási és regressziós problémákhoz.
 
 ![Azure ML-vonat][10]
 
@@ -875,7 +875,7 @@ Az alábbi ábrán egy mintapontozási kísérlet található. Amikor készen á
 ![Azure ML közzététel][11]
 
 ## <a name="summary"></a>Összefoglalás
-Összefoglalva, hogy mit tettünk ebben a forgatókönyv-oktatóanyagban, létrehozott egy Azure-adatelemzési környezetet, egy nagy nyilvános adatkészlettel dolgozott, végighaladva a csapatadat-elemzési folyamaton, egészen az adatgyűjtéstől a modellbetanításig, majd a egy Azure Machine Learning webszolgáltatás üzembe helyezését.
+Összefoglalva, mit tettünk ebben a forgatókönyv-oktatóanyagban, létrehozott egy Azure-adatelemzési környezetet, egy nagy nyilvános adatkészlettel dolgozott, végighaladva a csapatadat-elemzési folyamaton, az adatgyűjtéstől a modellképzésig, majd egy Azure Machine Learning-webszolgáltatás üzembe helyezéséig.
 
 ### <a name="license-information"></a>Licencadatai
 Ezt a mintaforgatókönyvet és a hozzá tartozó parancsfájlokat és IPython-jegyzetfüzeteket a Microsoft az MIT-licenc alatt osztja meg. További részletekért tekintse meg a LICENSE.txt fájlt a GitHub mintakódjának könyvtárában.

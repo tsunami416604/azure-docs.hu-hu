@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: bee627ade4f66206cd5254fc32bc7aa9973c7bee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131317"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416473"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Az Azure Data Factory adatmozgatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 >
 > * [1-es verzió](v1/data-factory-data-movement-security-considerations.md)
 > * [Aktuális verzió](data-movement-security-considerations.md)
+
+ [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez a cikk ismerteti az alapvető biztonsági infrastruktúra, amely az adatok áthelyezése szolgáltatások az Azure Data Factory segítségével az adatok védelme érdekében. A Data Factory felügyeleti erőforrásai az Azure biztonsági infrastruktúrájára épülnek, és az Azure által kínált összes lehetséges biztonsági intézkedést használják.
 

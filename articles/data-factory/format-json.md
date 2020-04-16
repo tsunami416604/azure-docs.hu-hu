@@ -9,14 +9,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: b63dcfd6ed293cab9d0107a8b6a35c7ce358d429
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: c18d767afd3721bd6f6250058b9fbe66990133e4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011684"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417742"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON formátum az Azure Data Factoryban
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Kövesse ezt a cikket, ha elemezni szeretné **a JSON-fájlokat, vagy az adatokat JSON formátumba**szeretné írni. 
 
@@ -332,5 +333,5 @@ Jelölje **be az Egyszeridézett lehetőséget,** ha fordított perjelek et hasz
 
 - [Tevékenység másolása – áttekintés](copy-activity-overview.md)
 - [Adatfolyam leképezése](concepts-data-flow-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)

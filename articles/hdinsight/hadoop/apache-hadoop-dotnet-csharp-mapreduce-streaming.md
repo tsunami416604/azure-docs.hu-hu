@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/22/2019
-ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 7a299ce16f6e9c7292cebf198c9c3077f8e05fcb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74561803"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417608"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>C# használata a MapReduce streameléssel az Apache Hadoopon a HDInsightban
 
 Ismerje meg, hogyan használhatja a C# segítségével mapreduce megoldás létrehozása a HDInsight.
 
-Az Apache Hadoop streaming egy olyan segédprogram, amely lehetővé teszi a MapReduce feladatok futtatását parancsfájl vagy végrehajtható fájl használatával. Ebben a példában a .NET a szószámláló megoldás leképező jének és szűkítőjének megvalósítására szolgál.
+Az Apache Hadoop streamelése lehetővé teszi a MapReduce feladatok futtatását parancsfájl vagy végrehajtható fájl használatával. Itt a .NET a szószámláló megoldás leképezőjének és szűkítőjének megvalósítására szolgál.
 
 ## <a name="net-on-hdinsight"></a>.NET a HDInsight-on
 
@@ -49,12 +49,9 @@ A streameléssel kapcsolatos további információkért lásd: [Hadoop Streaming
 
 * A PowerShell használata esetén szüksége lesz az [Az modulra.](https://docs.microsoft.com/powershell/azure/overview)
 
-* SSH-ügyfél (nem kötelező). További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](../hdinsight-hadoop-linux-use-ssh-unix.md)
-
 * Apache Hadoop-fürt a HDInsighton. Lásd: [Első lépések a HDInsight linuxos alkalmazásával.](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
-* A fürtök [elsődleges tárolóURI-séma.](../hdinsight-hadoop-linux-information.md#URI-and-scheme) Ez az `wasb://` Azure Storage, `abfs://` az Azure Data `adl://` Lake Storage Gen2 vagy az Azure Data Lake Storage Gen1 esetében lesz. Ha az Azure Storage vagy a Data Lake Storage Gen2 biztonságos átvitele engedélyezve van, az URI a biztonságos átvitel lesz, `wasbs://` illetve `abfss://`a Lásd még: biztonságos [átvitel.](../../storage/common/storage-require-secure-transfer.md)
-
+* A fürtök [elsődleges tárolóURI-séma.](../hdinsight-hadoop-linux-information.md#URI-and-scheme) Ez a `wasb://` séma `abfs://` az Azure Storage, az `adl://` Azure Data Lake Storage Gen2 vagy az Azure Data Lake Storage Gen1 esetében lenne. Ha az Azure Storage vagy a Data Lake Storage Gen2 biztonságos átvitele engedélyezve van, az URI a biztonságos átvitel lesz, `wasbs://` illetve `abfss://`a Lásd még: biztonságos [átvitel.](../../storage/common/storage-require-secure-transfer.md)
 
 ## <a name="create-the-mapper"></a>A leképező létrehozása
 
@@ -221,14 +218,16 @@ Az alábbi eljárás azt ismerteti, hogyan futtathatok Egy MapReduce feladatot S
 
    Az alábbi lista azt ismerteti, hogy az egyes paraméterek és beállítások mit jelentenek:
 
-   * *hadoop-streaming.jar*: Megadja a streamelt MapReduce funkciót tartalmazó jar fájlt.
-   * `-files`: Megadja a feladat *mapper.exe* és *reducer.exe fájljait.* A `wasbs:///` `adl:///`, `abfs:///` vagy protokolldeklaráció minden fájl előtt a fürt alapértelmezett tárolójának gyökéréhez vezető elérési út.
-   * `-mapper`: Megadja a leképezőt megvalósító fájlt.
-   * `-reducer`: Megadja a szűkítőt megvalósító fájlt.
-   * `-input`: Megadja a bemeneti adatokat.
-   * `-output`: Megadja a kimeneti könyvtárat.
+   |Paraméter | Leírás |
+   |---|---|
+   |hadoop-streaming.jar|Megadja a streamelési MapReduce funkciót tartalmazó jar fájlt.|
+   |-fájlok|Megadja a feladat *mapper.exe* és *reducer.exe fájljait.* A `wasbs:///` `adl:///`, `abfs:///` vagy protokolldeklaráció minden fájl előtt a fürt alapértelmezett tárolójának gyökéréhez vezető elérési út.|
+   |-leképező|Megadja a leképezőt megvalósító fájlt.|
+   |-szűkítő|Megadja a szűkítőt megvalósító fájlt.|
+   |-bemenet|Megadja a bemeneti adatokat.|
+   |-kimenet|Megadja a kimeneti könyvtárat.|
 
-3. A MapReduce feladat befejezése után a következő paranccsal tekintse meg az eredményeket:
+1. A MapReduce feladat befejezése után a következő paranccsal tekintse meg az eredményeket:
 
    ```bash
    hdfs dfs -text /example/wordcountout/part-00000

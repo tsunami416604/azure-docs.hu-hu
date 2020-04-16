@@ -10,24 +10,25 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 9ef4b569fd8413d2825374c963fb272dd450cf0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c456e486217886510a1fd2ef1aeabae47d35b53c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533141"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417193"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Kifejezések és függvények az Azure Data Factoryben
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-functions-variables.md)
-> * [Aktuális verzió](control-flow-expression-language-functions.md)
+> * [Jelenlegi verzió](control-flow-expression-language-functions.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk az Azure Data Factory által támogatott kifejezések és függvények részleteit ismerteti. 
 
 ## <a name="expressions"></a>Kifejezések
 
-JSON-értékek a definícióban lehetnek literális vagy kifejezések, amelyek kiértékelése futásidőben. Példa:  
+JSON-értékek a definícióban lehetnek literális vagy kifejezések, amelyek kiértékelése futásidőben. Például:  
   
 ```json
 "name": "value"
@@ -176,7 +177,7 @@ A gyűjteményekkel, általában tömbökkel, karakterláncokkal és néha szót
 | [Üres](control-flow-expression-language-functions.md#empty) | Ellenőrizze, hogy a gyűjtemény üres-e. |
 | [Első](control-flow-expression-language-functions.md#first) | Az első elem visszaküldése egy gyűjteményből. |
 | [Kereszteződés](control-flow-expression-language-functions.md#intersection) | Olyan gyűjteményt ad vissza, amely *csak* a megadott gyűjteményekben lévő közös elemeket tartalmaz. |
-| [csatlakozás](control-flow-expression-language-functions.md#join) | Olyan karakterláncot ad vissza, amely egy tömb *összes* elemét a megadott karakterrel elválasztva adja vissza. |
+| [Csatlakozzon](control-flow-expression-language-functions.md#join) | Olyan karakterláncot ad vissza, amely egy tömb *összes* elemét a megadott karakterrel elválasztva adja vissza. |
 | [Utolsó](control-flow-expression-language-functions.md#last) | Az utolsó elem visszaküldése egy gyűjteményből. |
 | [Hossza](control-flow-expression-language-functions.md#length) | Karakterláncban vagy tömbben lévő elemek számát adja vissza. |
 | [Ugrál](control-flow-expression-language-functions.md#skip) | Távolítsa el az elemeket a gyűjtemény elejéről, és küldje vissza *az összes többi* elemet. |
@@ -229,7 +230,7 @@ Ezek a függvények hasznos belső feltételek, akkor lehet használni, hogy ér
 | [lebegőpontos](control-flow-expression-language-functions.md#float) | Lebegőpontos számot ad vissza egy bemeneti értékhez. |
 | [Int](control-flow-expression-language-functions.md#int) | Adja vissza egy karakterlánc egész verzióját. |
 | [Json](control-flow-expression-language-functions.md#json) | Adja vissza a JavaScript-objektumnotika (JSON) típusú értéket vagy objektumot egy karakterlánchoz vagy XML-hez. |
-| [sztring](control-flow-expression-language-functions.md#string) | Adja vissza egy bemeneti érték karakterlánc-verzióját. |
+| [Karakterlánc](control-flow-expression-language-functions.md#string) | Adja vissza egy bemeneti érték karakterlánc-verzióját. |
 | [uriKomponens](control-flow-expression-language-functions.md#uriComponent) | Adja vissza a bemeneti érték URI-kódolású verzióját úgy, hogy az URL-nem biztonságos karaktereket escape karakterekre cseréli. |
 | [uriComponentToBinary](control-flow-expression-language-functions.md#uriComponentToBinary) | Adja vissza egy URI-kódolású karakterlánc bináris verzióját. |
 | [uriComponentToString](control-flow-expression-language-functions.md#uriComponentToString) | Adja vissza egy URI-kódolású karakterlánc karakterlánc-verzióját. |

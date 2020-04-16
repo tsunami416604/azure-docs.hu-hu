@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
-ms.openlocfilehash: 42c637839172dab09a8721a93a67785a748afd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 766520fe44047eee76029adf8ee1683c7b8008a1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75708902"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417861"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Másolási tevékenység hibatűrése az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [Aktuális verzió](copy-activity-fault-tolerance.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az Azure Data Factory másolási tevékenysége két lehetőséget kínál az inkompatibilis sorok kezelésére a forrás- és fogadóadattárak közötti másoláskor:
 
@@ -108,6 +110,6 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 Lásd a többi Másolási tevékenység cikkeket:
 
 - [Tevékenység másolása – áttekintés](copy-activity-overview.md)
-- [Tevékenységteljesítmény másolása](copy-activity-performance.md)
+- [Másolási tevékenység teljesítménye](copy-activity-performance.md)
 
 

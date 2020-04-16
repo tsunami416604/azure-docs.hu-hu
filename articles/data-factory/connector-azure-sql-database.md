@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 3a16a8263c80852127ca61db3c666ebf0f7f1e4c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: db55e685fb50c89eb850e1b9ee9dcf13d20fb614
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011701"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417543"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure SQL Database-ben az Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Azure Data Factory által használt verziót:"]
 > * [1-es verzió](v1/data-factory-azure-sql-connector.md)
 > * [Aktuális verzió](connector-azure-sql-database.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolására és az Azure SQL-adatbázisba, és az Adatfolyam használatával alakítja át az adatokat az Azure SQL Database-ben. Az Azure Data Factory ról a [bevezető cikkben](introduction.md)olvashat.
 
@@ -32,7 +34,7 @@ Ez az Azure SQL Database-összekötő a következő tevékenységek esetén tám
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrix](copy-activity-overview.md) táblával
 - [Adatfolyam leképezése](concepts-data-flow-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 
 Másolási tevékenység esetén ez az Azure SQL Database-összekötő a következő függvényeket támogatja:

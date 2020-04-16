@@ -3,12 +3,12 @@ title: Bérlők közötti felügyeleti megoldások
 description: Az Azure delegált erőforrás-kezelés lehetővé teszi a bérlők közötti felügyeleti élményt.
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754130"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418514"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -25,11 +25,7 @@ Az Azure Active Directory (Azure AD) bérlő egy szervezet reprezentációja. Az
 
 Az Azure delegált erőforrás-kezelése, a bevezetési folyamat meghatározza a felhasználók a szolgáltató bérlője, akik képesek lesznek elérni és kezelni előfizetések, erőforráscsoportok és erőforrások az ügyfél bérlője. Ezek a felhasználók ezután jelentkezzen be az Azure Portalsaját hitelesítő adataikkal. Az Azure Portalon belül kezelhetik az összes olyan ügyfélhez tartozó erőforrásokat, amelyekhez hozzáféréssel rendelkeznek. Ez az Azure Portalon található [Ügyfélei](../how-to/view-manage-customers.md) lapon, vagy közvetlenül az adott ügyfél előfizetésének környezetében, akár az Azure Portalon, akár API-kon keresztül végezhető el.
 
-Az Azure delegált erőforrás-kezelése nagyobb rugalmasságot tesz lehetővé több ügyfél erőforrásainak kezeléséhez anélkül, hogy különböző bérlők különböző fiókjaiba kellene bejelentkeznie. Egy szolgáltatónak például három ügyfele lehet, különböző felelősségi körökkel és hozzáférési szintekkel, ahogy az itt látható:
-
-![Három ügyfélbérlő, amelyek szolgáltatói felelősségeket mutatnak](../media/azure-delegated-resource-management-customer-tenants.jpg)
-
-Az Azure delegált erőforrás-kezelése használatával a jogosult felhasználók bejelentkezhetnek a szolgáltató bérlőjébe, hogy hozzáférjenek ezekhez az erőforrásokhoz, ahogy az itt látható:
+Az Azure delegált erőforrás-kezelése nagyobb rugalmasságot tesz lehetővé több ügyfél erőforrásainak kezeléséhez anélkül, hogy különböző bérlők különböző fiókjaiba kellene bejelentkeznie. Előfordulhat például, hogy egy szolgáltatónak két különböző felelősségi körrel és hozzáférési szinttel rendelkező ügyfele van. Az Azure delegált erőforrás-kezelése használatával a jogosult felhasználók bejelentkezhetnek a szolgáltató bérlőjéhez, hogy hozzáférjenek ezekhez az erőforrásokhoz.
 
 ![Egy szolgáltató bérlőn keresztül kezelt ügyfélforrások](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 

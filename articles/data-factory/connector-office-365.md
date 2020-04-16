@@ -11,21 +11,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: d97b3caccc92f0fdfeb229d94e30ee6499c26181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea68fa8d9326e6d9ebb4f475d16ac83959cae6e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912405"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416878"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Adatok másolása az Office 365-ből az Azure-ba az Azure Data Factory használatával
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az Azure Data Factory integrálható a [Microsoft Graph adatcsatlakozással,](https://docs.microsoft.com/graph/data-connect-concept-overview)lehetővé téve, hogy az Office 365-ös bérlőben található gazdag szervezeti adatokat méretezhető módon hozza be az Azure-ba, és elemzési alkalmazásokat hozzon létre, és elemzéseket nyerjen ki ezen értékes adateszközök alapján. A Kiemelt hozzáférés-kezelésszolgáltatással való integráció biztonságos hozzáférés-vezérlést biztosít az értékes válogatott adatokhoz az Office 365-ben.  A Microsoft Graph adatcsatlakozásáról a hivatkozást ebben a [linkben](https://docs.microsoft.com/graph/data-connect-concept-overview) találja, és a licenceléssel kapcsolatos információkat lásd ebben a [linkben.](https://docs.microsoft.com/graph/data-connect-policies#licensing)
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenységet az Azure Data Factory-ban az Office 365-ből történő adatok másolásához. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
-Az ADF Office 365-összekötő és a Microsoft Graph-adatok összekapcsolása lehetővé teszi az Exchange Email-kompatibilis postaládákkülönböző típusú adatkészleteinek nagymértékű betöltését, beleértve a címjegyzékbeli névjegyeket, a naptáreseményeket, az e-mail üzeneteket, a felhasználói adatokat, a postaláda-beállításokat és a így tovább.  A rendelkezésre álló adatkészletek teljes listájának megtekintéséhez tekintse meg [itt.](https://docs.microsoft.com/graph/data-connect-datasets)
+Az ADF Office 365-összekötő és a Microsoft Graph-adatok összekapcsolása lehetővé teszi az Exchange Email-kompatibilis postaládákkülönböző típusú adatkészleteinek nagymértékű betöltését, beleértve a címjegyzékbeli névjegyeket, a naptáreseményeket, az e-mail üzeneteket, a felhasználói adatokat, a postaláda-beállításokat és így tovább.  A rendelkezésre álló adatkészletek teljes listájának megtekintéséhez tekintse meg [itt.](https://docs.microsoft.com/graph/data-connect-datasets)
 
 Egyelőre egyetlen másolási tevékenységen belül csak **az Office 365-ből másolhat adatokat [az Azure Blob Storage](connector-azure-blob-storage.md), az Azure Data Lake Storage [Gen1](connector-azure-data-lake-store.md)és az [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) json formátumban** (type setOfObjects). Ha az Office 365-öt más típusú adattárakba vagy más formátumokba szeretné betölteni, az első másolási tevékenységet egy későbbi másolási tevékenységgel láncolhatja, hogy további adatokat töltsön be a [támogatott ADF céltárolók](copy-activity-overview.md#supported-data-stores-and-formats) bármelyikébe (lásd a "Támogatott adattárak és formátumok" táblázat "Támogatott fogadóként" oszlopát).
 
@@ -63,7 +64,7 @@ Ha az ADF egy felügyelt alkalmazás részeként jön létre, és az Azure-szab�
 
 A másolási tevékenységgel egy folyamatot az alábbi eszközök vagy SDK-k egyikével hozhat létre. Válasszon egy hivatkozást, amely egy oktatóanyagra való ugráshoz lépésenkénti utasításokat tartalmaz egy másolási tevékenységet rendelkező folyamat létrehozásához. 
 
-- [Azure-portál](quickstart-create-data-factory-portal.md)
+- [Azure Portal](quickstart-create-data-factory-portal.md)
 - [.NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)

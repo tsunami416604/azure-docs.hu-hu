@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 0557c9b9eb65654c4a11c1389ace4776ab60a61d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39ea8dda0fd823d3061b2cb29e1c548f99281c82
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532570"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418796"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Függőség létrehozása átfedésmentes ablak eseményindítójához
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk lépéseket tartalmaz egy tumbling ablak eseményindító függőségének létrehozásához. Az Ablak váltási eseményindítóinak megjelenítése című témakörben talál általános tudnivalókat: [Hogyan hozhatunk létre bukdácsoló ablakeseményindítót.](how-to-create-tumbling-window-trigger.md)
 

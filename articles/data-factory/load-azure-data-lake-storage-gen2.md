@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 90573f77c77d614923f882053145d2f84598953d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96674f059e9cbc21c5c8c64eff8c94c810c4aa32
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440230"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417776"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen2 szolgáltatásba az Azure Data Factory segítségével
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Az Azure Data Lake Storage Gen2 az [Azure Blob storage-ba](../storage/blobs/storage-blobs-introduction.md)épített big data-elemzési képességek összeskészlete. Ez lehetővé teszi, hogy interfész az adatok segítségével mind a fájlrendszer és az objektum tárolási paradigmák.
 
@@ -82,7 +84,7 @@ Ebből a cikkből megtudhatja, hogy a Data Factory Copy Data eszközzel hogyan t
    1. Adja meg a **hozzáférési kulcs azonosítóértékét.**
    2. Adja meg a **titkos hozzáférési kulcs** értékét.
    3. Kattintson a **Kapcsolat tesztelése** elemre a beállítások ellenőrzéséhez, majd válassza a **Befejezés** lehetőséget.
-   4. Látni fogja, hogy egy új kapcsolat jön létre. Válassza a **Tovább lehetőséget.**
+   4. Látni fogja, hogy egy új kapcsolat jön létre. Kattintson a **Tovább** gombra.
    
       ![Amazon S3 fiók megadása](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       

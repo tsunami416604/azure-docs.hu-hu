@@ -11,17 +11,19 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 4a0709b4eaa8742069eecb4c39712e384645304b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57bf653aa3f421ae8897c4be661ceef589fcdc06
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74926661"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418813"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Adatok átalakítása az SQL Server tárolt eljárási tevékenységének használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-stored-proc-activity.md)
 > * [Aktuális verzió](transform-data-using-stored-procedure.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A Data [Factory-folyamat](concepts-pipelines-activities.md) adatátalakítási tevékenységeivel átalakíthatja és feldolgozhatja a nyers adatokat előrejelzésekké és elemzési adatokká. A tárolt eljárás tevékenység a Data Factory által támogatott átalakítási tevékenységek egyike. Ez a cikk az [átalakítási adatok](transform-data.md) ról szóló cikkre épül, amely általános áttekintést nyújt az adatok átalakításáról és a Data Factory támogatott átalakítási tevékenységeiről.
 

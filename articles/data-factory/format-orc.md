@@ -9,14 +9,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: e104c4c8e976207859b75212d5406558f04c6377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b68d3724c6390fc5d30745924451e27ef9855b3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597490"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417725"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>ORC formátum az Azure Data Factoryban
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Kövesse ezt a cikket, ha elemezni szeretné **az ORC fájlokat, vagy orc formátumba szeretné írni az adatokat.** 
 
@@ -103,5 +105,5 @@ Példa: állítsa `_JAVA_OPTIONS` be `-Xms256m -Xmx16g`a változót értékkel. 
 ## <a name="next-steps"></a>További lépések
 
 - [Tevékenység másolása – áttekintés](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)

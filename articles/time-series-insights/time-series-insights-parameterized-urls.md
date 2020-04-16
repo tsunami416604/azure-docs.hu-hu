@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 02/04/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9dfe499a7d6084a23fd71ab98db472befe71fc04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024364"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417001"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
 
@@ -29,7 +29,7 @@ A Time Series Insights Explorer támogatja az URL-lekérdezési paramétereket, 
 
 ## <a name="environment-id"></a>Környezetazonosító
 
-A célkörnyezet azonosítóját az `environmentId=<guid>` paraméter adja meg. Ez egy összetevője az adatelérési teljes tartományn, és megtalálja azt a környezet áttekintésének jobb felső sarkában az Azure Portalon. Minden, ami az`env.timeseries.azure.com` előtt szerepel.
+A célkörnyezet azonosítóját az `environmentId=<guid>` paraméter adja meg. Ez egy összetevője az adatelérési teljes tartományn, és megtalálja azt a környezet áttekintésének jobb felső sarkában az Azure Portalon. Ez minden, ami `env.timeseries.azure.com`megelőzi .
 
 Példa környezetazonosító paraméterre: `?environmentId=10000000-0000-0000-0000-100000000108`.
 

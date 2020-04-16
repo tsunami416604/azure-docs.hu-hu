@@ -11,17 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243587"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418252"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Amazon Redshift szolgáltatásból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-amazon-redshift-connector.md)
 > * [Aktuális verzió](connector-amazon-redshift.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása egy Amazon Redshift. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
@@ -31,7 +33,7 @@ Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Da
 Ez az Amazon Redshift csatlakozó a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 Az Amazon Redshift-ből adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 
@@ -164,7 +166,7 @@ Tudjon meg többet arról, hogyan használhatja a UNLOAD segítségével az Amaz
 
 **Példa: adatok másolása az Amazon Redshift-ből az Azure SQL Data Warehouse-ba unload, szakaszos másolás és PolyBase használatával**
 
-Ebben a mintahasználati esetben a másolási tevékenység eltávolítja az adatokat az Amazon Redshift-ről az Amazon S3-ra a "redshiftUnloadSettings" beállítással konfigurálva, majd másolja az adatokat az Amazon S3-ból az Azure Blobba az "stagingSettings" -ban megadottmódon, végül a PolyBase segítségével töltse be az adatokat az SQL Data-ba Raktár. Az összes köztes formátumot megfelelően kezeli a másolási tevékenység.
+Ebben a mintahasználati esetben a másolási tevékenység eltávolítja az adatokat az Amazon Redshift-ről az Amazon S3-ra a "redshiftUnloadSettings" beállítással konfigurálva, majd másolja az adatokat az Amazon S3-ból az Azure Blobba az "átmeneti beállítások" párbeszédpanelen megadott módon, végül használja a PolyBase-t az SQL Data Warehouse-ba való adatok betöltéséhez. Az összes köztes formátumot megfelelően kezeli a másolási tevékenység.
 
 ![Redshift az SQL DW másolási munkafolyamat](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 

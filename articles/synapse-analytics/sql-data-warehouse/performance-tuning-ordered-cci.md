@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2113e5ac3563a22c5f2c6b755230b05fb9a2cb35
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583874"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417043"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-finomhangolás rendezett fürtözött oszlopcentrikus index használatával  
 
@@ -28,7 +28,7 @@ Alapértelmezés szerint minden indexbeállítás nélkül létrehozott tábla e
 
 Rendezett CCI létrehozásakor a Synapse SQL motor a rendelési kulcs(ok) szerint rendezi a memóriában lévő meglévő adatokat, mielőtt az indexszerkesztő indexszegmensekbe tömöríti azokat.  Rendezett adatok esetén a szegmensátfedések csökkentése csökken, így a lekérdezések hatékonyabb szegmenseltávolítással rendelkeznek, és így gyorsabb a teljesítmény, mivel a lemezről olvasandó szegmensek száma kisebb.  Ha az összes adat egyszerre rendezhető a memóriában, akkor elkerülhető a szegmensátfedés.  Az adatraktárak nagy táblái miatt ez a forgatókönyv nem gyakran fordul elő.  
 
-Ha ellenőrizni szeretné egy oszlop szegmenstartományait, futtassa ezt a parancsot a tábla nevével és oszlopnevével:
+Ha ellenőrizni szeretné egy oszlop szegmenstartományait, futtassa a következő parancsot a tábla nevével és oszlopnevével:
 
 ```sql
 SELECT o.name, pnp.index_id, 

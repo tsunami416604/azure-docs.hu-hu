@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: 3215f5952daef053c94432bc8fdef15e1775047a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73171093"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81421794"
 ---
 Virtuális gépek elhelyezése egyetlen régióban csökkenti a példányok közötti fizikai távolságot. Ha egyetlen rendelkezésre állási zónán belül helyezi el őket, fizikailag közelebb kerülnek egymáshoz. Azonban az Azure-lábnyom növekedésével egyetlen rendelkezésre állási zóna több fizikai adatközpontra is kiterjedhet, ami az alkalmazásra hatással lehet a hálózati késés. 
 
@@ -39,6 +39,13 @@ Egy meglévő erőforrást egy közelségelhelyezési csoportba is áthelyezhet.
 Rendelkezésre állási csoportok és a virtuálisgép-méretezési csoportok esetén a közelség-elhelyezési csoportot az erőforrás szintjén kell beállítani, nem pedig az egyes virtuális gépek. 
 
 A közelségelhelyezési csoport inkább helymegosztási kényszer, mint rögzítési mechanizmus. Egy adott adatközponthoz van rögzítve az első erőforrás üzembe helyezésével. Miután a közelségelhelyezési csoportot használó összes erőforrás leállt (felszabadított) vagy törölt, a továbbiakban nem lesz rögzítve. Ezért ha több virtuálisgép-sorozattal rendelkező közelségelhelyezési csoportot használ, fontos, hogy az összes szükséges típust előre adja meg egy sablonban, ha lehetséges, vagy kövessen egy központi telepítési sorozatot, amely javítja a sikeres üzembe helyezés esélyét. Ha a központi telepítés sikertelen, indítsa újra a központi telepítést a virtuális gép mérete, amely nem sikerült az első telepítendő méret.
+
+## <a name="what-to-expect-when-using-proximity-placement-groups"></a>Mire számíthat a közelségelhelyezési csoportok használata esetén? 
+A közelségelhelyezési csoportok közös elhelyezést kínálnak ugyanabban az adatközpontban. Mivel azonban a közelségi elhelyezési csoportok további telepítési megkötést jelentenek, foglalási hibák fordulhatnak elő. Kevés olyan használati eset van, amikor a közelségi elhelyezési csoportok használatakor foglalási hibák jelenhetnek meg:
+
+- Amikor a közelségelhelyezési csoport első virtuális gépét kéri, az adatközpont automatikusan kiválasztásra kerül. Bizonyos esetekben egy másik virtuális gép termékváltozatának második kérése sikertelen lehet, ha nem létezik az adott adatközpontban. Ebben az esetben egy **OverconstrainedAllocationRequest** hibát ad vissza. Ennek elkerülése érdekében próbálja meg módosítani a sk-ek üzembe helyezésének sorrendjét, vagy mindkét erőforrás egyetlen ARM-sablon használatával üzembe helyezése.
+-   Rugalmas számítási feladatok esetén, ahol virtuálisgép-példányok hozzáadása és eltávolítása, amelynek közelségelhelyezési csoport korlátozás a központi telepítés sikertelenlehet a kérés teljesítése miatt **AllocationFailure** hiba. 
+- Leállítása (felszabadítása) és a virtuális gépek szükség szerint indítása egy másik módja a rugalmasság elérésének. Mivel a kapacitás nem marad meg, ha leállítja (felszabadítja) a virtuális gép, újraindítása eredményezhet **AllocationFailure** hiba.
 
 
 ## <a name="best-practices"></a>Ajánlott eljárások 

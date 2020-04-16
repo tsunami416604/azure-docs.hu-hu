@@ -1,19 +1,18 @@
 ---
 title: Azure Security Control – Biztonságos konfiguráció
-description: Biztonsági vezérlő biztonságos konfigurációja
+description: Az Azure Security Control biztonságos konfigurációja
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/14/2020
 ms.author: mbaldwin
-ms.custom: security-recommendations
-ms.openlocfilehash: 03564effeee36ddb3316d48329ccab8ccfce75b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: 981e13e772ee21e0e4a680e6d07b4ad4892a7cee
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934301"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417071"
 ---
 # <a name="security-control-secure-configuration"></a>Biztonsági ellenőrzés: Biztonságos konfiguráció
 
@@ -25,11 +24,19 @@ Létrehozza, megvalósítja és aktívan kezelheti (nyomon követheti, jelentés
 |--|--|--|
 | 7.1 | 5.1 | Ügyfél |
 
-Az Azure Policy vagy az Azure Security Center használatával az összes Azure-erőforrás biztonsági konfigurációját karbantarthatja.
+Azure Policy aliasok használatával egyéni szabályzatok létrehozásához az Azure-erőforrások naplózásához vagy kényszerítéséhez. Beépített Azure-szabályzat-definíciókat is használhat.
 
-Az Azure-szabályzat konfigurálása és kezelése:
+Emellett az Azure Resource Manager képes a sablon exportálására javascript-objektumnotítás (JSON), amelyet felül kell vizsgálni annak érdekében, hogy a konfigurációk megfelelnek / meghaladják a szervezet biztonsági követelményeit.
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Az Azure Security Center ajánlásait is használhatja az Azure-erőforrások biztonságos konfigurációs alapkonfigurációjaként.
+
+- [Az elérhető Azure-szabályzataliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+
+- [Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kényszerítéséhez](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+
+- [Egy- és többerőforrásos exportálás sablonba az Azure Portalon](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+
+- [Biztonsági ajánlások – útmutató](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
 ## <a name="72-establish-secure-operating-system-configurations"></a>7.2: Biztonságos operációsrendszer-konfigurációk létrehozása
 
@@ -37,15 +44,17 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 |--|--|--|
 | 7.2 | 5.1 | Ügyfél |
 
-Használja az Azure &quot;Security Center ajánlása biztonsági rések elhárítása biztonsági konfigurációk a virtuális gépek&quot; karbantartása biztonsági konfigurációk minden számítási erőforrások.
+Az Azure Security Center-javaslatok használatával az összes számítási erőforrás biztonsági konfigurációját karbantarthatja.  Emellett egyéni operációsrendszer-lemezképek vagy az Azure Automation State-konfiguráció használatával is létrehozhatja a szervezet által igényelt operációs rendszer biztonsági konfigurációját.
 
-Az Azure Security Center-javaslatok figyelése:
+- [Az Azure Security Center-javaslatok figyelése](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
 
-https://docs.microsoft.com/azure/security-center/security-center-recommendations
+- [Biztonsági ajánlások – útmutató](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
-Az Azure Security Center rekretijavaslatei:
+- [Azure Automation állapotkonfiguráció – áttekintés](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
 
-https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
+- [Töltsön fel egy virtuális merevlemezt, és használja új Windows-virtuális gépek létrehozásához az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+
+- [Linuxos virtuális gép létrehozása egyéni lemezről az Azure CLI-vel](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
 
 ## <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Biztonságos Azure-erőforrás-konfigurációk karbantartása
 
@@ -53,15 +62,13 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 |--|--|--|
 | 7.3 | 5.2 | Ügyfél |
 
-Használja az Azure-szabályzat [megtagadás] és a [üzembe helyezés, ha nem létezik] a biztonságos beállítások kényszerítése az Azure-erőforrások között.
+Használja az Azure-szabályzat [megtagadás] és a [üzembe helyezés, ha nem létezik] a biztonságos beállítások kényszerítése az Azure-erőforrások között.  Emellett azure Resource Manager-sablonok használatával karbantarthatja a szervezet által igényelt Azure-erőforrások biztonsági konfigurációját. 
 
-Az Azure-szabályzat konfigurálása és kezelése:
+- [Az Azure-szabályzat hatásainak ismertetése](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-Az Azure-szabályzat hatásainak megismerése:
-
-https://docs.microsoft.com/azure/governance/policy/concepts/effects
+- [Az Azure Resource Manager-sablonok áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
 
 ## <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Biztonságos operációsrendszer-konfigurációk karbantartása
 
@@ -69,17 +76,21 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 |--|--|--|
 | 7.4 | 5.2 | Megosztott |
 
-Az operációs rendszer alaplemezképeit a Microsoft kezeli és karbantartja.
+Kövesse az Azure Security Center ajánlásait az Azure számítási erőforrásain végzett biztonsági résértékelésekelvégzéséről.  Emellett használhatja az Azure Resource Manager-sablonokat, az egyéni operációsrendszer-lemezképeket vagy az Azure Automation State-konfigurációt a szervezet által igényelt operációs rendszer biztonsági konfigurációjának fenntartásához.   A Microsoft virtuálisgép-sablonok és az Azure Automation kívánt állapotkonfigurációja együttesen segíthetnek a biztonsági követelmények teljesítésében és fenntartásában. 
 
-Azonban az Azure Resource Manager-sablonok és/vagy a kívánt állapotkonfiguráció használatával alkalmazhatja a szervezet által megkövetelt biztonsági beállításokat.
+Vegye figyelembe azt is, hogy a Microsoft által közzétett Azure Marketplace virtuálisgép-lemezképeket a Microsoft kezeli és karbantartja. 
 
-Azure-beli virtuális gép létrehozása Azure Resource Manager-sablonból:
+- [Az Azure Security Center biztonsági résértékelési javaslatainak megvalósítása](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
 
-https://docs.microsoft.com/azure/virtual-machines/windows/ps-template
+- [Azure-alapú virtuális gép létrehozása Azure Resource Manager-sablonból](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
 
-Az Azure virtuális gépek kívánt állapotkonfigurációjának ismertetése:
+- [Azure Automation állapotkonfiguráció – áttekintés](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
 
-https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
+- [Windows virtuális gép létrehozása az Azure Portalon](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+
+- [A virtuális gép sablonjának letöltésével kapcsolatos tudnivalók](https://docs.microsoft.com/azure/virtual-machines/windows/download-template)
+
+- [Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Az Azure-erőforrások biztonságos tárolása
 
@@ -87,15 +98,11 @@ https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
 |--|--|--|
 | 7,5 | 5.3 | Ügyfél |
 
-Ha egyéni Azure-szabályzat-definíciókat használ, az Azure DevOps vagy az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
+Az Azure DevOps használatával biztonságosan tárolhatja és kezelheti a kódot, például az egyéni Azure-szabályzatokat, az Azure Resource Manager-sablonokat és a kívánt állapotkonfigurációs parancsfájlokat. Az Azure DevOps által kezelt erőforrások eléréséhez engedélyeket adhat vagy tagadhat meg adott felhasználóknak, beépített biztonsági csoportoknak vagy az Azure Active Directoryban (Azure AD) definiált csoportoknak, ha integrálva vannak az Azure DevOps-szal, vagy az Active Directoryt, ha integrálva vannak a TFS-sel.
 
-Kód tárolása az Azure DevOps-ban:
+- [Kód tárolása az Azure DevOps-ban](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
-Azure Repos dokumentáció:
-
-https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+- [Engedélyek és csoportok az Azure DevOps-ban](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
 
 ## <a name="76-securely-store-custom-operating-system-images"></a>7.6: Biztonságosan tárolhatja az operációs rendszer egyedi lemezképeit
 
@@ -103,69 +110,59 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 |--|--|--|
 | 7.6 | 5.3 | Ügyfél |
 
-Ha egyéni lemezképeket használ, az RBAC segítségével győződjön meg arról, hogy csak a jogosult felhasználók férhetnek hozzá a lemezképekhez. Tárolólemezképek tárolása az Azure Container Registry és az RBAC használatával biztosíthatja, hogy csak a jogosult felhasználók férhetnek hozzá a rendszerképekhez.
+Ha egyéni lemezképeket használ, használjon szerepköralapú hozzáférés-vezérlést (RBAC) annak biztosítására, hogy csak a jogosult felhasználók férhessenek hozzá a lemezképekhez. A megosztott képtár használatával megoszthatja a képeket a szervezeten belüli különböző felhasználókkal, egyszerű szolgáltatásokkal vagy AD-csoportokkal.  Tárolólemezképek tárolása az Azure Container Registry és az RBAC használatával biztosíthatja, hogy csak a jogosult felhasználók férhetnek hozzá a rendszerképekhez.  
 
-Az RBAC ismertetése az Azure-ban:
+- [Az RBAC ismertetése az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+- [Az RBAC ismertetése a tárolóbeállításjegyzékhez](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-Az RBAC ismertetése a tárolóbeállításjegyzékhez:
+- [Az RBAC konfigurálása az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
-https://docs.microsoft.com/azure/container-registry/container-registry-roles
+- [Megosztott képtár – áttekintés](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
 
-Az RBAC konfigurálása az Azure-ban:
-
-https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
-
-## <a name="77-deploy-system-configuration-management-tools"></a>7.7: Rendszerkonfiguráció-kezelő eszközök telepítése
+## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7: Konfigurációkezelő eszközök üzembe helyezése az Azure-erőforrásokhoz
 
 | Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
 | 7.7 | 5.4 | Ügyfél |
 
-Az Azure Policy használatával riasztást, naplózást és kényszerítést a rendszerkonfigurációk. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirendkivételek kezeléséhez.
+Az Azure-erőforrások hoz szabványos biztonsági konfigurációkat definiálhat és valósíthat meg az Azure Policy használatával. Azure Policy aliasok használatával egyéni szabályzatok létrehozásához az Azure-erőforrások hálózati konfigurációjának naplózásához vagy érvényesítéséhez. Az adott erőforrásokhoz kapcsolódó beépített házirend-definíciókat is használhat.  Emellett használhatja az Azure Automation konfigurációs módosítások üzembe helyezéséhez.
 
-Az Azure-szabályzat konfigurálása és kezelése:
+- [Az Azure-szabályzat konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Az Aliases használata](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
-## <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Rendszerkonfiguráció-kezelő eszközök telepítése operációs rendszerekhez
+## <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8: Konfigurációkezelő eszközök telepítése operációs rendszerekhez
 
 | Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
 | 7.8 | 5.4 | Ügyfél |
 
-Azure számítási bővítmények, például a PowerShell kívánt állapotkonfigurációja windows os vagy Linux Chef-bővítmény Linux hoz.
+Az Azure Automation State Configuration egy konfigurációkezelő szolgáltatás a kívánt állapotkonfigurációs (DSC) csomópontokhoz bármely felhőbeli vagy helyszíni adatközpontban. Könnyedén bedeszkázhatja a gépeket, deklaratív konfigurációkat rendelhet hozzájuk, és megtekintheti az egyes gépek megfelelőségét mutató jelentéseket a megadott állapothoz. 
 
-A virtuálisgép-bővítmények telepítése az Azure-ban:
+- [Bevezetési gépek az Azure Automation állapotkonfigurációja általi kezeléshez](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
 
-https://docs.microsoft.com/azure/virtual-machines/extensions/overview#how-can-i-install-an-extension
-
-## <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Automatikus konfigurációfigyelés megvalósítása az Azure-szolgáltatásokhoz
+## <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9: Automatikus konfigurációfigyelés megvalósítása az Azure-erőforrásokhoz
 
 | Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
 | 7.9 | 5.5 | Ügyfél |
 
-Az Azure Security Center használata az Azure-erőforrások alapszintű vizsgálataihoz
+Az Azure Security Center használatával alapszintű vizsgálatokat végezhet az Azure-erőforrásokhoz.  Emellett az Azure Policy használatával riasztást és naplózást az Azure-erőforrás-konfigurációk.
 
-Javaslatok kijavítása az Azure Security Centerben:
-
-https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
+- [Javaslatok kijavítása az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
 
 ## <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Az operációs rendszerek automatizált konfigurációs figyelésének megvalósítása
 
 | Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
-| 7.1 | 5.5 | Ügyfél |
+| 7.10 | 5.5 | Ügyfél |
 
 Az Azure Security Center használatával alapszintű vizsgálatokat végezhet az operációs rendszer és a Docker-beállítások tárolókhoz.
 
-Ismerje meg az Azure Security Center tárolóra vonatkozó javaslatait:
+- [Az Azure Security Center tárolókra vonatkozó ajánlásainak értelmezése](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
 
-https://docs.microsoft.com/azure/security-center/security-center-container-recommendations
-
-## <a name="711-manage-azure-secrets-securely"></a>7.11: Az Azure-titkok biztonságos kezelése 
+## <a name="711-manage-azure-secrets-securely"></a>7.11: Az Azure-titkok biztonságos kezelése
 
 | Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
@@ -173,17 +170,11 @@ https://docs.microsoft.com/azure/security-center/security-center-container-recom
 
 A felügyelt szolgáltatásidentitás és az Azure Key Vault együttes használatával egyszerűsítheti és biztonságossá teszi a felhőalapú alkalmazások titkos felügyeletét.
 
-Integrálás az Azure felügyelt identitásaival:
+- [Integrálás az Azure felügyelt identitásaival](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
 
-https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+- [Key Vault létrehozása](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-Key Vault létrehozása:
-
-https://docs.microsoft.com/azure/key-vault/quick-create-portal
-
-A Kulcstartó hitelesítése felügyelt identitással:
-
-https://docs.microsoft.com/azure/key-vault/managed-identity
+- [A Kulcstartó hitelesítése felügyelt identitással](https://docs.microsoft.com/azure/key-vault/managed-identity)
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7.12: A személyazonosságok biztonságos és automatikus kezelése
 
@@ -193,22 +184,19 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 Felügyelt identitások használatával biztosítható az Azure-szolgáltatások automatikusan felügyelt identitásaz Azure AD-ben. Felügyelt identitások lehetővé teszi, hogy hitelesítse az Azure AD-hitelesítést támogató szolgáltatások, beleértve a Key Vault, hitelesítő adatok nélkül a kódot.
 
-Felügyelt identitások konfigurálása:
-
-https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+- [Felügyelt identitások konfigurálása](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
 
 ## <a name="713-eliminate-unintended-credential-exposure"></a>7.13: A nem kívánt hitelesítő adatok expozíciójának kiküszöbölése
 
 | Azure-azonosító | CIS-azonosítók | Felelősség |
 |--|--|--|
-| 7.13 | 13.3 | Ügyfél |
+| 7.13 | 18.1, 18.7 | Ügyfél |
 
 A Hitelesítő adatok olvasójának implementációja a kódon belüli hitelesítő adatok azonosítására szolgál. A Hitelesítő adatok olvasója azt is ösztönzi a felderített hitelesítő adatok áthelyezése biztonságosabb helyekre, például az Azure Key Vault. 
 
-A Hitelesítő adatok képolvasójának beállítása:
+- [A Hitelesítő adatok képolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd a következő biztonsági ellenőrzés: [Malware Defense](security-control-malware-defense.md)
+- Lásd a következő biztonsági ellenőrzés: [Malware Defense](security-control-malware-defense.md)

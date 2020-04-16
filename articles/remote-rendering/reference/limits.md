@@ -1,20 +1,20 @@
 ---
-title: Korlátok
+title: Korlátozások
 description: Az SDK-szolgáltatások kódkorlátai
 author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 6e23c716a965cdf178c9f847900e66c141d5d7eb
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b6e501cdc1d5091a27d86406c6919587bedb261a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680335"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417691"
 ---
-# <a name="limits"></a>Korlátok
+# <a name="limitations"></a>Korlátozások
 
-Számos funkció nak van méret- vagy számkorlátai a futó rendszer belső részletei miatt.
+Számos szolgáltatás mérete, száma vagy egyéb korlátai vannak.
 
 ## <a name="azure-frontend"></a>Azure előtér
 
@@ -26,7 +26,7 @@ Számos funkció nak van méret- vagy számkorlátai a futó rendszer belső ré
 * Egyetlen típusú engedélyezett objektumok összesen (Entity, CutPlaneComponent stb.): 16 777 215.
 * Teljes megengedett aktív vágási síkok: 8.
 
-## <a name="materials"></a>Nyersanyagok
+## <a name="materials"></a>Anyagok
 
 * Teljes engedélyezett anyagok egy eszköz: 65.535.
 
@@ -40,4 +40,13 @@ Az összes betöltött modellhez engedélyezett sokszögek száma a [munkamenet-
 |Prémium| nincs korlátozás |
 
 
+## <a name="platform-limitations"></a>A platform korlátai
 
+**Windows 10 asztal**
+
+* A Unity "PC Standalone" telepítése nem támogatott. Használja inkább az UWP-t.
+* Az UWP/x86 az egyetlen támogatott UWP platform. Az UWP/x64 nem támogatott.
+
+**Hololens 2**
+
+* A PV kamera funkció [renderelése](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) nem támogatott.

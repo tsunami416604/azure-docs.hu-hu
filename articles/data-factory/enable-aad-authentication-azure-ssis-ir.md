@@ -11,14 +11,16 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
-ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2359b378b1f54cf6e03218f819b3a7c5740ba596
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260708"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416407"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory-hitelesítés engedélyezése az Azure-SSIS integrációs modulhoz
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez a cikk bemutatja, hogyan engedélyezheti az Azure Active Directory (Azure AD) hitelesítését az Azure Data Factory (ADF) felügyelt identitásával, és hogyan használhatja azt a hagyományos hitelesítési módszerek (például az SQL-hitelesítés) helyett:
 
@@ -26,7 +28,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti az Azure Active Directory (Azure AD)
 
 - Az Azure-SSIS IR-n ssis-csomagok futtatásakor különböző Azure-erőforrásokhoz csatlakozhat.
 
-Az ADF felügyelt identitásáról a Data [Factory felügyelt identiy című](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)témakörben talál további információt.
+Az ADF felügyelt identitásáról a Data [Factory felügyelt identitása](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)című témakörben talál további információt.
 
 > [!NOTE]
 >-  Ebben a forgatókönyvben az Azure AD-hitelesítés az ADF felügyelt identitásával csak az SSIS IR létrehozása és későbbi indítása során használatos, amelyek viszont kiépítik és csatlakoznak az SSISDB-hez. Az SSIS-csomagok végrehajtása esetén az SSIS IR továbbra is az SSISDB-hez csatlakozik az SQL-hitelesítés használatával, az SSISDB-kiépítés során létrehozott teljes körűen felügyelt fiókokkal.
@@ -63,7 +65,7 @@ Használhatja a meglévő Azure AD-csoportot, vagy hozzon létre egy újat az Az
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Adja hozzá az ADF felügyelt identitását a csoporthoz. A [Data Factory által kezelt identiy](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) című cikket követve lejuthat a fő felügyelt identitásobjektum-azonosítóleletre (pl. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, de erre a célra ne használja a felügyelt identitásazonosítót).
+3.  Adja hozzá az ADF felügyelt identitását a csoporthoz. A [Data Factory felügyelt identitásának](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) követésével lekéri a fő felügyelt identitásobjektum-azonosítót (pl. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, de erre a célra ne használja a felügyelt identitásalkalmazás-azonosítót).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -198,7 +200,7 @@ Az Azure-SSIS-ir-t a PowerShell használatával való kiépítéséhez tegye a k
 
 1.  Telepítse [az Azure PowerShell-modult.](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) 
 
-2.  A parancsfájlban ne `CatalogAdminCredential` állítson be paramétert. Példa:
+2.  A parancsfájlban ne `CatalogAdminCredential` állítson be paramétert. Például:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

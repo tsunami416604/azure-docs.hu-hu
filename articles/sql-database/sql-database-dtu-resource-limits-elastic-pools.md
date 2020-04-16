@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 7b7ef3b6f2d400dafb28cfb7a15cf95cbbe2c457
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 76085dc29d40944cf704dbc5efc578b3314f499a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351016"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419238"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>A DTU vásárlási modellt használó rugalmas készletek erőforrás-korlátai
 
@@ -32,6 +32,9 @@ Az SQL Database rugalmas készletek, az alábbi táblázatok az egyes szolgálta
 > A méretezési útmutatóés szempontok, [lásd: Rugalmas készlet méretezése](sql-database-elastic-pool-scale.md)
 > [!NOTE]
 > A rugalmas készletekben lévő egyes adatbázisok erőforráskorlátai általában megegyeznek a DRU-kon és a szolgáltatási szinten alapuló készleteken kívüli egyes adatbázisok erőforráskorlátaival. Egy S2-adatbázis maximális egyidejű dolgozóinak maximális egyidejű dolgozója például 120 dolgozó. Így a standard készletben lévő adatbázis egyidejű dolgozóinak maximális egyidejű dolgozói is 120 dolgozó, ha a készletben lévő adatbázisonkénti maximális DTU 50 DTU (ami az S2-nek felel meg).
+
+> [!NOTE]
+> A készlet erőforráskorlátonkénti tároló az alábbi táblázatok mindegyikében nem tartalmazza a tempdb és a naplótárolót.
 
 ### <a name="basic-elastic-pool-limits"></a>Alapszintű rugalmas készletek korlátai
 

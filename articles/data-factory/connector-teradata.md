@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421225"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418031"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Adatok másolása a Teradata Vantage szolgáltatásból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 >
 > * [1-es verzió](v1/data-factory-onprem-teradata-connector.md)
 > * [Aktuális verzió](connector-teradata.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolása teradata vantage. A [másolási tevékenység áttekintésére](copy-activity-overview.md)épül.
 
@@ -31,7 +33,7 @@ Ez a cikk ismerteti, hogyan használhatja a másolási tevékenység et az Azure
 Ez a Teradata-összekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 A Teradata Vantage-ből adatokat másolhat bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 
@@ -256,7 +258,7 @@ Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatparticionálássa
 
 | Forgatókönyv                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Teljes terhelés a nagy asztalról.                                   | **Partíció opció**: Hash. <br><br/>A végrehajtás során a Data Factory automatikusan észleli a PK oszlopot, kivonatot alkalmaz ellene, és partíciók szerint másolja az adatokat. |
+| Teljes terhelés a nagy asztalról.                                   | **Partíció opció**: Hash. <br><br/>A végrehajtás során a Data Factory automatikusan észleli az elsődleges index oszlop, alkalmazza a kivonatot ellene, és másolja az adatokat partíciók. |
 | Nagy mennyiségű adatot tölthet be egyéni lekérdezéssel.                 | **Partíció opció**: Hash.<br>**Lekérdezés** `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`: .<br>**Partícióoszlop:** Adja meg a kivonatpartíció alkalmazásához használt oszlopot. Ha nincs megadva, a Data Factory automatikusan észleli a Teradata adatkészletben megadott tábla PK-oszlopát.<br><br>A végrehajtás során a `?AdfHashPartitionCondition` Data Factory lecseréli a kivonatpartíció logikáját, és elküldi a Teradata-nak. |
 | Nagy mennyiségű adatot tölthet be egyéni lekérdezéssel, amelynek egész oszlopa egyenletesen elosztott értékkel rendelkezik a tartományparticionáláshoz. | **Partíció beállításai**: Dinamikus tartományú partíció.<br>**Lekérdezés** `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`: .<br>**Partícióoszlop:** Adja meg az adatok particionálásához használt oszlopot. Az egész adattípussal rendelkező oszlopra particionálhat.<br>**Partíció felső és** **alsó határa**: Adja meg, hogy a partícióoszlophoz szűrve csak az alsó és a felső tartomány között szeretne adatokat beolvasni.<br><br>A végrehajtás során a `?AdfRangePartitionColumnName` `?AdfRangePartitionUpbound`Data `?AdfRangePartitionLowbound` Factory lecseréli a , és az egyes partíciók tényleges oszlopnevét és értéktartományait, és elküldi a Teradata-nak. <br>Ha például az "ID" partícióoszlop az alsó határ 1, a felső határ pedig 80, a párhuzamos másolat pedig 4, a Data Factory 4 partícióval olvassa be az adatokat. Azonosítóik [1,20], [21, 40], [41, 60] és [61, 80] között vannak. |
 

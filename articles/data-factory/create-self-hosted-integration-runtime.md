@@ -11,14 +11,16 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 6bc0f002c6927cfd9a314797663e1dabbac392b6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887298"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416641"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az integrációs futásidejű (IR) az a számítási infrastruktúra, amelyet az Azure Data Factory a különböző hálózati környezetekben az adatintegrációs képességek biztosításához használ. Az integrációs adatokkal kapcsolatos részletek az [Integráció sidőszakának áttekintése](concepts-integration-runtime.md)című témakörben találhatók.
 
@@ -360,7 +362,7 @@ Az önkiszolgáló integrációs futásidejű regisztrálása után, ha meg szer
 1. Nyissa **meg a Microsoft Integration Runtime Configuration Manager programot.**
 1. Válassza a **Settings** (Beállítások) fület.
 1. A **HTTP-proxy csoportban**kattintson a **Módosítás** hivatkozásra a **HTTP-proxy beállítása** párbeszédpanel megnyitásához.
-1. Válassza a **Tovább lehetőséget.** Ezután megjelenik egy figyelmeztetés, amely engedélyt kér a proxybeállítás mentésére és az integrációs futásidejű gazdagép szolgáltatás újraindítására.
+1. Kattintson a **Tovább** gombra. Ezután megjelenik egy figyelmeztetés, amely engedélyt kér a proxybeállítás mentésére és az integrációs futásidejű gazdagép szolgáltatás újraindítására.
 
 A Configuration Manager eszközzel megtekintheti és frissítheti a HTTP-proxyt.
 

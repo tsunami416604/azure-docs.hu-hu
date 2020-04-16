@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256418"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419263"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL kapcsolati architektúrája
 > [!NOTE]
@@ -45,7 +45,7 @@ Az alábbi lépések azt ismertetik, hogyan jön létre egy kapcsolat egy Azure 
 Az Azure SQL Database a következő három lehetőséget támogatja az SQL Database-kiszolgáló kapcsolatházirend-beállításához:
 
 - **Átirányítás (ajánlott):** Az ügyfelek közvetlenül az adatbázist üzemeltető csomóponthoz létesítenek kapcsolatot, ami csökkentett késést és jobb átviteli teljesítményhez vezet. A hálózati kapcsolatok használatához az ügyfeleknek a következőket kell tenniük:
-   - Az ügyfél kimenő kommunikációjának engedélyezése az összes Azure IP-címhez a régióban az 11000 11999-es tartományú portokon. Használja a Service Tags for SQL, hogy ez könnyebben kezelhető.  
+   - Az ügyfél kimenő kommunikációját az 11000 11999-es tartományban lévő portokon a régió összes Azure SQL IP-címével engedélyezze. Használja a Service Tags for SQL, hogy ez könnyebben kezelhető.  
    - Engedélyezze a kimenő kommunikációt az ügyféltől az Azure SQL Database átjáró IP-címeiközött az 1433-as porton.
 
 - **Proxy:** Ebben a módban az összes kapcsolat az Azure SQL Database-átjárókon keresztül lesz proxied, ami nagyobb késést és csökkentett átviteli. Ahhoz, hogy a kapcsolatok ezt a módot használhassa, az ügyfeleknek engedélyezniük kell az ügyfél től az Azure SQL Database átjáró IP-címeibe irányuló kimenő kommunikációt az 1433-as porton.

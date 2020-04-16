@@ -6,20 +6,27 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/08/2019
+ms.date: 04/10/2020
 ms.custom: include file
-ms.openlocfilehash: 9c6ce482a4f6464008f4be0ecd94455f0239ede2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4c6e45eaa816499c7e5969e302a036368bea0937
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81274831"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81422083"
 ---
-1. Az [Azure Portalon](https://portal.azure.com/) hozzon létre egy Azure Cosmos DB-fiókot. Keresse meg és válassza az **Azure Cosmos DB** lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/) hozzon létre egy Azure Cosmos DB-fiókot. A kezdőlapján válassza az **Erőforrás létrehozása** az **Azure-szolgáltatások** panelről lehetőséget.
 
-   ![Az Azure Portal Adatbázisok panelje](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
+   ![Erőforrás létrehozása](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-resource-1.png)
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Keresse meg és válassza az **Azure Cosmos DB** lehetőséget.
+
+   ![Az Azure Portal erőforrásainak legördülő menüje](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-updated-1.png)
+
+1. Kattintson a **Létrehozás** gombra.
+
+   ![Azure Cosmos DB-erőforrás létrehozása](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-account-1.png)
+
 1. Az **Azure Cosmos DB-fiók létrehozása** lapon adja meg az új Azure Cosmos-fiók alapvető beállításait. 
 
     |Beállítás|Érték|Leírás |
@@ -31,6 +38,7 @@ ms.locfileid: "81274831"
     |Ingyenes szintkedvezmény alkalmazása|Alkalmazás vagy Nem alkalmazás|Az Azure Cosmos DB ingyenes szinttel az első 400 RU/s és 5 GB tárterületet kapja ingyen egy fiókban. További információ az [ingyenes szintről.](https://azure.microsoft.com/pricing/details/cosmos-db/)|
     |Hely|A felhasználókhoz legközelebb eső régió|Válassza ki az Azure Cosmos DB-fiókot üzemeltetéséhez használni kívánt földrajzi helyet. Használja a felhasználókhoz legközelebb eső helyet, hogy a leggyorsabb hozzáférést biztosítsa számukra az adatokhoz.|
     |Fiók típusa|Termelés vagy nem gyártás|Válassza **a Termelés** lehetőséget, ha a fiókot éles számítási feladathoz fogja használni. Válassza a **Nem éles lehetőséget,** ha a fiókot nem éles, például fejlesztéshez, teszteléshez, minőségbiztosítási vagy átmeneti állapothoz fogja használni. Ez egy Azure-erőforrás-címke beállítás, amely beállítja a portál élményt, de nem befolyásolja az alapul szolgáló Azure Cosmos DB-fiók. Ezt az értéket bármikor módosíthatja.|
+
 
     > [!NOTE]
     > Azure-előfizetésenként legfeljebb egy ingyenes Azure Cosmos DB-fiókkal rendelkezhet, és a fiók létrehozásakor engedélyeznie kell. Ha nem látja az ingyenes szint kedvezményének alkalmazását, ez azt jelenti, hogy az előfizetésegy másik fiókja már engedélyezve van az ingyenes szinttel.

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 079d29c241cfbbdcc991f024c07b07b378670c10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130885"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419306"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB betöltése az Azure SQL Data Warehouse-ba 15 perc alatt a Data Factory segítségével
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "80130885"
 
 [Az Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővített adatbázis, amely képes nagy mennyiségű adat feldolgozására, relációs és nem relációs.  A masszívan párhuzamos feldolgozási (MPP) architektúrára épülő SQL Data Warehouse vállalati adattárház-számítási feladatokra van optimalizálva.  Felhőrugalmasságot kínál a tárhely és az önálló számítási kapacitás méretezésének rugalmasságával.
 
-Az Azure SQL Data Warehouse használatának első lépései minden eddiginél egyszerűbbek az **Azure Data Factory**használatával.  Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely segítségével feltöltheti az SQL Data Warehouse-t a meglévő rendszerből származó adatokkal, és értékes időt takaríthat meg az SQL Data Warehouse kiértékelése és az elemzések létrehozása során Megoldások. Az Azure Data Factory használatával az adatok Azure SQL Data Warehouse szolgáltatásba való betöltésének legfontosabb előnyei:
+Az Azure SQL Data Warehouse használatának első lépései minden eddiginél egyszerűbbek az **Azure Data Factory**használatával.  Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely segítségével feltöltheti az SQL Data Warehouse-t a meglévő rendszerből származó adatokkal, és értékes időt takaríthat meg az SQL Data Warehouse kiértékelése és az elemzési megoldások létrehozása során. Az Azure Data Factory használatával az adatok Azure SQL Data Warehouse szolgáltatásba való betöltésének legfontosabb előnyei:
 
 * **Könnyen beállítható:** 5 lépéses intuitív varázsló, amely nem szükséges parancsfájlok futtatására.
 * **Gazdag adattár támogatás:** beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez.

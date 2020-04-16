@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: jingwang
-ms.openlocfilehash: 6494352bf957af83b45488493bf12a094c730c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47824095e892ca3c919d2d871feb612758ab2308
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79125757"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417844"
 ---
 # <a name="monitor-copy-activity"></a>Másolási tevékenység figyelése
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk ismerteti, hogyan figyelheti a másolási tevékenység végrehajtását az Azure Data Factoryban. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
@@ -153,4 +155,4 @@ Lásd a többi Másolási tevékenység cikkeket:
 
 \-[Tevékenység másolása – áttekintés](copy-activity-overview.md)
 
-\-[Tevékenységteljesítmény másolása](copy-activity-performance.md)
+\- [Másolási tevékenység teljesítménye](copy-activity-performance.md)

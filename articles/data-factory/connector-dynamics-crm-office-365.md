@@ -12,14 +12,15 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: 9bbd2e3376f1da3fdf5b10d654a331ce258be5cf
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: c891cb4eca2c286b3ac636e5995714accd591772
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422087"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417349"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a Dynamics 365 (Common Data Service) vagy a Dynamics CRM rendszerbe az Azure Data Factory használatával
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk bemutatja, hogyan lehet az Azure Data Factory másolási tevékenységhasználatával adatokat másolni a Microsoft Dynamics 365-ről vagy a Microsoft Dynamics CRM rendszerről. A [Tevékenység másolása áttekintéscímű](copy-activity-overview.md) cikkre épül, amely a Másolási tevékenység általános áttekintését mutatja be.
 
@@ -28,7 +29,7 @@ Ez a cikk bemutatja, hogyan lehet az Azure Data Factory másolási tevékenység
 Ez az összekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 
 A Dynamics 365 (Common Data Service) vagy a Dynamics CRM rendszerből bármely támogatott fogadó adattárba másolhat adatokat. Bármely támogatott forrásadattárból adatokat másolhat a Dynamics 365 (Common Data Service) vagy a Dynamics CRM rendszerbe. A másolási tevékenység által forrásként vagy fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 

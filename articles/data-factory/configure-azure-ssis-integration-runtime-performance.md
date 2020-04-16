@@ -10,14 +10,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 15aac35a7ebc505e76ddfd0c538c4fddb7b2d9ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca88e42438c7cb48b062aa67d82053afbb9244bf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930546"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418286"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurálja az Azure-SSIS integrációs futástime-ot a nagy teljesítmény érdekében
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 Ez a cikk ismerteti, hogyan konfigurálhatja az Azure-SSIS-integrációs futásidejű (IR) a nagy teljesítményű. Az Azure-SSIS IR lehetővé teszi az SQL Server Integration Services (SSIS) csomagok üzembe helyezését és futtatását az Azure-ban. Az Azure-SSIS IR-ről további információt [az Integrációs futásidejű](concepts-integration-runtime.md#azure-ssis-integration-runtime) cikk ben talál. Az SSIS-csomagok Azure-beli telepítéséről és futtatásáról az [SQL Server Integration Services számítási feladatainak felemelése és a felhőbe való átcsoportosítása](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)című témakörben talál.
 

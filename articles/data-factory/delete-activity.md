@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f265cdc955becd53ae7ba61ad827b2be69b92907
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: d90f38f83bd4d2d5311f277fcc928e442d7ea793
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618267"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416385"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Törlési tevékenység az Azure Data Factoryben
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 A Tevékenység törlése az Azure Data Factory segítségével törölheti a fájlokat vagy mappákat a helyszíni tárolókból vagy a felhőbeli tárolókból. Ezzel a tevékenységgel megtisztíthatja vagy archiválhatja a fájlokat, amikor már nincs rájuk szükség.
 
@@ -116,7 +118,7 @@ Két helyen láthatja és figyelheti a Törlés tevékenység eredményeit:
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>A Törlés tevékenység naplófájlja
 
-| Név | Kategória | status | Hiba |
+| Name (Név) | Kategória | status | Hiba |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | Fájl | Törölve |  |
 | test2/hello789.txt | Fájl | Törölve |  |

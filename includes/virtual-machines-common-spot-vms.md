@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d56964b7415e4ca5903950cd46c02b3c27f62d5e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4063751a71cd9cecc424dfe3daddaecfd9ea4071
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547416"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81422255"
 ---
 A spot virtuális gépek használatával jelentős költségmegtakarítást eredményezhet a kihasználatlan kapacitás kihasználása. Bármikor, amikor az Azure-nak szüksége van a kapacitás vissza, az Azure-infrastruktúra kilakoltatja spot virtuális gépek. Ezért a direkt virtuális gépek kiválóan szolgálnak olyan számítási feladatokhoz, amelyek kezelni tudják a megszakításokat, például a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási számítási feladatokat és egyebeket.
 
@@ -88,6 +88,7 @@ A változó árképzés, akkor lehetősége van arra, hogy állítsa be a maxim�
 | Nagyvállalati Szerződés         | Igen                               |
 | Használatalapú fizetés                | Igen                               |
 | Felhőszolgáltató (CSP) | [Vegye fel a kapcsolatot partnerével](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Microsoft-ügyfélszerződés | Igen                               |
 | Előnyök                     | Nem érhető el                     |
 | Szponzorált                    | Nem érhető el                     |
 | Ingyenes próbaverzió                   | Nem érhető el                     |

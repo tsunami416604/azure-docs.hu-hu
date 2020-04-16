@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 33b257e9d344fc31df072509f105d2e8fd1bd29b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb9d697c11427c7ebbf811f9cc05740347c74452
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72245174"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417554"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure lemeztitkosítás az Azure AD-vel (előző kiadás)
 
@@ -27,7 +27,7 @@ Ez a cikk kiegészíti az [Azure Disk Encryption for Windows virtuális gépek](
   - A titkosítási kulcsok at a key vault, az IaaS virtuális gép képesnek kell lennie a key vault végponthoz való csatlakozáshoz.
   - Az IaaS virtuális gépnek képesnek kell lennie egy Azure-tárolóvégponthoz csatlakozni, amely az Azure-bővítménytárházat és a VHD-fájlokat tároló Azure-tárfiókot üzemelteti.
   -  Ha a biztonsági szabályzat korlátozza a hozzáférést az Azure virtuális gépek az internetre, feloldhatja az előző URI-t, és konfigurálhat egy adott szabályt, hogy lehetővé tegye a kimenő kapcsolatot az IP-k. További információ: [Azure Key Vault tűzfal mögött.](../../key-vault/key-vault-access-behind-firewall.md)
-  - Windows rendszerben, ha a TLS 1.0 explicit módon le van tiltva, és a .NET verzió nem lett 4.6-os vagy újabb verzióra frissítve, a rendszerleíró adatbázis következő módosítása lehetővé teszi az ADE számára a legújabb TLS-verzió kiválasztását:
+  - A titkosítandó virtuális gépnek úgy kell konfigurálnia, hogy a TLS 1.2 protokollt használja alapértelmezett protokollként. Ha a TLS 1.0 explicit módon le van tiltva, és a .NET verzió nem lett 4.6-os vagy újabb verzióra frissítve, a rendszerleíró adatbázis következő módosítása lehetővé teszi, hogy az ADE kiválassza a legújabb TLS-verziót:
     
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
         "SystemDefaultTlsVersions"=dword:00000001

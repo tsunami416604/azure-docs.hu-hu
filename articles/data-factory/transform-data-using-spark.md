@@ -10,17 +10,19 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/31/2018
-ms.openlocfilehash: eb887a7d9081875c28964ddb1e3d1b2e609862fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c39575e8ea60a091124c633f8958ec36e8a61885
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912974"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418847"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factory Spark-tevékenységével
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-spark.md)
 > * [Aktuális verzió](transform-data-using-spark.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A Spark-tevékenység egy Data [Factory-folyamat](concepts-pipelines-activities.md) egy Spark-programot hajt végre [a saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy igény szerinti [HDInsight-fürtön.](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Ez a cikk az [adatátalakítási tevékenységek](transform-data.md) cikkre épül, amely általános áttekintést nyújt az adatok átalakításáról és a támogatott átalakítási tevékenységekről. Amikor igény szerinti Spark-alapú szolgáltatást használ, a Data Factory automatikusan létrehoz egy Spark-fürtöt az adatok feldolgozásához, majd törli a fürtöt, amint a feldolgozás befejeződött. 
 

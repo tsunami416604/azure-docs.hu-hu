@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 80c9929f37b4890387a7625f04db6ce3e37f0cdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74922115"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416454"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Adatok áttelepítése a helyszíni Netezza kiszolgálóról az Azure-ba az Azure-ba az Azure-ban 
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Az Azure Data Factory egy teljesítmény, robusztus és költséghatékony mechanizmust biztosít az adatok nagy méretekben történő áttelepítéséhez egy helyszíni Netezza kiszolgálóról az Azure storage-fiókjába vagy az Azure SQL Data Warehouse adatbázisába. 
 
@@ -139,7 +141,7 @@ Minden tábla más vízjeloszlopot használhat az új vagy frissített sorok azo
 
 ### <a name="configure-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs futásidő konfigurálása
 
-Ha adatokat telepít át a Netezza kiszolgálóról az Azure-ba, függetlenül attól, hogy a kiszolgáló a vállalati tűzfal mögött vagy egy virtuális hálózati környezetben található, telepítenie kell egy saját üzemeltetésű infravörös szolgáltatást egy Windows-gépen vagy virtuális gépen, amely a használt motor adatok mozgatása. Az önkiszolgáló infravörös szolgáltatás telepítésekor a következő megközelítést javasoljuk:
+Ha adatokat telepít át a Netezza kiszolgálóról az Azure-ba, függetlenül attól, hogy a kiszolgáló a vállalati tűzfal mögött vagy egy virtuális hálózati környezetben található, telepítenie kell egy saját üzemeltetésű infravörös szolgáltatást egy Windows-gépen vagy virtuális gépen, amely az adatok áthelyezéséhez használt motor. Az önkiszolgáló infravörös szolgáltatás telepítésekor a következő megközelítést javasoljuk:
 
 - Minden egyes Windows-gép vagy virtuális gép esetén 32 vCPU és 128 GB-os memóriával kezdje. Az adatáttelepítés során folyamatosan figyelheti az infravörös gép processzor- és memóriahasználatát, így megállapíthatja, hogy a jobb teljesítmény érdekében tovább kell-e bővítenie a gépet, vagy csökkentenie kell a gépet a költségek csökkentése érdekében.
 
@@ -151,7 +153,7 @@ Ajánlott eljárásként végezzen teljesítményigazolást (POC) egy reprezenta
 
 Táblázat másolásához kezdje egyetlen másolási tevékenységgel egyetlen, saját üzemeltetésű infravörös géppel. Fokozatosan `parallelCopies` növelje a beállítást a táblázatban lévő adatszelet-partíciók száma alapján. Tekintse meg, hogy a teljes tábla két órán belül betölthető-e az Azure-ba a másolási feladatból eredő átviteli terhelésnek megfelelően. 
 
-Ha két órán belül nem tölthető be az Azure-ba, és a saját üzemeltetésű infravörös csomópont és az adattár kapacitása nincs teljes mértékben kihasználva, fokozatosan növelje az egyidejű másolási tevékenységek számát, amíg el nem éri a hálózat korlátját vagy az adatok sávszélesség-korlátját. Üzletek. 
+Ha két órán belül nem tölthető be az Azure-ba, és a saját üzemeltetésű infravörös csomópont és az adattár kapacitása nincs teljes mértékben kihasználva, fokozatosan növelje az egyidejű másolási tevékenységek számát, amíg el nem éri a hálózat korlátját vagy az adattárolók sávszélesség-korlátját. 
 
 Figyelje a cpu- és memóriahasználatot a saját üzemeltetésű infravörös gépen, és készen áll a gép méretezésére vagy több gépre való horizontális felskálázásra, amikor látja, hogy a processzor és a memória teljes mértékben kihasználva van. 
 

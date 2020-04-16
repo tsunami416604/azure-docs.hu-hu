@@ -12,18 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: e7f91d60a0e181690859da64e491c4c0fa1e1a3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 063ac32c98d4eb64b676247c0a16f98fa7d1702d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238720"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416683"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Adatok másolása az SQL Server be- és kifutóról az Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Azure Data Factory által használt verziót:"]
 > * [1-es verzió](v1/data-factory-sqlserver-connector.md)
-> * [Aktuális verzió](connector-sql-server.md)
+> * [Jelenlegi verzió](connector-sql-server.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenységet az Azure Data Factory adatok másolásához és sql server-adatbázisba. A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
@@ -32,7 +33,7 @@ Ez a cikk bemutatja, hogyan használhatja a másolási tevékenységet az Azure 
 Ez az SQL Server-összekötő a következő tevékenységek esetén támogatott:
 
 - [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
-- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [Keress tevékenységet](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 
 Az SQL Server adatbázisból adatokat másolhat bármely támogatott fogadóadattárba. Vagy bármely támogatott forrásadat-tárolóból adatokat másolhat sql server adatbázisba. A másolási tevékenység által forrásként vagy fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában láthatja.

@@ -10,14 +10,15 @@ ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: acc7284eb607d20ca1d62b478d802be56048bc6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa8603f2bee7e42db0f085d78117d61bd14ce5c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440096"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419391"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Csatolt szolgáltatások paraméterezése az Azure Data Factoryban
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Most már paraméterezhet egy összekapcsolt szolgáltatást, és futásidőben dinamikus értékeket adhat át. Ha például ugyanazon az Azure SQL Database-kiszolgálón lévő különböző adatbázisokhoz szeretne csatlakozni, most már paraméterezheti az adatbázis nevét a csatolt szolgáltatásdefinícióban. Ez megakadályozza, hogy az Azure SQL-adatbázis-kiszolgálón minden egyes adatbázishoz hozzon létre egy csatolt szolgáltatást. A csatolt szolgáltatásdefinícióban más tulajdonságokat is paraméterezhet – például *felhasználónév.*
 
