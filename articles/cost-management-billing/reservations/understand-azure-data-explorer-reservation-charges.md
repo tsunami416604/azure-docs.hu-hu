@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a418841d91ab6b8fe5457f3fd64d91306fe08dfe
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199330"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383114"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>A foglalási kedvezmény alkalmazása az Azure Data Explorerre
 
@@ -65,7 +65,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 Az Azure Reservationsszel kapcsolatos további információért tekintse meg a következő cikkeket:
 
-* [Előre fizetés fenntartott Azure Data Explorer-kapacitással rendelkező Azure Data Explorer számítási erőforrásokért](../../data-explorer/pricing-reserved-capacity.md)  
+* [Előre fizetés fenntartott Azure Data Explorer-kapacitással rendelkező Azure Data Explorer számítási erőforrásokért](/azure/data-explorer/pricing-reserved-capacity)  
 * [Mik azok az Azure-beli foglalások?](save-compute-costs-reservations.md)  
 * [Az Azure Reservations kezelése](manage-reserved-vm-instance.md)  
 * [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](understand-reserved-instance-usage.md)

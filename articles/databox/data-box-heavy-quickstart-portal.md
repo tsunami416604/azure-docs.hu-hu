@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15140ef392d8108b59bf50c396e529dc15951232
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514408"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410914"
 ---
 ::: zone target = "docs"
 
@@ -39,11 +39,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 ### <a name="for-service"></a>A szolgáltatás esetén
 
-Mielőtt hozzákezd, győződjön meg az alábbiakról:
-
-- Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
-- A Data Box szolgáltatáshoz használt előfizetés [Microsoft nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Felhőszolgáltató (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) vagy [Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/).
-- Tulajdonosi vagy közreműködői jogosultsággal rendelkezik az előfizetésen a Data Box Heavy-rendelések létrehozásához.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Az eszköz esetén
 
@@ -57,7 +53,6 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
     - A 40 Gb/s-os kábel esetében a kábel eszközoldali végének QSFP+ rendszerűnek kell lennie.
     - A 10 Gb/s-os kábel esetén szükség van egy olyan SFP+ kábelre, amely az egyik végén egy 10 Gb/s-os kapcsolóhoz, az eszközoldali végén pedig egy QSFP+–SFP+ adapterhez (vagy a QSA-adapterhez) csatlakozik.
 - A tápkábelek az eszköz hátulján lévő tálcán találhatók.
-
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
