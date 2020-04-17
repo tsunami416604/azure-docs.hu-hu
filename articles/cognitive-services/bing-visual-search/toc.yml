@@ -80,7 +80,7 @@
       maintainContext: true
 - name: További források
   items:
-    - name: Nyelvi és régiós támogatás
+    - name: Nyelvi támogatás
       href: language-support.md
     - name: Ingyenes hozzáférési kulcs lekérése
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'
