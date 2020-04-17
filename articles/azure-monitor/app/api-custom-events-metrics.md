@@ -3,12 +3,12 @@ title: Application Insights API egyéni eseményekhez és metrikákhoz | Microso
 description: A használat nyomon követéséhez és a problémák diagnosztizálásához szúrjon be néhány sorkódot az eszközbe vagy az asztali alkalmazásba, a weblapra vagy a szolgáltatásba.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d6cb2f5ab418e8d3b5935fef535565ccf55a3906
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585880"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536947"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
@@ -107,7 +107,7 @@ A Node.js projektekben `new applicationInsights.TelemetryClient(instrumentationK
 
 ## <a name="trackevent"></a>TrackEvent esemény
 
-Az Application Insightsban az *egyéni esemény* olyan adatpont, amely a [Metrikák Intézőben](../../azure-monitor/app/metrics-explorer.md) összesített számként, a [diagnosztikai keresésben](../../azure-monitor/app/diagnostic-search.md) pedig egyedi előfordulásként jeleníthető meg. (Ez nem kapcsolódik mvc vagy más keret "események.")
+Az Application Insightsban az *egyéni esemény* olyan adatpont, amely a [Metrikák Intézőben](../../azure-monitor/platform/metrics-charts.md) összesített számként, a [diagnosztikai keresésben](../../azure-monitor/app/diagnostic-search.md) pedig egyedi előfordulásként jeleníthető meg. (Ez nem kapcsolódik mvc vagy más keret "események.")
 
 A `TrackEvent` különböző események számlálásához helyezze be a hívásokat a kódba. Milyen gyakran választanak a felhasználók egy adott funkciót, milyen gyakran érnek el bizonyos célokat, vagy milyen gyakran követnek el bizonyos típusú hibákat.
 
@@ -443,7 +443,7 @@ requests
 
 Kivételek küldése az Application Insights számára:
 
-* Számolni [őket](../../azure-monitor/app/metrics-explorer.md), mint jelzi a probléma gyakoriságát.
+* Számolni [őket](../../azure-monitor/platform/metrics-charts.md), mint jelzi a probléma gyakoriságát.
 * [Az egyes előfordulások vizsgálata](../../azure-monitor/app/diagnostic-search.md).
 
 A jelentések tartalmazzák a veremnyomkövetéseket.
@@ -521,7 +521,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-A legtöbb fontos verem információ már kibontott külön változók, `details` de lehet húzni szét a szerkezet, hogy minél több. Mivel ez a struktúra dinamikus, az eredményt a várt típusra kell vetni. Példa:
+A legtöbb fontos verem információ már kibontott külön változók, `details` de lehet húzni szét a szerkezet, hogy minél több. Mivel ez a struktúra dinamikus, az eredményt a várt típusra kell vetni. Például:
 
 ```kusto
 exceptions
@@ -584,7 +584,7 @@ Az üzenet tartalmában kereshet, de (a tulajdonságértékekkel ellentétben) n
 A méretkorlát `message` sokkal magasabb, mint a tulajdonságokra vonatkozó korlát.
 A TrackTrace előnye, hogy viszonylag hosszú adatokat helyezhet el az üzenetben. Itt is kódolhatja a POST-adatokat.  
 
-Ezenkívül súlyossági szintet is hozzáadhat az üzenethez. És, mint más telemetriai adatok, tulajdonságértékeket adhat hozzá, hogy segítsen szűrni vagy keresni a különböző nyomkövetések. Példa:
+Ezenkívül súlyossági szintet is hozzáadhat az üzenethez. És, mint más telemetriai adatok, tulajdonságértékeket adhat hozzá, hogy segítsen szűrni vagy keresni a különböző nyomkövetések. Például:
 
 *C#*
 
@@ -774,7 +774,7 @@ Ha az alkalmazás fiókokba csoportosítja a felhasználókat, a fiókazonosít�
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-A [Metrics Explorer alkalmazásban](../../azure-monitor/app/metrics-explorer.md)létrehozhat egy diagramot, amely megszámolja a **Felhasználók, a Hitelesített**és a Felhasználói **fiókokat.**
+A [Metrics Explorer alkalmazásban](../../azure-monitor/platform/metrics-charts.md)létrehozhat egy diagramot, amely megszámolja a **Felhasználók, a Hitelesített**és a Felhasználói **fiókokat.**
 
 Adott felhasználónevekkel és fiókokkal rendelkező ügyféladatpontokat is [kereshet.](../../azure-monitor/app/diagnostic-search.md)
 
@@ -1147,7 +1147,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemettryContext
 
-TelemettryClient rendelkezik egy context tulajdonsággal, amely tartalmazza az összes telemetriai adatokkal együtt küldött értékeket. Ezek általában a szabványos telemetriai modulok által vannak beállítva, de saját maga is beállíthatja őket. Példa:
+TelemettryClient rendelkezik egy context tulajdonsággal, amely tartalmazza az összes telemetriai adatokkal együtt küldött értékeket. Ezek általában a szabványos telemetriai modulok által vannak beállítva, de saját maga is beállíthatja őket. Például:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

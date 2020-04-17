@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c20d93c70484dc7ea800898da4309af2699c718e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c5117e59f7856c3bd572bbea297a836b5ad589
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085735"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536216"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>A Microsoft hitelesítési könyvtár (MSAL) áttekintése
 A Microsoft Authentication Library (MSAL) lehetővé teszi a fejlesztők számára, hogy [jogkivonatokat szerezzenek](developer-glossary.md#security-token) be a Microsoft identity platform végpontjáról a biztonságos webes API-k elérése érdekében. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, külső webes API-k vagy a saját webes API-k. Az MSAL .NET, JavaScript, Android és iOS rendszerekhez érhető el, amelyek számos különböző alkalmazásarchitektúrát és platformot támogatnak.
@@ -43,7 +43,7 @@ Az MSAL számos alkalmazási forgatókönyvben használható, többek között a
 * [Webes API védelme, hogy csak a hitelesített felhasználók férhessenek hozzá](scenario-protected-web-api-overview.md)
 * [Egy másik alsóbb rétegbeli webes API-t hívmeg a bejelentkezett felhasználó nevében](scenario-web-api-call-api-overview.md)
 * [Webes API-hívása a bejelentkezett felhasználó nevében](scenario-desktop-overview.md)
-* [A webes API-t hívó mobilalkalmazás a bejelentkezett felhasználó nevében interaktívan](scenario-mobile-overview.md)hívja meg a webes API-t.
+* [A webes API-t interaktívan bejelentkezett felhasználó nevében webes API-t hív meg.](scenario-mobile-overview.md)
 * [Asztali/szolgáltatás démonalkalmazás, amely saját nevében hívja meg a webes API-t](scenario-daemon-overview.md)
 
 ## <a name="languages-and-frameworks"></a>Nyelvek és keretek

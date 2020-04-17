@@ -1,26 +1,31 @@
 ---
 title: Kombinált regisztráció az SSPR-hez és az MFA-hoz – Azure Active Directory
-description: Azure AD többtényezős hitelesítés és önkiszolgáló jelszó-visszaállításregisztráció (előzetes verzió)
+description: Azure AD többtényezős hitelesítés és önkiszolgáló jelszó-alaphelyzetbe állítás regisztráció
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 48350bf8f0ffb8681d95f6f42f9aa93256395f9a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309917"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534686"
 ---
-# <a name="combined-security-information-registration-preview"></a>Kombinált biztonsági adatok regisztrálása (előzetes verzió)
+# <a name="combined-security-information-registration-overview"></a>Kombinált biztonsági adatok regisztrálása – áttekintés
 
 A kombinált regisztráció előtt a felhasználók külön-külön regisztrálták az Azure többtényezős hitelesítésés az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszereit. Az emberek össze voltak zavarodva, hogy hasonló módszereket használtak a többtényezős hitelesítéshez és az SSPR-hez, de mindkét funkcióra regisztrálniuk kellett. Most, kombinált regisztráció, a felhasználók egyszer regisztrálhatnak, és kap az előnyeit mind a többtényezős hitelesítés és SSPR.
+
+Ez a cikk ismerteti, hogy mi a kombinált biztonsági regisztráció. A kombinált biztonsági regisztráció első lépései a következő cikkben olvashatók:
+
+> [!div class="nextstepaction"]
+> [Kombinált biztonsági regisztráció engedélyezése](howto-registration-mfa-sspr-combined.md)
 
 ![Saját profil, amely regisztrált biztonsági adatokat jelenít meg egy felhasználó számára](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
@@ -28,16 +33,10 @@ Az új felület engedélyezése előtt tekintse át ezt a rendszergazdaközpont�
 
 Az Azure AD kombinált biztonsági adatok regisztrációja jelenleg nem érhető el a nemzeti felhők, például az Azure US Government, az Azure Germany vagy az Azure China 21Vianet számára.
 
-|     |
-| --- |
-| A többtényezős hitelesítés és az Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás kombinált biztonsági adatok regisztrálása az Azure AD nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
-
 > [!IMPORTANT]
 > Azok a felhasználók, akik engedélyezve vannak mind az eredeti előzetes verzióhoz, mind a továbbfejlesztett kombinált regisztrációs élményhez, az új viselkedést fogják látni. Azok a felhasználók, akik mindkét élményben engedélyezve vannak, csak az új Saját profil élményt látják. Az új Saját profil igazodik a kombinált regisztráció megjelenéséhez, és zökkenőmentes élményt nyújt a felhasználók számára. A felhasználók a profilomat [https://myprofile.microsoft.com](https://myprofile.microsoft.com)a segítségével láthatják.
-
-> [!NOTE] 
-> A Biztonsági adatok beállítás elérése közben hibaüzenet jelenhet meg. Például: "Sajnáljuk, nem tudjuk bejelentkezni". Ebben az esetben ellenőrizze, hogy nincs-e olyan konfigurációs vagy csoportházirend-objektum, amely letiltja a harmadik féltől származó cookie-kat a webböngészőben. 
+>
+> A Biztonsági adatok beállítás elérése közben hibaüzenet jelenhet meg. Például: "Sajnáljuk, nem tudjuk bejelentkezni". Ebben az esetben ellenőrizze, hogy nincs-e olyan konfigurációs vagy csoportházirend-objektum, amely letiltja a harmadik féltől származó cookie-kat a webböngészőben.
 
 A Saját profil lapok a lapot elérő számítógép nyelvi beállításai alapján honosodnak. A Microsoft a böngésző gyorsítótárában tárolja a legutóbb használt nyelvet, így a lapok elérésére tett későbbi kísérletek továbbra is az utoljára használt nyelven jelennek meg. Ha törli a gyorsítótárat, az oldalak újra renderelésre kerülnek. Ha egy adott nyelvet szeretne kényszeríteni, `?lng=<language>` hozzáadhatja az URL-cím végéhez, ahol `<language>` a megjeleníteni kívánt nyelv kódja.
 
@@ -77,7 +76,6 @@ Ahogy továbbra is további hitelesítési módszereket adunk hozzá az Azure AD
 A kombinált regisztrációnak két módja van: a megszakítás és a kezelés.
 
 - **A megszakítási mód** varázslószerű élmény, amelyet a felhasználók akkor mutatnak be, amikor regisztrálják vagy frissítik biztonsági adataikat a bejelentkezéskor.
-
 - **A Kezelési mód** a felhasználói profil része, és lehetővé teszi a felhasználók számára biztonsági adataik kezelését.
 
 Mindkét mód esetében azoknak a felhasználóknak, akik korábban regisztráltak egy módszert, amely használható a többtényezős hitelesítéshez, többtényezős hitelesítést kell végrehajtaniuk, mielőtt hozzáférhetnének a biztonsági adataikhoz.
@@ -139,14 +137,8 @@ Az a felhasználó, aki korábban már beállított legalább egy módszert, [ht
 
 ## <a name="next-steps"></a>További lépések
 
-[A felhasználók kényszerítése a hitelesítési módszerek újbóli regisztrálására](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
+Első lépésekhez tekintse meg az [önkiszolgáló jelszó-alaphelyzetbe állítást](tutorial-enable-sspr.md) és az [Azure többtényezős hitelesítés engedélyezését.](tutorial-enable-azure-mfa.md)
 
-[Kombinált regisztráció engedélyezése a bérlőben](howto-registration-mfa-sspr-combined.md)
+Megtudhatja, hogy [miként engedélyezheti a kombinált regisztrációt a bérlőben,](howto-registration-mfa-sspr-combined.md) illetve [hogyan kényszerítheti a felhasználókat a hitelesítési módszerek újbóli regisztrálására.](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
 
-[SSPR és MFA-használat és elemzési jelentések](howto-authentication-methods-usage-insights.md)
-
-[A többtényezős hitelesítéshez és az SSPR-hez rendelkezésre álló módszerek](concept-authentication-methods.md)
-
-[Új jelszó önkiszolgáló kérésének konfigurálása](howto-sspr-deployment.md)
-
-[Az Azure Multi-Factor Authentication konfigurálása](howto-mfa-getstarted.md)
+Az [Azure többtényezős hitelesítéshez és az SSPR-hez rendelkezésre álló módszereket](concept-authentication-methods.md)is áttekintheti.

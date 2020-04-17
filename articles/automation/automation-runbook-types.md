@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4e8a5d2d168b8f60b7a32a8af358c6097003de60
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1ac6347bd8e723f356da4803da54a6ea45a4a71a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261295"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535519"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-runbook-típusok
 
@@ -28,6 +28,9 @@ Vegye figyelembe a következő szempontokat annak meghatározásakor, hogy melyi
 
 * A runbookok nem konvertálhatók grafikusról szövegtípusra, illetve fordítva.
 * A különböző típusú runbookok gyermek runbookok használatakor vannak korlátozások. További információ: [Child runbooks in Azure Automation.](automation-child-runbooks.md)
+
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
 
 ## <a name="graphical-runbooks"></a>Grafikus runbookok
 

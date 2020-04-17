@@ -12,12 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3585cfa7ea6f0d8afc61e899f9641d415a2e354
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161188"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537236"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Aláírási kulcsváltás az Azure Active Directoryban
 Ez a cikk ismerteti, mit kell tudni a nyilvános kulcsokat, amelyek az Azure Active Directoryban (Azure AD) a biztonsági jogkivonatok aláírásához használt. Fontos megjegyezni, hogy ezek a kulcsok rendszeres időközönként megfordulnak, és vészhelyzetben azonnal átállíthatók. Az Azure AD-t használó összes alkalmazásnak képesnek kell lennie a kulcsváltási folyamat programozott kezelésére, vagy egy időszakos manuális váltási folyamat létrehozásához. Folytatódik olvasó, hogy megértsék, hogyan működnek a kulcsok, hogyan lehet felmérni a váltás hatását az alkalmazás, és hogyan frissítheti az alkalmazást, vagy hozzon létre egy időszakos manuális átgörgetési folyamat kezelésére kulcs váltás, ha szükséges.
@@ -146,7 +146,7 @@ A következő lépések segítségével ellenőrizheti, hogy a logika megfelelő
 ### <a name="web-apis-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Az erőforrásokat védő és a Visual Studio 2013-mal létrehozott webes API-k
 Ha létrehozott egy webes API-alkalmazást a Visual Studio 2013-ban a Webes API-sablon használatával, majd a **Szervezeti fiókok** lehetőséget választotta a **Módosítási hitelesítés** menüből, akkor már rendelkezik a szükséges logikával az alkalmazásban.
 
-Ha manuálisan konfigurálta a hitelesítést, kövesse az alábbi utasításokat, és ismerje meg, hogyan konfigurálhatja a webes API-t a kulcsadatok automatikus frissítésére.
+Ha manuálisan konfigurálta a hitelesítést, kövesse az alábbi utasításokat, hogy megtudja, hogyan konfigurálhatja a webes API-t a legfontosabb információk automatikus frissítésére.
 
 A következő kódrészlet bemutatja, hogyan szerezheti be a legújabb kulcsokat az összevonási metaadat-dokumentumból, majd a [JWT-jogkivonat-kezelő](https://msdn.microsoft.com/library/dn205065.aspx) segítségével érvényesítheti a jogkivonatot. A kódrészlet feltételezi, hogy a saját gyorsítótárazási mechanizmust fogja használni a kulcs megőrzéséhez az Azure AD jövőbeli jogkivonatai érvényesítéséhez, legyen az egy adatbázis, konfigurációs fájl vagy más hol.
 
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Erőforrásokat védő és a Visual Studio 2012-vel létrehozott webalkalmazások
-Ha az alkalmazás a Visual Studio 2012-ben készült, valószínűleg az Identitás és az Access eszközt használta az alkalmazás konfigurálásához. Az is valószínű, hogy a [kiállítói névjegyzéket (VALIDating Issuer Registry, VINR)](https://msdn.microsoft.com/library/dn205067.aspx)használja. A VINR felelős a megbízható identitásszolgáltatók (Azure AD) és az általuk kiadott jogkivonatok érvényesítéséhez használt kulcsok karbantartásáért. A VINR megkönnyíti a Web.config fájlban tárolt legfontosabb információk automatikus frissítését a könyvtárhoz társított legújabb összevonási metaadat-dokumentum letöltésével, annak ellenőrzésével, hogy a konfiguráció elavult-e a legújabb dokumentummal, és az alkalmazás frissítése az új kulcs szükség szerint történő használatához.
+Ha az alkalmazás a Visual Studio 2012-ben készült, valószínűleg az Identitás és az Access eszközt használta az alkalmazás konfigurálásához. Az is valószínű, hogy a [kiállítói névjegyzéket (VALIDating Issuer Registry, VINR)](https://msdn.microsoft.com/library/dn205067.aspx)használja. A VINR felelős a megbízható identitásszolgáltatók (Azure AD) és az általuk kiadott jogkivonatok érvényesítéséhez használt kulcsok karbantartásáért. A VINR megkönnyíti a Web.config fájlban tárolt legfontosabb információk automatikus frissítését a könyvtárhoz társított legújabb összevonási metaadat-dokumentum letöltésével, annak ellenőrzésével, hogy a konfiguráció elavult-e a legújabb dokumentummal, és szükség esetén frissíti az alkalmazást az új kulcs használatára.
 
 Ha az alkalmazást a Microsoft által biztosított kódminták vagy forgatókönyv-dokumentációk bármelyikével hozta létre, a kulcsváltási logika már szerepel a projektben. Észre fogja venni, hogy az alábbi kód már létezik a projektben. Ha az alkalmazás még nem rendelkezik ezzel a logikával, kövesse az alábbi lépéseket a hozzáadáshoz, és ellenőrizze, hogy megfelelően működik-e.
 
@@ -299,7 +299,7 @@ A FedUtil használatára vonatkozó utasítások a konfiguráció frissítéséh
 4. A frissítési folyamat befejezéséhez kattintson a **Befejezés** gombra.
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webalkalmazások / API-k, amelyek más könyvtárak használatával védik az erőforrásokat, vagy manuálisan valósítják meg a támogatott protokollok bármelyikét
-Ha más könyvtárat használ, vagy manuálisan valósítja meg a támogatott protokollok bármelyikét, át kell tekintenie a könyvtárat vagy a megvalósítást, hogy megbizonyosodjon arról, hogy a kulcsot az OpenID Connect felderítési dokumentumból vagy az összevonási metaadatokból olvassa be. Dokumentum. Ennek egyik módja, ha rákeres a kódra vagy a tár kódjára az OpenID felderítési dokumentumba vagy az összevonási metaadat-dokumentumba irányuló hívásokra.
+Ha más könyvtárat használ, vagy manuálisan valósítja meg a támogatott protokollok bármelyikét, át kell tekintenie a tárat vagy a megvalósítást, hogy megbizonyosodjon arról, hogy a kulcsot az OpenID Connect felderítési dokumentumból vagy az összevonási metaadat-dokumentumból olvassa be. Ennek egyik módja, ha rákeres a kódra vagy a tár kódjára az OpenID felderítési dokumentumba vagy az összevonási metaadat-dokumentumba irányuló hívásokra.
 
 Ha a kulcs tárolása valahol, vagy az alkalmazásban kódolt, manuálisan lekérheti a kulcsot, és ennek megfelelően frissítheti a manuális görgetést, a jelen útmutató dokumentum végén található utasítások nak megfelelően. **Erősen ajánlott, hogy az alkalmazás támogatja** az automatikus görgetés a jelen cikkben ismertetett megközelítések bármelyikének használatával a jövőbeli zavarok és a terhelés elkerülése érdekében, ha az Azure AD növeli a görgetési ütem, vagy egy vészhelyzeti sávon kívüli görgetés.
 
@@ -308,4 +308,3 @@ Ellenőrizheti, hogy az alkalmazás támogatja-e az automatikus kulcsváltást a
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Manuális váltás végrehajtása, ha az alkalmazás nem támogatja az automatikus átgörgetést
 Ha az alkalmazás **nem** támogatja az automatikus váltást, létre kell hoznia egy folyamatot, amely rendszeresen figyeli az Azure AD aláíró kulcsait, és ennek megfelelően manuális átgörgetést hajt végre. [Ez a GitHub-tárház](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) parancsfájlokat és utasításokat tartalmaz erre vonatkozóan.
-

@@ -318,8 +318,6 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: Naplóalapú metrikák definíciói
               href: platform/app-insights-metrics.md
-            - name: Klasszikus Metrikaböngésző
-              href: app/metrics-explorer.md
         - name: Keresés
           href: app/diagnostic-search.md
         - name: Profilkészítő

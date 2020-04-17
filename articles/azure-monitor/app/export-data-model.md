@@ -3,17 +3,17 @@ title: Azure Application Insights adatmodell | Microsoft dokumentumok
 description: A JSON-ban történő folyamatos exportálásból exportált és szűrőként használt tulajdonságok leírása.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663875"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536845"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights exportadat-modell
 Ez a táblázat az [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK-kból a portálra küldött telemetriai adatok tulajdonságait sorolja fel.
 Ezeket a tulajdonságokat a [Folyamatos exportálás](export-telemetry.md)adatkimenetében fogja látni.
-A [Metrikus kezelő](../../azure-monitor/app/metrics-explorer.md) és a [diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)tulajdonságszűrőiben is megjelennek.
+A [Metrikus kezelő](../../azure-monitor/platform/metrics-charts.md) és a [diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)tulajdonságszűrőiben is megjelennek.
 
 Megjegyzésre mutat:
 
@@ -127,16 +127,16 @@ Minden típusú telemetriai adatok at egy környezeti szakasz kíséri. Nem mind
 | context.device.roleName |sztring | |
 | context.device.screenResolution |sztring | |
 | context.device.type |sztring |PC, böngésző, ... |
-| context.location |objektum |Ügyfélip-ből származik. |
-| context.location.city |sztring |Ügyfélip-ből származik, ha ismert |
+| context.location |objektum |Ebből `clientip`származik. |
+| context.location.city |sztring |A `clientip`származtatott , ha ismert |
 | context.location.clientip |sztring |Az utolsó nyolcszög et anonimizálták 0-ra. |
 | context.location.kontinens |sztring | |
 | context.location.country |sztring | |
 | context.location.province |sztring |Állam vagy tartomány |
-| context.operation.id |sztring |Az azonos műveletazonosítóval rendelkező elemek kapcsolódó elemekként jelennek meg a portálon. Általában a kérelem azonosítója. |
+| context.operation.id |sztring |Az azonos `operation id` elemek a portálon a Kapcsolódó elemekként jelennek meg. Általában `request id`a . |
 | context.operation.name |sztring |url vagy kérelem neve |
 | context.operation.parentId |sztring |Lehetővé teszi a beágyazott kapcsolódó elemeket. |
-| context.session.id |sztring |Azonos forrásból származó műveletek csoportjának azonosítója. A művelet nélküli 30 perces időszak jelzi a munkamenet végét. |
+| context.session.id |sztring |`Id`ugyanabból a forrásból származó műveletek csoportját. A művelet nélküli 30 perces időszak jelzi a munkamenet végét. |
 | context.session.isFirst |logikai | |
 | context.user.accountAcquisitionDate |sztring | |
 | context.user.accountId |sztring | |
@@ -147,7 +147,7 @@ Minden típusú telemetriai adatok at egy környezeti szakasz kíséri. Nem mind
 | context.user.isHitelesített |logikai | |
 | context.user.storeRégió |sztring | |
 | belső.data.documentVersion |sztring | |
-| internal.data.id |sztring | Egyedi azonosító, amely akkor van hozzárendelve, ha egy elem be van(adták) az Application Insightsba |
+| internal.data.id |sztring | `Unique id`amely akkor van hozzárendelve, ha egy elem be van(adva az Application Insights-nak) |
 
 ## <a name="events"></a>Események
 A [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)által létrehozott egyéni események.
@@ -173,7 +173,7 @@ A [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent
 | basicException [0] failedUserCodeAssembly |sztring | |
 | basicException [0] kezelve: |sztring | |
 | basicException [0] hasFullStack |logikai | |
-| basicException [0] azonosító |sztring | |
+| basicException [0]`id` |sztring | |
 | basicException [0] metódus |sztring | |
 | basicException [0] üzenet |sztring |Kivétel üzenet. Max hossza 10k. |
 | basicException [0] outerExceptionMessage |sztring | |
@@ -210,7 +210,7 @@ A TrackDependency küldte. A kiszolgálón lévő [függőségek és](../../azur
 | remoteDependency [0] számláló |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) arány). Például 4&gt; = 25%. |
 | remoteDependency [0] dependencyTypeName |sztring |HTTP, SQL, ... |
 | remoteDependency [0] durationMetric.value |szám |A hívástól a függőség szerint a válasz befejezéséig töltött idő |
-| remoteDependency [0] id |sztring | |
+| remoteDependency [0]`id` |sztring | |
 | remoteDependency [0] név |sztring |Url. Max hossz 250. |
 | remoteDependency [0] resultCode |sztring |HTTP-függőségből |
 | remoteDependency [0] sikeres |logikai | |
@@ -227,7 +227,7 @@ A TrackDependency küldte. A kiszolgálón lévő [függőségek és](../../azur
 | --- | --- | --- |
 | kérés [0] száma |egész szám |100/([mintavételi](../../azure-monitor/app/sampling.md) arány). Például: 4&gt; = 25%. |
 | kérelem [0] durationMetric.value |szám |A kéréstől a válaszig eltöltött idő. 1e7 == 1 s |
-| kérelem [0] id |sztring |Műveleti azonosító |
+| kérelem [0]`id` |sztring |`Operation id` |
 | kérelem [0] név |sztring |GET/POST + url base.  Max hossz 250 |
 | [0] responseCode kérés |egész szám |Ügyfélnek küldött HTTP-válasz |
 | kérelem [0] sikeres |logikai |Alapértelmezett == (responseCode &lt; 400) |
@@ -292,7 +292,7 @@ A [rendelkezésre állási webes tesztek ről](../../azure-monitor/app/monitor-w
 
 A metrikaérték a context.custom.metrics[0]
 
-Példa:
+Például:
 
     {
      "metric": [ ],
@@ -318,7 +318,7 @@ Példa:
     }
 
 ## <a name="about-metric-values"></a>Metrikus értékek –
-Metrikaértékek, mind a metrikajelentésekben, mind máshol, szabványos objektumstruktúrával vannak jelentve. Példa:
+Metrikaértékek, mind a metrikajelentésekben, mind máshol, szabványos objektumstruktúrával vannak jelentve. Például:
 
       "durationMetric": {
         "name": "contoso.org",

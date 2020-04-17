@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c683e9847864de4e3409fb6dbd533497a5ae3cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060997"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537678"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Nagy fájlmegosztások engedélyezése és létrehozása
 
@@ -33,7 +33,7 @@ A nagy fájlmegosztások engedélyezése egy fiókon visszafordíthatatlan folya
 
 ### <a name="portal"></a>Portál
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Az Azure Portalon válassza a **Minden szolgáltatás**lehetőséget. 
 1. Az erőforrások listájában adja meg a **Tárfiókok .** Gépelés közben a lista a bevitt adatok alapján szűr. Válassza a **Tárfiókok lehetőséget.**
 1. A megjelenő **Tárházfiókok** ablakban válassza a **Hozzáadás**lehetőséget.
@@ -43,7 +43,7 @@ A nagy fájlmegosztások engedélyezése egy fiókon visszafordíthatatlan folya
     ![Erőforráscsoport portálon való létrehozását bemutató képernyőkép](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. Ezután adja meg a tárfiók nevét. A névnek egyedinek kell lennie az Azure-ban. A névnek 3 és 24 karakter között kell lennie, és csak számokat és kisbetűket tartalmazhat.
-1. Válassza ki a tárfiók helyét, és győződjön meg arról, hogy [az a nagy fájlmegosztások támogatott replikációjának egyike.](storage-files-planning.md#regional-availability)
+1. Válassza ki a tárhelyfiók helyét.
 1. Állítsa a **replikációt helyileg redundáns vagy** **zónaredundáns tárolóra.**
 1. Hagyja a mezőket az alapértelmezett értékükön:
 

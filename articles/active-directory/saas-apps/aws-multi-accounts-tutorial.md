@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/03/2020
+ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a6ab13dea1a1db96cbb2f2ac70b9779eca60591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5310c999cc44f0cf35f129751da7472031e6c57a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885302"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Oktatóanyag: Az Azure Active Directory integrációja az Amazon Web Services (AWS) szolgáltatással (örökölt oktatóanyag)
 
@@ -37,7 +37,7 @@ Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel va
 ![Amazon Web Services (AWS) az eredménylistában](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
-> Kérjük, vegye figyelembe, hogy egy AWS alkalmazás csatlakoztatása az összes AWS-fiókjához nem az ajánlott megközelítésünk. Ehelyett azt javasoljuk, hogy [használja ezt a](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) módszert az AWS-fiók több példányának konfigurálásához az Azure AD-ben az AWS-alkalmazások több példányához. Ezt [a](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) módszert csak akkor használja, ha nagyon kevesebb AWS-fiók és szerepkör van benne. [ez](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) a modell nem méretezhető, mivel az AWS-fiókok és szerepkörök ezeken a fiókokon belül növekszik. Ez [a](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) megközelítés nem használja az AWS szerepkör importálási funkcióját az Azure AD-felhasználó kiépítés használatával, ezért manuálisan kell hozzáadnia/frissítenie/törölnie a szerepköröket. A [megközelítés](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) egyéb korlátait lásd az alábbi részletekben.
+> Kérjük, vegye figyelembe, hogy egy AWS alkalmazás csatlakoztatása az összes AWS-fiókjához nem az ajánlott megközelítésünk. Ehelyett azt javasoljuk, hogy [használja ezt a](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) módszert az AWS-fiók több példányának konfigurálásához az Azure AD-ben az AWS-alkalmazások több példányához. Ezt a módszert csak akkor használja, ha nagyon kevesebb AWS-fiók és szerepkör van benne, ez a modell nem méretezhető, mivel az AWS-fiókok és szerepkörök ezeken a fiókokon belül növekszik. Ez a megközelítés nem használja az AWS szerepkör importálási funkcióját az Azure AD-felhasználó kiépítés használatával, ezért manuálisan kell hozzáadnia/frissítenie/törölnie a szerepköröket. A megközelítés egyéb korlátait lásd az alábbi részletekben.
 
 **Kérjük, vegye figyelembe, hogy nem javasoljuk, hogy ezt a megközelítést a következő okok miatt:**
 
@@ -126,7 +126,7 @@ Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Po
 
 6. A **Felhasználói attribútumok** párbeszédpanel **Felhasználói jogcímek** szakaszában konfigurálja az SAML token attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Név  | Forrás attribútuma  | Névtér |
+    | Name (Név)  | Forrás attribútuma  | Névtér |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
     | Szerepkör            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
@@ -148,7 +148,7 @@ Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Po
 
     f. Kattintson **az Ok gombra**
 
-    g. Kattintson a **Mentés** gombra.
+    g. Kattintson a **Save** (Mentés) gombra.
 
 7. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportban** kattintson a **Letöltés** gombra az **összevonási metaadat-XML** letöltéséhez és a számítógépre mentéséhez.
 

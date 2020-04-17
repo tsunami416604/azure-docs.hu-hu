@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5f18e9365b09f06c1bd4f25a8efe909cc308dad
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979468"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537015"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Frissítéskezelés, változáskövetés és készletmegoldások engedélyezése több virtuális gépen
 
@@ -33,7 +33,7 @@ A jelölőnégyzeteket használva jelölje ki azokat a virtuális gépeket, amel
 A parancssávon kattintson a **Szolgáltatások** elemre, és válassza a **Követés módosítása**, **Készlet**vagy **Frissítéskezelés lehetőséget.**
 
 > [!NOTE]
-> **A változáskövetés** és a **készlet** ugyanazt a megoldást használja, ha az egyik engedélyezve van, a másik is engedélyezve van.
+> A változáskövetés és a készlet ugyanazt a megoldást használja. Ha az egyik engedélyezve van, a másik is engedélyezve van.
 
 Az alábbi kép az Update Management. A változáskövetés és a készlet elrendezése és viselkedése megegyezik.
 
@@ -71,7 +71,7 @@ A megoldás engedélyezéséhez kattintson az **Engedélyezés** gombra. A megol
 A következő megoldások a Log Analytics-munkaterülettől függenek:
 
 * [Frissítéskezelés](automation-update-management.md)
-* [Változáskövetés](automation-change-tracking.md)
+* [Változások követése](automation-change-tracking.md)
 * [Virtuális gépek indítása/leállítása munkaidőn kívül](automation-solution-vm-management.md)
 
 Ha úgy dönt, hogy már nem szeretné integrálni az Automation-fiókot egy Log Analytics-munkaterülettel, leválaszthatja fiókját közvetlenül az Azure Portalról. A folytatás előtt először el kell távolítania a korábban említett megoldásokat, különben ez a folyamat nem folytatódik. Tekintse át a cikket az adott megoldás importált, hogy megértsék a szükséges lépéseket, hogy távolítsa el azt.
@@ -107,13 +107,13 @@ Azt is megteheti, hogy leválassza a munkaterületet az Automation-fiókról a L
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Több gép esetén előfordulhatnak olyan gépek, amelyek **nem engedélyezhetőként**jelennek meg. Különböző okok miatt előfordulhat, hogy egyes gépek nincsenek engedélyezve. A következő szakaszok a virtuális gépeken nem **engedélyezhető** állapot lehetséges okait mutatják be a fedélzeti műveletek során.
+Több gép esetén előfordulhatnak olyan gépek, `Cannot enable`amelyek a . Különböző okok miatt előfordulhat, hogy egyes gépek nincsenek engedélyezve. A következő szakaszok bemutatják `Cannot enable` a virtuális gépen lévő állapot lehetséges okait a fedélzeti műveletek során.
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>A virtuális gép egy másik\<munkaterületnek\>jelent: ' workspaceName '.  A konfiguráció módosítása az engedélyezéshez való használathoz
 
 **Ok:** Ez a hiba azt mutatja, hogy a virtuális gép, amelyet megpróbál bedolgozni, egy másik munkaterületre jelentéseket.
 
-**Megoldás:** Kattintson a **Használat konfigurációként** parancsra a célzott Automation-fiók és a Log Analytics-munkaterület módosításához.
+**Megoldás:** Kattintson a **Használat konfigurációként** parancsra a megcélzott Automation-fiók és a Log Analytics-munkaterület módosításához.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Virtuális gép olyan munkaterületnek jelent, amely nem érhető el ebben az előfizetésben
 
@@ -148,7 +148,7 @@ Több gép esetén előfordulhatnak olyan gépek, amelyek **nem engedélyezhető
 Virtuális gép eltávolítása az Update Management szolgáltatásból:
 
 * A Log Analytics-munkaterületen távolítsa el a virtuális gép `MicrosoftDefaultScopeConfig-Updates`a mentett keresés a Hatókör konfigurációja. A mentett keresések a munkaterület **Általános** területén találhatók.
-* Távolítsa el a [Microsoft Monitoring ügynököt](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy [a Log Analytics ügynököt Linuxra.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
+* Távolítsa el a [Windows Log Analytics-ügynökét](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy [a Linuxos Log Analytics-ügynököt.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
 
 ## <a name="next-steps"></a>További lépések
 

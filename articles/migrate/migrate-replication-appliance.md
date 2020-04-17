@@ -3,12 +3,12 @@ title: Azure Migrate replikációs berendezés
 description: Ismerje meg az Azure Migrate replikációs berendezés ügynökalapú VMWare áttelepítés.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245862"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535213"
 ---
 # <a name="replication-appliance"></a>Replikációs berendezés
 
@@ -28,8 +28,11 @@ A replikációs berendezés a VMware virtuális gépek vagy fizikai kiszolgáló
 
 **Alkalmazási cél** | **Részletek**
 --- |  ---
-VMware VM-ügynök alapú áttelepítés | Ova sablont az Azure Áttelepítési központból, és importálja a vCenter Server a készülék virtuális gép létrehozásához.
-Fizikai gépügynök-alapú áttelepítés | Ha nem rendelkezik VMware-infrastruktúrával, vagy ha nem tud létrehozni egy VMware virtuális gépet ovasablon használatával, letölt egy szoftvertelepítőt az Azure Migrate hubról, és futtatja a készülék beállítása érdekében.
+**VMware VM-ügynök alapú áttelepítés** | Ova sablont az Azure Áttelepítési központból, és importálja a vCenter Server a készülék virtuális gép létrehozásához.
+**Fizikai gépügynök-alapú áttelepítés** | Ha nem rendelkezik VMware-infrastruktúrával, vagy ha nem tud létrehozni egy VMware virtuális gépet ovasablon használatával, letölt egy szoftvertelepítőt az Azure Migrate hubról, és futtatja a készülék beállítása érdekében.
+
+> [!NOTE]
+> Ha az Azure Government ben telepíti, használja a telepítési fájlt a replikációs berendezés üzembe helyezéséhez.
 
 ## <a name="appliance-requirements"></a>A készülékre vonatkozó követelmények
 
@@ -74,7 +77,7 @@ Letöltés és telepítés az Azure Migrate szolgáltatásban | Amikor telepíti
 
 ## <a name="url-access"></a>URL-hozzáférés
 
-A replikációs berendezésnek hozzá kell férnie ezekhez az URL-címekhez.
+A replikációs berendezésnek hozzá kell férnie ezekhez az URL-címekhez az Azure nyilvános felhőben.
 
 **Url** | **Részletek**
 --- | ---
@@ -84,10 +87,26 @@ A replikációs berendezésnek hozzá kell férnie ezekhez az URL-címekhez.
 \*.hypervrecoverymanager.windowsazure.com | Replikációkezelési műveletekhez és koordinációhoz használatos
 https:\//management.azure.com | Replikációkezelési műveletekhez és koordinációhoz használatos
 *.services.visualstudio.com | Telemetriai célokra használva (Nem kötelező)
-time.nist.gov | A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
 time.windows.com | A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Az OVF beállításához hozzá kell férni ezekhez az URL-címekhez. Az Azure Active Directory hozzáférés-vezérlésre és identitáskezelésre használja őket
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | A MySQL letöltésének befejezése
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | A készülék beállításához hozzá kell férni ezekhez az URL-ekhez. Az Azure Active Directory hozzáférés-vezérlésre és identitáskezelésre használja őket
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | A MySQL letöltésének befejezéséhez. Néhány régióban előfordulhat, hogy a letöltés átlesz irányítva a CDN URL-címére. Győződjön meg arról, hogy a CDN URL-címe is engedélyezett, ha szükséges.
+
+
+## <a name="azure-government-url-access"></a>Azure Government URL-hozzáférés
+
+A replikációs berendezésnek hozzá kell férnie ezekhez az URL-címekhez az Azure Government ben.
+
+**Url** | **Részletek**
+--- | ---
+\*backup.windowsazure.us | Replikált adatátvitelhez és koordinációhoz használatos
+\*.store.core.windows.net | Replikált adatátvitelhez és koordinációhoz használatos
+\*.blob.core.windows.net | Replikált adatokat tároló tárfiók eléréséhez
+\*hypervrecoverymanager.windowsazure.us. | Replikációkezelési műveletekhez és koordinációhoz használatos
+https:\//management.usgovcloudapi.net | Replikációkezelési műveletekhez és koordinációhoz használatos
+*.services.visualstudio.com | Telemetriai célokra használva (Nem kötelező)
+time.nist.gov | A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | A készülék OVA-val történő beállításához hozzá kell férni ezekhez az URL-ekhez. Ezek az Azure Active Directory hozzáférés-vezérlési és identitáskezelési célokra szolgálnak.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | A MySQL letöltésének befejezéséhez. Néhány régióban előfordulhat, hogy a letöltés átlesz irányítva a CDN URL-címére. Győződjön meg arról, hogy a CDN URL-címe is engedélyezett, ha szükséges.
 
 ## <a name="port-access"></a>Port-hozzáférés
 

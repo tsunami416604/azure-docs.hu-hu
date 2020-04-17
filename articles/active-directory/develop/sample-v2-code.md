@@ -12,12 +12,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5596f5f40e293a7bd11ac6a5f900e05c0b8d3b0e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 15578b6adc19eb3513e0d7e1d3d2c400c9170250
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883134"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535978"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft identity platformkódminták (2.0-s verziós végpont)
 
@@ -53,7 +53,7 @@ A következő minták a felhasználókat bejelentkező webalkalmazásokat szeml�
 
 | Platform | Csak jelek a felhasználókban | Jelek a felhasználókés kéri a Microsoft Graph |
 | -------- | ------------------- | --------------------------------- |
-| ![Ezen a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | [ASP.NET Core WebApp bejelentkezési felhasználóinak bemutatója](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanaz a minta a [ASP.NET Core Web App hívja a Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázis |
+| ![Ezen a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | [ASP.NET Core WebApp bejelentkezési felhasználóinak bemutatója](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanaz a minta a [ASP.NET Core webapp hívja a Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázis |
 | ![Ezen a képen a ASP.NET embléma látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET – rövid útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-korlátozott hatókörű-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-képzés-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Ezen a képen a Java embléma látható](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Ezen a képen a Python embléma látható](media/sample-v2-code/logo_python.png)  |                   | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |

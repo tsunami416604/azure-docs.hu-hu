@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0866db6b549bc940d2e73bccfc77b8fad19abd51
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4a361f384167fa522278b9c84a7927e938c12cb8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273222"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534805"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP-számítási feladatok üzemeltetéséhez és futtatásához használja az Azure-t
 
@@ -110,6 +110,8 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásáról a követke
 
 
 ## <a name="change-log"></a>Módosítási napló
+
+- 04/16/2020: Sap HANA-t adott hozzá az SAP (Hybris) Commerce Platform támogatott ADATBÁZIS-rendszerének a [cikkekben: Milyen SAP-szoftverek támogatottak az Azure-telepítésekhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) és a [Microsoft Azure-on futó SAP-tanúsítványokhoz és konfigurációkhoz?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/13/2020: Az SAP ASE kiadási számok helyes javítása az [SAP ASE Azure virtuális gépek DBMS üzembe helyezésében az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
 - 04/07/2020: A [pacemaker beállítása az SLES-en az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) a felhő-netconfig-azure utasítások tisztázása érdekében
 - 04/06/2020: Az [SAP HANA horizontális felskálázásának változásai készenléti csomóponttal az Azure-beli virtuális gépeken az Azure NetApp-fájlokkal SLES-en](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) és [az SAP HANA kibővített, készenléti csomópontban az Azure-beli virtuális gépeken az RHEL-alapú Azure NetApp-fájlokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) a NetApp [TR-4435-re](https://www.netapp.com/us/media/tr-4746.pdf) mutató hivatkozások eltávolításához (helyébe [A TR-4746](https://www.netapp.com/us/media/tr-4746.pdf)lép )

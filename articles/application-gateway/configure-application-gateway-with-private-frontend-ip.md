@@ -6,14 +6,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312369"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535587"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Alkalmazásátjáró konfigurálása belső terheléselosztó (ILB) végponttal
 
@@ -95,8 +95,8 @@ Ehhez:
    - válassza a *myResourceGroupAG* **erőforráscsoporthoz**lehetőséget.
    - *myVM* - a **virtuális gép neve**.
    - Válassza a **Windows Server 2019 Datacenter** for Image **(Kép)** adatbázisát.
-   - *azureadmin* - a **felhasználónévhez**.
-   - A jelszó *Azure123456!* a **jelszóhoz.**
+   - egy érvényes **felhasználónév**.
+   - érvényes **jelszó**.
 5. Fogadja el a fennmaradó alapértelmezett értékeket, és válassza **a Tovább : Lemezek**lehetőséget.
 6. Az alapértelmezett értékek elfogadása, és válassza a **Tovább : Hálózat lehetőséget.**
 7. Győződjön meg róla, hogy virtuális hálózatként a **myVNet**, alhálózatként pedig a **myBackendSubnet** van kiválasztva.

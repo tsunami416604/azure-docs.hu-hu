@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4042fc05f278915fe72bf8fc4e6afd69a5bbb4b9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275710"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537423"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Az Azure Monitor Application Insights-ügynök központi telepítése helyszíni kiszolgálókhoz
 
@@ -46,7 +46,7 @@ Az Application Insights Agent https://www.powershellgallery.com/packages/Az.Appl
 - [Start-ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-- [hibaelhárítással](status-monitor-v2-troubleshoot.md)
+- [Hibaelhárítás](status-monitor-v2-troubleshoot.md)
 - [Ismert problémák](status-monitor-v2-troubleshoot.md#known-issues)
 
 
@@ -76,7 +76,7 @@ A beállítások mindegyikét a [részletes utasítások ismertetik.](status-mon
 
 A telemetriai adatok megtekintése:
 
-* [Fedezze fel a teljesítmény](../../azure-monitor/app/metrics-explorer.md) és a használat figyeléséhez.
+* [Fedezze fel a teljesítmény](../../azure-monitor/platform/metrics-charts.md) és a használat figyeléséhez.
 * [Keresés események és naplók](../../azure-monitor/app/diagnostic-search.md) diagnosztizálására problémákat.
 * [Az Analytics használata](../../azure-monitor/app/analytics.md) fejlettebb lekérdezésekhez.
 * [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).

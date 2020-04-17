@@ -2,13 +2,13 @@
 title: Az Azure Monitor konfigurálása a Prometheus-integráció tárolóihoz | Microsoft dokumentumok
 description: Ez a cikk ismerteti, hogyan konfigurálhatja az Azure Monitor tárolók ügynök kaparja metrikák prometheus a Kubernetes-fürt.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: b774bf042778ca9118a7bc9f051655b200d87659
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 7fcf52cceb69834f68f8e4ce7a2674972a6430fd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931423"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537372"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>A Prometheus-metrikák kaparásának konfigurálása az Azure Monitor tárolókkal
 
@@ -22,7 +22,6 @@ ms.locfileid: "75931423"
 A Prometheus metrikák kaparását a következő kubernetes-fürtök támogatják:
 
 - Azure Kubernetes Service (AKS)
-- Azure Container Instances
 - Azure Stack vagy helyszíni
 - Azure Red Hat OpenShift
 

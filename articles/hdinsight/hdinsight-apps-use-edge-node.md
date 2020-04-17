@@ -1,56 +1,58 @@
 ---
 title: Üres peremhálózati csomópontok használata Apache Hadoop-fürtökön az Azure HDInsightban
-description: Üres peremhálózati csomópont hozzáadása egy ügyfélként használható HDInsight-fürthöz, majd a HDInsight-alkalmazások tesztelése/üzemeltetése.
+description: Üres peremhálózati csomópont hozzáadása HDInsight-fürthöz. Ügyfélként használatos, majd tesztelje vagy üzemeltetje a HDInsight-alkalmazásokat.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 01/27/2020
-ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: f6dea00bf3b3e8a58f42da8fd8ad59ccec2dea72
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272603"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537797"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Üres peremhálózati csomópontok használata apache hadoop-fürtökön a HDInsightban
 
-Ismerje meg, hogyan adhat hozzá üres peremhálózati csomópontot egy HDInsight-fürthöz. Az üres peremhálózati csomópont egy Linux virtuális gép, amely ugyanazokat az ügyféleszközöket telepíti és konfigurálja, mint a headnodes, de nem [Apache Hadoop](https://hadoop.apache.org/) szolgáltatások fut. A peremhálózati csomópont segítségével elérheti a fürtöt, tesztelheti az ügyfélalkalmazásokat, és üzemeltetheti az ügyfélalkalmazásokat.
+Ismerje meg, hogyan adhat hozzá üres peremhálózati csomópontot egy HDInsight-fürthöz. Az üres peremhálózati csomópont egy Linux virtuális gép, amely ugyanazokat az ügyféleszközöket telepíti és konfigurálja, mint a headnodes. De nem [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) szolgáltatások fut. A peremhálózati csomópont segítségével elérheti a fürtöt, tesztelheti az ügyfélalkalmazásokat, és üzemeltetheti az ügyfélalkalmazásokat.
 
 A fürt létrehozásakor hozzáadhat egy üres peremhálózati csomópontot egy meglévő HDInsight-fürthöz. Üres peremhálózati csomópont hozzáadása az Azure Resource Manager-sablon használatával történik.  A következő minta bemutatja, hogyan történik a sablon használata:
 
-    "resources": [
-        {
-            "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
-            "type": "Microsoft.HDInsight/clusters/applications",
-            "apiVersion": "2015-03-01-preview",
-            "dependsOn": [ "[concat('Microsoft.HDInsight/clusters/',parameters('clusterName'))]" ],
-            "properties": {
-                "marketPlaceIdentifier": "EmptyNode",
-                "computeProfile": {
-                    "roles": [{
-                        "name": "edgenode",
-                        "targetInstanceCount": 1,
-                        "hardwareProfile": {
-                            "vmSize": "{}"
-                        }
-                    }]
-                },
-                "installScriptActions": [{
-                    "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
-                    "uri": "[parameters('installScriptAction')]",
-                    "roles": ["edgenode"]
-                }],
-                "uninstallScriptActions": [],
-                "httpsEndpoints": [],
-                "applicationType": "CustomApplication"
-            }
+```json
+"resources": [
+    {
+        "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
+        "type": "Microsoft.HDInsight/clusters/applications",
+        "apiVersion": "2015-03-01-preview",
+        "dependsOn": [ "[concat('Microsoft.HDInsight/clusters/',parameters('clusterName'))]" ],
+        "properties": {
+            "marketPlaceIdentifier": "EmptyNode",
+            "computeProfile": {
+                "roles": [{
+                    "name": "edgenode",
+                    "targetInstanceCount": 1,
+                    "hardwareProfile": {
+                        "vmSize": "{}"
+                    }
+                }]
+            },
+            "installScriptActions": [{
+                "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
+                "uri": "[parameters('installScriptAction')]",
+                "roles": ["edgenode"]
+            }],
+            "uninstallScriptActions": [],
+            "httpsEndpoints": [],
+            "applicationType": "CustomApplication"
         }
-    ],
+    }
+],
+```
 
-Amint az a mintában látható, szükség esetén [parancsfájlműveletet](hdinsight-hadoop-customize-cluster-linux.md) hívhat meg további konfigurációk végrehajtásához, például az [Apache Hue](hdinsight-hadoop-hue-linux.md) telepítéséhez a peremhálózati csomóponton. A parancsfájlművelet-parancsfájlnak nyilvánosan elérhetőnek kell lennie az interneten.  Ha például a parancsfájl az Azure Storage-ban van tárolva, használjon nyilvános tárolókat vagy nyilvános blobokat.
+Amint az a mintában látható, szükség esetén [parancsfájlműveletet](hdinsight-hadoop-customize-cluster-linux.md) hívhat meg további konfigurációk hozására. Például az [Apache Hue](hdinsight-hadoop-hue-linux.md) telepítése a peremhálózati csomóponton. A parancsfájlművelet-parancsfájlnak nyilvánosan elérhetőnek kell lennie az interneten.  Ha például a parancsfájl az Azure Storage-ban van tárolva, használjon nyilvános tárolókat vagy nyilvános blobokat.
 
 A peremhálózati csomópont virtuális gép méretének meg kell felelnie a HDInsight-fürt munkavégző csomópont virtuális gép méretére vonatkozó követelményeknek. Az ajánlott munkavégző csomópont virtuálisgép-méreteit az [Apache Hadoop-fürtök létrehozása a HDInsightban című témakörben található.](hdinsight-hadoop-provision-linux-clusters.md#cluster-type)
 
@@ -69,7 +71,7 @@ Miután létrehozott egy peremhálózati csomópontot, csatlakozhat a peremhál�
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Peremcsomópont hozzáadása meglévő fürthöz
 
-Ebben a szakaszban egy Erőforrás-kezelő sablon használatával egy meglévő HDInsight-fürthöz adott hozzá egy peremcsomópontot.  Az Erőforrás-kezelő sablon a [GitHubban](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)található. Az Erőforrás-kezelő sablon parancsfájlműveletet hív meg a helyen. https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh A parancsfájl nem hajt végre semmilyen műveletet.  A parancsfájl-művelet hívásának bemutatása egy Erőforrás-kezelő sablonból.
+Ebben a szakaszban egy Erőforrás-kezelő sablon használatával egy meglévő HDInsight-fürthöz adott hozzá egy peremcsomópontot.  Az Erőforrás-kezelő sablon a [GitHubban](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)található. Az Erőforrás-kezelő sablon parancsfájlműveletet hív meg a helyen. https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh A szkript nem végez semmilyen műveletet.  A parancsfájl-művelet hívásának bemutatása egy Erőforrás-kezelő sablonból.
 
 1. Válassza ki az alábbi képet az Azure-ba való bejelentkezéshez, és nyissa meg az Azure Resource Manager sablont az Azure Portalon.
 
@@ -91,7 +93,7 @@ Ebben a szakaszban egy Erőforrás-kezelő sablon használatával egy meglévő 
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Szegélycsomópont hozzáadása fürt létrehozásakor
 
-Ebben a szakaszban egy Erőforrás-kezelő sablon használatával hozhat létre HDInsight-fürtöt peremhálózati csomóponttal.  Az Erőforrás-kezelő sablon az [Azure gyorsútmutató-sablonok gyűjteményében](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)található. Az Erőforrás-kezelő sablon parancsfájlműveletet hív meg a helyen. https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh A parancsfájl nem hajt végre semmilyen műveletet.  A parancsfájl-művelet hívásának bemutatása egy Erőforrás-kezelő sablonból.
+Ebben a szakaszban egy Erőforrás-kezelő sablon használatával hozhat létre HDInsight-fürtöt peremhálózati csomóponttal.  Az Erőforrás-kezelő sablon az [Azure gyorsútmutató-sablonok gyűjteményében](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)található. Az Erőforrás-kezelő sablon parancsfájlműveletet hív meg a helyen. https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh A szkript nem végez semmilyen műveletet.  A parancsfájl-művelet hívásának bemutatása egy Erőforrás-kezelő sablonból.
 
 1. Hozzon létre egy HDInsight-fürtöt, ha még nem rendelkezik ilyentel.  Lásd: [A Hadoop használatának első lépései a HDInsightban.](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
@@ -119,7 +121,7 @@ Ebben a szakaszban egy Erőforrás-kezelő sablon használatával hozhat létre 
 
 ## <a name="add-multiple-edge-nodes"></a>Több peremcsomópont hozzáadása
 
-Több peremhálózati csomópontot is hozzáadhat egy HDInsight-fürthöz.  A több peremhálózati csomópontok konfigurációja csak az Azure Resource Manager-sablonok használatával végezhető el.  Tekintse meg a sablonmintát a cikk elején.  Frissítenie kell a **targetInstanceCount-ot,** hogy tükrözze a létrehozni kívánt peremhálózati csomópontok számát.
+Több peremhálózati csomópontot is hozzáadhat egy HDInsight-fürthöz.  A több peremhálózati csomópontok konfigurációja csak az Azure Resource Manager-sablonok használatával végezhető el.  Tekintse meg a sablonmintát a cikk elején.  Frissítse a **targetInstanceCount-ot,** hogy tükrözze a létrehozni kívánt peremhálózati csomópontok számát.
 
 ## <a name="access-an-edge-node"></a>Peremhálózati csomópont elérése
 

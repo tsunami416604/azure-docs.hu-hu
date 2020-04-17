@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: ac5997cfdb097c2c13b2a964f3cf8e276229f123
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 4ae074431202d6d44680cd6352d40a79e8623fd0
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380223"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536607"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Az Azure Networking MSP-partnerek –
 
@@ -32,7 +32,7 @@ Az Azure Networking MSP-partnerek által kínált felügyelt felhőhálózati h�
 | ---| ---| ---| ---|
 |[ANS Csoport Magyarország](https://www.ans.co.uk/)|[Azure Managed Svc + ANS Glass 10wk implementáció](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
 |[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure virtuális WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.aryaka_azure_virtual_wan?tab=Overview) | | |
-|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Hálózatátalakítási tanácsadás: 1 órás értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)|[BT Cloud Connect Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview)||||
+|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Hálózatátalakítási tanácsadás: 1 órás értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting); [BT Cloud Connect Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview)|[BT Cloud Connect Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-003?tab=Overview)|[BT Cloud Connect Azure VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-002?tab=Overview)|||
 |[Együttalakulni](https://www.coevolve.com/services/azure-networking-services/)|||[Felügyelt VMware SD-WAN Virtual Edge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Hálózatoptimalizálás az Azure-ban: 2 órás értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
 |[NTT-adatok](https://us.nttdata.com/en/digital/cloud-transformation)|[Felügyelt szolgáltatások: 10 hetes megvalósítás](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||

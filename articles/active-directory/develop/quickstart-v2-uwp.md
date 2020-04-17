@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: feb1fa82653a0db7b3041a4f745d0563c220bd31
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 362f6d1f4e50e1cc78c8897499b9f6593096162b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991092"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536012"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rövid útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
@@ -72,7 +72,7 @@ Ez a rövid útmutató egy kódmintát tartalmaz, amely bemutatja, hogy az Unive
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: Az alkalmazás konfigurálva van, és készen áll a futtatásra
-> A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk, és készen áll a futtatásra. 
+> A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk, és készen áll a futtatásra.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -80,7 +80,7 @@ Ez a rövid útmutató egy kódmintát tartalmaz, amely bemutatja, hogy az Unive
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
-> 
+>
 > 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
 > 1. Nyissa meg a projektet a Visual Studióban. Előfordulhat, hogy a rendszer kéri az UWP SDK telepítését. Ebben az esetben fogadd el.
 > 1. A **MainPage.Xaml.cs** szerkesztése és `ClientId` a mező értékeinek cseréje:
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 > |Az elemek magyarázata:||
 > |---------|---------|
-> | `scopes` | Tartalmazza a kért hatóköröket (például `{ "user.read" }` a Microsoft Graph és `{ "api://<Application ID>/access_as_user" }` az egyéni webes API-k esetében). |
+> | `scopes` | A kért hatóköröket tartalmazza, `{ "user.read" }` például `{ "api://<Application ID>/access_as_user" }` a Microsoft Graph vagy az egyéni webes API-k esetében. |
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 > |Az elemek magyarázata: ||
 > |---------|---------|
-> | `scopes` | Tartalmazza a kért hatóköröket (például `{ "user.read" }` a Microsoft Graph és `{ "api://<Application ID>/access_as_user" }` az egyéni webes API-k esetében). |
+> | `scopes` | Tartalmazza a kért hatóköröket, `{ "user.read" }` például `{ "api://<Application ID>/access_as_user" }` a Microsoft Graph vagy az egyéni webes API-k esetében |
 > | `firstAccount` | A gyorsítótárban lévő első felhasználói fiókot adja meg (az MSAL több felhasználót támogat egyetlen alkalmazásban) |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -2,14 +2,14 @@
 title: VMware virtuális gépek áttelepítése ügynök nélküli Azure Áttelepítési kiszolgáló áttelepítése
 description: Ismerje meg, hogyan futtathat ügynök nélküli áttelepítést a VMware virtuális gépek az Azure Migrate.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4612c9b0ea2ef8d53b0c04f47628f3789705d833
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78304208"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535315"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware virtuális gépek áttelepítése az Azure-ba (ügynök nélküli)
 
@@ -55,9 +55,12 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Az Azure Áttelepítési kiszolgáló eszközének hozzáadása
 
-Ha nem követte a második oktatóanyag ot a VMware virtuális gépek értékeléséhez, [kövesse ezeket az utasításokat](how-to-add-tool-first-time.md) egy Azure Migrate projekt beállítása, és válassza ki az Azure Áttelepítési kiszolgáló áttelepítése eszközt. 
+Adja hozzá az Azure Áttelepítés:Kiszolgáló áttelepítése eszközt.
 
-Ha követte a második oktatóanyagot, és már beállított egy Azure Migrate projektet, adja hozzá az Azure Áttelepítési kiszolgáló áttelepítése eszközt az alábbiak szerint:
+- Ha követte a második bemutató, hogy [értékelje VMware VMs](/tutorial-assess-vmware.md), akkor megy előre, és adja hozzá az eszközt.
+- Ha nem követte a második oktatóanyag, [kövesse az alábbi utasításokat](how-to-add-tool-first-time.md) egy Azure Migrate projekt beállítása.  Az Azure Migrate:Server Áttelepítés eszköz hozzáadása a projekt létrehozásakor.
+
+Ha van egy projekt beállítása, adja hozzá az eszközt az alábbiak szerint:
 
 1. Az Azure Migrate projektben kattintson **az Áttekintés gombra.** 
 2. A **Felderítés, a kiszolgálók felmérése és áttelepítése csoportban**kattintson **a Kiszolgálók felmérése és áttelepítése**elemre.
@@ -74,15 +77,14 @@ Ha követte a második oktatóanyagot, és már beállított egy Azure Migrate p
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Az Azure Migrate-berendezés beállítása
 
-Az Azure Migrate Server Migration egy könnyű VMware vm-készüléket futtat. A készülék virtuális gép felderítése, és elküldi a virtuális gép metaadatait és teljesítményadatait az Azure Áttelepítési kiszolgáló áttelepítése. Ugyanazt a készüléket használja az Azure Áttelepítési kiszolgáló értékelése eszköz is.
+Az Azure Migrate Server Migration egy könnyű VMware vm-készüléket futtat. A készülék virtuális gép felderítése, és elküldi a virtuális gép metaadatait és teljesítményadatait az Azure Migrate:Server Áttelepítés. Ugyanezt a készüléket használja az Azure Migrate:Server Assessment eszköz is a VMware virtuális gépek ügynök nélküli áttelepítéséhez.
 
-Ha követte a második oktatóanyagot a VMware virtuális gépek értékeléséhez, akkor már beállította a készüléket az oktatóanyag során. Ha nem követte az oktatóanyagot, akkor most be kell állítania a készüléket. Ehhez: 
+- Ha követte az [oktatóanyagot a VMware virtuális gépek értékeléséhez,](tutorial-assess-vmware.md)akkor már beállította a készüléket az oktatóanyag során.
+- Ha nem követte az oktatóanyagot, most beállíthatja a készüléket az alábbi módszerek egyikével:
+    - VMware virtuális gép en egy letöltött OVA-sablon [használatával.](how-to-set-up-appliance-vmware.md)
+    - Állítsa be a VMware virtuális gép vagy fizikai gép egy PowerShell telepítő parancsfájlok. [Ezt a módszert](deploy-appliance-script.md) kell használni, ha nem tud beállítani egy virtuális gép egy OVA sablon használatával, vagy ha az Azure-kormányzat.
 
-- Töltsön le egy OVA-sablonfájlt, és importálja azt a vCenter Server kiszolgálóra.
-- Hozza létre a készüléket, és ellenőrizze, hogy tud-e csatlakozni az Azure Áttelepítési kiszolgáló értékelése. 
-- Konfigurálja a készüléket az első alkalommal, és regisztrálja az Azure Migrate projekt.
-
-A készülék beállításához kövesse az ebben a [cikkben](how-to-set-up-appliance-vmware.md) található utasításokat.
+A készülék létrehozása után ellenőrizze, hogy csatlakozhat-e az Azure Migrate:Server Assessment alkalmazáshoz, konfigurálhatja-e először, és regisztrálja az Azure Migrate projekttel.
 
 
 ## <a name="prepare-vms-for-migration"></a>Virtuális gépek előkészítése áttelepítésre

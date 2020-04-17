@@ -1,6 +1,6 @@
 ---
 title: Bejelentkezés hozzáadása a Microsofttal ASP.NET Core webalkalmazásokhoz – Microsoft identity platform | Azure
-description: A Microsoft bejelentkezés megvalósítása ASP.NET Core Web App alkalmazáson az OpenID Connect használatával
+description: A Microsoft bejelentkezés megvalósítása ASP.NET Core webalkalmazásban az OpenID Connect használatával
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ac53a6cf6953255f51a6b586703147c5ce2338b6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a34264870ce812da5d7e7c790a1482d90b33d06a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407160"
+ms.locfileid: "81536165"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rövid útmutató: Bejelentkezés hozzáadása a Microsofttal egy ASP.NET Core webalkalmazáshoz
 Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy egy ASP.NET Core webalkalmazás hogyan tud bejelentkezni a személyes fiókokba (hotmail.com, outlook.com, mások) és munkahelyi és iskolai fiókokbármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy illusztrációhoz.)
@@ -71,15 +71,15 @@ Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy egy
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: Az alkalmazás konfigurálva van, és készen áll a futtatásra
-> A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk, és készen áll a futtatásra. 
+> A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk, és készen áll a futtatásra.
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt futtatása
 > 1. A zip-fájl kibontása a gyökérmappán belüli helyi mappába – például **C:\Azure-Samples**
-> 1. A megoldás megnyitása a Visual Studióban 
-> 1. Az **appsettings.json fájl szerkesztése.** Keresse `ClientId` meg és `ClientId` frissítse a regisztrált alkalmazás **alkalmazásazonosító-értékével.** 
+> 1. A megoldás megnyitása a Visual Studióban
+> 1. Az **appsettings.json fájl szerkesztése.** Keresse `ClientId` meg és `ClientId` frissítse a regisztrált alkalmazás **alkalmazásazonosító-értékével.**
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -141,7 +141,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-A `AddAuthentication` módszer úgy konfigurálja a szolgáltatást, hogy cookie-alapú hitelesítést adjon hozzá, amelyet a böngészőforgatókönyvekben használnak, és állítsa be a kihívást az OpenID Connect beállítására. 
+A `AddAuthentication` módszer úgy konfigurálja a szolgáltatást, hogy cookie-alapú hitelesítést adjon hozzá, amelyet a böngészőforgatókönyvekben használnak, és állítsa be a kihívást az OpenID Connect beállítására.
 
 A Microsoft-identitásplatform-hitelesítést tartalmazó `.AddAzureAd` sor hozzáadja az alkalmazáshoz. Ezután úgy van beállítva, hogy a Microsoft identity platform végponthasználatával jelentkezzen be.
 
@@ -167,4 +167,4 @@ Az attribútum segítségével megvédheti a `[Authorize]` vezérlő- vagy vezé
 Tekintse meg a GitHub-tárházban a ASP.NET Core oktatóanyagát, amely további információt tartalmaz, beleértve a hitelesítés hozzáadásának módját egy vadonatúj ASP.NET Core webalkalmazáshoz, hogyan hívhatja meg a Microsoft Graph-ot és más Microsoft API-kat, hogyan hívhatja meg saját API-jait, hogyan adhat hozzá engedélyezést, hogyan jelentkeztetheti be a felhasználókat a nemzeti felhőkben, vagy hogyan lehet bejelentkezni a nemzeti felhőkben, vagy közösségi identitásokkal és egyebek :
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web App oktatóanyaga](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [ASP.NET Core webalkalmazás oktatóanyaga](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

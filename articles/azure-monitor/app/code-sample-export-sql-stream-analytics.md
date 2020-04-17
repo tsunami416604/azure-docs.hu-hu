@@ -3,12 +3,12 @@ title: Exportálás SQL-be az Azure Application Insightsból | Microsoft dokumen
 description: Az Application Insights-adatok folyamatos exportálása SQL-be a Stream Analytics használatával.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663675"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536913"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Forgatókönyv: Exportálás SQL-be az Application Insightsból a Stream Analytics használatával
 Ez a cikk bemutatja, hogyan helyezheti át a telemetriai adatokat az [Azure Application Insightsból][start] egy Azure SQL-adatbázisba [a Folyamatos exportálás][export] és az Azure [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)használatával. 
@@ -61,7 +61,7 @@ A folyamatos exportálás mindig adatokat ad ki egy Azure Storage-fiókba, ezér
     ![Eseménytípusok kiválasztása](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Hagyja, hogy néhány adat felhalmozódik. Dőljön hátra, és hagyja, hogy az emberek használják a kérelmet egy darabig. Telemetriai adatok jönnek, és látni fogja a statisztikai diagramok [metrika felfedező](../../azure-monitor/app/metrics-explorer.md) és az egyes események [diagnosztikai keresés.](../../azure-monitor/app/diagnostic-search.md) 
+1. Hagyja, hogy néhány adat felhalmozódik. Dőljön hátra, és hagyja, hogy az emberek használják a kérelmet egy darabig. Telemetriai adatok jönnek, és látni fogja a statisztikai diagramok [metrika felfedező](../../azure-monitor/platform/metrics-charts.md) és az egyes események [diagnosztikai keresés.](../../azure-monitor/app/diagnostic-search.md) 
    
     És az adatok is exportálják a tárolóba. 
 2. Vizsgálja meg az exportált adatokat, vagy a portálon – válassza a **Tallózás**lehetőséget, válassza ki a tárfiókot, majd **a Tárolók** – vagy a Visual Studio alkalmazásban. A Visual Studio alkalmazásban válassza **a View / Cloud Explorer**lehetőséget, és nyissa meg az Azure / Storage alkalmazást. (Ha nem rendelkezik ezzel a menübeállítással, telepítenie kell az Azure SDK:Nyissa meg az Új projekt párbeszédpanelt, és nyissa meg a Visual C# / Cloud / Get Microsoft Azure SDK for .NET alkalmazást.)
@@ -240,7 +240,7 @@ Néhány perc múlva lépjen vissza az SQL Server Management Tools alkalmazásho
 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Exportálás a PowerBI-ba a Stream Analytics használatával](../../azure-monitor/app/export-power-bi.md )
+* [Exportálás a Power BI-ba a Stream Analytics használatával](../../azure-monitor/app/export-power-bi.md )
 * [Részletes adatmodell-hivatkozás a tulajdonságtípusokra és értékekre vonatkozóan.](../../azure-monitor/app/export-data-model.md)
 * [Folyamatos exportálás az Application Insightsban](../../azure-monitor/app/export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
@@ -249,7 +249,7 @@ Néhány perc múlva lépjen vissza az SQL Server Management Tools alkalmazásho
 
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
 

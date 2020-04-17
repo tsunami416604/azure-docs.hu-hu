@@ -1,16 +1,17 @@
 ---
-title: A VMware virtuális gépek felmérése az Azure-ba való migráláshoz
+title: VMware virtuális gépek felmérése az Azure Áttelepítési kiszolgáló értékelésével
 description: Bemutatja, hogyan értékelheti a helyszíni VMware virtuális gépeket az Azure-ba való áttelepítéshez az Azure Áttelepítési kiszolgáló értékelése használatával.
 ms.topic: tutorial
-ms.date: 03/23/2019
-ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.custom: mvc
+ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548746"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535366"
 ---
-# <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>VMware virtuális gépek felmérése az Azure Migrate Server Assessment használatával
+# <a name="assess-vmware-vms-with-server-assessment"></a>VMware virtuális gépek értékelése a Server Assessmenttel
 
 Ez a cikk bemutatja, hogyan értékelheti a helyszíni VMware virtuális gépek (VM-ek) az [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) eszközzel.
 
@@ -48,13 +49,11 @@ Hozzon létre egy új Azure Migrate projektet az alábbiak szerint:
 
 1. Az **első lépések**csoportban válassza az Eszközök **hozzáadása**lehetőséget.
 1. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.     
-1. A **Projekt részletei**területen adja meg a projekt nevét és azt a földrajzi elhelyezkedést, amelyben a projektet létre kívánja hozni. Ázsia, Európa, az Egyesült Királyság és az Egyesült Államok támogatott.
-
-   A projekt helye csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál. Migrálás futtatása során bármilyen célrégiót választhat.
+1. A **Projekt részletei**területen adja meg a projekt nevét és azt a földrajzi elhelyezkedést, amelyben a projektet létre kívánja hozni. Tekintse át a támogatott földrajzi területeket [az állami](migrate-support-matrix.md#supported-geographies-public-cloud) és [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)számára.
 
    ![A projekt nevének és régiójának mezői](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. Válassza a **Tovább lehetőséget.**
+1. Kattintson a **Tovább** gombra.
 1. Az **Assessment (Felmérés kiválasztása) eszközben**válassza az **Azure Migrate: Server Assessment** > **Next**lehetőséget.
 
    ![A Kiszolgálóértékelés eszköz kiválasztása](./media/tutorial-assess-vmware/assessment-tool.png)
@@ -65,12 +64,12 @@ Hozzon létre egy új Azure Migrate projektet az alábbiak szerint:
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Az Azure Migrate-berendezés beállítása
 
-Azure Migrate:Server Assessment egy könnyű Azure Migrate készüléket használ. A készülék virtuális gép felderítése, és elküldi a virtuális gép metaadatait és teljesítményadatait az Azure Migrate.
-- A készülék egy VMware VM-en állítható be egy letöltött OVA sablon használatával. Azt is megteheti, hogy a készüléket egy virtuális gépen vagy fizikai gépen egy PowerShell telepítő parancsfájlt.
-- Ez az oktatóanyag a OVA sablont használja. Tekintse át [ezt a cikket,](deploy-appliance-script.md) ha parancsfájl használatával szeretné beállítani a készüléket.
+Azure Migrate:Server Assessment egy könnyű Azure Migrate készüléket használ. A készülék virtuális gép felderítése, és elküldi a virtuális gép metaadatait és teljesítményadatait az Azure Migrate. A készülék számos módon beállítható.
+
+- VMware virtuális gép en egy letöltött OVA-sablon használatával. Ez az oktatóanyagban használt módszer.
+- Állítsa be a VMware virtuális gép vagy fizikai gép egy PowerShell telepítő parancsfájlok. [Ezt a módszert](deploy-appliance-script.md) kell használni, ha nem tud beállítani egy virtuális gép egy OVA sablon használatával, vagy ha az Azure Government.
 
 A készülék létrehozása után ellenőrizze, hogy csatlakozhat-e az Azure Migrate:Server Assessment alkalmazáshoz, konfigurálhatja-e először, és regisztrálja az Azure Migrate projekttel.
-
 
 
 ### <a name="download-the-ova-template"></a>Az OVA sablon letöltése
@@ -115,9 +114,9 @@ Importálja a letöltött fájlt, és hozzon létre egy virtuális gép:
 1. A **Hálózati leképezés**alkalmazásban adja meg azt a hálózatot, amelyhez a virtuális gép csatlakozni fog. A hálózatnak internetkapcsolatra van szüksége ahhoz, hogy metaadatokat küldjön az Azure Migrate Server Assessment szolgáltatásba.
 1. Tekintse át és erősítse meg a beállításokat, majd válassza a **Befejezés gombot.**
 
-### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-hoz való hozzáférésének ellenőrzése
+## <a name="verify-appliance-access-to-azure"></a>A készülék Azure-hoz való hozzáférésének ellenőrzése
 
-Győződjön meg arról, hogy a készülék virtuális gép [e-alapú URL-címekhez.](migrate-appliance.md#url-access)
+Győződjön meg arról, hogy a készülék virtuális gép csatlakozhat az Azure-URL-címek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhők.
 
 ### <a name="configure-the-appliance"></a>A készülék konfigurálása
 
@@ -136,7 +135,7 @@ Először állítsa be a készüléket.
    - **Kapcsolat:** Az alkalmazás ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel. Ha a virtuális gép proxyt használ:
      - Válassza a **Proxy beállítások lehetőséget,** és adja http://ProxyIPAddress meg http://ProxyFQDNa proxycímet és a figyelőportot az űrlapon vagy a ban.
      - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
-     - Ne feledje, hogy csak a HTTP-proxy támogatott.
+     - Csak a HTTP-proxyk használata támogatott.
    - **Időszinkronizálás**: A készüléken töltött időnek szinkronban kell lennie az internetidővel, hogy a felderítés megfelelően működjön.
    - **Frissítések telepítése**: A készülék biztosítja a legújabb frissítések telepítését.
    - **VDDK telepítése**: A készülék ellenőrzi, hogy a VMWare vSphere Virtual Disk Development Kit (VDDK) telepítve van-e. Ha nincs telepítve, töltse le a VDDK 6.7-et a VMware-ből, és bontsa ki a letöltött zip tartalmát a készülék megadott helyére.
@@ -167,7 +166,7 @@ A készüléknek csatlakoznia kell a vCenter Server szolgáltatáshoz a virtuál
     - Ha a felderítést adott VMware-objektumokra (vCenter Server-adatközpontokra, fürtökre, fürtök mappájára, állomásokra, állomások mappájára vagy egyedi virtuális gépekre) szeretné hatókörbe helyezni, tekintse át a [jelen cikkben](set-discovery-scope.md) található utasításokat az Azure Migrate által használt fiók korlátozásához.
 
 3. Válassza **a Kapcsolat ellenőrzése lehetőséget,** hogy a készülék képes-e csatlakozni a vCenter Server kiszolgálóhoz.
-4. Az **alkalmazások és a virtuális gépekfüggőségek felderítése**területen szükség szerint kattintson a Hitelesítő adatok **hozzáadása**gombra, és adja meg azt az operációs rendszert, amelyhez a hitelesítő adatok relevánsak, valamint a hitelesítő adatok felhasználónevét és jelszavát. Ezután kattintson **a Hozzáadás**gombra.
+4. Az **alkalmazások és a virtuális gépekfüggőségek felderítése**területen szükség szerint kattintson a Hitelesítő adatok **hozzáadása**gombra, és adja meg azt az operációs rendszert, amelyhez a hitelesítő adatok relevánsak, valamint a hitelesítő adatok felhasználónevét és jelszavát. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
     - Ha itt adott meg hitelesítő adatokat, ha létrehozott egy fiókot az [alkalmazásfelderítési szolgáltatáshoz](how-to-discover-applications.md)vagy az [ügynök nélküli függőségelemzési szolgáltatáshoz.](how-to-create-group-machine-dependencies-agentless.md)
     - Ha nem használja ezeket a szolgáltatásokat, kihagyhatja ezt a beállítást.
@@ -255,7 +254,7 @@ Az értékelt csoport összesített tárolási költségei különböző típus�
 
 ### <a name="review-confidence-rating"></a>Megbízhatósági minősítés áttekintése
 
-Az Azure Áttelepítési kiszolgáló értékelése megbízhatósági minősítést rendel egy teljesítményalapú értékeléshez, 1 csillagtól (legalacsonyabb) 5 csillagig (legmagasabb).
+Az Azure Áttelepítési kiszolgáló értékelése megbízhatósági minősítést rendel egy teljesítményalapú értékeléshez, egy csillagtól (legalacsonyabb) öt csillagig (legmagasabb).
 
 ![Megbízhatósági minősítés](./media/tutorial-assess-vmware/confidence-rating.png)
 

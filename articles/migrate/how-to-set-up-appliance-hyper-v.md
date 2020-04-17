@@ -3,21 +3,25 @@ title: Azure Migrate-berendezés beállítása a Hyper-V-hez
 description: Ismerje meg, hogyan állíthat be egy Azure Migrate-berendezést a Hyper-V virtuális gépek felméréséhez és áttelepítéséhez.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 80db2c1d4f5482604ca1507174b127c150f76044
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336812"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538290"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Készülék beállítása hyper-V virtuális gépekhez
 
-Ez a cikk ismerteti, hogyan állíthatja be az Azure Migrate készüléket a Hyper-V virtuális gépek értékelésére az [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) eszközzel.
+Ebből a cikkből az Azure Migrate appliance beállítása a Hyper-V virtuális gépek az [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) eszközzel.
 
 Az [Azure Migrate készülék](migrate-appliance.md) egy könnyű készülék, amelyet az Azure Migrate:Server Assessment/Migration használ a helyszíni Hyper-V virtuális gépek felderítésére, és virtuális gép metaadat-/teljesítményadatokat küld az Azure-nak.
 
-Beállíthatja az Azure Migrate appliance hyper-V VM felmérés egy virtuális merevlemez-sablon, amely letölti, vagy egy PowerShell telepítőparancsfájl használatával. Ez a cikk ismerteti, hogyan állíthatja be a készüléket a VHD sablon használatával. Ha a készüléket a parancsfájl használatával szeretné beállítani, kövesse a [cikkben](deploy-appliance-script.md)található utasításokat.
+A készüléket néhány módszerrel telepítheti:
 
+- Állítsa be a Hyper-V virtuális gép egy letöltött virtuális merevlemez használatával. Ez a cikkben ismertetett módszer.
+- Állítsa be a Hyper-V virtuális gép vagy fizikai gép egy PowerShell telepítő parancsfájlt. [Ezt a módszert](deploy-appliance-script.md) kell használni, ha nem tudja beállítani a virtuális gép virtuális merevlemez használatával, vagy ha az Azure Government.
+
+A készülék létrehozása után ellenőrizze, hogy csatlakozhat-e az Azure Migrate:Server Assessment alkalmazáshoz, konfigurálhatja-e először, és regisztrálja az Azure Migrate projekttel.
 
 ## <a name="appliance-deployment-vhd"></a>A berendezés üzembe helyezése (VHD)
 
@@ -73,7 +77,7 @@ Importálja a letöltött fájlt, és hozza létre a virtuális gép.
 
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-hoz való hozzáférésének ellenőrzése
 
-Győződjön meg arról, hogy a készülék virtuális gép [e-alapú URL-címekhez.](migrate-appliance.md#url-access)
+Győződjön meg arról, hogy a készülék virtuális gép csatlakozhat az Azure-URL-címek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhők.
 
 ## <a name="configure-the-appliance"></a>A készülék konfigurálása
 

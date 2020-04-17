@@ -12,14 +12,14 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: d5b2ef57af112169fb39e0da7a60b095698ff504
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299830"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536182"
 ---
-# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Az 1.0-s jogkivonatokat fogadó webes API hatókörei
+# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Hatókör egy web API-hoz, amely elfogadja a v1.0-s jogkivonatokat
 
 Az OAuth2-engedélyek olyan engedélyható körök, amelyeket egy Azure Active Directory (Azure AD) a fejlesztők (1.0-s) webes API-alkalmazások számára az ügyfélalkalmazások számára elérhetővé tesz. Ezek az engedélyható körök a hozzájárulás során adhatók meg az ügyfélalkalmazásoknak. Tekintse meg `oauth2Permissions` az [Azure Active Directory alkalmazásjegyzék-hivatkozáscímű szakaszát.](reference-app-manifest.md#manifest-reference)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255131"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536436"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 
@@ -51,8 +51,7 @@ Tekintse meg az [Azure storage-fiók méretezési célok](#azure-storage-account
 ### <a name="file-share-and-file-scale-targets"></a>Fájlmegosztási és fájlméretezési célok
 
 > [!NOTE]
-> Standard fájl részvények nagyobb, mint 5 TiB bizonyos korlátozások és a regionális korlátozásokat.
-> A korlátozások, a területi információk és a nagyobb fájlmegosztási méretek engedélyezésére vonatkozó utasításokat a tervezési útmutató [Beépített fájlmegosztási](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) szakaszában találja.
+> Standard fájl részvények nagyobb, mint 5 TiB van bizonyos korlátai. A nagyobb fájlmegosztási méretek engedélyezésére vonatkozó korlátozások és utasítások listáját a tervezési útmutató [szabványos fájlmegosztásokon](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) való engedélyezése című szakaszában találja.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -66,7 +65,7 @@ Az Azure File Sync célja a korlátlan használat, de a korlátlan használat ne
 
 ### <a name="azure-file-sync-performance-metrics"></a>Az Azure File Sync teljesítménymetrikái
 
-Mivel az Azure File Sync ügynök egy Olyan Windows Server-gépen fut, amely az Azure-fájlmegosztásokhoz csatlakozik, a tényleges szinkronizálási teljesítmény számos tényezőtől függ az infrastruktúrában: a Windows Server től és az alapul szolgáló lemezkonfigurációtól, a hálózati sávszélességtől a kiszolgáló és az Azure-tároló, a fájlméret, a teljes adatkészlet mérete és az adatkészlet tevékenysége között. Mivel az Azure File Sync fájlszinten működik, az Azure File Sync-alapú megoldás teljesítményjellemzőit jobban méri konkretizálják a másodpercenként feldolgozott objektumok (fájlok és könyvtárak) száma.
+Mivel az Azure File Sync ügynök fut egy Windows Server-gépen, amely csatlakozik az Azure-fájlmegosztások, a hatékony szinkronizálási teljesítmény számos tényezőtől függ az infrastruktúra: a Windows Server és az alapul szolgáló lemez konfiguráció, a hálózati sávszélesség a kiszolgáló és az Azure-tároló, a fájlméretet, a teljes adatkészlet mérete és az adatkészlet tevékenysége. Mivel az Azure File Sync fájlszinten működik, az Azure File Sync-alapú megoldás teljesítményjellemzőit jobban méri konkretizálják a másodpercenként feldolgozott objektumok (fájlok és könyvtárak) száma.
 
 Az Azure File Sync esetében a teljesítmény két szakaszban kritikus:
 

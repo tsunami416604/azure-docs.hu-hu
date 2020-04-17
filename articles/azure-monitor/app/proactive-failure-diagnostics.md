@@ -4,12 +4,12 @@ description: Figyelmezteti a webalkalmazássikertelen kérelmek sebességének s
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671749"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536811"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Intelligens észlelés – hibaanomáliák
 [Az Application Insights](../../azure-monitor/app/app-insights-overview.md) automatikusan figyelmezteti Önt közel valós időben, ha a webalkalmazás a sikertelen kérelmek arányának rendellenes növekedését tapasztalja. Szokatlan ultrást észlel a sikertelenként jelentett HTTP-kérelmek vagy függőségi hívások arányában. A kérelmek esetében a sikertelen kérelmek általában 400-as vagy magasabb válaszkódokkal rendelkeznek. A probléma osztályozása és diagnosztizálása érdekében a hibák és a kapcsolódó alkalmazásadatok jellemzőinek elemzése a riasztás részleteiben található. További diagnózis esetén az Application Insights-portálra mutató hivatkozások is találhatók. A szolgáltatásnem igényel sem beállítás, sem konfiguráció, mivel gépi tanulási algoritmusok segítségével előre jelzi a normál hibaarány.
@@ -353,7 +353,7 @@ A hibaanomáliák intelligens észlelése kiegészíti az Application Insights m
 ## <a name="next-steps"></a>További lépések
 Ezek a diagnosztikai eszközök segítenek az alkalmazásból származó adatok vizsgálatában:
 
-* [Metrikus felfedező](../../azure-monitor/app/metrics-explorer.md)
+* [Metrikus felfedező](../../azure-monitor/platform/metrics-charts.md)
 * [Kereséskezelő](../../azure-monitor/app/diagnostic-search.md)
 * [Analytics – hatékony lekérdezési nyelv](../../azure-monitor/log-query/get-started-portal.md)
 

@@ -4,12 +4,12 @@ description: Az adatgyűjtési modulok engedélyezése vagy letiltása, valamint
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 460bd79e3a37c492301f7438112fef4487618fed
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 3375c24739da8663aa6a40deeb53e02e65d1f9bf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982089"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537559"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights .NET SDK számos NuGet-csomagból áll. Az [alapcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biztosítja az API-t az Application Insights telemetriai adatok küldéséhez. [További csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) telemetriai *modulokat* és *inicializálókat* biztosít az alkalmazásból és annak környezetéből származó telemetriai adatok automatikus nyomon követéséhez. A konfigurációs fájl módosításával engedélyezheti vagy letilthatja a telemetriai modulokat és inicializálókat, és paramétereket állíthat be néhányhoz.
@@ -120,7 +120,7 @@ A szabványos inicializálókat a webes vagy a WindowsServer NuGet csomagok hat�
 * `OperationNameTelemetryInitializer`frissíti `Name` a HTTP-metóduson alapuló `Operation` összes telemetriai elem környezetének `RequestTelemetry` `Name` tulajdonságát, valamint a ASP.NET MVC-vezérlő és a kérés feldolgozásához meghívott művelet nevét.
 * `OperationIdTelemetryInitializer`vagy `OperationCorrelationTelemetryInitializer` frissíti `Operation.Id` az összes nyomon követett telemetriai elem környezeti tulajdonságát, miközben a kérést az automatikusan generált `RequestTelemetry.Id`.
 * `SessionTelemetryInitializer`frissíti `Id` a környezet `Session` tulajdonságát az összes telemetriai `ai_session` elemhez, a felhasználó böngészőjében futó ApplicationInsights JavaScript instrumentation kód által létrehozott cookie-ból kinyert értékkel.
-* `SyntheticTelemetryInitializer`vagy `SyntheticUserAgentTelemetryInitializer` frissíti `User` `Session`a `Operation` , és környezetek tulajdonságait az összes telemetriai elemek nyomon követett egy kérelmet egy szintetikus forrásból, például egy rendelkezésre állási teszt vagy keresőmotor bot. Alapértelmezés szerint [a Metrika kezelő](../../azure-monitor/app/metrics-explorer.md) nem jeleníti meg a szintetikus telemetriai adatokat.
+* `SyntheticTelemetryInitializer`vagy `SyntheticUserAgentTelemetryInitializer` frissíti `User` `Session`a `Operation` , és környezetek tulajdonságait az összes telemetriai elemek nyomon követett egy kérelmet egy szintetikus forrásból, például egy rendelkezésre állási teszt vagy keresőmotor bot. Alapértelmezés szerint [a Metrika kezelő](../../azure-monitor/platform/metrics-charts.md) nem jeleníti meg a szintetikus telemetriai adatokat.
 
     A `<Filters>` kérelmek tulajdonságait azonosító készlet.
 * `UserTelemetryInitializer`frissíti `Id` az `AcquisitionDate` összes `User` telemetriai elem környezetének és `ai_user` tulajdonságainak tulajdonságait az Application Insights JavaScript instrumentation kód által a felhasználó böngészőjében futó cookie-ból kinyert értékekkel.

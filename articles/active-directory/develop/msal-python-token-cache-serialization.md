@@ -13,12 +13,12 @@ ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2593cc856afb98cf5186c4e33032c5e9151614f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c6edd0b3cfd6620f04553f9f6dfe89f1c7b7024
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76704391"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536199"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>Egyéni tokengyorsítótár-szerializálás az MSAL python-ban
 
@@ -26,7 +26,7 @@ Az MSAL Pythonban az alkalmazásmunkamenet időtartama alatt megmaradó memóri�
 
 A tokengyorsítótár szerializálása, hogy az alkalmazás különböző munkamenetei elérhessék azt, nem "a dobozból" történik. Ennek az az oka, hogy az MSAL Python olyan alkalmazástípusokban használható, amelyek nem férnek hozzá a fájlrendszerhez – például a webalkalmazásokhoz. Ha egy MSAL Python-alkalmazásban állandó jogkivonat-gyorsítótárat szeretne, egyéni jogkivonat-gyorsítótár-szerializálást kell biztosítania.
 
-A tokengyorsítótár szerializálására vonatkozó stratégiák attól függően változnak, hogy nyilvános ügyfélalkalmazást (asztalt) vagy bizalmas ügyfélalkalmazást (Web App, Web API vagy Démon alkalmazás) ír.
+A tokengyorsítótár szerializálására vonatkozó stratégiák attól függően változnak, hogy nyilvános ügyfélalkalmazást (Asztalt) vagy bizalmas ügyfélalkalmazást (webalkalmazás, web API vagy démonalkalmazás) ír.
 
 ## <a name="token-cache-for-a-public-client-application"></a>Egy nyilvános ügyfélalkalmazás tokengyorsítótára
 
@@ -34,8 +34,8 @@ A nyilvános ügyfélalkalmazások a felhasználó eszközén futnak, és egyetl
 
 ## <a name="token-cache-for-a-web-app-confidential-client-application"></a>Egy webalkalmazás tokengyorsítótára (bizalmas ügyfélalkalmazás)
 
-Webalkalmazások vagy webes API-k esetén használhatja a munkamenetet, a Redis-gyorsítótárat vagy egy adatbázist a tokengyorsítótár tárolására. Felhasználónként (fiókonként) egy tokengyorsítótárnak kell lennie, ezért győződjön meg arról, hogy fiókonként szerializálja a token-gyorsítótárat.
+Webalkalmazások vagy webes API-k esetén használhatja a munkamenetet, a Redis-gyorsítótárat vagy egy adatbázist a jogkivonat-gyorsítótár tárolására. Felhasználónként (fiókonként) egy tokengyorsítótárnak kell lennie, ezért győződjön meg arról, hogy fiókonként szerializálja a token-gyorsítótárat.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg [az ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72) egy példát, hogyan használhatja a token cache egy Windows vagy Linux web alkalmazás vagy webes API. A példa egy webalkalmazás, amely meghívja a Microsoft Graph API-t.
+Tekintse meg [az ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72) egy példát, hogyan használhatja a token cache egy Windows vagy Linux web alkalmazás vagy webes API.See ms-identity-python-webapp for a example of how tokent cache for a Windows or Linux Web app or web API. A példa egy webalkalmazás, amely meghívja a Microsoft Graph API-t.

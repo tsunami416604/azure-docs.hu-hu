@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262892"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534465"
 ---
 # <a name="application-configuration-options"></a>Alkalmazáskonfigurációs beállítások
 
@@ -106,11 +106,11 @@ Az átirányítási URI az az URI, amelybe az identitásszolgáltató visszakül
 ### <a name="redirect-uri-for-public-client-apps"></a>Uri átirányítása nyilvános ügyfélalkalmazásokhoz
 
 Ha Ön az MSAL-t használó nyilvános ügyfélalkalmazás-fejlesztő:
-- Asztali vagy UWP `.WithDefaultRedirectUri()` alkalmazásokban (MSAL.NET 4.1+) szeretné használni. Ez a módszer a nyilvános ügyfélalkalmazás átirányítási uri tulajdonságát az alapértelmezett ajánlott átirányítási uri-ra állítja a nyilvános ügyfélalkalmazásokhoz. 
+- Asztali vagy UWP `.WithDefaultRedirectUri()` alkalmazásokban (MSAL.NET 4.1+) szeretné használni. Ez a módszer a nyilvános ügyfélalkalmazás átirányítási uri tulajdonságát az alapértelmezett ajánlott átirányítási uri-ra állítja a nyilvános ügyfélalkalmazásokhoz.
 
-  Platform  | Átirányítási URI  
+  Platform  | Átirányítási URI
   ---------  | --------------
-  Asztali alkalmazás (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+  Asztali alkalmazás (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient`
   UWP | értéke. `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` Ez lehetővé teszi az SSO-t a böngészővel a WebAuthenticationBroker.GetCurrentApplicationCallbackUri() eredményének beállításával, amelyet regisztrálnia kell
   .NET Core | `https://localhost`. Ez lehetővé teszi a felhasználó számára, hogy a rendszerböngészőt interaktív hitelesítésre használja, mivel a .NET Core jelenleg nem rendelkezik felhasználói felülettel a beágyazott webes nézethez.
 

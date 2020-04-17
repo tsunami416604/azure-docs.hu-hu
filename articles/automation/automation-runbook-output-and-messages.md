@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 457b2d2211ea1ba5fa36cec4b7e9a214f5bcad77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92b6378b00e12f618d07798b5ce789cbd9971544
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367091"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535536"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 
@@ -18,7 +18,7 @@ A legtöbb Azure Automation runbookok rendelkeznek valamilyen kimeneti formában
 
 Az alábbi táblázat röviden ismerteti az egyes adatfolyamokat a közzétett runbookok azure-portálján és a [runbooktesztelése](automation-testing-runbook.md)során. A kimeneti adatfolyam a runbookok közötti kommunikáció fő adatfolyama. A többi adatfolyam üzenetfolyamként van besorolva, és az információ felhasználóval való közlésére szolgál. 
 
-| Stream | Leírás | Közzétett | Test |
+| Stream | Leírás | Közzétett | Tesztelés |
 |:--- |:--- |:--- |:--- |
 | Hiba |A felhasználónak szóló hibaüzenet. A kivétellel ellentétben a runbook alapértelmezés szerint hibaüzenet után folytatódik. |Írásban a munka előzmények |Megjelenik a Teszt kimenet ablaktáblában |
 | Hibakeresés |Interaktív felhasználó számára készült üzenetek. Nem használható runbookokban. |Nem írt feladatelőzmények |Nem jelenik meg a Teszt kimenet ablaktáblában |
@@ -240,7 +240,7 @@ Azonban, ha nem kell ezt az információt a runbook hibaelhárítási folyamatá
 **A tevékenységszintű nyomkövetés engedélyezése:**
 
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
-2. Válassza a **Runbookok** lehetőséget a **Folyamatautomatizálás** szakaszban a runbookok listájának megnyitásához.
+2. Válassza **a Runbookok** **a Folyamatautomatizálás** csoportban a runbookok listájának megnyitásához.
 3. A Runbookok lapon válasszon ki egy grafikus runbookot a runbookok listájából.
 4. A **Beállítások csoportban**kattintson **a Naplózás és nyomkövetés gombra.**
 5. A Naplózás és követés lap **Részletes rekordok naplózása**csoportban kattintson **a Be** gombra a részletes naplózás engedélyezéséhez.
@@ -253,7 +253,7 @@ Azonban, ha nem kell ezt az információt a runbook hibaelhárítási folyamatá
 Az Azure Automation runbook-feladatállapotot és feladatstreameket küldhet a Log Analytics-munkaterületre. Az Azure Monitor támogatja a naplókat, amelyek lehetővé teszik, hogy:
 
 * Betekintést nyerhet az Automatizálási feladatokba.
-* E-mailt vagy riasztást aktivál a runbook-feladat állapota alapján, például sikertelen vagy felfüggesztett.
+* E-mailt vagy riasztást aktiválanak a runbook-feladat állapota alapján, például sikertelen vagy felfüggesztett.
 * Speciális lekérdezések írása a feladatadatfolyamok között.
 * Feladatok korrelálása az Automation-fiókok között.
 * A feladatelőzmények megjelenítése.

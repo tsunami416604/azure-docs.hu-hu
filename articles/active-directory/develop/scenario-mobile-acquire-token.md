@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cf967525283f28d5829d80b75e40e263f7eaedef
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5750f4a5aa62b33c7d793b3e0c34f304ce1b187e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882743"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535927"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Get egy token egy mobilalkalmazás, amely felhívja a webes API-k
 
@@ -26,7 +26,7 @@ Ahhoz, hogy az alkalmazás meghívja a védett webes API-kat, szüksége van egy
 
 ## <a name="define-a-scope"></a>Hatókör definiálása
 
-Amikor jogkivonatot kér, meg kell határoznia egy hatókört. A hatókör határozza meg, hogy az alkalmazás milyen adatokhoz férhet hozzá.  
+Amikor jogkivonatot kér, meg kell határoznia egy hatókört. A hatókör határozza meg, hogy az alkalmazás milyen adatokhoz férhet hozzá.
 
 A hatókör meghatározásának legegyszerűbb módja a kívánt webes `App ID URI` API-k `.default`és a hatókör kombinálása. Ez a definíció közli a Microsoft identitásplatformjával, hogy az alkalmazásnak minden, a portálon beállított hatókörre szüksége van.
 
@@ -41,7 +41,7 @@ let scopes = ["https://graph.microsoft.com/.default"]
 ```
 
 ### <a name="xamarin"></a>Xamarin
-```csharp 
+```csharp
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
@@ -72,13 +72,13 @@ sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
             /* No accounts or > 1 account. */
         }
     }
-});    
+});
 
 [...]
 
 // No accounts found. Interactively request a token.
 // TODO: Create an interactive callback to catch successful or failed requests.
-sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());        
+sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 ```
 
 #### <a name="ios"></a>iOS
@@ -89,22 +89,22 @@ Először próbáljon meg csendben megszerezni egy tokent:
 
 NSArray *scopes = @[@"https://graph.microsoft.com/.default"];
 NSString *accountIdentifier = @"my.account.id";
-    
+
 MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
-    
+
 MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
 [application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
-        
+
     if (!error)
     {
         // You'll want to get the account identifier to retrieve and reuse the account
         // for later acquireToken calls
         NSString *accountIdentifier = result.account.identifier;
-            
-        // Access token to call the Web API
+
+        // Access token to call the web API
         NSString *accessToken = result.accessToken;
     }
-        
+
     // Check the error
     if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
     {
@@ -113,34 +113,34 @@ MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] ini
     }
 }];
 ```
- 
+
 ```swift
 
 let scopes = ["https://graph.microsoft.com/.default"]
 let accountIdentifier = "my.account.id"
-        
+
 guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
 let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
 application.acquireTokenSilent(with: silentParameters) { (result, error) in
-            
+
     guard let authResult = result, error == nil else {
-                
+
     let nsError = error! as NSError
-                
+
     if (nsError.domain == MSALErrorDomain &&
         nsError.code == MSALError.interactionRequired.rawValue) {
-                    
+
             // Interactive auth will be required, call acquireToken()
             return
          }
          return
      }
-            
+
     // You'll want to get the account identifier to retrieve and reuse the account
     // for later acquireToken calls
     let accountIdentifier = authResult.account.identifier
-            
-    // Access token to call the Web API
+
+    // Access token to call the web API
     let accessToken = authResult.accessToken
 }
 ```
@@ -149,15 +149,15 @@ Ha az `MSALErrorInteractionRequired`MSAL visszatér, próbálja meg interaktív 
 
 ```objc
 UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
-MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithParentViewController:viewController];
+MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithAuthPresentationViewController:viewController];
 MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:webParameters];
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
-    if (!error) 
+    if (!error)
     {
         // You'll want to get the account identifier to retrieve and reuse the account
         // for later acquireToken calls
         NSString *accountIdentifier = result.account.identifier;
-            
+
         NSString *accessToken = result.accessToken;
     }
 }];
@@ -165,15 +165,15 @@ MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParame
 
 ```swift
 let viewController = ... // Pass a reference to the view controller that should be used when getting a token interactively
-let webviewParameters = MSALWebviewParameters(parentViewController: viewController)
+let webviewParameters = MSALWebviewParameters(authPresentationViewController: viewController)
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: webviewParameters)
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
-                
+
     guard let authResult = result, error == nil else {
         print(error!.localizedDescription)
         return
     }
-                
+
     // Get access token from result
     let accessToken = authResult.accessToken
 })
@@ -207,7 +207,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>Kötelező paraméterek a MSAL.NET
 
-`AcquireTokenInteractive`csak egy kötelező `scopes`paraméterrel rendelkezik: . A `scopes` paraméter enumerálja azokat a karakterláncokat, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat a Microsoft Graph, megtalálhatja a szükséges hatóköröket az egyes Microsoft Graph API-k API-hivatkozásában. A hivatkozásban lépjen az "Engedélyek" szakaszra. 
+`AcquireTokenInteractive`csak egy kötelező `scopes`paraméterrel rendelkezik: . A `scopes` paraméter enumerálja azokat a karakterláncokat, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat a Microsoft Graph, megtalálhatja a szükséges hatóköröket az egyes Microsoft Graph API-k API-hivatkozásában. A hivatkozásban lépjen az "Engedélyek" szakaszra.
 
 A felhasználó [névjegyeinek listázásához](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)például használja a "User.Read", "Contacts.Read" tartományt. További információt a [Microsoft Graph engedélyek hivatkozása című témakörben talál.](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)
 
@@ -215,7 +215,7 @@ Android on megadhatja a szülőtevékenységet, amikor `PublicClientApplicationB
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>Speciális választható paraméterek a MSAL.NET
 
-A következő szakaszok ismertetik a nem kötelező paramétereket MSAL.NET. 
+A következő szakaszok ismertetik a nem kötelező paramétereket MSAL.NET.
 
 ##### <a name="withprompt"></a>Prompt (Gyors)
 
@@ -225,19 +225,19 @@ A `WithPrompt()` paraméter egy kérdés megadásával szabályozza a felhaszná
 
 Az osztály a következő állandókat határozza meg:
 
-- `SelectAccount`kényszeríti a biztonsági jogkivonat-szolgáltatást (STS) a fiókkijelölési párbeszédpanel bemutatására. A párbeszédpanel azokat a fiókokat tartalmazza, amelyekhez a felhasználó munkamenetet tart. Ezt a beállítást akkor használhatja, ha azt szeretné, hogy a felhasználó válasszon a különböző identitások közül. Ez a beállítás az `prompt=select_account` MSAL-t az identitásszolgáltatónak való küldésre ösztönzi. 
-    
+- `SelectAccount`kényszeríti a biztonsági jogkivonat-szolgáltatást (STS) a fiókkijelölési párbeszédpanel bemutatására. A párbeszédpanel azokat a fiókokat tartalmazza, amelyekhez a felhasználó munkamenetet tart. Ezt a beállítást akkor használhatja, ha azt szeretné, hogy a felhasználó válasszon a különböző identitások közül. Ez a beállítás az `prompt=select_account` MSAL-t az identitásszolgáltatónak való küldésre ösztönzi.
+
     Az `SelectAccount` állandó az alapértelmezett, és hatékonyan biztosítja a lehető legjobb élményt a rendelkezésre álló információk alapján. A rendelkezésre álló információk közé tartozhat a fiók, a munkamenet jelenléte a felhasználó számára, és így tovább. Ne módosítsa ezt az alapértelmezett beállítást, hanincs rá jó oka.
-- `Consent`lehetővé teszi, hogy a felhasználóbeleegyezést kérjen, még akkor is, ha korábban megadták a hozzájárulást. Ebben az esetben az `prompt=consent` MSAL elküldi az identitásszolgáltatónak. 
+- `Consent`lehetővé teszi, hogy a felhasználóbeleegyezést kérjen, még akkor is, ha korábban megadták a hozzájárulást. Ebben az esetben az `prompt=consent` MSAL elküldi az identitásszolgáltatónak.
 
     Előfordulhat, hogy az `Consent` állandót a biztonságra összpontosító alkalmazásokban szeretné használni, ahol a szervezet irányítási vállalata megköveteli a felhasználóktól, hogy minden alkalommal lássák a hozzájárulási párbeszédpanelt, amikor az alkalmazást használják.
-- `ForceLogin`lehetővé teszi, hogy a szolgáltatás akkor is kérje a felhasználótól a hitelesítő adatokat, ha nincs rá szükség. 
+- `ForceLogin`lehetővé teszi, hogy a szolgáltatás akkor is kérje a felhasználótól a hitelesítő adatokat, ha nincs rá szükség.
 
     Ez a beállítás akkor lehet hasznos, ha a jogkivonat-beszerzés sikertelen, és szeretné, hogy a felhasználó újra jelentkezzen be. Ebben az esetben az `prompt=login` MSAL elküldi az identitásszolgáltatónak. Ezt a beállítást olyan biztonságközpontú alkalmazásokban is használhatja, ahol a szervezet irányítási vállalata megköveteli a felhasználótól, hogy minden alkalommal jelentkezzen be, amikor az alkalmazás adott részeihez fér hozzá.
 - `Never`csak a .NET 4.5 és a Windows Runtime (WinRT) esetén. Ez az állandó nem kéri a felhasználót, de megpróbálja használni a rejtett beágyazott webes nézetben tárolt cookie-t. További információt a [Webböngészők használata MSAL.NET című témakörben talál.](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)
 
     Ha ez a `AcquireTokenInteractive` beállítás nem sikerül, kivételt küld, hogy értesítse, hogy felhasználói felületi interakcióra van szükség. Ezután egy másik `Prompt` paramétert kell használnia.
-- `NoPrompt`nem küld kérdést az identitásszolgáltatónak. 
+- `NoPrompt`nem küld kérdést az identitásszolgáltatónak.
 
     Ez a beállítás csak az Azure Active Directory B2C-ben lévő profilházirendek szerkesztéséhez hasznos. További információ: [B2C specifics](https://aka.ms/msal-net-b2c-specificities).
 
@@ -245,7 +245,7 @@ Az osztály a következő állandókat határozza meg:
 
 Használja `WithExtraScopeToConsent` a módosító egy speciális forgatókönyv, ahol azt szeretné, hogy a felhasználó több erőforrás előzetes beleegyezését adja. Ezt a módosítót akkor használhatja, ha nem szeretne növekményes hozzájárulást használni, amelyet általában MSAL.NET vagy a Microsoft identity platform 2.0-s rendszerével használnak. További információ: [A felhasználó hozzájárulásának előzetes biztosítása több erőforráshoz.](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)
 
-Íme egy példa egy kódra: 
+Íme egy példa egy kódra:
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -261,7 +261,7 @@ A további választható paraméterekről `AcquireTokenInteractive`a [AcquireTok
 
 Nem javasoljuk, hogy közvetlenül használja a protokollt a tokenek lekéréséhez. Ha igen, majd az alkalmazás nem támogatja az egyes forgatókönyvek, amelyek magukban foglalják az egyszeri bejelentkezés (SSO), eszközkezelés és feltételes hozzáférés.
 
-Ha a protokoll segítségével kap tokeneket a mobilalkalmazásokhoz, két kérést kell kérnie: 
+Ha a protokoll segítségével kap tokeneket a mobilalkalmazásokhoz, két kérést kell kérnie:
 
 * Szerezzen be egy engedélyezési kódot.
 * Cserélje ki a kódot egy tokenre.

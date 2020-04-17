@@ -3,12 +3,12 @@ title: Intelligens észlelés az Azure Application Insightsban | Microsoft dokum
 description: Az Application Insights automatikus anam-es mélyelemzést végez az alkalmazástelemetriai adatokról, és figyelmezteta lehetséges problémákra.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: e232295f9da2a2ae8f3c6fafdd1dc33a42e92e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671800"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536794"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligens detektálás az Application Insightsban
  Az intelligens észlelés automatikusan figyelmezteti a webes alkalmazás lehetséges teljesítményproblémáira és hibaproblémáira. Proaktív elemzést végez az alkalmazás által az Application Insightsnak küldött telemetriai [adatokról.](../../azure-monitor/app/app-insights-overview.md) Ha a hibaarányok hirtelen emelkednek, vagy rendellenes minták jelennek meg az ügyfél vagy a kiszolgáló teljesítményében, riasztást kap. Ennek a szolgáltatásnak nincs szüksége konfigurációra. Akkor működik, ha az alkalmazás elegendő telemetriai adatokat küld.
@@ -34,7 +34,7 @@ Az intelligens észlelés számos problémát észlel és ad a következőkről,
 
 * [Intelligens észlelés - Hibaanomáliák](../../azure-monitor/app/proactive-failure-diagnostics.md). A gépi tanulás t, hogy állítsa be a várt sebessége sikertelen kérelmek az alkalmazás, korrelál a terhelés és egyéb tényezők. Ha a hibaarány kívül esik a várt borítékon, riasztást küldünk.
 * [Intelligens észlelés - Teljesítményanomáliák](../../azure-monitor/app/proactive-performance-diagnostics.md). Értesítést kap, ha egy művelet vagy a függőség időtartama válaszidő lelassul a korábbi alapkonfigurációhoz képest, vagy ha rendellenes mintát azonosítunk a válaszidő vagy az oldal betöltési ideje szerint.   
-* Általános degradációk és problémák, mint például [a Trace degredation](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [memóriavesztés](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [rendellenes növekedése kivétel mennyisége](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) és a biztonsági [anti-minták](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
+* Általános degradációk és problémák, mint például [a nyomkövetés,](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity) [a memóriavesztés](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [a kivétel mennyiségének rendellenes növekedése](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) és a biztonsági [minták.](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack)
 
 (Az egyes értesítésekben található súgóhivatkozások a vonatkozó cikkekre mutatnak.)
 
@@ -53,7 +53,7 @@ Másik lehetőségként módosíthatja a konfigurációt az Azure Resource Manag
 ## <a name="next-steps"></a>További lépések
 Ezek a diagnosztikai eszközök segítenek az alkalmazástelemetria imitálatának vizsgálatában:
 
-* [Metrikus felfedező](../../azure-monitor/app/metrics-explorer.md)
+* [Metrikus felfedező](../../azure-monitor/platform/metrics-charts.md)
 * [Kereséskezelő](../../azure-monitor/app/diagnostic-search.md)
 * [Analytics – hatékony lekérdezési nyelv](../../azure-monitor/log-query/get-started-portal.md)
 

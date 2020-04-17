@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4aa0cce83f9adc8c648656899ec6dc12d498e26b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77160448"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536063"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: Bejelentkezés hozzáadása az OpenID Connect használatával egy Node.js webalkalmazáshoz
 
@@ -30,7 +30,7 @@ A minta futtatásához a következőkre lesz szükség:
 
 * [Microsoft-fiók](https://www.outlook.com) vagy [Office 365 fejlesztői program](/office/developer-program/office-365-developer-program)
 
-## <a name="register-your-application"></a>Alkalmazás regisztrálása 
+## <a name="register-your-application"></a>Alkalmazás regisztrálása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
 1. Ha a fiók több Azure AD-bérlőben is jelen van:
     - Válassza ki a profilját a lap jobb felső sarkában lévő menüből, majd **a Könyvtár váltása**lehetőséget.
@@ -78,7 +78,7 @@ vagy
 
 A projekt gyökérkönyvtárából futtassa a következő parancsot:
 
-`$ npm install`  
+`$ npm install`
 
 ## <a name="configure-the-application"></a>Az alkalmazás konfigurálása
 

@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5241089ff3cc7826216fcadd6fd94116ee4a2c89
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ac630c4901c126ed883adbdc7efb03f36372e6ff
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309440"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535876"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft identity platform és OAuth 2.0 engedélyezési kód folyamat
 
@@ -219,7 +219,7 @@ A hibaválaszok így fognak kinézni:
 
 ## <a name="use-the-access-token"></a>A hozzáférési jogkivonat használata
 
-Most, hogy sikeresen beszerzett egy, `access_token`használhatja a jogkivonatot a webes `Authorization` API-kra irányuló kérelmekben, ha a fejlécbe is bekerül:
+Most, hogy sikeresen beszerzett egy, `access_token`használhatja a jogkivonatot a webes `Authorization` API-kra vonatkozó kérelmekben, ha a fejlécbe is bekerül:
 
 > [!TIP]
 > Hajtsa végre ezt a kérést postás! (Először `Authorization` cserélje le a fejlécet) [Próbálja meg futtatni ezt a kérést a Postman ben ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
@@ -232,11 +232,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>A hozzáférési jogkivonat frissítése
 
-Access_tokens rövid életűek, és frissítenie kell őket a lejáratuk után, hogy továbbra is hozzáférhessen az erőforrásokhoz. Ezt úgy teheti meg, `POST` hogy egy `/token` másik kérést küld `refresh_token` a végpontnak, ezúttal a helyett a. `code`  A frissítési jogkivonatok minden olyan engedélyre érvényesek, amelyhez az ügyfél már `scope=mail.read` megkapta a beleegyezését – `scope=api://contoso.com/api/UseResource`így a kérelemre kiadott frissítési jogkivonat új hozzáférési jogkivonat kérésére használható.  
+Access_tokens rövid életűek, és frissítenie kell őket a lejáratuk után, hogy továbbra is hozzáférhessen az erőforrásokhoz. Ezt úgy teheti meg, `POST` hogy egy `/token` másik kérést küld `refresh_token` a végpontnak, ezúttal a helyett a. `code`  A frissítési jogkivonatok minden olyan engedélyre érvényesek, amelyhez az ügyfél már `scope=mail.read` megkapta a beleegyezését – `scope=api://contoso.com/api/UseResource`így a kérelemre kiadott frissítési jogkivonat új hozzáférési jogkivonat kérésére használható.
 
-A frissítési jogkivonatok nem rendelkeznek megadott élettartammal. A frissítési jogkivonatok élettartama általában viszonylag hosszú. Bizonyos esetekben azonban a frissítési jogkivonatok lejárnak, visszavonásra kerülnek, vagy nem rendelkeznek megfelelő jogosultságokkal a kívánt művelethez. Az alkalmazásnak megfelelően kell várnia és kezelnie [a tokenkiállítási végpont által visszaadott hibákat.](#error-codes-for-token-endpoint-errors) 
+A frissítési jogkivonatok nem rendelkeznek megadott élettartammal. A frissítési jogkivonatok élettartama általában viszonylag hosszú. Bizonyos esetekben azonban a frissítési jogkivonatok lejárnak, visszavonásra kerülnek, vagy nem rendelkeznek megfelelő jogosultságokkal a kívánt művelethez. Az alkalmazásnak megfelelően kell várnia és kezelnie [a tokenkiállítási végpont által visszaadott hibákat.](#error-codes-for-token-endpoint-errors)
 
-Bár a frissítési jogkivonatok nem vonják vissza, ha új hozzáférési jogkivonatok beszerzésére használják, a régi frissítési jogkivonat ot kell elvetni. Az [OAuth 2.0 specifikáció](https://tools.ietf.org/html/rfc6749#section-6) ja: "Az engedélyezési kiszolgáló új frissítési jogkivonatot adhat ki, amely esetben az ügyfélnek el kell vetnie a régi frissítési jogkivonatot, és le kell cserélnie az új frissítési jogkivonatra. Az engedélyezési kiszolgáló visszavonhatja a régi frissítési jogkivonatot, miután új frissítési jogkivonatot adott ki az ügyfélnek."  
+Bár a frissítési jogkivonatok nem vonják vissza, ha új hozzáférési jogkivonatok beszerzésére használják, a régi frissítési jogkivonat ot kell elvetni. Az [OAuth 2.0 specifikáció](https://tools.ietf.org/html/rfc6749#section-6) ja: "Az engedélyezési kiszolgáló új frissítési jogkivonatot adhat ki, amely esetben az ügyfélnek el kell vetnie a régi frissítési jogkivonatot, és le kell cserélnie az új frissítési jogkivonatra. Az engedélyezési kiszolgáló visszavonhatja a régi frissítési jogkivonatot, miután új frissítési jogkivonatot adott ki az ügyfélnek."
 
 ```
 // Line breaks for legibility only
@@ -254,7 +254,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > Próbálja meg végrehajtani ezt a kérést a Postman! (Ne felejtsd el `refresh_token`kicserélni a) [Próbálja meg futtatni ezt a kérést a Postman ben ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-> 
+>
 
 | Paraméter     |                | Leírás        |
 |---------------|----------------|--------------------|

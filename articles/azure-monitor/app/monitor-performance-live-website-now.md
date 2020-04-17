@@ -3,12 +3,12 @@ title: Élő ASP.NET-webapp figyelése az Azure Application Insights segítség�
 description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe helyezése nélkül. Együttműködik ASP.NET helyszíni vagy virtuális gépeken üzemeltetett webalkalmazásokkal.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670049"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536828"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Eszköz webalkalmazások futásidőben az Application Insights Codeless Attach segítségével
 
@@ -84,7 +84,7 @@ Ha anélkül szeretné újra közzétenni az alkalmazást, hogy a kódhoz hozzá
 4. Állítsa vissza a .config fájlon végrehajtott szerkesztéseket.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>hibaelhárítással
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Hibaelhárítás
 
 ### <a name="confirm-a-valid-installation"></a>Érvényes telepítés megerősítése 
 
@@ -314,7 +314,7 @@ A fordítási során már kiépített alkalmazások esetén:
 
 A telemetriai adatok megtekintése:
 
-* [A metrikák áttekintése](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez
+* [A metrikák áttekintése](../../azure-monitor/platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez
 * [Események és naplók keresése][diagnostic] a problémák diagnosztizálásához
 * [Elemzések](../../azure-monitor/app/analytics.md) az összetettebb lekérdezésekhez
 

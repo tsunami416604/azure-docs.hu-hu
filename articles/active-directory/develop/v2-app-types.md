@@ -12,12 +12,12 @@ ms.date: 04/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 143a2ec0bfbcc6997eb6d8b2599b848a509ee773
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: bdbda8bed38819ca2b4d2fb1ef3d9bf591269890
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309498"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535910"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Alkalmazástípusok a Microsoft identity platformhoz
 
@@ -80,11 +80,11 @@ A felhasználó identitását úgy biztosíthatja, hogy az azonosítójogkivonat
 
 Ha működés közben szeretné látni ezt a forgatókönyvet, próbálja meg a webalkalmazás bejelentkezési kódmintáit a [Microsoft identity platform első lépések](v2-overview.md#getting-started) szakaszában.
 
-Az egyszerű bejelentkezés mellett előfordulhat, hogy egy webkiszolgáló-alkalmazásnak hozzá kell férnie egy másik webszolgáltatáshoz, például egy REST API-hoz. Ebben az esetben a webkiszolgáló alkalmazás az [OAuth 2.0 engedélyezési kódfolyamatával](active-directory-v2-protocols.md)kombinált OpenID Connect és OAuth 2.0 folyamatot indít. A forgatókönyvről további információt a [webalkalmazások és webes API-k első lépésekcímű tájékoztatójában](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)talál.
+Az egyszerű bejelentkezés mellett előfordulhat, hogy egy webkiszolgáló-alkalmazásnak hozzá kell férnie egy másik webszolgáltatáshoz, például egy REST API-hoz. Ebben az esetben a webkiszolgáló alkalmazás az [OAuth 2.0 engedélyezési kódfolyamatával](active-directory-v2-protocols.md)kombinált OpenID Connect és OAuth 2.0 folyamatot indít. A forgatókönyvvel kapcsolatos további információkért olvassa el a [webalkalmazások és webes API-k első lépéseit.](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 
 ## <a name="web-apis"></a>Webes API-k
 
-A Microsoft identity platform végpont használatával biztonságos webszolgáltatások, például az alkalmazás RESTful webes API-t. A webes API-k számos platformon és nyelven valósíthatók meg. Http-eseményindítók használatával is implementálhatók az Azure Functionsben. Az azonosítójogtok és a munkamenet-cookie-k helyett a webes API egy OAuth 2.0 hozzáférési jogkivonatot használ az adatok védelmére és a bejövő kérelmek hitelesítésére. A webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében, így:
+A Microsoft identity platform végpont használatával biztonságos webes szolgáltatások, például az alkalmazás RESTful webes API-t. A webes API-k számos platformon és nyelven valósíthatók meg. Http-eseményindítók használatával is implementálhatók az Azure Functionsben. Az azonosítójogtok és a munkamenet-cookie-k helyett a webes API egy OAuth 2.0 hozzáférési jogkivonatot használ az adatok védelmére és a bejövő kérelmek hitelesítésére. A webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében, például:
 
 ```HTTP
 GET /api/items HTTP/1.1
@@ -94,15 +94,15 @@ Accept: application/json
 ...
 ```
 
-A webes API a hozzáférési jogkivonatot használja az API-hívó identitásának ellenőrzéséhez, és a hívóval kapcsolatos információk kinyeréséhez a hozzáférési jogkivonatban kódolt jogcímekből. A Microsoft identity platform végpontjában használt különböző típusú jogkivonatok további részletei a [hozzáférési jogkivonat-hivatkozásban](access-tokens.md) és [id_token](id-tokens.md) hivatkozásban találhatók.
+A webes API a hozzáférési jogkivonatot használja az API-hívó identitásának ellenőrzéséhez, és a hívóról a hozzáférési jogkivonatban kódolt jogcímekből származó információk kinyeréséhez. A Microsoft identity platform végpontjában használt különböző típusú jogkivonatok további részletei a [hozzáférési jogkivonat-hivatkozásban](access-tokens.md) és [id_token](id-tokens.md) hivatkozásban találhatók.
 
-A webes API-k lehetővé tehetik a felhasználók számára, hogy bizonyos funkciókat vagy adatokat engedélyezzenek vagy letiltsanak az engedélyek, más néven [hatókörök felfedésével.](v2-permissions-and-consent.md) Ahhoz, hogy egy hívó alkalmazás engedélyt szerezzen egy hatókörhöz, a felhasználónak hozzá kell járulnia a hatókörhöz a folyamat során. A Microsoft identity platform végpont jattot kér a felhasználótól, majd rögzíti az engedélyeket az összes hozzáférési jogkivonatban, amelyet a webes API kap. A webes API ellenőrzi az egyes hívásokon fogadott hozzáférési jogkivonatokat, és engedélyezési ellenőrzéseket hajt végre.
+A webes API-k lehetővé teszik a felhasználók számára, hogy bizonyos funkciókat vagy adatokat engedélyezzenek vagy letiltsanak az engedélyek, más néven [hatókörök felfedésével.](v2-permissions-and-consent.md) Ahhoz, hogy egy hívó alkalmazás engedélyt szerezzen egy hatókörhöz, a felhasználónak hozzá kell járulnia a hatókörhöz a folyamat során. A Microsoft identity platform végpont engedélyt kér a felhasználótól, majd rögzíti az engedélyeket az összes hozzáférési jogkivonatot, amelyet a webes API kap. A webes API ellenőrzi a hozzáférési jogkivonatokat kap minden hívás, és engedélyezési ellenőrzéseket végez.
 
 A webes API-k hozzáférési jogkivonatokat fogadhatnak minden típusú alkalmazásból, beleértve a webkiszolgálói alkalmazásokat, az asztali és mobilalkalmazásokat, az egyoldalas alkalmazásokat, a kiszolgálóoldali démonokat és még más webes API-kat is. A webes API magas szintű folyamata a következőképpen néz ki:
 
 ![A webes API hitelesítési folyamatának megjelenítése](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-Ha meg szeretné tudni, hogyan biztonságossá egy webes API-t OAuth2 hozzáférési jogkivonatok használatával, tekintse meg a Webes API-kód mintákat a [Microsoft identity platform első lépések](v2-overview.md#getting-started) szakaszban.
+Ha meg szeretné tudni, hogyan biztonságossá egy webes API-t Az OAuth2 hozzáférési jogkivonatok használatával, tekintse meg a webes API-kód mintákat a [Microsoft identity platform első lépések](v2-overview.md#getting-started) szakaszban.
 
 Sok esetben a webes API-k is kell, hogy a kimenő kérelmek et más alsóbb rétegbeli webes API-k által védett Microsoft identity platform. Ehhez a webes API-k kihasználhatják a nevében folyamat előnyeit, amely lehetővé teszi a webes **API-t** egy bejövő hozzáférési jogkivonat cseréjére egy másik hozzáférési jogkivonat hoz a kimenő kérelmekben használható. További információ: [Microsoft identity platform és OAuth 2.0 On-Behalf-Of flow](v2-oauth2-on-behalf-of-flow.md).
 
@@ -110,13 +110,13 @@ Sok esetben a webes API-k is kell, hogy a kimenő kérelmek et más alsóbb rét
 
 Az eszközre telepített alkalmazásoknak, például a mobil- és asztali alkalmazásoknak gyakran hozzá kell férniük az adatokat tároló és a felhasználó nevében funkciókat ellátó háttérszolgáltatásokhoz vagy webes API-khoz. Ezek az alkalmazások az [OAuth 2.0 engedélyezési kódfolyamat](v2-oauth2-auth-code-flow.md)használatával adhatnak hozzá bejelentkezést és engedélyezést a háttérszolgáltatásokhoz.
 
-Ebben a folyamatban az alkalmazás kap egy engedélyezési kódot a Microsoft identity platform végpont, amikor a felhasználó bejelentkezik. Az engedélyezési kód az alkalmazás azon engedélyét jelöli, hogy a bejelentkezett felhasználó nevében visszahívjon háttérszolgáltatásokat. Az alkalmazás kicserélheti az engedélyezési kódot a háttérben egy OAuth 2.0 hozzáférési jogkivonatra és egy frissítési jogkivonatra. Az alkalmazás a hozzáférési jogkivonat segítségével hitelesítheti magát a webes API-k http-kérelmekben, és a frissítési jogkivonat segítségével új hozzáférési jogkivonatokat kaphat le, amikor a régebbi hozzáférési jogkivonatok lejárnak.
+Ebben a folyamatban az alkalmazás kap egy engedélyezési kódot a Microsoft identity platform végpont, amikor a felhasználó bejelentkezik. Az engedélyezési kód az alkalmazás azon engedélyét jelöli, hogy a bejelentkezett felhasználó nevében visszahívjon háttérszolgáltatásokat. Az alkalmazás kicserélheti az engedélyezési kódot a háttérben egy OAuth 2.0 hozzáférési jogkivonatra és egy frissítési jogkivonatra. Az alkalmazás a hozzáférési jogkivonat segítségével hitelesítheti a webes API-k at a HTTP-kérelmekben, és a frissítési jogkivonat segítségével új hozzáférési jogkivonatokat kaphat le, amikor a régebbi hozzáférési jogkivonatok lejárnak.
 
 ![A natív alkalmazás hitelesítési folyamatának megjelenítése](./media/v2-app-types/convergence-scenarios-native.svg)
 
 ## <a name="daemons-and-server-side-apps"></a>Démonok és kiszolgálóoldali alkalmazások
 
-Azoknak az alkalmazásoknak, amelyek hosszú ideig futó folyamatokkal rendelkeznek, vagy amelyek a felhasználóval való interakció nélkül működnek, szintén szükségük van a biztonságos erőforrások, például a webes API-k elérésének módjára. Ezek az alkalmazások hitelesíthetik magukat, és jogkivonatokat kaphatnak az alkalmazás identitásának használatával, nem pedig a felhasználó delegált identitásával, az OAuth 2.0 ügyfélhitelesítő adatok folyamatával. Az alkalmazás identitását ügyféltitok vagy tanúsítvány segítségével bizonyíthatja. További információ: [.NET Core démonkonzol alkalmazás a Microsoft identity platform használatával.](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+Azokaz alkalmazások, amelyek hosszú ideig futó folyamatokkal rendelkeznek, vagy amelyek a felhasználóval való interakció nélkül működnek, szintén szükségük van a biztonságos erőforrások, például a webes API-k elérésének módjára. Ezek az alkalmazások hitelesíthetik magukat, és jogkivonatokat kaphatnak az alkalmazás identitásának használatával, nem pedig a felhasználó delegált identitásával, az OAuth 2.0 ügyfélhitelesítő adatok folyamatával. Az alkalmazás identitását ügyféltitok vagy tanúsítvány segítségével bizonyíthatja. További információ: [.NET Core démonkonzol alkalmazás a Microsoft identity platform használatával.](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
 
 Ebben a folyamatban az alkalmazás közvetlenül kommunikál a `/token` végponteléréséhez:
 

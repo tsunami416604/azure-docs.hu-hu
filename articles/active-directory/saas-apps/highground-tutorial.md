@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aff7de84f0523403f8d36c0661b3c469e18116e2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2c299d93e6f054ad7ea8d9a288ec61c36ca11cce
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81265621"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537049"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-highground"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a HighGround-tal
 
@@ -83,13 +83,13 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
 1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.highground.com/`
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://app.highground.com/`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.highground.com/svc/SSONoAuth/<companyName>`
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://app.highground.com/svc/SSONoAuth/SAML?groupid=<company-guid>`
 
 1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://app.highground.com/#/login/<companyName>`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://app.highground.com/#/login/<company-slug>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [a HighGround ügyfél támogatási csapatával,](https://youearnedit.freshdesk.com/support/home) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.

@@ -13,19 +13,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: 43fc2e9369b9d11b1ac0205beddea01b633fb633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e803da238ebdd728e772a15b0f29ae36d401a699
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598374"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536403"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>A Microsoft Azure-on futó SAP-tanúsítványok és konfigurációk
 
-Az SAP és a Microsoft régóta dolgozik együtt egy olyan erős partnerségben, amely kölcsönös előnyökkel jár ügyfelei számára. A Microsoft folyamatosan frissíti platformját, és új minősítési adatokat küld az SAP-nak annak érdekében, hogy a Microsoft Azure a legjobb platform az SAP-munkaterhelések futtatásához. Az alábbi táblázatok ismertetik az Azure által támogatott konfigurációkat és a növekvő SAP-tanúsítványok listáját. 
+Az SAP és a Microsoft régóta dolgozik együtt egy olyan erős partnerségben, amely kölcsönös előnyökkel jár ügyfelei számára. A Microsoft folyamatosan frissíti platformját, és új minősítési adatokat küld az SAP-nak annak érdekében, hogy a Microsoft Azure a legjobb platform az SAP-munkaterhelések futtatásához. Az alábbi táblázatok ismertetik az Azure által támogatott konfigurációkat és a növekvő SAP-tanúsítványok listáját. Ez a lista egy áttekintő lista, amely itt-ott eltérhet a hivatalos SAP listáktól. A részletes adatok hozadékát a [Cikk tartalmazza: Milyen SAP-szoftverek támogatottak az Azure-telepítésekhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)
 
 ## <a name="sap-hana-certifications"></a>SAP HANA tanúsítványok
 Hivatkozások:
@@ -52,10 +52,10 @@ Hivatkozások:
 
 | SAP-termék | Vendég operációs rendszer | RDBMS | Virtuális gép típusok |
 | --- | --- | --- | --- |
-| SAP Business Suite szoftver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP ASE |A5–A11, D11–D14, DS11–DS14, DS11_v2 DS15_v2, GS1–GS5, D2s_v3 D64s_v3, D2as_v4 D64as_v4, E2s_v3 E64s_v3, E2as_v4 E64as_v4, M64s, M64ms, M128s, M64ls, M32ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP Üzleti All-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP ASE |A5–A11, D11–D14, DS11–DS14, DS11_v2 DS15_v2, GS1–GS5, D2s_v3 D64s_v3, D2as_v4 D64as_v4, E2s_v3 E64s_v3, E2as_v4 E64as_v4, M64s, M64ms, M128s, M64ls, M32ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP BusinessObjects ÜZLETI INTELLIGENCIA | Windows |N/A |A5–A11, D11–D14, DS11–DS14, DS11_v2 DS15_v2, GS1–GS5, D2s_v3 D64s_v3, D2as_v4 D64as_v4, E2s_v3 E64s_v3, E2as_v4 E64as_v4, M64s, M64ms, M128s, M64ls, M32ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP ASE |A5–A11, D11–D14, DS11–DS14, DS11_v2 DS15_v2, GS1–GS5, D2s_v3 D64s_v3, D2as_v4 D64as_v4, E2s_v3 E64s_v3, E2as_v4 E64as_v4, M64s, M64ms, M128s, M64ls, M32ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
+| SAP Business Suite szoftver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP ASE |A5–A11, D11–D14, DS11–DS14, DS11_v2 DS15_v2, GS1–GS5, D2s_v3 D64s_v3, D2as_v4 D64as_v4, E2s_v3 E64s_v3, E2as_v4 E64as_v4, M64s, M64ms, M128s, M64ls, M32ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2 M416ms_v2 M416ms_v2 M416ms_v2 M416ms_v2, |
+| SAP Üzleti All-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP ASE |A5–A11, D11–D14, DS11–DS14, DS11_v2 DS15_v2, GS1–GS5, D2s_v3 D64s_v3, D2as_v4 D64as_v4, E2s_v3 E64s_v3, E2as_v4 E64as_v4, M64s, M64ms, M128s, M64ls, M32ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2 M416ms_v2 M416ms_v2 M416ms_v2 M416ms_v2, |
+| SAP BusinessObjects ÜZLETI INTELLIGENCIA | Windows |N/A |A5–A11, D11–D14, DS11–DS14, DS11_v2 DS15_v2, GS1–GS5, D2s_v3 D64s_v3, D2as_v4 D64as_v4, E2s_v3 E64s_v3, E2as_v4 E64as_v4, M64s, M64ms, M128s, M64ls, M32ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2 M416ms_v2 M416ms_v2 M416ms_v2 M416ms_v2, |
+| SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP ASE |A5–A11, D11–D14, DS11–DS14, DS11_v2 DS15_v2, GS1–GS5, D2s_v3 D64s_v3, D2as_v4 D64as_v4, E2s_v3 E64s_v3, E2as_v4 E64as_v4, M64s, M64ms, M128s, M64ls, M32ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2 M416ms_v2 M416ms_v2 M416ms_v2 M416ms_v2, |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Az Azure-ban támogatott egyéb SAP-munkaterhelés
 
@@ -65,4 +65,6 @@ Hivatkozások:
 | SAP BPC 10.01 MS SP08 | Windows és Linux | | Minden NetWeaver által hitelesített virtuálisgép-típus<br /> SAP Megjegyzés #2451795 |
 | SAP Üzleti objektumok BI platformja | Windows és Linux | | SAP megjegyzés #2145537 |
 | SAP adatszolgáltatások 4.2 | | | SAP Megjegyzés #2288344 |
-| SAP Hybris Kereskedelmi Platform 5.x és 6.x | Windows | SQL Server, Oracle | Minden NetWeaver tanúsítvánnyal rendelkező virtuálisgép-típus<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Kereskedelmi Platform  | Windows | SQL Server, Oracle | Minden NetWeaver tanúsítvánnyal rendelkező virtuálisgép-típus <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Kereskedelmi Platform  | SLES 12 vagy újabb | SAP HANA | Minden NetWeaver tanúsítvánnyal rendelkező virtuálisgép-típus <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Kereskedelmi Platform  | RHEL 7 vagy újabb | SAP HANA | Minden NetWeaver tanúsítvánnyal rendelkező virtuálisgép-típus <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |

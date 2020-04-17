@@ -2,13 +2,13 @@
 title: A Hyper-V-felmérés támogatása az Azure Migrate szolgáltatásban
 description: Tudnivalók a Hyper-V-felmérés támogatásáról az Azure Áttelepítési kiszolgáló felmérésével
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: e8a698b110f19dff593a93a41e9d6f20eb80cdb0
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 04/15/2020
+ms.openlocfilehash: 990d5026d9621c144c31635fabac4416eb9d20e6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389001"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538171"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Támogatási mátrix a Hyper-V felméréshez
 
@@ -53,7 +53,8 @@ Hyper-V VM-felmérés beállítása, hozzon létre egy Azure Áttelepítési pro
 Az Azure Migrate az [Azure Migrate készüléket](migrate-appliance.md) használja felderítéshez és értékeléshez. Az eszköz üzembe helyezhető egy tömörített Hyper-V vHD használatával, amelyet a portálról tölt le, vagy egy [PowerShell-parancsfájl](deploy-appliance-script.md)használatával.
 
 - További információ a Hyper-V [készülékre vonatkozó követelményekről.](migrate-appliance.md#appliance---hyper-v)
-- Ismerje meg azokat az [URL-címeket, amelyekhez](migrate-appliance.md#url-access) a készüléknek szüksége van.
+- Ismerje meg azokat az URL-címeket, amelyekhez a készüléknek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben kell hozzáférnie.
+- Az Azure Government ben a parancsfájl használatával kell üzembe helyeznie a készüléket.
 
 ## <a name="port-access"></a>Port-hozzáférés
 
@@ -78,6 +79,7 @@ Az alábbi táblázat összefoglalja a port értékelési követelményeit.
 **Költségek** | A Szolgáltatástérkép-megoldás nem számít fel díjat az első 180 napra vonatkozóan (attól a naptól számítva, amikor a Log Analytics-munkaterületet társítja az Azure Migrate projekthez)/<br/><br/> A 180 nap elteltével a standard Log Analytics-díjszabás vonatkozik rá.<br/><br/> A társított Log Analytics-munkaterületen a Szolgáltatástérképen kívül bármilyen más megoldás használata esetén a Log Analytics [általános díjakat](https://azure.microsoft.com/pricing/details/log-analytics/) számít fel.<br/><br/> Az Azure Migrate projekt törlésekor a munkaterület nem törlődik vele együtt. A projekt törlése után a Szolgáltatástérkép használata nem ingyenes, és minden csomópontnak a Log Analytics-munkaterület fizetett szintje szerint kell fizetnie.<br/><br/>Ha olyan projektjei vannak, amelyeket az Azure Migrate általános elérhetősége előtt hozott létre (GA– 2018. február 28.), előfordulhat, hogy további szolgáltatástérkép-díjak merültek fel. Annak érdekében, hogy a kifizetés csak 180 nap után, azt javasoljuk, hogy hozzon létre egy új projektet, mivel a meglévő munkaterületek előtt GA továbbra is felszámítható.
 **Felügyelet** | Amikor ügynököket regisztrál a munkaterületre, az Azure Migrate projekt által biztosított azonosítót és kulcsot használja.<br/><br/> Használhatja a Log Analytics munkaterületet az Azure Migrate-en kívül.<br/><br/> Ha törli a társított Azure Migrate projektet, a munkaterület nem törlődik automatikusan. [Törölje manuálisan](../azure-monitor/platform/manage-access.md).<br/><br/> Ne törölje az Azure Migrate által létrehozott munkaterületet, hacsak nem törli az Azure Migrate projektet. Ha így tesz, a függőségi vizualizációs funkció nem a várt módon fog működni.
 **Internetkapcsolat** | Ha a gépek nem csatlakoznak az internethez, telepítenie kell rájuk a Log Analytics-átjárót.
+**Azure Government** | Az ügynökalapú függőségelemzés nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

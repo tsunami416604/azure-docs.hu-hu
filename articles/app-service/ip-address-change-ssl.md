@@ -4,12 +4,12 @@ description: Ha az SSL-IP-cím meg fog változni, olvassa el, hogy mi a teendő,
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
-ms.openlocfilehash: 34f35eb67cada6066e35227fcd6a0eaf425ac007
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672404"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535723"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Felkészülés az SSL IP-címváltozásra
 
@@ -25,7 +25,7 @@ Ha értesítést kapott arról, hogy az Azure App Service-alkalmazás SSL-IP-cí
 
 4.  A **Beállítások** fejléc alatt kattintson az **SSL-beállítások** elemre a bal oldali navigációs sávon.
 
-1. Az SSL-kötések csoportban jelölje ki az állomásnév-rekordot. A megnyíló szerkesztőben válassza az **SSL-típus** legördülő menü **SNI SSL** parancsát, majd kattintson a **Kötés hozzáadása**parancsra. Amikor megjelenik a művelet sikeres üzenet, a meglévő IP-cím megjelent.
+1. A TLS/SSL kötések szakaszban jelölje ki az állomásnév-rekordot. A megnyíló szerkesztőben válassza az **SSL-típus** legördülő menü **SNI SSL** parancsát, majd kattintson a **Kötés hozzáadása**parancsra. Amikor megjelenik a művelet sikeres üzenet, a meglévő IP-cím megjelent.
 
 6.  Az **SSL-kötések** szakaszban ismét jelölje ki ugyanazt az állomásnév-rekordot a tanúsítvánnyal. A megnyíló szerkesztőben ezúttal válassza az **IP-alapú SSL lehetőséget** az **SSL típus** legördülő menüben, majd kattintson a **Kötés hozzáadása**parancsra. Amikor megjelenik a művelet sikeres üzenet, új IP-címet szerzett be.
 
@@ -45,4 +45,4 @@ Ha értesítést kapott arról, hogy az Azure App Service-alkalmazás SSL-IP-cí
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk ismerteti, hogyan készülhet fel az Azure által kezdeményezett IP-címmódosításra. Az Azure App Service IP-címeiről további információt az [SSL- és SSL-IP-címek az Azure App Service-ben című témakörben talál.](overview-inbound-outbound-ips.md)
+Ez a cikk ismerteti, hogyan készülhet fel az Azure által kezdeményezett IP-címmódosításra. Az Azure App Service IP-címeiről további információt a [Bejövő és kimenő IP-címek az Azure App Service-ben című témakörben talál.](overview-inbound-outbound-ips.md)

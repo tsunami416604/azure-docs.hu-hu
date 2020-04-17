@@ -3,12 +3,12 @@ title: Értékelések az Azure Áttelepítési kiszolgáló értékelésében
 description: További információ az Azure Áttelepítési kiszolgáló értékelésének felméréseiről
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: ae55686f0152d9c2b170ae1b34d7493ed7ac8d94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1f32eea0ec6a8a4877fd1dc134344cfe68dcaba
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127775"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537763"
 ---
 # <a name="assessments-in-azure-migrateserver-assessment"></a>Értékelések az Azure áttelepítése:Kiszolgáló felmérése
 
@@ -17,6 +17,9 @@ Ez a cikk áttekintést nyújt az [Azure Migrate:Server Assessment](migrate-serv
 ## <a name="whats-an-assessment"></a>Mi az az értékelés?
 
 A Kiszolgálóértékelési eszközzel végzett értékelés méri a helyszíni kiszolgálók Azure-ba való áttelepítésének készenlétét és becslését.
+
+> [!NOTE]
+> Az Azure Government tekintse át a [támogatott célértékelési](migrate-support-matrix.md#supported-geographies-azure-government) helyek. Vegye figyelembe, hogy a virtuális gép méretére vonatkozó javaslatok at értékelések fogja használni a virtuális gép sorozat kifejezetten a kormányzati felhő régiók. [További információ](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) a virtuálisgép-típusokról.
 
 ## <a name="types-of-assessments"></a>Az értékelések típusai
 
@@ -77,7 +80,7 @@ Ha felderítésre használja a készüléket, a számítási beállítások telj
     - A 95 százalékos érték gondoskodik arról, hogy figyelmen kívül hagyja a kiugró értékeket, amelyek a 99 százalékos értéket választják.
     - Ha az adott időszak csúcshasználatát szeretné kiválasztani, és nem szeretne kihagyni egyetlen kiugró értéket sem, válassza ki a 99 százalékos százalékos értéket a percentilis-kihasználtsághoz.
 
-5. Ezt az értéket megszorozza a kényelmi tényező, hogy a hatékony teljesítménykihasználási adatok at minden metrika (CPU-kihasználtság, memóriakihasználtság, lemez IOPS (olvasási és írási), lemez átviteli (olvasási és írási), és a hálózati átviteli (be és ki), hogy a készülék összegyűlik.
+5. Ezt az értéket megszorozza a kényelmi tényező, hogy a hatékony teljesítménykihasználási adatok at minden metrika (CPU-kihasználtság, memóriakihasználtság, lemez IOPS (olvasási és írási), lemez átviteli (olvasási és írási), és a hálózati átviteli teljesítmény (be és ki), hogy a készülék gyűjt.
 
 
 
@@ -98,7 +101,7 @@ A kiszolgálóértékelés ben szereplő értékelés az alábbiakat tartalmazza
 
 **Tulajdonság** | **Részletek**
 --- | ---
-**Célhely** | Az a hely, ahhoz a helyhez, ahhoz, ahhoz, ahhoz, hogy áttelepüljen. A Kiszolgálóértékelés jelenleg a következő célAzure-régiókat támogatja:<br/><br/> Kelet-Ausztrália, Délkelet- Ausztrália, Brazília Déli, Kanada Középső, Kanada Kelet-Kanada, Közép-India, Usa középső része, Kelet-Kína, Észak-Közép-Ázsia, USA keleti régiója, USA keleti régiója, Németország középső, Északkeleti, Japán Kelet-, Japán Nyugat, Korea Közép-Korea, Korea Dél, Észak-Korea Usa középső, észak-európai, délkelet-ázsiai, dél-indiai, dél-amerikai, egyesült királyságbeli, amerikai kormányarizonai, amerikai kormány, texasi kormány, usa állam kormánya, Virginia, Usa nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és US2 nyugat-amerikai régió.
+**Célhely** | Az a hely, ahhoz a helyhez, ahhoz, ahhoz, ahhoz, hogy áttelepüljen. A Kiszolgálóértékelés jelenleg a következő célAzure-régiókat támogatja:<br/><br/> Ausztrália Kelet, Ausztrália Délkelet, Brazília Déli, Kanada Középső, Kanada Kelet-, Közép-India, Központi USA, Kína Kelet-, Kína Észak-, Kelet-Ázsia, Kelet-USA, Kelet-USA2, Németország Középső, Németország Északkelet, Japán Kelet, Japán Nyugat, Korea Központi, Korea Dél- Közép-USA, Észak-Európa, Dél-Közép USA, Délkelet-Ázsia, Dél-India, UK Déli, EGYESÜLT Királyság Nyugati, Egyesült Államok Gov Arizona, MINKET Gov Texas, MINKET Virginia Gov , Usa nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és US2 nyugat-amerikai régió.
 *Céltároló lemez (méretezéskor)** | Az Azure-beli tároláshoz használandó lemezek típusa. <br/><br/> Adja meg a céltároló lemezt prémium szintű felügyelt, szabványos SSD-vel vagy szabványos HDD-vel felügyeltként.
 **Céltároló lemez (teljesítményalapú méretezés)** | Adja meg a céltároló lemez típusát automatikus, prémium szintű felügyelt, szabványos HDD-vel kezelt vagy szabványos SSD-vel kezeltként.<br/><br/> **Automatikus**: A lemezre vonatkozó javaslat a lemezek teljesítményadatain (a bemeneti/kimeneti műveletek másodpercenkénti (IOPS) és átviteli teljesítményen alapul).<br/><br/>**Prémium/standard**: Az értékelés egy lemeztermékváltozatot javasol a kiválasztott tárolási típuson belül.<br/><br/> Ha azt szeretné elérni, hogy egy példány vm SLA 99,9%, figyelembe véve a prémium szintű felügyelt lemezek használatát. Ez biztosítja, hogy az értékelésben szereplő összes lemez ajánlott prémium szintű felügyelt lemezként.<br/><br/> Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 **Fenntartott példányok (RI-k)** | Adja meg [a fenntartott példányokat az](https://azure.microsoft.com/pricing/reserved-vm-instances/) Azure-ban, hogy a költségbecslések az értékelésben figyelembe vegyék a fenntartott példányok kedvezményeit.<br/><br/> A rit-ek jelenleg csak az Azure Migrate szolgáltatásban csak a használatra szánt fizetési alapú ajánlatok esetében támogatottak.
@@ -182,7 +185,7 @@ Miután a gép meg van jelölve készen áll az Azure-ra, a Server Assessment m�
 Ha teljesítményalapozási méretezést használ, a Kiszolgálói értékelés méretezési javaslatokat az alábbiak szerint hajt végre:
 
 - A Kiszolgálófelmérés a számítógép teljesítményelőzményeit veszi figyelembe a virtuális gép méretének és lemeztípusának azonosításához az Azure-ban.
-- Ha a kiszolgálókcsv-fájllal lettek importálva, a program a megadott értékeket használja. Ez a módszer különösen akkor hasznos, ha a helyszíni gépen túllefoglalt, a kihasználtság valójában alacsony, és a költségek csökkentése érdekében szeretné megfelelőméretre méretezni a virtuális gépet az Azure-ban. 
+- Ha a kiszolgálókcsv-fájllal lettek importálva, a program a megadott értékeket használja. Ez a módszer különösen akkor hasznos, ha túlfoglalta a helyszíni gépet, a kihasználtság alacsony, és a költségek csökkentése érdekében szeretné megfelelő méretezést az Azure-ban. 
 - Ha nem szeretné használni a teljesítményadatokat, állítsa vissza a méretezési feltételeket a helyszíni állapotban, az előző szakaszban leírtak szerint.
 
 #### <a name="calculate-storage-sizing"></a>Tárolási méretezés számítása

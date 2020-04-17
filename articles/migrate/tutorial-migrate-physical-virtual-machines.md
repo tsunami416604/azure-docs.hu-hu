@@ -2,14 +2,14 @@
 title: Az Azure Migrate szolgáltatással fizikai kiszolgálóként telepítheti át a gépeket az Azure-ba.
 description: Ez a cikk ismerteti, hogyan telepítheti át a fizikai gépeket az Azure-ba az Azure Áttelepítése.
 ms.topic: tutorial
-ms.date: 02/03/2020
+ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 51ce45b091fe2d8845963953c2c50cd7be618f58
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1824fc6c7cbc0fd0390770027f4a15d9130139de
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80298001"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535383"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Gépek áttelepítése fizikai kiszolgálóként az Azure-ba
 
@@ -22,12 +22,10 @@ Ez a cikk bemutatja, hogyan telepítheti át a gépeket fizikai kiszolgálókén
 - Nyilvános felhőkben, például amazon webszolgáltatásokban (AWS) vagy a Google Cloud Platformon (GCP) futó virtuális gépek áttelepítése.
 
 
-[Az Azure Migrate](migrate-services-overview.md) központi központot biztosít a helyszíni alkalmazások és számítási feladatok, valamint a felhőbeli virtuálisgép-példányok Azure-ba való felderítésének, értékelésének és áttelepítésének nyomon követéséhez. A központ Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint külső független szoftverszállítói (ISV) ajánlatokat.
+Ez az oktatóanyag a harmadik olyan sorozat, amely bemutatja, hogyan lehet felmérni és áttelepíteni a fizikai kiszolgálókat az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
-
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Készítse elő az Azure-t az áttelepítésre az Azure Áttelepítési kiszolgáló áttelepítése eszközzel.
+> * Készüljön fel az Azure és az Azure Áttelepítés:Server Áttelepítés használatára.
 > * Ellenőrizze az áttelepíteni kívánt gépek követelményeit, és készítsen elő egy gépet az Azure Migrate replikációs berendezéshez, amely a gépek felderítésére és az Azure-ba való áttelepítésére szolgál.
 > * Adja hozzá az Azure Áttelepítési kiszolgáló eszköz az Azure Áttelepítési központ.
 > * Állítsa be a replikációs berendezést.
@@ -46,21 +44,20 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 Az oktatóanyag elkezdése előtt:
 
-1. [Tekintse át](migrate-architecture.md) az áttelepítési architektúrát.
-2. Győződjön meg arról, hogy az Azure-fiók rendelkezik a Virtuálisgép közreműködő szerepkör, így rendelkezik engedélyekkel:
+[Tekintse át](migrate-architecture.md) az áttelepítési architektúrát.
 
-    - Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
-    - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
-    - Írjon egy Azure felügyelt lemezre. 
 
-3. [Hozzon létre egy Azure-hálózatot.](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Amikor replikálja az Azure-ba, az Azure virtuális gépek jönnek létre, és csatlakozott egy Azure-hálózathoz, amelyet az áttelepítés beállításakor ad meg.
 
 
 ## <a name="prepare-azure"></a>Az Azure előkészítése
 
-Állítsa be az Azure-engedélyeket, mielőtt áttelepítheti az Azure Áttelepítési kiszolgáló áttelepítése.
+Készítse elő az Azure-t az áttelepítésre a kiszolgálóáttelepítéssel.
 
-- **Projekt létrehozása:** Az Azure-fióknak engedélyekre van szüksége egy Azure Migrate projekt létrehozásához. 
+**Tevékenység** | **Részletek**
+--- | ---
+**Azure Migrate projekt létrehozása** | Az Azure-fiókjának közreműködői vagy tulajdonosi engedélyekre van szüksége a projekt létrehozásához.
+**Az Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fiók nak engedélyeket kell létrehoznia egy virtuális gép létrehozásához, és írniegy Azure felügyelt lemezre.
+
 
 ### <a name="assign-permissions-to-create-project"></a>Engedélyek hozzárendelése projekt létrehozásához
 
@@ -70,32 +67,51 @@ Az oktatóanyag elkezdése előtt:
     - Ha most hozott létre egy ingyenes Azure-fiókot, ön az előfizetés tulajdonosa.
     - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együttműködve rendelje hozzá a szerepkört.
 
+
+### <a name="assign-azure-account-permissions"></a>Azure-fiók engedélyek hozzárendelése
+
+Rendelje hozzá a Virtuálisgép közreműködőszerepkört az Azure-fiókhoz. Ez a következőkre vonatkozó engedélyeket biztosít:
+
+    - Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
+    - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
+    - Írjon egy Azure felügyelt lemezre. 
+
+### <a name="create-an-azure-network"></a>Azure-hálózat létrehozása
+
+[Hozzon létre](../virtual-network/manage-virtual-network.md#create-a-virtual-network) egy Azure virtuális hálózat (VNet). Amikor replikálja az Azure-ba, az Azure virtuális gépek jönnek létre, és csatlakozott az Azure virtuális hálózat, amely az áttelepítés beállításakor megadott.
+
 ## <a name="prepare-for-migration"></a>Előkészületek a migráláshoz
+
+A kiszolgáló fizikai áttelepítésére való felkészüléshez ellenőriznie kell a kiszolgáló fizikai beállításait, és elő kell készítenie a replikációs berendezés telepítését.
 
 ### <a name="check-machine-requirements-for-migration"></a>A gép áttelepítési követelményeinek ellenőrzése
 
 Győződjön meg arról, hogy a gépek megfelelnek az Azure-ba való migrálás követelményeinek. 
 
 > [!NOTE]
-> Ügynökalapú áttelepítés az Azure Áttelepítési kiszolgáló áttelepítése, ugyanazt a replikációs architektúra, mint az ügynök alapú vész-helyreállítási szolgáltatás az Azure Site Recovery szolgáltatás, és néhány használt összetevők ugyanazt a kódbázist. Előfordulhat, hogy egyes követelmények a Site Recovery dokumentációjára hivatkoznak.
+> Fizikai gépek áttelepítésekor az Azure Migrate:Server Migration ugyanazt a replikációs architektúrát használja, mint az Azure Site Recovery szolgáltatás ügynökalapú vész-helyreállítási, és egyes összetevők ugyanazt a kódbázist használják. Előfordulhat, hogy egyes tartalmak a Site Recovery dokumentációjára hivatkoznak.
 
 1. [Ellenőrizze a](migrate-support-matrix-physical-migration.md#physical-server-requirements) fizikai kiszolgáló követelményeit.
-2. Ellenőrizze a virtuális gép beállításait. Az Azure-ba replikáló helyszíni gépeknek meg kell felelniük [az Azure virtuális gép követelményeinek.](migrate-support-matrix-physical-migration.md#azure-vm-requirements)
+2. Ellenőrizze, hogy az Azure-ba replikáló helyszíni gépek megfelelnek-e [az Azure virtuális gép követelményeinek.](migrate-support-matrix-physical-migration.md#azure-vm-requirements)
 
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>Gép előkészítése a replikációs berendezéshez
 
-Az Azure Áttelepítési Kiszolgáló áttelepítése replikációs berendezés használatával replikálja a gépeket az Azure-ba. A replikációs berendezés a következő összetevőket futtatja.
+Azure Migrate:Server Migration egy replikációs berendezés segítségével replikálja a gépeket az Azure-ba. A replikációs berendezés a következő összetevőket futtatja.
 
 - **Konfigurációs kiszolgáló**: A konfigurációs kiszolgáló koordinálja a helyszíni és az Azure közötti kommunikációt, és kezeli az adatreplikációt.
 - **Folyamatkiszolgáló**: A folyamatkiszolgáló replikációs átjáróként működik. Replikációs adatokat fogad; gyorsítótárazásával, tömörítéssel és titkosítással optimalizálja, és elküldi egy azure-beli gyorsítótár-tárfiókba. 
 
-Mielőtt elkezdené, elő kell készítenie egy Windows Server 2016-gépet a replikációs berendezés üzemeltetéséhez. A gépnek meg kell felelnie [ezeknek a követelményeknek.](migrate-replication-appliance.md) A készüléket nem szabad a védeni kívánt forrásgépre telepíteni.
+Készüljön fel a berendezés üzembe helyezésére az alábbiak szerint:
 
+- Előkészítegy gépet a replikációs berendezés üzemeltetésére. [Tekintse át](migrate-replication-appliance.md#appliance-requirements) a gép követelményeit. A készüléket nem szabad a replikálni kívánt forrásgépre telepíteni.
+- A replikációs készülék a MySQL-t használja. Tekintse át a MySQL készülékre történő telepítésének [lehetőségeit.](migrate-replication-appliance.md#mysql-installation)
+- Tekintse át a replikációs készülék nyilvános [public](migrate-replication-appliance.md#url-access) és [kormányzati](migrate-replication-appliance.md#azure-government-url-access) felhők eléréséhez szükséges Azure-URL-címeket.
+- Tekintse át a replikációs berendezés [port] (áttelepítés-replikáció-készülék.md#port-access) hozzáférési követelményeit.
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Az Azure Áttelepítési kiszolgáló eszközének hozzáadása
+## <a name="add-the-server-migration-tool"></a>A Kiszolgálóáttelepítés eszköz hozzáadása
 
-Állítson be egy Azure Migrate projektet, majd adja hozzá az Azure Áttelepítési kiszolgáló áttelepítése eszközt.
+Állítson be egy Azure Áttelepítési projektet, majd adja hozzá a Kiszolgálóáttelepítés eszközt.
 
 1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
 2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
@@ -106,19 +122,10 @@ Mielőtt elkezdené, elő kell készítenie egy Windows Server 2016-gépet a rep
 
 5. A **Kiszolgálók felderítése, értékelése és migrálása** területen kattintson az **Eszközök hozzáadása** lehetőségre.
 6. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
-7. A **Projekt részletei**területen adja meg a projekt nevét és földrajzi elhelyezkedését, amelyben létre szeretné hozni a projektet, majd kattintson a **Tovább** gombra.
+7. A **Projekt részletei** területen adja meg a projekt nevét és a földrajzi területet, ahol létre szeretné hozni a projektet, majd kattintson a **Következő** gombra. Tekintse át a támogatott földrajzi területeket [az állami](migrate-support-matrix.md#supported-geographies-public-cloud) és [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)számára.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
-    Az Azure Áttelepítési projekt et ezek a földrajzi területek bármelyikén létrehozhatja.
-
-    **Földrajz** | **Régió**
-    --- | ---
-    Ázsia | Délkelet-Ázsia
-    Európa | Észak-Európa vagy Nyugat-Európa
-    Egyesült Államok | USA keleti vagy usa nyugati közép-amerikai régiója
-
-    A projekthez megadott földrajzi hely csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál. A tényleges áttelepítéshez bármelyik célrégiót kiválaszthatja.
 8. Az **Assessment eszköz kiválasztása**csoportban válassza az Értékelési eszköz hozzáadása lehetőség kiválasztása **Most** > antól**tovább**lehetőséget.
 9. Az **Áttelepítés kiválasztása eszközben**válassza az **Azure Áttelepítés: Kiszolgálóáttelepítés** > **ezután**lehetőséget.
 10. Az **Áttekintés + eszközök hozzáadása** területen ellenőrizze a beállításokat, majd kattintson az **Eszközök hozzáadása** lehetőségre.
@@ -126,7 +133,7 @@ Mielőtt elkezdené, elő kell készítenie egy Windows Server 2016-gépet a rep
 
 ## <a name="set-up-the-replication-appliance"></a>A replikációs berendezés beállítása
 
-Az áttelepítés első lépése a replikációs berendezés beállítása. Letölti a készülék telepítőfájlját, és futtatja az [előkészített gépen.](#prepare-a-machine-for-the-replication-appliance) A készülék telepítése után regisztrálja azt az Azure Áttelepítési kiszolgáló áttelepítése.
+Az áttelepítés első lépése a replikációs berendezés beállítása. A készülék fizikai kiszolgálóáttelepítésre való beállításához töltse le a készülék telepítőfájlját, majd futtassa azt az [előkészített gépen.](#prepare-a-machine-for-the-replication-appliance) A készülék telepítése után regisztrálja azt az Azure Áttelepítési kiszolgáló áttelepítése.
 
 
 ### <a name="download-the-replication-appliance-installer"></a>A replikációs eszköz telepítőjének letöltése
@@ -317,7 +324,7 @@ Miután meggyőződött arról, hogy a tesztáttelepítés a várt módon műkö
 3. Az **Áttelepítés** > leállítása a virtuális gépek leállítása**és a tervezett áttelepítés adatvesztés nélküli végrehajtása**csoportban válassza az **Igen** > **OK**lehetőséget.
     - Ha nem szeretné leállítani a virtuális gépet, válassza a **Nem** lehetőséget.
 
-    Megjegyzés: A fizikai kiszolgáló áttelepítése esetén az ajánlott az alkalmazás leállítása az áttelepítési ablak részeként (ne hagyja, hogy az alkalmazások bármilyen kapcsolatot fogadjanak el), majd kezdeményezze az áttelepítést (A kiszolgálót folyamatosan kell futtatni, így a fennmaradó módosításokat az áttelepítés befejezése előtt szinkronizálható.
+    Megjegyzés: A fizikai kiszolgáló áttelepítése esetén az a javaslat, hogy az alkalmazást az áttelepítési ablak részeként hozza le (ne hagyja, hogy az alkalmazások bármilyen kapcsolatot fogadjanak el), majd kezdeményezze az áttelepítést (A kiszolgálót tovább kell futtatni, hogy a fennmaradó módosítások szinkronizálhatók legyenek) az áttelepítés befejezése előtt.
 
 4. A virtuálisgép-migrálási feladat elindul. A feladatot az Azure-értesítések között követheti nyomon.
 5. A feladat befejeztével a virtuális gépet a **Virtuális gépek** oldalon tekintheti meg és kezelheti.

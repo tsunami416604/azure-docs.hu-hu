@@ -1,17 +1,14 @@
 ---
 title: Értékelési/áttelepítési eszköz hozzáadása az Azure Áttelepítése szolgáltatásban
 description: Bemutatja, hogyan hozhat létre egy Azure Migrate projektet, és hogyan adhat hozzá értékelési/áttelepítési eszközt.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 319d97d96bd054aed90079777e2ff83d0e308e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 04/16/2020
+ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185939"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537729"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Felmérési/migrálási eszköz hozzáadása első alkalommal
 
@@ -37,28 +34,14 @@ Az Azure Migrate központi központot biztosít a helyszíni alkalmazások és s
 
 1. A **Kiszolgálók felderítése, értékelése és migrálása** területen kattintson az **Eszközök hozzáadása** lehetőségre.
 2. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
-3. A **Projekt részletei**területen adja meg a projekt nevét és földrajzi elhelyezkedését, amelyben a projektet létre szeretné hozni. 
+3. A **Projekt részletei**területen adja meg a projekt nevét és földrajzi elhelyezkedését, amelyben a projektet létre szeretné hozni.  Tekintse át a támogatott földrajzi területeket [az állami](migrate-support-matrix.md#supported-geographies-public-cloud) és [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)számára.
 
     ![Azure Migrate projekt létrehozása](./media/how-to-add-tool-first-time/migrate-project.png)
 
-    Az Azure Áttelepítési projekt et ezek a földrajzi területek bármelyikén létrehozhatja.
+    - A projekthez megadott földrajzi hely csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál. A tényleges áttelepítéshez bármelyik célrégiót kiválaszthatja.
+    - Ha egy adott régión belül kell telepítenie egy projektet egy földrajzi területen, a következő API-val hozzon létre egy projektet. Adja meg az előfizetés azonosítóját, az erőforráscsoport nevét és a projekt nevét a helynel együtt. Tekintse át a földrajzi /régiók [at állami](migrate-support-matrix.md#supported-geographies-public-cloud) és [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government).
 
-   **Földrajz** | **Tárolási hely régiója**
-    --- | ---
-    Ázsia   | Délkelet-Ázsia vagy Kelet-Ázsia
-    Európa | Észak-Európa vagy Nyugat-Európa
-    Japán  | Kelet-Japán vagy Nyugat-Japán
-    Egyesült Királyság | Egyesült Királyság déli vagy egyesült királyságbeli nyugati
-    Egyesült Államok | USA középső vagy usa nyugati régiója 2
-    Kanada | Közép-Kanada
-    India  | India Közép vagy India Dél
-    Ausztrália | Ausztrália Délkelet
-
-    A projekthez megadott földrajzi hely csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál. A tényleges áttelepítéshez bármelyik célrégiót kiválaszthatja.
-
-    Ha egy adott régiót szeretne megadni egy földrajzi területen belül az áttelepítési projekt és a kapcsolódó erőforrások üzembe helyezéséhez (az előfizetésben szereplő házirend-korlátozások lehetővé tehetik az Azure-erőforrások csak egy adott Azure-régióra történő üzembe helyezését), használhatja az alábbi API-t hozzon létre egy áttelepítési projektet. Adja meg az előfizetés-azonosítót, az erőforráscsoport nevét, a Projekt nevének áttelepítése a helynel együtt (a táblázatban említett bármely Azure-régió, ahol az Azure Migrate telepítve van.)
-
-    `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
+        `PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"`   
 
 
 4. Kattintson **a Tovább**gombra, és vegyen fel egy értékelési vagy áttelepítési eszközt.

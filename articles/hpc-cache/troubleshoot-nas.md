@@ -4,14 +4,14 @@ description: Tippek a konfigurációs hibák és egyéb problémák elkerülés�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: c88ffb9e87bc0688cc87b816efaa8e101e23407c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a24530810a448a713c01efbc8933b9f22d15b3b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77652086"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536369"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS-konfigurációval és NFS-tárterületcéllal kapcsolatos problémák elhárítása
 
@@ -63,6 +63,9 @@ A különböző tárolórendszerek különböző módszereket használnak a hozz
 
 Exportálási szabályok használata esetén ne feledje, hogy a gyorsítótár több különböző IP-címet is használhat a gyorsítótár alhálózatából. Hozzáférés engedélyezése a lehetséges alhálózati IP-címek teljes tartományából.
 
+> [!NOTE]
+> Alapértelmezés szerint az Azure HPC-gyorsítótár összenyomja a root hozzáférést. Olvassa [el A további gyorsítótár-beállítások konfigurálása](configuration.md#configure-root-squash) a részletekhez című szöveget.
+
 A NAS-tároló szállítójával együttműködve engedélyezze a gyorsítótár megfelelő szintű hozzáférését.
 
 ### <a name="allow-root-access-on-directory-paths"></a>Gyökérhozzáférés engedélyezése a címtárelérési utakon
@@ -100,7 +103,7 @@ Ha lehetséges, használjon linuxos klienst ugyanabból a virtuális hálózatb�
 Ha ez a parancs nem sorolja fel az exportálást, a gyorsítótár nem tud csatlakozni a tárolórendszerhez. Az exportálási lista engedélyezéséhez működjön együtt a NAS-szállítóval.
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>A VPN-csomagméretre vonatkozó korlátozások módosítása
-<!-- link in prereqs article -->
+<!-- link in prereqs article and configuration article -->
 
 Ha a gyorsítótár és a NAS-eszköz között VAN VPN, előfordulhat, hogy a VPN blokkolja a teljes méretű 1500 bájtos Ethernet csomagokat. Ez a probléma akkor fordulhat elő, ha a NAS és az Azure HPC-gyorsítótár-példány közötti nagy cserék nem fejeződnek be, de a kisebb frissítések a várt módon működnek.
 
@@ -128,7 +131,11 @@ Nincs egyszerű módja annak, hogy megmondja, hogy a rendszer rendelkezik-e ezze
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  Ha a ping 1472 bájttal sikertelen, előfordulhat, hogy be kell állítania az MSS befogását a VPN-en, hogy a távoli rendszer megfelelően észlelje a maximális keretméretet. További információért olvassa el a [VPN-átjáró IPsec/IKE paramétereinek dokumentációját.](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)
+  Ha a ping 1472 bájttal sikertelen, valószínűleg csomagméret-probléma merül fel.
+
+A probléma megoldásához szükség lehet az MSS befogásának konfigurálására a VPN-en, hogy a távoli rendszer megfelelően észlelje a maximális keretméretet. További információért olvassa el a [VPN-átjáró IPsec/IKE paramétereinek dokumentációját.](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)
+
+Bizonyos esetekben az Azure HPC-gyorsítótár MTU-beállításának 1400-ra való módosítása segíthet. Ha azonban korlátozza az MTU a gyorsítótárban is korlátoznia kell az MTU-beállításokat az ügyfelek és a háttér-tároló rendszerek, amelyek a gyorsítótárakat. Olvassa [el A további Azure HPC-gyorsítótár beállításainak konfigurálása](configuration.md#adjust-mtu-value) a részletekért.
 
 ## <a name="check-for-acl-security-style"></a>Az ACL biztonsági stílusának ellenőrzése
 

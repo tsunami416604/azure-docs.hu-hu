@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eaba4bf7760e150f2477ee743c797f94784b8506
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278505"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535502"
 ---
 # <a name="update-management-solution-in-azure"></a>Felügyeleti megoldás frissítése az Azure-ban
 
@@ -127,7 +127,7 @@ Az Azure Marketplace-en elérhető, igény szerinti Red Hat Enterprise Linux (RH
 
 ## <a name="permissions"></a>Engedélyek
 
-A frissítési központi telepítések létrehozásához és kezeléséhez speciális engedélyekre van szükség. Ezekről az engedélyekről a [Szerepköralapú hozzáférés – Frissítéskezelés](automation-role-based-access-control.md#update-management)című témakörben olvashat.
+A frissítési központi telepítések létrehozásához és kezeléséhez speciális engedélyekre van szükség. Ezekről az engedélyekről a [Szerepköralapú hozzáférés – Frissítéskezelés](automation-role-based-access-control.md#update-management-permissions)című témakörben olvashat.
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 

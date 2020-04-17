@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd21a78d0271f91d334bba5aba748f3770ad38cf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271875"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537933"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Adatok áthelyezése az Azure Blob storage-ba
 
@@ -21,7 +21,7 @@ Ez a cikk ismerteti az adatok áthelyezése a Blob storage-ba az Azure HPC-gyors
 
 Tartsa szem előtt ezeket a tényeket:
 
-* Az Azure HPC cache egy speciális tárolási formátumot használ az adatok blob storage-ban történő rendszerezéséhez. Ez az oka annak, hogy a Blob storage-tároló nak egy új, üres tárolónak vagy egy Olyan Blob-tárolónak kell lennie, amelyet korábban az Azure HPC-gyorsítótár adataihoz használt. <!--([Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) also uses this cloud file system.)-->
+* Az Azure HPC cache egy speciális tárolási formátumot használ az adatok blob storage-ban történő rendszerezéséhez. Ez az oka annak, hogy a Blob storage-tároló nak egy új, üres tárolónak vagy egy Olyan Blob-tárolónak kell lennie, amelyet korábban az Azure HPC-gyorsítótár adataihoz használt.
 
 * Az adatok másolása az Azure HPC-gyorsítótáron keresztül egy háttértároló-tároló cél hatékonyabb, ha több ügyfél és párhuzamos műveletek használata. Egy egyszerű másolási parancs az egyik ügyféltől lassan mozgatja az adatokat.
 
@@ -31,13 +31,13 @@ Ha nem szeretné használni a betöltő segédprogramot, vagy ha tartalmat szere
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Adatok előzetes betöltése a Blob storage-ban a CLFSLoad segítségével
 
-A <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad segédprogram adatok másolása egy új Blob storage-tárolóba, mielőtt hozzáadja a tárolási célként. Ez a segédprogram egyetlen Linux-rendszeren fut, és az Azure HPC-gyorsítótárhoz szükséges saját formátumban írja az adatokat. ClFSLoad a leghatékonyabb módja a Blob storage tároló feltöltésének a gyorsítótárral való használatra.
+Az Avere CLFSLoad segédprogram segítségével adatokat másolhat egy új Blob-tárolóba, mielőtt hozzáadja azokat tárolási célként. Ez a segédprogram egyetlen Linux-rendszeren fut, és az Azure HPC-gyorsítótárhoz szükséges saját formátumban írja az adatokat. ClFSLoad a leghatékonyabb módja a Blob storage tároló feltöltésének a gyorsítótárral való használatra.
 
 Az Avere CLFSLoad segédprogram az Azure HPC cache csapata kérésére érhető el. Kérje meg a csapatpartnerét, vagy nyisson meg egy [támogatási jegyet,](hpc-cache-support-ticket.md) hogy segítséget kérjen.
 
 Ez a beállítás csak új, üres tárolókkal működik. Az Avere CLFSLoad használata előtt hozza létre a tárolót.
 
-Részletes információkat az Avere CLFSLoad disztribúció, amely az Azure HPC cache csapat kérésére érhető el. <!-- [Avere CLFSLoad readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). --><!-- caution literal link -->
+Részletes információkat az Avere CLFSLoad disztribúció, amely az Azure HPC cache csapat kérésére érhető el.
 
 A folyamat általános áttekintése:
 
@@ -51,8 +51,6 @@ Az Avere CLFSLoad segédprogramnak a következő információkra van szüksége:
 * Az üres Blob-tároló neve
 * Egy sas-jogkivonat, amely lehetővé teszi, hogy a segédprogram a tárolóba írjon
 * Az adatforrás helyi elérési útja – vagy egy helyi könyvtár, amely a másolandó adatokat tartalmazza, vagy egy csatlakoztatott távoli rendszer helyi elérési útja az adatokkal
-
-<!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 
 ## <a name="copy-data-through-the-azure-hpc-cache"></a>Adatok másolása az Azure HPC-gyorsítótáron keresztül
 

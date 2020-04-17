@@ -3,12 +3,12 @@ title: Windowsos asztali alkalmazások használatának és teljesítményének f
 description: A windowsos asztali alkalmazások használatát és teljesítményét az Application Insights segítségével elemezheti.
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670831"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537389"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
@@ -109,6 +109,6 @@ Az inicializáló t `Program.cs` `Main()` az alábbi módszerrel hozza létre a 
 ## <a name="next-steps"></a>További lépések
 * [Irányítópult létrehozása](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)
-* [Metrikák böngészése](../../azure-monitor/app/metrics-explorer.md)
+* [Metrikák böngészése](../../azure-monitor/platform/metrics-charts.md)
 * [Analytics-lekérdezések](../../azure-monitor/app/analytics.md)
 

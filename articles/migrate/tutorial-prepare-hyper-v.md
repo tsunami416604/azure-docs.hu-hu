@@ -2,14 +2,14 @@
 title: Hyper-V virtuális gépek előkészítése az Azure Migrate szolgáltatással az értékelésre/áttelepítésre
 description: Ismerje meg, hogyan készülhet fel a Hyper-V virtuális gépek értékelésére/áttelepítésére az Azure Migrate szolgáltatással.
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: e86e634812e9f2782a003a11b48cfecf91d95359
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436228"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535298"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba való értékelésére és áttelepítésére
 
@@ -19,7 +19,7 @@ Ez a cikk bemutatja, hogyan készülhet fel a helyszíni Hyper-V virtuális gép
 Ez az oktatóanyag az első egy sorozatban, amely bemutatja, hogyan értékelheti és telepítheti át a Hyper-V virtuális gépeket az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Az Azure előkészítése. Állítsa be az Azure-fiókjához és az Azure Migrate szolgáltatással való együttműködésre szolgáló erőforrások engedélyeit.
+> * Készítse elő az Azure-t. Állítsa be az Azure-fiókjához és az Azure Migrate szolgáltatással való együttműködésre szolgáló erőforrások engedélyeit.
 > * Készítse elő a helyszíni Hyper-V-állomásokat és a virtuális gépeket a kiszolgáló kiértékeléséhez. Előkészítheti egy konfigurációs parancsfájl használatával, vagy manuálisan.
 > * Előkészítse az Azure Migrate-berendezés üzembe helyezését. A készülék helyszíni virtuális gépek felderítésére és értékelésére szolgál.
 > * Készítse elő a helyszíni Hyper-V-állomásokat és virtuális gépeket a kiszolgáló áttelepítéséhez.
@@ -214,9 +214,11 @@ A készülék beállításakor a CredSSP beállítását úgy kell befejezni, [h
 Az Azure Migrate készülék beállítása előtt, és a következő oktatóanyagban megkezdi a kiértékelést, készüljön fel a berendezés üzembe helyezésére.
 
 1. A készülék követelményeinek [ellenőrzése.](migrate-appliance.md#appliance---hyper-v)
-2. [Tekintse át](migrate-appliance.md#url-access) az Azure URL-címeket, amelyeka készülék nek szüksége lesz.
+2. Tekintse át az Azure URL-címeket, amelyeket a készüléknek a [nyilvános](migrate-appliance.md#public-cloud-urls) [és](migrate-appliance.md#government-cloud-urls) kormányzati felhőkben kell elérnie. HA URL-alapú tűzfalat vagy proxyt használ, győződjön meg arról, hogy engedélyezi a hozzáférést a szükséges URL-címekhez.
 3. Tekintse át a készülék által a felderítés és az értékelés során gyűjtött adatokat.
-4. [Megjegyzés:](migrate-appliance.md#collected-data---hyper-v) a készülék porthozzáférési követelményei.
+4. [Tekintse át](migrate-appliance.md#collected-data---hyper-v) a készülék porthozzáférési követelményeit.
+
+
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Felkészülés a Hyper-V áttelepítésre

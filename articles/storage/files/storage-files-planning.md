@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76a96d36387f55889b65f16ea1ca6ec07359c377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5bf3a6df9d7292c18a93737fb7dea5d8c91f984
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502437"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536487"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Az Azure Files](storage-files-introduction.md) kétféleképpen telepíthető: a kiszolgáló nélküli Azure-fájlmegosztások közvetlen csatlakoztatásával vagy az Azure-fájlmegosztások helyszíni gyorsítótárazásával az Azure File Sync használatával. Melyik telepítési lehetőséget választja, módosítja azokat a dolgokat, amelyeket figyelembe kell vennie a központi telepítés megtervezésekor. 
@@ -28,7 +28,7 @@ Ez a cikk elsősorban a helyszíni vagy felhőbeli ügyfél által közvetlenül
 
 Az Azure-fájlmegosztások tárfiókokba történő telepítésekor a következőket javasoljuk:
 
-- Az Azure-fájlmegosztások üzembe helyezése más Azure-fájlmegosztásokkal rendelkező tárfiókokban. Bár a GPv2-tárfiókok lehetővé teszik vegyes célú tárfiókok at, mivel a tárolási erőforrások, például az Azure-fájlmegosztások és a blobtárolók osztoznak a tárfiók korlátain, az erőforrások összekeverése megnehezítheti a hibaelhárítást teljesítményproblémákat. 
+- Az Azure-fájlmegosztások üzembe helyezése más Azure-fájlmegosztásokkal rendelkező tárfiókokban. Bár a GPv2-tárfiókok lehetővé teszik vegyes célú tárfiókok, mivel a tárolási erőforrások, például az Azure-fájlmegosztások és a blob tárolók osztoznak a tárfiók korlátait, az erőforrások összekeverése megnehezítheti a teljesítményproblémák elhárítását később. 
 
 - Az Azure-fájlmegosztások üzembe helyezésekor a tárfiók IOPS-korlátaira figyelve. Ideális esetben a fájlmegosztások 1:1 tárfiókkal, de ez nem mindig lehetséges, mivel a különböző korlátok és korlátozások, mind a szervezet és az Azure-ból. Ha nem lehetséges, hogy csak egy fájlmegosztás takarásban van telepítve, fontolja meg, hogy mely megosztások lesznek nagyon aktívak, és mely megosztások lesznek kevésbé aktívak annak érdekében, hogy a legforróbb fájlmegosztások ne kerüljön ugyanabba a tárfiókba.
 
@@ -36,8 +36,8 @@ Az Azure-fájlmegosztások tárfiókokba történő telepítésekor a következ�
 
 ## <a name="identity"></a>Identitás
 Az Azure-fájlmegosztás eléréséhez a fájlmegosztás felhasználójának hitelesítenie kell magát, és engedéllyel kell rendelkeznie a megosztás eléréséhez. Ez a fájlmegosztáshoz hozzáférő felhasználó identitásán alapul. Az Azure Files három fő identitásszolgáltatóval integrálható:
-- **Ügyfél által birtokolt Active Directory** (előzetes verzió): Az Azure storage-fiókok is csatlakoztathatók az ügyfél tulajdonában lévő, Windows Server Active Directoryhoz, akárcsak egy Windows Server fájlkiszolgálóhoz vagy NAS-eszközhöz. Az Active Directory-tartományvezérlő üzembe helyezhető a helyszínen, egy Azure virtuális gép, vagy akár egy virtuális gép egy másik felhőszolgáltató; Az Azure Files független, hogy hol a tartományvezérlő található. Miután egy tárfiók tartományhoz csatlakozott, a végfelhasználó csatlakoztathatja a fájlmegosztást azzal a felhasználói fiókkal, amelyen bejelentkezett a számítógépére. Az AD-alapú hitelesítés a Kerberos hitelesítési protokollt használja.
-- **Azure Active Directory tartományi szolgáltatások (Azure AD DS)**: Az Azure AD DS egy Microsoft által felügyelt Active Directory-tartományvezérlőt biztosít, amely használható az Azure-erőforrásokhoz. A tárfiókhoz az Azure AD DS-hez való csatlakozás a tartományhoz való csatlakozáshoz hasonló előnyöket biztosít, mint az ügyfél tulajdonában lévő Active Directoryhoz való csatlakozás. Ez a telepítési lehetőség az AD-alapú engedélyeket igénylő alkalmazás-lift és-shift esetek esetén a leghasznosabb. Mivel az Azure AD DS AD-alapú hitelesítést biztosít, ez a beállítás a Kerberos hitelesítési protokollt is használja.
+- **Helyszíni Active Directory tartományi szolgáltatások (AD DS vagy helyszíni Active DS)** (előzetes verzió): Az Azure storage-fiókok is csatlakoztathatók az ügyfél tulajdonában lévő, Active Directory tartományi szolgáltatásokhoz, akárcsak egy Windows Server fájlkiszolgálóhoz vagy NAS-eszközhöz. Üzembe helyezhet egy tartományvezérlőt a helyszínen, egy Azure virtuális gépben, vagy akár egy másik felhőszolgáltatóban lévő virtuális gépként; Az Azure Files független a tartományvezérlő helyéhez képest. Miután egy tárfiók tartományhoz csatlakozott, a végfelhasználó csatlakoztathatja a fájlmegosztást azzal a felhasználói fiókkal, amelyen bejelentkezett a számítógépére. Az AD-alapú hitelesítés a Kerberos hitelesítési protokollt használja.
+- **Azure Active Directory tartományi szolgáltatások (Azure AD DS)**: Az Azure AD DS egy Microsoft által felügyelt tartományvezérlőt biztosít, amely használható az Azure-erőforrásokhoz. A tárfiókhoz az Azure AD DS-hez való csatlakozás a tartományhoz való csatlakozáshoz hasonló előnyöket biztosít, mint az ügyfél tulajdonában lévő Active Directoryhoz való csatlakozás. Ez a telepítési lehetőség az AD-alapú engedélyeket igénylő alkalmazás-lift és-shift esetek esetén a leghasznosabb. Mivel az Azure AD DS AD-alapú hitelesítést biztosít, ez a beállítás a Kerberos hitelesítési protokollt is használja.
 - **Azure storage-fiók kulcs:** Az Azure-fájlmegosztások is csatlakoztathatók egy Azure storage-fiók kulcs. A fájlmegosztás ily módon történő csatlakoztatásához a tárfiók nevét használja a felhasználónév, a tárfiók kulcsa pedig jelszóként. A tárfiók kulcs ának csatlakoztatása az Azure fájlmegosztás hatékonyan rendszergazdai művelet, mivel a csatlakoztatott fájlmegosztás teljes engedélyekkel rendelkezik a megosztáson lévő összes fájlhoz és mappához, még akkor is, ha rendelkezik ACL-okkal. Ha a tárfiók kulcsát használja az SMB csatlakoztatásához, az NTLMv2 hitelesítési protokollt használja a rendszer.
 
 A helyszíni fájlkiszolgálókról átkelő vagy a Windows fájlkiszolgálókként vagy NAS-berendezésekként való használatra szánt Azure Files új fájlmegosztások létrehozása esetén ajánlott az ajánlott tartomány, amely a tárfiókot az **Ügyfél tulajdonában lévő Active Directoryhoz** csatlakozik. Ha többet szeretne tudni arról, hogy mi ként csatlakozik a tárfiókhoz egy ügyfél tulajdonában lévő Active Directoryhoz, olvassa el az [Azure Files Active Directory áttekintéscímű témakört.](storage-files-active-directory-overview.md)
@@ -49,7 +49,7 @@ Az Azure-fájlmegosztások bárhonnan elérhetők a tárfiók nyilvános végpon
 
 Az Azure-fájlmegosztáshoz való hozzáférés feloldásához két fő lehetősége van:
 
-- A szervezet helyszíni hálózatának 445-ös portjának feloldása. Az Azure-fájlmegosztások csak a nyilvános végponton keresztül érhetők el külsőleg az internetbiztonságos protokollok, például az SMB 3.0 és a FileREST API használatával. Ez a legegyszerűbb módja az Azure-fájlmegosztás helyszíni elérésének, mivel a szervezet kimenő portszabályainak módosítása intette meg a speciális hálózati konfigurációt, ezért azt javasoljuk, hogy távolítsa el az SMB örökölt és elavult verzióit. protokoll, azaz az SMB 1.0. Ennek módjáról a [Windows/Windows Server biztonságossá tétele](storage-how-to-use-files-windows.md#securing-windowswindows-server) és [a Linux védelme című](storage-how-to-use-files-linux.md#securing-linux)témakörben olvashat.
+- A szervezet helyszíni hálózatának 445-ös portjának feloldása. Az Azure-fájlmegosztások csak a nyilvános végponton keresztül érhetők el külsőleg az internetbiztonságos protokollok, például az SMB 3.0 és a FileREST API használatával. Ez a legegyszerűbb módja az Azure-fájlmegosztás helyszíni elérésének, mivel a szervezet kimenő portszabályainak módosítása intette meg a speciális hálózati konfigurációt, azonban azt javasoljuk, hogy távolítsa el az SMB protokoll örökölt és elavult verzióit, nevezetesen az SMB 1.0-s verzióját. Ennek módjáról a [Windows/Windows Server biztonságossá tétele](storage-how-to-use-files-windows.md#securing-windowswindows-server) és [a Linux védelme című](storage-how-to-use-files-linux.md#securing-linux)témakörben olvashat.
 
 - Access Azure-fájlmegosztások ExpressRoute- vagy VPN-kapcsolaton keresztül. Ha az Azure-fájlmegosztást egy hálózati alagúton keresztül éri el, csatlakoztathatja az Azure-fájlmegosztást, például egy helyszíni fájlmegosztást, mivel az SMB-forgalom nem haladja meg a szervezeti határt.   
 
@@ -153,7 +153,7 @@ Az új fájlmegosztások a sorozatgyűjtőben lévő kreditek teljes számával 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>A szabványos fájlmegosztások akár 100 TiB-ig való lehetővé tétele
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
-#### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+#### <a name="limitations"></a>Korlátozások
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="redundancy"></a>Redundancia

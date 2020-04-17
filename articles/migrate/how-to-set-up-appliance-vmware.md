@@ -2,21 +2,26 @@
 title: Azure Migrate-készülék beállítása a VMware számára
 description: Ismerje meg, hogyan állíthat be egy Azure Migrate-berendezést a VMware virtuális gépek felméréséhez és áttelepítéséhez.
 ms.topic: article
-ms.date: 03/23/2020
-ms.openlocfilehash: 7a7d0007d2824abc781411f9529f9fa4ac89e55c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336795"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538256"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Készülék beállítása VMware virtuális gépekhez
 
-Ez a cikk ismerteti, hogyan állíthatja be az Azure Migrate készülék et az [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) eszközzel, és az [Azure Migrate:Server Áttelepítés](migrate-services-overview.md#azure-migrate-server-migration-tool) eszköz használatával ügynök nélküli áttelepítés.
+Ebből a cikkből állítsa be az Azure Migrate appliance az [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) eszközzel, és ügynök nélküli áttelepítés az [Azure Migrate:Server áttelepítési](migrate-services-overview.md#azure-migrate-server-migration-tool) eszköz használatával.
 
 Az [Azure Migrate készülék](migrate-appliance.md) egy könnyű készülék, amelyet az Azure Migrate:Server Assessment and Server Migration használ a helyszíni VMware virtuális gépek felderítésére, a vm metaadat-/teljesítményadatok küldésére az Azure-ba, valamint a VMware virtuális gépek ügynök nélküli áttelepítés során történő replikációjához.
 
-Beállíthatja az Azure Migrate appliance vmware vm-felmérés egy letöltött OVA sablon használatával, vagy egy PowerShell-telepítési parancsfájl használatával. Ez a cikk bemutatja, hogyan állíthatja be a készüléket a OVA sablon használatával. Ha a készüléket a parancsfájl használatával szeretné beállítani, kövesse a [cikkben](deploy-appliance-script.md)található utasításokat.
+A készüléket néhány módszerrel telepítheti:
+
+- VMware virtuális gép en egy letöltött OVA-sablon használatával. Ez a cikkben ismertetett módszer.
+- Állítsa be a VMware virtuális gép vagy fizikai gép egy PowerShell telepítő parancsfájlok. [Ezt a módszert](deploy-appliance-script.md) kell használni, ha nem tud beállítani egy virtuális gép egy OVA sablon használatával, vagy ha az Azure-kormányzat.
+
+A készülék létrehozása után ellenőrizze, hogy csatlakozhat-e az Azure Migrate:Server Assessment alkalmazáshoz, konfigurálhatja-e először, és regisztrálja az Azure Migrate projekttel.
 
 
 ## <a name="appliance-deployment-ova"></a>A berendezés üzembe helyezése (OVA)
@@ -62,9 +67,9 @@ Importálja a letöltött fájlt, és hozzon létre egy virtuális gép.
 9. Tekintse át és hagyja jóvá a beállításokat, majd kattintson a **Finish** (Befejezés) gombra.
 
 
-### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-hoz való hozzáférésének ellenőrzése
+## <a name="verify-appliance-access-to-azure"></a>A készülék Azure-hoz való hozzáférésének ellenőrzése
 
-Győződjön meg arról, hogy a készülék virtuális gép [e-alapú URL-címekhez.](migrate-appliance.md#url-access)
+Győződjön meg arról, hogy a készülék virtuális gép csatlakozhat az Azure-URL-címek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhők.
 
 
 ## <a name="configure-the-appliance"></a>A készülék konfigurálása
@@ -119,7 +124,7 @@ Az alkalmazások, szerepkörök és szolgáltatások felderítése és a virtuá
 2. Válassza ki az **operációs rendszert**.
 3. Adjon meg egy rövid nevet a hitelesítő adatoknak.
 4. A **Felhasználónév** és **jelszó**csoportban adjon meg egy olyan fiókot, amely legalább vendéghozzáféréssel rendelkezik a virtuális gépeken.
-5. Kattintson a **Hozzáadás** gombra.
+5. Kattintson a **Hozzáadás** parancsra.
 
 Miután megadta a vCenter Server és a Virtuálisgép hitelesítő adatait (nem kötelező), kattintson a **Mentés gombra, és indítsa el** a felderítést a helyszíni környezet felderítésének megkezdéséhez.
 

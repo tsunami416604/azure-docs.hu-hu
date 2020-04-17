@@ -2,18 +2,20 @@
 title: Az Azure Migrate újdonságai
 description: Ismerje meg az Azure Migrate szolgáltatás új és legújabb frissítéseit.
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/16/2020
 ms.custom: mvc
-ms.openlocfilehash: 9767f3ea31b57d23c8a6772ff5eb6500f7550802
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1b0221f497ae7bbf84f163eef1ddb862d8de2951
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127589"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535247"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Az Azure Migrate újdonságai
 
 [Az Azure Migrate](migrate-services-overview.md) segítségével felderítheti, felmérheti és áttelepítheti a helyszíni kiszolgálókat, alkalmazásokat és adatokat a Microsoft Azure-felhőbe. Ez a cikk összegzi az Azure Migrate új kiadásait és funkcióit.
+
+
 
 ## <a name="update-march-2020"></a>Update (2020. március)
 
@@ -58,7 +60,7 @@ Az Azure Migrate jelenlegi verziója (2019 júliusában jelent meg) számos új 
 
 ## <a name="azure-migrate-previous-version"></a>Az Azure Áttelepítése korábbi verzió
 
-Ha az Azure Migrate korábbi verzióját használta (csak a helyszíni VMware virtuális gépek felmérése támogatott), most használja az aktuális verziót. Az előző verzióban már nem hozhat létre új Azure Migrate-projekteket, és nem hajthat végre új felderítéseket. A meglévő projektek továbbra is elérhetők. Ehhez az Azure Portal on > **All Services**alkalmazásban keresse meg az Azure **Migrate (Azure Migrate)** kifejezést. Az Azure Migrate értesítések, van egy link a régi Azure Migrate projektek eléréséhez.
+Ha az Azure Migrate korábbi verzióját használja (csak a helyszíni VMware virtuális gépek felmérése támogatott), most használja az aktuális verziót. Az előző verzióban már nem hozhat létre új Azure Migrate-projekteket, és nem hajthat végre új felderítéseket. A meglévő projektek továbbra is elérhetők. Ehhez az Azure Portal on > **All Services**alkalmazásban keresse meg az Azure **Migrate (Azure Migrate)** kifejezést. Az Azure Migrate értesítések, van egy link a régi Azure Migrate projektek eléréséhez.
 
 
 

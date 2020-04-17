@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti és figyelheti a Microsoft Azure Reco
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: c11d73edd32c197aac2cec58eeb1cc20e5c6a339
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404341c8324d9e127e8d8e6bc8083926c0d3106f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673251"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537355"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>A Microsoft Azure Recovery Services (MARS) ügynökbiztonsági mentések kezelése az Azure Backup szolgáltatás használatával
 
@@ -90,7 +90,7 @@ A Fájlok és mappák biztonsági mentésének védelmét kétféleképpen szün
 
 - **A védelem leállítása és a biztonsági mentési adatok megőrzése**.
   - Ez a beállítás leállítja az összes jövőbeli biztonsági mentési feladatok védelme.
-  - Az Azure Backup szolgáltatás megtartja a helyreállítási pontokat, amelyek az adatmegőrzési szabályzat alapján biztonsági mentést.
+  - Az Azure Backup szolgáltatás megőrzi az összes meglévő helyreállítási pontok a végtelenségig. A helyreállítási pontok at a védelem folytatásáig nem ellenőrzi a rendszer a lejárati idő.
   - A le nem járt helyreállítási pontok biztonsági mentési adatait visszaállíthatja.
   - Ha úgy dönt, hogy folytatja a védelmet, akkor használhatja a *Biztonsági mentés ütemezésének újbóli engedélyezése* lehetőséget. Ezt követően az adatok az új adatmegőrzési szabály alapján maradnak meg.
 - **A védelem leállítása és a biztonsági mentési adatok törlése**.

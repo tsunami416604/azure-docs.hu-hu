@@ -5,18 +5,18 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 01/04/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b385136183fba5d1e64db3763453d2f4b23d4d96
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045172"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535638"
 ---
 # <a name="app-service-overview"></a>Az App Service áttekintése
 
 *Az Azure App Service* egy HTTP-alapú szolgáltatás webalkalmazások, REST API-k és mobil háttérrendszerek üzemeltetéséhez. Kedvenc nyelvén fejleszthet, legyen az .NET, .NET Core, Java, Ruby, Node.js, PHP, vagy Python. Az alkalmazások könnyedén futnak és méretezhetők Windows és Linux alapú környezetekben is. Linux-alapú környezetek esetén lásd: [App Service Linux rendszeren](containers/app-service-linux-intro.md). 
 
-Az App Service nem csak a Microsoft Azure erejét adja hozzá az alkalmazáshoz, például a biztonságot, a terheléselosztást, az automatikus skálázást és az automatikus felügyeletet. DevOps-képességeket is biztosít, mint például a folyamatos üzembe helyezés az Azure DevOpsból, a GitHubról, a Docker Hubról és más forrásokból, a csomagkezelés, az átmeneti környezetek, az egyéni tartomány és az SSL-tanúsítványok. 
+Az App Service nem csak a Microsoft Azure erejét adja hozzá az alkalmazáshoz, például a biztonságot, a terheléselosztást, az automatikus skálázást és az automatikus felügyeletet. A DevOps-képességek, például az Azure DevOps, a GitHub, a Docker Hub és más forrásokból, csomagkezelés, átmeneti környezetek, egyéni tartomány és TLS/SSL-tanúsítványok folyamatos üzembe helyezését is kihasználhatja. 
 
 Az App Service segítségével csak a felhasznált Azure-beli számítási erőforrásokért fizet. A használt számítási erőforrásokat az appok futtatásához használt _App Service-csomag_ határozza meg. További információt az [Azure App Service-csomagok – áttekintés című témakörben talál.](overview-hosting-plans.md)
 
@@ -47,7 +47,7 @@ Hozza létre első webalkalmazását.
 > [ASP.NET](app-service-web-get-started-dotnet-framework.md)
 
 > [!div class="nextstepaction"]
-> [Php](app-service-web-get-started-php.md)
+> [PHP](app-service-web-get-started-php.md)
 
 > [!div class="nextstepaction"]
 > [Ruby (Linuxon)](containers/quickstart-ruby.md)

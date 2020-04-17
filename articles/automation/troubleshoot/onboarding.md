@@ -8,12 +8,12 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae359e5210a9a11c33dd3ff9b474e28aa2548c57
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75889337"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536964"
 ---
 # <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Hibaelhárítás a frissítéskezelés, a változáskövetés és a készlet bevezetéskor
 
@@ -72,7 +72,7 @@ Ezt a hibát a virtuális gépen, a munkaterületen vagy a felhasználó számá
 
 #### <a name="resolution"></a>Megoldás:
 
-Győződjön meg arról, hogy megfelelő engedélyekkel rendelkezik a virtuális gép fedélzetének bedeszkázására. Tekintse át a [gépek hez szükséges engedélyeket,](../automation-role-based-access-control.md#onboarding) és próbálja meg újra a megoldást. Ha megjelenik `The solution cannot be enabled on this VM because the permission to read the workspace is missing`a hiba , `Microsoft.OperationalInsights/workspaces/read` győződjön meg arról, hogy rendelkezik az engedéllyel, hogy képes legyen megtalálni, ha a virtuális gép egy munkaterületre van beosztva.
+Győződjön meg arról, hogy megfelelő engedélyekkel rendelkezik a virtuális gép fedélzetének bedeszkázására. Tekintse át a [gépek hez szükséges engedélyeket,](../automation-role-based-access-control.md#onboarding-permissions) és próbálja meg újra a megoldást. Ha megjelenik `The solution cannot be enabled on this VM because the permission to read the workspace is missing`a hiba , `Microsoft.OperationalInsights/workspaces/read` győződjön meg arról, hogy rendelkezik az engedéllyel, hogy képes legyen megtalálni, ha a virtuális gép egy munkaterületre van beosztva.
 
 ### <a name="scenario-onboarding-fails-with-the-message---failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Eset: A bevezetés sikertelen az üzenettel – Nem sikerült konfigurálni az Automation-fiókot a diagnosztikai naplózáshoz
 
@@ -162,7 +162,7 @@ Miután eltávolította a megoldásokat, leválaszthatja a munkaterületet. Font
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-A megoldás üzembe helyezésekor a kapcsolódó erőforrások széles választéka van telepítve. Az egyik ilyen erőforrás a Microsoft Monitoring Agent Extension vagy a Log Analytics ügynök Linux. Ezek a virtuális gép által telepített virtuálisgép-bővítmények, amelyeket a virtuális gép vendégügynöke telepít, és amely a konfigurált Log Analytics-munkaterülettel való kommunikációért felelős, a bináris fájlok és egyéb fájlok letöltésének későbbi összehangolása céljából. megoldás, amit a bevezetés függ, ha megkezdi a végrehajtást.
+A megoldás üzembe helyezésekor a kapcsolódó erőforrások széles választéka van telepítve. Az egyik ilyen erőforrás a Microsoft Monitoring Agent Extension vagy a Log Analytics ügynök Linux. Ezek a virtuálisgép-bővítmények, amelyeket a virtuális gép vendégügynöke telepít, és amely a konfigurált Log Analytics-munkaterülettel való kommunikációért felelős, a bináris fájlok és más fájlok letöltésének későbbi összehangolása céljából, amelyektől a bevezetési megoldás a végrehajtás megkezdése után függ.
 Általában először az Értesítési központban megjelenő értesítésből szerez tudomást a Linux-telepítési hibák MMA- vagy Log Analytics-ügynökéről. Az értesítésre kattintva további információkat talál az adott hibáról. Az Erőforráscsoportok erőforrásra való navigálás, majd a benne lévő Központi telepítések elem is részletesen ismerteti a központi telepítési hibákat.
 Az MMA vagy a Log Analytics ügynök Linuxra történő telepítése számos okból sikertelen lehet, és a hibák megoldásához szükséges lépések a problémától függően eltérőek lehetnek. Bizonyos hibaelhárítási lépések következnek.
 

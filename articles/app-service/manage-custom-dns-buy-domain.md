@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259278"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535706"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása az Azure App Service-hez
 
@@ -137,7 +137,7 @@ A kijelölt állomásnevek az **Egyéni tartományok** lapon, az **Egyéni állo
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nincs SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. Az SSL-kötés konfigurálásához olvassa [el Az Egyéni DNS-név biztonságossá tétele SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
+> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nincs TLS/SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. A TLS-kötés konfigurálásához olvassa [el Az egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
 >
 
 Az állomásnevek teszteléséhez keresse meg a böngészőben a felsorolt állomásneveket. Az előző képernyőképen látható példában próbáljon meg _navigálni a kontoso.net_ és a www _\.kontoso.net_.
@@ -168,7 +168,7 @@ Győződjön meg arról, hogy a megvásárolt tartomány szerepel az **App Servi
 Válassza a **Gazdagépnév hozzáadása** lehetőséget.
 
 ### <a name="configure-hostname"></a>Állomásnév konfigurálása
-Az **Állomásnév hozzáadása** párbeszédpanelen írja be az App Service-tartomány vagy bármely altartomány teljesen minősített tartománynevét. Példa:
+Az **Állomásnév hozzáadása** párbeszédpanelen írja be az App Service-tartomány vagy bármely altartomány teljesen minősített tartománynevét. Például:
 
 - kontoso.net
 - www\.kontoso.net

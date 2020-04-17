@@ -3,12 +3,12 @@ title: Webalkalmazás-elemzés beállítása az ASP.NET-hez az Azure Application
 description: Konfigurálja a teljesítményt, az elérhetőséget és a felhasználói viselkedéselemző eszközöket a ASP.NET webhelyéhez, amelyet a helyszínen vagy az Azure-ban üzemeltet.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdd5b1131a0d2d3e2f53840d21cedce1577fde03
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665918"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536896"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -93,7 +93,7 @@ A portál az alkalmazásából származó telemetriai adatok nézetével nyílik
 A portálon az egyik csempére vagy diagramra kattintva további részleteket tekinthet meg.
 
 ## <a name="step-4-publish-your-app"></a>4. lépés: Az alkalmazás közzététele
-Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
+Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../azure-monitor/app/live-stream.md) ellenőrizheti, hogy minden rendben működik-e.
 
 A telemetriai adatok az Application Insights portálon halmozódnak fel, ahol figyelheti a metrikákat, és kereshet a telemetriai adatokközött. Használhatja a hatékony [Kusto lekérdezési nyelvet](/azure/kusto/query/) a használat és a teljesítmény elemzéséhez, vagy adott események megkereséséhez.
 

@@ -3,12 +3,12 @@ title: Erőforrások telepítési sorrendjének beállítása
 description: Ez a témakör azt ismerteti, hogy az erőforrások üzembe helyezése során hogyan állíthatók be egy erőforrás függővé egy másik erőforrástól, így biztosítható, hogy az erőforrások a megfelelő sorrendben legyenek telepítve.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: f11f79df875492a568a76f494dfffb4a163f64cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153284"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535468"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Erőforrások ARM-sablonokban való üzembe helyezésének sorrendjének meghatározása
 
@@ -18,7 +18,7 @@ A Resource Manager kiértékeli az erőforrások közötti függőségeket, majd
 
 ## <a name="dependson"></a>dependsOn
 
-A sablonon belül a dependsOn elem lehetővé teszi, hogy egy erőforrást egy vagy több erőforrástól függőként definiáljon. Értéke az erőforrásnevek vesszővel tagolt listája. A lista tartalmazhat [feltételesen telepített erőforrásokat.](conditional-resource-deployment.md) Ha egy feltételes erőforrás nincs telepítve, az Azure Resource Manager automatikusan eltávolítja azt a szükséges függőségek.
+A sablonon belül a dependsOn elem lehetővé teszi, hogy egy erőforrást egy vagy több erőforrástól függőként definiáljon. Értéke egy JSON-karakterlánctömb, amely mindegyike egy erőforrás neve. A tömb [feltételesen telepített](conditional-resource-deployment.md)erőforrásokat is tartalmazhat. Ha egy feltételes erőforrás nincs telepítve, az Azure Resource Manager automatikusan eltávolítja azt a szükséges függőségek.
 
 A következő példa egy virtuálisgép-méretezési készletet mutat be, amely egy terheléselosztótól, a virtuális hálózattól és egy több tárfiókot létrehozó ciklustól függ. Ezek az egyéb erőforrások nem jelennek meg a következő példában, de a sablonban máshol kell létezniük.
 

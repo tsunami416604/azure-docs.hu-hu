@@ -12,18 +12,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6c9ccb3dc29865c790e5d8cc9cfc35e68f5561d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886143"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535774"
 ---
 # <a name="supported-account-types"></a>Támogatott fióktípusok
 
 Ez a cikk ismerteti, hogy milyen fióktípusok (néha elnevezett közönségek) támogatottak az alkalmazásokban.
 
-<!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
+<!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
 ## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Támogatott fióktípusok a Microsoft Identity platformalkalmazásokban
 
@@ -44,7 +44,7 @@ A Microsoft Azure nyilvános felhőben a legtöbb típusú alkalmazás bármilye
 
 Egyes fióktípusok nem használhatók bizonyos hitelesítési folyamatokesetén. Asztali, UWP- vagy démonalkalmazásokban például:
 
-- A démonalkalmazások csak az Azure Active Directory-szervezetekkel használhatók. Nincs értelme démonalkalmazásokat használni a Microsoft személyes fiókjainak manipulálására (a rendszergazdai hozzájárulás soha nem adható meg).  
+- A démonalkalmazások csak az Azure Active Directory-szervezetekkel használhatók. Nincs értelme démonalkalmazásokat használni a Microsoft személyes fiókjainak manipulálására (a rendszergazdai hozzájárulás soha nem adható meg).
 - Az integrált Windows-hitelesítési folyamat csak munkahelyi vagy iskolai fiókokkal (a szervezetben vagy bármely szervezetben) használható. Az integrált Windows-hitelesítés tartományi fiókokkal működik, és megköveteli, hogy a gépek tartományhoz csatlakozzanak, vagy az Azure AD-hez. Ennek a folyamatnak nincs értelme a személyes Microsoft-fiókok esetében.
 - Az [erőforrás-tulajdonosjelszó-támogatás](./v2-oauth-ropc.md) (felhasználónév/jelszó) nem használható személyes Microsoft-fiókokkal. A személyes Microsoft-fiókok megkövetelik, hogy a felhasználó minden bejelentkezési munkamenetben hozzájáruljon a személyes erőforrások eléréséhez. Ezért ez a viselkedés nem kompatibilis a nem interaktív folyamatokkal.
 - Az eszközkód-folyamat még nem működik a személyes Microsoft-fiókokkal.

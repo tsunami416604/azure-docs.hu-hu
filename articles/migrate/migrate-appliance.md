@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt az Azure Áttelepítési készülék kiszolgáló felmérésés áttelepítése során használt.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437592"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538222"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -24,6 +24,17 @@ Az Azure Migrate készülék a következő forgatókönyvekben használatos.
 **VMware VM ügynök nélküli áttelepítés** | Azure áttelepítése:Kiszolgáló áttelepítése | Fedezze fel a VMware virtuális gépeket <br/><br/> VMware virtuális gépek replikálása ügynök nélküli áttelepítéssel.
 **Hyper-V VM értékelés** | Azure Áttelepítés:Kiszolgálófelmérés | Hyper-V virtuális gépek felfedezése<br/><br/> A gépek metaadatait és teljesítménymetaadatait az értékelésekhez gyűjtheti.
 **Fizikai gép felmérése** |  Azure Áttelepítés:Kiszolgálófelmérés |  Fedezze fel a fizikai kiszolgálókat (vagy a fizikai kiszolgálóként kezelt virtuális gépeket).<br/><br/> A gépek metaadatait és teljesítménymetaadatait az értékelésekhez gyűjtheti.
+
+## <a name="deployment-methods"></a>Telepítési módszerek
+
+A készülék néhány módszerrel is telepíthető:
+
+- A készülék vmware virtuális gépek és hyper-v vm-ek (OVA sablon VMware vagy VHD a Hyper-V) sablon használatával telepíthető.
+- Ha nem szeretne sablont használni, telepítheti a szoftveres virtuális gép vagy a Hyper-V egy PowerShell-parancsfájl használatával.
+- Az Azure Government, a készülék üzembe helyezéséhez parancsfájl használatával kell telepíteni.
+- Fizikai kiszolgálók esetén mindig parancsfájl használatával telepíti a készüléket.
+- A letöltési linkek az alábbi táblázatokban érhetők el.
+
 
 ## <a name="appliance---vmware"></a>Készülék - VMware 
 
@@ -67,7 +78,7 @@ Az alábbi táblázat összefoglalja az Azure Migrate appliance követelményein
 **Követelmény** | **Fizikai** 
 --- | ---
 **A készülék alkatrészei** | A készülék a következő összetevőkből áll: <br/><br/> - **Felügyeleti alkalmazás:** Ez egy webes alkalmazás a felhasználói bevitel hez a berendezés üzembe helyezése során. Az Azure-ba való áttelepítéshez szükséges gépek értékelésekor használatos.<br/> - **Felderítési ügynök**: Az ügynök összegyűjti a gép konfigurációs adatait. Az Azure-ba való áttelepítéshez szükséges gépek értékelésekor használatos.<br/>- **Értékelő ügynök**: Az ügynök teljesítményadatokat gyűjt. Az Azure-ba való áttelepítéshez szükséges gépek értékelésekor használatos.<br/>- **Automatikus frissítési szolgáltatás**: Frissíti a készülék összetevőit (24 óránként fut).
-**Támogatott telepítés** | Üzembe helyezése dedikált fizikai gépként vagy virtuális gépként egy PowerShell-telepítési parancsfájl használatával.
+**Támogatott telepítés** | Üzembe helyezése dedikált fizikai gépként vagy virtuális gépként egy PowerShell-telepítési parancsfájl használatával. A parancsfájl letölthető a portálról.
 **Projekttámogatás** |  Egy készülék egyetlen projekthez társítható. <br/> Egyetlen projekthez tetszőleges számú készülék társítható.<br/> 
 **Felderítési korlátok** | Egy készülék legfeljebb 250 fizikai kiszolgálót képes felderíteni.
 **PowerShell-szkript** | Töltse le a parancsfájlt (AzureMigrateInstaller.ps1) egy tömörített mappában a portálról. [További információ](tutorial-assess-physical.md#set-up-the-appliance). Másik lehetőségként [töltse le közvetlenül](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> A letöltés imérete 59,7 MB.
@@ -78,8 +89,10 @@ Az alábbi táblázat összefoglalja az Azure Migrate appliance követelményein
 
 Az Azure Migrate készülék internetkapcsolatra van szüksége.
 
-- A készülék üzembe helyezésekor az Azure Migrate kapcsolódási ellenőrzést végez az alábbi táblázatban összefoglalt URL-címeken.
+- A készülék üzembe helyezésekor az Azure Migrate a szükséges URL-címek en kapcsolat ellenőrzést végez.
 - Ha URL-alapú proxyt használ az internethez való csatlakozáshoz, engedélyeznie kell a hozzáférést ezekhez az URL-címekhez, ügyelve arra, hogy a proxy feloldja az URL-címek felkeresése közben kapott CNAME rekordokat.
+
+### <a name="public-cloud-urls"></a>Nyilvános felhő URL-címei
 
 **Url** | **Részletek**  
 --- | --- |
@@ -95,6 +108,25 @@ download.microsoft.com/download | Letöltések engedélyezése a Microsoft letö
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Csatlakozzon az Azure Migrate szolgáltatás URL-címeihez.
 *.hypervrecoverymanager.windowsazure.com | **VMware ügynök nélküli áttelepítéshez használható**<br/><br/> Csatlakozzon az Azure Migrate szolgáltatás URL-címeihez.
 *.blob.core.windows.net |  **VMware ügynök nélküli áttelepítéshez használható**<br/><br/>Adatok feltöltése a tárolóba áttelepítéshez.
+
+### <a name="government-cloud-urls"></a>Kormányzati felhő URL-címei
+
+**Url** | **Részletek**  
+--- | --- |
+*.portal.azure.us  | Lépjen az Azure Portalra.
+graph.windows.net | Jelentkezzen be Azure-előfizetésbe.
+login.microsoftonline.us  | Hozzon létre Azure Active Directory (AD) alkalmazásokat a készülék számára az Azure Migrate szolgáltatással való kommunikációhoz.
+management.usgovcloudapi.net | Hozzon létre Azure AD-alkalmazásokat a készülék számára az Azure Migrate szolgáltatással való kommunikációhoz.
+dc.services.visualstudio.com | A belső figyeléshez használt alkalmazásnaplók feltöltése.
+*.vault.usgovcloudapi.net | Az Azure Key Vaultban kezelheti a titkos kulcsokat.
+aka.ms/* | Hozzáférés engedélyezése más néven hivatkozásokhoz. Az Azure Migrate készülékfrissítéseinek használt.
+download.microsoft.com/download | Letöltések engedélyezése a Microsoft letöltéséből.
+*.servicebus.usgovcloudapi.net  | Kommunikáció a készülék és az Azure Áttelepítés szolgáltatás között.
+*.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Csatlakozzon az Azure Migrate szolgáltatás URL-címeihez.
+*.hypervrecoverymanager.windowsazure.us | **VMware ügynök nélküli áttelepítéshez használható**<br/><br/> Csatlakozzon az Azure Migrate szolgáltatás URL-címeihez.
+*.blob.core.usgovcloudapi.net  |  **VMware ügynök nélküli áttelepítéshez használható**<br/><br/>Adatok feltöltése a tárolóba áttelepítéshez.
+*.applicationinsights.us | A Gateway-ügynök a készüléken az Application Insights-végpont diagnosztikai figyelési eléréséhez használt.
+
 
 
 
@@ -144,7 +176,7 @@ IPv6-címek | Vm. Guest.Net
 Olvasási átviteli sebesség (MB másodpercenként) | net.received.average
 Írási átviteli sebesség (MB másodpercenként) | net.transmitted.average
 **Leltár elérési útja részletei** | 
-Név | Konténer. GetType(). név
+Name (Név) | Konténer. GetType(). név
 Gyermekobjektum típusa | Konténer. Gyermektípus
 Hivatkozás részletei | Konténer. MoRef között
 Szülő adatai | Tároló.Szülő

@@ -3,12 +3,12 @@ title: Tartós függvények közzététele az Azure Event Gridben (előzetes ver
 description: Ismerje meg, hogyan konfigurálhatja az automatikus Azure Event Grid közzétételt a tartós függvényekhez.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 671f7bd5221a936ea9dad0f0cece895bdbe9512f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78249762"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535485"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Tartós függvények közzététele az Azure Event Gridben (előzetes verzió)
 
@@ -68,14 +68,36 @@ Most már küldhet eseményeket a témához.
 
 A Durable Functions projektben `host.json` keresse meg a fájlt.
 
+### <a name="durable-functions-1x"></a>Tartós funkciók 1.x
+
 Add `eventGridTopicEndpoint` `eventGridKeySettingName` és `durableTask` egy tulajdonság.
 
 ```json
 {
+  "durableTask": {
+    "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+    "eventGridKeySettingName": "EventGridKey"
+  }
+}
+```
+
+### <a name="durable-functions-2x"></a>Tartós funkciók 2.x
+
+Vegyen `notifications` fel egy `durableTask` szakaszt a `<topic_name>` fájl tulajdonságába, és helyettesítse a választott nevet. Ha `durableTask` a `extensions` vagy tulajdonságok nem léteznek, hozza létre őket, mint ebben a példában:
+
+```json
+{
+  "version": "2.0",
+  "extensions": {
     "durableTask": {
-        "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
-        "eventGridKeySettingName": "EventGridKey"
+      "notifications": {
+        "eventGrid": {
+          "topicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+          "keySettingName": "EventGridKey"
+        }
+      }
     }
+  }
 }
 ```
 
@@ -132,7 +154,7 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = async function(context, eventGridEvent) {

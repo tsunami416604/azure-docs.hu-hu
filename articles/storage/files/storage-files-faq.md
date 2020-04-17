@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 82c516eeac6d3e88ca7b6ac1c97ebb638ba27979
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 01b5f87c2557e2195573b90766ee45e001798cca
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383915"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537695"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztásokat kínál a felhőben, amelyek az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhetők el. Az Azure-fájlmegosztásokat egyidejűleg csatlakoztathatja a Windows, Linux és macOS felhőbeli vagy helyszíni központi telepítésein. Az Azure-fájlmegosztások windows Server-gépeken is gyorsítótárazhatók az Azure File Sync használatával az adatok felhasználási helyéhez közeli gyors hozzáférés érdekében.
@@ -164,7 +164,7 @@ Ez a cikk az Azure Files funkcióival és funkcióival kapcsolatos gyakori kérd
 * <a id="ad-support"></a>
 **Az Azure Files támogatja az identitásalapú hitelesítést és hozzáférés-vezérlést?**  
     
-    Igen, az Azure Files támogatja az identitásalapú hitelesítést és hozzáférés-vezérlést. Az identitásalapú hozzáférés-vezérlés kétféle módja közül választhat: Active Directory (AD) (előzetes verzió) vagy Azure Active Directory tartományi szolgáltatások (Azure AD DS) (GA). Az AD támogatja a hitelesítést az AD-tartományhoz csatlakozó gépek használatával, akár a helyszínen, akár az Azure-ban, az Azure-fájlmegosztások SMB-n keresztüli eléréséhez. Az Azure AD DS-hitelesítés Az Azure Files SMB-n keresztül lehetővé teszi az Azure AD DS-tartományhoz csatlakozó Windows-virtuális gépek számára a megosztások, könyvtárak és fájlok azure AD-hitelesítő adatok használatával való eléréséhez. További információt az [Azure Files identitásalapú hitelesítési támogatásának áttekintése az SMB-hozzáféréshez](storage-files-active-directory-overview.md)című témakörben talál. 
+    Igen, az Azure Files támogatja az identitásalapú hitelesítést és hozzáférés-vezérlést. Az identitásalapú hozzáférés-vezérlés kétféle képpen használható: helyszíni Active Directory tartományi szolgáltatások (előzetes verzió) vagy Azure Active Directory tartományi szolgáltatások (Azure AD DS). A helyszíni Active Directory tartományi szolgáltatások (AD DS) támogatja a hitelesítést az Active Directory tartományi szolgáltatásokhoz csatlakozott gépek használatával, akár a helyszínen, akár az Azure-ban, az Azure fájlmegosztások SMB-n keresztüli eléréséhez. Az Azure AD DS-hitelesítés Az Azure Files SMB-n keresztül lehetővé teszi az Azure AD DS-tartományhoz csatlakozó Windows-virtuális gépek számára a megosztások, könyvtárak és fájlok azure AD-hitelesítő adatok használatával való eléréséhez. További információt az [Azure Files identitásalapú hitelesítési támogatásának áttekintése az SMB-hozzáféréshez](storage-files-active-directory-overview.md)című témakörben talál. 
 
     Az Azure Files két további lehetőséget kínál a hozzáférés-vezérlés kezelésére:
 
@@ -185,30 +185,30 @@ Ez a cikk az Azure Files funkcióival és funkcióival kapcsolatos gyakori kérd
     Igen, támogatjuk azokat a REST API-kat, amelyek a [2019-07-es](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (vagy újabb) REST API használatakor ntfs-acl-okat hoznak létre, illetve nem másolnak könyvtárakhoz vagy fájlokhoz.
 
 * <a id="ad-vm-subscription"></a>
-**Hozzáférhetek az Azure Files azure AD hitelesítő adatait egy virtuális gép egy másik előfizetés?**
+**Hozzáférhetek az Azure-fájlmegosztásokhoz az Azure AD hitelesítő adataival egy másik előfizetésben lévő virtuális gépről?**
 
-    Ha az előfizetés, amely alatt a fájlmegosztás telepítve van társítva ugyanazzal az Azure AD-bérlővel, mint az Azure AD tartományi szolgáltatások központi telepítése, amelyhez a virtuális gép tartomány-csatlakozott, majd hozzáférhet az Azure Files-hoz ugyanazt az Azure AD hitelesítő adatokhasználatával. A korlátozás nem az előfizetésre, hanem a társított Azure AD-bérlőre van kiszabva.
+    Ha az előfizetés, amely alatt a fájlmegosztás telepítve van társítva ugyanazzal az Azure AD-bérlővel, mint az Azure AD DS központi telepítése, amelyhez a virtuális gép tartomány-csatlakozott, majd hozzáférhet az Azure-fájlmegosztások ugyanazt az Azure AD hitelesítő adatok használatával. A korlátozás nem az előfizetésre, hanem a társított Azure AD-bérlőre van kiszabva.
     
 * <a id="ad-support-subscription"></a>
-**Engedélyezhetem az Azure Files Azure AD DS vagy az AD-hitelesítést egy Olyan Azure AD-bérlővel, amely eltér attól az elsődleges bérlőtől, amelyhez a fájlmegosztás társítva van?**
+**Engedélyezhetem az Azure AD DS vagy a helyszíni AD DS-hitelesítést az Azure-fájlmegosztásokhoz egy Azure AD-bérlő használatával, amely eltér az Azure-fájlmegosztás elsődleges bérlőjétől?**
 
-    Nem, az Azure Files csak az Azure AD DS vagy AD-integrációt támogatja egy Olyan Azure AD-bérlővel, amely ugyanabban az előfizetésben található, mint a fájlmegosztás. Csak egy előfizetés társítható egy Azure AD-bérlővel. Ez a korlátozás az Azure AD DS és az AD hitelesítési módszerekre egyaránt vonatkozik. Ha az AD hitelesítéshez, az AD hitelesítő adatait szinkronizálni kell az Azure AD, amely a tárfiók társítva van.
+    Nem, az Azure Files csak az Azure AD DS vagy a helyszíni AD DS-integrációt támogatja egy Olyan Azure AD-bérlővel, amely ugyanabban az előfizetésben található, mint a fájlmegosztás. Csak egy előfizetés társítható egy Azure AD-bérlővel. Ez a korlátozás az Azure AD DS és a helyszíni AD DS hitelesítési módszerekre egyaránt vonatkozik. A helyszíni AD DS hitelesítéshez való használataesetén [az AD DS hitelesítő adatait szinkronizálni kell az Azure AD-vel,](../../active-directory/hybrid/how-to-connect-install-roadmap.md) amelyhez a tárfiók társítva van.
 
 * <a id="ad-linux-vms"></a>
-**Az Azure Files Azure AD DS vagy AD-hitelesítés támogatja a Linux virtuális gépeket?**
+**Az Azure AD DS vagy a helyszíni AD DS-hitelesítés az Azure fájlmegosztások linuxos virtuális gépeket támogatja?**
 
     Nem, a Linux virtuális gépekhitelesítés nem támogatott.
 
 * <a id="ad-aad-smb-afs"></a>
-**Használható az Azure Files Azure AD DS-hitelesítés vagy az Active Directory (AD) hitelesítés (előzetes verzió) az Azure File Sync által kezelt fájlmegosztásokon?**
+**Az Azure File Sync által kezelt fájlmegosztások támogatják az Azure AD DS vagy a helyszíni AD DS (előzetes verzió) hitelesítést?**
 
-    Igen, engedélyezheti az Azure AD DS vagy AD-hitelesítést az Azure-fájlszinkronizálás által kezelt fájlmegosztáson. A helyi fájlkiszolgálókon lévő címtár-/fájl NTFS-akon lévő kontifikált módosításokat az Azure Files rétegezi, és fordítva.
+    Igen, engedélyezheti az Azure AD DS vagy a helyszíni AD DS-hitelesítést az Azure File Sync által kezelt fájlmegosztáson. A helyi fájlkiszolgálókon lévő címtár-/fájl NTFS-akon lévő kontifikált módosításokat az Azure Files rétegezi, és fordítva.
 
 * <a id="ad-aad-smb-files"></a>
-**Hogyan ellenőrizhetem, hogy engedélyeztem-e az AD-hitelesítést a tárfiókomon és az AD tartományadatain?**
+**Hogyan ellenőrizhetem, hogy engedélyeztem-e az AD DS-hitelesítést a tárfiókomban, és lekérhetem-e a tartományadatait?**
 
-    Az [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) megadott utasításokból megtudhatja, hogy az Azure Files AD-hitelesítés engedélyezve van-e a tárfiókban, és lekérheti-e az AD-tartomány adatait.
-
+    Az itt található utasításokat [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)találja.
+    
 * <a id="encryption-at-rest"></a>
 **Hogyan győződhetek meg arról, hogy az Azure-fájlmegosztás titkosítva van in-t?**  
 
@@ -241,15 +241,15 @@ Ez a cikk az Azure Files funkcióival és funkcióival kapcsolatos gyakori kérd
     Nem, a Linux virtuális gépekhitelesítés nem támogatott.
 
 * <a id="ad-multiple-forest"></a>
-**Az Azure Files AD-hitelesítés támogatja az integrációt egy Több erdőt használó AD-környezettel?**    
+**Az Azure-fájlmegosztások helyszíni AD DS-hitelesítése támogatja az integrációt egy Több erdőt használó AD DS-környezettel?**    
 
-    Az Azure Files AD-hitelesítés csak az AD tartományi szolgáltatás erdőjével integrálódik, amelyhez a tárfiók regisztrálva van. Egy másik AD-erdőből származó hitelesítés támogatásához a környezetnek megfelelően kell konfigurálnia az erdőszintű megbízhatóságot. Az, ahogyan az Azure Files regisztrál egy AD tartományi szolgáltatásra, többnyire megegyezik a normál fájlkiszolgálóval, ahol identitást (számítógép- vagy szolgáltatásbejelentkezési fiókot) hoz létre az AD-ben a hitelesítéshez. Az egyetlen különbség az, hogy a tárfiók regisztrált SPN-je "file.core.windows.net" végződik, amely nem egyezik meg a tartományutótaggal. Érdeklődjön a tartományi rendszergazdával, hogy szükség van-e a DNS-útválasztási házirend frissítésére ahhoz, hogy a különböző tartományutótag miatt több erdőhitelesítést engedélyezhet.
+    A helyszíni Azure-fájlok AD DS-hitelesítés csak integrálható a tartományi szolgáltatás erdőjével, amelyhez a tárfiók regisztrálva van. Egy másik erdőhitelesítés támogatásához a környezetnek megfelelően konfigurált erdőszintű megbízhatósági kapcsolattal kell rendelkeznie. Az, ahogyan az Azure Files regisztráljon az AD DS-ben, majdnem megegyezik a normál fájlkiszolgálóval, ahol létrehoz egy identitást (számítógép- vagy szolgáltatásbejelentkezési fiókot) az AD DS-ben a hitelesítéshez. Az egyetlen különbség az, hogy a tárfiók regisztrált SPN-je "file.core.windows.net" végződik, amely nem egyezik meg a tartományutótaggal. Érdeklődjön a tartományi rendszergazdával, hogy szükség van-e a DNS-útválasztási házirend frissítésére ahhoz, hogy a különböző tartományutótag miatt több erdőhitelesítést engedélyezhet.
 
 * <a id=""></a>
-**Milyen régiók érhetők el az Azure Files AD-hitelesítéshez (előzetes verzió)?**
+**Milyen régiók érhetők el az Azure Files AD DS-hitelesítéshez (előzetes verzió)?**
 
-    A részleteket az [AD regionális elérhetőségében](storage-files-identity-auth-active-directory-enable.md#regional-availability) találja.
-
+    A részleteket az [AD DS regionális elérhetőségében](storage-files-identity-auth-active-directory-enable.md#regional-availability) találja.
+    
 * <a id="ad-aad-smb-afs"></a>
 **Használható az Azure Files Active Directory (AD) hitelesítése (előzetes verzió) az Azure File Sync által kezelt fájlmegosztásokon?**
 

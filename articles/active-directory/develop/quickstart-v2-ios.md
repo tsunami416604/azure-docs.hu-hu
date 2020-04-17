@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 6a127510b454244b32ad481cdb32c5d2e8faf9a0
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 47485d8d9007a6cf6432b7bf401c7c1c34a9863a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991177"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536131"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Rövid útmutató: Jelentkezzen be a felhasználókba, és hívja fel a Microsoft Graph API-t iOS vagy macOS alkalmazásból
 
@@ -30,7 +30,7 @@ Ez a rövid útmutató az iOS- és a macOS-alkalmazásokra egyaránt vonatkozik.
 > [!NOTE]
 > **Előfeltételek**
 > * XCode 10+
-> * iOS 10+ 
+> * iOS 10+
 > * macOS 10.12+
 
 > [!div renderon="docs"]
@@ -83,7 +83,7 @@ A terminálablakban keresse meg a letöltött kódmintát `pod install` tartalma
 #### <a name="step-4-configure-your-project"></a>4. lépés: A projekt konfigurálása
 
 > [!div renderon="docs"]
-> Ha a fenti 1. 
+> Ha a fenti 1.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
@@ -149,9 +149,9 @@ A terminálablakban keresse meg a letöltött kódmintát `pod install` tartalma
 >          </array>
 >       </dict>
 >    </array>
-> 
+>
 >    ```
-> 1. Építsd & futtassa az alkalmazást! 
+> 1. Építsd & futtassa az alkalmazást!
 
 ## <a name="more-information"></a>További információ
 
@@ -192,7 +192,7 @@ Ezután inicializálja az MSAL-t az alábbi kóddal:
 
 ```swift
 let authority = try MSALAADAuthority(url: URL(string: kAuthority)!)
-            
+
 let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
@@ -209,7 +209,7 @@ Az alkalmazásnak a következővel `AppDelegate`is rendelkeznie kell a alkalmaz�
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
+
         return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
     }
 
@@ -221,21 +221,21 @@ Az alkalmazásnak a következővel `AppDelegate`is rendelkeznie kell a alkalmaz�
 
  ```swift
  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        
+
         guard let urlContext = URLContexts.first else {
             return
         }
-        
+
         let url = urlContext.url
         let sourceApp = urlContext.options.sourceApplication
-        
+
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
  ```
 
-Végül az alkalmazásnak `LSApplicationQueriesSchemes` rendelkeznie kell egy bejegyzéssel `CFBundleURLTypes`az ***Info.plist-ben*** a mellett. A minta ezzel együtt érkezik. 
+Végül az alkalmazásnak `LSApplicationQueriesSchemes` rendelkeznie kell egy bejegyzéssel `CFBundleURLTypes`az ***Info.plist-ben*** a mellett. A minta ezzel együtt érkezik.
 
-   ```xml 
+   ```xml
    <key>LSApplicationQueriesSchemes</key>
    <array>
       <string>msauthv2</string>
@@ -249,10 +249,10 @@ Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: 
 
 #### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken: Token interaktív beszerzése
 
-Bizonyos helyzetekben a felhasználóknak kapcsolatba kell lépniük a Microsoft identity platformmal. Ezekben az esetekben előfordulhat, hogy a végfelhasználónak ki kell választania a fiókját, meg kell adnia a hitelesítő adatait, vagy hozzá kell járulnia az alkalmazás engedélyeihez. Például: 
+Bizonyos helyzetekben a felhasználóknak kapcsolatba kell lépniük a Microsoft identity platformmal. Ezekben az esetekben előfordulhat, hogy a végfelhasználónak ki kell választania a fiókját, meg kell adnia a hitelesítő adatait, vagy hozzá kell járulnia az alkalmazás engedélyeihez. Például:
 
 * Az első alkalommal, amikor felhasználók bejelentkeznek az alkalmazásba
-* Ha egy felhasználó alaphelyzetbe állítja a jelszavát, meg kell adnia a hitelesítő adatait 
+* Ha egy felhasználó alaphelyzetbe állítja a jelszavát, meg kell adnia a hitelesítő adatait
 * Amikor az alkalmazás első alkalommal kér hozzáférést egy erőforráshoz
 * Ha többes fa- vagy más feltételes hozzáférési házirendre van szükség
 
@@ -263,19 +263,19 @@ self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* 
 
 > |Az elemek magyarázata:||
 > |---------|---------|
-> | `scopes` | A kért hatóköröket tartalmazza `[ "user.read" ]` (azaz `[ "<Application ID URL>/scope" ]` a Microsoft Graph`api://<Application ID>/access_as_user`vagy az egyéni webes API-khoz ( ) |
+> | `scopes` | A kért hatóköröket tartalmazza `[ "user.read" ]` (azaz `[ "<Application ID URL>/scope" ]` a Microsoft Graph`api://<Application ID>/access_as_user`vagy az egyéni webes API-k ( ) esetében |
 
 #### <a name="acquiretokensilent-get-an-access-token-silently"></a>acquireTokenSilent: Egy hozzáférési jogkivonat csendes beszerzése
 
-Az alkalmazások nem követelhetik meg a felhasználóktól, hogy minden alkalommal jelentkezzenek be, amikor jogkivonatot kérnek. Ha a felhasználó már bejelentkezett, ez a módszer lehetővé teszi, hogy az alkalmazások csendben kérjenek jogkivonatokat. 
+Az alkalmazások nem követelhetik meg a felhasználóktól, hogy minden alkalommal jelentkezzenek be, amikor jogkivonatot kérnek. Ha a felhasználó már bejelentkezett, ez a módszer lehetővé teszi, hogy az alkalmazások csendben kérjenek jogkivonatokat.
 
 ```swift
 self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previousAccount, error) in
-            
+
    guard let account = currentAccount else {
       return
    }
-            
+
    let silentParams = MSALSilentTokenParameters(scopes: self.kScopes, account: account)
    self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error) in /* Add your handling logic */}
 }
@@ -283,7 +283,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 
 > |Az elemek magyarázata: ||
 > |---------|---------|
-> | `scopes` | A kért hatóköröket tartalmazza `[ "user.read" ]` (azaz `[ "<Application ID URL>/scope" ]` a Microsoft Graph`api://<Application ID>/access_as_user`vagy az egyéni webes API-khoz ( ) |
+> | `scopes` | A kért hatóköröket tartalmazza `[ "user.read" ]` (azaz `[ "<Application ID URL>/scope" ]` a Microsoft Graph`api://<Application ID>/access_as_user`vagy az egyéni webes API-k ( ) esetében |
 > | `account` | A számlakivonathoz szükséges fiók. Ez a rövid útmutató egyetlen fiókalkalmazásról szól. Ha többfiókos alkalmazást szeretne építeni, logika definiálása szükséges a tokenkérelmekhez `accountsFromDeviceForParameters:completionBlock:` használandó és helyes átadáshoz használandó fiók azonosításához.`accountIdentifier` |
 
 ## <a name="next-steps"></a>További lépések

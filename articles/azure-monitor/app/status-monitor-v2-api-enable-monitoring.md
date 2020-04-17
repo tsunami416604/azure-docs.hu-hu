@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 8bbdc96a49fffc91f80d24a9eb0926766f86ee16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5d66c5c21f7491e3bdc6bb70f693c3b98bf62dd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671307"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536743"
 ---
 # <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Application Insights-ügynök API: Enable-ApplicationInsightsMonitoring
 
@@ -66,10 +66,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ## <a name="parameters"></a>Paraméterek
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
-**Szükséges.** Ezzel a paraméterrel egyetlen instrumentation kulcsot biztosíthat a célszámítógépen lévő összes alkalmazás számára.
+**Kötelező.** Ezzel a paraméterrel egyetlen instrumentation kulcsot biztosíthat a célszámítógépen lévő összes alkalmazás számára.
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Szükséges.** Ezzel a paraméterrel több instrumentation kulcsot és az egyes alkalmazások által használt instrumentation kulcsok leképezését biztosítja.
+**Kötelező.** Ezzel a paraméterrel több instrumentation kulcsot és az egyes alkalmazások által használt instrumentation kulcsok leképezését biztosítja.
 A beállítással egyetlen telepítési parancsfájlt `MachineFilter`hozhat létre több számítógéphez.
 
 > [!IMPORTANT]
@@ -147,7 +147,7 @@ Successfully enabled Application Insights Status Monitor
 ## <a name="next-steps"></a>További lépések
 
   A telemetriai adatok megtekintése:
- - [Fedezze fel a teljesítmény](../../azure-monitor/app/metrics-explorer.md) és a használat figyeléséhez.
+ - [Fedezze fel a teljesítmény](../../azure-monitor/platform/metrics-charts.md) és a használat figyeléséhez.
 - [Keresés események és naplók](../../azure-monitor/app/diagnostic-search.md) diagnosztizálására problémákat.
 - [Az Analytics használata](../../azure-monitor/app/analytics.md) fejlettebb lekérdezésekhez.
 - [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).

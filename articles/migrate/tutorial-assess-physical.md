@@ -2,17 +2,17 @@
 title: Az Azure Áttelepítési Kiszolgáló felmérésével fizikai kiszolgálók at vizsgálhat az Azure-ba való áttelepítéshez
 description: Ez a témakör azt ismerteti, hogyan értékelheti a helyszíni fizikai kiszolgálókat az Azure-ba való áttelepítéshez az Azure Áttelepítési kiszolgáló értékelése használatával.
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: c89c731712a625e5f3b7a1a7e9306f6a7480b96b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/15/2020
+ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76990300"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535434"
 ---
-# <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Fizikai kiszolgálók felmérése az Azure Áttelepítése szolgáltatással: Kiszolgálófelmérés
+# <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Fizikai kiszolgálók felmérése az Azure Áttelepítése:Kiszolgálófelmérés segítségével
 
-Ez a cikk bemutatja, hogyan értékelheti a helyszíni fizikai kiszolgálók, az Azure Áttelepítés: Kiszolgálóértékelése eszközzel.
+Ez a cikk bemutatja, hogyan értékelheti a helyszíni fizikai kiszolgálók, az Azure Migrate:Server Assessment eszközzel.
 
 [Az Azure Migrate](migrate-services-overview.md) olyan eszközök központi eszköze, amelyek segítségével felderítheti, felmérheti és áttelepítheti az alkalmazásokat, az infrastruktúrát és a számítási feladatokat a Microsoft Azure-ba. A központ tartalmazza az Azure Migrate eszközöket és a külső független szoftverszállítói (ISV) ajánlatokat.
 
@@ -34,8 +34,10 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 - [Fejezze be](tutorial-prepare-physical.md) a sorozat első oktatóanyagát. Ha nem, az oktatóanyagutasításai nem fognak működni.
 - Itt van, mit kellett volna tennie az első bemutató:
-    - [Állítsa be az Azure-engedélyeket](tutorial-prepare-physical.md#prepare-azure) az Azure Migrate számára.
+    - [Állítsa be az Azure-engedélyeket](tutorial-prepare-physical.md) az Azure Migrate számára.
     - [Készítse elő a fizikai kiszolgálókat](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) az értékelésre. A készülékre vonatkozó követelményeket ellenőrizni kell. A fizikai kiszolgálófelderítéshez be kell állítani egy fiókot is. A szükséges portok nak elérhetőnek kell lenniük, és tisztában kell lennie az Azure-hoz való hozzáféréshez szükséges URL-címekkel.
+
+
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate projekt beállítása
@@ -49,8 +51,8 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
     ![Kiszolgálók felfedezése és értékelése](./media/tutorial-assess-physical/assess-migrate.png)
 
 4. Az **Első lépések** területen kattintson az **Eszközök hozzáadása** elemre.
-5. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.     
-6. A **Projekt részletei**területen adja meg a projekt nevét és azt a földrajzi elhelyezkedést, amelyben a projektet létre szeretné hozni. Ázsia, Európa, az Egyesült Királyság és az Egyesült Államok támogatott.
+5. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.  
+6. A **Projekt részletei**területen adja meg a projekt nevét és azt a földrajzi elhelyezkedést, amelyben a projektet létre szeretné hozni. Tekintse át a támogatott földrajzi területeket [az állami](migrate-support-matrix.md#supported-geographies-public-cloud) és [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)számára.
 
     - A projekt földrajzi csak a helyszíni kiszolgálókról gyűjtött metaadatok tárolására szolgál.
     - Migrálás futtatása során bármilyen célrégiót választhat.
@@ -96,16 +98,24 @@ Töltse le a készülék tömörített fájlját.
 A tömörített fájl telepítése előtt ellenőrizze, hogy a tömörített fájl biztonságos-e.
 
 1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
-2. A következő parancs futtatása a tömörített fájl kivonatának létrehozásához
+2. A tömörített fájl kivonatának létrehozásához futtassa a következő parancsot:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - Példa nyilvános felhőhasználatára:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - Példa használati kormányzati felhő:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  Kivonatértékek ellenőrzése:
+ 
+    - A nyilvános felhőhöz (a készülék legújabb verziójához):
 
-3.  A legújabb készülék verzió, a generált kivonat olt kell egyeznie ezekkel a beállításokkal.
+        **Algoritmus** | **Kivonat értéke**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-  **Algoritmus** | **Kivonat értéke**
-  --- | ---
-  MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-  SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    - Az Azure-kormány (a legújabb készülékverzió):
+
+        **Algoritmus** | **Kivonat értéke**
+          --- | ---
+          MD5 | f81c155fc4a1409901caea948713913f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Az Azure Migrate telepítőparancsfájljának futtatása
 
@@ -116,28 +126,26 @@ A telepítő parancsfájl jaa következő:
 - Az IIS újraírható moduljának letöltése és telepítése. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a beállításkulcsot (HKLM) az Azure Migrate állandó beállításrészleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
-    - **Konfigurációs fájlok**: %ProgramData%\Microsoft Azure\Config
-    - **Naplófájlok**: %ProgramData%\Microsoft Azure\Logs
+    - **Konfigurációs fájlok**: %Programdata%\Microsoft Azure\Config
+    - **Naplófájlok**: %Programdata%\Microsoft Azure\Logs
 
 Futtassa a parancsfájlt az alábbiak szerint:
 
-1. Bontsa ki a tömörített fájlt a kiszolgálón lévő, a készüléket fogadó mappába.
+1. Bontsa ki a tömörített fájlt a kiszolgálón lévő, a készüléket fogadó mappába.  Győződjön meg arról, hogy nem futtatja a parancsfájlt egy számítógépen egy meglévő Azure Migrate-berendezésen.
 2. Indítsa el a PowerShellt a fenti kiszolgálón rendszergazdai (emelt szintű) jogosultsággal.
 3. Módosítsa a PowerShell-könyvtárat arra a mappára, ahol a tartalom kilett nyerve a letöltött tömörített fájlból.
 4. Futtassa az **AzureMigrateInstaller.ps1** nevű parancsfájlt a következő parancs futtatásával:
-    ```
-    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-    ```
-A parancsfájl elindítja a készülék webalkalmazását, amint az sikeresen befejeződik.
 
-Bármilyen probléma esetén a parancsfájlnaplókat a C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log számú időbélyegű naplóban érheti el.
+    - A nyilvános felhő esetében:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - Az Azure Government esetében:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 
-> [!NOTE]
-> Kérjük, ne hajtsa végre az Azure Migrate telepítő parancsfájlt egy meglévő Azure Migrate-berendezésen.
+    A parancsfájl elindítja a készülék webalkalmazását, amint az sikeresen befejeződik.
+
+Ha bármilyen probléma merül fel, a parancsfájlnaplókat a C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log oldalon érheti el hibaelhárítási célokra.
 
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-hoz való hozzáférésének ellenőrzése
 
-Győződjön meg arról, hogy a készülék képes csatlakozni az [Azure URL-címekhez.](migrate-appliance.md#url-access)
+Győződjön meg arról, hogy a készülék képes csatlakozni az Azure-URL-címek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhők.
 
 
 ### <a name="configure-the-appliance"></a>A készülék konfigurálása
@@ -173,7 +181,7 @@ Először állítsa be a készüléket.
 Most csatlakoztassa a készülékről a fizikai kiszolgálókat, hogy felfedezzék, és indítsa el a felderítést.
 
 1. Kattintson a **Hitelesítő adatok hozzáadása gombra** a kiszolgálók felderítéséhez használt fiókhitelesítő adatok megadásához.  
-2. Adja meg az **operációs rendszert,** a hitelesítő adatok rövid nevét, a **felhasználónevet** és a **jelszót,** majd kattintson a **Hozzáadás gombra.**
+2. Adja meg az **operációs rendszert**, a hitelesítő adatok rövid nevét, valamint a felhasználónevet és a jelszót. Ezután kattintson az **Add** (Hozzáadás) gombra.
 Windows- és Linux-kiszolgálókhoz egy-egy hitelesítő adatot adhat hozzá.
 4. Kattintson **a Kiszolgáló hozzáadása**gombra, és adja meg a kiszolgáló adatait – FQDN/IP-cím és a hitelesítő adatok rövid neve (soronként egy bejegyzés) a kiszolgálóhoz való csatlakozáshoz.
 3. Kattintson a **Validate** (Érvényesítés) elemre. Az ellenőrzés után megjelenik a felderíthető kiszolgálók listája.

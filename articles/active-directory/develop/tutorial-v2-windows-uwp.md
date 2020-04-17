@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 205f4a27a7903bc5a1da3fc12e3d4a02b23f58cf
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 0dc70aa67a1414c08ec70e2e034f4ab12b194c0a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990922"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535944"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph API hívása univerzális Windows Platform alkalmazásból (XAML)
 
@@ -48,7 +48,7 @@ Ez az útmutató a következő NuGet csomagot használja:
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ez a szakasz lépésenként bemutatja, hogy miként integrálható a Windows asztali .NET alkalmazás (XAML) a Bejelentkezés és a Microsoft alkalmazásba. Ezután az alkalmazás lekérdezheti a jogkivonatot igénylő webes API-kat, például a Microsoft Graph API-t.
+Ez a szakasz lépésenként bemutatja, hogy miként integrálható a Windows asztali .NET alkalmazás (XAML) a Bejelentkezés és a Microsoft alkalmazásba. Ezután az alkalmazás lekérdezheti a webes API-kat, amelyek egy jogkivonatot igényelnek, például a Microsoft Graph API-t.
 
 Ez az útmutató létrehoz egy alkalmazást, amely megjelenít egy gombot, amely lekérdezi a Graph API-t és egy kijelentkezési gombot. Olyan szövegdobozokat is tartalmaz, amelyek tartalmazzák a hívások eredményét.
 
@@ -118,7 +118,7 @@ Ez a szakasz bemutatja, hogyan használhatja az MSAL-t a Microsoft Graph API tok
         //Set the scope for API call to user.read
         string[] scopes = new string[] { "user.read" };
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
         // - the content of Tenant with the information about the accounts allowed to sign in in your application:
@@ -126,9 +126,9 @@ Ez a szakasz bemutatja, hogyan használhatja az MSAL-t a Microsoft Graph API tok
         //   - for any Work or School accounts, use organizations
         //   - for any Work or School accounts, or Microsoft personal account, use common
         //   - for Microsoft Personal account, use consumers
-        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";        
+        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";
 
-        public IPublicClientApplication PublicClientApp { get; } 
+        public IPublicClientApplication PublicClientApp { get; }
 
         public MainPage()
         {
@@ -153,8 +153,8 @@ Ez a szakasz bemutatja, hogyan használhatja az MSAL-t a Microsoft Graph API tok
          ResultText.Text = string.Empty;
          TokenInfoText.Text = string.Empty;
 
-         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.            
-         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false); 
+         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.
+         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
          IAccount firstAccount = accounts.FirstOrDefault();
 
          try
@@ -239,7 +239,7 @@ A következő új módszerrel *MainPage.xaml.cs:*
        {
            var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, url);
            // Add the token in Authorization header
-           request.Headers.Authorization = 
+           request.Headers.Authorization =
              new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
            response = await httpClient.SendAsync(request);
            var content = await response.Content.ReadAsStringAsync();

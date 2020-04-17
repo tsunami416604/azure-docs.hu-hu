@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cf9be653da2dd587b93724b6e319dc4d20686c2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76901412"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536435"
 ---
 | Erőforrás | Szabványos fájlmegosztások | Prémium fájlmegosztások |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "76901412"
 | Az objektum (könyvtárak és fájlok) maximális nevének hossza | 2048 karakter | 2048 karakter |
 | A elérési út maximális összetevője (az \A\B\C\D elérési úton minden betű egy összetevő) | 255 karakter | 255 karakter |
 
-\*A legtöbb régióban elérhető: A rendelkezésre álló régiókra vonatkozó részletek területi [elérhetősége.](../articles/storage/files/storage-files-planning.md#regional-availability)
+\*A szabványos fájlmegosztások alapértelmezett száma 5 TiB, [lásd: Nagy fájlmegosztások engedélyezése és létrehozása](../articles/storage/files/storage-files-how-to-create-large-file-share.md) a szabványos fájlmegosztások 100 TiB-ig történő növelésének részleteiről.

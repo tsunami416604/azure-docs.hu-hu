@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1fd22772e72cba4cce3f9fa2751dc0df0e15bb9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77602934"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535598"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményalapú háttérfeldolgozáshoz
 
@@ -155,14 +155,14 @@ Az automatikus eseményindítók függvényt hívnak meg egy eseményre válaszu
 ```cs
 public static void Run(
     [QueueTrigger("myqueue-items")] string myQueueItem,
-    [Blob("samples-workitems/{myQueueItem}", FileAccess.Read)] Stream myBlob,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
     ILogger log)
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
 ```
 
-Az `QueueTrigger` attribútum arra utasítja a futásidejűt, hogy `myqueue-items` hívja meg a függvényt, ha várólistaüzenet jelenik meg a várólistában. Az `Blob` attribútum azt mondja a futásidejűnek, hogy a várólista-üzenet használatával olvassa el a blobot a *mintamunkaelemek* tárolójában. A várólista-üzenet tartalma, amely a `myQueueItem` paraméter ben lévő függvénynek adták át, a blob neve.
+Az `QueueTrigger` attribútum arra utasítja a futásidejűt, hogy `myqueue-items` hívja meg a függvényt, ha várólistaüzenet jelenik meg a várólistában. Az `Blob` attribútum azt mondja a futásidejűnek, hogy a várólista-üzenet használatával olvassa el a blobot a *mintamunkaelemek* tárolójában. A blobelem nevét a `samples-workitems` tárolóban közvetlenül a várólista-eseményindítóból kapja meg kötési kifejezésként (`{queueTrigger}`).
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 

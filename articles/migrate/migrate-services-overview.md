@@ -2,14 +2,14 @@
 title: Az Azure Migrate bemutatása
 description: További információ az Azure Áttelepítés szolgáltatásról.
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: a9723f15d496393d27bdd227ec1121a7878b37e0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aa999b874b6e8b0075ab905a72ff04f03cb39ac7
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127743"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537899"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -40,6 +40,9 @@ Az Azure Áttelepítési központ ezeket az eszközöket tartalmazza.
 **Movere** | Értékelje a kiszolgálókat. | [További információ](#movere) a Movere-ról.
 **Webalkalmazás áttelepítési segédje** | Értékelje és migrálja a helyszíni webalkalmazásokat az Azure-ba. |  Az Azure App Service-áttelepítési segéd segítségével felmérheti a helyszíni webhelyeket az Azure App Service-be való áttelepítéshez.<br/><br/> Az Asszisztens segítségével .NET és PHP webalkalmazásokat telepítheti át az Azure-ba. [További információ](https://appmigration.microsoft.com/) az Azure App Service-áttelepítési segédről.
 **Azure Data Box** | Kapcsolat nélküli adatáttelepítés. | Azure Data Box-termékekkel nagy mennyiségű adatot helyezhet át offline állapotba az Azure-ba. [További információ](https://docs.microsoft.com/azure/databox/).
+
+> [!NOTE]
+> Ha az Azure Government szolgáltatásban van, a külső integrált eszközök és az isv-ajánlatok nem küldhetnek adatokat az Azure Migrate-projekteknek. Az eszközöket egymástól függetlenül is használhatja.
 
 ## <a name="isv-integration"></a>IsV integráció
 
@@ -94,7 +97,7 @@ Az Azure Migrate hubban kiválaszthatja az értékeléshez vagy áttelepítéshe
 
 A Movere egy SaaS platform, amely egy nap alatt teljes informatikai környezetek pontos bemutatásával növeli az üzleti intelligenciát. A szervezetek növekedésével, módosításával és digitális optimalizálásával a megoldás biztosítja a vállalatok számára azt a bizalmat, amely a környezetük láthatóságához és vezérléséhez szükséges, platformtól, alkalmazástól vagy földrajzi elhelyezkedéstől függetlenül. A Movere-t a Microsoft [vásárolta meg,](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) és már nem értékesítik önálló ajánlatként.  A Movere a Microsoft Solution Assessment and Cloud Economics Programs programon keresztül érhető el. [További információ](https://www.movere.io) a Movere-ról. 
 
-Javasoljuk, hogy tekintse meg az Azure Migrate beépített áttelepítési szolgáltatásunkat is. Az Azure Migrate egy központi központot biztosít a felhőbe való migrálás egyszerűsítéséhez. A hub átfogó támogatást nyújt a különböző számítási feladatokhoz, beleértve a fizikai és virtuális kiszolgálókat, adatbázisokat és alkalmazásokat. A teljes körű láthatóság megkönnyíti az előrehaladás nyomon követését a felderítés, az értékelés és az áttelepítés során. Az Azure és a beépített partner független hálózatfizető eszközökkel az Azure Migrate számos funkcióval is rendelkezik, beleértve a virtuális és fizikai kiszolgálófelderítést, a teljesítményalapú jobbméretezést, a költségtervezést, az importálásalapú értékeléseket és az ügynök nélküli alkalmazást függőségi elemzés. Ha az első lépésekhez szakértői segítségre van szüksége, a Microsoft képzett [Azure Expert Managed Service Provider-t](https://azure.microsoft.com/partners) használ, hogy végigvezesse Önt az utazás során. Tekintse meg az [Azure Migrate webhelyet.](https://azure.microsoft.com/services/azure-migrate/) 
+Javasoljuk, hogy tekintse meg az Azure Migrate beépített áttelepítési szolgáltatásunkat is. Az Azure Migrate egy központi központot biztosít a felhőbe való migrálás egyszerűsítéséhez. A hub átfogó támogatást nyújt a különböző számítási feladatokhoz, beleértve a fizikai és virtuális kiszolgálókat, adatbázisokat és alkalmazásokat. A teljes körű láthatóság megkönnyíti az előrehaladás nyomon követését a felderítés, az értékelés és az áttelepítés során. Az Azure és a beépített partner független hálózatfizető eszközökkel az Azure Migrate számos szolgáltatással is rendelkezik, beleértve a virtuális és fizikai kiszolgálófelderítést, a teljesítményalapú jobb méretezést, a költségtervezést, az importálásalapú értékeléseket és az ügynök nélküli alkalmazásfüggőség-elemzést. Ha az első lépésekhez szakértői segítségre van szüksége, a Microsoft képzett [Azure Expert Managed Service Provider-t](https://azure.microsoft.com/partners) használ, hogy végigvezesse Önt az utazás során. Tekintse meg az [Azure Migrate webhelyet.](https://azure.microsoft.com/services/azure-migrate/) 
  
 
 ## <a name="azure-migrate-versions"></a>Az Azure Áttelepítés verziói

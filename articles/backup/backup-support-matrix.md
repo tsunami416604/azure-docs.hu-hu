@@ -3,12 +3,12 @@ title: Az Azure Backup támogatási mátrixa
 description: Az Azure Backup szolgáltatás támogatási beállításainak és korlátainak összegzése.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878952"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537321"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Támogatási mátrix az Azure Backup hoz
 
@@ -90,7 +90,7 @@ Az Azure Backup nem támogatja az automatikus órajel-beállítást az Azure vir
 
 A lemezdeduplikáció támogatása a következő:
 
-- A lemezdeduplikáció a helyszínen támogatott, ha A DPM vagy MABs segítségével biztonsági másolatot készíteni a Windows rendszert futtató Hyper-V virtuális gépekről. A Windows Server adatdeduplikációt hajt végre (állomásszinten) a virtuális géphez biztonsági másolatként csatlakoztatott virtuális merevlemezeken (VD-k).
+- A lemezdeduplikáció a helyszínen támogatott, ha a DPM vagy az MABS használatával biztonsági másolatot készíteni a Windows rendszert futtató Hyper-V virtuális gépekről. A Windows Server adatdeduplikációt hajt végre (állomásszinten) a virtuális géphez biztonsági másolatként csatlakoztatott virtuális merevlemezeken (VD-k).
 - A deduplikáció nem támogatott az Azure-ban egyetlen biztonsági mentési összetevő esetében sem. Amikor a DPM és a MABS telepítve van az Azure-ban, a virtuális géphez csatlakoztatott tárolólemezek nem lehet duplikálni.
 
 ## <a name="security-and-encryption-support"></a>Biztonsági és titkosítási támogatás

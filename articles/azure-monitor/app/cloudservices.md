@@ -3,12 +3,12 @@ title: Application Insights for Azure felhőszolgáltatások | Microsoft dokumen
 description: Webes és feldolgozói szerepkörök hatékony figyelése az Application Insightsszal
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276191"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537593"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights for Azure felhőszolgáltatásokhoz
 [Az Application Insights][start] figyelheti [az Azure felhőszolgáltatási alkalmazások](https://azure.microsoft.com/services/cloud-services/) rendelkezésre állását, teljesítményét, hibáit és használatát az Application Insights SDK-k ból származó adatok és a felhőszolgáltatások Azure [Diagnostics-adatainak](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) kombinálásával. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -31,7 +31,7 @@ Ez a beállítás futásidőben instrumentális az alkalmazás, így az összes 
 
 Ha ez a lehetőség minden amire szüksége van, akkor kész. 
 
-A következő lépés az [alkalmazás mérőszámeinek megtekintése,](../../azure-monitor/app/metrics-explorer.md) [az adatok lekérdezése az Analytics szolgáltatással.](../../azure-monitor/app/analytics.md) 
+A következő lépés az [alkalmazás mérőszámeinek megtekintése,](../../azure-monitor/platform/metrics-charts.md) [az adatok lekérdezése az Analytics szolgáltatással.](../../azure-monitor/app/analytics.md) 
 
 A böngésző teljesítményének figyeléséhez célszerű lehet [rendelkezésre állási teszteket](../../azure-monitor/app/monitor-web-app-availability.md) beállítani, és [kódot adni a weblapokhoz.](../../azure-monitor/app/javascript.md)
 
@@ -165,7 +165,7 @@ Ez a lépés csak akkor szükséges, ha teljes SQL-lekérdezéseket szeretne rö
 
 1. Nyissa meg a létrehozott Application Insights-erőforrásokat.
 
-   Az egyes adatpontok a [Keresés][diagnostic]ben jelennek meg, az összesített adatok pedig a [Metrikus kezelőben.](../../azure-monitor/app/metrics-explorer.md)
+   Az egyes adatpontok a [Keresés][diagnostic]ben jelennek meg, az összesített adatok pedig a [Metrikus kezelőben.](../../azure-monitor/platform/metrics-charts.md)
 
 1. Adjon hozzá további telemetriai adatokat (lásd a következő szakaszokat), majd tegye közzé az alkalmazást az élő diagnosztika és a használati visszajelzések lekérése érdekében. 
 
@@ -184,7 +184,7 @@ Az Azure [diagnosztikai](https://docs.microsoft.com/azure/monitoring-and-diagnos
 * A Windows eseménynaplók nyomkövetésekként és egyéni eseményekként jelennek meg.
 * Az alkalmazásnaplók, ETW-naplók és egyéb diagnosztikai infrastruktúra-naplók nyomkövetésként jelennek meg.
 
-A teljesítményszámlálók és az események számának megtekintéséhez nyissa meg a [Metrikakezelőt,](../../azure-monitor/app/metrics-explorer.md) és adja hozzá a következő táblázatot:
+A teljesítményszámlálók és az események számának megtekintéséhez nyissa meg a [Metrikakezelőt,](../../azure-monitor/platform/metrics-charts.md) és adja hozzá a következő táblázatot:
 
 ![Az Azure diagnosztikai adatai](./media/cloudservices/23-wad.png)
 

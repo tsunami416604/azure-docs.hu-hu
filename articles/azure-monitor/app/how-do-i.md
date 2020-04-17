@@ -3,12 +3,12 @@ title: Hogyan ... az Azure Application Insightsban | Microsoft dokumentumok
 description: Gyakori kérdések az Application Insightsban.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663857"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536862"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>Kap egy e-mailt, ha ...
@@ -45,7 +45,7 @@ Mivel a riasztások két állapotúak, alacsony értéket kell küldenie, ha fig
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-Hozzon létre egy diagramot a [metrikakezelőben](../../azure-monitor/app/metrics-explorer.md) az ébresztés megtekintéséhez:
+Hozzon létre egy diagramot a [metrikakezelőben](../../azure-monitor/platform/metrics-charts.md) az ébresztés megtekintéséhez:
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -82,7 +82,7 @@ Néhány megfontolandó szempont:
 
 ## <a name="visualize-data"></a>Adatok vizualizációja
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Irányítópult több alkalmazás mutatóival
-* A [Metrikus kezelőben](../../azure-monitor/app/metrics-explorer.md)testreszabhatja a diagramot, és kedvencként mentheti. Rögzítse az Azure irányítópultjára.
+* A [Metrikus kezelőben](../../azure-monitor/platform/metrics-charts.md)testreszabhatja a diagramot, és kedvencként mentheti. Rögzítse az Azure irányítópultjára.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Irányítópult más forrásokból származó adatokkal és Alkalmazáselemzési adatokkal
 * [Telemetriai adatok exportálása a Power BI-ba](../../azure-monitor/app/export-power-bi.md ).
@@ -159,5 +159,5 @@ A metrikákban megjelenhető mérőszámok között található a rendszer telje
 * **Unix szerver** - [telepítése összegyűjtve](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>További teljesítményszámlálók megjelenítése
-* Először [adjon hozzá egy új diagramot,](../../azure-monitor/app/metrics-explorer.md) és nézze meg, hogy a számláló az általunk kínált alapkészletben van-e.
+* Először [adjon hozzá egy új diagramot,](../../azure-monitor/platform/metrics-charts.md) és nézze meg, hogy a számláló az általunk kínált alapkészletben van-e.
 * Ha nem, [adja hozzá a számlálót a teljesítményszámláló modul által gyűjtött készlethez](../../azure-monitor/app/performance-counters.md).

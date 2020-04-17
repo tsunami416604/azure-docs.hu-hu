@@ -3,12 +3,12 @@ title: Telemetriai adatok elkülönítése az Azure Application Insightsban
 description: Közvetlen telemetriai adatok különböző erőforrások fejlesztési, tesztelési és termelési bélyegzők.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671460"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536777"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Telemetriai adatok és fejlesztés, teszt és termelés elkülönítése
 
@@ -34,7 +34,7 @@ Annak érdekében, hogy a kód éles környezetei között mozogjon, könnyebben
 
 Állítsa be a kulcsot egy inicializálási módszerben, például global.aspx.cs egy ASP.NET szolgáltatásban:
 
-*C #*
+*C#*
 
     protected void Application_Start()
     {
@@ -69,7 +69,7 @@ A [portal.azure.com](https://portal.azure.com)adjon hozzá egy Application Insig
 
 ![Kattintson az Új, majd az Application Insights lehetőségre](./media/separate-resources/01-new.png)
 
-* **Az alkalmazástípus** befolyásolja az áttekintő panelen és a [metrikus kezelőben](../../azure-monitor/app/metrics-explorer.md)elérhető tulajdonságokat. Ha nem látja az alkalmazástípusát, válasszon egyet a weblapokhoz.
+* **Az alkalmazástípus** befolyásolja az áttekintő panelen és a [metrikus kezelőben](../../azure-monitor/platform/metrics-charts.md)elérhető tulajdonságokat. Ha nem látja az alkalmazástípusát, válasszon egyet a weblapokhoz.
 * **Az erőforráscsoport** kényelmes encikóként kezeli az olyan tulajdonságokat, mint a [hozzáférés-vezérlés.](../../azure-monitor/app/resources-roles-access-control.md) A fejlesztéshez, teszteléshez és termeléshez külön erőforráscsoportokat használhat.
 * **Az előfizetés** az Azure-beli fizetési fiók.
 * **A tartózkodási hely** az a hely, ahol az adatait őrizzük. Jelenleg nem lehet megváltoztatni. 
@@ -89,7 +89,7 @@ Szüksége van az összes olyan erőforrás instrumentation kulcsaira, amelyekre
 ## <a name="filter-on-build-number"></a>Buildszám szűrése
 Amikor közzéteszi az alkalmazás új verzióját, érdemes lesz elválasztani a telemetriai adatokat a különböző buildektől.
 
-Beállíthatja az Alkalmazás verzió tulajdonságát, hogy szűrhesse a [keresési](../../azure-monitor/app/diagnostic-search.md) és [a metrikus felfedező](../../azure-monitor/app/metrics-explorer.md) eredményeit.
+Beállíthatja az Alkalmazás verzió tulajdonságát, hogy szűrhesse a [keresési](../../azure-monitor/app/diagnostic-search.md) és [a metrikus felfedező](../../azure-monitor/platform/metrics-charts.md) eredményeit.
 
 ![Tulajdonság szűrése](./media/separate-resources/050-filter.png)
 
@@ -139,7 +139,7 @@ Az alkalmazásverzió nyomon követéséhez győződjön meg arról, hogy a Micr
     </PropertyGroup>
 ```
 
-Ha megkapja a verzióinformációkat, az Application Insights webmodul automatikusan hozzáadja az **Alkalmazás verzióját** tulajdonságként a telemetria minden eleméhez. Ez lehetővé teszi a verziók szerinti szűrést, amikor [diagnosztikai kereséseket](../../azure-monitor/app/diagnostic-search.md) végez, illetve [metrikákat vizsgál](../../azure-monitor/app/metrics-explorer.md).
+Ha megkapja a verzióinformációkat, az Application Insights webmodul automatikusan hozzáadja az **Alkalmazás verzióját** tulajdonságként a telemetria minden eleméhez. Ez lehetővé teszi a verziók szerinti szűrést, amikor [diagnosztikai kereséseket](../../azure-monitor/app/diagnostic-search.md) végez, illetve [metrikákat vizsgál](../../azure-monitor/platform/metrics-charts.md).
 
 Figyelje meg azonban, hogy a buildverziószámát csak a Microsoft Build Engine hozza létre, nem pedig a Visual Studio fejlesztői buildje.
 

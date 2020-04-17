@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043e0f3a0ff2c1c642c63a387c571b575f77cf7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0645807aa40557c163643f1393c310668518f9be
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050835"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535135"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Az Azure Active Directory B2B együttműködési meghívók beváltása
 
@@ -52,6 +52,36 @@ Vannak olyan esetek, amikor a meghívó e-mail ajánlott egy közvetlen linken k
  - Előfordulhat, hogy a meghívott felhasználói objektumnak nincs e-mail címe egy névjegyobjektummal (például egy Outlook-névjegyobjektummal) való ütközés miatt. Ebben az esetben a felhasználónak a meghívó e-mailben a beváltási URL-címre kell kattintania.
  - A felhasználó a meghívott e-mail-cím aliasával jelentkezhet be. (Az alias egy e-mail fiókhoz társított további e-mail cím.) Ebben az esetben a felhasználónak a meghívó e-mailben a beváltási URL-címre kell kattintania.
 
+## <a name="invitation-redemption-flow"></a>Meghívó-visszaváltási folyamat
+
+Amikor egy felhasználó egy [meghívó e-mailben](invitation-email-elements.md)a **Meghívás elfogadása** hivatkozásra kattint, az Azure AD automatikusan beváltja a meghívót a beváltási folyamat alapján az alábbiak szerint:
+
+![Képernyőkép a beváltási folyamat diagramjának ábrázolása](media/redemption-experience/invitation-redemption-flow.png)
+
+1. A beváltási folyamat ellenőrzi, hogy a felhasználó rendelkezik-e már személyes [Microsoft-fiókkal (MSA).](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)
+
+2. Ha egy rendszergazda engedélyezte a [közvetlen összevonást](direct-federation.md), az Azure AD ellenőrzi, hogy a felhasználó tartományutótagja megegyezik-e egy konfigurált SAML/WS-Fed identitásszolgáltató tartományával, és átirányítja a felhasználót az előre konfigurált identitásszolgáltatóra.
+
+3. Ha egy rendszergazda engedélyezte a [Google-összevonást,](google-federation.md)az Azure AD ellenőrzi, hogy a felhasználó tartományutótagja gmail.com vagy googlemail.com, és átirányítja a felhasználót a Google-hoz.
+
+4. Az Azure AD felhasználói alapú felderítést hajt végre annak megállapítására, hogy a felhasználó létezik-e egy [meglévő Azure AD-bérlőben.](what-is-b2b.md#easily-add-guest-users-in-the-azure-ad-portal)
+
+5. A felhasználó **kezdőkönyvtárának** azonosítását követően a rendszer elküldi a felhasználót a megfelelő identitásszolgáltatónak a bejelentkezéshez.  
+
+6. Ha az 1–4. [Email one-time passcode (OTP)](one-time-passcode.md)
+
+7. Ha [az e-mail egyszeri jelkód a vendégek számára engedélyezve van,](one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode)a rendszer a meghívott e-mailen keresztül jelkódot küld a felhasználónak. A felhasználó lekéri és adja meg ezt a jelszót az Azure AD bejelentkezési lapon.
+
+8. Ha az e-mail egyszeri jelkód a vendégek számára le van tiltva, az Azure AD ellenőrzi a tartomány utótagot a Microsoft által fenntartott fogyasztói tartománylistával. Ha a tartomány megfelel a fogyasztói tartománylista bármely tartományának, a rendszer kéri a felhasználót, hogy hozzon létre egy személyes Microsoft-fiókot. Ha nem, a rendszer kéri, hogy hozzon létre egy [Azure AD önkiszolgáló fiókot](../users-groups-roles/directory-self-service-signup.md) (vírusos fiók).
+
+9. Az Azure AD megkísérli az Azure AD önkiszolgáló fiók (vírusfiók) létrehozását az e-mailhez való hozzáférés ellenőrzésével. A fiók ellenőrzése úgy történik, hogy egy kódot küld az e-mailnek, és a felhasználó lekéri és elküldi az Azure AD-nek. Ha azonban a meghívott felhasználó bérlője össze van vonva, vagy ha az AllowEmailVerifiedUsers mező hamis értékre van állítva a meghívott felhasználó bérlőjében, a felhasználó nem tudja befejezni a beváltást, és a folyamat hibát eredményez. További információt az [Azure Active Directory B2B együttműködés hibaelhárítása című témakörben talál.](troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption)
+
+10. A rendszer kéri a felhasználót, hogy hozzon létre egy személyes Microsoft-fiókot (MSA).
+
+11. A megfelelő identitásszolgáltatónak való hitelesítés után a felhasználó átlesz irányítva az Azure AD-be a [jóváhagyási élmény](redemption-experience.md#consent-experience-for-the-guest)befejezéséhez.  
+
+A just-in-time (JIT) beváltások, ahol a beváltás egy bérlői alkalmazás linken keresztül, lépések 8-10 nem érhetők el. Ha a felhasználó eléri a 6. Ennek elkerülése érdekében a rendszergazdáknak engedélyezniük kell [az egyszeri e-mail jelkódot,](one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode) vagy biztosítaniuk kell, hogy a felhasználó egy meghívóhivatkozásra kattintson.
+
 ## <a name="consent-experience-for-the-guest"></a>Hozzájárulási tapasztalat a vendég számára
 
 Amikor egy vendég először jelentkezik be egy partnerszervezet erőforrásainak eléréséhez, a program végigvezeti őket a következő oldalakon. 
@@ -67,8 +97,7 @@ Amikor egy vendég először jelentkezik be egy partnerszervezet erőforrásaina
 
    ![Új használati feltételeket ábrázoló képernyőkép](media/redemption-experience/terms-of-use-accept.png) 
 
-   > [!NOTE]
-   > A használati [feltételeket a](../governance/active-directory-tou.md) Szervezeti kapcsolatok **kezelése** > használati**feltételek**című témakörben**állíthatja** > be.
+   A használati [feltételeket a](../governance/active-directory-tou.md) Szervezeti kapcsolatok **kezelése** > használati**feltételek**című témakörben**állíthatja** > be.
 
 3. Eltérő rendelkezés hiányában a vendég átlesz irányítva az Alkalmazások hozzáférési panelre, amely felsorolja azokat az alkalmazásokat, amelyekhez a vendég hozzáférhet.
 

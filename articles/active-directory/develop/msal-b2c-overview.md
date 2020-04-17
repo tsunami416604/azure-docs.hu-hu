@@ -1,7 +1,7 @@
 ---
 title: Az MSAL használata az Azure Active Directory B2CLearn szolgáltatással | Azure
 titleSuffix: Microsoft identity platform
-description: A Microsoft Authentication Library for JavaScript (MSAL.js) lehetővé teszi az alkalmazások számára, hogy együttműködjenek az Azure AD B2C-vel, és jogkivonatokat szerezzenek be a biztonságos webes API-k hívásához. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, mások webes API-i vagy saját webes API-k.
+description: A Microsoft Authentication Library for JavaScript (MSAL.js) lehetővé teszi, hogy az alkalmazások együttműködjenek az Azure AD B2C-vel, és jogkivonatokat szerezzenek be a biztonságos webes API-k hívásához. Ezek a webes API-k lehetnek a Microsoft Graph, más Microsoft API-k, mások webes API-i vagy saját webes API-k.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: dc8a330bc09f37f7941534ed7c17d1ffd14d08c5
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 8e076dfd6670265d458eb35d8e1b3e4500009a12
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875962"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534482"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>Az Azure Active Directory B2C szolgáltatással való munka a JavaScript hez tartozó Microsoft Authentication Library for JavaScript használatával
 
@@ -37,7 +37,7 @@ Ez a bemutató két részből áll:
 - hogyan védheti meg a webes API-t.
 - hogyan regisztrálhat egy egyoldalas alkalmazást a *webes* API hitelesítéséhez és hívásához.
 
-## <a name="nodejs-web-api"></a>Node.js webes API
+## <a name="nodejs-web-api"></a>NODE.js webes API
 
 > [!NOTE]
 > Ebben a pillanatban, MSAL.js a Node még fejlesztés alatt áll (lásd az [ütemtervet](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)). Addig is javasoljuk, hogy használja [a Passport-azure-ad,](https://github.com/AzureAD/passport-azure-ad)a Microsoft által kifejlesztett és támogatott Node.js hitelesítési könyvtárhasználatát.
@@ -63,7 +63,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 2. Konfigurálja a mintát az alkalmazás korábbi, az alkalmazás regisztrálása során beszerzett hitelesítő adatokkal. Módosítsa a következő kódsorokat az értékek ügyfélazonosító, állomás, tenantId és házirend nevének lecserélésével.
 
 ```JavaScript
-const clientID = "<Application ID for your Node.js Web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
+const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
 const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
 const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
 const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
@@ -104,7 +104,7 @@ Az alkalmazás konfigurálása két szempontból érdekes:
     // The current application coordinates were pre-registered in a B2C tenant.
     const apiConfig = {
         b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"], //API scopes you exposed during api registration
-        webApi: "https://fabrikamb2chello.azurewebsites.net/hello" 
+        webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
     };
    ```
 

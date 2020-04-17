@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971502"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535621"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>CLI-minták az Azure App Service-hez
 
@@ -28,7 +28,7 @@ A következő táblázat az Azure CLI használatával létrehozott bash parancsf
 | [ASP.NET Core alkalmazás létrehozása Docker-tárolóban](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service-alkalmazást Linuxon, és betölt egy Docker-lemezképet a Docker Hubról. |
 |**Alkalmazás konfigurálása**||
 | [Egyéni tartomány hozzárendelése alkalmazáshoz](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service-alkalmazást, és hozzárendel egy egyéni tartománynevet. |
-| [Egyéni SSL-tanúsítvány kötése alkalmazáshoz](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service-alkalmazást, és hozzá köti az egyéni tartománynév SSL-tanúsítványát. |
+| [Egyéni TLS-/SSL-tanúsítvány kötése alkalmazáshoz](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service-alkalmazást, és hozzá köti az egyéni tartománynév TLS/SSL tanúsítványát. |
 |**Az alkalmazás méretezése**||
 | [Alkalmazás manuális méretezése](./scripts/cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy App Service-alkalmazást, és két példányra méretezi azt. |
 | [Alkalmazás méretezése világszerte magas rendelkezésre állású architektúrával](./scripts/cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | Két App Service-alkalmazást hoz létre két különböző földrajzi régióban, és elérhetővé teszi őket egyetlen végponton keresztül az Azure Traffic Manager használatával. |

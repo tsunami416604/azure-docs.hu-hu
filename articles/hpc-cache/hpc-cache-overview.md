@@ -4,14 +4,14 @@ description: Az Azure HPC cache, egy nagy teljesítményű számítástechnikaf�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: 084c33874b474fc1789df93e088d3cec4263eac9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241191"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536641"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Mi az az Azure HPC Cache?
 
@@ -49,22 +49,20 @@ Az Azure HPC-gyorsítótár központi telepítése felgyorsíthatja a kvantitat�
 
 Az Azure HPC-gyorsítótár a következő Azure-régiókban érhető el:
 
+| Észak-Amerika      | Európa         | Ázsia            | Ausztrália      |
+|--------------------|----------------|-----------------|----------------|
+| USA keleti régiója            | Észak-Európa   | Dél-Korea középső régiója   | Kelet-Ausztrália |
+| USA 2. keleti régiója          | Nyugat-Európa    | Délkelet-Ázsia  |               |
+| USA déli középső régiója | | | |
+| USA nyugati régiója, 2.        | | | |
+
+Az [ügyfél által felügyelt kulcsok funkció](customer-keys.md) csak ezekben a régiókban támogatott:
+
 * USA keleti régiója
-* USA 2. keleti régiója
-* Észak-Európa
-* Nyugat-Európa
-* Délkelet-Ázsia
-* Sydney
+* USA déli középső régiója
 * USA nyugati régiója, 2.
-* Dél-Korea középső régiója
 
 Tekintse meg az [Azure HPC cache termékoldalon](https://azure.microsoft.com/services/hpc-cache) a legfrissebb rendelkezésre állási információkat.
-
-## <a name="service-availability"></a>A szolgáltatás elérhetősége
-
-Az Azure HPC-gyorsítótárral használni kívánt minden egyes előfizetéshez hozzáférést kell kérnie. Ez a korlátozás segít biztosítani a szolgáltatás minőségét az általános elérhetőség első hónapjaiban.
-
-Kérjen hozzáférést [az űrlap](https://aka.ms/onboard-hpc-cache)kitöltésével. Miután az előfizetést hozzáadta a hozzáférési listához, gyorsítótárakat hozhat létre.
 
 ## <a name="next-steps"></a>További lépések
 

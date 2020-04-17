@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482343"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537644"
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomagok áttekintése
 
@@ -32,7 +32,7 @@ Az App Service-csomag _tarifacsomagja_ határozza meg, hogy milyen App Service-f
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Minden egyes szint az App Service-funkciók egy adott részhalmazát is biztosítja. Ezek közé tartoznak az egyéni tartományok és SSL-tanúsítványok, automatikus skálázás, telepítési tárolóhelyek, biztonsági mentések, Traffic Manager-integráció stb. Minél magasabb a szint, annál több funkció érhető el. Ha meg szeretné tudni, hogy mely funkciók támogatottak az egyes tarifacsomagokban, olvassa el [az App Service-csomag részletei című témakört.](https://azure.microsoft.com/pricing/details/app-service/plans/)
+Minden egyes szint az App Service-funkciók egy adott részhalmazát is biztosítja. Ezek közé tartoznak az egyéni tartományok és a TLS/SSL tanúsítványok, automatikus skálázás, telepítési bővítőhelyek, biztonsági mentések, Traffic Manager integráció és így tovább. Minél magasabb a szint, annál több funkció érhető el. Ha meg szeretné tudni, hogy mely funkciók támogatottak az egyes tarifacsomagokban, olvassa el [az App Service-csomag részletei című témakört.](https://azure.microsoft.com/pricing/details/app-service/plans/)
 
 <a name="new-pricing-tier-premiumv2"></a>
 
@@ -71,11 +71,11 @@ Az **ingyenes** szint kivételével az App Service-csomag óránkénti díjat sz
 - A dedikált számítási szinteken **(Alapszintű,** **Standard**, **Prémium**, **PremiumV2**), az App Service-csomag határozza meg, hogy az alkalmazások hány virtuálisgép-példányra vannak méretezve, így az App Service-csomag _minden virtuálisgép-példánya_ óránkénti díjat számít fel. Ezek a virtuálisgép-példányok díja ugyanaz, függetlenül attól, hogy hány alkalmazás fut rajtuk. A váratlan díjak elkerülése érdekében olvassa el [az App Service-csomag karbantartása című témakört.](app-service-plan-manage.md#delete)
 - Az **Elkülönített** rétegben az App Service-környezet határozza meg az alkalmazásokat futtató elkülönített dolgozók számát, és _minden egyes dolgozónak_ óránként kell fizetnie. Emellett az App Service-környezet futtatásáért óránkénti alapdíjat is felszámítunk.
 
-Nem kell fizetnie az Ön számára elérhető App Service-szolgáltatások használatáért (egyéni tartományok, SSL-tanúsítványok, telepítési tárolóhelyek, biztonsági mentések stb.) konfigurálása. A kivételek a következők:
+Nem kell fizetnie az Ön számára elérhető App Service-szolgáltatások használatáért (egyéni tartományok, TLS/SSL-tanúsítványok, telepítési tárolóhelyek, biztonsági mentések stb.) konfigurálása. A kivételek a következők:
 
 - App Service-tartományok – akkor fizet, ha vásárol egyet az Azure-ban, és ha minden évben megújítja.
 - App Service-tanúsítványok – akkor fizet, ha vásárol egyet az Azure-ban, és ha minden évben megújítja.
-- IP-alapú SSL-kapcsolatok – Minden IP-alapú SSL-kapcsolatóránként imperális díjat számít fel, de néhány **standard** szintű vagy annál magasabb szintű csomag egy IP-alapú SSL-kapcsolatot biztosít ingyenesen. Az SNI-alapú SSL-kapcsolatok ingyenesek.
+- IP-alapú TLS-kapcsolatok – Minden IP-alapú TLS-kapcsolatóránként imperális díjat számít fel, de néhány **standard** szintű vagy annál magasabb szintű csomag egy IP-alapú TLS-kapcsolatot biztosít ingyenesen. Az SNI-alapú TLS-kapcsolatok ingyenesek.
 
 > [!NOTE]
 > Ha integrálja az App Service-t egy másik Azure-szolgáltatással, előfordulhat, hogy figyelembe kell vennie az egyéb szolgáltatások díjait. Ha például az Azure Traffic Manager használatával méretezi az alkalmazást földrajzilag, az Azure Traffic Manager a használat alapján is díjat számít fel. A szolgáltatások közötti költségek azure-beli becsléséhez olvassa el [a Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/). 
@@ -86,7 +86,7 @@ Nem kell fizetnie az Ön számára elérhető App Service-szolgáltatások haszn
 
 App Service-csomagját bármikor skálázhatja felfelé és lefelé is. Ez olyan egyszerű, mint a csomag árképzési szintjének módosítása. Elsőre választhat egy alacsonyabb tarifájú csomagot is, amelyet később felskálázhat, amikor már további App Service-szolgáltatásokra van szüksége.
 
-Például elkezdheti tesztelni a webalkalmazást egy **ingyenes** App Service-csomagban, és nem fizet semmit. Ha hozzá szeretné adni az [egyéni DNS-nevét](app-service-web-tutorial-custom-domain.md) a webalkalmazáshoz, csak méretezze fel a csomagot **a Megosztott** szintre. Később, ha [ssl-kötést](configure-ssl-bindings.md)szeretne létrehozni, méretezheti a tervet **alapszintre.** Ha átmeneti [környezeteket](deploy-staging-slots.md)szeretne, skálázás **standard** szintre. Ha több magra, memóriára vagy tárolóra van szüksége, nagyobb virtuálisgép-méretre skálázható ugyanabban a rétegben.
+Például elkezdheti tesztelni a webalkalmazást egy **ingyenes** App Service-csomagban, és nem fizet semmit. Ha hozzá szeretné adni az [egyéni DNS-nevét](app-service-web-tutorial-custom-domain.md) a webalkalmazáshoz, csak méretezze fel a csomagot **a Megosztott** szintre. Később, ha [tls-kötést](configure-ssl-bindings.md)szeretne létrehozni, méretezheti a tervet **alapszintű** szintre. Ha átmeneti [környezeteket](deploy-staging-slots.md)szeretne, skálázás **standard** szintre. Ha több magra, memóriára vagy tárolóra van szüksége, nagyobb virtuálisgép-méretre skálázható ugyanabban a rétegben.
 
 Ugyanez működik fordítva. Ha úgy érzi, hogy már nincs szüksége egy magasabb szintű szint képességeire vagy funkcióira, alacsonyabb szintre skálázható, ami pénzt takarít meg.
 

@@ -1,6 +1,6 @@
 ---
 title: Bejelentkezés hozzáadása a Microsofttal egy Microsoft identity platformPython webalkalmazáshoz | Azure
-description: A Microsoft bejelentkezés megvalósítása Python Web App on OAuth2 használatával
+description: A Microsoft bejelentkezés megvalósítása Python-webappokon az OAuth2 használatával
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: c0220a226b2095a4ec54bc3469abee08b8b29f4c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873956"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536029"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rövid útmutató: Bejelentkezés hozzáadása a Microsofttal egy Python-webalkalmazáshoz
 

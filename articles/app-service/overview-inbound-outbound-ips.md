@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használják a bejövő és kimenő IP-címeket
 ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: aebce04fe2f1b055a4d498021dcd25144cd122a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279207"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537627"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Bejövő és kimenő IP-címek az Azure App Service-ben
 
@@ -23,7 +23,7 @@ A kicsinyített példányok számától függetlenül minden alkalmazás egyetle
 
 - Töröljön egy alkalmazást, és hozza létre újra egy másik erőforráscsoportban.
 - Törölje az erőforráscsoport _és_ a régió utolsó alkalmazását, és hozza létre újra.
-- Meglévő SSL-kötés törlése, például a tanúsítvány megújítása során [(lásd: Tanúsítvány megújítása).](configure-ssl-certificate.md#renew-certificate)
+- Meglévő TLS-kötés törlése, például a tanúsítvány megújítása során [(lásd: Tanúsítvány megújítása).](configure-ssl-certificate.md#renew-certificate)
 
 ## <a name="find-the-inbound-ip"></a>A bejövő IP megkeresése
 
@@ -35,7 +35,7 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="get-a-static-inbound-ip"></a>Statikus bejövő IP-cím beszerezni
 
-Előfordulhat, hogy egy dedikált, statikus IP-címet szeretne az alkalmazáshoz. Statikus bejövő IP-cím leszámításához be kell állítania egy [IP-alapú SSL-kötést.](configure-ssl-bindings.md#secure-a-custom-domain) Ha az alkalmazás biztonságához valójában nincs szüksége SSL-funkciókra, akár önaláírt tanúsítványt is feltölthet ehhez a kötéshez. Az IP-alapú SSL-kötésben a tanúsítvány magához az IP-címhez van kötve, ezért az App Service statikus IP-címet rendel annak megvalósításához. 
+Előfordulhat, hogy egy dedikált, statikus IP-címet szeretne az alkalmazáshoz. Ahhoz, hogy statikus bejövő IP-címet kapjon, egyéni tartományt kell [biztosítania.](configure-ssl-bindings.md#secure-a-custom-domain) Ha az alkalmazás biztonságához valójában nincs szüksége TLS-funkciókra, akár önaláírt tanúsítványt is feltölthet ehhez a kötéshez. Az IP-alapú TLS-kötésben a tanúsítvány magához az IP-címhez van kötve, ezért az App Service statikus IP-címet rendel annak megvalósításához. 
 
 ## <a name="when-outbound-ips-change"></a>Amikor a kimenő IP-k változnak
 

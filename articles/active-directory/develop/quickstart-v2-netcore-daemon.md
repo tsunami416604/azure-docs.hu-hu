@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 4332755c1ee47cd648f048768307846f02503e20
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0a41165a77ff5f98a6a0bb408da62cb6c4cb35f8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407047"
+ms.locfileid: "81536080"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Rövid útmutató: Jogkivonat beszerzése és a Microsoft Graph API hívása a konzolalkalmazás identitásával
 
@@ -50,7 +50,7 @@ Ehhez a rövid útmutatóhoz [.NET Core 2.2](https://www.microsoft.com/net/downl
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 > 1. Keresse meg a Microsoft identity platform ot a fejlesztőknek [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapon.
 > 1. Válassza **az Új regisztráció lehetőséget.**
-> 1. Amikor megjelenik a **Jelentkezés iszatának regisztrálása** lap, adja meg a jelentkezési lap regisztrációs adatait. 
+> 1. Amikor megjelenik a **Jelentkezés iszatának regisztrálása** lap, adja meg a jelentkezési lap regisztrációs adatait.
 > 1. A **Név szakaszban** adjon meg egy értelmes alkalmazásnevet, amely megjelenik az alkalmazás felhasználói számára, például `Daemon-console`a lehetőséget, majd válassza a **Regisztráció** lehetőséget az alkalmazás létrehozásához.
 > 1. A regisztrációt követően válassza a **Tanúsítványok & titkos kulcsok menüt.**
 > 1. Az **Ügyféltitkok csoportban**válassza a **+ Új ügyféltitok**lehetőséget. Adjon neki nevet, és válassza **a Hozzáadás**lehetőséget. Másolja a titkot egy biztonságos helyre. Szüksége lesz rá, hogy használja a kódot.
@@ -60,7 +60,7 @@ Ehhez a rövid útmutatóhoz [.NET Core 2.2](https://www.microsoft.com/net/downl
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>A rövid útmutató alkalmazás letöltése és konfigurálása
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
 > A gyorsútmutató működéséhez a kódminta működéséhez létre kell hoznia egy ügyféltitkot, és hozzá kell adnia a Graph API **User.Read.All** alkalmazásengedélyét.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -82,14 +82,14 @@ Ehhez a rövid útmutatóhoz [.NET Core 2.2](https://www.microsoft.com/net/downl
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
-    
+
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
-> 
+>
 > 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
 > 1. Nyissa meg a megoldást a Visual Studio - **1-Call-MSGraph\daemon-console.sln** (nem kötelező).
 > 1. Edit **appsettings.json** és cserélje ki `ClientId` `Tenant` az `ClientSecret` értékeket a mezők , és a következő:
-> 
+>
 >    ```json
 >    "Tenant": "Enter_the_Tenant_Id_Here",
 >    "ClientId": "Enter_the_Application_Id_Here",

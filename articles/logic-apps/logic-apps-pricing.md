@@ -3,17 +3,17 @@ title: Díjszabási & számlázási modell
 description: A díjszabási és számlázási modell működésének áttekintése az Azure Logic Apps alkalmazásokban
 services: logic-apps
 ms.suite: integration
-author: kevinlam1
-ms.author: klam
+author: jonfancey
+ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270458"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536233"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Az Azure Logic Apps díjszabási modellje
 
@@ -23,50 +23,55 @@ ms.locfileid: "79270458"
 
 ## <a name="consumption-pricing-model"></a>Fogyasztási árképzési modell
 
-A nyilvános vagy "globális" Azure Logic Apps szolgáltatásban futó új logikai alkalmazások esetében csak azért kell fizetnie, amit használ. Ezek a logikai alkalmazások egy fogyasztásalapú csomag és díjszabási modell használata. A logikai alkalmazásban minden lépés egy művelet, és az Azure Logic Apps a logikai alkalmazásban futó összes műveletet méri.
+A nyilvánosan futó új logikai alkalmazások, a "globális", a több-bérlős Azure Logic Apps szolgáltatás, csak akkor kell fizetnie, amit használ. Ezek a logikai alkalmazások egy fogyasztásalapú csomag és díjszabási modell használata. A logikai alkalmazásban minden lépés egy művelet, és az Azure Logic Apps a logikai alkalmazásban futó összes műveletet méri.
 
 A műveletek például a következők:
 
-* Eseményindítók, amelyek speciális műveletek. Minden logikai alkalmazás hoz létre egy eseményindító, mint az első lépés.
+* [Eseményindítók](#triggers), amelyek speciális műveletek. Minden logikai alkalmazás hoz létre egy eseményindító, mint az első lépés.
+
 * ["Beépített" vagy natív műveletek,](../connectors/apis-list.md#built-in) például HTTP, hívások az Azure Functions és az API Management, és így tovább
+
 * Felügyelt [összekötők,](../connectors/apis-list.md#managed-connectors) például Outlook 365, Dropbox és így tovább hívások
-* Folyamatlépések, például hurkok, feltételes utasítások és így tovább vezérlése
+
+* [Munkafolyamat-műveletek,](../connectors/apis-list.md#control-workflow) például hurkok, feltételes utasítások és így tovább vezérlése
 
 [A standard összekötők](../connectors/apis-list.md#managed-connectors) díja a [Standard összekötőáron kerül felszámításra.](https://azure.microsoft.com/pricing/details/logic-apps) Az általánosan elérhető [vállalati összekötők](../connectors/apis-list.md#managed-connectors) díja a [Vállalati összekötők árán,](https://azure.microsoft.com/pricing/details/logic-apps)míg a nyilvános előzetes verziójú vállalati összekötők a Standard [összekötők árán](https://azure.microsoft.com/pricing/details/logic-apps)kerülnek felszámításra .
 
-További információ arról, hogyan működik a számlázás az [eseményindítók](#triggers) és [műveletek esetében.](#actions)
+További információ aszámlázás működéséről az [eseményindítók](#triggers) és [műveletek](#actions) szintjén. A korlátokkal kapcsolatos további információkért tekintse meg [az Azure Logic Apps korlátaiés konfigurációja című témakört.](logic-apps-limits-and-config.md)
 
 <a name="fixed-pricing"></a>
 
 ## <a name="fixed-pricing-model"></a>Rögzített árképzési modell
 
-Az [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) egy elszigetelt módja annak, hogy hozzon létre és futtasson logikai alkalmazásokat, amelyek hozzáférhetnek az Azure virtuális hálózat erőforrásaihoz. Az ISE-n belül futó új logikai alkalmazások esetében [fix havi díjat](https://azure.microsoft.com/pricing/details/logic-apps) kell fizetnie az alábbi képességekért:
+Az [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) egy elszigetelt módja annak, hogy hozzon létre és futtasson logikai alkalmazásokat, amelyek hozzáférhetnek az Azure virtuális hálózat erőforrásaihoz. Az ISE-ben futó logikai alkalmazások nem viselnek adatmegőrzési költségeket. Az ISE létrehozásakor és csak a létrehozás során választhat egy [ISE-szintet vagy "Termékváltozatot",](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)amely eltérő [árazási rátákkal rendelkezik:](https://azure.microsoft.com/pricing/details/logic-apps)
+
+* **Prémium** ISE: A termékváltozat alapegysége rögzített kapacitással rendelkezik, de ha nagyobb átviteli kapacitásra van szüksége, [további méretezési egységeket adhat hozzá](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) az ISE létrehozása során vagy azt követően. Az ISE-korlátozásokról az [Azure Logic Apps korlátai és konfigurációja.](logic-apps-limits-and-config.md#integration-service-environment-ise)
+
+* **Fejlesztő** ISE: Ez a termékváltozat nem képes a felskálázás, nincs szolgáltatásiszint-szerződés (SLA), és nem közzétett korlátok. Ezt a termékváltozatot csak kísérletezéshez, fejlesztéshez és teszteléshez használja, éles vagy teljesítménytesztelésre.
+
+Az ISE-ben létrehozott és futtatott logikai alkalmazások ért [rögzített havi díjat](https://azure.microsoft.com/pricing/details/logic-apps) kell fizetnie a következő képességekért:
 
 * [Beépített eseményindítók](../connectors/apis-list.md#built-in) és műveletek
 
   Az ISE-n belül a beépített eseményindítók és műveletek megjelenítik a **Core** címkét, és ugyanabban az ISE-ben futnak, mint a logikai alkalmazások.
 
-* [Szabványos](../connectors/apis-list.md#managed-connectors) összekötők és [vállalati](../connectors/apis-list.md#enterprise-connectors) összekötők (annyi vállalati kapcsolat, amennyit csak akar)
+* [Szabványos](../connectors/apis-list.md#managed-connectors) összekötők és [nagyvállalati](../connectors/apis-list.md#enterprise-connectors) összekötők, amelyek segítségével annyi nagyvállalati kapcsolattal rendelkezik, amennyit csak szeretne
 
-   Az **ISE-címkét** megjelenítő szabványos és vállalati összekötők ugyanabban az ISE-ben futnak, mint a logikai alkalmazások. Azok az összekötők, amelyek nem jelenítik meg az ISE-címkét, a globális Logic Apps szolgáltatásban futnak. A rögzített havi díjszabás a globális szolgáltatásban futó összekötőkre is vonatkozik, ha azokat az ISE-ben futó logikai alkalmazásokkal használja.
+   Az **ISE-címkét** megjelenítő szabványos és vállalati összekötők ugyanabban az ISE-ben futnak, mint a logikai alkalmazások. Összekötők, amelyek nem jelenítik meg az ISE címke fut a nyilvános, "globális", több-bérlős Logic Apps szolgáltatás. A rögzített havi díjszabás a több-bérlős szolgáltatásban futó összekötőkre is vonatkozik, ha azokat az ISE-ben futó logikai alkalmazásokkal használja.
 
 * [Integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) használata további költségek nélkül, az [ISE Termékváltozat](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)alapján:
 
-  * **Prémium szintű termékváltozat:** egyetlen [standardszintű](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiók
+  * **Prémium** ISE Termékváltozat: Egyetlen [standardszintű](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiók
 
-  * **Fejlesztői termékváltozat**: Egyetlen [ingyenes szintű](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiók
+  * **Fejlesztő** ISE Termékváltozat: Egyetlen [ingyenes szintű](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiók
 
   Minden ISE termékváltozat legfeljebb 5 teljes integrációs fiók. További költségek esetén több integrációs fiókkal is rendelkezhet az ISE termékváltozat alapján:
 
-  * **Prémium termékváltozat:** legfeljebb négy további standard fiók. Nincs ingyenes vagy alapszintű fiók.
+  * **Prémium** ISE Termékváltozat: Legfeljebb négy további standard fiók. Nincs ingyenes vagy alapszintű fiók.
 
-  * **Fejlesztői termékváltozat:** akár 4 további Standard fiók, vagy legfeljebb 5 standard fiók. Nincs enek alapfiók.
+  * **Fejlesztő** ISE Termékváltozat: Legfeljebb 4 további Standard számla, vagy legfeljebb 5 standard számla. Nincs enek alapfiók.
 
-  Az integrációs fiókkorlátokról a [Logic Apps korlátai és konfigurációja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)című témakörben talál további információt. Ebben a témakörben további információaz [integrációs fiókszintekről és azok díjszabási modelljéről.](#integration-accounts)
-
-Ha a prémium ISE termékváltozatot választja, az alapegység rögzített kapacitással rendelkezik. Ha nagyobb átviteli forgalomra van szüksége, [hozzáadhat további méretezési egységeket](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)a létrehozás során vagy azt követően. A fejlesztőis ise termékváltozat nem képes további méretezési egységek hozzáadása. Az ISE-ben futó logikai alkalmazások nem viselnek adatmegőrzési költségeket.
-
-Az árak, lásd: [Logic Apps árképzés.](https://azure.microsoft.com/pricing/details/logic-apps)
+  Az integrációs fiókkorlátokról az [Azure Logic Apps korlátai és konfigurációja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)című témakörben talál további információt. Ebben a témakörben további információaz [integrációs fiókszintekről és azok díjszabási modelljéről.](#integration-accounts)
 
 <a name="connectors"></a>
 

@@ -4,12 +4,12 @@ description: Az Azure Migrate szolgáltatás támogatási beállításainak és 
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: raynew
-ms.openlocfilehash: bf719f9179384ec3dca99d2429f569ef209b5daa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f766bf95bb7e26d942e7dde3f315bbef6d5dc5c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127700"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535196"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
@@ -19,7 +19,7 @@ Az Azure [Migrate szolgáltatás](migrate-overview.md) segítségével felmérhe
 
 A táblázat összefoglalja a támogatott felderítési, értékelési és áttelepítési forgatókönyveket.
 
-**Környezet** | **Részletek** 
+**Üzembe helyezés** | **Részletek** 
 --- | --- 
 **Alkalmazásspecifikus felderítés** | A VMware virtuális gépeken futó alkalmazásokat, szerepköröket és funkciókat fedezhet fel. Jelenleg ez a funkció csak felderítésre korlátozódik. Az értékelés jelenleg a gép szintjén van. Még nem kínálunk alkalmazás-, szerepkör- vagy funkcióspecifikus értékelést. 
 **Helyszíni értékelés** | A helyszíni számítási feladatok és a VMware virtuális gépeken, a Hyper-V vM-eken és a fizikai kiszolgálókon futó adatok felmérheti. Értékelje az Azure Migrate Server Assessment és a Microsoft Data Migration Assistant (DMA), valamint egyéb eszközök és isv-ajánlatok használatával.
@@ -30,7 +30,7 @@ A táblázat összefoglalja a támogatott felderítési, értékelési és átte
 
 A konkrét eszköztámogatást a táblázat foglalja össze.
 
-**Eszköz** | **Értékelje** | **Áttelepítése** 
+**Eszköz** | **Értékelje** | **Migrate (Áttelepítés)** 
 --- | --- | ---
 Azure áttelepítési kiszolgáló értékelése | Értékelje [a VMware virtuális gépeket](tutorial-prepare-vmware.md), [a Hyper-V vM-eket](tutorial-prepare-hyper-v.md)és a [fizikai kiszolgálókat.](tutorial-prepare-physical.md) |  Nem érhető el (NA)
 Azure Migrate Server Migration | NA | [VMware virtuális gépek,](tutorial-migrate-vmware.md) [hyper-v vm-ek](tutorial-migrate-hyper-v.md)és [fizikai kiszolgálók áttelepítése.](tutorial-migrate-physical-virtual-machines.md)
@@ -69,13 +69,12 @@ Azure Migrate projekt létrehozása | Az Azure-fióknak engedélyekre van szüks
 Az Azure Migrate-berendezés regisztrálása| Az Azure Migrate egy könnyű [Azure Migrate készüléket](migrate-appliance.md) használ az Azure Migrate Server Assessment szolgáltatással rendelkező gépek értékeléséhez, valamint a VMware virtuális gépek [ügynök nélküli migrálásának](server-migrate-overview.md) futtatásához az Azure Migrate Server Migration segítségével. Ez a készülék felderíti a gépeket, és metaadatokat és teljesítményadatokat küld az Azure Migrate szolgáltatásnak.<br/><br/> A regisztráció során regisztrálja szolgáltatók (Microsoft.OffAzure, Microsoft.Migrate és Microsoft.KeyVault) regisztrálva vannak a készülékben kiválasztott előfizetéssel, így az előfizetés együttműködik az erőforrás-szolgáltatóval. A regisztrációhoz közreműködői vagy tulajdonosi hozzáférésre van szüksége az előfizetéshez.<br/><br/> **VMware**- A bevezetés során az Azure Migrate két Azure Active Directory (Azure AD) alkalmazást hoz létre. Az első alkalmazás kommunikál a készülék ügynökök és az Azure Áttelepítésszolgáltatás között. Az alkalmazás nem rendelkezik engedélyekkel az Azure erőforrás-kezelési hívásokhoz, vagy rBAC-hozzáféréssel rendelkezik az erőforrásokhoz. A második alkalmazás csak ügynök nélküli VMware-áttelepítéshez létrehozott Azure Key Vault-ot biztosít. Ügynök nélküli áttelepítés esetén az Azure Migrate létrehoz egy Key Vault-ot az előfizetés replikációs tárfiókhoz való hozzáférési kulcsok kezeléséhez. RBAC-hozzáféréssel rendelkezik az Azure Key Vault (az ügyfél-bérlő) felderítésindításkor a készülékről.<br/><br/> **Hyper-V**-A bevezetés során. Az Azure Migrate egyetlen Azure AD-alkalmazást hoz létre. Az alkalmazás kommunikál a készülék ügynökök és az Azure Áttelepítés szolgáltatás között. Az alkalmazás nem rendelkezik engedélyekkel az Azure erőforrás-kezelési hívásokhoz, vagy rBAC-hozzáféréssel rendelkezik az erőforrásokhoz. | [VMware,](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)vagy [fizikai kiszolgálók](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)beállítása.
 Kulcstartó létrehozása a VMware ügynök nélküli áttelepítéséhez | A VMware virtuális gépek ügynök nélküli Azure Migrate Server Migration alkalmazással történő áttelepítéséhez az Azure Migrate létrehoz egy Key Vault-ot az előfizetés replikációs tárfiókhoz való hozzáférési kulcsok kezeléséhez. A tároló létrehozásához adja meg az engedélyeket (tulajdonos, vagy közreműködői és a felhasználói hozzáférés rendszergazdája) az erőforráscsoport, amelyben az Azure Migrate projekt található. | [Engedélyek beállítása.](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)
 
-## <a name="supported-geographies"></a>Támogatott földrajzi területek
+## <a name="supported-geographies-public-cloud"></a>Támogatott földrajzi területek (nyilvános felhő)
 
-Azure Migrate projektet számos földrajzi területen hozhat létre. Bár csak ezeken a földrajzi területeken hozhat létre projekteket, felmérheti vagy áttelepítheti a gépeket más célhelyekre. A projekt földrajzi csak a felderített metaadatok tárolására szolgál.
+Létrehozhat egy Azure Migrate projektet számos földrajzi területen a nyilvános felhőben. Bár csak ezeken a földrajzi területeken hozhat létre projekteket, felmérheti vagy áttelepítheti a gépeket más célhelyekre. A projekt földrajzi csak a felderített metaadatok tárolására szolgál.
 
 **Földrajz** | **Metaadatok tárolási helye**
 --- | ---
-Azure Government | USA-beli államigazgatás – Virginia
 Ázsia és a Csendes-óceáni térség | Kelet-Ázsia vagy Délkelet-Ázsia
 Ausztrália | Ausztrália Kelet vagy Ausztrália Délkelet
 Brazília | Dél-Brazília
@@ -89,9 +88,13 @@ Egyesült Királyság | Egyesült Királyság déli vagy egyesült királyságbe
 Egyesült Államok | USA középső vagy usa nyugati régiója 2
 
 
- > [!NOTE]
- > Az Azure Government támogatása jelenleg csak az Azure Migrate [régebbi verziójához](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) érhető el.
+## <a name="supported-geographies-azure-government"></a>Támogatott földrajzi területek (Azure Government)
 
+**Tevékenység** | **Földrajz** | **Részletek**
+--- | --- | ---
+Projekt létrehozása | Egyesült Államok | Metaadatok tárolása az Egyesült Államok gov Arizona, US Gov Virginia
+Célfelmérés | Egyesült Államok | Célrégiók: US Gov Arizona, US Gov Virginia/US Gov Texas
+Célreplikáció | Egyesült Államok | Célrégiók: US DoD Central, US DoD East, US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia
 
 
 ## <a name="vmware-assessment-and-migration"></a>VMware értékelése és áttelepítése

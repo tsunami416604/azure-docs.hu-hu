@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cecafd9209b095270e9a06ca59ffef162326efc2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657398"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538001"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -117,8 +117,6 @@ A [tárolótároló-tárolóknévtér-elérési útjait](hpc-cache-edit-storage.
 Töltse ki ezeket az értékeket az egyes névtérelérési utakhoz:
 
 * **Virtuális névtér elérési útja** – Állítsa be a tárolócél ügyfélfelé néző fájlelérési útját. Olvassa [el Az összesített névtér konfigurálása](hpc-cache-namespace.md) című olvasni, ha többet szeretne megtudni a virtuális névtér szolgáltatásról.
-
-<!--  The virtual path should start with a slash ``/``. -->
 
 * **NFS exportálási útvonal** – Adja meg az NFS-exportálás elérési útját.
 

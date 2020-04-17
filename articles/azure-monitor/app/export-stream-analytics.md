@@ -3,12 +3,12 @@ title: Exportálás a Stream Analytics használatával az Azure Application Insi
 description: A Stream Analytics folyamatosan átalakíthatja, szűrheti és továbbíthatja az Application Insightsból exportált adatokat.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664014"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536879"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Az Application Insightsból exportált adatok feldolgozása a Stream Analytics segítségével
 [Az Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ideális eszköz az [Application Insightsból exportált adatok feldolgozásához.](export-telemetry.md) A Stream Analytics különböző forrásokból is letud adatokat lekéri. Átalakíthatja és szűrheti az adatokat, majd különböző fogadókhoz irányíthatja azokat.
@@ -55,7 +55,7 @@ A folyamatos exportálás mindig adatokat ad ki egy Azure Storage-fiókba, ezér
 
     ![Eseménytípusok kiválasztása](./media/export-stream-analytics/080.png)
 
-1. Hagyja, hogy néhány adat felhalmozódik. Dőljön hátra, és hagyja, hogy az emberek használják a kérelmet egy darabig. Telemetriai adatok jönnek, és látni fogja a statisztikai diagramok [metrika felfedező](../../azure-monitor/app/metrics-explorer.md) és az egyes események [diagnosztikai keresés.](../../azure-monitor/app/diagnostic-search.md) 
+1. Hagyja, hogy néhány adat felhalmozódik. Dőljön hátra, és hagyja, hogy az emberek használják a kérelmet egy darabig. Telemetriai adatok jönnek, és látni fogja a statisztikai diagramok [metrika felfedező](../../azure-monitor/platform/metrics-charts.md) és az egyes események [diagnosztikai keresés.](../../azure-monitor/app/diagnostic-search.md) 
    
     És az adatok is exportálják a tárolóba. 
 2. Vizsgálja meg az exportált adatokat. A Visual Studio alkalmazásban válassza **a View / Cloud Explorer**lehetőséget, és nyissa meg az Azure / Storage alkalmazást. (Ha nem rendelkezik ezzel a menübeállítással, telepítenie kell az Azure SDK:Nyissa meg az Új projekt párbeszédpanelt, és nyissa meg a Visual C# / Cloud / Get Microsoft Azure SDK for .NET alkalmazást.)

@@ -3,12 +3,12 @@ title: VMware virtuális gépek biztonsági mentése az Azure Backup Server rel
 description: Ebből a cikkből megtudhatja, hogyan készíthet idát meg az Azure Backup Server használatával a VMware vCenter/ESXi kiszolgálón futó VMware virtuális gépek biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 951016d393b095b0329ff18861421402e0e18a1a
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529503"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537406"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése az Azure Backup Server rel
 
@@ -96,11 +96,11 @@ Ha biztonságos határok vannak a szervezeten belül, és nem szeretné használ
 
 1. Másolja és illessze be a következő szöveget egy .txt fájlba.
 
-```text
-Windows Registry Editor Version 5.00
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
-"IgnoreCertificateValidation"=dword:00000001
-```
+    ```text
+    Windows Registry Editor Version 5.00
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+    "IgnoreCertificateValidation"=dword:00000001
+    ```
 
 2. Mentse a fájlt az Azure Backup Server gépére **DisableSecureAuthentication.reg**néven.
 
@@ -113,7 +113,7 @@ Az Azure Backup Server szüksége van egy felhasználói fiók a v-Center Server
 1. Jelentkezzen be a vCenter-kiszolgálóra (vagy esxi-állomásra, ha nem használja a vCenter Server kiszolgálót).
 2. A **Navigátor** panelen kattintson az **Adminisztráció gombra.**
 
-    ![Adminisztráció](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
+    ![Felügyelet](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
 3. A **Felügyeleti** > **szerepkörök csoportban**kattintson a szerepkör hozzáadása ikonra (a + szimbólum).
 
@@ -130,27 +130,49 @@ Az Azure Backup Server szüksége van egy felhasználói fiók a v-Center Server
 
 ### <a name="role-permissions"></a>Szerepkör-engedélyek
 
-| **A vCenter 6.7 felhasználói fiókjának jogosultságai**              | **A vCenter 6.5 felhasználói fiókjának jogosultságai**             |
-| --------------------------------------------------------- | -------------------------------------------------------- |
-| Datastore.Hely lefoglalása                                  | Datastore.Hely lefoglalása                                 |
-| Global.Log esemény                                          | Global.Log esemény                                         |
-| Global.Manage egyéni attribútumok                           | Global.Manage egyéni attribútumok                          |
-| Hálózat.Hozzárendelés                                            | Hálózat.Hozzárendelés                                           |
-| Erőforrás. Virtuális gép hozzárendelése erőforráskészlethez        | Erőforrás. Virtuális gép hozzárendelése erőforráskészlethez       |
-| VirtualMachine.Configuration.AddNewDisk                   | VirtualMachine.Configuration.AddNewDisk                  |
-| VirtualMachine.Configuration . Eszköz hozzáadása vagy eltávolítása       | VirtualMachine.Configuration . Eszköz hozzáadása vagy eltávolítása      |
-| VirtualMachine.Configuration.Advanced                     | VirtualMachine.Configuration.Advanced                    |
-| VirtualMachine.Configuration.Tole lemezváltás-követés | VirtualMachine.Configuration.Disk változáskövetés       |
-| VirtualMachine.Configuration.Configure állomás USB-eszközének konfigurálása   | VirtualMachine.Configuration.Host USB-eszköz            |
-| VirtualMachine.Configuration.Query Nem birtokolt fájlok         | VirtualMachine.Configuration.Query Nem birtokolt fájlok        |
-| VirtualMachine.Configuration.Change swapfájl elhelyezése   | VirtualMachine.Configuration.Swapfájl elhelyezése         |
-| VirtualMachine.Interaction.Kikapcsolás                      | VirtualMachine.Interaction.Kikapcsolás                     |
-| VirtualMachine.Inventory.Új létrehozása                       | VirtualMachine.Inventory.Új létrehozása                      |
-| VirtualMachine.Provisioning.Allow Lemezelérés engedélyezése            | VirtualMachine.Provisioning.Allow Lemezelérés engedélyezése           |
-| VirtualMachine.Provisioning.Allow fájlhozzáférés            | VirtualMachine.Provisioning.Allow fájlhozzáférés           |
-| VirtualMachine.Provisioning.Read-only lemezes hozzáférés engedélyezése  | VirtualMachine.Provisioning.Read-only lemezes hozzáférés engedélyezése |
-| VirtualMachine.Snapshot Management.Snapshot Management.Snapshot       | VirtualMachine.Snapshot Management.Snapshot Management.Snapshot      |
-| VirtualMachine.Snapshot Management.Remove Pillanatkép eltávolítása       | VirtualMachine.Snapshot Management.Remove Pillanatkép eltávolítása      |
+| A vCenter 6.7 felhasználói fiókjának jogosultságai                     | A vCenter 6.5 felhasználói fiókjának jogosultságai                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Adattár-fürt. Datatstore-fürt konfigurálása            | Adattár-fürt. Datatstore-fürt konfigurálása            |
+| Datastore.AllocateSpace                                      | Datastore.AllocateSpace                                      |
+| Datastore.Tallózás adattár                                   | Datastore.Tallózás adattár                                   |
+| Datastore.Low-level fájlműveletek                          | Datastore.Low-level fájlműveletek                          |
+| Global.Disable metódusok                                       | Global.Disable metódusok                                       |
+| Global.Metódusok engedélyezése                                        | Global.Metódusok engedélyezése                                        |
+| Globális.Licencek                                              | Globális.Licencek                                              |
+| Global.Log esemény                                             | Global.Log esemény                                             |
+| Global.Egyéni attribútumok kezelése                              | Global.Egyéni attribútumok kezelése                              |
+| Global.Set egyéni attribútum                                  | Global.Set egyéni attribútum                                  |
+| Host.Local műveletek. Virtuális gép létrehozása                | Host.Local műveletek. Virtuális gép létrehozása                |
+| Hálózat.Hálózat hozzárendelése                                       | Hálózat.Hálózat hozzárendelése                                       |
+| Erőforrás. Virtuális gép hozzárendelése erőforráskészlethez           | Erőforrás. Virtuális gép hozzárendelése erőforráskészlethez           |
+| vApp.Add virtuális gép                                     | vApp.Add virtuális gép                                     |
+| vApp.Erőforráskészlet hozzárendelése                                    | vApp.Erőforráskészlet hozzárendelése                                    |
+| vApp.Unregister                                              | vApp.Unregister                                              |
+| VirtualMachine.Configuration . Eszköz hozzáadása vagy eltávolítása          | VirtualMachine.Configuration . Eszköz hozzáadása vagy eltávolítása          |
+| Virtuális gép. Configuration.Acquire lemezbérlet            | Virtuális gép. Configuration.Disk címbérlet                     |
+| Virtuális gép. Configuration.Add új lemez                   | Virtuális gép. Configuration.Add új lemez                   |
+| Virtuális gép. Configuration.Advanced konfiguráció        | Virtuális gép. Configuration.Speciális                       |
+| Virtuális gép. Configuration.Totle lemezváltozáskövetés   | Virtuális gép. Configuration.Disk változáskövetés          |
+| Virtuális gép. Configuration.Configure állomás USB-eszköz     | Virtuális gép. Configuration.Host USB-eszköz               |
+| Virtuális gép. Configuration.Extend virtuális lemez           | Virtuális gép. Configuration.Extend virtuális lemez           |
+| Virtuális gép. Configuration.Query nem birtokolt fájlok           | Virtuális gép. Configuration.Query nem birtokolt fájlok           |
+| Virtuális gép. Configuration.Change Swapfile elhelyezése     | Virtuális gép. Configuration.Swapfájl elhelyezése            |
+| Virtuális gép. Vendég operations.Guest operation program végrehajtása | Virtuális gép. Vendég operations.Guest operation program végrehajtása |
+| Virtuális gép. Vendég operations.Guest operations módosítások | Virtuális gép. Vendég operations.Guest operations módosítások |
+| Virtuális gép. Vendégműveletek.Vendég műveleti lekérdezések    | Virtuális gép. Vendégműveletek.Vendég műveleti lekérdezések    |
+| Virtuális gép . Kölcsönhatás. Eszközkapcsolat             | Virtuális gép . Kölcsönhatás. Eszközkapcsolat             |
+| Virtuális gép . Kölcsönhatás. Vendég operációs rendszer kezelése VIX API-val | Virtuális gép . Kölcsönhatás. Vendég operációs rendszer kezelése VIX API-val |
+| Virtuális gép . Kölcsönhatás. Kikapcsolás                      | Virtuális gép . Kölcsönhatás. Kikapcsolás                      |
+| Virtuális gép . Inventory.Új létrehozása                        | Virtuális gép . Inventory.Új létrehozása                        |
+| Virtuális gép . Készlet.Eltávolítás                            | Virtuális gép . Készlet.Eltávolítás                            |
+| Virtuális gép . Készlet.Regisztráció                          | Virtuális gép . Készlet.Regisztráció                          |
+| Virtuális gép . Provisioning.Lemezhozzáférés engedélyezése             | Virtuális gép . Provisioning.Lemezhozzáférés engedélyezése             |
+| Virtuális gép . Provisioning.Fájlhozzáférés engedélyezése             | Virtuális gép . Provisioning.Fájlhozzáférés engedélyezése             |
+| Virtuális gép . Provisioning.Read-Only lemezhozzáférés engedélyezése   | Virtuális gép . Provisioning.Read-Only lemezhozzáférés engedélyezése   |
+| Virtuális gép . Provisioning.A virtuális gépek letöltésének engedélyezése | Virtuális gép . Provisioning.A virtuális gépek letöltésének engedélyezése |
+| Virtuális gép . Pillanatkép-kezelés.  Pillanatkép készítése       | Virtuális gép . Pillanatkép-kezelés.  Pillanatkép készítése       |
+| Virtuális gép . Pillanatkép-kezelés. Pillanatkép eltávolítása        | Virtuális gép . Pillanatkép-kezelés. Pillanatkép eltávolítása        |
+| Virtuális gép . Pillanatkép-kezelés. Visszaállítás a pillanatképhez     | Virtuális gép . Pillanatkép-kezelés. Visszaállítás a pillanatképhez     |
 
 <br>
 
@@ -174,8 +196,6 @@ Az Azure Backup Server szüksége van egy felhasználói fiók a v-Center Server
 | Virtuális gép. Kiépítés. Írásvédett lemezhozzáférés engedélyezése |                                             |
 | Virtuális gép. Pillanatkép-kezelés. Pillanatkép létrehozása       |                                             |
 | Virtuális gép. Pillanatkép-kezelés. Pillanatkép eltávolítása       |                                             |
-
-
 
 ## <a name="create-a-vmware-account"></a>VMware-fiók létrehozása
 

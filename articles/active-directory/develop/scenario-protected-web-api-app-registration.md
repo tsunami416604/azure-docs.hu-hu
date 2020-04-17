@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2cdf3ff45a400d4b8d0b2605bf7ddc364aff1fe6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 997dd98d35b74effe5d195f9a781fa0935286ee9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882386"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537219"
 ---
 # <a name="protected-web-api-app-registration"></a>Védett webes API: Alkalmazásregisztráció
 
@@ -82,9 +82,9 @@ A hatókörök az alkalmazás felhasználóinak bemutatott jóváhagyási ablakb
     - Válassza **a Hatókör neve lehetőséget,** és írja be **access_as_user.**
     - Válassza a **Ki járulhat hozzá,** és győződjön meg arról, **hogy a rendszergazdák és a felhasználók** ki vannak jelölve.
     - Válassza a **Rendszergazda hozzájárulása megjelenítendő nevet,** és adja meg **az Access TodoListService felhasználói nevet.**
-    - Válassza a **Rendszergazda hozzájárulási leírását,** és adja meg **az Accesses service web API-t felhasználóként.**
+    - Válassza a **Rendszergazda hozzájárulási leírását,** és adja meg **az Accesses service webes API-t felhasználóként.**
     - Válassza a **Felhasználói hozzájárulás megjelenítendő nevét,** és írja be **az Access TodoListService szolgáltatást felhasználóként.**
-    - Válassza a **Felhasználó hozzájárulásának leírását,** és adja meg az Accesses service **web API-t felhasználóként.**
+    - Válassza a **Felhasználó hozzájárulásának leírását,** és adja meg **az Accesses service webes API-t felhasználóként.**
     - Tartsa az **Állapot** értéket Engedélyezve értékre **állítva.**
  1. Válassza **a Hatókör hozzáadása**lehetőséget.
 

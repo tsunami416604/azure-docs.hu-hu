@@ -13,16 +13,16 @@ ms.date: 11/07/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c1f1cbf85b96aade745cc4248aed4bc89e41b450
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 647dff9e6401322371ef795a25ca5ced2b517e9c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085164"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534584"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokenek beszerzése és gyorsítótárazása a Microsoft hitelesítési könyvtárával (MSAL)
 
-[A hozzáférési jogkivonatok](access-tokens.md) lehetővé teszik az ügyfelek számára, hogy biztonságosan hívhassák meg az Azure által védett webes API-kat. A Microsoft Authentication Library (MSAL) segítségével számos módon szerezhet be jogkivonatot. Bizonyos módokfelhasználói interakciókat igényelnek a webböngészőn keresztül. Vannak, akik nem igényelnek felhasználói beavatkozást. A jogkivonat beszerzésének módja általában attól függ, hogy az alkalmazás nyilvános ügyfélalkalmazás (asztali vagy mobilalkalmazás) vagy bizalmas ügyfélalkalmazás (Web App, Web API vagy démonalkalmazás, például Windows-szolgáltatás).
+[A hozzáférési jogkivonatok](access-tokens.md) lehetővé teszik az ügyfelek számára, hogy biztonságosan hívhassák meg az Azure által védett webes API-kat. A Microsoft Authentication Library (MSAL) segítségével számos módon szerezhet be jogkivonatot. Bizonyos módokfelhasználói interakciókat igényelnek a webböngészőn keresztül. Vannak, akik nem igényelnek felhasználói beavatkozást. A jogkivonat beszerzésének módja általában attól függ, hogy az alkalmazás nyilvános ügyfélalkalmazás (asztali vagy mobilalkalmazás) vagy bizalmas ügyfélalkalmazás (webalkalmazás, webes API vagy démonalkalmazás, például Windows-szolgáltatás).
 
 Az MSAL a beolvasás után gyorsítótárazza a jogkivonatot.  Az alkalmazáskódnak meg kell próbálnia egy jogkivonatot csendben beszerezni (a gyorsítótárból), először, mielőtt más módon szerezne be egy jogkivonatot.
 
@@ -63,18 +63,18 @@ Az MSAL jogkivonat-gyorsítótárat (vagy a bizalmas ügyfélalkalmazások két 
 
 ### <a name="recommended-call-pattern-for-public-client-applications"></a>Ajánlott hívásminta nyilvános ügyfélalkalmazásokhoz
 
-Alkalmazáskód meg kell próbálnia, hogy egy jogkivonatot csendben (a gyorsítótárból), először.  Ha a metódushívás "Felhasználói felület szükséges" hibát vagy kivételt ad vissza, próbáljon meg más módon tokeneket beszerezni. 
+Alkalmazáskód meg kell próbálnia, hogy egy jogkivonatot csendben (a gyorsítótárból), először.  Ha a metódushívás "Felhasználói felület szükséges" hibát vagy kivételt ad vissza, próbáljon meg más módon tokeneket beszerezni.
 
 Azonban két folyamat, amely előtt **nem kell** megpróbálni, hogy csendben megszerezni egy jogkivonatot:
 
 - [ügyfél hitelesítő adatok flow,](msal-authentication-flows.md#client-credentials)amely nem használja a felhasználói jogkivonat-gyorsítótár, hanem egy alkalmazás token cache. Ez a módszer gondoskodik az alkalmazástoken-gyorsítótár ellenőrzéséről, mielőtt kérelmet küldene az STS-nek.
-- [engedélyezési kód áramlását](msal-authentication-flows.md#authorization-code) a Web Apps, mivel beváltja a kódot, hogy az alkalmazás kapott a felhasználó bejelentkezésével, és azokat hozzájárulástovábbi hatókörök. Mivel a kód paraméterként, és nem fiókként kerül átadásra, a metódus nem tud a gyorsítótárban keresni a kód beváltása előtt, amely egyébként is hívást igényel a szolgáltatáshoz.
+- [engedélyezési kód áramlását](msal-authentication-flows.md#authorization-code) a webalkalmazásokban, mivel beváltja a kódot, hogy az alkalmazás kapott a felhasználó bejelentkezésével, és azokat hozzájárulástovábbi hatókörök. Mivel a kód paraméterként, és nem fiókként kerül átadásra, a metódus nem tud a gyorsítótárban keresni a kód beváltása előtt, amely egyébként is hívást igényel a szolgáltatáshoz.
 
 ### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Ajánlott hívásminta a webalkalmazásokban az Engedélyezési kód folyamat használatával
 
 Az [OpenID Connect engedélyezési kódfolyamatot](v2-protocols-oidc.md)használó webalkalmazások esetében a vezérlők ajánlott mintája a következő:
 
-- Bizalmas ügyfélalkalmazás példányosítása egyedi szerializálással rendelkező jogkivonat-gyorsítótárral. 
+- Bizalmas ügyfélalkalmazás példányosítása egyedi szerializálással rendelkező jogkivonat-gyorsítótárral.
 - A jogkivonat beszerzése az engedélyezési kód folyamatával
 
 ## <a name="acquiring-tokens"></a>Tokenek beolvasása
@@ -91,8 +91,8 @@ Nyilvános ügyfélalkalmazások (asztali vagy mobilalkalmazás) esetén:
 
 ### <a name="confidential-client-applications"></a>Bizalmas ügyfélalkalmazások
 
-Bizalmas ügyfélalkalmazások (Web App, Web API vagy démonalkalmazás, például Windows-szolgáltatások) esetén a következőket kell:
-- Az [ügyfél hitelesítő adatainak folyamatával](msal-authentication-flows.md#client-credentials)nem az **alkalmazás jogkivonatait** szerezze be, és ne egy felhasználószámára. Ez olyan eszközök vagy eszközök szinkronizálására használható, amelyek általában a felhasználókat dolgozzák fel, és nem egy adott felhasználót. 
+Bizalmas ügyfélalkalmazások (webalkalmazás, webes API vagy démonalkalmazás, például Windows-szolgáltatás) esetén a következőket teszi:
+- Az [ügyfél hitelesítő adatainak folyamatával](msal-authentication-flows.md#client-credentials)nem az **alkalmazás jogkivonatait** szerezze be, és ne egy felhasználószámára. Ez olyan eszközök vagy eszközök szinkronizálására használható, amelyek általában a felhasználókat dolgozzák fel, és nem egy adott felhasználót.
 - A webes [API-k nevében egy api-t](msal-authentication-flows.md#on-behalf-of) a felhasználó nevében hívhat meg. Az alkalmazás ügyfélhitelesítő adatokkal azonosítja annak érdekében, hogy egy felhasználói állításon (például SAML vagy jwt-jogkivonaton) alapuló jogkivonatot szerezzen be. Ezt a folyamatot olyan alkalmazások használják, amelyeknek egy adott felhasználó erőforrásaihoz kell hozzáférnie a szolgáltatás-szolgáltatás hívásokban.
 - Tokenek beszerzése az [engedélyezési kód folyamat](msal-authentication-flows.md#authorization-code) a webalkalmazásokban, miután a felhasználó bejelentkezik az engedélyezési kérelem URL-címen keresztül. OpenID Connect alkalmazás általában ezt a mechanizmust használja, amely lehetővé teszi a felhasználó bejelentkezést open id connect használatával, majd a felhasználó nevében webes API-k eléréséhez.
 

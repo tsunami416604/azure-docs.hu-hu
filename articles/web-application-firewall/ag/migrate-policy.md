@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: 1fac524af4b69f8e35934840643c6d3ad99fe1cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74174602"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536624"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Webalkalmazás-tűzfal házirendek áttelepítése az Azure PowerShell használatával
 
@@ -28,6 +28,13 @@ Az áttelepítési parancsfájl futtatásához kövesse az alábbi lépéseket:
 2. Másolja a parancsfájlt a felhőhéj ablakába, és futtassa azt.
 3. A parancsfájl kéri az előfizetésazonosítót, az erőforráscsoport nevét, annak az alkalmazásátjárónak a nevét, amelyhez a WAF-konfiguráció társítva van, valamint a létrehozandó új WAF-házirend nevét. Miután megadta ezeket a bemeneteket, a parancsfájl fut, és létrehozza az új WAF-házirendet
 4. Társítsa az új WAF-szabályzatot az alkalmazásátjáróhoz. Nyissa meg a WAF-házirendet a portálon, és **Associate an Application Gateway** válassza a **Társított alkalmazásátjárók** lapot.
+
+> [!NOTE]
+> A parancsfájl nem hajt végre áttelepítést, ha a következő feltételek állnak fenn:
+> - Egy teljes szabály le van tiltva. Az áttelepítés befejezéséhez győződjön meg arról, hogy a teljes szabálycsoport nincs letiltva.
+> - Kizárási bejegyzés(ek) az *Egyenlő operátorokkal.* Az áttelepítés befejezéséhez győződjön meg arról, hogy a kizárási bejegyzések *egyenlő kkel minden* operátor nincs jelen.
+>
+> További információt a *parancsfájl ValidateInput* függvényében talál.
 
 ```azurepowershell-interactive
 <#PSScriptInfo

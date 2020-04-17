@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: ecbed58eabd2e835d8fa202916829d1da91210e7
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 3c6cb6303734b5336b3e9a7646e5eb3310d0f236
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991058"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536046"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Rövid útmutató: Jogkivonat beszerzése és Microsoft Graph API hívása Python-konzolalkalmazásból az alkalmazás identitásának használatával
 
@@ -55,7 +55,7 @@ A minta futtatásához a következőkre van szükség:
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 > 1. Keresse meg a Microsoft identity platform ot a fejlesztőknek [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapon.
 > 1. Válassza **az Új regisztráció lehetőséget.**
-> 1. Amikor megjelenik a **Jelentkezés iszatának regisztrálása** lap, adja meg a jelentkezési lap regisztrációs adatait. 
+> 1. Amikor megjelenik a **Jelentkezés iszatának regisztrálása** lap, adja meg a jelentkezési lap regisztrációs adatait.
 > 1. A **Név szakaszban** adjon meg egy értelmes alkalmazásnevet, amely megjelenik az alkalmazás felhasználói számára, például `Daemon-console`a lehetőséget, majd válassza a **Regisztráció** lehetőséget az alkalmazás létrehozásához.
 > 1. A regisztrációt követően válassza a **Tanúsítványok & titkos kulcsok menüt.**
 > 1. Az **Ügyféltitkok csoportban**válassza a **+ Új ügyféltitok**lehetőséget. Adjon neki nevet, és válassza **a Hozzáadás**lehetőséget. Másolja a titkot egy biztonságos helyre. Szüksége lesz rá, hogy használja a kódot.
@@ -65,7 +65,7 @@ A minta futtatásához a következőkre van szükség:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>A rövid útmutató alkalmazás letöltése és konfigurálása
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
 > A gyorsútmutató működéséhez a kódminta működéséhez létre kell hoznia egy ügyféltitkot, és hozzá kell adnia a Graph API **User.Read.All** alkalmazásengedélyét.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -89,7 +89,7 @@ A minta futtatásához a következőkre van szükség:
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-python-project"></a>3. lépés: A Python-projekt konfigurálása
-> 
+>
 > 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
 > 1. Keresse meg az **1-Call-MsGraph-WithSecret almappát"**.
 > 1. Írja be **a parameters.json parancsot,** és cserélje le a mezők `authority`értékeit, `client_id`valamint `secret` a következő kódrészletre:
@@ -106,7 +106,7 @@ A minta futtatásához a következőkre van szükség:
 >
 > > [!TIP]
 > > **Az alkalmazás (ügyfél) azonosító**, **címtár (bérlői) azonosító**értékek et, keresse fel az alkalmazás **áttekintése** lapot az Azure Portalon. Új kulcs létrehozásához nyissa meg **a Tanúsítványok & titkos kulcsok** lapot.
-    
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>3. lépés: Rendszergazdai hozzájárulás
 

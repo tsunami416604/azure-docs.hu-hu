@@ -4,18 +4,16 @@ description: Ismerje meg, hogyan futtathat ügynökalapú áttelepítést a VMwa
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6855c3e81aece0358146608b6cf179fb923c54c8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238439"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535332"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek áttelepítése az Azure-ba (ügynökalapú)
 
 Ez a cikk bemutatja, hogyan telepítheti át a helyszíni VMware virtuális gépeket az Azure-ba, ügynökalapú áttelepítés használatával az Azure Áttelepítési kiszolgáló áttelepítése eszközzel.
-
-[Az Azure Migrate](migrate-services-overview.md) központi központot biztosít a helyszíni alkalmazások és számítási feladatok, valamint az AWS/GCP virtuálisgép-példányok Azure-ba való felderítésének, értékelésének és áttelepítésének nyomon követéséhez. A központ Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint külső független szoftverszállítói (ISV) ajánlatokat.
 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -78,7 +76,7 @@ Ha már futtatott egy értékelést az Azure Migrate Server Assessment használa
 Ha még nem futtatott felmérést, be kell állítania az Azure-engedélyeket, mielőtt áttelepítheti az Azure Áttelepítési kiszolgáló áttelepítésével.
 
 - **Projekt létrehozása:** Az Azure-fióknak engedélyekre van szüksége egy Azure Migrate projekt létrehozásához. 
-- **Regisztrálja az Azure Migrate replikációs berendezés:** A replikációs berendezés létrehoz és regisztrál egy Azure Active Directory alkalmazást az Azure-fiókban. Ehhez engedélyeket kell delegálnia.
+- **Regisztrálja az Azure Migrate replikációs berendezés:** A replikációs berendezés létrehoz és regisztrál egy Azure Active Directory alkalmazást az Azure-fiókban. Delegálja az ehhez szükséges engedélyeket.
 - **Key Vault létrehozása:** A VMware virtuális gépek áttelepítése az Azure Migrate Server Migration használatával, az Azure Migrate létrehoz egy key vault az erőforráscsoportban, az előfizetés replikációs tárfiók hozzáférési kulcsainak kezeléséhez. A tároló létrehozásához szerepkör-hozzárendelési engedélyeket kell létrehozni a szerepkör-hozzárendelési engedélyeket az erőforráscsoport, amelyben az Azure Migrate projekt található. 
 
 
@@ -148,7 +146,7 @@ Hozza létre a fiókot az alábbiak szerint:
 **Tevékenység** | **Szerepkör/Engedélyek** | **Részletek**
 --- | --- | ---
 **Virtuális gépek felderítése** | Legalább egy csak olvasási jogosultsággal rendelkező felhasználó<br/><br/> Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> A hozzáférés korlátozásához rendelje hozzá a **Nincs hozzáférési** szerepkört a **Propagálás gyermekobjektumhoz,** a gyermekobjektumokhoz (vSphere-állomásokhoz, adattárakhoz, virtuális gépekhez és hálózatokhoz).
-**Teljes replikáció, feladatátvétel, feladat-visszavétel** |  Hozzon létre egy szerepkört (Azure_Site_Recovery) a szükséges engedélyekkel, majd rendelje hozzá a szerepkört egy VMware-felhasználóhoz vagy -csoporthoz<br/><br/> Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = Azure_Site_Recovery<br/><br/> Adattároló -> Terület lefoglalása, adattároló böngészése, alacsony szintű fájlműveletek, fájl eltávolítása, virtuális gépek fájljainak frissítése<br/><br/> Hálózat -> Hálózat hozzárendelése<br/><br/> Erőforrás -> Virtuális gép hozzárendelése az erőforráskészlethez, kikapcsolt virtuális gép migrálása, bekapcsolt virtuális gép migrálása<br/><br/> Feladatok -> Feladat létrehozása, feladat frissítése<br/><br/> Virtuális gép -> Konfiguráció<br/><br/> Virtuális gép -> Használat -> Kérdés megválaszolása, eszközkapcsolat, CD-adathordozó konfigurálása, hajlékonylemezes adathordozó, kikapcsolás, bekapcsolás, VMware-eszközök telepítése<br/><br/> Virtuális gép -> Leltár -> Létrehozás, regisztrálás, regisztráció törlése<br/><br/> Virtuális gép -> Üzembe helyezés -> Virtuális gép letöltésének engedélyezése, virtuálisgépfájlok feltöltésének engedélyezése<br/><br/> Virtuális gép -> Pillanatképek -> Pillanatképek eltávolítása | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> A hozzáférés korlátozásához rendelje hozzá a **Nincs hozzáférési** szerepkört a **Propagálás gyermekobjektumhoz,** a gyermekobjektumokhoz (vSphere-állomásokhoz, adattárakhoz, virtuális gépekhez és hálózatokhoz).
+**Teljes replikáció, feladatátvétel, feladat-visszavétel** |  Hozzon létre egy szerepkört (Azure_Site_Recovery) a szükséges engedélyekkel, majd rendelje hozzá a szerepkört egy VMware-felhasználóhoz vagy -csoporthoz<br/><br/> Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = Azure_Site_Recovery<br/><br/> Adattároló -> Terület lefoglalása, adattároló böngészése, alacsony szintű fájlműveletek, fájl eltávolítása, virtuális gépek fájljainak frissítése<br/><br/> Hálózat -> Hálózat hozzárendelése<br/><br/> Erőforrás -> Virtuális gép hozzárendelése az erőforráskészlethez, kikapcsolt virtuális gép migrálása, bekapcsolt virtuális gép migrálása<br/><br/> Feladatok -> Feladat létrehozása, feladat frissítése<br/><br/> Virtuális gép -> Konfiguráció<br/><br/> Virtuális gép -> Használat -> Kérdés megválaszolása, eszközkapcsolat, CD-adathordozó konfigurálása, hajlékonylemezes adathordozó, kikapcsolás, bekapcsolás, VMware-eszközök telepítése<br/><br/> Virtuális gép -> Leltár -> Létrehozás, regisztrálás, regisztráció törlése<br/><br/> Virtuális gép -> Üzembe helyezés -> Virtuális gép letöltésének engedélyezése, virtuálisgépfájlok feltöltésének engedélyezése<br/><br/> Virtuális gép -> Pillanatképek -> Pillanatképek eltávolítása | A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.<br/><br/> A hozzáférés korlátozásához rendelje hozzá a **Nincs hozzáférési** szerepkört a **Propagálás gyermekobjektumhoz** a gyermekobjektumokhoz (vSphere-állomások, adattárak, virtuális gépek, nd hálózatok).
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Fiók előkészítése a mobilitási szolgáltatás telepítéséhez
 
@@ -191,26 +189,18 @@ Ha nem követte az oktatóanyagot a VMware virtuális gépek értékeléséhez, 
 3. Az **Áttekintés** területen kattintson a **Kiszolgálók értékelése és migrálása** lehetőségre.
 4. A **Kiszolgálók felderítése, felmérése és áttelepítése csoportban**kattintson **a Kiszolgálók felmassza és áttelepítése**elemre.
 
-    ![Kiszolgálók felfedezése és értékelése](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
+    ! [Fedezze fel és értékelje szerverek] (./media/tutorial-migrate-vmware-agent/assess-migrate.png
 
 1. A **Kiszolgálók felderítése, értékelése és migrálása** területen kattintson az **Eszközök hozzáadása** lehetőségre.
 2. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
-3. A **Projekt részletei**területen adja meg a projekt nevét és földrajzi elhelyezkedését, amelyben létre szeretné hozni a projektet, majd kattintson a **Tovább** gombra.
+3. A **Projekt részletei** területen adja meg a projekt nevét és a földrajzi területet, ahol létre szeretné hozni a projektet, majd kattintson a **Következő** gombra. Tekintse át a támogatott földrajzi területeket [az állami](migrate-support-matrix.md#supported-geographies-public-cloud) és [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)számára.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
-    Az Azure Áttelepítési projekt et ezek a földrajzi területek bármelyikén létrehozhatja.
 
-    **Földrajz** | **Régió**
-    --- | ---
-    Ázsia | Délkelet-Ázsia
-    Európa | Észak-Európa vagy Nyugat-Európa
-    Egyesült Államok | USA keleti vagy usa nyugati közép-amerikai régiója
-
-    A projekthez megadott földrajzi hely csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál. A tényleges áttelepítéshez bármelyik célrégiót kiválaszthatja.
 4. Az **Assessment eszköz kiválasztása**csoportban válassza az Értékelési eszköz hozzáadása lehetőség kiválasztása **Most** > antól**tovább**lehetőséget.
 5. Az **Áttelepítés kiválasztása eszközben**válassza az **Azure Áttelepítés: Kiszolgálóáttelepítés** > **ezután**lehetőséget.
-6. Az **Ellenőrzés + eszközök hozzáadása párbeszédpanelen**tekintse át a beállításokat, és kattintson az Eszközök **hozzáadása** gombra.
+6. Az **Áttekintés + eszközök hozzáadása** területen ellenőrizze a beállításokat, majd kattintson az **Eszközök hozzáadása** lehetőségre.
 7. Az eszköz hozzáadása után megjelenik az Azure Áttelepítés projekt > **kiszolgálók** > **áttelepítési eszközeiben.**
 
 ## <a name="set-up-the-replication-appliance"></a>A replikációs berendezés beállítása
@@ -221,7 +211,10 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. A re
 - **Folyamatkiszolgáló**: A folyamatkiszolgáló replikációs átjáróként működik. Replikációs adatokat fogad; gyorsítótárazásával, tömörítéssel és titkosítással optimalizálja, és elküldi egy azure-beli gyorsítótár-tárfiókba. A folyamatkiszolgáló telepíti a replikálni kívánt virtuális gépeken a Mobility Service-ügynököt is, és automatikusan elvégzi a helyszíni VMware virtuális gépek felderítését.
 
 
-A replikációs berendezés beállításához töltsön le egy előkészített Open Virtualization Application (OVA) sablont. Importálja a sablont a VMware-be, és létrehozza a replikációs készülék virtuális gép. 
+A replikációs berendezést többféleképpen is beállíthatja.
+
+- Állítsa be a letöltött Open Virtualization Application (OVA) sablont. Importálja a sablont a VMware-be, és létrehozza a replikációs készülék virtuális gép. Ez az oktatóanyagban használt módszer.
+- Állítsa be a forgatókönyvet.
 
 ### <a name="download-the-replication-appliance-template"></a>A replikációs berendezés sablonletöltése
 

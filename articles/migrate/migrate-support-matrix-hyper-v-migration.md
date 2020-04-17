@@ -2,13 +2,13 @@
 title: A Hyper-V áttelepítéstámogatása az Azure Áttelepítésben
 description: Ismerje meg a Hyper-V-áttelepítés támogatását az Azure Migrate szolgáltatással.
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 8ec0b72cac75518ac938faa202b28d055409e8dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245823"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538188"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>A Hyper-V áttelepítés támogatási mátrixa
 
@@ -23,18 +23,44 @@ Egyszerre legfeljebb 10 virtuális gépet választhat ki a replikációhoz. Ha t
 
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
-| **Környezet**       | A Hyper-V állomás lehet önálló vagy fürtben telepített. <br/>Az Azure Migrate replikációs szoftvert (Hyper-V replikációs szolgáltató) telepíteni kell a Hyper-V gazdagépeken.|
+| **Üzembe helyezés**       | A Hyper-V állomás lehet önálló vagy fürtben telepített. <br/>Az Azure Migrate replikációs szoftver (Hyper-V replikációs szolgáltató) telepítve van a Hyper-V gazdagépeken.|
 | **Engedélyek**           | Rendszergazdai engedélyekre van szükség a Hyper-V gazdagépen. |
 | **Gazda operációs rendszer** | Windows Server 2019, Windows Server 2016 vagy Windows Server 2012 R2. |
-| **URL-hozzáférés** | A Hyper-V állomások replikációs szolgáltatószoftverének hozzá kell férnie ezekhez az URL-címekhez:<br/><br/> - login.microsoftonline.com: Hozzáférés-vezérlés és identitáskezelés az Active Directory használatával.<br/><br/> - *.backup.windowsazure.com: Replikációs adatátvitel és koordináció. Szolgáltatás URL-címének áttelepítése.<br/><br/> - *.blob.core.windows.net: Adatok feltöltése tárfiókokba.<br/><br/> - dc.services.visualstudio.com: Feltöltése alkalmazás naplók használt belső ellenőrzés.<br/><br/> - time.windows.com: Ellenőrzi a rendszer és a globális idő közötti időszinkronizálást.
 | **Port-hozzáférés** |  Kimenő kapcsolatok a 443-as HTTPS-porton a virtuális gép replikációs adatainak küldéséhez.
+
+### <a name="url-access-public-cloud"></a>URL-hozzáférés (nyilvános felhő)
+
+A Hyper-V állomások replikációs szolgáltató szoftverének hozzá kell férnie ezekhez az URL-címekhez.
+
+**Url** | **Részletek**
+--- | ---
+login.microsoftonline.com | Hozzáférés-vezérlés és identitáskezelés az Active Directory használatával.
+backup.windowsazure.com | Replikációs adatátvitel és koordináció.
+*.hypervrecoverymanager.windowsazure.com | Áttelepítésre szolgál.
+*.blob.core.windows.net | Adatok feltöltése tárfiókokba. 
+dc.services.visualstudio.com | A belső figyeléshez használt alkalmazásnaplók feltöltése.
+time.windows.com | Ellenőrzi a rendszer és a globális idő közötti időszinkronizálást.
+
+### <a name="url-access-azure-government"></a>URL-hozzáférés (Azure Government)
+
+A Hyper-V állomások replikációs szolgáltató szoftverének hozzá kell férnie ezekhez az URL-címekhez.
+
+**Url** | **Részletek**
+--- | ---
+login.microsoftonline.us | Hozzáférés-vezérlés és identitáskezelés az Active Directory használatával.
+backup.windowsazure.us | Replikációs adatátvitel és koordináció.
+*.hypervrecoverymanager.windowsazure.us | Áttelepítésre szolgál.
+*.blob.core.usgovcloudapi.net | Adatok feltöltése tárfiókokba.
+dc.services.visualstudio.com | A belső figyeléshez használt alkalmazásnaplók feltöltése.
+time.nist.gov | Ellenőrzi a rendszer és a globális idő közötti időszinkronizálást.
+
 
 ## <a name="hyper-v-vms"></a>Hyper-V virtuális gépek
 
 | **Támogatás**                  | **Részletek**               
 | :----------------------------- | :------------------- |
 | **Operációs rendszer** | Az Azure által támogatott összes [Windows-](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) és [Linux-operációs](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) rendszer. |
-| **Az Azure szükséges módosításai** | Egyes virtuális gépek szükség lehet a módosításokat, hogy azok az Azure-ban futtatható. Az áttelepítés előtt manuálisan kell elvégeznie a módosításokat. A vonatkozó cikkek utasításokat tartalmaznak erre vonatkozóan. |
+| **Az Azure szükséges módosításai** | Egyes virtuális gépek szükség lehet a módosításokat, hogy azok az Azure-ban futtatható. Az áttelepítés előtt manuálisan kell elvégezni a módosításokat. A vonatkozó cikkek utasításokat tartalmaznak erre vonatkozóan. |
 | **Linux rendszerindítás**                 | Ha a /boot egy dedikált partíción található, akkor az operációs rendszer lemezén kell lennie, és nem szabad több lemezre osztani.<br/> Ha a /boot a gyökérpartíció (/) része, akkor a '/' partíciónak az operációs rendszer lemezén kell lennie, és nem kell más lemezekre is kiterjednie. |
 | **UEFI rendszerindítás**                  | Az azure-ban áttelepített virtuális gép automatikusan bios-rendszerindítási virtuális gépté alakul át. A virtuális gépnek csak Windows Server 2012-es és újabb rendszert kell futtatnia. Az operációs rendszer lemezének legfeljebb öt partícióval vagy kevesebbel kell rendelkeznie, és az operációsrendszer-lemez méretének 300 GB-nál kisebbnek kell lennie.
   |
@@ -48,7 +74,7 @@ Egyszerre legfeljebb 10 virtuális gépet választhat ki a replikációhoz. Ha t
 | **Céllemez**                | Az Azure virtuális gépek csak felügyelt lemezekkel telepíthetők át. |
 | **IPv6** | Nem támogatott.
 | **Hálózati adapterek összeállása** | Nem támogatott.
-| **Az Azure webhely helyreállítása** | Nem replikálható az Azure Migrate Server Migration használatával, ha a virtuális gép engedélyezve van az Azure Site Recovery replikációjához.
+| **Azure Site Recovery** | Nem replikálható az Azure Migrate Server Migration használatával, ha a virtuális gép engedélyezve van az Azure Site Recovery replikációjához.
 | **Portok** | Kimenő kapcsolatok a 443-as HTTPS-porton a virtuális gép replikációs adatainak küldéséhez.
 
 ## <a name="azure-vm-requirements"></a>Azure virtuálisgép-követelmények

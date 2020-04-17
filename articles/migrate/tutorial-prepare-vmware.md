@@ -2,14 +2,14 @@
 title: VMware virtuális gépek előkészítése az Azure Migrate szolgáltatással az értékelésre/áttelepítésre
 description: Ismerje meg, hogyan készülhet fel a VMware virtuális gépek értékelésére/áttelepítésére az Azure Migrate szolgáltatással.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 9f0729a3ddb2d8196a855557a6b8587940563984
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619428"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535264"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>A VMware virtuális gépek előkészítése a felméréshez és az Azure-ba való migráláshoz
 
@@ -123,7 +123,7 @@ Az Azure Migrate-nek hozzá kell férnie a vCenter-kiszolgálóhoz, hogy felder�
 Az Azure Migrate készülék beállítása előtt, és a következő oktatóanyagban megkezdi a kiértékelést, készüljön fel a berendezés üzembe helyezésére.
 
 1. [Ellenőrzés](migrate-appliance.md#appliance---vmware) Az Azure Migrate készülék követelményei.
-2. [Tekintse át](migrate-appliance.md#url-access) az Azure URL-címeket, amelyeka készülék nek szüksége lesz. HA URL-alapú tűzfalat vagy proxyt használ, győződjön meg arról, hogy engedélyezi a hozzáférést a szükséges URL-címekhez.
+2. Tekintse át az Azure URL-címeket, amelyeket a készüléknek a [nyilvános](migrate-appliance.md#public-cloud-urls) [és](migrate-appliance.md#government-cloud-urls) kormányzati felhőkben kell elérnie.
 3. [Tekintse át](migrate-appliance.md#collected-data---vmware) a készülék által a felderítés és az értékelés során gyűjtött adatokat.
 4. [Megjegyzés:](migrate-support-matrix-vmware.md#port-access) a készülék porthozzáférési követelményei.
 
@@ -138,7 +138,8 @@ Tekintse át a VMware virtuális gépek [ügynök nélküli áttelepítésének]
 2. Tekintse át az Azure Migrate által a vCenter-kiszolgáló eléréséhez szükséges [engedélyeket.](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers)
 3. [Véleményezés](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) VMware virtuális gépek követelményei.
 4. [Tekintse át](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) az Azure Migrate appliance követelményeit.
-5. Jegyezze fel az [URL-hozzáférési](migrate-appliance.md#url-access) és [a porthozzáférési](migrate-support-matrix-vmware-migration.md#agentless-ports) követelményeket.
+5. Jegyezze fel a [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkhöz szükséges URL-hozzáférést.
+6. Tekintse át [a porthozzáférési](migrate-support-matrix-vmware-migration.md#agentless-ports) követelményeket.
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>Felkészülés az ügynökalapú VMware-áttelepítésre
 
@@ -150,7 +151,8 @@ Tekintse át a vmware virtuális gépek [ügynökalapú áttelepítésének](ser
 3. Az ügynökalapú áttelepítés replikációs berendezést használ:
     - [Tekintse át](migrate-replication-appliance.md#appliance-requirements) a replikációs berendezés telepítési követelményeit.
     - Tekintse át a MySQL készülékre történő telepítésének [lehetőségeit.](migrate-replication-appliance.md#mysql-installation)
-    - Tekintse át a replikációs berendezés [URL-címét](migrate-replication-appliance.md#url-access) és [porthozzáférési](migrate-replication-appliance.md#port-access) követelményeit.
+    - Jegyezze fel a [szükséges](migrate-replication-appliance.md#url-access)URL-hozzáférést.
+    - Tekintse át a replikációs berendezés [porthozzáférési](migrate-replication-appliance.md#port-access) követelményeit.
     
 ## <a name="next-steps"></a>További lépések
 

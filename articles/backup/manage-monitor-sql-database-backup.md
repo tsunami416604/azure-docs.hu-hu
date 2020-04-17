@@ -3,12 +3,12 @@ title: SQL Server-db-ek kezelése és figyelése Azure-beli virtuális gépen
 description: Ez a cikk ismerteti, hogyan kezelheti és figyelheti az Azure virtuális gépen futó SQL Server-adatbázisok.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 4daf068e97a08d1a611ef64cb64569cacd5d7420
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74172157"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537304"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Biztonsági másolattal rendelkező SQL Server-adatbázisok kezelése és monitorozása
 
@@ -38,7 +38,7 @@ Mivel a naplóbiztonsági mentések 15 percenként történnek, a biztonsági me
 
 Adatbázis-biztonsági mentési riasztások figyelése:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A tároló irányítópultján válassza a **Riasztások és események**lehetőséget.
 
@@ -59,7 +59,7 @@ Ha úgy dönt, hogy elhagyja a helyreállítási pontokat, tartsa szem előtt az
 
 - Minden helyreállítási pont örökre érintetlen marad, minden metszés nek meg kell állnia a stop védelem ben az adatok megőrzésével.
 - A védett példányért és a felhasznált tárterületért díjat számítunk fel. További információ: [Azure Backup díjszabás.](https://azure.microsoft.com/pricing/details/backup/)
-- Ha a biztonsági mentések leállítása nélkül töröl egy adatforrást, az új biztonsági mentések sikertelenek lesznek.
+- Ha a biztonsági mentések leállítása nélkül töröl egy adatforrást, az új biztonsági mentések sikertelenek lesznek. A régi helyreállítási pontok a házirendnek megfelelően lejárnak, de egy utolsó helyreállítási pont mindig megmarad, amíg le nem állítja a biztonsági mentéseket, és nem törli az adatokat.
 
 Adatbázis védelmének leállítása:
 

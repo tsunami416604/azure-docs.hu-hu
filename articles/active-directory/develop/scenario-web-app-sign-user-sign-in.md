@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 317ca55adb9f680dc93343a185395abad08889da
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 2ab5697ceff612e65174fdb7f9ef6137e2c8b9a5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881315"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537066"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>A felhasználókba bejelentkező webalkalmazás: Bejelentkezés és kijelentkezés
 
@@ -205,7 +205,7 @@ Miután a felhasználó bejelentkezett az alkalmazásba, engedélyeznie kell sz�
 ## <a name="sign-out"></a>Kijelentkezés
 
 A webalkalmazásból való kijelentkezés több, mint a bejelentkezett fiókkal kapcsolatos információk eltávolítása a webalkalmazás állapotából.
-A webalkalmazásnak át kell irányítania a `logout` felhasználót a Microsoft identity platform végpontjára a kijelentkezéshez. 
+A webalkalmazásnak át kell irányítania a `logout` felhasználót a Microsoft identity platform végpontjára a kijelentkezéshez.
 
 Amikor a webalkalmazás átirányítja `logout` a felhasználót a végpontra, ez a végpont törli a felhasználó munkamenetét a böngészőből. Ha az alkalmazás nem ment `logout` a végpontra, a felhasználó újra hitelesíti magát az alkalmazásba anélkül, hogy újra megadnák a hitelesítő adataikat. Ennek az az oka, hogy lesz egy érvényes egyszeri bejelentkezési munkamenet a Microsoft identity platform végpont.
 
@@ -306,7 +306,7 @@ A Python gyorsindítás, a kijelentkezési gomb található a [templates/index.h
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
+    <h1>Microsoft Identity Python web app</h1>
     Welcome {{ user.get("name") }}!
     <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
     <li><a href="/logout">Logout</a></li>

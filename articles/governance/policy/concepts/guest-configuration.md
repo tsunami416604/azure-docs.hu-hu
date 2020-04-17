@@ -3,12 +3,12 @@ title: Ismerje meg a virtuális gépek tartalmának naplózását
 description: Ismerje meg, hogy az Azure Policy hogyan használja a Vendég konfigurációs ügynököt a virtuális gépeken belüli beállítások naplózásához.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4a2989badc099a199bf21f7e020ca8e6256ddaf0
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: e4899f6b3108cabb4e9cdd36e4b2bc5cd2f1cbd4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113432"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538035"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure-szabályzat vendégkonfigurációjának megismerése
 
@@ -52,14 +52,14 @@ Az eredményeket a rendszer a folyamat befejezésekor küldi el a vendégkonfigu
 
 Az alábbi táblázat az Azure-lemezképek támogatott operációs rendszereinek listáját tartalmazza:
 
-|Közzétevő|Név|Verziók|
+|Közzétevő|Name (Név)|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |Credativ között|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
 |Microsoft|Windows-ügyfél|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7, 7.8|
 |Suse|SLES|12 SP3|
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyféltípusok

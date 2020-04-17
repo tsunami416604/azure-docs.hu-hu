@@ -13,12 +13,12 @@ ms.date: 04/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: d59819c0ab614b0f6cc102c7ebe8c760fb851599
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084117"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534312"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Nyilvános ügyfél- és bizalmas ügyfélalkalmazások
 A Microsoft Authentication Library (MSAL) kétféle ügyfelet határoz meg: nyilvános és bizalmas ügyfeleket. A két ügyféltípust az különbözteti meg, hogy képesek biztonságosan hitelesíteni magukat az engedélyezési kiszolgálóval, és megőrizni az ügyfélhitelesítő adatok titkosságát. Ezzel szemben az Azure AD hitelesítési könyvtár (ADAL) az úgynevezett *hitelesítési környezet (amely* az Azure AD-vel való kapcsolat) használja.
@@ -28,7 +28,7 @@ A Microsoft Authentication Library (MSAL) kétféle ügyfelet határoz meg: nyil
     Bizalmas ügyfélalkalmazások: <BR>
     ![Webalkalmazás](media/msal-client-applications/web-app.png) ![Webes](media/msal-client-applications/web-api.png) ![API-démona/szolgáltatása](media/msal-client-applications/daemon-service.png)
 
-- **A nyilvános ügyfélalkalmazások** olyan alkalmazások, amelyek eszközökön vagy asztali számítógépeken vagy webböngészőben futnak. Nem megbízható, hogy biztonságosan tartsa az alkalmazás titkos kulcsokat, így csak a felhasználó nevében férnek hozzá a webes API-khoz. (Csak a nyilvános ügyfélfolyamatokat támogatják.) A nyilvános ügyfelek nem tarthatnak meg konfigurációs idejű titkokat, így nem rendelkeznek ügyféltitkokkal.
+- **A nyilvános ügyfélalkalmazások** olyan alkalmazások, amelyek eszközökön vagy asztali számítógépeken vagy webböngészőben futnak. Nem megbízható, hogy biztonságosan őrizheti kedélyeket, így csak a felhasználó nevében férnek hozzá a webes API-khoz. (Csak a nyilvános ügyfélfolyamatokat támogatják.) A nyilvános ügyfelek nem tarthatnak meg konfigurációs idejű titkokat, így nem rendelkeznek ügyféltitkokkal.
 
     Nyilvános ügyfélalkalmazások: <BR>
     ![Asztali](media/msal-client-applications/desktop-app.png) ![alkalmazás böngésző](media/msal-client-applications/browserless-app.png) ![nélküli API Mobile alkalmazás](media/msal-client-applications/mobile-app.png)

@@ -4,12 +4,12 @@ description: Alkalmazásteljesítmény-felügyelet és élő webalkalmazások ha
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: e7cde3ca47afd4db072b734c797a42ecd5a053aa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2dbebf13b8674ba4aa0c578e1138a5e279b54355
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136799"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536930"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
 Az Application Insights, az [Azure Monitor](../overview.md)egyik szolgáltatása, egy bővíthető alkalmazásteljesítmény-kezelési (APM) szolgáltatás fejlesztők és DevOps-szakemberek számára. Használja az élő alkalmazások figyelésére. Automatikusan észleli a teljesítményanomáliákat, és hatékony elemzési eszközöket tartalmaz a problémák diagnosztizálásához és annak megértéséhez, hogy a felhasználók valójában mit csinálnak az alkalmazással.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. A legkülönbözőbb platformokon , például a .NET, a Node.js és a Java EE, a helyszíni, hibrid vagy bármely nyilvános felhőben üzemeltetett alkalmazások esetében működik. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
@@ -51,14 +51,14 @@ Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 | --- | --- |
 | [**Intelligens észlelés és manuális riasztások**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Állítsa be az automatikus riasztásokat, amelyek alkalmazkodnak az alkalmazás normál telemetriai mintáihoz, és akkor aktiválódnak, ha valami kívül esik a szokásos mintán. Riasztásokat is [beállíthat](../../azure-monitor/app/alerts.md) az egyéni vagy szabványos metrikák adott szintjein. |![Példa a riasztásokra](./media/app-insights-overview/alerts-tn.png) |
 | [**Alkalmazástérkép**](../../azure-monitor/app/app-map.md)<br/>Fedezze fel az alkalmazás összetevőit a legfontosabb mérőszámokkal és figyelmeztetésekkel. |![Alkalmazástérkép](./media/app-insights-overview/appmap-tn.png)  |
-| [**Profiler**](../../azure-monitor/app/profiler.md)<br/>A mintavételezett kérelmek végrehajtási profiljainak vizsgálata. |![Profilkészítő](./media/app-insights-overview/profiler.png) |
+| [**Profilkészítő**](../../azure-monitor/app/profiler.md)<br/>A mintavételezett kérelmek végrehajtási profiljainak vizsgálata. |![Profilkészítő](./media/app-insights-overview/profiler.png) |
 | [**Felhasználási elemzés**](../../azure-monitor/app/usage-overview.md)<br/>Felhasználószegmentálás és -megtartás elemzése.|![Megtartási eszköz](./media/app-insights-overview/retention.png) |
 | [**Példányadatok diagnosztikai keresése**](../../azure-monitor/app/diagnostic-search.md)<br/>Események keresése és szűrése, például kérések, kivételek, függőségi hívások, naplókivonatok és lapmegtekintések.  |![Telemetriai adatok keresése](./media/app-insights-overview/search-tn.png) |
-| [**Összesített adatok metrikaböngészője**](../../azure-monitor/app/metrics-explorer.md)<br/>Összesített adatok – például kérés- és hibaarányok, valamint kivételek, válaszidők és lapbetöltési idők – böngészése, szűrése és szegmentálása. |![Mérőszámok](./media/app-insights-overview/metrics-tn.png) |
+| [**Összesített adatok metrikaböngészője**](../../azure-monitor/platform/metrics-charts.md)<br/>Összesített adatok – például kérés- és hibaarányok, valamint kivételek, válaszidők és lapbetöltési idők – böngészése, szűrése és szegmentálása. |![Mérőszámok](./media/app-insights-overview/metrics-tn.png) |
 | [**Irányítópultok**](../../azure-monitor/app/overview-dashboard.md)<br/>Különböző erőforrásokból származó adatokat fűzhet össze és oszthat meg másokkal. Kiváló megoldás több összetevőből álló alkalmazások, valamint csoportszobában való folyamatos megjelenítés esetén. |![Példa az irányítópultokra](./media/app-insights-overview/dashboard-tn.png) |
 | [**Élő metrikastream**](../../azure-monitor/app/live-stream.md)<br/>Új buildverzió telepítésekor közel valós idejű teljesítménymutatókat figyelhet, és meggyőződhet arról, hogy minden megfelelő módon működik-e. |![Példa a valós idejű metrikákra](./media/app-insights-overview/live-metrics-tn.png) |
 | [**Analytics**](../../azure-monitor/app/analytics.md)<br/>A hatékony lekérdezési nyelvnek köszönhetően válaszokat kaphat az alkalmazás teljesítményére és használatára vonatkozó legégetőbb kérdésekre. |![Példa az elemzésre](./media/app-insights-overview/analytics-tn.png) |
-| [**Vizuális stúdió**](../../azure-monitor/app/visual-studio.md)<br/>A kódban tekintheti meg a teljesítményadatokat. A hívásláncokból a kódba ugorhat.|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
+| [**Visual Studio**](../../azure-monitor/app/visual-studio.md)<br/>A kódban tekintheti meg a teljesítményadatokat. A hívásláncokból a kódba ugorhat.|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
 | [**Pillanatkép-hibakereső**](../../azure-monitor/app/snapshot-debugger.md)<br/>A működés közbeni műveletekről készült pillanatképek hibakeresése paraméterértékekkel.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>Integrálhatja a használati metrikákat más üzleti intelligenciával.| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>Kód írásával lekérdezéseket futtathat a metrikákhoz és a nyers adatokhoz kapcsolódóan.| ![REST API](./media/app-insights-overview/rest-tn.png) |
@@ -126,8 +126,8 @@ Első lépések fejlesztéskor:
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 * Kérdések és problémák:
-  * [hibaelhárítással][qna]
-  * [MSDN-fórum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+  * [Hibaelhárítás][qna]
+  * [MSDN Fórum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [Stackoverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Javaslatok:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)

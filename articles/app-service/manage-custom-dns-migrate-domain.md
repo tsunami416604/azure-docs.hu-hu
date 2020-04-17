@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 79bd0a19a9bd8ebd100ed80ca0206656d73ef76c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672359"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535689"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Aktív DNS-név áttelepítése az Azure App Service szolgáltatásba
 
@@ -129,7 +129,7 @@ Az alkalmazás központi telepítési egységét az FTP/S URL-cím `<deployment-
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan köthat egyéni SSL-tanúsítványt az App Service-hez.
+Ismerje meg, hogyan köthetsz egyéni TLS/SSL-tanúsítványt az App Service szolgáltatáshoz.
 
 > [!div class="nextstepaction"]
-> [Ssl-tanúsítvány kötése az Azure App Service szolgáltatáshoz](configure-ssl-bindings.md)
+> [Egyéni DNS-név biztonságossá tétele TLS-kötéssel az Azure App Service-ben](configure-ssl-bindings.md)

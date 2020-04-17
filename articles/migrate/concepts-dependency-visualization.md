@@ -2,13 +2,13 @@
 title: Függőségelemzés az Azure Áttelepítési kiszolgáló értékelésében
 description: Bemutatja, hogyan használhatja a függőségi elemzést az Azure Áttelepítési kiszolgáló értékelése használatával.
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f96496b66d6bcfd397fb0a7303d3dbfb4fd6f6b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: b11796f2c5d7c1d87f383e6780444e572352eff5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455638"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537746"
 ---
 # <a name="dependency-analysis"></a>Függőségi elemzés
 
@@ -30,7 +30,7 @@ A függőségelemzés üzembe helyezésének két lehetősége van.
 - **Ügynök nélküli:** Ügynök nélküli elemzéssel nem kell ügynököket telepítenie azátveire kívánt gépekre. Ez a beállítás jelenleg előzetes verzióban érhető el, és csak vmware virtuális gépek esetén érhető el.
 
 > [!NOTE]
-> Függőségelemzés nem érhető el az Azure Government.
+> Az ügynökalapú függőségi elemzés nem érhető el az Azure Government ben. Használhatja ügynök nélküli függőségi elemzés.
 
 ## <a name="agentless-analysis"></a>Ügynök nélküli elemzés
 

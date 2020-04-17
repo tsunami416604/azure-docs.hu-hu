@@ -2,16 +2,16 @@
 title: Hyper-V virtuális gépek áttelepítése az Azure-ba az Azure Áttelepítési Kiszolgáló áttelepítésével
 description: Megtudhatja, hogyan telepíthető át a helyszíni Hyper-V virtuális gépek az Azure-ba az Azure Áttelepítési Kiszolgáló áttelepítésével
 ms.topic: tutorial
-ms.date: 11/18/2019
+ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422684"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535349"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>A Hyper-V virtuális gépek migrálása az Azure-ba 
 
@@ -19,12 +19,12 @@ Ez a cikk bemutatja, hogyan telepítheti át a helyszíni Hyper-V virtuális gé
 
 [Az Azure Migrate](migrate-services-overview.md) központi központot biztosít a helyszíni alkalmazások és számítási feladatok, valamint a magán-/nyilvános felhőbeli virtuális gépek Azure-ba való felderítésének, értékelésének és áttelepítésének nyomon követéséhez. A központ Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint külső független szoftverszállítói (ISV) ajánlatokat.
 
-Ez az oktatóanyag a harmadik egy sorozatban, amely bemutatja, hogyan értékelheti és telepítheti át a Hyper-V-t az Azure-ba az Azure Áttelepítési kiszolgáló értékelése és áttelepítése használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag a harmadik egy sorozatban, amely bemutatja, hogyan értékelheti és telepítheti át a Hyper-V-t az Azure-ba az Azure Áttelepítési kiszolgáló értékelése és a kiszolgálóáttelepítés használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t és a helyszíni Hyper-V környezetet
-> * Állítsa be a forráskörnyezetet, és telepítsen egy replikációs berendezést.
+> * Állítsa be a forráskörnyezetet.
 > * Állítsa be a célkörnyezetet.
 > * Engedélyezze a replikációt.
 > * Futtasson egy tesztáttelepítést, hogy minden a várt módon működjön.
@@ -38,23 +38,28 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 Az oktatóanyag elkezdése előtt:
 
 1. [Tekintse át](hyper-v-migration-architecture.md) a Hyper-V áttelepítési architektúrát.
-2. Töltse ki a sorozat [első oktatóanyagát az](tutorial-prepare-hyper-v.md) Azure és a Hyper-V áttelepítéshez való beállításához. Az első bemutató, akkor:
-    - [Készítse elő az Azure-t](tutorial-prepare-hyper-v.md#prepare-azure) az áttelepítésre.
-    - [Készítse elő a helyszíni környezetet](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-migration) az áttelepítéshez.
-3. Azt javasoljuk, hogy az Azure Áttelepítés: Kiszolgálófelmérés használatával próbálja meg értékelni a Hyper-V virtuális gépeket, mielőtt áttelepülne az Azure-ba. Ehhez fejezze be a sorozat [második oktatóanyagát.](tutorial-assess-hyper-v.md) Bár azt javasoljuk, hogy próbálja ki egy értékelést, nem kell futtatni a felmérést a virtuális gépek áttelepítése előtt.
-4. Győződjön meg arról, hogy az Azure-fiók rendelkezik a Virtuálisgép közreműködő szerepkör, így rendelkezik engedélyekkel:
+2. [Véleményezés](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Hyper-V gazdagép követelmények, és az Azure URL-címeket, amelyek a Hyper-V-állomások eléréséhez kell hozzáférnie.
+3. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) az áttelepíteni kívánt Hyper-V virtuális gépek rekreált követelményeit. A hyper-V virtuális gépeknek meg kell felelniük [az Azure virtuális gép követelményeinek.](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)
+2. Javasoljuk, hogy töltse ki a sorozat korábbi oktatóanyagait. Az [első oktatóanyag](tutorial-prepare-hyper-v.md) bemutatja, hogyan állíthatja be az Azure-t és a Hyper-V-t az áttelepítéshez. A második oktatóanyag bemutatja, hogyan [értékelje a Hyper-V virtuális gépek](tutorial-assess-hyper-v.md áttelepítés előtt, az Azure Migrate:Server Assessment használatával. 
+    > [!NOTE]
+    > Bár azt javasoljuk, hogy próbálja ki egy értékelést, nem kell futtatni a felmérést a virtuális gépek áttelepítése előtt.
+    > A Hyper-V virtuális gépek áttelepítéséhez az Azure Migrate:Server Migration szoftverügynököket (Microsoft Azure Site Recovery provider és Microsoft Azure Recovery Service agent) futtat hyper-V gazdagépeken vagy fürtcsomópontokon, hogy koordinálja és replikálja az adatokat az Azure Migrate szolgáltatásba. Az [Azure Migrate készülék](migrate-appliance.md) nem használható a Hyper-V áttelepítés.
+
+3. Győződjön meg arról, hogy az Azure-fiók rendelkezik a Virtuálisgép közreműködő szerepkör, így rendelkezik engedélyekkel:
 
     - Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
     - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
     - Írjon egy Azure felügyelt lemezre.
-5. [Hozzon létre egy Azure-hálózatot.](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Amikor áttelepül az Azure-ba, a létrehozott Azure-beli virtuális gépek csatlakoznak egy Azure-hálózathoz, amelyet az áttelepítés beállításakor ad meg.
+4. [Hozzon létre egy Azure-hálózatot.](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Amikor áttelepül az Azure-ba, a létrehozott Azure-beli virtuális gépek csatlakoznak egy Azure-hálózathoz, amelyet az áttelepítés beállításakor ad meg.
 
+## <a name="add-the-azure-migrateserver-migration-tool"></a>Az Azure Áttelepítés:Kiszolgáló áttelepítése eszköz hozzáadása
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Az Azure Áttelepítési kiszolgáló eszközének hozzáadása
+Adja hozzá az Azure Áttelepítés:Kiszolgáló áttelepítése eszközt.
 
-Ha nem követte a második oktatóanyag ot a Hyper-V virtuális gépek értékeléséhez, [kövesse ezeket az utasításokat](how-to-add-tool-first-time.md) egy Azure Migrate projekt beállításához, és adja hozzá az Azure Migrate Server Assessment eszközt a projekthez.
+- Ha követte a második oktatóanyag ot a [VMware virtuális gépek értékeléséhez,](/tutorial-assess-hyper-v.md)már beállított egy Azure Migrate projektet, és most már hozzáadhatja az eszközt.
+- Ha nem követte a második[oktatóanyagot, kövesse az alábbi utasításokat](how-to-add-tool-first-time.md) az Azure Migrate projekt beállításához. Az Azure Migrate:Server Áttelepítés eszköz hozzáadása a projekt létrehozásakor.
 
-Ha követte a második oktatóanyagot, és már rendelkezik egy Azure Migrate projekttel, adja hozzá az Azure Áttelepítés: Kiszolgálóáttelepítés eszközt az alábbiak szerint:
+Ha van egy projekt beállítása, adja hozzá az eszközt az alábbiak szerint:
 
 1. Az Azure Migrate projektben kattintson **az Áttekintés gombra.** 
 2. A **Felderítés, a kiszolgálók felmérése és áttelepítése csoportban**kattintson **a Kiszolgálók felmérése és áttelepítése**elemre.
@@ -66,25 +71,8 @@ Ha követte a második oktatóanyagot, és már rendelkezik egy Azure Migrate pr
 
     ![Kiszolgálómigrálási eszköz](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
-
-## <a name="set-up-the-azure-migrate-appliance"></a>Az Azure Migrate-berendezés beállítása
-
-Az Azure Migrate Server Migration egy szoftverügynököt futtat a Hyper-V gazdagépeken vagy fürtcsomópontokon az azure-áttelepítési adatok koordinálásához és replikálásához, és nincs szükség dedikált készülékre az áttelepítéshez.
-
-- Az Azure Migrate: Server Assessment appliance virtuális gép felderítése, és elküldi a virtuális gép metaadatok és teljesítményadatok at Azure Áttelepítési kiszolgáló áttelepítése.
-- Az áttelepítési vezénylést és az adatreplikációt a Microsoft Azure Site Recovery szolgáltató és a Microsoft Azure Recovery Service ügynök kezeli.
-
-A készülék beállítása:
-- Ha követte a második oktatóanyag ot a Hyper-V virtuális gépek értékeléséhez, már beállította a készüléket az oktatóanyag során, és nem kell újra megtennie.
-- Ha nem követte az oktatóanyagot, akkor most be kell állítania a készüléket. Ehhez: 
-
-    - Töltsön le egy tömörített Hyper-V HD-t az Azure Portalról.
-    - Hozza létre a készüléket, és ellenőrizze, hogy tud-e csatlakozni az Azure Áttelepítési kiszolgáló értékelése. 
-    - Konfigurálja a készüléket az első alkalommal, és regisztrálja az Azure Migrate projekt.
-
-    A készülék beállításához kövesse a [cikkben](how-to-set-up-appliance-hyper-v.md) található részletes utasításokat.
-
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V állomások előkészítése
+
 
 1. Az Azure Migrate projekt **>-kiszolgálók ban**kattintson a Discover **(Azure Migrate: Server Migration)** **projektben.**
 2. A **Discover machines** > **Are your machines virtualizált?** lehetőséget **Igen, a Hyper-V**.
@@ -111,21 +99,6 @@ A regisztráció véglegesítése után akár 15 percet is igénybe vehet, amíg
 
 ![Felderített kiszolgálók](./media/tutorial-migrate-hyper-v/discovered-servers.png)
 
-### <a name="register-hyper-v-hosts"></a>Hyper-V állomások regisztrálása
-
-Telepítse a letöltött telepítőfájlt (AzureSiteRecoveryProvider.exe) minden egyes megfelelő Hyper-V állomásra.
-
-1. Futtassa a szolgáltató telepítőfájlját az egyes állomás- vagy fürtcsomópontokon.
-2. A Szolgáltató beállítása varázslóban > **Microsoft Update**alkalmazásban engedélyezze, hogy a Microsoft Update segítségével keresse meg a szolgáltató frissítéseit.
-3. A **telepítés ben**fogadja el a szolgáltató és az ügynök alapértelmezett telepítési helyét, és válassza a **Telepítés**lehetőséget.
-4. A telepítés után a Regisztráció varázsló > **a Tároló beállításai párbeszédpanelen**válassza a **Tallózás**gombot, és a **Kulcsfájl**ban jelölje ki a letöltött tárolókulcsfájlt.
-5. A **Proxybeállítások párbeszédpanelen**adja meg, hogy az állomáson futó szolgáltató hogyan csatlakozzon az internethez.
-    - Ha a készülék proxykiszolgáló mögött található, meg kell adnia a proxybeállításokat.
-    - Adja meg a **http://ip-address**proxynevet a vagy **http://FQDN**a . A HTTPS-proxykiszolgálók nem támogatottak.
-   
-
-6. Győződjön meg arról, hogy a szolgáltató el tudja érni a [szükséges URL-eket.](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)
-7. A **Regisztráció ban**a gazdagép regisztrálása után kattintson a **Befejezés**gombra.
 
 ## <a name="replicate-hyper-v-vms"></a>Hyper-V virtuális gépek replikálása
 

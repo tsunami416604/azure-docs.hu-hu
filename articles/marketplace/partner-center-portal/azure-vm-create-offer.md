@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383802"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536658"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Azure virtuálisgép-ajánlat létrehozása
 
@@ -174,7 +174,7 @@ Ezen a lapon megadhatja az ajánlat részleteit, például az ajánlat nevét, l
 
 ### <a name="marketplace-details"></a>Piactér részletei
 
-#### <a name="name"></a>Név
+#### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlathirdetés címeként jelenik meg az ügyfelek számára. Ez a mező előre ki van töltve az **Ajánlat alias** mezőjében az ajánlat létrehozásakor megadott szöveggel. A nevet később módosíthatja.
 
@@ -239,7 +239,7 @@ Adja meg a támogatási webhelyet, ahol az ügyfelek elérhetik a támogatási c
 
 Adja meg a Microsoft-partnerek elérhetőségi adatait, amelyeket akkor használhatnak fel, amikor az ügyfelek támogatási jegyet nyitnak. Ez nem jelenik meg a piacon.
 
-- Név
+- Name (Név)
 - E-mail
 - Telefon
 
@@ -247,7 +247,7 @@ Adja meg a Microsoft-partnerek elérhetőségi adatait, amelyeket akkor használ
 
 Adja meg a Microsoft elérhetőségi adatait, amelyeket akkor használhat, ha problémák merülnek fel az ajánlattal kapcsolatban, beleértve a minősítéssel kapcsolatos problémákat is. Ez nem jelenik meg a piacon.
 
-- Név
+- Name (Név)
 - E-mail
 - Telefon
 
@@ -296,7 +296,7 @@ Válassza **a Vázlat mentése lehetőséget,** mielőtt továbblépne a követk
 
 ## <a name="plan-overview"></a>Terv – áttekintés
 
-Ugyanazon ajánlaton belül különböző csomagbeállításokat adhat meg a Partnerközpontban. Ezeket a terveket korábban sk-nek nevezték. Egy ajánlathoz legalább egy csomag szükséges, amely a szerzési közönség, az Azure-felhők, a funkciók vagy a virtuális gép lemezképei tekintetében eltérő lehet.
+Ugyanazon ajánlaton belül különböző csomagbeállításokat adhat meg a Partnerközpontban. Ezeket a terveket korábban sk-nek nevezték. Egy ajánlathoz legalább egy csomag szükséges, amely a szerzési közönség, az Azure-régiók, a funkciók vagy a virtuális gép lemezképei tekintetében eltérő lehet.
 
 A tervek létrehozása után a **Terv áttekintése** lapon a következők láthatók:
 
@@ -326,7 +326,7 @@ Kattintson a **Létrehozás** gombra.
 
 ### <a name="plan-setup"></a>A terv beállítása
 
-Állítsa be a terv típusának magas szintű konfigurációját, azt, hogy újrafelhasználja-e a műszaki konfigurációt egy másik tervből, és milyen felhőkben legyen elérhető a terv. Az itt megadott beállítások határozzák meg, hogy mely mezők jelenjenek meg az ugyanazon terv többi lapján.
+Állítsa be a csomag típusának magas szintű konfigurációját, hogy újrafelhasználja-e a technikai konfigurációt egy másik csomagból, és mely Azure-régiókban legyen elérhető a csomag. Az itt megadott beállítások határozzák meg, hogy mely mezők jelenjenek meg az ugyanazon terv többi lapján.
 
 #### <a name="reuse-technical-configuration"></a>Műszaki konfiguráció újrafelhasználása
 
@@ -335,24 +335,24 @@ Ha egynél több azonos típusú tervvel rendelkezik, és a csomagok azonosak k�
 > [!NOTE]
 > Ha egy másik csomag technikai konfigurációját újra felhasználja, a teljes **Műszaki konfiguráció** lap eltűnik ebből a tervből. Ehhez a tervhez a másik csomag műszaki konfigurációs adatait is felhasználjuk, beleértve a jövőben elkészült frissítéseket is. Ez a beállítás nem módosítható a terv közzététele után.
 
-#### <a name="cloud-availability"></a>Felhő elérhetősége
+#### <a name="azure-regions"></a>Azure-régiók
 
-A csomagnak legalább egy felhőben elérhetővé kell tennie.
+A csomag legalább egy Azure-régióban elérhetővé kell tenni.
 
-Válassza ki az **Azure Global** lehetőséget, hogy a csomag elérhetővé az ügyfelek számára az összes nyilvános Azure-régiókban, amelyek kereskedelmi piactér integráció. További információt a [Földrajzi elérhetőség és pénznemtámogatás](https://aka.ms/AzureGovCurrencies).
+Válassza ki az **Azure Global** lehetőséget, hogy a csomag elérhetővé az ügyfelek számára az összes nyilvános Azure-régiókban, amelyek kereskedelmi piactér integráció. További információt a [Földrajzi elérhetőség és pénznemtámogatás](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Válassza ki az **Azure Government Cloud** lehetőséget, hogy a csomag elérhető legyen az Azure Government [Cloud.](https://aka.ms/WhatIsAzureGovernment) ez egy kormányzati közösségi felhő, amely ellenőrzött hozzáféréssel rendelkezik az amerikai szövetségi, állami, helyi vagy törzsi ügynökségek ügyfelei, valamint az ilyen szervezetek kiszolgálására jogosult partnerek számára. Közzétevőként Ön a felelős a megfelelőségi vezérlőkért, a biztonsági intézkedésekért és a felhőalapú közösség kiszolgálásához ajánlott eljárásokért. Az Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).
+Válassza ki az **Azure Government** lehetőséget, hogy a csomag elérhető vé legyen az [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) régióban. Ez a régió ellenőrzött hozzáférést biztosít az Egyesült Államok szövetségi, állami, helyi vagy törzsi szervezeteiből, valamint az azok kiszolgálására jogosult partnerekszámára. Ön, mint a közzétevő, felelős a megfelelőségi ellenőrzésekért, a biztonsági intézkedésekért és a gyakorlati tanácsokért. Az Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).
 
-Az [Azure Government](https://aka.ms/azuregovpublish)általi közzététel előtt tesztelje és érvényesítse a csomagot a környezetben, mivel bizonyos végpontok eltérőek lehetnek. A csomag beállításához és teszteléséhez kérjen próbafiókot a [Microsoft Azure Government próbaverziójától.](https://aka.ms/AzureGovernmentTrial)
+Az [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)általi közzététel előtt tesztelje és érvényesítse a csomagot a környezetben, mivel bizonyos végpontok eltérőek lehetnek. A csomag beállításához és teszteléséhez kérjen próbafiókot a [Microsoft Azure Government próbaverziójától.](https://azure.microsoft.com/global-infrastructure/government/request/)
 
 > [!NOTE]
-> Miután a csomag közzé, és elérhető egy adott felhőben, nem tudja eltávolítani a felhőt.
+> Miután a csomag közzé, és elérhető egy adott Azure-régióban, nem távolíthatja el a régiót.
 
-#### <a name="azure-government-cloud-certifications"></a>Az Azure Government Felhőminősítései
+#### <a name="azure-government-certifications"></a>Azure Government-tanúsítványok
 
-Ez a beállítás csak akkor látható, ha az **Azure Government Cloud** a Felhő **elérhetősége**alatt van kiválasztva.
+Ez a beállítás csak akkor látható, ha az **Azure-kormányzat** lehetőséget választja az **Azure-régiók alatt.**
 
-Az Azure Government-szolgáltatások olyan adatokat kezelnek, amelyekre bizonyos kormányzati előírások és követelmények vonatkoznak. Például FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 és CJIS. Annak érdekében, hogy felhívják a figyelmet a programok tanúsítványaira, legfeljebb 100 hivatkozást adhat meg, amelyek leírják azokat. Ezek lehetnek közvetlenül a programon található hirdetésre mutató linkek, vagy a saját webhelyein való megfelelés leírására mutató hivatkozások. Ezek a hivatkozások csak az Azure Government Cloud-ügyfelek számára láthatók.
+Az Azure Government-szolgáltatások olyan adatokat kezelnek, amelyekre bizonyos kormányzati előírások és követelmények vonatkoznak. Például FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 és CJIS. Annak érdekében, hogy felhívják a figyelmet a programok tanúsítványaira, legfeljebb 100 hivatkozást adhat meg, amelyek leírják azokat. Ezek lehetnek közvetlenül a programon található hirdetésre mutató linkek, vagy a saját webhelyein való megfelelés leírására mutató hivatkozások. Ezek a hivatkozások csak az Azure Government-ügyfelek számára láthatók.
 
 A folytatás előtt válassza **a Vázlat mentése** lehetőséget.
 
@@ -384,7 +384,7 @@ Ezen a lapon a következőket kell konfigurálnia:
 
 #### <a name="markets"></a>Piacok
 
-Minden tervnek legalább egy piacon elérhetőnek kell lennie. Jelölje be a jelölőnégyzetet minden olyan piacon, ahol ez a csomag megvásárolható nak kell lennie (a felhasználók ezeken a piacokon továbbra is üzembe helyezhetik az ajánlatot az összes Azure-régióban a kiválasztott felhők). Az **Adóelengedés** gomb azokat az országokat jeleníti meg, amelyekben a Microsoft az Ön nevében átutalja az értékesítési és használati adót. A Kínába való közzététel olyan csomagokra korlátozódik, amelyek **ingyenesek** vagy **saját licencet (BYOL) hoznak.**
+Minden tervnek legalább egy piacon elérhetőnek kell lennie. Jelölje be a jelölőnégyzetet minden olyan piacon, ahol a csomag megvásárolható nak kell lennie (a felhasználók ezeken a piacokon továbbra is telepíthetik az ajánlatot a **[Terv beállításában](#plan-setup)** kiválasztott összes Azure-régióra). Az **Adóelengedés** gomb azokat az országokat jeleníti meg, amelyekben a Microsoft az Ön nevében átutalja az értékesítési és használati adót. A Kínába való közzététel olyan csomagokra korlátozódik, amelyek **ingyenesek** vagy **saját licencet (BYOL) hoznak.**
 
 Ha már beállította a csomag árait amerikai dollárban (USD), és egy másik piaci helyszínt adott meg, az új piac árát az aktuális árfolyamok alapján számítja ki a rendszer. Közzététel előtt mindig tekintse át az egyes piacok árát. A módosítások mentése után tekintse át az árakat az **Exportárak (xlsx)** hivatkozás használatával.
 

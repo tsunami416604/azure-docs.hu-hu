@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 582afef8929da2ba75aab70c1ed0fa9e57fd3f19
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76703473"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536148"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Rövid útmutató: Microsoft-identitásplatform által védett ASP.NET webes API hívása
 
-Ebben a rövid útmutatóban elérhetővé teszi a webes API-t, és megvédi azt, hogy csak a hitelesített felhasználó férhessen hozzá. Ez a minta bemutatja, hogyan lehet elérhetővé tenni egy ASP.NET webes API-t, hogy elfogadhassa a személyes fiókok (beleértve a outlook.com, live.com és másokat), valamint a Microsoft identitással integrált vállalatok vagy szervezetek által kibocsátott jogkivonatokat, valamint a munkahelyi és iskolai fiókokat. Platform.
+Ebben a rövid útmutatóban elérhetővé teheti a webes API-t, és megvédheti azt, hogy csak a hitelesített felhasználó férhessen hozzá. Ez a minta bemutatja, hogyan teheti elérhetővé a ASP.NET webes API-t, hogy elfogadhassa a személyes fiókok (beleértve a outlook.com, live.com és másokat), valamint a Microsoft identity platformmal integrált vállalatok vagy szervezetek által kibocsátott jogkivonatokat.
 
 A minta tartalmaz egy Windows Asztali alkalmazás (WPF) ügyfelet is, amely bemutatja, hogyan kérhet hozzáférési jogkivonatot egy webes API eléréséhez.
 
@@ -69,13 +69,13 @@ Ha manuálisan szeretné regisztrálni az alkalmazásokat, első lépésként a 
      - **hatókörnév-használathoz**`access_as_user`
      - Annak biztosítása, hogy a **Rendszergazdák és a felhasználók** lehetőség be van jelölve: Ki **járulhat hozzá**
      - **a Rendszergazda hozzájárulása megjelenítendő név** típusában`Access TodoListService as a user`
-     - **a Rendszergazdai hozzájárulás leírása** típusban`Accesses the TodoListService Web API as a user`
+     - **a Rendszergazdai hozzájárulás leírása** típusban`Accesses the TodoListService web API as a user`
      - **a Felhasználó hozzájárulása megjelenítendő név** típusában`Access TodoListService as a user`
-     - a **Felhasználó hozzájárulásának leírása** típusban`Accesses the TodoListService Web API as a user`
+     - a **Felhasználó hozzájárulásának leírása** típusban`Accesses the TodoListService web API as a user`
      - **Állapot** **engedélyezése maradjon**
      - Lehetőség **hozzáadása lehetőséget.**
 
-### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>A szolgáltatásprojekt konfigurálása a regisztrált webes API-nak megfelelően 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>A szolgáltatásprojekt konfigurálása a regisztrált webes API-nak megfelelően
 
 1. Nyissa meg a megoldást a Visual Studióban, majd nyissa meg a **Web.config** fájlt a **TodoListService** projekt gyökere alatt.
 1. Cserélje le `ida:ClientId` a paraméter értékét az alkalmazásregisztrációs portálon éppen regisztrált alkalmazás **ügyfélazonosítójával (alkalmazásazonosító).**
@@ -86,7 +86,7 @@ Ha manuálisan szeretné regisztrálni az alkalmazásokat, első lépésként a 
 
    > Megjegyzés: Győződjön meg arról, hogy a következő formátumot használja:
    >
-   > `api://{TodoListService-Application-ID}/access_as_user` 
+   > `api://{TodoListService-Application-ID}/access_as_user`
    >
    >(ahol a (TodoListService-Application-ID} azonosító a TodoListService alkalmazásazonosítóját jelölő GUID).
 
@@ -126,7 +126,7 @@ Ebben a lépésben konfigurálhatja a *TodoListClient* projektet egy új alkalma
 
 ## <a name="pre-authorize-your-client-application"></a>Az ügyfélalkalmazás előzetes engedélyezése
 
-A webAPI-hoz való hozzáférés engedélyezésének egyik módja, ha az ügyfélalkalmazások *előzetesen engedélyezik* a webes API elérését, és az ügyfélalkalmazások alkalmazásazonosítóit hozzáadjuk a webes *API-hoz szükséges, előre engedélyezett* alkalmazások listájához. Egy előre engedélyezett ügyfél hozzáadásával nem kell a felhasználónak beleegyezését adnia a webes API használatához. A webalkalmazás előzetes engedélyezéséhez kövesse az alábbi lépéseket::
+A más könyvtárakból származó felhasználók számára a webes API elérésének engedélyezésének egyik módja, ha *előzetesen engedélyezi* az ügyfélalkalmazások számára a webes API elérését azáltal, hogy az ügyfélalkalmazások alkalmazásazonosítóit hozzáadja a webes *API-hoz előre engedélyezett* alkalmazások listájához. Egy előre engedélyezett ügyfél hozzáadásával nem kell a felhasználónak beleegyezését adnia a webes API használatához. A webalkalmazás előzetes engedélyezéséhez kövesse az alábbi lépéseket::
 
 1. Lépjen vissza az *alkalmazásregisztrációs portálra,* és nyissa meg a **TodoListService**tulajdonságait.
 1. Az **API-k nak kitett** területen kattintson **az Ügyfélalkalmazás hozzáadása** elemre a *Jogosult ügyfélalkalmazások* szakaszban.
@@ -141,7 +141,7 @@ A webAPI-hoz való hozzáférés engedélyezésének egyik módja, ha az ügyfé
 
 ## <a name="optional-restrict-sign-in-access-to-your-application"></a>Nem kötelező: Korlátozza az alkalmazásba való bejelentkezési hozzáférést
 
-Alapértelmezés szerint, ha letölti ezt a kódmintát, és konfigurálja az alkalmazást, hogy az Előző lépéseket követően az Azure Active Directory v2-végpontját használja, mind a személyes fiókokat – például outlook.com, live.com és másokat –, valamint a Munkahelyi vagy iskolai fiókokat bármelyik az Azure AD-vel integrált szervezetek jogkivonatokat kérhetnek, és hozzáférhetnek a webes API-hoz. 
+Alapértelmezés szerint, ha letölti ezt a kódmintát, és konfigurálja az alkalmazást, hogy az Azure Active Directory v2-végpont használata az előző lépéseket követve, mind a személyes fiókok - például outlook.com, live.com és mások -, valamint a munkahelyi vagy iskolai fiókok bármely szervezet, amely integrálva van az Azure AD kérhet tokeneket, és hozzáférhet a webes API-t.
 
 Ha korlátozni szeretné, hogy ki jelentkezhet be az alkalmazásba, használja az egyik lehetőséget:
 

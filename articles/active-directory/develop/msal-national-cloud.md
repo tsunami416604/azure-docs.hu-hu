@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: dfca2b1311f1b55f19d5709f7c9ca7c3e366769c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76695738"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533989"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Az MSAL használata nemzeti felhőkörnyezetben
 
@@ -64,14 +64,14 @@ Az alábbi oktatóanyagok bemutatják, hogyan hozhat létre .NET Core 2.2 MVC we
 - A felhasználók bejelentkezéséhez és a jogkivonatok beszerzéséhez kövesse ezt az oktatóanyagot: [Hozzon létre egy ASP.NET Core webalkalmazás-bejelentkezési felhasználókat szuverén felhőkben a Microsoft identity platformmal.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform)
 - A Microsoft Graph API hívásához kövesse a következő [oktatóanyagot: A Microsoft Identity platform használatával hívja meg a Microsoft Graph API-t egy ASP.NET Core 2.x webalkalmazásból, egy olyan felhasználó nevében, aki munkahelyi és iskolai fiókját használja a Microsoft National Cloud szolgáltatásban.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud)
 
-## <a name="javascript"></a>[Javascript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Az MSAL.js alkalmazás szuverén felhőkre való engedélyezéséhez:
 
 ### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.us/)
-    
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.us/).
+
    Az Azure Portal más nemzeti felhők végpontjainak megkereséséhez tekintse meg [az alkalmazásregisztrációs végpontokat.](authentication-national-cloud.md#app-registration-endpoints)
 
 1. Ha a fiók hozzáférést biztosít egynél több bérlőhöz, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portálmunkamenetet a kívánt Azure AD-bérlőre.
@@ -126,12 +126,12 @@ Ebben a kódban:
 - `Enter_the_Tenant_Info_Here`az alábbi lehetőségek egyikére van beállítva:
     - Ha az alkalmazás támogatja **a fiókok ebben a szervezeti címtárban,** cserélje le ezt az értéket a bérlői azonosító vagy a bérlő neve (például contoso.microsoft.com).
     - Ha az alkalmazás támogatja a fiókok at bármely `organizations`szervezeti **címtárban,** cserélje le ezt az értéket a gombra.
-    
+
     Az összes nemzeti felhő hitelesítési végpontjainak megkereséséhez tekintse meg az [Azure AD hitelesítési végpontjait.](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)
 
     > [!NOTE]
     > A személyes Microsoft-fiókok nem támogatottak a nemzeti felhőkben.
-  
+
 - `graphEndpoint`a Microsoft Graph végpontja a Microsoft felhő az egyesült államokbeli kormány.
 
    Az összes nemzeti felhő Microsoft Graph-végpontjának megkereséséhez tekintse meg a [Microsoft Graph végpontjait a nemzeti felhőkben.](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)
@@ -149,16 +149,16 @@ Az MSAL Python-alkalmazás engedélyezése szuverén felhőkhöz:
     ```json
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
-    
+
 - A Microsoft Graph hívásához egy adott Graph végpontURL-cím szükséges, amely attól függ, hogy melyik felhőt használja. Az összes nemzeti felhő Microsoft Graph-végpontjának megkereséséhez tekintse meg a Microsoft Graph és a [Graph Explorer szolgáltatás gyökérvégpontjait.](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)
 
     Íme egy példa egy grafikonvégpontra, hatókörrel:
-    
+
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
     "scope": "User.Read"
     ```
-    
+
 ## <a name="java"></a>[Java](#tab/java)
 
 Az MSAL java-hoz alkalmazás engedélyezése szuverén felhőkhöz:
@@ -182,7 +182,7 @@ Az MSAL java-hoz alkalmazás engedélyezése szuverén felhőkhöz:
 "scope": "User.Read"
 ```
 
-## <a name="objective-c"></a>[Célkitűzés-C](#tab/objc)
+## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 Az iOS és a macOS msal-ja felhasználható a nemzeti felhőktokenek `MSALPublicClientApplication`beszerzésére, de további konfigurációt igényel a létrehozásakor.
 
@@ -194,12 +194,12 @@ MSALAADAuthority *aadAuthority =
                                                    audienceType:MSALAzureADMultipleOrgsAudience
                                                       rawTenant:nil
                                                           error:nil];
-                                                          
+
 MSALPublicClientApplicationConfig *config =
                 [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
                                                                 redirectUri:@"<your-redirect-uri-here>"
                                                                   authority:aadAuthority];
-                                                                  
+
 NSError *applicationError = nil;
 MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
@@ -213,7 +213,7 @@ Ha például azt szeretné, hogy az alkalmazás több-bérlős alkalmazás legye
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
-        
+
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```

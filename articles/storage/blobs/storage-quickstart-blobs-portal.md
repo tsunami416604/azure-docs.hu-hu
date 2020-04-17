@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 04/16/2020
 ms.author: tamram
-ms.openlocfilehash: 3ceeb878121782ea3664e1ed62d5d632b606f08e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061399"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535169"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával
 
@@ -39,27 +39,25 @@ Az Azure Portalon a következő lépések végrehajtásával hozhat létre egy t
 
 ## <a name="upload-a-block-blob"></a>Blokkblob feltöltése
 
-A blokkblobok blobokká összefűzött adatblokkokból állnak. A Blob Storage legtöbb használati forgatókönyvében blokkblobokat kell használni. A blokkblobok ideális megoldást kínálnak szöveges és bináris adatok (például fájlok, képek és videók) felhőben történő tárolására. Ez a rövid útmutató a blokkblobok használatát mutatja be. 
+A blokkblobok blobokká összefűzött adatblokkokból állnak. A Blob Storage legtöbb használati forgatókönyvében blokkblobokat kell használni. A blokkblobok ideális megoldást kínálnak szöveges és bináris adatok (például fájlok, képek és videók) felhőben történő tárolására. Ez a rövid útmutató a blokkblobok használatát mutatja be.
 
 Az Azure Portalon a következő lépések végrehajtásával tölthet fel egy blokkblobot az Azure Portalon lévő új tárolóba:
 
 1. Az Azure Portalon lépjen az előző szakaszban létrehozott tárolóhoz.
-2. Válassza ki a tárolót a benne lévő blobok listájának megtekintéséhez. Mivel ez a tároló új, még nem tartalmaz blobokat.
-3. A **Feltöltés** gomb kiválasztásával nyissa meg a feltöltési panelt
-4. Böngésszen a helyi fájlrendszerben, hogy megtalálja a blokkblobként feltöltendő fájlt
-     
+1. Válassza ki a tárolót a benne lévő blobok listájának megtekintéséhez. Ez a tároló új, így még nem tartalmaz blobokat.
+1. A **Feltöltés gombra** kattintva nyissa meg a feltöltési panelt, és böngésszen a helyi fájlrendszerben a blokkblobként feltöltendő fájl megkereséséhez. A speciális szakaszt kibonthatja a feltöltési művelet egyéb beállításainak konfigurálásához.
+
     ![A blobok helyi meghajtóról történő feltöltését bemutató képernyőkép](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. Szükség esetén bontsa ki a speciális szakaszt más beállítások, például a hitelesítéstípusa, a hozzáférési szint vagy a virtuális mappa elérési útjának definiálásához.
-6. A **feltöltés** véglegesítéséhez válassza a Feltöltés gombot
-7. Ezzel a módszerrel tetszőleges számú blobot tölthet fel. Látni fogja, hogy az új blobok már fel vannak sorolva a tárolóban.
+1. A blob feltöltéséhez kattintson a **Feltöltés** gombra.
+1. Ezzel a módszerrel tetszőleges számú blobot tölthet fel. Látni fogja, hogy az új blobok már fel vannak sorolva a tárolóban.
 
 ## <a name="download-a-block-blob"></a>Blokkblob letöltése
 
 A blokkblobok letölthetők a böngészőben történő megjelenítéshez vagy a helyi fájlrendszerben történő mentéshez. A blokkblobok letöltéséhez kövesse az alábbi lépéseket:
 
-1. Lépjen az előző szakaszban feltöltött blobok listájához. 
-2. Kattintson a jobb gombbal a letölteni kívánt blobra, majd válassza a **Letöltés** elemet. 
+1. Lépjen az előző szakaszban feltöltött blobok listájához.
+1. Kattintson a jobb gombbal a letölteni kívánt blobra, majd válassza a **Letöltés** elemet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -68,9 +66,9 @@ A jelen rövid útmutatóban létrehozott erőforrások eltávolításához tör
 A tároló törlése:
 
 1. Az Azure Portalon lépjen a tárfiókban tárolóinak listájához.
-2. Válassza ki a törölni kívánt tárolót.
-3. Válassza a **Továbbiak** gombot (**...**), majd a **Törlés** elemet.
-4. Erősítse meg, hogy törölni kívánja a tárolót.
+1. Válassza ki a törölni kívánt tárolót.
+1. Válassza a **Továbbiak** gombot (**...**), majd a **Törlés** elemet.
+1. Erősítse meg, hogy törölni kívánja a tárolót.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -78,4 +76,3 @@ Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át f
 
 > [!div class="nextstepaction"]
 > [Blob Storage-műveletek használati útmutatója](storage-dotnet-how-to-use-blobs.md)
-

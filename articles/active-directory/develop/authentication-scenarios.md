@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: e78f822a88b093992f065a509c2250e6a5c0dec2
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5252fdbbaf425662fc9725e618f8fc450b435722
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885565"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534652"
 ---
 # <a name="authentication-basics"></a>Hitelesítési alapok
 
@@ -80,16 +80,16 @@ A hozzáférési jogkivonatok a `Authorization` fejlécben tulajdonosi jogkivona
 
 Attól függően, hogy az ügyfél épül, használhatja az Azure AD által támogatott hitelesítési folyamatok egy (vagy több) használatát. Ezek a folyamatok különböző jogkivonatokat (id_tokens, frissítési jogkivonatokat, hozzáférési jogkivonatokat) és engedélyezési kódokat hozhatnak létre, és különböző jogkivonatokat igényelnek, hogy működjenek. Ez a diagram áttekintést nyújt:
 
-|Folyamat | Megköveteli | id_token | hozzáférési jogkivonat | token frissítése | engedélyezési kód | 
+|Folyamat | Megköveteli | id_token | hozzáférési jogkivonat | token frissítése | engedélyezési kód |
 |-----|----------|----------|--------------|---------------|--------------------|
-|[Engedélyezési kód folyamata](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Engedélyezési kód folyamata](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[Implicit folyamat](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hibrid OIDC-folyamat](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Token beváltásának frissítése](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | token frissítése | x | x | x| |
 |[Meghatalmazásos folyamat](v2-oauth2-on-behalf-of-flow.md) | hozzáférési jogkivonat| x| x| x| |
 |[Ügyfél-hitelesítő adatok](v2-oauth2-client-creds-grant-flow.md) | | | x (csak alkalmazásoknál)| | |
 
-Az implicit módban kibocsátott tokenek hosszkorlátozással rendelkeznek, mivel az URL-en keresztül visszakerülnek a böngészőbe (hol `response_mode` van `query` vagy `fragment`).  Egyes böngészőkben korlátozható az URL mérete, amelyet a böngészősávba lehet helyezni, és ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek, `groups` vagy `wids` jogcímek. 
+Az implicit módban kibocsátott tokenek hosszkorlátozással rendelkeznek, mivel az URL-en keresztül visszakerülnek a böngészőbe (hol `response_mode` van `query` vagy `fragment`).  Egyes böngészőkben korlátozható az URL mérete, amelyet a böngészősávba lehet helyezni, és ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek, `groups` vagy `wids` jogcímek.
 
 Most, hogy áttekintést kapott az alapokról, olvassa el az identitásalkalmazás-modell és API megismeréséhez, ismerje meg, hogyan működik az Azure AD-ben a kiépítés, és részletes információkat kaphat az Azure AD által támogatott gyakori forgatókönyvekről.
 
@@ -126,7 +126,7 @@ A hozzájárulás az a folyamat, amelynek során az erőforrás-tulajdonos enged
 
 A Microsoft identity platformon egy [alkalmazásobjektum](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-object) egy alkalmazást ír le. Üzembe helyezéskor a Microsoft identitásplatform az alkalmazásobjektumot használja egy [egyszerű szolgáltatás](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#service-principal-object)létrehozása tervként, amely egy könyvtáron vagy bérlőn belüli alkalmazás konkrét példányát képviseli. A szolgáltatásnév határozza meg, hogy az alkalmazás ténylegesen mit tehet egy adott célkönyvtárban, ki használhatja, milyen erőforrásokhoz fér hozzá, és így tovább. A Microsoft identity platform **hozzájárulással**létrehoz egy egyszerű szolgáltatást egy alkalmazásobjektumból.
 
-Az alábbi ábrán egy egyszerűsített Microsoft-identitásplatform-kiépítési folyamat látható, amelyet hozzájárulás hajt. Azt mutatja, két bérlő: A és B. Bérlő a tulajdonosa az alkalmazás. "B" bérlő egy egyszerű szolgáltatáson keresztül példányosítja ki az alkalmazást.  
+Az alábbi ábrán egy egyszerűsített Microsoft-identitásplatform-kiépítési folyamat látható, amelyet hozzájárulás hajt. Azt mutatja, két bérlő: A és B. Bérlő a tulajdonosa az alkalmazás. "B" bérlő egy egyszerű szolgáltatáson keresztül példányosítja ki az alkalmazást.
 
 ![Hozzájárulás-alapú egyszerűsített kiépítési folyamat](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
@@ -160,7 +160,7 @@ A következő szekvenciadiagram összefoglalja ezt a kölcsönhatást:
 
 ### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Hogyan határozza meg egy webalkalmazás, hogy a felhasználó hitelesítve van-e?
 
-A webalkalmazás-fejlesztők jelezhetik, hogy az összes vagy csak bizonyos lapok hitelesítést igényelnek-e. A Core ASP.NET/ASP.NET például ezt úgy `[Authorize]` lehet megtenni, hogy hozzáadjuk az attribútumot a vezérlőműveletekhez. 
+A webalkalmazás-fejlesztők jelezhetik, hogy az összes vagy csak bizonyos lapok hitelesítést igényelnek-e. A Core ASP.NET/ASP.NET például ezt úgy `[Authorize]` lehet megtenni, hogy hozzáadjuk az attribútumot a vezérlőműveletekhez.
 
 Ez az attribútum hatására ASP.NET ellenőrzi, hogy a felhasználó identitását tartalmazó munkamenet-cookie jelen van-e. Ha nincs cookie, ASP.NET átirányítja a hitelesítést a megadott identitásszolgáltatóra. Ha az identitásszolgáltató az Azure AD, a webalkalmazás átirányítja a hitelesítést a rendszerbe, `https://login.microsoftonline.com`amely egy bejelentkezési párbeszédpanelt jelenít meg.
 

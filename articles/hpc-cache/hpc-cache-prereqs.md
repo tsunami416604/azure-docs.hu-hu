@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ab342dba5c8be2ff3793c0eb36926969b3e364e5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655657"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537287"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC-gyorsítótár előfeltételei
 
@@ -20,9 +20,6 @@ Mielőtt az Azure Portalon új Azure HPC-gyorsítótárat hozna létre, győződ
 ## <a name="azure-subscription"></a>Azure-előfizetés
 
 Fizetős előfizetés ajánlott.
-
-> [!NOTE]
-> A ga-kiadás első néhány hónapjában az Azure HPC cache csapat hozzá kell adnia az előfizetést a hozzáférési listához, mielőtt egy gyorsítótár-példány létrehozásához használható. Ez az eljárás segít annak biztosításában, hogy minden ügyfél magas szintű válaszidőt kap a gyorsítótáraiból. Töltse ki [ezt az űrlapot,](https://aka.ms/onboard-hpc-cache) hogy hozzáférést kérjen.
 
 ## <a name="network-infrastructure"></a>Hálózati infrastruktúra
 
@@ -84,11 +81,11 @@ Kompatibilis tárfiók létrehozásához használja az alábbi beállításokat:
 * Hozzáférési szint (alapértelmezett): **Gyakori elérésű**
 
 Célszerű egy tárfiókot használni ugyanazon a helyen, mint a gyorsítótár.
-<!-- clarify location - same region or same resource group or same virtual network? -->
 
 A gyorsítótár-alkalmazás nak is hozzáférést kell biztosítania az Azure-tárfiókhoz a fenti Engedélyek ) című részben [említettek](#permissions)szerint. Kövesse a [tárolási célok hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) című, a szükséges hozzáférési szerepkörök gyorsítótárba adása című eljárását. Ha nem a tárfiók tulajdonosa, a tulajdonos ezt a lépést.
 
 ### <a name="nfs-storage-requirements"></a>NFS tárolási követelmények
+<!-- linked from configuration.md -->
 
 Ha NFS-tárolórendszert (például helyszíni hardveres NAS-rendszert) használ, győződjön meg arról, hogy az megfelel ezeknek a követelményeknek. Előfordulhat, hogy a beállítások ellenőrzéséhez együtt kell működnie a hálózati rendszergazdákkal vagy a tárolórendszer (vagy adatközpont) tűzfalkezelőivel.
 

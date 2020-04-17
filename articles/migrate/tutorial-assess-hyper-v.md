@@ -2,14 +2,14 @@
 title: Hyper-V virtuális gépek értékelése az Azure Áttelepítése segítségével az Azure-ba való áttelepítéshez | Microsoft dokumentumok
 description: Bemutatja, hogyan értékelheti a helyszíni Hyper-V virtuális gépek az Azure-ba való áttelepítés az Azure-ba az Azure Áttelepítési kiszolgáló értékelése.
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: cb3c29e01b7917a6d639b6b2a53fc2842efc2172
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336774"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535451"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Hyper-V virtuális gépek felmérése az Azure Áttelepítési kiszolgáló felmérésével
 
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 4. Az **Első lépések** területen kattintson az **Eszközök hozzáadása** elemre.
 5. A **Projekt áttelepítése** lapon válassza ki az Azure-előfizetést, és hozzon létre egy erőforráscsoportot, ha nem rendelkezik ilyentel.
-6. A **Projekt részletei**területen adja meg a projekt nevét és azt a régiót, amelyben a projektet létre kívánja hozni. [Tekintse át](migrate-support-matrix.md#supported-geographies) azazure migrate projektet létrehozó régiókat.
+6. A **Projekt részletei**területen adja meg a projekt nevét és azt a régiót, amelyben a projektet létre kívánja hozni. Tekintse át a támogatott földrajzi területeket [az állami](migrate-support-matrix.md#supported-geographies-public-cloud) és [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)számára.
 
     - A projektrégió csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál.
     - A virtuális gépek áttelepítésekénél másik Azure-célrégiót választhat. Az összes Azure-régió támogatja az áttelepítési cél.
@@ -67,9 +67,11 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Az Azure Migrate-berendezés beállítása
 
-Azure Migrate:server Assessment egy könnyű Azure Migrate készüléket használ. A készülék virtuális gép felderítése, és elküldi a virtuális gép metaadatait és teljesítményadatait az Azure Migrate.
-- A készülék egy Hyper-V VM-en állítható be egy letöltött Hyper-V VHD használatával. Azt is megteheti, hogy a készüléket egy virtuális gépen vagy fizikai gépen egy PowerShell telepítő parancsfájlt.
-- Ez az oktatóanyag a virtuális merevlemezt használja. Tekintse át [ezt a cikket,](deploy-appliance-script.md) ha parancsfájl használatával szeretné beállítani a készüléket.
+
+Azure Migrate:Server Assessment egy könnyű Azure Migrate készüléket használ. A készülék virtuális gép felderítése, és elküldi a virtuális gép metaadatait és teljesítményadatait az Azure Migrate. A készülék számos módon beállítható.
+
+- Állítsa be a Hyper-V virtuális gép egy letöltött Hyper-V virtuális merevlemez használatával. Ez az oktatóanyagban használt módszer.
+- Állítsa be a Hyper-V virtuális gép vagy fizikai gép egy PowerShell telepítő parancsfájlt. [Ezt a módszert](deploy-appliance-script.md) kell használni, ha nem tudja beállítani a virtuális gép a virtuális merevlemez használatával, vagy ha az Azure Government.
 
 A készülék létrehozása után ellenőrizze, hogy csatlakozhat-e az Azure Migrate:Server Assessment alkalmazáshoz, konfigurálhatja-e először, és regisztrálja az Azure Migrate projekttel.
 
@@ -125,9 +127,9 @@ Importálja a letöltött fájlt, és hozza létre a virtuális gép.
 7. A Hyper-V Manager > **virtuális gépek,** indítsa el a virtuális gépet.
 
 
-### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-hoz való hozzáférésének ellenőrzése
+## <a name="verify-appliance-access-to-azure"></a>A készülék Azure-hoz való hozzáférésének ellenőrzése
 
-Győződjön meg arról, hogy a készülék virtuális gép [e-alapú URL-címekhez.](migrate-appliance.md#url-access)
+Győződjön meg arról, hogy a készülék virtuális gép csatlakozhat az Azure-URL-címek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhők.
 
 ### <a name="configure-the-appliance"></a>A készülék konfigurálása
 

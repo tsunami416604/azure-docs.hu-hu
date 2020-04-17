@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 1226b3e10adf786ed3335844a5d3f4e530911705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c47b9b5f297fa62c474e6c29737d6d11b887130d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671239"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537474"
 ---
 # <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights-ügynök API: Set-ApplicationInsightsMonitoringConfig
 
@@ -54,10 +54,10 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 ## <a name="parameters"></a>Paraméterek
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
-**Szükséges.** Ezzel a paraméterrel egyetlen instrumentation kulcsot biztosíthat a célszámítógépen lévő összes alkalmazás számára.
+**Kötelező.** Ezzel a paraméterrel egyetlen instrumentation kulcsot biztosíthat a célszámítógépen lévő összes alkalmazás számára.
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Szükséges.** Ezzel a paraméterrel több instrumentation kulcsot és az egyes alkalmazások által használt instrumentation kulcsok leképezését biztosítja.
+**Kötelező.** Ezzel a paraméterrel több instrumentation kulcsot és az egyes alkalmazások által használt instrumentation kulcsok leképezését biztosítja.
 A beállítással egyetlen telepítési parancsfájlt `MachineFilter`hozhat létre több számítógéphez.
 
 > [!IMPORTANT]
@@ -113,7 +113,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 ## <a name="next-steps"></a>További lépések
 
   A telemetriai adatok megtekintése:
- - [Fedezze fel a teljesítmény](../../azure-monitor/app/metrics-explorer.md) és a használat figyeléséhez.
+ - [Fedezze fel a teljesítmény](../../azure-monitor/platform/metrics-charts.md) és a használat figyeléséhez.
 - [Keresés események és naplók](../../azure-monitor/app/diagnostic-search.md) diagnosztizálására problémákat.
 - [Az Analytics használata](../../azure-monitor/app/analytics.md) fejlettebb lekérdezésekhez.
 - [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).

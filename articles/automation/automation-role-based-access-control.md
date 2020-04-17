@@ -6,16 +6,19 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8caf502db91ab09eea48fc8a902dacf6bf40f24c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a49f2596df91c44deafa1be83483f8972e223742
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278635"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535570"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
 A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Az [RBAC](../role-based-access-control/overview.md)használatával elkülönítheti a feladatokat a csapaton belül, és csak a feladatok elvégzéséhez szükséges felhasználók, csoportok és alkalmazások elérésének mennyiségét biztosíthatja. Szerepköralapú hozzáférést adhat a felhasználóknak az Azure Portalon, az Azure parancssori eszközein vagy az Azure Management API-kon keresztül.
+
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
 
 ## <a name="roles-in-automation-accounts"></a>Szerepkörök az Automation-fiókokban
 
@@ -29,7 +32,7 @@ Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szere
 | Automation-operátor |Az Automation Operator szerepkör lehetővé teszi a runbook oktatásának és tulajdonságainak megtekintését, valamint az Automation-fiók összes runbookjának létrehozását és kezelését. Ez a szerepkör akkor hasznos, ha meg szeretné védeni az Automation-fiók erőforrásait, például a hitelesítő adatokat és a runbookokat a megtekintéstől vagy a módosítástól, de továbbra is lehetővé teszi a szervezet tagjai számára, hogy végrehajtsák ezeket a runbookokat. |
 |Automatizálási feladat operátor|Az Automation-feladat operátor szerepkör lehetővé teszi, hogy hozzon létre és kezelje a feladatokat az összes runbookok egy Automation-fiókban.|
 |Automatizálási runbook-operátor|Az Automation Runbook Operator szerepkör lehetővé teszi a runbook nevének és tulajdonságainak megtekintését.|
-| Log Analytics közreműködő | A Log Analytics közreműködői szerepkör lehetővé teszi az összes figyelési adat olvasását és a figyelési beállítások szerkesztését. A figyelési beállítások szerkesztése magában foglalja a virtuális gép bővítmény virtuális gépekhez való hozzáadását, a tárfiók kulcsainak olvasását az Azure storage-ból származó naplók gyűjteményének konfigurálásához, az Automation-fiókok létrehozásához és konfigurálásához, a megoldások hozzáadásához és az Azure-diagnosztika konfigurálásához az összes Azure-erőforrást.|
+| Log Analytics közreműködő | A Log Analytics közreműködői szerepkör lehetővé teszi az összes figyelési adat olvasását és a figyelési beállítások szerkesztését. A figyelési beállítások szerkesztése magában foglalja a virtuális gép bővítmény virtuális gépekhez való hozzáadását, a tárfiók kulcsainak olvasását az Azure storage-ból származó naplók gyűjteményének konfigurálásához, az Automation-fiókok létrehozásához és konfigurálásához, a megoldások hozzáadását és az Azure-diagnosztika konfigurálását az összes Azure-erőforráshoz.|
 | Log Analytics olvasó | A Log Analytics-olvasó szerepkör lehetővé teszi az összes figyelési adat megtekintését és keresését, valamint a figyelési beállítások megtekintését. Ez magában foglalja az Azure-diagnosztika konfigurációjának megtekintését az összes Azure-erőforráson. |
 | Közreműködő figyelése | A figyelésközreműködő szerepkör lehetővé teszi az összes figyelési adat olvasását és a figyelési beállítások frissítését.|
 | Monitoring olvasó | A Figyelési olvasó szerepkör lehetővé teszi az összes figyelési adat olvasását. |
@@ -204,11 +207,11 @@ A felhasználói hozzáférés rendszergazdája kezelheti az Azure-erőforrások
 |Microsoft.Authorization/*|Engedélyezés kezelése|
 |Microsoft.Támogatás/*|Támogatási jegyek létrehozása és kezelése|
 
-## <a name="onboarding"></a>Előkészítés
+## <a name="onboarding-permissions"></a>Bevezetési engedélyek
 
-Az alábbi táblázatok a változáskövetési vagy frissítéskezelési megoldásokhoz szükséges minimális engedélyeket mutatják be a virtuális gépek bevezetéséhez.
+A következő szakaszok ismertetik a minimálisan szükséges engedélyeket a virtuális gépek bevezetéséhez a változáskövetési vagy frissítéskezelési megoldásokhoz.
 
-### <a name="onboarding-from-a-virtual-machine"></a>Bevezetés virtuális gépről
+### <a name="permissions-for-onboarding-from-a-vm"></a>A virtuális gépről történő bevezetés engedélyei
 
 |**Művelet**  |**Engedély**  |**Minimális hatály**  |
 |---------|---------|---------|
@@ -230,7 +233,7 @@ Az alábbi táblázatok a változáskövetési vagy frissítéskezelési megold�
 
 <sup>1</sup> Ez az engedély szükséges a virtuális gép portálfelületén keresztül történő fedélzetre.
 
-### <a name="onboarding-from-automation-account"></a>Bevezetés az Automation-fiókból
+### <a name="permissions-for-onboarding-from-automation-account"></a>Az Automation-fiókból történő bevezetés engedélyei
 
 |**Művelet**  |**Engedély** |**Minimális hatókör**  |
 |---------|---------|---------|
@@ -250,7 +253,7 @@ Az alábbi táblázatok a változáskövetési vagy frissítéskezelési megold�
 |Mentett keresés létrehozása /szerkesztése     | Microsoft.OperationalInsights/munkaterületek/írás           | Munkaterület        |
 |Hatókör konfigurációjának létrehozása/szerkesztése  | Microsoft.OperationalInsights/munkaterületek/írás   | Munkaterület|
 
-## <a name="update-management"></a>Frissítéskezelés
+## <a name="update-management-permissions"></a>Felügyeleti engedélyek frissítése
 
 A frissítéskezelés több szolgáltatáson keresztül is elérhető a szolgáltatás biztosítása érdekében. Az alábbi táblázat a frissítéskezelési telepítések kezeléséhez szükséges engedélyeket mutatja be:
 
@@ -265,12 +268,12 @@ A frissítéskezelés több szolgáltatáson keresztül is elérhető a szolgál
 
 ## <a name="configure-rbac-for-your-automation-account"></a>Az RBAC konfigurálása az Automation-fiókhoz
 
-A következő szakasz bemutatja, hogyan konfigurálhatja az RBAC-ot az Automation-fiókon a [portálon](#configure-rbac-using-the-azure-portal) és a [PowerShellen](#configure-rbac-using-powershell)keresztül.
+Az alábbi szakasz bemutatja, hogyan konfigurálhatja az RBAC-ot az Automation-fiókon az [Azure Portalon](#configure-rbac-using-the-azure-portal) és a [PowerShellen](#configure-rbac-using-powershell)keresztül.
 
 ### <a name="configure-rbac-using-the-azure-portal"></a>Az RBAC konfigurálása az Azure Portal használatával
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és nyissa meg az Automation-fiókját az Automation-fiókok lapról.
-2. Kattintson a **hozzáférés-vezérlés (IAM)** vezérlőre a bal felső sarokban a Hozzáférés-vezérlés (IAM) lap megnyitásához. Ezen a lapon új felhasználókat, csoportokat és alkalmazásokat vehet fel az Automation-fiók kezeléséhez és az Automation-fiókhoz konfigurálható meglévő szerepkörök megtekintéséhez.
+2. Kattintson a **hozzáférés-vezérlésre (IAM)** a Hozzáférés-vezérlés (IAM) lap megnyitásához. Ezen a lapon új felhasználókat, csoportokat és alkalmazásokat vehet fel az Automation-fiók kezeléséhez és az Automation-fiókhoz konfigurálható meglévő szerepkörök megtekintéséhez.
 3. Kattintson a **Szerepkör-hozzárendelések** fülre.
 
    ![Hozzáférés gomb](media/automation-role-based-access-control/automation-01-access-button.png)
@@ -281,7 +284,7 @@ A következő szakasz bemutatja, hogyan konfigurálhatja az RBAC-ot az Automatio
 
 2. Válasszon egy szerepkört az elérhető szerepkörök listájáról. Az Automation-fiók által támogatott rendelkezésre álló beépített szerepkörök bármelyikét kiválaszthatja, vagy bármely egyéni szerepkört, amelyet definiált.
 
-3. Írja be annak a felhasználónak a felhasználónevét, amelyiknek engedélyeket szeretne adni a **Kijelölés** mezőbe. Válassza ki a felhasználót a listából, és kattintson a **Mentés gombra.**
+3. Írja be annak a felhasználónak a nevét, amelyiknek engedélyeket szeretne adni a **Kijelölés** mezőbe. Válassza ki a felhasználót a listából, és kattintson a **Mentés gombra.**
 
    ![Felhasználók hozzáadása](media/automation-role-based-access-control/automation-04-add-users.png)
 
@@ -311,10 +314,10 @@ Eltávolíthatja egy olyan felhasználó hozzáférési engedélyét, aki nem ke
 
 Szerepköralapú hozzáférést is konfigurálhat egy Automation-fiókhoz a következő [Azure PowerShell-parancsmagok](../role-based-access-control/role-assignments-powershell.md)használatával:
 
-[Get-AzureRmRoleDefinition](/previous-versions/azure/mt603792(v=azure.100)) felsorolja az Azure Active Directoryban elérhető összes RBAC-szerepköröket. Ezt a parancsmalapot a *Name* paraméterrel együtt használhatja az adott szerepkör által végrehajtható összes művelet listázásához.
+[A Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) felsorolja az Azure Active Directoryban elérhető összes RBAC-szerepkört. Ezt a parancsmalapot `Name` a paraméterrel együtt használhatja az adott szerepkör által végrehajtható összes művelet listázásához.
 
 ```azurepowershell-interactive
-Get-AzureRmRoleDefinition -Name 'Automation Operator'
+Get-AzRoleDefinition -Name 'Automation Operator'
 ```
 
 A következő a példa kimenet:
@@ -330,12 +333,12 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzureRmRoleAssignment](/previous-versions/azure/mt619413(v=azure.100)) az Azure AD RBAC szerepkör-hozzárendelések a megadott hatókörön. Paraméterek nélkül ez a parancsmag az előfizetés alatt végrehajtott összes szerepkör-hozzárendelést adja vissza. Az *ExpandPrincipalGroups* paraméterrel listázza a megadott felhasználó hozzáférési hozzárendeléseit, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
+[A Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) az Azure AD RBAC szerepkör-hozzárendeléseket sorolja fel a megadott hatókörben. Paraméterek nélkül ez a parancsmag az előfizetés alatt végrehajtott összes szerepkör-hozzárendelést adja vissza. A `ExpandPrincipalGroups` paraméter segítségével listázza a megadott felhasználó hozzáférési hozzárendeléseit, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
 
 **Példa:** A következő parancsmag segítségével sorolja fel az összes felhasználót és azok szerepköreit egy Automation-fiókban.
 
 ```azurepowershell-interactive
-Get-AzureRMRoleAssignment -scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
+Get-AzRoleAssignment -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
 A következő a példa kimenet:
@@ -352,12 +355,12 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-[A New-AzureRmRoleAssignment](/previous-versions/azure/mt603580(v=azure.100)) használatával hozzáférést rendelhet a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörhöz.
+[A New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) segítségével hozzáférést rendelhet egy adott hatókörhöz a felhasználókhoz, csoportokhoz és alkalmazásokhoz.
     
 **Példa:** A következő paranccsal rendelheti hozzá az "Automation Operator" szerepkört egy felhasználóhoz az Automation-fiók hatókörében.
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
+New-AzRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
 A következő a példa kimenet:
@@ -374,17 +377,17 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-[Az Eltávolítás-AzureRmRoleAssignment](/previous-versions/azure/mt603781(v=azure.100)) használatával eltávolíthatja egy adott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
+[Az Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) használatával eltávolíthatja egy adott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
 
-**Példa:** A következő paranccsal eltávolíthatja a felhasználót az Automation-fiók hatókörének "Automation Operator" szerepköréből.
+**Példa:** A következő paranccsal eltávolíthatja a felhasználót az Automation Operátor szerepkörből az Automation-fiók hatókörében.
 
 ```azurepowershell-interactive
-Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
+Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-Az előző példákban cserélje le az eltávolítani kívánt felhasználó bejelentkezési azonosítóját,"SubscriptionID", "Erőforráscsoport neve" és Automation-fiók neve" a fiók adataival. Válassza **az igen** lehetőséget, amikor a rendszer a felhasználói szerepkör-hozzárendelések eltávolításának folytatása előtt megerősítést kér.
+Az előző példában `sign-in ID of a user you wish to remove` `SubscriptionID`cserélje `Resource Group Name`le `Automation account name` a , , és a fiók adatait. Válassza **az igen** lehetőséget, amikor a rendszer a felhasználói szerepkör-hozzárendelések eltávolításának folytatása előtt megerősítést kér.
 
-### <a name="user-experience-for-automation-operator-role---automation-account"></a>Felhasználói élmény az Automation operátori szerepkörhöz – Automatizálási fiók
+### <a name="user-experience-for-automation-operator-role---automation-account"></a>Felhasználói élmény az Automation Operator szerepkörhöz – Automatizálási fiók
 
 Ha az Automation-fiók hatókörének Automation Operator szerepköréhez rendelt felhasználó megtekinti azt az Automation-fiókot, amelyhez hozzá van rendelve, a felhasználó csak az Automation-fiókban létrehozott runbookok, runbook-feladatok és ütemezések listáját tekintheti meg. Ez a felhasználó nem tekintheti meg ezeknek az elemeknek a definícióit. A felhasználó elindíthatja, leállíthatja, felfüggesztheti, folytathatja vagy ütemezheti a runbook-feladatot. A felhasználó azonban nem fér hozzá más Automation-erőforrásokhoz, például konfigurációkhoz, hibrid munkavégző csoportokhoz vagy DSC-csomópontokhoz.
 
@@ -392,7 +395,7 @@ Ha az Automation-fiók hatókörének Automation Operator szerepköréhez rendel
 
 ## <a name="configure-rbac-for-runbooks"></a>RBAC konfigurálása runbookokhoz
 
-Az Azure Automation lehetővé teszi, hogy rBAC-t rendeljen adott runbookokhoz. Ehhez futtassa a következő parancsfájlt, hogy egy felhasználót vegyen fel egy adott runbookhoz. Az automation-fiók rendszergazdája vagy egy bérlői rendszergazda futtathatja ezt a parancsfájlt.
+Az Azure Automation lehetővé teszi, hogy rBAC-t rendeljen adott runbookokhoz. Ehhez futtassa a következő parancsfájlt, hogy egy felhasználót vegyen fel egy adott runbookhoz. A parancsfájl t az automation-fiók rendszergazdája vagy a bérlői rendszergazda is futtathatja.
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation account
@@ -401,19 +404,19 @@ $rbName = "<Name of Runbook>" # Name of the runbook
 $userId = "<User ObjectId>" # Azure Active Directory (AAD) user's ObjectId from the directory
 
 # Gets the Automation account resource
-$aa = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
+$aa = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
 
 # Get the Runbook resource
-$rb = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
+$rb = Get-AzResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
 
 # The Automation Job Operator role only needs to be run once per user.
-New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
+New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
 
 # Adds the user to the Automation Runbook Operator role to the Runbook scope
-New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
+New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-Miután a parancsfájl futott, a felhasználó jelentkezzen be az Azure Portalon, és tekintse meg az **összes erőforrást.** A listában a felhasználó láthatja a runbookot, amelyhez automation Runbook operátorként lett hozzáadva.
+Miután a parancsfájl futott, a felhasználó jelentkezzen be az Azure Portalon, és válassza az **Összes erőforrás**lehetőséget. A listában a felhasználó láthatja a runbookot, amelyhez automation Runbook operátorként lett hozzáadva.
 
 ![Runbook RBAC a portálon](./media/automation-role-based-access-control/runbook-rbac.png)
 

@@ -1,16 +1,16 @@
 ---
 title: Biztonság
 description: Ismerje meg, hogyan segít az App Service az alkalmazás biztonságossá tétele, és hogyan zárhatja le még az alkalmazást a fenyegetésektől.
-keywords: Azure app szolgáltatás, web app, mobil app, api app, függvény app, biztonság, biztonságos, biztonságos, megfelelőség, megfelelő, tanúsítvány, tanúsítványok, https, ftps, TLS, bizalom, titkosítás, titkosítás, titkosított, ip korlátozás, hitelesítés, engedélyezés, hitelesítés, autho, msi, felügyelt szolgáltatás identitás, felügyelt identitás, titkos, titkos, folt, javítás, javítások, verzió, elkülönítés, hálózati elkülönítés, ddos, mitm
+keywords: Azure app szolgáltatás, web app, mobil app, api app, függvény app, biztonság, biztonságos, biztonságos, megfelelőség, megfelelő, tanúsítvány, tanúsítványok, https, ftps, TLS, bizalom, titkosítás, titkosítás, titkosítás, titkosított, ip korlátozás, hitelesítés, engedélyezés, authn, autho, msi, felügyelt szolgáltatás identitás, felügyelt identitás, titkos, folt, javítás, javítások, verzió, elkülönítés, hálózati elkülönítés, ddos, mitm
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: e28935f73511e5ad973929517658cc626b5a6ea2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475374"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535655"
 ---
 # <a name="security-in-azure-app-service"></a>Biztonság az Azure App Service-ben
 
@@ -31,14 +31,14 @@ A következő szakaszok bemutatják, hogyan védheti meg tovább az App Service-
 
 ## <a name="https-and-certificates"></a>HTTPS és tanúsítványok
 
-Az App Service lehetővé teszi az alkalmazások HTTPS-vel történő [védelmét.](https://wikipedia.org/wiki/HTTPS) Az alkalmazás létrehozásakor az alapértelmezett\<tartománynév (app_name>.azurewebsites.net) már elérhető https használatával. Ha [egyéni tartományt állít be az alkalmazáshoz,](app-service-web-tutorial-custom-domain.md) [ssl-tanúsítvánnyal](configure-ssl-bindings.md) is biztosítania kell azt, hogy az ügyfélböngészők biztonságos HTTPS-kapcsolatot létesíthessenek az egyéni tartománnyal. Az App Service többféle tanúsítványtípust támogat:
+Az App Service lehetővé teszi az alkalmazások HTTPS-vel történő [védelmét.](https://wikipedia.org/wiki/HTTPS) Az alkalmazás létrehozásakor az alapértelmezett\<tartománynév (app_name>.azurewebsites.net) már elérhető https használatával. Ha [egyéni tartományt állít be az alkalmazáshoz,](app-service-web-tutorial-custom-domain.md) [tLS/SSL tanúsítvánnyal](configure-ssl-bindings.md) is biztosítania kell azt, hogy az ügyfélböngészők biztonságos HTTPS-kapcsolatot létesíthessenek az egyéni tartománnyal. Az App Service többféle tanúsítványtípust támogat:
 
 - Ingyenes app szolgáltatás felügyelt tanúsítvány
 - App Service-tanúsítvány
 - Külső tanúsítvány
 - Tanúsítvány importált Az Azure Key Vault
 
-További információ: [Ssl-tanúsítvány hozzáadása az Azure App Service szolgáltatásban](configure-ssl-certificate.md)című témakörben talál.
+További információ: [TLS/SSL-tanúsítvány hozzáadása az Azure App Service szolgáltatásban című témakörben.](configure-ssl-certificate.md)
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>Nem biztonságos protokollok (HTTP, TLS 1.0, FTP)
 
@@ -103,7 +103,7 @@ Ne tárolja az alkalmazástitkos kulcsokat, például az adatbázis hitelesítő
 
 Azt is megteheti, hogy integrálja az App Service-alkalmazást az [Azure Key Vault](/azure/key-vault/) fejlett titkos kulcsok kezelésére. A [Key Vault felügyelt identitással való elérésével](../key-vault/tutorial-web-application-keyvault.md)az App Service-alkalmazás biztonságosan hozzáférhet a szükséges titkokhoz.
 
-## <a name="network-isolation"></a>Hálózati elkülönítés
+## <a name="network-isolation"></a>Hálózatelkülönítés
 
 Az **elkülönített** tarifacsomag kivételével az összes réteg futtatja az alkalmazásokat az App Service megosztott hálózati infrastruktúráján. Például a nyilvános IP-címek és a front-end terheléselosztók más bérlőkkel vannak megosztva. Az **Elkülönített** szint teljes hálózati elkülönítést biztosít az alkalmazások dedikált [App Service-környezetben](environment/intro.md)való futtatásával. Az App Service-környezet az [Azure Virtual Network](/azure/virtual-network/)saját példányában fut. A következőkre van lehetőség: 
 

@@ -2,13 +2,13 @@
 title: A VMware-áttelepítés támogatása az Azure Áttelepítésében
 description: Ismerje meg a VMware virtuálisgép-áttelepítés támogatását az Azure Áttelepítésben.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 04/15/2020
+ms.openlocfilehash: eee16b244ae4f9d517bdd42a0b7f37b1494ac480
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313998"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538137"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-áttelepítés támogatási mátrixa
 
@@ -64,10 +64,12 @@ Tekintse át [ezt a cikket,](server-migrate-overview.md) hogy megtudja, melyik m
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>Ügynök nélküli Azure Áttelepítés imát 
-Ügynök nélküli áttelepítés i a VMware virtuális gépüzembe helyezett Azure Migrate készüléket használja.
+
+Ügynök nélküli áttelepítés az [Azure Migrate készüléket](migrate-appliance.md)használja. A készüléket vmware virtuális gépként telepítheti ovasablon nal, vCenter Server kiszolgálóra importálva vagy [PowerShell-parancsfájl](deploy-appliance-script.md)használatával.
 
 - További információ a VMware [készülékkövetelményeiről.](migrate-appliance.md#appliance---vmware)
-- Ismerje meg azokat az [URL-címeket, amelyekhez](migrate-appliance.md#url-access) a készüléknek szüksége van.
+- Ismerje meg azokat az URL-címeket, amelyekhez a készüléknek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben kell hozzáférnie.
+- Az Azure Government ben a parancsfájl használatával kell üzembe helyeznie a készüléket.
 
 ## <a name="agentless-ports"></a>Ügynök nélküli portok
 
@@ -123,7 +125,8 @@ Ha a replikációs berendezést az Azure Migrate hubban található OVA sablon h
 
 - További információ a [VMware replikációs berendezésre vonatkozó követelményeiről.](migrate-replication-appliance.md#appliance-requirements)
 - A MySQL-t fel kell szerelni a készülékre. További információ a [telepítési lehetőségekről.](migrate-replication-appliance.md#mysql-installation)
-- Ismerje meg a replikációs készülék által elérni szükséges [URL-címeket](migrate-replication-appliance.md#url-access) és [portokat.](migrate-replication-appliance.md#port-access)
+- Ismerje meg azokat az URL-címeket, amelyekhez a replikációs eszköznek [nyilvános](migrate-replication-appliance.md#url-access) és [kormányzati](migrate-replication-appliance.md#azure-government-url-access) felhőkben kell hozzáférnie.
+- Tekintse át a replikációs eszköz által elérni szükséges [portokat.](migrate-replication-appliance.md#port-access)
 
 ## <a name="agent-based-ports"></a>Ügynökalapú portok
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: bfbae282f9c383c19aae84a70dfc53f754bd9367
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4976be485a9b7609c6e8d23f6b897092217663fc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77592611"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535672"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK első lépései az eseményalapú háttérfeldolgozáshoz
 
@@ -37,28 +37,31 @@ Ez a cikk bemutatja, hogyan telepítheti a WebJobs-ot .NET Core konzolalkalmazá
 
 ## <a name="webjobs-nuget-packages"></a>WebJobs NuGet csomagok
 
-1. Telepítse a `Microsoft.Azure.WebJobs.Extensions` NuGet csomag legújabb stabil 3.x `Microsoft.Azure.WebJobs`verzióját, amely tartalmazza a .
+1. Telepítse a [ `Microsoft.Azure.WebJobs.Extensions` NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/)legújabb stabil 3.x `Microsoft.Azure.WebJobs`verzióját, amely tartalmazza a .
 
-     A **Csomagkezelő konzol** parancsa a 3.0.2-es verzióhoz:
+     Íme a **Csomagkezelő konzol** parancsa:
 
      ```powershell
-     Install-Package Microsoft.Azure.WebJobs.Extensions -version 3.0.2
+     Install-Package Microsoft.Azure.WebJobs.Extensions -version <3_X_VERSION>
      ```
+
+    Ebben a parancsban cserélje le `<3_X_VERSION>` a csomag támogatott verziójára. 
 
 ## <a name="create-the-host"></a>A gazdagép létrehozása
 
 Az állomás az eseményindítók és hívások függvényeket figyelő függvények futásidejű tárolója. A következő lépések hozzon [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost)létre egy állomás, amely megvalósítja , amely az általános állomás ASP.NET Core.
 
-1. A *Program.cs*adjon `using` hozzá egy nyilatkozatot:
+1. A *Program.cs*adja `using` hozzá a következő állításokat:
 
     ```cs
+    using System.Threading.Tasks;
     using Microsoft.Extensions.Hosting;
     ```
 
 1. Cserélje le az `Main` metódust az alábbi kódra:
 
     ```cs
-    static void Main(string[] args)
+    static async Task Main()
     {
         var builder = new HostBuilder();
         builder.ConfigureWebJobs(b =>
@@ -68,7 +71,7 @@ Az állomás az eseményindítók és hívások függvényeket figyelő függvé
         var host = builder.Build();
         using (host)
         {
-            host.Run();
+            await host.RunAsync();
         }
     }
     ```
@@ -79,12 +82,12 @@ A core ASP.NET állomáskonfigurációk at a [`HostBuilder`](/dotnet/api/microso
 
 Ebben a szakaszban olyan konzolnaplózást állíthat be, amely a [ASP.NET Core naplózási keretrendszert](/aspnet/core/fundamentals/logging)használja.
 
-1. Telepítse a `Microsoft.Extensions.Logging.Console` NuGet csomag legújabb stabil `Microsoft.Extensions.Logging`verzióját, amely tartalmazza a .
+1. Telepítse a [ `Microsoft.Extensions.Logging.Console` NuGet csomag](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/)legújabb stabil `Microsoft.Extensions.Logging`verzióját, amely tartalmazza a .
 
-   A **Csomagkezelő konzol** parancsa a 2.2.0-s verzióhoz:
+   Íme a **Csomagkezelő konzol** parancsa:
 
    ```powershell
-   Install-Package Microsoft.Extensions.Logging.Console -version 2.2.0
+   Install-Package Microsoft.Extensions.Logging.Console -version <3_X_VERSION>
    ```
 
 1. A *Program.cs*adjon `using` hozzá egy nyilatkozatot:
@@ -92,6 +95,8 @@ Ebben a szakaszban olyan konzolnaplózást állíthat be, amely a [ASP.NET Core 
    ```cs
    using Microsoft.Extensions.Logging;
    ```
+
+    Ebben a parancsban cserélje le `<3_X_VERSION>` a csomag támogatott 3.x verzióját.
 
 1. Hívja [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) meg [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)a metódust . A [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) metódus hozzáadja a konzolnaplózást a konfigurációhoz.
 
@@ -105,7 +110,7 @@ Ebben a szakaszban olyan konzolnaplózást állíthat be, amely a [ASP.NET Core 
     A `Main` módszer most így néz ki:
 
     ```cs
-    static void Main(string[] args)
+    static async Task Main()
     {
         var builder = new HostBuilder();
         builder.ConfigureWebJobs(b =>
@@ -119,7 +124,7 @@ Ebben a szakaszban olyan konzolnaplózást állíthat be, amely a [ASP.NET Core 
         var host = builder.Build();
         using (host)
         {
-            host.Run();
+            await host.RunAsync();
         }
     }
     ```
@@ -137,11 +142,13 @@ A 3.x-es verziótól kezdve explicit módon telepítenie kell a WebJobs SDK ált
 
 1. Telepítse a [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet csomag legújabb stabil verzióját, 3.x-es verzió. 
 
-    A **Csomagkezelő konzol** parancsa a 3.0.4-es verzióhoz:
+    Íme a **Csomagkezelő konzol** parancsa:
 
     ```powershell
-    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.4
+    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version <3_X_VERSION>
     ```
+    
+    Ebben a parancsban cserélje le `<3_X_VERSION>` a csomag támogatott verziójára. 
 
 2. A `ConfigureWebJobs` bővítmény metódusban `AddAzureStorage` hívja meg [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) a metódust a példányin a Storage bővítmény inicializálásához. Ezen a ponton `ConfigureWebJobs` a módszer a következő példához hasonlóan néz ki:
 
@@ -158,28 +165,28 @@ A 3.x-es verziótól kezdve explicit módon telepítenie kell a WebJobs SDK ált
 1. Kattintson a jobb gombbal a projektre, válassza az Új elem **hozzáadása** > **parancsot...**, válassza **az Osztály parancsot,** nevezze el az új C# osztályfájlt *Functions.cs,* és válassza **a Hozzáadás parancsot.**
 
 1. A Functions.cs cserélje le a létrehozott sablont a következő kódra:
-
-   ```cs
-   using Microsoft.Azure.WebJobs;
-   using Microsoft.Extensions.Logging;
-
-   namespace WebJobsSDKSample
-   {
-       public class Functions
-       {
-           public static void ProcessQueueMessage([QueueTrigger("queue")] string message, ILogger logger)
-           {
-               logger.LogInformation(message);
-           }
-       }
-   }
-   ```
+    
+    ```cs
+    using Microsoft.Azure.WebJobs;
+    using Microsoft.Extensions.Logging;
+    
+    namespace WebJobsSDKSample
+    {
+        public class Functions
+        {
+            public static void ProcessQueueMessage([QueueTrigger("queue")] string message, ILogger logger)
+            {
+                logger.LogInformation(message);
+            }
+        }
+    }
+    ```
 
    Az `QueueTrigger` attribútum megmondja a futásidejűnek, hogy hívja meg ezt a `queue`függvényt, ha egy új üzenet van írva egy Azure Storage-várólistában, amelynek neve. A várólistaüzenet tartalma a `message` paraméterben lévő metóduskódhoz van megadva. A metódus törzse az, ahol feldolgozza az eseményindító adatait. Ebben a példában a kód csak naplózza az üzenetet.
 
    A `message` paraméternek nem kell karakterláncnak lennie. JSON-objektumhoz, bájttömbhöz vagy [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) objektumhoz is köthető. [Lásd: Várólista-eseményindító kulcsok használata](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Minden kötéstípus (például várólisták, blobok vagy táblák) különböző paramétertípus-készlettel rendelkezik, amelyhez kötődhet.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 A helyileg futó Azure Storage-emulátor nem rendelkezik a WebJobs SDK által igényelt összes szolgáltatással. Így ebben a szakaszban hozzon létre egy tárfiókot az Azure-ban, és konfigurálja a projektet, hogy azt használja. Ha már rendelkezik tárfiókkal, ugorjon le a 6.
 
@@ -320,13 +327,13 @@ Ebben a szakaszban a következő feladatokat az Application Insights-naplózás 
 
 1. A **Kapcsolati karakterláncok** mezőben adja hozzá a következő bejegyzést.
 
-   |Név  |kapcsolati karakterlánc  |Adatbázis típusa|
+   |Name (Név)  |kapcsolati karakterlánc  |Adatbázis típusa|
    |---------|---------|------|
    |AzureWebJobsStorage | {a korábban másolt Tárolási kapcsolatkarakterlánc}|Egyéni|
 
 1. Ha az **Alkalmazásbeállítások** mező nem rendelkezik Application Insights instrumentation kulccsal, adja hozzá a korábban másolt. (Előfordulhat, hogy a instrumentation kulcs már ott van, attól függően, hogy hogyan hozta létre az App Service-alkalmazást.)
 
-   |Név  |Érték  |
+   |Name (Név)  |Érték  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation kulcs} |
 
@@ -351,21 +358,22 @@ Ebben a szakaszban a következő feladatokat az Application Insights-naplózás 
 
 Az Application [Insights](../azure-monitor/app/app-insights-overview.md) naplózásának előnyeinek kihasználásához frissítse a naplózási kódot az alábbi módon:
 
-* Adjon hozzá egy Application Insights-naplózási szolgáltatót az alapértelmezett [szűréssel](webjobs-sdk-how-to.md#log-filtering); az összes információ és a magasabb szintű naplók a konzolra és az Application Insightsra is átkerül, ha helyileg fut.
+* Adjon hozzá egy Application Insights naplózási [szolgáltatót](webjobs-sdk-how-to.md#log-filtering)az alapértelmezett szűréssel. Helyi futtatásakor az összes információ és a magasabb szintű naplók a konzolra és az Application Insights-ba is írásra kerülnek.
 * Helyezze a [LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) `using` objektumot egy blokkba, hogy a naplókimenet kiürítése, amikor az állomás kilép.
 
-1. Telepítse a NuGet csomag legújabb stabil 3.x verzióját az `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`Application Insights naplózási szolgáltatóhoz: .
+1. Telepítse a [ `Microsoft.Azure.WebJobs.Logging.ApplicationInsights` NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)legújabb stabil 3.x verzióját.
 
-   A **Csomagkezelő konzol** parancsa a 3.0.2-es verzióhoz:
+   Íme a **Csomagkezelő konzol** parancsa:
 
    ```powershell
-   Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version 3.0.2
+   Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <3_X_VERSION>
    ```
+    Ebben a parancsban cserélje le `<3_X_VERSION>` a csomag támogatott verziójára.
 
 1. Nyissa *meg Program.cs,* és `Main` cserélje le a metódusban lévő kódot a következő kódra:
 
     ```cs
-    static void Main(string[] args)
+    static async Task Main()
     {
         var builder = new HostBuilder();
         builder.UseEnvironment(EnvironmentName.Development);
@@ -388,7 +396,7 @@ Az Application [Insights](../azure-monitor/app/app-insights-overview.md) naplóz
         var host = builder.Build();
         using (host)
         {
-            host.Run();
+            await host.RunAsync();
         }
     }
     ```

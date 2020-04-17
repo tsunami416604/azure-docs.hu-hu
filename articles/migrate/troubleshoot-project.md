@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: 3b8c2f6ec33965317d2aaa23a36b6becff11a54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75725727"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535400"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate-projektek hibaelhárítása
 
@@ -32,7 +32,7 @@ Egy meglévő Azure Migrate projekt keresése attól függ, hogy az Azure Migrat
 
 ## <a name="cant-find-a-geography"></a>Nem találom a földrajzot
 
-Azure Migrate projektet [támogatott földrajzi területeken](migrate-support-matrix.md#supported-geographies)hozhat létre. Vegye figyelembe, hogy a projekt földrajzi helyével tárolják a felderített gép metaadatait. Más helyeken is felmérheti vagy áttelepítheti a gépeket.
+Létrehozhat egy Azure Migrate projektet támogatott földrajzi területeken [nyilvános](migrate-support-matrix.md#supported-geographies-public-cloud) és [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)számára.
 
 ## <a name="what-are-vm-limits"></a>Mik azok a virtuális gép-korlátozások?
 

@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b812ae10b3462dbeff05c8a67e7ebb725281e7e8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259330"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535757"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 Az Azure App [Service](overview.md) Biztonsági mentés és visszaállítás funkciója lehetővé teszi, hogy manuálisan vagy ütemezés szerint hozzon létre alkalmazásbiztonsági mentéseket. Beállíthatja, hogy a biztonsági mentések meghatározatlan ideig őrizhetők legyenek. Az alkalmazás visszaállíthatja egy korábbi állapot pillanatképét a meglévő alkalmazás felülírásával vagy egy másik alkalmazásra való visszaállításával.
@@ -44,8 +44,8 @@ A biztonsági mentési szolgáltatás a következő adatbázis-megoldásokat tá
 * A Biztonsági mentés és visszaállítás funkció megköveteli, hogy az App Service-csomag a **standard** szintű vagy **prémium szintű** legyen. Az App Service-csomag magasabb szintű használatra történő méretezéséről az [Alkalmazás felskálázása az Azure-ban](manage-scale-up.md)című témakörben talál további információt. **A prémium** szint nagyobb számú napi biztonsági másolatot tesz lehetővé, mint **a standard** szintű.
 * Szüksége van egy Azure storage-fiók és a tároló ugyanabban az előfizetésben, mint az alkalmazás, amely szeretne biztonsági másolatot. Az Azure storage-fiókokról az [Azure storage-fiók áttekintése című témakörben olvashat bővebben.](https://docs.microsoft.com/azure/storage/common/storage-account-overview)
 * A biztonsági mentések legfeljebb 10 GB alkalmazás- és adatbázis-tartalom lehet. Ha a biztonsági mentés mérete meghaladja ezt a korlátot, hibaüzenetet kap.
-* Az SSL-kompatibilis Azure Database for MySQL biztonsági mentései nem támogatottak. Ha egy biztonsági másolat van konfigurálva, sikertelen biztonsági mentést kap.
-* Az SSL-kompatibilis Azure Database for PostgreSQL biztonsági mentései nem támogatottak. Ha egy biztonsági másolat van konfigurálva, sikertelen biztonsági mentést kap.
+* A TLS-kompatibilis Azure Database for MySQL biztonsági mentései nem támogatottak. Ha egy biztonsági másolat van konfigurálva, sikertelen biztonsági mentést kap.
+* A TLS-kompatibilis Azure Database for PostgreSQL biztonsági mentései nem támogatottak. Ha egy biztonsági másolat van konfigurálva, sikertelen biztonsági mentést kap.
 * Az alkalmazáson belüli MySQL adatbázisokról automatikusan, konfiguráció nélkül készül biztonsági másolatot. Ha manuálisan adja meg az alkalmazáson belüli MySQL-adatbázisok beállításait, például a kapcsolati karakterláncok hozzáadását, előfordulhat, hogy a biztonsági mentések nem működnek megfelelően.
 * A tűzfalengedélyezett tárfiók használata a biztonsági mentések célhelyeként nem támogatott. Ha egy biztonsági másolat van konfigurálva, sikertelen biztonsági mentést kap.
 
