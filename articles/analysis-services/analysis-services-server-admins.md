@@ -4,21 +4,21 @@ description: Ez a cikk ismerteti, hogyan kezelheti a kiszolgálói rendszergazd�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7c57a5751f2ff34abb26b7653070ce4ee5010fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73572627"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454237"
 ---
 # <a name="manage-server-administrators"></a>A kiszolgálók rendszergazdáinak kezelése
 
 A kiszolgáló rendszergazdáinak érvényes felhasználónak vagy biztonsági csoportnak kell lenniük az Azure Active Directoryban (Azure AD) ahhoz a bérlőhöz, amelyben a kiszolgáló található. Az **Analysis Services-rendszergazdák** az Azure Portalon, a Kiszolgáló tulajdonságai az SSMS-ben, a PowerShellben vagy a REST API-ban a kiszolgáló rendszergazdáinak kezeléséhez használható. 
 
-**A biztonsági csoportoknak** [levelezésre alkalmasnak](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) kell lenniük, ha a `MailEnabled` tulajdonság a értékre `True`van állítva. Csoport e-mail cím szerint `obj:groupid@tenantid`történő megadásakor használja a használatát.
+**Biztonsági csoport**hozzáadásakor `obj:groupid@tenantid`használja a használatát.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Kiszolgálói rendszergazdák hozzáadása az Azure Portal használatával
 

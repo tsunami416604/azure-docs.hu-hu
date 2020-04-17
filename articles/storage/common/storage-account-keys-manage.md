@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 50c0980800bbc9b2951bf9107114c1a4d9265558
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521269"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454662"
 ---
 # <a name="manage-storage-account-access-keys"></a>Tárfiók hozzáférési kulcsainak kezelése
 
@@ -31,8 +31,8 @@ A Microsoft azt javasolja, hogy az Azure Key Vault használatával kezelje a hoz
 
 A Microsoft azt javasolja, hogy az Azure Key Vault használatával kezelje és forgassa el a hozzáférési kulcsokat. Az alkalmazás biztonságosan hozzáférhet a kulcsaihoz a Key Vaultban, így elkerülheti azok tárolását az alkalmazáskóddal. A Key Vault kulcskezeléshez való használatáról az alábbi cikkekben talál további információt:
 
-- [Tárfiók-kulcsok kezelése az Azure Key Vault és a PowerShell használatával](../../key-vault/key-vault-overview-storage-keys-powershell.md)
-- [Tárfiók-kulcsok kezelése az Azure Key Vault és az Azure CLI segítségével](../../key-vault/key-vault-ovw-storage-keys.md)
+- [Tárfiók-kulcsok kezelése az Azure Key Vault és a PowerShell használatával](../../key-vault/secrets/overview-storage-keys-powershell.md)
+- [Tárfiók-kulcsok kezelése az Azure Key Vault és az Azure CLI segítségével](../../key-vault/secrets/overview-storage-keys.md)
 
 ## <a name="manually-rotate-access-keys"></a>Hozzáférési billentyűk manuális elforgatása
 

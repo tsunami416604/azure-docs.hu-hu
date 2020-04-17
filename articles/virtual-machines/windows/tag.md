@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: ''
 author: mmccrory
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 56d17f45-e4a7-4d84-8022-b40334ae49d2
 ms.service: virtual-machines-windows
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: b646b1a14d6cedcafa662192229daa570a0d2441
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f95c11f93ca2075eb2472ad5bb7360df7d69234
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616431"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456447"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Windows-virtuális gépek címkézése az Azure-ban
 Ez a cikk az Azure-beli Windows-virtuális gépek címkézésének különböző módjait ismerteti az Erőforrás-kezelő telepítési modelljén keresztül. A címkék a felhasználó által definiált kulcs-/értékpárok, amelyek közvetlenül egy erőforrásra vagy erőforráscsoportra helyezhetők. Az Azure jelenleg erőforrás- és erőforráscsoportonként legfeljebb 50 címkét támogat. A címkék elhelyezhetők egy erőforráson a létrehozás időpontjában, vagy hozzáadhatók egy meglévő erőforráshoz. Vegye figyelembe, hogy a címkék csak az Erőforrás-kezelő telepítési modellen keresztül létrehozott erőforrások támogatottak. Ha egy Linux-virtuális gépet szeretne címkézni, olvassa el [A Linux virtuális gépek címkézése az Azure-ban című témakört.](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

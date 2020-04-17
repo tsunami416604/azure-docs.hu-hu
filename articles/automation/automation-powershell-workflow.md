@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278687"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457535"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>A Windows PowerShell-munkafolyamat legfontosabb fogalmai az automatizálási runbookokhoz
 
@@ -20,9 +20,12 @@ A munkafolyamat olyan programozott, összekapcsolódó lépések sora, amik hoss
 
 A cikkben található témakörökről az [Első lépések a Windows PowerShell-munkafolyamattal című](https://technet.microsoft.com/library/jj134242.aspx)témakörben olvashat részletesen.
 
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
+
 ## <a name="basic-structure-of-a-workflow"></a>A munkafolyamat alapvető szerkezete
 
-A PowerShell-parancsfájl PowerShell-munkafolyamattá való konvertálásának első lépése a **munkafolyamat-kulcsszó.**  A munkafolyamat a **Munkafolyamat** kulcsszóval kezdődik, majd a kapcsos zárójelekbe zárt parancsfájl törzsével. A munkafolyamat neve a **Munkafolyamat** kulcsszót követi az alábbi szintaxisszerint:
+A PowerShell-parancsfájlPowerShell-munkafolyamattá történő konvertálásának első `Workflow` lépése a kulcsszót.  A munkafolyamat a `Workflow` kulcsszóval kezdődik, amelyet a kapcsos zárójelbe zárt parancsfájl törzse követ. A munkafolyamat neve a `Workflow` kulcsszót követi az alábbi szintaxisban látható módon:
 
 ```powershell
 Workflow Test-Workflow
@@ -33,7 +36,7 @@ Workflow Test-Workflow
 
 A munkafolyamat nevének meg kell egyeznie az Automation runbook nevével. Ha a runbook importálása folyamatban van, akkor a fájlnévnek meg kell egyeznie a munkafolyamat nevével, és .ps1 végződésre kell *végződnie.*
 
-Ha paramétereket szeretne hozzáadni a munkafolyamathoz, ugyanúgy használja a **Param** kulcsszót, mint egy parancsfájlt.
+Ha paramétereket szeretne hozzáadni a `Param` munkafolyamathoz, ugyanúgy használja a kulcsszót, mint egy parancsfájlban.
 
 ## <a name="code-changes"></a>Kódmódosítások
 
@@ -99,7 +102,7 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>InlineScript
 
-Az **InlineScript-tevékenység** akkor hasznos, ha egy vagy több parancsot hagyományos PowerShell-parancsfájlként kell futtatnia a PowerShell-munkafolyamat helyett.  Míg a munkafolyamaton belüli parancsokat a szolgáltatás a Windows Workflow Foundation rendszernek küldi el feldolgozásra, az InlineScript blokkon belüli parancsok feldolgozását a Windows PowerShell végzi.
+A`InlineScript` tevékenység akkor hasznos, ha egy vagy több parancsot kell futtatnia hagyományos PowerShell-parancsfájlként a PowerShell-munkafolyamat helyett.  Míg a munkafolyamaton belüli parancsokat a szolgáltatás a Windows Workflow Foundation rendszernek küldi el feldolgozásra, az InlineScript blokkon belüli parancsok feldolgozását a Windows PowerShell végzi.
 
 Az InlineScript az alábbi szintaxist használja.
 
@@ -154,7 +157,7 @@ Az InlineScript használatával kapcsolatos további tudnivalókért olvassa el 
 
 A Windows PowerShell-munkafolyamatok egyik előnye, hogy az általános parancsprogramoktól eltérően párhuzamosan is végre tudnak hajtani parancsokat, nem csak egymást követően.
 
-**A Párhuzamos** kulcsszó segítségével parancsfájlblokkot hozhat létre több, egyidejűleg futó paranccsal. Ez az alábbi szintaxist használja. Ebben az esetben az Activity1 és az Activity2 egyidejűleg kezdődik. Az Activity3 csak az Activity1 és az Activity2 befejezése után indul el.
+A `Parallel` kulcsszó segítségével parancsfájlblokkot hozhat létre több, egyidejűleg futó paranccsal. Ez az alábbi szintaxist használja. Ebben az esetben az Activity1 és az Activity2 egyidejűleg kezdődik. Az Activity3 csak az Activity1 és az Activity2 befejezése után indul el.
 
 ```powershell
 Parallel
@@ -189,7 +192,7 @@ Workflow Copy-Files
 }
 ```
 
-A **ForEach -Parallel** konstruktussal egyidejűleg feldolgozhatja a gyűjtemény egyes eleméhez szükséges parancsokat. A gyűjtemény elemeinek feldolgozása párhuzamosan történik, míg a parancsblokkban levő parancsok egymást követően futnak le. Ez az alábbi szintaxist használja. Ebben az esetben az Activity1 egy időben kezdődik a gyűjtemény összes eleméhez. A Activity2 tevékenységminden egyes elem esetében a Activity1 befejezése után kezdődik. A Tevékenység3 csak akkor indul el, ha az Activity1 és az Activity2 is befejeződött az összes cikkhez. A paramétert használjuk a `ThrottleLimit` párhuzamosság korlátozására. Túl magas `ThrottleLimit` a problémákat okozhat. A paraméter ideális `ThrottleLimit` értéke számos tényezőtől függ a környezetben. Meg kell próbálnia kezdeni egy alacsony értékű, és próbálja meg a különböző növekvő értékeket, amíg meg nem találja az egyik, hogy működik az adott körülmények között.
+A `ForEach -Parallel` konstruktus segítségével egyidejűleg feldolgozhat parancsokat a gyűjtemény egyes eleméhez. A gyűjtemény elemeinek feldolgozása párhuzamosan történik, míg a parancsblokkban levő parancsok egymást követően futnak le. Ez az alábbi szintaxist használja. Ebben az esetben az Activity1 egy időben kezdődik a gyűjtemény összes eleméhez. A Activity2 tevékenységminden egyes elem esetében a Activity1 befejezése után kezdődik. A Tevékenység3 csak akkor indul el, ha az Activity1 és az Activity2 is befejeződött az összes cikkhez. A paramétert használjuk a `ThrottleLimit` párhuzamosság korlátozására. Túl magas `ThrottleLimit` a problémákat okozhat. A paraméter ideális `ThrottleLimit` értéke számos tényezőtől függ a környezetben. Meg kell próbálnia kezdeni egy alacsony értékű, és próbálja meg a különböző növekvő értékeket, amíg meg nem találja az egyik, hogy működik az adott körülmények között.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -222,7 +225,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Ellenőrzőpontok
 
-Az *ellenőrzőpont* a munkafolyamat aktuális állapotának pillanatképe, amely tartalmazza a változók aktuális értékét és az adott ponthoz létrehozott kimeneteket. Ha egy munkafolyamat hibásan végződik vagy fel van függesztve, akkor a következő futtatáskor a munkafolyamat kezdete helyett az utolsó ellenőrzőpontról indul el.  Az Ellenőrzőpont-munkafolyamat tevékenységgel egy munkafolyamatban beállíthat egy **ellenőrzőpontot.** Az Azure Automation rendelkezik egy [méltányos megosztás](automation-runbook-execution.md#fair-share)nevű funkcióval, ahol a 3 órán keresztül futó runbookok eltávolítása lehetővé teszi más runbookok futtatását. Végül a terhelés nélkül töltött runbook újratöltődik, és ha ez megtörténik, akkor folytatja a runbook utolsó ellenőrzőpontjáról történő végrehajtást. Annak érdekében, hogy a runbook végül befejeződjön, 3 óránál rövidebb ideig futó időközönként ellenőrzőpontokat kell hozzáadnia. Ha minden egyes futtatás során egy új ellenőrzőpont kerül hozzáadásra, és ha a runbook 3 óra elteltével egy hiba miatt kilakoltatva lesz, akkor a runbook határozatlan ideig folytatódik.
+Az *ellenőrzőpont* a munkafolyamat aktuális állapotának pillanatképe, amely tartalmazza a változók aktuális értékét és az adott ponthoz létrehozott kimeneteket. Ha egy munkafolyamat hibásan végződik vagy fel van függesztve, akkor a következő futtatáskor a munkafolyamat kezdete helyett az utolsó ellenőrzőpontról indul el.  A `Checkpoint-Workflow` tevékenységgel rendelkező munkafolyamatban beállíthat egy ellenőrzőpontot. Az Azure Automation rendelkezik egy [méltányos megosztás](automation-runbook-execution.md#fair-share)nevű funkcióval, ahol a 3 órán keresztül futó runbookok eltávolítása lehetővé teszi más runbookok futtatását. Végül a terhelés nélkül töltött runbook újratöltődik, és ha ez megtörténik, akkor folytatja a runbook utolsó ellenőrzőpontjáról történő végrehajtást. Annak érdekében, hogy a runbook végül befejeződjön, 3 óránál rövidebb ideig futó időközönként ellenőrzőpontokat kell hozzáadnia. Ha minden egyes futtatás során egy új ellenőrzőpont kerül hozzáadásra, és ha a runbook 3 óra elteltével egy hiba miatt kilakoltatva lesz, akkor a runbook határozatlan ideig folytatódik.
 
 A következő mintakódban kivétel történik az Activity2 után, ami a munkafolyamat befejezéséhez okoz. Amikor a munkafolyamat újra fut, az Activity2 futtatásával kezdődik, mivel ez közvetlenül az utolsó ellenőrzőpont-készlet után történt.
 
@@ -254,36 +257,37 @@ Workflow Copy-Files
 }
 ```
 
-Mivel a felhasználónév hitelesítő adatai nem maradnak meg a [Felfüggesztési munkafolyamat](https://technet.microsoft.com/library/jj733586.aspx) tevékenység vagy az utolsó ellenőrzőpont után, a hitelesítő adatokat null értékre kell állítania, majd újra le kell kérnie őket az eszköztárolóból **a Felfüggesztési munkafolyamat** vagy az ellenőrzőpont meghívása után.  Ellenkező esetben a következő hibaüzenet jelenhet meg: *A munkafolyamat-feladat nem folytatható, vagy azért, mert az adatmegőrzési adatokat nem lehetett teljesen menteni, vagy a mentett adatmegőrzési adatok sérültek. Újra kell indítania a munkafolyamatot.*
+Mivel a felhasználónév hitelesítő adatai nem maradnak meg a [Felfüggesztési munkafolyamat](https://technet.microsoft.com/library/jj733586.aspx) tevékenység vagy az utolsó ellenőrzőpont után, a hitelesítő `Suspend-Workflow` adatokat null értékre kell állítania, majd újra le kell kérnie őket az eszköztárolóból, vagy az ellenőrzőpont ot hívják meg.  Ellenkező esetben a következő hibaüzenet jelenhet meg:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 A következő ugyanazt a kódot bemutatja, hogyan kell kezelni ezt a PowerShell-munkafolyamat runbookok.
 
 ```powershell
 workflow CreateTestVms
 {
-    $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-    $null = Connect-AzureRmAccount -Credential $Cred
+    $Cred = Get-AzAutomationCredential -Name "MyCredential"
+    $null = Connect-AzAccount -Credential $Cred
 
-    $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
+    $VmsToCreate = Get-AzAutomationVariable -Name "VmsToCreate"
 
     foreach ($VmName in $VmsToCreate)
         {
         # Do work first to create the VM (code not shown)
 
         # Now add the VM
-        New-AzureRmVm -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
+        New-AzVM -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
 
         # Checkpoint so that VM creation is not repeated if workflow suspends
         $Cred = $null
         Checkpoint-Workflow
-        $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-        $null = Connect-AzureRmAccount -Credential $Cred
+        $Cred = Get-AzAutomationCredential -Name "MyCredential"
+        $null = Connect-AzAccount -Credential $Cred
         }
 }
 ```
 
-> [!IMPORTANT]
-> **Az Add-AzureRmAccount** mostantól a **Connect-AzureRMAccount aliasa.** Ha a tárelemekben való kereséssorán nem látja a **Connect-AzureRMAccount**elemet, használhatja **az Add-AzureRmAccount,** vagy frissítheti a modulokat az Automation-fiókban.
+> [!NOTE]
+> Nem grafikus PowerShell-runbookok esetén, `Add-AzAccount` és `Add-AzureRMAccount` a [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Használhatja ezeket a parancsmagokat, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verziókra. Előfordulhat, hogy frissítenie kell a modulokat, még akkor is, ha nemrég létrehozott egy új Automation-fiókot.
+
 
 Ez nem szükséges, ha egyszerű szolgáltatással konfigurált Futtatás mint fiók használatával hitelesíti a hitelesítést.
 

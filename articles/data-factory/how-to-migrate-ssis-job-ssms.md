@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: ee51be1d994c3b81765266e95c48d321a2f43b14
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80989442"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455087"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent-feladatok áttelepítése Az ADF-be SSMS segítségével
 
@@ -35,7 +35,7 @@ Az **SSIS feladatáttelepítési varázsló** általában a megfelelő feladatl�
 |SSIS-feladat lépés|SSIS-csomagtevékenység végrehajtása|<li> A tevékenység neve \<a lépés neve lesz>. <li> A feladatlépésben használt proxyfiók átlesz telepítve a tevékenység Windows-hitelesítéseként. <li> *Végrehajtási beállítások,* kivéve *a 32 bites futásidejű* munka a feladat lépésben meghatározott figyelmen kívül hagyja az áttelepítés. <li> *A* feladatlépésben definiált ellenőrzés figyelmen kívül lesz hagyva az áttelepítés során.|
 |schedule      |trigger ütemezése        |Az ütemezési eseményindító neve *>. \< * <br> <br> Az SQL Agent feladatütemezés beállításai figyelmen kívül lesznek hagyva az áttelepítés során: <li> Második szintű intervallum. <li> *Automatikus indítás az SQL Server Agent indításakor* <li> *Indítás, amikor a CPU-k tétlenné válnak* <li> *hétköznap* és *hétvégén*<time zone> <br> Az alábbiakban az SQL Agent feladatütemezés ADF-ütemezés-eseményindítóra való áttelepítése utáni különbségeket talál: <li> Az ADF-ütemezési eseményindító későbbi futtatása független az előidézett futtatás végrehajtási állapotától. <li> Az ADF-ütemezési eseményindító ismétlődési konfigurációja eltér az SQL-ügynökfeladat napi gyakoriságától.|
 
-- azure resource manager (ARM) sablonokat a helyi kimeneti mappában, és telepítse az adatgyárba közvetlenül vagy manuálisan. Az ADF Resource Manager-sablonokról a [Microsoft.DataFactory erőforrástípusok](https://docs.microsoft.com/azure/templates/microso.ft.datafactory/allversions)című témakörben olvashat bővebben.
+- azure resource manager (ARM) sablonokat a helyi kimeneti mappában, és telepítse az adatgyárba közvetlenül vagy manuálisan. Az ADF Resource Manager-sablonokról a [Microsoft.DataFactory erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions)című témakörben olvashat bővebben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

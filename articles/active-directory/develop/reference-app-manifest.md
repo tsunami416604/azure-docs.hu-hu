@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 487559aaf632a30b7efcda490f92a90d4f59b8f5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883474"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450881"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Az Azure Active Directory alkalmazás jegyzékfájlja
 
-Az alkalmazásjegyzék tartalmazza egy alkalmazásobjektum összes attribútumának definícióját a Microsoft identity platformon. Az alkalmazásobjektum frissítésének mechanizmusaként is szolgál. Az alkalmazás entitásról és annak sémájáról a [Graph API Application entitás dokumentációjában](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)olvashat bővebben.
+Az alkalmazásjegyzék tartalmazza egy alkalmazásobjektum összes attribútumának definícióját a Microsoft identity platformon. Az alkalmazásobjektum frissítésének mechanizmusaként is szolgál. Az alkalmazás entitásról és annak sémájáról a [Graph API Application entitás dokumentációjában](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)olvashat bővebben.
 
 Az alkalmazások attribútumait az Azure Portalon vagy programozott módon konfigurálhatja a [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) vagy a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)használatával. Vannak azonban olyan esetek, ahol az alkalmazásjegyzéket kell szerkeszteni az alkalmazás attribútumának konfigurálásához. Ezek a forgatókönyvek a következőket biztosítják:
 
@@ -40,6 +40,20 @@ Az alkalmazásjegyzék konfigurálása:
 ## <a name="manifest-reference"></a>Jegyzékfájl hivatkozása
 
 Ez a szakasz az alkalmazásjegyzékben található attribútumokat ismerteti.
+
+### <a name="id-attribute"></a>id attribútum
+
+| Kulcs | Érték típusa |
+| :--- | :--- |
+| id | Sztring |
+
+A címtárban lévő alkalmazás egyedi azonosítója. Ez az azonosító nem az az azonosító, amelyet az alkalmazás azonosítására használnak bármely protokolltranzakcióban. Az objektum címtárlekérdezésekben való hivatkozására szolgál.
+
+Példa:
+
+```json
+    "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
+```
 
 ### <a name="accesstokenacceptedversion-attribute"></a>accessTokenAcceptedVersion attribútum
 
@@ -230,19 +244,7 @@ Példa:
     "optionalClaims": null,
 ```
 
-### <a name="id-attribute"></a>id attribútum
 
-| Kulcs | Érték típusa |
-| :--- | :--- |
-| id | Sztring |
-
-A címtárban lévő alkalmazás egyedi azonosítója. Ez az azonosító nem az az azonosító, amelyet az alkalmazás azonosítására használnak bármely protokolltranzakcióban. Az objektum címtárlekérdezésekben való hivatkozására szolgál.
-
-Példa:
-
-```json
-    "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
 
 ### <a name="identifieruris-attribute"></a>identifierUris attribútum
 

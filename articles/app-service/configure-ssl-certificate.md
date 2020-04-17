@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810588"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453897"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS-/SSL-tanúsítvány hozzáadása az Azure App Service-ben
 
@@ -94,7 +94,7 @@ Ha az Azure-ból vásárol egy App Service-tanúsítványt, az Azure a következ
 
 - Gondoskodik a GoDaddy vásárlási folyamatáról.
 - A tanúsítvány tartományellenőrzését hajtja végre.
-- Fenntartja a tanúsítványt az [Azure Key Vaultban.](../key-vault/key-vault-overview.md)
+- Fenntartja a tanúsítványt az [Azure Key Vaultban.](../key-vault/general/overview.md)
 - Kezeli a tanúsítványmegújítást (lásd: [Tanúsítvány megújítása](#renew-certificate)).
 - A tanúsítvány automatikus szinkronizálása az App Service-alkalmazások importált példányaival.
 
@@ -115,7 +115,7 @@ Az alábbi táblázat segítségével konfigurálhatja a tanúsítványt. Ha vé
 
 | Beállítás | Leírás |
 |-|-|
-| Név | Az App Service-tanúsítvány rövid neve. |
+| Name (Név) | Az App Service-tanúsítvány rövid neve. |
 | Meztelen domain állomásnév | Itt adhatja meg a gyökértartományt. A kiállított tanúsítvány *biztosítja mind* a `www` gyökértartományt, mind az altartományt. A kiállított tanúsítványban a Köznapi név mező tartalmazza a gyökértartományt, a Tulajdonos alternatív neve mező pedig a `www` tartományt. Ha csak az altartományokat szeretné biztonságossá tenni, itt adja `mysubdomain.contoso.com`meg az altartomány teljesen minősített tartománynevét (például ).|
 | Előfizetés | A tanúsítványt tartalmazó előfizetés. |
 | Erőforráscsoport | A tanúsítványt tartalmazó erőforráscsoport. Használhat például egy új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint az App Service-alkalmazás. |
@@ -136,12 +136,12 @@ A **Key Vault állapota** lapon kattintson a **Key Vault repository** egy új t�
 
 | Beállítás | Leírás |
 |-|-|
-| Név | Egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
+| Name (Név) | Egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
 | Erőforráscsoport | Javaslatként válassza ki ugyanazt az erőforráscsoportot, mint az App Service-tanúsítvány. |
 | Hely | Válassza ki ugyanazt a helyet, mint az App Service-alkalmazás. |
 | Tarifacsomag | További információt az [Azure Key Vault díjszabási részletei című témakörben talál.](https://azure.microsoft.com/pricing/details/key-vault/) |
-| Hozzáférési szabályzatok| Meghatározza az alkalmazásokat és a tároló erőforrásaihoz való szabad hozzáférést. Beállíthatja később, a következő lépéseket [a Grant több alkalmazás hozzáférést a key vault.](../key-vault/key-vault-group-permissions-for-apps.md) |
-| Virtuális hálózati hozzáférés | Korlátozza a tároló hozzáférést bizonyos Azure virtuális hálózatokhoz. Később konfigurálhatja, az Azure [Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/key-vault-network-security.md) című lépés lépéseit követve. |
+| Hozzáférési szabályzatok| Meghatározza az alkalmazásokat és a tároló erőforrásaihoz való szabad hozzáférést. Beállíthatja később, a következő lépéseket [a Grant több alkalmazás hozzáférést a key vault.](../key-vault/general/group-permissions-for-apps.md) |
+| Virtuális hálózati hozzáférés | Korlátozza a tároló hozzáférést bizonyos Azure virtuális hálózatokhoz. Később konfigurálhatja, az Azure [Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/general/network-security.md) című lépés lépéseit követve. |
 
 Miután kiválasztotta a tárolót, zárja be a **Key Vault repository** lapot. **1. lépés: Az áruház** beállításnak zöld pipát kell megjelenítenie a siker érdekében. Tartsa nyitva az oldalt a következő lépéshez.
 

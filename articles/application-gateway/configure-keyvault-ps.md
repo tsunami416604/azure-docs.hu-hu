@@ -8,16 +8,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 1979f759f5a1b037adfd7b67a7be50cbba0f596f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312218"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457841"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>A TLS-megszüntetés konfigurálása Key Vault-tanúsítványokkal az Azure PowerShell használatával
 
-[Az Azure Key Vault](../key-vault/key-vault-overview.md) egy platform által felügyelt titkos tároló, amely segítségével titkos kulcsok, kulcsok és TLS/SSL-tanúsítványok védelme. Az Azure Application Gateway támogatja a Key Vaultdal való integrációt a HTTPS-kompatibilis figyelőkhöz csatlakoztatott kiszolgálói tanúsítványok esetében. Ez a támogatás az Application Gateway v2 termékváltozatra korlátozódik.
+[Az Azure Key Vault](../key-vault/general/overview.md) egy platform által felügyelt titkos tároló, amely segítségével titkos kulcsok, kulcsok és TLS/SSL-tanúsítványok védelme. Az Azure Application Gateway támogatja a Key Vaultdal való integrációt a HTTPS-kompatibilis figyelőkhöz csatlakoztatott kiszolgálói tanúsítványok esetében. Ez a támogatás az Application Gateway v2 termékváltozatra korlátozódik.
 
 További információt a [TLS-végződtetés key vault-tanúsítványokkal című témakörben talál.](key-vault-certs.md)
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> A TLS-végződés megfelelő működéséhez az -EnableSoftDelete jelzőt kell használni. Ha a Key [Vault helyreállítható törlést konfigurál ja a portálon keresztül,](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)a megőrzési időszakot 90 napig kell tartani, ami az alapértelmezett érték. Az Application Gateway még nem támogatja az eltérő megőrzési időszakot. 
+> A TLS-végződés megfelelő működéséhez az -EnableSoftDelete jelzőt kell használni. Ha a Key [Vault helyreállítható törlést konfigurál ja a portálon keresztül,](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)a megőrzési időszakot 90 napig kell tartani, ami az alapértelmezett érték. Az Application Gateway még nem támogatja az eltérő megőrzési időszakot. 
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 

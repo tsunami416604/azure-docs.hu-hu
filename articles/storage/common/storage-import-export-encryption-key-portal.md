@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811437"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456498"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Ügyfél által felügyelt kulcsok használata az Azure Key Vaultban importálási/exportálási szolgáltatáshoz
 
 Az Azure Import/Export védi a meghajtók titkosítási kulcson keresztül a meghajtók zárolásához használt BitLocker-kulcsokat. Alapértelmezés szerint a BitLocker-kulcsok microsoftáltal kezelt kulccsal vannak titkosítva. A titkosítási kulcsok további szabályozásához ügyfél által kezelt kulcsokat is biztosíthat.
 
-Az ügyfél által felügyelt kulcsokat létre kell hozni, és egy Azure Key Vaultban kell tárolni. Az Azure Key Vaultról a [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
+Az ügyfél által felügyelt kulcsokat létre kell hozni, és egy Azure Key Vaultban kell tárolni. Az Azure Key Vaultról a [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 
 Ez a cikk bemutatja, hogyan használhatja az ügyfél által felügyelt kulcsokat az Importálás/exportálás szolgáltatással az [Azure Portalon.](https://portal.azure.com/)
 
@@ -33,12 +33,12 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
     - [Hozzon létre egy importálási feladatot a fájlokhoz.](storage-import-export-data-to-files.md)
     - [Exportálási feladat létrehozása blobok számára](storage-import-export-data-from-blobs.md)
 
-2. Van egy meglévő Azure Key Vault egy kulcs, amely a BitLocker-kulcs védelmére használható. Ha meg szeretné tudni, hogyan hozhat létre egy kulcstartót az Azure Portalon, olvassa el a [rövid útmutató: Az Azure Key Vault titkos kulcsának beállítása és beolvasása az Azure Portalon.](../../key-vault/quick-create-portal.md)
+2. Van egy meglévő Azure Key Vault egy kulcs, amely a BitLocker-kulcs védelmére használható. Ha meg szeretné tudni, hogyan hozhat létre egy kulcstartót az Azure Portalon, olvassa el a [rövid útmutató: Az Azure Key Vault titkos kulcsának beállítása és beolvasása az Azure Portalon.](../../key-vault/secrets/quick-create-portal.md)
 
     - **A helyreállítható törlés** és **a Ne ürítés** beállítás a meglévő Key Vaulton van beállítva. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve. Ezeknek a tulajdonságoknak az **engedélyezéséről** és a **kiürítési védelem engedélyezése** című szakaszokból az alábbi cikkek egyikében található:
 
-        - [A soft-delete használata a PowerShell használatával.](../../key-vault/key-vault-soft-delete-powershell.md)
-        - [A soft-delete használata a CLI-vel.](../../key-vault/key-vault-soft-delete-cli.md)
+        - [A soft-delete használata a PowerShell használatával.](../../key-vault/general/soft-delete-powershell.md)
+        - [A soft-delete használata a CLI-vel.](../../key-vault/general/soft-delete-cli.md)
     - A meglévő key vault rendelkeznie kell egy RSA-kulcs 2048 méretű vagy annál nagyobb. A kulcsokról további információt az [Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok –](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **kulcstárolók** című témakörben talál.
     - A key vault nak ugyanabban a régióban kell lennie, mint az adatok tárfiókjának.  
     - Ha nem rendelkezik egy meglévő Azure Key Vault, is létrehozhatja a következő szakaszban leírtak szerint.

@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 23dc784586e85b8cbdc816ac5f4d54556fc1ffb7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768518"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456991"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Rövid útmutató: Az R és a Machine Learning Services használata Azure SQL-adatbázis lekérdezéséhez (előzetes verzió)
 
@@ -30,22 +31,19 @@ Ebben a rövid útmutatóban az R és a Machine Learning Services használatáva
 
 - Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure SQL-adatbázis](sql-database-single-database-get-started.md)
-- [Machine Learning Services](sql-database-machine-learning-services-overview.md) engedélyezve van az R szolgáltatással. [Regisztráljon az előzetes verzióra](sql-database-machine-learning-services-overview.md#signup).
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) engedélyezve van az R szolgáltatással.
 - [SQL Server Felügyeleti stúdió](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
 > A cikkben szereplő parancsfájlok a **Kalandorbolt-adatbázis** használatára íródnak.
 
-> [!NOTE]
-> A nyilvános előzetes verzió során a Microsoft befogja önt, és engedélyezi a gépi tanulást a meglévő vagy az új adatbázishoz, azonban a felügyelt példány telepítési lehetősége jelenleg nem támogatott.
-
-A Machine Learning Services in R az Azure SQL-adatbázis egyik szolgáltatása, amely az adatbázison belüli R-parancsfájlok végrehajtásához használatos. További információt az [R projekt című](https://www.r-project.org/)témakörben talál.
+A Machine Learning Services with R az Azure SQL Database adatbázison belüli R-parancsfájlok végrehajtásához használt szolgáltatása. További információt az [R projekt című](https://www.r-project.org/)témakörben talál.
 
 ## <a name="get-sql-server-connection-information"></a>SQL-kiszolgálókapcsolati adatok beszerezése
 
 Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati információk beszerezése. A közelgő eljárásokhoz szüksége lesz a teljesen minősített kiszolgáló- vagy állomásnévre, az adatbázis nevére és bejelentkezési adataira.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Keresse meg az **SQL-adatbázisok** vagy az **SQL felügyelt példányok** lapot.
 

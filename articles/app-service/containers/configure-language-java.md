@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 970701606811cbd61a9bfebe39ff82cdc91d5693
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4f6de807628704051cdddf74bcefbed678f8fcd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80245837"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457892"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linux Java-alkalmazás konfigurálása az Azure App Service-hez
 
@@ -230,7 +230,7 @@ Kövesse a [Biztonságos egyéni DNS-név az Azure App Service-ben egy SSL-köt�
 
 ### <a name="use-keyvault-references"></a>KeyVault-hivatkozások használata
 
-[Az Azure KeyVault](../../key-vault/key-vault-overview.md) központi titkos kezelést biztosít hozzáférési szabályzatokkal és naplózási előzményekkel. A keyvaultban tárolhatja a titkos kulcsokat (például a jelszavakat vagy a kapcsolati karakterláncokat), és környezeti változókon keresztül hozzáférhet ezekhez a titkos kulcsokhoz az alkalmazásban.
+[Az Azure KeyVault](../../key-vault/general/overview.md) központi titkos kezelést biztosít hozzáférési szabályzatokkal és naplózási előzményekkel. A keyvaultban tárolhatja a titkos kulcsokat (például a jelszavakat vagy a kapcsolati karakterláncokat), és környezeti változókon keresztül hozzáférhet ezekhez a titkos kulcsokhoz az alkalmazásban.
 
 Először kövesse az [alkalmazás key vault-hozzáférésének megadására](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) vonatkozó utasításokat, és [az alkalmazásbeállításban a titkos kulcsra való hivatkozást.](../app-service-key-vault-references.md#reference-syntax) Ellenőrizheti, hogy a hivatkozás feloldódik-e a titkos kulcsot a környezeti változó távoli nyomtatásával, miközben távolról éri el az App Service-terminált.
 

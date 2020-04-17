@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cathysull
 manager: cathys
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.custom: vs-azure
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 12/04/2019
 ms.author: cathys
 keywords: visualstudio (visualstudio)
-ms.openlocfilehash: 2977fb6f14468429eb651e4f8a6034c060cdee2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76c8ec8f3d691a897ec924e06b76beec746ad14a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75895947"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451584"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-képek az Azure-ban
 A Visual Studio használata egy előre konfigurált Azure virtuális gépen (VM) egy gyors, egyszerű módja annak, hogy a semmiből egy up-and-running fejlesztői környezetbe lépjen. A különböző Visual Studio-konfigurációkkal rendelkező rendszerképek az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)érhetők el.

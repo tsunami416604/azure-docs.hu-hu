@@ -3,12 +3,12 @@ title: Service Fabric-fürt létrehozása az Azure Portalon
 description: Ismerje meg, hogyan állíthat be egy biztonságos Service Fabric-fürtöt az Azure-ban az Azure Portalon és az Azure Key Vault használatával.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: e0cd3d5e5a37720134a5bce596bba211b375f19d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754110"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458317"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban az Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Hozzon létre egy éles fürt, hogy megfeleljen az alkalmazás igényeinek magá
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>A Service Fabric fürterőforrás keresése
 
-Jelentkezzen be az [Azure Portalra.][azure-portal]
+Jelentkezzen be az [Azure Portalra][azure-portal].
 Új **erőforrássablon** hozzáadásához kattintson az Erőforrás létrehozása gombra. Keresse meg a Service Fabric fürtsablont a **Piactéren** a **Minden**csoportban.
 Válassza a **Service Fabric Cluster elemet** a listából.
 
@@ -204,7 +204,7 @@ Ezen a ponton rendelkezik egy biztonságos fürttel, amely tanúsítványokat ha
 <!-- Links -->
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [azure-portal]: https://portal.azure.com/
-[key-vault-get-started]: ../key-vault/key-vault-overview.md
+[key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md

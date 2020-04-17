@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: ba78267b1c6dc8f0e1bd25bb8ecdb1d8d344d03e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60702452"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453114"
 ---
 # <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Speciális R-függvények írása az Azure SQL Database-ben a Machine Learning Services használatával (előzetes verzió)
 
@@ -30,7 +31,7 @@ Ez a cikk azt ismerteti, hogy miként ágyazható be az R matematikai és segéd
 
 - Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
-- A példakód futtatásához ezekben a gyakorlatokban először rendelkeznie kell egy Azure SQL-adatbázis machine learning-szolgáltatások (R) engedélyezve van. A nyilvános előzetes verzió során a Microsoft befogja önt, és engedélyezi a gépi tanulást a meglévő vagy az új adatbázishoz. Kövesse a [Regisztráció az előnézetre](sql-database-machine-learning-services-overview.md#signup)című részben található lépéseket.
+- A példakód futtatásához ezekben a gyakorlatokban először az [Azure SQL Database machine learning-szolgáltatásokkal (R)](sql-database-machine-learning-services-overview.md) engedélyezve kell lennie.
 
 - Ellenőrizze, hogy telepítette-e a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) rendszert. Az R-parancsfájlokat más adatbázis-kezelő vagy lekérdezési eszközökkel is futtathatja, de ebben a rövid útmutatóban az SSMS-t fogja használni.
 

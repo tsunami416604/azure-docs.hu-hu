@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f24c89a53af5e618d64b78d6001040190c1f339c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: bfc2e256396904456a7ee0fd8b6173c00a5f53d7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618333"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456396"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Key Vault használatával a PowerShell használatával
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Key Vault ügyfél által felügyelt kulcsok at PowerShell használatával. Ha meg szeretné tudni, hogyan hozhat létre egy kulcstartót az Azure CLI használatával, olvassa el [a rövid útmutató: Titkos kulcs beállítása és beolvasása az Azure Key Vaultból a PowerShell használatával című témakört.](../../key-vault/quick-create-powershell.md)
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Key Vault ügyfél által felügyelt kulcsok at PowerShell használatával. Ha meg szeretné tudni, hogyan hozhat létre egy kulcstartót az Azure CLI használatával, olvassa el [a rövid útmutató: Titkos kulcs beállítása és beolvasása az Azure Key Vaultból a PowerShell használatával című témakört.](../../key-vault/secrets/quick-create-powershell.md)
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Identitás hozzárendelése a tárfiókhoz
 
@@ -51,7 +51,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-A PowerShell rel rendelkező meglévő kulcstartók **on-re** történő ideiglenes törlés és **a nem kiürítés** engedélyezéséről a [PowerShell](../../key-vault/key-vault-soft-delete-powershell.md)használatával a **Helyreállítható törlés** engedélyezése és a **Kiürítési védelem engedélyezése** című szakaszokban olvashat.
+A PowerShell rel rendelkező meglévő kulcstartók **on-re** történő ideiglenes törlés és **a nem kiürítés** engedélyezéséről a [PowerShell](../../key-vault/general/soft-delete-powershell.md)használatával a **Helyreállítható törlés** engedélyezése és a **Kiürítési védelem engedélyezése** című szakaszokban olvashat.
 
 ## <a name="configure-the-key-vault-access-policy"></a>A key vault-hozzáférési házirend konfigurálása
 

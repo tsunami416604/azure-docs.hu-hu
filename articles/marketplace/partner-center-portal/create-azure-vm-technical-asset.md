@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eb885d0e965579b1ab2d66395f9f96eab0845bae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266499"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457399"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Az Azure Virtuálisgép technikai eszközeinek létrehozása
 
@@ -281,8 +281,8 @@ A következő folyamat általánosítja a Linux virtuális gép, és újratelep�
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása, lásd: [Gyakori problémák a virtuális merevlemez létrehozása során.](https://aka.ms/AzureVM_VHDCreationFAQ)
+Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása, lásd: [Gyakori problémák a virtuális merevlemez létrehozása során.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)
 
 Egyéb esetben:
 
-* [A virtuális gép lemezképének hitelesítése](https://aks.ms/CertifyVMimage) elmagyarázza, hogyan tesztelheti és küldheti el a virtuális géplemezképét az Azure Marketplace-tanúsítványhoz, többek között azt, hogy hol szerezheti be az *Azure Certified tanúsítványteszteszközét,* és hogyan használhatja azt a virtuálisgép-lemezkép hitelesítéséhez.
+* [A virtuális gép lemezképének hitelesítése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri) elmagyarázza, hogyan tesztelheti és küldheti el a virtuális géplemezképét az Azure Marketplace-tanúsítványhoz, többek között azt, hogy hol szerezheti be az *Azure Certified tanúsítványteszteszközét,* és hogyan használhatja azt a virtuálisgép-lemezkép hitelesítéséhez.

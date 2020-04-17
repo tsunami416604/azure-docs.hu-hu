@@ -4,12 +4,12 @@ description: Javaslatok az Azure Container-példányok lemezképeinek és titkos
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: b5f2c4d9ca80318574e288110fd4ce7f490af00d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76260497"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457994"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Az Azure Container Instances biztonsági szempontjai
 
@@ -37,7 +37,7 @@ A biztonsági figyelési és képolvasási megoldások, például a [Twistlock](
 
 ### <a name="protect-credentials"></a>Hitelesítő adatok védelme
 
-A tárolók több fürtben és Azure-régióban is eloszthatók. Ezért biztonságossá kell tennia a bejelentkezésekhez vagy az API-hozzáféréshez szükséges hitelesítő adatokat, például a jelszavakat vagy a jogkivonatokat. Győződjön meg arról, hogy csak a kiemelt jogosultságú felhasználók férhetnek hozzá a tárolók hoz átvitel közben és inaktív. Leltározzon minden hitelesítő adattitkos titkot, majd a fejlesztőknek a tárolóplatformokhoz tervezett újonnan megjelenő titkos kulcsok-kezelési eszközöket kell használniuk.  Győződjön meg arról, hogy a megoldás titkosított adatbázisokat, tls-titkosítást tartalmaz az átvitel alatt lévő titkos kulcsokhoz és a legkisebb jogosultságú [szerepköralapú hozzáférés-vezérléshez.](../role-based-access-control/overview.md) [Az Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md) egy felhőalapú szolgáltatás, amely védi a titkosítási kulcsokat és titkos kulcsokat (például tanúsítványokat, kapcsolati karakterláncokat és jelszavakat) a tárolóba kötött alkalmazások számára. Mivel ezek az adatok bizalmas és üzleti szempontból kritikus fontosságúak, biztonságos hozzáférést biztosít a kulcstartókhoz, így csak az engedélyezett alkalmazások és a felhasználók férhetnek hozzá.
+A tárolók több fürtben és Azure-régióban is eloszthatók. Ezért biztonságossá kell tennia a bejelentkezésekhez vagy az API-hozzáféréshez szükséges hitelesítő adatokat, például a jelszavakat vagy a jogkivonatokat. Győződjön meg arról, hogy csak a kiemelt jogosultságú felhasználók férhetnek hozzá a tárolók hoz átvitel közben és inaktív. Leltározzon minden hitelesítő adattitkos titkot, majd a fejlesztőknek a tárolóplatformokhoz tervezett újonnan megjelenő titkos kulcsok-kezelési eszközöket kell használniuk.  Győződjön meg arról, hogy a megoldás titkosított adatbázisokat, tls-titkosítást tartalmaz az átvitel alatt lévő titkos kulcsokhoz és a legkisebb jogosultságú [szerepköralapú hozzáférés-vezérléshez.](../role-based-access-control/overview.md) [Az Azure Key Vault](../key-vault/general/secure-your-key-vault.md) egy felhőalapú szolgáltatás, amely védi a titkosítási kulcsokat és titkos kulcsokat (például tanúsítványokat, kapcsolati karakterláncokat és jelszavakat) a tárolóba kötött alkalmazások számára. Mivel ezek az adatok bizalmas és üzleti szempontból kritikus fontosságúak, biztonságos hozzáférést biztosít a kulcstartókhoz, így csak az engedélyezett alkalmazások és a felhasználók férhetnek hozzá.
 
 ## <a name="considerations-for-the-container-ecosystem"></a>A konténer-ökoszisztémával kapcsolatos szempontok
 
@@ -114,7 +114,7 @@ Mint minden informatikai környezetben, következetesen figyelje a tevékenység
 
 * [Az Azure Monitor tárolók figyeli](../azure-monitor/insights/container-insights-overview.md) a kubernetes-környezetekben az Azure Kubernetes-szolgáltatás (AKS) üzemeltetett számítási feladatok teljesítményét. Az Azure Monitor tárolók hoz a teljesítmény láthatóságát a memória és a processzor metrikák a vezérlők, csomópontok és tárolók, amelyek a Kubernetes a Metrikák API-n keresztül érhetők el. 
 
-* Az [Azure Container Monitoring megoldás](../azure-monitor/insights/containers.md) segítségével megtekintheti és kezelheti a többi Docker- és Windows-tárolóállomást egyetlen helyen. Példa:
+* Az [Azure Container Monitoring megoldás](../azure-monitor/insights/containers.md) segítségével megtekintheti és kezelheti a többi Docker- és Windows-tárolóállomást egyetlen helyen. Például:
 
   * Részletes naplózási információk megtekintése, amelyek a tárolókkal használt parancsokat jelenítik meg. 
   * A tárolók hibaelhárítása a központosított naplók megtekintésével és keresésével, a Docker- vagy Windows-gazdagépek távoli megtekintése nélkül.  

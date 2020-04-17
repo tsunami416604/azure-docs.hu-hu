@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: mimckitt
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
 ms.service: virtual-machines-windows
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 3d9c178201ab0c22ed4eab9cf65f7d48e59e1359
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f29a20ddeb93ec3d4aa98bbcb36f50456b543667
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246123"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452570"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure virtuálisgép-ügynök – áttekintés
 A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy biztonságos, könnyű folyamat, amely kezeli a virtuális gép (VM) interakció az Azure Fabric Controller. A virtuálisgép-ügynök elsődleges szerepkörrel rendelkezik az Azure virtuálisgép-bővítmények engedélyezésében és végrehajtásában. A virtuálisgép-bővítmények lehetővé teszik a virtuális gép üzembe helyezés utáni konfigurációját, például a szoftverek telepítését és konfigurálását. A virtuálisgép-bővítmények olyan helyreállítási funkciókat is engedélyeznek, mint például a virtuális gép felügyeleti jelszavának alaphelyzetbe állítása. Az Azure virtuálisgép-ügynök nélkül a virtuálisgép-bővítmények nem futtathatók.

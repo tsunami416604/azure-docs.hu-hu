@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667143"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455444"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault Analytics-megoldás az Azure Monitorban
 
@@ -94,7 +94,7 @@ Miután a **Key Vault Analytics** csempére kattintott, megtekintheti a naplók 
     Bármelyik naplókeresési oldalon megtekintheti az eredményeket az idő, a részletes eredmények és a naplókeresési előzmények szerint. Az eredmények szűkítéséhez a kis- és nagyátaránát is szűrheti.
 
 ## <a name="azure-monitor-log-records"></a>Az Azure Monitor naplórekordjai
-Az Azure Key Vault-megoldás elemzi azokat a rekordokat, amelyek az Azure Diagnostics [auditevent naplóiból](../../key-vault/key-vault-logging.md) gyűjtött **KeyVaults** típusú rekordokat.  A rekordok tulajdonságai a következő táblázatban találhatók:  
+Az Azure Key Vault-megoldás elemzi azokat a rekordokat, amelyek az Azure Diagnostics [auditevent naplóiból](../../key-vault/general/logging.md) gyűjtött **KeyVaults** típusú rekordokat.  A rekordok tulajdonságai a következő táblázatban találhatók:  
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
@@ -107,7 +107,7 @@ Az Azure Key Vault-megoldás elemzi azokat a rekordokat, amelyek az Azure Diagno
 | `httpStatusCode_d` |A kérelem által visszaadott HTTP-állapotkód (például *200*) |
 | `id_s` |A kérelem egyedi azonosítója |
 | `identity_claim_appid_g` | Az alkalmazásazonosító GUID azonosítója |
-| `OperationName` |A művelet neve az [Azure Key Vault naplózásában](../../key-vault/key-vault-logging.md) dokumentált módon |
+| `OperationName` |A művelet neve az [Azure Key Vault naplózásában](../../key-vault/general/logging.md) dokumentált módon |
 | `OperationVersion` |AZ ügyfél által kért REST API-verzió (például *2015-06-01*) |
 | `requestUri_s` |Uri a kérelem |
 | `Resource` |A kulcstartó neve |

@@ -10,18 +10,18 @@ ms.date: 03/19/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e7878cae7bc6aabf1db58bfd63338955b9e830d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 192e58b101b824ca0cc0c732e02647838be6dc35
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478237"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456481"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Key Vault használatával az Azure Portal használatával
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Key Vault ügyfél által felügyelt kulcsok at az [Azure Portalon.](https://portal.azure.com/) Ha meg szeretné tudni, hogyan hozhat létre egy kulcstartót az Azure Portalon, olvassa el a [rövid útmutató: Az Azure Key Vault titkos kulcsának beállítása és beolvasása az Azure Portalon.](../../key-vault/quick-create-portal.md)
+Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Key Vault ügyfél által felügyelt kulcsok at az [Azure Portalon.](https://portal.azure.com/) Ha meg szeretné tudni, hogyan hozhat létre egy kulcstartót az Azure Portalon, olvassa el a [rövid útmutató: Az Azure Key Vault titkos kulcsának beállítása és beolvasása az Azure Portalon.](../../key-vault/secrets/quick-create-portal.md)
 
 ## <a name="configure-azure-key-vault"></a>Az Azure Key Vault konfigurálása
 
@@ -29,8 +29,8 @@ Az ügyfél által felügyelt kulcsok Azure Storage-titkosítással történő h
 
 Ha tudni szeretné, hogyan engedélyezheti ezeket a tulajdonságokat egy meglévő kulcstartóban, olvassa el a **"Helyreállítható törlés engedélyezése** és a **kiürítési védelem engedélyezése"** című szakaszokat az alábbi cikkek egyikében:
 
-- [A soft-delete használata a PowerShell használatával.](../../key-vault/key-vault-soft-delete-powershell.md)
-- [A soft-delete használata a CLI-vel.](../../key-vault/key-vault-soft-delete-cli.md)
+- [A soft-delete használata a PowerShell használatával.](../../key-vault/general/soft-delete-powershell.md)
+- [A soft-delete használata a CLI-vel.](../../key-vault/general/soft-delete-cli.md)
 
 Csak 2048 bites RSA és RSA-HSM kulcsok at az Azure Storage titkosítása támogatja. A kulcsokról további információt az [Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok –](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Kulcstároló-kulcsok** című témakörben talál.
 

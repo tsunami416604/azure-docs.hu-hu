@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94b351ddb18ca596f47e8ef40cff8229c838d7bd
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: f369eb54dc92a29ba122a8a645262dc085b1ed36
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239211"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "80930056"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Oktatóanyag: Üzembe helyezési parancsfájlok használatával önaláírt tanúsítványt hozhat létre (előzetes verzió)
 
@@ -48,13 +48,12 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Használja a következő PowerShell-parancsfájlt az azonosító leküzdéséhez az erőforráscsoport nevének és az identitás nevének megadásával.
+  A következő CLI-parancsfájl segítségével az erőforráscsoport nevének és az identitás nevének megadásával lejuthat az azonosítóról.
 
-  ```azurepowershell-interactive
-  $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
-  $idName = Read-Host -Prompt "Enter the name of the managed identity"
-
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  az identity list -g $resourceGroupName
   ```
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
@@ -317,7 +316,7 @@ A központi telepítési parancsfájl végrehajtási eredménye a központi tele
 
 ## <a name="debug-the-failed-script"></a>Hibakeresés a sikertelen parancsfájl
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Nyissa meg az erőforráscsoportot. Ez a projekt neve **rg** csatolt. Az erőforráscsoportban két további erőforrás jelenik meg. Ezeket az erőforrásokat *központi telepítési parancsfájl-erőforrásoknak nevezzük.*
 
     ![Az Erőforrás-kezelő sablon telepítési parancsfájljának erőforrásai](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

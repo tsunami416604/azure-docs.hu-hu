@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 59c45497ea6d9fcb216c83060a858ee6c96f1151
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75499994"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81449969"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>A Gremlin-gráfok Azure Cosmos DB általi támogatása
 Az Azure Cosmos DB támogatja [az Apache Tinkerpop](https://tinkerpop.apache.org) graph traversal language, ismert [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). A Gremlin nyelv segítségével létrehozhat gráfentitásokat (csúcspontokat és éleket), módosíthatja ezen entitások tulajdonságait, végrehajthat lekérdezéseket és bejárásokat, és törölhet entitásokat. 
@@ -29,7 +29,7 @@ Az alábbi táblázat az Azure Cosmos DB-n használható népszerű Gremlin-ille
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Gráf létrehozása a Java használatával](create-graph-java.md) | 3.2.0+ |
 | [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript a GitHubon](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Gráf létrehozása a Node.js használatával](create-graph-nodejs.md) | 3.3.4+ |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python a GitHubon](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Gráf létrehozása a Python használatával](create-graph-python.md) | 3.2.7 |
-| [Php](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP a GitHubon](https://github.com/PommeVerte/gremlin-php) | [Gráf létrehozása a PHP használatával](create-graph-php.md) | 3.1.0 |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP a GitHubon](https://github.com/PommeVerte/gremlin-php) | [Gráf létrehozása a PHP használatával](create-graph-php.md) | 3.1.0 |
 | [Gremlin-konzol](https://tinkerpop.apache.org/downloads.html) | [TinkerPop dokumentumok](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gráf létrehozása a Gremlin-konzol használatával](create-graph-gremlin-console.md) | 3.2.0 + |
 
 ## <a name="supported-graph-objects"></a>Támogatott diagramobjektumok
@@ -46,11 +46,9 @@ Az alábbi táblázat a TinkerPop azon funkcióit sorolja fel, amelyeket az Azur
 | Élfunkciók | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Lehetővé teszi élek létrehozását, módosítását és törlését. |
 | Éltulajdonság-funkciók | Tulajdonságok, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Lehetővé teszi éltulajdonságok létrehozását, módosítását és törlését. |
 
-## <a name="gremlin-wire-format-graphson"></a>A Gremlin átviteli formátuma: GraphSON
+## <a name="gremlin-wire-format"></a>Gremlin vezetékes formátum
 
-Az Azure Cosmos DB a [GraphSON formátum](https://tinkerpop.apache.org/docs/current/reference/#graphson) használatával adja vissza a Gremlin-műveletek eredményeit. Az Azure Cosmos DB jelenleg támogatja a "GraphSONv2" verziót. A GraphSON a Gremlin szabványos formátuma a csúcspontok, élek és tulajdonságok (egy- és többértékű tulajdonságok) jelöléséhez a JSON használatával.
-
-Az alábbi kódrészletben például az Azure Cosmos DB-ből *az ügyfél számára visszaadott* csúcspont GraphSON-jelölése látható. 
+Az Azure Cosmos DB a JSON formátumot használja a Gremlin-műveletek ből származó eredmények visszaküldésekor. Az Azure Cosmos DB jelenleg támogatja a JSON formátumot. A következő kódrészlet például egy csúcspont JSON-ábrázolását jeleníti meg, amely az Azure Cosmos DB-ből *visszaadott az ügyfélnek:*
 
 ```json
   {
@@ -89,7 +87,7 @@ Az alábbi kódrészletben például az Azure Cosmos DB-ből *az ügyfél szám�
   }
 ```
 
-A GraphSON által a csúcspontokhoz használt tulajdonságokat az alábbiakban ismertetjük:
+A JSON formátum által a csúcsok esetében használt tulajdonságokat az alábbiakban ismertetjük:
 
 | Tulajdonság | Leírás | 
 | --- | --- | --- |

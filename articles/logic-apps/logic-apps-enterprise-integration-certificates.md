@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191379"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450140"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>A B2B-üzenetek biztonságának növelése tanúsítványok használatával
 
@@ -34,7 +34,7 @@ Ezeket a tanúsítványokat a vállalati integrációs alkalmazásokban használ
 
 Ha *nyilvános tanúsítványt* szeretne használni a B2B-képességekkel rendelkező logikai alkalmazásokban, először fel kell töltenie a tanúsítványt az integrációs fiókba. Miután definiálta a [tulajdonságokat](logic-apps-enterprise-integration-agreements.md) a létrehozott megállapodásokban, a tanúsítvány elérhetővé válik a B2B üzenetek biztonságossá tétele érdekében.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Az Azure főmenüjében válassza az **Összes erőforrás lehetőséget.** A keresőmezőbe írja be az integrációs fiók nevét, majd válassza ki a kívánt integrációs fiókot.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Az Azure főmenüjében válassza az **Összes erőforrás lehetőséget.** A keresőmezőbe írja be az integrációs fiók nevét, majd válassza ki a kívánt integrációs fiókot.
 
    ![Az integrációs fiók megkeresése és kiválasztása](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
@@ -66,14 +66,14 @@ Miután definiálta a [tulajdonságokat](logic-apps-enterprise-integration-agree
 > [!NOTE]
 > Privát tanúsítványok esetén győződjön meg arról, hogy hozzáad egy megfelelő nyilvános tanúsítványt, amely megjelenik az [AS2-szerződés](logic-apps-enterprise-integration-as2.md) **Küldési és fogadási** beállításaiban az üzenetek aláírásához és titkosításához.
 
-1. [Adja hozzá személyes kulcsát az Azure Key Vaulthoz,](../key-vault/certificate-scenarios.md#import-a-certificate) és adjon meg **egy kulcsnevet.**
+1. [Adja hozzá személyes kulcsát az Azure Key Vaulthoz,](../key-vault/certificates/certificate-scenarios.md#import-a-certificate) és adjon meg **egy kulcsnevet.**
    
 2. Engedélyezze az Azure Logic Apps-t az Azure Key Vault on műveletek végrehajtására. A Logic Apps egyszerű szolgáltatáshoz való hozzáférés engedélyezéséhez használja a [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)PowerShell parancsot, például:
 
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Az Azure főmenüjében válassza az **Összes erőforrás lehetőséget.** A keresőmezőbe írja be az integrációs fiók nevét, majd válassza ki a kívánt integrációs fiókot.
+3. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Az Azure főmenüjében válassza az **Összes erőforrás lehetőséget.** A keresőmezőbe írja be az integrációs fiók nevét, majd válassza ki a kívánt integrációs fiókot.
 
    ![Az integrációs fiók megkeresése](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 

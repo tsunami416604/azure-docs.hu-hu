@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 508eac08284f91821223a78cafdfee7b4c9c540b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fb82cec6874f8ef4f41897cc22939fe69ed02ec2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410883"
+ms.locfileid: "81457416"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Azonosító-broker használata (előzetes verzió) a hitelesítő adatok kezeléséhez
 
@@ -56,7 +56,7 @@ Az ID Broker engedélyezése után továbbra is szüksége lesz egy jelszókivon
 
 SSH-hitelesítés hez a kivonatnak elérhetőnek kell lennie az Azure AD DS-ben. Ha csak felügyeleti forgatókönyvekhez szeretné használni az SSH-t, létrehozhat egy csak felhőalapú fiókot, és használhatja azt az SSH-hoz a fürthöz. Más felhasználók továbbra is használhatják az Ambari vagy HDInsight eszközöket (például az IntelliJ beépülő modult) anélkül, hogy az Azure AD DS-ben elérhető jelszókivonat ot rendelkezne.
 
-## <a name="clinets-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clinets segítségével OAuth csatlakozni HDInsight átjáró ID Broker beállítás
+## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Az OAuth segítségével a HDInsight-átjáróhoz való csatlakozáshoz az ID Broker beállításával rendelkező ügyfelek
 
 Az azonosító közvetítő i. telepítése kor az egyéni alkalmazások és az átjáróhoz csatlakozó ügyfelek frissíthetők a szükséges OAuth-token beszerzéséhez. A [jogkivonat](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) beszerzéséhez kövesse a dokumentum lépéseit a következő információkkal:
 

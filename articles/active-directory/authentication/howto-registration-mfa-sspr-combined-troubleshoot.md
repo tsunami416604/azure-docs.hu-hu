@@ -1,31 +1,26 @@
 ---
 title: Kombinált regisztráció – Azure Active Directory
-description: Az Azure AD többtényezős hitelesítés és az önkiszolgáló jelszó-visszaállítás kombinált regisztrációjának hibaelhárítása (előzetes verzió)
+description: Az Azure AD többtényezős hitelesítés és az önkiszolgáló jelszó-visszaállítás kombinált regisztrációjának hibaelhárítása
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74847388"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450938"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>A kombinált biztonsági adatok regisztrációjának hibaelhárítása (előzetes verzió)
+# <a name="troubleshooting-combined-security-information-registration"></a>A biztonsági adatok kombinált regisztrációjának hibáinak elhárítása
 
 Az ebben a cikkben található információk célja, hogy a rendszergazdák, akik hibaelhárítási problémák által jelentett felhasználók a kombinált regisztrációs élményt.
-
-|     |
-| --- |
-| Az Azure multifaktor-hitelesítés és az Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás kombinált biztonsági adatok regisztrálása az Azure AD nyilvános előzetes verziójú szolgáltatása. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
 
 ## <a name="audit-logs"></a>Naplók
 
@@ -150,16 +145,16 @@ Egy PowerShell-ablakban futtassa a következő parancsot, megadva a parancsfájl
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>Az előnézeti élmény letiltása
+### <a name="disable-the-updated-experience"></a>A frissített élmény letiltása
 
-A felhasználók előnézeti élményének letiltásához hajtsa végre az alábbi lépéseket:
+A felhasználók frissített élményének letiltásához hajtsa végre az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure Portalon felhasználói rendszergazdaként.
 2. Nyissa meg az **Azure Active Directory** > **felhasználói beállításai** > **: A hozzáférési panel előnézeti szolgáltatásainak kezelése című lapban.**
 3. A **Felhasználók csoportban a biztonsági adatok regisztrálásához és kezeléséhez használhatjuk az előnézeti funkciókat,** állítsa a választógombot **Nincs**beállításra, majd válassza a **Mentés lehetőséget.**
 
-A felhasználók a továbbiakban nem lesznek arra kérik, hogy regisztráljanak az előnézeti felület használatával.
+A felhasználók a továbbiakban nem lesznek arra kérik, hogy a frissített felület használatával regisztráljanak.
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ az önkiszolgáló jelszó-visszaállítás és az Azure többtényezős hitelesítés kombinált regisztrációjának nyilvános előzetes verziójáról](concept-registration-mfa-sspr-combined.md)
+* [További információ az önkiszolgáló jelszó-visszaállítás és az Azure többtényezős hitelesítésegyüttes regisztrációjáról](concept-registration-mfa-sspr-combined.md)

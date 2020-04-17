@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bfe39d9528927f995d14772e07e02b2a0528e5e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 000f63ef5f73e77eb22fb539fc6736b929ac6bcc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188528"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451567"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AADFS hozzáadása SAML-identitásszolgáltatóként az Azure Active Directory B2C egyéni szabályzatai használatával
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy ADFS-felhaszn�
 
 A tanúsítványt az Azure AD B2C-bérlőben kell tárolnia.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja. Válassza ki a **Könyvtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
 4. Az Áttekintés lapon válassza az **Identitásélmény-keretrendszer lehetőséget.**
@@ -169,7 +169,7 @@ Most, hogy van egy gomb a helyén, csatolnia kell egy művelethez. A művelet eb
 Az ADFS identitásszolgáltatóként való használatához az Azure AD B2C-ben létre kell hoznia egy ADFS-függő entitás megbízhatóságát az Azure AD B2C SAML metaadatokkal. A következő példa egy Azure AD B2C technikai profil SAML-metaadatainak URL-címét mutatja be:
 
 ```
-https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 Cserélje le a következő értékeket:

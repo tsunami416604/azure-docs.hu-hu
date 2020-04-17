@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy függvényt a parancssorból,
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1e3ce26894e9e89d196c068bd32245c8c891b2e2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: eb893491310850b141a0d68cb7a74041411843a9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255549"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457450"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Rövid útmutató: Hozzon létre egy függvényt az Azure-ban, amely válaszol a HTTP-kérésekre
 
@@ -222,9 +222,9 @@ Az alábbi Azure CLI-parancsok használatával hozza létre ezeket az elemeket. 
 
 Ha még nem tette meg, jelentkezzen be az Azure-ba az [az bejelentkezési](/cli/azure/reference-index#az-login) paranccsal:
 
-    ```azurecli
-    az login
-    ```
+```azurecli
+az login
+```
     
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. A következő példa létrehoz `AzureFunctionsQuickstart-rg` egy `westeurope` erőforráscsoportot a régióban. (Az erőforráscsoportot és az erőforrásokat általában egy Ön közelében `az account list-locations` lévő régióban hozza létre, a parancsból elérhető terület használatával.)
 

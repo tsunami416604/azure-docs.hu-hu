@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aeffa0bb736f03403bf483b22775ef468bbcb2bd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f0034d06c852d4d71284093879a456d296d98715
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405467"
+ms.locfileid: "81457467"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Az Azure Automation kívánt állapotkonfigurációjával (DSC) kapcsolatos problémák elhárítása
 
@@ -113,7 +113,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Ok
 
-A problémát hibás vagy lejárt tanúsítvány okozza.  További információt a [Tanúsítvány lejárata és újbóli regisztrálása című témakörben talál.](../automation-dsc-onboarding.md#re-register-a-node)
+A problémát hibás vagy lejárt tanúsítvány okozza.  További információt a [Tanúsítvány lejárata és újbóli regisztrálása című témakörben talál.](../automation-dsc-onboarding.md#re-registering-a-node)
 
 A problémát az is okozhatja, hogy egy proxykonfiguráció nem engedélyezi a hozzáférést a ***.azure-automation.net**. További információ: [A magánhálózatok konfigurálása](../automation-dsc-overview.md#network-planning). 
 
@@ -135,7 +135,7 @@ Másodszor távolítsa el a DSC-bővítményt a csomópontról.
 
 Harmadszor távolítsa el az összes hibás vagy lejárt tanúsítványt a csomópontról.
 
-A rendszer egy emelt szintű Powershell-parancssorból származó hibás csomóponton futtassa a következőket:
+A rendszer a rendszera rendszeregyik emelt szintű PowerShell-parancssorból származó sikertelen csomóponton futtassa a következőket:
 
 ```powershell
 $certs = @()
@@ -279,8 +279,8 @@ Kezelje az előfizetéses csomópontot úgy, mintha egy külön felhőben vagy a
 
 A csomópont regisztrálásához kövesse az alábbi lépéseket.
 
-* Windows – [Fizikai/virtuális Windows-gépek a helyszínen vagy az Azure/AWS-től eltérő felhőben.](../automation-dsc-onboarding.md#onboard-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure)
-* Linux – [Fizikai/virtuális Linux-gépek a helyszínen vagy az Azure-tól eltérő felhőben.](../automation-dsc-onboarding.md#onboard-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)
+* Windows – [Fizikai/virtuális Windows-gépek a helyszínen vagy az Azure/AWS-től eltérő felhőben.](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines)
+* Linux – [Fizikai/virtuális Linux-gépek a helyszínen vagy az Azure-tól eltérő felhőben.](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines)
 
 ### <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>Eset: Hibaüzenet - "Nem sikerült kiépíteni"
 

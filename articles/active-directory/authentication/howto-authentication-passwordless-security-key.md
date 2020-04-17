@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653938"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450921"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ez a dokumentum a biztonsági kulcsalapú jelszó nélküli hitelesítés enged�
 
 ## <a name="requirements"></a>Követelmények
 
-- [Azure többtényezős hitelesítés](howto-mfa-getstarted.md)
+- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Kombinált biztonsági adatok regisztrációs előnézete](concept-registration-mfa-sspr-combined.md)
 - Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys)
 - A WebAuthN használatához windows 10-es vagy újabb verzió szükséges**
@@ -48,11 +48,11 @@ A hibrid Azure AD-hez csatlakozó eszközöknek windows 10 Insider Build 18945 v
 
 ### <a name="enable-the-combined-registration-experience"></a>A kombinált regisztrációs élmény engedélyezése
 
-A jelszó nélküli hitelesítési módszerek regisztrációs funkciói a kombinált regisztrációs előzetes verzión alapulnak. Kövesse a cikkben a [Kombinált biztonsági adatok regisztrációjának engedélyezése (előzetes verzió)](howto-registration-mfa-sspr-combined.md)című cikkben leírt lépéseket a kombinált regisztrációs előnézet engedélyezéséhez.
+A jelszó nélküli hitelesítési módszerek regisztrációs szolgáltatásai a kombinált regisztrációs szolgáltatáson alapulnak. Kövesse a cikkben a [Kombinált biztonsági adatok regisztrálásának engedélyezése (előzetes verzió)](howto-registration-mfa-sspr-combined.md)című cikkben a kombinált regisztráció engedélyezéséhez.
 
 ### <a name="enable-fido2-security-key-method"></a>FiDO2 biztonságikulcs-módszer engedélyezése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Tallózással keresse meg az **Azure Active Directory** > **biztonsági** > **hitelesítési módszereit** > **hitelesítési metódusházirend (előzetes verzió) .**
 1. A **FIDO2 biztonsági kulcs**módszerével válassza a következő beállításokat:
    1. **Engedélyezés** - Igen vagy Nem

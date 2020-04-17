@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6b5712094b9821dfa041cd5ba8617e86f7231bde
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b2755d5aa5dbaa669fa2fdd8b84596e040b5dd6b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478019"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456821"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Az Azure Storage titkosításának kezeléséhez használja az ügyfelek által felügyelt kulcsokat az Azure Key Vault segítségével
 
 Használhatja a saját titkosítási kulcs a tárfiókban lévő adatok védelmére. Amikor megad egy ügyfél által felügyelt kulcsot, a rendszer azt a kulcsot használja az adatokat titkosító kulcshoz való hozzáférés védelmére és szabályozására. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlés kezeléséhez.
 
-Az ügyfél által felügyelt kulcsok tárolásához az Azure Key Vault használatával kell tárolnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy key vaultban, vagy használhatja az Azure Key Vault API-kat kulcsok létrehozásához. A tárfiók nak és a kulcstárolónak ugyanabban a régióban és ugyanabban az Azure Active Directory (Azure AD) bérlőben kell lennie, de lehetnek különböző előfizetésekben. Az Azure Key Vaultról a [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
+Az ügyfél által felügyelt kulcsok tárolásához az Azure Key Vault használatával kell tárolnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy key vaultban, vagy használhatja az Azure Key Vault API-kat kulcsok létrehozásához. A tárfiók nak és a kulcstárolónak ugyanabban a régióban és ugyanabban az Azure Active Directory (Azure AD) bérlőben kell lennie, de lehetnek különböző előfizetésekben. Az Azure Key Vaultról a [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 
 ## <a name="about-customer-managed-keys"></a>Ügyfél által kezelt kulcsok –
 

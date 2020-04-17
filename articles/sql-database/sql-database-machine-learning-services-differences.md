@@ -12,12 +12,13 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 533e2b9e50a92cce1419da521d8cebc4955e4df6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: 34ba75b6126024c9cd43d6fe474f7c1b62dd990f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74462104"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453149"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Az Azure SQL Database (előzetes verzió) és az SQL Server Machine Learning Services szolgáltatása közötti főbb különbségek
 
@@ -31,7 +32,7 @@ Az SQL Server támogatja az R és a Python a [bővíthetőségi keretrendszeren]
 
 - Az R az SQL Database egyetlen támogatott nyelve. A Python jelenleg nem támogatott.
 - Az R verzió 3.4.4.
-- Nincs szükség a `external scripts enabled` konfigurálására a . `sp_configure` Miután [regisztrált,](sql-database-machine-learning-services-overview.md#signup)gépi tanulás engedélyezve van az SQL-adatbázis.
+- Nincs szükség a `external scripts enabled` konfigurálására a . `sp_configure`
 
 ## <a name="package-management"></a>Csomagkezelés
 

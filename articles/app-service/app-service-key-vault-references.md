@@ -6,32 +6,32 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280338"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453727"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault-hivatkozások használata az App Service és az Azure Functions szolgáltatáshoz
 
-Ez a témakör bemutatja, hogyan dolgozhat az Azure Key Vault titkos kulcsaival az App Service-ben vagy az Azure Functions alkalmazásban anélkül, hogy kódmódosításokat kellene végrehajtania. [Az Azure Key Vault](../key-vault/key-vault-overview.md) egy olyan szolgáltatás, amely központosított titkos kulcsok kezelését biztosítja, teljes hozzáférés-házirendek és naplózási előzmények teljes körű vezérlésével.
+Ez a témakör bemutatja, hogyan dolgozhat az Azure Key Vault titkos kulcsaival az App Service-ben vagy az Azure Functions alkalmazásban anélkül, hogy kódmódosításokat kellene végrehajtania. [Az Azure Key Vault](../key-vault/general/overview.md) egy olyan szolgáltatás, amely központosított titkos kulcsok kezelését biztosítja, teljes hozzáférés-házirendek és naplózási előzmények teljes körű vezérlésével.
 
 ## <a name="granting-your-app-access-to-key-vault"></a>Az alkalmazás hozzáférése a Key Vaulthoz
 
 Annak érdekében, hogy olvassa el a titkos kulcsokat a Key Vault, létre kell hoznia egy trezort, és adja meg az alkalmazás számára, hogy hozzáférjen.
 
-1. Hozzon létre egy key vault ot a [Key Vault rövid útmutatójának követésével.](../key-vault/quick-create-cli.md)
+1. Hozzon létre egy key vault ot a [Key Vault rövid útmutatójának követésével.](../key-vault/secrets/quick-create-cli.md)
 
 1. Hozzon létre egy [rendszer által hozzárendelt felügyelt identitást](overview-managed-identity.md) az alkalmazáshoz.
 
    > [!NOTE] 
    > A Key Vault-hivatkozások jelenleg csak a rendszer által hozzárendelt felügyelt identitásokat támogatják. A felhasználó által hozzárendelt identitások nem használhatók.
 
-1. Hozzon létre egy hozzáférési szabályzatot a [Key Vaultban](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott alkalmazásidentitáshoz. Engedélyezze a "Get" titkos engedélyt a házirendhez. Ne konfigurálja az "engedélyezett `applicationId` alkalmazást" vagy beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
+1. Hozzon létre egy hozzáférési szabályzatot a [Key Vaultban](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott alkalmazásidentitáshoz. Engedélyezze a "Get" titkos engedélyt a házirendhez. Ne konfigurálja az "engedélyezett `applicationId` alkalmazást" vagy beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
 
     > [!NOTE]
-    > A Key Vault-hivatkozások jelenleg nem képesek feloldani a hálózati korlátozásokkal rendelkező kulcstartóban tárolt titkos [kulcsokat.](../key-vault/key-vault-overview-vnet-service-endpoints.md)
+    > A Key Vault-hivatkozások jelenleg nem képesek feloldani a hálózati korlátozásokkal rendelkező kulcstartóban tárolt titkos [kulcsokat.](../key-vault/general/overview-vnet-service-endpoints.md)
 
 ## <a name="reference-syntax"></a>Hivatkozási szintaxis
 

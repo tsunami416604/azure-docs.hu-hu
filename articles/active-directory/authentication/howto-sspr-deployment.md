@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8bec28b98a8d2640b5a8034569d49077ce6b4177
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676729"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450989"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítási központi telepítésének megtervezése
 
@@ -115,7 +115,7 @@ Az SSPR telepítése előtt dönthet úgy, hogy meghatározza az egyes jelszó-v
 
 A Microsoft azt javasolja, hogy a szervezetek engedélyezze az SSPR és a többtényezős hitelesítés kombinált regisztrációs élményét. Ha engedélyezi ezt a kombinált regisztrációs élményt, a felhasználóknak csak egyszer kell kiválasztaniuk a regisztrációs adataikat mindkét funkció engedélyezéséhez.
 
-A kombinált regisztrációs élmény nem követeli meg a szervezetek számára, hogy mind az SSPR, mind az Azure többtényezős hitelesítést engedélyezze. A kombinált regisztráció jobb felhasználói élményt nyújt a szervezeteknek. További információ: [Kombinált biztonsági adatok regisztrálása (előzetes verzió)](concept-registration-mfa-sspr-combined.md)
+A kombinált regisztrációs élmény nem követeli meg a szervezetek számára, hogy mind az SSPR, mind az Azure többtényezős hitelesítést engedélyezze. A kombinált regisztráció jobb felhasználói élményt nyújt a szervezeteknek. További információ: [Kombinált biztonsági adatok regisztrálása](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-deployment-project"></a>A telepítési projekt megtervezése
 

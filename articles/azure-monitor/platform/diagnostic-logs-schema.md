@@ -4,12 +4,12 @@ description: Ismerje meg az Azure-erőforrásnaplók támogatott szolgáltatása
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 352310a6e489a96c38e85b16e9504d8eb9be38b1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380520"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457246"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrásnaplókhoz
 
@@ -22,7 +22,7 @@ Az erőforrástípus (a `resourceId` tulajdonságban elérhető) `category` és 
 
 ## <a name="top-level-resource-logs-schema"></a>Legfelső szintű erőforrásnaplók sémája
 
-| Név | Kötelező vagy nem kötelező | Leírás |
+| Name (Név) | Kötelező vagy nem kötelező | Leírás |
 |---|---|---|
 | time | Kötelező | Az esemény időbélyege (UTC). |
 | resourceId | Kötelező | Az eseményt kibocsátó erőforrás erőforrásazonosítója. Bérlői szolgáltatások esetén ez a /tenants/tenant-id/providers/provider-name formában van. |
@@ -66,7 +66,7 @@ Az erőforrásdiagnosztikai naplók sémája az erőforrás- és naplókategóri
 | Express Route | A séma nem érhető el. |
 | Azure Firewall | A séma nem érhető el. |
 | IoT Hub | [IoT Hub-műveletek](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Key Vault |[Azure key vault naplózása](../../key-vault/key-vault-logging.md) |
+| Key Vault |[Azure key vault naplózása](../../key-vault/general/logging.md) |
 | Kubernetes Service |[Azure Kubernetes naplózás](../../aks/view-master-logs.md#log-event-schema) |
 | Load Balancer |[Naplóelemzés az Azure Load Balancerhez](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B egyéni követési séma](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |

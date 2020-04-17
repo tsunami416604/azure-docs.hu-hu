@@ -1,24 +1,24 @@
 ---
-title: A biztonsági adatok (előzetes verzió) beállítása bejelentkezési kérdésből – Azure AD
-description: A biztonsági adatok (előzetes verzió) beállítása a munkahelyi vagy iskolai fiókjához, miután a rendszer a szervezet bejelentkezési lapjáról kéri.
+title: A biztonsági adatok beállítása bejelentkezési kérdésből – Azure AD
+description: Hogyan állíthatja be a munkahelyi vagy iskolai fiókjához szükséges biztonsági adatokat, miután a rendszer a szervezet bejelentkezési lapjáról kéri a kérdést.
 services: active-directory
 author: curtand
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 08/05/2019
+ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: c216dbfef99422fc49fde774dc57d5cbcc9f879a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063985"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454440"
 ---
-# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>A biztonsági adatok (előzetes verzió) beállítása bejelentkezési kérdésből
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>A biztonsági adatok beállítása bejelentkezési kérdésből
 
 Az alábbi lépéseket akkor hajthatja végre, ha a rendszer a munkahelyi vagy iskolai fiókba való bejelentkezés után azonnal kéri a biztonsági adatok beállítását.
 
@@ -122,7 +122,7 @@ Az alábbi lépésekkel állíthatja be a munkahelyi vagy iskolai fiókjához sz
 Bizonyos alkalmazások, például az Outlook 2010, nem támogatják a kétlépéses ellenőrzést. A támogatás hiánya azt jelenti, hogy ha kétlépéses ellenőrzést használ a szervezetben, az alkalmazás nem fog működni. A probléma megoldásához létrehozhat egy automatikusan létrehozott jelszót, amelyet minden nem böngészőalkalmazáshoz használhat, a normál jelszótól elkülönítve.
 
 >[!Note]
->Ha ez a beállítás nem jelenik meg a varázslóban, az azt jelenti, hogy a rendszergazda nem állította be. Ha ez nincs beállítva, de tudja, hogy alkalmazásjelszavakat kell használnia, kövesse az Alkalmazásjelszavak beállítása a [Biztonsági adatok (előnézet) lapon](security-info-app-passwords.md)található lépéseket.
+>Ha ez a beállítás nem jelenik meg a varázslóban, az azt jelenti, hogy a rendszergazda nem állította be. Ha ez nincs beállítva, de tudja, hogy alkalmazásjelszavakat kell használnia, kövesse az Alkalmazásjelszavak beállítása című lap [lépéseit a Biztonsági adatok lapon.](security-info-app-passwords.md)
 
 Az alkalmazásjelszavak használatakor fontos megjegyezni:
 

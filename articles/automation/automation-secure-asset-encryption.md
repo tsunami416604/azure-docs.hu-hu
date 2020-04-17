@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a82d2b6d9521ba7dd5e7b194c26ff8fe5a100871
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547758"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457484"
 ---
 # <a name="encrypt-secure-assets-in-azure-automation"></a>Biztonságos eszközök titkosítása az Azure Automationben
 
@@ -32,7 +32,7 @@ Minden egyes biztonságos eszköz titkosítva van, és az Azure Automationben eg
 
 Az Automation-fiók biztonságos eszközeinek titkosítását saját kulcsaival kezelheti. Ha az Automation-fiók szintjén ad meg egy ügyfél által felügyelt kulcsot, a rendszer az Automation-fiók titkosítási kulcsához való hozzáférést védi és szabályozza. Ez viszont titkosítására és visszafejtésére használják az összes biztonságos eszközök. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlők létrehozásához, elforgatásához, letiltásához és visszavonásához. A biztonságos eszközök védelméhez használt titkosítási kulcsok at is naplózhatja.
 
-Az Azure Key Vault használatával az ügyfelek által felügyelt kulcsokat tárolhatja. Létrehozhatja saját kulcsait, és tárolhatja őket egy key vaultban, vagy használhatja az Azure Key Vault API-kat kulcsok létrehozásához.  Az Azure Key Vaultról a [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
+Az Azure Key Vault használatával az ügyfelek által felügyelt kulcsokat tárolhatja. Létrehozhatja saját kulcsait, és tárolhatja őket egy key vaultban, vagy használhatja az Azure Key Vault API-kat kulcsok létrehozásához.  Az Azure Key Vaultról a [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Ügyfél által felügyelt kulcsok engedélyezése automatizálási fiókhoz
 
@@ -192,7 +192,7 @@ Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához h
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
+- [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 
 - [Az Azure Automation tanúsítvány adategységei](shared-resources/certificates.md)
 

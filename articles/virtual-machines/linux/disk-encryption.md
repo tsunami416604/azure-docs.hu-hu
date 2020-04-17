@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f7eb63d0bbdce86f4a7195430dc15d6873e9f6e6
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 68341de82ae15df91477947664c500caaa96a09a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754315"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452723"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure által kezelt lemezek kiszolgálóoldali titkosítása
 
@@ -34,7 +34,7 @@ Alapértelmezés szerint a felügyelt lemezek platformáltal felügyelt titkosí
 
 ## <a name="customer-managed-keys"></a>Felhasználó által kezelt kulcsok
 
-A titkosítást kezelheti az egyes felügyelt lemezek szintjén, a saját kulcsaival. Az ügyfél által felügyelt kulcsokkal rendelkező felügyelt lemezek kiszolgálóoldali titkosítása integrált élményt nyújt az Azure Key Vault szolgáltatással. Importálhatja [az RSA-kulcsokat a](../../key-vault/key-vault-hsm-protected-keys.md) Key Vaultba, vagy új RSA-kulcsokat hozhat létre az Azure Key Vaultban. 
+A titkosítást kezelheti az egyes felügyelt lemezek szintjén, a saját kulcsaival. Az ügyfél által felügyelt kulcsokkal rendelkező felügyelt lemezek kiszolgálóoldali titkosítása integrált élményt nyújt az Azure Key Vault szolgáltatással. Importálhatja [az RSA-kulcsokat a](../../key-vault/keys/hsm-protected-keys.md) Key Vaultba, vagy új RSA-kulcsokat hozhat létre az Azure Key Vaultban. 
 
 Az Azure által kezelt lemezek a titkosítást és a visszafejtést teljes mértékben átlátható módon kezelik [a borítéktitkosítás használatával.](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) Az adatokat [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 alapú adattitkosítási kulccsal (DEK) titkosítja, amely viszont a kulcsokkal védett. A Storage szolgáltatás adattitkosítási kulcsokat hoz létre, és rsa titkosítással titkosítja azokat az ügyfél által felügyelt kulcsokkal. A borítéktitkosítás lehetővé teszi a kulcsok rendszeres elforgatását (módosítását) a megfelelőségi szabályzatok szerint anélkül, hogy ez befolyásolna a virtuális gépeket. A kulcsok elforgatásakor a Storage szolgáltatás újra titkosítja az adattitkosítási kulcsokat az új ügyfél által felügyelt kulcsokkal. 
 
@@ -238,7 +238,7 @@ az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] 
 ## <a name="next-steps"></a>További lépések
 
 - [Fedezze fel az Azure Resource Manager sablonjait titkosított lemezek ügyfél által kezelt kulcsokkal való létrehozásához](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
+- [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 - [Gépek replikálása ügyfél által kezelt kulcsokáltal engedélyezett lemezekkel](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
 - [A VMware virtuális gépek vészutáni helyreállításának beállítása az Azure-ba a PowerShell segítségével](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
 - [Vészhelyreállítás beállítása az Azure-ba a PowerShell és az Azure Resource Manager használatával az Azure-ban a Virtuális-gépekkel](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

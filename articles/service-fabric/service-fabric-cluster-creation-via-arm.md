@@ -3,17 +3,17 @@ title: Azure Service Fabric-fürt létrehozása
 description: Ismerje meg, hogyan állíthat be egy biztonságos Service Fabric-fürtöt az Azure-ban az Azure Resource Manager használatával.  Fürtöt alapértelmezett sablon vagy saját fürtsablon használatával hozhat létre.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624113"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458300"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Service Fabric-fürt létrehozása az Azure Resource Manager használatával 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure-portál](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -251,7 +251,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>A key vaultba feltöltött titkos kulcsra mutató mutató használata
 
-Meglévő kulcstartó használatához engedélyezni kell a key vaultot a [telepítéshez,](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI) hogy a számítási erőforrás-szolgáltató tanúsítványokat kapjon belőle, és telepítse fürtcsomópontokra.
+Meglévő kulcstartó használatához engedélyezni kell a key vaultot a [telepítéshez,](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI) hogy a számítási erőforrás-szolgáltató tanúsítványokat kapjon belőle, és telepítse fürtcsomópontokra.
 
 Telepítse a fürtöt a PowerShell használatával:
 

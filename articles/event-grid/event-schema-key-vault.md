@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 36b7b81a18c8725929ab5676b844e1ee319e287f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393311"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458249"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Az Azure Key Vault eseményrács forrásaként
 
@@ -80,18 +80,18 @@ Egy esemény legfelső szintű adatokat rendelkezik:
 ## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
 |Cím  |Leírás  |
 |---------|---------|
-| [Key Vault-események figyelése az Azure Event Griddel](../key-vault/event-grid-overview.md) | A Key Vault és az Event Grid integrálásának áttekintése. |
-| [Oktatóanyag: Key Vault-események létrehozása és figyelése az Event Grid segítségével](../key-vault/event-grid-tutorial.md) | További információ az Event Grid-értesítések key vaulthoz való beállításáról. |
+| [Key Vault-események figyelése az Azure Event Griddel](../key-vault/general/event-grid-overview.md) | A Key Vault és az Event Grid integrálásának áttekintése. |
+| [Oktatóanyag: Key Vault-események létrehozása és figyelése az Event Grid segítségével](../key-vault/general/event-grid-tutorial.md) | További információ az Event Grid-értesítések key vaulthoz való beállításáról. |
 
 
 ## <a name="next-steps"></a>További lépések
 
 * Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md).
 * Az Azure Event Grid-előfizetések létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.
-* Ha többet szeretne tudni a Key Vault és az Event Grid használatával való integrációról, olvassa el [a Key Vault figyelése az Azure Event Griddel című témakört (előzetes verzió).](../key-vault/event-grid-overview.md)
-* A Key Vault és az Event Grid integrációjáról az [Azure Event Griddel kapcsolatos kulcstartó-értesítések fogadása és megválaszolása című témakörben (előzetes verzió) című témakörben](../key-vault/event-grid-tutorial.md)látható.
+* Ha többet szeretne tudni a Key Vault és az Event Grid használatával való integrációról, olvassa el [a Key Vault figyelése az Azure Event Griddel című témakört (előzetes verzió).](../key-vault/general/event-grid-overview.md)
+* A Key Vault és az Event Grid integrációjáról az [Azure Event Griddel kapcsolatos kulcstartó-értesítések fogadása és megválaszolása című témakörben (előzetes verzió) című témakörben](../key-vault/general/event-grid-tutorial.md)látható.
 * További útmutatást a Key Vault és az Azure Automation, lásd:
-    - [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
-    - [Key Vault figyelése az Azure Event Griddel (előzetes verzió)](../key-vault/event-grid-overview.md)
-    - [A kulcstartó-értesítések fogadása és megválaszolása az Azure Event Grid del (előzetes verzió)](../key-vault/event-grid-tutorial.md)
+    - [Mi az Azure Key Vault?](../key-vault/general/overview.md)
+    - [Key Vault figyelése az Azure Event Griddel (előzetes verzió)](../key-vault/general/event-grid-overview.md)
+    - [A kulcstartó-értesítések fogadása és megválaszolása az Azure Event Grid del (előzetes verzió)](../key-vault/general/event-grid-tutorial.md)
     - [Az Azure Automation áttekintése](../automation/index.yml)

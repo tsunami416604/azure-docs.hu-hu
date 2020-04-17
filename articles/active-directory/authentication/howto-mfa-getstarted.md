@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667343"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451125"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure többtényezős hitelesítési telepítésének megtervezése
 
@@ -144,7 +144,7 @@ A rendszer egy ellenőrző kódot tartalmazó szöveges üzenetet küld a felhas
 
 ## <a name="plan-registration-policy"></a>A tervezés regisztrációs irányelvei
 
-A rendszergazdáknak meg kell határozniuk, hogy a felhasználók hogyan regisztrálják módszereiket. A szervezeteknek engedélyezniük kell [az azure-beli mfa](howto-registration-mfa-sspr-combined.md) és az önkiszolgáló jelszó-visszaállítás (SSPR) új kombinált regisztrációs élményét. Az SSPR lehetővé teszi a felhasználók számára, hogy biztonságos módon alaphelyzetbe állítsák jelszavukat a többtényezős hitelesítéshez használt módszerekkel. Javasoljuk, hogy ez a kombinált regisztráció, jelenleg nyilvános előzetes verzióban, mert ez egy nagyszerű élmény a felhasználók számára, azzal a képességgel, hogy regisztráljon egyszer mindkét szolgáltatáshoz. Az SSPR és az Azure MFA ugyanazokat a módszereket engedélyezve lehetővé teszi a felhasználók számára, hogy mindkét funkció használatára regisztrálva legyenek.
+A rendszergazdáknak meg kell határozniuk, hogy a felhasználók hogyan regisztrálják módszereiket. A szervezeteknek engedélyezniük kell [az azure-beli mfa](howto-registration-mfa-sspr-combined.md) és az önkiszolgáló jelszó-visszaállítás (SSPR) új kombinált regisztrációs élményét. Az SSPR lehetővé teszi a felhasználók számára, hogy biztonságos módon alaphelyzetbe állítsák jelszavukat a többtényezős hitelesítéshez használt módszerekkel. Ezt a kombinált regisztrációt azért javasoljuk, mert nagyszerű élmény a felhasználók számára, és mindkét szolgáltatáshoz egyszer regisztrálhat. Az SSPR és az Azure MFA ugyanazokat a módszereket engedélyezve lehetővé teszi a felhasználók számára, hogy mindkét funkció használatára regisztrálva legyenek.
 
 ### <a name="registration-with-identity-protection"></a>Regisztráció a személyazonosság-védelemmel
 

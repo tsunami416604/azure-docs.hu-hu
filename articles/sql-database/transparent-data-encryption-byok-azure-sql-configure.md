@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 81927575b99604e71f7b0920bc3a448f7796f565
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b1c985eeec9af25ec576f4e2375c417dc376f95
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067190"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452757"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és CLI: Az átlátszó adattitkosítás engedélyezése az Azure Key Vault ügyféláltal felügyelt kulcsával
 
@@ -28,19 +28,19 @@ Ez a cikk bemutatja, hogyan használhatja az Azure Key Vault egyik kulcsát az �
 - [Ajánlott, de nem kötelező] Hardveres biztonsági modullal (HSM) vagy helyi kulcstárolóval rendelkezik a TDE Protector kulcsanyag helyi példányának létrehozásához.
 - Az Azure PowerShell telepítve és fut.
 - Hozzon létre egy Azure Key Vault és a TDE-hez használható kulcs.
-  - [A hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-hsm-protected-keys.md)
+  - [A hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/keys/hsm-protected-keys.md)
     - A kulcstartónak a következő tulajdonsággal kell rendelkeznie a TDE-hez használandó tulajdonsággal:
-  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md) és tisztítás elleni védelem
+  - [soft-delete](../key-vault/general/overview-soft-delete.md) és tisztítás elleni védelem
 - A kulcsnak a következő attribútumokkal kell rendelkeznie a TDE-hez:
    - Nincs lejárati dátum
    - Nincs letiltva
    - Képes végrehajtani *kap*, *wrap kulcs*, *kicsomagolni kulcs* műveletek
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Az Az modul telepítési útmutatását [az Azure PowerShell telepítését](/powershell/azure/install-az-ps) ismertető cikkben találja. A konkrét parancsmagok: [AzureRM.Sql.](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)
 
-A Key Vault konkrétumait a [Key Vault PowerShell-utasításaiban,](../key-vault/quick-create-powershell.md) valamint [a Key Vault soft-delete használatával a PowerShell használatával kapcsolatban találja.](../key-vault/key-vault-soft-delete-powershell.md)
+A Key Vault konkrétumait a [Key Vault PowerShell-utasításaiban,](../key-vault/secrets/quick-create-powershell.md) valamint [a Key Vault soft-delete használatával a PowerShell használatával kapcsolatban találja.](../key-vault/general/soft-delete-powershell.md)
 
 > [!IMPORTANT]
 > A PowerShell Azure Resource Manager (RM) modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés az Az.Sql modul. Az AzureRM-modul legalább 2020 decemberéig továbbra is megkapja a hibajavításokat.  Az Az modulban és az AzureRm-modulokban lévő parancsok argumentumai lényegében azonosak. A kompatibilitásukról az [Új Azure PowerShell Az modul bemutatása](/powershell/azure/new-azureps-module-az)című témakörben lehet további további további információkért.
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 A szükséges 2.0-s vagy újabb parancssori felület telepítéséhez és az Azure-előfizetéshez való csatlakozáshoz az [Azure Cross-Platform command-line interface 2.0 telepítése és konfigurálása](https://docs.microsoft.com/cli/azure/install-azure-cli)című témakörben van.
 
-A Key Vault konkrétumait a [Key Vault cli 2.0-s használatával és](../key-vault/key-vault-manage-with-cli2.md) a Key Vault [soft-delete használata a CLI-vel való használata.](../key-vault/key-vault-soft-delete-cli.md)
+A Key Vault konkrétumait a [Key Vault cli 2.0-s használatával és](../key-vault/general/manage-with-cli2.md) a Key Vault [soft-delete használata a CLI-vel való használata.](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Azure AD-identitás hozzárendelése a kiszolgálóhoz
 
@@ -182,7 +182,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 ## <a name="useful-powershell-cmdlets"></a>Hasznos PowerShell-parancsmagok
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 - A [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) parancsmag segítségével kapcsolja ki a TDE-t.
 
@@ -221,7 +221,7 @@ Probléma esetén ellenőrizze az alábbiakat:
 
 - Ha a key vault nem található, győződjön meg arról, hogy a megfelelő előfizetésben van.
 
-   # <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+   # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell
    Get-AzSubscription -SubscriptionId <SubscriptionId>

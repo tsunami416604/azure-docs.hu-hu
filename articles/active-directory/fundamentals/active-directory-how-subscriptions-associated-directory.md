@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f44e9a1e43da2b9ce6c817898c1722fba715c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 104bf51fb03d88ab0e5efd25ebebb0e3060bc264
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262177"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457926"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure-előfizetés társítása vagy hozzáadása az Azure Active Directory-bérlőhöz
 
@@ -85,7 +85,7 @@ Az előfizetési címtár módosítása szolgáltatásszintű művelet, így nem
 
 Miután egy előfizetést egy másik címtárhoz társít, előfordulhat, hogy a műveletek folytatásához a következő feladatokat kell elvégeznie:
 
-- Ha rendelkezik kulcstartókkal, módosítania kell a key vault-bérlői azonosítóját. További információ: [Kulcstartó bérlői azonosító módosítása előfizetés áthelyezése után.](../../key-vault/key-vault-subscription-move-fix.md)
+- Ha rendelkezik kulcstartókkal, módosítania kell a key vault-bérlői azonosítóját. További információ: [Kulcstartó bérlői azonosító módosítása előfizetés áthelyezése után.](../../key-vault/general/subscription-move-fix.md)
 
 - Ha a rendszer által hozzárendelt felügyelt identitások erőforrások, újra engedélyeznie kell ezeket az identitásokat. Ha felhasználó által hozzárendelt felügyelt identitásokat használt, újra létre kell hoznia ezeket az identitásokat. A felügyelt identitások újbóli engedélyezése vagy újbóli létrehozása után újra létre kell hoznia az identitásokhoz rendelt engedélyeket. További információ: [Mi az Azure-erőforrások felügyelt identitásai?](../managed-identities-azure-resources/overview.md)
 

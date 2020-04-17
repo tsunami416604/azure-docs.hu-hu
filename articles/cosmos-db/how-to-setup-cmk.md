@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f58887a056c8ca0cd175a44127556562338de38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411148"
+ms.locfileid: "81450032"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Cosmos-fiókhoz az Azure Key Vault segítségével
 
@@ -23,7 +23,7 @@ Az Azure Cosmos-fiókban tárolt adatok automatikusan és zökkenőmentesen titk
 
 ![Az ügyféladatok körüli titkosítás rétegei](./media/how-to-setup-cmk/cmk-intro.png)
 
-Az ügyfelek által felügyelt kulcsokat az [Azure Key Vaultban](../key-vault/key-vault-overview.md) kell tárolnia, és minden olyan Azure Cosmos-fiókhoz kulcsot biztosítania kell, amely az ügyfél által felügyelt kulcsokkal van engedélyezve. Ez a kulcs az adott fiókban tárolt összes adat titkosítására szolgál.
+Az ügyfelek által felügyelt kulcsokat az [Azure Key Vaultban](../key-vault/general/overview.md) kell tárolnia, és minden olyan Azure Cosmos-fiókhoz kulcsot biztosítania kell, amely az ügyfél által felügyelt kulcsokkal van engedélyezve. Ez a kulcs az adott fiókban tárolt összes adat titkosítására szolgál.
 
 > [!NOTE]
 > Jelenleg az ügyfél által felügyelt kulcsok csak az új Azure Cosmos-fiókok hoz érhetők el. A fiók létrehozása során konfigurálnia kell őket.
@@ -44,8 +44,8 @@ Az ügyfél által felügyelt kulcsok használata az Azure Cosmos DB használat�
 
 Ha meg szeretné tudni, hogyan engedélyezheti ezeket a tulajdonságokat egy meglévő Azure Key Vault-példányon, tekintse meg a "Helyreállítható törlés engedélyezése" és a "Kiürítési védelem engedélyezése" című szakaszokat az alábbi cikkek egyikében:
 
-- [A soft-delete használata a PowerShell használatával](../key-vault/key-vault-soft-delete-powershell.md)
-- [A soft-delete használata az Azure CLI-vel](../key-vault/key-vault-soft-delete-cli.md)
+- [A soft-delete használata a PowerShell használatával](../key-vault/general/soft-delete-powershell.md)
+- [A soft-delete használata az Azure CLI-vel](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Hozzáférési szabályzat hozzáadása az Azure Key Vault-példányhoz
 

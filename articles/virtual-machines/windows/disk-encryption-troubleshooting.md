@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d4e76f4d02b0287770243bfddf995a19f90d232
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fafe4a9ef78a92595eaae942fa5d7cbeb2c07189
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73749452"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458215"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure lemeztitkosításhiba-elhárítási útmutatója
 
@@ -35,7 +35,7 @@ Az alkalmazott hálózati biztonsági csoport beállításoknak továbbra is leh
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault tűzfal mögött
 
-Ha az Azure [AD-hitelesítő adatokkal](disk-encryption-windows-aad.md#)engedélyezve van a titkosítás, a célvirtuális gépnek engedélyeznie kell a kapcsolatot az Azure Active Directory végpontjaihoz és a Key Vault-végpontokhoz. Az Aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományainak](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56. A Key Vault-útmutató a [tűzfal mögötti Azure Key Vault elérésére](../../key-vault/key-vault-access-behind-firewall.md)vonatkozó dokumentációban található.
+Ha az Azure [AD-hitelesítő adatokkal](disk-encryption-windows-aad.md#)engedélyezve van a titkosítás, a célvirtuális gépnek engedélyeznie kell a kapcsolatot az Azure Active Directory végpontjaihoz és a Key Vault-végpontokhoz. Az Aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományainak](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56. A Key Vault-útmutató a [tűzfal mögötti Azure Key Vault elérésére](../../key-vault/general/access-behind-firewall.md)vonatkozó dokumentációban található.
 
 ### <a name="azure-instance-metadata-service"></a>Azure-példány metaadat-szolgáltatása 
 A virtuális gépnek hozzá kell tudnia férni az [Azure Instance metaadatszolgáltatás-végpontjához,](../windows/instance-metadata-service.md) amely egy jól ismert, nem irányítható IP-címet (`169.254.169.254`) használ, amely csak a virtuális gépen belül érhető el.  Nem támogatottak azok a proxykonfigurációk, amelyek módosítják a helyi HTTP-forgalmat erre a címre (például x-forwarded-for fejléc hozzáadása).
@@ -63,7 +63,7 @@ A probléma kerülő megoldásához másolja a következő négy fájlt a Window
 
 1. A Kötetek ellenőrzéséhez használja a DiskPart programot, majd folytassa a folytatást.  
 
-Példa:
+Például:
 
 ```
 DISKPART> list vol

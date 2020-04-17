@@ -3,16 +3,16 @@ title: Key Vault titkos sablonnal
 description: Bemutatja, hogyan adja át a titkos kulcsot a key vault paraméterként az üzembe helyezés során.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 08b4042c6bad83f13ebaea0f46046ea7707fd868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460194"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458266"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Biztonságos paraméterérték megadása az Üzembe helyezés során az Azure Key Vault használatával
 
-Ahelyett, hogy egy biztonságos értéket (például egy jelszót) helyezne el közvetlenül a sablonban vagy a paraméterfájlban, lekérheti az értéket egy [Azure Key Vaultból](../../key-vault/key-vault-overview.md) a központi telepítés során. Az értéket a key vault és a paraméterfájl titkos kulcsa hivatkozva szerezheti be. Az érték soha nem érhető el, mert csak a key vault-azonosítóra hivatkozik. A key vault létezhet egy másik előfizetés, mint az erőforráscsoport, amelyüzembe helyezése.
+Ahelyett, hogy egy biztonságos értéket (például egy jelszót) helyezne el közvetlenül a sablonban vagy a paraméterfájlban, lekérheti az értéket egy [Azure Key Vaultból](../../key-vault/general/overview.md) a központi telepítés során. Az értéket a key vault és a paraméterfájl titkos kulcsa hivatkozva szerezheti be. Az érték soha nem érhető el, mert csak a key vault-azonosítóra hivatkozik. A key vault létezhet egy másik előfizetés, mint az erőforráscsoport, amelyüzembe helyezése.
 
 Ez a cikk arra összpontosít, hogy a forgatókönyv egy bizalmas érték átadása sablonparaméterként. Nem terjed ki a forgatókönyv beállítása egy virtuális gép tulajdonság a tanúsítvány URL-címét a Key Vault. A forgatókönyv rövid útmutató sablonját az [Azure Key Vault tanúsítványának telepítése virtuális gépen című témakörben olvashat.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
 
@@ -28,7 +28,7 @@ Ha már rendelkezik egy Key Vault, győződjön meg arról, hogy lehetővé tesz
 az keyvault update  --name ExampleVault --enabled-for-template-deployment true
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
@@ -50,7 +50,7 @@ az keyvault create \
 az keyvault secret set --vault-name ExampleVault --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name ExampleGroup -Location centralus
@@ -76,7 +76,7 @@ az keyvault set-policy \
   --secret-permissions set delete get list
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $userPrincipalName = "<Email Address of the deployment operator>"
@@ -91,11 +91,11 @@ Set-AzKeyVaultAccessPolicy `
 
 A kulcstartók létrehozásáról és a titkos kulcsok hozzáadásáról a következő témakörökben talál további információt:
 
-- [Titkos kulcs beállítása és beolvasása cli használatával](../../key-vault/quick-create-cli.md)
-- [Titkos titok beállítása és beolvasása a Powershell használatával](../../key-vault/quick-create-powershell.md)
-- [Titkos titok beállítása és beolvasása a portál használatával](../../key-vault/quick-create-portal.md)
-- [Titkos titok beállítása és beolvasása a .NET használatával](../../key-vault/quick-create-net.md)
-- [Titkos titok beállítása és beolvasása a Node.js használatával](../../key-vault/quick-create-node.md)
+- [Titkos kulcs beállítása és beolvasása cli használatával](../../key-vault/secrets/quick-create-cli.md)
+- [Titkos titok beállítása és beolvasása a Powershell használatával](../../key-vault/secrets/quick-create-powershell.md)
+- [Titkos titok beállítása és beolvasása a portál használatával](../../key-vault/secrets/quick-create-portal.md)
+- [Titkos titok beállítása és beolvasása a .NET használatával](../../key-vault/secrets/quick-create-net.md)
+- [Titkos titok beállítása és beolvasása a Node.js használatával](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>Hozzáférés a titkokhoz
 
@@ -135,7 +135,7 @@ Az alábbi eljárás bemutatja, hogyan hozhat létre szerepkört a minimális en
       --resource-group ExampleGroup
     ```
 
-    # <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
     ```azurepowershell-interactive
     New-AzRoleDefinition -InputFile "<path-to-role-file>"
@@ -241,7 +241,7 @@ az deployment group create \
   --parameters <parameter-file>
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -375,5 +375,5 @@ A következő sablon dinamikusan létrehozza a key vault-azonosítót, és param
 
 ## <a name="next-steps"></a>További lépések
 
-- A kulcstartókról a [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
+- A kulcstartókról a [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 - A kulcstitkokra való hivatkozás teljes példáit lásd: [Key Vault-példák.](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)

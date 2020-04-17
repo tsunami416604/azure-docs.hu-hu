@@ -5,18 +5,18 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a6fc2bd5cb6f5c7ae5bef9e9741fae92518d885
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: d1ce59322b0cbfaf5a4f7b31371f0d0929a3a3ab
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392396"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457722"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Az Azure Automation kapcsolati adategységei
 
 Az Automation-kapcsolati eszköz tartalmazza a runbookvagy DSC-konfigurációból egy külső szolgáltatáshoz vagy alkalmazáshoz való csatlakozáshoz szükséges információkat. Ez magában foglalhatja a hitelesítéshez szükséges információkat, például a kapcsolati adatokon, például az URL-címen vagy a porton kívül a felhasználónevet és a jelszót. A kapcsolat értéke megtartja az összes tulajdonságot egy adott alkalmazáshoz való csatlakozáshoz egy eszközben, szemben a több változó létrehozásával. A felhasználó egy helyen szerkesztheti egy kapcsolat értékeit, és egyetlen paraméterben átadhatja a kapcsolat nevét egy runbook- vagy DSC-konfigurációhoz. A kapcsolatok tulajdonságai a runbook vagy a DSC konfigurációjában érhetők el a `Get-AutomationConnection` tevékenységgel.
 
-Kapcsolat létrehozásakor meg kell adnia egy *kapcsolattípust.* A kapcsolat típusa egy olyan sablon, amely tulajdonságok készletét határozza meg. A kapcsolat a kapcsolat típusában meghatározott minden egyes tulajdonság értékeit határozza meg. A kapcsolattípusok az integrációs modulokban lévő Azure Automation-hez kerülnek, vagy az [Azure Automation API-val](/previous-versions/azure/reference/mt163818(v=azure.100)) jönnek létre, ha az integrációs modul kapcsolattípust tartalmaz, és importálja az Automation-fiókba. Ellenkező esetben létre kell hoznia egy metaadatfájlt az Automation-kapcsolat típusának megadásához. Ezzel kapcsolatban további információt az [Integrációs modulok című témakörben talál.](automation-integration-modules.md)
+Kapcsolat létrehozásakor meg kell adnia egy kapcsolattípust. A kapcsolat típusa egy olyan sablon, amely tulajdonságok készletét határozza meg. A kapcsolat a kapcsolat típusában meghatározott minden egyes tulajdonság értékeit határozza meg. A kapcsolattípusok az integrációs modulokban lévő Azure Automation-hez kerülnek, vagy az [Azure Automation API-val](/previous-versions/azure/reference/mt163818(v=azure.100)) jönnek létre, ha az integrációs modul kapcsolattípust tartalmaz, és importálja az Automation-fiókba. Ellenkező esetben létre kell hoznia egy metaadatfájlt az Automation-kapcsolat típusának megadásához. Ezzel kapcsolatban további információt az [Integrációs modulok című témakörben talál.](automation-integration-modules.md)
 
 >[!NOTE]
 >Az Azure Automation biztonságos eszközei közé tartoznak a hitelesítő adatok, tanúsítványok, kapcsolatok és titkosított változók. Ezek az eszközök titkosítva vannak, és az Azure Automation-ben egy egyedi kulcs használatával, amely minden Automation-fiókhoz létrejön. Ez a kulcs egy rendszer által felügyelt Key Vault tárolja. A biztonságos eszköz tárolása előtt a kulcs betöltődik a Key Vaultból, és ezután az eszköz titkosításához használható. Ezt a folyamatot az Azure Automation kezeli.

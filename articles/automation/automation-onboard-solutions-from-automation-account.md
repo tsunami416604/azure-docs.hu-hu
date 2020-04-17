@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57378005bd668fa9c0f2aea70c411bbf911130db
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278674"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457654"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Beépített frissítéskezelés, változáskövetés és készletmegoldások
 
@@ -18,7 +18,7 @@ Az Azure Automation megoldásokat kínál az operációs rendszer biztonsági fr
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-ba a https://portal.azure.com címen.
+Jelentkezzen be az https://portal.azure.comAzure-ba a segítségével.
 
 ## <a name="enable-solutions"></a>Megoldások engedélyezése
 
@@ -61,7 +61,7 @@ Amikor hozzáad egy számítógépet a frissítéskezeléshez vagy a változásk
 
 Nyissa meg a Log Analytics-munkaterületet, és válassza a **Mentett keresések** lehetőséget az **Általános**területen. Az ezen megoldások által használt két mentett keresés az alábbi táblázatban látható:
 
-|Név     |Kategória  |Alias  |
+|Name (Név)     |Kategória  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Változáskövetése       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
@@ -82,7 +82,7 @@ Kattintson **a + Add Azure virtuális gépek**, válasszon ki egy vagy több vir
 
 Az Azure-ban nem található gépeket manuálisan kell hozzáadni. Az Automation-fiókban válassza a **Készlet** vagy **a Változáskövetés lehetőséget** a **Konfigurációkezelés**csoportban, vagy **a Frissítéskezelés csoportban** a **Frissítéskezelés**lehetőséget.
 
-Kattintson **a Nem Azure-gép hozzáadása gombra.** Ez a művelet megnyit egy új böngészőablakot a [Microsoft Monitoring Agent telepítésére és konfigurálására vonatkozó utasításokkal a számítógépen,](../azure-monitor/platform/log-analytics-agent.md) hogy a gép megkezdhesse a megoldásnak való jelentéstételt. Ha olyan gépet ad ki, amelyet jelenleg a System Center Operations Manager kezel, nem szükséges új ügynök, a munkaterületi adatok bekerülnek a meglévő ügynökbe.
+Kattintson **a Nem Azure-gép hozzáadása gombra.** Ez a művelet megnyit egy új [böngészőablakot a Windows Log Analytics-ügynök telepítésére és konfigurálására vonatkozó utasításokkal,](../azure-monitor/platform/log-analytics-agent.md) hogy a gép megkezdhesse a megoldásnak való jelentéstételt. Ha olyan gépet ad ki, amelyet jelenleg a System Center Operations Manager kezel, nincs szükség új ügynökre, és a munkaterületi adatok bekerülnek a meglévő ügynökbe.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Fedélzeti gépek a munkaterületen
 
@@ -111,7 +111,7 @@ Ha engedélyezni szeretné a megoldást egy vagy több géphez, válassza **az E
 A következő megoldások a Log Analytics-munkaterülettől függenek:
 
 * [Frissítéskezelés](automation-update-management.md)
-* [Változáskövetés](automation-change-tracking.md)
+* [Változások követése](automation-change-tracking.md)
 * [Virtuális gépek indítása/leállítása munkaidőn kívül](automation-solution-vm-management.md)
 
 Ha úgy dönt, hogy már nem szeretné integrálni az Automation-fiókot egy Log Analytics-munkaterülettel, leválaszthatja fiókját közvetlenül az Azure Portalról.  A folytatás előtt először el kell távolítania a korábban említett megoldásokat, különben ez a folyamat nem folytatódik. Tekintse át a cikket az adott megoldás, amelyet importált, hogy megértsék a szükséges lépéseket, hogy távolítsa el.
@@ -150,7 +150,7 @@ Azt is megteheti, hogy leválassza a munkaterületet az Automation-fiókról a L
 Virtuális gép eltávolítása az Update Management szolgáltatásból:
 
 * A Log Analytics-munkaterületen távolítsa el a virtuális gép `MicrosoftDefaultScopeConfig-Updates`a mentett keresés a Hatókör konfigurációja. A mentett keresések a munkaterület **Általános** területén találhatók.
-* Távolítsa el a [Microsoft Monitoring ügynököt](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy [a Log Analytics ügynököt Linuxra.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
+* Távolítsa el a [Windows Log Analytics-ügynökét](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy [a Linuxos Log Analytics-ügynököt.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
 
 ## <a name="next-steps"></a>További lépések
 

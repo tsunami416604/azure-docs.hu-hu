@@ -1,18 +1,18 @@
 ---
-title: Az Update és a Change Tracking megoldás előkészítése az Azure Automationhöz
+title: Az Azure Automation fedélzeti frissítési, változáskövetési és készletmegoldásai
 description: Tudnivalók az Update és a Change Tracking megoldás előkészítéséről az Azure Automationhöz.
 services: automation
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 721157c333e381799ef08930c667c51a51a4fd6a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75421847"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457620"
 ---
-# <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Az Update és a Change Tracking megoldás előkészítése az Azure Automationhöz
+# <a name="onboard-update-change-tracking-and-inventory-solutions-to-azure-automation"></a>Az Azure Automation fedélzeti frissítési, változáskövetési és készletmegoldásai
 
 Ez az oktatóanyag bemutatja a virtuális gépek Update, Change Tracking és Inventory megoldásainak automatikus előkészítését az Azure Automationhöz:
 
@@ -22,6 +22,9 @@ Ez az oktatóanyag bemutatja a virtuális gépek Update, Change Tracking és Inv
 > * Modulok telepítése és frissítése
 > * Az előkészítési runbook importálása
 > * A runbook indítása
+
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,79 +40,84 @@ A gépek et többféleképpen is belehet vezetni, a megoldást [egy virtuális g
 
 ### <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
-A Change Tracking és az Inventory megoldással [változáskövetési](automation-vm-change-tracking.md) és [leltárkészítési](automation-vm-inventory.md) képességeket biztosíthat a virtuális gépek számára. Ebben a lépésben engedélyezzük a megoldást egy virtuális gépen.
+A változáskövetés és a készletezési megoldások lehetővé teszik a változások és [a készletnyomon](automation-vm-inventory.md) [követését](automation-vm-change-tracking.md) a virtuális gépeken. Ebben a lépésben engedélyezi a megoldásokat egy virtuális gépen.
 
-1. A bal oldali menüben válassza az **Automation-fiókok** lehetőséget, majd válassza ki az Automation-fiókot a listából.
-1. A **KONFIGURÁCIÓKEZELÉS** területen válassza az **Inventory** megoldást.
-1. Válasszon egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy újat. Kattintson az **Engedélyezés** gombra.
+1. Az Azure Portalon válassza az **Automation-fiókok**lehetőséget, majd válassza ki az automatizálási fiókot a listában.
+1. Válassza a **Készlet** lehetőséget a **Konfigurációkezelés csoportban.**
+1. Jelöljön ki egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy újat. 
+1. Kattintson az **Engedélyezés** gombra.
 
-![Az Update megoldás előkészítése](media/automation-onboard-solutions/inventory-onboard.png)
-
-Ha a Change tracking és az Inventory megoldás előkészítése befejeződött az értesítés szerint, a **KONFIGURÁCIÓKEZELÉS** területen kattintson az **Update Management** lehetőségre.
+    ![Az Update megoldás előkészítése](media/automation-onboard-solutions/inventory-onboard.png)
 
 ### <a name="enable-update-management"></a>Az Update Management engedélyezése
 
 Az Update Management megoldás segítségével kezelheti az Azure-beli Windows rendszerű virtuális gépek frissítéseit és javításait. Felmérheti az elérhető frissítések állapotát, ütemezheti a szükséges frissítések telepítését, és áttekintheti a telepítési eredményeket, hogy ellenőrizze, sikeres volt-e a frissítések telepítése a virtuális gépen. Ebben a lépésben engedélyezzük a megoldást a virtuális gépen.
 
-1. Az Automation-fiók **FRISSÍTÉSKEZELÉS** területén válassza az **Update Management** lehetőséget.
-1. A kiválasztott Log Analytics-munkaterület megegyezik az előző lépésben használt munkaterülettel. Az Update Management megoldás előkészítéséhez kattintson az **Engedélyezés** lehetőségre.
+1. Az Automation-fiókban válassza **a** Frissítéskezelés szakasz **Frissítéskezelés** lehetőséget.
+1. A kijelölt Naplóelemzési munkaterület az előző lépésben használt munkaterület. Az Update Management megoldás előkészítéséhez kattintson az **Engedélyezés** lehetőségre. Az Update Management megoldás telepítése közben kék szalagcím látható. 
 
-![Az Update megoldás előkészítése](media/automation-onboard-solutions/update-onboard.png)
-
-Az Update Management megoldás telepítése közben kék szalagcím látható. A megoldás engedélyezését követően a **KONFIGURÁCIÓKEZELÉS** területen válassza a **Change Tracking** lehetőséget a továbblépéshez.
+    ![Az Update megoldás előkészítése](media/automation-onboard-solutions/update-onboard.png)
 
 ### <a name="select-azure-vm-to-be-managed"></a>A kezelni kívánt Azure-beli virtuális gép kiválasztása
 
 Most, hogy engedélyezte a megoldásokat, hozzáadhat egy Azure-beli virtuális gépet a megoldásokhoz való előkészítésre.
 
-1. A virtuális gép hozzáadásához az Automation-fiók **Change tracking** lapján kattintson az **+ Azure-beli virtuális gép hozzáadása** lehetőségre.
+1. Az Automation-fiókban válassza a **Változáskövetés lehetőséget** a **Konfigurációkezelés csoportban.** 
+2. A Változáskövetés lapon kattintson az **Azure-beli virtuális gépek hozzáadása** a virtuális gép hozzáadásához.
 
-1. Válassza ki a virtuális gépet a listából, majd válassza az **Engedélyezés** lehetőséget. Ezzel a művelettel engedélyezi a Change Tracking és az Inventory megoldást a virtuális gépen.
+3. Válassza ki a virtuális gép a listából, és kattintson **az Engedélyezés gombra.** Ez a művelet lehetővé teszi a változáskövetés és a készlet megoldások a virtuális gép.
 
    ![Az Update megoldás engedélyezése a virtuális gépen](media/automation-onboard-solutions/enable-change-tracking.png)
 
-1. Ha a virtuális gép előkészítése befejeződött az értesítés szerint, az Automation-fiók **FRISSÍTÉSKEZELÉS** lapján kattintson az **Update Management** lehetőségre.
+4. Amikor a virtuális gép bevezetési értesítése befejeződik, válassza **a Frissítéskezelés lehetőséget** a **Frissítéskezelés csoportban.**
 
-1. A virtuális gép hozzáadásához kattintson az **+ Azure-beli virtuális gép hozzáadása** lehetőségre.
+5. Válassza **az Azure-beli virtuális gépek hozzáadása** a virtuális gép hozzáadásához.
 
-1. Válassza ki a virtuális gépet a listából, majd válassza az **Engedélyezés** lehetőséget. Ezzel a művelettel engedélyezi az Update Management megoldást a virtuális gépen.
+6. Válassza ki a virtuális gépet a listából, majd válassza az **Engedélyezés** lehetőséget. Ez a művelet lehetővé teszi a frissítésfelügyeleti megoldás a virtuális gép.
 
    ![Az Update megoldás engedélyezése a virtuális gépen](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Ha nem várja meg a másik megoldás befejezését, amikor engedélyezi a következő megoldás üzenet jelenik meg: *Telepítése egy másik megoldás folyamatban van ezen vagy egy másik virtuális gépen. Ha a telepítés befejeződik, az Engedélyezés gomb engedélyezve van, és kérheti a megoldás telepítését ezen a virtuális gépen.*
+> Ha nem várja meg a másik megoldás befejezését, a következő megoldás engedélyezésekor a következő üzenet jelenik meg:`Installation of another solution is in progress on this or a different virtual machine. When that installation completes the Enable button is enabled, and you can request installation of the solution on this virtual machine.`
 
 ## <a name="install-and-update-modules"></a>Modulok telepítése és frissítése
 
-A megoldás-előkészítés sikeres automatizálásához a legújabb verzióra kell frissítenie az Azure-modulokat, és importálnia kell az `AzureRM.OperationalInsights` modult.
+Frissítenie kell a legújabb Azure-modulokra, és importálnia kell az [Az.OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) modult a megoldás bevezetésének sikeres automatizálásához.
 
 ## <a name="update-azure-modules"></a>Az Azure-modulok frissítése
 
-Az Automation-fiók **MEGOSZTOTT ERŐFORRÁSOK** területén válassza a **Modulok** lehetőséget. Az Azure-modulok a legújabb verzióra frissítéséhez válassza az **Azure-modulok frissítése** lehetőséget. A meglévő Azure-modulok a legújabb verzióra frissítéséhez válassza az **Igen** lehetőséget.
+1. Az Automation-fiókban válassza a **Modulok lehetőséget a** Megosztott erőforrások **csoportban.** 
+2. Az Azure-modulok a legújabb verzióra frissítéséhez válassza az **Azure-modulok frissítése** lehetőséget. 
+3. Kattintson **az Igen** gombra az összes meglévő Azure-modul frissítéséhez a legújabb verzióra.
 
-![Modulok frissítése](media/automation-onboard-solutions/update-modules.png)
+![](media/automation-onboard-solutions/update-modules.png) A modulok frissítése
 
-### <a name="install-azurermoperationalinsights-module"></a>Az AzureRM.OperationalInsights modul telepítése
+### <a name="install-azoperationalinsights-module"></a>Az Az.OperationalInsights modul telepítése
 
-A **Modulok** lapon a modulkatalógus megnyitásához kattintson a **Böngészés a katalógusban** lehetőségre. Keresse meg az AzureRM.OperationalInsights modult, majd importálja az Automation-fiókba.
+1. Az Automation-fiókban válassza a **Modulok lehetőséget a** Megosztott erőforrások **csoportban.** 
+2. Válassza **a Galéria tallózása** lehetőséget a modulgyűjtemény megnyitásához. 
+3. Keresse meg az Az.OperationalInsights kifejezést, és importálja ezt a modult az Automation-fiókba.
 
 ![Az OperationalInsights modul importálása](media/automation-onboard-solutions/import-operational-insights-module.png)
 
 ## <a name="import-the-onboarding-runbook"></a>Az előkészítési runbook importálása
 
-1. Az Automation-fiók **FOLYAMATAUTOMATIZÁLÁS** területén válassza a **Runbookok** lehetőséget.
+1. Az Automation-fiókban válassza a **Runbookok** lehetőséget a **Folyamatautomatizálás csoportban.**
 1. Kattintson a **Böngészés a katalógusban** gombra.
-1. Keressen az **update and change tracking** kifejezésre, kattintson a runbookra, majd a **Forrás megtekintése** lapon válassza az **Importálás** lehetőséget. Kattintson az **OK** gombra a runbook az Automation-fiókba importálásához.
+1. Keressen a `update and change tracking` kifejezésre.
+3. Jelölje ki a runbookot, és kattintson az **Importálás gombra** a Forrás megtekintése lapon. 
+4. Kattintson **az OK** gombra a runbook automation-fiókba történő importálásához.
 
    ![Előkészítési runbook importálása](media/automation-onboard-solutions/import-from-gallery.png)
 
-1. A **Runbook** lapon kattintson a **Szerkesztés**, majd a **Közzététel** lehetőségre. A **Runbook közzététele** párbeszédpanelen kattintson az **Igen** gombra a runbook közzétételéhez.
+6. A Runbook lapon kattintson a **Szerkesztés**gombra, majd a **Közzététel gombra.** 
+7. A Runbook közzététele ablaktáblán kattintson az **Igen** gombra a runbook közzétételéhez.
 
 ## <a name="start-the-runbook"></a>A runbook indítása
 
-A runbook indításához elő kellett készítenie a change tracking vagy az update megoldást egy Azure-beli virtuális gépen. Szükség van egy meglévő virtuális gépre és egy erőforráscsoportra, amelynek paraméterei esetében már előkészítette a megoldást.
+A runbook elindításához be kell szállnia a változáskövetés vagy az Azure-beli virtuális gép megoldások frissítése. Szükség van egy meglévő virtuális gépre és egy erőforráscsoportra, amelynek paraméterei esetében már előkészítette a megoldást.
 
-1. Nyissa meg az Enable-MultipleSolution runbookot.
+1. Nyissa meg az Enable-MultipleSolution runbook.Open the **Enable-MultipleSolution** runbook.
 
    ![Többmegoldásos runbookok](media/automation-onboard-solutions/runbook-overview.png)
 
@@ -119,8 +127,8 @@ A runbook indításához elő kellett készítenie a change tracking vagy az upd
    * **VMRESOURCEGROUP** – Az előkészíteni kívánt virtuális gépeket tartalmazó erőforráscsoport neve.
    * **SUBSCRIPTIONID** – Hagyja üresen. Az előkészíteni kívánt új virtuális gép előfizetés-azonosítója. Ha üresen hagyja, a rendszer a munkaterület előfizetését használja. Ha másik előfizetés-azonosítót ad meg, akkor az Automation-fiókhoz tartozó futtató fiókot is meg kell adnia az előfizetés közreműködőjeként.
    * **ALREADYONBOARDEDVM** – Az Update vagy a Change Tracking megoldáshoz manuálisan előkészített virtuális gép neve.
-   * **ALREADYONBOARDEDVMRESOURCEGROUP** – A virtuális gépet tartalmazó erőforráscsoport neve.
-   * **SOLUTIONTYPE** – Adja meg az **Updates** vagy a **Change Tracking** kifejezést
+   * **ALREADYONBOARDEDVMRESOURCEGROUP** - Annak az erőforráscsoportnak a neve, amelyhez a virtuális gép tartozik.
+   * **SOLUTIONTYPE** - Adja meg **a frissítéseket** vagy **a ChangeTracking**értéket.
 
    ![Az Enable-MultipleSolution runbook paraméterei](media/automation-onboard-solutions/runbook-parameters.png)
 
@@ -131,8 +139,8 @@ A runbook indításához elő kellett készítenie a change tracking vagy az upd
 
 Virtuális gép eltávolítása az Update Management szolgáltatásból:
 
-* A Log Analytics-munkaterületen távolítsa el a virtuális gép `MicrosoftDefaultScopeConfig-Updates`a mentett keresés a Hatókör konfigurációja. A mentett keresések a munkaterület **Általános** területén találhatók.
-* Távolítsa el a [Microsoft Monitoring ügynököt](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy [a Log Analytics ügynököt Linuxra.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
+1. A Log Analytics-munkaterületen távolítsa el a virtuális gép `MicrosoftDefaultScopeConfig-Updates`a mentett keresés a hatókör konfigurációját. A mentett keresések a munkaterület **Általános** területén találhatók.
+2. Távolítsa el a [Windows Log Analytics-ügynökét](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy [a Linuxos Log Analytics-ügynököt.](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)
 
 ## <a name="next-steps"></a>További lépések
 

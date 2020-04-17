@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: f434ad6e19c89f248fec948c0a049fabb0f7c476
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248436"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458283"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Access Key Vault titkos elérése az Azure felügyelt alkalmazások telepítésekor
 
-Ha a központi telepítés során paraméterként egy biztonságos értéket (például egy jelszót) kell átadnia, lekérheti az értéket egy [Azure Key Vaultból.](../../key-vault/key-vault-overview.md) A Key Vault eléréséhez felügyelt alkalmazások telepítésekor hozzáférést kell biztosítania a **készülék erőforrás-szolgáltató** egyszerű hozzáférést kell biztosítania. A Felügyelt alkalmazások szolgáltatás ezt az identitást használja a műveletek futtatásához. Ahhoz, hogy az üzembe helyezés során sikeresen lekérje az értéket egy Key Vaultból, a szolgáltatásnévnek képesnek kell lennie a Key Vault elérésére.
+Ha a központi telepítés során paraméterként egy biztonságos értéket (például egy jelszót) kell átadnia, lekérheti az értéket egy [Azure Key Vaultból.](../../key-vault/general/overview.md) A Key Vault eléréséhez felügyelt alkalmazások telepítésekor hozzáférést kell biztosítania a **készülék erőforrás-szolgáltató** egyszerű hozzáférést kell biztosítania. A Felügyelt alkalmazások szolgáltatás ezt az identitást használja a műveletek futtatásához. Ahhoz, hogy az üzembe helyezés során sikeresen lekérje az értéket egy Key Vaultból, a szolgáltatásnévnek képesnek kell lennie a Key Vault elérésére.
 
 Ez a cikk azt ismerteti, hogyan konfigurálhatja a Key Vault ot a felügyelt alkalmazásokkal való együttműködésre.
 

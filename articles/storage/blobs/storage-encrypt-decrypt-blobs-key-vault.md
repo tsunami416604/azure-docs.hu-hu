@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 3f4f1f5e163dfed9f356aed538d934d0e4258790
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618884"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456889"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Oktatóanyag – Blobok titkosítása és visszafejtése az Azure Key Vault használatával
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag ismerteti, hogyan használhatja az ügyféloldali tárolási 
 
 **Az oktatóanyag áttekintésének várható időtartama:** 20 perc
 
-Az Azure Key Vaultról a [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)című témakörben olvashat.
+Az Azure Key Vaultról a [Mi az Azure Key Vault?](../../key-vault/general/overview.md)című témakörben olvashat.
 
 Az Azure Storage ügyféloldali titkosításával kapcsolatos további információkért lásd: [Ügyféloldali titkosítás és az Azure Key Vault for Microsoft Azure Storage.](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
@@ -48,7 +48,7 @@ Itt van egy rövid leírást, hogyan ügyféloldali titkosítás működik:
 
 ## <a name="set-up-your-azure-key-vault"></a>Az Azure Key Vault beállítása
 
-Az oktatóanyag folytatásához a következő lépéseket kell megtennie, amelyeket az [oktatóanyag rövid útmutatója ismertet: Titkos kulcs beállítása és lekérése az Azure Key Vaultból egy .NET webalkalmazás használatával:](../../key-vault/quick-create-net.md)
+Az oktatóanyag folytatásához a következő lépéseket kell megtennie, amelyeket az [oktatóanyag rövid útmutatója ismertet: Titkos kulcs beállítása és lekérése az Azure Key Vaultból egy .NET webalkalmazás használatával:](../../key-vault/secrets/quick-create-net.md)
 
 * Kulcstartó létrehozása.
 * Adjon hozzá egy kulcsot vagy titkos kulcsot a kulcstartóhoz.

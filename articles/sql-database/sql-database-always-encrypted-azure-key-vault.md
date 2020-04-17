@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 006c780aeb3db813c8fdfb5da0b5c13fc4dcfebc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067435"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451669"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Mindig titkosított: Bizalmas adatok védelme és titkosítási kulcsok tárolása az Azure Key Vaultban
 
@@ -55,9 +55,9 @@ Az *alkalmazásazonosító* és a *kulcs*lekért eleméhez kövesse az [erőforr
 
 Most, hogy az ügyfélalkalmazás konfigurálva van, és az alkalmazás azonosítója, itt az ideje, hogy hozzon létre egy key vault és konfigurálja a hozzáférési szabályzatot, így Ön és az alkalmazás hozzáférhet a tároló titkos kulcsait (a mindig titkosított kulcsok). A *create*, *get*, *list*, *sign*, *verify*, *wrapKey*és *unwrapKey* engedélyek szükségesek új oszlopfőkulcs létrehozásához és az SQL Server Management Studio titkosításának beállításához.
 
-A következő parancsfájl futtatásával gyorsan létrehozhat egy kulcstartót. Ezeknek a parancsoknak a részletes magyarázatát, valamint a key vault létrehozásáról és konfigurálásáról a [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
+A következő parancsfájl futtatásával gyorsan létrehozhat egy kulcstartót. Ezeknek a parancsoknak a részletes magyarázatát, valamint a key vault létrehozásáról és konfigurálásáról a [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > A PowerShell Azure Resource Manager (RM) modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés az Az.Sql modul. Az AzureRM-modul legalább 2020 decemberéig továbbra is megkapja a hibajavításokat.  Az Az modulban és az AzureRm-modulokban lévő parancsok argumentumai lényegében azonosak. A kompatibilitásukról az [Új Azure PowerShell Az modul bemutatása](/powershell/azure/new-azureps-module-az)című témakörben lehet további további további információkért.
@@ -106,7 +106,7 @@ az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwr
 
 ## <a name="create-a-blank-sql-database"></a>Üres SQL-adatbázis létrehozása
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2.  > Nyissa meg az **Erőforrás-adatbázisok** > **Databases****sql-adatbázis létrehozása című**területet.
 3. **Hozzon** létre egy **Klinika** nevű üres adatbázist egy új vagy meglévő kiszolgálón. Az Azure Portalon az adatbázis létrehozásának részletes útmutatásaaz [Első Azure SQL-adatbázis.](sql-database-single-database-get-started.md)
 

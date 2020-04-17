@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3491a54682e8f2b244c0400480a69e083335f5c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008389"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454679"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-adatok titkosítása in-rest
 
@@ -163,7 +163,7 @@ A titkosítási kulcsokat használó műveletek esetén a szolgáltatásidentit�
 A kulcs beszerzése az adatok titkosításához vagy visszafejtéséhez nyugalmi a szolgáltatás identitását, amely az Erőforrás-kezelő szolgáltatáspéldány fog futni, mint kell UnwrapKey (a kulcs beolvasása a visszafejtés) és WrapKey (beszúrni egy kulcsot a kulcstartóba, amikor új kulcsot hoz létre).
 
 >[!NOTE]
->A Key Vault-engedélyezésről további részleteket az [Azure Key Vault dokumentációjában](../../key-vault/key-vault-secure-your-key-vault.md)talál a kulcstartó biztonságos lapján.
+>A Key Vault-engedélyezésről további részleteket az [Azure Key Vault dokumentációjában](../../key-vault/general/secure-your-key-vault.md)talál a kulcstartó biztonságos lapján.
 
 **Előnyök**
 
@@ -282,7 +282,7 @@ Az Azure SQL Database-adatok ügyféloldali titkosítása a [Mindig titkosított
 | Azure Data Catalog               | Igen                | -                  | -                  |
 | Azure HDInsight                  | Igen                | Összes                | -                  |
 | Azure Monitor alkalmazáselemzési adatok | Igen                | Igen                | -                  |
-| Azure Monitor-naplóelemzés | Igen                | Igen                | -                  |
+| Azure Monitor-naplóelemzés      | Igen                | Igen                | -                  |
 | Azure Data Explorer              | Igen                | Igen                | -                  |
 | Azure Data Factory               | Igen                | Igen                | -                  |
 | Azure Data Lake Store            | Igen                | Igen, RSA 2048 bites  | -                  |
@@ -294,11 +294,12 @@ Az Azure SQL Database-adatok ügyféloldali titkosítása a [Mindig titkosított
 | Virtuális gépek                 | Igen                | Igen, RSA 2048 bites  | -                  |
 | Virtuális gép méretezési készlete        | Igen                | Igen, RSA 2048 bites  | -                  |
 | SAP HANA                         | Igen                | Igen, RSA 2048 bites  | -                  |
-| App Service                      | Igen                | Igen                | -                  |
-| Automation                       | Igen                | Igen                | -                  |
-| Azure Portal                     | Igen                | Igen                | -                  |
+| App Service                      | Igen                | igen\*\*            | -                  |
+| Automation                       | Igen                | igen\*\*            | -                  |
+| Azure Functions                  | Igen                | igen\*\*            | -                  |
+| Azure Portal                     | Igen                | igen\*\*            | -                  |
 | Logic Apps                       | Igen                | Igen                | -                  |
-| Azure Managed Applications       | Igen                | Igen                | -                  |
+| Azure Managed Applications       | Igen                | igen\*\*            | -                  |
 | Service Bus                      | Igen                | Igen                | -                  |
 | Site Recovery                    | Igen                | Igen                | -                  |
 | **Adatbázisok**                    |                    |                    |                    |
@@ -312,6 +313,7 @@ Az Azure SQL Database-adatok ügyféloldali titkosítása a [Mindig titkosított
 | Table Storage                    | Igen                | Igen                | Igen                |
 | Azure Cosmos DB                  | Igen                | Igen                | -                  |
 | Azure Databricks                 | Igen                | Igen                | -                  |
+| Azure Database Migration Service | Igen                | N/A\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Igen                | -                  | Igen                |
 | Azure Repos                      | Igen                | -                  | Igen                |
@@ -344,6 +346,7 @@ Az Azure SQL Database-adatok ügyféloldali titkosítása a [Mindig titkosított
 | File Sync                         | Igen                | Igen, RSA 2048 bites  | -                  |
 | Queue Storage                    | Igen                | Igen                | Igen                |
 | Avere vFXT                       | Igen                | -                  | -                  |
+| Azure Cache for Redis            | Igen                | N/A\*              | -                  |
 | Azure NetApp Files               | Igen                | Igen                | -                  |
 | Archive Storage                  | Igen                | Igen, RSA 2048 bites  | -                  |
 | StorSimple                       | Igen                | Igen, RSA 2048 bites  | Igen                |
@@ -352,6 +355,8 @@ Az Azure SQL Database-adatok ügyféloldali titkosítása a [Mindig titkosított
 | Data Box Edge                    | Igen                | Igen                | -                  |
 
 \*Ez a szolgáltatás nem tart meg adatokat. Az átmeneti gyorsítótárak , ha vannak ilyenek, Microsoft-kulccsal vannak titkosítva.
+
+\*\*Ez a szolgáltatás támogatja az adatok tárolását a saját Key Vault, storage-fiók, vagy más adatmegőrzési szolgáltatás, amely már támogatja a kiszolgálóoldali titkosítás ügyfél által felügyelt kulcs.
 
 ## <a name="conclusion"></a>Összegzés
 

@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: peterclu
-ms.author: peterlu
-ms.date: 02/22/2020
-ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+author: likebupt
+ms.author: keli19
+ms.date: 04/13/2020
+ms.openlocfilehash: c46c21b5662b924552f850f226a12c7350b4625a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399065"
+ms.locfileid: "81458199"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Algoritmus & modulhivatkozás az Azure Machine Learning tervezőjéhez (előzetes verzió)
 
@@ -59,6 +59,10 @@ Az algoritmusok kiválasztásával kapcsolatban további
 | Ajánlás | Javaslati modellek létrehozása. | [Ajánló értékelése](evaluate-recommender.md) <br/> [SVD-ajánló pontozása](score-svd-recommender.md) <br/> [SVD-ajánló betanítása](train-SVD-recommender.md) |
 | Rendellenességek észlelése | Anomáliadetektálási modellek létrehozása. | [PCA-alapú anomáliadetektálás](pca-based-anomaly-detection.md) <br/> [Anomáliadetektálási modell betanítása](train-anomaly-detection-model.md) |
 
+
+## <a name="web-service"></a>Webszolgáltatás
+
+Ismerje meg a [webszolgáltatás-modulokat,](web-service-input-output.md) amelyek szükségesek a valós idejű következtetés az Azure Machine Learning designer.
 
 ## <a name="error-messages"></a>Hibaüzenetek
 

@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 7e6981fb57421846b491693bb6195ecef31a3773
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986303"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450351"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Csatornatervezési minták módosítása az Azure Cosmos DB-ben
 
@@ -99,7 +99,7 @@ Fontolja meg például egy kiskereskedelmi alkalmazás az esemény forrás terve
 
 1. A vevő hozzáadja az A cikket a bevásárlókosarához
 2. A vevő hozzáadja a B cikket a bevásárlókosárhoz
-3. A vevő eltávolítja az A cikket a bevásárlókosárból
+3. A vevő eltávolítja az A cikket a bevásárlókosarából
 4. Vevői kijelentkezés és a bevásárlókocsi tartalma szállításra kerülnek
 
 Az aktuális bevásárlókosár-tartalom materializált nézete minden ügyfél számára megmarad. Ennek az alkalmazásnak biztosítania kell, hogy ezeket az eseményeket a bekövetkezésük sorrendjében dolgozzák fel. Ha például a kosár kivételt az A cikk eltávolítása előtt kellett volna feldolgozni, akkor valószínű, hogy a vevő az A cikket szállította volna, szemben a kívánt B cikkel. Annak biztosítása érdekében, hogy ez a négy esemény előfordulásuk sorrendjében dolgozzák fel, ugyanabban a partíciókulcs-értékben kell lenniük. Ha a **partíciókulcsként a felhasználónevet** (minden ügyfél egyedi felhasználónévvel rendelkezik), garantálhatja, hogy ezek az események ugyanabban a sorrendben jelennek meg a módosítási csatornában, amelyben az Azure Cosmos DB-be írásra kerülnek.

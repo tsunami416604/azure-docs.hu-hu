@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 7ac657e6627aff4eb588506118e5eeeaef70efba
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548605"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454645"
 ---
 # <a name="azure-encryption-overview"></a>Azure-titkosítás – áttekintés
 
@@ -61,7 +61,7 @@ A három kiszolgálóoldali titkosítási modell különböző kulcskezelési je
 
 A Windows és Linux virtuális gépek az [Azure lemeztitkosítással](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)védhetik meg a [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) technológiát és a Linux [DM-Crypt technológiát](https://en.wikipedia.org/wiki/Dm-crypt) az operációs rendszer lemezei és az adatlemezek teljes kötettitkosítással történő védelmére.
 
-A titkosítási kulcsokat és a titkos kulcsokat az [Azure Key Vault-előfizetés](../../key-vault/key-vault-overview.md)védi. Az Azure Backup szolgáltatás használatával biztonsági másolatot készíthet és visszaállíthat a kulcstitkosítási kulcs (KEK) konfigurációját használó titkosított virtuális gépekről (VM-ek).
+A titkosítási kulcsokat és a titkos kulcsokat az [Azure Key Vault-előfizetés](../../key-vault/general/overview.md)védi. Az Azure Backup szolgáltatás használatával biztonsági másolatot készíthet és visszaállíthat a kulcstitkosítási kulcs (KEK) konfigurációját használó titkosított virtuális gépekről (VM-ek).
 
 ### <a name="azure-storage-service-encryption"></a>Azure storage-szolgáltatás titkosítása
 

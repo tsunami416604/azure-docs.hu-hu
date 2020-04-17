@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea944d4cfa3006c33f1dee3dd8e6ee6088681aa7
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 796e3b3f46bc83b776826baf6e078c696eda543b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618647"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456771"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Key Vault használatával az Azure CLI használatával
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Key Vault az ügyfelek által felügyelt kulcsok az Azure CLI használatával. Ha meg szeretné tudni, hogyan hozhat létre egy kulcstartót az Azure CLI használatával, olvassa el [a rövid útmutató: Titkos kulcs beállítása és beolvasása az Azure Key Vaultból az Azure CLI használatával című témakört.](../../key-vault/quick-create-cli.md)
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Key Vault az ügyfelek által felügyelt kulcsok az Azure CLI használatával. Ha meg szeretné tudni, hogyan hozhat létre egy kulcstartót az Azure CLI használatával, olvassa el [a rövid útmutató: Titkos kulcs beállítása és beolvasása az Azure Key Vaultból az Azure CLI használatával című témakört.](../../key-vault/secrets/quick-create-cli.md)
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Identitás hozzárendelése a tárfiókhoz
 
@@ -55,7 +55,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-Ha meg szeretné tudni, hogyan engedélyezheti a **helyreállítható törlést** és a **Nem engedélyezést** egy meglévő kulcstartóban az Azure CLI-vel, olvassa el a **"A soft-delete"** és a **Kiürítési védelem engedélyezése** című szakaszokat a [soft-delete használata a CLI-vel](../../key-vault/key-vault-soft-delete-cli.md)című szakaszban.
+Ha meg szeretné tudni, hogyan engedélyezheti a **helyreállítható törlést** és a **Nem engedélyezést** egy meglévő kulcstartóban az Azure CLI-vel, olvassa el a **"A soft-delete"** és a **Kiürítési védelem engedélyezése** című szakaszokat a [soft-delete használata a CLI-vel](../../key-vault/general/soft-delete-cli.md)című szakaszban.
 
 ## <a name="configure-the-key-vault-access-policy"></a>A key vault-hozzáférési házirend konfigurálása
 

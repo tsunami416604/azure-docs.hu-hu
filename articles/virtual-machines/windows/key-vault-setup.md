@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: 3dcf82a8d4bc698c1900903649a2dd5a383f64b4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 098d4df3938f591cb72b3bfd59b7a5549469785c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878408"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451737"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>A Key Vault beállítása virtuális gépekhez az Azure Resource Managerben
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Az Azure Resource Manager-veremben a titkos kulcsok/tanúsítványok a Key Vault erőforrás-szolgáltató által biztosított erőforrásokként vannak modellezve. Ha többet szeretne megtudni a Key Vaultról, olvassa el [a Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
+Az Azure Resource Manager-veremben a titkos kulcsok/tanúsítványok a Key Vault erőforrás-szolgáltató által biztosított erőforrásokként vannak modellezve. Ha többet szeretne megtudni a Key Vaultról, olvassa el [a Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 
 > [!NOTE]
 > 1. Ahhoz, hogy a Key Vault használható legyen az Azure Resource Manager virtuális gépekkel, a Key Vault **EnabledForDeployment** tulajdonságát igaz értékre kell állítani. Ezt különböző ügyfeleken teheti meg.
@@ -34,7 +34,7 @@ Az Azure Resource Manager-veremben a titkos kulcsok/tanúsítványok a Key Vault
 >
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>A Key Vault beállítása a PowerShell használatával
-Ha a PowerShell használatával szeretne létrehozni egy kulcstartót, olvassa el a Titkos kulcs beállítása és lekérése az [Azure Key Vaultból a PowerShell használatával című témakört.](../../key-vault/quick-create-powershell.md)
+Ha a PowerShell használatával szeretne létrehozni egy kulcstartót, olvassa el a Titkos kulcs beállítása és lekérése az [Azure Key Vaultból a PowerShell használatával című témakört.](../../key-vault/secrets/quick-create-powershell.md)
 
 Új kulcstartók esetén használhatja ezt a PowerShell-parancsmac:
 
@@ -45,7 +45,7 @@ Meglévő kulcstartók esetén használhatja ezt a PowerShell-parancsmast:
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 ## <a name="use-cli-to-set-up-key-vault"></a>A CLI használata a Key Vault beállítása
-Ha a parancssori csatolóval (CLI) szeretne létrehozni egy kulcstartót, olvassa el a Key Vault kezelése a CLI használatával című [témakört.](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)
+Ha a parancssori csatolóval (CLI) szeretne létrehozni egy kulcstartót, olvassa el a Key Vault kezelése a CLI használatával című [témakört.](../../key-vault/general/manage-with-cli2.md#create-a-key-vault)
 
 A CLI, létre kell hoznia a key vault hozzárendelése előtt a központi telepítési szabályzat. Ehhez futtassa az alábbi parancsot:
 

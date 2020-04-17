@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1e4470ce5ac69390cf8d361577b9ebf0013e4e51
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 861c7ffa647c8d2f37b32c359253ca991eeb314f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405789"
+ms.locfileid: "81457705"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Erőforrások automatizálása az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó használatával
 
@@ -68,7 +68,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 ```
 
 > [!NOTE]
-> Ez a kód nem távolítja el a Microsoft Monitoring Agent-et a számítógépről. Csak eltávolítja a hibrid Runbook feldolgozó szerepkör funkcióit és konfigurációját.
+> Ez a kód nem távolítja el a Log Analytics ügynök Linux a számítógépről. Csak eltávolítja a hibrid Runbook feldolgozó szerepkör funkcióit és konfigurációját.
 
 ## <a name="remove-a-hybrid-worker-group"></a>Hibridfeldolgozó-csoport eltávolítása
 
@@ -89,7 +89,7 @@ Hibrid Runbook-feldolgozó csoport eltávolításához először el kell távol�
 
 ### <a name="hybrid-worker-role"></a>Hibrid feldolgozószerepkör
 
-Ahhoz, hogy a hibrid Runbook-feldolgozó csatlakozzon az Azure Automationhez, és regisztráljon vele, hozzáféréssel kell rendelkeznie a portszámhoz és az ebben a szakaszban ismertetett URL-címekhez. Ez a hozzáférés a tetején a [portok és URL-címek szükséges Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) az Azure Monitor naplók hoz való csatlakozáshoz.
+Ahhoz, hogy a hibrid Runbook-feldolgozó csatlakozzon az Azure Automationhez, és regisztráljon vele, hozzáféréssel kell rendelkeznie a portszámhoz és az ebben a szakaszban ismertetett URL-címekhez. Ez a hozzáférés a tetején a [portok és URL-címek szükséges Log Analytics-ügynök](../azure-monitor/platform/agent-windows.md) az Azure Monitor naplók hoz való csatlakozáshoz.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

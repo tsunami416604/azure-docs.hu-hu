@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: abff2f16d9559f015417711820a993badd636f7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ebbdda39f019f374f8e5abe951d0180c0dd453f6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133078"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457875"
 ---
 # <a name="metrics-for-application-gateway"></a>Az Alkalmazásátjáró metrikák
 
@@ -102,7 +102,7 @@ Az Application Gateway esetében a következő mérőszámok érhetők el:
 
 - **Sikertelen kérelmek**
 
-  Az Application Gateway által kézbesített sikertelen kérelmek száma. A kérelmek száma tovább szűrhető az egyes/specifikus háttérkészlet-http beállítási kombinációnkénti szám megjelenítéséhez.
+  Azon kérések száma, amelyeket az Application Gateway 5xx kiszolgálóhibakódokkal kézbesített. Ez magában foglalja az Application Gateway-ből létrehozott 5xx kódokat, valamint a háttérrendszerből generált 5xx kódokat. A kérelmek száma tovább szűrhető az egyes/specifikus háttérkészlet-http beállítási kombinációnkénti szám megjelenítéséhez.
    
 - **Rögzített számlázható kapacitásegységek**
 
@@ -162,7 +162,7 @@ Az Application Gateway esetében a következő mérőszámok érhetők el:
 
 - **Sikertelen kérelmek**
 
-  Az Application Gateway által kézbesített sikertelen kérelmek száma. A kérelmek száma tovább szűrhető az egyes/specifikus háttérkészlet-http beállítási kombinációnkénti szám megjelenítéséhez.
+  Azon kérések száma, amelyeket az Application Gateway 5xx kiszolgálóhibakódokkal kézbesített. Ez magában foglalja az Application Gateway-ből létrehozott 5xx kódokat, valamint a háttérrendszerből generált 5xx kódokat. A kérelmek száma tovább szűrhető az egyes/specifikus háttérkészlet-http beállítási kombinációnkénti szám megjelenítéséhez.
 
 - **Válasz állapota**
 

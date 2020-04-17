@@ -9,12 +9,12 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f105eac0f6f21ea3358340a4e2aaec7d1f1a95ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 569c989e8876bb7213d1469c7a70da99aa0b1e9c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190550"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455342"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Biztonsági vezérlők a Windows virtuális gépekhez
 
@@ -50,7 +50,7 @@ Ez a cikk a Windows virtuális gépekbe beépített biztonsági vezérlőket dok
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| Kiszolgálóoldali titkosítás inaktív állapotban: Microsoft által felügyelt kulcsok | Igen | Lásd: [Virtuális lemezek titkosítása Windows virtuális gépen.](/azure/virtual-machines/windows/encrypt-disks) |
+| Kiszolgálóoldali titkosítás inaktív állapotban: Microsoft által felügyelt kulcsok | Igen | Lásd: [Virtuális lemezek titkosítása Windows virtuális gépen.](/azure/virtual-machines/windows/disk-encryption-overview) |
 | Titkosítás átvitel közben (például ExpressRoute-titkosítás, virtuális hálózat titkosítása és Virtuálishálózati titkosítás)| Igen | Az Azure virtuális gépek támogatja az [ExpressRoute](/azure/expressroute) és a Virtuális hálózat titkosítását. Lásd: [Bejövő titkosítás a virtuális gépeken.](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms) |
 | Kiszolgálóoldali titkosítás inaktív állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfél által felügyelt kulcsok egy támogatott Azure titkosítási forgatókönyv; lásd: [Azure-titkosítás – áttekintés.](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)|
 | Oszlopszintű titkosítás (Azure Data Services)| N/A | |

@@ -3,12 +3,12 @@ title: Paraméterek használata dinamikus tervrajzok létrehozásához
 description: Ismerje meg a statikus és dinamikus paramétereket, és hogyan használhatja őket biztonságos és dinamikus tervrajzok létrehozásához.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383618"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458488"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paramétereken keresztül
 
@@ -41,7 +41,7 @@ Ha a tervezet hozzárendelés használ **egy felhasználó által hozzárendelt 
 > [!IMPORTANT]
 > Mindkét esetben a Key Vault hozzáférés **engedélyezése az Azure Resource Manager a sablon üzembe helyezését** konfigurálva az Access **szabályzatok** lapon. A szolgáltatás engedélyezésére vonatkozó útmutatásért olvassa el a Key Vault – Sablon telepítésének engedélyezése című [témakört.](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)
 
-Az Azure Key Vault ról a [Key Vault áttekintése című témakörben olvashat bővebben.](../../../key-vault/key-vault-overview.md)
+Az Azure Key Vault ról a [Key Vault áttekintése című témakörben olvashat bővebben.](../../../key-vault/general/overview.md)
 
 ## <a name="parameter-types"></a>Paramétertípusok
 
@@ -234,8 +234,8 @@ A **dinamikus paraméterek** beállítása a hozzárendelés során az érték k
 ## <a name="next-steps"></a>További lépések
 
 - Lásd a [tervezet függvényeinek](../reference/blueprint-functions.md)listáját .
-- További információ a [tervterv életciklusáról.](lifecycle.md)
-- Ismerje meg a [tervezet szekvenálási sorrendjének testreszabását.](sequencing-order.md)
-- Ismerje meg, hogyan használhatja a [tervezet erőforrás-zárolást.](resource-locking.md)
-- További információ a [meglévő hozzárendelések frissítéséhez.](../how-to/update-existing-assignments.md)
-- Az [általános hibaelhárítással](../troubleshoot/general.md)kapcsolatos tervtervezet ekhozzárendelése során fellépő problémák megoldása.
+- Tudnivalók a [tervek életciklusáról](lifecycle.md).
+- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).
