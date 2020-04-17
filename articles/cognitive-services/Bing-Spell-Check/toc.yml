@@ -7,7 +7,7 @@
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: REST API
       expanded: true
@@ -28,7 +28,7 @@
       items:
         - name: 'A C# használata'
           href: sdk-quickstart-spell-check.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Helyesírás-ellenőrző webalkalmazás készítése
       href: tutorials/spellcheck.md
@@ -72,7 +72,7 @@
     - name: A Bing Spell Check API elemzése
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: Nyelvi és régiós támogatás
+    - name: Nyelvi támogatás
       href: language-support.md
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'

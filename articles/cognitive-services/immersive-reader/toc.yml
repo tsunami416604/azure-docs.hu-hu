@@ -4,7 +4,7 @@
   items:
     - name: Mi az a Modern olvasó?
       href: Overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: 'A C# használata'
@@ -13,7 +13,7 @@
       href: quickstart-nodejs.md
     - name: A Swift használata (iOS)
       href: ios-quickstart.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: A Modern olvasó indítása (Python)
       href: tutorial-python.md
@@ -42,6 +42,6 @@
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Nyelvi támogatás
-      href: 'https://aka.ms/ltlangsupport'
+      href: language-support.md
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

@@ -147,7 +147,7 @@
               href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: Referencia
   items:
-    - name: Nyelvek
+    - name: Nyelvi támogatás
       href: Overview/language-support.md
     - name: Korlátok
       href: limits.md

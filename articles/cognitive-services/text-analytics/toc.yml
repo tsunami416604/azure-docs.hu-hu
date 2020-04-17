@@ -9,7 +9,7 @@
       href: text-analytics-user-scenarios.md
     - name: Újdonságok
       href: whats-new.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Ügyfélkódtár
@@ -30,7 +30,7 @@
           href: quickstarts/go.md
         - name: A Ruby használata
           href: quickstarts/ruby.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: A Power BI integrálása ügyfelektől származó visszajelzések elemzéséhez
       href: Tutorials/tutorial-power-bi-key-phrases.md
@@ -48,7 +48,7 @@
   items:
     - name: Nevesített entitástípusok
       href: named-entity-types.md
-    - name: Nyelvi és régiós támogatás
+    - name: Nyelvi támogatás
       href: language-support.md
     - name: Szövegeltolások
       href: concepts/text-offsets.md

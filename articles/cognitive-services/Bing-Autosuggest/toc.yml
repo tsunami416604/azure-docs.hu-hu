@@ -79,7 +79,7 @@
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
     - name: Próbálja ki!
       href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
-    - name: Nyelvi és régiós támogatás
+    - name: Nyelvi támogatás
       href: language-support.md
     - name: A Bing Autosuggest API elemzése
       maintainContext: true

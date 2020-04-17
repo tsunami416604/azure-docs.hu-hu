@@ -7,7 +7,7 @@
       expanded: true
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: REST API-k
       items:
@@ -29,7 +29,7 @@
       items:
         - name: Bing Web Search-ügyfélkódtárak
           href: ./quickstarts/client-libraries.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Egyoldalas webalkalmazás készítése
       href: tutorial-bing-web-search-single-page-app.md
@@ -95,7 +95,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Nyelvi és régiós támogatás
+    - name: Nyelvi támogatás
       href: language-support.md
     - name: Bing Web Search API – elemzés
       href: bing-web-stats.md

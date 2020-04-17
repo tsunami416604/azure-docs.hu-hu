@@ -97,7 +97,7 @@
       href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553'
     - name: Bing News Search-végpontok
       href: endpoint-news.md
-    - name: Nyelvi és régiós támogatás
+    - name: Nyelvi támogatás
       href: language-support.md
     - name: Bing News Search API – elemzés
       href: bing-news-stats.md

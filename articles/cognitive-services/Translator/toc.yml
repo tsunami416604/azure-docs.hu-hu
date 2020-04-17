@@ -6,7 +6,7 @@
       items:
         - name: Mi a Translator Text API?
           href: translator-info-overview.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Szöveg lefordítása
           href: quickstart-translate.md
@@ -20,7 +20,7 @@
           href: quickstart-languages.md
         - name: Mondat hosszának meghatározása
           href: quickstart-sentences.md
-    - name: oktatóanyagokat
+    - name: Oktatóanyagok
       items:
         - name: 'Translator Textet használó WPF-alkalmazás létrehozása (C#)'
           href: tutorial-wpf-translation-csharp.md
@@ -98,7 +98,7 @@
           href: 'https://aka.ms/TranslatorGitHub'
         - name: GYIK
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Nyelvi és régiós támogatás
+        - name: Nyelvi támogatás
           href: language-support.md
         - name: Díjszabás
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
@@ -116,7 +116,7 @@
       items:
         - name: Mi a Custom Translator?
           href: custom-translator/overview.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Egyéni modell létrehozása
           href: custom-translator/quickstart-build-deploy-custom-model.md

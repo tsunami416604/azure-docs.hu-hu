@@ -8,7 +8,7 @@
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: REST API
       items:
@@ -28,7 +28,7 @@
       items:
         - name: Bing Image Search-ügyfélkódtár
           href: ./quickstarts/client-libraries.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Képkeresési webalkalmazás létrehozása
       href: tutorial-bing-image-search-single-page-app.md
@@ -107,7 +107,7 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
     - name: Bing Image Search-végpontok
       href: image-search-endpoint.md
-    - name: Nyelvi és régiós támogatás
+    - name: Nyelvi támogatás
       href: language-support.md
     - name: Bing Image Search API – elemzés
       maintainContext: true
