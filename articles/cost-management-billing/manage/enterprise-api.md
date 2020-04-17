@@ -5,14 +5,14 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 04/14/2020
 ms.author: banders
-ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202913"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383166"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k áttekintése
 A jelentéskészítési API-kkal a nagyvállalati Azure-ügyfelek programozott módon kérhetnek le használati és számlázási adatokat az előnyben részesített adatelemző eszközökbe. A nagyvállalati ügyfelek aláírtak egy [Nagyvállalati Szerződést (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral, amelyben egyeztetett pénzügyi kötelezettségeket állapítanak meg annak érdekében, hogy az Azure-erőforrások egyéni díjszabására legyenek jogosultak.
@@ -51,7 +51,9 @@ Az összes fenti API válaszában ETagek szerepelnek. Az ETagek változása azt 
 |Válasz állapotkódja|Üzenet|Leírás|
 |-|-|-|
 |200| OK|Nincs hiba|
+|400| Hibás kérés| Érvénytelen paraméterek – dátumtartományok, EA-számok stb.|
 |401| Nem engedélyezett| Az API-kulcs nem található, érvénytelen, lejárt stb.|
 |404| Nem érhető el| A jelentésvégpont nem található|
-|400| Hibás kérés| Érvénytelen paraméterek – dátumtartományok, EA-számok stb.|
+|429 | TooManyRequests | A rendszer szabályozta a kérelmet. Várjon a(z) <code>x-ms-ratelimit-microsoft.consumption-retry-after</code> fejlécben megadott ideig, majd próbálkozzon újra.|
 |500| Kiszolgálóhiba| Váratlan hiba a kérelem feldolgozása során|
+| 503 | ServiceUnavailable | A szolgáltatás átmenetileg nem érhető el. Várjon a(z) <code>Retry-After</code> fejlécben megadott ideig, majd próbálkozzon újra.|

@@ -252,7 +252,7 @@
           href: virtual-machine-scale-sets-networking.md
         - name: Operációs rendszer automatikus frissítései
           href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: Példányok automatikus javítása (előzetes verzió)
+        - name: Példányok automatikus javítása
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Példányvédelem
           href: virtual-machine-scale-sets-instance-protection.md

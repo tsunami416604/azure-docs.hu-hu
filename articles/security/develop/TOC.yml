@@ -41,6 +41,8 @@
           href: security-code-analysis-faq.md
         - name: YAML-konfiguráció
           href: yaml-configuration.md
+        - name: Kiadások és ütemterv
+          href: security-code-analysis-releases.md
     - name: Microsoft Threat Modeling Tool
       displayName: stride
       href: threat-modeling-tool.md

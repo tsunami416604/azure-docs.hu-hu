@@ -152,5 +152,9 @@
       href: pca-based-anomaly-detection.md
     - name: Rendellenesség-észlelési modell betanítása
       href: train-anomaly-detection-model.md
+- name: Webszolgáltatás
+  items:
+    - name: Webszolgáltatás bemenete/kimenete
+      href: web-service-input-output.md
 - name: Modulhibák és hibaelhárítás
   href: designer-error-codes.md

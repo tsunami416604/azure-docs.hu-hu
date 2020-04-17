@@ -22,22 +22,16 @@
   items:
     - name: Hitelesítési módszerek
       href: concept-authentication-methods.md
-    - name: Jelszó nélküli hitelesítés
-      href: concept-authentication-passwordless.md
-    - name: Biztonsági tudnivalók regisztrálása
-      href: concept-registration-mfa-sspr-combined.md
-    - name: Új jelszó létrehozása
+    - name: Új jelszó önkiszolgáló kérése
       items:
         - name: Új jelszó kérésének módja
           href: concept-sspr-howitworks.md
-        - name: Új jelszó létrehozásának lehetőségei
-          href: concept-sspr-customization.md
-        - name: Új jelszó kérésére vonatkozó szabályzatok
-          href: concept-sspr-policy.md
-        - name: Melyik licencre van szükségem?
-          href: concept-sspr-licensing.md
         - name: Helyszíni integráció
           href: concept-sspr-writeback.md
+        - name: Házirendek
+          href: concept-sspr-policy.md
+        - name: Licencek
+          href: concept-sspr-licensing.md
     - name: Multi-Factor Authentication
       items:
         - name: Az MFA működése
@@ -50,12 +44,16 @@
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
         - name: GYIK
           href: multi-factor-authentication-faq.md
-    - name: Azure AD jelszóvédelem
+    - name: Jelszó nélküli hitelesítés
+      href: concept-authentication-passwordless.md
+    - name: Jelszavas védelem
       items:
         - name: Gyenge jelszavak megszüntetése a felhőben
           href: concept-password-ban-bad.md
         - name: Gyenge jelszavak megszüntetése a helyszínen
           href: concept-password-ban-bad-on-premises.md
+    - name: Biztonsági tudnivalók regisztrálása
+      href: concept-registration-mfa-sspr-combined.md
     - name: Rugalmas hozzáférés-vezérlők
       href: concept-resilient-controls.md
 - name: Útmutatók
@@ -64,6 +62,8 @@
       items:
         - name: Üzembehelyezési útmutató
           href: howto-sspr-deployment.md
+        - name: Felhasználói testreszabási lehetőségek
+          href: howto-sspr-customization.md
         - name: A hitelesítési adatok előzetes regisztrációja
           href: howto-sspr-authenticationdata.md
         - name: SSPR Windows rendszerű ügyfelekhez
@@ -100,28 +100,6 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: Biztonsági tudnivalók regisztrálása
-      items:
-        - name: A kombinált regisztráció engedélyezése
-          href: howto-registration-mfa-sspr-combined.md
-        - name: Kombinált regisztráció hibaelhárítása
-          href: howto-registration-mfa-sspr-combined-troubleshoot.md
-    - name: Azure AD jelszóvédelem
-      items:
-        - name: Helyszíni megtervezése és üzembe helyezés
-          href: howto-password-ban-bad-on-premises-deploy.md
-        - name: Helyszíni engedélyezés és konfigurálás
-          href: howto-password-ban-bad-on-premises-operations.md
-        - name: A helyszíni üzemelő példányok monitorozása
-          href: howto-password-ban-bad-on-premises-monitor.md
-        - name: Helyszíni üzemelő példányok hibaelhárítása
-          href: howto-password-ban-bad-on-premises-troubleshoot.md
-        - name: Helyszíni üzemeltetésre vonatkozó gyakori kérdések
-          href: howto-password-ban-bad-on-premises-faq.md
-        - name: Helyszíni ügynök verzióelőzményei
-          href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Azure AD intelligens zárolás
-      href: howto-password-smart-lockout.md
     - name: Jelszó nélküli
       items:
         - name: Jelszó nélküli használat üzembe helyezése
@@ -138,16 +116,38 @@
           href: howto-authentication-passwordless-phone.md
         - name: Vállalati Windows Hello
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: Biztonsági tudnivalók regisztrálása
+      items:
+        - name: A kombinált regisztráció engedélyezése
+          href: howto-registration-mfa-sspr-combined.md
+        - name: Kombinált regisztráció hibaelhárítása
+          href: howto-registration-mfa-sspr-combined-troubleshoot.md
+    - name: Helyszíni jelszóvédelem
+      items:
+        - name: Tervezés és üzembe helyezés
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: Engedélyezés és konfigurálás
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: Figyelés
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: Hibaelhárítás
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: Gyakori kérdések
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: Ügynök verzióelőzményei
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: SMS-alapú hitelesítés (előzetes verzió)
       href: howto-authentication-sms-signin.md
+    - name: Azure AD intelligens zárolás
+      href: howto-password-smart-lockout.md
     - name: Tanúsítványalapú hitelesítés
       items:
         - name: Bevezetés a tanúsítványalapú hitelesítésbe
           href: active-directory-certificate-based-authentication-get-started.md
           items:
-            - name: CBA Android-eszközökön
+            - name: Használat Android-eszközökön
               href: active-directory-certificate-based-authentication-android.md
-            - name: CBA iOS-eszközökön
+            - name: Használat iOS-eszközökön
               href: active-directory-certificate-based-authentication-ios.md
     - name: Jelentéskészítés
       items:

@@ -133,6 +133,8 @@
           href: service-fabric-cluster-security.md
         - name: Beépített biztonsági vezérlők
           href: service-fabric-security-controls.md
+        - name: Tanúsítványalapú hitelesítés a Service Fabricben
+          href: cluster-security-certificates.md
     - name: Terminológia
       href: service-fabric-technical-overview.md
     - name: Alkalmazások létrehozása
@@ -145,6 +147,8 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (előzetes verzió)
               href: service-fabric-docker-compose.md
+            - name: Mintavételek
+              href: probes-codepackage.md
         - name: Reliable Services
           items:
             - name: A Reliable Services áttekintése
@@ -264,6 +268,10 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: Partíció igény szerinti biztonsági mentése
               href: service-fabric-backup-restore-service-ondemand-backup.md
+        - name: Inicializáló kódcsomagok
+          href: initializer-codepackages.md
+        - name: Futtatás befejezésig
+          href: run-to-completion.md
     - name: Fürtök
       items:
         - name: A fürtök áttekintése
@@ -316,6 +324,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Fürt terhelésének elosztása
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: Alfürtözés
+              href: cluster-resource-manager-subclustering.md
             - name: Throttling
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Szolgáltatás áthelyezése
@@ -354,7 +364,7 @@
       href: service-fabric-api-management-overview.md
     - name: Alkalmazáserőforrás-modell
       href: service-fabric-concept-resource-model.md
-    - name: Felügyelt identitás (előzetes verzió)
+    - name: Felügyelt identitás
       href: concepts-managed-identity.md
     - name: Tárolóadattár hitelesítő adatainak konfigurálása
       href: configure-container-repository-credentials.md
@@ -751,7 +761,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: A helyi fürt hibaelhárítása
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: Felügyelt identitás használata a Service Fabric-alkalmazásokhoz (előzetes verzió)
+    - name: Felügyelt identitás használata a Service Fabric-alkalmazásokhoz
       items:
         - name: Fürtbeállítás
           items:

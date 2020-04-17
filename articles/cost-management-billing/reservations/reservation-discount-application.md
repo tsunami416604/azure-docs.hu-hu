@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: fb6e7e3fe3b7b45b503dca66dc5b039a9eceb689
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5781ade7b2f3cfc7514208861de025cc84944fcd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135487"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380636"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>A foglalási kedvezmény alkalmazása
 
@@ -39,7 +39,7 @@ Foglalás vásárlásakor a foglalás alkalmazható az ugyanabban a méretcsopor
 Szolgáltatáscsomagok:
 
 - Reserved VM Instances: Ha a foglalás megvásárlásakor kiválasztja a **Példányméret-rugalmasságra optimalizálva** beállítást, akkor a kedvezmény általi lefedettség a kiválasztott virtuálisgép-mérettől függ. A foglalást az ugyanabban a méretsorozat-csoportban található virtuálisgép-méretekre lehet alkalmazni. További információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
-- Fenntartott kapacitás az Azure Storage-ban: A standard Azure Storage-fiókoknak havi 100 TiB-os vagy 1 PiB-os egységben vásárolhat lefoglalt kapacitást. A Fenntartott kapacitás az Azure Storage-ban minden régióban elérhető bármelyik hozzáférési szinthez (gyakori, ritka és archív) és replikációs lehetőséghez (LRS, GRS és ZRS).
+- Fenntartott kapacitás az Azure Storage-ban: A standard Azure Storage-fiókoknak havi 100 TiB-os vagy 1 PiB-os egységben vásárolhat lefoglalt kapacitást. További információ az Azure Storage-beli fenntartott kapacitást támogató régiókról: [Blokkblobok díjszabása](https://azure.microsoft.com/pricing/details/storage/blobs/). A Fenntartott kapacitás az Azure Storage-ban minden hozzáférési szinthez (gyakori, ritka és archív) és replikációs konfigurációhoz (LRS, GRS és ZRS) elérhető.
 - Fenntartott SQL Database-kapacitás: A kedvezmény általi lefedettség a kiválasztott teljesítményszinttől függ. További információkért lásd [az Azure-beli foglalási kedvezmény alkalmazását](understand-reservation-charges.md) ismertető cikket.
 - Fenntartott Azure Cosmos DB-kapacitás: A kedvezmény általi lefedettség a kiosztott átviteli sebességtől függ. További információkért lásd [az Azure Cosmos DB-beli foglalási kedvezmény alkalmazását](understand-cosmosdb-reservation-charges.md) ismertető cikket.
 

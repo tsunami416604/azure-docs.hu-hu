@@ -24,6 +24,10 @@
       href: active-directory-passwords-reset-register.md
     - name: Új jelszó kérése
       href: active-directory-passwords-update-your-own-password.md
+- name: A Saját alkalmazottak portál súgója
+  items:
+    - name: A Saját alkalmazottak felhasználókezelése
+      href: my-staff-team-manager.md
 - name: A Microsoft Authenticator alkalmazás súgója
   items:
     - name: Mi a Microsoft Authenticator alkalmazás?

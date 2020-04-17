@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Synapse Analytics (korábban Azure SQL Data Warehouse)
+title: Azure Synapse Analytics
 summary: Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben.
 metadata:
   title: Azure Synapse Analytics
@@ -11,28 +11,40 @@ metadata:
   ms.collection: collection
   author: julieMSFT
   ms.author: jrasnick
-  ms.date: 10/03/2019
-  ms.openlocfilehash: 16855697c61bb4b919d4f7dcaa752d3a17f6dbef
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.date: 04/15/2020
+  ms.openlocfilehash: ea895ce94ed3b1fde574a1753981ac58adcb72b3
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998829"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81414264"
 landingContent:
-- title: Az Azure Synapse Analytics ismertetése
+- title: Információ az Azure Synapse Analyticsról (korábban Azure SQL Data Warehouse)
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az az Azure Synapse?
+    - text: Mi az az Azure Synapse? (korábban Azure SQL Data Warehouse)
       url: sql-data-warehouse-overview-what-is.md
+    - text: Tippek és ajánlott eljárások
+      url: cheat-sheet.md
   - linkListType: architecture
     links:
     - text: Az Azure Synapse architektúrája
       url: massively-parallel-processing-mpp-architecture.md
-    - text: Tippek és ajánlott eljárások
-      url: cheat-sheet.md
     - text: Referenciaarchitektúra
       url: https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/data/enterprise-bi-synapse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: Az Azure Synapse Analytics ismertetése (munkaterületek előzetes verziója)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Synapse? (munkaterületek előzetes verziója)
+      url: ../overview-what-is.md
+    - text: Tippek és ajánlott eljárások
+      url: ../overview-cheat-sheet.md
+    - text: GYIK
+      url: ../overview-faq.md
+    - text: Kibocsátási megjegyzések
+      url: ../release-notes.md
 - title: Első lépések
   linkLists:
   - linkListType: deploy
@@ -63,12 +75,8 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Ajánlott eljárások
-      url: sql-data-warehouse-best-practices.md
     - text: Rendezett fürtözött oszlopcentrikus indexek finomhangolása
       url: performance-tuning-ordered-cci.md
-    - text: Materializált nézetek használata a számítási feladatok finomhangolásához
-      url: performance-tuning-materialized-views.md
   - linkListType: how-to-guide
     links:
     - text: A számítási feladatok elemzése
@@ -99,5 +107,5 @@ landingContent:
   linkLists:
   - linkListType: video
     links:
-    - text: A legfrissebb adattárház-videók megtekintése
+    - text: A legfrissebb Synapse SQL-videók megtekintése
       url: sql-data-warehouse-videos.md

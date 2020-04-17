@@ -15,23 +15,23 @@
   items:
     - name: Storage-események
       items:
+        - name: Portál
+          href: blob-event-quickstart-portal.md
         - name: Azure CLI
           href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: Azure PowerShell
           href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: Portál
-          href: blob-event-quickstart-portal.md
         - name: ARM-sablon
           displayName: Resource Manager
           href: blob-event-quickstart-template.md
     - name: Egyéni események
       items:
+        - name: Portál
+          href: custom-event-quickstart-portal.md
         - name: Azure CLI
           href: custom-event-quickstart.md
         - name: PowerShell
           href: custom-event-quickstart-powershell.md
-        - name: Portál
-          href: custom-event-quickstart-portal.md
     - name: Az Azure Functions használata eseménykezelőként
       href: custom-event-to-function.md
     - name: A Queue Storage használata eseménykezelőként
@@ -96,10 +96,63 @@
       href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
 - name: Alapelvek
   items:
-    - name: Az Event Griddel kapcsolatos fogalmak
+    - name: Event Grid-terminológia
       href: concepts.md
+    - name: Egyéni témakörök
+      href: custom-topics.md
     - name: Rendszertémakörök
-      href: system-topics.md
+      items:
+        - name: Rendszertémakörök áttekintése
+          href: system-topics.md
+        - name: Eseményforrások
+          items:
+            - name: Azure App Configuration
+              href: event-schema-app-configuration.md
+            - name: Azure Blob Storage
+              href: event-schema-blob-storage.md
+            - name: Azure Container Registry
+              href: event-schema-container-registry.md
+            - name: Azure Event Hubs
+              href: event-schema-event-hubs.md
+            - name: Azure IoT Hub
+              href: event-schema-iot-hub.md
+            - name: Azure Key Vault
+              href: event-schema-key-vault.md
+            - name: Azure Machine Learning
+              href: event-schema-machine-learning.md
+            - name: Azure Maps
+              href: event-schema-azure-maps.md
+            - name: Azure Media Services
+              href: event-schema-media-services.md
+            - name: Azure-erőforráscsoportok
+              href: event-schema-resource-groups.md
+            - name: Azure Service Bus
+              href: event-schema-service-bus.md
+            - name: Azure SignalR
+              href: event-schema-azure-signalr.md
+            - name: Azure-előfizetések
+              href: event-schema-subscriptions.md
+    - name: Event Domains
+      href: event-domains.md
+    - name: Esemény sémaformátumai
+      items:
+        - name: Event Grid-eseményséma
+          href: event-schema.md
+        - name: Felhő-eseményséma
+          href: cloud-event-schema.md
+    - name: Eseménykezelők
+      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
+      href: event-handlers.md
+    - name: Eseménykézbesítés
+      items:
+        - name: Eseményszűrés
+          href: event-filtering.md
+        - name: Teljesítés és újrapróbálkozás
+          href: delivery-and-retry.md
+    - name: Vészhelyreállítás
+      items:
+        - name: Földrajzi vészhelyreállítás
+          href: geo-disaster-recovery.md
     - name: Biztonság
       items:
         - name: Hitelesítés
@@ -108,20 +161,6 @@
           href: security-authorization.md
         - name: Hálózati biztonság
           href: network-security.md
-    - name: Teljesítés és újrapróbálkozás
-      href: delivery-and-retry.md
-    - name: Eseményszűrés
-      href: event-filtering.md
-    - name: Event Domains
-      href: event-domains.md
-    - name: Eseményforrások
-      displayName: 'Azure subscriptions, Container registry, Custom topics, Event Hubs, IoT Hub, Key Vault, Media Services, Resource groups, Service Bus, Storage, Maps, App Configuration, Signal R, Machine Learning'
-      href: event-sources.md
-    - name: Eseménykezelők
-      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
-      href: event-handlers.md
-    - name: Földrajzi vészhelyreállítás
-      href: geo-disaster-recovery.md
 - name: Útmutatók
   items:
     - name: Privát végpontok konfigurálása (előzetes verzió)
@@ -140,8 +179,6 @@
       href: manage-event-delivery.md
     - name: Események szűrése
       href: how-to-filter-events.md
-    - name: Eseménykézbesítés figyelése
-      href: monitor-event-delivery.md
     - name: Esemény-előfizetések lekérdezése
       href: query-event-subscriptions.md
     - name: Előfizetés a portálon keresztül
@@ -154,10 +191,14 @@
       href: how-to-event-domains.md
     - name: Ügyféloldali feladatátvétel implementálása
       href: custom-disaster-recovery.md
-    - name: Hibák elhárítása
-      href: troubleshoot-errors.md
-    - name: Egy témakör diagnosztikai naplóinak engedélyezése
-      href: enable-diagnostic-logs-topic.md
+    - name: Hibaelhárítás
+      items:
+        - name: Egy témakör diagnosztikai naplóinak engedélyezése
+          href: enable-diagnostic-logs-topic.md
+        - name: Hibák elhárítása
+          href: troubleshoot-errors.md
+        - name: Eseménykézbesítés figyelése
+          href: monitor-event-delivery.md
 - name: Referencia
   items:
     - name: Azure CLI
@@ -176,35 +217,6 @@
       href: /javascript/api/overview/azure/eventgrid
     - name: Előfizetési séma
       href: subscription-creation-schema.md
-    - name: Eseményséma
-      href: event-schema.md
-      items:
-        - name: Azure-előfizetések
-          href: event-schema-subscriptions.md
-        - name: Blob Storage
-          href: event-schema-blob-storage.md
-        - name: Container Registry
-          href: event-schema-container-registry.md
-        - name: Event Hubs
-          href: event-schema-event-hubs.md
-        - name: IoT Hub
-          href: event-schema-iot-hub.md
-        - name: Key Vault
-          href: event-schema-key-vault.md
-        - name: Media Services
-          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: Erőforráscsoportok
-          href: event-schema-resource-groups.md
-        - name: Service Bus
-          href: event-schema-service-bus.md
-        - name: Azure Maps
-          href: event-schema-azure-maps.md
-        - name: Alkalmazás konfigurációja
-          href: event-schema-app-configuration.md
-        - name: Azure SignalR
-          href: event-schema-azure-signalr.md
-        - name: Azure Machine Learning
-          href: event-schema-machine-learning.md
     - name: Sablonerőforrások
       items:
         - name: Esemény-előfizetések

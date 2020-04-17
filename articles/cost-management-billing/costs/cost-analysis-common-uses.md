@@ -3,16 +3,16 @@ title: Gyakran használt költségelemzési megoldások az Azure Cost Management
 description: Ez a cikk bemutatja, hogyan kérhetők le az eredmények a gyakori költségelemzési feladatok esetében az Azure Cost Managementben.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520885"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261496"
 ---
 # <a name="common-cost-analysis-uses"></a>Gyakran használt költségelemzési megoldások
 
@@ -27,6 +27,17 @@ A költségek Azure-szolgáltatások szerinti megjelenítése révén jobban át
 1. Módosítsa a nézetet a következőre: **Táblázat**.
 
 [![Költségek lebontása Azure-szolgáltatások szerint](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
+
+## <a name="review-invoiced-charges-in-cost-analysis"></a>A számlázott díjtételek áttekintése a Költségelemzésben
+
+A számlaadatok Azure Portalon való megtekintéséhez keresse meg a költségelemzést ahhoz a hatókörhöz, amely az elemezni kívánt számlához kapcsolódik. Válassza a **Számla részletei** nézetet. A száma részletei úgy jelenítik meg a díjtételeket, ahogy a számlán szerepelnek.
+
+[![A számla részleteit bemutató példa](./media/cost-analysis-common-uses/invoice-details.png)](./media/cost-analysis-common-uses/invoice-details.png#lightbox)
+
+A számlázási adatok megtekintésével azonosíthatja, hogy melyik szolgáltatás okozott váratlan költségeket, és megállapíthatja, hogy melyik erőforrások kapcsolódnak közvetlenül ehhez az erőforráshoz a Költségelemzésben. Ha például engedélyezni kívánja a Virtual Machines szolgáltatás díjait, navigáljon a **Halmozott költség** nézetre. A részletességet ezután állítsa **Napi** értékre, a díjakat szűréséhez adja meg a **Szolgáltatásnév: Virtual Machines** értéket, majd csoportosítsa a díjakat **Erőforrás** szerint.
+
+[![A virtuális gépek halmozott költségeit bemutató példa](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
+
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Költséglebontás megtekintése Azure-erőforrások szerint
 

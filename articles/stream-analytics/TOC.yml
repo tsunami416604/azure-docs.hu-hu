@@ -199,6 +199,8 @@
           href: stream-analytics-tools-for-visual-studio-cicd.md
     - name: Visual Studio Code
       items:
+        - name: Kód kiegészítése az IntelliSense használatával
+          href: vs-code-intellisense.md
         - name: Helyi tesztelés mintaadatokkal
           href: visual-studio-code-local-run.md
         - name: Helyi tesztelés élő adatokkal

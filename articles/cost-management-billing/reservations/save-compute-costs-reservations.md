@@ -7,16 +7,16 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 97bd03fb2aa8f5b486ef87a04f260fec43eb81bd
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 4baa06ad0011b06da50fd7a83aaa3e87db62c6ac
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396702"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417528"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
-Az Azure Reservationsszel csökkentheti költségeit, ha több termékre is egy vagy három évre előre kötelezettséget vállal. A kötelezettségvállalással kedvezményt kaphat a felhasznált erőforrásokra. A Reservationsszel a használatalapú fizetéshez képest jelentősen, akár 72%-kal csökkentheti az erőforrások költségeit. A Reservations számlázási kedvezményt nyújt, és nincs hatással az erőforrások futtatási állapotára. A foglalás megvásárlása után a rendszer automatikusan alkalmazza a kedvezményt az annak megfelelő erőforrásokra.
+Az Azure Reservationszel csökkentheti költségeit, ha több termékre is egy vagy három évre előre kötelezettséget vállal. A kötelezettségvállalással kedvezményt kaphat a felhasznált erőforrásokra. A Reservationsszel a használatalapú fizetéshez képest jelentősen, akár 72%-kal csökkentheti az erőforrások költségeit. A Reservations számlázási kedvezményt nyújt, és nincs hatással az erőforrások futtatási állapotára. A foglalás megvásárlása után a rendszer automatikusan alkalmazza a kedvezményt az annak megfelelő erőforrásokra.
 
 A foglalásért fizethet előre vagy havonta. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie. A havi fizetés csak az Azure Reservations esetében érhető el, harmadik féltől származó termékek esetében nem.
 

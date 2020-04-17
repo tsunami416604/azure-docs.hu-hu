@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/30/2020
+ms.date: 04/10/2020
 ms.author: banders
-ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475265"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262091"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Hogyan kerülheti el a váratlan költségeket az Azure-számlázás és -költségkezelés használatával
 
@@ -193,6 +193,17 @@ Az Azure-számla _mérőeszközök_ alapján összesíti a havi költségeket. A
 A használati adatokat tartalmazó CSV-fájlt az elemezni kívánt számlán található _MeterName_ alapján szűrheti a mérőeszközre vonatkozó összes sorelem megtekintéséhez. A sorelemhez tartozó _InstanceID_ a díjat okozó tényleges Azure-erőforrásnak felel meg.
 
 Ha azonosította a szóban forgó erőforrást, az Azure Cost Management költségelemzési eszközével tovább elemezheti az erőforrással kapcsolatos költségeket. A költségelemzéssel kapcsolatos további tudnivalókért lásd: [Költségelemzés indítása](../costs/quick-acm-cost-analysis.md).
+
+### <a name="review-invoiced-charges-in-cost-analysis"></a>A számlázott díjtételek áttekintése a Költségelemzésben
+
+A számlaadatok Azure Portalon való megtekintéséhez keresse meg a költségelemzést ahhoz a hatókörhöz, amely az elemezni kívánt számlához kapcsolódik. Válassza a **Számla részletei** nézetet. A száma részletei úgy jelenítik meg a díjtételeket, ahogy a számlán szerepelnek.
+
+[![A számla részleteit bemutató példa](./media/getting-started/invoice-details.png)](./media/getting-started/invoice-details.png#lightbox)
+
+A számlázási adatok megtekintésével azonosíthatja, hogy melyik szolgáltatás okozott váratlan költségeket, és megállapíthatja, hogy melyik erőforrások kapcsolódnak közvetlenül ehhez az erőforráshoz a Költségelemzésben. Ha például engedélyezni kívánja a Virtual Machines szolgáltatás díjait, navigáljon a **Halmozott költség** nézetre. A részletességet ezután állítsa **Napi** értékre, a díjakat szűréséhez adja meg a **Szolgáltatásnév: Virtual Machines** értéket, majd csoportosítsa a díjakat **Erőforrás** szerint.
+
+[![A virtuális gépek halmozott költségeit bemutató példa](./media/getting-started/virtual-machines.png)](./media/getting-started/virtual-machines.png#lightbox)
+
 
 ### <a name="identify-spikes-in-cost-over-time"></a>Kiugró költségek azonosítása időben
 

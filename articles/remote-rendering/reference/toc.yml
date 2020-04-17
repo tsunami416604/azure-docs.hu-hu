@@ -4,9 +4,11 @@
   href: regions.md
 - name: A hálózatra vonatkozó követelmények
   href: network-requirements.md
-- name: Korlátok
+- name: Korlátozások
   href: limits.md
-- name: arrClient-adattár (GitHub)
-  href: 'https://dev.azure.com/arrClient/arrClient/_git/arrClient'
+- name: Remote Rendering-minták adattára (GitHub)
+  href: 'https://github.com/Azure/azure-remote-rendering'
 - name: Azure Mixed Reality Resource Management REST API
   href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+- name: 'C# API-dokumentáció'
+  href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.RemoteRendering'

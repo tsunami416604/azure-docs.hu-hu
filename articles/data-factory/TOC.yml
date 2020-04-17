@@ -581,6 +581,8 @@
       items:
         - name: SSIS-csomagok futtatása az Azure-ban az SSDT-ből
           href: how-to-invoke-ssis-package-ssdt.md
+        - name: SSIS-csomagok futtatása a felügyelt Azure SQL-példány ügynökével
+          href: how-to-invoke-ssis-package-managed-instance-agent.md
         - name: SSIS-csomagok futtatása Azure-kompatibilis dtexec használatával
           href: how-to-invoke-ssis-package-azure-enabled-dtexec.md
         - name: SSIS-csomagok futtatása az SSIS-csomagok végrehajtása tevékenységgel

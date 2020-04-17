@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: Kulcsok dokumentációja
+summary: Az Azure Key Vault lehetővé teszi a Microsoft Azure-alkalmazások és -felhasználók számára a kulcsok tárolását és használatát. Több kulcstípust és algoritmust is támogat, és lehetővé teszi a hardveres biztonsági modulok (HSM) használatát a nagy értékű kulcsokhoz.
+metadata:
+  title: Kulcsok
+  description: Az Azure Key Vault lehetővé teszi a Microsoft Azure-alkalmazások és -felhasználók számára a kulcsok tárolását és használatát. Több kulcstípust és algoritmust is támogat, és lehetővé teszi a hardveres biztonsági modulok (HSM) használatát a nagy értékű kulcsokhoz.
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: keys
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: d5394200164d4f254ceca7a18035df95cc401747
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81423360"
+landingContent:
+- title: Kulcsok
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mik azok a Key Vault-kulcsok?
+      url: about-keys.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: Portál
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+- title: Oktatóanyagok
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: HSM által védett kulcsok importálása a Key Vaultba
+      url: hsm-protected-keys.md
+    - text: Szállítófüggetlen HSM által védett kulcsok importálása
+      url: hsm-protected-keys-vendor-agnostic-byok.md
+- title: További információ a Key Vaultról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A Key Vault áttekintése
+      url: ../general/overview.md
+    - text: Alapfogalmak
+      url: ../general/basic-concepts.md
+    - text: A helyreállítható törlés áttekintése
+      url: ../general/overview-soft-delete.md
+    - text: Biztonsági áttekintés
+      url: ../general/overview-security.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Titkos kulcsok kezelése a kiszolgálóalkalmazásokban az Azure Key Vaulttal
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

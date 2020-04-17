@@ -1,5 +1,7 @@
 - name: Síkok kivágása
   href: cut-planes.md
+- name: Renderelés hibakeresése
+  href: debug-rendering.md
 - name: Hierarchikus állapot felülbírálása
   href: override-hierarchical-state.md
 - name: Újravetítés késői fázisban

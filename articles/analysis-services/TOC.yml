@@ -39,6 +39,8 @@
       href: analysis-services-connect.md
     - name: Magas rendelkezésre állás
       href: analysis-services-bcdr.md
+    - name: Hosszú ideig futó műveletek
+      href: analysis-services-long-operations.md
     - name: Támogatott adatforrások
       href: analysis-services-datasource.md
 - name: Használati útmutató

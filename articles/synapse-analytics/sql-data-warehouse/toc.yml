@@ -1,13 +1,13 @@
-- name: Azure Synapse Analytics-dokumentáció
+- name: Azure Synapse (SQL DW)
   href: index.yml
+- name: Váltás az Azure Synapse-re (munkaterületek előzetes verziója)
+  href: ../overview-what-is.md
 - name: Áttekintés
   items:
     - name: Mi az az Azure Synapse Analytics?
       href: sql-data-warehouse-overview-what-is.md
     - name: Azure Synapse Analytics-architektúra
       href: massively-parallel-processing-mpp-architecture.md
-    - name: Adattárházegységek
-      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: Hasznos tanácsok
       href: cheat-sheet.md
     - name: Ajánlott eljárások

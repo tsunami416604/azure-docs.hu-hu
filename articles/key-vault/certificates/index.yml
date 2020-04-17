@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: Tanúsítványok
+summary: Az Azure Key Vault lehetővé teszi a Microsoft Azure-alkalmazások és -felhasználók számára a kulcsokra és a titkos kulcsokra épülő tanúsítványok tárolását és használatát, valamint egy automatikus megújítási funkció használatát.
+metadata:
+  title: Az Azure Key Vault dokumentációja – Tanúsítványok
+  description: Az Azure Key Vault lehetővé teszi a Microsoft Azure-alkalmazások és -felhasználók számára a kulcsokra és a titkos kulcsokra épülő tanúsítványok tárolását és használatát, valamint egy automatikus megújítási funkció használatát.
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: certificates
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81423530"
+landingContent:
+- title: Tanúsítványok
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mik azok a Key Vault-tanúsítványok?
+      url: about-certificates.md
+    - text: Bevezetés a Key Vault-tanúsítványok használatába
+      url: certificate-scenarios.md
+    - text: Tanúsítvány-létrehozási módszerek
+      url: create-certificate.md
+    - text: Tanúsítvány-létrehozás monitorozása és kezelése
+      url: create-certificate-scenarios.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: Portál
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+    - text: Tanúsítvány importálása a Key Vaultban
+      url: tutorial-import-certificate.md
+- title: További információ a Key Vaultról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A Key Vault áttekintése
+      url: ../general/overview.md
+    - text: Alapfogalmak
+      url: ../general/basic-concepts.md
+    - text: A helyreállítható törlés áttekintése
+      url: ../general/overview-soft-delete.md
+    - text: Biztonsági áttekintés
+      url: ../general/overview-security.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Titkos kulcsok kezelése a kiszolgálóalkalmazásokban az Azure Key Vaulttal
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

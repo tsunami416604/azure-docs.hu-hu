@@ -40,6 +40,8 @@
       href: ../../container-registry/security-baseline.md
     - name: A Cosmos DB biztonsági alapkonfigurációja
       href: ../../cosmos-db/security-baseline.md
+    - name: A Data Explorer biztonsági alapkonfigurációja
+      href: /azure/data-explorer/security-baseline
     - name: Az Event Hubs biztonsági alapkonfigurációja
       href: ../../event-hubs/security-baseline.md
     - name: A HDInsight biztonsági alapkonfigurációja
