@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92d96abd343266372984918fd0c942ec1cae865f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2b2b901f652564c47ca35cb0f75a69f26fa2fa71
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428302"
+ms.locfileid: "81533224"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Felhasználók hozzáadása és kezelése egy felügyeleti egységben az Azure Active Directoryban
 
@@ -51,9 +51,9 @@ A felhasználókat kétféleképpen rendelheti hozzá a felügyeleti egységekhe
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+    $administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
     $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-    Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $UserObj.ObjectId
+    Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
 
 A fenti példában az Add-AzureADAdministrativeUnitMember parancsmag a felhasználó felügyeleti egységhez való hozzáadására szolgál. Argumentumként annak a felügyeleti egységnek az objektumazonosítója, amelyhez a felhasználót hozzá kell adni, és a hozzáadni a felhasználó objektumazonosítója. A kiemelt szakasz az adott környezetre vonatkozóan szükség szerint módosítható.
 

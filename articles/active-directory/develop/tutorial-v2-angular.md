@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ba7863d15ac0dfbebe6f14ef0d6f0daa93160b58
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 84d7be64e7157c35639fec19cb28fe787fe29b19
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380045"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533887"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: Jelentkezzen be a felhasználókhoz, és hívja fel a Microsoft Graph API-t egy egyoldalas alkalmazásból
 

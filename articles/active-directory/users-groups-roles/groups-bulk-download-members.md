@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 09/11/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e29aacb1357509e2b000a9d05c5ced8f9a30dce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3faca8d1a2538ed03a917d6db8d54323fe626369
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72517158"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533680"
 ---
-# <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Csoport tagjainak tömeges letöltése (előzetes verzió) az Azure Active Directoryban
+# <a name="bulk-download-members-of-a-group-in-azure-active-directory"></a>Csoport tömeges letöltése az Azure Active Directoryban
 
 Az Azure Active Directory (Azure AD) portál használatával tömegesen letöltheti a szervezet egy csoportjának tagjait egy vesszővel tagolt értékfájlba (CSV).
 
@@ -35,9 +35,9 @@ Az Azure Active Directory (Azure AD) portál használatával tömegesen letölth
 
 ## <a name="check-download-status"></a>Letöltési állapot ellenőrzése
 
-Az összes függőben lévő tömeges kérelem állapotát a **Tömeges művelet eredményei (előnézet)** lapon tekintheti meg.
+Az összes függőben lévő tömeges kérelem állapotát a **Tömeges művelet eredménylapján láthatja.**
 
-   ![A Tömeges műveletek eredménylapja a tömeges kérelmek állapotát mutatja](./media/groups-bulk-download-members/bulk-center.png)
+[![](media/groups-bulk-download-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download-members/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Tömeges letöltési szolgáltatás korlátai
 

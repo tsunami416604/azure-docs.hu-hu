@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aa09d06af4706af3ae120f62a897c0bc632fb657
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: ba4afa31a1ed7b6e2ddf43787ca32a06e97455ce
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990939"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533768"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>A Microsoft Graph API hívása Windows Asztali alkalmazásból
 
 Ez az útmutató bemutatja, hogy egy natív Windows Desktop .NET (XAML) alkalmazás hogyan használja a Microsoft Graph API-t egy hozzáférési jogkivonat ot. Az alkalmazás más API-kat is hozzáférhet, amelyek hozzáférési jogkivonatokat igényelnek egy Microsoft identity platformról a fejlesztők 2.0-s végpontja számára. Ez a platform korábban Azure AD volt.
 
-Miután befejezte az útmutatót, az alkalmazás képes lesz meghívni egy védett API-t, amely személyes fiókokat (beleértve a outlook.com, live.com és másokat) használ. Az alkalmazás az Azure Active Directoryt használó bármely vállalat vagy szervezet munkahelyi és iskolai fiókjait is használja.  
+Miután befejezte az útmutatót, az alkalmazás képes lesz meghívni egy védett API-t, amely személyes fiókokat (beleértve a outlook.com, live.com és másokat) használ. Az alkalmazás az Azure Active Directoryt használó bármely vállalat vagy szervezet munkahelyi és iskolai fiókjait is használja.
 
 > [!NOTE]
 > Az útmutatóhoz a Visual Studio 2015 3-as, Visual Studio 2017-es vagy Visual Studio 2019-es frissítése szükséges. Nincs ilyen verziója? [Töltse le ingyen a Visual Studio 2019-et.](https://www.visualstudio.com/downloads/)
@@ -36,9 +36,9 @@ Miután befejezte az útmutatót, az alkalmazás képes lesz meghívni egy véde
 
 Az útmutatóval létrehozott mintaalkalmazás lehetővé teszi, hogy egy Windows Asztali alkalmazás lekérdezi a Microsoft Graph API-t vagy egy webes API-t, amely elfogadja a Microsoft identity-platform végponttokenjeit. Ebben a forgatókönyvben egy jogkivonatot ad hozzá a HTTP-kérelmekhez az engedélyezési fejlécen keresztül. A Microsoft Authentication Library (MSAL) kezeli a tokenek beszerzését és megújítását.
 
-## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Jogkivonat-beszerzés kezelése védett webes API-k eléréséhez
+## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Jogkivonat-beszerzés kezelése a védett webes API-k eléréséhez
 
-A felhasználó hitelesítése után a mintaalkalmazás kap egy jogkivonatot, amely lekérdezheti a Microsoft Graph API-t vagy egy webes API-t, amelyet a Microsoft identity platform a fejlesztők számára biztosít.
+A felhasználó hitelesítése után a mintaalkalmazás kap egy jogkivonatot, amely lekérdezheti a Microsoft Graph API-t, vagy egy webes API-t, amelyet a Microsoft identity platform a fejlesztők számára biztosít.
 
 Api-k, például a Microsoft Graph szükség van egy jogkivonatot, hogy hozzáférést biztosítson az adott erőforrásokhoz. Például egy jogkivonat szükséges a felhasználó profiljának olvasásához, a felhasználó naptárának eléréséhez vagy e-mail küldéséhez. Az alkalmazás kérhet egy hozzáférési jogkivonatot az MSAL használatával az erőforrások eléréséhez API-hatókörök megadásával. Ez a hozzáférési jogkivonat ezután hozzáadódik a HTTP-engedélyezési fejléchez a védett erőforrás ellen irányuló minden híváshoz.
 
@@ -54,7 +54,7 @@ Ez az útmutató a következő NuGet csomagokat használja:
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ebben a szakaszban egy új projektet hoz létre, amely bemutatja, hogyan integrálható egy Windows Asztali .NET alkalmazás (XAML) *a Bejelentkezés a Microsofttal,* hogy az alkalmazás lekérdezheti a webes API-kat igénylő jogkivonatot.
+Ebben a szakaszban egy új projektet hoz létre, amely bemutatja, hogyan integrálható egy Windows Asztali .NET alkalmazás (XAML) *a Bejelentkezés a Microsoft,* hogy az alkalmazás lekérdezheti webes API-k, amelyek megkövetelik a jogkivonatot.
 
 Az alkalmazás, amely et hoz létre ezzel az útmutatóval megjeleníti a gombot, amely a diagram hívására szolgál, egy terület az eredmények megjelenítésére a képernyőn, és egy kijelentkezési gombot.
 
@@ -77,7 +77,7 @@ Az alkalmazás létrehozásához tegye a következőket:
     Install-Package Microsoft.Identity.Client -Pre
     ```
 
-    > [!NOTE] 
+    > [!NOTE]
     > Ez a parancs telepíti a Microsoft Authentication Library programot. Az MSAL kezeli az Azure Active Directory 2.0-s virtuális gépével védett API-k eléréséhez használt felhasználói jogkivonatok beszerzését, gyorsítótárazását és frissítését
     >
 
@@ -136,7 +136,7 @@ Ebben a lépésben hozzon létre egy osztályt az MSAL-lal való interakció kez
                 .Build();
         }
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
         // - the content of Tenant by the information about the accounts allowed to sign-in in your application:
@@ -156,7 +156,7 @@ Ebben a lépésben hozzon létre egy osztályt az MSAL-lal való interakció kez
 
 ## <a name="create-the-application-ui"></a>Az alkalmazás felhasználói felületének létrehozása
 
-Ez a szakasz azt mutatja be, hogy egy alkalmazás hogyan kérdezhet le egy védett háttérkiszolgálót, például a Microsoft Graphot. 
+Ez a szakasz azt mutatja be, hogy egy alkalmazás hogyan kérdezhet le egy védett háttérkiszolgálót, például a Microsoft Graphot.
 
 A *MainWindow.xaml* fájl automatikusan létrejön a projektsablon részeként. Nyissa meg ezt a fájlt, majd cserélje le az alkalmazás * \<Grid>* csomópontját a következő kódra:
 
@@ -266,9 +266,9 @@ A `AcquireTokenSilent` módszer kezeli a tokenek beszerzéseés megújítások f
 
 Végül, `AcquireTokenSilent` a módszer akarat megbukik. A hiba oka lehet, hogy a felhasználó kijelentkezett, vagy megváltoztatta a jelszavát egy másik eszközön. Ha az MSAL azt észleli, hogy a probléma megoldható egy interaktív művelet megkövetelésével, kivételt indít `MsalUiRequiredException` el. Az alkalmazás kétféleképpen tudja kezelni ezt a kivételt:
 
-* `AcquireTokenInteractive` Azonnal ellenhívhat. Ez a hívás a felhasználó bejelentkezésének megkérése. Ezt a mintát általában olyan online alkalmazásokban használják, ahol a felhasználó számára nincs elérhető offline tartalom. Az irányított beállítás által létrehozott minta ezt a mintát követi, amely a minta első végrehajtásakor működés közben látható. 
+* `AcquireTokenInteractive` Azonnal ellenhívhat. Ez a hívás a felhasználó bejelentkezésének megkérése. Ezt a mintát általában olyan online alkalmazásokban használják, ahol a felhasználó számára nincs elérhető offline tartalom. Az irányított beállítás által létrehozott minta ezt a mintát követi, amely a minta első végrehajtásakor működés közben látható.
 
-* Mivel egyetlen felhasználó sem `PublicClientApp.Users.FirstOrDefault()` használta az alkalmazást, `MsalUiRequiredException` null értéket tartalmaz, és kivétel tetszikel. 
+* Mivel egyetlen felhasználó sem `PublicClientApp.Users.FirstOrDefault()` használta az alkalmazást, `MsalUiRequiredException` null értéket tartalmaz, és kivétel tetszikel.
 
 * A mintában lévő kód ezután `AcquireTokenInteractive`kezeli a kivételt a hívással, ami a felhasználó bejelentkezésének megírását eredményezi.
 
@@ -322,7 +322,7 @@ Felhasználó kijelentkeztetéséhez adja hozzá `MainWindow.xaml.cs` a követke
 /// </summary>
 private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 {
-    var accounts = await App.PublicClientApp.GetAccountsAsync(); 
+    var accounts = await App.PublicClientApp.GetAccountsAsync();
 
     if (accounts.Any())
     {

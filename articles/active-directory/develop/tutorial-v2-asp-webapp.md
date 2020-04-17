@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 94d3993c6a0c62a68ea77a888d3351c8fea1d935
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 29f5a48feaaafee64a20745b3cdf09726a6372ac
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990990"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533837"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés hozzáadása a Microsofthoz egy ASP.NET webalkalmazáshoz
 
@@ -117,7 +117,7 @@ Az alábbi lépésekkel owin köztes szoftver indítási osztályt hozhat létre
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
-        /// Configure OWIN to use OpenIdConnect 
+        /// Configure OWIN to use OpenIdConnect
         /// </summary>
         /// <param name="app"></param>
         public void Configuration(IAppBuilder app)
@@ -208,7 +208,7 @@ Ha új vezérlőt szeretne létrehozni a bejelentkezési és kijelentkezési mó
                 OpenIdConnectAuthenticationDefaults.AuthenticationType);
         }
     }
-    
+
     /// <summary>
     /// Send an OpenID Connect sign-out request.
     /// </summary>
@@ -291,19 +291,19 @@ Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]`
         public ActionResult Index()
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
-    
+
             //You get the user’s first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
-    
+
             // The 'preferred_username' claim can be used for showing the username
             ViewBag.Username = userClaims?.FindFirst("preferred_username")?.Value;
-    
+
             // The subject/ NameIdentifier claim can be used to uniquely identify the user across the web
             ViewBag.Subject = userClaims?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-    
+
             // TenantId is the unique Tenant Id - which represents an organization in Azure AD
             ViewBag.TenantId = userClaims?.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid")?.Value;
-    
+
             return View();
         }
     }
@@ -311,7 +311,7 @@ Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]`
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ
-> Az attribútum használata `[Authorize]` miatt a vezérlő összes metódusa csak akkor hajtható végre, ha a felhasználó hitelesítve van. Ha a felhasználó nincs hitelesítve, és megpróbál hozzáférni a vezérlőhöz, az OWIN hitelesítési kihívást kezdeményez, és a felhasználót hitelesítésre kényszeríti. Az előző kód a felhasználó azonosító jogkivonatában szereplő bizonyos felhasználói attribútumok jogcímeinek listáját vizsgálja. Ilyen attribútum például a felhasználó teljes neve és felhasználóneve, valamint a globális felhasználóazonosító tárgya. Emellett tartalmazza a *bérlőazonosítót* is, amely a felhasználó szervezetének azonosítóját jelöli. 
+> Az attribútum használata `[Authorize]` miatt a vezérlő összes metódusa csak akkor hajtható végre, ha a felhasználó hitelesítve van. Ha a felhasználó nincs hitelesítve, és megpróbál hozzáférni a vezérlőhöz, az OWIN hitelesítési kihívást kezdeményez, és a felhasználót hitelesítésre kényszeríti. Az előző kód a felhasználó azonosító jogkivonatában szereplő bizonyos felhasználói attribútumok jogcímeinek listáját vizsgálja. Ilyen attribútum például a felhasználó teljes neve és felhasználóneve, valamint a globális felhasználóazonosító tárgya. Emellett tartalmazza a *bérlőazonosítót* is, amely a felhasználó szervezetének azonosítóját jelöli.
 <!--end-collapse-->
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Nézet létrehozása a felhasználó jogcímének megjelenítéséhez
