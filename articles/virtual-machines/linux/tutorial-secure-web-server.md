@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b51d0747a4ffa08bc230b33cd416986dda1e1908
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ac581b45f3aefe7a386f25c978bfc09adda4e39f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80154304"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460477"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Oktatóanyag: Webkiszolgáló biztonságossá tétele linuxos virtuális gépen az Azure-ban a Key Vaultban tárolt TLS/SSL-tanúsítványokkal
 A webkiszolgálók, a Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL) biztonságos sáfására vonatkozó tanúsítvány használható a webes forgalom titkosítására. Ezek a TLS/SSL-tanúsítványok tárolhatók az Azure Key Vaultban, és lehetővé teszik a tanúsítványok biztonságos üzembe helyezését linuxos virtuális gépekre (VM-ek) az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ae3743530440c9df9094a0b9784922d2d6a3dfdf
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 753d606e1fc2dc966c970a210cf6fc5066d5ed83
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985405"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460137"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Azure lemeztitkosítás Linuxos virtuális gépekhez – gyakori kérdések
 
@@ -148,7 +148,9 @@ Az Azure Disk Encryption az aes-xts-plain64 visszafejtési alapértelmezett beá
 Nem, az adatok nem törlődnek az Azure Disk Encryption használatával már titkosított adatmeghajtókról. Hasonlóan ahhoz, ahogyan az EncryptFormatAll nem titkosította újra az operációs rendszer meghajtóját, nem fogja újra titkosítani a már titkosított adatmeghajtót. További információt a [DecryptFormatAll feltétel című](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)témakörben talál.        
 
 ## <a name="is-xfs-filesystem-supported"></a>Az XFS fájlrendszer támogatott?
-Az XFS-kötetek csak az EncryptFormatAll titkosításesetén támogatottak az adatlemez-titkosításhoz. Ez újraformázza a kötetet, és a korábban ott lévő adatokat is elfogja. További információt a [DecryptFormatAll feltétel című](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)témakörben talál.
+Az XFS operációs rendszer lemezeinek titkosítása támogatott.
+
+Az XFS-adatlemezek titkosítása csak akkor támogatott, ha az EncryptFormatAll paramétert használja. Ez újraformázza a kötetet, és a korábban ott lévő adatokat is elfogja. További információt a [DecryptFormatAll feltétel című](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)témakörben talál.
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Készíthetek biztonsági másolatot és visszaállíthatok egy titkosított virtuális gépről? 
 

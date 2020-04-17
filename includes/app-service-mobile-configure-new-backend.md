@@ -5,15 +5,15 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/15/2020
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5b6389491fd91b716a05e7c57c98addb6352bd9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67440220"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461836"
 ---
 1. Töltse le az ügyfél SDK-rövid útmutatóit a következő platformokra:
     
@@ -69,23 +69,13 @@ ms.locfileid: "67440220"
    - **Node.js háttér**
     
      Ha a Node.js rövid útmutatót szeretné használni, kövesse az alábbi utasításokat.
-
-     1. Az Azure Portalon nyissa meg az **Egyszerű táblázatok**, ekkor jelenik meg ez a képernyő.
-      
-        ![Egyszerű csomóponttáblák](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
-
-     2. Győződjön meg arról, hogy az SQL-kapcsolati karakterlánc már hozzá van adva a **Konfiguráció** lapon. Ezután jelölje be az **I nyugtája, hogy ez felülírja** az összes webhely tartalmát, és kattintson a **TodoItem tábla létrehozása** gombra.
      
-        ![Csomópont–egyszerű táblák konfigurációja](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
-
-     3. Az **Egyszerű táblázatok ban**kattintson a + **Hozzáadás** gombra.
-    
-        ![Csomópont egyszerű asztalok hozzáadása gomb](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
-
-     4. Hozzon `TodoItem` létre egy névtelen hozzáférésű táblát.
-      
-        ![Csomópont egyszerű táblák hozzáadása táblázat](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
-
+        1. Új API létrehozása – Módosíthatja közvetlenül az Azure Portalon, vagy módosíthatja a kódot helyileg a fejlesztői környezetben, majd közzéteheti az Azure-ban. Kattintson `App Service Editor (Preview)` az `Development Tools` alatt a menüre, amely böngészőben szerkeszti az alkalmazáskódot.
+        
+        2. Kattintson, `Go` és ha az App Service Editor megnyílik, akkor teljes mértékben ellenőrzése alatt a forráskódot. Feltételezve, hogy már telepítette az express és az azure-mobile-apps csomagot az npm install paranccsal, kattintson a WWWROOT api mappára az egyéni API létrehozásához vagy szerkesztéséhez. Módosítsa a kódfájlt, és a módosítások automatikusan mentésre kerülnek.
+        
+        3. Teljes hozzáférése van az alkalmazásadatok tárolására használt Azure SQL Database-hez. Az adatbázisban egyszerűen hozhat létre új táblákat.
+ 
    - **.NET-háttérrendszer**
     
         Ha a .NET gyorsindítási alkalmazást szeretné használni, kövesse az alábbi utasításokat.

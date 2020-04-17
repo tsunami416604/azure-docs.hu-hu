@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
-ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 251c9c9717bae1728bffa48827a45d4535d66c15
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79285239"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482073"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Az eszközök ikreinek megértése és használata az IoT Hubban
 
@@ -58,7 +58,7 @@ Az ikereszköz egy JSON-dokumentum, amely a következőket tartalmazza:
 
 * **Jelentett tulajdonságok**. Az eszköz konfigurációjának és feltételeinek szinkronizálásához a kívánt tulajdonságokkal együtt használható. Az eszközalkalmazás beállíthatja a jelentett tulajdonságokat, és a megoldás háttérrendszerének olvashatják és lekérdezhetik azokat.
 
-* **Az eszköz identitásának tulajdonságai**. Az ikerJSON-dokumentum gyökere az [identitásjegyzékben](iot-hub-devguide-identity-registry.md)tárolt megfelelő eszközidentitás csak olvasható tulajdonságait tartalmazza.
+* **Az eszköz identitásának tulajdonságai**. Az ikerJSON-dokumentum gyökere az [identitásjegyzékben](iot-hub-devguide-identity-registry.md)tárolt megfelelő eszközidentitás csak olvasható tulajdonságait tartalmazza. tulajdonságokat, `connectionStateUpdatedTime` és `generationId` nem fog szerepelni.
 
 ![Képernyőkép az ikereszköz tulajdonságairól](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -119,7 +119,7 @@ Az előző példában az ikereszköz tartalmaz egy `batteryLevel` tulajdonságot
 
 ### <a name="desired-property-example"></a>Kívánt tulajdonság példa
 
-Az előző példában `telemetryConfig` az eszköz iker kívánt és jelentett tulajdonságok at a megoldás háttér-és az eszköz alkalmazás az eszköz telemetriai konfigurációjának szinkronizálásához. Példa:
+Az előző példában `telemetryConfig` az eszköz iker kívánt és jelentett tulajdonságok at a megoldás háttér-és az eszköz alkalmazás az eszköz telemetriai konfigurációjának szinkronizálásához. Például:
 
 1. A megoldás háttérvége beállítja a kívánt tulajdonságot a kívánt konfigurációs értékkel. Itt van a dokumentum nak a kívánt tulajdonságkészlettel rendelkező része:
 
@@ -182,7 +182,7 @@ A megoldás háttérvége a következő atomi műveleteket használva működik 
 
   - Tulajdonságok
 
-    | Név | Érték |
+    | Name (Név) | Érték |
     | --- | --- |
     $content típusú | application/json |
     $iothub-enqueuedtime |  Az értesítés elküldésének időpontja |
@@ -307,7 +307,7 @@ Az IoT Hub hibát elválaszt minden olyan művelettel, `properties/desired`amely
 
 Az IoT Hub az utolsó frissítés időbélyegét tartja karban minden Egyes JSON-objektumhoz az ikereszköz által kívánt és jelentett tulajdonságokban. Az időbélyegek UTC formátumban vannak, és [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátumban `YYYY-MM-DDTHH:MM:SS.mmmZ`vannak kódolva.
 
-Példa:
+Például:
 
 ```json
 {

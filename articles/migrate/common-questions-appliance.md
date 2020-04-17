@@ -2,13 +2,13 @@
 title: Az Azure Migrate készülék – gyakori kérdések
 description: Válaszok az Azure Migrate készülékkel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437612"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529688"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate készülék: Gyakori kérdések
 
@@ -31,6 +31,15 @@ További információ az Azure Migrate készülékről:
 
 [További információ](migrate-appliance.md) a készülékről.
 
+## <a name="how-can-i-deploy-the-appliance"></a>Hogyan helyezhetem üzembe a készüléket?
+
+A készülék a következőképpen telepíthető:
+
+- VMware virtuális gépekhez és Hyper-V vm-ekhez (OVA sablon VMware vagy Virtuális merevlemez a Hyper-V-hez) sablon használata.
+- Ha nem szeretne sablont használni, vagy az Azure Government szolgáltatásban van, telepítheti a vmware-re vagy a Hyper-V-re egy PowerShell-parancsfájlhasználatával.
+- Fizikai kiszolgálók esetén mindig parancsfájl használatával telepíti a készüléket.
+
+
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hogyan kapcsolódik a készülék az Azure-hoz?
 
 A készülék az interneten keresztül vagy az Azure ExpressRoute nyilvános/Microsoft társviszony-létesítéssel való használatával is csatlakozhat.
@@ -45,11 +54,8 @@ Amikor a letöltött sablon használatával hozza létre a virtuális gép a ké
 
 ## <a name="what-network-connectivity-is-required"></a>Milyen hálózati kapcsolatra van szükség?
 
-Az Azure Migrate-berendezés hálózati kapcsolati követelményeiről az alábbi cikkekben talál tájékoztatást:
 
-- **VMware értékelése**: [URL-hozzáférés](migrate-appliance.md#url-access) és [porthozzáférés](migrate-support-matrix-vmware.md#port-access)
-- **VMware ügynök nélküli áttelepítés:** [URL-hozzáférés](migrate-appliance.md#url-access) és [porthozzáférés](migrate-support-matrix-vmware-migration.md#agentless-ports)
-- **Hyper-V felmérés:** [URL-hozzáférés](migrate-appliance.md#url-access) és [porthozzáférés](migrate-support-matrix-hyper-v.md#port-access)
+A készüléknek hozzá kell férnie az Azure URL-címekhez. [Tekintse át](migrate-appliance.md#url-access) az URL-listát.
 
 ## <a name="what-data-does-the-appliance-collect"></a>Milyen adatokat gyűjt a készülék?
 

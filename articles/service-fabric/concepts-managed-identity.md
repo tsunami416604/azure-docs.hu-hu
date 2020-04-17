@@ -4,12 +4,12 @@ description: Ismerje meg a felügyelt identitások azure-beli Service Fabric has
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: f6f3736bed4d3d59bce08d4df3ee0aa164a0a764
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415115"
+ms.locfileid: "81461446"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Felügyelt identitások használata az Azure-hoz a Service Fabric
 
@@ -57,7 +57,7 @@ A következő forgatókönyvek nem támogatottak vagy nem ajánlottak; vegye fig
 
 - Távolítsa el vagy módosítsa az alkalmazáshoz rendelt identitásokat; ha módosításokat kell végrehajtania, küldjön külön központi telepítéseket, hogy először új identitás-hozzárendelést adjon hozzá, majd távolítsa el a korábban hozzárendeltet. Egy identitás eltávolítása egy meglévő alkalmazás nemkívánatos hatások, beleértve az alkalmazás nem frissíthető állapotban hagyása. A kérelem teljes törlése biztonságos, ha a személyazonosság eltávolítása szükséges; vegye figyelembe, hogy ez törli az alkalmazáshoz társított rendszeráltal hozzárendelt identitást (ha úgy van definiálva), és eltávolítja az alkalmazáshoz rendelt felhasználóhoz rendelt identitásokkal való társításokat.
 
-- A felügyelt identitások Service Fabric-támogatása jelenleg nincs integrálva az [AzureServiceTokenProvider szolgáltatásba.](../key-vault/service-to-service-authentication.md)
+- A felügyelt identitások Service Fabric-támogatása jelenleg nincs integrálva az [AzureServiceTokenProvider szolgáltatásba.](../key-vault/general/service-to-service-authentication.md)
 
 ## <a name="next-steps"></a>További lépések
 

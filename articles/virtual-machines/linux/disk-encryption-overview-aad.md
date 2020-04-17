@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38fd7c8e14f58052912f68a277f194fd3866f2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 029743dbb44ab0ebb6ab8f695c0c966137c45107
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970581"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459797"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure lemeztitkosítás az Azure AD-vel (előző kiadás)
 
@@ -35,7 +35,7 @@ Az Azure Disk Encryption szolgáltatás engedélyezéséhez a régebbi AAD param
   - A kulcstartóhoz való csatlakozáshoz az IaaS virtuális gépnek képesnek kell lennie egy \[\]Azure AD-végponthoz való csatlakozásra, login.microsoftonline.com.
   - A titkosítási kulcsok at a key vault, az IaaS virtuális gép képesnek kell lennie a key vault végponthoz való csatlakozáshoz.
   - Az IaaS virtuális gépnek képesnek kell lennie egy Azure-tárolóvégponthoz csatlakozni, amely az Azure-bővítménytárházat és a VHD-fájlokat tároló Azure-tárfiókot üzemelteti.
-  -  Ha a biztonsági szabályzat korlátozza a hozzáférést az Azure virtuális gépek az internetre, feloldhatja az előző URI-t, és konfigurálhat egy adott szabályt, hogy lehetővé tegye a kimenő kapcsolatot az IP-k. További információ: [Azure Key Vault tűzfal mögött.](../../key-vault/key-vault-access-behind-firewall.md)
+  -  Ha a biztonsági szabályzat korlátozza a hozzáférést az Azure virtuális gépek az internetre, feloldhatja az előző URI-t, és konfigurálhat egy adott szabályt, hogy lehetővé tegye a kimenő kapcsolatot az IP-k. További információ: [Azure Key Vault tűzfal mögött.](../../key-vault/general/access-behind-firewall.md)
   - Windows rendszerben, ha a TLS 1.0 explicit módon le van tiltva, és a .NET verzió nem frissül 4.6-os vagy újabb verzióra, a következő beállításjegyzék-módosítás lehetővé teszi, hogy az Azure Disk Encryption válassza ki a legújabb TLS-verziót:
     
             [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]

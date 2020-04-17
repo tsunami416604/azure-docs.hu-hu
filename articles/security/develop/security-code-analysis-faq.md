@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74851519"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460222"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 Kérdése van? További információkért tekintse meg az alábbi GYIK-et.
@@ -159,7 +159,7 @@ A következő erőforrások segítségével biztonságosan kezelheti a titkos ku
  - [Az Azure AD felügyelt szolgáltatásidentitása (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Felügyelt identitások az Azure App Service-ben és az Azure Functionsben](../../app-service/overview-managed-identity.md)
- - [AppAuthentication könyvtár](../../key-vault/service-to-service-authentication.md)
+ - [AppAuthentication könyvtár](../../key-vault/general/service-to-service-authentication.md)
 
 
 További információt a Titkok [biztonságos kezelése a felhőben című blogbejegyzésben talál.](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)
@@ -202,7 +202,7 @@ Egy lépés a fő build és a Roslyn Analizátorok lépései között előfordul
 
 A teljes hibaüzenet:
 
-"'csc.exe' exited with error code 1 -- An instance of analyzer *AAAA* cannot be created from C:\\*BBBB*.dll : Could not load file or assembly 'Microsoft.CodeAnalysis, Version=*X.X.X.X*, Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. A rendszer nem találja a megadott fájlt."
+"'csc.exe' az 1-es hibakóddal távozott - *Az AAAA* analizátor egy példánya nem hozható létre a\\C:*BBBB*.dll : Nem tölthető be a 'Microsoft.CodeAnalysis, Version=*X.X.X.X.X,*, Culture=neutral, PublicKeyToken=31bf3856ad364e35' fájl vagy kódösszeállítás vagy annak egyik függősége. A rendszer nem találja a megadott fájlt."
 
 Győződjön meg róla, hogy a fordító támogatja a Roslyn Analizátorokat. A **csc.exe /version** parancs futtatása 2.6-os vagy újabb verzióértéket jelent.
 

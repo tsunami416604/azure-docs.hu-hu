@@ -7,21 +7,31 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8666f51b88d2a70a2cb27e3606f24010771c8017
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255118"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460705"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
-[Az Azure Files](storage-files-introduction.md) kétféleképpen telepíthető: a kiszolgáló nélküli Azure-fájlmegosztások közvetlen csatlakoztatásával vagy az Azure-fájlmegosztások helyszíni gyorsítótárazásával az Azure File Sync használatával. Melyik telepítési lehetőséget választja, módosítja azokat a dolgokat, amelyeket figyelembe kell vennie a központi telepítés megtervezésekor. 
+
+:::row:::
+    :::column:::
+        [![Interjú és bemutató az Azure File Sync bemutatásával – kattintson a játékhoz!](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
+    :::column-end:::
+    :::column:::
+        Az Azure File Sync egy olyan szolgáltatás, amely lehetővé teszi, hogy gyorsítótárazza az Azure-fájlmegosztások egy helyszíni Windows Server vagy felhőbeli virtuális gép. 
+        
+        Ez a cikk bemutatja az Azure File Sync fogalmak és funkciók. Ha már ismeri az Azure File Sync, fontolja meg az [Azure File Sync telepítési útmutatót,](storage-sync-files-deployment-guide.md) hogy próbálja ki ezt a szolgáltatást.        
+    :::column-end:::
+:::row-end:::
+
+A fájlok a felhőben lesznek tárolva az [Azure fájlmegosztásokban.](storage-files-introduction.md) Az Azure-fájlmegosztások kétféleképpen használhatók: közvetlenül csatlakoztathatja ezeket a kiszolgáló nélküli Azure-fájlmegosztásokat (SMB) vagy az Azure-fájlmegosztások helyszíni gyorsítótárazásával az Azure File Sync használatával. Melyik telepítési lehetőséget választja, módosítja azokat a szempontokat, amelyeket figyelembe kell vennie a központi telepítés megtervezésekor. 
 
 - **Az Azure-fájlmegosztás közvetlen csatlakoztatása:** Mivel az Azure Files SMB-hozzáférést biztosít, a Windows, macOS és Linux rendszerben elérhető szabványos SMB-ügyfél használatával csatlakoztathatja az Azure-fájlmegosztásokat a helyszínen vagy a felhőben. Mivel az Azure-fájlmegosztások kiszolgáló nélküliek, az éles környezetben történő üzembe helyezéshez nincs szükség fájlkiszolgáló vagy NAS-eszköz kezelésére. Ez azt jelenti, hogy nem kell szoftverjavításokat alkalmaznia, vagy fizikai lemezeket cserélnie. 
 
 - **Gyorsítótár az Azure-fájlmegosztás helyszíni Azure File Sync:** Azure File Sync lehetővé teszi, hogy központosítsa a szervezet fájlmegosztások az Azure Files, miközben a rugalmasság, a teljesítmény és a kompatibilitás egy helyszíni fájlkiszolgáló. Az Azure File Sync átalakítja a helyszíni (vagy felhőbeli) Windows Server egy gyors gyorsítótár az Azure-fájlmegosztás. 
-
-Ez a cikk elsősorban az Azure File Sync központi telepítésével kapcsolatos szempontokat ismerteti. Ha meg szeretné tervezni, hogy az Azure-fájlmegosztások központi telepítését közvetlenül egy helyszíni vagy felhőbeli ügyfél csatlakoztatja, olvassa el [az Azure Files telepítésének megtervezése című témakört.](storage-files-planning.md)
 
 ## <a name="management-concepts"></a>Kezelési koncepciók
 Az Azure File Sync központi telepítése három alapvető felügyeleti objektumot tartalmaz:
@@ -256,11 +266,11 @@ A Windows Serveren lévő adatok titkosítására két olyan stratégia létezik
 
 A fájlrendszer alatti titkosítás biztosításához a Windows Server biztosítja a BitLocker beérkezett üzenetek mappáját. A BitLocker teljesen átlátszó az Azure File Sync számára. A bitlockerhez hasonló titkosítási mechanizmus használatának elsődleges oka az adatok fizikai kiszivárgásának megakadályozása a helyszíni adatközpontból azáltal, hogy valaki ellopja a lemezeket, és megakadályozza, hogy egy jogosulatlan operációs rendszer jogosulatlan olvasási/írási műveleteket hajtson végre az adatokhoz. Ha többet szeretne tudni a BitLocker-ről, olvassa el a [BitLocker áttekintése című témakört.](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)
 
-A BitLocker-hez hasonlóan működő harmadik féltől származó termékeknek az NTFS-kötet alatt kell működniük, hasonlóan kell működniük az Azure File Sync szolgáltatással. 
+A BitLocker-hez hasonlóan működő, harmadik féltől származó termékeknek az NTFS-kötet alatt kell működniük, hasonlóan kell működniük az Azure File Sync szolgáltatással. 
 
 Az adatok titkosításának másik fő módja a fájl adatfolyamának titkosítása, amikor az alkalmazás menti a fájlt. Egyes alkalmazások ezt natívmódon tehetik meg, de ez általában nem így van. A fájl adatfolyamának titkosítására szolgáló módszer például az Azure Information Protection (AIP)/Azure Rights Management Services (Azure RMS)/Active Directory RMS. Az AIP/RMS-hez hasonló titkosítási mechanizmus használatának elsődleges oka az, hogy megakadályozza az adatok kiszivárgását a fájlmegosztásból olyan személyek által, akik más helyekre, például flash meghajtóra másolják, vagy e-mailben küldik el egy jogosulatlan személynek. Ha egy fájl adatfolyama a fájlformátum részeként titkosítva van, ez a fájl továbbra is titkosítva lesz az Azure fájlmegosztáson. 
 
-Az Azure File Sync nem működik együtt az NTFS titkosított fájlrendszerrel (NTFS EFS) vagy a fájlrendszer felett, de a fájl adatfolyama alatt található harmadik fél től származó titkosítási megoldásokkal. 
+Az Azure File Sync nem működik együtt az NTFS titkosított fájlrendszerrel (NTFS EFS) vagy a fájlrendszer felett, de a fájl adatfolyama alatt található harmadik féltől származó titkosítási megoldásokkal. 
 
 ### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
 Az Azure File Sync ügynök kommunikál a Storage Sync Service és az Azure fájlmegosztás az Azure File Sync REST protokoll és a FileREST protokoll, amelyek mindegyike mindig https-porton 443 használatával. Az Azure File Sync nem küld titkosítatlan kérelmeket HTTP-n keresztül. 

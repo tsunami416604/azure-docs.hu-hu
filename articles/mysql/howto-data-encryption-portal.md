@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: acf3e6273f98d98d5da55cfb5b044677116c44dc
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 9d1e89919647d9d94b287618da2f9a77278425a5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520809"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459083"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Az Azure Database for MySQL adattitkosítása az Azure Portal használatával
 
@@ -22,13 +22,13 @@ Ismerje meg, hogyan használhatja az Azure Portalon az Azure-adatbázis mySQL-he
 * Rendelkeznie kell egy Azure-előfizetéssel, és az adott előfizetés rendszergazdájának kell lennie.
 * Az Azure Key Vaultban hozzon létre egy key vaultot és egy kulcsot, amelyet egy ügyfél által felügyelt kulcshoz használhat.
 * A kulcstartónak a következő tulajdonságokkal kell rendelkeznie az ügyfél által felügyelt kulcsként való használathoz:
-  * [Helyreállítható törlés](../key-vault/key-vault-ovw-soft-delete.md)
+  * [Helyreállítható törlés](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [Tisztítás védett](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
+  * [Tisztítás védett](../key-vault/general/overview-soft-delete.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

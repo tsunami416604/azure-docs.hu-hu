@@ -759,14 +759,6 @@
           items:
             - name: 1 – Adatok lekérdezése
               href: tutorial-query-graph.md
-        - name: Referencia
-          items:
-            - name: Válaszfejlécek
-              href: gremlin-headers.md
-            - name: Korlátok
-              href: gremlin-limits.md
-            - name: Kompatibilitás
-              href: gremlin-compatibility.md
         - name: Útmutatók
           items:
             - name: Gráfadatok modellezése
@@ -794,6 +786,14 @@
               href: powershell-samples-gremlin.md
             - name: Kezelés az Azure CLI használatával
               href: cli-samples-gremlin.md
+        - name: Referencia
+          items:
+            - name: Válaszfejlécek
+              href: gremlin-headers.md
+            - name: Korlátok
+              href: gremlin-limits.md
+            - name: Kompatibilitás
+              href: gremlin-compatibility.md
     - name: Table API
       items:
         - name: Áttekintés

@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1961797f37a760fe3a31dc8aa3830889965b69b5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 78f7c935e64276e7f4862dad966b99bff6bd246d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81379943"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481941"
 ---
 # <a name="azure-storage-redundancy"></a>Az Azure Storage redundanciája
 
@@ -160,7 +160,7 @@ Az alábbi táblázat bemutatja, hogy egy adott esetben mennyire tartósak és e
 
 <sup>2</sup> A tárfiók-típusokról a [Tárfiók áttekintése című témakörben](storage-account-overview.md)olvashat.
 
-Minden típusú tárfiókok összes adat másolása a tárfiók redundancia beállításának megfelelően. A program átmásolja az objektumokat, például a blokkblobokat, a hozzáfűző blobokat, az oldalblobokat, a várólistákat, a táblázatokat és a fájlokat.
+Minden típusú tárfiókok és [az összes réteg (beleértve az archívumot is)](../blobs/storage-blob-storage-tiers.md) összes adat másolása a tárfiók redundancia beállításának megfelelően kerül másolásra. A program átmásolja az objektumokat, például a blokkblobokat, a hozzáfűző blobokat, az oldalblobokat, a várólistákat, a táblázatokat és a fájlokat.
 
 Az egyes redundanciabeállítások díjszabási információkért lásd: [Azure Storage díjszabása.](https://azure.microsoft.com/pricing/details/storage/)
 

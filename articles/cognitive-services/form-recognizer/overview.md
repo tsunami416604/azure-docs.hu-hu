@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399449"
+ms.locfileid: "81529892"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -92,7 +92,7 @@ További információkért tekintse meg a [REST API referenciadokumentációját
 
 A bevételezési modell bemeneti követelményei némileg eltérnek.
 
-* A formátumnak JPEG, PNG, BMP, PDF (szöveg vagy beolvasott) vagy TIFF formátumnak kell lennie.
+* A formátumnak JPEG, PNG, PDF (szöveg vagy beolvasott) vagy TIFF formátumnak kell lennie.
 * A fájlméretnek 20 MB-nál kisebbnek kell lennie.
 * A kép méretének 50 x 50 és 10000 x 10000 képpont között kell lennie.
 * A PDF-méretek legbőlegelhetőek lehetnek 17 x 17 hüvelyk, amely jogi vagy A3-as papírméretnek felel meg, és kisebbek.

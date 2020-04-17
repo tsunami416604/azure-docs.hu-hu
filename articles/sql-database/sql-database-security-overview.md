@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 2a4c6dd3dd6f1bb2f15e31226086c73fb8e63521
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124829"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461395"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Az Azure SQL Database biztonsági képességeinek áttekintése
 
@@ -112,11 +112,11 @@ Ha például a ADO.NET illesztőprogramot használja, ez az **Encrypt=True** és
 
 [Az Azure SQL Database transzparens adattitkosítása (TDE)](transparent-data-encryption-azure-sql.md) egy biztonsági réteget ad hozzá, amely segít megvédeni az inaktív adatokat a nyers fájlokhoz vagy biztonsági mentésekhöz való jogosulatlan vagy offline hozzáféréssel szemben. Gyakori esetek közé tartozik az adatközpontok lopása vagy a hardver vagy adathordozó, például a lemezmeghajtók és a biztonsági másolatkazetták nem biztonságos ártalmatlanítása.A TDE a teljes adatbázist a teljes AES titkosítási algoritmussal titkosítja, amely nem követeli meg az alkalmazásfejlesztőktől a meglévő alkalmazások módosítását.
 
-Az Azure-ban az összes újonnan létrehozott SQL-adatbázis alapértelmezés szerint titkosítva van, és az adatbázis-titkosítási kulcsot egy beépített kiszolgálói tanúsítvány védi.  A tanúsítvány karbantartását és rotációját a szolgáltatás kezeli, és nem igényel a felhasználó tól származó adatokat. Azok az ügyfelek, akik szívesebben veszik át az irányítást a titkosítási kulcsok felett, kezelhetik a kulcsokat az [Azure Key Vaultban.](../key-vault/key-vault-secure-your-key-vault.md)
+Az Azure-ban az összes újonnan létrehozott SQL-adatbázis alapértelmezés szerint titkosítva van, és az adatbázis-titkosítási kulcsot egy beépített kiszolgálói tanúsítvány védi.  A tanúsítvány karbantartását és rotációját a szolgáltatás kezeli, és nem igényel a felhasználó tól származó adatokat. Azok az ügyfelek, akik szívesebben veszik át az irányítást a titkosítási kulcsok felett, kezelhetik a kulcsokat az [Azure Key Vaultban.](../key-vault/general/secure-your-key-vault.md)
 
 ### <a name="key-management-with-azure-key-vault"></a>Kulcskezelés az Azure Key Vault segítségével
 
-[Hozza el saját kulcsa](transparent-data-encryption-byok-azure-sql.md) (BYOK) támogatja [az átlátszó adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) lehetővé teszi az ügyfelek számára, hogy átvegye a kulcskezelés és a rotáció az [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md), az Azure felhőalapú külső kulcskezelő rendszer használatával. Ha az adatbázis hozzáférése a key vault vissza van vonva, az adatbázis nem fejthető vissza, és olvassa be a memóriába. Az Azure Key Vault központi kulcskezelési platformot biztosít, kihasználja a szigorúan ellenőrzött hardveres biztonsági modulokat (HSM-ek), és lehetővé teszi a kulcsok és az adatok kezelése közötti feladatok elkülönítését a biztonsági megfelelőségi követelmények teljesítése érdekében.
+[Hozza el saját kulcsa](transparent-data-encryption-byok-azure-sql.md) (BYOK) támogatja [az átlátszó adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) lehetővé teszi az ügyfelek számára, hogy átvegye a kulcskezelés és a rotáció az [Azure Key Vault](../key-vault/general/secure-your-key-vault.md), az Azure felhőalapú külső kulcskezelő rendszer használatával. Ha az adatbázis hozzáférése a key vault vissza van vonva, az adatbázis nem fejthető vissza, és olvassa be a memóriába. Az Azure Key Vault központi kulcskezelési platformot biztosít, kihasználja a szigorúan ellenőrzött hardveres biztonsági modulokat (HSM-ek), és lehetővé teszi a kulcsok és az adatok kezelése közötti feladatok elkülönítését a biztonsági megfelelőségi követelmények teljesítése érdekében.
 
 ### <a name="always-encrypted-encryption-in-use"></a>Mindig titkosított (használat közbeni titkosítás)
 

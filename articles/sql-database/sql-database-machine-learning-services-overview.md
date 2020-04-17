@@ -12,23 +12,19 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 2a2cd4bfc3d393543b41eea776f02723d94054b1
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: 46ca4661d06b52c861431a680a69297575ac99b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345831"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461412"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services R-rel (előzetes verzió)
 
 A Machine Learning Services az Azure SQL Database egyik szolgáltatása, amely az adatbázison belüli R-parancsfájlok végrehajtására szolgál. A szolgáltatás microsoft R-csomagokat tartalmaz a nagy teljesítményű prediktív elemzésekhez és a gépi tanuláshoz. A relációs adatok az R parancsfájlokban tárolhatók, az R utasításokat tartalmazó T-SQL parancsfájlok vagy a T-SQL-t tartalmazó R-kód segítségével.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
-> [!NOTE]
-> Az előzetes verzió egyetlen adatbázisokhoz és rugalmas készletekhez érhető el a virtuálismag-alapú vásárlási modell használatával az **általános célú** és az **üzleti legkritikusabb** szolgáltatási szinteken. Ebben a kezdeti előzetes verzióban a **nagy kapacitású** szolgáltatási szint és a **felügyelt példány** üzembe helyezése beállítás nem támogatott. Jelenleg az R az egyetlen támogatott nyelv. A Python jelenleg nem támogatott.
->
-> Az előzetes verzió jelenleg a következő régiókban érhető el: Nyugat-Európa, Észak-Európa, USA nyugati régiója 2, USA keleti régiója, USA déli középső régiója, USA északi középső régiója, Kanada középső része, Délkelet-Ázsia, India déli része és Délkelet-Ausztrália.
 
 ## <a name="what-you-can-do-with-r"></a>Mit lehet tenni az R
 

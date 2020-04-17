@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972866"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460732"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Sablonok használata Azure Data Factory-entitások létrehozásához
 > [!NOTE]
@@ -233,7 +233,7 @@ A paraméterezéssel kapcsolatos gyakorlati tanácsok az [Azure Resource Manager
 * A beállítások környezettől függően változnak (például: fejlesztés, tesztelés és éles környezet)
 * Titkos kulcsok (például jelszavak)
 
-Ha az Azure Data Data Factory-entitások sablonok használatával történő üzembe helyezésekor titkokat kell leállítania az [Azure Key Vaultból,](../../key-vault/key-vault-overview.md) adja meg a **key vaultot** és a **titkos nevet** az alábbi példában látható módon:
+Ha az Azure Data Data Factory-entitások sablonok használatával történő üzembe helyezésekor titkokat kell leállítania az [Azure Key Vaultból,](../../key-vault/general/overview.md) adja meg a **key vaultot** és a **titkos nevet** az alábbi példában látható módon:
 
 ```JSON
 "parameters": {

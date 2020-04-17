@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d058ff5f9863642f73725db3472c942161447f25
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548436"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459780"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure lemeztitkosítás Linuxos virtuális gépekhez 
 
@@ -105,7 +105,7 @@ Az Azure lemeztitkosítási szolgáltatás engedélyezéséhez a Linux-virtuáli
   - A kulcstárolóhoz való csatlakozáshoz a Linux virtuális gépnek képesnek kell lennie egy \[\]Azure Active Directory-végponthoz, login.microsoftonline.com.
   - A titkosítási kulcsok at a key vault, a Linux virtuális gép képesnek kell lennie arra, hogy csatlakozzon a key vault végponthoz.
   - A Linux virtuális gépnek képesnek kell lennie egy Azure-tárolóvégponthoz csatlakozni, amely az Azure-bővítménytárházat és a Virtuális merevlemez-fájlokat tároló Azure-tárfiókot üzemelteti.
-  -  Ha a biztonsági szabályzat korlátozza a hozzáférést az Azure virtuális gépek az internetre, feloldhatja az előző URI-t, és konfigurálhat egy adott szabályt, hogy lehetővé tegye a kimenő kapcsolatot az IP-k. További információ: [Azure Key Vault tűzfal mögött.](../../key-vault/key-vault-access-behind-firewall.md)  
+  -  Ha a biztonsági szabályzat korlátozza a hozzáférést az Azure virtuális gépek az internetre, feloldhatja az előző URI-t, és konfigurálhat egy adott szabályt, hogy lehetővé tegye a kimenő kapcsolatot az IP-k. További információ: [Azure Key Vault tűzfal mögött.](../../key-vault/general/access-behind-firewall.md)  
 
 ## <a name="encryption-key-storage-requirements"></a>Titkosítási kulcs tárolási követelményei  
 

@@ -3,12 +3,12 @@ title: A felhőbevezetési keretrendszer migrálási célzónára vonatkozó ter
 description: Az Azure Migrate-hez készült felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintése és architektúrája.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: d0328a590d86677e098504a7498a696697fc38c8
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c4720ec3e94ee928553cd62017831e5158ac9b97
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383552"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459865"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Az Azure-beli migráláshoz készült Microsoft Cloud bevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintése
 
@@ -24,7 +24,7 @@ A felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervmintá
 
 Ez a környezet több Azure-szolgáltatásból épül fel, és biztonságos, teljes körűen monitorozott, vállalati használatra kész szabályozást biztosít. A környezet összetevői:
 
-- Az [Azure Key Vault](../../../../key-vault/key-vault-overview.md) egy példánya, amely a megosztott szolgáltatások környezetében üzembe helyezett tanúsítványok, kulcsok és titkos kulcsok titkos kulcsainak tárolására szolgál
+- Az [Azure Key Vault](../../../../key-vault/general/overview.md) egy példánya, amely a megosztott szolgáltatások környezetében üzembe helyezett tanúsítványok, kulcsok és titkos kulcsok titkos kulcsainak tárolására szolgál
 - A [Log Analytics](../../../../azure-monitor/overview.md) üzembe helyezése biztosítja, hogy a migrálás megkezdésétől fogva az összes művelet és szolgáltatás naplózása egyetlen központi helyen történjen
 - Az [Azure Security Center](../../../../security-center/security-center-intro.md) üzembe helyezése (standard verzió) fenyegetésvédelmet nyújt a migrált számítási feladatok számára.
 - Az [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) üzembe helyezése izolált hálózatot és alhálózatokat biztosít a virtuális gép számára.

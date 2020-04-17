@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811471"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461701"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-környezetek védelme
 
@@ -74,7 +74,7 @@ Elvek és minták a hálózat peremén már évtizedek óta rendelkezésre álln
 Az alábbiakban ajánlott eljárásokat az identitás kerületének kezelésére.
 
 **Ajánlott eljárás:** A kulcsok és a hitelesítő adatok biztonságossá tétele a PaaS-telepítés biztonságossá tétele érdekében.   
-**Részlet:** A kulcsok és a hitelesítő adatok elvesztése gyakori probléma. Használhat egy központi megoldást, ahol kulcsok és titkos kulcsok tárolhatók a hardveres biztonsági modulokban (HSM). [Az Azure Key Vault](../../key-vault/key-vault-overview.md) a hitelesítési kulcsok, a tárfiók kulcsai, az adattitkosítási kulcsok, a .pfx-fájlok és a HSM-ek által védett kulcsok használatával történő titkosításával védi a kulcsokat és a titkos kulcsokat.
+**Részlet:** A kulcsok és a hitelesítő adatok elvesztése gyakori probléma. Használhat egy központi megoldást, ahol kulcsok és titkos kulcsok tárolhatók a hardveres biztonsági modulokban (HSM). [Az Azure Key Vault](../../key-vault/general/overview.md) a hitelesítési kulcsok, a tárfiók kulcsai, az adattitkosítási kulcsok, a .pfx-fájlok és a HSM-ek által védett kulcsok használatával történő titkosításával védi a kulcsokat és a titkos kulcsokat.
 
 **Ajánlott eljárás:** Ne helyezzen hitelesítő adatokat és egyéb titkos kulcsokat a forráskódba vagy a GitHubba.   
 **Részlet:** Az egyetlen dolog rosszabb, mint a kulcsok és a hitelesítő adatok elvesztése, hogy egy jogosulatlan fél hozzáférhet hozzájuk. A támadók kihasználhatják a robottechnológiák at a kódtárolókban, például a GitHubban tárolt kulcsok és titkos kulcsok megkereséséhez. Ne helyezzen kulcsot és titkos kulcsokat ezekbe a nyilvános kódtárolókba.
@@ -155,7 +155,7 @@ Ebben a cikkben az Azure PaaS-telepítés biztonsági előnyeire és a felhőala
 
 - [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Database és Azure SQL Data Warehouse](paas-applications-using-sql.md)
-- [Azure Storage](paas-applications-using-storage.md)
+- [Azure-tárhely](paas-applications-using-storage.md)
 - Azure Cache for Redis
 - Azure Service Bus
 - Webalkalmazás-tűzfalak

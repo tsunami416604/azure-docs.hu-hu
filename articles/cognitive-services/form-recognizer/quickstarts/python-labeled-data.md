@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482311"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531100"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Űrlapfelismerő modell betanítása feliratokkal REST API és Python használatával
 
@@ -40,7 +40,7 @@ Győződjön meg arról, hogy az összes képzési dokumentum azonos formátumú
 
 Annak érdekében, hogy a címkeadatok használatával modelleket tanítson be, a következő fájlokra lesz szüksége bemenetként az almappában. Az alábbiakban megtudhatja, hogyan hozhat létre ilyen fájlt.
 
-* **Forrásűrlapok** – az űrlapok, amelyekből adatokat lehet kinyerni. A támogatott típusok: JPEG, PNG, BMP, PDF vagy TIFF.
+* **Forrásűrlapok** – az űrlapok, amelyekből adatokat lehet kinyerni. A támogatott típusok a JPEG, PNG, PDF vagy TIFF.
 * **OCR elrendezés fájlok** - JSON fájlokat, amelyek leírják a méretek és pozíciók minden olvasható szöveg minden forrás formában. Az adatok létrehozásához az Űrlapfelismerő elrendezés API-t fogja használni. 
 * **Címke fájlok** - JSON fájlokat, amelyek leírják adatcímkék, amelyek a felhasználó által megadott kézzel.
 
@@ -219,7 +219,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': '<subsription key>',
 }
 
-body =  {
+body =     {
     "source": source,
     "sourceFilter": {
         "prefix": prefix,
@@ -455,7 +455,7 @@ Amikor a folyamat befejeződött, a `202 (Success)` JSON-tartalommal kapcsolatos
                     "#/readResults/0/lines/8/words/1"
                   ]
                 },
-                ...     
+                ...        
               ]
             }
           ]

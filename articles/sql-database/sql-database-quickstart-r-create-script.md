@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 5b2f8231952d25f5858f8e06a957f1056ecc3651
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: bb6cb6d86933166d2427788d697d9cd38cf04bf0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768495"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460171"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Rövid útmutató: Egyszerű R-parancsfájlok létrehozása és futtatása az Azure SQL Database Machine Learning Services szolgáltatásban (előzetes verzió)
 
@@ -30,11 +31,8 @@ Ebben a rövid útmutatóban hozzon létre és futtasson r-parancsfájlokat a Ma
 
 - Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure SQL-adatbázis](sql-database-single-database-get-started.md) [kiszolgálószintű tűzfalszabállyal](sql-database-server-level-firewall-rule.md)
-- [Machine Learning Services](sql-database-machine-learning-services-overview.md) engedélyezve van az R szolgáltatással. [Regisztráljon az előzetes verzióra](sql-database-machine-learning-services-overview.md#signup).
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) engedélyezve van az R szolgáltatással.
 - [SQL Server Felügyeleti stúdió](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
-
-> [!NOTE]
-> A nyilvános előzetes verzió során a Microsoft befogja önt, és engedélyezi a gépi tanulást a meglévő vagy az új adatbázishoz.
 
 Ez a példa a tárolt eljárás [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) egy jól formázott R-parancsfájl burkolására használja.
 

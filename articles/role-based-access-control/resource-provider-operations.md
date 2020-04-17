@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 16fa33999a38b21fd2016c986dd2db81f7d84051
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 274e85a914ebec31a03f1149bc4467ea142e7255
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383749"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482111"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatóműveletei
 
@@ -2198,6 +2198,10 @@ Azure szolgáltatás: [Virtuális gépek](../virtual-machines/index.yml), [virtu
 > | Műveletek | Microsoft.Compute/locations/logAnalytics/getThrottledRequests/action | Naplók létrehozása a szabályozott kérelmek aggregátumainak megjelenítéséhez Erőforrásnév, OperationName vagy az alkalmazott szabályozású házirend szerint csoportosítva. |
 > |  | **helyszínek/műveletek** |  |
 > | Műveletek | Microsoft.Compute/locations/operations/read | Aszinkron művelet állapotának beírása |
+> |  | **helyek/privateEndpointConnectionProxyAzureAsyncOperation** |  |
+> | Műveletek | Microsoft.Compute/locations/privateEndpointConnectionProxyAzureAsyncOperation/read | Az aszinkron private endpoint kapcsolatproxy-művelet állapotának beszereznie |
+> |  | **locations/privateEndpointConnectionConnectionOperationOperationResults** |  |
+> | Műveletek | Microsoft.Compute/locations/privateEndpointConnectionProxyOperationResults/read | A privát végponti kapcsolatproxy művelet eredményeinek beszerezése |
 > |  | **helyszínek/kiadók** |  |
 > | Műveletek | Microsoft.Compute/locations/publishers/read | A Publisher tulajdonságainak beszereznie |
 > |  | **helyek/közzétevők/artifacttypes/ajánlatok** |  |
@@ -2233,6 +2237,14 @@ Azure szolgáltatás: [Virtuális gépek](../virtual-machines/index.yml), [virtu
 > | Műveletek | Microsoft.Compute/restorePointCollections/restorePoints/write | Új visszaállítási pont létrehozása |
 > | Műveletek | Microsoft.Compute/restorePointCollections/restorePoints/delete | A visszaállítási pont törlése |
 > | Műveletek | Microsoft.Compute/restorePointCollections/restorePoints/retrieveSasUris/action | A visszaállítási pont tulajdonságainak beszereznie a blob SAS URI-kkal együtt |
+> |  | **sharedVMExtensions (sharedVMExtensions)** |  |
+> | Műveletek | Microsoft.Compute/sharedVMExtensions/read | A megosztott virtuálisgép-bővítmény tulajdonságainak lehívása |
+> | Műveletek | Microsoft.Compute/sharedVMExtensions/write | Új megosztott virtuálisgép-bővítmény létrehozása vagy meglévő frissítése |
+> | Műveletek | Microsoft.Compute/sharedVMExtensions/delete | A megosztott virtuálisgép-bővítmény törlése |
+> |  | **sharedVMExtensions/versions** |  |
+> | Műveletek | Microsoft.Compute/sharedVMExtensions/versions/read | A megosztott virtuálisgép-bővítmény verziójának tulajdonságainak beszerzése |
+> | Műveletek | Microsoft.Compute/sharedVMExtensions/versions/write | Új megosztott virtuálisgép-bővítményverzió létrehozása vagy meglévő frissítése |
+> | Műveletek | Microsoft.Compute/sharedVMExtensions/versions/delete | A megosztott virtuálisgép-bővítmény verziójának törlése |
 > |  | **sharedVMImages** |  |
 > | Műveletek | Microsoft.Compute/sharedVMImages/read | A SharedVMImage tulajdonságainak beszereznie |
 > | Műveletek | Microsoft.Compute/sharedVMImages/write | Új SharedVMImage-et hoz létre, vagy egy meglévőt frissít |
@@ -2250,6 +2262,10 @@ Azure szolgáltatás: [Virtuális gépek](../virtual-machines/index.yml), [virtu
 > | Műveletek | Microsoft.Compute/snapshots/delete | Pillanatkép törlése |
 > | Műveletek | Microsoft.Compute/snapshots/beginGetAccess/action | A blob-hozzáférés pillanatképének SAS-URI-jának beszereznie |
 > | Műveletek | Microsoft.Compute/snapshots/endGetAccess/action | A pillanatkép SAS URI-jának visszavonása |
+> |  | **sshNyilvános billentyűk** |  |
+> | Műveletek | Microsoft.Compute/sshPublicKeys/read | Az SSH nyilvános kulcs tulajdonságainak beszereznie |
+> | Műveletek | Microsoft.Compute/sshPublicKeys/write | Új SSH nyilvános kulcsot hoz létre, vagy egy meglévő SSH nyilvános kulcsot frissít |
+> | Műveletek | Microsoft.Compute/sshPublicKeys/delete | Törli az SSH nyilvános kulcsot |
 > |  | **virtualMachines** |  |
 > | Műveletek | Microsoft.Compute/virtualMachines/read | Virtuális gép tulajdonságainak beszereznie |
 > | Műveletek | Microsoft.Compute/virtualMachines/write | Új virtuális gép létrehozása vagy meglévő virtuális gép frissítése |
@@ -3934,6 +3950,83 @@ Azure-szolgáltatás: [Azure Cosmos DB](../cosmos-db/index.yml)
 > | Műveletek | Microsoft.DocumentDB/databaseAccounts/getBackupPolicy/action | Az adatbázisfiók biztonsági mentési házirendjének beszereznie |
 > | Műveletek | Microsoft.DocumentDB/databaseAccounts/restore/action | Visszaállítási kérelem küldése |
 > | Műveletek | Microsoft.DocumentDB/databaseAccounts/backup/action | Biztonsági másolat konfigurálására vonatkozó kérelem elküldése |
+> |  | **databaseAccounts/apis/databases** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/write | (Elavult. Kérjük, használja erőforrás elérési utak nélkül "/apis/" szegmens) Hozzon létre egy adatbázist. Csak api-típusokra alkalmazható: 'sql', 'mongodb', 'gremlin'. |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/read | (Elavult. Kérjük, használja az erőforrás elérési utak nélkül "/apis/" szegmens) Olvassa el az adatbázist, vagy sorolja fel az összes adatbázist. Csak api-típusokra alkalmazható: 'sql', 'mongodb', 'gremlin'. |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/delete | (Elavult. Kérjük, forráselérési utak nélkül '/apis/' szegmens) Adatbázis törlése. Csak api-típusokra alkalmazható: 'sql', 'mongodb', 'gremlin'. |
+> |  | **databaseAccounts/apis/databases/collections** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/write | (Elavult. Kérjük, használja erőforrás elérési utak nélkül "/apis/" szegmens) Hozzon létre vagy frissítse a gyűjtemény. Csak az API-típusokra vonatkozik: "mongodb". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/read | (Elavult. Kérjük, használja az erőforrás elérési utak nélkül "/apis/" szegmens) Olvassa el a gyűjtemény, vagy felsorolja az összes gyűjtemény. Csak az API-típusokra vonatkozik: "mongodb". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/delete | (Elavult. Kérjük, forráselérési utak nélkül "/apis/" szegmens) Gyűjtemény törlése. Csak az API-típusokra vonatkozik: "mongodb". |
+> |  | **databaseAccounts/apis/databases/collections/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak az API-típusokra vonatkozik: "mongodb". |
+> |  | **databaseAccounts/apis/databases/collections/settings** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/write | (Elavult. Használja az erőforrás-útvonalak nélkül "/apis/" szegmens) A gyűjtemény átviteli. Csak az API-típusokra vonatkozik: "mongodb". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/read | (Elavult. Kérjük, használja az erőforrás-útvonalak nélkül "/apis/" szegmens) Olvassa el a gyűjtemény átviteli. Csak az API-típusokra vonatkozik: "mongodb". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/databases/collections/settings/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak az API-típusokra vonatkozik: "mongodb". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/databases/containers** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/write | (Elavult. Kérjük, használja az erőforrás elérési utak nélkül "/apis/" szegmens) Hozzon létre vagy frissítse nyesttároló. Csak API-típusokesetén alkalmazható: "sql". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/read | (Elavult. Kérjük, használja az erőforrás elérési utak nélkül "/apis/" szegmens) Olvassa el a tárolót, vagy sorolja fel az összes tárolók. Csak API-típusokesetén alkalmazható: "sql". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/delete | (Elavult. Használja az erőforráselérési utak nélkül "/apis/" szegmens) Tároló törlése. Csak API-típusokesetén alkalmazható: "sql". |
+> |  | **databaseAccounts/apis/databases/containers/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak API-típusokesetén alkalmazható: "sql". |
+> |  | **databaseAccounts/apis/databases/containers/settings** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/write | (Elavult. Használja az erőforrás-útvonalak nélkül "/apis/" szegmens) Frissítse a tároló átviteli. Csak API-típusokesetén alkalmazható: "sql". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/read | (Elavult. Használja az erőforrás-útvonalak nélkül "/apis/" szegmens) Olvassa el a tároló átviteli. Csak API-típusokesetén alkalmazható: "sql". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/databases/containers/settings/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak API-típusokesetén alkalmazható: "sql". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/databases/graphs** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/write | (Elavult. Használja az "/apis/" szegmens nélküli erőforrásútvonalakat) Diagram létrehozása vagy frissítése. Csak api-típusokra alkalmazható: "gremlin". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/read | (Elavult. Kérjük, használja az erőforrás-útvonalak nélkül "/apis/" szegmens) Olvassa el a grafikont, vagy sorolja fel az összes grafikont. Csak api-típusokra alkalmazható: "gremlin". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/delete | (Elavult. Használja az erőforrás-útvonalakat "/apis/" szegmens nélkül) Grafikon törlése. Csak api-típusokra alkalmazható: "gremlin". |
+> |  | **databaseAccounts/apis/databases/graphs/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak api-típusokra alkalmazható: "gremlin". |
+> |  | **databaseAccounts/apis/databases/graphs/settings** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/write | (Elavult. Használja az erőforrás-útvonalak nélkül "/apis/" szegmens) Grafikon átviteli keresztüláram frissítése. Csak api-típusokra alkalmazható: "gremlin". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/read | (Elavult. Használja az erőforrás-útvonalaknélkül "/apis/" szegmens) Olvassa el a grafikon átviteli. Csak api-típusokra alkalmazható: "gremlin". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/databases/graphs/settings/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak api-típusokra alkalmazható: "gremlin". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/databases/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak api-típusokra alkalmazható: 'sql', 'mongodb', 'gremlin'. |
+> |  | **databaseAccounts/apis/databases/settings** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/write | (Elavult. Használja az "/apis/" szegmens nélküli erőforrásútvonalakat) Adatbázis-átviteli átállás frissítése. Csak api-típusokra alkalmazható: 'sql', 'mongodb', 'gremlin'. Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/read | (Elavult. Kérjük, használja az erőforrás elérési utak nélkül "/apis/" szegmens) Adatbázis átviteli átállásának olvasása. Csak api-típusokra alkalmazható: 'sql', 'mongodb', 'gremlin'. Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/databases/settings/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak api-típusokra alkalmazható: 'sql', 'mongodb', 'gremlin'. Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/keyspaces** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/write | (Elavult. Kérjük, használja az erőforrás elérési utak nélkül "/apis/" szegmens) Hozzon létre egy kulcstér. Csak API-típusokra alkalmazható: "cassandra". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/read | (Elavult. Kérjük, használja az erőforrás-elérési utak nélkül "/apis/" szegmens) Olvassa el a keyspace vagy felsorolja az összes keyspaces. Csak API-típusokra alkalmazható: "cassandra". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/delete | (Elavult. Használja az "/apis/" szegmens nélküli erőforráselérési utakat) Kulcstér törlése. Csak API-típusokra alkalmazható: "cassandra". |
+> |  | **databaseAccounts/apis/keyspaces/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak API-típusokra alkalmazható: "cassandra". |
+> |  | **databaseAccounts/apis/keyspaces/settings** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/write | (Elavult. Használja az "/apis/" szegmens nélküli erőforrásútvonalakat) Kulcstér-átviteli átmenő frissítés. Csak API-típusokra alkalmazható: "cassandra". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/read | (Elavult. Kérjük, használja az erőforrás-útvonalak nélkül "/apis/" szegmens) Olvassa el a keyspace átviteli. Csak API-típusokra alkalmazható: "cassandra". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/keyspaces/settings/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak API-típusokra alkalmazható: "cassandra". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/keyspaces/tables** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/write | (Elavult. Kérjük, használja erőforrás elérési utak nélkül "/apis/" szegmens) Hozzon létre vagy frissítse a táblázatot. Csak API-típusokra alkalmazható: "cassandra". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/read | (Elavult. Kérjük, használja az erőforrás elérési utak nélkül "/apis/" szegmens) Olvassa el a táblázatot, vagy sorolja fel az összes táblát. Csak API-típusokra alkalmazható: "cassandra". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/delete | (Elavult. Használjon "/apis/" szegmens nélküli erőforráselérési utakat) Tábla törlése. Csak API-típusokra alkalmazható: "cassandra". |
+> |  | **databaseAccounts/apis/keyspaces/tables/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak API-típusokra alkalmazható: "cassandra". |
+> |  | **databaseAccounts/apis/keyspaces/tables/settings** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/write | (Elavult. Használja az "/apis/" szegmens nélküli erőforráselérési utakat) Táblaátviteli-átviteli fazon frissítése. Csak API-típusokra alkalmazható: "cassandra". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/read | (Elavult. Használja az "/apis/" szegmens nélküli erőforráselérési utakat: Olvassa el a tábla átviteli fáta. Csak API-típusokra alkalmazható: "cassandra". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/keyspaces/tables/settings/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak API-típusokra alkalmazható: "cassandra". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/tables** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/tables/write | (Elavult. Kérjük, használja erőforrás elérési utak nélkül "/apis/" szegmens) Hozzon létre vagy frissítse a táblázatot. Csak api-típusokra vonatkozik: "table". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/tables/read | (Elavult. Kérjük, használja az erőforrás elérési utak nélkül "/apis/" szegmens) Olvassa el a táblázatot, vagy sorolja fel az összes táblát. Csak api-típusokra vonatkozik: "table". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/tables/delete | (Elavult. Használjon "/apis/" szegmens nélküli erőforráselérési utakat) Tábla törlése. Csak api-típusokra vonatkozik: "table". |
+> |  | **databaseAccounts/apis/tables/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/tables/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak api-típusokra vonatkozik: "table". |
+> |  | **databaseAccounts/apis/tables/settings** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/write | (Elavult. Használja az "/apis/" szegmens nélküli erőforráselérési utakat) Táblaátviteli-átviteli fazon frissítése. Csak api-típusokra vonatkozik: "table". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/read | (Elavult. Használja az "/apis/" szegmens nélküli erőforráselérési utakat: Olvassa el a tábla átviteli fáta. Csak api-típusokra vonatkozik: "table". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
+> |  | **databaseAccounts/apis/tables/settings/operationResults** |  |
+> | Műveletek | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/operationResults/read | (Elavult. Használja az aszinkron művelet '/apis/" szegmens nélküli erőforráselérési utakat) Az aszinkron művelet olvasási állapota. Csak api-típusokra vonatkozik: "table". Csak a következő beállítástípusokra alkalmazható: "átviteli". |
 > |  | **databaseAccounts/cassandraKeyspaces** |  |
 > | Műveletek | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/write | Hozzon létre egy Cassandra kulcsteret. |
 > | Műveletek | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/read | Olvassa el a Cassandra keyspace vagy sorolja fel az összes Cassandra keyspaces. |
@@ -5532,7 +5625,7 @@ Azure-szolgáltatás: [Machine Learning szolgáltatás](../machine-learning/inde
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/írás | Machine Learning Services-munkaterület (ek) létrehozása vagy frissítése |
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/törlés | A Machine Learning Services munkaterületének (s) törlése |
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/listKeys/action | Gépi tanulási szolgáltatások munkaterületének titkos titkainak listázása |
-> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/PrivateEndpointConnectionsApproval/action | A Microsoft.Network szolgáltató magánvégpont-erőforrásával létesített kapcsolat jóváhagyása vagy elutasítása |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/privateEndpointConnectionsApproval/action | A Microsoft.Network szolgáltató magánvégpont-erőforrásával létesített kapcsolat jóváhagyása vagy elutasítása |
 > |  | **munkaterületek/számítások** |  |
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/számítások/olvasás | Leveszi a számítási erőforrásokat a Machine Learning Services workspace(i) |
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/számítási késés/írás | A Machine Learning Services workspace(ek) számítási erőforrásainak létrehozása vagy frissítése |
@@ -5542,10 +5635,90 @@ Azure-szolgáltatás: [Machine Learning szolgáltatás](../machine-learning/inde
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/számítás/indítás/művelet | Számítási erőforrás indítása a Machine Learning Services Workspace-ben |
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/számítás/stop/művelet | Számítási erőforrás leállítása a Machine Learning Services Workspace-ben |
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/számítás/újraindítás/művelet | Számítási erőforrás újraindítása a Machine Learning Services Workspace szolgáltatásban |
+> |  | **munkaterületek/adatsodródó érzékelők** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/datadriftdetectors/read | Adateltolódás-érzékelők bekésése a Machine Learning Services-munkaterület(ek)ben |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/datadriftdetectors/write | Adateltolódás-érzékelők létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/datadriftdetectors/delete | Adateltolódás-érzékelők törlése a Machine Learning Services workspace(i) szolgáltatásban |
+> |  | **munkaterületek/adatkészletek/regisztrált** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/regisztrált/olvasott | Regisztrált adatkészletek betöltése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/regisztrált/írás | Regisztrált adatkészletek létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/regisztrált/törlés | Regisztrált adatkészletek törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> |  | **munkaterületek/adatkészletek/regisztrált/előnézet** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/registered/preview/read | A Machine Learning Services-munkaterület(ek) regisztrált adatkészleteinek előnézetének leküzdése |
+> |  | **munkaterületek/adatkészletek/regisztrált/profil** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/regisztrált/profil/olvasás | A Machine Learning Services workspace(s) regisztrált adatkészleteihez szükséges adatkészletprofilok bekérése |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/registered/profile/write | A Machine Learning Services workspace(s) regisztrált adatkészleteinek adatkészlet-profiljainak létrehozása vagy frissítése |
+> |  | **munkaterületek/adatkészletek/regisztrált/séma** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/regisztrált/séma/olvasás | Adathalmazséma bekerül és regisztrálott adatkészletekhez a Machine Learning Services-munkaterület(ek) területén |
+> |  | **munkaterületek/adatkészletek/nem regisztrált** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/olvasott | Nem regisztrált adatkészletek bekéselése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/írási | Nem regisztrált adatkészletek létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/törlés | Nem regisztrált adatkészletek törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> |  | **munkaterületek/adatkészletek/nem regisztrált/előnézet** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/előzetes/olvasás | A Machine Learning Services-munkaterület(ek) nem regisztrált adatkészleteinek előnézetének lekéri a |
+> |  | **munkaterületek/adatkészletek/nem regisztrált/profil** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/profil/olvasás | A Machine Learning Services workspace(ek) nem regisztrált adatkészleteihez szükséges adatkészletprofilok bekérése |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/profil/írás | Adatkészlet-profilok létrehozása vagy frissítése a Machine Learning Services workspace(i) nem regisztrált adatkészleteihez |
+> |  | **munkaterületek/adatkészletek/nem regisztrált/séma** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/séma/olvasás | Adathalmazséma bekerül és nem regisztrált adatkészletekhez a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> |  | **munkaterületek/adattárak** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adattárak/olvasás | Adattárak bekésése a Machine Learning Services-munkaterület(ek) szolgáltatásában |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adattárak/írás | Adattárak létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) területén |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/adattárak/törlés | Adattárak törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> |  | **munkaterületek/végpontok/csővezetékek** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/végpontok/folyamatok/olvasás | Közzétett folyamatok és folyamatvégpontok bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/végpontok/folyamatok/írási | Közzétett folyamatok és folyamatvégpontok létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
+> |  | **munkaterületek/környezetek** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/környezetek/olvasás | Környezetek bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/környezetek/readSecrets/action | A Machine Learning Services-munkaterület(ek) titkos titkaival rendelkező környezetek bekerülése |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/környezetek/írás | Környezetek létrehozása vagy frissítése a Machine Learning Services munkaterületén |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/környezetek/build/művelet | Környezeteket hoz létre a Machine Learning Services munkaterületén |
 > |  | **munkaterületek/eventGridFilters** |  |
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/eventGridFilters/read | Eseményrács szűrő beszereznie egy adott munkaterülethez |
-> |  | **munkaterületek/szolgáltatások** |  |
-> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/olvasás | A Machine Learning Services-munkaterület összes engedélyezett szolgáltatásának lekéri |
+> |  | **munkaterületek/kísérletek** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/kísérletek/olvasás | Kísérletek bekerülése a Machine Learning Services-munkaterület(ek)ben |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/kísérletek/írási műveletek | Kísérletek létrehozása vagy frissítése a Machine Learning Services munkaterületen |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/kísérletek/törlés | Kísérletek törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> |  | **munkaterületek/kísérletek/futtatások** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/kísérletek/futtatások/submit/action | A Machine Learning Services-munkaterület(ek) szolgáltatásában futtatott parancsfájl létrehozása vagy frissítése |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/kísérletek/futtatások/olvasás | Futtatások bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/kísérletek/futtatások/írás | A Machine Learning Services-munkaterület(ek) létrehozása vagy futtatása |
+> |  | **munkaterületek/címkézés** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/címkézés/exportálás/művelet | Címkézési projektek címkéinek exportálása a Machine Learning Services workspace(i) területén |
+> |  | **munkaterületek/címkézés/címkék** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/címkézés/címkék/olvasás | A Machine Learning Services-munkaterület(ek) címkézési projektjeinek címkézési címkéinek bekerülése |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/címkézés/címkék/írás | Címkék létrehozása a címkézési projektek Machine Learning Services Workspace (s) |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/címkézés/címkék/elutasítás/művelet | Címkék elvetése a Machine Learning Services-munkaterület(ek)ben a címkézési projektekcímkéinek elutasítása |
+> |  | **munkaterületek/címkézés/projektek** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/címkézés/projektek/olvasás | Címkézési projekt bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/címkézés/projektek/írás | Címkézési projekt létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) területén |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/címkézés/projektek/törlés | Címkézési projekt törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> |  | **munkaterületek/címkézés/projektek/összefoglaló** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/címkézés/projektek/összefoglaló/olvasás | A projekt összefoglalásának leküzdése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> |  | **munkaterületek/metaadatok/összetevők** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/metaadatok/összetevők/olvasás | Összetevők bekéselése a Machine Learning Services-munkaterület(ek) szolgáltatásában |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/metaadatok/műtermékek/írási adatok | Összetevők létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) szolgáltatásában |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/metaadatok/összetevők/törlés | Összetevők törlése a Machine Learning Services-munkaterület(ek) szolgáltatásában |
+> |  | **munkaterületek/metaadatok/titkok** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/metaadatok/titkos kulcsok/olvasás | Titkok bekerülése a Machine Learning Services-munkaterület(ek) területén |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/metaadatok/titkos kulcsok/írás | Titkos kulcsok létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/metaadatok/titkos kulcsok/törlés | Titkos kulcsok törlése a Machine Learning Services-munkaterület(ek) területén |
+> |  | **munkaterületek/metaadatok/pillanatképek** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/metaadatok/pillanatképek/olvasás | Pillanatképek bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/metaadatok/pillanatképek/írási | Pillanatképek létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/metaadatok/pillanatképek/törlés | Pillanatképek törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> |  | **munkaterületek/modellek** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/modellek/olvasás | Modellek bekéselése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/modellek/írás | Modellek létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/modellek/törlés | Modellek törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/modellek/csomag/művelet | Csomagok modellek a Machine Learning Services-munkaterület(ek) |
+> |  | **munkaterületek/modulok** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/modulok/olvasás | Modulok bekéselése a Machine Learning Services-munkaterület(ek) moduljaiban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/modulok/írás | A Machine Learning Services-munkaterület(ek) moduljának létrehozása vagy frissítései |
+> |  | **munkaterületek/csővezeték-vázlatok** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/pipelinedrafts/read | Folyamatvázlatok bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/pipelinedrafts/write | Folyamatvázlatok létrehozása vagy frissítése a Machine Learning Services munkaterületén |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/pipelinedrafts/delete | Folyamatvázlatok törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
 > |  | **munkaterületek/privateEndpointConnectionProxies** |  |
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/privateEndpointConnectionProxies/read | A Microsoft.Network szolgáltató magánvégpont-erőforrásához létesített kapcsolatproxy állapotának megtekintése |
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/privateEndpointConnectionProxies/write | A kapcsolatproxy állapotának módosítása a Microsoft.Network szolgáltató privát végponterőforrására |
@@ -5557,104 +5730,17 @@ Azure-szolgáltatás: [Machine Learning szolgáltatás](../machine-learning/inde
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/privateEndpointConnections/delete | A Microsoft.Network szolgáltató magánvégpont-erőforrásával létesített kapcsolat törlése |
 > |  | **munkaterületek/privateLinkResources** |  |
 > | Műveletek | Microsoft.MachineLearningServices/munkaterületek/privateLinkResources/read | A Machine Learning Services-munkaterület(ek) megadott példányához rendelkezésre álló magánkapcsolati erőforrások beszerzése |
-> |  | **munkaterületek/adatsodródó érzékelők** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/datadriftdetectors/read | Adateltolódás-érzékelők bekésése a Machine Learning Services-munkaterület(ek)ben |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/datadriftdetectors/write | Adateltolódás-érzékelők létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
-> |  | **munkaterületek/adatkészletek/regisztrált** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/regisztrált/olvasott | Regisztrált adatkészletek betöltése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/regisztrált/írás | Regisztrált adatkészletek létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/regisztrált/törlés | Regisztrált adatkészletek törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> |  | **munkaterületek/adatkészletek/regisztrált/előnézet** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/registered/preview/read | A Machine Learning Services-munkaterület(ek) regisztrált adatkészleteinek előnézetének leküzdése |
-> |  | **munkaterületek/adatkészletek/regisztrált/profil** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/regisztrált/profil/olvasás | A Machine Learning Services workspace(s) regisztrált adatkészleteihez szükséges adatkészletprofilok bekérése |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/registered/profile/write | A Machine Learning Services workspace(s) regisztrált adatkészleteinek adatkészlet-profiljainak létrehozása vagy frissítése |
-> |  | **munkaterületek/adatkészletek/regisztrált/séma** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/regisztrált/séma/olvasás | Adathalmazséma bekerül és regisztrálott adatkészletekhez a Machine Learning Services-munkaterület(ek) területén |
-> |  | **munkaterületek/adatkészletek/nem regisztrált** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/olvasott | Nem regisztrált adatkészletek bekéselése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/írási | Nem regisztrált adatkészletek létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/törlés | Nem regisztrált adatkészletek törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> |  | **munkaterületek/adatkészletek/nem regisztrált/előnézet** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/előzetes/olvasás | A Machine Learning Services-munkaterület(ek) nem regisztrált adatkészleteinek előnézetének lekéri a |
-> |  | **munkaterületek/adatkészletek/nem regisztrált/profil** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/profil/olvasás | A Machine Learning Services workspace(ek) nem regisztrált adatkészleteihez szükséges adatkészletprofilok bekérése |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/profil/írás | Adatkészlet-profilok létrehozása vagy frissítése a Machine Learning Services workspace(i) nem regisztrált adatkészleteihez |
-> |  | **munkaterületek/adatkészletek/nem regisztrált/séma** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adatkészletek/nem regisztrált/séma/olvasás | Adathalmazséma bekerül és nem regisztrált adatkészletekhez a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> |  | **munkaterületek/adattárak** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adattárak/olvasás | Adattárak bekésése a Machine Learning Services-munkaterület(ek) szolgáltatásában |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adattárak/írás | Adattárak létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) területén |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/adattárak/törlés | Adattárak törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> |  | **munkaterületek/végpontok/csővezetékek** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/végpontok/folyamatok/olvasás | Közzétett folyamatok és folyamatvégpontok bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/végpontok/folyamatok/írási | Közzétett folyamatok és folyamatvégpontok létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
-> |  | **munkaterületek/környezetek** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/környezetek/olvasás | Környezetek bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/környezetek/readSecrets/action | A Machine Learning Services-munkaterület(ek) titkos titkaival rendelkező környezetek bekerülése |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/környezetek/írás | Környezetek létrehozása vagy frissítése a Machine Learning Services munkaterületén |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/környezetek/build/művelet | Környezeteket hoz létre a Machine Learning Services munkaterületén |
-> |  | **munkaterületek/kísérletek** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/kísérletek/olvasás | Kísérletek bekerülése a Machine Learning Services-munkaterület(ek)ben |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/kísérletek/írási műveletek | Kísérletek létrehozása vagy frissítése a Machine Learning Services munkaterületen |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/kísérletek/törlés | Kísérletek törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> |  | **munkaterületek/kísérletek/futtatások** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/kísérletek/futtatások/olvasás | Futtatások bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/kísérletek/futtatások/írás | A Machine Learning Services-munkaterület(ek) létrehozása vagy futtatása |
-> |  | **munkaterületek/kísérletek/futtatások/parancsfájlfuttatás** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/kísérletek/futtatások/parancsfájlfuttatás/küldés/művelet | A Machine Learning Services-munkaterület(ek) szolgáltatásában futtatott parancsfájl létrehozása vagy frissítése |
-> |  | **munkaterületek/címkézés** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/címkézés/exportálás/művelet | Címkézési projektek címkéinek exportálása a Machine Learning Services workspace(i) területén |
-> |  | **munkaterületek/címkézés/címkék** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/címkézés/címkék/olvasás | A Machine Learning Services-munkaterület(ek) címkézési projektjeinek címkézési címkéinek bekerülése |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/címkézés/címkék/írás | Címkék létrehozása a címkézési projektek Machine Learning Services Workspace (s) |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/címkézés/címkék/elutasítás/művelet | Címkék elvetése a Machine Learning Services-munkaterület(ek)ben a címkézési projektekcímkéinek elutasítása |
-> |  | **munkaterületek/címkézés/projektek** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/címkézés/projektek/olvasás | Címkézési projekt bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/címkézés/projektek/írás | Címkézési projekt létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) területén |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/címkézés/projektek/törlés | Címkézési projekt törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> |  | **munkaterületek/címkézés/projektek/összefoglaló** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/címkézés/projektek/összefoglaló/olvasás | A projekt összefoglalásának leküzdése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> |  | **munkaterületek/metaadatok/összetevők** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/metaadatok/összetevők/olvasás | Összetevők bekéselése a Machine Learning Services-munkaterület(ek) szolgáltatásában |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/metaadatok/műtermékek/írási adatok | Összetevők létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) szolgáltatásában |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/metaadatok/összetevők/törlés | Összetevők törlése a Machine Learning Services-munkaterület(ek) szolgáltatásában |
-> |  | **munkaterületek/metaadatok/titkok** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/metaadatok/titkos kulcsok/olvasás | Titkok bekerülése a Machine Learning Services-munkaterület(ek) területén |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/metaadatok/titkos kulcsok/írás | Titkos kulcsok létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/metaadatok/titkos kulcsok/törlés | Titkos kulcsok törlése a Machine Learning Services-munkaterület(ek) területén |
-> |  | **munkaterületek/metaadatok/pillanatképek** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/metaadatok/pillanatképek/olvasás | Pillanatképek bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/metaadatok/pillanatképek/írási | Pillanatképek létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/metaadatok/pillanatképek/törlés | Pillanatképek törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> |  | **munkaterületek/modellek** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/modellek/olvasás | Modellek bekéselése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/modellek/írás | Modellek létrehozása vagy frissítése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/modellek/törlés | Modellek törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/modellek/csomag/művelet | Csomagok modellek a Machine Learning Services-munkaterület(ek) |
-> |  | **munkaterületek/modulok** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/modulok/olvasás | Modulok bekéselése a Machine Learning Services-munkaterület(ek) moduljaiban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/modulok/írás | A Machine Learning Services-munkaterület(ek) moduljának létrehozása vagy frissítései |
-> |  | **munkaterületek/csővezeték-vázlatok** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/pipelinedrafts/read | Folyamatvázlatok bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/pipelinedrafts/write | Folyamatvázlatok létrehozása vagy frissítése a Machine Learning Services munkaterületén |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/pipelinedrafts/delete | Folyamatvázlatok törlése a Machine Learning Services-munkaterület(ek) szolgáltatásban |
 > |  | **munkaterületek/szolgáltatások** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/olvasás | Szolgáltatások bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásaiban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/olvasás | Szolgáltatások bekerülése a Machine Learning Services-munkaterület(ek) szolgáltatásaiban |
 > |  | **munkaterületek/szolgáltatások/aci** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aci/write | ACI-szolgáltatások létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aci/listkeys/action | Az ACI-szolgáltatások kulcsainak listázása a Machine Learning Services-munkaterület(ek) szolgáltatásában |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aci/delete | Törli az ACI-szolgáltatásokat a Machine Learning Services-munkaterület(ek) szolgáltatásában |
-> |  | **munkaterületek/szolgáltatások/aks/devtest** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/devtest/write | Fejlesztői AKS-szolgáltatások létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/devtest/listkeys/action | A Machine Learning Services-munkaterület(ek) devtest AKS-szolgáltatásainak kulcsainak listázása |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/devtest/delete | A devtest AKS-szolgáltatások törlése a Machine Learning Services-munkaterület(ek) szolgáltatásában |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/devtest/score/action | Scores devtest AKS-szolgáltatások a Machine Learning Services workspace(i) |
-> |  | **munkaterületek/szolgáltatások/aks/prod** |  |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/prod/write | Prod AKS-szolgáltatások létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/prod/listkeys/action | A machine learning services-munkaterület(ek) forprod AKS-szolgáltatásainak kulcsainak listázása |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/prod/delete | A machine learning-szolgáltatások munkaterülete (i) AKS-szolgáltatásainak törlése |
-> | DataAction (Adatművelet) | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/prod/score/action | Pontszámok a Machine Learning Services-munkaterületen lévő gyártási AKS-szolgáltatásokban |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aci/write | ACI-szolgáltatások létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aci/listkeys/action | Az ACI-szolgáltatások kulcsainak listázása a Machine Learning Services-munkaterület(ek) szolgáltatásában |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aci/delete | Törli az ACI-szolgáltatásokat a Machine Learning Services-munkaterület(ek) szolgáltatásában |
+> |  | **munkaterületek/szolgáltatások/aks** |  |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/write | AKS-szolgáltatások létrehozása vagy frissítése a Machine Learning Services workspace(i) szolgáltatásában |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/listkeys/action | Az AKS-szolgáltatások kulcsainak listázása a Machine Learning Services-munkaterület(ek) szolgáltatásában |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/delete | Az AKS-szolgáltatások törlése a Machine Learning Services-munkaterület(ek) szolgáltatásában |
+> | Műveletek | Microsoft.MachineLearningServices/munkaterületek/szolgáltatások/aks/score/action | AKS-szolgáltatások pontszámaai a Machine Learning Services-munkaterület(ek) területén |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -5740,6 +5826,10 @@ Azure-szolgáltatás: [Azure Maps](../azure-maps/index.yml)
 > | Műveletek | Microsoft.Maps/accounts/eventGridFilters/delete | Eseményrács szűrő törlése |
 > | Műveletek | Microsoft.Maps/accounts/eventGridFilters/read | Eseményrács szűrő beszereznie |
 > | Műveletek | Microsoft.Maps/accounts/eventGridFilters/write | Eseményrács szűrő létrehozása vagy frissítése |
+> |  | **számlák/magánAtlaszok** |  |
+> | Műveletek | Microsoft.Maps/accounts/privateAtlases/delete | Privát atlasz törlése |
+> | Műveletek | Microsoft.Maps/accounts/privateAtlases/read | Szerezzen be egy privát atlaszt |
+> | Műveletek | Microsoft.Maps/accounts/privateAtlases/write | Privát atlasz létrehozása vagy frissítése |
 > |  | **Műveletek** |  |
 > | Műveletek | Microsoft.Maps/operations/read | A szolgáltatói műveletek olvasása |
 > |  | **számlák/adatok** |  |
@@ -5998,6 +6088,10 @@ Azure-szolgáltatás: [Azure Spatial Anchors](../spatial-anchors/index.yml)
 > | Műveletek | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | A Microsoft.MixedReality/spatialAnchorsAccounts diagnosztikai beállításának létrehozása vagy frissítése |
 > |  | **spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions** |  |
 > | Műveletek | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions/read | A Microsoft.MixedReality/spatialAnchorsAccounts elérhető metrikáinak beszerzése |
+> |  | **ObjectUnderstandingAccounts fiókok** |  |
+> | DataAction (Adatművelet) | Microsoft.MixedReality/ObjectUnderstandingAccounts/betöltés/művelet | Modellbetöltési feladat létrehozása |
+> |  | **ObjectUnderstandingAccounts/betöltés** |  |
+> | DataAction (Adatművelet) | Microsoft.MixedReality/ObjectUnderstandingAccounts/betöltés/olvasás | Modellbetöltési feladat állapotának betöltése |
 > |  | **RemoteRenderingAccounts fiókok** |  |
 > | DataAction (Adatművelet) | Microsoft.MixedReality/RemoteRenderingAccounts/convert/action | Eszközátalakítás megkezdése |
 > | DataAction (Adatművelet) | Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/action | Munkamenetek indítása |
@@ -6069,6 +6163,10 @@ Azure-szolgáltatás: [Azure NetApp-fájlok](../azure-netapp-files/index.yml)
 > | Műveletek | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/read | Biztonsági másolat készítő erőforrást olvas be. |
 > | Műveletek | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/write | Biztonsági másolat típusú erőforrást ír. |
 > | Műveletek | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/delete | Biztonsági másolat ból való erőforrás törlése. |
+> |  | **netAppAccounts/capacityPools/volumes/MountTargets** |  |
+> | Műveletek | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/MountTargets/read | Beolvas egy csatlakoztatási célerőforrást. |
+> |  | **netAppAccounts/capacityPools/volumes/ReplicationStatus** |  |
+> | Műveletek | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/ReplicationStatus/read | Beolvassa a kötetreplikáció állapotát. |
 > |  | **netAppAccounts/capacityPools/volumes/snapshots** |  |
 > | Műveletek | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/read | Pillanatkép-erőforrás olvasása. |
 > | Műveletek | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write | Pillanatkép-erőforrás tír. |
@@ -6341,6 +6439,8 @@ Azure szolgáltatás: [Virtuális hálózat](../virtual-network/index.yml), [Ter
 > | Műveletek | Microsoft.Network/loadBalancers/delete | Terheléselosztó törlése |
 > |  | **loadBalancers/backendAddressPools** |  |
 > | Műveletek | Microsoft.Network/loadBalancers/backendAddressPools/read | Betöltő háttércímkészlet-definíciójának leése |
+> | Műveletek | Microsoft.Network/loadBalancers/backendAddressPools/write | Terheléselosztó háttércímkészletének létrehozása vagy meglévő terheléselosztó háttércímkészletének frissítése |
+> | Műveletek | Microsoft.Network/loadBalancers/backendAddressPools/delete | Terheléselosztó háttércímkészletének törlése |
 > | Műveletek | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Egy terheléselosztó háttérkészletéhez csatlakozik. Nem riasztható. |
 > |  | **loadBalancers/frontendIPConfigurations** |  |
 > | Műveletek | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | Betöltő előtér-konfigurációs definíciójának leése |
@@ -6565,6 +6665,7 @@ Azure szolgáltatás: [Virtuális hálózat](../virtual-network/index.yml), [Ter
 > | Műveletek | Microsoft.Network/privateEndpointRedirectMaps/read | Privát végpont-átirányítás bekerülése |
 > | Műveletek | Microsoft.Network/privateEndpointRedirectMaps/write | Privát végpont-átirányítási leképezést hoz létre, vagy meglévő magánvégpont-átirányítási leképezést frissít |
 > |  | **privateEndpoints** |  |
+> | Műveletek | Microsoft.Network/privateEndpoints/pushPropertiesToResource/action | Privát végponttulajdonság-frissítések leküldése az NRP-ügyféltől |
 > | Műveletek | Microsoft.Network/privateEndpoints/read | Leáll egy privát végponterőforrás. |
 > | Műveletek | Microsoft.Network/privateEndpoints/write | Új privát végpontot hoz létre, vagy frissít egy meglévő magánvégpontot. |
 > | Műveletek | Microsoft.Network/privateEndpoints/delete | Privát végponterőforrás törlése. |
@@ -6606,6 +6707,13 @@ Azure szolgáltatás: [Virtuális hálózat](../virtual-network/index.yml), [Ter
 > | Műveletek | Microsoft.Network/routeTables/routes/read | Útvonaldefiníció bekerülése |
 > | Műveletek | Microsoft.Network/routeTables/routes/write | Útvonal létrehozása vagy meglévő útvonal frissítése |
 > | Műveletek | Microsoft.Network/routeTables/routes/delete | Útvonaldefiníció törlése |
+> |  | **securityPartnerProviders** |  |
+> | Műveletek | Microsoft.Network/securityPartnerProviders/read | SecurityPartnerProvider beszerzése |
+> | Műveletek | Microsoft.Network/securityPartnerProviders/írás | Létrehoz egy SecurityPartnerProvider-t vagy frissíti a meglévő SecurityPartnerProvider-t |
+> | Műveletek | Microsoft.Network/securityPartnerProviders/validate/action | SecurityPartnerProvider ellenőrzése |
+> | Műveletek | Microsoft.Network/securityPartnerProviders/updateReferences/action | Hivatkozások frissítése a SecurityPartnerProvider szolgáltatónál |
+> | Műveletek | Microsoft.Network/securityPartnerProviders/join/action | Csatlakozik egy SecurityPartnerProvider szolgáltatóhoz. Nem lehet riasztani. |
+> | Műveletek | Microsoft.Network/securityPartnerProviders/delete | SecurityPartnerProvider törlése |
 > |  | **serviceEndpointPolicies** |  |
 > | Műveletek | Microsoft.Network/serviceEndpointPolicies/read | Szolgáltatásvégpont-házirend leírása |
 > | Műveletek | Microsoft.Network/serviceEndpointPolicies/write | Szolgáltatásvégpont-szabályzat létrehozása vagy meglévő szolgáltatásvégpont-házirend frissítése |
@@ -6678,6 +6786,7 @@ Azure szolgáltatás: [Virtuális hálózat](../virtual-network/index.yml), [Ter
 > | Műveletek | Microsoft.Network/virtualNetworks/read | A virtuális hálózat definíciójának beszereznie |
 > | Műveletek | Microsoft.Network/virtualNetworks/write | Virtuális hálózat létrehozása vagy meglévő virtuális hálózat frissítése |
 > | Műveletek | Microsoft.Network/virtualNetworks/delete | Virtuális hálózat törlése |
+> | Műveletek | Microsoft.Network/virtualNetworks/joinLoadBalancer/action | Terheléselosztó csatlakoztatása virtuális hálózatokhoz |
 > | Műveletek | Microsoft.Network/virtualNetworks/peer/action | Egy virtuális hálózat egy másik virtuális hálózattal való társtársának |
 > | Műveletek | Microsoft.Network/virtualNetworks/join/action | Virtuális hálózathoz csatlakozik. Nem riasztható. |
 > | Műveletek | Microsoft.Network/virtualNetworks/BastionHosts/action | Bastion Host referenciák bekerülése virtuális hálózatban. |
@@ -7225,6 +7334,8 @@ Azure-szolgáltatás: [Azure Monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/AppDependencies/read | Adatok olvasása az AppDependencies táblából |
 > |  | **munkaterületek/lekérdezés/AppEvents** |  |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/AppEvents/read | Adatok olvasása az AppEvents táblából |
+> |  | **munkaterületek/lekérdezés/AppExceptions** |  |
+> | Műveletek | Microsoft.OperationalInsights/workspaces/query/AppExceptions/read | Adatok olvasása az AppExceptions táblából |
 > |  | **munkaterületek/lekérdezés/ApplicationInsights** |  |
 > | Műveletek | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | Adatok olvasása az ApplicationInsights táblából |
 > |  | **munkaterületek/lekérdezés/AppMetrics** |  |
@@ -7693,6 +7804,18 @@ Azure-szolgáltatás: [Azure Monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft.OperationalInsights/munkaterületek/lekérdezés/WUDOAggregatedStatus/read | Adatok olvasása a WUDOAggregatedStatus táblából |
 > |  | **munkaterületek/lekérdezés/WUDOStatus** |  |
 > | Műveletek | Microsoft.OperationalInsights/munkaterületek/lekérdezés/WUDOStatus/read | Adatok olvasása a WUDOStatus táblából |
+> |  | **munkaterületek/lekérdezés/WVDEllenőrzőpontok** |  |
+> | Műveletek | Microsoft.OperationalInsights/workspaces/query/WVDCheckpoints/read | Adatok olvasása a WVDCheckpoints táblából |
+> |  | **munkaterületek/lekérdezés/WVDConnections** |  |
+> | Műveletek | Microsoft.OperationalInsights/workspaces/query/WVDConnections/read | Adatok olvasása a WVDConnections táblából |
+> |  | **munkaterületek/lekérdezés/WVDHibák** |  |
+> | Műveletek | Microsoft.OperationalInsights/workspaces/query/WVDErrors/read | Adatok olvasása a WVDErrors táblából |
+> |  | **munkaterületek/lekérdezés/WVDFeeds** |  |
+> | Műveletek | Microsoft.OperationalInsights/workspaces/query/WVDFeeds/read | Adatok olvasása a WVDFeeds táblából |
+> |  | **munkaterületek/lekérdezés/WVDHostRegistrations** |  |
+> | Műveletek | Microsoft.OperationalInsights/workspaces/query/WVDHostRegistrations/read | Adatok olvasása a WVDHostRegistrations táblából |
+> |  | **munkaterületek/lekérdezés/WVDManagement** |  |
+> | Műveletek | Microsoft.OperationalInsights/workspaces/query/WVDManagement/read | Adatok olvasása a WVDManagement táblából |
 > |  | **munkaterületek/szabályok** |  |
 > | Műveletek | microsoft.operationalinsights/workspaces/rules/read | Minden figyelmeztetési szabály. |
 > |  | **munkaterületek/mentett keresések** |  |
@@ -8492,6 +8615,7 @@ Azure-szolgáltatás: [Azure Sentinel](../sentinel/index.yml)
 > | --- | --- | --- |
 > | Műveletek | Microsoft.SecurityInsights/register/action | Regisztrálja az Azure Sentinel előfizetését |
 > | Műveletek | Microsoft.SecurityInsights/unregister/action | Az előfizetés regisztrációjának megszüntetése az Azure Sentinelből |
+> | Műveletek | Microsoft.SecurityInsights/dataConnectorsCheckKövetelmények/művelet | A felhasználói engedélyek és a licenc ellenőrzése |
 > |  | **Összesítések** |  |
 > | Műveletek | Microsoft.SecurityInsights/Aggregations/read | Összesített adatok bekerülése |
 > |  | **alertRules (figyelmeztetés)** |  |
@@ -8785,7 +8909,7 @@ Azure-szolgáltatás: [Azure felügyelt alkalmazások](../azure-resource-manager
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure szolgáltatás: [Azure SQL Database](../sql-database/index.yml), SQL Data [Warehouse](../synapse-analytics/sql-data-warehouse/index.yml)
+Azure szolgáltatás: [Azure SQL Database](../sql-database/index.yml), SQL Data [Warehouse](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelet típusa | Művelet | Leírás |
@@ -9980,21 +10104,21 @@ Azure szolgáltatás: core
 > | Műveletek | Microsoft.Support/register/action | Regisztrálja a támogatási erőforrás-szolgáltatót |
 > | Műveletek | Microsoft.Support/checkNameAvailability/action | Ellenőrzi, hogy a név érvényes-e, és nincs használatban erőforrástípushoz |
 > |  | **műveleteredmények** |  |
-> | Műveletek | Microsoft.Support/operationresults/read | A művelet eredményére |
+> | Műveletek | Microsoft.Support/operationresults/read | Az aszinkron művelet eredményének bekéselése |
 > |  | **Műveletek** |  |
-> | Műveletek | Microsoft.Támogatás/műveletek/olvasás | A Microsoft.Support erőforrás-szolgáltatón elérhető műveletek listája |
+> | Műveletek | Microsoft.Támogatás/műveletek/olvasás | A Microsoft.Support erőforrás-szolgáltatón elérhető összes művelet listája |
 > |  | **műveletek állapota** |  |
-> | Műveletek | Microsoft.Support/operationsstatus/read | Művelet állapotának beolvasása |
+> | Műveletek | Microsoft.Support/operationsstatus/read | Az aszinkron művelet állapotának beírása |
 > |  | **Szolgáltatások** |  |
-> | Műveletek | Microsoft.Support/services/read | A támogatáshoz rendelkezésre álló Azure-szolgáltatások listájának beszerzése |
+> | Műveletek | Microsoft.Support/services/read | Felsorolja a támogatáshoz rendelkezésre álló egyetlen vagy az összes Azure-szolgáltatást |
 > |  | **szolgáltatások/problémaOsztályozások** |  |
-> | Műveletek | Microsoft.Support/services/problemClassifications/read | Az Azure-szolgáltatásokhoz elérhető problémabesorolások listájának beszerzése |
+> | Műveletek | Microsoft.Support/services/problemClassifications/read | Egy Azure-szolgáltatás egyik vagy az összes problémabesorolásának felsorolása |
 > |  | **supportTickets** |  |
-> | Műveletek | Microsoft.Support/supportTickets/read | Leveszi a támogatási jegyek listáját. |
-> | Műveletek | Microsoft.Support/supportTickets/write | Ad létre támogatási jegyet aszinkron módon, vagy frissíti azt. Támogatási jegyet technikai, számlázási, kvótákkal kapcsolatos vagy előfizetés-kezelési problémákkal kapcsolatban hozhat létre. Frissítheti a meglévő támogatási jegyek súlyosságát és elérhetőségi adatait. |
+> | Műveletek | Microsoft.Support/supportTickets/read | Egy vagy az összes támogatási jegy listázása |
+> | Műveletek | Microsoft.Support/supportTickets/write | Lehetővé teszi egy támogatási jegy létrehozását és frissítését |
 > |  | **supportTickets/communications** |  |
-> | Műveletek | Microsoft.Support/supportTickets/communications/read | A támogatási jegykommunikáció listájának leése |
-> | Műveletek | Microsoft.Support/supportTickets/communications/write | Támogatási jegykommunikáció létrehozása |
+> | Műveletek | Microsoft.Support/supportTickets/communications/read | Egy vagy az összes támogatási jegykommunikáció listázása |
+> | Műveletek | Microsoft.Support/supportTickets/communications/write | Új kommunikáció hozzáadása támogatási jegyhez |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 

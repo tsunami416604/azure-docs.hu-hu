@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: ''
 author: gbowerman
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 6c6b8f72-32d3-47fa-be94-6cb54537c69f
 ms.service: virtual-machines-linux
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: cd0a71c60930e3eb659255a23cdb03360730f2a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc806fe0c3894174835c99493ebf2ba19a11ca28
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060733"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460460"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése az Azure-beli használatra
 Ebben a cikkben megtudhatja, hogyan készíthet elő egy Red Hat Enterprise Linux (RHEL) virtuális gépet az Azure-ban való használatra. Az RHEL e cikkben szereplő verziói a 6.7+ és a 7.1+. A cikkben tárgyalt hipervizorok a Hyper-V, a kernel alapú virtuális gép (KVM) és a VMware. A Red Hat Cloud Access programjában való részvétel jogosultsági követelményeiről a [Red Hat Cloud Access webhelyén](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) és az [RHEL futtatása az Azure-ban](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)című témakörben talál további információt. Az RHEL-lemezképek létrehozásának automatizálása az [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)webhelyen található.
@@ -164,7 +163,7 @@ Ez a szakasz feltételezi, hogy már beszerzett egy ISO fájlt a Red Hat webhely
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Módosítsa a kernel rendszerindító sort a grub konfigurációban, hogy további kernel paramétereket tartalmazzon az Azure-hoz. A módosítás elvégzéséhez `/etc/default/grub` nyissa meg a szövegszerkesztőt, és szerkesztse a `GRUB_CMDLINE_LINUX` paramétert. Példa:
+1. Módosítsa a kernel rendszerindító sort a grub konfigurációban, hogy további kernel paramétereket tartalmazzon az Azure-hoz. A módosítás elvégzéséhez `/etc/default/grub` nyissa meg a szövegszerkesztőt, és szerkesztse a `GRUB_CMDLINE_LINUX` paramétert. Például:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -418,7 +417,7 @@ Ez a szakasz feltételezi, hogy már beszerzett egy ISO fájlt a Red Hat webhely
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Módosítsa a kernel rendszerindító sort a grub konfigurációban, hogy további kernel paramétereket tartalmazzon az Azure-hoz. Ehhez a konfigurációhoz `/etc/default/grub` nyissa meg a szövegszerkesztőben, és szerkesztse a `GRUB_CMDLINE_LINUX` paramétert. Példa:
+1. Módosítsa a kernel rendszerindító sort a grub konfigurációban, hogy további kernel paramétereket tartalmazzon az Azure-hoz. Ehhez a konfigurációhoz `/etc/default/grub` nyissa meg a szövegszerkesztőben, és szerkesztse a `GRUB_CMDLINE_LINUX` paramétert. Például:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -568,7 +567,7 @@ Ez a szakasz feltételezi, hogy már telepített egy RHEL virtuális gépet a VM
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Módosítsa a kernel rendszerindító sort a grub konfigurációban, hogy további kernel paramétereket tartalmazzon az Azure-hoz. Ehhez nyissa meg `/etc/default/grub` a szövegszerkesztőben, és `GRUB_CMDLINE_LINUX` szerkesztse a paramétert. Példa:
+1. Módosítsa a kernel rendszerindító sort a grub konfigurációban, hogy további kernel paramétereket tartalmazzon az Azure-hoz. Ehhez nyissa meg `/etc/default/grub` a szövegszerkesztőben, és `GRUB_CMDLINE_LINUX` szerkesztse a paramétert. Például:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -676,7 +675,7 @@ Ez a szakasz feltételezi, hogy már telepített egy RHEL virtuális gépet a VM
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Módosítsa a kernel rendszerindító sort a grub konfigurációban, hogy további kernel paramétereket tartalmazzon az Azure-hoz. A módosítás elvégzéséhez `/etc/default/grub` nyissa meg a szövegszerkesztőt, és szerkesztse a `GRUB_CMDLINE_LINUX` paramétert. Példa:
+1. Módosítsa a kernel rendszerindító sort a grub konfigurációban, hogy további kernel paramétereket tartalmazzon az Azure-hoz. A módosítás elvégzéséhez `/etc/default/grub` nyissa meg a szövegszerkesztőt, és szerkesztse a `GRUB_CMDLINE_LINUX` paramétert. Például:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    

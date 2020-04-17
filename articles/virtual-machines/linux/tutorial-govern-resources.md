@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
 manager: gwallace
-editor: tysonn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
@@ -13,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: b9595c6ce464cf9e4ab0baff9ef842e76f3d18a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 883bc209c343784e07bb5e03dc9f721c19b2f635
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75970149"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460086"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Oktatóanyag: Ismerje meg a Linux virtuálisgép-kezelést az Azure CLI-vel
 
@@ -68,7 +67,7 @@ Ha olyan hibaüzenetet kap, amely szerint **a> \<nem létezik a címtárban,** a
 
 A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közreműködő* szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 
-## <a name="azure-policy"></a>Azure szabályzat
+## <a name="azure-policy"></a>Azure Policy
 
 Az [Azure Policy](../../governance/policy/overview.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzatdefiníciók megtekintéséhez használja az [az policy definition list](https://docs.microsoft.com/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-list) parancsot:
 

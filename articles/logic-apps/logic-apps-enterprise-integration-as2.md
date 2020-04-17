@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e7c34e42d0ab68a5dab9718075f02a85322ce6c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650562"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458828"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>EXCHANGE AS2-üzenetek a B2B vállalati integrációhoz az Azure Logic Apps vállalati integrációs csomaggal
 
@@ -61,7 +61,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá az AS2 kódolási és dekódolási műv
 
 * Az AS2-összekötő használata előtt létre kell hoznia egy [AS2-megállapodást](../logic-apps/logic-apps-enterprise-integration-agreements.md) a kereskedelmi partnerei között, és a megállapodást az integrációs fiókjában kell tárolnia.
 
-* Ha [az Azure Key Vault](../key-vault/key-vault-overview.md) tanúsítványkezelés, ellenőrizze, hogy a tároló kulcsok lehetővé teszik a **titkosítási** és **visszafejtési** műveletek. Ellenkező esetben a kódolási és dekódolási műveletek sikertelenek.
+* Ha [az Azure Key Vault](../key-vault/general/overview.md) tanúsítványkezelés, ellenőrizze, hogy a tároló kulcsok lehetővé teszik a **titkosítási** és **visszafejtési** műveletek. Ellenkező esetben a kódolási és dekódolási műveletek sikertelenek.
 
   Az Azure Portalon nyissa meg a kulcsot a kulcstartóban, tekintse át a kulcs **engedélyezett műveleteit,** és győződjön meg arról, hogy a **titkosítási** és **visszafejtési** műveletek vannak kiválasztva, például:
 
@@ -88,7 +88,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá az AS2 kódolási és dekódolási műv
    | **AS2-hez** | Az üzenetfogadó azonosítója az AS2-szerződésben meghatározottak szerint |
    |||
 
-   Példa:
+   Például:
 
    ![Üzenetkódolási tulajdonságok](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 

@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 14ff86bc47ab6de55d840c4b986c99caf2d4e99c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545641"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482026"
 ---
 # <a name="azure-built-in-roles"></a>Az Azure beépített szerepkörei
 
@@ -55,7 +55,7 @@ Az alábbi táblázat rövid leírást és az egyes beépített szerepkörek egy
 > | [DNS-zóna közreműködője](#dns-zone-contributor) | Lehetővé teszi a DNS-zónák és rekordkészletek kezelését az Azure DNS-ben, de nem teszi lehetővé, hogy szabályozhassa, ki férhet hozzá. | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, de a hozzáférésüket nem. | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | [Traffic Manager közreműködő](#traffic-manager-contributor) | Lehetővé teszi a Traffic Manager-profilok kezelését, de nem teszi lehetővé annak szabályozását, hogy ki férhet hozzájuk. | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
-> | **Tárterület** |  |  |
+> | **Storage** |  |  |
 > | [Avere közreműködő](#avere-contributor) | Avere vFXT-fürt ötös fürtöt hozhat létre és kezelhet. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere operátor](#avere-operator) | Az Avere vFXT-fürt használja a fürt kezeléséhez | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
 > | [Biztonsági másolat közreműködője](#backup-contributor) | Lehetővé teszi a biztonsági mentési szolgáltatás kezelését, de nem hozhat létre tárolókat, és nem adhat hozzáférést másoknak | 5e467623-bb1f-42f4-a55d-6e525e11384b |
@@ -85,7 +85,7 @@ Az alábbi táblázat rövid leírást és az egyes beépített szerepkörek egy
 > | [Keresési szolgáltatás közreműködője](#search-service-contributor) | Lehetővé teszi a Keresési szolgáltatások kezelését, de a hozzáférésüket nem. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [Webes terv közreműködője](#web-plan-contributor) | Lehetővé teszi a webhelyek webes csomagjainak kezelését, de a hozzáférésüket nem. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Webhely közreműködője](#website-contributor) | Lehetővé teszi a webhelyek kezelését (nem webes sémákat), de nem férhet hozzájuk. | de139f84-1756-47ae-9be6-808fbbe84772 |
-> | **Tárolók** |  |  |
+> | **Containers** |  |  |
 > | [AcrDelete](#acrdelete) | acr törlés | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | [AcrImageSigner](#acrimagesigner) | acr kép aláírója | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | [AcrPull között](#acrpull) | acr húzás | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
@@ -2071,6 +2071,7 @@ Azure Storage-tárolók és -blobok olvasása, írása és törlése. Ha meg sze
 > | **DataActions (Adatműveletek)** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Blob törlése. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Blob vagy blobok listájának visszaadása. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action | Áthelyezi a blobot egyik útvonalról a másikra |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Írjon egy blobba. |
 > | **NotDataActions** |  |
 > | *nincs* |  |
@@ -2095,6 +2096,7 @@ Azure Storage-tárolók és -blobok olvasása, írása és törlése. Ha meg sze
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
       ],
       "notDataActions": []
@@ -4099,6 +4101,7 @@ A Log Analytics közreműködője letudja olvasni az összes figyelési adatot, 
 > | Microsoft.ClassicCompute/virtualMachines/extensions/* |  |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | A tárfiókok hozzáférési kulcsainak listája. |
 > | Microsoft.Compute/virtualMachines/extensions/* |  |
+> | Microsoft.HybridCompute/machines/extensions/write | Azure Arc-bővítmények telepítése vagy frissítése |
 > | Microsoft.Insights/alertRules/* | Az Insights riasztási szabályainak létrehozása és kezelése |
 > | Microsoft.Insights/diagnosticSettings/* | Az Analysis Server diagnosztikai beállításának létrehozása, frissítése vagy beolvasása |
 > | Microsoft.OperationalInsights/* |  |
@@ -4130,6 +4133,7 @@ A Log Analytics közreműködője letudja olvasni az összes figyelési adatot, 
         "Microsoft.ClassicCompute/virtualMachines/extensions/*",
         "Microsoft.ClassicStorage/storageAccounts/listKeys/action",
         "Microsoft.Compute/virtualMachines/extensions/*",
+        "Microsoft.HybridCompute/machines/extensions/write",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Insights/diagnosticSettings/*",
         "Microsoft.OperationalInsights/*",
@@ -5515,6 +5519,7 @@ Azure Sentinel olvasó
 > | --- | --- |
 > | **Műveletek** |  |
 > | Microsoft.SecurityInsights/*/read |  |
+> | Microsoft.SecurityInsights/dataConnectorsCheckKövetelmények/művelet | A felhasználói engedélyek és a licenc ellenőrzése |
 > | Microsoft.OperationalInsights/munkaterületek/elemzés/lekérdezés/művelet | Keresés az új motorral. |
 > | Microsoft.OperationalInsights/munkaterületek/*/olvasás | Naplóelemzési adatok megtekintése |
 > | Microsoft.OperationalInsights/munkaterületek/LinkedServices/read | Csatolt szolgáltatások beszereznie az adott munkaterület alatt. |
@@ -5548,6 +5553,7 @@ Azure Sentinel olvasó
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -5583,6 +5589,7 @@ Azure Sentinel válaszadó
 > | --- | --- |
 > | **Műveletek** |  |
 > | Microsoft.SecurityInsights/*/read |  |
+> | Microsoft.SecurityInsights/dataConnectorsCheckKövetelmények/művelet | A felhasználói engedélyek és a licenc ellenőrzése |
 > | Microsoft.SecurityInsights/cases/* |  |
 > | Microsoft.SecurityInsights/incidents/* |  |
 > | Microsoft.OperationalInsights/munkaterületek/elemzés/lekérdezés/művelet | Keresés az új motorral. |
@@ -5618,6 +5625,7 @@ Azure Sentinel válaszadó
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",

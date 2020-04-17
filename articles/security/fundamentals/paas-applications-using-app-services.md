@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49b51a5f14f305afa915ec1d0fae42ca9ded6b1e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500285"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461667"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Gyakorlati tanácsok a PaaS-web- és mobilalkalmazások Azure App Service használatával történő védelméhez
 
@@ -36,7 +36,7 @@ Az App Service egy OAuth 2.0 szolgáltatást biztosít az identitásszolgáltat�
 A hozzáférés korlátozása elengedhetetlen azon szervezetek számára, amelyek az adathozzáférésbiztonsági házirendjeit szeretnék érvényesíteni. A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket rendelhet a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy bizonyos hatókörben, például a szükséges ismeretés a legkisebb jogosultságbiztonsági elvek. Ha többet szeretne tudni arról, hogy mi ként biztosít hozzáférést a felhasználóknak az alkalmazásokhoz, olvassa el [a Mi a szerepköralapú hozzáférés-vezérlés.](/azure/role-based-access-control/overview)
 
 ## <a name="protect-your-keys"></a>A kulcsok védelme
-Nem számít, mennyire jó a biztonság, ha elveszíti az előfizetési kulcsokat. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a tárfiók kulcsait, az adattitkosítási kulcsokat, a . PFX fájlok és jelszavak) hardveres biztonsági modulokkal (HSM) védett kulcsokkal. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. A Key Vault segítségével is kezelheti a TLS-tanúsítványokat automatikus megújítással. További információért olvassa el [az Azure Key Vault(Mi az Azure Key Vault)](../../key-vault/key-vault-overview.md) ( Mit ismer.
+Nem számít, mennyire jó a biztonság, ha elveszíti az előfizetési kulcsokat. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a tárfiók kulcsait, az adattitkosítási kulcsokat, a . PFX fájlok és jelszavak) hardveres biztonsági modulokkal (HSM) védett kulcsokkal. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. A Key Vault segítségével is kezelheti a TLS-tanúsítványokat automatikus megújítással. További információért olvassa el [az Azure Key Vault(Mi az Azure Key Vault)](../../key-vault/general/overview.md) ( Mit ismer.
 
 ## <a name="restrict-incoming-source-ip-addresses"></a>Bejövő forrás IP-címeinek korlátozása
 [Az App Service-környezetek](../../app-service/environment/intro.md) virtuális hálózati integrációs szolgáltatással rendelkezik, amely segít a bejövő forrás IP-címek hálózati biztonsági csoportokon (NSG)-n keresztül történő korlátozásában. Ha nem ismeri az Azure virtuális hálózatok (VNETs), ez a képesség, amely lehetővé teszi, hogy helyezze el az Azure-erőforrások egy nem internetes, irányítható hálózat, amely szabályozza a hozzáférést. További információ: [Az alkalmazás integrálása azure virtuális hálózattal.](../../app-service/web-sites-integrate-with-vnet.md)

@@ -1,11 +1,11 @@
 ---
-title: Felhasználók listájának letöltése (előzetes verzió) az Azure Active Directory portálon | Microsoft dokumentumok
+title: A felhasználók listájának letöltése az Azure Active Directory portálon | Microsoft dokumentumok
 description: Töltse le a felhasználói rekordokat tömegesen az Azure Active Directory Azure Felügyeleti központban.
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 02/06/2020
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,20 +13,20 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b35163387ed4ce71f7a2019835a1d9fdbff3051
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063832"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532643"
 ---
-# <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Felhasználók listájának letöltése (előzetes verzió) az Azure Active Directory portálon
+# <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Felhasználók listájának letöltése az Azure Active Directory portálon
 
 Az Azure Active Directory (Azure AD) támogatja a tömeges felhasználói importálási (létrehozási) műveleteket.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-A felhasználók listájának letöltéséhez az Azure AD felügyeleti központból, be kell jelentkeznie egy felhasználórendelt egy vagy több szervezet szintű rendszergazdai szerepkörök az Azure AD-ben. A vendégmeghívó és az alkalmazásfejlesztő nem minősül rendszergazdai szerepkörnek.
+A felhasználók listájának letöltéséhez az Azure AD felügyeleti központból be kell jelentkeznie egy vagy több szervezetszintű rendszergazdai szerepkörhöz rendelt felhasználóval az Azure AD-ben (a felhasználói rendszergazda a minimálisan szükséges szerepkör). A vendégmeghívó és az alkalmazásfejlesztő nem minősül rendszergazdai szerepkörnek.
 
 ## <a name="to-download-a-list-of-users"></a>Felhasználók listájának letöltése
 
@@ -70,9 +70,9 @@ A felhasználók listájának letöltéséhez az Azure AD felügyeleti központb
 
 ## <a name="check-status"></a>Állapot ellenőrzése
 
-A függőben lévő tömeges kérelmek állapotát a **Tömeges művelet eredményei (előzetes verzió)** lapon tekintheti meg.
+A függőben lévő tömeges kérelmek állapotát a **Tömeges művelet eredménylapján láthatja.**
 
-   ![Feltöltési állapot ellenőrzése a Tömeges műveletek eredménylapján](./media/users-bulk-download/bulk-center.png)
+[![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Tömeges letöltési szolgáltatás korlátai
 

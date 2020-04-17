@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 795d21e05ade652b52c06d597ca4c5fef85e7245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ddb4b2cd465b5e9542d777d33b9bd8cb952becd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152827"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531337"
 ---
-# <a name="deploy-the-sample-labeling-tool"></a>A mintacímkéző eszköz telepítése
+# <a name="deploy-the-sample-labeling-tool"></a>A mintacímkézési eszköz üzembe helyezése
 
 Az Űrlapfelismerő mintacímkéző eszköz egy olyan alkalmazás, amely egyszerű felhasználói felületet biztosít, amelyet manuálisan címkézhet fel az űrlapok (dokumentumok) felügyelet iránti tanulás céljából. Ebben a cikkben olyan hivatkozásokat és utasításokat adunk, amelyek megtanítják, hogyan kell:
 
@@ -37,11 +37,11 @@ Mielőtt elkezdené, fontos megjegyezni, hogy két módon telepítheti a mintac�
 * [Az Azure Portal használata](#azure-portal)
 * [Az Azure CLI-vel](#azure-cli)
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Az alábbi lépésekkel új erőforrást hozhat létre az Azure Portalon: 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/signin/index/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/signin/index/).
 2. Válassza az **Erőforrás létrehozása** lehetőséget. 
 3. Ezután válassza a **Web App**lehetőséget . 
 
@@ -76,6 +76,7 @@ Az alábbi lépésekkel új erőforrást hozhat létre az Azure Portalon:
    * Felhasználónév (nem kötelező) - Felhasználónév létrehozása. 
    * Jelszó (nem kötelező) – Hozzon létre egy biztonságos jelszót, amelyre emlékezni fog.
    * Kép és címke - Állítsa be ezt a`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Folyamatos üzembe helyezés – Állítsa ezt **be,** ha automatikus frissítéseket szeretne kapni, amikor a fejlesztőcsapat módosítja a mintacímkéző eszközt.
    * Indítási parancs - Állítsa ezt a`./run.sh eula=accept`
 
    > [!div class="mx-imgBorder"]

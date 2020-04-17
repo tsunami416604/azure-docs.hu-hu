@@ -3,12 +3,12 @@ title: Titkosított Azure-virtuális gépek biztonsági és visszaállítása
 description: Bemutatja, hogyan lehet biztonsági másolatot készíteni és visszaállítani a titkosított Azure-beli virtuális gépeket az Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: a3976cc83f749b1abe00cef3f5bf867ffbc30ab6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98febe9f91cb4b71d546300d4e65ade073d19e67
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206690"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461769"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Titkosított Azure-virtuális gép biztonsági és visszaállítása
 
@@ -30,7 +30,7 @@ Az Azure Backup az Alábbi táblázatban összefoglalva biztonsági másolatot k
 **Nem felügyelt** | Igen | Igen
 **Kezelt**  | Igen | Igen
 
-- További információ az [ADE,](../security/azure-security-disk-encryption-overview.md) [a Key Vault](../key-vault/key-vault-overview.md)és a [KEK-k](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek)ről.
+- További információ az [ADE,](../security/azure-security-disk-encryption-overview.md) [a Key Vault](../key-vault/general/overview.md)és a [KEK-k](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek)ről.
 - Olvassa el az Azure VM lemeztitkosítással [kapcsolatos gyakori kérdéseket.](../security/azure-security-disk-encryption-faq.md)
 
 ### <a name="limitations"></a>Korlátozások

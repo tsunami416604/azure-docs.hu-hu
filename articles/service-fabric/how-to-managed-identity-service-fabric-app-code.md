@@ -3,12 +3,12 @@ title: Felügyelt identitás használata alkalmazással
 description: Felügyelt identitások használata az Azure Service Fabric alkalmazáskódjában az Azure Services eléréséhez.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: cbdb1190ec3238a6accd34db3025e08c194d60b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415623"
+ms.locfileid: "81461565"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>A Service Fabric-alkalmazások felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez
 
@@ -41,10 +41,6 @@ Jogkivonat beszerzéséhez az ügyfél a következő lépéseket hajtja végre:
 A sikeres válasz egy JSON-hasznos adatot tartalmaz, amely az eredményül kapott hozzáférési jogkivonatot, valamint az azt leíró metaadatokat tartalmaz. A sikertelen válasz a hiba magyarázatát is tartalmazza. A hibakezelésről az alábbiakban olvashat.
 
 A hozzáférési jogkivonatokat a Service Fabric különböző szinteken (csomópont, fürt, erőforrás-szolgáltató szolgáltatás) gyorsítótárazja, így a sikeres válasz nem feltétlenül jelenti azt, hogy a jogkivonat közvetlenül a felhasználói alkalmazás kérésére lett kiadva. A jogkivonatok élettartamuknál rövidebb ideig lesznek gyorsítótárazva, így egy alkalmazás garantáltan kap egy érvényes jogkivonatot. Javasoljuk, hogy az alkalmazáskód gyorsítótárazza magát minden általa beszerzett hozzáférési jogkivonatot; a gyorsítótárazási kulcsnak tartalmaznia kell (a közönség származtatását). 
-
-
-> [!NOTE]
-> Az egyetlen elfogadott API-verzió jelenleg `2019-07-01-preview`, és változhat.
 
 Mintakérelem:
 ```http

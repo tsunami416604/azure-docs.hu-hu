@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93f01b3c23e08e7f432841d8a77cbe3602bff1c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243197"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482137"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Tárolási konfiguráció SQL Server rendszerű virtuális gépekhez
 
@@ -40,7 +40,7 @@ Az automatikus tárolási konfigurációs beállítások használatához a virtu
 
 A következő szakaszok bemutatják, hogyan konfigurálható az új SQL Server virtuális gépek tárolása.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Ha egy SQL Server-katalóguslemezkép használatával létesít egy Azure-gépvirtuális gépről, válassza a **Konfiguráció módosítása lehetőséget** az SQL Server **beállításai** lapon a Teljesítményoptimalizált tár konfigurációja lap megnyitásához. Az értékeket alapértelmezetten hagyhatja, vagy módosíthatja az igényeinek leginkább megfelelő lemezkonfiguráció típusát a munkaterhelés alapján. 
 
@@ -56,7 +56,7 @@ Ezenkívül beállíthatja a lemezek gyorsítótárazását is. Az Azure virtuá
 
 A prémium szintű SSD lemezgyorsítótárazás a következők lehet: *ReadOnly*, *ReadWrite* vagy *None*. 
 
-- *A ReadOnly* gyorsítótárazás rendkívül hasznos a Prémium szintű storage-ban tárolt SQL Server adatfájlok esetében. *ReadOnly* gyorsítótárazás hozza alacsony olvasási késés, magas olvasási IOPS és átviteli, mint a gyorsítótárból, amely a virtuális gép memóriájában és a helyi SSD-n belül történik. Ezek az olvasások sokkal gyorsabbak, mint az adatoklemezről történő olvasás, amely az Azure blob storage-ból származik. A prémium szintű storage nem számítja a gyorsítótárból a lemez IOPS és átviteli igény felé kiszolgált olvasásokat. Ezért a vonatkozó képes elérni a magasabb teljes IOPS hangátviteli. 
+- *A ReadOnly* gyorsítótárazás rendkívül hasznos a Prémium szintű storage-ban tárolt SQL Server adatfájlok esetében. *ReadOnly* gyorsítótárazás hozza alacsony olvasási késés, magas olvasási IOPS és átviteli, mint a gyorsítótárból, amely a virtuális gép memóriájában és a helyi SSD-n belül történik. Ezek az olvasások sokkal gyorsabbak, mint az adatoklemezről történő olvasás, amely az Azure blob storage-ból származik. A prémium szintű storage nem számítja a gyorsítótárból a lemez IOPS és átviteli igény felé kiszolgált olvasásokat. Ezért a vonatkozó képes elérni a nagyobb teljes IOPS és átviteli. 
 - *Az* SQL Server naplófájlt tároló lemezekhez nincs gyorsítótár-konfiguráció t kell használni, mivel a naplófájl egymás után íródik, és nem élvezi a *ReadOnly* gyorsítótárazás előnyeit. 
 - *Az ReadWrite* gyorsítótárazás nem használható SQL Server-fájlok üzemeltetésére, mivel az SQL Server nem támogatja az adatok konzisztenciáját a *ReadWrite* gyorsítótárral. Írja a *readonly* blob cache és a késések kis mértékben növekszik, ha írási műveletek et *readonly* blob cache rétegek. 
 

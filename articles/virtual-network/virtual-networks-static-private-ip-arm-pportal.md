@@ -5,7 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: KumudD
 manager: twooley
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 11245645-357d-4358-9a14-dd78e367b494
 ms.service: virtual-network
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
-ms.openlocfilehash: b50875105696dc5c556e2a4a9e756078cf995327
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 946926a8a805ec3c53ea3c57dc3eded2462f7673
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060573"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461548"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Virtuális gép privát IP-címének konfigurálása az Azure Portal használatával
 
@@ -32,7 +31,7 @@ A következő mintalépések egy egyszerű környezet már létrevételét várj
 
 | Beállítás | Érték |
 | ------- | ----- |
-| Név | *TestVNet* |
+| Name (Név) | *TestVNet* |
 | Címtér | *192.168.0.0/16* |
 | Erőforráscsoport | **TestRG** (ha szükséges, válassza **az Új létrehozása** a létrehozásához) |
 | Alhálózat - név | *Frontend* |

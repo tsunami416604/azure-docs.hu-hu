@@ -7,12 +7,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mimckitt
-ms.openlocfilehash: ee6a25ac5a4cc7de8b8340afb186d170cc147a38
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 70810b21def1672758683abd49f92b86776c9d7b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393793"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458981"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Az Azure virtuálisgép-méretezési készlet automatikus operációsrendszer-lemezkép-frissítések
 
@@ -158,7 +158,7 @@ az provider register --namespace Microsoft.Compute
 - Az új lemezkép-verziót nem szabad kizárni az adott galériakép legújabb verziójából. A galériakép legújabb verziójából kizárt képverziók nem kerülnek a méretezési csoportba az operációs rendszer automatikus lemezkép-frissítése révén.
 
 > [!NOTE]
->Akár 2 órát is igénybe vehet egy méretezési csoport, hogy az első kép bevezetése után a méretezési csoport automatikus operációs rendszer frissítése van konfigurálva. Ez egy egyszeri késleltetés méretezési készletenként. Az ezt követő képbevezetéseket a rendszer ilyen késleltetés nélkül alkalmazza a méretezési készletre.
+>Akár 3 órát is igénybe vehet egy méretezési csoport, amely elindítja az első lemezkép-frissítési bevezetést, miután a méretezési csoport automatikus operációsrendszer-frissítésekhez van konfigurálva. Ez egy egyszeri késleltetés méretezési készletenként. Az ezt követő képbevezetések 30 percen belül aktiválódnak a méretezési készleten.
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Az operációs rendszer automatikus lemezkép-frissítésének konfigurálása

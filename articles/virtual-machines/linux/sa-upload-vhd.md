@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
 ms.service: virtual-machines-linux
@@ -15,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: bc90a409dd2695ce16f8c7d5909f8e2d7867673c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62855d943dae2e03cefff64710ce23ff0e0a0567
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060254"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458709"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Linuxos virtuális gép feltöltése és létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -130,7 +129,7 @@ A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a 
 az group create --name myResourceGroup --location westus
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Hozzon létre egy tárfiókot az egyéni lemez hez és a virtuális gépekhez az [az storage fiók létrehozása.](/cli/azure/storage/account) Az egyéni lemezről létrehozott nem felügyelt lemezekkel rendelkező virtuális gépeknek ugyanabban a tárfiókban kell lenniük, mint az adott lemeznek. 
 

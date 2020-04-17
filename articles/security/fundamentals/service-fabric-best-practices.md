@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549232"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461650"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárásai
 Egy alkalmazás üzembe helyezése az Azure-ban gyors, egyszerű és költséghatékony. Mielőtt üzembe helyezné a felhőalapú alkalmazást éles környezetben, tekintse át a biztonságos fürtök alkalmazásában való megvalósításához szükséges alapvető és ajánlott gyakorlati tanácsok listáját.
@@ -155,7 +155,7 @@ A Service Fabric tanúsítványokat használ a fürt és az alkalmazások védel
 
 A Service Fabric X.509-es tanúsítványokat használ a fürt védelméhez és az alkalmazás biztonsági szolgáltatásainak biztosításához. Az Azure Key Vault használatával kezelheti a Service Fabric-fürtök [tanúsítványait](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) az Azure-ban. A fürtöket létrehozó Azure-erőforrás-szolgáltató lekéri a tanúsítványokat egy key vaultból. A szolgáltató ezután telepíti a tanúsítványokat a virtuális gépeken, amikor a fürt telepítve van az Azure-ban.
 
-Tanúsítványkapcsolat van az [Azure Key Vault](../../key-vault/key-vault-secure-your-key-vault.md), a Service Fabric-fürt és a tanúsítványokat használó erőforrás-szolgáltató között. A fürt létrehozásakor a tanúsítványkapcsolattal kapcsolatos információk egy key vaultban tárolódnak.
+Tanúsítványkapcsolat van az [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md), a Service Fabric-fürt és a tanúsítványokat használó erőforrás-szolgáltató között. A fürt létrehozásakor a tanúsítványkapcsolattal kapcsolatos információk egy key vaultban tárolódnak.
 
 A kulcstartó beállításának két alapvető lépése van:
 1. Hozzon létre egy erőforráscsoportot kifejezetten a key vaulthoz.
@@ -166,7 +166,7 @@ A kulcstartó beállításának két alapvető lépése van:
 
     A key vault engedélyezni kell a központi telepítéshez. A számítási erőforrás-szolgáltató ezután lejuthat a tanúsítványokat a tárolóból, és telepítheti őket a virtuálisgép-példányokon.
 
-Ha többet szeretne tudni a key vault beállításáról, olvassa el [a Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
+Ha többet szeretne tudni a key vault beállításáról, olvassa el [a Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 
 ## <a name="assign-users-to-roles"></a>Felhasználók hozzárendelése szerepkörökhöz
 Miután létrehozta a fürtet képviselő alkalmazásokat, rendelje hozzá a felhasználókat a Service Fabric által támogatott szerepkörökhöz: csak olvasható és rendszergazda. Ezeket a szerepköröket az Azure Portal használatával rendelheti hozzá.

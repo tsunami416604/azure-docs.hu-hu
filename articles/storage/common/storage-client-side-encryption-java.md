@@ -10,12 +10,12 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8fe95a471df6ea86aad90f387088824c3c92bd3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32691e0ddcee3f5410b12f07a2fb80806345bc26
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460448"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460511"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Ügyféloldali titkosítás és Azure Key Vault Java for Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -103,7 +103,7 @@ Kötegelt műveletekben ugyanazt a KEK-et fogja használni a kötegművelet öss
 > Lekérdezési műveletek végrehajtásához meg kell adnia egy kulcsfeloldót, amely képes feloldani az eredményhalmaz összes kulcsát. Ha a lekérdezés eredményében szereplő entitás nem oldható fel szolgáltatóval, az ügyféltár hibát fog eljelenni. A kiszolgálóoldali vetületeket végző lekérdezések esetén az ügyféltár alapértelmezés szerint hozzáadja a speciális titkosítási metaadat-tulajdonságokat (_ClientEncryptionMetadata1 és _ClientEncryptionMetadata2) a kijelölt oszlopokhoz.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. Az Azure Key Vault használatával a felhasználók titkosíthatják a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a tárfiók kulcsait, az adattitkosítási kulcsokat, a . PFX fájlok és jelszavak) hardveres biztonsági modulokkal (HSM) védett kulcsokkal. További információ: [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md).
+Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. Az Azure Key Vault használatával a felhasználók titkosíthatják a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a tárfiók kulcsait, az adattitkosítási kulcsokat, a . PFX fájlok és jelszavak) hardveres biztonsági modulokkal (HSM) védett kulcsokkal. További információ: [Mi az Azure Key Vault?](../../key-vault/general/overview.md).
 
 A tárolóügyfél-tár a Key Vault magkönyvtárát használja a kulcsok kezeléséhez az Azure-ban egy közös keretrendszer biztosítása érdekében. A felhasználók a Key Vault-bővítmények könyvtárának további előnyeit is élvezhetik. A bővítmények könyvtára hasznos funkciókat biztosít az egyszerű és zökkenőmentes szimmetrikus/RSA helyi és felhőkulcs-szolgáltatók, valamint az összesítés és a gyorsítótárazás területén.
 
@@ -256,4 +256,4 @@ Vegye figyelembe, hogy a tárolási adatok titkosítása további teljesítmény
 * Töltse le az Azure Key Vault Maven Library for Java Maven csomagokat:
   * [Core](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) csomag
   * [Ügyfélcsomag](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)
-* Látogasson el az [Azure Key Vault dokumentációjára](../../key-vault/key-vault-overview.md)
+* Látogasson el az [Azure Key Vault dokumentációjára](../../key-vault/general/overview.md)

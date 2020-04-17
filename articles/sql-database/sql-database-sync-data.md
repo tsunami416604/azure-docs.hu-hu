@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 80afbeb5668d43ac7bb0b12fadb88a93c68e0ddb
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 8708c458e1064e4b9ea7dc67f1a4d4fbce1547b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383718"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481952"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Adatok szinkronizálása több felhőbeli és helyszíni adatbázisban az SQL Data Sync segítségével
 
@@ -134,6 +134,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 - Az Azure Active Directory-hitelesítés nem támogatott.
 - Az azonos nevű, de eltérő sémával rendelkező táblák (például dbo.customers és sales.customers) nem támogatottak.
 - A felhasználó által definiált adattípusokkal rendelkező oszlopok nem támogatottak
+- A kiszolgálók különböző előfizetések közötti áthelyezése nem támogatott. 
 
 #### <a name="unsupported-data-types"></a>Nem támogatott adattípusok
 

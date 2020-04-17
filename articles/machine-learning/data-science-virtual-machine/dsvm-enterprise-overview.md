@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 06d05d6d410af13bfbe85f3cb66523c1d48cb77c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1f3a24afb2238c2448cb19b3889467a1b1819724
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70195666"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460545"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Adattudomány virtuális gép alapú csapatelemzés és AI-környezet 
 Az [adatelemzési virtuális gép](overview.md) (DSVM) gazdag környezetet biztosít az Azure platformon, előre elkészített szoftverrel a mesterséges intelligencia (AI) és az adatelemzés számára.
@@ -43,7 +43,7 @@ Ez a sorozat útmutatást és útmutatást nyújt az előző témakörökhöz. N
 * [Szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [A politika meghatározása és érvényesítése](../../governance/policy/overview.md)
 * [Kártevőirtó](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [Titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
+* [Titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview.md)
 * [Adatfelderítés és -irányítás](https://docs.microsoft.com/azure/data-catalog/)
 
 Végül az [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/) részletes, végpontok között architektúrát és modelleket biztosít a felhőalapú elemzési infrastruktúra létrehozásához és kezeléséhez.

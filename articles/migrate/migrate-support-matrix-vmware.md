@@ -2,13 +2,13 @@
 title: A VMware-felmérés támogatása az Azure Migrate ben
 description: Ismerje meg a VMware VM-felmérés támogatását az Azure Áttelepítési kiszolgáló felmérésével.
 ms.topic: conceptual
-ms.date: 03/29/2020
-ms.openlocfilehash: e0172656d06075f89a7c3a06e8d4e9be94e6f5d0
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 04/15/2020
+ms.openlocfilehash: 8a09562f14b95256ee9c2b5ba7d9c308cde66397
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389307"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532204"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware értékelésének támogatási mátrixa 
 
@@ -39,7 +39,7 @@ A gépek felderítése mellett a Server Assessment a gépeken futó alkalmazáso
 **vCenter hitelesítő adatok** | Az alkalmazásfelderítéshez írásvédett hozzáféréssel rendelkező vCenter Server-fiókra van szükség, és a virtuális gépek hez engedélyezett jogosultságok > vendégműveletek.
 **Virtuális gép hitelesítő adatai** | Az alkalmazásfelderítés jelenleg egy hitelesítő adat használatát támogatja az összes Windows-kiszolgálóhoz, és egy hitelesítő adatot az összes Linux-kiszolgálóhoz.<br/><br/> Hozzon létre egy vendég felhasználói fiókot a Windows virtuális gépekhez, és egy normál/normál felhasználói fiókot (nem sudo hozzáférés) az összes Linux-virtuális géphez.
 **VMware eszközök** | A VMware-eszközöket telepíteni és futtatni kell a felderíteni kívánt virtuális gépeken. <br/> A VMware eszközverziónak 10.2.0-nál későbbinek kell lennie.
-**Powershell** | A virtuális gépeken telepítve kell lennie a PowerShell 2.0-s vagy újabb verziójának.
+**PowerShell** | A virtuális gépeken telepítve kell lennie a PowerShell 2.0-s vagy újabb verziójának.
 **Port-hozzáférés** | A felderíteni kívánt virtuális gépeket futtató ESXi-állomásokon az Azure Migrate készüléknek képesnek kell lennie a 443-as TCP-porthoz való csatlakozásra.
 **Korlátok** | Az alkalmazásfelderítéshez legfeljebb 10000 virtuális gépet fedezhet fel az egyes Azure Migrate-készülékeken.
 
@@ -61,7 +61,9 @@ A gépek felderítése mellett a Server Assessment a gépeken futó alkalmazáso
 Az Azure Migrate az [Azure Migrate készüléket](migrate-appliance.md) használja felderítéshez és értékeléshez. A készüléket vmware virtuális gépként telepítheti ovasablon nal, vCenter Server kiszolgálóra importálva vagy [PowerShell-parancsfájl](deploy-appliance-script.md)használatával.
 
 - További információ a VMware [készülékkövetelményeiről.](migrate-appliance.md#appliance---vmware)
-- Ismerje meg azokat az [URL-címeket, amelyekhez](migrate-appliance.md#url-access) a készüléknek szüksége van.
+- Ismerje meg azokat az URL-címeket, amelyekhez a készüléknek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben kell hozzáférnie.
+- Az Azure Government ben a parancsfájl használatával kell üzembe helyeznie a készüléket.
+
 
 ## <a name="port-access"></a>Port-hozzáférés
 
@@ -86,8 +88,9 @@ ESXi-gazdagépek (alkalmazásfelderítés/ügynök nélküli függőségelemzés
 **Kötelező ügynökök** | Nincs szükség ügynökre az elemezni kívánt gépeken.
 **VMware eszközök** | VMware Tools (később 10.2) kell telepíteni, és fut minden virtuális gép elemezni kívánt.
 **vCenter Server hitelesítő adatok** | A függőségi vizualizációhoz írásvédett hozzáféréssel rendelkező vCenter Server-fiókra van szükség, és a virtuális gépek hez > vendégműveletekhez engedélyezett jogosultságokra van szükség. 
-**Powershell** | A virtuális gépeken telepítve kell lennie a PowerShell 2.0-s vagy újabb verziójának.
+**PowerShell** | A virtuális gépeken telepítve kell lennie a PowerShell 2.0-s vagy újabb verziójának.
 **Port-hozzáférés** | Az elemezni kívánt virtuális gépeket futtató ESXi-állomásokon az Azure Migrate-készüléknek képesnek kell lennie a 443-as TCP-porthoz való csatlakozásra.
+
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Ügynökalapú függőségelemzési követelmények
 
@@ -103,6 +106,7 @@ ESXi-gazdagépek (alkalmazásfelderítés/ügynök nélküli függőségelemzés
 **Költségek** | A Szolgáltatástérkép-megoldás nem számít fel díjat az első 180 napra vonatkozóan (attól a naptól számítva, amikor a Log Analytics-munkaterületet társítja az Azure Migrate projekthez)/<br/><br/> A 180 nap elteltével a standard Log Analytics-díjszabás vonatkozik rá.<br/><br/> A társított Log Analytics-munkaterületen a Szolgáltatástérképen kívül bármilyen más megoldás használata esetén a Log Analytics [általános díjakat](https://azure.microsoft.com/pricing/details/log-analytics/) számít fel.<br/><br/> Az Azure Migrate projekt törlésekor a munkaterület nem törlődik vele együtt. A projekt törlése után a Szolgáltatástérkép használata nem ingyenes, és minden csomópontnak a Log Analytics-munkaterület fizetett szintje szerint kell fizetnie.<br/><br/>Ha olyan projektjei vannak, amelyeket az Azure Migrate általános elérhetősége előtt hozott létre (GA– 2018. február 28.), előfordulhat, hogy további szolgáltatástérkép-díjak merültek fel. Annak érdekében, hogy a kifizetés csak 180 nap után, azt javasoljuk, hogy hozzon létre egy új projektet, mivel a meglévő munkaterületek előtt GA továbbra is felszámítható.
 **Felügyelet** | Amikor ügynököket regisztrál a munkaterületre, az Azure Migrate projekt által biztosított azonosítót és kulcsot használja.<br/><br/> Használhatja a Log Analytics munkaterületet az Azure Migrate-en kívül.<br/><br/> Ha törli a társított Azure Migrate projektet, a munkaterület nem törlődik automatikusan. [Törölje manuálisan](../azure-monitor/platform/manage-access.md).<br/><br/> Ne törölje az Azure Migrate által létrehozott munkaterületet, hacsak nem törli az Azure Migrate projektet. Ha így tesz, a függőségi vizualizációs funkció nem a várt módon fog működni.
 **Internetkapcsolat** | Ha a gépek nem csatlakoznak az internethez, telepítenie kell rájuk a Log Analytics-átjárót.
+**Azure Government** | Az ügynökalapú függőségelemzés nem támogatott.
 
 
 ## <a name="next-steps"></a>További lépések

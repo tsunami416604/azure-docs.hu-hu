@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 48e2ec7f853ce94263f4e843b529609d5376ed5b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8e6fd4955d6d68764895619efd968a957bcb5184
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424040"
+ms.locfileid: "81460596"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Tárolófájlok lekérdezése sql-alapú (előzetes verziójú) erőforrások használatával a Synapse SQL-ben
 
@@ -141,7 +141,7 @@ További információt a [Query adott fájlokról](query-specific-files.md#filep
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Összetett típusokkal és beágyazott vagy ismétlődő adatstruktúrákkal végzett munka
 
-Annak érdekében, hogy zökkenőmentes legyen a zökkenőmentes élmény, amikor beágyazott vagy ismétlődő adattípusokban, például [a Parkettafájlokban](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) tárolt adatokkal dolgozik, a Starlight az alábbi bővítményeket adta hozzá.
+A beágyazott vagy ismétlődő adattípusokban , például [a Parquet-fájlokban](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) tárolt adatokkal való munka zökkenőmentes működéséhez az SQL igény szerinti bővítményei hozzáadták az alábbi bővítményeket.
 
 #### <a name="project-nested-or-repeated-data"></a>Projekt beágyazott vagy ismétlődő adatai
 

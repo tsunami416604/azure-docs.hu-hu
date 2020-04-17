@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 4219bb471b92e7ddae72c50403f635498c90080d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f390aececdbf9a20f191279892c1856332f2aa8e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251690"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482095"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Speciális veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz
 
@@ -27,9 +27,7 @@ A szolgáltatás beolvassa az olvasási, írási és törlési kérelmek diagnos
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-Az Azure Storage speciális veszélyforrások elleni védelme jelenleg csak a [Blob Storage számára](https://azure.microsoft.com/services/storage/blobs/)érhető el. 
-
-Ez a szolgáltatás minden nyilvános felhőben és az Egyesült Államok kormányzati felhőiben érhető el, de más szuverén vagy Azure kormányzati felhőrégióban nem.
+Az Azure Storage speciális veszélyforrások elleni védelme jelenleg csak a [Blob Storage számára](https://azure.microsoft.com/services/storage/blobs/)érhető el. A speciális veszélyforrások elleni védelmet támogató fióktípusok közé tartozik az általános célú v2, a blokkblob és a Blob storage-fiókok. A komplex veszélyforrások elleni védelem minden nyilvános felhőben és az Egyesült Államok kormányzati felhőiben elérhető, de más szuverén vagy Azure kormányzati felhőrégiókban nem.
 
 A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót, tekintse meg az [Azure Security Center díjszabási lapját.](https://azure.microsoft.com/pricing/details/security-center/)
 
@@ -62,7 +60,7 @@ Amikor előfizet a standard szintre az Azure Security Centerben, a speciális ve
 1. A **Tarifacsomag kiválasztása erőforrástípus szerint** szakasz **Storage-fiókok** sorában kattintson az **Engedélyezve** vagy **a Letiltva gombra.**
 
     ![Az ATP engedélyezése a Biztonsági központban](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="template"></a>[Sablon](#tab/template)
 

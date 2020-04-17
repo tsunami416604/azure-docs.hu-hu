@@ -8,23 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/03/2019
-ms.openlocfilehash: cda499b81a61a5b78ca86a96372640e368f90357
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 04/16/2020
+ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80364195"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481672"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Kivételek és hibakódok a tervezőhöz (előzetes verzió)
 
 Ez a cikk ismerteti a hibaüzenetek és a kivételkódok az Azure Machine Learning designer (előzetes verzió), hogy segítsen a gépi tanulási folyamatok hibaelhárítása.
 
-A hibaüzenet teljes szövegét kétféleképpen kaphatja meg a tervezőben:  
+A hibaüzenet a tervezőben az alábbi lépésekben található:  
 
-- Kattintson a jobb oldali ablaktáblában található **Kimeneti napló megtekintése**hivatkozásra, és görgessen az aljára. A részletes hibaüzenet az ablak utolsó két sorában jelenik meg.  
-  
-- Jelölje ki a hibát tartalmazó modult, és kattintson a piros X gombra. Csak a megfelelő hibaszöveg jelenik meg.
+- Válassza ki a sikertelen modult, nyissa meg a **Kimenetek+naplók** lapot, és a részletes naplót a **70_driver_log.txt** fájlban találja az **azureml-logs** kategóriában.
+
+- A részletes modulhiba esetén a error_info.json ban ellenőrizheti **module_statistics** kategóriában.
+
+Az alábbiakban a tervező moduljainak hibakódjait tetszetős.
 
 ## <a name="error-0001"></a>0001-es hiba  
  Kivétel, ha egy vagy több megadott oszlop az adatkészlet nem található.  
@@ -326,7 +328,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 ## <a name="error-0017"></a>0017-es hiba  
  Kivétel akkor fordul elő, ha a kijelölt oszlop olyan adattípust használ, amelyet az aktuális modul nem támogat.  
 
- Előfordulhat például, hogy ez a hibaüzenet az Azure Machine Learningben jelenik meg, ha az oszlopkiválasztása tartalmaz egy olyan oszlopot, amelynek adattípusát a modul nem tudja feldolgozni, például egy matematikai művelet karakterláncoszlopát, vagy egy pontszámoszlopot, ahol egy kategorikus szolgáltatásoszlop Szükséges.  
+ Például előfordulhat, hogy ez a hiba az Azure Machine Learning, ha az oszlop kiválasztása tartalmaz egy oszlopot egy adattípust, amely nem dolgozható fel a modul, például egy karakterlánc oszlop egy matematikai művelet, vagy egy pontszám oszlop, ahol egy kategorikus funkció oszlop szükséges.  
 
 **Felbontás:**
  1. Azonosítsa a problémát okozó oszlopot.
@@ -352,7 +354,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 ## <a name="error-0018"></a>0018-as hiba  
  Kivétel, ha a bemeneti adatkészlet érvénytelen.  
 
-**Felbontás:** Ez a hiba az Azure Machine Learning ben számos környezetben jelenhet meg, így nincs egyetlen megoldás. A hiba általában azt jelzi, hogy a modulbemenetként megadott adatok nem megfelelő számú oszlopot tartalmaznak, vagy hogy az adattípus nem felel meg a modul követelményeinek. Példa:  
+**Felbontás:** Ez a hiba az Azure Machine Learning ben számos környezetben jelenhet meg, így nincs egyetlen megoldás. A hiba általában azt jelzi, hogy a modulbemenetként megadott adatok nem megfelelő számú oszlopot tartalmaznak, vagy hogy az adattípus nem felel meg a modul követelményeinek. Például:  
 
 -   A modulhoz szükség van egy címkeoszlopra, de nincs címkeként megjelölt oszlop, vagy még nem jelölt ki címkeoszlopot.  
   
@@ -433,7 +435,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 ## <a name="error-0022"></a>0022-es hiba  
  Kivétel, ha a bemeneti adatkészlet kijelölt oszlopainak száma nem egyezik meg a várt számmal.  
 
- Ez a hiba az Azure Machine Learning akkor fordulhat elő, ha az alsóbb rétegbeli modul vagy művelet igényel egy adott számú oszlopok vagy bemenetek, és túl kevés vagy túl sok oszlopot vagy bemenetet biztosított. Példa:  
+ Ez a hiba az Azure Machine Learning akkor fordulhat elő, ha az alsóbb rétegbeli modul vagy művelet igényel egy adott számú oszlopok vagy bemenetek, és túl kevés vagy túl sok oszlopot vagy bemenetet biztosított. Például:  
 
 -   Egyetlen címkeoszlopot vagy kulcsoszlopot adhat meg, és véletlenül több oszlopot jelöl ki.  
   
@@ -656,7 +658,7 @@ Azt is előfordulhat, hogy egy címke oszlop található az adatkészletben, de 
 
 A Matchbox ajánlónak vannak bizonyos követelményei, amelyeknek meg kell felelniük az elemfunkciók vagy a felhasználói funkciók használatakor.  Ez a hiba azt jelzi, hogy egy bemenetként megadott felhasználó vagy elem szolgáltatásvektora hiányzik. Győződjön meg arról, hogy az egyes felhasználók vagy elemek adatai között számos szolgáltatás áll rendelkezésre.  
 
- Ha például egy ajánlási modellt olyan funkciókkal tanított be, mint a felhasználó életkora, helye vagy jövedelme, de most olyan új felhasználók számára szeretne pontszámokat létrehozni, akik nem voltak láthatók a képzés során, meg kell adnia néhány egyenértékű funkciókészletet (nevezetesen az életkort, a helyet és a az új felhasználók számára, hogy megfelelő előrejelzéseket tehessenek róluk. 
+ Ha például egy ajánlási modellt olyan funkciókhasználatával tanított be, mint például a felhasználó életkora, helye vagy jövedelme, de most olyan új felhasználók számára szeretne pontszámokat létrehozni, akik nem voltak láthatók a képzés során, meg kell adnia néhány egyenértékű funkciókészletet (nevezetesen az életkort, a helyet és a jövedelmi értékeket) az új felhasználók számára, hogy megfelelő előrejelzéseket tehessenek róluk. 
 
  Ha nem rendelkezik ilyen szolgáltatásokkal ezekhez a felhasználókhoz, fontolja meg a szolgáltatástervezést a megfelelő funkciók létrehozásához.  Ha például nem rendelkezik egyéni felhasználói életkori vagy jövedelmi értékekkel, előfordulhat, hogy hozzávetőleges értékeket hoz létre a felhasználók egy csoportjához. 
 
@@ -1072,7 +1074,7 @@ A Hive hibaüzenete általában a hibanaplóban jelenik meg, így az adott hiba 
 + Ellenőrizze, hogy a lekérdezés megfelelően működik-e az Azure Machine Learningen kívül, ha bejelentkezik a Hadoop-fürt Hive-konzoljára, és futtatja a lekérdezést.  
 + Próbáljon meg megjegyzéseket elhelyezni a Hive-parancsfájlban egy külön sorban, szemben a végrehajtható utasítások és megjegyzések egyetlen sorban való keverésével.  
 
-### <a name="resources"></a>Források
+### <a name="resources"></a>További források
 
 A gépi tanuláshoz kapcsolódó Hive-lekérdezésekkel kapcsolatos segítségért tekintse meg az alábbi cikkeket:
 

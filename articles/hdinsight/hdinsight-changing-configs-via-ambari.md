@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/16/2020
+ms.openlocfilehash: c88882175ff256300dee486e680a9b63e9a65c99
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272564"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532498"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Az Apache Ambari használata a HDInsight fürtkonfigurációinak optimalizálására
 
-A HDInsight [Apache Hadoop-fürtöket](https://hadoop.apache.org/) biztosít a nagyméretű adatfeldolgozó alkalmazásokhoz. Ezek az összetett többcsomópontos fürtök kezelése, figyelése és optimalizálása kihívást jelenthet. [Az Apache Ambari](https://ambari.apache.org/) egy webes felület a HDInsight Linux-fürtök kezelésére és figyelésére.  Windows-fürtök esetén használja az [Ambari REST API-t.](hdinsight-hadoop-manage-ambari-rest-api.md)
+A HDInsight [Apache Hadoop-fürtöket](./hadoop/apache-hadoop-introduction.md) biztosít a nagyméretű adatfeldolgozó alkalmazásokhoz. Ezek az összetett többcsomópontos fürtök kezelése, figyelése és optimalizálása kihívást jelenthet. [Az Apache Ambari](https://ambari.apache.org/) egy webes felület a HDInsight Linux-fürtök kezelésére és figyelésére.  Windows-fürtök esetén használja az [Ambari REST API-t.](hdinsight-hadoop-manage-ambari-rest-api.md)
 
 Az Ambari webfelhasználói felület használatának bemutatása a [HDInsight-fürtök kezelése az Apache Ambari Web felhasználói felületének használatával című témakörben található.](hdinsight-hadoop-manage-ambari.md)
 
@@ -25,17 +25,17 @@ Jelentkezzen be az Ambari-ba `https://CLUSTERNAME.azurehdidnsight.net` a fürt h
 
 ![Megjelent az Apache Ambari felhasználói irányítópultja](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
-Az Ambari webes felhasználói felülete a gazdagépek, szolgáltatások, riasztások, konfigurációk és nézetek kezelésére használható. Az Ambari nem használható HDInsight-fürt létrehozására, szolgáltatások frissítésére, halmok és verziók kezelésére, leszerelésére vagy újraüzembe helyezésére, illetve szolgáltatások hozzáadására a fürthöz.
+Az Ambari webes felhasználói felülete a gazdagépek, szolgáltatások, riasztások, konfigurációk és nézetek kezelésére szolgál. Az Ambari nem használható HDInsight-fürt vagy frissítési szolgáltatások létrehozására. A halmok és verziók, a leszerelt vagy újraüzembe helyezés gazdagépek, illetve szolgáltatások hozzáadása a fürthöz nem kezelhetők.
 
 ## <a name="manage-your-clusters-configuration"></a>A fürt konfigurációjának kezelése
 
-A konfigurációs beállítások segítenek egy adott szolgáltatás hangolásában. A szolgáltatás konfigurációs beállításainak módosításához válassza ki a szolgáltatást a **Szolgáltatások** oldalsávján (a bal oldalon), majd keresse meg a **Konfigurációlapot** a szolgáltatás részletei lapon.
+A konfigurációs beállítások segítenek egy adott szolgáltatás hangolásában. A szolgáltatás konfigurációs beállításainak módosításához válassza ki a szolgáltatást a **Szolgáltatások** oldalsávon (a bal oldalon). Ezután keresse meg a **Configs** lapot a szolgáltatás részleteit tartalmazó lapon.
 
 ![Apache Ambari szolgáltatások oldalsáv](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 
 ### <a name="modify-namenode-java-heap-size"></a>NameNode Java halommemória méretének módosítása
 
-A NameNode Java halommemória mérete számos tényezőtől függ, például a fürt terhelésétől, a fájlok számától és a blokkok számától. Az alapértelmezett 1 GB-os méret a legtöbb fürtesetében jól működik, bár egyes munkaterhelések több vagy kevesebb memóriát igényelhetnek.
+A NameNode Java halommemória mérete számos tényezőtől függ, például a fürt terhelése. Is, a fájlok száma, és a blokkok száma. Az alapértelmezett 1 GB-os méret a legtöbb fürtesetében jól működik, bár egyes munkaterhelések több vagy kevesebb memóriát igényelhetnek.
 
 A NameNode Java halommemória méretének módosítása:
 
@@ -57,7 +57,7 @@ A NameNode Java halommemória méretének módosítása:
 
 1. Mentse a módosításokat a konfigurációs képernyő tetején található zöld **Mentés** gombra kattintva.
 
-    ![Ambari Ambari menteni konfigurációk](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
+    !["Apache Ambari menteni konfigurációk"](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
 ## <a name="apache-hive-optimization"></a>Apache Hive optimalizálás
 
@@ -85,7 +85,7 @@ Hadoop megpróbálja megosztani (*térkép)* egy fájlt több fájlt, és feldol
 * `tez.grouping.min-size`: A csoportosított felosztás méretének alsó határa, 16 MB (16 777 216 bájt) alapértelmezett értékkel.
 * `tez.grouping.max-size`: A csoportosított felosztás méretének felső határa, 1 GB alapértelmezett értékkel (1 073 741 824 bájt).
 
-Teljesítményszabályként csökkentse mindkét paramétert a késés javítása érdekében, növelve a nagyobb átviteli teljesítményt.
+Teljesítmény-irányelvként csökkentse mindkét paramétert a késés javítása érdekében, növelje a nagyobb átviteli teljesítményt.
 
 Ha például négy leképező feladatot szeretne beállítani 128 MB-os adatmérethez, mindkét paramétert 32 MB-ra kell állítani (33 554 432 bájt).
 
@@ -103,7 +103,7 @@ Ezek a változások a kiszolgálón lévő összes Tez-feladatot érintik. Az op
 
 Tegyük fel például, hogy a bemeneti adatok mérete 50 GB. A Snappy tömörítésű ORC formátumú adatok 1 GB.That data in ORC format with Snappy compression is 1 GB. A Hive a következőképpen becsüli meg a szükséges szűkítők számát: `hive.exec.reducers.bytes.per.reducer`(a leképezőkbe bemeneti bájtok száma / ).
 
-Az alapértelmezett beállításokkal ez a példa 4 szűkítő.
+Az alapértelmezett beállításokkal ez a példa négy szűkítő.
 
 A `hive.exec.reducers.bytes.per.reducer` paraméter a szűkítőnként feldolgozott bájtok számát adja meg. Az alapértelmezett érték 64 MB. Az érték lehangolása növeli a párhuzamosságot, és javíthatja a teljesítményt. Tuning túl alacsony is okozhat túl sok szűkítők, potenciálisan hátrányosan befolyásolja a teljesítményt. Ez a paraméter az adott adatkövetelményeken, a tömörítési beállításokon és más környezeti tényezőkön alapul.
 
@@ -115,7 +115,7 @@ A `hive.exec.reducers.bytes.per.reducer` paraméter a szűkítőnként feldolgoz
 
     ![Ambari Data per Szűkítő - szerkesztett](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
-    1024 MB bemeneti méret, 128 MB-os szűkítőnkénti adattal, 8 szűkítő (1024/128).
+    1024 MB bemeneti méret, 128 MB-os szűkítőnkénti adattal, nyolc szűkítő (1024/128).
 
 1. A **Data per Reducer** paraméter helytelen értéke nagyszámú szűkítőt eredményezhet, ami hátrányosan befolyásolja a lekérdezés teljesítményét. A szűkítők maximális számának `hive.exec.reducers.max` korlátozásához állítsa be a megfelelő értéket. Az alapértelmezett érték 1009.
 
@@ -141,7 +141,7 @@ A Hive soronként dolgozza fel az adatokat. A vektorizálás arra utasítja a Hi
 
 ### <a name="enable-cost-based-optimization-cbo"></a>Költségalapú optimalizálás engedélyezése (CBO)
 
-Alapértelmezés szerint a Hive szabályokat követ egy optimális lekérdezés-végrehajtási terv megkereséséhez. A költségalapú optimalizálás (CBO) kiértékeli a lekérdezés végrehajtására vonatkozó több tervet, és minden tervhez költséget rendel, majd meghatározza a leggyorsabb tervet a lekérdezés végrehajtásához.
+Alapértelmezés szerint a Hive szabályokat követ egy optimális lekérdezés-végrehajtási terv megkereséséhez. A költségalapú optimalizálás (CBO) több lekérdezés végrehajtására irányuló tervet értékel ki. És hozzárendeli a költség minden terv, majd meghatározza a legolcsóbb tervet, hogy egy lekérdezést.
 
 A CBO engedélyezéséhez keresse meg a **Hive** > **konfigurációs** > **beállítások at,** és keresse meg a **Költségalapú optimalizáló engedélyezése**lehetőséget, majd kapcsolja be a váltógombot **Be**beállításra.
 
@@ -163,7 +163,7 @@ A következő további konfigurációs paraméterek növelik a Hive-lekérdezés
 
 * `hive.stats.fetch.partition.stats`
 
-    Az alapvető partícióstatisztikák, például a sorok száma, az adatok mérete és a fájlméret a metatárban tárolódnak. Ha értéke igaz, a partíció statisztika lekérése metastore.When set to true, the partition stats are fetched from metastore. Ha hamis, a fájlméretet a fájlrendszerből olvassa be, a sorok számát pedig a sorsémából.
+    Az alapvető partícióstatisztikák, például a sorok száma, az adatok mérete és a fájlméret a metatárban tárolódnak. Ha értéke igaz, a partíció statisztika lekéri metastore. Ha hamis, a fájlméretet a fájlrendszerből olvassa be. És a sorok száma a sorsémából kerül beolvasásra.
 
     ![Hive-statisztika készlet partíció statisztika](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-partition-stats.png)
 
@@ -176,17 +176,17 @@ Hadoop munkák általában I / O szűk keresztmetszetű. Az adatok tömörítés
 A rendelkezésre álló tömörítési típusok a következők:
 
 | Formátum | Eszköz | Algoritmus | Fájlkiterjesztés | Hasadható? |
-| -- | -- | -- | -- | -- |
-| Gzip | Gzip | Deflate | .gz | Nem |
-| Bzip2 között | Bzip2 között | Bzip2 között |.bz2 | Igen |
-| LZO | Lzop között | LZO | .lzo | Igen, ha indexelt |
+| --- | --- | --- | --- | --- |
+| Gzip | Gzip | Deflate | `.gz` | Nem |
+| Bzip2 között | Bzip2 között | Bzip2 között |`.bz2` | Igen |
+| LZO | `Lzop` | LZO | `.lzo` | Igen, ha indexelt |
 | Snappy | N/A | Snappy | Snappy | Nem |
 
-Általános szabály, hogy a tömörítési módszer splittable fontos, különben nagyon kevés leképező jön létre. Ha a bemeneti `bzip2` adatok szöveg, a legjobb megoldás. OrC formátum esetén a Snappy a leggyorsabb tömörítési lehetőség.
+Általános szabály, hogy a tömörítési módszer splittable fontos, különben kevés leképező jön létre. Ha a bemeneti `bzip2` adatok szöveg, a legjobb megoldás. OrC formátum esetén a Snappy a leggyorsabb tömörítési lehetőség.
 
 1. A köztes tömörítés engedélyezéséhez keresse meg a Hive `hive.exec.compress.intermediate` **Configs** lapot, majd állítsa a paramétert true értékre. Az alapértelmezett érték a hamis.
 
-    ![Hive exec tömörítés köztes](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
+    !["Hive exec compress intermediate"](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
     > [!NOTE]  
     > A köztes fájlok tömörítéséhez válasszon egy alacsonyabb CPU-költségű tömörítési kodeket, még akkor is, ha a kodek nem rendelkezik nagy tömörítési kimenettel.
@@ -203,9 +203,9 @@ A rendelkezésre álló tömörítési típusok a következők:
 
     d. Válassza a **Hozzáadás** lehetőséget.
 
-    ![Apache Hive egyéni tulajdonság hozzáadása](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
+    !['Apache Hive egyéni tulajdonság hozzáadása'](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
-    Ez tömöríti a köztes fájlt a Snappy tömörítéssel. A tulajdonság hozzáadása után megjelenik az egyéni struktúrahely ablaktáblán.
+    Ez a beállítás a köztes fájlt a Snappy tömörítéssel tömöríti. A tulajdonság hozzáadása után megjelenik az egyéni struktúrahely ablaktáblán.
 
     > [!NOTE]  
     > Ez az eljárás `$HADOOP_HOME/conf/hive-site.xml` módosítja a fájlt.
@@ -222,21 +222,21 @@ A végleges Hive kimenet is tömöríthető.
 
 ### <a name="enable-speculative-execution"></a>Spekulatív végrehajtás engedélyezése
 
-A spekulatív végrehajtás bizonyos számú ismétlődő feladatot indít el a lassúan futó feladatkövető észlelése és feketelistázása érdekében, miközben az egyes feladateredmények optimalizálásával javítja a teljes feladatvégrehajtást.
+A spekulatív végrehajtás bizonyos számú ismétlődő feladatot indít el a lassan futó feladatkövető listájának észlelésére és megtagadására. Miközben javítja a teljes feladat végrehajtását az egyes feladateredmények optimalizálásával.
 
 Spekulatív végrehajtás nem kell bekapcsolni a hosszú ideig futó MapReduce feladatok nagy mennyiségű bemenettel.
 
 * A spekulatív végrehajtás engedélyezéséhez keresse meg a Hive **Configs** fület, majd állítsa a `hive.mapred.reduce.tasks.speculative.execution` paramétert true értékre. Az alapértelmezett érték a hamis.
 
-    ![Hive leképezve csökkenti a spekulatív végrehajtásfeladatait](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    !["Hive mapred csökkenti feladatok spekulatív végrehajtás"](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
 ### <a name="tune-dynamic-partitions"></a>Dinamikus partíciók finomhangolása
 
-Hive lehetővé teszi a dinamikus partíciók létrehozása, amikor rekordok at egy táblába, anélkül, hogy minden egyes partíciót. Ez egy hatékony funkció, bár ez azt eredményezheti, hogy a létrehozása nagy számú partíciók és a nagy számú fájlokat minden partíciót.
+Hive lehetővé teszi a dinamikus partíciók létrehozása, amikor rekordok at egy táblába, anélkül, hogy minden partíciót. Ez a képesség egy erős funkció. Bár ez azt eredményezheti, hogy a partíciók nagy száma. És a nagy számú fájlt minden partíciót.
 
 1. Ahhoz, hogy a Hive `hive.exec.dynamic.partition` dinamikus partíciókat, a paraméter értékének igaznak kell lennie (az alapértelmezett).
 
-1. Módosítsa a dinamikus partíciós módot *szigorúra.* Szigorú módban legalább egy partíciónak statikusnak kell lennie. Ez megakadályozza, hogy a WHERE záradékban a partíciószűrő nélküli lekérdezések, azaz a *szigorúak* megakadályozzák az összes partíciót átkelő lekérdezéseket. Nyissa meg a Hive **Configs** `hive.exec.dynamic.partition.mode` lapot, majd állítsa **a szigorúra.** Az alapértelmezett érték **nem szigorú.**
+1. Módosítsa a dinamikus partíciós módot *szigorúra.* Szigorú módban legalább egy partíciónak statikusnak kell lennie. Ez a beállítás megakadályozza, hogy a WHERE záradékban a partíciószűrő nélküli lekérdezések, azaz a *szigorúak* megakadályozzák az összes partíciót átkelő lekérdezéseket. Nyissa meg a Hive **Configs** `hive.exec.dynamic.partition.mode` lapot, majd állítsa **a szigorúra.** Az alapértelmezett érték **nem szigorú.**
 
 1. A létrehozandó dinamikus partíciók számának korlátozásához módosítsa a `hive.exec.max.dynamic.partitions` paramétert. Az alapértelmezett érték 5000.
 
@@ -244,7 +244,7 @@ Hive lehetővé teszi a dinamikus partíciók létrehozása, amikor rekordok at 
 
 ### <a name="enable-local-mode"></a>Helyi mód engedélyezése
 
-A helyi mód lehetővé teszi a Hive számára, hogy egyetlen gépen, vagy néha egyetlen folyamatban hajtsa végre egy feladat összes feladatát. Ez javítja a lekérdezési teljesítményt, ha a bemeneti adatok kicsik, és a lekérdezések feladatainak indítása a lekérdezések teljes végrehajtásának jelentős százalékát használja fel.
+A helyi mód lehetővé teszi a Hive számára, hogy egyetlen gépen végezze el a feladat összes feladatát. Vagy néha egyetlen folyamat. Ez a beállítás javítja a lekérdezési teljesítményt, ha a bemeneti adatok kicsik. És a lekérdezések indítási feladatok indításának többletterhelése a teljes lekérdezés-végrehajtás jelentős százalékát használja fel.
 
 A helyi mód engedélyezéséhez adja hozzá a `hive.exec.mode.local.auto` paramétert az Egyéni struktúrahely panelhez, ahogy azt a [köztes tömörítés engedélyezése](#enable-intermediate-compression) szakasz 3.
 
@@ -267,17 +267,17 @@ A következő szakaszok további Hive-val kapcsolatos optimalizálásokat írnak
 A Hive alapértelmezett illesztési típusa a *véletlen sorrendű illesztés*. A Hive speciális leképezőolvassa be a bemenetet, és egy köztes fájlhoz illesztési kulcsot/értékpárt bocsát ki. A Hadoop rendezi és összeolvasztja ezeket a párokat egy véletlen sorrendben. Ez a shuffle szakasz drága. A megfelelő illesztés kiválasztása az adatok alapján jelentősen javíthatja a teljesítményt.
 
 | Csatlakozás típusa | mikor | Hogyan | Hive-beállítások | Megjegyzések |
-| -- | -- | -- | -- | -- |
+| --- | --- | --- | --- | --- |
 | Véletlen sorrendű illesztés | <ul><li>Alapértelmezett választási lehetőség</li><li>Mindig működik</li></ul> | <ul><li>Olvasás az egyik tábla egy részéből</li><li>Vödrök és rendezés a Join billentyűn</li><li>Egy-egy gyűjtőt küld minden csökkentéshez</li><li>Az illesztés a Csökkentés oldalon történik</li></ul> | Nincs szükség jelentős Hive-beállításra | Minden alkalommal működik |
-| Térképes illesztés | <ul><li>Egy asztal elfér a memóriában</li></ul> | <ul><li>Kis méretű táblázat beolvasása a memóriakivonat-táblába</li><li>Adatfolyamok a nagy fájl egy részén</li><li>Minden rekordot egyesít a kivonattáblázatból</li><li>Csatlakozik a mapper egyedül</li></ul> | `hive.auto.confvert.join=true` | Nagyon gyors, de korlátozott |
-| Körgyűjtő rendezése | Ha mindkét tábla: <ul><li>Ugyanúgy rendezve</li><li>Bucketed ugyanaz</li><li>Csatlakozás a rendezett/gyűjtő oszlophoz</li></ul> | Minden folyamat: <ul><li>Minden táblából beolvas egy gyűjtőt</li><li>A legalacsonyabb értékű sort dolgozza fel</li></ul> | `hive.auto.convert.sortmerge.join=true` | Nagyon hatékony |
+| Térképes illesztés | <ul><li>Egy asztal elfér a memóriában</li></ul> | <ul><li>Kis méretű táblázat beolvasása a memóriakivonat-táblába</li><li>Adatfolyamok a nagy fájl egy részén</li><li>Minden rekordot egyesít a kivonattáblázatból</li><li>Csatlakozik a mapper egyedül</li></ul> | `hive.auto.confvert.join=true` | Gyors, de korlátozott |
+| Körgyűjtő rendezése | Ha mindkét tábla: <ul><li>Ugyanúgy rendezve</li><li>Bucketed ugyanaz</li><li>Csatlakozás a rendezett/gyűjtő oszlophoz</li></ul> | Minden folyamat: <ul><li>Minden táblából beolvas egy gyűjtőt</li><li>A legalacsonyabb értékű sort dolgozza fel</li></ul> | `hive.auto.convert.sortmerge.join=true` | Hatékony |
 
 #### <a name="execution-engine-optimizations"></a>Végrehajtási motor optimalizálása
 
 További javaslatok a Hive végrehajtási motor optimalizálásához:
 
 | Beállítás | Ajánlott | HDInsight alapértelmezett |
-| -- | -- | -- |
+| --- | --- | --- |
 | `hive.mapjoin.hybridgrace.hashtable` | Igaz = biztonságosabb, lassabb; false = gyorsabb | hamis |
 | `tez.am.resource.memory.mb` | 4 GB felső határ a legtöbb | Automatikus an-tuned |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
@@ -317,7 +317,7 @@ A Hive-hoz hasonlóan a helyi mód a feladatok felgyorsítására szolgál viszo
 
 ### <a name="copy-user-jar-cache"></a>Felhasználói tár gyorsítótárának másolása
 
-A Pig átmásolja az UDF-fájlok által igényelt JAR-fájlokat egy elosztott gyorsítótárba, hogy elérhetővé tegye őket a feladatcsomópontok számára. Ezek az üvegek nem változnak gyakran. Ha engedélyezve `pig.user.cache.enabled` van, a beállítás lehetővé teszi, hogy az üvegek gyorsítótárba kerüljenek, hogy újra felhasználhassák őket az ugyanazon felhasználó által futtatott feladatokhoz. Ez a munkateljesítmény kismértékű növekedését eredményezi.
+A Pig átmásolja az UDF-fájlok által igényelt JAR-fájlokat egy elosztott gyorsítótárba, hogy elérhetővé tegye őket a feladatcsomópontok számára. Ezek az üvegek nem változnak gyakran. Ha engedélyezve `pig.user.cache.enabled` van, a beállítás lehetővé teszi, hogy az üvegek gyorsítótárba kerüljenek, hogy újra felhasználhassák őket az ugyanazon felhasználó által futtatott feladatokhoz. Ez a beállítás a munka teljesítményének kismértékű növekedését eredményezi.
 
 1. Az engedélyezéshez állítsa igaz értékre. `pig.user.cache.enabled` Az alapértelmezett érték hamis.
 
@@ -327,7 +327,7 @@ A Pig átmásolja az UDF-fájlok által igényelt JAR-fájlokat egy elosztott gy
 
 A következő memóriabeállítások segíthetnek optimalizálni a Pig parancsfájlok teljesítményét.
 
-* `pig.cachedbag.memusage`: A táskához lefoglalt memória mennyisége. A táska a tuples gyűjteménye. A toldalék mezőrendezett, a mező pedig adat. Ha a táskában lévő adatok meghaladják a lefoglalt memóriát, akkor a lemezre kerül. Az alapértelmezett érték 0,2, ami a rendelkezésre álló memória 20 százalékát jelenti. Ez a memória meg oszlik az összes csomag egy alkalmazás.
+* `pig.cachedbag.memusage`: A táskának adott memória mennyisége. A táska a tuples gyűjteménye. A toldalék mezőrendezett, a mező pedig adat. Ha a táskában lévő adatok túlvannak az adott memórián, akkor a lemezre ömlenek. Az alapértelmezett érték 0,2, ami a rendelkezésre álló memória 20 százalékát jelenti. Ez a memória meg oszlik az összes csomag egy alkalmazás.
 
 * `pig.spill.size.threshold`: A kiömlési méretküszöbnél nagyobb zsákok (bájtban) kiömlenek a lemezre. Az alapértelmezett érték 5 MB.
 
@@ -337,15 +337,15 @@ A Pig ideiglenes fájlokat hoz létre a feladat végrehajtása során. Az ideigl
 
 * `pig.tmpfilecompression`: Ha igaz, ideiglenes fájltömörítést tesz lehetővé. Az alapértelmezett érték a hamis.
 
-* `pig.tmpfilecompression.codec`: Az ideiglenes fájlok tömörítéséhez használt tömörítő kodek. Az ajánlott tömörítési kodekek [az LZO](https://www.oberhumer.com/opensource/lzo/) és a Snappy az alacsonyabb CPU-kihasználtság érdekében.
+* `pig.tmpfilecompression.codec`: Az ideiglenes fájlok tömörítéséhez használt tömörítő kodek. Az ajánlott tömörítési kodekek [lzo](https://www.oberhumer.com/opensource/lzo/) és snappy az alacsonyabb CPU-használat.
 
 ### <a name="enable-split-combining"></a>Felosztásegyesítés engedélyezése
 
-Ha engedélyezve van, a kis fájlok kevesebb leképezési feladathoz lesznek kombinálva. Ez javítja a sok kis fájllal rendelkező feladatok hatékonyságát. Az engedélyezéshez állítsa igaz értékre. `pig.noSplitCombination` Az alapértelmezett érték a hamis.
+Ha engedélyezve van, a kis fájlok kevesebb leképezési feladathoz lesznek kombinálva. Ez a beállítás javítja a sok kis fájllal rendelkező feladatok hatékonyságát. Az engedélyezéshez állítsa igaz értékre. `pig.noSplitCombination` Az alapértelmezett érték a hamis.
 
 ### <a name="tune-mappers"></a>Mappers hangolása
 
-A leképezők számát a tulajdonság módosításával `pig.maxCombinedSplitSize`lehet szabályozni. Ez határozza meg az egyetlen leképezési feladat által feldolgozandó adatok méretét. Az alapértelmezett érték a fájlrendszer alapértelmezett blokkmérete. Ennek az értéknek a növelésével csökken a leképező feladatok száma.
+A leképezők számát a tulajdonság módosításával `pig.maxCombinedSplitSize`lehet szabályozni. Ez a tulajdonság az egyetlen leképezési feladat által feldolgozandó adatok méretét adja meg. Az alapértelmezett érték a fájlrendszer alapértelmezett blokkmérete. Ennek az értéknek a növelésével kevesebb leképező feladat jelenik meg.
 
 ### <a name="tune-reducers"></a>Hangzatos hangzatos
 
@@ -357,13 +357,13 @@ A szűkítők számát a paraméter `pig.exec.reducers.bytes.per.reducer`alapjá
 
 ### <a name="set-hbase_heapsize"></a>HBASE_HEAPSIZE beállítása
 
-A HBase halommemória-méret a megabájtban *régiónként* és *főkiszolgálókonként* használandó halommemória maximális mennyiségét adja meg. Az alapértelmezett érték 1000 MB. Ezt a fürt munkaterheléséhez kell hangolni.
+A HBase halommemória-méret a megabájtban *régiónként* és *főkiszolgálókonként* használandó halommemória maximális mennyiségét adja meg. Az alapértelmezett érték 1000 MB. Ezt az értéket a fürt munkaterheléséhez kell hangolni.
 
 1. A módosításhoz keresse meg a HBase Konfigurációs lap **Speciális HBase-env** ablaktábláját, és keresse meg a **Configs** `HBASE_HEAPSIZE` beállítást.
 
 1. Módosítsa az alapértelmezett értéket 5000 MB-ra.
 
-    ![Apache Ambari HBase memóriahalom](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
+    !['Apache Ambari HBase memóriahalomlerakás'](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
 
 ### <a name="optimize-read-heavy-workloads"></a>Az olvasási nagy terhelésű munkaterhelések optimalizálása
 
@@ -381,7 +381,7 @@ A blokkgyorsítótár az olvasási gyorsítótár. A méretet a `hfile.block.cac
 
 #### <a name="memstore-size"></a>Memstore mérete
 
-Az összes szerkesztés a memóriapufferben, az úgynevezett *Memstore-ban*tárolódik. Ez növeli a lemezre egyetlen műveletben írható adatok teljes mennyiségét, és felgyorsítja a legutóbbi szerkesztésekhez való későbbi hozzáférést. A Memstore méretét a következő két paraméter határozza meg:
+Az összes szerkesztés a memóriapufferben, az úgynevezett *Memstore-ban*tárolódik. Ez a puffer növeli a lemezre egyetlen műveletben írható adatok teljes mennyiségét. Emellett felgyorsítja a hozzáférést a legutóbbi szerkesztésekhez. A Memstore méretét a következő két paraméter határozza meg:
 
 * `hbase.regionserver.global.memstore.UpperLimit`: A Memstore kombinált régiókiszolgáló maximális százalékos arányát határozza meg.
 
@@ -391,7 +391,7 @@ A véletlenszerű olvasásra való optimalizáláshoz csökkentheti a Memstore f
 
 #### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>A lemezről történő beolvasáskor beolvasott sorok száma
 
-A `hbase.client.scanner.caching` beállítás határozza meg a lemezről `next` beolvasott sorok számát, amikor a metódust képolvasón hívják meg.  Az alapértelmezett érték 100. Minél nagyobb a szám, annál kevesebb távoli hívás érkezett az ügyféltől a régiókiszolgálóra, ami gyorsabb vizsgálatokat eredményez. Azonban ez is növeli a memória nyomást az ügyfél.
+A `hbase.client.scanner.caching` beállítás határozza meg a lemezről `next` beolvasott sorok számát, amikor a metódust képolvasón hívják meg.  Az alapértelmezett érték 100. Minél nagyobb a szám, annál kevesebb távoli hívás érkezett az ügyféltől a régiókiszolgálóra, ami gyorsabb vizsgálatokat eredményez. Ez a beállítás azonban növeli az ügyfélre nehezedő memórianyomást is.
 
 ![Apache HBase lekért sorok száma](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
@@ -406,7 +406,7 @@ A következő konfigurációk fontosak az írási nehéz számítási feladatok 
 
 A HBase az adatokat belső fájlformátumban, *hfile formátumban*tárolja. A `hbase.hregion.max.filesize` tulajdonság egy régió egyetlen HFile fájljának méretét határozza meg.  Egy régió két régióra van felosztva, ha egy régió összes HFiles fájljának összege nagyobb, mint ez a beállítás.
 
-![Apache HBase HRegion maximális fájlméret](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
+!['Apache HBase HRegion maximális fájlméret'](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
 
 Minél nagyobb a területfájl mérete, annál kisebb a felosztások száma. A fájlméret növelésével meghatározhatja a maximális írási teljesítményt eredményező értéket.
 
@@ -428,7 +428,7 @@ A Memstore méretét a `hbase.regionserver.global.memstore.UpperLimit` `hbase.re
 
 ### <a name="set-memstore-local-allocation-buffer"></a>A Memstore helyi foglalási puffere
 
-A Memstore helyi foglalási pufferének használatát a tulajdonság `hbase.hregion.memstore.mslab.enabled`határozza meg. Ha engedélyezve van (igaz), ez megakadályozza a halommemória töredezettségét a nehéz írási művelet során. Az alapértelmezett érték az igaz.
+A Memstore helyi foglalási pufferének használatát a tulajdonság `hbase.hregion.memstore.mslab.enabled`határozza meg. Ha engedélyezve van (igaz), ez a beállítás megakadályozza a halommemória töredezettségét a nehéz írási művelet során. Az alapértelmezett érték az igaz.
 
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 

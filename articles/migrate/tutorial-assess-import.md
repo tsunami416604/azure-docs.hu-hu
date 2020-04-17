@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 9e6b451901da00243c458c06d51ba19fb64c0fdc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115055"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530453"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Kiszolgálók felmérése importált adatok használatával
 
@@ -68,12 +68,12 @@ Az Azure-fióknak engedélyekre van szüksége egy Azure Migrate projekt létreh
 5. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
 6. A **PROJEKT RÉSZLETEI területén**adja meg a projekt nevét és azt a földrajzi elhelyezkedést, amelyben a projektet létre kívánja hozni. További információk:
 
-    - Tekintse át [a támogatott földrajzi helyeket.](migrate-support-matrix.md#supported-geographies) A projekt helye csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál.
+    - Tekintse át a támogatott földrajzi köz- [és](migrate-support-matrix.md#supported-geographies-public-cloud) [kormányzati felhőket.](migrate-support-matrix.md#supported-geographies-azure-government)
     - Migrálás futtatása során bármilyen célrégiót választhat.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-import/migrate-project.png)
 
-7. Válassza a **Tovább lehetőséget.**
+7. Kattintson a **Tovább** gombra.
 8. Az **Assessment (Felmérés kiválasztása) eszközben**válassza az **Azure Migrate: Server Assessment** > **Next**lehetőséget.
 
     ![Azure Áttelepítési felmérés létrehozása](./media/tutorial-assess-import/assessment-tool.png)

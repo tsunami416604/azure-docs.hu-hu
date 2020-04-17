@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 790e2a148385f9da54df82f597c2ca52124dc2be
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397997"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529849"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlapfelismerő modell betanítása címkékkel a mintacímkéző eszközzel
 
@@ -49,7 +49,7 @@ A Docker-motorsegítségével futtathatja a mintacímkéző eszközt. Kövesse a
 
    Telepítse a Docker-t a gépére az operációs rendszerhez megfelelő utasításokat követve: 
    * [Windows](https://docs.docker.com/docker-for-windows/)
-   * [Macos](https://docs.docker.com/docker-for-mac/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
 1. A mintacímkéző eszköz `docker pull` tárolójának beszereznie a paranccsal.
@@ -104,7 +104,7 @@ Töltse ki a mezőket a következő értékekkel:
 A mintacímkéző eszközben a projektek a konfigurációkat és a beállításokat tárolják. Hozzon létre egy új projektet, és töltse ki a mezőket a következő értékekkel:
 
 * **Megjelenítendő név** - a projekt megjelenítendő neve
-* **Biztonsági jogkivonat** – Egyes projektbeállítások tartalmazhatnak bizalmas értékeket, például API-kulcsokat vagy más megosztott titkos kulcsokat. Minden projekt létrehoz egy biztonsági jogkivonatot, amely a bizalmas projektbeállítások titkosítására/visszafejtésére használható. A biztonsági jogkivonatokat az Alkalmazásbeállítások ban találhatja meg, ha a bal oldali navigációs sáv alsó sarkában lévő fogaskerék ikonra kattint.
+* **Biztonsági jogkivonat** – Egyes projektbeállítások tartalmazhatnak bizalmas értékeket, például API-kulcsokat vagy más megosztott titkos kulcsokat. Minden projekt létrehoz egy biztonsági jogkivonatot, amely a bizalmas projektbeállítások titkosítására/visszafejtésére használható. A biztonsági jogkivonatokat az Alkalmazás beállítások ban találhatja meg, ha a bal oldali navigációs sáv alján található fogaskerék ikonra kattint.
 * **Forráskapcsolat** – Az előző lépésben létrehozott Azure Blob Storage-kapcsolat, amelyet ehhez a projekthez szeretne használni.
 * **Mappa elérési útja** – Nem kötelező – Ha a forrásűrlapok a blobtároló egyik mappájában találhatók, itt adja meg a mappa nevét
 * **Form Recognizer Service Uri** – Az űrlapfelismerő végpont URL-címe.
@@ -130,9 +130,9 @@ Kattintson **az OCR futtatása gombra** a bal oldali ablaktáblában lévő öss
 Ezután címkéket (címkéket) hoz létre, és alkalmazza őket a modell által felismert szövegelemekre.
 
 1. Először a címkék szerkesztőablakában hozza létre az azonosítandó címkéket.
-  1. Ide **+** kattintva új címkét hozhat létre.
-  1. Írja be a címke nevét.
-  1. A címke mentéséhez nyomja le az Enter billentyűt.
+   1. Ide **+** kattintva új címkét hozhat létre.
+   1. Írja be a címke nevét.
+   1. A címke mentéséhez nyomja le az Enter billentyűt.
 1. A főszerkesztőben kattintással és húzással jelöljön ki egy vagy több szót a kiemelt szövegelemekközül.
 1. Kattintson az alkalmazni kívánt címkére, vagy nyomja meg a megfelelő billentyűzetbillentyűt. A számkulcsok az első 10 címke gyorsbillentyűjeként vannak hozzárendelve. A címkéket átrendezheti a címkeszerkesztő ablaktáblában található fel és le nyíl ikonnal.
     > [!Tip]
@@ -144,15 +144,30 @@ Ezután címkéket (címkéket) hoz létre, és alkalmazza őket a modell által
     > * Ne adjon meg csak az&mdash;értékeket a címkézett mezőkben.
     > * A táblaadatokat a rendszer automatikusan észleli, és a végső kimeneti JSON-fájlban is elérhetővé teszi. Ha azonban a modell nem észleli az összes táblaadatot, manuálisan is címkézheti ezeket a mezőket. A táblázat minden celláját más címkével címkézze fel. Ha az űrlapokon különböző számú sorú táblák vannak, győződjön meg arról, hogy legalább egy űrlapot a lehető legnagyobb táblával címkéz.
 
-
-A fenti lépéseket követve címkézze fel az öt űrlapot, majd lépjen tovább a következő lépésre.
-
 ![A mintacímkéző eszköz főszerkesztőablaka](../media/label-tool/main-editor.png)
 
+A fenti lépéseket követve legalább öt űrlapot címkézhet fel.
+
+### <a name="specify-tag-value-types"></a>Címkeérték-típusok megadása
+
+Szükség esetén beállíthatja az egyes címkék várt adattípusát. Nyissa meg a címkétől jobbra lévő helyi menüt, és válasszon ki egy típust a menüből. Ez a funkció lehetővé teszi, hogy az észlelési algoritmus bizonyos feltételezéseket, amelyek javítják a szöveg-észlelési pontosságot. Azt is biztosítja, hogy az észlelt értékek et a végső JSON-kimenetben szabványos formátumban adja vissza. 
+
+> [!div class="mx-imgBorder"]
+> ![Értéktípus-kijelölés mintacímkéző eszközzel](../media/whats-new/formre-value-type.png)
+
+A következő értéktípusok és változatok jelenleg támogatottak:
+* `string`
+    * alapértelmezett, `no-whitespaces`,`alphanumeric`
+* `number`
+    * Alapértelmezett`currency`
+* `date` 
+    * alapértelmezett, `dmy` `mdy`, ,`ymd`
+* `time`
+* `integer`
 
 ## <a name="train-a-custom-model"></a>Egyéni modell betanítása
 
-A vonat ikonra (a vonatautóra) kattintva nyissa meg a Betanítás lapot a bal oldali ablaktáblán. Ezután kattintson a **Vonat** gombra a modell betanításának megkezdéséhez. A betanítási folyamat befejezése után a következő információk jelennek meg:
+A bal oldali ablaktábla Vonat ikonjára kattintva nyissa meg a Képzés lapot. Ezután kattintson a **Vonat** gombra a modell betanításának megkezdéséhez. A betanítási folyamat befejezése után a következő információk jelennek meg:
 
 * **Modellazonosító** – a létrehozott és betanított modell azonosítója. Minden betanítási hívás létrehoz egy új modellt saját azonosítóval. Másolja ezt a karakterláncot biztonságos helyre; szüksége lesz rá, ha előrejelzési hívásokat szeretne tenni a REST API-n keresztül.
 * **Átlagos pontosság** – A modell átlagos pontossága. A modell pontosságát további űrlapok címkézésével és új modell létrehozásához újra betanítással javíthatja. Javasoljuk, hogy öt űrlap címkézésével és szükség szerint további űrlapok hozzáadásával kezdje.
@@ -167,7 +182,7 @@ A betanítás befejezése után vizsgálja meg az **Átlagos pontosság érték�
 
 ## <a name="analyze-a-form"></a>Űrlap elemzése
 
-Kattintson a modell teszteléséhez kattintson a bal oldali Előrejelzés (téglalapok) ikonra. Töltsön fel egy olyan űrlapdokumentumot, amelyet nem használt a betanítási folyamat során. Ezután kattintson a jobb oldali **Előrejelzés** gombra az űrlap kulcs-/érték-előrejelzésének leéséhez. Az eszköz címkéket alkalmaz a határolódobozokban, és minden címke megbízhatóságát jelenti.
+Kattintson a Tippelés (villanykörte) ikonra a bal oldalon a modell teszteléséhez. Töltsön fel egy olyan űrlapdokumentumot, amelyet nem használt a betanítási folyamat során. Ezután kattintson a jobb oldali **Előrejelzés** gombra az űrlap kulcs-/érték-előrejelzésének leéséhez. Az eszköz címkéket alkalmaz a határolódobozokban, és minden címke megbízhatóságát jelenti.
 
 > [!TIP]
 > Az Elemzés API-t rest-hívással is futtathatja. Ennek módjáról a [Vonat címkék python használatával](./python-labeled-data.md).

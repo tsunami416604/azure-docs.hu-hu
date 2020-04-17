@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 757367e2b9773908b81ad35615a23b1b5c67aa3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c822e8af076f74e1bccc46b7a71717d9631de0a1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80116942"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461812"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>Az Azure régiói egy geopolitikai régióban
 
@@ -42,5 +42,5 @@ A helyek közötti VPN-kapcsolat és a virtuális WAN-architektúra a következ�
 |Geopolitikai régió | Azure-régiók|
 |---|---|
 | Az Egyesült Államok kormányának felhője | US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia, US DoD – középső régió, US DoD – keleti régió |
-| Kelet-Kína | Kelet-Kína, Kelet-Kína2|
-| Észak-Kína | Észak-Kína, Észak-Kína2 |
+| Kelet-Kína | Kína Kelet2|
+| Észak-Kína | Kína North2 |

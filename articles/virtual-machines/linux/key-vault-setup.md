@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: 59b11d22f054a98fe176e4393843606bd01cc872
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 9ae486ee522982b116af58cfb7cbfbca66a7ef4a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879479"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458743"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>A Key Vault beállítása virtuális gépekhez az Azure CLI-vel
 
-Az Azure Resource Manager-veremben a titkos kulcsok/tanúsítványok a Key Vault által biztosított erőforrásokként vannak modellezve. Ha többet szeretne megtudni az Azure Key Vaultról, olvassa el [a Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md) Ahhoz, hogy a Key Vault használható legyen az Azure Resource Manager virtuális gépekkel, a Key Vault *EnabledForDeployment* tulajdonságát igaz értékre kell állítani. Ez a cikk bemutatja, hogyan állíthatja be a Key Vault azure-beli virtuális gépekkel (VM-ekkel) való használatra az Azure CLI használatával. 
+Az Azure Resource Manager-veremben a titkos kulcsok/tanúsítványok a Key Vault által biztosított erőforrásokként vannak modellezve. Ha többet szeretne megtudni az Azure Key Vaultról, olvassa el [a Mi az Azure Key Vault?](../../key-vault/general/overview.md) Ahhoz, hogy a Key Vault használható legyen az Azure Resource Manager virtuális gépekkel, a Key Vault *EnabledForDeployment* tulajdonságát igaz értékre kell állítani. Ez a cikk bemutatja, hogyan állíthatja be a Key Vault azure-beli virtuális gépekkel (VM-ekkel) való használatra az Azure CLI használatával. 
 
 A lépések végrehajtásához a legújabb [Azure CLI-t](/cli/azure/install-az-cli2) kell telepítenie, és be kell jelentkeznie egy Azure-fiókba [az a bejelentkezéssel.](/cli/azure/reference-index)
 

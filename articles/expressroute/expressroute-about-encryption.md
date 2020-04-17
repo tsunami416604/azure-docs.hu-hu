@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75437047"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461463"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute titkosítás
  
 Az ExpressRoute néhány titkosítási technológiát támogat a hálózat és a Microsoft hálózata közötti adatátvitel titkosságának és integritásának biztosítása érdekében.
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>Pont-pont titkosítás MACsec GYIK-vel
-A MACsec egy [IEEE szabvány.](https://1.ieee802.org/security/802-1ae/) A Media Access Control (MAC) vagy a Network Layer 2 szintjén titkosítja az adatokat. A MACsec segítségével titkosíthatja a hálózati eszközök és a Microsoft hálózati eszközei közötti fizikai kapcsolatokat, amikor [az ExpressRoute Direct](expressroute-erdirect-about.md)en keresztül csatlakozik a Microsofthoz. A MACsec alapértelmezés szerint le van tiltva az ExpressRoute Direct portokon. Saját MACsec-kulcsot hoz a titkosításhoz, és tárolja az [Azure Key Vaultban.](../key-vault/key-vault-overview.md) Ön dönti el, hogy mikor kell elforgatni a kulcsot. Lásd az alábbi gyIK-et.
+A MACsec egy [IEEE szabvány.](https://1.ieee802.org/security/802-1ae/) A Media Access Control (MAC) vagy a Network Layer 2 szintjén titkosítja az adatokat. A MACsec segítségével titkosíthatja a hálózati eszközök és a Microsoft hálózati eszközei közötti fizikai kapcsolatokat, amikor [az ExpressRoute Direct](expressroute-erdirect-about.md)en keresztül csatlakozik a Microsofthoz. A MACsec alapértelmezés szerint le van tiltva az ExpressRoute Direct portokon. Saját MACsec-kulcsot hoz a titkosításhoz, és tárolja az [Azure Key Vaultban.](../key-vault/general/overview.md) Ön dönti el, hogy mikor kell elforgatni a kulcsot. Lásd az alábbi gyIK-et.
 ### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>Engedélyezhetem a MACsec-et az ExpressRoute-szolgáltató által kiépített ExpressRoute-kapcsolaton?
 Nem. A MACsec titkosítja a fizikai kapcsolaton lévő összes forgalmat egy entitás (azaz ügyfél) tulajdonában lévő kulccsal. Ezért csak az ExpressRoute Directen érhető el.
 ### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>Titkosíthatom az ExpressRoute Direct-portok egyes ExpressRoute-áramköreit, és titkosítás nélkül hagyhatom más áramköröket ugyanazon a porton? 

@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Service Fabric-fürt biztonsági forgatóköny
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80753795"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461582"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>A Service Fabric fürtjének biztonsági forgatókönyvei
 
@@ -90,7 +90,7 @@ A fürt létrehozásakor állítsa be a rendszergazdai és a felhasználói ügy
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 tanúsítványok és Service Fabric
 
-Az X.509 digitális tanúsítványok általában az ügyfelek és kiszolgálók hitelesítésére szolgálnak. Az üzenetek titkosítására és digitális aláírására is használhatók. A Service Fabric X.509-es tanúsítványokat használ a fürt védelméhez és az alkalmazás biztonsági szolgáltatásainak biztosításához. Az X.509 digitális tanúsítványokról a [Tanúsítványok megtekintése](https://msdn.microsoft.com/library/ms731899.aspx)című témakörben talál további információt. A [Key Vault](../key-vault/key-vault-overview.md) segítségével kezelheti a Service Fabric-fürtök tanúsítványait az Azure-ban.
+Az X.509 digitális tanúsítványok általában az ügyfelek és kiszolgálók hitelesítésére szolgálnak. Az üzenetek titkosítására és digitális aláírására is használhatók. A Service Fabric X.509-es tanúsítványokat használ a fürt védelméhez és az alkalmazás biztonsági szolgáltatásainak biztosításához. Az X.509 digitális tanúsítványokról a [Tanúsítványok megtekintése](https://msdn.microsoft.com/library/ms731899.aspx)című témakörben talál további információt. A [Key Vault](../key-vault/general/overview.md) segítségével kezelheti a Service Fabric-fürtök tanúsítványait az Azure-ban.
 
 Néhány fontos dolog, hogy fontolja meg:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 82d8c8ca94f3d0f4289902ae40928ff507e2d1ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113288"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460664"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -63,9 +63,6 @@ A következő kiadási megjegyzések az Azure File Sync ügynök 10.0.0.0-s verz
 - A Storage Sync Service és/vagy a storage-fiók áthelyezése egy másik Azure Active Directory (AAD) bérlőbe
     - Az Azure File Sync mostantól támogatja a Storage Sync Service és/vagy a storage-fiók áthelyezését egy másik erőforráscsoportba, előfizetésbe vagy Az Azure AD-bérlőbe.
     
-- A kiértékelő eszköz mostantól azonosítja azokat a fájlokat vagy könyvtárakat, amelyek egy időszakkal végződnek
-    - A [Kiértékelés eszköz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) frissítve lett, hogy azonosítsa azokat a fájlokat vagy könyvtárakat, amelyek egy ponttal végződnek. Az időszakkal végződő fájlokat és könyvtárakat jelenleg nem támogatja az Azure File Sync. A [Kiértékelési eszköz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)frissített verziójának használatához telepítse az [Azure PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps)legújabb verzióját.
- 
 - Egyéb teljesítmény- és megbízhatósági fejlesztések
     - Az Azure-fájlmegosztás változásészlelése sikertelen lehet, ha a virtuális hálózat (VNET) és a tűzfalszabályok konfigurálva vannak a tárfiókban.
     - A visszahívással kapcsolatos csökkentett memóriafelhasználás. 

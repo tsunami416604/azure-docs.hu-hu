@@ -1,17 +1,17 @@
 ---
-title: PowerShell-minták
+title: PowerShell-példák
 description: Az Azure PowerShell-minták at a gyakori App Service-forgatókönyvek. Ismerje meg, hogyan automatizálhatja az App Service központi telepítési vagy felügyeleti feladatait.
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
-ms.openlocfilehash: f32db2a4dda0ceb69644b64a5c76155b448c5a28
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74687030"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532425"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>PowerShell-minták az Azure App Service-hez
 
@@ -27,7 +27,7 @@ Az alábbi táblázat az Azure PowerShell használatával készített PowerShell
 | [Alkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service-alkalmazást egy központi telepítési réshellyel az átmeneti kód módosításához. |
 |**Alkalmazás konfigurálása**||
 | [Egyéni tartomány hozzárendelése alkalmazáshoz](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service-alkalmazást, és hozzárendel egy egyéni tartománynevet. |
-| [Egyéni SSL-tanúsítvány kötése alkalmazáshoz](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service-alkalmazást, és hozzá köti az egyéni tartománynév SSL-tanúsítványát. |
+| [Egyéni TLS-/SSL-tanúsítvány kötése alkalmazáshoz](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service-alkalmazást, és hozzá köti az egyéni tartománynév TLS/SSL tanúsítványát. |
 |**Az alkalmazás méretezése**||
 | [Alkalmazás manuális méretezése](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service-alkalmazást, és két példányra méretezi azt. |
 | [Alkalmazás méretezése világszerte magas rendelkezésre állású architektúrával](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Két App Service-alkalmazást hoz létre két különböző földrajzi régióban, és elérhetővé teszi őket egyetlen végponton keresztül az Azure Traffic Manager használatával. |

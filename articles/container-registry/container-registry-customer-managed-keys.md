@@ -4,18 +4,18 @@ description: Ismerje meg az Azure-tároló beállításjegyzékének titkosítá
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: fe0736f83db2ba5b872d50bcf1262ca423de9f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5561998cf0b19698c8059a861a4014a171a7e7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498945"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461752"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>Titkosítás ügyfél által kezelt kulcsok használatával
 
 Ha lemezképeket és egyéb összetevőket tárol egy [Azure-tároló](../security/fundamentals/encryption-atrest.md#data-encryption-models)beállításjegyzékében, az Azure szolgáltatás által felügyelt kulcsokkal automatikusan titkosítja a beállításjegyzék tartalmát. Az alapértelmezett titkosítást kiegészítheti egy további titkosítási réteggel az Azure Key Vaultban létrehozott és felügyelt kulcs használatával. Ez a cikk bemutatja az Azure CLI és az Azure Portal lépéseit.
 
-Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítást az [Azure Key Vaultszolgáltatással](../key-vault/key-vault-overview.md)való integráció támogatja. Létrehozhat saját titkosítási kulcsokat, és tárolhatja őket egy key vaultban, vagy használhatja az Azure Key Vault API-kat titkosítási kulcsok létrehozásához. Az Azure Key Vault segítségével is naplózhatja a kulcshasználatot.
+Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítást az [Azure Key Vaultszolgáltatással](../key-vault/general/overview.md)való integráció támogatja. Létrehozhat saját titkosítási kulcsokat, és tárolhatja őket egy key vaultban, vagy használhatja az Azure Key Vault API-kat titkosítási kulcsok létrehozásához. Az Azure Key Vault segítségével is naplózhatja a kulcshasználatot.
 
 Ez a funkció a **prémium szintű** tároló beállításjegyzék-szolgáltatásszintjén érhető el. A beállításjegyzék-szolgáltatási szintekről és -korlátozásokról az [Azure Container Registry ska](container-registry-skus.md)című témakörben talál további információt.
 
@@ -176,7 +176,7 @@ Vegye figyelembe a felügyelt identitás **erőforrásnevét.** Erre a névre k�
 
 ### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-A kulcstartó létrehozásának lépéseiért olvassa el [a Rövid útmutató: Titkos kulcs beállítása és beolvasása az Azure Key Vaultból az Azure Portalon keresztül című témakört.](../key-vault/quick-create-portal.md)
+A kulcstartó létrehozásának lépéseiért olvassa el [a Rövid útmutató: Titkos kulcs beállítása és beolvasása az Azure Key Vaultból az Azure Portalon keresztül című témakört.](../key-vault/secrets/quick-create-portal.md)
 
 Amikor egy ügyfél által felügyelt kulcshoz hoz létre kulcstartót, az Alapok lapon a következő védelmi beállításokat kell **engedélyeznie:** **Ideiglenes törlés** és **Védelem kiürítése**. Ezek a beállítások segítenek megakadályozni a véletlen kulcs- vagy kulcstartó-törlések által okozott adatvesztést.
 
@@ -378,7 +378,7 @@ az acr encryption rotatekey \
 
 ## <a name="revoke-key"></a>Kulcs visszavonása
 
-Vonja vissza az ügyfél által felügyelt titkosítási kulcsot a kulcstartó hozzáférési szabályzatának módosításával vagy a kulcs törlésével. Például az [az keyvault delete-policy][az-keyvault-delete-policy] paranccsal módosíthatja a beállításjegyzék által használt felügyelt identitás hozzáférési házirendjét. Példa:
+Vonja vissza az ügyfél által felügyelt titkosítási kulcsot a kulcstartó hozzáférési szabályzatának módosításával vagy a kulcs törlésével. Például az [az keyvault delete-policy][az-keyvault-delete-policy] paranccsal módosíthatja a beállításjegyzék által használt felügyelt identitás hozzáférési házirendjét. Például:
 
 ```azurecli
 az keyvault delete-policy \
@@ -392,7 +392,7 @@ A kulcs visszavonása hatékonyan blokkolja az összes rendszerleíró adathoz v
 ## <a name="next-steps"></a>További lépések
 
 * További információ [az Azure-beli titkosításról.](../security/fundamentals/encryption-atrest.md)
-* További információ a hozzáférési szabályzatokról és a [kulcstartóhoz való hozzáférés biztonságossá téválásához.](../key-vault/key-vault-secure-your-key-vault.md)
+* További információ a hozzáférési szabályzatokról és a [kulcstartóhoz való hozzáférés biztonságossá téválásához.](../key-vault/general/secure-your-key-vault.md)
 * Ha visszajelzést szeretne adni az Azure Container Registry ügyfél által felügyelt kulcsairól, keresse fel az [ACR GitHub-webhelyet.](https://aka.ms/acr/issues)
 
 

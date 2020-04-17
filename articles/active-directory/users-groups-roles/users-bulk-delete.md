@@ -1,11 +1,11 @@
 ---
-title: Felhasználók tömeges törlése (előzetes verzió) az Azure Active Directory portálon | Microsoft dokumentumok
+title: Felhasználók tömeges törlése az Azure Active Directory portálon | Microsoft dokumentumok
 description: Felhasználók törlése tömegesen az Azure Active Directory Azure Felügyeleti központjában
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/15/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c47887c12c8bf9be7a0c5b11dfb3f099965cb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: beb8b4f35dc5f02e59cced05a6bcfc235d42f996
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174382"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532813"
 ---
-# <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Felhasználók tömeges törlése (előzetes verzió) az Azure Active Directoryban
+# <a name="bulk-delete-users-in-azure-active-directory"></a>Felhasználók tömeges törlése az Azure Active Directoryban
 
 Az Azure Active Directory (Azure AD) portál használatával eltávolíthatja a tagok nagy számú egy csoport segítségével egy vesszővel tagolt értékek (CSV) fájl tömeges felhasználók tömeges törlése.
 
@@ -36,7 +36,7 @@ Az Azure Active Directory (Azure AD) portál használatával eltávolíthatja a 
 
    ![A CSV-fájl tartalmazza a törölni kívánt felhasználók neveit és azonosítóit](./media/users-bulk-delete/delete-csv-file.png)
 
-1. A **Tömeges törlés felhasználó (Előnézet)** lap **A csv-fájl feltöltése**területén keresse meg a fájlt. Amikor kijelöli a fájlt, és a Küldés gombra kattint, elindul a CSV-fájl érvényesítése.
+1. A **Tömeges törlés felhasználói** lap **Csv-fájl feltöltése**területén keresse meg a fájlt. Amikor kijelöli a fájlt, és a Küldés gombra kattint, elindul a CSV-fájl érvényesítése.
 1. A fájl tartalmának ellenőrzése után a **fájl feltöltése sikeresen megjelenik.** Ha vannak hibák, ki kell javítania azokat, mielőtt elküldheti a feladatot.
 1. Amikor a fájl megfelel az ellenőrzésen, válassza **a Küldés** lehetőséget az Azure tömeges műveletének elindításához, amely törli a felhasználókat.
 1. Amikor a törlési művelet befejeződik, megjelenik egy értesítés arról, hogy a tömeges művelet sikeres volt.
@@ -45,9 +45,9 @@ Ha vannak hibák, letöltheti és megtekintheti az eredményfájlt a **Tömeges 
 
 ## <a name="check-status"></a>Állapot ellenőrzése
 
-Az összes függőben lévő tömeges kérelem állapotát a **Tömeges művelet eredményei (előnézet)** lapon tekintheti meg.
+Az összes függőben lévő tömeges kérelem állapotát a **Tömeges művelet eredménylapján láthatja.**
 
-   ![Feltöltési állapot ellenőrzése a Tömeges műveletek eredménylapján](./media/users-bulk-delete/bulk-center.png)
+   [![](media/users-bulk-delete/bulk-center.png "Check delete status in the Bulk Operations Results page")](media/users-bulk-delete/bulk-center.png#lightbox)
 
 Ezután ellenőrizheti, hogy a törölt felhasználók léteznek-e az Azure AD-szervezetben az Azure Portalon vagy a PowerShell használatával.
 

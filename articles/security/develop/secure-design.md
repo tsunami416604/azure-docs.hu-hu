@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299414"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461718"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
 Ebben a cikkben bemutatjuk a biztonsági tevékenységek és vezérlők, hogy fontolja meg, amikor alkalmazásokat tervez a felhőben. A [microsofti biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) követelményei és tervezési fázisai során figyelembe veendő biztonsági kérdések kel és koncepciókkal kapcsolatos képzési segédanyagokról van szó. A cél az, hogy segítsen meghatározni a tevékenységek et és az Azure-szolgáltatásokat, amelyek segítségével egy biztonságosabb alkalmazás tervezéséhez használható.
@@ -242,7 +242,7 @@ Az ilyen típusú támadások elleni védekezés legjobb módja, ha olyasmit ké
 
 A kulcsok és a hitelesítő adatok elvesztése gyakori probléma. Az egyetlen dolog, ami rosszabb, mint elveszíteni a kulcsokat és a hitelesítő adatokat, az az, hogy egy jogosulatlan fél hozzáfér hozzájuk. A támadók kihasználhatják az automatikus és manuális technikákat a kódtárolókban, például a GitHubban tárolt kulcsok és titkos kulcsok megkereséséhez. Ne helyezzen kulcsokat és titkos kulcsokat ezekbe a nyilvános kódtárolókba vagy bármely más kiszolgálóra.
 
-A kulcsokat, a tanúsítványokat, a titkos kulcsokat és a kapcsolati karakterláncokat mindig kulcskezelési megoldásba helyezze. Használhat egy központi megoldást, amelyben a kulcsok és a titkos kulcsok hardveres biztonsági modulokban (HSM) tárolódnak. Az Azure hsm-et biztosít a felhőben az [Azure Key Vault](../../key-vault/key-vault-overview.md)segítségével.
+A kulcsokat, a tanúsítványokat, a titkos kulcsokat és a kapcsolati karakterláncokat mindig kulcskezelési megoldásba helyezze. Használhat egy központi megoldást, amelyben a kulcsok és a titkos kulcsok hardveres biztonsági modulokban (HSM) tárolódnak. Az Azure hsm-et biztosít a felhőben az [Azure Key Vault](../../key-vault/general/overview.md)segítségével.
 
 Key Vault egy *titkos tároló:* ez egy központi felhőszolgáltatás az alkalmazás titokainak tárolására. A Key Vault biztonságban tartja a bizalmas adatokat azáltal, hogy egyetlen központi helyen tartja az alkalmazástitkos kulcsokat, és biztonságos hozzáférést, engedélyvezérlést és hozzáférés-naplózást biztosít.
 
@@ -273,11 +273,11 @@ Ha az adatok egy adatbázisban vannak tárolva, vagy ha azok oda-vissza mozognak
 
 Vannak dolgok, amelyeket soha nem szabad kódolni a szoftveredben. Néhány példa állomásnevek vagy IP-címek, URL-címek, e-mail címek, felhasználónevek, jelszavak, tárfiók kulcsok és egyéb kriptográfiai kulcsok. Fontolja meg a végrehajtási követelményeket arról, hogy mit lehet vagy nem lehet kódolni a kódban, beleértve a kód megjegyzés szakaszait is.
 
-Amikor megjegyzéseket tesz a kódba, győződjön meg arról, hogy nem ment semmilyen bizalmas adatot. Ez magában foglalja az e-mail címét, a jelszavakat, a kapcsolati karakterláncokat, az alkalmazással kapcsolatos olyan információkat, amelyeket csak a szervezet en belül ismerne, és minden mást, amely előnyt biztosíthat a támadónak az alkalmazás vagy szervezet megtámadásában. .
+Amikor megjegyzéseket tesz a kódba, győződjön meg arról, hogy nem ment semmilyen bizalmas adatot. Ez magában foglalja az e-mail címét, a jelszavakat, a kapcsolati karakterláncokat, az alkalmazással kapcsolatos olyan információkat, amelyeket csak a szervezet en kívül ismer, és minden mást, amely előnyt biztosíthat a támadónak az alkalmazás vagy szervezet megtámadásában.
 
 Alapvetően tegyük fel, hogy a fejlesztési projektben minden köztudott lesz, amikor telepítik. Kerülje a bizalmas adatok belefoglalását a projektbe.
 
-Korábban az [Azure Key Vaultot](../../key-vault/key-vault-overview.md)vitattuk meg. A Key Vault segítségével titkos kulcsokat, például kulcsokat és jelszavakat tárolhat ahelyett, hogy kódolnák őket, titkos kulcsokat és jelszavakat tárolhat. Ha a Key Vault ot az Azure-erőforrások felügyelt identitásaival együtt használja, az Azure-webalkalmazás könnyedén és biztonságosan hozzáférhet a titkos konfigurációs értékekhez anélkül, hogy a forrásvezérlőben vagy konfigurációban titkos kulcsokat tárolna. További információ: [Titkos kulcsok kezelése a kiszolgálóalkalmazásokban az Azure Key Vault használatával](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)című témakörben olvashat.
+Korábban az [Azure Key Vaultot](../../key-vault/general/overview.md)vitattuk meg. A Key Vault segítségével titkos kulcsokat, például kulcsokat és jelszavakat tárolhat ahelyett, hogy kódolnák őket, titkos kulcsokat és jelszavakat tárolhat. Ha a Key Vault ot az Azure-erőforrások felügyelt identitásaival együtt használja, az Azure-webalkalmazás könnyedén és biztonságosan hozzáférhet a titkos konfigurációs értékekhez anélkül, hogy a forrásvezérlőben vagy konfigurációban titkos kulcsokat tárolna. További információ: [Titkos kulcsok kezelése a kiszolgálóalkalmazásokban az Azure Key Vault használatával](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)című témakörben olvashat.
 
 ### <a name="implement-fail-safe-measures"></a>Hibabiztos intézkedések végrehajtása
 

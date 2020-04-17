@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587957"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461633"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Az Azure Sentinel ügyféláltal felügyelt kulcsának beállítása
 
@@ -60,11 +60,11 @@ A CMK kiépítéséhez kövesse az alábbi lépéseket: 
     > [!NOTE]
     >  Az Azure Key Vault kell konfigurálni, mint helyreállítható a kulcs és a hozzáférés védelme érdekében.
 
-1.  [Helyreállítási beállítások bekapcsolása:](../key-vault/key-vault-best-practices.md#turn-on-recovery-options)
+1.  [Helyreállítási beállítások bekapcsolása:](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   Győződjön meg arról, hogy a [Lágy törlés](../key-vault/key-vault-ovw-soft-delete.md) be van kapcsolva.
+    -   Győződjön meg arról, hogy a [Lágy törlés](../key-vault/general/overview-soft-delete.md) be van kapcsolva.
 
-    -   Kapcsolja be a [Védelem kiürítése](../key-vault/key-vault-ovw-soft-delete.md#purge-protection) parancsot a titkosfájl/trezor kényszerített törlésének elleni védelem érdekében, még a helyreállítható törlés után is.
+    -   Kapcsolja be a [Védelem kiürítése](../key-vault/general/overview-soft-delete.md#purge-protection) parancsot a titkosfájl/trezor kényszerített törlésének elleni védelem érdekében, még a helyreállítható törlés után is.
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>2. LÉPÉS: CmK engedélyezése a Log Analytics-munkaterületen
 

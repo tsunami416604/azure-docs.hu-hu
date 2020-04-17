@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: eac195babebf300aa9770d35b7b98eba29c234cf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529421"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460987"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurálja a tesztkörnyezetet az Azure DevTest Labs ben egy távoli asztali átjáró használatára
 Az Azure DevTest Labs konfigurálhatja a tesztkörnyezet egy távoli asztali átjáró a labor biztonságos hozzáférést biztosít a labor virtuális gépek (VM-ek) anélkül, hogy az RDP-port. A labor központi helyet biztosít a tesztkörnyezet felhasználói számára, hogy megtekinthessék és csatlakozzanak az összes olyan virtuális géphez, amelyhez hozzáféréssel rendelkeznek. A **Virtuálisgép** lap **Csatlakozás** gombja létrehoz egy gépspecifikus RDP-fájlt, amelyet megnyithat a számítógéphez való csatlakozáshoz. Az RDP-kapcsolat további testreszabásához és védelméhez csatlakoztassa a tesztkörnyezetegy távoli asztali átjáró. 
@@ -64,7 +64,7 @@ Az Azure függvény a `https://{function-app-uri}/app/host/{lab-machine-name}/po
 ## <a name="configure-the-lab-to-use-token-authentication"></a>A tesztkörnyezet konfigurálása jogkivonat-hitelesítés használatára 
 Ez a szakasz bemutatja, hogyan konfigurálhat egy tesztkörnyezet et egy távoli asztali átjárógép használatára, amely támogatja a token hitelesítést. Ez a szakasz nem terjed ki a távoli asztali átjárófarm okának beállítására. Ehhez a cikkhez tekintse meg a [Minta című témakört, ha távoli asztali átjárót szeretne létrehozni](#sample-to-create-a-remote-desktop-gateway) a cikk végén. 
 
-A labor beállítások frissítése előtt tárolja a szükséges kulcsot a függvény sikeres végrehajtásához, hogy egy hitelesítési jogkivonatot ad vissza a tesztkörnyezet key vaultjában. A függvénykulcs-értéket az Azure Portalon a függvény **kezelése** lapján szerezheti be. A titkos kulcs kulcstartóba mentését a [Titkos kulcs hozzáadása a Key Vaulthoz](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault)című témakörben talál. Mentse a titkos név későbbi használatra.
+A labor beállítások frissítése előtt tárolja a szükséges kulcsot a függvény sikeres végrehajtásához, hogy egy hitelesítési jogkivonatot ad vissza a tesztkörnyezet key vaultjában. A függvénykulcs-értéket az Azure Portalon a függvény **kezelése** lapján szerezheti be. A titkos kulcs kulcstartóba mentését a [Titkos kulcs hozzáadása a Key Vaulthoz](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)című témakörben talál. Mentse a titkos név későbbi használatra.
 
 A tesztkörnyezet kulcstartójának azonosítójának megkereséséhez futtassa a következő Azure CLI-parancsot: 
 
@@ -74,7 +74,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Konfigurálja a tesztkörnyezetet a tokenhitelesítés használatára az alábbi lépésekkel:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza az **Összes szolgáltatás**lehetőséget, majd a listából válassza a **DevTest Labs** elemet.
 1. A laborok listájából válassza ki a **labort.**
 1. A tesztkörnyezet lapján válassza a **Konfiguráció és házirendek**lehetőséget.

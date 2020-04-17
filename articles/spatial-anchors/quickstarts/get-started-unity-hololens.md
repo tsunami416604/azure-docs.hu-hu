@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2a427eab107c70b19932b7b8ddc5a7fc531ef19a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9e946d7f4616799768711ee8c18584a2a8fcff2a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77615425"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482009"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Rövid útmutató: Hozzon létre egy Unity HoloLens alkalmazást, amely az Azure Spatial Anchors-t használja
 
@@ -33,7 +33,7 @@ A következőket fogja megtanulni:
 
 Az oktatóanyag elvégzéséhez:
 
-- Olyan Windows-számítógépre van szüksége, amelyen a <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 vagy 2019.2</a> vagy újabb, valamint a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019-es</a> vagy újabb verziók telepítve vannak. A Visual Studio telepítésének tartalmaznia kell az **univerzális Windows-platform fejlesztési** munkaterhelését és a **Windows 10 SDK (10.0.18362.0 vagy újabb)** összetevőt. Telepítenie kell <a href="https://git-scm.com/download/win" target="_blank">a Git for Windows</a> és a <a href="https://git-lfs.github.com/">Git LFS rendszert</a>is.
+- Unity <a href="https://unity3d.com/get-unity/download" target="_blank">2019.1 vagy 2019.2</a> és <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> vagy újabb verzióval rendelkező Windows-számítógépre van szükség. A Visual Studio telepítésének tartalmaznia kell az **univerzális Windows-platform fejlesztési** munkaterhelését és a **Windows 10 SDK (10.0.18362.0 vagy újabb)** összetevőt. Telepítenie kell <a href="https://git-scm.com/download/win" target="_blank">a Git for Windows</a> és a <a href="https://git-lfs.github.com/">Git LFS rendszert</a>is.
 - Olyan HoloLens eszközre van szükség, amelyen a [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) engedélyezve van. [A Windows 10 2018 októberi frissítését](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (más néven RS5-frissítést) telepíteni kell az eszközre. A HoloLens legújabb kiadására való frissítéshez nyissa meg a **Beállítások** alkalmazást, nyissa meg **a & biztonság frissítése**lehetőséget, és válassza a Frissítések **keresése**lehetőséget.
 - Az alkalmazásban engedélyeznie kell a **SpatialPerception** funkciót. Ez a beállítás a **Build Settings** > **Player Settings** > **Közzétételi beállítások** > **képességei**ben található.
 - Az alkalmazásban engedélyeznie kell a **Windows Mixed Reality SDK-val**támogatott virtuális **valóságot.** Ez a beállítás a Build Settings**Player Settings** > XR Settings ( **buildelési beállítások** > **) xr beállításai ban**található.

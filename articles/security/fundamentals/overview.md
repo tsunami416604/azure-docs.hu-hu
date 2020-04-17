@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545971"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461684"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -295,7 +295,7 @@ A szakasz további információkat tartalmaz a terület legfontosabb szolgáltat
 Az Azure IaaS segítségével kártevőirtó szoftvereket használhat a biztonsági gyártóktól, például a Microsofttól, a Symantectől, a Trend Microtól, a McAfee-től és a Kaspersky-től, hogy megvédje a virtuális gépeket a rosszindulatú fájloktól, adware-ektől és egyéb fenyegetésektől. [A Microsoft Antimalware](antimalware.md) for Azure Cloud Services and Virtual Machines egy olyan védelmi képesség, amely segít azonosítani és eltávolítani a vírusokat, kémprogramokat és más rosszindulatú szoftvereket. A Microsoft Antimalware konfigurálható riasztásokat biztosít, ha ismert rosszindulatú vagy nemkívánatos szoftverek próbálnak telepíteni magukat vagy futtatni az Azure-rendszereken. A Microsoft Antimalware az Azure Security Center használatával is telepíthető
 
 ### <a name="hardware-security-module"></a>Hardverbiztonsági modul
-A titkosítás és a hitelesítés csak akkor növeli a biztonságot, ha maguk a kulcsok védettek. Az [Azure Key Vaultban](../../key-vault/key-vault-overview.md)való tárolással egyszerűsítheti a kritikus fontosságú titkos kulcsok és kulcsok kezelését és biztonságát. A Key Vault lehetővé teszi a kulcsok tárolását a FIPS 140-2 Level 2 szabványoknak megfelelő hardveres biztonsági modulokban (HSM). Az SQL Server titkosítási kulcsai a biztonsági mentéshez vagy [az átlátszó adattitkosításhoz](https://msdn.microsoft.com/library/bb934049.aspx) mind tárolhatók a Key Vaultban az alkalmazások bármely kulcsával vagy titkával. A védett elemekhez való engedélyek és hozzáférés kezelése az [Azure Active Directoryn](https://azure.microsoft.com/documentation/services/active-directory/)keresztül történik.
+A titkosítás és a hitelesítés csak akkor növeli a biztonságot, ha maguk a kulcsok védettek. Az [Azure Key Vaultban](../../key-vault/general/overview.md)való tárolással egyszerűsítheti a kritikus fontosságú titkos kulcsok és kulcsok kezelését és biztonságát. A Key Vault lehetővé teszi a kulcsok tárolását a FIPS 140-2 Level 2 szabványoknak megfelelő hardveres biztonsági modulokban (HSM). Az SQL Server titkosítási kulcsai a biztonsági mentéshez vagy [az átlátszó adattitkosításhoz](https://msdn.microsoft.com/library/bb934049.aspx) mind tárolhatók a Key Vaultban az alkalmazások bármely kulcsával vagy titkával. A védett elemekhez való engedélyek és hozzáférés kezelése az [Azure Active Directoryn](https://azure.microsoft.com/documentation/services/active-directory/)keresztül történik.
 
 ### <a name="virtual-machine-backup"></a>Virtuális gép biztonsági mentése
 Az [Azure Backup](../../backup/backup-overview.md) olyan megoldás, amely nulla tőkebefektetéssel és minimális működési költségekkel védi az alkalmazásadatokat. Az alkalmazáshibák megsérülhetnek az adatokban, és az emberi hibák olyan hibákat okozhatnak az alkalmazásokban, amelyek biztonsági problémákhoz vezethetnek. Az Azure Backup segítségével a Windows és Linux rendszert futtató virtuális gépek védettek.

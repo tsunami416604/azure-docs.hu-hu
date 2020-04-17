@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d3e267eab056589ed38c436620dd0db185291da1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425901"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481838"
 ---
 # <a name="multitenant-applications-in-azure"></a>Több-bérlős alkalmazások az Azure-ban
 A több-bérlős alkalmazás egy megosztott erőforrás, amely lehetővé teszi a "felhasználók külön bérlők" az alkalmazás megtekintéséhez, mintha a saját. Egy tipikus forgatókönyv, amely alkalmas arra, hogy egy több-bérlős alkalmazás az egyik, amelyben az alkalmazás összes felhasználója a különböző bérlők érdemes testre szabni a felhasználói élményt, de egyébként ugyanazokkal az alapvető üzleti követelményekkel rendelkezik. Nagy méretű több-bérlős alkalmazások például az Office 365, a Outlook.com és a visualstudio.com.
@@ -48,20 +48,20 @@ Az Azure számos olyan szolgáltatást kínál, amelyek lehetővé teszik a töb
 
 **Elkülönítés**
 
-* Webhely-bérlők szegmense SSL-kommunikációval vagy anélkül rendelkező gazdagépfejlécek szerint
+* Webhely-bérlők szegmentálása állomásfejlécek szerint TLS-kommunikációval vagy anélkül
 * Webhely-bérlők szegmense lekérdezési paraméterek szerint
 * Webszolgáltatások a feldolgozói szerepkörökben
   * Feldolgozói szerepkörök, amelyek általában az alkalmazás háttérrendszerének adatait dolgozzák fel.
   * Webes szerepkörök, amelyek általában az alkalmazások előtérként működnek.
 
-**Tárterület**
+**Storage**
 
-Az adatkezelés, például az Azure SQL Database vagy az Azure Storage-szolgáltatások, például a Table szolgáltatás, amely nagy mennyiségű strukturálatlan adat tárolásához nyújt szolgáltatásokat, valamint a Blob szolgáltatás, amely nagy mennyiségű strukturálatlan szöveg vagy bináris adatok, például videó, hang és képek.
+Adatkezelés, például az Azure SQL Database vagy az Azure Storage-szolgáltatások, például a Table szolgáltatás, amely nagy mennyiségű strukturálatlan adatok tárolására szolgáló szolgáltatásokat és a Blob szolgáltatás, amely szolgáltatásokat nyújt nagy mennyiségű strukturálatlan szöveges vagy bináris adatok, például a videó, hang- és lemezképek tárolására.
 
 * Több-bérlős adatok védelme az SQL Database bérlőnkénti SQL Server bejelentkezések.
 * Az Azure Tables for Application Resources használatával egy tárolószintű hozzáférési szabályzat megadásával módosíthatja az engedélyeket anélkül, hogy új URL-címeket kellene kiadnia a megosztott hozzáférésű aláírásokkal védett erőforrásokhoz.
 * Az Azure-várólisták az alkalmazás-erőforrások hoz az Azure-várólisták gyakran használják a bérlők nevében történő feldolgozás, de a kiépítéshez vagy felügyelethez szükséges munka elosztására is használható.
-* Az alkalmazás-erőforrások szolgáltatásbusz-várólistái, amelyek leküldéses munkát egy megosztott szolgáltatás, használhatja egyetlen várólistában, ahol minden bérlő feladó csak rendelkezik engedélyekkel (származik jogcímek által kiadott ACS), hogy leküldéses, hogy a várólistába, míg csak a fogadók a szolgáltatás engedélyt a több bérlőtől érkező adatok várólistából való lekérése.
+* Az alkalmazás-erőforrások szolgáltatás-várólistái, amelyek leküldéses munkát egy megosztott szolgáltatás, használhatja az egyetlen várólistában, ahol minden bérlő feladó csak rendelkezik engedélyekkel (a jogcímek által kiadott ACS) leküldéses, hogy a várólistába, míg csak a fogadók a szolgáltatás engedélyt, hogy lekérése a várólistából a több bérlőből érkező adatokat.
 
 **Csatlakozási és biztonsági szolgáltatások**
 
@@ -74,13 +74,13 @@ Az Azure számos olyan hálózati szolgáltatást kínál, amelyek támogatják 
 * Az Azure Virtual Network lehetővé teszi a virtuális magánhálózatok (VPN-ek) kiépítését és kezelését az Azure-ban, valamint biztonságos annektálást biztosít a helyszíni informatikai infrastruktúrával.
 * A Virtual Network Traffic Manager lehetővé teszi a bejövő forgalom több üzemeltetett Azure-szolgáltatás közötti terhelését, függetlenül attól, hogy ugyanabban az adatközpontban vagy a világ különböző adatközpontjaiban futnak.
 * Az Azure Active Directory (Azure AD) egy modern, REST-alapú szolgáltatás, amely identitáskezelési és hozzáférés-vezérlési lehetőségeket biztosít a felhőalapú alkalmazások számára. Az Azure AD alkalmazás-erőforrások használatával egyszerűen hitelesítheti és engedélyezheti a felhasználók számára, hogy hozzáférjenek a webes alkalmazásokhoz és szolgáltatásokhoz, miközben lehetővé teszi a hitelesítés és az engedélyezés funkcióinak a kódból való kivonását.
-* Az Azure Service Bus biztonságos üzenetküldési és adatfolyam-szolgáltatást biztosít az elosztott és hibrid alkalmazásokhoz, például az Azure által üzemeltetett alkalmazások és helyszíni alkalmazások és szolgáltatások közötti kommunikációhoz, összetett tűzfal és biztonság nélkül Infrastruktúrák. A Service Bus Relay az alkalmazás-erőforrások a végpontokként elérhető szolgáltatások eléréséhez a bérlőhöz tartozhat (például a rendszeren kívül üzemeltetett, például a helyszínen), vagy lehet, hogy kifejezetten a bérlő számára kiosztott szolgáltatások (mert érzékeny, bérlő-specifikus adatok utaznak át rajtuk).
+* Az Azure Service Bus biztonságos üzenetküldési és adatfolyam-szolgáltatást biztosít az elosztott és hibrid alkalmazásokhoz, például az Azure által üzemeltetett alkalmazások és helyszíni alkalmazások és szolgáltatások közötti kommunikációhoz, összetett tűzfal- és biztonsági infrastruktúrák nélkül. A Service Bus Relay az alkalmazás-erőforrások a végpontok ként elérhető szolgáltatások eléréséhez a bérlőhöz tartozhat (például a rendszeren kívül üzemeltetett, például a helyszíni), vagy lehet, hogy a szolgáltatások kifejezetten a bérlő számára vannak kiépítve (mert a bizalmas, bérlőspecifikus adatok áthaladnak rajtuk).
 
 **Erőforrások kiépítése**
 
 Az Azure számos lehetőséget kínál az alkalmazás új bérlők kiépítésére. A nagy számú bérlővel rendelkező több-bérlős alkalmazások esetében általában szükség van a folyamat automatizálására az önkiszolgáló kiépítés engedélyezésével.
 
-* A feldolgozói szerepkörök lehetővé teszik a bérlői erőforrások (például amikor egy új bérlő regisztrál vagy megszakítja), mérőszámok at gyűjt a mérési használatra, és skálázáskezelése egy bizonyos ütemezés szerint vagy a kulcsteljesítmény küszöbértékeinek átlépése esetén. Mutatók. Ugyanez a szerepkör is használható a frissítések és frissítések kiküldése a megoldáshoz.
+* A dolgozói szerepkörök lehetővé teszik a bérlői erőforrások (például amikor egy új bérlő regisztrál vagy megszakítja), mérőszámok gyűjtése a mérési használatra, és a skálázás kezelése egy bizonyos ütemezés szerint, vagy válaszul a fő teljesítménymutatók küszöbértékeinek átlépése. Ugyanez a szerepkör is használható a frissítések és frissítések kiküldése a megoldáshoz.
 * Az Azure Blobok számítási vagy előzetesen inicializált tárolási erőforrások kiépítésére használhatók az új bérlők számára, miközben tárolószintű hozzáférési szabályzatokat biztosítanak a számítási szolgáltatáscsomagok, a vHD-rendszerképek és egyéb erőforrások védelmére.
 * Az SQL Database-erőforrások bérlőhöz való kiépítésének lehetőségei a következők:
   

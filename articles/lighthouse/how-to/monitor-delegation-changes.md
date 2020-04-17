@@ -3,12 +3,12 @@ title: Delegálási változások figyelése a kezelő bérlőben
 description: Ismerje meg, hogyan figyelheti a delegálási tevékenységet az ügyfél-bérlőktől a kezelő bérlőig.
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 322580cc3d0246f7a34e28cdae94da57fda070b5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985150"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458811"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Delegálási változások figyelése a kezelő bérlőben
 
@@ -44,7 +44,7 @@ Mivel ez a hozzáférés széles szintje, azt javasoljuk, hogy ezt a szerepkört
 
 - [Hozzon létre egy új egyszerű szolgáltatásfiókot,](../../active-directory/develop/howto-create-service-principal-portal.md) amely csak ehhez a függvényhez használható, ahelyett, hogy ezt a szerepkört egy más automatizáláshoz használt meglévő egyszerű szolgáltatáshoz rendelné.
 - Győződjön meg arról, hogy ez a szolgáltatásnév nem fér hozzá delegált ügyfél-erőforrásokhoz.
-- [Tanúsítvány használatával hitelesítheti](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) és [biztonságosan tárolhatja az Azure Key Vaultban.](../../key-vault/key-vault-best-practices.md)
+- [Tanúsítvány használatával hitelesítheti](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) és [biztonságosan tárolhatja az Azure Key Vaultban.](../../key-vault/general/best-practices.md)
 - Korlátozza azon felhasználókat, akik hozzáférhetnek a szolgáltatásnév nevében való cselekvéshez.
 
 A gyökérhatókör-hozzárendelések az alábbi módszerek egyikével.

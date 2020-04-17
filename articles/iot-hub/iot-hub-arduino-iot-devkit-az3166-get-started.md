@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 631a20c7bf73aa2af363fdc0019ef24cccc58f9e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 0c7566df870b3c41b1f1dd7d4a4129ff9d9d9407
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258592"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481736"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Az IoT DevKit AZ3166 csatlakoztatása az Azure IoT Hubhoz
 
@@ -175,9 +175,7 @@ Kövesse az alábbi lépéseket a fejlesztői környezet devkit előkészítés�
 
     ![Az Azure IoT-eszközök telepítése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
-    Vagy használja ezt a közvetlen linket:
-    > [!div class="nextstepaction"]
-    > [Az Azure IoT Tools bővítménycsomag telepítése](vscode:extension/vsciot-vscode.azure-iot-tools)
+    Vagy használja ezt a közvetlen URL-t:`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
     > Az Azure IoT Tools bővítménycsomag tartalmazza az [Azure IoT Device Workbench,](https://aka.ms/iot-workbench) amely fejlesztésére és hibakeresésére használják a különböző IoT devkit-eszközök. Az [Azure IoT Hub-bővítmény](https://aka.ms/iot-toolkit), amely az Azure IoT Tools bővítménycsomag részét is tartalmazza, az Azure IoT Hubs kezelésére és kezelésére szolgál.

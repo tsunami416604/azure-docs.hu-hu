@@ -3,12 +3,12 @@ title: Oktatóanyag – Terraform állapot ának tárolása az Azure Storage-ban
 description: Bevezetés a Terraform állapot azure Storage-ban való tárolásához.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 1cc475e5070b21a7ea96585f2183c07d258acdc5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c94c66969c517bd0e51117ab7c6ed6a889149518
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75708424"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459015"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Oktatóanyag: Terraform állapot ának tárolása az Azure Storage-ban
 
@@ -67,7 +67,7 @@ Hozzon létre `ARM_ACCESS_KEY` egy környezeti változó nevű az Azure Storage 
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Az Azure Storage-fiók hozzáférési kulcsának további védelme érdekében tárolja azt az Azure Key Vaultban. A környezeti változó ezután a következőhöz hasonló paranccsal állítható be. Az Azure Key Vaultról az [Azure Key Vault dokumentációjában](../key-vault/quick-create-cli.md)olvashat bővebben.
+Az Azure Storage-fiók hozzáférési kulcsának további védelme érdekében tárolja azt az Azure Key Vaultban. A környezeti változó ezután a következőhöz hasonló paranccsal állítható be. Az Azure Key Vaultról az [Azure Key Vault dokumentációjában](../key-vault/secrets/quick-create-cli.md)olvashat bővebben.
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)

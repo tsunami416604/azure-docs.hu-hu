@@ -1,17 +1,14 @@
 ---
 title: Azure áttelepítése – gyakori kérdések
 description: Válaszok az Azure Migrate szolgáltatással kapcsolatos gyakori kérdésekre.
-author: snehaamicrosoft
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: snehaa
-ms.openlocfilehash: c85c5c6e11beb0178139dad152f56f420b2ac26f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78926731"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530317"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: Gyakori kérdések
 
@@ -56,8 +53,7 @@ Válassza ki az eszközt a kívánt teendők alapján:
 
 ## <a name="which-geographies-are-supported"></a>Mely földrajzi területek támogatottak?
 
-- **VMware virtuális gépek:** Tekintse át az Azure Migrate [támogatott földrajzi vmware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) virtuális gépek.
-- **Hyper-V virtuális gépek:** tekintse át az Azure Migrate [támogatott földrajzi hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v) virtuális gépek.
+Tekintse át a támogatott földrajzi köz- [és](migrate-support-matrix.md#supported-geographies-public-cloud) [kormányzati felhőket.](migrate-support-matrix.md#supported-geographies-azure-government)
 
 ## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
 

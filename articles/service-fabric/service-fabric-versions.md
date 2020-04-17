@@ -3,12 +3,12 @@ title: Támogatott fürtverziók az Azure Service Fabricben
 description: Ismerje meg az Azure Service Fabric fürtverzióit, beleértve a Service Fabric csapatblogjának legújabb kiadásaira mutató hivatkozást.
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: 1158266857f0864ed2f442edb100032c70063719
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: b76e498926492ce7acaa696dfe9a0299fb5573e0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385044"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460528"
 ---
 # <a name="supported-service-fabric-versions"></a>A Service Fabric támogatott verziói
 
@@ -37,10 +37,10 @@ Az alábbi táblázat a Service Fabric verzióit és azok támogatási befejezé
 | 6.3.* | 6.1.480.* |Kisebb vagy egyenlő, mint a 3.2-es verzió |2019. március 31.March 31, 2019  |
 | 6.4.* | 6.2.301.* |Kisebb vagy egyenlő, mint a 3.3-as verzió |2019. szeptember 15.September 15, 2019 |
 | 6.5.* | 6.4.617.* |Kisebb vagy egyenlő, mint a 3.4-es verzió |2020. augusztus 1. |
-| 7.0.466.* | 6.4.664.* |Kisebb vagy egyenlő, mint a 4.0-s verzió|Jelenlegi verzió, így nincs befejezési dátum |
-| 7.0.466.* | 6.5.* |Kisebb vagy egyenlő, mint a 4.0-s verzió|Jelenlegi verzió, így nincs befejezési dátum |
-| 7.0.470.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4.0-s verzió |Jelenlegi verzió, így nincs befejezési dátum |
-
+| 7.0.466.* | 6.4.664.* |Kisebb vagy egyenlő, mint a 4.0-s verzió|2020. augusztus 1.  |
+| 7.0.466.* | 6.5.* |Kisebb vagy egyenlő, mint a 4.0-s verzió|2020. augusztus 1. |
+| 7.0.470.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4.0-s verzió |2020. augusztus 1.  |
+| 7.1.409.* | 7.0.466.* |Kisebb vagy egyenlő, mint a 4.0-s verzió |Jelenlegi verzió, így nincs befejezési dátum |
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
 Az alábbi táblázat a támogatott Service Fabric-verziók támogatott operációs rendszereit sorolja fel.

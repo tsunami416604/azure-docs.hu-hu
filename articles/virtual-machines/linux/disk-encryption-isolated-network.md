@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa0dc204a017e2d40eb3952a9ede0755127f8de2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970657"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460120"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure lemeztitkosítás elszigetelt hálózaton
 
@@ -43,7 +43,7 @@ Az alkalmazott hálózati biztonsági csoport beállításoknak továbbra is leh
 
 Ha [az Azure Disk Encryption az Azure AD (előző verzió)](disk-encryption-overview-aad.md)használatával, az [Azure Active Directory-könyvtárat](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) manuálisan kell telepíteni az összes distióhoz (a distro-nak megfelelő csomagokon kívül, a [fent felsoroltak szerint).](#package-management)
 
-Ha az Azure [AD-hitelesítő adatokkal](disk-encryption-linux-aad.md)engedélyezve van a titkosítás, a célvirtuális gépnek engedélyeznie kell a kapcsolatot az Azure Active Directory végpontjaihoz és a Key Vault-végpontokhoz. Az Aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományainak](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56. A Key Vault-útmutató a [tűzfal mögötti Azure Key Vault elérésére](../../key-vault/key-vault-access-behind-firewall.md)vonatkozó dokumentációban található.
+Ha az Azure [AD-hitelesítő adatokkal](disk-encryption-linux-aad.md)engedélyezve van a titkosítás, a célvirtuális gépnek engedélyeznie kell a kapcsolatot az Azure Active Directory végpontjaihoz és a Key Vault-végpontokhoz. Az Aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományainak](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56. A Key Vault-útmutató a [tűzfal mögötti Azure Key Vault elérésére](../../key-vault/general/access-behind-firewall.md)vonatkozó dokumentációban található.
 
 ### <a name="azure-instance-metadata-service"></a>Azure-példány metaadat-szolgáltatása 
 

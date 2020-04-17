@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
-ms.openlocfilehash: 9f048c7d89da0ab75c321cd8e3932ea97c7ed09c
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310016"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461351"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése
 
@@ -41,42 +41,27 @@ Az Azure Gyorsított hálózatkezelés javítja a hálózati teljesítményt az�
 }
 ```
 
-## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Már létező Azure Load Balancerre hivatkozó méretezési csoport létrehozása
-Amikor az Azure Portal használatával hoz létre méretezési csoportot, a rendszer a legtöbb konfigurációs beállítás számára létrehoz egy új terheléselosztót. Ha olyan méretezési csoportot hoz létre, amelynek egy már létező terheléselosztóra kell hivatkoznia, azt a CLI-ben teheti meg. Az alábbi példa létrehoz egy terheléselosztót, majd egy arra hivatkozó méretezési csoportot:
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Az Azure virtuálisgép-méretezési készletek az Azure Load Balancer segítségével
 
-```azurecli
-az network lb create \
-    -g lbtest \
-    -n mylb \
-    --vnet-name myvnet \
-    --subnet mysubnet \
-    --public-ip-address-allocation Static \
-    --backend-pool-name mybackendpool
+A virtuálisgép-méretezési készletekkel és a terheléselosztóval végzett munka során a következőket kell figyelembe venni:
 
-az vmss create \
-    -g lbtest \
-    -n myvmss \
-    --image Canonical:UbuntuServer:16.04-LTS:latest \
-    --admin-username negat \
-    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
-    --upgrade-policy-mode Automatic \
-    --instance-count 3 \
-    --vnet-name myvnet \
-    --subnet mysubnet \
-    --lb mylb \
-    --backend-pool-name mybackendpool
-```
+* **Több virtuálisgép-méretezési csoport nem használhatja ugyanazt a terheléselosztót.**
+* **Porttovábbítási és bejövő NAT-szabályok:**
+  * Minden virtuálisgép-méretezési készletnek rendelkeznie kell egy bejövő NAT-szabállyal.
+  * A méretezési készlet létrehozása után a háttérport nem módosítható a terheléselosztó állapotminta által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapotminta az Azure virtuálisgép-méretezési készlet frissítésével, frissítse a portot, majd konfigurálja újra az állapotminta.
+  * Ha a terheléselosztó háttérkészletében használja a virtuálisgép-méretezési készletet, az alapértelmezett bejövő NAT-szabályok automatikusan létrejönnek.
+* **Terheléselosztási szabályok:**
+  * Ha a terheléselosztó háttérkészletében használja a virtuálisgép-méretezési készletet, az alapértelmezett terheléselosztási szabály automatikusan létrejön.
+* **Kimenő szabályok**:
+  *  Ha egy olyan háttérkészlethez szeretne kimenő szabályt létrehozni, amelyre már hivatkozik egy terheléselosztási szabály, először meg kell jelölnie a **"Implicit kimenő szabályok létrehozása" szót** a portálon, amikor a bejövő terheléselosztási szabály létrejön. **No**
 
->[!NOTE]
-> A méretezési készlet létrehozása után a háttérport nem módosítható a terheléselosztó állapotminta által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapotminta az Azure virtuálisgép-méretezési készlet frissítésével, frissítse a portot, majd konfigurálja újra az állapotminta. 
-
-A terheléselosztóról és a virtuálisgép-méretezési készletekről további információt az [Azure virtuális hálózatai és virtuális gépei című témakörben talál.](../../articles/virtual-machines/windows/network-overview.md)
+  :::image type="content" source="./media/vmsslb.png" alt-text="Terheléselosztási szabály létrehozása" border="true":::
 
 A következő módszerek kelthetegy virtuálisgép-méretezési készlet üzembe helyezéséhez egy meglévő Azure-terheléselosztóval.
 
-* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure Portal használatával.](../../articles/load-balancer/configure-vm-scale-set-portal.md)
-* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure PowerShell használatával.](../../articles/load-balancer/configure-vm-scale-set-powershell.md)
-* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure CLI használatával.](../../articles/load-balancer/configure-vm-scale-set-cli.md)
+* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure Portal használatával.](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)
+* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure PowerShell használatával.](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)
+* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure CLI használatával.](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway-re hivatkozó méretezési csoport létrehozása
 Ha alkalmazásátjárót használó méretezési csoportot szeretne létrehozni, akkor hivatkozzon az alkalmazásátjáró háttércímkészletére a méretezési csoport ipConfigurations szakaszában, mint ebben az ARM-sablonkonfigurációban:

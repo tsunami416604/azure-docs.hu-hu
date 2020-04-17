@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: quickstart
@@ -14,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bc1dd56cd024ee65e29f227f4ec11cde436e388d
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 7642257ef9b66889c7fb2ef585f63b02d30a425e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294781"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458998"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -34,7 +33,7 @@ A rövid útmutató elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már
 SSH-kulcspár létrehozásához nyissa meg a Bash-felületet, és használja az [ssh-keygen](https://www.ssh.com/ssh/keygen/) eszközt. Ha nincs Bash-felület a helyi számítógépén, használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A lap tetején található menüben válassza `>_` az ikont a Cloud Shell megnyitásához.
 1. Győződjön meg róla, hogy a CloudShell azt **mondja, bash** a bal felső sarokban. Ha azt mondja, PowerShell, a legördülő menüben válassza a **Bash,** és válassza **a Megerősítés a** Bash shell módosítása.
 1. Írja `ssh-keygen -t rsa -b 2048` be az ssh kulcs létrehozásához. 

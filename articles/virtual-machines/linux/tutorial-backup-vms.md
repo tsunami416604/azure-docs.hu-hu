@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066498"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460070"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Oktatóanyag: Linux rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
 
@@ -43,7 +42,7 @@ Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, é
 ## <a name="create-a-backup"></a>Biztonsági mentés létrehozása
 Hozzon létre ütemezett napi biztonsági másolatot egy Recovery Services-tárolóba:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A bal oldali menüben válassza a **Virtuális gépek** elemet. 
 3. Válasszon egy virtuális gépet a listából, amelyről biztonsági mentést kíván készíteni.
 4. A virtuális gép paneljének **Beállítások** szakaszában kattintson a **Backup** elemre. Megnyílik **a Biztonsági másolat engedélyezése** panel.

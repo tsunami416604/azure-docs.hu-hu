@@ -1,11 +1,11 @@
 ---
-title: Felhasználók tömeges létrehozása (előzetes verzió) az Azure Active Directory portálon | Microsoft dokumentumok
+title: Felhasználók tömeges létrehozása az Azure Active Directory portálon | Microsoft dokumentumok
 description: Felhasználók tömeges hozzáadása az Azure Active Directory Azure AD felügyeleti központjában
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/30/2019
+ms.date: 04/16/2020
 ms.topic: article
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a10dfffa69652ee2b75053c04b97f6492c46811e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3a8b9cb9701288d24534ab08940f6dbd4a698ad
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174318"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532932"
 ---
-# <a name="bulk-create-users-preview-in-azure-active-directory"></a>Felhasználók tömeges létrehozása (előzetes verzió) az Azure Active Directoryban
+# <a name="bulk-create-users-in-azure-active-directory"></a>Felhasználók tömeges létrehozása az Azure Active Directoryban
 
 Az Azure Active Directory (Azure AD) támogatja a tömeges felhasználói létrehozási és törlési műveleteket, a tömeges meghívást a vendégek számára, és támogatja a felhasználók, csoportok és csoporttagok listájának letöltését.
 
@@ -40,7 +40,7 @@ Ahhoz, hogy tömegesen hozhasson létre felhasználókat a felügyeleti portálo
 
    ![A CSV-fájl tartalmazza a létrehozandó felhasználók neveit és azonosítóit](./media/users-bulk-add/add-csv-file.png)
 
-1. A **Tömeges létrehozás felhasználó (előnézet)** lap CsV-fájl feltöltése területén keresse meg a fájlt. Amikor kijelöli a fájlt, és a **Küldés**gombra kattint, elindul a CSV-fájl érvényesítése.
+1. A **Tömeges létrehozás felhasználói** lapon a CSV-fájl feltöltése csoportban keresse meg a fájlt. Amikor kijelöli a fájlt, és a **Küldés**gombra kattint, elindul a CSV-fájl érvényesítése.
 1. A fájl tartalmának ellenőrzése után a **fájl feltöltése sikeresen megjelenik.** Ha vannak hibák, ki kell javítania azokat, mielőtt elküldheti a feladatot.
 1. Amikor a fájl megfelel az ellenőrzésen, válassza **a Küldés** lehetőséget az új felhasználókat importáló Azure tömeges művelet elindításához.
 1. Amikor az importálási művelet befejeződik, megjelenik egy értesítés a tömeges műveleti feladat állapotáról.
@@ -49,9 +49,9 @@ Ha vannak hibák, letöltheti és megtekintheti az eredményfájlt a **Tömeges 
 
 ## <a name="check-status"></a>Állapot ellenőrzése
 
-Az összes függőben lévő tömeges kérelem állapotát a **Tömeges művelet eredményei (előnézet)** lapon tekintheti meg.
+Az összes függőben lévő tömeges kérelem állapotát a **Tömeges művelet eredménylapján láthatja.**
 
-   ![Feltöltési állapot ellenőrzése a Tömeges műveletek eredménylapján](./media/users-bulk-add/bulk-center.png)
+   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
 
 Ezután ellenőrizheti, hogy a létrehozott felhasználók léteznek-e az Azure AD-szervezetben az Azure Portalon vagy a PowerShell használatával.
 

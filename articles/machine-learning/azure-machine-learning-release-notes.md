@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273307"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459168"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Az Azure Machine Learning kiadási megjegyzések
 
@@ -721,10 +721,10 @@ Az Azure Machine Learning mostantól az Event Grid erőforrás-szolgáltatója, 
       + A megadott start_time és/vagy end_time bemeneti adatok szerint csak az ütemezett futtatások eredményei lesznek visszaadva;
       + Az "daily_latest_only" paraméter elavult.
     + Az adatkészlet-alapú adattúllókimenetek lekérésének támogatása.
-  + **[azureml-explain-modell](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml-explain-modell**
     + Átnevezi az AzureML-explain-model csomagot AzureML-interpret-ra, és a régi csomagot a visszamenőleges kompatibilitás érdekében egyelőre megtartja.
     + javított AutoML hiba nyers magyarázatokkal, amelyek besorolási feladatra vannak állítva, ahelyett, hogy alapértelmezés szerint regressziót töltöttek volna le a ExplanationClient programból.
-    + Támogatás hozzáadása a Közvetlenül a [MimicWrapper](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic_wrapper.mimicwrapper) használatával létrehozandó [ScoringExplainer-hez](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py)
+    + Támogatás hozzáadása a Közvetlenül a MimicWrapper használatával létrehozandó [ScoringExplainer-hez](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py)
   + **[azureml-csővezeték-mag](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Jobb teljesítmény a nagy folyamatlétrehozásához.
   + **[azureml-train-core](https://docs.microsoft.com/python/api/azureml-train-core)**
@@ -798,7 +798,7 @@ Az [új munkaterületi portál](https://ml.azure.com) Kísérlet lapja frissült
     + További virtuálisgép-méretmezők (operációsrendszer-lemez, GPU-k száma) hozzáadása a [supported_vmsizes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-) függvényhez
     + További mezőket adott hozzá a [list_nodes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--) függvényhez a futtatás, a privát és a nyilvános IP, a port stb.
     + Új mező tãbiliálása során adható `--remotelogin_port_public_access` [meg,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--) amely engedélyezve vagy letiltva állítható be attól függően, hogy az SSH-portot nyitva vagy zárva szeretné-e hagyni a fürt létrehozásakor. Ha nem adja meg, a szolgáltatás intelligensen megnyitja vagy bezárja a portot attól függően, hogy a fürtöt virtuális hálózaton belül telepíti-e.
-  + **[azureml-explain-modell](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml-explain-modell**
     + Továbbfejlesztett dokumentáció a magyarázat kimenetek a besorolási forgatókönyvben.
     + Hozzáadva az előre jelzett y értékek feltöltésének lehetősége a kiértékelési példák magyarázatához. Hasznosabb vizualizációkat old meg.
     + Hozzáadta a Magyarázó tulajdonságot a MimicWrapper-hez, hogy lehetővé tegye az alapul szolgáló MimicExplainer beszerzését.

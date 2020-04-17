@@ -3,12 +3,12 @@ title: A politikadefiníciós struktúra részletei
 description: Bemutatja, hogyan használják a szabályzatdefiníciók at a szervezetben az Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 017878c4c47a5645ea8815580d2176c7a2ff5d66
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0a7c4e05270ff242fa97b253b27a5de92895368a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314019"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461004"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -89,7 +89,7 @@ Az előzetes verzióban jelenleg a következő erőforrás-szolgáltató módok 
 - `Microsoft.ContainerService.Data`az [Azure Kubernetes-szolgáltatás](../../../aks/intro-kubernetes.md)felvételi vezérlőszabályainak kezeléséhez. Az erőforrás-szolgáltató módot használó **házirendeknek** az [EnforceRegoPolicy](./effects.md#enforceregopolicy) effektust kell használniuk.
 - `Microsoft.Kubernetes.Data`az Azure-beli Önfelügyelt AKS Engine Kubernetes-fürtök kezeléséhez.
   Az erőforrás-szolgáltató módot használó **házirendeknek** az [EnforceOPAConstraint effektust](./effects.md#enforceopaconstraint) kell használniuk.
-- `Microsoft.KeyVault.Data`az [Azure Key Vault](../../../key-vault/key-vault-overview.md)ban lévő tárolók és tanúsítványok kezeléséhez.
+- `Microsoft.KeyVault.Data`az [Azure Key Vault](../../../key-vault/general/overview.md)ban lévő tárolók és tanúsítványok kezeléséhez.
 
 > [!NOTE]
 > Az erőforrás-szolgáltató imáta csak a beépített házirend-definíciókat támogatja, és nem támogatja a kezdeményezéseket előzetes verzióban.

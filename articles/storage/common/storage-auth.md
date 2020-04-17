@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 53eca8a0b9e7cc9abb8f89cd56fca5df28f2de0f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 8db6140789a9e4f46e368b913cacacd21609ccd9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521931"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529722"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Adatokhoz való hozzáférés engedélyezése az Azure Storage-ban
 
@@ -23,7 +23,7 @@ Minden alkalommal, amikor a tárfiókban lévő adatokhoz fér hozzá, az ügyf�
 
 Az alábbi táblázat azokat a beállításokat ismerteti, amelyeket az Azure Storage kínál az erőforrásokhoz való hozzáférés engedélyezéséhez:
 
-|  |Megosztott kulcs (tárfiók kulcsa)  |Közös hozzáférésű jogosultságkód (SAS)  |Azure Active Directory (Azure AD)  |Active Directory (előzetes verzió) |Névtelen nyilvános olvasási hozzáférés  |
+|  |Megosztott kulcs (tárfiók kulcsa)  |Közös hozzáférésű jogosultságkód (SAS)  |Azure Active Directory (Azure AD)  |Helyszíni Active Directory tartományi szolgáltatások (előzetes verzió) |Névtelen nyilvános olvasási hozzáférés  |
 |---------|---------|---------|---------|---------|---------|
 |Azure Blobs     |[Támogatott](/rest/api/storageservices/authorize-with-shared-key/)         |[Támogatott](storage-sas-overview.md)         |[Támogatott](storage-auth-aad.md)         |Nem támogatott|[Támogatott](../blobs/storage-manage-access-to-resources.md)         |
 |Azure-fájlok (SMB)     |[Támogatott](/rest/api/storageservices/authorize-with-shared-key/)         |Nem támogatott         |[Támogatott, csak AAD tartományi szolgáltatásokkal](../files/storage-files-active-directory-overview.md)         |[Támogatott, a hitelesítő adatokat szinkronizálni kell az Azure AD-vel](../files/storage-files-active-directory-overview.md)|Nem támogatott         |
@@ -35,9 +35,9 @@ Az egyes engedélyezési lehetőségeket röviden ismertetjük az alábbiakban:
 
 - **Az Azure Active Directory (Azure AD) integrációja** blobok és várólisták. Az Azure AD szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az ügyfél egy tárfiókban lévő erőforrásokhoz való hozzáférésének szabályozásához. A blobok és várólisták Azure AD-integrációjáról az [Azure-blobokhoz és várólistákhoz való hozzáférés engedélyezése az Azure Active Directory használatával című](storage-auth-aad.md)témakörben talál további információt.
 
-- **Azure Active Directory tartományi szolgáltatások (Azure AD DS) hitelesítés** az Azure Files. Az Azure Files támogatja az identitásalapú engedélyezést a kiszolgálói üzenetblokkon (SMB) az Azure AD DS-en keresztül. Az RBAC segítségével részletesen szabályozhatja az ügyfél azure-fájlok hoz való hozzáférését egy tárfiókban. A tartományi szolgáltatások használatával történő Azure Files-hitelesítéssel kapcsolatos további információkért tekintse meg [az áttekintést.](../files/storage-files-active-directory-overview.md)
+- **Azure Active Directory tartományi szolgáltatások (Azure AD DS) hitelesítés** az Azure Files. Az Azure Files támogatja az identitásalapú engedélyezést a kiszolgálói üzenetblokkon (SMB) az Azure AD DS-en keresztül. Az RBAC segítségével részletesen szabályozhatja az ügyfél azure-fájlok hoz való hozzáférését egy tárfiókban. Az Azure Files tartományi szolgáltatások használatával történő hitelesítésével kapcsolatos további információkért tekintse meg az [áttekintést.](../files/storage-files-active-directory-overview.md)
 
-- **Active Directory (AD) hitelesítés (előzetes verzió)** az Azure Files. Az Azure Files támogatja az identitásalapú engedélyezést az SMB-n keresztül az AD-n keresztül. Az AD tartományi szolgáltatás üzemeltethető a helyszíni gépeken vagy az Azure-beli virtuális gépeken. SMB-hozzáférés a fájlokhoz a tartományhoz csatlakozó gépek AD-hitelesítő adataival támogatott, akár a helyszínen, akár az Azure-ban. Az RBAC segítségével megosztásszintű hozzáférés-vezérléshez és NTFS dakta-khoz használható a címtár-/fájlszintű engedély-kényszerítéshez. A tartományi szolgáltatások használatával történő Azure Files-hitelesítéssel kapcsolatos további információkért tekintse meg [az áttekintést.](../files/storage-files-active-directory-overview.md)
+- **Helyszíni Active Directory tartományi szolgáltatások (AD DS, vagy helyszíni Active Directory tartományi szolgáltatások) hitelesítés (előzetes verzió)** az Azure Files. Az Azure Files támogatja az identitásalapú engedélyezést az SMB-n keresztül az AD DS-en keresztül. Az AD DS-környezet üzemeltethető a helyszíni gépeken vagy az Azure-beli virtuális gépeken. A fájlokhoz való SMB-hozzáférés a tartományhoz csatlakozó gépekRől származó AD DS-hitelesítő adatok használatával támogatott, akár a helyszínen, akár az Azure-ban. Az RBAC kombinációját használhatja a megosztásszintű hozzáférés-vezérléshez és az NTFS daktákhoz a címtár-/fájlszintű engedély-kényszerítéshez. Az Azure Files tartományi szolgáltatások használatával történő hitelesítésével kapcsolatos további információkért tekintse meg az [áttekintést.](../files/storage-files-active-directory-overview.md)
 
 - **Megosztott kulcsengedélyezések** blobokhoz, fájlokhoz, várólistákhoz és táblákhoz. A megosztott kulcsot használó ügyfél fejlécet ad át minden olyan kéréssel, amely a tárfiók hozzáférési kulcsával van aláírva. További információt a [Megosztáskulcs engedélyezése című témakörben talál.](/rest/api/storageservices/authorize-with-shared-key/)
 - **Megosztott hozzáférési aláírások** blobokhoz, fájlokhoz, várólistákhoz és táblákhoz. A megosztott hozzáférésű aláírások (SAS) korlátozott delegált hozzáférést biztosítanak a tárfiók ban lévő erőforrásokhoz. Az aláírás érvényességi idejének vagy az általa biztosított engedélyeknek a hozzákötési időkorláthozzáadása rugalmasságot biztosít a hozzáférés kezeléséhez. További információ: [A megosztott hozzáférésű aláírások (SAS) használata.](storage-sas-overview.md)

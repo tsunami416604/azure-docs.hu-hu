@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7f20244906581dd2869bbc7fcd997d5245540eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f8c66db491b93278fedf1378d3df86e7ce5fdbf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155171"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531082"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -25,48 +25,46 @@ Az Űrlapfelismerő szolgáltatás folyamatosan frissül. Ebben a cikkben naprak
 
 ## <a name="march-2020"></a>2020. március 
 
+### <a name="new-features"></a>Új funkciók
+
+* **Értéktípusok címkézéshez** Most már megadhatja, hogy milyen típusú értékeket címkéz a Form Recognizer mintacímkéző eszközzel. A következő értéktípusok és változatok jelenleg támogatottak:
+  * `string`
+    * alapértelmezett, `no-whitespaces`,`alphanumeric`
+  * `number`
+    * Alapértelmezett`currency`
+  * `date` 
+    * alapértelmezett, `dmy` `mdy`, ,`ymd`
+  * `time`
+  * `integer`
+
+  A [mintacímke-eszköz](./quickstarts/label-tool.md#specify-tag-value-types) útmutatójában megtudhatja, hogyan használhatja ezt a funkciót.
+
+
+* **Táblázatos megjelenítés** A mintacímkéző eszköz most megjeleníti a dokumentumban felismert táblázatokat. Ez lehetővé teszi, hogy a címkézés és elemzés előtt megtekintse a dokumentumból felismert és kinyert táblákat. Ez a funkció a rétegek beállítással kapcsolható be és ki.
+
+  Ez egy példa a táblák felismerésére és kibontására:
+
+  > [!div class="mx-imgBorder"]
+  > ![Táblázatos megjelenítés a mintacímkéző eszközzel](./media/whats-new/formre-table-viz.png)
+
+    A kibontott táblázatok a JSON `"pageResults"`kimenetben érhetők el a alatt.
+
+  > [!IMPORTANT]
+  > A címkék címkézése nem támogatott. Ha a táblákat nem ismeri fel és nem személyesíti meg automatikusan, akkor csak kulcs/érték párokként címkézheti őket. Amikor a táblázatokat kulcs/érték párként címkézi, minden cellát egyedi értékként címkéz.
+
 ### <a name="extraction-enhancements"></a>Kivonási fejlesztések
 
 Ez a kiadás magában foglalja a kibontási fejlesztések és a pontosság javítása, különösen a képesség, hogy a címke és kivonat több kulcs/érték pár ugyanabban a szövegsorban. 
  
-### <a name="form-recognizer-sample-labeling-tool-is-now-open-source"></a>Az űrlapfelismerő mintacímkéző eszköz mostantól nyílt forráskódú
+### <a name="sample-labeling-tool-is-now-open-source"></a>A mintacímkéző eszköz mostantól nyílt forráskódú
 
 Az Űrlapfelismerő mintacímkéző eszköz már nyílt forráskódú projektként is elérhető. Integrálhatja azt a megoldásaiba, és igény szerint módosíthatja az ügyfélspecifikus módosításokat.
 
-Az űrlapfelismerő mintacímkéző eszközről a [GitHubon](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)elérhető dokumentációban olvashat bővebben.
-
-### <a name="labeling-value-types"></a>Címkézési értéktípusok
-
-Az értéktípusok már használhatók az Űrlapfelismerő mintacímkéző eszközével. Ezek az értéktípusok jelenleg támogatottak: 
-
-* Sztring
-* Szám 
-* Egész szám
-* Dátum 
-* Time
-
-Ez a kép azt mutatja, hogy az Űrlapfelismerő mintacímkéző eszközén milyen értéktípus-kijelölés jelenik meg:
-
-> [!div class="mx-imgBorder"]
-> ![Értéktípus-kijelölés mintacímkéző eszközzel](./media/whats-new/formre-value-type.png)
-
-A kibontott táblázat a JSON `pageResults`kimenetben érhető el.
-
-### <a name="table-visualization"></a>Táblázatos megjelenítés 
-
-Az Űrlapfelismerő címkéző eszköz mostantól megjeleníti a dokumentumban felismert táblázatokat. Ez lehetővé teszi a dokumentumból felismert és kinyert táblák megtekintését az Űrlapfelismerő mintacímkéző eszközzel való címkézés és elemzés előtt. Ez a funkció a rétegek beállítással kapcsolható be és ki. 
-
-Ez egy példa a táblák felismerésére és kibontására:
-
-> [!div class="mx-imgBorder"]
-> ![Táblázatos megjelenítés a mintacímkéző eszközzel](./media/whats-new/formre-table-viz.png)
-
-> [!IMPORTANT]
-> A címkék címkézése nem támogatott. Ha a táblákat nem ismeri fel és nem személyesíti meg automatikusan, akkor csak kulcs/érték párokként címkézheti őket. Amikor a táblázatokat kulcs/érték párként címkézi, kérjük, címkézze az egyes cellákat értékként.
+Az Űrlapfelismerő mintacímkéző eszközről a [GitHubon](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)elérhető dokumentációban olvashat bővebben.
 
 ### <a name="tls-12-enforcement"></a>A TLS 1.2 kényszerítése
 
-* A TLS 1.2 mostantól a szolgáltatáshoz érkező összes HTTP-kérelemre érvényes. További információ: [Azure Cognitive Services security.](../cognitive-services-security.md)
+A TLS 1.2 mostantól a szolgáltatáshoz érkező összes HTTP-kérelemre érvényes. További információ: [Azure Cognitive Services security.](../cognitive-services-security.md)
 
 ## <a name="january-2020"></a>2020. január
 

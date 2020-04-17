@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 89de6bf80d14ec77fe6b1f98b6e1d15c6e573fbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46a1db94d576174b837a40c646fcf9e082e339c8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756283"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461616"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése az Azure Active Directoryval az Azure Service Bus erőforrásainak eléréséhez
 [Felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md) egy Azure-közi funkció, amely lehetővé teszi, hogy hozzon létre egy biztonságos identitást társított központi telepítés, amely alatt az alkalmazáskód fut. Ezután társíthatja az identitást olyan hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket adnak az alkalmazás által igényelt speciális Azure-erőforrások eléréséhez.
@@ -75,7 +75,7 @@ A beépített szerepkörök definiálásáról a [Szerepkör-definíciók ismert
 ## <a name="enable-managed-identities-on-a-vm"></a>Felügyelt identitások engedélyezése virtuális számítógépen
 Mielőtt az Azure Resources felügyelt identitások használatával engedélyezheti a Service Bus-erőforrásokat a virtuális gépről, először engedélyeznie kell az Azure Resources felügyelt identitásait a virtuális gépen. Ha tudni szeretné, hogyan engedélyezheti az Azure Resources felügyelt identitásait, tekintse meg az alábbi cikkek egyikét:
 
-- [Azure-portál](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sablon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -140,7 +140,7 @@ A módosítások elvégzése után tegye közzé és futtassa az alkalmazást. A
 
 
 > [!NOTE]
-> - A felügyelt identitás csak az Azure-környezetben, az alkalmazásszolgáltatásokon, az Azure-beli virtuális gépeken és a méretezési csoportokon belül működik. A .NET-alkalmazások esetében a Service Bus NuGet csomag által használt Microsoft.Azure.Services.AppAuthentication könyvtár absztrakciót biztosít ezen a protokollon keresztül, és támogatja a helyi fejlesztési élményt. Ez a könyvtár azt is lehetővé teszi, hogy tesztelje a kódot helyileg a fejlesztői gépen, a Visual Studio, az Azure CLI 2.0 vagy az Active Directory integrált hitelesítés felhasználói fiókjának használatával. A tár helyi fejlesztési lehetőségeiről a [Szolgáltatás-szolgáltatás hitelesítés az Azure Key Vault számára a .NET használatával című](../key-vault/service-to-service-authentication.md)témakörben található.  
+> - A felügyelt identitás csak az Azure-környezetben, az alkalmazásszolgáltatásokon, az Azure-beli virtuális gépeken és a méretezési csoportokon belül működik. A .NET-alkalmazások esetében a Service Bus NuGet csomag által használt Microsoft.Azure.Services.AppAuthentication könyvtár absztrakciót biztosít ezen a protokollon keresztül, és támogatja a helyi fejlesztési élményt. Ez a könyvtár azt is lehetővé teszi, hogy tesztelje a kódot helyileg a fejlesztői gépen, a Visual Studio, az Azure CLI 2.0 vagy az Active Directory integrált hitelesítés felhasználói fiókjának használatával. A tár helyi fejlesztési lehetőségeiről a [Szolgáltatás-szolgáltatás hitelesítés az Azure Key Vault számára a .NET használatával című](../key-vault/general/service-to-service-authentication.md)témakörben található.  
 > 
 > - A felügyelt identitások jelenleg nem működnek az App Service központi telepítési helyekkel.
 

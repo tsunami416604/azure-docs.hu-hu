@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 505f58f13a7186948a228fefe872d74fb98eba33
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: bf69d2963c74723cb3fea542e28288e4f136d5c3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345777"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458760"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: Adatok előkészítése az R-ben egy prediktív modell betanításához az Azure SQL Database Machine Learning Services szolgáltatással (előzetes verzió)
 
@@ -41,13 +42,11 @@ A [második részben](sql-database-tutorial-predictive-model-build-compare.md)me
 
 A [harmadik részben](sql-database-tutorial-predictive-model-deploy.md)megtudhatja, hogyan tárolhatja a modellt egy adatbázisban, majd hozzon létre tárolt eljárásokat az első és a második részben kifejlesztett R-parancsfájlokból. A tárolt eljárások egy SQL-adatbázisban futnak, hogy új adatok alapján előrejelzéseket készítsenek.
 
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
-* Azure SQL Database Server a Machine Learning Services engedélyezve van – A nyilvános előzetes verzió során a Microsoft befogja a fedélzetre, és engedélyezi a gépi tanulást a meglévő vagy az új adatbázisokhoz. Kövesse a [Regisztráció az előnézetre](sql-database-machine-learning-services-overview.md#signup)című részben található lépéseket.
+* [Azure SQL Database Machine Learning Services (R)](sql-database-machine-learning-services-overview.md) engedélyezve van.
 
 * RevoScaleR-csomag – A csomag helyi telepítésének lehetőségeiről a [RevoScaleR című](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) témakörben található.
 
@@ -57,7 +56,7 @@ A [harmadik részben](sql-database-tutorial-predictive-model-deploy.md)megtudhat
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="import-the-sample-database"></a>Mintaadatbázis importálása
 

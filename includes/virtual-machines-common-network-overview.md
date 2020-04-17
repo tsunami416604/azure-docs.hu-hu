@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b5d46caa80f3f0aaeeb18bd919dafccf628c5faf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81385016"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461988"
 ---
 Azure virtuális gép létrehozásakor létre kell hoznia egy [virtuális hálózatot](../articles/virtual-network/virtual-networks-overview.md) (VNet), vagy egy meglévő VNetet kell használnia. Arról is döntenie kell, hogy a virtuális gépek milyen módon legyenek elérhetők a VNeten. Mindenképpen [készítsen tervet az erőforrások létrehozása előtt](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md), továbbá győződjön meg arról, hogy tisztában van a [hálózati erőforrások korlátaival](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
@@ -148,24 +148,7 @@ Ez a táblázat egy belső terheléselosztó létrehozásának lehetséges móds
 
 ### <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
 
-A virtuálisgép-méretezési készletekkel és a terheléselosztóval végzett munka során a következőket kell figyelembe venni:
-
-* **Több virtuálisgép-méretezési csoport nem használhatja ugyanazt a terheléselosztót.**
-* **Porttovábbítási és bejövő NAT-szabályok:**
-  * Minden virtuálisgép-méretezési készletnek rendelkeznie kell egy bejövő NAT-szabállyal.
-  * Ha a terheléselosztó háttérkészletében lévő virtuálisgép-méretezési készletet használja, az alapértelmezett bejövő NAT-szabályok automatikusan létrejönnek, ez szándékosan történik.
-* **Terheléselosztási szabályok:**
-  * Ha a virtuális gép méretezési készleta a terheléselosztó háttérkészletében az alapértelmezett terheléselosztási szabály automatikusan létrejön, ez szándékosan történik.
-* **Kimenő szabályok**:
-  *  Ha egy olyan háttérkészlethez szeretne kimenő szabályt létrehozni, amelyre már hivatkozik egy terheléselosztási szabály, először meg kell jelölnie a **"Implicit kimenő szabályok létrehozása" szót** a portálon, amikor a bejövő terheléselosztási szabály létrejön. **No**
-
-  :::image type="content" source="./media/virtual-machines-common-network-overview/vmsslb.png" alt-text="Terheléselosztási szabály létrehozása" border="true":::
-
-A következő módszerek kelthetegy virtuálisgép-méretezési készlet üzembe helyezéséhez egy meglévő Azure-terheléselosztóval.
-
-* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure Portal használatával.](../articles/load-balancer/configure-vm-scale-set-portal.md)
-* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure PowerShell használatával.](../articles/load-balancer/configure-vm-scale-set-powershell.md)
-* [Konfiguráljon egy virtuálisgép-méretezési készletet egy meglévő Azure Load Balancer-rel az Azure CLI használatával.](../articles/load-balancer/configure-vm-scale-set-cli.md)
+A terheléselosztóról és a virtuálisgép-méretezési készletekről a [Hálózatkezelés az Azure virtuálisgép-méretezési készletei](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)című témakörben talál további információt.
 
 ## <a name="vms"></a>Virtuális gépek
 

@@ -2,13 +2,13 @@
 title: Kérdések a felderítéssel, értékeléssel és függőségelemzéssel kapcsolatban az Azure Áttelepítése szolgáltatásban
 description: Válaszok at kaphat a felderítéssel, értékeléssel és függőségelemzéssel kapcsolatos gyakori kérdésekre az Azure Migrate alkalmazásban.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 7a63271811053ee2da79f134ac117559e31b0fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460806"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529773"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felfedezés, értékelés és függőségi elemzés - Gyakori kérdések
 
@@ -19,9 +19,16 @@ Ez a cikk az Azure Migrate felderítésével, értékelésével és függősége
 - Kérdések a [kiszolgáló áttelepítésével](common-questions-server-migration.md) kapcsolatban
 - Kérdések megválaszolása az [Azure Áttelepítésfórumában](https://aka.ms/AzureMigrateForum)
 
+
+## <a name="what-geographies-are-supported-for-discovery-and-assessment-with-azure-migrate"></a>Milyen földrajzi területek támogatottak a felderítéshez és az értékeléshez az Azure Migrate szolgáltatással?
+
+Tekintse át a támogatott földrajzi köz- [és](migrate-support-matrix.md#supported-geographies-public-cloud) [kormányzati felhőket.](migrate-support-matrix.md#supported-geographies-azure-government)
+
+
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hány virtuális gépet fedezhetek fel egy készülékkel?
 
 Akár 10 000 VMware virtuális gépet, akár 5000 Hyper-V virtuális gépet és akár 250 fizikai kiszolgálót is felfedezhet egyetlen készülék használatával. Ha több gépe van, olvassa el [a Hyper-V-felmérés méretezését,](scale-hyper-v-assessment.md) [a VMware-felmérés méretezését](scale-vmware-assessment.md)vagy [a fizikai kiszolgálói felmérés méretezését.](scale-physical-assessment.md)
+
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>A virtuális gép mérete megváltozott. Lefuttathatok még egy értékelést?
 

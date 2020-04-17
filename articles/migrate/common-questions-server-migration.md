@@ -3,12 +3,12 @@ title: – gyakori kérdések az Azure Áttelepítési kiszolgáló áttelepít�
 description: Válaszok az Azure Migrate Server Migration használatával a gépek áttelepítésével kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: cc78d2087dcaad2922ca6b6d9c090a8decdb6e84
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: bf33c276c721f3be16d75b964c2b223e90c2a560
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393795"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529798"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Áttelepítési kiszolgáló: Gyakori kérdések
 
@@ -18,6 +18,10 @@ Ez a cikk az Azure Áttelepítés: Kiszolgálóáttelepítés imátló eszközze
 - Kérdések az [Azure Migrate készülékkel kapcsolatban](common-questions-appliance.md)
 - Kérdések [a felderítéssel, értékeléssel és függőségi megjelenítéssel kapcsolatban](common-questions-discovery-assessment.md)
 - Kérdések megválaszolása az [Azure Áttelepítésfórumában](https://aka.ms/AzureMigrateForum)
+
+## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Milyen földrajzi területek támogatottak az Azure Áttelepítés?
+
+Tekintse át a támogatott földrajzi köz- [és](migrate-support-matrix.md#supported-geographies-public-cloud) [kormányzati felhőket.](migrate-support-matrix.md#supported-geographies-azure-government)
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>Hogyan működik az ügynök nélküli VMware replikáció?
 

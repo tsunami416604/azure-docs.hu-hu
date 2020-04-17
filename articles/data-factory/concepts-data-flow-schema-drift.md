@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/12/2019
-ms.openlocfilehash: a6b3b1d11242434088c138460d968f39d5273e4f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/15/2020
+ms.openlocfilehash: 4c510cae7ba5a952e6dc7f7cb7ae7591fe801560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418422"
+ms.locfileid: "81461293"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Sémaeltolódás a leképezési adatfolyamban
 
@@ -30,6 +30,10 @@ A sémaeltolódás elleni védelem érdekében fontos, hogy az adatfolyam-kezel�
 Az Azure Data Factory natív módon támogatja a rugalmas sémák, amelyek a végrehajtásról a végrehajtásra, így hozhat létre általános adatátalakítási logika anélkül, hogy újra kell fordítania az adatfolyamok.
 
 Meg kell hoznia egy architekturális döntést az adatfolyamban, hogy elfogadja a séma sodródását a folyamat során. Ha ezt teszi, védelmet nyújt a forrásokból származó sémamódosítások ellen. Az oszlopok és típusok korai kötése azonban elveszhet az adatfolyamban. Az Azure Data Factory a séma-átlóási folyamatokat kései kötési folyamatként kezeli, így az átalakítások létrehozásakor az átsodródott oszlopnevek nem lesznek elérhetők a sémanézetekben a folyamat során.
+
+Ez a videó bemutatja azokat az összetett megoldásokat, amelyek et az Adatfolyam-eltolódás funkcióval könnyedén hozhat létre az ADF-ben. Ebben a példában rugalmas adatbázissémák alapján hozunk létre újrafelhasználható mintákat:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
 ## <a name="schema-drift-in-source"></a>Sémaeltolódás a forrásban
 

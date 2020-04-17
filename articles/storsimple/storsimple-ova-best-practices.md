@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544343"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460647"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>A StorSimple Virtual Array ajánlott eljárásai
 
@@ -199,7 +199,7 @@ A StorSimple-kötetek ACR-einek konfigurálásakor az alábbi ajánlott eljárá
 ### <a name="data-security-and-encryption"></a>Adatbiztonság és titkosítás
 A StorSimple virtuális tömb adatbiztonsági és titkosítási funkciókkal rendelkezik, amelyek biztosítják az adatok titkosságát és integritását. A szolgáltatások használatakor ajánlott az alábbi gyakorlati tanácsokat követni: 
 
-* Definiáljon egy felhőalapú tárolási titkosítási kulcsot az AES-256 titkosítás létrehozásához, mielőtt az adatokat a virtuális tömbből a felhőbe küldené. Ez a kulcs nem szükséges, ha az adatok titkosítása kezdődik. A kulcs egy kulcskezelő rendszer, például az [Azure key vault](../key-vault/key-vault-overview.md)használatával generálható és őrizhető.
+* Definiáljon egy felhőalapú tárolási titkosítási kulcsot az AES-256 titkosítás létrehozásához, mielőtt az adatokat a virtuális tömbből a felhőbe küldené. Ez a kulcs nem szükséges, ha az adatok titkosítása kezdődik. A kulcs egy kulcskezelő rendszer, például az [Azure key vault](../key-vault/general/overview.md)használatával generálható és őrizhető.
 * A tárfiók konfigurálásakor a StorSimple Manager szolgáltatáson keresztül, győződjön meg arról, hogy engedélyezi a TLS-mód biztonságos csatorna létrehozása a StorSimple-eszköz és a felhő közötti hálózati kommunikáció.
 * Rendszeresen hozza létre újra a tárfiókok kulcsait (az Azure Storage-szolgáltatás elérésével), hogy figyelembe vegye a hozzáférés változásait a rendszergazdák módosított listája alapján.
 * A virtuális tömb adatait tömöríti és duplikálja az Azure-ba való küldés előtt. Nem javasoljuk a Data Deduplikációs szerepkör-szolgáltatás használatát a Windows Server gazdagépen.
