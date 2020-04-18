@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan készülhet fel a Hyper-V virtuális gépek ér
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: e86e634812e9f2782a003a11b48cfecf91d95359
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535298"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641634"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba való értékelésére és áttelepítésére
 
-Ez a cikk bemutatja, hogyan készülhet fel a helyszíni Hyper-V virtuális gépek értékelésére az Azure Migrate:Server Assessment(áttelepítés-szolgáltatások áttekintése.md#azure-migrate-server-assessment-tool), valamint a Hyper-V virtuális gépek áttelepítése az [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool)segítségével.
+Ez a cikk bemutatja, hogyan készülhet fel a helyszíni Hyper-V virtuális gépek értékelésére az [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool)segítségével, valamint a Hyper-V virtuális gépek áttelepítése az [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool)segítségével.
 
 
 Ez az oktatóanyag az első egy sorozatban, amely bemutatja, hogyan értékelheti és telepítheti át a Hyper-V virtuális gépeket az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:

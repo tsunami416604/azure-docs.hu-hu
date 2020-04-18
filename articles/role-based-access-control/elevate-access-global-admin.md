@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/03/2019
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137461"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641365"
 ---
-# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Az összes Azure-előfizetés és felügyeleti csoport kezeléséhez való hozzáférés magasabb szintű ítése
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Hozzáférési jogosultságszint emelése az összes Azure-előfizetés és felügyeleti csoport kezeléséhez
 
 Az Azure Active Directory (Azure AD) globális rendszergazdájaként előfordulhat, hogy nem fér hozzá a címtárban lévő összes előfizetéshez és felügyeleti csoporthoz. Ez a cikk bemutatja, hogyan emelheti a hozzáférést az összes előfizetéshez és felügyeleti csoporthoz.
 
@@ -30,7 +30,7 @@ Az Azure Active Directory (Azure AD) globális rendszergazdájaként előfordulh
 
 ## <a name="why-would-you-need-to-elevate-your-access"></a>Miért kellene magasabbra emelned a hozzáférésed?
 
-Ha Ön globális rendszergazda, előfordulhat, hogy a következőket szeretné tenni:
+Ha Ön globális rendszergazda, előfordulhat, hogy a következő műveleteket szeretné elvégezni:
 
 - Hozzáférés visszaszerzése egy Azure-előfizetéshez vagy felügyeleti csoporthoz, ha egy felhasználó elvesztette a hozzáférést
 - Azure-előfizetéshez vagy felügyeleti csoporthoz való hozzáférés engedélyezése más felhasználónak vagy saját részre
@@ -47,7 +47,7 @@ A emelt szintű hozzáférést távolítsa el, miután elkészítette a legfels�
 
 ![Hozzáférési szint emelése](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>Azure portál
+## <a name="azure-portal"></a>Azure Portal
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Globális rendszergazda hozzáférése magasabb rakoncátsokban
 
@@ -55,9 +55,7 @@ Az alábbi lépésekkel magasabb szintű hozzáférést biztosít egy globális 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) vagy az [Azure Active Directory felügyeleti központjába](https://aad.portal.azure.com) globális rendszergazdaként.
 
-1. Keresse meg és válassza ki az **Azure Active Directoryt**.
-
-   ![Az Azure Active Directory kiválasztása – képernyőkép](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
+1. Nyissa meg **az Azure Active Directoryt**.
 
 1. A **Kezelés csoportban**válassza a **Tulajdonságok lehetőséget.**
 
@@ -98,7 +96,7 @@ A Felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés`/`elt
 
 1. Állítsa az **Azure-erőforrások Hozzáférés-kezelését,** és állítsa vissza a **Nem kapcsolót.** Mivel ez egy felhasználónkénti beállítás, akkor ugyanazzal a felhasználóval kell bejelentkeznie, mint amilyen a hozzáférés magasabb szintre állításához használt.
 
-    Ha megpróbálja eltávolítani a Felhasználói hozzáférés-rendszergazda szerepkör-hozzárendelést a Hozzáférés-vezérlési (IAM) ablaktáblán, a következő üzenet jelenik meg. A szerepkör-hozzárendelés eltávolításához állítsa vissza a kapcsolót **Nem-** re, vagy az Azure PowerShell, az Azure CLI vagy a REST API használatát.
+    Ha megpróbálja eltávolítani a Felhasználói hozzáférés-rendszergazda szerepkör-hozzárendelést a Hozzáférés-vezérlési (IAM) ablaktáblán, a következő üzenet jelenik meg. A szerepkör-hozzárendelés eltávolításához vissza kell állítania **No** a kapcsolót Nem-re, vagy az Azure PowerShellt, az Azure CLI-t vagy a REST API-t kell használnia.
 
     ![Szerepkör-hozzárendelések eltávolítása gyökérhatókörrel](./media/elevate-access-global-admin/iam-root-remove.png)
 
@@ -233,7 +231,7 @@ A felhasználó összes megtagadási hozzárendelését a gyökérhatókörben (
 
 ### <a name="remove-elevated-access"></a>Emelt szintű hozzáférés eltávolítása
 
-A híváskor `elevateAccess`saját magának hoz létre szerepkör-hozzárendelést, ezért a jogosultságok visszavonásához el kell távolítania a Felhasználói hozzáférés-rendszergazda szerepkör-hozzárendelést saját maga a gyökérhatókörben (`/`)
+A híváskor `elevateAccess`saját magának hoz létre szerepkör-hozzárendelést, ezért a jogosultságok visszavonásához el kell távolítania a Felhasználói hozzáférés-rendszergazda szerepkör-hozzárendelést saját maga a gyökérhatókörben (`/`.
 
 1. Hívja meg a `roleName` [GET szerepkördefiníciókat,](/rest/api/authorization/roledefinitions/get) ahol a felhasználói hozzáférés rendszergazdája határozza meg a Felhasználói hozzáférés-rendszergazda szerepkör névazonosítóját.
 

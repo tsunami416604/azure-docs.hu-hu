@@ -4,18 +4,18 @@ description: Ismerje meg az Azure Cosmos DB SQL ORDER BY záradékát. Az SQL ha
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/17/2020
 ms.author: tisande
-ms.openlocfilehash: b88184be39a41ec42f8fb304a7511073f645f1cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188732"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641401"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY záradék az Azure Cosmos DB-ben
 
-A választható ORDER BY záradék a lekérdezés által visszaadott eredmények rendezési sorrendjét adja meg.
+A `ORDER BY` választható záradék a lekérdezés által visszaadott eredmények rendezési sorrendjét adja meg.
 
 ## <a name="syntax"></a>Szintaxis
   
@@ -31,9 +31,9 @@ ORDER BY <sort_specification>
   
    Megadja azt a tulajdonságot vagy kifejezést, amely alapján rendezni szeretné a lekérdezés eredményhalmazát. A rendezési oszlop névként vagy tulajdonságaliasként is megadható.  
   
-   Több tulajdonság is megadható. A tulajdonságneveknek egyedinek kell lenniük. Az ORDER BY záradékban szereplő rendezési tulajdonságok sorrendje határozza meg a rendezett eredményhalmaz szervezetét. Ez azt, hogy az eredményhalmaz az első tulajdonság szerint van rendezve, majd a rendezett lista a második tulajdonság szerint van rendezve, és így tovább.  
+   Több tulajdonság is megadható. A tulajdonságneveknek egyedinek kell lenniük. A rendezési tulajdonságok sorrendje határozza `ORDER BY` meg a rendezett eredményhalmaz t. Ez azt, hogy az eredményhalmaz az első tulajdonság szerint van rendezve, majd a rendezett lista a második tulajdonság szerint van rendezve, és így tovább.  
   
-   Az ORDER BY záradékban hivatkozott tulajdonságneveknek vagy a választólistában szereplő tulajdonságnak, vagy a FROM záradékban meghatározott gyűjteményben meghatározott tulajdonságnak kell megfelelniük, anélkül, hogy bármilyen kétértelműség ről lenne szó.  
+   A `ORDER BY` záradékban hivatkozott tulajdonságneveknek vagy a választólistában szereplő tulajdonságnak, vagy a `FROM` záradékban meghatározott gyűjteményben meghatározott tulajdonságnak kell megfelelniük, anélkül, hogy bármilyen kétértelműség lenne.  
   
 - `<sort_expression>`  
   
@@ -45,7 +45,7 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   Itt adható meg, hogy a megadott oszlopértékeit növekvő vagy csökkenő sorrendben kell rendezni. Az ASC a legalacsonyabb értéktől a legmagasabb értékig rendez. A DESC a legmagasabb értéktől a legalacsonyabb értékig rendez. Az ASC az alapértelmezett rendezési sorrend. A null értékeket a lehető legalacsonyabb értékként kezeli a függvény.  
+   Itt adható meg, hogy a megadott oszlopértékeit növekvő vagy csökkenő sorrendben kell rendezni. `ASC`a legalacsonyabb értéktől a legmagasabb értékig. `DESC`a legmagasabb értéktől a legalacsonyabb értékig. `ASC`az alapértelmezett rendezési sorrend. A null értékeket a lehető legalacsonyabb értékként kezeli a függvény.  
   
 ## <a name="remarks"></a>Megjegyzések  
   
@@ -152,7 +152,7 @@ Az eredmények csak a definiált `lastName`dokumentumot tartalmazzák:
     ]
 ```
 
-Ha frissítjük a tároló indexelési szabályzatát, `lastName`hogy explicit módon tartalmazza a elérési útját, akkor a lekérdezés eredményében egy nem definiált rendezési tulajdonsággal rendelkező dokumentumokat is tartalmazni fogunk. Explicit módon meg kell határoznia azt az elérési utat, amely a skaláris értékhez vezet (és nem azon túl). Az indexelési házirendben az `?` elérési út definíciójában lévő karaktert `lastName` kell használnia annak érdekében, hogy explicit módon indexelje a tulajdonságot, és ne legyen rajta túl további beágyazott elérési út.
+Ha frissítjük a tároló indexelési szabályzatát, `lastName`hogy explicit módon tartalmazza a elérési útját, akkor a lekérdezés eredményében egy nem definiált rendezési tulajdonsággal rendelkező dokumentumokat is tartalmazni fogunk. Explicit módon meg kell határoznia azt az elérési utat, amely a skaláris értékhez vezet (és nem azon túl). Az indexelési házirendben az `?` elérési út definíciójában lévő karaktert `lastName` kell használnia annak érdekében, hogy explicit módon indexelje a tulajdonságot, és ne legyen rajta túl további beágyazott elérési út. Ha `Order By` a lekérdezés [összetett indexet](index-policy.md#composite-indexes)használ, az eredmények mindig tartalmazni fogják a nem definiált rendezési tulajdonsággal rendelkező dokumentumokat a lekérdezés eredményében.
 
 Az alábbiakban egy mintaindexelési házirend et `lastName` olvashat, amely lehetővé teszi, hogy a nem definiált dokumentumok megjelenjenek a lekérdezés eredményében:
 
@@ -218,6 +218,6 @@ Az eredmény a következő:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Kezdetekhez](sql-query-getting-started.md)
+- [Első lépések](sql-query-getting-started.md)
 - [Az Azure Cosmos DB indexelési szabályzatai](index-policy.md)
 - [OFFSET LIMIT záradék](sql-query-offset-limit.md)

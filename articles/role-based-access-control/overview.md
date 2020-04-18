@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ec9734974971ac89ad54934f43c70f8805b6a013
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063055"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641794"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Mi az Azure-erőforrásokhoz (RBAC) való szerepköralapú hozzáférés-vezérlés?
 
@@ -84,7 +84,7 @@ Az Azure-ban a hatókörök több szinten határozhatók meg: a [felügyeleti cs
 
 ![Szerepkör-hozzárendelés hatóköre](./media/overview/rbac-scope.png)
 
-Amikor hozzáférést rendel egy szülő hatókörhöz, az engedélyeket azok származtatott hatókörei is öröklik. Példa:
+Amikor hozzáférést rendel egy szülő hatókörhöz, az engedélyeket azok származtatott hatókörei is öröklik. Például:
 
 - Ha [tulajdonosi](built-in-roles.md#owner) szerepkört rendel egy, a felügyeleti csoport hatóköréhez tartozó felhasználóhoz, a felhasználó a felügyeleti csoportban lévő összes előfizetésben mindent felügyelhet.
 - Ha az [Olvasó](built-in-roles.md#reader) szerepkört hozzárendeli egy csoporthoz az előfizetés hatókörében, a csoport tagjai az előfizetésben lévő összes erőforráscsoportot és erőforrást megtekinthetik.
@@ -139,4 +139,4 @@ Az RBAC a következő főbb lépésekkel határozza meg, hogy Ön hozzáféréss
 - [Rövid útmutató: A felhasználó Azure-erőforrásokhoz való hozzáférésének megtekintése az Azure Portalon keresztül](check-access.md)
 - [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](role-assignments-portal.md)
 - [A különböző Azure-beli szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
-- [A nagyvállalati felhőmegoldások bevezetése: Erőforráshozzáférés-kezelés az Azure-ban](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)
+- [Felhőbevezetési keretrendszer: Erőforrás-hozzáférés-kezelés az Azure-ban](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

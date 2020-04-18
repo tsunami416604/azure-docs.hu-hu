@@ -15,18 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 1d9d63aa6b3da1b8d8389722bd5af0eeed585d03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77134978"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641649"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Egyetlen bitráta élő közvetítés küldéséhez a Wirecast kódoló val 
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
-> * [Tricaster között](media-services-configure-tricaster-live-encoder.md)
->
 >
 
 Ez a cikk bemutatja, hogyan konfigurálható a [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) élő kódoló, hogy küldjön egy bitráta stream AMS csatornák, amelyek engedélyezve vannak az élő kódolás. További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)

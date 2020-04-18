@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 44d6776a367a5cb1eeb86c955f083598d417aba6
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475242"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641671"
 ---
 # <a name="azure-media-services-concepts"></a>Az Azure Media Services fogalmai 
 
@@ -111,7 +111,7 @@ A támogatott kódolókról a [Kódolók](media-services-encode-asset.md)című 
 ## <a name="live-streaming"></a>Élő streamelés
 Az Azure Media Servicesben a csatorna egy folyamatot jelöl az élő streamelési tartalom feldolgozásához. A csatorna kétféleképpen fogad élő bemeneti adatfolyamokat:
 
-* A helyszíni élő kódoló többbitrátású RTMP vagy sima streamelést (töredezett MP4) küld a csatornának. A következő élő kódolókat használhatja, amelyek többátviteli sim idejű smooth streaminget adnak ki: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco és Elemental. A következő élő kódolók kimeneti RTMP: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision és Tricaster kódolók. A bevitt adatfolyamok további átkódolás és kódolás nélkül haladnak át a csatornákon. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódoló többbitrátású RTMP vagy sima streamelést (töredezett MP4) küld a csatornának. A következő élő kódolókat használhatja, amelyek többátviteli sim idejű smooth streaminget adnak ki: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco és Elemental. A következő élő kódolók kimeneti RTMP: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision kódolók. A bevitt adatfolyamok további átkódolás és kódolás nélkül haladnak át a csatornákon. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 * A rendszer egyetlen bitráta-adatfolyamot küld (a következő formátumok egyikében: RTMP vagy Smooth Streaming (Töredezett MP4)) a media services-szel élő kódolásra engedélyezett csatornának. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
 ### <a name="channel"></a>Csatorna
@@ -190,7 +190,7 @@ A progresszív letöltés lehetővé teszi a médialejátszás megkezdését a t
 >[!NOTE]
 >Ha azt szeretné, hogy a titkosított eszközök visszafejtsék, progresszív letöltésre is rendelkezésre kell állniuk.
 
-Ahhoz, hogy a felhasználók progresszív letöltési URL-eket, először létre kell hoznia egy OnDemandOrigin lokátor. A lokátor létrehozása, megadja az eszköz alap elérési útját. Ezután hozzá kell fűznie az MP4-fájl nevét. Példa:
+Ahhoz, hogy a felhasználók progresszív letöltési URL-eket, először létre kell hoznia egy OnDemandOrigin lokátor. A lokátor létrehozása, megadja az eszköz alap elérési útját. Ezután hozzá kell fűznie az MP4-fájl nevét. Például:
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 

@@ -7,7 +7,7 @@
       href: scenarios-and-availability.md
     - name: Alapelvek
       href: media-services-concepts.md
-- name: Első lépések
+- name: Bevezetés
   items:
     - name: Fiók létrehozása és felügyelete
       href: media-services-portal-create-account.md
@@ -47,7 +47,7 @@
           href: media-services-portal-live-passthrough-get-started.md
         - name: .NET
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
-- name: 'Útmutató:'
+- name: Útmutató
   items:
     - name: Örökölt összetevők
       displayName: 'deprecated, deprecation, retired, retirement, legacy'
@@ -79,7 +79,7 @@
               href: media-services-portal-manage-streaming-endpoints.md
             - name: .NET
               href: media-services-dotnet-manage-streaming-endpoints.md
-        - name: Tárterület
+        - name: Storage
           items:
             - name: A Media Services frissítése tárelérési kulcsok váltása után
               href: media-services-roll-storage-access-keys.md
@@ -217,7 +217,7 @@
                   href: media-services-media-encoder-premium-workflow-tutorials.md
                 - name: Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel
                   href: media-services-workflow-designer.md
-                - name: Prémium szintű munkafolyamat több bemenettel
+                - name: Prémium munkafolyamat több bemenettel
                   href: media-services-media-encoder-premium-workflow-multiplefilesinput.md
         - name: fMP4-adattömböket előállító feladat létrehozása
           href: media-services-generate-fmp4-chunks.md
@@ -257,8 +257,6 @@
           items:
             - name: Haivision KB kódoló
               href: media-services-configure-kb-live-encoder.md
-            - name: NewTek TriCaster kódoló
-              href: media-services-configure-tricaster-live-encoder.md
             - name: Wirecast kódoló
               href: media-services-configure-wirecast-live-encoder.md
         - name: A hosszú ideig futó műveletek kezelése
@@ -298,7 +296,7 @@
               href: media-services-playready-license-template-overview.md
             - name: Widevine-licencsablon
               href: media-services-widevine-license-template-overview.md
-        - name: Objektumtovábbítási szabályzat konfigurálása
+        - name: Adategység-kézbesítési házirendek konfigurálása
           items:
             - name: .NET
               href: media-services-dotnet-configure-asset-delivery-policy.md
@@ -334,7 +332,7 @@
               href: indexer-task-preset.md
         - name: Feldolgozás arcérzékelővel
           href: media-services-face-and-emotion-detection.md
-        - name: Feldolgozás a Motion Detector használatával
+        - name: Feldolgozás mozgásérzékelővel
           href: media-services-motion-detection.md
         - name: Feldolgozás a Face Redactorral
           href: media-services-face-redaction.md
@@ -416,7 +414,7 @@
           href: media-services-dotnet-how-to-use-azure-functions.md
         - name: Példák az Azure Functions használatára a Media Services szolgáltatásban
           href: 'https://github.com/Azure-Samples/media-services-dotnet-functions-integration'
-    - name: Monitoring
+    - name: Figyelés
       items:
         - name: A feladat előrehaladásának ellenőrzése
           items:
@@ -434,7 +432,7 @@
       items:
         - name: Gyakori kérdések
           href: media-services-frequently-asked-questions.md
-        - name: Útmutató az élő közvetítés hibaelhárításához
+        - name: Hibaelhárítási útmutató az élő streameléshez
           href: media-services-troubleshooting-live-streaming.md
         - name: Hibakódok
           href: media-services-error-codes.md

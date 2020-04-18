@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969321"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641713"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Dns-névfeloldási beállítások Linuxos virtuális gépekhez az Azure-ban
 Az Azure alapértelmezés szerint biztosítja a DNS-névfeloldást az összes virtuális géphez, amelyek egyetlen virtuális hálózatban vannak. Saját DNS-névfeloldási megoldásmegvalósítása saját DNS-szolgáltatások konfigurálásával a virtuális gépeken, hogy az Azure üzemelteti. A következő forgatókönyvek segítségével kiválaszthatja a helyzetnek működő t.
@@ -43,7 +43,7 @@ A nyilvános DNS-nevek feloldása mellett az Azure belső névfeloldást biztos�
 * A virtuális hálózatok virtuális gépei között a teljes tartománynév nélkül érhető el névfeloldás.
 * Az automatikusan létrehozott nevek használata helyett olyan állomásneveket is használhat, amelyek a legjobban leírják a központi telepítéseket.
 
-**Szempontok:**
+**Megfontolások:**
 
 * Az Azure által létrehozott DNS-utótag nem módosítható.
 * Saját rekordjait nem lehet manuálisan regisztrálni.
@@ -97,7 +97,7 @@ A Linux virtuális gép aktuális beállításainak ellenőrzéséhez a "cat /et
 A resolv.conf fájl automatikusan generálódik, és nem szerkeszthető. A "beállítások" sort hozzáadó konkrét lépések eloszlásonként változnak:
 
 **Ubuntu** (a resolvconf-ot használja)
-1. Adja hozzá a "/etc/resolveconf/resolv.conf.d/head" beállítássort.
+1. Adja hozzá a "/etc/resolvconf/resolv.conf.d/head" beállítássort.
 2. A frissítéshez futtassa a 'resolvconf -u' futtassa.
 
 **SUSE** (netconf használatával)

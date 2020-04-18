@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998399"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641623"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>A keresési eredmények működése az Azure Cognitive Search szolgáltatásban
 
@@ -108,10 +108,22 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     }
 ```
 
-> [!IMPORTANT]
-> A 2020. Az ezen időpont előtt létrehozott szolgáltatások nem változnak a kiemelési viselkedésükben. Ezzel a módosítással csak a teljes kifejezéslekérdezésnek megfelelő kifejezések et adja vissza a rendszer. Emellett meg lehet adni a kiemeléshez visszaadott töredékméretet is.
->
-> Amikor olyan ügyfélkódot ír, amely a leírás kiemelését valósítja meg, vegye figyelembe ezt a változást. Ne feledje, hogy ez nem lesz hatással, ha nem hoz létre egy teljesen új keresési szolgáltatást.
+### <a name="new-behavior-starting-july-15"></a>Új viselkedés (július 15-től)
+
+A 2020. Az ezen időpont előtt létrehozott szolgáltatások nem változnak a kiemelési viselkedésükben. 
+
+Az új viselkedés:
+
+* A program csak a teljes kifejezéslekérdezésnek megfelelő kifejezéseket adja vissza. A lekérdezés "Super Bowl" visszatér kiemeli, mint ez:
+
+    ```html
+    '<em>super bowl</em> is super awesome with a bowl of chips'
+    ```
+  Ne feledje, hogy a *kifejezés tál zseton* nincs kiemelve, mert nem felel meg a teljes mondat.
+  
+* A kiemeléshez visszaadott töredékméret is megadható. A töredék mérete karakterszámként van megadva (legfeljebb 1000 karakter).
+
+Amikor olyan ügyfélkódot ír, amely a leírás kiemelését valósítja meg, vegye figyelembe ezt a változást. Ne feledje, hogy ez nem lesz hatással, ha nem hoz létre egy teljesen új keresési szolgáltatást.
 
 ## <a name="next-steps"></a>További lépések
 

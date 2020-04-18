@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: 100f95c20743f70bb4a9f2ac7e74853eab80f3e9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414482"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641532"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Folyamatütemezés szerinti futtatására vonatkozó eseményindító létrehozása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,38 +31,46 @@ A következő szakaszok különböző módon biztosítják az ütemezési esemé
 Létrehozhat egy **ütemezési eseményindítót,** amely a folyamat időszakos (óránkénti, napi stb.) futtatását ütemezi. 
 
 > [!NOTE]
-> A folyamat és az ütemezési eseményindító létrehozásának, az eseményindítónak a folyamathoz való társításával, valamint a folyamat futtatásával és figyelésével készült teljes forgatókönyvről a [Rövid útmutató: Adatgyár létrehozása a Data Factory felhasználói felületének használatával](quickstart-create-data-factory-portal.md)című témakörben található.
+> A folyamat és az ütemezési eseményindító létrehozásának teljes forgatókönyvét, amely az eseményindítót a folyamathoz társítja, és futtatja és figyeli a folyamatot, olvassa el a [Rövid útmutató: Adatgyár létrehozása a Data Factory felhasználói felülethasználatával című témakört.](quickstart-create-data-factory-portal.md)
 
-1. Váltson a **Szerkesztés** lapra. 
+1. Váltás a **Szerkesztés** lapra, amely egy ceruzaszimbólummal jelenik meg. 
 
     ![Váltás a Szerkesztés lapra](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
-1. Kattintson a menü **Aktiválás** pontjára, majd az **Új/Szerkesztés** elemre. 
+
+1. Válassza az **Eseményindító parancsot** a menüben, majd az **Új/Szerkesztés parancsot.** 
 
     ![Új eseményindító menü](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
-2. Az **Eseményindítók hozzáadása** oldalon kattintson az **Eseményindító kiválasztása**, majd pedig az **Új** elemre. 
+
+1. Az **Eseményindítók hozzáadása** lapon válassza **az Eseményindító kiválasztása lehetőséget...** majd válassza az **+Új**lehetőséget. 
 
     ![Eseményindítók hozzáadása – új eseményindító](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. Az **Új eseményindító** lapon tegye a következő lépéseket: 
+
+1. Az **Új eseményindító** lapon tegye a következő lépéseket: 
 
     1. Annak ellenőrzése, hogy az **Ütemezés** beállítás ki van-e jelölve a **Típus**mezőben. 
-    2. Adja meg az eseményindító kezdő dátumát a **kezdő dátumhoz (UTC)**. Alapértelmezés szerint az aktuális dátumidőre van beállítva. 
-    3. Adja meg az **ismétlődést** az eseményindítóhoz. Válasszon egyet a legördülő listából (Percenként, Óránkénti, Napi, Heti és Havi). Írja be a szorzót a szövegmezőbe. Ha például azt szeretné, hogy az eseményindító 15 percenként egyszer fusson, jelölje be a **Minden perc**lehetőséget, és írja be a **15** értéket a szövegmezőbe. 
-    4. Ha a **Záró mezőben** nem szeretne befejezési dátumot megadni az eseményindítóhoz, válassza a **Nincs befejezés**lehetőséget. A befejezési dátum idő megadásához válassza **a Dátum dátum**lehetőséget, adja meg a befejezési dátumidőt, majd kattintson az Alkalmaz **gombra.** Minden egyes folyamatfuttatás költséggel jár. Ha tesztelés alatt áll, érdemes lehet biztosítani, hogy a folyamat csak néhány szor aktiválódik. Arról is győződjön meg, hogy elegendő idő áll rendelkezésre a folyamat futtatásához a közzététel időpontja és a befejezés időpontja között. Az eseményindító csak a Data Factoryban való közzététel után lesz aktív, a felhasználói felületen történő mentéskor még nem.
+    1. Adja meg az eseményindító kezdő dátumát a **kezdő dátumhoz (UTC)**. Alapértelmezés szerint az aktuális dátumidőre van beállítva. 
+    1. Adja meg az **ismétlődést** az eseményindítóhoz. Válasszon egyet a legördülő listából (Percenként, Óránkénti, Napi, Heti és Havi). Írja be a szorzót a szövegmezőbe. Ha például azt szeretné, hogy az eseményindító 15 percenként egyszer fusson, jelölje be a **Minden perc**lehetőséget, és írja be a **15** értéket a szövegmezőbe. 
+    1. Ha a **Záró mezőben** nem szeretne befejezési dátumot megadni az eseményindítóhoz, válassza a **Nincs befejezés**lehetőséget. A befejezési dátum idő megadásához válassza **a Dátum**dátum lehetőséget, majd a záró dátumidőt, majd az **OK**gombot. Minden egyes folyamatfuttatás költséggel jár. Ha tesztelés alatt áll, érdemes lehet biztosítani, hogy a folyamat csak néhány szor aktiválódik. Arról is győződjön meg, hogy elegendő idő áll rendelkezésre a folyamat futtatásához a közzététel időpontja és a befejezés időpontja között. Az eseményindító csak a Data Factoryban való közzététel után lesz aktív, a felhasználói felületen történő mentéskor még nem.
 
         ![Eseményindító-beállítások](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. Az **Új eseményindító** ablakban jelölje be az **Aktivált** lehetőséget, majd kattintson a **Tovább**gombra. Ezzel a jelölőnégyzetből később inaktiválhatja az eseményindítót. 
+
+1. Az **Új eseményindító** ablakban válassza az **Igen** lehetőséget az **Aktivált** beállításban, majd kattintson az **OK gombra.** Ezzel a jelölőnégyzetből később inaktiválhatja az eseményindítót. 
 
     ![Eseményindító-beállítások – Tovább gomb](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
-5. Az **Új eseményindító** oldalon tekintse át a figyelmeztető üzenetet, majd kattintson a **Befejezés** gombra.
+
+1. Az **Új eseményindító** ablakban tekintse át a figyelmeztető üzenetet, majd kattintson az **OK gombra.**
 
     ![Eseményindító-beállítások – Befejezés gomb](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. Kattintson a **Közzététel** elemre a módosítások Data Factoryban való közzétételéhez. Amíg nem teszi közzé a data factory módosításait, az eseményindító nem indul el a folyamat futtatása. 
+
+1. Válassza **az Összes közzététele** lehetőséget a módosítások adatgyárban való közzétételéhez. Amíg nem teszi közzé a módosításokat a Data Factory, az eseményindító nem indul el a folyamat futtatása. 
 
     ![Közzététel gomb](./media/how-to-create-schedule-trigger/publish-2.png)
-8. Váltson a bal oldali **Monitorozás** lapra. A lista frissítéséhez kattintson a **Frissítés** elemre. Láthatja, hogy a folyamat fut által aktivált az ütemezett eseményindító. Figyelje meg az **Aktiválva a következő alapján** oszlop értékeit. Ha az **Eseményindító most** beállítást használja, a manuális eseményindító futtatása látható a listában. 
+
+1. Váltson a **Folyamat futtatása** lapra a bal oldalon, majd válassza a **Frissítés** lehetőséget a lista frissítéséhez. Látni fogja, hogy az ütemezett eseményindító által aktivált folyamatfuttatások. Figyelje meg az **Aktiválva a következő alapján** oszlop értékeit. Ha az **Eseményindító most** opciót használja, a manuális eseményindító futtatása látható lesz a listában. 
 
     ![Aktivált futtatások monitorozása](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
-9. Kattintson a **Folyamatfuttatások** melletti lefelé mutató nyílra a **Eseményindító-futtatások** nézetre való átváltáshoz. 
+
+1. Váltson az **Eseményindító-futtatások** nézetre. 
 
     ![Eseményindító-futtatások monitorozása](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -112,31 +120,31 @@ Ez a szakasz bemutatja, hogyan használhatja az Azure PowerShellt egy ütemezés
     - Az eseményindító az **Adfv2QuickStartPipeline** folyamathoz van társítva. Ha több folyamatot szeretne társítani egy eseményindítóhoz, adjon hozzá további **folyamatreferencia** szakaszokat.
     - A rövid útmutatóban lévő folyamat két **paraméterértéket** vesz igénybe: **inputPath** és **outputPath**. Ezért ezeket a paramétereket az eseményindítóból adja át.
 
-2. Hozzon létre egy eseményindítót a **Set-AzDataFactoryV2Trigger** parancsmag használatával:
+1. Hozzon létre egy eseményindítót a **Set-AzDataFactoryV2Trigger** parancsmag használatával:
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. A **Get-AzDataFactoryV2Trigger** parancsmag használatával ellenőrizze, hogy az eseményindító állapota **Le van-e állítva:**
+1. A **Get-AzDataFactoryV2Trigger** parancsmag használatával ellenőrizze, hogy az eseményindító állapota **Le van-e állítva:**
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Indítsa el az eseményindítót a **Start-AzDataFactoryV2Trigger** parancsmag használatával:
+1. Indítsa el az eseményindítót a **Start-AzDataFactoryV2Trigger** parancsmag használatával:
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Ellenőrizze, hogy az eseményindító állapota **Elindult-e** a **Get-AzDataFactoryV2Trigger** parancsmag használatával:
+1. Ellenőrizze, hogy az eseményindító állapota **Elindult-e** a **Get-AzDataFactoryV2Trigger** parancsmag használatával:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  Az eseményindító futtatása az Azure PowerShellben a **Get-AzDataFactoryV2TriggerRun** parancsmag használatával. Az eseményindító futtatásával kapcsolatos információk leéséhez rendszeresen hajtsa végre a következő parancsot. Frissítse a **TriggerRunStartedAfter** és **a TriggerRunStartedBefore** értékeket, hogy megfeleljenek az eseményindító definíciójának értékeinek:
+1.  Az eseményindító futtatása az Azure PowerShellben a **Get-AzDataFactoryV2TriggerRun** parancsmag használatával. Az eseményindító futtatásával kapcsolatos információk leéséhez rendszeresen hajtsa végre a következő parancsot. Frissítse a **TriggerRunStartedAfter** és **a TriggerRunStartedBefore** értékeket, hogy megfeleljenek az eseményindító definíciójának értékeinek:
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"

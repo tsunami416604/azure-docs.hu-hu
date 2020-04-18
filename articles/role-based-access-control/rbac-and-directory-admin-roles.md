@@ -15,12 +15,12 @@ ms.date: 02/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: e8d82011fe4fdd40bb07c77411ad0e948ddad049
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f2229d57b249bab734b1ef91c10d5ec42ab95a17
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240099"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641432"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>A hagyományos előfizetés-rendszergazdai szerepkörök, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepkörök
 
@@ -131,3 +131,4 @@ Számos Azure AD-rendszergazdai szerepkör terjed ki az Azure AD-re és a Micros
 - [Mi az Azure-erőforrásokhoz (RBAC) való szerepköralapú hozzáférés-vezérlés?](overview.md)
 - [Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Klasszikus Azure-előfizetés-rendszergazdák](classic-administrators.md)
+- [Felhőbevezetési keretrendszer: Erőforrás-hozzáférés-kezelés az Azure-ban](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)
