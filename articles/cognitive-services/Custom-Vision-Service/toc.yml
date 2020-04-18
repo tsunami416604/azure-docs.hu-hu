@@ -7,45 +7,37 @@
       href: home.md
     - name: Újdonságok
       href: whats-new.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
-    - name: A webes portál használata
+    - name: Tartalombesoroló létrehozása
       items:
-        - name: Tartalombesoroló létrehozása
+        - name: A webes portál használata
           href: getting-started-build-a-classifier.md
-        - name: Objektumérzékelő készítése
-          href: get-started-build-detector.md
-    - name: A .NET SDK használata
-      items:
-        - name: Képbesorolás
+        - name: A .NET SDK használata
           href: csharp-tutorial.md
-        - name: Objektumészlelés
-          href: csharp-tutorial-od.md
-    - name: A Python SDK használata
-      items:
-        - name: Képbesorolás
+        - name: A Python SDK használata
           href: python-tutorial.md
-        - name: Objektumészlelés
-          href: python-tutorial-od.md
-    - name: A Java SDK használata
-      items:
-        - name: Képbesorolás
+        - name: A Java SDK használata
           href: java-tutorial.md
-        - name: Objektumészlelés
-          href: java-tutorial-od.md
-    - name: A Node.js SDK használata
-      items:
-        - name: Képbesorolás
+        - name: A Node.js SDK használata
           href: node-tutorial.md
-        - name: Objektumészlelés
-          href: node-tutorial-object-detection.md
-    - name: A Go SDK használata
-      items:
-        - name: Képbesorolás
+        - name: A Go SDK használata
           href: go-tutorial.md
-        - name: Objektumészlelés
+    - name: Objektumérzékelő készítése
+      items:
+        - name: A webes portál használata
+          href: get-started-build-detector.md
+        - name: A .NET SDK használata
+          href: csharp-tutorial-od.md
+        - name: A Python SDK használata
+          href: python-tutorial-od.md
+        - name: A Java SDK használata
+          href: java-tutorial-od.md
+        - name: A Node.js SDK használata
+          href: node-tutorial-object-detection.md
+        - name: A Go SDK használata
           href: go-tutorial-object-detection.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Vizuális állapotok jelentése IoT-eszközön
       href: iot-visual-alerts-tutorial.md
