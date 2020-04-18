@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7ee219ae5ace0f0da398cc542f410d3c895c8bd4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679984"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617868"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -38,7 +38,7 @@ Két oka lehet annak, hogy a kiszolgáló nem hajlandó csatlakozni egy **olyan 
 
 Először győződjön meg róla, hogy telepítse a **HEVC videobővítményeket,** ahogy azt a rendszerkövetelmények [Szoftver](../overview/system-requirements.md#software) részében említettük.
 
-Ha továbbra is problémákat tapasztal, ellenőrizze, hogy a grafikus kártya támogatja-e a H265-öt, és telepítve van a legújabb grafikus illesztőprogram. A gyártóspecifikus információkért tekintse meg a rendszerkövetelmények [Fejlesztési PC](../overview/system-requirements.md#development-pc) szakaszát.
+Ha továbbra is problémákat tapasztal, győződjön meg arról, hogy a grafikus kártya támogatja a H265-öt, és a legújabb grafikus illesztőprogram van telepítve. A gyártóspecifikus információkat a rendszerkövetelmények [Fejlesztési PC](../overview/system-requirements.md#development-pc) részében talál.
 
 **A kodek telepítve van, de nem használható:**
 
@@ -76,6 +76,14 @@ A videó minősége a hálózat minősége vagy a hiányzó H265 video kodeket v
 
 * A hálózati [problémák azonosításának lépései.](#unstable-holograms)
 * Tekintse meg a legújabb grafikus illesztőprogram telepítésének [rendszerkövetelményeit.](../overview/system-requirements.md#development-pc)
+
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Az MRC-vel rögzített videó nem tükrözi az élő élmény minőségét
+
+A hololensen a [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)segítségével lehet videót rögzíteni. Az eredményül kapott videó azonban két okból is rosszabb minőségű, mint az élő élmény:
+* A videoframerate 30 Hz-en van lezárva, szemben a 60 Hz-es szinttel.
+* A videó képek nem megy keresztül a [késői szakaszban reprojection](../overview/features/late-stage-reprojection.md) feldolgozási lépés, így a videó úgy tűnik, hogy choppier.
+
+Mindkettő a rögzítési technika eredendő korlátai.
 
 ## <a name="black-screen-after-successful-model-loading"></a>Fekete képernyő a sikeres modellbetöltés után
 

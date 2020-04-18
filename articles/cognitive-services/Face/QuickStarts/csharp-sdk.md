@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 5e0073bd14744338ff28c9c45193f126a1bba717
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d9b10341f971c0e8177043126ff8fbd4df078b86
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403036"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604982"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Rövid útmutató: Face ügyféltár a .NET-hez
 
@@ -126,17 +126,19 @@ Ezt a módszert valószínűleg meg `Main` szeretné hívni a metódusban.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_client)]
 
-## <a name="detect-faces-in-an-image"></a>Arcok felismerése a képeken
+### <a name="declare-helper-fields"></a>Segítő mezők deklarálása
 
-Az osztály gyökerében adja meg a következő URL-karakterláncot. Ez az URL-cím mintaképek rekedésére mutat.
+A következő mezőkre van szükség a később hozzáadni kívánt Arc műveletek közül többhez. Az osztály gyökerében adja meg a következő URL-karakterláncot. Ez az URL-cím mintaképek mappájára mutat.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
 
-Tetszés szerint kiválaszthatja, hogy melyik AI-modellt használja az észlelt arc(ok) adatainak kinyeréséhez. Ezekről a beállításokról a [Felismerési modell megadása](../Face-API-How-to-Topics/specify-recognition-model.md) című témakörben talál tájékoztatást.
+Definiáljon karakterláncokat, amelyek a különböző felismerési modelltípusokra mutatnak. Később megadhatja, hogy melyik felismerési modellt szeretné használni az arcfelismeréshez. Ezekről a beállításokról a [Felismerési modell megadása](../Face-API-How-to-Topics/specify-recognition-model.md) című témakörben talál tájékoztatást.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-A végső észlelési művelet egy **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** objektumot, egy kép URL-címét és egy felismerési modellt vesz igénybe.
+## <a name="detect-faces-in-an-image"></a>Arcok felismerése a képeken
+
+Adja hozzá a következő metódushívás a **fő** módszer. Legközelebb definiálja a módszert. A végső észlelési művelet egy **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** objektumot, egy kép URL-címét és egy felismerési modellt vesz igénybe.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
@@ -174,25 +176,21 @@ A következő kód kinyomtatja az egyezés részleteit a konzolra:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar_print)]
 
-## <a name="create-and-train-a-person-group"></a>Személycsoport létrehozása és betanítása
+## <a name="identify-a-face"></a>Arc azonosítása
+
+Az Azonosítás művelet egy személy (vagy több személy) képét veszi fel, és a képen lévő egyes arcok identitását keresi. Összehasonlítja az egyes észlelt arc egy **PersonGroup**, egy adatbázis a különböző **személy** objektumok, amelyek arcvonásai ismertek. Az Azonosítás művelet elvégzéséhez először létre kell hoznia és be kell képeznie **egy**
+
+### <a name="create-and-train-a-person-group"></a>Személycsoport létrehozása és betanítása
 
 A következő kód létrehoz egy **PersonGroup** hat különböző **személy** objektumok. Minden **egyes személyt** egy példaképhez társít, majd kiképzi, hogy minden egyes személyt az arcvonásai alapján ismerjen fel. **A Személy** és **a PersonGroup** objektumok az Ellenőrzés, azonosítás és csoport műveletekben használatosak.
 
-Ha még nem tette meg, adja meg a következő URL-karakterláncot az osztály gyökerében. Ez mintaképek rekedésére utal.
-
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
-
-A jelen szakasz későbbi részében található kód egy felismerési modellt határoz meg az arcok adatainak kinyeréséhez, és a következő kódrészlet hivatkozásokat hoz létre a rendelkezésre álló modellekre. A felismerési modellekkel kapcsolatos információkért [lásd: Felismerési modell megadása.](../Face-API-How-to-Topics/specify-recognition-model.md)
-
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
-
-### <a name="create-persongroup"></a>Személycsoport létrehozása
+#### <a name="create-persongroup"></a>Személycsoport létrehozása
 
 Deklaráljon egy karakterlánc-változót az osztály gyökerében, amely a létrehozandó **Személycsoport** azonosítóját jelöli.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_declare)]
 
-Új módszerrel adja hozzá a következő kódot. Ez a kód a személyek nevét társítja a példaképeikkel.
+Új módszerrel adja hozzá a következő kódot. Ez a módszer végrehajtja az Azonosítás műveletet. Az első kódblokk a személyek nevét társítja a példaképeikkel.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_files)]
 
@@ -200,20 +198,13 @@ Ezután adja hozzá a következő kódot, hogy hozzon létre egy **személy** ob
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_create)]
 
-### <a name="train-persongroup"></a>Betanítási személycsoport
+#### <a name="train-persongroup"></a>Betanítási személycsoport
 
 Miután kivette a képadatokat a képekből, és különböző **személyobjektumokba** rendezte azokat, be kell tanítania a **PersonGroup ot,** hogy azonosítsa az egyes személyobjektumaihoz társított vizuális funkciókat. **Person** A következő kód meghívja az aszinkron **vonat** metódust, és lekérdezi az eredményeket, és kinyomtatja az állapotot a konzolra.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_train)]
 
 Ez **a személycsoport** és a hozzá tartozó **Személy** objektumok készen állnak az Ellenőrzés, az Azonosítás vagy a Csoport műveletekben való használatra.
-
-## <a name="identify-a-face"></a>Arc azonosítása
-
-Az Azonosítás művelet egy személy (vagy több személy) képét veszi fel, és a képen lévő egyes arcok identitását keresi. Összehasonlítja az egyes észlelt arc egy **PersonGroup**, egy adatbázis a különböző **személy** objektumok, amelyek arcvonásai ismertek.
-
-> [!IMPORTANT]
-> A példa futtatásához először futtatnia kell a kódot a [Létrehozás és a személycsoport betanítása mezőben.](#create-and-train-a-person-group) Az adott szakaszban&mdash;`client`használt `url`változóknak itt `RECOGNITION_MODEL1` &mdash;kell rendelkezésre állniuk.
 
 ### <a name="get-a-test-image"></a>Tesztkép beszereznie
 
@@ -225,7 +216,7 @@ A következő kód veszi a forrásképet, és létrehoz egy listát a képen és
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify_sources)]
 
-A következő kódrészlet meghívja az Azonosítás műveletet, és kinyomtatja az eredményeket a konzolra. Itt a szolgáltatás megkísérli a forráskép minden arcának egyeztetését az adott **személycsoportban**lévő **személlyel.**
+A következő kódrészlet meghívja a **IdentifyAsync** műveletet, és kinyomtatja az eredményeket a konzolra. Itt a szolgáltatás megkísérli a forráskép minden arcának egyeztetését az adott **személycsoportban**lévő **személlyel.** Ezzel bezárja az Azonosítás imitátrát.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify)]
 

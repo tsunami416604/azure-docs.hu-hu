@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262486"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604618"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Feladatközpontok a tartós függvényekben (Azure Functions)
 
@@ -35,7 +35,13 @@ Ezek az erőforrások automatikusan létrejönnek az alapértelmezett Azure Stor
 
 ## <a name="task-hub-names"></a>Feladatközpont nevei
 
-A feladatközpontokat a *host.json* fájlban deklarált név azonosítja, ahogy az a következő példában látható:
+A feladatközpontokat a következő szabályoknak megfelelő név azonosítja:
+
+* Csak alfanumerikus karaktereket tartalmaz
+* Levéllel kezdődik
+* Legalább 3 karakter hosszú, legfeljebb 45 karakter
+
+A feladatközpont neve deklarálva van a *host.json* fájlban, ahogy az a következő példában látható:
 
 ### <a name="hostjson-functions-20"></a>host.json (Függvények 2.0)
 
@@ -121,7 +127,7 @@ public static async Task<HttpResponseMessage> Run(
 > [!NOTE]
 > Az előző C# példa a Durable Functions 2.x. A tartós függvények 1.x `DurableOrchestrationContext` esetén `IDurableOrchestrationContext`a helyett a ot kell használnia. A verziók közötti különbségekről a [Durable Functions verziók ról](durable-functions-versions.md) szóló cikkben olvashat bővebben.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A fájlban lévő `function.json` feladatközpont-tulajdonság az Alkalmazásbeállításon keresztül van beállítva:
 

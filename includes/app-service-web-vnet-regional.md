@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: ccompy
-ms.openlocfilehash: 7f2b011b2de5af0e4ace9cbeb4399911d8e83b7f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312817"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604876"
 ---
 A regionális virtuális hálózat-integráció használata lehetővé teszi az alkalmazás számára a következők elérését:
 
@@ -19,7 +19,7 @@ A regionális virtuális hálózat-integráció használata lehetővé teszi az 
 * Erőforrások az Azure ExpressRoute-kapcsolatokon keresztül.
 * A virtuális hálózatban lévő erőforrások, amelyekkel integrálva van.
 * Erőforrások társviszony-létesítési kapcsolatok között, amely magában foglalja az Azure ExpressRoute-kapcsolatokat.
-* Privát végpontok – Megjegyzés: A DNS-t külön kell kezelni az Azure DNS privát zónái helyett.
+* Privát végpontok 
 
 Ha a virtuális hálózat tal való integrációt használja ugyanabban a régióban, a következő Azure hálózati funkciókat használhatja:
 
@@ -50,7 +50,7 @@ A virtuális hálózatok virtuális hálózatokkal való integrációja ugyanabb
 * Csak az alkalmazással azonos előfizetésben integrálható a virtuális hálózatokkal.
 * Az App Service-csomagonként csak egy regionális virtuális hálózat-integrációt rendelkezhet. Ugyanabban az App Service-csomagban több alkalmazás is használhatja ugyanazt a virtuális hálózatot.
 * Nem módosíthatja egy alkalmazás vagy csomag előfizetését, amíg van egy olyan alkalmazás, amely regionális virtuális hálózat-integrációt használ.
-* Az alkalmazás nem tudja feloldani a címeket az Azure DNS-beli privát zónákban.
+* Az alkalmazás konfigurációs módosítások nélkül nem tudja feloldani a címeket az Azure DNS-beli magánzónákban
 
 Minden csomagpéldányhoz egy cím használatos. Ha az alkalmazást öt példányra méretezi, akkor öt címet használ. Mivel az alhálózat mérete nem módosítható a hozzárendelés után, olyan alhálózatot kell használnia, amely elég nagy ahhoz, hogy az alkalmazás által elérhető méreteket elférjen. A /26 64 címmel az ajánlott méret. A /26 64 címmel egy 30 példányú prémium csomag nak ad helyet. Amikor egy tervet fel- vagy leskáláz, rövid ideig kétszer annyi címre van szüksége.
 
@@ -83,9 +83,22 @@ Ha azt szeretné, hogy az összes kimenő forgalmat a helyszínen, egy útvonalt
 
 A Border Gateway Protocol (BGP) útvonalai szintén hatással vannak az alkalmazás forgalmára. Ha a BGP-útvonalak valami, mint egy ExpressRoute-átjáró, az alkalmazás kimenő forgalma t. Alapértelmezés szerint a BGP-útvonalak csak az RFC1918 célforgalmat érintik. Ha WEBSITE_VNET_ROUTE_ALL 1-re van állítva, az összes kimenő forgalmat befolyásolhatják a BGP-útvonalak.
 
+### <a name="azure-dns-private-zones"></a>Azure DNS-személyes zónák 
+
+Miután az alkalmazás integrálódik a virtuális hálózattal, ugyanazt a DNS-kiszolgálót használja, amelyhez a virtuális hálózat konfigurálva van. Alapértelmezés szerint az alkalmazás nem fog működni az Azure DNS-személyes zónákkal. Az Azure DNS-személyes zónákkal való munkához a következő alkalmazásbeállításokat kell megadnia:
+
+1. 168,63,129,16-os értékkel rendelkező WEBSITE_DNS_SERVER 
+1. 1-es értékkel rendelkező WEBSITE_VNET_ROUTE_ALL
+
+Ezek a beállítások az összes kimenő hívást az alkalmazásból a virtuális hálózatba küldik, amellett, hogy engedélyezi az alkalmazás számára az Azure DNS privát zónák használatát.
+
+### <a name="private-endpoints"></a>Privát végpontok
+
+Ha privát [végpontok hívásait][privateendpoints]szeretné kezdeményezni, akkor vagy integrálnia kell az Azure DNS privát zónáival, vagy kezelnie kell az alkalmazás által használt DNS-kiszolgáló privát végpontját. 
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 
 <!--Links-->
 [VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

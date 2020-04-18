@@ -13,22 +13,22 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2b1b708618c60153b8dbce69b26d832fa18b25aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476603"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605189"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Telepítse és konfigurálja a Távoli asztalt, hogy linuxos virtuális géphez csatlakozzon az Azure-ban
-Az Azure-ban a Linux virtuális gépek (VM-ek) kezelése általában a parancssorból történik egy biztonságos rendszerhéj (SSH) kapcsolat használatával. Amikor új a Linux, vagy a gyors hibaelhárítási forgatókönyvek, a távoli asztal használata egyszerűbb lehet. Ez a cikk részletezi, hogyan telepíthet és konfigurálhat asztali környezetet ([xfce](https://www.xfce.org)) és távoli asztalt ([xrdp](https://www.xrdp.org)) a Linux virtuális géphez az Erőforrás-kezelő telepítési modell használatával.
+Az Azure-ban a Linux virtuális gépek (VM-ek) kezelése általában a parancssorból történik egy biztonságos rendszerhéj (SSH) kapcsolat használatával. Amikor új a Linux, vagy a gyors hibaelhárítási forgatókönyvek, a távoli asztal használata egyszerűbb lehet. Ez a cikk részletezi, hogyan telepíthet és konfigurálhat asztali környezetet ([xfce](https://www.xfce.org)) és távoli asztalt ([xrdp](http://xrdp.org)) a Linux virtuális géphez az Erőforrás-kezelő telepítési modell használatával.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk egy meglévő Ubuntu 18.04 LTS virtuális gép az Azure-ban. Ha virtuális gép létrehozásához szükséges, használja az alábbi módszerek egyikét:
 
 - Az [Azure CLI](quick-create-cli.md)
-- Az [Azure Portal](quick-create-portal.md)
+- Az [Azure portál](quick-create-portal.md)
 
 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Asztali környezet telepítése linuxos virtuális gépre

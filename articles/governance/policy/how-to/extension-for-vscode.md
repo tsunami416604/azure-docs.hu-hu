@@ -3,12 +3,12 @@ title: Azure-szabályzat bővítmény a Visual Studio-kódhoz
 description: Megtudhatja, hogy miként keresheti meg az Azure Policy bővítményt a Visual Studio-kódhoz az Erőforrás-kezelő aliasai kikereséséhez.
 ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e31af652f2746adbf0eda386bdb178c752f5f84
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264673"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641026"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Az Azure Policy bővítmény használata a Visual Studio-kódhoz
 
@@ -121,7 +121,7 @@ Az egyetlen előfizetésben több száz vagy több ezer erőforrással rendelkez
 
 ## <a name="discover-aliases-for-resource-properties"></a>Erőforrás-tulajdonságok aliasok felderítése
 
-Ha egy erőforrás van kiválasztva, akár a keresési felületen keresztül, vagy kiválasztja azt a treeview, az Azure Policy bővítmény megnyitja az erőforrást képviselő JSON-fájlt, és az összes Erőforrás-kezelő tulajdonságértékeit.
+Ha egy erőforrás van kiválasztva, akár a keresési felületen keresztül, vagy kiválasztja azt a treeview, az Azure Policy bővítmény megnyitja az erőforrást képviselő JSON-fájlt és annak Erőforrás-kezelő tulajdonságértékeit.
 
 Miután egy erőforrás meg van nyitva, a Resource Manager tulajdonság neve vagy értéke fölé mutató egérmutató megjeleníti az Azure Policy aliast, ha létezik ilyen. Ebben a példában az `Microsoft.Compute/virtualMachines` erőforrás egy erőforrástípus, és a **properties.storageProfile.imageReference.offer** tulajdonság fölé kerül. Az egérmutató az egyező aliasokat jeleníti meg.
 

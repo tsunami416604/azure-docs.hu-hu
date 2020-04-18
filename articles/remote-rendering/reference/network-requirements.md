@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 73bbfad4c0535fa00b1aa53764eb52acb83124f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680374"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617879"
 ---
 # <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -27,6 +27,9 @@ A pontos hálózati követelmények az adott használati esettől függenek, pé
 * **Kerülje a versengő sávszélesség-intenzív forgalmat** – például a video- vagy játékstreamelést – ugyanazon a Wi-Fi hálózaton.
 * A **jó Wi-Fi jelerősség** elengedhetetlen. Ha lehetséges, maradjon közel a Wi-Fi hozzáférési ponthoz, és kerülje az ügyféleszköz és a hozzáférési pontok közötti akadályokat.
 * Győződjön meg arról, hogy mindig a [régióhoz](regions.md) **kapcsolódó legközelebbi Azure-adatközponthoz** csatlakozik. Minél közelebb van az adatközpont, annál alacsonyabb a hálózati késés, ami óriási hatással van a hologram stabilitására.
+
+> [!NOTE]
+> A downstream sávszélességet többnyire a videofolyam fogyasztja, ami viszont szín- és mélységinformáció (mindkettő 60 Hz, sztereó) között oszlik meg.
 
 ## <a name="network-performance-tests"></a>Hálózati teljesítménytesztek
 

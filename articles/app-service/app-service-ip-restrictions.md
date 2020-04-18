@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a02c099871ce9748f4c5f604900a7c4d57bb96b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473523"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639269"
 ---
-# <a name="azure-app-service-access-restrictions"></a>Az Azure App Service hozzáférési korlátozásai #
+# <a name="azure-app-service-access-restrictions"></a>Az Azure App Service hozzáférési korlátozásai
 
 A hozzáférési korlátozások lehetővé teszik az alkalmazás hálózati hozzáférését szabályozó prioritású engedélyezési/megtagadási lista meghatározását. A lista tartalmazhat IP-címeket vagy Az Azure virtuális hálózat alhálózatait. Ha egy vagy több bejegyzés van, akkor a lista végén található implicit "mindent letagadni" van.
 
@@ -125,12 +125,12 @@ A JSON szintaxisa a korábbi példa:
 }
 ```
 
-## <a name="azure-function-app-access-restrictions"></a>Az Azure Függvény alkalmazáshozzáférési korlátozásai
+## <a name="azure-functions-access-restrictions"></a>Az Azure Functions hozzáférési korlátozásai
 
 A hozzáférési korlátozások az App Service-csomagokkal azonos funkciókkal rendelkező függvényalkalmazásokhoz is elérhetők. A hozzáférési korlátozások engedélyezése letiltja a portálkódszerkesztőt a nem engedélyezett IP-címekhez.
 
 ## <a name="next-steps"></a>További lépések
-[Hozzáférési korlátozások az Azure Függvényalkalmazásokhoz](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+[Hozzáférési korlátozások az Azure Functionshez](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [Alkalmazásátjáró integrációja szolgáltatásvégekkel](networking/app-gateway-with-service-endpoints.md)
 

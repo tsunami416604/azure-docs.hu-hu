@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7fcfac923da1c0daee58b10d92cbc6a6ad5e7910
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 625efcce7305cd7b1dd415a286e6b1e92682cc0a
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383405"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616831"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modellbetanításhoz 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -425,7 +425,7 @@ További információt a [ScriptRunConfig](https://docs.microsoft.com/python/api
 
 [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és [a Machine Learning CLI bővítmény](reference-azure-machine-learning-cli.md) használatával futtatott konfigurációkat hozhat létre, és különböző számítási célokon futtathatja a futtatásokat. A következő példák feltételezik, hogy rendelkezik egy meglévő Azure `az login` Machine Learning Workspace, és a CLI paranccsal bejelentkezett az Azure-ba. 
 
-[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 ### <a name="create-run-configuration"></a>Futtatási konfiguráció létrehozása
 

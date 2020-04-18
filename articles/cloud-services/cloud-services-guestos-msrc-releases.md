@@ -10,17 +10,55 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/3/2020
+ms.date: 04/17/2020
 ms.author: raiye
-ms.openlocfilehash: 758f0e3198ef83635ead3f9bd8565cd64f9d413c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a271eca3c3b6e7cd364f2bc87f2e15006874fa08
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656349"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617703"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok a Microsoft Security Response Center (MSRC) azure-beli vendégoperációsrendszerre alkalmazott frissítéseit mutatják be. Ebben a cikkben állapítsa meg, hogy egy adott frissítés vonatkozik-e a használt vendég operációs rendszerre. A frissítések mindig az adott [családra][family-explain] vonatkozóan továbbítódnak, ahol bevezették őket.
+
+## <a name="april-2020-guest-os"></a>Április 2020 Vendég OS
+
+>[!NOTE]
+>Az áprilisi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált felhőszolgáltatás-virtuális gépeken van kivezetve. Amikor a bevezetés befejeződött, ez a verzió lesz elérhető manuális frissítések az Azure Portalon keresztül és konfigurációs fájlokat. A következő javítások szerepelnek az áprilisi vendég operációs rendszer. Ez a lista változhat.
+
+| Termékkategória | Szülő TUDÁSBázis-cikk | A biztonsági rés leírása | Vendég operációs rendszer | Első bevezetés dátuma |
+| --- | --- | --- | --- | --- |
+|  Rel 20-04  |  [4550965]  |  Windows biztonság  | 2.97 | 2020. április 14. |
+|  Rel 20-04  |  [4550905]  |  Internet Explorer  | 2.97, 3.84, 4.77 | 2020. április 14. |
+|  Rel 20-04  |  [4550971]  |  Windows biztonság  | 3.84 | 2020. április 14. |
+|  Rel 20-04  |  [4550970]  |  Windows biztonság  | 4.77 | 2020. április 14. |
+|  Rel 20-04  |  [4550929]  |  Legutóbbi összegző frissítés (LCU)  | 5.42 | 2020. április 14. |
+|  Rel 20-04  |  [4549949]  |  Legutóbbi összegző frissítés (LCU)  | 6.18 | 2020. április 14. |
+|  Rel 20-04  |  [4540688]  |  Havi összesítés  | 2.97 | 2020. március 10. |
+|  Rel 20-04  |  [4550735]  |  Karbantartási verem frissítése  | 2.97 | 2020. március 10. |
+|  Rel 20-04  |  [4540726]  |  Karbantartási verem frissítése  | 3.84 | 2020. március 10. |
+|  Rel 20-04  |  [4541510]  |  Havi összesítés  | 3.84 | 2020. március 10. |
+|  Rel 20-04  |  [4541509]  |  Havi összesítés  | 4.77 | 2020. március 10. |
+|  Rel 20-04  |  [4540725]  |  Karbantartási verem frissítése  | 4.77 | 2020. március 10. |
+|  Rel 20-04  |  [4540723]  |  Karbantartási verem frissítése  | 5.42 | 2020. március 10. |
+|  Rel 20-04  |  [4539571]  |  Karbantartási verem frissítése  | 6.18 | 2020. március 10. |
+
+[4550965]: https://support.microsoft.com/kb/4550965
+[4550905]: https://support.microsoft.com/kb/4550905
+[4550971]: https://support.microsoft.com/kb/4550971
+[4550970]: https://support.microsoft.com/kb/4550970
+[4550929]: https://support.microsoft.com/kb/4550929
+[4549949]: https://support.microsoft.com/kb/4549949
+[4540688]: https://support.microsoft.com/kb/4540688
+[4550735]: https://support.microsoft.com/kb/4550735
+[4540726]: https://support.microsoft.com/kb/4540726
+[4541510]: https://support.microsoft.com/kb/4541510
+[4541509]: https://support.microsoft.com/kb/4541509
+[4540725]: https://support.microsoft.com/kb/4540725
+[4540723]: https://support.microsoft.com/kb/4540723
+[4539571]: https://support.microsoft.com/kb/4539571
+
 
 ## <a name="march-2020-guest-os"></a>Március 2020 Vendég OS
 

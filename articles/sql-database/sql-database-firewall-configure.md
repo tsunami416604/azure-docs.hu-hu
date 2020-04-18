@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: af88fdf3378a6290c773c658ea6dd3469d7c92cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531277"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606095"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Az Azure SQL Database és az Azure SQL Data Warehouse IP tűzfalszabályai
 
@@ -101,7 +101,7 @@ Amikor egy számítógép az internetről próbál csatlakozni az adatbázis-kis
 
 ### <a name="connections-from-inside-azure"></a>Kapcsolatok az Azure-on belülről
 
-Ahhoz, hogy az Azure-ban tárolt alkalmazások csatlakozhassanak az SQL-kiszolgálóhoz, engedélyezni kell az Azure-kapcsolatokat. Amikor egy Azure-alkalmazás megpróbál csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezettek-e. A *0.0.0.0-nak* megfelelő kezdő és záró IP-címekkel kapcsolatos tűzfalbeállítás azt jelzi, hogy az Azure-kapcsolatok engedélyezettek. Ez közvetlenül az Azure Portal panelről kapcsolható be a tűzfalszabályok beállításával, valamint az **Azure Services és az erőforrások hozzáférésének engedélyezése a kiszolgálóra** a **tűzfalak és** a virtuális hálózatok **beállításaiban** való eléréséhez. Ha a kapcsolat nem engedélyezett, a kérelem nem éri el az SQL Database-kiszolgálót.
+Ahhoz, hogy az Azure-ban tárolt alkalmazások csatlakozhassanak az SQL-kiszolgálóhoz, engedélyezni kell az Azure-kapcsolatokat. Amikor egy Azure-alkalmazás megpróbál csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezettek-e. Ez közvetlenül az Azure Portal panelről kapcsolható be a tűzfalszabályok beállításával, valamint az **Azure Services és az erőforrások hozzáférésének engedélyezése a kiszolgálóra** a **tűzfalak és** a virtuális hálózatok **beállításaiban** való eléréséhez. Ha a kapcsolat nem engedélyezett, a kérelem nem éri el az SQL Database-kiszolgálót.
 
 > [!IMPORTANT]
 > Ez a beállítás úgy konfigurálja a tűzfalat, hogy engedélyezze az Azure-ból származó összes kapcsolatot, beleértve a más ügyfelek előfizetéseiből származó kapcsolatokat is. Ha ezt a lehetőséget választja, győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyek csak a jogosult felhasználókra korlátozzák a hozzáférést.

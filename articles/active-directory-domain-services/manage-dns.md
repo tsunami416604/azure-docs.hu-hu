@@ -1,6 +1,6 @@
 ---
 title: Az Azure AD tartományi szolgáltatásainak DNS-kezelésé | Microsoft dokumentumok
-description: Megtudhatja, hogy miként telepítheti a DNS-kiszolgálóeszközöket egy Azure Active Directory tartományi szolgáltatások felügyelt tartományának DNS-ének kezeléséhez.
+description: Megtudhatja, hogy miként telepítheti a DNS-kiszolgálóeszközöket a DNS kezeléséhez és feltételes továbbítók létrehozásához egy Azure Active Directory tartományi szolgáltatások által kezelt tartományhoz.
 author: iainfoulds
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -8,26 +8,24 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/31/2019
+ms.date: 04/16/2020
 ms.author: iainfou
-ms.openlocfilehash: f0d8f73b47b1110e8e05365013bbf07fd94eb6ca
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: f4bd3f75c3246cb11e88dbaae817eba8ac76b394
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655081"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603473"
 ---
-# <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>DNS felügyelete Azure AD tartományi szolgáltatások által kezelt tartományban
+# <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-ad-domain-services-managed-domain"></a>DNS felügyelete és feltételes továbbítók létrehozása egy Azure AD tartományi szolgáltatások által kezelt tartományban
 
 Az Azure Active Directory tartományi szolgáltatások (Azure AD DS) egyik kulcsösszetevőa a DNS (tartománynévfeloldás). Az Azure AD DS tartalmaz egy DNS-kiszolgálót, amely névfeloldást biztosít a felügyelt tartományszámára. Ez a DNS-kiszolgáló beépített DNS-rekordokat és frissítéseket tartalmaz a szolgáltatás futtatását lehetővé tenni lehetővé tegyék a kulcsösszetevőkhöz.
 
 Saját alkalmazások és szolgáltatások futtatásakor előfordulhat, hogy dns-rekordokat kell létrehoznia a tartományhoz nem csatlakozó gépekhez, virtuális IP-címeket kell konfigurálnia a terheléselosztók számára, vagy külső DNS-továbbítókat kell beállítania. Az *AAD DC rendszergazdák* csoporthoz tartozó felhasználók DNS-felügyeleti jogosultságokat kapnak az Azure AD DS felügyelt tartományában, és egyéni DNS-rekordokat hozhatnak létre és szerkeszthetnek.
 
-Hibrid környezetben a DNS-zónák és a helyszíni Activeád-ds-környezetben konfigurált rekordok nincsenek szinkronizálva az Azure AD DS-sel. Saját DNS-bejegyzések definiálásához és használatához hozzon létre rekordokat az Azure AD DS DNS-kiszolgálón, vagy használjon feltételes továbbítókat, amelyek a környezetben meglévő DNS-kiszolgálókra mutatnak.
+Hibrid környezetben a DNS-zónák és a más DNS-névterekben, például a helyszíni Activeád-ds-környezetben konfigurált rekordok nincsenek szinkronizálva az Azure AD DS-sel. Más DNS-névterekben lévő elnevezett erőforrások feloldásához hozzon létre és használjon feltételes továbbítókat, amelyek a környezetben meglévő DNS-kiszolgálókra mutatnak.
 
-Ez a cikk bemutatja, hogyan telepítheti a DNS-kiszolgáló eszközeit, majd a DNS-konzol használatával kezelheti a rekordokat az Azure AD DS-ben.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+Ez a cikk bemutatja, hogyan telepítheti a DNS-kiszolgáló eszközeit, majd a DNS-konzol segítségével kezelheti a rekordokat, és hozzon létre feltételes továbbítókat az Azure AD DS-ben.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -39,6 +37,8 @@ A cikk végrehajtásához a következő erőforrásokra és jogosultságokra van
     * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
 * Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány a konfigurált és konfigurált az Azure AD-bérlő.
     * Szükség esetén töltse ki az oktatóanyagot [az Azure Active Directory tartományi szolgáltatások példányának létrehozásához és konfigurálásához.][create-azure-ad-ds-instance]
+* Az Azure AD DS virtuális hálózatról a többi DNS-névterek üzemeltetési helyéhez való kapcsolódás.
+    * Ez a kapcsolat [Azure ExpressRoute-][expressroute] vagy [Azure VPN-átjárókapcsolattal][vpn-gateway] is biztosítható.
 * Az Azure AD DS felügyelt tartományához csatlakozott Windows Server felügyeleti virtuális gép.
     * Szükség esetén végezze el az oktatóanyagot [a Windows Server virtuális gép létrehozásához, és csatlakozzon egy felügyelt tartományhoz.][create-join-windows-vm]
 * Egy felhasználói fiók, amely az *Azure AD DC rendszergazdák* csoportjának tagja az Azure AD-bérlőben.
@@ -56,7 +56,7 @@ Dns-rekordok létrehozásához és módosításához az Azure AD DS,telepítenie
 1. A **Kiszolgálói szerepkörök** lapon kattintson a **Tovább gombra.**
 1. A **Szolgáltatások** lapon bontsa ki a **Távoli kiszolgálófelügyeleti eszközök** csomópontot, majd bontsa ki a **Szerepkör-felügyeleti eszközök** csomópontot. Válassza a **DNS-kiszolgálóeszközök** szolgáltatást a szerepkör-felügyeleti eszközök listájából.
 
-    ![A DNS-kiszolgálóeszközök telepítése a rendelkezésre álló szerepkör-felügyeleti eszközök listájából](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
+    ![A DNS-kiszolgálóeszközök telepítése a rendelkezésre álló szerepkör-felügyeleti eszközök listájából](./media/manage-dns/install-dns-tools.png)
 
 1. A **Megerősítés** lapon válassza a **Telepítés**lehetőséget. A Csoportházirend-kezelési eszközök telepítése eltarthat egy-két percig.
 1. Ha a szolgáltatás telepítése befejeződött, válassza a **Bezárás** lehetőséget a **Szerepkörök és szolgáltatások hozzáadása** varázslóból való kilépéshez.
@@ -71,14 +71,39 @@ A DNS-kiszolgáló eszközeinek telepítésével felügyelheti a DNS-rekordokat 
 1. A kezdőképernyőn válassza a **Felügyeleti eszközök lehetőséget.** Megjelenik az elérhető felügyeleti eszközök listája, beleértve az előző szakaszban telepített **DNS-t** is. A **DNS** DNS Management konzol elindításához válassza a DNS-t.
 1. A Csatlakozás a **DNS-kiszolgálóhoz** párbeszédpanelen válassza **a Következő számítógép**lehetőséget, majd írja be a felügyelt tartomány DNS-tartománynevét, például *aaddscontoso.com:*
 
-    ![Csatlakozás az Azure AD DS felügyelt tartományához a DNS-konzolban](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
+    ![Csatlakozás az Azure AD DS felügyelt tartományához a DNS-konzolban](./media/manage-dns/connect-dns-server.png)
 
 1. A DNS-konzol csatlakozik a megadott Azure AD DS felügyelt tartományhoz. Bontsa ki a **Címkeresési zónák** vagy a **Névkeresési zónák csomópontot** a szükséges DNS-bejegyzések létrehozásához vagy a meglévő rekordok szükség szerint történő szerkesztéséhez.
 
-    ![DNS-konzol - tartomány felügyelete](./media/active-directory-domain-services-admin-guide/dns-console-managed-domain.png)
+    ![DNS-konzol - tartomány felügyelete](./media/manage-dns/dns-manager.png)
 
 > [!WARNING]
 > Ha a DNS-kiszolgáló eszközök használatával kezeli a rekordokat, győződjön meg arról, hogy nem törli vagy módosítja az Azure AD DS által használt beépített DNS-rekordokat. A beépített DNS-rekordok közé tartoznak a tartomány DNS-rekordjai, a névkiszolgálói rekordok és a tartományvezérlő helyéhez használt egyéb rekordok. Ha módosítja ezeket a rekordokat, a tartományi szolgáltatások megszakadnak a virtuális hálózaton.
+
+## <a name="create-conditional-forwarders"></a>Feltételes továbbítók létrehozása
+
+Az Azure AD DS DNS-zónának csak a felügyelt tartomány zónáját és rekordjait kell tartalmaznia. Ne hozzon létre további zónákat az Azure AD DS-ben a más DNS-névterekben lévő elnevezett erőforrások feloldásához. Ehelyett használja a feltételes továbbítók az Azure AD DS felügyelt tartományban, hogy megmondja a DNS-kiszolgáló, hová kell menni e címek feloldása érdekében az erőforrásokat.
+
+A feltételes továbbító egy DNS-kiszolgáló konfigurációs lehetősége, amely lehetővé teszi egy DNS-tartomány ( például *contoso.com*) definiálását a lekérdezések továbbításához. Ahelyett, hogy a helyi DNS-kiszolgáló megpróbálná feloldani az adott tartomány rekordjainak lekérdezéseit, a DNS-lekérdezéseket a rendszer továbbítja az adott tartományhoz konfigurált DNS-hez. Ez a konfiguráció biztosítja, hogy a megfelelő DNS-rekordok at adja vissza, mivel nem hoz létre egy helyi DNS-zónát ismétlődő rekordokaz Azure AD DS felügyelt tartományban, hogy tükrözze ezeket az erőforrásokat.
+
+Ha feltételes továbbítót szeretne létrehozni az Azure AD DS felügyelt tartományában, hajtsa végre az alábbi lépéseket:
+
+1. Válassza ki az Azure AD DS DNS-zónáját, például *a aaddscontoso.com*.vb
+1. Válassza a **Feltételes továbbítók**lehetőséget, majd a jobb oldali kijelölést, és az **Új feltételes továbbító parancsot...**
+1. Adja meg a másik **DNS-tartományát**, például *a contoso.com,* majd adja meg a névtér DNS-kiszolgálóinak IP-címét, ahogy az a következő példában látható:
+
+    ![Feltételes továbbító hozzáadása és konfigurálása a DNS-kiszolgálóhoz](./media/manage-dns/create-conditional-forwarder.png)
+
+1. Jelölje be a **Feltételes továbbító tárolása az Active Directoryban jelölőnégyzetét, majd replikálja az alábbiak szerint,** majd válassza a *tartomány összes DNS-kiszolgálójának*beállítását , ahogy az a következő példában látható:
+
+    ![DNS-konzol - tartomány felügyelete](./media/manage-dns/store-in-domain.png)
+
+    > [!IMPORTANT]
+    > Ha a feltételes továbbító a *tartomány*helyett az *erdőben* van tárolva, a feltételes továbbító meghibásodik.
+
+1. A feltételes továbbító létrehozásához válassza az **OK gombot.**
+
+Az Azure AD DS felügyelt tartományhoz csatlakoztatott virtuális gépek más névterekben lévő erőforrások névfeloldása mostmár megfelelően feloldható. A feltételes továbbítóban konfigurált DNS-tartomány lekérdezéseit a rendszer továbbítja a megfelelő DNS-kiszolgálóknak.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -88,6 +113,8 @@ A DNS kezeléséről a [Technet dns-eszközökről szóló cikkében olvashat b�
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
+[expressroute]: ../expressroute/expressroute-introduction.md
+[vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
 [create-join-windows-vm]: join-windows-vm.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
 [connect-windows-server-vm]: join-windows-vm.md#connect-to-the-windows-server-vm

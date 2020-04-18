@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 04/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d9544b1f4dd5ecbf66493f26c373c5502dce68a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 466b063253ee49ab58c2685f359b4bb8a4079532
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81451081"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639676"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Kombinált biztonsági adatok regisztrálásának engedélyezése az Azure Active Directoryban
 
@@ -47,34 +47,34 @@ Ha az Internet Explorer ben konfigurálta a Hely a zónához hozzárendelési li
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>Feltételes hozzáférés házirendjei a kombinált regisztrációhoz
 
-A feltételes hozzáférési szabályzat felhasználói lépéseivel biztosíthatja, hogy mikor és hogyan regisztrálhassanak a felhasználók az Azure többtényezős hitelesítésre és az önkiszolgáló jelszó-visszaállításra. Ez a funkció azon szervezetek számára érhető el, amelyek engedélyezték a [kombinált regisztrációs funkciót.](../authentication/concept-registration-mfa-sspr-combined.md) Ez a funkció engedélyezhető olyan szervezetekben, ahol azt szeretnék, hogy a felhasználók regisztráljanak az Azure többtényezős hitelesítésre és az SSPR-re egy központi helyről, például egy megbízható hálózati helyről a HR-bevezetés során. A feltételes hozzáférésben a megbízható helyek létrehozásáról további információt a [Mi a helyfeltétel az Azure Active Directory feltételes hozzáférésében?](../conditional-access/location-condition.md#named-locations)
+A feltételes hozzáférési szabályzat felhasználói lépéseivel biztosíthatja, hogy mikor és hogyan regisztrálhassanak a felhasználók az Azure többtényezős hitelesítésre és az önkiszolgáló jelszó-visszaállításra. Ez a funkció azon szervezetek számára érhető el, amelyek engedélyezték a [kombinált regisztrációs funkciót.](../authentication/concept-registration-mfa-sspr-combined.md) Ez a funkció engedélyezhető olyan szervezetekben, ahol azt szeretnék, hogy a felhasználók regisztráljanak az Azure többtényezős hitelesítésre és az SSPR-re egy központi helyről, például egy megbízható hálózati helyről a HR-bevezetés során.
+
+A feltételes hozzáférésben a megbízható helyek létrehozásáról további információt a [Mi a helyfeltétel az Azure Active Directory feltételes hozzáférésében?](../conditional-access/location-condition.md#named-locations)
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Házirend létrehozása, amely megköveteli a regisztrációt egy megbízható helyről
 
-A következő házirend minden kiválasztott felhasználóra vonatkozik, akik a kombinált regisztrációs felület használatával próbálnak regisztrálni, és letiltja a hozzáférést, kivéve, ha megbízható hálózatként megjelölt helyről csatlakoznak.
-
-![Hitelesítésbiztosítási házirend létrehozása a biztonsági adatok regisztrációjának szabályozásához](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
+A következő házirend minden olyan kiválasztott felhasználóra vonatkozik, aki a kombinált regisztrációs felület használatával próbál regisztrálni, és letiltja a hozzáférést, kivéve, ha megbízható hálózatként megjelölt helyről csatlakozik.
 
 1. Az **Azure Portalon**keresse meg az **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**
-1. Válassza az **Új szabályzat** lehetőséget.
-1. A Név mezőbe írja be a házirend nevét. Például **a kombinált biztonsági adatok regisztrálása megbízható hálózatokon**
-1. A **Hozzárendelések**csoportban kattintson a **Felhasználók és csoportok**elemre, és jelölje ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné ezt a házirendet.
+1. Válassza **ki a + Új házirendet**
+1. Adja meg a házirend nevét, például *a Kombinált biztonsági adatok regisztrációját a megbízható hálózatokon.*
+1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget. Válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné ezt a házirendet, majd válassza a **Kész gombot.**
 
    > [!WARNING]
-   > A felhasználókat engedélyezni kell a [kombinált regisztrációhoz.](../authentication/howto-registration-mfa-sspr-combined.md)
+   > A felhasználókat engedélyezni kell a kombinált regisztrációhoz.
 
-1. A **Felhőalapú alkalmazások vagy műveletek csoportban**válassza a **Felhasználói műveletek**lehetőséget, jelölje be a Biztonsági információk **regisztrálása (előzetes verzió) jelölőnégyzetet.**
-1. **Feltételek mellett** > **helyszínek**
+1. A **Felhőalapú alkalmazások és műveletek csoportban**válassza a **Felhasználói műveletek lehetőséget.** Jelölje **be a Biztonsági információk regisztrálása**jelölőnégyzetet, majd válassza a **Kész**lehetőséget.
+
+    ![Feltételes hozzáférési házirend létrehozása a biztonsági adatok regisztrációjának szabályozásához](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
+
+1. A **Feltételek** > **helyek csoportban**adja meg a következő beállításokat:
    1. **Igen** konfigurálása
    1. **Bármilyen hely belefoglalása**
    1. **Az összes megbízható hely kizárása**
-   1. Kattintson a Helyek panelen a **Kész** gombra.
-   1. Kattintson a **Kész** gombra a Feltételek panelen
-1. A **Hozzáférés vezérlők csoportban** > **A támogatás**
-   1. Kattintson **a Hozzáférés blokkolása gombra**
-   1. Ezután kattintson **a Kijelölés gombra.**
+1. Válassza a *Helyek* ablak **Kész** lehetőséget, majd a Feltételek ablakban válassza a **Kész** *lehetőséget.*
+1. A**Grant** **Access-vezérlők csoportban** > válassza a **Hozzáférés blokkolása**lehetőséget, majd a Kijelölés **lehetőséget.**
 1. Házirend **engedélyezése** **be**
-1. Ezután kattintson a **Létrehozás gombra.**
+1. A házirend véglegesítéséhez válassza a **Létrehozás gombot.**
 
 ## <a name="next-steps"></a>További lépések
 

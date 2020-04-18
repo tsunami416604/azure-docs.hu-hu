@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 04/16/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844776"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605823"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rövid útmutató: Blob-tárolási események irányítása a webvégpontra az Azure Portalon
 
@@ -26,36 +26,56 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 ![Eredmények megtekintése](./media/blob-event-quickstart-portal/view-results.png)
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. Blob Storage létrehozásához kattintson az **Erőforrás létrehozása** elemre. 
 
-   ![Erőforrás létrehozása](./media/blob-event-quickstart-portal/create-resource.png)
-
 1. A **Storage** elemet kiválasztva szűrje az elérhető lehetőségeket, majd válassza a **Storage-fiók – blob, fájl, táblázat, üzenetsor** lehetőséget.
 
    ![Tárhely kiválasztása](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Az eseményekre feliratkozáshoz vagy egy általános célú v2 tárfiókot vagy Blob Storage-fiókot hozzon létre. További információ: [Tárfiók létrehozása](../storage/common/storage-account-create.md).
+   Az eseményekre feliratkozáshoz vagy egy általános célú v2 tárfiókot vagy Blob Storage-fiókot hozzon létre.
+   
+1. A **Tárfiók létrehozása** lapon tegye a következő lépéseket:
+    1. Válassza ki az Azure-előfizetését. 
+    2. Az **Erőforráscsoport**csoportban hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. 
+    3. Adja meg a tárfiók nevét. 
+    4. Válassza az **Áttekintés + létrehozás** lehetőséget. 
 
-   ![Kezdeti lépések](./media/blob-event-quickstart-portal/provide-blob-values.png)
+       ![Kezdeti lépések](./media/blob-event-quickstart-portal/provide-blob-values.png)    
+    5. A **Véleményezés + létrehozás** lapon tekintse át a beállításokat, és válassza a **Létrehozás gombot.** 
 
->[!NOTE]
-> Csak **a storageV2 (általános célú v2)** és **a BlobStorage** támogatási eseményintegrációs tárfiókok. **A storage (genral purpose v1)** *nem* támogatja az Event Griddel való integrációt.
+        >[!NOTE]
+        > Csak **a storageV2 (általános célú v2)** és **a BlobStorage** támogatási eseményintegrációs tárfiókok. **A storage (genral purpose v1)** *nem* támogatja az Event Griddel való integrációt.
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
 A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. A végpont általában az eseményadatok alapján hajt végre műveleteket. Az útmutató egyszerűsítése érdekében egy olyan [előre létrehozott webalkalmazást](https://github.com/Azure-Samples/azure-event-grid-viewer) helyezünk üzembe, amely megjeleníti az esemény üzeneteit. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
 
-1. A megoldásnak az előfizetésébe való telepítéséhez válassza az **Üzembe helyezés az Azure-ban** lehetőséget. Az Azure Portalon adjon meg értékeket a paraméterekhez.
+1. A megoldásnak az előfizetésébe való telepítéséhez válassza az **Üzembe helyezés az Azure-ban** lehetőséget. 
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+2. Az **Egyéni telepítés** lapon tegye a következő lépéseket: 
+    1. Az **Erőforráscsoport csoport**ban válassza ki a tárfiók létrehozásakor létrehozott erőforráscsoportot. Az erőforráscsoport törlésével könnyebb lesz megtisztítani, miután végzett az oktatóanyaggal.  
+    2. A **Webhely neve**mezőbe írja be a webalkalmazás nevét.
+    3. Az **Üzemeltetési csomag neve**esetén adja meg az App Service-csomag nevét a webalkalmazás üzemeltetéséhez.
+    4. Jelölje be az **I agree (Elfogadom a fenti feltételeket )** jelölőnégyzet. 
+    5. Válassza a **Beszerzés** lehetőséget. 
 
-1. Az üzembe helyezés befejezése eltarthat néhány percig. A sikeres üzembe helyezést követően tekintse meg a webalkalmazást, hogy meggyőződjön annak működéséről. Egy webböngészőben navigáljon a következő helyre: `https://<your-site-name>.azurewebsites.net`.
+       ![Telepítési paraméterek](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
+1. Az üzembe helyezés befejezése eltarthat néhány percig. Válassza a Riasztások (csengő ikon) lehetőséget a portálon, majd válassza az **Ugrás az erőforráscsoportra**lehetőséget. 
 
-1. A hely látható, de még nem lett közzétéve esemény.
+    ![Riasztás - navigálás az erőforráscsoportra](./media/blob-event-quickstart-portal/navigate-resource-group.png)
+4. Az **Erőforráscsoport** lap erőforráslistájában válassza ki a létrehozott webalkalmazást. Ebben a listában az App Service-csomag és a tárfiók is megjelenik. 
+
+    ![Webhely kiválasztása](./media/blob-event-quickstart-portal/resource-group-resources.png)
+5. A webalkalmazás **App Service-lapján** válassza ki a webhelyre való navigáláshoz szükséges URL-címet. Az URL-címnek a `https://<your-site-name>.azurewebsites.net`következő formátumban kell lennie: .
+    
+    ![Navigálás a webhelyre](./media/blob-event-quickstart-portal/web-site.png)
+
+6. Erősítse meg, hogy látja a webhelyet, de még nem történt esemény.
 
    ![Új hely megtekintése](./media/blob-event-quickstart-portal/view-site.png)
 
@@ -65,15 +85,20 @@ A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az esemény
 
 A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni, és hová szeretné küldeni az eseményeket.
 
-1. A portálon válassza ki a Blob Storage-fiókját, és válassza az **Események** lehetőséget.
-
-   ![Események kiválasztása](./media/blob-event-quickstart-portal/select-events.png)
-
-1. Ha eseményeket szeretne küldeni a megjelenítő alkalmazásba, használjon egy webhookot a végponthoz. Válassza a **További beállítások**, majd a **Webhook** elemet.
+1. A portálon keresse meg a korábban létrehozott Azure Storage-fiók. A bal oldali menüben válassza a **Minden erőforrás** lehetőséget, és válassza ki a tárfiókot. 
+2. A **Tárfiók** lapon válassza az **Események** lehetőséget a bal oldali menüben.
+1. Válassza a **További beállítások**, majd a **Webhook** elemet. Eseményeket küld a megjelenítő alkalmazás egy web hook a végponthoz. 
 
    ![Webhook kiválasztása](./media/blob-event-quickstart-portal/select-web-hook.png)
+3. Az **Esemény-előfizetés létrehozása** lapon tegye a következő lépéseket: 
+    1. Adja meg az esemény-előfizetés **nevét.**
+    2. Válassza a **Web Hook** lehetőséget a **Végpont típushoz**. 
 
-1. Az esemény-előfizetés előre ki van töltve a Blob Storage-fiókjához tartozó értékekkel. A webhook végponthoz adja meg a webalkalmazás URL-címét, és adja hozzá az `api/updates` elemet a kezdőlap URL-címéhez. Nevezze el az előfizetését. Ha elkészült, válassza a **Létrehozás** lehetőséget.
+       ![Webhook-végpont típusának kiválasztása](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
+4. A **Végpont**területen kattintson **a Végpont kiválasztása gombra,** írja `api/updates` be a webalkalmazás URL-címét, és adja hozzá a kezdőlap URL-címét (például: `https://spegridsite.azurewebsites.net/api/updates`), majd válassza a Kijelölés megerősítése **lehetőséget.**
+
+   ![Végpontkijelölés megerősítése](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
+5. Most az **Esemény-előfizetés létrehozása** lapon válassza a **Létrehozás** lehetőséget az esemény-előfizetés létrehozásához. 
 
    ![Naplók kiválasztása](./media/blob-event-quickstart-portal/create-subscription.png)
 
@@ -87,11 +112,11 @@ Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az E
 
 A Blob Storage-hoz egy eseményt egy fájl feltöltésével aktiválhat. A fájlnak nem kell tartalommal rendelkeznie. A cikkek feltételezik, hogy van egy testfile.txt fájlja, de bármilyen fájlt használhat.
 
-1. A Blob Storage-nál válassza a **Blobok** elemet.
+1. Az Azure Portalon keresse meg a Blob storage-fiók, és válassza **a tárolók** az **áttekintés** lapon.
 
    ![Blobok kiválasztása](./media/blob-event-quickstart-portal/select-blobs.png)
 
-1. Válassza a **+ Tároló** lehetőséget. Nevezze el a tárolót, és használja valamelyik hozzáférési szintet.
+1. Válassza a **+ Tároló** lehetőséget. Adjon nevet a tárolónak, és használjon bármilyen hozzáférési szintet, és válassza a **Létrehozás gombot.** 
 
    ![Tároló hozzáadása](./media/blob-event-quickstart-portal/add-container.png)
 
@@ -99,39 +124,15 @@ A Blob Storage-hoz egy eseményt egy fájl feltöltésével aktiválhat. A fájl
 
    ![Tároló kiválasztása](./media/blob-event-quickstart-portal/select-container.png)
 
-1. Fájl feltöltéséhez válassza a **Feltöltés** lehetőséget.
+1. Fájl feltöltéséhez válassza a **Feltöltés** lehetőséget. A **Blob feltöltése** lapon tallózzon és jelöljön ki egy fájlt, amelyet tesztelésre fel szeretne tölteni, majd válassza a **Feltöltés** az adott oldalon lehetőséget. 
 
    ![Feltöltés kiválasztása](./media/blob-event-quickstart-portal/upload-file.png)
 
 1. Keresse meg tallózással a tesztfájlt, és töltse fel.
 
-1. Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Az üzenet JSON formátumú, és egy vagy több eseményt tartalmazó tömböt tartalmaz. A következő példában a JSON-üzenet egy tömböt tartalmaz egy eseménnyel. Tekintse meg a webalkalmazását, és észreveheti, hogy az fogadott egy blob által létrehozott eseményt. 
+1. Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Az üzenet JSON formátumú, és egy vagy több eseményt tartalmazó tömböt tartalmaz. A következő példában a JSON-üzenet egy tömböt tartalmaz egy eseménnyel. Tekintse meg a webalkalmazást, és figyelje meg, hogy egy **blob létrehozott** esemény érkezett. 
 
-   ```json
-   [{
-    "topic": "/subscriptions/{subscription-id}/resourceGroups/eventgroup/providers/Microsoft.Storage/storageAccounts/demoblob0625",
-    "subject": "/blobServices/default/containers/eventcontainer/blobs/testfile.txt",
-    "eventType": "Microsoft.Storage.BlobCreated",
-    "eventTime": "2018-06-25T22:50:41.1823131Z",
-    "id": "89a2f9da-c01e-00bb-13d6-0c599506e4e3",
-    "data": {
-      "api": "PutBlockList",
-      "clientRequestId": "41341a9b-e977-4a91-9000-c64125039047",
-      "requestId": "89a2f9da-c01e-00bb-13d6-0c5995000000",
-      "eTag": "0x8D5DAEE13C8F9ED",
-      "contentType": "text/plain",
-      "contentLength": 4,
-      "blobType": "BlockBlob",
-      "url": "https://demoblob0625.blob.core.windows.net/eventcontainer/testfile.txt",
-      "sequencer": "00000000000000000000000000001C24000000000004712b",
-      "storageDiagnostics": {
-        "batchId": "ef633252-32fd-464b-8f5a-0d10d68885e6"
-      }
-    },
-    "dataVersion": "",
-    "metadataVersion": "1"
-   }]
-   ```
+   ![Blob létrehozott esemény](./media/blob-event-quickstart-portal/blob-created-event.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

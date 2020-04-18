@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 3e66d71011937c3e22c6f1537bcd448d4aa3bbf3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673810"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605509"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Az Azure virtuális gép vész-helyreállítási mátrixának támogatási mátrixa az Azure-régiók között
 
@@ -18,7 +18,7 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépek egyik Azure-régióból
 
 ## <a name="deployment-method-support"></a>Telepítési módszer támogatása
 
-**Környezet** |  **Támogatás**
+**Üzembe helyezés** |  **Támogatás**
 --- | ---
 **Azure Portal** | Támogatott.
 **PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
@@ -154,7 +154,7 @@ SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | 9.29 | Minden [készlet SUSE
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 és 15 SP1 | 9.32 | Minden [készlet SUSE 15 és 15 kernelek támogatottak.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)</br></br> 4.12.14-5.5-azure-tól 4.12.14-8.22-azure |
+SUSE Linux Enterprise Server 15 és 15 SP1 | 9.32 | Minden készlet SUSE 15 és 15 kernelek támogatottak.</br></br> 4.12.14-5.5-azure-tól 4.12.14-8.22-azure |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikált gépek - Linux fájlrendszer/vendégtároló
 

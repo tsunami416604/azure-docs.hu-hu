@@ -10,16 +10,14 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 024d61c5bcc38c78dc5a2bd5e01cba43d7b5267e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418830"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606614"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factoryben
-
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector"]
 > * [Adatfolyam leképezése](data-flow-create.md)
@@ -35,7 +33,9 @@ ms.locfileid: "81418830"
 > * [Databricks Jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET egyéni](transform-data-using-dotnet-custom-activity.md)
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 ## <a name="overview"></a>Áttekintés
 Ez a cikk ismerteti az Azure Data Factory adatátalakítási tevékenységeit, amelyek segítségével átalakíthatja és feldolgozhatja a nyers adatokat előrejelzésekké és nagy méretű elemzésekké. Az átalakítási tevékenység végrehajtása egy számítógépes környezetben, például az Azure Databricks vagy az Azure HDInsight. Az egyes átalakítási tevékenységekre vonatkozó részletes információkat mutató cikkekre mutató hivatkozásokat tartalmaz.
 

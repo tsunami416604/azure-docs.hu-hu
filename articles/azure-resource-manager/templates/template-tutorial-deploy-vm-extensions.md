@@ -2,15 +2,15 @@
 title: Virtuálisgép-bővítmények telepítése sablonnal
 description: Útmutató virtuális gépi bővítmények üzembe helyezéséhez Azure Resource Manager-sablonokkal.
 author: mumian
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 280b4a9775346c719e82d1fef4162fa6ea666798
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477594"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616887"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Oktatóanyag: Virtuálisgép-bővítmények üzembe helyezése ARM-sablonokkal
 
@@ -23,7 +23,6 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Gyorsindítási sablon megnyitása
 > * A sablon szerkesztése
 > * A sablon üzembe helyezése
-> * A telepítés ellenőrzése
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
@@ -42,29 +41,34 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell-szkript előkészítése
 
-A Következő tartalommal rendelkező PowerShell-parancsfájlok meg vannak osztva a [GitHubról:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)
+Használhat inline PowerShell-parancsfájlt vagy parancsfájlt.  Ez az oktatóanyag bemutatja, hogyan kell használni a parancsfájlokat. A Következő tartalommal rendelkező PowerShell-parancsfájlok meg vannak osztva a [GitHubról:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Ha úgy dönt, hogy közzéteszi a fájlt a `fileUri` saját helyére, frissítenie kell az elemet a sablon később az oktatóanyagban.
+Ha úgy dönt, hogy közzéteszi a fájlt `fileUri` a saját helyére, frissítse az elemet a sablon később az oktatóanyagban.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
 Az Azure quickstart sablonok egy tárház ARM sablonok. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
 
 1. A Visual Studio-kódban válassza a **Fájlmegnyitása** > **fájl**lehetőséget.
-1. A **Fájlnév** mezőbe illessze be a következő URL-címet:https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+1. A **Fájlnév** mezőbe illessze be a következő URL-címet:
+
+    ```url
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    ```
 
 1. A fájl megnyitásához válassza a **Megnyitás**gombot.
     A sablon öt erőforrást határoz meg:
 
-   * **Microsoft.Storage/storageAccounts .** Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * **Microsoft.Network/publicIPAddresses**. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * **Microsoft.Network/virtualNetworks**. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * **Microsoft.Network/networkInterfaces**. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * **Microsoft.Compute/virtualMachines**. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts .**](/azure/templates/Microsoft.Storage/storageAccounts)
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
      A sablon testreszabása előtt hasznos lehet a sablon alapvető ismerete.
 
@@ -77,7 +81,7 @@ Adjon hozzá a meglévő sablonhoz egy virtuális gépi bővítmény erőforrás
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "apiVersion": "2018-06-01",
+  "apiVersion": "2019-12-01",
   "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
   "location": "[parameters('location')]",
   "dependsOn": [
@@ -105,6 +109,14 @@ Az erőforrás-definícióról további információt a [bővítmény hivatkozá
 * **fileUris**: A helyek, ahol a parancsfájlok tárolódnak. Ha úgy dönt, hogy nem használja a megadott helyet, frissítenie kell az értékeket.
 * **commandToExecute**: Ez a parancs meghívja a parancsfájlt.
 
+A szövegközi parancsfájl használatához távolítsa el **a fileUris parancsot,** és frissítse a **CommandToExecute** parancsot a következőre:
+
+```powershell
+powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
+```
+
+Ez a szövegközi szkript is frissíti az iisstart.html tartalmat.
+
 Meg kell nyitnia a HTTP-portot is, hogy hozzáférhessen a webkiszolgálóhoz.
 
 1. Keresse meg a **securityRules** elemet a sablonban.
@@ -130,10 +142,13 @@ Meg kell nyitnia a HTTP-portot is, hogy hozzáférhessen a webkiszolgálóhoz.
 
 A telepítési eljárásról az Oktatóanyag "A sablon telepítése" című szakaszában [olvashat: ARM-sablonok létrehozása függő erőforrásokkal.](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) Azt javasoljuk, hogy a virtuális gép rendszergazdai fiókjához hozzon létre jelszót. Lásd a cikk [előfeltételei](#prerequisites) című szakaszát.
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+A Cloud Shell, futtassa a következő parancsot a virtuális gép nyilvános IP-címének lekéréséhez:
 
-1. Az Azure Portalon válassza ki a virtuális gép.
-1. A virtuális gép áttekintése, másolja az IP-címet a **Kattintásra másoláshoz**lehetőséget, majd illessze be a böngésző lapra. Megnyílik az internetinformációs szolgáltatások (IIS) alapértelmezett üdvözlőlapja:
+```azurepowershell
+(Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName).IpAddress
+```
+
+Illessze be az IP-címet egy webböngészőbe. Megnyílik az internetinformációs szolgáltatások (IIS) alapértelmezett üdvözlőlapja:
 
 ![Az Internet Information Services üdvözlőlapja](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

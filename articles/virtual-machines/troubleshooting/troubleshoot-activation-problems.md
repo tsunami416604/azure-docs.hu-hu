@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 5c84588290ce769b556002469b6a11c6950bb878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd38f646b8dfc58839cd2645f7fadf7332693854
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476552"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605990"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Windows rendszerű virtuális gépek Azure-ban való aktiválási problémáinak hibaelhárítása
 
@@ -77,7 +77,7 @@ Az egyéni lemezképből létrehozott virtuális gép esetében konfigurálnia k
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>2. lépés A virtuális gép és az Azure KMS szolgáltatás közötti kapcsolat ellenőrzése
 
-1. Töltse le és bontsa ki a [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) eszközt a virtuális gép egy helyi mappájába, amely nem aktiválható. 
+1. Töltse le és bontsa ki a [PSping](https://docs.microsoft.com/sysinternals/downloads/psping) eszközt a virtuális gép egy helyi mappájába, amely nem aktiválható. 
 
 2. Nyissa meg a kezdőképernyőt, keressen a Windows PowerShellen, kattintson a jobb gombbal a Windows PowerShell elemre, és válassza a Futtatás rendszergazdaként parancsot.
 

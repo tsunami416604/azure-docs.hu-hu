@@ -1,30 +1,30 @@
 ---
-title: Az Azure Update Management frissítési felmérésének megtekintése
+title: Az Azure Automation Update Management frissítési felméréseinek megtekintése
 description: Ez a cikk a frissítési központi telepítések frissítési felmérései megtekintését ismerteti.
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278414"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617396"
 ---
-# <a name="view-azure-update-management-update-assessments"></a>Az Azure Update Management frissítési felmérésének megtekintése
+# <a name="view-azure-automation-update-management-update-assessments"></a>Az Azure Automation Update Management frissítési felméréseinek megtekintése
 
 Az Azure Automation-fiókban válassza **a Frissítéskezelés lehetőséget** a gépek állapotának megtekintéséhez.
 
 Ez a nézet a gépekről, a hiányzó frissítésekről, a központi telepítések frissítéséről és az ütemezett frissítési központi telepítésekről nyújt tájékoztatást. A **MEGFELELŐSÉG** oszlopban láthatja a gép legutóbbi értékelésének idejét. Az **UPDATE AGENT READINESS** oszlopban láthatja a frissítési ügynök állapotát. Ha probléma merül fel, válassza ki a hivatkozást a hibaelhárítási dokumentációhoz, amely segíthet a probléma megoldásában.
 
-Ha olyan naplókeresést szeretne futtatni, amely a gépről, frissítésről vagy központi telepítésről ad vissza információkat, válassza ki a megfelelő elemet a listában. Megnyílik **a Naplókeresés** ablaktábla a kijelölt elem lekérdezésével:
+Ha olyan naplókeresést szeretne futtatni, amely a gépről, frissítésről vagy központi telepítésről ad vissza információkat, válassza ki a megfelelő elemet a listában. Megnyílik a Naplókeresés ablaktábla a kijelölt elem lekérdezésével.
 
 ![A kezelés frissítése alapértelmezett nézet](media/automation-update-management/update-management-view.png)
 
 ## <a name="view-missing-updates"></a>Hiányzó frissítések megtekintése
 
-Válassza **a Hiányzó frissítések** lehetőséget a gépekről hiányzó frissítések listájának megtekintéséhez. Minden frissítés megjelenik, és kiválasztható. A frissítést igénylő gépek számáról, az operációs rendszer részleteiről és a további információkra mutató hivatkozásról tájékoztató információk jelennek meg. A **Napló keresési** ablaktábla a frissítésekkel kapcsolatos további részleteket is megjelenít.
+Válassza **a Hiányzó frissítések** lehetőséget a gépekről hiányzó frissítések listájának megtekintéséhez. Minden frissítés megjelenik, és kiválasztható. A frissítést igénylő gépek számáról, az operációs rendszer részleteiről és a további információkra mutató hivatkozásról tájékoztató információk jelennek meg. A Naplókeresés ablaktábla a frissítésekkel kapcsolatos további részleteket is megjelenít.
 
 ![Hiányzó frissítések](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
@@ -36,14 +36,14 @@ Az alábbi táblázatok az Update Management támogatott frissítési besorolás
 
 |Osztályozás  |Leírás  |
 |---------|---------|
-|Kritikus frissítések     | Egy adott probléma frissítése, amely egy kritikus, nem biztonsággal kapcsolatos hibát szüntet meg.        |
-|Biztonsági frissítések     | Termékspecifikus, biztonsággal kapcsolatos probléma frissítése.        |
-|Kumulatív frissítések     | A könnyű telepítés érdekében összecsomagolt gyorsjavítások összesítő készlete.        |
+|Kritikus frissítések     | A kritikus, nem biztonsági jellegű hibákat orvosolja a konkrét problémák frissítései.        |
+|Biztonsági frissítések     | Termékspecifikus, biztonsággal kapcsolatos problémák frissítései.        |
+|Kumulatív frissítések     | Az egyszerű telepítés érdekében összecsomagolt gyorsjavítások készletei.        |
 |Funkciócsomagok     | A termékkiadáson kívül terjesztett új termékfunkciók.        |
-|Szervizcsomagok     | Az alkalmazásra alkalmazott gyorsjavítások összesítő készlete.        |
-|Definíciófrissítések     | Vírus- vagy más definíciós fájlok frissítése.        |
-|Eszközök     | Olyan segédprogram vagy szolgáltatás, amely egy vagy több feladat elvégzését segíti.        |
-|Frissítések     | Jelenleg telepített alkalmazás vagy fájl frissítése.        |
+|Szervizcsomagok     | Az alkalmazásra alkalmazott gyorsjavítások készletei.        |
+|Definíciófrissítések     | Vírus- vagy más definíciós fájlok frissítései.        |
+|Eszközök     | Segédprogramok vagy szolgáltatások, amelyek segítenek egy vagy több feladat elvégzésében.        |
+|Frissítések     | A jelenleg telepített alkalmazások vagy fájlok frissítései.        |
 
 ### <a name="linux"></a><a name="linux-2"></a>Linux
 

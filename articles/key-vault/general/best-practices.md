@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 57bb897978f47a66adebac069d8892d596ba78f5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 923fb90f7f0e8eefec650515ed2a3b9b75d2ae77
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430863"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617922"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Gyakorlati tanácsok a Key Vault használatához
 
@@ -44,4 +44,4 @@ Győződjön meg róla, hogy rendszeres biztonsági másolatot készít a [táro
 ## <a name="turn-on-recovery-options"></a>Helyreállítási beállítások bekapcsolása
 
 1. A [helyreállítható törlés bekapcsolása).](overview-soft-delete.md)
-2. Kapcsolja be a tisztítási védelmet, ha a titkos / trezor erő törlésével szemben szeretne védekezni, még a lágy törlés bekapcsolása után is.
+2. Kapcsolja be a tisztítási védelmet, ha a titkos / trezor erő törlésével szemben szeretne védekezni, még a soft-delete bekapcsolása után is.

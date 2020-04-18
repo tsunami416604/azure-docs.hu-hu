@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38ed48df4d681543cc30daccf46b98635d973b89
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944419"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639912"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Az objektumok és hitelesítő adatok szinkronizálása az Azure AD tartományi szolgáltatások által kezelt tartományban
 
@@ -31,6 +31,8 @@ Az alábbi ábra bemutatja, hogyan működik a szinkronizálás az Azure AD DS, 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Szinkronizálás az Azure AD-ről az Azure AD DS-re
 
 A felhasználói fiókok, a csoporttagságok és a hitelesítő adatok kihmesszei az Azure AD-től az Azure AD DS-ig egy módon szinkronizálódnak. Ez a szinkronizálási folyamat automatikus. Nem kell konfigurálnia, figyelnie vagy kezelnie ezt a szinkronizálási folyamatot. A kezdeti szinkronizálás eltarthat néhány órával, hogy néhány napig, az Azure AD könyvtárban lévő objektumok száma. A kezdeti szinkronizálás befejezése után az Azure AD-ben végrehajtott módosítások, például a jelszó vagy az attribútum módosításai, majd automatikusan szinkronizálja az Azure AD DS-t.
+
+Amikor egy felhasználó jön létre az Azure AD-ben, azok nem szinkronizálva az Azure AD DS, amíg nem módosítják a jelszót az Azure AD-ben. Ez a jelszómódosítási folyamat a Kerberos- és NTLM-hitelesítés jelszókivonatait hozza létre és tárolja az Azure AD-ben. A jelszókimondott a felhasználó sikeres hitelesítéséhez az Azure AD DS sikeres hitelesítéséhez van szükség.
 
 A szinkronizálási folyamat egy irányú / egyirányú a tervezés. Az Azure AD DS-ből az Azure AD AD-re visszairányuló módosítások szinkronizálása nem fordított. Az Azure AD DS felügyelt tartomány nagyrészt csak olvasható, kivéve az egyéni, létrehozható egyéni független kiszolgálókat. Az Azure AD DS felügyelt tartományában nem módosíthatja a felhasználói attribútumokat, a felhasználói jelszavakat vagy a csoporttagságokat.
 
@@ -134,7 +136,7 @@ A titkosítási kulcsok egyediek az egyes Azure AD-bérlők számára. Ezek a ki
 
 A régi jelszókivéteket ezután szinkronizálja az Azure AD-ből egy Azure AD DS felügyelt tartomány tartományvezérlőire. Az Azure AD DS-ben ezeka felügyelt tartományvezérlők lemezei in-edítve vannak titkosítva. Ezek a jelszókivétek ezeken a tartományvezérlőkön vannak tárolva és biztosítva, hasonlóan a jelszavak helyszíni AD DS-környezetben történő tárolásához és biztonságoslásához.
 
-Csak felhőalapú Azure AD-környezetekben a [felhasználóknak alaphelyzetbe kell állítaniuk/módosítaniuk kell a jelszavukat](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) a szükséges jelszókiállítások létrehozásához és tárolásához az Azure AD-ben. Az Azure AD-ben az Azure AD-ben az Azure AD tartományi szolgáltatások engedélyezése után létrehozott felhőalapú felhasználói fiókok esetében a jelszókivétaz NTLM és Kerberos-kompatibilis formátumokban jön létre és tárolódik. Ezeknek az új fiókoknak nem kell alaphelyzetbe állítaniuk vagy módosítaniuk a jelszavukat, és nem kell létrehozniuk az örökölt jelszókiállításokat.
+Csak felhőalapú Azure AD-környezetekben a [felhasználóknak alaphelyzetbe kell állítaniuk/módosítaniuk kell a jelszavukat](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) a szükséges jelszókiállítások létrehozásához és tárolásához az Azure AD-ben. Az Azure AD-ben az Azure AD-ben az Azure AD tartományi szolgáltatások engedélyezése után létrehozott felhőalapú felhasználói fiókok esetében a jelszókivétaz NTLM és Kerberos-kompatibilis formátumokban jön létre és tárolódik. Minden felhőalapú felhasználói fióknak módosítania kell a jelszavát, mielőtt szinkronizálni adna az Azure AD DS-hez.
 
 A helyszíni Active AD DS-környezetből az Azure AD Connect használatával szinkronizált hibrid felhasználói fiókok esetében be kell [állítania az Azure AD Connect szolgáltatást az NTLM és a Kerberos-kompatibilis formátumok jelszókivéinek szinkronizálásához.](tutorial-configure-password-hash-sync.md)
 

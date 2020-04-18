@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402492"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618069"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>A CLI-bővítmény használata az Azure Machine Learninghez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,11 +35,30 @@ A CLI nem helyettesíti az Azure Machine Learning SDK-t. Ez egy kiegészítő es
 
 * A CLI használatához Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki még ma [az Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
 
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* A **helyi környezetből**származó CLI-parancsok használatához a helyi környezetből kell használnia a [CLI parancsot.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+
+    Ha az [Azure Cloud Shell,](https://azure.microsoft.com//features/cloud-shell/)a CLI érhető el a böngészőn keresztül, és él a felhőben.
 
 ## <a name="full-reference-docs"></a>Teljes referencia-dokumentumok
 
 Keresse meg az [Azure CLI azure-cli-ml kiterjesztésének teljes referenciadokumentumait.](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest)
+
+## <a name="connect-the-cli-to-your-azure-subscription"></a>A CLI csatlakoztatása Azure-előfizetéséhez
+
+> [!IMPORTANT]
+> Ha az Azure Cloud Shell, kihagyhatja ezt a szakaszt. A felhőrendszerhéj automatikusan hitelesíti Önt az Azure-előfizetésébe bejelentkező fiók használatával.
+
+Számos módon hitelesítheti magát az Azure-előfizetésa a CLI-ből. A legalapvetőbb az, hogy interaktívan hitelesíti a böngésző segítségével. Az interaktív hitelesítéshez nyisson meg egy parancssort vagy terminált, és használja a következő parancsot:
+
+```azurecli-interactive
+az login
+```
+
+Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssorban található utasításokat. Az utasítások az [https://aka.ms/devicelogin](https://aka.ms/devicelogin) engedélyezési kód böngészését és megadását foglalják magukban.
+
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+
+A hitelesítés egyéb módszereiről a [Bejelentkezés az Azure CLI-vel (Bejelentkezés az Azure CLI-vel) témakörben](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)található.
 
 ## <a name="install-the-extension"></a>A bővítmény telepítése
 

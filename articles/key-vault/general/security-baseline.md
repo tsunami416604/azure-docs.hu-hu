@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cb908c4b105324e0866d53463ecd3a8a59e7e651
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 46fa0160dd8b37e89cdd77ba8acdae294fddbefe
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429888"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616894"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Azure-biztonsági alapkonfiguráció a key vaulthoz
 
@@ -1001,7 +1001,7 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11: Az Azure-titkok biztonságos kezelése
 
-**Útmutató:** A felügyelt szolgáltatásidentitás az Azure Key Vaulttal együtt egyszerűsítése és biztonságos sápkezelése a felhőalapú alkalmazások. Győződjön meg arról, hogy az Azure Key Vault ideiglenes törlés engedélyezve van.
+**Útmutató:** A felügyelt szolgáltatásidentitás az Azure Key Vaulttal együtt egyszerűsítése és biztonságos sápkezelése a felhőalapú alkalmazások. Győződjön meg arról, hogy az Azure Key Vault helyreállítható törlés engedélyezve van.
 
 Integrálás az Azure felügyelt identitásaival:
 

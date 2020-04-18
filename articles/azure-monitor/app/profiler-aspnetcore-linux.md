@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c98cd5d3d4d76f9455e4c036aa32a4ead20cfff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671715"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640973"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Azure Linux webalkalmazások az Application Insights Profiler segítségével
 
@@ -168,10 +168,6 @@ A következő példához hasonló kimenetnek kell lennie:
 
     ![Profilozó-nyomkövetések megtekintése](./media/profiler-aspnetcore-linux/view-traces.png)
 
-## <a name="known-issues"></a>Ismert problémák
-
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>A Profil most gomb nem működik a Linux Profiler esetében
-Az App Insights profilozó Linux-verziója még nem támogatja az igény szerinti profilkészítést a profil gomb használatával.
 
 
 ## <a name="next-steps"></a>További lépések

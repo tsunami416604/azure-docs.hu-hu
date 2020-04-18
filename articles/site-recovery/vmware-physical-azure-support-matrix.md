@@ -3,12 +3,12 @@ title: A VMware-szolgáltatás támogatási mátrixa/fizikai vészhelyreállít�
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgáló azure-ba történő vész-helyreállítási támogatásának támogatását az Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: fbd5d87b219cbb482569dc5e45adc9c81181670c
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 02448754abd92eab9e095a5eaff10861f8b5e5e4
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672437"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606035"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Támogatási mátrix a VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vészhelyreállításához
 
@@ -128,7 +128,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.25][9.25 UR] | SP1 3.1
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 és 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | Minden [készlet SUSE 15 és 15 kernelek támogatottak.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15) </br></br> 4.12.14-5.5-azure-tól 4.12.14-8.22-azure
+SUSE Linux Enterprise Server 15 és 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | Minden készlet SUSE 15 és 15 kernelek támogatottak. </br></br> 4.12.14-5.5-azure-tól 4.12.14-8.22-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux fájlrendszerek/vendégtároló
 

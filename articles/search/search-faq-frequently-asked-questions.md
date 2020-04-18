@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262451"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618034"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search – gyakori kérdések (GYAKORI KÉRDÉSEK)
 
@@ -82,6 +82,14 @@ A legtöbb helyettesítő karakteres keresési lekérdezés, például az előta
 Alapértelmezés szerint a keresési eredmények pontozzák a [megfelelő kifejezések statisztikai tulajdonságai](search-lucene-query-architecture.md#stage-4-scoring)alapján, és az eredményhalmazban magasra és alacsonyra rendezik. Egyes lekérdezéstípusok (helyettesítő karakter, előtag, regex) azonban mindig állandó pontszámot adnak a teljes dokumentumpontszámhoz. Ez a működésmód szándékos. Az Azure Cognitive Search állandó pontszámot ír elő, amely lehetővé teszi, hogy a lekérdezésbővítés en keresztül talált egyezések szerepeljenek az eredményekközött, anélkül, hogy ez befolyásolná a rangsorolást.
 
 Tegyük fel például, hogy egy helyettesítő karakterkeresésben a "körutazás*" bemenete "túrák", "tourettes" és "tourmaline" találatokat eredményez. Tekintettel ezen eredmények jellegére, nincs mód arra, hogy ésszerűen következtetni, hogy mely kifejezések értékesebbek, mint mások. Ezért figyelmen kívül hagyjuk a kifejezésgyakoriságokat, amikor helyettesítő karakteres, előtag és regex típusú lekérdezések eredményének pontozása során. A részleges bemeneten alapuló keresési eredmények állandó pontszámot kapnak, hogy elkerüljék a potenciálisan váratlan egyezések irányába mutató elfogultságot.
+
+## <a name="skillset-operations"></a>Skillset műveletek
+
+### <a name="are-there-any-tips-or-tricks-to-reduce-cognitive-services-charges-on-ingestion"></a>Vannak-e olyan tippek vagy trükkök, hogy csökkentsék a kognitív szolgáltatások díjak lenyelés?
+
+Érthető, hogy nem szeretné végrehajtani a beépített készségek vagy egyéni készségek több, mint feltétlenül szükséges, különösen, ha foglalkozik több millió dokumentumot feldolgozni. Ezt szem előtt tartva a skillset-végrehajtáshoz hozzáadtuk a "növekményes bővítési" képességeket. Lényegében megadhat egy gyorsítótár-helyet (egy blob tárolási kapcsolati karakterláncot), amely a "köztes" dúsítási lépések kimenetének tárolására szolgál.  Ez lehetővé teszi, hogy a dúsítási folyamat intelligens legyen, és csak olyan dúsításokat alkalmazzon, amelyek szükségesek a skillset módosításakor. Ez természetesen indexelési időt is takarít meg, mivel a folyamat hatékonyabb lesz.
+
+További információ a [növekményes dúsításról](cognitive-search-incremental-indexing-conceptual.md)
 
 ## <a name="design-patterns"></a>Tervezési minták
 

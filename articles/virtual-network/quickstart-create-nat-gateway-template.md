@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 6b3dee698e63ed2b0a44f05b593b8840d1cd23ee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3850f3f22e730e46f6d278b6cef0e17d357b126d
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80066404"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618049"
 ---
 # <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Rövid útmutató: NAT-átjáró létrehozása – Erőforrás-kezelő sablon
 
@@ -100,13 +100,13 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-**Azure-portál**
+**Azure Portal**
 
-[![Üzembe helyezés az Azure-ban](./media/quick-create-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Válassza **az Erőforráscsoportok lehetőséget** a bal oldali ablaktáblából.
 
@@ -135,7 +135,7 @@ Ha már nincs rá szükség, az [Eltávolítás-AzResourceGroup](https://docs.mi
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
-**Azure-portál**
+**Azure Portal**
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Jelölje ki a NAT-átjárót tartalmazó **myResourceGroupNAT** erőforráscsoportot, majd kattintson a **Törlés gombra.**
 

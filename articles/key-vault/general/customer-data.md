@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 847b6c4616cbbb7fd9c6ccad18ec426dc38a887a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: bceea53e6b177940305a2dc77f2a6ecfa37f277a
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430850"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617891"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Az Azure Key Vault ügyféladat-szolgáltatásai
 
@@ -40,7 +40,7 @@ A következő adatok azonosítják az ügyféladatokat az Azure Key Vaultban:
 
 Ugyanazok a REST API-k, portálélmény és SDK-k, amelyek et tárolók, kulcsok, titkos kulcsok, tanúsítványok és felügyelt tárfiókok létrehozásához használnak, szintén frissíthetik és törölhetik ezeket az objektumokat.
 
-A helyreállítható törlés lehetővé teszi a törölt adatok helyreállítását a törlés után 90 napig. A helyreállítható törlés használataesetén az adatok véglegesen törölhetők, mielőtt a 90 napos megőrzési időszak lejár egy kiürítési művelet végrehajtásával. Ha a tároló vagy az előfizetés úgy van konfigurálva, hogy blokkolja a kiürítési műveleteket, nem lehet véglegesen törölni az adatokat, amíg az ütemezett megőrzési időszak le nem telt.
+A helyreállítható törlés lehetővé teszi a törölt adatok helyreállítását a törlésután 90 napig. A helyreállítható törlés használata esetén az adatok véglegesen törölhetők a 90 napos megőrzési időszak lejárta előtt egy kiürítési művelet végrehajtásával. Ha a tároló vagy az előfizetés úgy van konfigurálva, hogy blokkolja a kiürítési műveleteket, nem lehet véglegesen törölni az adatokat, amíg az ütemezett megőrzési időszak le nem telt.
 
 ## <a name="exporting-customer-data"></a>Vevői adatok exportálása
 

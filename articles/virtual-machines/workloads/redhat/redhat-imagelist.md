@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 40a715ea27be161f09dea59e57799b08406e8ca7
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393774"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605478"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>A Red Hat Enterprise Linux (RHEL) lemezképei elérhetők az Azure-ban
 Az Azure különböző RHEL-lemezképeket kínál a különböző használati esetekhez.
@@ -47,8 +47,12 @@ RHEL          | 6.7      | Nyers    | Linux-ügynök |
 |             | 7.6      | Nyers    | Linux-ügynök | 2019 májusátatól alapértelmezés szerint csatolva van az EUS-adattárakhoz.
 |             | 76-generációs2  | Nyers    | Linux-ügynök | Alapértelmezés szerint az EUS-adattárakhoz kapcsolódnak.
 |             | 7.7      | Lvm    | Linux-ügynök | Alapértelmezés szerint az EUS-adattárakhoz kapcsolódnak.
-|             | 8        | Lvm    | Linux-ügynök | RHEL 8.x képcsalád
-|             | 8 generációs2   | Lvm    | Linux-ügynök | Hyper-V Generation 2 - RHEL 8.x család képek.
+|             | 8-LVM    | Lvm    | Linux-ügynök | RHEL 8.x család képek. Rendszeres adattárakhoz csatolva.
+|             | 8-lvm-gen2| Lvm    | Linux-ügynök | Hyper-V Generation 2 - RHEL 8.x család képek. Rendszeres adattárakhoz csatolva.
+|             | 8        | Lvm    | Linux-ügynök | RHEL 8.0 képek
+|             | 8 generációs2   | Lvm    | Linux-ügynök | Hyper-V Generation 2 - RHEL 8.0 képek.
+|             | 8.1      | Lvm    | Linux-ügynök | RHEL 8.1 képek. Jelenleg rendszeres adattárakhoz kapcsolódik.
+|             | 81gen2   | Lvm    | Linux-ügynök | Hyper-V Generation 2 - RHEL 8.1 képek. Jelenleg rendszeres adattárakhoz kapcsolódik.
 RHEL-NEDV      | 7.4      | Lvm    | Linux-ügynök | RHEL 7.4 SAP HANA és üzleti alkalmazások hoz. Az E4S-tárolókhoz kapcsolódó an- e, az SAP és az RHEL díja, valamint az alap számítási díj díja.
 |             | 74sap-gen2| Lvm    | Linux-ügynök | RHEL 7.4 SAP HANA és üzleti alkalmazások hoz. 2. generációs kép. Az E4S-tárolókhoz kapcsolódó an- e, az SAP és az RHEL díja, valamint az alap számítási díj díja.
 |             | 7,5       | Lvm    | Linux-ügynök | RHEL 7.5 SAP HANA és üzleti alkalmazások esetén. Az E4S-tárolókhoz kapcsolódó an- e, az SAP és az RHEL díja, valamint az alap számítási díj díja.

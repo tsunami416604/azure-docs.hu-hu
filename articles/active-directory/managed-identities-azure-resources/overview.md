@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 03/25/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f599ee3303ab907c319d1f8cf3da3e427a4c4c0b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282120"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639668"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Mik az Azure-erőforrások felügyelt identitások?
 
@@ -51,8 +51,12 @@ A felügyelt identitásoknak két típusa létezik:
 - A **felhasználó által hozzárendelt felügyelt identitás** különálló Azure-erőforrásként jön létre. Egy létrehozási folyamaton keresztül az Azure létrehoz egy identitást a használt előfizetés által megbízhatónak tekintett Azure AD-bérlőn. Az identitás a létrehozását követően hozzárendelhető egy vagy több Azure-beli szolgáltatáspéldányhoz. A felhasználó által hozzárendelt identitások életciklusa külön van kezelve azon Azure-beli szolgáltatáspéldányokétól, amelyekhez hozzá lettek rendelve.
 
 Belsőleg felügyelt identitások egy speciális típusú szolgáltatásnév, amely zárolva van, hogy csak azure-erőforrásokkal használható. A felügyelt identitás törlésekor a megfelelő egyszerű szolgáltatás automatikusan törlődik.
+Emellett a felhasználó által hozzárendelt vagy rendszer-hozzárendelt identitás létrehozásakor a felügyelt identitás-erőforrás-szolgáltató (MSRP) belső tanúsítványt ad ki az adott identitásnak. 
 
-A kód a felügyelt identitások használatával hozzáférési jogkivonatokat igényelhet az Azure AD-hitelesítést támogató szolgáltatásokhoz. Az Azure gondoskodik a szolgáltatáspéldány által használt hitelesítő adatok biztosításáról.
+A kód a felügyelt identitások használatával hozzáférési jogkivonatokat igényelhet az Azure AD-hitelesítést támogató szolgáltatásokhoz. Az Azure gondoskodik a szolgáltatáspéldány által használt hitelesítő adatok biztosításáról. 
+
+## <a name="credential-rotation"></a>Hitelesítő adatok elforgatása
+A hitelesítő adatok rotációját az Azure-erőforrást tároló erőforrás-szolgáltató szabályozza. A hitelesítő adatok alapértelmezett elforgatása 46 naponta történik. Az erőforrás-szolgáltatótól kell kérnie az új hitelesítő adatokat, így az erőforrás-szolgáltató 46 napnál tovább várhat.
 
 Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuális gépekkel (VM) való működése látható:
 
@@ -140,7 +144,7 @@ A különféle Azure-erőforrások felügyelt identitással való elérésének 
 * [Azure Kubernetes Service](/azure/aks/use-managed-identity)
 * [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
 * [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
-* [Azure-adatgyár](../../data-factory/data-factory-service-identity.md)
+* [Azure Data Factory](../../data-factory/data-factory-service-identity.md)
 
 
 ## <a name="what-azure-services-support-the-feature"></a>Mely Azure-szolgáltatások támogatják a szolgáltatást?<a name="which-azure-services-support-managed-identity"></a>

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266441"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639723"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Az Azure AD-naplók integrálása az Azure Monitor-naplókkal
 
@@ -60,9 +60,13 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Egy felhasználó, aki az adott Azure AD-bérlő *globális* vagy *biztonsági rendszergazdája*.
 * A Log Analytics munkaterület az Azure-előfizetésben. További információ a [Log Analytics-munkaterület létrehozásáról.](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)
 
+## <a name="licensing-requirements"></a>Licenckövetelmények
+
+A funkció használatához Egy Azure AD Premium P1 vagy P2 licenc szükséges. A követelményeinek leginkább megfelelő licenc kiválasztásáról lásd [az ingyenes, alapszintű és prémium kiadások általánosan elérhető szolgáltatásait összehasonlító cikket](https://azure.microsoft.com/pricing/details/active-directory/).
+
 ## <a name="send-logs-to-azure-monitor"></a>Naplók küldése az Azure Monitornak
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 2. Válassza az **Azure Active Directory** > **diagnosztikai beállításai** -> **diagnosztikai beállítás hozzáadása diagnosztikai beállítás**lehetőséget. A **Naplózási naplók** vagy a Bejelentkezések lapon a Beállítások **exportálása** lehetőséget is választhatja a diagnosztikai beállítások **konfigurációs** lapján.  
     

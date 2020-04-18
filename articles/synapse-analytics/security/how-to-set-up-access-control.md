@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94699f2153fa8d1df3ab85c184f32792c7ae0b59
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428874"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606003"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A Szinapsze-munkaterület védelme (előzetes verzió)
 
@@ -51,8 +51,8 @@ Három biztonsági csoport létrehozása és feltöltése a munkaterülethez:
 - **WS1\_WSAdmins** – azoknak a felhasználóknak, akiknek teljes ellenőrzésre van szükségük a munkaterület felett
 - **WS1\_SparkAdmins** – azoknak a felhasználóknak, akiknek teljes körű ellenőrzésre van szükségük a munkaterület Spark-aspektusai felett
 - **WS1\_SQLAdmins** – azoknak a felhasználóknak, akiknek teljes ellenőrzésre van szükségük a munkaterület SQL-aspektusai felett
-- **WS1-rendszergazdák\_** hozzáadása a **\_WS1 SQLAdmins szolgáltatáshoz**
-- **WS1-rendszergazdák\_** hozzáadása a **\_WS1 SparkAdmins szolgáltatáshoz**
+- **\_WS1 WSAdmins** hozzáadása a **\_WS1 SQLAdmins szolgáltatáshoz**
+- **\_WS1 WSAdmins** hozzáadása a **\_WS1 SparkAdmins szolgáltatáshoz**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>2. lépés: A Data Lake Storage Gen2 fiók előkészítése
 
@@ -89,7 +89,7 @@ A Synapse munkaterületnek hozzá kell férnie az STG1-hez és a CNT1-hez, hogy 
 - Az Azure-portál megnyitása
 - STG1 megkeresése
 - Navigálás a CNT1-re
-- Győződjön meg arról, hogy a WS1-hez tartozó MSI hozzá van rendelve az **Azure Blob data contributor** szerepkörhöz a CNT1-en
+- Győződjön meg arról, hogy a WS1 MSI -je (felügyelt szolgáltatásidentitása) hozzá van-e rendelve az **Azure Blob adatközreműködői** szerepkörhöz a CNT1-en
   - Ha nem látja hozzárendelve, rendelje hozzá.
   - Az MSI neve megegyezik a munkaterület nevével. Ebben az esetben lenne &quot;WS1&quot;.
 

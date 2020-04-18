@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: be558c3e3a68ce6c194dcf98d8f5ff92c4c14edb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457824"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617507"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-megszüntetés Key Vault-tanúsítványokkal
 
@@ -47,7 +47,10 @@ Az Application Gateway és a Key Vault integrációja háromlépéses konfigurá
 
 1. **A kulcstartó konfigurálása**
 
-   Ezután importálhat egy meglévő tanúsítványt, vagy hozzon létre egy újat a key vaultban. A tanúsítványt az alkalmazásátjárón keresztül futó alkalmazások fogják használni. Ebben a lépésben is használhatja a key vault titkos, amely jelszó nélküli, alap 64 kódolású PFX-fájlként tárolt. Azt javasoljuk, hogy a tanúsítványtípus használata miatt az automatikus megújítási képesség, amely elérhető a tanúsítvány típus objektumok a key vaultban. Miután létrehozott egy tanúsítványt vagy egy titkos kulcsot, hozzáférési szabályzatokat definiál a key vaultban, hogy az identitás hozzáférést *kapjon* a titkos kulcshoz.
+   Ezután importálhat egy meglévő tanúsítványt, vagy hozzon létre egy újat a key vaultban. A tanúsítványt az alkalmazásátjárón keresztül futó alkalmazások fogják használni. Ebben a lépésben is használhatja a key vault titkos, amely jelszó nélküli, base-64 kódolású PFX-fájlként tárolt. Azt javasoljuk, hogy a tanúsítványtípus használata miatt az automatikus megújítási képesség, amely elérhető a tanúsítvány típus objektumok a key vaultban. Miután létrehozott egy tanúsítványt vagy egy titkos kulcsot, hozzáférési szabályzatokat definiál a key vaultban, hogy az identitás hozzáférést *kapjon* a titkos kulcshoz.
+   
+   > [!NOTE]
+   > Ha az alkalmazásátjárót ARM-sablonon keresztül telepíti, akár az Azure CLI vagy a PowerShell használatával, akár az Azure Portalról telepített Azure-alkalmazáson keresztül, a key vaultban alap-64 kódolású PFX-fájlként tárolt SSL-tanúsítványnak **jelszó nélkülinek kell lennie.** Emellett el kell végeznie az Azure Key Vault használata című lépéseket [a biztonságos paraméterérték központi telepítéséhez.](../azure-resource-manager/templates/key-vault-parameter.md) Különösen fontos, hogy `enabledForTemplateDeployment` állítsa `true`be.
 
 1. **Az Application Gateway konfigurálása**
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7c1ad2581d025a9259c5cb2a84e4237f938fc892
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419174"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637145"
 ---
 Az Azure virtuális gépek (VM-ek) létrehozása és kezelése egységes módon, nagy méretekben, valamilyen automatizálási forma általában kívánatos. Számos olyan eszköz és megoldás létezik, amelyek lehetővé teszik az Azure-infrastruktúra teljes üzembe helyezésének és felügyeleti életciklusának automatizálását. Ez a cikk bemutatja az Azure-ban használható infrastruktúra-automatizálási eszközöket. Ezek az eszközök általában illeszkednek az alábbi megközelítések egyikébe:
 
@@ -125,7 +125,7 @@ További információk:
 
 
 ## <a name="jenkins"></a>Jenkins
-A [Jenkins](https://www.jenkins.io) egy folyamatos integrációs kiszolgáló, amely segít az alkalmazások telepítésében és tesztelésében, valamint automatikus folyamatok létrehozásában a kódkézbesítéshez. Több száz dugó kiterjeszteni az alapvető Jenkins platform, és akkor is integrálható sok más termékek és megoldások révén webhooks. Manuálisan telepítheti a Jenkinst egy Azure-beli virtuális gépre, futtathatja a Jenkinst egy Docker-tárolóból, vagy használhat egy előre elkészített Azure Marketplace-rendszerképet.
+A [Jenkins](https://jenkins.io) egy folyamatos integrációs kiszolgáló, amely segít az alkalmazások telepítésében és tesztelésében, valamint automatikus folyamatok létrehozásában a kódkézbesítéshez. Több száz dugó kiterjeszteni az alapvető Jenkins platform, és akkor is integrálható sok más termékek és megoldások révén webhooks. Manuálisan telepítheti a Jenkinst egy Azure-beli virtuális gépre, futtathatja a Jenkinst egy Docker-tárolóból, vagy használhat egy előre elkészített Azure Marketplace-rendszerképet.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 

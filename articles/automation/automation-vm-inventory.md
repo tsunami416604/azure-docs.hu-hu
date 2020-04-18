@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: leltár, automatizálás, változás, követés
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0627d2daa70c276535dc43b722e22e1d73b0c8d2
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844819"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617364"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Azure-beli virtuális gépek kezelése leltár használatával
 
@@ -30,7 +30,7 @@ Ez a cikk feltételezi, hogy rendelkezik egy virtuális gép konfigurálása a m
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>Leltározás engedélyezése a virtuális gép erőforrásainak lapjáról
 
@@ -53,9 +53,9 @@ Miután az üzembe helyezés befejeződött, az állapotsáv eltűnik. A rendsze
 
 Alapértelmezés szerint a szoftverek, a Windows-szolgáltatások és a Linux-démonok szerepelnek a leltározás hatókörében. A Windows beállításjegyzék- és a fájlleltárának összeállításához konfigurálnia kell a leltározási beállításokat.
 
-1. A **Készlet** nézetben kattintson a **Beállítások szerkesztése** gombra az ablak tetején.
-2. Új leltározási beállítás hozzáadásához lépjen a hozzáadni kívánt kategóriára a **Windows beállításjegyzék**, a **Windows-fájlok** és a **Linux-fájlok** lapok használatával.
-3. Jelölje ki a megfelelő kategóriát, és kattintson a **Hozzáadás** gombra az ablak tetején.
+1. A Készlet lapon kattintson a lap tetején a **Beállítások szerkesztése** gombra.
+2. Új gyűjteménybeállítás hozzáadásához lépjen a hozzáadni kívánt beállítási kategóriára a **Windows rendszerleíró adatbázis,** a **Windows-fájlok**vagy a **Linux-fájlok** lap kiválasztásával.
+3. Jelölje ki a megfelelő kategóriát, és kattintson a lap tetején a **Hozzáadás** gombra.
 
 Az alábbi táblázatok a különböző kategóriákhoz konfigurálható minden tulajdonságról tartalmaznak információt.
 
@@ -72,23 +72,23 @@ Az alábbi táblázatok a különböző kategóriákhoz konfigurálható minden 
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
-|Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
-|Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
-|Elérési út megadása     | A fájl elérési útja, például: „c:\temp\myfile.txt”
+|Engedélyezve     | Igaz, ha a beállítás van alkalmazva, és hamis egyébként.        |
+|Elem neve     | A követendő fájl rövid neve.        |
+|Csoport     | A fájlok logikai csoportosításának csoportneve.       |
+|Elérési út megadása     | A fájl ellenőrzésének elérési útja, például **c:\temp\myfile.txt**.
 
 ### <a name="linux-files"></a>Linux fájlok
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
-|Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
-|Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
-|Elérési út megadása     | A fájl elérési útja, például: „/etc/*.conf”       |
-|Elérési út típusa     | Írja be a követni kívánt elem típusát. A lehetséges értékek a Fájl és a Címtár        |
-|Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
-|Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
-|Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Mellőzés** – Mellőzi a szimbolikus hivatkozásokat, és nem szerepelteti a hivatkozott fájlokat/címtárakat<br>**Követés** – Követi a szimbolikus hivatkozásokat a rekurzió során, és szerepelteti a hivatkozott fájlokat/címtárakat<br>**Kezelés** – Követi a szimbolikus hivatkozásokat, és lehetővé teszi a visszaadott tartalom kezelésének módosítását      |
+|Engedélyezve     | Igaz, ha a beállítás van alkalmazva, és hamis egyébként.        |
+|Elem neve     | A követendő fájl rövid neve.        |
+|Csoport     | A fájlok logikai csoportosításának csoportneve.        |
+|Elérési út megadása     | A fájl ellenőrzésének elérési útja, például **/etc/*.conf**.       |
+|Elérési út típusa     | A nyomon követendő elem típusa. Az értékek a Fájl és a Könyvtár.        |
+|Rekurzió     | Igaz, ha rekurziót használ, amikor a nyomon követendő elemet keresi, és a Hamis egyéb.        |
+|Sudo használata     | Igaz, ha sudo az elem ellenőrzése, és hamis egyébként.         |
+|Hivatkozások     | Érték, amely azt jelzi, hogy a szimbolikus hivatkozásokat hogyan kezelik a könyvtárak bejárásakor. Lehetséges értékek: <br> Mellőzés – Mellőzi a szimbolikus hivatkozásokat, és nem szerepelteti a hivatkozott fájlokat/címtárakat<br>Követés – Követi a szimbolikus hivatkozásokat a rekurzió során, és szerepelteti a hivatkozott fájlokat/címtárakat<br>Kezelés – Követi a szimbolikus hivatkozásokat, és lehetővé teszi a visszaadott tartalom kezelésének módosítását      |
 
 ## <a name="manage-machine-groups"></a>Gépcsoportok kezelése
 
@@ -104,9 +104,9 @@ Ha kiválaszt egy gépcsoportot a listából, megnyílik a Gépcsoportok lap. Ez
 
 ![Gépcsoport lap megtekintése](./media/automation-vm-inventory/machine-group-page.png)
 
-Kattintson a **+ Klónozás** gombra a gépcsoport klónozásához. Itt új nevet és aliast kell adnia a csoportnak a csoportszámára. A definíció jelenleg módosítható. A lekérdezés módosítása után nyomja meg a **Lekérdezés ellenőrzése a** kijelölt gépek előnézetének megtekintéséhez. Ha elégedett a csoporttal, kattintson a **Létrehozás** gombra a gépcsoport létrehozásához.
+Kattintson **+ Klón klón** klóna a gépcsoport. Új nevet és aliast kell adnia a csoportnak a csoportszámára. A definíció jelenleg módosítható. A lekérdezés módosítása után kattintson a **Lekérdezés ellenőrzése gombra** a kijelölt gépek előnézetének megtekintéséhez. Ha elégedett a csoporttal, kattintson a **Létrehozás gombra** a gépcsoport létrehozásához.
 
-Ha új gépcsoportot szeretne létrehozni, válassza **a + Gépcsoport létrehozása**lehetőséget. Ez a gomb megnyitja a **Gépcsoport létrehozása lapot,** ahol meghatározhatja az új csoportot. A csoport létrehozásához kattintson a **Létrehozás** parancsra.
+Ha új gépcsoportot szeretne létrehozni, kattintson **a + Gépcsoport létrehozása gombra.** Ez a gomb megnyitja a **Gépcsoport létrehozása** lapot, ahol meghatározhatja az új csoportot. A csoport létrehozásához kattintson a **Létrehozás** parancsra.
 
 ![Új gépcsoport létrehozása](./media/automation-vm-inventory/create-new-group.png)
 
@@ -115,18 +115,17 @@ Ha új gépcsoportot szeretne létrehozni, válassza **a + Gépcsoport létrehoz
 A virtuális gép eltávolítása a leltárkezelésből:
 
 1. Az Azure Portal bal oldali paneljén kattintson a **Log Analytics** elemre, majd válassza ki a virtuális gép előkészítése során használt munkaterületet.
-2. Nyissa meg a **Log Analytics** ablakot, majd válassza a **Virtuális gépek** lehetőséget az **Erőforrás** menü **Munkaterület adatforrásai** kategóriájában.
-3. A listában válassza ki a leválasztani kívánt virtuális gépeket. A virtuális gép mellett egy zöld pipa és az **Ez a munkaterület** felirat jelenik meg az **OMS-kapcsolat** oszlopban.
+2. A Log Analytics lapon nyissa meg az **Erőforrás menüt.**
+3. A Munkaterület **adatforrásai**csoportban válassza a **Virtuális gépek** lehetőséget.
+4. A listában válassza ki a leválasztani kívánt virtuális gépeket. A virtuális gép mellett egy zöld pipa és az **Ez a munkaterület** felirat jelenik meg az **OMS-kapcsolat** oszlopban.
 
    >[!NOTE]
-   >Az OMS-t mostantól Azure Monitor-naplóknak nevezzük.
+   >Az Operations Management Suite (OMS) mostantól Azure Monitor-naplóknak nevezi.
    
-4. A következő lap tetején válassza a **Leválasztás** lehetőséget.
-5. A megerősítési ablakban válassza a **Igen** lehetőséget.
-    Ezzel a művelettel megszünteti a gép kezelését.
+5. A következő lap tetején kattintson a **Kapcsolat bontása gombra.**
+6. A megerősítést kérő ablakban kattintson az **Igen** gombra a gép és a felügyelet leválasztásához.
 
 ## <a name="next-steps"></a>További lépések
 
 * A virtuális gépek fájl- és beállításjegyzék-beállításainak módosításával kapcsolatos információkért lásd: [A szoftvermódosítások nyomon követése saját környezetében a Change Tracking megoldás használatával](../log-analytics/log-analytics-change-tracking.md).
 * A Windows és a virtuális gépek frissítéseinek kezeléséről [az Azure frissítéskezelési megoldása című témakörben](../operations-management-suite/oms-solution-update-management.md)olvashat.
-

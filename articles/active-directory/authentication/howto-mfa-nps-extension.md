@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c8606f0b7ab47d624ec66c8cda539e571cec6ce
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393060"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617656"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel
 
@@ -142,6 +142,14 @@ A tesztfiók elindításához kövesse az alábbi lépéseket:
 1. Jelentkezzen be [https://aka.ms/mfasetup](https://aka.ms/mfasetup) egy tesztfiókkal.
 2. Az ellenőrzési módszer beállításához kövesse az utasításokat.
 3. [Hozzon létre egy feltételes hozzáférési szabályzatot,](howto-mfa-getstarted.md#create-conditional-access-policy) amely többtényezős hitelesítést igényel a tesztfiókhoz.
+
+> [!IMPORTANT]
+>
+> Győződjön meg arról, hogy a felhasználók sikeresen regisztráltaz Azure többtényezős hitelesítés. Ha a felhasználók korábban csak az önkiszolgáló jelszó-visszaállítás (SSPR) regisztrálására regisztráltak, a *StrongAuthenticationMethods* engedélyezve van a fiókjukhoz. Az Azure többtényezős hitelesítés kényszerítve, ha *StrongAuthenticationMethods* van konfigurálva, akkor is, ha a felhasználó csak regisztrált SSPR.
+>
+> Kombinált biztonsági regisztráció engedélyezhető, amely egyszerre konfigurálja az SSPR és az Azure többtényezős hitelesítést. További információt a [Kombinált biztonsági adatok regisztrációjának engedélyezése az Azure Active Directoryban című témakörben talál.](howto-registration-mfa-sspr-combined.md)
+>
+> Arra is [kényszerítheti a felhasználókat, hogy újra regisztrálják a hitelesítési módszereket,](howto-mfa-userdevicesettings.md#manage-user-authentication-options) ha korábban csak az SSPR-t engedélyezték.
 
 ## <a name="install-the-nps-extension"></a>A nps-bővítmény telepítése
 

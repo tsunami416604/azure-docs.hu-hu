@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 426294f20dd51538920182a0e7a2915f6a47ba54
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 04/17/2020
+ms.openlocfilehash: 10e53b6b7b79e7d4581a1843b70b3d02778e8df5
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383554"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617804"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Beeline-ügyfél használata Apache Hive-val
 
@@ -40,7 +40,8 @@ Amikor egy ügyfélről a HDInsight-hoz csatlakozik egy Azure virtuális hálóz
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-<a name="replace-headnode-fqdn-with-the-fully-qualified-domain-name-of-a-cluster-headnode-to-find-the-fully-qualified-domain-name-of-a-headnode-use-the-information-in-the-manage-hdinsight-using-the-apache-ambari-rest-api-document"></a>Cserélje `<headnode-FQDN>` le a fürtcsomópont teljesen minősített tartománynevére. A headnode teljesen minősített tartománynevének megkereséséhez használja a [HDInsight kezelése az Apache Ambari REST API-dokumentum használatával](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) található információkat.
+Cserélje `<headnode-FQDN>` le a fürtcsomópont teljesen minősített tartománynevére. A headnode teljesen minősített tartománynevének megkereséséhez használja a [HDInsight kezelése az Apache Ambari REST API-dokumentum használatával](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) található információkat.
+
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>HdInsight Enterprise Security Package (ESP) fürt a Kerberos használatával
@@ -84,11 +85,11 @@ A privát végpontok egy alapszintű terheléselosztóra mutatnak, amely csak az
 
 ### <a name="use-beeline-with-apache-spark"></a>A Beeline használata az Apache Sparkkal
 
-Az Apache Spark saját megvalósítást biztosít a HiveServer2 számára, amelyet néha Spark Thrift-kiszolgálónak is neveznek. Ez a szolgáltatás a Spark SQL használatával oldja fel a lekérdezéseket a Hive helyett, és a lekérdezéstől függően jobb teljesítményt nyújthat.
+Az Apache Spark saját megvalósítást biztosít a HiveServer2 számára, amelyet néha Spark Thrift-kiszolgálónak is neveznek. Ez a szolgáltatás a Spark SQL használatával oldja fel a lekérdezéseket a Hive helyett. És a lekérdezéstől függően jobb teljesítményt nyújthat.
 
 #### <a name="through-public-or-private-endpoints"></a>Nyilvános vagy privát végpontokon keresztül
 
-A használt kapcsolati karakterlánc némileg eltérő. Ahelyett, hogy `httpPath=/hive2` tartalmazza `httpPath/sparkhive2`azt . Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje `admin` le a fürt bejelentkezési fiókjával a fürthöz. ESP-fürtök esetén használja a teljes upn-t (például). user@domain.com Cserélje `password` le a fürt bejelentkezési fiókjához.
+A használt kapcsolati karakterlánc némileg eltérő. Ahelyett, hogy `httpPath=/hive2` azt `httpPath/sparkhive2`használja . Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje `admin` le a fürt bejelentkezési fiókjával a fürthöz. ESP-fürtök esetén használja a teljes upn-t (például). user@domain.com Cserélje `password` le a fürt bejelentkezési fiókjához.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -118,7 +119,7 @@ Ha közvetlenül a fürtfőcsomópontról vagy ugyanabból az Azure virtuális h
 
 * Egy Hadoop-fürt a HDInsighton. Lásd: [Első lépések a HDInsight linuxos alkalmazásával.](./apache-hadoop-linux-tutorial-get-started.md)
 
-* Figyelje meg a fürt elsődleges tárolójának [URI-sémát.](../hdinsight-hadoop-linux-information.md#URI-and-scheme) Például `wasb://` az Azure `abfs://` Storage, az Azure Data `adl://` Lake Storage Gen2 vagy az Azure Data Lake Storage Gen1 esetében. Ha az Azure Storage biztonságos átvitele `wasbs://`engedélyezve van, az URI a . További információt a [biztonságos átvitel című](../../storage/common/storage-require-secure-transfer.md)témakörben talál.
+* Figyelje meg a fürt elsődleges tárolójának URI-sémát. Például `wasb://` az Azure `abfs://` Storage, az Azure Data `adl://` Lake Storage Gen2 vagy az Azure Data Lake Storage Gen1 esetében. Ha az Azure Storage biztonságos átvitele `wasbs://`engedélyezve van, az URI a . További információt a [biztonságos átvitel című](../../storage/common/storage-require-secure-transfer.md)témakörben talál.
 
 * 1. lehetőség: Egy SSH ügyfél. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](../hdinsight-hadoop-linux-use-ssh-unix.md) A dokumentum legtöbb lépése feltételezi, hogy beeline-t használ egy SSH-munkamenetből a fürtbe.
 
@@ -177,7 +178,7 @@ Ez a példa a Beeline ügyfél SSH-kapcsolatból történő használatán alapul
 
     Ez az információ a táblázat oszlopait írja le.
 
-5. Adja meg a következő utasítások hozegy tábla nevű **log4jLogs** segítségével minta adatokat a HDInsight-fürt: (Szükség szerint vizsgálja felül az [URI-séma.)](../hdinsight-hadoop-linux-information.md#URI-and-scheme)
+5. Adja meg a következő utasítások hozegy tábla nevű **log4jLogs** segítségével minta adatok a HDInsight-fürt: (Szükség szerint vizsgálja felül az URI-séma.)
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -244,7 +245,7 @@ Ez a példa a Beeline ügyfél SSH-kapcsolatból történő használatán alapul
 
 ## <a name="run-a-hiveql-file"></a>HiveQL-fájl futtatása
 
-Ez a folytatása a korábbi példa. A következő lépésekkel hozzon létre egy fájlt, majd futtassa azt a Beeline használatával.
+Ez a példa az előző példa folytatása. A következő lépésekkel hozzon létre egy fájlt, majd futtassa azt a Beeline használatával.
 
 1. A **query.hql**nevű fájl létrehozásához használja a következő parancsot:
 
@@ -300,7 +301,7 @@ Ez a folytatása a korábbi példa. A következő lépésekkel hozzon létre egy
 
 ## <a name="install-beeline-client"></a>Beeline kliens telepítése
 
-Bár a Beeline a HDInsight-fürt főcsomópontjain található, érdemes lehet azt egy helyi számítógépre telepíteni.  Az alábbi lépések a Beeline helyi számítógépre való telepítéséhez egy [Linux-alrendszeren alapulnak.](https://docs.microsoft.com/windows/wsl/install-win10)
+Bár a Beeline a főcsomópontokon található, érdemes lehet helyileg telepíteni.  A helyi gépek telepítési lépései a [Windows Linux alrendszeren alapulnak.](https://docs.microsoft.com/windows/wsl/install-win10)
 
 1. Csomaglisták frissítése. Írja be a következő parancsot a bash shell:
 
@@ -316,7 +317,7 @@ Bár a Beeline a HDInsight-fürt főcsomópontjain található, érdemes lehet a
         sudo apt install openjdk-11-jre-headless
         ```
 
-    1. Nyissa meg a bashrc fájlt (általában megtalálható `nano ~/.bashrc`~/.bashrc): .
+    1. Nyissa meg a bashrc fájlt (gyakran megtalálható `nano ~/.bashrc`a ~/.bashrc): .
 
     1. Módosítsd a bashrc aktát. Adja hozzá a következő sort a fájl végén:
 

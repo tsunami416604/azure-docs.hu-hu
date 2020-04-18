@@ -1,5 +1,5 @@
 ---
-title: Az Azure Key Vault ideiglenes törlése | Microsoft dokumentumok
+title: Az Azure Key Vault helyreállítható törlés | Microsoft dokumentumok
 description: Az Azure Key Vault ban a törlés helyreállíthatóan lehetővé teszi a törölt kulcstartók és kulcstartó-objektumok, például kulcsok, titkos kulcsok és tanúsítványok helyreállítását.
 ms.service: key-vault
 ms.subservice: general
@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 6185f0d84f27b6be89e797fc7cfb22940d8c6401
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: be4f124863da39cc9f6a61ebe054d451b438e8c3
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432098"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617753"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault: a helyreállítható törlés áttekintése
 
@@ -38,7 +38,7 @@ Az Azure Key Vaults az Azure Resource Manager által felügyelt erőforrások ny
 
 Ha a helyreállítható törlés engedélyezve van, a törölt erőforrásként megjelölt erőforrások egy meghatározott ideig (alapértelmezés szerint 90 napig) megmaradnak. A szolgáltatás továbbá lehetővé teszi a törölt objektum helyreállítását, lényegében a törlés visszavonása.
 
-Új kulcstartó létrehozásakor a helyreállítható törlés alapértelmezés szerint be van kapcsolva. Az [Azure CLI-n](soft-delete-cli.md) vagy az [Azure Powershellen](soft-delete-powershell.md)keresztül is létrehozhat egy kulcstartót a helyreállítható törlés nélkül. Ha a helyreállítható törlés engedélyezve van egy kulcstartóban, az nem tiltható le.
+Új kulcstartó létrehozásakor a helyreállítható törlés alapértelmezés szerint be van kapcsolva. Az [Azure CLI-n](soft-delete-cli.md) vagy az Azure [PowerShellen](soft-delete-powershell.md)keresztül is létrehozhat egy kulcstartót a helyreállítható törlés nélkül. Ha a helyreállítható törlés engedélyezve van egy kulcstartóban, az nem tiltható le.
 
 Az alapértelmezett megőrzési időszak 90 nap, de a key vault létrehozása során az adatmegőrzési szabályzat időköze az Azure Portalon keresztül 7 és 90 nap közötti értékre állítható be. A kiürítési védelem megőrzési házirend ugyanazt az időtartamot használja. A beállítás után az adatmegőrzési házirend-időköz nem módosítható.
 
@@ -46,7 +46,7 @@ A megőrzési időszak lejártáig nem használhatja fel újra a helyreállítha
 
 ### <a name="purge-protection"></a>Tisztítási védelem 
 
-A védelem kiürítése a Key Vault nem kötelező viselkedése, és **alapértelmezés szerint nincs engedélyezve.** Ez lehet esztergált -ra keresztül [CLI](soft-delete-cli.md#enabling-purge-protection) vagy [Powershell](soft-delete-powershell.md#enabling-purge-protection).
+A védelem kiürítése a Key Vault nem kötelező viselkedése, és **alapértelmezés szerint nincs engedélyezve.** Cli-n vagy [CLI](soft-delete-cli.md#enabling-purge-protection) [PowerShellen](soft-delete-powershell.md#enabling-purge-protection)keresztül kapcsolható be.
 
 Ha a kiürítési védelem be van kapcsolva, a tároló vagy a törölt állapotban lévő objektum nem törölhető, amíg a megőrzési időszak le nem telt. A helyreállítható tárolók és objektumok továbbra is helyreállíthatók, biztosítva, hogy az adatmegőrzési szabály betartatható legyen. 
 
@@ -58,7 +58,7 @@ A proxyerőforrás postaműveletén keresztül véglegesen törlött, kiüríté
 
 Kivételek a következők:
 - Ha az Azure-előfizetés *thetetlenként*van megjelölve. Ebben az esetben csak a szolgáltatás hajthatja végre a tényleges törlést, és ezt ütemezett folyamatként teszi. 
-- Ha a --enable-purge-protection jelző engedélyezve van a tárolóban. Ebben az esetben a Key Vault 90 napot vár, attól kezdve, hogy az eredeti titkos objektumot törlésre jelölték meg az objektum végleges törléséhez.
+- Ha `--enable-purge-protection flag` a engedélyezve van a tárolóban is. Ebben az esetben a Key Vault 90 napot vár, attól kezdve, hogy az eredeti titkos objektumot törlésre jelölték meg az objektum végleges törléséhez.
 
 ### <a name="key-vault-recovery"></a>Kulcstartó helyreállítása
 

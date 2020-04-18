@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3e7b1a656c92e37a709b57dae463f6644003e42
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 60d0ad0a1c0a1b4d13ce4d386df22406a8ab8e51
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755189"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617623"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Feltételes hozzáférés: Többkori licenc megkövetelése az összes felhasználó számára
 
@@ -41,7 +41,7 @@ Előfordulhat, hogy a szervezetek számos felhőalapú alkalmazással rendelkezn
 
 ## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési házirend létrehozása
 
-A következő lépések segítségével hozzon létre egy feltételes hozzáférési szabályzatot, amely megköveteli a hozzárendelt felügyeleti szerepköröktől a többtényezős hitelesítés elvégzéséhez.
+A következő lépések segítenek létrehozni egy feltételes hozzáférési szabályzatot, amely megköveteli, hogy minden felhasználó többtényezős hitelesítést hajtson végre.
 
 1. Jelentkezzen be az **Azure Portalon** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférés-rendszergazdaként.
 1. Tallózással keresse meg az **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését.**

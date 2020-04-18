@@ -1,215 +1,158 @@
 ---
 title: Sablon létrehozása – Visual Studio-kód
 description: A Resource Manager-sablonokon a Visual Studio Code-dal és az Azure Resource Manager-eszközök bővítményeivel dolgozhat.
-author: mumian
-ms.date: 04/13/2020
+author: neilpeterson
+ms.date: 03/27/2019
 ms.topic: quickstart
-ms.author: jgao
-ms.openlocfilehash: 96e57146fb6bb17cbb8bb5975371e07b66f3ec8b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: nepeters
+ms.openlocfilehash: 4b1ecbf3a1f6083261e87537e20d52e755b77424
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255090"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640912"
 ---
-# <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Rövid útmutató: ARM-sablonok létrehozása a Visual Studio-kód használatával
+# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager-sablonok létrehozása a Visual Studio-kóddal
 
-Ismerje meg, hogyan hozhat létre és szerkeszthette az Azure Resource Manager (ARM) sablonokat a Visual Studio-kód és az Azure Resource Manager Tools bővítmény használatával. Arm-sablonokat a Visual Studio Code programban is létrehozhat a bővítmény nélkül, de a bővítmény automatikus kiegészítési beállításokat biztosít, amelyek leegyszerűsítik a sablonfejlesztést. Az Azure-megoldások üzembe helyezésével és kezelésével kapcsolatos fogalmak megismeréséhez olvassa el a [sablonüzembe helyezés áttekintése című témakört.](overview.md)
+Az Azure Resource Manager Tools for Visual Studio Code nyelvi támogatást, erőforrás-kódrészleteket és erőforrás-automatikus kiegészítést biztosít. Ezek az eszközök segítenek az Azure Resource Manager-sablonok létrehozásában és érvényesítésében. Ebben a rövid útmutatóban a bővítmény segítségével hozzon létre egy Azure Resource Manager-sablont a semmiből. Ennek során a bővítmények olyan képességeit tapasztalhatja, mint az ARM-sablonkódrészletek, az érvényesítés, a kiegészítések és a paraméterfájlok támogatása.
 
-Ebben a rövid útmutatóban egy tárfiókot telepít:
-
-![Erőforrás-kezelő sablon rövid útmutató a visual studio kóddiagramjában](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
+A rövid útmutató befejezéséhez szüksége van a [Visual Studio-kódra,](https://code.visualstudio.com/)és telepítve van az [Azure Resource Manager eszközbővítmény.](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) Az [Azure CLI-t](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) vagy az [Azure PowerShell-modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0) is telepítenie és hitelesítenie kell.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="create-an-arm-template"></a>ARM-sablon létrehozása
 
-Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
+Hozzon létre és nyisson meg a Visual Studio Code alkalmazással egy *azuredeploy.json*nevű új fájlt. Írja `arm` be a kódszerkesztőbe, amely elindítja az Azure Resource Manager kódrészleteket egy ARM-sablon állványzatához.
 
-- [Visual Studio kód](https://code.visualstudio.com/).
-- A Resource Manager Tools bővítmény. A telepítéshez kövesse az alábbi lépéseket:
+Jelölje `arm!` be, ha egy Azure-erőforráscsoport üzembe helyezéséhez sablonhatókört szeretne létrehozni.
 
-    1. Nyissa meg a Visual Studio Code-ot.
-    2. A **CTRL+SHIFT+X** billentyűkombinációval nyissa meg a Bővítmények ablaktáblát
-    3. Keresse meg az **Azure Resource Manager Tools** elemet, és válassza a **Telepítés** lehetőséget.
-    4. A bővítmény telepítésének befejezéséhez válassza az **Újrabetöltés** lehetőséget.
+![Az Azure Resource Manager állványzatát ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
-## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
+Ez a kódrészlet hozza létre az ARM-sablon alapvető építőelemeit.
 
-Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) közül. Az Azure quickstart sablonok egy tárház ARM sablonok.
+![Teljesen állványozott ARM sablont ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-Az ebben a rövid útmutatóban használt sablon neve a következő: [Standard szintű tárfiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/). A sablon egy Azure Storage-fiókhoz tartozó erőforrást határoz meg.
+Figyelje meg, hogy a Visual Studio-kód nyelvi módja *JSON-ról* *Azure Resource Manager-sablonra*változott. A bővítmény tartalmaz egy ARM sablonokra jellemző nyelvi kiszolgálót, amely ARM-sablonspecifikus érvényesítést, teljesítést és egyéb nyelvi szolgáltatásokat biztosít.
 
-1. A Visual Studio-kódból válassza a **Fájlmegnyitása**>**fájl**lehetőséget.
-2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
+![Az Azure Resource Manager t a Visual Studio-kód nyelvi üzemmódjaként megjelenítő kép](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
-    ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
-    ```
+## <a name="add-an-azure-resource"></a>Azure-erőforrás hozzáadása
 
-3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. Válassza a **Fájlmentés**>**másként** lehetőséget a fájl **azuredeploy.json néven** a helyi számítógépre történő mentéséhez.
+A bővítmény számos Azure-erőforrás kódrészleteket tartalmaz. Ezek a kódrészletek segítségével egyszerűen hozzáadhat erőforrásokat a sablon központi telepítéséhez.
 
-## <a name="edit-the-template"></a>A sablon szerkesztése
+Helyezze a kurzort a sablon `storage`erőforrásblokkjába, írja be a be, és jelölje ki a *kartároló* kódrészletet. **resources**
 
-Ha meg szeretné tapasztalni, hogyan szerkesztheti a sablont a `outputs` Visual Studio-kód használatával, adjon hozzá még egy elemet a szakaszhoz a tárolási URI megjelenítéséhez.
+![Az ARM sablonhoz hozzáadott erőforrást ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/4.png)
 
-1. Egy további kimenet felvétele az exportált sablonba:
+Ez a művelet tárolási erőforrást ad hozzá a sablonhoz.
 
-    ```json
-    "storageUri": {
-      "type": "string",
-      "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-    }
-    ```
+![Egy Azure Storage-erőforrást ábrázoló kép ARM-sablonban](./media/quickstart-create-templates-use-visual-studio-code/5.png)
 
-    Ha elkészült, a kimeneti szakasz az alábbihoz hasonlóan néz ki:
+A **lapkulcs** segítségével lapatot a konfigurálható tulajdonságok a tárfiókban.
 
-    ```json
-    "outputs": {
-      "storageAccountName": {
-        "type": "string",
-        "value": "[variables('storageAccountName')]"
-      },
-      "storageUri": {
-        "type": "string",
-        "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-      }
-    }
-    ```
+![A lapbillentyű tabulátorat mutatja be az erőforrás-konfigurációban való navigáláshoz](./media/quickstart-create-templates-use-visual-studio-code/6.png)
 
-    Ha a kódot a Visual Studio-kódba másolta és illesztette be, próbálja meg újrabeírni az **értékelemet,** hogy megtapasztalhassa az Erőforrás-kezelő eszközök bővítmény IntelliSense-képességét.
+## <a name="completion-and-validation"></a>Befejezés és érvényesítés
 
-    ![IntelliSense a Visual Studio Code-ban egy Resource Manager-sablon használatakor](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
+A bővítmény egyik leghatékonyabb képessége az Azure-sémákkal való integráció. Az Azure-sémák biztosítják a bővítmény ellenőrzési és erőforrás-érzékeny befejezési képességek. Módosítsuk a tárfiókot, hogy működés közben lásd az érvényesítést és a befejezést. 
 
-2. A fájl mentéséhez válassza a>**Fájlmentés** lehetőséget. **File**
+Először frissítse a tárfiók-fajtát egy `megaStorage`érvénytelen értékre, például . Figyelje meg, hogy ez `megaStorage` a művelet olyan figyelmeztetést hoz létre, amely nem érvényes értéket jelez.
+
+![Érvénytelen tárolási konfigurációt ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/7.png)
+
+A befejezési lehetőségek használatához `megaStorage`távolítsa el a kurzort a dupla `ctrl`  +  `space`idézőjelek közé, és nyomja le a billentyűt. Ez a művelet az érvényes értékek befejezési listáját mutatja be.
+
+![A bővítmény automatikus kitöltését ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/8.png)
+
+## <a name="add-template-parameters"></a>Sablonparaméterek hozzáadása
+
+Most hozzon létre és használjon egy paramétert a tárfiók nevének megadásához.
+
+Helyezze a kurzort a paraméterek blokk, adjunk `par`hozzá egy `arm-param-value` kocsi vissza, írja be , majd jelölje ki a kódrészletet. Ez a művelet általános paramétert ad a sablonhoz.
+
+![Az ARM sablonhoz hozzáadott paramétert ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/9.png)
+
+Frissítse a paraméter nevét `storageAccountName` és leírását a rendszerre. `Storage Account Name`
+
+![A befejezett paramétert ábrázoló kép egy ARM sablonban](./media/quickstart-create-templates-use-visual-studio-code/10.png)
+
+Az Azure storage-fióknevek hossza legalább 3 karakter, és legfeljebb 24. Adja `minLength` hozzá `maxLength` mindkettőt és a paramétert, és adja meg a megfelelő értékeket.
+
+![Az ARM sablonparaméterhez hozzáadott minLength és maxLength képet mutatja](./media/quickstart-create-templates-use-visual-studio-code/11.png)
+
+Most a tárolási erőforrás, frissítse a name tulajdonságot a paraméter használatához. Ehhez távolítsa el az aktuális nevet. Írjon be egy dupla `[`idézőjeleket és egy nyitó szögletes zárójelet, amely az ARM sablonfüggvények listáját hozza létre. Válassza ki a *paramétereket* a listából. 
+
+![Automatikus kiegészítést megjelenítő kép az ARM sablonerőforrások paramétereinek használatakor](./media/quickstart-create-templates-use-visual-studio-code/12.png)
+
+Ha egyetlen `'` idézőjeleket ír be a kerek zárójelek beírásába, megjelenik a sablonban definiált összes paraméter listája, ebben az esetben a *storageAccountName*. Válassza ki a paramétert.
+
+![Befejezett paramétert megjelenítő kép EGY ARM sablonerőforrásban](./media/quickstart-create-templates-use-visual-studio-code/13.png)
+
+## <a name="create-a-parameter-file"></a>Paraméterfájl létrehozása
+
+Az ARM sablon paraméterfájl lehetővé teszi a környezetspecifikus paraméterértékek tárolását, és ezeket az értékeket csoportként való átvitelére a telepítés időpontjában. Előfordulhat például, hogy rendelkezik egy tesztkörnyezetre jellemző értékekkel rendelkező paraméterfájllal, és egy másik kalkulációval egy éles környezetben.
+
+A kiterjesztés megkönnyíti a paraméterfájl létrehozását a meglévő sablonokból. Ehhez kattintson a jobb gombbal a sablonra `Select/Create Parameter File`a kódszerkesztőben, és válassza a lehetőséget.
+
+![A paraméterfájl ARM-sablonból történő létrehozásának jobb gombbal történő kattintási folyamatát ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/14.png)
+
+Válassza `New`  >  `All Parameters` > Válassza ki a paraméterfájl nevét és helyét.
+
+![A név és a fájl mentése párbeszédpanelt megjelenítő kép, amikor paraméterfájlt hoz létre ARM sablonból](./media/quickstart-create-templates-use-visual-studio-code/15.png)
+
+Ez a művelet létrehoz egy új paraméterfájlt, és leképezi azt azzal a sablonnal, amelyből létrehozták. Az aktuális sablon-/paraméterfájl-hozzárendelést a Visual Studio kód állapotsorán láthatja és módosíthatja, amíg a sablon ki van jelölve.
+
+![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+
+Most, hogy a paraméterfájl le lett képezve a sablonhoz, a bővítmény összevonja a sablont és a paraméterfájlt. Ha ezt az ellenőrzést a gyakorlatban is `storageAccountName` látni szeretné, adjon hozzá egy kétkarakteres értéket a paraméterfájl paraméteréhez, és mentse a fájlt.
+
+![A paraméterfájl-probléma miatt érvénytelenített sablont ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/17.png)
+
+Lépjen vissza az ARM sablonra, és figyelje meg, hogy hiba történt, jelezve, hogy az érték nem felel meg a paraméterfeltételeknek.
+
+![Érvényes ARM-sablont ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/18.png)
+
+Frissítse az értéket valami megfelelőre, mentse a fájlt, és lépjen vissza a sablonra. Figyelje meg, hogy a paraméter hibája megoldódott.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablonok üzembe helyezésének számos módszere van. Az Azure Cloud Shell ebben a rövid útmutatóban használatos. A Cloud Shell támogatja az Azure CLI és az Azure PowerShell. A tabulátor segítségével választhat a CLI és a PowerShell között.
+Nyissa meg az integrált Visual `ctrl`  +  ```` ` ```` Studio Code terminált a billentyűkombináció használatával, és használja az Azure CLI vagy az Azure PowerShell modult a sablon üzembe helyezéséhez.
 
-1. Bejelentkezés az [Azure Cloud Shellbe](https://shell.azure.com)
+# <a name="cli"></a>[parancssori felület](#tab/CLI)
 
-2. Válassza ki a kívánt környezetet a **PowerShell** vagy a **Bash**(CLI) kiválasztásával a bal felső sarokban.  A váltáskor a felületet újra kell indítani.
+```azurecli
+az group create --name arm-vscode --location eastus
 
-    # <a name="cli"></a>[parancssori felület](#tab/CLI)
+az deployment group create --resource-group arm-vscode --template-file azuredeploy.json --parameters azuredeploy.parameters.json
+```
 
-    ![Azure portal Cloud Shell CLI](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+```azurepowershell
+New-AzResourceGroup -Name arm-vscode -Location eastus
 
-    ![Azure Portal Felhőshell PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
-
-    ---
-
-3. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre.
-
-    # <a name="cli"></a>[parancssori felület](#tab/CLI)
-
-    ![Az Azure Portal Cloud Shell feltöltési fájlja](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Az Azure Portal Cloud Shell feltöltési fájlja](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
-
-    ---
-
-    Válassza ki a korábbi szakaszban mentett fájlt. Alapértelmezés szerint a fájl neve a következő: **azuredeploy.json**. A sablonfájlnak elérhetőnek kell lennie a rendszerhéjból.
-
-    Az **ls** és a **cat** paranccsal tetszés szerint ellenőrizheti, hogy a fájl feltöltése sikeres-e.
-
-    # <a name="cli"></a>[parancssori felület](#tab/CLI)
-
-    ![Az Azure Portal Cloud Shell listafájlja](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Az Azure Portal Cloud Shell listafájlja](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
-
-    ---
-4. A Cloud Shell ben futtassa a következő parancsokat. Válassza ki a megfelelő lapot a PowerShell-kód vagy a parancssori felület kód megjelenítéséhez. Adja meg a projekt nevét, amely az erőforráscsoport nevének létrehozásához használatos.  Az erőforráscsoport neve a projekt neve **rg** csatolt.
-
-    # <a name="cli"></a>[parancssori felület](#tab/CLI)
-
-    ```azurecli
-    echo "Enter a project name that is used to generate resource group name:" &&
-    read projectName &&
-    echo "Enter the location (i.e. centralus):" &&
-    read location &&
-    resourceGroupName="${projectName}rg" &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" &&
-    echo "Press [ENTER] to continue ..."
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
-    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $resourceGroupName = "${projectName}rg"
-
-    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-    ---
-
-    Ha a fájlt nem **azuredeploy.json** néven menti el, frissítse a sablonban a fájlnevet.
-
-    A következő képernyőkép egy felületi üzembe helyezés mintáját mutatja be:
-
-    # <a name="cli"></a>[parancssori felület](#tab/CLI)
-
-    ![Az Azure Portal Cloud Shell üzembe helyezése sablon](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Az Azure Portal Cloud Shell üzembe helyezése sablon](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
-
-    ---
-
-    A képernyőképen a tárfiók neve és a tár URL-címe ki van emelve a kimeneti szakaszban. A tárfiók nevére szükség lesz a következő lépésben.
-
-5. Az alábbi parancssori felületi vagy PowerShell-parancs futtatásával megjelenítheti az újonnan létrehozott tárfiókot:
-
-    # <a name="cli"></a>[parancssori felület](#tab/CLI)
-
-    ```azurecli
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
-    echo "Enter the Storage Account name:" &&
-    read storageAccountName &&
-    az storage account show --resource-group $resourceGroupName --name $storageAccountName &&
-    echo "Press [ENTER] to continue ..."
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
-    Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-    ---
-
-Az Azure-tárfiókokkal kapcsolatos további információkért lásd: [Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával](../../storage/blobs/storage-quickstart-blobs-portal.md).
+New-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile ./azuredeploy.json -TemplateParameterFile ./azuredeploy.parameters.json
+```
+---
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
+Ha az Azure-erőforrások már nincs szükség, használja az Azure CLI vagy az Azure PowerShell modul a rövid útmutató erőforráscsoport törléséhez.
 
-1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
-2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
-3. Válassza ki az erőforráscsoport nevét. Az erőforráscsoport neve a projekt neve **rg** csatolt. Az erőforráscsoportban megjelenik egy tárfiók-erőforrás.
-4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
+# <a name="cli"></a>[parancssori felület](#tab/CLI)
+
+```azurecli
+az group delete --name arm-vscode
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name arm-vscode
+```
+---
 
 ## <a name="next-steps"></a>További lépések
-
-A rövid útmutató elsősorban az Azure-gyorssablonok közül egy meglévő sablon a Visual Studio Code-dal történő szerkesztését mutatja be. Azt is megtanulta, hogyan telepítheti a sablont a CLI vagy a PowerShell használatával az Azure Cloud Shellből. Az Azure-gyorssablonok nem biztos, hogy minden tekintetben megfelelnek Önnek. Ha többet szeretne megtudni a sablonfejlesztésről, tekintse meg az új kezdő oktatósorozatunkat:
 
 > [!div class="nextstepaction"]
 > [Kezdő szintű oktatóanyagok](./template-tutorial-create-first-template.md)

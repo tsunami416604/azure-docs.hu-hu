@@ -3,12 +3,12 @@ title: Java-alkalmazások figyelése bármilyen környezetben – Azure Monitor 
 description: Alkalmazásteljesítmény-figyelés e környezetben futó Java-alkalmazások számára az alkalmazás programozása nélkül. Elosztott nyomkövetés és alkalmazástérkép.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 5a62be45320523ee0577d56eb557a4f87a58a1cc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5706d5a74bd6850a237f7418b1a86a8e9c7762e1
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886857"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604579"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kód nélküli alkalmazásfigyelés az Azure Monitor Application Insights - nyilvános előzetes verzió
 
@@ -24,11 +24,11 @@ Továbbra is küldhet egyéni telemetriát az alkalmazásból. A 3.0-s ügynök 
 
 **1. Töltse le az ügynököt**
 
-[Alkalmazásinsights-agent-3.0.0-PREVIEW.2.jar letöltése](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+[Alkalmazásinsights-agent-3.0.0-PREVIEW.3.jar letöltése](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
 
 **2. Mutassa a JVM-et az ügynöknek**
 
-Az `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.2.jar` alkalmazás JVM-argjainak hozzáadása
+Az `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` alkalmazás JVM-argjainak hozzáadása
 
 Tipikus JVM args közé tartozik, `-Xmx512m` és `-XX:+UseG1GC`. Tehát, ha tudod, hol kell hozzáadni ezeket, akkor már tudja, hol kell hozzáadni ezt.
 
@@ -37,7 +37,14 @@ Az alkalmazás JVM-argjainak konfigurálásával kapcsolatban további segítsé
 **3. Irányítsa az ügynököt az Application Insights-erőforrásra**
 
 Ha még nem rendelkezik Application Insights-erőforrással, az [erőforrás-létrehozási útmutató](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)lépéseit követve létrehozhat egy újat.
-Hozzon létre `ApplicationInsights.json`egy , és helyezze ugyanabba a könyvtárba, mint `applicationinsights-agent-3.0.0-PREVIEW.2.jar`a következő tartalommal:
+
+Irányítsa az ügynököt az Application Insights-erőforrásra egy környezeti változó beállításával:
+
+```
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
+```
+
+Vagy hozzon létre `ApplicationInsights.json`egy konfigurációs fájlt, amelynek neve , és helyezze el ugyanabban a könyvtárban, mint `applicationinsights-agent-3.0.0-PREVIEW.3.jar`a következő tartalommal:
 
 ```json
 {

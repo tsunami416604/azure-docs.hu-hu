@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése az előfizetésbe
 description: Ez a témakör azt ismerteti, hogy miként hozhat létre erőforráscsoportot egy Azure Resource Manager-sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetés hatókörében.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 65cc220d32d1e1149b7026fc438f5e34262511dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131958"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605004"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és -erőforrások létrehozása előfizetési szinten
 
@@ -23,17 +23,17 @@ A következő erőforrástípusokat telepítheti az előfizetés szintjén:
 * [Költségvetések](/azure/templates/microsoft.consumption/budgets)
 * [központi telepítések](/azure/templates/microsoft.resources/deployments) – az erőforráscsoportokra telepített beágyazott sablonokhoz.
 * [eventElőfizetések](/azure/templates/microsoft.eventgrid/eventsubscriptions)
-* [peerAsns között](/azure/templates/microsoft.peering/peerasns)
+* [peerAsns között](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 * [házirend-hozzárendelések](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions (policyDefinitions)](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions (policySetDefinitions)](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [kármentesítések](/azure/templates/microsoft.policyinsights/remediations)
+* [kármentesítések](/azure/templates/microsoft.policyinsights/2019-07-01/remediations)
 * [erőforráscsoportok](/azure/templates/microsoft.resources/resourcegroups)
 * [szerepkör-hozzárendelések](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions (szerepkördefiníciók)](/azure/templates/microsoft.authorization/roledefinitions)
 * [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
-* [címkét](/azure/templates/microsoft.resources/tags)
+* [Címkék](/azure/templates/microsoft.resources/tags)
 
 ### <a name="schema"></a>Séma
 

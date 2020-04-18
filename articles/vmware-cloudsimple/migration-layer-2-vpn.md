@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f5ff48f4d5a658a1bbb4e6b9fb4b3f0f3fb190f
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083227"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81602688"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Számítási feladatok migrálása a 2. rétegbeli kiterjesztett hálózatok használatával
 
@@ -108,7 +108,7 @@ További információt a [Virtuális magánhálózatok](https://docs.vmware.com/
 
 A következő lépések bemutatják, hogyan lehet lekérni az IPsec és l2VPN szolgáltatások 0. A logikai-útválasztó azonosítója később szükséges az L2VPN megvalósításakor.
 
-1. Jelentkezzen be az NSX-T managerbe, https://*nsx-t-manager-ip-address címet,* és válassza **a Hálózati** > **útválasztók** > **szolgáltató-LR** > **áttekintése lehetőséget.** **Magas rendelkezésre állás módban**válassza az **Aktív-Készenlét**lehetőséget. Ez a művelet megnyit egy előugró ablakot, amely azt az edge virtuális gépet jeleníti meg, amelyen a Tier0 útválasztó jelenleg aktív.
+1. Jelentkezzen be az NSX-T `https://*nsx-t-manager-ip-address*` kezelőbe, és válassza a **Hálózati** > **útválasztók** > **szolgáltató-LR** > **áttekintése lehetőséget.** **Magas rendelkezésre állás módban**válassza az **Aktív-Készenlét**lehetőséget. Ez a művelet megnyit egy előugró ablakot, amely azt az edge virtuális gépet jeleníti meg, amelyen a Tier0 útválasztó jelenleg aktív.
 
     ![Aktív készenléti állapot kiválasztása](media/l2vpn-fetch01.png)
 
@@ -154,16 +154,16 @@ Az NSX-T Tier0 útválasztó és az önálló NSX Edge-ügyfél közötti IPsec 
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>A visszacsatolási kapcsolat IP-címének hirdetése az alávetítési hálózatra
 
-1. Null útvonal létrehozása a visszacsatolási illesztőhálózathoz. Jelentkezzen be az NSX-T-kezelőbe, és válassza **a Hálózati** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **Útválasztási** > **statikus útvonalak lehetőséget.** Kattintson a **Hozzáadás** gombra. A **Hálózat**mezőbe írja be a visszacsatolási csatoló IP-címét. A **Next Hops**esetében kattintson a **Hozzáadás**gombra, adja meg a "Null" értéket a következő ugráshoz, és tartsa meg az alapértelmezett 1 értéket a Felügyeleti távolság mezőben.
+1. Null útvonal létrehozása a visszacsatolási illesztőhálózathoz. Jelentkezzen be az NSX-T-kezelőbe, és válassza **a Hálózati** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **Útválasztási** > **statikus útvonalak lehetőséget.** Kattintson a **Hozzáadás** parancsra. A **Hálózat**mezőbe írja be a visszacsatolási csatoló IP-címét. A **Next Hops**esetében kattintson a **Hozzáadás**gombra, adja meg a "Null" értéket a következő ugráshoz, és tartsa meg az alapértelmezett 1 értéket a Felügyeleti távolság mezőben.
 
     ![Statikus útvonal hozzáadása](media/l2vpn-routing-security01.png)
 
-2. IP-előtaglista létrehozása. Jelentkezzen be az NSX-T-kezelőbe, és válassza **a Hálózati** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **útválasztási** > **IP-előtaglistáit.** Kattintson a **Hozzáadás** gombra. Adjon meg egy nevet a lista azonosításához. Az **előtagok**esetében kattintson a **Hozzáadás** kétszer gombra. Az első sorban írja be a "0.0.0.0/0" értéket a **Hálózat** és a "Megtagadás" értéket a **Művelet**mezőbe. A második sorban válassza a **Bármely** lehetőséget a **Hálózat** és a Cselekvési **Engedély** **beállításhoz**lehetőséget.
+2. IP-előtaglista létrehozása. Jelentkezzen be az NSX-T-kezelőbe, és válassza **a Hálózati** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **útválasztási** > **IP-előtaglistáit.** Kattintson a **Hozzáadás** parancsra. Adjon meg egy nevet a lista azonosításához. Az **előtagok**esetében kattintson a **Hozzáadás** kétszer gombra. Az első sorban írja be a "0.0.0.0/0" értéket a **Hálózat** és a "Megtagadás" értéket a **Művelet**mezőbe. A második sorban válassza a **Bármely** lehetőséget a **Hálózat** és a Cselekvési **Engedély** **beállításhoz**lehetőséget.
 3. Az IP-előtaglista csatolása mindkét BGP-szomszédhoz (TOR). Ha az IP-előtaglistát a BGP-szomszédhoz csatolja, akkor az alapértelmezett útvonal a BGP-ben a TOR-kapcsolókhoz nem lesz meghirdetve. Azonban minden más útvonal, amely tartalmazza a null útvonalat, meghirdeti a visszacsatolási kapcsolat IP-címét a TOR kapcsolóknak.
 
     ![IP-előtaglista létrehozása](media/l2vpn-routing-security02.png)
 
-4. Jelentkezzen be az NSX-T-kezelőbe, és válassza **a Hálózati** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **Routing** > **BGP** > szomszédok**lehetőséget.** Válassza ki az első szomszédot. Kattintson a Címcsaládok **szerkesztése** > **gombra.** Az IPv4-család esetében adja meg a **Kiszűrő oszlopot,** és jelölje ki a létrehozott IP-előtaglistát. Kattintson a **Mentés** gombra. Ismételje meg ezt a lépést a második szomszéd.
+4. Jelentkezzen be az NSX-T-kezelőbe, és válassza **a Hálózati** > **útválasztási** > **útválasztók** > **szolgáltató-LR** > **Routing** > **BGP** > szomszédok**lehetőséget.** Válassza ki az első szomszédot. Kattintson a Címcsaládok **szerkesztése** > **gombra.** Az IPv4-család esetében adja meg a **Kiszűrő oszlopot,** és jelölje ki a létrehozott IP-előtaglistát. Kattintson a **Save** (Mentés) gombra. Ismételje meg ezt a lépést a második szomszéd.
 
     ![IP-előtaglista](media/l2vpn-routing-security03.png) ![csatolása 1 IP-előtaglista csatolása 2](media/l2vpn-routing-security04.png)
 
@@ -180,7 +180,7 @@ Az L2VPN-hez használt visszacsatolási és bújtatási összeköttetéshez vál
 ```
 Loopback interface ip : 192.168.254.254/32
 Tunnel interface subnet : 5.5.5.0/29
-Logical-router ID : UUID of Tier0 DR logical router obtained in section “Steps to fetch Logical-Router ID needed for L2VPN”
+Logical-router ID : UUID of Tier0 DR logical router obtained in section "Steps to fetch Logical-Router ID needed for L2VPN"
 Logical-switch ID(Stretch) : UUID of Stretch Logical Switch obtained earlier
 IPSec Service ID :
 IKE profile ID :
@@ -356,7 +356,7 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 
 A következő POST parancs esetében az L2VPN szolgáltatás azonosítója az id, amelyet most kapott, és az IPsec VPN-munkamenet-azonosító az előző szakaszban kapott azonosító.
 
-``` 
+```    
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 
 {

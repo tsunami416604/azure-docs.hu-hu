@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2020
-ms.openlocfilehash: c55bee9880c4134f2e304a7fc5176225477fe5f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: 01dd8422658aa0c8982733e48782efd27c1bf5be
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480759"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617848"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Az Azure-figyelő virtuálisgépek függőségi ügynökének frissítése
 
@@ -60,7 +60,7 @@ A Windows-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentw
 
 A függőségi ügynök linuxos verziójának frissítése támogatott, és ugyanazt a parancsot követve hajtja végre, mint egy új telepítést.
 
-A Windows-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentlinux)töltheti le.
+A Linux-ügynök legújabb verzióját [innen](https://aka.ms/dependencyagentlinux)töltheti le.
 
 1. Jelentkezzen be a számítógépre rendszergazdai jogosultságokkal rendelkező fiókkal.
 

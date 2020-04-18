@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
-ms.openlocfilehash: 94ac75c4165b11e343ce5c31480a511ebf978a36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67838780"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640549"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Hubhoz (C)
 
@@ -160,7 +160,7 @@ Miután sikeresen csatlakoztatta a BME280-at a Raspberry Pi-hez, az alábbi kép
 
 ### <a name="connect-pi-to-the-network"></a>A Pi csatlakoztatása a hálózathoz
 
-Kapcsolja be a Pi-t a mikro USB-kábel és a tápegység segítségével. Az Ethernet-kábellel csatlakoztassa a Pi-t a vezetékes hálózathoz, vagy kövesse [a Raspberry Pi Foundation utasításait a](https://www.raspberrypi.org/learning/software-guide/wifi/) Pi vezeték nélküli hálózathoz való csatlakoztatásához. Miután a Pi sikeresen csatlakozott a hálózathoz, meg kell jegyezned a [Pi IP-címét.](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)
+Kapcsolja be a Pi-t a mikro USB-kábel és a tápegység segítségével. Az Ethernet-kábellel csatlakoztassa a Pi-t a vezetékes hálózathoz, vagy kövesse [a Raspberry Pi Foundation utasításait a](https://www.raspberrypi.org/documentation/configuration/wireless/) Pi vezeték nélküli hálózathoz való csatlakoztatásához. Miután a Pi sikeresen csatlakozott a hálózathoz, meg kell jegyezned a [Pi IP-címét.](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
 
 ![Csatlakozás vezetékes hálózathoz](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c52f2df34faf441ab70b48b11bbc393ebcecb65
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297200"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617615"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Szolgáltatásvégpontok hívása HTTP-n vagy HTTPS-en keresztül az Azure Logic Apps alkalmazásból
 
@@ -59,7 +59,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá egy HTTP-eseményindítót vagy művele
 
 Ez a beépített eseményindító http-hívást hoz egy végpont megadott URL-címéhez, és választ ad vissza.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Nyissa meg az üres logikai alkalmazást a Logic App Designerben.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg az üres logikai alkalmazást a Logic App Designerben.
 
 1. A tervező keresőmezőjében válassza **a Beépített**lehetőséget. A keresőmezőbe írja `http` be szűrőként. Az **Eseményindítók** listában válassza ki a **HTTP-eseményindítót.**
 
@@ -88,7 +88,7 @@ Ez a beépített eseményindító http-hívást hoz egy végpont megadott URL-c�
 
 Ez a beépített művelet http-hívást hoz egy végpont megadott URL-címéhez, és választ ad vissza.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Nyissa meg a logikai alkalmazást a Logic App Designerben.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg a logikai alkalmazást a Logic App Designerben.
 
    Ez a példa a HTTP-eseményindítót használja első lépésként.
 
@@ -140,8 +140,8 @@ Tegyük fel például, hogy van egy logikai alkalmazás, amely http posta kérel
 Íme ugyanaz a példa, amely a HTTP-művelet JSON-definícióját mutatja az alapul szolgáló munkafolyamat-definícióban:
 
 ```json
-{
-   "HTTP_action": {
+"HTTP_action": {
+   "inputs": {
       "body": {
          "$content-type": "multipart/form-data",
          "$multipart": [

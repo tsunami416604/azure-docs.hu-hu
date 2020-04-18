@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbcd4ea174d4b6a2a45495c32f178ed1bd01bbe0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261346"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604715"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívüli megoldás közben az Azure Automationben
 
@@ -225,11 +225,11 @@ Az Automation-fiók és a Log Analytics munkaterület nem törlődik a folyamat 
 
 1. Keresse meg és válassza **a Log Analytics-munkaterületeket.**
 
-2. A **Log Analytics-munkaterületek** lapon jelölje ki a munkaterületet.
+2. A Log Analytics munkaterület lapon jelölje ki a munkaterületet.
 
 3. Válassza a Munkaterület beállításai lap **Törlés** parancsát.
 
-4. Ha nem szeretné megtartani az Azure Automation-fiók összetevőit, manuálisan törölheti őket. Lásd: [Megoldás-összetevők](#solution-components).
+4. Ha nem szeretné megtartani az Azure Automation-fiók [megoldásösszetevőit,](#solution-components)manuálisan törölheti őket.
 
 ## <a name="next-steps"></a>További lépések
 

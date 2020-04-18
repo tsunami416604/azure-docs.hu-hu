@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9e1bff3d25a978b5159d8e6ab8ab2453df77ca3
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116757"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640511"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Gépi tanulási folyamatok ütemezése az Azure Machine Learning Python-alapú SDK-val
 
@@ -98,6 +98,10 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 ### <a name="optional-arguments-when-creating-a-schedule"></a>Nem kötelező argumentumok ütemezés létrehozásakor
 
 A korábban tárgyalt argumentumokon kívül `status` beállíthatja, hogy `"Disabled"` az argumentum inaktív ütemezést hozzon létre. Végül a `continue_on_step_failure` lehetővé teszi, hogy adja át a logikai, amely felülírja a folyamat alapértelmezett hiba viselkedését.
+
+### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>Azure Logic Apps használata összetettebb munkafolyamatokhoz
+
+Az Azure Logic Apps összetettebb munkafolyamatokat támogat, és sokkal szélesebb körben integrált, mint az Azure Machine Learning-folyamatok. További információ: [Egy machine learning-folyamat futtatása a logikai alkalmazásból.](how-to-trigger-published-pipeline.md)
 
 ## <a name="view-your-scheduled-pipelines"></a>Az ütemezett folyamatok megtekintése
 

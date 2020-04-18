@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hívhatja meg az üzleti folyamatokat az App Se
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 44f2dfb83e96e1d8fa31ee1acf350193b954dbd8
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892852"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604852"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Oktatóanyag: E-mail küldése és más üzleti folyamatok meghívása az App Service-ből
 
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Ez a kód van írva az egyszerűség bizonyítás. A gyakorlatban ne példányosítson el egy `HttpClient` objektumot minden egyes kérelemhez. Kövesse a [Use IHttpClientFactory" útmutatót rugalmashttps://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient HTTP-kérelmek megvalósításához]( -http-requests).
+> Ez a kód van írva az egyszerűség bizonyítás. A gyakorlatban ne példányosítson el egy `HttpClient` objektumot minden egyes kérelemhez. Kövesse az [IHttpClientFactory használata útmutatót a rugalmas HTTP-kérések megvalósításához.](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
 
 Ha teszteli ezt a kódot a minta app [oktató: Hozzon létre egy ASP.NET Core és az SQL Database alkalmazást az Azure App Service-ben,](app-service-web-tutorial-dotnetcore-sqldb.md)akkor használhatja, hogy küldjön egy e-mailt megerősítést a [Create művelet,](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)miután az `Todo` elem hozzáadása.
 

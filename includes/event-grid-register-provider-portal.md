@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 07/05/2018
-ms.author: tomfitz
+ms.date: 04/16/2020
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c3677e7897498aa06d7bd547988ad4dc0326f39b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8833bb75f5f50372deda3e71c1df90bed9a20054
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67179208"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605570"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>Event Grid erőforrás-szolgáltató engedélyezése
 
@@ -21,9 +21,9 @@ Ha még nem használta korábban az Event Gridet az Azure-előfizetésében, leh
 
 Az Azure Portalon:
 
-1. Válassza az **Előfizetések** lehetőséget.
+1. Válassza a bal oldali menü **Előfizetések** parancsát.
 1. Válassza ki az Event Gridhez használt előfizetést.
-1. A **Beállítások** területen válassza az **Erőforrás-szolgáltatók** lehetőséget.
+1. A bal oldali **menü Beállítások**területén válassza az **Erőforrás-szolgáltatók**lehetőséget.
 1. Keresse ki a **Microsoft.EventGrid** elemet.
 1. Ha nincs regisztrálva, válassza a **Regisztrálás** lehetőséget. 
 

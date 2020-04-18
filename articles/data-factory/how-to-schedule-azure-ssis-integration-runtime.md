@@ -13,16 +13,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 39f758b779e7c4935feab2424be16b829db8e46b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 50ff0afe13b5b098fbc8d9fbeefba295a6217192
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399517"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606073"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS integrációs modul indítása és leállítása ütemezés szerint
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk ismerteti, hogyan ütemezheti az Azure-SSIS-integrációs futásidejű (IR) indítása és leállítása az Azure Data Factory (ADF) használatával. Az Azure-SSIS IR az SQL Server Integration Services (SSIS) csomagok végrehajtására szolgáló ADF számítási erőforrás. Az Azure-SSIS IR futtatásához költségek járnak. Ezért általában csak akkor szeretné futtatni az infravörös szolgáltatást, ha SSIS-csomagokat kell végrehajtania az Azure-ban, és le kell állítania az infravörös szolgáltatást, ha már nincs rá szüksége. Az ADF felhasználói felület (UI)/app vagy az Azure PowerShell segítségével [manuálisan indíthatja el vagy állíthatja le az infravörös szolgáltatást.](manage-azure-ssis-integration-runtime.md)
 

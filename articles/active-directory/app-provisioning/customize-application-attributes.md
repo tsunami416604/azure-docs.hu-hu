@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7003899b59e409a785c3a50e89aae6674e377b4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bfee19e9cfd1def71ebad82c2210ffc10146c896
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264088"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639746"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>SaaS-alkalmazások felhasználói kiépítési attribútum-hozzárendelések testreszabása az Azure Active Directoryban
 
@@ -143,7 +143,10 @@ Az SCIM RFC egy alapvető felhasználói és csoportsémát határoz meg, miköz
    4. Válassza **az AppName attribútumlistájának szerkesztése lehetőséget.**
    5. Az attribútumlista alján adja meg az egyéni attribútumadatait a megadott mezőkben. Ezután válassza **az Attribútum hozzáadása lehetőséget.**
 
-Az SCIM-alkalmazások esetében az attribútum nevének az alábbi példában látható mintát kell követnie. A "CustomExtensionName" és a "CustomAttribute" testreszabható az alkalmazás követelményei szerint, például: urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute vagy urn:ietf:params:scim:schemas:extension: CustomExtensionName:2.0:User.CustomAttributeName:érték
+Az SCIM-alkalmazások esetében az attribútum nevének az alábbi példában látható mintát kell követnie. A "CustomExtensionName" és a "CustomAttribute" testreszabható az alkalmazás követelményei szerint, például:  
+ * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:Felhasználó:CustomAttribute 
+ * urn:ietf:params:scim:séma:kiterjesztés:2.0:CustomExtensionName:CustomAttribute  
+ * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User.CustomAttributeName:érték
 
 Ezek az utasítások csak az SCIM-kompatibilis alkalmazásokra vonatkoznak. Az olyan alkalmazások, mint a ServiceNow és a Salesforce nincsenek integrálva az Azure AD-vel az SCIM használatával, ezért nem igényelnek erre a konkrét névtérre egy egyéni attribútum hozzáadásakor.
 
@@ -313,7 +316,7 @@ Ha ezt a beállítást választja, a kiépítési szolgáltatás futása közben
 - Az attribútumleképezések frissítése hatással van a szinkronizálási ciklus teljesítményére. Az attribútumleképezési konfiguráció frissítéséhez az összes felügyelt objektumot újra kell értékelni.
 - Ajánlott eljárás: az attribútum-hozzárendelések egymást követő módosításainak száma minimális szinten tartása.
 - Az alkalmazáshoz kiépítendő fényképattribútum hozzáadása ma nem támogatott, mivel nem adhatja meg a fénykép szinkronizálásának formátumát. A funkciót a [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory)
-- Az IsSoftDeleted attribútum gyakran része egy alkalmazás alapértelmezett hozzárendeléseinek. Az IsSoftdeleted a négy forgatókönyv egyikében is igaz lehet (a felhasználó hatókörén kívül esik, mivel nincs hozzárendelve az alkalmazásból, a felhasználó hatókörén kívül van, mivel nem felelt meg a hatókörszűrőnek, a felhasználó takarásban van az Azure AD-ben, vagy az AccountEnabled tulajdonság hamis a felhasználóra). 
+- Az IsSoftDeleted attribútum gyakran része egy alkalmazás alapértelmezett hozzárendeléseinek. IsSoftdeleted lehet igaz a négy forgatókönyv (a felhasználó hatókörön kívül miatt nincs hozzárendelve az alkalmazásból, a felhasználó hatókörön kívül van, mert nem felel meg a hatókörszűrő, a felhasználó már helyreállíthatóan törölt az Azure AD, vagy a tulajdonság AccountEnabled van beállítva, hogy hamis a felhasználó). 
 - Az Azure AD-kiépítési szolgáltatás nem támogatja a null értékek kiépítését
 
 ## <a name="next-steps"></a>További lépések

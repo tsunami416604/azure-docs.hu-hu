@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 95373ab8ff78c5bcb856e6d7e6d67d8525cd3f7e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 74af841b777494744c72ed219bacd3b3835d41ac
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655130"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617567"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Csatlakozás Ubuntu Linux-alapú virtuális géphez egy Azure AD tartományi szolgáltatások által kezelt tartományhoz
 
@@ -154,6 +154,12 @@ Successfully enrolled machine in realm
 ```
 
 Ha a virtuális gép nem tudja sikeresen befejezni a tartomány-csatlakozási folyamatot, győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoportja engedélyezi a kimenő Kerberos-forgalmat a TCP + UDP 464-es porton az Azure AD DS felügyelt tartomány virtuális hálózati alhálózatához.
+
+Ha a *hiba Meghatározatlan GSS hiba.  Az alkód további információkat adhat meg (a kiszolgáló nem található a Kerberos adatbázisban),* nyissa `[libdefaults]` meg az */etc/krb5.conf* fájlt, és adja hozzá a következő kódot a szakaszhoz, majd próbálkozzon újra:
+
+```console
+rdns=false
+```
 
 ## <a name="update-the-sssd-configuration"></a>Az SSSD-konfiguráció frissítése
 

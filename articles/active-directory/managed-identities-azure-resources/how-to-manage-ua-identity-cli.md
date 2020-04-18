@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266584"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639763"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése az Azure CLI használatával
 
@@ -37,6 +37,12 @@ Ebben a cikkben megtudhatja, hogyan hozhat létre, listázhat és törölhet egy
     - Használja az [Azure Cloud Shell](../../cloud-shell/overview.md) az Azure Portalon (lásd a következő szakaszban).
     - Használja a beágyazott Azure Cloud Shell segítségével a "Try It" gomb, található a jobb felső sarokban minden kódblokk.
     - [Telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 vagy újabb) legújabb verzióját, ha helyi CLI-konzolt szeretne használni. Jelentkezzen be az `az login`Azure-ba egy azure-előfizetéshez társított fiók használatával, amely nek a felhasználó által hozzárendelt felügyelt identitást szeretné telepíteni.
+
+
+> [!NOTE]
+> Annak érdekében, hogy módosítsa a felhasználói engedélyeket, ha egy alkalmazás servivce egyszerű cli használatával kell biztosítania a szolgáltatás egyszerű további engedélyeket az Azure AD Graph API-ban a CLI részeget get kérelmeket a Graph API-t. Ellenkező esetben előfordulhat, hogy a "Művelet végrehajtásához szükséges elégtelen jogosultságok" üzenetet kapja. Ehhez meg kell néznie az alkalmazás regisztrációját az Azure Active Directoryban, válassza ki az alkalmazást, kattintson az API-engedélyekre, görgessen le, és válassza az Azure Active Directory Graph lehetőséget. Itt válassza az alkalmazásengedélyeket, majd adja hozzá a megfelelő engedélyeket. 
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

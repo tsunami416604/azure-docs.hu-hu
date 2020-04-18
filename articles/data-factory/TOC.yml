@@ -553,8 +553,6 @@
           href: data-factory-service-identity.md
     - name: Monitorozás és kezelés
       items:
-        - name: Vizuális megfigyelés
-          href: monitor-visually.md
         - name: Monitorozás az Azure Monitorral
           href: monitor-using-azure-monitor.md
         - name: Monitorozás SDK-kkal

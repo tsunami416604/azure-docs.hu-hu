@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2bd9b4f46e28a28f99045319d8ac606cdcee7216
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53dfe07ebd4925c96290db140b6e613c38eef564
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536785"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617332"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows hibrid runbook-feldolgozó központi telepítése
 
@@ -144,7 +144,7 @@ A keresési eredmények között meg kell jelennie a számítógép szívverési
 Az ügynök telepítésének és telepítésének befejezéséhez kövesse az alábbi lépéseket.
 
 1. Engedélyezze a megoldást az ügynökgép fedélzetére. Lásd: [Fedélzeti gépek a munkaterületen](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace).
-2. Ellenőrizze, hogy az ügynök megfelelően töltötte-e le az Automation-megoldást. Rendelkeznie kell egy **AzureAutomationFiles** nevű mappával a **C:\Program Files\Microsoft Monitoring Agent\Agent mappában.** 
+2. Ellenőrizze, hogy az ügynök megfelelően töltötte-e le az Automation-megoldást. 
 3. A hibrid runbook-feldolgozó verziójának megerősítéséhez keresse meg a **C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation** mappát, és jegyezze fel a verzióalmappát. **version**
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>4. lépés – Telepítse a runbook-környezetet, és csatlakozzon az Azure Automationhez

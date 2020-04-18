@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/03/2020
+ms.date: 04/17/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998746"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639653"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 Az Azure Active Directory (Azure AD) csapata rendszeresen frissíti az Azure AD Connectet új funkciókkal és funkciókkal. Nem minden kiegészítés alkalmazható minden közönségre.
@@ -55,6 +55,15 @@ Az Azure AD Connect nem minden kiadása lesz elérhető az automatikus frissít�
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:
 Ez a gyorsjavítás javítja az 1.5.18.0-s létrehozási szolgáltatással kapcsolatos problémát, ha engedélyezve van a Csoportszűrés funkció, és forráshorgonyként az mS-DS-ConsistencyGuid értéket használja.
+
+> [!IMPORTANT]
+> Ha az mS-DS-ConsistencyGuid azonosítót használja forráshorgonyként, és klónozta az **In from AD - Group Join** szinkronizálási szabályt, és frissíteni szeretne, a frissítés részeként hajtsa végre a következő lépéseket:
+> 1. A frissítés során törölje a jelet a **szinkronizálási folyamat indítása a konfiguráció befejezésekor jelölőnégyzetből.**
+> 2. A klónozott illesztési szinkronizálási szabály szerkesztése és a következő két átalakítás hozzáadása:
+>     - Állítsa be `objectGUID` `sourceAnchorBinary`a közvetlen folyamatot a-ra.
+>     - A `ConvertToBase64([objectGUID])` kifejezésfolyamat `sourceAnchor`beállítása a beállításra.     
+> 3. Engedélyezze az `Set-ADSyncScheduler -SyncCycleEnabled $true`ütemező használatát a használatával.
+
 
 ## <a name="15180"></a>1.5.18.0
 
@@ -528,7 +537,7 @@ Zárolja az AD DS-fiókhoz való hozzáférést a helyszíni AD-ben a következ�
 *   Távolítsa el az adott objektum összes aces-ét, kivéve a SELF-re jellemző ACEs-eket. Azt akarjuk, hogy az alapértelmezett engedélyek ép, amikor a SELF.
 *   Rendelje hozzá a következő speciális engedélyeket:
 
-Típus     | Név                          | Hozzáférés               | Érvényesség
+Típus     | Name (Név)                          | Hozzáférés               | Érvényesség
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |

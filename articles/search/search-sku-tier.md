@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547024"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617718"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Az Azure Cognitive Search díjszabási szintjének kiválasztása
 
@@ -89,6 +89,8 @@ A kimenő adatokért díjat kell fizetni, ha a szolgáltatások különböző r�
 | Dokumentum repedés, kép kinyerése | A kiszámlázott képek száma szerint számlázva. Indexelő [konfigurációban](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)az **imageAction** az a paraméter, amely elindítja a kép kinyerését. Ha az **imageAction** beállítása "nincs" (ez az alapértelmezett), akkor nem kell fizetnie a kép kinyerése. A kép kinyerésének mértéke az Azure Cognitive Search [díjszabási részletek](https://azure.microsoft.com/pricing/details/search/) oldalán található.|
 | [Beépített kognitív képességek](cognitive-search-predefined-skills.md) | A számlázás ugyanolyan ütemben történik, mintha a Cognitive Services közvetlen használatával hajtotta volna végre a feladatot. |
 | Egyéni készségek | Az egyéni szakértelem az Ön által megadott funkciók. Az egyéni szakértelem használatának költsége teljes mértékben attól függ, hogy az egyéni kód más díjdíjas szolgáltatásokat hív-e. |
+
+A [növekményes bővítési (előzetes verzió)](cognitive-search-incremental-indexing-conceptual.md) funkció lehetővé teszi, hogy egy cache, amely lehetővé teszi az indexelő, hogy hatékonyabb a futó csak a kognitív képességek, amelyek szükségesek, ha módosítja a skillset a jövőben, időt és pénzt takarít meg.
 
 <a name="search-units"></a>
 

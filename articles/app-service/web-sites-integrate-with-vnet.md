@@ -4,15 +4,15 @@ description: Integrálja az alkalmazást az Azure App Service-be az Azure virtu�
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cb5747c6780da134dfb2f5ab088348b848c5f04a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4866397af244ffb3c6aa9c7547b0a9413b10ccfd
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312805"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604861"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure virtuális hálózatával
 
@@ -41,8 +41,6 @@ Az Azure App Service két változatban:
     ![Klasszikus virtuális hálózat kiválasztása][3]
 
 Az integráció során az alkalmazás újraindul. Az integráció befejezése után a részleteket a virtuális hálózat, amely integrálva van.
-
-Miután az alkalmazás integrálva van a virtuális hálózattal, ugyanazt a DNS-kiszolgálót használja, amelyhez a virtuális hálózat konfigurált, kivéve, ha az Azure DNS-beli privát zónák. Jelenleg nem használhatja a virtuális hálózat-integrációt az Azure DNS-hálózati zónákkal.
 
 ## <a name="regional-vnet-integration"></a>Regionális virtuális hálózatok integrációja
 
@@ -200,3 +198,4 @@ Az átjáróáltal igényelt virtuális hálózat integrációja esetén integr�
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
 [VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
 [installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/
+[privateendpoints]: networking/private-endpoint.md

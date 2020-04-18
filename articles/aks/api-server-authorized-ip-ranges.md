@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan biztosíthatja a fürt egy IP-címtartomány ha
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 593f9e0b335e6f4d62c76ce92f833ff4e9143372
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 570d842409fc019d24446e091f83402f4c288d7c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126622"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640058"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz az Azure Kubernetes-szolgáltatás (AKS) engedélyezett IP-címtartományai használatával
 
@@ -39,7 +39,7 @@ Az API-kiszolgálóról és más fürtösszetevőkről a [Kubernetes AKS alapfog
 Az API-kiszolgáló által engedélyezett IP-tartományok csak új AKS-fürtökesetén működnek. Hozzon létre egy fürtöt az [aks létrehozása][az-aks-create] és adja meg a *--api-server-authorized-ip-ranges* paraméter, hogy egy listát az engedélyezett IP-címtartományok. Ezek az IP-címtartományok általában a helyszíni hálózatok vagy nyilvános IP-k által használt címtartományok. Cidr-tartomány megadásakor kezdje a tartomány első IP-címével. Például a *137.117.106.90/29* egy érvényes tartomány, de győződjön meg arról, hogy megadja a tartomány első IP-címét, például *137.117.106.88/29*.
 
 > [!IMPORTANT]
-> Alapértelmezés szerint a fürt a [szabványos termékváltozat terheléselosztót][standard-sku-lb] használja, amellyel konfigurálhatja a kimenő átjárót. Ha engedélyezi az API-kiszolgáló által engedélyezett IP-tartományokat a fürt létrehozása során, a fürt nyilvános IP-címe is alapértelmezés szerint engedélyezett a megadott tartományokon kívül. Ha a *--api-server-authorized-ip-ranges*értéket adja meg, az API-kiszolgáló által engedélyezett IP-tartományok le lesznek tiltva. *""*
+> Alapértelmezés szerint a fürt a [szabványos termékváltozat terheléselosztót][standard-sku-lb] használja, amellyel konfigurálhatja a kimenő átjárót. Ha engedélyezi az API-kiszolgáló által engedélyezett IP-tartományokat a fürt létrehozása során, a fürt nyilvános IP-címe is alapértelmezés szerint engedélyezett a megadott tartományokon kívül. Ha a *--api-server-authorized-ip-ranges*értéket adja meg, az API-kiszolgáló által engedélyezett IP-tartományok le lesznek tiltva. *""* Vegye figyelembe, hogy ha a PowerShell használata, *használja --api-server-authorized-ip-ranges=""* (egyenlőségjellel) az elemzési problémák elkerülése érdekében.
 
 A következő példa létrehoz egy egycsomópontos fürt nevű *myAKSCluster* az erőforráscsoport nevű *myResourceGroup* API-kiszolgáló engedélyezett IP-tartományok engedélyezve van. A megengedett IP-címtartományok: *73.140.245.0/24*:
 
@@ -64,7 +64,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Adja meg a standard termékváltozat terheléselosztó kimenő IP-jének megadását
 
-AKS-fürt létrehozásakor, ha megadja a fürt kimenő IP-címeit vagy előtagjait, akkor ezek a címek vagy előtagok is engedélyezettek. Példa:
+AKS-fürt létrehozásakor, ha megadja a fürt kimenő IP-címeit vagy előtagjait, akkor ezek a címek vagy előtagok is engedélyezettek. Például:
 
 ```azurecli-interactive
 az aks create \
@@ -116,7 +116,7 @@ az aks update \
 
 ## <a name="disable-authorized-ip-ranges"></a>Engedélyezett IP-tartományok letiltása
 
-Az engedélyezett IP-tartományok letiltásához használja [az aks update-et,][az-aks-update] és adjon meg egy üres tartományt az API-kiszolgáló által engedélyezett IP-tartományok letiltásához. Példa:
+Az engedélyezett IP-tartományok letiltásához használja [az aks update-et,][az-aks-update] és adjon meg egy üres tartományt az API-kiszolgáló által engedélyezett IP-tartományok letiltásához. Például:
 
 ```azurecli-interactive
 az aks update \

@@ -7,16 +7,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
-ms.openlocfilehash: c09a035c8994118b0fb116f357485766e05883ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1b3e3cd39edccd0952ce44d9cb050ca1d0c724ea
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418439"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605310"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Az adatfolyamok teljesítményének és hangolási útmutatójának leképezése
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az Azure Data Factory adatfolyamainak leképezése kódmentes felületet biztosít az adatátalakítások nagy méretekben történő tervezéséhez, üzembe helyezéséhez és vezényléséhez. Ha nem ismeri az adatfolyamok leképezését, olvassa el az [Adatfolyam leképezése – áttekintés című témakört.](concepts-data-flow-overview.md)
 

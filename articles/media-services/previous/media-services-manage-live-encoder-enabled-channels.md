@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677019"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641105"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -31,7 +31,7 @@ ms.locfileid: "80677019"
 Az Azure Media Services (AMS) szolgáltatásban a **csatorna** az élő streamelési tartalom feldolgozására szolgáló folyamatot jelöli. A **csatorna** kétféleképpen fogad élő bemeneti adatfolyamokat:
 
 * A helyszíni élő kódoló egyegybitrátú adatfolyamot küld a csatornának, amely engedélyezve van az élő kódoláshoz a Media Services szolgáltatással a következő formátumok egyikén: RTMP vagy Smooth Streaming (Töredezett MP4). A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
-* A helyszíni élő kódoló többátviteli sebességű **RTMP-t** vagy **sima streamelést** (töredezett MP4) küld a csatornának, amely nincs engedélyezve az élő kódoláshoz az AMS-sel. A bevitt adatfolyamok további feldolgozás nélkül haladnak át a **csatornákon.** Ezt a módszert **pass-through-nak nevezzük.** A következő élő kódolókat használhatja, amelyek többátviteli sim idejű smooth streaminget adnak ki: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco és Elemental. A következő élő kódolók kimeneti RTMP: [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek és Tricaster kódolók.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódoló többátviteli sebességű **RTMP-t** vagy **sima streamelést** (töredezett MP4) küld a csatornának, amely nincs engedélyezve az élő kódoláshoz az AMS-sel. A bevitt adatfolyamok további feldolgozás nélkül haladnak át a **csatornákon.** Ezt a módszert **pass-through-nak nevezzük.** A következő élő kódolókat használhatja, amelyek többátviteli sim idejű smooth streaminget adnak ki: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco és Elemental. A következő élő kódolók kimeneti RTMP: [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek kódolók.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
   > [!NOTE]
   > Az áthaladási módszer használata a leggazdaságosabb módja az élő közvetítésnek.
@@ -322,7 +322,7 @@ Az alábbi táblázat bemutatja, hogyan történik a Csatorna állapotaa a szám
 > 
 > 
 
-## <a name="considerations"></a><a id="Considerations"></a>Megfontolások
+## <a name="considerations"></a><a id="Considerations"></a>Megfontolandó szempontok
 * Ha egy **szabványos** kódolási csatorna bemeneti forrás/hozzájárulás identatát tapasztal, kompenzálja azt azáltal, hogy a forrásvideót/hangot egy hibapalettával és némítással helyettesíti. A csatorna továbbra is kibocsát egy pala, amíg a bemeneti / hozzájárulás feed folytatódik. Azt javasoljuk, hogy egy élő csatorna ne legyen ilyen állapotban 2 óránál hosszabb ideig. Ezen a ponton túl a csatorna viselkedése a bemeneti újracsatlakozáskor nem garantált, és a visszaállítási parancsra adott válaszként sem. Le kell állítania a csatornát, törölnie kell, és újat kell létrehoznia.
 * Ha a csatorna vagy a hozzá tartozó programok már elindultak, a bemeneti protokoll nem módosítható. Ha más protokollt szeretne használni, hozzon létre külön-külön csatornákat az egyes bemeneti protokollokhoz.
 * Minden alkalommal, amikor újrakonfigurálja az élő kódolót, hívja meg a **reset** metódust a csatornán. A csatorna alaphelyzetbe állítása előtt le kell állítania a programot. A csatorna alaphelyzetbe állítása után indítsa újra a programot.

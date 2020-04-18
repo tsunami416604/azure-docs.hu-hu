@@ -3,18 +3,18 @@ title: Hol és hogyan kell használni - Personalizer
 description: A Personalizer minden olyan helyzetben alkalmazható, ahol az alkalmazás kiválaszthatja a megfelelő elemet, műveletet vagy terméket a megjelenítéshez - annak érdekében, hogy jobb élményt nyújtson, jobb üzleti eredményeket érjen el, vagy javítsa a termelékenységet.
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c562d7a1853736204a7a03262547e083bd85fb75
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219323"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617683"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Hol és hogyan kell használni a Personalizer-t?
 
 Használja a Personalizer-t minden olyan helyzetben, amikor az alkalmazásnak ki kell választania a megfelelő műveletet (tartalmat) a megjelenítéshez - az élmény javítása, jobb üzleti eredmények elérése vagy a termelékenység javítása érdekében.
 
-A Personalizer gépi tanulással választja ki, hogy melyik műveletet (tartalmat) jelenítse meg a felhasználónak. A kijelölés a szolgáltatásnak küldött adatok mennyiségétől, minőségétől és elosztásától függően drasztikusan változhat.
+Personalizer használ megerősítése tanulás kiválasztásához, hogy melyik művelet (tartalom) jelenik meg a felhasználó. A kijelölés a szolgáltatásnak küldött adatok mennyiségétől, minőségétől és elosztásától függően drasztikusan változhat.
 
 ## <a name="example-use-cases-for-personalizer"></a>Példa használati esetek a Personalizer-hoz
 
@@ -44,7 +44,7 @@ A Personalizer-t olyan helyzetekben alkalmazhatja, amikor megfelel vagy megvaló
 |Napi adatok|Van elég esemény, hogy felfüggeszti a tetején az optimális személyre szabás, ha a probléma sodródik az idő múlásával (mint például a preferenciák hírek vagy divat). A Personalizer alkalmazkodik a valós világ folyamatos változásához, de az eredmények nem lesznek optimálisak, ha nincs elég esemény és adat ahhoz, hogy új mintákat fedezzen fel és rendezzen. Olyan használati esetet kell választania, amely elég gyakran előfordul. Fontolja meg a napi legalább 500 alkalommal bekövetkező használati esetek keresését.|
 |Korábbi adatok|Az alkalmazás képes megőrizni az adatokat elég hosszú ahhoz, hogy legalább 100 000 interakcióinak előzményeit összegyűjtse. Ez lehetővé teszi a Personalizer számára, hogy elegendő adatot gyűjtsön az offline értékelések és a házirendek optimalizálásához.|
 
-**Ne használja a Personalizer-t,** ha a személyre szabott viselkedés nem olyan dolog, amely minden felhasználó számára felfedezhető. Például a Personalizer használatával 20 lehetséges menüelem listájából az első pizzarendelést javasolhatja, de az, hogy a felhasználók névjegyzékéből melyik kapcsolatot hívhatja meg, amikor segítségre van szüksége a gyermekgondozással kapcsolatban (például "Nagymama") nem olyan dolog, amely személyre szabható a felhasználói bázist.
+**Ne használja a Personalizer-t,** ha a személyre szabott viselkedés nem olyan dolog, amely minden felhasználó számára felfedezhető. Ha például a Personalizer segítségével 20 lehetséges menüelem ből származó első pizzarendelést javasol, de az, hogy a felhasználó névjegyzékéből melyik kapcsolattartót hívhatja meg, amikor segítségre van szüksége a gyermekgondozással kapcsolatban (például "Nagymama"), nem olyan dolog, amely személyre szabható a felhasználói bázison.
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>A Personalizer használata webes alkalmazásokban
 
@@ -91,7 +91,7 @@ Gyakori használata, hogy a kimenet egy javaslat motor (például a top 20 term�
 
 ## <a name="adding-content-safeguards-to-your-application"></a>Tartalomvédelmi intézkedések hozzáadása az alkalmazáshoz
 
-Ha az alkalmazás lehetővé teszi a felhasználók számára megjelenített tartalom nagy eltéréseit, és a tartalom egy része nem biztonságos vagy nem megfelelő egyes felhasználók számára, akkor előre kell terveznie, hogy megbizonyosodjon arról, hogy a megfelelő biztosítékok vannak érvényben annak megakadályozására, hogy a felhasználók elfogadhatatlannak lássák Tartalom. A biztosítékok végrehajtásának legjobb mintája a következő:
+Ha az alkalmazás lehetővé teszi a felhasználók számára megjelenített tartalom nagy eltéréseit, és a tartalom egy része nem biztonságos vagy nem megfelelő egyes felhasználók számára, előre kell terveznie, hogy megbizonyosodjon arról, hogy a megfelelő biztosítékok vannak érvényben annak megakadályozására, hogy a felhasználók elfogadhatatlan tartalmat lássanak. A biztosítékok végrehajtásának legjobb mintája a következő:
     * Szerezze be a rangsorolandó műveletek listáját.
     * Szűrje ki azokat, amelyek nem életképesek a közönség számára.
     * Csak rangsorolja ezeket az életképes cselekedeteket.

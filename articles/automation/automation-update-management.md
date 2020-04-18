@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: eaba4bf7760e150f2477ee743c797f94784b8506
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 9bdc8cf97513854cf6a92ffd078febca6302d35c
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535502"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617412"
 ---
 # <a name="update-management-solution-in-azure"></a>Felügyeleti megoldás frissítése az Azure-ban
 
-Az Azure Automation Frissítéskezelési megoldásával kezelheti az operációs rendszer frissítéseit windowsos és Linux os gépeihez az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben. Gyorsan felmérheti az összes ügynökgépen elérhető frissítések állapotát, és kezelheti a kiszolgálókhoz szükséges frissítések telepítésének folyamatát.
+Az Azure Automation **Frissítéskezelési megoldásával** kezelheti az operációs rendszer frissítéseit windowsos és Linux os gépeihez az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben. Gyorsan felmérheti az összes ügynökgépen elérhető frissítések állapotát, és kezelheti a kiszolgálókhoz szükséges frissítések telepítésének folyamatát.
 
 A virtuális gépekfrissítés-kezelést a következő módszerekkel engedélyezheti:
 
@@ -22,14 +22,14 @@ A virtuális gépekfrissítés-kezelést a következő módszerekkel engedélyez
 
 - Egyetlen Azure-virtuális gép az Azure Portalon a virtuális gép lapjáról. Ez a forgatókönyv [Linux és](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) virtuális gépekhez érhető el.
 
-- [Több Azure-beli virtuális gép](manage-update-multi.md) esetén az Azure Portal virtuális **gépek** lapján való kijelölésükhez. 
+- [Több Azure-beli virtuális gép](manage-update-multi.md) esetén az Azure Portal virtuális gépek lapján való kijelölésükhez. 
 
 > [!NOTE]
-> Az Update Management megoldás hoz egy Log Analytics-munkaterületet az Automation-fiókhoz. A támogatott régiók végleges listáját az [Azure Workspace-leképezések című témakörben található.](./how-to/region-mappings.md) A régióleképezések nem befolyásolják a virtuális gépek kezelését az Automation-fióktól egy külön régióban.
+> Az **Update Management megoldás** hoz egy Log Analytics-munkaterületet az Automation-fiókhoz. A támogatott régiók végleges listáját az [Azure Workspace-leképezések című témakörben található.](./how-to/region-mappings.md) A régióleképezések nem befolyásolják a virtuális gépek kezelését az Automation-fióktól egy külön régióban.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Elérhető egy Azure [Resource Manager-sablon,](automation-update-management-deploy-template.md) amely lehetővé teszi az Update Management megoldás üzembe helyezését egy új vagy meglévő Automation-fiókra és a Log Analytics-munkaterületre az előfizetésben.
+Egy Azure [Resource Manager-sablon](automation-update-management-deploy-template.md) áll rendelkezésre, amely segít az **Update Management megoldás** üzembe helyezésében egy új vagy meglévő Automation-fiókra és a Log Analytics-munkaterületre az előfizetésben.
 
 ## <a name="solution-overview"></a>Megoldás áttekintése
 
@@ -137,7 +137,7 @@ A megoldás a következő erőforrásokból áll. Ezek az erőforrások automati
 
 A megoldás engedélyezése után minden olyan Windows-gép, amely közvetlenül csatlakozik a Log Analytics-munkaterülethez, automatikusan hibrid runbook-feldolgozóként konfigurálva lesz a megoldásban szereplő runbookok támogatásához.
 
-A megoldás által kezelt minden egyes Windows-gép szerepel a **hibrid munkavégző csoportok** ablaktáblán az Automation-fiók **rendszerhibrid munkavégző csoportjaként.** A megoldások a *FQDN_GUID* elnevezési konvenciót használják. Ezek a csoportok nem célozhatók meg runbookokkal a fiókjában. Ha megpróbálja, a kísérlet sikertelen lesz. Ezek a csoportok csak ezt a felügyeleti megoldást támogatják.
+A megoldás által kezelt minden egyes Windows-gép szerepel a hibrid munkavégző csoportok ablaktáblán az Automation-fiók rendszerhibrid munkavégző csoportjaként. A megoldások `Hostname FQDN_GUID` az elnevezési konvenciót használják. Ezek a csoportok nem célozhatók meg runbookokkal a fiókjában. Ha megpróbálja, a kísérlet sikertelen lesz. Ezek a csoportok csak ezt a felügyeleti megoldást támogatják.
 
 A Windows-gépet hozzáadhatja egy hibrid Runbook-feldolgozó csoporthoz az Automation-fiókban az Automation-runbookok támogatásához, ha ugyanazt a fiókot használja mind a megoldáshoz, mind a hibrid Runbook-feldolgozó csoporttagsághoz. Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziója része.
 
@@ -150,12 +150,12 @@ Ha a System Center Operations Manager felügyeleti csoport [egy Log Analytics-mu
 * Frissítéstelepítő felügyeleti csomag
 
 > [!NOTE]
-> Ha egy Operations Manager 1807 vagy 2019 felügyeleti csoport csatlakozik egy Log Analytics-munkaterülethez, amelya felügyeleti csoportban a naplóadatok gyűjtésére konfigurált ügynökökkel rendelkezik, felül kell írnia a következő szabályt az Update Management használatával való kezelésükhöz: Felülbírálja az **IsAutoRegistrationEnabled** paramétert, és **true** értékre van állítva a **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** szabályban.
+> Ha egy Operations Manager 1807 vagy 2019 felügyeleti csoport csatlakozik egy Log Analytics-munkaterülethez a felügyeleti csoportban `IsAutoRegistrationEnabled` konfigurált ügynökökkel a naplóadatok gyűjtésére, felül kell írnia a paramétert, és a **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** szabályban igaz értékre kell állítania.
 
 A megoldáskezelési csomagok frissítéséről az [Operations Manager csatlakoztatása az Azure Monitor naplóihoz](../azure-monitor/platform/om-agents.md)című témakörben talál további információt.
 
 > [!NOTE]
-> Az Operations Manger ügynökkel rendelkező gépek esetében az Update Management teljes körű en kell kezelnie az ügynököt a Windows vagy Linux Log Analytics-ügynökre. Az ügynök frissítésének módjáról az [Operations Manager-ügynök frissítése](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)című témakörben olvashat. Az Operations Managert használó környezetekben a System Center Operations Manager 2012 R2 14 vagy újabb műveletkezelőt kell futtatnia.
+> Az Operations Manger ügynökkel rendelkező gépek frissítési felügyelettel teljes körűen felügyelt, az ügynök frissíteni kell a Log Analytics-ügynök windowsos vagy a Log Analytics-ügynök Linux. Az ügynök frissítésének módjáról az [Operations Manager-ügynök frissítése](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)című témakörben olvashat. Az Operations Managert használó környezetekben a System Center Operations Manager 2012 R2 14 vagy újabb műveletkezelőt kell futtatnia.
 
 ## <a name="data-collection"></a>Adatgyűjtés
 
@@ -249,13 +249,9 @@ Az Update Management a támogatott Windows-rendszerek frissítéséhez a helyile
 A rendszerek frissítésének megkezdéséhez engedélyeznie kell az Update Management megoldást. A megoldás alaplapozására ajánlott és támogatott módszerek a következők:
 
 - [Virtuális gépről](automation-onboard-solutions-from-vm.md)
-
 - [Több gép böngészéséből](automation-onboard-solutions-from-browse.md)
-
 - [Az Automation-fiókból](automation-onboard-solutions-from-automation-account.md)
-
 - [Egy Azure Automation runbook](automation-onboard-solutions.md)
-
 - [Azure Resource Manager-sablonnal](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>További lépések

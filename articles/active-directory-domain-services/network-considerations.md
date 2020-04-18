@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e610bf94dfdee4e2765e4fae4259f18a9f1036b5
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408833"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639979"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Az Azure AD tartományi szolgáltatások virtuális hálózattervezési szempontjai és konfigurációs beállításai
 
@@ -109,10 +109,11 @@ A következő hálózati biztonsági csoport szabályok szükségesek az Azure A
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Igen      | Szinkronizálás az Azure AD-bérlővel. |
 | 3389        | TCP      | CorpNetSaw között                         | Bármelyik         | Engedélyezés  | Igen      | A tartomány kezelése. |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Igen      | A tartomány kezelése. |
-| 636         | TCP      | Bármelyik                                | Bármelyik         | Engedélyezés  | Nem       | Csak akkor engedélyezve van, ha biztonságos LDAP (LDAPS) beállítást konfigurál. |
 
 > [!WARNING]
 > Ne manuálisan edzse ezeket a hálózati erőforrásokat és konfigurációkat. Ha egy helytelenül konfigurált hálózati biztonsági csoportot vagy egy felhasználó által definiált útvonaltáblát társít azzal az alhálózattal, amelyben az Azure AD DS telepítve van, megzavarhatja a Microsoft képességét a tartomány kiszolgálására és kezelésére. Szinkronizálás az Azure AD-bérlő és az Azure AD DS felügyelt tartomány is megszakadt.
+>
+> Ha biztonságos LDAP-t használ, hozzáadhatja a szükséges 636-os TCP-portszabályt a külső forgalom engedélyezéséhez, ha szükséges. A szabály hozzáadása nem teszi a hálózati biztonsági csoport szabályait nem támogatott állapotba. További információ: [Biztonságos LDAP-hozzáférés zárolása az interneten keresztül](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 >
 > *Az AllowVnetInBound*, *Az AllowAzureLoadBalancerInBound*, *a DenyAllInBound*, *az AllowVnetOutBound*, *az AllowInternetOutBound*és a *DenyAllOutBound* alapértelmezett szabályai is léteznek a hálózati biztonsági csoporthoz. Ne írja és ne törölje ezeket az alapértelmezett szabályokat.
 >

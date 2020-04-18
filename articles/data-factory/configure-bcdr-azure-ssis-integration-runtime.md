@@ -12,16 +12,16 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: 75dd5a917d718f4ccef034e953a415d575d42bd9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9548d3eb4f51dd61186aa7f13343d946035d95ef
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418303"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603642"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurálja az Azure-SSIS-integrációs futásidőt az Azure SQL Database georeplikációval és feladatátvételsel
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk bemutatja, hogyan konfigurálhatja az Azure-SSIS-integrációs futásidőt az Azure SQL Database georeplikációval az SSISDB-adatbázishoz. Feladatátvétel esetén biztosíthatja, hogy az Azure-SSIS ir továbbra is működjön a másodlagos adatbázissal.
 

@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677036"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604679"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Az Azure-beli virtuális gépek frissítéseinek és javításainak kezelése
 
@@ -40,13 +40,13 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
-Az Update Management engedélyezése után megnyílik a **Frissítéskezelés** lap. Ha a rendszer hiányzóként azonosítja a frissítéseket, a hiányzó frissítések listája megjelenik a **Hiányzó frissítések** lapon.
+Az Update Management engedélyezése után megnyílik a Frissítéskezelés lap. Ha a rendszer hiányzóként azonosítja a frissítéseket, a hiányzó frissítések listája megjelenik a **Hiányzó frissítések** lapon.
 
 Az **Információ hivatkozás csoportban**válassza a frissítési hivatkozást a frissítés támogatási cikkének megnyitásához. A frissítéssel kapcsolatos fontos információkat ismerthet.
 
 ![Frissítés állapotának megtekintése](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
-Kattintson a frissítés tetszőleges pontjára a kijelölt frissítés **Naplókeresési** ablaktáblájának megnyitásához. A naplókeresés lekérdezése az adott frissítéshez előre meg van adva. Módosíthatja ezt a lekérdezést, vagy létrehozhat saját lekérdezést a környezetben telepített vagy hiányzó frissítésekrészletes adatainak megtekintéséhez.
+Kattintson a frissítés tetszőleges pontjára a kijelölt frissítés Naplókeresési ablaktáblájának megnyitásához. A naplókeresés lekérdezése az adott frissítéshez előre meg van adva. Módosíthatja ezt a lekérdezést, vagy létrehozhat saját lekérdezést a környezetben telepített vagy hiányzó frissítésekrészletes adatainak megtekintéséhez.
 
 ![Frissítés állapotának megtekintése](./media/automation-tutorial-update-management/logsearch.png)
 
@@ -58,7 +58,7 @@ Ebben a lépésben megtudhatja, hogy állítson be egy riasztást, amely tájék
 
 Az Automation-fiókban nyissa meg **a Figyelés** **csoport**riasztások , majd kattintson az **Új riasztási szabály**elemre .
 
-Az Automation-fiók már ki van jelölve erőforrásként. Ha módosítani szeretné, kattintson a **Kijelölés gombra.** Az **Erőforrás kiválasztása** lapon válassza az **Erőforrástípus** szerint legördülő menü **Automation-fiókok** parancsát. Válassza ki az Automation-fiókot, majd kattintson **a Kész gombra.**
+Az Automation-fiók már ki van jelölve erőforrásként. Ha módosítani szeretné, kattintson a **Kijelölés gombra.** Az Erőforrás kiválasztása lapon válassza az **Erőforrástípus** szerint legördülő menü **Automation-fiókok** parancsát. Válassza ki az Automation-fiókot, majd kattintson **a Kész gombra.**
 
 Kattintson a **Feltétel hozzáadása** gombra a frissítés központi telepítéséhez megfelelő jel kiválasztásához. Az alábbi táblázat a két rendelkezésre álló jel részleteit mutatja be.
 
@@ -85,11 +85,11 @@ A **Műveletcsoport neve** mezőben adja meg a riasztás nevét és egy rövid n
 
 A **Műveletek csoportban**adja meg a művelet nevét, **például az E-mail értesítés .** A **Művelettípus mezőben**válassza **az E-mail/SMS/Push/Voice**lehetőséget. A **Részletek lehetőséget**a Részletek **szerkesztése lehetőségkiválasztásában**válassza a Részletek szerkesztése lehetőségért.
 
-Az **E-mail/SMS/Küldés/Hang** ablaktáblán adjon meg egy nevet. Jelölje be az **E-mail** jelölőnégyzetet, és adjon meg egy érvényes e-mail-címet.
+Az E-mail/SMS/Küldés/Hang ablaktáblán adjon meg egy nevet. Jelölje be az **E-mail** jelölőnégyzetet, majd adjon meg egy érvényes e-mail címet.
 
 ![E-mail műveletcsoport konfigurálása](./media/automation-tutorial-update-management/configure-email-action-group.png)
 
-Az **E-mail/SMS/Push/Voice** ablaktáblán kattintson az **OK**gombra. A **Műveletcsoport hozzáadása** ablaktáblán kattintson az **OK**gombra.
+Az E-mail/SMS/Push/Voice ablaktáblán kattintson az **OK**gombra. A Műveletcsoport hozzáadása ablaktáblán kattintson az **OK**gombra.
 
 A figyelmeztető e-mail tárgyának testreszabásához a **Szabály létrehozása**csoport **Műveletek testreszabása**csoportban válassza az **E-mail tárgy a lehetőséget.** Ha végzett, kattintson a **Riasztási szabály létrehozása** gombra. A riasztás jelzi, ha egy frissítés központi telepítése sikeres, és mely gépek voltak részei a frissítés központi telepítésének futtatásához.
 
@@ -123,7 +123,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
    A besorolási típusok leírását lásd: [Besorolások frissítése](automation-view-update-assessments.md#update-classifications).
 
-* **A belefoglaláshoz/kizáráshoz szükséges frissítések** – Megnyitja a Belefoglalás/kizárás lapot. A beveendő vagy kizárandó frissítések külön lapokon találhatók a tudásbáziscikk-azonosítószámok megadásával. Egy vagy több azonosítószám megadásakor el kell távolítania, vagy vissza kell vonnia az összes besorolás t a frissítés központi telepítésével. Ez biztosítja, hogy a frissítési azonosítók megadásakor a frissítési csomag ne tartalmazzon más frissítéseket.
+* **A belefoglaláshoz/kizáráshoz szükséges frissítések** – Megnyitja a Belefoglalás/kizárás lapot. A beveendő vagy kizárandó frissítések külön lapokon találhatók a tudásbáziscikk-azonosítószámok megadásával. Egy vagy több azonosítószám megadásakor el kell távolítania, vagy törölje a jelet a frissítés központi telepítésével rendelkező összes besorolásról. Ez biztosítja, hogy a frissítési azonosítók megadásakor a frissítési csomag ne tartalmazzon más frissítéseket.
 
 > [!NOTE]
 > Fontos tudni, hogy a kizárások felülbírálják a zárványokat. Ha például a kizárási `*`szabályt a , Update Management telepíti nem javítások vagy csomagok, mivel ezek mindegyike ki van zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépből. Linux gépek esetén, ha olyan csomagot tartalmaz, amely egy kizárt függő csomagot tartalmaz, az Update Management nem telepíti a fő csomagot.
@@ -132,7 +132,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 > Nem adhat meg olyan frissítéseket, amelyek et felülítettek a frissítés központi telepítésével való felvételhez.
 >
 
-* **Ütemezési beállítások**: Megnyitja az **Ütemezési beállítások** ablaktáblát. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
+* **Ütemezési beállítások**: Megnyitja az Ütemezési beállítások ablaktáblát. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
 
    Azt is megadhatja, hogy a telepítés egyszer történjen meg, vagy ismétlődő legyen. Az **Ismétlődés** menüpontban válassza az **Egyszer** lehetőséget. Hagyja az alapértelmezett értéket 1 napként, majd kattintson az **OK**gombra. Ezek a tételek ismétlődő ütemezést állítanak be.
 

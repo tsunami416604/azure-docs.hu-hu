@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 00f6a5f88a66f0a19943ff3a2c722ae1a9938e9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550395"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604727"
 ---
 # <a name="how-to-query-logs-from-startstop-vms-solution"></a>Naplók lekérdezése a virtuális gépek indítási/leállítási megoldásából
 
@@ -71,4 +71,4 @@ A következő táblázat a megoldás által összegyűjtött feladatrekordokkal 
 
 ## <a name="next-steps"></a>További lépések
 
-A virtuális gépek indítása/leállítása munkaidőn kívüli megoldás nem tartalmaz előre meghatározott riasztásokkészletét. Tekintse át a [naplóriasztások létrehozása](../azure-monitor/platform/alerts-log.md) az Azure Monitor segítségével megtudhatja, hogyan hozhat létre feladat sikertelen riasztásokat a DevOps vagy az operatív folyamatok és eljárások támogatása érdekében.
+A **virtuális gépek indítása/leállítása munkaidőn kívüli** megoldás során nem tartalmaz előre meghatározott riasztások készletét. Tekintse át a [naplóriasztások létrehozása](../azure-monitor/platform/alerts-log.md) az Azure Monitor segítségével megtudhatja, hogyan hozhat létre feladat sikertelen riasztásokat a DevOps vagy az operatív folyamatok és eljárások támogatása érdekében.

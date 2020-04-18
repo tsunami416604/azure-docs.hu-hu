@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatja a fürt automatikus skálázó au
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2baa64779713d0bac063e1d2c06107ba2ab291fb
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596249"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617548"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus méretezése az Azure Kubernetes-szolgáltatás (AKS) alkalmazáskövetelményeinek megfelelően
 
@@ -117,6 +117,7 @@ A fürt automatikus skálázójának részletesebb részleteit is konfigurálhat
 | lekicsinylés-felkészületlen idő          | Mennyi ideig nem kell egy nem kész csomópontot szükségtelennek lennie ahhoz, hogy jogosult legyen a leskálázásra?         | 20 perc    |
 | lekicsinyítés-kihasználtság-küszöbérték | A csomópont kihasználtsági szintje, amely a kért erőforrások és a kapacitás hányadosaként van meghatározva, amely alatt egy csomópont leskálázásnak tekinthető | 0,5 |
 | max-kecses-felmondás-sec     | A fürt automatikus skálázója legfeljebb másodpercek alatt várakozik a pod leállítására, amikor megpróbál csökkenteni egy csomópontot. | 600 másodperc   |
+| egyenleg-hasonló-csomópont-csoportok | Hasonló csomópontkészletek észlelése és a köztük lévő csomópontok számának egyensúlya | hamis |
 
 > [!IMPORTANT]
 > A fürt automatikus skálázó profilja a fürt automatikus skálázóját használó összes csomópontkészletre hatással van. Csomópontkészletenként nem állítható be automatikus méretező profil.
@@ -144,7 +145,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Ha engedélyezi a fürt automatikus skálázóját a fürt csomópontkészletein, ezek a fürtök a fürt automatikus méretező profilját is használni fogják. Példa:
+Ha engedélyezi a fürt automatikus skálázóját a fürt csomópontkészletein, ezek a fürtök a fürt automatikus méretező profilját is használni fogják. Például:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -161,7 +162,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>AKS-fürt létrehozásakor a fürt automatikus méretezőprofiljának beállítása
 
-A *fürt automatikus skálázási profil* paraméterét is használhatja a fürt létrehozásakor. Példa:
+A *fürt automatikus skálázási profil* paraméterét is használhatja a fürt létrehozásakor. Például:
 
 ```azurecli-interactive
 az aks create \

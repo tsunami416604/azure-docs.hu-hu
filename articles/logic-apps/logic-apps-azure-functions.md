@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284121"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605897"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure-függvények hívása az Azure Logic Apps alkalmazásból
 
@@ -101,7 +101,9 @@ Most, hogy létrehozta az Azure-függvényt, kövesse a [függvények logikai al
 
 ## <a name="create-functions-inside-logic-apps"></a>Függvények létrehozása logikai alkalmazásokon belül
 
-Mielőtt létrehozhat egy Azure-függvényt a logikai alkalmazástervező használatával kezdve, először rendelkeznie kell egy Azure-függvényalkalmazással, amely a függvények tárolója. Ha nem rendelkezik függvényalkalmazással, először hozza létre a függvényalkalmazást. Lásd: [Az első függvény létrehozása az Azure Portalon.](../azure-functions/functions-create-first-azure-function.md)
+Az Azure-függvények közvetlenül a logikai alkalmazás munkafolyamata segítségével a beépített Azure Functions művelet a Logic App Designer, de használhatja ezt a módszert csak a JavaScript-ben írt Azure-függvények. Más nyelvek esetén azure-függvényeket hozhat létre az Azure Functions szolgáltatáson keresztül az Azure Portalon. További információ: [Az első függvény létrehozása az Azure Portalon.](../azure-functions/functions-create-first-azure-function.md)
+
+Azonban mielőtt bármilyen Azure-függvényt hozhat létre, már rendelkeznie kell egy Azure-függvényalkalmazással, amely a függvények tárolója. Ha nem rendelkezik függvényalkalmazással, először hozza létre a függvényalkalmazást. Lásd: [Az első függvény létrehozása az Azure Portalon.](../azure-functions/functions-create-first-azure-function.md)
 
 1. Az [Azure Portalon](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic App Designerben.
 
@@ -125,7 +127,7 @@ Mielőtt létrehozhat egy Azure-függvényt a logikai alkalmazástervező haszn�
 
    1. A **Kód** mezőben adja hozzá a kódot a függvénysablonhoz, beleértve a választ és a hasznos terhet, amelyet vissza szeretne adni a logikai alkalmazásnak a függvény futásának befejezése után. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
-   Példa:
+   Például:
 
    ![A függvény definiálása](./media/logic-apps-azure-functions/add-code-function-definition.png)
 

@@ -8,12 +8,12 @@ ms.author: spelluru
 ms.date: 03/31/2020
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 8a72d20101aacaf59b4be5c4a231b132237113f3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d90bf8efab28624672dcedb5bf53d45052dd9123
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633917"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605127"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Az Apache Kafka fejlesztői útmutatója az Azure Event Hubs-hoz
 Ez a cikk az Apache Kafka-alkalmazások Azure Event Hubs-szal való integrálását leíró cikkekre mutató hivatkozásokat tartalmaz. 
@@ -74,9 +74,17 @@ Dokumentációnkban az alábbi útmutatók ban olvashat:
 | [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md) | Végigvezeti a Spark-alkalmazás az Event Hubs valós idejű streameléshez való csatlakoztatásán. |
 | [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md) | Bemutatja, hogyan csatlakoztathatja az Apache Flinket egy eseményközponthoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. |
 | [Az Apache Kafka Connect integrálása eseményközponttal (előzetes verzió)](event-hubs-kafka-connect-tutorial.md) | Végigvezeti a Kafka Connect egy eseményközponttal való integrálásán, valamint az alapvető FileStreamSource és FileStreamSink-összekötők üzembe helyezésén. |
-| [Akka-adatfolyamok csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md) | Bemutatja, hogyan csatlakoztathatja az Akka Streameket egy eseményközponthoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. |
+| [Az Akka Streams csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md) | Bemutatja, hogyan csatlakoztathatja az Akka Streameket egy eseményközponthoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. |
 | [Az Apache Kafka tavaszi rendszerindítási kezdőcsapatának használata az Azure Event Hubs szolgáltatással](/azure/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Bemutatja, hogyan konfigurálhat egy Java-alapú tavaszi felhőalapú streamiratgyűjtőt, amelyet a tavaszi rendszerindítási inicionátorsal hoztak létre az Apache Kafka azure-beli Event Hubs használatával. |
 
 ## <a name="next-steps"></a>További lépések
 Tekintse át a mintákat a GitHub-tárházban [az azure-event-hubs-for-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) rövid útmutató és oktatóanyagok mappák alatt.
+
+Lásd még a következő cikkeket:
+
+- [Az Apache Kafka hibaelhárítási útmutatója az Event Hubs-hoz](apache-kafka-troubleshooting-guide.md)
+- [Gyakori kérdések – Az Apache Kafka eseményközpontjai](apache-kafka-frequently-asked-questions.md)
+- [Apache Kafka áttelepítési útmutató az Eseményközpontokhoz](apache-kafka-migration-guide.md)
+
+
 

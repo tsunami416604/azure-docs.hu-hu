@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: d4e36c0d3838af85768453496a51ecd295c22b93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79081845"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605891"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -205,12 +205,7 @@ fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 
 Használja a legjobb modell iteráció a tesztadatkészlet értékeinek előrejelzéséhez.
 
-```python
-predict_labels = fitted_model.predict(test_data)
-actual_labels = test_labels.flatten()
-```
-
-Másik lehetőségként használhatja `forecast()` a `predict()`függvényhelyett . A következő példában `y_pred` először az `NaN`összes értéket a helyére cseréli. Az előrejelzés eredete ebben az esetben a betanítási adatok végén `predict()`lesz, ahogy az a használata során általában lenne. Ha azonban csak a második felét `y_pred` `NaN`cseréli le a programra, a függvény az első félidőben változatlanul hagyja a numerikus értékeket, de az `NaN` értékeket a második felében előre jelezi. A függvény az előre jelzett értékeket és az igazított jellemzőket is visszaadja.
+A `forecast()` függvényt kell `predict()`használni a helyett , ez lehetővé teszi a specifikációk, amikor előrejelzések et kell kezdeni. A következő példában `y_pred` először az `NaN`összes értéket a helyére cseréli. Az előrejelzés eredete ebben az esetben a betanítási adatok végén `predict()`lesz, ahogy az a használata során általában lenne. Ha azonban csak a második felét `y_pred` `NaN`cseréli le a programra, a függvény az első félidőben változatlanul hagyja a numerikus értékeket, de az `NaN` értékeket a második felében előre jelezi. A függvény az előre jelzett értékeket és az igazított jellemzőket is visszaadja.
 
 A függvényben `forecast_destination` lévő paraméter `forecast()` segítségével egy megadott dátumig is előre jelezheti az értékeket.
 

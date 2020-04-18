@@ -3,12 +3,12 @@ title: Vendégkonfigurációs házirendek létrehozása Linuxhoz
 description: Ismerje meg, hogyan hozhat létre egy Azure Policy Vendég konfigurációs szabályzat linuxos.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f93aafc8f2c016218b1b7fea82558ea6ba4b4ff8
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 65e0082f87f05104e9a57ff0342cd3d2950b63e8
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365428"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617941"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Vendégkonfigurációs házirendek létrehozása Linuxhoz
 
@@ -89,7 +89,7 @@ supports:
     - os-family: unix
 ```
 
-Mentse a fájlt a `linux-path` projektkönyvtárban megnevezett mappába.
+Mentse a nevet `inspec.yml` tartalmazó fájlt `linux-path` a projektkönyvtárban megnevezett mappába.
 
 Ezután hozza létre a Ruby fájlt a gép naplózásához használt InSpec nyelvi absztrakcióval.
 
@@ -99,7 +99,7 @@ describe file('/tmp') do
 end
 ```
 
-Mentse a fájlt a `controls` `linux-path` könyvtárban elnevezett új mappába.
+Mentse a nevet `linux-path.rb` tartalmazó fájlt `controls` egy `linux-path` új, a könyvtárban elnevezett mappába.
 
 Végül hozzon létre egy konfigurációt, importálja `ChefInSpecResource` a **GuestConfiguration** erőforrásmodult, és az erőforrás segítségével állítsa be az InSpec-profil nevét.
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33684a6292d7e51c04f6bacc7c49ee5986dbec10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3bc87b183803c0854542d6925af7429b593d2af
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502396"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605177"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (nagy példányok) hálózati architektúrája
 
@@ -86,7 +86,7 @@ A virtuális gépek és a HANA nagypéldány közötti determinisztikus hálóza
 A késés csökkentése érdekében az ExpressRoute gyorselérési út 2019 májusában lett bevezetésre kerül, és 2019 májusában elérhetővé lett adva a HANA nagy példányok azure-beli virtuális hálózatokhoz való, az SAP-alkalmazás virtuális gépeit tároló virtuális hálózatokhoz való konkrét kapcsolatához. A fő különbség a megoldás eddig bevezetett, hogy a virtuális gépek és a HANA nagy példányok közötti adatfolyamok már nem az ExpressRoute-átjárón keresztül. Ehelyett az Azure virtuális hálózat alhálózatában(i)hoz rendelt virtuális gépek közvetlenül kommunikálnak a dedikált vállalati peremhálózati útválasztóval. 
 
 > [!IMPORTANT] 
-> Az ExpressRoute gyorselérési út funkció megköveteli, hogy az SAP-alkalmazás virtuális gépeit futtató alhálózatok ugyanabban az Azure-beli virtuális hálózatban vannak, amely a HANA nagy példányaihoz csatlakozott. Az Azure virtuális hálózatokban található virtuális virtuális gépek, amelyek az Azure virtuális hálózat közvetlenül csatlakozik a HANA nagy példány egységek nem részesülnek ExpressRoute gyors elérési út. Ennek eredményeként a tipikus hub és küllős virtuális hálózati tervek, ahol az ExpressRoute-áramkörök csatlakoznak egy hub virtuális hálózat és a virtuális hálózatok, amelyek az SAP alkalmazás réteg (küllők) egyre társviszonyban, az optimalizálás expressroute fast Az elérési út nem fog működni. Az addtion, ExpressRoute gyors elérési út nem támogatja a felhasználó által definiált útválasztási szabályok (UDR) ma. További információ: [ExpressRoute virtuális hálózati átjáró és FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways). 
+> Az ExpressRoute gyorselérési út funkció megköveteli, hogy az SAP-alkalmazás virtuális gépeit futtató alhálózatok ugyanabban az Azure-beli virtuális hálózatban vannak, amely a HANA nagy példányaihoz csatlakozott. Az Azure virtuális hálózatokban található virtuális virtuális gépek, amelyek az Azure virtuális hálózat közvetlenül csatlakozik a HANA nagy példány egységek nem részesülnek ExpressRoute gyors elérési út. Ennek eredményeképpen a tipikus hub és küllős virtuális hálózati tervek, ahol az ExpressRoute-áramkörök csatlakoznak egy központi virtuális hálózat és a virtuális hálózatok, amelyek az SAP alkalmazásréteg (küllők) egyre társviszonyban, az ExpressRoute gyors elérési út optimalizálása nem fog működni. Az addtion, ExpressRoute gyors elérési út nem támogatja a felhasználó által definiált útválasztási szabályok (UDR) ma. További információ: [ExpressRoute virtuális hálózati átjáró és FastPath](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways). 
 
 
 Az ExpressRoute gyorselérési út konfigurálásáról további információt a [Virtuális hálózat csatlakoztatása hana nagy példányokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)című dokumentumban talál.    
@@ -151,7 +151,7 @@ Az ilyen esetekben háromféleképpen engedélyezheti a tranzitív útválasztá
 - [IPTables szabályok](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) használata egy Linux virtuális gép, amely lehetővé teszi a helyszíni helyek és a HANA nagy példány egységek közötti útválasztás, vagy a HANA nagy példány egységek különböző régiókban közötti útválasztás engedélyezéséhez. Az IPTables-et futtató virtuális gépet telepíteni kell az Azure virtuális hálózatában, amely csatlakozik a HANA nagy példányokhoz és a helyszíni kapcsolatokhoz. A virtuális gép kell méretezni ennek megfelelően, így a virtuális gép hálózati átviteli igénye elegendő a várható hálózati forgalomhoz. A virtuális gép hálózati sávszélességével kapcsolatos részletekért tekintse meg a cikk [Linux-méretei virtuális gépek az Azure-ban.](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Az Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) egy másik megoldás a helyszíni és a HANA Large példányegységek közötti közvetlen forgalom engedélyezésére. 
 
-Ezeknek a megoldásoknak az összes forgalma egy Azure virtuális hálózaton keresztül lenne irányítva, és mint ilyen, a forgalmat a soft appliances által használt vagy az Azure Network Security Groups is korlátozhatja, így bizonyos IP-címek vagy IP-címek helyszíni lehet blokkolni, vagy explicit módon engedélyezett a HANA nagy példányok eléréséhez. 
+Ezek a megoldások forgalma egy Azure virtuális hálózaton keresztül lesz irányítva, és így a forgalmat a soft appliances által használt vagy az Azure Network Security Groups is korlátozhatja, így bizonyos IP-címek vagy IP-címek helyszíni blokkolása vagy kifejezetten engedélyezett a HANA nagy példányok eléréséhez. 
 
 > [!NOTE]  
 > Ne feledje, hogy a külső hálózati készülékeket vagy IP-táblázatokat érintő egyéni megoldások megvalósítását és támogatását a Microsoft nem biztosítja. A támogatást a felhasznált alkatrész szállítójának vagy az integrátornak kell biztosítania. 
@@ -182,7 +182,7 @@ Az ExpressRoute Global Reach engedélyezésével kapcsolatos további részletek
 A HANA nagy példány *nem* rendelkezik közvetlen internetkapcsolattal. Például ez a korlátozás korlátozhatja az operációs rendszer lemezképének közvetlen regisztrálását az operációs rendszer szállítójával. Előfordulhat, hogy a helyi SUSE Enterprise Server Subscription Management Tool kiszolgálóval vagy a Red Hat Enterprise Linux Subscription Manager rel kell dolgoznia.
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>Adattitkosítás virtuális gépek és HANA nagy példány között
-A HANA nagy példány és a virtuális gépek között továbbított adatok nincsenek titkosítva. Azonban kizárólag a HANA DBMS oldal és a JDBC/ODBC-alapú alkalmazások közötti adatcsere esetén engedélyezheti a forgalom titkosítását. További információt az [SAP dokumentációjában](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)talál.
+A HANA nagy példány és a virtuális gépek között továbbított adatok nincsenek titkosítva. Azonban kizárólag a HANA DBMS oldal és a JDBC/ODBC-alapú alkalmazások közötti adatcsere esetén engedélyezheti a forgalom titkosítását. További információt az [SAP dokumentációjában](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html)talál.
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>Hana nagy példányegységek használata több régióban
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault - A lágy törlés használata a CLI-vel
+title: Azure Key Vault - A soft-delete használata a CLI-vel
 description: Példaként használhat a cli-kódmetszetekkel történő ideiglenes törlésre
 services: key-vault
 author: msmbaldwin
@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c8e4083035d87696ec44d06a62bc55ba721c6f03
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae6ddac61ecbcef41704f71ed5188fc547a996a3
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422927"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616582"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
 
@@ -231,13 +231,13 @@ Ha a kiürítési védelem be van kapcsolva, a tároló vagy a törölt állapot
 
 Csak akkor engedélyezheti a törlési védelmet, ha a törlés is engedélyezve van. 
 
-A tároló létrehozásakor a helyreállítható törlést és a védelem kiürítését is be kell kapcsolnia, használja az [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot:
+Ha a tároló létrehozásakor be szeretné kapcsolni a helyreállítható ancsit, és meg szeretné tisztítani a védelmet, használja az [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot:
 
 ```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
 ```
 
-Ha kiürítési védelmet szeretne hozzáadni egy meglévő tárolóhoz (amelyen már engedélyezve van a törlés funkciója), használja az [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) parancsot:
+Ha kiürítési védelmet szeretne hozzáadni egy meglévő tárolóhoz (amelyen már engedélyezve van a helyreállítható törlés), használja az [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) parancsot:
 
 ```azurecli
 az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5310c999cc44f0cf35f129751da7472031e6c57a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537083"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603828"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Oktatóanyag: Az Azure Active Directory integrációja az Amazon Web Services (AWS) szolgáltatással (örökölt oktatóanyag)
 
@@ -37,7 +37,7 @@ Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel va
 ![Amazon Web Services (AWS) az eredménylistában](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
-> Kérjük, vegye figyelembe, hogy egy AWS alkalmazás csatlakoztatása az összes AWS-fiókjához nem az ajánlott megközelítésünk. Ehelyett azt javasoljuk, hogy [használja ezt a](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) módszert az AWS-fiók több példányának konfigurálásához az Azure AD-ben az AWS-alkalmazások több példányához. Ezt a módszert csak akkor használja, ha nagyon kevesebb AWS-fiók és szerepkör van benne, ez a modell nem méretezhető, mivel az AWS-fiókok és szerepkörök ezeken a fiókokon belül növekszik. Ez a megközelítés nem használja az AWS szerepkör importálási funkcióját az Azure AD-felhasználó kiépítés használatával, ezért manuálisan kell hozzáadnia/frissítenie/törölnie a szerepköröket. A megközelítés egyéb korlátait lásd az alábbi részletekben.
+> Kérjük, vegye figyelembe, hogy egy AWS alkalmazás csatlakoztatása az összes AWS-fiókjához nem az ajánlott megközelítésünk. Ehelyett azt javasoljuk, hogy [használja ezt a](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) módszert az AWS-fiók több példányának konfigurálásához az Azure AD-ben az AWS-alkalmazások több példányához. Ezt a módszert csak akkor használja, ha kevés AWS-fiók és szerepkör van benne, ez a modell nem méretezhető, mivel az AWS-fiókok és szerepkörök ezeken a fiókokon belül növekszik. Ez a megközelítés nem használja az AWS szerepkör importálási funkcióját az Azure AD-felhasználó kiépítés használatával, ezért manuálisan kell hozzáadnia/frissítenie/törölnie a szerepköröket. A megközelítés egyéb korlátait lásd az alábbi részletekben.
 
 **Kérjük, vegye figyelembe, hogy nem javasoljuk, hogy ezt a megközelítést a következő okok miatt:**
 

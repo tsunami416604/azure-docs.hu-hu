@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ee4b6b4247ac1a5c988d8b455fd1d8a2bff889a9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ce311d2deaf0eec76ef0dec3ea279a387d14fd22
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80135999"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637128"
 ---
 <a name="HOLTop"></a>
 
@@ -84,7 +84,7 @@ Ha a Visual Studio IDE-t használja, az ügyfélkönyvtár letölthető NuGet cs
 
 A következő osztályok és felületek kezelik a Computer Vision .NET SDK néhány főbb jellemzőjét.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | Ez az osztály szükséges az összes Computer Vision funkcióhoz. Az előfizetési adatokkal azonnal hozzágyűjtheti azt, és a legtöbb képművelethez használhatja őket.|
 |[ComputerVisionClientExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| Ez az osztály további módszereket tartalmaz a **ComputerVisionClient számára.**|
@@ -133,6 +133,12 @@ A **Program** osztályban mentse az elemezni kívánt kép URL-címére mutató 
 Határozza meg az új képelemzési módszert. Adja hozzá az alábbi kódot, amely meghatározza az elemzéssorán kivonni kívánt vizuális funkciókat. A teljes listát a **[VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** enum című témakörben láthatja.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_visualfeatures)]
+
+Helyezze be az alábbi kódblokkok bármelyikét az **AnalyzeImageUrl** metódusba a funkciók megvalósításához. Ne felejtsen el záró konzolt hozzáadni a végén.
+
+```csharp
+}
+```
 
 ### <a name="analyze"></a>Elemzés
 

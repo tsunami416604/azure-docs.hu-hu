@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 03/12/2020
-ms.openlocfilehash: 4391b565b684b74258b9c71da88600d4628b5c6f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/15/2020
+ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259765"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641075"
 ---
 # <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# oktatóanyag: Automatikus kiegészítés és javaslatok hozzáadása – Azure Cognitive Search
 
-Megtudhatja, hogy miként valósíthatja meg az automatikus kiegészítést (typeahead lekérdezések és javasolt dokumentumok), amikor a felhasználó elkezd beírni egy keresőmezőbe. Ebben az oktatóanyagban az automatikusan befejezett lekérdezéseket és javaslatokeredményeit külön-külön jelenítjük meg, majd megmutatjuk az egyesítésük módját, hogy gazdagabb felhasználói élményt hozzanak létre. Előfordulhat, hogy a felhasználónak csak két vagy három karaktert kell beírnia az összes rendelkezésre álló eredmény megkereséséhez.
+Megtudhatja, hogy miként valósíthatja meg az automatikus kiegészítést (typeahead lekérdezések és javasolt dokumentumok), amikor a felhasználó elkezd beírni egy keresőmezőbe. Ebben az oktatóanyagban az automatikusan befejezett lekérdezéseket és javaslatokeredményeit külön-külön, majd együtt jelenítjük meg. Előfordulhat, hogy a felhasználónak csak két vagy három karaktert kell beírnia az összes rendelkezésre álló eredmény megkereséséhez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -36,15 +36,13 @@ Másik lehetőségként letöltheti és futtathatja a megoldást ehhez az oktat�
 
 Kezdjük a legegyszerűbb esetben kínál fel alternatívákat a felhasználó: a legördülő listát a javaslatokat.
 
-1. Az index.cshtml fájlban módosítsa a **TextBoxFor** utasítást a következőkre.
+1. Az index.cshtml fájlban `@id` módosítsa a **TextBoxFor** utasítást **azureautosuggest értékre.**
 
     ```cs
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-    A kulcs itt az, hogy beállítottuk a keresőmező azonosítóját **az azureautosuggest-re.**
-
-2. Ezt követően a ** &lt;/div&gt;** billentyűvel a záró /div kapcsolót követően adja meg ezt a parancsfájlt.
+2. Ezt követően a ** &lt;/div&gt;** billentyűvel a záró /div kapcsolót követően adja meg ezt a parancsfájlt. Ez a szkript a nyílt forráskódú jQuery felhasználói felületkönyvtárautomatikus [kiegészítési widgetjét](https://api.jqueryui.com/autocomplete/) használja a javasolt eredmények legördülő listájának bemutatásához. 
 
     ```javascript
     <script>
@@ -59,13 +57,11 @@ Kezdjük a legegyszerűbb esetben kínál fel alternatívákat a felhasználó: 
     </script>
     ```
 
-    Ezt a szkriptet ugyanazon az azonosítón keresztül kapcsoltuk a keresőmezőhöz. Emellett legalább két karakter szükséges a keresés elindításához, és **hívjuk** a javaslat művelet az otthoni vezérlőkét lekérdezési paraméterek: **kiemeli** és **fuzzy**, mind a beállítás hamis ebben az esetben.
+    Az "azureautosuggest" azonosító a fenti parancsfájlt a keresőmezőhöz kapcsolja. A widget forrásbeállítása egy Javaslat metódus, amely a Javaslat API-t két lekérdezési paraméterrel hívja meg: **kiemelések** és **fuzzy**, mindkettő hamis ebben az esetben. A keresés elindításához legalább két karakterre van szükség.
 
-### <a name="add-references-to-jquery-scripts-to-the-view"></a>Hivatkozás hozzáadása jquery parancsfájlok nézethez
+### <a name="add-references-to-jquery-scripts-to-the-view"></a>Hivatkozás hozzáadása jQuery parancsfájlokra a nézethez
 
-Az automatikus kiegészítés funkció hívott a fenti szkript nem valami meg kell írni magunkat, mert elérhető a jquery könyvtárban. 
-
-1. A jquery tár eléréséhez &lt;&gt; módosítsa a nézetfájl fejszakaszát a következő kódra.
+1. A jQuery tár eléréséhez &lt;&gt; módosítsa a nézetfájl fejszakaszát a következő kódra:
 
     ```cs
     <head>
@@ -80,7 +76,7 @@ Az automatikus kiegészítés funkció hívott a fenti szkript nem valami meg ke
     </head>
     ```
 
-2. El kell távolítanunk vagy ki kell fűznünk egy sorért, amely a _Layout.cshtml fájljának jquery-re hivatkozik (a **Nézetek/Megosztott** mappában). Keresse meg a következő sorokat, és fűzzön hozzá megjegyzést az első parancsfájlsorhoz az ábrán látható módon. Ezzel a módosítással elkerülhető a jqueryre való hivatkozások összeütközése.
+2. Mivel egy új jQuery hivatkozást vezetünk be, el kell távolítanunk vagy ki kell megjegyzéselnünk az alapértelmezett jQuery hivatkozást a _Layout.cshtml fájlban (a **Nézetek/Megosztott** mappában). Keresse meg a következő sorokat, és fűzzön hozzá megjegyzést az első parancsfájlsorhoz az ábrán látható módon. Ezzel a módosítással elkerülhető a jQuery-re való hivatkozások összeütközése.
 
     ```html
     <environment include="Development">
@@ -90,7 +86,7 @@ Az automatikus kiegészítés funkció hívott a fenti szkript nem valami meg ke
     </environment>
     ```
 
-    Most már használhatjuk az előre definiált automatikus kiegészítés jquery függvényeket.
+    Most már használhatjuk az előre definiált Automatikus kiegészítés jQuery függvényeket.
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>A Javaslat művelet hozzáadása a vezérlőhöz
 
@@ -114,7 +110,8 @@ Az automatikus kiegészítés funkció hívott a fenti szkript nem valami meg ke
                 parameters.HighlightPostTag = "</b>";
             }
 
-            // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
+            // Only one suggester can be specified per index. It is defined in the index schema.
+            // The name of the suggester is set when the suggester is specified by other API calls.
             // The suggester for the hotel database is called "sg", and simply searches the hotel name.
             DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", parameters);
 
@@ -128,7 +125,7 @@ Az automatikus kiegészítés funkció hívott a fenti szkript nem valami meg ke
 
     A **Legfelső** paraméter azt adja meg, hogy hány eredményt kell visszaadni (ha nincs megadva, az alapértelmezett érték 5). A _javaslatajánló_ az Azure-indexben van megadva, amely az adatok beállításakor történik, és nem egy ügyfélalkalmazás, például ez az oktatóanyag. Ebben az esetben a szuggesztív az úgynevezett "sg", és megkeresi a **HotelName** mezőben - semmi más. 
 
-    Fuzzy megfelelő lehetővé teszi a "közeli hiányzik" kell venni a kimenet. Ha a **kiemelési** paraméter értéke igaz, akkor a félkövér HTML-címkék hozzáadódnak a kimenethez. Ezt a két paramétert a következő szakaszban igazértékre állítjuk.
+    Fuzzy megfelelő lehetővé teszi a "közeli hiányzik", hogy tartalmazza a kimenet, akár egy szerkesztési távolság. Ha a **kiemelési** paraméter értéke igaz, akkor a félkövér HTML-címkék hozzáadódnak a kimenethez. Ezt a két paramétert a következő szakaszban igazértékre állítjuk.
 
 2. Előfordulhat, hogy szintaktikai hibákat észlel. Ha igen, adja hozzá a következő kettőt a fájl tetejére utasítások **használatával.**
 
@@ -151,7 +148,7 @@ Az automatikus kiegészítés funkció hívott a fenti szkript nem valami meg ke
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Kiemelés hozzáadása a javaslatokhoz
 
-Javíthatjuk a javaslatok megjelenését a felhasználó számára egy kicsit, ha a **kiemeli** paramétert igazra állítjuk. Azonban először is hozzá kell adnunk néhány kódot a nézethez, hogy megjelenítsük a félkövér szöveget.
+Javíthatjuk a javaslatok megjelenését a felhasználó számára, ha a **kiemelési** paramétert igazértékre állítjuk. Azonban először is hozzá kell adnunk néhány kódot a nézethez, hogy megjelenítsük a félkövér szöveget.
 
 1. A nézetben (index.cshtml), adja hozzá a következő parancsfájlután az **azureautosuggest** parancsfájl t a fent megadott.
 
@@ -194,11 +191,11 @@ Javíthatjuk a javaslatok megjelenését a felhasználó számára egy kicsit, h
 
 4. A fenti kiemelő parancsfájlban használt logika nem üzembiztos. Ha olyan kifejezést ad meg, amely kétszer jelenik meg ugyanabban a névben, a félkövér eredmények nem egészen azok, amelyeket szeretne. Próbálja meg beírni a "mo" szót.
 
-    Az egyik kérdés a fejlesztő kell válaszolni, amikor egy script működik "elég jól", és mikor kell a hirtelen fordulat foglalkozni. Nem fogjuk figyelembe kiemelve tovább ebben a bemutatóban, de megtalálni egy pontos algoritmust, amit figyelembe kell venni, ha tovább emeljük.
+    Az egyik kérdés a fejlesztő kell válaszolni, amikor egy script működik "elég jól", és mikor kell a hirtelen fordulat foglalkozni. Nem fogjuk figyelembe kiemelve tovább ebben a bemutatóban, de a pontos algoritmus megtalálása olyan dolog, amit figyelembe kell venni, ha a kiemelés nem hatékony az adatok számára. További információ: [Hit kiemelése](search-pagination-page-layout.md#hit-highlighting).
 
-## <a name="add-autocompletion"></a>Automatikus kiegészítés hozzáadása
+## <a name="add-autocomplete"></a>Automatikus kiegészítés hozzáadása
 
-Egy másik változat, amely némileg eltér a javaslatoktól, az automatikus kiegészítés (néha "type-ahead"). Ismét a legegyszerűbb megvalósítással kezdjük, mielőtt a felhasználói élmény javítására térnénk át.
+Egy másik változat, amely némileg eltér a javaslatoktól, az automatikus kiegészítés (más néven "type-ahead"), amely befejezi a lekérdezési kifejezést. Ismét a legegyszerűbb megvalósítással kezdjük, mielőtt javítanánk a felhasználói élményt.
 
 1. Írja be a következő parancsfájlt a nézetbe a korábbi parancsfájlok követésével.
 
@@ -246,7 +243,7 @@ Egy másik változat, amely némileg eltér a javaslatoktól, az automatikus kie
 
     Figyeljük meg, hogy ugyanazt a *szuggesztív* funkciót használjuk, az úgynevezett "sg", az automatikus kiegészítéskeresésben, mint a javaslatokesetében (ezért csak a szállodanevek automatikus kiegészítését próbáljuk elérni).
 
-    Számos **Automatikus kiegészítésmód-beállítás** létezik, és a **OneTermWithContext -t**használjuk. Az [Azure automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) című dokumentumban található a lehetőségek tartományának leírása.
+    Számos **Automatikus kiegészítésmód-beállítás** létezik, és a **OneTermWithContext -t**használjuk. A további beállítások leírását az [Automatikus kiegészítés API-ban](https://docs.microsoft.com/rest/api/searchservice/autocomplete) található.
 
 4. Futtassa az alkalmazást. Figyelje meg, hogy a legördülő listában megjelenő beállítások tartománya egyetlen szó. Próbálja meg beírni a "re" kezdetű szavakat. Figyelje meg, hogy a beállítások száma hogyan csökken, ahogy egyre több betűt ír be.
 
@@ -256,7 +253,7 @@ Egy másik változat, amely némileg eltér a javaslatoktól, az automatikus kie
 
 ## <a name="combine-autocompletion-and-suggestions"></a>Automatikus kiegészítés és javaslatok kombinálása
 
-Az automatikus kiegészítés és a javaslatok kombinálása a legösszetettebb lehetőségünk, és valószínűleg a legjobb felhasználói élményt nyújtja. Azt akarjuk, hogy a begépelt szöveggel összhangban jelenítse meg az Azure Cognitive Search első számú választását a szöveg automatikus kitöltéséhez. Is, szeretnénk egy sor javaslatot, mint egy legördülő lista.
+Az automatikus kiegészítés és a javaslatok kombinálása a legösszetettebb lehetőségünk, és valószínűleg a legjobb felhasználói élményt nyújtja. Azt szeretnénk, hogy a beírt szöveggel összhangban az Azure Cognitive Search első számú választása legyen a szöveg automatikus kitöltéséhez. Is, szeretnénk egy sor javaslatot, mint egy legördülő lista.
 
 Vannak olyan könyvtárak, amelyek ezt a funkciót kínálják - gyakran "inline autocompletion"-nak vagy hasonló névnek nevezik. Azonban fogunk natívan végrehajtani ezt a funkciót, így láthatja, mi folyik itt. Ebben a példában először a vezérlőn kezdjük a munkát.
 

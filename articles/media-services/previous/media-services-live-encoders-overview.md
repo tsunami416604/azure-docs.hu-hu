@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 71a31228602ef161158eaa05c80d50f65de98a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82fa5968d004bd4460f2c05ec944f6e568508675
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133271"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641138"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>A helyszíni kódolók konfigurálása az Azure Media Services használatával többbitrátású adatfolyamok létrehozásakor
 Ez a témakör azokat a helyszíni élő kódolókat sorolja fel, amelyek segítségével rögzítheti az élő eseményeket, és egyetlen átviteli sebességű élő közvetítést küldhet az AMS-csatornáknak (amelyek élő kódolásengedélyezve vannak) további feldolgozáscéljából. A témakör olyan oktatóanyagokra mutató hivatkozásokra is hivatkozik, amelyek bemutatják a felsorolt kódolók konfigurálását.
@@ -32,9 +32,6 @@ A [Haivision KB kódoló](https://www.haivision.com/products/kb-series/) kódol�
 
 ## <a name="telestream-wirecast"></a>Telestream Wirecast
 Arról, hogy miként konfigurálható úgy a [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) kódoló, hogy egyetlen bitráta-átviteli adatfolyamot küldjön egy AMS-csatornára, a [Wirecast konfigurálása című](media-services-configure-wirecast-live-encoder.md)témakörben talál további információt.
-
-## <a name="newtek-tricaster"></a>NewTek TriCaster
-ARról, hogy miként konfigurálható úgy a [Tricaster](https://newtek.com/products/tricaster-40.html) kódoló, hogy egyetlen bitráta-élő közvetítést küldjön egy AMS-csatornára, a [Tricaster konfigurálása](media-services-configure-tricaster-live-encoder.md)című témakörben talál további információt.
 
 ## <a name="elemental-live"></a>Elemental Live
 További információ: [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live).

@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban egy Erőforrás-kezelő sablon haszná
 ms.date: 03/16/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 9f9998c407c39d11615a5997549a363a276b9e10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ae6b2d151baaa904215639276c7fb74766810c6a
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471404"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606603"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Rövid útmutató: Házirend-hozzárendelés létrehozása a nem megfelelő erőforrások azonosítására erőforrás-kezelő sablon használatával
 
@@ -41,13 +41,13 @@ A sablonban definiált erőforrás a következő:
 > [!NOTE]
 > Az Azure Policy szolgáltatás ingyenes. További információt [az Azure-szabályzat áttekintése című témakörben talál.](./overview.md)
 
-1. Válassza ki az alábbi képet az Azure Portalra való bejelentkezéshez, és nyissa meg a sablont:
+1. Az alábbi képre kattintva jelentkezzen be az Azure Portalra, és nyissa meg a sablont:
 
-   [![A házirendsablon üzembe helyezése az Azure-ban](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![A házirendsablon üzembe helyezése az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. Jelölje be vagy írja be a következő értékeket:
 
-   | Név | Érték |
+   | Name (Név) | Érték |
    |------|-------|
    | Előfizetés | Válassza ki az Azure-előfizetését. |
    | Erőforráscsoport | Válassza **az Új létrehozása**lehetőséget, adjon meg egy nevet, majd kattintson az OK **gombra.** A képernyőképen az erőforráscsoport neve _mypolicyquickstart\<dátum\>mmDD rg_. |

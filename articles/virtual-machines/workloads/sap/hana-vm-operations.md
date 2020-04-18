@@ -15,26 +15,26 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07c8f84f2e37abd87953d8e4cb20b37258b25fda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c4f3ec2727d06528eab788a2a24a6190fe26533
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920486"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606144"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra konfigurálásához és az Azure natív virtuális gépeken (VM-eken) üzembe helyezett SAP HANA-rendszerek kezeléséhez. A dokumentum az M128s vm termékváltozathoz az SAP HANA kibővített konfigurációs adatait is tartalmazza. Ez a dokumentum nem helyettesíti a szabványos SAP dokumentációt, amely a következő tartalmat tartalmazza:
 
 - [SAP felügyeleti útmutató](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/330e5550b09d4f0f8b6cceb14a64cd22.html)
 - [SAP telepítési útmutatók](https://service.sap.com/instguides)
-- [SAP-jegyzetek](https://sservice.sap.com/notes)
+- [SAP-jegyzetek](https://service.sap.com/notes)
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az útmutató használatához alapvető ismeretekre van szüksége a következő Azure-összetevőkről:
 
 - [Azure-alapú virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Azure-hálózatok és virtuális hálózatok](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Azure-tárhely](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
 Ha többet szeretne megtudni az SAP NetWeaverről és az Azure egyéb SAP-összetevőiről, tekintse meg az [Sap az Azure-on](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) szakaszt az [Azure dokumentációjában.](https://docs.microsoft.com/azure/)
 
@@ -101,7 +101,7 @@ Az [Azure Virtual Datacenter: A Network Perspective](https://docs.microsoft.com/
 
 
 >[!NOTE]
->A központi virtuális hálózat és a küllővirtuális hálózat között [az Azure virtuális hálózat társviszony-létesítése](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) során zajló forgalom további [költségeket von.](https://azure.microsoft.com/pricing/details/virtual-network/) Ezek alapján a költségek, előfordulhat, hogy meg kell fontolnia, hogy kompromisszumok közötti szigorú hub és a küllős hálózat kialakítása és több [Azure ExpressRoute-átjárók,](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) hogy csatlakozik a "küllők", hogy megkerülje a virtuális hálózatok társviszony-létesítés. Az Azure ExpressRoute-átjárók azonban további [költségeket](https://azure.microsoft.com/pricing/details/vpn-gateway/) is eredményeznek. A hálózati forgalom naplózásához, naplózásához és figyeléséhez használt, harmadik féltől származó szoftverek további költségekkel is szembesülhetnek. Az egyik oldalon a virtuális hálózaton keresztüli társviszony-létesítésen keresztültörténő adatcsere költségeitől és a további Azure ExpressRoute-átjárók és további szoftverlicencek által okozott költségektől függően dönthet úgy, hogy egy virtuális hálózaton belül mikroszegmentálást alkalmaz, ha alhálózatokat használ elkülönítő egységként. a virtuális hálózatok helyett.
+>A központi virtuális hálózat és a küllővirtuális hálózat között [az Azure virtuális hálózat társviszony-létesítése](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) során zajló forgalom további [költségeket von.](https://azure.microsoft.com/pricing/details/virtual-network/) Ezek alapján a költségek, előfordulhat, hogy meg kell fontolnia, hogy kompromisszumok közötti szigorú hub és a küllős hálózat kialakítása és több [Azure ExpressRoute-átjárók,](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) hogy csatlakozik a "küllők", hogy megkerülje a virtuális hálózatok társviszony-létesítés. Az Azure ExpressRoute-átjárók azonban további [költségeket](https://azure.microsoft.com/pricing/details/vpn-gateway/) is eredményeznek. A hálózati forgalom naplózásához, naplózásához és figyeléséhez használt, harmadik féltől származó szoftverek további költségekkel is szembesülhetnek. Az egyik oldalon a virtuális hálózaton keresztüli társviszony-létesítésen keresztül történő adatcsere költségeitől és a további Azure ExpressRoute-átjárók és további szoftverlicencek által létrehozott költségektől függően dönthet úgy, hogy egy virtuális hálózaton belül mikroszegmentálást alkalmaz alhálózatokként a virtuális hálózatok helyett.
 
 
 Az IP-címek hozzárendelésének különböző módszereit az [Azure-beli IP-címtípusok és foglalási módszerek című témakörben találja.](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) 

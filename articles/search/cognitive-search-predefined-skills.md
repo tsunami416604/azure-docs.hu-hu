@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9e1f62dcdb122726fc1c08b7bea4e4c214ce7906
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1cf1750924ab8ea8afff6ac788683565433866b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933365"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618010"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Beépített kognitív képességek a szöveg- és képfeldolgozáshoz indexelés közben (Azure Cognitive Search)
 
@@ -23,6 +23,8 @@ Ebben a cikkben megismerheti az Azure Cognitive Search kognitív képességeinek
 > A hogy a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti a hatókört, [egy számlázható Cognitive Services-erőforrást kell csatolnia.](cognitive-search-attach-cognitive-services.md) A díjak akkor keletkeznek, amikor API-kat hívnak a Cognitive Servicesben, és az Azure Cognitive Search dokumentumfeltörési szakaszának részeként képkinyerést végeznek. A dokumentumokból történő szövegkinyerésért nem kell díjat fizetni.
 >
 > A beépített képességek végrehajtása a meglévő [Cognitive Services díja int.](https://azure.microsoft.com/pricing/details/cognitive-services/) A képkinyerésdíj szabása az [Azure Cognitive Search díjszabási lapján található.](https://go.microsoft.com/fwlink/?linkid=2042400)
+>
+> A [növekményes bővítési (előzetes verzió)](cognitive-search-incremental-indexing-conceptual.md) funkció lehetővé teszi, hogy egy cache, amely lehetővé teszi az indexelő, hogy hatékonyabb a futó csak a kognitív képességek, amelyek szükségesek, ha módosítja a skillset a jövőben, időt és pénzt takarít meg.
 
 
 ## <a name="built-in-skills"></a>Beépített képességek

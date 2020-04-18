@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: 8e73ef75b3313656b45d29270d9996c3ad17c630
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8156c563573183e51e06650914117f8787922e93
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538069"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603681"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatikus példányjavítások az Azure virtuálisgép-méretezési készleteihez
 
@@ -90,6 +90,8 @@ Ha a [leszakító értesítési](./virtual-machine-scale-sets-terminate-notifica
 ## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>Automatikus javítási házirend engedélyezése új méretezési csoport létrehozásakor
 
 Az automatikus javítási házirend engedélyezéséhez, miközben új méretezési csoport létrehozása, győződjön meg arról, hogy a szolgáltatás engedélyezéséhez [való összes követelmény](#requirements-for-using-automatic-instance-repairs) teljesül. Az alkalmazásvégpontot megfelelően kell konfigurálni a méretezési csoport példányaihoz, hogy elkerülje a nem kívánt javítások indítását, amíg a végpont konfigurálása van. Az újonnan létrehozott léptékkészletek esetén minden példány javítása csak a türelmi időszak időtartamára való várakozás után történik. Az automatikus példányjavítás engedélyezéséhez egy méretezési csoportban használja az *automaticRepairsPolicy* objektumot a virtuálisgép méretezési csoport modelljében.
+
+Ezzel a [gyorsindítási sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe) is üzembe helyezhet egy virtuálisgép-méretezési készletet terheléselosztó állapotmintával és 30 perces türelmi idővel engedélyezett automatikus példányjavításokkal.
 
 ### <a name="azure-portal"></a>Azure Portal
  

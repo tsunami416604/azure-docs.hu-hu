@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: aschhab
-ms.openlocfilehash: b864f433c67d47b4b92a1d4b98693ebd42806dd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 267965ee41280a677050d1676285dda8734bc044
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259460"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606058"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény javításához a Service Bus-üzenetkezelés használatával
 
@@ -135,7 +135,7 @@ receiver.RegisterMessageHandler(
     new MessageHandlerOptions(e => LogErrorAsync(e.Exception))
     {
         AutoComplete = false,
-        MaxConcurrentCalls = 1
+        MaxConcurrentCalls = 20
     });
 ```
 
@@ -159,7 +159,7 @@ receiver.OnMessageAsync(
     new OnMessageOptions
     {
         AutoComplete = false,
-        MaxConcurrentCalls = 1
+        MaxConcurrentCalls = 20
     });
 ```
 
@@ -187,7 +187,7 @@ A .NET Standard SDK kötegelési funkciója még nem teszi elérhetővé a tulaj
 
 Alapértelmezés szerint az ügyfél 20 ms kötegelt időközt használ. A kötegelt időköz módosításával a [BatchFlushInterval][BatchFlushInterval] tulajdonságot az üzenetkezelő gyár létrehozása előtt módosíthatja. Ez a beállítás a gyár által létrehozott összes ügyfelet érinti.
 
-A kötegelés letiltásához állítsa a [BatchFlushInterval][BatchFlushInterval] tulajdonságot **TimeSpan.Zero**értékre. Példa:
+A kötegelés letiltásához állítsa a [BatchFlushInterval][BatchFlushInterval] tulajdonságot **TimeSpan.Zero**értékre. Például:
 
 ```csharp
 var settings = new MessagingFactorySettings
