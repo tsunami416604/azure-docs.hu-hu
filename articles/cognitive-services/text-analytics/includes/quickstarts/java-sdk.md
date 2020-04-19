@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: a0e6b5b7d5cedc821ee34bdd219ae07bb9d43199
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 31afb7bc00250887841adccc8c3cc4dc69462d55
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79481908"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81642885"
 ---
 <a name="HOLTop"></a>
 
-[Referenciadokumentáció](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [Csomagminták](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) | [Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referenciadokumentáció](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [Csomagminták](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.4) | [Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,14 +32,14 @@ ms.locfileid: "79481908"
 
 ### <a name="add-the-client-library"></a>Az ügyféltár hozzáadása
 
-Hozzon létre egy Maven projektet az előnyben részesített IDE vagy fejlesztői környezetben. Ezután adja hozzá a következő függőséget a projekt *pom.xml* fájljához. Más [buildeszközök](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) implementációs szintaxisát online is megtalálhatja.
+Hozzon létre egy Maven projektet az előnyben részesített IDE vagy fejlesztői környezetben. Ezután adja hozzá a következő függőséget a projekt *pom.xml* fájljához. Más [buildeszközök](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.4) implementációs szintaxisát online is megtalálhatja.
 
 ```xml
 <dependencies>
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0-beta.3</version>
+        <version>1.0.0-beta.4</version>
     </dependency>
 </dependencies>
 ```
@@ -50,6 +50,7 @@ Hozzon létre egy Maven projektet az előnyben részesített IDE vagy fejlesztő
 Hozzon létre `TextAnalyticsSamples.java`egy Java nevű fájlt. Nyissa meg a fájlt, és adja hozzá a következő `import` állításokat:
 
 ```java
+import com.azure.core.credential.AzureKeyCredential;
 import com.azure.ai.textanalytics.models.*;
 import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
 import com.azure.ai.textanalytics.TextAnalyticsClient;
@@ -76,7 +77,6 @@ public static void main(String[] args) {
     sentimentAnalysisExample(client);
     detectLanguageExample(client);
     recognizeEntitiesExample(client);
-    recognizePIIEntitiesExample(client);
     recognizeLinkedEntitiesExample(client);
     extractKeyPhrasesExample(client);
 }
@@ -93,7 +93,7 @@ A Text Analytics-ügyfél egy `TextAnalyticsClient` olyan objektum, amely hitele
 * [Nyelvfelismerés](#language-detection)
 * [Elnevezett entitás felismerése](#named-entity-recognition-ner) 
 * [Entitáscsatolás](#entity-linking)
-* [Kulcskifejezés kinyerése](#key-phrase-extraction)
+* [Kulcskifejezések kinyerése](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -102,7 +102,7 @@ Hozzon létre egy módszert `TextAnalyticsClient` az objektum példányosítás�
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
     return new TextAnalyticsClientBuilder()
-        .apiKey(new TextAnalyticsApiKeyCredential(key))
+        .apiKey(new AzureKeyCredential(key))
         .endpoint(endpoint)
         .buildClient();
 }
@@ -204,34 +204,6 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 ```console
 Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.92.
 Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
-```
-
-## <a name="using-ner-to-recognize-personal-information"></a>A NER használata a személyes adatok felismeréséhez
-
-Hozzon létre `recognizePIIEntitiesExample()` egy új függvényt, amely a korábban létrehozott ügyfelet veszi, és meghívja annak funkcióját. `recognizePiiEntities()` A `RecognizePiiEntitiesResult` visszaadott objektum tartalmaz `NamedEntity` egy listát, `errorMessage` ha sikeres, vagy ha nem. 
-
-```java
-static void recognizePIIEntitiesExample(TextAnalyticsClient client)
-{
-    // The text that need be analyzed.
-    String text = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
-
-    for (PiiEntity entity : client.recognizePiiEntities(text)) {
-        System.out.printf(
-            "Recognized personal identifiable information entity: %s, entity category: %s, %nentity sub-category: %s, score: %s.%n",
-            entity.getText(),
-            entity.getCategory(),
-            entity.getSubCategory(),
-            entity.getConfidenceScore());
-    }
-}
-```
-
-### <a name="output"></a>Kimenet
-
-```console
-Recognized personal identifiable information entity: 123-12-1234, entity category: U.S. Social Security Number (SSN), 
-entity sub-category: null, score: 0.85.
 ```
 
 ## <a name="entity-linking"></a>Entitáscsatolás

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 0cfe651a91cc16e7d4b58af67dac29fe5106a48c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1414d86577e5aa17cb42762403b3767948c1e30c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986768"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81642902"
 ---
 <a name="HOLTop"></a>
 
@@ -61,7 +61,7 @@ npm init
 Telepítse `@azure/ai-text-analytics` az NPM-csomagokat:
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.3
+npm install --save @azure/ai-text-analytics@1.0.0-preview.4
 ```
 
 > [!TIP]
@@ -88,7 +88,7 @@ Hozzon létre `index.js` egy nevű fájlt, és adja hozzá a következőket:
 ```javascript
 "use strict";
 
-const { TextAnalyticsClient, TextAnalyticsApiKeyCredential } = require("@azure/ai-text-analytics");
+const { TextAnalyticsClient, AzureKeyCredential } = require("@azure/ai-text-analytics");
 ```
 
 #### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
@@ -124,7 +124,7 @@ A válaszobjektum egy lista, amely az egyes dokumentumok elemzési adatait tarta
 * [Nyelvfelismerés](#language-detection)
 * [Elnevezett entitás felismerése](#named-entity-recognition-ner)
 * [Entitáscsatolás](#entity-linking)
-* [Kulcskifejezés kinyerése](#key-phrase-extraction)
+* [Kulcskifejezések kinyerése](#key-phrase-extraction)
 
 ## <a name="client-authentication"></a>Ügyfél-hitelesítés
 
@@ -133,7 +133,7 @@ A válaszobjektum egy lista, amely az egyes dokumentumok elemzési adatait tarta
 Hozzon `TextAnalyticsClient` létre egy új objektumot a kulccsal és a végpontparaméterekkel.
 
 ```javascript
-const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new TextAnalyticsApiKeyCredential(key));
+const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCredential(key));
 ```
 
 #### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
@@ -266,7 +266,6 @@ Document ID: 3 , Language: Chinese_Simplified
 
 > [!NOTE]
 > Verzióban `3.0-preview`:
-> * A NER külön módszereket tartalmaz a személyes adatok felderítésére. 
 > * Az entitásösszekapcsolás külön kérés, mint a NER.
 
 Hozzon létre egy karakterlánctömböt, amely az elemezni kívánt dokumentumot tartalmazza. Hívja fel az `recognizeEntities()` ügyfél metódusát, és kapja meg az `RecognizeEntitiesResult` objektumot. Végighaladva az eredmények listáján, és nyomtassa ki az entitás nevét, típusát, altípusát, eltolását, hosszát és pontszámát.
@@ -318,40 +317,6 @@ Document ID: 1
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
         Score: 0.31
-```
-
-## <a name="using-ner-to-detect-personal-information"></a>A NER használata a személyes adatok felderítésére
-
-Hozzon létre egy karakterlánctömböt, amely az elemezni kívánt dokumentumot tartalmazza. Hívja fel az `recognizePiiEntities()` ügyfél metódusát, és kapja meg az `EntitiesBatchResult` objektumot. Végighaladva az eredmények listáján, és nyomtassa ki az entitás nevét, típusát, altípusát, eltolását, hosszát és pontszámát.
-
-
-```javascript
-async function entityPiiRecognition(client){
-
-    const entityPiiInput = [
-        "Insurance policy for SSN on file 123-12-1234 is here by approved."
-    ];
-    const entityPiiResults = await client.recognizePiiEntities(entityPiiInput);
-
-    entityPiiResults.forEach(document => {
-        console.log(`Document ID: ${document.id}`);
-        document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tScore: ${entity.score}`);
-        });
-    });
-}
-entityPiiRecognition(textAnalyticsClient);
-```
-
-Futtassa `node index.js` a kódot a konzol ablakában.
-
-### <a name="output"></a>Kimenet
-
-```console
-Document ID: 0
-        Name: 123-12-1234       Category: U.S. Social Security Number (SSN)     Subcategory: N/A
-        Score: 0.85
 ```
 
 ## <a name="entity-linking"></a>Entitáskapcsolás
