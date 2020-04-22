@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 981e13e772ee21e0e4a680e6d07b4ad4892a7cee
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: bfa16f59155e420209ab6370056a7c612b5327e4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417071"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759040"
 ---
 # <a name="security-control-secure-configuration"></a>Biztonsági ellenőrzés: Biztonságos konfiguráció
 
@@ -30,7 +30,7 @@ Emellett az Azure Resource Manager képes a sablon exportálására javascript-o
 
 Az Azure Security Center ajánlásait is használhatja az Azure-erőforrások biztonságos konfigurációs alapkonfigurációjaként.
 
-- [Az elérhető Azure-szabályzataliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kényszerítéséhez](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 

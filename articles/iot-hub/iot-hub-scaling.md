@@ -8,12 +8,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: ecc1ae5138fe5a1e42fed9be2e31b5afa8b6d5b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 4b18878cfc5c75bf27fd46cbceaa06e0b6053ddd
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79497507"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759624"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Egy adott megoldáshoz leginkább megfelelő IoT Hub-szint kiválasztása
 
@@ -42,7 +45,7 @@ IoT Hubonként csak egy [típusú kiadás](https://azure.microsoft.com/pricing/d
 | [Üzenettovábbítás](iot-hub-devguide-messages-read-custom.md), [üzenetbővítés](iot-hub-message-enrichments-overview.md)és [eseményrács-integráció](iot-hub-event-grid.md) | Igen | Igen |
 | [HTTP, AMQP és MQTT protokollok](iot-hub-devguide-protocols.md) | Igen | Igen |
 | [Eszközkiépítési szolgáltatás](../iot-dps/about-iot-dps.md) | Igen | Igen |
-| [Ellenőrzés és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
+| [Monitorozás és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
 | [Felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Igen |
 | [Eszköz ikrek](iot-hub-devguide-device-twins.md), [Modul ikrek](iot-hub-devguide-module-twins.md), és az [eszköz kezelése](iot-hub-device-management-overview.md) |   | Igen |
 | [Eszközadatfolyamok (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Igen |

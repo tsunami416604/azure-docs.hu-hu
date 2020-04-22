@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ac6bc8f78bd3d526e68dba3e81825a28a9ac47f7
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 184ffd39281ea27d8596bc37a9f89fd22acfb1ba
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294131"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732182"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Rövid útmutató: Üzenetek küldéséhez és fogadásához használja az Azure Service Bus-várólistákat a Java-val
 
@@ -43,7 +43,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre Java-alkalmazásokat 
 ## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása a Service Bus használatára
 Győződjön meg arról, hogy telepítette az [Azure SDK Java-hoz][Azure SDK for Java] a minta létrehozása előtt. 
 
-Ha az Eclipse,telepítheti az [Azure Toolkit for Eclipse,][Azure Toolkit for Eclipse] amely tartalmazza az Azure SDK Java.If you are using Eclipse, you can install the Azure Toolkit for Eclipse that includes the Azure SDK for Java. Ezután hozzáadhatja a **Microsoft Azure Java-kódtárakat** a projekthez. Ha IntelliJ-t használ, [olvassa el az Azure Toolkit for IntelliJ című témakört.](/azure/java/intellij/azure-toolkit-for-intellij-installation) 
+Ha az Eclipse,telepítheti az [Azure Toolkit for Eclipse,][Azure Toolkit for Eclipse] amely tartalmazza az Azure SDK Java.If you are using Eclipse, you can install the Azure Toolkit for Eclipse that includes the Azure SDK for Java. Ezután hozzáadhatja a **Microsoft Azure Java-kódtárakat** a projekthez. Ha IntelliJ-t használ, [olvassa el az Azure Toolkit for IntelliJ című témakört.](/azure/developer/java/toolkit-for-intellij/installation) 
 
 ![A Java-hoz készült Microsoft Azure-kódtárak hozzáadása az Eclipse projekthez](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
@@ -184,7 +184,7 @@ A következő példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzen
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
 A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, akkor meghívhatja az **ügyfélobjektum abandon()** metódusát a **getLockToken()** keresztül kapott zárolási jogkivonattal. Ennek hatására a Service Bus feloldja az üzenet zárolását az üzenetsoron belül, és lehetővé teszi az ugyanazon vagy egy másik fogyasztó alkalmazás általi ismételt fogadását.
 
-Időtúltöltés is van társítva a várólistán belül zárolt üzenethez, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időtúldátum lejárta előtt (például ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenetet, és lehetővé teszi újra fogadható.
+Van is egy időtúltöltés társított egy üzenetet zárva a várólistán belül, és ha az alkalmazás nem dolgozza fel az üzenetet, mielőtt a zárolási időtúltöltés lejár (például, ha az alkalmazás összeomlik), majd a Service Bus automatikusan feloldja az üzenetet, és elérhetővé teszi, hogy újra kell fogadni.
 
 Abban az esetben, ha az alkalmazás összeomlik az üzenet feldolgozása után, de a **complete()** kérelem kiadása előtt, majd az üzenet újrakézbesítése az alkalmazás, amikor újraindul. Ezt gyakran *nevezik legalább egyszer feldolgozás*; ez azt illeti, minden üzenet feldolgozása legalább egyszer, de bizonyos helyzetekben ugyanazt az üzenetet lehet kézbesíteni. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran érhető el a **getMessageId** módszer az üzenet, amely állandó marad a kézbesítési kísérletek során.
 
@@ -196,7 +196,7 @@ Most, hogy megtanulta a Service Bus-várólisták alapjait, további informáci�
 
 További információ: [Java fejlesztői központ](https://azure.microsoft.com/develop/java/).
 
-[Azure SDK for Java]: /azure/java/java-sdk-azure-get-started
+[Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

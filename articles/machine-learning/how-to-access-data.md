@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 4a2102f442fc176762b7d5d69f7b367a94633ef5
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383445"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758790"
 ---
 # <a name="connect-to-azure-storage-services"></a>Csatlakozás az Azure-tárolási szolgáltatásokhoz
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,7 +99,7 @@ Válassza **a storage fiókok** a bal oldali ablaktáblában, és válassza ki a
 * Az egyszerű szolgáltatáscikkek, például a bérlői azonosító és az ügyfélazonosító, nyissa meg az **alkalmazásregisztrációkat,** és válassza ki, hogy melyik alkalmazást szeretné használni. A megfelelő áttekintés oldal tartalmazza ezeket **az** elemeket.
 
 > [!IMPORTANT]
-> Ha a tárfiók egy virtuális hálózatban van, csak a Blob, a Fájlmegosztás, az ADLS Gen 1 és az ADLS Gen 2 adattárak létrehozása támogatott **az SDK-n keresztül.** Ha hozzáférést szeretne adni a munkaterületnek a `grant_workspace_access` `True`tárfiókhoz, állítsa a paramétert a beállításra.
+> Ha a tárfiók egy virtuális hálózatban van, csak **az sdk-n keresztüli** adattárak létrehozása támogatott.
 
 Az alábbi példák bemutatják, hogyan regisztrálhat egy Azure blob-tárolót, egy Azure-fájlmegosztást és az Azure Data Lake Storage Generation 2 adattárként. Egyéb tárolási szolgáltatások esetében olvassa el [a `register_azure_*` vonatkozó módszerek referenciadokumentációját.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods)
 
@@ -121,6 +121,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
                                                          account_name=account_name,
                                                          account_key=account_key)
 ```
+Ha a blobtároló a virtuális `skip_validation=True` [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)hálózatban van, állítsa be a használatával.
 
 #### <a name="file-share"></a>Fájlmegosztás
 
@@ -140,6 +141,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      account_name=account_name,
                                                      account_key=account_key)
 ```
+Ha a fájlmegosztás a virtuális `skip_validation=True` [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)hálózatban van, állítsa be a segítségével. 
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake storage 2.
 

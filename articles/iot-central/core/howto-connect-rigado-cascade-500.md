@@ -10,15 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: d52366684d772f91b53a1ab385b51ae4f11f0a5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158356"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758249"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Rigado Cascade 500 átjáróeszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
+*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
 
 Ez a cikk bemutatja, hogyan csatlakoztathatja a Rigado Cascade 500 átjáróeszközt a Microsoft Azure IoT Central alkalmazáshoz, megoldáskészítőként. 
 
@@ -70,4 +71,7 @@ Most már készen áll a C500-as eszköz használatára az IoT Central alkalmaz�
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta, hogyan csatlakoztathat egy Rigado Cascade 500-at az Azure IoT Central alkalmazáshoz, a javasolt következő lépés az, hogy megtanulják, hogyan [hozhat létre egy üzleten belüli elemzési alkalmazást](../retail/tutorial-in-store-analytics-create-app-pnp.md) egy végponttól végpontig tartó megoldás létrehozásához. 
+Ha Ön eszközfejlesztő, néhány javasolt következő lépés a következő:
+
+- Az [Azure IoT Central eszközkapcsolatának elolvasása](./concepts-get-connected.md)
+- Az [azure CLI használatával az eszközkapcsolatok figyelése](./howto-monitor-devices-azure-cli.md)

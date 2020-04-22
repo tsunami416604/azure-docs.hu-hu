@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 0ed32a4c1272c23c9500b35e05c383eac6dea185
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998946"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758143"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
 
@@ -59,7 +59,11 @@ Hozzon létre egy új alkalmazást az iparágszempontjából releváns IoT Centr
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. A következő javasolt lépés:
+Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. Az alábbiakban az IoT Central megismerésének folytatásához javasolt következő lépést javasoljuk:
 
 > [!div class="nextstepaction"]
 > [Szimulált eszköz hozzáadása az IoT Central alkalmazáshoz](./quick-create-simulated-device.md)
+
+Ha Ön eszközfejlesztő, és szeretne belemerülni néhány kódba, a javasolt következő lépés a következő:
+> [!div class="nextstepaction"]
+> [Ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazáshoz](./tutorial-connect-device-nodejs.md)

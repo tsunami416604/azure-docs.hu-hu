@@ -3,12 +3,12 @@ title: Vendégkonfigurációs házirendek létrehozása a Windows rendszerhez
 description: Ismerje meg, hogyan hozhat létre egy Azure Policy Vendég konfigurációs szabályzatot a Windows hoz létre.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b06aa0a70bfa17d67da9c6af447138f8bb9e712
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313983"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757413"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs házirendek létrehozása a Windows rendszerhez
 
@@ -25,6 +25,11 @@ A következő műveletek segítségével hozzon létre saját konfigurációt eg
 
 > [!IMPORTANT]
 > A Vendégkonfigurációval rendelkező egyéni házirendek előzetes verziójú funkciók.
+>
+> A vendégkonfiguráció bővítmény az Azure virtuális gépeken végzett naplózáshoz szükséges.
+> A bővítmény nagy méretekben történő üzembe helyezéséhez rendelje hozzá a következő házirend-definíciókat:
+>   - Előfeltételek telepítése a vendégkonfigurációs házirend windowsos virtuális gépeken való engedélyezéséhez.
+>   - A vendégkonfigurációs házirend linuxos virtuális gépeken való engedélyezéséhez telepítse az előfeltételeket.
 
 ## <a name="install-the-powershell-module"></a>A PowerShell-modul telepítése
 
@@ -176,8 +181,10 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker -out ./Config
+AuditBitLocker ./Config
 ```
+
+Mentse ezt a `config.ps1` nevet tartalmazó fájlt a projekt mappába. Futtassa a PowerShell `./config.ps1` ben a terminálon végrehajtva. A program új mof fájlt hoz létre.
 
 A `Node AuditBitlocker` parancs technikailag nem kötelező, de az `AuditBitlocker.mof` alapértelmezett helyett `localhost.mof`elnevezett fájlt hoz létre. Miután a .mof fájl neve követi a konfiguráció megkönnyíti a rendszerezéssok fájlt, ha működik a skála.
 

@@ -3,12 +3,12 @@ title: Vendégkonfigurációs házirendek létrehozása Linuxhoz
 description: Ismerje meg, hogyan hozhat létre egy Azure Policy Vendég konfigurációs szabályzat linuxos.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 65e0082f87f05104e9a57ff0342cd3d2950b63e8
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 24442a89d55e34f9ce9697c2f6a32cfc740bcd85
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617941"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758963"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Vendégkonfigurációs házirendek létrehozása Linuxhoz
 
@@ -24,6 +24,11 @@ A következő műveletek segítségével hozzon létre saját konfigurációt eg
 
 > [!IMPORTANT]
 > A Vendégkonfigurációval rendelkező egyéni házirendek előzetes verziójú funkciók.
+>
+> A vendégkonfiguráció bővítmény az Azure virtuális gépeken végzett naplózáshoz szükséges.
+> A bővítmény nagy méretekben történő üzembe helyezéséhez rendelje hozzá a következő házirend-definíciókat:
+>   - Előfeltételek telepítése a vendégkonfigurációs házirend windowsos virtuális gépeken való engedélyezéséhez.
+>   - A vendégkonfigurációs házirend linuxos virtuális gépeken való engedélyezéséhez telepítse az előfeltételeket.
 
 ## <a name="install-the-powershell-module"></a>A PowerShell-modul telepítése
 
@@ -101,7 +106,7 @@ end
 
 Mentse a nevet `linux-path.rb` tartalmazó fájlt `controls` egy `linux-path` új, a könyvtárban elnevezett mappába.
 
-Végül hozzon létre egy konfigurációt, importálja `ChefInSpecResource` a **GuestConfiguration** erőforrásmodult, és az erőforrás segítségével állítsa be az InSpec-profil nevét.
+Végül hozzon létre egy konfigurációt, importálja a **PSDesiredStateConfiguration** erőforrásmodult, és fordítsa le a konfigurációt.
 
 ```powershell
 # Define the configuration and import GuestConfiguration
@@ -119,10 +124,15 @@ Configuration AuditFilePathExists
 }
 
 # Compile the configuration to create the MOF files
+import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
+Mentse ezt a `config.ps1` nevet tartalmazó fájlt a projekt mappába. Futtassa a PowerShell `./config.ps1` ben a terminálon végrehajtva. A program új mof fájlt hoz létre.
+
 A `Node AuditFilePathExists` parancs technikailag nem kötelező, de az `AuditFilePathExists.mof` alapértelmezett helyett `localhost.mof`elnevezett fájlt hoz létre. Miután a .mof fájl neve követi a konfiguráció megkönnyíti a rendszerezéssok fájlt, ha működik a skála.
+
+
 
 Most már rendelkeznie kell egy projektstruktúrával az alábbiak szerint:
 
@@ -150,8 +160,8 @@ A következő parancs futtatásával hozzon létre egy csomagot az előző lép�
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditFilePathExists' `
-  -Configuration './Config/AuditFilePathExists.mof'
-  -ChefProfilePath './'
+  -Configuration './Config/AuditFilePathExists.mof' `
+  -ChefInSpecProfilePath './'
 ```
 
 A konfigurációs csomag létrehozása után, de az Azure-ban való közzététele előtt tesztelheti a csomagot a munkaállomásról vagy ci/CD-környezetből. A GuestConfiguration parancsmag `Test-GuestConfigurationPackage` ugyanazt az ügynököt tartalmazza a fejlesztői környezetben, mint az Azure-gépeken. Ezzel a megoldással helyileg végezhet integrációs tesztelést a számlázott felhőalapú környezetekben való kiadás előtt.
@@ -168,7 +178,7 @@ Futtassa a következő parancsot az előző lépés által létrehozott csomag t
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage `
-  -Path ./AuditFilePathExists.zip
+  -Path ./AuditFilePathExists/AuditFilePathExists.zip
 ```
 
 A parancsmag a PowerShell-folyamat bemenetét is támogatja. A parancsmag `New-GuestConfigurationPackage` kimenetét a `Test-GuestConfigurationPackage` parancsmaghoz kell vezetni.

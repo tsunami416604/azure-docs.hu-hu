@@ -2,17 +2,17 @@
 title: Az Azure felügyelt lemezeinek kiszolgálóoldali titkosítása – PowerShell
 description: Az Azure Storage védi az adatokat az inaktív titkosítással, mielőtt a Storage-fürtök. A felügyelt lemezek titkosításához a Microsoft által felügyelt kulcsokra támaszkodhat, vagy az ügyfél által felügyelt kulcsok segítségével kezelheti a titkosítást a saját kulcsaival.
 author: roygara
-ms.date: 04/02/2020
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 85fc6412a12963bb01782becf639f7acfc31fbe5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3f6039382b970ca3b0d77042c60cb720f96466d2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452078"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759200"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure által kezelt lemezek kiszolgálóoldali titkosítása
 
@@ -72,7 +72,7 @@ Egyelőre az ügyfél által felügyelt kulcsok a következő korlátozásokkal 
 
 - Ha ez a szolgáltatás engedélyezve van a lemezen, nem lehet letiltani.
     Ha meg kell kerülnie ezt, az összes adatot át kell [másolnia](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) egy teljesen más felügyelt lemezre, amely nem ügyfél által felügyelt kulcsokat használ.
-- Csak a 2080 méretű ["puha" és "kemény" RSA-kulcsok](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) támogatottak, más billentyűk és méretek nem támogatottak.
+- Csak a 2080 méretű ["puha" és "kemény" RSA-kulcsok](../../key-vault/keys/about-keys.md) támogatottak, más billentyűk és méretek nem támogatottak.
 - A kiszolgálóoldali titkosítással és ügyfél által kezelt kulcsokkal titkosított egyéni lemezképekből létrehozott lemezeket ugyanazzal az ügyfél által felügyelt kulccsal kell titkosítani, és ugyanabban az előfizetésben kell lenniük.
 - A kiszolgálóoldali titkosítással és ügyféláltal kezelt kulcsokkal titkosított lemezekről létrehozott pillanatképeket ugyanazzal az ügyfél által kezelt kulccsal kell titkosítani.
 - A kiszolgálóoldali titkosítással és az ügyfél által kezelt kulcsokkal titkosított egyéni lemezképek nem használhatók a megosztott képtárban.

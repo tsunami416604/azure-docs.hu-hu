@@ -1,25 +1,19 @@
 ---
-title: Operációs rendszerlemez felcserélése Azure-beli virtuális géphez a CLI' használatával
+title: Csere az operációs rendszer lemezei között a CLI ' használatával
 description: Módosítsa az Azure virtuális gép által használt operációsrendszer-lemezt a CLI használatával.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: disks
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: bfbe47fb68ffe7cee1ee2f9f7b94b418d8da2a1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8c879ae56eb22d9817841667d33e37109a4f63d
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74035331"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759406"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Az Azure-gép által használt operációs rendszer lemezének módosítása a CLI használatával
 

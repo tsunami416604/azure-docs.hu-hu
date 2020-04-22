@@ -8,14 +8,19 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8178e585ecb7b1cdfd5e530f3d3406b7397f0968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f37b070c74abd8511fc597f9b159312d91281083
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476049"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759112"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozzon az Azure IoT Centralhoz
+
+*Ez a cikk az operátorokra és az eszközfejlesztőkre vonatkozik.*
 
 Ez a cikk ismerteti az eszközöket egy Azure IoT Central alkalmazáshoz való csatlakoztatásának lehetőségei.
 
@@ -265,7 +270,8 @@ Az eszközök és az Azure IoT Central között kicserélt összes adat titkosí
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy az Azure IoT Centralban már értesült az eszközkapcsolatról, az alábbi lépéseket ismertetem:
+Ha Ön eszközfejlesztő, néhány javasolt következő lépés a következő:
 
-- [Fejlesztői kit-eszköz előkészítése és csatlakoztatása](howto-connect-devkit.md)
-- [C SDK: Eszközügyfél kiépítése SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- Az [azure CLI használatával az eszközkapcsolatok figyelése](./howto-monitor-devices-azure-cli.md)
+- Ismerje meg, hogyan [definiálhat egy új IoT-eszköztípust az Azure IoT Central alkalmazásban](./howto-set-up-template.md)
+- Olvasson az [Azure IoT Edge-eszközökről és az Azure IoT Centralról](./concepts-iot-edge.md)

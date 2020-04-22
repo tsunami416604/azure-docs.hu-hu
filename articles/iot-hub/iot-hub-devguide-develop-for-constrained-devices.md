@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
-ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 9010ff582f05e81e17e280e20f180ceccf0e746f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954695"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733205"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Fejlesztés korlátozott eszközökhöz az Azure IoT C SDK használatával
 
@@ -82,5 +85,5 @@ Az _LL-index_ nélküli API-k egy másik készletét a kényelmi rétegnek nevez
 ## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az Azure IoT C SDK architektúráról:
--   [Azure IoT C SDK forráskód](https://github.com/Azure/azure-iot-sdk-c/)
--   [Az Azure IoT-eszköz SDK C-bemutatkozása](iot-hub-device-sdk-c-intro.md)
+-    [Azure IoT C SDK forráskód](https://github.com/Azure/azure-iot-sdk-c/)
+-    [Az Azure IoT-eszköz SDK C-bemutatkozása](iot-hub-device-sdk-c-intro.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1c7e18214ec175b8b21d25643098631a044da19c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549030"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758317"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Azure-biztonsági alapkonfiguráció eseményközpontokhoz
 
@@ -335,7 +335,7 @@ Az Azure-szabályzat használata:https://docs.microsoft.com/azure/governance/pol
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Egyszeri bejelentkezés (SSO) használata az Azure Active Directoryval
 
-**Útmutató: A**Microsoft Azure integrált hozzáférés-vezérlési felügyeletet biztosít az Azure Active Directory (AD) szolgáltatáson alapuló erőforrások és alkalmazások számára. Az Azure AD azure-beli Event Hubs használatával való használatának egyik fő előnye, hogy már nem kell tárolnia a hitelesítő adatait a kódban. Ehelyett kérhet egy OAuth 2.0 hozzáférési jogkivonatot a Microsoft Identity platformról. A jogkivonat ot kérő https://eventhubs.azure.net/erőforrás neve a. Az Azure AD hitelesíti az alkalmazást futtató rendszerbiztonsági tag (egy felhasználó, csoport vagy egyszerű szolgáltatás). Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás ezután használhatja a hozzáférési jogkivonatot az Azure Event Hubs-erőforrások kérésének engedélyezéséhez.
+**Útmutató: A**Microsoft Azure integrált hozzáférés-vezérlési felügyeletet biztosít az Azure Active Directory (AD) szolgáltatáson alapuló erőforrások és alkalmazások számára. Az Azure AD azure-beli Event Hubs használatával való használatának egyik fő előnye, hogy már nem kell tárolnia a hitelesítő adatait a kódban. Ehelyett kérhet egy OAuth 2.0 hozzáférési jogkivonatot a Microsoft Identity platformról. A jogkivonat igényléséhez szükséges\/erőforrás neve https: /eventhubs.azure.net/. Az Azure AD hitelesíti az alkalmazást futtató rendszerbiztonsági tag (egy felhasználó, csoport vagy egyszerű szolgáltatás). Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás ezután használhatja a hozzáférési jogkivonatot az Azure Event Hubs-erőforrások kérésének engedélyezéséhez.
 
 Alkalmazás hitelesítése az Azure AD-vel az Event Hubs-erőforrások eléréséhez:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
@@ -631,7 +631,7 @@ Az ügyfelek adatainak védelme az Azure-ban:https://docs.microsoft.com/azure/se
 
 **Útmutatás: Az**Azure Resource Graph használatával lekérdezheti és felderítheti az összes erőforrást (beleértve az Azure Event Hubs névtereket is) az előfizetése(i)n belül. Győződjön meg arról, hogy rendelkezik a megfelelő (olvasási) engedélyekkel a bérlőben, és képes az összes Azure-előfizetések és az előfizetéseken belüli erőforrások számbavételét.
 
-Lekérdezések létrehozása az Azure Graph segítségével:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Resource Graph segítségével:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Az Azure-előfizetések megtekintése:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -779,7 +779,7 @@ A feltételes hozzáférés beállítása az Azure Resource Manager eléréséne
 
 Azure beépített szabályzat az Event Hubs névtérhez:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
-Az elérhető Azure-szabályzataliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy-aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0e5a683c95e213a0fc37ec4f559e89abfecf034a
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312472"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758906"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések az Alkalmazásátjáróval kapcsolatban
 
@@ -72,7 +72,7 @@ A v2 termékváltozat esetében nyissa meg a nyilvános IP-erőforrást, és vá
 
 *A Keep-Alive időtúllépés* határozza meg, hogy az Application Gateway mennyi ideig várjon arra, hogy az ügyfél egy állandó kapcsolaton újabb HTTP-kérelmet küldjön, mielőtt újra felhasználná vagy bezárná. *A TCP tétlen időtúllépéshatározza* meg, hogy a TCP-kapcsolat mennyi ideig maradjon nyitva, ha nincs tevékenység. 
 
-Az Application Gateway v1 Termékváltozatban a *Keep-Alive időtúllépést* 120 másodperc, a v2-sku-ban pedig 75 másodperc. A *TCP-adatle-időkitöltés* 4 perces alapértelmezett a v1 és az Application Gateway 2 Termékváltozatának előtér-virtuális IP-címén (VIP). 
+Az Application Gateway v1 Termékváltozatban a *Keep-Alive időtúllépést* 120 másodperc, a v2-sku-ban pedig 75 másodperc. A *TCP-adatle-időkitöltés* 4 perces alapértelmezett a v1 és az Application Gateway 2 Termékváltozatának előtér-virtuális IP-címén (VIP). Ezek az értékek nem módosíthatók.
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Megváltozik az IP- vagy DNS-név az alkalmazásátjáró élettartama alatt?
 

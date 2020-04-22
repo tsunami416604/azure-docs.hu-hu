@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 2192260c3106a6b8d3d3ffd0e063ee945734f308
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136312"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732898"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Rövid útmutató: Java-alkalmazás létrehozása linuxos Azure App Service szolgáltatáson
 
@@ -52,19 +52,19 @@ az login
 
 Ezután konfigurálhatja a telepítést, futtathatja a maven parancsot a parancssorban, és használhatja az alapértelmezett konfigurációkat az **ENTER** billentyű lenyomásával, amíg meg nem kapja a **Confirm (Y/N)** parancsot, majd megnyomja az **"y"** gombot, és a konfiguráció befejeződött. 
 ```cmd
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 A mintafolyamat a következőképpen néz ki:
 
 ```cmd
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.0:config
+~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ----------------------< example.demo:helloworld >-----------------------
 [INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
 [INFO] --------------------------------[ war ]---------------------------------
 [INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.0:config (default-cli) @ helloworld ---
+[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
 [WARNING] The plugin may not work if you change the os of an existing webapp.
 Define value for OS(Default: Linux):
 1. linux [*]
@@ -141,10 +141,10 @@ A parancs futtatása egy percig is eltarthat.
 > [Csatlakozás Azure SQL-adatbázishoz a Java segítségével](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Csatlakozás az Azure DB for MySQL-hez a Java segítségével](/azure/mysql/connect-java?toc=/azure/java/toc.json)
+> [Csatlakozás az Azure DB for MySQL-hez a Java segítségével](/azure/mysql/connect-java)
 
 > [!div class="nextstepaction"]
-> [Csatlakozás a PostgreSQL Azure DB-hez a Java segítségével](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
+> [Csatlakozás a PostgreSQL Azure DB-hez a Java segítségével](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
 > [Java alkalmazás konfigurálása](configure-custom-container.md)

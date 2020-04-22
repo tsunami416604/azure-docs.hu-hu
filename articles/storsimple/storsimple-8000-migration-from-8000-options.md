@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 03/25/2020
 ms.author: v-grpr
-ms.openlocfilehash: f712486c8035bbc913fbd229759f3415a1005449
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438319"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767057"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>A StorSimple 8000 sorozatból származó adatok áttelepítésének lehetőségei
 
@@ -33,15 +33,15 @@ Ez a vadonatúj áttelepítési beállítás lehetővé teszi az ügyfelek szám
 
 Az adatok Azure File Sync szolgáltatásba való áttelepítéséről a [StorSimple 8100 és 8600 áttelepítése az Azure File Sync szolgáltatásba](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)című webhelyen talál további információt.
 
-<!-- 03/25/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
-### Third-party options
+### <a name="third-party-options"></a>Külső felek beállításai
 
-#### Migrate to Panzura Freedom NAS
+#### <a name="migrate-to-panzura-freedom-nas"></a>Vándorolnak Panzura Szabadság NAS
 
-StorSimple 5000-7000 customers can choose to migrate to Panzura Freedom NAS to keep their data in Azure. Panzura Freedom solution provides a NAS solution that spans datacenters, offices, public and private clouds. The solution enables local, hybrid, and in-cloud data workflows for NFS, SMB, and mobile clients. 
+A StorSimple 5000-7000 sorozatú és a StorSimple 8000 sorozatú ügyfelek dönthetnek úgy, hogy áttelepülnek a Panzura Freedom NAS-ra, hogy adataik az Azure-ban maradjanak. A Panzura Freedom megoldás olyan NAS-megoldást kínál, amely adatközpontokra, irodákra, nyilvános és privát felhőkre terjed ki. A megoldás helyi, hibrid és felhőn lévő adatmunkafolyamatokat tesz lehetővé NFS-, SMB- és mobilügyfelek számára.
 
-This migration is supported by Panzura and customers can get started by requesting migration support from the [Panzura website](https://panzura.com/storsimple-migration/).
+Ezt az áttelepítést a Panzura támogatja, és az ügyfelek a [Panzura webhelyről](https://panzura.com/migrate-storsimple-panzura/)történő áttelepítési támogatás kérésével kezdhetik el a kezdést.
 
+<!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity
 
 Cohesity enables you to migrate data from your current StorSimple 5000–7000 to the Cohesity Data Platform on Azure. The Cohesity Data Platform is a software-defined web-scale solution that consolidates files, backups, objects, and VMs onto a single cloud-native solution. After migration to the Data Platform, you can manage, protect, and provision data and apps from cloud to core through a single pane of glass. With Cohesity, start with as few as three nodes. 

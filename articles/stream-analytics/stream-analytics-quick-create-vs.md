@@ -6,22 +6,25 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 21dbd4128cad7df11aeb713286d868879a58519b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75431530"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767233"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Rövid útmutató: Azure Stream Analytics-feladat létrehozása a Visual Studio használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre és futtathat egy Stream Analytics-feladatot a Visual Studio Azure Stream Analytics-eszközeivel. A példafeladat beolvassa az IoT Hub-eszközről a streamelési adatokat. Olyan feladatot határoz meg, amely 27°-nál nagyobb idő esetén kiszámítja az átlaghőmérsékletet, és az eredményül kapott kimeneti eseményeket egy új fájlba írja a blob storage-ban.
 
+> [!NOTE]
+> A Visual Studio és a Visual Studio Code eszközök nem támogatják a kelet-kínai, észak-kínai, németországi központi és németországi északkeleti régiókban végzett feladatokat.
+
 ## <a name="before-you-begin"></a>Előkészületek
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.](https://azure.microsoft.com/free/)
 
-* Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+* Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 * Telepítse a Visual Studio 2019, a Visual Studio 2015 vagy a Visual Studio 2013 4-es frissítését. Az Enterprise (Ultimate/Premium), Professional és Community kiadások mind támogatottak. Az Express kiadás nem támogatott.
 
@@ -31,7 +34,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre és futtathat egy Stream 
 
 A Stream Analytics feladat meghatározása előtt elő kell készítenie az adatokat, amelyek később feladatbemenetként vannak konfigurálva. A feladat által igényelt bemeneti adatok előkészítéséhez hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Válassza > **az** >  **Erőforrás-internet**létrehozása**IoT Hub**lehetőséget.
 

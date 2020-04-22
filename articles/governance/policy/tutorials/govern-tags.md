@@ -1,19 +1,19 @@
 ---
 title: 'Oktatóanyag: Címkecégirányítás kezelése'
 description: Ebben az oktatóanyagban az Azure-szabályzat modify hatása használatával hozzon létre és kényszerítsen egy címkecégirányítási modellt az új és a meglévő erőforrásokon.
-ms.date: 11/25/2019
+ms.date: 04/21/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6319bbde2fdc8f78e2743dd5f1565c8680433fea
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75965983"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759066"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Oktatóanyag: Címkecégirányítás kezelése az Azure Policy használatával
 
 [A címkék](../../../azure-resource-manager/management/tag-resources.md) fontos részét képezik az Azure-erőforrások rendszerezésének egy taxonómiai rendszerbe rendezésében. Ha a [címkekezeléssel kapcsolatos gyakorlati tanácsokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)követi, a címkék alapul adhatnak az üzleti szabályzatok Azure Policy használatával történő alkalmazásához, illetve a [költségkezelés sel kapcsolatos költségek nyomon követéséhez.](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources)
-Nem számít, hogyan és miért használja a címkéket, fontos, hogy gyorsan hozzáadhatja, módosíthatja és eltávolíthatja ezeket a címkéket az Azure-erőforrásokból.
+Nem számít, hogyan és miért használja a címkéket, fontos, hogy gyorsan hozzáadhatja, módosíthatja és eltávolíthatja ezeket a címkéket az Azure-erőforrásokból. Ha meg szeretné tudni, hogy az Azure-erőforrás támogatja-e a címkézést, olvassa el [a Címke támogatása](../../../azure-resource-manager/management/tag-support.md).
 
 Az Azure Policy [modify](../concepts/effects.md#modify) hatása célja, hogy segítse a címkék irányítását, függetlenül attól, hogy milyen szakaszában erőforrás-kormányzás ön-ban. **A módosítás** akkor segít, ha:
 

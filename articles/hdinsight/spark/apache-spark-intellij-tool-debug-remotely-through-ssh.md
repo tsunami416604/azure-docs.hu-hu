@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 67660e3e98f5a12236798d74cc61f71616e6751d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a012c3ce8f7c9e105a42d8383a502f3608c84070
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934749"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732908"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Apache Spark-alkalmazások hibakeresése HDInsight-fürtön az IntelliJ-hez készült Azure Toolkit for SSH segítségével
 
@@ -29,7 +29,7 @@ Ez a cikk lépésenként útmutatást nyújt a HDInsight-eszközök in [Azure To
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) (A közösségi kiadás ingyenes.).
 
-* [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-installation).
+* [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation).
 
 * [Scala plugin az IntelliJ](../spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea).
 
@@ -50,7 +50,7 @@ Ez a cikk lépésenként útmutatást nyújt a HDInsight-eszközök in [Azure To
 
      ![Intellij Új Project Spark létrehozása](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
-1. Válassza a **Tovább lehetőséget.**
+1. Kattintson a **Tovább** gombra.
 
 1. A következő **Új projekt** ablakban adja meg a következő információkat:
 

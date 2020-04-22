@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 179a2120714460c955d1fd3e345ebcd963ae564d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: cebe5564767ee345c1aea96b6ac54b9398c3e9a3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81453557"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733031"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Windows Java-alkalmazás konfigurálása az Azure App Service szolgáltatáshoz
 
@@ -318,7 +318,7 @@ Az Azure által támogatott Java Development Kit (JDK) a [Zulu](https://www.azul
 
 A főverziók frissítései az Azure App Service for Windows új futásidejű beállításaiban lesznek elérhetők. Az ügyfelek a Java újabb verzióira frissítenek az App Service-telepítés konfigurálásával, és felelősek a tesztelésért és annak biztosításáért, hogy a nagyobb frissítés megfeleljen az igényeiknek.
 
-A támogatott JDK-k automatikusan, minden év januárjában, áprilisában, júliusában és októberében negyedévente javításokat hoznak. Az Azure-beli Java-val kapcsolatos további információkért tekintse meg [ezt a támogatási dokumentumot.](https://docs.microsoft.com/azure/java/jdk/)
+A támogatott JDK-k automatikusan, minden év januárjában, áprilisában, júliusában és októberében negyedévente javításokat hoznak. Az Azure-beli Java-val kapcsolatos további információkért tekintse meg [ezt a támogatási dokumentumot.](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 ### <a name="security-updates"></a>Biztonsági frissítések
 

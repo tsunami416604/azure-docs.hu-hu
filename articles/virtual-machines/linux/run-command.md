@@ -2,18 +2,18 @@
 title: Shell szkriptek futtatása Linux os virtuális gépen az Azure-ban
 description: Ez a témakör azt ismerteti, hogyan futtathat parancsfájlokat egy Azure Linux-alapú virtuális gépen a Parancs futtatása szolgáltatás használatával
 services: automation
-ms.service: automation
+ms.service: virtual-machines
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 21787854590d3ca0be2cbd6e9d167de33482c787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80fc33a93d4d83dad1e687b176b39728fc7e8807
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72597877"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758608"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Parancs futtatásához shell szkriptek a Linux virtuális gép
 
@@ -65,7 +65,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 > [!NOTE]
 > Ha a parancsokat másik `sudo -u` felhasználóként szeretné futtatni, írja be a felhasználói fiók megadását.
 
-## <a name="azure-portal"></a>Azure portál
+## <a name="azure-portal"></a>Azure Portal
 
 Lépjen egy virtuális gépre az [Azure Portalon,](https://portal.azure.com) és válassza a **Futtatás parancsot** **az OPERATIONS csoportban.** A virtuális gépen futtatandó elérhető parancsok listája jelenik meg.
 

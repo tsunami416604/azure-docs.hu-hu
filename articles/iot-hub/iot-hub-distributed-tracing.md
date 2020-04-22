@@ -8,12 +8,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: efee34ddfb2b2f6090d5dc8c43647c7ee1c53ce2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562428"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732577"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Az Azure IoT-eszközökről a felhőbe irányuló üzenetek nyomon követése (előzetes verzió)
 
@@ -201,7 +204,7 @@ A felhőből nyomon követhető üzenetek százalékos arányának módosítás�
 
 1. Válasszon egy 0% és 100% közötti **mintavételi arányt.**
 
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 1. Várjon néhány másodpercet, és nyomja le a **Frissítés**gombot, majd ha az eszköz sikeresen nyugtázza, megjelenik egy ikon egy pipával.
 

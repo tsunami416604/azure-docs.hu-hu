@@ -7,16 +7,18 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 493dcd71905970434dd2ab2997cfebd17b8e47ff
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891594"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758180"
 ---
-# <a name="tutorial-create-and-connect-a-python-client-application-to-your-azure-iot-central-application-python"></a>Oktatóanyag: Python-ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazáshoz (Python)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Oktatóanyag: Ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazáshoz (Python)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
+
+*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
 
 Ez az oktatóanyag bemutatja, hogyan, eszközfejlesztőként egy Python-ügyfélalkalmazás csatlakoztatása az Azure IoT Central alkalmazáshoz. A Python-alkalmazás szimulálja egy környezeti érzékelő eszköz viselkedését. Egy _mintaeszköz képességmodell_ segítségével hozzon létre egy _eszközsablont_ az IoT Centralban. Az eszközsablonhoz nézeteket adhat, hogy az operátor kapcsolatba léphesse az eszközzel.
 
@@ -303,7 +305,12 @@ Láthatja, hogy az eszköz hogyan reagál a parancsokra és a tulajdonságfriss�
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az eszközképességi modellekről és a saját eszközsablonok létrehozásáról, folytassa az útmutatóval:
+Eszközfejlesztőként, most, hogy megtanulta az eszköz létrehozásának alapjait a Node.js használatával, néhány javasolt következő lépés a következő:
+
+- Megtudhatja, hogyan csatlakoztathat valódi eszközt az IoT Centralhoz az [MXChip IoT DevKit-eszköz csatlakoztatása az Azure IoT Central alkalmazás útmutatócikkéhez.](./howto-connect-devkit.md)
+- Olvassa [el az Azure IoT Centralhoz való csatlakozást,](./concepts-get-connected.md) és tudjon meg többet arról, hogyan regisztrálhat eszközöket az IoT Centralszolgáltatásban, és hogyan biztosítja az IoT Central az eszközkapcsolatokat.
+
+Ha szeretné folytatni az IoT Central oktatóanyag-készletét, és többet szeretne megtudni az IoT Central megoldás létrehozásáról, olvassa el a következő témaköröket:
 
 > [!div class="nextstepaction"]
-> [Új IoT-eszköztípus definiálása](./howto-set-up-template.md)
+> [Átjáró-eszközsablon létrehozása](./tutorial-define-gateway-device-type.md)

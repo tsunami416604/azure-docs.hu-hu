@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: bed6736fda0c1815964f9017adb1e6fffa9335d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110688"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759613"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Az Azure IoT Hubbal való kapcsolatbontások figyelése, diagnosztizálása és hibaelhárítása
 
@@ -27,7 +28,7 @@ Az Azure Monitor használatával értesítéseket kaphat, és naplókat írhat, 
 
 Eszközkapcsolati események és -hibák naplózásához kapcsolja be az IoT Hub diagnosztikájának bekapcsolását. Javasoljuk, hogy a lehető leghamarabb kapcsolja be ezeket a naplókat, mert ha a diagnosztikai naplók nincsenek engedélyezve, amikor az eszköz bontja a kapcsolatot, akkor nem lesz semmilyen információ a probléma elhárításához.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Tallózással az IoT-központ.
 
@@ -47,7 +48,7 @@ További információ: [Az Azure IoT Hub állapotának figyelése és a problém
 
 Ha riasztásokat szeretne kapni, amikor az eszközök bontják a kapcsolatot, konfigurálja a riasztásokat a **Csatlakoztatott eszközök (előzetes verzió)** mérőszámon.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Tallózással az IoT-központ.
 
@@ -69,7 +70,7 @@ Az *eszközönkénti* kapcsolatbontások észleléséhez, például ha tudnia ke
 
 Amikor bekapcsolja a csatlakoztatott eszközök diagnosztikai naplóit és riasztásait, hibák esetén riasztásokjelennek meg. Ez a szakasz azt ismerteti, hogyan keresheti meg a gyakori problémákat, amikor riasztást kap. Az alábbi lépések feltételezik, hogy beállította az Azure Monitor naplók at a diagnosztikai naplók.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Tallózással az IoT-központ.
 

@@ -3,12 +3,12 @@ title: Ismerje meg a virtuális gépek tartalmának naplózását
 description: Ismerje meg, hogy az Azure Policy hogyan használja a Vendég konfigurációs ügynököt a virtuális gépeken belüli beállítások naplózásához.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4899f6b3108cabb4e9cdd36e4b2bc5cd2f1cbd4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1721c0f1ca7c084d636278aabc96f8dac3293038
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538035"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759074"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure-szabályzat vendégkonfigurációjának megismerése
 
@@ -20,19 +20,25 @@ Az Azure-erőforrások naplózásán és [kijavításán](../how-to/remediate-re
 
 Jelenleg a legtöbb Azure-szabályzat vendégkonfigurációs szabályzata csak a számítógépen belüli naplózási beállításokat. Nem alkalmaznak konfigurációkat. A kivétel az [alábbiakban hivatkozott](#applying-configurations-using-guest-configuration)beépített házirend.
 
+## <a name="resource-provider"></a>Erőforrás-szolgáltató
+
+A Vendégkonfiguráció használata előtt regisztrálnia kell az erőforrás-szolgáltatót. Az erőforrás-szolgáltató automatikusan regisztrálva lesz, ha a vendégkonfigurációs házirend hozzárendelése a portálon keresztül történik. Manuálisan regisztrálhat a [portálon](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), az [Azure PowerShellen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)vagy az [Azure CLI-n](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)keresztül.
+
 ## <a name="extension-and-client"></a>Kiterjesztés és ügyfél
 
 A beállítások naplózásához egy gépen belül, a [virtuális gép bővítmény](../../../virtual-machines/extensions/overview.md) engedélyezve van. A bővítmény letölti a vonatkozó házirend-hozzárendelést és a megfelelő konfigurációs definíciót.
+
+> [!Important]
+> A vendégkonfiguráció bővítmény az Azure virtuális gépeken végzett naplózáshoz szükséges.
+> A bővítmény nagy méretekben történő üzembe helyezéséhez rendelje hozzá a következő házirend-definíciókat:
+>   - Előfeltételek telepítése a vendégkonfigurációs házirend windowsos virtuális gépeken való engedélyezéséhez.
+>   - A vendégkonfigurációs házirend linuxos virtuális gépeken való engedélyezéséhez telepítse az előfeltételeket.
 
 ### <a name="limits-set-on-the-extension"></a>A kiterjesztésre beállított korlátok
 
 Annak érdekében, hogy a bővítmény a számítógépen belül futó alkalmazásokat ne befolyásolja, a vendégkonfiguráció nem haladhatja meg a PROCESSZOR 5%-át. Ez a korlátozás a beépített és az egyéni definíciókra egyaránt létezik.
 
-## <a name="register-guest-configuration-resource-provider"></a>Vendégkonfigurációs erőforrás-szolgáltató regisztrálása
-
-A Vendégkonfiguráció használata előtt regisztrálnia kell az erőforrás-szolgáltatót. A [portálon](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), az [Azure PowerShellen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)vagy az [Azure CLI-n](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)keresztül regisztrálhat. Az erőforrás-szolgáltató automatikusan regisztrálva lesz, ha a vendégkonfigurációs házirend hozzárendelése a portálon keresztül történik.
-
-## <a name="validation-tools"></a>Érvényesítési eszközök
+### <a name="validation-tools"></a>Érvényesítési eszközök
 
 A számítógépen belül a vendégkonfigurációs ügyfél helyi eszközöket használ a naplózás futtatásához.
 
@@ -50,17 +56,17 @@ Az eredményeket a rendszer a folyamat befejezésekor küldi el a vendégkonfigu
 
 ## <a name="supported-client-types"></a>Támogatott ügyféltípusok
 
-Az alábbi táblázat az Azure-lemezképek támogatott operációs rendszereinek listáját tartalmazza:
+Vendég konfigurációs házirendek tartalmazzák az új verziók. Az Azure piactéren elérhető operációs rendszerek régebbi verziói ki vannak zárva, ha a vendégkonfigurációs ügynök nem kompatibilis. Az alábbi táblázat az Azure-lemezképek en támogatott operációs rendszerek listáját tartalmazza:
 
 |Közzétevő|Name (Név)|Verziók|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04, 16.04, 18.04|
-|Credativ között|Debian|8, 9|
-|Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
+|Canonical|Ubuntu Server|14.04 és újabb|
+|Credativ között|Debian|8 és újabb|
+|Microsoft|Windows Server|2012 és újabb|
 |Microsoft|Windows-ügyfél|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7, 7.8|
-|Suse|SLES|12 SP3|
+|OpenLogic|CentOS|7.3 és újabb|
+|Red Hat|Red Hat Enterprise Linux|7.4 és újabb|
+|Suse|SLES|12 SP3 és újabb|
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyféltípusok
 

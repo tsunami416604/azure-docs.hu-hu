@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ba96dd2fcfb995afa6e3b1302a2c8b075abfd90
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 275215a69f97d93a1b1741a8fa8f3ca752c8c9ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72968700"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758988"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Dynatrace-el
 
@@ -100,7 +100,7 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
     a. Az **Aláírási lehetőség** beállítás előre ki van töltve. Tekintse át a beállításokat a szervezet szerint.
 
-    b. Kattintson a **Mentés** gombra.
+    b. Kattintson a **Save** (Mentés) gombra.
 
     ![Communifire aláírási lehetőség](./media/dynatrace-tutorial/tutorial-dynatrace-signing-option.png)
 
@@ -140,7 +140,7 @@ Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a Dynatr
 
 ## <a name="configure-dynatrace-sso"></a>Dynatrace SSO konfigurálása
 
-Az egyszeri bejelentkezés konfigurálásához a **Dynatrace** oldalon el kell küldenie a letöltött **összevonási metaadat-XML-fájlt** és a megfelelő másolt URL-címeket az Azure Portalról a [Dynatrace támogatási csapatának.](https://www.dynatrace.com/services-support/) Úgy konfigurálják ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Az egyszeri bejelentkezés konfigurálásához a **Dynatrace** oldalon el kell küldenie a letöltött **összevonási metaadat-XML-fájlt** és a megfelelő másolt URL-címeket az Azure Portalról a [Dynatrace-nek.](https://www.dynatrace.com/support/help/shortlink/users-sso-hub) A Dynatrace webhely utasításainak követésével mindkét oldalon konfigurálhatja az SAML SSO-kapcsolatot.
 
 ### <a name="create-dynatrace-test-user"></a>Dynatrace-tesztfelhasználó létrehozása
 

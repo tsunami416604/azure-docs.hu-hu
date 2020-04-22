@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3e79d6efcbb72b73dedb5b8dfdf965736e7de3e4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261958"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757218"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure biztonsági alapkonfiguráció a MySQL Azure-adatbázisához
 
@@ -650,7 +650,7 @@ Az Azure PaaS-szolgáltatások szolgáltatásának lefedettsége az Azure Securi
 
 **Útmutatás: Az**Azure Resource Graph használatával lekérdezheti és felderítheti az összes erőforrást (beleértve az Azure Database for MySQL-példányokat is) az előfizetése(i)n belül. Győződjön meg arról, hogy rendelkezik a megfelelő (olvasási) engedélyekkel a bérlőben, és képes az összes Azure-előfizetések és az előfizetéseken belüli erőforrások számbavételét.
 
-Lekérdezések létrehozása az Azure Graph segítségével:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Lekérdezések létrehozása az Azure Resource Graph segítségével:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Az Azure-előfizetések megtekintése:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -794,7 +794,7 @@ A feltételes hozzáférés beállítása az Azure Resource Manager eléréséne
 
 Az SSL-kapcsolat kényszerítése engedélyezve kell lennie a MySQL adatbázis-kiszolgálókon
 
-Az elérhető Azure-szabályzataliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy-aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

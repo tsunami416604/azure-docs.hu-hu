@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 9ccfaa57b8e8fdea325bed908ffe8815b09d0d15
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 86fc5d4845e746604c1ba69f661d1b9ea9d8dca4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257793"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732320"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hubbal az MQTT protokoll használatával
 
@@ -49,7 +52,7 @@ Az alábbi táblázat az egyes támogatott nyelvek kódmintáira mutató hivatko
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azúr-iot-eszköz-mqtt. Mqtt között | azúr-iot-eszköz-mqtt. MqttWs |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C #](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType (TransportType ) (TransportType) (](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet) Mqtt között | A TransportType.Mqtt az MQTT-re esik vissza a webszoftvercsatornákon keresztül, ha az MQTT sikertelen. Ha csak webszoftvercsatornákon szeretné megadni az MQTT értéket, használja a TransportType.Mqtt_WebSocket_Only |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType (TransportType ) (TransportType) (](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet) Mqtt között | A TransportType.Mqtt az MQTT-re esik vissza a webszoftvercsatornákon keresztül, ha az MQTT sikertelen. Ha csak webszoftvercsatornákon szeretné megadni az MQTT értéket, használja a TransportType.Mqtt_WebSocket_Only |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Alapértelmezés szerint támogatja az MQTT-t | Hozzáadás `websockets=True` a híváshoz az ügyfél létrehozásához |
 
 A következő töredék bemutatja, hogyan adható meg az MQTT websocketek protokollon keresztül az Azure IoT Node.js SDK használataesetén:

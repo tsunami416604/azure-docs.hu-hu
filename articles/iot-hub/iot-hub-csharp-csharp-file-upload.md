@@ -9,12 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: b379f158672a9df3056acb09c63c392869a53283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 14472e84d425bf03a3c6a0c2dc558d4b8225caec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108715"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733401"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Fájlok feltöltése az eszközről a felhőbe az IoT Hub (.NET) segítségével
 
@@ -26,7 +27,7 @@ Ez az oktatóanyag az [IoT Hub-oktatóanyaggal rendelkező felhőből eszközre 
 
 * Az IoT Hub fájlfeltöltési értesítései segítségével indítsa el a fájl feldolgozását az alkalmazás háttérrendszerében.
 
-A [Telemetria küldése az eszközről egy IoT hub](quickstart-send-telemetry-dotnet.md) rövid útmutató és [felhőbe az eszközre üzenetek küldése](iot-hub-csharp-csharp-c2d.md) az IoT Hub oktatóanyag az alapvető eszköz-felhő és felhő-eszköz üzenetkezelési funkció az IoT Hub. Az [Üzenet-útválasztás konfigurálása az IoT Hubbal](tutorial-routing.md) oktatóanyag ismerteti az eszközről a felhőbe irányuló üzenetek megbízható tárolásának módját a Microsoft Azure Blob storage-ban. Bizonyos esetekben azonban nem tudja könnyen leképezni az eszközöket küldött adatokat az IoT Hub által fogadott viszonylag kis méretű eszközről felhőbe irányuló üzenetekre. Példa:
+A [Telemetria küldése az eszközről egy IoT hub](quickstart-send-telemetry-dotnet.md) rövid útmutató és [felhőbe az eszközre üzenetek küldése](iot-hub-csharp-csharp-c2d.md) az IoT Hub oktatóanyag az alapvető eszköz-felhő és felhő-eszköz üzenetkezelési funkció az IoT Hub. Az [Üzenet-útválasztás konfigurálása az IoT Hubbal](tutorial-routing.md) oktatóanyag ismerteti az eszközről a felhőbe irányuló üzenetek megbízható tárolásának módját a Microsoft Azure Blob storage-ban. Bizonyos esetekben azonban nem tudja könnyen leképezni az eszközöket küldött adatokat az IoT Hub által fogadott viszonylag kis méretű eszközről felhőbe irányuló üzenetekre. Például:
 
 * Képeket tartalmazó nagyfájlok
 

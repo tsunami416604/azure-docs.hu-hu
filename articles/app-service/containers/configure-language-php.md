@@ -4,12 +4,12 @@ description: További információ az alkalmazás előre elkészített PHP-táro
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e87466f810dc4ebf767c36ad74c358cbf6069e5
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255836"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758873"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Linux PHP alkalmazás konfigurálása az Azure App Service szolgáltatáshoz
 
@@ -86,7 +86,7 @@ Az App Service alapértelmezett PHP lemezképe apache-t használ, és nem teszi 
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
-    RewriteRule ^.*$ /public/$1 [NC,L,QSA]
+    RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
 
@@ -116,7 +116,7 @@ Ha módosítania kell a PHP telepítését, az alábbi lépések végrehajtásá
 
 A PHP_INI_USER, PHP_INI_PERDIR és PHP_INI_ALL direktívák testreszabásához (lásd: [php.ini direktívák)](https://www.php.net/manual/ini.list.php)vegyen fel egy *.htaccess fájlt* az alkalmazás gyökérkönyvtárába.
 
-A *.htaccess* fájlban adja hozzá `php_value <directive-name> <value>` a direktívákat a szintaxis sal. Példa:
+A *.htaccess* fájlban adja hozzá `php_value <directive-name> <value>` a direktívákat a szintaxis sal. Például:
 
 ```
 php_value upload_max_filesize 1000M
@@ -198,7 +198,7 @@ A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
 Ha egy működő PHP alkalmazás eltérően viselkedik az App Service szolgáltatásban, vagy hibákat tapasztal, próbálkozzon a következőkkel:
 
 - [A naplófolyam elérése](#access-diagnostic-logs).
-- Tesztelje az alkalmazást helyileg éles módban. Az App Service éles környezetben futtatja a Node.js alkalmazásokat, ezért meg kell győződnie arról, hogy a projekt az éles környezetben helyileg a várt módon működik. Példa:
+- Tesztelje az alkalmazást helyileg éles módban. Az App Service éles környezetben futtatja a Node.js alkalmazásokat, ezért meg kell győződnie arról, hogy a projekt az éles környezetben helyileg a várt módon működik. Például:
     - A *zeneszerzőtől.json*koordinátáktól függően`require` különböző `require-dev`csomagok telepíthetők a termelési módhoz ( vs. ).
     - Bizonyos webes keretrendszerek éles módban eltérő módon telepíthetik a statikus fájlokat.
     - Bizonyos webes keretrendszerek éles módban való futtatáskor egyéni indítási parancsfájlokat is használhatnak.

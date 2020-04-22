@@ -9,16 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79298835"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758124"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Új IoT-átjáróeszköztípus definiálása az Azure IoT Central alkalmazásban
 
-Ez az oktatóanyag bemutatja, mint szerkesztő, hogyan használhat átjáróeszköz-sablont egy átjáróeszköz definiálására az IoT Central alkalmazásban. Ezután konfigurálja az IoT Central-alkalmazáshoz az átjáróeszközön keresztül csatlakozó alsóbb rétegbeli eszközöket. 
+*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
+
+Ez az oktatóanyag bemutatja, mint a megoldás készítője, hogyan használhat egy átjáróeszköz-sablont egy átjáróeszköz definiálásához az IoT Central alkalmazásban. Ezután konfigurálja az IoT Central-alkalmazáshoz az átjáróeszközön keresztül csatlakozó alsóbb rétegbeli eszközöket. 
 
 Ebben az oktatóanyagban egy **Smart Building** átjáróeszköz-sablont hoz létre. A **Smart Building** átjáróeszköz kapcsolatban áll más alsóbb rétegbeli eszközökkel.
 
@@ -207,7 +209,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!NOTE]
 > A VS code alapú kódgenerálás jelenleg nem támogatott az IoT Centralban modellezett átjáróeszközök esetében.
 
-Ezután a következőket teheti:
+Ezután eszközfejlesztőként megtudhatja, hogyan teheti meg:
 
 > [!div class="nextstepaction"]
-> [Eszköz csatlakoztatása](tutorial-connect-device.md)
+> [Azure IoT Edge-eszköz hozzáadása az Azure IoT Central alkalmazáshoz](tutorial-add-edge-as-leaf-device.md)

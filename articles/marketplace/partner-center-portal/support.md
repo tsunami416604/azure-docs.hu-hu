@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: fbfc8cc29a1584dbc9f7e4ff0b73513d85950f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd7582877a74aa998de3a6d0a0f38e56c3c3af91
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281391"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733116"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A Kereskedelmi piactér program támogatása a Partnerközpontban
 
@@ -40,7 +40,7 @@ A Microsoft számos termék- és szolgáltatástámogatást nyújt. A megfelelő
 
 5. Válassza a **[Marketplace Partner közösségi fórumot,](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** ha más Microsoft-kiadók ismereteit kihasználva válaszolanak kérdéseire. 
 
-6. Válassza a **[További segítség lehetőséget](https://aka.ms/marketplacepublishersupport)** az Új támogatási **kérelemjegy** megnyitásához.  
+6. Válassza a **[További segítség lehetőséget](https://partner.microsoft.com/support/v2/?stage=1)** az Új támogatási **kérelemjegy** megnyitásához.  
 
 ## <a name="how-to-open-a-support-ticket"></a>Támogatási jegy megnyitása
 

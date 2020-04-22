@@ -8,12 +8,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73947680"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733395"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Ismerkedés az IoT Hub modulidentitásával és az ikermodullal (.NET)
 
@@ -53,7 +54,7 @@ Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
 Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközön a moduliker jelentett tulajdonságainak frissítéséhez.
 
-Mielőtt elkezdené, a modul kapcsolati karakterláncát. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/) Nyissa meg a központot, és válassza az **IoT-eszközök lehetőséget.** Keresse **myFirstDevice**. Válassza a **myFirstDevice lehetőséget** a megnyitásához, majd a **myFirstModule** lehetőséget a megnyitásához. A **Modul identitásának részletei mezőben**másolja a **kapcsolati karakterláncot (elsődleges kulcsot),** ha szükséges az alábbi eljárásban.
+Mielőtt elkezdené, a modul kapcsolati karakterláncát. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Nyissa meg a központot, és válassza az **IoT-eszközök lehetőséget.** Keresse **myFirstDevice**. Válassza a **myFirstDevice lehetőséget** a megnyitásához, majd a **myFirstModule** lehetőséget a megnyitásához. A **Modul identitásának részletei mezőben**másolja a **kapcsolati karakterláncot (elsődleges kulcsot),** ha szükséges az alábbi eljárásban.
 
    ![Az Azure Portal moduladatai](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 

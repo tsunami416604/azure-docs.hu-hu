@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a22808b1d7ab2b2451f50470e8da3770d07407a5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.custom: amqp
+ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985660"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759648"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Az Azure IoT Hub X.509-es védelmének beállítása
 
@@ -86,7 +87,7 @@ Az X.509-es eszköz hitelesítéséhez először alá kell írnia az eszközt a 
 
 Ezután bemutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hubhoz regisztrált X.509-es eszköz szimulálására. A szimulált eszközről hőmérséklet- és páratartalom-értékeket küldünk az ön központjába. Ebben az oktatóanyagban csak az eszközalkalmazást hozzuk létre. Az olvasók nak edzésként marad az IoT Hub szolgáltatásalkalmazás létrehozása, amely választ küld a szimulált eszköz által küldött eseményekre. A C# alkalmazás feltételezi, hogy a [minták és oktatóanyagok teszthitelesítési tanúsítványainak kezelése](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)című lépést követte.
 
-1. Nyissa meg a Visual Studio alkalmazást, válassza **az Új projekt létrehozása**lehetőséget, majd válassza a Console App **(.NET Framework)** projektsablont. Válassza a **Tovább lehetőséget.**
+1. Nyissa meg a Visual Studio alkalmazást, válassza **az Új projekt létrehozása**lehetőséget, majd válassza a Console App **(.NET Framework)** projektsablont. Kattintson a **Tovább** gombra.
 
 1. Az **Új projekt konfigurálása**területen nevezze el a *SimulateX509Device nevű projektet,* majd válassza a Create **(Létrehozás) lehetőséget.**
 

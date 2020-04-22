@@ -1,20 +1,20 @@
 ---
-title: Azure-biztonsági alapkonfiguráció a key vaulthoz
-description: Azure-biztonsági alapkonfiguráció a key vaulthoz
+title: A Key Vault Azure-os biztonsági alapkonfigurációja
+description: A Key Vault Azure-os biztonsági alapkonfigurációja
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 46fa0160dd8b37e89cdd77ba8acdae294fddbefe
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 6e660c1244dd5566fbfb45a6da37d39294354ccb
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616894"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756984"
 ---
-# <a name="azure-security-baseline-for-key-vault"></a>Azure-biztonsági alapkonfiguráció a key vaulthoz
+# <a name="azure-security-baseline-for-key-vault"></a>A Key Vault Azure-os biztonsági alapkonfigurációja
 
 Az Azure Security Baseline for Key Vault javaslatokat tartalmaz, amelyek segítenek javítani a központi telepítés biztonsági állapotát.
 
@@ -881,7 +881,7 @@ A Key Vault diagnosztikai beállításainak telepítése az Event Hubra
 
 Az Azure Security Center ajánlásait biztonságos konfigurációs alapkonfigurációként használhatja az Azure Key Vault-példányokhoz.
 
-Az elérhető Azure-szabályzataliasok megtekintése:
+Az elérhető Azure Policy-aliasok megtekintése:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 

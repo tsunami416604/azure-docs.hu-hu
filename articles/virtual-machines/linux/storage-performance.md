@@ -3,19 +3,19 @@ title: A teljesítmény optimalizálása az Azure Lsv2 sorozatú virtuális gép
 description: Ismerje meg, hogyan optimalizálhatja a teljesítményt a megoldáshoz az Lsv2 sorozatú virtuális gépeken.
 services: virtual-machines-linux
 author: laurenhughes
-manager: gwallace
 ms.service: virtual-machines-linux
+ms-subservice: sizes
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 8d99f63ae084b4f1dae3c0125420eaecf5655e2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a0d5e29097bc9a672e142fcffb0ebe879fe2475
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034758"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757689"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimalizálja a teljesítményt az Lsv2 sorozatú virtuális gépeken
 

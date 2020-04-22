@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: bf74784998de6bbad6310c48c24d6353512bff13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c60cf4b90b089d271c0ccd91031420efe9017b1e
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77027733"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758161"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Azure IoT Edge-eszköz hozzáadása az Azure IoT Central alkalmazáshoz
+
+*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
 
 Ez az oktatóanyag bemutatja, hogyan konfigurálhat és adhat hozzá egy Azure IoT Edge-eszközt az Azure IoT Central-alkalmazáshoz. Az oktatóanyag egy IoT Edge-kompatibilis Linux-alapú virtuális gépet (VM) használ az Azure Marketplace-ről egy IoT Edge-eszköz szimulálására. Az IoT Edge-eszköz egy modult használ, amely szimulált környezeti telemetriai adatokat hoz létre. A telemetriai adatokat az IoT Central-alkalmazás irányítópultján tekintheti meg.
 
@@ -262,9 +264,9 @@ A **Modulok** lap az IoT Edge modulok állapotát mutatja:
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta, hogyan dolgozhat az IoT Edge-eszközökkel és hogyan kezelheti az IoT Centralban, az alábbiak szerint a következő lépés:
+Eszközfejlesztőként most, hogy megtanulta, hogyan dolgozhat az IoT Edge-eszközökkel és hogyan kezelheti az IoT Centralban, a következő javasolt lépés a következő:
 
 <!-- Next how-tos in the sequence -->
 
 > [!div class="nextstepaction"]
-> [Transzparens átjáró konfigurálása](../../iot-edge/how-to-create-transparent-gateway.md)
+> [Csatlakozzon az Azure IoT Centralhoz](./concepts-get-connected.md)

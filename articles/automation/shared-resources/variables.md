@@ -1,5 +1,5 @@
 ---
-title: Az Azure Automation változó adategységei
+title: Változók kezelése az Azure Automationben
 description: A változó eszközök olyan értékek, amelyek az Azure Automation ben minden runbook és DSC-konfiguráció számára elérhetők.  Ez a cikk ismerteti a változók részleteit, és hogyan működik velük mind szöveges, mind grafikus szerzői nyelven.
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4a4a92feb3e1b400c0f40076148f7898c4bdef1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4778e9b2c0d3b442b214966ab69810d2f42b70b8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365829"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732766"
 ---
-# <a name="variable-assets-in-azure-automation"></a>Az Azure Automation változó adategységei
+# <a name="manage-variables-in-azure-automation"></a>Változók kezelése az Azure Automationben
 
 A változó eszközök olyan értékek, amelyek az Automation-fiókban lévő összes runbook és DSC-konfiguráció számára elérhetők. Kezelheti őket az Azure Portalon, a PowerShellből, egy runbookon belül vagy egy DSC-konfigurációban.
 
@@ -45,11 +45,14 @@ Amikor létrehoz egy változót az Azure Portalon, meg kell adnia egy adattípus
 * Logikai
 * Null
 
-A változó nem korlátozódik a kijelölt adattípusra. Ha más típusú értéket szeretne megadni, a változót a Windows PowerShell használatával kell beállítania. Ha azt `Not defined`jelzi, a változó értéke Null, és az értéket a [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) parancsmaggal vagy a `Set-AutomationVariable` tevékenységgel kell beállítani.
+A változó nem korlátozódik a kijelölt adattípusra. Ha más típusú értéket szeretne megadni, a változót a Windows PowerShell használatával kell beállítania. Ha a `Not defined`jel a ( jel) értéket adja meg, a változó értéke Null. Az értéket a [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) parancsmaggal vagy `Set-AutomationVariable` a tevékenységgel kell beállítani.
 
 Az Azure Portal használatával nem hozhat létre vagy módosíthat egy összetett változótípus értékét. Azonban bármilyen típusú értéket adhat meg a Windows PowerShell használatával. Az összetett típusok beolvasása [PSCustomObject objektumként lesz beolvasva.](/dotnet/api/system.management.automation.pscustomobject)
 
 Tömb vagy kivonatoló létrehozásával több értéket is tárolhat egyetlen változóban, és mentheti azt a változóba.
+
+>[!NOTE]
+>A virtuális gép névváltozói legfeljebb 80 karakterből állhatnak. Az erőforráscsoport változói legfeljebb 90 karakter ből állhatnak. Lásd: [Az Azure-erőforrások elnevezési szabályai és korlátozásai.](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 
 ## <a name="powershell-cmdlets-that-create-and-manage-variable-assets"></a>Változó eszközöket létrehozó és kezelő PowerShell-parancsmagok
 
@@ -140,7 +143,7 @@ $vmIpAddress = $vmValue.IpAddress
 
 ### <a name="create-and-use-a-variable-in-a-runbook-or-dsc-configuration"></a>Változó létrehozása és használata runbook- vagy DSC-konfigurációban
 
-Egy runbook- vagy DSC-konfiguráción belül csak úgy hozhat `New-AzAutomationVariable` létre új változót, ha a parancsmag vagy annak AzureRM-modulmegfelelőjét használja. A parancsfájl ezt a parancsmamot használja a változó kezdeti értékének beállításához. A parancsfájl ezután betudja olvasni az értéket a használatával. `Get-AzAutomationVariable` Ha az érték egyszerű típus, akkor a program ugyanezt a típust olvassa be. Ha összetett típusról van szó, akkor a rendszer lekéri a `PSCustomObject` típust.
+Egy runbook- vagy DSC-konfiguráción belül csak úgy hozhat `New-AzAutomationVariable` létre új változót, ha a parancsmamot vagy annak AzureRM-modulmegfelelőjét használja. A parancsfájl ezt a parancsmamot használja a változó kezdeti értékének beállításához. A parancsfájl ezután betudja olvasni az értéket a használatával. `Get-AzAutomationVariable` Ha az érték egyszerű típus, akkor a program ugyanezt a típust olvassa be. Ha összetett típusról van szó, akkor a rendszer lekéri a `PSCustomObject` típust.
 
 >[!NOTE]
 >A titkosított értékek lekérésének egyetlen `Get-AutomationVariable` módja a runbook vagy a DSC konfigurációjában lévő tevékenység használata. 

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5aa7abf7aafc14e71af5618cec892ef9f843d88a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933866"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733069"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Az Azure Media Services videoindexelőkiadási megjegyzések
 
@@ -29,6 +29,20 @@ Ahhoz, hogy naprakész legyen a legújabb fejleményekkel, ez a cikk az ön szá
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="april-2020"></a>2020. április
+
+### <a name="new-widget-parameters-capabilities"></a>Új widget paraméterek képességek
+
+Az **Insights** widget új `language` paramétereket tartalmaz: és `control`.
+
+A **Lejátszó** widget `locale` új paraméterrel rendelkezik. Mind `locale` `language` a paraméterek szabályozzák a játékos nyelvét.
+
+További információt a [widgettípusok](video-indexer-embed-widgets.md#widget-types) című szakaszban talál. 
+
+## <a name="new-player-skin"></a>Új játékos bőr
+
+Egy új játékos bőr indított frissített design.
 
 ## <a name="january-2020"></a>2020. január
  
@@ -46,7 +60,7 @@ Egy új Video Indexer GitHub különböző projektekkel, első lépések útmuta
  
 ### <a name="swagger-update"></a>Swagger frissítés
 
-Video Indexer egyesített **hitelesítések** és **műveletek** egyetlen [Video Indexer OpenAPI Specification (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). A Develpers megtalálja az API-kat a [Video Indexer Developer Portal alkalmazásban.](https://api-portal.videoindexer.ai/)
+Video Indexer egyesített **hitelesítések** és **műveletek** egyetlen [Video Indexer OpenAPI Specification (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). A fejlesztők megtalálhatják az API-kat a [Video Indexer Developer Portal webhelyen.](https://api-portal.videoindexer.ai/)
 
 ## <a name="december-2019"></a>2019. december
 
@@ -129,7 +143,7 @@ Most már létrehozhat egy Video Indexer fizetős fiókot az Egyesült Királys�
 
 ### <a name="new-editorial-shot-type-insights-available"></a>Új Szerkesztői Shot Type insights elérhető
 
-Új címkék hozzá video felvételek biztosít szerkesztői "lövés típusok", hogy azonosítsa őket a közös szerkesztői kifejezéseket használt a tartalom létrehozása munkafolyamat, mint például: extrém közelkép, közelkép, széles, közepes, két lövés, kültéri, beltéri, bal és jobb arc (Elérhető a JSON).
+Új címkék hozzá video felvételek biztosít szerkesztői "lövés típusok", hogy azonosítsa őket a közös szerkesztői kifejezéseket használt tartalom létrehozása munkafolyamat, mint például: extrém közelkép, közelkép, széles, közepes, két lövés, kültéri, beltéri, bal és jobb arc (Elérhető a JSON).
 
 ### <a name="new-people-and-locations-entities-extraction-available"></a>Új személyek és helyek entitások kinyerése elérhető
 

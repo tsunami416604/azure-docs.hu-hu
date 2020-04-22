@@ -1,24 +1,21 @@
 ---
-title: Megosztott Azure virtuálisgép-lemezképek létrehozása Linuxhoz a portál használatával
-description: Ismerje meg, hogyan hozhat létre és oszthat meg virtuálisgép-lemezképeket az Azure Portal használatával.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
+title: Megosztott Azure-beli Virtuálisgép-lemezképek létrehozása a portál használatával
+description: Ismerje meg, hogyan hozhat létre és oszthat meg Linux-virtuálisgép-lemezképeket az Azure Portal használatával.
 author: cynthn
-manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: akjosh
+ms.openlocfilehash: 74c87d589f1c50551ac5685fe0fa126a82bffbde
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978696"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758438"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Azure megosztott képtár létrehozása a portál használatával
 

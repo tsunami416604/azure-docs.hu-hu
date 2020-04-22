@@ -13,14 +13,14 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: cccd2df334828c0b8103e4da2ffcd8549673b69c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8bdc7e6e3795719128a8ecfb1e8bc97c1a9a08c7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696996"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759027"
 ---
-# <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>Útmutató: Az Azure AD-alkalmazás korlátozása felhasználók egy készletére
+# <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Útmutató: Az Azure AD-alkalmazás korlátozása egy Azure AD-bérlő felhasználóinak készletére
 
 Az Azure Active Directory (Azure AD) bérlőben regisztrált alkalmazások alapértelmezés szerint a bérlő minden olyan felhasználója számára elérhetők, akik sikeresen hitelesítik magukat.
 
@@ -28,7 +28,7 @@ Hasonlóképpen, egy [több-bérlős](howto-convert-app-to-be-multi-tenant.md) a
 
 A bérlői rendszergazdák és a fejlesztők gyakran rendelkeznek olyan követelményekkel, amelyekhez az alkalmazást a felhasználók egy bizonyos csoportjára kell korlátozni. A fejlesztők ugyanezt a népszerű engedélyezési minták, például a szerepköralapú hozzáférés-vezérlés (RBAC) használatával is elvégezhetik, de ehhez a megközelítéshez jelentős mennyiségű munka szükséges a fejlesztő egy részén.
 
-Az Azure AD lehetővé teszi a bérlői rendszergazdák és fejlesztők számára, hogy egy alkalmazást a bérlőben lévő felhasználók vagy biztonsági csoportok egy adott csoportjára korlátozzanak.
+Bérlői rendszergazdák és fejlesztők korlátozhatja az alkalmazást egy adott felhasználói csoport vagy biztonsági csoportok a bérlőben az Azure AD beépített szolgáltatásának használatával.
 
 ## <a name="supported-app-configurations"></a>Támogatott alkalmazáskonfigurációk
 
@@ -62,7 +62,7 @@ Az engedélyezett felhasználói hozzárendeléssel kétféleképpen hozhat lét
 
 1. Jelölje ki azt az alkalmazást, amelyhez felhasználót vagy biztonsági csoportot szeretne rendelni a listából.
 1. Az alkalmazás **Áttekintés lapján** válassza az alkalmazás bal oldali navigációs menüjének **Tulajdonságok elemét.**
-1. Keresse meg a **szükséges felhasználói hozzárendelés beállítást,** és állítsa **igen (Igen)** beállításra. Ha ez a beállítás **Igen,** a felhasználókat először hozzá kell rendelni ehhez az alkalmazáshoz, mielőtt hozzáférhetnének.
+1. Keresse meg a **szükséges felhasználói hozzárendelés beállítást,** és állítsa **igen (Igen)** beállításra. Ha ez a beállítás **Igen,** a bérlő felhasználóinak először hozzá kell rendelnie ezt az alkalmazást, vagy nem tudnak bejelentkezni az alkalmazásba.
 1. A konfigurációmódosítás mentéséhez válassza a **Mentés** gombot.
 
 ### <a name="app-registration"></a>Alkalmazásregisztráció
@@ -75,7 +75,7 @@ Az engedélyezett felhasználói hozzárendeléssel kétféleképpen hozhat lét
 1. Hozza létre vagy jelölje ki a kezelni kívánt alkalmazást. Meg kell **tulajdonosa** ezt az alkalmazást regisztráció.
 1. Az alkalmazás **Áttekintéslapján** kövesse a Felügyelt alkalmazás helyi **könyvtárban** hivatkozását a lap tetején található alapvető beállítások között. Ezzel az alkalmazásregisztráció _felügyelt vállalati alkalmazásához_ vezet.
 1. A bal oldali navigációs panelen válassza a **Tulajdonságok lehetőséget.**
-1. Keresse meg a **szükséges felhasználói hozzárendelés beállítást,** és állítsa **igen (Igen)** beállításra. Ha ez a beállítás **Igen,** a felhasználókat először hozzá kell rendelni ehhez az alkalmazáshoz, mielőtt hozzáférhetnének.
+1. Keresse meg a **szükséges felhasználói hozzárendelés beállítást,** és állítsa **igen (Igen)** beállításra. Ha ez a beállítás **Igen,** a bérlő felhasználóinak először hozzá kell rendelnie ezt az alkalmazást, vagy nem tudnak bejelentkezni az alkalmazásba.
 1. A konfigurációmódosítás mentéséhez válassza a **Mentés** gombot.
 
 ## <a name="assign-users-and-groups-to-the-app"></a>Felhasználók és csoportok hozzárendelése az alkalmazáshoz
@@ -89,6 +89,14 @@ Miután beállította az alkalmazást a felhasználói hozzárendelés engedély
      A felhasználók és a biztonsági csoportok listája megjelenik egy szövegdobozzal együtt egy adott felhasználó vagy csoport kereséséhez és megkereséséhez. Ez a képernyő lehetővé teszi, hogy egyszerre több felhasználót és csoportot jelöljön ki.
 
 1. Miután végzett a felhasználók és csoportok kijelölése, nyomja meg a **Kijelölés** gombot az alsó lépés a következő részre.
+1. (Nem kötelező) Ha alkalmazásszerepköröket adott meg az alkalmazásban, a **Szerepkör kiválasztása** beállítással hozzárendelheti a kijelölt felhasználókat és csoportokat az alkalmazás egyik szerepköréhez. 
 1. Az alsó **rész Hozzárendelés** gombjával befejezve a felhasználók és csoportok hozzárendelését az alkalmazáshoz. 
 1. Ellenőrizze, hogy a hozzáadott felhasználók és csoportok megjelennek-e a frissített **Felhasználók és csoportok** listában.
 
+## <a name="more-information"></a>További információ
+
+- [Útmutató: Alkalmazásszerepkörök hozzáadása az alkalmazásba](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)
+- [Engedélyezés hozzáadása alkalmazásszerepkörök kel & szerepkörjogcímek egy ASP.NET Core webalkalmazáshoz](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
+- [Biztonsági csoportok és alkalmazásszerepkörök használata az alkalmazásokban (videó)](https://www.youtube.com/watch?v=V8VUPixLSiM)
+- [Azure Active Directory, most antól csoportjogcímekkel és alkalmazásszerepkörökkel](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
+- [Az Azure Active Directory alkalmazás jegyzékfájlja](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

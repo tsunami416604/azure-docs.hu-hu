@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274189"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733104"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure monitorozási adatok streamelése egy eseményközpontba
 Az Azure Monitor teljes körű figyelési megoldást kínál az Azure-beli alkalmazások és szolgáltatások számára, más felhőkben és a helyszínen. Amellett, hogy az Azure Monitor használatával elemzi az adatokat, és kihasználja azokat a különböző figyelési forgatókönyvek, előfordulhat, hogy el kell küldenie a környezetmás figyelési eszközök. A legtöbb esetben a figyelési adatok külső eszközökre történő streamelésének leghatékonyabb módja az [Azure Event Hubs](/azure/event-hubs/)használata. Ez a cikk rövid leírást ad arról, hogyan streamelheti a figyelési adatokat a különböző forrásokból egy eseményközpontba, és részletes útmutatásra mutató hivatkozásokat.
@@ -56,7 +56,7 @@ A figyelési adatok egy eseményközpontba való átirányítása az Azure Monit
 | ArcSight | Nem | Az ArcSight Azure Event Hub intelligens összekötő [az ArcSight intelligens összekötő gyűjtemény](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)részeként érhető el. |
 | Syslog-kiszolgáló | Nem | Ha az Azure Monitor adatait közvetlenül egy syslog-kiszolgálóra szeretné streamelni, használhatja [az Azure-függvényen alapuló megoldást.](https://github.com/miguelangelopereira/azuremonitor2syslog/)
 | LogRhythm között | Nem| A LogRhythm beállítására vonatkozó utasítások a naplók eseményközpontból történő gyűjtésére [itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találhatók. 
-|Logz.io | Igen | További információ: [A figyelés és a naplózás az Azure-ban futó Java-alkalmazások Logz.io használatával című témakörben talál.](https://docs.microsoft.com/azure/java/java-get-started-with-logzio)
+|Logz.io | Igen | További információ: [A figyelés és a naplózás az Azure-ban futó Java-alkalmazások Logz.io használatával című témakörben talál.](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
 
 ## <a name="next-steps"></a>Következő lépések

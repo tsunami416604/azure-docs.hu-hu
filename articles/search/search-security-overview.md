@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: fe7d076fab6a70736843fc644cd56bef44a55df2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/21/2020
+ms.openlocfilehash: 4db9624fbc71e48fcc10ae1d9a1d700d301248a2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415126"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759547"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Biztonság és adatvédelem az Azure Cognitive Search szolgáltatásban
 
@@ -40,7 +40,7 @@ A titkosítás a teljes indexelési folyamatra kiterjed: a kapcsolatoktól az á
 
 | Biztonsági réteg | Leírás |
 |----------------|-------------|
-| Titkosítás az átvitel során <br>(HTTPS/SSL/TLS) | Az Azure Cognitive Search a 443-as HTTPS-porton figyel. A platformon keresztül az Azure-szolgáltatásokhoz való kapcsolatok titkosítva vannak. <br/><br/>Minden ügyfél-szolgáltatás Azure Cognitive Search interakciók SSL/TLS 1.2 képes.  Ügyeljen arra, hogy a TLSv1.2-t használja a szolgáltatáshoz való SSL-kapcsolatokhoz.|
+| Titkosítás az átvitel során <br>(HTTPS/SSL/TLS) | Az Azure Cognitive Search a 443-as HTTPS-porton figyel. A platformon keresztül az Azure-szolgáltatásokhoz való kapcsolatok titkosítva vannak. <br/><br/>Minden ügyfél-szolgáltatás Azure Cognitive Search interakciók használata SSL/TLS 1.2 titkosítást. A korábbi verziók (1.0 vagy 1.1) nem támogatottak.|
 | Titkosítás inaktív állapotban <br>Microsoft által kezelt kulcsok | A titkosítás teljes mértékben internalizált az indexelési folyamatban, mérhető hatással van az indexelési idő befejezéséhez vagy az index méretéhez. Ez automatikusan történik minden indexelés, beleértve a növekményes frissítéseket egy index, amely nem teljesen titkosított (2018 januárja előtt létrehozott).<br><br>Belsőleg a titkosítás az [Azure Storage Service Encryption szolgáltatáson](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)alapul, 256 bites [AES titkosítással.](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)<br><br> A titkosítás az Azure Cognitive Search belső, a Microsoft által belsőleg felügyelt és általánosan alkalmazott tanúsítványokkal és titkosítási kulcsokkal. Nem kapcsolhatja be és ki a titkosítást, kezelheti vagy helyettesítheti saját kulcsait, illetve nem tekintheti meg a titkosítási beállításokat a portálon vagy programozott módon.<br><br>2018. január 24-én jelentették be az inaktív titkosítást, és minden régióban minden szolgáltatási szintre vonatkozik, beleértve az ingyenes szintet is. A teljes titkosításhoz az adott dátum előtt létrehozott indexeket el kell dobni, és újra kell építeni a titkosítás hoz. Ellenkező esetben csak a január 24.-e után hozzáadott új adatok lesznek titkosítva.|
 | Titkosítás inaktív állapotban <br>Felhasználó által kezelt kulcsok | Az ügyfél által kezelt kulcsokkal végzett titkosítás mostantól általánosan elérhető a 2019 januárjában vagy azt követően létrehozott keresési szolgáltatások esetében. Ingyenes (megosztott) szolgáltatások nem támogatottak.<br><br>Az Azure Cognitive Search-indexek és szinonimatérképek mostantól titkosíthatók az Azure Key Vaultban az ügyfél által felügyelt kulcsokkal. További információ: [Titkosítási kulcsok kezelése az Azure Cognitive Search szolgáltatásban.](search-security-manage-encryption-keys.md)<br><br>Ez a szolgáltatás nem helyettesíti az alapértelmezett titkosítást inaktív, hanem alkalmazni mellett is.<br><br>A szolgáltatás engedélyezése növeli az index méretét és csökkenti a lekérdezés teljesítményét. Az eddigi megfigyelések alapján 30–60%-os növekedésre számíthat a lekérdezési időkben, bár a tényleges teljesítmény az indexdefiníciótól és a lekérdezések típusától függően változhat. A teljesítményre gyakorolt hatás miatt azt javasoljuk, hogy csak olyan indexeken engedélyezze ezt a funkciót, amelyekvalóban igénylik.
 

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6bf34f8fb15bf8fddb1ba398ed678d5c98b8c84f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 265e15713f8159e370ef22a197ffe931200a88f7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667788"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758998"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Apache Kafka-fürtök használata az Azure HDInsightban REST-proxy használatával
 
@@ -74,7 +74,7 @@ REST-proxyvégpont-kérelmek esetén az ügyfélalkalmazásoknak OAuth-jogkivona
 Az alábbi python-kód segítségével a Kafka-fürt REST-proxyjával kommunikálhat. A kódminta használatához kövesse az alábbi lépéseket:
 
 1. Mentse a mintakódot egy olyan számítógépen, amelyen telepítve van a Python.
-1. Telepítse a szükséges python-függőségeket a `pip3 install adal` végrehajtásával és `pip install msrestazure`a.
+1. Telepítse a szükséges python-függőségeket a `pip3 install msal`végrehajtásával.
 1. A kódszakasz **módosítása: Konfigurálja ezeket a tulajdonságokat,** és frissítse a következő tulajdonságokat a környezetben:
 
     |Tulajdonság |Leírás |
@@ -84,7 +84,7 @@ Az alábbi python-kód segítségével a Kafka-fürt REST-proxyjával kommuniká
     |Titkos ügyfélkulcs|A biztonsági csoportban regisztrált alkalmazás titkost.|
     |Kafkarest_endpoint|Ezt az értéket a fürt **tulajdonságai** lapján, a [központi telepítés szakaszban](#create-a-kafka-cluster-with-rest-proxy-enabled)leírtak szerint kaphatja meg. Meg kell a következő formátumban -`https://<clustername>-kafkarest.azurehdinsight.net`|
 
-1. A parancssorból hajtsa végre a python fájlt a`python <filename.py>`
+1. A parancssorból hajtsa végre a python fájlt a`sudo python3 <filename.py>`
 
 Ez a kód a következő műveletet teszi:
 
@@ -95,13 +95,9 @@ Az OAuth-tokenek pythonban való beszerzéséről a [Python AuthenticationContex
 
 ```python
 #Required python packages
-#pip3 install adal
-#pip install msrestazure
+#pip3 install msal
 
-import adal
-from msrestazure.azure_active_directory import AdalAuthentication
-from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD
-import requests
+import msal
 
 #--------------------------Configure these properties-------------------------------#
 # Tenant ID for your Azure Subscription
@@ -114,19 +110,24 @@ client_secret = 'password'
 kafkarest_endpoint = "https://<clustername>-kafkarest.azurehdinsight.net"
 #--------------------------Configure these properties-------------------------------#
 
-#getting token
-login_endpoint = AZURE_PUBLIC_CLOUD.endpoints.active_directory
-resource = "https://hib.azurehdinsight.net"
-context = adal.AuthenticationContext(login_endpoint + '/' + tenant_id)
+# Scope
+scope = 'https://hib.azurehdinsight.net/.default'
+#Authority
+authority = 'https://login.microsoftonline.com/' + tenant_id
 
-token = context.acquire_token_with_client_credentials(
-    resource,
-    client_id,
-    client_secret)
+# Create a preferably long-lived app instance which maintains a token cache.
+app = msal.ConfidentialClientApplication(
+    client_id , client_secret, authority,
+    #cache - For details on how look at this example: https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py
+    )
 
-accessToken = 'Bearer ' + token['accessToken']
+# The pattern to acquire a token looks like this.
+result = None
 
-print(accessToken)
+result = app.acquire_token_for_client(scopes=[scope])
+
+print(result)
+accessToken = result['access_token']
 
 # relative url
 getstatus = "/v1/metadata/topics"
@@ -137,10 +138,10 @@ response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
 ```
 
-Az alábbiakban egy másik minta, hogyan kaphat le egy jogkivonatot az Azure for REST proxy egy curl parancs használatával. Figyelje meg, `resource=https://hib.azurehdinsight.net` hogy szükségünk van a megadott, míg egy token.
+Az alábbiakban egy másik minta, hogyan kaphat le egy jogkivonatot az Azure for REST proxy egy curl parancs használatával. **Figyelje meg, `scope=https://hib.azurehdinsight.net/.default` hogy szükségünk van a megadott, míg egy token.**
 
 ```cmd
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&scope=https://hib.azurehdinsight.net/.default' 'https://login.microsoftonline.com/<tenantid>/oauth2/v2.0/token'
 ```
 
 ## <a name="next-steps"></a>További lépések

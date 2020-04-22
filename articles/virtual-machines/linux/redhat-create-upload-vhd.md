@@ -1,24 +1,19 @@
 ---
 title: Red Hat Enterprise Linux virtuális merevlemez létrehozása és feltöltése az Azure-ban való használatra
 description: Ismerje meg, hogyan hozhat létre és tölthet fel egy Red Hat Linux operációs rendszert tartalmazó Virtuális Azure-merevlemezt (VHD).
-services: virtual-machines-linux
-documentationcenter: ''
 author: gbowerman
-manager: gwallace
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 6c6b8f72-32d3-47fa-be94-6cb54537c69f
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: cc806fe0c3894174835c99493ebf2ba19a11ca28
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 625dd1c8051d7949987d0dd19ee8a08347eedf14
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460460"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758635"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése az Azure-beli használatra
 Ebben a cikkben megtudhatja, hogyan készíthet elő egy Red Hat Enterprise Linux (RHEL) virtuális gépet az Azure-ban való használatra. Az RHEL e cikkben szereplő verziói a 6.7+ és a 7.1+. A cikkben tárgyalt hipervizorok a Hyper-V, a kernel alapú virtuális gép (KVM) és a VMware. A Red Hat Cloud Access programjában való részvétel jogosultsági követelményeiről a [Red Hat Cloud Access webhelyén](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) és az [RHEL futtatása az Azure-ban](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)című témakörben talál további információt. Az RHEL-lemezképek létrehozásának automatizálása az [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)webhelyen található.
@@ -122,7 +117,7 @@ Ez a szakasz feltételezi, hogy már beszerzett egy ISO fájlt a Red Hat webhely
 
 1. Futtassa a következő parancsokat a virtuális gép kiirtásához, és készítse elő az Azure-beli kiépítésre:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 

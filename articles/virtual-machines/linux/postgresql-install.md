@@ -1,25 +1,20 @@
 ---
 title: A PostgreSQL beállítása Linux os virtuális gépen
 description: A PostgreSQL telepítése és konfigurálása Linux os virtuális gépen az Azure-ban
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 1a747363-0cc5-4ba3-9be7-084dfeb04651
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d86e42dcc16d108cc82c9d245c7919145cef365f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75747798"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759331"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása az Azure-ban
 A PostgreSQL az Oracle-hez és a DB2-hez hasonló, fejlett nyílt forráskódú adatbázis. Ez magában foglalja a vállalati használatra kész funkciók, mint például a teljes ACID megfelelés, megbízható tranzakciós feldolgozás, és a többverziós egyidejűség-szabályozás. Támogatja az OLYAN szabványokat is, mint az ANSI SQL és az SQL/MED (beleértve az Oracle, a MySQL, a MongoDB és még sokan mások külföldi adatburkolóit). Rendkívül bővíthető több mint 12 eljárási nyelv, GIN és GiST indexek, térbeli adattámogatás és több NoSQL-szerű funkció támogatásával a JSON vagy a kulcsérték-alapú alkalmazásokhoz.

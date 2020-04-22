@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 0fa1b58547e0260ec5486003cf4cb85d855de33a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310217"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756664"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Eszközkapcsolatok monitorozása az Azure CLI-vel
 
-*Ez a témakör az építőkre és a rendszergazdákra vonatkozik.*
+*Ez a témakör az eszközfejlesztőkre és a megoldáskészítőkre vonatkozik.*
 
 Az Azure CLI IoT-bővítmény segítségével megtekintheti az eszközök által az IoT Centralba küldött üzeneteket, és megfigyelheti az ikereszköz változásait. Ezzel az eszközzel debug és megfigyelheti az eszköz kapcsolatát, és diagnosztizálhatja a felhőbe vagy az ikermódosításokra nem reagáló eszközökhöz nem elérő eszközüzenetek kelendő problémáit.
 
@@ -79,4 +79,4 @@ az iot central device-twin show --app-id <app-id> --device-id <device-id>
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta az IoT Central Explorer használatát, a javasolt következő lépés az [IoT Central eszközök kezelésének](howto-manage-devices.md)feltárása.
+Ha Ön eszközfejlesztő, a javasolt következő lépés az [Azure IoT Central eszközkapcsolatának](./concepts-get-connected.md)elolvasása.

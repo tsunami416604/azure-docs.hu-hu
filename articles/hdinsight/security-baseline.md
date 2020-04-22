@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 93a5bcd77bb4f42d9099cc1ddb1b5c3130c19059
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 2ddb9a9c205135707d7d96beb106074baa1ce324
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010137"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758258"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure biztonsági alapkonfiguráció a HDInsighthoz
 
@@ -144,7 +144,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
 Azure Blueprints is használhatja a nagy méretű Azure-központi telepítések a csomagolás kulcsfontosságú környezeti összetevők, például az Azure Resource Manager-sablonok, RBAC-vezérlők és szabályzatok, egyetlen tervezet definíciójában. Egyszerűen alkalmazhatja a tervezetet az új előfizetésekre és környezetekre, és finomíthatja a vezérlést és a felügyeletet a verziószámozással.
 
-Az elérhető Azure-szabályzataliasok megtekintése:
+Az elérhető Azure Policy-aliasok megtekintése:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -704,7 +704,7 @@ Ha Rapid7, Qualys vagy bármely más biztonsági réskezelési platform-előfize
 
 A Rapid7 agent manuális telepítése:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/install
 
 A Qualys Agent manuális telepítése:
 
@@ -774,7 +774,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-li
 
 Bár a klasszikus Azure-erőforrások fedezhetők fel a Resource Graph, erősen ajánlott az Azure Resource Manager erőforrásainak létrehozása és használata a jövőben.
 
-Lekérdezések létrehozása az Azure Graph segítségével:
+Lekérdezések létrehozása az Azure Resource Graph segítségével:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -940,7 +940,7 @@ A feltételes hozzáférés beállítása az Azure Resource Manager eléréséne
 
 **Útmutató:** A "Microsoft.HDInsight" névtérben az Azure Policy aliasok használatával egyéni szabályzatokat hozhat létre a HDInsight-fürt hálózati konfigurációjának naplózásához vagy érvényesítéséhez.
 
-Az elérhető Azure-szabályzataliasok megtekintése:
+Az elérhető Azure Policy-aliasok megtekintése:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -1034,7 +1034,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Útmutató:** A "Microsoft.HDInsight" névtérben az Azure Policy aliasok használatával egyéni szabályzatokat hozhat létre a HDInsight-fürt konfigurációjának naplózásához vagy érvényesítéséhez.
 
-Az elérhető Azure-szabályzataliasok megtekintése:
+Az elérhető Azure Policy-aliasok megtekintése:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 

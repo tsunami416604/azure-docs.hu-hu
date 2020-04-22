@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a1fd22772e72cba4cce3f9fa2751dc0df0e15bb9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535598"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758892"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményalapú háttérfeldolgozáshoz
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-További részletekért tekintse meg az [Event Hubs kötési](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings) cikket.
+További részletekért tekintse meg az [Event Hubs kötési](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json) cikket.
 
 ### <a name="queue-storage-trigger-configuration"></a>Várólista-tároló eseményindítójának konfigurációja
 

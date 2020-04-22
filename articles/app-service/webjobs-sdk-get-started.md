@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4976be485a9b7609c6e8d23f6b897092217663fc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 4ee724ec66d5fb474f8c8a9a967cc7235fef5e85
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535672"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732630"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK első lépései az eseményalapú háttérfeldolgozáshoz
 
@@ -134,7 +134,7 @@ Ebben a szakaszban olyan konzolnaplózást állíthat be, amely a [ASP.NET Core 
     * Letiltja [az irányítópult naplózását.](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs) Az irányítópult egy örökölt figyelési eszköz, és az irányítópult naplózása nem ajánlott a nagy átviteli sebességű éles forgatókönyvek.
     * Hozzáadja a konzolszolgáltatót az alapértelmezett [szűréssel.](webjobs-sdk-how-to.md#log-filtering)
 
-Most hozzáadhat egy függvényt, amelyet az Azure [Storage-várólistába](../azure-functions/functions-bindings-storage-queue.md)érkező üzenetek váltanak ki.
+Most hozzáadhat egy függvényt, amelyet az Azure Storage-várólistába érkező üzenetek váltanak ki.
 
 ## <a name="install-the-storage-binding-extension"></a>A Storage-kötésbővítmény telepítése
 
@@ -184,7 +184,7 @@ A 3.x-es verziótól kezdve explicit módon telepítenie kell a WebJobs SDK ált
 
    Az `QueueTrigger` attribútum megmondja a futásidejűnek, hogy hívja meg ezt a `queue`függvényt, ha egy új üzenet van írva egy Azure Storage-várólistában, amelynek neve. A várólistaüzenet tartalma a `message` paraméterben lévő metóduskódhoz van megadva. A metódus törzse az, ahol feldolgozza az eseményindító adatait. Ebben a példában a kód csak naplózza az üzenetet.
 
-   A `message` paraméternek nem kell karakterláncnak lennie. JSON-objektumhoz, bájttömbhöz vagy [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) objektumhoz is köthető. [Lásd: Várólista-eseményindító kulcsok használata](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Minden kötéstípus (például várólisták, blobok vagy táblák) különböző paramétertípus-készlettel rendelkezik, amelyhez kötődhet.
+   A `message` paraméternek nem kell karakterláncnak lennie. JSON-objektumhoz, bájttömbhöz vagy [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) objektumhoz is köthető. [Lásd: Várólista-eseményindító kulcsok használata](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage). Minden kötéstípus (például várólisták, blobok vagy táblák) különböző paramétertípus-készlettel rendelkezik, amelyhez kötődhet.
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -280,7 +280,7 @@ Ebben a szakaszban a projektet helyileg hozza létre és futtatja, és a függv�
 
    Mivel az `QueueTrigger` attribútumot használta `ProcessQueueMessage` a függvényben, a WeJobs SDK futásidejű figyeli a várólista-üzeneteket indításkor. Új várólista-üzenetet talál a *várólistában,* és meghívja a függvényt.
 
-   A [várólista-lekérdezés exponenciális visszalépése](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)miatt akár 2 percig is eltarthat, amíg a futásidejű megtalálja az üzenetet, és meghívja a függvényt. Ez a várakozási idő [fejlesztési módban](webjobs-sdk-how-to.md#host-development-settings)való futással csökkenthető.
+   A [várólista-lekérdezés exponenciális visszalépése](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)miatt akár 2 percig is eltarthat, amíg a futásidejű megtalálja az üzenetet, és meghívja a függvényt. Ez a várakozási idő [fejlesztési módban](webjobs-sdk-how-to.md#host-development-settings)való futással csökkenthető.
 
    A konzol kimenete így néz ki:
 
@@ -444,7 +444,7 @@ A központi telepítés során hozzon létre egy alkalmazásszolgáltatás-péld
 1. Frissítse a **Várólista** lapot, és az új üzenet eltűnik, mert az Azure-ban futó függvény feldolgozta.
 
    > [!TIP]
-   > Amikor az Azure-ban teszteli, használja [a fejlesztési módot](webjobs-sdk-how-to.md#host-development-settings) annak biztosítására, hogy a várólista-eseményindító függvényt azonnal meghívja, és elkerülje a késleltetést a [várólista-lekérdezés exponenciális visszalépésmiatt.](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)
+   > Amikor az Azure-ban teszteli, használja [a fejlesztési módot](webjobs-sdk-how-to.md#host-development-settings) annak biztosítására, hogy a várólista-eseményindító függvényt azonnal meghívja, és elkerülje a késleltetést a [várólista-lekérdezés exponenciális visszalépésmiatt.](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)
 
 ### <a name="view-logs-in-application-insights"></a>Naplók megtekintése az Application Insightsban
 

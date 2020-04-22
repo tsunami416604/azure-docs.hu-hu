@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/12/2020
-ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 25fdb0aefacbdd9c2630a69981a67821ac155786
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260861"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758804"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Az Azure Monitor ügyféláltal felügyelt kulcskonfigurációja 
 
@@ -281,7 +281,7 @@ Frissítse a *fürterőforrás* KeyVaultProperties a kulcsazonosító adatait.
 
 **Frissítés**
 
-Ez az Erőforrás-kezelő kérés aszinkron művelet.
+Ez az Erőforrás-kezelő kérés aszinkron művelet a kulcsazonosító részleteinek frissítésekor, miközben szinkrona a Kapacitásérték frissítésekor.
 
 > [!Warning]
 > Meg kell adnia egy teljes *törzset* a fürterőforrás-frissítésben, amely tartalmazza *az identitást,* *a termékku-t*, *a KeyVaultProperties tulajdonságot* és *a helyet.* Ha hiányoznak a *KeyVaultProperties* adatai, a kulcsazonosító t eltávolítja a *fürterőforrásból,* és a kulcs [visszavonását](#cmk-kek-revocation)okozza.
@@ -314,7 +314,7 @@ A "KeyVaultProperties" a Key Vault kulcsazonosítójának adatait tartalmazza.
 **Válasz**
 
 200 OK és fejléc.
-A kulcsazonosító propagálása néhány percet vesz igénybe. A kiépítési állapotot kétféleképpen ellenőrizheti:
+A kulcsazonosító propagálása néhány percet vesz igénybe. A frissítés állapotát kétféleképpen ellenőrizheti:
 1. Másolja az Azure-AsyncOperation URL-értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését.](#asynchronous-operations-and-status-check)
 2. GET-kérelem küldése *Cluster* a fürterőforrásra, és tekintse meg a *KeyVaultProperties tulajdonságait.* A legutóbb frissített kulcsazonosító adatait a válaszban kell megadni.
 
@@ -436,13 +436,13 @@ Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotác
 
 - A *fürterőforrások* maximális száma előfizetésenként legfeljebb 2
 
-- *A* fürterőforrás-társítást csak akkor szabad végrehajtani, ha meggyőződött arról, hogy az ADX-fürt kiépítése teljesült. A kiépítés előtt küldött adatokat a rendszer eldob, és nem lesz helyreállítható.
+- *A* fürterőforrás-társítást csak akkor szabad végrehajtani, ha meggyőződött arról, hogy az ADX-fürt kiépítésbefejeződött. A kiépítés befejezése előtt a munkaterületre küldött adatok ellesznek dobva, és nem lesznek helyreállíthatók.
 
 - A CMK-titkosítás a CMK-konfiguráció után az újonnan bevitt adatokra vonatkozik. A CMK-konfiguráció előtt bevitt adatok továbbra is titkosítva maradnak a Microsoft-kulccsal. A CMK-konfiguráció előtt és után betöltött adatok lekérdezése zökkenőmentesen.
 
-- Miután munkaterület van társítva egy *fürterőforráshoz,* nem lehet a *fürt* erőforrásból való társítást, mivel az adatok titkosítva vannak a kulccsal, és nem érhetők el az Azure Key Vaultban a KEK nélkül.
+- A *munkaterület* fürterőforrásból való letársítása leoldható, amikor úgy dönt, hogy a CMK nem szükséges egy adott munkaterülethez. A társítási művelet után az új bevitt adatok at a megosztott Log Analytics-tárolóban tárolják, ahogy az a *fürterőforráshoz* való társítása előtt volt. A de-társítás előtt és után bevitt adatok lekérdezése zökkenőmentesen, ha a *fürterőforrás* kiépítése és konfigurálása érvényes Key Vault-kulccsal van konfigurálva.
 
-- Az Azure Key Vault kell konfigurálni, mint helyreállítható. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, és cli és PowerShell használatával kell konfigurálni:
+- Az Azure Key Vault kell konfigurálni, mint helyreállítható. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, és CLI vagy PowerShell használatával kell konfigurálni őket:
 
   - [A soft delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) gombot be kell kapcsolni
   - [A tisztítási védelmet](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) be kell kapcsolni, hogy védekezze a titkos / trezor erő törlésének ellen, még a puha törlés után is
@@ -470,6 +470,8 @@ Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotác
 
 - Ha egy munkaterülethez társított *fürterőforrást* próbál törölni, a törlési művelet sikertelen lesz.
 
+- Ha ütközési hibát kap egy *fürterőforrás* létrehozásakor – Előfordulhat, hogy az elmúlt 14 napban törölte a *fürterőforrást,* és az egy helyreállítható törlési időszakban van. A *fürterőforrás* neve továbbra is fenntartva marad a helyreállítható törlési időszakban, és nem hozhat létre új fürtöt ezzel a névvel. A név a helyreállítható törlési időszak után jelenik meg, amikor a *fürterőforrás* véglegesen törlődik.
+
 - Erőforráscsoport összes *fürterőforrásának* beszereznie:
 
   ```rst
@@ -488,6 +490,11 @@ Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotác
           "tenantId": "tenant-id",
           "principalId": "principal-Id"
         },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
         "properties": {
            "KeyVaultProperties": {
               KeyVaultUri: "https://key-vault-name.vault.azure.net",
@@ -517,8 +524,10 @@ Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotác
   **Válasz**
     
   Ugyanaz a válasz, mint a *"Fürterőforrások* egy erőforráscsoporthoz", de az előfizetés hatókörében.
-    
-- Törölje a *fürterőforrást* – a rendszer helyreállító törlési műveletet hajt végre, amely lehetővé teszi a fürterőforrás, az adatok és a kapcsolódó munkaterületek 14 napon belüli helyreállítását, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e. A *fürterőforrás* neve továbbra is fenntartva marad a helyreállítható törlési időszakban, és nem hozhat létre új fürtöt ezzel a névvel. A helyreállítható törlési időszak után a *fürterőforrás* és -adatok nem állíthatók helyre. A társított munkaterületek nincsenek *Cluster* társítva a fürterőforrásból, és az új adatok at a megosztott tárolóba tárolják, és a Microsoft kulccsal titkosítják.
+
+- *Kapacitásfoglalás* frissítése *a fürterőforrásban* – ha a társított munkaterületek adatkötete megváltozik, és frissíteni szeretné a kapacitásfoglalási szintet a számlázási szempontok miatt, kövesse a [ *fürterőforrás frissítését,* ](#update-cluster-resource-with-key-identifier-details) és adja meg az új kapacitásértéket. A kapacitásfoglalási szint napi 1000 és 2000 GB között lehet, és 100-as lépésekben. Napi 2000 GB-nál magasabb szinten érheti el microsoftos partnerét, és engedélyezze azt.
+
+- Törölje a *fürterőforrást* – a rendszer helyreállítható törlési műveletet hajt végre, amely lehetővé teszi a *fürterőforrás* helyreállítását, beleértve annak adatait is 14 napon belül, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e. A *fürterőforrás* neve továbbra is fenntartva marad a helyreállítható törlési időszakban, és nem hozhat létre új fürtöt ezzel a névvel. A helyreállítható törlési időszak után a *fürterőforrás* neve felszabadul, a *fürterőforrás* és -adatok véglegesen törlődnek, és nem állíthatók helyre. Minden társított munkaterület törléskor megszűnik a *fürterőforrásból.* Az új bevitt adatok at megosztott Log Analytics-tárolóban tárolják, és a Microsoft kulccsal titkosítják. A munkaterületek de-associated művelet aszinkron.
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -529,8 +538,7 @@ Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotác
 
   200 OK
 
-- A *fürterőforrás* és az adatok helyreállítása – a helyreállítható törlési időszak alatt hozzon létre egy *fürterőforrást* ugyanazzal a névvel és ugyanabban az előfizetésben, erőforráscsoportban és régióban. A *fürterőforrás* helyreállításához kövesse a ** *Fürterőforrás* létrehozása** lépést.
-
+- A *fürterőforrás* és az adatok helyreállítása – Az elmúlt 14 napban törölt *fürterőforrás* helyreállítható törlési állapotban van, és helyreállítható. Ezt a termékcsoport manuálisan hajtja végre. Használja a Microsoft-csatornát helyreállítási kérelmekhez.
 
 ## <a name="appendix"></a>Függelék
 

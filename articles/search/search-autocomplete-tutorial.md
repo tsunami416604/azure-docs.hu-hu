@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 1d8085c6056cb0d2541999c3e9c249cde3da8834
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641254"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758108"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazásokhoz
 
@@ -22,7 +22,7 @@ A felhasználó által kezdeményezett lekérdezések hatékonyságának javít�
 Ahhoz, hogy ezeket a tapasztalatokat megvalósítsa az Azure Cognitive Search szolgáltatásban, a következőkre lesz szüksége:
 
 + Egy *szuggesztő* a hátsó oldalon.
-+ Automatikus *query* kiegészítést vagy javaslatok API-t a kérelemben megadva.
++ Automatikus *query* [kiegészítést](https://docs.microsoft.com/rest/api/searchservice/autocomplete) vagy [javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggestions) API-t a kérelemben megadva.
 + A *felhasználói felület vezérlője* a keresés önkénti keresésének kezelésére az ügyfélalkalmazásban. Ehhez azt javasoljuk, hogy egy meglévő JavaScript-kódtárat használjon.
 
 Az Azure Cognitive Search, automatikusan kitöltött lekérdezések és a javasolt eredmények lekérése a keresési index, a kiválasztott mezők, amelyek regisztrált a javaslatajánló. A javaslatajánló az index része, és meghatározza, hogy mely mezők biztosítják a lekérdezést letöltő, eredményt sugalló vagy mindkettőt tartalmazó tartalmat. Az index létrehozásakor és betöltésekor egy javaslatajánló adatstruktúra jön létre belsőleg a részleges lekérdezések egyeztetéséhez használt előtagok tárolására. A javaslatok, kiválasztása megfelelő területeken, amelyek egyedi, vagy legalábbis nem ismétlődő, elengedhetetlen, hogy a tapasztalat. További információt a [Javaslatajánló létrehozása](index-add-suggesters.md)című témakörben talál.
@@ -31,7 +31,7 @@ A cikk további része a lekérdezésekre és az ügyfélkódra összpontosít. 
 
 ## <a name="set-up-a-request"></a>Kérelem beállítása
 
-A kérelem elemei közé tartozik az API[(automatikus kiegészítés REST](https://docs.microsoft.com/rest/api/searchservice/autocomplete) vagy [javaslat REST),](https://docs.microsoft.com/rest/api/searchservice/suggestions)egy részleges lekérdezés, és egy javaslatajánló.
+A kérelem elemei közé tartozik a keresés-as-you-type API-k, részleges lekérdezés, és egy javaslatajánló. A következő parancsfájl egy kérelem összetevőit mutatja be, példaként az automatikus kiegészítés REST API-t használva.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
@@ -49,7 +49,7 @@ Az API-k nem írnak elő minimális hosszkövetelményeket a részleges lekérde
 
 Az egyezések a kifejezés elején vannak bárhol a bemeneti karakterláncban. Mivel a "gyors barna róka", mind az automatikus kiegészítés és javaslatok egyezik a részleges változatai "a", "gyors", "barna", vagy "róka", de nem a részleges infix kifejezések, mint a "rown" vagy "ökör". Továbbá minden egyezés meghatározza a downstream bővítések hatókörét. A részleges lekérdezés "gyors br" egyezik a "gyors barna" vagy "gyors kenyér", de sem a "barna" vagy a "kenyér" önmagukban lenne egyezik, kivéve, ha "gyors" megelőzi őket.
 
-### <a name="apis"></a>API-k
+### <a name="apis-for-search-as-you-type"></a>API-k a beírást kitekintő kereséshez
 
 Kövesse az alábbi hivatkozásokat a REST és a .NET SDK referencialapokhoz:
 
@@ -64,12 +64,13 @@ Az automatikus kiegészítésre és a javaslatokra adott válaszok az, amire sz�
 
 A válaszokat a kérés paraméterei alakítják. Az automatikus kiegészítés mezőben állítsa be az [**automatikus kiegészítésmód**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) beállítását annak meghatározására, hogy a szöveg kiegészítése egy vagy két feltétel szerint történjen-e. A Javaslatok mezőben a kiválasztott mező határozza meg a válasz tartalmát.
 
-A válasz további finomítása érdekében adjon meg további paramétereket a kéréshez. A következő paraméterek az automatikus kiegészítésre és a javaslatokra egyaránt vonatkoznak.
+Javaslatok esetén tovább kell finomítania a választ, hogy elkerülje az ismétlődéseket vagy a nem kapcsolódó eredményeket. Az eredmények szabályozásához adjon meg további paramétereket a kérésben. A következő paraméterek mind az automatikus kiegészítésre, mind a javaslatokra vonatkoznak, de talán nagyobb szükség van a javaslatokra, különösen akkor, ha a javaslatajánló több mezőt tartalmaz.
 
 | Paraméter | Használat |
 |-----------|-------|
-| **$select** | Ha több **forrásmezővel**rendelkezik, **$select** segítségével választhatja ki, hogy melyik mező járul hozzá az értékekhez (`$select=GameTitle`). |
-| **$filter** | Egyezési feltételek alkalmazása`$filter=ActionAdventure`az eredményhalmazra ( ). |
+| **$select** | Ha egy javaslatozóban több **forrásmező** is van, **$select** segítségével`$select=GameTitle`választhatja ki, hogy melyik mező járul hozzá az értékekhez ( ). |
+| **keresési mezők** | A lekérdezés korlátozása adott mezőkre. |
+| **$filter** | Egyezési feltételek alkalmazása`$filter=Category eq 'ActionAdventure'`az eredményhalmazra ( ). |
 | **$top** | Az eredményeket egy adott`$top=5`számra ( ) korlátozza.|
 
 ## <a name="add-user-interaction-code"></a>Felhasználói beavatkozási kód hozzáadása
@@ -149,6 +150,8 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
     // Call suggest API and return results
     SuggestParameters sp = new SuggestParameters()
     {
+        Select = HotelName,
+        SearchFields = HotelName,
         UseFuzzyMatching = fuzzy,
         Top = 5
     };

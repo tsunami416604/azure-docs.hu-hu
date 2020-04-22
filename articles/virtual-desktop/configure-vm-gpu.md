@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b675a78041b68210fa7583510582783c506c720
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78384824"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767038"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Grafikus feldolgozóegység (GPU) gyorsításának konfigurálása a Windows Virtual Desktop rendszerhez
 
@@ -88,7 +88,7 @@ Annak ellenőrzése, hogy a Távoli asztal GPU-gyorsított kódolást használ-e
 
 ## <a name="next-steps"></a>További lépések
 
-Ezek az utasítások egy munkamenetgazda virtuális gépen GPU-gyorsítással való működést biztosítják. Néhány további szempont a GPU-gyorsítás nagyobb gazdagépkészleten történő engedélyezéséhez:
+Ezek nek az utasításoknak egy munkamenet-gazdagépen (egy virtuális gépen) a GPU-gyorsítással kell rendelkezniük. Néhány további szempont a GPU-gyorsítás nagyobb gazdagépkészleten történő engedélyezéséhez:
 
 * Fontolja meg egy [virtuális gép bővítmény](/azure/virtual-machines/extensions/overview) használatával az illesztőprogram telepítésének és frissítéseinek egyszerűsítéséhez számos virtuális gépközött. Használja az [NVIDIA GPU illesztőprogram-bővítményt](/azure/virtual-machines/extensions/hpccompute-gpu-windows) NVIDIA GPU-val rendelkező virtuális gépekhez, és használja az AMD GPU-illesztőprogram-bővítményt (hamarosan) az AMD GPU-val rendelkező virtuális gépekhez.
 * Fontolja meg az Active Directory csoportházirend használatával egyszerűsíteni a csoportházirend-konfigurációt több virtuális gép között. A csoportházirend Active Directory tartományban történő központi telepítéséről a [Csoportházirend-objektumok használata](https://go.microsoft.com/fwlink/p/?LinkId=620889)című témakörben talál további információt.

@@ -5,14 +5,14 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: charwen
-ms.openlocfilehash: 15abee4688a2f6aefa2b08ad2b8eee6622d56be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0188f9bc1c7c0e8d7fed9f590d078085b175614f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087267"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732197"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Az NSG-hozzáférés és az Azure-bástya együttműködése
 
@@ -32,9 +32,9 @@ Ezen az ábrán:
 
 Ez a szakasz a felhasználó és az Azure-bástya közötti hálózati forgalmat mutatja be, valamint a virtuális hálózatban lévő virtuális gépek célszolgáltatását:
 
-### <a name="azurebastionsubnet"></a>AzureBastionSubnet
+### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Az Azure Bastion kifejezetten az AzureBastionSubnet üzembe helyezése.
+Az Azure Bastion kifejezetten az ***AzureBastionSubnet***számára van telepítve.
 
 * **Be- és forgalom:**
 
@@ -46,19 +46,11 @@ Az Azure Bastion kifejezetten az AzureBastionSubnet üzembe helyezése.
    * **Kimenő forgalom a cél virtuális gépek:** Az Azure Bastion privát IP-címén keresztül éri el a célvirtuális gépeket. Az NSG-knek engedélyeznie kell a 3389-es és 22-es port más cél virtuálisgép-alhálózatokra irányuló kimenő forgalmat.
    * **Kimenő forgalom az Azure más nyilvános végpontjaira:** Az Azure Bastion képesnek kell lennie arra, hogy csatlakozzon a különböző nyilvános végpontok az Azure-on belül (például diagnosztikai naplók tárolására és a mérési naplók). Emiatt az Azure Bastion kell kimenő 443 **AzureCloud** szolgáltatáscímkét.
 
-* **Cél virtuális gép alhálózata:** Ez az az alhálózat, amely tartalmazza azt a célvirtuális gépet, amelyhez RDP/SSH kíván lenni.
+### <a name="target-vm-subnet"></a>Cél virtuális gép alhálózata
+Ez az az alhálózat, amely tartalmazza azt a célvirtuális gépet, amelyhez RDP/SSH kíván lenni.
 
    * **Forgalom be- és betiltása az Azure-bástyáról:** Az Azure Bastion privát IP-címén keresztül éri el a célvirtuális gép. RDP/SSH portok (portok 3389/22 volt) meg kell nyitni a cél virtuális gép oldalán magán IP-cím felett. Ajánlott eljárásként hozzáadhatja az Azure Bastion alhálózati IP-címtartományt ebben a szabályban, hogy csak a Bastion tudja megnyitni ezeket a portokat a cél virtuálisgép-alhálózatban lévő célvirtuális gépeken.
 
-## <a name="apply-nsgs-to-azurebastionsubnet"></a><a name="apply"></a>NSG-k alkalmazása az AzureBastionSubnet-re
-
-Ha nsg-t hoz létre és alkalmaz az ***AzureBastionSubnet-re,*** győződjön meg arról, hogy az nsg-ben hozzáadta a következő szabályokat. Ha nem adja hozzá ezeket a szabályokat, az NSG létrehozása/frissítése sikertelen lesz:
-
-* **Vezérlősík-kapcsolat:** Bejövő a 443-as on GatewayManager
-* **Diagnosztikai naplózás és egyéb:** Kimenő 443-as az AzureCloudba. A szolgáltatáscímkén belüli regionális címkék még nem támogatottak.
-* **Cél virtuális gép:** Kimenő 3389 és 22 a VirtualNetwork
-
-Ebben a [rövid útmutató sablonban](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)elérhető egy NSG-szabály példa.
 
 ## <a name="next-steps"></a>További lépések
 

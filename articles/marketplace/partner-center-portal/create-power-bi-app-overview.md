@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c348a172b16e12334d33cf2718609694147fdce3
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674526"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732677"
 ---
 # <a name="power-bi-app-creation-overview"></a>A Power BI-alkalmazások létrehozása – áttekintés
 
@@ -69,7 +69,7 @@ Power BI-alkalmazást csak a [Power](https://powerbi.microsoft.com/) BI-környez
 2. Az alkalmazás létrehozása és tesztelése a Power BI-ban.
 3. Amikor megkapja az alkalmazástelepítési webcímet, adja hozzá a **Partnerközpont Műszaki konfiguráció** lapjához.
 
-Miután létrehozta és tesztelte az alkalmazást a Power BI-ban, mentse az alkalmazás telepítési webcímét, mivel szüksége lesz rá [a Power BI-alkalmazásajánlat létrehozásához.](https://aka.ms/AzureCreatePBIServiceApp)
+Miután létrehozta és tesztelte az alkalmazást a Power BI-ban, mentse az alkalmazás telepítési webcímét, mivel szüksége lesz rá [a Power BI-alkalmazásajánlat létrehozásához.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
 
 ### <a name="business-requirements"></a>Üzleti követelmények
 
@@ -81,4 +81,4 @@ Az üzleti követelmények magukban foglalják az eljárási, szerződéses és 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Power BI-alkalmazásajánlat létrehozása a Partnerközpontban](https://aka.ms/AzureCreatePBIServiceApp)
+- [Power BI-alkalmazásajánlat létrehozása a Partnerközpontban](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

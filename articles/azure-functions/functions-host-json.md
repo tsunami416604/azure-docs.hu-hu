@@ -3,12 +3,12 @@ title: host.json hivatkozás az Azure Functions 2.x-hez
 description: Az Azure Functions host.json fájl referenciadokumentációja a v2 futásidejű.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405487"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758849"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json hivatkozás az Azure Functions 2.x és újabb függvényekhez 
 
@@ -216,7 +216,7 @@ A konfigurációs beállítás a [Tartós függvények kötéseiben](durable/dur
 
 ## <a name="eventhub"></a>eventHub
 
-A konfigurációs beállítások az [Event Hub eseményindítóiban és kötéseiben](functions-bindings-event-hubs-output.md#host-json)találhatók. 
+A konfigurációs beállítások az [Event Hub eseményindítóiban és kötéseiben](functions-bindings-event-hubs-trigger.md#host-json)találhatók. 
 
 ## <a name="extensions"></a>Kiterjesztés
 

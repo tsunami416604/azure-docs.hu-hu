@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 0a393ae8629f1742002344ee717a6719269a6722
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158584"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756809"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
+
+*Ez a cikk az eszközfejlesztőkre vonatkozik.*
 
 Ez a cikk bemutatja, hogyan csatlakoztathat egy MXChip IoT DevKit (DevKit) eszközt egy Azure IoT Central alkalmazáshoz. Az eszköz a hitelesített IoT Plug and Play (előzetes verzió) modellt használja a DevKit-eszközhöz az IoT Centralhoz való csatlakozás konfigurálásához.
 
@@ -104,4 +106,7 @@ A kód áttekintéséhez vagy módosításához és fordításához nyissa meg a
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta, hogyan csatlakoztathat egy DevKit-eszközt az Azure IoT Central-alkalmazáshoz, a javasolt következő lépés az, hogy ismerje meg, hogyan [állíthat be egyéni eszközsablont](./howto-set-up-template.md) a saját IoT-eszközéhez.
+Ha Ön eszközfejlesztő, néhány javasolt következő lépés a következő:
+
+- Az [Azure IoT Central eszközkapcsolatának elolvasása](./concepts-get-connected.md)
+- Az [azure CLI használatával az eszközkapcsolatok figyelése](./howto-monitor-devices-azure-cli.md)

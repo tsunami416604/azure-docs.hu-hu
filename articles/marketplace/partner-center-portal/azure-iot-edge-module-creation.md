@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6b56b748ef31bcfd33893e55d3ea5f8d9851a3ff
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: c4eddf68e964b412e7270319630f41fc4d802241
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674474"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733147"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
 
@@ -54,7 +54,7 @@ Miután megadta ezt a két értéket, válassza a **Létrehozás gombot,** miel�
 
 Az **Ajánlat áttekintése** lap az ajánlat közzétételéhez szükséges lépések (befejezett és közelgő) vizuális megjelenítését, valamint az egyes lépések befejezéséhez szükséges lépéseket jeleníti meg.
 
-Ez az oldal hivatkozásokat tartalmaz az ajánlaton végzett műveletek végrehajtására a kijelölés alapján. Példa:
+Ez az oldal hivatkozásokat tartalmaz az ajánlaton végzett műveletek végrehajtására a kijelölés alapján. Például:
 
 - Ha az ajánlat piszkozat - [Ajánlattervezet törlése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Ha az ajánlat élő - [Hagyja abba az ajánlat értékesítését](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -132,7 +132,7 @@ Itt adhatja meg a piactéren megjelenő ajánlatrészleteit. Ez magában foglalj
 > [!NOTE]
 > Az ajánlat részleteinek nem kell angol nyelven lenniük, ha az ajánlat leírása a következő mondattal kezdődik: "Ez az alkalmazás csak [nem angol nyelven] érhető el." Az is rendben van, hogy egy hasznos linket kínál tartalmat olyan nyelven, amely eltér az ajánlat lista részleteit.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az **Ajánlat alias** mezőjében az ajánlat létrehozásakor megadott szöveggel. A nevet később módosíthatja.
 
@@ -161,7 +161,7 @@ A leírásban szerepeljen az alábbiak közül egy vagy több:
 - Alkalmazáson belüli vásárlási lehetőségek
 - Minden szükséges közzététel
 
-Az IoT Edge-modulajánlatoknak tartalmazniuk kell egy minimális hardverkövetelmények bekezdést a leírás alján. Példa:
+Az IoT Edge-modulajánlatoknak tartalmazniuk kell egy minimális hardverkövetelmények bekezdést a leírás alján. Például:
 
 *Minimális hardverkövetelmények: Linux x64 és arm32 operációs rendszer, 1 GB RAM, 500 Mb tárhely*
 
@@ -322,9 +322,9 @@ Ezen a lapon beállíthatja, hogy a csomag mely felhőkben érhető el. Az ezen 
 
 A csomagnak legalább egy felhőben elérhetőnek kell lennie az Azure IoT Hub használatával.
 
-Válassza ki az **Azure Global** lehetőséget, hogy a csomag használható az ügyfelek az összes globális Azure-régiókban, amelyek a piacteret. További információt a [Földrajzi elérhetőség és pénznemtámogatás](https://aka.ms/AzureGovCurrencies).
+Válassza ki az **Azure Global** lehetőséget, hogy a csomag használható az ügyfelek az összes globális Azure-régiókban, amelyek a piacteret. További információt a [Földrajzi elérhetőség és pénznemtámogatás](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Válassza ki az [Azure Government Cloud](https://aka.ms/WhatIsAzureGovernment) opciót, hogy a megoldás itt jelenjen meg. Ez egy kormányzati közösségi felhő, amely ellenőrzött hozzáféréssel rendelkezik az Amerikai Egyesült Államok szövetségi, állami és helyi vagy törzsi kormányzati szerveinek, valamint a kiszolgálásra jogosult partnereknek. Közzétevőként Ön a felelős a felhőalapú közösség megfelelőségi szabályozásáért, biztonsági intézkedéseiért és gyakorlati tanácsaiért. Az Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található). Az Azure Government [nek való közzététel](https://aka.ms/azuregovpublish) előtt tesztelje és erősítse meg a megoldást ezen a területen belül, mivel az eredmények eltérőek lehetnek. A megoldás megrendezéséhez és teszteléséhez kérjen próbafiókot a [Microsoft Azure Government próbaverziójától.](https://aka.ms/AzureGovernmentTrial)
+Válassza ki az [Azure Government Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) opciót, hogy a megoldás itt jelenjen meg. Ez egy kormányzati közösségi felhő, amely ellenőrzött hozzáféréssel rendelkezik az Amerikai Egyesült Államok szövetségi, állami és helyi vagy törzsi kormányzati szerveinek, valamint a kiszolgálásra jogosult partnereknek. Közzétevőként Ön a felelős a felhőalapú közösség megfelelőségi szabályozásáért, biztonsági intézkedéseiért és gyakorlati tanácsaiért. Az Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található). Az Azure Government [nek való közzététel](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) előtt tesztelje és erősítse meg a megoldást ezen a területen belül, mivel az eredmények eltérőek lehetnek. A megoldás megrendezéséhez és teszteléséhez kérjen próbafiókot a [Microsoft Azure Government próbaverziójától.](https://azure.microsoft.com/global-infrastructure/government/request/)
 
 > [!NOTE]
 > Miután a csomag közzé, és elérhető egy adott felhőben, nem tudja eltávolítani a felhőt.
@@ -378,11 +378,11 @@ Ez a mező gyakran használatos, ha:
 
 ## <a name="technical-configuration"></a>Műszaki konfiguráció
 
-Az **IoT Edge-modul** ajánlattípusa egy adott típusú tároló, amely egy IoT Edge-eszközön fut. A **Műszaki konfiguráció** lapon az [Azure Container Registry-en](https://aka.ms/ContainerRegistry)belüli tárolókép-tárház referenciaadatait, valamint olyan konfigurációs beállításokat biztosít, amelyek lehetővé teszik az ügyfelek számára a modul egyszerű használatát.
+Az **IoT Edge-modul** ajánlattípusa egy adott típusú tároló, amely egy IoT Edge-eszközön fut. A **Műszaki konfiguráció** lapon az [Azure Container Registry-en](https://azure.microsoft.com/services/container-registry/)belüli tárolókép-tárház referenciaadatait, valamint olyan konfigurációs beállításokat biztosít, amelyek lehetővé teszik az ügyfelek számára a modul egyszerű használatát.
 
 Az ajánlat közzététele után az IoT Edge-tároló rendszerkép egy adott nyilvános tároló beállításjegyzékben az Azure Piactérre kerül. Az Azure-felhasználók által a modul használatára vonatkozó összes kérés az Azure Marketplace nyilvános tároló beállításjegyzékéből kerül ki, nem pedig a privát tároló beállításjegyzékéből.
 
-Több platformot is megcélozhat, és címkék használatával a modultároló-rendszerkép több verzióját is megadhat. A címkékről és a verziószámozásról az [IoT Edge modul technikai eszközeinek előkészítése](https://aka.ms/AzureIoTTechAsset)című témakörben olvashat bővebben.
+Több platformot is megcélozhat, és címkék használatával a modultároló-rendszerkép több verzióját is megadhat. A címkékről és a verziószámozásról az [IoT Edge modul technikai eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset)című témakörben olvashat bővebben.
 
 ### <a name="image-repository-details"></a>Képtár részletei
 
@@ -392,25 +392,25 @@ A következő információkat fogja megadni a **Képtár részletei** lapon.
 
 **Azure-előfizetés-azonosító:** Adja meg az előfizetés-azonosítót, ahol az erőforrás-használat jelentett, és a szolgáltatások számlázása az Azure Container Registry, amely tartalmazza a tároló rendszerképet. Ezt az azonosítót az Azure Portal [Előfizetések lapján](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) találja.
 
-**Azure-erőforráscsoport neve:** Adja meg az [erőforráscsoport](https://aka.ms/ResourceManagerAzurePortal) nevét, amely tartalmazza az Azure Container Registry a tárolórendszerképpel. Az erőforráscsoportnak elérhetőnek kell lennie az előfizetés-azonosítóban (fent). A nevet az [Azure Portalerőforrás-csoportok](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) lapján találja.
+**Azure-erőforráscsoport neve:** Adja meg az [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) nevét, amely tartalmazza az Azure Container Registry a tárolórendszerképpel. Az erőforráscsoportnak elérhetőnek kell lennie az előfizetés-azonosítóban (fent). A nevet az [Azure Portalerőforrás-csoportok](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) lapján találja.
 
-**Azure container registry name:** Adja meg a tárolórendszerképet tartalmazó [Azure Container Registry](https://aka.ms/DockerContainerRegistriesAzure) nevét. A tároló beállításjegyzékének jelen kell lennie a korábban megadott Azure-erőforráscsoportban. Csak a rendszerleíró adatbázis nevét adja meg, a teljes bejelentkezési kiszolgáló nevét ne. Ne felejtse el kihagyni **azurecr.io** a névből. A beállításjegyzék nevét az Azure Portalon található [tárolóregisztriók lapon](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) találja.
+**Azure container registry name:** Adja meg a tárolórendszerképet tartalmazó [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) nevét. A tároló beállításjegyzékének jelen kell lennie a korábban megadott Azure-erőforráscsoportban. Csak a rendszerleíró adatbázis nevét adja meg, a teljes bejelentkezési kiszolgáló nevét ne. Ne felejtse el kihagyni **azurecr.io** a névből. A beállításjegyzék nevét az Azure Portalon található [tárolóregisztriók lapon](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) találja.
 
-**Rendszergazdai felhasználónév az Azure Container Registry:** Adja meg a [rendszergazdai felhasználónév](https://aka.ms/AdminAccountContainerRegistry) társított az Azure Container Registry, amely a tároló rendszerképet. A felhasználónév és a jelszó szükséges ahhoz, hogy a vállalat hozzáférhessen a beállításjegyzékhez. A rendszergazdai felhasználónév és jelszó lekéréséhez állítsa a **rendszergazdai funkcióval rendelkező** tulajdonságot **True** értékre az Azure parancssori felület (CLI) használatával. Igény szerint **beállíthatja a rendszergazdai felhasználó** **engedélyezése** az Azure Portalon.
+**Rendszergazdai felhasználónév az Azure Container Registry:** Adja meg a [rendszergazdai felhasználónév](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) társított az Azure Container Registry, amely a tároló rendszerképet. A felhasználónév és a jelszó szükséges ahhoz, hogy a vállalat hozzáférhessen a beállításjegyzékhez. A rendszergazdai felhasználónév és jelszó lekéréséhez állítsa a **rendszergazdai funkcióval rendelkező** tulajdonságot **True** értékre az Azure parancssori felület (CLI) használatával. Igény szerint **beállíthatja a rendszergazdai felhasználó** **engedélyezése** az Azure Portalon.
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="A Tároló beállításjegyzékének frissítése párbeszédpanelt mutatja be.":::
 
-**Az Azure Container Registry jelszó:** Adja meg a jelszót a rendszergazdai felhasználónév, amely az Azure Container Registry társított, és a tároló rendszerkép. A felhasználónév és a jelszó szükséges ahhoz, hogy a vállalat hozzáférhessen a beállításjegyzékhez. A jelszót az Azure Portalon a **Container Registry** > **Access Keys** vagy az Azure CLI a [show parancsot.](https://aka.ms/azacrcredentialshow)
+**Az Azure Container Registry jelszó:** Adja meg a jelszót a rendszergazdai felhasználónév, amely az Azure Container Registry társított, és a tároló rendszerkép. A felhasználónév és a jelszó szükséges ahhoz, hogy a vállalat hozzáférhessen a beállításjegyzékhez. A jelszót az Azure Portalon a **Container Registry** > **Access Keys** vagy az Azure CLI a [show parancsot.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Az Azure Portal hozzáférési kulcsképernyőjének szemlélteti.":::
 
-**Tárház neve az Azure Container Registry**. Adja meg az Azure Container Registry repository, amely a rendszerképet. A tárház nevét akkor adja meg, amikor a lemezképet a rendszerleíró adatbázisba lenyomja. A tárház nevét a [Tárolórendszerleíró](https://aka.ms/ContainerRegistry) > **adattárak lapon**találhatja meg. További információ: [View container registry repositories in the Azure Portal](https://aka.ms/ContainerRegistryRepositoriesAzure). Ne feledje, hogy a név beállítása után nem módosítható. A fiók minden ajánlatához használjon egyedi nevet.
+**Tárház neve az Azure Container Registry**. Adja meg az Azure Container Registry repository, amely a rendszerképet. A tárház nevét akkor adja meg, amikor a lemezképet a rendszerleíró adatbázisba lenyomja. A tárház nevét a [Tárolórendszerleíró](https://azure.microsoft.com/services/container-registry/) > **adattárak lapon**találhatja meg. További információ: [View container registry repositories in the Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories). Ne feledje, hogy a név beállítása után nem módosítható. A fiók minden ajánlatához használjon egyedi nevet.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Képcímkék az ajánlat új verzióihoz
 
 Az ügyfeleknek képesnek kell lenniük arra, hogy automatikusan frissítéseket kapjanak az Azure Piactérről, amikor frissítést tesz közzé. Ha nem szeretnének frissíteni, képesnek kell lenniük arra, hogy a kép egy adott verzióján maradjanak. Ezt úgy teheti meg, hogy minden alkalommal új képcímkéket ad hozzá, amikor frissíti a képet.
 
-**Képcímke**. Ennek a mezőnek tartalmaznia kell egy **legújabb** címkét, amely a kép legújabb verziójára mutat az összes támogatott platformon. Tartalmaznia kell egy verziócímkét is (például az xx.xx.xx-től kezdődően, ahol az xx egy szám). Az ügyfeleknek több platformot kell használniuk a [jegyzékfájl-címkék](https://aka.ms/GitHubmanifest-tool) használatával. A jegyzékcímkét hivatkozó összes címkét hozzá kell adni, hogy feltölthessük őket. Az összes jegyzékcímke (a legújabb címke kivételével) x.y- vagy X.Y.Z- betűvel kell kezdődnie, ahol X, Y és Z egész szám. Ha például egy legújabb címke az 1.0.1-linux-x64, az 1.0.1 linux-arm32 és az 1.0.1-windows-arm32 elemre mutat, akkor ezt a hat címkét hozzá kell adni ehhez a mezőhöz. A címkékés verziószámozás, [az IoT Edge modul technikai eszközök előkészítése című](https://aka.ms/PrepareIoTEdgeModTechAssets) témakörben.
+**Képcímke**. Ennek a mezőnek tartalmaznia kell egy **legújabb** címkét, amely a kép legújabb verziójára mutat az összes támogatott platformon. Tartalmaznia kell egy verziócímkét is (például az xx.xx.xx-től kezdődően, ahol az xx egy szám). Az ügyfeleknek több platformot kell használniuk a [jegyzékfájl-címkék](https://github.com/estesp/manifest-tool) használatával. A jegyzékcímkét hivatkozó összes címkét hozzá kell adni, hogy feltölthessük őket. Az összes jegyzékcímke (a legújabb címke kivételével) x.y- vagy X.Y.Z- betűvel kell kezdődnie, ahol X, Y és Z egész szám. Ha például egy legújabb címke az 1.0.1-linux-x64, az 1.0.1 linux-arm32 és az 1.0.1-windows-arm32 elemre mutat, akkor ezt a hat címkét hozzá kell adni ehhez a mezőhöz. A címkékés verziószámozás, [az IoT Edge modul technikai eszközök előkészítése című](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets) témakörben.
 
 ### <a name="default-deployment-settings-optional"></a>Alapértelmezett telepítési beállítások (nem kötelező)
 
@@ -418,7 +418,7 @@ Adja meg a leggyakoribb beállításokat az IoT Edge-modul üzembe helyezéséhe
 
 **Alapértelmezett útvonalak**. Az IoT Edge Hub kezeli a modulok, az IoT Hub és az eszközök közötti kommunikációt. Beállíthatja a modulok és az IoT Hub közötti adatbeviteli és -kimeneti útvonalakat, így rugalmasan küldhet üzeneteket, ahol további szolgáltatásokra van szükség az üzenetek feldolgozásához vagy további kód írásához. Az útvonalak név-érték párok használatával épülnek fel. Legfeljebb öt alapértelmezett útvonalnevet adhat meg, amelyek mindegyike legfeljebb 512 karakter hosszú.
 
-Ügyeljen arra, hogy a megfelelő [útvonalszintaxist](https://aka.ms/DeclareRoutesAzureIoT) használja az útvonalértékben (általában FROM/message/* INTO $UPSTREAM). Ez azt jelenti, hogy bármely modul által küldött üzenetek az IoT Hubhoz. A modulra való hivatkozáshoz használja az alapértelmezett modulnevét, amely az **Ajánlat neve**lesz , szóközök és speciális karakterek nélkül. Ha más, még nem ismert modulokra szeretne hivatkozni, használja a <FROM_MODULE_NAME> konvenciót, hogy tájékoztassa ügyfeleit arról, hogy frissíteniük kell ezeket az adatokat. Az IoT Edge-útvonalakról az [Útvonalak deklarálása.For](https://aka.ms/DeclareRoutesAzureIoT)details about IoT Edge routes, see Declare routes.
+Ügyeljen arra, hogy a megfelelő [útvonalszintaxist](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) használja az útvonalértékben (általában FROM/message/* INTO $UPSTREAM). Ez azt jelenti, hogy bármely modul által küldött üzenetek az IoT Hubhoz. A modulra való hivatkozáshoz használja az alapértelmezett modulnevét, amely az **Ajánlat neve**lesz , szóközök és speciális karakterek nélkül. Ha más, még nem ismert modulokra szeretne hivatkozni, használja a <FROM_MODULE_NAME> konvenciót, hogy tájékoztassa ügyfeleit arról, hogy frissíteniük kell ezeket az adatokat. Az IoT Edge-útvonalakról az [Útvonalak deklarálása.For](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)details about IoT Edge routes, see Declare routes.
 
 Ha például a ContosoModule modul figyeli a ContosoInput és a ContosoOutput kimeneti adatok bemeneteit, célszerű a következő két alapértelmezett útvonalat meghatározni:
 
@@ -427,7 +427,7 @@ Ha például a ContosoModule modul figyeli a ContosoInput és a ContosoOutput ki
 - Név #2: FromContosoModuleToCloud
 - Érték #2: FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-**Alapértelmezett modul iker kívánt tulajdonságokat**. A modul iker egy JSON-dokumentum az IoT Hub, amely tárolja a modulpéldány állapotadatait, beleértve a kívánt tulajdonságokat. A kívánt tulajdonságok a jelentett tulajdonságokkal együtt használják a modul konfigurációjának vagy feltételeinek szinkronizálásához. A megoldás háttérkezelője beállíthatja a kívánt tulajdonságokat, és a modul el tudja olvasni őket. A modul változási értesítéseket is kaphat a kívánt tulajdonságokban. A kívánt tulajdonságok legfeljebb öt név/érték pár használatával jönnek létre, és minden alapértelmezett értéknek 512 karakternél kisebbnek kell lennie. Legfeljebb öt név/iker kívánt tulajdonság definiálható. Az iker kívánt tulajdonságok értékeinek érvényes JSON-nak kell lenniük, nem escaped, négy szintből álló maximális egymásba ágyazott hierarchiával rendelkező tömbök nélkül. Olyan esetben, amikor az alapértelmezett értékhez szükséges paraméternek nincs értelme (például az ügyfél kiszolgálójának IP-címe), alapértelmezett értékként hozzáadhat egy paramétert. Ha többet szeretne megtudni az ikerkívánt tulajdonságokról, olvassa el a [Kívánt tulajdonságok definiálása vagy frissítése ..](https://aka.ms/DefineUpdateProperties)
+**Alapértelmezett modul iker kívánt tulajdonságokat**. A modul iker egy JSON-dokumentum az IoT Hub, amely tárolja a modulpéldány állapotadatait, beleértve a kívánt tulajdonságokat. A kívánt tulajdonságok a jelentett tulajdonságokkal együtt használják a modul konfigurációjának vagy feltételeinek szinkronizálásához. A megoldás háttérkezelője beállíthatja a kívánt tulajdonságokat, és a modul el tudja olvasni őket. A modul változási értesítéseket is kaphat a kívánt tulajdonságokban. A kívánt tulajdonságok legfeljebb öt név/érték pár használatával jönnek létre, és minden alapértelmezett értéknek 512 karakternél kisebbnek kell lennie. Legfeljebb öt név/iker kívánt tulajdonság definiálható. Az iker kívánt tulajdonságok értékeinek érvényes JSON-nak kell lenniük, nem escaped, négy szintből álló maximális egymásba ágyazott hierarchiával rendelkező tömbök nélkül. Olyan esetben, amikor az alapértelmezett értékhez szükséges paraméternek nincs értelme (például az ügyfél kiszolgálójának IP-címe), alapértelmezett értékként hozzáadhat egy paramétert. Ha többet szeretne megtudni az ikerkívánt tulajdonságokról, olvassa el a [Kívánt tulajdonságok definiálása vagy frissítése ..](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)
 
 Ha például egy modul dinamikusan konfigurálható frissítési gyakoriságot támogat két kívánt tulajdonság használatával, célszerű a következő alapértelmezett ikertulajdonságot meghatározni:
 
@@ -441,7 +441,7 @@ Ha például egy modulnak el kell fogadnia a használati feltételeket az indít
 - Név #1: ACCEPT_EULA
 - Érték #1: Y
 
-**Alapértelmezett tárolólétrehozási beállítások**. A tároló létrehozási beállításai az IoT Edge-modul Docker-tárolójának létrehozását irányítják. Az IoT Edge támogatja a Docker-motor API-tároló létrehozása beállításait. Tekintse meg a [Listatárolók összes beállítását.](https://aka.ms/ContainerList) A létrehozási beállítások mezőnek érvényes JSON-nak, nem escaped és 512 karakternél rövidebbnek kell lennie.
+**Alapértelmezett tárolólétrehozási beállítások**. A tároló létrehozási beállításai az IoT Edge-modul Docker-tárolójának létrehozását irányítják. Az IoT Edge támogatja a Docker-motor API-tároló létrehozása beállításait. Tekintse meg a [Listatárolók összes beállítását.](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList) A létrehozási beállítások mezőnek érvényes JSON-nak, nem escaped és 512 karakternél rövidebbnek kell lennie.
 
 Ha például egy modulhoz portkötés szükséges, adja meg a következő létrehozási beállításokat:
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: 50bda733b0bb8b0c98eb69a15ab3000ad278031c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c226d35647e4a5a2b1d583dd6328bfb73dae2a1c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81265706"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732640"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Megosztott hozzáférésű aláírás URI-jának beszereznie a virtuális gép lemezképéhez
 
@@ -127,6 +127,6 @@ Tekintse át az egyes létrehozott SAS URI-kat az alábbi ellenőrzőlista segí
 
 ## <a name="next-step"></a>Következő lépés
 
-Ha nehézségekbe ütközik a SAS URI létrehozása, olvassa el [a Gyakori SAS URL-problémák](https://aka.ms/AzureSAS_URI_FAQ). Ellenkező esetben mentse a SAS URI(ka)t egy biztonságos helyre későbbi használatra. Szüksége lesz rá, hogy közzétegye a virtuális gép ajánlatát a Partner központban.
+Ha nehézségekbe ütközik a SAS URI létrehozása, olvassa el [a Gyakori SAS URL-problémák](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues). Ellenkező esetben mentse a SAS URI(ka)t egy biztonságos helyre későbbi használatra. Szüksége lesz rá, hogy közzétegye a virtuális gép ajánlatát a Partner központban.
 
-* [Azure virtuálisgép-ajánlat létrehozása](https://aka.ms/Create_AzureVMoffer)
+* [Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)

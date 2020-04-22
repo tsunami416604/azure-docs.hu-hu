@@ -9,12 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: db3da5ff2d7e8b6fa493f5338fac93df0d1a7fe2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: af9743233a61e8e6d816b362d35e6a38735df35b
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110896"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732249"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Fájlok feltöltése az eszközről a felhőbe az IoT Hub (Node.js) segítségével
 
@@ -26,7 +27,7 @@ Ez az oktatóanyag az [IoT Hubmal való felhőből eszközre üzenetek küldése
 
 * Az IoT Hub fájlfeltöltési értesítései segítségével indítsa el a fájl feldolgozását az alkalmazás háttérrendszerében.
 
-A [Telemetria küldése egy eszközről egy IoT hub](quickstart-send-telemetry-node.md) rövid útmutató bemutatja az Alapvető eszköz-felhő üzenetkezelési funkció az IoT Hub. Bizonyos esetekben azonban nem tudja könnyen leképezni az eszközöket küldött adatokat az IoT Hub által fogadott viszonylag kis méretű eszközről felhőbe irányuló üzenetekbe. Példa:
+A [Telemetria küldése egy eszközről egy IoT hub](quickstart-send-telemetry-node.md) rövid útmutató bemutatja az Alapvető eszköz-felhő üzenetkezelési funkció az IoT Hub. Bizonyos esetekben azonban nem tudja könnyen leképezni az eszközöket küldött adatokat az IoT Hub által fogadott viszonylag kis méretű eszközről felhőbe irányuló üzenetekbe. Például:
 
 * Képeket tartalmazó nagyfájlok
 * Videók

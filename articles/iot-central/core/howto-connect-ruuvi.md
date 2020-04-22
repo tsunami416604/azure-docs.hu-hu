@@ -10,14 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: e8d1c4a605e8db2e9753bb80c9712dd6c2be7b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158238"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758951"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag-érzékelő csatlakoztatása az Azure IoT Central alkalmazáshoz
+
+*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
 
 Ez a cikk bemutatja, hogyan csatlakoztathatja a RuuviTag-érzékelőt a Microsoft Azure IoT Central alkalmazáshoz megoldáskészítőként.
 
@@ -74,4 +76,7 @@ Szimulált RuuviTag létrehozása:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megtanulta, hogyan csatlakoztathat egy RuuviTag-ot az Azure IoT Central alkalmazáshoz, a javasolt következő lépés az [IoT Central alkalmazás testreszabása](../retail/tutorial-in-store-analytics-customize-dashboard-pnp.md) egy végponttól végpontig tartó megoldás létrehozásához.
+Ha Ön eszközfejlesztő, néhány javasolt következő lépés a következő:
+
+- Az [Azure IoT Central eszközkapcsolatának elolvasása](./concepts-get-connected.md)
+- Az [azure CLI használatával az eszközkapcsolatok figyelése](./howto-monitor-devices-azure-cli.md)

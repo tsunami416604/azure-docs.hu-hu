@@ -1,18 +1,19 @@
 ---
 title: Azure Spot virtuális gépek használata
-description: Ismerje meg, hogyan használhatja az Azure Spot virtuális gépeket a költségek megtakarítására
+description: Ismerje meg, hogyan használhatja az Azure Spot virtuális gépeket a költségek megtakarításához.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 5bfb46410c40d394e62bf1e6bfb1f1c964c7efdd
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.reviewer: jagaveer
+ms.openlocfilehash: 80601170a39333ea0075bb4ec262dd48c7f2d76d
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547395"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758336"
 ---
 # <a name="use-spot-vms-in-azure"></a>Azonnali virtuális gépek használata az Azure-ban
 

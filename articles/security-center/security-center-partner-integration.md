@@ -11,20 +11,17 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: f7a1eccd76313c5b3bc74a5b5ebdbcd202ca6841
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435753"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758018"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
-
-> [!NOTE]
-> 2019. július 31-én a biztonsági megoldások egy részét megszüntették. További információ és alternatív szolgáltatások: [Retirement of Security Center features (July 2019)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Integrált Azure biztonsági megoldások
 A Security Center használatával egyszerűen engedélyezhet integrált biztonsági megoldásokat az Azure-ban. Az előnyök:
@@ -37,52 +34,57 @@ Jelenleg az integrált biztonsági megoldások közé tartozik a [Qualys,](https
 
 > [!NOTE]
 > A Security Center nem telepíti a Log Analytics-ügynököt a partner virtuális készülékekre, mert a legtöbb biztonsági szállító tiltja a készülékeiken futó külső ügynökökhasználatát.
->
->
+
+Ha többet szeretne megtudni a Qualys biztonsági résellenőrző eszközeinek integrálásáról, beleértve a szabványos szintű ügyfelek számára elérhető beépített lapolvasót, olvassa el a következő témakört: 
+
+- [Integrált biztonsági rés szkenner virtuális gépek](built-in-vulnerability-assessment.md).
+- [Partnerbiztonsági ellenőrző megoldás telepítése](partner-vulnerability-assessment.md).
+
+A Security Center biztonsági réselemzést is kínál a következőkhez:
+
+* SQL-adatbázisok – [lásd: Sebezhetőségértékelési jelentések feltárása a biztonsági résértékelési irányítópulton](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
+* Azure Container Registry rendszerképek – lásd: [Azure Container Registry integráció a Security Centerrel (előzetes verzió)](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>A biztonsági megoldások integrálása
 A Security Centerből üzembe helyezett Azure biztonsági megoldások automatikusan csatlakoztatva vannak. Más biztonsági adatforrásokat is csatlakoztathat, beleértve a helyszíni vagy más felhőkön futó számítógépeket is.
 
-![Partnermegoldások integrációja](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
+[![Partnermegoldások integrációja](./media/security-center-partner-integration/security-solutions-page.png)](./media/security-center-partner-integration/security-solutions-page.png#lightbox)
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Integrált Azure biztonsági megoldások és egyéb adatforrások kezelése
 
-1. Jelentkezzen be az [Azure Portalra.](https://azure.microsoft.com/features/azure-portal/)
+1. Az [Azure Portalon](https://azure.microsoft.com/features/azure-portal/)nyissa meg a **Security Center t.**
 
-2. A **Microsoft Azure menüben**válassza a **Security Center (Biztonsági központ)** lehetőséget. Megnyílik a **Security Center – Áttekintés** képernyő.
+1. A Biztonsági központ menüjében válassza a **Biztonsági megoldások lehetőséget.**
 
-3. A Security Center menüjében válassza a **Biztonsági megoldások** elemet.
-
-   ![Security Center – Áttekintés](./media/security-center-partner-integration/overview.png)
-
-A **Biztonsági megoldások**ban megtekintheti az integrált Azure biztonsági megoldások állapotát, és alapvető felügyeleti feladatokat futtathat.
+A **Biztonsági megoldások** lapon láthatja az integrált Azure biztonsági megoldások állapotát, és alapvető felügyeleti feladatokat futtathat.
 
 ### <a name="connected-solutions"></a>Csatlakoztatott megoldások
 
 A **Csatlakoztatott megoldások** szakasz olyan biztonsági megoldásokat tartalmaz, amelyek jelenleg a Security Centerhez csatlakoznak. Azt is mutatja, az egyes megoldások állapotát.  
 
-![Csatlakoztatott megoldások](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
+![Csatlakoztatott megoldások](./media/security-center-partner-integration/connected-solutions.png)
 
 A partneri megoldás állapota a következő lehet:
 
-* Egészséges (zöld) - nincs egészségügyi probléma.
-* Egészségtelen (piros) - van egy egészségügyi probléma, amely azonnali figyelmet igényel.
-* Egészségügyi problémák (narancssárga) - a megoldás leállt az egészségi állapotának jelentésével.
-* Nem jelentett (szürke) – a megoldás még nem jelentett semmit, és nem állnak rendelkezésre egészségügyi adatok. Előfordulhat, hogy a megoldás állapota nem lesz bejelentve, ha nemrég csatlakozott, és még mindig telepítve van.
+* **Egészséges** (zöld) - nincs egészségügyi probléma.
+* **Egészségtelen** (piros) - van egy egészségügyi probléma, amely azonnali figyelmet igényel.
+* **Leállította a jelentéskészítést** (narancssárga) - a megoldás leállt az állapotjelentésével.
+* **Nem jelentett** (szürke) – a megoldás még nem jelentett semmit, és nem állnak rendelkezésre egészségügyi adatok. Előfordulhat, hogy a megoldás állapota nem lesz bejelentve, ha nemrég csatlakozott, és még mindig telepítve van.
 
 > [!NOTE]
 > Ha az állapotadatok nem állnak rendelkezésre, a Security Center megjeleníti az utolsó kapott esemény dátumát és időpontját, jelezve, hogy a megoldás jelentést tesz-e vagy sem. Ha nem állnak rendelkezésre állapotadatok, és az elmúlt 14 napban nem érkezett riasztás, a Security Center azt jelzi, hogy a megoldás nem kifogástalan, vagy nem jelent jelentést.
 >
 >
 
-1. Válassza a **NÉZET** lehetőséget a további információkért és a következő beállításokért:
+Válassza a **NÉZET** lehetőséget a további információkért és a következő beállításokért:
 
-   - **Megoldáskonzol**. Megnyitja a megoldás felügyeleti élményét.
-   - **Vm csatolása**. Megnyitja az Alkalmazások csatolása lapot. Itt erőforrásokat kapcsolhat hozzá a partnermegoldáshoz.
-   - **A megoldás törlése**.
-   - **Konfigurálja**a beállítást.
+   - **Megoldáskonzol** – Megnyitja a megoldás felügyeleti élményét.
+   - **VM csatolása** – Megnyitja az Alkalmazások csatolása lapot. Itt erőforrásokat kapcsolhat hozzá a partnermegoldáshoz.
+   - **Megoldás törlése**
+   - **Konfigurálás**
 
-   ![Partneri megoldás részletei](./media/security-center-partner-solutions/partner-solutions-detail.png)
+   ![Partneri megoldás részletei](./media/security-center-partner-integration/partner-solutions-detail.png)
+
 
 ### <a name="discovered-solutions"></a>Felderített megoldások
 
@@ -91,7 +93,6 @@ A Security Center automatikusan felderíti az Azure-ban futó, de a Security Cen
 > [!NOTE]
 > A Felderített megoldások funkcióhoz a Standard szintű Security Centerre az előfizetés szintjén van szükség. További információ a [díjszabási](security-center-pricing.md) szintekről.
 >
->
 
 Válassza a **CONNECT** lehetőséget a Biztonsági központtal integrálható megoldás alatt, és értesítést kapjon a biztonsági riasztásokról.
 
@@ -99,57 +100,13 @@ Válassza a **CONNECT** lehetőséget a Biztonsági központtal integrálható m
 
 Az **Adatforrások hozzáadása** szakasz sorolja fel az egyéb csatlakoztatható adatforrásokat. Az ezekből a forrásokból származó adatok hozzáadásával kapcsolatos utasításokért kattintson a **HOZZÁADÁS** gombra.
 
-![Adatforrások](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
+![Adatforrások](./media/security-center-partner-integration/add-data-sources.png)
 
-## <a name="exporting-data-to-a-siem"></a>Adatok exportálása SIEM-be
-
-> [!NOTE]
-> Az adatok SIEM-be történő exportálásának egyszerűbb (jelenleg előzetes verzióban elérhető) módszeréről a [Biztonsági riasztások és javaslatok exportálása (előzetes verzió)](continuous-export.md)című témakörben talál részleteket. Az új módszer nem használja a tevékenységnaplót közvetítőként, és lehetővé teszi a biztonsági központból az Eseményközpontokba (majd a SIEM-be) történő közvetlen exportálást, támogatja a biztonsági javaslatok exportálását is.
-
-
-Beállíthatja a SIEMs vagy más figyelési eszközök fogadására Azure Security Center események.
-
-Az Azure Security Center összes eseménye megjelenik az Azure Monitor [Azure-tevékenységnaplójában.](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) Az Azure Monitor [egy konszolidált folyamat](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ot használ az adatok streameléséhez egy Event Hub, ahol ezután belehet vonni a figyelési eszköz.
-
-A következő szakaszok azt ismertetik, hogyan konfigurálhatja az eseményközpontba adatfolyamként továbbítandó adatokat. A lépések feltételezik, hogy már rendelkezik az Azure Security Center konfigurálva az Azure-előfizetésben.
-
-### <a name="high-level-overview"></a>Magas szintű áttekintés
-
-![Magas szintű áttekintés](media/security-center-export-data-to-siem/overview.png)
-
-### <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Mi kvanazd az Azure biztonsági adatai a SIEM számára?
-
-Ebben a verzióban elérhetővé tesszük a [biztonsági riasztásokat.](../security-center/security-center-managing-and-responding-alerts.md) A következő kiadásokban biztonsági javaslatokkal gazdagítjuk az adatkészletet.
-
-### <a name="how-to-set-up-the-pipeline"></a>A csővezeték beállítása
-
-#### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
-
-Mielőtt elkezdené, [hozzon létre egy Event Hubs névteret](../event-hubs/event-hubs-create.md) - az összes figyelési adat célját.
-
-#### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Azure-tevékenységnapló streamelése az eseményközpontokba
-
-Tekintse meg a következő [cikkstream tevékenységnaplóját az Eseményközpontokba.](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-
-#### <a name="install-a-partner-siem-connector"></a>Partner SIEM-csatlakozó telepítése 
-
-A figyelési adatok egy Eseményközpontba való átirányítása az Azure Monitor segítségével könnyedén integrálható a partner SIEM-mel és a figyelési eszközökkel.
-
-A [támogatott siem-ek](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)listáját az alábbi cikktartalmazza.
-
-### <a name="example-for-querying-data"></a>Példa adatok lekérdezésére 
-
-Íme néhány splunk lekérdezés, amelysegítségével riasztási adatokat lehet lehallgatni:
-
-| **A lekérdezés leírása** | **Lekérdezés** |
-|----|----|
-| All Alerts| index=fő Microsoft.Security/locations/alerts|
-| Műveletek számának összegzése a nevük alapján| index=main sourcetype="amal:security" \| tábla \| operationName stats count by operationName|
-| Értesítések beszerezése információk: Idő, név, állam, azonosító és előfizetés | index=main \| Microsoft.Security/locations/alerts \_table time, properties.eventName, State, properties.operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. A Security Center ről az alábbi cikkben olvashat bővebben:
+Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. A kapcsolódó információkat a következő cikkekben talál:
 
+* [Biztonsági riasztások és javaslatok exportálása](continuous-export.md). Ismerje meg, hogyan lehet integrációt beállítani az Azure Sentinel vagy bármely más SIEM használatával.
 * [Biztonsági állapot monitorozása a Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.

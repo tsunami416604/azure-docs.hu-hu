@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5724a9e4308f05a82df84ae6a7d5602747f5a140
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500293"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757373"
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure Operational Security gyakorlati tanácsok
 Ez a cikk az adatok, alkalmazások és egyéb eszközök azure-beli védelmére vonatkozó gyakorlati tanácsok készletét tartalmazza.
@@ -108,7 +108,7 @@ Szinte minden vállalati szervezet rendelkezik biztonsági információ- és ese
 **Részletesen:** Vizsgálja meg az [Azure Sentinel](/azure/sentinel/overview) funkcióit és képességeit, és hasonlítsa össze őket a jelenleg a helyszíni használattal rendelkező funkciókkal. Fontolja meg az Azure Sentinel bevezetését, ha megfelel a szervezet SIEM követelményeinek.
 
 **Ajánlott eljárás:** Keresse meg a legsúlyosabb biztonsági réseket, hogy rangsorolhassa a vizsgálatot.   
-**Részletes:** Tekintse át az [Azure biztonságos pontszám](../../security-center/security-center-secure-score.md) áttekintheti az Azure-szabályzatok és az Azure Security Center beépített kezdeményezésekből származó javaslatokat. Ezek a javaslatok segítenek a legfontosabb kockázatok, például a biztonsági frissítések, a végpontvédelem, a titkosítás, a biztonsági konfigurációk, a hiányzó WAF, az internethez csatlakoztatott virtuális gépek és még sok más kezelésére.
+**Részletes:** Tekintse át az [Azure biztonságos pontszám](../../security-center/secure-score-security-controls.md) áttekintheti az Azure-szabályzatok és az Azure Security Center beépített kezdeményezésekből származó javaslatokat. Ezek a javaslatok segítenek a legfontosabb kockázatok, például a biztonsági frissítések, a végpontvédelem, a titkosítás, a biztonsági konfigurációk, a hiányzó WAF, az internethez csatlakoztatott virtuális gépek és még sok más kezelésére.
 
 A Biztonságos pontszám, amely az Internet-biztonsági Központ (CIS) vezérlőkön alapul, lehetővé teszi a szervezet Azure-biztonságának külső forrásokra való összehasonlítását. A külső ellenőrzés segít a csapat biztonsági stratégiájának érvényesítésében és bővítésében.
 
@@ -116,7 +116,7 @@ A Biztonságos pontszám, amely az Internet-biztonsági Központ (CIS) vezérlő
 **Részlet**: Kövesse a Biztonsági központ [biztonsági ajánlásait,](../../security-center/security-center-recommendations.md) kezdve a legmagasabb prioritású elemekkel.
 
 **Ajánlott eljárás:** Integrálja a Security Center riasztásait a biztonsági információkés eseménykezelési (SIEM) megoldásba.   
-**Részletesen**: A SIEM-mel rendelkező szervezetek többsége központi elszámolóházként használja az elemzői választ igénylő biztonsági riasztásokhoz. A Security Center által létrehozott feldolgozott események et közzéteszik az Azure-tevékenységnaplóban, amely az Azure Monitoron keresztül elérhető naplók egyike. Az Azure Monitor egy konszolidált folyamatot kínál a figyelési adatok siem-eszközbe történő útválasztásához. Az utasításokat a [Biztonsági megoldások integrálása a Biztonsági központban](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) részben talál. Ha Azure Sentinelt használ, olvassa el [az Azure Security Center csatlakoztatása című témakört.](../../sentinel/connect-azure-security-center.md)
+**Részletesen**: A SIEM-mel rendelkező szervezetek többsége központi elszámolóházként használja az elemzői választ igénylő biztonsági riasztásokhoz. A Security Center által létrehozott feldolgozott események et közzéteszik az Azure-tevékenységnaplóban, amely az Azure Monitoron keresztül elérhető naplók egyike. Az Azure Monitor egy konszolidált folyamatot kínál a figyelési adatok siem-eszközbe történő útválasztásához. Az utasításokat a [Biztonsági riasztások és javaslatok exportálása(b) (Biztonsági riasztások és javaslatok exportálása) (Információ: Biztonsági riasztások és javaslatok](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs) exportálása) (Információ: Biztonsági riasztások Ha Azure Sentinelt használ, olvassa el [az Azure Security Center csatlakoztatása című témakört.](../../sentinel/connect-azure-security-center.md)
 
 **Ajánlott eljárás:** Integrálja az Azure-naplókat a SIEM-be.   
 **Részletek**: Adatok [gyűjtéséhez és exportálásához](/azure/azure-monitor/overview#integrate-and-export-data)használja az Azure Monitort . Ez a gyakorlat kritikus fontosságú a biztonsági incidensek kivizsgálásának engedélyezéséhez, és az online naplómegőrzés korlátozott. Ha Az Azure Sentinelt használja, olvassa el az [Adatforrások csatlakoztatása című témakört.](../../sentinel/connect-data-sources.md)
