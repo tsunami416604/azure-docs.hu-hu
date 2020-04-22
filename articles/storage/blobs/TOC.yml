@@ -641,6 +641,10 @@
       items:
         - name: Big Data feldolgozása
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Integráció az Azure-szolgáltatásokkal
+          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Adatok szűrése lekérdezésgyorsítással
+          href: data-lake-storage-query-acceleration.md
         - name: Azure Blob File System-illesztőprogram Hadoophoz
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Az Azure Blob File System URI-ja
@@ -790,6 +794,10 @@
               href: data-lake-storage-explorer.md
             - name: A Hadoop fájlrendszer parancssori felülete
               href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Lekérdezés
+          items:
+            - name: Adatok szűrése lekérdezésgyorsítással
+              href: data-lake-storage-query-acceleration-how-to.md
         - name: Átvitel
           items:
             - name: AzCopy
@@ -838,6 +846,8 @@
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
           href: /rest/api/storageservices/data-lake-storage-gen2
+        - name: Lekérdezésgyorsítás
+          href: query-acceleration-sql-reference.md
         - name: AzCopy (10-es verzió)
           items:
             - name: azcopy

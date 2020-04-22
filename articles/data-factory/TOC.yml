@@ -595,6 +595,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Az Azure AD-hitelesítés engedélyezése az Azure SSIS IR-hez
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Csatlakozás adatokhoz Windows-hitelesítéssel
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: Fájlok mentése és fájlmegosztásokhoz való kapcsolódás
+          href: ssis-azure-files-file-shares.md
         - name: Az Azure SSIS IR Enterprise Edition kiadásának üzembe helyezése
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Az Azure SSIS IR telepítésének testreszabása

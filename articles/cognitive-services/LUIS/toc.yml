@@ -156,8 +156,6 @@
         - name: Leíró hozzáadása
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
-        - name: Migrálás V3 tartalomkészítésre
-          href: luis-migration-authoring-entities.md
         - name: REST API-kkal
           items:
             - name: Alkalmazás létrehozása programozott módon a Node.js használatával
@@ -193,6 +191,8 @@
           displayName: 'import, export'
     - name: Közzététel
       href: luis-how-to-publish-app.md
+    - name: Előrejelzési futtatókörnyezet lekérdezése
+      href: luis-get-started-get-intent-from-browser.md
     - name: Alkalmazás kezelése
       items:
         - name: Azure-erőforrások
@@ -216,11 +216,10 @@
       items:
         - name: Fejlesztőknek
           href: developer-reference-resource.md
-        - name: API-k készítése
-          href: luis-migration-api-authoring.md
-        - name: Migrálás a V3 API-re
+        - name: Migrálás V3 tartalomkészítési API-kra
+          href: luis-migration-authoring-entities.md
+        - name: Migrálás V3 előrejelzési API-kra
           href: luis-migration-api-v3.md
-          displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
         - name: Áttérés az API 2-es verziójára
           href: luis-migration-api-v1-to-v2.md
     - name: Tárolók használata

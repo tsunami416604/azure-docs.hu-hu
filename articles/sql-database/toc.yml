@@ -119,7 +119,11 @@
             - name: Adatfelderítés és besorolás
               href: sql-database-data-discovery-and-classification.md
             - name: Sebezhetőségi felmérés
-              href: sql-vulnerability-assessment.md
+              items:
+                - name: Sebezhetőségi felmérés
+                  href: sql-vulnerability-assessment.md
+                - name: Biztonságirés-értékelési vizsgálatok tárolása tűzfalak és virtuális hálózatok mögött
+                  href: sql-database-vulnerability-assessment-storage.md
             - name: Fejlett fenyegetésvédelem
               href: sql-database-threat-detection-overview.md
             - name: Biztonsági attribútumok

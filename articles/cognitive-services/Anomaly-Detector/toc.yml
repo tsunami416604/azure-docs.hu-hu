@@ -10,12 +10,8 @@
   items:
     - name: Ügyfélkódtár
       items:
-        - name: 'A C# használata'
-          href: quickstarts/detect-data-anomalies-csharp-sdk.md
-        - name: A Python használata
-          href: quickstarts/detect-data-anomalies-python-sdk.md
-        - name: A Node.js használata
-          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+        - name: Anomáliadetektor-ügyfélkódtárak
+          href: ./quickstarts/client-libraries.md
     - name: REST API
       items:
         - name: 'A C# használata'

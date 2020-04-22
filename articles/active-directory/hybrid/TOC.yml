@@ -208,6 +208,8 @@
           href: how-to-connect-pta-quick-start.md
         - name: Gyakori kérdések az átmenő hitelesítésről
           href: how-to-connect-pta-faq.md
+        - name: A PTA letiltása az Azure AD Connect „Konfigurálás kihagyása” beállításával
+          href: how-to-connect-pta-disable-do-not-configure.md
     - name: Összevonási szolgáltatások kezelése
       items:
         - name: Összevonás kezelése az Azure AD Connect segítségével

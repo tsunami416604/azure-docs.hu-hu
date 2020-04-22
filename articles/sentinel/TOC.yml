@@ -2,14 +2,14 @@
   href: index.yml
 - name: Áttekintés
   href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Az Azure Sentinel előkészítése
       href: quickstart-onboard.md
     - name: Áttekinthető riasztások
       href: quickstart-get-visibility.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Fenyegetésészlelés a beépített elemzésekkel
       href: tutorial-detect-threats-built-in.md
@@ -87,7 +87,7 @@
             - name: CEF-alapú megoldások
               href: connect-common-event-format.md
               items:
-                - name: '1. LÉPÉS: Az ügynök üzembe helyezése'
+                - name: '1. LÉPÉS: A naplótovábbító üzembe helyezése'
                   href: connect-cef-agent.md
                 - name: '2. LÉPÉS: A biztonsági megoldás konfigurálása'
                   href: connect-cef-solution-config.md

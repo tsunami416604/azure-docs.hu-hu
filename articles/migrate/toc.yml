@@ -96,14 +96,16 @@
       href: how-to-assess.md
     - name: Az Azure Migrate-berendezés üzembe helyezése
       items:
-        - name: Berendezés üzembe helyezése VMware-hez (OVA)
+        - name: Berendezés üzembe helyezése sablonnal (VMware)
           href: how-to-set-up-appliance-vmware.md
-        - name: Berendezés üzembe helyezése Hyper-V-hez (VHD)
+        - name: Berendezés üzembe helyezése sablonnal (Hyper-V)
           href: how-to-set-up-appliance-hyper-v.md
-        - name: Berendezés üzembe helyezése VMware-hez/Hyper-V-hez (szkript)
+        - name: Berendezés üzembe helyezése szkripttel (VMware/Hyper-V)
           href: deploy-appliance-script.md
         - name: Berendezés üzembe helyezése fizikai kiszolgálókhoz
           href: how-to-set-up-appliance-physical.md
+        - name: Berendezés üzembe helyezése az Azure Governmentben
+          href: deploy-appliance-script-government.md
     - name: A VMware rendszerű virtuális gépek felderítési hatókörének korlátozása
       href: set-discovery-scope.md
     - name: Alkalmazások/szerepkörök/szolgáltatások felderítése

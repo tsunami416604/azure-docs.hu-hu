@@ -1,0 +1,48 @@
+- name: Áttekintés
+  items:
+    - name: Az Azure Media Player áttekintése
+      href: azure-media-player-overview.md
+    - name: Kibocsátási megjegyzések
+      href: azure-media-player-release-notes.md
+    - name: Változásnapló
+      href: azure-media-player-changelog.md
+- name: Rövid útmutatók
+  items:
+    - name: Az Azure Media Player gyorsútmutatója
+      href: azure-media-player-quickstart.md
+- name: Oktatóanyagok
+  items:
+    - name: Az Azure Media Player teljes telepítése
+      href: azure-media-player-full-setup.md
+- name: Alapelvek
+  items:
+    - name: Lejátszási technológia
+      href: azure-media-player-playback-technology.md
+    - name: Védett tartalom
+      href: azure-media-player-protected-content.md
+    - name: Funkciólista
+      href: azure-media-player-feature-list.md
+    - name: URL-átíró
+      href: azure-media-player-url-rewriter.md
+    - name: Kisegítő lehetőségek
+      href: azure-media-player-accessibility.md
+    - name: Írási beépülő modulok
+      href: azure-media-player-writing-plugins.md
+    - name: Beépülő modulok katalógusa
+      href: azure-media-player-plugin-gallery.md
+    - name: Honosítás
+      href: azure-media-player-localization.md
+- name: Referencia
+  items:
+    - name: Példák
+      href: 'https://github.com/Azure-Samples/azure-media-player-samples'
+    - name: API
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azuremediaplayer/?view=azure-node-latest'
+    - name: API-metódusok
+      href: azure-media-player-api-methods.md
+    - name: Beállítások
+      href: azure-media-player-options.md
+    - name: Hibakódok
+      href: azure-media-player-error-codes.md
+    - name: Ismert problémák
+      href: azure-media-player-known-issues.md
