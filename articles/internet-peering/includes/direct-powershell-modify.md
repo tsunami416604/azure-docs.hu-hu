@@ -8,24 +8,24 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 03c67ccf88a8c73fe04f062c6af9520115c185a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774262"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680769"
 ---
 Ez a szakasz azt ismerteti, hogy miként hajthatja végre a következő módosítási műveleteket a közvetlen társviszony-létesítéshez:
 
-* Közvetlen társviszony-létesítési kapcsolatok hozzáadása
-* Közvetlen társviszony-létesítési kapcsolatok eltávolítása
+* Közvetlen társviszony-létesítési kapcsolatok hozzáadása.
+* A közvetlen társviszony-létesítési kapcsolatok eltávolítása.
 * Az aktív kapcsolatok sávszélességének frissítése vagy visszaminősítése.
-* IPv4/IPv6-munkamenet hozzáadása aktív kapcsolatokhoz.
-* Távolítsa el az IPv4/IPv6 munkamenetet az aktív kapcsolatokból.
+* IPv4- vagy IPv6-munkamenetek hozzáadása aktív kapcsolatokhoz.
+* Távolítsa el az IPv4- vagy IPv6-munkameneteket az aktív kapcsolatokon.
 
 ### <a name="add-direct-peering-connections"></a>Közvetlen társviszony-létesítési kapcsolatok hozzáadása
 
-Az alábbi példa bemutatja, hogyan adhat hozzá kapcsolatokat a meglévő közvetlen társviszony-létesítéshez
+Ez a példa azt ismerteti, hogyan adhat hozzá kapcsolatokat a meglévő közvetlen társviszony-létesítéshez.
 
 ```powershell
 
@@ -46,7 +46,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="remove-direct-peering-connections"></a>Közvetlen társviszony-létesítési kapcsolatok eltávolítása
 
-A kapcsolat eltávolítása jelenleg nem támogatott a PowerShell. Lépjen kapcsolatba [a Microsoft társviszony-létesítési](mailto:peeringexperience@microsoft.com).
+A kapcsolat eltávolítása jelenleg nem támogatott a PowerShell. További információért forduljon a [Microsoft társviszony-létesítési](mailto:peeringexperience@microsoft.com).
 
 <!--
 ```powershell
@@ -58,7 +58,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>A sávszélesség frissítése vagy visszaminősítése aktív kapcsolatokon
 
-Az alábbi példa bemutatja, hogyan adhat hozzá 10 Gbps-t a meglévő közvetlen kapcsolathoz.
+Ez a példa azt ismerteti, hogyan adhat hozzá 10 Gb/s-ot egy meglévő közvetlen kapcsolathoz.
 
 ```powershell
 
@@ -68,9 +68,9 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>IPv4/IPv6-munkamenet hozzáadása aktív kapcsolatokhoz.
+### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>IPv4- vagy IPv6-munkamenetek hozzáadása aktív kapcsolatokhoz
 
-Az alábbi példa bemutatja, hogyan lehet IPv6-munkamenetet hozzáadni egy meglévő közvetlen kapcsolathoz csak az IPv4-munkamenettel. 
+Ez a példa azt ismerteti, hogy miként lehet IPv6-munkamenetet hozzáadni egy olyan meglévő közvetlen kapcsolathoz, amely csak IPv4-munkamenetet rendelkezik. 
 
 ```powershell
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Távolítsa el az IPv4/IPv6 munkamenetet az aktív kapcsolatokból.
+### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>IPv4- vagy IPv6-munkamenetek eltávolítása aktív kapcsolatokon
 
-A PowerShell jelenleg nem támogatja az IPv4/IPv6-munkamenet meglévő kapcsolatból való eltávolítását. Lépjen kapcsolatba [a Microsoft társviszony-létesítési](mailto:peeringexperience@microsoft.com).
+Az IPv4- vagy IPv6-munkamenet ek eltávolítása egy meglévő kapcsolatból jelenleg nem támogatott a PowerShellben. További információért forduljon a [Microsoft társviszony-létesítési](mailto:peeringexperience@microsoft.com).

@@ -12,21 +12,18 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ac630c4901c126ed883adbdc7efb03f36372e6ff
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: e5e462c52c8b06af6da5081f84a082138cd53a3f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535876"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677946"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft identity platform és OAuth 2.0 engedélyezési kód folyamat
 
 Az OAuth 2.0 engedélyezési kód támogatás használható alkalmazások, amelyek egy eszközre telepített, hogy hozzáférjenek a védett erőforrások, például a webes API-k. Az OAuth 2.0 Microsoft identity platformimplementációjával bejelentkezési és API-hozzáférést adhat a mobil- és asztali alkalmazásokhoz. Ez az útmutató nyelvfüggetlen, és leírja, hogyan küldhet és fogadhat HTTP-üzeneteket az [Azure nyílt forráskódú hitelesítési kódtárai](reference-v2-libraries.md)használata nélkül.
 
 Ez a cikk azt ismerteti, hogy miként programozhat közvetlenül az alkalmazásban lévő protokoll ellen.  Ha lehetséges, azt javasoljuk, hogy a támogatott Microsoft Authentication Libraries (MSAL) helyett [a jogkivonatok beszerzéséhez és a biztonságos webes API-k hívásához](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)használja.  Is vessen egy pillantást a [minta alkalmazások at MSAL](sample-v2-code.md).
-
-> [!NOTE]
-> Nem minden Azure Active Directory-forgatókönyvet, & a microsoftidentity platform végpontja támogatja. Annak megállapításához, hogy a Microsoft identity platform végpontját kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](active-directory-v2-limitations.md)
 
 Az OAuth 2.0 engedélyezési kódfolyamatát [az OAuth 2.0 specifikáció 4.1 szakasza](https://tools.ietf.org/html/rfc6749)ismerteti. A hitelesítés és az engedélyezés végrehajtására szolgál a legtöbb alkalmazástípusban, beleértve a [webalkalmazásokat](v2-app-types.md#web-apps) és [a natívan telepített alkalmazásokat.](v2-app-types.md#mobile-and-native-apps) A folyamat lehetővé teszi, hogy az alkalmazások biztonságosan beszerezzék a access_tokens, amelyek a Microsoft identity platform végpontja által védett erőforrások elérésére használhatók.
 

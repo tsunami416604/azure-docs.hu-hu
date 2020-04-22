@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e27550ecc5b42c2bf0d947690da09e13d88ea4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91451ff3024a9a5019b3982b0e4471e2c4d80c74
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128028"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683913"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Delegált hozzáférés a Windows Virtual Desktopon
 
@@ -37,7 +37,7 @@ A Windows virtuális asztal delegált hozzáférése a szerepkör-hozzárendelé
 A Windows virtuális asztal delegált hozzáférése számos beépített szerepkör-definícióval rendelkezik, amelyeket a felhasználókhoz és a szolgáltatástagokhoz rendelhet.
 
 * Az RDS-tulajdonos mindent kezelhet, beleértve az erőforrásokhoz való hozzáférést is.
-* Az RDS-közreműködő az erőforrásokhoz való hozzáférésen kivételül mindent kezelhet.
+* Az RDS-közreműködő mindent kezelhet, de nem férhet hozzá az erőforrásokhoz.
 * Az RDS-olvasó mindent megtekinthet, de nem tud módosításokat végrehajtani.
 * A Távoli asztali szolgáltatások felelőse megtekintheti a diagnosztikai tevékenységeket.
 

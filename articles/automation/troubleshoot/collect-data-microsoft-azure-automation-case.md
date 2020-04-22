@@ -1,6 +1,6 @@
 ---
 title: A Microsoft Azure Automation eseteinek megnyitásakor gyűjtandó adatok| Microsoft dokumentumok
-description: Ez a cikk néhány alapvető információt ismertet, amelyeket össze kell gyűjtenie, mielőtt megnyitna egy esetet az Azure Automation számára a Microsoft Azure-támogatással.
+description: Ez a cikk néhány olyan információt ismertet, amelyeket az Azure Automation esetének Microsoft Azure-támogatással történő megnyitása előtt kell összegyűjtenie.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -13,46 +13,36 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
-ms.openlocfilehash: 4839ce7a0188c782656fd3a4c42cbdd116b165e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1d5d791a58f301991819b41757b9021f6e30fc0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74849377"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679403"
 ---
 # <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Összegyűjtendő adatok egy Microsoft Azure Automation-eset megnyitásakor
 
-Ez a cikk néhány alapvető információt ismertet, amelyeket össze kell gyűjtenie, mielőtt megnyitna egy esetet az Azure Automation számára a Microsoft Azure-támogatással. Ez az információ nem szükséges az eset megnyitásához. Ez azonban segíthet a Microsoftnak a probléma gyorsabb megoldásában. Az eset megnyitása után a támogatási szakember is kérheti ezeket az adatokat.
+Ez a cikk néhány olyan információt ismertet, amelyeket az Azure Automation esetének Microsoft Azure-támogatással történő megnyitása előtt kell összegyűjtenie. Ez az információ nem szükséges az eset megnyitásához. Ez azonban segíthet a Microsoftnak a probléma gyorsabb megoldásában. Az eset megnyitása után a támogatási szakember is kérheti ezeket az adatokat.
 
-## <a name="collect-more-information"></a>További információk gyűjtése
+## <a name="basic-data"></a>Alapadatok
 
-Mielőtt megnyitna egy esetet a Microsoft Azure Automation-támogatás számára, javasoljuk, hogy gyűjtse össze az alábbi adatokat.
+Gyűjtse össze a Tudásbázis [4034605 – Az Azure Automation által írt parancsfájlokkal írt diagnosztika – Című](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)cikkében ismertetett alapvető adatokat.
 
-### <a name="basic-data-collection"></a>Alapvető adatgyűjtés
-
-Gyűjtse össze a Tudásbázis következő cikkében ismertetett adatokat:
-
-* [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics) Az Azure Automation által parancsfájlozott diagnosztika rögzítése
-
-## <a name="collect-data-depending-on-issue"></a>Adatok gyűjtése a problémától függően
- 
-### <a name="for-issues-that-affect-update-management-on-linux"></a>A Linux frissítési menedzsmentet érintő problémák esetén
+## <a name="data-for-update-management-issues-on-linux"></a>Adatok frissítéskezelési problémák linuxon
 
 1. A KB [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)kb.
 
    [OMS Linux ügynök naplógyűjtője](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
  
-2. Tömörítse a következő mappa tartalmát, majd küldje el a tömörített fájlt az Azure-támogatásnak:
-
-   ``/var/opt/microsoft/omsagent/run/automationworker/``
+2. Tömörítse a **/var/opt/microsoft/omsagent/run/automationworker/** mappa tartalmát, majd küldje el a tömörített fájlt az Azure-támogatásnak.
  
-3. Ellenőrizze, hogy az OMS Linux-ügynök által jelentett munkaterület-azonosító megegyezik-e a frissítések figyelt munkaterületével.
+3. Ellenőrizze, hogy a munkaterület azonosítója, amelynek a Log Analytics ügynök linuxos jelentések megegyezik az azonosítóa a munkaterület figyelt frissítések.
 
-### <a name="for-issues-that-affect-update-management-on-windows"></a>A Windows frissítés-kezelést érintő problémák esetén
+## <a name="data-for-update-management-issues-on-windows"></a>Frissítéskezelési adatokkal kapcsolatos problémák a Windows rendszeren
 
-A [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)alatt felsorolt tételeken kívül tegye a következőket:
+1. Gyűjtsön adatokat a [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)alatt felsorolt tételekről.
 
-1. Exportálja a következő eseménynaplókat AZ EVTX formátumba:
+2. Exportálja a következő eseménynaplókat AZ EVTX formátumba:
 
    * Rendszer
    * Alkalmazás
@@ -60,50 +50,47 @@ A [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-auto
    * Operations Manager
    * Microsoft-SMA/Működési
 
-2. Ellenőrizze, hogy az ügynök által jelentett munkaterület-azonosító megegyezik-e a Windows-frissítések által figyelt munkaterülettel.
+3. Ellenőrizze, hogy a munkaterület azonosítója, amelynek az ügynök jelentése megegyezik a Windows-frissítések által figyelt munkaterület azonosítójával.
 
-### <a name="for-issues-that-affect-a-job"></a>A munkát érintő problémák esetén
+## <a name="data-for-job-issues"></a>A feladatokkal kapcsolatos problémák adatai
 
-A [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)alatt felsorolt tételeken kívül gyűjtse össze a következő információkat:
+1. Gyűjtsön adatokat a [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)alatt felsorolt tételekről.
 
-1. A **JobID-szám** összegyűjtése (a problémát tapasztaló feladathoz):
+2. Gyűjtse össze a probléma miatt imitoráshoz a feladat azonosítójának összegyűjtését:
 
-   1. Az Azure Portalon nyissa meg az **Automation-fiókok** panelt.
-   2. Válassza ki a hibaelhárítást elhárító **automatizálási fiókot.**
+   1. Az Azure Portalon nyissa meg az **Automation-fiókok című.**
+   2. Válassza ki a hibaelhárítást elhárító Automation-fiókot, és jegyezze fel a nevet.
    3. Válassza a **Feladatok**lehetőséget.
    4. Válassza ki a hibaelhárítási feladatot.
-   5. A **Feladat összegzése**csoportban keressen egy **feladatazonosítót** (GUID).
+   5. A Feladat összegzése ablaktáblában keresse meg a **feladatazonosító**GUID értékét.
 
    ![Feladatazonosító a Feladat összegzése ablaktáblában](media/collect-data-microsoft-azure-automation-case/job-summary-job-id.png)
-
-2. A fiók névének összegyűjtése:
-
-   1. Az Azure Portalon nyissa meg az **Automation-fiókok** panelt.
-   2. A hibaelhárításhoz szükséges **Automation-fiók** nevének beszerezése.
 
 3. Gyűjtse össze a futtatott parancsfájl mintáját.
 
 4. Gyűjtse össze a naplófájlokat:
 
-   1. Az Azure Portalon nyissa meg az **Automation-fiókok** panelt.
-   2. Válassza ki a hibaelhárítást elhárító **automatizálási fiókot.**
+   1. Az Azure Portalon nyissa meg az **Automation-fiókok című.**
+   2. Válassza ki a hibaelhárításhoz szükséges Automation-fiókot.
    3. Válassza a **Feladatok**lehetőséget.
    4. Válassza ki a hibaelhárítási feladatot.
    5. Válassza az **Összes napló lehetőséget.**
-   6. A kapott panelen gyűjtse össze az adatokat.
+   6. Az eredményül kapott ablaktáblában gyűjtse össze az adatokat.
 
    ![A minden napló alatt felsorolt adatok](media/collect-data-microsoft-azure-automation-case/all-logs-data.png)
 
-### <a name="for-issues-that-affect-modules"></a>A modulokat érintő problémák esetén
+## <a name="data-for-module-issues"></a>Modulproblémák adatai
 
-Az "Alapszintű adatgyűjtés" alatt szereplő tételeken kívül gyűjtse össze a következő információkat:
+Az alapvető [adatelemekmellett](#basic-data)gyűjtse össze a következő információkat is:
 
 * A követett lépések, hogy a probléma reprodukálható legyen.
-* Képernyőkép a hibaüzenetekről.
-* Képernyőkép az aktuális modulokról és azok verziószámáról.
+* Képernyőképek a hibaüzenetekről.
+* Képernyőképek az aktuális modulokról és azok verziószámáról.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha további segítségre van szüksége a cikk bármely pontján, forduljon az Azure szakértőihez [az MSDN Azure és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/forums/)
+Ha további segítségre van szüksége:
 
-Másik lehetőségként nyújtson be egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**
+* Válaszokat kaphat az Azure szakértőitől [az Azure Forums segítségével.](https://azure.microsoft.com/support/forums/)
+* Lépjen [@AzureSupport](https://twitter.com/azuresupport)kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében, ha az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
+* Az Azure-támogatási incidens fájlja. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**

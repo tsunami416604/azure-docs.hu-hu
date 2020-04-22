@@ -1,20 +1,21 @@
 ---
-title: A kereskedelmi piac támogatása | Azure
+title: A kereskedelmi piac támogatása | Azure Piactér
 description: Támogatási információk és hivatkozások az Azure Piactérhez és az AppSource-hoz
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 3/19/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b2dba23bdf07233a9945086fba2274602cb2dcf1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2b73fee33692b65770caeea651c12e9780dba2c4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252234"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681386"
 ---
-# <a name="support-for-the-marketplace"></a>A Piactér támogatása  
+# <a name="support-for-the-marketplace"></a>A Piactér támogatása
+
 Az alábbiakban a Piactér támogatási lehetőségeinek listája látható.  
 
 Ezen kívül, akkor kap sok kérdésre választ a [Marketplace csatorna C + AI Közösségi Fórum](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
@@ -23,11 +24,11 @@ Ezen kívül, akkor kap sok kérdésre választ a [Marketplace csatorna C + AI K
 
 Nyisson meg egy jegyet a Microsoft [piactér kiadói támogatásával](https://aka.ms/marketplacepublishersupport) a bevezetéssel és az első lépésekről.
 
-## <a name="partner-center-or-cloud-partner-portal"></a>Partnerközpont vagy felhőpartneri portál  
+## <a name="partner-center"></a>Partnerközpont   
 
 | Támogatási csatorna | Leírás | Rendelkezésre állás |  
 |:--- |:--- |:--- |  
-| Segítségért látogasson el a [Piactér-támogatás](https://aka.ms/marketplacepublishersupport) ban található Incidens létrehozása lapra.</li> </ul> | Partnerközpont vagy felhőpartneri portál támogatása. | A támogatás a hét en 24x5. |  
+| Segítségért látogasson el a [Piactér-támogatás](https://aka.ms/marketplacepublishersupport) ban található Incidens létrehozása lapra.</li> </ul> | Partnerközpont támogatása. | A támogatás a hét en 24x5. |  
 
 ## <a name="technical"></a>Műszaki  
 

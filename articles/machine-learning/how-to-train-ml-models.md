@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 678af1855baf52efa727444236de8a1724a7d0b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9a3c10687b92d946fccb282f2eda4af637cf2ab
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79078477"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686771"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellek betanítása az Azure Machine Learning használatával a becslés használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,7 +80,7 @@ print(run.get_portal_url())
 >
 > A betanítás során összetevők (például modellfájlok, ellenőrzőpontok, adatfájlok vagy ábrázolt képek) létrehozásához írja ezeket a `./outputs` mappába.
 >
-> Hasonlóképpen a betanítási futtatásból a naplót is írhat a `./logs` mappába. Az Azure Machine Learning [TensorBoard-integrációjának](https://aka.ms/aml-notebook-tb) használatához győződjön meg arról, hogy a TensorBoard-naplókat ebbe a mappába írja. Amíg a futás folyamatban van, akkor képes lesz arra, hogy indítson TensorBoard és patak ezeket a naplókat.  Később a korábbi futtatások bármelyikének naplóit is visszaállíthatja.
+> Hasonlóképpen a betanítási futtatásból a naplót is írhat a `./logs` mappába. Az Azure Machine Learning [TensorBoard-integrációjának](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) használatához győződjön meg arról, hogy a TensorBoard-naplókat ebbe a mappába írja. Amíg a futás folyamatban van, akkor képes lesz arra, hogy indítson TensorBoard és patak ezeket a naplókat.  Később a korábbi futtatások bármelyikének naplóit is visszaállíthatja.
 >
 > Például a *kimeneti* mappába írt fájl letöltése a helyi számítógépre a távoli betanítás futtatása után:`run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 

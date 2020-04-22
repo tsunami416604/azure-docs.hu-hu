@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 882d428d7a8a9b56408aaa68964fa1e36c7cc7c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80bcf0d5d37a44cee2aab38161abac619542204a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277306"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684325"
 ---
 # <a name="containers-offer-publishing-guide"></a>A tárolók közzétételi útmutatót kínálnak
 
@@ -41,9 +41,9 @@ A Microsoft jelenleg támogatja az ingyenes és bring-your-own-license (BYOL) li
 
 Ha még nem tette meg, 
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piacon.
+- [További információ](https://azuremarketplace.microsoft.com/sell) a piactérről.
 
-Ha regisztrált, és új ajánlatot hoz létre, vagy egy meglévőn dolgozik,
+A Partnerközpontban való regisztrációhoz kezdjen új ajánlatot létrehozni, vagy dolgozzon egy meglévőn:
 
-- [Jelentkezzen be a Cloud Partner Portalszolgáltatásba](https://cloudpartner.azure.com) az ajánlat létrehozásához vagy teljesítéséhez.
-- További információt a [Tárolók](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) című témakörben talál.
+- [Jelentkezzen be a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához vagy teljesítéséhez.
+- További információkért [tekintse meg az Azure-tárolóajánlat létrehozása](./partner-center-portal/create-azure-container-offer.md) című témakört.

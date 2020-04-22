@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2739e960c4bc6d35ac9ad757e80ed620e5dc04f8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459168"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684649"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Az Azure Machine Learning kiadási megjegyzések
 
@@ -825,7 +825,7 @@ Az [új munkaterületi portál](https://ml.azure.com) Kísérlet lapja frissült
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK python-hoz 1.0.62-es v1.0.62
 
 + **Új funkciók**
-  + Bemutatta a `timeseries` tabularDataset tulajdonságát. Ez a tulajdonság lehetővé teszi a tabularDataset adatok egyszerű időbélyeg-szűrését, például az összes adat időtartomány vagy a legfrissebb adatok közötti levételét. Ha többet szeretne `timeseries` megtudni erről a TabularDataset tulajdonságáról, kérjük, látogasson el https://aka.ms/azureml-data a dokumentációra vagy https://aka.ms/azureml-tsd-notebook egy példa jegyzetfüzetre.
+  + Bemutatta a `timeseries` tabularDataset tulajdonságát. Ez a tulajdonság lehetővé teszi a tabularDataset adatok egyszerű időbélyeg-szűrését, például az összes adat időtartomány vagy a legfrissebb adatok közötti levételét. Ha többet szeretne `timeseries` megtudni erről a TabularDataset tulajdonságáról, kérjük, látogasson el https://aka.ms/azureml-data a dokumentációra vagy https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb egy példa jegyzetfüzetre.
   + Engedélyezve az edzést a Táblázatos adatkészlettel és a FileDataset beállítással. Kérjük, látogasson el https://aka.ms/dataset-tutorial egy példa notebook.
 
   + **azureml-train-core**
@@ -1339,7 +1339,7 @@ Visszaállítottuk a jobb teljesítményt eredményező változást, mivel az az
 + **Előzetes verzió funkciói**
     + Integráció [az MLflow](https://mlflow.org) 1.0.0-val az azureml-ml flow csomagon keresztül ([példa notebookok](https://aka.ms/azureml-mlflow-examples)).
     + Küldje jupyter notebook futtatásként. [API referenciadokumentációja](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + [Adatsodródás-érzékelő](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) nyilvános előzetes verziója az azureml-contrib-datadrift csomagon keresztül ([példa jegyzetfüzetek](https://aka.ms/azureml-datadrift-example)). Az adateltolódás az egyik legfontosabb oka annak, hogy a modell pontossága az idő múlásával romlik. Ez akkor fordul elő, ha az éles környezetben a modellnek kiszolgált adatok eltérnek a modell betanított adatoktól. Az AML-adateltolódás-érzékelő segít az ügyfélnek az adateltolódás figyelésében, és riasztást küld, ha eltolódást észlel.
+    + [Adatsodródás-érzékelő](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) nyilvános előzetes verziója az azureml-contrib-datadrift csomagon keresztül ([példa jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/monitor-models/data-drift)). Az adateltolódás az egyik legfontosabb oka annak, hogy a modell pontossága az idő múlásával romlik. Ez akkor fordul elő, ha az éles környezetben a modellnek kiszolgált adatok eltérnek a modell betanított adatoktól. Az AML-adateltolódás-érzékelő segít az ügyfélnek az adateltolódás figyelésében, és riasztást küld, ha eltolódást észlel.
 
 + **Kompatibilitástörő változások**
 

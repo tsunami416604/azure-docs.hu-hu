@@ -2,14 +2,14 @@
 title: Azure Migrate támogatási mátrix
 description: Az Azure Migrate szolgáltatás támogatási beállításainak és korlátainak összegzése.
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: 0f766bf95bb7e26d942e7dde3f315bbef6d5dc5c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44a971894f53a3f31c068b3c3ed4912bc7e00dab
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535196"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680701"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
@@ -25,6 +25,8 @@ A táblázat összefoglalja a támogatott felderítési, értékelési és átte
 **Helyszíni értékelés** | A helyszíni számítási feladatok és a VMware virtuális gépeken, a Hyper-V vM-eken és a fizikai kiszolgálókon futó adatok felmérheti. Értékelje az Azure Migrate Server Assessment és a Microsoft Data Migration Assistant (DMA), valamint egyéb eszközök és isv-ajánlatok használatával.
 **Helyszíni áttelepítés az Azure-ba** | A fizikai kiszolgálókon, vmware virtuális gépeken, Hyper-VM-eken, fizikai kiszolgálókon és felhőalapú VMS-en futó számítási feladatok és adatok áttelepítése az Azure-ba. Az Áttelepítés az Azure Migrate Server Assessment és az Azure Database Migration Service (DMS), valamint más eszközök és isv-ajánlatok használatával.
 
+> [!NOTE]
+> Az isv-eszközök jelenleg nem küldhetnek adatokat az Azure Migrate in Azure Government szolgáltatásba. Használhatja az integrált Microsoft-eszközöket, vagy egymástól függetlenül használhatja a partnereszközöket.
 
 ## <a name="supported-tools"></a>Támogatott eszközök
 
@@ -93,7 +95,7 @@ Egyesült Államok | USA középső vagy usa nyugati régiója 2
 **Tevékenység** | **Földrajz** | **Részletek**
 --- | --- | ---
 Projekt létrehozása | Egyesült Államok | Metaadatok tárolása az Egyesült Államok gov Arizona, US Gov Virginia
-Célfelmérés | Egyesült Államok | Célrégiók: US Gov Arizona, US Gov Virginia/US Gov Texas
+Célfelmérés | Egyesült Államok | Célrégiók: US Gov Arizona, US Gov Virginia, US Gov Texas
 Célreplikáció | Egyesült Államok | Célrégiók: US DoD Central, US DoD East, US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia
 
 

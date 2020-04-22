@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: fb982324b66c5ac0d2db00eb906ed850827bc72e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80c0afafca3b0bf497689cbd4a0870eedd066cfd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533283"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677148"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Az Azure Data Lake Storage áttelepítése Gen1-ről Gen2-re
 
@@ -100,9 +100,9 @@ Ez a táblázat a Gen1 képességeit hasonlítja össze a Gen2 képességeivel.
 |Hitelesítés|[AAD által felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Szolgáltatásnévmegtagok](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD által felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Szolgáltatásnévmegtagok](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Megosztott hozzáférési kulcs](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
 |Engedélyezés|Menedzsment - [RBAC](../../role-based-access-control/overview.md)<br>Adatok – [ACL-ek](data-lake-storage-access-control.md)|Menedzsment – [RBAC](../../role-based-access-control/overview.md)<br>Adatok - [ACL-ek](data-lake-storage-access-control.md), [RBAC](../../role-based-access-control/overview.md) |
 |Titkosítás – Inaktív adatok|Szerveroldal – [Microsoft által felügyelt](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy ügyfél által [felügyelt](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kulcsokkal|Szerveroldal – [Microsoft által felügyelt](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy ügyfél által [felügyelt](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kulcsokkal|
-|A VNET támogatása|[VNET-integráció](../../data-lake-store/data-lake-store-network-security.md)|[Szolgáltatásvégpontok](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [privát végpontok (nyilvános előzetes verzió)](../common/storage-private-endpoints.md)|
-|Fejlesztői élmény|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|[REST](/rest/api/storageservices/data-lake-storage-gen2), [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python,](data-lake-storage-directory-file-acl-python.md) [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [PowerShell](data-lake-storage-directory-file-acl-powershell.md), [Azure CLI](data-lake-storage-directory-file-acl-cli.md) (Nyilvános előzetes verzióban)|
-|Diagnosztikai naplók|Klasszikus naplók<br>[Integrált Azure Monitor](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klasszikus naplók](../common/storage-analytics-logging.md) (nyilvános előzetes verzióban)<br>Azure monitor integráció – idővonal TBD|
+|A VNET támogatása|[VNET-integráció](../../data-lake-store/data-lake-store-network-security.md)|[Szolgáltatásvégpontok](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [privát végpontok](../common/storage-private-endpoints.md)|
+|Fejlesztői élmény|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|Általánosan elérhető - [REST](/rest/api/storageservices/data-lake-storage-gen2), [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md)<br>Nyilvános előzetes verzió - [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [PowerShell](data-lake-storage-directory-file-acl-powershell.md), [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
+|Diagnosztikai naplók|Klasszikus naplók<br>[Integrált Azure Monitor](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klasszikus naplók](../common/storage-analytics-logging.md) - Általánosan elérhető<br>Azure monitor integráció – idővonal TBD|
 |Ökoszisztéma|[HDInsight (3.6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3.1 vagy újabb)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6, 4.0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5.1 vagy újabb)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns" />

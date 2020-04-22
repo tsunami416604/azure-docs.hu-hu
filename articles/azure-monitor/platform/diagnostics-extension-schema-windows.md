@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274709"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676434"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows diagnosztikai bővítménysémája
 Az Azure Diagnostics bővítmény az Azure Monitor egy ügynöke, amely a vendég operációs rendszerből és az Azure számítási erőforrások munkaterheléseiből gyűjtfigyelési adatokat. Ez a cikk a Windows virtuális gépeken és más számítási erőforrásokon a diagnosztikai bővítmény konfigurációjához használt sémát részletezi.
@@ -87,7 +87,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 |**DiagnosticInfrastructureLogs (Diagnosztikaiinfrastruktúranaplók)**|Engedélyezze az Azure Diagnostics által létrehozott naplók gyűjteményét. A diagnosztikai infrastruktúra-naplók hasznosak a diagnosztikai rendszer hibáinak elhárításához. A választható attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** - A gyűjtött naplók minimális súlyossági szintjét állítja be.<br /><br /> - **scheduledTransferPeriod** - A tárolóba történő ütemezett átvitelek közötti időköz a legközelebbi percre kerekítve. Az érték egy ["Időtartam adattípus" XML.](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**Könyvtárak**|Lásd a leírás máshol ezen az oldalon.|  
 |**EtwProviders (EtwProviders)**|Lásd a leírás máshol ezen az oldalon.|  
-|**Mutatókat**|Lásd a leírás máshol ezen az oldalon.|  
+|**Mérőszámok**|Lásd a leírás máshol ezen az oldalon.|  
 |**Teljesítményszámlálók**|Lásd a leírás máshol ezen az oldalon.|  
 |**WindowsEseménynapló**|Lásd a leírás máshol ezen az oldalon.|
 |**DockerSources**|Lásd a leírás máshol ezen az oldalon. |
@@ -223,9 +223,8 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
 |Gyermek elem|Leírás|  
 |-------------------|-----------------|  
-|**Datasource**|A Windows eseménynaplói. Kötelező attribútum:<br /><br /> **name** - Az összegyűjtendő Windows-eseményeket leíró XPath-lekérdezés. Példa:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Az összes esemény összegyűjtéséhez adja meg a "*"|  
-
-
+|**Datasource**|A Windows eseménynaplói. Kötelező attribútum:<br /><br /> **name** - Az összegyűjtendő Windows-eseményeket leíró XPath-lekérdezés. Például:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Az összes esemény összegyűjtéséhez adja meg a "*" |
+|**Mosogató** | Hozzáadva az 1.5-ben. Választható. A fogadó helyére mutat, és diagnosztikai adatokat is küld az összes gyermekelemhez, amely támogatja a fogadókat. A fogadó példa az Application Insights vagy az Event Hubs.|  
 
 
 ## <a name="logs-element"></a>Naplók elem  
@@ -238,9 +237,9 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 |Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**nem aláírtint**|Választható. Megadja a fájlrendszer által a megadott adatokhoz rendelkezésre álló maximális számú tárterületet.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferLogLevelFilter**|**sztring**|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték az **Undefined**, amely az összes naplót átviszi. További lehetséges értékek (a legtöbb és a legkisebb információ sorrendjében) a **részletes**, **információs**, **figyelmeztetési**, **hiba**és **kritikus**értékek.|  
+|**scheduledTransferLogLevelFilter**|**Karakterlánc**|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték az **Undefined**, amely az összes naplót átviszi. További lehetséges értékek (a legtöbb és a legkisebb információ sorrendjében) a **részletes**, **információs**, **figyelmeztetési**, **hiba**és **kritikus**értékek.|  
 |**scheduledTransferPeriod**|**Időtartam**|Választható. Megadja az ütemezett adattovábbítások közötti intervallumot, a legközelebbi percre felfelé kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
-|**Mosogató** |**sztring**| Hozzáadva az 1.5-ben. Választható. A fogadó helyére mutat diagnosztikai adatok küldéséhez is. Például az Application Insights vagy az Event Hubs.|  
+|**Mosogató** |**Karakterlánc**| Hozzáadva az 1.5-ben. Választható. A fogadó helyére mutat diagnosztikai adatok küldéséhez is. Például az Application Insights vagy az Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
@@ -296,8 +295,8 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
 |Attribútumok|Típus|Leírás|  
 |----------------|----------|-----------------|  
-|**Loglevel**|**sztring**|Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték az **Undefined**, amely az összes naplót átviszi. További lehetséges értékek (a legtöbb és a legkisebb információ sorrendjében) a **részletes**, **információs**, **figyelmeztetési**, **hiba**és **kritikus**értékek.|  
-|**név**|**sztring**|A hivatkozandó csatorna egyedi neve|  
+|**Loglevel**|**Karakterlánc**|Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték az **Undefined**, amely az összes naplót átviszi. További lehetséges értékek (a legtöbb és a legkisebb információ sorrendjében) a **részletes**, **információs**, **figyelmeztetési**, **hiba**és **kritikus**értékek.|  
+|**név**|**Karakterlánc**|A hivatkozandó csatorna egyedi neve|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig elem

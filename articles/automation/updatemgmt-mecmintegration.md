@@ -1,5 +1,5 @@
 ---
-title: Az Azure Update Management használata a Configuration Manager-ügyfelekkel
+title: Az Azure Automation Update Management használata configuration manager-ügyfelekkel
 description: Ez a cikk a Microsoft Endpoint Configuration Manager ezzel a megoldással történő konfigurálásának segítése a szoftverfrissítések ConfigMgr-ügyfelekre történő telepítéséhez.
 services: automation
 ms.subservice: update-management
@@ -7,18 +7,18 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: f0ca836e3b53c3cce755d45b50fe168073f0bbaa
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 32a077c476d9669c3f32bd4040fdc8ff90156c19
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81618723"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678734"
 ---
 # <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>Frissítések telepítése a Microsoft Endpoint Configuration Manager ügyfeleihez frissítéskezeléssel
 
 Azok az ügyfelek, akik a Microsoft Endpoint Configuration Manager programba fektettek be a számítógépek, kiszolgálók és mobileszközök kezelésére, a szoftverfrissítések kezelésének (SZUM) részeként is támaszkodnak az erejükre és az érettségükre.
 
-A felügyelt Windows-kiszolgálókat úgy jelentheti és frissítheti, hogy szoftverfrissítési központi telepítéseket hoz létre és előrendez a Configuration Manager ben, és részletesen megkaphatja a befejezett frissítési központi telepítések állapotát az [Update Management megoldás](automation-update-management.md)segítségével. Ha a Configuration Manager t használja a frissítésmegfelelőségi jelentésekhez, de a frissítések központi telepítésének kezeléséhez nem a Windows-kiszolgálókkal, folytathatja a jelentést a Configuration Manager nek, amíg a biztonsági frissítéseket az Update Management megoldással kezelik.
+A felügyelt Windows-kiszolgálókat úgy jelentheti és frissítheti, hogy szoftverfrissítési központi telepítéseket hoz létre és előrendez a Configuration Manager ben, és részletesállapotban kapja meg a befejezett frissítési központi telepítéseket az [Update Management](automation-update-management.md)segítségével. Ha a Configuration Manager t használja a frissítésmegfelelőségi jelentésekhez, de a frissítések központi telepítésének kezeléséhez nem a Windows-kiszolgálókkal, folytathatja a jelentést a Configuration Manager nek, amíg a biztonsági frissítéseket az Update Management megoldással kezelik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Szolgáltatások - az Ön kereskedelmi piacának előnyei | Azure
+title: Go-To-Market Szolgáltatások - az Ön kereskedelmi piacának előnyei | Azure Piactér
 description: Piacra lépő szolgáltatások – A Microsoft által használható erőforrásokat a microsoftos okvédelem ebben a szakaszban ismerteti.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/08/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: d34fb989e7f656df93faae63ef4dc42ed0fe5abe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5c8b2f5cb03c7e1777137100547fbbbaf107f0b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286234"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684541"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Az Ön kereskedelmi piaca előnyei
 
@@ -24,7 +24,7 @@ Amikor élőben jelentkezel az ajánlatoddal, a Marketplace Rewards csapata kapc
 
 A Marketplace Rewards célja, hogy támogassa Önt a növekedés adott szakaszában, kezdve a tudatossággal kapcsolatos tevékenységekkel, amelyek segítenek első ügyfeleid megkapásában. Ahogy növekszik a piacon, akkor kinyit az új előnyöket, amelyek célja, hogy segítsen átalakítani az ügyfelek és a szoros foglalkozik. 
 
-A program pozitív visszacsatolási hurkot hoz létre: a növekedés minden szakaszában az előnyök úgy vannak kialakítva, hogy a következő szakaszba lépve növekedjen a Microsoft ügyfelei számára, a Microsoft területén, és a Microsoft csatornáján keresztül a kereskedelmi piacon, mint a platform. 
+A program létrehoz egy pozitív visszacsatolási hurok: az előnyök minden szakaszában a növekedés célja, hogy a haladást, hogy a következő szakaszban, amely lehetővé teszi, hogy növekszik az üzleti Microsoft ügyfelek, a Microsoft területén, és a Microsoft csatorna kihasználva a kereskedelmi piacon, mint a platform. 
 
 Az Ön előnyei attól függően különböztethetik meg, hogy ajánlata [Lista, Próba verzió vagy Transact.](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)
 
@@ -44,7 +44,7 @@ Az első lépések egyszerűek:
 2. A csapat piactéri ajánlatonként a "tulajdonos" vagy az "elsődleges kapcsolattartó" kapcsolatot. Ajánlott beírni egy magánszemélyt vagy egy rendszeresen ellenőrizett aliast: az info@company.com aliasok számára küldött üzenetek, például gyakran elvesznek.
 
 >[!Note]
->Ha ajánlata több mint négy hete él, és nem kapott üzenetet, kérjük, ellenőrizze a szervezeten belül, hogy ki a szóban forgó ajánlat tulajdonosa, vagy a Cloud Partner Portal vagy a Partner Center webhelyen. Rendelkezniük kell a kommunikációval és a következő lépésekkel. <br> <br> Ha nem tudja meghatározni a tulajdonost, vagy ha a tulajdonos elhagyta https://aka.ms/marketplacepublishersupporta vállalatot, a támogatási jegyet a lehetőségben emelheti ki.
+>Ha ajánlata már több mint négy hete él, és nem kapott üzenetet, kérjük, ellenőrizze a szervezeten belül, hogy ki a kérdéses ajánlat tulajdonosa, a Partnerközpontban. Rendelkezniük kell a kommunikációval és a következő lépésekkel. <br> <br> Ha nem tudja meghatározni a tulajdonost, vagy ha a tulajdonos elhagyta https://aka.ms/marketplacepublishersupporta vállalatot, a támogatási jegyet a lehetőségben emelheti ki.
 
 A rendelkezésre álló tevékenységek köre bővül, ahogy növekszik a kínálatot a piacon. Minden hirdetés az erőforrások és a bevált gyakorlatok önkiszolgáló e-mailjének részeként megkapja az optimalizálási ajánlások és promóciók alapszintjét.
 
@@ -96,7 +96,7 @@ A Microsoft fenntartja a jogot, hogy visszavonja és megszüntesse a Marketplace
 * illegális tevékenységet folytatnak a piactéri adatlapjuk használatával.
 * a kereskedelmi piacról nem szerepelnek. 
 * ajánlatukat arra használják, hogy olyan marketingvagy egyéb tartalmakat mutassanak be, amelyek sértik a szerzői jogra vagy a védjegyre vonatkozó jogszabályokat.
-* megsértik az [Azure szponzorálási programjának](https://azure.microsoft.com/offers/ms-azr-0036p/)irányelveit, beleértve, de nem kizárólagosan, az Azure szponzorálási finanszírozását saját belső műveleteikhez vagy bitcoinbányászatukhoz. 
+* megsértik az [Azure szponzorálási programjának](https://azure.microsoft.com/offers/ms-azr-0036p/)irányelveit, beleértve, de nem kizárólagosan, az Azure szponzorálási finanszírozását saját belső műveleteikhez vagy Bitcoin-bányászatukhoz. 
 
 ### <a name="offer-availability"></a>Ajánlat elérhetősége
 
@@ -106,9 +106,7 @@ A csalárdnak bizonyult tranzakciók nem számítanak bele a közzétevő [szám
 
 ## <a name="next-steps"></a>További lépések
 
-Ha az ajánlatot a [Cloud Partner Portal](https://cloudpartner.azure.com)on hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
-
-Ha az ajánlatot a [Partnerközpontban](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
+Ha az ajánlatot a [Partnerközpontban](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
 
 Tekintse át az [Ön által rendelkezésre álló önkiszolgáló erőforrásokat.](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)
 

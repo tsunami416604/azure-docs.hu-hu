@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f11c19ba33ee2fbae0fef265371bedad2fe29cb7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73821734"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684957"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Azure SQL Database felügyelt példányának biztonságos használata nyilvános végpontokkal
 
@@ -35,7 +35,7 @@ Bár nem kötelező, a nyilvános végpont-hozzáféréssel rendelkező felügye
 
 ## <a name="secure-data-in-motion"></a>Biztonságos mozgásban lévő adatok
 
-A felügyelt példány adatforgalma mindig titkosítva van, ha az ügyfél-illesztőprogram támogatja a titkosítást. A felügyelt példány és más Azure-virtuális gépek vagy Azure-szolgáltatások között küldött adatok soha nem hagyja el az Azure gerincét. Ha kapcsolat van a felügyelt példány és a helyszíni hálózat között, javasoljuk, hogy az Azure ExpressRoute-ot használja a Microsoft társviszony-létesítésével. Az ExpressRoute segítségével elkerülheti az adatok nyilvános interneten keresztüli áthelyezését. Felügyelt példány privát kapcsolat, csak privát társviszony-létesítés használható.
+A felügyelt példány adatforgalma mindig titkosítva van, ha az ügyfél-illesztőprogram támogatja a titkosítást. A felügyelt példány és más Azure-virtuális gépek vagy Azure-szolgáltatások között küldött adatok soha nem hagyja el az Azure gerincét. Ha kapcsolat van a felügyelt példány és a helyszíni hálózat között, javasoljuk, hogy használja az Azure ExpressRoute-ot. Az ExpressRoute segítségével elkerülheti az adatok nyilvános interneten keresztüli áthelyezését. Felügyelt példány privát kapcsolat, csak privát társviszony-létesítés használható.
 
 ## <a name="lock-down-inbound-and-outbound-connectivity"></a>Bejövő és kimenő kapcsolatok zárolása
 

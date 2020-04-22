@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1730939de399cacd13c62988259904ba84ee78ff
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654149"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680188"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>A hitelesítési módszerek használata & elemzések (előzetes verzió)
 
@@ -65,7 +65,7 @@ Ha a **Regisztrált felhasználók**, a **Felhasználók engedélyezve**vagy a *
 
 A regisztrációs adatok jelentés a következő információkat jeleníti meg az egyes felhasználók számára:
 
-- Név
+- Name (Név)
 - Felhasználónév
 - Regisztrációs állapot (minden, regisztrált, nincs regisztrálva)
 - Engedélyezett állapot (minden, engedélyezve, Nincs engedélyezve)
@@ -80,7 +80,7 @@ A Regisztrációk vagy alaphelyzetbe állítás diagramokra kattintva megnyílik
 
 A visszaállításrészleteiről szóló jelentés az elmúlt 30 nap regisztrációs és alaphelyzetbe állítási eseményeit jeleníti meg, többek között a következőket:
 
-- Név
+- Name (Név)
 - Felhasználónév
 - Funkció (mind, regisztráció, visszaállítás)
 - Hitelesítési módszer (alkalmazásértesítés, alkalmazáskód, telefonhívás, Office-hívás, SMS, E-mail, Biztonsági kérdések)
@@ -93,6 +93,8 @@ A lista tetején található vezérlők segítségével megkereshet egy felhaszn
 Az ezekben a jelentésekben megjelenő adatok akár 60 percet is elhalaszthatnak. Az Azure Portalon létezik egy "Utolsó frissítés" mező, amely azonosítja az adatok legutóbbi adatait.
 
 A használati és elemzési adatok nem helyettesítik az Azure többtényezős hitelesítési tevékenységjelentéseit vagy az Azure AD bejelentkezések jelentésben szereplő információkat.
+
+A jelentés jelenleg nem szűrhető külső felhasználók kizárásához.
 
 ## <a name="next-steps"></a>További lépések
 

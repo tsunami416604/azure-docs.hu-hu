@@ -3,12 +3,12 @@ title: Kérdések a felderítéssel, értékeléssel és függőségelemzéssel 
 description: Válaszok at kaphat a felderítéssel, értékeléssel és függőségelemzéssel kapcsolatos gyakori kérdésekre az Azure Migrate alkalmazásban.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529773"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681899"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felfedezés, értékelés és függőségi elemzés - Gyakori kérdések
 
@@ -28,6 +28,10 @@ Tekintse át a támogatott földrajzi köz- [és](migrate-support-matrix.md#supp
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hány virtuális gépet fedezhetek fel egy készülékkel?
 
 Akár 10 000 VMware virtuális gépet, akár 5000 Hyper-V virtuális gépet és akár 250 fizikai kiszolgálót is felfedezhet egyetlen készülék használatával. Ha több gépe van, olvassa el [a Hyper-V-felmérés méretezését,](scale-hyper-v-assessment.md) [a VMware-felmérés méretezését](scale-vmware-assessment.md)vagy [a fizikai kiszolgálói felmérés méretezését.](scale-physical-assessment.md)
+
+## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Nem látok néhány virtuálisgép-típust az Azure Governmentben
+
+Az értékeléshez és az áttelepítéshez támogatott virtuálisgép-típusok az Azure Government-helyen való rendelkezésre állástól függenek. Megtekintheti [és összehasonlíthatja](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) a virtuálisgép-típusokat az Azure Government ben.
 
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>A virtuális gép mérete megváltozott. Lefuttathatok még egy értékelést?
@@ -87,7 +91,7 @@ Az importálásalapú értékelések olyan gépeken létrehozott értékelések,
 A függőségi megjelenítés segítségével felmérheti a virtuális gépek nagyobb megbízhatósággal áttelepítendő csoportjait. A függőségi megjelenítés átellenőrzi a számítógép-függőségeket az értékelés futtatása előtt. Ez segít biztosítani, hogy semmi sem marad hátra, és segít elkerülni a váratlan kimaradások, amikor áttelepíti az Azure-ba. Az Azure Migrate a Service Map-megoldást használja az Azure Monitorban a függőségi vizualizáció engedélyezéséhez. [További információ](concepts-dependency-visualization.md).
 
 > [!NOTE]
-> Függőségi megjelenítés nem érhető el az Azure Government.
+> Az ügynökalapú függőségi elemzés nem érhető el az Azure Government ben. Használhatja ügynök nélküli függőségelemzés
 
 ## <a name="whats-the-difference-between-agent-based-and-agentless"></a>Mi a különbség az ügynök-alapú és ügynök nélküli?
 

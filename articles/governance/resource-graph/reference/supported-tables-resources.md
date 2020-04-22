@@ -1,14 +1,14 @@
 ---
 title: Támogatott Erőforrás-kezelő erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Változási előzmények által támogatott Erőforrás-kezelő erőforrástípusok listáját.
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.topic: reference
-ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 99a10e084f8ae24156c447f7abca31a8ef977720
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415139"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685476"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph tábla és erőforrástípus-hivatkozás
 
@@ -50,7 +50,11 @@ Az Azure Resource Graph az [Azure Resource Manager](../../../azure-resource-mana
 - élőaréna.broadcast/szolgáltatások
 - mailjet.email/szolgáltatások
 - microsoft.aad/domainservices
+- microsoft.aadiam/privatelinkforazuread
 - microsoft.aadiam/bérlők
+- microsoft.aisupercomputer/accounts
+- microsoft.aisupercomputer/accounts/jobgroups
+- microsoft.aisupercomputer/accounts/jobgroups/jobs
 - microsoft.alertsmanagement/actionrules
 - microsoft.alertsmanagement/smartdetectoralertrules
 - microsoft.analysisservices/kiszolgálók
@@ -63,6 +67,7 @@ Az Azure Resource Graph az [Azure Resource Manager](../../../azure-resource-mana
 - microsoft.automation/automationaccounts/runbooks
 - microsoft.azconfig/configurationstores
 - microsoft.azureactivedirectory/b2cdirectories
+- microsoft.azuredata/adatvezérlők
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
 - microsoft.azuredata/sqlbigdataclusters
@@ -351,6 +356,7 @@ Az Azure Resource Graph az [Azure Resource Manager](../../../azure-resource-mana
 - microsoft.remoteapp/gyűjtemények
 - microsoft.resourcegraph/lekérdezések
 - microsoft.resources/deploymentscripts
+- microsoft.resources/templatespecs
 - microsoft.saas/applications
 - microsoft.scheduler/jobcollections
 - microsoft.search/searchservices
@@ -405,6 +411,7 @@ Az Azure Resource Graph az [Azure Resource Manager](../../../azure-resource-mana
 - microsoft.visualstudio/fiók
 - microsoft.visualstudio/fiók/bővítmény
 - microsoft.visualstudio/fiók/projekt
+- microsoft.vmware/arczones
 - microsoft.vmwarecloudsimple/dedicatedcloudnodes
 - microsoft.vmwarecloudsimple/dedicatedcloudservices
 - microsoft.vmwarecloudsimple/virtualmachines
@@ -454,7 +461,6 @@ Az Azure Resource Graph az [Azure Resource Manager](../../../azure-resource-mana
 
 ## <a name="securityresources"></a>biztonsági erőforrások
 
-- assessmentmetadata
 - microsoft.security/assessments
 - microsoft.security/assessments/subassessments
 - microsoft.security/pricings

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 29ac9239b8dc87b1ed12fc8333bf5201fe8fa204
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a1229ee389b41625554fb2869089b08a3cb9cb6d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617127"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676513"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése az Azure Automationben
 
@@ -46,13 +46,13 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 Az Azure Automationben új runbookot hozhat létre Egy PowerShell-parancsfájl vagy PowerShell-munkafolyamat (**.ps1**), egy exportált grafikus runbook (**.graphrunbook**) vagy egy Python2-parancsfájl (**.py**) importálásával.  Meg kell adnia az importálás során létrehozott [runbook típusát,](automation-runbook-types.md) figyelembe véve a következő szempontokat.
 
-* A munkafolyamatot nem tartalmazó **.ps1** fájl [importálható PowerShell-runbookba](automation-runbook-types.md#powershell-runbooks) vagy [PowerShell-munkafolyamat-runbookba.](automation-runbook-types.md#powershell-workflow-runbooks) Ha importálja egy PowerShell-munkafolyamat-runbookba, a rendszer munkafolyamattá konvertálja. Ebben az esetben a megjegyzések szerepelnek a runbook a végrehajtott módosítások leírásához.
+* Importálhat egy **.ps1** fájlt, amely nem tartalmaz munkafolyamatot sem [PowerShell-runbookba,](automation-runbook-types.md#powershell-runbooks) sem [PowerShell-munkafolyamat-runbookba.](automation-runbook-types.md#powershell-workflow-runbooks) Ha importálja egy PowerShell-munkafolyamat-runbookba, a rendszer munkafolyamattá konvertálja. Ebben az esetben a megjegyzések szerepelnek a runbook a végrehajtott módosítások leírásához.
 
-* A PowerShell-munkafolyamatot tartalmazó **.ps1** fájl csak [PowerShell-munkafolyamat-runbookba](automation-runbook-types.md#powershell-workflow-runbooks)importálható. Ha a fájl több PowerShell-munkafolyamatot tartalmaz, az importálás sikertelen lesz. Minden munkafolyamatot a saját fájljába kell mentenie, és külön kell importálnia.
+* Csak egy PowerShell-munkafolyamatot tartalmazó **.ps1** fájlt importálhat [egy PowerShell-munkafolyamat-runbookba.](automation-runbook-types.md#powershell-workflow-runbooks) Ha a fájl több PowerShell-munkafolyamatot tartalmaz, az importálás sikertelen lesz. Minden munkafolyamatot a saját fájljába kell mentenie, és külön kell importálnia.
 
-* A PowerShell-munkafolyamatot tartalmazó **.ps1** fájlt nem szabad [PowerShell-runbookba](automation-runbook-types.md#powershell-runbooks)importálni, mivel a PowerShell parancsfájlmotorja nem ismeri fel.
+* Ne importáljon PowerShell-munkafolyamatot tartalmazó **.ps1** fájlt [egy PowerShell-runbookba,](automation-runbook-types.md#powershell-runbooks)mert a PowerShell parancsfájlmotorja nem ismeri fel.
 
-* A **.graphrunbook** fájl csak új [grafikus runbookba](automation-runbook-types.md#graphical-runbooks)importálható. Ne feledje, hogy csak **.graphrunbook** fájlból hozhat létre grafikus runbookot.
+* **.graphrunbook** fájlt csak új grafikus [runbookba](automation-runbook-types.md#graphical-runbooks)importálhat. Ne feledje, hogy csak **.graphrunbook** fájlból hozhat létre grafikus runbookot.
 
 ### <a name="import-a-runbook-from-a-file-with-the-azure-portal"></a>Runbook importálása fájlból az Azure Portalon
 

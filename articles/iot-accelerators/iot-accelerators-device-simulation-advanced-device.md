@@ -6,15 +6,18 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- mvc
+- amqp
+- mqtt
+ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61449021"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683831"
 ---
 # <a name="create-an-advanced-device-model"></a>Speciális eszközmodell létrehozása
 
@@ -169,7 +172,7 @@ A sémában felsorolt mezők a következő típusúak lehetnek:
 
 ### <a name="supported-methods"></a>Támogatott módszerek
 
-A szimulált eszközök is reagálhatnak a metódushívásokra, ebben az esetben valamilyen logikát hajtanak végre, és valamilyen választ adnak. A szimulációhoz hasonlóan a metóduslogika egy JavaScript-fájlban tárolódik, és kölcsönhatásba léphet az eszköz állapotával. Példa:
+A szimulált eszközök is reagálhatnak a metódushívásokra, ebben az esetben valamilyen logikát hajtanak végre, és valamilyen választ adnak. A szimulációhoz hasonlóan a metóduslogika egy JavaScript-fájlban tárolódik, és kölcsönhatásba léphet az eszköz állapotával. Például:
 
 ```json
 "CloudToDeviceMethods": {
@@ -259,7 +262,7 @@ A JavaScript fájloknak **rendelkezniük** kell egy fő funkcióval, amely két 
     * **deviceModel .** **Például: Lift**.
 * Olyan **állapotobjektum,** amely az előző hívásban a függvény által visszaadott érték. Ezt az eszközállapotot a szimulációs szolgáltatás tartja karban, és telemetriai üzenetek létrehozásához használja.
 
-A **fő** függvény az új eszközállapotot adja vissza. Példa:
+A **fő** függvény az új eszközállapotot adja vissza. Például:
 
 ```JavaScript
 function main(context, state) {

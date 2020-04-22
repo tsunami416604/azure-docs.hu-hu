@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7eb01f3997ac4ab2e439c00f07990c51ec3e3d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdf0cbfb91332d60516432a7a67fb10404d89113
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370360"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683850"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: A Munkanap konfigurálása automatikus felhasználói kiépítéshez
 
@@ -281,6 +281,7 @@ Ebben a lépésben a "tartomány biztonsági" házirend-engedélyeket a feldolgo
     ![Tartományi biztonsági házirendek](./media/workday-inbound-tutorial/wd_isu_06.png "Tartományi biztonsági házirendek")  
 2. A **Domain (Tartomány)** mezőben keresse meg a következő tartományokat, és egyenként vegye fel őket a szűrőbe.  
    * *Külső számlakiépítés*
+   * *Dolgozói adatok: Dolgozók*
    * *Dolgozói adatok: Nyilvános dolgozói jelentések*
    * *Személy adatai: Munkahelyi kapcsolattartási adatok*
    * *Dolgozói adatok: Minden beosztás*
@@ -312,6 +313,7 @@ Ebben a lépésben a "tartomány biztonsági" házirend-engedélyeket a feldolgo
    | ---------- | ---------- |
    | Be- és put | Dolgozói adatok: Nyilvános dolgozói jelentések |
    | Be- és put | Személy adatai: Munkahelyi kapcsolattartási adatok |
+   | Lekérés | Dolgozói adatok: Dolgozók |
    | Lekérés | Dolgozói adatok: Minden beosztás |
    | Lekérés | Dolgozói adatok: Aktuális személyzeti információk |
    | Lekérés | Dolgozói adatok: Üzleti cím a dolgozói profilon |
@@ -451,11 +453,15 @@ Ebben a lépésben kapcsolatot létesítünk a Workday és az Active Directory a
 
 1. Töltse ki a **Rendszergazdai hitelesítő adatok szakaszt** az alábbiak szerint:
 
-   * **Rendszergazdai felhasználónév** – Adja meg a Workday integrációs rendszerfiók felhasználónevét a bérlői tartománynév hozzáfűzésével. Meg kell kinéznie valami ilyesmi: **felhasználónév\@tenant_name**
+   * **Workday Username** – Adja meg a Munkanap-integrációs rendszerfiók felhasználónevét a bérlői tartománynév hozzáfűzésével. Meg kell kinéznie valami ilyesmi: **felhasználónév\@tenant_name**
 
-   * **Rendszergazdai jelszó –** Adja meg a Workday integrációs rendszerfiók jelszavát
+   * **Munkanap jelszava –** Adja meg a Workday integrációs rendszerfiók jelszavát
 
-   * **Bérlő url-címe –** Adja meg a Workday webszolgáltatások végpontjának URL-címét a bérlő számára. Ez az érték https://wd3-impl-services1.workday.com/ccx/service/contoso4így kell kinéznie: , ahol *contoso4* helyett a megfelelő bérlő nevét és *wd3-impl* helyébe a megfelelő környezeti karakterláncot.
+   * **Workday Web Services API URL-címe –** Adja meg a Workday webszolgáltatások végpontjának URL-címét a bérlő számára. Ez az érték https://wd3-impl-services1.workday.com/ccx/service/contoso4így kell kinéznie: , ahol *contoso4* helyett a megfelelő bérlő nevét és *wd3-impl* helyébe a megfelelő környezeti karakterláncot.
+
+     > [!NOTE]
+     > Alapértelmezés szerint az alkalmazás a Workday Web Services 21.1-es verzióját használja, ha az URL-címben nincs megadva verzióinformáció. Egy adott Workday Web Services API-verzió használatához használja az URL-formátumot:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > Például: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
 
    * **Active Directory erdő -** Az Active Directory-tartomány "neve", az ügynöknél regisztráltállapotban. A legördülő menü segítségével válassza ki a kiépítés céltartományát. Ez az érték általában egy karakterlánc, mint: *contoso.com*
 
@@ -472,7 +478,7 @@ Ebben a lépésben kapcsolatot létesítünk a Workday és az Active Directory a
 
    * Kattintson a **Kapcsolat tesztelése** gombra. Ha a kapcsolatteszt sikeres, kattintson **a** mentés gombra a tetején. Ha nem sikerül, ellenőrizze, hogy a Workday hitelesítő adatok és az ügynök beállításán konfigurált AD hitelesítő adatok érvényesek-e.
 
-     ![Azure portál](./media/workday-inbound-tutorial/wd_1.png)
+     ![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
 
    * A hitelesítő adatok sikeres mentése után a **Hozzárendelések** szakasz megjeleníti a **munkanapdolgozók szinkronizálásának alapértelmezett hozzárendelését a helyszíni Active Directoryhoz**
 
@@ -537,7 +543,7 @@ Ebben a szakaszban konfigurálhatja, hogy a felhasználói adatok hogyan áramla
 
 1. A leképezések mentéséhez kattintson a **Mentés** gombra az Attribútumleképezés szakasz tetején.
 
-   ![Azure portál](./media/workday-inbound-tutorial/wd_2.png)
+   ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Az alábbiakban néhány példa attribútumleképezést mutat be a Workday és az Active Directory között, néhány gyakori kifejezéssel
 
@@ -607,11 +613,16 @@ Az alábbi szakaszok ismertetik a felhasználók kiépítési munkanapi azure-b�
 
 8. Töltse ki a **Rendszergazdai hitelesítő adatok szakaszt** az alábbiak szerint:
 
-   * **Rendszergazdai felhasználónév** – Adja meg a Workday integrációs rendszerfiók felhasználónevét a bérlői tartománynév hozzáfűzésével. Kell kinéznie valami ilyesmi:username@contoso4
+   * **Workday Username** – Adja meg a Munkanap-integrációs rendszerfiók felhasználónevét a bérlői tartománynév hozzáfűzésével. Kell kinéznie valami ilyesmi:username@contoso4
 
-   * **Rendszergazdai jelszó –** Adja meg a Workday integrációs rendszerfiók jelszavát
+   * **Munkanap jelszava –** Adja meg a Workday integrációs rendszerfiók jelszavát
 
-   * **Bérlő url-címe –** Adja meg a Workday webszolgáltatások végpontjának URL-címét a bérlő számára. Ez az érték https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resourcesígy kell kinéznie: , ahol *contoso4* helyett a megfelelő bérlő nevét és *wd3-impl* helyébe a megfelelő környezeti karakterláncot. Ha ez az URL-cím nem ismert, kérjük, működjön együtt a Workday integrációs partnerével vagy a támogatási képviselőjével a megfelelő URL-cím meghatározásához.
+   * **Workday Web Services API URL-címe –** Adja meg a Workday webszolgáltatások végpontjának URL-címét a bérlő számára. Ez az érték https://wd3-impl-services1.workday.com/ccx/service/contoso4így kell kinéznie: , ahol *contoso4* helyett a megfelelő bérlő nevét és *wd3-impl* helyébe a megfelelő környezeti karakterláncot. Ha ez az URL-cím nem ismert, kérjük, működjön együtt a Workday integrációs partnerével vagy a támogatási képviselőjével a megfelelő URL-cím meghatározásához.
+
+     > [!NOTE]
+     > Alapértelmezés szerint az alkalmazás a Workday Web Services 21.1-es verzióját használja, ha az URL-címben nincs megadva verzióinformáció. Egy adott Workday Web Services API-verzió használatához használja az URL-formátumot:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > Például: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+
 
    * **Értesítési e-mail –** Adja meg e-mail címét, és jelölje be az "E-mail küldése hiba esetén" jelölőnégyzetet.
 
@@ -737,7 +748,7 @@ Miután a Workday kiépítési alkalmazás konfigurációk befejeződött, bekap
 
 1. A **Kiépítés** lapon állítsa a **Kiépítési állapot** ot **Bekapcsolva**.
 
-2. Kattintson a **Mentés** gombra.
+2. Kattintson a **Save** (Mentés) gombra.
 
 3. Ez a művelet elindítja a kezdeti szinkronizálást, amely változó számú órát vehet igénybe attól függően, hogy hány felhasználó van a Workday-bérlőben. 
 
@@ -745,7 +756,7 @@ Miután a Workday kiépítési alkalmazás konfigurációk befejeződött, bekap
 
 5. Miután a kezdeti szinkronizálás befejeződött, egy naplózási összefoglaló jelentést fog írni a **Kiépítés** lapon, az alábbiak szerint.
 
-   ![Azure portál](./media/workday-inbound-tutorial/wd_3.png)
+   ![Azure Portal](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -807,9 +818,13 @@ Ez a funkció jelenleg nem támogatott. Ajánlott megoldás egy PowerShell-paran
 
 A megoldás jelenleg a következő Workday API-kat használja:
 
-* Get_Workers (21.1-es érték) a dolgozói adatok beolvasásához
-* Maintain_Contact_Information (v26.1) a Munkahelyi e-mail visszaírási funkcióhoz
-* Update_Workday_Account (v31.2) a Felhasználónév-visszaírás szolgáltatáshoz
+* A **Felügyeleti hitelesítő adatok** szakaszban használt **Workday Web Services API URL-formátum** határozza meg a Get_Workers
+  * Ha az URL-formátum:\#\#\#\#\.\.https:// workday com/ccx/service/tenantName , majd az API v21.1 lesz használva. 
+  * Ha az URL formátuma: https://\#\#\#\#\.workday\.com/ccx/service/tenantName/Human\_Resources , akkor az API v21.1-et használja a rendszer. 
+  * Ha az URL-formátum:\#\#\#\#\.\.https:// workday com/ccx/service/tenantName/Human\_Resources/v,\# \# \. \# akkor a megadott API-verziót használja a rendszer. (Példa: ha a 34.0-s paraméter van megadva, akkor a használatban van.)  
+   
+* Workday Email Writeback funkció Maintain_Contact_Information (v26.1) 
+* Workday Felhasználónév Writeback szolgáltatás Update_Workday_Account (v31.2) 
 
 #### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>Konfigurálhatom a Workday HCM-bérlőmet két Azure AD-bérlővel?
 
@@ -848,7 +863,7 @@ Amikor új ötletre utalsz, ellenőrizd, hogy valaki más már javasolt-e hasonl
 * A **Vezérlőpult** -> **eltávolítása vagy módosítása menüben**
 * Keresse meg a Microsoft **Azure AD Connect kiépítési ügynök** bejegyzésnek megfelelő verziót
 
-  ![Azure portál](./media/workday-inbound-tutorial/pa_version.png)
+  ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>A Microsoft automatikusan lenyomja a kiépítési ügynök frissítéseit?
 
@@ -1135,7 +1150,7 @@ Ha valamelyik naplórekordra kattint, megnyílik a **Tevékenység részletei** 
 
   Ha problémák merülnek fel az attribútumleképezési kifejezésekkel kapcsolatban, vagy a bejövő Workday-adatoknak problémái vannak (például: üres vagy null érték a szükséges attribútumokhoz), akkor ebben a szakaszban egy hibát fog észlelni az ErrorCode-mal, amely részletezi a hibát.
 
-* **AD exportálási** rekord: Ez a naplórekord az AD-fiók létrehozásának eredményét, valamint a folyamatban beállított attribútumértékeket jeleníti meg. A naplórekord *További részletek* szakaszában található információk segítségével hárítsa el a fióklétrehozási művelettel kapcsolatos problémákat. Az alábbiakban egy példarekord látható az egyes mezők értelmezésére mutató mutatókkal együtt. A "További részletek" szakaszban az "EventName" értéke "EntryExportAdd", a "JoinProperty" értéke a Matching ID attribútum értéke, a "SourceAnchor" értéke a rekordhoz társított WorkdayID (WID), a "TargetAnchor" pedig a az újonnan létrehozott felhasználó AD "ObjectGuid" attribútumának értéke. 
+* **AD exportálási** rekord: Ez a naplórekord az AD-fiók létrehozásának eredményét, valamint a folyamatban beállított attribútumértékeket jeleníti meg. A naplórekord *További részletek* szakaszában található információk segítségével hárítsa el a fióklétrehozási művelettel kapcsolatos problémákat. Az alábbiakban egy példarekord látható az egyes mezők értelmezésére mutató mutatókkal együtt. A "További részletek" szakaszban az "EventName" értéke "EntryExportAdd", a "JoinProperty" értéke az egyező azonosító attribútum értéke, a "SourceAnchor" a rekordhoz társított WorkdayID (WID) értékre, a "TargetAnchor" pedig az újonnan létrehozott felhasználó AD "ObjectGuid" attribútumának értékére van állítva. 
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot AD account creation issues
@@ -1352,7 +1367,7 @@ Tekintse meg a [cikket A kiépítési konfiguráció exportálása és importál
 
 ## <a name="managing-personal-data"></a>Személyes adatok kezelése
 
-Az Active Directory Workday létesítési megoldása megköveteli, hogy egy kiépítési ügynök telepítve legyen egy helyszíni Windows-kiszolgálóra, és ez az ügynök naplókat hoz létre a Windows eseménynaplójában, amelyek személyes adatokat tartalmazhatnak a Workday to AD attribútumtól függően Hozzárendelések. A felhasználói adatvédelmi kötelezettségek nek való megfelelés érdekében az eseménynaplóban 48 órán túl semmilyen adatot megőrizhet, ha beállít egy Windows-ra ütemezett feladatot az eseménynapló törléséhez.
+Az Active Directory Workday létesítési megoldása megköveteli, hogy egy kiépítési ügynök telepítve legyen egy helyszíni Windows-kiszolgálóra, és ez az ügynök naplókat hoz létre a Windows eseménynaplójában, amelyek személyes adatokat tartalmazhatnak a Workday és az AD attribútumleképezésektől függően. A felhasználói adatvédelmi kötelezettségek nek való megfelelés érdekében az eseménynaplóban 48 órán túl semmilyen adatot megőrizhet, ha beállít egy Windows-ra ütemezett feladatot az eseménynapló törléséhez.
 
 Az Azure AD-kiépítési szolgáltatás a GDPR-besorolás **adatfeldolgozó** kategóriájába tartozik. Adatfeldolgozó folyamatként a szolgáltatás adatfeldolgozási szolgáltatásokat nyújt a legfontosabb partnereknek és a végfelhasználóknak. Az Azure AD-kiépítési szolgáltatás nem hoz létre felhasználói adatokat, és nincs független szabályozása a személyes adatok gyűjtésének és felhasználásának felett. Az Azure AD-kiépítési szolgáltatásban az adatok lekérése, összesítése, elemzése és jelentése meglévő vállalati adatokon alapul.
 

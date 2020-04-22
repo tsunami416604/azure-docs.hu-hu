@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 987d04a4138c37d9073e5e9925f06c93d7ebb8e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 528c393983cb3d8d96dbcee9157e38ebc4f193f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281578"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685388"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Tanácsadási szolgáltatások az Azure Piactérhez és az AppSource-hoz
 Az Azure Marketplace-en és appsource-ban található tanácsadási szolgáltatások azt a célt biztosítják a Microsoft-partnerek számára, hogy az ügyfeleket olyan szolgáltatásokkal kapcsolják össze, amelyek támogatják és kiterjesztik az Azure és az üzleti célok használatát. 
@@ -27,22 +27,22 @@ A piactéri kirakatok a közönséghez és a Microsoft felhőtermékeihez igazod
 
 |         |Azure Piactér  |Microsoft AppSource |
 |---------|---------|---------|
-|**Célközönség**   |**Informatikai szakemberek és felhőfejlesztők**|**Üzleti felhasználók / Üzletági döntéshozók**|
-|Megoldás relevanciája     |Az Azure-hoz készült vagy az azure-ra épülő műszaki alkalmazások|A D365, a Power BI, az O365, az Azure kihasználó/ bővítő vállalati alkalmazásai. (Bővítmény vagy bővítmény kész alkalmazások)|
-|Közzétételi beállítások     |Kapcsolatfelvétel velem, próbaverzióval, tranzakcióval vagy Azure-szolgáltatásokkal|Kapcsolatfelvétel velem, próbaverzióval vagy szolgáltatásokkal a Dynamics 365 és a Power BI alkalmazáshoz|
+|**Célközönség**      |**Informatikai szakemberek és felhőfejlesztők**|**Üzleti felhasználók / Üzletági döntéshozók**|
+|Megoldás relevanciája      |Az Azure-hoz készült vagy az azure-ra épülő műszaki alkalmazások|A D365, a Power BI, az O365, az Azure kihasználó/ bővítő vállalati alkalmazásai. (Bővítmény vagy bővítmény kész alkalmazások)|
+|Közzétételi beállítások      |Kapcsolatfelvétel velem, próbaverzióval, tranzakcióval vagy Azure-szolgáltatásokkal|Kapcsolatfelvétel velem, próbaverzióval vagy szolgáltatásokkal a Dynamics 365 és a Power BI alkalmazáshoz|
 |A termékélményben      |Azure felügyeleti portál|Dynamics 365, Office 365, Office-ügyfélalkalmazások| 
 |Egyéb      |Helyszíni közzététel az Azure Stacken keresztül, tanácsadási szolgáltatások az Azure-hoz, felügyelt szolgáltatások az Azure-hoz|Dynamics és Power BI tanácsadási szolgáltatások|
 
 A Microsoft Dynamics 365, Power Apps és Power BI alkalmazáson alapuló Consulting Services-ajánlatok jogosultak a Microsoft AppSource szolgáltatásban való listára. További információt a [Microsoft AppSource tanácsadási szolgáltatásainak ismertetőirányelvei című](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409)témakörben talál.
 
-A Microsoft Azure-on alapuló Tanácsadási szolgáltatások és felügyelt szolgáltatások ajánlatai jogosultak az Azure Marketplace-en való listára. További információt az [Azure-tanácsadási szolgáltatások közzétételéről](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) és [felügyelt szolgáltatási ajánlat nak az Azure Marketplace-en való közzétételéről](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)szóló cikkeiben talál.
+A Microsoft Azure-on alapuló Tanácsadási szolgáltatások és felügyelt szolgáltatások ajánlatai jogosultak az Azure Marketplace-en való listára. További információt az [Azure-tanácsadási szolgáltatások közzétételéről](./partner-center-portal/create-consulting-service-offer.md) és [felügyelt szolgáltatási ajánlat nak az Azure Marketplace-en való közzétételéről](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)szóló cikkeiben talál.
 
 > [!Note]
 > Az Azure Marketplace-en nyújtott tanácsadási szolgáltatásoknak ki kell használniuk a **technikai közönségre irányuló ajánlatokat, és az *Azure műszaki megoldásaira és szolgáltatásaira* összpontosít. ** Az AppSource tanácsadási szolgáltatásainak ki kell használniuk a Dynamics 365, a Power BI vagy a Power Apps minőségi megoldásainak biztosításában szerzett szakértelmükre irányuló ajánlatokat, hogy felsorolják az AppSource-on kínált tanácsadási szolgáltatások kínálatát
 > 
 > 
 > [!TIP]
-> Az Azure Marketplace kirakatában való közzétételhez ezt a beállítást úgy kell meghoznia, hogy a Felhőpartner-portál "Elsődleges termék" legördülő menüjében az "Azure" lehetőséget választja. Az AppSource-ban való közzétételhez ezt a beállítást a Felhőpartner-portál "Elsődleges termék" legördülő menüjében található "Dynamics 365", "Power BI" vagy "Power Apps" menüpont kiválasztásával teheti meg.
+> Az Azure Marketplace kirakatában való közzétételhez ezt a beállítást úgy kell meghoznia, hogy a Partnerközpont "Elsődleges termék" legördülő menüjében az "Azure" lehetőséget választja. Az AppSource-ban való közzétételhez ezt a beállítást a Partnerközpont "Elsődleges termék" legördülő menüjében található "Dynamics 365", "Power BI" vagy "Power Apps" menüpont kiválasztásával teheti meg.
 
 ## <a name="eligible-partners-and-supported-countriesregions"></a>Jogosult partnerek és támogatott országok/régiók
 
@@ -87,13 +87,18 @@ További források és támogatás:
 | Egyesült Királyság  |
 
 
-## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Hogyan lehet regisztrálni a tanácsadási szolgáltatások az Azure Marketplace és AppSource
-Először [regisztrálja](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a vállalati adatait a piacon. A kiadók hivatkozhatnak a [Legyen kiadó a Piactéren](https://docs.microsoft.com/azure/marketplace/become-publisher), a regisztrációs követelmények teljes ellenőrző listájához. 
+## <a name="how-to-register-for-consulting-services-in-commercial-marketplace"></a>Hogyan lehet regisztrálni a tanácsadási szolgáltatások kereskedelmi piacon
 
-**Mire számíthat a regisztráció után** A bevezetési csapat 1-3 munkanapon belül elérhető lesz egy üdvözlő e-maillel, amely tartalmazza a Cloud Partner Portal (CPP) bejelentkezési adatait. [A Cloud Partner Portal](https://cloudpartner.azure.com) az ajánlatlistázási portál, ahol a megjelenítők elküldik a listainformációkat és a beküldött anyagokat. 
+Először [regisztrálja](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vállalati adatait a piacon. A kiadók hivatkozhatnak a [Legyen kiadó a Piactéren](https://docs.microsoft.com/azure/marketplace/become-publisher), a regisztrációs követelmények teljes ellenőrző listájához. 
+
+<!---
+**What To Expect After Registration**
+The Onboarding Team will reach out in 1-3 business days with a welcome email, which will include your Cloud Partner Portal (CPP) login information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions. 
 
 >[!Note]
->A partnereknek csak egyszer kell regisztrálniuk ahhoz, hogy kiadóvá válhassanak. Miután megkapta az üdvözlő e-mailt és a Cloud Partner Portal bejelentkezést, a kiadóknak nem kell újra regisztrálniuk ahhoz, hogy közzétegyék a különböző hirdetéstípusokat. 
+>Partners only need to register once to become a publisher. Once you receive your welcome email and Partner Center login, publishers do not need to re-register in order to publish different listing types. 
+
+--->
 
 ## <a name="prepare-your-publishing-artifacts"></a>A közzétételi összetevők előkészítése
 A regisztráció előtt elkezdheti összegyűjteni és előkészíteni azt a tartalmat, amely segít a hirdetésben a szolgáltatás és a megoldás értékének a megcélzott ügyfél számára történő megfogalmazásában. 
@@ -120,7 +125,7 @@ A regisztráció előtt elkezdheti összegyűjteni és előkészíteni azt a tar
 ## <a name="publishing-process"></a>Közzétételi folyamat
 A tanácsadási szolgáltatási ajánlat listázása az Azure Marketplace-en és az AppSource-on a következő szakaszokat foglalja magában:
 
-1. **Listing**: Új ajánlatlista-listázást kezdhet a [Cloud Partner](https://cloudpartner.azure.com) Portal-fiókjába való bejelentkezéssel. Válassza az "Új ajánlat" és a "Tanácsadási szolgáltatások" lehetőséget a legördülő menüből. Adja meg a tőzsdei műtárgyat, és tegye közzé.
+1. **Hirdetés**: Új ajánlatlista megszövegezése a [Partnerközpont-fiókba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) való bejelentkezéssel. Válassza az "Új ajánlat" és a "Tanácsadási szolgáltatások" lehetőséget a legördülő menüből. Adja meg a tőzsdei műtárgyat, és tegye közzé.
 2. **Érvényesítés**: A kérelmet ellenőrizzük, hogy biztosan megfelel-e a jogosultsági feltételeknek. Ezután elküldjük Önnek a tanácsadási szolgáltatások kínálatának felsorolására vonatkozó utasításokat. 
 3. **Elküldés**: Adja meg az utasításokban felsorolt szükséges információkat. Minden tartalmat és segédanyagot angol nyelven kell benyújtani. 
 4. **Review**: Marketing és szerkesztői csapatunk áttekinti a beküldött anyagokat, és optimalizálja azt az olvashatóság, a nyelvtan és a hatékonyság érdekében. 
@@ -165,7 +170,7 @@ Az ajánlatleírások és az ajánlatösszegzések áttekintésekéna a csapat a
 |**A koncepció igazolása**    |    Az ügyfél által az elköteleződés eredményeiként elvárható műszaki változások, műszaki összetevők vagy egyéb műtermékek megfogalmazása     | Optimalizálja az ajánlat összefoglalóa a legjobb Search Engine Optimization kulcsszavak        |
 |**Műhely**    |   Részletes napirendet tartalmaz naponta, hetente vagy havonta, az ajánlat választott időtartamától függően. Fogalmazza meg, hogy mik a műhelyed tanulási céljai vagy egyéb céljai     |   Optimalizálja az ajánlat összefoglalóa a legjobb Search Engine optimalizálás kulcsszavak      |
 
-A Cloud Partner Portal webhelyen a [Markdown](/contribute/markdown-reference)használatával adhat hozzá formázást a hirdetéshez. Ez egy könnyű tervezési nyelv, amely segít hozzá lengyel a tőzsdei. 
+A Partnerközpontban a Markdown használatával adhat hozzá formázást a [hirdetéshez.](/contribute/markdown-reference) Ez egy könnyű tervezési nyelv, amely segít hozzá lengyel a tőzsdei. 
 
 **Minta markdown megjegyzések**
 * Add * elején és végén copy blokk - nincs hely, hogy hozzon létre dőlt (Pl. *tartalom*)
@@ -181,9 +186,9 @@ A Cloud Partner Portal webhelyen a [Markdown](/contribute/markdown-reference)has
 
 Ha még nem tette meg, 
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piacon.
+- [További információ](https://azuremarketplace.microsoft.com/sell) a piactérről.
 
-Ha regisztrált és a Cloud Partner Portal-on dolgozik, 
+A Partnerközpontban történő regisztrációhoz és a munka megkezdéséhez 
 
-- [Jelentkezzen be a Cloud Partner Portalszolgáltatásba](https://cloudpartner.azure.com) az ajánlat létrehozásához vagy teljesítéséhez.
-- További információ: [Azure és Dynamics 365 consulting service offer.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)
+- [Jelentkezzen be a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához vagy teljesítéséhez.
+- További információt [a Tanácsadási szolgáltatásajánlat létrehozása](./partner-center-portal/create-consulting-service-offer.md) című témakörben talál.

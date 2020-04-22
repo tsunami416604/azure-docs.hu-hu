@@ -13,21 +13,18 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9186f633b773a243a84692c30ddc2c2261fb69ba
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 2a39dbb3676df5ed916203bdcbbc51d5a0da32a4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309405"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677834"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>A Microsoft identity platform és az OAuth 2.0 eszközengedélyezési engedélyezési folyamat
 
-A Microsoft identity platform támogatja az [eszköz engedélyezési támogatást,](https://tools.ietf.org/html/rfc8628)amely lehetővé teszi a felhasználók számára, hogy jelentkezzen be a bemeneti korlátozott eszközök, például egy smart TV, IoT-eszköz vagy nyomtató.  A folyamat engedélyezéséhez az eszköz a felhasználó nak egy másik eszköz böngészőjében lévő weblapra látogat.  Miután a felhasználó bejelentkezik, az eszköz képes hozzáférési jogkivonatok és a jogkivonatok szükség szerint frissítési.  
+A Microsoft identity platform támogatja az [eszköz engedélyezési támogatást,](https://tools.ietf.org/html/rfc8628)amely lehetővé teszi a felhasználók számára, hogy jelentkezzen be a bemeneti korlátozott eszközök, például egy smart TV, IoT-eszköz vagy nyomtató.  A folyamat engedélyezéséhez az eszköz a felhasználó nak egy másik eszköz böngészőjében lévő weblapra látogat.  Miután a felhasználó bejelentkezik, az eszköz képes hozzáférési jogkivonatok és a jogkivonatok szükség szerint frissítési.
 
 Ez a cikk azt ismerteti, hogy miként programozhat közvetlenül az alkalmazásban lévő protokoll ellen.  Ha lehetséges, azt javasoljuk, hogy a támogatott Microsoft Authentication Libraries (MSAL) helyett [a jogkivonatok beszerzéséhez és a biztonságos webes API-k hívásához](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)használja.  Is vessen egy pillantást a [minta alkalmazások at MSAL](sample-v2-code.md).
-
-> [!NOTE]
-> A Microsoft identity platform végpontja nem támogatja az összes Azure Active Directory-forgatókönyvet és -szolgáltatást. Annak megállapításához, hogy a Microsoft identity platform végpontját kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](active-directory-v2-limitations.md)
 
 ## <a name="protocol-diagram"></a>Protokolldiagram
 
@@ -62,7 +59,7 @@ scope=user.read%20openid%20profile
 
 ### <a name="device-authorization-response"></a>Eszközengedélyezési válasz
 
-A sikeres válasz egy JSON-objektum lesz, amely tartalmazza a szükséges információkat, hogy a felhasználó bejelentkezhet.  
+A sikeres válasz egy JSON-objektum lesz, amely tartalmazza a szükséges információkat, hogy a felhasználó bejelentkezhet.
 
 | Paraméter | Formátum | Leírás |
 | ---              | --- | --- |
@@ -80,11 +77,11 @@ A sikeres válasz egy JSON-objektum lesz, amely tartalmazza a szükséges inform
 
 Miután `user_code` megkapta `verification_uri`a és a , az ügyfél megjeleníti ezeket a felhasználónak, utasítva őket, hogy jelentkezzenek be a mobiltelefonvagy pc böngésző.
 
-Ha a felhasználó személyes fiókkal hitelesíti magát (a /common vagy /consumers oldalon), a rendszer megkéri, hogy jelentkezzen be újra, hogy a hitelesítési állapotot átvigye az eszközre.  Arra is felkérik őket, hogy adják meg hozzájárulásuk, hogy megbizonyosodjanak arról, hogy tisztában vannak a kapott engedélyekkel.  Ez nem vonatkozik a hitelesítéshez használt munkahelyi vagy iskolai fiókokra. 
+Ha a felhasználó személyes fiókkal hitelesíti magát (a /common vagy /consumers oldalon), a rendszer megkéri, hogy jelentkezzen be újra, hogy a hitelesítési állapotot átvigye az eszközre.  Arra is felkérik őket, hogy adják meg hozzájárulásuk, hogy megbizonyosodjanak arról, hogy tisztában vannak a kapott engedélyekkel.  Ez nem vonatkozik a hitelesítéshez használt munkahelyi vagy iskolai fiókokra.
 
 Amíg a felhasználó a, `verification_uri`az ügyfél a `/token` rendszer segítségével a rendszer `device_code`nek kell lekérnie a kért jogkivonat végpontját.
 
-``` 
+```
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
@@ -95,21 +92,21 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 | Paraméter | Kötelező | Leírás|
 | -------- | -------- | ---------- |
-| `tenant`  | Kötelező | Ugyanaz a bérlő vagy bérlőalias, amelyet a kezdeti kérelemben használt. | 
+| `tenant`  | Kötelező | Ugyanaz a bérlő vagy bérlőalias, amelyet a kezdeti kérelemben használt. |
 | `grant_type` | Kötelező | Kell`urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | Kötelező | Meg kell `client_id` egyeznie a használt az eredeti kérelemben. |
 | `device_code`| Kötelező | Az `device_code` eszköz engedélyezési kérelmében visszaadott.  |
 
 ### <a name="expected-errors"></a>Várt hibák
 
-Az eszközkód-folyamat egy lekérdezési protokoll, így az ügyfélnek a hitelesítés befejezése előtt hibákfogadására kell számítania.  
+Az eszközkód-folyamat egy lekérdezési protokoll, így az ügyfélnek a hitelesítés befejezése előtt hibákfogadására kell számítania.
 
 | Hiba | Leírás | Ügyfélművelet |
 | ------ | ----------- | -------------|
 | `authorization_pending` | A felhasználó még nem fejezte be a hitelesítést, de nem szakította meg a folyamatot. | Ismételje meg a `interval` kérést legalább másodpercek elteltével. |
 | `authorization_declined` | A végfelhasználó megtagadta az engedélyezési kérelmet.| Állítsa le a lekérdezést, és térjen vissza nem hitelesített állapotba.  |
 | `bad_verification_code`| A `device_code` rendszer `/token` nem ismerte fel a végpontra küldött üzenetet. | Ellenőrizze, hogy az ügyfél `device_code` a megfelelő tetszést küldi-e a kérelemben. |
-| `expired_token` | Legalább `expires_in` másodpercek teltek el, és ezzel `device_code`a hitelesítés már nem lehetséges. | Állítsa le a lekérdezést, és térjen vissza nem hitelesített állapotba. |   
+| `expired_token` | Legalább `expires_in` másodpercek teltek el, és ezzel `device_code`a hitelesítés már nem lehetséges. | Állítsa le a lekérdezést, és térjen vissza nem hitelesített állapotba. |
 
 ### <a name="successful-authentication-response"></a>Sikeres hitelesítési válasz
 
@@ -135,4 +132,4 @@ A sikeres jogkivonat-válasz így fog kinézni:
 | `id_token`   | Jwt | Akkor van `scope` kiadva, `openid` ha az eredeti paraméter tartalmazza a hatókört.  |
 | `refresh_token` | Átlátszatlan karakterlánc | Kiadva, `scope` ha `offline_access`az eredeti paraméter is benne van.  |
 
-A frissítési jogkivonat segítségével új hozzáférési jogkivonatokat és frissítési jogkivonatokat szerezhet az [OAuth-kód folyamatdokumentációjában](v2-oauth2-auth-code-flow.md#refresh-the-access-token)dokumentált ugyanazon folyamat használatával.  
+A frissítési jogkivonat segítségével új hozzáférési jogkivonatokat és frissítési jogkivonatokat szerezhet az [OAuth-kód folyamatdokumentációjában](v2-oauth2-auth-code-flow.md#refresh-the-access-token)dokumentált ugyanazon folyamat használatával.

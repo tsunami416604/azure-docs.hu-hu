@@ -8,17 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641d7410e414be2adae2a83840c90a680aedd2fc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60755234"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683351"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Az Azure Data Box gateway korlátai
 
 Vegye figyelembe ezeket a korlátokat a Microsoft Azure Data Box Gateway megoldás üzembe helyezéseés működtetése során. 
-
 
 ## <a name="data-box-gateway-service-limits"></a>Data Box Gateway szolgáltatás korlátai
 
@@ -30,7 +29,7 @@ Az alábbi táblázat a Data Box Gateway eszköz korlátait ismerteti.
 
 | Leírás | Érték |
 |---|---|
-|Nem. fájlok eszközenként |100 millió <br> Limit ~ 25 millió kép minden 2 TB-os lemezterület maximális határ 100 millió |
+|Nem. fájlok eszközenként |100 millió <br> Minden 25 millió fájl hoz létre (a maximális korlát 100 millió), akkor adjunk hozzá 2 TB lemezterület, 8 GB RAM, és 4 mag cpu. |
 |Nem. megosztások eszközönként |24 |
 |Nem. megosztások Azure-tárolónként |1 |
 |Megosztásra írt fájlméret maximális mérete|2 TB-os virtuális eszköz esetén a maximális fájlméret 500 GB. <br> A maximális fájlméret az előző arányadatlemez-méretével növekszik, amíg el nem éri a legfeljebb 5 TB-ot. |

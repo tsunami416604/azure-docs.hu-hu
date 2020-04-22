@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc5204518cb6e801ba661aecd5498a501122225f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5990f79891a9cbc0d18c3499691a3d7ef309a73
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473659"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678255"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: Egyéni attribútumok engedélyezése egyéni profilházirendben
 
@@ -46,7 +46,7 @@ A *kifejezéskiterjesztés tulajdonság*, *egyéni attribútum*és *egyéni jogc
 
 ## <a name="get-the-application-properties"></a>Az alkalmazás tulajdonságainak beszereznie
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
 1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
 1. Válassza **az Alkalmazásregisztrációk (Előnézet)** lehetőséget, majd a **Minden alkalmazás**lehetőséget.
@@ -75,13 +75,13 @@ Ha engedélyezni szeretné az egyéni attribútumokat a házirendben, adja meg a
             <Item Key="ApplicationObjectId"></Item>
           </Metadata>
         </TechnicalProfile>
-      <TechnicalProfiles> 
+      </TechnicalProfiles> 
     </ClaimsProvider>
     ```
 
 ## <a name="upload-your-custom-policy"></a>Az egyéni szabályzat feltöltése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja az Azure AD B2C-bérlőt tartalmazó könyvtárat.
 3. Válassza az **Összes szolgáltatás lehetőséget** az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Alkalmazásregisztrációk lehetőséget.**
 4. Válassza **az Identitáskezelési keretrendszert**.
@@ -96,7 +96,7 @@ Ugyanazok a bővítményattribútumok vannak megosztva a beépített és az egy�
 
 Ezeket az attribútumokat a portál felhasználói felületének használatával hozhatja létre az egyéni házirendekben való használatuk előtt vagy után. Kövesse az egyéni attribútumok definiálásának útmutatóját [az Azure Active Directory B2C-ben.](user-flow-custom-attributes.md) Amikor **hűségazonosítót** hoz létre a portálon, a következőképpen kell hivatkoznia rá:
 
-|Név     |Használt |
+|Name (Név)     |Használt |
 |---------|---------|
 |`extension_loyaltyId`  | Egyéni szabályzat|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|

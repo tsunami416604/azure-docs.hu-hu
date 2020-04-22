@@ -4,15 +4,15 @@ description: Az Ügyfélalkalmazásokhoz és az Azure Analysis Services összeka
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c5914c7987d5a54a6bcc779231287309517f5121
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be6ee594896384bce86d892c9a7811e09a0f4efd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129225"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676582"
 ---
 # <a name="client-libraries-for-connecting-to-analysis-services"></a>Ügyféltárak az Analysis Services szolgáltatáshoz való csatlakozáshoz
 
@@ -22,10 +22,10 @@ Az ügyfélkódtárak az Analysis Services-kiszolgálókhoz való csatlakozásho
 
 |Letöltés  |Termékváltozat  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.29.25    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.29.25       |
-|[Amo](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.4.8.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.4.8.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.36.38    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.36.38       |
+|[Amo](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.6.0.1    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.6.0.1     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO és ADOMD (NuGet csomagok)
 
@@ -33,8 +33,8 @@ Az Analysis Services Management Objects (AMO) és az ADOMD ügyféltárak telep�
 
 |Csomag  | Termékváltozat  | 
 |---------|---------|
-|[Amo](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.4.8.0     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.4.8.0      |
+|[Amo](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.6.0.1     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.6.0.1      |
 
 NuGet csomagszerelvények AssemblyVersion kövesse szemantikai verziószámozás: MAJOR. Kisebb. Javítás. A NuGet-hivatkozások akkor is betöltik a várt verziót, ha a GAC-ban van egy másik verzió (amely az MSI telepítésből ered). A PATCH minden egyes kiadáshoz növekszik. Az AMO és az ADOMD verziók szinkronban maradnak.
 

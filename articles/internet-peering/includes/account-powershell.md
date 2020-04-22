@@ -8,30 +8,30 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3a5f7157ef8f3645dd03ec93684238dd8bbc067e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: beffb2babefd86c2807e21e9337cba66f42fcfc2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774223"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678493"
 ---
-A konfigurálás megkezdése előtt telepítse és importálja a szükséges modulokat. A Modulok PowerShellben való telepítéséhez rendszergazdai jogosultságokra lesz szüksége.
+A konfigurálás megkezdése előtt telepítse és importálja a szükséges modulokat. A PowerShell ben a modulok telepítéséhez rendszergazdai jogosultságokra van szükség.
 
-1. Az modul telepítése és importálása
+1. Telepítse és importálja az Az modult.
     ```powershell
     Install-Module Az -AllowClobber
     Import-Module Az
     ```
-1. Az.Peering modul telepítése és importálása
+1. Telepítse és importálja az Az.Peering modult.
     ```powershell
     Install-Module -Name Az.Peering -AllowClobber
     Import-Module Az.Peering
     ```
-1. Ellenőrizze, hogy a modulok importálása finom an parancsot alább.
+1. Ellenőrizze, hogy az importált modulok megfelelően importálva ezzel a paranccsal:
     ```powershell
     Get-Module
     ```
-1. Jelentkezzen be Az Azure-fiókjába a következő paranccsal.
+1. Jelentkezzen be Azure-fiókjába ezzel a paranccsal:
     ```powershell
     Connect-AzAccount
     ```
@@ -46,7 +46,7 @@ A konfigurálás megkezdése előtt telepítse és importálja a szükséges mod
     New-AzResourceGroup -Name "PeeringResourceGroup" -Location "Central US"
     ```
 > [!IMPORTANT]
-> Ha még nem társította az ASN-t és az előfizetést, kövesse a [Társtárs ASN](../howto-subscription-association-powershell.md)lépéseit. Erre a társviszony-létesítés kérelmezéséhez van szükség.
+> Ha még nem társította az ASN-t és az előfizetést, kövesse a [Társasa ASN társítása](../howto-subscription-association-powershell.md)című részben leírt lépéseket. Ez a művelet szükséges társviszony-létesítés kéréséhez.
 
 > [!NOTE]
 > Az erőforráscsoport helye független attól a helytől, ahol társviszony-létesítést szeretne beállítani.

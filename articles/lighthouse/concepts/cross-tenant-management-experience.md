@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure delegált erőforrás-kezelés lehetővé teszi a bérlők közötti felügyeleti élményt.
-ms.date: 04/06/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 107350cdab90751e918d4c7845776464b43abbdd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418514"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682831"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -72,6 +72,14 @@ A legtöbb feladat és szolgáltatás elvégezhető a felügyelt bérlők deleg�
 - Naplóelemzés: Adatok lekérdezése több bérlő távoli ügyfél-munkaterületeiről
 - Riasztások létrehozása az ügyfél-bérlőkben, amelyek az automatizálást, például az Azure Automation runbookokat vagy az Azure Functions-t aktiválják a szolgáltató bérlőjében webhookokon keresztül
 
+[Azure hálózatkezelés:](../../networking/networking-overview.md)
+
+- [Az Azure Virtual Network (VNet)](../../virtual-network/index.yml) és a virtuális hálózati csatolókártyák (vNIC-k) telepítése és kezelése az ügyfél-bérlőkön belül
+- Az [Azure Firewall](../../firewall/overview.md) telepítése és konfigurálása az ügyfelek virtuális hálózati erőforrásainak védelme érdekében
+- Az ügyfelek számára a kapcsolódási szolgáltatások, például [az Azure Virtual WAN,](../../virtual-wan/virtual-wan-about.md) [az ExpressRoute](../../expressroute/expressroute-introduction.md)és a [VPN-átjárók](../../vpn-gateway/vpn-gateway-about-vpngateways.md) kezelése
+- Az Azure Lighthouse használata az [Azure Networking MSP Program](../../networking/networking-partners-msp.md) kulcsfontosságú forgatókönyveinek támogatásához
+
+
 [Azure-szabályzat:](../../governance/policy/index.yml)
 
 - A megfelelőségi pillanatképek a delegált előfizetéseken belüli hozzárendelt szabályzatok részleteit jelenítik meg
@@ -121,10 +129,6 @@ A legtöbb feladat és szolgáltatás elvégezhető a felügyelt bérlők deleg�
 - Az azure-beli virtuális gépek ügyfél-bérlőkben lévő rendszerindítási diagnosztika használata
 - Virtuális gépek elérése soros konzollal az ügyfélbérlőkben
 - Ne feledje, hogy az Azure Active Directory nem használható távoli bejelentkezéshez egy virtuális gépbe, és nem integrálható virtuális gép a Key Vault jelszavak, titkos kulcsok vagy titkosítási kulcsok lemeztitkosításhoz
-
-[Azure virtuális hálózat:](../../virtual-network/index.yml)
-
-- Virtuális hálózatok és virtuális hálózati csatolókártyák (vNIC-k) telepítése és kezelése az ügyfél-bérlőkön belül
 
 Támogatási kérelmek:
 

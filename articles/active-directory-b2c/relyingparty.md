@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/03/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 221ed3169fff78a2721e91023036593570fbd723
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 733a33881fe3acc962aeda4b05a1b01be4e148ca
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637795"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680363"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -44,7 +44,7 @@ A következő példa egy **RelyingParty** elemet mutat be a *B2C_1A_signup_signi
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
-      <SingleSignOn Scope="TrustFramework" KeepAliveInDays="7"/>
+      <SingleSignOn Scope="Tenant" KeepAliveInDays="7"/>
       <SessionExpiryType>Rolling</SessionExpiryType>
       <SessionExpiryInSeconds>300</SessionExpiryInSeconds>
       <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="your-application-insights-key" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -163,7 +163,7 @@ A **ContentDefinitionParameter** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Név | Igen | A kulcsérték-pár neve. |
+| Name (Név) | Igen | A kulcsérték-pár neve. |
 
 További információ: [A felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
@@ -190,7 +190,7 @@ A **Protokoll** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Név | Igen | Az Azure AD B2C által támogatott, a technikai profil részeként használt érvényes protokoll neve. Lehetséges `OpenIdConnect` értékek: `SAML2`vagy . Az `OpenIdConnect` érték az OpenID Connect 1.0 protokollszabványt jelöli az OpenID alapozási specifikáció szerint. Az `SAML2` az SAML 2.0 protokoll szabványt képviseli az OASIS specifikáció szerint. |
+| Name (Név) | Igen | Az Azure AD B2C által támogatott, a technikai profil részeként használt érvényes protokoll neve. Lehetséges `OpenIdConnect` értékek: `SAML2`vagy . Az `OpenIdConnect` érték az OpenID Connect 1.0 protokollszabványt jelöli az OpenID alapozási specifikáció szerint. Az `SAML2` az SAML 2.0 protokoll szabványt képviseli az OASIS specifikáció szerint. |
 
 ## <a name="outputclaims"></a>Kimeneti jogcímek
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 05698596f966f879da1affc58af0122d08d519ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7db3f6f50745526876ef2ca6e3253f1931420f0f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256236"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683248"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Rövid útmutató: BACPAC-fájl importálása adatbázisba az Azure SQL Database-ben
 
@@ -88,7 +88,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > A portálon vagy a Powershellen keresztül benyújtott import/exportálási kérelmeket feldolgozó gépeknek tárolniuk kell a bacpac fájlt, valamint a Data-Tier Application Framework (DacFX) által létrehozott ideiglenes fájlokat. A szükséges lemezterület jelentősen eltér az azonos méretű DB-k között, és az adatbázis méretének akár háromszorosát is igénybe veheti. Az importálási/exportálási kérelmet futtató gépek nek csak 450 GB helyi lemezterületük van. Ennek eredményeképpen egyes kérelmek sikertelenek lehetnek a "Nincs elég hely a lemezen" hibaüzenettel. Ebben az esetben a megoldás az sqlpackage.exe futtatása egy olyan számítógépen, amelyen elegendő a helyi lemezterület. 150 GB-nál nagyobb adatbázisok importálásakor/exportálásakor az SqlPackage segítségével kerülje el ezt a problémát.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > A PowerShell Azure Resource Manager (RM) modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés az Az.Sql modul. Az AzureRM-modul legalább 2020 decemberéig továbbra is megkapja a hibajavításokat.  Az Az modulban és az AzureRm-modulokban lévő parancsok argumentumai lényegében azonosak. A kompatibilitásukról az [Új Azure PowerShell Az modul bemutatása](/powershell/azure/new-azureps-module-az)című témakörben lehet további további további információkért.
@@ -144,7 +144,8 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 ## <a name="limitations"></a>Korlátozások
 
-Rugalmas készletben lévő adatbázisba történő importálás nem támogatott. Importálhat adatokat egyetlen adatbázisba, majd áthelyezheti az adatbázist egy rugalmas készletbe.
+- Rugalmas készletben lévő adatbázisba történő importálás nem támogatott. Importálhat adatokat egyetlen adatbázisba, majd áthelyezheti az adatbázist egy rugalmas készletbe.
+- Az Import Export Szolgáltatás nem működik, ha az Azure-szolgáltatásokhoz való hozzáférés engedélyezése ki van állítva. Azonban megoldhatja a problémát manuálisan futtatva az sqlpackage.exe-t egy Azure-beli virtuális gépről, vagy az exportálást közvetlenül a kódban a DACFx API használatával.
 
 ## <a name="import-using-wizards"></a>Importálás varázslókkal
 

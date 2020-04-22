@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 54ddf6818b95a4037188ab222501ddfa69b28149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587898"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686633"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Az Azure Sentinel segítségével fenyegetésekre vadászik
 
 Ha Ön olyan nyomozó, aki proaktív módon szeretne biztonsági fenyegetéseket keresni, az Azure Sentinel hatékony vadászati kereső- és lekérdezési eszközökkel vadászik a szervezet adatforrásaiban a biztonsági fenyegetésekre. A rendszerek és a biztonsági berendezések azonban olyan adathegyeket hoznak létre, amelyeket nehéz elemezni és értelmes eseményekké szűrni. Annak érdekében, hogy a biztonsági elemzők proaktív módon keressék a biztonsági alkalmazások által nem észlelt új anomáliákat, az Azure Sentinel beépített vadászati lekérdezései segítségével felteheti a megfelelő kérdéseket a hálózaton már meglévő adatokkal kapcsolatos problémák megtalálásához. 
 
-Egy beépített lekérdezés például adatokat szolgáltat az infrastruktúrán futó legritkább folyamatokról – nem szeretne riasztást kapni minden egyes futtatáskor, lehet, hogy teljesen ártatlan, de érdemes időnként megnézni a lekérdezést, hogy Van valami szokatlan. 
+Például egy beépített lekérdezés adatokat szolgáltat az infrastruktúrán futó legritkább folyamatokról – nem szeretne riasztást kapni minden futtatáskor, lehet, hogy teljesen ártatlan, de érdemes lehet időnként megtekinteni a lekérdezést, hogy lássa, van-e valami szokatlan. 
 
 
 
 Az Azure Sentinel-vadászattal a következő lehetőségeket használhatja ki:
 
-- Beépített lekérdezések: A kezdéshez a kezdőlap előre betöltött lekérdezési példákat tartalmaz, amelyek célja a kezdés, és megismerheti kitaszela a táblákat és a lekérdezés nyelvét. Ezeket a beépített vadászati lekérdezéseket a Microsoft biztonsági kutatói folyamatosan fejlesztik, új lekérdezéseket adnak hozzá, és finomhangolják a meglévő lekérdezéseket, hogy egy belépési pontot biztosítsanak az új észlelések kereséséhez és annak kiderítéséhez, hogy hol kezdjenek vadászni a új támadások kezdeteit. 
+- Beépített lekérdezések: A kezdéshez a kezdőlap előre betöltött lekérdezési példákat tartalmaz, amelyek célja a kezdés, és megismerheti kitaszela a táblákat és a lekérdezés nyelvét. Ezeket a beépített vadászati lekérdezéseket a Microsoft biztonsági kutatói folyamatosan fejlesztik, új lekérdezéseket adnak hozzá, és finomhangolják a meglévő lekérdezéseket, hogy egy belépési pontot biztosítsanak az új észlelések kereséséhez, és kitalálják, hol kezdjenek vadászni az új támadások kezdeteihez. 
 
 - Hatékony lekérdezési nyelv az IntelliSense segítségével: Egy olyan lekérdezési nyelvre épül, amely biztosítja azt a rugalmasságot, amely a vadászathoz a következő szintre emeli a vadászatot.
 
@@ -54,7 +54,7 @@ Az Azure Sentinel-vadászattal a következő lehetőségeket használhatja ki:
 
 3. A lekérdezés részletei ablaktáblában gyorsan áttekintheti az alapul szolgáló lekérdezést, vagy a **Lekérdezés eredményének megtekintése** gombra kattintva nyissa meg a lekérdezést a Log Analytics szolgáltatásban. Alul tekintse át a lekérdezés egyezéseit.
 
-4.  Kattintson a sorra, és válassza a **Könyvjelző hozzáadása** lehetőséget a vizsgálandó sorok hozzáadásához - ezt megteheti minden gyanúsnak tűnő ért. 
+4.    Kattintson a sorra, és válassza a **Könyvjelző hozzáadása** lehetőséget a vizsgálandó sorok hozzáadásához - ezt megteheti minden gyanúsnak tűnő ért. 
 
 5. Ezután lépjen vissza a **fő Vadászat** oldalra, és kattintson a **Könyvjelzők** fülre az összes gyanús tevékenység megtekintéséhez. 
 
@@ -66,7 +66,7 @@ Az Azure Sentinel-vadászattal a következő lehetőségeket használhatja ki:
 
 ## <a name="query-language"></a>Lekérdezés nyelve 
 
-Az Azure Sentinel ben való vadászat a Kusto lekérdezési nyelvén alapul. A lekérdezés nyelvéről és a támogatott operátorokról a [Lekérdezésnyelv – referencia című](https://docs.loganalytics.io/docs/Language-Reference/)témakörben talál további információt.
+Az Azure Sentinel ben való vadászat a Kusto lekérdezési nyelvén alapul. A lekérdezés nyelvéről és a támogatott operátorokról a [Lekérdezésnyelv – referencia című](/azure/azure-monitor/log-query/get-started-queries)témakörben talál további információt.
 
 ## <a name="public-hunting-query-github-repository"></a>Nyilvános vadászati lekérdezés GitHub-tárház
 

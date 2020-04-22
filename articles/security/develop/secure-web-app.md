@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811238"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686810"
 ---
 # <a name="develop-a-secure-web-app"></a>Biztonságos webalkalmazások fejlesztése
 
@@ -77,7 +77,7 @@ Például az SQL-injektálás az előző fenyegetésmodell kimenetét a felhaszn
 
 A fejlesztők a fenyegetésmodell kimenetében lévő fenyegetések csökkentésével javítják a rendszer általános biztonságát.
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 A következő lehetőségek lehetővé teszik a Linux futtatását az Azure App Service szolgáltatásban:
 
@@ -803,7 +803,7 @@ Az Azure Portalon konfigurálja az alkalmazást a szükséges hitelesítő adato
 Miután hozzáadja az Azure AD-konfigurációt és titkos kulcsokat a Key Vaulthoz, a felhasználók az Azure OAuth-hitelesítés használatával hitelesíthetők az alkalmazásban.
 Az alkalmazáskódban ezt az Azure Active Directory hitelesítési könyvtár (ADAL) kezeli.
 
-Miután a titkos kulcsok a Key Vaultban vannak, és az alkalmazás hozzáfér a titkos kulcsokhozhttps://GATEWAY_HASH.cloudapp.net)és az adatbázishoz, az alkalmazásszolgáltatás elérhető az átjáró alkalmazás URL-címén ( , amely a panelből szerezhető be.
+Miután a titkos kulcsok a Key Vaultban vannak, és az alkalmazás hozzáfér a titkos kulcsokhoz és\/az adatbázishoz, az alkalmazásszolgáltatás elérhető az átjáró alkalmazás URL-címén (https: /GATEWAY_HASH.cloudapp.net), amely a panelből érhető el.
 
 Ha az Azure AD-be való bejelentkezéskor egy hibaüzenet jelenik meg, amely szerint "A felhasználó nincs regisztrálva abban a címtárban, amelybe be szeretne jelentkezni", hozzá kell adnia a felhasználót. A felhasználó hozzáadásához lépjen az Azure AD **Felhasználók** lapjára, és adja hozzá manuálisan a felhasználót az adatuk megadásával, vagy hívja meg a felhasználót úgy, hogy megadja az e-mail címét vendégfelhasználóként az Azure AD-be a **Vendég meghívása** panelen.
 
@@ -978,7 +978,7 @@ Miután kijavította a szöszlesi eszközök által talált kódhibákat, nagyob
 
 ### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Az alkalmazásfüggőségek biztonsági rései nek keresése és javítása
 
-Az alkalmazásfüggőségek megkereséséhez és javításához [használhatja az OWASP függőségi ellenőrzése](https://www.owasp.org/index.php/OWASP_Dependency_Check).
+Az alkalmazásfüggőségek megkereséséhez és javításához [használhatja az OWASP függőségi ellenőrzése](https://owasp.org/www-project-dependency-check/).
 
 A biztonság egy hasonló alkalmazás, amely ellenőrzi a függőségeket. Megtalálható a [GitHubon.](https://github.com/pyupio/safety) Biztonsági vizsgálatok a jól ismert biztonsági résadatbázisokban található biztonsági rések után.
 

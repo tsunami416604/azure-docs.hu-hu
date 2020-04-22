@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 768fa9ca2080fc9a58fb321e62d8d61a608f9564
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7a0f0b96f8140118f1c74ecbd4368aac49d7ece6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415259"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684311"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi piactér tranzakciós képességei
 
@@ -202,11 +202,11 @@ Ha előfizetéses vagy csak annyidíjszabási modellt választ ki, a Microsoft a
 * Az ügyfelek általában a nagyvállalati szerződés vagy a hitelkártyával engedélyezett használatalapú fizetéssel vásárolnak. A szerződés típusa határozza meg a számlázást, a számlázást, a beszedést és a kifizetés időzítését.
 
 >[!NOTE]
->A tranzakciós közzétételi lehetőségösszes jelentéskészítési és elemzési információja elérhető a Partnerközpont Felhőpartneri portál vagy Analytics szakaszának Elemzési részében.
+>A tranzakciós közzétételi lehetőséggel kapcsolatos összes jelentés és elemzés a Partnerközpont Analytics részében érhető el.
 
 #### <a name="billing-questions-and-support"></a>Számlázási kérdések és támogatás
 
-További információkért és jogi szabályzatokért tekintse meg a [Kiadói szerződést](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) (amely elérhető a Felhőpartneri portálon).
+További információkért és jogi irányelvekért tekintse meg a [Kiadói szerződést](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (elérhető a Partnerközpontban).
 
 Ha segítségre van szüksége a számlázással kapcsolatos kérdésekkel kapcsolatban, forduljon a [kereskedelmi piactér kiadói támogatási csoportjához.](https://aka.ms/marketplacepublishersupport)
 

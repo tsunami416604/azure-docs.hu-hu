@@ -5,31 +5,28 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9a3c88ea0c3e656adf0f8c514b418cfc07c9590
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335773"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676446"
 ---
-# <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
+# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Több Azure-beli virtuális gép frissítéseinek kezelése
 
-Az Update Management megoldás sal kezelheti a Windows és Linux virtuális gépek frissítéseit és javításait. Az [Azure Automation](automation-offering-get-started.md)-fiókból a következőket végezheti el:
+Az Azure Automation Update Management segítségével kezelheti a Windows és Linux virtuális gépek frissítéseit és javításait. Az [Azure Automation](automation-offering-get-started.md)-fiókból a következőket végezheti el:
 
-- Beépített virtuális gépek
-- Az elérhető frissítések állapotának felmérése
-- A szükséges frissítések telepítésének ütemezése
-- Tekintse át a telepítés eredményeit, és ellenőrizze, hogy a frissítések sikeresen alkalmazva voltak-e minden olyan virtuális gépen, amelyhez engedélyezve van az Update Management szolgáltatás
+- Virtuális gépek előkészítése.
+- Az elérhető frissítések állapotának felmérése.
+- A szükséges frissítések telepítésének ütemezése.
+- Tekintse át a központi telepítés eredményeit, és ellenőrizze, hogy a frissítések sikeresen alkalmazva voltak-e minden olyan virtuális gépen, amelyhez engedélyezve van az Update Management.
+
+Az Update Management rendszerkövetelményeiről a [Frissítéskezelő ügyfélkövetelményeinek](automation-update-management.md#clients)című témakörben olvashat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Update Management használatához a következőkre van szükség:
-
-- Egy támogatott operációs rendszert futtató virtuális gépre vagy számítógépre.
-
-- Hozzáférés a megoldásba beépített Linux-virtuális gépek frissítési tárházához.
-
-Az Update Management rendszerkövetelményeiről a [Frissítéskezelő ügyfélkövetelményeinek](automation-update-management.md#clients)című témakörben olvashat.
+* Egy támogatott operációs rendszert futtató virtuális gépre vagy számítógépre.
+* Hozzáférés egy frissítési tárház a Linux virtuális gépek beépített Update Management.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Frissítéskezelés engedélyezése az Azure virtuális gépein
 
@@ -53,25 +50,23 @@ A Windows és Linux Log Analytics-ügynök kell telepíteni a virtuális gépek,
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Az Automation-fiókhoz csatolt számítógépek megtekintése
 
-Miután engedélyezte a frissítéskezelést a gépeken, a **Számítógépek**lehetőséget választva megtekintheti a számítógép adatait. Megtekintheti a *számítógép nevére,* *a megfelelőségi állapotra,* a *környezetre,* az operációs *rendszer típusára,* a telepített kritikus és *biztonsági frissítésekre,* *a telepített egyéb frissítésekre*és a *frissítési ügynök frissítésére vonatkozó információkat.*
+Miután engedélyezte a frissítéskezelést a gépeken, a **Számítógépek**lehetőséget választva megtekintheti a számítógép adatait. A számítógép nevére, a megfelelőségi állapotra, a környezetre, az operációs rendszer típusára, a telepített kritikus és biztonsági frissítésekre, a telepített egyéb frissítésekre és a frissítési ügynökök rekpálására vonatkozó információkat megtekintheti.
 
   ![Számítógépek megtekintése lap](./media/manage-update-multi/update-computers-tab.png)
 
-Előfordulhat, hogy a frissítéskezeléshez a közelmúltban engedélyezett számítógépek értékelése még nem történt meg. A rendszer nem **értékeli**a számítógépek megfelelőségi állapotát. Az alábbiakban a megfelelőségi állapot lehetséges értékeit listául sorolják:
+Előfordulhat, hogy a frissítéskezeléshez a közelmúltban engedélyezett számítógépek értékelése még nem történt meg. Ezeknek a számítógépeknek `Not assessed`a megfelelőségi állapota a. Az alábbiakban a megfelelőségi állapot lehetséges értékeit listául sorolják:
 
-- **Megfelelő**: Olyan számítógépek, amelyek nem hiányoznak a kritikus vagy biztonsági frissítésekből.
+- `Compliant`: Olyan számítógépek, amelyek nem hiányoznak a kritikus vagy biztonsági frissítésekből.
+- `Non-compliant`: Számítógépek, amelyekből legalább egy kritikus vagy biztonsági frissítés hiányzik.
+- `Not assessed`: A frissítésértékelési adatok nem érkeztek meg a számítógépről a várt időkereten belül. Linux számítógépek esetén a várt időkeret az utolsó óra. Windows rendszerű számítógépek esetén a várt időkeret az utolsó 12 óra.
 
-- **Nem megfelelő**: Olyan számítógépek, amelyeken legalább egy kritikus vagy biztonsági frissítés hiányzik.
-
-- **Nincs értékelve:** A frissítésértékelési adatok nem érkeztek meg a számítógépről a várt időkereten belül. Linux számítógépek esetén a várt időkeret az elmúlt órában van. Windows rendszerű számítógépek esetén a várt időkeret az elmúlt 12 órában van.
-
-Az ügynök állapotának megtekintéséhez jelölje ki a hivatkozást az **Ügynök készültség frissítése** oszlopban. Ez a beállítás megnyitja a **hibrid feldolgozó** ablaktáblát, és megjeleníti a hibrid feldolgozó állapotát. Az alábbi képen egy olyan ügyintéző látható, amely hosszabb ideje nem csatlakozott az Update Management szolgáltatáshoz:
+Az ügynök állapotának megtekintéséhez jelölje ki a hivatkozást az **Ügynök készültség frissítése** oszlopban. Ez a beállítás megnyitja a hibrid feldolgozó ablaktáblát, és megjeleníti a hibrid feldolgozó állapotát. Az alábbi képen egy olyan ügyintéző látható, amely hosszabb ideje nem csatlakozott az Update Management szolgáltatáshoz:
 
 ![Számítógépek megtekintése lap](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>Frissítésfelmérés megtekintése
 
-Az Update Management engedélyezése után megnyílik az **Update Management** ablaktábla. A **Hiányzó frissítések** lapon a hiányzó frissítések listája látható.
+Az Update Management engedélyezése után megnyílik az Update Management ablaktábla. A **Hiányzó frissítések** lapon a hiányzó frissítések listája látható.
 
 ## <a name="collect-data"></a>Adatok gyűjtése
 
@@ -132,7 +127,7 @@ Az **Új frissítés központi telepítése** ablaktáblán adja meg a következ
   - Eszközök
   - Frissítések
 
-- **Belefoglalandó/kizárandó frissítések** – Ez megnyitja a **Belefoglalás/kizárás** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. A felvétel kezeléséről a Frissítés [telepítésének ütemezése](automation-tutorial-update-management.md#schedule-an-update-deployment)című témakörben talál további információt.
+- **Belefoglalandó/kizárandó frissítések** – Ez megnyitja a Belefoglalás/kizárás lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. A felvétel kezeléséről a Frissítés [telepítésének ütemezése](automation-tutorial-update-management.md#schedule-an-update-deployment)című témakörben talál további információt.
 
 > [!NOTE]
 > Fontos tudni, hogy a kizárások felülbírálják a zárványokat. Ha például a kizárási `*`szabályt a, akkor nem javítások vagy csomagok vannak telepítve, mivel azok mind ki vannak zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépből. Linux gépek, ha egy csomag szerepel, de van egy függő csomagot, amely kizárt, a csomag nincs telepítve.
@@ -176,11 +171,11 @@ Ha a telepítésben lévő frissítések közül egy vagy több meghiúsul, a te
 
 Adott frissítéstelepítés irányítópultjának megtekintéséhez válassza ki a befejezett telepítést.
 
-A **Frissítés eredmények** ablaktábla a frissítések teljes számát és a virtuális gép telepítési eredményeit jeleníti meg. A jobb oldali táblázat részletesbontást ad az egyes frissítésekről és a telepítés eredményeiről. A telepítési eredmények a következő értékek lehetnek:
+A Frissítés eredmények ablaktábla a frissítések teljes számát és a virtuális gép telepítési eredményeit jeleníti meg. A jobb oldali táblázat részletesbontást ad az egyes frissítésekről és a telepítés eredményeiről. A telepítési eredmények a következő értékek lehetnek:
 
-- **Nem kísérlet :** A frissítés nincs telepítve, mert a megadott karbantartási időszak alapján nem állt rendelkezésre elegendő idő.
-- **Sikeres :** A frissítés sikerült.
-- **Nem sikerült**: A frissítés nem sikerült.
+- `Not attempted`: A frissítés nincs telepítve, mert a megadott karbantartási időszak alapján nem állt rendelkezésre elegendő idő.
+- `Succeeded`: A frissítés sikerült.
+- `Failed`: A frissítés nem sikerült.
 
 A telepítés által létrehozott összes naplóbejegyzés megtekintéséhez válassza a **Minden napló** elemet.
 

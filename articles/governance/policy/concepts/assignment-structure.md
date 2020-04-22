@@ -1,14 +1,14 @@
 ---
 title: A házirend-hozzárendelési struktúra részletei
 description: Ismerteti az Azure Policy által használt szabályzat-hozzárendelés-definíciót, amely a szabályzatdefiníciókat és -paramétereket kiértékelésre szolgáló erőforrásokkal kapcsolja össze.
-ms.date: 09/23/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265297"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683220"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
@@ -20,6 +20,7 @@ A JSON használatával házirend-hozzárendelést hozhat létre. A házirend-hoz
 - leírás
 - metaadatok
 - kényszerítési mód
+- kizárt hatókörök
 - házirend-definíció
 - paraméterek
 
@@ -34,6 +35,7 @@ A következő JSON például egy házirend-hozzárendelést jelenít meg _DoNotE
             "assignedBy": "Cloud Center of Excellence"
         },
         "enforcementMode": "DoNotEnforce",
+        "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
         "parameters": {
             "prefix": {
@@ -65,6 +67,10 @@ Ez a tulajdonság a következő értékeket tartalmaz:
 |Letiltva |DoNotEnforce |sztring |Igen |Nem | A házirend-hatás nem kényszeríti ki az erőforrás létrehozása vagy frissítése során. |
 
 Ha **a rakateltmód** nincs megadva egy házirend- vagy kezdeményezésdefinícióban, a rendszer az _Alapértelmezett_ értéket használja. [A szervizelési feladatok](../how-to/remediate-resources.md) elindíthatók [az IfNotExists](./effects.md#deployifnotexists) házirendek esetében, még akkor is, ha a **enforcementMode** beállítás _DoNotEnforce_.
+
+## <a name="excluded-scopes"></a>Kizárt hatókörök
+
+A hozzárendelés **hatóköre** tartalmazza az összes gyermek erőforrás-tárolók és a gyermek-erőforrások. Ha egy gyermekerőforrás-tároló vagy gyermekerőforrás nem alkalmazza a definíciót, a **notScopes**beállításával mindegyik kizárható az értékelésből. Ez a tulajdonság egy tömb, amely lehetővé teszi egy vagy több erőforrás-tárolók vagy erőforrások kizárását a kiértékelésből. **A notScope-ok** a kezdeti hozzárendelés létrehozása után adhatók hozzá vagy frissíthetők.
 
 ## <a name="policy-definition-id"></a>Házirend-definíció azonosítója
 

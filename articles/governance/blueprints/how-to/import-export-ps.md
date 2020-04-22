@@ -3,12 +3,12 @@ title: Tervrajzok importálása és exportálása a PowerShell használatával
 description: Ismerje meg, hogyan dolgozhat a tervezetdefiníciók kódként. Megoszthatja, megszerezheti és kezelheti őket az exportálási és importálási parancsokkal.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677136"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686840"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Tervezetdefiníciók importálása és exportálása a PowerShell használatával
 
@@ -88,7 +88,7 @@ A tervezetdefiníció exportálásának lépései egyszerűek. A tervezetdefiní
 
 Miután egy [exportált tervezet definíciója,](#export-your-blueprint-definition) vagy egy manuálisan létrehozott tervezet definíciója a [szükséges mappastruktúra,](#folder-structure-of-a-blueprint-definition)importálhatja, hogy a tervezet definícióját egy másik felügyeleti csoport vagy előfizetés.
 
-A beépített tervezetdefiníciók példáit az [Azure Blueprint GitHub-tárházban talál.](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins)
+A beépített tervezetdefiníciók példáit az [Azure Blueprint GitHub-tárházban talál.](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)
 
 - **Név** [kötelező]
   - Megadja az új tervezetdefiníció nevét.
@@ -121,8 +121,8 @@ A speciális tervezetdefiníciók létrehozásáról az alábbi cikkekben talál
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [tervterv életciklusáról.](../concepts/lifecycle.md)
-- Ismerje meg, hogyan kell statikus [és dinamikus paramétereket](../concepts/parameters.md)használni.
-- Ismerje meg a [tervezet szekvenálási sorrendjének testreszabását.](../concepts/sequencing-order.md)
-- Ismerje meg, hogyan használhatja a [tervezet erőforrás-zárolást.](../concepts/resource-locking.md)
-- Az [általános hibaelhárítással](../troubleshoot/general.md)kapcsolatos tervtervezet ekhozzárendelése során fellépő problémák megoldása.
+- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
+- A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

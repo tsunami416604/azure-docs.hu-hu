@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57c3c2c7a0c923921c727ccea7839940457bc1ee
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418810"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683000"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>A változások követésével nyomon követett fájl tartalmának megtekintése
 
@@ -22,7 +22,7 @@ A fájltartalom-követés lehetővé teszi a fájl tartalmának megtekintését 
 
 * A használt tárfiókhoz csak 1 Automation-fiók csatlakoztatható.
 
-* [A változáskövetés](automation-change-tracking.md) engedélyezve van az Automatizálási fiókban.
+* [A változáskövetés](automation-change-tracking.md) engedélyezve van az Automation-fiókban.
 
 ## <a name="enable-file-content-tracking"></a>Fájltartalom-követés engedélyezése
 
@@ -44,19 +44,19 @@ A fájltartalom-követés lehetővé teszi a fájl tartalmának megtekintését 
 
 A következő lépések végigvezetik a fájl módosítás-nyomon követésének bekapcsolásán:
 
-1. A **Változások követés** **szerkesztése** lapon válassza a **Windows-fájlok** vagy **a Linux-fájlok** lapot, és kattintson a **Hozzáadás** gombra.
+1. A **Változások követés**szerkesztése lapon válassza a **Windows-fájlok** vagy a **Linux-fájlok** lapot, és kattintson a **Hozzáadás** gombra.
 
-1. Töltse ki a fájl elérési útjának adatait, és válassza a **Fájltartalom feltöltése**csoport **Igaz csoportban** az összes beállításhoz lehetőséget. Ez a beállítás csak az adott fájlelérési úton engedélyezi a fájltartalom-követést.
+1. Töltse ki a fájl elérési útjának adatait, és válassza a **Fájltartalom feltöltése**csoport Igaz csoportban az összes beállításhoz lehetőséget. Ez a beállítás csak az adott fájlelérési úton engedélyezi a fájltartalom-követést.
 
    ![linux fájl hozzáadása](./media/change-tracking-file-contents/add-linux-file.png)
 
 ## <a name="viewing-the-contents-of-a-tracked-file"></a>Nyomon követett fájl tartalmának megtekintése
 
-1. Ha a rendszer változást észlelt a fájlhoz vagy az elérési úthoz, az megjelenik a portálon. Jelölje ki a fájlmódosítást a módosítások listájából. Megjelenik a **Részletek módosítása** ablaktábla.
+1. Ha a rendszer változást észlelt a fájlhoz vagy az elérési úthoz, az megjelenik a portálon. Jelölje ki a fájlmódosítást a módosítások listájából. Megjelenik a Részletek módosítása ablaktábla.
 
    ![lista módosításai](./media/change-tracking-file-contents/change-list.png)
 
-1. A **Részletek módosítása** lapon a fájladatok előtti és utáni szabvány látható, a bal felső sarokban kattintson a **Fájltartalom-módosítások megtekintése** gombra a fájl tartalmának megtekintéséhez.
+1. A Részletek módosítása ablaktáblán a fájladatok előtti és utáni szabvány jelenik meg. A fájl tartalmának megtekintéséhez jelölje be a **Fájltartalom-módosítások megtekintése** jelölőnégyzetet.
 
    ![részletek módosítása](./media/change-tracking-file-contents/change-details.png)
 

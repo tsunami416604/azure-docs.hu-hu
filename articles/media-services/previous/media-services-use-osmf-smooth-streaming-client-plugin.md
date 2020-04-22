@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 45a2829411ea4713df898c90be73792718160cd2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71d28a19316bf1b618ec9008a5e96a503687b202
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255112"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681962"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>A Microsoft Smooth Streaming beépülő modul használata az Adobe open source media framework-hez  
 ## <a name="overview"></a>Áttekintés
@@ -331,7 +331,7 @@ csomag {
 A Smooth Streaming for OSMF dinamikus plugin kompatibilis [a Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html)segítségével. Az SS for OSMF beépülő modul segítségével smooth streaming tartalom lejátszást adhat az SMP-hez. Ehhez másolja az "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" parancsot egy webkiszolgáló alatt HTTP-betöltéshez a következő lépésekkel:
 
 1. Böngésszen a [Strobe Media Lejátszás beállítási lapján.](http://osmf.org/dev/2.0gm/setup.html) 
-2. Állítsa az src-t egy sima streamelési forrásra (pl.http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
+2. Állítsa be az src-t egy sima streamelési forrásra (pl. http:\//devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
 3. Hajtsa végre a kívánt konfigurációs módosításokat, és kattintson az Előnézet és frissítés gombra.
    
    **Megjegyzés:** A tartalomwebkiszolgálónak érvényes crossdomain.xml fájlra van szüksége. 

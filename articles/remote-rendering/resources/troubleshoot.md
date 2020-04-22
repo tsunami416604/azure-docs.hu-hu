@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617868"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681861"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -101,6 +101,35 @@ Ha ez a két lépés nem segített, meg kell tudni, hogy az ügyfél megkapja-e 
 **A modell nem a nézeten belül frustum:**
 
 Sok esetben a modell helyesen jelenik meg, de kívül található a kamera frustum. Ennek gyakori oka, hogy a modellt egy távoli középre fordítható sarkalokkal exportálták, így a kamera messze vágósíkja vágja le. Segít a modell határolókeretének programozott lekérdezésében, és a Unity mező vonalmezőként való megjelenítésében, vagy az értékek kinyomtatásában a hibakeresési naplóba.
+
+Továbbá az átalakítási folyamat létrehoz egy [kimeneti json fájlt](../how-tos/conversion/get-information.md) a konvertált modellmellett. A modell pozicionálási problémáinak `boundingBox` hibakereséséhez érdemes megnézni a [kimeneti statisztika szakasz bejegyzését:](../how-tos/conversion/get-information.md#the-outputstatistics-section)
+
+```JSON
+{
+    ...
+    "outputStatistics": {
+        ...
+        "boundingBox": {
+            "min": [
+                -43.52,
+                -61.775,
+                -79.6416
+            ],
+            "max": [
+                43.52,
+                61.775,
+                79.6416
+            ]
+        }
+    }
+}
+```
+
+A határolókeret a `min` 3D `max` térben, méterben van leírva. Tehát az 1000.0 koordináta azt jelenti, hogy 1 km-re van az origől.
+
+Két probléma lehet ezzel a határolókerettel, amelyek láthatatlan geometriához vezetnek:
+* **A doboz lehet messze off-center**, így az objektum levan vágva teljesen miatt messze sík nyírás. Ebben `boundingBox` az esetben az értékek `min = [-2000, -5,-5], max = [-1990, 5,5]`a következőképpen néznek ki: . Az ilyen típusú probléma megoldásához engedélyezze a `recenterToOrigin` beállítást a [modellkonvertálási konfigurációban.](../how-tos/conversion/configure-model-conversion.md)
+* **A doboz lehet középre, de nagyságrenddel túl nagy**. Ez azt jelenti, hogy bár a kamera a modell közepén kezdődik, a geometriája minden irányban le van vágva. Tipikus `boundingBox` értékek ebben az esetben `min = [-1000,-1000,-1000], max = [1000,1000,1000]`így nézne ki: . Az ilyen típusú probléma oka általában egységszintű eltérés. Kompenzálni szeretné megadni a [méretezési értéket a konvertálás során,](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) vagy jelölje meg a forrásmodellt a megfelelő mértékegységekkel. Skálázás is alkalmazható a gyökércsomópont, amikor betölti a modell futásidőben.
 
 **A Unity renderelési folyamat nem tartalmazza a renderelési horgokat:**
 

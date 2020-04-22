@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: feaa0c22ec98d170a65e5c9bee119ba3904a95cf
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: cc7a8df80e719173c7818055ab8771ddd7f73691
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673730"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682766"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-adatkészletek létrehozása
 
@@ -119,7 +119,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Túlélte|Posztály|Név|szex|Kor|SibSp között|Parch|Ticket|Viteldíj|Kabin|Beszállt
+| |PassengerId|Túlélte|Posztály|Name (Név)|szex|Kor|SibSp között|Parch|Ticket|Viteldíj|Kabin|Beszállt
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False (Hamis)|3|Braund, Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|True (Igaz)|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38.0|1|0|PC 17599|71.2833|C85 között|C#
@@ -164,7 +164,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 A TabularDatasets-ben megadhatja az időbélyegzőt az adatok egyik oszlopából vagy attól a területről, ahol az útvonalminta-adatok at tárolják az idősorozat-vonás engedélyezéséhez. Ez a specifikáció lehetővé teszi az egyszerű és hatékony szűrést az idő szerint.
 
-Az [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) osztály metódusával megadhatja az időbélyegző oszlopát, és engedélyezheti az`TabularDataset` idő szerinti szűrést. További információ: [Táblázatos idősorozatokkal kapcsolatos API-bemutató a NOAA időjárási adatokkal.](https://aka.ms/azureml-tsd-notebook)
+Az [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) osztály metódusával megadhatja az időbélyegző oszlopát, és engedélyezheti az`TabularDataset` idő szerinti szűrést. További információ: [Táblázatos idősorozatokkal kapcsolatos API-bemutató a NOAA időjárási adatokkal.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)
 
 ```Python
 # create a TabularDataset with time series trait

@@ -12,19 +12,16 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: fa42bf65ea5f4469f714dda4331d3cb66156d187
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535798"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677685"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft identity platform és OpenID Connect protokoll
 
 Az OpenID Connect egy OAuth 2.0-s rendszerre épülő hitelesítési protokoll, amelynek segítségével biztonságosan bejelentkezhet egy felhasználóba egy webalkalmazásba. Ha a Microsoft identity platform végpont openid connect-implementációját használja, bejelentkezési és API-hozzáférést adhat a webalapú alkalmazásokhoz. Ez a cikk bemutatja, hogyan kell ezt a nyelvtől függetlenül ellátni, és http-üzenetek küldését és fogadását ismerteti a Microsoft nyílt forráskódú kódtárai használata nélkül.
-
-> [!NOTE]
-> A Microsoft identity platform végpont jatt talanminden Azure Active Directory (Azure AD) forgatókönyvek és szolgáltatások. Annak megállapításához, hogy a Microsoft identity platform végpontját kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](active-directory-v2-limitations.md)
 
 [Az OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) kiterjeszti az OAuth 2.0 *engedélyezési* protokollt *hitelesítési* protokollként való használatra, így az OAuth használatával egyszeri bejelentkezést tehet le. Az OpenID Connect bevezeti az *azonosító jogkivonat*fogalmát, amely egy biztonsági jogkivonat, amely lehetővé teszi az ügyfél számára a felhasználó identitásának ellenőrzését. Az azonosító jogkivonat is lekéréseket kap a felhasználó alapvető profiladatait. Mivel az OpenID Connect kiterjeszti az OAuth 2.0-s rendszert, az alkalmazások biztonságosan szerezhetnek *hozzáférési jogkivonatokat,* amelyek az [engedélyezési kiszolgáló](active-directory-v2-protocols.md#the-basics)által védett erőforrások elérésére használhatók. A Microsoft identity platform végpont is lehetővé teszi, hogy az Azure AD regisztrált külső alkalmazások hozzáférési jogkivonatokat a biztonságos erőforrások, például a webes API-k. A hozzáférési jogkivonatok kiadására szolgáló alkalmazások beállításáról az [alkalmazás regisztrálása a Microsoft identity platform végpontjával](quickstart-register-app.md)című témakörben talál további információt. Javasoljuk, hogy használja az OpenID Connect et, ha olyan [webalkalmazást](v2-app-types.md#web-apps) hoz fel, amely et egy kiszolgálón üzemelteti, és amelyet böngészőn keresztül érhet el.
 

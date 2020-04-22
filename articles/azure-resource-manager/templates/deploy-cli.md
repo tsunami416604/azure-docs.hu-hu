@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése az Azure CLI-vel és a sablonnal
 description: Az Azure Resource Manager és az Azure CLI segítségével erőforrásokat helyezhet üzembe az Azure-ban. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 241b84bc7b8c0b213e74cd7ee5f3d7668fe0d808
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 8ee15699a085178add05137be895fe6b660b715b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282647"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685705"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel
 
@@ -168,7 +168,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Hosszabb JSON-formátum lekezelése
 
-Ha többsoros karakterláncokat vagy megjegyzéseket is szeretne `--handle-extended-json-format` telepíteni, a kapcsolót kell használnia.  Példa:
+Ha többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablont szeretne telepíteni az Azure CLI 2.3.0-s vagy újabb verziójú használatával, a `--handle-extended-json-format` kapcsolót kell használnia.  Például:
 
 ```json
 {

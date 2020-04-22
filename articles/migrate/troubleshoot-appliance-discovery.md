@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9fbf55fbe16d958bf10541894159dade26668bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336723"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677326"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Az Azure Migrate-berendezés és felderítés – problémamegoldás
 
@@ -41,6 +41,15 @@ Ez akkor fordulhat elő, ha a készülék proxy mögött van.
 - Győződjön meg arról, hogy megadja az engedélyezési hitelesítő adatokat, ha a proxynak szüksége van rájuk.
 - Ha url-alapú tűzfalproxyt használ a kimenő kapcsolatok szabályozására, adja hozzá [ezeket az URL-címeket](migrate-appliance.md#url-access) egy engedélyezési listához.
 - Ha az internethez való csatlakozáshoz elfogó proxyt használ, importálja a proxytanúsítványt a készülék virtuális gépére [az alábbi lépésekkel.](https://docs.microsoft.com/azure/migrate/concepts-collector)
+
+## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Nem lehet bejelentkezni az Azure-ba a készülék webalkalmazásból
+
+A "Sajnáljuk, de nem sikerül bejelentkezni" hibaüzenet jelenik meg, ha helytelen Azure-fiókot használ az Azure-ba való bejelentkezéshez. Ennek a hibának több oka is van:
+
+- Ha bejelentkezik a készülék webalkalmazás a nyilvános felhőben, a felhasználói fiók hitelesítő adatait a kormány felhőportálon.
+- Ha a magánfelhő-portál felhasználói fiókhitelesítő adataival jelentkezik be a kormányzati felhőhöz készült eszköz webalkalmazásába.
+
+Győződjön meg arról, hogy a megfelelő hitelesítő adatokat használja.
 
 ##  <a name="datetime-synchronization-error"></a>Dátum-idő szinkronizálási hiba
 

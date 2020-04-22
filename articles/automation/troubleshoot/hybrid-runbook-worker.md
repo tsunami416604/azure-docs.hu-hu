@@ -1,5 +1,5 @@
 ---
-title: Hibaelhárítás – Azure Automation hibrid runbook-dolgozók
+title: Az Azure Automation hibrid runbook-feldolgozóinak hibaelhárítása
 description: Ez a cikk az Azure Automation hibrid runbook-feldolgozóinak hibaelhárításával kapcsolatos információkat tartalmaz.
 services: automation
 ms.service: automation
@@ -9,20 +9,23 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 2b3bf6706e977bdb6915335dee59da3c250e7895
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637864"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679338"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hibrid Runbook-dolgozók – problémamegoldás
 
 Ez a cikk a hibrid runbook-feldolgozókkal kapcsolatos problémák elhárításáról nyújt tájékoztatást.
 
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](../automation-update-azure-modules.md)
+
 ## <a name="general"></a>Általános kérdések
 
-A hibrid Runbook-feldolgozó egy ügynöktől függ, hogy kommunikáljon az Automation-fiókkal a dolgozó regisztrálásához, a runbook-feladatok fogadásához és a jelentés állapotának jelentéséhez. A Windows esetében ez az ügynök a Windows Log Analytics-ügynöke, más néven a Microsoft Monitoring Agent (MMA). Linux esetén ez a Log Analytics ügynök Linux.
+A hibrid Runbook-feldolgozó egy ügynöktől függ, hogy kommunikáljon az Automation-fiókkal a dolgozó regisztrálásához, a runbook-feladatok fogadásához és a jelentés állapotának jelentéséhez. A Windows esetében ez az ügynök a Windows Log Analytics-ügynöke. Linux esetén ez a Log Analytics ügynök Linux.
 
 ### <a name="scenario-runbook-execution-fails"></a><a name="runbook-execution-fails"></a>Eset: A Runbook végrehajtása sikertelen
 
@@ -41,10 +44,8 @@ A runbook röviddel azután, hogy háromszor kísérletet tett a végrehajtásra
 A következő lehetséges okok lehetnek:
 
 * A runbookok nem hitelesíthetők a helyi erőforrásokkal.
-
 * A hibrid feldolgozó egy proxy vagy tűzfal mögött van.
-
-* A hibrid Runbook-feldolgozó szolgáltatás futtatására konfigurált számítógép nem felel meg a minimális hardverkövetelményeknek.
+* A hibrid Runbook-feldolgozó futtatására konfigurált számítógép nem felel meg a minimális hardverkövetelményeknek.
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -103,20 +104,20 @@ Indítsa el a feldolgozógépet, majd regisztrálja újra az Azure Automation se
 A hibrid runbook-feldolgozón futó runbook a következő hibaüzenettel sikertelen.
 
 ```error
-Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
+Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
 At line:3 char:1
-+ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
++ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
+    + CategoryInfo          : CloseError: (:) [Connect-AzAccount], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand
 ```
 #### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha egy [Run As fiókot](../manage-runas-account.md) próbál használni egy olyan runbookban, amely egy hibrid Runbook-feldolgozón fut, ahol a Futtatás másként fióktanúsítvány nincs jelen. Hibrid Runbook-feldolgozók alapértelmezés szerint nem rendelkeznek a tanúsítvány-eszközzel helyileg, amely a Futtatás másként fiók megfelelő működéséhez szükséges.
+Ez a hiba akkor fordul elő, ha egy [Run As fiókot](../manage-runas-account.md) próbál használni egy olyan runbookban, amely egy hibrid Runbook-feldolgozón fut, ahol a Futtatás másként fióktanúsítvány nincs jelen. Hibrid Runbook-feldolgozók alapértelmezés szerint nem rendelkeznek a tanúsítvány-eszközzel. A Futtatás másként fiók megköveteli, hogy ez az eszköz megfelelően működjön.
 
 #### <a name="resolution"></a>Megoldás:
 
-Ha a hibrid Runbook-feldolgozó egy Azure-beli virtuális gép, [használhatja a felügyelt identitások az Azure-erőforrások](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) helyett. Ez a forgatókönyv leegyszerűsíti a hitelesítést azáltal, hogy lehetővé teszi az Azure-erőforrások hitelesítését az Azure virtuális gép felügyelt identitásával a Futtatás másként fiók helyett. Ha a hibrid Runbook-feldolgozó egy helyszíni gép, telepítenie kell a Futtatás mint fiók tanúsítványt a számítógépen. A tanúsítvány telepítéséről a PowerShell-runbook Export-RunAsCertificateToHybridWorker című runbook futtatásához szükséges lépésekből megtudhatja, hogy miként futtathatja a [hibrid runbook-feldolgozót.](../automation-hrw-run-runbooks.md)
+Ha a hibrid Runbook-feldolgozó egy Azure-beli virtuális gép, [használhatja a felügyelt identitások az Azure-erőforrások](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) helyett. Ez a forgatókönyv leegyszerűsíti a hitelesítést azáltal, hogy lehetővé teszi az Azure-erőforrások hitelesítését az Azure virtuális gép felügyelt identitásával a Futtatás másként fiók helyett. Ha a hibrid Runbook-feldolgozó egy helyszíni gép, telepítenie kell a Futtatás mint fiók tanúsítványt a számítógépen. A tanúsítvány telepítéséről a **PowerShell-runbook Export-RunAsCertificateToHybridWorker** című runbook futtatásához szükséges lépésekből megtudhatja, hogy miként futtathatja a [hibrid runbook-feldolgozót.](../automation-hrw-run-runbooks.md)
 
 ### <a name="scenario-error-403-during-registration-of-hybrid-runbook-worker"></a><a name="error-403-on-registration"></a>Eset: 403-as hiba a hibrid Runbook-feldolgozó regisztrálása során
 
@@ -193,15 +194,15 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 A Windows hibrid Runbook-feldolgozó a [Windows Log Analytics-ügynöktől](../../azure-monitor/platform/log-analytics-agent.md) függ, hogy kommunikáljon az Automation-fiókkal a dolgozó regisztrálásához, a runbook-feladatok fogadásához és a jelentés állapotának jelentéséhez. Ha a dolgozó regisztrációja sikertelen, ez a szakasz néhány lehetséges okot tartalmaz.
 
-### <a name="scenario-the-microsoft-monitoring-agent-isnt-running"></a><a name="mma-not-running"></a>Eset: A Microsoft monitoring ügynök nem fut
+### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>Eset: A Windows Log Analytics-ügynöke nem fut
 
 #### <a name="issue"></a>Probléma
 
-A `healthservice` szolgáltatás nem fut a hibrid Runbook feldolgozó gépen.
+A `healthservice` nem fut a hibrid Runbook feldolgozó gépen.
 
 #### <a name="cause"></a>Ok
 
-Ha a Microsoft Monitoring Agent szolgáltatás nem fut, a hibrid Runbook-feldolgozó nem kommunikál az Azure Automation.
+Ha a Windows-napló szolgáltatás nem fut, a hibrid Runbook-feldolgozó nem tud kommunikálni az Azure Automation használatával.
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -272,7 +273,7 @@ Ezt a problémát okozhatja a hibrid Runbook-feldolgozó sérült gyorsítótár
 
 #### <a name="resolution"></a>Megoldás:
 
-A probléma megoldásához jelentkezzen be a hibrid Runbook-feldolgozóba, és futtassa a következő parancsfájlt. Ez a parancsfájl leállítja a Microsoft Monitoring Agent, eltávolítja a gyorsítótárat, és újraindítja a szolgáltatást. Ez a művelet arra kényszeríti a hibrid Runbook-feldolgozót, hogy töltse le újra a konfigurációját az Azure Automationből.
+A probléma megoldásához jelentkezzen be a hibrid Runbook-feldolgozóba, és futtassa a következő parancsfájlt. Ez a parancsfájl leállítja a Windows Log Analytics-ügynökét, eltávolítja a gyorsítótárat, és újraindítja a szolgáltatást. Ez a művelet arra kényszeríti a hibrid Runbook-feldolgozót, hogy töltse le újra a konfigurációját az Azure Automationből.
 
 ```powershell
 Stop-Service -Name HealthService
@@ -304,8 +305,8 @@ A probléma megoldásához távolítsa el a `HealthService`következő beállít
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha a fenti probléma nem jelenik meg, vagy nem tudja megoldani a problémát, próbálkozzon az alábbi csatornák egyikével további támogatásért:
 
 * Válaszokat kaphat az Azure szakértőitől [az Azure Forums segítségével.](https://azure.microsoft.com/support/forums/)
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba – a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében, ha az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
-* Ha további segítségre van szüksége, benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**
+* Lépjen [@AzureSupport](https://twitter.com/azuresupport)kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében, ha az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
+* Az Azure-támogatási incidens fájlja. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**

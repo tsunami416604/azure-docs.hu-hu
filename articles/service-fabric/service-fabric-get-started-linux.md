@@ -3,12 +3,12 @@ title: A fejlesztői környezet beállítása Linuxon
 description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309111"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682623"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -265,7 +265,7 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 
 2. A Service Fabric beépülő modul telepítéséhez válassza a **Súgó** > **telepítése az új szoftvert**lehetőséget.
 
-3. A **Work with** (Használat) mezőbe írja be a **https://dl.microsoft.com/eclipse** címet.
+3. A **Munka ezzel** mezőbe írja be a **https:\//dl.microsoft.com/eclipse**kapcsolót.
 
 4. Válassza a **Hozzáadás** lehetőséget.
 

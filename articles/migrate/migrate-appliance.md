@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt az Azure Áttelepítési készülék kiszolgáló felmérésés áttelepítése során használt.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1c21f06e674871aefde1ae952a459db16feeb717
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538222"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676338"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -125,7 +125,7 @@ download.microsoft.com/download | Letöltések engedélyezése a Microsoft letö
 *.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Csatlakozzon az Azure Migrate szolgáltatás URL-címeihez.
 *.hypervrecoverymanager.windowsazure.us | **VMware ügynök nélküli áttelepítéshez használható**<br/><br/> Csatlakozzon az Azure Migrate szolgáltatás URL-címeihez.
 *.blob.core.usgovcloudapi.net  |  **VMware ügynök nélküli áttelepítéshez használható**<br/><br/>Adatok feltöltése a tárolóba áttelepítéshez.
-*.applicationinsights.us | A Gateway-ügynök a készüléken az Application Insights-végpont diagnosztikai figyelési eléréséhez használt.
+*.applicationinsights.us | A belső figyeléshez használt alkalmazásnaplók feltöltése.
 
 
 

@@ -6,18 +6,18 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: f8f1eb353087c5121eaafb4c8789e7a2f7638b99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1ff8e0aedce5d3a6acc9a39084cf0839efdd88e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475121"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678443"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
 Az Azure Functions támogatja a függőségi injektálási (DI) szoftvertervezési mintát, amely az osztályok és függőségeik közötti [Inverzió (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) elérésének technikája.
 
-- Függőségi injektálás az Azure Functions ben épül a .NET core függőségi injektálás funkciók. A [.NET Core függőségi injektálás](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) ismerete ajánlott. Vannak különbségek azonban abban, hogy hogyan bírálja felül a függőségeket, és hogyan konfigurációs értékek et olvas az Azure Functions a felhasználási terv.
+- Függőségi injektálás az Azure Functions ben épül a .NET core függőségi injektálás funkciók. A [.NET Core függőségi injektálás](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) ismerete ajánlott. Különbségek vannak abban, hogy hogyan bírálja felül a függőségeket, és hogyan olvassa be a konfigurációs értékeket az Azure Functions a felhasználási terv.
 
 - A függőségi injektálás támogatása az Azure Functions 2.x-szel kezdődik.
 

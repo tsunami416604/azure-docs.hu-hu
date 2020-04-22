@@ -8,24 +8,24 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 4fd7d345e5efbe6e4e86e5bb410e2df4dd917047
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23c905f148da614c7785b61b76abed191206cd90
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774405"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678667"
 ---
-# <a name="create-or-modify-an-exchange-peering-using-powershell"></a>Exchange-társviszony-létesítés létrehozása vagy módosítása a PowerShell használatával
+# <a name="create-or-modify-an-exchange-peering-by-using-powershell"></a>Exchange-társviszony-létesítés létrehozása vagy módosítása a PowerShell használatával
 
 Ez a cikk azt ismerteti, hogyan hozhat létre Microsoft Exchange-társviszony-létesítést a PowerShell-parancsmagok és az Erőforrás-kezelő telepítési modell használatával. Ez a cikk azt is bemutatja, hogyan ellenőrizheti az erőforrás állapotát, frissítheti, illetve törölheti és megszüntetheti azt.
 
-Ha szeretné, ezt az útmutatót a portál segítségével is [elvégezheti.](howto-exchange-portal.md)
+Ha szeretné, ezt az útmutatót az Azure Portal használatával is [elvégezheti.](howto-exchange-portal.md)
 
 ## <a name="before-you-begin"></a>Előkészületek
-* A konfiguráció megkezdése előtt tekintse át [az Előfeltételek](prerequisites.md) és [az Exchange-társviszony-létesítési forgatókönyvet.](walkthrough-exchange-all.md)
-* Abban az esetben, ha már rendelkezik Exchange-társviszony-létesítéssel a Microsofttal, amely nem konvertálódik Azure-erőforrásokká, tekintse meg [egy örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá a PowerShell használatával](howto-legacy-exchange-powershell.md)
+* A konfiguráció megkezdése előtt tekintse át az [előfeltételeket](prerequisites.md) és az [Exchange-társviszony-létesítési forgatókönyvet.](walkthrough-exchange-all.md)
+* Ha már rendelkezik Exchange-társviszony-létesítéssel a Microsofttal, amely nem konvertálva Azure-erőforrásokká, olvassa el [az Örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá a PowerShell használatával](howto-legacy-exchange-powershell.md)lehetőséget.
 
-### <a name="working-with-azure-powershell"></a>Az Azure PowerShell együttműködése
+### <a name="work-with-azure-powershell"></a>Az Azure PowerShell munkája
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
 ## <a name="create-and-provision-an-exchange-peering"></a>Exchange-társviszony-létesítés létrehozása és kiépítése
@@ -52,7 +52,7 @@ Ha szeretné, ezt az útmutatót a portál segítségével is [elvégezheti.](ho
 ## <a name="next-steps"></a>További lépések
 
 * [Közvetlen társviszony-létesítés létrehozása vagy módosítása a PowerShell használatával](howto-direct-powershell.md)
-* [Örökölt közvetlen társviszony-létesítés átalakítása Azure-erőforrásba a PowerShell használatával](howto-legacy-direct-powershell.md)
+* [Örökölt közvetlen társviszony-létesítés átalakítása Azure-erőforrássá a PowerShell használatával](howto-legacy-direct-powershell.md)
 
 ## <a name="additional-resources"></a>További források
 Az összes paraméter részletes leírását a következő parancs futtatásával kaphatja meg:
@@ -61,4 +61,4 @@ Az összes paraméter részletes leírását a következő parancs futtatásáva
 Get-Help Get-AzPeering -detailed
 ```
 
-További információkért látogasson el [az internetes társviszony-létesítési GYIK-be](faqs.md)
+További információt az [Internetes társviszony-létesítés – gyakori kérdések című témakörben talál.](faqs.md)

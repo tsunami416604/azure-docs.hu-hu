@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760810"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677602"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csapatadat-elemzési folyamat működés közben – Egy Azure HDInsight Hadoop-fürt használata 1 TB-os adatkészleten
 
@@ -434,7 +434,7 @@ Az **Adatok importálása** modul esetében az ábrán megadott paraméterek ér
 
 1. Válassza a "Hive lekérdezés" lehetőséget az **adatforráshoz**
 2. A **Hive adatbázis lekérdezési** mezőben egy\_egyszerű\_SELECT\_*\_FROM <az adatbázis name.your tábla neve> - elég.
-3. **Hcatalog szerver URI**: Ha a fürt "abc", akkor ez egyszerűen:https://abc.azurehdinsight.net
+3. **Hcatalog szerver URI**: Ha a fürt "abc",\/akkor ez egyszerűen: https: /abc.azurehdinsight.net
 4. **Hadoop felhasználói fiók neve**: A fürt üzembe helyezéskor kiválasztott felhasználónév. (NEM a távelérési felhasználónév!)
 5. **Hadoop felhasználói fiók jelszava**: A fürt üzembe helyezéskor kiválasztott felhasználónév jelszava. (NEM a távelérési jelszó!)
 6. **Kimeneti adatok helye**: Válassza az "Azure" lehetőséget

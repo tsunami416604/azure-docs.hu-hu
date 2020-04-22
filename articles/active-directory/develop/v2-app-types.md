@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bdbda8bed38819ca2b4d2fb1ef3d9bf591269890
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535910"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677989"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Alkalmazástípusok a Microsoft identity platformhoz
 
 A Microsoft identity platform (2.0-s verzió) végpontja számos modern alkalmazásarchitektúra hitelesítését támogatja, amelyek mindegyike az [OAuth 2.0 vagy az OpenID Connect](active-directory-v2-protocols.md)szabványnak megfelelő protokollokon alapul. Ez a cikk a Microsoft identity platform használatával létrehozható alkalmazástípusokat ismerteti, függetlenül a kívánt nyelvtől vagy platformtól. Az információ célja, hogy segítsen megérteni a magas szintű forgatókönyveket, mielőtt [elkezdené dolgozni a kódot.](v2-overview.md#getting-started)
-
-> [!NOTE]
-> A Microsoft identity platform végpont jatttal nem támogatja az összes Azure Active Directory (Azure AD) forgatókönyvek és szolgáltatások. Annak megállapításához, hogy a Microsoft identity platform végpontját kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](active-directory-v2-limitations.md)
 
 ## <a name="the-basics"></a>Az alapok
 

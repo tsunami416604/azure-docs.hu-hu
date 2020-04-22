@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77157856"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682048"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Az Azure Media Services API hozzáférése Azure AD-hitelesítéssel  
 
@@ -79,7 +79,7 @@ Az előző ábrán a számok a kérelmek áramlását időrendi sorrendben jelö
        A bérlői adatok az Azure Portalon lehívhatók. Helyezze a kurzort a bejelentkezett felhasználó neve fölé a jobb felső sarokban.
    * Media Services erőforrás-URI. 
 
-       Ez az URI megegyezik az azonos Azure-környezetben (például https://rest.media.azure.net).
+       Ez az URI megegyezik az azonos Azure-környezetben (például\/https: /rest.media.azure.net) lévő Media Services-fiókok esetében.
 
    * Media Services (natív) alkalmazásügyfél-azonosító.
    * Media Services (natív) alkalmazás átirányítási URI.
@@ -121,7 +121,7 @@ Az előző ábrán a számok a kérelmek áramlását időrendi sorrendben jelö
        A bérlői adatok az Azure Portalon lehívhatók. Helyezze a kurzort a bejelentkezett felhasználó neve fölé a jobb felső sarokban.
    * Media Services erőforrás-URI. 
 
-       Ez az URI megegyezik az azonos Azure-környezetben található Media https://rest.media.azure.net)Services-fiókok esetében (például .
+       Ez az URI megegyezik az azonos Azure-környezetben (például https:\//rest.media.azure.net) található Media Services-fiókok esetében.
 
    * A REST Media Services erőforrás-URI-ja.
 
@@ -145,7 +145,7 @@ Kivétel: "A távoli kiszolgáló hibát adott vissza: (401) Jogosulatlan."
 
 Megoldás: A Media Services REST-kérelem sikerességéhez a hívó felhasználónak közreműködői vagy tulajdonosi szerepkörnek kell lennie a hozzá férni próbáló Media Services-fiókban. További információt a [Hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control) című szakaszban talál.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 Az alábbi cikkek az Azure AD-hitelesítési fogalmak áttekintései: 
 

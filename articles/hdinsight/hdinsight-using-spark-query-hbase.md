@@ -7,25 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/24/2020
-ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 4f2e8b2a691a6b17b5ed075745d556db4e330535
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623102"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682467"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Az Apache Spark használata Apache HBase-adatok írására és olvasására
 
-Az Apache HBase-t általában alacsony szintű API-jával (beolvasások, beolvasások és putok) vagy az Apache Phoenix használatával egy SQL szintaxissal kérdezik le. Az Apache az Apache Spark HBase connector-t is biztosítja, amely kényelmes és hatékony alternatívája a HBase által tárolt adatok lekérdezésének és módosításának.
+Az Apache HBase-t általában alacsony szintű API-jával (beolvasások, beolvasások és putok) vagy az Apache Phoenix használatával egy SQL szintaxissal kérdezik le. Az Apache az Apache Spark HBase csatlakozót is biztosítja. Az összekötő egy kényelmes és hatékony alternatívája a HBase által tárolt adatok lekérdezéséhez és módosításához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Két különálló HDInsight-fürt van telepítve ugyanabban a [virtuális hálózatban.](./hdinsight-plan-virtual-network-deployment.md) Egy HBase és egy Spark legalább Spark 2.1 (HDInsight 3.6) telepítve. További információ: [Linux-alapú fürtök létrehozása a HDInsightban az Azure Portalhasználatával.](hdinsight-hadoop-create-linux-clusters-portal.md)
 
-* Egy SSH-ügyfél. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](hdinsight-hadoop-linux-use-ssh-unix.md)
-
-* A fürtök [elsődleges tárolóURI-séma.](hdinsight-hadoop-linux-information.md#URI-and-scheme) Ez a séma lenne wasb:// az Azure Blob Storage, abfs:// az Azure Data Lake Storage Gen2 vagy adl:// az Azure Data Lake Storage Gen1. Ha a blob storage biztonságos átvitele `wasbs://`engedélyezve van, az URI lesz.  Lásd még: [biztonságos átvitel](../storage/common/storage-require-secure-transfer.md).
+* A fürtök elsődleges tárolóURI-séma. Ez a séma lenne `abfs://` wasb:// az Azure Blob Storage, az Azure Data Lake Storage Gen2 vagy adl:// az Azure Data Lake Storage Gen1. Ha a blob storage biztonságos átvitele `wasbs://`engedélyezve van, az URI lesz.  Lásd még: [biztonságos átvitel](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Általános folyamat
 
@@ -152,7 +150,7 @@ Ebben a lépésben definiálegy katalógusobjektumot, amely leképezi a sémát 
     |}""".stripMargin
     ```
 
-    A kód a következőket teszi:  
+    A kód a következő lépéseket teszi:  
 
      a. Katalógusséma definiálása a HBase nevű `Contacts`táblához.  
      b. Azonosítsa `key`a sorkulcsot , és rendelje hozzá a Sparkban használt oszlopneveket az oszlopcsaládhoz, az oszlopnévhez és az oszloptípushoz a HBase-ben használt módon.  

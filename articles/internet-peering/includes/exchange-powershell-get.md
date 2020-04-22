@@ -8,20 +8,20 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 33ae3c3f9a2a213bd8135af846b4e72901b3df0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34a23ce76ed0e9285a686073e1cbeb95347f7b7d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774444"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678686"
 ---
-A társviszony-létesítések listájának `Get-AzPeering` leszavazásához futtassa a következő parancsot:
+A társviszony-létesítések listájának leéséhez futtassa a **Get-AzPeering** parancsot.
 
 ```powershell
 Get-AzPeering ResourceGroupName "PeeringResourceGroup" -Name "SeattleExchangePeering"
 ```
 
-Az alábbiakban egy példa választ, ha a végpontok között kiépítése sikeresen befejeződött:
+Ez a példaválasz azt mutatja, ha a végpontok között létesítés sikeresen befejeződött.
 
 ```powershell
     Name                     : SeattleExchangePeering

@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78943072"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682009"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Új szimulált eszköz létrehozása és tesztelése
 
@@ -30,7 +31,7 @@ A második forgatókönyvben a Contoso egy új intelligens villanykörte eszköz
 
 *Tulajdonságok*
 
-| Név                     | Értékek                      |
+| Name (Név)                     | Értékek                      |
 | ------------------------ | --------------------------- |
 | Color                    | Fehér, Piros, Kék            |
 | Fényerő               | 0-tól 100-ig                    |
@@ -40,7 +41,7 @@ A második forgatókönyvben a Contoso egy új intelligens villanykörte eszköz
 
 Az alábbi táblázat azokat az adatokat mutatja be, amelyeket a villanykörte adatfolyamként jelent a felhőnek:
 
-| Név   | Értékek      |
+| Name (Név)   | Értékek      |
 | ------ | ----------- |
 | status | "be", "ki" |
 | Hőmérséklet | F fok |
@@ -53,7 +54,7 @@ Az alábbi táblázat azokat az adatokat mutatja be, amelyeket a villanykörte a
 
 Az alábbi táblázat az új eszköz által támogatott műveleteket mutatja be:
 
-| Név        |
+| Name (Név)        |
 | ----------- |
 | Bekapcsolás   |
 | Kapcsoljuk ki  |
@@ -62,7 +63,7 @@ Az alábbi táblázat az új eszköz által támogatott műveleteket mutatja be:
 
 Az alábbi táblázat az eszköz kezdeti állapotát mutatja be:
 
-| Név                     | Értékek |
+| Name (Név)                     | Értékek |
 | ------------------------ | -------|
 | Kezdeti szín            | Fehér  |
 | Kezdeti fényerő       | 75     |

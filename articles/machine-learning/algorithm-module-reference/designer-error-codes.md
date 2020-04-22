@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481672"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684698"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Kivételek és hibakódok a tervezőhöz (előzetes verzió)
 
@@ -145,6 +145,7 @@ Az alábbiakban a tervező moduljainak hibakódjait tetszetős.
 |A(z) "{arg_name}" paraméter értékének kisebbnek vagy egyenlőnek kell lennie a(z) "{upper_boundary_parameter_name}" paraméter értékén.|
 |A(z) "{arg_name}" paraméter értéke "{actual_value}", amelynek kisebbnek vagy egyenlőnek kell lennie a következővel: {upper_boundary}.|
 |A(z) "{arg_name}" {actual_value} paraméter értékének kisebbnek vagy egyenlőnek kell lennie a(z) {upper_boundary_parameter_name}} paraméter ({upper_boundary_parameter_name}) {upper_boundary} paraméterértéknél.|
+|A(z) "{arg_name}" {actual_value} paraméter értékének kisebbnek vagy egyenlőnek kell lennie a(z) {upper_boundary_meaning} értéknél: {upper_boundary}.|
 
 
 ## <a name="error-0008"></a>0008-as hiba  
@@ -253,8 +254,8 @@ Ha a modell betanítása a speciális betanítási modulok bármelyikével lett 
 
 |Modell típusa|Képzési modul| Pontozási modul|
 |----|----|----|
-|bármilyen osztályozó|[Vonat modell](train-model.md) |[Pontszám modell](score-model.md)|
-|bármely regressziós modell|[Vonat modell](train-model.md) |[Pontszám modell](score-model.md)|
+|bármilyen osztályozó|[Modell betanítása](train-model.md) |[Relevanciamodell](score-model.md)|
+|bármely regressziós modell|[Modell betanítása](train-model.md) |[Relevanciamodell](score-model.md)|
 
 <!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
 | anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
@@ -271,6 +272,7 @@ Ha a modell betanítása a speciális betanítási modulok bármelyikével lett 
 |Az érvénytelen típusú tanuló átkerül.|
 |A(z) "{arg_name}" tanuló típusa érvénytelen.|
 |A(z) "{arg_name}" tanuló típusa érvénytelen: "{learner_type}".|
+|Az érvénytelen típusú tanuló átkerül. Kivételüzenet: {exception_message}|
 
 
 ## <a name="error-0014"></a>0014-es hiba  
@@ -393,6 +395,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 |Az oszlopban lévő értékek nincsenek rendezve.|
 |A(z) "{col_index}" oszlop értékei nincsenek rendezve.|
 |A(z) "{dataset}" adatkészlet "{col_index}" oszlopában lévő értékek nincsenek rendezve.|
+|A(z) "{arg_name}" argumentum értékei nem rendezve "{sorting_order}" sorrendben.|
 
 
 ## <a name="error-0020"></a>0020-as hiba  
@@ -633,6 +636,7 @@ Azt is előfordulhat, hogy egy címke oszlop található az adatkészletben, de 
 |------------------------|
 |Az érvelésnek végesnek kell lennie.|
 |A(z) "{arg_name}" nem véges.|
+|A(z) "{column_name}" oszlop végtelen értékeket tartalmaz.|
 
 
 ## <a name="error-0034"></a>0034-es hiba  
@@ -1492,6 +1496,18 @@ Megoldás:
 |------------------------------------------------------------|
 |A given TransformationDirectory érvénytelen.|
 |A(z) "{arg_name}" TransformationDirectory érvénytelen. Indok: {reason}. Futtassa újra a betanítási kísérletet, amely létrehozza az Átalakítás fájlt. Ha a betanítási kísérletet törölték, hozza létre újra és mentse az Átalakítás fájlt.|
+|A(z) "{arg_name}" TransformationDirectory érvénytelen. Indok: {reason}. {troubleshoot_hint}|
+
+
+## <a name="error-0159"></a>0159-es hiba
+ Kivétel akkor fordul elő, ha a modulmodell könyvtárának átadott érvénytelen. 
+
+|Kivételüzenetek|
+|------------------------------------------------------------|
+|A Given ModelDirectory érvénytelen.|
+|A(z) "{arg_name}" Modellkönyvtár érvénytelen.|
+|A(z) "{arg_name}" Modellkönyvtár érvénytelen. Indok: {reason}.|
+|A(z) "{arg_name}" Modellkönyvtár érvénytelen. Indok: {reason}. {troubleshoot_hint}|
 
 
 ## <a name="error-1000"></a>1000-es hiba  

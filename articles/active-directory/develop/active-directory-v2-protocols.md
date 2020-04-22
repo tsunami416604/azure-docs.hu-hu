@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc635addc2a5cd7d3c698f6885bec0399e28743a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e94bdd6e79ff13d8ba736e140538bae74091f727
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309660"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680091"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2.0 és OpenID Connect protokollok a Microsoft identitásplatformon
 
 A Microsoft identity platform végpont identitás-szolgáltatásként az iparági szabványnak megfelelő protokollok, OpenID Connect és OAuth 2.0. Bár a szolgáltatás szabványoknak megfelelő, a protokollok két implementációja között finom különbségek lehetnek. Az itt található információk akkor lesznek hasznosak, ha úgy dönt, hogy a kódot közvetlenül http-kérések küldésével és kezelésével írja meg, vagy egy harmadik fél nyílt forráskódú könyvtárát használja, ahelyett, hogy az egyik [nyílt forráskódú könyvtárunkat](reference-v2-libraries.md)használná.
-
-> [!NOTE]
-> Nem minden Azure AD-forgatókönyvet és -funkciót támogat a Microsoft identity platform végpontja. Annak megállapításához, hogy a Microsoft identity platform végpontját kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](active-directory-v2-limitations.md)
 
 ## <a name="the-basics"></a>Az alapok
 
@@ -68,7 +65,7 @@ Ahol `{tenant}` a lehet venni egy négy különböző értékek:
 Ha meg szeretné tudni, hogyan használhatja ezeket a [végpontokat,](#protocols) válasszon ki egy adott alkalmazástípust a Protokollok szakaszban, és kövesse a hivatkozásokat további információkért.
 
 > [!TIP]
-> Az Azure AD-ben regisztrált bármely alkalmazás használhatja a Microsoft identity platform végpontját, még akkor is, ha nem jelentkeznek be a személyes fiókokba.  Így a meglévő alkalmazásokat áttelepítheti a Microsoft identity platformra és az [MSAL-ra](reference-v2-libraries.md) anélkül, hogy újra létre tudná hozna az alkalmazást.  
+> Az Azure AD-ben regisztrált bármely alkalmazás használhatja a Microsoft identity platform végpontját, még akkor is, ha nem jelentkeznek be a személyes fiókokba.  Így a meglévő alkalmazásokat áttelepítheti a Microsoft identity platformra és az [MSAL-ra](reference-v2-libraries.md) anélkül, hogy újra létre tudná hozna az alkalmazást.
 
 ## <a name="tokens"></a>Tokenek
 

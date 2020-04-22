@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b946ab6157ba63213a4c140221d36f231aa62f0d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7fb2bbcdd5f84e3637a108d0753566d3a9de7fd0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535842"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677747"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft-identitásplatform és implicit támogatási folyamat
 
@@ -32,9 +32,6 @@ Ezeknél az alkalmazásoknál (Angular, Ember.js, React.js és így tovább) a M
 Ez a cikk azt ismerteti, hogy miként programozhat közvetlenül az alkalmazásban lévő protokoll ellen.  Ha lehetséges, azt javasoljuk, hogy a támogatott Microsoft Authentication Libraries (MSAL) helyett [a jogkivonatok beszerzéséhez és a biztonságos webes API-k hívásához](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)használja.  Is vessen egy pillantást a [minta alkalmazások at MSAL](sample-v2-code.md).
 
 Ha azonban nem szeretne tárat használni az egyoldalas alkalmazásban, és saját maga is protokollüzeneteket szeretne küldeni, kövesse az alábbi általános lépéseket.
-
-> [!NOTE]
-> Nem minden Azure Active Directory (Azure AD) forgatókönyvek és funkciók a Microsoft identity platform végpont támogatja. Annak megállapításához, hogy a Microsoft identity platform végpontját kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](active-directory-v2-limitations.md)
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>Megfelelő forgatókönyvek az OAuth2 implicit támogatáshoz
 

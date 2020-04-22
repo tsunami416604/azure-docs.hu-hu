@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a80c6e3bd8cf647590ed757c042ef3301e27b4a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 34ed6d043f713aa55bfe464c48d4332364df805d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743514"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680378"
 ---
 # <a name="secure-your-restful-services"></a>Biztosítsa restful szolgáltatásait 
 
@@ -43,7 +43,7 @@ A HTTP alapfokú hitelesítést a [2617-es számú RFC](https://tools.ietf.org/h
 
 A REST API műszaki profiljának HTTP-szintű hitelesítéssel történő konfigurálásához hozza létre a következő titkosítási kulcsokat a felhasználónév és a jelszó tárolásához:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, és válassza ki az Azure AD B2C könyvtárat.
 1. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
 1. Az Áttekintés lapon válassza az **Identitásélmény-keretrendszer lehetőséget.**
@@ -132,7 +132,7 @@ Nem éles környezetben, ha még nem rendelkezik tanúsítvánnyal, önaláírt 
 
 ### <a name="add-a-client-certificate-policy-key"></a>Ügyféltanúsítvány-házirendkulcs hozzáadása
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, és válassza ki az Azure AD B2C könyvtárat.
 1. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
 1. Az Áttekintés lapon válassza az **Identitásélmény-keretrendszer lehetőséget.**
@@ -211,11 +211,19 @@ A jogcím az adatok ideiglenes tárolását biztosítja az Azure AD B2C-szabály
 1. Nyissa meg a házirend bővítményfájlját. <em> `SocialAndLocalAccounts/` </em>Például.
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Keresse meg a [ClaimsSchema](claimsschema.md) elemet. Ha az elem nem létezik, adja hozzá.
-1. Adja hozzá a város tulajdonosiToken a **ClaimsSchema** elem.  
+1. Adja hozzá a következő jogcímeket a **ClaimsSchema** elemhez.  
 
 ```xml
 <ClaimType Id="bearerToken">
-  <DisplayName>bearer token</DisplayName>
+  <DisplayName>Bearer token</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+<ClaimType Id="grant_type">
+  <DisplayName>Grant type</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+<ClaimType Id="scope">
+  <DisplayName>scope</DisplayName>
   <DataType>string</DataType>
 </ClaimType>
 ```
@@ -306,7 +314,7 @@ A fenti kódrészletek hozzáadása után a technikai profilnak a következő XM
 
 Hozzon létre egy házirendkulcsot a tulajdonosi token értékének tárolásához.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, és válassza ki az Azure AD B2C könyvtárat.
 1. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
 1. Az Áttekintés lapon válassza az **Identitásélmény-keretrendszer lehetőséget.**

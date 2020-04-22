@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246044"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678166"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Egyéni házirendek az Azure Active Directory B2C-ben
 
@@ -43,7 +43,9 @@ A házirendfájlok alábbi három típusát használjuk:
 - **Extensions file** – rendelkezik a bérlő egyedi konfigurációs módosításai.
 - **Függő entitás (RP) fájl** – Az egyetlen feladat-központú fájl, amely et közvetlenül az alkalmazás vagy szolgáltatás (más néven függő entitás) hív meg. Minden egyedi feladathoz saját RP szükséges, és a márkajelzési követelményektől függően a szám "az alkalmazások száma x a használati esetek teljes száma" lehet.
 
-Az Azure AD B2C felhasználói folyamatai a fent ábrázolt háromfájlos mintát követik, de a fejlesztő csak az RP-fájlt látja, míg az Azure Portal módosítja a bővítmények fájljának hátterét.
+Az Azure AD B2C felhasználói folyamatai a fent látható fájlmintát követik, de a fejlesztő csak az RP-fájlt látja, míg az Azure Portal módosítja a bővítmények fájljának hátterét.
+
+Bár háromféle házirendfájl létezik, nem csak három fájlra korlátozódik. Lehet, hogy minden fájltípusból több fájl is található. Ha például nem szeretné módosítani a Bővítmények fájlt, létrehozhat egy Extensions2 fájlt a Bővítmények fájl további bővítéséhez.
 
 ## <a name="custom-policy-core-concepts"></a>Egyéni házirend alapfogalmai
 
@@ -55,7 +57,7 @@ Az Azure-beli ügyfélidentitás- és hozzáférés-kezelési (CIAM) szolgáltat
 
 Az Azure AD B2C együttműködik az identitásszolgáltatókkal, a felhasználókkal, más rendszerekkel és a helyi felhasználói címtárral egy identitáskezelési feladat elérése érdekében. Például jelentkezzen be egy felhasználót, regisztráljon egy új felhasználót, vagy állítsa alaphelyzetbe a jelszót. Az identitáskezelési keretrendszer és egy házirend (más néven felhasználói út vagy megbízhatósági keretházirend) többrésztvevős megbízhatóságot hoz létre, és kifejezetten meghatározza a szereplőket, a műveleteket, a protokollokat és a végrehajtandó lépések sorrendjét.
 
-Az Identity Experience Framework egy teljes mértékben konfigurálható, házirend-alapú, felhőalapú Azure-platform, amely olyan szabványos protokollformátumokban vezényli az entitások közötti bizalmat, mint az OpenID Connect, az OAuth, az SAML és néhány nem szabványos, például rest API-alapú rendszer-rendszer jogcímek cseréje. A keretrendszer felhasználóbarát, fehér címkével ellátott, HTML- és CSS-t támogató élményeket hoz létre.
+Az Identity Experience Framework egy teljes mértékben konfigurálható, házirend-alapú, felhőalapú Azure-platform, amely koordinálja a bizalmat az entitások között a szabványos protokollformátumokban, például OpenID Connect, OAuth, SAML és néhány nem szabványos, például REST API-alapú rendszer-rendszer jogcímek cseréje között. A keretrendszer felhasználóbarát, fehér címkével ellátott, HTML- és CSS-t támogató élményeket hoz létre.
 
 Az egyéni szabályzatok egy vagy több XML formátumú fájlként jelennek meg, egymásra hierarchikus sorrendben hivatkozva. Az XML-elemek többek között a jogcímsémát, a jogcímátalakításokat, a tartalomdefiníciókat, a jogcímszolgáltatókat, a technikai profilokat és a felhasználói út vezénylési lépéseit határozzák meg. Az egyéni házirend egy vagy több XML-fájlként érhető el, amelyeket az identitáskezelési keretrendszer hajt végre, ha egy függő entitás hívja meg őket. Az egyéni házirendeket konfiguráló fejlesztőknek részletesen meg kell határozniuk a megbízható kapcsolatokat, hogy tartalmazzák a metaadat-végpontokat, a pontos jogcímcsere-definíciókat, és szükség szerint konfigurálják a titkos kulcsokat, kulcsokat és tanúsítványokat az egyes identitásszolgáltatók által szükség szerint.
 

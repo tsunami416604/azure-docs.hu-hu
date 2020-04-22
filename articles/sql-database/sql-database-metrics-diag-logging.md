@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 288d4e4d0c5faa6bb2b51451fb36bbb6d666c9eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756419"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683185"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Az Azure SQL Database diagnosztikai telemetriai adatfolyam-exportálásának konfigurálása
 
@@ -26,7 +26,7 @@ Azt is megtudhatja, hogy a célok, amelyekhez streamelheti ezt a diagnosztikai t
 
 - [Log Analytics és SQL Analytics](#stream-into-sql-analytics)
 - [Event Hubs](#stream-into-event-hubs)
-- [Azure Storage](#stream-into-azure-storage)
+- [Azure-tárhely](#stream-into-azure-storage)
 
 ## <a name="diagnostic-telemetry-for-export-for-azure-sql-database"></a>Diagnosztikai telemetria az Azure SQL Database exportálásához
 
@@ -363,7 +363,7 @@ Az SQL Analytics hierarchikus irányítópultként való használatával megteki
 
 ## <a name="stream-into-event-hubs"></a>Streamelés az Event Hubsba
 
-Az SQL Database-metrikák és az erőforrás-naplók streamelése az Event Hubs-ba a beépített stream használatával **egy eseményközpont-beállítás** az Azure Portalon. A Service Bus-szabályazonosítót a PowerShell-parancsmagok, az Azure CLI vagy az Azure Monitor REST API diagnosztikai beállítások használatával is engedélyezheti.
+Az SQL Database-metrikák és az erőforrás-naplók streamelése az Event Hubs-ba a beépített stream használatával **egy eseményközpont-beállítás** az Azure Portalon. A Service Bus-szabályazonosítót a PowerShell-parancsmagok, az Azure CLI vagy az Azure Monitor REST API diagnosztikai beállítások használatával is engedélyezheti. Győződjön meg arról, hogy az eseményközpont ugyanabban a régióban van, mint az adatbázis és a kiszolgáló.
 
 ### <a name="what-to-do-with-metrics-and-resource-logs-in-event-hubs"></a>Mi a teendő a metrikákkal és az erőforrásnaplókkal az Eseményközpontokban?
 

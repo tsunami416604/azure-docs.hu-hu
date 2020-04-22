@@ -3,12 +3,12 @@ title: Felügyelt identitás engedélyezése a tárolócsoportban
 description: Megtudhatja, hogyan engedélyezheti a felügyelt identitásokat az Azure Container-példányokban, amelyek más Azure-szolgáltatásokkal is hitelesíthetők
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 003055d5021dd8ad7c3bab6d2900298ffd13b222
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19d2ab22eea15278c7753046f9222c7856fbf5ef
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76901927"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685649"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata az Azure Container Instances használatával
 
@@ -189,7 +189,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Most használja a hozzáférési jogkivonatot a kulcstartó hitelesítéséhez, és egy titkos kulcsot olvas. Ügyeljen arra, hogy helyettesítse a kulcstartó nevét az URL-címben (*https://mykeyvault.vault.azure.net/...*):
+Most használja a hozzáférési jogkivonatot a kulcstartó hitelesítéséhez, és egy titkos kulcsot olvas. Ügyeljen arra, hogy helyettesítse a kulcstartó nevét az URL-ben (*https:\//mykeyvault.vault.azure.net/...*):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

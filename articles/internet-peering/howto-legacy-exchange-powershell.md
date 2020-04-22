@@ -8,32 +8,32 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: aa11f329cf0a0cb27d58b940b42731a2ec41c272
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eedf87548d62e05d4940911ed3dcd821077acb27
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775393"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686787"
 ---
-# <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-powershell"></a>Örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá a PowerShell használatával
+# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá a PowerShell használatával
 
-Ez a cikk bemutatja, hogyan konvertálhatja a meglévő örökölt Exchange-társviszony-létesítést Az Azure-erőforrás PowerShell-parancsmagok használatával.
+Ez a cikk bemutatja, hogyan konvertálhatja a meglévő örökölt Exchange-társviszony-létesítés egy Azure-erőforrás powershell-parancsmagok használatával.
 
-Ha szeretné, ezt az útmutatót a portál segítségével is [elvégezheti.](howto-legacy-exchange-portal.md)
+Ha szeretné, ezt az útmutatót az Azure Portal használatával is [elvégezheti.](howto-legacy-exchange-portal.md)
 
 ## <a name="before-you-begin"></a>Előkészületek
-* A konfiguráció megkezdése előtt tekintse át [az Előfeltételek](prerequisites.md) és [az Exchange-társviszony-létesítési forgatókönyvet.](walkthrough-exchange-all.md)
+* A konfiguráció megkezdése előtt tekintse át az [előfeltételeket](prerequisites.md) és az [Exchange-társviszony-létesítési forgatókönyvet.](walkthrough-exchange-all.md)
 
-### <a name="working-with-azure-powershell"></a>Az Azure PowerShell együttműködése
+### <a name="work-with-azure-powershell"></a>Az Azure PowerShell munkája
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>Örökölt Exchange-társviszony konvertálása Azure-erőforrássá
+## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Jelentkezzen be Azure-fiókjába, és válassza ki az előfizetést
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Örökölt Exchange-társviszony-létesítés a konvertáláshoz
-Az alábbiakban a példa, hogy örökölt Exchange társviszony-létesítés seattle-i társviszony-létesítési hely:
+### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Örökölt Exchange-társviszony-létesítés beszerezni a konvertálást
+Ez a példa bemutatja, hogyan juthat el a régi Exchange-társviszony-létesítéshez a seattle-i társviszony-létesítési helyen:
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering -Kind Exchange -PeeringLocation "Seattle"
@@ -58,7 +58,7 @@ A válasz a következő példához hasonlóan néz ki:
 ```
 
 ### <a name="convert-legacy-peering"></a>Örökölt társviszony-létesítés konvertálása
-Az alábbiakban a parancs segítségével konvertálhatja az örökölt Exchange-társviszony-létesítést az Azure-erőforrássá:
+Ezzel a paranccsal konvertálhatja az örökölt Exchange-társviszony-létesítést egy Azure-erőforrássá:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -69,9 +69,10 @@ $legacyPeering[0] | New-AzPeering `
 
 &nbsp;
 > [!IMPORTANT] 
-> Vegye figyelembe, hogy az örökölt társviszony-létesítés azure-erőforrássá történő konvertálásakor a módosítások nem támogatottak&nbsp;
+> Ha az örökölt társviszony-létesítést Azure-erőforrássá alakítja, a módosítások nem támogatottak.
+&nbsp;
 
-Az alábbiakban egy példa választ, ha a végpontok között kiépítése sikeresen befejeződött:
+Ez a példaválasz azt mutatja, ha a végpontok között létesítés sikeresen befejeződött:
 
 ```powershell
     Name                     : SeattleExchangePeering
@@ -96,7 +97,7 @@ Az összes paraméter részletes leírását a következő parancs futtatásáva
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
-További információkért látogasson el [az internetes társviszony-létesítési GYIK-be](faqs.md)
+További információt az [Internetes társviszony-létesítés – gyakori kérdések című témakörben talál.](faqs.md)
 
 ## <a name="next-steps"></a>További lépések
 

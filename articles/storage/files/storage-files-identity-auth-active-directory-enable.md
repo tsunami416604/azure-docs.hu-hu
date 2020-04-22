@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.author: rogarana
-ms.openlocfilehash: 8d1e1262c592f0120b191e18a5c16b97b887a6a2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44debc299054568769bfbe6cfc089cc528594274
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536530"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677076"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Helyszíni Active Directory tartományi szolgáltatások hitelesítésének engedélyezése SMB-n keresztül az Azure-fájlmegosztások számára
 
@@ -68,11 +68,7 @@ Mielőtt engedélyezne AD DS-hitelesítést az Azure-fájlmegosztásokhoz, győz
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Az Azure Files hitelesítése az AD DS szolgáltatással (előzetes verzió) a [legtöbb nyilvános régióban](https://azure.microsoft.com/global-infrastructure/regions/)elérhető.
-
-Az Azure Files helyszíni AD DS szolgáltatással való hitelesítése nem érhető el:
-- USA nyugati régiója
-
+Az Azure Files hitelesítése az AD DS-szel (előzetes verzió) [minden nyilvános régióban és](https://azure.microsoft.com/global-infrastructure/locations/)az Azure Gov régióban elérhető.
 
 ## <a name="workflow-overview"></a>Munkafolyamat – áttekintés
 
@@ -84,13 +80,13 @@ Ezután kövesse az alábbi lépéseket az Azure Files for AD-hitelesítés beá
 
 1. Engedélyezze az Azure Files AD DS-hitelesítést a tárfiókon. 
 
-1. Hozzáférési engedélyek hozzárendelése egy megosztáshoz az Azure AD-identitás (egy felhasználó, csoport vagy egyszerű szolgáltatás), amely összhangban van a cél AD-identitás. 
+2. Hozzáférési engedélyek hozzárendelése egy megosztáshoz az Azure AD-identitás (egy felhasználó, csoport vagy egyszerű szolgáltatás), amely összhangban van a cél AD-identitás. 
 
-1. Konfigurálja az ACL-eket az SMB-n keresztül könyvtárakhoz és fájlokhoz. 
+3. Konfigurálja az ACL-eket az SMB-n keresztül könyvtárakhoz és fájlokhoz. 
  
-1. Csatlakoztasson egy Azure-fájlmegosztást az AD DS-hez csatlakoztatott virtuális gépre. 
+4. Csatlakoztasson egy Azure-fájlmegosztást az AD DS-hez csatlakoztatott virtuális gépre. 
 
-1. Frissítse a tárfiók identitásának jelszavát az AD DS-ben.
+5. Frissítse a tárfiók identitásának jelszavát az AD DS-ben.
 
 Az alábbi ábra bemutatja a teljes körű munkafolyamat ot az Azure AD-hitelesítés smb-n keresztül i.Azure fájlmegosztások engedélyezéséhez. 
 

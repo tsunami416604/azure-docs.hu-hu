@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 6f33f49be74419a8f0cd31d973d64798f5d76a2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214028"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683015"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Teljesítményfigyelés Az Azure SQL Database dinamikus felügyeleti nézetek használatával
 
@@ -604,7 +604,7 @@ A következő példa a **sys.resource_stats** katalógusnézet ének különböz
 
 3. Az egyes erőforrás-metrikák átlag- és maximális értékére vonatkozó információkkal felmérheti, hogy a számítási feladatok mennyire illeszkednek a kiválasztott számítási mérethez. Általában a **sys.resource_stats** átlagos értékei jó kiindulási értéket biztosítanak a célmérethez képest. Ez legyen az elsődleges mérőpálca. Például előfordulhat, hogy a Standard service tier S2 számítási méret. A CPU és az IO olvasási és írási műveletek átlagos használati százaléka 40 százalék alatt van, a dolgozók átlagos száma 50 alatt van, és a munkamenetek átlagos száma 200 alatt van. Előfordulhat, hogy a számítási feladatok beleférnek az S1 számítási méretébe. Könnyen megállapíthatja, hogy az adatbázis illeszkedik-e a dolgozói és a munkamenet-korlátokba. Annak ellenőrzéséhez, hogy egy adatbázis elfér-e alacsonyabb számítási méretben a PROCESSZOR, az olvasás és az írás tekintetében, ossza el az alacsonyabb számítási méret DTU-számát az aktuális számítási méret DTU-számával, majd szorozza meg az eredményt 100-zal:
 
-    ```S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40```
+    `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
     Az eredmény a két számítási méret százalékos relatív teljesítménykülönbsége. Ha az erőforrás-használat nem haladja meg ezt az összeget, a számítási feladatok elférnek az alacsonyabb számítási méret. Azonban meg kell vizsgálnia az erőforrás-használati értékek összes tartományát, és százalékonként meg kell határoznia, hogy az adatbázis-munkaterhelés milyen gyakran illeszkedik az alacsonyabb számítási méretbe. A következő lekérdezés erőforrásdimenziónkénti illeszkedési százalékot adja ki a példában kiszámított 40 százalékos küszöbérték alapján:
 

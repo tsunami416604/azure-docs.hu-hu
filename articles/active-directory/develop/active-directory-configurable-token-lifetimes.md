@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4138c4ae24ae599d4058c9fd06c33b69657fe38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263178"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680072"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurálható jogkivonat-élettartam az Azure Active Directoryban (előzetes verzió)
 
@@ -102,7 +102,7 @@ A jogkivonat élettartamra vonatkozó szabályzata olyan típusú házirend-obje
 | Token maximális inaktív idejének frissítése (bizalmas ügyfelek számára) |Tokenek frissítése (bizalmas ügyfelek számára) |90 nap |
 | Token maximális korának frissítése (bizalmas ügyfelek számára) |Tokenek frissítése (bizalmas ügyfelek számára) |Visszavonásig |
 
-* <sup>1 1</sup> Azok az összevont felhasználók, akik nem rendelkeznek visszavonási információkkal, közéjük tartoznak azok a felhasználók, akik nem rendelkeznek a "LastPasswordChangeTimestamp" attribútummal szinkronizálva. Ezek a felhasználók kapnak ez a rövid Max Age, mert AAD nem tudja ellenőrizni, hogy mikor kell visszavonni tokenek, amelyek kötődnek egy régi hitelesítő adatok (például a jelszó, amely megváltozott), és ellenőriznie kell vissza gyakrabban annak érdekében, hogy a felhasználó és a kapcsolódó tokenek még mindig jó Állandó. A felhasználói élmény javítása érdekében a bérlői rendszergazdáknak meg kell győződniük arról, hogy szinkronizálják a "LastPasswordChangeTimestamp" attribútumot (ez beállítható a felhasználói objektumon a Powershell használatával vagy az AADSync használatával).
+* <sup>1 1</sup> Azok az összevont felhasználók, akik nem rendelkeznek visszavonási információkkal, közéjük tartoznak azok a felhasználók, akik nem rendelkeznek a "LastPasswordChangeTimestamp" attribútummal szinkronizálva. Ezek a felhasználók kapnak ez a rövid Max Age, mert AAD nem tudja ellenőrizni, hogy mikor kell visszavonni a tokenek, amelyek kapcsolódnak egy régi hitelesítő adatok (például egy jelszó, amely megváltozott), és ellenőriznie kell vissza gyakrabban annak érdekében, hogy a felhasználó és a kapcsolódó jogkivonatok még mindig jó helyzetben van. A felhasználói élmény javítása érdekében a bérlői rendszergazdáknak meg kell győződniük arról, hogy szinkronizálják a "LastPasswordChangeTimestamp" attribútumot (ez beállítható a felhasználói objektumon a Powershell használatával vagy az AADSync használatával).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Házirend-értékelés és rangsorolás
 Létrehozhat és rendelhet hozzá egy jogkivonat élettartam-szabályzatát egy adott alkalmazáshoz, a szervezethez és a szolgáltatásnévi tagokhoz. Egy adott alkalmazásra több szabályzat is vonatkozhat. A jogkivonat élettartamra vonatkozó szabályzata az alábbi szabályokat követi:
@@ -243,19 +243,25 @@ Ebben a példában olyan szabályzatot hoz létre, amely lehetővé teszi a felh
         }')
         ```
 
-    2. A házirend létrehozásához futtassa a következő parancsot:
+    1. A házirend létrehozásához futtassa a következő parancsot:
 
         ```powershell
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3. Az új házirend megtekintéséhez és a házirend **ObjectId**azonosítójának levételéhez futtassa a következő parancsot:
+    1. A szóközterület eltávolításához futtassa a következő parancsot:
+
+        ```powershell
+        Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
+        ```
+
+    1. Az új házirend megtekintéséhez és a házirend **ObjectId**azonosítójának levételéhez futtassa a következő parancsot:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Frissítse a házirendet.
+1. Frissítse a házirendet.
 
     Dönthet úgy, hogy az első házirend, amelyet ebben a példában beállított, nem olyan szigorú, mint a szolgáltatás megköveteli. Ha két napon belül le szeretné járatni az egytényezős frissítési jogkivonatot, futtassa a következő parancsot:
 
@@ -277,13 +283,13 @@ Ebben a példában olyan szabályzatot hoz létre, amely megköveteli a felhaszn
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. Az új házirend megtekintéséhez és a házirend **ObjectId**bekéséhez futtassa a következő parancsot:
+    1. Az új házirend megtekintéséhez és a házirend **ObjectId**bekéséhez futtassa a következő parancsot:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. A szolgáltatásnév **ObjectId** azonosítóját is be kell szereznie.
+1. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. A szolgáltatásnév **ObjectId** azonosítóját is be kell szereznie.
 
     1. A [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) parancsmag használatával a szervezet összes szolgáltatásnévi vagy egyetlen egyszerű szolgáltatásért való megtekintéséhez.
         ```powershell
@@ -291,7 +297,7 @@ Ebben a példában olyan szabályzatot hoz létre, amely megköveteli a felhaszn
         $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
         ```
 
-    2. Ha rendelkezik az egyszerű szolgáltatással, futtassa a következő parancsot:
+    1. Ha rendelkezik az egyszerű szolgáltatással, futtassa a következő parancsot:
         ```powershell
         # Assign policy to a service principal
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
@@ -308,13 +314,13 @@ Ebben a példában olyan házirendet hoz létre, amely ritkábban igényli a fel
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. Az új házirend megtekintéséhez futtassa a következő parancsot:
+    1. Az új házirend megtekintéséhez futtassa a következő parancsot:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Rendelje hozzá a szabályzatot a webes API-hoz. Azt is meg kell, hogy az **alkalmazás ObjectId.** A [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) parancsmag segítségével keresse meg az alkalmazás **ObjectId,** vagy használja az [Azure Portalon.](https://portal.azure.com/)
+1. Rendelje hozzá a szabályzatot a webes API-hoz. Azt is meg kell, hogy az **alkalmazás ObjectId.** A [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) parancsmag segítségével keresse meg az alkalmazás **ObjectId,** vagy használja az [Azure Portalon.](https://portal.azure.com/)
 
     Az alkalmazás **ObjectId** azonosítójának lekértése és a szabályzat hozzárendelése:
 
@@ -337,19 +343,19 @@ Ebben a példában hozzon létre néhány szabályzatot, hogy megtudja, hogyan m
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    2. Az új házirend megtekintéséhez futtassa a következő parancsot:
+    1. Az új házirend megtekintéséhez futtassa a következő parancsot:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. Rendelje hozzá a házirendet egy egyszerű szolgáltatáshoz.
+1. Rendelje hozzá a házirendet egy egyszerű szolgáltatáshoz.
 
     Most már van egy házirendje, amely az egész szervezetre vonatkozik. Előfordulhat, hogy meg szeretné őrizni ezt a 30 napos házirendet egy adott egyszerű szolgáltatáshoz, de módosítsa a szervezet alapértelmezett házirendjét a "vissza nem vonható" felső korlátra.
 
     1. A szervezet összes szolgáltatásnévi tag megtekintéséhez használja a [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) parancsmag.
 
-    2. Ha rendelkezik az egyszerű szolgáltatással, futtassa a következő parancsot:
+    1. Ha rendelkezik az egyszerű szolgáltatással, futtassa a következő parancsot:
 
         ```powershell
         # Get ID of the service principal
@@ -359,13 +365,13 @@ Ebben a példában hozzon létre néhány szabályzatot, hogy megtudja, hogyan m
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. Állítsa `IsOrganizationDefault` a jelzőt hamisra:
+1. Állítsa `IsOrganizationDefault` a jelzőt hamisra:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
-4. Új szervezet alapértelmezett házirendjének létrehozása:
+1. Új szervezet alapértelmezett házirendjének létrehozása:
 
     ```powershell
     New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"

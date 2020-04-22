@@ -1,5 +1,5 @@
 ---
-title: Áttelepítés az Azure-fájlmegosztásokra
+title: Migrálás Azure-fájlmegosztásokba
 description: Ismerje meg az Azure-fájlmegosztásokba való áttelepítést, és keresse meg az áttelepítési útmutatót.
 author: fauhse
 ms.service: storage
@@ -7,121 +7,149 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 903ce52120fce7c23c6a3754498b81fc6fc2430f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247316"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685991"
 ---
-# <a name="migrate-to-azure-file-shares"></a>Áttelepítés az Azure-fájlmegosztásokra
+# <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
 
 Ez a cikk az Azure-fájlmegosztásokba való migrálás alapvető szempontjait ismerteti.
 
-Az áttelepítés alapjai mellett ez a cikk a meglévő, személyre szabott áttelepítési útmutatók listáját is tartalmazza. Ezek az áttelepítési útmutatók segítségével áthelyezheti a fájlokat az Azure-fájlmegosztásokba, és az adatok mai helye és a következő telepítési modell (csak felhőbeli vagy hibrid) szerint vannak rendezve.
+Ez a cikk az áttelepítés alapjait és az áttelepítési útmutatók táblázatát tartalmazza. Ezek az útmutatók segítenek a fájlok Azure-fájlmegosztásokba való áthelyezésében. A segédvonalak az adatok helye és a (csak felhőalapú vagy hibrid) telepítési modellje alapján vannak rendszerezve.
 
 ## <a name="migration-basics"></a>Áttelepítési tudnivalók
 
-Az Azure-ban több különböző típusú felhőalapú tárhely érhető el. A fájlok Azure-ba való migrálásának alapvető szempontja annak meghatározása, hogy melyik Azure-tárolási lehetőség megfelelő az adatokhoz.
+Az Azure többféle felhőalapú tárhellyel rendelkezik. Az Azure-ba történő fájláttelepítés ek alapvető szempontja annak meghatározása, hogy melyik Azure-tárolási lehetőség megfelelő az adatokhoz.
 
-Az Azure-fájlmegosztások kiválóan alkalmas általános célú fájladatokhoz. Tényleg bármit, amit a helyszíni SMB vagy NFS megosztáshoz használ. Az [Azure File Sync](storage-sync-files-planning.md)segítségével szükség esetén gyorsítótárazhatja több Azure-fájlmegosztás tartalmát több helyszíni Windows-kiszolgálón.
+[Az Azure-fájlmegosztások](storage-files-introduction.md) általános célú fájladatokhoz alkalmasak. Ezek az adatok minden olyan adatot tartalmaznak, amelyhez helyszíni SMB- vagy NFS-megosztást használ. Az [Azure File Sync](storage-sync-files-planning.md)segítségével gyorsítótáraszthatja több Azure-fájlmegosztás tartalmát a helyszíni Windows Server rendszert futtató kiszolgálókon.
 
-Ha egy alkalmazás jelenleg fut egy helyszíni kiszolgálón, majd a fájlok tárolása az Azure-fájlmegosztások lehet az Ön számára, az alkalmazástól függően. Az azure-beli futtatáshoz szüntesse meg az alkalmazást, és az Azure-fájlmegosztásokat megosztott tárolóként használhatja. Ebben a forgatókönyvben az Azure Disks is figyelembe [veheti.](../../virtual-machines/windows/managed-disks-overview.md) A felhőalapú alkalmazások, amelyek nem függnek az SMB vagy a számítógép-helyi hozzáférést az adatokhoz vagy a megosztott hozzáférés, objektum tárolása, például az [Azure blobok](../blobs/storage-blobs-overview.md), gyakran a legjobb választás.
+Egy alkalmazás, amely jelenleg fut egy helyszíni kiszolgálón, fájlok tárolása egy Azure-fájlmegosztásban lehet egy jó választás. Áthelyezheti az alkalmazást az Azure-ba, és az Azure-fájlmegosztásokat megosztott tárterületként használhatja. Ebben a forgatókönyvben az Azure Disks is figyelembe [veheti.](../../virtual-machines/windows/managed-disks-overview.md)
 
-A kulcs minden áttelepítés, hogy rögzítse az összes megfelelő fájlhűség, amikor a fájlok áttelepítése a jelenlegi tárolási hely az Azure-ba. A megfelelő Azure-tárhely kiválasztásának segítése az azure storage-beállítás által támogatott hűség és a forgatókönyv által igényelt szempontja is. Az általános célú fájladatok hagyományosan a fájl metaadataitól függnek. Előfordulhat, hogy az alkalmazásadatok nem. A fájlnak két alapvető összetevője van:
+Egyes felhőalapú alkalmazások nem függnek az SMB-től, a számítógép-helyi adathozzáféréstől vagy a megosztott hozzáféréstől. Az ilyen alkalmazások esetében az objektumtárolás, például az [Azure-blobok](../blobs/storage-blobs-overview.md) gyakran a legjobb választás.
+
+A kulcs minden áttelepítés, hogy rögzítse az összes megfelelő fájlhűség, amikor a fájlokáthelyezése a jelenlegi tárolási hely az Azure-ba. Hogy az Azure storage-beállítás mennyi hűséget támogat, és mennyi re van szüksége a forgatókönyvnek, az azure-tárhely kiválasztásában is segítséget nyújt. Az általános célú fájladatok hagyományosan a fájl metaadataitól függnek. Előfordulhat, hogy az alkalmazásadatok nem.
+
+A fájl két alapvető összetevője:
 
 - **Adatfolyam**: A fájl adatfolyama tárolja a fájl tartalmát.
-- **Fájl metaadatai**: A fájl metaadatai több alösszetevőből állnak:
-   * Fájlattribútumok: Például írásvédettek.
-   * Fájlengedélyek: *NTFS-engedélyeknek* vagy *fájl- és mappa hozzáférés-megfeleltetési engedélyeknek nevezik.*
-   * Időbélyegek: Leginkább a *create-* és *utolsó módosított* időbélyegek.
-   * Alternatív adatfolyam: Nagyobb mennyiségű nem szabványos tulajdonság tárolására szolgál.
+- **Fájl metaadatai**: A fájl metaadatai a következő alösszetevőket tartalmazják:
+   * Fájlattribútumok, például írásvédettek
+   * File permissions, which can be referred to as *NTFS permissions* or *file and folder ACLs*
+   * Időbélyegek, különösen a létrehozása és az utolsó módosított időbélyegek
+   * Alternatív adatfolyam, amely nagyobb mennyiségű nem szabványos tulajdonság tárolására szolgál
 
-A fájlhűség ezért az áttelepítés során úgy határozható meg, mint a forrásösszes vonatkozó fájlinformáció tárolásának, az áttelepítési eszközzel való átvitelképességének és az áttelepítés céltárolóján való tárolásának lehetősége.
+Az áttelepítésben a fájlhűség a következőképpen határozható meg:
 
-Annak érdekében, hogy az áttelepítés a lehető leggördülékenyebben haladjon, azonosítsa [az igényeinek leginkább megfelelő másolási eszközt,](#migration-toolbox) és egyezzen meg a tárolási célakkal a forrással.
+- Tárolja az összes vonatkozó fájlinformációt a forráson.
+- Fájlok átvitele az áttelepítési eszközzel.
+- Tárolja a fájlokat az áttelepítés céltárolójában.
 
-Figyelembe véve az előző adatokat, világossá válik, hogy mi a céltároló általános célú fájlok az Azure-ban: [Azure fájlmegosztások.](storage-files-introduction.md) Az Azure-blobokban lévő objektumtárolással összehasonlítva a fájlmetaadatok natív módon tárolhatók egy Azure-fájlmegosztásban lévő fájlokon.
+Az áttelepítés zökkenőmentes működésének biztosítása érdekében azonosítsa [az igényeinek leginkább megfelelő másolási eszközt,](#migration-toolbox) és párosítsa a tárolási célt a forráshoz.
 
-Az Azure-fájlmegosztások megőrzik a fájl- és mappahierarchiát is. Továbbá:
-* Az NTFS-engedélyek a helyszíni fájlokban és mappákban tárolhatók.
-* Az AD-felhasználók (vagy az Azure AD DS-felhasználók) natív módon hozzáférhetnek egy Azure-fájlmegosztáshoz. 
-    A jelenlegi identitásukat használják, és a megosztási engedélyek, valamint a fájl- és mappahozzáférés-hozzáférés alapján kapnak hozzáférést. A viselkedés nem eltérően, amikor a felhasználók csatlakoznak egy helyszíni fájlmegosztás.
-*  Az alternatív adatfolyam a fájlhűség elsődleges szempontja, amely jelenleg nem tárolható egy Azure-fájlmegosztásban lévő fájlon.
-   Az Azure File Sync esetén a helyszíni állapotban marad meg.
+Figyelembe véve az előző adatokat, láthatja, hogy az Azure-ban az általános célú fájlok céltárolója [az Azure-fájlmegosztások.](storage-files-introduction.md)
 
-* [További információ az Azure-fájlmegosztások AD-hitelesítéséről](storage-files-identity-auth-active-directory-enable.md)
-* [További információ az Azure Active Directory tartományi szolgáltatások (AAD DS) Azure-fájlmegosztásokhitelesítéséről](storage-files-identity-auth-active-directory-domain-service-enable.md)
+Az Azure-blobokban lévő objektumtárolással ellentétben az Azure-fájlmegosztásnkívül tárolhatja a fájl metaadatait. Az Azure-fájlmegosztások megőrzik a fájl- és mappahierarchiát, az attribútumokat és az engedélyeket is. Az NTFS-engedélyek fájlokon és mappákon tárolhatók, mert azok a helyszínen találhatók.
+
+Az Active Directory egyik felhasználója, amely a helyszíni tartományvezérlőjük, natív módon hozzáférhet egy Azure-fájlmegosztáshoz. Így lehet az Azure Active Directory tartományi szolgáltatások (Azure AD DS) felhasználója is. Each uses their current identity to get access based on share permissions and on file and folder ACLs. Ez a viselkedés hasonló a helyszíni fájlmegosztáshoz csatlakozó felhasználóhoz.
+
+Az alternatív adatfolyam a fájlhűség elsődleges aspektusa, amely jelenleg nem tárolható egy Azure-fájlmegosztásban lévő fájlon. Az Azure File Sync használat közben a helyszíni állapotban marad meg.
+
+További információ az [Azure AD-hitelesítésről](storage-files-identity-auth-active-directory-enable.md) és az [Azure AD DS-hitelesítésről](storage-files-identity-auth-active-directory-domain-service-enable.md) az Azure-fájlmegosztásokhoz.
 
 ## <a name="migration-guides"></a>Migrálási útmutatók
 
 Az alábbi táblázat részletes áttelepítési útmutatókat sorol fel.
 
-Navigáljon a következő módon:
-1. Keresse meg annak a forrásrendszernek a sorát, amelyen a fájlok jelenleg vannak tárolva.
-2. Döntse el, hogy egy hibrid telepítést céloz-e meg, ahol az Azure File Sync használatával gyorsítótárazza egy vagy több Azure-fájlmegosztás tartalmát a helyszínen, vagy ha közvetlenül a felhőben szeretné használni az Azure-fájlmegosztásokat. Válassza ki a döntést tükröző céloszlopot.
-3. A forrás és a cél metszéspontjában a táblázatcella felsorolja az elérhető áttelepítési eseteket. Válassza ki az egyiket, ha közvetlenül szeretne kapcsolódni a részletes áttelepítési útmutatóhoz.
+A táblázat használata:
 
-Egy hivatkozás nélküli forgatókönyv még nem rendelkezik közzétett áttelepítési útmutatóval. Időnként ellenőrizze ezt a táblázatot a frissítésekért. Az új útmutatókat akkor tesszük közzé, ha rendelkezésre állnak.
+1. Keresse meg annak a forrásrendszernek a sorát, amelyen a fájlok jelenleg vannak tárolva.
+
+1. Válasszon az alábbi célok közül:
+
+   - Hibrid telepítés az Azure File Sync használatával az Azure-fájlmegosztások tartalmának helyszíni gyorsítótárazására
+   - Azure-fájlmegosztások a felhőben
+
+   Válassza ki a kívánt céloszlopot.
+
+1. A forrás és a cél metszéspontjában a táblázatcella felsorolja az elérhető áttelepítési eseteket. Válassza ki azt, hogy közvetlenül csatolja a részletes áttelepítési útmutatóhoz.
+
+A hivatkozás nélküli forgatókönyv még nem rendelkezik közzétett áttelepítési útmutatóval. Időnként ellenőrizze ezt a táblázatot a frissítésekért. Az új útmutatók akkor jelennek meg, amikor elérhetővé válikk.
 
 | Forrás | Cél: </br>Hibrid telepítés | Cél: </br>Csak felhőalapú telepítés |
 |:---|:--|:--|
 | | Szerszámkombináció:| Szerszámkombináció: |
-| Windows Server 2012 R2 és újabb | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure Fájlszinkronizálás + DataBox](storage-sync-offline-data-transfer.md)</li><li>Tárolóáttelepítési szolgáltatás + Azure-fájlszinkronizálás</li></ul> | <ul><li>Azure File Sync</li><li>Azure Fájlszinkronizálás + DataBox</li><li>Tárolóáttelepítési szolgáltatás + Azure-fájlszinkronizálás</li><li>Robocopy</li></ul> |
-| Windows Server 2012 és régebbi | <ul><li>Azure Fájlszinkronizálás + DataBox</li><li>Tárolóáttelepítési szolgáltatás + Azure-fájlszinkronizálás</li></ul> | <ul><li>Tárolóáttelepítési szolgáltatás + Azure-fájlszinkronizálás</li><li>Robocopy</li></ul> |
-| Hálózati tároló (NAS) | <ul><li>[Azure Fájlszinkronizálás + RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>Robocopy</li></ul> |
-| Linux / Samba | <ul><li>[RoboCopy + Azure fájlszinkronizálás](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Robocopy</li></ul> |
-| StorSimple 8100 / 8600 | <ul><li>[Azure File Sync + 8020 virtuális készülék](storage-files-migration-storsimple-8000.md)</li></ul> | |
-| StorSimple 1200 | <ul><li>[Azure File Sync](storage-files-migration-storsimple-1200.md)</li></ul> | |
+| Windows Server 2012 R2 és újabb | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure Fájlszinkronizálás és Azure-adatmező](storage-sync-offline-data-transfer.md)</li><li>Azure fájlszinkronizálási és tárolási áttelepítési szolgáltatás</li></ul> | <ul><li>Azure File Sync</li><li>Azure fájlszinkronizálás és adatmező</li><li>Azure fájlszinkronizálási és tárolási áttelepítési szolgáltatás</li><li>Robocopy</li></ul> |
+| Windows Server 2012 és korábbi | <ul><li>Azure fájlszinkronizálás és adatmező</li><li>Azure fájlszinkronizálási és tárolási áttelepítési szolgáltatás</li></ul> | <ul><li>Azure fájlszinkronizálási és tárolási áttelepítési szolgáltatás</li><li>Robocopy</li></ul> |
+| Hálózathoz csatlakoztatott tároló (NAS) | <ul><li>[Azure fájlszinkronizálás és RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>Robocopy</li></ul> |
+| Linux vagy Samba | <ul><li>[Azure fájlszinkronizálás és RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Robocopy</li></ul> |
+| Microsoft Azure StorSimple Cloud Appliance 8100 vagy StorSimple Cloud Appliance 8600 | <ul><li>[Azure File Sync és StorSimple cloud appliance 8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| StorSimple felhőberendezés 1200 | <ul><li>[Azure File Sync](storage-files-migration-storsimple-1200.md)</li></ul> | |
 | | | |
 
 ## <a name="migration-toolbox"></a>Áttelepítési eszköztár
 
 ### <a name="file-copy-tools"></a>Fájlmásolási eszközök
 
-Számos Microsoft és nem Microsoft fájlmásolási eszköz áll rendelkezésre. Az áttelepítési forgatókönyvhöz megfelelő fájlmásolási eszköz kiválasztásához három alapvető kérdést kell figyelembe vennie:
+A Microsoft és mások számos fájlmásolási eszközt kínálnak. Az áttelepítési forgatókönyvhöz megfelelő eszköz kiválasztásához figyelembe kell vennie az alábbi alapvető kérdéseket:
 
-* Támogatja a másolási eszköz egy adott fájlpéldány forrását és célhelyét? 
-    * Támogatja a hálózati elérési utat és/vagy az elérhető protokollokat (például REST/SMB/NFS) a forrás- és céltárolási helyekre és a céltárolóhelyekről?
-* Megőrzi a másolási eszköz a forrás/cél hely által támogatott szükséges fájlhűséget? Bizonyos esetekben a céltároló nem támogatja ugyanazt a hűséget, mint a forrás. Már elhozta azt a döntést, hogy a céltároló elegendő az igényeinek megfelelően, ezért a másolási eszköznek csak a célfájl hűségképességeinek kell egyeznie.
-* Rendelkezik a másolási eszköz olyan funkciókkal, amelyek illeszkednek az áttelepítési stratégiámba? 
-    * Fontolja meg például, hogy rendelkezik-e olyan beállításokkal, amelyek lehetővé teszik az állásidő minimalizálását. Egy jó kérdés, hogy kérje a következő: Tudom futtatni ezt a példányt többször ugyanazon, a felhasználók aktívan elérhető helyen? Ha igen, jelentősen csökkentheti az állásidő mennyiségét. Hasonlítsa össze egy olyan helyzettel, amikor a másolatot csak akkor lehet elindítani, ha a forrás nem változik, hogy garantálja a teljes másolatot.
+* Támogatja az eszköz a fájlmásolás forrás- és célhelyét?
+
+* Támogatja az eszköz a hálózati elérési utat vagy az elérhető protokollokat (például REST, SMB vagy NFS) a forrás- és a céltárolási helyek között?
+
+* Megőrzi az eszköz a forrás- és célhelyek által támogatott szükséges fájlhűséget?
+
+    Bizonyos esetekben a céltároló nem támogatja ugyanazt a hűséget, mint a forrás. Ha a céltároló elegendő az igényeinek megfelelően, az eszköznek csak a cél fájlhűségi képességeinek kell egyeznie.
+
+* Rendelkezik az eszköz olyan funkciókkal, amelyek lehetővé teszik, hogy beleférjen az áttelepítési stratégiába?
+
+    Fontolja meg például, hogy az eszköz lehetővé teszi-e az állásidő minimalizálását.
+    
+    Ha egy eszköz támogatja a forrás tükrözésének lehetőségét a célhoz, gyakran többször is futtathatja ugyanazon a forráson és célon, miközben a forrás elérhető marad.
+
+    Az eszköz első futtatásakor az adatok nagy részét másolja. Ez a kezdeti futtatás tarthat egy darabig. Gyakran tovább tart, mint amennyit az adatforrás üzleti folyamatokhoz való offline állapotba hoz.
+
+    Ha egy forrást tükröz egy célhoz (mint a **robocopy /MIR),** az eszközt újra futtathatja ugyanazon a forráson és célon. A futtatás sokkal gyorsabb, mert csak az előző futtatás után végrehajtott forrásmódosításokat kell szállítania. A másolási eszköz ily módon való újrafuttatása jelentősen csökkentheti az állásidőt.
 
 Az alábbi táblázat a Microsoft-eszközöket és azok azure-fájlmegosztásokra való jelenlegi alkalmasságát sorolja be:
 
-| Ajánlott | Eszköz | Támogatja az Azure-fájlmegosztásokat | Megőrzi a fájl hűségét |
+| Ajánlott | Eszköz | Az Azure-fájlmegosztások támogatása | A fájlhűség megőrzése |
 | :-: | :-- | :---- | :---- |
-|![Igen, ajánlott.](media/storage-files-migration-overview/circle-green-checkmark.png)| Robocopy | Támogatott. Az Azure-fájlmegosztások hálózati meghajtóként csatlakoztathatók. | Teljes hűség* |
-|![Igen, ajánlott.](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Natívmódon integrálva az Azure fájlmegosztásokba. | Teljes hűség* |
-|![Igen, ajánlott.](media/storage-files-migration-overview/circle-green-checkmark.png)| Tárolóáttelepítési szolgáltatás (SMS) | Közvetve támogatott. Az Azure-fájlmegosztások csatlakoztathatók hálózati meghajtóként egy SMS-célkiszolgálón. | Teljes hűség* |
-|![Nem teljesen ajánlott.](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure DataBox | Támogatott. | Nem másolja a metaadatokat. [Használható az Azure File Sync szolgáltatással együtt.](storage-sync-offline-data-transfer.md) |
-|![Nem ajánlott.](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Támogatott. | Nem másolja a metaadatokat. |
-|![Nem ajánlott.](media/storage-files-migration-overview/circle-red-x.png)| Azure Storage Explorer | Támogatott. | Nem másolja a metaadatokat. |
-|![Nem ajánlott.](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Támogatott. | Nem másolja a metaadatokat. |
+|![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Robocopy | Támogatott. Az Azure-fájlmegosztások hálózati meghajtóként csatlakoztathatók. | Teljes hűséggel.* |
+|![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Natívmódon integrálva az Azure fájlmegosztásokba. | Teljes hűséggel.* |
+|![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Tárolóáttelepítési szolgáltatás | Közvetve támogatott. Az Azure-fájlmegosztások csatlakoztathatók hálózati meghajtóként az SMS-célkiszolgálókon. | Teljes hűséggel.* |
+|![Nem teljesen ajánlott](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Támogatott. | Nem másolja a metaadatokat. [A Data Box használható az Azure File Sync segítségével.](storage-sync-offline-data-transfer.md) |
+|![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Támogatott. | Nem másolja a metaadatokat. |
+|![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| Azure Storage Explorer | Támogatott. | Nem másolja a metaadatokat. |
+|![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Támogatott. | Nem másolja a metaadatokat. |
 |||||
 
-*\*Teljes hűség: megfelel vagy meghaladja az Azure fájlmegosztási képességeit.*
+*\*Teljes hűség: megfelel az Azure fájlmegosztási képességeinek, vagy meghaladja azt.*
 
 ### <a name="migration-helper-tools"></a>Áttelepítési segítő eszközök
 
-Ez a szakasz az áttelepítések megtervezését és végrehajtását segítő eszközöket sorolja fel.
+Ez a szakasz az áttelepítések megtervezését és futtatását segítő eszközöket ismerteti.
 
-* **RoboCopy, a Microsoft Corporation-től**
+#### <a name="robocopy-from-microsoft-corporation"></a>RoboCopy a Microsoft Corporation-től
 
-    Az egyik legalkalmazhatóbb másolási eszköz a fájláttelepítéshez, a Microsoft Windows része. Mivel a sok lehetőség ebben az eszközben, a fő [RoboCopy dokumentáció](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) hasznos forrás.
+RoboCopy az egyik eszköz leginkább alkalmazható fájl áttelepítések. Jön részeként a Windows. A fő [RoboCopy dokumentáció](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) hasznos forrás az eszköz számos lehetőség.
 
-* **TreeSize, a JAM Software GmbH-tól**
+#### <a name="treesize-from-jam-software-gmbh"></a>TreeSize a JAM Software GmbH-tól
 
-    Az Azure File Sync elsősorban az elemek (fájlok és mappák) számával, és kevésbé a teljes TiB-összeggel méretezhető. Az eszköz segítségével meghatározhatja a Windows Server-köteteken lévő fájlok és mappák számát. Továbbá használható egy perspektíva létrehozása előtt az [Azure File Sync központi telepítése](storage-sync-files-deployment-guide.md) előtt - de azt követően is, ha a felhőrétegezés van elfoglalva, és szeretné látni nem csak az elemek száma, hanem amelyben a könyvtárakat a kiszolgáló gyorsítótára a leggyakrabban használják.
-    Ez az eszköz (tesztelt 4.4.1-es verzió) kompatibilis a felhőrétegzett fájlokkal. Normál működése során nem fogja visszahívni a rétegzett fájlokat.
+Az Azure File Sync elsősorban az elemek (fájlok és mappák) számával, és nem a teljes tárterület mennyiségével méretezhető. A TreeSize eszköz lehetővé teszi a Windows Server-köteteken lévő elemek számának meghatározását.
 
+Az eszköz segítségével az Azure File Sync központi telepítése előtt hozhat létre [perspektívát.](storage-sync-files-deployment-guide.md) Azt is használhatja, ha a felhőrétegezés üzembe helyezés után van elfoglalva. Ebben az esetben láthatja az elemek számát, és hogy mely könyvtárak használják a leggyakrabban a kiszolgáló gyorsítótárát.
+
+Az eszköz tesztelt verziója a 4.4.1-es verzió. Kompatibilis a felhőalapú fájlokkal. Az eszköz normál működése során nem fogja visszahívni a rétegzett fájlokat.
 
 ## <a name="next-steps"></a>További lépések
 
-1. Hozzon létre egy tervet, amely az Azure-fájlmegosztások (csak felhőalapú vagy hibrid) üzembe helyezéséhez törekszik.
-2. Tekintse át az elérhető áttelepítési útmutatók listáját, és keresse meg az Azure-fájlmegosztások forrásának és üzembe helyezésének megfelelő részletes útmutatót.
+1. Hozzon létre egy tervet, amelyhez az Azure-fájlmegosztások (csak felhőalapú vagy hibrid) üzembe helyezését szeretné.
+1. Tekintse át az elérhető áttelepítési útmutatók listáját, és keresse meg az Azure-fájlmegosztások forrásának és üzembe helyezésének megfelelő részletes útmutatót.
 
-A cikkben említett Azure Files-technológiákról további információ áll rendelkezésre:
+Az alábbiakban a cikkben említett Azure Files technológiákról olvashat bővebben:
 
 * [Azure fájlmegosztás – áttekintés](storage-files-introduction.md)
 * [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)

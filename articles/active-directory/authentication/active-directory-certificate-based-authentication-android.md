@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0427398d05cbe9f76249ec8f7c25568d566d5d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654381"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680214"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Azure Active Directory tanúsítványalapú hitelesítés Androidon
 
@@ -27,7 +27,7 @@ Az Android-eszközök tanúsítványalapú hitelesítés (CBA) segítségével h
 
 A szolgáltatás konfigurálásával nincs szükség felhasználónév és jelszó kombináció megadására bizonyos levelezési és Microsoft Office-alkalmazásokban a mobileszközön.
 
-Ez a témakör az Office 365 Enterprise, Business, Education, US Government, China és Germany csomagok bérlőinek felhasználói számára iOS(Android) eszközön a CBA konfigurálásának követelményeit és támogatott forgatókönyveit tartalmazza.
+Ez a témakör ismerteti a CBA androidos eszközön történő konfigurálásának követelményeit és támogatott forgatókönyveit az Office 365 Enterprise, Business, Education, US Government, China és Germany csomagok bérlői számára.
 
 Ez a funkció előzetes verzióban érhető el az Office 365-beli egyesült államokbeli kormányzati védelmi és szövetségi csomagokban.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283419"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677462"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csapatadat-elemzési folyamat működés közben: Azure HDInsight Hadoop-fürtök használata
 Ebben a forgatókönyvben a [csapat adatelemzési folyamat (TDSP)](overview.md) egy végpontok között forgatókönyv. Egy [Azure HDInsight Hadoop-fürtöt](https://azure.microsoft.com/services/hdinsight/) használunk a nyilvánosan elérhető [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) adatkészletből származó adatok tárolásához, feltárásához és szolgáltatástervezéséhez, valamint az adatok lemintavételezéséhez. A bináris és többosztályos besorolási és regressziós prediktív feladatok kezeléséhez az Azure Machine Learning segítségével modelleket hozunk létre az adatokból. 
@@ -721,7 +721,7 @@ A Machine Learning [Adatok importálása][import-data] modulban hive-lekérdezé
 
 Íme néhány részlet az [Adatok importálása][import-data] modulról és a betáplálandó paraméterekről:
 
-**HCatalog-kiszolgáló URI**: Ha a fürt neve **abc123**, akkor használja: https://abc123.azurehdinsight.net.
+**HCatalog-kiszolgáló URI:** Ha a fürt neve **abc123**, majd használja: https:\//abc123.azurehdinsight.net.
 
 **Hadoop felhasználói fiók neve**: A fürthöz választott felhasználónév (nem a távelérés felhasználói neve).
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/12/2019
 ms.author: dsindona
-ms.openlocfilehash: 8e5165d000ee98212b3fd76091ffbd030b6b787f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fde249f22342ed2a0c50f5fdda3bde9dc2cde183
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281544"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685727"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Üzleti gyarapodás a Microsofttal
 
@@ -26,7 +26,7 @@ A Marketplace-partnereknek a Microsoft Partner Network (MPN) részét kell venni
 
 Az ajánlat vagy az alkalmazás népszerűsítéséhez, valamint további előnyök és erőforrások eléréséhez kövesse az alábbi táblázatot:
 
-| Előnyök | Források |
+| Előnyök | További források |
 |:--- |:--- |
 | Használja az alapvető előnyöket | A Microsoft Partner Network részeként számos alapvető előnyt kap, amelyek időt és pénzt takarítanak meg. Az előnyök segíthetnek <ul> <li> erősítse képességeit, </li> <li> jobban szolgálja az ügyfeleket, és </li> <li> kapcsolatokat építsen ki, hogy teljes üzleti potenciálját elérje. </li> </ul> Az alapvető előnyökkel kapcsolatos további információkért látogasson el [az alapvető előnyökre és követelményekre.](https://partner.microsoft.com/membership/core-benefits#tab-content-1) |
 | Szerezze meg a Cloud Platform kompetenciáját | A kompetencia megszerzésével <ul> <li> Különböztetse meg magát a Microsoft többi partnere között. </li> <li> Technikai szakértelem és ügyfélsiker bemutatása a piacon. </li> </ul> A kompetencia számos kulcsfontosságú partnerprogram, például a Co-Sell előfeltétele. További információt a [Cloud Platform kompetencia](https://partner.microsoft.com/reach-customers/selling-with-microsoft) című témakörben talál. |
@@ -36,6 +36,6 @@ Az ajánlat vagy az alkalmazás népszerűsítéséhez, valamint további előny
 
 Ha többet szeretne megtudni a piactérGTM-szolgáltatásairól, látogasson el [a Piacra lépő szolgáltatások lapra.](https://partner.microsoft.com/reach-customers/gtm)
 
-Jelentkezzen be a [Cloud Partner Portal-ba](https://cloudpartner.azure.com) az ajánlat létrehozásához és konfigurálásához.
+[Jelentkezzen be a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához vagy teljesítéséhez.
 
 ---

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: f1d0ca1ffc2e7a3d645ac5acbaafdf45f85550be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f195a5c05c6c95dac898b2d471747952a3446d52
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76271099"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681718"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(ELAVULT) Azure Container Service Kubernetes-fürt figyelése a CoScale-tel
 
@@ -62,7 +62,7 @@ az acs kubernetes install-cli
 [A DaemonSets-et](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a Kubernetes arra használja, hogy a fürt minden állomásán egyetlen példányt futtasson.
 Tökéletesek a felügyeleti ügynökök, például a CoScale-ügynök futtatásához.
 
-Miután bejelentkezett a CoScale-be, lépjen az [ügynök lapra,](https://app.coscale.com/) és telepítse a CoScale-ügynököket a fürtön egy DaemonSet használatával. A CoScale felhasználói felület e vezérelt konfigurációs lépéseket biztosít egy ügynök létrehozásához és a teljes Kubernetes-fürt figyeléséhez.
+Miután bejelentkezett a CoScale-be, lépjen az [ügynök lapra,](https://developer.newrelic.com/) és telepítse a CoScale-ügynököket a fürtön egy DaemonSet használatával. A CoScale felhasználói felület e vezérelt konfigurációs lépéseket biztosít egy ügynök létrehozásához és a teljes Kubernetes-fürt figyeléséhez.
 
 ![CoScale-ügynök konfigurációja](./media/container-service-kubernetes-coscale/installation.png)
 
@@ -70,7 +70,7 @@ Az ügynök fürtön való indításához futtassa a mellékelt parancsot:
 
 ![A CoScale-ügynök indítása](./media/container-service-kubernetes-coscale/agent_script.png)
 
-Ennyi az egész! Miután az ügynökök már működik, meg kell jelennie az adatokat a konzolon néhány percen belül. Látogasson el az [ügynök lapra](https://app.coscale.com/) a fürt összegzésének megtekintéséhez, hajtson végre további konfigurációs lépéseket, és tekintse meg az irányítópultokat, például a **Kubernetes-fürt áttekintését.**
+Ennyi az egész! Miután az ügynökök már működik, meg kell jelennie az adatokat a konzolon néhány percen belül. Látogasson el az [ügynök lapra](https://developer.newrelic.com/) a fürt összegzésének megtekintéséhez, hajtson végre további konfigurációs lépéseket, és tekintse meg az irányítópultokat, például a **Kubernetes-fürt áttekintését.**
 
 ![Kubernetes-fürt – áttekintés](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
 

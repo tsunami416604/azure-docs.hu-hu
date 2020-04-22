@@ -4,17 +4,17 @@ description: Rehydrate a blobok archív tárolóból, így hozzáférhet az adat
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/14/2019
+ms.date: 04/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614799"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684098"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Blobadatok rehidratálása az archív rétegből
 
@@ -31,15 +31,21 @@ Míg egy blob az archív hozzáférési rétegben, offline állapotban van, és 
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Archivált blob másolása online szintre
 
-Ha nem szeretné rehidratálni az archív blobot, választhat, hogy egy [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) műveletet. Az eredeti blob változatlan marad az archívumban, miközben egy új blob jön létre az online gyakori vagy ritka elérésű rétegben, ahol dolgozhat. A Blob másolása műveletben beállíthatja a választható *x-ms-rehidratálás-prioritású* tulajdonságot standard vagy magas (előzetes verzió) értékre, hogy megadja azt a prioritást, amelynél a blobmásolatot létre szeretné hozni.
-
-Az archív blobok csak ugyanazon a tárfiókon belül másolhatók online célrétegekre. Az archív blob másolása egy másik archív blob nem támogatott.
+Ha nem szeretné rehidratálni az archív blobot, választhat, hogy egy [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) műveletet. Az eredeti blob változatlan marad az archívumban, miközben egy új blob jön létre az online gyakori vagy ritka elérésű rétegben, ahol dolgozhat. A Blob másolása műveletben a választható *x-ms-rehidratálás-prioritású* tulajdonságot is beállíthatja Normál vagy Magas beállításra, hogy megadja azt a prioritást, amelynél a blobmásolatot létre szeretné hozni.
 
 Blob másolása az archívumból órákat vehet igénybe a kiválasztott rehidratálási prioritástól függően. A színfalak mögött a **Blob másolása** művelet beolvassa az archív forrásblobot, hogy hozzon létre egy új online blobot a kiválasztott célszinten. Az új blob látható lehet, ha blobok listája, de az adatok nem érhetők el, amíg a forrás archív blob ból történő olvasás befejeződött, és az adatok írása az új online cél blob. Az új blob független másolatként, és bármilyen módosítás vagy törlés nem befolyásolja a forrás archív blob.
 
+Az archív blobok csak ugyanazon a tárfiókon belül másolhatók online célrétegekre. Az archív blob másolása egy másik archív blob nem támogatott. Az alábbi táblázat a CopyBlob képességeit mutatja.
+
+|                                           | **Gyakori elérésű réteg forrása**   | **Ritka elérésű forrás** | **Archív szint forrása**    |
+| ----------------------------------------- | --------------------- | -------------------- | ------------------- |
+| **Gyakori elérésű szint célhelye**                  | Támogatott             | Támogatott            | Ugyanazon a fiókon belül támogatott; függőben lévő rehidratálás               |
+| **Ritka elérésű célállomás**                 | Támogatott             | Támogatott            | Ugyanazon a fiókon belül támogatott; függőben lévő rehidratálás               |
+| **Archiválási szint célhelye**              | Támogatott             | Támogatott            | Nem támogatott         |
+
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
-Az archiválási blobok gyors vagy ritka elérésű szintekre történő újrahidratálása olvasási műveletek és adatlekérésként kerül felszámításra. A magas prioritású (előzetes verzió) használata magasabb működési és adatlekérési költségeket jelent, mint a normál prioritás. A magas prioritású rehidratálás külön sorként jelenik meg a számlán. Ha egy néhány gigabájtból álló archív blob visszaadására irányuló magas prioritású kérelem több mint 5 órát vesz igénybe, nem kell fizetnie a magas prioritású lekérési arányt. A normál lekérési díjak azonban továbbra is érvényesek, mivel a rehidratálást előnyben tartották a többi kérésekkel szemben.
+Az archiválási blobok gyors vagy ritka elérésű szintekre történő újrahidratálása olvasási műveletek és adatlekérésként kerül felszámításra. A magas prioritású használata magasabb működési és adatlekérési költségekkel jár, mint a normál prioritás. A magas prioritású rehidratálás külön sorként jelenik meg a számlán. Ha egy néhány gigabájtból álló archív blob visszaadására irányuló magas prioritású kérelem több mint 5 órát vesz igénybe, nem kell fizetnie a magas prioritású lekérési arányt. A normál lekérési díjak azonban továbbra is érvényesek, mivel a rehidratálást előnyben tartották a többi kérésekkel szemben.
 
 Blobok másolása az archívumból a gyakori vagy ritka elérésű rétegek díja olvasási műveletek és az adatok lekérése. Az új blobmásolat létrehozásáért írási művelet et számítunk fel. A korai törlési díjak nem vonatkoznak, ha egy online blobba másol, mert a forrásblob változatlan marad az archív rétegben. Ha be van jelölve, a magas prioritású visszakeresési díjak érvényesek.
 
@@ -52,7 +58,7 @@ Az archív rétegben lévő blobokat legalább 180 napig kell tárolni. Az archi
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Archív blob újrahidratálása online rétegre
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Az Azure Portalon keresse meg és válassza az **Összes erőforrás lehetőséget.**
 
@@ -68,7 +74,8 @@ Az archív rétegben lévő blobokat legalább 180 napig kell tárolni. Az archi
 
 1. Válassza a **Mentés** gombot alul.
 
-![Tárfiók-szint módosítása](media/storage-tiers/blob-access-tier.png)
+![Tárfiók-szint](media/storage-tiers/blob-access-tier.png)
+![módosítása A rehidratálás állapotának ellenőrzése](media/storage-tiers/rehydrate-status.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 A következő PowerShell-parancsfájl segítségével módosíthatja az archív blob blob szintje. A `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a tárfiók nevével. A `$containerName` változót inicializálni kell a tároló nevével. A `$blobName` változót inicializálni kell a blob nevével. 
@@ -114,5 +121,5 @@ Start-AzStorageBlobCopy -SrcContainer $srcContainerName -SrcBlob $srcBlobName -D
 
 * [További információ a Blob storage-szintekről](storage-blob-storage-tiers.md)
 * [A blobstorage- és GPv2-fiókok gyors, hűvös és archív díjszabásának ellenőrzése régiónként](https://azure.microsoft.com/pricing/details/storage/)
-* [Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)
+* [Az Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)
 * [Az adatátviteli díjszabás megtekintése](https://azure.microsoft.com/pricing/details/data-transfers/)

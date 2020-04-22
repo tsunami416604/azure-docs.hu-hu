@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71199993"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686941"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Az OPC Vault tanúsítványkezelési szolgáltatásának létrehozása és üzembe helyezése
 
@@ -90,7 +90,7 @@ A sikeres telepítés után elkezdheti használni a szolgáltatásokat. Lásd: [
 
 Ezt a következőképpen teheti meg:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg azt az erőforráscsoportot, amelyben a szolgáltatást telepítették.
 3. Válassza az **Erőforráscsoport törlése** elemet, és erősítse meg a választását.
 4. Rövid idő elteltével az összes üzembe helyezett szolgáltatásösszetevő törlődik.
@@ -107,7 +107,7 @@ Használjon rövid és egyszerű erőforráscsoport nevet. A név az erőforrás
 
 ### <a name="website-name-already-in-use"></a>A webhely neve már használatban van
 
-Lehetséges, hogy a webhely neve már használatban van. Másik erőforráscsoport nevet kell használnia. A központi telepítési parancsfájl által használt https://resourcegroupname.azurewebsites.net https://resourgroupname-service.azurewebsites.netállomásnevek a következők: és .
+Lehetséges, hogy a webhely neve már használatban van. Másik erőforráscsoport nevet kell használnia. A központi telepítési parancsfájl által használt állomásnevek a következők: https:\//resourcegroupname.azurewebsites.net és https:\//resourgroupname-service.azurewebsites.net.
 A szolgáltatások más nevei a rövid névkiírások kombinációjával épülnek fel, és nem valószínű, hogy ütköznek más szolgáltatásokkal.
 
 ### <a name="azure-ad-registration"></a>Azure AD-regisztráció 

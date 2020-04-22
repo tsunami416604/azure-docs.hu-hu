@@ -1,6 +1,6 @@
 ---
-title: A Microsoft ® Smooth Streaming ügyfélporting készlet licencelése
-description: További információ a Microsoft ® Smooth Streaming ügyfélporting készlet licenceléséről.
+title: A&reg; Microsoft Smooth Streaming ügyfélportolási készlet ének lebonyolítása
+description: További információ a Microsoft&reg; Smooth Streaming ügyfélportingkészlet licenceléséről.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 59ac3ab2e70bfa00f19bae7e551780f2b2bb8ccb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096715"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686897"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>A Microsoft ® Smooth Streaming ügyfélporting készlet licencelése 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>A&reg; Microsoft Smooth Streaming ügyfélportolási készlet ének lebonyolítása 
 ## <a name="overview"></a>Áttekintés
 A Microsoft Smooth Streaming Client Porting Kit **(röviden SSPK)** egy sima streamelésű ügyfélimplementáció, amely a beágyazott eszközgyártók, a kábel- és mobilszolgáltatók, a tartalomszolgáltatók, a készülékgyártók, a független szoftvergyártók (ISV-k) és a megoldásszolgáltatók számára optimalizált zökkenőmentes streamelési formátumban történő folyamatos streamelési termékek és szolgáltatások létrehozásához van optimalizálva. Az SSPK a Smooth Streaming ügyfél eszköz- és platformfüggetlen implementációja, amelyet az engedélyes bármely eszközre és platformra továbbíthat. 
 
@@ -55,13 +55,13 @@ A Microsoft Smooth Streaming ügyfélporting készlet két különböző licencs
 * Azon eszközgyártók és független szoftvergyártók számára, akiknek terjesztési jogokra van szükségük a Smooth Streaming client final products végfelhasználói számára, végre kell hajtani a Microsoft Smooth Streaming client porting kit **final product licencet.**
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft Smooth Streaming ügyfél portolási készlet ideiglenes terméklicenc
-A jelen licenc értelmében a Microsoft zökkenőmentes streamelési ügyfélportolási készletet és a smooth streaming ügyfél ideiglenes termékek fejlesztéséhez és terjesztéséhez szükséges szellemi tulajdonjogokat kínál más Smooth Streaming ügyfélporting készlet licenckezelők számára, amelyek a Smooth Streaming Client Final Products terjeszthető.
+E licenc alapján a Microsoft egy smooth streaming ügyfélporting készletet és a smooth streaming ügyfél ideiglenes termékek fejlesztéséhez és terjesztéséhez szükséges szellemi tulajdonjogokat kínál a Smooth Streaming Client Interim Products fejlesztéséhez és terjesztéséhez a Smooth Streaming Client Porting Kit eszköz licencbevevői számára, amelyek smooth streaming ügyfél végső termékeket terjesztenek.
 
 #### <a name="fee-structure"></a>Díjstruktúra
 Az Egyesült Államok $50,000 egyszeri licencdíj hozzáférést biztosít a Smooth Streaming client porting kit.A US $50,000 egyszeri licenc fee provides access to the Smooth Streaming Client Porting Kit. 
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft Smooth Streaming ügyfél portolási készlet – végső termék licenc
-A jelen licenc értelmében a Microsoft minden szükséges szellemi tulajdonjogot biztosít a Smooth Streaming Ügyfél ideiglenes termékeinek fogadására más Smooth Streaming ügyfélporting készlet licencbe vevőktől, valamint a vállalat márkájú Smooth Streaming Client Final terjesztésére Termékek a végfelhasználók számára.
+A jelen licenc értelmében a Microsoft minden szükséges szellemi tulajdonjogot biztosít a Smooth Streaming Ügyfél ideiglenes termékeinek fogadására más Smooth Streaming ügyfélporting készlet licencbe vevőktől, valamint a vállalat márkájú Smooth Streaming Client Final Products terjesztésére a végfelhasználók számára.
 
 #### <a name="fee-structure"></a>Díjstruktúra
 A Smooth Streaming Client Final Product egy jogdíjmodell alatt érhető el, a következők szerint:
@@ -73,7 +73,7 @@ A Smooth Streaming Client Final Product egy jogdíjmodell alatt érhető el, a k
 ## <a name="licensing-procedure-and-sspk-access"></a>Engedélyezési eljárás és SSPK-hozzáférés
 E-mail [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) az összes licencelési lekérdezéshez.
 
-Az [SSPK terjesztési portál](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) elérhető a regisztrált ideiglenes licenccel rendelkezők számára.
+Az SSPK terjesztési portál elérhető a regisztrált ideiglenes licenccel rendelkezők számára.
 
 Az ideiglenes és a végleges SSPK [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)engedélyesek technikai kérdéseket nyújthatnak be a rendszernek.
 

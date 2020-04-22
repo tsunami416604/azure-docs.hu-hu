@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan csatlakozhat az Azure-beli Analysis Services-ki
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411317"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676650"
 ---
 # <a name="connecting-to-servers"></a>Kapcsolódás kiszolgálókhoz
 
@@ -23,6 +23,9 @@ Ez a cikk adatmodellezési és -kezelési alkalmazások, például az SQL Server
 [A legújabb ügyfélkönyvtárak beszereznie](analysis-services-data-providers.md)
 
 A kiszolgálóval való minden kapcsolat hoz létre, típustól függetlenül, frissített AMO,ADOMD.NET és OLEDB ügyféltárakat igényel az Analysis Services-kiszolgálóhoz való csatlakozáshoz és az azokkal való kapcsolathoz. Az SSMS, a Visual Studio, az Excel 2016 és újabb verziók, valamint a Power BI esetében a legújabb ügyféltárak telepítése vagy frissítése havi kiadásokkal történik. Bizonyos esetekben azonban előfordulhat, hogy egy alkalmazás nem rendelkezik a legújabb. Ha például a házirendek késleltetik a frissítéseket, vagy az Office 365-frissítések a Késleltetett csatornán vannak.
+
+> [!NOTE]
+> Az ügyfélkódtárak nem tudnak csatlakozni az Azure Analysis Services-hez olyan proxykiszolgálókon keresztül, amelyek felhasználónevet és jelszót igényelnek. 
 
 ## <a name="server-name"></a>Kiszolgálónév
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
-ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 1bd71a4fb150d544125703679cf0fa0b8951e1eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383762"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684135"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactéri fiók létrehozása a Partnerközpontban
 
@@ -164,7 +164,7 @@ Egy szervezethez több közzétevő is tartozhat egy Kereskedelmi piactér-fiók
 
 Ugyanattól az Azure Active Directory-bérlőtől származó másik felhasználó az alábbi lépések végrehajtásával új közzétevőt adhat hozzá:
 
-1. Indítsa el a regisztrációs folyamatot a [Microsoft Partner Centerben.](https://partner.microsoft.com/en-us/dashboard/account/v3/enrollment/introduction/azureisv)
+1. Indítsa el a regisztrációs folyamatot a [Microsoft Partner Centerben.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
 2. Válassza **a Bejelentkezés munkahelyi fiókkal** lehetőséget, és adja meg munkahelyi e-mail címét.
 3. Válassza a **Kiadó hozzáadása** gombot.
 4. Válassza ki azt az MPN-azonosítót, amelyet a közzétevőhöz társítani szeretne.

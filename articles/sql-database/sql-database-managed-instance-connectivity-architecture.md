@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: f30ccd498b79c36c8892ae38a3e26d169249621a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481099"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677172"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány csatlakoztatási architektúrája az Azure SQL Database-ben
 
@@ -39,7 +39,7 @@ A felügyelt példány egy platform szolgáltatásként (PaaS) kínál. A Micros
 
 A végfelhasználók vagy alkalmazások által indított egyes SQL Server-műveletekhez felügyelt példányokra lehet szükség a platformmal való együttműködéshez. Az egyik eset egy felügyelt példány-adatbázis létrehozása. Ez az erőforrás az Azure Portalon, a PowerShellen, az Azure CLI-n és a REST API-n keresztül érhető el.
 
-A felügyelt példányok az Azure-szolgáltatásoktól, például az Azure Storage for backups- tól, az Azure Event Hubs for telemetriai adatoktól, az Azure Active Directory a hitelesítéshez, az Azure Key Vault az átlátszó adattitkosításhoz (TDE) és néhány Azure platformszolgáltatást nyújtó Azure-szolgáltatástól függenek. biztonsági és támogatási funkciók. A felügyelt példányok kapcsolatot létesítenek ezekkel a szolgáltatásokkal.
+A felügyelt példányok az Azure-szolgáltatásoktól függenek, például az Azure Storage biztonsági mentések, az Azure Event Hubs for telemetriai adatok, az Azure Active Directory a hitelesítéshez, az Azure Key Vault az átlátszó adattitkosításhoz (TDE) és néhány Azure platformszolgáltatás, amelyek biztonsági és támogatási funkciókat biztosítanak. A felügyelt példányok kapcsolatot létesítenek ezekkel a szolgáltatásokkal.
 
 Minden kommunikáció titkosítva van, és tanúsítványokkal van aláírva. A kommunikáló felek megbízhatóságának ellenőrzéséhez a felügyelt példányok folyamatosan ellenőrzik ezeket a tanúsítványokat a visszavont tanúsítványok listáin keresztül. Ha a tanúsítványokat visszavonják, a felügyelt példány bezárja a kapcsolatokat az adatok védelme érdekében.
 
@@ -81,7 +81,7 @@ Amikor a kapcsolatok a felügyelt példányon belül indulnak el (csakúgy, mint
 > [!NOTE]
 > A felügyelt példány régióján belüli Azure-szolgáltatásokhoz vezető forgalom optimalizálva van, és ezért nem nated felügyelt példánykezelési végpont nyilvános IP-cím. Ezért, ha IP-alapú tűzfalszabályokat kell használnia, leggyakrabban a tároláshoz, a szolgáltatásnak a felügyelt példánytól eltérő régióban kell lennie.
 
-## <a name="service-aided-subnet-configuration"></a>Szolgáltatásáltal támogatott alhálózat-konfiguráció
+## <a name="service-aided-subnet-configuration"></a>Szolgáltatással segített alhálózat-konfiguráció
 
 Az ügyfelek biztonságának és a kezelhetőségi követelményeknek a kezelése érdekében a felügyelt példány manuálisal a szolgáltatás által támogatott alhálózati konfigurációra vált.
 
@@ -104,7 +104,7 @@ Felügyelt példány telepítése a virtuális hálózaton belüli dedikált alh
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatás által támogatott alhálózati konfigurációval 
 
-| Név       |Port                        |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name (Név)       |Port                        |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-alhálózat  |Engedélyezés |
 |            |9000, 9003                  |TCP     |CorpnetSaw között       |MI-alhálózat  |Engedélyezés |
@@ -114,14 +114,14 @@ Felügyelt példány telepítése a virtuális hálózaton belüli dedikált alh
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező kimenő biztonsági szabályok a szolgáltatás által támogatott alhálózati konfigurációval 
 
-| Név       |Port          |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name (Név)       |Port          |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI-alhálózat        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI-alhálózat        |MI-alhálózat  |Engedélyezés |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Felhasználó által definiált útvonalak szolgáltatásáltal támogatott alhálózati konfigurációval 
 
-|Név|Címelőtag|Következő ugrás|
+|Name (Név)|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |alhálózat-vnetlocal|MI-alhálózat|Virtuális hálózat|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
@@ -306,6 +306,7 @@ A felügyelt példány jelenleg nem támogatja a következő virtuális hálóza
 - **Microsoft társviszony-létesítés**: A [Microsoft társviszony-létesítésének](../expressroute/expressroute-faqs.md#microsoft-peering) engedélyezése az expressz útvonal-áramkörökön közvetlenül vagy tranzitívmódon a virtuális hálózattal, ahol a felügyelt példány található, befolyásolja a felügyelt példány összetevői közötti forgalmat a virtuális hálózaton belül és a szolgáltatások on attól függ, hogy rendelkezésre állási problémákat okoz. A felügyelt példányok virtuális hálózatra telepítése, ha a Microsoft társviszony-létesítése már engedélyezve van, várhatóan sikertelenek lesznek.
 - **Globális virtuális hálózati társviszony-létesítés**: Az Azure-régiók közötti [virtuális hálózati társviszony-létesítési](../virtual-network/virtual-network-peering-overview.md) kapcsolat nem működik a felügyelt példány esetében [a dokumentált terheléselosztó-korlátozások](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)miatt.
 - **AzurePlatformDNS**: Az AzurePlatformDNS [szolgáltatáscímke](../virtual-network/service-tags-overview.md) használata a platform DNS-felbontásának blokkolására elérhetetlenné teszi a felügyelt példányt. Bár a felügyelt példány támogatja az ügyfél által definiált DNS-dns-t a motoron belül, a platform DNS-től függ a platform műveletek.
+- **NAT-átjáró:** A [virtuális hálózati hálózati címzet](../virtual-network/nat-overview.md) használata adott nyilvános IP-címmel rendelkező kimenő kapcsolatok vezérlésére a felügyelt példány elérhetetlenné válna. A felügyelt példány szolgáltatás jelenleg az alapszintű terheléselosztó használatára korlátozódik, amely nem biztosítja a bejövő és kimenő folyamatok egymás közötti létezését a virtuális hálózati NAT-tal.
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[Elavult] Hálózati követelmények szolgáltatásáltal támogatott alhálózati konfiguráció nélkül
 
@@ -322,7 +323,7 @@ Felügyelt példány telepítése a virtuális hálózaton belüli dedikált alh
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Név       |Port                        |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name (Név)       |Port                        |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI-alhálózat  |Engedélyezés |
 |mi_subnet   |Bármelyik                         |Bármelyik     |MI-alhálózat        |MI-alhálózat  |Engedélyezés |
@@ -330,7 +331,7 @@ Felügyelt példány telepítése a virtuális hálózaton belüli dedikált alh
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Név       |Port          |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name (Név)       |Port          |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI-alhálózat        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI-alhálózat        |MI-alhálózat  |Engedélyezés |
@@ -348,7 +349,7 @@ Felügyelt példány telepítése a virtuális hálózaton belüli dedikált alh
 
 ### <a name="user-defined-routes"></a>Felhasználó által definiált útvonalak
 
-|Név|Címelőtag|Következő ugrás|
+|Name (Név)|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI-alhálózat|Virtuális hálózat|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|

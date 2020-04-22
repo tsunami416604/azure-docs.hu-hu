@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan háríthatja el az Azure virt
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 15e4b4c8850798fd2386cd2874b6ab58a18d5406
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297390"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677342"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása az Azure virtuális gépeken
 
@@ -191,6 +191,7 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 | **Hibakód**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Hibaüzenet**: A pillanatkép-művelet nem sikerült, mert nem sikerült biztonságos hálózati kommunikációs csatornát létrehozni. | <ol><li> Nyissa meg a Rendszerleíróadatbázis-szerkesztőt úgy, hogy **a regedit.exe fájlt** emelt szintű módban futtatja. <li> Azonosítsa a rendszerben található . A rendszerleíró kulcs hierarchiája alatt vannak jelen **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> A beállításkulcsban található minden . <br> **SchUseStrongCrypto"=dword:00000001**. </ol>|
 | **Hibakód**: ExtensionVCRedistInstallationFailure <br/> **Hibaüzenet**: A pillanatkép-művelet nem sikerült, mert nem sikerült telepíteni a Visual C++ újraterjeszthető visual studio 2012-hez. | Keresse meg a C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion webhelyet, és telepítse vcredist2013_x64.<br/>Győződjön meg arról, hogy a szolgáltatás telepítését lehetővé tévő beállításkulcs-érték a megfelelő értékre van állítva. Ez azt jelenti, hogy a **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** **mappában** állítsa a Kezdő értéket **3-ra,** és ne **4-re.** <br><br>Ha továbbra is problémák merülnek fel a telepítéssel kapcsolatban, indítsa újra a telepítési szolgáltatást az **MSIEXEC /UNREGISTER** paranccsal, majd az **MSIEXEC /REGISTER** paranccsal egy rendszergazda jogú parancssorból.  |
 | **Hibakód**: UserErrorRequestDisallowedByPolicy <BR> **Hibaüzenet:** Érvénytelen házirend van konfigurálva a virtuális gépen, amely megakadályozza a pillanatkép-műveletet. | Ha olyan Azure-szabályzattal [rendelkezik, amely szabályozza a címkéket a környezetében,](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)fontolja meg a szabályzat [megtagadása effektusról](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) [módosításra](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)való módosítását, vagy hozza létre manuálisan az erőforráscsoportot az [Azure Backup által igényelt elnevezési sémának](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)megfelelően.
+
 ## <a name="jobs"></a>Feladatok
 
 | A hiba részletei | Áthidaló megoldás |
@@ -229,12 +230,12 @@ Ha a biztonsági mentés több mint 12 órát vesz igénybe, vagy a visszaállí
 #### <a name="windows-vms"></a>Windows rendszerű virtuális gépek
 
 * Töltse le és telepítse az [ügynök MSI-t](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokra van szükség.
-* A klasszikus központi telepítési modell használatával létrehozott virtuális gépek esetén [frissítse a virtuális gép tulajdonságot,](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) jelezve, hogy az ügynök telepítve van. Ez a lépés nem szükséges az Azure Resource Manager virtuális gépek.
+* A klasszikus központi telepítési modell használatával létrehozott virtuális gépek esetén [frissítse a virtuális gép tulajdonságot,](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) jelezve, hogy az ügynök telepítve van. Ez a lépés nem szükséges az Azure Resource Manager virtuális gépek.
 
 #### <a name="linux-vms"></a>Linux rendszerű virtuális gépek
 
 * Telepítse az ügynök legújabb verzióját a terjesztési tárházból. A csomag nevével kapcsolatos részletekért tekintse meg a [Linux Agent tárházát.](https://github.com/Azure/WALinuxAgent)
-* A klasszikus központi telepítési modell használatával létrehozott virtuális gépek esetén használja ezt a [blogot](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) a virtuális gép tulajdonság ának frissítéséhez, és ellenőrizze, hogy az ügynök telepítve van-e. Ez a lépés nem szükséges az Erőforrás-kezelő virtuális gépek.
+* A klasszikus üzembe helyezési modell használatával létrehozott virtuális gépek esetén [frissítse a virtuális gép tulajdonságát,](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) és ellenőrizze, hogy az ügynök telepítve van-e. Ez a lépés nem szükséges az Erőforrás-kezelő virtuális gépek.
 
 ### <a name="update-the-vm-agent"></a>A virtuális gép ügynökének frissítése
 
@@ -280,4 +281,3 @@ További információ a statikus IP-cím PowerShellen keresztüli beállításá
 
 * [Statikus belső IP hozzáadása meglévő virtuális géphez](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
 * [Hálózati adapterhez rendelt magánhálózati IP-cím foglalási módjának módosítása](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
-

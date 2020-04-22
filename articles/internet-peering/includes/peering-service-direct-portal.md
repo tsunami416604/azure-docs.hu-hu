@@ -8,33 +8,33 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 3/18/2020
 ms.author: derekol
-ms.openlocfilehash: 60752cf1b3c05ab7817083e70310ba7b40227dec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5804aa1b005e670d8b430b1c0a3bd62efd0bb06
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129967"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687048"
 ---
-1. Kattintson egy társviszony-létesítési kapcsolat ra szeretné engedélyezni a társviszony-létesítési szolgáltatás, majd kattintson a **...**  >  **Kapcsolat szerkesztése** gomb.
+1. Válassza ki az Azure-társviszony-létesítési szolgáltatáshoz engedélyezni kívánt társviszony-létesítési kapcsolatot. Ezután válassza ki **...**  >  **Kapcsolat szerkesztése**.
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítési kapcsolat szerkesztése](../media/setup-direct-modify-editconnection.png)
-1. A ***Társviszony-létesítési szolgáltatás használata***csoportban kattintson az **Engedélyezve** és a **Mentés gombra.**
+    > ![Társviszony- Kapcsolat – Kapcsolat szerkesztése](../media/setup-direct-modify-editconnection.png)
+1. A **Társviszony-létesítési szolgáltatás használata**csoportban válassza az **Engedélyezve** lehetőséget, majd a **Mentés**lehetőséget.
     > [!div class="mx-imgBorder"]
-    > ![Társviszony-létesítés engedélyezése társviszony-létesítési szolgáltatás](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
-1. Az áttekintő képernyőn láthatja a központi telepítés részleteit. Miután a telepítés befejeződött, kattintson a **Go to resource**.
+    > ![Társviszony-létesítési szolgáltatás engedélyezése](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
+1. Az Áttekintés képernyőn **láthatja** a központi telepítés részleteit. A telepítés befejezése után válassza az **Ugrás az erőforrásra**lehetőséget.
     > [!div class="mx-imgBorder"]
     > ![A telepítés befejeződött](../media/setup-direct-modify-overview-deployment-complete.png)
 
-1. Ekkor megjelenik a **Beállítások regisztrált előtagok**területen. Kattintson a **Regisztrált előtag hozzáadása gombra.**
+1. A **Regisztrált előtagok** ablaktáblán válassza **a Regisztrált előtag hozzáadása**lehetőséget.
     > [!div class="mx-imgBorder"]
-    > ![Regisztrált előtagok és kapcsolatok](../media/setup-direct-modify-add-registered-prefix.png)
-1. Előtag regisztrálása **egy név** és egy **előtag** kiválasztásával, majd kattintson a **Mentés** gombra.
+    > ![Regisztrált előtag hozzáadása](../media/setup-direct-modify-add-registered-prefix.png)
+1. Előtag regisztrálása a Név és **előtag** **kiválasztásával,** majd a **Mentés**lehetőség kiválasztásával.
     > [!div class="mx-imgBorder"]
     >  ![Előtag regisztrálása](../media/setup-direct-modify-register-a-prefix.png) 
 
-1. Az előtag létrehozása után megjelenik a regisztrált előtagok listájában. További részletekért kattintson az előtag **nevére.**
+1. Az előtag létrehozása után megjelenik a **regisztrált előtagok**listájában. További részletek megtekintéséhez válassza az előtag **nevét.**
     > [!div class="mx-imgBorder"]
     > ![Regisztrált előtagok és kapcsolatok](../media/setup-direct-modify-registered-prefixes.png)
-1. A regisztrált előtag lapon az egyes **előtagok előtagkulcsának** teljes részletei jelennek meg. Ezt a kulcsot meg kell adni annak az ügyfélnek, aki ezt az előtagot a szolgáltatójától osztotta ki. Az ügyfél ezután regisztrálhatja előtagot az előfizetésében ezzel a kulccsal.
+1. A regisztrált előtag lapon látható a teljes részleteket, amelyek tartalmazzák az **előtag kulcs** minden előtag. Ezt a kulcsot meg kell adni a szolgáltatói isp-től lefoglalt ügyfélnek. Az ügyfél ezután regisztrálhatja előtagot az előfizetésében ezzel a kulccsal.
     > [!div class="mx-imgBorder"]
     > ![Előtag előtaggal](../media/setup-direct-modify-registered-prefix-detail.png)

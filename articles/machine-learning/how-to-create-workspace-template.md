@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 457979837b1c56eb85fc19c9a1fce5dc7df8c23b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481986"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682760"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -81,7 +81,9 @@ A következő példasablon bemutatja, hogyan hozhat létre munkaterületet háro
 
 * A munkaterület magas bizalmassági beállításainak engedélyezése
 * Titkosítás engedélyezése a munkaterületen
-* Meglévő Azure Key Vault ot használ
+* Meglévő Azure Key Vault használatával az ügyfél által kezelt kulcsok lekérése
+
+További információ: [Titkosítás inaktív célokra](concept-enterprise-security.md#encryption-at-rest).
 
 ```json
 {
@@ -121,7 +123,7 @@ A következő példasablon bemutatja, hogyan hozhat létre munkaterületet háro
         "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
       }
     },
-    "hbi_workspace":{
+    "high_confidentiality":{
       "type": "string",
       "defaultValue": "false",
       "allowedValues": [
@@ -256,27 +258,31 @@ A következő példasablon bemutatja, hogyan hozhat létre munkaterületet háro
                     "keyIdentifier": "[parameters('resource_cmk_uri')]"
                   }
             },
-        "hbiWorkspace": "[parameters('hbi_workspace')]"
+        "hbiWorkspace": "[parameters('high_confidentiality')]"
       }
     }
   ]
 }
 ```
 
-A Key Vault azonosítójának és a sablon hoz szükséges kulcs URI-jának lekért, használhatja az Azure CLI-t. A következő parancs egy példa az Azure CLI használatával a Key Vault erőforrás-azonosító és URI bekéselésére:
+A Key Vault azonosítójának és a sablon hoz szükséges kulcs URI-jának lekért, használhatja az Azure CLI-t. A következő parancs leadja a Key Vault-azonosítót:
 
 ```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
+az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 ```
 
-Ez a parancs a következő szöveghez hasonló értéket ad vissza. Az első érték az azonosító, a második pedig az URI:
+Ez a parancs a `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`hoz hasonló értéket ad vissza.
 
-```text
-[
-  "/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault",
-  "https://mykeyvault.vault.azure.net/"
-]
+Az ügyfél által kezelt kulcs URI-jának lekérnie a következő parancsot:
+
+```azurecli-interactive
+az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 ```
+
+Ez a parancs a `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`hoz hasonló értéket ad vissza.
+
+> [!IMPORTANT]
+> A munkaterület létrehozása után nem módosíthatja a bizalmas adatok, a titkosítás, a kulcstartó azonosítójának vagy a kulcsazonosítók beállításait. Ezen értékek módosításához új munkaterületet kell létrehoznia az új értékekkel.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 

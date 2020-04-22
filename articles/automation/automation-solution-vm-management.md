@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 369e3bcf4e5913f4a3ff82206d1e24a206db3f34
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604715"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681294"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívüli megoldás közben az Azure Automationben
 
@@ -120,7 +120,7 @@ Minden szülő runbookok tartalmazzák a `WhatIf` paramétert. Ha értéke Igaz,
 Az alábbi táblázat az Automation-fiókban létrehozott változókat sorolja fel. Csak a előtaggal `External`előtaggal rendelkező változókat módosítsa. Az előtaggal előtaggal `Internal` ellátott változók módosítása nemkívánatos hatásokat okoz.
 
 > [!NOTE]
-> A virtuális gép nevére és erőforráscsoportjára vonatkozó korlátozások nagyrészt változó méretnek adják ki.
+> A virtuális gép nevére és erőforráscsoportjára vonatkozó korlátozások nagyrészt változó méretnek adják ki. Lásd: [Változó eszközök az Azure Automationben.](https://docs.microsoft.com/azure/automation/shared-resources/variables)
 
 |Változó | Leírás|
 |---------|------------|
@@ -159,8 +159,8 @@ Ne engedélyezze az összes ütemezést, mert ez egymást átfedő ütemezési m
 |Schedule_AutoStop_CreateAlert_Parent | 8 óránként | A **AutoStop_CreateAlert_Parent** runbook 8 óránként fut, ami viszont leállítja `External_Stop_ResourceGroupNames`a `External_ExcludeVMNames` virtuális gép-alapú `External_Start_ResourceGroupNames`értékeket a , és a változók. Másik lehetőségként megadhat egy vesszővel tagolt virtuális gépek `VMList` listáját a paraméter használatával.|
 |Scheduled_StopVM | Felhasználó által definiált, naponta | Futtatja a **ScheduledStopStart_Parent** runbook `Stop` egy paramétert minden nap a megadott időpontban.Automatikusan leállítja az összes virtuális gépet, amely megfelel a változó eszközök által meghatározott szabályoknak.Engedélyezze a kapcsolódó **ütemezést Ütemezett-StartVM**.|
 |Scheduled_StartVM | Felhasználó által definiált, naponta | A **ScheduledStopStart_Parent** runbook ot futtatja `Start` a megadott időpontban minden nap paraméterértékkel. Automatikusan elindítja az összes virtuális gépet, amely megfelel a változó eszközök által meghatározott szabályoknak.Engedélyezze a kapcsolódó **ütemezést Scheduled-StopVM**.|
-|Szekvenált-StopVM | Minden pénteken 1:00 (UTC), | Futtatja a Sequenced_Parent runbook `Stop` egy paraméter értéke minden pénteken a megadott időpontban.Egymás után (növekvő) leállítja az összes virtuális gépet a megfelelő változók által meghatározott **SequenceStop** címkével. A címkeértékekről és az eszközváltozókról a Runbooks szakaszban talál további információt.Engedélyezze a kapcsolódó ütemezést, **a Szekvenciális-StartVM.**|
-|Szekvenált-StartVM | 13:00 (UTC), minden hétfőn | A **SequencedStopStart_Parent** runbookot futtatja, amelynek `Start` paraméterértéke minden hétfőn a megadott időpontban van. Egymás után (csökkenő) elindítja az összes virtuális gépet a megfelelő változók által meghatározott **SequenceStart** címkével. A címkeértékekről és a változó eszközökről a [Runbookok című témakörben](#runbooks)talál további információt. Engedélyezze a kapcsolódó **ütemezést, a Szekvenciális stopvm-et.**
+|Szekvenált-StopVM | Minden pénteken 1:00 (UTC), | A **Sequenced_StopStop_Parent** runbook ot futtatja, amelynek `Stop` paraméterértéke minden pénteken a megadott időpontban van.Egymás után (növekvő) leállítja az összes virtuális gépet a megfelelő változók által meghatározott **SequenceStop** címkével. A címkeértékekről és az eszközváltozókról a [Runbooks című témakörben](#runbooks)talál további információt.Engedélyezze a kapcsolódó ütemezést, **a Szekvenciális-StartVM.**|
+|Szekvenált-StartVM | 13:00 (UTC), minden hétfőn | A **SequencedStopStart_Parent** runbookot futtatja, amelynek `Start` paraméterértéke minden hétfőn a megadott időpontban van. Egymás után (csökkenő) elindítja az összes virtuális gépet a megfelelő változók által meghatározott **SequenceStart** címkével. A címkeértékekről és a változó eszközökről a [Runbooks című témakörben](#runbooks)talál további információt. Engedélyezze a kapcsolódó **ütemezést, a Szekvenciális stopvm-et.**
 
 ## <a name="use-of-the-solution-with-classic-vms"></a>A megoldás használata klasszikus virtuális gépekkel
 

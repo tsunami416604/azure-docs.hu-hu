@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9d98660230e0ab9f4edcd9a7af8a3797106dd17a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255658"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685750"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban
 Ebben a cikkben bemutatjuk a biztonsági tevékenységek és vezérlők, hogy fontolja meg, amikor alkalmazásokat fejleszt a felhőben. A Microsoft [security development lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) megvalósítási és ellenőrzési fázisai során figyelembe veendő biztonsági kérdések és fogalmak is lefedhetők. A cél az, hogy segítsen meghatározni a tevékenységek et és az Azure-szolgáltatásokat, amelyek segítségével egy biztonságosabb alkalmazás.
@@ -44,7 +44,7 @@ Az Azure Marketplace [olyan fejlesztői eszközöket](https://azuremarketplace.m
 
 ### <a name="validate-and-sanitize-every-input-for-your-application"></a>Az alkalmazás minden bemenetének ellenőrzése és fertőtlenítése
 
-Kezelje az összes bemenetet nem megbízhatóként, hogy megvédje az alkalmazást a leggyakoribb webalkalmazás-biztonsági résektől. A nem megbízható adatok az injekciós támadások hordozói. Az alkalmazás bemenete tartalmazza az URL-cím paramétereit, a felhasználó tól érkező adatokat, az adatbázisból vagy egy API-ból származó adatokat, és mindent, ami átkerül, és amit a felhasználó potenciálisan manipulálhat. Az alkalmazásnak [ellenőriznie](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs) kell, hogy az adatok szintaktikailag és szemantikailag érvényesek, mielőtt az alkalmazás bármilyen módon felhasználja az adatokat (beleértve a felhasználó számára visszajelenítendő adatokat is).
+Kezelje az összes bemenetet nem megbízhatóként, hogy megvédje az alkalmazást a leggyakoribb webalkalmazás-biztonsági résektől. A nem megbízható adatok az injekciós támadások hordozói. Az alkalmazás bemenete tartalmazza az URL-cím paramétereit, a felhasználó tól érkező adatokat, az adatbázisból vagy egy API-ból származó adatokat, és mindent, ami átkerül, és amit a felhasználó potenciálisan manipulálhat. Az alkalmazásnak [ellenőriznie](https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs) kell, hogy az adatok szintaktikailag és szemantikailag érvényesek, mielőtt az alkalmazás bármilyen módon felhasználja az adatokat (beleértve a felhasználó számára visszajelenítendő adatokat is).
 
 Ellenőrizze a bemenetet az adatfolyam korai szakaszában, hogy csak a megfelelően kialakított adatok kerüljön be a munkafolyamatba. Nem szeretné, hogy a hibásan formázott adatok megmaradjanak az adatbázisban, vagy hibás működést váltsanak ki egy alsóbb rétegbeli összetevőben.
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: f038293b48956ac89314e426df3f5dc491954df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064217"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684715"
 ---
 # <a name="execute-r-script"></a>R-szkript végrehajtása
 
@@ -44,7 +44,10 @@ azureml_main <- function(dataframe1, dataframe2){
 ```
 
 ## <a name="installing-r-packages"></a>R csomagok telepítése
-További R-csomagok telepítéséhez `install.packages()` használja a módszert. Ügyeljen arra, hogy adja meg a CRAN repository. A csomagok minden **R-parancsfájl-végrehajtás** modulhoz telepítve vannak, és nem vannak megosztva más **R-parancsfájl-műveletek végrehajtása** moduljai között.
+További R-csomagok telepítéséhez `install.packages()` használja a módszert. A csomagok minden **R-parancsfájl-végrehajtás** modulhoz telepítve vannak, és nem vannak megosztva más **R-parancsfájl-műveletek végrehajtása** moduljai között.
+
+> [!NOTE]
+> Kérjük, adja meg a CRAN adattárat olyan csomagok telepítésekor, mint`install.packages("zoo",repos = "http://cran.us.r-project.org")`
 
 Ez a minta bemutatja, hogyan kell telepíteni Zoo:
 ```R
@@ -52,7 +55,13 @@ Ez a minta bemutatja, hogyan kell telepíteni Zoo:
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
@@ -77,7 +86,13 @@ A következő példa bemutatja, hogyan tölthet fel képfájlt az **R parancsfá
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
@@ -124,6 +139,12 @@ A tervezőben tárolt adatkészletek automatikusan R adatkeretté alakulnak, ami
 
 1. Az **R parancsfájl** szövegmezőjébe írja be vagy illessze be az érvényes R parancsfájlt.
 
+    > [!NOTE]
+    > Kérjük, legyen nagyon óvatos, amikor a szkriptet írja, és gondoskodik arról, hogy nincs szintaktikai hiba, például egy deklarált változó vagy egy nem importált modul vagy funkció használata. Is fordítson különös figyelmet az előre telepített csomag lista végén ezt a dokumentumot. Ha olyan csomagokat szeretne használni, amelyek nem szerepelnek a listán, telepítse őket a`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    
+    > [!NOTE]
+    > Az X11-es függvénytáratfüggvényben , például a "Nézet" függvényben nem támogatottak a függvény, mert az X11-es könyvtár nincs előre telepítve.
+    
     Az első lépések érdekében az **R-parancsfájl** szövegmezője előre ki van töltve mintakóddal, amelyet szerkeszthet vagy lecserélhet.
     
     ```R
@@ -131,7 +152,13 @@ A tervezőben tárolt adatkészletek automatikusan R adatkeretté alakulnak, ami
     # The script MUST contain a function named azureml_main
     # which is the entry point for this module.
 
-    # The entry point function can contain up to two input arguments:
+    # Please note that functions dependant on X11 library
+    # such as "View" are not supported because X11 library
+    # is not pre-installed.
+    
+    # The entry point function MUST have two input arguments.
+    # If the input port is not connected, the corresponding
+    # dataframe argument will be null.
     #   Param<dataframe1>: a R DataFrame
     #   Param<dataframe2>: a R DataFrame
     azureml_main <- function(dataframe1, dataframe2){
@@ -148,8 +175,8 @@ A tervezőben tárolt adatkészletek automatikusan R adatkeretté alakulnak, ami
 
  * A parancsfájlnak tartalmaznia `azureml_main`kell egy függvényt, amely a modul belépési pontja.
 
- * A belépési pont függvény legfeljebb két `Param<dataframe1>` bemeneti argumentumot tartalmazhat: és`Param<dataframe2>`
- 
+ * A belépési pont függvénynek két `Param<dataframe1>` `Param<dataframe2>`bemeneti argumentuma lehet: és akkor is, ha ez a két argumentum nincs használatban a függvényben.
+
    > [!NOTE]
     > Az **R-parancsfájl végrehajtása** modulnak átadott `dataframe1` `dataframe2`adatokra a program az Azure Machine Learning `dataset1` `dataset2`tervezőjétől (a tervezői hivatkozás , a ,) eltérő néven hivatkozik. Ellenőrizze, hogy a bemeneti adatok helyesen hivatkoznak-e a parancsfájlba.  
  
@@ -195,7 +222,14 @@ A következő minta bemutatja, hogyan méretezhető késedelmi adatok:
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
-# The entry point function can contain up to two input arguments:
+
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){

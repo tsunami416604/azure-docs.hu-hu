@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7a91f61302b5944e69f71c3cfee2f41cd87b809f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 947286a7238e3ddf2aebe66c6ea87e0e1cf8a853
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309381"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677716"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft identity platform és OAuth 2.0 A folyamat nevében
 
@@ -27,9 +27,7 @@ Az OAuth 2.0 A folyamat nevében (OBO) szolgál a használati eset, amikor egy a
 Ez a cikk azt ismerteti, hogy miként programozhat közvetlenül az alkalmazásban lévő protokoll ellen.  Ha lehetséges, azt javasoljuk, hogy a támogatott Microsoft Authentication Libraries (MSAL) helyett [a jogkivonatok beszerzéséhez és a biztonságos webes API-k hívásához](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)használja.  Is vessen egy pillantást a [minta alkalmazások at MSAL](sample-v2-code.md).
 
 > [!NOTE]
->
-> - A Microsoft identity platform végpontja nem támogatja az összes forgatókönyvet és szolgáltatást. Annak megállapításához, hogy a Microsoft identity platform végpontját kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](active-directory-v2-limitations.md) 
-> - 2018 májusátként néhány implicit `id_token` áramlásszármazott nem használható obo-folyamathoz. Az egyoldalas alkalmazásoknak (SpA-knak) **hozzáférési** jogkivonatot kell átadniuk egy középső rétegbeli bizalmas ügyfélnek, hogy helyette obo-folyamatokat hajtsanak végre. Ha többet szeretne tudni arról, hogy mely ügyfelek végezhetnek OBO-hívásokat, olvassa el a [korlátozásokat.](#client-limitations)
+> 2018 májusátként néhány implicit `id_token` áramlásszármazott nem használható obo-folyamathoz. Az egyoldalas alkalmazásoknak (SpA-knak) **hozzáférési** jogkivonatot kell átadniuk egy középső rétegbeli bizalmas ügyfélnek, hogy helyette obo-folyamatokat hajtsanak végre. Ha többet szeretne tudni arról, hogy mely ügyfelek végezhetnek OBO-hívásokat, olvassa el a [korlátozásokat.](#client-limitations)
 
 ## <a name="protocol-diagram"></a>Protokolldiagram
 
@@ -186,10 +184,10 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Hozzájárulás megszerzése a középszintű alkalmazáshoz
 
-Az alkalmazás architektúrájától vagy használatától függően különböző stratégiákat is figyelembe vehet annak biztosítására, hogy az OBO-folyamat sikeres legyen. A végső cél minden esetben a megfelelő hozzájárulás biztosítása, hogy az ügyfélalkalmazás megtudja hívni a középső rétegbeli alkalmazást, és a középső rétegbeli alkalmazás jogosult a háttér-erőforrás hívására. 
+Az alkalmazás architektúrájától vagy használatától függően különböző stratégiákat is figyelembe vehet annak biztosítására, hogy az OBO-folyamat sikeres legyen. A végső cél minden esetben a megfelelő hozzájárulás biztosítása, hogy az ügyfélalkalmazás megtudja hívni a középső rétegbeli alkalmazást, és a középső rétegbeli alkalmazás jogosult a háttér-erőforrás hívására.
 
 > [!NOTE]
-> Korábban a Microsoft-fiókrendszer (személyes fiókok) nem támogatta az "Ismert ügyfélalkalmazás" mezőt, és nem tudta megjeleníteni az egyesített hozzájárulást.  Ez lett hozzáadva, és a Microsoft identity platform összes alkalmazása használhatja az ismert ügyfélalkalmazás-megközelítést az OBO-hívások hoz. 
+> Korábban a Microsoft-fiókrendszer (személyes fiókok) nem támogatta az "Ismert ügyfélalkalmazás" mezőt, és nem tudta megjeleníteni az egyesített hozzájárulást.  Ez lett hozzáadva, és a Microsoft identity platform összes alkalmazása használhatja az ismert ügyfélalkalmazás-megközelítést az OBO-hívások hoz.
 
 ### <a name="default-and-combined-consent"></a>/.alapértelmezett és kombinált hozzájárulás
 

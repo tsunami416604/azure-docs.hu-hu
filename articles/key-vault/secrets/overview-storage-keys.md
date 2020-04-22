@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 0b855584ef6efef574e8264f3cead79000a51b13
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1125bafa43ce1752c58d1cce0bba66a6bbd32c32
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432007"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685422"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Tárfiók-kulcsok kezelése a Key Vault és az Azure CLI segítségével
 
@@ -71,13 +71,23 @@ az login
 Használja az Azure CLI [szerepkör-hozzárendelés create](/cli/azure/role/assignment?view=azure-cli-latest) parancsot, hogy a Key Vault hozzáférést a tárfiókhoz. Adja meg a parancsnak a következő paraméterértékeket:
 
 - `--role`: Adja át a "Tárfiók kulcsoperátor-szolgáltatási szerepkör" RBAC szerepkör. Ez a szerepkör korlátozza a hozzáférési hatókört a tárfiókra. Klasszikus tárfiók esetén adja át a "Klasszikus tárfiók kulcsoperátori szolgáltatás szerepkör" helyett.
-- `--assignee-object-id`: Adja át a "93c27d83-f79b-4cb2-8dd4-4aa716542e74" értéket, amely az Azure nyilvános felhőbeli Key Vault objektumazonosítója. (A Key Vault objektumazonosítójának lekérnie az Azure Government-felhőben: [Egyszerű szolgáltatásalkalmazás-azonosító.)](#service-principal-application-id)
+- `--assignee`: Adja áthttps://vault.azure.neta " " értéket, amely az Azure nyilvános felhőben a Key Vault URL-címe. (Az Azure Goverment felhőhasználata "--asingee-object-id" helyett, lásd: [Egyszerű szolgáltatás alkalmazásazonosítója.)](#service-principal-application-id)
 - `--scope`: Adja át a tárfiók erőforrás-azonosítóját, amely a képernyőn található. `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` Az előfizetés-azonosító megkereséséhez használja az Azure CLI [az fióklista](/cli/azure/account?view=azure-cli-latest#az-account-list) parancsot; a tárfiók nevének és a tárfiók erőforráscsoportjának megkereséséhez használja az Azure CLI [az storage-fiók lista parancsát.](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list)
 
 ```azurecli-interactive
-az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
+az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>A felhasználói fiók engedélyének engedélyezése a kezelt tárfiókokhoz
 
+Az Azure CLI [az keyvault-set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancsmaghasználatával frissítse a Key Vault hozzáférési szabályzatot, és adjon tárfiók engedélyeket a felhasználói fiókhoz.
+
+```azurecli-interactive
+# Give your user principal access to all storage account permissions, on your Key Vault instance
+
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage-permissions get list delete set update regeneratekey getsas listsas deletesas setsas recover backup restore purge
+```
+
+Vegye figyelembe, hogy a tárfiókok engedélyei nem érhetők el az Azure Portal "Access szabályzatok" lapján.
 ### <a name="create-a-key-vault-managed-storage-account"></a>Key Vault felügyelt tárfiók létrehozása
 
  Hozzon létre egy Key Vault által felügyelt tárfiókot az Azure CLI [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) paranccsal. Állítsa be a regenerációs időszak 90 nap. 90 nap elteltével a `key1` Key Vault újragenerálja `key2` `key1`és felcseréli az aktív kulcsot a-ból. `key1`ezután aktív kulcsként lesz megjelölve. Adja meg a parancsnak a következő paraméterértékeket:

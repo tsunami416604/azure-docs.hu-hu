@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 798fec4dacb33a9f16de319062baf12adaffdbd0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428744"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676939"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a Szinapszis SQL
 
@@ -163,13 +163,15 @@ Ha statisztikát szeretne létrehozni egy oszlopon, adja meg a statisztikai obje
 Ez a szintaxis az összes alapértelmezett beállítást használja. Alapértelmezés szerint az SQL-készlet a tábla **20 százalékát** mintáteszi, amikor statisztikákat hoz létre.
 
 ```sql
-CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
+CREATE STATISTICS [statistics_name]
+    ON [schema_name].[table_name]([column_name]);
 ```
 
 Például:
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1);
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1);
 ```
 
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>Egyoszlopos statisztika létrehozása minden sor vizsgálatával
@@ -177,13 +179,17 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 Az alapértelmezett 20 százalékos mintavételi arány a legtöbb esetben elegendő. A mintavételi arány azonban módosítható. A teljes táblázat mintavételéhez használja ezt a szintaxist:
 
 ```sql
-CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
+CREATE STATISTICS [statistics_name]
+    ON [schema_name].[table_name]([column_name])
+    WITH FULLSCAN;
 ```
 
 Például:
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1)
+    WITH FULLSCAN;
 ```
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>Egyoszlopos statisztika létrehozása a mintaméret megadásával
@@ -191,7 +197,9 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 Egy másik lehetőség, hogy a minta méretét százalékként adja meg:
 
 ```sql
-CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS col1_stats
+    ON dbo.table1 (col1)
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 #### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>Egyoszlopos statisztika létrehozása csak néhány sorra
@@ -203,7 +211,9 @@ Szűrt statisztikákat például használhat, ha egy nagy particionált tábla a
 Ez a példa egy értéktartománystatisztikát hoz létre. Az értékek könnyen definiálhatók úgy, hogy megfeleljenek a partícióérték-tartományának.
 
 ```sql
-CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
+CREATE STATISTICS stats_col1
+    ON table1(col1)
+    WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
 > [!NOTE]
@@ -214,7 +224,10 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 A beállításokat kombinálhatja is. A következő példa egyéni mintamérettel rendelkező szűrt statisztikai objektumot hoz létre:
 
 ```sql
-CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS stats_col1
+    ON table1 (col1)
+    WHERE col1 > '2000101' AND col1 < '20001231'
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 A teljes referencia a STATISZTIKA LÉTREHOZÁSA című [témakörben látható.](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -229,7 +242,10 @@ Többoszlopos statisztikai objektum létrehozásához használja az előző pél
 Ebben a példában a hisztogram a *termékkategóriában\_* van. Az oszlopközi statisztikákat a *termékkategóriára\_* és *a terméksub_category\_* alapján számítják ki:
 
 ```sql
-CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
+CREATE STATISTICS stats_2cols
+    ON table1 (product_category, product_sub_category)
+    WHERE product_category > '2000101' AND product_category < '20001231'
+    WITH SAMPLE = 50 PERCENT;
 ```
 
 Mivel a *termékkategória\_* és *\_a\_termék-alkategória*között korreláció van, a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egyszerre érhetők el.
@@ -263,7 +279,7 @@ A következő példa segítséget nyújt az adatbázis tervezésének megkezdés
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
-(   @create_type    tinyint -- 1 default 2 Fullscan 3 Sample
+(   @create_type    tinyint -- 1 default, 2 Fullscan, 3 Sample
 ,   @sample_pct     tinyint
 )
 AS
@@ -470,8 +486,8 @@ JOIN    sys.stats_columns   AS sc ON    st.[stats_id]       = sc.[stats_id]
 JOIN    sys.columns         AS co ON    sc.[column_id]      = co.[column_id]
                             AND         sc.[object_id]      = co.[object_id]
 JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
-JOIN    sys.tables          AS tb ON  co.[object_id]        = tb.[object_id]
-JOIN    sys.schemas         AS sm ON  tb.[schema_id]        = sm.[schema_id]
+JOIN    sys.tables          AS tb ON    co.[object_id]      = tb.[object_id]
+JOIN    sys.schemas         AS sm ON    tb.[schema_id]      = sm.[schema_id]
 WHERE   1=1
 AND     st.[user_created] = 1
 ;
@@ -506,18 +522,20 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 Ha csak bizonyos alkatrészeket szeretne megtekinteni, használja a `WITH` záradékot, és adja meg, hogy mely részeket szeretné látni:
 
 ```sql
-DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
+DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
+    WITH stat_header, histogram, density_vector
 ```
 
 Például:
 
 ```sql
-DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
+DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
+    WITH histogram, density_vector
 ```
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() különbségek
 
-A DBCC SHOW_STATISTICS() az SQL Server kiszolgálóhoz képest szigorúbban van megvalósítva az SQL készletben:
+`DBCC SHOW_STATISTICS()`az SQL Server kiszolgálóhoz képest szigorúbban implementálva van az SQL készletben:
 
 - A nem dokumentált szolgáltatások nem támogatottak.
 - Nem használhatom Stats_stream.
@@ -602,7 +620,7 @@ sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 
 Argumentumok: @stmt [ = ] N'statement_text' - Egy Transact-SQL utasítást ad meg, amely a statisztikákhoz használandó oszlopértékeket adja vissza. A TABLESAMPLE segítségével megadhatja a használandó adatmintákat. Ha a TABLESAMPLE nincs megadva, a FULLSCAN lesz használva.
 
-```sql
+```syntaxsql
 <tablesample_clause> ::= TABLESAMPLE ( sample_number PERCENT )
 ```
 
@@ -744,14 +762,18 @@ A MINTA nem használható a FULLSCAN beállítással.
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>Egyoszlopos statisztika létrehozása minden sor vizsgálatával
 
 ```sql
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH FULLSCAN, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH FULLSCAN, NORECOMPUTE
 ```
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>Egyoszlopos statisztika létrehozása a mintaméret megadásával
 
 ```sql
 -- following sample creates statistics with sampling 20%
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH SAMPLE 5 percent, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH SAMPLE 5 percent, NORECOMPUTE
 ```
 
 ### <a name="examples-update-statistics"></a>Példák: Statisztika frissítése
@@ -765,7 +787,9 @@ DROP STATISTICS census_external_table.sState
 És hozzon létre statisztikákat:
 
 ```sql
-CREATE STATISTICS sState on census_external_table (STATENAME) WITH FULLSCAN, NORECOMPUTE
+CREATE STATISTICS sState
+    on census_external_table (STATENAME)
+    WITH FULLSCAN, NORECOMPUTE
 ```
 
 ## <a name="next-steps"></a>További lépések

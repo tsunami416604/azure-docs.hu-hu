@@ -4,12 +4,12 @@ description: Ez a cikk áttekintést nyújt az Azure Resource Fabric-alkalmazás
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481116"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682643"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric alkalmazáserőforrás-modell
 
@@ -40,13 +40,13 @@ További információért tekintse meg az Alkalmazás csomagja című [nézetet.
 
 Ezután hozzon létre egy Erőforrás-kezelő sablont, frissítse a paraméterfájlt az alkalmazás részleteivel, és telepítse a sablont a Service Fabric-fürtön. [Vizsgálja meg a mintákat.](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Ha egy alkalmazást erőforrás-kezelő sablonból szeretne telepíteni, tárfiókkal kell rendelkeznie. A tárfiók az alkalmazáslemezkép színpadra. 
 
 Felhasználhatja újra a meglévő tárfiókot, vagy létrehozhat egy új tárfiókot az alkalmazások előkészítéséhez. Ha meglévő tárfiókot használ, kihagyhatja ezt a lépést. 
 
-![Create a storage account][CreateStorageAccount]
+![Tárfiók létrehozása][CreateStorageAccount]
 
 ### <a name="configure-your-storage-account"></a>A tárfiók konfigurálása
 
@@ -99,7 +99,7 @@ A mintaalkalmazás [az Azure Resource Manager-sablonokat](https://github.com/Azu
 | applicationTypeVersion | Az alkalmazástípus verziója         | 1.0.0                                                        | Meg kell egyeznie applicationmanifest.xml                 |
 | szolgáltatásneve            | A szolgáltatás neve         | Szavazás ~ SzavazásWeb                                             | Az ApplicationName~ServiceType formátumban kell lennie.            |
 | serviceTypeName        | A szolgáltatás típusneve                | VotingWeb                                                    | Meg kell egyeznie a ServiceManifest.xml fájlnak                 |
-| appPackageUrl          | Az alkalmazás blobtárolási URL-címe     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Az alkalmazáscsomag URL-címe a blobstorage-ban (az URL-cím beállításának eljárása a cikk későbbi részében ismertetjük) |
+| appPackageUrl          | Az alkalmazás blobtárolási URL-címe     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Az alkalmazáscsomag URL-címe a blobstorage-ban (az URL-cím beállításának eljárása a cikk későbbi részében ismertetjük) |
 
 ```json
 {

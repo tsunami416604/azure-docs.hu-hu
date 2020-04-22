@@ -1,6 +1,6 @@
 ---
-title: A Windows hibrid runbook-feldolgozó diagnosztizálása – Azure Update Management
-description: Megtudhatja, hogy miként háríthatja el és oldhatja meg az Okat a Windows Azure Automation hibrid runbook-feldolgozójával kapcsolatos problémákat, amelyek támogatják az Update Management szolgáltatást.
+title: A Windows update ügynökkel kapcsolatos problémák elhárítása az Azure Automation Update Management szolgáltatásban
+description: Megtudhatja, hogy miként háríthatja el és oldhatja meg a Windows frissítési ügynökkel kapcsolatos problémákat az Update Management megoldás használatával.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: ec35d11eba59ea21947e2c3cd5286bababa4eabb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76153854"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678973"
 ---
-# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>A Windows hibrid runbook-feldolgozóállapotának ismertetése és feloldása a frissítéskezelésben
+# <a name="troubleshoot-windows-update-agent-issues"></a>A Windows update ügynökkel kapcsolatos problémák elhárítása
 
-Számos oka lehet annak, hogy a számítógép nem jelenik **meg a Ready** in Update Management szolgáltatásban. Az Update Management, ellenőrizheti a hibrid Runbook-feldolgozó ügynök állapotát az alapul szolgáló probléma meghatározásához. Ez a cikk bemutatja, hogyan futtathatja a hibaelhárító az Azure-gépek az Azure Portalon és a nem Azure-gépek az [offline forgatókönyvben.](#troubleshoot-offline)
+Számos oka lehet annak, hogy a számítógép nem jelenik meg készként (kifogástalan) az Update Management ben. Az Update Management, ellenőrizheti a hibrid Runbook-feldolgozó ügynök állapotát az alapul szolgáló probléma meghatározásához. Ez a cikk bemutatja, hogyan futtathatja a hibaelhárító az Azure-gépek az Azure Portalon és a nem Azure-gépek az [offline forgatókönyvben.](#troubleshoot-offline)
 
-Az alábbi lista a három készenléti állapotok egy gép lehet:
+A gép három készenléti állapota a következő:
 
-* **Ready** – A hibrid Runbook-feldolgozó telepítve van, és kevesebb mint 1 órával ezelőtt látták utoljára.
-* **Leválasztva** – A hibrid Runbook-feldolgozó telepítve van, és utoljára 1 órával ezelőtt látták.
-* **Nincs konfigurálva** – a hibrid Runbook-feldolgozó nem található, vagy nem fejeződött be a bevezetés.
+* Ready – A hibrid Runbook-feldolgozó telepítve van, és kevesebb mint 1 órával ezelőtt látták utoljára.
+* Leválasztva – A hibrid Runbook-feldolgozó telepítve van, és utoljára 1 órával ezelőtt látták.
+* Nincs konfigurálva – a hibrid Runbook-feldolgozó nem található, vagy nem fejeződött be a bevezetés.
 
 > [!NOTE]
-> Előfordulhat, hogy az Azure Portal on-t és a gép aktuális állapotát az Azure Portal megjelenítése között kis késés.
+> Az Azure Portal megjelenítése és a gép aktuális állapota között kis késés lehet.
 
 ## <a name="start-the-troubleshooter"></a>A hibaelhárító indítása
 
-Azure-gépek esetén a portál **frissítési ügynök-készenléte** oszlopában található **Hibaelhárítás** hivatkozásra kattintva elindul a **Frissítési ügynök hibaelhárítási ügynök e-hibaelhárítása** lap. Nem Azure-alapú gépek esetén a hivatkozás ebben a cikkben található. Tekintse meg az [offline utasításokat](#troubleshoot-offline) egy nem Azure-gép hibaelhárításához.
+Azure-gépek esetén a portál **frissítési ügynök-készenléte** oszlopában található **Hibaelhárítás** hivatkozásra kattintva elindul a Frissítési ügynök hibaelhárítási ügynök e-hibaelhárítása lap. Nem Azure-alapú gépek esetén a hivatkozás ebben a cikkben található. Tekintse meg az [offline utasításokat](#troubleshoot-offline) egy nem Azure-gép hibaelhárításához.
 
 ![Virtuális gépek felügyeleti listájának frissítése](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > A hibrid Runbook-feldolgozó állapotának ellenőrzéséhez a virtuális gépnek futnia kell. Ha a virtuális gép nem fut, megjelenik **a Virtuálisgép indítása** gomb.
 
-A **Frissítési ügynök hibaelhárítása** lapon jelölje be az **Ellenőrzések futtatása** a hibaelhárító elindításához jelölőnégyzetet. A hibaelhárító a [Parancs futtatása paranccsal](../../virtual-machines/windows/run-command.md) futtat egy parancsfájlt a számítógépen a függőségek ellenőrzésére. Amikor a hibaelhárító elkészült, az ellenőrzések eredményét adja vissza.
+A Frissítési ügynök hibaelhárítása lapon jelölje be az **Ellenőrzések futtatása** a hibaelhárító elindításához jelölőnégyzetet. A hibaelhárító a [Parancs futtatása paranccsal](../../virtual-machines/windows/run-command.md) futtat egy parancsfájlt a számítógépen a függőségek ellenőrzésére. Amikor a hibaelhárító elkészült, az ellenőrzések eredményét adja vissza.
 
 ![A Frissítési ügynök lap – Hibaelhárítás](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -86,15 +86,13 @@ A proxy- és tűzfal-konfigurációknak lehetővé kell tenniük, hogy a hibrid 
 
 ### <a name="monitoring-agent-service-status"></a>Figyelőügynök-szolgáltatás állapota
 
-Ez az ellenőrzés `HealthService`azt határozza meg, hogy a Microsoft Monitoring Agent fut-e a számítógépen.
+Ez az ellenőrzés azt határozza meg,`healthservice`hogy a Windows Log Analytics ügynöke ( ) fut-e a számítógépen. Ha többet szeretne tudni a szolgáltatás hibaelhárításáról, olvassa el [a Windows Naplóelemző ügynöke című](hybrid-runbook-worker.md#mma-not-running)témakört.
 
-Ha többet szeretne tudni a szolgáltatás hibaelhárításáról, olvassa el a Microsoft Monitoring Agent nem fut című [témakört.](hybrid-runbook-worker.md#mma-not-running)
-
-A Microsoft Monitoring Agent újratelepítéséről a [Microsoft Monitoring Agent telepítése és konfigurálása](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)című témakörben van.
+A Windows Log Analytics-ügynökújratelepítéséről a [Windows Log Analytics-ügynök telepítése és konfigurálása](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)című témakörben találhatók.
 
 ### <a name="monitoring-agent-service-events"></a>Figyelési ügynök szolgáltatáseseményei
 
-Ez az ellenőrzés `4502` határozza meg, hogy az azure Operations Manager-naplóban az elmúlt 24 órában megjelennek-e események.
+Ez az ellenőrzés határozza meg, hogy bármely 4502-es események jelennek meg az Azure Operations Manager naplóa a gépen az elmúlt 24 órában.
 
 Ha többet szeretne megtudni erről az eseményről, olvassa el az esemény [hibaelhárítási útmutatóját.](hybrid-runbook-worker.md#event-4502)
 
@@ -167,9 +165,9 @@ RuleName                    : Monitoring Agent service status
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : HealthService must be running on the machine
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service (HealthService) is not running
+CheckResultMessage          : Log Analytics for Windows service (HealthService) is not running
 CheckResultMessageId        : MonitoringAgentServiceRunningCheck.Failed
-CheckResultMessageArguments : {Microsoft Monitoring Agent, HealthService}
+CheckResultMessageArguments : {Log Analytics agent for Windows, HealthService}
 
 RuleId                      : MonitoringAgentServiceEventsCheck
 RuleGroupId                 : servicehealth
@@ -177,9 +175,9 @@ RuleName                    : Monitoring Agent service events
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : Event Log must not have event 4502 logged in the past 24 hours
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service Event Log (Operations Manager) does not exist on the machine
+CheckResultMessage          : Log Analytics agent for Windows service Event Log (Operations Manager) does not exist on the machine
 CheckResultMessageId        : MonitoringAgentServiceEventsCheck.Failed.NoLog
-CheckResultMessageArguments : {Microsoft Monitoring Agent, Operations Manager, 4502}
+CheckResultMessageArguments : {Log Analytics agent for Windows, Operations Manager, 4502}
 
 RuleId                      : CryptoRsaMachineKeysFolderAccessCheck
 RuleGroupId                 : permissions

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 5cf3f02284777a54a9d26cad8a7f3b5b4fa6b335
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 301e2be0c8b971a0236de6a8b5c8bd5f278c3aee
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087709"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686747"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI útmutató a prediktív karbantartási megoldásokhoz
 
@@ -449,6 +449,6 @@ A Microsoft Azure tanulási útvonalakat kínál a PdM-technikák mögött megal
 | [Microsoft AI YouTube webinárierek](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Nyilvános |
 | [Microsoft AI-megjelenítés](https://channel9.msdn.com/Shows/AI-Show) | Nyilvános |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partnerek |
-| [Microsoft Partner Network](https://learningportal.microsoft.com) | Partnerek |
+| [Microsoft Partner Network](https://partner.microsoft.com/training/training-center) | Partnerek |
 
 Ezen túlmenően, ingyenes MOOCS (masszív nyílt online tanfolyamok) a AI kínálnak online akadémiai intézmények, mint a Stanford és az MIT, és más oktatási cégek.

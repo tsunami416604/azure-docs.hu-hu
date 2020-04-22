@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2020
+ms.date: 04/20/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: d03b053f2aa5de4a6f7874dbf4e6ccb3a305a964
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 9a7d0530c4f03138fad3e4aaa473d54e1cfd5b0a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992079"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686563"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Használat és költségek kezelése az Azure Figyelő naplókkal
 
@@ -38,8 +38,7 @@ A Log Analytics alapértelmezett díjszabása egy **használatra szánt fizetés
   - A figyelt virtuális gépek száma
   - Az egyes figyelt virtuális gépektől gyűjtött adatok típusa 
   
-A csak a felosztó-ki-fel- modellek, Log Analytics **rendelkezik kapacitásfoglalási** szintek, amelyek lehetővé teszik, hogy mentse, mint 25%, mint a pay-as-you-go ár. A kapacitásfoglalás díjszabása lehetővé teszi, hogy 100 GB/nap-tól kezdődőfoglalást vásároljon. A foglalási szint feletti használatot a használatalapú fizetés díja alapján számlázunk. A kapacitáslefoglalási szintek 31 napos kötelezettségvállalási időszakkal rendelkeznek. A kötelezettségvállalási időszak alatt magasabb szintű kapacitásfoglalási szintre válthat (amely újraindítja a 31 napos kötelezettségvállalási időszakot), de nem léphet vissza a kiosztónként iható vagy alacsonyabb kapacitásfoglalási szintre a kötelezettségvállalási időszak befejezéséig. 
-[További információ](https://azure.microsoft.com/pricing/details/monitor/) a Log Analytics többszöri fizetéses és kapacitásfoglalási díjszabásáról. 
+A csak a felosztó-ki-fel- modellek, Log Analytics **rendelkezik kapacitásfoglalási** szintek, amelyek lehetővé teszik, hogy mentse, mint 25%, mint a pay-as-you-go ár. A kapacitásfoglalás díjszabása lehetővé teszi, hogy 100 GB/nap-tól kezdődőfoglalást vásároljon. A foglalási szint feletti használatot a használatalapú fizetés díja alapján számlázunk. A kapacitáslefoglalási szintek 31 napos kötelezettségvállalási időszakkal rendelkeznek. A kötelezettségvállalási időszak alatt magasabb szintű kapacitásfoglalási szintre válthat (amely újraindítja a 31 napos kötelezettségvállalási időszakot), de nem léphet vissza a kiosztónként iható vagy alacsonyabb kapacitásfoglalási szintre a kötelezettségvállalási időszak befejezéséig. A kapacitásfoglalási szintek számlázása napi rendszerességgel történik. [További információ](https://azure.microsoft.com/pricing/details/monitor/) a Log Analytics többszöri fizetéses és kapacitásfoglalási díjszabásáról. 
 
 Az összes tarifacsomagban az adatkötet az adatok tárolásra kész karakterlánc-ábrázolásából kerül kiszámításra. Az összes [adattípusra vonatkozó számos tulajdonság](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) nem szerepel az `_ResourceId` `_ItemId`eseményméret számításában, beleértve a , a és `_IsBillable` `_BilledSize`a.
 
@@ -112,10 +111,14 @@ A munkaterület alapértelmezett adatmegőrzési beállításához
 3. Az ablaktáblán mozgassa a csúszkát a napok számának növeléséhez vagy csökkentéséhez, majd kattintson az **OK**gombra.  Ha az *ingyenes* szinten van, nem fogja tudni módosítani az adatmegőrzési időszakot, és frissítenie kell a fizetős szintre a beállítás szabályozásához.
 
     ![Munkaterület-adatmegőrzési beállítás módosítása](media/manage-cost-storage/manage-cost-change-retention-01.png)
+
+A megőrzés csökkentése kor van egy több napos türelmi időszak a legrégebbi adatok eltávolítása előtt. 
     
 A megőrzési is [beállítható az](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) `retentionInDays` Azure Resource Manager a paraméter használatával. Emellett ha az adatmegőrzés30 napra állítja be, a paraméter használatával `immediatePurgeDataOn30Days` azonnal kiürítheti a régebbi adatokat, ami hasznos lehet a megfelelőségi forgatókönyvek esetén. Ez a funkció csak az Azure Resource Manager en keresztül érhető el. 
 
 Két adattípus `Usage` - `AzureActivity` és -- alapértelmezés szerint 90 napig megmarad, és a 90 napos megőrzésért nem számítunk fel díjat. Ezek az adattípusok adatbetöltési díjaktól is mentesek. 
+
+
 
 ### <a name="retention-by-data-type"></a>Adattípus onkénti megőrzése
 
@@ -446,7 +449,7 @@ Gyakran nehéz eldönteni, hogy az örökölt **csomópontonkénti** tarifacsoma
 Ennek az értékelésnek az megkönnyítése érdekében a következő lekérdezést lehet használni, hogy egy javaslat az optimális tarifacsomag alapján a munkaterület használati minták.  Ez a lekérdezés megvizsgálja a figyelt csomópontok és az adatok egy munkaterületre az elmúlt 7 napban, és minden nap kiértékeli, hogy melyik tarifacsomag lett volna optimális. A lekérdezés használatához meg kell adnia, hogy a munkaterület `workspaceHasSecurityCenter` az `true` `false`Azure Security Centert használja-e a vagy a beállítással, majd (opcionálisan) frissítenie kell a csomópontonkénti és GB-onkénti árakat, amelyeket a rendszerezés kap. 
 
 ```kusto
-// Set these paramaters before running query
+// Set these parameters before running query
 let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
 let PerNodePrice = 15.; // Enter your price per node / month 
 let PerGBPrice = 2.30; // Enter your price per GB 
@@ -459,6 +462,14 @@ union withsource = tt *
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
 | join (
+    Heartbeat 
+    | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+    | where Computer != ""
+    | summarize ASCnodesPerHour = dcount(Computer) by bin(TimeGenerated, 1h) 
+    | extend ASCnodesPerHour = iff(workspaceHasSecurityCenter, ASCnodesPerHour, 0)
+    | summarize ASCnodesPerDay = sum(ASCnodesPerHour)/24.  by day=bin(TimeGenerated, 1d)   
+) on day
+| join (
     Usage 
     | where TimeGenerated > ago(8d)
     | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
@@ -469,18 +480,20 @@ union withsource = tt *
 ) on day
 | extend AvgGbPerNode =  NonSecurityDataGB / nodesPerDay
 | extend PerGBDailyCost = iff(workspaceHasSecurityCenter,
-             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*nodesPerDay, 0.)) * PerGBPrice,
+             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*ASCnodesPerDay, 0.)) * PerGBPrice,
              DataGB * PerGBPrice)
 | extend OverageGB = iff(workspaceHasSecurityCenter, 
-             max_of(DataGB - 1.0*nodesPerDay, 0.), 
+             max_of(DataGB - 0.5*nodesPerDay - 0.5*ASCnodesPerDay, 0.), 
              max_of(DataGB - 0.5*nodesPerDay, 0.))
 | extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
 | extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
              iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
-| project day, nodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
+| project day, nodesPerDay, ASCnodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
 | project day, Recommendation // Comment this line to see details
 | sort by day asc
 ```
+
+Ez a lekérdezés nem pontos replikációja a használat kiszámításának módját, de a legtöbb esetben működni fog a tarifacsomag-javaslatok biztosításához.  
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Riasztás létrehozása, ha az adatgyűjtés magas
 

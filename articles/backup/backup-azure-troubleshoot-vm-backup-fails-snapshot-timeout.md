@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248020"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677407"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Az Azure biztonsági mentési hibájának elhárítása: Problémák az ügynökkel vagy a bővítménylel kapcsolatban
 
@@ -142,6 +142,13 @@ Ha az ütemezett biztonsági mentési művelet hosszabb időt vesz igénybe, üt
 
 Ezt a hibát az IaaS virtuális gép jelenti. A probléma kiváltó okának azonosításához nyissa meg a Recovery Services-tároló beállításait. A **Figyelés** csoportban válassza **a Biztonsági mentési feladatok lehetőséget** az állapot szűréséhez és megtekintéséhez. Kattintson a **Hibák gombra** az alapul szolgáló hibaüzenet részleteinek áttekintéséhez. További műveleteket tehet a hibarészletek oldalon található ajánlásoknak megfelelően.
 
+## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent – A biztonsági mentés nem sikerült: Ezt a virtuális gépet nem (aktívan) védi az Azure Backup
+
+**Hibakód**: UserErrorBcmDatasourceNotPresent <br>
+**Hibaüzenet**: Biztonsági mentés nem sikerült: Ez a virtuális gép nem (aktív) által védett Azure Backup.
+
+Ellenőrizze, hogy az adott virtuális gép aktívan (nem szüneteltetési állapotban) az Azure Backup által védett. A probléma megoldásához győződjön meg arról, hogy a virtuális gép aktív, majd próbálkozzon újra a művelettel.
+
 ## <a name="causes-and-solutions"></a>Okok és megoldások
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Az ügynök telepítve van a virtuális gépben, de nem válaszol (Windows virtuális gépek esetén)
@@ -211,7 +218,7 @@ A következő feltételek a pillanatkép-feladat sikertelensítéséhez fordulha
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Zárolás eltávolítása a helyreállításipont erőforráscsoportból
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg **a Minden erőforrás lehetőséget,** válassza ki a`<Geo>``<number>`visszaállítási pont gyűjtési erőforráscsoportot a következő formátumban, AzureBackupRG_ _ .
 3. A **Beállítások csoportban** válassza a **Zárolások** lehetőséget a zárolások megjelenítéséhez.
 4. A zárolás eltávolításához jelölje ki a három pontot, és kattintson a **Törlés gombra.**
@@ -240,7 +247,7 @@ A zárolás eltávolítása után indítsa el az igény szerinti biztonsági men
 
 Ha manuálisan szeretné törölni a visszaállítási pontok gyűjteményét, amely az erőforráscsoport zárolása miatt nincs törölve, próbálkozzon az alábbi lépésekkel:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A **Központ** menüben kattintson a **Minden erőforrás parancsra,** és válassza ki a következő formátumú erőforráscsoportot, AzureBackupRG_`<Geo>`_`<number>` , ahol a virtuális gép található.
 
     ![Zárolás törlése](./media/backup-azure-arm-vms-prepare/resource-group.png)

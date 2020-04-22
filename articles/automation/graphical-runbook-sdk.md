@@ -1,24 +1,24 @@
 ---
-title: Az Azure Automation Grpahical runbook SDK áttekintése
-description: Ez a cikk az Azure Automation grafikus runbook SDK használatát ismerteti
+title: Az Azure Automation grafikus runbook SDK használata
+description: Ez a cikk ismerteti, hogyan használhatja az Azure Automation grafikus runbook SDK.
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: d4dcf6681ade977847c204dd1237f7cd7a67775e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21f6ff8078d5a1db88b2fde33c9063a56b3ee43a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418252"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682906"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Az Azure Automation grafikus runbook SDK használata
 
-[A grafikus runbookok](automation-graphical-authoring-intro.md) olyan runbookok, amelyek segítenek az alapul szolgáló Windows PowerShell- vagy PowerShell-munkafolyamat-kód összetettségének kezelésében. A Microsoft Azure Automation grafikus szerzői SDK lehetővé teszi a fejlesztők számára, hogy grafikus runbookokat hozzanak létre és szerkessenek az Azure Automation szolgáltatással való használatra. A következő kódrészletek a grafikus runbook létrehozásának alapvető folyamatát mutatják be a kódból.
+[A grafikus runbookok](automation-graphical-authoring-intro.md) segítenek az alapul szolgáló Windows PowerShell- vagy PowerShell-munkafolyamat-kód összetettségének kezelésében. A Microsoft Azure Automation grafikus sdk-készítő lehetővé teszi a fejlesztők számára, hogy grafikus runbookokat hozzanak létre és szerkesztsenek az Azure Automation használatával való használatra. Ez a cikk a grafikus runbook kódból történő létrehozásának alapvető lépéseit ismerteti.
 
-## <a name="pre-requisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
-Először importálja `Microsoft.Azure.Automation.GraphicalRunbook.Model` a csomagot a projektbe.
+Importálja `Microsoft.Azure.Automation.GraphicalRunbook.Model` a csomagot a projektbe.
 
 ## <a name="create-a-runbook-object-instance"></a>Runbook-objektumpéldány létrehozása
 
@@ -89,7 +89,7 @@ var initializeRunbookVariable = runbook.AddActivity(
  });
 ```
 
-A tevékenységeket a névtérben `Orchestrator.GraphRunbook.Model` a következő osztályok hajtják végre:
+A tevékenységeket a névtérben `Orchestrator.GraphRunbook.Model` a következő osztályok hajtják végre.
 
 |Osztály  |Tevékenység  |
 |---------|---------|
@@ -99,9 +99,9 @@ A tevékenységeket a névtérben `Orchestrator.GraphRunbook.Model` a következ�
 |WorkflowScriptActivity tevékenység     | PowerShell- vagy PowerShell-munkafolyamat-kód egy blokkját hajtja végre (a runbook típusától függően) a runbook környezetében. Ez egy hatékony eszköz, de ne használja túl: a felhasználói felület szövegként jeleníti meg ezt a szkriptblokkot; a végrehajtási motor a megadott blokkot fekete dobozként kezeli, és nem kísérli meg a tartalmának elemzését, kivéve egy alapvető szintaxis-ellenőrzést. Ha csak egyetlen PowerShell-parancsot kell meghívnia, inkább commandactivity.        |
 
 > [!NOTE]
-> Ne adhatja le a saját tevékenységeit a megadott osztályokból: az Azure Automation nem fogja tudni használni az egyéni tevékenységtípusokkal rendelkező runbookokat.
+> Ne adhatja ki a saját tevékenységeit a megadott osztályokból. Az Azure Automation nem használhatja az egyéni tevékenységtípusokkal rendelkező runbookokat.
 
-A CommandActivity és az InvokeRunbookActivity paramétereket értékleíróként kell megadni, nem pedig közvetlen értékként. Az értékleírók határozzák meg a tényleges paraméterértékek előállításának módját. A következő értékleírók jelenleg rendelkezésre állnak:
+A paramétereket `InvokeRunbookActivity` értékleíróként kell megadnia, `CommandActivity` nem pedig közvetlen értékekként. Az értékleírók határozzák meg a tényleges paraméterértékek előállításának módját. A következő értékleírók jelenleg rendelkezésre állnak:
 
 
 |Leíró  |Meghatározás  |
@@ -115,7 +115,7 @@ A CommandActivity és az InvokeRunbookActivity paramétereket értékleírókén
 |PowerShellExpressionValueDescriptor     | Megadja a szabad formátumú PowerShell-kifejezést, amely et közvetlenül a tevékenység meghívása előtt kiértékeli a rendszer.  <br/>Ez egy hatékony eszköz, de ne használja túl: a felhasználói felület ezt a kifejezést szövegként jeleníti meg; a végrehajtási motor a megadott blokkot fekete dobozként kezeli, és nem kísérli meg a tartalmának elemzését, kivéve egy alapvető szintaxis-ellenőrzést. Ha lehetséges, inkább konkrétabb értékleírók.      |
 
 > [!NOTE]
-> Ne hozza létre a saját értékleírókat a megadott osztályokból: Az Azure Automation nem fogja tudni használni az egyéni értékleírótípusokkal rendelkező runbookokat.
+> Ne adhatja ki a saját értékleírókat a megadott osztályokból. Az Azure Automation nem használhatja az egyéni értékleíró-típusokkal rendelkező runbookokat.
 
 A hivatkozások at a kapcsolatot összekapcsoló tevékenységeket, és adja hozzá őket a runbookhoz:
 
@@ -136,10 +136,9 @@ Runbook `Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer` szeria
 var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
-Ez a karakterlánc menthető egy fájlba a **.graphrunbook** kiterjesztéssel, és ez a fájl importálható az Azure Automationbe.
+Ezt a karakterláncot a **.graphrunbook** kiterjesztésű fájlba mentheti. A megfelelő runbook importálható az Azure Automationbe.
 A szerializált formátum a `Orchestrator.GraphRunbook.Model.dll`program későbbi verzióiban változhat. Ígérjük visszamenőleges kompatibilitás: minden runbook szerializált egy régebbi verzióját `Orchestrator.GraphRunbook.Model.dll` lehet deszerializálható bármely újabb verzió. Az előrekompatibilitás nem garantált: előfordulhat, hogy az újabb verzióval szerializált runbookok nem deszerializálhatók a régebbi verziók ban.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az Azure Automation grafikus runbookjairól, olvassa el [a Grafikus szerzői bevezetés című témakört.](automation-graphical-authoring-intro.md)
-
+Ha többet szeretne tudni az Azure Automation grafikus runbookjairól, olvassa el [a Grafikus szerzői bevezetés című témakört.](automation-graphical-authoring-intro.md)

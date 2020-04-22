@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565825"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686927"
 ---
 # <a name="playing-your-content-with-existing-players"></a>A tartalom lejátszása meglévő lejátszókkal
 Az Azure Media Services számos népszerű streamelési formátumot támogat, például a sima streamelést, a HTTP Live Streaming és az MPEG-Dash formátumot. Ez a témakör a meglévő játékosokra mutat, akik segítségével tesztelheted az adatfolyamokat.
@@ -45,10 +45,6 @@ Az [Azure Media Player](https://aka.ms/azuremediaplayer) segítségével lejáts
 * Progresszív MP4
 
 ### <a name="flash-player"></a>Flash lejátszó
-
-#### <a name="aes-encrypted-with-token"></a>AES-titkosított token
-
-[https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
 #### <a name="playready-with-token"></a>PlayReady és token
 

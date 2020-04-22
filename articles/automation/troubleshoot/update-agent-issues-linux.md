@@ -1,6 +1,6 @@
 ---
-title: Linux-hibrid runbook-feldolgozó diagnosztizálása – Azure Update Management
-description: Ismerje meg, hogyan háríthatja el és oldhatja meg a linuxos Azure Automation hibrid runbook-feldolgozóval kapcsolatos problémákat, amelyek támogatják az Update Management szolgáltatást.
+title: Linux-frissítési ügynökkel kapcsolatos problémák elhárítása az Azure Automation Update Management ben
+description: Ismerje meg, hogyan háríthatja el és oldhatja meg a Linux Windows frissítési ügynökkel kapcsolatos problémákat az Update Management megoldás használatával.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bba1c7e89a9c3bb1c9aa1567e36dd71a40f14636
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278297"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679061"
 ---
-# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>A Linux-hibrid runbook-feldolgozó állapotának ismertetése és megoldása a frissítéskezeléshez
+# <a name="troubleshoot-linux-update-agent-issues"></a>Linux-frissítési ügynökkel kapcsolatos problémák elhárítása
 
-Számos oka lehet annak, hogy a számítógép nem jelenik **meg a Ready** in Update Management szolgáltatásban. Az Update Management, ellenőrizheti a hibrid Runbook-feldolgozó ügynök állapotát az alapul szolgáló probléma meghatározásához. Ez a cikk bemutatja, hogyan futtathatja a hibaelhárító az Azure-gépek az Azure Portalon és a nem Azure-gépek az [offline forgatókönyvben.](#troubleshoot-offline)
+Számos oka lehet annak, hogy a számítógép nem jelenik meg készként (kifogástalan) az Update Management ben. Az Update Management, ellenőrizheti a hibrid Runbook-feldolgozó ügynök állapotát az alapul szolgáló probléma meghatározásához. Ez a cikk bemutatja, hogyan futtathatja a hibaelhárító az Azure-gépek az Azure Portalon és a nem Azure-gépek az [offline forgatókönyvben.](#troubleshoot-offline) 
 
 Az alábbi lista a három készenléti állapotok egy gép lehet:
 
-* **Ready** – A hibrid Runbook-feldolgozó telepítve van, és kevesebb mint 1 órával ezelőtt látták utoljára.
-* **Leválasztva** – A hibrid Runbook-feldolgozó telepítve van, és utoljára 1 órával ezelőtt látták.
-* **Nincs konfigurálva** – a hibrid Runbook-feldolgozó nem található, vagy nem fejeződött be a bevezetés.
+* Ready – A hibrid Runbook-feldolgozó telepítve van, és kevesebb mint 1 órával ezelőtt látták utoljára.
+* Leválasztva – A hibrid Runbook-feldolgozó telepítve van, és utoljára 1 órával ezelőtt látták.
+* Nincs konfigurálva – a hibrid Runbook-feldolgozó nem található, vagy nem fejeződött be a bevezetés.
 
 > [!NOTE]
-> Előfordulhat, hogy az Azure Portal on-t és a gép aktuális állapotát az Azure Portal megjelenítése között kis késés.
+> Az Azure Portal megjelenítése és a gép aktuális állapota között kis késés lehet.
 
 ## <a name="start-the-troubleshooter"></a>A hibaelhárító indítása
 
-Azure-gépek esetén a portál **frissítési ügynök-készenléte** oszlopában található **Hibaelhárítás** hivatkozásra kattintva elindul a **Frissítési ügynök hibaelhárítási ügynök e-hibaelhárítása** lap. Nem Azure-alapú gépek esetén a hivatkozás ebben a cikkben található. Tekintse meg az offline utasításokat egy nem Azure-gép hibaelhárításához.
+Azure-gépek esetén a portál **frissítési ügynök-készenléte** oszlopában található **Hibaelhárítás** hivatkozásra kattintva elindul a Frissítési ügynök hibaelhárítási ügynök e-hibaelhárítása lap. Nem Azure-alapú gépek esetén a hivatkozás ebben a cikkben található. Tekintse meg az offline utasításokat egy nem Azure-gép hibaelhárításához.
 
 ![vm listalap](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> Az ellenőrzések megkövetelik, hogy a virtuális gép fut. Ha a virtuális gép nem fut, megjelenik egy gomb **a virtuális gép elindításához.**
+> Az ellenőrzések megkövetelik, hogy a virtuális gép fut. Ha a virtuális gép nem fut, megjelenik egy **A virtuális gép indítása** gomb.
 
-A **Hibaelhárítási ügynök** lapon kattintson az **Ellenőrzések futtatása**gombra a hibaelhárító elindításához. A hibaelhárító a [Futtatás paranccsal](../../virtual-machines/linux/run-command.md) futtat egy parancsfájlt a számítógépen a függőségek ellenőrzéséhez. Amikor a hibaelhárító befejeződött, az ellenőrzések eredményét adja vissza.
+A Hibaelhárítási ügynök lapon kattintson az **Ellenőrzések futtatása**gombra a hibaelhárító elindításához. A hibaelhárító a [Futtatás paranccsal](../../virtual-machines/linux/run-command.md) futtat egy parancsfájlt a számítógépen a függőségek ellenőrzéséhez. Amikor a hibaelhárító befejeződött, az ellenőrzések eredményét adja vissza.
 
 ![Lap – hibaelhárítás](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -50,7 +50,7 @@ Ha elkészült, az eredmények az ablakban jelennek meg. Az ellenőrzési szakas
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó az alábbi operációs rendszerek valamelyikét futtatja-e:
+Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó az alábbi operációs rendszerek egyikét futtatja-e:
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|

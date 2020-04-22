@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68385710"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680723"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-távfigyelés és értesítések az IoT-központés postaláda összekötő Azure Logic Apps alkalmazásokkal
 
@@ -22,7 +22,7 @@ ms.locfileid: "68385710"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Az Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) segítségével vezényelheti a munkafolyamatokat a helyszíni és felhőalapú szolgáltatások, egy vagy több vállalat és a különböző protokollok között. A logikai alkalmazás egy eseményindítóval kezdődik, amelyet egy vagy több művelet követ, amelyek beépített vezérlőkkel, például feltételekkel és iterátorokkal szekvenálhatók. Ez a rugalmasság teszi a Logic Apps ideális IoT-megoldást az IoT figyelési forgatókönyvekhez. Például a telemetriai adatok érkezése egy eszközről egy IoT Hub-végponton logikai alkalmazás-munkafolyamatokat kezdeményezhet az adatok Azure Storage blobban történő tárolásához, e-mail riasztásokat küldhet az adatanomáliák figyelmeztetésére, technikusi látogatást ütemezhet, ha egy eszköz hibát jelent , és így tovább.
+[Az Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) segítségével vezényelheti a munkafolyamatokat a helyszíni és felhőalapú szolgáltatások, egy vagy több vállalat és a különböző protokollok között. A logikai alkalmazás egy eseményindítóval kezdődik, amelyet egy vagy több művelet követ, amelyek beépített vezérlőkkel, például feltételekkel és iterátorokkal szekvenálhatók. Ez a rugalmasság teszi a Logic Apps ideális IoT-megoldást az IoT figyelési forgatókönyvekhez. Például a telemetriai adatok érkezése egy eszközről egy IoT Hub-végponton kezdeményezheti a logikai alkalmazás munkafolyamatok az adatok egy Azure Storage blob, e-mail riasztások küldése, hogy figyelmeztesse az adatanomáliák, ütemezése technikus látogatás, ha egy eszköz hibát jelent, és így tovább.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
@@ -212,7 +212,7 @@ Az előző szakaszban beállítja az IoT hub a hőmérséklet-riasztást tartalm
       A [Hotmail/Outlook.com,](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970)a [Gmail](https://support.google.com/a/answer/176600?hl=en)és a [Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html)SMTP-adatainak beszerzése.
 
       > [!NOTE]
-      > Előfordulhat, hogy a kapcsolat létrehozásához le kell tiltania az SSL-t. Ha ez a helyzet, és a kapcsolat létrehozása után újra engedélyezni szeretné az SSL-t, tekintse meg a szakasz végén található választható lépést.
+      > Előfordulhat, hogy a kapcsolat létrehozásához le kell tiltania a TLS/SSL-t. Ha ez a helyzet, és a kapcsolat létrejötte után újra engedélyezni szeretné a TLS-t, olvassa el a szakasz végén található választható lépést.
 
    1. Az **Új paraméter hozzáadása** legördülő **Send Email** menüből válassza a **Feladó**, **A,** **Tárgy** és **Törzs**lehetőséget. Kattintson vagy koppintson a képernyő tetszőleges pontjára a kijelölési mező bezárásához.
 
@@ -224,7 +224,7 @@ Az előző szakaszban beállítja az IoT hub a hőmérséklet-riasztást tartalm
 
    1. Az SMTP-kapcsolat mentéséhez válassza a **Mentés** lehetőséget.
 
-1. (Nem kötelező) Ha az SSL-t le kellett tiltania az e-mail szolgáltatóval való kapcsolat létrehozásához, és újra engedélyezni szeretné azt, kövesse az alábbi lépéseket:
+1. (Nem kötelező) Ha az e-mail szolgáltatóval való kapcsolat létesítéséhez le kellett tiltania a TLS-t, és újra engedélyezni szeretné azt, kövesse az alábbi lépéseket:
 
    1. A **Logikai alkalmazás** ablaktábláján a **Fejlesztői eszközök**csoportban válassza az **API-kapcsolatok lehetőséget.**
 

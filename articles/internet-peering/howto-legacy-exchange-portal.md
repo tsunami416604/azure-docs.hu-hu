@@ -1,39 +1,39 @@
 ---
-title: Örökölt közvetlen társviszony konvertálása Azure-erőforrássá a portál használatával
+title: Örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá az Azure Portal használatával
 titleSuffix: Azure
-description: Örökölt közvetlen társviszony konvertálása Azure-erőforrássá a portál használatával
+description: Örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá az Azure Portal használatával
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: a40c7bbc9f37135814b7bba3396d368faf97a166
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87a7a6bca608f1748d3b659eabdc3e941b537377
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775198"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678541"
 ---
-# <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-the-portal"></a>Örökölt Exchange-társviszony konvertálása Azure-erőforrássá a portál használatával
+# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá az Azure Portal használatával
 
-Ez a cikk ismerteti, hogyan konvertálhatja a meglévő örökölt Exchange-társviszony-létesítés az Azure-erőforrás a portál használatával.
+Ez a cikk ismerteti, hogyan konvertálhatja a meglévő örökölt Exchange-társviszony-létesítés egy Azure-erőforrás az Azure Portalhasználatával.
 
 Ha szeretné, ezt az útmutatót a PowerShell használatával is [elvégezheti.](howto-legacy-exchange-powershell.md)
 
 ## <a name="before-you-begin"></a>Előkészületek
-* A konfiguráció megkezdése előtt tekintse át [az Előfeltételek](prerequisites.md) és [az Exchange-társviszony-létesítési forgatókönyvet.](walkthrough-exchange-all.md)
+* A konfiguráció megkezdése előtt tekintse át az [előfeltételeket](prerequisites.md) és az [Exchange-társviszony-létesítési forgatókönyvet.](walkthrough-exchange-all.md)
 
-## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>Örökölt Exchange-társviszony konvertálása Azure-erőforrássá
+## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá
 
-### <a name="sign-in-to-portal-and-select-your-subscription"></a>Jelentkezzen be a portálra, és válassza ki az előfizetést
+### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>Jelentkezzen be a portálra, és válassza ki az előfizetést
 [!INCLUDE [Account](./includes/account-portal.md)]
 
 ### <a name="convert-legacy-exchange-peering"></a><a name=create></a>Örökölt Exchange-társviszony-létesítés konvertálása
 
-Az örökölt társviszony-létesítési kapcsolatok at **társviszony-létesítési** erőforrás sal konvertálhatja.
+Az örökölt társviszony-létesítési kapcsolatok at a **Társviszony-létesítési** erőforrás használatával konvertálhatja.
 
-#### <a name="launch-resource-and-configure-basic-settings"></a>Erőforrás indítása és az alapvető beállítások konfigurálása
+#### <a name="launch-the-resource-and-configure-basic-settings"></a>Az erőforrás elindítása és az alapvető beállítások konfigurálása
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
 
 #### <a name="configure-connections-and-submit"></a>Kapcsolatok konfigurálása és küldés
@@ -44,8 +44,8 @@ Az örökölt társviszony-létesítési kapcsolatok at **társviszony-létesít
 
 ## <a name="additional-resources"></a>További források
 
-További információkért látogasson el [az internetes társviszony-létesítési GYIK-be](faqs.md)
+További információt az [Internetes társviszony-létesítés – gyakori kérdések című témakörben talál.](faqs.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Exchange-társviszony létesítése vagy módosítása a portál használatával](howto-exchange-portal.md)
+* [Exchange-társviszony-létesítés létrehozása vagy módosítása a portál használatával](howto-exchange-portal.md)

@@ -1,22 +1,22 @@
 ---
-title: Go-To-Market Szolgáltatások - Ajánlat felsorolása a legjobb gyakorlatok | Azure
+title: Go-To-Market Szolgáltatások - Ajánlat felsorolása a legjobb gyakorlatok | Azure Piactér
 description: Go-To-Market Services – ez a szakasz az ajánlat hozadékának ajánlott eljárásait ismerteti
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 3cb625e613d8dbe9398e947925a8dc574a277614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f5083b5f00834e65a8385835635588033bd977
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286251"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684581"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
-Ebben a szakaszban található táblázatok javaslatokat nyújtanak a piactéri ajánlatok létrehozására és lefolytatására. Marketinganyagok írásához és konfigurálásához látogasson el a [Cloud Partner portálra.](https://cloudpartner.azure.com/#insights) 
+Ebben a szakaszban található táblázatok javaslatokat nyújtanak a piactéri ajánlatok létrehozására és lefolytatására. A marketinganyagok írásához és konfigurálásához látogasson el a [Partnerközpont ba.](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) 
 
 ## <a name="storefront-offer-details"></a>Kirakatajánlat részletei
 
@@ -25,14 +25,14 @@ Ebben a szakaszban található táblázatok javaslatokat nyújtanak a piactéri 
 | Offer Name | Adjon meg egy erős címet:<br> <ul> <li> Az alkalmazás nevének közölnie kell az ügyfelek alapvető értékét. </li> <li> A keresési kulcsszavak at az alkalmazás címében, hogy magasabb rangú a keresőmotor eredményeit. </li> </ul> A szolgáltatások listájának tanácsadásához kövesse a beállított címformátumot:<br>[Ajánlat neve: [Időtartam] [Ajánlat típusa] (például *Contoso: 2 hetes megvalósítás*) <br><br> Tartsa be a márka irányelveit:<br>Ha a Microsoft védjegyeire, valamint a Microsoft szoftvereire, termékeire és szolgáltatásaira hivatkozik, kövesse a [Microsoft védjegyekkel és márkanevekkel](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) kapcsolatos egyéb vonatkozó, termékspecifikus irányelveket. |
 | Ajánlat leírása | Adjon meg egyértelmű leírást az ajánlatról:<br> <ul> <li> Egyértelműen írja le az ajánlat értékajánlatát a leírás első néhány mondatában. </li> <li> Ne feledje, hogy az első néhány mondat megjelenhet a keresőmotor találatai között. </li> <li> Ne hagyatkozzon a termék értékesítéséhez szükséges funkciókra és funkciókra. Ehelyett összpontosítson a szállít. </li> <li> A lehető legnagyobb mértékben használjon iparág-specifikus szókincset vagy haszonalapú megfogalmazást.</li> <li> Ezenkívül a Tanácsadó Szolgáltatás listáinak egyértelműen fel kell tüntetniük az Ön által nyújtott szakmai szolgáltatást. </li></ul> Az értékajánlat alapvető összetevőinek a következő információkat kell tartalmazniuk:<ul><li>A termék leírása.</li><li>A termék előnyeit élvező felhasználó típusa.</li><li>Vásárlói igény vagy fájdalom, hogy a termék címe.</li></ul> |
 
-Ebben a szakaszban található táblázatok javaslatokat nyújtanak a piactéri ajánlatok létrehozására és lefolytatására. Marketinganyagok írásához és konfigurálásához látogasson el a [Cloud Partner portálra.](https://cloudpartner.azure.com/#insights) 
+Ebben a szakaszban található táblázatok javaslatokat nyújtanak a piactéri ajánlatok létrehozására és lefolytatására. A marketinganyagok írásához és konfigurálásához látogasson el a [Partnerközpontba.](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) 
 
 ## <a name="storefront-listing-details"></a>Kirakati adatlap részletei
 
 | Kirakatbeállítása | Ajánlott eljárás |
 |:--- |:--- |  
-| Iparágak: Csak AppSource alkalmazások és tanácsadási szolgáltatások | Válassza ki az iparágakat, ha az ajánlat iparág-specifikus igényeket elégít ki: <ul><li> Hívja ki az iparág-specifikus képességeket az ajánlat leírásában.</li> </ul> **Megjegyzés**: A lehetőségek maximális száma ajánlattípusonként változik , és a [Cloud Partner portálon](https://cloudpartner.azure.com/#insights)látható . |
-| Kategóriák | Válassza ki azokat a kategóriákat, amelyek a legjobban igazodnak az ajánlathoz:<br> <ul> <li> Gondosan válassza ki a kategóriákat, mert az ügyfelek ezeket használják a releváns alkalmazások kereséséhez. </li> <li> Ügyeljen arra, hogy hívja fel, hogy az ajánlat támogatja a kategória-specifikus igényeket az ajánlat leírása. </li> </ul> **Megjegyzés**: A lehetőségek maximális száma ajánlattípusonként változik , és a [Cloud Partner portálon](https://cloudpartner.azure.com/#insights)látható . |
+| Iparágak: Csak AppSource alkalmazások és tanácsadási szolgáltatások | Válassza ki az iparágakat, ha az ajánlat iparág-specifikus igényeket elégít ki: <ul><li> Hívja ki az iparág-specifikus képességeket az ajánlat leírásában.</li> </ul> **Megjegyzés:** A lehetőségek maximális száma az ajánlat típusától függően változik, és a [Partnerközpontban](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)látható . |
+| Kategóriák | Válassza ki azokat a kategóriákat, amelyek a legjobban igazodnak az ajánlathoz:<br> <ul> <li> Gondosan válassza ki a kategóriákat, mert az ügyfelek ezeket használják a releváns alkalmazások kereséséhez. </li> <li> Ügyeljen arra, hogy hívja fel, hogy az ajánlat támogatja a kategória-specifikus igényeket az ajánlat leírása. </li> </ul> **Megjegyzés:** A lehetőségek maximális száma az ajánlat típusától függően változik, és a [Partnerközpontban](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)látható . |
 | Az alkalmazás sal használható termékek (legfeljebb 3): Csak AppSource-alkalmazások | Sorolja fel a megoldás által használt vagy kiterjesztett további termékeket és technológiákat. Például az Azure IoT Hub vagy az Azure Machine Learning. |
 | Keresési kulcsszavak (legfeljebb 3) | A keresési kulcsszavak segítségével az üzleti felhasználók megtalálhatják az ajánlatot, amikor keresnek <ul> <li> az Azure Piactéren </li> <li> az AppSource-on </li> <li> keresőmotorok használata </li> </ul> Ahhoz, hogy a hirdetés megjelenjen ezekben a keresésekben, a következőket kell a következőkre tudnia: <ul> <li> Azonosítsa az ajánlat első három keresési kulcsszavát; </li> <li> a keresési kulcsszavak belefoglalása az ajánlat összegzésébe és leírásába; </li> <li> itt sorolja fel a keresési kulcsszavakat. </li> </ul> |
 
@@ -89,12 +89,12 @@ Ha a webhelyén lévő AppSource- vagy Azure Marketplace-jelvényről hivatkozik
 
 A következő példa URL-címe mindkét előző lekérdezési paramétert tartalmazza:`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-Ha hozzáadja a paramétereket az AppSource URL-címéhez, a Cloud [Partner portál](https://cloudpartner.azure.com/#insights)elemzési irányítópultján áttekintheti a kampány hatékonyságát.
+Ha hozzáadja a paramétereket az AppSource URL-címéhez, a [Partnerközpont](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)elemzési irányítópultján áttekintheti a kampány hatékonyságát.
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet a [kereskedelmi piac előnyeit](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+Tudjon meg többet a [kereskedelmi piac előnyeit](./gtm-your-marketplace-benefits.md).
 
-Jelentkezzen be a [Cloud Partner Portal-ba](https://cloudpartner.azure.com) az ajánlat létrehozásához és konfigurálásához.
+Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához és konfigurálásához.
 
 ---

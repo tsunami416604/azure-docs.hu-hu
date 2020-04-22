@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: 1f3c9f86072eeedbc999946d0f846fbc3b41f94d
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: f94136ca6bfcb7e33415f2f44fdf4c44ef9f6a6f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641758"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682796"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Biztonságos Azure ML-kísérletezés és következtetési feladatok az Azure virtuális hálózaton belül
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -140,12 +140,13 @@ Az Azure Machine Learning számítási példányvagy számítási fürt virtuál
 > * Ha az Azure Storage-fiók(ok) a munkaterület is biztonságos egy virtuális hálózatban, akkor ugyanabban a virtuális hálózatban kell lennie, mint az Azure Machine Learning számítási példány vagy fürt. 
 
 > [!TIP]
-> A Machine Learning számítási példány vagy fürt automatikusan lefoglalja a további hálózati erőforrásokat az erőforráscsoportban, amely tartalmazza a virtuális hálózatot. A szolgáltatás minden egyes számítási példányhoz vagy fürthöz a következő erőforrásokat foglalja le:
+> A Machine Learning számítási példánya vagy fürtje automatikusan további hálózati erőforrásokat foglal le __a virtuális hálózatot tartalmazó erőforráscsoportban.__ A szolgáltatás minden egyes számítási példányhoz vagy fürthöz a következő erőforrásokat foglalja le:
 > 
 > * Egy hálózati biztonsági csoport
 > * Egy nyilvános IP-cím
 > * Egy terheléselosztó
 > 
+> Fürtök esetén ezek az erőforrások törlődnek (és újra létrejönnek) minden alkalommal, amikor a fürt 0 csomópontra skálázódik, azonban egy példányban az erőforrások at tartanak, amíg a példány teljesen törlődik (a leállítás nem távolítja el az erőforrásokat). 
 > Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) vonatkoznak.
 
 

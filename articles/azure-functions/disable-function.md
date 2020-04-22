@@ -3,12 +3,12 @@ title: A függvények letiltása az Azure Functionsben
 description: Ismerje meg, hogyan tilthatja le és engedélyezheti a függvényeket az Azure Functionsben.
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11585e92e7d239731b02d06c5093f979cd65cfba
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116143"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686886"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>A függvények letiltása az Azure Functionsben
 
@@ -42,6 +42,9 @@ az functionapp config appsettings set --name <myFunctionApp> \
 A függvény **Kezelés** lapján is használhatja a **Függvényállapot** kapcsolót. A kapcsoló az `AzureWebJobs.<FUNCTION_NAME>.Disabled` alkalmazásbeállítás létrehozásával és törlésével működik.
 
 ![Függvényállapot-kapcsoló](media/disable-function/function-state-switch.png)
+
+> [!NOTE]  
+> A portálintegrált tesztelési funkció `Disabled` figyelmen kívül hagyja a beállítást. Ez azt jelenti, hogy egy letiltott függvény továbbra is fut, amikor elindul a **teszt** ablakban a portálon. 
 
 ## <a name="other-methods"></a>Egyéb módszerek
 

@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Services - Marketing legjobb gyakorlatok | Azure
+title: Go-To-Market Services - Marketing legjobb gyakorlatok | Azure Piactér
 description: Piacra lépő szolgáltatások – ez a szakasz az Azure Marketplace kiadóinak ajánlott marketinggyakorlatait ismerteti
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 6/24/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 2926752884576bcf3a7a15d68eecb6f1248f7e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e874343b5bb38928ae2fc429d901d8f7ec163580
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286268"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684595"
 ---
 # <a name="marketing-best-practices"></a>Marketingre vonatkozó ajánlott eljárások
 
@@ -22,6 +22,6 @@ Az optimalizált piactéri lista és a piacra kerülési kampányok segíthetnek
 
 Ha többet szeretne megtudni a piactérGTM-szolgáltatásairól, látogasson el [a Piacra lépő szolgáltatások lapra.](https://partner.microsoft.com/reach-customers/gtm)
 
-Jelentkezzen be a [Cloud Partner Portal-ba](https://cloudpartner.azure.com) az ajánlat létrehozásához és konfigurálásához.
+Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához és konfigurálásához.
 
 ---

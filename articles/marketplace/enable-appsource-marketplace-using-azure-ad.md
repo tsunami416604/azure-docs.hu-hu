@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 45855038e60dcdc3be4f98cfdceed69df5e8c946
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2f33fc8b1bdd15b53ad9130b5cc598dd6d5ee1a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286319"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684629"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>AppSource- és Marketplace-termékoldal engedélyezése az Azure Active Directory használatával
 
@@ -87,5 +87,10 @@ Az Azure AD használatával az alábbi műveletek egyikét támogatva:
 
 ## <a name="next-steps"></a>További lépések
 
-- Győződjön meg arról, hogy [regisztrált az Azure Marketplace-en.](https://azuremarketplace.microsoft.com/sell)
-- Az ajánlat létrehozásáról és teljesítéséről további információt a [Partnerközpont-fiók létrehozásáról](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) talál.
+Ha még nem tette meg, 
+
+- [További információ](https://azuremarketplace.microsoft.com/sell) a piactérről.
+
+A Partnerközpontban való regisztrációhoz kezdjen új ajánlatot létrehozni, vagy dolgozzon egy meglévőn:
+
+- [Jelentkezzen be a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához vagy teljesítéséhez.

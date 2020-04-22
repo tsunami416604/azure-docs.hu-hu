@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521323"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676359"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Az Event Hubs-erőforrásokhoz való hozzáférés hitelesítése megosztott hozzáférésű aláírásokkal (SAS)
 A megosztott hozzáférésű aláírás (SAS) segítségével részletesen szabályozhatja a megosztott hozzáférés-aláírással rendelkező ügyfelek számára nyújtott hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 
@@ -22,7 +22,7 @@ A megosztott hozzáférésű aláírás (SAS) segítségével részletesen szab�
 - A SAS által megadott engedélyek. Például egy SAS egy Event Hubs névtér adhat a figyelési engedélyt, de nem a küldési engedélyt.
 - Csak az érvényes hitelesítő adatokat tartalmazó ügyfelek küldhetnek adatokat egy eseményközpontba.
 - Egy ügyfél nem személyesíthet meg egy másik ügyfelet.
-- A rouge ügyfél letiltható az adatok küldése egy eseményközpontba.
+- Egy engedélyezetlen ügyfél letiltható az adatok küldése egy eseményközpontba.
 
 Ez a cikk az Event Hubs-erőforrások sas-i erőforrásokhoz való hozzáférés hitelesítését ismerteti. Ha többet szeretne tudni arról, hogy **miként engedélyezi** az Event Hubs-erőforrásokhoz való hozzáférést a SAS használatával, olvassa el [ezt a cikket.](authorize-access-shared-access-signature.md) 
 

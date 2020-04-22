@@ -1,5 +1,5 @@
 ---
-title: Adatfolyam-kimutatás transzformációjának leképezése
+title: Kimutatás átalakítása az adatfolyam leképezésében
 description: Az Azure Data Factory adatfolyamat-transzformációjának sorokról oszlopokra történő kimutatása
 author: kromerm
 ms.author: makromer
@@ -7,73 +7,103 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 980d7c3e1b1f69e76c091e2a4a74c8e5a4d0bb64
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606362"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686435"
 ---
-# <a name="azure-data-factory-pivot-transformation"></a>Az Azure-adatgyár immára vonatkozó forint átalakítása
+# <a name="pivot-transformation-in-mapping-data-flow"></a>Kimutatás átalakítása az adatfolyam leképezésében
+
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A Pivot az ADF-adatfolyamban olyan összesítésként használja, ahol egy vagy több csoportosítási oszlop különböző sorértékeit egyedi oszlopokká alakítják át. Lényegében a sorértékeket új oszlopokká alakíthatja (az adatokat metaadatokká alakíthatja).
+A kimutatás átalakításával több oszlopot hozhat létre egyetlen oszlop egyedi sorértékeiből. A pivot egy összesítési transzformáció, ahol oszlopok szerint csoportosítva választhatja ki a pivot oszlopokat, és [összesítő függvények](data-flow-expression-functions.md#aggregate-functions)segítségével hozhat létre pivot oszlopokat.
 
-![Kimutatás beállításai](media/data-flow/pivot1.png "1. elforgatás")
+## <a name="configuration"></a>Konfiguráció
 
-## <a name="group-by"></a>Csoportosítási szempont
+A pivot átalakításhoz három különböző bemenetre van szükség: oszlopok csoportja, a kimutatásbillentyű és a forgó oszlopok létrehozásának módjára
 
-![Kimutatás beállításai](media/data-flow/pivot2.png "2. elforgatás")
+### <a name="group-by"></a>Csoportosítási szempont
 
-Először állítsa be azoszlopokat, amelyek szerint a pivot összesítéséhez csoportosítani szeretné. Itt több mint 1 oszlopot állíthat be az oszloplista melletti + jellel.
+![Csoportosítás beállítások szerint](media/data-flow/pivot2.png "[Csoportosítás beállítások szerint")
 
-## <a name="pivot-key"></a>Kimutatás billentyű
+Válassza ki, hogy mely oszlopokra szeretné összesíteni a forgó oszlopokat. A kimeneti adatok az azonos csoportba sorba sorba csoportosítják az azonos csoportba sorokat egy sorba. A pivoted oszlopban végzett összesítés minden csoportfelett megtörténik.
 
-![Kimutatás beállításai](media/data-flow/pivot3.png "3. elforgatás")
+Ez a szakasz nem kötelező. Ha nincs kijelölve oszloponkénti csoport, a program összesíti a teljes adatfolyamot, és csak egy sort továbbít.
 
-A kimutatáskulcs az az oszlop, amelyet az ADF sorról oszlopra fordít. Alapértelmezés szerint a mező adatkészletének minden egyedi értéke oszlopra kerül. Tetszés szerint azonban megadhatja az oszlopértékekre fordítani kívánt adatkészlet értékeit. Ez az oszlop határozza meg a létrehozandó új oszlopokat.
+### <a name="pivot-key"></a>Kimutatás billentyű
 
-## <a name="pivoted-columns"></a>Elforgatott oszlopok
+![Kimutatás billentyű](media/data-flow/pivot3.png "Kimutatás billentyű")
 
-![Kimutatás beállításai](media/data-flow/pivot4.png "4.")
+A kimutatáskulcs az az oszlop, amelynek sorértékei új oszlopokba kerülnek. Alapértelmezés szerint a kimutatás átalakítása új oszlopot hoz létre minden egyes egyedi sorértékhez.
 
-Végül kiválaszthatja azt az összesítést, amelyet a kimutatásértékekhez kíván használni, és azt, hogy miként szeretné megjeleníteni az oszlopokat az átalakítás új kimeneti vetületében.
+**Az Érték**feliratú szakaszban megadhatja a fordítandó sorok at. Csak az ebben a szakaszban megadott sorértékek lesznek elforgatva. A **Null érték** engedélyezése elforgatott oszlopot hoz létre az oszlopban lévő null értékekhez.
 
-(Nem kötelező) Beállíthat egy elnevezési mintát előtaggal, középső vel és utótaggal, amelyet a sorértékekből minden új oszlopnévhez hozzá kell adni.
+### <a name="pivoted-columns"></a>Elforgatott oszlopok
 
-Például az "Értékesítés" "Régió" szerint történő elforgatás új oszlopértékeket eredményezne minden egyes eladási értékből, azaz "25", "50", "1000" stb. Ha azonban "Sales-" előtagértéket állít be, minden oszlopérték hozzáadja az "Értékesítés-" értéket az érték elejéhez.
+![Elforgatott oszlopok](media/data-flow/pivot4.png "Elforgatott oszlopok")
 
-![Kimutatás beállításai](media/data-flow/pivot5.png "5. forduló")
+Minden egyes egyedi kimutatáskulcs-értékhez, amely oszloprá válik, hozzon létre egy összesített sorértéket az egyes csoportokhoz. Kimutatásbillentyűnként több oszlopot is létrehozhat. Minden pivot oszlopnak legalább egy [összesítő függvényt kell tartalmaznia.](data-flow-expression-functions.md#aggregate-functions)
 
-Ha az Oszlopelrendezést "Normál" értékre állítja, az összes elforgatott oszlopot csoportosítja az összesített értékekkel. Az oszlopok elrendezésének "Oldalirányú" értékre állítása az oszlop és az érték között váltakozik.
+**Oszlopnév-minta:** Adja meg, hogyan szeretné formázni az egyes pivot oszlopok oszlopnevét. A kimenetelt oszlopnév a pivot kulcs értékének, az oszlopelőtagnak és a választható előtagnak a kombinációja lesz, elegendő, középső karakter. 
 
-### <a name="aggregation"></a>Összesítés
+**Oszlop elrendezése:** Ha pivotbillentyűnként egynél több pivot oszlopot hoz létre, adja meg, hogyan szeretné megrendezni az oszlopokat. 
 
-A kimutatásértékekhez használni kívánt összesítés beállításához kattintson a Kimutatás oszlopok ablaktábla alján található mezőre. Beírhatja az ADF adatfolyam-szerkesztőjét, ahol összesítési kifejezést hozhat létre, és az új összesített értékekhez leíró aliasnevet adhat meg.
+**Oszlopelőtag:** Ha pivotbillentyűnként egynél több pivot oszlopot hoz létre, minden oszlophoz adjon meg egy oszlopelőtagot. Ez a beállítás nem kötelező, ha csak egy elforgatott oszlopa van.
 
-Az ADF adatfolyam-kifejezésnyelvével írja le a pivoted https://aka.ms/dataflowexpressionsoszlop átalakításokat a Kifejezésszerkesztőben: .
+## <a name="help-graphic"></a>Súgókép
+
+Az alábbi súgókép bemutatja, hogy a különböző pivot komponensek hogyan hatnak egymásra
+
+![A kimutatás súgógrafikái](media/data-flow/pivot5.png "Kimutatás súgógrafikája")
 
 ## <a name="pivot-metadata"></a>Kimutatás metaadatai
 
-A Kimutatás átalakítása új oszlopneveket hoz létre, amelyek dinamikusak a bejövő adatok alapján. A kimutatásbillentyű minden új oszlopnév értékét létrehozza. Ha nem ad meg egyedi értékeket, és dinamikus oszlopneveket szeretne létrehozni a kimutatáskulcs minden egyes egyedi értékéhez, akkor a felhasználói felület nem jeleníti meg a metaadatokat az Ellenőrzés alkalmazásban, és nem lesz oszloppropagálás a Fogadó átalakításhoz. Ha értékeket állít be a kimutatáskulcshoz, akkor az ADF meghatározhatja az új oszlopneveket, és ezek az oszlopnevek elérhetők lesznek a Vizsgálat és a Fogadó leképezésben.
+Ha a pivot kulcs konfigurációjában nincs megadva érték, a forgó oszlopok futási időben dinamikusan jönnek létre. A forgó oszlopok száma megegyezik az egyedi pivot kulcsértékek számának és a pivot oszlopok számának szorzatával. Mivel ez lehet egy változó szám, a felhasználói felület nem jeleníti meg az oszlop metaadatait a **Vizsgálat** lapon, és nem lesz oszloppropagálás. Az oszlopok átalakításához használja az adatfolyam leképezésének [oszlopmintázati](concepts-data-flow-column-pattern.md) képességeit. 
 
-### <a name="generate-a-new-model-from-dynamic-columns"></a>Új modell létrehozása dinamikus oszlopokból
+Ha meghatározott kimutatáskulcsértékek vannak beállítva, a kimutatásoszlopok megjelennek a metaadatban.e az oszlopnevek elérhetők lesznek az Ellenőrzés és a Fogadó leképezésben.
 
-A Pivot dinamikusan hozza létre az új oszlopneveket a sorértékek alapján. Ezeket az új oszlopokat metaadatokká alakíthatja, amelyekre később az adatfolyamban hivatkozni lehet. Ehhez kattintson az Adatelőnézet fülre. A kimutatás átalakítása által létrehozott összes új oszlop egy "sodródott" ikonnal jelenik meg a táblázat fejlécében. Kattintson a "Térkép sodródott" gombra, hogy ezeket az új oszlopokat metaadatokká alakítsa, így azok az adatfolyam modelljének részét képezik.
+### <a name="generate-metadata-from-drifted-columns"></a>Metaadatok létrehozása sodródott oszlopokból
+
+A Pivot dinamikusan hozza létre az új oszlopneveket a sorértékek alapján. Ezeket az új oszlopokat hozzáadhatja a metaadatokhoz, amelyekre később az adatfolyamban hivatkozni lehet. Ehhez használja a [térkép sodródott](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) gyorsművelet az adatok előnézetében. 
 
 ![Oszlopok forgatása](media/data-flow/newpivot1.png "Sodródott kimutatásoszlopok leképezése")
 
-### <a name="landing-new-columns-in-sink"></a>Új oszlopok leszállása a Mosogatóban
+### <a name="sinking-pivoted-columns"></a>Elforgatási elforgatott oszlopok
 
-Még a Pivot dinamikus oszlopneveivel is besüllyesztheti az új oszlopneveket és értékeket a céltárolóba. Csak állítsa be a "Séma-drift" beállítást a Mosogató beállításaiban. Az új dinamikus nevek nem jelennek meg az oszlop metaadataiban, de a sémaeltolódási beállítás lehetővé teszi az adatok leválasztását.
+Bár a forgó oszlopok dinamikusak, továbbra is beírhatók a céladattárba. **Engedélyezze a sémaeltolódás engedélyezése** a fogadó beállításaiban. Ez lehetővé teszi olyan oszlopok írását, amelyek nem szerepelnek a metaadatokban. az oszlop metaadatai, de a sémaeltolódás opció lehetővé teszi az adatok leválasztását.
 
-### <a name="view-metadata-in-design-mode"></a>Metaadatok megtekintése tervező módban
+### <a name="rejoin-original-fields"></a>Eredeti mezők újraegyesítése
 
-Ha az új oszlopneveket metaadatként szeretné megtekinteni az Ellenőrzés alkalmazásban, és azt szeretné, hogy az oszlopok kifejezetten a Fogadó átalakításra propagáljanak, akkor állítson be explicit értékeket a Kimutatáskulcs lapon.
+A kimutatás átalakítása csak a csoportot vetíti ki a kimutatásoszlopok szerint. Ha azt szeretné, hogy a kimeneti adatok más bemeneti oszlopokat is tartalmazzanak, használjon [önillesztési](data-flow-join.md#self-join) mintát.
 
-### <a name="how-to-rejoin-original-fields"></a>Az eredeti mezők újbóli egyesítése
-A kimutatás átalakítása csak az összesítésben, csoportosításban és kimutatásműveletben használt oszlopokat vetíti ki. Ha az előző lépés többi oszlopát is bele szeretné foglalni a folyamatba, használjon az előző lépés új ága, és az önillesztési mintával kapcsolja össze a folyamatot az eredeti metaadatokkal.
+## <a name="data-flow-script"></a>Adatfolyamszkript
+
+### <a name="syntax"></a>Szintaxis
+
+```
+<incomingStreamName>
+    pivot(groupBy(Tm),
+        pivotBy(<pivotKeyColumn, [<specifiedColumnName1>,...,<specifiedColumnNameN>]),
+        <pivotColumnPrefix> = <pivotedColumnValue>,
+        columnNaming: '< prefix >< $N | $V ><middle >< $N | $V >< suffix >',
+        lateral: { 'true' | 'false'}
+    ) ~> <pivotTransformationName
+```
+### <a name="example"></a>Példa
+
+A konfigurációs szakaszban látható képernyők a következő adatfolyam-parancsfájllal rendelkeznek:
+
+```
+BasketballPlayerStats pivot(groupBy(Tm),
+    pivotBy(Pos),
+    {} = count(),
+    columnNaming: '$V$N count',
+    lateral: true) ~> PivotExample
+
+```
 
 ## <a name="next-steps"></a>További lépések
 

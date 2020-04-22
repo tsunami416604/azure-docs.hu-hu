@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: d6ac5961cbecf4e81c0b6bcc25c39aad42b18416
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429836"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686196"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatás-szolgáltatás hitelesítés az Azure Key Vault számára a .NET használatával
 
@@ -88,7 +88,7 @@ Az Azure CLI használata:
 
 1. Jelentkezzen be az Azure Portalon: *az jelentkezzen be* az Azure-ba való bejelentkezéshez.
 
-1. A hozzáférés ellenőrzése *az-fiók https://vault.azure.netget-access-token --resource *. Ha hibaüzenetet kap, ellenőrizze, hogy az Azure CLI megfelelő verziója megfelelően van-e telepítve.
+1. A hozzáférés ellenőrzése az *az-fiók get-access-token --resource https:\//vault.azure.net*. Ha hibaüzenetet kap, ellenőrizze, hogy az Azure CLI megfelelő verziója megfelelően van-e telepítve.
 
    Ha az Azure CLI nincs telepítve az alapértelmezett könyvtárba, `AzureServiceTokenProvider` előfordulhat, hogy hibaüzenetet kap, amely nem találja az Azure CLI elérési útját. Az **AzureCLIPath** környezeti változó használatával definiálja az Azure CLI telepítési mappát. `AzureServiceTokenProvider`szükség esetén hozzáadja az **AzureCLIPath** környezeti változóban megadott könyvtárat a **Path** környezeti változóhoz.
 

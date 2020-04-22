@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Megtudhatja, hogyan állíthatja be a folyamatos integrációt/folyamatos üzembe helyezést az Azure DevOps használatával az Azure Dev Spaces segítségével
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, tárolók
-ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75438451"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685636"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>A CI/CD és az Azure Dev Spaces használata
 
@@ -99,7 +99,7 @@ Most már rendelkezik egy CI-megoldással, amely automatikusan létrehozza a *my
 1. Az **Alapértelmezett verzió**esetében válassza a Legújabb lehetőséget **a buildelőfolyamat alapértelmezett ágából címkékkel**.
 1. Hagyja üresen **a Címkéket.**
 1. Állítsa a Forrás `drop` **aliast** . A **Forrás alias** értékét az előre definiált kiadási feladatok használják, ezért be kell állítani.
-1. Kattintson a **Hozzáadás** gombra.
+1. Kattintson a **Hozzáadás** parancsra.
 1. Most kattintson a villám ikonra az újonnan létrehozott `drop` műtárgy forrás, az alábbiak szerint:
 
     ![A műtermék folyamatos központi telepítésének feloldása](../media/common/release-artifact-cd-setup.png)
@@ -131,7 +131,7 @@ Egy automatikus kiadási folyamat most kezdődik, üzembe helyezése a *mywebapi
 A kiadás akkor történik meg, ha minden feladat befejeződött.
 
 > [!TIP]
-> Ha a kiadás sikertelen, egy hibaüzenet, például *frissítés sikertelen: időtúlodás a feltételre várva,* próbálja meg megvizsgálni a podok a [fürtben a Kubernetes irányítópulton.](../../aks/kubernetes-dashboard.md) Ha úgy látja, hogy a podok nem indulnak el olyan hibaüzenetekkel, mint *a "azdsexample.azurecr.io/mywebapi:122" lekérése: rpc hiba: kód = Ismeretlen desc = Hibaválasz démonból: Jogosulatlan: hitelesítés szükséges, https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: *mert a fürt nem jogosult lekérése az Azure Container Registry.If you see the pods are failto start with error messages like Failed to pull image "azdsexample.azurecr.io/mywebapi:122": rpc error: code = Unknown desc = Error response from démon: Get jogosulatlan: hitelesítés szükséges, lehet, hogy azért, mert a fürt nem jogosult lekérése az Azure Container Registry. Győződjön meg arról, hogy befejezte az [AKS-fürt engedélyezése az Azure Container Registry előfeltételeiből lekérése.](../../aks/cluster-container-registry-integration.md)
+> Ha a kiadás sikertelen, egy hibaüzenet, például *frissítés sikertelen: időtúlodás a feltételre várva,* próbálja meg megvizsgálni a podok a [fürtben a Kubernetes irányítópulton.](../../aks/kubernetes-dashboard.md) Ha úgy látja, hogy a podok nem indulnak el olyan hibaüzenetekkel, mint *a "azdsexample.azurecr.io/mywebapi:122" rendszer lekérése: rpc hiba: kód = Ismeretlen desc = Hibaválasz a démonból: Https:\//azdsexample.azurecr.io/v2/mywebapi/manifests/122: jogosulatlan: hitelesítés szükséges,* mert a fürt nem jogosult lekérése az Azure Container Registry-ből. Győződjön meg arról, hogy befejezte az [AKS-fürt engedélyezése az Azure Container Registry előfeltételeiből lekérése.](../../aks/cluster-container-registry-integration.md)
 
 Most már rendelkezik egy teljesen automatizált CI/CD-folyamat a GitHub-elágazás a fejlesztői terek minta alkalmazások. Minden alkalommal, amikor véglegesíti és leküldéses kódot, a buildfolyamat jön létre, és leküldéses a *mywebapi* és *a webfrontend-rendszerképeket* az egyéni ACR-példány. Ezután a kiadási folyamat telepíti a Helm-diagram ot az egyes alkalmazások a _fejlesztői_ térben a fejlesztői terek-kompatibilis fürt.
 

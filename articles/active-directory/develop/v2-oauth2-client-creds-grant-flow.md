@@ -12,12 +12,12 @@ ms.date: 12/17/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6021348160b338bc3a153764968f6c846a644cd1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f559dc0da8680a6cd3243b5ee12c3145244c9c2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535859"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677870"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>A Microsoft identity platform és az OAuth 2.0 ügyfélhitelesítő adatok folyamata
 
@@ -26,9 +26,6 @@ Az [OAuth 2.0 ügyfél hitelesítő adatok megadása](https://tools.ietf.org/htm
 Ez a cikk azt ismerteti, hogy miként programozhat közvetlenül az alkalmazásban lévő protokoll ellen. Ha lehetséges, azt javasoljuk, hogy a támogatott Microsoft Authentication Libraries (MSAL) helyett [a jogkivonatok beszerzéséhez és a biztonságos webes API-k hívásához](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)használja.  Is vessen egy pillantást a [minta alkalmazások at MSAL](sample-v2-code.md).
 
 Az OAuth 2.0 ügyfél hitelesítő adatok at flow lehetővé teszi a webszolgáltatás (bizalmas ügyfél) a saját hitelesítő adatait, ahelyett, hogy megszemélyesíteni a felhasználó, hitelesítése, ha egy másik webszolgáltatás hívása. Ebben a forgatókönyvben az ügyfél általában egy középső rétegű webszolgáltatás, egy démonszolgáltatás vagy egy webhely. A magasabb szintű biztonság érdekében a Microsoft identity platform azt is lehetővé teszi, hogy a hívó szolgáltatás egy tanúsítványt használjon (a közös titok helyett) hitelesítő adatként.
-
-> [!NOTE]
-> A Microsoft identity platform végpont jatttal nem támogatja az összes Azure AD-forgatókönyvek és -szolgáltatások. Annak megállapításához, hogy a Microsoft identity platform végpontját kell-e használnia, olvassa el a [Microsoft identity platform korlátait.](active-directory-v2-limitations.md)
 
 A tipikus *háromlábú OAuth-ban*egy ügyfélalkalmazás engedélyt kap egy erőforrás elérésére egy adott felhasználó nevében. Az engedélyt a felhasználó delegálja az alkalmazásnak, általában a [jóváhagyási](v2-permissions-and-consent.md) folyamat során. Az ügyfél hitelesítő adatai (*kétlábú OAuth)* folyamatában azonban az engedélyek közvetlenül magának az alkalmazásnak adnak meg engedélyeket. Amikor az alkalmazás egy jogkivonatot jelenít meg egy erőforrásnak, az erőforrás kényszeríti, hogy maga az alkalmazás rendelkezik engedéllyel egy művelet végrehajtására, és nem a felhasználó.
 

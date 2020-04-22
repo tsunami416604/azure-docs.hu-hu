@@ -1,6 +1,6 @@
 ---
-title: Hibák elhárítása az Azure Update Management szolgáltatással
-description: Ismerje meg, hogyan háríthatja el és oldhatja meg az Azure-beli frissítéskezelési megoldással kapcsolatos problémákat.
+title: Az Azure Automation Update Management hibáinak elhárítása
+description: Ismerje meg, hogyan háríthatja el és oldhatja meg az Azure Automation frissítéskezelési megoldásával kapcsolatos problémákat.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,22 +8,22 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c9ff05591c98fda8be39e32f26da484f56e0831b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984623"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678924"
 ---
-# <a name="troubleshooting-issues-with-update-management"></a>A frissítéskezeléssel kapcsolatos problémák elhárítása
+# <a name="troubleshoot-issues-with-the-update-management-solution"></a>A frissítéskezelési megoldással kapcsolatos problémák elhárítása
 
-Ez a cikk az Update Management használata során felmerülő problémák megoldásait ismerteti.
+Ez a cikk azokat a problémákat ismerteti, amelyek az Update Management megoldás használatakor problémákba ütközhetnek. Van egy ügynök hibaelhárító a hibrid Runbook feldolgozó ügynök határozza meg az alapul szolgáló problémát. A hibaelhárítóról a [Windows update ügynökkel kapcsolatos problémák elhárítása](update-agent-issues.md) és [a Linux update agent problémáinak elhárítása](update-agent-issues-linux.md)című témakörben olvashat bővebben. További bevezetési problémákról a [Megoldásbevezetés elhárítása című témakörben](onboarding.md)találja.
 
-Van egy ügynök hibaelhárító a hibrid feldolgozó ügynök határozza meg a mögöttes problémát. A hibaelhárítóról a [Frissítési ügynökkel kapcsolatos problémák elhárítása című témakörben](update-agent-issues.md)olvashat bővebben. Minden egyéb probléma esetén kövesse az alábbi hibaelhárítási útmutatót.
+>[!NOTE]
+>Ha problémákat talál, amikor a megoldás virtuális gépen (VM) történő bevezetésével kapcsolatban, ellenőrizze az **Operations Manager** naplóját az **Alkalmazás- és szolgáltatásnaplók** a helyi számítógépen. Keresse meg a 4502-es eseményazonosítójú `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`eseményeket és az esemény részleteit tartalmazó eseményeket.
 
-Ha problémákat talál, amikor a megoldás virtuális gépen (VM) történő bevezetésével kapcsolatban, ellenőrizze az **Operations Manager** naplóját az **Alkalmazás- és szolgáltatásnaplók** a helyi számítógépen. Keresse meg a 4502-es eseményazonosítójú `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`eseményeket és az esemény részleteit tartalmazó eseményeket.
-
-A következő szakasz kiemeli a konkrét hibaüzeneteket és az egyes lehetséges megoldásokat. További bevezetési problémákról a [Megoldásbevezetés elhárítása című témakörben](onboarding.md)találja.
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](../automation-update-azure-modules.md)
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Eset: A "Nem sikerült engedélyezni a frissítési megoldást" hibaüzenet jelenik meg
 
@@ -299,7 +299,7 @@ Ez a hiba a következő okok miatt fordulhat elő:
 
 * Van egy ismétlődő számítógépnév különböző forrásszámítógép-azonosítókkal. Ez a forgatókönyv akkor fordul elő, ha egy adott számítógépnévvel rendelkező virtuális gép különböző erőforráscsoportokban jön létre, és az előfizetésben ugyanannak a logisztikai ügynöknek a munkaterületnek jelent.
 
-* Előfordulhat, hogy a beépített virtuálisgép-lemezkép olyan klónozott gépről származik, amely nem készült el a Rendszer-előkészítés (sysprep) segítségével, és a Microsoft Monitoring Agent (MMA) telepítve van.
+* A beépített virtuálisgép-lemezkép származhat egy klónozott gépről, amely nem készült el a Rendszer-előkészítéssel (sysprep) a Windows Log Analytics-ügynökével.
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -351,17 +351,16 @@ Ez a hiba akkor fordul elő, ha olyan frissítési központi telepítést hoz l�
 
 ### <a name="resolution"></a>Megoldás:
 
-Az alábbi kerülő megoldás segítségével ütemezheti ezeket az elemeket. A [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) parancsmag használatával `ForUpdate` ütemezést hozhat létre. Ezután használja a [New-AzureRmAutomationSoftwareSoftwareConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) parancsmag, és adja át `NonAzureComputer` a gépeket a másik bérlőben a paraméter. A következő példa bemutatja, hogyan kell ezt megtenni:
+Az alábbi kerülő megoldás segítségével ütemezheti ezeket az elemeket. A [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) parancsmag a `ForUpdateConfiguration` paraméterrel ütemezés létrehozásához használható. Ezután használja a [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) parancsmag, és adja át `NonAzureComputer` a gépeket a másik bérlőben a paraméter. A következő példa bemutatja, hogyan kell ezt megtenni:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
 
 $startTime = ([DateTime]::Now).AddMinutes(10)
 
-$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+$s = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdateConfiguration
 
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
 ## <a name="scenario-unexplained-reboots"></a><a name="node-reboots"></a>Forgatókönyv: Megmagyarázhatatlan újraindítások
@@ -614,7 +613,7 @@ A KB2267602 a [Windows Defender definíciófrissítése](https://www.microsoft.c
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, próbálkozzon az alábbi csatornák egyikével további támogatásért.
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, próbálkozzon az alábbi csatornák egyikével további támogatásért.
 
 * Válaszokat kaphat az Azure szakértőitől [az Azure Forums segítségével.](https://azure.microsoft.com/support/forums/)
 * Lépjen [@AzureSupport](https://twitter.com/azuresupport)kapcsolatba a használatával, a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében.

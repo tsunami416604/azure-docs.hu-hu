@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Services - Hogyan juthat szerepelt a piacon | Azure
+title: Go-To-Market Services - Hogyan juthat szerepelt a piacon | Azure Piactér
 description: Piacra lépő szolgáltatások – Ez a szakasz azt ismerteti, hogyan szerezhet be egy hirdetést az Azure Piactéren
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 266070a6292e41af6ce1b4258774d20a9bd90312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286285"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684603"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Hogyan szerezhető be az AppSource és az Azure Piactér szolgáltatásba?
 
@@ -38,7 +38,7 @@ A pontszám javítása érdekében a következő műveletekkel javíthatja a pon
 A kiemelt alkalmazások promóciói a keresési algoritmustól elkülönítve működnek.
 
 >[!Note]
->Ha a megoldás nem jelenik meg megfelelően a keresési eredmények között, nyújtson be támogatási jegyet a [Cloud Partner Portal](https://cloudpartner.azure.com/)súgómenüjében.
+>Ha a megoldás nem jelenik meg megfelelően a keresési eredmények között, nyújtson be támogatási jegyet a Partnerközpont Súgó [menüjében.](https://partner.microsoft.com/)
 
 A GTM-támogatás magában foglalja az önsegítő sablonok, webes tartalmak, képzések és eszközök teljes könyvtárát is, amelyek segítenek a hirdetések és a vállalkozás további népszerűsítésében.
 
@@ -46,6 +46,6 @@ A GTM-támogatás magában foglalja az önsegítő sablonok, webes tartalmak, k�
 
 Tudjon meg többet a [kereskedelmi piac előnyeit](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
-Jelentkezzen be a [Cloud Partner Portal-ba](https://cloudpartner.azure.com) az ajánlat létrehozásához és konfigurálásához.
+Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához és konfigurálásához.
 
 ---

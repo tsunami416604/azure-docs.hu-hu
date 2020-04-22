@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 0f86d1ad03062797764af6a0d49beacaa3458a8f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365548"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684728"
 ---
 # <a name="execute-python-script-module"></a>Python-parancsfájl-modul végrehajtása
 
@@ -164,7 +164,7 @@ A következő példa bemutatja, hogyan tölthet fel egy képfájlt a **Python-pa
 # imports up here can be used to
 import pandas as pd
 
-# The entry point function can contain up to two input arguments:
+# The entry point function must have two input arguments:
 #   Param<dataframe1>: a pandas.DataFrame
 #   Param<dataframe2>: a pandas.DataFrame
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -217,10 +217,17 @@ A **Python-parancsfájl végrehajtása** modul tartalmaz minta Python-kódot, am
 
 5. A **Python-parancsfájl** szövegmezőjébe írja be vagy illessze be az érvényes Python-parancsfájlt.
 
+    > [!NOTE]
+    > Kérjük, legyen nagyon óvatos a parancsfájl írásakor, és győződjön meg arról, hogy nincs szintaktikai hiba, például nem deklarált objektum vagy nem importált modul használata. Fordítson különös figyelmet az előre telepített modulok listájára is. A listán nem szereplő modulok importálásához telepítse a megfelelő csomagokat a parancsfájlba,
+    >  ``` Python
+    > import os
+    > os.system(f"pip install scikit-misc")
+    > ```
+    
     A **Python-parancsfájl** szövegmezője előre ki van töltve néhány megjegyzésben szereplő utasítással, valamint az adathozzáféréshez és a kimenethez szükséges mintakóddal. Ezt a kódot kell szerkesztenie vagy cserélnie. Ügyeljen arra, hogy kövesse a Python-konvenciókat a behúzásról és a házról.
 
     + A parancsfájlnak tartalmaznia `azureml_main` kell egy, a modul belépési pontjaként megnevezett függvényt.
-    + A belépési pont függvény legfeljebb két `Param<dataframe1>` bemeneti argumentumot tartalmazhat: és`Param<dataframe2>`
+    + A belépési pont függvénynek két `Param<dataframe1>` `Param<dataframe2>`bemeneti argumentuma lehet: és akkor is, ha ezek az argumentumok nincsenek a parancsfájlban használva.
     + A harmadik bemeneti porthoz csatlakoztatott tömörített fájlok kivannak `.\Script Bundle`csomagolva és a könyvtárban tárolódnak, amely szintén hozzáadódik a Pythonhoz. `sys.path` 
 
     Ezért ha a zip `mymodule.py`fájl tartalmazza, importálja a használatával. `import mymodule`

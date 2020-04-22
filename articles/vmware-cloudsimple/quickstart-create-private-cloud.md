@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7460490dbd45862f4269d25e3910373700ec9a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10831c0dc39fa241a43541850afae39593ae033b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564720"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678272"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – Privát felhőkörnyezet konfigurálása
 
@@ -26,7 +26,7 @@ Tekintse át [a hálózati előfeltételeket.](cloudsimple-network-checklist.md)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-a-private-cloud"></a>Magánfelhő létrehozása
 
@@ -159,8 +159,8 @@ Most már bejelentkezhet a vCenterbe a virtuális gépek és szabályzatok beál
     ![VSphere kliens indítása](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Válassza ki a kívánt vSphere kliens t a vCenter eléréséhez, és jelentkezzen be a felhasználónevével és jelszavával.  Az alapértelmezett értékek a következők:
-    * Felhasználónév: **CloudOwner\@cloudsimple.local**
-    * Jelszó: **CloudSimple123!**  
+    * Felhasználónév:`CloudOwner@cloudsimple.local`
+    * Jelszó: `CloudSimple123!`
 
 A vCenter képernyők a következő eljárások a vSphere (HTML5) kliens.
 

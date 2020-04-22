@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0cb7957008308425d91abb3e0f828cc40301736
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064929"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683310"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -40,7 +40,7 @@ A Microsoft a Gemalto vállalattal együttműködve biztosítja az Azure dediká
 
 ### <a name="q-what-is-an-hsm-used-for"></a>K: Mire használják a HSM-et?
 
-A HSM-ek olyan titkosítási funkciókhoz használt kriptográfiai kulcsok tárolására szolgálnak, mint az SSL (biztonságos szoftvercsatorna-réteg), az adatok titkosítása, a PKI (nyilvános kulcsú infrastruktúra), a DRM (digitális jogkezelés) és a dokumentumok aláírása.
+A HSM-ek olyan titkosítási funkciókhoz használt kriptográfiai kulcsok tárolására szolgálnak, mint a TLS (átviteli réteg biztonsága), az adatok titkosítása, a PKI (nyilvános kulcsú infrastruktúra), a DRM (digitális jogkezelés) és a dokumentumok aláírása.
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>K: Hogyan működik a dedikált HSM?
 
@@ -69,6 +69,7 @@ Az Azure dedikált HSM szolgáltatás SafeNet Luna Network HSM 7 (A790-es modell
 * USA keleti régiója
 * USA 2. keleti régiója
 * USA nyugati régiója
+* USA nyugati régiója, 2.
 * USA déli középső régiója
 * Délkelet-Ázsia
 * Kelet-Ázsia
@@ -84,6 +85,10 @@ Az Azure dedikált HSM szolgáltatás SafeNet Luna Network HSM 7 (A790-es modell
 * Kelet-Kanada
 * Kelet-Ausztrália
 * Délkelet-Ausztrália
+* Észak-Svájc
+* Svájc Nyugati
+* USA-beli államigazgatás – Virginia
+* USA-beli államigazgatás – Texas
 
 ## <a name="interoperability"></a>Együttműködési lehetőség
 
@@ -132,13 +137,13 @@ Igen. Tekintse meg a Gemalto áttelepítési útmutatót.
 
 ### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>K: Hogyan dönthetem el, hogy az Azure Key Vault vagy az Azure dedikált HSM?
 
-Az Azure dedikált HSM a megfelelő választás a hsm-eket használó helyszíni Azure-alkalmazásokba áttelepített vállalatok számára. A dedikált HSM-ek egy alkalmazás minimális módosításokkal történő áttelepítésének lehetőségét ismertetik. Ha kriptográfiai műveleteket hajtanak végre az alkalmazás kódját fut egy Azure virtuális gép vagy webalkalmazás, használhatják dedikált HSM. Általánosságban elmondható, hogy az IaaS (infrastruktúra mint szolgáltatás) modellekben futó zsugorfóliába csomagolt a HSM-eket kulcstárolóként támogató hsm-ek használhatnak hitelesítési HSM-et, például alkalmazásátjárót vagy forgalomkezelőt kulcs nélküli SSL, ADCS (Active Directory tanúsítványszolgáltatások) vagy hasonló PKI-eszközökhöz, dokumentumaláíráshoz, kódaláíráshoz vagy TDE-vel (transzparens adatbázis-titkosítás) konfigurált SQL Server (IaaS) eszközökhöz, amelyek főkulcsos kulcsa egy EKM (bővíthető kulcskezelő) szolgáltató használatával. Az Azure Key Vault alkalmas "felhőben született" alkalmazásokhoz vagy inaktív titkosításhoz olyan forgatókönyvek esetén, ahol az ügyféladatokat a PaaS (platform szolgáltatásként) vagy a SaaS (szoftver, mint szolgáltatás) forgatókönyvek, például az Office 365 ügyfélkulcs, az Azure Information Protection dolgozza fel , Az Azure Disk Encryption, az Azure Data Lake Store titkosítása ügyfél által kezelt kulccsal, Az Azure Storage titkosítása az ügyfél által kezelt kulccsal, és az Azure SQL az ügyfél által kezelt kulccsal.
+Az Azure dedikált HSM a megfelelő választás a hsm-eket használó helyszíni Azure-alkalmazásokba áttelepített vállalatok számára. A dedikált HSM-ek egy alkalmazás minimális módosításokkal történő áttelepítésének lehetőségét ismertetik. Ha kriptográfiai műveleteket hajtanak végre az alkalmazás kódját fut egy Azure virtuális gép vagy webalkalmazás, használhatják dedikált HSM. Általánosságban elmondható, hogy az IaaS (infrastruktúra mint szolgáltatás) modellekben futó zsugorfóliába csomagolt a HSM-eket kulcstárolóként támogató hsm-ek használhatnak hitelesítési HSM-et, például alkalmazásátjárót vagy forgalomkezelőt kulcs nélküli TLS, ADCS (Active Directory tanúsítványszolgáltatások) vagy hasonló PKI-eszközökhöz, dokumentumaláíráshoz, kódaláíráshoz vagy TDE-vel (transzparens adatbázis-titkosítás) konfigurált SQL Server (IaaS) eszközökhöz, amelyek főkulcsos kulcsa itm-et (ekm-t (bővíthető kulcskezelő) szolgáltatót használ. Az Azure Key Vault alkalmas "born-in-cloud" alkalmazások hoz, vagy a titkosítás inin tinik forgatókönyvek, ahol az ügyféladatok által feldolgozott PaaS (platform szolgáltatásként) vagy SaaS (szoftver, mint szolgáltatás) forgatókönyvek, mint például az Office 365 Ügyfélkulcs, Az Azure Information Protection, Az Azure Disk Encryption, Az Azure Data Lake Store titkosítási ügyfél által felügyelt kulcs, az Azure titkosítási storage ügyfél által kezelt kulcs, és az SQL ügyfél által kezelt kulcs.
 
 ### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>K: Milyen használati forgatókönyvek felelnek meg leginkább az Azure dedikált HSM-nek?
 
 Az Azure dedikált HSM a legalkalmasabb a migrálási forgatókönyvek. Ez azt jelenti, hogy ha a helyszíni alkalmazások áttelepítése az Azure-ba, amelyek már hsms.This means that if you are migrating on-premises applications to Azure that are already using HSMs. Ez egy kis súrlódású lehetőséget biztosít az Azure-ba való áttelepítéshez az alkalmazás minimális módosításával. Ha kriptográfiai műveleteket hajtanak végre az alkalmazás kódja fut az Azure VM vagy webapp, dedikált HSM használható. Általánosságban elmondható, hogy az IaaS (infrastruktúra szolgáltatásként) modellekben futó, zsugorfóliába csomagolt szoftverek, amelyek kulcstárolóként támogatják a HSM-eket, használhatják a HSM-et, például:
 
-* Alkalmazásátjáró vagy forgalomkezelő kulcs nélküli SSL-hez
+* Alkalmazásátjáró vagy forgalomkezelő kulcs nélküli TLS-hez
 * ADCS (Active Directory tanúsítványszolgáltatások)
 * Hasonló PKI-eszközök
 * Dokumentumaláíráshoz használt eszközök/alkalmazások

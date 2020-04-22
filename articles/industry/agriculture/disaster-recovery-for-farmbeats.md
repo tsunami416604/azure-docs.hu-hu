@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: d64735e683ba1133e7d381a68611d204c4068026
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313072"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683899"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>A FarmBeats vészhelyreállítása
 
@@ -28,7 +28,7 @@ Az alábbi szakaszok arról nyújtanak tájékoztatást, hogyan konfigurálhatja
 
 A FarmBeats három Azure-beli szolgáltatásban tárolja az adatokat, amelyek az **Azure storage,** **a Cosmos DB** és a Time Series **Insights.** A következő lépésekkel engedélyezheti az adatredundanciát ezeknél a szolgáltatásoknál egy párosított Azure-régióhoz:
 
-1.  **Azure Storage** – Kövesse ezt az iránymutatást, hogy a FarmBbeats üzembe helyezésében minden egyes tárfiókhoz adatredundanciát engedélyezhet.
+1.  **Azure Storage** – Kövesse ezt az iránymutatást, hogy a FarmBeats-telepítésben minden egyes tárfiókhoz adatredundanciát engedélyezhet.
 2.  **Azure Cosmos DB** – Kövesse ezt az iránymutatást a Cosmos DB-fiók, a FarmBeats üzembe helyezéséhez az adatredundancia engedélyezéséhez.
 3.  **Azure Time Series Insights (TSI)** – az TSI jelenleg nem kínál adatredundanciát. A Time Series Insights-adatok helyreállításához nyissa meg az érzékelő/időjárás-partnert, és ismét lenyomja az adatokat a FarmBeats üzembe helyezésére.
 

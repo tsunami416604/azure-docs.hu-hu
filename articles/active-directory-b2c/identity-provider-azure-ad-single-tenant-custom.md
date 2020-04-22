@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a6c85ebed7271655745de45694542fb359836e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be3a7a3ce4ce3a06398436058ea5d4d935ef5a5c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188410"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678095"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása Azure Active Directory-fiókkal az Azure Active Directory B2C egyéni szabályzataival
 
@@ -28,40 +28,8 @@ Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést az Azure Active Di
 
 Hajtsa végre az [Egyéni szabályzatok első lépéseit az Azure Active Directory B2C-ben](custom-policy-get-started.md)című részben.
 
-## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
-Ahhoz, hogy engedélyezze a bejelentkezést egy adott Azure AD-szervezet felhasználói számára, regisztrálnia kell egy alkalmazást a szervezeti Azure AD-bérlőn belül.
-
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Győződjön meg arról, hogy a szervezeti Azure AD-bérlőt (például contoso.com) tartalmazó könyvtárat használja. Válassza ki a **Könyvtár + előfizetés szűrőa** felső menüben, majd válassza ki az Azure AD-bérlőt tartalmazó könyvtárat.
-1. Válassza az **Összes szolgáltatás lehetőséget** az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Alkalmazásregisztrációk lehetőséget.**
-1. Válassza **az Új regisztráció lehetőséget.**
-1. Adja meg az alkalmazás **nevét.** Például: `Azure AD B2C App`.
-1. Csak ehhez az alkalmazáshoz fogadja el a fiókok alapértelmezett kiválasztását ebben a **szervezeti címtárban.**
-1. Az **átirányításURI,** fogadja el a **web**értékét, és adja meg `your-B2C-tenant-name` a következő URL-t az összes kisbetű, ahol lecseréli az Azure AD B2C bérlő nevét.
-
-    ```
-    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
-    ```
-
-    Például: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
-
-1. Kattintson a **Register** (Regisztrálás) elemre. Rögzítse az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
-1. Válassza **a Tanúsítványok & titkos kulcsok**at, majd az Új **ügyféltitok**lehetőséget.
-1. Adja meg a titkos **kulcsot,** válasszon egy lejárati lehetőséget, majd válassza a **Hozzáadás**lehetőséget. Rögzítse a titkos **adatik értékét** egy későbbi lépésben való használatra.
-
-## <a name="configuring-optional-claims"></a>Választható jogcímek konfigurálása
-
-Ha azt szeretné, `family_name` `given_name` hogy a és a jogcímek az Azure AD-ből, konfigurálhatja az alkalmazás választható jogcímeket az Azure Portal felhasználói felületén vagy az alkalmazásjegyzékben. További információ: [Választható jogcímek biztosítása az Azure AD-alkalmazáshoz.](../active-directory/develop/active-directory-optional-claims.md)
-
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Keresse meg és válassza ki az **Azure Active Directoryt**.
-1. A **Kezelés** szakaszban válassza **az Alkalmazásregisztrációk**lehetőséget.
-1. Válassza ki azt az alkalmazást, amelyhez a nem kötelező jogcímeket konfigurálni szeretné a listában.
-1. A **Kezelés** szakaszban válassza **a Token konfigurációja (előzetes verzió)** lehetőséget.
-1. Válassza **a Választható jogcím hozzáadása**lehetőséget.
-1. Válassza ki a konfigurálni kívánt tokentípust.
-1. Válassza ki a hozzáadni kívánt választható jogcímeket.
-1. Kattintson a **Hozzáadás** gombra.
+[!INCLUDE [active-directory-b2c-identity-provider-azure-ad](../../includes/active-directory-b2c-identity-provider-azure-ad.md)]
 
 ## <a name="create-a-policy-key"></a>Házirendkulcs létrehozása
 

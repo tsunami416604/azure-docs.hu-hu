@@ -1,18 +1,18 @@
 ---
-title: Azure IoT peremhálózati modulok
+title: Azure Marketplace IoT peremhálózati modulok
 description: Az IoT Edge-modul ajánlat az Azure Piactéren az alkalmazás- és szolgáltatáskiadók számára.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/22/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: aadbf33914f919e393a5ec88cf6fc0a6103911b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286149"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684335"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
@@ -58,7 +58,7 @@ A Microsoft Azure Piactér-szerződések és -szabályzatok összes feltétele a
 
 IoT Edge-modul közzététele az Azure Marketplace-en, meg kell felelnie az alábbi előfeltételeknek:
 
-- Hozzáférés a felhőpartneri portálhoz (CPP). További információ: [Azure Marketplace és AppSource közzétételi útmutató.](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)
+- Hozzáférés a Partnerközponthoz. További információ: [Azure Marketplace és AppSource közzétételi útmutató.](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)
 - Az IoT Edge-modul tanusködése egy Azure Container Registry. 
 - Az IoT Edge-modul metaadatai készen állnak, például (nem teljes lista): 
     - A cím
@@ -71,19 +71,19 @@ IoT Edge-modul közzététele az Azure Marketplace-en, meg kell felelnie az alá
 
 **Műszaki követelmények**
 
-Az IoT Edge-modul elsődleges technikai követelményeit, hogy minősítést kapjon és közzétehessen az Azure Marketplace-en, az [IoT Edge modul technikai eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)című ismerteti részletesen ismerteti.  
+Az IoT Edge-modul elsődleges technikai követelményeit, hogy minősítést kapjon és közzétehessen az Azure Marketplace-en, az [IoT Edge modul technikai eszközeinek előkészítése](./partner-center-portal/create-iot-edge-module-asset.md)című ismerteti részletesen ismerteti.
 
 ## <a name="documentation-and-resources"></a>Dokumentáció és források
 
-[Hozzon létre egy IoT Edge-modul ajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – Az új IoT Edge-modul ajánlat a felhőbeli közzétételi portál on közzétételi lépéseket.
+[IoT Edge-modulajánlat létrehozása](./partner-center-portal/azure-iot-edge-module-creation.md) – Egy új IoT Edge-modul ajánlat a Partner Centerben való közzétételének lépései.
 
 ## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg,
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piacon.
+- [További információ](https://azuremarketplace.microsoft.com/sell) a piactérről.
 
-Ha regisztrált, és új ajánlatot hoz létre, vagy egy meglévőn dolgozik,
+A Partnerközpontban való regisztrációhoz és új ajánlat létrehozásához vagy egy meglévő
 
-- Jelentkezzen be a [Cloud Partner Portalszolgáltatásba](https://cloudpartner.azure.com/) az ajánlat létrehozásához vagy befejezéséhez.
-- Tekintse meg [az IoT Edge-modul közzétételi áttekintését](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts) az IoT Edge-modulajánlat közzétételéről.
+- Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához vagy teljesítéséhez.
+- [Tekintse meg az IoT Edge-modul ajánlat ának létrehozása](./partner-center-portal/azure-iot-edge-module-creation.md) az IoT Edge-modulajánlat közzétételéről.

@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a518ff070ea021726ee382169e87cca55cad36d0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c900b2a363a4ff271e7a436b358ecf170daca163
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428250"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687025"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Hatókörrel rendelkező szerepkörök hozzárendelése felügyeleti egységhez
 
 Az Azure Active Directoryban (Azure AD) a felhasználók at rendelhet egy Azure AD-szerepkörhöz, amelynek hatóköre egy vagy több felügyeleti egységre (AUs) korlátozódik a részletesebb felügyeleti vezérléshez.
 
-A PowerShell és a Microsoft Graph felügyeleti egységfelügyelethez való használatának előkészítésére vonatkozó lépésekről [az Első lépések .](roles-admin-units-manage.md#getting-started)
+A PowerShell és a Microsoft Graph felügyeleti egységkezeléshez való használatának előkészítésére vonatkozó lépésekről az [Első lépések ( Első lépések) témakörben található.](roles-admin-units-manage.md#get-started)
 
 ## <a name="roles-available"></a>Elérhető szerepkörök
 
