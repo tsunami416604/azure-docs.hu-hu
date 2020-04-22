@@ -3,12 +3,12 @@ title: Oktatóanyag – Sql Server-adatbázisok biztonsági mentése az Azure-ba
 description: Ebben az oktatóanyagban megtudhatja, hogyan készíthet biztonsági másolatot egy Azure-beli virtuális gépen futó SQL Server-adatbázisról egy Azure Backup Recovery Services-tárolóba.
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: 3216404b04647e2fb5f15beb09b9a4ccd6648bba
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f1d76fe0dfa428688714b8383c3974ac63195681
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74171886"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680728"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>SQL Server-adatbázis biztonsági mentése Azure-beli virtuális gépben
 
@@ -64,7 +64,7 @@ Az adatbázisnevek esetében kerülje a következőket:
 * Szögletes zárójel bezárása "]"
 * 'F:\' kezdetű adatbázisnevek
 
-Az Azure-tábla nem támogatott karakterei aliasok használatával rendelkezünk, de azt javasoljuk, hogy kerülje őket. [További információ](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+Az Azure-tábla nem támogatott karakterei aliasok használatával rendelkezünk, de azt javasoljuk, hogy kerülje őket. [További információ](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

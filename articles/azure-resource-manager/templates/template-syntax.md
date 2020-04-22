@@ -2,13 +2,13 @@
 title: Sablon szerkezete és szintaxisa
 description: Az Azure Resource Manager-sablonok szerkezetét és tulajdonságait ismerteti deklaratív JSON-szintaxissal.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 4e8334e4ddfaee52c5d1aa68fb8689fcde0a6cbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 60d800eb5251fb3454ba60a67bd109261c6ff9d4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79459990"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687866"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Az ARM sablonok szerkezetének és szintaxisának megismerése
 
@@ -175,7 +175,7 @@ A felhasználói függvény ek meghatározásakor vannak bizonyos korlátozások
 
 Az egyéni függvények használatára vonatkozó példákat az [Azure Resource Manager sablon Felhasználó által definiált függvények (Felhasználó által definiált) témakörben talál.](template-user-defined-functions.md)
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 Az erőforrások szakaszban megadhatja az üzembe helyezett vagy frissített erőforrásokat.
 
@@ -293,7 +293,7 @@ Néhány lehetősége van arra, hogy megjegyzéseket és metaadatokat adjon a sa
 Szövegközi megjegyzések esetén használhatja `//` `/* ... */` vagy használhatja, de ez a szintaxis nem működik minden eszközzel. A portálsablon-szerkesztő nem használható szövegközi megjegyzésekkel rendelkező sablonokon való munkára. Ha hozzáadja ezt a stílust, győződjön meg róla, hogy a használt eszközök támogatják a beépített JSON megjegyzéseket.
 
 > [!NOTE]
-> A sablonok üzembe helyezéséhez megjegyzéseket az Azure `--handle-extended-json-format` CLI használatával, a kapcsolót kell használnia.
+> A sablonok üzembe helyezéséhez megjegyzéseket az Azure CLI 2.3.0-s vagy régebbi verzióval, a `--handle-extended-json-format` kapcsolót kell használnia.
 
 ```json
 {
@@ -404,7 +404,7 @@ A karakterláncokat több sorra is felbonthatja. Lásd például a helytulajdons
   ],
 ```
 
-A sablonok üzembe helyezéséhez többsoros karakterláncok használatával Azure CLI, a `--handle-extended-json-format` kapcsolót kell használnia.
+A sablonok üzembe helyezéséhez többsoros karakterláncok használatával Azure CLI 2.3.0-s `--handle-extended-json-format` vagy újabb verzióval, a kapcsolót kell használnia.
 
 ## <a name="next-steps"></a>További lépések
 

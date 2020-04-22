@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25eb93a01c59225b6d9e64db5d08b954adb4f8ab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6325d5555b01373b148dce69731ec64896d6e1fd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424068"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680489"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Az OPENROWSET használata az SQL on-demand használatával (előzetes verzió)
 
@@ -26,7 +26,7 @@ Az OPENROWSET jelenleg nem támogatott az SQL készletben.
 
 ## <a name="syntax"></a>Szintaxis
 
-```
+```syntaxsql
 --OPENROWSET syntax for reading Parquet files
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , 
@@ -60,36 +60,39 @@ A lekérdezéshez a céladatokat tartalmazó bemeneti fájlok esetében két leh
 
 - "PARQUET" - Bináris fájl parketta formátumban 
 
-"unstructured_data_path"
+**"unstructured_data_path"**
 
-Az adatokhoz vezető utat létrehozó unstructured_data_path a következőképpen<prefix>épül fel: ' ://<storage_account_path>/<storage_path>" 
+Az adatok elérési útját létrehozó unstructured_data_path a következőképpen épül fel:  
+'\<előtag\<>://\<storage_account_path>/ storage_path>"
  
  
  Az alábbiakban megtalálja a megfelelő tárfiók elérési útjait, amelyek az adott külső adatforráshoz kapcsolódnak. 
 
-| Külső adatforrás       | Előtag | Tárfiók elérési útja                                |
-| -------------------------- | ------ | --------------------------------------------------- |
-| Azure Blob Storage         | https  | storage_account>.blob.core.windows.net <             |
-| Azure Data Lake Áruház Gen1 | https  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Áruház Gen2 | https  | <storage_account storage_account>.dfs.core.windows.net              |
+| Külső adatforrás       | Előtag | Tárfiók elérési útja                                 |
+| -------------------------- | ------ | ---------------------------------------------------- |
+| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net             |
+| Azure Data Lake Áruház Gen1 | https  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Áruház Gen2 | https  | \<storage_account>.dfs.core.windows.net              |
+||||
 
- "<storage_path>" 
+"\<storage_path>"
 
  Megadja a tárolón belüli elérési utat, amely az olvasni kívánt mappára vagy fájlra mutat. Ha a görbe egy tárolóra vagy mappára mutat, a program az összes fájlt az adott tárolóból vagy mappából olvassa be. Az almappákban lévő fájlok nem lesznek benne. 
  
  Helyettesítő karakterek használatával több fájlt vagy mappát is megcélozhat. Több nem egymást követő helyettesítő karakter használata engedélyezett.
-Az alábbi példa az összes *csv-fájlt* beolvassa, kezdve *a* */csv/population*kapcsolóval kezdődő összes mappá populációjával: 'https://sqlondemandstorage.blob.core.windows.net/csv/population */population*.csv'
+Az alábbi példa az összes *csv-fájlt* beolvassa, kezdve a */csv/population*kapcsolóval kezdődő mappák *populációjával:*  
+`https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Ha a unstructured_data_path mappának adja meg, az SQL igény szerinti lekérdezése fájlokat fog beolvasni a mappából. 
 
 > [!NOTE]
 > A Hadooptól és a PolyBase-től eltérően az igény szerinti SQL nem ad vissza almappákat. A Hadooptól és a PloyBase-től eltérően az SQL igény szerinti fájlja idoben olyan fájlokat ad vissza, amelyek fájlneve aláhúzással (_) vagy pont (.) karakterrel kezdődik.
 
-Az alábbi példában, hahttps://mystorageaccount.dfs.core.windows.net/webdata/a unstructured_data_path=' ", az SQL on-demand lekérdezés sorokat ad vissza a mydata.txt és a _hidden.txt. Nem ad vissza a mydata2.txt fájlt és a mydata3.txt fájlt, mert almappában találhatók.
+Az alábbi példában, ha`https://mystorageaccount.dfs.core.windows.net/webdata/`a unstructured_data_path= , az SQL on-demand lekérdezés sorokat ad vissza a mydata.txt és a _hidden.txt fájlból. Nem ad vissza a mydata2.txt fájlt és a mydata3.txt fájlt, mert almappában találhatók.
 
 ![Külső táblák rekurzív adatai](./media/develop-openrowset/folder-traversal.png)
 
-[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }] ]
+`[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]`
 
 A WITH záradék lehetővé teszi a fájlokból olvasni kívánt oszlopok megadását.
 
@@ -113,7 +116,8 @@ WITH (
     --[population] bigint
 )
 ```
-<bulk_options>
+
+**\<bulk_options>**
 
 FIELDTERMINATOR ='field_terminator'
 

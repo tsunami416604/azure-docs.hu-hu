@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 62d63b24baab204cb029565b109ea2de768e1d80
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ef933ae9a6b0a34529c7ec145b13c023728a3457
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78165445"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731858"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Rövid útmutató: Java-tárolórendszerképek létrehozása és leküldése az Azure Container Registry szolgáltatásba
 
@@ -163,7 +163,7 @@ A microsoftáltal támogatott Java alapképek egyéb verzióit a következő té
 Ha szeretne többet megtudni a Spring és az Azure szolgáltatásról, lépjen tovább a Spring on Azure dokumentációs központra.
 
 > [!div class="nextstepaction"]
-> [A Spring az Azure-on](/azure/java/spring-framework)
+> [A Spring az Azure-on](/azure/developer/java/spring-framework)
 
 ### <a name="additional-resources"></a>További források
 
@@ -173,5 +173,5 @@ További információkért lásd a következőket:
 * [Az Azure DevOps és a Java használata](/azure/devops/java)
 * [Spring Boot on Docker – Első lépések](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
-* [Spring Boot-alkalmazás üzembe helyezése az Azure App Service-ben](/azure/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
+* [Spring Boot-alkalmazás üzembe helyezése az Azure App Service-ben](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
 * [Egyéni Docker-rendszerkép használata az Azure Web App on Linuxban](/azure/app-service-web/app-service-linux-using-custom-docker-image)

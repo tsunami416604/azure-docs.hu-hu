@@ -10,80 +10,34 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1c12135ec6e5a0f4de1fdd46134a056447d3c331
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3d89275e1418035fed8aad3ffddd8def2c1d59ce
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424236"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686060"
 ---
 # <a name="about-azure-key-vault-keys"></a>Az Azure Key Vault-kulcsok –
 
-Az Azure Key Vault lehetővé teszi a Microsoft Azure-alkalmazások és a felhasználók számára a kulcsok tárolását és használatát. Támogatja a több kulcstípust és algoritmust, és lehetővé teszi a hardveres biztonsági modulok (HSM) használatát a nagy értékű kulcsokhoz. 
+Az Azure Key Vault több kulcstípust és algoritmust támogat, és lehetővé teszi a hardveres biztonsági modulok (HSM) használatát a nagy értékű kulcsokhoz.
 
-A Key Vaultról további általános információt a [Mi az Azure Key Vault?](/azure/key-vault/key-vault-overview)
+A Key Vault ban lévő kriptográfiai kulcsok JSON webkulcs [JWK] objektumokként jelennek meg. A JavaScript object notation (JSON) és a JavaScript Object Signing and Encryption (JOSE) specifikációi a következők:
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+-   [JSON webkulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [JSON webes titkosítás (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
+-   [JSON webes algoritmusok (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [JSON webes aláírás (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-A következő szakaszok általános információkat nyújtanak a Key Vault szolgáltatás megvalósításában.
+Az alap JWK/JWA specifikációk is ki vannak bővítve, hogy a Key Vault implementációjában egyedi kulcstípusok at is lehetővé tegyék. Például a kulcsok importálása HSM szállító-specifikus csomagoláshasználatával lehetővé teszi a kulcsok biztonságos szállítását, amely csak a Key Vault HSM-ekben használható. 
 
-### <a name="supporting-standards"></a>Támogató szabványok
-
-A JavaScript objektumjelölés (JSON) és a JavaScript-objektumaláíró és -titkosítási (JOSE) specifikációk fontos háttérinformációk.  
-
--   [JSON webkulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
--   [JSON webes titkosítás (JWE)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
--   [JSON webes algoritmusok (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
--   [JSON webes aláírás (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
-
-### <a name="data-types"></a>Adattípusok
-
-A kulcsok, a titkosítás és az aláírás megfelelő adattípusait a JOSE specifikációiban olvassa el.  
-
--   **algoritmus** - egy támogatott algoritmus egy kulcsművelethez, például RSA1_5  
--   **rejtjelszöveg-érték** - titkosítási szöveg oktett, Base64URL használatával kódolva  
--   **emészthető érték** - a kimenetegy kivonatoló algoritmus, kódolt segítségével Base64URL  
--   **kulcs-típus** - az egyik támogatott kulcstípus, például az RSA (Rivest-Shamir-Adleman).  
--   **egyszerű szöveg-érték** - egyszerű szöveges oktett, Base64URL használatával kódolva  
--   **aláírás-érték** - egy aláírási algoritmus kimenete, Base64URL használatával kódolva  
--   **base64URL** - base64URL [RFC4648] kódolt bináris érték  
--   **logikai -** igaz vagy hamis  
--   **Identitás** – az Azure Active Directory (Azure AD) identitása.  
--   **IntDate** - JSON decimális érték, amely az 1970-01-01T0:0:0Z UTC és a megadott UTC dátum/idő között eltelt másodpercek számát jelöli. Lásd az RFC3339-et a dátumra/időpontokra vonatkozó részletekért, általában és különösen az UTC-t illetően.  
-
-### <a name="objects-identifiers-and-versioning"></a>Objektumok, azonosítók és verziószámozás
-
-A Key Vaultban tárolt objektumok verziószámmal rendelkeznek, amikor egy objektum új példányát hozják létre. Minden verzió hoz egy egyedi azonosítót és URL-címet. Amikor egy objektumot először hoznak létre, egyedi verzióazonosítót kap, és az objektum aktuális verziójaként van megjelölve. Az azonos objektumnévvel rendelkező új példány létrehozása egyedi verzióazonosítót ad az új objektumnak, így az lesz az aktuális verzió.  
-
-A Key Vault objektumai az aktuális azonosító vagy egy verzióspecifikus azonosító használatával címezhetők. Ha például egy kulcsot `MasterKey`ad meg a nevével, az aktuális azonosítóval végzett műveletek végrehajtása a rendszer a legújabb elérhető verziót használja. Ha a verzióspecifikus azonosítóval hajt végre műveleteket, a rendszer az objektum adott verzióját használja.  
-
-Az objektumok egyedileg azonosíthatók a Key Vaultban egy URL-cím használatával. A rendszerben nincs két objektum azonos URL-címe, függetlenül a földrajzi helytől. Az objektum teljes URL-címét objektumazonosítónak nevezzük. Az URL-cím egy előtagból áll, amely azonosítja a Key Vaultot, az objektumtípust, a felhasználó által megadott objektumnevet és az objektumverziót. Az objektumneve nem i. és nem módosítható. Az objektumverziót nem tartalmazó azonosítókat alapazonosítóknak nevezzük.  
-
-További információ: [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
-
-Az objektumazonosító általános formátuma a következő:  
-
-`https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
-
-Az elemek magyarázata:  
-
-|||  
-|-|-|  
-|`keyvault-name`|A Microsoft Azure Key Vault szolgáltatás egyik kulcstartójának neve.<br /><br /> A Key Vault-neveket a felhasználó választja ki, és globálisan egyediek.<br /><br /> A Key Vault nevének 3-24 karakterből álló karakterláncnak kell lennie, amely csak 0-9, a-z, A-Z és -.|  
-|`object-type`|Az objektum típusa, "kulcsok" vagy "titkos kulcsok".|  
-|`object-name`|Az `object-name` egy felhasználó által megadott nevet, és egyedinek kell lennie a Key Vault.An is a user provided name for and must be unique within a Key Vault. A névnek 1-127 karakterből kell lennie, amely csak 0-9, a-z, A-Z és -.|  
-|`object-version`|A `object-version` rendszer által létrehozott, 32 karakteres karakterlánc-azonosító, amely opcionálisan egy objektum egyedi verziójának címzésére szolgál.|  
-
-## <a name="key-vault-keys"></a>Key Vault-kulcsok
-
-### <a name="keys-and-key-types"></a>Kulcsok és kulcstípusok
-
-A Key Vault ban lévő kriptográfiai kulcsok JSON webkulcs [JWK] objektumokként jelennek meg. Az alap JWK/JWA specifikációk is ki vannak bővítve, hogy a Key Vault implementációjában egyedi kulcstípusok at is lehetővé tegyék. Például a kulcsok importálása HSM szállító-specifikus csomagoláshasználatával lehetővé teszi a kulcsok biztonságos szállítását, amely csak a Key Vault HSM-ekben használható.  
+Az Azure Key Vault támogatja a soft és a hard kulcsokat is:
 
 - **"Puha" kulcsok:** A Key Vault által szoftverben feldolgozott kulcs, de nyugalmi állapotban egy HSM-ben lévő rendszerkulccsal van titkosítva. Az ügyfelek importálhatnak egy meglévő RSA- vagy EK-(Elliptikus ív) kulcsot, vagy kérhetik, hogy a Key Vault hozzon létre egyet.
 - **"Kemény" billentyűk:** HSM-ben (hardverbiztonsági modul) feldolgozott kulcs. Ezek a kulcsok a Key Vault HSM biztonsági világok egyikében védettek (földrajzi helyenként egy biztonsági világ van az elkülönítés fenntartásához). Az ügyfelek importálhatnak RSA- vagy EK-kulcsot, ideiglenes formában vagy kompatibilis HSM-eszközről exportálva. Az ügyfelek is kérhetik a Key Vault egy kulcs létrehozásához. Ez a kulcstípus hozzáadja a key_hsm attribútumot a JWK-beszerzéshez a HSM kulcsanyag hordozásához.
 
-     A földrajzi határokról a [Microsoft Azure Adatvédelmi központban](https://azure.microsoft.com/support/trust-center/privacy/) talál további információt.  
+A földrajzi határokról a [Microsoft Azure Adatvédelmi központban](https://azure.microsoft.com/support/trust-center/privacy/) talál további információt.  
+
+## <a name="cryptographic-protection"></a>Kriptográfiai védelem
 
 A Key Vault csak az RSA és az Elliptikus görbe billentyűket támogatja. 
 
@@ -94,9 +48,7 @@ A Key Vault csak az RSA és az Elliptikus görbe billentyűket támogatja.
 
 A Key Vault támogatja a 2048, 3072 és 4096 méretű RSA-kulcsokat. A Key Vault támogatja a P-256, P-384, P-521 és P-256K (SECP256K1) elliptikus görbe kulcstípusokat.
 
-### <a name="cryptographic-protection"></a>Kriptográfiai védelem
-
-A Key Vault által használt kriptográfiai modulok, legyen ek HSM vagy szoftver, FIPS (Federal Information Processing Standards) ellenőrzöttek. FiPS módban való futtatáshoz nem kell semmi különlegeset tennie. A HSM-védelemmel ellátottként **létrehozott** vagy **importált** kulcsok feldolgozása egy HSM-en belül történik, fips 140-2 2 szintű 2-re érvényesítve. A szoftvervédelemmel **ellátottként létrehozott** vagy **importált** kulcsokat a FIPS 140-2 1. További információt a [Kulcsok és kulcstípusok](#keys-and-key-types)című témakörben talál.
+A Key Vault által használt kriptográfiai modulok, legyen ek HSM vagy szoftver, FIPS (Federal Information Processing Standards) ellenőrzöttek. FiPS módban való futtatáshoz nem kell semmi különlegeset tennie. A HSM-védelemmel ellátottként **létrehozott** vagy **importált** kulcsok feldolgozása egy HSM-en belül történik, fips 140-2 2 szintű 2-re érvényesítve. A szoftvervédelemmel **ellátottként létrehozott** vagy **importált** kulcsokat a FIPS 140-2 1.
 
 ###  <a name="ec-algorithms"></a>EK-algoritmusok
  A következő algoritmusazonosítók a Key Vault EK- és EC-HSM-kulcsaival támogatottak. 
@@ -114,7 +66,6 @@ A Key Vault által használt kriptográfiai modulok, legyen ek HSM vagy szoftver
 -   **ES256K** - ECDSA Az SHA-256 digests és gombok létre görbe P-256K. Ez az algoritmus szabványosítás a függőben van.
 -   **ES384** - ECDSA az SHA-384 emésztéshez és a P-384 görbével létrehozott billentyűkhez. Ezt az algoritmust az [RFC7518](https://tools.ietf.org/html/rfc7518)ismerteti.
 -   **ES512** - ECDSA az SHA-512 emésztéshez és a P-521 görbével létrehozott billentyűkhez. Ezt az algoritmust az [RFC7518](https://tools.ietf.org/html/rfc7518)ismerteti.
-
 
 ###  <a name="rsa-algorithms"></a>RSA algoritmusok  
  A következő algoritmusazonosítók a Key Vault RSA- és RSA-HSM-kulcsaival támogatottak.  
@@ -134,7 +85,7 @@ A Key Vault által használt kriptográfiai modulok, legyen ek HSM vagy szoftver
 -   **RS512** - RSASSA-PKCS-v1_5 SHA-512 használatával. Az alkalmazás által megadott kivonatoló értéket Az SHA-512 használatával kell kiszámítani, és 64 bájt hosszúnak kell lennie.  
 -   **RSNULL** – Lásd a [RFC2437] speciális használati eset, amely bizonyos TLS-forgatókönyveket tesz lehetővé.  
 
-###  <a name="key-operations"></a>Kulcsfontosságú műveletek
+##  <a name="key-operations"></a>Kulcsfontosságú műveletek
 
 A Key Vault a következő műveleteket támogatja a kulcsobjektumokon:  
 
@@ -164,7 +115,7 @@ A felhasználók korlátozhatják a Key Vault által a JWK objektum key_ops tula
 
 A JWK-objektumokról a [JSON webkulcsban (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)talál további információt.  
 
-###  <a name="key-attributes"></a>Kulcsjellemzők
+## <a name="key-attributes"></a>Kulcsjellemzők
 
 A fő elemek mellett a következő attribútumok is megadhatók. JSON-kérelemben a kulcsszó és a kapcsos zárójelek ({' '}) attribútumokra akkor is szükség van, ha nincsenek megadva attribútumok.  
 
@@ -177,24 +128,24 @@ Vannak további írásvédett attribútumok, amelyek a legfontosabb attribútumo
 - *létrehozva*: IntDate, nem kötelező. A *létrehozott* attribútum jelzi, hogy a kulcs ezen verziója mikor jött létre. Az érték null értékű az attribútum hozzáadása előtt létrehozott kulcsok esetében. Értéke intdate értéket tartalmazó szám kell, hogy legyen.  
 - *frissítve*: IntDate, nem kötelező. A *frissített* attribútum azt jelzi, hogy a kulcs ezen verziója mikor lett frissítve. Az érték null értékű azattribútum hozzáadása előtt utoljára frissített kulcsok esetében. Értéke intdate értéket tartalmazó szám kell, hogy legyen.  
 
-Az IntDate-ről és más adattípusokról az [Adattípusok című](#data-types) témakörben talál további információt.  
+Az IntDate és más adattípusokról további információt a [Kulcsok, titkos kulcsok és tanúsítványok: [Adattípusok](../general/about-keys-secrets-certificates.md#data-types)– ismertet:
 
-#### <a name="date-time-controlled-operations"></a>Dátum-idő vezérelt műveletek
+### <a name="date-time-controlled-operations"></a>Dátum-idő vezérelt műveletek
 
 A még nem érvényes és lejárt kulcsok az *nbf* / *exp* ablakon kívül a **visszafejtéshez,** **a kicsomagoláshoz**és a műveletek **ellenőrzéséhez** (nem ad vissza 403, Tiltott). A még nem érvényes állapot használatának oka, hogy lehetővé teszi egy kulcs tesztelése az éles használat előtt. A lejárt állapot használatának oka az, hogy engedélyezi a helyreállítási műveleteket a kulcs érvényessége esetén létrehozott adatokon. Emellett letilthatja a kulcshoz való hozzáférést a Key Vault-házirendek használatával, vagy az *engedélyezett* kulcsattribútum **hamis**ra frissítésével.
 
-Az adattípusokról az [Adattípusok](#data-types)című témakörben talál további információt.
+Az adattípusokról az [Adattípusok](../general/about-keys-secrets-certificates.md#data-types)című témakörben talál további információt.
 
 A többi lehetséges attribútumról a [JSON webkulcsban (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)talál további információt.
 
-### <a name="key-tags"></a>Kulcscímkék
+## <a name="key-tags"></a>Kulcscímkék
 
 További alkalmazásspecifikus metaadatokat adhat meg címkék formájában. A Key Vault legfeljebb 15 címkét támogat, amelyek mindegyike 256 karakternévvel és 256 karakterértékkel rendelkezhet.  
 
 >[!Note]
 >A címkéket a hívó akkor tudja olvasni, ha rendelkezik a *listával,* vagy engedélyt *kap* az adott objektumtípusra (kulcsokra, titkos kulcsokra vagy tanúsítványokra).
 
-###  <a name="key-access-control"></a>Kulcshozzáférés-vezérlés
+##  <a name="key-access-control"></a>Kulcshozzáférés-vezérlés
 
 A Key Vault által kezelt kulcsok hozzáférés-vezérlése a kulcsok tárolójaként szolgáló Key Vault szintjén érhető el. A kulcsok hozzáférés-vezérlési házirendje különbözik az ugyanabban a Key Vaultban lévő titkos kulcsok hozzáférés-vezérlési házirendjétől. A felhasználók létrehozhatnak egy vagy több tárolót a kulcsok tárolására, és a forgatókönyv megfelelő szegmentálásának és a kulcsok kezelésének fenntartásához szükségesek. A kulcsok hozzáférés-vezérlése független a titkos kulcsok hozzáférés-vezérlésátótól.  
 
@@ -224,7 +175,11 @@ A következő engedélyeket lehet adni, felhasználónként / egyszerű szolgál
 
 A kulcsok használata című témakörben talál további információt [a Key Vault REST API-hivatkozáskulcs-műveleteicímű témakörben.](/rest/api/keyvault) Az engedélyek létrehozásáról további információt a [Tárolók – Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és [tárolók – hozzáférési szabályzat című témakörben talál.](/rest/api/keyvault/vaults/updateaccesspolicy) 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="next-steps"></a>További lépések
 
+- [Tudnivalók a Key Vaultról](../general/overview.md)
+- [Kulcsok, titkos kulcsok és tanúsítványok –](../general/about-keys-secrets-certificates.md)
+- [Információ a titkos kulcsokról](../secrets/about-secrets.md)
+- [Információ a tanúsítványokról](../certificates/about-certificates.md)
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)

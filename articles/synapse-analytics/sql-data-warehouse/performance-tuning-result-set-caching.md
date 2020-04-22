@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 42f8f51545f643e1ed9e1a23c9445f6e216fdabe
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: eadbe13269ce1259b4560af117f5b15b3b294151
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273409"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730604"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Teljesítmény-finomhangolás eredményhalmaz gyorsítótárazásával
 
@@ -42,10 +42,11 @@ Ha az eredményhalmaz-gyorsítótárazás be van kapcsolva egy adatbázisban, a 
 - Felhasználó által definiált függvényeket használó lekérdezések
 - Olyan táblákat használó lekérdezések, amelyeknél a sorszintű biztonság vagy az oszlopszintű biztonság engedélyezve van
 - 64 KB-nál nagyobb sorméretű adatokat visszaválaszoló lekérdezések
+- Nagy méretű (>10 GB-os) adatokat visszaadó lekérdezések 
 
 > [!IMPORTANT]
 > Az eredményhalmaz gyorsítótárának létrehozásához és a gyorsítótárból történő adatok lekéréséhez a synapszi SQL-készletpéldány vezérlőcsomópontján történik.
-> Ha az eredményhalmaz-gyorsítótárazás be van kapcsolva, a nagy eredményhalmazt (például >1 millió sort) visszaadó lekérdezések futtatása magas PROCESSZOR-használatot okozhat a vezérlőcsomóponton, és lelassíthatja a példány általános lekérdezési válaszát.  Ezeket a lekérdezéseket gyakran használják az adatok feltárása vagy etl műveletek során. A vezérlőcsomópont hangsúlyozásának és a teljesítményproblémák nak a elkerülése érdekében a felhasználóknak ki kell kapcsolniuk az eredménykészlet-gyorsítótárazást az adatbázisban, mielőtt futtatnák az ilyen típusú lekérdezéseket.  
+> Ha az eredményhalmaz-gyorsítótárazás be van kapcsolva, a nagy eredményhalmazt visszaadó lekérdezések futtatása (például >1 GB) nagy szabályozást okozhat a vezérlőcsomóponton, és lelassíthatja a példány általános lekérdezési válaszát.  Ezeket a lekérdezéseket gyakran használják az adatok feltárása vagy etl műveletek során. A vezérlőcsomópont hangsúlyozásának és a teljesítményproblémák nak a elkerülése érdekében a felhasználóknak ki kell kapcsolniuk az eredménykészlet-gyorsítótárazást az adatbázisban, mielőtt futtatnák az ilyen típusú lekérdezéseket.  
 
 Futtassa ezt a lekérdezést a lekérdezés eredményhalmaz-gyorsítótárazási műveletei által megtett időre:
 

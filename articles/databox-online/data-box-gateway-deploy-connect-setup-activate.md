@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3cf4fd958202c28586b7c15932dc88a21d7c60f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79087947"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686865"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Oktatóanyag: Csatlakozás, beállítás, az Azure Data Box-átjáró aktiválása
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Ez az oktatóanyag bemutatja, hogyan csatlakozhat, állíthat be és aktiválhat a Data Box Gateway eszközhöz a helyi webes felhasználói felület használatával. 
 
@@ -41,7 +41,7 @@ A Data Box Gateway konfigurálása és beállítása előtt győződjön meg arr
 
 1. Nyisson meg egy böngészőablakot, és nyissa meg az eszköz helyi webes felhasználói felületét a következő helyen:
    
-   [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
+   https:\//ip-address-of-network-interface
    
    Használja az előző oktatóanyagban említett kapcsolat URL-címét. Hibaüzenet vagy figyelmeztetés jelenik meg, amely azt jelzi, hogy probléma van a webhely biztonsági tanúsítványával.
 

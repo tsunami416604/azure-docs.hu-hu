@@ -8,14 +8,14 @@ manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: c156d5f1242674adc53a2a813e9b2c140221ecfb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 85b966a9423fa6c8b2dc9e97cab1e24d9756caa4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245310"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687341"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rövid útmutató: Java Spring alkalmazás létrehozása az Azure App Konfigurációjával
 
@@ -143,25 +143,25 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
 1. Hozzon létre `bootstrap.properties` egy új fájlt az alkalmazás erőforráskönyvtára alatt, és adja hozzá a következő sorokat a fájlhoz. Cserélje le a mintaértékeket az alkalmazáskonfigurációs tároló megfelelő tulajdonságaira.
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string=${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. Állítson be egy **APP_CONFIGURATION_CONNECTION_STRING**nevű környezeti változót, és állítsa be az alkalmazáskonfigurációs tároló hozzáférési kulcsára. A parancssorban futtassa a következő parancsot, és indítsa újra a parancssort a módosítás érvénybe léptetésének engedélyezéséhez:
 
     ```cmd
-        setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
+    setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
     ```
 
     Ha windows PowerShellt használ, futtassa a következő parancsot:
 
     ```azurepowershell
-        $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
+    $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
     ```
 
     MacOS vagy Linux használata esetén futtassa a következő parancsot:
 
     ```cmd
-        export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
+    export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása

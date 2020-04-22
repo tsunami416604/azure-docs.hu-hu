@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 69ef68dafc2385eb5614179c3d04265250383104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7dd00d28ecfe844094677e0ae19f4fd359d97d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471540"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687807"
 ---
 # <a name="front-door-routing-methods"></a>Bejárati ajtó útválasztási módszerei
 
@@ -27,7 +27,7 @@ A bejárati ajtóban négy fő fogalma van a forgalomútvonalnak:
 * ** [Késés:](#latency)** A késés-alapú útválasztás biztosítja, hogy a kérelmek küldése a legalacsonyabb késésháttér-támogatott a érzékenységi tartományon belül elfogadható. Alapvetően a felhasználói kérelmek küldése a "legközelebbi" háttérrendszerek hálózati késés tekintetében.
 * ** [Prioritás](#priority):** A prioritásokat a különböző háttérrendszerekhez rendelheti, ha elsődleges szolgáltatás-háttérszolgáltatást szeretne használni az összes forgalomhoz, és biztonsági mentéseket biztosít, ha az elsődleges vagy a biztonsági mentési háttérrendszerek nem érhetők el.
 * ** [Súlyozott:](#weighted)** Súlyokat rendelhet a különböző háttérrendszerekhez, ha a forgalmat a háttérrendszerek egy készletében szeretné elosztani, akár egyenletesen, akár súlyegyütthatók szerint.
-* **Munkamenet-affinitás:** Beállíthatja a munkamenet-affinitást az előtér-állomások vagy tartományok számára, ha azt szeretné, hogy a felhasználó további kérései ugyanabba a háttérrendszerbe legyenek elküldve, amíg a felhasználói munkamenet aktív, és a háttérpéldány továbbra is kifogástalan állapotú állapotmintavételek alapján jelenti az állapotát. 
+* ** [Munkamenet-affinitás:](#affinity)** Beállíthatja a munkamenet-affinitást az előtér-állomások vagy tartományok számára, ha azt szeretné, hogy a felhasználó további kérései ugyanabba a háttérrendszerbe legyenek elküldve, amíg a felhasználói munkamenet aktív, és a háttérpéldány továbbra is kifogástalan állapotú állapotmintavételek alapján jelenti az állapotát. 
 
 A Front Door összes konfigurációja tartalmazza a háttérrendszer állapotának monitorozását és az automatizált azonnali globális feladatátvételt. További információ: [Front Door Backend Monitoring](front-door-health-probes.md). A bejárati ajtó beállítható úgy, hogy egyetlen útválasztási módszer alapján dolgozzon, és az alkalmazás igényeitől függően több vagy az összes ilyen útválasztási módszert használhat az optimális útválasztási topológia létrehozásához.
 
@@ -71,7 +71,7 @@ A súlyozott módszer lehetővé tesz néhány hasznos forgatókönyvet:
 * **Felhő-bursting további kapacitás:** Gyorsan bővítheti a helyszíni üzembe helyezésa a felhőbe azáltal, hogy a Bejárati ajtó mögé helyezi. Ha további kapacitásra van szüksége a felhőben, további háttérrendszereket adhat hozzá vagy engedélyezhet, és megadhatja, hogy a forgalom melyik része kerül az egyes háttérrendszerekhez.
 
 ## <a name="session-affinity"></a><a name = "affinity"></a>Munkamenet-affinitás
-Alapértelmezés szerint munkamenet-affinitás nélkül a Bejárati ajtó továbbítja az ugyanabból az ügyféltől származó kérelmeket különböző háttérrendszerekre a terheléselosztási konfiguráció alapján, különösen azért, mert a különböző háttérrendszerek késése idobe változik, vagy ha ugyanabból a különböző kérésből származó különböző kérelmek felhasználó egy másik bejárati ajtókörnyezetben landol. Egyes állapotalapú alkalmazások vagy forgatókönyvek esetében viszont előnyösebb, ha az ugyanazon felhasználótól érkező későbbi kérelmek ugyanarra a háttérrendszerre kerülnek, amely az első kérelmet feldolgozta. A cookie-alapú munkamenet-affinitás akkor hasznos, ha ugyanazon a háttérrendszeren szeretne tartani egy felhasználói munkamenetet. A Bejárati ajtó által kezelt cookie-k használatával az Azure Bejárati ajtaját irányíthatja a felhasználói munkamenetből származó további forgalmat ugyanarra a háttérrendszerre feldolgozásra, amíg a háttérrendszer kifogástalan állapotú, és a felhasználói munkamenet még nem járt le. 
+Alapértelmezés szerint munkamenet-affinitás nélkül a Bejárati ajtó továbbítja az ugyanabból az ügyféltől származó kérelmeket különböző háttérrendszerekre a terheléselosztási konfiguráció alapján, különösen azért, mert a különböző háttérrendszerek késése megváltozik, vagy ha ugyanazon felhasználó különböző kérései egy másik bejárati ajtaján lévő környezetben landolnak. Egyes állapotalapú alkalmazások vagy forgatókönyvek esetében viszont előnyösebb, ha az ugyanazon felhasználótól érkező későbbi kérelmek ugyanarra a háttérrendszerre kerülnek, amely az első kérelmet feldolgozta. A cookie-alapú munkamenet-affinitás akkor hasznos, ha ugyanazon a háttérrendszeren szeretne tartani egy felhasználói munkamenetet. A Bejárati ajtó által kezelt cookie-k használatával az Azure Bejárati ajtaját irányíthatja a felhasználói munkamenetből származó további forgalmat ugyanarra a háttérrendszerre feldolgozásra, amíg a háttérrendszer kifogástalan állapotú, és a felhasználói munkamenet még nem járt le. 
 
 A munkamenet-affinitást az előtérbeli gazdagép szintjén engedélyezheti minden konfigurált tartomány (vagy altartomány) számára. Az engedélyezés után a Front Door hozzáad egy cookie-t a felhasználói munkamenethez. A cookie-alapú munkamenet-affinitás lehetővé teszi a Front Door számára, hogy azonos IP-cím esetén is azonosítsa a különböző felhasználókat, amely egyenletesebb forgalomelosztást tesz lehetővé a különböző háttérrendszerek között.
 

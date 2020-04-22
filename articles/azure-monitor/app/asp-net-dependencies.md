@@ -3,12 +3,12 @@ title: Függőségek nyomon követése az Azure Application Insightsban | Micros
 description: Az Application Insights segítségével figyelheti a helyszíni vagy a Microsoft Azure webalkalmazásból érkező függőségi hívásokat.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1d4e8d1a0482257c92f47a00bd440e786c09c7aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292126"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731495"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insightsban 
 
@@ -97,7 +97,7 @@ A ASP.NET alkalmazások esetében a teljes SQL-lekérdezés bájtkód-műszerez�
 | Platform | A teljes SQL-lekérdezés bekerüléséhez szükséges lépés(ek) |
 | --- | --- |
 | Azure-webalkalmazás |A webalkalmazás vezérlőpultján [nyissa meg az Application Insights panelt,](../../azure-monitor/app/azure-web-apps.md) és engedélyezze az SQL-parancsokat a .NET |
-| IIS-kiszolgáló (Azure Virtuális gép, on-prem és így tovább.) | Az Állapotfigyelő PowerShell-modul segítségével [telepítse a Műszerezési motort,](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) és indítsa újra az IIS-t. |
+| IIS-kiszolgáló (Azure Virtuális gép, on-prem és így tovább.) | Az Állapotfigyelő PowerShell-modul segítségével [telepítse a Műszerezési motort,](../../azure-monitor/app/status-monitor-v2-api-reference.md) és indítsa újra az IIS-t. |
 | Azure-felhőszolgáltatás | Indítási feladat hozzáadása [a StatusMonitor telepítéséhez](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Az alkalmazást buildeléskor kell beépíteni az ApplicationInsights SDK-ba a [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) vagy [ASP.NET Core alkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) NuGet-csomagjainak telepítésével |
 | IIS Expressz | Nem támogatott
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: d1e6d6db1465b20f1f32a8ffb2f978d0a04a1033
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4eddf34f4887f0e2bad08eb5700d83eaeae0ef7e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79470843"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687092"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Rövid útmutató: Elindíthat egy Azure Spring Cloud alkalmazást a Maven beépülő modul használatával
 
@@ -93,7 +93,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
 1. Konfigurációk at hozhat létre a következő parancs futtatásával a szülő POM-ot tartalmazó PiggyMetrics gyökérmappájában:
 
     ```console
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
     ```
 
     a. Válassza ki `gateway`a`auth-service`modulokat , és `account-service`a lehetőséget.

@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: cb4fdd56e9cf67c71ac690d423499929167f8977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e0f6c78b6e5dd066cbfbac6805bb3c42068e66a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064241"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729598"
 ---
 # <a name="service-fabric-releases"></a>A Service Fabric kiadásai
 
@@ -23,6 +23,56 @@ ms.locfileid: "77064241"
 Ez a cikk további információkat a Service Fabric futásidejű és SDK-k legújabb kiadásairól és frissítéseiről tartalmaz.
 
 ## <a name="whats-new-in-service-fabric"></a>A Service Fabric újdonságai
+
+### <a name="service-fabric-71"></a>Szolgáltatás Fabric 7.1
+A jelenlegi COVID-19 válság miatt, és figyelembe véve az ügyfeleink előtt álló kihívásokat, elérhetővé tesszük a 7.1-et, de nem frissítjük automatikusan a beállított fürtöket, hogy automatikus frissítéseket kapjanak. További értesítésig szüneteltetjük az automatikus frissítéseket annak érdekében, hogy az ügyfelek a számukra legmegfelelőbb esetben is alkalmazhassák a frissítéseket a váratlan zavarok elkerülése érdekében.
+
+A 7.1-es cikkaz Azure [Portalon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) vagy az [Azure Resource Manager központi telepítésén](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#set-the-upgrade-mode-using-a-resource-manager-template)keresztül frissíthető.
+
+Service Fabric fürtök automatikus frissítés engedélyezve lesz a 7.1-es frissítés automatikusan, amint folytatjuk a szabványos bevezetési eljárás. Adunk egy másik bejelentést, mielőtt a standard bevezetése kezdődik a [Service Fabric Tech közösségi oldalon](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
+Mi is közzétett frissítéseket, hogy vége a támogatás időpontját a főbb kiadások kezdve 6,5-7,1 [itt](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions). 
+
+## <a name="what-is-new-in-service-fabric-71"></a>Mi az új in-Service Fabric 7.1?
+Izgatottan várjuk, hogy bejelentsük a Service Fabric következő kiadását. Ez a kiadás tele van kulcsfontosságú funkciókkal és fejlesztésekkel. A legfontosabb jellemzők közül néhány at az alábbiakban emeljük ki:
+## <a name="key-announcements"></a>Legfontosabb közlemények
+- A Service Fabric felügyelt identitásainak **általános elérhetősége** [ **a Service Fabric-alkalmazásokhoz**](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+- [**Ubuntu 1804 támogatása**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
+ - [**Előzetes verzió: VMSS Ephemeral OS lemez támogatása**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)**: Az ideiglenes operációsrendszer-lemezek a helyi virtuális gépen létrehozott tárolók, és nem kerülnek mentésre a távoli Azure Storage-ba. Ezek minden Service Fabric-csomóponttípushoz (elsődleges és másodlagos) ajánlottak, mivel a hagyományos állandó operációsrendszer-lemezekhez, a rövid élettartamú operációsrendszer-lemezekhez képest:
+      -  Az olvasási/írási késés csökkentése az operációs rendszer lemezére
+      -  Gyorsabb alaphelyzetbe állítási/újraképzési csomópontkezelési műveletek engedélyezése
+      -  Csökkentse a teljes költségeket (a lemezek ingyenesek, és nincsenek további tárolási költségek)
+- A Service [**Fabric-alkalmazások szolgáltatásvégpont-tanúsítványainak bejelentésének**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)támogatása tulajdonos név szerint.
+- [**Az állapotalapú szolgáltatások állapotvizsgálatának támogatása:**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage)A tárolóba adtaalkalmazások liveness probe mechanizmusának támogatása. A Liveness Probe segít bejelenteni a tárolóba rendezett alkalmazás élőségét, és ha nem válaszolnak időben, az újraindítást eredményez. 
+- [**Támogatja az initializer kódcsomagok**](https://docs.microsoft.com/azure/service-fabric/initializer-codepackages) [tárolók](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview) és [vendég végrehajtható](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-guest-executables-introduction) alkalmazások támogatása. Ez lehetővé teszi a kódcsomagok (pl. tárolók) adott sorrendben történő végrehajtását a Service Package inicializálásához.
+- **FabricObserver és ClusterObserver** állapot nélküli alkalmazások, amelyek rögzítik a Service Fabric telemetriai kapcsolatos különböző aspektusait egy SF-fürt. Mindkét alkalmazás készen áll a Windows éles fürtöküzembe helyezésére, hogy az ApplicationInsights, az EventSource és a LogAnalytics implementált támogatásával gazdag telemetriát rögzítsenek.
+    - [**FabricObserver (FO) 2.0**](https://github.com/microsoft/service-fabric-observer)- fut az összes csomóponton, létrehoz egészségügyi események, telemetriai adatokat bocsát ki, amikor a felhasználó által konfigurált erőforrás-használati küszöbértékek elérésekor. Ez a kiadás számos fejlesztést tartalmaz a figyelés, az adatkezelés, az állapotesemény részletei, strukturált telemetriai.
+     - [**ClusterObserver (CO) 1.1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) - fut egy csomóponton, rögzíti a fürtszintű egészségügyi telemetriai adatok. Ebben a kiadásban a ClusterObserver is figyeli a csomópont állapotát, és telemetriai adatokat bocsát ki, ha a csomópont a felhasználó által megadott időtartamnál hosszabb ideig van le)/letiltva/letiltva.
+
+### <a name="improve-application-life-cycle-experience"></a>Az alkalmazások életciklusának élményének javítása
+
+- **[Előzetes:Kérelem drain](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-planned-downtime-of-stateless-services)**: A tervezett szolgáltatás karbantartása, például a szolgáltatás frissítése vagy a csomópont kikapcsolása során szeretné engedélyezni, hogy a szolgáltatások szabályosan ürítsék ki a kapcsolatokat. Ez a szolgáltatás hozzáadja a példány közeli késleltetési időtartamát a szolgáltatás konfigurációjában. A tervezett műveletek során az SF eltávolítja a szolgáltatás címét a felderítésből, majd megvárja ezt az időtartamot, mielőtt leállítaná a szolgáltatást.
+- **[Subcluster észlelés és kiegyensúlyozás automatikus észlelése és kiegyensúlyozása](https://docs.microsoft.com/azure/service-fabric/cluster-resource-manager-subclustering )**: Az alfürtözés akkor történik, ha a különböző elhelyezési korlátozásokkal rendelkező szolgáltatások közös [terhelési metrikával](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-metrics)rendelkeznek . Ha a különböző csomópontok terhelése jelentősen eltér, a Service Fabric-fürt erőforrás-kezelő úgy véli, hogy a fürt kiegyensúlyozatlan, még akkor is, ha az elhelyezési korlátok miatt a lehető legjobb egyenleggel rendelkezik. Ennek eredményeképpen megpróbálja kiegyensúlyozni a fürtöt, ami szükségtelen szolgáltatásmozgásokat okozhat (mivel az "egyensúlyhiány" nem javítható lényegesen). Ettől a kiadástól kezdve a fürterőforrás-kezelő most megpróbálja automatikusan észlelni az ilyen típusú konfigurációkat, és megérteni, hogy mikor lehet a mozgással javítani az egyensúlytalanságot, és ehelyett miért kell békén hagynia a dolgokat, mivel nem lehet jelentős javulást elérni.  
+- [**A másodlagos replikák különböző áthelyezési költsége:**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost)Új áthelyezési költségértéket vezettünk be VeryHigh, amely bizonyos esetekben további rugalmasságot biztosít annak meghatározásához, hogy a másodlagos replikákhoz külön áthelyezési költséget kell-e használni.
+- Engedélyezett [**Liveness Probe**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage ) mechanizmus konténeres alkalmazásokhoz. A Liveness Probe segít bejelenteni a tárolóba rendezett alkalmazás élőségét, és ha nem válaszolnak időben, az újraindítást eredményez.
+- [**Futtatás a teljesítésig/egyszer a szolgáltatásokhoz**](https://docs.microsoft.com/azure/service-fabric/run-to-completion)**
+
+### <a name="image-store-improvements"></a>A Képtár fejlesztései
+ - A Service Fabric 7.1 alapértelmezés szerint egyéni átvitelt használ **a csomópontok közötti fájlátvitel biztosítására.** Az SMB fájlmegosztástól való függőség törlődik a 7.1-es verzióról. A biztonságos SMB fájlmegosztások továbbra is léteznek az Image Store Szolgáltatás replikáját tartalmazó csomópontokon, mivel az ügyfél leiratkozik az alapértelmezett beállításról, valamint a frissítésről és a régi verzióra való visszaminősítésről.
+       
+ ### <a name="reliable-collections-improvements"></a>Megbízható gyűjtemények fejlesztések
+
+- [**A memóriában csak tárolja támogatja az állapotalapú szolgáltatások megbízható gyűjtemények:**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections)Illékony megbízható gyűjtemények lehetővé teszi, hogy az adatok megmaradnak a lemezen a tartósság ellen, nagy üzemkimaradások ellen, használható számítási feladatok, például a replikált gyorsítótár, például ahol alkalmi adatvesztés tolerálható. Az [illékony megbízható gyűjtemények korlátai és korlátozásai](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)alapján ezt javasoljuk olyan számítási feladatokhoz, amelyeknem igényelnek megőrzést, a Quorum Loss ritka alkalmait kezelő szolgáltatásokesetében.
+- [**Előzetes verzió: Service Fabric backup explorer:**](https://github.com/microsoft/service-fabric-backup-explorer)A Megbízható gyűjtemények biztonsági mentések kezelése érdekében a Service Fabric állapotalapú alkalmazások, Service Fabric Backup Explorer lehetővé teszi a felhasználók számára, hogy
+    - A megbízható gyűjtemények tartalmának ellenőrzése és felülvizsgálata,
+    - Az aktuális állapot frissítése konzisztens nézetre
+    - A megbízható gyűjtemények aktuális pillanatképének biztonsági másolatának létrehozása
+    - Az adatsérülés javítása
+                 
+### <a name="service-fabric-71-releases"></a>Service Fabric 7.1-es kiadásai
+| Kiadási dátum | Kiadás | További információ |
+|---|---|---|
+| 2020. április 20. | [Azure Service Fabric 7.1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-release/ba-p/1311373)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/tree/master/release_notes/Service-Fabric-71-releasenotes.md)|
+
 
 ### <a name="service-fabric-70"></a>Service Fabric 7.0
 
@@ -55,9 +105,10 @@ Ezenkívül ez a kiadás más új funkciókat, hibajavításokat, valamint támo
 
 | Kiadási dátum | Kiadás | További információ |
 |---|---|---|
-| 2019. november 18. | [Azure Service Fabric 7.0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
-| 2020. január 30. | [Az Azure Service Fabric 7.0 frissítési kiadása](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
-| 2020. február 6. | [Az Azure Service Fabric 7.0 frissítési kiadása](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-third-refresh-release/ba-p/1156508)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service-Fabric-70CU3-releasenotes.md)|
+| 2019. november 18. | [Azure Service Fabric 7.0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
+| 2020. január 30. | [Az Azure Service Fabric 7.0 frissítési kiadása](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
+| 2020. február 6. | [Az Azure Service Fabric 7.0 frissítési kiadása](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-third-refresh-release/ba-p/1156508)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU3-releasenotes.md)|
+| 2020. március 2. | [Az Azure Service Fabric 7.0 frissítési kiadása](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-fourth-refresh-release/ba-p/1205414)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU4-releasenotes.md)
 
 ### <a name="service-fabric-65"></a>Szolgáltatás Fabric 6,5
 
@@ -92,11 +143,11 @@ További részletek a [Service Fabric 6.5 kiadási megjegyzések című témakö
 
 | Kiadási dátum | Kiadás | További információ |
 |---|---|---|
-| 2019. június 11.June 11, 2019 | [Azure Service Fabric 6.5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
-| 2019. július 2.July 2, 2019 | [Az Azure Service Fabric 6.5 frissítési kiadása](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
-| 2019. július 29. | [Az Azure Service Fabric 6.5 frissítési kiadása](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
-| 2019. augusztus 23.Aug 23, 2019 | [Az Azure Service Fabric 6.5 frissítési kiadása](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
-| 2019. október 14. | [Az Azure Service Fabric 6.5 frissítési kiadása](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [Kibocsátási megjegyzések](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md)  |
+| 2019. június 11.June 11, 2019 | [Azure Service Fabric 6.5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
+| 2019. július 2.July 2, 2019 | [Az Azure Service Fabric 6.5 frissítési kiadása](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
+| 2019. július 29. | [Az Azure Service Fabric 6.5 frissítési kiadása](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
+| 2019. augusztus 23.Aug 23, 2019 | [Az Azure Service Fabric 6.5 frissítési kiadása](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
+| 2019. október 14. | [Az Azure Service Fabric 6.5 frissítési kiadása](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [Kibocsátási megjegyzések] (https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md  |
 
 
 ## <a name="previous-versions"></a>Korábbi verziók

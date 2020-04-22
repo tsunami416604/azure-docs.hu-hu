@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48be73a6385c9690909cb70abe558a2def1ace88
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283913"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730513"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Útmutató a függvények használatához az Azure Logic Apps és a Power Automate kifejezésekben
 
@@ -107,7 +107,7 @@ A gyűjteményekkel, általában tömbökkel, karakterláncokkal és néha szót
 | [Első](../logic-apps/workflow-definition-language-functions-reference.md#first) | Az első elem visszaküldése egy gyűjteményből. |
 | [Kereszteződés](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Olyan gyűjteményt ad vissza, amely *csak* a megadott gyűjteményekben lévő közös elemeket tartalmaz. |
 | [Cikk](../logic-apps/workflow-definition-language-functions-reference.md#item) | Ha egy tömbön keresztül ismétlődő műveleten belül van, a művelet aktuális iterációja során adja vissza az aktuális elemet a tömbben. |
-| [csatlakozás](../logic-apps/workflow-definition-language-functions-reference.md#join) | Olyan karakterláncot ad vissza, amely egy tömb *összes* elemét a megadott karakterrel elválasztva adja vissza. |
+| [Csatlakozzon](../logic-apps/workflow-definition-language-functions-reference.md#join) | Olyan karakterláncot ad vissza, amely egy tömb *összes* elemét a megadott karakterrel elválasztva adja vissza. |
 | [Utolsó](../logic-apps/workflow-definition-language-functions-reference.md#last) | Az utolsó elem visszaküldése egy gyűjteményből. |
 | [Hossza](../logic-apps/workflow-definition-language-functions-reference.md#length) | Karakterláncban vagy tömbben lévő elemek számát adja vissza. |
 | [Ugrál](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Távolítsa el az elemeket a gyűjtemény elejéről, és küldje vissza *az összes többi* elemet. |
@@ -163,7 +163,7 @@ Az egyes függvényekkel kapcsolatos teljes körű hivatkozást az [alfabetikus 
 | [lebegőpontos](../logic-apps/workflow-definition-language-functions-reference.md#float) | Lebegőpontos számot ad vissza egy bemeneti értékhez. |
 | [Int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Adja vissza egy karakterlánc egész verzióját. |
 | [Json](../logic-apps/workflow-definition-language-functions-reference.md#json) | Adja vissza a JavaScript-objektumnotika (JSON) típusú értéket vagy objektumot egy karakterlánchoz vagy XML-hez. |
-| [sztring](../logic-apps/workflow-definition-language-functions-reference.md#string) | Adja vissza egy bemeneti érték karakterlánc-verzióját. |
+| [Karakterlánc](../logic-apps/workflow-definition-language-functions-reference.md#string) | Adja vissza egy bemeneti érték karakterlánc-verzióját. |
 | [uriKomponens](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Adja vissza a bemeneti érték URI-kódolású verzióját úgy, hogy az URL-nem biztonságos karaktereket escape karakterekre cseréli. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Adja vissza egy URI-kódolású karakterlánc bináris verzióját. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Adja vissza egy URI-kódolású karakterlánc karakterlánc-verzióját. |
@@ -2481,7 +2481,7 @@ Ez a példa létrehoz egy számláló változót, és minden egyes iteráció so
                "runAfter": {}
             }
          },
-         "expression": "@equals(variables('myCounter'), 5),
+         "expression": "@equals(variables('myCounter'), 5)",
          "limit": {
             "count": 60,
             "timeout": "PT1H"

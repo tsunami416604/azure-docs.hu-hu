@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-ms.date: 01/15/2019
-ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819939"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687759"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>A JSON funkcióinak első lépései az Azure SQL Database-ben
 Az Azure SQL Database lehetővé teszi a JavaScript-objektumjelölés [(JSON)](https://www.json.org/) formátumban ábrázolt adatok elemzésével és lekérdezésével, és a relációs adatok JSON-szövegként történő exportálását. Az Azure SQL Database-ben a következő JSON-forgatókönyvek érhetők el:
@@ -30,7 +30,7 @@ Ha olyan webszolgáltatással rendelkezik, amely adatokat fogad el az adatbázis
 
 A következő példában a Sales.Customer tábla sorai JSON-ként vannak formázva a FOR JSON záradék használatával:
 
-```
+```sql
 select CustomerName, PhoneNumber, FaxNumber
 from Sales.Customers
 FOR JSON PATH
@@ -38,7 +38,7 @@ FOR JSON PATH
 
 A FOR JSON PATH záradék a lekérdezés eredményeit JSON-szövegként formázza. Az oszlopnevek et kulcsokként használják, míg a cellaértékekJSON-értékekként jönnek létre:
 
-```
+```json
 [
 {"CustomerName":"Eric Torres","PhoneNumber":"(307) 555-0100","FaxNumber":"(307) 555-0101"},
 {"CustomerName":"Cosmina Vlad","PhoneNumber":"(505) 555-0100","FaxNumber":"(505) 555-0101"},
@@ -50,7 +50,7 @@ Az eredményhalmaz JSON-tömbként van formázva, ahol minden sor külön JSON-o
 
 A PATH azt jelzi, hogy a JSON-eredmény kimeneti formátumát pontjelöléssel szabhatja testre az oszlopaliasokban. A következő lekérdezés módosítja a "CustomerName" kulcs nevét a kimeneti JSON formátumban, és a telefon- és faxszámokat a "Kapcsolattartó" alobjektumba helyezi:
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as [Contact.Phone], FaxNumber as [Contact.Fax]
 from Sales.Customers
 where CustomerID = 931
@@ -59,7 +59,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 
 A lekérdezés kimenete így néz ki:
 
-```
+```json
 {
     "Name":"Nada Jovanovic",
     "Contact":{
@@ -73,7 +73,7 @@ Ebben a példában egy JSON-objektumot adtunk vissza tömb helyett a [WITHOUT_AR
 
 A FOR JSON-záradék fő értéke az, hogy lehetővé teszi a beágyazott JSON-objektumokként vagy tömbökként formázott adatbázisból származó összetett hierarchikus adatok visszaadását. A következő példa bemutatja, hogyan `Orders` lehet a `Customer` táblázatból azalábbi `Orders`sorokat egymásba ágyazott tömbként szerepelni:
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
         Orders.OrderID, Orders.OrderDate, Orders.ExpectedDeliveryDate
 from Sales.Customers Customer
@@ -81,12 +81,11 @@ from Sales.Customers Customer
         on Customer.CustomerID = Orders.CustomerID
 where Customer.CustomerID = 931
 FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
-
 ```
 
 Ahelyett, hogy külön lekérdezéseket küldene az Ügyféladatok beolvasásához, majd a kapcsolódó rendelések listájának beolvasásához, egyetlen lekérdezéssel beszerezheti az összes szükséges adatot, amint az a következő mintakimenetben látható:
 
-```
+```json
 {
   "Name":"Nada Jovanovic",
   "Phone":"(215) 555-0100",
@@ -95,7 +94,7 @@ Ahelyett, hogy külön lekérdezéseket küldene az Ügyféladatok beolvasásáh
     {"OrderID":382,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":395,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":1657,"OrderDate":"2013-01-31","ExpectedDeliveryDate":"2013-02-01"}
-]
+  ]
 }
 ```
 
@@ -104,7 +103,7 @@ Ha nem rendelkezik szigorúan strukturált adatokkal, ha összetett alobjektumok
 
 A JSON egy szöveges formátum, amely az Azure SQL Database bármely más karakterlánctípusához hasonlóan használható. A JSON-adatokat szabványos NVARCHAR-ként is elküldheti vagy tárolhatja:
 
-```
+```sql
 CREATE TABLE Products (
   Id int identity primary key,
   Title nvarchar(200),
@@ -120,7 +119,7 @@ END
 
 Az ebben a példában használt JSON-adatokat az NVARCHAR(MAX) típus jelöli. A JSON beszúrható ebbe a táblába, vagy a tárolt eljárás argumentumaként adható meg a szokásos Transact-SQL szintaxis sal, ahogy az a következő példában látható:
 
-```
+```sql
 EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","children","games"]}'
 ```
 
@@ -131,7 +130,7 @@ Ha az Azure SQL-táblákban tárolt JSON formátumú adatokat, JSON-függvények
 
 Az Azure SQL-adatbázisban elérhető JSON-függvények lehetővé teszik a JSON formátumú adatok kezelését bármely más SQL-adattípusként. A JSON-szövegből egyszerűen kinyerheti az értékeket, és JSON-adatokat használhat bármely lekérdezésben:
 
-```
+```sql
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
 from Products
 where JSON_VALUE(Data, '$.Color') = 'White'
@@ -149,7 +148,7 @@ A JSON_MODIFY függvény lehetővé teszi, hogy megadja az érték elérési út
 
 Mivel a JSON szabványos szövegben van tárolva, nincs garancia arra, hogy a szövegoszlopokban tárolt értékek megfelelően vannak formázva. Ellenőrizheti, hogy a JSON-oszlopban tárolt szöveg megfelelően van-e formázva az Azure SQL Database-ellenőrzési korlátozások és az ISJSON-függvény használatával:
 
-```
+```sql
 ALTER TABLE Products
     ADD CONSTRAINT [Data should be formatted as JSON]
         CHECK (ISJSON(Data) > 0)
@@ -168,7 +167,7 @@ A fenti példában megadhatjuk, hogy hol keresse meg a megnyitandó JSON-tömbö
 
 A @orders változóJSON-tömbjét sorok halmazává alakíthatjuk át, elemezhetjük ezt az eredményhalmazt, vagy sorokat szúrhatunk be egy szabványos táblába:
 
-```
+```sql
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
 AS BEGIN
 
@@ -181,9 +180,9 @@ AS BEGIN
             Customer varchar(200),
             Quantity int
      )
-
 END
 ```
+
 A JSON-tömbként formázott és a tárolt eljárás paramétereként megadott rendelések gyűjteménye elemezhető és beilleszthető a Rendelések táblába.
 
 ## <a name="next-steps"></a>További lépések

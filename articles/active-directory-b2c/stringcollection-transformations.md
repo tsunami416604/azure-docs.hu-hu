@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186777"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729718"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection jogcímátalakítások
 
@@ -159,4 +159,38 @@ A következő példa `roles` ellenőrzi, hogy a stringCollection jogcímtípus t
 - Kimeneti jogcímek:
     - **outputClaim**: "igaz"
 
+## <a name="stringcollectioncontainsclaim"></a>StringCollectionContainsClaim
 
+Ellenőrzi, hogy a StringCollection jogcímtípus tartalmaz-e jogcímértéket.
+
+| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim (Bemeneti jogcím) | Gyűjtemény | karakterláncgyűjtemény | A keresett jogcímtípus. |
+| InputClaim (Bemeneti jogcím) | item|sztring| A keresni kívánt értéket tartalmazó jogcímtípus.|
+|InputParameter (Beviteli paraméter)|ignoreCase|sztring|Itt adható meg, hogy ez az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok kis- és nagybetűs étkeztetését.|
+| OutputClaim (Kimeneti jogcím) | outputClaim | logikai | A Jogcímátalakítás meghívása után létrehozott Jogcímtípus. Logikai jelző, ha a gyűjtemény ilyen karakterláncot tartalmaz |
+
+A következő példa `roles` ellenőrzi, hogy a stringCollection jogcímtípus tartalmazza-e a `role` jogcímtípus értékét.
+
+```XML
+<ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />
+    <InputClaim ClaimTypeReferenceId="role" TransformationClaimType="item" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="ignoreCase" DataType="string" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="hasAccess" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation> 
+```
+
+- Bemeneti igények:
+    - **gyűjtemény**: ["olvasó", "szerző", "admin"]
+    - **elem**: "Admin"
+- Bemeneti paraméterek:
+    - **ignoreCase**: "igaz"
+- Kimeneti jogcímek:
+    - **outputClaim**: "igaz"

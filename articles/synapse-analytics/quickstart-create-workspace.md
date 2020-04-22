@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0b6bf4c6a54e2f187a5751d267720f356e0c30ff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424397"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676732"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Rövid útmutató: Hozzon létre egy Azure Synapse Analytics munkaterületet (előzetes verzió)
 
@@ -54,7 +54,7 @@ Bejelentkezés az [Azure Portalra](https://portal.azure.com/)
     - Manuálisan a dedikáthasznál kell megadni
 
     > [!IMPORTANT]
-    > Az Azure Synapse munkaterületet kell tudni olvasni és írni a kiválasztott ADLS Gen2 fiók.
+    > Az Azure Synapse munkaterületet kell tudni olvasni és írni a kiválasztott ADLS Gen2 fiók. Emellett minden olyan tárfiók, amely kapcsolódik, mint az elsődleges tárfiók, engedélyeznie kell a **hierarchikus névtér** létrehozásakor a tárfiók.
     >
     > Az ADLS Gen2 kiválasztási mezők alatt van egy megjegyzés, amely szerint a munkaterület felügyelt identitása a **Storaqe Blob Data Contributor** szerepkört rendeli hozzá a kiválasztott Data Lake Storage Gen2 fájlrendszeren, amely teljes hozzáférést biztosít számára.
 

@@ -4,14 +4,14 @@ description: Funkciójelzők hozzáadása a tavaszi rendszerindítási alkalmaz�
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 04/13/2020
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: 398005b37660cfa68936a0c8b3a3d90da8160e49
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e6dc51250987e0282530209ffa13e52d6e75aa9c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309073"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687365"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rövid útmutató: Szolgáltatásjelzők hozzáadása tavaszi rendszerindítási alkalmazáshoz
 
@@ -55,9 +55,9 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
 
 1. Miután kibontja a fájlokat a helyi rendszeren, a Spring Boot alkalmazás készen áll a szerkesztésre. Keresse meg a *pom.xml fájlt* az alkalmazás gyökérkönyvtárában.
 
-1. Nyissa meg a *pom.xml* fájlt egy szövegszerkesztőben, `<dependencies>`és vegye fel a következőket a .:
+1. Nyissa meg a *pom.xml* fájlt egy szövegszerkesztőben, `<dependencies>`és vegye fel a következőket a következő kreába:
 
-### <a name="spring-cloud-11x"></a>Tavaszi felhő 1.1.x
+    **Tavaszi felhő 1.1.x**
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ A [tavaszi kezdőbetűvel](https://start.spring.io/) új tavaszi boot projektet 
     </dependency>
     ```
 
-### <a name="spring-cloud-12x"></a>Tavaszi felhő 1.2.x
+    **Tavaszi felhő 1.2.x**
 
     ```xml
     <dependency>

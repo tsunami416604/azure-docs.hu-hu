@@ -15,120 +15,123 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b7a522aaf35303bbd87e7aafe65b1302f1b98bc0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 99d9988a02b046562c2517df8a81b8ef5c778ef2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095333"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683504"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Oktatóanyag: Az Azure Active Directory integrációja a PagerDuty-val
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a PagerDuty-ral
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a PagerDuty-t az Azure Active Directoryval (Azure AD).
-A PagerDuty integrálása az Azure AD-vel a következő előnyöket nyújtja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a PagerDuty-t az Azure Active Directoryval (Azure AD). Ha integrálja a PagerDuty-t az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a PagerDuty-hoz.
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve PagerDuty (Single Sign-On) az Azure AD-fiókok.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér a PagerDuty.Control in Azure AD who has access to PagerDuty.
+* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkeznek a PagerDuty-ba az Azure AD-fiókjukkal.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció beállítása a PagerDuty, szüksége van a következő elemeket:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
-* PagerDuty egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* PagerDuty egyszeri bejelentkezés (SSO) engedélyezve van előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
 * A PagerDuty támogatja az **SP** által kezdeményezett SSO-t
+* A PagerDuty konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből terjed. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="adding-pagerduty-from-the-gallery"></a>PagerDuty hozzáadása a galériából
 
 A PagerDuty azure AD-be való integrálásának konfigurálásához hozzá kell adnia a PagerDuty-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha a PagerDuty-t a galériából szeretné hozzáadni, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **hozzáadás a gyűjteményből szakaszban** írja be a **PagerDuty** kifejezést a keresőmezőbe.
+1. Válassza a **PagerDuty** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-pagerduty"></a>Az Azure AD egyszeri bejelentkezésének konfigurálása és tesztelése a PagerDuty számára
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a PagerDuty használatával egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó pagerduty.
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+Az Azure AD SSO beállítása és tesztelése a PagerDuty szolgáltatással hajtsa végre a következő építőelemeket:
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+    1. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
+    1. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
+1. **[Konfigurálja pagerduty sso](#configure-pagerduty-sso)** -konfigurálása az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
+    1. **[Hozzon létre PagerDuty teszt felhasználó](#create-pagerduty-test-user)** - egy megfelelője B.Simon a PagerDuty, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-4. A keresőmezőbe írja be a **PagerDuty ( PagerDuty**) parancsot, majd válassza a **PagerDuty** elemet az eredménypanelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. Az [Azure Portalon](https://portal.azure.com/)a **PagerDuty** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-     ![PagerDuty az eredménylistában](common/search-new-app.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
-
-Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a PagerDuty-val egy **Britta Simon**nevű tesztfelhasználó alapján.
-Egyszeri bejelentkezés működéséhez létre kell hozni egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó PagerDuty létre kell hozni.
-
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a PagerDuty szolgáltatással a következő építőelemeket kell végrehajtania:
-
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja PagerDuty Single Sign-On](#configure-pagerduty-single-sign-on)** - konfigurálni az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
-5. **[Hozzon létre PagerDuty teszt felhasználó](#create-pagerduty-test-user)** - egy megfelelője Britta Simon a PagerDuty, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
-
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
-
-Az Azure AD egyszeri bejelentkezésének konfigurálásához a PagerDuty szolgáltatással hajtsa végre a következő lépéseket:
-
-1. Az [Azure Portalon](https://portal.azure.com/)a **PagerDuty** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
-
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
-
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
-
-    ![PagerDuty tartomány és URL-címek egyszeri bejelentkezési információk](common/sp-identifier.png)
+1. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
 
     a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://<tenant-name>.pagerduty.com`
 
     b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<tenant-name>.pagerduty.com`
 
-    > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Bejelentkezési URL-címmel és azonosítóval. Lépjen kapcsolatba [a PagerDuty ügyféltámogatási csapatával,](https://www.pagerduty.com/support/) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    c. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<tenant-name>.pagerduty.com`
 
-5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+    > [!NOTE]
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Bejelentkezési URL-címmel, az azonosítóval és a válasz URL-címmel. Lépjen kapcsolatba [a PagerDuty ügyféltámogatási csapatával,](https://www.pagerduty.com/support/) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. A **PagerDuty beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+1. A **PagerDuty beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-    b. Azure Hirdetés-azonosító
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-    c. Kijelentkezés URL-címe
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="configure-pagerduty-single-sign-on"></a>PagerDuty egyszeri bejelentkezés konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-1. Egy másik böngészőablakban jelentkezzen be a Pagerduty cég webhelyére rendszergazdaként.
+Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a PagerDuty elérésének biztosításával.
+
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza a **PagerDuty**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+
+## <a name="configure-pagerduty-sso"></a>PagerDuty sso konfigurálása
+
+1. Egy másik böngészőablakban jelentkezzen be a Pagerduty vállalati webhelyére rendszergazdaként.
 
 2. A felső menüben kattintson a **Fiókbeállítások parancsra.**
 
@@ -154,68 +157,16 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához a PagerDuty szolgá
 
     f. Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
-
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
-
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
-
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
-
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
-
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
-  
-    b. A **Felhasználónév** mezőtípusban**brittasimon@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
-
-    d. Kattintson **a Létrehozás gombra.**
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés t a PagerDuty hozzáférést biztosítva.
-
-1. Az Azure Portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd a **PagerDuty**lehetőséget.
-
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
-
-2. Az alkalmazások listájában válassza a **PagerDuty**lehetőséget.
-
-    ![A PagerDuty hivatkozás az Alkalmazások listában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
-
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
-
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
-
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
-
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
-
 ### <a name="create-pagerduty-test-user"></a>PagerDuty tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a PagerDuty szolgáltatásba, ki kell építeni őket a PagerDuty-ba.  
-A PagerDuty esetében a kiépítés manuális feladat.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a PagerDuty-ba, ki kell építeni őket a PagerDuty-ba. A PagerDuty esetében a kiépítés manuális feladat.
 
->[!NOTE]
->A Pagerduty által biztosított bármely más Pagerduty felhasználói fiók-létrehozási eszköz vagy API-k használatával azure Active Directory felhasználói fiókokat hozhat létre.
+> [!NOTE]
+> A Pagerduty által biztosított bármely más Pagerduty felhasználói fiók-létrehozási eszköz vagy API-k használatával azure Active Directory felhasználói fiókokat hozhat létre.
 
 **Felhasználói fiók kiépítéséhez hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a **Pagerduty** bérlőbe.
+1. Jelentkezzen be a **Pagerduty** bérlő.
 
 2. A felső menüben kattintson a **Felhasználók parancsra.**
 
@@ -227,16 +178,16 @@ A PagerDuty esetében a kiépítés manuális feladat.
    
     ![Hívja meg csapatát](./media/pagerduty-tutorial/ic778540.png "Hívja meg csapatát")
 
-    a. Írja be a felhasználó **vezeték- és utónevét,** például **Britta Simont.** 
+    a. Írja be a felhasználó **vezeték- és utónevét,** például **B.Simon**. 
    
-    b. Adja meg a felhasználó **e-mail** **\@címét, például brittasimon contoso.com.**
+    b. Adja meg a felhasználó **e-mail** címét, például **\@b.simon contoso.com**.
    
     c. Kattintson **a Hozzáadás**gombra, majd **a Meghívók küldése parancsra.**
    
-    >[!NOTE]
-    >Minden hozzáadott felhasználó kap egy meghívást, hogy hozzon létre egy PagerDuty fiókot.
+    > [!NOTE]
+    > Minden hozzáadott felhasználó kap egy meghívást, hogy hozzon létre egy PagerDuty fiókot.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>SSO tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
@@ -246,7 +197,13 @@ Amikor a Hozzáférési panelen a PagerDuty csempére kattint, automatikusan be 
 
 - [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Próbálja ki a PagerDuty szolgáltatást az Azure AD-vel](https://aad.portal.azure.com/)
+
+- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [A PagerDuty védelme fejlett láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

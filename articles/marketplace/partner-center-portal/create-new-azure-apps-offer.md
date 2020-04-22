@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390350"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730617"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -293,7 +293,7 @@ Ezt a csomagot legalább egy felhőben elérhetővé kell tenni.
 
 Válassza ki a **Nyilvános Azure** lehetőséget, hogy a megoldás telepíthető legyen az ügyfelek számára az összes nyilvános Azure-régióban, amelyek Marketplace-integrációval rendelkeznek.  További információ a [földrajzi elérhetőségről.](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
 
-Válassza ki az **Azure Government Cloud** opciót, hogy a megoldás telepíthető legyen az Azure Government [Cloud-](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)ban, egy kormányzati közösségi felhőben, amely ellenőrzött hozzáféréssel rendelkezik az Egyesült Államok szövetségi, állami, helyi vagy törzsi ügyfelei számára, és az entitások kiszolgálására jogosult partnerek számára.  Ön, mint a közzétevő, felelős a megfelelőségi vezérlőkért, a biztonsági intézkedésekért és a felhőalapú közösség kiszolgálásához ajánlott eljárásokért.  Az Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).  Az Azure [Government](https://aka.ms/azuregovpublish)általi közzététel előtt a Microsoft azt javasolja, hogy tesztelje és érvényesítse a megoldást a környezetben, mivel bizonyos végpontok eltérőek lehetnek. A megoldás szakaszba hozásához és teszteléséhez kérjen próbafiókot erről a [linkről.](https://azure.microsoft.com/global-infrastructure/government/request/)
+Válassza ki az **Azure Government Cloud** opciót, hogy a megoldás telepíthető legyen az Azure Government [Cloud-](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)ban, egy kormányzati közösségi felhőben, amely ellenőrzött hozzáféréssel rendelkezik az Egyesült Államok szövetségi, állami, helyi vagy törzsi ügyfelei számára, és az entitások kiszolgálására jogosult partnerek számára.  Ön, mint a közzétevő, felelős a megfelelőségi vezérlőkért, a biztonsági intézkedésekért és a felhőalapú közösség kiszolgálásához ajánlott eljárásokért.  Az Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).  Az Azure [Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)általi közzététel előtt a Microsoft azt javasolja, hogy tesztelje és érvényesítse a megoldást a környezetben, mivel bizonyos végpontok eltérőek lehetnek. A megoldás szakaszba hozásához és teszteléséhez kérjen próbafiókot erről a [linkről.](https://azure.microsoft.com/global-infrastructure/government/request/)
 
 >[!Note]
 >Ha egy csomag elérhetővé válik egy adott felhőben, a felhő nem távolítható el.

@@ -4,12 +4,12 @@ description: A kérelmek hitelesítése és az Azure Monitor REST API használat
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.openlocfilehash: f52776fc6b5f5f530cc368a2f148a2ff63fb5b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b0e321747e0f84be5a75ab96749311ff0071e8d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294620"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687417"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Monitoring REST API forgatókönyve
 
@@ -238,7 +238,7 @@ A mérőszám "value" (nem a 'localizedvalue' ) nevét használja a szűrési k�
 
 **Módszer**: GET
 
-**URI kérése**\:: https //management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*$filter /providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name} /providers/microsoft.insights/metrics?metricnames=**{metric}*&timespan=*{starttime/endtime}*&=*{filter}*&resultType=metadata&api-version=*{apiVersion }*
+**URI kérése**\:: https //management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&resultType=metadata&api={apiVersion}*{apiVersion}*
 
 Ha például a "Transactions" metrikához az "API-név dimenzió" számára kibocsátott dimenzióértékek listáját szeretné beolvasni, ahol a GeoType dimenzió = "Elsődleges" a megadott időtartományban, a kérés a következő:
 
@@ -311,7 +311,7 @@ Használja a metrika "érték" (nem a "localizedValue") bármilyen szűrési ké
 
 **Módszer**: GET
 
-**URI**kérése https://management.azure.com/subscriptions/: *{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name} {resource-name} {resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&interval=*{timeGrain}*&aggregation=*{aggreation=&* api-version=*{ { apiVersion}*
+**Kérelem URI**:\/https: /management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name} /providers/microsoft.insights/metrics?metricnames=**{metric}*&timespan=*{starttime/endtime}* $filter&=*{filter}*&interval=*{apiVersion}* *{timeGrain}*&aggregation=*{aggreation&*
 
 Ha például a 3 első API-t csökkenő értékben szeretné lekérni egy 5 méteres tartományban a "Tranzakciók" számával, ahol a GeotType "Elsődleges" volt, a kérés a következő lesz:
 
@@ -463,7 +463,7 @@ Miután a rendelkezésre álló metrikadefiníciók ismertek, akkor lehetséges 
 
 **Módszer**: GET
 
-**Uri kérése**:`https://management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**Uri kérése**:`https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
 Például a Futtatott metrika adatpontjainak beolvasásához az adott időtartományra és egy 1 órás idősécerre vonatkozóan a kérelem a következő:
 
@@ -617,7 +617,7 @@ A kívánt erőforrás erőforrás-azonosító megkereséséhez egy hasznos megk
 
 ![Alt "Azure Resource Explorer"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Az erőforrás-azonosító az Azure Portalon is beszerezhető. Ehhez keresse meg a kívánt erőforrást, és válassza a Tulajdonságok lehetőséget. Az erőforrás-azonosító a Tulajdonságok szakaszban jelenik meg, ahogy az a következő képernyőképen látható:
 

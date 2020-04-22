@@ -1,5 +1,5 @@
 ---
-title: Földrajzi elérhetőség és valutatámogatás | Azure
+title: Földrajzi elérhetőség és valutatámogatás a kereskedelmi piacon | Azure Piactér
 description: Földrajzi elérhetőség a kereskedelmi piacon
 author: qianw211
 ms.service: marketplace
@@ -7,14 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 82c3ed79bbcc566a91f9f249ec2df747bbc01cac
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262009"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687588"
 ---
-# <a name="geographic-availability-and-currency-support"></a>Földrajzi elérhetőség és pénznemtámogatás
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi elérhetőség és pénznemtámogatás a kereskedelmi piactér számára
 
 A kereskedelmi piactéri ajánlatok 141 földrajzi területen vásárolhatók meg az ügyfél számlázási címe szerint, és a tranzakciók 17 pénznemben hajthatók végre. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 kétjegyű alfa-kódját](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
 

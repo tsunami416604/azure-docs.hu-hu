@@ -8,12 +8,15 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241177"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683295"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
 A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. Az IoT Hub-eszközlétesítési szolgáltatás (DPS) egy segítő szolgáltatás az IoT Hub, amely lehetővé teszi a nulla érintéses, just-in-time kiépítése a megfelelő IoT hub emberi beavatkozás nélkül. A DPS lehetővé teszi több millió eszköz biztonságos és méretezhető módon történő kiépítését.
@@ -23,7 +26,7 @@ Számos kiépítési forgatókönyv, amelyben a DPS kiváló választás az eszk
 
 * Érintésmentes kiépítés egyetlen IoT-megoldásra, az IoT Hub-kapcsolati adatok gyári kódolása nélkül (kezdeti telepítés)
 * Terheléselosztási eszközök több elosztóközött
-* Eszközök csatlakoztatása a tulajdonosuk IoT-megoldásához az értékesítési tranzakciós adatok alapján (több-bérlős mód)
+* Eszközök csatlakoztatása a tulajdonos IoT-megoldásához értékesítési tranzakciós adatok alapján (többcsatornás)
 * Eszközök csatlakoztatása egy adott IoT-megoldáshoz a használati esettől függően (megoldáselkülönítés)
 * Az eszközök legkisebb mértékű késleltetéssel rendelkező IoT Hubhoz való csatlakoztatása (földrajzi horizontális skálázás)
 * Ismételt regisztráció az eszközt érintő változás alapján

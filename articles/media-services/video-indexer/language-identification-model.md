@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: ba1521581316d559eb4e67bafba0061c31cc666b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272950"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687124"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>A beszélt nyelv automatikus azonosítása a nyelvazonosító modellel
 
 A Video Indexer támogatja az automatikus nyelvazonosítást (LID), amely a beszélt nyelvű tartalom automatikus azonosításának és a médiafájl domináns azonosított nyelven történő átírásának folyamata. 
 
-Jelenleg a LID támogatja: angol, spanyol, francia, német, olasz, mandarin chines, japán, orosz és portugál (brazil). 
+Jelenleg a LID támogatja: angol, spanyol, francia, német, olasz, mandarin kínai, japán, orosz és portugál (brazil). 
 
 Mindenképpen tekintse át az alábbi [Irányelvek és korlátozások](#guidelines-and-limitations) című szakaszt.
 

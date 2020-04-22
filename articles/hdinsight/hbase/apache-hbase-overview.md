@@ -7,25 +7,25 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 03/03/2020
-ms.openlocfilehash: 97814f4d22629fd74f395887a7361a3aabe55012
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/20/2020
+ms.openlocfilehash: e977d4d68a330f57c4b53da4270e4515d4e69ee0
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78271834"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729810"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Mi az Apache HBase az Azure HDInsightban?
 
-[Apache HBase](https://hbase.apache.org/) egy nyílt forráskódú, NoSQL adatbázis épül [Apache Hadoop](https://hadoop.apache.org/) és modellezve a [Google BigTable](https://cloud.google.com/bigtable/). A HBase véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok számára egy séma nélküli adatbázisban oszlopcsaládok szerint rendezve.
+[Apache HBase](https://hbase.apache.org/) egy nyílt forráskódú, NoSQL adatbázis épül Apache Hadoop és modellezve a [Google BigTable](https://cloud.google.com/bigtable/). A HBase véletlenszerű hozzáférést és erős konzisztenciát biztosít a séma nélküli adatbázis nagy mennyiségű adatához. Az adatbázis oszlopcsaládok szerint van rendezve.
 
-Felhasználói szempontból a HBase hasonló az adatbázishoz. Az adatok egy tábla soraiban és oszlopaiban tárolódnak, a sorokon belüli adatok pedig oszlopcsalád szerint vannak csoportosítva. A HBase egy séma nélküli adatbázis abban az értelemben, hogy az oszlopokat és a bennük tárolt adattípusokat sem kell meghatározni a használatuk előtt. A nyílt forráskód lineáris módon méreteződik át a több ezer csomópontnyi adat petabájtjainak kezelése érdekében. Az adatredundanciára, a kötegelt feldolgozásra és más olyan szolgáltatásokra támaszkodhat, amelyeket elosztott alkalmazások nyújtanak a Hadoop rendszerben.
+Felhasználói szempontból a HBase hasonló az adatbázishoz. Az adatok egy tábla soraiban és oszlopaiban tárolódnak, a sorokon belüli adatok pedig oszlopcsalád szerint vannak csoportosítva. A HBase egy séma nélküli adatbázis. Az oszlopok és adattípusok használat előtt meghatározatlanok lehetnek. A nyílt forráskód lineáris módon méreteződik át a több ezer csomópontnyi adat petabájtjainak kezelése érdekében. Támaszkodhat az adatredundancia, a kötegelt feldolgozás és egyéb funkciók, amelyek által nyújtott elosztott alkalmazások a Hadoop környezetben.
 
 ## <a name="how-is-apache-hbase-implemented-in-azure-hdinsight"></a>Hogyan valósítja meg az Apache HBase implementált szolgáltatását az Azure HDInsightban?
 
-A HDInsight HBase az Azure környezetbe integrált felügyelt fürtként érhető el. A fürtök úgy vannak konfigurálva, hogy az adatokközvetlenül [az Azure Storage-ban](./../hdinsight-hadoop-use-blob-storage.md)tárolják, ami alacsony késést és nagyobb rugalmasságot biztosít a teljesítmény és a költségválaszték ban. Ez lehetővé teszi, hogy az ügyfelek olyan interaktív webhelyeket építsenek, amelyek nagy adatkészletekkel működnek, hogy a több millió végpontból származó érzékelői és telemetriai adatokat tároló szolgáltatásokat építhessenek, és hogy ezeket az adatokat Hadoop-feladatokkal elemezzék. A HBase és a Hadoop jó kezdőpont a big data-projektekhez az Azure rendszerben; különösképpen azt teszik lehetővé, hogy a valós idejű alkalmazások nagy adatkészletekkel dolgozhassanak.
+A HDInsight HBase az Azure környezetbe integrált felügyelt fürtként érhető el. A fürtök úgy vannak konfigurálva, hogy az adatokközvetlenül [az Azure Storage-ban](./../hdinsight-hadoop-use-blob-storage.md)tárolják, ami alacsony késést és nagyobb rugalmasságot biztosít a teljesítmény és a költségválaszték ban. Ez a tulajdonság lehetővé teszi az ügyfelek számára, hogy olyan interaktív webhelyeket hozzanak létre, amelyek nagy adatkészletekkel működnek. Olyan szolgáltatások létrehozásához, amelyek több millió végpontérzékelő- és telemetriai adatait tárolják. És elemezni ezeket az adatokat A Hadoop feladatokat. A HBase és a Hadoop jó kiindulópontaz Azure-beli big data-projektekhez. A szolgáltatások lehetővé teszik a valós idejű alkalmazások nagy adatkészletek.
 
-A HDInsight-implementáció kihasználja a HBase méretezhető architektúráját, hogy a táblák automatikus árnyalását, az írások és olvasások erős következetességét és automatikus feladatátvételt nyújtson. A teljesítményt a memóriába való gyorsítótárazás növeli az olvasáshoz, és a nagy streaming-kapacitás az írásokhoz. A HBase-fürt a virtuális hálózaton belül hozható létre. További információ: [HDInsight-fürtök létrehozása az Azure Virtual Networkön](./apache-hbase-provision-vnet.md).
+A HDInsight-implementáció a HBase kibővített architektúráját használja a táblák automatikus horizontális skálázásának biztosításához. Az olvasások és írások erős konzisztenciája és az automatikus feladatátvétel. A teljesítményt a memóriába való gyorsítótárazás növeli az olvasáshoz, és a nagy streaming-kapacitás az írásokhoz. A HBase-fürt a virtuális hálózaton belül hozható létre. További információ: [HDInsight-fürtök létrehozása az Azure Virtual Networkön](./apache-hbase-provision-vnet.md).
 
 ## <a name="how-is-data-managed-in-hdinsight-hbase"></a>Hogyan történik az adatok kezelése a HDInsight HBase-ben?
 
@@ -41,9 +41,9 @@ A gyűjtőhasználati eset, amelyre a BigTable (és tágabb értelemben a HBase)
 |Forgatókönyv |Leírás |
 |---|---|
 |Kulcs-érték tároló|A HBase kulcsérték-tárolóként használható, és alkalmas az üzenetrendszerek kezelésére. A Facebook a HBase-t használja az üzenetküldő rendszeréhez, és ideális az internetes kommunikáció tárolására és kezelésére. A WebTable a HBase eszközt használja a weblapokról kinyert táblázatok keresésére és kezelésére.|
-|Érzékelői adatok|A HBase hasznos a növekményesen, különböző forrásokból gyűjtött adatok rögzítéséhez. Ez magában foglalja a közösségi elemzést, az idősorozatokat, az interaktív irányítópultok naprakészen tartását a trendekkel és számlálókkal, valamint a naplórendszerek kezelését. Példák lehetnek erre a Bloomberg Trader terminál és az Open Time Series Database (OpenTSDB), amelyek a kiszolgálórendszerek állapotával kapcsolatos mérőszámokat tárolnak és tesznek elérhetővé.|
+|Érzékelői adatok|A HBase hasznos a növekményesen, különböző forrásokból gyűjtött adatok rögzítéséhez. Ezek közé tartoznak a közösségi elemzések és az idősorok. Az interaktív irányítópultok naprakészen tartása a trendekkel és számlálókkal, valamint a naplórendszerek kezelése. Ilyen például a Bloomberg kereskedői terminál és az Open Time Series Database (OpenTSDB). Az OpenTSDB tárolja és hozzáférést biztosít a kiszolgálórendszerek állapotáról gyűjtött mutatókhoz.|
 |Valós idejű lekérdezés|[Az Apache Phoenix](https://phoenix.apache.org/) az Apache HBase SQL-lekérdezési motorja. JDBC-illesztőprogramként érhető el, és lehetővé teszi a HBase-táblák lekérdezését és kezelését az SQL használatával.|
-|A HBase platformként|Az alkalmazások a HBase felett futhatnak adattárolóként. Ilyen például a Phoenix, [az OpenTSDB](http://opentsdb.net/), a Kiji és a Titan. Az alkalmazások integrálhatók is a HBase eszközzel. Ilyen például [az Apache Hive,](https://hive.apache.org/) [az Apache Pig, a](https://pig.apache.org/) [Solr,](https://lucene.apache.org/solr/)az [Apache Storm,](https://storm.apache.org/) [az Apache Flume, az](https://flume.apache.org/)Apache [Impala,](https://impala.apache.org/)az [Apache Spark,](https://spark.apache.org/) [a Ganglionok](http://ganglia.info/)és az [Apache Drill.](https://drill.apache.org/)|
+|A HBase platformként|Az alkalmazások a HBase felett futhatnak adattárolóként. Ilyen például a Phoenix, `Kiji`az OpenTSDB és a Titan. Az alkalmazások integrálhatók is a HBase eszközzel. Ilyenek például: [Apache Hive](https://hive.apache.org/), Apache Pig, [Solr](https://lucene.apache.org/solr/), Apache Storm, `Ganglia`Apache Flume, Apache [Impala](https://impala.apache.org/), Apache Spark , és Apache Drill.|
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: e17a76d5a017400287644ad2da46caa5b6636654
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262298"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730490"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Fiók migrálása a Cloud Partner Portalról a Partnerközpontba
 
@@ -47,7 +47,7 @@ Kattintson a bannerre a fiók áttelepítési folyamatának elindításához. A 
 
 Azoknak a vállalatoknak, amelyek a Microsofttal szeretnének együttműködni, csatlakozniuk kell a Microsoft Partner Networkhöz (MPN), és MPN-azonosítót kell kapniuk. Ha már tagja a Microsoft Partner Networknek, és rendelkezik MPN-azonosítóval, tartsa kéznél az információkat, ahogy a fiók aktiválási folyamata során szüksége lesz rájuk.  
 
-Ha nem tagja a Microsoft Partner Networknek, [itt csatlakozhat](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/en-us/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) MPN-azonosítóért. Jegyezze fel az MPN-azonosítót, mert meg kell adnia a fiók aktiválási folyamata során.
+Ha nem tagja a Microsoft Partner Networknek, [itt csatlakozhat](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) MPN-azonosítóért. Jegyezze fel az MPN-azonosítót, mert meg kell adnia a fiók aktiválási folyamata során.
 
 Ha többet szeretne megtudni a Microsoft Partner Network hálózatról, olvassa [el a Csatlakozás a Microsoft Partner Network webhelyhez](https://partner.microsoft.com/en-US/membership) című témakört. Ha többet szeretne tudni a microsoftpartner-hálózat ban a hálózatépítő eszközekkel kapcsolatos előnyökről, olvassa el az [isv erőforrásközpontot.](https://partner.microsoft.com/isv-resource-hub)  
 
@@ -61,7 +61,7 @@ A Dynamics 365 Customer Engagement, a PowerApps és a Dynamics 365 Operations aj
 > Ez nem vonatkozik a Dynamics 365 Business Central ajánlataira.  
 
 1. Ha az MPN-tagsági fiókját eredetileg a Partner membership Centerben (PMC) hozták létre, jelentkezzen be a [Partnerközpontba,](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) és ellenőrizze, hogy a fiókját áttelepítették-e. Ha megjelenik egy profilképernyő az MPN-azonosítóval, készen áll a folytatásra. Ha nem, akkor a [partnertagsági központban](https://partners.microsoft.com/partnerprogram/Welcome.aspx)található utasításokat követve kell elindítania a fiók áttelepítését. Ha segítségre van szüksége, látogasson el [a támogatási .](https://partner.microsoft.com/support?issueid=100-0077)
-2. Nyissa meg a [Kereskedelmi piactér áttekintése lapot a Partnerközpontban.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) Ha a bal oldali navigációs ablakban a "Kereskedelmi piactér" jelenik meg, akkor regisztrált, és a következő lépéssel folytatja. Ha nem, [beiratkozik a kereskedelmi piacon](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) most.
+2. Nyissa meg a [Kereskedelmi piactér áttekintése lapot a Partnerközpontban.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) Ha a bal oldali navigációs ablakban a "Kereskedelmi piactér" jelenik meg, akkor regisztrált, és a következő lépéssel folytatja. Ha nem, [beiratkozik a kereskedelmi piacon](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) most.
 3. Erősítse meg az ajánlatok at AppSource [keres az ajánlatokat.](https://appsource.microsoft.com/) Ha az ajánlatok már az AppSource-ban vannak, folytassa a következő lépéssel. Az AppSource-ban nem található bármely ajánlathoz hozzon létre egy [új Dynamics 365 Customer Engagement ajánlatot](create-new-customer-engagement-offer.md) vagy egy [új Dynamics 365 Operations ajánlatot.](create-new-operations-offer.md)
 4. A Partnerközpont [Megállapodások lapján](https://partner.microsoft.com/dashboard/account/agreements)ellenőrizze, hogy áttekintette-e és elfogadta-e az **üzleti alkalmazások isv-függelékét.**
 5. A Partnerközpont [fiókbeállításaiban](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)győződjön meg arról, hogy a számlázási adatok teljesek.
@@ -73,10 +73,10 @@ A Dynamics 365 Customer Engagement, a PowerApps és a Dynamics 365 Operations aj
 
 ## <a name="additional-resources"></a>További források
 
-Csatlakozzon a Dynamics ISV heti [segélyhívó felhívásához,](https://aka.ms/DynamicsISV-CommunityCall) hogy támogasson és frissítsen.
+Segítséget kaphat a fórumok szakértőitől és szakértőitől, és blogokat, webináriókat, videókat, eseményeket és egyebeket fedezhet fel a [Microsoft Dynamics CRM webhelyen.](https://community.dynamics.com/crm?wa=wsignin1.0)
 
-Ha segítségre van szüksége a piactéri ajánlatok közzétételéhez, hitelesítéséhez vagy kezeléséhez, [küldjön be egy támogatási jegyet.](https://aka.ms/MarketplacePublisherSupport)
+Ha segítségre van szüksége a piactéri ajánlatok közzétételéhez, hitelesítéséhez vagy kezeléséhez, [küldjön be egy támogatási jegyet.](https://partner.microsoft.com/support/v2/?stage=1)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-step"></a>Következő lépés
 
 - [Kereskedelmi piactéri fiók kezelése a Partnerközpontban](./manage-account.md)

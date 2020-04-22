@@ -3,12 +3,12 @@ title: Azure Application Insights ASP.NET alapalkalmazásokhoz | Microsoft dokum
 description: Monitor ASP.NET Core webes alkalmazások a rendelkezésre állás, a teljesítmény és a használat.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: d6a0e507022452f1491e71651ba3bc8db3d1c090
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a9a81d76df7f14fb99b8521e7bfa2edff6c9e9e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284789"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687374"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET alapalkalmazásokhoz
 
@@ -103,7 +103,7 @@ Az [Application Insights SDK ASP.NET Core](https://nuget.org/packages/Microsoft.
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Példa:
+    Például:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -162,11 +162,11 @@ Az előző lépések elegendőek a kiszolgálóoldali telemetriai adatok gyűjt�
     
 Másik lehetőségként `FullScript` használja `ScriptBody` a elérhető sdk v2.14. Ezt akkor használja, ha `<script>` a tartalombiztonsági házirend beállításához szabályoznia kell a címkét:
 
-    ```cshtml
-        <script> // apply custom changes to this script tag.
-            @Html.Raw(JavaScriptSnippet.ScriptBody)
-        </script>
-    ```
+```cshtml
+ <script> // apply custom changes to this script tag.
+     @Html.Raw(JavaScriptSnippet.ScriptBody)
+ </script>
+```
 
 A `.cshtml` korábban hivatkozott fájlnevek egy alapértelmezett MVC alkalmazássablonból származnak. Végső soron, ha azt szeretné, hogy megfelelően engedélyezze az ügyféloldali figyelés az alkalmazás, a JavaScript-kódrészlet meg kell jelennie a szakaszminden egyes oldalon az `<head>` alkalmazás, amely figyelni kívánt. Ezt a célt az alkalmazássablonhoz úgy érheti el, hogy hozzáadja a JavaScript-kódrészletet a alkalmazáshoz. `_Layout.cshtml` 
 

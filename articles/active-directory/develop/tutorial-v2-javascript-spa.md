@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4a6694a072231f98383c13e6a42aedf68f62ac93
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 52b7c582848dd24f6d9963a9d37c8f12c5db6149
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533785"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678029"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Jelentkezzen be a felhasználókhoz, és hívja fel a Microsoft Graph API-t egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -47,10 +47,6 @@ Ez az útmutató a következő könyvtárat használja:
 |Erőforrástár|Leírás|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft JavaScript-hitelesítési tár|
-
-> [!NOTE]
-> *Az Msal.js* a Microsoft identity platform végpontját célozza meg, amely lehetővé teszi a személyes fiókok, valamint az iskolai és munkahelyi fiókok bejelentkezését és tokenek beszerzését. A Microsoft identity platform végpontja [bizonyos korlátozásokkal rendelkezik.](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)
-> A v1.0 és a 2.0-s végpontok közötti különbségeket a [végpontok összehasonlítási útmutatójában](../azuread-dev/azure-ad-endpoint-comparison.md)talál.
 
 <!--end-collapse-->
 

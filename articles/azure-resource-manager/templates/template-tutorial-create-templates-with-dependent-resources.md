@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bbe973f5c701f55705fe197f56f5f8ab1d9e8c68
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e589fa8ae5627746ec1f04e2098a7b592f00dc24
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260755"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684937"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Oktatóanyag: Arm-sablonok létrehozása függő erőforrásokkal
 
@@ -96,11 +96,11 @@ Amikor ebben a szakaszban a sablont vizsgálja, próbálja megválaszolni a köv
 
     ![Visual Studio Code Azure Resource Manager sablonok virtuális hálózat dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    A dependsOn elem lehetővé teszi, hogy egy adott erőforrást egy vagy több erőforrástól függőként lehessen meghatározni. A dependsOn elem lehetővé teszi, hogy egy adott erőforrást egy vagy több erőforrástól függőként lehessen meghatározni.  Ez az erőforrás egy másik erőforrástól függ:
+    A dependsOn elem lehetővé teszi, hogy egy adott erőforrást egy vagy több erőforrástól függőként lehessen meghatározni. Ez az erőforrás egy másik erőforrástól függ:
 
     * `Microsoft.Network/networkSecurityGroups`
 
-1. Bővítse ki az ötven erőforrást. Az erőforrástípus `Microsoft.Network/networkInterfaces`. Az erőforrás két másik erőforrástól függ:
+1. Bontsa ki az ötödik erőforrást. Az erőforrástípus `Microsoft.Network/networkInterfaces`. Az erőforrás két másik erőforrástól függ:
 
     * `Microsoft.Network/publicIPAddresses`
     * `Microsoft.Network/virtualNetworks`
@@ -163,7 +163,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 1. Az Azure Portalon válassza a bal oldali menü **Erőforráscsoport** lehetőséget.
 2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét.
-3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
+3. Válassza ki az erőforráscsoport nevét. Az erőforráscsoportban összesen hat erőforrás jelenik meg.
 4. Válassza a felső menü **Erőforráscsoport törlése** parancsát.
 
 ## <a name="next-steps"></a>További lépések

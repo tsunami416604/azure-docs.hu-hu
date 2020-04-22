@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457399"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730718"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Az Azure Virtuálisgép technikai eszközeinek létrehozása
 
@@ -109,7 +109,7 @@ Az alábbi lépésekkel hozd létre az alap virtuálisgép-lemezképet az [Azure
 
 Az Azure megkezdi a megadott virtuális gép kiépítését. A folyamat nyomon követhető a bal oldali **Virtuális gépek** fül kiválasztásával. Létrehozása után az állapot **Futás**állapotra változik.
 
-Ha nehézségekbe ütközik az új Azure-alapú virtuális merevlemez létrehozása során, olvassa el [a Gyakori problémák a virtuális merevlemez létrehozása során (GYAKORI KÉRDÉSEK) című témakört.](https://aka.ms/VHDcreationIssues)
+Ha nehézségekbe ütközik az új Azure-alapú virtuális merevlemez létrehozása során, olvassa el [a Gyakori problémák a virtuális merevlemez létrehozása során (GYAKORI KÉRDÉSEK) című témakört.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)
 
 ### <a name="connect-to-your-azure-vm"></a>Csatlakozás az Azure-beli virtuális géphez
 

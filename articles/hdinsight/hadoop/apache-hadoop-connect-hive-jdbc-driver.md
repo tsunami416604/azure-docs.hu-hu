@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 8129239f152f6b359b930e56466052da12ef4d42
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 04/20/2020
+ms.openlocfilehash: 803256ab1c5201534cfbd8210f96040ba75081e5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437034"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687294"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Az Apache Hive lekérdezése a HDInsight JDBC-illesztőjén keresztül
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Ismerje meg, hogyan használhatja a Java-alkalmazások JDBC-illesztőprogramját apache hive-lekérdezések elküldéséhez az Apache Hadoop nak az Azure HDInsightban. A jelen dokumentumban található információk bemutatják, hogyan lehet programozott módon csatlakozni, valamint a SQuirreL SQL-ügyfélből.
+További információ a JDBC-illesztőprogram használatáról Java-alkalmazásokból. Apache Hive-lekérdezések küldése az Apache Hadoop az Azure HDInsightban. A jelen dokumentumban található információk bemutatják, hogyan lehet programozott módon csatlakozni, valamint a SQuirreL SQL-ügyfélből.
 
 A Hive JDBC felületről a [HiveJDBCInterface című témakörben](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface)talál további információt.
 
@@ -31,7 +31,7 @@ A Hive JDBC felületről a [HiveJDBCInterface című témakörben](https://cwiki
 
 ## <a name="jdbc-connection-string"></a>JDBC-kapcsolati sztring
 
-JDBC-kapcsolatok egy HDInsight-fürthöz az Azure-ban a 443-as porton keresztül készülnek, és a forgalom TLS/SSL használatával védett. A nyilvános átjáró, amely mögött a fürtök ülnek átirányítja a forgalmat a portra, amely hiveserver2 ténylegesen figyel. A következő kapcsolati karakterlánc a HDInsight formátumát mutatja:
+JDBC-kapcsolatok egy HDInsight-fürthöz az Azure-ban a 443-as porton keresztül készülnek. A forgalom TLS/SSL használatával védett. A nyilvános átjáró, amely mögött a fürtök ülnek átirányítja a forgalmat a portra, amely hiveserver2 ténylegesen figyel. A következő kapcsolati karakterlánc a HDInsight formátumát mutatja:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -43,17 +43,17 @@ Vagy az **Ambari felhasználói felületén keresztül > Ambari felhasználói f
 
 ### <a name="host-name-in-connection-string"></a>Állomásnév a kapcsolati karakterláncban
 
-A kapcsolati karakterláncban a "CLUSTERNAME.azurehdinsight.net" állomásnév megegyezik a fürt URL-címével. Az Azure Portalon keresztül juthat hozzá. 
+A kapcsolati karakterláncban a "CLUSTERNAME.azurehdinsight.net" állomásnév megegyezik a fürt URL-címével. Az Azure Portalon keresztül juthat hozzá.
 
 ### <a name="port-in-connection-string"></a>Port a kapcsolati karakterláncban
 
-Csak a **443-as port** használatával csatlakozhat a fürthöz az Azure virtuális hálózaton kívüli bizonyos helyekről. A HDInsight egy felügyelt szolgáltatás, ami azt jelenti, hogy a fürthöz való összes kapcsolat biztonságos átjárón keresztül történik. A HiveServer 2-höz közvetlenül az 10001-es vagy 10000-es porton nem lehet csatlakozni, mert ezek a portok nincsenek kitéve a külvilágnak. 
+Csak a **443-as port** használatával csatlakozhat a fürthöz az Azure virtuális hálózaton kívüli bizonyos helyekről. A HDInsight egy felügyelt szolgáltatás, ami azt jelenti, hogy a fürthöz való összes kapcsolatot egy biztonságos átjárón keresztül kezeli a rendszer. A HiveServer 2-höz nem lehet közvetlenül az 10001-es vagy 10000-es portokon csatlakozni. Ezek a portok nincsenek kitéve a külvilágnak.
 
 ## <a name="authentication"></a>Hitelesítés
 
-A kapcsolat létrehozásakor a HDInsight-fürt felügyeleti nevét és jelszavát kell használnia a fürtátjáró hitelesítéséhez. JDBC-ügyfelekből, például a SQuirreL SQL-ből való csatlakozáskor meg kell adnia a rendszergazda nevét és jelszavát az ügyfélbeállításokban.
+A kapcsolat létrehozásakor a HDInsight-fürt felügyeleti nevét és jelszavát használja a hitelesítéshez. A JDBC-ügyfelek, például a SQuirreL SQL lapon adja meg a rendszergazda nevét és jelszavát az ügyfélbeállításokban.
 
-A Java-alkalmazásokból a nevet és a jelszót kell használnia a kapcsolat létrehozásakor. A következő Java-kód például új kapcsolatot nyit meg a kapcsolati karakterlánc, a rendszergazdaneve és a jelszó használatával:
+A Java-alkalmazásokból a nevet és a jelszót kell használnia a kapcsolat létrehozásakor. Például a következő Java-kód új kapcsolatot nyit meg:
 
 ```java
 DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
@@ -85,8 +85,8 @@ A SQuirreL SQL egy JDBC-ügyfél, amely a HIVe-lekérdezések hdinsight-fürtdel
 
     |Tulajdonság | Érték |
     |---|---|
-    |Név|Hive|
-    |Példa URL-címe|jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2|
+    |Name (Név)|Hive|
+    |Példa URL-címe|`jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`|
     |Extra osztály elérési útja|A **Hozzáadás** gombbal hozzáadhatja a korábban letöltött összes jar fájlt.|
     |Osztály neve|org.apache.hive.jdbc.HiveDriver|
 
@@ -96,15 +96,15 @@ A SQuirreL SQL egy JDBC-ügyfél, amely a HIVe-lekérdezések hdinsight-fürtdel
 
 6. A SQuirreL SQL ablak bal oldalán válassza az **Aliasok**lehetőséget. Ezután **+** válassza ki az ikont a kapcsolatalias létrehozásához.
 
-    ![SQuirreL SQL új alias hozzáadása párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    !['SQuirreL SQL új alias párbeszédpanel hozzáadása](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
 7. Az **Alias hozzáadása** párbeszédpanelen a következő értékeket használja:
 
     |Tulajdonság |Érték |
     |---|---|
-    |Név|Hive a HDInsight-on|
+    |Name (Név)|Hive a HDInsight-on|
     |Illesztőprogram|A legördülő menü segítségével **Hive** válassza ki a Hive-illesztőprogramot.|
-    |URL-cím|jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2. Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.|
+    |URL-cím|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.|
     |Felhasználónév|A HDInsight-fürt fürtbejelentkezési fiókneve. **Az**alapértelmezett admin .|
     |Jelszó|A fürt bejelentkezési fiókjának jelszava.|
 
@@ -153,12 +153,11 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 ### <a name="connection-disconnected-by-hdinsight"></a>A HDInsight által megszakadt kapcsolat
 
-**Tünetek**: Amikor hatalmas mennyiségű adatot próbál letölteni (mondjuk több GB-t) a JDBC / ODBC-n keresztül, a kapcsolatot a HDInsight váratlanul leválasztja letöltés közben. 
+**Tünetek**: Amikor hatalmas mennyiségű adatot próbál letölteni (mondjuk több GB-t) a JDBC / ODBC-n keresztül, a kapcsolatot a HDInsight váratlanul leválasztja letöltés közben.
 
-**Ok**: Ezt a hibát az átjárócsomópontok korlátozása okozza. Amikor adatokat kap a JDBC/ODBC-től, minden adatnak át kell haladnia az átjáró csomóponton. Az átjárót azonban nem úgy tervezték, hogy hatalmas mennyiségű adatot töltsön le, így a kapcsolatot az átjáró bezárhatja, ha nem tudja kezelni a forgalmat.
+**Ok**: Ezt a hibát az átjárócsomópontok korlátozása okozza. Amikor adatokat kap a JDBC/ODBC-től, minden adatnak át kell haladnia az átjáró csomóponton. Az átjáró azonban nem hatalmas mennyiségű adat letöltésére szolgál, így az átjáró bezárhatja a kapcsolatot, ha nem tudja kezelni a forgalmat.
 
 **Felbontás**: Kerülje a JDBC/ODBC illesztőprogram használatát hatalmas mennyiségű adat letöltéséhez. Adatok másolása közvetlenül a blob storage helyett.
-
 
 ## <a name="next-steps"></a>További lépések
 
@@ -166,12 +165,8 @@ Most, hogy megtanulta, hogyan használhatja a JDBC-t a Hive-val való együttmű
 
 * [Az Apache Hive-adatok megjelenítése a Microsoft Power BI szolgáltatással az Azure HDInsightban.](apache-hadoop-connect-hive-power-bi.md)
 * [Jelenítse meg az interaktív lekérdezéshive-adatokat az Azure HDInsight Power BI szolgáltatásában.](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
-* [Az Apache Zeppelin segítségével apache hive-lekérdezéseket futtataz az Azure HDInsightban.](../interactive-query/hdinsight-connect-hive-zeppelin.md)
 * [Az Excel csatlakoztatása a HDInsighthoz a Microsoft Hive ODBC illesztőprogrammal](apache-hadoop-connect-excel-hive-odbc-driver.md).
 * [Az Excel csatlakoztatása az Apache Hadoophoz a Power Query használatával.](apache-hadoop-connect-excel-power-query.md)
-* [Csatlakozzon az Azure HDInsighthoz, és futtasson Apache Hive-lekérdezéseket a Data Lake Tools for Visual Studio használatával.](apache-hadoop-visual-studio-tools-get-started.md)
-* [Használja az Azure HDInsight eszközt a Visual Studio-kódhoz.](../hdinsight-for-vscode.md)
-* [Adatok feltöltése a HDInsightba](../hdinsight-upload-data.md)
 * [Az Apache Hive használata a HDInsight segítségével](hdinsight-use-hive.md)
-* [Az Apache Pig használata a HDInsight segítségével](hdinsight-use-pig.md)
+* [Az Apache Pig használata a HDInsight segítségével](../use-pig.md)
 * [MapReduce-feladatok használata a HDInsightban](hdinsight-use-mapreduce.md)

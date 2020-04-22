@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63ec58711c5dd142064e2d5cb29ccaa9eb9c0ed9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c2427fff37158745e416f4b2f0641697ad62ea9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79300654"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682665"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az InVision-lel
 
@@ -157,13 +157,15 @@ Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés használat
 
     e. Az **SAML tanúsítvány** szövegmezőjében nyissa meg a letöltött **tanúsítványt (Base64)** a Jegyzettömbbe, másolja a tartalmat, és illessze be az SAML tanúsítvány szövegmezőbe.
 
-    f. Válassza az **SHA-256** lehetőséget a **HASH algoritmus**legördülő legördülő menüből.
+    f. A **Névazonosító formátum a** mezőben használja `Unspecified` a **Névazonosító-formátumot.**
 
-    g. Adja meg az **SSO gomb címkéjének**megfelelő nevét.
+    g. Válassza az **SHA-256** lehetőséget a **HASH algoritmus**legördülő legördülő menüből.
 
-    h. **Just-in-Time kiépítés engedélyezése** be.
+    h. Adja meg az **SSO gomb címkéjének**megfelelő nevét.
 
-    i. Kattintson a **Frissítés** parancsra.
+    i. **Just-in-Time kiépítés engedélyezése** be.
+
+    j. Kattintson a **Frissítés** parancsra.
 
 ### <a name="create-invision-test-user"></a>InVision-tesztfelhasználó létrehozása
 

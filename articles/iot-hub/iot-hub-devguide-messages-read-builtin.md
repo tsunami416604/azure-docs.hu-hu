@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: a2674ca0f4808cb6f01781565e57369ca5d3ac37
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.custom: amqp
+ms.openlocfilehash: 169d926e466559bc83ba64ce9e976e0d725f614d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478790"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729993"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
@@ -50,7 +51,7 @@ Ha Az Event Hubs SDK-k vagy a termék integrációk, amelyek nem ismerik az IoT 
 
 A portálon az Event Hub-kompatibilis végpontmező egy teljes Event Hubs kapcsolati karakterláncot tartalmaz, amely így néz ki: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/; SharedAccessKeyName=iothubowner; SharedAccessKey=keykeykeykeykey=; EntityPath=iothub-ehub-abcd-1234-123456**. Ha a használt SDK-hoz más értékek szükségesek, akkor a következők lesznek:
 
-| Név | Érték |
+| Name (Név) | Érték |
 | ---- | ----- |
 | Végpont | sb://abcd1234namespace.servicebus.windows.net/ |
 | Gazdanév | abcd1234namespace.servicebus.windows.net |

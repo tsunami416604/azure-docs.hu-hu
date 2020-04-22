@@ -8,12 +8,15 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13eab175356ed1ec20caa3263ba00d0563384f0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 3529d6a67c6c8c19c053fe3170298658e90b4a54
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064380"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729275"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -413,7 +416,7 @@ Alapértelmezés szerint az IoT Edge elindítja a modulokat a saját elkülöní
 
 **1. lehetőség: DNS-kiszolgáló beállítása a tárolómotor beállításaiban**
 
-Adja meg a környezethez tartozó DNS-kiszolgálót a tárolómotor-beállításokban, amely a motor által indított összes tárolómodulra vonatkozik. Hozzon létre `daemon.json` egy nevű fájlt, amely megadja a használni kívánt DNS-kiszolgálót. Példa:
+Adja meg a környezethez tartozó DNS-kiszolgálót a tárolómotor-beállításokban, amely a motor által indított összes tárolómodulra vonatkozik. Hozzon létre `daemon.json` egy nevű fájlt, amely megadja a használni kívánt DNS-kiszolgálót. Például:
 
 ```json
 {
@@ -441,7 +444,7 @@ Indítsa újra a tárolómotort, hogy a frissítések érvénybe lépjenek.
 
 **2. lehetőség: DNS-kiszolgáló beállítása az IoT Edge telepítésében modulonként**
 
-Az IoT Edge központi telepítésében beállíthatja az egyes modulok *createOptions* dns-kiszolgálóját. Példa:
+Az IoT Edge központi telepítésében beállíthatja az egyes modulok *createOptions* dns-kiszolgálóját. Például:
 
 ```json
 "createOptions": {

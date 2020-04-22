@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8e6fd4955d6d68764895619efd968a957bcb5184
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460596"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676671"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Tárolófájlok lekérdezése sql-alapú (előzetes verziójú) erőforrások használatával a Synapse SQL-ben
 
@@ -62,7 +62,7 @@ Használati [példákat a Lekérdezésmappák és a több fájl](query-folders-m
 
 A Parketta forrásadatainak lekérdezéséhez használja a FORMAT = 'PARQUET' parancsot
 
-```sql
+```syntaxsql
 OPENROWSET
 (
     { BULK 'data_file' ,
@@ -121,7 +121,6 @@ Ha kihagyja a WITH záradékot az OPENROWSET utasításból, utasíthatja a szol
 ```sql
 OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
-
 ```
 
 ### <a name="filename-function"></a>Fájlnév függvény
@@ -163,7 +162,7 @@ A beágyazott oszlopok, például a Struct beágyazott elemeinek eléréséhez h
 
 A szintaktikai töredék példája a következő:
 
-```sql
+```syntaxsql
     OPENROWSET
     (   BULK 'unstructured_data_path' ,
         FORMAT = 'PARQUET' )
@@ -197,7 +196,7 @@ Ha nem skaláris elemeket szeretne elérni egy ismétlődő oszlopból, használ
 
 Lásd az alábbi szintaxistöredéket:
 
-```sql
+```syntaxsql
     SELECT
        { JSON_VALUE (column_name, path_to_sub_element), }
        { JSON_QUERY (column_name [ , path_to_sub_element ]), )
@@ -217,7 +216,7 @@ A különböző fájltípusok lekérdezéséről, valamint a nézetek létrehoz�
 - [Egyetlen CSV-fájl lekérdezése](query-single-csv-file.md)
 - [Parquet-fájlok lekérdezése](query-parquet-files.md)
 - [JSON-fájlok lekérdezése](query-json-files.md)
-- [Parketta beágyazott típusai lekérdezése](query-parquet-nested-types.md)
+- [A Parquet beágyazott típusainak lekérdezése](query-parquet-nested-types.md)
 - [Mappák és több CSV-fájl lekérdezése](query-folders-multiple-csv-files.md)
 - [Fájlmetaadatok használata lekérdezésekben](query-specific-files.md)
 - [Nézetek létrehozása és használata](create-use-views.md)

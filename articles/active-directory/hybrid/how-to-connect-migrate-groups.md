@@ -11,12 +11,12 @@ ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 298cfa58d008fbeb0d58cdcff61b27fa1819ee1d
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 602c60de392afbff18bc141605a936636e48dbfe
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80620830"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729702"
 ---
 # <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Csoportok áttelepítése egyik erdőből a másikba az Azure AD Connect számára
 
@@ -109,7 +109,7 @@ if ($group -eq $null)
 }
 
 $csvFile = Import-Csv -Path $inputCsv -ErrorAction Stop
-$msDSConsistencyGuid = [GUID] $csvFile.'mS-DS-ConsistencyGuid'
+$msDSConsistencyGuid = $csvFile.'mS-DS-ConsistencyGuid'
 $objectGuid = [GUID] $csvFile.'objectGUID'
 $targetGuid = $msDSConsistencyGuid
 

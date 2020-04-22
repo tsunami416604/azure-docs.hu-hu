@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c883653754e1f69d3b2d79b256d57a036c70b58e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15e0eaaeb407ad22220faa7d085eea805fe62679
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78330139"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731341"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Gyorsútmutató: Blobok kezelése Java v12 SDK-val
 
@@ -355,4 +355,4 @@ A Blob storage mintaalkalmazásának megtekintéséhez folytassa a következőke
 > [Az Azure Blob storage SDK v12 Java-mintái](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
 * További információ: [Az Azure SDK Java-hoz](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)című témakörben olvashat.
-* Oktatóanyagok, minták, rövid útmutatók és egyéb dokumentációk, látogasson el [az Azure for Java felhőfejlesztők.](/azure/java/)
+* Oktatóanyagok, minták, rövid útmutatók és egyéb dokumentációk, látogasson el [az Azure for Java felhőfejlesztők.](/azure/developer/java/)

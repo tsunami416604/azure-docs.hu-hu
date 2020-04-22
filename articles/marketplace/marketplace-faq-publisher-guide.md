@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: da324e1e1a40e515cac4b26d6c9f8661f344e1d7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262026"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687603"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft kereskedelmi piactér – gyakori kérdések
 
@@ -57,7 +57,7 @@ Az Azure Piactér segítségével az ügyfelek felfedezhetik az Azure-hoz kész�
 Az Azure Piactér ajánlatai a következő keresztül vásárolhatók meg:
 
 * [A web-alapú kirakat](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Az Azure Portal][Azure-portál]
+* [Az Azure portal] [Azure portal]
 * [Az Azure parancssori felülete (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -127,7 +127,7 @@ Az Azure-előfizetés a közzétevő független szoftverszállítók (ISV) megol
 
 + *Felhasználónként:* Az SaaS-előfizetések díja díja díja díja díja havonta vagy évente történik. 
 
-Az ajánlatspecifikus díjszabási részletek az Azure [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) Portalon vagy az [Azure Portalon]található megoldás részleteit tartalmazó lapon találhatók.
+Az ajánlatspecifikus díjszabási részletek az [Azure [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) Portalon] vagy az [Azure Portalon] található megoldás részletei oldalon találhatók.
 
 > [!Note]
 > A havi díjak kivételével az Azure használati díjai minden díjszabási modellre vonatkoznak, kivéve, ha másként van feltüntetve.
@@ -180,9 +180,9 @@ Nem. Az Azure Marketplace-en megoldásokat birtokló közzétevő díjszabást �
 
 **Hol tekinthetem meg az Azure Marketplace-előfizetésem adatait és számlázási adatait?**
 
-MOSP – [A Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web direct) ügyfelei az Azure [Portal]Költségkezelés + Számlázás szakaszának Számlák lapján tekinthetik meg a Marketplace-vásárlási adatokat.
+MOSP – [A Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web direct) ügyfelei az [Azure Portal] Költségkezelés + Számlázás szakaszának Számlák lapján tekinthetik meg a Marketplace-vásárlási adatokat.
 
-A nagyvállalati szerződés (EA) ügyfelei az [Azure Portal]Költségkezelés + Számlázás szakaszának Számlák lapján tekinthetik meg a Marketplace vásárlási adatait.
+A nagyvállalati szerződés (EA) ügyfelei az [Azure Portal] Költségkezelés + Számlázás szakaszának Számlák lapján tekinthetik meg a Marketplace vásárlási adatait.
 
 A felhőszolgáltató (CSP) partnerei megtekinthetik az egyes ügyfelek piactéri vásárlási adatait a Partnerközpontban a Rendelési előzmények lapon, miután kiválasztottak egy vállalatot az Ügyfelek nézetben.
 
@@ -208,7 +208,7 @@ Az Azure Marketplace-en vásárolt egyéb szolgáltatások nagy- és nagytámoga
 
 **Hogyan tudom meg, hogy az Azure Marketplace-en vásárolt vásárlásból mennyit használtam fel?**
 
-A becsült használati adatok az [Azure Portalon]találhatók. Előfordulhat, hogy ezek a becsült használati információk nem tartalmaznak közelmúltbeli tevékenységeket, és alapulhatnak a múltbeli fogyasztásból származó előrejelzéseken. A nyilvános előzetes verzió során előfordulhat, hogy ez a funkció nem érhető el minden vásárláshoz, és a termék típusától függően változhat.
+A becsült használati adatok az [Azure Portalon] találhatók. Előfordulhat, hogy ezek a becsült használati információk nem tartalmaznak közelmúltbeli tevékenységeket, és alapulhatnak a múltbeli fogyasztásból származó előrejelzéseken. A nyilvános előzetes verzió során előfordulhat, hogy ez a funkció nem érhető el minden vásárláshoz, és a termék típusától függően változhat.
 
 ### <a name="customer-support"></a>Ügyféltámogatás
 
@@ -242,7 +242,7 @@ A meglévő előfizetéshez hozzáadott licencek az előfizetés időtartamának
 
 **Hogyan történik a licenceltávolítás oka a félidős időszakban?**
 
-A törölt licencekre a GYIK-ben található visszatérítési szabályzat vonatkozik.  Minden törölt licencet azonnal eltávolítunk a fiókjából, és a továbbiakban nem lesznek elérhetők.
+A törölt licencekre a GYIK-ben található visszatérítési szabályzat vonatkozik.  Minden visszavont licencet azonnal eltávolítunk a fiókjából, és a továbbiakban nem lesznek elérhetők.
 
 **Támogatottak a visszatérítések a fogyasztásalapú ajánlatokesetében?**
 
@@ -307,7 +307,7 @@ Nincsenek közzétételi díjak, ha egy lista, próba- vagy BYOL (Hozd a saját 
 
 **Vannak-e tranzakciós díjak az Azure Marketplace-en történő vásárlásokért?**
 
-Ha a megoldáslicencet az Azure Marketplace-en keresztül vásárolják meg, a szoftverlicenc bevételei megoszlanak a közzétevő és a Microsoft között.  Ez a [Marketplace Kiadói Szerződés](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)feltételeinek megfelelően történik. Ezenkívül a BYOL (Bring Your Own License) megjelenítőkkel rendelkező megoldások nem vonnak fel tranzakciós díjakat.
+Ha a megoldáslicencet az Azure Marketplace-en keresztül vásárolják meg, a szoftverlicenc bevételei megoszlanak a közzétevő és a Microsoft között.  Ez a [Marketplace Kiadói Szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)feltételeinek megfelelően történik. Ezenkívül a BYOL (Bring Your Own License) megjelenítőkkel rendelkező megoldások nem vonnak fel tranzakciós díjakat.
 
 **Mi az általános szerződés?**
 
@@ -335,7 +335,7 @@ Az érdeklődők olyan ügyfelek, akik a Marketplace-en telepítik a termékeit.
 
 **Hol kaphatok segítséget az érdeklődő célhelyének beállításához?**
 
-További információ a [Partnerközpont érdeklődőinek beküldése](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) dokumentációjában, vagy támogatási jegy beküldése az [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) ajánlat típusának és az érdeklődőkezelésnek a kiválasztásával.
+További információ a [Partnerközpont érdeklődőinek beküldése](./partner-center-portal/commercial-marketplace-get-customer-leads.md) dokumentációjában, vagy támogatási jegy beküldése az [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) ajánlat típusának és az érdeklődőkezelésnek a kiválasztásával.
 
 **Be kell állítanom egy érdeklődő célját, hogy közzétegyek egy ajánlatot a Marketplace-en?**
 
@@ -343,7 +343,7 @@ Igen, ha a **Kapcsolati,** **SaaS-alkalmazás**vagy **a tanácsadási szolgálta
 
 **Hogyan győződhetek meg arról, hogy az érdeklődő konfigurációja helyes?**
 
-Az ajánlat befejezése és az érdeklődő célállomásának beállítása után a listamegfelelően közzétehető a [Partnerközpontban.](https://cloudpartner.azure.com/) Mielőtt a listaelem élessé válna, ellenőrizheti, hogy az érdeklődő konfigurációjának beállítása megfelelően működik-e.  Küldjön egy tesztérdeklődőt az ajánlatban konfigurált érdeklődő célállomásra.
+Az ajánlat befejezése és az érdeklődő célállomásának beállítása után a listamegfelelően közzétehető a [Partnerközpontban.](https://partner.microsoft.com/) Mielőtt a listaelem élessé válna, ellenőrizheti, hogy az érdeklődő konfigurációjának beállítása megfelelően működik-e.  Küldjön egy tesztérdeklődőt az ajánlatban konfigurált érdeklődő célállomásra.
 
 **Milyen országokban/régiókban érhető el a kiadók számára az Azure Marketplace?**
 
@@ -353,13 +353,13 @@ A következő országokban/régiókban működő kiadók jelenleg értékesíthe
 
 *Virtuális gép & Azure-alkalmazások:*
 
-1. Jelentkezzen be a [Partnerközpontba](https://cloudpartner.azure.com/).
+1. Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/).
 1. Válassza ki az ajánlatot a **Minden ajánlat** lapon.
 1. A képernyő bal oldalán lévő ablaktáblán válassza a **SK-k** lapot.
 1. Válassza ki a termékváltozat törlését, és kattintson a **törlés** gombra, hogy a termékváltozat.
 1. [Tegye közzé újra](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) az ajánlatot az Azure Marketplace-en.
 
-További információt az [Ajánlat törlése](./cloud-partner-portal/manage-offers/cpp-delete-offer.md)című témakörben talál.
+További információt az ajánlat frissítése című témakörben [talál.](./partner-center-portal/update-existing-offer.md)
 
 *Webalkalmazások (SaaS-alkalmazások, bővítmények) & tanácsadási szolgáltatások:*
 
@@ -392,7 +392,7 @@ Látogasson el a [Microsoft GTM-szolgáltatásokba,](https://partner.microsoft.c
 
 **Hol népszerűsítik az Azure Piactér-megoldásokat a Microsoft webes tulajdonságaiban?**
 
-Az Azure Marketplace-megoldások a Microsoft [Azure portalon]és az [Azure Marketplace webhelyén](https://azuremarketplace.microsoft.com/marketplace/)érhetők el. Az Azure-t használó felhőfejlesztők és informatikai szakemberek minden bejelentkezéskor partnermegoldásoknak vannak kitéve. A partnermegoldások egy részét az Azure Marketplace [kezdőlapján](https://azuremarketplace.microsoft.com/marketplace) és az [Azure-megoldások oldalon](https://azure.microsoft.com/solutions/)is bemutatjuk és elforgatjuk.
+Az Azure Marketplace-megoldások a Microsoft [Azure Portal] és az [Azure Marketplace webhelyén](https://azuremarketplace.microsoft.com/marketplace/)érhetők el. Az Azure-t használó felhőfejlesztők és informatikai szakemberek minden bejelentkezéskor partnermegoldásoknak vannak kitéve. A partnermegoldások egy részét az Azure Marketplace [kezdőlapján](https://azuremarketplace.microsoft.com/marketplace) és az [Azure-megoldások oldalon](https://azure.microsoft.com/solutions/)is bemutatjuk és elforgatjuk.
 
 ### <a name="billing-and-payments"></a>Számlázás és kifizetések
 
@@ -474,6 +474,3 @@ Igen, a támogatási jegyen keresztül történő kérésre a Microsoft feldolgo
 ## <a name="next-steps"></a>További lépések
 
 Látogasson el a [kereskedelmi piactér kiadói útmutató](/azure/marketplace/marketplace-publishers-guide) oldalára.
-
-
-[Azure Portal]: https://portal.azure.com

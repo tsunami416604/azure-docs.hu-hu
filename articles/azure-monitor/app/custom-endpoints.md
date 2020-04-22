@@ -3,20 +3,25 @@ title: Az Azure Application Insights felülbírálja az alapértelmezett SDK-vé
 description: Módosítsa az azure-figyelő application insights SDK-végpontok olyan régiókban, mint az Azure Government.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: b4ab05c7ee815b385ffb2d1ff9e621063d744dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b43bd13c73f77c6292e2062db88d68a20e5bf480
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298323"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729529"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Az Application Insights felülbírálja az alapértelmezett végpontokat
 
 Ha adatokat szeretne küldeni az Application Insightsból bizonyos régiókba, felül kell bírálnia az alapértelmezett végpontcímeket. Minden SDK némileg eltérő módosításokat igényel, amelyek mindegyike ebben a cikkben ismertetjük. Ezek a módosítások a mintakód módosítását `QuickPulse_Endpoint_Address`és `TelemetryChannel_Endpoint_Address`a `Profile_Query_Endpoint_address` helyőrző értékek cseréjét igénylik az on, és az adott régió tényleges végpontcímeivel. A cikk vége a végpontcímekre mutató hivatkozásokat tartalmaz azon régiók esetében, ahol ez a konfiguráció szükséges.
 
+> [!NOTE]
+> [A kapcsolati karakterláncok](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) az egyéni végpontok beállításának új előnyben részesített metódusai az Application Insightsban.
+
+---
+
 ## <a name="sdk-code-changes"></a>Az SDK-kód módosításai
 
-### <a name="net-with-applicationinsightsconfig"></a>.NET az applicationinsights.config fájllal
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > Az applicationinsights.config fájl automatikusan felülírja az SDK-frissítés végrehajtásakor. Az SDK-frissítés végrehajtása után győződjön meg róla, hogy adja meg újra a régióspecifikus végpontértékeket.
@@ -41,7 +46,7 @@ Ha adatokat szeretne küldeni az Application Insightsból bizonyos régiókba, f
 </ApplicationInsights>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET-mag
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 Módosítsa az appsettings.json fájlt a projektben az alábbiak szerint a fő végpont módosításához:
 
@@ -68,6 +73,8 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
     //Place in the ConfigureServices method. Place this before services.AddApplicationInsightsTelemetry("instrumentation key"); if it's present
 ```
+
+# <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
 ### <a name="azure-functions-v2x"></a>Az Azure Functions 2.x-es ével
 
@@ -120,7 +127,7 @@ namespace Example
 }
 ```
 
-### <a name="java"></a>Java
+# <a name="java"></a>[Java](#tab/java)
 
 Módosítsa az applicationinsights.xml fájlt az alapértelmezett végpontcím módosításához.
 
@@ -155,7 +162,7 @@ Módosítsa `application.properties` a fájlt, és adja hozzá:
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,7 +181,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 ```javascript
 <script type="text/javascript">
@@ -187,9 +194,11 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
-### <a name="python"></a>Python
+# <a name="python"></a>[Python](#tab/python)
 
 Az opencensus-python SDK betöltési végpontjának módosításához az [opencensus-python repo-hoz tájékozódhat.](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)
+
+---
 
 ## <a name="regions-that-require-endpoint-modification"></a>Végpont-módosítást igénylő régiók
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: jushiman
-ms.openlocfilehash: 410ae93ea109e5757ccb5b65d353a600574dd595
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 5855c53a73ac94985f34f229fbe5ab77067ef17d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010477"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680422"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rövid útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure Portalon
 
@@ -40,7 +40,7 @@ Először hozzon létre egy nyilvános standard terheléselosztót a portál has
     | ---| ---|
     | Előfizetés  | Válassza ki előfizetését.    |    
     | Erőforráscsoport | Válassza **az Új létrehozása lehetőséget,** és írja be a *myVMSSResourceGroup* parancsot a szövegmezőbe.|
-    | Név           | *myLoadBalancer*         |
+    | Name (Név)           | *myLoadBalancer*         |
     | Régió         | Válassza az **USA keleti régiója** lehetőséget.       |
     | Típus          | Válassza a **Nyilvános** lehetőséget.       |
     | SKU           | Válassza a **Normál**lehetőséget.       |
@@ -59,7 +59,7 @@ Méretezési csoportokat Windows Server-rendszerképpel vagy Linux-rendszerképp
 1. Írja be a **Méretezés készletkifejezést** a keresőmezőbe. Az eredmények a **Piactér csoportban**válassza **a Virtuálisgép-méretezési csoportok**lehetőséget. Megnyílik **a Virtuálisgép méretezési csoport ának létrehozása** lap. 
 1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. Írja be a *myVMSSResourceGroup* nevet a névhez, majd kattintson az **OK gombra.** 
 1. Írja be a *myScaleSet-et* a méretezési csoport neveként.
-1. A **Régió területen**válassza ki azt a területet, amely közel van a területhez.
+1. A **Régió területen**válassza ki a terület hez közeli területet.
 1. Hagyja meg az **Orchestrator** **ScaleSet virtuális gépek** alapértelmezett értékét.
 1. Válasszon ki egy piactérképet a **Kép**hez. Ebben a példában az *Ubuntu Server 18.04 LTS-t*választottuk.
 1. Adja meg a kívánt felhasználónevet, és válasszon ki egy tetszőleges hitelesítési típust.

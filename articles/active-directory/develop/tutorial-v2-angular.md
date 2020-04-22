@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 84d7be64e7157c35639fec19cb28fe787fe29b19
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: c3c12f78118734c31641b90e6fcb8469ddda30b0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533887"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678010"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: Jelentkezzen be a felhasználókhoz, és hívja fel a Microsoft Graph API-t egy egyoldalas alkalmazásból
 
@@ -53,10 +53,6 @@ Ez az oktatóanyag a következő könyvtárat használja:
 |Erőforrástár|Leírás|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Hitelesítési könyvtár JavaScript-háromszögburkolóhoz|
-
-> [!NOTE]
-> *Az Msal.js* a Microsoft identity platform végpontját célozza meg, amely lehetővé teszi a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok bejelentkezését és tokenek beszerzését. A Microsoft identity platform végpontja [bizonyos korlátozásokkal rendelkezik.](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)
-> A v1.0 és a 2.0-s végpontok közötti különbségeket a [végpontok összehasonlítási útmutatójában](../azuread-dev/azure-ad-endpoint-comparison.md)talál.
 
 Az MSAL.js tár forráskódját a GitHub [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) tártárában találja.
 

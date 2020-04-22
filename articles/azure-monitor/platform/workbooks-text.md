@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c5fb585d0eb6aeb7866c2ab04b324ee31fe903ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658049"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687325"
 ---
 # <a name="workbook-text-parameters"></a>Munkafüzet szövegparaméterei
 
@@ -59,6 +59,8 @@ A szövegdobozok gyakori használata más munkafüzetvezérlők által használt
 
     ![KQL-ben hivatkozott szövegparamétert ábrázoló kép](./media/workbooks-text/text-reference.png)
 
+> [!NOTE]
+> A fenti példában egy egész értéket `{SlowRequestThreshold}` jelöl. Ha egy karakterláncot, mint `{ComputerName}` akkor módosítania kell a Kusto `"{ComputerName}"` lekérdezést, hogy adjunk idézőjelek annak érdekében, hogy a paraméter mező egy accept input idézőjelek nélkül.
 
 ## <a name="setting-default-values"></a>Alapértelmezett értékek beállítása
 1. Kezdje üres munkafüzettel szerkesztési módban.

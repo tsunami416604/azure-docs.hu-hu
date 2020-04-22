@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284628"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729118"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Hivatkozás - kommunikációs protokoll kiválasztása
 
@@ -39,7 +42,7 @@ Ha az eszközoldali kommunikációprotokollt választja, vegye figyelembe a köv
 
 * **Felhőből az eszközre minta.** A HTTPS nem rendelkezik hatékony módszerrel a kiszolgálóleküldéses megvalósításához. Mint ilyen, ha HTTPS-t használ, az eszközök lekérik az IoT Hubot az eszközről az eszközre irányuló üzenetekhez. Ez a megközelítés nem hatékony mind az eszköz, mind az IoT Hub számára. A jelenlegi HTTPS-irányelvek szerint minden eszköznek 25 percenként vagy annál több percenként kell lekérnie az üzeneteket. Az MQTT és az AMQP támogatási kiszolgáló leküldéses felhőből az eszközre irányuló üzenetek fogadásakor. Lehetővé teszik az Üzenetek azonnali leküldéseit az IoT Hubról az eszközre. Ha a kézbesítési késés aggodalomra ad okot, mqtt vagy AMQP a legjobb protokollok használata. A ritkán csatlakoztatott eszközök esetében a HTTPS is működik.
 
-* **Helyszíni átjárók**. Az MQTT és a HTTPS használatakor nem csatlakoztathat több eszközt (mindegyik saját eszközönkénti hitelesítő adatokkal) ugyanazzal a TLS-kapcsolattal. [A field gateway forgatókönyvek,](iot-hub-devguide-endpoints.md#field-gateways) amelyek megkövetelik egy TLS-kapcsolat a helyszíni átjáró és az IoT Hub minden csatlakoztatott eszköz, ezek a protokollok nem optimális.
+* **Helyszíni átjárók**. Az MQTT és a HTTPS tls-kapcsolatonként csak egyetlen eszközidentitást (eszközazonosítót és hitelesítő adatokat) támogat. Emiatt ezek a protokollok nem támogatottak [a Field gateway forgatókönyvek,](iot-hub-devguide-endpoints.md#field-gateways) amelyek több eszközidentitást használó multiplexüzeneteket igényelnek az IoT Hub hoz egy vagy egy upstream kapcsolatkészleten keresztül. Az ilyen átjárók olyan protokollt használhatnak, amely kapcsolatonként több eszközidentitást támogat, például az AMQP-t a felsőbb réteghez vezető forgalomhoz.
 
 * **Alacsony erőforrás-erőforrásokkal rendelkeznek**. Az MQTT- és HTTPS-kódtárak alapigénye kisebb, mint az AMQP-kódtáraké. Így, ha az eszköz korlátozott erőforrásokkal rendelkezik (például kevesebb, mint 1 MB RAM), ezek a protokollok lehetnek az egyetlen rendelkezésre álló protokollimplementációk.
 

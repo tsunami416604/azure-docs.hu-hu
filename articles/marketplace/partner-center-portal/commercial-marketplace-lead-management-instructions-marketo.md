@@ -2,17 +2,17 @@
 title: Vezetőkezelés konfigurálása a Marketo-ban | Azure Piactér
 description: Konfigurálja a Marketo vezető felügyeletét az Azure piactéri ügyfelek számára.
 author: qianw211
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 04eae529efcf9509d8cd43a7629bb0b76b593cd0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 90f42954fd4d7324a7684795fca6ec302411790c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252462"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731114"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Érdeklődőkezelés konfigurálása a Marketo-ban
 
@@ -21,16 +21,21 @@ Ez a cikk bemutatja, hogyan állíthatja be a Marketo CRM rendszerét a piactér
 ## <a name="set-up-your-marketo-crm-system"></a>A Marketo CRM rendszer beállítása
 
 1. Jelentkezzen be a Marketo-ba.
+
 2. Válassza **a Design Studio**lehetőséget.
+
     ![Marketo Design Stúdió](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
 3.  Válassza az **Új űrlap lehetőséget.**
+
     ![Marketo új forma](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
 4.  Töltse ki a szükséges mezőket az Új űrlapon, majd válassza a **Létrehozás gombot.**
+
     ![A Marketo új űrlapot hoz létre](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
 5.  A Mező részletei területen válassza a **Befejezés**lehetőséget.
+
     ![Marketo befejezési forma](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
 6.  Jóváhagyás és bezárás.
@@ -41,7 +46,7 @@ Ez a cikk bemutatja, hogyan állíthatja be a Marketo CRM rendszerét a piactér
 
 8. A Marketo embed kódja a következő példához hasonló kódot jelenít meg.
 
-    ```
+    ```html
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
@@ -63,6 +68,7 @@ Ez a cikk bemutatja, hogyan állíthatja be a Marketo CRM rendszerét a piactér
 Ha készen áll az ajánlat érdeklődőkezelési adatainak konfigurálására a közzétételi portálon, kövesse az alábbi lépéseket: 
 
 1. Nyissa meg az **ajánlat beállítási** oldalát.
+
 1. Válassza a **Csatlakozás** lehetőséget az Érdeklődőkezelés szakaszban. 
 
     ![Érdeklődőkezelés - Csatlakozás](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
@@ -73,12 +79,13 @@ Ha készen áll az ajánlat érdeklődőkezelési adatainak konfigurálására a
 
 4. Adja meg a **kiszolgálóazonosítót**, **a csámcsogó fiókazonosítót**és **az űrlapazonosítót.**
 
-    >[!Note]
-    >Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie, mielőtt érdeklődőket kapna az ajánlathoz. 
+    > [!Note]
+    > Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie, mielőtt érdeklődőket kapna az ajánlathoz. 
 
 5. **Kapcsolatfelvételi e-mail** – E-maileket adhat meg a vállalatnál lévő személyeknek, akiknek e-mailes értesítéseket kell kapniuk, ha új érdeklődő érkezik. Több e-mailt is megadhat, ha pontosvesszővel választja el őket.
+
 6. Válassza **az OK gombot.**
 
-Ha meg szeretne győződni arról, hogy sikeresen csatlakozott egy érdeklődő célállomásához, kattintson az érvényesítés gombra. Ha sikeres, akkor lesz egy teszt vezető az érdeklődő cél.
+   Ha meg szeretne győződni arról, hogy sikeresen csatlakozott egy érdeklődő célállomásához, kattintson az érvényesítés gombra. Ha sikeres, akkor lesz egy teszt vezető az érdeklődő cél.
 
-![Kapcsolat adatai](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)
+   ![Kapcsolat adatai](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

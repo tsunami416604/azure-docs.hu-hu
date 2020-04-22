@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 77c58bb8dfa7d21b108d2aa63e90142f66877fb7
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/20/2020
+ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606510"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729139"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Sorátalakítás módosítása az adatfolyam leképezésében
 
@@ -48,10 +48,12 @@ A változássor-házirendek működéséhez az adatfolyamnak egy adatbázisba va
 
 ![Sorelesső módosítása](media/data-flow/alter-row2.png "Sormosogató módosítása")
 
- Az alapértelmezett viselkedés az, hogy csak a beszúrások engedélyezése. A frissítések, upserts vagy törlések engedélyezéséhez jelölje be az adott feltételnek megfelelő fogadóban lévő jelölőnégyzetet. Ha a frissítések, a upserts vagy a deleteek engedélyezve vannak, meg kell adnia, hogy a fogadóban mely kulcsoszlopoknak kell megfelelnie.
+Az alapértelmezett viselkedés az, hogy csak a beszúrások engedélyezése. A frissítések, upserts vagy törlések engedélyezéséhez jelölje be az adott feltételnek megfelelő fogadóban lévő jelölőnégyzetet. Ha a frissítések, a upserts vagy a deleteek engedélyezve vannak, meg kell adnia, hogy a fogadóban mely kulcsoszlopoknak kell megfelelnie.
 
 > [!NOTE]
 > Ha a beszúrások, frissítések vagy upserts módosítja a sémát a céltábla a fogadóban, az adatfolyam sikertelen lesz. Az adatbázis célsémájának módosításához válassza a **Tábla újbóli létrehozása** táblaműveletként lehetőséget. Ezzel eldobja és újra létrehozza a táblát az új sémadefinícióval.
+
+A fogadó átalakítása egyetlen kulcsot vagy kulcsok sorozatát igényli a céladatbázis egyedi sorazonosításához. SQL-fogadók esetén állítsa be a kulcsokat a fogadó beállítások lapján. A CosmosDB esetében állítsa be a partíciókulcsot a beállításokban, és állítsa be a CosmosDB rendszermező "id" mezőjét a mosogató-leképezésben. A CosmosDB esetében kötelező az "id" rendszeroszlop hozzáadása a frissítésekhez, upserts-hez és törléshez.
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 

@@ -1,18 +1,18 @@
 ---
-title: Az Azure Automation kapcsolati adategységei
+title: Kapcsolatok kezelése az Azure Automationben
 description: Az Azure Automation kapcsolati eszközei tartalmazzák a runbookból vagy DSC-konfigurációból egy külső szolgáltatáshoz vagy alkalmazáshoz való csatlakozáshoz szükséges információkat. Ez a cikk ismerteti a kapcsolatok részleteit, és hogyan működik velük mind szöveges, mind grafikus szerzői nyelven.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1ce59322b0cbfaf5a4f7b31371f0d0929a3a3ab
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 90d4ec1bbfd0d76ffedf1505c9147376e3947c3c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457722"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729058"
 ---
-# <a name="connection-assets-in-azure-automation"></a>Az Azure Automation kapcsolati adategységei
+# <a name="manage-connections-in-azure-automation"></a>Kapcsolatok kezelése az Azure Automationben
 
 Az Automation-kapcsolati eszköz tartalmazza a runbookvagy DSC-konfigurációból egy külső szolgáltatáshoz vagy alkalmazáshoz való csatlakozáshoz szükséges információkat. Ez magában foglalhatja a hitelesítéshez szükséges információkat, például a kapcsolati adatokon, például az URL-címen vagy a porton kívül a felhasználónevet és a jelszót. A kapcsolat értéke megtartja az összes tulajdonságot egy adott alkalmazáshoz való csatlakozáshoz egy eszközben, szemben a több változó létrehozásával. A felhasználó egy helyen szerkesztheti egy kapcsolat értékeit, és egyetlen paraméterben átadhatja a kapcsolat nevét egy runbook- vagy DSC-konfigurációhoz. A kapcsolatok tulajdonságai a runbook vagy a DSC konfigurációjában érhetők el a `Get-AutomationConnection` tevékenységgel.
 

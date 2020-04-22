@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75911910"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688094"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Az Azure IoT-eszközök használata a Visual Studio-kódhoz az Azure IoT Hub eszközkezeléséhez
 
@@ -47,8 +47,8 @@ Futtassa az Azure IoT-eszközöket a Visual Studio-kódhoz különböző felügy
 
 * Aktív Azure-előfizetés.
 * Egy Azure IoT hub az előfizetés alatt.
-* [Visual Studio kód](https://code.visualstudio.com/)
-* [Az Azure IoT-eszközök vs-kódhoz,](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) vagy [nyissa meg ezt a hivatkozást a Visual Studio-kódban.](vscode:extension/vsciot-vscode.azure-iot-tools)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Azure IoT-eszközök a VS-kódhoz,](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) vagy másolja ezt`vscode:extension/vsciot-vscode.azure-iot-tools`az URL-címet, és illessze be egy böngészőablakba: .
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Bejelentkezés az IoT-központ eléréséhez
 

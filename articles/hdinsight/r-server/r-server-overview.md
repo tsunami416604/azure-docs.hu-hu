@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: 5bf405840de54c4e2399ee73e723201acca9e6bc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 04/20/2020
+ms.openlocfilehash: 76fcdb52df88be2c4033140f4bc71b28424d7f38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657033"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687794"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Mi az ML-szolgáltatások az Azure HDInsightban?
 
@@ -23,7 +23,7 @@ A HDInsight ML-szolgáltatásai a legújabb képességeket biztosítják a gyako
 
 A peremhálózati csomópont kényelmes helyet biztosít a fürthöz való csatlakozáshoz és az R-parancsfájlok futtatásához. A peremhálózati csomópont lehetővé teszi a ScaleR párhuzamosan elosztott elosztott függvények futtatását a kiszolgáló magjain. A ScaleR Hadoop-térképcsökkentése használatával is futtathatja őket a fürt csomópontjain. Az Apache Spark számítási környezeteit is használhatja.
 
-Az elemzésből származó modellek vagy előrejelzések letölthetők a helyszíni használatra. Az Azure-ban máshol is működőképessé tehetők. Különösen az [Azure Machine Learning Studio (klasszikus)](https://studio.azureml.net)és [a webszolgáltatás](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)révén.
+Az elemzésből származó modellek vagy előrejelzések letölthetők a helyszíni használatra. Az Azure-ban is lehetnek `operationalized` máshol. Különösen az [Azure Machine Learning Studio (klasszikus)](https://studio.azureml.net)és [a webszolgáltatás](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)révén.
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Az ML-szolgáltatások első lépései a HDInsighton
 
@@ -63,16 +63,16 @@ A HDInsight ML-szolgáltatásai az alábbi szolgáltatásokat tartalmazzák.
 | R-kompatibilis | [R-csomagok](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) az R-ben írt megoldásokhoz, az R nyílt forráskódú elosztásával, valamint a parancsfájlok végrehajtásához szükséges futásidejű infrastruktúrával. |
 | Python-kompatibilis | [Python-modulok](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) python-ban írt megoldásokhoz, a Python nyílt forráskódú disztribúciójával és a parancsfájlok végrehajtásához futó infrastruktúra használatával.
 | [Előre betanított modellek](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Vizuális elemzéshez és szöveges hangulatelemzéshez készen áll a megadott adatok pontozására. |
-| [Telepítés és felhasználás](r-server-operationalize.md) | Működőképessé a kiszolgálót, és megoldásokat telepíteni webszolgáltatásként. |
+| [Telepítés és felhasználás](r-server-operationalize.md) | `Operationalize`a kiszolgálót, és webszolgáltatásként telepítheti a megoldásokat. |
 | [Távoli végrehajtás](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Indítsa el a távoli munkameneteket a hálózat ML Services fürtjén az ügyfél munkaállomásáról. |
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Az ML-szolgáltatások adattárolási lehetőségei a HDInsighton
 
-A HDFS fájlrendszer alapértelmezett tárhelye lehet Egy Azure Storage-fiók vagy az Azure Data Lake Storage. Az elemzés során a fürttárolóba feltöltött adatok állandóvá lesznek tették. Az adatok a fürt törlése után is elérhetők. Különböző eszközök képesek kezelni az adatátvitelt a tárolóba. Az eszközök közé tartozik a tárfiók portálalapú feltöltési szolgáltatása és az [AzCopy](../../storage/common/storage-use-azcopy.md) segédprogram.
+A HDFS fájlrendszer alapértelmezett tárhelye lehet Egy Azure Storage-fiók vagy az Azure Data Lake Storage. Az elemzés során a fürttárolóba feltöltött adatok állandóvá lesznek tették. Az adatok a fürt törlése után is elérhetők. Különböző eszközök képesek kezelni az adatátvitelt a tárolóba. Az eszközök közé tartozik a tárfiók portálalapú feltöltési szolgáltatása és az AzCopy segédprogram.
 
 A fürt létrehozása során további Blob és Data lake áruházakhoz is engedélyezhet hozzáférést. Nincs korlátozva az elsődleges tárolási lehetőség használatban.  Tekintse meg [az Azure Storage-beállítások ML Services HDInsight-cikkben](./r-server-storage.md) további többet a több tárfiókok használatával kapcsolatban.
 
-Az Azure [Files](../../storage/files/storage-how-to-use-files-linux.md) storage-beállításként is használható a peremhálózati csomóponton. Az Azure Files lehetővé teszi az Azure Storage-ban létrehozott fájlmegosztásokat a Linux fájlrendszer számára. További információ: [Azure Storage options for ML Services on HDInsight](r-server-storage.md).
+Az Azure Files storage-beállításként is használható a peremhálózati csomóponton. Az Azure Files lehetővé teszi az Azure Storage-ban létrehozott fájlmegosztásokat a Linux fájlrendszer számára. További információ: [Azure Storage options for ML Services on HDInsight](r-server-storage.md).
 
 ## <a name="access-ml-services-edge-node"></a>Az ML-szolgáltatások peremhálózati csomópontjának elérése
 
@@ -82,9 +82,9 @@ A peremhálózati csomóponton lévő Microsoft ML-kiszolgálóhoz böngészőve
 
 Az R szkriptek a 8000+ nyílt forráskódú R csomagok bármelyikét használhatják. A ScaleR-könyvtár párhuzamos és elosztott rutinjait is használhatja. A peremhálózaton futó parancsfájlok az r-értelmezőn belül futnak az adott csomóponton. Kivéve azokat a lépéseket, amelyek a ScaleR-függvényeket map reduce (RxHadoopMR) vagy Spark (RxSpark) számítási környezetben szólítják meg. A függvények az adatokhoz társított adatcsomópontok között elosztott módon futnak. A környezetbeállításokról a [Compute Context options for ML Services on HDInsight című témakörben talál](r-server-compute-contexts.md)további információt.
 
-## <a name="operationalize-a-model"></a>Modell üzembe helyezése
+## <a name="operationalize-a-model"></a>`Operationalize`egy modell
 
-Amikor az adatmodellezés befejeződött, üzembe hatja a modellt, hogy előrejelzéseket készítsen az új adatokhoz az Azure-ból vagy a helyszíni adatokról. Ezt a folyamatot pontozásnak nevezzük. A pontozás a HDInsightban, az Azure Machine Learningben vagy a helyszíni környezetben végezhető el.
+Amikor az adatmodellezés befejeződött, `operationalize` a modell előrejelzéseket készít az azure-ból vagy a helyszíni új adatokhoz. Ezt a folyamatot pontozásnak nevezzük. A pontozás a HDInsightban, az Azure Machine Learningben vagy a helyszíni környezetben végezhető el.
 
 ### <a name="score-in-hdinsight"></a>Pontszám a HDInsightban
 
@@ -96,7 +96,7 @@ Az Azure Machine Learning használatával történő pontozáshoz használja az 
 
 ### <a name="score-on-premises"></a>Pontszám a helyszínen
 
-A modell létrehozása után a helyszíni pontozáshoz: szerializálja a modellt az R-ben, töltse le, szerializálja, majd használja az új adatok pontozásához. Új adatokat a Score a [HDInsightban](#score-in-hdinsight) korábban ismertetett módszerrel vagy [webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)használatával szerezhet.
+A modell létrehozása után a helyszíni pontozáshoz: szerializálja a modellt az R-ben, töltse le, szerializálja, majd használja az új adatok pontozásához. Új adatokat a Score a HDInsightban korábban ismertetett módszerrel vagy [webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)használatával szerezhet.
 
 ## <a name="maintain-the-cluster"></a>A fürt karbantartása
 
@@ -130,7 +130,7 @@ A karbantartási feladatok futtatása lelassulhat a karbantartás során. Azonba
 
 A HDInsight-fürt Linux peremhálózati csomópontja az R-alapú elemzés leszállási zónája. A HDInsight legújabb verziói az RStudio Server böngészőalapú IDE-jét biztosítják a peremhálózati csomóponton. Az RStudio Server hatékonyabb, mint az R konzol a fejlesztéshez és a végrehajtáshoz.
 
-Az asztali IDE távoli MapReduce vagy Spark számítási környezeten keresztül érheti el a fürtöt. A lehetőségek a következők: A Microsoft [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS), RStudio és Walware's Eclipse-alapú [StatET](http://www.walware.de/goto/statet).
+Az asztali IDE távoli MapReduce vagy Spark számítási környezeten keresztül érheti el a fürtöt. A lehetőségek a következők: a Microsoft [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS), RStudio és Walware's Eclipse-alapú StatET.
 
 Az R konzol elérése a peremcsomópont szélén az **R** parancssorba beírásával. A konzolfelület használatakor célszerű R-parancsfájlt fejleszteni egy szövegszerkesztőben. Ezután szükség szerint vágja ki és illessze be a parancsfájl szakaszait az R konzolba.
 

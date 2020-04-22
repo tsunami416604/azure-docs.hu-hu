@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
-ms.date: 03/10/2020
-ms.openlocfilehash: 638adaac699bb7aa2774f5cbd37dc8394a2baee3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/19/2020
+ms.openlocfilehash: b06c255f94b4d539c7c85e318238b10629cbb907
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240519"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685152"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rövid útmutató: Azure SQL Database egyetlen adatbázis létrehozása
 
@@ -67,7 +67,7 @@ Tartsa meg az erőforráscsoportot, a kiszolgálót és az egyetlen adatbázist 
 
 Ha befejezte ezeknek az erőforrásoknak a használatát, törölheti a létrehozott erőforráscsoportot, amely a kiszolgálót és az adatbázison belüli egyetlen adatbázist is törli.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+### <a name="portal"></a>[Portál](#tab/azure-portal)
 
 A **myResourceGroup** és az összes erőforrás törlése az Azure Portalhasználatával:
 
@@ -75,7 +75,7 @@ A **myResourceGroup** és az összes erőforrás törlése az Azure Portalhaszn�
 1. Az erőforráscsoport lapon válassza az **Erőforráscsoport törlése**lehetőséget.
 1. Az **Erőforráscsoport nevének megadása**csoportban írja be a *myResourceGroup*parancsot, majd válassza a **Törlés**lehetőséget.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az erőforráscsoport és az összes erőforrás törléséhez futtassa a következő Azure CLI parancsot az erőforráscsoport nevének használatával:
 
@@ -83,15 +83,16 @@ Az erőforráscsoport és az összes erőforrás törléséhez futtassa a követ
 az group delete --name <your resource group>
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Az erőforráscsoport és az összes erőforrás törléséhez futtassa a következő PowerShell-parancsmavet az erőforráscsoport nevének használatával:
 
- ```azurepowershell-interactive
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group>
 ```
 
 ---
+
 ## <a name="next-steps"></a>További lépések
 
 Az adatbázis [csatlakoztatása és lekérdezése](sql-database-connect-query.md) különböző eszközökkel és nyelvekkel:

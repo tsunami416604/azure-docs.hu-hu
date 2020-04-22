@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 025dbc56fb46ef5b6225d35564b8e4ac3c82e6e3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414459"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731185"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring alkalmazás előkészítése az Azure Spring Cloudban való telepítéshez
 
@@ -27,7 +27,7 @@ Ez a cikk ismerteti a szükséges függőségeket, és hogyan kell hozzáadni ő
 
 Csak tavaszi/Java alkalmazások futtathatók az Azure Spring Cloud szolgáltatásban.
 
-Az Azure Spring Cloud támogatja a Java 8-at és a Java 11-et is. Az üzemeltetési környezet az Azul Zulu OpenJDK azure-hoz legújabb verzióját tartalmazza. Az Azul Zulu OpenJDK for Azure-ról a [JDK telepítése című](https://docs.microsoft.com/azure/java/jdk/java-jdk-install)témakörben talál további információt.
+Az Azure Spring Cloud támogatja a Java 8-at és a Java 11-et is. Az üzemeltetési környezet az Azul Zulu OpenJDK azure-hoz legújabb verzióját tartalmazza. Az Azul Zulu OpenJDK for Azure-ról a [JDK telepítése című](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)témakörben talál további információt.
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot és Spring Cloud verziók
 

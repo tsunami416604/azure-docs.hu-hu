@@ -2,20 +2,30 @@
 title: Az Azure Migrate újdonságai
 description: Ismerje meg az Azure Migrate szolgáltatás új és legújabb frissítéseit.
 ms.topic: overview
-ms.date: 04/16/2020
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 1b0221f497ae7bbf84f163eef1ddb862d8de2951
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ba85b0a4ed30320099388ccb48dd91ad6445efd5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535247"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677249"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Az Azure Migrate újdonságai
 
 [Az Azure Migrate](migrate-services-overview.md) segítségével felderítheti, felmérheti és áttelepítheti a helyszíni kiszolgálókat, alkalmazásokat és adatokat a Microsoft Azure-felhőbe. Ez a cikk összegzi az Azure Migrate új kiadásait és funkcióit.
 
 
+## <a name="update-april-2020"></a>Update (2020. április)
+
+Az Azure Migrate támogatja az Azure Government központi telepítéseit. 
+
+- VMware virtuális gépek, hyper-v mm-ek és fizikai kiszolgálók felderíthetők és értékelhetők.
+- A VMware virtuális gépek, a Hyper-V vm-ek és a fizikai kiszolgálók áttelepíthetők az Azure-ba.
+- A VMware-áttelepítéshez használhat ügynök nélküli vagy ügynökalapú áttelepítést. [További információ](server-migrate-overview.md).
+- [Tekintse át](migrate-support-matrix.md#supported-geographies-azure-government) a támogatott földrajzi helyeket és régiókat az Azure Government számára.
+- [Az ügynökalapú függőségi elemzést](concepts-dependency-visualization.md#agent-based-analysis) az Azure Government nem támogatja.
+- Az előzetes verzióban elérhető funkciókat az Azure Government támogatja, különösen [az ügynök nélküli függőségi elemzés](concepts-dependency-visualization.md#agentless-analysis)és az [alkalmazásfelderítés.](how-to-discover-applications.md)
 
 ## <a name="update-march-2020"></a>Update (2020. március)
 

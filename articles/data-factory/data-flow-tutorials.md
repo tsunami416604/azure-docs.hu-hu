@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 03/24/2020
-ms.openlocfilehash: 8aedbba5d65281753ca61f13e7e1a28c856948ec
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/17/2020
+ms.openlocfilehash: 4dba719453546337f9e5657cbe56755ac1ac9149
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417793"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686238"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Adatfolyamok leképezését ismertető oktatóvideók
 
@@ -113,6 +113,8 @@ Mivel a frissítések folyamatosan a termék, egyes funkciók hozzáadott vagy e
 
 [Az adatfolyam-fürt méretének dinamikus optimalizálása futásidőben](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
+[Az adatfolyam indítási idejének optimalizálása](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
 ## <a name="mapping-data-flow-scenarios"></a>Adatfolyam-forgatókönyvek leképezése
 
 [Fuzzy lookups](http://youtu.be/7gdwExjHBbw)
@@ -156,3 +158,5 @@ Mivel a frissítések folyamatosan a termék, egyes funkciók hozzáadott vagy e
 [Szórakozás a karakterlánc-interpolációval és paraméterekkel](https://youtu.be/hb3-cn2CMgM)
 
 [Adatfolyam-parancsfájl intro: Másolás, beillesztés, kódrészletek](https://www.youtube.com/watch?v=3_1I4XdoBKQ)
+
+[Adatminőségi kifejezések](https://www.youtube.com/watch?v=O8gmv5-lXhs)

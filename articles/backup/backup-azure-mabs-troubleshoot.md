@@ -4,12 +4,12 @@ description: A telepítés, az Azure Backup Server regisztrálása, valamint az 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7a1cac63ba6497b8580c83fe2b666b020701283a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421290"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688052"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -62,7 +62,7 @@ Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárításának me
 
 | Művelet | A hiba részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Ügynök(ek) lenyomása védett kiszolgálókra | Az ügynökművelet nem sikerült, mert kommunikációs hiba történt \<a Kiszolgálónév> DPM-ügynök-koordinátor szolgáltatásával. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre az alábbi lépéseket:** <ul><li> Ha nem megbízható tartományból csatol számítógépet, kövesse [az alábbi lépéseket.](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) <br> (1) </li><li> Ha megbízható tartományból csatol számítógépet, a [blogban](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)ismertetett lépésekkel hárítsa el a hibákat. <br>(1)</li><li> Próbálja meg hibaelhárítási lépésként letiltani a víruskeresőt. Ha ez megoldja a problémát, módosítsa a víruskereső beállításait a cikkben javasoltak [szerint.](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))</li></ul> |
+| Ügynök(ek) lenyomása védett kiszolgálókra | Az ügynökművelet nem sikerült, mert kommunikációs hiba történt \<a Kiszolgálónév> DPM-ügynök-koordinátor szolgáltatásával. | **Ha a termékben bemutatott javasolt művelet nem működik, hajtsa végre az alábbi lépéseket:** <ul><li> Ha nem megbízható tartományból csatol számítógépet, kövesse [az alábbi lépéseket.](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) <br> (1) </li><li> Ha megbízható tartományból csatol számítógépet, a [blogban](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)ismertetett lépésekkel hárítsa el a hibákat. <br>(1)</li><li> Próbálja meg hibaelhárítási lépésként letiltani a víruskeresőt. Ha ez megoldja a problémát, módosítsa a víruskereső beállításait a cikkben javasoltak [szerint.](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>A telepítő nem tudta frissíteni a beállításjegyzékbeli metaadatokat
 
@@ -96,7 +96,7 @@ Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárításának me
 | Backup | Ha csak a rendszerállapotról készít biztonsági másolatot, ellenőrizze, hogy van-e elegendő szabad hely a védett számítógépen a rendszerállapot biztonsági másolatának tárolásához. | <ol><li>Ellenőrizze, hogy a Windows Server biztonsági másolat telepítve van-e a védett számítógépen.</li><li>Ellenőrizze, hogy van-e elég hely a védett számítógépen a rendszerállapotszámára. Ennek ellenőrzésére legegyszerűbben úgy lehet menni a védett számítógépre, megnyithatja a Windows Server biztonsági másolat segédprogramot, végigkattinthat a beállításokon, majd kiválaszthatja a BMR lehetőséget. A felhasználói felület ezután megmutatja, hogy mennyi helyre van szükség. WsB **WSB** > **Helyi biztonsági mentés** > **ütemezése:** > **Válassza ki a Biztonsági másolat konfigurációja** > **Teljes kiszolgálót** (a méret megjelenik). Ezt a méretet használja az ellenőrzéshez.</li></ol>
 | Backup | Biztonsági másolatot a BMR hibájáról | Ha a BMR-méret nagy, helyezzen át néhány alkalmazásfájlt az operációs rendszer meghajtójára, és próbálkozzon újra. |
 | Backup | A VMware virtuális gépek új Microsoft Azure backup kiszolgálón való újbóli védelmének lehetősége nem jelenik meg hozzáadhatóként. | A VMware-tulajdonságok a Microsoft Azure Backup Server egy régi, kivisszavonult példányára mutatnak. A probléma megoldása:<br><ol><li>A VCenterben (SC-VMM megfelelője) lépjen az **Összegzés** lapra, majd az **Egyéni attribútumok gombra.**</li>  <li>Törölje a régi Microsoft Azure backup kiszolgálónevet a **DPMServer** értékből.</li>  <li>Lépjen vissza az új Microsoft Azure biztonsági másolat készítő kiszolgálóra, és módosítsa a PG-t.  Miután **kiválasztotta** a Frissítés gombot, a virtuális gép egy jelölőnégyzettel jelenik meg, mint amely elérhető a védelemhez.</li></ol> |
-| Backup | Hiba a fájlok/megosztott mappák elérése közben | Próbálja meg módosítani a víruskereső beállításait a cikkben javasolt módon [Víruskereső szoftver futtatása a DPM-kiszolgálón](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).|
+| Backup | Hiba a fájlok/megosztott mappák elérése közben | Próbálja meg módosítani a víruskereső beállításait a cikkben javasolt módon [Víruskereső szoftver futtatása a DPM-kiszolgálón](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019).|
 
 ## <a name="change-passphrase"></a>Jelszó módosítása
 

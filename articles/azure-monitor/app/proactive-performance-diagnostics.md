@@ -4,12 +4,12 @@ description: Az Application Insights intelligens elemzést végez az alkalmazás
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671732"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687696"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelés – teljesítményanomáliák
 
@@ -71,7 +71,7 @@ Az intelligens észlelések teljesítményanomáliáiról szóló e-mailek egy e
 
   * Még nem, de a következőket teheti:
     * [Állítson be riasztásokat,](../../azure-monitor/app/alerts.md) amelyek megmondják, ha egy metrika átlép egy küszöbértéket.
-    * [Exportálja a telemetriai adatokat](../../azure-monitor/app/export-telemetry.md) egy [adatbázisba](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) vagy [a PowerBI-ba,](../../azure-monitor/app/export-power-bi.md )ahol saját maga elemezheti azt.
+    * [Exportálja a telemetriai adatokat](../../azure-monitor/app/export-telemetry.md) egy [adatbázisba](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) vagy [a Power BI-ba,](../../azure-monitor/app/export-power-bi.md )ahol saját maga elemezheti azt.
 * *Milyen gyakran történik az elemzés?*
 
   * Az elemzést naponta futtatjuk az előző napi telemetriai adatokon (teljes nap UTC időzónában).
@@ -125,11 +125,11 @@ A válaszidő-lebomlási értesítés a következőket jelzi:
   * Profiler nyomkövetések segítségével megtekintheti, ahol a működési idő töltött (a hivatkozás érhető el, ha Profiler nyomkövetési példákat gyűjtöttek ehhez a művelethez az észlelési időszak alatt). 
   * Teljesítményjelentések a Metrikakezelőben, ahol szeletelheti és kockázhatja az időtartományt/szűrőket ehhez a művelethez.
   * Keresse meg ezt a hívást adott hívástulajdonságok megtekintéséhez.
-  * Hibajelentések – Ha > 1 száma 1 ez azt jelenti, hogy a művelet ben voltak olyan hibák, amelyek hozzájárulhattak a teljesítmény csökkenéséhez.
+  * Hibajelentések – Ha a számláló > 1 ez azt jelenti, hogy a művelet ben voltak olyan hibák, amelyek hozzájárulhattak a teljesítmény csökkenéséhez.
 
 ## <a name="dependency-duration-degradation"></a>Függőség időtartamának lebontása
 
-Modern alkalmazás egyre inkább elfogadja a mikro-szolgáltatások tervezési megközelítés, ami sok esetben vezet a nagy megbízhatóság a külső szolgáltatások. Például, ha az alkalmazás támaszkodik néhány adatplatform, vagy akkor is, ha saját robot szolgáltatás akkor valószínűleg relé néhány kognitív szolgáltató, hogy a botok, hogy kölcsönhatásba lépnek több emberi módon, és néhány adattár szolgáltatás bot, hogy húzza ki a válaszokat a.  
+A modern alkalmazások egyre inkább mikroszolgáltatások tervezési megközelítését alkalmazzák, ami sok esetben a külső szolgáltatások jelentős megbízhatóságához vezet. Például ha az alkalmazás támaszkodik néhány adatplatform, vagy akkor is, ha saját robotszolgáltatás létrehozása valószínűleg továbbítja az egyes kognitív szolgáltató, hogy a botok, hogy kölcsönhatásba lépnek az emberi módon, és néhány adattár szolgáltatás bot lekérni a válaszokat.  
 
 Példa függőséglebontási értesítésre:
 

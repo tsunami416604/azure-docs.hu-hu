@@ -1,21 +1,21 @@
 ---
-title: Az Azure Marketplace SaaS-alkalmazások műszaki közzétételi útmutatója
+title: Az Azure Marketplace SaaS-alkalmazások közzétételi útmutatója
 description: Részletes útmutató és közzétételi ellenőrzőlisták a SaaS-alkalmazások Azure Piactéren való közzétételéhez
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: keithcharlie
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: kevidal
-ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.author: dsindona
+ms.openlocfilehash: 1bc2feb4d8f3f103802bd823c66cd3f54ac5d74a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544280"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687553"
 ---
-# <a name="saas-applications-offer-publishing-guide"></a>Az SaaS-alkalmazások ajánlat-közzétételi útmutatója
+# <a name="saas-applications-offer-publishing-guide"></a>SaaS alkalmazások ajánlat közzétételi útmutató
 
 A SaaS-alkalmazások három különböző cselekvésre szólító felhívással tehetők közzé a piacon: "Kapcsolatfelvétel", "Próbálja ki most" és "Most kapja el". Ez az útmutató ismerteti ezt a három lehetőséget, beleértve az egyes követelmények. 
 
@@ -110,8 +110,8 @@ Az Azure AD-integrációt néhány különböző módon hitelesítheti, attól f
 **Több-bérlős alkalmazások esetén:**  
 
 Ha már támogatja az Azure AD-t, tegye a következőket:
-1.  Az alkalmazás regisztrálása az Azure Portalon
-2.  Engedélyezze a több-bérlős támogatási funkciót az Azure AD-ben, hogy egy "egy kattintással" próbaverziós élményt kapjon. További információk [itt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)találhatók .  
+1.    Az alkalmazás regisztrálása az Azure Portalon
+2.    Engedélyezze a több-bérlős támogatási funkciót az Azure AD-ben, hogy egy "egy kattintással" próbaverziós élményt kapjon. További információk [itt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)találhatók .  
 
 Ha most van az Azure AD összevont SSO, tegye a következőket: 
 1.  Az alkalmazás regisztrálása az Azure Portalon
@@ -144,9 +144,9 @@ A Kereskedelmi tranzakciót a Microsoft üzemelteti. A Microsoft az Ön nevében
 ## <a name="next-steps"></a>További lépések
 Ha még nem tette meg,
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piacon.
+* [További információ](https://azuremarketplace.microsoft.com/sell) a piactérről.
 
-Ha regisztrált, és új ajánlatot hoz létre, vagy egy meglévőn dolgozik,
+A Partnerközpontban való regisztrációhoz kezdjen új ajánlatot létrehozni, vagy dolgozzon egy meglévőn:
 
-- [Jelentkezzen be a Cloud Partner Portalszolgáltatásba](https://cloudpartner.azure.com) az ajánlat létrehozásához vagy teljesítéséhez.
-- További információkért tekintse meg az [Azure SaaS-alkalmazásajánlatát.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)
+* [Jelentkezzen be a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához vagy teljesítéséhez.
+* További információkért [tekintse meg a SaaS-alkalmazásajánlat létrehozása](./partner-center-portal/create-new-saas-offer.md) című témakört.

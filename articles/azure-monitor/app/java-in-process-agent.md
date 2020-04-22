@@ -3,12 +3,12 @@ title: Java-alkalmazások figyelése bármilyen környezetben – Azure Monitor 
 description: Alkalmazásteljesítmény-figyelés e környezetben futó Java-alkalmazások számára az alkalmazás programozása nélkül. Elosztott nyomkövetés és alkalmazástérkép.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 5706d5a74bd6850a237f7418b1a86a8e9c7762e1
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604579"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687716"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kód nélküli alkalmazásfigyelés az Azure Monitor Application Insights - nyilvános előzetes verzió
 
@@ -32,7 +32,7 @@ Az `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` alkalmazá
 
 Tipikus JVM args közé tartozik, `-Xmx512m` és `-XX:+UseG1GC`. Tehát, ha tudod, hol kell hozzáadni ezeket, akkor már tudja, hol kell hozzáadni ezt.
 
-Az alkalmazás JVM-argjainak konfigurálásával kapcsolatban további segítséget a [JVM-argok frissítéséhez lásd: 3.0 Előzetes verzió: Tippek a JVM-argok frissítéséhez.](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)
+Az alkalmazás JVM-argjainak konfigurálásával kapcsolatban további segítséget a [JVM-argok frissítéséhez lásd: 3.0 Előzetes verzió: Tippek a JVM-argok frissítéséhez.](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)
 
 **3. Irányítsa az ügynököt az Application Insights-erőforrásra**
 
@@ -80,7 +80,7 @@ A `ApplicationInsights.json` fájlban a következőket is beállíthatja:
 * HTTP-proxy
 * Öndiagnosztika
 
-Részletek a [3.0 Nyilvános előzetes verzió: Konfigurációs beállítások](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Configuration-Options).
+Részletek a [3.0 Nyilvános előzetes verzió: Konfigurációs beállítások](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Automatikusan begyűjtött kérelmek, függőségek, naplók és metrikák
 

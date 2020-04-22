@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3c89fae09583c96cf8139885fe2554cf6784b4e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ead6a79109c221d31ead96a202e97294ef218c5f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269826"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687973"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Biztonsági keret: Konfigurációkezelés | Enyhítése 
 | Termék/szolgáltatás | Cikk |
@@ -33,7 +33,7 @@ ms.locfileid: "78269826"
 | **IoT field átjáró** | <ul><li>[Az IoT Field Gateway operációs rendszerének és további partícióinak titkosítása bittárolóval](#field-bit-locker)</li><li>[Annak ellenőrzése, hogy a helyszíni átjáró alapértelmezett bejelentkezési hitelesítő adatai módosultak-e a telepítés során](#default-change)</li></ul> |
 | **IoT felhőátjáró** | <ul><li>[Győződjön meg arról, hogy a Cloud Gateway olyan folyamatot valósít meg, amely naprakészen tartja a csatlakoztatott eszközök belső vezérlőprogramját](#cloud-firmware)</li></ul> |
 | **Gép megbízhatósági határa** | <ul><li>[Annak ellenőrzése, hogy az eszközök végponti biztonsági vezérlői a szervezeti házirendeknek megfelelően vannak-e konfigurálva](#controls-policies)</li></ul> |
-| **Azure Storage** | <ul><li>[Az Azure storage-hozzáférési kulcsok biztonságos kezelésének biztosítása](#secure-keys)</li><li>[Győződjön meg arról, hogy csak megbízható eredetek engedélyezettek, ha a CORS engedélyezve van az Azure storage-ban](#cors-storage)</li></ul> |
+| **Azure-tárhely** | <ul><li>[Az Azure storage-hozzáférési kulcsok biztonságos kezelésének biztosítása](#secure-keys)</li><li>[Győződjön meg arról, hogy csak megbízható eredetek engedélyezettek, ha a CORS engedélyezve van az Azure storage-ban](#cors-storage)</li></ul> |
 | **WCF** | <ul><li>[A WCF szolgáltatásszabályozási szolgáltatásának engedélyezése](#throttling)</li><li>[WCF-Információ közzététele metaadatokon keresztül](#info-metadata)</li></ul> | 
 
 ## <a name="implement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>Tartalombiztonsági házirend (CSP) megvalósítása és inline javascript letiltása
@@ -76,7 +76,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [XSS védelmi szűrő](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
+| **Referencia**              | [XSS védelmi szűrő](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
 | **Lépéseket** | <p>Az X-XSS-Protection válaszfejléc-konfiguráció szabályozza a böngésző helyek közötti parancsfájlszűrőjét. Ez a válaszfejléc a következő értékekkel rendelkezhet:</p><ul><li>`0:`Ez letiltja a szűrőt</li><li>`1: Filter enabled`Ha a rendszer több webhelyre ható parancsfájl-támadást észlel, a támadás leállításához a böngésző fertőtleníti az oldalt</li><li>`1: mode=block : Filter enabled`. Ahelyett, hogy fertőtlenítené az oldalt, amikor egy XSS-támadást észlel, a böngésző megakadályozza az oldal megjelenítését</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. A böngésző fertőtleníti az oldalt, és jelenti a szabálysértést.</li></ul><p>Ez egy chromium függvény, amely a CSP-szabálysértési jelentéseket felhasználva adatokat küld egy Ön által választott URI-ba. Az utolsó 2 lehetőség biztonságos értéknek minősül.</p>|
 
 ## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>ASP.NET alkalmazásoknak le kell tiltaniuk a nyomkövetést és a hibakeresést a telepítés előtt
@@ -109,7 +109,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [OWASP click-jacking defense cheat sheet](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [IE Internals - Küzdelem a click-jacking X-Frame-Options](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **Referencia**              | [OWASP click-jacking defense cheat sheet](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html), [IE Internals - Küzdelem a click-jacking X-Frame-Options](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
 | **Lépéseket** | <p>a "felhasználói felület jogorvoslati támadásának" is nevezik, ha a támadó több átlátszó vagy átlátszatlan réteget használ, hogy rávegye a felhasználót, hogy egy gombra vagy hivatkozásra kattintson egy másik oldalon, amikor a legfelső szintű oldalra kívánt kattintani.</p><p>Ez a rétegezés úgy érhető el, hogy egy rosszindulatú oldalt készít egy iframe-szel, amely betölti az áldozat oldalát. Így a támadó "eltéríti" az oldalukra vonatkozó kattintásokat, és egy másik oldalra irányítja őket, valószínűleg egy másik alkalmazás, tartomány vagy mindkettő tulajdonában. A kattintás-átverési támadások elkerülése érdekében állítsa be a megfelelő X-Frame-Options HTTP válaszfejléceket, amelyek arra utasítják a böngészőt, hogy ne engedélyezze a más tartományokból származó keretezést</p>|
 
 ### <a name="example"></a>Példa
@@ -484,7 +484,7 @@ A CORS letiltásához használja a [DisableCors] attribútumot.
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL fázis**               | Környezet |  
+| **SDL fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | [Útmutató: Konfigurációs szakaszok titkosítása ASP.NET 2.0-ban a DPAPI használatával,](https://msdn.microsoft.com/library/ff647398.aspx) [Védett konfigurációs szolgáltató megadása,](https://msdn.microsoft.com/library/68ze1hb2.aspx) [Az Azure Key Vault használata az alkalmazástitkok védelmére](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
@@ -495,7 +495,7 @@ A CORS letiltásához használja a [DisableCors] attribútumot.
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszköz | 
-| **SDL fázis**               | Környezet |  
+| **SDL fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
@@ -528,7 +528,7 @@ A CORS letiltásához használja a [DisableCors] attribútumot.
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszköz | 
-| **SDL fázis**               | Környezet |  
+| **SDL fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
@@ -539,7 +539,7 @@ A CORS letiltásához használja a [DisableCors] attribútumot.
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT field átjáró | 
-| **SDL fázis**               | Környezet |  
+| **SDL fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
@@ -550,7 +550,7 @@ A CORS letiltásához használja a [DisableCors] attribútumot.
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT field átjáró | 
-| **SDL fázis**               | Környezet |  
+| **SDL fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
@@ -572,7 +572,7 @@ A CORS letiltásához használja a [DisableCors] attribútumot.
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági határa | 
-| **SDL fázis**               | Környezet |  
+| **SDL fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
@@ -583,7 +583,7 @@ A CORS letiltásához használja a [DisableCors] attribútumot.
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL fázis**               | Környezet |  
+| **SDL fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | [Az Azure Storage biztonsági útmutatója – A tárfiók kulcsainak kezelése](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |

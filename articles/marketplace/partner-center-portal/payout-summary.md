@@ -6,14 +6,14 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 678dc8b058d0ae0694dafeb4222b2fc9f10ecda7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a930dfb38007349155581424d03ee7b3e7a6b46
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288699"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730208"
 ---
-# <a name="payout-reporting"></a>Kifizetési jelentés
+# <a name="payout-reporting"></a>Kifizetési jelentéskészítés
 
 A [**Kifizetés összegzése**](https://docs.microsoft.com/windows/uwp/publish/payout-summary) a Microsoftnál szerzett pénz részleteit jeleníti meg. Azt is jelzi, hogy mikor kap kifizetéseket, és mennyit fog fizetni.
 
@@ -175,4 +175,4 @@ Ez a beállítás a Tranzakcióelőzmények oldalon látható minden egyes keres
 
 ## <a name="billing-questions-and-support"></a>Számlázási kérdések és támogatás
 
-Ha segítségre van szüksége a számlázással kapcsolatos kérdésekkel kapcsolatban, forduljon a [kereskedelmi piactér kiadói támogatási csoportjához.](https://aka.ms/marketplacepublishersupport)
+Ha segítségre van szüksége a számlázással kapcsolatos kérdésekkel kapcsolatban, forduljon a [kereskedelmi piactér kiadói támogatási csoportjához.](https://partner.microsoft.com/support/v2/?stage=1)

@@ -3,12 +3,13 @@ title: Az Azure-alkalmazások szolgáltatásainak teljesítményének figyelése
 description: Alkalmazásteljesítmény-figyelés az Azure-alkalmazásszolgáltatásokhoz. A diagram terhelési és válaszideje, a függőségi információk és a teljesítményre vonatkozó riasztások beállítása.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom: fasttrack-edit
+ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437208"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729794"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -55,15 +56,16 @@ Kétféleképpen engedélyezheti az alkalmazások figyelését az Azure App Serv
 2. Miután megadta, hogy melyik erőforrást használja, megadhatja, hogy az alkalmazáselemzési adatok hogyan gyűjtsenek adatokat platformonként az alkalmazáshoz. ASP.NET alkalmazásfigyelés alapértelmezés szerint két különböző szintű gyűjteménysel érhető el.
 
     ![Platformonkénti beállítások megadása](./media/azure-web-apps/choose-options-new.png)
-
-   * A .NET **Basic gyűjteményszint** alapvető egypéldányos APM-képességeket kínál.
-
-   * .NET **Ajánlott gyűjtési** szint:
-       * Cpu-, memória- és I/O-használati trendek hozzáadása.
-       * Korrelálja a mikroszolgáltatások a kérelem/függőség határain keresztül.
-       * Használati trendek gyűjtése, és lehetővé teszi a korreláció a rendelkezésre állási eredmények a tranzakciók.
-       * A gazdafolyamat által nem kezelt kivételeket gyűjti.
-       * A mintavételhasználata esetén javítja az APM-metrikák pontosságát terhelés alatt.
+ 
+ Az alábbiakban összefoglaljuk az egyes útvonalakról gyűjtött adatokat:
+        
+|  | .NET alapgyűjtemény | .NET ajánlott gyűjtemény |
+| --- | --- | --- |
+| Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Igen |
+| Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Igen |
+| A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Igen |
+| Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Igen |
+| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Igen |
 
 3. Beállítások konfigurálásához, például a mintavétel, amely et korábban vezérelheti az applicationinsights.config fájlon keresztül, most már használhatja ugyanazokat a beállításokat alkalmazásbeállítások on a megfelelő előtaggal. 
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1bb3760ae73a9eaeee3cde957cc94841ebdf29
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70390182"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731940"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Az Event Grid-előfizetések eseményszűrésének ismertetése
 
@@ -59,7 +59,7 @@ Ha az adatmezőkben értékek szerint szeretne szűrni, és meg szeretné adni a
 
 * operátor típusa - Az összehasonlítás típusa.
 * kulcs – A szűréshez használt eseményadatok mezője. Ez lehet szám, logikai vagy karakterlánc.
-* érték vagy értékek - A kulcshoz összehasonlítandó érték vagy értékek.
+* értékek - A kulcshoz összehasonlítandó érték vagy értékek.
 
 Ha egyetlen szűrőt ad meg több értékkel, a program **vagy** műveletet hajt végre, így a kulcsmező értékének ezen értékek egyikének kell lennie. Például:
 

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521848"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730560"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Webalkalmazás-tűzfal CRS-szabálycsoportjai és szabályai
 
@@ -218,6 +218,7 @@ A következő szabálycsoportok és szabályok érhetők el, ha webalkalmazás-t
 |932120|Távoli parancsvégrehajtás = A Windows PowerShell parancs található|
 |932130|Távoli parancsvégrehajtás = Unix rendszerhéj-kifejezés található|
 |932140|Távoli parancsvégrehajtás = Windows FOR/IF parancs található|
+|932150|Távoli parancsvégrehajtása: Közvetlen Unix parancsvégrehajtás|
 |932160|Távoli parancsvégrehajtás = Unix rendszerhéj-kód található|
 |932170|Távoli parancsvégrehajtás = Shellshock (CVE-2014-6271)|
 |932171|Távoli parancsvégrehajtás = Shellshock (CVE-2014-6271)|

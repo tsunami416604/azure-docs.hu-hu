@@ -6,24 +6,23 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: dbd0313c3edca8c5a875572fe52d7ec751ba65e8
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 8e473a5692c3fa2be3b0f2d823d2a36ba768d661
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641988"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731358"
 ---
-# <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Az Azure Spring Cloud-alkalmazások üzembe helyezéséhez használja az IntelliJ-t
+# <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ használata az Azure Spring Cloud-alkalmazások üzembe helyezéséhez
 Az Azure Spring Cloud IntelliJ beépülő modulja támogatja az alkalmazások telepítését az IntelliJ IDEA-ból.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
 * [Maven 3.5.0+](https://maven.apache.org/download.cgi)
-* [IntelliJ IDEA Community Edition, verzió [2020.1]](https://www.jetbrains.com/idea/download/#section=windows)
-* Vagy: IntelliJ IDEA Ultimate Edition, verzió [2020.1]
+* [IntelliJ IDEA, Közösségi/Ultimate Edition, 2020.1/2019.3 verzió](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>A beépülő modul beszerelése
-Az IntelliJ IDEA 3.35.0 Azure Toolkit az IntelliJ **Plugins** felhasználói felületén található.
+Az IntelliJ IDEA 3.35.0 Azure Toolkit szolgáltatását hozzáadhatja az IntelliJ **Plugins** felhasználói felületéről.
 
 1. Indítsa el az IntelliJ-t.  Ha korábban már nyitott meg egy projektet, zárja be a projektet az üdvözlő párbeszédpanel megjelenítéséhez. Válassza a Jobb alsó hivatkozás **konfigurálása** lehetőséget, majd a **Beépülő modulok gombra** kattintva nyissa meg a beépülő modul konfigurációs párbeszédpanelét, és válassza a **Bővítmények telepítése lemezről**lehetőséget .
 
@@ -52,7 +51,7 @@ A következő eljárások egy Hello World alkalmazást telepítenek az IntelliJ 
     ![Projekt importálása](media/spring-cloud-intellij-howto/import-project-1.png)
 
 ## <a name="deploy-to-azure-spring-cloud"></a>Üzembe helyezés az Azure Spring Cloud szolgáltatásban
-Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával, és ki kell választania az előfizetést.  A bejelentkezésrészleteia Telepítés és bejelentkezés című [témakörben](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in)található.
+Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával, és ki kell választania az előfizetést.  A bejelentkezésrészleteia Telepítés és bejelentkezés című [témakörben](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)található.
 
 1. Kattintson a jobb gombbal a projektre az IntelliJ projektkezelőben, és válassza az **Azure** -> **Deploy to Azure Spring Cloud parancsot.**
 
@@ -60,7 +59,7 @@ Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával
 
 1. Fogadja el az alkalmazás nevét a **Név** mezőben. **A név** a konfigurációra vonatkozik, nem az alkalmazás nevére. A felhasználóknak általában nem kell módosítaniuk.
 1. Fogadja el az azonosítót a **műtermék projektjéből.**
-1. Válassza **az Alkalmazás:** lehetőséget, majd kattintson **az Alkalmazás létrehozása...** gombra.
+1. Válassza **az Alkalmazás lehetőséget,** majd kattintson **az Alkalmazás létrehozása...** gombra.
 
     ![Üzembe helyezés az Azure 2-ben](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
 
@@ -98,6 +97,6 @@ Ahhoz, hogy a naplók:
 
     ![Streamelési napló kimenete](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
-## <a name="see-also"></a>Lásd még
-* [Azure App Service-hez készült Hello World webalkalmazás létrehozása az IntelliJ használatával](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)
-* [Java Spring alkalmazás előkészítése az Azure Spring Cloudban való telepítéshez](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment) 
+## <a name="next-steps"></a>További lépések
+* [Tavaszi alkalmazás előkészítése az Azure Spring Cloud szolgáltatáshoz](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [További információ az Azure Toolkit for IntelliJ-ről](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)

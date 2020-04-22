@@ -10,16 +10,17 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 3bb0b9fb8b268c3e036ffb365eb8d5b80a241269
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77371978"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732088"
 ---
 A .NET nyelvismertetési (LUIS) előrejelzési ügyfélkönyvtárával:
 
 * Előrejelzés a horony szerint
+* Előrejelzés verzió szerint
 
 [Referenciadokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | [Előrejelzés imperasorozatos (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) | [C# minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
 
@@ -27,10 +28,7 @@ A .NET nyelvismertetési (LUIS) előrejelzési ügyfélkönyvtárával:
 
 * Language Understanding (LUIS) portálfiók - [Hozzon létre egyet ingyen](https://www.luis.ai)
 * A [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)aktuális verziója .
-
-További dokumentációt keres?
-
- * [SDK referenciadokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)
+* Luis-alkalmazásazonosító – használja a nyilvános IoT-alkalmazásazonosítóját. `df67dcdb-c37d-46af-88e1-8b97951ca1c2` A gyorsútmutató kódban használt felhasználói lekérdezés az adott alkalmazásra jellemző.
 
 ## <a name="setting-up"></a>Beállítása
 
@@ -61,7 +59,7 @@ export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
 
 A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
 
-#### <a name="macos"></a>[Macos](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 A program `.bash_profile`szerkesztése és a környezeti változó hozzáadása:
 

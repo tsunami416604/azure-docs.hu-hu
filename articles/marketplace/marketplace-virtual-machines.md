@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288716"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687494"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Virtuálisgép-ajánlat közzétételi útmutatója
 
@@ -53,7 +53,7 @@ Használja a virtuális gép ajánlat típusát, amikor üzembe helyez egy virtu
 | Követelmény | Részletek |  
 |:--- |:--- | 
 | Számlázás és mérés | A virtuális gépnek támogatnia kell a BYOL vagy a pay-as-you-go havi számlázást. |  
-| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeknek Windows vagy Linux rendszerre kell épülniük. <ul> <li>A Linux virtuális merevlemez ek létrehozásáról további információt az [Azure-ban jóváhagyott Linux-disztribúciók című](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)témakörben talál.</li> <li>A Windows virtuális merevlemez ek létrehozásáról további információt az [Azure-kompatibilis virtuális merevlemez létrehozása](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)című témakörben talál.</li> </ul> |  
+| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeknek Windows vagy Linux rendszerre kell épülniük. <ul> <li>A Linux virtuális merevlemez ek létrehozásáról további információt az [Azure-ban jóváhagyott Linux-disztribúciók című](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)témakörben talál.</li> <li>A Windows virtuális merevlemez ek létrehozásáról további információt az [Azure-kompatibilis virtuális merevlemez létrehozása](./partner-center-portal/azure-vm-create-offer.md)című témakörben talál.</li> </ul> |  
 
 >[!Note]
 >A felhőszolgáltatók (CSP) partnercsatorna-opt-in már elérhető.  Az ajánlat microsoftos CSP-partnercsatornákon keresztül történő marketingről további információt a [felhőszolgáltatók](./cloud-solution-providers.md) ban talál.
@@ -62,9 +62,9 @@ Használja a virtuális gép ajánlat típusát, amikor üzembe helyez egy virtu
 
 Ha még nem tette meg, 
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piacon.
+- [További információ](https://azuremarketplace.microsoft.com/sell) a piactérről.
 
 Ha regisztrált, és új ajánlatot hoz létre, vagy egy meglévőn dolgozik,
 
-- [Jelentkezzen be a Cloud Partner Portalszolgáltatásba](https://cloudpartner.azure.com) az ajánlat létrehozásához vagy teljesítéséhez.
-- További információt a [Virtuálisgép-ajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer) című témakörben talál.
+- [Jelentkezzen be a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához vagy teljesítéséhez.
+- További információkért [tekintse meg a virtuálisgép-ajánlat létrehozása](./partner-center-portal/azure-vm-create-offer.md) című témakört.

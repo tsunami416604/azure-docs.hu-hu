@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: a1ec89dfd2dda91a10f2cc00b6ca4d9d7abbf032
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252626"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731143"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Érdeklődők a Marketplace-ajánlatban
 
@@ -96,7 +96,7 @@ A vevő adatait a rendszer több mezőn keresztül küldi el. A következő pél
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Hol kaphatok segítséget az érdeklődő célhelyének beállításához?
 
-Itt megtalálhatja [a](#connect-to-your-crm-system) dokumentációt, vagy támogatási jegyet küldhet be aka.ms/marketplacepublishersupport majd válassza az **"ajánlat létrehozása"** → **az ajánlat típusa** → **"érdeklődőkezelési konfiguráció" lehetőséget.**
+Itt megtalálhatja [a](#connect-to-your-crm-system) dokumentációt, https://partner.microsoft.com/support/v2/?stage=1 vagy támogatási jegyet küldhet be, majd válassza az **"ajánlat létrehozása"** → **az ajánlat típusa** → **"érdeklődőkezelési konfiguráció" lehetőséget.**
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>Be kell állítanom egy érdeklődő célállomást ahhoz, hogy ajánlatot tegyek közzé a piacon?
 
@@ -133,7 +133,7 @@ Az Azure Blob érdeklődői cél már nem támogatott, így hiányzik az ajánla
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Kaptam egy e-mailt a Marketplace-en, miért nem találom a vezető a CRM?
 
-Lehetséges, hogy a végfelhasználó e-mail tartománya .edu-ból származik. Adatvédelmi okokból nem adunk át privát azonosításra alkalmas adatokat .edu tartományból. Küldjön be egy támogatási jegyet a aka.ms/marketplacepublishersupport.
+Lehetséges, hogy a végfelhasználó e-mail tartománya .edu-ból származik. Adatvédelmi okokból nem adunk át privát azonosításra alkalmas adatokat .edu tartományból. Támogatási jegy beküldése a keresztül. https://partner.microsoft.com/support/v2/?stage=1
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Az Azure Table-t állítottam be érdeklődőcélként, hogyan tekinthetem meg az érdeklődőket?
 

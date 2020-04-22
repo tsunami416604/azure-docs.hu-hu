@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78331144"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683164"
 ---
 # <a name="configure-openssl-for-linux"></a>Linuxos OpenSSL konfigurálása
 
@@ -40,16 +40,18 @@ Ellenőrizze, hogy `certs` van-e alkönyvtár az OPENSSLDIR könyvtár alatt. A 
 ## <a name="examples"></a>Példák
 
 - Az OPENSSLDIR a `/opt/ssl`. Van `certs` alkönyvtár sok `.crt` `.pem` vagy fájlokat.
-Állítsa be `SSL_CERT_DIR` a `/opt/ssl/certs` környezeti változót úgy, hogy pontozzon a beszédfelismerési SDK-t használó program futtatása előtt. Példa:
+Állítsa be `SSL_CERT_DIR` a `/opt/ssl/certs` környezeti változót úgy, hogy pontozzon a beszédfelismerési SDK-t használó program futtatása előtt. Például:
 ```bash
 export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
 - Az OPENSSLDIR (mint az RHEL/CentOS alapú rendszereken) van. `/etc/pki/tls` Van `certs` alkönyvtár egy tanúsítványkötegfájllal, `ca-bundle.crt`például .
-Állítsa be, hogy a környezeti változó `SSL_CERT_FILE` a fájlra mutasson, mielőtt olyan programot futtatna, amely a Beszéd SDK-t használja. Példa:
+Állítsa be, hogy a környezeti változó `SSL_CERT_FILE` a fájlra mutasson, mielőtt olyan programot futtatna, amely a Beszéd SDK-t használja. Például:
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
+> [!NOTE]
+> Azt is érdemes megjegyezni, hogy egyes Linux-disztribúciók nem rendelkeznek tmp vagy TMPDIR környezeti változóval. Ez azt eredményezi, hogy a beszédfelismerési SDK minden alkalommal letölti a visszavont tanúsítványok listáját ,, ahelyett, hogy a visszavont tanúsítványok listáját lemezre gyorsítótárazná újra felhasználásként, amíg le nem járnak. A kezdeti kapcsolatteljesítmény ének javítása érdekében [létrehozhat egy TMPDIR nevű környezeti változót, és beállíthatja azt a kiválasztott ideiglenes könyvtár elérési útvonalára.](https://help.ubuntu.com/community/EnvironmentVariables). .
 
 ## <a name="next-steps"></a>További lépések
 

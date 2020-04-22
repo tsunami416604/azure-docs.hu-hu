@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536658"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731266"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Azure virtuálisgép-ajánlat létrehozása
 
@@ -34,19 +34,19 @@ Az Azure Marketplace-en való közzététel a következő előnyökkel jár:
 
 ### <a name="before-you-begin"></a>Előkészületek
 
-Ha még nem tette meg, tekintse át a [virtuális gép ajánlatközzétételi útmutatóját](https://aka.ms/Virtualmachineofferpublishingguide) és az Azure virtuálisgép-anyagát:
+Ha még nem tette meg, tekintse át a [virtuális gép ajánlatközzétételi útmutatóját](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) és az Azure virtuálisgép-anyagát:
 
 - Rövid útmutatók
   - [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure gyorsindítási sablonjai](https://github.com/azure/azure-quickstart-templates)
 - Oktatóanyagok
-  - [Linux rendszerű virtuális gépek](https://aka.ms/LinuxVMtutorial)
-  - [Windows rendszerű virtuális gépek](https://aka.ms/windowsvms)
+  - [Linux rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+  - [Windows rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - Példák
-  - [Azure CLI-minták Linuxos virtuális gépekhez](https://aka.ms/linuxclisamples)
-  - [Azure PowerShell Linuxos virtuális gépekhez](https://aka.ms/linuxpowershellsamples)
-  - [Azure CLI-minták Windows virtuális gépekhez](https://aka.ms/windowsclisamples)
-  - [Azure PowerShell Windows-alapú virtuális gépekhez](https://aka.ms/windowspowershellvmsamples)
+  - [Azure CLI-minták Linuxos virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
+  - [Azure PowerShell Linuxos virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
+  - [Azure CLI-minták Windows virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
+  - [Azure PowerShell Windows-alapú virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>A műszaki ismeretek alapjai
 
@@ -62,11 +62,11 @@ A mérnöki csapatnak meg kell értenie a következő Microsoft-technológiákat
 
 Az Azure virtuálisgép-ajánlat létrehozása előtt kereskedelmi piactéri fiókkal kell rendelkeznie a Partnerközpontban. Ha még nem hozott létre ilyet, olvassa el [a Kereskedelmi piactér-fiók létrehozása a Partnerközpontban című témakört.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)
 
-1. Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/dashboard/home), majd a felső menüben válassza az **Irányítópult**lehetőséget.
+1. Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/dashboard/home), majd a felső menüben válassza az **Irányítópult lehetőséget.**
 2. A bal oldali navigációs sávon válassza a **Kereskedelmi piactér**lehetőséget, majd **az Áttekintés lehetőséget.**
 3. Az **Áttekintés** lapon válassza a **+ Új ajánlat**lehetőséget, majd az Azure virtuális **gép**lehetőséget. Megjelenik **az Új ajánlat** párbeszédpanel.
 
-![A Partnerközpont Áttekintés lapját mutatja be az Új ajánlat gombbal és az Azure Virtuálisgép-ajánlat beállítással.](media/avm-create7.png)
+    ![A Partnerközpont Áttekintés lapját mutatja be az Új ajánlat gombbal és az Azure Virtuálisgép-ajánlat beállítással.](media/avm-create7.png)
 
 ## <a name="offer-id-and-alias"></a>Ajánlatazonosító és alias
 
@@ -91,7 +91,7 @@ Tesztvezetés engedélyezéséhez jelölje be a **Tesztvezetés engedélyezése*
 További tesztmeghajtó-erőforrások:
 
 - [Gyakorlati tanácsok gyakorlati tanácsok](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Marketingre vonatkozó ajánlott eljárások](https://aka.ms/TestDriveMarketingBestPractices)
+- [Marketingre vonatkozó ajánlott eljárások](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Tesztmeghajtók – áttekintés](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (győződjön meg róla, hogy az előugró ablakok blokkolása ki van kapcsolva).
 
 ### <a name="lead-management"></a>Érdeklődők kezelése
@@ -99,12 +99,12 @@ További tesztmeghajtó-erőforrások:
 Amikor a Partner Center rel teszi közzé az ajánlatot a kereskedelmi piacon, csatlakoztassa azt az ügyfélkapcsolat-kezelés (CRM) rendszeréhez. Ez lehetővé teszi, hogy megkapja az ügyfél elérhetőségi adatait, amint valaki érdeklődést mutat vagy használja a terméket. Ha CRM-hez kell csatlakozni, ha engedélyezi **a Test Drive-ot** (lásd a korábbi szakaszt), ellenkező esetben nem kötelező.
 
 1. Válasszon egy érdeklődési célt, ahová küldhetjük az érdeklődőket. A Partnerközpont a következő CRM rendszereket támogatja:
-    - [Dynamics 365](https://aka.ms/Dyn365LeadMgmt) az ügyfelek elköteleződése érdekében
-    - [Marketo](https://aka.ms/LeadMgmtMarketo)
-    - [Salesforce](https://aka.ms/LeadMgmtSalesforce)
+    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) az ügyfelek elköteleződése érdekében
+    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > Ha a CRM-rendszer nem szerepel a fenti felsorolásban, használja [az Azure Table](https://aka.ms/AzureTableLeadMgmt) vagy https [endpoint](https://aka.ms/LeadMgmtHTTPS) az ügyfél érdeklődői adatok tárolására. Ezután exportálja az adatokat a CRM-rendszerbe.
+    > Ha a CRM-rendszer nem szerepel a fenti felsorolásban, használja [az Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) vagy https [endpoint](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) az ügyfél érdeklődői adatok tárolására. Ezután exportálja az adatokat a CRM-rendszerbe.
 
 2. A Partnerközpontban történő közzétételkor csatlakoztassa az ajánlatot az érdeklődő célhelyéhez.
 3. Ellenőrizze, hogy az érdeklődő célállomásához való csatlakozás megfelelően van-e konfigurálva. Miután közzétette a Partnerközpontban, érvényesítjük a kapcsolatot, és elküldjük Önnek a tesztérdeklődőt. Amíg az ajánlat előnézete előtt éles, tesztelheti az érdeklődői kapcsolatot, ha megpróbálja telepíteni az ajánlatot magát az előzetes verziós környezetben.
@@ -274,7 +274,7 @@ Adjon hozzá legfeljebb öt képernyőképet, amelyek megmutatják, hogyan műk�
 
 Akár öt videót is hozzáadhatsz, amelyek bemutatják az ajánlatodat. Ezeket külső videoszolgáltatáson kell üzemeltetni. Adja meg az egyes videók nevét, webcímét és a videó miniatűr PNG-képét 1280 x 720 képpont méretűen.
 
-Az erőforrásokat a piacterek en-tőzsdei jegyzése című témakörben további [piactér-listákat ismertető témakörben ismer.](https://aka.ms/LdMgmtOfferListingBestPractices)
+Az erőforrásokat a piacterek en-tőzsdei jegyzése című témakörben további [piactér-listákat ismertető témakörben ismer.](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 A folytatás előtt válassza **a Vázlat mentése** lehetőséget.
 
@@ -554,4 +554,4 @@ Ezek a példák bemutatják, hogyan jelenik meg az ajánlat az Azure Marketplace
 
 ## <a name="next-step"></a>Következő lépés
 
-- [Meglévő ajánlat frissítése a kereskedelmi piacon](https://aka.ms/UpdateOfferCM)
+- [Meglévő ajánlat frissítése a kereskedelmi piacon](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

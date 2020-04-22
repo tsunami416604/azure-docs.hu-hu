@@ -16,23 +16,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 39ee0fa2dc973cd6c20756cae2024af79d1375dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1945025ff89a784908a1a3dffd2240172a6e2449
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294154"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687990"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Biztonsági keret: Kommunikáció biztonsága | Enyhítése 
 | Termék/szolgáltatás | Cikk |
 | --------------- | ------- |
 | **Azure Event Hub** | <ul><li>[Biztonságos kommunikáció az Event Hub-hoz SSL/TLS használatával](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Ellenőrizze a szolgáltatásfiók jogosultságait, és ellenőrizze, hogy az egyéni szolgáltatások vagy ASP.NET oldalak tiszteletben tartják-e a CRM biztonságát](#priv-aspnet)</li></ul> |
-| **Azure-adatgyár** | <ul><li>[Adatkezelési átjáró használata a helyszíni SQL Server és az Azure Data Factory csatlakoztatása közben](#sqlserver-factory)</li></ul> |
+| **Azure Data Factory** | <ul><li>[Adatkezelési átjáró használata a helyszíni SQL Server és az Azure Data Factory csatlakoztatása közben](#sqlserver-factory)</li></ul> |
 | **Identitás-kiszolgáló** | <ul><li>[Annak ellenőrzése, hogy az identitáskiszolgálóra irányuló összes forgalom HTTPS-kapcsolaton keresztül történik](#identity-https)</li></ul> |
 | **Webalkalmazás** | <ul><li>[Az SSL-, TLS- és DTLS-kapcsolatok hitelesítéséhez használt X.509 tanúsítványok ellenőrzése](#x509-ssltls)</li><li>[SSL-tanúsítvány konfigurálása egyéni tartományhoz az Azure App Service-ben](#ssl-appservice)</li><li>[Az Azure App Service-be irányuló összes forgalom kényszerítése HTTPS-kapcsolaton keresztül](#appservice-https)</li><li>[A HTTP szigorú átviteli biztonságának engedélyezése (HSTS)](#http-hsts)</li></ul> |
 | **Adatbázis** | <ul><li>[Sql-kiszolgálókapcsolat titkosításának és tanúsítvány-ellenőrzésének biztosítása](#sqlserver-validation)</li><li>[Titkosított kommunikáció kényszerítése AZ SQL-kiszolgálóval](#encrypted-sqlserver)</li></ul> |
-| **Azure Storage** | <ul><li>[Annak biztosítása, hogy az Azure Storage-ba irányuló kommunikáció HTTPS-kapcsolaton keresztül történik](#comm-storage)</li><li>[MD5 kivonat ának ellenőrzése a blob letöltése után, ha a HTTPS nem engedélyezhető](#md5-https)</li><li>[Az SMB 3.0-val kompatibilis ügyfél használata az Azure fájlmegosztások átvitele közbeni adattitkosításának biztosításához](#smb-shares)</li></ul> |
+| **Azure-tárhely** | <ul><li>[Annak biztosítása, hogy az Azure Storage-ba irányuló kommunikáció HTTPS-kapcsolaton keresztül történik](#comm-storage)</li><li>[MD5 kivonat ának ellenőrzése a blob letöltése után, ha a HTTPS nem engedélyezhető](#md5-https)</li><li>[Az SMB 3.0-val kompatibilis ügyfél használata az Azure fájlmegosztások átvitele közbeni adattitkosításának biztosításához](#smb-shares)</li></ul> |
 | **Mobil ügyfél** | <ul><li>[Tanúsítványrögzítés megvalósítása](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[HTTPS engedélyezése - Biztonságos átviteli csatorna](#https-transport)</li><li>[WCF: Az üzenet biztonsági védelmi szintjének beállítása EncryptAndSign](#message-protection)</li><li>[WCF: A WCF-szolgáltatás futtatásához használja a legkevésbé kiemelt jogosultságú fiókot](#least-account-wcf)</li></ul> |
 | **Webes API** | <ul><li>[Az összes forgalom kényszerítése webes API-kra HTTPS-kapcsolaton keresztül](#webapi-https)</li></ul> |
@@ -67,7 +67,7 @@ ms.locfileid: "80294154"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Data Factory | 
-| **SDL fázis**               | Környezet |  
+| **SDL fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | Csatolt szolgáltatástípusok – Azure és helyszíni szolgáltatások |
 | **Referencia**              |[Adatok áthelyezése a helyszíni és az Azure Data Factory között,](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway) [adatkezelési átjáró](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
@@ -78,7 +78,7 @@ ms.locfileid: "80294154"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Identitás-kiszolgáló | 
-| **SDL fázis**               | Környezet |  
+| **SDL fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | [IdentityServer3 - Kulcsok, aláírások és kriptográfia](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html), [IdentityServer3 - Telepítés](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -147,7 +147,7 @@ Ez a szabály úgy működik, hogy egy 301-es HTTP-állapotkódot (végleges át
 | **SDL fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [OWASP HTTP Szigorú Transport Security Cheat Sheet](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
+| **Referencia**              | [OWASP HTTP Szigorú Transport Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html) |
 | **Lépéseket** | <p>A HTTP Strict Transport Security (HSTS) egy speciális válaszfejléc használatával egy webalkalmazás által megadott opt-in biztonsági javítás. Ha egy támogatott böngésző megkapja ezt a fejlécet, a böngésző megakadályozza, hogy a kommunikáció HTTP-n keresztül a megadott tartományba érkezzenek, és ehelyett az összes kommunikációt HTTPS-en keresztül küldi el. Azt is megakadályozza, HTTPS átkattintási utasításokat a böngészőkben.</p><p>A HSTS megvalósításához a következő válaszfejlécet globálisan kell konfigurálni egy webhelyhez, akár kódban, akár konfigurációban. Szigorú közlekedésbiztonság: max-age=300; a includeSubDomains HSTS a következő fenyegetéseket kezeli:</p><ul><li>Felhasználói könyvjelzők vagy `https://example.com` manuális antropológus, és a beépített támadó nak van kitéve: A HSTS automatikusan átirányítja a HTTP-kérelmeket a céltartomány HTTPS-re</li><li>A tisztán HTTPS-nek szánt webalkalmazás véletlenül HTTP-hivatkozásokat tartalmaz, vagy HTTP-n keresztüli tartalmat szolgál ki: A HSTS automatikusan átirányítja a HTTP-kérelmeket a céltartomány HTTPS-re</li><li>A "man-in-the-middle" támadó érvénytelen tanúsítvánnyal próbálja elfogni az áldozat felhasználójától érkező forgalmat, és reméli, hogy a felhasználó elfogadja a hibás tanúsítványt: A HSTS nem engedélyezi a felhasználó számára az érvénytelen tanúsítványüzenet felülbírálását</li></ul>|
 
 ## <a name="ensure-sql-server-connection-encryption-and-certificate-validation"></a><a id="sqlserver-validation"></a>Sql-kiszolgálókapcsolat titkosításának és tanúsítvány-ellenőrzésének biztosítása
@@ -177,11 +177,11 @@ Ez a szabály úgy működik, hogy egy 301-es HTTP-állapotkódot (végleges át
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
-| **SDL fázis**               | Környezet |  
+| **SDL fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | [Azure Storage átviteli szintű titkosítás – HTTPS használata](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
-| **Lépéseket** | Az Azure Storage-adatok átvitel közbeni biztonságának biztosítása érdekében mindig használja a HTTPS protokollt a REST API-k hívásakor vagy a tárolóban lévő objektumok elérésekor. Emellett a megosztott hozzáférésű aláírások, amelyek az Azure Storage-objektumokhoz való hozzáférés delegálására használhatók, tartalmaznak egy lehetőséget annak megadására, hogy csak a HTTPS protokoll használható megosztott hozzáférésű aláírások használatakor, biztosítva, hogy a SAS-jogkivonatokkal kapcsolatot küldő a megfelelő protokollt.|
+| **Lépéseket** | Az Azure Storage-adatok átvitel közbeni biztonságának biztosítása érdekében mindig használja a HTTPS protokollt a REST API-k hívásakor vagy a tárolóban lévő objektumok elérésekor. Emellett a megosztott hozzáférésű aláírások, amelyek az Azure Storage-objektumokhoz való hozzáférés delegálására használhatók, tartalmaznak egy lehetőséget, amellyel megadhatja, hogy csak a HTTPS protokoll használható megosztott hozzáférésű aláírások használataesetén, biztosítva, hogy bárki, aki SAS-jogkivonatokkal küld kapcsolatokat küld, a megfelelő protokollt használja.|
 
 ## <a name="validate-md5-hash-after-downloading-blob-if-https-cannot-be-enabled"></a><a id="md5-https"></a>MD5 kivonat ának ellenőrzése a blob letöltése után, ha a HTTPS nem engedélyezhető
 
@@ -213,7 +213,7 @@ Ez a szabály úgy működik, hogy egy 301-es HTTP-állapotkódot (végleges át
 | **SDL fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános, Windows Phone |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [Tanúsítvány és nyilvános kulcs rögzítése](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
+| **Referencia**              | [Tanúsítvány és nyilvános kulcs rögzítése](https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning) |
 | **Lépéseket** | <p>Tanúsítvány rögzítése véd a Man-In-The-Middle (MITM) támadások ellen. A rögzítés az a folyamat, amelynek során egy állomást társítanak a várt X509-es tanúsítványukkal vagy nyilvános kulcsukkal. Ha egy tanúsítvány vagy nyilvános kulcs ismert vagy látható egy állomás, a tanúsítvány vagy a nyilvános kulcs van társítva, vagy "rögzített" az állomás. </p><p>Így amikor egy ellenség megpróbálja végrehajtani az SSL MITM támadást, az SSL-kézfogás során a támadó kiszolgálójának kulcsa eltér a rögzített tanúsítvány kulcsától, és a kérés el lesz `ServerCertificateValidationCallback` vetve, így a MITM-tanúsítvány rögzítése a ServicePointManager meghatalmazottjának megvalósításával érhető el.</p>|
 
 ### <a name="example"></a>Példa
