@@ -6,16 +6,19 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: cdae6a3b7319aefa9d4f19b5d613d1afb8b6804a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3b27a50fa86916b71c84b30ecdbf45deb0ec45c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235313"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770758"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Az Azure Stream Analytics funkcióinak összehasonlítása
 
 Az Azure Stream Analytics segítségével streamelési megoldásokat hozhat létre a felhőben és az IoT Edge-ben az [Azure Portal](stream-analytics-quick-create-portal.md), a [Visual Studio](stream-analytics-quick-create-vs.md)és a Visual Studio [Code használatával.](quick-create-vs-code.md) A cikkben található táblázatok azt mutatják, hogy az egyes platformok mely funkciókat támogatják mindkét feladattípushoz.
+
+> [!NOTE]
+> A Visual Studio és a Visual Studio Code eszközök nem támogatják a kelet-kínai, észak-kínai, németországi központi és németországi északkeleti régiókban végzett feladatokat.
 
 ## <a name="cloud-job-features"></a>A felhőalapú feladat funkciói
 

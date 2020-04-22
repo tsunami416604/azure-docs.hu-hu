@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 04/21/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 3a03a03557fbb2e71ff79ff42fd9d9c72cd5907c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639653"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770509"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 Az Azure Active Directory (Azure AD) csapata rendszeresen frissíti az Azure AD Connectet új funkciókkal és funkciókkal. Nem minden kiegészítés alkalmazható minden közönségre.
@@ -48,6 +48,14 @@ Az Azure AD Connect nem minden kiadása lesz elérhető az automatikus frissít�
 >
 >Kérjük, olvassa el [ezt a cikket,](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) hogy többet megtudni, hogyan frissítheti az Azure AD Connect a legújabb verzióra.
 
+## <a name="15220"></a>1.5.22.0
+
+### <a name="release-status"></a>Kiadás állapota
+04/20/2020: Letölthető
+
+### <a name="fixed-issues"></a>Hibák kijavítva:
+Ez a gyorsjavítás javítja az 1.5.20.0 összeállítással kapcsolatos problémát, ha klónozta az **In from AD - Group Join** szabályt, és nem klónozta az In from **AD - Group Common** szabályt.
+
 ## <a name="15200"></a>1.5.20.0
 
 ### <a name="release-status"></a>Kiadás állapota
@@ -57,12 +65,13 @@ Az Azure AD Connect nem minden kiadása lesz elérhető az automatikus frissít�
 Ez a gyorsjavítás javítja az 1.5.18.0-s létrehozási szolgáltatással kapcsolatos problémát, ha engedélyezve van a Csoportszűrés funkció, és forráshorgonyként az mS-DS-ConsistencyGuid értéket használja.
 
 > [!IMPORTANT]
-> Ha az mS-DS-ConsistencyGuid azonosítót használja forráshorgonyként, és klónozta az **In from AD - Group Join** szinkronizálási szabályt, és frissíteni szeretne, a frissítés részeként hajtsa végre a következő lépéseket:
+> Ha klónozta az **AD -Csoportillesztés szinkronizálási** szabályt, és nem klónozta az **In from AD - Group Common** sync szabályt, és a frissítést tervezi, a frissítés részeként hajtsa végre a következő lépéseket:
 > 1. A frissítés során törölje a jelet a **szinkronizálási folyamat indítása a konfiguráció befejezésekor jelölőnégyzetből.**
 > 2. A klónozott illesztési szinkronizálási szabály szerkesztése és a következő két átalakítás hozzáadása:
 >     - Állítsa be `objectGUID` `sourceAnchorBinary`a közvetlen folyamatot a-ra.
 >     - A `ConvertToBase64([objectGUID])` kifejezésfolyamat `sourceAnchor`beállítása a beállításra.     
 > 3. Engedélyezze az `Set-ADSyncScheduler -SyncCycleEnabled $true`ütemező használatát a használatával.
+
 
 
 ## <a name="15180"></a>1.5.18.0

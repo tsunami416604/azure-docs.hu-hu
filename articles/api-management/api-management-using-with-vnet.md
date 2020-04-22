@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 462a44f7766e0ec52ba7156d6de5ae5261e21376
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 0ecb7ee7f5c7c0ebaa87eb6b32eee1926d9e294d
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547363"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768952"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiák használatával csatlakoztathatók a helyszíni hálózatokhoz. Ha többet szeretne megtudni az Azure virtuális hálózatokról, kezdje az itt található információkkal: [Azure virtuális hálózat áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -108,7 +108,7 @@ Az alábbiakban az API Management szolgáltatás virtuális hálózatra történ
 
 <a name="required-ports"> </a> Ha egy API Management szolgáltatáspéldány egy virtuális hálózatban van tárolva, a következő táblázatban lévő portok használatosak.
 
-| Forrás / Célport(ok) | Irány          | Átviteli protokoll |   [Szolgáltatási címkék](../virtual-network/security-overview.md#service-tags) <br> Forrás / Rendeltetési hely   | Cél (*)                                                 | Virtuális hálózat típusa |
+| Forrás / Célport(ok) | Irány          | Átviteli protokoll |   [Szolgáltatási címkék](../virtual-network/security-overview.md#service-tags) <br> Forrás / Rendeltetési hely   | Cél\*( )                                                 | Virtuális hálózat típusa |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / [80], 443                  | Bejövő            | TCP                | INTERNET / VIRTUAL_NETWORK            | Ügyfélkommunikáció az API Management szolgáltatással                      | Külső             |
 | * / 3443                     | Bejövő            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Felügyeleti végpont az Azure Portalhoz és a Powershellhez         | Külső & belső  |
@@ -132,9 +132,7 @@ Az alábbiakban az API Management szolgáltatás virtuális hálózatra történ
 
 + **DNS-hozzáférés:** Kimenő hozzáférés szükséges az 53-as porton a DNS-kiszolgálókkal való kommunikációhoz. Ha egy VPN-átjáró másik végén létezik egyéni DNS-kiszolgáló, a DNS-kiszolgálónak elérhetőnek kell lennie az alhálózat üzemeltetési API Management szolgáltatásából.
 
-+ **Metrikák és állapotfigyelés:** Kimenő hálózati kapcsolat az Azure Monitoring végpontok, amely a következő tartományokban oldható fel:
-
-+ **Regionális szolgáltatáscímkék**": NSG-szabályok, amelyek lehetővé teszik a kimenő kapcsolatot a storage, SQL és EventHubs szolgáltatás címkék használhatják a regionális verziók e címkék megfelelő régióban az API Management-példány (például Storage.WestUS egy API Management-példány az USA nyugati régiójában). A több régiós telepítések, az NSG minden régióban lehetővé kell tennie a forgalmat a szolgáltatás címkék az adott régióban.
++ **Metrikák és állapotfigyelés:** Kimenő hálózati kapcsolat az Azure Monitoring végpontok, amely a következő tartományok ban feloldható. Amint az a táblázatban látható, ezek az URL-címek az AzureMonitor szolgáltatáscímkéjében jelennek meg a hálózati biztonsági csoportokkal való használatra.
 
     | Azure környezet | Végpontok                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -142,8 +140,10 @@ Az alábbiakban az API Management szolgáltatás virtuális hálózatra történ
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com(**új**)</li><li>shoebox2.metrics.nsatc.net(**elavult )**</li><li>prod3.metrics.microsoftmetrics.com(**új**)</li><li>prod3.metrics.nsatc.net(**elavult)**</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
     | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com(**új**)</li><li>shoebox2.metrics.nsatc.net(**elavult )**</li><li>prod3.metrics.microsoftmetrics.com(**új**)</li><li>prod3.metrics.nsatc.net(**elavult)**</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
 
->[!IMPORTANT]
-> A fenti fürtök módosítása a dns zónával **.nsatc.net** -ről **.microsoftmetrics.com-re** többnyire DNS-módosítás. A fürt IP-címe nem változik.
+  >[!IMPORTANT]
+  > A fenti fürtök módosítása a dns zónával **.nsatc.net** -ről **.microsoftmetrics.com-re** többnyire DNS-módosítás. A fürt IP-címe nem változik.
+
++ **Regionális szolgáltatáscímkék:** NSG-szabályok, amelyek lehetővé teszik a kimenő kapcsolatot a storage, SQL és Event Hubs szolgáltatás címkék használhatják a regionális verziói a címkék et tartalmazó régió ban az API Management példány (például Storage.WestUS egy API Management példány az USA nyugati régiójában). A több régióra kiterjedő telepítések, az NSG minden régióban lehetővé kell tennie a forgalmat a szolgáltatás címkék az adott régióban és az elsődleges régióban.
 
 + **SMTP-továbbítás**: Kimenő hálózati kapcsolat az SMTP-továbbítóhoz, `smtpi-db3.msn.com` `smtpi-sin.msn.com` amely az állomás `smtpi-co1.msn.com`, `smtpi-ch1.msn.com`, és`ies.global.microsoft.com`
 
@@ -151,7 +151,7 @@ Az alábbiakban az API Management szolgáltatás virtuális hálózatra történ
 
 + **Azure portal diagnosztika:** Az Api Management bővítmény virtuális hálózaton belüli használata esetén az `dc.services.visualstudio.com` Azure-kezelés bővítmény használatával a diagnosztikai naplók áramlásának engedélyezéséhez kimenő hozzáférésszükséges a 443-as porton. Ez segít a bővítmények használata során felmerülő problémák elhárításában.
 
-+ **Bújtatási forgalom kényszerítése az on-prem tűzfalra express route vagy hálózati virtuális berendezés használatával:** A közös ügyfélkonfiguráció a saját alapértelmezett útvonaluk (0.0.0/0) meghatározása, amely az API Management delegált alhálózatából származó összes forgalmat a helyszíni tűzfalon vagy egy hálózati virtuális berendezésbe kényszeríti. Ez a forgalmi folyamat mindig megszakítja a kapcsolatot az Azure API Management, mert a kimenő forgalom vagy blokkolva van a helyszínen, vagy NAT'd egy felismerhetetlen címkészlet, amely már nem működik a különböző Azure-végpontok. A megoldás megköveteli, hogy nem egy pár dolgot:
++ **Bújtatási forgalom kényszerítése a helyszíni tűzfalra express route vagy hálózati virtuális berendezés használatával:** A közös ügyfélkonfiguráció a saját alapértelmezett útvonaluk (0.0.0/0) meghatározása, amely az API Management delegált alhálózatából származó összes forgalmat egy helyszíni tűzfalon vagy egy hálózati virtuális berendezéshez kényszeríti. Ez a forgalmi folyamat mindig megszakítja a kapcsolatot az Azure API Management, mert a kimenő forgalom vagy blokkolva van a helyszínen, vagy NAT'd egy felismerhetetlen címkészlet, amely már nem működik a különböző Azure-végpontok. A megoldás megköveteli, hogy nem egy pár dolgot:
 
   * Engedélyezze a szolgáltatásvégpontokat azon az alhálózaton, amelyben az API Management szolgáltatás telepítve van. [A szolgáltatásvégpontokat][ServiceEndpoints] engedélyezni kell az Azure Sql, az Azure Storage, az Azure EventHub és az Azure ServiceBus számára. Ha a végpontokat közvetlenül az API Management delegált alhálózatról engedélyezi ezekre a szolgáltatásokra, akkor a Microsoft Azure gerinchálózatát használhatják, amely optimális útválasztást biztosít a szolgáltatásforgalom számára. Ha a szolgáltatásvégpontok egy kényszerített bújtatott Api Management, a fenti Azure-szolgáltatások forgalma nem kényszerített bújtatás. A másik API Management szolgáltatás függőségi forgalma kényszerített bújtatott, és nem vész el, vagy az API Management szolgáltatás nem működik megfelelően.
     

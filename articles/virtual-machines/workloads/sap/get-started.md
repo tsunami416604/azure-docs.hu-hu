@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/16/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a361f384167fa522278b9c84a7927e938c12cb8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 3ce3311fd0538109dbe9ba5ae71a17dcfd4b8abe
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81534805"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769744"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP-számítási feladatok üzemeltetéséhez és futtatásához használja az Azure-t
 
@@ -111,6 +111,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásáról a követke
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 04/21/2020: Az SQL Azure DB az SAP (Hybris) Commerce Platform 1811 és újabb cikkeihez támogatott SQL Azure DB-t [adta](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) hozzá a [cikkekhez?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/16/2020: Sap HANA-t adott hozzá az SAP (Hybris) Commerce Platform támogatott ADATBÁZIS-rendszerének a [cikkekben: Milyen SAP-szoftverek támogatottak az Azure-telepítésekhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) és a [Microsoft Azure-on futó SAP-tanúsítványokhoz és konfigurációkhoz?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/13/2020: Az SAP ASE kiadási számok helyes javítása az [SAP ASE Azure virtuális gépek DBMS üzembe helyezésében az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
 - 04/07/2020: A [pacemaker beállítása az SLES-en az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) a felhő-netconfig-azure utasítások tisztázása érdekében

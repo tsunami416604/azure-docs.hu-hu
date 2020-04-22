@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/21/2019
 ms.author: spelluru
-ms.openlocfilehash: a0dbd92533703a56f1ec2478fab8944656129247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bb871119bece71c705ad9621a7c76c4b5ed0bc7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295509"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770245"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Műterméktár hozzáadása a laborhoz a DevTest Labs-ben
 DevTest Labs lehetővé teszi, hogy adjon meg egy összetevőt hozzá kell adni a virtuális gép létrehozásakor a virtuális gép létrehozásakor, vagy a virtuális gép létrehozása után. Ez a műtermék lehet egy eszköz vagy egy alkalmazás, amely a virtuális gépre szeretne telepíteni. A műtermékek egy GitHub- vagy Azure DevOps Git-tárházból betöltött JSON-fájlban vannak definiálva.
@@ -52,20 +52,20 @@ Ha hozzá szeretne adni egy adattárat a laborhoz, először is fontos informác
 4. Mentse az URL-címet. Az URL-címet később használhatja.
 5. Személyes hozzáférési jogkivonat létrehozásához a felhasználói fiók legördülő menüjében válassza a **Saját profil lehetőséget.**
 6. A profilinformációs lapon válassza a **Biztonság**lehetőséget.
-7. A **Biztonság** lapon válassza a **Hozzáadás gombot.**
-8. A **Személyes hozzáférési jogkivonat létrehozása** lapon:
-   1. Adja meg a token **leírását.**
-   2. A **Expires In** listában válassza a **180 napot**.
-   3. A **Fiókok** listában válassza a **Minden akadálymentes fiók lehetőséget.**
-   4. Válassza az **Összes hatókör lehetőséget.**
-   5. Válassza **a Jogkivonat létrehozása**lehetőséget.
+7. A **Személyes > biztonsági jogkivonatok** lapon válassza a **+ Új jogkivonat**lehetőséget.
+8. Új **személyes hozzáférési jogkivonat létrehozása** lapon:
+   1. Adja meg a jogkivonat **nevét.**
+   2. A **Szervezet** listában válassza a **Minden akadálymentes szervezet lehetőséget.**
+   3. A **Lejárati (UTC)** listában válassza ki a **90 napot**vagy az egyénileg meghatározott lejárati időszakot.
+   4. Válassza a **Teljes hozzáférés** lehetőséget a hatókörökhöz.
+   5. Kattintson a **Létrehozás** gombra.
 9. Az új jogkivonat megjelenik a **személyes hozzáférési jogkivonatok** listájában. Válassza **a Jogkivonat másolása**lehetőséget, majd mentse a token értékét későbbi használatra.
 10. Folytassa a Labor csatlakoztatása a tárház szakaszhoz.
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
 Ez a szakasz lépéseket tartalmaz egy må±termÃ©k-tárház hozzáadása az Azure Portalon.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **További szolgáltatások**lehetőséget, majd a Szolgáltatások listájából válassza a **DevTest Labs** elemet.
 3. A laborok listájából válassza ki a labort.
 4. Válassza a bal oldali menü **Konfiguráció és házirendek parancsát.**

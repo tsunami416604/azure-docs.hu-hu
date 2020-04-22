@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: eb3b09c6f349024d30d68a6c970770e2a78924ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9441e7bb970508df4c002897ab726d6e683fa848
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132314"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733346"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/szolgáltatások csatlakoztatása az IT Service Management Connector-hoz
 Ez a cikk arról nyújt tájékoztatást, hogyan konfigurálhatja a kapcsolatot az ITSM-termék/szolgáltatás és az IT Service Management Connector (ITSMC) között a Log Analytics szolgáltatásban a munkaelemek központi kezeléséhez. Az ITSMC-ről további információt az Áttekintés című [témakörben talál.](../../azure-monitor/platform/itsmc-overview.md)
@@ -159,7 +159,7 @@ Az alábbi eljárással konfigurálhatja a figyelő beállítását a hibrid kap
 
 3. Jelentkezzen be az Azure-hitelesítő adatokkal, és válassza ki az előfizetést, ahol a hibrid kapcsolat jött létre.
 
-4. Kattintson a **Mentés** gombra.
+4. Kattintson a **Save** (Mentés) gombra.
 
 A hibrid kapcsolat sikeresen csatlakozott.
 
@@ -194,7 +194,15 @@ Győződjön meg arról, hogy a következő előfeltételek teljesülnek:
     - [OAuth beállítása Isztambul számára](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Az OAuth beállítása Helsinkibe](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth beállítása Genfbe](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-
+> [!NOTE]
+> A "Set up OAuth" definíciójának részeként a következőket ajánljuk:
+>
+> 1) **Frissítse a frissítési jogkivonat élettartamát 90 napra (7 776 000 másodpercre):** A [Set up OAuth](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) in phase 2: [Create a endpoint for the point](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) after the definition of the endpoint, In ServiceNow blade search for System OAuth->Application Registry select the name of the OAuth that was defined and update the field of "Refresh token Lifespan" to 7,776,000.
+> A végén kattintson a frissítés.
+> 2) **Javasoljuk, hogy hozzon létre egy belső eljárást annak biztosítására, hogy a kapcsolat életben maradjon:** A "Token élettartamának frissítése" a jogkivonat frissítése szerint. Kérjük, győződjön meg róla, hogy végre a következő műveletek et előzetes frissítési jogkivonat várható lejárati idő (Néhány nappal a "Frissítési jogkivonat élettartama" lejár javasoljuk):
+>
+>>  1) [Manuális szinkronizálási folyamat befejezése az ITSM-összekötő konfigurációjához](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+ >> 2) Visszavonja a régi frissítési jogkivonatot, mivel biztonsági okokból nem ajánlott a régi kulcsok at tartani. A ServiceNow panelben keressen rá a "System OAuth"->"Tokenek kezelése" kifejezésre, majd válassza ki a régi jogkivonatot a listából az OAuth név és a lejárati dátum szerint. Kattintson a "Hozzáférés visszavonása"->"Visszavonása.
 
 - Telepítse a Felhasználói alkalmazást a Microsoft Log Analytics-integrációhoz (ServiceNow alkalmazás). [További információ](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Integrációs felhasználói szerepkör létrehozása a telepített felhasználói alkalmazáshoz. Az integrációs felhasználói szerepkör létrehozásáról itt [olvashat.](#create-integration-user-role-in-servicenow-app)

@@ -7,22 +7,25 @@ ms.author: mamccrea
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe666359b9ed2773f615ff496f4032bda5e74dc2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313875"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767766"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Rövid útmutató: Azure Stream Analytics-feladat létrehozása a Visual Studio-kódban (előzetes verzió)
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre és futtathatja az Azure Stream Analytics-feladatot az Azure Stream Analytics-eszközök visual studio-kódbővítményhasználatával. A példafeladat beolvassa a streamelési adatokat egy Azure IoT Hub-eszközről. Olyan feladatot határoz meg, amely 27°-nál nagyobb idő esetén kiszámítja az átlaghőmérsékletet, és az eredményül kapott kimeneti eseményeket egy új fájlba írja a blob storage-ban.
 
+> [!NOTE]
+> A Visual Studio és a Visual Studio Code eszközök nem támogatják a kelet-kínai, észak-kínai, németországi központi és németországi északkeleti régiókban végzett feladatokat.
+
 ## <a name="before-you-begin"></a>Előkészületek
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.](https://azure.microsoft.com/free/)
 
-* Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+* Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 * Telepítse [a Visual Studio-kódot](https://code.visualstudio.com/).
 
@@ -52,7 +55,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre és futtathatja az Azure 
 
 A Stream Analytics-feladat definiálása előtt elő kell készítenie azokat az adatokat, amelyek később feladatbemenetként vannak konfigurálva. A feladat által igényelt bemeneti adatok előkészítéséhez hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Válassza > **az** >  **Erőforrás-internet**létrehozása**IoT Hub**lehetőséget.
 
@@ -141,14 +144,6 @@ A Stream Analytics-feladat definiálása előtt elő kell készítenie azokat az
    HAVING Temperature > 27
    ```
 
-## <a name="test-the-query-locally-with-sample-data"></a>A lekérdezés helyi tesztelése mintaadatokkal
-
-Mielőtt futtatja a lekérdezést a felhőben, tesztelheti azt helyileg egy helyi mintaadatfájllal vagy az élő bemenetről rögzített adatokkal a lekérdezési logika ellenőrzéséhez.
-
-További részletekért kövesse a [Lekérdezések helyi tesztelése című, helyi mintaadatokkal](visual-studio-code-local-run.md) című útmutatóutasításait.
-
- ![Tesztelés mintaadatokkal a Visual Studio-kódban](./media/vscode-local-run/localrun-localinput.gif)
-
 ## <a name="define-a-live-input"></a>Élő bemenet definiálása
 
 1. Kattintson a jobb gombbal a **Bemenetek** mappára a Stream Analytics projektben. Ezután válassza **az ASA: Add Input** a helyi menüből.
@@ -175,7 +170,7 @@ További részletekért kövesse a [Lekérdezések helyi tesztelése című, hel
 
    |Beállítás|Ajánlott érték|Leírás|
    |-------|---------------|-----------|
-   |Név|Input (Bemenet)|Adjon meg egy nevet a feladat bevitelének azonosításához.|
+   |Name (Név)|Input (Bemenet)|Adjon meg egy nevet a feladat bevitelének azonosításához.|
    |IotHubNamespace|MyASAIoTHub|Válassza ki vagy írja be az IoT hub nevét. Az IoT hub nevek automatikusan észleli, ha ugyanabban az előfizetésben jönnek létre.|
    |SharedAccessPolicyName|iothubowner| |
 
@@ -207,7 +202,7 @@ Válassza **az Adatok előnézete** az **IoTHub1.json** ban a felső sorban. Egy
 
    |Beállítás|Ajánlott érték|Leírás|
    |-------|---------------|-----------|
-   |Név|Kimenet| Adjon meg egy nevet a feladat kimenetének azonosításához.|
+   |Name (Név)|Kimenet| Adjon meg egy nevet a feladat kimenetének azonosításához.|
    |Tárfiók|asaquickstartstorage|Válassza ki vagy adja meg a tárfiók nevét. A tárfiókneveket a rendszer automatikusan észleli, ha ugyanabban az előfizetésben jönnek létre.|
    |Tároló|container1|Válassza ki a tárfiókjában létrehozott meglévő tárolót.|
    |Path Pattern (Elérésiút-minta)|output|Adja meg a tárolón belül létrehozni kívánt elérési út nevét.|
@@ -279,6 +274,8 @@ Ha a jövőben szeretné használni a feladatot, leállíthatja, és később ú
 Ebben a rövid útmutatóban egy egyszerű Stream Analytics-feladatot telepített a Visual Studio-kód használatával. Stream Analytics-feladatokat az [Azure Portal](stream-analytics-quick-create-portal.md), a [PowerShell](stream-analytics-quick-create-powershell.md)és a [Visual Studio](stream-analytics-quick-create-vs.md)használatával is telepíthet.
 
 Ha többet szeretne megtudni az Azure Stream Analytics Eszközök a Visual Studio-kódhoz szolgáltatásról, folytassa az alábbi cikkekkel:
+
+* [A Test Stream Analytics helyi lekérdezéseket lekérdezése imént a Visual Studio-kód használatával](visual-studio-code-local-run.md)
 
 * [Tesztelje az Azure Stream Analytics-feladatokat helyileg az élő bevitellel szemben a Visual Studio-kóddal](visual-studio-code-local-run-live-input.md)
 

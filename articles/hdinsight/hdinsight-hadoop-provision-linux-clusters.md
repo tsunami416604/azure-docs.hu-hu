@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 246ec08e9b4edb33fa49318b68cc4364534282b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bba71ab35920027cc7296e774936c3d1deb8f92
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064652"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770318"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával
 
@@ -32,11 +32,11 @@ Az alábbi táblázat a HDInsight-fürt beállításához használható különb
 
 | A létrehozott fürtök | Webböngésző | Parancssor | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure-portál](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
-| [Azure-adatgyár](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
+| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
-| [Curl](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
+| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Azure Resource Manager-sablonok](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 Ez a cikk végigvezeti az [Azure Portalon,](https://portal.azure.com)ahol hdinsight-fürtöt hozhat létre.
@@ -104,7 +104,7 @@ Az SSH-felhasználónév a következő korlátozásokkal rendelkezik:
 * Megengedett speciális`_` karakterek: és`@`
 * Karakterek nem engedélyezettek: #;."",\/:'!*?$(){}[]<>|&-==+%~^szóköz
 * Maximális hossz: 64
-* Fenntartott nevek: hadoop, felhasználók, oozie, struktúra, mapred, ambari-qa, zookeeper, tez, hdfs, sqoop, fonal, hcat, ams, hbase, vihar, rendszergazda, admin, felhasználó, user1, teszt, user2, test1, user3, admin1, 1, 123, a, actuser, adm, admin2, aspnet, backup, konzol, David, vendég, John, tulajdonos, gyökér, szerver, sql, támogatás, support_388945a0, sys, test2, test3, user4, user5, spark
+* Fenntartott nevek: hadoop, felhasználók, oozie, kaptár, mapred, ambari-qa, zookeeper, tez, hdfs, sqoop, fonal, hcat, ams, hbase, vihar, rendszergazda, admin, felhasználó, user1, teszt, user2, test1, user3, admin1, 1, 123, a, actuser, adm, admin2, aspnet, backup, konzol, David, vendég, John, tulajdonos, gyökér, szerver, sql, támogatás, support_388945a0, sys, test2, test3, user4, user5,
 
 ## <a name="storage"></a>Storage
 
@@ -169,7 +169,7 @@ A tartományhoz csatlakozó HDInsight-fürt létrehozásáról a [Tartományhoz 
 
 ### <a name="tls"></a>TLS
 
-További információ: [Transport Layer Security](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security)
+További információ: [Transport Layer Security](./transport-layer-security.md)
 
 ### <a name="virtual-network"></a>Virtuális hálózat
 

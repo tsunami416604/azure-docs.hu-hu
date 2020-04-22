@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 7069f2cc96b8876f5514acfa4ba49274b61be46f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282936"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767252"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Az Azure Monitor engedélyezése virtuális gépekhez az Azure Policy használatával
 
@@ -79,13 +79,13 @@ Az Azure Monitor virtuális gépekhez való engedélyezése az Azure Policy hasz
 - Rendelje hozzá a kezdeményezést egy hatókörhöz: felügyeleti csoporthoz, előfizetéshez vagy erőforráscsoporthoz.
 - Tekintse át és orvosolja a megfelelőségi eredményeket.
 
-Az Azure-szabályzat hozzárendeléséről az [Azure-szabályzat áttekintése](../../governance/policy/overview.md#policy-assignment) című témakörben olvashat bővebben, és a folytatás előtt tekintse át a [felügyeleti csoportok áttekintését.](../../governance/management-groups/overview.md)
+Az Azure-szabályzat hozzárendeléséről az [Azure-szabályzat áttekintése](../../governance/policy/overview.md#assignments) című témakörben olvashat bővebben, és a folytatás előtt tekintse át a [felügyeleti csoportok áttekintését.](../../governance/management-groups/overview.md)
 
 ### <a name="policies-for-azure-vms"></a>Azure-beli virtuális gépek házirendjei
 
 Az Azure virtuális gépek házirend-definíciói az alábbi táblázatban találhatók.
 
-|Név |Leírás |Típus |
+|Name (Név) |Leírás |Típus |
 |-----|------------|-----|
 |Az Azure-figyelő engedélyezése virtuális gépekhez |Engedélyezze az Azure Monitort a megadott hatókörben (felügyeleti csoport, előfizetés vagy erőforráscsoport) lévő virtuális gépekhez. A Log Analytics munkaterületet paraméterként veszi figyelembe. |Kezdeményezés |
 |Naplózási függőségi ügynök telepítése – A virtuális gép lemezképe (OS) nem szerepel a listán |A virtuális gépeket nem megfelelőként jelenti, ha a virtuálisgép-lemezkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
@@ -99,7 +99,7 @@ Az Azure virtuális gépek házirend-definíciói az alábbi táblázatban talá
 
 Az Azure virtuálisgép-méretezési készlet házirend-definíciói az alábbi táblázatban találhatók.
 
-|Név |Leírás |Típus |
+|Name (Név) |Leírás |Típus |
 |-----|------------|-----|
 |Az Azure Monitor engedélyezése virtuálisgép-méretezési készletekhez |Engedélyezze az Azure Monitort a megadott hatókörben (felügyeleti csoport, előfizetés vagy erőforráscsoport) lévő virtuálisgép-méretezési csoportokhoz. A Log Analytics munkaterületet paraméterként veszi figyelembe. Megjegyzés: Ha a méretezési készlet frissítési szabályzat a Kézi, alkalmazza a bővítményt a készlet összes virtuális gépére frissítés hívásával rájuk. A CLI, ez `az vmss update-instances`. |Kezdeményezés |
 |A naplózási függőségi ügynök központi telepítése a virtuálisgép-méretezési csoportokban – A virtuális gép lemezképe (OS) nem szerepel a listán |Jelentések virtuálisgép méretezési készlet nem megfelelő, ha a virtuális gép lemezképe (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |Szabályzat |
@@ -111,7 +111,7 @@ Az Azure virtuálisgép-méretezési készlet házirend-definíciói az alábbi 
 
 Az önálló politika (amely nem szerepel a kezdeményezésben) itt található:
 
-|Név |Leírás |Típus |
+|Name (Név) |Leírás |Típus |
 |-----|------------|-----|
 |Naplóelemzési munkaterület naplózása – jelentéseltérés |Jelentse a virtuális gépeket nem megfelelőnek, ha nem jelentkeznek be a szabályzatban vagy kezdeményezés-hozzárendelésben megadott Log Analytics-munkaterületre. |Szabályzat |
 
@@ -121,7 +121,7 @@ A szabályzat-hozzárendelés létrehozása az **Azure Monitor virtuális gépek
 
 A házirend vagy kezdeményezés hozzárendelésekor a hozzárendelésben kiválasztott hatókör lehet az itt felsorolt hatókör vagy annak egy részhalmaza. Előfordulhat például, hogy az előfizetéshez (szabályzathatókörhez) hozott létre hozzárendelést, és nem a felügyeleti csoporthoz (fedezeti hatókör). Ebben az esetben a fedezeti százalék azt jelzi, hogy a virtuális gépek a szabályzat vagy a kezdeményezés hatóköre osztva a virtuális gépek a fedezeti hatókörben. Egy másik esetben előfordulhat, hogy kizárt néhány virtuális gépet, erőforráscsoportot vagy előfizetést a szabályzat hatóköréből. Ha üres, azt jelzi, hogy a házirend vagy a kezdeményezés nem létezik, vagy ön nem rendelkezik engedélyekkel. Az információk a **Hozzárendelés állapota**csoportban vannak megadva.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Az Azure Portalon válassza a **Figyelő**lehetőséget. 
 

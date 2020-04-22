@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659985"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770403"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Az Azure belső terheléselosztójának frissítése – kimenő kapcsolat szükséges
 [Az Azure Standard Load Balancer](load-balancer-overview.md) a funkciók és a magas rendelkezésre állás széles készletét kínálja a zónaredundancia révén. Ha többet szeretne megtudni a terheléselosztó termékváltozatáról, tekintse meg az [összehasonlító táblázatot.](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus) Mivel a standard belső terheléselosztó nem biztosít kimenő kapcsolatot, megoldást kínálunk egy szabványos nyilvános terheléselosztó létrehozására.
@@ -21,8 +21,7 @@ A frissítésnek négy szakasza van:
 
 1. A konfiguráció áttelepítése standard nyilvános terheléselosztóra
 2. Virtuális gépek hozzáadása a szabványos nyilvános terheléselosztó háttérkészleteihez
-3. Kimenő szabály létrehozása a terheléselosztón kimenő kapcsolathoz
-4. NSG-szabályok beállítása olyan alhálózatokhoz/virtuális gépekhez, amelyektől tartózkodni kell az internettől
+3. NSG-szabályok beállítása olyan alhálózatokhoz/virtuális gépekhez, amelyektől tartózkodni kell az internettől
 
 Ez a cikk a konfiguráció áttelepítésével foglalkozik. Virtuális gépek hozzáadása háttérkészletek hez az adott környezettől függően változhat. Ugyanakkor néhány magas szintű, általános ajánlások [is rendelkezésre állnak.](#add-vms-to-backend-pools-of-standard-load-balancer)
 
@@ -32,6 +31,7 @@ Egy Azure PowerShell-parancsfájl érhető el, amely a következőket teszi:
 
 * Létrehoz egy szabványos termékváltozat nyilvános terheléselosztót a megadott erőforráscsoportban és helyen.
 * Zökkenőmentesen másolja az alapszintű termékváltozat belső terheléselosztó konfigurációit az újonnan létrehozott szabványos nyilvános terheléselosztóba.
+* Létrehoz egy kimenő szabályt, amely lehetővé teszi a kimenő kapcsolatokat.
 
 ### <a name="caveatslimitations"></a>Kikötések\Korlátozások
 
@@ -42,7 +42,7 @@ Egy Azure PowerShell-parancsfájl érhető el, amely a következőket teszi:
 
 ## <a name="download-the-script"></a>A szkript letöltése
 
-Töltse le az áttelepítési parancsfájlt a [PowerShell-galériából.](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)
+Töltse le az áttelepítési parancsfájlt a [PowerShell-galériából.](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0)
 ## <a name="use-the-script"></a>A szkript használata
 
 A helyi PowerShell-környezet beállításától és beállításaitól függően két lehetőség közül választhat:

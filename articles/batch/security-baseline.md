@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fef1afb9748fd6f2f59b972c451d95ae1204ef70
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 8bda712523faa90f32a12fe7eecce27dccf3a55c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011633"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756632"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure biztonsági alapkonfiguráció köteghez
 
@@ -712,7 +712,7 @@ Ha Rapid7, Qualys vagy bármely más biztonsági réskezelési platform-előfize
 
 Bár a klasszikus Azure-erőforrások fedezhetők fel a Resource Graph,erősen ajánlott azure Resource Manager (ARM) erőforrások létrehozása és használata a jövőben.
 
-Lekérdezések létrehozása az Azure Graph segítségével:
+Lekérdezések létrehozása az Azure Resource Graph segítségével:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -877,7 +877,7 @@ Ez nem vonatkozik az Azure Batch, a felhasználók (nem rendszergazdák) az Azur
 
 **Útmutató:** Azure Policy aliasok a "Microsoft.Batch" névtérben egyéni szabályzatok létrehozásához az Azure Batch-fiókok és készletek konfigurációjának naplózásához vagy érvényesítéséhez.
 
-Az elérhető Azure-szabályzataliasok megtekintése:
+Az elérhető Azure Policy-aliasok megtekintése:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -899,7 +899,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7.3: Biztonságos konfigurációk karbantartása az összes Azure-erőforráshoz
 
-**Útmutató:** Az Azure-szabályzat [megtagadás] és a [deploy, ha nem létezik] használatával kényszerítheti a batch-fiókhoz és készletekhez kapcsolódó Azure-erőforrások (például virtuális hálózatok, alhálózatok, Azure-tűzfalak, Azure Storage-fiókok stb.) biztonságos beállításait. Az alábbi névterekből származó Azure-szabályzataliasok használatával egyéni szabályzatokat hozhat létre:
+**Útmutató:** Az Azure-szabályzat [megtagadás] és a [deploy, ha nem létezik] használatával kényszerítheti a batch-fiókhoz és készletekhez kapcsolódó Azure-erőforrások (például virtuális hálózatok, alhálózatok, Azure-tűzfalak, Azure Storage-fiókok stb.) biztonságos beállításait. Az azure-szabályzat aliasait a következő névterekből egyéni szabályzatok létrehozásához használhatja:
 
 - Microsoft.Batch
 
@@ -987,7 +987,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 - A Batch-fiókok diagnosztikai naplóit engedélyezni kell
 
-Az elérhető Azure-szabályzataliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy-aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 8fe9e551a4ca7dea8f53e0f8c2975ca3d88c48f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b25e9d860f118c1b044b13e01a80aaf7a24963cf
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366257"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768250"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése az Azure HDInsight szolgáltatásra
 
@@ -75,9 +75,9 @@ Az alkalmazás telepítésének ellenőrzéséhez az alkalmazás állapotát az 
 
 A **Hue**esetében a következő lépéseket használhatja:
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki azt a fürtöt, amelyen az alkalmazást telepítette.
 1. A **Beállítások** menüben válassza az **Alkalmazások**lehetőséget.
 1. A tulajdonságok megtekintéséhez jelölje ki a **színárnyalatot** a listából.  
@@ -119,13 +119,13 @@ Ha egy alkalmazás telepítése nem sikerült, három helyről láthatja a hiba�
 
 * Apache Ambari Web UI: Ha a telepítési parancsfájl volt az oka a hiba, használja Ambari Web UI, hogy ellenőrizze a teljes naplókat a telepítési parancsfájlok.
 
-    További információk: [Hibaelhárítás](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
+    További információt a [Parancsfájlműveletek hibaelhárítása című témakörben talál.](./troubleshoot-script-action.md)
 
 ## <a name="remove-hdinsight-applications"></a>HDInsight-alkalmazások eltávolítása
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki azt a fürtöt, amelyen az alkalmazást telepítette.
 1. A **Beállítások** menüben válassza az **Alkalmazások**lehetőséget.
 1. Kattintson a jobb gombbal az eltávolítani kívánt alkalmazásra, majd válassza a **Törlés parancsot.**

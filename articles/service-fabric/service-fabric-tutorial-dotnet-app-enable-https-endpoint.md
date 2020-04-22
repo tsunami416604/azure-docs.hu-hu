@@ -4,12 +4,12 @@ description: Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá HTTPS-végpon
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: b88ecd8d169e7402d149481c22bae95e632efe26
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 2b867a65fa11e14cdc3fc3e5c269686fa4d559de
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605287"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757180"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) 15.5-ös vagy újabb verzióját az **Azure fejlesztési** és **ASP.NET és webfejlesztési** munkaterhelésekkel.
+* [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) 16.5-ös vagy újabb verzióját az **Azure fejlesztési** és **ASP.NET és webfejlesztési** munkaterhelésekkel.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Tanúsítvány beszerzése vagy egy önaláírt fejlesztési tanúsítvány létrehozása

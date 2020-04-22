@@ -1,6 +1,6 @@
 ---
 title: Azure Bejárati ajtó – Helyettesítő karakteres tartományok támogatása
-description: Ez a cikk segítséget nyújt annak megértéséhez, hogy az Azure Front Door hogyan támogatja a helyettesítő tartományok leképezését és kezelését az egyéni tartományok listájában
+description: Ez a cikk segít megérteni, hogy az Azure Front Door hogyan támogatja a helyettesítő tartományok leképezését és kezelését az egyéni tartományok listájában.
 services: frontdoor
 author: sharad4u
 ms.service: frontdoor
@@ -10,64 +10,72 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: sharadag
-ms.openlocfilehash: c568c9cc5c57098385cc7399459ec656cdbfc305
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d8a6d6f0b05b9b7fd0144959c82b6a2c9e659a3
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537439"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768304"
 ---
 # <a name="wildcard-domains"></a>Helyettesítő tartomány
 
-A csúcstartományokon és altartományokon kívül helyettesítő tartománynevet is leképezhet az előtér-állomások vagy a Bejárati ajtó profil egyéni tartományainak listájára. Ha helyettesítő tartományai vannak a bejárati ajtóban, leegyszerűsíti az API- és alkalmazás- vagy webhely több altartományának forgalom-útválasztási viselkedését ugyanazon útválasztási szabályhoz, anélkül, hogy módosítania kellene a konfigurációt az egyes altartományok hozzáadásához és/vagy az egyes altartományok külön-külön történő megadásához. Például definiálhatja a művelettervet `customer1.contoso.com` `customer2.contoso.com`a `customerN.contoso.com` alkalmazáshoz, és ugyanazt az `*.contoso.com`útválasztási szabályt használhatja helyettesítő tartomány hozzáadásával.
+A csúcstartományokon és altartományokon kívül helyettesítő tartománynevet is leképezhet az Előtér-állomások vagy az egyéni tartományok listájához az Azure Bejárati ajtajának profiljában. Helyettesítő tartományok az Azure bejárati ajtajának konfigurációjában leegyszerűsíti a forgalom útválasztási viselkedését több altartományhoz egy API-hoz, alkalmazáshoz vagy webhelyhez ugyanabból az útválasztási szabályból. Nem kell módosítania a konfigurációt az egyes altartományok külön-külön történő hozzáadásához vagy megadásához. Például megadhatja a művelettervet `customer1.contoso.com` `customer2.contoso.com`a `customerN.contoso.com` alkalmazáshoz, és ugyanazzal az útválasztási szabállyal és a helyettesítő tartomány `*.contoso.com`hozzáadásával adhatja meg.
 
-A helyettesítő tartományok támogatásával megoldott legfontosabb forgatókönyvek közé tartoznak a következők:
+A helyettesítő tartományok támogatásával javított legfontosabb forgatókönyvek a következők:
 
-- Már nem szükséges a bejárati ajtó minden altartományának üzembe helyezéséhez, majd a HTTPS-nek az egyes altartományok tanúsítványkötéséhez szükséges engedélyezése.
-- Ha egy alkalmazás új altartományt ad hozzá, akkor már nem kell módosítania az éles bejárati ajtó konfigurációját. Máskülönben korábban hozzá kellett adnia az altartományt, tanúsítványt kellett kötni hozzá, hozzá kellett adni egy webalkalmazás-tűzfal (WAF) házirendet, hozzá kellett adni a tartományt a különböző útválasztási szabályokhoz.
+- Nem kell az Azure Bejárati ajtajához profil minden altartományát bevonnia, és engedélyeznie kell a HTTPS-t az egyes altartományok tanúsítványának kötéséhez.
+- Már nem kell módosítania az éles Azure Bejárati ajtajának konfigurációját, ha egy alkalmazás új altartományt ad hozzá. Korábban hozzá kellett adnia az altartományt, tanúsítványt kellett kötnie hozzá, hozzá kellett kötnie egy webalkalmazás-tűzfal (WAF) házirendet, majd hozzá kellett adnia a tartományt a különböző útválasztási szabályokhoz.
 
 > [!NOTE]
-> Jelenleg a helyettesítő tartományok csak az API-n, a PowerShellen és a CLI-n keresztül támogatottak. Helyettesítő karakteres tartományok azure portalon keresztül idáig való hozzáadásának támogatása nem érhető el.
+> Jelenleg a helyettesítő tartományok csak API-n, PowerShellen és az Azure CLI-n keresztül támogatottak. Helyettesítő karakteres tartományok hozzáadása és kezelése az Azure Portalon nem érhető el.
 
 ## <a name="adding-wildcard-domains"></a>Helyettesítő tartományhozzáadása
 
-Helyettesítő karakteres tartományt az Előtér-állomások vagy a Tartományok szakaszban is belehet, hogy beszálljon a rendszerbe. Az altartományokhoz hasonlóan a Bejárati ajtó is ellenőrzi, hogy van-e CNAME leképezés a helyettesítő tartományhoz is. Ez a DNS-leképezés lehet `*.contoso.com` egy közvetlen `contoso.azurefd.net` CNAME leképezés, például az afdverify ideiglenes leképezésen keresztül vagy azon keresztül, például `afdverify.contoso.com` a Helyettesítő karakter cname leképezésének érvényesítéséhez `afdverify.contoso.azurefd.net` (az Azure DNS támogatja a helyettesítő rekordokat is).
-
-Ha nem a maximális értéket ütik, a helyettesítő tartományhoz annyi egyszintű altartományt is hozzáadhat az előtér-állomásokhoz. az előtér-gazdagépek száma. Erre a funkcióra akkor lehet szükség, ha egy altartományhoz más útvonalat kell megadni, mint a többi tartományhoz (a helyettesítő tartományból), vagy egy adott altartományhoz más WAF-házirendet kell megadni. Szóval, lehetővé `*.contoso.com` teszi hozzá `foo.contoso.com` anélkül, `foo.bar.contoso.com` hogy ismét bizonyítani domain tulajdonjogát, de nem, mivel ez nem egy szintű aldomain . `*.contoso.com` További `foo.bar.contoso.com` tartománytulajdonjog-ellenőrzés `*.bar.contosonews.com` nélkül hozzá kell adni.
-
-### <a name="limitations"></a>Korlátozások
-
-1. Ha egy helyettesítő tartományt ad hozzá egy adott bejárati ajtó profilhoz, akkor ugyanez nem adható hozzá más bejárati ajtó profilhoz. 
-2. Ha egy adott Bejárati ajtó profilban helyettesítő tartományt ad hozzá, akkor a helyettesítő tartomány bármely altartománya nem adható hozzá más bejárati ajtóhoz vagy egy Azure CDN-hez a Microsoft-profilból
-3. Ha egy helyettesítő tartomány altartománya egy bejárati ajtó profilban vagy egy Microsoft-profilból származó Azure CDN-ben van hozzáadva, akkor a helyettesítő tartomány nem adható hozzá más Bejárati ajtó profilhoz. 
-4. Ha két profil (bejárati ajtó vagy a Microsoft Azure CDN) rendelkezik a gyökértartomány különböző altartományai, majd helyettesítő tartományok nem adhatók hozzá egyik profilhoz sem.
-
-## <a name="certificate-binding-for-wildcard-domains-and-its-subdomains"></a>Tanúsítványkötés helyettesítő tartományokhoz és altartományaihoz
-
-A helyettesítő tartományHTTPS-forgalmának fogadásához engedélyeznie kell a HTTPS protokollt a helyettesítő tartományban. A helyettesítő tartomány tanúsítványkötéséhez helyettesítő tanúsítvány szükséges, azaz a tanúsítvány tulajdonosának nevének is rendelkeznie kell helyettesítő tartománysal.
+Az előtér-állomásokhoz vagy tartományokhoz helyettesítő tartományt adhat hozzá a szakasz alatt. Az altartományokhoz hasonlóan az Azure Bejárati ajtajáellenőrzi, hogy van-e CNAME rekordleképezés a helyettesítő tartományhoz. Ez a DNS-hozzárendelés lehet közvetlen `*.contoso.com` CNAME rekordleképezés, például a rendszerhez. `contoso.azurefd.net` Vagy használhatja az afdverify ideiglenes leképezést. Például `afdverify.contoso.com` a helyettesítő `afdverify.contoso.azurefd.net` karakter CNAME rekordleképezésének érvényesítésére leképezve.
 
 > [!NOTE]
-> Jelenleg csak a saját egyéni SSL-tanúsítvány beállítás érhető el a HTTPS engedélyezése helyettesítő tartományokban. A Bejárati ajtó által felügyelt tanúsítványok nem használhatók helyettesítő tartományban. 
+> Az Azure DNS helyettesítő rekordok használatát is támogatja.
 
-Választhat, hogy ugyanazt a helyettesítő tanúsítványt használja a Key Vault az altartományok, vagy a bejárati ajtó által felügyelt tanúsítványok használata az altartományok is támogatott.
-Ha egy helyettesítő tartományhoz altartományt ad hozzá, és a helyettesítő tartományhoz már van tanúsítvány társítva, akkor az altartomány HTTPS-je nem tiltható le. Az altartomány alapértelmezés szerint a helyettesítő tartomány tanúsítványkötését fogja használni, kivéve, ha egy másik Key Vault-tanúsítvány vagy a Bejárati ajtó által felügyelt tanúsítvány felülbírálja.
+A helyettesítő tartományhoz annyi egyszintű altartományt adhat hozzá az előtér-állomásokhoz, amíg az előtér-állomások száma meg nem múlik. Erre a funkcióra a következőkre lehet szükség:
 
-## <a name="web-application-firewall-for-wildcard-domains-and-its-subdomains"></a>Webes alkalmazás tűzfala helyettesítő tartományokhoz és aldomainjeihez
+- Másik útvonal definiálása egy altartományhoz, mint a többi tartomány (a helyettesítő tartományból).
 
-A WAF-házirendek más tartományokhoz hasonló helyettesítő tartományhoz csatolhatók. Egy helyettesítő tartomány altartományára más WAF-házirend alkalmazható. Az altartományok esetében explicit módon meg kell adnia a használandó WAF-házirendet, és akkor is, ha az ugyanaz a házirend, mint a helyettesítő tartomány. Az altartományok **nem** öröklik automatikusan a WAF-házirendet a helyettesítő tartományból.
+- Egy adott altartományhoz más WAF-házirend tartozik. Például `*.contoso.com` lehetővé `foo.contoso.com` teszi a hozzáadást anélkül, hogy újra bizonyítania kellene a tartomány tulajdonjogát. De ez nem `foo.bar.contoso.com` teszi lehetővé, mert ez nem `*.contoso.com`egy szintű aldomain . További `foo.bar.contoso.com` tartománytulajdonjog-ellenőrzés nélküli `*.bar.contosonews.com` hozzáadáshoz hozzá kell adni.
 
-Ha van egy forgatókönyv, amelyben nem szeretné, hogy a WAF egy altartományhoz fusson, akkor létrehozhat egy üres WAF-házirendet felügyelt vagy egyéni szabálykészlet nélkül.
+A helyettesítő karakteres tartományokat és azok altartományait bizonyos korlátozásokkal is hozzáadhatja:
 
-## <a name="routing-rules-for-wildcard-domains-and-its-subdomains"></a>Útválasztási szabályok helyettesítő tartományokhoz és altartományaihoz
+- Ha egy helyettesítő tartományt ad hozzá egy Azure Bejárati ajtó profilhoz:
+  - A helyettesítő tartomány nem adható hozzá más Azure bejárati ajtó profilhoz.
+  - A helyettesítő tartomány első szintű altartományai nem adhatók hozzá egy másik Azure Bejárati ajtó-profilhoz vagy egy Azure Content Delivery Network-profilhoz.
+- Ha egy helyettesítő tartomány altartománya hozzáadódik egy Azure Bejárati ajtó profilhoz vagy az Azure Content Delivery Network-profilhoz, akkor a helyettesítő tartomány nem adható hozzá más Azure bejárati ajtó profilokhoz.
+- Ha két profil (Az Azure Bejárati ajtaját vagy az Azure Content Delivery Network) rendelkezik a gyökértartomány különböző altartományai, majd helyettesítő tartományok nem adhatók hozzá egyik a profilok.
 
-Útválasztási szabály konfigurálásakor kijelölhet egy helyettesítő tartományt előtér-állomásként. A helyettesítő tartomány és az altartományok esetében is eltérő útvonalviselkedést érhet el. Ahogy azt a [Bejárati ajtó útvonalegyeztetése](front-door-route-matching.md)is leírja, a tartomány legspecifikusabb egyezése a különböző útválasztási szabályok között futásidőben kerül kiválasztásra.
+## <a name="certificate-binding"></a>Tanúsítvány kötése
 
-> [!WARNING]
-> Ha két útválasztási szabályok, `*.foo.com/*` mint **az 1-es út:** leképezve háttér-pool a és **a 2-es útvonal:** `bar.foo.com/somePath/*` a B háttér-készlet, és ha egy kérelem érkezik `bar.foo.com/anotherPath/*`a, majd az ügyfelek hibákat fog látni, mint a Bejárati ajtó nem talál egyezést mindkét útvonalon. Ez azért van, mert a mi [útvonal-egyezési algoritmus](front-door-route-matching.md), Bejárati ajtó választja Route 2 alapján konkrétabb domain egyezés, de csak azt találja, hogy nincsenek egyező útvonal mintákat. 
+A helyettesítő tartományHTTPS-forgalmának fogadásához engedélyeznie kell a HTTPS protokollt a helyettesítő tartományban. A helyettesítő tartomány tanúsítványkötéséhez helyettesítő tanúsítvány szükséges. Ez azt illeti, a tanúsítvány tulajdonosnevének is rendelkeznie kell helyettesítő tartományával.
 
+> [!NOTE]
+> Jelenleg csak a saját egyéni SSL-tanúsítvány beállítás érhető el a HTTPS engedélyezése helyettesítő tartományokban. Az Azure Front Door által felügyelt tanúsítványok nem használhatók helyettesítő tartományban.
+
+Választhat, hogy ugyanazt a helyettesítő tanúsítványt az Azure Key Vault vagy az Azure Bejárati ajtó által felügyelt tanúsítványok altartományok.
+
+Ha egy olyan helyettesítő tartományhoz ad hozzá altartományt, amelyhez már van hozzá tartozó tanúsítvány, akkor az altartomány HTTPS-je nem tiltható le. Az altartomány a helyettesítő tartomány tanúsítványkötését használja, kivéve, ha egy másik Key Vault vagy az Azure Bejárati ajtó által felügyelt tanúsítvány felülbírálja azt.
+
+## <a name="waf-policies"></a>WAF-házirendek
+
+A WAF-házirendek más tartományokhoz hasonlóan helyettesítő tartományokhoz is csatolhatók. Egy helyettesítő tartomány altartományára más WAF-házirend alkalmazható. Az altartományok esetében meg kell adnia a használni kívánt WAF-házirendet, még akkor is, ha az ugyanaz a házirend, mint a helyettesítő tartomány. Az altartományok *nem* öröklik automatikusan a WAF-házirendet a helyettesítő tartományból.
+
+Ha nem szeretné, hogy egy altartományhoz WAF-házirend fusson, létrehozhat egy üres WAF-házirendet felügyelt vagy egyéni szabálykészlet nélkül.
+
+## <a name="routing-rules"></a>Útválasztási szabályok
+
+Útválasztási szabály konfigurálásakor kijelölhet egy helyettesítő tartományt előtér-állomásként. A helyettesítő tartományok és altartományok eltérő útvonalviselkedését is elláthatja. Ahogy azt az [Azure Bejárati ajtaját, hogyan útvonal egyeztetés,](front-door-route-matching.md)a legspecifikusabb egyezés a tartomány különböző útválasztási szabályok futásidőben választva.
+
+> [!IMPORTANT]
+> Az útválasztási szabályok között egyező útvonalmintákat kell látnia, különben az ügyfelek hibákat fognak látni. Például két útválasztási szabályok, mint`*.foo.com/*` a Route 1 (leképezve a`bar.foo.com/somePath/*` háttér-pool A) és a Route 2 (leképezve a b háttér-medence). Ezután egy kérés `bar.foo.com/anotherPath/*`érkezik a számára. Az Azure Bejárati ajtó a 2-es útvonalat választja egy konkrétabb tartományegyezés alapján, csak hogy ne találjon egyező útvonalmintákat az útvonalak között.
 
 ## <a name="next-steps"></a>További lépések
 
-- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
-- Megtudhatja, hogyan [adhat hozzá egyéni tartományt a Bejárati ajtón.](front-door-custom-domain.md)
+- Ismerje meg, hogyan [hozhat létre Azure Bejárati ajtó profilt.](quickstart-create-front-door.md)
+- Megtudhatja, hogyan [adhat hozzá egyéni tartományt az Azure Bejárati ajtaján.](front-door-custom-domain.md)
 - További információ [aHTTPS engedélyezéséről egyéni tartományban.](front-door-custom-domain-https.md)

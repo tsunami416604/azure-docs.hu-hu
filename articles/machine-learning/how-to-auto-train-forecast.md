@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9f80156f61ad82e5563f1c38764c81297f5979f2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605891"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767317"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,13 +36,13 @@ Ez a megközelítés, ellentétben a klasszikus idősorozat módszerek, van egy 
 
 A betanítási adatokból kinyert funkciók kritikus szerepet játszanak. Az automatizált ml pedig szabványos előfeldolgozási lépéseket hajt végre, és további idősorozat-funkciókat hoz létre a szezonális hatások rögzítéséhez és a prediktív pontosság maximalizálásához.
 
-## <a name="time-series-and-deep-learning-models"></a>Idősorozatok és Deep Learning modellek
+## <a name="time-series-and-deep-learning-models"></a>Idősorozatok és mélytanulási modellek
 
 
 Az automatikus ml az ajánlási rendszer részeként natív idősorozatokat és mélytanulási modelleket is biztosít a felhasználóknak. Ezek a tanulók a következők:
-+ Próféta
-+ Auto-ARIMA
-+ ElőrejelzésTCN
++ Próféta (Előnézet)
++ Auto-ARIMA (előzetes verzió)
++ ForecastTCN (előzetes verzió)
 
 Az automatizált ML mélytanulása lehetővé teszi az egyváltozós és többváltozós idősorozat-adatok előrejelzését.
 
@@ -51,7 +51,7 @@ A mélytanulási modellek három belső képességgel rendelkeznek:
 1. Több bemenetet és kimenetet támogatnak
 1. Ezek automatikusan kinyerhetik a bemeneti adatok mintáit, amelyek hosszú szekvenciákra terjednek ki
 
-Adott nagyobb adatok, deep learning modellek, például a Microsoft ForecastTCN, javíthatja a pontszámok az eredményül kapott modell. 
+Adott nagyobb adatok, deep learning modellek, például a Microsoft ForecastTCN, javíthatja a pontszámok az eredményül kapott modell. Ismerje meg, hogyan [konfigurálhatja a kísérletet a mélytanuláshoz.](#configure-a-dnn-enable-forecasting-experiment)
 
 Natív idősorozat tanulók is biztosított részeként automatizált ML. A Próféta olyan idősorozatokkal működik a legjobban, amelyeknek erős szezonális hatásaik és több évadnyi történelmi adatuk van. A Prophet pontos & gyors, robusztus és kiugró, hiányzó adatok és drámai változások az idősorozatodban. 
 
@@ -181,6 +181,17 @@ Tekintse meg az [előrejelzési minta notebook részletes](https://github.com/Az
 > Az automatikus gépi tanulás ban az előrejelzés DNN-támogatása előzetes verzióban érhető el, és nem támogatott a helyi futtatások esetében.
 
 Annak érdekében, hogy a DNN-ek az `enable_dnn` előrejelzés, be kell állítania a paramétert az AutoMLConfig true. 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             enable_dnn=True,
+                             ...
+                             **time_series_settings)
+```
+További információ [az AutoMLConfig fájlról.](#configure-and-run-experiment)
+
+Azt is megteheti, `Enable deep learning` hogy kiválaszthatja a lehetőséget a stúdióban.
+![helyettesítő szöveg](./media/how-to-auto-train-forecast/enable_dnn.png)
 
 Azt javasoljuk, hogy egy AML számítási fürt GPU-skus és legalább két csomópont ot a számítási cél. Annak érdekében, hogy elegendő idő legyen a DNN-betanítás befejezéséhez, javasoljuk, hogy a kísérlet időidejét legalább néhány órára határozza meg.
 A GPU-kat tartalmazó AML számítási és virtuális gépméretekkel kapcsolatos további információkért tekintse meg az [AML compute dokumentációt](how-to-set-up-training-targets.md#amlcompute) és a [GPU-ra optimalizált virtuálisgép-méretek dokumentációját.](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582805"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769756"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3-as kiadási megjegyzések
 
@@ -35,7 +35,13 @@ Ahhoz, hogy naprakész legyen a legújabb fejleményekkel, ez a cikk az ön szá
 > Az Azure [Portal](https://portal.azure.com/) segítségével kezelheti a v3-as [élő eseményeket,](live-events-outputs-concept.md)tekintse meg a v3 [Assets nézetet,](assets-concept.md)és információkat kaphat az API-k eléréséről. Az összes többi felügyeleti feladathoz (például átalakítások és feladatok) használja a [REST API-t,](https://aka.ms/ams-v3-rest-ref)a [CLI-t](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK-k egyikét.](media-services-apis-overview.md#sdks)
 
 További információ: [Áttelepítési útmutató a Media Services 2-es v2-ről a 3-as v3-ra való áttéréshez.](migrate-from-v2-to-v3.md#known-issues)
- 
+
+## <a name="april-2020"></a>2020. április
+
+### <a name="improvements-in-documentation"></a>A dokumentáció fejlesztései
+
+Az Azure Media Player-dokumentumok átlett telepítve az [Azure dokumentációjára.](../azure-media-player/azure-media-player-overview.md)
+
 ## <a name="january-2020"></a>2020. január
 
 ### <a name="improvements-in-media-processors"></a>A médiaprocesszorok fejlesztései
@@ -361,4 +367,5 @@ Tekintse meg az [Azure Media Services közösségi](media-services-community.md)
 ## <a name="next-steps"></a>További lépések
 
 - [Áttekintés](media-services-overview.md)
+- [A Media Services 3.](docs-release-notes.md)
 - [A Media Services v2 kiadási megjegyzések](../previous/media-services-release-notes.md)

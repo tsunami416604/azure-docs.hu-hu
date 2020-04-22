@@ -1,16 +1,16 @@
 ---
-title: 'Gyorsindítás: C# ASP.NET alkalmazás létrehozása'
+title: 'Rövid útmutató: C# ASP.NET alkalmazás létrehozása'
 description: Ismerje meg, hogyan futtathat webalkalmazásokat az Azure App Service-ben az alapértelmezett C# ASP.NET webalkalmazás-sablon visual studióból történő telepítésével.
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
-ms.date: 10/21/2019
+ms.date: 04/21/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 4688cc358ec6ff792be58254b0607f5416422a21
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 47a5cf2586b8146a68772962c60dc0dbdbb7e2fe
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047658"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768885"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>ASP.NET Framework webalkalmazás létrehozása az Azure-ban
 
@@ -55,7 +55,7 @@ Hozzon létre egy ASP.NET webalkalmazást az alábbi lépésekkel:
 
 1. A **Megoldáskezelőben**kattintson a jobb gombbal a **myFirstAzureWebApp** projektre, és válassza **a Közzététel parancsot.**
 
-1. Válassza **az App Service** lehetőséget, majd módosítsa a Profil létrehozása **lehetőséget** **közzétételre.**
+1. Válassza **az App Service** lehetőséget, majd a Profil **létrehozása**lehetőséget.
 
    ![Közzététel a projekt áttekintő oldaláról](./media/app-service-web-get-started-dotnet-framework/publish-app-framework-vs2019.png)
 
@@ -82,23 +82,25 @@ Hozzon létre egy ASP.NET webalkalmazást az alábbi lépésekkel:
 
    | Beállítás | Ajánlott érték | Leírás |
    |-|-|-|
-   |App Service-csomag| myAppServicePlan | Az App Service-csomag neve. |
+   | Szolgáltatási csomag| myAppServicePlan | Az App Service-csomag neve. |
    | Hely | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
    | Méret | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
 
    ![App Service-csomag létrehozása](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 
-1. A **Név**mezőbe írjon be egy egyedi `a-z`alkalmazásnevet, amely csak a , `A-Z`, `0-9`és a `-`. Elfogadhatja az automatikusan létrehozott egyedi nevet. A webalkalmazás URL-címe `http://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve.
+1. A **Név**mezőbe írjon be egy egyedi `a-z`alkalmazásnevet, amely csak a , `A-Z`, `0-9`és a `-`. Elfogadhatja az automatikusan létrehozott egyedi nevet. A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve.
 
 2. A **Create** (Létrehozás) gombra kattintva hozzákezdhet az Azure-erőforrások létrehozásához.
 
    ![Az alkalmazás nevének konfigurálása](./media/app-service-web-get-started-dotnet-framework/web-app-name-framework-vs2019.png)
 
-Miután a varázsló befejeződött, közzéteszi az ASP.NET webalkalmazást az Azure-on, majd elindítja azt az alapértelmezett böngészőben.
+    Miután a varázsló befejeződött, az Azure-erőforrások létre jönnek az Ön számára, és készen áll a közzétételre.
 
-![Közzétett ASP.NET-webapp az Azure-ban](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
+3. A **Közzététel** lapon kattintson a **Közzététel gombra.** A Visual Studio létrehozza, csomagolja és közzéteszi az alkalmazást az Azure-ban, majd elindítja az alkalmazást az alapértelmezett böngészőben.
 
-Az **App Service Új** lap létrehozásá című lapon megadott alkalmazásnév lesz `http://<app_name>.azurewebsites.net`az URL-előtag a formátumban.
+    ![Közzétett ASP.NET-webapp az Azure-ban](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
+
+Az **App Service Új** lap létrehozásá című lapon megadott alkalmazásnév lesz `http://<app-name>.azurewebsites.net`az URL-előtag a formátumban.
 
 **Gratulálok!** A ASP.NET webalkalmazás élőben fut az Azure App Service-ben.
 
@@ -117,9 +119,9 @@ Az **App Service Új** lap létrehozásá című lapon megadott alkalmazásnév 
 
 1. Az Azure-beli ismételt üzembe helyezéshez kattintson a jobb gombbal a **myFirstAzureWebApp** projektre a **Solution Explorer** (Megoldáskezelő) lapon, és válassza a **Publish** (Közzététel) elemet. Ezután válassza **a Közzététel**lehetőséget.
 
-Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmazás URL-címét.
+    Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmazás URL-címét.
 
-![Frissített ASP.NET-webapp az Azure-ban](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
+    ![Frissített ASP.NET-webapp az Azure-ban](./media/app-service-web-get-started-dotnet-framework/updated-azure-web-app.png)
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 

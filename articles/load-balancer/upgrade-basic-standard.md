@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: a4c8b029b199915cce9a417430e67675a03d327f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2d6f41756d87e43ac7db9e6a8670c453920c834
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659951"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770367"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Az Azure nyilvános terheléselosztójának frissítése
 [Az Azure Standard Load Balancer](load-balancer-overview.md) a funkciók és a magas rendelkezésre állás széles készletét kínálja a zónaredundancia révén. Ha többet szeretne megtudni a terheléselosztó termékváltozatáról, tekintse meg az [összehasonlító táblázatot.](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)
@@ -21,7 +21,6 @@ A frissítésnek három szakasza van:
 
 1. A konfiguráció áttelepítése
 2. Virtuális gépek hozzáadása a standard terheléselosztó háttérkészleteihez
-3. Kimenő szabály létrehozása a kimenő kapcsolat terheléselosztóján
 
 Ez a cikk a konfiguráció áttelepítésével foglalkozik. Virtuális gépek hozzáadása háttérkészletek hez az adott környezettől függően változhat. Ugyanakkor néhány magas szintű, általános ajánlások [is rendelkezésre állnak.](#add-vms-to-backend-pools-of-standard-load-balancer)
 
@@ -31,17 +30,18 @@ Egy Azure PowerShell-parancsfájl érhető el, amely a következőket teszi:
 
 * Létrehoz egy szabványos termékváltozat-terheléselosztót a megadott erőforráscsoportban és helyen.
 * Zökkenőmentesen másolja az alaptermékváltozat terheléselosztó konfigurációit az újonnan létrehozott standard terheléselosztóba.
+* Létrehoz egy alapértelmezett kimenő szabályt, amely lehetővé teszi a kimenő kapcsolatot.
 
 ### <a name="caveatslimitations"></a>Kikötések\Korlátozások
 
-* A parancsfájl csak a nyilvános terheléselosztó frissítését támogatja. Belső alapszintű terheléselosztó frissítés, hozzon létre egy szabványos belső terheléselosztó, ha a kimenő kapcsolat nem szükséges, és hozzon létre egy szabványos belső terheléselosztó és standard nyilvános terheléselosztó, ha kimenő kapcsolat szükséges.
+* A parancsfájl csak a nyilvános terheléselosztó frissítését támogatja. A belső alapszintű terheléselosztó frissítéséhez tekintse meg ezt az [oldalt](https://docs.microsoft.com/azure/load-balancer/upgrade-basicinternal-standard) az utasításokért.
 * A standard terheléselosztó új nyilvános címmel rendelkezik. A meglévő alapszintű terheléselosztóhoz társított IP-címeket nem lehet zökkenőmentesen áthelyezni a standard terheléselosztóba, mivel különböző termékkódokkal rendelkeznek.
 * Ha a standard terheléselosztó egy másik régióban jön létre, nem fogja tudni társítani a régi régióban meglévő virtuális gépeket az újonnan létrehozott standard terheléselosztóhoz. A korlátozás megkerülése, győződjön meg róla, hogy hozzon létre egy új virtuális gép az új régióban.
 * Ha a terheléselosztó nem rendelkezik előtér-IP-konfigurációval vagy háttérkészlettel, valószínűleg hibát talál el a parancsfájl futtatásakor. Kérjük, győződjön meg róla, hogy nem üres.
 
 ## <a name="download-the-script"></a>A szkript letöltése
 
-Töltse le az áttelepítési parancsfájlt a [PowerShell-galériából.](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)
+Töltse le az áttelepítési parancsfájlt a [PowerShell-galériából.](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/2.0)
 ## <a name="use-the-script"></a>A szkript használata
 
 A helyi PowerShell-környezet beállításától és beállításaitól függően két lehetőség közül választhat:

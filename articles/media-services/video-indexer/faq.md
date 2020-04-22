@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421400"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767199"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>A Video Indexer gyakran tesz fel kérdéseket
 
@@ -43,7 +43,7 @@ További információt és további videoindexelő funkciókat az [Áttekintés 
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Hogyan kezdhetem el a Video Indexer t?
 
-A Video Indexer egy ingyenes próbaverziót tartalmaz, amely 600 percet biztosít a webes felületen és 2400 percet az API-n keresztül. [Bejelentkezhet a Video Indexer webalapú felületére,](https://www.videoindexer.ai/) és kipróbálhatja azt bármilyen webes identitás használatával, azure-előfizetés beállítása nélkül. 
+A Video Indexer egy ingyenes próbaverziót tartalmaz, amely 600 percet biztosít a webes felületen és 2400 percet az API-n keresztül. [Bejelentkezhet a Video Indexer webalapú felületére,](https://www.videoindexer.ai/) és kipróbálhatja azt bármilyen webes identitás használatával, azure-előfizetés beállítása nélkül. Kövesse [ezt az egyszerű bevezetési labort,](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md) hogy jobbképet kapjon a Video Indexer használatáról.
 
 A videók és audiolegyek nagy méretekben való indexeléséhez csatlakoztathatja a Video Indexert egy fizetős Microsoft Azure-előfizetéshez. Az árképzésről további információt az [árképzési](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) oldalon talál.
 
@@ -61,9 +61,18 @@ Nem, a Video Indexer több gépi tanulási modell egyetlen folyamatba való inte
 
 A Video Indexer támogatja a leggyakoribb médiaformátumokat. További részletekért tekintse meg az [Azure Media Kódoló szabványos formátumok](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) listáját.
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Hogyan tölthetek fel médiafájlokat a Video Indexerbe?
+### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Hogyan tölthetek fel médiafájlt a Video Indexerbe, és mik a korlátozások?
 
-A Video Indexer webalapú portálon a fájlfeltöltési párbeszédpanelen vagy a forrásfájlt közvetlenül tartalmazó URL-címre mutatva tölthet fel médiafájlt (lásd [például](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Az iFrame-vagy beágyazási kód használatával a médiatartalmat tartalmazó URL-címek nem fognak működni (lásd a [példát).](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11) A Video Indexer API megköveteli, hogy adja meg a bemeneti fájlt egy URL-cím vagy egy bájt tömb. Az API-t használó URL-en keresztül történő feltöltések legfeljebb 10 GB-ra korlátozódnak, de nincs időtartamuk. További információkért kérjük, olvassa el ezt az [útmutatót](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+A Video Indexer webalapú portálon a fájlfeltöltési párbeszédpanelen vagy a forrásfájlt közvetlenül tartalmazó URL-címre mutatva tölthet fel médiafájlt (lásd [például](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Az iFrame-vagy beágyazási kód használatával a médiatartalmat tartalmazó URL-címek nem fognak működni (lásd a [példát).](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11) 
+
+További információkért kérjük, olvassa el ezt az [útmutatót](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+
+#### <a name="limitations"></a>Korlátozások
+
+* A videó neve nem haladhatja meg a 80 karaktert.
+* Ha bájttömbön keresztül tölt eszmetömböt, a videó mérete legfeljebb 2 GB (URL használata esetén pedig 30 GB) lehet. 
+
+Az átfogó listát a [Szempontok és korlátozások feltöltése című témakörben található.](upload-index-videos.md#uploading-considerations-and-limitations)
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Mennyi ideig tart a Video Indexer az elemzések kinyerése a médiából?
 
@@ -71,7 +80,7 @@ A video- vagy hangfájlok indexeléséhez szükséges idő , mind a Video Indexe
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Létrehozhatok testre szabott munkafolyamatokat a folyamatok automatizálásához a Video Indexer segítségével?
 
-Igen, integrálhatja a Video Indexer-t olyan kiszolgáló nélküli technológiákba, mint a Logic Apps, a Flow és [az Azure Functions.](https://azure.microsoft.com/services/functions/) A [Logikai alkalmazás](https://azure.microsoft.com/services/logic-apps/) és a [Flow-összekötők](https://flow.microsoft.com/en-us/) a Video Indexerhez [itt](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)talál további részleteket. 
+Igen, integrálhatja a Video Indexer-t olyan kiszolgáló nélküli technológiákba, mint a Logic Apps, a Flow és [az Azure Functions.](https://azure.microsoft.com/services/functions/) A [Logikai alkalmazás](https://azure.microsoft.com/services/logic-apps/) és a [Flow-összekötők](https://flow.microsoft.com/en-us/) a Video Indexerhez [itt](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)talál további részleteket. A [videoindexelő minták](https://github.com/Azure-Samples/media-services-video-indexer) tártárában a partnerek által végzett automatizálási projektek et láthatja.
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>Mely Azure-régiókban érhető el a Video indexelő?
 
@@ -84,6 +93,12 @@ Igen. A Video Indexer testreszabhatja néhány rendelkezésre álló modellek jo
 Például a Személy modell támogatja out-of-the-box 1.000.000 arcok híresség felismerés, de azt is betaníthatja felismerni más arcok, amelyek nem szerepelnek az adatbázisban. 
 
 További információt a [Személyek,](customize-person-model-overview.md) [márkák](customize-brands-model-overview.md)és [nyelvi](customize-language-model-overview.md) modellek testreszabásáról szóló cikkekben talál. 
+
+###  <a name="can-i-edit-the-videos-in-my-library"></a>Szerkeszthetem a videókat a könyvtáramban?
+
+Igen. Nyomja meg a **videó szerkesztése** gombot a tár kijelzőjén vagy a **megnyitás a szerkesztőben** gombot a lejátszó kijelzőjén, hogy eljusson a **Projektek** lapra. Létrehozhat egy új projektet, és további videókat adhat hozzá a könyvtárból, hogy együtt szerkeszthesse őket, miután végzett, megjelenítheti a videót és letöltheti. 
+
+Ha meg szeretné jelenlennie az új videóról, indexelje a Video Indexer segítségével, és az elemzési adatokkal együtt megjelenik a könyvtárban.
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Mi a videoindexelő SLA-ja?
 

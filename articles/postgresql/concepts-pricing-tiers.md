@@ -1,17 +1,17 @@
 ---
 title: Díjcsomagok – Azure-adatbázis a PostgreSQL-hez – Egykiszolgálós
 description: Ez a cikk ismerteti a számítási és tárolási lehetőségek et az Azure Database for PostgreSQL - Single Server.
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 2e5b01a271eb290229904fc98d1268760e01620d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e4e69b63e51bafe8ca0b032c22ca509f5a7e6a2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243561"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770565"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Az egykiszolgálós Azure Database for PostgreSQL tarifacsomagjai
 
@@ -51,7 +51,7 @@ A kiépített tárterület az Azure Database for PostgreSQL-kiszolgáló számá
 | IOPS | Változó |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max 20 000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max 20 000 IOPS |
 
 > [!NOTE]
-> A 16 TB-os és 20 000 IOPS-os tárhely a következő régiókban támogatott: USA keleti régiója, USA keleti régiója 2, USA középső régiója, USA északi régiója, USA déli régiója, Észak-Európa, Nyugat-Európa, Az Egyesült Királyság déli része, az Egyesült Királyság nyugati, délkelet-ázsiai, kelet-ázsiai, kelet-, nyugat-japán, közép-európai régiója , Korea South, Ausztrália Kelet- és Ausztrália Délkelet.
+> A 16 TB-os és 20 000 IOPS-os tárhely a következő régiókban támogatott: USA keleti régiója, USA keleti régiója 2, USA középső régiója, USA északi régiója, USA középső régiója, Észak-Európa, Nyugat-Európa, Az Egyesült Királyság déli része, az Egyesült Királyság nyugati, délkelet-ázsiai, kelet-ázsiai, japán kelet-, nyugat-ázsiai, közép-, dél-koreai, dél-amerikai, délkeletbeli egyesült királyságbeli régiója.
 >
 > Minden más régió legfeljebb 4 TB tárhelyet és 6000 IOPS-t támogat.
 >

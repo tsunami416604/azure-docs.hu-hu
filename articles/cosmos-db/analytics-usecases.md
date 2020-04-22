@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b9bac14ff47107a4b39f12989685e2e510569ba2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf1db2d737de7004b5ab71c8e0e44d61d1da8c9
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72757076"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768514"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>Használati esetek az Azure Cosmos DB beépített elemzéséhez
 
@@ -37,7 +37,7 @@ A natívan beépített Apache Spark segítségével az Azure Cosmos DB gyors, eg
 
 Bizonyos esetekben előfordulhat, hogy az adatok on-ra vonatkozó kérdésekre kell válaszolnia, mint egy adott időpontban a múltban befejezett eseményekhez képest. Például a CRM-tevékenység állapotainak egy adott időpontban való leszámítása. Ha egy héttel ezelőtt futtatta a jelentést, az állapotok száma az adott időpontban az egyes tevékenységek állapotainak szerint lesz. Ha ma ugyanazt a jelentést futtatjuk, akkor megszámolhatja azon tevékenységeket, amelyek állapota olyan, mint ma, és amelyek a múlt hét óta változhattak, mivel az életciklusuk nyíltról záróra haladnak. Tehát az eset életciklusának minden szakaszában jelentést kell tennie a pillanatképről.
 
-A hagyományos adattárház-forgatókönyvek, a pillanatkép fogalma nem lehetséges, mert az adatraktárak nem úgy tervezték, hogy bele, és az adatok csak egy aktuális nézetet biztosít, hogy mi történik. Az Azure Cosmos DB segítségével a felhasználók nak lehetőségük van az időutazás fogalmának megvalósítására, hogy visszamenőlegesen lekérdezhetik és futtathatják az adatokon lévő elemzéseket, és megkérdezhetik, hogy az adatok hogyan néztek az előzmények egy adott időpontjára. Ez azt jelenti, hogy a felhasználók könnyedén megtekinthetik az adatok aktuális és korábbi nézeteit, és elemzéseket futtathatnak rajta.
+Az Azure Cosmos DB segítségével a felhasználók nak lehetőségük van az időutazás fogalmának megvalósítására, hogy visszamenőlegesen lekérdezhetik és futtathatják az adatokon lévő elemzéseket, és megkérdezhetik, hogy az adatok hogyan néztek az előzmények egy adott időpontjára. Ez azt jelenti, hogy a felhasználók könnyedén megtekinthetik az adatok aktuális és korábbi nézeteit, és elemzéseket futtathatnak rajta.
 
 ## <a name="globally-distributed-machine-learning-and-ai"></a>Globálisan elosztott gépi tanulás és AI
 

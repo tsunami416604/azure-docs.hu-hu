@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 364b87e4d64b8cc65fdf293032f4340bddec957c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 172ac4e13201457f62d722236dff130a312cfdeb
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479136"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81755516"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azure biztonsági alapkonfiguráció a Redis azure-gyorsítótárához
 
@@ -845,7 +845,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 Csak a Redis cache-hez való biztonságos kapcsolatokat kell engedélyezni
 
-Az elérhető Azure-szabályzataliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy-aliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

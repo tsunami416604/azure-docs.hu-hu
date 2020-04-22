@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403721"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769874"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Oktatóanyag: Egyéni látás használata IoT-eszközzel a vizuális állapotok jelentéséhez
 
 Ez a mintaalkalmazás bemutatja, hogyan használhatja a Custom Vision segítségével a vizuális állapotok észlelésére szolgáló eszközt kamerával. Ezt az észlelési forgatókönyvet egy IoT-eszközön futtathatja egy exportált ONNX-modell használatával.
 
-A vizuális állapot a kép tartalmát írja le: egy üres szobát vagy egy szobát emberekkel, egy üres műút teherautóval, és így tovább. Az alábbi képen látható, hogy az alkalmazás észleli, ha egy banán vagy egy alma kerül a kamera elé.
+A vizuális állapot a kép tartalmát írja le: egy üres szobát vagy egy szobát emberekkel, egy üres műút vagy egy teherautóval ellátott műút, és így tovább. Az alábbi képen látható, hogy az alkalmazás észleli, ha egy banán vagy egy alma kerül a kamera elé.
 
 ![Animáció egy felhasználói felület címkézés gyümölcs a kamera előtt](./media/iot-visual-alerts-tutorial/scoring.gif)
 

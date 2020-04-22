@@ -1,5 +1,5 @@
 ---
-title: Gépi tanulási modellek és előrejelzések magyarázata
+title: Értelmezd & magyarázd el az ML modelleket pythonban
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan kaphat magyarázatot arról, hogy a gépi tanulási modell hogyan határozza meg a szolgáltatás fontosságát, és előrejelzéseket készít az Azure Machine Learning SDK használatakor.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257201"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769810"
 ---
-# <a name="explain-machine-learning-models-and-predictions"></a>Gépi tanulási modellek és előrejelzések magyarázata
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Az értelmezhetőségi csomag segítségével elmagyarázza az ML-modelleket & az előrejelzéseket a Pythonban
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -41,10 +41,10 @@ A támogatott értelmezhetőségi technikákról és a gépi tanulási modellekr
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Szolgáltatásfontossági érték létrehozása a személyes gépen 
 A következő példa bemutatja, hogyan használhatja az értelmezhetőségi csomagot a személyes gépen anélkül, hogy kapcsolatba lépne az Azure-szolgáltatásokkal.
 
-1. Telepítse `azureml-interpret` `azureml-interpret-contrib` és csomagolja.
+1. Telepítse `azureml-interpret` `azureml-contrib-interpret` és csomagolja.
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 
 2. Mintamodell betanítása helyi Jupyter-jegyzetfüzetbe.

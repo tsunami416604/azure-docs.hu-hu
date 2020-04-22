@@ -4,12 +4,12 @@ description: Az Azure-beli riasztások áttekintése. Riasztások, klasszikus ri
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274787"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769770"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztásainak áttekintése 
 
@@ -125,7 +125,10 @@ A **Szabályok** lap megjelenítéséhez válassza **a Figyelmeztetési szabály
 
 
 ## <a name="create-an-alert-rule"></a>Riasztási szabály létrehozása
-A figyelési szolgáltatástól vagy a jeltípusától függetlenül konzisztens módon is létrehozhat riasztásokat. Minden kilőtt riasztás és a kapcsolódó részletek egyetlen oldalon érhetők el.
+A figyelési szabályokat konzisztens módon hozhat meg, függetlenül a figyelési szolgáltatástól vagy a jel típusától.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tflw]
+
  
 Új riasztási szabályt hozhat létre:
 1. Válassza ki a _riasztás célját._

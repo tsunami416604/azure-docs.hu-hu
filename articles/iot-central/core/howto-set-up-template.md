@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6f93d74653aab78e48e613ddf9252a0876548b95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a99f261e1a834705d081e8197e4ae627cf1cb9f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157670"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756645"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Új IoT-eszköztípus definiálása az Azure IoT Central alkalmazásban
+
+*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
 
 Az eszközsablon egy tervezet, amely meghatározza az Azure IoT Central alkalmazáshoz csatlakozó eszköztípusok jellemzőit és viselkedését.
 
@@ -117,7 +119,7 @@ Az alábbi táblázat a telemetriai funkciók konfigurációs beállításait mu
 | Mező | Leírás |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt telemetriai érték megjelenítendő neve. |
-| Név | A mező neve a telemetriai üzenetben. Az IoT Central létrehoz egy értéket ehhez a mezőhöz a megjelenítendő névből, de szükség esetén kiválaszthatja a saját értékét. |
+| Name (Név) | A mező neve a telemetriai üzenetben. Az IoT Central létrehoz egy értéket ehhez a mezőhöz a megjelenítendő névből, de szükség esetén kiválaszthatja a saját értékét. |
 | Képesség típusa | Telemetria. |
 | Szemantikai típus | A telemetria szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus kiválasztása határozza meg, hogy a következő mezők közül melyik érhető el. |
 | Séma | A telemetriai adattípus, például dupla, karakterlánc vagy vektor. A rendelkezésre álló választási lehetőségeket a szemantikai típus határozza meg. Séma nem érhető el az esemény és az állapot szemantikai típusok. |
@@ -137,7 +139,7 @@ Az alábbi táblázat egy tulajdonságképesség konfigurációs beállításait
 | Mező | Leírás |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt tulajdonságérték megjelenítendő neve. |
-| Név | A tulajdonság neve. Az IoT Central létrehoz egy értéket ehhez a mezőhöz a megjelenítendő névből, de szükség esetén kiválaszthatja a saját értékét. |
+| Name (Név) | A tulajdonság neve. Az IoT Central létrehoz egy értéket ehhez a mezőhöz a megjelenítendő névből, de szükség esetén kiválaszthatja a saját értékét. |
 | Képesség típusa | Tulajdonság. |
 | Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus kiválasztása határozza meg, hogy a következő mezők közül melyik érhető el. |
 | Séma | A tulajdonság adattípusa, például dupla, karakterlánc vagy vektor. A rendelkezésre álló választási lehetőségeket a szemantikai típus határozza meg. Séma nem érhető el az esemény és az állapot szemantikai típusok. |
@@ -158,7 +160,7 @@ Az alábbi táblázat a parancsképesség konfigurációs beállításait mutatj
 | Mező | Leírás |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt parancs megjelenítendő neve. |
-| Név | A parancs neve. Az IoT Central létrehoz egy értéket ehhez a mezőhöz a megjelenítendő névből, de szükség esetén kiválaszthatja a saját értékét. |
+| Name (Név) | A parancs neve. Az IoT Central létrehoz egy értéket ehhez a mezőhöz a megjelenítendő névből, de szükség esetén kiválaszthatja a saját értékét. |
 | Képesség típusa | Parancs. |
 | Parancs | `SynchronousExecutionType`. |
 | Megjegyzés | A parancsképességgel kapcsolatos megjegyzések. |
@@ -181,7 +183,7 @@ Az alábbi táblázat egy felhőtulajdonság konfigurációs beállításait mut
 | Mező | Leírás |
 | ----- | ----------- |
 | Megjelenítendő név | Az irányítópultokon és űrlapokon használt felhőtulajdonság-érték megjelenítendő neve. |
-| Név | A felhőtulajdonság neve. Az IoT Central létrehoz egy értéket ehhez a mezőhöz a megjelenítendő névből, de szükség esetén kiválaszthatja a saját értékét. |
+| Name (Név) | A felhőtulajdonság neve. Az IoT Central létrehoz egy értéket ehhez a mezőhöz a megjelenítendő névből, de szükség esetén kiválaszthatja a saját értékét. |
 | Szemantikai típus | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus kiválasztása határozza meg, hogy a következő mezők közül melyik érhető el. |
 | Séma | A felhőtulajdonság adattípusa, például dupla, karakterlánc vagy vektor. A rendelkezésre álló választási lehetőségeket a szemantikai típus határozza meg. |
 
@@ -253,18 +255,6 @@ Eszközsablon közzétételéhez nyissa meg az eszközsablont, és válassza a *
 
 Az eszközsablon közzététele után az operátor megléphet az **Eszközök** lapon, és hozzáadhat valós vagy szimulált eszközöket, amelyek az eszközsablont használják. A módosítások végrehajtásakor folytathatja az eszközsablon módosítását és mentését. Ha ezeket a módosításokat ki szeretné tolni az operátornak, hogy megtekinthesse az **Eszközök** lapon, minden alkalommal válassza **a Közzététel** lehetőséget.
 
-
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-* Hozzon létre egy új IoT-eszközsablont.
-* Hozzon létre felhőtulajdonságokat.
-* Testreszabások létrehozása.
-* Vizualizációdefiniálása az eszköz telemetriai adataihoz.
-* Tegye közzé az eszközsablont.
-
-Ezután a következőket teheti:
-
-> [!div class="nextstepaction"]
-> [Eszköz csatlakoztatása](howto-connect-devkit.md)
+Ha Ön eszközfejlesztő, a javasolt következő lépés az [eszközsablon-verziószámozással](./howto-version-device-template.md)kapcsolatos útmutató.

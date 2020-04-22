@@ -3,12 +3,12 @@ title: Hibrid Kubernetes-fürtök konfigurálása az Azure Monitor tárolókhoz 
 description: Ez a cikk ismerteti, hogyan konfigurálhatja az Azure Monitor tárolók az Azure Stackben vagy más környezetben üzemeltetett Kubernetes-fürtök figyelésére.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 5a973e7e500906ebe833ec4cc6fd2fa8ee79c19e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6c2782fdd810403a793f6ef682d1112fadc22465
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255430"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769044"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hibrid Kubernetes-fürtök konfigurálása az Azure Monitor tárolókkal
 
@@ -240,6 +240,9 @@ Először azonosítsa a Log Analytics-munkaterület teljes `workspaceResourceId`
        Miután engedélyezte a figyelést, körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürt állapotmetrikákat.
 
 ## <a name="install-the-chart"></a>A diagram telepítése
+
+>[!NOTE]
+>A következő parancsok csak a Helm 2-es verziójára vonatkoznak. A --name paraméter használata nem alkalmazható a Helm 3-as verziójával.
 
 A HELM-diagram engedélyezéséhez tegye a következőket:
 

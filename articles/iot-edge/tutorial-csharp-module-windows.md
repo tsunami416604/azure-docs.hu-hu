@@ -8,13 +8,15 @@ ms.author: kgremban
 ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 4fa3fb17f4eace8d389738fb46267a097610f175
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom:
+- mvc
+- amqp
+ms.openlocfilehash: b71db71ac61e0dcd65a2546b2164610e618dab18
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76760419"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733509"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C# IoT Edge modul fejlesztése Windows-eszközökhöz
 
@@ -93,7 +95,7 @@ A központi telepítési jegyzékfájl megosztja a tároló beállításjegyzék
 
 1. Nyissa meg a **Deployment.template.json** fájlt a Visual Studio-megoldáskezelőben.
 
-2. Keresse meg a **registryCredentials tulajdonságot** a kívánt tulajdonságok $edgeAgent. A beállításjegyzék címét automatikusan ki kell tölteni a projekt létrehozásakor megadott adatokból, majd a felhasználónév és a jelszó mezőknek változóneveket kell tartalmazniuk. Példa:
+2. Keresse meg a **registryCredentials tulajdonságot** a kívánt tulajdonságok $edgeAgent. A beállításjegyzék címét automatikusan ki kell tölteni a projekt létrehozásakor megadott adatokból, majd a felhasználónév és a jelszó mezőknek változóneveket kell tartalmazniuk. Például:
 
    ```json
    "registryCredentials": {

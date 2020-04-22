@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187593"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756761"
 ---
 # <a name="json-claims-transformations"></a>JSON követelések átalakítások
 
@@ -223,6 +223,39 @@ A következő példában a jogcímek `id` átalakítása kinyeri az elemet a JSO
 - Kimeneti jogcímek:
     - **kivonatIgénylés**: 6353399
 
+## <a name="getsingleitemfromjson"></a>GetSingleItemFromJson
+
+Leveszi az első elemet egy JSON-adatból.
+
+| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim (Bemeneti jogcím) | inputJson | sztring | A jogcímátalakítás által használt jogcímtípusok az elem JSON-adatokból való leéséhez. |
+| OutputClaim (Kimeneti jogcím) | kulcs | sztring | A JSON első elemkulcsa. |
+| OutputClaim (Kimeneti jogcím) | érték | sztring | A JSON első elemértéke. |
+
+A következő példában a jogcímek transzformációja kinyeri az első elemet (adott nevet) a JSON-adatokból.
+
+```XML
+<ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="json" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="givenNameKey" TransformationClaimType="key" />
+    <OutputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="value" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Példa
+
+- Bemeneti igények:
+  - **inputJson**: {"givenName": "Emilty", "lastName": "Smith"}
+- Kimeneti jogcímek:
+  - **kulcs**: givenName
+  - **érték**: Emilty
+
+
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
 Leveszi az első elemet egy JSON-adattömbből.
@@ -294,3 +327,5 @@ Kimeneti igény:
   }
 }
 ```
+
+

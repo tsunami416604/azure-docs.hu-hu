@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931695"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767550"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl-műveletek fejlesztése a HDInsight segítségével
 
@@ -26,7 +26,7 @@ A parancsfájlműveletek a következő módszerekkel alkalmazhatók:
 
 | Ezzel a módszerrel parancsfájlt alkalmazhat... | A fürt létrehozása során... | Futó fürtön... |
 | --- |:---:|:---:|
-| Azure portál |✓ |✓ |
+| Azure Portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure klasszikus parancssori felület |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
@@ -159,15 +159,15 @@ Ebben a példában a `hdfs` parancs transzparens módon használja az alapértel
 A HDInsight naplózza az STDOUT és az STDERR rendszerbe írt parancsfájlkimenetet. Ezeket az információkat az Ambari webes felhasználói felületén tekintheti meg.
 
 > [!NOTE]  
-> Az Apache Ambari csak akkor érhető el, ha a fürt sikeresen létrejött. Ha parancsfájlműveletet használ a fürt létrehozása során, és a létrehozás sikertelen, olvassa el a [HDInsight-fürtök testreszabása parancsfájlművelettel kapcsolatos](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) hibaelhárítási szakaszt a naplózott adatok elérésének egyéb módjaihoz.
+> Az Apache Ambari csak akkor érhető el, ha a fürt sikeresen létrejött. Ha parancsfájlműveletet használ a fürt létrehozása során, és a létrehozás sikertelen, olvassa el a [parancsfájlműveletek elhárítása című](./troubleshoot-script-action.md) témakört a naplózott adatok elérésének egyéb módjairól.
 
-A legtöbb segédprogram és telepítőcsomag már tartalmaz adatokat az STDOUT és az STDERR számára, azonban további naplózást is hozzáadhat. Ha szöveget szeretne küldeni az `echo`STDOUT-nak, használja a használatát. Példa:
+A legtöbb segédprogram és telepítőcsomag már tartalmaz adatokat az STDOUT és az STDERR számára, azonban további naplózást is hozzáadhat. Ha szöveget szeretne küldeni az `echo`STDOUT-nak, használja a használatát. Például:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Alapértelmezés szerint `echo` elküldi a karakterláncot az STDOUT-nak. Az STDERR-hez való `>&2` `echo`átirányításhoz adja hozzá a before . Példa:
+Alapértelmezés szerint `echo` elküldi a karakterláncot az STDOUT-nak. Az STDERR-hez való `>&2` `echo`átirányításhoz adja hozzá a before . Például:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -175,7 +175,7 @@ Alapértelmezés szerint `echo` elküldi a karakterláncot az STDOUT-nak. Az STD
 
 Ez átirányítja az STDOUT-nak írt információkat az STDERR (2) helyett. Az IO átirányításáról további [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)információt a .
 
-A parancsfájlműveletek által naplózott információk megtekintéséről a [HDInsight-fürtök testreszabása parancsfájlművelettel című témakörben](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) talál további információt.
+A parancsfájlműveletek által naplózott információk megtekintéséről a [Parancsfájlműveletek elhárítása című](./troubleshoot-script-action.md)témakörben talál további információt.
 
 ### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>Fájlok mentése ASCII-ként LF sorvégződéssel
 
@@ -313,7 +313,7 @@ A parancsfájl okának előkészítése során az alábbi lépéseket kell tenni
 
 Parancsfájlműveletek segítségével testreszabhatja a HDInsight-fürtöket a következő módszerekkel:
 
-* Azure portál
+* Azure Portal
 * Azure PowerShell
 * Azure Resource Manager-sablonok
 * A HDInsight .NET SDK.

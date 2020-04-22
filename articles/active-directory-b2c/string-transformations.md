@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: acacba591c9b895f1bd6abfbab5d3d4a4c858d12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472775"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756793"
 ---
 # <a name="string-claims-transformations"></a>Karakterláncjogcímek átalakítása
 
@@ -615,13 +615,17 @@ Ellenőrzi, hogy `claimToMatch` egy `matchTo` karakterlánc-jogcím és bemeneti
 | inputClaim | jogcím | sztring | A jogcím típusa, amelyet össze kell hasonlítani. |
 | InputParameter (Beviteli paraméter) | matchTo között | sztring | A szabályszerű kifejezés. |
 | InputParameter (Beviteli paraméter) | outputClaimIfMatched | sztring | A karakterláncok egyenlő sége esetén beállítandó érték. |
+| InputParameter (Beviteli paraméter) | extractCsoportok | logikai | [Nem kötelező] Itt adható meg, hogy a Regex egyezés kinyerje-e a csoportok értékeit. Lehetséges értékek: `true` `false` vagy (alapértelmezett). | 
 | OutputClaim (Kimeneti jogcím) | outputClaim | sztring | Ha a reguláris kifejezés egyezik, `outputClaimIfMatched` ez a kimeneti jogcím a bemeneti paraméter értékét tartalmazza. Vagy null, ha nincs egyezés. |
 | OutputClaim (Kimeneti jogcím) | regexCompareResultClaim | logikai | A reguláris kifejezés egyezik az eredmény `true` kimeneti jogcímtípusával, amelyet az egyeztetés eredményeként vagy `false` eredményealapján kell beállítani. |
+| OutputClaim (Kimeneti jogcím)| A követelés neve| sztring | Ha a extractGroups bemeneti paraméter értéke igaz, a jogcímátalakítás meghívása után létrehozott jogcímtípusok listája. A jogcímtípus nevének meg kell egyeznie a Regex csoport nevével. | 
 
-Például ellenőrzi, hogy a megadott telefonszám érvényes-e a telefonszám reguláris kifejezési mintája alapján.
+### <a name="example-1"></a>1. példa
+
+Ellenőrzi, hogy a megadott telefonszám érvényes-e a telefonszám reguláris kifejezési mintája alapján.
 
 ```XML
-<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
   </InputClaims>
@@ -636,8 +640,6 @@ Például ellenőrzi, hogy a megadott telefonszám érvényes-e a telefonszám r
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Példa
-
 - Bemeneti igények:
     - **claimToMatch**: "64854114520"
 - Bemeneti paraméterek:
@@ -647,6 +649,39 @@ Például ellenőrzi, hogy a megadott telefonszám érvényes-e a telefonszám r
     - **outputClaim**: "isPhone"
     - **regexCompareResultClaim**: true
 
+### <a name="example-2"></a>2. példa
+
+Ellenőrzi, hogy a megadott e-mail cím érvényes-e, és visszaadja az e-mail aliast.
+
+```XML
+<ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="(?&lt;mailAlias&gt;.*)@(.*)$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isEmail" />
+    <InputParameter Id="extractGroups" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isEmailString" TransformationClaimType="regexCompareResultClaim" />
+    <OutputClaim ClaimTypeReferenceId="mailAlias" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- Bemeneti igények:
+    - **claimToMatch**:emily@contoso.com" "
+- Bemeneti paraméterek:
+    - **matchTo :**`(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**: "isEmail"
+    - **extractGroups**: igaz
+- Kimeneti jogcímek:
+    - **outputClaim**: "isEmail"
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
+    
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 Ellenőrzi, hogy egy `matchTo` karakterlánc-jogcím és bemeneti paraméter egyenlő-e, és beállítja a kimeneti jogcímeket a jelen lévő `stringMatchMsg` értékkel és `stringMatchMsgCode` a bemeneti paraméterekkel, valamint az összehasonlítási eredmény kimeneti jogcímet, amelyet az összehasonlítás eredményeként `true` vagy `false` alapján kell beállítani.

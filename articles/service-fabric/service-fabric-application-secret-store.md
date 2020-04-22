@@ -3,12 +3,12 @@ title: Az Azure Service Fabric központi titoktartási tárolója
 description: Ez a cikk ismerteti, hogyan használhatja a Központi titok tároló az Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589164"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770414"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Központi titkok tárolója az Azure Service Fabricben 
 Ez a cikk ismerteti, hogyan használhatja a Központi titkos kulcsok tároló (CSS) az Azure Service Fabric-ben titkos kulcsok létrehozása a Service Fabric-alkalmazásokban. A CSS egy helyi titkos tároló gyorsítótár, amely bizalmas adatokat, például jelszót, jogkivonatokat és kulcsokat titkosítva tárol a memóriában.
@@ -47,31 +47,9 @@ A CSS `fabricSettings` engedélyezéséhez adja hozzá a következő parancsfáj
      ]
 ```
 ## <a name="declare-a-secret-resource"></a>Titkos erőforrás deklarálása
-Létrehozhat egy titkos erőforrást az Azure Resource Manager sablon vagy a REST API használatával.
-
-### <a name="use-resource-manager"></a>Erőforrás-kezelő használata
-
-A titkos erőforrás létrehozásához használja az alábbi sablont az Erőforrás-kezelő használatával. A sablon `supersecret` létrehoz egy titkos erőforrást, de még nincs beállítva érték a titkos erőforráshoz.
-
-
-```json
-   "resources": [
-      {
-        "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-          }
-        }
-      ]
-```
-
-### <a name="use-the-rest-api"></a>A REST API használata
+Létrehozhat egy titkos erőforrást a REST API használatával.
+  > [!NOTE] 
+  > Ha a fürt windows-hitelesítést használ, a REST-kérelmet a rendszer nem biztonságos HTTP-csatornán keresztül küldi el. A javaslat az, hogy egy X509 alapú fürt biztonságos végpontok.
 
 Titkos erőforrás `supersecret` létrehozásához a REST API használatával, `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`hogy egy PUT kérelmet. Titkos erőforrás létrehozásához fürt- vagy rendszergazdai ügyféltanúsítványra van szükség.
 
@@ -81,48 +59,6 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 ```
 
 ## <a name="set-the-secret-value"></a>A titkos érték beállítása
-
-### <a name="use-the-resource-manager-template"></a>Az Erőforráskezelő sablon használata
-
-A titkos érték létrehozásához és beállításához használja az alábbi Erőforrás-kezelő sablont. Ez a sablon a `supersecret` titkos erőforrás `ver1`titkos értékét verzióként állítja be.
-```json
-  {
-  "parameters": {
-  "supersecret": {
-      "type": "string",
-      "metadata": {
-        "description": "supersecret value"
-      }
-   }
-  },
-  "resources": [
-    {
-      "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-        }
-    },
-    {
-      "apiVersion": "2018-07-01-preview",
-      "name": "supersecret/ver1",
-      "type": "Microsoft.ServiceFabricMesh/secrets/values",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "Microsoft.ServiceFabricMesh/secrets/supersecret"
-      ],
-      "properties": {
-        "value": "[parameters('supersecret')]"
-      }
-    }
-  ],
-  ```
-### <a name="use-the-rest-api"></a>A REST API használata
 
 A következő parancsfájl használatával a REST API-t a titkos érték beállításához.
 ```powershell

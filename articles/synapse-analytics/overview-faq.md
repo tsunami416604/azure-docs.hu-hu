@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: ec2791911d1461ae47d9353629d23a5d7dc30791
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 00a98fdeb4b8febbcb9d1183fabffc7298cc9e4c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424649"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770723"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Az Azure Synapse Analytics (munkaterület előzetes verziója) gyakori kérdések
 
@@ -92,7 +92,7 @@ A: Az adatfolyam lehetővé teszi az adatmérnökök számára, hogy kód írás
 
 ## <a name="security-and-access"></a>Biztonság és hozzáférés
 
-A: A végpontok között egyszeri bejelentkezés fontos hitelesítési folyamat a Synapse Analytics-ben. A személyazonosság kezelése és áthaladása teljes AAD-integráción keresztül elengedhetetlen.
+A: A végpontok között egyszeri bejelentkezés fontos hitelesítési folyamat a Synapse Analytics-ben. A személyazonosság kezelése és átadása a teljes AAD-integráción keresztül elengedhetetlen.
 
 ### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>K: Hogyan férek hozzá az ADLSg2 fájljaihoz és mappáihoz?
 
@@ -107,5 +107,5 @@ A: Igen, használhatja a külső üzleti alkalmazások, például a Tableau és 
 - [Munkaterület létrehozása](quickstart-create-workspace.md)
 - [A Synapse Studio használata](quickstart-synapse-studio.md)
 - [SQL-készlet létrehozása](quickstart-create-sql-pool.md)
-- [Sql igény szerinti használata](quickstart-sql-on-demand.md)
+- [Az igény szerinti SQL használata](quickstart-sql-on-demand.md)
 - [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool.md) 

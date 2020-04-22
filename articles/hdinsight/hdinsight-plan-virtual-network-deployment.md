@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/25/2020
-ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 18774ae4a98b795846459251174ee47671aef39c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272265"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769885"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat tervezése az Azure HDInsight számára
 
@@ -243,7 +243,7 @@ Ha hálózati biztonsági csoportokat vagy felhasználó által definiált útvo
 
 ## <a name="required-ports"></a><a id="hdinsight-ports"></a>Kötelező portok
 
-Ha azt tervezi, hogy **egy tűzfalat,** és a fürt kívülről való hozzáférés bizonyos portokon, előfordulhat, hogy engedélyeznie kell a forgalmat azokon a portokon szükséges a forgatókönyv. Alapértelmezés szerint nincs szükség a portok speciális engedélyezési listájára mindaddig, amíg az előző szakaszban ismertetett azure-felügyeleti forgalom elérheti a fürtöt a 443-as porton.
+Ha azt tervezi, hogy **egy tűzfalat,** és a fürt kívülről való hozzáférés bizonyos portokon, előfordulhat, hogy engedélyeznie kell a forgalmat azokon a portokon szükséges a forgatókönyv. Alapértelmezés szerint nincs szükség a portok speciális engedélyezési listára, amíg az előző szakaszban ismertetett Azure-felügyeleti forgalom a 443-as porton elérheti a fürtöt.
 
 Az adott szolgáltatások portjainak listáját az [Apache Hadoop-szolgáltatások által a HDInsight-dokumentumon használt portok](hdinsight-hadoop-port-settings-for-services.md) című témakörben található.
 
@@ -253,21 +253,10 @@ A virtuális készülékek tűzfalszabályairól további információt a [virtu
 
 HDInsight-fürt létrehozásakor egy terheléselosztó is létrejön. A terheléselosztó típusa az [alap termékváltozat szintjén](../load-balancer/concepts-limitations.md#skus)van, amely bizonyos korlátozásokkal rendelkezik. Az egyik ilyen megkötések, hogy ha két virtuális hálózatok különböző régiókban, nem tud csatlakozni az alapvető terheléselosztók. További információkért tekintse meg [a virtuális hálózatok gyakori kérdések: a globális virtuális hálózatok társviszony-létesítéskorlátozásai.](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
-## <a name="transport-layer-security"></a>Átviteli réteg biztonsága
-
-A fürthöz a nyilvános fürtvégponton `https://<clustername>.azurehdinsight.net` keresztül létesített kapcsolatok a fürt átjárócsomópontjain keresztül vannak proxied. Ezek a kapcsolatok a TLS nevű protokoll segítségével vannak biztosítva. A TLS magasabb verzióinak az átjárókon történő érvényesítése növeli a kapcsolatok biztonságát. A TLS újabb verzióinak használatáról a [TLS 1.0 probléma megoldása című témakörben](https://docs.microsoft.com/security/solving-tls1-problem)talál további információt.
-
-Alapértelmezés szerint az Azure HDInsight-fürtök elfogadják a TLS 1.2-es kapcsolatokat nyilvános HTTPS-végpontokon, valamint a régebbi verziókat a visszamenőleges kompatibilitás érdekében. Az Azure Portal vagy egy erőforrás-kezelő sablon használatával szabályozhatja az átjárócsomópontokon támogatott minimális TLS-verziót a fürt létrehozása során. A portálhoz válassza ki a TLS-verziót a **Biztonság + hálózat lapon** a fürt létrehozása során. Az erőforrás-kezelő sablon üzembe helyezéskor használja a **minSupportedTlsVersion** tulajdonságot. Mintasablonról a [HDInsight minimális TLS 1.2 rövid útmutató sablonja olvashat.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls) Ez a tulajdonság három értéket támogat: "1.0", "1.1" és "1.2", amelyek a TLS 1.0+, a TLS 1.1+ és a TLS 1.2+ értékeknek felelnek meg.
-
-> [!IMPORTANT]
-> 2020. június 30-tól kezdődően az Azure HDInsight minden HTTPS-kapcsolatra kikényszeríti a TLS 1.2-es vagy újabb verziókat. Azt javasoljuk, hogy győződjön meg arról, hogy minden ügyfele készen áll a TLS 1.2-es vagy újabb verziók kezelésére. További információ: [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
-
 ## <a name="next-steps"></a>További lépések
 
 * A kódmintákat és az Azure virtuális hálózatok létrehozásának példáit az [Azure HDInsight-fürtökhöz való virtuális hálózatok létrehozása](hdinsight-create-virtual-network.md)című témakörben talál.
 * A HDInsight helyszíni hálózathoz való csatlakozásra való konfigurálásának teljes körű példáját a [HDInsight csatlakoztatása helyszíni hálózathoz](./connect-on-premises-network.md)című témakörben tetszését.
-* Az Apache HBase-fürtök azure-beli virtuális hálózatokban történő konfigurálása az [Apache HBase-fürtök létrehozása a HDInsight szolgáltatásban az Azure Virtual Network ben című témakörben található.](hbase/apache-hbase-provision-vnet.md)
-* Az Apache HBase georeplikáció konfigurálása az [Apache HBase fürtreplikáció beállítása az Azure virtuális hálózatokban](hbase/apache-hbase-replication.md)című témakörben található.
 * Az Azure virtuális hálózatokkal kapcsolatos további információkért tekintse meg az [Azure virtuális hálózat áttekintését.](../virtual-network/virtual-networks-overview.md)
 * A hálózati biztonsági csoportokról további információt a Hálózati biztonsági csoportok című [témakörben](../virtual-network/security-overview.md)talál.
 * A felhasználó által definiált útvonalakról a [Felhasználó által definiált útvonalakról és az IP-továbbításról](../virtual-network/virtual-networks-udr-overview.md)talál további információt.

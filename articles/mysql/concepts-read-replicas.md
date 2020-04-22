@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 47f686f810f62fe03a9b0217677c436f3b91782b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76167349"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767886"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -45,7 +45,6 @@ Kelet-Ausztrália, Ausztrália Délkelet, USA középső része, Kelet-Ázsia, U
 
 *Az USA nyugati régiója 2 átmenetileg nem érhető el régióközi replikahelyként.
 
-
 ### <a name="paired-regions"></a>Párosított régiók
 Az univerzális replikarégiók mellett létrehozhat egy olvasási replikát a főkiszolgáló Azure-ban párosított régióban. Ha nem ismeri a régió párját, további információaz [Azure Paired Regions cikkből.](../best-practices-availability-paired-regions.md)
 
@@ -71,7 +70,7 @@ Ismerje meg, hogyan [hozhat létre olvasási replikát az Azure Portalon.](howto
 
 ## <a name="connect-to-a-replica"></a>Csatlakozás kópiához
 
-Létrehozáskor a replika örökli a főkiszolgáló tűzfalszabályait vagy virtuális hálózati szolgáltatásvégpontját. Ezt követően ezek a szabályok függetlenek a főkiszolgálótól.
+Létrehozáskor a replika örökli a főkiszolgáló tűzfalszabályait. Ezt követően ezek a szabályok függetlenek a főkiszolgálótól.
 
 A replika örökli a rendszergazdai fiókot a főkiszolgálótól. A főkiszolgáló összes felhasználói fiókja replikálása az olvasási replikákra történik. Az olvasási kópiához csak a főkiszolgálón elérhető felhasználói fiókok használatával lehet csatlakozni.
 
@@ -124,7 +123,7 @@ A kópia a főkiszolgálóval azonos kiszolgálókonfigurációhasználatával j
 > [!IMPORTANT]
 > Mielőtt a főkiszolgálói konfigurációt új értékekre frissítené, frissítse a replika konfigurációját az értékekkel egyenlő vagy nagyobb értékekre. Ez a művelet biztosítja, hogy a replika összhangban lehessen a főkiszolgálón végrehajtott módosításokkal.
 
-A tűzfalszabályok, a virtuális hálózati szabályok és a paraméterbeállítások a kópia létrehozásakor a főkiszolgálótól a kópiához öröklődnek. Ezt követően a replika szabályai függetlenek.
+A tűzfalszabályok és a paraméterbeállítások a főkiszolgálótól a kópiához öröklődnek a kópia létrehozásakor. Ezt követően a replika szabályai függetlenek.
 
 ### <a name="stopped-replicas"></a>Leállított replikák
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Linux Python alkalmazás a Postgres-szel'
-description: Megtudhatja, hogyan szerezhet be egy Linux Python-alkalmazást az Azure App Service szolgáltatásban, amely kapcsolatban áll egy PostgreSQL-adatbázissal az Azure-ban. Az oktatóanyag egy Django mintaalkalmazás használatával szemlélteti.
+title: 'Oktatóanyag: Python (Django) telepítése a Postgres-szel'
+description: Ismerje meg, hogyan hozhat létre Python-alkalmazást PostgreSQL-adatbázissal, és hogyan telepítheti azt linuxos Azure App Service szolgáltatásba. Az oktatóanyag egy Django mintaalkalmazást használ a bemutatóhoz.
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 04/14/2020
@@ -9,12 +9,12 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: aa30cb5b66769c0a9c89a311940e581f74636573
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 2f6e21f47a021a0aab1d059da2aea2c497acb785
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392543"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770714"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Python (Django) webalkalmazás üzembe helyezése a PostgreSQL alkalmazással az Azure App Service-ben
 
@@ -217,9 +217,8 @@ Az SSH munkamenetben futtassa a következő parancsokat:
 ```bash
 cd site/wwwroot
 
-# Activate virtual environment
-python3 -m venv venv
-source venv/bin/activate
+# Activate default virtual environment in App Service container
+source /antenv/bin/activate
 # Install requirements in environment
 pip install -r requirements.txt
 # Run database migrations

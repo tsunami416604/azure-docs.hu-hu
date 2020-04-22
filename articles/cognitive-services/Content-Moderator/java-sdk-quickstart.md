@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5dd1c1bb2b321e617efc430ce48745c06a827305
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f86a54b53b73da9c798564d13d659844842e6f67
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76772451"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768702"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Rövid útmutató: Tartalommoderátor ügyféltár Java-hoz
 
@@ -89,13 +89,13 @@ mkdir -p src/main/java
 
 Ezután hozzon létre egy *ContentModeratorQuickstart.java* nevű fájlt az új mappában. Nyissa meg a fájlt a kívánt szerkesztőben vagy az IDE-ben, és importálja a következő könyvtárakat a tetején:
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
 
 ## <a name="object-model"></a>Objektummodell
 
 A következő osztályok kezelik a Java SDK tartalommoderátor néhány főbb jellemzőjét.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |[ContentModerator-ügyfél](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Ez az osztály szükséges a Tartalommoderátor összes funkciójához. Az előfizetési adatokkal azonnal létrehozhatja azt, és más osztályok példányainak létrehozásához használhatja őket.|
 |[Képmoderálás](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Ez az osztály biztosítja a felnőtteknek szánt tartalmak, személyes adatok vagy emberi arcok képeinek elemzéséhez szükséges funkciókat.|
@@ -120,7 +120,7 @@ Az alkalmazás metódusában `main` hozzon létre egy [ContentModeratorClient](h
 > [!NOTE]
 > Ha az alkalmazás elindítása után hozta létre a környezeti változót, be kell zárnia, majd újra meg kell nyitnia a változót futtató szerkesztőt, IDE-t vagy rendszerhéjat.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
 ## <a name="moderate-images"></a>Mérsékelt képek
 
@@ -137,42 +137,42 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Ezután a *ContentModeratorQuickstart.java* fájlban adja hozzá a következő osztálydefiníciót a **ContentModeratorQuickstart** osztályon belül. Ez a belső osztály a képmoderálási folyamat későbbi részében lesz használva.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
 
 ### <a name="iterate-through-images"></a>Képekkel átitatva
 
 Ezután adja hozzá a következő `main` kódot a metódus aljához. Másik lehetőségként hozzáadhatja egy külön metódushoz, `main`amelyet a-ból hívnak. Ez a kód az _ImageFiles.txt_ fájl minden sorát végighalad.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
 
 ### <a name="check-for-adultracy-content"></a>Felnőtt/pikáns tartalom ellenőrzése
 Ez a kódsor ellenőrzi a képet az adott URL-címen a felnőtt vagy pikáns tartalom. A jelen feltételekkel kapcsolatos információkért tekintse meg a Képmoderálás fogalmi útmutatóját.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_ar)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_ar)]
 
 ### <a name="check-for-text"></a>Szöveg ellenőrzése
 Ez a kódsor ellenőrzi a képen a látható szöveget.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_text)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_text)]
 
 ### <a name="check-for-faces"></a>Arcok ellenőrzése
 Ez a kódsor ellenőrzi a képet az emberi arcok.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
 
 Végül tárolja a visszaküldött `EvaluationData` adatokat a listában.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
 
 ### <a name="print-results"></a>Eredmények nyomtatása
 
 A `while` ciklus után adja hozzá a következő kódot, amely kinyomtatja az eredményeket a konzolra és egy kimeneti fájlba, *src/main/resources/ModerationOutput.json*.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
 Zárja be `try` az utasítást, és adjon hozzá egy `catch` utasítást a metódus befejezéséhez.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
@@ -205,4 +205,4 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Tartalommoderát
 >[Képmoderálási fogalmak](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Mi az az Azure Content Moderator?](./overview.md)
-* A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/blob/master/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java)
+* A minta forráskódja megtalálható a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java)

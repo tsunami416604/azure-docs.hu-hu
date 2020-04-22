@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115331"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767975"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák az Azure Data Lake Storage Gen2 szolgáltatással kapcsolatban
 
@@ -62,14 +62,11 @@ A nem felügyelt virtuálisgép-lemezek nem támogatottak a hierarchikus névté
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="file-system-support-in-sdks"></a>Fájlrendszer-támogatás az SDK-kban
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Fájlrendszer-támogatás az SDK-kban, a PowerShellben és az Azure CLI-ben
 
-Az ACL-műveletek beszerzése és beállítása jelenleg nem rekurzív.
-
-## <a name="file-system-support-in-powershell-and-azure-cli"></a>Fájlrendszer-támogatás a PowerShellben és az Azure CLI-ben
-
-- [A PowerShell](data-lake-storage-directory-file-acl-powershell.md) és az [Azure CLI](data-lake-storage-directory-file-acl-cli.md) támogatása nyilvános előzetes verzióban érhető el.
 - Az ACL-műveletek beszerzése és beállítása jelenleg nem rekurzív.
+- [Az Azure CLI-támogatás](data-lake-storage-directory-file-acl-cli.md) nyilvános előzetes verzióban érhető el.
+
 
 ## <a name="lifecycle-management-policies"></a>Életciklus-kezelési irányelvek
 

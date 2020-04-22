@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: c812e00699cd8f8cfbaf32feea1b43866ffb0990
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78674358"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770086"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Oktatóanyag: Az Azure IoT Hub üzenetbővítéseinek használata
 
@@ -76,7 +77,7 @@ Ha még nem tette meg, nyisson meg egy Azure [Cloud Shell-ablakot,](https://shel
 
 Itt vannak a parancsfájl által létrehozott erőforrások. *A bővített* azt jelenti, hogy az erőforrás gazdagítású üzenetekhez tartozik. *Az eredeti* azt jelenti, hogy az erőforrás nem bővített üzenetekhez tartozik.
 
-| Név | Érték |
+| Name (Név) | Érték |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | tároló neve | Eredeti  |
@@ -296,7 +297,7 @@ Az Erőforrás-kezelő sablonnal létrehozhatja és konfigurálhatja az erőforr
 
    Az alábbiakban a sablon betöltésével létrehozott erőforrásokat kell létrehozni. **A bővített** azt jelenti, hogy az erőforrás gazdagítású üzenetekhez tartozik. **Az eredeti** azt jelenti, hogy az erőforrás nem bővített üzenetekhez tartozik. Ezek ugyanazok az Azure CLI-parancsfájlban használt értékek.
 
-   | Név | Érték |
+   | Name (Név) | Érték |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | tároló neve | Eredeti  |

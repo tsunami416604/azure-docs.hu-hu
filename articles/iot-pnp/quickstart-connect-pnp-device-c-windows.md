@@ -1,19 +1,19 @@
 ---
 title: IoT Plug and Play preview mintaeszköz-kód csatlakoztatása az IoT Hubhoz (Windows) | Microsoft dokumentumok
 description: IoT Plug and Play preview mintaeszköz-kódot hozhat létre és futtatható windowsos, IoT-elosztóhoz csatlakozó mintaeszköz-kódot. Az Azure IoT-kezelő eszközzel megtekintheti az eszköz által a hubra küldött információkat.
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/26/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 1c8b6a5d133d8838c2c7a23f8881092affa424dc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 080820024db1302ff5a841761428442396b90040
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75531192"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769851"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-windows-to-iot-hub-c-windows"></a>Rövid útmutató: A Windows rendszeren futó IoT Plug and Play előzetes verziójú eszközalkalmazás és az IoT Hub (C Windows) alkalmazásának csatlakoztatása
 

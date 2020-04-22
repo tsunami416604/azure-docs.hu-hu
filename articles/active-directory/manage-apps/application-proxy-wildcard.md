@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406733"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770304"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő karakteres alkalmazások az Azure Active Directory alkalmazásproxyjában
 
@@ -48,8 +48,6 @@ A helyettesítő karakterekkel rendelkező alkalmazásokat akkor tehet közzé, 
 Például: `http(s)://*.adventure-works.com`.
 
 Bár a belső és külső URL-címek különböző tartományokat használhatnak, ajánlott eljárásként azonosnak kell lenniük. Az alkalmazás közzétételekor hibaüzenet jelenik meg, ha az URL-címek egyike nem rendelkezik helyettesítő karakterrel.
-
-Ha további, különböző konfigurációs beállításokkal rendelkező alkalmazásokkal rendelkezik, ezeket a kivételeket külön alkalmazásként kell közzétennie a helyettesítő karakter alapértelmezett beállításainak felülírásához. A helyettesítő karakter nélküli alkalmazások mindig elsőbbséget élveznek a helyettesítő alkalmazásokkal szemben. A konfigurációs szempontból ezek "csak" rendszeres alkalmazások.
 
 Helyettesítő karakteres alkalmazás létrehozása ugyanazon [alkalmazásközzétételi folyamaton](application-proxy-add-on-premises-application.md) alapul, amely az összes többi alkalmazás számára elérhető. Az egyetlen különbség az, hogy egy helyettesítő karaktert az URL-címek és potenciálisan az SSO konfiguráció.
 

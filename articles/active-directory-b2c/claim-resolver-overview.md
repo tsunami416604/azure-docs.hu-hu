@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 0bdede482b79c82e6e05b1429cb7c17399bc2277
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396071"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756612"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Jogcímfeloldók az Azure Active Directory B2C egyéni szabályzataiban
 
@@ -90,7 +90,14 @@ A következő szakaszok felsorolják az elérhető jogcímfeloldókat.
 | {Környezet:IPAddress} | A felhasználó IP-címe. | 11.111.111.11 |
 | {Környezet:KMSI} | Azt jelzi, hogy [a Be jelentkezve maradjon](custom-policy-keep-me-signed-in.md) jelölőnégyzet be jelölve. |  igaz |
 
-### <a name="non-protocol-parameters"></a>Nem protokoll paraméterek
+### <a name="claims"></a>Jogcímek 
+
+| Jogcím | Leírás | Példa |
+| ----- | ----------- | --------|
+| {Jogcím:jogcím típusa} | A házirendfájl vagy a szülőházirend-fájl ClaimsSchema szakaszában már definiált jogcímtípus azonosítója.  Például: `{Claim:displayName}`vagy `{Claim:objectId}`. | Jogcímtípus értéke.|
+
+
+### <a name="oauth2-key-value-parameters"></a>OAuth2 kulcs-érték paraméterek
 
 Az OIDC vagy OAuth2 kérelem részeként szereplő bármely paraméternév leképezhető egy jogcímhez a felhasználói út során. Az alkalmazástól érkező kérelem tartalmazhat például egy lekérdezési `app_session` `loyalty_number`karakterlánc-paramétert , vagy bármely egyéni lekérdezési karakterláncot.
 
@@ -118,6 +125,7 @@ Az OIDC vagy OAuth2 kérelem részeként szereplő bármely paraméternév leké
 | {SAML:AllowCreate} | Az `AllowCreate` attribútum értéke az `NameIDPolicy` SAML-kérelem eleméből. | True (Igaz) |
 | {SAML:ForceAuthn} | Az `ForceAuthN` attribútum értéke az `AuthnRequest` SAML-kérelem eleméből. | True (Igaz) |
 | {SAML:Szolgáltatónév} | Az `ProviderName` attribútum értéke az `AuthnRequest` SAML-kérelem eleméből.| Contoso.com |
+| {SAML:RelayState} | A `RelayState` lekérdezési karakterlánc paraméter.| 
 
 ## <a name="using-claim-resolvers"></a>Jogcímfeloldók használata
 

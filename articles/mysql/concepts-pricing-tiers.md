@@ -1,17 +1,17 @@
 ---
 title: Tarifacsomagok – Azure Database for MySQL
 description: Ismerje meg az Azure Database for MySQL különböző tarifacsomagjait, beleértve a számítási generációkat, a tárolási típusokat, a tárhelyméretet, a virtuális magokat, a memóriát és a biztonsági mentés megőrzési időszakait.
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: cf959112a2a717da1005be062dda3b83163d8d6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0123436eab2cdfa91066a2bd0652e16896ee838a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269444"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767850"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database a MySQL-díjszabási szintekhez
 
@@ -51,7 +51,7 @@ A kiépített tárterület az Azure Database for MySQL-kiszolgáló számára re
 | IOPS | Változó |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max 20 000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max 20 000 IOPS |
 
 > [!NOTE]
-> A 16 TB-os és 20 000 IOPS-os tárhely a következő régiókban támogatott: USA keleti régiója, USA keleti régiója 2, USA középső régiója, USA északi régiója, USA déli régiója, Észak-Európa, Nyugat-Európa, Az Egyesült Királyság déli része, az Egyesült Királyság nyugati, délkelet-ázsiai, kelet-ázsiai, kelet-, nyugat-japán, közép-európai régiója , Korea South, Ausztrália Kelet- és Ausztrália Délkelet.
+> A 16 TB-os és 20 000 IOPS-os tárhely a következő régiókban támogatott: USA keleti régiója, USA keleti régiója 2, USA középső régiója, USA északi régiója, USA középső régiója, Észak-Európa, Nyugat-Európa, Az Egyesült Királyság déli része, az Egyesült Királyság nyugati, délkelet-ázsiai, kelet-ázsiai, japán kelet-, nyugat-ázsiai, közép-, dél-koreai, dél-amerikai, délkeletbeli egyesült királyságbeli régiója.
 >
 > Minden más régió legfeljebb 4 TB tárhelyet és akár 6000 IOPS-t támogat.
 >

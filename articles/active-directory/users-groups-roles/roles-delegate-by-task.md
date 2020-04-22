@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ac44661dd5a52ba19a3b2dd461aabec1ec250bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd24650c9bf0c4de155b5bfc8723cfa1fef01548
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284874"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81755409"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök rendszergazdai feladat szerint az Azure Active Directoryban
 
@@ -76,9 +76,9 @@ Vállalat tulajdonságainak konfigurálása | Globális rendszergazda |
 
 Tevékenység | Legkevésbé privilegizált szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Áthaladási hitelesítés | Globális rendszergazda | 
-Az összes konfiguráció olvasása | Globális olvasó | 
-Zökkenőmentes egyszeri bejelentkezés | Globális rendszergazda | 
+Áthaladási hitelesítés | Hibrid identitás-rendszergazda | 
+Az összes konfiguráció olvasása | Globális olvasó | Hibrid identitás-rendszergazda |
+Zökkenőmentes egyszeri bejelentkezés | Hibrid identitás-rendszergazda | 
 
 ## <a name="connect-health"></a>Connect Health
 
@@ -346,7 +346,7 @@ Felhasználói beállítások frissítése | Globális rendszergazda |
 
 Tevékenység | Legkevésbé privilegizált szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Támogatási jegy beküldése | Szolgáltatás-rendszergazda | Application Administrator, Azure Information Protection Administrator, Billing Administrator, Cloud Application Administrator, Compliance Administrator, Dynamics 365 Administrator, Desktop Analytics Administrator, Exchange Administrator, Password Rendszergazda, Intune-rendszergazda, Skype Vállalati verziós rendszergazda, Power BI-rendszergazda, Kiemelt hitelesítési rendszergazda, SharePoint-rendszergazda, Teams kommunikációs rendszergazda, Teams-rendszergazda, Felhasználói rendszergazda, Workplace Analytics rendszergazda
+Támogatási jegy beküldése | Szolgáltatás-rendszergazda | Alkalmazásrendszergazda, Azure Information Protection Administrator, Billing Administrator, Cloud Application Administrator, Compliance Administrator, Dynamics 365 administrator, Desktop Analytics Administrator, Exchange Administrator, Password Administrator, Intune Administrator, Skype Vállalati rendszergazda, Power BI-rendszergazda, kiemelt hitelesítési rendszergazda, SharePoint-rendszergazda, Teams kommunikációs rendszergazda, Teams-rendszergazda, Felhasználói rendszergazda, Workplace Analytics-rendszergazda
 
 ## <a name="next-steps"></a>További lépések
 

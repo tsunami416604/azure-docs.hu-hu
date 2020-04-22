@@ -1,27 +1,24 @@
 ---
-title: Azure Data Lake Storage Gen2 PowerShell fájlokhoz & ACL-khez (előzetes verzió)
+title: Azure Data Lake Storage Gen2 PowerShell fájlokhoz & AC-khez
 description: A PowerShell-parancsmagokkal kezelheti a könyvtárakat, valamint a fájl- és címtárhozzáférés-vezérlési listákat (ACL) olyan tárfiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS).
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: b59c68e3f2edc0fbe5eee3c3861a3e5116d4fac6
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 68ffe40f93be3d10666ebad2eaa153fc9dc9687f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262383"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768018"
 ---
-# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Könyvtárak, fájlok és AC-k kezelése a PowerShell használatával az Azure Data Lake Storage Gen2 szolgáltatásban (előzetes verzió)
+# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Könyvtárak, fájlok és AC-k kezelése a PowerShell használatával az Azure Data Lake Storage Gen2 szolgáltatásban
 
 Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat és engedélyeket a hierarchikus névtérrel (HNS) rendelkező tárfiókokban a PowerShell használatával. 
-
-> [!IMPORTANT]
-> A cikkben szereplő PowerShell-modul jelenleg nyilvános előzetes verzióban érhető el.
 
 [Gen1 a Gen2 feltérképezése](#gen1-gen2-map) | [Visszajelzés küldése](https://github.com/Azure/azure-powershell/issues)
 
@@ -33,7 +30,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat
 > * A . Lásd: [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)letöltése .
 > * PowerShell-verzió `5.1` vagy újabb verzió.
 
-## <a name="install-powershell-modules"></a>PowerShell-modulok telepítése
+## <a name="install-the-powershell-module"></a>A PowerShell-modul telepítése
 
 1. Ellenőrizze, hogy a telepített PowerShell-verzió a `5.1` következő paranccsal vagy annál magasabb.    
 
@@ -43,16 +40,10 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat
     
    A PowerShell verziójának frissítéséhez olvassa el [a meglévő Windows PowerShell frissítése című témakört.](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
     
-2. Telepítse a legújabb **PowershellGet** modult. Ezután zárja be és nyissa meg újra a PowerShell-konzolt.
+2. Telepítse **az Az.Storage** modult.
 
    ```powershell
-   Install-Module PowerShellGet –Repository PSGallery –Force 
-   ```
-
-3. Telepítse **az Az.Storage** előzetes modulját.
-
-   ```powershell
-   Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force 
+   Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
    A PowerShell-modulok telepítéséről az [Azure PowerShell-modul telepítése című](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) témakörben talál további információt.

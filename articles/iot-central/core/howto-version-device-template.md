@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bb77d1a09cb2692765c4c834ce617d13465d4d67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37c7bc99881c8d1106c8464cfe18c9e63b8a1b02
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157568"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756725"
 ---
 # <a name="create-a-new-device-template-version"></a>Új eszközsablon-verzió létrehozása
 
-
+*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
 
 Az Azure IoT Central lehetővé teszi az IoT-alkalmazások gyors fejlesztését. Az eszközsablon-tervek gyors analfabetizálhatók az eszközképességek, nézetek és testreszabások hozzáadásával, szerkesztésével vagy törlésével. Miután közzétette az eszközsablont, az eszközképességi modell **közzétettként** jelenik meg a modell mellett a zárolási ikonokkal. Az eszközképességi modell módosításához létre kell hoznia az eszközsablon új verzióját. Eközben a felhő tulajdonságait, testreszabások és nézetek mind szerkeszthetők bármikor anélkül, hogy verzióaz eszköz sablon. Miután mentette a módosítások bármelyikét, közzéteheti az eszközsablont, hogy a legutóbbi módosításokat elérhetővé tegye az üzemeltető számára az Eszközkezelőben való megtekintéshez.
 
@@ -32,7 +32,7 @@ Az eszköz képességeinek bizonyos elemei az eszközsablon és -felületek verz
 1. Válassza ki a testre szabni kívánt eszközsablont.
 1. Válassza a **Testreszabás** lapot.
 1. Az eszközképességi modellben definiált összes képesség itt jelenik meg. Az itt szerkeszthető összes mező menthető és használható az alkalmazásban anélkül, hogy az eszközsablont verzióra kellene használnia. Ha vannak olyan mezők, amelyeket csak olvashatóan szeretne módosítani, a módosításhoz az eszközsablont kell verzióznia. Jelölje ki a szerkesztni kívánt mezőt, és írja be az új értékeket.
-1. Kattintson a **Mentés** gombra. Most ezek az értékek felülírnak mindent, ami eredetileg az eszközsablonba lett mentve, és az alkalmazáson keresztül lesznek használva.
+1. Kattintson a **Save** (Mentés) gombra. Most ezek az értékek felülírnak mindent, ami eredetileg az eszközsablonba lett mentve, és az alkalmazáson keresztül lesznek használva.
 
 ## <a name="versioning-a-device-template"></a>Eszközsablon verziószámozása
 
@@ -81,7 +81,4 @@ Az eszközsablonnak több verzióját is létrehozhatja. Idővel több csatlakoz
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta az eszközsablon-verziók használatát az Azure IoT Central alkalmazásban, az alábbiakban a következő javasolt lépés:
-
-> [!div class="nextstepaction"]
-> [Telemetriai szabályok létrehozása](tutorial-create-telemetry-rules.md)
+Ha Ön eszközfejlesztő, a javasolt következő lépés az [Azure IoT Edge-eszközök és az Azure IoT Central.](./concepts-iot-edge.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: e4489f7c810799ca8e89565fe698f398f942b089
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3b2819b33feba52c3b02f0e2104d4106bd04cbb
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251706"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770064"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Az Azure Linux-ügynök frissítése virtuális gépen
 
@@ -29,6 +29,8 @@ Az [Azure Linux-ügynök](https://github.com/Azure/WALinuxAgent) frissítéséhe
 - A kapcsolat, hogy a Linux virtuális gép ssh használatával.
 
 Először mindig ellenőrizze, hogy van-e csomag a Linux disztribúciós tárházban. Lehetséges, hogy a rendelkezésre álló csomag nem a legújabb verzió, azonban az automatikus frissítés engedélyezése biztosítja, hogy a Linux Ügynök mindig megkapja a legújabb frissítést. Ha problémái vannak a csomagkezelők telepítésével, kérjen támogatást a distro szállítójától.
+
+> ! - Nem, nem, nem, nem, nem, További információkért [lásd: Jóváhagyott Linux disztribúciók az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)
 
 ## <a name="minimum-virtual-machine-agent-support-in-azure"></a>A virtuálisgép-ügynök minimális támogatása az Azure-ban
 A folytatás előtt ellenőrizze a [virtuálisgép-ügynökök minimális verziótámogatását az Azure-ban.](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)

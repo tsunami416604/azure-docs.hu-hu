@@ -1,45 +1,46 @@
 ---
-title: HTTPS végpont | Azure Piactér
-description: Https-végpont okainak konfigurálása.
+title: Érdeklődőkezelés konfigurálása HTTPS-végpont használatával | Azure Piactér
+description: Ismerje meg, hogyan használhat HTTP-végpontot a Microsoft AppSource és az Azure Marketplace-érdeklődők kezeléséhez.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/24/2018
+ms.date: 04/21/2020
 ms.author: dsindona
-ms.openlocfilehash: cb6ef173e97a7c2bbd7d7cad5e5074b1f2d0f066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f56cc5aaad7d77ff8dc753115ef1becb08ddde73
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288597"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770185"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Érdeklődőkezelés konfigurálása HTTPS-végpont használatával
 
-Https-végpont használatával kezelhető az Azure Marketplace és appsource-érdeklődők. Ezek az érdeklődők írhatók, amelyek írhatók egy ÜGYFÉLkapcsolat-kezelési (CRM) rendszerbe, vagy elküldhetők e-mailértesítésként. Ez a cikk azt ismerteti, hogy miként konfigurálható az érdeklődőkezelés a [Microsoft Flow](https://powerapps.microsoft.com/automate-processes/) automatizálási szolgáltatáshasználatával.
+Https-végpont használatával kezelheti a Microsoft AppSource és az Azure Marketplace-érdeklődőket. Ezeket az érdeklődőket ügyfélkapcsolat-kezelési (CRM) rendszerbe lehet írni, vagy e-mailben értesítést küldeni. Ez a cikk azt ismerteti, hogy miként konfigurálható a [Microsoft Power Automate](https://powerapps.microsoft.com/automate-processes/) automatizálási szolgáltatás az érdeklődőkezelés konfigurálásához.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Folyamat létrehozása a Microsoft Flow használatával
+## <a name="create-a-flow-using-microsoft-power-automate"></a>Folyamat létrehozása a Microsoft Power Automate segítségével
 
-1. Nyissa meg a [Flow](https://flow.microsoft.com/) weblapot. Szabad flow-fiók létrehozásához válassza **a Bejelentkezés** lehetőséget, vagy válassza a **Szabad regisztráció** lehetőséget.
+1. Nyissa meg a [Power Automate](https://flow.microsoft.com/) weblapot. Szabad flow-fiók létrehozásához válassza **a Bejelentkezés** lehetőséget, vagy válassza a **Szabad regisztráció** lehetőséget.
 
-2. Jelentkezzen be, és válassza a **Saját folyamatok** lehetőséget a menüsorban.
+1. Jelentkezzen be, és válassza a **Saját folyamatok** lehetőséget a menüsorban.
+    > [!div class="mx-imgBorder"]
+    > ![Saját folyamatok](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-    ![Saját folyamatok](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
+1. A **+ Új**csoportban válassza a + Azonnali lehetőséget az üres **területen.**
+    > [!div class="mx-imgBorder"]
+    > ![Üres folyamat létrehozása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-3. Válassza a **+ Létrehozás üresből**lehetőséget.
+1. Nevezze el a folyamatot, majd **a Válassza ki, hogyan szeretné elindítani ezt a folyamatot,** válassza **a HTTP-kérelem fogadásának korlehetőséget.**
 
-    ![Üres folyamat létrehozása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    > [!div class="mx-imgBorder"]
+    > ![A FOGADOTT HTTP-kérelem eseményindítójának kiválasztása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-4. Válassza **a Létrehozás üres ről**lehetőséget.
+1. Kattintson a folyamatlépésre a kibontásához.
 
-    ![Üres folyamat létrehozása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    > [!div class="mx-imgBorder"]
+    > ![Az áramlási lépés kibontása](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
 
-5. Az **összekötők és eseményindítók keresése** mezőbe írja be a "request" szót a Kérelem összekötő megkereséséhez.
-6. Az **Eseményindítók**csoportban jelölje be **a HTTP-kérelem fogadásának**kori jelölését. 
-
-    ![A FOGADOTT HTTP-kérelem eseményindítójának kiválasztása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
-
-7. A **Kérelemtörzs JSON-sémájának**konfigurálásához az alábbi lépések egyikével konfigurálhatja:
+1. A **Kérelemtörzs JSON-sémájának**konfigurálásához használja az alábbi módszerek egyikét:
 
    - Másolja a cikk végén található [JSON-sémát](#json-schema) a **Kérelem törzse JSON-séma** mezőbe.
    - Válassza a **Séma létrehozása hasznosadat-minta használatával** lehetőséget. Az **Enter or illessze be a minta JSON hasznos adat** szövegmező, illessze be a [JSON példa](#json-example). A séma létrehozásához válassza a **Kész** lehetőséget.
@@ -90,6 +91,7 @@ Https-végpont használatával kezelhető az Azure Marketplace és appsource-ér
    ![E-mail művelet hozzáadása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
 5. A folyamat befejezéséhez válassza a **Mentés** lehetőséget.
+
 6. A kérelemben létrejön egy HTTP-BEJEGYZÉS URL-cím. Másolja ezt az URL-címet, és használja https-végpontként.
 
     ![HTTP-bejegyzés URL-címe](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
@@ -100,7 +102,7 @@ Amikor konfigurálja az érdeklődőkezelési adatokat az ajánlathoz, válassza
 
 ![Dinamikus tartalom hozzáadása](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-Érdeklődők létrehozásakor a Microsoft érdeklődőket küld a Folyamatnak, amely a beállított CRM-rendszerhez vagy e-mail-címhez irányítja azokat.
+Érdeklődők létrehozásakor a Microsoft érdeklődőket küld a Power Automate-folyamathoz, amely a beállított CRM-rendszerhez vagy e-mail-címhez irányítja azokat.
 
 ## <a name="json-schema-and-example"></a>JSON-séma és példa
 
@@ -124,6 +126,10 @@ A JSON-tesztpélda a következő sémát használja:
     },
     "LeadSource": {
       "id": "/properties/LeadSource",
+      "type": "string"
+    },
+    "Description": {
+      "id": "/properties/Description",
       "type": "string"
     },
     "UserDetails": {
@@ -165,23 +171,25 @@ A JSON-tesztpélda a következő sémát használja:
 }
 ```
 
-Másolhatja és szerkesztheti a következő JSON-példát az MS Flow-ban tesztként való használatra.
+Másolhatja és szerkesztheti a következő JSON-példát, amelyet tesztként használhat a folyamatban.
 
 ### <a name="json-example"></a>JSON példa
 
 ```json
 {
-"OfferTitle": "Test Microsoft",
-"LeadSource": "Test run through MS Flow",
-"UserDetails": {
-"Company": "Contoso",
-"Country": "USA",
-"Email": "someone@contoso.com",
-"FirstName": "Some",
-"LastName": "One",
-"Phone": "16175555555",
-"Title": "Esquire"
-}
+  "UserDetails": {
+    "FirstName": "Some",
+    "LastName": "One",
+    "Email": "someone@contoso.com",
+    "Phone": "16175555555",
+    "Country": "USA",
+    "Company": "Contoso",
+    "Title": "Esquire"
+ },
+  "LeadSource": "AzureMarketplace",
+  "ActionCode": "INS",
+  "OfferTitle": "Test Microsoft",
+  "Description": "Test run through Power Automate"
 }
 ```
 

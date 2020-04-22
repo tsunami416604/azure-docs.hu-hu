@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 1e2a837acef976b6b872c2d4002ee49d662ad594
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.date: 04/21/2020
+ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641321"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770102"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslattevő létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
-Az Azure Cognitive Search,"keresés-as-you-type" engedélyezve van egy **javaslatajánló** konstrukció hozzá egy [keresési index.](search-what-is-an-index.md) A javaslatajánló két felhasználói élményt támogat: *az automatikus kiegészítést*, amely kiegészíti a kifejezést vagy kifejezést, és *javaslatokat,* amelyek az egyező dokumentumok rövid listáját adják vissza.  
+Az Azure Cognitive Search,"keresés-as-you-type" engedélyezve van egy **javaslatajánló** konstrukció hozzá egy [keresési index.](search-what-is-an-index.md) A javaslatajánló két felhasználói élményt támogat: *az automatikus kiegészítést,* amely egy teljes kifejezéslekérdezés részleges bemenetét teszi ki, valamint *olyan javaslatokat,* amelyek egy adott egyezésre kattintanak. Az automatikus kiegészítés lekérdezést eredményez. A javaslatok egyező dokumentumot hoznak létre.
 
 A következő képernyőkép [az Első alkalmazás létrehozása C# nyelven](tutorial-csharp-type-ahead-and-suggestions.md) című részéből mindkettőt szemlélteti. Az automatikus kiegészítés egy lehetséges kifejezést vár, a "tw" "in" kifejezéssel fejezve be. A javaslatok a mini keresési eredmények, ahol egy mező, például a szálloda neve, az indexből származó megfelelő szállodai keresési dokumentumot jelöl. Javaslatok esetén bármilyen mezőt megadhat, amely leíró információkat tartalmaz.
 
@@ -33,27 +33,36 @@ A "you-as-you-type" támogatás mezőnként engedélyezve van a karakterláncmez
 
 ## <a name="what-is-a-suggester"></a>Mi az a szuggesztáló?
 
-A javaslatajánló olyan adatstruktúra, amely támogatja a beírási viselkedést azáltal, hogy a részleges lekérdezések egyeztetéséhez előtagokat tárol. A tokenizált kifejezésekhez hasonlóan az előtagok fordított indexekben tárolódnak, egyet-egyet a javaslatajánló mezők gyűjteményében megadott mezőkhöz.
-
-Előtagok létrehozásakor a javaslatajánló saját elemzési lánccal rendelkezik, hasonlóan a teljes szöveges kereséshez használthoz. A teljes szöveges keresés elemzésével ellentétben azonban a javaslatajánló csak olyan mezőkön működhet, amelyek a szabványos Lucene analizátort (alapértelmezett) vagy [egy nyelvi analizátort](index-add-language-analyzers.md)használják. Az [egyéni analizátorokat](index-add-custom-analyzers.md) vagy [előre definiált elemzőket](index-add-custom-analyzers.md#predefined-analyzers-reference) használó mezők (a normál Lucene kivételével) kifejezetten nem engedélyezettek a rossz eredmények megelőzése érdekében.
-
-> [!NOTE]
-> Ha meg kell kerülnie az analizátor-megkötést, használjon két külön mezőt ugyanahhoz a tartalomhoz. Ez lehetővé teszi, hogy az egyik mezőben legyen egy javaslatajánló, míg a másik egyéni analizátor konfigurációval állítható be.
+A javaslatajánló egy belső adatstruktúra, amely támogatja a beírási viselkedést azáltal, hogy részleges lekérdezések esetén előtagokat tárol. A tokenizált kifejezésekhez is az előtagok fordított indexekben tárolódnak, a javaslatajánló mezők gyűjteményében megadott mezőkhöz egy-egy.
 
 ## <a name="define-a-suggester"></a>Javaslatajánló definiálása
 
-Javaslatajánló létrehozásához vegyen fel egyet egy [indexsémába,](https://docs.microsoft.com/rest/api/searchservice/create-index) és [állítsa be az egyes tulajdonokat.](#property-reference) Az indexben lehet egy javaslatajánló (pontosabban egy javaslatajánló a javaslatajánló gyűjteményben). A javaslatajánló létrehozásának legjobb ideje az, ha meghatározza azt a mezőt is, amely használni fogja.
+Javaslatajánló létrehozásához vegyen fel egyet egy [indexsémába,](https://docs.microsoft.com/rest/api/searchservice/create-index) és [állítsa be az egyes tulajdonokat.](#property-reference) A javaslatajánló létrehozásának legjobb ideje az, ha meghatározza azt a mezőt is, amely használni fogja.
+
++ Csak karakterláncmezők használata
+
++ Használja az alapértelmezett szabványos Lucene analizátort`"analyzer": null`( `"analyzer": "en.Microsoft"`) vagy egy nyelvi [analizátort](index-add-language-analyzers.md) (például ) a mezőben
 
 ### <a name="choose-fields"></a>Mezők kiválasztása
 
-Bár a javaslattevő nek több tulajdonsága van, elsősorban olyan mezők gyűjteménye, amelyekhez lehetővé teszi a beírási keresési élményt. Különösen a javaslatok esetén válassza ki azokat a mezőket, amelyek a legjobban egyetlen eredményt képviselnek. A több egyezés között megkülönböztető nevek, címek vagy más egyedi mezők működnek a legjobban. Ha a mezők ismétlődő értékekből állnak, a javaslatok azonos eredményekből állnak, és a felhasználó nem fogja tudni, hogy melyikre kattintson.
+Bár a javaslattevő nek több tulajdonsága van, elsősorban olyan karakterlánc-mezők gyűjteménye, amelyekhez engedélyezi a beírási keresési élményt. Minden indexhez tartozik egy javaslatajánló, ezért a javaslatkészítői listának tartalmaznia kell az összes olyan mezőt, amely a javaslatokhoz és az automatikus kiegészítéshez egyaránt tartalmat tartalmaz.
 
-Győződjön meg arról, hogy minden mező olyan elemzőt használ, amely lexikális elemzést végez az indexelés során. Használhatja az alapértelmezett szabványos Lucene`"analyzer": null`analizátort ( ) `"analyzer": "en.Microsoft"`vagy egy [nyelvi analizátort](index-add-language-analyzers.md) (például ). 
+Az automatikus kiegészítés nagyobb mezőkészletből származik, mivel a további tartalom több kifejezésbefejezési potenciállal rendelkezik.
 
-Az analizátor kiválasztása határozza meg a mezők tokenized és ezt követően előre rögzített. Például egy kötőjellel ellátott karakterlánc, mint a "környezet-érzékeny", egy nyelvi analizátor használatával a következő jogkivonat-kombinációk: "context", "sensitive", "context-sensitive". Ha a szokásos Lucene analizátort használtad volna, az elválasztott karakterlánc nem létezne.
+A javaslatok viszont jobb eredményeket hoznak, ha a mezőválasztás szelektív. Ne feledje, hogy a javaslat egy keresési dokumentum proxyja, ezért olyan mezőket szeretne, amelyek a legjobban egyetlen eredményt képviselnek. A több egyezés között megkülönböztető nevek, címek vagy más egyedi mezők működnek a legjobban. Ha a mezők ismétlődő értékekből állnak, a javaslatok azonos eredményekből állnak, és a felhasználó nem fogja tudni, hogy melyikre kattintson.
 
-> [!TIP]
-> Fontolja meg a [Szöveg elemzése API-t](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) a kifejezések tokenizedés későbbi előtaghoz való betekintéséhez. Miután létrehoz egy indexet, kipróbálhatja a különböző elemzők egy karakterláncot, hogy megtekinthesse a jogkivonatokat bocsát ki.
+A keresés használatközbeni keresésének élményéhez adja hozzá az automatikus kiegészítéshez szükséges összes mezőt, majd a **$select**, **$top**, **$filter**és **searchFields** mezőkkel szabályozza a javaslatok eredményeit.
+
+### <a name="choose-analyzers"></a>Válasszon analizátorokat
+
+Az analizátor kiválasztása határozza meg a mezők tokenized és ezt követően előre rögzített. Például egy kötőjellel ellátott karakterlánc, mint a "környezet-érzékeny", egy nyelvi analizátor használatával a következő jogkivonat-kombinációk: "context", "sensitive", "context-sensitive". Ha a szokásos Lucene analizátort használtad volna, az elválasztott karakterlánc nem létezne. 
+
+Az elemzők kiértékelésekor fontolja meg a [Szöveg elemzése API-t](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) a kifejezések tokenizedés ezt követő előtagolásának megismeréséhez. Miután létrehoz egy indexet, kipróbálhatja a különböző elemzők egy karakterlánc token kimenetmegtekintéséhez.
+
+Az [egyéni analizátorokat](index-add-custom-analyzers.md) vagy [előre definiált elemzőket](index-add-custom-analyzers.md#predefined-analyzers-reference) használó mezők (a normál Lucene kivételével) kifejezetten nem engedélyezettek a rossz eredmények megelőzése érdekében.
+
+> [!NOTE]
+> Ha meg kell kerülnie az analizátor-megkötést, például ha bizonyos lekérdezési esetekhez kulcsszóra vagy ngram-elemzőre van szüksége, akkor ugyanahhoz a tartalomhoz két külön mezőt kell használnia. Ez lehetővé teszi, hogy az egyik mezőben legyen egy javaslatajánló, míg a másik egyéni analizátor konfigurációval állítható be.
 
 ### <a name="when-to-create-a-suggester"></a>Mikor kell létrehozni egy ajánló
 
@@ -161,7 +170,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 
 ## <a name="next-steps"></a>További lépések
 
-A következő példát javasoljuk a kérelmek megfogalmazásának megtekintéséhez.
+Javasoljuk, hogy a következő cikket, hogy többet tudjon meg arról, hogyan kéri megfogalmazása.
 
 > [!div class="nextstepaction"]
 > [Automatikus kiegészítés és javaslatok hozzáadása az ügyfélkódhoz](search-autocomplete-tutorial.md) 

@@ -1,6 +1,6 @@
 ---
-title: Hibák elhárítása az Azure Automation megosztott erőforrásaival
-description: Ismerje meg, hogyan háríthatja el és oldhatja meg a runbookokat támogató Azure Automation megosztott erőforrásokkal kapcsolatos problémákat.
+title: Megosztott erőforrások hibáinak elhárítása az Azure Automationben
+description: Ismerje meg, hogyan háríthatja el és oldhatja meg az Azure Automation megosztott erőforrásaival kapcsolatos problémákat.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,38 +8,41 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 4cea558b11d7ee7bbe838cecbd061cd487b536d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e83c7074d252083329537e205666374705a31873
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278323"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733573"
 ---
-# <a name="troubleshoot-errors-with-shared-resources"></a>Megosztott erőforrásokkal kapcsolatos hibák elhárítása
+# <a name="troubleshoot-shared-resources-in-azure-automation"></a>Megosztott erőforrások hibáinak elhárítása az Azure Automationben
 
-Ez a cikk az azure Automation megosztott erőforrásainak használata során futtatható problémák megoldásához megoldásokat ismerteti.
+Ez a cikk az azure Automation megosztott [erőforrásainak](../automation-intro.md#shared-resources) használatakor futtatható problémák megoldásait ismerteti.
+
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](../automation-update-azure-modules.md)
 
 ## <a name="modules"></a>Modulok
 
-### <a name="scenario-a-module-is-stuck-importing"></a><a name="module-stuck-importing"></a>Eset: A modul importálása beragadt
+### <a name="scenario-a-module-is-stuck-during-import"></a><a name="module-stuck-importing"></a>Eset: Egy modul elakad az importálás során
 
 #### <a name="issue"></a>Probléma
 
-A modul beragadt az **importálási** állapotban, amikor importálja vagy frissíti a modulokat az Azure-automatizálásban.
+Egy modul beragadt az Importálás idúra, amikor importálja vagy frissíti az Azure Automation-modulokat.
 
 #### <a name="cause"></a>Ok
 
-A PowerShell-modulok importálása összetett, többlépéses folyamat. Ez a folyamat bevezeti annak lehetőségét, hogy a modul nem importálja megfelelően. Ha ez a probléma jelentkezik, az importálandó modul átmeneti állapotban ragadhat. A folyamatról további információ: [PowerShell-modul importálása.](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)
+Mivel a PowerShell-modulok importálása összetett többlépéses folyamat, előfordulhat, hogy a modul importálása nem megfelelően történik, és átmeneti állapotban ragadhat. Az importálási folyamatról a [PowerShell-modul importálása](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)című témakörben olvashat bővebben.
 
 #### <a name="resolution"></a>Megoldás:
 
-A probléma megoldásához el kell távolítania a **modult,** amely beragadt az importálási állapotban az [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) parancsmag használatával. Ezután megpróbálhatja újra importálni a modult.
+A probléma megoldásához el kell távolítania az Importálás állapotban ragadt modult az [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) parancsmag használatával. Ezután megpróbálhatja újra importálni a modult.
 
 ```azurepowershell-interactive
-Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
+Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
-### <a name="scenario-azurerm-modules-are-stuck-importing-after-trying-to-update-them"></a><a name="update-azure-modules-importing"></a>Eset: Az AzureRM-modulok importálása beragadt, miután megpróbálta frissíteni őket
+### <a name="scenario-azurerm-modules-are-stuck-during-import-after-an-update-attempt"></a><a name="update-azure-modules-importing"></a>Eset: Az AzureRM-modulok beragadtak az importálás során egy frissítési kísérlet után
 
 #### <a name="issue"></a>Probléma
 
@@ -51,53 +54,53 @@ Azure modules are being updated
 
 #### <a name="cause"></a>Ok
 
-Ismert probléma van az AzureRM-modulok frissítésével egy Automation-fiókban, amely egy numerikus nevű, 0-val kezdődő erőforráscsoportban található.
+Ismert probléma van az AzureRM-modulok frissítésével egy Automation-fiókban, amely egy 0-val kezdődő numerikus névvel rendelkező erőforráscsoportban található.
 
 #### <a name="resolution"></a>Megoldás:
 
-Az Automation-fiókban lévő Azure-modulok frissítéséhez alfanumerikus nevű erőforráscsoportban kell lennie. A 0-val kezdődő numerikus nevekkel rendelkező erőforráscsoportok jelenleg nem tudják frissíteni az AzureRM-modulokat.
+Az Automation-fiókban az AzureRM-modulok frissítéséhez a fióknak alfanumerikus nevű erőforráscsoportban kell lennie. A 0-val kezdődő numerikus nevekkel rendelkező erőforráscsoportok jelenleg nem tudják frissíteni az AzureRM-modulokat.
 
 ### <a name="scenario-module-fails-to-import-or-cmdlets-cant-be-executed-after-importing"></a><a name="module-fails-to-import"></a>Eset: A modul importálása sikertelen, vagy a parancsmagok importálás után nem hajthatók végre
 
 #### <a name="issue"></a>Probléma
 
-Egy modul importálása sikertelen, de a rendszer nem bontja ki a parancsmagokat.
+Egy modul importálása sikertelen, vagy sikeresen importál, de a rendszer nem bontja ki a parancsmagokat.
 
 #### <a name="cause"></a>Ok
 
 Néhány gyakori oka annak, hogy egy modul importálása sikertelen ül az Azure Automationbe:
 
-* A struktúra nem egyezik meg azzal a struktúrával, amelyben az Automationnek szüksége van rá.
+* A struktúra nem felel meg az Automation által igényelt struktúrának.
 * A modul egy másik modultól függ, amely még nem lett telepítve az Automation-fiókba.
 * A modulból hiányoznak a függőségei a mappában.
-* A `New-AzureRmAutomationModule` parancsmag a modul feltöltésére szolgál, és nem adta meg a teljes tárolási útvonalat, vagy nem töltötte be a modult egy nyilvánosan elérhető URL használatával.
+* A [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) parancsmag a modul feltöltésére szolgál, és nem adta meg a teljes tárolási útvonalat, vagy nem töltötte be a modult nyilvánosan elérhető URL-cím használatával.
 
 #### <a name="resolution"></a>Megoldás:
 
-Az alábbi megoldások bármelyike megoldja a problémát:
+A probléma megoldásához használja ezeket a megoldásokat.
 
-* Győződjön meg arról, hogy a modul **->** a következő formátumot követi: ModuleName.Zip ModuleName vagy Version Number **->** (ModuleName.psm1, ModuleName.psd1)
-* Nyissa meg a .psd1 fájlt, és nézze meg, hogy a modulnak vannak-e függőségei. Ha igen, töltse fel ezeket a modulokat az Automation-fiókba.
-* Győződjön meg arról, hogy a modulmappában minden hivatkozott .dll szerepel.
+* Győződjön meg arról, hogy a modul a következő formátumot követi: ModuleName.zip -> ModuleName vagy Version Number -> (ModuleName.psm1, ModuleName.psd1).
+* Nyissa meg a **.psd1** fájlt, és nézze meg, hogy a modulnak vannak-e függőségei. Ha igen, töltse fel ezeket a modulokat az Automation-fiókba.
+* Győződjön meg arról, hogy a hivatkozott **.dll** fájlok szerepelnek a modulmappában.
 
 ### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Eset: Update-AzureModule.ps1 felfüggeszti a modulok frissítésekor
 
 #### <a name="issue"></a>Probléma
 
-Ha az [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook használatával frissíti az Azure-modulokat, a modulfrissítés a frissítési folyamat felfüggesztésre kerül.
+Az [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) runbook használatakor az Azure-modulok frissítéséhez a modulfrissítési folyamat felfüggesztésre kerül.
 
 #### <a name="cause"></a>Ok
 
-A parancsfájl használatakor 10 `Update-AzureModule.ps1` az alapértelmezett beállítás annak meghatározására, hogy hány modul frissül egyidejűleg. A frissítési folyamat hibákra hajlamos, ha túl sok modul továbbfejlesztett egy időben.
+Az **Update-AzureModule.ps1**használatakor az alapértelmezett beállítás határozza meg, hogy hány modul frissül egyidejűleg. A frissítési folyamat hibákra hajlamos, ha túl sok modul továbbfejlesztett egy időben.
 
 #### <a name="resolution"></a>Megoldás:
 
-Nem gyakori, hogy az összes AzureRM-modul ra van szükség ugyanabban az Automation-fiókban. Javasoljuk, hogy csak a szükséges AzureRM-modulok importálása ajánlott.
+Nem gyakori, hogy az összes AzureRM- vagy Az-modul ra van szükség ugyanabban az Automation-fiókban. Javasoljuk, hogy csak a szükséges modulokat importálja.
 
 > [!NOTE]
-> Kerülje az **AzureRM-modul** importálását. Az **AzureRM-modulok** importálása az összes **AzureRM-modul\* ** importálása után, ez nem ajánlott.
+> Kerülje a teljes `Az.Automation` `AzureRM.Automation` vagy modul importálását, amely az összes tartalmazott modult importálja.
 
-Ha a frissítési folyamat felfüggesztésre `SimultaneousModuleImportJobCount` kerül, `Update-AzureModules.ps1` hozzá kell adnia a paramétert a parancsfájlhoz, és alacsonyabb értéket kell megadnia, mint az alapértelmezett érték, amely 10. Javasoljuk, ha ezt a logikát valósítja meg, hogy 3 vagy 5 értékkel kezdődjön. `SimultaneousModuleImportJobCount`Az Azure-modulok `Update-AutomationAzureModulesForAccount` frissítéséhez használt rendszer runbook paramétere. Ez a változás hosszabbra teszi a folyamatot, de nagyobb esélye van a befejezésre. A következő példa bemutatja a paramétert, és hová tegye a runbook:
+Ha a frissítési folyamat `SimultaneousModuleImportJobCount` felfüggesztésre kerül, adja hozzá a paramétert az **Update-AzureModules.ps1** parancsfájlhoz, és adjon meg egy alacsonyabb értéket, mint az alapértelmezett 10. Ha ezt a logikát valósítja meg, ajánlott 3 vagy 5 értékkel kezdeni. `SimultaneousModuleImportJobCount`Az **Update-AutomationAzureModulesForAccount** rendszer runbook, amely az Azure-modulok frissítésére szolgál. Ha ezt a módosítást végrehajtja, a frissítési folyamat hosszabb ideig fut, de nagyobb esélye van a befejezésre. A következő példa bemutatja a paramétert, és hová tegye a runbook:
 
  ```powershell
          $Body = @"
@@ -134,11 +137,11 @@ Nem rendelkezik a Futtatás másként fiók létrehozásához vagy frissítésé
 
 #### <a name="resolution"></a>Megoldás:
 
-A Futtatás másként fiók létrehozásához vagy frissítéséhez megfelelő engedélyekkel kell rendelkeznie a Futtatás másként fiók által használt különböző erőforrásokhoz. A Futtatás másként fiók létrehozásához vagy frissítéséhez szükséges engedélyekről a [Futtatás fiókengedélyek című](../manage-runas-account.md#permissions)témakörben olvashat.
+A Futtatás másként fiók létrehozásához vagy frissítéséhez megfelelő [engedélyekkel](../manage-runas-account.md#permissions) kell rendelkeznie a Futtatás másként fiók által használt különböző erőforrásokhoz. 
 
-Ha a problémát zárolás miatt okolja, ellenőrizze, hogy a zárolás rendben van-e, és távolítsa el. Ezután keresse meg a zárolt erőforrást, kattintson a jobb gombbal a zárolásra, és a **Törlés parancsra** kattintva távolítsa el a zárolást.
+Ha a problémát zárolás miatt okolja, ellenőrizze, hogy a zárolás eltávolítható-e. Ezután keresse meg az Azure Portalon zárolt erőforrást, kattintson a jobb gombbal a zárolásra, és válassza a **Törlés parancsot.**
 
-### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Eset: Runbook végrehajtásakor a "GetPerAdapterInfo" nevű belépési pont megkeresése az "iplpapi.dll" DLL-ben.
+### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Eset: Runbook végrehajtásakor a "GetPerAdapterInfo" nevű belépési pont megkeresése az "iplpapi.dll" DLL-ben" hibaüzenet jelenik meg.
 
 #### <a name="issue"></a>Probléma
 
@@ -154,18 +157,18 @@ Ezt a hibát valószínűleg egy helytelenül konfigurált [Futtatás fiók okoz
 
 #### <a name="resolution"></a>Megoldás:
 
-Győződjön meg arról, hogy a [Futtatás másként fiók](../manage-runas-account.md) megfelelően van konfigurálva. Miután megfelelően konfigurálta, győződjön meg arról, hogy a megfelelő kódot a runbook az Azure-ral való hitelesítéshez. A következő példa egy kódrészletet mutat be, amely egy Run As-fiók használatával hitelesíti az Azure-t egy runbookban.
+Győződjön meg arról, hogy a Futtatás másként fiók megfelelően van konfigurálva. Ezután ellenőrizze, hogy rendelkezik-e a megfelelő kóddal a runbookban az Azure-ral való hitelesítéshez. A következő példa egy kódrészletet mutat be, amely egy Run As-fiók használatával hitelesíti az Azure-t egy runbookban.
 
 ```powershell
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
+Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha a fenti probléma nem jelenik meg, vagy nem tudja megoldani a problémát, próbálkozzon az alábbi csatornák egyikével további támogatásért:
 
-* Az [Azure fórumain](https://azure.microsoft.com/support/forums/) Azure-szakértőktől kaphat válaszokat.
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba – a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében, ha az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
-* Ha további segítségre van szüksége, benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**
+* Válaszokat kaphat az Azure szakértőitől [az Azure Forums segítségével.](https://azure.microsoft.com/support/forums/)
+* Lépjen [@AzureSupport](https://twitter.com/azuresupport)kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében, ha az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
+* Az Azure-támogatási incidens fájlja. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**

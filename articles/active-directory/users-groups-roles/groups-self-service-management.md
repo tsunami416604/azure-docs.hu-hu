@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52c37e293941a767621cf56ef75f8cc83b1925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 541deb5cf44ad5440e31641b673ed5da5b5d2b26
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298003"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768546"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Önkiszolgáló csoportkezelés beállítása az Azure Active Directoryban 
 
@@ -33,7 +33,7 @@ Ha biztonsági csoportokat hoz létre az Azure Portalon vagy az Azure AD PowerSh
 Csoportok létrehozva | A biztonsági csoport alapértelmezett viselkedése | Az Office 365-csoport alapértelmezett viselkedése
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | Csak a tulajdonosok adhatnak hozzá tagokat<br>Látható, de nem érhető el az Access panelen való csatlakozáshoz | Megnyitás az összes felhasználó csatlakozásához
-[Azure-portál](https://portal.azure.com) | Csak a tulajdonosok adhatnak hozzá tagokat<br>Látható, de nem érhető el az Access panelen való csatlakozáshoz<br>A tulajdonos nincs automatikusan hozzárendelve a csoport létrehozásakor | Megnyitás az összes felhasználó csatlakozásához
+[Azure Portal](https://portal.azure.com) | Csak a tulajdonosok adhatnak hozzá tagokat<br>Látható, de nem érhető el az Access panelen való csatlakozáshoz<br>A tulajdonos nincs automatikusan hozzárendelve a csoport létrehozásakor | Megnyitás az összes felhasználó csatlakozásához
 [Hozzáférési panel](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Megnyitás az összes felhasználó csatlakozásához<br>A csoport létrehozásakor a tagsági beállítások módosíthatók | Megnyitás az összes felhasználó csatlakozásához<br>A csoport létrehozásakor a tagsági beállítások módosíthatók
 
 ## <a name="self-service-group-management-scenarios"></a>Önkiszolgáló csoportkezelési forgatókönyvek
@@ -55,6 +55,9 @@ Csoportok létrehozva | A biztonsági csoport alapértelmezett viselkedése | Az
 Használhatja **a Tulajdonosok, akik csoporttulajdonosként is rendelhetnek tagokat az Azure Portalokon,** és **a tulajdonosok, akik az Azure Portalokon csoporttulajdonosként rendelhetnek tagokat,** hogy részletesebb hozzáférés-szabályozást érjenek el a felhasználók önkiszolgáló csoportkezelése felett.
 
 Amikor a felhasználók csoportokat hozhatnak létre, a szervezet minden felhasználója új csoportokat hozhat létre, majd alapértelmezett tulajdonosként tagokat adhat ezekhez a csoportokhoz. Nem adhat meg olyan személyeket, akik saját csoportokat hozhatnak létre. Csak akkor adhat meg személyeket, ha egy másik csoporttagot csoporttulajdonossá szeretne tenni.
+
+> [!NOTE]
+> Az Azure Active Directory Premium (P1 vagy P2) licenc szükséges ahhoz, hogy a felhasználók egy biztonsági csoporthoz vagy Office 365-csoporthoz való csatlakozást kérjenek, és a tulajdonosok jóváhagyhatják vagy elutasíthatják a tagsági kérelmeket. Az Azure Active Directory Premium-licenc nélkül a felhasználók továbbra is kezelhetik a csoportjukat a Hozzáférési panelen, de nem hozhatnak létre olyan csoportot, amelytulajdonos-jóváhagyást igényel a Hozzáférési panelen, és nem kérhetik a csoporthoz való csatlakozást. 
 
 ## <a name="next-steps"></a>További lépések
 

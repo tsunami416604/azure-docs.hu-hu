@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 88392e4e61c28d4fe821c8176242246d10e52b23
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313809"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770896"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux alapú fürtök létrehozása a HDInsightban az Azure Portal használatával
 
@@ -94,7 +94,7 @@ A **Biztonság + hálózat** lapon adja meg a következő információkat:
 |Tulajdonság |Leírás |
 |---|---|
 |Vállalati biztonsági csomag|Nem kötelező: Jelölje be a jelölőnégyzetet a **Vállalati biztonsági csomag**használatához. További információt a [HDInsight-fürt konfigurálása vállalati biztonsági csomaggal az Azure Active Directory tartományi szolgáltatások használatával című témakörben talál.](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)|
-|TLS|Nem kötelező: Válasszon egy TLS-verziót a legördülő listából. További információ: [Transport Layer Security](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security).|
+|TLS|Nem kötelező: Válasszon egy TLS-verziót a legördülő listából. További információ: [Transport Layer Security](./transport-layer-security.md).|
 |Virtuális hálózat|Nem kötelező: Válasszon ki egy meglévő virtuális hálózatot és alhálózatot a legördülő listából. További információt az [Azure HDInsight-fürtök virtuális hálózati üzembe helyezésének megtervezése című témakörben talál.](hdinsight-plan-virtual-network-deployment.md) A cikk a virtuális hálózat ra vonatkozó speciális konfigurációs követelményeket tartalmaz.|
 |Lemeztitkosítási beállítások|Nem kötelező: Jelölje be a jelölőnégyzetet a titkosítás használatához. További információt az [Ügyfél által kezelt kulcslemez-titkosítás](./disk-encryption.md)című témakörben talál.|
 |Kafka REST proxy|Ez a beállítás csak a Kafka fürttípusesetén érhető el. További információt a [REST-proxy használata](./kafka/rest-proxy.md)című témakörben talál.|

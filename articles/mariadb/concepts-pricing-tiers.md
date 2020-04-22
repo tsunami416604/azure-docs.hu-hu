@@ -1,17 +1,17 @@
 ---
 title: Tarifacsomagok – Azure Database for MariaDB
 description: Ismerje meg az Azure Database mariadb-hez való különböző tarifacsomagjait, beleértve a számítási generációkat, a tárolási típusokat, a tárhelyméretet, a virtuális magokat, a memóriát és a biztonsági mentés megőrzési időszakait.
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 39af6850810fa471003cea27ed274972fb2ff046
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c057bebf94362b3b9e42db9d311e99f1e35c651
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528030"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770129"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure-adatbázis a MariaDB-díjszabási szintekhez
 

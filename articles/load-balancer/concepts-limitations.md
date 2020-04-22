@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: a94b51e49951948974b8f42f6c89cd3c84f95d65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a7210915920ed9ab2a5ddc47a27c2587895a57a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064283"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768255"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Terheléselosztó alkatrészek és korlátozások
 Az Azure Load Balancer számos kulcsfontosságú összetevőt tartalmaz a működéséhez.  Ezek az összetevők konfigurálhatók az előfizetésben az Azure Portalon, az Azure CLI-n vagy az Azure PowerShellen keresztül.  
@@ -95,7 +95,7 @@ A következő kép a kivonatalapú elosztást szemlélteti:
 
     - a terheléselosztási szabályok arra következtenek, hogy a SNAT hogyan van beprogramozva. A terheléselosztási szabályok protokollspecifikusak. Az SNAT protokoll-specifikus, és a konfigurációnak ezt kell tükröznie, nem pedig mellékhatást létrehoznia.
 
-    - **Több előtér** Ha több előtér-rendszer érhető el, az összes előtér-rendszer használatos, és minden előtér megszorozza a rendelkezésre álló SNAT-portok számát. Ha több SNAT-portot szeretne, mert nagy a kimenő kapcsolatok iránti igény, vagy már nagy az igény a kimenő kapcsolatokra, hozzáadhat növekményes SNAT-portkészletet további előtér-, szabály- és háttérkészletek konfigurálásával ugyanahhoz a virtuális géphez. Erőforrások.
+    - **Több előtér** Ha több előtér-rendszer érhető el, az összes előtér-rendszer használatos, és minden előtér megszorozza a rendelkezésre álló SNAT-portok számát. Ha több SNAT-portot szeretne, mert nagy igény van a kimenő kapcsolatokra, és növekményes SNAT-portkészletet is hozzáadhat további előtér-, szabály- és háttérkészletek konfigurálásával ugyanazon virtuálisgép-erőforrásokhoz.
 
     - **Annak szabályozása, hogy melyik előtér van használatban a kimenő** Választhat, és szabályozhatja, ha nem szeretné, hogy egy adott előtér-t használja a kimenő kapcsolatokhoz. Ha azt szeretné, hogy a kimenő kapcsolatok csak egy adott előtér-IP-címről származnak, tetszés szerint letilthatja a kimenő SNAT-t a kimenő leképezést kifejező szabályon.
 
@@ -171,6 +171,8 @@ A terheléselosztó támogatja az alapszintű és a standard termékkészletet i
 
 A teljes forgatókönyv konfigurációja némileg eltérhet a termékváltozattól függően. A terheléselosztó dokumentációja akkor kiált, ha egy cikk csak egy adott termékváltozatra vonatkozik. A különbségek összehasonlításához és megértéséhez lásd az alábbi táblázatot. További információ: [Azure Standard Load Balancer overview](load-balancer-standard-overview.md).
 
+Az alapszintű terheléselosztó standardra való frissítéséhez olvassa el [az Alapszintű terheléselosztó frissítése](upgrade-basic-standard.md)című témakört.
+
 >[!NOTE]
 > A Microsoft standard terheléselosztót ajánl.
 Az önálló virtuális gépeket, a rendelkezésre állási csoportokat és a Virtual Machine Scale-készleteket csak egy termékváltozathoz csatlakoztathatja, sosem kettőhöz egyszerre. A terheléselosztónak és a nyilvános IP-cím termékváltozatának meg kell egyeznie, ha nyilvános IP-címekkel használja őket. A terheléselosztó és a nyilvános IP-sus-ok nem módosíthatók.
@@ -207,6 +209,7 @@ További információ: [Load balancer limits](https://docs.microsoft.com/azure/a
 
 ## <a name="next-steps"></a>További lépések
 
+- Lásd: [Egyszerű terheléselosztó frissítése](upgrade-basic-standard.md) az alapszintű terheléselosztó standard terheléselosztóra való frissítéséhez.
 - Lásd: [Nyilvános standard terheléselosztó létrehozása](quickstart-load-balancer-standard-public-portal.md) a terheléselosztó használatának megkezdéséhez: hozzon létre egyet, hozzon létre virtuális gépeket egy telepített egyéni IIS-bővítményt, és töltse fel a webalkalmazást a virtuális gépek között.
 - További információ az [Azure Load Balancer](load-balancer-overview.md)szolgáltatásról.
 - További információ a [szabványos terheléselosztó és a rendelkezésre állási zónák](load-balancer-standard-availability-zones.md)használatáról.
