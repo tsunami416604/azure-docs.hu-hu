@@ -12,7 +12,7 @@ ms.date: 03/27/2020
 ms.custom: azure-synapse
 ms.openlocfilehash: 48cdbc8188604ce1992a1cb15289576ba92902a3
 ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2020
 ms.locfileid: "82086147"

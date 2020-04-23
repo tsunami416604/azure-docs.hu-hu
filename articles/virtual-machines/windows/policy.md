@@ -16,7 +16,7 @@ ms.date: 08/02/2017
 ms.author: mimckitt
 ms.openlocfilehash: 407e5cefe9f7f60c86de6e80133ff1b3f8b9003d
 ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2020
 ms.locfileid: "82086538"

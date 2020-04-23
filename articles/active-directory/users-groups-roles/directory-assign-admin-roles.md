@@ -16,7 +16,7 @@ ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac49209fb1debca604a6aeb8ad3993ff898c331
 ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2020
 ms.locfileid: "82083002"
