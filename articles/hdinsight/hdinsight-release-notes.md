@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: cdb31f1a46d7f46b69e9e0ad47a77ba6b32a50a0
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 04/22/2020
+ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770831"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084889"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -66,14 +66,3 @@ A HDInsight továbbra is javítja a fürt megbízhatóságát és teljesítmény
 ## <a name="component-version-change"></a>Az összetevő verziómódosítása
 Ehhez a kiadáshoz nincs összetevőverzió-változás. A HDInsight 4.0-s hdinsight 3.6-os verziójának jelenlegi összetevő-verzióit itt találja.
 
-## <a name="known-issues"></a>Ismert problémák
-
-2020. március 18-tól néhány Nyugat-Európában vagy Észak-Európában lévő Azure HDInsight-ügyfél hibaüzenetet kapott a HDInsight-fürtök létrehozásakor vagy méretezésekor ezekben a régiókban. A problémával kapcsolatos hibák a következők:
-
-- Belső kiszolgálóhiba történt a kérelem feldolgozása közben. Próbálkozzon újra a kéréssel, vagy forduljon az ügyfélszolgálathoz.
-- Legalább egy erőforrás-telepítési művelet sikertelen volt. A részleteket a központi telepítési műveletek listája tartalmazza. Kérjük, olvassa el https://aka.ms/DeployOperations a használati adatokat
-- A User SubscriptionId\<\>' Subscription ID ' nem\<rendelkezik a "fürtnév>" erőforrás létrehozásához megmaradt magokkal. Kötelező: \<\>X , Elérhető: 0.
-
-A mérnökök tisztában vannak ezzel a problémával, és aktívan vizsgálják.
-
-További segítségért hozzon létre [egy támogatási kérelmet.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cfc66789360f78c927dd157305074ed5ea6f32a
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768443"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086130"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Milyen SAP-szoftverek támogatottak az Azure-telepítésekhez?
 Ez a cikk bemutatja, hogyan megtudhatja, hogy milyen SAP-szoftverek támogatottak az Azure-telepítésekhez, és mik a szükséges operációsrendszer-kiadások vagy DBMS-kiadások.
@@ -135,7 +135,7 @@ Az SAP Datahub/Vora támogatása az Azure Kubernetes-szolgáltatásokban (AKS) a
 
 Az SAP BPC 10.1 SP08 támogatása az [SAP támogatási #2451795](https://launchpad.support.sap.com/#/notes/2451795)
 
-Az SAP Hybris Commerce Platform azure-beli támogatását a [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud)részletezi. Mivel a támogatott DBMS az SAP Hybris Commerce Platform, felsorolja, mint:
+Az SAP Hybris Commerce Platform azure-beli támogatását a [Hybris dokumentáció részletezi.](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html) Mivel a támogatott DBMS az SAP Hybris Commerce Platform, felsorolja, mint:
 
 - SQL Server és oracle a Windows operációs rendszer platformján. Ugyanazok a minimális kiadások érvényesek, mint az SAP NetWeaver esetében. A részleteket az [SAP támogatási #1928533](https://launchpad.support.sap.com/#/notes/1928533) tartalmazza.
 - SAP HANA a Red Hat és a SUSE Linux. Sap HANA tanúsítvánnyal rendelkező virtuálisgép-típusok szükségesek a [dokumentum](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)korábbi dokumentumainak szerint. Az SAP (Hybris) Kereskedelmi Platform OLTP-munkaterhelésnek minősül

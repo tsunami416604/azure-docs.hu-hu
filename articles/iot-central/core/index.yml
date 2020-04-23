@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/18/2020
-  ms.openlocfilehash: 507c2be217fa799d170963ba0f722af2878793e4
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 277cc5b2427dd422e49247cb52aff3c25c7fce81
+  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77623446"
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "82024795"
 landingContent:
 - title: Tudnivalók az Azure IoT Centralról
   linkLists:
@@ -40,7 +40,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Eszköz csatlakoztatása
-      url: tutorial-connect-device.md
+      url: tutorial-connect-device-nodejs.md
     - text: IoT Plug and Play-eszköz (előzetes verzió) csatlakoztatása
       url: tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
@@ -81,7 +81,7 @@ landingContent:
       url: howto-create-custom-rules.md
     - text: Egyéni elemzések létrehozása
       url: howto-create-custom-analytics.md
-- title: Adminisztráció
+- title: Felügyelet
   linkLists:
   - linkListType: how-to-guide
     links:

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/17/2020
+ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 571f4421a5d890fab31eda0125802d33918144ef
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6d5fd75a737a0a866b6e5c26c417458ee95845fb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81726381"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084141"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Meraki irányítópultjával
 
@@ -57,7 +57,6 @@ A Meraki-irányítópult Azure AD-be való integrálásának konfigurálásához
 1. A **Hozzáadás a gyűjteményből szakaszban** írja be a **Meraki irányítópultot** a keresőmezőbe.
 1. Válassza a **Meraki irányítópult lehetőséget** az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-meraki-dashboard"></a>Konfigurálja és tesztelje az Azure AD egyszeri bejelentkezését a Meraki irányítópulthoz
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Meraki irányítópultjával egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Meraki irányítópulton.
@@ -81,8 +80,14 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció szakaszban** az alkalmazás előre konfigurált, és a szükséges URL-címek már előre kitöltött az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Mentés** gombra kattintva.
+1. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
+     
+    A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://n27.meraki.com/saml/login/m9ZEgb/< UNIQUE ID >`
 
+    > [!NOTE]
+    > A Válasz URL-értéke nem valós. Frissítse ezt az értéket a tényleges Válasz URL-értékkel, amelyet az oktatóanyag későbbi részében ismertetünk.
+
+1. Kattintson a **Mentés** gombra.
 
 1. A Meraki Dashboard alkalmazás az SAML-állításokat egy adott formátumban várja, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumok konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -92,8 +97,8 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
     
     | Name (Név) | Forrás attribútuma|
     | ---------------| --------- |
-    | felhasználónév | user.userprincipalname |
-    | Szerepet | user.assignedroles |
+    | `https://dashboard.meraki.com/saml/attributes/username` | user.userprincipalname |
+    | `https://dashboard.meraki.com/saml/attributes/role` | user.assignedroles |
 
     > [!NOTE]
     > A szerepkörök Azure AD-ben való konfigurálásának megértéséhez [lásd itt.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)
@@ -106,7 +111,7 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
     ![Ujjlenyomat másolása érték](common/copy-thumbprint.png)
 
-1. A **Meraki irányítópult beállítása csoportban** másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **Meraki irányítópult beállítása csoportban** másolja a kijelentkezés URL-címét, és mentse a számítógépre.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
@@ -156,7 +161,7 @@ Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t meraki i
 
     ![Meraki irányítópult konfigurációja](./media/meraki-dashboard-tutorial/configure3.png)
 
-1. Illessze be a **ujjlenyomat-értéket,** amelyet az Azure Portalról másolt az **X.590 cert SHA1** ujjlenyomat-szövegdobozába. Ezután kattintson a **Mentés gombra.**
+1. Illessze be a **ujjlenyomat-értéket,** amelyet az Azure Portalról másolt az **X.590 cert SHA1** ujjlenyomat-szövegdobozába. Ezután kattintson a **Mentés gombra.** A mentés után megjelenik a fogyasztói URL.After saving, the Consumer URL will show. Másolja a fogyasztói URL-értéket, és illessze be ezt a **Válasz URL-cím** beszövegbe az Azure Portal **alapszintű SAML konfigurációs szakaszában.**
 
     ![Meraki irányítópult konfigurációja](./media/meraki-dashboard-tutorial/configure4.png)
 
@@ -182,7 +187,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hoz
 
 Amikor a Hozzáférési panelen a Meraki irányítópult csempére kattint, automatikusan be kell jelentkeznie a Meraki irányítópultra, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 - [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

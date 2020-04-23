@@ -4,19 +4,19 @@ description: Ezzel a cikkel az Azure IoT Edge szabványos diagnosztikai készsé
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/20/2019
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3529d6a67c6c8c19c053fe3170298658e90b4a54
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 2e15dffac73b4a50b1ef9288feaeb6073dea91e0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729275"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086521"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -40,20 +40,19 @@ A parancs `check` futtatásához az alábbiak szerint, vagy a `--help` zászló,
   iotedge check
   ```
 
-Az eszköz által végzett ellenőrzések típusai a következőképpen sorolhatók be:
+A hibaelhárító eszköz számos ellenőrzést futtat, amelyek a következő három kategóriába vannak rendezve:
 
 * Konfigurációs ellenőrzések: Megvizsgálja azokat a részleteket, amelyek megakadályozhatják, hogy az Edge-eszközök csatlakozzanak a felhőhöz, beleértve a *config.yaml* és a tárolómotor problémáit.
 * Kapcsolatellenőrzések: Ellenőrzi, hogy az IoT Edge futásidejű elérheti-e a portokat a gazdaeszközön, és az összes IoT Edge-összetevő csatlakozhat az IoT Hubhoz.
 * Üzemkészültségi ellenőrzések: Az ajánlott gyártási gyakorlati tanácsok, például az eszközhitelesítési tanúsítványok állapota és a modul naplófájljának konfigurációja.
 
-A diagnosztikai ellenőrzések teljes listáját [a Beépített hibaelhárítási funkció című témakörben](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)található.
+Az eszköz által futtatott diagnosztikai ellenőrzésekről, többek között arról, hogy mi a teendő, ha hibaüzenetet vagy figyelmeztetést kap, olvassa el az [IoT Edge hibaelhárítási ellenőrzéseit.](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)
 
 ## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>Hibakeresési információk gyűjtése az iotedge "support-bundle" paranccsal
 
 Ha egy IoT Edge-eszközről kell naplókat gyűjtenie, a `support-bundle` legkényelmesebb módja a parancs használata. Alapértelmezés szerint ez a parancs összegyűjti a modult, az IoT Edge Security Manager téseit és a tárolómotor-naplókat, az "iotedge check" JSON kimenetet és más hasznos hibakeresési információkat. Tömöríti őket egyetlen fájlba a könnyű megosztás érdekében. A `support-bundle` parancs az [1.0.9-es](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) és újabb verzióban érhető el.
 
 Futtassa `support-bundle` a `--since` parancsot a jelzővel, és adja meg, hogy mennyi ideig szeretne naplókat beszerezni a múlttól. Például `6h` kap naplók, mivel az `6d` elmúlt 6 órában, mivel az elmúlt 6 nap, `6m` mivel az elmúlt 6 perc, és így tovább. A `--help` beállítások teljes listájának megtekintéséhez adja meg a jelzőt.
-
 
 * Linuxalatt:
 

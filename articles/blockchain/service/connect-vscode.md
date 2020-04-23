@@ -1,15 +1,15 @@
 ---
 title: Az Azure Blockchain szolgáltatáshoz való csatlakozás hoz a Visual Studio-kód dal
 description: Csatlakozás Egy Azure Blockchain Service konzorciumi hálózathoz az Azure Blockchain Development Kit for Ethereum bővítmény használatával a Visual Studio-kódban
-ms.date: 03/26/2020
+ms.date: 04/22/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
-ms.openlocfilehash: 269a3e419186daddf1e6a41a54e52e688f4bc7e3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348579"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084838"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Rövid útmutató: A Visual Studio-kód használatával csatlakozhat egy Azure Blockchain Service konzorciumi hálózathoz
 
@@ -20,7 +20,7 @@ Ebben a rövid útmutatóban telepíti és használhatja az Azure Blockchain Dev
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Teljes [rövid útmutató: Blockchain-tag létrehozása az Azure Portalon](create-member.md) vagy a [gyorsútmutatóban: Hozzon létre egy Azure Blockchain Service Blockchain-tagot az Azure CLI használatával](create-member-cli.md)
-* [Visual Studio kód](https://code.visualstudio.com/Download)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure Blockchain fejlesztői készlet az Ethereum bővítményhez](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15.x vagy újabb](https://nodejs.org)
 * [Git 2.10.x vagy újabb](https://git-scm.com)
@@ -31,10 +31,10 @@ Ebben a rövid útmutatóban telepíti és használhatja az Azure Blockchain Dev
 Windows rendszeren telepítve van c++ fordító a csomópont-gyp modulhoz. Az MSBuild eszközöket használhatja:
 
 * Ha a Visual Studio 2017 telepítve van, konfigurálja az npm-et úgy, hogy az MSBuild eszközöket használja a paranccsal`npm config set msvs_version 2017 -g`
-* Ha a Visual Studio 2019 telepítve van, állítsa be az MS buildeszközök elérési útját az npm-hez. Például: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* Ha a Visual Studio 2019 telepítve van, állítsa be az MS buildeszközök elérési útját az npm-hez. A `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"` például
 * Ellenkező esetben telepítse az önálló VS `npm install --global windows-build-tools` Build eszközöket egy emelt szintű *Futtatás rendszergazdai parancshéjként* használatával.
 
-A csomópont-gyp-ről további információt a [GitHub csomópont-gyp tárházában](https://github.com/node-gyp)talál.
+A csomópont-gyp-ről további információt a [GitHub csomópont-gyp tárházában](https://github.com/nodejs/node-gyp)talál.
 
 ### <a name="verify-azure-blockchain-development-kit-environment"></a>Az Azure Blockchain Development Kit környezet ellenőrzése
 

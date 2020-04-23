@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: cb7580929a40683603263db03f2cfca0e1824233
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 407e5cefe9f7f60c86de6e80133ff1b3f8b9003d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873803"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086538"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Szabályzatok alkalmazása Windows-alapú virtuális gépekre az Azure Resource Manager rel
 A házirendek használatával a szervezet különböző konvenciókat és szabályokat kényszeríthet ki a vállalaton belül. A kívánt viselkedés kényszerítése segíthet a kockázat csökkentésében, miközben hozzájárul a szervezet sikeréhez. Ebben a cikkben azt ismertetjük, hogyan használhatja az Azure Resource Manager-szabályzatok a szervezet virtuális gépek kívánt viselkedésének meghatározásához.
@@ -36,7 +36,6 @@ Annak érdekében, hogy a szervezet virtuális gépei kompatibilisek legyenek eg
       {
         "field": "type",
         "in": [
-          "Microsoft.Compute/disks",
           "Microsoft.Compute/virtualMachines",
           "Microsoft.Compute/VirtualMachineScaleSets"
         ]

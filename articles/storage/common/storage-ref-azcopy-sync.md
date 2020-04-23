@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d855019be7f357a35a26d14e68ba3d427d984e17
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988243"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086028"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -65,6 +65,9 @@ Egyetlen fájl szinkronizálása:
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
+
+> [!NOTE]
+> A célblobnak léteznie *kell.* Egyetlen `azcopy copy` olyan fájl másolására használható, amely még nem létezik a célhelyen. Ellenkező esetben a következő `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`hiba fordul elő: .
 
 Ugyanaz, mint fent, de ezúttal is számítsa ki a fájltartalom MD5 kivonatát, és mentse a blob Content-MD5 tulajdonságaként:
 

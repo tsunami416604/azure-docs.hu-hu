@@ -1,15 +1,15 @@
 ---
 title: Intelligens szerződések létrehozása, összeállítása & üzembe helyezése oktatóanyag – Azure Blockchain Szolgáltatás
 description: Oktatóanyag arról, hogyan használhatja az Azure Blockchain Development Kit for Ethereum bővítményt a Visual Studio Code-ban intelligens szerződés létrehozásához, létrehozásához és üzembe helyezéséhez az Azure Blockchain szolgáltatásban.
-ms.date: 12/06/2019
+ms.date: 04/22/2020
 ms.topic: tutorial
-ms.reviewer: chrisseg
-ms.openlocfilehash: 5b901ab904425a22d2fe9643ffa75a4e978efa88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.reviewer: caleteet
+ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74972852"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086657"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Oktatóanyag: Intelligens szerződések létrehozása, létrehozása és üzembe helyezése az Azure Blockchain szolgáltatásban
 
@@ -27,7 +27,7 @@ Az Azure Blockchain Development Kit for Ethereum segítségével:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Teljes [rövid útmutató: A Visual Studio-kód használatával csatlakozhat az Azure Blockchain Service konzorciumi hálózatához](connect-vscode.md)
-* [Visual Studio kód](https://code.visualstudio.com/Download)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure Blockchain fejlesztői készlet az Ethereum bővítményhez](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15.x vagy újabb](https://nodejs.org/download)
 * [Git 2.10.x vagy újabb](https://git-scm.com)
@@ -38,10 +38,10 @@ Az Azure Blockchain Development Kit for Ethereum segítségével:
 Windows rendszeren telepítve van c++ fordító a csomópont-gyp modulhoz. Az MSBuild eszközöket használhatja:
 
 * Ha a Visual Studio 2017 telepítve van, konfigurálja az npm-et úgy, hogy az MSBuild eszközöket használja a paranccsal`npm config set msvs_version 2017 -g`
-* Ha a Visual Studio 2019 telepítve van, állítsa be az MS buildeszközök elérési útját az npm-hez. Például: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* Ha a Visual Studio 2019 telepítve van, állítsa be az MS buildeszközök elérési útját az npm-hez. A `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"` például
 * Ellenkező esetben telepítse az önálló VS `npm install --global windows-build-tools` Build eszközöket egy emelt szintű *Futtatás rendszergazdai parancshéjként* használatával.
 
-A csomópont-gyp-ről további információt a [GitHub csomópont-gyp tárházában](https://github.com/node-gyp)talál.
+A csomópont-gyp-ről további információt a [GitHub csomópont-gyp tárházában](https://github.com/nodejs/node-gyp)talál.
 
 ## <a name="create-a-smart-contract"></a>Intelligens szerződés létrehozása
 

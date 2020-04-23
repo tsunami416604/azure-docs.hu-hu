@@ -134,7 +134,7 @@
           href: source-control-integration.md
     - name: Konfigurációkezelés
       items:
-        - name: A State Configuration (DSC) kezelése
+        - name: Állapotkonfiguráció (DSC)
           items:
             - name: Áttekintés
               href: automation-dsc-overview.md
@@ -156,7 +156,7 @@
               href: automation-dsc-diagnostics.md
             - name: DSC-vel kapcsolatos problémák elhárítása
               href: troubleshoot/desired-state-configuration.md
-        - name: A Change Tracking és az Inventory kezelése
+        - name: Change Tracking és Inventory
           items:
             - name: Áttekintés
               href: change-tracking.md

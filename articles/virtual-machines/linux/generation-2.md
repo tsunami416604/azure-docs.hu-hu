@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 0767d6c003be8f4e0b28c8d8ce1d48b8f578dd86
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273528"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084277"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2.000.000 virtuális gép támogatása az Azure-ban
 
@@ -27,7 +27,7 @@ A 2. generációs virtuális gépek az új UEFI-alapú rendszerindítási archit
 Az 1. generációs virtuális gépeket az Azure összes virtuálisgép-mérete támogatja (kivéve az Mv2 sorozatú virtuális gépeket). Az Azure most antól 2.
 
 * [B-sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
-* [DC sorozat](../dcv2-series.md)
+* [DCsv2 sorozat](../dcv2-series.md)
 * [DSv2 és](../dv2-dsv2-series.md) [Dsv3 sorozatú](../dv3-dsv3-series.md)
 * [Esv3-sorozat](../ev3-esv3-series.md)
 * [Fsv2 sorozat](../fsv2-series.md)

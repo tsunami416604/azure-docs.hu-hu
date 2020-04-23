@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: b-juche
-ms.openlocfilehash: d28f5469174a2659869ebb01ef01653b7190e30e
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: a73da39dafcc8be78fbe1c023693ffa4a19aa1d3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772079"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085008"
 ---
-# <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Az Azure NetApp-fájlok Oracle Database szolgáltatással való használatának előnyei
+# <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Az Azure NetApp Files Oracle Database-szel való használatának előnyei
 
 Az Oracle Direct NFS (dNFS) lehetővé teszi, hogy nagyobb teljesítményt nyújtson, mint az operációs rendszer saját NFS-illesztőprogramja. Ez a cikk ismerteti a technológiát, és teljesítmény-összehasonlítást biztosít a dNFS és a hagyományos NFS-ügyfél (Kernel NFS) között. Azt is bemutatja az előnyöket és a könnyű használata dNFS Az Azure NetApp Files.  
 
@@ -39,7 +39,7 @@ Ezzel szemben az Oracle dNFS javítja a teljesítményt azáltal, hogy több há
 
 A [Direct NFS Oracle FAQ azt](http://www.orafaq.com/wiki/Direct_NFS) mutatja, hogy az Oracle dNFS optimalizált NFS-ügyfél. Gyors és skálázható hozzáférést biztosít a NAS tárolóeszközökön található NFS-tárolókhoz (TCP/IP-n keresztül érhető el). A dNFS ugyanúgy be van építve az adatbáziskernelbe, mint az ASM, amelyet elsősorban a DAS vagy a SAN storage használ. Mint ilyen, *az iránymutatás a dNFS használata a NAS-tároló és az ASM használata a SAN-tároló megvalósításakor.*
 
-A dNFS az alapértelmezett beállítás az Oracle 18c-ban és az ALAPÉRTELMEZETT a RAC-ban.
+A dNFS az alapértelmezett beállítás az Oracle 18c-ban.
 
 A dNFS az Oracle Database 11g-től kezdve érhető el. Az alábbi ábra összehasonlítja a dNFS-t a natív NFS-sel. DNFS használata esetén egy Azure virtuális gépen futó Oracle-adatbázis több I/O-t tud vezetni, mint a natív NFS-ügyfél.
 

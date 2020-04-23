@@ -1,24 +1,18 @@
 ---
 title: Virtuális gép létrehozása felügyelt lemezképből az Azure-ban
-description: Hozzon létre egy Windows-virtuális gépet egy általános felügyelt lemezképből az Azure PowerShell vagy az Azure Portal használatával, az Erőforrás-kezelő telepítési modelljében.
-services: virtual-machines-windows
-documentationcenter: ''
+description: Hozzon létre egy Windows virtuális gép egy általános felügyelt felügyelt lemezkép az Azure PowerShell vagy a portál használatával.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74841931"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086317"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Virtuális gép létrehozása felügyelt rendszerképből
 

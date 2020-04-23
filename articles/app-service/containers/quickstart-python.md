@@ -6,12 +6,12 @@ ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: ea5df6a2d4a972638b52587f9edc868f65e25df5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7f8d21cbccc1a6eec7f62ab5d129f3f0637b8d13
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532748"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085127"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rövid útmutató: Python-alkalmazás létrehozása linuxos Azure App Service-ben
 
@@ -109,25 +109,25 @@ Az `--sku F1` argumentum létrehozza a webalkalmazást az ingyenes tarifaszinten
 
 Tetszés szerint `-l <location-name>` megadhatja azt az argumentumot, `<location_name>` hogy hol található az Azure-régió, például **centralus,** **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**és így tovább. Az Azure-fiók engedélyezett régióinak listáját a [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) parancs futtatásával kérheti le.
 
-A `az webapp up` parancs teljes futtatása eltarthat néhány percig. Futás közben a következő példához hasonló `<app_name>` információkat jelenít meg, ahol a korábban megadott név lesz:
+A `az webapp up` parancs teljes futtatása eltarthat néhány percig. Futás közben a következő példához hasonló `<app-name>` információkat jelenít meg, ahol a korábban megadott név lesz:
 
 <pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
-Creating app '<app-name>' ....
+Creating app '&lt;app-name&gt;' ....
 Configuring default logging for the app, if not already enabled
 Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
 Getting scm site credentials for zip deployment
 Starting zip deployment. This operation can take a while to complete ...
 Deployment endpoint responded with status code 202
-You can launch the app at http://<app-name>.azurewebsites.net
+You can launch the app at http://&lt;app-name&gt;.azurewebsites.net
 {
-  "URL": "http://<app-name>.net",
+  "URL": "http://&lt;app-name&gt;.net",
   "appserviceplan": "appsvc_asp_Linux_centralus",
   "location": "eastus",
-  "name": "<app-name>",
+  "name": "&lt;app-name&gt;",
   "os": "Linux",
   "resourcegroup": "appsvc_rg_Linux_centralus",
   "runtime_version": "python|3.7",

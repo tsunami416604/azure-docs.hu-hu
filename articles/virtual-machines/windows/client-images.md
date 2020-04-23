@@ -1,24 +1,19 @@
 ---
 title: Windows-ügyfélképek használata az Azure-ban
 description: A Visual Studio előfizetési előnyeinek használata a Windows 7, a Windows 8 vagy a Windows 10 azure-beli telepítéséhez fejlesztési és tesztelési forgatókönyvekhez
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
+ms.subservice: imaging
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 812e6d251943d4418666f221ad8b5d2b6e501736
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74039504"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083274"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/tesztelési helyzetekben
 Használhatja a Windows 7, Windows 8 vagy Windows 10 Enterprise (x64) az Azure-ban a fejlesztési és tesztelési forgatókönyvek, feltéve, hogy rendelkezik a megfelelő Visual Studio (korábbi MSDN) előfizetéssel. Ez a cikk ismerteti a Windows 7, A Windows 8.1, a Windows 10 Enterprise azure-beli futtatásának jogosultsági követelményeit, valamint az alábbi Azure Gallery-lemezképek használatát.

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 39e3521339947263161979033406fb39e397373f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348977"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084957"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Az Azure Blob-tároló eseményindítója az Azure Functionshez
 
@@ -103,7 +103,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő példa egy blob-eseményindító-kötést mutat be egy *function.json* fájlban és [javascript-kódot,](functions-reference-node.md) amely a kötést használja. A függvény naplót ír, ha egy blob `samples-workitems` ot ad hozzá vagy frissít a tárolóban.
 
@@ -256,7 +256,7 @@ A felhasználandó tárfiókot a következő sorrendben határozzuk meg:
 
 Az attribútumokat a C# script nem támogatja.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
@@ -294,7 +294,7 @@ Az alábbi táblázat a *function.json* fájlban és az `BlobTrigger` attribútu
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Blob-adatok `context.bindings.<NAME>` elérése `<NAME>` a *function.json*ban megadott értéknek megfelelő helyen.
 
@@ -360,7 +360,7 @@ Ha a blob neve `name` * {20140101}-soundfile.mp3*, a függvénykódban a változ
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -391,7 +391,7 @@ Az Azure Functions az *Azure-webjobs-hosts* nevű tárolóban tárolja a blobnyu
 * A blob neve
 * Az ETag (blob verzióazonosítója, például: "0x8D1DC6E70A277EF")
 
-Egy blob újrafeldolgozásának kényszerítéséhez törölje a blob blobnyugta az adott blob az *azure-webjobs-hosts* tároló manuálisan. Előfordulhat, hogy az újrafeldolgozás nem következik be azonnal, akkor garantáltan egy későbbi időpontban fordul elő.
+Egy blob újrafeldolgozásának kényszerítéséhez törölje a blob blobnyugta az adott blob az *azure-webjobs-hosts* tároló manuálisan. Előfordulhat, hogy az újrafeldolgozás nem következik be azonnal, akkor garantáltan egy későbbi időpontban fordul elő. A *scaninfo* blob az *azure-webjobs-hosts/blobscaninfo* azonnal újrafeldolgozható. A `LatestScan` tulajdonság után utoljára módosított időbélyeggel rendelkező blobok újra bekerülnek a rendszerbe.
 
 ## <a name="poison-blobs"></a>Méreg foltok
 

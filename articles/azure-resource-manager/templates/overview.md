@@ -3,12 +3,12 @@ title: Sablonok – Áttekintés
 description: Az Azure Resource Manager-sablonok használatával az erőforrások üzembe helyezéséhez nyújtott előnyök ismertetése.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885735"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086334"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -50,7 +50,7 @@ Ha az ARM-sablonok és a másik infrastruktúra kódszolgáltatásként való ha
 
 * **Üzembe helyezési tervrajzok:** A Microsoft által biztosított [tervrajzok](../../governance/blueprints/overview.md) előnyeit kihasználhatja a szabályozási és megfelelőségi szabványok nak való megfelelés érdekében. Ezek a tervrajzok előre elkészített sablonokat tartalmaznak a különböző architektúrákhoz.
 
-* **CI/CD integráció:** Sablonokat integrálhat a folyamatos integrációs és folyamatos üzembe helyezési (CI/CD) eszközökbe, amelyek automatizálhatják a kiadási folyamatokat a gyors és megbízható alkalmazás- és infrastruktúra-frissítések érdekében. Az Azure DevOps és a Resource Manager sablonfeladat használatával az Azure Pipelines segítségével folyamatosan hozhat létre és helyezhet üzembe ARM-sablonprojekteket. További információ: [VS-projekt folyamatokés](add-template-to-azure-pipelines.md) [folyamatos integráció az Azure Pipelines.](template-tutorial-use-azure-pipelines.md)
+* **CI/CD integráció:** Sablonokat integrálhat a folyamatos integrációs és folyamatos üzembe helyezési (CI/CD) eszközökbe, amelyek automatizálhatják a kiadási folyamatokat a gyors és megbízható alkalmazás- és infrastruktúra-frissítések érdekében. Az Azure DevOps és a Resource Manager sablonfeladat használatával az Azure Pipelines segítségével folyamatosan hozhat létre és helyezhet üzembe ARM-sablonprojekteket. További információ: [VS-projekt folyamatokkal](add-template-to-azure-pipelines.md) és [oktatóanyag: Az Azure Resource Manager-sablonok folyamatos integrációja az Azure-folyamatokkal.](./deployment-tutorial-pipeline.md)
 
 * **Exportálható kód**: Egy meglévő erőforráscsoport sablonját az erőforráscsoport aktuális állapotának exportálásával vagy egy adott központi telepítéshez használt sablon megtekintésével szerezheti be. Az [exportált sablon](export-template-portal.md) megtekintése hasznos módszer a sablon szintaxisának megismerésére.
 

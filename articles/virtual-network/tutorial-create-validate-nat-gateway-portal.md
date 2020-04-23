@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 7c26487018b9632b5780dcd7c56ab36f286f8cac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ceadbb4297ad0c5ce28470dd75b3f3496c9c5152
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060001"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084743"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Oktatóanyag: NAT-átjáró létrehozása az Azure Portalon, és a NAT-szolgáltatás tesztelése
 
@@ -29,7 +29,7 @@ Ha szeretné, ezeket a lépéseket az [Azure CLI](tutorial-create-validate-nat-g
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>A forrás előkészítése a kimenő forgalomra
 
@@ -46,9 +46,9 @@ Ebben a szakaszban a következő paramétereket kell lecserélnie az alábbi inf
 | **\<erőforráscsoport-név>**  | myResourceGroupNAT |
 | **\<virtuális hálózat neve>** | myVNetsource          |
 | **\<régiónév>**          | USA 2. keleti régiója      |
-| **\<IPv4-címtér>**   | 192.168.0.0\16          |
+| **\<IPv4-címtér>**   | 192.168.0.0/16          |
 | **\<alhálózat-név>**          | mySubnetsource        |
-| **\<alhálózati címtartomány>** | 192.168.0.0\24          |
+| **\<alhálózati címtartomány>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -104,7 +104,7 @@ Ez a szakasz részletezi, hogyan hozhat létre és konfigurálhat a NAT szolgál
     | ------- | ----- |
     | IP-verzió | Válassza az **IPv4** lehetőséget.
     | SKU | Válassza a **Normál**lehetőséget.
-    | Név | Adja meg **a myPublicIPsource értéket.** |
+    | Name (Név) | Adja meg **a myPublicIPsource értéket.** |
     | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza a **myResourceGroupNAT lehetőséget.** |
     | Hely | Válassza az **USA 2. keleti régiója** lehetőséget.|
@@ -169,9 +169,9 @@ Ebben a szakaszban a következő paramétereket kell lecserélnie az alábbi inf
 | **\<erőforráscsoport-név>**  | myResourceGroupNAT |
 | **\<virtuális hálózat neve>** | myVNetdestination          |
 | **\<régiónév>**          | USA 2. keleti régiója      |
-| **\<IPv4-címtér>**   | 192.168.0.0\16          |
+| **\<IPv4-címtér>**   | 192.168.0.0/16          |
 | **\<alhálózat-név>**          | mySubnetdestination        |
-| **\<alhálózati címtartomány>** | 192.168.0.0\24          |
+| **\<alhálózati címtartomány>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 04/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3f284efd6a9a2fd83c8e2a8f9fb7a962c1cacc1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4ac49209fb1debca604a6aeb8ad3993ff898c331
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406460"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083002"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -52,17 +52,18 @@ A következő rendszergazdai szerepkörök érhetők el:
 Ebben a szerepkörben lévő felhasználók létrehozhatják és kezelhetik a vállalati alkalmazások, az alkalmazásregisztrációk és az alkalmazásproxy-beállítások minden aspektusát. Vegye figyelembe, hogy az ehhez a szerepkörhöz rendelt felhasználók nem kerülnek tulajdonosként új alkalmazásregisztrációk vagy vállalati alkalmazások létrehozásakor.
 
 Az alkalmazás-rendszergazdák kezelhetik az alkalmazás hitelesítő adatait, amely lehetővé teszi számukra az alkalmazás megszemélyesítését. Így a szerepkörhöz rendelt felhasználók csak azon alkalmazások hitelesítő adatait kezelhetik, amelyek vagy nincsenek hozzárendelve egyetlen Azure AD-szerepkörhöz sem, vagy csak a következő rendszergazdai szerepkörökhöz vannak rendelve:
+
 * alkalmazás-rendszergazda
 * Alkalmazásfejlesztő
 * Felhőalkalmazás-rendszergazda
 * Címtárolvasók
 
-Ha egy alkalmazás olyan más szerepkörhöz van hozzárendelve, amely nem szerepel a fent említett módon, akkor az alkalmazásfelügyelő nem kezelheti az alkalmazás hitelesítő adatait. 
- 
+Ha egy alkalmazás olyan más szerepkörhöz van hozzárendelve, amely nem szerepel a fent említett módon, akkor az alkalmazásfelügyelő nem kezelheti az alkalmazás hitelesítő adatait.
+
 Ez a szerepkör is lehetővé teszi, hogy _hozzájáruljon_ a delegált engedélyek és alkalmazás engedélyek, kivéve az engedélyeket a Microsoft Graph API-t.
 
 > [!IMPORTANT]
-> Ez a kivétel azt jelenti, hogy továbbra is beleegyezhet _más_ alkalmazások (például harmadik féltől származó alkalmazások vagy regisztrált alkalmazások) engedélyeire, de nem járulhat hozzá magának az Azure AD-nek az engedélyekhez. Ezek az engedélyek továbbra is _kérheti_ az alkalmazás regisztrációrészeként, de _megadása_ (azaz hozzájárul) ezeket az engedélyeket igényel egy Azure AD-rendszergazda. Ez azt jelenti, hogy a rosszindulatú felhasználók nem tudják könnyen megemelni az engedélyeiket, például azáltal, hogy létrehoznak és hozzájárulnak egy olyan alkalmazáshoz, amely a teljes könyvtárba tud írni, és az alkalmazás engedélyein keresztül globális adminisztrátorrá válhatnak.
+> Ez a kivétel azt jelenti, hogy továbbra is beleegyezhet _más_ alkalmazások (például a nem Microsoft-alkalmazások vagy regisztrált alkalmazások) engedélyeihez, de nem járulhat hozzá magának az Azure AD-nek az engedélyekhez. Ezek az engedélyek továbbra is _kérheti_ az alkalmazás regisztrációrészeként, de _a megadása_ (azaz hozzájárul) ezeket az engedélyeket igényel egy Azure AD-rendszergazda. Ez azt jelenti, hogy a rosszindulatú felhasználók nem tudják könnyen megemelni az engedélyeiket, például azáltal, hogy létrehoznak és hozzájárulnak egy olyan alkalmazáshoz, amely a teljes könyvtárba tud írni, és az alkalmazás engedélyein keresztül globális adminisztrátorrá válhatnak.
 
 ### <a name="application-developer"></a>[Alkalmazásfejlesztő](#application-developer-permissions)
 
@@ -70,13 +71,15 @@ A szerepkörben lévő felhasználók akkor hozhatnak létre alkalmazásregisztr
 
 ### <a name="authentication-administrator"></a>[Hitelesítési rendszergazda](#authentication-administrator-permissions)
 
-A hitelesítési rendszergazdai szerepkör jelenleg nyilvános előzetes verzióban érhető el. Az ezzel a szerepkörrel rendelkező felhasználók beállíthatják vagy alaphelyzetbe állíthatják a nem jelszó hitelesítő adatokat, és frissíthetik az összes felhasználó jelszavait. A hitelesítési rendszergazdák megkövetelhetik a felhasználóktól, hogy újra regisztráljanak a meglévő nem jelszó hitelesítő adatokkal (például MFA vagy FIDO), és vonják vissza **a emlékszik mfa-t az eszközön,** amely a nem rendszergazda vagy csak a következő szerepkörhöz rendelt felhasználók következő bejelentkezésekor kéri az MFA-t:
+Az ezzel a szerepkörrel rendelkező felhasználók beállíthatják vagy alaphelyzetbe állíthatják a nem jelszó hitelesítő adatokat egyes felhasználók számára, és frissíthetik az összes felhasználó jelszavait. A hitelesítési rendszergazdák megkövetelhetik a nem rendszergazdaként vagy bizonyos szerepkörökhöz rendelt felhasználóktól, hogy újra regisztráljanak a meglévő nem jelszó hitelesítő adatokkal (például MFA vagy FIDO), és visszavonhatják **a megjegyzésmorzsát az eszközön,** amely a következő bejelentkezéskor az MFA-t kéri. Ezek a műveletek csak azokra a felhasználókra vonatkoznak, akik nem rendszergazdák, vagy akik az alábbi szerepkörök közül egyet vagy többet kapnak:
 
 * Hitelesítési rendszergazda
 * Címtárolvasók
 * Vendég meghívó
 * Üzenetközpont olvasója
 * Jelentések olvasó
+
+A [kiemelt hitelesítési rendszergazdai](#privileged-authentication-administrator) szerepkör engedélyekkel rendelkezik, kényszerítheti az újbóli regisztráció és a többtényezős hitelesítés minden felhasználó számára.
 
 > [!IMPORTANT]
 > Ezzel a szerepkörrel rendelkező felhasználók módosíthatják a hitelesítő adatokat azok számára, akik hozzáférhetnek a bizalmas vagy személyes adatokhoz vagy a kritikus konfigurációhoz az Azure Active Directoryn belül és kívül. A felhasználó hitelesítő adatainak módosítása azt jelentheti, hogy fel lehet vállalni a felhasználó identitását és engedélyeit. Például:
@@ -103,7 +106,7 @@ Ezzel a szerepkörrel rendelkező felhasználók létrehozhatnak és kezelhetnek
 
 ### <a name="b2c-user-flow-attribute-administrator"></a>[B2C felhasználói folyamat attribútumának rendszergazdája](#b2c-user-flow-attribute-administrator-permissions)
 
-Ezzel a szerepkörrel rendelkező felhasználók egyéni attribútumokat adnak hozzá vagy törölnek, amelyek a bérlő összes felhasználói folyamata számára elérhetők.Mint ilyen, az ezzel a szerepkörrel rendelkező felhasználók módosíthatják vagy új elemeket adhatnak a végfelhasználói sémához, és befolyásolhatják az összes felhasználói folyamat viselkedését, és közvetve változásokat eredményezhetnek a végfelhasználóktól felkérhető és végül az alkalmazásoknak jogcímként elküldött adatokban.Ez a szerepkör nem szerkesztheti a felhasználói folyamatokat.
+Ezzel a szerepkörrel rendelkező felhasználók egyéni attribútumokat adnak hozzá vagy törölnek, amelyek a bérlő összes felhasználói folyamata számára elérhetők.Mint ilyen, az ezzel a szerepkörrel rendelkező felhasználók módosíthatják vagy új elemeket adhatnak a végfelhasználói sémához, és befolyásolhatják az összes felhasználói folyamat viselkedését, és közvetve változásokat eredményezhetnek a végfelhasználóktól felkérhető és végső soron az alkalmazásoknak jogcímként elküldött adatokban.Ez a szerepkör nem szerkesztheti a felhasználói folyamatokat.
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF kulcskészlet-rendszergazda](#b2c-ief-keyset-administrator-permissions)
 
@@ -128,6 +131,7 @@ Lebonyolítja a vásárlásokat, kezeli az előfizetéseket és a támogatási j
 A szerepkörben lévő felhasználók ugyanolyan engedélyekkel rendelkeznek, mint az Alkalmazás-rendszergazda szerepkör, kivéve az alkalmazásproxy kezelését. Ez a szerepkör lehetővé teszi a vállalati alkalmazások és a alkalmazásregisztrációk minden aspektusának létrehozását és kezelését. Ez a szerepkör is lehetővé teszi, hogy hozzájáruljon a delegált engedélyek, és alkalmazás engedélyeket, kivéve a Microsoft Graph API-t. Az ehhez a szerepkörhöz rendelt felhasználók nem kerülnek tulajdonosként új alkalmazásregisztrációk vagy vállalati alkalmazások létrehozásakor.
 
 A felhőalkalmazás-rendszergazdák kezelhetik az alkalmazás hitelesítő adatait, amelyek lehetővé teszik számukra az alkalmazás megszemélyesítését. Így a szerepkörhöz rendelt felhasználók csak azon alkalmazások hitelesítő adatait kezelhetik, amelyek vagy nincsenek hozzárendelve egyetlen Azure AD-szerepkörhöz sem, vagy csak a következő rendszergazdai szerepkörökhöz vannak rendelve:
+
 * Alkalmazásfejlesztő
 * Felhőalkalmazás-rendszergazda
 * Címtárolvasók
@@ -350,7 +354,13 @@ Az ilyen szerepkörrel rendelkező felhasználók regisztrálhatnak nyomtatókat
 
 ### <a name="privileged-authentication-administrator"></a>[Kiemelt hitelesítési rendszergazda](#privileged-authentication-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók beállíthatják vagy alaphelyzetbe állíthatják a nem jelszó hitelesítő adatokat az összes felhasználó számára, beleértve a globális rendszergazdákat is, és frissíthetik az összes felhasználó jelszavait. A kiemelt jogosultságú hitelesítési rendszergazdák kényszeríthetik a felhasználókat, hogy újra regisztráljanak a meglévő nem jelszó hitelesítő adatok (pl. MFA, FIDO) ellen, és visszavonják a "Ne mfa az eszközön" parancsot, és az összes felhasználó következő bejelentkezésekor az MFA-t kérik.
+Az ezzel a szerepkörrel rendelkező felhasználók beállíthatják vagy alaphelyzetbe állíthatják a nem jelszó hitelesítő adatokat az összes felhasználó számára, beleértve a globális rendszergazdákat is, és frissíthetik az összes felhasználó jelszavait. A kiemelt jogosultságú hitelesítési rendszergazdák kényszeríthetik a felhasználókat, hogy újra regisztráljanak a meglévő nem jelszó hitelesítő adatok (például MFA vagy FIDO) ellen, és visszavonják a "Ne mfa az eszközön" című tanévet, és az összes felhasználó következő bejelentkezésénél az MFA-t kérik. A [hitelesítési rendszergazdai](#authentication-administrator) szerepkör kényszerítheti újraregisztráció és többkori hitelesítés csak nem rendszergazdák és a felhasználók hozzárendelt a következő Azure AD-szerepkörök:
+
+* Hitelesítési rendszergazda
+* Címtárolvasók
+* Vendég meghívó
+* Üzenetközpont olvasója
+* Jelentések olvasó
 
 ### <a name="privileged-role-administrator"></a>[Kiemelt szerepkör-rendszergazda](#privileged-role-administrator-permissions)
 

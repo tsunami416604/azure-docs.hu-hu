@@ -6,21 +6,21 @@ ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
-ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
+ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279142"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085144"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérfeladatok futtatása webfeladatokkal az Azure App Service-ben
 
 Ez a cikk bemutatja, hogyan telepítheti a WebJobs az [Azure Portal](https://portal.azure.com) on egy végrehajtható fájl vagy parancsfájl feltöltéséhez. A WebJobs visual studióval történő fejlesztéséről és központi telepítéséről a [WebJobs telepítése a Visual Studióhasználatával című](webjobs-dotnet-deploy-vs.md)témakörben talál további információt.
 
 ## <a name="overview"></a>Áttekintés
-A WebJobs az [Azure App Service](index.yml) egyik szolgáltatása, amely lehetővé teszi egy program vagy parancsfájl futtatását ugyanabban a környezetben, mint egy webalkalmazás, API-alkalmazás vagy mobilalkalmazás. A WebJobs használata nem jár többletköltséggel.
+A WebJobs az [Azure App Service](index.yml) egyik szolgáltatása, amely lehetővé teszi egy program vagy parancsfájl futtatását ugyanabban a példányban, mint egy webalkalmazás, API-alkalmazás vagy mobilalkalmazás. A WebJobs használata nem jár többletköltséggel.
 
 > [!IMPORTANT]
 > A WebJobs még nem támogatott linuxos App Service esetén.
@@ -80,7 +80,7 @@ when making changes in one don't forget the other two.
    | **Név** | myContinuousWebJob | Egy App Service-alkalmazásban egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat a "-" és a "_" karakteren kívül más speciális karaktereket. |
    | **Fájl feltöltése** | ConsoleApp.zip | A végrehajtható vagy parancsfájlt tartalmazó *.zip* fájl, valamint a program vagy parancsfájl futtatásához szükséges segédfájlok. A támogatott végrehajtható vagy parancsfájltípusok a [Támogatott fájltípusok](#acceptablefiles) szakaszban találhatók. |
    | **Típus** | Folyamatos | A [WebJob-típusokat](#webjob-types) a cikk korábbi cikke ismerteti. |
-   | **Skála** | Többpéldányos példány | Csak folyamatos webfeladatok esetén érhető el. Azt határozza meg, hogy a program vagy parancsfájl az összes példányon vagy csak egy példányon fut-e. A több példányon való futtatás lehetősége nem vonatkozik az ingyenes vagy megosztott [tarifacsomagokra.](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) | 
+   | **Méretezés** | Többpéldányos példány | Csak folyamatos webfeladatok esetén érhető el. Azt határozza meg, hogy a program vagy parancsfájl az összes példányon vagy csak egy példányon fut-e. A több példányon való futtatás lehetősége nem vonatkozik az ingyenes vagy megosztott [tarifacsomagokra.](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) | 
 
 4. Kattintson az **OK** gombra.
 

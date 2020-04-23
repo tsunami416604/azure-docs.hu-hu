@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b6b6d10165eed331c397e17a18e382b095e1f74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a5bc947c3ea414f197df9cfcdd5f233e4654cbc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79216740"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085025"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Oktatóanyag: Key Vault-hivatkozások használata Java Spring alkalmazásban
 
@@ -82,7 +82,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, csak néhány további lép
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Kulcstartóhivatkozás hozzáadása az alkalmazás konfigurációjához
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza az **Összes erőforrás**lehetőséget, majd válassza ki a rövid útmutatóban létrehozott Alkalmazáskonfigurációs tároló példányt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza az **Összes erőforrás**lehetőséget, majd válassza ki a rövid útmutatóban létrehozott Alkalmazáskonfigurációs tároló példányt.
 
 1. Válassza a **Configuration Explorer**lehetőséget.
 
@@ -140,6 +140,14 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, csak néhány további lép
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>A kód frissítése key vault-hivatkozás használatához
 
+1. Hozzon létre egy **APP_CONFIGURATION_ENDPOINT**nevű környezeti változót. Állítsa be az értékét az alkalmazáskonfigurációs tároló végpontjára. A végpont ot az **Access Keys** panelen találja az Azure Portalon.
+
+1. Nyissa meg a *bootstrap.properties fájlt* az *erőforrások* mappában. Frissítse ezt a fájlt úgy, hogy az alkalmazáskonfigurációvégpontot használja a kapcsolati karakterlánc helyett.
+
+    ```properties
+    spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
+    ```
+
 1. Nyissa meg *a MessageProperties.java*. Adjon hozzá egy keyVaultMessage nevű új *változót:*
 
     ```java
@@ -166,7 +174,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, csak néhány további lép
 1. Hozzon létre egy *azureCredentials.java* nevű új fájlt, és adja hozzá az alábbi kódot.
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import com.azure.core.credential.TokenCredential;
     import com.azure.identity.EnvironmentCredentialBuilder;
@@ -195,7 +203,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, csak néhány további lép
 1. Hozzon létre egy új fájlt *Nevű AppConfiguration.java*. És adja hozzá az alábbi kódot.
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
@@ -214,7 +222,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, csak néhány további lép
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
-    com.example.AppConfiguration
+    com.example.demo.AppConfiguration
     ```
 
 1. Készítsd el a Tavaszi Boot alkalmazást a Mavennel, és futtassa, például:

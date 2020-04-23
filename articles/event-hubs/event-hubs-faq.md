@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: d2d74a90d6712089cff681381e11b1caec9d469d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283667"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086368"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs gyakran tesz fel kérdéseket
 
@@ -182,7 +182,7 @@ A vizsgálat során a következő kritériumokat alkalmazták:
 Az eredmények képet adnak arról, hogy mit lehet elérni egy dedikált Event Hubs-fürttel. Emellett a felszentelési fürt jön az Event Hubs Capture engedélyezve van a mikro-köteg és a hosszú távú megőrzési forgatókönyvek.
 
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Hogyan hozhatok létre egy dedikált eseményközpontokat?
-Hozzon létre egy eseményközpontok dedikált fürt küld el egy [kvóta növelése támogatási kérelmet,](https://portal.azure.com/#create/Microsoft.Support) vagy kapcsolatba lép az [Event Hubs csapat.](mailto:askeventhubs@microsoft.com) Általában körülbelül két hetet vesz igénybe, hogy a fürt telepítve, és átadta az Ön által használt. Ez a folyamat ideiglenes, amíg egy teljes önkiszolgálás érhető el az Azure Portalon vagy az Azure Resource Manager-sablonokon keresztül, amelyek körülbelül két órát vesz igénybe a fürt üzembe helyezéséhez.
+Hozzon létre egy eseményközpontok dedikált fürt küld el egy [kvóta növelése támogatási kérelmet,](https://portal.azure.com/#create/Microsoft.Support) vagy kapcsolatba lép az [Event Hubs csapat.](mailto:askeventhubs@microsoft.com) Általában körülbelül két hetet vesz igénybe, hogy a fürt telepítve, és átadta az Ön által használt. Ez a folyamat ideiglenes, amíg egy teljes önkiszolgálás érhető el az Azure Portalon keresztül.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
@@ -257,5 +257,5 @@ Ha többet szeretne megtudni az SLA-ról, tekintse meg a [Szolgáltatásiszint-s
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Eseményközpontok – áttekintés](event-hubs-what-is-event-hubs.md)
-* [Event Hub létrehozása](event-hubs-create.md)
+* [Eseményközpont létrehozása](event-hubs-create.md)
 * [Eseményközpontok automatikus felfújása](event-hubs-auto-inflate.md)

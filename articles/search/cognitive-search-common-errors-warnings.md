@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671971"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086611"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Gyakori indexelőhibák és figyelmeztetések elhárítása az Azure Cognitive Search szolgáltatásban
 
@@ -91,6 +91,8 @@ Indexelő nem sikerült futtatni egy készség a skillset.
 
 ## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>Hiba: Nem sikerült végrehajtani a szakértelem, mert a webes API-kérelem sikertelen volt
 A szakértelem végrehajtása nem sikerült, mert a webes API-hívás nem sikerült. Ez a hibaosztály általában egyéni képességek használatba valónak ordibban történik, ebben az esetben a probléma megoldásához hibakeresésre van szükség az egyéni kód ban. Ha ehelyett a hiba egy beépített szakértelemből származik, a probléma megoldásához a hibaüzenetben tájékozódhat.
+
+A probléma hibakeresése közben ügyeljen arra, hogy figyeljen a [szakértelem beviteli figyelmeztetéseire.](#warning-skill-input-was-invalid) Előfordulhat, hogy a webes API-végpont meghibásodik, mert az indexelő nem várt bemenetet ad át.
 
 <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
 

@@ -132,7 +132,7 @@
     - name: Iparági alkalmazássablonok
       items:
         - name: Kiskereskedelem
-          href: ../retail/overview-iot-central-retail-pnp.md
+          href: ../retail/overview-iot-central-retail.md
         - name: Energia
           href: ../energy/overview-iot-central-energy.md
         - name: Government

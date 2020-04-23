@@ -2,13 +2,13 @@
 title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezésére vonatkozó szabályokat és korlátozásokat jeleníti meg.
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981528"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086385"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -534,6 +534,13 @@ A következő táblázatokban az alfanumerikus kifejezés a következőkre utal:
 > | --- | --- | --- | --- |
 > | Klaszterek | erőforráscsoport | 4-63 | Alfanumerikus és kötőjelek.<br><br>Kezdje és fejezze be alfanumerikus. |
 > | munkaterületek | erőforráscsoport | 4-63 | Alfanumerikus és kötőjelek.<br><br>Kezdje és fejezze be alfanumerikus. |
+
+## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+
+> [!div class="mx-tableFixed"]
+> | Entitás | Hatókör | Hossz | Érvényes karakterek |
+> | --- | --- | --- | --- |
+> | megoldások | munkaterület | N/A | A Microsoft által készített megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType(WorkspaceName)`<br><br>A harmadik felek által készített megoldások esetében a névnek a mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa a kis- és nagybetűk megkülönböztetése. |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 

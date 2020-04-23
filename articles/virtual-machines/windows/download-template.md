@@ -1,25 +1,19 @@
 ---
 title: Az Azure-beli virtuális gép sablonjának letöltése
-description: Töltse le a sablont egy virtuális géphez, amely segít az Erőforrás-kezelő telepítési modelljében a központi telepítések automatizálásához
-services: virtual-machines-windows
-documentationcenter: ''
+description: Töltse le a sablont egy virtuális gép a portál vagy a PowerShell használatával.
 author: cynthn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: c73026515f0d7fde4e2f82838696700b1bb17c77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af6905f0ba62a9053e44134348721312ade6b9d7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033552"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085382"
 ---
 # <a name="download-the-template-for-a-vm"></a>Virtuálisgép-sablon letöltése
 Amikor virtuális gép az Azure-ban a portál vagy a PowerShell használatával, egy Erőforrás-kezelő sablon automatikusan létrejön az Ön számára. Ezzel a sablonnal gyorsan duplikálhatja a központi telepítést. A sablon az erőforráscsoport összes erőforrására vonatkozó információt tartalmaz. Egy virtuális gép, ez azt jelenti, hogy a sablon mindent tartalmaz, amely az erőforráscsoportban a virtuális gép támogatására létrehozott, beleértve a hálózati erőforrásokat is.

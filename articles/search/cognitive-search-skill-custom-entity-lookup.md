@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369777"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085739"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Egyéni entitáskeresgő kognitív képessége (előzetes verzió)
 
@@ -29,7 +29,7 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
 + A támogatott bemeneti rekord maximális mérete 256 MB. Ha meg kell szakítania az adatokat, mielőtt elküldené azokat az egyéni entitás-kereshető szakértelemnek, fontolja meg a [Szövegfelosztás szakértelem](cognitive-search-skill-textsplit.md)használatát.
-+ A támogatott entitások maximális definíciós táblája 10 MB, ha az *entitásokDefitionUri* paraméterhasználatával van megadva. 
++ A támogatott entitások maximális definíciós táblája 10 MB, ha az *entitásdefiníciósUri* paraméter használatával van megadva. 
 + Ha az entitások inline definiálva vannak, az *inlineEntitiesDefinition* paraméter használatával a maximális támogatott méret 10 KB.
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
@@ -63,13 +63,13 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 Az egyéni entitások listájának három különböző módja van az egyéni entitások keresése szakértelemnek való megadására. A listát a. CSV fájl, a . JSON-fájlként vagy szövegközi definícióként a szakértelem definíciójának részeként.  
 
-Ha a definíciós fájl egy . CSV vagy . JSON-fájl, a fájl elérési útját meg kell adni az *entitásokDefitionUri* paraméter részeként. Ebben az esetben a fájl letöltése egyszer minden indexelő futtatásakor egyszer lesz letöltve. A fájlnak mindaddig elérhetőnek kell lennie, amíg az indexelő futni kíván. Továbbá, a fájl kell kódolni UTF-8.
+Ha a definíciós fájl egy . CSV vagy . JSON-fájl, a fájl elérési útját meg kell adni az *entitiesDefinitionUri* paraméter részeként. Ebben az esetben a fájl letöltése egyszer minden indexelő futtatásakor egyszer lesz letöltve. A fájlnak mindaddig elérhetőnek kell lennie, amíg az indexelő futni kíván. Továbbá, a fájl kell kódolni UTF-8.
 
 Ha a definíció inline meg van adva, akkor az *inlineEntitiesDefinition* szakértelem paraméter tartalmaként kell megadni. 
 
 ### <a name="csv-format"></a>CSV formátum
 
-A vesszővel tagolt érték (CSV) fájlban megkereshető egyéni entitások definícióját úgy adhathatja meg, hogy megadja a fájl elérési útját, és beállítja azt az *entitásokDefitionUri* szakértelem paraméterben. Az elérési útnak https-helyen kell lennie. A definíciós fájl mérete legfeljebb 10 MB lehet.
+A vesszővel tagolt érték (CSV) fájlban megkereshető egyéni entitások definícióját úgy biztosíthatja, hogy megadja a fájl elérési útját, és beállítja azt az *entitásokDefinitionUri* szakértelem paraméterben. Az elérési útnak https-helyen kell lennie. A definíciós fájl mérete legfeljebb 10 MB lehet.
 
 A CSV formátum egyszerű. Minden sor egyedi entitást jelöl, az alábbiak szerint:
 
@@ -85,7 +85,7 @@ Ebben az esetben három entitás, amely visszaadható entitások találhatók (B
 
 A JSON-fájlban keresandó egyéni entitások definícióját is megadhatja. A JSON formátum egy kicsit nagyobb rugalmasságot biztosít, mivel lehetővé teszi a megfelelő szabályok meghatározását kifejezésenként. Megadhatja például az egyes kifejezéshez a fuzzy egyezési távolságot (Damerau-Levenshtein távolság), vagy hogy az egyeztetésnek kis- és nagybetűket kell-e figyelembe vennie. 
 
- Csakúgy, mint a CSV-fájlok, meg kell adnia a JSON-fájl elérési útját, és be kell állítania az *entitiesDefitionUri* szakértelem paraméterben. Az elérési útnak https-helyen kell lennie. A definíciós fájl mérete legfeljebb 10 MB lehet.
+ Csakúgy, mint a CSV-fájlok, meg kell adnia a JSON-fájl elérési útját, és be kell állítania az *entitiesDefinitionUri* szakértelem paraméterben. Az elérési útnak https-helyen kell lennie. A definíciós fájl mérete legfeljebb 10 MB lehet.
 
 A legalapvetőbb JSON egyéni entitáslista-definíció lehet az egyező entitások listája:
 

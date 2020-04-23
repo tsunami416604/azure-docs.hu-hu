@@ -3,12 +3,12 @@ title: CI/CD Azure-folyamatokés sablonok használatával
 description: Ez a témakör azt ismerteti, hogy miként állítható be a folyamatos integráció az Azure-folyamatokban az Azure Resource Group üzembe helyezési projektjeinek használatával a Visual Studióban az Erőforrás-kezelő-sablonok üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 7617bf47595fce7baa533b0f7cc94a1803ddd349
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153454"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084651"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Arm-sablonok integrálása az Azure-folyamatokba
 
@@ -28,7 +28,7 @@ Ez a cikk feltételezi, hogy a Visual Studio-projekt és az Azure DevOps-szervez
 
 * Azure DevOps-szervezetsel rendelkezik. Ha még nem rendelkezik ilyen, [hozzon létre egyet ingyen](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Ha csapata már rendelkezik egy Azure DevOps-szervezettel, győződjön meg arról, hogy ön a használni kívánt Azure DevOps-projekt rendszergazdája.
 
-* Szolgáltatási [kapcsolatot](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) konfigurált az Azure-előfizetéséhez. A folyamatban lévő feladatok a szolgáltatásnév identitása alatt hajthatók végre. A kapcsolat létrehozásának lépéseit a [DevOps-projekt létrehozása](template-tutorial-use-azure-pipelines.md#create-a-devops-project)című témakörben található.
+* Szolgáltatási [kapcsolatot](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) konfigurált az Azure-előfizetéséhez. A folyamatban lévő feladatok a szolgáltatásnév identitása alatt hajthatók végre. A kapcsolat létrehozásának lépéseit a [DevOps-projekt létrehozása](deployment-tutorial-pipeline.md#create-a-devops-project)című témakörben található.
 
 * Van egy Visual Studio-projekt, amely az **Azure Resource Group** kezdősablonból jött létre. Az ilyen típusú projektek létrehozásáról az [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióban című](create-visual-studio-deployment-project.md)témakörben talál további információt.
 
@@ -261,4 +261,4 @@ A feladatok részleteinek megtekintéséhez kiválaszthatja az éppen futó foly
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Pipelines ARM-sablonokkal való használatának lépésről lépésre történő folyamatáról az [Oktatóanyag: ARM-sablonok folyamatos integrációja az Azure Pipelines-szal.](template-tutorial-use-azure-pipelines.md)
+Az Azure Pipelines ARM-sablonokkal való használatának lépésről lépésre történő folyamatáról az [Oktatóanyag: Az Azure Resource Manager-sablonok folyamatos integrációja az Azure Pipelines-szal.](deployment-tutorial-pipeline.md)

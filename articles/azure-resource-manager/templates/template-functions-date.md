@@ -2,13 +2,13 @@
 title: Sablonfüggvények - dátum
 description: Ismerteti az Azure Resource Manager sablonban a dátumok használatához használandó függvényeket.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 75234a142b9f2fbe61c337bfeb378b47534bac79
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986277"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084787"
 ---
 # <a name="date-functions-for-arm-templates"></a>Dátumfüggvények ARM sablonokhoz
 
@@ -21,7 +21,7 @@ Az Erőforrás-kezelő a következő funkciókat biztosítja az Azure Resource M
 
 `dateTimeAdd(base, duration, [format])`
 
-Időidőtartam hozzáadása egy alap datetime értékhez.
+Időidőtartam hozzáadása egy alapértékhez. ISO 8601 formátum várható.
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -74,7 +74,7 @@ A következő példasablon az időértékek hozzáadásának különböző módj
 
 Ha az előző sablon alapideje a `2020-04-07 14:53:14Z`, a kimenet:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | add3Years | Sztring | 2023.04.7.04.02:53:14 |
 | kivonás9Nap | Sztring | 2020.02.29. |
@@ -201,7 +201,7 @@ A következő példasablon a datetime érték különböző formátumait jelení
 
 Az előző példa kimenete az egyes központi telepítésekhez változik, de hasonló lesz a következőkhöz:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | utcKimenet | sztring | 20190305T175318Z |
 | utcShortOutput | sztring | 03/05/2019 |

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18
-ms.date: 03/11/2020
-ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/22/2020
+ms.openlocfilehash: 5fa25f54faecbc7caf130ffeb0d24c3d8fef7e09
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79117215"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084804"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Spark strukturált stream használata az Apache Kafkával a HDInsighton
 
@@ -35,7 +35,7 @@ Ha végzett a jelen dokumentumlépéseivel, ne felejtse el törölni a fürtöke
 
 * A [Jupyter-jegyzetfüzetek](https://jupyter.org/) használata a Spark használatával a HDInsighton. További információ: [Adatok betöltése és lekérdezések futtatása az Apache Spark hdinsight-dokumentumon.](spark/apache-spark-load-data-run-query.md)
 
-* A [Scala](https://www.scala-lang.org/) programozási nyelv ismerete. Az oktatóanyagban használt kód Scala nyelven van megírva.
+* A Scala programozási nyelv ismerete. Az oktatóanyagban használt kód Scala nyelven van megírva.
 
 * A Kafka-témakörök létrehozásának ismerete. További információ: Az [Apache Kafka a HDInsight gyorsindítási](kafka/apache-kafka-get-started.md) dokumentumban.
 
@@ -48,7 +48,7 @@ Ha végzett a jelen dokumentumlépéseivel, ne felejtse el törölni a fürtöke
 
 ## <a name="structured-streaming-with-apache-kafka"></a>Strukturált streamelés az Apache Kafka segítségével
 
-A Spark strukturált stream egy, a Spark SQL-motorra épülő streamfeldolgozó rendszer. A strukturált stream használatával ugyanúgy írhat streamelési lekérdezéseket, mint a kötegelt lekérdezések esetében.
+A Spark strukturált stream egy, a Spark SQL-motorra épülő streamfeldolgozó rendszer. Strukturált streamelés használataesetén a streamelési lekérdezéseket ugyanúgy írhat, mint a kötegelt lekérdezéseket.
 
 Az alábbi kódrészletek az adatok Kafkából való beolvasását és fájlban való tárolását mutatják be. Az első egy köteg-, míg a második egy streamelési művelet:
 
@@ -277,7 +277,7 @@ Ez a példa bemutatja, hogyan használhatja a Spark strukturált streamelés a K
     println("Schema declared")
     ```
 
-1. Jelölje ki az adatokat, és indítsa el az adatfolyamot. A következő parancs bemutatja, hogyan lehet adatokat lekérni a kafka egy kötegelt lekérdezés használatával, majd írja be az eredményeket a HdFS a Spark-fürtön. Ebben a példában a `select` kafka üzenet (értékmező) lekéri az üzenetet, és alkalmazza a sémát. Az adatokat ezután a HDFS (WASB vagy ADL) programba írják parketta formátumban. Írja be a parancsot a következő Jupyter cellába.
+1. Jelölje ki az adatokat, és indítsa el az adatfolyamot. A következő parancs bemutatja, hogyan lehet adatokat beolvasni a Kafkából kötegelt lekérdezéssel. És ezután írja ki az eredményeket a HdFS a Spark-fürtön. Ebben a példában a `select` kafka üzenet (értékmező) lekéri az üzenetet, és alkalmazza a sémát. Az adatokat ezután a HDFS (WASB vagy ADL) programba írják parketta formátumban. Írja be a parancsot a következő Jupyter cellába.
 
     ```scala
     // Read a batch from Kafka
@@ -316,7 +316,7 @@ Ez a példa bemutatja, hogyan használhatja a Spark strukturált streamelés a K
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
+Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlése a társított HDInsight-fürtis törlődik. És az erőforráscsoporthoz társított egyéb erőforrások.
 
 Az erőforráscsoport eltávolítása az Azure Portallal:
 
@@ -331,7 +331,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja [az Apache Spark strukturált streamelést](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) az Apache [Kafka-ból](./kafka/apache-kafka-introduction.md) a HDInsight-on történő adatok írására és olvasására. Az alábbi linken megtudhatja, hogyan használhatja az [Apache Stormot](./storm/apache-storm-overview.md) a Kafkával.
+Ebben az oktatóanyagban megtanulta, hogyan használhatja az Apache Spark strukturált streamelését. Adatok írása és olvasása az Apache Kafka-ból a HDInsight-on. Az alábbi linken megtudhatja, hogyan használhatja az Apache Stormot a Kafkával.
 
 > [!div class="nextstepaction"]
 > [Apache Storm használata az Apache Kafka segítségével](hdinsight-apache-storm-with-kafka.md)

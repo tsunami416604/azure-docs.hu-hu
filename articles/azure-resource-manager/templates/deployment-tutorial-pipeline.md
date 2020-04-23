@@ -1,15 +1,15 @@
 ---
 title: Folyamatos integráció az Azure Pipelinesszal
 description: Ismerje meg, hogyan hozhat létre, tesztelhet és helyezhet üzembe Azure Resource Manager-sablonokat.
-ms.date: 03/13/2020
+ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255073"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084328"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Az Azure Resource Manager-sablonok folyamatos integrációja az Azure-folyamatokkal
 
@@ -57,11 +57,7 @@ Ha nem rendelkezik GitHub-fiókkal, olvassa el az Előfeltételek című [témak
 
 1. Válassza **az Új**lehetőséget, egy zöld gombot.
 1. A **tárház neve**mezőbe írja be a tárház nevét.  Például **az AzureRmPipeline-repo.** Ne felejtse el lecserélni az **AzureRmPipeline** bármelyikét a projekt nevére. Az oktatóanyag hoz hatja át a **nyilvános** vagy **a privát** lehetőséget. Ezután válassza **a Tárház létrehozása**lehetőséget.
-1. Írja le az URL-t. A tárház URL-címe a következő formátum:
-
-    ```url
-    https://github.com/[YourAccountName]/[YourRepositoryName]
-    ```
+1. Írja le az URL-t. A tárház URL-címe a következő formátum : ** https://github.com/[YourAccountName]/[YourRepositoryName]**.
 
 Ezt az adattárat *távoli tárháznak nevezzük.* Ugyanannak a projektnek a fejlesztői klónozhatják saját *helyi tárházát,* és egyesíthetik a módosításokat a távoli tárházzal.
 

@@ -1,5 +1,5 @@
 ---
-title: Az automatizált gépi tanulás ban való használhatóság
+title: Magyarázhatóság az automatizált ml-ben
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan kaphat magyarázatot arról, hogy az automatikus ml-modell hogyan határozza meg a szolgáltatás fontosságát, és előrejelzéseket készít az Azure Machine Learning SDK használatakor.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257164"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086419"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Értelmezhetőség: modellmagyarázatok az automatizált gépi tanulásban
 

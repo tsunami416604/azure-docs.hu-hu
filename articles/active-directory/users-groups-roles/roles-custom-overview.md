@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 04/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5c7919dcc89e34831cb4cae7921b60b35eb4c69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae244d93d679199aaa0bd08891cd34d4ca3a2ddc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74024969"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085110"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Egyéni rendszergazdai szerepkörök az Azure Active Directoryban (előzetes verzió)
 
@@ -35,6 +35,22 @@ Az egyéni Azure AD-szerepkörök használatával adott engedély kétlépéses 
 Miután létrehozta a szerepkör-definíciót, szerepkör-hozzárendelés létrehozásával hozzárendelheti azt egy felhasználóhoz. A szerepkör-hozzárendelés engedélyeket ad a felhasználónak egy adott hatókörben lévő szerepkör-definícióban. Ez a kétlépéses folyamat lehetővé teszi, hogy hozzon létre egy szerepkör-definíciót, és rendelje hozzá többször különböző hatókörökben. A hatókör határozza meg az Azure AD-erőforrások készletét, amelyhez a szerepkör-tag rendelkezik hozzáféréssel. A leggyakoribb hatókör a szervezeti szintű (szervezeti szintű) hatókör. Az egyéni szerepkör org az egész hatókörön is hozzárendelhető, ami azt jelenti, hogy a szerepkörtag szerepkör-engedélyekkel rendelkezik a szervezet összes erőforrására vonatkozóan. Egyéni szerepkör is hozzárendelhető egy objektumhatókörhöz. Egy objektumhatókör reklatot egy alkalmazás lenne. Ugyanaz a szerepkör rendelhető egy felhasználóhoz a szervezet összes alkalmazásában, majd egy másik felhasználóhoz, amely csak a Contoso Költségjelentések alkalmazás hatókörével van elrendelve.  
 
 Az Azure AD beépített és egyéni szerepkörei az [Azure szerepköralapú hozzáférés-vezérléséhez](../../role-based-access-control/overview.md)hasonló fogalmakon működnek. A [két szerepköralapú hozzáférés-vezérlési rendszer közötti különbség](../../role-based-access-control/rbac-and-directory-admin-roles.md) az, hogy az Azure RBAC szabályozza az Azure-erőforrásokhoz, például a virtuális gépekhez vagy az Azure Resource Management használatával szolgáló tároláshoz való hozzáférést, és az Azure AD egyéni szerepkörei szabályozzák az Azure AD-erőforrásokhoz való hozzáférést a Graph API használatával. Mindkét rendszer kihasználja a szerepkör-definíciók és a szerepkör-hozzárendelések fogalmát.
+
+### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>Hogyan határozza meg az Azure AD, hogy a felhasználó hozzáfér-e egy erőforráshoz?
+
+Az alábbiakban az Azure AD által használt magas szintű lépéseket, amelyek annak megállapítására, hogy rendelkezik-e hozzáféréssel egy felügyeleti erőforráshoz. Ezen információk segítségével elháríthatja a hozzáférési problémákat.
+
+1. Egy felhasználó (vagy egyszerű szolgáltatás) beszerez egy jogkivonatot a Microsoft Graph vagy az Azure AD Graph végpont.
+
+1. A felhasználó api-hívást kezdeményez az Azure Active Directory (Azure AD) a Microsoft Graph vagy az Azure AD Graph a kiadott jogkivonat használatával.
+
+1. A körülményektől függően az Azure AD az alábbi műveletek egyikét végrehajtja:
+
+    - Kiértékeli a felhasználó szerepkör-tagságai alapján a [wids jogcím](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) a felhasználó hozzáférési jogkivonat.
+    - Lekéri a felhasználóra közvetlenül vagy csoporttagságon keresztül a műveletet alkalmazó erőforrásra vonatkozó összes szerepkör-hozzárendelést.
+
+1. Az Azure AD határozza meg, hogy a művelet az API-hívás tartalmazza-e a felhasználó szerepkörök az erőforráshoz.
+1. Ha a felhasználó nem rendelkezik szerepkörrel a kívánt hatókörben lévő művelettel, a hozzáférés nem érhető el. Egyéb esetben hozzáférést biztosít.
 
 ### <a name="role-assignments"></a>Szerepkör-hozzárendelések
 

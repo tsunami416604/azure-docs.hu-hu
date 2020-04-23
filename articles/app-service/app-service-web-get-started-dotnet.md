@@ -3,14 +3,14 @@ title: 'Rövid útmutató: C# ASP.NET Core alkalmazás létrehozása'
 description: Ismerje meg, hogyan futtathat webalkalmazásokat az Azure App Service-ben az alapértelmezett C# ASP.NET Core webalkalmazás-sablon visual studióból történő telepítésével.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: be7c4a2fb65f913bc97617af1a0f21ee8fcca714
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313284"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086045"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: Hozzon létre egy ASP.NET Core webalkalmazást az Azure-ban
 
@@ -80,7 +80,7 @@ Az alábbi lépésekkel hozhatja létre az App Service szolgáltatást, és köz
    | Beállítás  | Ajánlott érték | Leírás |
    | -------- | --------------- | ----------- |
    | **Szolgáltatási csomag**  | *myFirstAzureWebAppPlan* | Az App Service-csomag neve. |
-   | **Helyen**      | *Nyugat-Európa* | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+   | **Hely**      | *Nyugat-Európa* | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
    | **Méret**          | *Ingyenes* | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
    
    ![Új tárhelycsomag létrehozása](./media/app-service-web-get-started-dotnet/create-new-hosting-plan-vs2019.png)
@@ -107,7 +107,7 @@ A webalkalmazás frissítéséhez és újratelepítéséhez kövesse az alábbi 
 
 1. A **Megoldáskezelőben**a projekt alatt nyissa meg a **Pages** > **Index.cshtml webhelyet.**
 
-1. Cserélje le a két `<div>` címkét az alábbi kódra:
+1. Cserélje le `<div>` a teljes címkét a következő kódra:
 
    ```HTML
    <div class="jumbotron">

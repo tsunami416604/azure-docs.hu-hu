@@ -7,19 +7,19 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: 7834c8a32d4d85fc354bac209e13f19f3b8315fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d35e37e53b84d317446a93a2301fc3b703b426b7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80256929"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085722"
 ---
-# <a name="preview-dcsv2-series"></a>Előzetes: DCsv2 sorozat
+# <a name="dcsv2-series"></a>DCsv2 sorozat
 
 
 A DCsv2 sorozat segít megvédeni az adatok és a kód titkosságát és integritását, miközben a nyilvános felhőben van feldolgozva. Ezeket a gépeket az Intel XEON E-2288G processzor legújabb generációja támogatja SGX technológiával. Az Intel Turbo Boost technológiával ezek a gépek akár 5,0 GHz-re is felmehetnek. A DCsv2 sorozatpéldányok lehetővé teszik az ügyfelek számára, hogy biztonságos enklávé alapú alkalmazásokat építsenek a kódjuk és az adataik védelme érdekében, miközben használatban vannak.
 
-A használati esetek közé tartozik például a bizalmas többrésztvevős adatmegosztás, a csalások felderítése, a pénzmosás elleni küzdelem, a blokklánc, a bizalmas használatelemzés, a hírszerzési elemzés és a bizalmas gépi tanulás.
+A használati esetek közé tartoznak például a bizalmas többrésztvevős adatmegosztás, a csalások felderítése, a pénzmosás elleni küzdelem, a blokklánc, a bizalmas használatelemzés, a hírszerzési elemzés és a bizalmas gépi tanulás.
 
 Prémium szintű tárhely: Támogatott*
 
@@ -41,9 +41,9 @@ Memóriamegőrzési frissítések: Nem támogatott
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - A DCsv2 sorozatú virtuális gépek 2 `Gen2` generációs virtuális gépek, és csak a lemezképeket [támogatják.](./linux/generation-2.md#creating-a-generation-2-vm)
-- Jelenleg csak az Egyesült Királyságdéli és Kanada Középső Részén érhető el.
-- A bizalmas számítási virtuális gépek előző generációja: [DC sorozat](sizes-previous-gen.md)
-- DCsv2 virtuális gépek létrehozása az Azure Portal [létrehozása virtuális gép használatával - Portál](./linux/quick-create-portal.md)
+- Jelenleg csak az Egyesült Királyságdéli, Kanada középső és egyesült államokbeli keleti részén érhető el.
+- A bizalmas számítási virtuális gépek előző generációja: [DC sorozat](sizes-previous-gen.md#preview-dc-series)
+- DCsv2 virtuális gépek létrehozása az [Azure Portalon](./linux/quick-create-portal.md) vagy az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)
 
 
 

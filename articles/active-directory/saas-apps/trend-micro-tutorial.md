@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/03/2020
+ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a4c2cddbc9086c80922fcf9c5d96cd197ab4778
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5f4dc7223d64fd299da70375329260f7b4f8b322
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422528"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083376"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-securitytmws"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Trend Micro Web Security(TMWS) rendszerrel
 
@@ -87,7 +87,7 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
     b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet:`https://auth.iws-hybrid.trendmicro.com/simplesaml/module.php/saml/sp/saml2-acs.php/ics-sp`
 
     > [!NOTE]
-    > Az azonosító értéke nem valós. Frissítse ezt az értéket a tényleges azonosítóval. Lépjen kapcsolatba [a Trend Micro Web Security (TMWS) ügyféltámogatási csapatával](https://success.trendmicro.com/contact-support-north-america) az azonosító érték ének leválasztásához. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Az azonosító értéke nem valós. Frissítse ezt az értéket a tényleges azonosítóval. Ezeket az értékeket **az Azure Felügyeleti portál szolgáltatásbeállításai** területen, az Azure AD **hitelesítési módszer** képernyőjén a Felügyeleti > a címtárszolgáltatások ból **szerezheti be.**
 
 1. A Trend Micro Web Security (TMWS) alkalmazás az SAML-állításokat egy adott formátumban várja, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumkonfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -173,7 +173,41 @@ Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés tanéven a
 
 ## <a name="configure-trend-micro-web-security-sso"></a>Trend Micro Web Biztonsági SSO konfigurálása
 
-A **Trend Micro Web Security (TMWS)** oldalon történő egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket az Azure Portalról a [Trend Micro Web Security (TMWS) támogatási csapatának.](https://success.trendmicro.com/contact-support-north-america) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+1. Jelentkezzen be a TMWS felügyeleti konzolra, és nyissa meg **a Felügyeleti** > **felhasználók & AUTHENTICATION** > **Directory Services**lehetőséget.
+
+1. Kattintson ide a képernyő felső részén.
+
+1. A megjelenő hitelesítési módszer képernyőn kattintson az **Azure AD**elemre.
+
+1. Kattintson **a Be** vagy **ki gombra** annak eldöntéséhez, hogy a szervezet AD-felhasználói meglátogathatják-e a webhelyeket a TMWS-en keresztül, ha adataik nincsenek szinkronizálva a TMWS-sel.
+
+    > [!NOTE]
+    > Az Azure AD-ből nem szinkronizált felhasználók csak ismert TMWS-átjárókon vagy a szervezet dedikált portján keresztül hitelesíthetők.
+
+1. Az **Identitásszolgáltató beállításai** csoportban hajtsa végre az alábbi lépéseket:
+
+    a. A **Szolgáltatás URL-címe** mezőben illessze be a **bejelentkezési URL-értéket,** amelyet az Azure Portalról másolt.
+
+    b. A **Bejelentkezési név attribútum** mezőbe illessze be a felhasználói jogcím nevét a **user.onpremisessamaccountname** forrásattribútummal az Azure Portalról.
+
+    c. A **nyilvános SSL-tanúsítvány** mezőben használja a letöltött **tanúsítvány (Base64)** az Azure Portalon.
+
+1. A **Szinkronizálási beállítások** csoportban hajtsa végre az alábbi lépéseket:
+
+    a. A **Bérlő** mezőben használja **a Címtár (bérlői) azonosító** vagy **egyéni tartománynév** értékét az Azure Portalon.
+
+    b. Az **Alkalmazásazonosító** mezőben az Azure Portal **alkalmazásazonosító-értéke.**
+
+    c. Az **Ügyfél titkos** mezőjében használja az **Ügyféltitkos kulcsot** az Azure Portalról.
+
+    d. A **Szinkronizálási ütemezés** mezőben válassza ki a szinkronizálást az Azure AD manuálisan vagy ütemezés szerint. Ha a Manuális lehetőséget választja, amikor az Active Directory felhasználói adatai módosulnak, ne felejtsen el visszatérni a Címtárszolgáltatások képernyőre, és manuális szinkronizálást végezni, hogy a TMWS-ben lévő információk naprakészek maradjanak.
+
+    e. Kattintson **a Kapcsolat tesztelése** elemre, ha ellenőrizni szeretné, hogy az Azure AD szolgáltatás sikeresen csatlakoztatható-e. 
+    
+    f. Kattintson a **Save** (Mentés) gombra.
+ 
+ > [!NOTE]
+ > A Trend Micro Web Security Azure AD-vel való konfigurálásáról további információt ebben [a](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx) dokumentumban talál.
 
 ## <a name="test-sso"></a>SSO tesztelése 
 
@@ -192,7 +226,7 @@ Miután sikeresen konfigurálta az Azure AD-szolgáltatást, és megadta az Azur
 
 1. Az Azure AD bejelentkezés, írja be az AD-fiók hitelesítő adatait. Sikeresen jelentkezzen be a TMWS szolgáltatásba.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 - [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

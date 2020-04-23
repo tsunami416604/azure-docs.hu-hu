@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: c4c8f21234cfbf040d57c0e1c8dbecbb698d7d50
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 9da8b6d8e5151bd6487d68c2796c261f19c11b55
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685926"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086555"
 ---
 # <a name="cloud-solution-providers"></a>Felhőszolgáltatók
 
@@ -195,4 +195,4 @@ Látogasson el az [Azure Piactérre és az AppSource Publisher guide-ra.](https:
 
 Ha többet szeretne megtudni a piactérGTM-szolgáltatásairól, olvassa [el a Piacra lépő szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
 
-Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) vagy [a Cloud Partner Portálra](https://cloudpartner.azure.com/) az ajánlat létrehozásához és konfigurálásához.
+Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához és konfigurálásához.

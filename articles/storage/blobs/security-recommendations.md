@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 0ceef2561d84a1fa491ab9577e1eac789b62bef7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 0b32f7e8fa2ec0d1d28f2fd42147e140d2d03341
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454628"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086113"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Biztonsági javaslatok a Blob storage-hoz
 
@@ -57,6 +57,7 @@ Az Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági 
 | Tűzfalszabályok engedélyezése | Konfigurálja a tűzfalszabályokat, hogy korlátozza a tárfiókhoz való hozzáférést a megadott IP-címekről vagy tartományokból származó kérelmekre, vagy az Azure virtuális hálózat (VNet) alhálózatainak listájáról. A tűzfalszabályok konfigurálásáról az Azure File Sync proxy és a tűzfal beállításai című [témakörben](../files/storage-sync-files-firewall-and-proxy.md)olvashat bővebben. | - |
 | Megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a tárfiókhoz | A tárfiók tűzfalszabályainak bekapcsolása alapértelmezés szerint blokkolja a bejövő adatkérelmeket, kivéve, ha a kérelmek egy Azure virtuális hálózaton (VNet) működő szolgáltatásból vagy az engedélyezett nyilvános IP-címekről származnak. A letiltott kérelmek közé tartoznak a más Azure-szolgáltatásokból, az Azure Portalról, a naplózási és metrikaszolgáltatásokból származó kérések, és így tovább. Más Azure-szolgáltatásokból érkező kérelmeket is engedélyezhet egy kivétel hozzáadásával, amely lehetővé teszi a megbízható Microsoft-szolgáltatások számára a tárfiók elérését. A megbízható Microsoft-szolgáltatásokkivételhozzáadásáról az [Azure File Sync proxy- és tűzfalbeállítások című témakörben](../files/storage-sync-files-firewall-and-proxy.md)olvashat bővebben.| - |
 | Privát végpontok használata | A magánhálózati végpont egy privát IP-címet rendel az Azure virtuális hálózatból (VNet) a tárfiókhoz. Biztosítja a virtuális hálózat és a tárfiók közötti összes forgalmat egy privát kapcsolaton keresztül. A magánvégpontokról további információt a [Csatlakozás magánjellegű tárfiókhoz az Azure Private Endpoint használatával](../../private-link/create-private-endpoint-storage-portal.md)című témakörben talál. | - |
+| Virtuálishálózat-szolgáltatáscímkék használata | A szolgáltatáscímke egy adott Azure-szolgáltatás IP-címelőtagjainak csoportját jelöli. A Microsoft kezeli a szolgáltatáscímke által felölelt címelőtagokat, és automatikusan frissíti a szolgáltatáscímkét a címek változásakor. Az Azure Storage által támogatott szolgáltatáscímkékről az [Azure szolgáltatáscímkék áttekintése című témakörben olvashat bővebben.](../../virtual-network/service-tags-overview.md) A szolgáltatáscímkék használatával kimenő hálózati szabályok létrehozásához című oktatóanyagról a [PaaS-erőforrásokhoz való hozzáférés korlátozása című](../../virtual-network/tutorial-restrict-network-access-to-resources.md)témakörben található. | - |
 | Adott hálózatok hálózati hozzáférésének korlátozása | A hozzáférést igénylő ügyfeleket üzemeltető hálózatok hálózati hozzáférésének korlátozása csökkenti az erőforrások hálózati támadásoknak való kitettségét. | [Igen](../../security-center/security-center-sql-service-recommendations.md) |
 
 ## <a name="loggingmonitoring"></a>Naplózás/figyelés
