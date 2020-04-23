@@ -11,68 +11,68 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/31/2020
 ms.locfileid: "80419537"
 ---
-A funkció könnyen beállítható, de ez nem jelenti azt, hogy a tapasztalat problémamentes lesz. Ha problémákat tapasztal a kívánt végpont elérésével kapcsolatban, néhány segédprogram ot használhat a kapcsolat teszteléséhez az alkalmazáskonzolról. Két konzolt használhat. Az egyik a Kudu konzol, a másik pedig a konzol az Azure Portalon. Ha el szeretné érni a Kudu konzolt az alkalmazásból, nyissa meg a**Kudu** **eszközök** > lehetőséget. A Kudo konzolt a [sitename].scm.azurewebsites.net címen is elérheti. A webhely betöltése után lépjen a **Debug konzol** fülre. Ha az alkalmazásból szeretné megfokkal megfokkal elérhetőnek kell lennie az Azure Portalon tárolt konzolnak, nyissa meg a Tools Console című > **webhelyet.** **Tools**
+A szolgáltatás egyszerűen beállítható, de ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram segítségével tesztelheti a kapcsolatot az alkalmazás-konzolról. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az **eszközök** > **kudu**. A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a **Debug konzol** lapra. Ha az alkalmazásból szeretné beolvasni a Azure Portal által üzemeltetett konzolt, lépjen az **eszközök** > **konzolra**.
 
 #### <a name="tools"></a>Eszközök
-Az eszközök **ping**, **nslookup**, és **tracert** nem fog működni a konzolon keresztül, mert a biztonsági korlátok. Az üresség kitöltéséhez két külön szerszámot adhozzá. A DNS-funkciók teszteléséhez hozzáadtunk egy **nameresolver.exe**nevű eszközt. A szintaxis a következő:
+A **ping**, az **nslookup**és a **tracert** eszköz a biztonsági korlátozások miatt nem fog működni a konzolon. Az üresség kitöltéséhez két különálló eszközt adnak hozzá. A DNS funkcióinak teszteléséhez hozzáadott egy **nameresolver. exe**nevű eszközt. A szintaxis a következő:
 
     nameresolver.exe hostname [optional: DNS Server]
 
-A nameresolver segítségével ellenőrizheti az alkalmazás által függő állomásneveket. Így tesztelheti, hogy van-e valami helytelenül konfigurálva a DNS-sel, vagy esetleg nincs hozzáférése a DNS-kiszolgálóhoz. Az alkalmazás által használt DNS-kiszolgálót a WEBSITE_DNS_SERVER és a WEBSITE_DNS_ALT_SERVER környezeti változóinak megtekintésével láthatja.
+A nameresolver segítségével megtekintheti az alkalmazástól függő gazdagépeket. Így ellenőrizheti, hogy van-e hibásan konfigurálva a DNS-sel, vagy lehet, hogy nem fér hozzá a DNS-kiszolgálóhoz. Az alkalmazás által a-konzolon használt DNS-kiszolgáló az WEBSITE_DNS_SERVER és WEBSITE_DNS_ALT_SERVER környezeti változók megtekintésével tekinthető meg.
 
-A következő eszközzel tesztelheti a TCP-kapcsolatot egy állomás- és portkombinációval. Ezt az eszközt **tcpping-nek nevezik,** és a szintaxis a következő:
+A következő eszközzel tesztelheti a TCP-kapcsolatot egy gazdagéphez és a portok kombinációjára. Az eszköz neve **tcpping** , és a szintaxis a következő:
 
     tcpping.exe hostname [optional: port]
 
-A **tcpping** segédprogram jelzi, hogy el érhet-e egy adott állomást és portot. Csak akkor mutathat sikeres, ha egy alkalmazás figyeli a gazdagép és a port kombinációt, és az alkalmazásból hálózati hozzáférés van a megadott állomáshoz és porthoz.
+A **tcpping** segédprogrammal megtudhatja, hogy elérhető-e egy adott gazdagép és port. Ez csak akkor jeleníthető meg, ha egy alkalmazás figyeli a gazdagép és a port kombinációját, és van hálózati hozzáférése az alkalmazásból a megadott gazdagéphez és porthoz.
 
-#### <a name="debug-access-to-virtual-network-hosted-resources"></a>A virtuális hálózaton tárolt erőforrásokhoz való hozzáférés hibakeresése
-Számos dolog megakadályozhatja, hogy az alkalmazás elérjen egy adott gazdatestet és portot. Az idő nagy részében ez az egyik ilyen dolog:
+#### <a name="debug-access-to-virtual-network-hosted-resources"></a>Virtuális hálózat által üzemeltetett erőforrásokhoz való hozzáférés hibakeresése
+Számos dolog megakadályozhatja, hogy az alkalmazás elérjen egy adott gazdagépet és portot. A legtöbb esetben ez az egyik ilyen dolog:
 
-* **A tűzfal útban van.** Ha van egy tűzfal az úton, akkor nyomja meg a TCP időout. A TCP időhosszabbítása ebben az esetben 21 másodperc. A **tcpping** eszközzel tesztelje a kapcsolatot. A TCP időtúllépésre számos tűzfalon túli dolog is okozhatja, de ott kezdődhet.
-* **A DNS nem érhető el.** A DNS-időelés DNS-kiszolgálónként 3 másodperc. Ha két DNS-kiszolgálóval rendelkezik, az időelés 6 másodperc. A nameresolver segítségével ellenőrizheti, hogy a DNS működik-e. Az nslookup nem használható, mert az nem azt a DNS-t használja, amelyhez a virtuális hálózat konfigurálva van. Ha nem érhető el, lehet, hogy egy tűzfal vagy NSG blokkolja a DNS-hez való hozzáférést, vagy lehet, hogy nem működik.
+* **A tűzfal éppen folyamatban van.** Ha tűzfallal rendelkezik, a TCP-időtúllépést is elérheti. Ebben az esetben a TCP-időkorlát 21 másodperc. A kapcsolat teszteléséhez használja a **tcpping** eszközt. A TCP-időtúllépéseket a tűzfalakon túl sok dolog okozhatja, de itt is elindítható.
+* **A DNS nem érhető el.** DNS-kiszolgáló esetén a DNS-időtúllépés 3 másodperc. Ha két DNS-kiszolgálóval rendelkezik, az időtúllépés 6 másodperc. A nameresolver használatával ellenőrizze, hogy a DNS működik-e. Az nslookup nem használható, mert az nem használja a virtuális hálózat DNS-sel való konfigurálását. Ha nem érhető el, lehet, hogy tűzfallal vagy NSG blokkolja a hozzáférést a DNS-hez, vagy leállt.
 
-Ha ezek az elemek nem válaszolnak a problémáidra, először a következő dolgokat keresd:
+Ha ezek az elemek nem válaszolnak a problémákra, először tekintse meg a következő dolgokat:
 
-**Regionális virtuális hálózatok integrációja**
-* Az úti cél nem RFC1918-as cím, és nincs WEBSITE_VNET_ROUTE_ALL 1-re állítva?
-* Van egy NSG blokkolja a kilépést az integrációs alhálózatból?
-* Ha az Azure ExpressRoute-on vagy egy VPN-en keresztül megy, a helyszíni átjáró úgy van beállítva, hogy a forgalmat visszairányítsa az Azure-ba? Ha el tudja érni a végpontok a virtuális hálózatban, de nem a helyszínen, ellenőrizze az útvonalakat.
-* Rendelkezik elegendő engedéllyel az integrációs alhálózaton a delegálás beállításához? A regionális virtuális hálózatintegrációs konfiguráció során az integrációs alhálózat delegált a Microsoft.Web. A virtuális hálózat integrációs felhasználói felülete automatikusan delegálja az alhálózatot a Microsoft.Web webhelyen. Ha a fiók nem rendelkezik megfelelő hálózati engedélyekkel a delegálás beállításához, szüksége lesz valakire, aki beállíthatja az integrációs alhálózat attribútumait az alhálózat delegálásához. Az integrációs alhálózat manuális delegálásához nyissa meg az Azure Virtual Network alhálózati felhasználói felületet, és állítsa be a Microsoft.Web delegálását.
+**Regionális VNet-integráció**
+* A cél nem RFC1918-címet tartalmaz, és nincs WEBSITE_VNET_ROUTE_ALL beállítva 1-re?
+* Van NSG blokkolása az integrációs alhálózatról?
+* Ha az Azure ExpressRoute vagy egy VPN-en keresztül történik, a helyszíni átjáró úgy van konfigurálva, hogy az Azure-ba irányítsa a forgalmat? Ha a virtuális hálózatban található végpontok nem a helyszínen érhetők el, ellenőrizze az útvonalakat.
+* Van elegendő engedélye a delegálás beállítására az integrációs alhálózaton? A regionális VNet integrációs konfigurációjában az integrációs alhálózat delegálása a Microsoft. Web. A VNet-integráció felhasználói felülete automatikusan delegálja az alhálózatot a Microsoft. Web számára. Ha a fiókja nem rendelkezik megfelelő hálózati engedélyekkel a delegálás beállításához, szüksége lesz egy olyan személyre, aki az integrációs alhálózaton attribútumokat állíthat be az alhálózat delegálására. Az integrációs alhálózat manuális delegálásához nyissa meg az Azure Virtual Network alhálózat felhasználói felületét, és állítsa be a Microsoft. Web delegálását.
 
-**Átjáróhoz szükséges virtuális hálózat integrációja**
-* Az RFC 1918-as tartományban van a pont-hely címtartomány (10.0.0.0-10.255.255.255 / 172.16.0.0-172.31.255.255 / 192.168.0.0-192.168.255.255)?
-* Az átjáró megjelenik a portálon? Ha az átjáró nem működik, akkor hozza vissza.
-* A tanúsítványok szinkronban vannak, vagy azt gyanítja, hogy a hálózati konfiguráció megváltozott?  Ha a tanúsítványok nincsenek szinkronban, vagy azt gyanítja, hogy olyan változás történt a virtuális hálózati konfiguráción, amely nem volt szinkronizálva az asp-kkel, válassza a **Hálózat szinkronizálása**lehetőséget.
-* Ha vpn-kapcsolaton megy keresztül, a helyszíni átjáró úgy van beállítva, hogy a forgalmat visszairányítsa az Azure-ba? Ha el tudja érni a végpontok a virtuális hálózatban, de nem a helyszínen, ellenőrizze az útvonalakat.
-* Olyan együttélési átjárót próbál használni, amely támogatja a ponttól a helyig és az ExpressRoute-ot is? Az együttélési átjárók nem támogatottak a virtuális hálózatok integrációja.
+**Átjáró – szükséges VNet-integráció**
+* A pont – hely címtartomány az RFC 1918-tartományokban (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255)?
+* Megjelenik az átjáró a portálon? Ha az átjáró nem működik, hozza létre a biztonsági mentést.
+* A tanúsítványok szinkronként jelennek meg, vagy azt gyanítja, hogy a hálózati konfiguráció megváltozott?  Ha a tanúsítványok nincsenek szinkronban, vagy ha azt gyanítja, hogy a ASP nem szinkronizált virtuális hálózati konfiguráció módosítása történt, válassza a **szinkronizálás hálózat**lehetőséget.
+* Ha a VPN-en keresztül történik, a helyszíni átjáró úgy van konfigurálva, hogy a forgalmat az Azure-ba irányítsa? Ha a virtuális hálózatban található végpontok nem a helyszínen érhetők el, ellenőrizze az útvonalakat.
+* Olyan párhuzamos átjárót próbál használni, amely támogatja mind a pont-hely, mind a ExpressRoute? Az együttélési átjárók nem támogatottak a VNet-integrációval.
 
-A hálózati problémák hibakeresése kihívást jelent, mert nem látja, hogy mi blokkolja a hozzáférést egy adott állomás:port kombinációhoz. Néhány ok a következők:
+A hálózati problémák hibakeresése kihívást jelent, mivel nem tudja megtekinteni, hogy mi blokkolja a hozzáférést egy adott gazdagéphez: Port kombináció. Bizonyos okok a következők:
 
-* Van egy tűzfal fel a fogadó, amely megakadályozza a hozzáférést az alkalmazás port a pont-hely IP-tartományban. Az alhálózatok keresztezése gyakran nyilvános hozzáférést igényel.
-* A célállomásod nem.
-* A jelentkezési lapod nem fogy.
-* Rossz IP vagy hostname volt.
-* Az alkalmazás a várttól eltérő porton figyel. A folyamatazonosítót a figyelőporttal egyeztetheti a végpontgazda "netstat -aon" használatával.
-* A hálózati biztonsági csoportok úgy vannak konfigurálva, hogy megakadályozzák az alkalmazásgazda- és porthoz való hozzáférést a pont-hely IP-tartományból.
+* Rendelkezik egy tűzfallal a gazdagépen, amely megakadályozza, hogy hozzáférjen az alkalmazás portjához a pont – hely IP-tartományból. Az alhálózatok átlépéséhez gyakran nyilvános hozzáférésre van szükség.
+* A célként megadott gazdagép nem működik.
+* Az alkalmazás nem érhető el.
+* Nem megfelelő IP-címet vagy állomásnevet adott meg.
+* Az alkalmazás a várttól eltérő portot figyel. A folyamat AZONOSÍTÓját megtekintheti a figyelő porton a "netstat-Aon" paranccsal a végponti gazdagépen.
+* A hálózati biztonsági csoportok úgy vannak konfigurálva, hogy megakadályozzák az alkalmazás gazdagépének és portjának elérését a pont – hely IP-tartományból.
 
-Nem tudja, hogy az alkalmazás ténylegesen milyen címet használ. Ez lehet bármilyen cím az integrációs alhálózatban vagy a pont-hely címtartományban, ezért engedélyeznie kell a hozzáférést a teljes címtartományból.
+Nem tudja, milyen címet használ ténylegesen az alkalmazás. Az integrációs alhálózat vagy a pont – hely címtartomány bármely címe lehet, ezért a teljes címtartományból engedélyeznie kell a hozzáférést.
 
-További hibakeresési lépések:
+További hibakeresési lépések a következők:
 
-* Csatlakozzon egy virtuális géphez a virtuális hálózatban, és próbálja meg elérni az erőforrás-állomás:port onnan. A TCP-hozzáférés teszteléséhez használja a PowerShell-parancs **teszthálózati kapcsolatát.** A szintaxis a következő:
+* Kapcsolódjon a virtuális hálózatban található virtuális GÉPHEZ, és próbálja meg elérni az erőforrás-gazdagépet: innen a port. A TCP-hozzáférés teszteléséhez használja a következő PowerShell **-parancsot: test-NETCONNECTION**. A szintaxis a következő:
 
       test-netconnection hostname [optional: -Port]
 
-* Hozzon létre egy alkalmazást egy virtuális gépen, és tesztelje az adott állomáshoz és porthoz való hozzáférést az alkalmazásból az alkalmazásból a **tcpping**használatával.
+* Egy alkalmazás üzembe helyezése egy virtuális gépen, valamint a gazdagép és a port elérésének tesztelése a konzolról az **tcpping**használatával.
 
 #### <a name="on-premises-resources"></a>Helyszíni erőforrások ####
 
-Ha az alkalmazás nem tud elérni egy erőforrást a helyszínen, ellenőrizze, hogy el tudja-e érni az erőforrást a virtuális hálózatról. Használja a **test-netconnection** PowerShell parancsot a TCP-hozzáférés ellenőrzéséhez. Ha a virtuális gép nem tudja elérni a helyszíni erőforrást, előfordulhat, hogy a VPN- vagy ExpressRoute-kapcsolat nincs megfelelően konfigurálva.
+Ha az alkalmazás nem tud helyszíni erőforrást elérni, ellenőrizze, hogy elérhető-e az erőforrás a virtuális hálózatról. Használja a **test-NETCONNECTION** PowerShell-parancsot a TCP-hozzáférés ellenőrzéséhez. Ha a virtuális gép nem tudja elérni a helyszíni erőforrást, előfordulhat, hogy a VPN-vagy ExpressRoute-kapcsolat nem megfelelően van konfigurálva.
 
-Ha a virtuális hálózat által üzemeltetett virtuális gép elérheti a helyszíni rendszert, de az alkalmazás nem, az ok valószínűleg az alábbi okok egyike:
+Ha a virtuális hálózat által üzemeltetett virtuális gép elérheti a helyszíni rendszerét, de az alkalmazás nem tudja, az ok a következő okok egyike lehet:
 
-* Az útvonalak nincsenek konfigurálva az alhálózat vagy a pont-hely címtartományok a helyszíni átjáró.
-* A hálózati biztonsági csoportok blokkolják a hozzáférést a pont-hely IP-tartományhoz.
-* A helyszíni tűzfalak blokkolják a forgalmat a pont-hely IP-tartományból.
-* Nem RFC 1918-as címet próbál elérni a regionális virtuális hálózat integrációs funkciójával.
+* Az útvonalak nincsenek konfigurálva az alhálózat vagy a pont – hely címtartomány között a helyszíni átjárón.
+* A hálózati biztonsági csoportok blokkolja a pont – hely IP-címtartomány elérését.
+* A helyszíni tűzfalak blokkolja a pont – hely IP-címtartomány forgalmát.
+* Nem RFC 1918-címeket próbál elérni a regionális VNet-integrációs szolgáltatás használatával.

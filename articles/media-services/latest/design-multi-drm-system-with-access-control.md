@@ -1,6 +1,6 @@
 ---
-title: Több DRM-tartalomvédelmi rendszer – Azure Media Services v3
-description: Ez a cikk részletes leírást ad arról, hogyan tervezz meg egy több DRM-tartalomvédelmi rendszert az Azure Media Services szolgáltatással.
+title: Multi-DRM Content Protection rendszer – Azure Media Services v3
+description: Ebből a cikkből megtudhatja, hogyan tervezhet meg több DRM-mel rendelkező tartalomkezelő rendszerét Azure Media Services használatával.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -23,217 +23,217 @@ ms.locfileid: "77161783"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése 
 
-A digitális jogkezelési (DRM) alrendszer tervezése és építése egy felülről felépített (OTT) vagy online streamelési megoldáshoz összetett feladat. Az operátorok/online videoszolgáltatók általában kiszervezik ezt a feladatot speciális DRM-szolgáltatóknak. A dokumentum célja, hogy egy referenciatervet és egy végpontok között DRM-alrendszer referencia-implementációját mutassa be ott vagy online streamelési megoldásban.
+A felső (OTT) vagy online streaming megoldáshoz tartozó digitális Rights Management (DRM) alrendszer tervezése és létrehozása összetett feladat. A kezelők/online szolgáltatók jellemzően kiszervezik ezt a feladatot a speciális DRM-szolgáltatók számára. A jelen dokumentum célja, hogy egy hivatkozási tervet és egy teljes körű DRM-alrendszer hivatkozását egy OTT vagy online streaming megoldásban.
 
-A dokumentum célzott olvasói olyan mérnökök, akik az OTT DRM alrendszereiben vagy az online streamelési/többképernyős megoldásokban dolgoznak, vagy olyan olvasók, akik érdeklődnek a DRM-alrendszerek iránt. A feltételezés az, hogy az olvasók ismerik legalább az egyik DRM-technológiát a piacon, például a PlayReady, a Widevine, a FairPlay vagy az Adobe Access.
+A dokumentum megcélozott olvasói olyan mérnökök, akik az OTT vagy online streaming/osztott megoldások vagy a DRM-alrendszerek iránt érdeklődők számára készült DRM-alrendszerekben működnek. Feltételezhető, hogy az olvasók a piacon legalább egy olyan DRM-technológiával rendelkeznek, mint például a PlayReady, a Widevine, a FairPlay vagy az Adobe Access.
 
-Ebben a vitában a több DRM-en keresztül az Azure Media Services által támogatott 3 DRM-et is felvesszük: Common Encryption (CENC) for PlayReady és Widevine, FairPlay, valamint AES-128 titkosítás. Az online streamelés és az OTT-iparág egyik fő trendje a natív DRM-ek használata különböző ügyfélplatformokon. Ez a tendencia az előzőhez képest, amely egyetlen DRM-et és ügyfélSDK-t használt különböző ügyfélplatformokhoz. Ha a CENC-t többnatív DRM-mel használja, a PlayReady és a Widevine egyaránt titkosítva van a [Közös Titkosítás (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikáció szerint.
+Ebben a vitában a több DRM által támogatott 3 DRMs Azure Media Services: Common Encryption (CENC) támogatja a PlayReady és a Widevine, a FairPlay, valamint az AES-128 titkosítatlan kulcs titkosításához. Az online streaming és az OTT iparág egyik fő trendje a natív DRMs használata a különböző ügyféloldali platformokon. Ez a trend az előzőtől való elmozdulás, amely egyetlen DRM-t és az ügyféloldali SDK-t használta a különböző ügyféloldali platformokhoz. Ha a CENC-t több natív DRM-mel használja, a PlayReady és a Widevine is titkosítva van a [Common encryption (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikáció alapján.
 
-A tartalomvédelemhez a natív multi-DRM használatának előnyei a következők:
+A natív multi-DRM használatának előnyei a tartalomvédelem esetében:
 
-* Csökkenti a titkosítási költségeket, mivel egyetlen titkosítási folyamatot használnak a különböző platformok megcélzására a natív DRM-ekkel.
-* Csökkenti az eszközök kezelésének költségét, mivel a tárolóban csak az eszköz egyetlen példányára van szükség.
+* Csökkenti a titkosítási költségeket, mivel a rendszer egyetlen titkosítási folyamatot használ a különböző platformok natív DRMs való célzására.
+* Csökkenti az eszközök kezelésének költségeit, mivel csak egyetlen példányra van szükség a tárolóban.
 * Kiküszöböli a DRM-ügyfél licencelési költségeit, mivel a natív DRM-ügyfél általában ingyenes a natív platformon.
 
-### <a name="goals-of-the-article"></a>A cikk céljai
+### <a name="goals-of-the-article"></a>A cikk célja
 
-A cikk céljai a következők:
+A cikk célja:
 
-* Adjon meg egy referenciatervet egy DRM-alrendszerhez, amely mind a 3 DRM-et használja (CENC a DASH-hez, FairPlay a HLS-hez és PlayReady a zökkenőmentes streameléshez).
-* Referenciaimplementáció biztosítása az Azure és az Azure Media Services platformon.
-* Vitasson meg néhány tervezési és megvalósítási témát.
+* Adjon meg egy olyan DRM-alrendszer referenciáját, amely mind a 3 DRMs (CENC for DASH, FairPlay for HLS és PlayReady for Smooth streaming) használja.
+* Adjon meg egy referenciát az Azure-ban és Azure Media Services platformon.
+* Megismerheti a tervezési és megvalósítási témaköröket.
 
-Az alábbi táblázat összefoglalja a natív DRM-támogatást a különböző platformokon és az EME-támogatást a különböző böngészőkben.
+Az alábbi táblázat összefoglalja a natív DRM-támogatást a különböző platformokon, és az EME-támogatást különböző böngészőkben.
 
-| **Ügyfélplatform** | **Natív DRM** | **Eme** |
+| **Ügyfélplatform** | **Natív DRM** | **EME** |
 | --- | --- | --- |
-| **Smart TV-k, STB-k** | PlayReady, Widevine és/vagy egyéb | Beágyazott böngésző/EME PlayReady és/vagy Widevine esetén|
-| **Windows 10** | PlayReady | Microsoft Edge/IE11 a PlayReady-hez|
-| **Android-eszközök (telefon, táblagép, TV)** |Widevine |Chrome a Widevine-hoz |
-| **iOS** | FairPlay | Safari for FairPlay (az iOS 11.2 óta) |
-| **Macos** | FairPlay | Safari for FairPlay (a Safari 9+ óta Mac OS X 10.11+ El Capitan rendszeren)|
+| **Intelligens TV-k, STBs** | PlayReady, Widevine és/vagy egyéb | Beágyazott böngésző/EME PlayReady és/vagy Widevine|
+| **Windows 10** | PlayReady | Microsoft Edge/IE11 a PlayReady|
+| **Android-eszközök (telefon, Tablet, TV)** |Widevine |Widevine-hez készült Chrome |
+| **iOS** | FairPlay | Safari for FairPlay (iOS 11,2 óta) |
+| **macOS** | FairPlay | Safari for FairPlay (mivel a Safari 9 + Mac OS X 10.11 + el Capitan)|
 | **tvOS** | FairPlay | |
 
-Figyelembe véve az egyes DRM-ek üzembe helyezésének jelenlegi állapotát, a szolgáltatás általában két vagy három DRM-et szeretne megvalósítani, hogy a legjobb módon kezelje a végpontok összes típusát.
+Az egyes DRM-eszközök üzembe helyezésének aktuális állapotát figyelembe véve a szolgáltatás általában két vagy három DRMs kíván megvalósítani, hogy a lehető legjobb megoldást biztosítsa a végpontok összes típusának kezeléséhez.
 
-A szolgáltatáslogika összetettsége és az ügyféloldalon a felhasználói élmény egy bizonyos szintjének elérése érdekében a különböző ügyfeleken való felhasználói élmény elérése között kompromisszumot kell kötni.
+A szolgáltatás logikájának összetettsége és az ügyféloldali összetettsége közötti kompromisszum a különböző ügyfeleken a felhasználói élmény bizonyos szintjének elérése érdekében.
 
-A kiválasztáshoz tartsa szem előtt a következőket:
+A kiválasztás elvégzéséhez tartsa szem előtt a következőket:
 
-* A PlayReady natív módon valósul meg minden Windows-eszközön, egyes Android-eszközökön, és gyakorlatilag bármilyen platformon elérhető szoftversdk-eken keresztül.
-* A Widevine natív módon valósul meg minden Android-eszközön, a Chrome-ban és néhány más eszközön. Widevine is támogatja a Firefox és az Opera böngészők több mint DASH.
-* A FairPlay iOS, macOS és tvOS rendszeren érhető el.
+* A PlayReady natív módon implementálva van minden Windows-eszközön, bizonyos Android-eszközökön, és gyakorlatilag bármilyen platformon elérhető szoftveres SDK-n keresztül érhető el.
+* A Widevine natív módon implementálva van minden Android-eszközön, a Chrome-ban és más eszközökön. A Widevine a Firefox és az Opera böngészőkben is támogatott a DASH-en keresztül.
+* A FairPlay iOS-, macOS-és tvOS-eszközökön érhető el.
 
 
-## <a name="a-reference-design"></a>Referenciaterv
-Ez a szakasz egy olyan referenciatervet mutat be, amely független az annak megvalósításához használt technológiákhoz.
+## <a name="a-reference-design"></a>Hivatkozási terv
+Ez a szakasz egy olyan hivatkozási kialakítást mutat be, amely a megvalósításához használt technológiákkal kapcsolatos.
 
-A DRM-alrendszer a következő összetevőket tartalmazhatja:
+A DRM-alrendszer a következő összetevőket tartalmazza:
 
 * Kulcskezelés
-* DRM titkosítási csomagolás
+* DRM-titkosítás csomagolása
 * DRM-licenckézbesítés
-* Jogosultság-ellenőrzés/hozzáférés-ellenőrzés
+* Jogosultság ellenőrzése/hozzáférés-vezérlés
 * Felhasználói hitelesítés/engedélyezés
-* Player alkalmazás
-* Origin/content delivery network (CDN)
+* Player-alkalmazás
+* Forrás/Content Delivery Network (CDN)
 
-Az alábbi ábra a DRM-alrendszer összetevői közötti magas szintű kölcsönhatást mutatja be:
+A következő ábra a DRM-alrendszerek összetevői közötti magas szintű interakciókat mutatja be:
 
-![DRM alrendszer CENC-vel](./media/design-multi-drm-system-with-access-control/media-services-generic-drm-subsystem-with-cenc.png)
+![CENC rendelkező DRM-alrendszer](./media/design-multi-drm-system-with-access-control/media-services-generic-drm-subsystem-with-cenc.png)
 
-A design három alapvető rétegből áll:
+A terv három alapszintű réteget tartalmaz:
 
-* A háttérirodai réteg (fekete) nincs kitéve külsőleg.
-* A DMZ-réteg (sötétkék) tartalmazza az összes olyan végpontot, amely a nyilvánosság elé kerül.
-* A nyilvános internetes réteg (világoskék) tartalmazza a CDN és a játékosok a forgalom a nyilvános interneten.
+* A Back-Office réteg (fekete) nem külsőleg van kitéve.
+* A DMZ-réteg (sötétkék) a nyilvánosságot képező összes végpontot tartalmazza.
+* A nyilvános internetes réteg (világoskék) a CDN-t és a nyilvános interneten keresztül forgalomban lévő játékosokat tartalmazza.
 
-A DRM-védelem szabályozására tartalomkezelő eszköznek is kell lennie, függetlenül attól, hogy statikus vagy dinamikus titkosításról van-e szó. A DRM-titkosítás bemenetei a következők:
+A DRM-védelem szabályozására is érdemes tartalomkezelő eszköznek kell lennie, függetlenül attól, hogy statikus vagy dinamikus titkosítást használ-e. A DRM-titkosítás bemenetei a következők:
 
-* MBR videótartalom
-* Tartalomkulcs
-* Licencbeszerzési URL-címek
+* MBR-videó tartalma
+* Tartalmi kulcs
+* Licenc-beszerzési URL-címek
 
-Itt van a magas szintű áramlás lejátszás közben:
+A lejátszás ideje alatt a következő magas szintű folyamat érhető el:
 
-* A felhasználó hitelesítve van.
-* A felhasználó számára létrejön egy engedélyezési jogkivonat.
-* DRM védett tartalom (manifeszt) letöltődik a lejátszóra.
-* A játékos licencbeszerzési kérelmet nyújt be a licenckiszolgálóknak egy kulcsazonosítóval és egy engedélyezési tokentel együtt.
+* A felhasználó hitelesítése megtörtént.
+* A rendszer létrehoz egy engedélyezési jogkivonatot a felhasználó számára.
+* A rendszer letölti a DRM-védelemmel ellátott tartalmat (manifest) a lejátszóra.
+* A lejátszó licenc-beszerzési kérelmet küld a licenckiszolgálók számára a kulcs-AZONOSÍTÓval és egy engedélyezési jogkivonattal együtt.
 
-A következő szakasz a kulcskezelés tervezését ismerteti.
+A következő szakasz a kulcskezelő tervét tárgyalja.
 
-| **ContentKey-to-asset** | **Forgatókönyv** |
+| **ContentKey** | **Forgatókönyv** |
 | --- | --- |
-| 1 az 1-hez |A legegyszerűbb eset. Ez biztosítja a legjobb irányítást. De ez elrendezés általában eredmények -ban a legmagasabb engedély felszabadítás ár. Legalább egy licenckérelem szükséges minden védett eszközhöz. |
-| 1-a-sokhoz |Ugyanazt a tartalomkulcsot több eszközhöz is használhatja. Egy logikai csoport összes eszközéhez, például egy műfajhoz vagy egy műfaj (vagy filmgén) részhalmazához például egyetlen tartalomkulcsot használhat. |
-| Több az egyhez |Az egyes eszközökhöz több tartalomkulcs szükséges. <br/><br/>Ha például dinamikus CENC-védelmet kell alkalmaznia több DRM-mel az MPEG-DASH és a dinamikus AES-128 titkosítással a HLS-hez, két külön tartalomkulcsra van szükség. Minden tartalomkulcsnak saját ContentKeyType típusra van szüksége. (A dinamikus CENC-védelemhez használt tartalomkulcshoz használja a ContentKeyType.CommonEncryption titkosítást. A dinamikus AES-128 titkosításhoz használt tartalomkulcshoz használja a ContentKeyType.EnvelopeEncryption titkosítást.)<br/><br/>Egy másik példa, a CENC védelme DASH tartalom, elméletileg, akkor egy tartalom kulcs védelme a video stream és egy másik tartalom kulcs védelme a hangstream. |
-| Több-a-többhöz |Az előző két forgatókönyv kombinációja. Egy tartalomkulcsok egy-egy készletét használja az azonos eszközcsoportban lévő több eszköz mindegyikéhez. |
+| 1 – 1 |A legegyszerűbb eset. A legfinomabb vezérlőt biztosítja. Ez a megoldás azonban általában a legmagasabb licenc-kézbesítési költségeket eredményezi. Az egyes védett eszközökhöz legalább egy licencelési kérelem szükséges. |
+| 1 – a-többhöz |Ugyanazt a tartalmi kulcsot használhatja több eszközhöz is. Például egy logikai csoport összes eszköze, például a műfaj vagy a műfaj (vagy film gén) részhalmaza esetében egyetlen tartalmi kulcsot is használhat. |
+| Több-az-1 |Az egyes eszközökhöz több tartalmi kulcs szükséges. <br/><br/>Ha például dinamikus CENC-védelmet szeretne alkalmazni a többplatformos DRM-mel az MPEG-DASH és a dinamikus AES-128 titkosításhoz a HLS-hoz, két különálló tartalmi kulcsra van szüksége. Mindegyik tartalmi kulcshoz saját ContentKeyType szükséges. (A dinamikus CENC-védelemhez használt tartalmi kulcshoz használja a ContentKeyType. CommonEncryption. A dinamikus AES-128 titkosításhoz használt tartalmi kulcshoz használja a következőt: ContentKeyType. EnvelopeEncryption.)<br/><br/>Egy másik példaként a DASH-tartalmak CENC-védelméhez elméletileg egy tartalmi kulcsot használhat a videó stream védelméhez és egy másik tartalmi kulcshoz a hangstream védelméhez. |
+| Több-a-többhöz |Az előző két forgatókönyv kombinációja. Az egyazon csoportba tartozó több objektum esetében az egyik tartalmi kulcs van használatban. |
 
-Egy másik fontos tényező, hogy fontolja meg a tartós és nem állandó licencek.
+Egy másik fontos szempont az állandó és a nem állandó licencek használata.
 
-Miért fontosak ezek a megfontolások?
+Miért fontos ezeket a szempontokat?
 
-Ha nyilvános felhőt használ a licenckézbesítéshez, az állandó és nem állandó licencek közvetlen hatással vannak a licenc kézbesítési költségére. A következő két különböző tervezési eset szemlélteti:
+Ha nyilvános felhőt használ a licencek kézbesítéséhez, az állandó és a nem állandó licencek közvetlen hatással vannak a licencek kézbesítési díjszabására. A következő két különböző kialakítási eset a következőket szemlélteti:
 
-* Havi előfizetés: Használjon állandó licencet és egy-a-többhöz tartalomkulcs-eszköz leképezést. Például az összes gyerekfilmhez egyetlen tartalomkulcsot használunk a titkosításhoz. Ebben az esetben:
+* Havi előfizetés: használjon állandó licencet és egy-a-többhöz tartalmat kulcs – eszköz hozzárendelést. Például a gyerekek teljes filmjei esetében egyetlen tartalmi kulcsot használunk a titkosításhoz. Ebben az esetben:
 
-    Az összes gyermekfilmjére/eszközére kért licencek száma összesen = 1
+    Az összes gyermek mozi/eszköz = 1 esetében kért licencek száma összesen
 
-* Havi előfizetés: Használjon nem állandó licencet és 1:1-es hozzárendelést a tartalomkulcs és az eszköz között. Ebben az esetben:
+* Havi előfizetés: használjon nem állandó licencet és 1 – 1 leképezést a tartalmi kulcs és az eszköz között. Ebben az esetben:
 
-    Az összes gyermekfilmjére/eszközére kért licencek száma összesen = [megnézett filmek száma] x [munkamenetek száma]
+    Minden gyermek mozi/eszköz esetében kért licencek száma összesen: [figyelt filmek száma] x [munkamenetek száma]
 
-A két különböző formatervezési minta nagyon eltérő licenckérelem-mintákat eredményez. A különböző minták eltérő licenckézbesítési költséget eredményeznek, ha a licenckézbesítési szolgáltatást egy nyilvános felhő, például a Media Services biztosítja.
+A két különböző terv nagyon eltérő licencelési mintákat eredményez. A különböző minták a licenc kézbesítésének különböző költségeit eredményezik, ha a licenc kézbesítési szolgáltatását egy nyilvános felhő (például Media Services) szolgáltatja.
 
-## <a name="map-design-to-technology-for-implementation"></a>Térképtervezés a technológiához a megvalósításhoz
-Ezután az általános kialakítás le van képezve az Azure/Media Services platformon lévő technológiákhoz, és adja meg, hogy melyik technológiát használja az egyes építőelemhez.
+## <a name="map-design-to-technology-for-implementation"></a>Tervezés a technológiához a megvalósításhoz
+Ezután az általános kialakítás az Azure/Media Services platformon található technológiákra van leképezve azáltal, hogy meghatározza, hogy melyik technológiát kell használni az egyes építőelemek esetében.
 
-Az alábbi táblázat a leképezést mutatja be.
+A következő táblázat a leképezést mutatja be.
 
 | **Építőelem** | **Technológia** |
 | --- | --- |
 | **Lejátszó** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
-| **Identitásszolgáltató (IDP)** |Azure Active Directory (Azure AD) |
+| **Identitás-szolgáltató (IDENTITÁSSZOLGÁLTATÓ)** |Azure Active Directory (Azure AD) |
 | **Biztonságos jogkivonat-szolgáltatás (STS)** |Azure AD |
-| **DRM védelmi munkafolyamat** |Az Azure Media Services dinamikus védelme |
-| **DRM-licenckézbesítés** |* Media Services licenc szállítás (PlayReady, Widevine, FairPlay) <br/>* Axinom licenc szerver <br/>* Egyéni PlayReady licenc szerver |
-| **Forrás** |Az Azure Media Services streamelési végpontja |
-| **Kulcskezelés** |Nem szükséges a referencia-megvalósításhoz |
-| **Tartalomkezelés** |C# konzolalkalmazás |
+| **DRM-védelem munkafolyamata** |Azure Media Services dinamikus védelem |
+| **DRM-licenckézbesítés** |* Media Services licenc kézbesítése (PlayReady, Widevine, FairPlay) <br/>* Axinom-licenckiszolgáló <br/>* Egyéni PlayReady-licenckiszolgáló |
+| **Forrás** |Azure Media Services streaming végpont |
+| **Kulcskezelés** |A hivatkozás megvalósításához nem szükséges |
+| **Tartalomkezelés** |C# konzolos alkalmazás |
 
-Más szóval az IDP és az STS az Azure AD biztosítja. Az [Azure Media Player API-t](https://amp.azure.net/libs/amp/latest/docs/) a lejátszó használja. Az Azure Media Services és az Azure Media Player egyaránt támogatja a CENC-t dash-en, fairplay-t HLS-en keresztül, playready-t a zökkenőmentes streameléshez és AES-128 titkosítást a DASH, HLS és smooth esetén.
+Más szóval a IDENTITÁSSZOLGÁLTATÓ és az STS is elérhető az Azure AD-ben. A lejátszóhoz a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) használatos. Mind a Azure Media Services, mind a Azure Media Player támogatja a CENC-t a DASH-en keresztül, a HLS, a PlayReady a Smooth streaming és az AES-128 titkosítást a DASH, a HLS és a Smooth FairPlay.
 
-Az alábbi ábra a teljes szerkezetet és folyamatot mutatja be az előző technológialeképezéssel:
+Az alábbi ábrán az előző technológiai leképezéssel rendelkező általános struktúra és folyamat látható:
 
-![CENC a médiaszolgáltatásokról](./media/design-multi-drm-system-with-access-control/media-services-cenc-subsystem-on-AMS-platform.png)
+![CENC Media Services](./media/design-multi-drm-system-with-access-control/media-services-cenc-subsystem-on-AMS-platform.png)
 
-A DRM-tartalomvédelem beállításához a tartalomkezelő eszköz a következő bemeneteket használja:
+A DRM-tartalmak védelmének beállításához a tartalomkezelési eszköz a következő bemeneteket használja:
 
 * Tartalom megnyitása
-* Tartalomkulcs a kulcskezelésből
-* Licencbeszerzési URL-címek
-* Az Azure AD-ből származó információk, például a közönség, a kibocsátó és a tokenjogcímek listája
+* Key Management-tartalom kulcsa
+* Licenc-beszerzési URL-címek
+* Az Azure AD-ból származó információk, például a célközönség, a kibocsátó és a jogkivonat-jogcímek listája
 
-Itt van a kimenet a tartalomkezelő eszköz:
+A Content Management eszköz kimenete:
 
-* A ContentKeyPolicy a DRM licencsablonját ismerteti az egyes használt DRM-típusokhoz;
-* A ContentKeyPolicyRestriction a DRM-licenc kiadása előtt ismerteti a hozzáférés-vezérlést
-* A streamelési politika a DRM - titkosítási mód - streamelési protokoll - tárolóformátum különböző kombinációit írja le a streameléshez
-* A StreamingLocator a titkosításhoz és az URL-ek streameléséhez használt tartalomkulcsot/IV-et írja le 
+* A ContentKeyPolicy leírja a DRM-licencek sablonját minden felhasznált DRM-típushoz;
+* A ContentKeyPolicyRestriction a DRM-licencek kiadása előtt ismerteti a hozzáférés-vezérlést
+* A Streamingpolicy leírja a DRM-titkosítási mód – Streaming Protocol – tároló formátumának különböző kombinációit a folyamatos átvitelhez
+* A StreamingLocator a titkosításhoz és a folyamatos átviteli URL-címekhez használt Content Key/IV 
 
-A folyamat futásközben:
+A folyamat futása közben:
 
-* A felhasználói hitelesítéskor egy JWT jön létre.
-* A JWT-ben található jogcímek egyike egy csoportjogcím, amely a EntitledUserGroup csoportazonosítót tartalmazza. Ez a jogcím a jogosultsági ellenőrzésen való megfeleltetésre szolgál.
-* A játékos letölti a CENC által védett tartalom ügyfélmanitkóját, és azonosítja a következőket:
-   * Kulcsazonosító.
-   * A tartalom DRM-védelemmel van eltorpant.
-   * Licencbeszerzési URL-címek.
-* A játékos licencbeszerzési kérelmet nyújt be a támogatott böngésző/DRM alapján. A licencbeszerzési kérelemben a kulcsazonosító és a JWT is beérkezik. A licenckézbesítési szolgáltatás ellenőrzi a JWT-t és a követeléseket, mielőtt kiadja a szükséges licencet.
+* A felhasználó hitelesítése után létrejön egy JWT.
+* A JWT lévő jogcímek egyike egy olyan csoportos jogcím, amely tartalmazza a EntitledUserGroup AZONOSÍTÓját. Ez a jogcím a jogosultsági ellenőrzések átadására szolgál.
+* A lejátszó letölti az CENC-védelemmel ellátott tartalomhoz tartozó ügyfél-jegyzékfájlt, és azonosítja a következőket:
+   * Kulcs azonosítója.
+   * A tartalom DRM-védelemmel van ellátva.
+   * Licenc-beszerzési URL-címek.
+* A lejátszó a licencek beszerzésére irányuló kérést a böngésző/DRM által támogatott böngészők alapján teszi elérhetővé. A licenc-beszerzési kérelemben a kulcs AZONOSÍTÓját és a JWT is elküldi a rendszer. A licenc-kézbesítési szolgáltatás ellenőrzi a JWT és a jogcímeket, mielőtt kiadja a szükséges licencet.
 
 ## <a name="implementation"></a>Megvalósítás
-### <a name="implementation-procedures"></a>Végrehajtási eljárások
+### <a name="implementation-procedures"></a>Megvalósítási eljárások
 A megvalósítás a következő lépéseket tartalmazza:
 
-1. Teszteszközök előkészítése. Tesztvideó kódolása/csomagolása többbitráta-töredezett MP4-re a Media Services szolgáltatásban. Ez az eszköz *nem* DRM védett. A DRM-védelem később dinamikus védelemmel történik.
+1. Tesztelési eszközök előkészítése. Videó kódolása/becsomagolása többszörös sávszélességű, töredezett MP4-Media Services. Ez az eszköz *nem* DRM-védelemmel ellátott. A DRM elleni védelmet később a dinamikus védelem végzi.
 
-2. Hozzon létre egy kulcsazonosítót és egy tartalomkulcsot (opcionálisan egy kulcsmagból). Ebben az esetben a kulcskezelő rendszer nem szükséges, mert csak egy kulcsazonosító és a tartalomkulcs szükséges egy pár teszt eszközök.
+2. Hozzon létre egy kulcs-azonosítót és egy tartalmi kulcsot (opcionálisan egy kulcsfontosságú magot is). Ebben a példányban nincs szükség a kulcskezelő rendszerre, mert néhány tesztelési eszközhöz csak egyetlen kulcs-azonosító és egy tartalmi kulcs szükséges.
 
-3. A Media Services API-val konfigurálhatja a több DRM-licenckézbesítési szolgáltatásokat a teszteszközhöz. Ha a Media Services licencszolgáltatások helyett a vállalat vagy a vállalat szállítói egyéni licenckiszolgálókat használ, ezt a lépést kihagyhatja. A licenckézbesítés konfigurálásakor a csomagbeszerzési URL-címeket a lépésben adhatja meg. A Media Services API-ra van szükség néhány részletes konfiguráció, például az engedélyezési házirend korlátozása és a licencválasz-sablonok megadásához a különböző DRM-licencszolgáltatásokhoz. Jelenleg az Azure Portal nem biztosítja a szükséges felhasználói felületet ehhez a konfigurációhoz. Az API-szintű információkat és a mintakódot a [PlayReady és/vagy a Widevine dinamikus közös titkosításának használata című témakörben talál.](protect-with-drm.md)
+3. A Media Services API használatával konfigurálhatja a több DRM-alapú licencelési szolgáltatásokat a tesztelési eszközhöz. Ha a vállalata vagy a vállalata szállítói nem a Media Servicesban lévő licencelési szolgáltatásokat használják, akkor kihagyhatja ezt a lépést. A licencek kézbesítésének konfigurálásakor megadhatja a licencelési URL-címeket a lépésben. A Media Services API-nak meg kell adnia néhány részletes konfigurációt, például az engedélyezési házirend korlátozását és a licenccel kapcsolatos válaszokat a különböző DRM-licencelési szolgáltatásokhoz. Jelenleg a Azure Portal nem biztosítja a szükséges felhasználói felületet ehhez a konfigurációhoz. Az API-szintű információk és a mintakód esetében lásd: [PlayReady és/vagy Widevine dinamikus közös titkosítás használata](protect-with-drm.md).
 
-4. A Media Services API-val konfigurálhatja a teszteszköz eszközkézbesítési szabályzatát. Az API-szintű információkat és a mintakódot a [PlayReady és/vagy a Widevine dinamikus közös titkosításának használata című témakörben talál.](protect-with-drm.md)
+4. A Media Services API-val konfigurálhatja az eszköz kézbesítési házirendjét a tesztelési eszközhöz. Az API-szintű információk és a mintakód esetében lásd: [PlayReady és/vagy Widevine dinamikus közös titkosítás használata](protect-with-drm.md).
 
-5. Hozzon létre és konfiguráljon egy Azure AD-bérlőt az Azure-ban.
+5. Azure AD-bérlő létrehozása és konfigurálása az Azure-ban.
 
-6. Hozzon létre néhány felhasználói fiókot és csoportot az Azure AD-bérlőben. Hozzon létre legalább egy "Jogosult felhasználó" csoportot, és adjon hozzá egy felhasználót a csoporthoz. A csoport felhasználói megfelelnek a jogosultság-ellenőrzés licencbeszerzés. Az ebbe a csoportba nem ebbe a csoportba nem álló felhasználók nem felelnek meg a hitelesítési ellenőrzésen, és nem tudnak licencet szerezni. Ebben a "Jogosult felhasználó" csoportban egy szükséges csoport jogcím az Azure AD által kiadott JWT.Membership in this "Entitled User" group is a required groups claim in the JWT issued by Azure AD. Ezt a jogcímigényt a lépésben adja meg a több DRM-licenckézbesítési szolgáltatások konfigurálásakor.
+6. Hozzon létre néhány felhasználói fiókot és csoportot az Azure AD-bérlőben. Hozzon létre legalább egy "jogosult felhasználó" csoportot, és adjon hozzá egy felhasználót a csoporthoz. Az ebben a csoportban lévő felhasználók átadják a jogosultságok ellenőrzését a licencek beszerzése során. A csoportba nem tartozó felhasználók nem tudják átadni a hitelesítési ellenőrzést, és nem tudnak licencet beszerezni. A "jogosult felhasználó" csoport tagsága kötelező csoportos jogcím az Azure AD által kiadott JWT. Ezt a jogcím-követelményt a több DRM-licenc kézbesítési szolgáltatásainak konfigurálásakor kell megadnia a lépésben.
 
-7. Hozzon létre egy ASP.NET MVC alkalmazást a videólejátszó üzemeltetéséhez. Ez a ASP.NET alkalmazás az Azure AD-bérlővel szembeni felhasználói hitelesítéssel védett. A megfelelő jogcímeket a felhasználói hitelesítés után kapott hozzáférési jogkivonatok tartalmazzák. Ehhez a lépéshez az OpenID Connect API-t javasoljuk. Telepítse az alábbi NuGet-csomagokat:
+7. Hozzon létre egy ASP.NET MVC-alkalmazást a videolejátszó üzemeltetéséhez. Ez a ASP.NET-alkalmazás az Azure AD-Bérlővel szembeni felhasználói hitelesítéssel van védve. A megfelelő jogcímeket a felhasználói hitelesítés után kapott hozzáférési jogkivonatok tartalmazzák. Ehhez a lépéshez az OpenID Connect API használatát javasoljuk. Telepítse az alábbi NuGet-csomagokat:
 
-   * Microsoft.Azure.ActiveDirectory.GraphClient telepítése-csomag
-   * Telepítőcsomag Microsoft.Owin.Security.OpenIdConnect
-   * Telepítőcsomag Microsoft.Owin.Security.Cookies
-   * Telepítő csomag Microsoft.Owin.Host.SystemWeb
-   * Telepítőcsomag Microsoft.IdentityModel.Clients.ActiveDirectory
+   * Telepítse a Microsoft. Azure. ActiveDirectory. GraphClient csomagot.
+   * Telepítse a Microsoft. Owin. Security. OpenIdConnect csomagot.
+   * Install-Package Microsoft. Owin. Security. cookie-k
+   * Telepítse a Microsoft. Owin. host. SystemWeb csomagot.
+   * Telepítse a Microsoft. IdentityModel. clients. ActiveDirectory csomagot.
 
-8. Hozzon létre egy lejátszót az [Azure Media Player API használatával.](https://amp.azure.net/libs/amp/latest/docs/) Az [Azure Media Player ProtectionInfo API-val](https://amp.azure.net/libs/amp/latest/docs/) megadhatja, hogy melyik DRM-technológiát használja a különböző DRM-platformokon.
+8. Hozzon létre egy lejátszót a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)használatával. A [Azure Media Player PROTECTIONINFO API](https://amp.azure.net/libs/amp/latest/docs/) segítségével meghatározhatja, hogy melyik DRM-technológiát használja a különböző DRM-platformokon.
 
-9. Az alábbi táblázat a tesztmátrixot mutatja be.
+9. A következő táblázat a tesztelési mátrixot mutatja be.
 
-    | **Drm** | **Böngésző** | **A jogosult felhasználó találatának eredménye** | **Nem jogosult felhasználó eredménye** |
+    | **DRM** | **Böngésző** | **A jogosult felhasználóhoz tartozó eredmény** | **A nem jogosult felhasználóhoz tartozó eredmény** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Microsoft Edge vagy Internet Explorer 11 Windows 10 rendszeren |Sikerül |Sikertelen |
-    | **Widevine** |Króm, Firefox, Opera |Sikerül |Sikertelen |
+    | **PlayReady** |Microsoft Edge vagy Internet Explorer 11 a Windows 10 rendszeren |Sikerül |Sikertelen |
+    | **Widevine** |Chrome, Firefox, Opera |Sikerül |Sikertelen |
     | **FairPlay** |Safari macOS rendszeren      |Sikerül |Sikertelen |
-    | **AES-128** |A legtöbb modern böngészők  |Sikerül |Sikertelen |
+    | **AES – 128** |Legmodernebb böngészők  |Sikerül |Sikertelen |
 
-Az Azure AD ASP.NET MVC-lejátszóalkalmazáshoz való beállításáról az [Azure Media Services OWIN MVC-alapú alkalmazás integrálása az Azure Active Directoryval című témakörben talál, és a JWT-jogcímek alapján korlátozhatja a tartalomkulcs kézbesítését.](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
+Az Azure AD ASP.NET MVC Player-alkalmazáshoz való beállításával kapcsolatos további információkért lásd: [Azure Media Services OWIN MVC-alapú alkalmazás integrálása Azure Active Directory és a JWT jogcímek alapján történő kézbesítés korlátozása](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
-További információ: [JWT token hitelesítés az Azure Media Services és a dinamikus titkosítás.](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)  
+További információ: [JWT-jogkivonat hitelesítése Azure Media Services és dinamikus titkosítással](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).  
 
-Az Azure AD-vel kapcsolatos információkért:
+További információ az Azure AD-ről:
 
-* A fejlesztői információkat az [Azure Active Directory fejlesztői útmutatójában](../../active-directory/develop/v2-overview.md)találja.
-* A rendszergazdai adatokat [az Azure AD-bérlői könyvtár felügyelete című dokumentumban](../../active-directory/fundamentals/active-directory-administer.md)találja.
+* A fejlesztői információk a [Azure Active Directory fejlesztői útmutatójában](../../active-directory/develop/v2-overview.md)találhatók.
+* A rendszergazdai információk az [Azure ad-bérlői címtár felügyeletében](../../active-directory/fundamentals/active-directory-administer.md)találhatók.
 
-### <a name="some-issues-in-implementation"></a>Néhány kérdés a végrehajtásban
+### <a name="some-issues-in-implementation"></a>Néhány probléma a megvalósításban
 
-A megvalósítási problémákkal kapcsolatos segítségért használja az alábbi hibaelhárítási információkat.
+A megvalósítással kapcsolatos problémák megoldásához használja az alábbi hibaelhárítási információkat.
 
-* A kibocsátó URL-címének "/" végződéssel kell végződnie. A közönségnek a lejátszóalkalmazás ügyfélazonosítójának kell lennie. Is, add "/" végén a kibocsátó URL-t.
+* A kiállító URL-címnek a "/" értékkel kell végződnie. A célközönségnek a Player Application Client ID azonosítónak kell lennie. Emellett adja hozzá a "/" parancsot a kiállító URL-címének végén.
 
         <add key="ida:audience" value="[Application Client ID GUID]" />
         <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
 
-    A [JWT dekóder](http://jwt.calebb.net/), látod **aud** és **iss**, ahogy az a JWT:
+    A [JWT-dekóderben](http://jwt.calebb.net/)az **AUD** és az **ISS**jelenik meg, ahogy az a JWT is látható:
 
-    ![Jwt](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
+    ![JWT](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
 
-* Engedélyek hozzáadása az alkalmazáshoz az Azure AD-ben az alkalmazás **Konfigurálás** lapján. Az engedélyek szükségesek minden alkalmazáshoz, mind a helyi, mind a telepített verziókhoz.
+* Engedélyeket adhat az alkalmazáshoz az Azure AD-ben az alkalmazás **Konfigurálás** lapján. Az egyes alkalmazásokhoz (helyi és telepített verziókhoz) engedélyek szükségesek.
 
     ![Engedélyek](./media/design-multi-drm-system-with-access-control/media-services-perms-to-other-apps.png)
 
-* A dinamikus CENC-védelem beállításakor használja a megfelelő kibocsátót.
+* A dinamikus CENC-védelem beállításakor használja a megfelelő kiállítót.
 
         <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
 
@@ -241,117 +241,117 @@ A megvalósítási problémákkal kapcsolatos segítségért használja az aláb
 
         <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
 
-    A GUID az Azure AD-bérlőazonosító. A GUID az Azure Portal **Végpontok** legördülő menüjében található.
+    A GUID az Azure AD-bérlő azonosítója. A GUID a Azure Portal **végpontok** előugró menüjében található.
 
-* Csoporttagsági jogosultságok megadása. Győződjön meg arról, hogy az alábbiak az Azure AD-alkalmazás jegyzékfájljában vannak: 
+* Csoporttagság-jogcímek jogosultságának megadása. Győződjön meg arról, hogy a következők szerepelnek az Azure AD Application manifest-fájlban: 
 
-    "groupMembershipClaims": "All" (az alapértelmezett érték null)
+    "groupMembershipClaims": "all" (az alapértelmezett érték null)
 
-* Állítsa be a megfelelő TokenType korlátozási követelmények létrehozásakor.
+* A korlátozási követelmények létrehozásakor állítsa be a megfelelő TokenType.
 
         objTokenRestrictionTemplate.TokenType = TokenType.JWT;
 
-    Mivel az SWT (ACS) mellett a JWT (Azure AD) támogatását is hozzáadja, az alapértelmezett TokenType a TokenType.JWT. Ha SWT/ACS-et használ, a token et TokenType.SWT értékre kell állítania.
+    Mivel a SWT (ACS) mellett a JWT (Azure AD) támogatását is hozzáadja, az alapértelmezett TokenType a TokenType. JWT. Ha a SWT/ACS-t használja, a tokent a TokenType. SWT értékre kell állítania.
 
-## <a name="the-completed-system-and-test"></a>A befejezett rendszer és teszt
+## <a name="the-completed-system-and-test"></a>A befejezett rendszerek és tesztek
 
-Ez a szakasz végigvezeti a következő forgatókönyveken a befejezett végpontok rendszerében, így a bejelentkezési fiók betöltése előtt alapvető képet kaphat a viselkedésről:
+Ez a szakasz végigvezeti az alábbi forgatókönyveken a befejezett végpontok közötti rendszeren, így a bejelentkezési fiók létrehozása előtt alapszintű képet kaphat a viselkedésről:
 
 * Ha nem integrált forgatókönyvre van szüksége:
 
-    * A Media Services ben tárolt, vagy nem védett vagy DRM-védelemmel ellátott, de jogkivonatos hitelesítés nélküli videoeszközök esetében (licenc kiadása annak, aki kérte), bejelentkezés nélkül tesztelheti azt. Váltson HTTP-re, ha a videó streamelése HTTP-n keresztül történik.
+    * A Media Servicesban üzemeltetett, nem védett vagy DRM-védelemmel ellátott, de jogkivonat-hitelesítés nélküli (licencet kiállító) eszközök esetén tesztelheti a bejelentkezés nélkül. Váltson HTTP-re, ha a videó folyamatos átvitele HTTP-n keresztül történik.
 
-* Ha végpontok között integrált forgatókönyvre van szüksége:
+* Ha végpontok közötti integrált forgatókönyvre van szüksége:
 
-    * A Media Services dinamikus DRM-védelem alatt álló videoeszközök esetében az Azure AD által létrehozott jogkivonat-hitelesítéssel és JWT-vel be kell jelentkeznie.
+    * A Media Services dinamikus DRM-védelemmel ellátott videós eszközei esetében az Azure AD által generált jogkivonat-hitelesítéssel és JWT kell bejelentkeznie.
 
-A lejátszó webes alkalmazását és bejelentkezését [ezen a webhelyen](https://openidconnectweb.azurewebsites.net/)találja.
+A Player webalkalmazáshoz és a bejelentkezéshez tekintse meg [ezt a webhelyet](https://openidconnectweb.azurewebsites.net/).
 
 ### <a name="user-sign-in"></a>Felhasználói bejelentkezés
-A végpontok között integrált DRM-rendszer teszteléséhez létre kell hoznia vagy hozzá kell adnia egy fiókot.
+A végpontok közötti integrált DRM-rendszer teszteléséhez létre kell hoznia vagy hozzá kell adnia egy fiókot.
 
-Milyen számlára?
+Milyen fiókkal rendelkezik?
 
-Bár az Azure eredetileg csak a Microsoft-fiók felhasználói számára engedélyezett hozzáférést, a hozzáférést mostantól mindkét rendszer felhasználói engedélyezik. Az Összes Azure-tulajdonság most már megbízik az Azure AD-ben a hitelesítéshez, és az Azure AD hitelesíti a szervezeti felhasználókat. Egy összevonási kapcsolat jött létre, amelyben az Azure AD megbízik a Microsoft-fiók fogyasztói identitásrendszer ében a fogyasztói felhasználók hitelesítéséhez. Ennek eredményeképpen az Azure AD hitelesítheti a vendég Microsoft-fiókokat, valamint a natív Azure AD-fiókokat.
+Habár az Azure eredetileg csak Microsoft-fiók felhasználók számára engedélyezte a hozzáférést, a hozzáférést mostantól a felhasználók is használhatják mindkét rendszerből. Az Azure-tulajdonságok mostantól megbíznak az Azure AD-ben a hitelesítéshez, és az Azure AD hitelesíti a szervezeti felhasználókat. Létrejött egy összevonási kapcsolat, ahol az Azure AD megbízik az Microsoft-fiók fogyasztói identitás rendszerében a fogyasztói felhasználók hitelesítéséhez. Ennek eredményeképpen az Azure AD a vendég Microsoft-fiókokat és a natív Azure AD-fiókokat is képes hitelesíteni.
 
-Mivel az Azure AD megbízik a Microsoft-fióktartományban, az alábbi tartományok bármelyikét hozzáadhatja az egyéni Azure AD-bérlőhöz, és a fiókkal bejelentkezhet:
+Mivel az Azure AD megbízhatónak tekinti a Microsoft-fiók tartományt, a következő tartományokból bármelyik fiókot hozzáadhatja az egyéni Azure AD-bérlőhöz, és a fiók használatával jelentkezhet be:
 
-| **Tartománynév** | **Tartomány** |
+| **Tartománynév** | **Tartományi** |
 | --- | --- |
 | **Egyéni Azure AD-bérlői tartomány** |somename.onmicrosoft.com |
 | **Vállalati tartomány** |microsoft.com |
-| **Microsoft-fiók tartománya** |live.com hotmail.com outlook.com |
+| **Microsoft-fiók tartomány** |outlook.com, live.com, hotmail.com |
 
-Bármelyik szerzővel kapcsolatba léphet, hogy létrehozhass vagy hozzáadhass egy fiókot.
+A szerzők bármelyikével felveheti a kapcsolatot az Ön által létrehozott vagy hozzáadott fiókkal.
 
-A következő képernyőképeken a különböző tartományi fiókok által használt különböző bejelentkezési oldalak láthatók:
+A következő Képernyőképek a különböző tartományi fiókok által használt különböző bejelentkezési lapokat mutatják be:
 
-**Egyéni Azure AD-bérlői tartományi fiók**: Az egyéni Azure AD-bérlői tartomány testreszabott bejelentkezési lapja.
+**Egyéni Azure ad-bérlői tartományi fiók**: az egyéni Azure ad-bérlői tartomány testreszabott bejelentkezési lapja.
 
-![Egyéni Azure AD-s bérlői tartományi fiók](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
+![Egyéni Azure AD-bérlői tartományi fiók](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
-**Microsoft tartományi fiók intelligens kártyával**: A Microsoft vállalati informatikai informatikai vállalata által kétfaktoros hitelesítéssel testre szabott bejelentkezési lap.
+**Microsoft tartományi fiók intelligens kártyával**: a Microsoft vállalat által a kétfaktoros hitelesítéssel testreszabott bejelentkezési oldal.
 
-![Egyéni Azure AD-bérlői tartományi fiók 2](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
+![Egyéni Azure AD-bérlői tartományi fiók – kettő](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft-fiók**: A Microsoft-fiók bejelentkezési lapja a fogyasztók számára.
+**Microsoft-fiók**: a Microsoft-fiók bejelentkezési lapja a felhasználók számára.
 
-![Egyéni Azure AD-bérlői tartományi fiók három](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
+![Egyéni Azure AD-bérlői tartományi fiók – három](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
-### <a name="use-encrypted-media-extensions-for-playready"></a>Titkosított médiabővítmények használata a PlayReady-hez
+### <a name="use-encrypted-media-extensions-for-playready"></a>Titkosított adathordozó-bővítmények használata a PlayReady
 
-A PlayReady-támogatáshoz szükséges titkosított médiabővítményekkel (EME) rendelkező modern böngészőkben, például a Windows 8.1-es vagy újabb rendszeren futó Internet Explorer 11-ben és a Windows 10-es Microsoft Edge böngészőben a PlayReady az EME drm-je.
+A PlayReady-támogatáshoz használható, titkosított adathordozó-bővítményekkel (EME) rendelkező modern böngészővel, például az Internet Explorer 11 Windows 8,1-es vagy újabb verziójával és a Windows 10 rendszerű Microsoft Edge böngészővel a PlayReady a mögöttes DRM.
 
-![EME használata a PlayReady-hez](./media/design-multi-drm-system-with-access-control/media-services-eme-for-playready1.png)
+![Az EME PlayReady használata](./media/design-multi-drm-system-with-access-control/media-services-eme-for-playready1.png)
 
-A sötét lejátszó terület azért van, mert a PlayReady védelem megakadályozza, hogy képernyőfelvételt készítsen a védett videókról.
+A sötét lejátszó területe az, hogy a PlayReady-védelem megakadályozza a védett videók képernyőfelvételét.
 
-Az alábbi képernyőképen a lejátszó beépülő moduljai és a Microsoft Security Essentials (MSE)/EME-támogatás látható:
+A következő képernyőképen a Player beépülő moduljai és a Microsoft Security Essentials (MSE)/EME támogatása látható:
 
-![Lejátszó bővítmények a PlayReady-hez](./media/design-multi-drm-system-with-access-control/media-services-eme-for-playready2.png)
+![A PlayReady lejátszó beépülő moduljai](./media/design-multi-drm-system-with-access-control/media-services-eme-for-playready2.png)
 
-Az EME a Windows 10-es Microsoft Edge-ben és az Internet Explorer 11-ben lehetővé teszi a [PlayReady SL3000](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) meghívását az azt támogató Windows 10-es eszközökön. A PlayReady SL3000 feloldja a továbbfejlesztett prémium tartalmak (4K, HDR) és az új tartalomkézbesítési modellek áramlását (a továbbfejlesztett tartalom érdekében).
+A Microsoft Edge és az Internet Explorer 11 a Windows 10-es verzióban lehetővé teszi a [PLAYREADY SL3000](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) meghívását az azt támogató Windows 10-es eszközökön. A PlayReady SL3000 feloldja a bővített prémium szintű tartalom (4K, HDR) és az új Content Delivery models (bővített tartalom) folyamatát.
 
-A Windows-eszközökre való összpontosításhoz a PlayReady az egyetlen DRM a Windows-eszközökön elérhető hardverben (PlayReady SL3000). A streamelési szolgáltatások a PlayReady-t eME-n vagy univerzális Windows Platform-alkalmazáson keresztül használhatják, és jobb videominőséget kínálnak a PlayReady SL3000 használatával, mint egy másik DRM. Általában a 2K-ig futó tartalom a Chrome-on vagy a Firefoxon keresztül áramlik, és a 4K-ig futó tartalom a Microsoft Edge/Internet Explorer 11-en vagy egy univerzális Windows Platform alkalmazáson keresztül ugyanazon az eszközön. Az összeg a szolgáltatás beállításaitól és megvalósításától függ.
+Ahhoz, hogy a Windows-eszközökre összpontosítsanak, a PlayReady az egyetlen DRM a Windows-eszközökön elérhető hardveren (PlayReady SL3000). Az adatfolyam-szolgáltatás a PlayReady-t az EME-n keresztül, vagy egy Univerzális Windows-platform alkalmazáson keresztül is használhatja, és magasabb színvonalú képminőséget kínál, ha más DRM-PlayReady SL3000 használ. Általában a-ig terjedő tartalom a Chrome-on vagy a Firefoxban keresztül zajlik, és a Microsoft Edge/Internet Explorer 11 vagy egy Univerzális Windows-platform alkalmazás használatával akár 4K-ra is áthaladhat. Az összeg a szolgáltatás beállításaitól és a megvalósítástól függ.
 
-#### <a name="use-eme-for-widevine"></a>EME használata a Widevine-hoz
+#### <a name="use-eme-for-widevine"></a>Az EME Widevine használata
 
-Az EME/Widevine támogatással rendelkező modern böngészőkben, mint például a Chrome 41+ Windows 10-en, Windows 8.1-en, Mac OSX Yosemite-en és Chrome-on Android 4.4.4-en, a Google Widevine a DRM az EME mögött.
+Az EME/Widevine-támogatással rendelkező modern böngészőkben, például a Chrome 41 + Windows 10, a Windows 8,1, a Mac OSX Yosemite és a Chrome on Android 4.4.4, a Google Widevine a DRM mögött található.
 
-![EME használata a Widevine-hoz](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine1.png)
+![Az EME Widevine használata](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine1.png)
 
-A Widevine nem akadályozza meg abban, hogy képernyőfelvételt készítsen a védett videókról.
+A Widevine nem akadályozza meg a védett videó képernyőfelvételének készítését.
 
-![Lejátszó plug-inek a Widevine-hoz](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine2.png)
+![A Widevine lejátszó beépülő moduljai](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine2.png)
 
-#### <a name="use-eme-for-fairplay"></a>EME használata a FairPlay-hez
+#### <a name="use-eme-for-fairplay"></a>Az EME FairPlay használata
 
-Hasonlóképpen tesztelheti a FairPlay által védett tartalmakat ebben a tesztlejátszóban a Safariban macOS vagy iOS 11.2-es és újabb rendszeren.
+Ehhez hasonlóan a FairPlay védett tartalmait is tesztelheti a Safariban macOS vagy iOS 11,2 és újabb rendszereken.
 
-Győződjön meg róla, hogy a "FairPlay" -t tette fel protectionInfo.type néven, és az alkalmazástanúsítvány megfelelő URL-címét az FPS AC path (FairPlay Streaming alkalmazástanúsítvány elérési útja) címére.
+Győződjön meg arról, hogy a "FairPlay" értéket protectionInfo. Type értékre helyezi, és az alkalmazás tanúsítványának megfelelő URL-címet helyezi el az FPS AC útvonalon (FairPlay streaming Application Certificate Path).
 
 ### <a name="unentitled-users"></a>Nem jogosult felhasználók
 
-Ha egy felhasználó nem tagja a "Jogosult felhasználók" csoportnak, a felhasználó nem felel meg a jogosultsági ellenőrzésen. A multi-DRM licencszolgáltatás ezután megtagadja a kért licenc kiadását az ábrán látható módon. A részletes leírás a "Licenc beszerzése nem sikerült", amely a tervezett.
+Ha a felhasználó nem tagja a "jogosult felhasználók" csoportnak, a felhasználó nem adja át a jogosultság-ellenőrzését. A multi-DRM licencelési szolgáltatás ezután elutasítja a kért licenc kiküldését az ábrán látható módon. A részletes leírás "a licenc beolvasásának hibája", amely a tervezett.
 
 ![Nem jogosult felhasználók](./media/design-multi-drm-system-with-access-control/media-services-unentitledusers.png)
 
 ### <a name="run-a-custom-security-token-service"></a>Egyéni biztonsági jogkivonat-szolgáltatás futtatása
 
-Ha egy egyéni STS-t futtat, a JWT-t az egyéni STS szimmetrikus vagy aszimmetrikus kulccsal bocsátja ki.
+Ha egyéni STS-t futtat, a JWT az egyéni STS állítja ki egy szimmetrikus vagy egy aszimmetrikus kulcs használatával.
 
-A következő képernyőképen egy szimmetrikus kulcsot használó forgatókönyv látható (a Chrome használatával):
+Az alábbi képernyőfelvételen egy szimmetrikus kulcsot használó forgatókönyv látható (a Chrome használatával):
 
-![Egyedi STS szimmetrikus kulccsal](./media/design-multi-drm-system-with-access-control/media-services-running-sts1.png)
+![Egyéni STS szimmetrikus kulccsal](./media/design-multi-drm-system-with-access-control/media-services-running-sts1.png)
 
-A következő képernyőképen egy olyan forgatókönyv látható, amely egy Aszimmetrikus kulcsot használ X509-es tanúsítvánnyal (microsoftos modern böngészővel):
+Az alábbi képernyőképen egy olyan forgatókönyv látható, amely aszimmetrikus kulcsot használ egy X509-tanúsítványon keresztül (egy Microsoft modern böngésző használatával):
 
-![Egyedi STS aszimmetrikus kulccsal](./media/design-multi-drm-system-with-access-control/media-services-running-sts2.png)
+![Egyéni STS aszimmetrikus kulccsal](./media/design-multi-drm-system-with-access-control/media-services-running-sts2.png)
 
-Mindkét korábbi esetben a felhasználói hitelesítés ugyanaz marad. Az Azure AD-n keresztül történik. Az egyetlen különbség az, hogy a JWT-ket az egyéni STS bocsátja ki az Azure AD helyett. A dinamikus CENC-védelem konfigurálásakor a licenckézbesítési szolgáltatás korlátozása meghatározza a JWT típusát, akár szimmetrikus, akár aszimmetrikus kulcsot.
+Mindkét előző esetben a felhasználói hitelesítés ugyanaz marad. Az Azure AD-n keresztül zajlik. Az egyetlen különbség, hogy a JWTs az Azure AD helyett az egyéni STS állítja ki. A dinamikus CENC-védelem konfigurálásakor a licenc-kézbesítési szolgáltatási korlátozás meghatározza a JWT típusát (szimmetrikus vagy aszimmetrikus kulcs).
 
 ## <a name="next-steps"></a>További lépések
 
 * [Gyakori kérdések](frequently-asked-questions.md)
 * [Tartalomvédelem – áttekintés](content-protection-overview.md)
-* [A tartalom védelme drm-mel](protect-with-drm.md)
+* [A tartalmak DRM-védelemmel való ellátása](protect-with-drm.md)

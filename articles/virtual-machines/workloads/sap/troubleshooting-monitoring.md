@@ -1,6 +1,6 @@
 ---
-title: Az SAP HANA figyelése az Azure-ban (nagy példányok) | Microsoft dokumentumok
-description: Az SAP HANA figyelése egy Azure-ban (nagy példányok).
+title: Az Azure-beli SAP HANA figyelése (nagyméretű példányok) | Microsoft Docs
+description: SAP HANA figyelése az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -20,34 +20,34 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617290"
 ---
-# <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>Az SAP HANA (nagy példányok) figyelése az Azure-ban
+# <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) figyelése az Azure-ban
 
-Az SAP HANA az Azure-ban (nagy példányok) nem különbözik bármely más IaaS-telepítéstől – figyelnie kell, hogy mit csinál az operációs rendszer és az alkalmazás, és hogy az alkalmazások hogyan használják fel a következő erőforrásokat:
+SAP HANA az Azure-ban (nagyméretű példányok) nem különböznek a többi IaaS-telepítéstől – figyelnie kell az operációs rendszer és az alkalmazás működéséről, valamint arról, hogy az alkalmazások hogyan használják a következő erőforrásokat:
 
 - CPU
 - Memory (Memória)
 - Hálózati sávszélesség
 - Lemezterület
 
-Az Azure virtuális gépek, meg kell vizsgálnia, hogy a fent megnevezett erőforrásosztályok elegendőek- e, vagy kimerülnek. Itt van részletesebben az egyes osztályok:
+Az Azure Virtual Machines segítségével meg kell állapítania, hogy a fent nevezett erőforrás-osztályok elegendőek-e vagy kimerítve. Az alábbiakban részletesebben ismertetjük a különböző osztályokat:
 
-**CPU-erőforrás-felhasználás:** Az sap által meghatározott, hana-val szemben bizonyos számítási feladatokhoz definiált arány takarása annak érdekében, hogy elegendő CPU-erőforrás legyen elérhető a memóriában tárolt adatok on-val. Mindazonáltal előfordulhatnak olyan esetek, amikor hana használ sok processzorok lekérdezések végrehajtása miatt hiányzó indexek vagy hasonló problémák. Ez azt jelenti, hogy figyelnie kell a HANA nagy példányegység és az adott HANA-szolgáltatások által felhasznált CPU-erőforrások CPU-erőforrás-felhasználását.
+**CPU-erőforrások felhasználása:** A HANA-val kapcsolatos bizonyos számítási feladatokhoz meghatározott SAP-arány kényszerítve van, hogy a memóriában tárolt adatokon rendelkezésre álljon elegendő CPU-erőforrás. Előfordulhat azonban, hogy a HANA a hiányzó indexek vagy hasonló problémák miatt sok processzort használ a lekérdezések végrehajtásához. Ez azt jelenti, hogy figyelnie kell a HANA nagyméretű példány-egység CPU-erőforrás-felhasználását, valamint az adott HANA-szolgáltatások által felhasznált CPU-erőforrásokat.
 
-**Memóriafelhasználás:** Fontos, hogy a HANA-n belülről, valamint az egységen kívül is. Hana belül figyelheti, hogy az adatok hogyan fogyaszthana lefoglalt memóriát annak érdekében, hogy az SAP szükséges méretezési irányelvei között maradjon. Azt is szeretné figyelni a nagy példány szintjén a memóriafelhasználás, győződjön meg arról, hogy további telepített, nem HANA szoftver nem fogyaszt túl sok memóriát, és ezért versenyezni hana a memóriáért.
+**Memóriahasználat:** Fontos, hogy figyelje a HANA-on belül, valamint a HANA-on kívül az egységen. A HANA-n belül figyelje meg, hogyan fogyasztja el a HANA lefoglalt memóriát az SAP szükséges méretezési irányelvei között. A nagyméretű példányok szintjén is figyelnie kell a memória felhasználását, hogy a további telepített, nem HANA szoftver ne fogyasszon túl sok memóriát, így a HANA for Memory számára is versenyképesek legyenek.
 
-**Hálózati sávszélesség:** Az Azure virtuális hálózat átjáró korlátozott sávszélessége az adatok az Azure virtuális hálózatba, ezért hasznos figyelni az összes Azure virtuális gépek által egy virtuális hálózaton belül kapott adatokat, hogy kitaláljuk, milyen közel van a kiválasztott Azure-átjáró termékváltozatának korlátaihoz. A HANA nagy példány egység, célszerű figyelni a bejövő és kimenő hálózati forgalmat is, és nyomon követni a kötetek, amelyek idővel kezelt.
+**Hálózati sávszélesség:** Az Azure VNet-átjáró az Azure VNet-re áthelyezett adatforgalomban korlátozott, ezért hasznos lehet a VNet belüli összes Azure-beli virtuális gép által fogadott adat figyelése, hogy megtudja, Hogyan közelítheti meg a kiválasztott Azure Gateway SKU korlátait. A HANA nagyméretű példányok egységében a bejövő és a kimenő hálózati forgalom figyelésére is érdemes, valamint az idő múlásával kezelt kötetek nyomon követését.
 
-**Lemezterület:** A lemezterület-felhasználás általában idővel növekszik. A leggyakoribb okok a következők: adatmennyiség növelése, tranzakciós napló biztonsági mentések végrehajtása, nyomkövetési fájlok tárolása és a tárolási pillanatképek végrehajtása. Ezért fontos, hogy figyelje a lemezterület-használat és a HANA nagy példány egységtársított lemezterület kezelése.
+**Lemezterület:** A lemezterület-felhasználás általában az idő múlásával növekszik. A leggyakoribb okok a következők: az adatmennyiség nő, a tranzakciónaplók biztonsági másolatainak végrehajtása, a nyomkövetési fájlok tárolása és a tárolási Pillanatképek végrehajtása. Ezért fontos a lemezterület-használat figyelése és a HANA nagyméretű példány-egységhez társított lemezterület kezelése.
 
-A HANA nagy példányok **II típusú ski-k** esetében a kiszolgáló az előre betöltött rendszerdiagnosztikai eszközökkel érkezik. Ezeket a diagnosztikai eszközöket használhatja a rendszer állapot-ellenőrzéséhez. Futtassa a következő parancsot az állapotellenőrző naplófájl /var/log/health_check.Run the following command to generates the health check log file at /var/log/health_check.
+A HANA nagyméretű példányainak **II. típusú SKU** -ban a kiszolgáló az előre betöltött diagnosztikai eszközöket tartalmazza. Ezeket a diagnosztikai eszközöket a rendszerállapot-ellenőrzés elvégzéséhez használhatja. A következő parancs futtatásával hozza létre az állapot-ellenőrzési naplófájlt a/var/log/health_check.
 ```
 /opt/sgi/health_check/microsoft_tdi.sh
 ```
-Amikor a Microsoft támogatási csapatával együttműködve elhárít egy problémát, a rendszer kérheti, hogy ezekkel a diagnosztikai eszközökkel adja meg a naplófájlokat. A fájlt a következő paranccsal zárhatja be.
+Ha a Microsoft ügyfélszolgálata csapatával dolgozik a probléma megoldásában, a naplófájlokat a diagnosztikai eszközök használatával is megkérheti. A fájlt a következő parancs használatával zip-fájlba is elvégezheti.
 ```
 tar  -czvf health_check_logs.tar.gz /var/log/health_check
 ```
 
 **További lépések**
 
-- Lásd: [Az SAP HANA (nagy példányok) figyelése az Azure-ban.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot)
+- Tekintse át [a SAP HANA (nagyméretű példányok) figyelését az Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot)-ban.

@@ -1,6 +1,6 @@
 ---
-title: Kerberos korlátozott delegálás – Alkalmazásproxy – Problémamegoldás –
-description: Az alkalmazásproxy Kerberos-korlátozott delegálási konfigurációinak – problémamegoldás
+title: Kerberos által korlátozott delegálás – alkalmazásproxy
+description: A Kerberos által korlátozott delegálási konfigurációk hibaelhárítása alkalmazásproxy esetében
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -23,151 +23,151 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275681"
 ---
-# <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Az alkalmazásproxy Kerberos-korlátozott delegálási konfigurációinak hibaelhárítása
+# <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>A Kerberos által korlátozott delegálási konfigurációk hibaelhárítása alkalmazásproxy esetében
 
-Az egyszeri eladósodás közzétett alkalmazásokhoz való elérésére rendelkezésre álló módszerek alkalmazásonként eltérőek lehetnek. Az egyik lehetőség, amely az Azure Active Directory (Azure AD) alkalmazásproxy alapértelmezés szerint kerberos korlátozott delegálás (KCD) kínál. A felhasználók számára konfigurálhatja az összekötőt, hogy a korlátozott Kerberos-hitelesítést háttéralkalmazásokra futtassa.
+Az egyszeri bejelentkezésnek a közzétett alkalmazásokhoz való eléréséhez elérhető módszerek az egyik alkalmazásból a másikba változhatnak. Az egyik lehetőség, hogy a Azure Active Directory (Azure AD) alkalmazásproxy-ajánlat alapértelmezés szerint a Kerberos által korlátozott delegálás (KCD). Beállíthat egy összekötőt a felhasználók számára, hogy korlátozott Kerberos-hitelesítést futtasson a háttérbeli alkalmazásokhoz.
 
-A KCD engedélyezésének eljárása egyszerű. Nem igényel többet, mint az SSO-t támogató különböző összetevők és hitelesítési folyamat általános megértését. De néha a KCD SSO nem a várt módon működik. A forgatókönyvek elhárításához jó információforrásokra van szükség.
+A KCD engedélyezésének eljárása egyszerű. Az egyszeri bejelentkezést támogató különböző összetevők és hitelesítési folyamatok általános megismerése nem igényel további tudnivalókat. Előfordulhat azonban, hogy a KCD SSO nem a várt módon működik. Ezeknek a forgatókönyveknek a megoldásához jó információforrásokra van szüksége.
 
-Ez a cikk egyetlen hivatkozási pontot tartalmaz, amely segít a leggyakoribb problémák elhárításában és öngyógyításában. Foglalkozik továbbá az összetettebb végrehajtási problémák diagnózisával is.
+Ez a cikk egy olyan hivatkozási pontot biztosít, amely segít a leggyakoribb problémák némelyikének hibaelhárításában és önkiszolgálásában. Az összetettebb megvalósítási problémák diagnosztizálását is magában foglalja.
 
-Ez a cikk a következő feltételezéseket teszi:
+Ez a cikk a következő feltételezéseket biztosítja:
 
-- Az Azure AD-alkalmazásproxy üzembe helyezése az [alkalmazásproxy használatával való ismerkedés és](application-proxy-add-on-premises-application.md) a nem KCD-alkalmazások hoz való általános hozzáférés a várt módon működik.
-- A közzétett célalkalmazás az Internet Information Services (IIS) szolgáltatáson és a Kerberos Microsoft általi megvalósításán alapul.
-- A kiszolgáló- és alkalmazásállomások egyetlen Azure Active Directory-tartományban találhatók. A tartományok közötti és az erdők közötti forgatókönyvekről a [KCD tanulmányában](https://aka.ms/KCDPaper)talál részletes információkat.
-- A tulajdonosalkalmazás egy Azure-bérlőben van közzétéve, ahol engedélyezve van az előhitelesítés. A felhasználóknak az űrlapalapú hitelesítésen keresztül kell hitelesíteniük magukat az Azure-ban. A cikk nem terjed ki a gazdag ügyfél-hitelesítési forgatókönyvekre. Lehet, hogy hozzá valamikor a jövőben.
+- Az Azure AD Application Proxy üzembe helyezése az [alkalmazásproxy](application-proxy-add-on-premises-application.md) és az általános hozzáférés a nem KCD alkalmazásokhoz a várt módon működik.
+- A közzétett célalkalmazás a Internet Information Services (IIS) és a Kerberos Microsoft-implementációján alapul.
+- A kiszolgáló és az alkalmazás gazdagépei egyetlen Azure Active Directory tartományban találhatók. A tartományok közötti és erdőbeli forgatókönyvekkel kapcsolatos részletes információkért tekintse meg a [KCD szóló](https://aka.ms/KCDPaper)tanulmányt.
+- A tárgy alkalmazás közzé van téve egy Azure-bérlőn, és engedélyezve van az előzetes hitelesítés. A felhasználóknak űrlapalapú hitelesítéssel kell hitelesíteniük magukat az Azure-ban. A részletes ügyfél-hitelesítési forgatókönyvek nem vonatkoznak ebben a cikkben. Előfordulhat, hogy a későbbiekben egy adott időpontban hozzá lehet adni őket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD alkalmazásproxy számos típusú infrastruktúrába vagy környezetbe telepíthető. Az architektúrák szervezetenként változnak. A KCD-vel kapcsolatos problémák leggyakoribb okai nem a környezet. A legtöbb problémát egyszerű helytelen konfigurációk vagy általános hibák okozzák.
+Az Azure AD Application Proxy számos különböző típusú infrastruktúrába és környezetbe telepíthető. Az architektúrák a szervezettől a szervezetig változhatnak. A KCD kapcsolatos problémák leggyakoribb okai nem a környezetek. Az egyszerű helytelen konfiguráció vagy általános hibák okozzák a legtöbb problémát.
 
-Ezért a hibaelhárítás megkezdése előtt győződjön meg arról, hogy a [KCD-sSO használata az alkalmazásproxyval](application-proxy-configure-single-sign-on-with-kcd.md) című témakör összes előfeltételének megfelelt. Vegye figyelembe a Kerberos korlátozott delegálásának konfigurálása című szakaszt a 2012R2-en. Ez a folyamat más megközelítést alkalmaz a KCD konfigurálására a Windows korábbi verzióiban. Is, szem előtt tartva ezeket a szempontokat:
+Ezért érdemes meggyőződni arról, hogy az összes előfeltétel teljesült a [KCD SSO és az alkalmazásproxy használatával a](application-proxy-configure-single-sign-on-with-kcd.md) hibaelhárítás megkezdése előtt. Jegyezze fel a Kerberos által korlátozott delegálás konfigurálása a 2012R2-ben című szakaszt. Ez a folyamat egy másik módszert alkalmaz a KCD konfigurálására a Windows korábbi verzióiban. A következő szempontokat is figyelembe kell venni:
 
-- Nem ritka, hogy a tartományi tagkiszolgáló biztonságos csatornapárbeszédet nyit meg egy adott tartományvezérlővel.It't not uncommon for a domain member server to open a secure channel dialog with a specific domain controller (DC). Ezután előfordulhat, hogy a kiszolgáló egy adott időpontban egy másik párbeszédablakba költözik. Így összekötő gazdagépek nem korlátozódik a kommunikáció csak adott helyi tartományvezérlők.
-- A tartományok közötti forgatókönyvek olyan átirányításokon alapulnak, amelyek egy összekötő állomást a helyi hálózaton kívül lévő tartományvezérlőkre irányítanak. Ezekben az esetekben ugyanilyen fontos, hogy a forgalmat tovább küldjék a tartományvezérlőknek, amelyek más megfelelő tartományokat képviselnek. Ha nem, a delegálás sikertelen.
-- Ahol lehetséges, ne helyezzen aktív IPS- vagy IDS-eszközöket az összekötő állomások és a tartományvezérlők között. Ezek az eszközök néha túl tolakodóak, és zavarják az alapvető RPC-forgalmat.
+- Nem ritka, hogy egy tartományi tag kiszolgálója egy biztonságos csatorna párbeszédpanelt nyit meg egy adott tartományvezérlővel (DC). Ezt követően a kiszolgáló bármikor átléphet egy másik párbeszédpanelre. Így az összekötő-gazdagépek nem korlátozódnak kizárólag adott helyi tartományvezérlővel folytatott kommunikációra.
+- A tartományok közötti forgatókönyvek olyan átirányításokra támaszkodnak, amelyek az összekötő gazdagépét olyan tartományvezérlők számára irányítják, amelyek a helyi hálózat peremhálózati határain kívül lehetnek. Ezekben az esetekben ugyanilyen fontos a forgalom továbbítása is a más megfelelő tartományokat képviselő tartományvezérlők felé. Ha nem, a delegálás sikertelen lesz.
+- Ha lehetséges, kerülje az összekötő gazdagépek és a tartományvezérlők közötti aktív IP-címek vagy azonosító eszközök elhelyezését. Ezek az eszközök időnként túlságosan zavaróak és akadályozzák az alapvető RPC-forgalmat.
 
-Tesztdelegálás egyszerű forgatókönyvekben. Minél több változót vezet sző, annál többet kell megküzdenie. Az idő megtakarítása érdekében korlátozza a tesztelést egyetlen összekötőre. A probléma megoldása után adjon hozzá további összekötőket.
+A delegálás tesztelése egyszerű forgatókönyvekben. Minél több változót vezet be, annál többre lehet szükség. Az idő megtakarításához korlátozza a tesztelést egyetlen összekötőre. A probléma megoldása után adjon hozzá további összekötőket.
 
-Egyes környezeti tényezők is hozzájárulhatnak egy kérdéshez. Ezeknek a tényezőknek a elkerülése érdekében a tesztelés során a lehető legnagyobb mértékben minimalizálja az architektúrát. A helytelenül konfigurált belső tűzfal ancövek például gyakoriak. Ha lehetséges, küldje el az összes forgalmat egy összekötőegyenesen keresztül a tartományvezérlők és a háttér-alkalmazás.
+Bizonyos környezeti tényezők is hozzájárulhatnak a problémához. Ezen tényezők elkerülése érdekében a tesztelés során a lehető legnagyobb mértékben csökkentse az architektúrát. A helytelenül konfigurált belső tűzfal ACL-ek például gyakoriak. Ha lehetséges, küldjön egy összekötőtől érkező összes forgalmat a tartományvezérlők és a háttérbeli alkalmazás felé.
 
-A csatlakozók elhelyezésének legjobb helye a lehető legközelebb van a céljaikhoz. A tesztelés során beépítve lévő tűzfal szükségtelen bonyolultságot ad hozzá, és meghosszabbíthatja a vizsgálatokat.
+Az összekötők elhelyezkedésének legmegfelelőbb helye a lehető legpontosabb. Egy olyan tűzfal, amely a tesztelés során inline-t használ, felesleges bonyolultságot tesz elérhetővé, és meghosszabbíthatja a vizsgálatokat.
 
-Mi mutatja a KCD probléma? Számos gyakori jele van annak, hogy a KCD SSO nem működik. A probléma első jelei megjelennek a böngészőben.
+Mi a KCD probléma? Több gyakori jelzés is van arra vonatkozóan, hogy a KCD SSO sikertelen. A probléma első jelei a böngészőben jelennek meg.
 
-![Példa: Helytelen KCD konfigurációs hiba](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![Példa: helytelen KCD-konfigurációs hiba](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
-![Példa: Az engedélyezés nem sikerült, mert hiányoznak az engedélyek](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
+![Példa: az engedélyezés a hiányzó engedélyek miatt nem sikerült](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Mindkét kép ugyanazt a tünetet jeleníti meg: SSO-hiba. Az alkalmazáshoz való felhasználói hozzáférés megtagadva.
+Mindkét rendszerkép ugyanezt a tünetet mutatja: SSO-hiba. Az alkalmazáshoz való felhasználói hozzáférés megtagadva.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A hibaelhárítás módja a problémától és a megfigyelt tünetektől függ. Mielőtt tovább menne, fedezze fel a következő cikkeket. Hasznos hibaelhárítási információkat nyújtanak:
+A hibakeresés módja a probléma és a megfigyelt tünetektől függ. Mielőtt további lépéseket hozna, vizsgálja meg a következő cikkeket. Hasznos hibaelhárítási információkat biztosítanak:
 
-- [Alkalmazásproxyval kapcsolatos problémák és hibaüzenetek elhárítása](application-proxy-troubleshoot.md)
-- [Kerberos hibák és tünetek](application-proxy-troubleshoot.md#kerberos-errors)
-- [Az egyszeri szolgáltatás sal való együttműködés, ha a helyszíni és a felhőalapú identitások nem azonosak](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
+- [Alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása](application-proxy-troubleshoot.md)
+- [Kerberos-hibák és-tünetek](application-proxy-troubleshoot.md#kerberos-errors)
+- [Az egyszeri bejelentkezés használata, ha a helyszíni és a Felhőbeli identitások nem egyeznek](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
-Ha eljutottál erre a pontra, akkor a fő probléma létezik. A kezdéshez válassza szét a folyamatot a következő három fázisba, amelyek hibaelhárításához használható.
+Ha erre a pontra került, a fő probléma létezik. Az indításhoz válassza szét a folyamatot a következő három szakaszban, amelyeket elháríthat.
 
 ### <a name="client-pre-authentication"></a>Ügyfél előhitelesítése
 
-Az Azure-ban böngészőn keresztül hitelesítő külső felhasználó. A KCD egyszeri szolgáltatás működéséhez az Azure-ba való előzetes hitelesítés e-képesség szükséges. Tesztelje és kezelje ezt a képességet, ha bármilyen probléma merül fel. Az előhitelesítési szakasz nem kapcsolódik a KCD-hez vagy a közzétett alkalmazáshoz. Az eltérések kijavítása egyszerű, ha a józan ság ellenőrzi, hogy a tulajdonosfiók létezik-e az Azure-ban. Ellenőrizze azt is, hogy nincs-e letiltva vagy blokkolva. A böngészőben a hibaválasz elég leíró ahhoz, hogy megmagyarázza az okát. Ha bizonytalan, ellenőrizze a Microsoft egyéb hibaelhárítási cikkeit.
+A külső felhasználó egy böngészőben keresztül hitelesíti az Azure-t. Az Azure-ban való előzetes hitelesítés szükséges ahhoz, hogy a KCD SSO működjön. Ha problémák merülnek fel, tesztelje és foglalkozzon ezzel a képességgel. Az előhitelesítési szakasz nem kapcsolódik a KCD vagy a közzétett alkalmazáshoz. Az eltérések az Azure-ban való létezésének ellenőrzésével egyszerűen kioldhatók. Győződjön meg arról is, hogy nincs letiltva vagy blokkolva. A böngészőben megjelenő hiba elég leíró ahhoz, hogy elmagyarázza az okot. Ha bizonytalan, ellenőrizze a Microsoft egyéb hibaelhárítási cikkeit.
 
 ### <a name="delegation-service"></a>Delegálási szolgáltatás
 
-Az Azure Proxy-összekötő, amely kerberos-szolgáltatásjegyet kap a kerberos-kulcsszolgáltató (KCD) felhasználói számára.
+Az Azure proxy-összekötő, amely Kerberos-szolgáltatási jegyet kap a felhasználóknak Kerberos-kulcsszolgáltató (KCD).
 
-Az ügyfél és az Azure előtér közötti külső kommunikáció nincs hatással a KCD-re. Ezek a kommunikációcsak győződjön meg arról, hogy a KCD működik. Az Azure Proxy szolgáltatás egy érvényes felhasználói azonosítót kap, amely kerberos-jegy leválasztásához használatos. Enélkül az azonosító nélkül a KCD nem lehetséges és sikertelen.
+Az ügyfél és az Azure-beli előtér közötti külső kommunikáció nem befolyásolja a KCD. Ezek a kommunikációk csak akkor működnek, ha a KCD működik. Az Azure proxy szolgáltatás érvényes felhasználói azonosítót biztosít, amely a Kerberos-jegy beszerzésére szolgál. Ezen azonosító nélkül a KCD nem lehetséges, és sikertelen lesz.
 
-Mint már említettük, a böngésző hibaüzenetek nyújt néhány jó nyomokat, hogy miért a dolgok nem. Győződjön meg arról, hogy vegye figyelembe a tevékenységazonosítót és az időbélyeget a válaszban. Ez az információ segít a viselkedés és a tényleges események az Azure Proxy eseménynaplóban.
+Ahogy azt korábban említettük, a böngésző hibaüzenetei néhány jó dolgot jeleznek arról, hogy a dolgok miért sikertelenek. Ügyeljen arra, hogy a válaszban jegyezze fel a tevékenység-azonosítót és az időbélyeget. Ez az információ segít összekapcsolni a viselkedést az Azure proxy eseménynaplójának tényleges eseményeivel.
 
-![Példa: Helytelen KCD konfigurációs hiba](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
+![Példa: helytelen KCD-konfigurációs hiba](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-Az eseménynaplóban látható megfelelő bejegyzések 13019-es vagy 12027-es eseményekként jelennek meg. Keresse meg az összekötő eseménynaplóit az **Alkalmazások és szolgáltatások naplók** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt; **Connector** &gt; **Admin**.
+Az eseménynaplóban megjelenő bejegyzések a 13019 vagy a 12027 eseményként jelennek meg. Az összekötő eseménynaplóinak megkeresése az **alkalmazások és szolgáltatások naplóiban naplózza** &gt; a **Microsoft** &gt; **AadApplicationProxy** &gt; - **összekötő** &gt; **rendszergazdáját**.
 
-![13019-es esemény az alkalmazásproxy eseménynaplójából](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
+![13019-es esemény az alkalmazásproxy eseménynaplójában](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
-![12027-es esemény az alkalmazásproxy eseménynaplójából](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic5.png)
+![12027-es esemény az alkalmazásproxy eseménynaplójában](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic5.png)
 
-1. Az alkalmazás címéhez használjon **A** rekordot a belső DNS-ben, ne **cname-t.**
-1. Erősítse meg újra, hogy az összekötő állomás megkapta a jogot, hogy delegálja a kijelölt célfiók SPN.Re confirm that the connector host has granted the right to dedelegate to the designated target account's SPN. Annak megerősítése, hogy **a hitelesítési protokoll használata** be van jelölve. További információt az [SSO konfigurációs cikkében](application-proxy-configure-single-sign-on-with-kcd.md)talál.
-1. Ellenőrizze, hogy az Azure AD-ben az SPN-nek csak egy példánya van-e. Kérdés `setspn -x` a parancssorból bármely tartománytag-állomáson.
-1. Ellenőrizze, hogy a rendszer olyan tartományi házirendet alkalmaz-e, amely korlátozza a [kiadott Kerberos-tokenek maximális méretét.](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/) Ez a szabályzat megakadályozza, hogy az összekötő egy jogkivonatot kapjon, ha azt túlzottnak találja.
+1. Használjon **egy** rekordot a belső DNS-ben az alkalmazás címeként, nem **CNAME**-ként.
+1. Erősítse meg, hogy az összekötő gazdagép jogosult a kijelölt fiók SPN-re való delegálásra. Erősítse meg, hogy a **bármely hitelesítési protokoll használata** beállítás ki van választva. További információ: [SSO konfigurációs cikk](application-proxy-configure-single-sign-on-with-kcd.md).
+1. Ellenőrizze, hogy létezik-e az egyszerű szolgáltatásnév egyetlen példánya az Azure AD-ben. Probléma `setspn -x` a parancssorban bármely tartományi tag gazdagépen.
+1. Győződjön meg arról, hogy a tartományi házirend kényszerítve van, amely korlátozza a [kiállított Kerberos-tokenek maximális méretét](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/). Ez a szabályzat leállítja az összekötőt abban az esetben, ha túlzottnak találják a tokent.
 
-A hálózati nyomkövetés, amely rögzíti az összekötő állomás és a tartomány KDC közötti cserék a következő legjobb lépés, hogy minél több alacsony szintű részleteket a problémákat. További információt a [mélymerülési hibaelhárítási dokumentumban talál.](https://aka.ms/proxytshootpaper)
+Egy hálózati nyomkövetés, amely rögzíti az összekötő-gazdagép és a tartományi KDC közötti adatcserét, a következő legjobb lépés a problémával kapcsolatos alacsonyabb szintű részletek beszerzése. További információ: [Deep Dive – problémamegoldás](https://aka.ms/proxytshootpaper).
 
-Ha a jegykiállítás jól néz ki, megjelenik egy esemény a naplókban, amely szerint a hitelesítés sikertelen volt, mert az alkalmazás egy 401-es értéket adott vissza. Ez az esemény azt jelzi, hogy a célalkalmazás elutasította a jegyet. Menj a következő szakaszba.
+Ha a jegyek jól láthatók, a naplókban megjelenik egy esemény, amely szerint a hitelesítés sikertelen volt, mert az alkalmazás 401-as értéket adott vissza. Ez az esemény azt jelzi, hogy a célalkalmazás elutasította a jegyét. Lépjen a következő szakaszra.
 
 ### <a name="target-application"></a>Célalkalmazás
 
-Az összekötő által biztosított Kerberos-jegy fogyasztója. Ebben a szakaszban várható, hogy az összekötő kerberos-szolgáltatásjegyet küldött a háttérrendszernek. Ez a jegy egy fejléc az első alkalmazáskérelemben.
+Az összekötő által biztosított Kerberos-jegy fogyasztója. Ezen a ponton várható, hogy az összekötő Kerberos szolgáltatási jegyet küld a háttérnek. Ez a jegy az első kérelmezési kérelem fejléce.
 
-1. Az alkalmazás portálon megadott belső URL-címének használatával ellenőrizze, hogy az alkalmazás közvetlenül az összekötő gazdagépen lévő böngészőből érhető-e el. Ezután sikeresen bejelentkezhet. A részletek az összekötő **hibaelhárítási** oldalán találhatók.
-1. Továbbra is az összekötő gazdagépen, ellenőrizze, hogy a böngésző és az alkalmazás közötti hitelesítés kerberos-t használ.Still on the connector host, confirm that the authentication between the browser and the application uses Kerberos. Válasszon a következő lehetőségek közül:
-1. Futtassa a DevTools (**F12**) alkalmazást az Internet Explorer programban, vagy használja a [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) alkalmazást az összekötő állomásról. Lépjen az alkalmazáshoz a belső URL-cím használatával. Ellenőrizze az alkalmazás válaszában visszaadott ajánlott WWW-engedélyezési fejléceket, és győződjön meg arról, hogy az egyeztetés vagy a Kerberos jelen van.
+1. Az alkalmazás a portálon definiált belső URL-címének használatával ellenőrizze, hogy az alkalmazás elérhető-e közvetlenül az összekötő gazdagépének böngészőjében. Ezután sikeresen bejelentkezhet. A részletek az összekötő **– problémamegoldás** oldalon találhatók.
+1. Továbbra is az összekötő gazdagépen ellenőrizze, hogy a böngésző és az alkalmazás közötti hitelesítés Kerberos protokollt használ-e. Válasszon a következő lehetőségek közül:
+1. Futtasson DevTools (**F12**) az Internet Explorerben, vagy használja a [hegedűst](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) az összekötő-gazdagépről. Nyissa meg az alkalmazást a belső URL-cím használatával. Ellenőrizze az alkalmazás válaszában visszaadott, felkínált WWW-engedélyezési fejléceket, és győződjön meg arról, hogy az egyeztetés vagy a Kerberos van jelen.
 
-   - A következő Kerberos blob, amely a böngésző től az alkalmazásra adott válaszban kerül vissza, **a YII-vel**kezdődik. Ezek a levelek azt mondják, hogy a Kerberos fut. A Microsoft NT LAN Manager (NTLM) ezzel szemben mindig a **TlRMTVNTUAAB**programmal kezdődik, amely a Base64-ből dekódolva az NTLM biztonsági támogatási szolgáltatót (NTLMSSP) olvassa. Ha a Blob elején a **TlRMTVNTUAAB jelenik** meg, a Kerberos nem érhető el. Ha nem látja a **TlRMTVNTUAAB-ot,** akkor a Kerberos valószínűleg elérhető.
+   - A böngésző és az alkalmazás közötti válaszban visszaadott következő Kerberos-blob a **YII**-vel kezdődik. Ezek a levelek tájékoztatják, hogy a Kerberos fut. A Microsoft NT LAN Manager (NTLM) azonban mindig a **TlRMTVNTUAAB**-vel kezdődik, amely az NTLM biztonsági támogatási szolgáltatót (NTLMSSP) olvassa be a Base64-ből való dekódoláskor. Ha a blob elején látja a **TlRMTVNTUAAB** , a Kerberos nem érhető el. Ha nem látja a **TlRMTVNTUAAB**, a Kerberos valószínűleg elérhető.
 
       > [!NOTE]
-      > Ha fiddler, ez a módszer megköveteli, hogy ideiglenesen tiltsa le a kiterjesztett védelmet az alkalmazás konfigurációját az IIS.If you use Fiddler, this method requires to you temporarydisable extended protection on the application's configuration in IIS.
+      > Ha a hegedűst használja, ezzel a módszerrel átmenetileg le kell tiltania a kiterjesztett védelmet az alkalmazás konfigurációjában az IIS-ben.
 
-      ![Böngészőhálózat ellenőrző ablaka](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
+      ![A böngésző hálózatának ellenőrzési ablaka](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
 
-   - A blob ebben az ábrán nem kezdődik **TIRMTVNTUAAB**. Ebben a példában a Kerberos érhető el, és a Kerberos blob nem a **YII-vel**kezdődik.
+   - Az ebben az ábrában található blob nem a **TIRMTVNTUAAB**-vel kezdődik. Így ebben a példában a Kerberos elérhető, és a Kerberos-blob nem a **YII**-vel kezdődik.
 
-1. Ideiglenesen távolítsa el az NTLM-et az IIS-webhely szolgáltatói listájáról. Az alkalmazás közvetlenül az Internet Explorerből érhető el az összekötő gazdagépen. Az NTLM már nem szerepel a szolgáltatók listáján. Az alkalmazás csak a Kerberos használatával érhető el. Ha a hozzáférés sikertelen, lehet, hogy probléma van az alkalmazás konfigurációjával. A Kerberos-hitelesítés nem működik.
+1. Ideiglenesen távolítsa el az NTLM-t az IIS-hely szolgáltatók listájáról. Az alkalmazást közvetlenül az Internet Explorerből érheti el az összekötő-gazdagépen. Az NTLM már nem szerepel a szolgáltatók listáján. Az alkalmazást csak Kerberos használatával érheti el. Ha a hozzáférés meghiúsul, lehet, hogy probléma van az alkalmazás konfigurációjával. A Kerberos-hitelesítés nem működik.
 
-   - Ha a Kerberos nem érhető el, ellenőrizze az alkalmazás hitelesítési beállításait az IIS-ben. Győződjön meg **róla, hogy** a Negotiate a tetején van felsorolva, alatta pedig az NTLM. Ha a Nincs egyeztetés , Kerberos vagy Egyeztetés ( Egyeztetés ) vagy PKU2U (Nem egyeztetés , Kerberos) vagy PKU2U (Nem egyeztetés, **Kerberos vagy Egyeztetés)** vagy PKU2U (Nem egyeztetés) vagy PKU2U (Nem egyeztetés) ( Egyeztetés ) vagy **PKU2U (Nem** **egyeztetés)**( Nem egyeztetés ) vagy PKU2U
+   - Ha a Kerberos nem érhető el, ellenőrizze az alkalmazás hitelesítési beállításait az IIS-ben. Győződjön meg arról, hogy az **egyeztetés** felül van listázva, az NTLM alatt. Ha nem szeretne **egyeztetni**, **Kerberos vagy egyeztetés**vagy **PKU2U**, folytassa csak akkor, ha a Kerberos működik.
 
-     ![Windows-hitelesítésszolgáltatók](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
+     ![Windows-hitelesítési szolgáltatók](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
 
-   - A Kerberos és az NTLM helyben ideiglenesen tiltsa le az előhitelesítést az alkalmazáshoz a portálon. Próbálja meg elérni az internetről a külső URL-t. A rendszer kéri a hitelesítést. Ezt az előző lépésben használt fiókkal is megteheti. Ha nem, akkor a háttéralkalmazással van probléma, nem a KCD-vel.
-   - Engedélyezze újra az előhitelesítést a portálon. Hitelesítse magát az Azure-on keresztül, ha a külső URL-címén keresztül próbál csatlakozni az alkalmazáshoz. Ha az SSO sikertelen, a böngészőben tiltott hibaüzenet jelenik meg, és az 13022-es esemény a naplóban:
+   - A Kerberos és az NTLM helyett ideiglenesen tiltsa le az alkalmazás előhitelesítését a portálon. Próbáljon meg hozzáférni az internetről a külső URL-cím használatával. A rendszer a hitelesítést kéri. Ezt az előző lépésben használt fiókkal is megteheti. Ha nem, akkor probléma van a háttérbeli alkalmazással, nem pedig a KCD.
+   - Engedélyezze újra az előhitelesítést a portálon. Hitelesítés az Azure-ban az alkalmazás külső URL-címén keresztüli kapcsolódáshoz való kísérlettel. Ha az egyszeri bejelentkezés sikertelen, a böngészőben egy tiltott hibaüzenet jelenik meg, a naplóban pedig a 13022-es eseményt:
 
-     *A Microsoft AAD alkalmazásproxy-összekötő nem tudja hitelesíteni a felhasználót, mert a háttérkiszolgáló HTTP 401-es hibával válaszol a Kerberos hitelesítési kísérleteire.*
+     *A Microsoft HRE Application proxy-összekötő nem tudja hitelesíteni a felhasználót, mert a háttér-kiszolgáló HTTP 401-hibával válaszol a Kerberos-hitelesítésre.*
 
-      ![A HTTTP 401 tiltott hibája](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
+      ![A HTTTP 401 tiltott hibáját mutatja](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
 
-   - Ellenőrizze az IIS alkalmazást. Győződjön meg arról, hogy a konfigurált alkalmazáskészlet és az SPN úgy vannak konfigurálva, hogy ugyanazt a fiókot használják az Azure AD-ben. Navigálás az IIS-ben az alábbi ábrán látható módon:
+   - Keresse meg az IIS-alkalmazást. Győződjön meg arról, hogy a konfigurált alkalmazáskészlet és az SPN úgy van konfigurálva, hogy ugyanazt a fiókot használja az Azure AD-ben. Navigáljon az IIS-ben az alábbi ábrán látható módon:
 
-      ![Az IIS alkalmazás konfigurációs ablaka](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic9.png)
+      ![IIS-alkalmazás konfigurációs ablaka](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic9.png)
 
-      Miután ismeri az identitást, győződjön meg arról, hogy ez a fiók a kérdéses spn-nel van konfigurálva. Például: `setspn –q http/spn.wacketywack.com`. Írja be a következő szöveget a parancssorba:
+      Az identitás megismerése után ellenőrizze, hogy a fiók konfigurálva van-e a kérdéses SPN-ben. Például: `setspn –q http/spn.wacketywack.com`. Írja be a következő szöveget a parancssorba:
 
-      ![A SetSPN parancsablak megjelenítése](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
+      ![A SetSPN parancssori ablak megjelenítése](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
 
-   - Ellenőrizze a definiált spn-t az alkalmazás a portálon megadott beállításokkal szemben. Győződjön meg arról, hogy ugyanazt az SPN-t a cél Azure AD-fiókhoz konfigurált az alkalmazás alkalmazáskészlete használja.
+   - Győződjön meg arról, hogy a portálon az alkalmazás beállításaiban definiált SPN szerepel. Győződjön meg arról, hogy a cél Azure AD-fiókhoz konfigurált egyszerű szolgáltatásnevet az alkalmazás alkalmazáskészlete használja.
 
-      ![SPN-konfiguráció az Azure Portalon](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
+      ![SPN-konfiguráció a Azure Portal](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
 
-   - Lépjen be az IIS-be, és válassza az alkalmazás **Konfigurációszerkesztő** beállítását. Keresse meg a **system.webServer/security/authentication/windowsAuthentication webhelyet.** Győződjön meg arról, hogy a **UseAppPoolCredentials** érték **igaz.**
+   - Nyissa meg az IIS-t, és válassza ki a **Configuration Editor** lehetőséget az alkalmazáshoz. Navigáljon a **System. webserver/Security/Authentication/windowsAuthentication**. Győződjön meg arról, hogy a **UseAppPoolCredentials** értéke **true (igaz**).
 
-      ![Az IIS konfigurációs alkalmazáskészletei hitelesítő adatainak beállítása](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
+      ![IIS-konfiguráció alkalmazáskészletének hitelesítő adatai](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
 
-      Módosítsa ezt az értéket **Igaz**értékre. Az összes gyorsítótárazott Kerberos-jegy eltávolítása a háttérkiszolgálóról a következő parancs futtatásával:
+      Módosítsa az értéket **igaz**értékre. A következő parancs futtatásával távolítsa el az összes gyorsítótárazott Kerberos-jegyet a háttér-kiszolgálóról:
 
       ```powershell
       Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'NTLM'} | ForEach-Object {klist.exe purge -li ([Convert]::ToString($_.LogonId, 16))}
       ```
 
-További információt [a Kerberos ügyféljegy-gyorsítótárának kiürítése az összes munkamenethez](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf)című témakörben talál.
+További információ: [a Kerberos-ügyfél Ticket gyorsítótárának kiürítése az összes munkamenethez](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf).
 
-Ha engedélyezi a Kernel módot, az javítja a Kerberos-műveletek teljesítményét. De azt is okozza, hogy a kért szolgáltatás jegyét a számítógépfiók használatával visszafejtik. Ezt a fiókot helyi rendszernek is nevezik. Állítsa ezt az értéket **Igaz** értékre a KCD megszakításához, ha az alkalmazás egy farm több kiszolgálóján található.
+Ha engedélyezi a kernel üzemmódot, az javítja a Kerberos-műveletek teljesítményét. Ez azonban azt is okozhatja, hogy a kért szolgáltatásnak a számítógépfiók használatával kell visszafejtenie a jegyet. Ezt a fiókot a helyi rendszernek is nevezik. Állítsa **igaz** értékre az KCD megadásához, ha az alkalmazás egy farmon belül több kiszolgálón fut.
 
-- További ellenőrzésként tiltsa le **a kiterjesztett** védelmet is. Bizonyos esetekben **a kiterjesztett** védelem megtörte a KCD-t, amikor engedélyezve volt bizonyos konfigurációkban. Ezekben az esetekben egy alkalmazás az alapértelmezett webhely almappájaként lett közzétéve. Ez az alkalmazás csak névtelen hitelesítésre van konfigurálva. Az összes párbeszéd szürkén jelenik meg, ami azt sugallja, hogy a gyermekobjektumok nem örökölnek aktív beállításokat. Azt javasoljuk, hogy tesztelje, de ne felejtse el visszaállítani ezt az értéket **engedélyezve,** ahol lehetséges.
+- További ellenőrzésként tiltsa le a **kiterjesztett** védelmet is. Bizonyos esetekben a **kiterjesztett** védelem KCD tört ki, amikor az engedélyezve lett az adott konfigurációkban. Ezekben az esetekben az alkalmazás az alapértelmezett webhely almappájába került közzétételre. Ez az alkalmazás csak névtelen hitelesítésre van konfigurálva. Az összes párbeszédpanel szürkén jelenik meg, ami azt sugallja, hogy a gyermekobjektumok nem öröklik az aktív beállításokat. Javasoljuk, hogy tesztelje, de ne felejtse el visszaállítani ezt az **értéket, ha**lehetséges.
 
-  Ez a további ellenőrzés jó úton halad a közzétett alkalmazás használata felé. További összekötőket is felpörgethet, amelyek delegálásra is konfigurálva vannak. További információkért olvassa el a részletesebb technikai útmutatót, [az Azure AD alkalmazásproxy hibaelhárítása című témakört.](https://aka.ms/proxytshootpaper)
+  Ez a további vizsgálat a közzétett alkalmazás használatának nyomon követését teszi lehetővé. Elindíthat további összekötőket is, amelyek delegálásra vannak konfigurálva. További információ: részletes technikai [útmutató, az Azure ad Application proxy hibaelhárítása](https://aka.ms/proxytshootpaper).
 
-Ha továbbra sem tud előrelépést elérni, a Microsoft támogatási szolgálata segítséget nyújt. Hozzon létre egy támogatási jegyet közvetlenül a portálon belül. Egy mérnök felveszi önnel a kapcsolatot.
+Ha továbbra sem tudja elérni a folyamatot, a Microsoft támogatási szolgálata segítséget nyújthat. Támogatási jegy létrehozása közvetlenül a portálon belül. A mérnök felveszi Önnel a kapcsolatot.
 
 ## <a name="other-scenarios"></a>Egyéb forgatókönyvek
 
-- Az Azure-alkalmazásproxy Kerberos-jegyet kér, mielőtt elküldené a kérelmet egy alkalmazásnak. Egyes külső alkalmazások nem szeretik ezt a hitelesítési módszert. Ezek az alkalmazások arra számítanak, hogy a hagyományosabb tárgyalásokra sor kerül. Az első kérelem névtelen, amely lehetővé teszi, hogy az alkalmazás a 401-es en keresztül támogatott hitelesítési típusokkal válaszoljon.
-- A többugrásos hitelesítést gyakran használják olyan esetekben, amikor egy alkalmazás rétegzett, háttér- és előtér-alapú, ahol mindkettő hitelesítést igényel, például az SQL Server Reporting Services. A többugrásos forgatókönyv konfigurálásához olvassa el a [Kerberos korlátozott delegálásra vonatkozó támogatási cikket, amely protokollváltást igényelhet többugrásos forgatókönyvekben.](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)
+- Az Azure Application proxy egy Kerberos-jegyet kér, mielőtt elküldené a kérelmét egy alkalmazásnak. Egyes harmadik féltől származó alkalmazások nem szeretik ezt a hitelesítési módszert. Ezek az alkalmazások a hagyományosabb tárgyalásokra várnak. Az első kérelem névtelen, amely lehetővé teszi az alkalmazás számára, hogy válaszoljon az általa támogatott hitelesítési típusokra 401-en keresztül.
+- A Többugrásos hitelesítés általában olyan esetekben használatos, amikor egy alkalmazás többszintű, háttér-és előtér-szolgáltatással rendelkezik, ahol mindkét esetben hitelesítés szükséges, például SQL Server Reporting Services. A Többugrásos forgatókönyv konfigurálását lásd: a Kerberos által korlátozott delegálás támogatását ismertető cikk a [több ugrásos forgatókönyvekben történő protokoll-áttérést is szükségessé teheti](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>További lépések
 
-[Konfigurálja a KCD-t felügyelt tartományban](../../active-directory-domain-services/deploy-kcd.md).
+[KCD konfigurálása felügyelt tartományon](../../active-directory-domain-services/deploy-kcd.md).

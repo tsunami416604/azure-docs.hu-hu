@@ -1,6 +1,6 @@
 ---
-title: Konfigurációs fájlok paraméterezése az Azure Service Fabricben
-description: Ismerje meg, hogyan paraméterezi a konfigurációs fájlokat a Service Fabric, hasznos technika több környezet kezelése során.
+title: Parametrizálja konfigurációs fájlok az Azure-ban Service Fabric
+description: Megtudhatja, hogyan parametrizálja a konfigurációs fájlokat a Service Fabricban, amely hasznos módszer több környezet kezelésekor.
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 10/09/2018
@@ -12,16 +12,16 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644630"
 ---
-# <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Konfigurációs fájlok paraméterezése a Service Fabric ben
+# <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Konfigurációs fájlok parametrizálja Service Fabric
 
-Ez a cikk bemutatja, hogyan paraméterezheti a konfigurációs fájlt a Service Fabric.This article shows you how to parameterize a configuration file in Service Fabric.  Ha még nem ismeri a több környezetben futó alkalmazások kezelésének alapfogalmait, olvassa el [az Alkalmazások kezelése több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)című részt.
+Ez a cikk bemutatja, hogyan parametrizálja egy konfigurációs fájlt a Service Fabricban.  Ha még nem ismeri az alkalmazások több környezethez való felügyeletének alapvető fogalmait, olvassa el az [Alkalmazások kezelése több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)című témakört.
 
-## <a name="procedure-for-parameterizing-configuration-files"></a>A konfigurációs fájlok paraméterezési eljárása
+## <a name="procedure-for-parameterizing-configuration-files"></a>A parameterizing konfigurációs fájljainak eljárása
 
-Ebben a példában felülbírálja a konfigurációs értéket az alkalmazás központi telepítésének paramétereivel.
+Ebben a példában egy konfigurációs értéket kell felülbírálnia az alkalmazás telepítésében található paraméterek használatával.
 
-1. Nyissa meg a * \<MyService>\PackageRoot\Config\Settings.xml* fájlt a szolgáltatási projektben.
-1. A következő XML hozzáadásával adja meg a konfigurációs paraméter nevét és értékét, például a gyorsítótár 25-nek megfelelő méretét:
+1. Nyissa meg a * \<MyService> \packageroot\config\settings.XML* fájlt a szolgáltatási projektben.
+1. A következő XML-kód hozzáadásával állítsa be a konfigurációs paraméter nevét és értékét, például a gyorsítótár méretét 25-re:
 
    ```xml
     <Section Name="MyConfigSection">
@@ -30,15 +30,15 @@ Ebben a példában felülbírálja a konfigurációs értéket az alkalmazás k�
    ```
 
 1. Mentse és zárja be a fájlt.
-1. Nyissa meg a * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* fájlt.
-1. Az ApplicationManifest.xml fájlban deklaráljon `Parameters` egy paramétert és egy alapértelmezett értéket az elemben.  Javasoljuk, hogy a paraméternév tartalmazza a szolgáltatás nevét (például "MyService").
+1. Nyissa meg a * \<MyApplication> \applicationpackageroot\applicationmanifest.XML* fájlt.
+1. A ApplicationManifest. xml fájlban deklaráljon egy paramétert és egy alapértelmezett értéket a `Parameters` elemben.  Javasoljuk, hogy a paraméter neve tartalmazza a szolgáltatás nevét (például "MyService").
 
    ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. Az `ServiceManifestImport` ApplicationManifest.xml fájl szakaszában adjon `ConfigOverrides` `ConfigOverride` hozzá egy elemet és egy elemet, hivatkozva a konfigurációs csomagra, a szakaszra és a paraméterre.
+1. A ApplicationManifest `ServiceManifestImport` . xml fájl szakaszában adjon hozzá egy és `ConfigOverrides` `ConfigOverride` egy elemet, amely a konfigurációs csomagra, a szakaszra és a paraméterre hivatkozik.
 
    ```xml
     <ConfigOverrides>
@@ -53,9 +53,9 @@ Ebben a példában felülbírálja a konfigurációs értéket az alkalmazás k�
    ```
 
 > [!NOTE]
-> Abban az esetben, ha egy ConfigOverride hozzáadása esetén a Service Fabric mindig kiválasztja az alkalmazás paramétereit vagy az alkalmazásjegyzékben megadott alapértelmezett értéket.
+> Abban az esetben, ha ConfigOverride ad hozzá, Service Fabric mindig kiválasztja az alkalmazás-jegyzékfájlban megadott alkalmazások paramétereit vagy az alapértelmezett értéket.
 >
 >
 
 ## <a name="next-steps"></a>További lépések
-A Visual Studio egyéb alkalmazáskezelési képességeiről a [Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)című témakörben talál további információt.
+További információ a Visual Studióban elérhető egyéb alkalmazás-felügyeleti lehetőségekről: [Service Fabric alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).

@@ -15,13 +15,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "76118111"
 ---
-## <a name="about-the-user-delegation-sas"></a>A felhasználói delegálásról SAS
+## <a name="about-the-user-delegation-sas"></a>Tudnivalók a felhasználói delegálási SAS-ról
 
-Egy tárolóhoz vagy blobhoz való hozzáféréss SAS-jogkivonat azure AD-hitelesítő adatokkal vagy fiókkulccsal is biztonságos lehet. Az Azure AD-hitelesítő adatokkal védett SAS-t felhasználói delegálássas-nak nevezzük, mivel a SAS aláírásához használt OAuth 2.0-s jogkivonatot a felhasználó nevében kérik.
+Egy tárolóhoz vagy blobhoz való hozzáféréshez szükséges SAS-tokent az Azure AD hitelesítő adataival vagy egy fiók kulcsával lehet védeni. Az Azure AD-beli hitelesítő adatokkal védett SAS-t egy felhasználói delegálási SAS-nek nevezzük, mert az SAS aláírásához használt OAuth 2,0 tokent a felhasználó nevében kell kérelmezni.
 
-A Microsoft azt javasolja, hogy az Azure AD hitelesítő adatait, ha lehetséges, a biztonsági ajánlott eljárás, nem pedig a fiókkulcs használata, amely könnyebben sérülhet. Ha az alkalmazás tervéhez megosztott hozzáférés-aláírások szükségesek, az Azure AD hitelesítő adataival hozzon létre egy felhasználói delegálási SAS-t a nagyobb biztonság érdekében. A felhasználói delegálási SAS-ről további információt a [Felhasználói delegálási SAS létrehozása című](/rest/api/storageservices/create-user-delegation-sas)témakörben talál.
+A Microsoft azt javasolja, hogy az Azure AD hitelesítő adatait akkor használja, ha a fiók kulcsa helyett biztonsági szempontból ajánlott, ami könnyebben sérülhet. Ha az alkalmazás kialakításához közös hozzáférésű aláírásokra van szükség, az Azure AD hitelesítő adataival hozzon létre egy felhasználói delegálási SAS-t a kiváló biztonság érdekében. A felhasználói delegálási SAS-vel kapcsolatos további információkért lásd: [felhasználói delegálási sas létrehozása](/rest/api/storageservices/create-user-delegation-sas).
 
 > [!CAUTION]
-> Minden olyan ügyfél, amely rendelkezik egy érvényes SAS-hozzáféréssel a tárfiókban lévő adatokhoz, ahogy azt az adott SAS engedélyezi. Fontos, hogy megvédje a SAS-t a rosszindulatú vagy nem szándékos használattól. Körültekintően terjesztheti a SAS-t, és rendelkezik egy tervvel a sérült SAS visszavonásához.
+> Minden olyan ügyfél, amely érvényes SAS-val rendelkezik, a Storage-fiókban lévő, az adott SAS által engedélyezett módon férhet hozzá az adataihoz. Fontos, hogy az SAS-t rosszindulatú vagy nem rendeltetésszerű használatból védjék. Saját belátása szerint oszthatja meg a SAS-t, és megtervezheti a feltört SAS visszavonását.
 
-A megosztott hozzáférésű aláírásokról további információt az [Azure Storage-erőforrásokhoz való korlátozott hozzáférés megadása megosztott hozzáférésű aláírások (SAS) használatával](../articles/storage/common/storage-sas-overview.md)című témakörben talál.
+A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../articles/storage/common/storage-sas-overview.md).

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Service Fabric-entitások összesített állapotának megtekintése
-description: Bemutatja, hogyan lehet lekérdezni, megtekinteni és kiértékelni az Azure Service Fabric-entitások összesített állapotát az állapotlekérdezések és az általános lekérdezések segítségével.
+description: Ismerteti, hogyan lehet lekérdezni, megtekinteni és kiértékelni az Azure Service Fabric entitások összesített állapotát, az állapot lekérdezéseit és az általános lekérdezéseket.
 author: oanapl
 ms.topic: conceptual
 ms.date: 2/28/2018
@@ -12,18 +12,18 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464126"
 ---
-# <a name="view-service-fabric-health-reports"></a>A Service Fabric állapotjelentésének megtekintése
-Az Azure Service Fabric egy [állapotmodellt](service-fabric-health-introduction.md) vezet be az állapotentitások, amelyeken a rendszer-összetevők és a figyelők jelenthetik a helyi feltételeket, amelyeket figyelnek. Az [állapottároló](service-fabric-health-introduction.md#health-store) összesíti az összes állapotadatot annak meghatározásához, hogy az entitások kifogástalanállapotúak-e.
+# <a name="view-service-fabric-health-reports"></a>Service Fabric állapottal kapcsolatos jelentések megtekintése
+Az Azure Service Fabric olyan egészségügyi [modelleket](service-fabric-health-introduction.md) vezet be, amelyekben a rendszerösszetevők és a watchdogok jelenthetik a figyelt helyi feltételeket. Az állapotfigyelő az összes [állapotadatok összesítésével](service-fabric-health-introduction.md#health-store) megállapítja, hogy az entitások állapota Kifogástalan-e.
 
-A fürt automatikusan feltöltődik a rendszerösszetevők által küldött állapotjelentésekkel. További [információ: A rendszerállapot-jelentések használata a hibaelhárításhoz.](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+A rendszer automatikusan kitölti a fürtöt a rendszerösszetevők által elküldett állapot-jelentésekkel. További információ: [rendszerállapot-jelentések használata a hibakereséshez](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
 
-A Service Fabric többféle lehetőséget biztosít az entitások összesített állapotának lejáratára:
+Service Fabric több módszert biztosít az entitások összesített állapotának lekéréséhez:
 
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) vagy más vizualizációs eszközök
-* Állapotlekérdezések (a PowerShell, API vagy REST)
-* Általános lekérdezések, amelyek az egyik tulajdonságként állapotú entitások listáját adják vissza (a PowerShellen, az API-n vagy a REST-en keresztül)
+* Állapot-lekérdezések (a PowerShell, az API vagy a REST használatával)
+* Általános lekérdezések, amelyek a tulajdonságok egyikének megfelelő állapotú entitások listáját adják vissza (a PowerShell, az API vagy a REST használatával)
 
-Ezeknek a beállításoknak a bemutatásához használjon egy helyi fürtöt öt csomóponttal és a [fabric:/WordCount alkalmazást.](https://github.com/Azure-Samples/service-fabric-wordcount/raw/master/WordCountV1.sfpkg) A **fabric:/WordCount** alkalmazás két alapértelmezett szolgáltatást tartalmaz, `WordCountServiceType`egy állapotalapú szolgáltatást `WordCountWebServiceType`és egy állapotnélküli típusú szolgáltatást. Megváltoztattam a `ApplicationManifest.xml` hét cél replikák az állapotalapú szolgáltatás és egy partíció. Mivel a fürtben csak öt csomópont található, a rendszerösszetevők figyelmeztetést jelentenek a szolgáltatáspartíción, mert az a célszám alatt van.
+A beállítások megjelenítéséhez használjon egy helyi fürtöt öt csomóponttal és a [Fabric:/WordCount alkalmazással](https://github.com/Azure-Samples/service-fabric-wordcount/raw/master/WordCountV1.sfpkg). A **Fabric:/WordCount** alkalmazás két alapértelmezett szolgáltatást tartalmaz, a típusú `WordCountServiceType`állapot-nyilvántartó szolgáltatást és a típus `WordCountWebServiceType`állapot nélküli szolgáltatását. Megváltoztattam a `ApplicationManifest.xml` -t, hogy az állapot-nyilvántartó szolgáltatáshoz és egy partícióhoz hét cél replikát kelljen megadni. Mivel a fürtben csak öt csomópont található, a rendszerösszetevők figyelmeztetést jelentenek a szolgáltatás partícióján, mivel az a cél száma alatt van.
 
 ```xml
 <Service Name="WordCountService">
@@ -33,61 +33,61 @@ Ezeknek a beállításoknak a bemutatásához használjon egy helyi fürtöt öt
 </Service>
 ```
 
-## <a name="health-in-service-fabric-explorer"></a>Állapot a Service Fabric Intézőben
-A Service Fabric Explorer vizuális képet nyújt a fürtről. Az alábbi képen látható, hogy:
+## <a name="health-in-service-fabric-explorer"></a>Állapot Service Fabric Explorer
+Service Fabric Explorer a fürtöt vizuálisan jeleníti meg. Az alábbi képen láthatja, hogy:
 
-* Az alkalmazás **fabric:/WordCount** piros (hiba), mert van egy hiba esemény által jelentett **MyWatchdog** a tulajdonság **rendelkezésre állása**.
-* Egyik szolgáltatása, **a fabric:/WordCount/WordCountService** sárga (figyelmeztetésben). A szolgáltatás hét replikával van konfigurálva, és a fürt öt csomópontossal rendelkezik, így két replikák nem helyezhető el. Bár itt nem jelenik meg, a szolgáltatáspartíció sárga, `System.FM` mert `Partition is below target replica or instance count`a rendszerjelentése azt mondja, hogy . A sárga partíció elindítja a sárga szolgáltatást.
-* A fürt piros, mert a piros alkalmazás.
+* Az Application **Fabric:/WordCount** vörös (hiba), mert a **MyWatchdog** által jelentett hibaüzenetet tartalmaz a tulajdonság **rendelkezésre állása**esetén.
+* Egyik szolgáltatása, a **Fabric:/WordCount/wordcountservice partícióinak listáját** sárga (figyelmeztetés). A szolgáltatás hét replikával van konfigurálva, és a fürt öt csomóponttal rendelkezik, így két replika nem helyezhető el. Bár itt nem látható, a szolgáltatás partíciója sárga, mert egy rendszerjelentés `System.FM` azt jelzi, hogy. `Partition is below target replica or instance count` A sárga partíció elindítja a sárga szolgáltatást.
+* A fürt piros alkalmazása miatt vörös.
 
-A kiértékelés a fürtjegyzék és az alkalmazásjegyzék alapértelmezett házirendjeit használja. Ezek szigorú politikák, és nem tolerálják a kudarcokat.
+A kiértékelés az alapértelmezett házirendeket használja a fürt jegyzékfájlja és az alkalmazás jegyzékfájlja alapján. Ezek szigorú szabályzatok, és nem tolerálják a hibát.
 
-A fürt nézete a Service Fabric Explorer segítségével:
+A fürt nézete Service Fabric Explorer:
 
-![A fürt nézete a Service Fabric Explorer segítségével.][1]
+![A fürt nézete Service Fabric Explorer.][1]
 
 [1]: ./media/service-fabric-view-entities-aggregated-health/servicefabric-explorer-cluster-health.png
 
 
 > [!NOTE]
-> További információ a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)ről.
+> További információ a [Service Fabric Explorerról](service-fabric-visualizing-your-cluster.md).
 >
 >
 
-## <a name="health-queries"></a>Egészségügyi lekérdezések
-A Service Fabric minden egyes támogatott [entitástípushoz](service-fabric-health-introduction.md#health-entities-and-hierarchy)elérhetővé teszi az állapotlekérdezéseket. Az API-n keresztül érhetők el a [FabricClient.HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), a PowerShell-parancsmagok és a REST metódusai használatával. Ezek a lekérdezések teljes körű állapotinformációt adnak vissza az entitásról: az összesített állapot, az entitás állapotának állapota, a gyermek állapotállapota (ha van), a nem megfelelő állapotú értékelések (ha az entitás nem kifogástalan), és a gyermekek állapotstatisztikái (amikor alkalmazandó).
+## <a name="health-queries"></a>Állapot-lekérdezések
+A Service Fabric az egyes támogatott [entitások típusaihoz](service-fabric-health-introduction.md#health-entities-and-hierarchy)tartozó állapot-lekérdezéseket teszi elérhetővé. Ezek az API-n keresztül érhetők el, a [FabricClient. HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), a PowerShell-parancsmagok és a REST metódusok használatával. Ezek a lekérdezések a teljes állapotra vonatkozó információkat adják vissza az entitásról: az összesített állapot, az entitás állapotával kapcsolatos események, a gyermek állapot állapota (ha alkalmazható), a nem kifogástalan állapotú értékelések (ha az entitás nem kifogástalan) és a gyermek állapot statisztikája (ha alkalmazható).
 
 > [!NOTE]
-> Egy állapotentitás tért vissza, ha teljesen ki van töltve a health Store.A health entity is returned when it is fully populated in the health store. Az entitásnak aktívnak (nem töröltnek) kell lennie, és rendszerjelentéssel kell rendelkeznie. A hierarchialáncban lévő szülőentitásainak rendszerjelentésekkel is rendelkezniük kell. Ha a feltételek bármelyike nem teljesül, az állapotlekérdezések egy [FabricException fabricErrorCode-mal](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` adnak vissza, amely megmutatja, hogy miért nem adja vissza az entitást. [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception)
+> A rendszer akkor adja vissza az állapotot, amikor a rendszer teljes mértékben kitölti az állapotfigyelő tárolóban. Az entitásnak aktívnak kell lennie (nincs törölve), és rendelkeznie kell egy rendszerjelentéssel. A hierarchia láncában lévő szülő entitásoknak rendszerjelentésekkel is rendelkezniük kell. Ha ezek a feltételek nem teljesülnek, az állapot-lekérdezések olyan [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) adnak vissza, amely azt mutatja, hogy az entitás miért nem ad vissza [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` .
 >
 >
 
-Az állapotlekérdezéseknek át kell adniuk az entitásazonosítót, amely az entitás típusától függ. A lekérdezések nem kötelező állapotházirend-paramétereket fogadnak el. Ha nincs megadva állapotházirend, a fürt vagy az alkalmazásjegyzék [állapotházirendjei](service-fabric-health-introduction.md#health-policies) kiértékelésre szolgálnak. Ha a jegyzékek nem tartalmaznak definíciót az állapotházirendek, az alapértelmezett állapotházirendek kiértékelésre használják. Az alapértelmezett állapotházirendek nem tolerálják a hibákat. A lekérdezések is elfogadja szűrők et vissza csak részleges gyermekek vagy események - az is, hogy tartsák tiszteletben a megadott szűrőket. Egy másik szűrő lehetővé teszi a gyermekek statisztikáinak kizárását.
+Az állapot-lekérdezéseknek meg kell felelnie az entitás-azonosítótól, amely az entitás típusától függ. A lekérdezések elfogadják a választható állapotházirendek paramétereit. Ha nem ad meg állapotházirend-szabályzatot, a rendszer a fürt vagy az alkalmazás jegyzékfájljának [állapotát](service-fabric-health-introduction.md#health-policies) használja a kiértékeléshez. Ha a jegyzékfájlok nem tartalmaznak definíciót az állapotfigyelő házirendekhez, a rendszer az alapértelmezett állapot-házirendeket használja az értékeléshez. Az alapértelmezett állapot-házirendek nem tolerálják a hibákat. A lekérdezések olyan szűrőket is elfogadnak, amelyek csak részleges gyermekeket vagy eseményeket adnak vissza – a megadott szűrőket figyelembe vevőket is. Egy másik szűrő lehetővé teszi a gyermekek statisztikáinak kizárását.
 
 > [!NOTE]
-> A kimeneti szűrők a kiszolgálóoldalon vannak alkalmazva, így az üzenet válaszmérete csökken. Azt javasoljuk, hogy használja a kimeneti szűrőket a visszaadott adatok korlátozására, ahelyett, hogy szűrőket alkalmazna az ügyféloldalon.
+> A kimeneti szűrők a kiszolgálói oldalon lesznek alkalmazva, így az üzenet válaszának mérete csökken. Javasoljuk, hogy a kimeneti szűrőket használva korlátozza a visszaadott adatokat ahelyett, hogy szűrőket alkalmazzon az ügyfél oldalán.
 >
 >
 
-Egy entitás állapota a következőket tartalmazza:
+Az entitások állapota a következőket tartalmazza:
 
-* Az entitás összesített állapota. Az állapottároló az entitás állapotjelentései, a gyermekállapot-állapotok (adott esetben) és az állapotházirendek alapján számítja ki. További információ az [entitásállapot-kiértékelésről.](service-fabric-health-introduction.md#health-evaluation)  
-* Az entitás állapoteseményei.
-* A gyűjtemény az összes gyermek állapotok az entitások, amelyek a gyermekek. Az állapotok entitásazonosítókat és az összesített állapotot tartalmaznak. A gyermek teljes állapotának lehívásához hívja meg a gyermekentitás-típus lekérdezési állapotát, és adja át a gyermekazonosítót.
-* A nem megfelelő állapotú értékelések, amelyek az entitás állapotát kiváltó jelentésre mutatnak, ha az entitás nem kifogástalan. Az értékelések rekurzív, amely tartalmazza a gyermekek egészségügyi értékelések, amelyek kiváltották a jelenlegi állapot. Például egy figyelő jelentett egy hibát egy replika ellen. Az alkalmazás állapota egy nem megfelelő állapotú szolgáltatás miatt nem megfelelő állapotú kiértékelést mutat; a szolgáltatás hibás partíció miatt nem kifogástalan; a partíció hibás replikája miatt nem kifogástalan; a replika nem kifogástalan a figyelő hibaállapot-jelentése miatt.
-* A gyermekkel foglalkozó entitások összes gyermektípusának állapotstatisztikái. A fürt állapota például a fürtben lévő alkalmazások, szolgáltatások, partíciók, replikák és telepített entitások teljes számát mutatja. A szolgáltatás állapota a megadott szolgáltatás alatt található partíciók és replikák teljes számát mutatja.
+* Az entitás összesített állapotának állapota. Az állapotfigyelő alapján számítjuk ki a Health Store-jelentések, a gyermek állapota (ha alkalmazható) és az állapotfigyelő házirendek alapján. További információ az [entitások állapotának kiértékeléséről](service-fabric-health-introduction.md#health-evaluation).  
+* Az entitás állapotával kapcsolatos események.
+* A gyermekekkel rendelkező entitások összes gyermeke állapotának gyűjteménye. Az állapot az entitás-azonosítókat és az összesített állapotot tartalmazza. Egy gyermek teljes állapotának lekéréséhez hívja meg a gyermek entitás típusának lekérdezési állapotát, és adja meg a gyermek azonosítóját.
+* A nem kifogástalan állapotú értékelések, amelyek az entitás állapotát kiváltó jelentésre mutatnak, ha az entitás állapota nem megfelelő. Az értékelések rekurzívak, és a gyermek állapotra vonatkozó, a jelenlegi állapotot kiváltó értékeléseket tartalmazzák. A watchdog például hibát jelzett egy replikán. Az alkalmazás állapota nem kifogástalan állapotú kiértékelést mutat a nem megfelelő állapotú szolgáltatás miatt; a szolgáltatás nem kifogástalan állapotú, mert hiba történt egy partíció miatt. a partíció nem megfelelő állapotú, mert hiba történt a replika miatt. a replika állapota sérült a watchdog Error Health jelentés miatt.
+* A gyermekekkel rendelkező entitások összes gyermek típusára vonatkozó állapot statisztikája. A fürt állapota például a fürtben található alkalmazások, szolgáltatások, partíciók, replikák és telepített entitások teljes számát jeleníti meg. A szolgáltatás állapota a megadott szolgáltatásban lévő partíciók és replikák teljes számát jeleníti meg.
 
-## <a name="get-cluster-health"></a>Fürtállapotának beszereznie
-A fürtentitás állapotát adja vissza, és az alkalmazások és csomópontok (a fürt gyermekei) állapotát tartalmazza. Bemenet:
+## <a name="get-cluster-health"></a>Fürt állapotának beolvasása
+A fürt entitásának állapotát adja vissza, és tartalmazza az alkalmazások és a csomópontok állapotát (a fürt gyermekei). Bemenet:
 
-* [Nem kötelező] A csomópontok és a fürtesemények kiértékeléséhez használt fürtállapot-házirend.
-* [Nem kötelező] Az alkalmazás állapotházirend-leképezése az alkalmazásjegyzék-házirendek felülbírálásához használt állapotházirendekkel.
-* [Nem kötelező] Események, csomópontok és alkalmazások szűrői, amelyek meghatározzák, hogy mely bejegyzések érdekesek, és az eredményben vissza kell adni őket (például csak hibák, vagy figyelmeztetések és hibák egyaránt). Minden esemény, csomópont és alkalmazás az entitás összesített állapotának kiértékelésére szolgál, a szűrőtől függetlenül.
-* [Nem kötelező] Szűrő az állapotstatisztikák kizárásához.
-* [Nem kötelező] Szűrő, amely tartalmazza a szövet:/Rendszer állapotstatisztikái az állapotstatisztikákban. Csak akkor alkalmazható, ha az egészségügyi statisztikák nincsenek kizárva. Alapértelmezés szerint az állapotstatisztika csak a felhasználói alkalmazások statisztikáit tartalmazza, a Rendszer alkalmazásra vonatkozóadatokat nem.
+* Választható A csomópontok és a fürt eseményeinek kiértékeléséhez használt fürt állapotházirend.
+* Választható Az alkalmazás állapot-szabályzatának leképezése az alkalmazás-jegyzékfájl-házirendek felülbírálására használt állapotfigyelő házirendekkel.
+* Választható Olyan események, csomópontok és alkalmazások szűrése, amelyek megadják, hogy mely bejegyzéseket kell megadni, és az eredményben kell visszaadni (például hibák, vagy a figyelmeztetések és a hibák). A rendszer minden eseményt, csomópontot és alkalmazást használ az entitás összesített állapotának kiértékelésére, a szűrőtől függetlenül.
+* Választható Szűrő az állapotadatok kizárásához.
+* Választható Az állapot statisztikájában a háló:/rendszerállapot statisztikáit tartalmazó szűrő. Csak akkor alkalmazható, ha az állapot statisztikái nincsenek kizárva. Alapértelmezés szerint az állapot statisztikái csak a felhasználói alkalmazások statisztikáit tartalmazzák, nem a rendszeralkalmazást.
 
 ### <a name="api"></a>API
-A fürt állapotának `FabricClient` lehívásához hozzon létre egy és hívja meg a [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) metódust a **HealthManager en.**
+A fürt állapotának lekéréséhez `FabricClient` hozzon létre egy és hívja meg a [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) metódust a **HealthManager**.
 
 A következő hívás lekéri a fürt állapotát:
 
@@ -95,7 +95,7 @@ A következő hívás lekéri a fürt állapotát:
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync();
 ```
 
-A következő kód lekéri a fürt állapotát egy egyéni fürt állapotházirend és a csomópontok és alkalmazások szűrőihasználatával. Azt határozza meg, hogy az állapotstatisztikák tartalmazzák a fabric:/Rendszer statisztikák. Létrehozza [a ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription)programot, amely a bemeneti adatokat tartalmazza.
+A következő kód beolvassa a fürt állapotát egy egyéni fürt állapot-házirend és a csomópontok és alkalmazások szűrőinek használatával. Azt határozza meg, hogy az állapot statisztikái tartalmazzák a háló:/rendszer statisztikáit. Létrehozza a bemeneti adatokat tartalmazó [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription).
 
 ```csharp
 var policy = new ClusterHealthPolicy()
@@ -127,11 +127,11 @@ ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-A fürt állapotának lekért parancsmag a [Get-ServiceFabricClusterHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealth). Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
+A fürt állapotának beolvasására szolgáló parancsmag a [Get-ServiceFabricClusterHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealth). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
 
-A fürt állapota öt csomópont, a rendszeralkalmazás és a fabric:/WordCount a leírtak szerint konfigurálva.
+A fürt állapota öt csomópont, a Rendszeralkalmazás és a háló:/WordCount konfigurálva a leírtak szerint.
 
-A következő parancsmag leálla a fürt állapotát az alapértelmezett állapotházirendek használatával. Az összesített állapot figyelmeztetés, mert a fabric:/WordCount alkalmazás figyelmeztetés. Vegye figyelembe, hogy a nem megfelelő állapotú értékelések részletesen ismertetik az összesített állapotot kiváltó feltételeket.
+A következő parancsmag az alapértelmezett állapotházirendek használatával szerzi be a fürt állapotát. Az összesített állapot figyelmeztetés, mert a Fabric:/WordCount alkalmazás figyelmeztetésben van. Vegye figyelembe, hogy a nem kifogástalan állapotú értékelések részletesen ismertetik az összesített állapotot kiváltó feltételek részleteit.
 
 ```xml
 PS D:\ServiceFabric> Get-ServiceFabricClusterHealth
@@ -188,7 +188,7 @@ HealthStatistics        :
                           Application           : 0 Ok, 1 Warning, 0 Error
 ```
 
-A következő PowerShell-parancsmag leállatja a fürt állapotát egy egyéni alkalmazásházirend használatával. Szűri az eredményeket, hogy csak alkalmazásokat és csomópontokat kapjon hiba vagy figyelmeztetés esetén. Ennek eredményeképpen nem ad nak vissza csomópontokat, mivel mindegyik egészséges. Csak a fabric:/WordCount alkalmazás tiszteletben tartja az alkalmazások szűrőjét. Mivel az egyéni házirend határozza meg, hogy a figyelmeztetéseket a fabric:/WordCount alkalmazás hibáinak tekintsék, az alkalmazás kiértékelése hibás, és a fürt is.
+A következő PowerShell-parancsmag beolvassa a fürt állapotát egy egyéni alkalmazás-házirend használatával. Az eredményeket úgy szűri, hogy csak az alkalmazásokat és a csomópontokat kapja meg hiba vagy figyelmeztetés alapján. Ennek eredményeképpen a rendszer nem ad vissza csomópontokat, mivel azok kifogástalanok. Csak a Fabric:/WordCount alkalmazás veszi figyelembe az alkalmazások szűrőt. Mivel az egyéni házirend azt határozza meg, hogy a figyelmeztetések a Fabric:/WordCount alkalmazáshoz tartozó hibákként legyenek felszámítva, az alkalmazás hibát jelez, és így a fürt.
 
 ```powershell
 PS D:\ServiceFabric> $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
@@ -225,25 +225,25 @@ HealthEvents            : None
 ```
 
 ### <a name="rest"></a>REST
-A fürt állapotát [get-kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster) vagy [postai kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy) kaphatja meg, amely a szervezetben leírt állapotházirendeket tartalmaz.
+Lekérheti a fürt állapotát egy [Get-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster) vagy egy [post-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy) , amely tartalmazza a törzsben ismertetett állapotházirend-szabályzatokat is.
 
-## <a name="get-node-health"></a>A csomópont állapotának beszereznie
-Egy csomópontentitás állapotát adja vissza, és a csomóponton jelentett állapoteseményeket tartalmazza. Bemenet:
+## <a name="get-node-health"></a>Csomópont állapotának beolvasása
+Egy csomópont entitás állapotát adja vissza, és a csomóponton jelentett állapotú eseményeket tartalmazza. Bemenet:
 
-* [Kötelező] A csomópontot azonosító csomópontnév.
-* [Nem kötelező] Az állapot kiértékelésére használt fürtállapot-házirend-beállítások.
-* [Nem kötelező] Az események szűrői, amelyek meghatározzák, hogy mely bejegyzések érdekesek, és az eredményben vissza kell adni őket (például csak hibák, vagy figyelmeztetések és hibák egyaránt). Az összes esemény az entitás összesített állapotának kiértékelésére szolgál, függetlenül a szűrőtől.
+* Szükséges A csomópontot azonosító csomópont neve.
+* Választható Az állapot kiértékeléséhez használt fürt állapotházirend-beállításai.
+* Választható Olyan események szűrése, amelyek meghatározzák, hogy mely bejegyzések érdeklik, és melyeket kell visszaadni az eredményben (például csak hibák, vagy a figyelmeztetések és a hibák). A rendszer minden eseményt felhasznál az entitás összesített állapotának kiértékelésére, a szűrőtől függetlenül.
 
 ### <a name="api"></a>API
-Ha az API-n keresztül szeretné `FabricClient` lekérni a csomópont állapotát, hozzon létre egy és hívja meg a [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) metódust a HealthManager-en.
+A csomópont állapotának API-n keresztüli beszerzéséhez hozzon létre egy `FabricClient` és hívja meg a [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) metódust a HealthManager.
 
-A következő kód lekéri a megadott csomópontnév csomópont-állapotát:
+A következő kód beolvassa a csomópont állapotát a megadott csomópont neve számára:
 
 ```csharp
 NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(nodeName);
 ```
 
-A következő kód lekéri a megadott csomópontnév csomópont-állapotát, és a [NodeHealthQueryDescription-en](https://docs.microsoft.com/dotnet/api/system.fabric.description.nodehealthquerydescription)keresztül továbbítja az események szűrőjét és az egyéni házirendet:
+A következő kód beolvassa a csomópont állapotát a megadott csomópont neve számára, és az események szűrője és az egyéni házirend áthalad az [NodeHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.nodehealthquerydescription)használatával:
 
 ```csharp
 var queryDescription = new NodeHealthQueryDescription(nodeName)
@@ -256,8 +256,8 @@ NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(quer
 ```
 
 ### <a name="powershell"></a>PowerShell
-A csomópont állapotának leéséhez szükséges parancsmag a [Get-ServiceFabricNodeHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnodehealth). Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
-A következő parancsmag leállatja a csomópont állapotát az alapértelmezett állapotházirendek használatával:
+A csomópont állapotának lekéréséhez szükséges parancsmag a [Get-ServiceFabricNodeHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnodehealth). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
+A következő parancsmag az alapértelmezett állapotházirend használatával szerzi be a csomópont állapotát:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricNodeHealth _Node_1
@@ -279,7 +279,7 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 4:40:47 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-A következő parancsmag a fürt összes csomócsomójának állapotát kapja:
+A következő parancsmag a fürt összes csomópontjának állapotát lekéri:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricNode | Get-ServiceFabricNodeHealth | select NodeName, AggregatedHealthState | ft -AutoSize
@@ -294,26 +294,26 @@ _Node_0                     Ok
 ```
 
 ### <a name="rest"></a>REST
-A csomópont állapotát [get-kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node) vagy [postai kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy) kaphatja meg, amely a szervezetben leírt állapotházirendeket tartalmaz.
+Lekérheti a Node Health-t egy [Get-kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node) vagy egy [post-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy) , amely tartalmazza a törzsben ismertetett állapotházirend-szabályzatokat is.
 
-## <a name="get-application-health"></a>Alkalmazásállapotának beszereznie
-Egy alkalmazásentitás állapotát adja eredményül. Az üzembe helyezett alkalmazás és a szolgáltatás gyermekek állapotait tartalmazza. Bemenet:
+## <a name="get-application-health"></a>Alkalmazás állapotának beolvasása
+Egy alkalmazás entitásának állapotát adja vissza. Tartalmazza az üzembe helyezett alkalmazás és a szolgáltatás gyermekeinek állapotát. Bemenet:
 
-* [Kötelező] Az alkalmazást azonosító alkalmazásnév (URI).
-* [Nem kötelező] Az alkalmazás jegyzékfájl-házirendjének felülbírálásához használt alkalmazásállapot-házirend.
-* [Nem kötelező] Események, szolgáltatások és telepített alkalmazások szűrői, amelyek meghatározzák, hogy mely bejegyzések érdekesek, és az eredményben vissza kell adni őket (például csak hibák, vagy figyelmeztetések és hibák egyaránt). Minden esemény, szolgáltatás és üzembe helyezett alkalmazás az entitás összesített állapotának kiértékelésére szolgál, függetlenül a szűrőtől.
-* [Nem kötelező] Szűrő az állapotstatisztikák kizárásához. Ha nincs megadva, az állapotstatisztikák tartalmazzák az ok, figyelmeztetés és hibaszám az összes alkalmazás gyermek: szolgáltatások, partíciók, replikák, telepített alkalmazások és telepített szolgáltatáscsomagok.
+* Szükséges Az alkalmazást azonosító alkalmazás neve (URI).
+* Választható Az alkalmazás-jegyzékfájl-házirendek felülbírálására használt alkalmazás-állapotfigyelő házirend.
+* Választható Olyan események, szolgáltatások és központilag telepített alkalmazások szűrése, amelyek meghatározzák, hogy mely bejegyzések érdeklik, és melyeket kell visszaadni az eredményben (például csak hibák, vagy a figyelmeztetések és a hibák). A rendszer minden eseményt, szolgáltatást és központilag telepített alkalmazást használ az entitás összesített állapotának kiértékelésére, a szűrőtől függetlenül.
+* Választható Szűréssel kizárhatja az állapot statisztikáit. Ha nincs megadva, az állapot statisztikái közé tartozik az OK, a figyelmeztetés és a hibák száma az alkalmazás összes gyermeke számára: szolgáltatások, partíciók, replikák, telepített alkalmazások és telepített szervizcsomagok.
 
 ### <a name="api"></a>API
-Az alkalmazás állapotának `FabricClient` lehívásához hozzon létre egy és hívja meg a [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) metódust a HealthManager-en.
+Az alkalmazás állapotának lekéréséhez `FabricClient` hozzon létre egy és hívja meg a [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) metódust a HealthManager.
 
-A következő kód lekéri az alkalmazás állapotát a megadott alkalmazásnévhez (URI):
+A következő kód lekéri az alkalmazás állapotát a megadott alkalmazásnév (URI) számára:
 
 ```csharp
 ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplicationHealthAsync(applicationName);
 ```
 
-A következő kód beszerzi a megadott alkalmazásnév (URI) alkalmazásállapotát, az [ApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationhealthquerydescription)értéken megadott szűrőkkel és egyéni házirendekkel.
+A következő kód beolvassa a megadott alkalmazásnév (URI) alkalmazásának állapotát a [ApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationhealthquerydescription)használatával megadott szűrőkkel és egyéni házirendekkel.
 
 ```csharp
 HealthStateFilter warningAndErrors = HealthStateFilter.Error | HealthStateFilter.Warning;
@@ -342,9 +342,9 @@ ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplic
 ```
 
 ### <a name="powershell"></a>PowerShell
-Az alkalmazás állapotának lekért parancsmag a [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps). Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
+Az alkalmazás állapotának lekéréséhez szükséges parancsmag a [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
 
-A következő parancsmag a **fabric:/WordCount** alkalmazás állapotát adja vissza:
+A következő parancsmag a **Fabric:/WordCount** alkalmazás állapotát adja vissza:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth fabric:/WordCount
@@ -412,7 +412,7 @@ HealthStatistics                :
                                   DeployedApplication   : 5 Ok, 0 Warning, 0 Error
 ```
 
-A következő PowerShell-parancsmag az egyéni házirendekben halad át. Azt is szűri a gyermekek és események.
+A következő PowerShell-parancsmag egyéni házirendekben halad át. A gyermekeket és eseményeket is szűri.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth -ApplicationName fabric:/WordCount -ConsiderWarningAsError $true -ServicesFilter Error -EventsFilter Error -DeployedApplicationsFilter Error -ExcludeHealthStatistics
@@ -440,26 +440,26 @@ HealthEvents                    : None
 ```
 
 ### <a name="rest"></a>REST
-Az alkalmazás állapotát [get-kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application) vagy [postai kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy) kaphatja meg, amely a szervezetben leírt állapotházirendeket tartalmaz.
+Lekérheti az alkalmazás állapotát egy [Get-kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application) vagy egy [post-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy) , amely tartalmazza a törzsben ismertetett állapotházirend-szabályzatokat is.
 
-## <a name="get-service-health"></a>Szolgáltatás állapotának beszereznie
-Egy szolgáltatásentitás állapotát adja eredményül. Ez tartalmazza a partíció állapotát. Bemenet:
+## <a name="get-service-health"></a>Szolgáltatás állapotának beolvasása
+Egy szolgáltatás entitás állapotát adja vissza. Tartalmazza a partíció állapotát. Bemenet:
 
-* [Kötelező] A szolgáltatást azonosító szolgáltatásnév (URI).
-* [Nem kötelező] Az alkalmazás jegyzékfájl-házirend felülbírálásához használt alkalmazásállapot-házirend.
-* [Nem kötelező] Események és partíciók szűrői, amelyek meghatározzák, hogy mely bejegyzések érdekesek, és az eredményben vissza kell adni őket (például csak hibák, vagy figyelmeztetések és hibák egyaránt). Minden esemény és partíció az entitás összesített állapotának kiértékelésére szolgál, függetlenül a szűrőtől.
-* [Nem kötelező] Szűrő az állapotstatisztikák kizárásához. Ha nincs megadva, az állapotstatisztika a szolgáltatás összes partíciójának és replikájának ok, figyelmeztetés és hibaszámát jeleníti meg.
+* Szükséges A szolgáltatás azonosítására szolgáló szolgáltatás neve (URI).
+* Választható Az alkalmazás jegyzékfájl-házirendjének felülbírálására használt alkalmazás-állapotfigyelő házirend.
+* Választható Olyan események és partíciók szűrése, amelyek meghatározzák, hogy mely bejegyzéseket kell megadni, és az eredményben kell visszaadni (például hibák, vagy a figyelmeztetések és a hibák). Az összes esemény és partíció az entitás összesített állapotának kiértékelésére szolgál, a szűrőtől függetlenül.
+* Választható Szűrő az állapotadatok kizárásához. Ha nincs megadva, az állapot statisztikái a szolgáltatás összes partíciójának és replikájának az OK, a figyelmeztetés és a hibák számát mutatják.
 
 ### <a name="api"></a>API
-A szolgáltatás állapotának lekérni `FabricClient` az API-n keresztül, hozzon létre egy és hívja meg a [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) metódust a HealthManager.To get healthhealthasync method on its HealthManager.
+A szolgáltatás állapotának API-n keresztüli lekéréséhez hozzon létre egy `FabricClient` , és hívja meg a [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) metódust a HealthManager.
 
-A következő példa egy megadott szolgáltatásnévvel (URI) rendelkező szolgáltatás állapotát kapja meg:
+A következő példa egy szolgáltatás állapotának beolvasása a megadott szolgáltatásnév (URI) szerint:
 
 ```csharp
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
-A következő kód beszerzi a szolgáltatás állapotát a megadott szolgáltatásnévhez (URI), szűrőket és egyéni házirendet adva meg a [ServiceHealthQueryDescription-en](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicehealthquerydescription)keresztül:
+A következő kód beolvassa a megadott szolgáltatásnév (URI) szolgáltatás állapotát, a szűrők és az egyéni szabályzatok megadását a [ServiceHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicehealthquerydescription)használatával:
 
 ```csharp
 var queryDescription = new ServiceHealthQueryDescription(serviceName)
@@ -472,9 +472,9 @@ ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-A szolgáltatás állapotának lekért parancsmaga [get-servicefabricservicehealth.](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicehealth) Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
+A szolgáltatás állapotának lekéréséhez szükséges parancsmag a [Get-ServiceFabricServiceHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicehealth). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
 
-A következő parancsmag az alapértelmezett állapotházirendek használatával kapja meg a szolgáltatás állapotát:
+A következő parancsmag a szolgáltatás állapotát alapértelmezett állapot-házirendek használatával szerzi be:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricServiceHealth -ServiceName fabric:/WordCount/WordCountService
@@ -512,27 +512,27 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-A szolgáltatás állapotát [get-kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service) vagy [postai kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy) kaphatja meg, amely a szervezetben leírt állapotházirendeket tartalmaz.
+Lekérheti a szolgáltatás állapotát egy [Get-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service) vagy egy [post-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy) , amely tartalmazza a törzsben ismertetett állapotházirend-szabályzatokat is.
 
-## <a name="get-partition-health"></a>Partíció állapotának beszereznie
-Egy partícióentitás állapotát adja vissza. A replika állapotok. Bemenet:
+## <a name="get-partition-health"></a>Partíció állapotának beolvasása
+Egy partíciós entitás állapotát adja vissza. Tartalmazza a replika állapotait. Bemenet:
 
-* [Kötelező] A partíciót azonosítót (GUID) azonosító, amely azonosítja a partíciót.
-* [Nem kötelező] Az alkalmazás jegyzékfájl-házirend felülbírálásához használt alkalmazásállapot-házirend.
-* [Nem kötelező] Események és kópiák szűrői, amelyek meghatározzák, hogy mely bejegyzések érdekesek, és az eredményben vissza kell adni őket (például csak hibák, vagy figyelmeztetések és hibák egyaránt). Az összes esemény és kópia az entitás összesített állapotának kiértékelésére szolgál, függetlenül a szűrőtől.
-* [Nem kötelező] Szűrő az állapotstatisztikák kizárásához. Ha nincs megadva, az állapotstatisztikák azt mutatják, hogy hány replikák rendben van, figyelmeztetés és hiba állapotok.
+* Szükséges A partíciót azonosító partíció-azonosító (GUID).
+* Választható Az alkalmazás jegyzékfájl-házirendjének felülbírálására használt alkalmazás-állapotfigyelő házirend.
+* Választható Olyan események és replikák szűrése, amelyek meghatározzák, hogy mely bejegyzéseket kell megadni, és az eredményben kell visszaadni (például hibák, vagy a figyelmeztetések és a hibák). A rendszer minden eseményt és replikát használ az entitás összesített állapotának kiértékelésére, a szűrőtől függetlenül.
+* Választható Szűrő az állapotadatok kizárásához. Ha nincs megadva, az állapot statisztikái megmutatják, hány replika van az OK, a figyelmeztetés és a hiba állapotában.
 
 ### <a name="api"></a>API
-Az API-n keresztüli partícióállapotának lehívásához hozzon létre egy `FabricClient` és hívja meg a [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) metódust a HealthManager en. Nem kötelező paraméterek megadásához hozza létre a [PartitionHealthQueryDescription metódust.](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription)
+A partíciós állapot API-n keresztüli beszerzéséhez hozzon létre egy `FabricClient` és hívja meg a [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) metódust a HealthManager. Ha nem kötelező paramétereket szeretne megadni, hozzon létre [PartitionHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription).
 
 ```csharp
 PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionHealthAsync(partitionId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-A partíció állapotának lekért parancsmaga [get-ServiceFabricPartitionHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricpartitionhealth). Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
+A partíció állapotának lekéréséhez szükséges parancsmag a [Get-ServiceFabricPartitionHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricpartitionhealth). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
 
-A következő parancsmag a háló összes partíciójának állapotát **kapja:/WordCount/WordCountService** szolgáltatás, és kiszűri a replika állapotát:
+A következő parancsmag beolvassa a **Fabric:/WordCount/wordcountservice partícióinak listáját** szolgáltatás összes partíciójának állapotát, és kiszűri a replika állapotának állapotát:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None
@@ -604,26 +604,26 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-A partíció állapotát [get-kérelemmel](/rest/api/servicefabric/sfclient-api-getpartitionhealth) vagy [postai kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy) kaphatja meg, amely a szervezetben leírt állapotházirendeket tartalmaz.
+Lekérheti a partíció állapotát egy [Get-kéréssel](/rest/api/servicefabric/sfclient-api-getpartitionhealth) vagy egy [post-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy) , amely tartalmazza a törzsben ismertetett állapotházirend-szabályzatokat is.
 
-## <a name="get-replica-health"></a>A replika állapotának beszereznie
-Egy állapotalapú szolgáltatásreplika vagy állapotmentes szolgáltatáspéldány állapotát adja vissza. Bemenet:
+## <a name="get-replica-health"></a>Replika állapotának beolvasása
+Állapot-nyilvántartó szolgáltatás replikájának vagy állapot nélküli szolgáltatási példányának állapotát adja vissza. Bemenet:
 
-* [Kötelező] A kópiát azonosítót azonosító partícióazonosító (GUID) és replikaazonosító.
-* [Nem kötelező] Az alkalmazás állapotházirend-házirendjének az alkalmazásjegyzék-házirendek felülbírálásához használt paraméterek.
-* [Nem kötelező] Az események szűrői, amelyek meghatározzák, hogy mely bejegyzések érdekesek, és az eredményben vissza kell adni őket (például csak hibák, vagy figyelmeztetések és hibák egyaránt). Az összes esemény az entitás összesített állapotának kiértékelésére szolgál, függetlenül a szűrőtől.
+* Szükséges A replikát azonosító partíció-azonosító (GUID) és replika-azonosító.
+* Választható Az alkalmazás-jegyzékfájlra vonatkozó szabályzatok felülbírálásához használt alkalmazás-állapotfigyelő paraméterek.
+* Választható Olyan események szűrése, amelyek meghatározzák, hogy mely bejegyzések érdeklik, és melyeket kell visszaadni az eredményben (például csak hibák, vagy a figyelmeztetések és a hibák). A rendszer minden eseményt felhasznál az entitás összesített állapotának kiértékelésére, a szűrőtől függetlenül.
 
 ### <a name="api"></a>API
-A replika állapotának az `FabricClient` API-n keresztül, hozzon létre egy és hívja meg a [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) metódust a HealthManager. Speciális paraméterek megadásához használja a [ReplicaHealthQueryDescription metódust.](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription)
+A replika állapotának API-n keresztüli lekéréséhez hozzon létre egy `FabricClient` , és hívja meg a [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) metódust a HealthManager. A speciális paraméterek megadásához használja a [ReplicaHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription).
 
 ```csharp
 ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthAsync(partitionId, replicaId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-A replika állapotának lekért parancsmaga a [Get-ServiceFabricReplicaHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricreplicahealth). Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
+A replika állapotának beolvasására szolgáló parancsmag a [Get-ServiceFabricReplicaHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricreplicahealth). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
 
-A következő parancsmag a szolgáltatás összes partíciójának elsődleges replika állapotát kapja meg:
+A következő parancsmag lekéri az elsődleges replika állapotát a szolgáltatás összes partíciója esetében:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
@@ -647,18 +647,18 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-A replika állapotát [get-kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica) vagy [postai kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy) kaphatja meg, amely a szervezetben leírt állapotházirendeket tartalmaz.
+A replika állapota Get- [kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica) vagy [post-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy) szerezhető be, amely tartalmazza a törzsben leírt állapot-szabályzatokat.
 
-## <a name="get-deployed-application-health"></a>Telepített alkalmazás állapotának beszereznie
-Egy csomópontentitásra telepített alkalmazás állapotát adja vissza. Az üzembe helyezett szolgáltatáscsomag állapotokat tartalmazza. Bemenet:
+## <a name="get-deployed-application-health"></a>Üzembe helyezett alkalmazás állapotának beolvasása
+Egy csomópont entitáson üzembe helyezett alkalmazás állapotát adja vissza. Tartalmazza a telepített szervizcsomag állapotait. Bemenet:
 
-* [Kötelező] Az alkalmazás neve (URI) és a csomópont neve (karakterlánc), amely azonosítja az üzembe helyezett alkalmazást.
-* [Nem kötelező] Az alkalmazás jegyzékfájl-házirendjének felülbírálásához használt alkalmazásállapot-házirend.
-* [Nem kötelező] Események és telepített szolgáltatáscsomagok szűrői, amelyek meghatározzák, hogy mely bejegyzések érdekesek, és az eredményben vissza kell adni őket (például csak hibák, vagy figyelmeztetések és hibák egyaránt). Minden esemény és üzembe helyezett szolgáltatáscsomagok az entitás összesített állapotának kiértékelésére szolgálnak, függetlenül a szűrőtől.
-* [Nem kötelező] Szűrő az állapotstatisztikák kizárásához. Ha nincs megadva, az állapotstatisztikák az üzembe helyezett szolgáltatáscsomagok számát mutatják rendben, figyelmeztetésben és hibaállapotban.
+* Szükséges Az alkalmazás neve (URI) és a csomópont neve (karakterlánc), amely az üzembe helyezett alkalmazást azonosítja.
+* Választható Az alkalmazás-jegyzékfájl-házirendek felülbírálására használt alkalmazás-állapotfigyelő házirend.
+* Választható Olyan események és központilag telepített szervizcsomagok szűrése, amelyek meghatározzák, hogy mely bejegyzések érdeklik, és vissza kell őket adni az eredményben (például hibák, vagy a figyelmeztetések és a hibák). Az összes eseményt és központilag telepített szervizcsomagot a rendszer az entitás összesített állapotának kiértékelésére használja, a szűrőtől függetlenül.
+* Választható Szűrő az állapotadatok kizárásához. Ha nincs megadva, az állapot statisztikái a telepített szervizcsomagok számát jelenítik meg az OK, a figyelmeztetés és a hiba állapotában.
 
 ### <a name="api"></a>API
-Az API-n keresztül egy csomóponton telepített alkalmazás állapotának `FabricClient` lehívásához hozzon létre egy és hívja meg a [GetDeployedApplicationHealthAsync metódust](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) a HealthManageren. Nem kötelező paraméterek megadásához használja [a DeployedApplicationHealthQueryDescription metódust.](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription)
+Egy csomóponton az API-n keresztül telepített alkalmazások állapotának lekéréséhez hozzon létre `FabricClient` egy, és hívja meg a [GetDeployedApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) metódust a HealthManager. A választható paraméterek megadásához használja a [DeployedApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription).
 
 ```csharp
 DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedApplicationHealthAsync(
@@ -666,9 +666,9 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Az üzembe helyezett alkalmazás állapotának lekért parancsmag a [Get-ServiceFabricDeployedApplicationHealth.](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával. Ha meg szeretné tudni, hogy egy alkalmazás hol van telepítve, futtassa a [Get-ServiceFabricApplicationHealth futtatása,](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) és tekintse meg az üzembe helyezett alkalmazás gyermekek.
+Az üzembe helyezett alkalmazás állapotának beolvasására szolgáló parancsmag a [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával. Ha szeretné megtudni, hogy az alkalmazás hol van telepítve, futtassa a [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) , és tekintse meg az üzembe helyezett alkalmazások gyermekeit.
 
-A következő parancsmag a **_Node_2-ra**telepített **háló:/WordCount** alkalmazás állapotát kapja.
+A következő parancsmag beolvassa a **_Node_2**-on üzembe helyezett **Fabric:/WordCount** alkalmazás állapotát.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_0
@@ -706,17 +706,17 @@ HealthStatistics                   :
 ```
 
 ### <a name="rest"></a>REST
-Az üzembe helyezett alkalmazás állapotát [get-kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application) vagy [postai kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy) kaphatja meg, amely a szervezetben leírt állapotházirendeket tartalmaz.
+A üzembe helyezett alkalmazás állapota [Get-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application) vagy [post-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy) szerezhető be, amely tartalmazza a törzsben ismertetett állapotházirend-szabályzatokat.
 
-## <a name="get-deployed-service-package-health"></a>Telepített szolgáltatáscsomag állapotának beszereznie
-Egy üzembe helyezett szolgáltatáscsomag-entitás állapotát adja vissza. Bemenet:
+## <a name="get-deployed-service-package-health"></a>Üzembe helyezett szolgáltatáscsomag állapotának beolvasása
+Egy üzembe helyezett szolgáltatáscsomag entitás állapotát adja vissza. Bemenet:
 
-* [Kötelező] Az alkalmazás neve (URI), csomópont neve (karakterlánc) és a szolgáltatásjegyzék neve (karakterlánc), amely azonosítja az üzembe helyezett szolgáltatáscsomagot.
-* [Nem kötelező] Az alkalmazás jegyzékfájl-házirend felülbírálásához használt alkalmazásállapot-házirend.
-* [Nem kötelező] Az események szűrői, amelyek meghatározzák, hogy mely bejegyzések érdekesek, és az eredményben vissza kell adni őket (például csak hibák, vagy figyelmeztetések és hibák egyaránt). Az összes esemény az entitás összesített állapotának kiértékelésére szolgál, függetlenül a szűrőtől.
+* Szükséges Az alkalmazás neve (URI), a csomópont neve (karakterlánc) és a szolgáltatás jegyzékfájljának neve (karakterlánc), amely a telepített szervizcsomagot azonosítja.
+* Választható Az alkalmazás jegyzékfájl-házirendjének felülbírálására használt alkalmazás-állapotfigyelő házirend.
+* Választható Olyan események szűrése, amelyek meghatározzák, hogy mely bejegyzések érdeklik, és melyeket kell visszaadni az eredményben (például csak hibák, vagy a figyelmeztetések és a hibák). A rendszer minden eseményt felhasznál az entitás összesített állapotának kiértékelésére, a szűrőtől függetlenül.
 
 ### <a name="api"></a>API
-Az üzembe helyezett szolgáltatáscsomag állapotának lekérni az `FabricClient` API-n keresztül, hozzon létre egy és hívja meg a [GetDeployedServicePackageHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) metódust a HealthManager en. Nem kötelező paraméterek megadásához használja [a DeployedServicePackageHealthQueryDescription metódust.](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription)
+A telepített szervizcsomagok API-n keresztüli állapotának lekéréséhez hozzon `FabricClient` létre egy, és hívja meg a [GetDeployedServicePackageHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) metódust a saját HealthManager. A választható paraméterek megadásához használja a [DeployedServicePackageHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription).
 
 ```csharp
 DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeployedServicePackageHealthAsync(
@@ -724,9 +724,9 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ```
 
 ### <a name="powershell"></a>PowerShell
-Az üzembe helyezett szolgáltatáscsomag állapotának lekért parancsmag a [Get-ServiceFabricDeployedServicePackageHealth.](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth) Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával. Az alkalmazások üzembe helyezésének helyének megtekintéséhez futtassa a [Get-ServiceFabricApplicationHealth futtatást,](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) és tekintse meg a telepített alkalmazásokat. Tekintse meg, hogy mely szolgáltatáscsomagok vannak egy alkalmazásban, tekintse meg a [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) kimenetben telepített szolgáltatáscsomag-gyermekeket.
+Az üzembe helyezett szervizcsomag állapotának beolvasására szolgáló parancsmag a [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával. Ha szeretné megtekinteni, hogy az alkalmazás hol van telepítve, futtassa a [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) , és tekintse meg a telepített alkalmazásokat. Ha szeretné megtekinteni, hogy mely szervizcsomagok szerepelnek egy alkalmazásban, tekintse meg a [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) kimenetben található telepített szervizcsomagok gyermekeket.
 
-A következő parancsmag a _Node_2-ra telepített **fabric:/WordCount** alkalmazás **WordCountServicePkg** szolgáltatáscsomagjának állapotát **kapja meg.** Az entitás **System.Hosting** jelentésekkel rendelkezik a sikeres szolgáltatáscsomag- és belépésipont-aktiváláshoz, valamint a sikeres szolgáltatástípus-regisztrációhoz.
+A következő parancsmag beolvassa a **_Node_2**-on üzembe helyezett **Fabric:/WordCount** alkalmazás **WordCountServicePkg** szolgáltatási csomagjának állapotát. Az entitás rendelkezik **System. hosting** jelentésekkel a sikeres Service-Package és a belépési pont aktiválásához, valamint a sikeres szolgáltatás típusú regisztrációhoz.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
@@ -776,44 +776,44 @@ HealthEvents               :
 ```
 
 ### <a name="rest"></a>REST
-Az üzembe helyezett szolgáltatáscsomag állapota [get-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package) vagy [postai kéréssel,](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy) amely a szervezetben leírt állapotházirendeket tartalmaz.
+A központilag telepített szervizcsomag állapota [Get-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package) vagy post- [kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy) szerezhető be, amely tartalmazza a törzsben ismertetett állapotházirend-szabályzatokat.
 
-## <a name="health-chunk-queries"></a>Állapotadattömb-lekérdezések
-Az állapotadattömb-lekérdezések bemeneti szűrőkönként többszintű fürtgyermekeket adhatnak vissza (rekurzív módon). Támogatja a fejlett szűrőket, amelyek sok rugalmasságot tesznek lehetővé a visszaadandó gyermekek kiválasztásában. A szűrők a gyermekeket az egyedi azonosító vagy más csoportazonosítók és/vagy állapotok alapján adhatják meg. Alapértelmezés szerint nem gyermekek szerepelnek, szemben az egészségügyi parancsokat, amelyek mindig tartalmazzák az első szintű gyermekek.
+## <a name="health-chunk-queries"></a>Állapotadatok lekérdezése
+Az állapotadatok lekérdezései többszintű fürthöz tartozó gyermekeket (rekurzív módon) adhatnak vissza bemeneti szűrőkként. Olyan speciális szűrőket támogat, amelyek nagy rugalmasságot biztosítanak a visszaadott gyermekek kiválasztásában. A szűrők megadhatnak gyermekeket az egyedi azonosító vagy más csoportazonosító és/vagy állapotadatok alapján. Alapértelmezés szerint a rendszer nem tartalmaz gyermekeket, ellentétben az olyan állapot-parancsokkal, amelyek mindig tartalmazzák az első szintű gyermekeket.
 
-Az [állapotlekérdezések](service-fabric-view-entities-aggregated-health.md#health-queries) csak a megadott entitás első szintű gyermekeit adják vissza a szükséges szűrők szerint. Ahhoz, hogy a gyermekek gyermekei, meg kell hívnia további egészségügyi API-k minden egyes adottentitás. Hasonlóképpen, adott entitások állapotának lekérni, meg kell hívnia egy-egy állapot API-t minden egyes kívánt entitás. Az adattömblekérdezés speciális szűrése lehetővé teszi, hogy több fontos elemet kérjen egy lekérdezésben, minimalizálva az üzenetek méretét és az üzenetek számát.
+Az [állapot-lekérdezések](service-fabric-view-entities-aggregated-health.md#health-queries) csak a megadott entitás első szintű gyermekeit adják vissza a szükséges szűrők alapján. A gyermekek gyermekeinek beszerzéséhez további Health API-kat kell meghívnia minden fontos entitáshoz. Hasonlóképpen, az egyes entitások állapotának lekéréséhez minden egyes kívánt entitáshoz meg kell hívnia egy Health API-t. A többrészes lekérdezés speciális szűrése lehetővé teszi, hogy több érdekes elemet kérjen egy lekérdezésben, minimalizálva az üzenetek méretét és számát.
 
-Az adattömblekérdezés értéke az, hogy egy hívásban több fürtentitás (potenciálisan a szükséges legfelső szintű root-tól kezdődő összes fürtentitás) állapotának lehívása érhető el. Összetett állapotlekérdezést is kifejezésre juttathat, például:
+Az adattömbök lekérdezésének értéke az, hogy az adott hívásban megadhatja, hogy a fürt több entitása (esetleg az összes, a szükséges gyökértől kezdődően a fürt entitása) állapotú legyen. Összetett állapot-lekérdezéseket is használhat, például:
 
-* Csak a hibás alkalmazásokat adja vissza, és ezekhez az alkalmazásokhoz az összes figyelmeztetési vagy hibai szolgáltatást tartalmazza. A visszaküldött szolgáltatások, tartalmazza az összes partíciót.
-* Csak négy alkalmazás állapotát adja vissza, a nevükkel megadva.
-* Csak a kívánt alkalmazástípus alkalmazásainak állapotát adja vissza.
-* Az összes üzembe helyezett entitás visszaadása egy csomóponton. Visszaadja az összes alkalmazást, a megadott csomóponton telepített összes telepített alkalmazást és az adott csomóponton telepített összes üzembe helyezett szolgáltatáscsomagot.
-* Az összes kópia hibás an- Az összes alkalmazást, szolgáltatást, partíciót és csak hibás replikát ad vissza.
-* Az összes alkalmazás visszaadása. Egy adott szolgáltatás esetén adja meg az összes partíciót.
+* Csak a hibás alkalmazásokat adja vissza, és ezeknél az alkalmazásoknál figyelmeztetés vagy hiba esetén az összes szolgáltatás szerepel. A visszaadott szolgáltatások esetében adja meg az összes partíciót.
+* Csak négy alkalmazás állapotát adja vissza, nevükben megadva.
+* Csak a kívánt alkalmazás típusú alkalmazások állapotának visszaadása.
+* Az összes telepített entitás visszaadása egy csomóponton. Az összes alkalmazást, a megadott csomóponton lévő összes telepített alkalmazást és a csomóponton lévő összes telepített szervizcsomagot adja vissza.
+* A hiba összes replikájának visszaadása. Az összes alkalmazást, szolgáltatást, partíciót és csak replikát adja vissza hibásként.
+* Minden alkalmazás visszaadása. Egy adott szolgáltatás esetében adja meg az összes partíciót.
 
-Jelenleg az állapottömb lekérdezés csak a fürtentitás hoz elérhető. Egy fürt állapotadattömböt ad vissza, amely a következőket tartalmazza:
+Jelenleg az állapotadatok lekérdezése csak a fürt entitására van kitéve. Egy, a fürt állapotát tartalmazó adathalmazt ad vissza, amely a következőket tartalmazza:
 
-* A fürt összesített állapot.
-* A bemeneti szűrőket tiszteletben író csomópontok állapotadattömbje.
-* A bemeneti szűrőket tiszteletben álló alkalmazások állapotadattömbje. Minden alkalmazás állapotadattömb tartalmaz egy adattömblista az összes szolgáltatást, amely tiszteletben tartja a bemeneti szűrők és egy adattömblista az összes telepített alkalmazások, amelyek tiszteletben tartják a szűrőket. Ugyanez vonatkozik a gyermekek a szolgáltatások és a telepített alkalmazások. Ily módon a fürt összes entitása potenciálisan visszaadható, ha kérik, hierarchikus módon.
+* A fürt összesített állapotának állapota.
+* A bemeneti szűrőket tiszteletben tartó csomópontok állapot-összedarabolási listája.
+* A bemeneti szűrőket tiszteletben tartó alkalmazások állapotának adathalmazának listája. Minden egyes alkalmazás állapot-adathalmaz tartalmaz egy adathalmaz-listát a bemeneti szűrőket és a szűrőket tiszteletben tartó összes telepített alkalmazással rendelkező összes szolgáltatással. Ugyanez a szolgáltatások és az üzembe helyezett alkalmazások gyermekei esetében is. Így a fürtben lévő összes entitást, ha szükséges, hierarchikusan vissza lehet adni.
 
-### <a name="cluster-health-chunk-query"></a>Fürt állapotadattömblekérdezése
-A fürtentitás állapotát adja vissza, és tartalmazza a szükséges gyermekek hierarchikus állapotrészei. Bemenet:
+### <a name="cluster-health-chunk-query"></a>Fürt állapotának adathalmazának lekérdezése
+A fürt entitásának állapotát adja vissza, és tartalmazza a szükséges gyermekek hierarchikus állapotának adathalmazait. Bemenet:
 
-* [Nem kötelező] A csomópontok és a fürtesemények kiértékeléséhez használt fürtállapot-házirend.
-* [Nem kötelező] Az alkalmazás állapotházirend-leképezése az alkalmazásjegyzék-házirendek felülbírálásához használt állapotházirendekkel.
-* [Nem kötelező] A csomópontok és alkalmazások szűrői, amelyek meghatározzák, hogy mely bejegyzések érdekesek, és az eredményt vissza kell adni. A szűrők egy entitásra/entitáscsoportra vonatkoznak, vagy az adott szinten lévő összes entitásra vonatkoznak. A szűrők listája tartalmazhat egy általános szűrőt és/vagy szűrőket a lekérdezés által visszaadott részletes entitások adott azonosítóihoz. Ha üres, a gyermekek alapértelmezés szerint nem kerülnek visszaadásra.
-  További információ a szűrőkről a [NodeHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.nodehealthstatefilter) és [az ApplicationHealthStateFilter oldalon.](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthstatefilter) Az alkalmazásszűrők rekurzív módon megadhatják a speciális szűrőket a gyermekek számára.
+* Választható A csomópontok és a fürt eseményeinek kiértékeléséhez használt fürt állapotházirend.
+* Választható Az alkalmazás állapot-szabályzatának leképezése az alkalmazás-jegyzékfájl-házirendek felülbírálására használt állapotfigyelő házirendekkel.
+* Választható Azok a csomópontok és alkalmazások szűrői, amelyek meghatározzák, hogy mely bejegyzések érdeklik, és melyeket vissza kell adni az eredményben. A szűrők az entitások/csoportok csoportjaira vonatkoznak, vagy az adott szinten lévő összes entitásra érvényesek. A szűrők listája egy általános szűrőt és/vagy szűrőket tartalmazhat a lekérdezés által visszaadott, adott azonosítók esetében. Ha üres, a rendszer alapértelmezés szerint nem adja vissza a gyermekeket.
+  További információ a szűrőkről: [NodeHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.nodehealthstatefilter) és [ApplicationHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthstatefilter). Az alkalmazás szűrőinek rekurzív módon adhatók meg speciális szűrők a gyermekekhez.
 
-Az adattömb eredménye tartalmazza a szűrőket tiszteletben lévő gyermekeket.
+Az adattömb eredménye a szűrőket figyelembe vevő gyermekeket is tartalmazza.
 
-Jelenleg az adattömb lekérdezés nem ad vissza nem megfelelő állapotú kiértékelések vagy entitásesemények. Ez a további információ a meglévő fürt állapotlekérdezés használatával szerezhető be.
+Az adathalmaz-lekérdezés jelenleg nem ad vissza nem megfelelő állapotú értékeléseket vagy entitási eseményeket. A meglévő fürt állapot-lekérdezéssel további információk szerezhetők be.
 
 ### <a name="api"></a>API
-Fürt állapotadattömbjének `FabricClient` lehívásához hozzon létre egy és hívja meg a [GetClusterHealthChunkAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) metódust a **HealthManager en.** A [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) az állapotházirendek és a speciális szűrők leírására szolgál.
+A fürt állapotának lekéréséhez hozzon létre egy `FabricClient` és hívja meg a [GetClusterHealthChunkAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) metódust a **HealthManager**. Az [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) átadhatja az Állapotházirendek és a speciális szűrők leírására.
 
-A következő kód leáll a fürt állapotadattömbspeciális szűrőkkel.
+A következő kód speciális szűrőkkel beolvassa a fürt állapotának adathalmazát.
 
 ```csharp
 var queryDescription = new ClusterHealthChunkQueryDescription();
@@ -857,9 +857,9 @@ var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDe
 ```
 
 ### <a name="powershell"></a>PowerShell
-A fürt állapotának lekért parancsmag a [Get-ServiceFabricClusterChunkHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealthchunk). Először csatlakozzon a fürthöz a [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
+A fürt állapotának beolvasására szolgáló parancsmag a [Get-ServiceFabricClusterChunkHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealthchunk). Először kapcsolódjon a fürthöz a [Kapcsolódás-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag használatával.
 
-A következő kód csak akkor kap csomópontokat, ha azok a hiba, kivéve egy adott csomópont, amely mindig vissza kell adni.
+A következő kód csak akkor kapja meg a csomópontokat, ha a hiba egy adott csomópont esetében, amelyet mindig vissza kell adni.
 
 ```xml
 PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
@@ -885,7 +885,7 @@ NodeHealthStateChunks        :
 ApplicationHealthStateChunks : None
 ```
 
-A következő parancsmag leveszi a fürttömbalkalmazás-szűrőkkel.
+A következő parancsmag beolvassa a fürt adathalmazát az alkalmazás szűrőinek használatával.
 
 ```xml
 PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
@@ -951,7 +951,7 @@ ApplicationHealthStateChunks :
                                         HealthState           : Error
 ```
 
-A következő parancsmag visszaadja az összes üzembe helyezett entitást egy csomóponton.
+A következő parancsmag az összes telepített entitást visszaadja egy csomóponton.
 
 ```xml
 PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
@@ -1007,54 +1007,54 @@ ApplicationHealthStateChunks :
 ```
 
 ### <a name="rest"></a>REST
-A fürt állapotadat-egy [GET-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks) vagy egy [POST-kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster) kaphat, amely a szervezetben ismertetett állapotházirendeket és speciális szűrőket tartalmaz.
+Lekérheti a fürt állapotának részleteit egy [Get-kérelemmel](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks) vagy egy [post-kéréssel](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster) , amely tartalmazza a törzsben ismertetett állapotházirend-és speciális szűrőket is.
 
 ## <a name="general-queries"></a>Általános lekérdezések
-Az általános lekérdezések adott típusú Service Fabric-entitások listáját adják vissza. Az API-n keresztül (a **FabricClient.QueryManager**metódusain keresztül), a PowerShell-parancsmagok és a REST segítségével vannak elérhetővé tenni. Ezek a lekérdezések több összetevő allekérdezéseit összesítik. Ezek közül az egyik a [health store,](service-fabric-health-introduction.md#health-store)amely feltölti az összesített állapot minden lekérdezés eredménye.  
+Az általános lekérdezések egy adott típusú Service Fabric entitások listáját adják vissza. Ezek az API-n keresztül érhetők el (a **FabricClient. QueryManager**metódusokon keresztül), a PowerShell-parancsmagok és a REST használatával. Ezek a lekérdezések több összetevőből összesítik az allekérdezéseket. Ezek közül az egyik az a [Health Store](service-fabric-health-introduction.md#health-store), amely az egyes lekérdezési eredmények összesített állapotát tölti fel.  
 
 > [!NOTE]
-> Az általános lekérdezések az entitás összesített állapotát adják vissza, és nem tartalmaznak gazdag állapotadatokat. Ha egy entitás nem kifogástalan állapotú, az állapotlekérdezések nyomon követésével az összes egészségügyi információkat, beleértve az eseményeket, a gyermek állapota és a nem megfelelő állapotok.
+> Az általános lekérdezések az entitás összesített állapotát adják vissza, és nem tartalmaznak Rich Health adatokat. Ha egy entitás nem kifogástalan állapotú, nyomon követheti a Health-lekérdezéseket, és lekérheti az összes állapotadatokat, beleértve az eseményeket, a gyermek állapotot és a nem megfelelő állapotú értékeléseket.
 >
 >
 
-Ha az általános lekérdezések egy entitás ismeretlen állapotának visszaadása, lehetséges, hogy a health store nem rendelkezik teljes adatokkal az entitásról. Az is lehetséges, hogy a health Store-ra irányuló segédlekérdezés nem volt sikeres (például kommunikációs hiba történt, vagy az állapottároló takarta). Kövesse nyomon az entitás állapotlekérdezését. Ha a segédlekérdezés átmeneti hibákat, például hálózati problémákat észlelt, ez a nyomon követési lekérdezés sikeres lehet. Azt is adhat további részleteket a health Store arról, hogy miért az entitás nincs kitéve.
+Ha az általános lekérdezések ismeretlen állapotot adnak vissza egy entitáshoz, előfordulhat, hogy az állapotfigyelő nem rendelkezik teljes adattal az entitásról. Az is előfordulhat, hogy az állapotadatok allekérdezése nem volt sikeres (például kommunikációs hiba történt, vagy az állapotfigyelő eszköz szabályozása megtörtént). Kövesse az entitás állapot-lekérdezését. Ha az allekérdezés átmeneti hibákba ütközött, például hálózati problémákba ütközik, akkor ez a követő lekérdezés sikeres lehet. Emellett további részleteket is megtudhat az Health áruházból arról, hogy az entitás miért nem érhető el.
 
-Az entitások **HealthState-et** tartalmazó lekérdezései a következők:
+Az entitások **HealthState** tartalmazó lekérdezések a következők:
 
-* Csomópontlista: A fürt (lapozott) listacsomópontjait adja eredményül.
-  * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
+* Csomópontok listája: a fürt listájának csomópontjait adja vissza (lapozva).
+  * API: [FabricClient. QueryClient. GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
   * PowerShell: Get-ServiceFabricNode
-* Alkalmazáslista: A fürtben lévő alkalmazások listáját adja eredményül (lapozva).
-  * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
+* Alkalmazások listája: a fürtben található alkalmazások listáját adja vissza (lapozva).
+  * API: [FabricClient. QueryClient. GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
   * PowerShell: Get-ServiceFabricApplication
-* Szolgáltatáslista: Egy alkalmazás (lapozott) szolgáltatásainak listáját adja eredményül.
-  * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
+* Szolgáltatások listája: egy alkalmazásban található szolgáltatások listáját adja vissza (lapozható).
+  * API: [FabricClient. QueryClient. GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
   * PowerShell: Get-ServiceFabricService
-* Partíciólista: Egy szolgáltatás partícióinak listáját adja vissza (lapozott).
-  * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
+* Partíciók listája: egy szolgáltatásban található partíciók listáját adja vissza.
+  * API: [FabricClient. QueryClient. GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
   * PowerShell: Get-ServiceFabricPartition
-* Replikalista: Egy partícióreplikák listáját adja vissza (lapozott).
-  * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
+* Replika listája: egy partíció replikáinak listáját adja vissza (lapozható).
+  * API: [FabricClient. QueryClient. GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
   * PowerShell: Get-ServiceFabricReplica
-* Telepített alkalmazáslista: A csomóponton telepített alkalmazások listáját adja vissza.
-  * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
+* Telepített alkalmazások listája: a csomóponton telepített alkalmazások listáját adja vissza.
+  * API: [FabricClient. QueryClient. GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
   * PowerShell: Get-ServiceFabricDeployedApplication
-* Telepített szolgáltatáscsomagok listája: Egy telepített alkalmazásban lévő szolgáltatáscsomagok listáját adja vissza.
-  * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
+* Központilag telepített szervizcsomagok listája: egy telepített alkalmazásban található szolgáltatási csomagok listáját adja vissza.
+  * API: [FabricClient. QueryClient. GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
   * PowerShell: Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
-> Egyes lekérdezések lapozható eredményeket adnak vissza. Ezeknek a lekérdezéseknek a visszaadása a [PagedList\<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1). Ha az eredmények nem férnek el egy üzenet, csak egy oldal jelenik meg, és egy ContinuationToken, amely nyomon követi, ahol enumerálás leállt. Továbbra is hívja meg ugyanazt a lekérdezést, és adja át a folytatási jogkivonatot az előző lekérdezésből a következő eredmények lekéréséhez.
+> Néhány lekérdezés lapozható eredményeket adott vissza. A lekérdezések visszaküldése a [PagedList\<T>ból ](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1)származtatott lista. Ha az eredmények nem illeszkednek az üzenethez, csak egy oldal lesz visszaadva, és egy Continuationtoken argumentumot használja, amely nyomon követi az enumerálást. Folytassa ugyanezt a lekérdezést, és adja át a folytatási tokent az előző lekérdezésből a következő eredmények eléréséhez.
 
 ### <a name="examples"></a>Példák
-A következő kód leáll a fürt sérült alkalmazásai:
+A következő kód lekéri a nem kifogástalan állapotú alkalmazásokat a fürtben:
 
 ```csharp
 var applications = fabricClient.QueryManager.GetApplicationListAsync().Result.Where(
   app => app.HealthState == HealthState.Error);
 ```
 
-A következő parancsmag lekéri az alkalmazás részleteit a fabric:/WordCount alkalmazás. Figyelje meg, hogy az állapot figyelmeztetés.
+A következő parancsmag beolvassa a Fabric:/WordCount alkalmazás alkalmazásának részleteit. Figyelje meg, hogy az állapot figyelmeztetéssel van elküldve.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/WordCount
@@ -1074,7 +1074,7 @@ ApplicationParameters  : { "WordCountWebService_InstanceCount" = "1";
                          [ProcessId] -tid [ThreadId]","EnvironmentBlock":"_NO_DEBUG_HEAP=1\u0000"}]" }
 ```
 
-A következő parancsmag a szolgáltatásokat hibaállapottal kapja le:
+A következő parancsmag egy hiba állapotával szerzi be a szolgáltatásokat:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplication | Get-ServiceFabricService | where {$_.HealthState -eq "Error"}
@@ -1090,14 +1090,14 @@ ServiceStatus          : Active
 HealthState            : Error
 ```
 
-## <a name="cluster-and-application-upgrades"></a>Fürt- és alkalmazásfrissítések
-A fürt és az alkalmazás figyelt frissítése során a Service Fabric ellenőrzi az állapotot, hogy minden kifogástalan állapotban maradjon. Ha egy entitás nem megfelelő állapotú a konfigurált állapotházirendek használatával kiértékelve, a frissítés frissítés-specifikus házirendeket alkalmaz a következő művelet meghatározásához. A frissítés szüneteltethető a felhasználói beavatkozás (például a hibafeltételek javítása vagy a házirendek módosítása) érdekében, vagy automatikusan visszaállhat az előző jó verzióra.
+## <a name="cluster-and-application-upgrades"></a>Fürtök és alkalmazások frissítése
+A fürt és az alkalmazás figyelt frissítése során Service Fabric ellenőrzi az állapotot, hogy minden kifogástalan maradjon. Ha egy entitás nem kifogástalan állapotú, mivel a konfigurált állapotfigyelő házirendek használatával lett kiértékelve, a frissítés a következő művelet meghatározására alkalmazza a verziófrissítésre vonatkozó házirendeket. Előfordulhat, hogy a frissítés szüneteltetve van a felhasználói beavatkozás engedélyezése érdekében (például a hibák kijavítása vagy a házirendek módosítása), vagy pedig automatikusan visszatérhet az előző jó verzióra.
 
-A *fürt* frissítése során lekaphatja a fürt frissítési állapotát. A frissítési állapot nem megfelelő állapotú kiértékeléseket tartalmaz, amelyek rámutatnak arra, hogy mi nem megfelelő a fürtben. Ha a frissítés állapotproblémák miatt visszaáll, a frissítési állapot megjegyzi az utolsó nem megfelelő állapotú okokat. Ez az információ segíthet a rendszergazdáknak annak kivizsgálásában, hogy mi volt a hiba a frissítés visszagörgetése vagy leállítása után.
+A *fürt* frissítése során lekérheti a fürt frissítési állapotát. A frissítési állapot tartalmazza a nem kifogástalan állapotú értékeléseket, amelyek a fürt sérült állapotára mutatnak. Ha a frissítés állapot-problémák miatt visszaáll vissza, a frissítés állapota az utolsó nem megfelelő állapotba kerül. Ezek az információk segíthetnek a rendszergazdáknak a frissítés visszavonása vagy leállítása után a hiba kivizsgálásában.
 
-Hasonlóképpen az *alkalmazás* frissítése során a nem megfelelő állapotú kiértékelések az alkalmazás frissítési állapotát tartalmazza.
+Hasonlóképpen, az *alkalmazások* frissítése során a rendszer a nem megfelelő állapotú értékeléseket az alkalmazás verziófrissítési állapotában tárolja.
 
-Az alábbi ábrán látható egy módosított háló:/WordCount alkalmazás alkalmazásfrissítési állapota. Egy figyelő hibát jelentett az egyik replikáján. A frissítés visszaáll, mert az állapotellenőrzéseket nem tartják be.
+A következő ábrán egy módosított háló alkalmazás-frissítési állapota látható:/WordCount alkalmazás. A watchdog hibát jelzett az egyik replikáján. A frissítés visszakerül, mert a rendszer nem veszi figyelembe az állapot-ellenőrzéseket.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationUpgrade fabric:/WordCount
@@ -1151,12 +1151,12 @@ ForceRestart                  : False
 UpgradeReplicaSetCheckTimeout : 00:15:00
 ```
 
-További információ a [Service Fabric alkalmazásfrissítésről.](service-fabric-application-upgrade.md)
+További információ a [Service Fabric alkalmazás frissítéséről](service-fabric-application-upgrade.md).
 
-## <a name="use-health-evaluations-to-troubleshoot"></a>Hibaelhárítás az állapotértékelésekhez
-Ha probléma merül fel a fürtvagy egy alkalmazás, tekintse meg a fürt vagy az alkalmazás állapotát, hogy pontosan mi a baj. A nem megfelelő állapotú értékelések részletesen ismertetik, hogy mi váltotta ki az aktuális nem megfelelő állapot. Ha szükséges, leáshat a nem megfelelő gyermekentitások a kiváltó ok azonosításához.
+## <a name="use-health-evaluations-to-troubleshoot"></a>Az állapot-értékelések használata a hibák megoldásához
+Ha probléma merül fel a fürttel vagy egy alkalmazással kapcsolatban, tekintse meg a fürt vagy az alkalmazás állapotát a probléma kijavításához. A nem megfelelő állapotú értékelések részletesen ismertetik, hogy az aktuálisan nem megfelelő állapotot váltott ki. Ha szükséges, a nem kifogástalan állapotú gyermek entitások részletezésével azonosíthatja a kiváltó okot.
 
-Fontolja meg például egy alkalmazás nem kifogástalan állapotú, mert van egy hibajelentés az egyik replikák. A következő Powershell-parancsmag a nem megfelelő állapotú értékeléseket mutatja:
+Tegyük fel például, hogy egy alkalmazás nem megfelelő állapotú, mert az egyik replikáján hiba történt a jelentésben. A következő PowerShell-parancsmag megjeleníti a nem megfelelő állapotú értékeléseket:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth fabric:/WordCount -EventsFilter None -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
@@ -1184,7 +1184,7 @@ DeployedApplicationHealthStates : None
 HealthEvents                    : None
 ```
 
-A replika további információkért tekintse meg a replikát:
+További információért tekintse meg a replikát:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricReplicaHealth -ReplicaOrInstanceId 131444422260002646 -PartitionId af2e3e44-a8f8-45ac-9f31-4093eb897600
@@ -1223,17 +1223,17 @@ HealthEvents          :
 ```
 
 > [!NOTE]
-> A nem megfelelő állapotú értékelések azt mutatják, az első oka az entitás kiértékelése a jelenlegi állapot. Előfordulhat, hogy több más esemény is elindítja ezt az állapotot, de ezek nem jelennek meg az értékelésekben. További információkért részletezze az állapotentitások, hogy kitaláljuk, a fürt összes nem megfelelő állapotú jelentéseket.
+> A nem kifogástalan állapotú értékelések az entitás aktuális állapotra való kiértékelésének első okát mutatják be. Lehet, hogy több más esemény is aktiválhatja ezt az állapotot, de az értékelések nem tükrözik őket. További információkért tekintse meg az állapot entitásokat, hogy kiderítse a fürtben található összes nem megfelelő állapotú jelentést.
 >
 >
 
 ## <a name="next-steps"></a>További lépések
 [Rendszerállapot-jelentések használata a hibaelhárítás során](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
-[Egyéni Service Fabric-állapotjelentések hozzáadása](service-fabric-report-health.md)
+[Egyéni Service Fabric állapotjelentés hozzáadása](service-fabric-report-health.md)
 
-[A szolgáltatás állapotának jelentése és ellenőrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+[A szolgáltatás állapotának jelentése és ellenõrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
 [A szolgáltatások helyi figyelése és diagnosztikája](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-[A Service Fabric alkalmazásfrissítése](service-fabric-application-upgrade.md)
+[Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md)

@@ -11,11 +11,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179158"
 ---
-#### <a name="to-install-regular-updates-via-the-azure-classic-portal"></a>Rendszeres frissítések telepítése az Azure klasszikus portálján keresztül
-1. Az **Eszközök** lapon jelölje ki azt az eszközt, amelyre telepíteni szeretné a frissítéseket.
-2. Nyissa meg az Eszközök**karbantartása** **lapot,** > és görgessen le a **Szoftverfrissítések**hez.
-3. A frissítések kereséséhez kattintson a lap alján található **Frissítések ellenőrzése** elemre.
-4. Megjelenik egy üzenet, ha szoftverfrissítések érhetők el. Kattintson **a Frissítések telepítése** gombra az eszköz frissítésének megkezdéséhez.
+#### <a name="to-install-regular-updates-via-the-azure-classic-portal"></a>A hagyományos frissítések telepítése a klasszikus Azure portálon keresztül
+1. Az **eszközök** lapon válassza ki azt az eszközt, amelyre telepíteni kívánja a frissítéseket.
+2. Navigáljon az **eszközök** > **karbantartásához** , és görgessen le a **szoftverfrissítéseket**.
+3. A frissítések kereséséhez kattintson az oldal alján található **frissítések keresése** elemre.
+4. Ekkor megjelenik egy üzenet, ha a szoftverfrissítések elérhetők. Kattintson a **frissítések telepítése** elemre az eszköz frissítésének megkezdéséhez.
    
     A frissítés sikeres telepítése után értesítést kap.
 

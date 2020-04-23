@@ -13,9 +13,9 @@ ms.locfileid: "67179718"
 ---
 > [!div class="op_single_selector"]
 > * [Áttekintés](../articles/hdinsight/hadoop/hdinsight-use-sqoop.md)
-> * [Ssh](../articles/hdinsight/hadoop/apache-hadoop-use-sqoop-mac-linux.md)
+> * [SSH](../articles/hdinsight/hadoop/apache-hadoop-use-sqoop-mac-linux.md)
 > * [Curl](../articles/hdinsight/hadoop/apache-hadoop-use-sqoop-curl.md)
-> * [Powershell](../articles/hdinsight/hadoop/apache-hadoop-use-sqoop-powershell.md)
+> * [PowerShell](../articles/hdinsight/hadoop/apache-hadoop-use-sqoop-powershell.md)
 > * [.NET](../articles/hdinsight/hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
 > 
 > 

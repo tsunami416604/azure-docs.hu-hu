@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric CLI- sfctl alkalmazás
-description: Ismerje meg az sfctl, az Azure Service Fabric parancssori felület. Az alkalmazások kezeléséhez szükséges parancsok listáját tartalmazza.
+title: Azure Service Fabric CLI – sfctl alkalmazás
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Az alkalmazások kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
@@ -13,541 +13,541 @@ ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906196"
 ---
 # <a name="sfctl-application"></a>sfctl-alkalmazás
-Alkalmazások és alkalmazástípusok létrehozása, törlése és kezelése.
+Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelése.
 
 ## <a name="commands"></a>Parancsok
 
 |Parancs|Leírás|
 | --- | --- |
-| létrehozás | Létrehoz egy Service Fabric-alkalmazást a megadott leírás használatával. |
-| delete | Egy meglévő Service Fabric-alkalmazás törlése. |
-| Telepített | A Service Fabric-csomóponton telepített alkalmazás információinak bekerülése. |
-| telepített-egészségügyi | A Service Fabric-csomóponton telepített alkalmazás állapotának információkat kapja. |
-| telepített lista | A Service Fabric-csomóponton telepített alkalmazások listájának letöltője. |
-| Egészségügyi | A szolgáltatásháló-alkalmazás állapotát kapja. |
-| Info | A Service Fabric-alkalmazáshoz való információ leése. |
-| lista | Letöltőa Service Fabric-fürtben létrehozott, a megadott szűrőknek megfelelő alkalmazások listáját. |
-| betöltés | Betöltődik a Service Fabric-alkalmazás betöltési információi. |
-| manifest | Lekéri az alkalmazástípust leíró jegyzékfájlt. |
-| Rendelkezés | A Service Fabric-alkalmazástípust a fürthöz a külső tárolóban lévő ".sfpkg" csomag vagy a rendszerképtárban lévő alkalmazáscsomag használatával regisztrálja. |
-| jelentés-egészségügy | Állapotjelentést küld a Service Fabric-alkalmazásról. |
-| type | A Service Fabric-fürtben lévő alkalmazástípusok listáját, amely pontosan a megadott névnek felel meg. |
-| típuslista | Letöltőa Service Fabric-fürt alkalmazástípusainak listája. |
-| kiépítés nélküli | Eltávolítja vagy törli a Service Fabric-alkalmazástípust a fürtből. |
-| Frissítés | Elindítja egy alkalmazás frissítését a Service Fabric-fürtben. |
-| frissítés-folytatás | Folytatja egy alkalmazás frissítését a Service Fabric-fürtben. |
-| frissítés-visszaállítás | Elindítja a Service Fabric-fürtben lévő alkalmazás folyamatban lévő frissítésének visszaállítása. |
-| frissítési állapot | Az alkalmazáson végrehajtott legújabb frissítés részleteinek bekerülése. |
-| feltöltés | A Service Fabric-alkalmazáscsomag másolása a lemezképtárolóba. |
+| létrehozás | Létrehoz egy Service Fabric alkalmazást a megadott leírás használatával. |
+| delete | Töröl egy meglévő Service Fabric alkalmazást. |
+| telepített | Egy Service Fabric csomóponton telepített alkalmazás információinak beolvasása. |
+| központilag telepített – állapot | Egy Service Fabric csomóponton telepített alkalmazás állapotával kapcsolatos információk beolvasása. |
+| központilag telepített – lista | A Service Fabric csomóponton telepített alkalmazások listájának beolvasása. |
+| állapotfigyelő | Lekéri a Service Fabric-alkalmazás állapotát. |
+| információ | Beolvas egy Service Fabric alkalmazással kapcsolatos információkat. |
+| lista | A megadott szűrőknek megfelelő Service Fabric-fürtben létrehozott alkalmazások listájának beolvasása. |
+| betöltés | Beolvas egy Service Fabric alkalmazás betöltési adatait. |
+| manifest | Beolvassa az alkalmazás típusát leíró jegyzékfájlt. |
+| rendelkezés | Kiépíti vagy regisztrálja Service Fabric alkalmazás típusát a fürtön a külső tárolóban található ". sfpkg" csomaggal, vagy a rendszerkép-tárolóban lévő alkalmazáscsomag használatával. |
+| jelentés – állapot | Állapotjelentést küld a Service Fabric alkalmazásról. |
+| type | Beolvassa a Service Fabric-fürtben található, pontosan a megadott névvel egyező típusú alkalmazások listáját. |
+| típus – lista | Beolvassa a Service Fabric-fürtben található Alkalmazásbeállítások listáját. |
+| leépítése | Egy Service Fabric alkalmazás típusának eltávolítása vagy törlése a fürtből. |
+| frissítés | Egy alkalmazás frissítésének megkezdése a Service Fabric fürtön. |
+| frissítés – folytatás | Folytatja az alkalmazások frissítését a Service Fabric-fürtön. |
+| frissítés – visszaállítás | Elindítja a Service Fabric fürtön futó alkalmazás jelenleg folyamatban lévő frissítését. |
+| frissítés – állapot | Az alkalmazáson végrehajtott legújabb frissítés részleteinek beolvasása. |
+| feltöltés | Service Fabric alkalmazáscsomag másolása a rendszerkép-tárolóba. |
 
-## <a name="sfctl-application-create"></a>sfctl alkalmazás létrehozása
-Létrehoz egy Service Fabric-alkalmazást a megadott leírás használatával.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --alkalmazásneve [Kötelező] | Az alkalmazás neve, beleértve a\:"fabric" URI sémát. |
-| --alkalmazás-típus [Kötelező] | Az alkalmazásjegyzékben található alkalmazástípus neve. |
-| --app-verzió [Kötelező] | Az alkalmazástípus nak az alkalmazásjegyzékben meghatározott verziója. |
-| --max-csomópont-számláló | A szolgáltatások, amelyekhez a Service Fabric kapacitást foglal le, a csomópontok maximális száma. Vegye figyelembe, hogy ez nem jelenti azt, hogy az alkalmazás szolgáltatásai az összes ilyen csomóponton lesznek elhelyezve. |
-| --mutatók | A JSON kódolt lista alkalmazás kapacitás metrika leírások. A metrika névként van definiálva, amely minden olyan csomópont kapacitáskészletéhez van társítva, amelyen az alkalmazás létezik. |
-| --min-csomópont-szám | A minimális számú csomópontok, ahol a Service Fabric lefoglalja a kapacitást az alkalmazáshoz. Vegye figyelembe, hogy ez nem jelenti azt, hogy az alkalmazás szolgáltatásai az összes ilyen csomóponton lesznek elhelyezve. |
-| --paraméterek | Az alkalmazás létrehozásakor alkalmazandó alkalmazásparaméter-felülbírálások JSON-kódolású listája. |
-| --idő-out -t | Alapértelmezett\: 60. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
-
-## <a name="sfctl-application-delete"></a>sfctl alkalmazás törlése
-Egy meglévő Service Fabric-alkalmazás törlése.
-
-Az alkalmazást a törlés előtt létre kell hozni. Az alkalmazás törlése törli az alkalmazás részét vevő összes szolgáltatást. Alapértelmezés szerint a Service Fabric megpróbálja bezárni a szolgáltatás replikák egy kecses módon, majd törölje a szolgáltatást. Ha azonban egy szolgáltatás nak problémái vannak a kópia szabályos bezárásával, a törlési művelet hosszú időt vehet igénybe, vagy elakadhat. A választható ForceRemove jelzővel kihagyhatja a kecses zárási sorrendet, és erőszakkal törölheti az alkalmazást és annak összes szolgáltatását.
+## <a name="sfctl-application-create"></a>sfctl-alkalmazás létrehozása
+Létrehoz egy Service Fabric alkalmazást a megadott leírás használatával.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a korábbi verziókban "myapp app1" lesz, a korábbi verziókban pedig "myapp/app1". |
-| --erő-eltávolítás | Távolítson el egy Service Fabric-alkalmazást vagy -szolgáltatást erélyesen anélkül, hogy a kecses leállítási folyamaton menne keresztül. Ez a paraméter arra használható, hogy erőszakkal törölje az okat az alkalmazásokat vagy szolgáltatást, amelyek törlése időtúllépés a szolgáltatáskódban lévő problémák miatt, amelyek megakadályozzák a replikák kecses bezárását. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --App-Name [kötelező] | Az alkalmazás neve, beleértve a "Fabric\:" URI-sémát. |
+| --App-Type [kötelező] | Az alkalmazás-jegyzékfájlban található az alkalmazás típusa név. |
+| --App-Version [kötelező] | Az alkalmazás jegyzékfájlban definiált verziója. |
+| – Max csomópontok száma | Azon csomópontok maximális száma, amelyeken Service Fabric az alkalmazás kapacitása le lesz foglalva. Ez nem jelenti azt, hogy az alkalmazás szolgáltatásai az összes csomópontra lesznek helyezve. |
+| --mérőszámok | Az alkalmazás kapacitása metrika leírásának JSON-kódolású listája. A metrika neveként van definiálva, amely az alkalmazás által használt egyes csomópontok készletéhez van társítva. |
+| --min-csomópontok száma | Azon csomópontok minimális száma, ahol a Service Fabric az alkalmazás kapacitása le lesz foglalva. Ez nem jelenti azt, hogy az alkalmazás szolgáltatásai az összes csomópontra lesznek helyezve. |
+| – paraméterek | Az alkalmazás létrehozásakor alkalmazandó, az alkalmazás paramétereinek felülbírálására szolgáló JSON-kódolású lista. |
+| --időtúllépés-t | Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-deployed"></a>sfctl alkalmazás telepítve
-A Service Fabric-csomóponton telepített alkalmazás információinak bekerülése.
+## <a name="sfctl-application-delete"></a>sfctl-alkalmazás törlése
+Töröl egy meglévő Service Fabric alkalmazást.
 
-Ez a lekérdezés rendszeralkalmazás-adatokat ad vissza, ha a megadott alkalmazásazonosító rendszeralkalmazáshoz szolgál. Az eredmények magukban foglalják az aktív, aktiváló és letöltési állapotokban telepített alkalmazásokat. Ez a lekérdezés megköveteli, hogy a csomópont neve a fürt egyik csomópontjának feleljen meg. A lekérdezés sikertelen lesz, ha a megadott csomópontnév nem mutat a fürt egyik aktív Service Fabric-csomópontjára sem.
+A törlés előtt létre kell hozni egy alkalmazást. Egy alkalmazás törlésével törlődik az adott alkalmazás részét képező összes szolgáltatás. Alapértelmezés szerint a Service Fabric a szolgáltatás-replikákat egy kecses módon fogja megpróbálni, majd törölni a szolgáltatást. Ha azonban egy szolgáltatás szabályosan zárja be a replikát, a törlési művelet hosszú időt vehet igénybe, vagy elakad. A választható ForceRemove jelzővel kihagyhatja a kecses bezárási sorozatot, és kényszerített módon törölheti az alkalmazást és annak összes szolgáltatását.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a korábbi verziókban "myapp app1" lesz, a korábbi verziókban pedig "myapp/app1". |
-| --csomópontneve [Kötelező] | A csomópont neve. |
-| --include-health-state | Egy entitás állapotának belefoglalása. Ha ez a paraméter hamis vagy nincs megadva, akkor a visszaadott állapot "Ismeretlen". Ha értéke igaz, a lekérdezés megy párhuzamosan a csomópont és az állapotrendszer szolgáltatás, mielőtt az eredmények egyesítése. Ennek eredményeképpen a lekérdezés drágább, és hosszabb időt vehet igénybe. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
+| --Force-Remove | Távolítson el egy Service Fabric alkalmazást vagy szolgáltatást erőteljesen, anélkül, hogy a kecses leállítási sorozatot kellene volna átvennie. Ez a paraméter egy olyan alkalmazás vagy szolgáltatás kényszerített törlésére használható, amelynél a törlés időtúllépés miatt meggátolja a replikák kecses bezárását. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-deployed-health"></a>sfctl alkalmazás üzembe helyezett-állapot
-A Service Fabric-csomóponton telepített alkalmazás állapotának információkat kapja.
+## <a name="sfctl-application-deployed"></a>telepített sfctl-alkalmazás
+Egy Service Fabric csomóponton telepített alkalmazás információinak beolvasása.
 
-A Service Fabric-csomóponton telepített alkalmazás állapotának információkat kapja. Az EventsHealthStateFilter használatával tetszés szerint szűrheti az üzembe helyezett alkalmazáson az állapot alapján jelentett HealthEvent objektumok gyűjteményét. A DeployedServicePackagesHealthFilter használatával tetszés szerint szűrheti a DeployedServicePackageHealth gyermekek állapotát.
+Ez a lekérdezés a rendszeralkalmazási adatokat adja vissza, ha a megadott alkalmazás-azonosító a rendszeralkalmazáshoz tartozik. Az eredmények kiterjednek a telepített alkalmazások aktív, aktiválási és letöltési állapotára. Ehhez a lekérdezéshez a csomópont nevének a fürt egyik csomópontjának kell lennie. A lekérdezés meghiúsul, ha a megadott csomópont neve nem a fürtben lévő aktív Service Fabric csomópontokra mutat.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a korábbi verziókban "myapp app1" lesz, a korábbi verziókban pedig "myapp/app1". |
-| --csomópontneve [Kötelező] | A csomópont neve. |
-| --deployed-service-packages-state-filter | Lehetővé teszi az üzembe helyezett szolgáltatáscsomag állapotállapot-objektumok szűrését az üzembe helyezett alkalmazás állapotlekérdezésének eredményeként az állapotuk alapján. A paraméter lehetséges értékei közé tartozik az alábbi állapotok egyikének egész értéke. Csak a szűrőnek megfelelő üzembe helyezett szolgáltatáscsomagokat adja vissza a rendszer. Az összes üzembe helyezett szolgáltatáscsomag az üzembe helyezett alkalmazás összesített állapotának kiértékelésére szolgál. Ha nincs megadva, a program az összes bejegyzést visszaadja. Az állapotértékek jelzőalapú felsorolás, így az érték ezeknek az értékeknek a kombinációja lehet, amelyet a bitenkénti "OR" operátorral kapunk. Ha például a megadott érték 6, majd a Service healthState-értékkel rendelkező HealthState-értékkel rendelkező állapot (OK) és (4) értéket adja vissza.  <br> - Alapértelmezett - Alapértelmezett érték. Megfelel bármely HealthState.Matches any HealthState. Az érték nulla.  <br> - Nincs - Szűrő, amely nem felel meg semmilyen HealthState érték. Annak érdekében, hogy nem ad vissza eredményt egy adott gyűjtemény állapotok. Az érték 1.  <br> - Ok - Szűrő, amely megfelel a bemenet HealthState érték Ok. Az érték 2.  <br> - Figyelmeztetés - Szűrő, amely megfelel a bemenet healthstate érték Figyelmeztetés. Az érték 4.  <br> - Hiba - A bemenetnek a HealthState értékhibával egyeztetett szűrő. Az érték 8.  <br> - All - Szűrő, amely megfelel a bemenet bármely HealthState érték. Az érték 65535. |
-| --események-állapot-állapot-szűrő | Lehetővé teszi az állapot alapján visszaadott HealthEvent objektumok gyűjteményének szűrését. A paraméter lehetséges értékei közé tartozik az alábbi állapotok egyikének egész értéke. A rendszer csak a szűrőnek megfelelő eseményeket adja vissza. Az összes esemény az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a program az összes bejegyzést visszaadja. Az állapotértékek jelzőalapú felsorolás, így az érték ezeknek az értékeknek a kombinációja lehet, amelyet a bitenkénti "OR" operátorral kapunk. Ha például a megadott érték 6, akkor az összes eseményt, amelynek HealthState értéke OK (2) és Figyelmeztetés (4) visszaadja.  <br> - Alapértelmezett - Alapértelmezett érték. Megfelel bármely HealthState.Matches any HealthState. Az érték nulla.  <br> - Nincs - Szűrő, amely nem felel meg semmilyen HealthState érték. Annak érdekében, hogy nem ad vissza eredményt egy adott gyűjtemény állapotok. Az érték 1.  <br> - Ok - Szűrő, amely megfelel a bemenet HealthState érték Ok. Az érték 2.  <br> - Figyelmeztetés - Szűrő, amely megfelel a bemenet healthstate érték Figyelmeztetés. Az érték 4.  <br> - Hiba - A bemenetnek a HealthState értékhibával egyeztetett szűrő. Az érték 8.  <br> - All - Szűrő, amely megfelel a bemenet bármely HealthState érték. Az érték 65535. |
-| --kizárás-egészségügyi statisztikák | Azt jelzi, hogy az állapotstatisztikát vissza kell-e adni a lekérdezés eredményének részeként. Alapértelmezés szerint hamis. A statisztikák az Ok, Figyelmeztetés és Hiba állapotban lévő gyermekentitások számát mutatják. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
+| --Node-Name [kötelező] | A csomópont neve. |
+| --include-Health-State | Entitás állapotának belefoglalása. Ha ez a paraméter hamis vagy nincs megadva, akkor a visszaadott állapot "ismeretlen". Ha igaz értékre van állítva, a lekérdezés párhuzamosan fut a csomóponttal és az állapotfigyelő rendszer szolgáltatással az eredmények egyesítése előtt. Ennek eredményeképpen a lekérdezés drágább, és hosszabb időt is igénybe vehet. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-deployed-list"></a>sfctl alkalmazás telepített listája
-A Service Fabric-csomóponton telepített alkalmazások listájának letöltője.
+## <a name="sfctl-application-deployed-health"></a>sfctl-alkalmazás üzembe helyezése – állapot
+Egy Service Fabric csomóponton telepített alkalmazás állapotával kapcsolatos információk beolvasása.
 
-A Service Fabric-csomóponton telepített alkalmazások listájának letöltője. Az eredmények nem tartalmazzák az üzembe helyezett rendszeralkalmazásokra vonatkozó információkat, kivéve, ha az azonosító kifejezetten lekérdezi őket. Az eredmények magukban foglalják az aktív, aktiváló és letöltési állapotokban telepített alkalmazásokat. Ez a lekérdezés megköveteli, hogy a csomópont neve a fürt egyik csomópontjának feleljen meg. A lekérdezés sikertelen lesz, ha a megadott csomópontnév nem mutat a fürt egyik aktív Service Fabric-csomópontjára sem.
+Egy Service Fabric csomóponton telepített alkalmazás állapotával kapcsolatos információk beolvasása. A EventsHealthStateFilter használatával opcionálisan szűrheti a központilag telepített alkalmazáson jelentett HealthEvent-objektumok gyűjtését az állapot alapján. A DeployedServicePackagesHealthStateFilter használatával opcionálisan szűrheti a DeployedServicePackageHealth gyermekeket az állapot alapján.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --csomópontneve [Kötelező] | A csomópont neve. |
-| --folytatás-token | A folytatási token paraméter az eredmények következő készletének elérésére szolgál. A folytatási jogkivonat egy nem üres érték szerepel az API válasza, ha a rendszer eredményei nem férnek el egyetlen válasz. Ha ezt az értéket a következő API-hívás, az API adja vissza a következő eredményhalmaz. Ha nincsenek további eredmények, akkor a folytatási jogkivonat nem tartalmaz értéket. Ennek a paraméternek az értékét nem szabad URL-kódolásra kódolni. |
-| --include-health-state | Egy entitás állapotának belefoglalása. Ha ez a paraméter hamis vagy nincs megadva, akkor a visszaadott állapot "Ismeretlen". Ha értéke igaz, a lekérdezés megy párhuzamosan a csomópont és az állapotrendszer szolgáltatás, mielőtt az eredmények egyesítése. Ennek eredményeképpen a lekérdezés drágább, és hosszabb időt vehet igénybe. |
-| --max-eredmények | A lapozható lekérdezések részeként visszaadandó eredmények maximális száma. Ez a paraméter határozza meg a visszaadott eredmények számának felső határát. A visszaadott eredmények kisebbek lehetnek, mint a megadott maximális eredmények, ha nem férnek el az üzenetben a konfigurációban megadott maximális üzenetméret-korlátozások nak megfelelően. Ha ez a paraméter nulla vagy nincs megadva, a lapozható lekérdezés a lehető legtöbb eredményt tartalmazza, amely elfér a visszatérési üzenetben. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
+| --Node-Name [kötelező] | A csomópont neve. |
+| --telepített-Service-Packages-Health-State-Filter | Lehetővé teszi a telepített szervizcsomag állapot-objektumainak szűrését az állapotuk alapján telepített alkalmazás állapotának lekérdezése miatt. A paraméter lehetséges értékei a következő állapotok egyikének egészét tartalmazzák. A rendszer csak a szűrőnek megfelelő üzembe helyezett csomagokat adja vissza. Az összes telepített szervizcsomag használatával kiértékelheti az üzembe helyezett alkalmazás összesített állapotát. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotok a jelző-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a rendszer az OK (2) és a figyelmeztetés (4) HealthState-értékkel rendelkező szolgáltatási csomagok állapotát adja vissza.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
+| --Events-Health-State-Filter | Engedélyezi az állapot alapján visszaadott HealthEvent-objektumok gyűjteményének szűrését. A paraméter lehetséges értékei a következő állapotok egyikének egészét tartalmazzák. Csak a szűrőnek megfelelő események lesznek visszaadva. A rendszer minden eseményt felhasznál az összesített állapot kiértékelésére. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotok a jelző-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a rendszer az összes, az OK (2) és a figyelmeztetés (4) HealthState értékű eseményt adja vissza.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
+| --kizárás-Health-Statistics | Azt jelzi, hogy az állapot statisztikáját a lekérdezés eredményének részeként kell-e visszaadni. Alapértelmezés szerint hamis. A statisztikákban a gyermek entitások számának állapota ok, figyelmeztetés és hiba látható. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-application-deployed-list"></a>sfctl-alkalmazás üzembe helyezése – lista
+A Service Fabric csomóponton telepített alkalmazások listájának beolvasása.
+
+A Service Fabric csomóponton telepített alkalmazások listájának beolvasása. Az eredmények nem tartalmazzák a telepített rendszeralkalmazások adatait, kivéve, ha az azonosító alapján explicit módon lekérdezték. Az eredmények kiterjednek a telepített alkalmazások aktív, aktiválási és letöltési állapotára. Ehhez a lekérdezéshez a csomópont nevének a fürt egyik csomópontjának kell lennie. A lekérdezés meghiúsul, ha a megadott csomópont neve nem a fürtben lévő aktív Service Fabric csomópontokra mutat.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --Node-Name [kötelező] | A csomópont neve. |
+| --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
+| --include-Health-State | Entitás állapotának belefoglalása. Ha ez a paraméter hamis vagy nincs megadva, akkor a visszaadott állapot "ismeretlen". Ha igaz értékre van állítva, a lekérdezés párhuzamosan fut a csomóponttal és az állapotfigyelő rendszer szolgáltatással az eredmények egyesítése előtt. Ennek eredményeképpen a lekérdezés drágább, és hosszabb időt is igénybe vehet. |
+| --max-results | A lapozható lekérdezések részeként visszaadott eredmények maximális száma. Ez a paraméter a visszaadott eredmények számának felső határát határozza meg. A visszaadott eredmények a megadott maximális eredményeknél kisebbek lehetnek, ha nem férnek hozzá az üzenethez, mint a konfigurációban definiált maximális üzenet méretére vonatkozó korlátozások. Ha a paraméter értéke nulla vagy nincs megadva, a lapozható lekérdezés a visszaadott üzenetben szereplő lehető legtöbb eredményt tartalmazza. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-application-health"></a>sfctl alkalmazás állapota
-A szolgáltatásháló-alkalmazás állapotát kapja.
+Lekéri a Service Fabric-alkalmazás állapotát.
 
-A szolgáltatásháló-alkalmazás heath állapotát adja vissza. A válasz ok, hiba vagy figyelmeztetés állapotát jelenti. Ha az entitás nem található a health store, akkor visszaadja hiba.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a korábbi verziókban "myapp app1" lesz, a korábbi verziókban pedig "myapp/app1". |
-| --deployed-applications-állapot-szűrő | Lehetővé teszi az üzembe helyezett alkalmazások állapotállapot-objektumok szűrését az alkalmazás állapotuk alapján az alkalmazás állapotának eredményeként visszaadott állapotban. A paraméter lehetséges értékei közé tartozik az alábbi állapotok egyikének egész értéke. Csak a szűrőnek megfelelő telepített alkalmazások kerülnek vissza. Az összes telepített alkalmazás az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a program az összes bejegyzést visszaadja. Az állapotértékek jelzőalapú felsorolás, így az érték ezeknek az értékeknek a kombinációja is lehet, amelyet bitenkénti "OR" operátorral kapunk. Ha például a megadott érték 6, majd az OK (2) és a Figyelmeztetés (4) healthstate értékű telepített alkalmazások állapotának állapotát adja vissza.  <br> - Alapértelmezett - Alapértelmezett érték. Megfelel bármely HealthState.Matches any HealthState. Az érték nulla.  <br> - Nincs - Szűrő, amely nem felel meg semmilyen HealthState érték. Annak érdekében, hogy nem ad vissza eredményt egy adott gyűjtemény állapotok. Az érték 1.  <br> - Ok - Szűrő, amely megfelel a bemenet HealthState érték Ok. Az érték 2.  <br> - Figyelmeztetés - Szűrő, amely megfelel a bemenet healthstate érték Figyelmeztetés. Az érték 4.  <br> - Hiba - A bemenetnek a HealthState értékhibával egyeztetett szűrő. Az érték 8.  <br> - All - Szűrő, amely megfelel a bemenet bármely HealthState érték. Az érték 65535. |
-| --események-állapot-állapot-szűrő | Lehetővé teszi az állapot alapján visszaadott HealthEvent objektumok gyűjteményének szűrését. A paraméter lehetséges értékei közé tartozik az alábbi állapotok egyikének egész értéke. A rendszer csak a szűrőnek megfelelő eseményeket adja vissza. Az összes esemény az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a program az összes bejegyzést visszaadja. Az állapotértékek jelzőalapú felsorolás, így az érték ezeknek az értékeknek a kombinációja lehet, amelyet a bitenkénti "OR" operátorral kapunk. Ha például a megadott érték 6, akkor az összes eseményt, amelynek HealthState értéke OK (2) és Figyelmeztetés (4) visszaadja.  <br> - Alapértelmezett - Alapértelmezett érték. Megfelel bármely HealthState.Matches any HealthState. Az érték nulla.  <br> - Nincs - Szűrő, amely nem felel meg semmilyen HealthState érték. Annak érdekében, hogy nem ad vissza eredményt egy adott gyűjtemény állapotok. Az érték 1.  <br> - Ok - Szűrő, amely megfelel a bemenet HealthState érték Ok. Az érték 2.  <br> - Figyelmeztetés - Szűrő, amely megfelel a bemenet healthstate érték Figyelmeztetés. Az érték 4.  <br> - Hiba - A bemenetnek a HealthState értékhibával egyeztetett szűrő. Az érték 8.  <br> - All - Szűrő, amely megfelel a bemenet bármely HealthState érték. Az érték 65535. |
-| --kizárás-egészségügyi statisztikák | Azt jelzi, hogy az állapotstatisztikát vissza kell-e adni a lekérdezés eredményének részeként. Alapértelmezés szerint hamis. A statisztikák az Ok, Figyelmeztetés és Hiba állapotban lévő gyermekentitások számát mutatják. |
-| --szolgáltatások-állapot-állapot-szűrő | Lehetővé teszi a szolgáltatások állapotobjektumok szűrését a szolgáltatások állapotállapotuk alapján visszaadott állapoteredményeként. A paraméter lehetséges értékei közé tartozik az alábbi állapotok egyikének egész értéke. A rendszer csak a szűrőnek megfelelő szolgáltatásokat adja vissza. Az összes szolgáltatás az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a program az összes bejegyzést visszaadja. Az állapotértékek jelzőalapú felsorolás, így az érték ezeknek az értékeknek a kombinációja is lehet, amelyet bitenkénti "OR" operátorral kapunk. Ha például a megadott érték 6, majd a HealthState (OK) és a Figyelmeztetés (4) állapotú szolgáltatások állapota lesz visszaadva.  <br> - Alapértelmezett - Alapértelmezett érték. Megfelel bármely HealthState.Matches any HealthState. Az érték nulla.  <br> - Nincs - Szűrő, amely nem felel meg semmilyen HealthState érték. Annak érdekében, hogy nem ad vissza eredményt egy adott gyűjtemény állapotok. Az érték 1.  <br> - Ok - Szűrő, amely megfelel a bemenet HealthState érték Ok. Az érték 2.  <br> - Figyelmeztetés - Szűrő, amely megfelel a bemenet healthstate érték Figyelmeztetés. Az érték 4.  <br> - Hiba - A bemenetnek a HealthState értékhibával egyeztetett szűrő. Az érték 8.  <br> - All - Szűrő, amely megfelel a bemenet bármely HealthState érték. Az érték 65535. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
-
-## <a name="sfctl-application-info"></a>sfctl alkalmazás adatai
-A Service Fabric-alkalmazáshoz való információ leése.
-
-A létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazás adatait adja vissza, amelynek neve megegyezik a paraméterként megadott alkatával. A válasz tartalmazza az alkalmazás nevét, típusát, állapotát, paramétereit és egyéb részleteit.
+A Service Fabric-alkalmazás egészségügyi állapotát adja vissza. A válasz az OK, a hiba vagy a figyelmeztetés állapotot jelenti. Ha az entitás nem található az állapotfigyelő tárolóban, hibaüzenetet ad vissza.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a korábbi verziókban "myapp app1" lesz, a korábbi verziókban pedig "myapp/app1". |
-| --kizárás-alkalmazás-paraméterek | Az a jelző, amely meghatározza, hogy az alkalmazás paraméterei ki lesznek-e zárva az eredményből. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
+| --telepített-alkalmazások-állapot-állapot-szűrő | Lehetővé teszi az alkalmazás állapota lekérdezés eredményében visszaadott központilag telepített alkalmazások állapotának szűrését az állapotuk alapján. A paraméter lehetséges értékei a következő állapotok egyikének egészét tartalmazzák. A rendszer csak a szűrőnek megfelelő telepített alkalmazásokat adja vissza. Az összes telepített alkalmazás az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotok a jelző-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a rendszer az OK (2) és a figyelmeztetés (4) HealthState értékkel rendelkező telepített alkalmazások állapotát adja vissza.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
+| --Events-Health-State-Filter | Engedélyezi az állapot alapján visszaadott HealthEvent-objektumok gyűjteményének szűrését. A paraméter lehetséges értékei a következő állapotok egyikének egészét tartalmazzák. Csak a szűrőnek megfelelő események lesznek visszaadva. A rendszer minden eseményt felhasznál az összesített állapot kiértékelésére. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotok a jelző-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a rendszer az összes, az OK (2) és a figyelmeztetés (4) HealthState értékű eseményt adja vissza.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
+| --kizárás-Health-Statistics | Azt jelzi, hogy az állapot statisztikáját a lekérdezés eredményének részeként kell-e visszaadni. Alapértelmezés szerint hamis. A statisztikákban a gyermek entitások számának állapota ok, figyelmeztetés és hiba látható. |
+| --szolgáltatások – állapot – szűrő | A szolgáltatások állapota lekérdezés eredményében visszaadott szolgáltatások állapotának szűrését teszi lehetővé állapotuk alapján. A paraméter lehetséges értékei a következő állapotok egyikének egészét tartalmazzák. A rendszer csak a szűrőnek megfelelő szolgáltatásokat adja vissza. Minden szolgáltatás az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotok a jelző-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a HealthState értékkel rendelkező szolgáltatások állapota (2), a figyelmeztetés (4) pedig vissza fog esni.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-list"></a>sfctl alkalmazáslista
-Letöltőa Service Fabric-fürtben létrehozott, a megadott szűrőknek megfelelő alkalmazások listáját.
+## <a name="sfctl-application-info"></a>sfctl
+Beolvas egy Service Fabric alkalmazással kapcsolatos információkat.
 
-A létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazásokra vonatkozó információkat beszerzi, és megfelel nek a megadott szűrőknek. A válasz tartalmazza az alkalmazás nevét, típusát, állapotát, paramétereit és egyéb részleteit. Ha az alkalmazások nem férnek el egy oldalon, egy oldal eredmények vissza, valamint a folytatási token, amely segítségével kap a következő oldalon. Az ApplicationTypeName és az ApplicationDefinitionKindFilter szűrők nem adhatók meg egyszerre.
+A létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazással kapcsolatos adatokat adja vissza, amelyek neve megegyezik a paraméterrel megadott névvel. A válasz tartalmazza az alkalmazás nevét, típusát, állapotát, paramétereit és egyéb részleteit.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --alkalmazás-meghatározás-fajta-szűrő | Az ApplicationDefinitionKind szűrésére szolgál, amely a Service Fabric-alkalmazások definiálásához használt mechanizmus.  <br> - Alapértelmezett - Alapértelmezett érték, amely ugyanazt a funkciót látja el, mint az "Összes" kiválasztása. Az érték 0.  <br> - All - Szűrő, amely egyezteti a bemeneti bármely ApplicationDefinitionKind értékkel. Az érték 65535.  <br> - ServiceFabricApplicationDescription - Az ApplicationDefinitionKind érték ServiceFabricApplicationDescription értékkel rendelkező bemenetnek megfelelő szűrő. Az érték 1.  <br> - Írás - Szűrő, amely megfelel a bemeneti ApplicationDefinitionKind érték Compose. Az érték 2. |
-| --alkalmazás-típus-név | Az alkalmazástípus neve, amely a lekérdezendő alkalmazások szűréséhez használható. Ez az érték nem tartalmazhatja az alkalmazástípus verzióját. |
-| --folytatás-token | A folytatási token paraméter az eredmények következő készletének elérésére szolgál. A folytatási jogkivonat egy nem üres érték szerepel az API válasza, ha a rendszer eredményei nem férnek el egyetlen válasz. Ha ezt az értéket a következő API-hívás, az API adja vissza a következő eredményhalmaz. Ha nincsenek további eredmények, akkor a folytatási jogkivonat nem tartalmaz értéket. Ennek a paraméternek az értékét nem szabad URL-kódolásra kódolni. |
-| --kizárás-alkalmazás-paraméterek | Az a jelző, amely meghatározza, hogy az alkalmazás paraméterei ki lesznek-e zárva az eredményből. |
-| --max-eredmények | A lapozható lekérdezések részeként visszaadandó eredmények maximális száma. Ez a paraméter határozza meg a visszaadott eredmények számának felső határát. A visszaadott eredmények kisebbek lehetnek, mint a megadott maximális eredmények, ha nem férnek el az üzenetben a konfigurációban megadott maximális üzenetméret-korlátozások nak megfelelően. Ha ez a paraméter nulla vagy nincs megadva, a lapozható lekérdezés a lehető legtöbb eredményt tartalmazza, amely elfér a visszatérési üzenetben. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
+| --kizárás-Application-Parameters | A jelző, amely megadja, hogy az alkalmazás paramétereinek ki lesznek-e zárva az eredményből. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-load"></a>sfctl alkalmazás terhelése
-Betöltődik a Service Fabric-alkalmazás betöltési információi.
+## <a name="sfctl-application-list"></a>sfctl-alkalmazások listája
+A megadott szűrőknek megfelelő Service Fabric-fürtben létrehozott alkalmazások listájának beolvasása.
 
-A létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazás betöltési adatait adja vissza, amelynek neve megegyezik a paraméterként megadott alkatával. A válasz tartalmazza a nevet, a minimális csomópontokat, a maximális csomópontokat, az alkalmazás által jelenleg elfoglaló csomópontok számát és az alkalmazás terhelési metrika adatait az alkalmazásról.
+Beolvassa a létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazások adatait, és megegyeznek a megadott szűrőkkel. A válasz tartalmazza az alkalmazás nevét, típusát, állapotát, paramétereit és egyéb részleteit. Ha az alkalmazások nem férnek el egy oldalon, a rendszer az eredmények egyik oldalát adja vissza, valamint egy folytatási tokent is, amely a következő oldal beolvasására használható. A szűrők ApplicationTypeName és ApplicationDefinitionKindFilter nem adhatók meg egyszerre.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a korábbi verziókban "myapp app1" lesz, a korábbi verziókban pedig "myapp/app1". |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --alkalmazás-definíció-Kind-Filter | A ApplicationDefinitionKind szűrésére szolgál, amely egy Service Fabric alkalmazás definiálásához használt mechanizmus.  <br> – Alapértelmezett – az alapértelmezett érték, amely ugyanazt a funkciót hajtja végre, mint az "összes" lehetőséget. Az érték 0.  <br> – Minden olyan szűrő, amely megfelel bármely ApplicationDefinitionKind értéknek. Az érték 65535.  <br> -ServiceFabricApplicationDescription – a ApplicationDefinitionKind érték ServiceFabricApplicationDescription rendelkező bemenettel egyező szűrő. Az érték 1.  <br> -Levélírás – a ApplicationDefinitionKind értékkel megegyező bemeneti szűrő. Az érték 2. |
+| --Application-Type-Name | Az alkalmazásnak a lekérdezéshez való szűréséhez használt alkalmazásnév neve. Ez az érték nem tartalmazhatja az alkalmazás típusának verzióját. |
+| --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
+| --kizárás-Application-Parameters | A jelző, amely megadja, hogy az alkalmazás paramétereinek ki lesznek-e zárva az eredményből. |
+| --max-results | A lapozható lekérdezések részeként visszaadott eredmények maximális száma. Ez a paraméter a visszaadott eredmények számának felső határát határozza meg. A visszaadott eredmények a megadott maximális eredményeknél kisebbek lehetnek, ha nem férnek hozzá az üzenethez, mint a konfigurációban definiált maximális üzenet méretére vonatkozó korlátozások. Ha a paraméter értéke nulla vagy nincs megadva, a lapozható lekérdezés a visszaadott üzenetben szereplő lehető legtöbb eredményt tartalmazza. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-manifest"></a>sfctl alkalmazásjegyzék
-Lekéri az alkalmazástípust leíró jegyzékfájlt.
+## <a name="sfctl-application-load"></a>sfctl alkalmazás betöltése
+Beolvas egy Service Fabric alkalmazás betöltési adatait.
 
-A válasz az alkalmazás jegyzékfájl XML-fájlját karakterláncként tartalmazza.
+A létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazás betöltési információit adja vissza, amelyek neve megegyezik a paraméterrel megadott névvel. A válasz tartalmazza a nevet, a minimális csomópontokat, a maximális csomópontokat, az alkalmazás által jelenleg foglalt csomópontok számát, valamint az alkalmazás terhelési metrikájának adatait.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --alkalmazás-típus-név [Kötelező] | Az alkalmazástípus neve. |
-| --alkalmazás-típus-verzió [Kötelező] | Az alkalmazástípus verziója. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-provision"></a>sfctl alkalmazás nyújtása
-A Service Fabric-alkalmazástípust a fürthöz a külső tárolóban lévő ".sfpkg" csomag vagy a rendszerképtárban lévő alkalmazáscsomag használatával regisztrálja.
+## <a name="sfctl-application-manifest"></a>sfctl-alkalmazás jegyzékfájlja
+Beolvassa az alkalmazás típusát leíró jegyzékfájlt.
 
-A Service Fabric alkalmazástípusát a fürthöz kell lebiztosítani. A rendelkezésre az új alkalmazások példányos létrehozása előtt van szükség. A létesítési művelet a relativePathInImageStore által megadott alkalmazáscsomagon vagy a külső ".sfpkg" URI használatával hajtható végre. Kivéve, ha --külső-provision van beállítva, ez a parancs várható képtároló kiépítése.
+A válasz karakterláncként tartalmazza az alkalmazás jegyzékfájljának XML-fájlját.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --alkalmazás-csomag-download-uri | A ".sfpkg" alkalmazáscsomag elérési útja, ahonnan az alkalmazáscsomag HTTP vagy HTTPS protokollok használatával letölthető. <br><br> Csak a kiépítéshez csak külső raktárban. Az alkalmazáscsomag egy külső tárolóban tárolható, amely GET-műveletet biztosít a fájl letöltéséhez. A támogatott protokollok HTTP és HTTPS, és az elérési útnak engedélyeznie kell az OLVASÁSi hozzáférést. |
-| --alkalmazás-típus-build-path | A rendelkezés fajta kép tárolására csak. Az alkalmazáscsomag relatív elérési útja a lemezképtárolóban az előző feltöltési művelet során megadott. |
-| --alkalmazás-típus-név | Csak a kiépítéshez csak külső raktárban. Az alkalmazástípus neve az alkalmazásjegyzékben található alkalmazástípus nevét jelöli. |
-| --alkalmazás-típus-verzió | Csak a kiépítéshez csak külső raktárban. Az alkalmazástípus verziója az alkalmazástípus nak az alkalmazásjegyzékben található verzióját jelöli. |
-| --külső ellátás | Az a hely, ahonnan az alkalmazáscsomag regisztrálható vagy kiépíthető. Azt jelzi, hogy a rendelkezésre egy olyan alkalmazáscsomag, amelyet korábban feltöltött egy külső tárolóba. Az alkalmazáscsomag a *.sfpkg kiterjesztéssel végződik. |
-| --nem-várjon | Azt jelzi, hogy a kiépítés aszinkron módon történjen-e. <br><br> Ha a beállítás igaz, a létesítési művelet visszaadja, ha a rendszer elfogadja a kérelmet, és a létesítési művelet időkorlát nélkül folytatódik. Az alapértelmezett érték a hamis. Nagy alkalmazáscsomagok esetén azt javasoljuk, hogy az értéket igaz értékre kell alapozni. |
-| --idő-out -t | Alapértelmezett\: 60. |
+| --Application-Type-Name [kötelező] | Az alkalmazás típusának neve. |
+| --Application-Type-Version [kötelező] | Az alkalmazás típusának verziója. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-report-health"></a>sfctl alkalmazás jelentés-egészségügy
-Állapotjelentést küld a Service Fabric-alkalmazásról.
+## <a name="sfctl-application-provision"></a>sfctl alkalmazás kiépítése
+Kiépíti vagy regisztrálja Service Fabric alkalmazás típusát a fürtön a külső tárolóban található ". sfpkg" csomaggal, vagy a rendszerkép-tárolóban lévő alkalmazáscsomag használatával.
 
-A megadott Service Fabric-alkalmazás állapotának jelentése. A jelentésnek tartalmaznia kell az állapotjelentés forrására és a jelentett tulajdonságra vonatkozó információkat. A jelentés egy Service Fabric átjáró alkalmazás, amely továbbítja a health Store. A jelentést az átjáró elfogadhatja, de az egészségügyi tároló további ellenőrzés után elutasítja. Például a health store elutasíthatja a jelentést, mert egy érvénytelen paraméter, mint például egy elavult sorszám. Ha meg szeretné tudni, hogy a jelentés alkalmazva lett-e az állapottárolóban, ellenőrizze az alkalmazás állapotát, és ellenőrizze, hogy a jelentés megjelenik-e.
+Egy Service Fabric alkalmazás típusának kiosztása a fürttel. A kiépítés szükséges ahhoz, hogy új alkalmazásokat lehessen létrehozni. A kiépítési művelet végrehajtható a relativePathInImageStore által megadott alkalmazáscsomag vagy a külső ". sfpkg" URI-ja használatával. Hacsak a-External-kiépítés be van állítva, ez a parancs a rendszerkép-tároló kiépítését fogja várni.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. <br><br> Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveka ' '\~karakterrel van elválasztva. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a "myapp app1" lesz a 6.0+ és a "myapp/app1" a korábbi verziókban. |
-| --health-property [Kötelező] | Az egészségügyi információk tulajdonsága. <br><br> Egy entitás különböző tulajdonságokállapot-jelentésekkel rendelkezhet. A tulajdonság egy karakterlánc, és nem egy rögzített felsorolás, amely lehetővé teszi az előjelentés rugalmasságát a jelentést kiváltó állapot kategorizálására. Például egy "LocalWatchdog" SourceId azonosítóval rendelkező jelentéskészítő figyelheti a csomóponton rendelkezésre álló lemez állapotát, így jelentheti az "AvailableDisk" tulajdonságot az adott csomóponton. Ugyanaz a jelentéskészítő figyelheti a csomópont-kapcsolatot, így jelentheti a "Kapcsolat" tulajdonságot ugyanazon a csomóponton. Az állapottárolóban ezeket a jelentéseket külön állapoteseményekként kezeli a megadott csomópont. A SourceId-dal együtt a tulajdonság egyedileg azonosítja az állapotinformációkat. |
-| --állapot[Kötelező] | A lehetséges\: értékek a következők: "Érvénytelen", "Ok", "Figyelmeztetés", "Hiba", "Ismeretlen". |
-| --source-id [Kötelező] | A forrásnév, amely azonosítja az ügyfél/figyelő/rendszerösszetevő, amely létrehozta az állapotadatokat. |
-| --leírás | Az egészségügyi információk leírása. <br><br> Szabad szöveget jelöl, amely a jelentéssel kapcsolatos emberi olvasható információk hozzáadására szolgál. A leírás maximális karakterlánchossza 4096 karakter. Ha a megadott karakterlánc hosszabb, a program automatikusan csonkolja. Csonkoláskor a leírás utolsó karakterei a "[Csonka]" jelölőt tartalmazzák, a teljes karakterlánc mérete pedig 4096 karakter. A jelölő jelenléte azt jelzi a felhasználóknak, hogy csonkolás történt. Ne feledje, hogy csonkoláskor a leírás kevesebb mint 4096 karaktert tartalmaz az eredeti karakterláncból. |
-| --azonnali | Egy jelző, amely jelzi, hogy a jelentést azonnal el kell-e küldeni. <br><br> Egy állapotjelentés egy Service Fabric átjáró alkalmazás, amely továbbítja a health Store. Ha az Immediate értéke igaz, a rendszer azonnal elküldi a jelentést a HTTP-átjáróból a health Store-ba, függetlenül attól, hogy a HTTP átjáróalkalmazás által használt háló-ügyfél-beállításokat használja.If Immediate is set to true, the report is sent immediately from HTTP Gateway to the health store, regardless of the fabric client settings that the HTTP Gateway Application is using. Ez akkor hasznos, ha a kritikus jelentéseket a lehető leghamarabb el kell küldeni. Az időzítéstől és az egyéb feltételektől függően a jelentés küldése továbbra is sikertelen lehet, például ha a HTTP-átjáró be van zárva, vagy ha az üzenet nem éri el az átjárót. Ha az Immediate értéke hamis, a rendszer a http-átjáró ból származó állapotügyfél-beállítások alapján küldi el a jelentést. Ezért a rendszer a HealthReportSendInterval konfigurációnak megfelelően lesz kötegelve. Ez az ajánlott beállítás, mert lehetővé teszi, hogy az állapotjelző ügyfél optimalizálja az állapotjelentési üzeneteket az állapottárolónak, valamint az állapotjelentés feldolgozását. Alapértelmezés szerint a jelentések nem kerülnek azonnal elküldésre. |
-| --remove-when-expired | Érték, amely azt jelzi, hogy a jelentés törlődik-e az állapottárolóból, amikor lejár. <br><br> Ha értéke igaz, a jelentés törlődik a health Store lejárta után. Ha hamis ra van állítva, a jelentés lejártakor hibaként lesz kezelve. A tulajdonság értéke alapértelmezés szerint hamis. Amikor az ügyfelek rendszeres időközönként jelentést, meg kell állítani a RemoveWhenExpired false (alapértelmezett). Ily módon a jelentéskészítő problémák (pl. holtpont), és nem tud jelentést, az entitás kiértékelése hiba, amikor az állapotjelentés lejár. Ez az entitást hibaállapotként jelzi. |
-| --szekvenciaszám | Az állapotjelentés sorozatszáma numerikus karakterláncként. <br><br> A jelentéssorszámot az állapottároló az elavult jelentések észlelésére használja. Ha nincs megadva, a jelentés hozzáadásakor az állapotügyfél automatikusan létrehoz egy sorszámot. |
-| --idő-out -t | Alapértelmezett\: 60. |
-| --ttl | Az az időtartam, amelyre ez az állapotjelentés érvényes. Ez a mező Az Időtartam megadásához Az ISO8601 formátumot használja. <br><br> Amikor az ügyfelek rendszeres időközönként jelentést küldenek, az életidejéneknél nagyobb gyakorisággal kell jelentéseket küldeniük. Ha az ügyfelek az átmenetről számolnak be, beállíthatják, hogy az élet ideje végtelen. Amikor lejár az életidő, az állapotadatokat tartalmazó állapotesemény törlődik az állapottárolóból, ha az RemoveWhenExpired igaz, vagy hiba esetén kiértékelve, ha az RemoveWhenExpired hamis. Ha nincs megadva, az élethez való idő nem éri el a végtelen értéket. |
+| --alkalmazás-csomag-Letöltés-URI | Azon ". sfpkg" alkalmazáscsomag elérési útja, ahonnan az alkalmazáscsomag HTTP vagy HTTPS protokoll használatával tölthető le. <br><br> Csak a külső tároló üzembe helyezéséhez. Az alkalmazáscsomag tárolható egy külső tárolóban is, amely lekéréses műveletet biztosít a fájl letöltéséhez. A támogatott protokollok a HTTP és a HTTPS, és az elérési útnak engedélyeznie kell az OLVASÁSI hozzáférést. |
+| --Application-Type-Build-Path | Csak a rendszerképek tárolásához. Az alkalmazáscsomag relatív elérési útja az előző feltöltési művelet során megadott rendszerkép-tárolóban. |
+| --Application-Type-Name | Csak a külső tároló üzembe helyezéséhez. Az alkalmazás típusának neve az alkalmazás jegyzékfájljában található alkalmazás típusának neve. |
+| --alkalmazás-típus-verzió | Csak a külső tároló üzembe helyezéséhez. Az alkalmazás típusának verziója az alkalmazás jegyzékfájljában található alkalmazás típusú verziót jelöli. |
+| – külső – kiépítés | Az a hely, ahonnan az alkalmazáscsomag regisztrálható vagy üzembe helyezhető. Azt jelzi, hogy a kiépítés olyan alkalmazáscsomag esetében, amelyet korábban egy külső tárolóba töltöttek fel. Az alkalmazáscsomag a *. sfpkg kiterjesztéssel végződik. |
+| --No-WAIT | Azt jelzi, hogy aszinkron módon történjen-e a kiépítés. <br><br> Ha igaz értékre van állítva, a kiépítési művelet visszaadja, ha a rendszer elfogadja a kérést, és a létesítési művelet időkorlát nélkül folytatódik. Az alapértelmezett érték a hamis. Nagyméretű alkalmazáscsomag esetén azt javasoljuk, hogy az értéket állítsa igaz értékre. |
+| --időtúllépés-t | Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-type"></a>sfctl alkalmazás típusa
-A Service Fabric-fürtben lévő alkalmazástípusok listáját, amely pontosan a megadott névnek felel meg.
+## <a name="sfctl-application-report-health"></a>sfctl alkalmazás jelentése – állapot
+Állapotjelentést küld a Service Fabric alkalmazásról.
 
-A service fabric-fürtben kiépített vagy kiépített alkalmazástípusokra vonatkozó információkat adja vissza. Ezek az eredmények olyan alkalmazástípusok, amelyek neve pontosan megegyezik a paraméterként megadott altípussal, és amelyek megfelelnek a megadott lekérdezési paramétereknek. Az alkalmazástípus minden, az alkalmazástípus nevének megfelelő verziót ad vissza a rendszer, és minden verzió egy alkalmazástípusként kerül visszaadásra. A válasz tartalmazza az alkalmazástípus nevét, verzióját, állapotát és egyéb részleteit. Ez egy lapozható lekérdezés, ami azt jelenti, hogy ha nem az összes alkalmazástípus fér el egy oldalon, egy oldal eredmények ad vissza, valamint egy folytatási jogkivonatot, amely a következő oldal lekéréséhez használható. Ha például 10 alkalmazástípus van, de egy oldal csak az első három alkalmazástípushoz illik, vagy ha a maximális eredmény 3, akkor három lesz visszaadva. A többi eredmény eléréséhez a következő lapok lekérése a visszaadott folytatási jogkivonat használatával a következő lekérdezésben. Ha nincsenek további oldalak, a rendszer üres folytatási jogkivonatot ad vissza.
+A megadott Service Fabric alkalmazás állapotának jelentése. A jelentésnek tartalmaznia kell az állapotjelentést és a jelentést tartalmazó tulajdonság forrásával kapcsolatos információkat. A rendszer elküldi a jelentést egy Service Fabric Gateway-alkalmazásnak, amely továbbítja az állapot-áruháznak. Előfordulhat, hogy a jelentést az átjáró fogadja el, de a további ellenőrzés után a Health Store elutasította. Az állapotfigyelő például elutasítja a jelentést egy Érvénytelen paraméter miatt, például egy elavult sorszámot. Ha szeretné megtekinteni, hogy a jelentés alkalmazva lett-e az állapotfigyelő tárolóban, kérje az alkalmazás állapotát, és ellenőrizze, hogy megjelenik-e a jelentés
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --alkalmazás-típus-név [Kötelező] | Az alkalmazástípus neve. |
-| --alkalmazás-típus-verzió | Az alkalmazástípus verziója. |
-| --folytatás-token | A folytatási token paraméter az eredmények következő készletének elérésére szolgál. A folytatási jogkivonat egy nem üres érték szerepel az API válasza, ha a rendszer eredményei nem férnek el egyetlen válasz. Ha ezt az értéket a következő API-hívás, az API adja vissza a következő eredményhalmaz. Ha nincsenek további eredmények, akkor a folytatási jogkivonat nem tartalmaz értéket. Ennek a paraméternek az értékét nem szabad URL-kódolásra kódolni. |
-| --kizárás-alkalmazás-paraméterek | Az a jelző, amely meghatározza, hogy az alkalmazás paraméterei ki lesznek-e zárva az eredményből. |
-| --max-eredmények | A lapozható lekérdezések részeként visszaadandó eredmények maximális száma. Ez a paraméter határozza meg a visszaadott eredmények számának felső határát. A visszaadott eredmények kisebbek lehetnek, mint a megadott maximális eredmények, ha nem férnek el az üzenetben a konfigurációban megadott maximális üzenetméret-korlátozások nak megfelelően. Ha ez a paraméter nulla vagy nincs megadva, a lapozható lekérdezés a lehető legtöbb eredményt tartalmazza, amely elfér a visszatérési üzenetben. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-ID [kötelező] | Az alkalmazás identitása. <br><br> Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziókban a 6.0 + és a "SajátPr/App1" értéknél. |
+| --Health-Property [kötelező] | Az állapotadatok tulajdonsága. <br><br> Az entitások különböző tulajdonságokhoz tartozhatnak állapotjelentést. A tulajdonság egy karakterlánc, nem pedig rögzített enumerálás, amely lehetővé teszi, hogy a jelentéskészítő rugalmasan kategorizálja a jelentést kiváltó állapot feltételeit. A "LocalWatchdog" SourceId forrásazonosító rendelkező jelentéskészítő például nyomon követheti a csomópontok rendelkezésre álló lemezének állapotát, így az adott csomópont "AvailableDisk" tulajdonságát is jelentheti. Ugyanaz a riporter figyelheti a csomópontok kapcsolatát, így a "kapcsolat" tulajdonságot is jelentheti ugyanazon a csomóponton. Az állapotfigyelő szolgáltatásban ezek a jelentések különálló állapotadatokként lesznek kezelve a megadott csomópont esetében. A SourceId forrásazonosító együtt a tulajdonság egyedileg azonosítja az állapotadatok adatait. |
+| --állapotadatok [kötelező] | A lehetséges értékek\: a következők lehetnek: "Érvénytelen", "OK", "figyelmeztetés", "hiba", "ismeretlen". |
+| – forrás-azonosító [kötelező] | Az állapottal kapcsolatos adatokat létrehozó ügyfél/watchdog/rendszer összetevőt azonosító forrás neve. |
+| – Leírás | Az állapotadatok leírása. <br><br> A jelentésből származó, emberi olvasásra alkalmas adatok hozzáadására szolgáló szabad szöveget jelöli. A Leírás maximális hossza 4096 karakter. Ha a megadott karakterlánc már nem érhető el, a rendszer automatikusan csonkolja. A csonkítás során a Leírás utolsó karakterei a "[csonkolt]" jelölőt tartalmazzák, a teljes karakterlánc mérete pedig 4096 karakter. A jelölő jelenléte azt jelzi, hogy a felhasználók csonkítva lettek. Vegye figyelembe, hogy a csonkítás során a Leírás kevesebb, mint 4096 karakterből áll az eredeti sztringből. |
+| – azonnali | Egy jelző, amely jelzi, hogy a jelentést azonnal el kell-e juttatni. <br><br> Egy állapotjelentés érkezik egy Service Fabric Gateway-alkalmazásba, amely továbbítja az állapot-áruháznak. Ha az azonnali beállítás értéke TRUE (igaz), a rendszer azonnal elküldi a jelentést a HTTP-átjáróról az állapotfigyelő tárolóba, függetlenül a HTTP-átjáró alkalmazás által használt háló-ügyfél beállításaitól. Ez olyan kritikus fontosságú jelentések esetében hasznos, amelyeket a lehető leghamarabb el kell juttatni. Az Időzítéstől és az egyéb feltételektől függően előfordulhat, hogy a jelentés küldése továbbra is meghiúsul, például ha a HTTP-átjáró be van zárva, vagy az üzenet nem éri el az átjárót. Ha az azonnali beállítás hamis értékre van állítva, a rendszer a HTTP-átjáró állapot-ügyfélbeállítások alapján elküldi a jelentést. Ezért a HealthReportSendInterval-konfigurációnak megfelelően kötegbe kerül. Ez az ajánlott beállítás, mivel lehetővé teszi, hogy az állapot-ügyfél optimalizálja az állapot-jelentési üzeneteket az állapotfigyelő tárolóba, valamint az állapotjelentés feldolgozását. Alapértelmezés szerint a rendszer nem küldi el azonnal a jelentéseket. |
+| --Remove-when-lejárt | Az érték, amely azt jelzi, hogy a jelentés törlődik-e a Health Store-ból, amikor lejár. <br><br> Ha az értéke TRUE (igaz), a rendszer eltávolítja a jelentést az állapot-áruházból a lejárat után. Ha hamis értékre van állítva, a jelentés a lejártkor hibaként lesz kezelve. A tulajdonság értéke alapértelmezés szerint hamis. Amikor az ügyfelek rendszeresen jelentést küldenek, a Eltávolításlejáratkor false (alapértelmezett) értéket kell beállítania. Így a riporter problémákba ütközik (például holtpont), és nem tud jelentést készíteni, az entitást a rendszer hiba esetén kiértékeli, amikor az állapotjelentés lejár. Ez az entitás a hiba állapotának megfelelően jelenik meg. |
+| --Sequence-Number | Az állapotjelentés sorszáma numerikus karakterláncként. <br><br> A jelentés sorszámát a Health Store használja az elavult jelentések észlelésére. Ha nincs megadva, a rendszer automatikusan létrehozza a sorszámot, amikor egy jelentés hozzáadása történik. |
+| --időtúllépés-t | Alapértelmezett\: 60. |
+| --TTL | Az az időtartam, ameddig ez az állapotjelentés érvényes. Ez a mező ISO8601 formátumot használ az időtartam megadásához. <br><br> Amikor az ügyfelek rendszeresen jelentést küldenek, a jelentéseknek az élettartamuk során nagyobb gyakorisággal kell elküldeniük a jelentéseket. Ha az ügyfelek áttérnek a váltásra, beállíthatja, hogy az idő a végtelen értékre legyen állítva. Ha a lejárati idő lejár, az állapottal kapcsolatos információkat tartalmazó állapotot a rendszer eltávolítja az állapotfigyelő tárolóból, ha a Eltávolításlejáratkor értéke TRUE (igaz), vagy hiba esetén kiértékelt, ha a Eltávolításlejáratkor hamis. Ha nincs megadva, a rendszer az alapértelmezett élettartamot a végtelen értékre adja. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-type-list"></a>sfctl alkalmazástípus-lista
-Letöltőa Service Fabric-fürt alkalmazástípusainak listája.
+## <a name="sfctl-application-type"></a>sfctl-alkalmazás típusa
+Beolvassa a Service Fabric-fürtben található, pontosan a megadott névvel egyező típusú alkalmazások listáját.
 
-A service fabric-fürtben kiépített vagy kiépített alkalmazástípusokra vonatkozó információkat adja vissza. Az alkalmazástípus minden verziója egy alkalmazástípusként kerül visszaadásra. A válasz tartalmazza az alkalmazástípus nevét, verzióját, állapotát és egyéb részleteit. Ez egy lapozható lekérdezés, ami azt jelenti, hogy ha nem az összes alkalmazástípus fér el egy oldalon, egy oldal eredmények ad vissza, valamint egy folytatási jogkivonatot, amely a következő oldal lekéréséhez használható. Ha például 10 alkalmazástípus van, de egy oldal csak az első három alkalmazástípushoz illik, vagy ha a maximális eredmény 3, akkor három lesz visszaadva. A többi eredmény eléréséhez a következő lapok lekérése a visszaadott folytatási jogkivonat használatával a következő lekérdezésben. Ha nincsenek további oldalak, a rendszer üres folytatási jogkivonatot ad vissza.
+A kiépített vagy a Service Fabric fürtben kiépített alkalmazási típusok adatait adja vissza. Ezek az eredmények olyan típusú alkalmazások, amelyek neve pontosan egyezik a paraméterként megadott névvel, és amelyek megfelelnek a megadott lekérdezési paramétereknek. Az alkalmazás típusának nevével egyező összes verziót adja vissza a rendszer, és mindegyik verzió egyetlen alkalmazás típusúként lett visszaadva. A válasz tartalmazza az alkalmazás típusának nevét, verziószámát, állapotát és egyéb részleteit. Ez egy lapozható lekérdezés, amely azt jelenti, hogy ha nem minden alkalmazás-típus fér el egy oldalon, a rendszer az eredmények egyik oldalát adja vissza, valamint egy folytatási tokent, amely a következő oldal beolvasására használható. Ha például 10 alkalmazás típusa van, de egy oldal csak az első három alkalmazás típushoz fér hozzá, vagy ha a max results értéke 3, akkor a rendszer három értéket ad vissza. A többi eredmény eléréséhez a következő lekérdezésben a visszaadott folytatási token használatával kérje le a következő lapokat. Üres folytatási tokent ad vissza, ha nincsenek további lapok.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --alkalmazás-típus-meghatározás-fajta-szűrő | Az ApplicationTypeDefinitionKind szűrésére szolgál, amely a Service Fabric alkalmazástípus definiálására használt mechanizmus.  <br> - Alapértelmezett - Alapértelmezett érték, amely ugyanazt a funkciót látja el, mint az "Összes" kiválasztása. Az érték 0.  <br> - All - Szűrő, amely egyezteti a bemeneti bármely ApplicationTypeDefinitionKind értékkel. Az érték 65535.  <br> - ServiceFabricApplicationPackage - Szűrő, amely megfelel a bemeneti ApplicationTypeTypeKind value ServiceFabricApplicationPackage. Az érték 1.  <br> - Compose - Szűrő, amely megfelel a bemeneti ApplicationTypeDefinitionKind érték Compose. Az érték 2. |
-| --folytatás-token | A folytatási token paraméter az eredmények következő készletének elérésére szolgál. A folytatási jogkivonat egy nem üres érték szerepel az API válasza, ha a rendszer eredményei nem férnek el egyetlen válasz. Ha ezt az értéket a következő API-hívás, az API adja vissza a következő eredményhalmaz. Ha nincsenek további eredmények, akkor a folytatási jogkivonat nem tartalmaz értéket. Ennek a paraméternek az értékét nem szabad URL-kódolásra kódolni. |
-| --kizárás-alkalmazás-paraméterek | Az a jelző, amely meghatározza, hogy az alkalmazás paraméterei ki lesznek-e zárva az eredményből. |
-| --max-eredmények | A lapozható lekérdezések részeként visszaadandó eredmények maximális száma. Ez a paraméter határozza meg a visszaadott eredmények számának felső határát. A visszaadott eredmények kisebbek lehetnek, mint a megadott maximális eredmények, ha nem férnek el az üzenetben a konfigurációban megadott maximális üzenetméret-korlátozások nak megfelelően. Ha ez a paraméter nulla vagy nincs megadva, a lapozható lekérdezés a lehető legtöbb eredményt tartalmazza, amely elfér a visszatérési üzenetben. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-Type-Name [kötelező] | Az alkalmazás típusának neve. |
+| --alkalmazás-típus-verzió | Az alkalmazás típusának verziója. |
+| --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
+| --kizárás-Application-Parameters | A jelző, amely megadja, hogy az alkalmazás paramétereinek ki lesznek-e zárva az eredményből. |
+| --max-results | A lapozható lekérdezések részeként visszaadott eredmények maximális száma. Ez a paraméter a visszaadott eredmények számának felső határát határozza meg. A visszaadott eredmények a megadott maximális eredményeknél kisebbek lehetnek, ha nem férnek hozzá az üzenethez, mint a konfigurációban definiált maximális üzenet méretére vonatkozó korlátozások. Ha a paraméter értéke nulla vagy nincs megadva, a lapozható lekérdezés a visszaadott üzenetben szereplő lehető legtöbb eredményt tartalmazza. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-unprovision"></a>sfctl alkalmazás kiépítés
-Eltávolítja vagy törli a Service Fabric-alkalmazástípust a fürtből.
+## <a name="sfctl-application-type-list"></a>sfctl-alkalmazás típusa – lista
+Beolvassa a Service Fabric-fürtben található Alkalmazásbeállítások listáját.
 
-Ez a művelet csak akkor hajtható végre, ha az alkalmazástípus összes alkalmazáspéldányát törölték. Ha az alkalmazástípus nincs regisztrálva, nem hozhatók létre új alkalmazáspéldányok ehhez az alkalmazástípushoz.
+A kiépített vagy a Service Fabric fürtben kiépített alkalmazási típusok adatait adja vissza. Egy alkalmazás típusának mindegyik verzióját egyetlen alkalmazás típusúként adja vissza a rendszer. A válasz tartalmazza az alkalmazás típusának nevét, verziószámát, állapotát és egyéb részleteit. Ez egy lapozható lekérdezés, amely azt jelenti, hogy ha nem minden alkalmazás-típus fér el egy oldalon, a rendszer az eredmények egyik oldalát adja vissza, valamint egy folytatási tokent, amely a következő oldal beolvasására használható. Ha például 10 alkalmazás típusa van, de egy oldal csak az első három alkalmazás típushoz fér hozzá, vagy ha a max results értéke 3, akkor a rendszer három értéket ad vissza. A többi eredmény eléréséhez a következő lekérdezésben a visszaadott folytatási token használatával kérje le a következő lapokat. Üres folytatási tokent ad vissza, ha nincsenek további lapok.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --alkalmazás-típus-név [Kötelező] | Az alkalmazástípus neve. |
-| --alkalmazás-típus-verzió [Kötelező] | Az alkalmazástípus nak az alkalmazásjegyzékben meghatározott verziója. |
-| --async-paraméter | A megvilágító jelző, amely azt jelzi, hogy a nem kell-e aszinkron módon bekövetkeznie. Ha a készlet igaz, a nem létesítési művelet visszaadja, ha a rendszer elfogadja a kérelmet, és a kiépítetlen művelet időkorlát nélkül folytatódik. Az alapértelmezett érték a hamis. Azonban azt javasoljuk, hogy a kiépített nagy alkalmazáscsomagok true értékre állítása. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-Type-Definition-Kind-Filter | A ApplicationTypeDefinitionKind szűrésére szolgál, amely egy Service Fabric alkalmazás típusának definiálására szolgáló mechanizmus.  <br> – Alapértelmezett – az alapértelmezett érték, amely ugyanazt a funkciót hajtja végre, mint az "összes" lehetőséget. Az érték 0.  <br> – Minden olyan szűrő, amely megfelel bármely ApplicationTypeDefinitionKind értéknek. Az érték 65535.  <br> -ServiceFabricApplicationPackage – a ApplicationTypeDefinitionKind érték ServiceFabricApplicationPackage rendelkező bemenettel egyező szűrő. Az érték 1.  <br> -Levélírás – a ApplicationTypeDefinitionKind értékkel megegyező bemeneti szűrő. Az érték 2. |
+| --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
+| --kizárás-Application-Parameters | A jelző, amely megadja, hogy az alkalmazás paramétereinek ki lesznek-e zárva az eredményből. |
+| --max-results | A lapozható lekérdezések részeként visszaadott eredmények maximális száma. Ez a paraméter a visszaadott eredmények számának felső határát határozza meg. A visszaadott eredmények a megadott maximális eredményeknél kisebbek lehetnek, ha nem férnek hozzá az üzenethez, mint a konfigurációban definiált maximális üzenet méretére vonatkozó korlátozások. Ha a paraméter értéke nulla vagy nincs megadva, a lapozható lekérdezés a visszaadott üzenetben szereplő lehető legtöbb eredményt tartalmazza. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-upgrade"></a>sfctl alkalmazás frissítése
-Elindítja egy alkalmazás frissítését a Service Fabric-fürtben.
+## <a name="sfctl-application-unprovision"></a>sfctl-alkalmazás kiépítése
+Egy Service Fabric alkalmazás típusának eltávolítása vagy törlése a fürtből.
 
-Ellenőrzi a megadott alkalmazásfrissítési paramétereket, és elindítja az alkalmazás frissítését, ha a paraméterek érvényesek. Vegye figyelembe, hogy a frissítés leírása felülírja a meglévő alkalmazásleírást. Ez azt jelenti, hogy ha a paraméterek nincsenek megadva, az alkalmazások meglévő paraméterei felülíródnak az üres paraméterek listájával. Ez azt eredményezné, hogy az alkalmazás az alkalmazásjegyzék paramétereinek alapértelmezett értékét használja.
+Ez a művelet csak akkor hajtható végre, ha az alkalmazás összes példánya törölve lett. Ha az alkalmazás típusa nincs regisztrálva, az adott alkalmazás típusához nem hozhatók létre új alkalmazás-példányok.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. <br><br> Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a korábbi verziókban "myapp app1" lesz, a korábbi verziókban pedig "myapp/app1". |
-| --alkalmazás-verzió [Kötelező] | A célalkalmazás típusverziója (az alkalmazásjegyzékben található) az alkalmazás frissítéséhez. |
-| --paraméterek [Kötelező] | Az alkalmazás frissítésekor alkalmazandó alkalmazásparaméter-felülbírálások JSON-kódolású listája. |
-| --default-service-health-policy | JSON kódolt specifikációja az állapotházirend alapértelmezés szerint egy szolgáltatástípus állapotának kiértékeléséhez használt. |
-| --hiba-művelet | A figyelt frissítés figyelési szabályzatvagy az állapotházirend-sértések esetén végrehajtandó művelet. |
-| --erő-újraindítás | A frissítés során a folyamatokat akkor is erőteljesen újrakell indítani, ha a kódverzió nem változott. |
-| --health-check-retry-idő-időállás | Az állapot-ellenőrzések végrehajtása között az állapotellenőrzések végrehajtása között, ha az alkalmazás vagy a fürt nem kifogástalan.  Alapértelmezett\: PT0H10m0s. |
-| --health-check-stable-időtartam | Az az idő, amerre az alkalmazásnak vagy fürtnek kifogástalan állapotban kell maradnia, mielőtt a frissítés a következő frissítési tartományra lépne.  Alapértelmezett\: PT0H2M0s. <br><br> Először egy ISO 8601 időtartamot képviselő karakterláncként értelmezik. Ha ez nem sikerül, akkor a rendszer a teljes ezredmásodpercszámot jelző számként értelmezi. |
-| --health-check-wait-időtartam | A frissítési tartomány befejezése után a várakozási idő időtartama az állapotellenőrzési folyamat megkezdése előtt.  Alapértelmezett\: 0. |
-| --max-egészségtelen-apps | A nem megfelelő állapotú telepített alkalmazások maximálisan engedélyezett százaléka. 0 és 100 közötti számként jelölve. |
-| --mód | A működés közbeni frissítés során az állapot figyelésére használt mód.  Alapértelmezett\: UnmonitoredAuto. |
-| --replika-set-check-időout | A frissítési tartomány feldolgozásának letiltására és a rendelkezésre állás elvesztésének megakadályozására rendelkezésre álló idő letiltására rendelkezésre álló idő, ha nem várt problémák merülnek fel. Másodpercben mérve. |
-| --szolgáltatás-egészségügyi politika | JSON kódolású leképezés szolgáltatástípus-állapotházirenddel szolgáltatástípus neve szerint. A térkép üres, legyen az alapértelmezett. |
-| --idő-out -t | Alapértelmezett\: 60. |
-| --upgrade-domain-időout | Az egyes frissítési tartományoknak a FailureAction végrehajtása előtt be kell fejezniük az időt.  Alapértelmezett\: P10675199DT02H48M05.4775807s. <br><br> Először egy ISO 8601 időtartamot képviselő karakterláncként értelmezik. Ha ez nem sikerül, akkor a rendszer a teljes ezredmásodpercszámot jelző számként értelmezi. |
-| --upgrade-időeltetés | A teljes frissítés befejezéséhez szükséges idő a FailureAction végrehajtása előtt.  Alapértelmezett\: P10675199DT02H48M05.4775807s. <br><br> Először egy ISO 8601 időtartamot képviselő karakterláncként értelmezik. Ha ez nem sikerül, akkor a rendszer a teljes ezredmásodpercszámot jelző számként értelmezi. |
-| --figyelmeztetés hibaként | Azt jelzi, hogy a figyelmeztetések kezelése ugyanolyan súlyos, mint a hibák. |
+| --Application-Type-Name [kötelező] | Az alkalmazás típusának neve. |
+| --Application-Type-Version [kötelező] | Az alkalmazás jegyzékfájlban definiált verziója. |
+| --aszinkron-paraméter | Az a jelző, amely azt jelzi, hogy a kiépítés megszüntetése aszinkron módon történik-e. Ha igaz értékre van állítva, a kiépítési művelet visszaadja, ha a rendszer elfogadja a kérést, és a kiépítés művelet időkorlát nélkül folytatódik. Az alapértelmezett érték a hamis. Azt javasoljuk azonban, hogy igaz értékre állítsa a nagyméretű, kiépített alkalmazás-csomagokat. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-upgrade-resume"></a>sfctl alkalmazás frissítés-folytatás
-Folytatja egy alkalmazás frissítését a Service Fabric-fürtben.
+## <a name="sfctl-application-upgrade"></a>sfctl-alkalmazás frissítése
+Egy alkalmazás frissítésének megkezdése a Service Fabric fürtön.
 
-Folytatja a nem figyelt manuális Service Fabric alkalmazás frissítése. A Service Fabric egyszerre csak egy frissítési tartományt frissít. Nem figyelt manuális frissítések esetén, miután a Service Fabric befejezi a frissítési tartományt, megvárja, hogy hívja meg ezt az API-t, mielőtt továbblépne a következő frissítési tartományba.
+Ellenőrzi a megadott alkalmazás-frissítési paramétereket, és megkezdi az alkalmazás frissítését, ha a paraméterek érvényesek. Vegye figyelembe, hogy a frissítés leírása lecseréli a meglévő alkalmazás leírását. Ez azt jelenti, hogy ha a paraméterek nincsenek megadva, a rendszer felülírja az alkalmazások meglévő paramétereit az üres paraméterek listával. Ez azt eredményezi, hogy az alkalmazás a paraméterek alapértelmezett értékét használja az alkalmazás jegyzékfájljában.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a korábbi verziókban "myapp app1" lesz, a korábbi verziókban pedig "myapp/app1". |
-| --upgrade-domain-name [Kötelező] | Annak a frissítési tartománynak a neve, amelyben a frissítés folytatásához. |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-ID [kötelező] | Az alkalmazás identitása. <br><br> Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
+| --alkalmazás-verzió [kötelező] | Az alkalmazás frissítéséhez használt célalkalmazás-típus verziója (az alkalmazás jegyzékfájljában található). |
+| – paraméterek [kötelező] | Az alkalmazás frissítésekor alkalmazandó felülbírálások JSON-kódolású listája. |
+| --default-Service-Health-Policy | Az alapértelmezés szerint a szolgáltatástípus állapotának kiértékeléséhez használt állapotfigyelő JSON-kódolású specifikációja. |
+| – hiba – művelet | Az a művelet, amelyet akkor kell végrehajtani, ha a figyelt frissítés figyelési házirendet vagy állapotházirend megsértését tapasztalja. |
+| --kényszerített újraindítás | A folyamatok kényszerített újraindítása a frissítés során, még akkor is, ha a kód verziószáma nem változott. |
+| --állapot-ellenőrzési-újrapróbálkozás-időtúllépés | Az állapot-ellenőrzések elvégzésére irányuló kísérletek közötti időtartam, ha az alkalmazás vagy a fürt állapota nem kifogástalan.  Alapértelmezett\: PT0H10M0S. |
+| --állapot-ellenőrzési-stabil-időtartam | Az az időtartam, ameddig az alkalmazásnak vagy a fürtnek kifogástalan állapotban kell maradnia, mielőtt a frissítés a következő frissítési tartományba kerül.  Alapértelmezett\: PT0H2M0S. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
+| --állapot-ellenőrzési várakozás időtartama | Az a várakozási idő, ameddig a frissítési tartomány befejezése után meg kell várni az állapot-ellenőrzési folyamat megkezdése előtt.  Alapértelmezett\: 0. |
+| --Max-sérült-alkalmazások | A nem kifogástalan állapotú központilag telepített alkalmazások megengedett százalékos aránya. 0 és 100 közötti számként jelenik meg. |
+| – üzemmód | A működés közbeni frissítés során az állapot figyelésére szolgáló mód.  Alapértelmezett\: UnmonitoredAuto. |
+| --replika-set-pipa-időtúllépés | A frissítési tartomány feldolgozásának letiltására és a rendelkezésre állás elvesztésének megelőzésére szolgáló maximális időtartam, ha váratlan problémák merülnek fel. Másodpercben mérve. |
+| --szolgáltatás-állapot-házirend | A JSON-kódolású leképezés a szolgáltatástípus-állapotra vonatkozó házirend-típus alapján. Alapértelmezés szerint a Térkép üres. |
+| --időtúllépés-t | Alapértelmezett\: 60. |
+| – frissítés – tartomány – időtúllépés | Az egyes frissítési tartományok befejezésének időtartamát a FailureAction végrehajtása előtt kell végrehajtani.  Alapértelmezett\: P10675199dt02h48m 05.4775807 s. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
+| – frissítés – időtúllépés | Az a időtartam, ameddig a teljes frissítésnek a FailureAction végrehajtása előtt el kell végeznie.  Alapértelmezett\: P10675199dt02h48m 05.4775807 s. <br><br> A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. |
+| --Figyelmeztetés – hiba | Azt jelzi, hogy a figyelmeztetések a hibákkal azonos súlyossággal vannak-e kezelve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-upgrade-rollback"></a>sfctl alkalmazás frissítés-visszaállítás
-Elindítja a Service Fabric-fürtben lévő alkalmazás folyamatban lévő frissítésének visszaállítása.
+## <a name="sfctl-application-upgrade-resume"></a>sfctl-alkalmazás frissítése – folytatás
+Folytatja az alkalmazások frissítését a Service Fabric-fürtön.
 
-Elindítja az aktuális alkalmazásfrissítés visszaállítását az előző verzióra. Ez az API csak az aktuális folyamatban lévő frissítés visszaállítására használható, amely az új verzióra van előregörgetve. Ha az alkalmazás frissítése jelenleg nem történik meg, használja a StartApplicationUpgrade API-t a kívánt verzióra való frissítéshez, beleértve a korábbi verzióra való visszaállítást is.
+A nem figyelt manuális Service Fabric az alkalmazás frissítését folytatja. Service Fabric egyszerre egy frissítési tartományt frissít. A nem figyelt manuális frissítésekhez, miután Service Fabric befejezte a frissítési tartományt, megvárja, hogy hívja meg ezt az API-t, mielőtt továbblép a következő frissítési tartományra.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a korábbi verziókban "myapp app1" lesz, a korábbi verziókban pedig "myapp/app1". |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
+| --upgrade-domain-name [kötelező] | Annak a frissítési tartománynak a neve, amelyben a frissítés folytatása folyamatban van. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-application-upgrade-status"></a>sfctl alkalmazás frissítési állapota
-Az alkalmazáson végrehajtott legújabb frissítés részleteinek bekerülése.
+## <a name="sfctl-application-upgrade-rollback"></a>sfctl-alkalmazás frissítése – visszaállítás
+Elindítja a Service Fabric fürtön futó alkalmazás jelenleg folyamatban lévő frissítését.
 
-A legutóbbi alkalmazásfrissítés állapotára vonatkozó információkat, valamint az alkalmazás állapotával kapcsolatos problémák hibakeresését segítő részleteket ad vissza.
+Elindítja az aktuális alkalmazás frissítését az előző verzióra. Ez az API csak az új verzióra továbbítandó aktuális folyamatban lévő frissítés visszaállítására használható. Ha az alkalmazás jelenleg nem frissül, használja a StartApplicationUpgrade API-t a kívánt verzióra való frissítéshez, beleértve az előző verzióra történő visszaállítást is.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --application-id [Kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a\:"fabric" URI-séma nélkül. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például az alkalmazás neve\:"fabric /myapp/app1", az alkalmazás\~identitása a korábbi verziókban "myapp app1" lesz, a korábbi verziókban pedig "myapp/app1". |
-| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-application-upgrade-status"></a>sfctl-alkalmazás frissítése – állapot
+Az alkalmazáson végrehajtott legújabb frissítés részleteinek beolvasása.
+
+Információt ad vissza az alkalmazás legújabb frissítésének állapotáról, valamint az alkalmazás állapotával kapcsolatos hibák elhárítását segítő részletekről.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric\:/MyApp/App1", az alkalmazás identitása "SajátPr\~App1" lesz a korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-application-upload"></a>sfctl alkalmazás feltöltése
-A Service Fabric-alkalmazáscsomag másolása a lemezképtárolóba.
+Service Fabric alkalmazáscsomag másolása a rendszerkép-tárolóba.
 
-Tetszés szerint megjelenítheti a feltöltési folyamatot a csomag minden egyes fájlja esetében. A feltöltési `stderr`folyamat a rendszer nek kerül elküldésre.
+A csomag összes fájljának feltöltési folyamata opcionálisan megjeleníthető. A feltöltési folyamat el `stderr`lesz küldve.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --elérési út [Kötelező] | A helyi alkalmazáscsomag elérési útja. |
-| --tömörítés | Csak a Service Fabric alkalmazáscsomagok alkalmazható. Hozzon létre egy új mappát, amely tartalmazza a tömörített alkalmazáscsomagot az alapértelmezett helyre vagy a tömörített hely paraméter által megadott helyre, majd töltse fel az újonnan létrehozott mappát. <br><br> Ha már van tömörített fájl, amelyet az sfctl generál, a jelző beállítása esetén a program felülírja azt. Hiba jelenik meg, ha a könyvtár nem alkalmazáscsomag. Ha már tömörített alkalmazáscsomagról van szó, a mappa a lap nak másolódik. Alapértelmezés szerint az újonnan létrehozott tömörített alkalmazáscsomag sikeres feltöltés után törlődik. Ha a feltöltés nem sikerül, kérjük, szükség szerint manuálisan tisztítsa meg a tömörített csomagot. A törlés nem távolítja el azokat az üres könyvtárakat, amelyek akkor hozhatók létre, ha a tömörített hely paraméter nem létező könyvtárakra hivatkozik. |
-| --tömörített hely | A tömörített alkalmazáscsomag elhelyezésének helye. <br><br> Ha nincs megadva hely, a tömörített csomag egy újonnan létrehozott mappa alá kerül, amelynek neve sfctl_compressed_temp az elérési út argumentumban megadott szülőkönyvtár alatt. Ha például az elérési út\:argumentum értéke C /FolderA/AppPkg, akkor\:a tömörített csomag hozzáadódik a C /FolderA/sfctl_compressed_temp/AppPkg-hez. |
-| --imagestore-karakterlánc | Az alkalmazáscsomag feltöltéséhez célképtároló.  Alapértelmezett\: \:háló ImageStore. <br><br> A fájl helyre való feltöltéséhez indítsa\:el ezt a paramétert a "file" (fájl) segítségével. Ellenkező esetben az értéknek a lemezképtároló kapcsolati karakterláncának kell lennie, például az alapértelmezett értéknek. |
-| --keep-tömörített | Azt jelzi, hogy a generált tömörített csomagot meg kell-e tartani a sikeres feltöltés befejezésekor. <br><br> Ha nincs beállítva, akkor a sikeres befejezéskor a tömörített alkalmazáscsomagok törlődnek. Ha a feltöltés nem sikerült, akkor az alkalmazáscsomag mindig a kimeneti könyvtárban marad újra feltöltésre. |
-| --show-haladás | Nagy csomagok fájlfeltöltési folyamatának megjelenítése. |
-| --idő-out -t | A teljes időkitöltés másodpercben. A feltöltés sikertelen lesz, és a feltöltési időmegadási idő lejárta után hibaüzenetet ad vissza. Ez az időmeghosszabbítás a teljes alkalmazáscsomagra vonatkozik, és az egyes fájlidő-megmaradások megegyeznek a hátralévő időmegmaradási időtartammal. Az időtúlfoglalás nem tartalmazza az alkalmazáscsomag tömörítéséhez szükséges időt.  Alapértelmezett\: 300. |
+| – elérési út [kötelező] | Helyi alkalmazáscsomag elérési útja. |
+| – tömörítés | Csak Service Fabric alkalmazás-csomagokra érvényes. Hozzon létre egy új mappát, amely tartalmazza a tömörített alkalmazáscsomag vagy az alapértelmezett helyet, vagy a tömörített hely paraméter által megadott helyet, majd töltse fel az újonnan létrehozott mappát. <br><br> Ha már van olyan tömörített fájl, amelyet a sfctl hozott létre, a rendszer felülírja, ha ez a jelző be van állítva. Ha a könyvtár nem alkalmazáscsomag, a rendszer hibaüzenetet küld. Ha már tömörített alkalmazáscsomag van, a mappa a következőképpen lesz átmásolva:. Alapértelmezés szerint az újonnan létrehozott tömörített alkalmazáscsomag törlése sikeres feltöltés után megtörténik. Ha a feltöltés nem sikerült, manuálisan törölje a tömörített csomagot szükség szerint. A törlés nem távolít el üres dirs, amelyek akkor hozhatók létre, ha a tömörített Location paraméter nem létező címtárakra hivatkozik. |
+| --tömörített – hely | A tömörített alkalmazáscsomag üzembe helyezésének helye. <br><br> Ha nincs megadva hely, a tömörített csomag egy sfctl_compressed_temp nevű újonnan létrehozott mappába kerül, amely a Path argumentumban megadott szülő könyvtár alatt található. Ha például a Path argumentum értéke C\:/FolderA/AppPkg, akkor a tömörített csomag hozzá lesz adva a c\:/foldera/sfctl_compressed_temp/apppkg. |
+| --lemezképtárolóba-string | A cél rendszerkép-tároló az alkalmazáscsomag feltöltéséhez.  Alapértelmezett\: háló\:lemezképtárolóba. <br><br> A fájl helyére való feltöltéshez indítsa el ezt a paramétert a\:"file" értékkel. Ellenkező esetben az értéknek a rendszerkép-tárolóhoz tartozó kapcsolatok karakterláncának kell lennie, például az alapértelmezett értéknek. |
+| --Keep-Compressed | Azt határozza meg, hogy a létrehozott tömörített csomag sikeresen feltölthető-e a feltöltés befejezésére. <br><br> Ha nincs beállítva, akkor a sikeres befejezés után a rendszer törli a tömörített alkalmazáscsomag-csomagokat. Ha a feltöltés sikertelen volt, akkor az alkalmazáscsomag mindig a kimeneti könyvtárban marad a feltöltéshez. |
+| --show-Progress | Nagyméretű csomagok esetén a fájlfeltöltés előrehaladásának megjelenítése. |
+| --időtúllépés-t | A teljes időtúllépés másodpercben. A feltöltés sikertelen lesz, és a feltöltés időtúllépési időtartamának lejárta után hibaüzenetet ad vissza. Ez az időkorlát a teljes alkalmazáscsomag érvényes, és az egyes fájlok időtúllépése a hátralévő időtúllépési időtartammal egyenlő lesz. Az időtúllépés nem tartalmazza az alkalmazáscsomag tömörítéséhez szükséges időt.  Alapértelmezett\: 300. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
-| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
-| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
-| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
-| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Engedélyezett értékek\: : JSON, jsonc, Table, TSV.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat\:és példákat a http//jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
 ## <a name="next-steps"></a>További lépések
-- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
-- Ismerje meg, hogyan használhatja a Service Fabric CLI-t a [mintaparancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

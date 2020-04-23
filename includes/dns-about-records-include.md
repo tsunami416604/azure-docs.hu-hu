@@ -13,15 +13,15 @@ ms.locfileid: "73832056"
 ---
 ### <a name="record-names"></a>Rekordnevek
 
-Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A *teljesen minősített* tartománynév (FQDN) tartalmazza a zónanevet, míg a *relatív* név nem. A zónában `www` `contoso.com` lévő relatív bejegyzésnév például megadja `www.contoso.com`a teljesen minősített rekord nevét.
+Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A *teljes* tartománynév (FQDN) tartalmazza a zóna nevét, míg a *relatív* név nem. A zóna `www` `contoso.com` relatív rekordjának neve például a teljes rekord nevét `www.contoso.com`adja meg.
 
-Egy *csúcs*rekord a gyökérnél egy DNS-rekord vagy egy DNS-zóna *csúcsa*. A DNS-zónában `contoso.com`például egy csúcsrekordnak is `contoso.com` van teljesen minősített neve (ezt néha meztelen tartománynak is *nevezik).*  Megegyezés szerint a\@' ' relatív név a csúcsrekordok at jelöli.
+Egy *csúcs*rekord a gyökérnél egy DNS-rekord vagy egy DNS-zóna *csúcsa*. A DNS-zónában `contoso.com`például a csúcspont-rekord teljes névvel `contoso.com` is rendelkezik (ezt néha egy *meztelen* tartománynak is nevezik).  Az egyezmény szerint a relatív "\@" név az APEX-rekordok ábrázolására szolgál.
 
 ### <a name="record-types"></a>Rekordtípusok
 
 Minden DNS-rekord rendelkezik névvel és típussal. A rekordok különféle típusokba vannak rendezve attól függően, hogy milyen adatokat tartalmaznak. A leggyakoribb típus az „A” rekord, amely egy nevet képez le egy IPv4-címhez. Egy másik gyakori típus, az „MX” rekord, egy nevet képez le egy levelezési kiszolgálóhoz.
 
-Az Azure DNS minden gyakori DNS-rekordtípust támogat: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV és TXT. Vegye figyelembe, hogy az [SPF-rekordok TXT-rekordok használatával vannak jelölve](../articles/dns/dns-zones-records.md#spf-records).
+A Azure DNS az összes gyakori DNS-bejegyzéstípust támogatja: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV és TXT. Vegye figyelembe, hogy az [SPF-rekordok TXT-rekordok használatával vannak jelölve](../articles/dns/dns-zones-records.md#spf-records).
 
 ### <a name="record-sets"></a>Rekordhalmazok
 

@@ -5,25 +5,27 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0331678b50d2448013556ab0694d0ca87045c3a3
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 10c66ba175484d8b95f26ef9330753151a92969b
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82096916"
+ms.locfileid: "82106032"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívüli megoldás esetén Azure Automation
 
 A virtuális gépek **indítása és leállítása a munkaidőn kívüli** megoldás indításakor vagy leállításakor az Azure Virtual Machines szolgáltatás elindul vagy leáll. A felhasználó által meghatározott ütemterveken megkezdi vagy leállítja a gépeket, bepillantást Azure Monitor naplókba, és a választható e-maileket a [műveleti csoportok](../azure-monitor/platform/action-groups.md)használatával küldi el. A megoldás a legtöbb esetben támogatja a Azure Resource Manager és a klasszikus virtuális gépeket is. 
 
-Ez a megoldás egy decentralizált, alacsony költségű automatizálási lehetőséget biztosít azon felhasználók számára, akik optimalizálni szeretnék a virtuális gépek költségeit. Ezzel a megoldással a következőket teheti:
+Ez a megoldás a [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) parancsmag használatával indítja el a virtuális gépeket. A [stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) használatával állítja le a virtuális gépeket.
+
+> [!NOTE]
+> A **virtuális gépek indítása/leállítása a munkaidőn kívüli** megoldásban frissítve lett, hogy támogassa az elérhető Azure-modulok legújabb verzióit.
+
+A megoldás egy decentralizált, alacsony költségű automatizálási lehetőséget biztosít azon felhasználók számára, akik optimalizálni szeretnék a virtuális gépek költségeit. Ezzel a megoldással a következőket teheti:
 
 - [Virtuális gépek indítása és leállítása](automation-solution-vm-management-config.md#schedule).
 - A virtuális gépeket úgy ütemezhet, hogy az Azure- [címkék használatával](automation-solution-vm-management-config.md#tags) növekvő sorrendben induljon el és álljon le (a klasszikus virtuális gépek nem támogatottak).
 - Virtuális gépek alapleállása [alacsony CPU-használat](automation-solution-vm-management-config.md#cpuutil)alapján.
-
-> [!NOTE]
-> A **virtuális gépek indítása/leállítása a munkaidőn kívüli** megoldásban frissítve lett, hogy támogassa az elérhető Azure-modulok legújabb verzióit.
 
 A jelenlegi megoldás korlátai a következők:
 

@@ -1,6 +1,6 @@
 ---
-title: 'Számítógép csatlakoztatása virtuális hálózathoz pont–hely és RADIUS-hitelesítés használatával: PowerShell | Azure'
-description: P2S- és RADIUS-hitelesítéssel biztonságosan csatlakoztathatja a Windows és A Mac OS X ügyfeleket egy virtuális hálózathoz.
+title: 'Számítógép összekötése virtuális hálózathoz pont – hely kapcsolat és RADIUS-hitelesítés használatával: PowerShell | Azure'
+description: A Windows és Mac OS X ügyfelek biztonságos csatlakoztatása a virtuális hálózathoz P2S és RADIUS-hitelesítés használatával.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -14,47 +14,47 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/31/2020
 ms.locfileid: "80411773"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Pont-hely kapcsolat konfigurálása virtuális hálózattal RADIUS-hitelesítés használatával: PowerShell
+# <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Pont – hely kapcsolat konfigurálása VNet a RADIUS-hitelesítés használatával: PowerShell
 
-Ez a cikk bemutatja, hogyan hozhat létre radius-hitelesítést használó point-to-site kapcsolattal rendelkező virtuális hálózatot. Ez a konfiguráció csak az Erőforrás-kezelő telepítési modelljéhez érhető el.
+Ez a cikk bemutatja, hogyan hozhat létre egy olyan pont – hely kapcsolattal rendelkező VNet, amely RADIUS-hitelesítést használ. Ez a konfiguráció csak a Resource Manager-alapú üzemi modell esetében érhető el.
 
-A pont–hely (P2S) VPN-átjáró lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont-hely VPN-kapcsolatok akkor hasznosak, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például amikor otthonról vagy konferenciáról távmunkát kezdeményez. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy VNetre csatlakoztatni.
+A pont–hely (P2S) VPN-átjáró lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. A pont – hely VPN-kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a VNet, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy VNetre csatlakoztatni.
 
 A pont–hely VPN-kapcsolat indítása a Windows- és Mac-eszközökről történik. A kapcsolódó ügyfelek az alábbi hitelesítési módszereket használhatják: 
 
 * RADIUS-kiszolgáló
-* VPN-átjáró natív tanúsítványának hitelesítése
+* Natív tanúsítványalapú hitelesítés VPN Gateway
 
-Ez a cikk segít a P2S-konfiguráció konfigurálása radius-kiszolgálón történő hitelesítéssel. Ha ehelyett létrehozott tanúsítványok és VPN-átjárónatív tanúsítványhitelesítéssel szeretné hitelesíteni magát, olvassa el a [Pont-hely kapcsolat konfigurálása a virtuális hálózattal vpn-átjáró natív tanúsítványhitelesítésével](vpn-gateway-howto-point-to-site-rm-ps.md)című témakört.
+Ez a cikk segítséget nyújt a P2S-konfiguráció konfigurálásához a RADIUS-kiszolgáló használatával történő hitelesítéssel. Ha ehelyett a generált tanúsítványok és a VPN-átjáró natív tanúsítvány-hitelesítés használatával szeretne hitelesítést végezni, tekintse meg [a pont – hely kapcsolat konfigurálása VNet a VPN Gateway natív tanúsítvány-hitelesítés használatával](vpn-gateway-howto-point-to-site-rm-ps.md)című témakört.
 
-![Kapcsolatdiagram - RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
+![Összekötő diagram – sugár](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
-A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. A P2S a VPN-kapcsolatot SSTP (Secure Socket Tunneling Protocol), OpenVPN vagy IKEv2 protokollal hozza létre.
+A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. A P2S a VPN-kapcsolatokat az SSTP (Secure Socket Tunneling Protocol), az OpenVPN vagy a IKEv2 protokollal hozza létre.
 
-* Az SSTP egy TLS-alapú VPN-alagút, amelyet csak a Windows ügyfélplatformok támogatnak. Képes áthatolni a tűzfalakon, ezért ideális megoldás az Azure-hoz való csatlakozáshoz bármilyen tetszőleges. A kiszolgálói oldalon az SSTP 1.0, 1.1 és 1.2 verziója támogatott. Az ügyfél dönti el, hogy melyik verziót használja. Windows 8.1 és újabb kiadások esetén az SSTP alapértelmezés szerint az 1.2 verziót használja.
+* Az SSTP egy TLS-alapú VPN-alagút, amely csak Windowsos ügyféloldali platformokon támogatott. Képes áthatolni a tűzfalakon, ezért ideális megoldás az Azure-hoz való csatlakozáshoz bármilyen tetszőleges. A kiszolgálói oldalon az SSTP 1.0, 1.1 és 1.2 verziója támogatott. Az ügyfél dönti el, hogy melyik verziót használja. Windows 8.1 és újabb kiadások esetén az SSTP alapértelmezés szerint az 1.2 verziót használja.
 
-* OpenVPN® Protokoll, egy SSL/ TLS alapú VPN protokoll. A TLS VPN-megoldás áthatolhat a tűzfalakon, mivel a legtöbb tűzfal megnyitja a 443-as TCP-portot, amelyet a TLS használ. OpenVPN lehet használni, hogy csatlakozzon az Android, iOS (11.0-s és újabb verziók), Windows, Linux és Mac eszközök (OSX verzió10.13 és újabb).
+* OpenVPN® protokoll, SSL/TLS-alapú VPN protokoll. A TLS VPN-megoldás képes behatolni a tűzfalakba, mivel a legtöbb tűzfal a 443-as TCP-portot nyitja meg, amelyet a TLS használ. Az OpenVPN az Android, az iOS (11,0-es és újabb verziók), a Windows, a Linux és a Mac rendszerű eszközök (OSX 10,13-es és újabb verziók) használatával való kapcsolódásra használható.
 
 * IKEv2 VPN, egy szabványalapú IPsec VPN-megoldás. Az IKEv2 VPN segítségével Macről is lehetségessé válik a csatlakozás (OSX 10.11-es vagy újabb verziók használata esetén).
 
 A pont–hely kapcsolatokhoz a következőkre van szükség:
 
 * Útvonalalapú VPN-átjáró. 
-* A felhasználói hitelesítést kezelő RADIUS-kiszolgáló. A RADIUS-kiszolgáló a helyszínen vagy az Azure virtuális hálózatban is telepíthető.
-* Vpn-ügyfél konfigurációs csomag a virtuális hálózathoz csatlakozó Windows-eszközökhöz. A VPN-ügyfél konfigurációs csomag biztosítja a VPN-ügyfél P2S-en keresztül ihez való csatlakozásához szükséges beállításokat.
+* RADIUS-kiszolgáló a felhasználói hitelesítés kezeléséhez. A RADIUS-kiszolgáló a helyszínen vagy az Azure-VNet is üzembe helyezhető.
+* VPN-ügyfél konfigurációs csomagja azon Windows-eszközökhöz, amelyek csatlakozni fognak a VNet. A VPN-ügyfél konfigurációs csomagja biztosítja azokat a beállításokat, amelyek szükségesek ahhoz, hogy a VPN-ügyfél csatlakozhasson a P2S.
 
-## <a name="about-active-directory-ad-domain-authentication-for-p2s-vpns"></a><a name="aboutad"></a>Az Active Directory (AD) tartományi hitelesítése p2s VPN-hez
+## <a name="about-active-directory-ad-domain-authentication-for-p2s-vpns"></a><a name="aboutad"></a>Tudnivalók a P2S VPN-EK Active Directory (AD) tartományi hitelesítéséről
 
-Az AD-tartomány hitelesítése lehetővé teszi a felhasználók számára, hogy a szervezeti tartomány hitelesítő adataival jelentkezzenek be az Azure-ba. Olyan RADIUS-kiszolgálóra van szükség, amely integrálható az AD-kiszolgálóval. A szervezetek a meglévő RADIUS-telepítésüket is kihasználhatják.
+Az AD tartományi hitelesítés lehetővé teszi a felhasználók számára, hogy a szervezeti tartományi hitelesítő adataikkal jelentkezzenek be az Azure-ba. Ehhez egy olyan RADIUS-kiszolgáló szükséges, amely integrálva van az AD-kiszolgálóval. A szervezetek a meglévő RADIUS-telepítést is kihasználhatják.
  
-A RADIUS-kiszolgáló a helyszínen vagy az Azure virtuális hálózatban is eltalálható. A hitelesítés során a VPN-átjáró átmenő ként működik, és továbbítja a hitelesítési üzeneteket oda-vissza a RADIUS-kiszolgáló és a csatlakozó eszköz között. Fontos, hogy a VPN-átjáró elérje a RADIUS-kiszolgálót. Ha a RADIUS-kiszolgáló a helyszínen található, akkor az Azure és a helyszíni hely közötti VPN-kapcsolat szükséges.
+A RADIUS-kiszolgáló a helyszínen vagy az Azure-VNet is elvégezhető. A hitelesítés során a VPN-átjáró áteresztőként működik, és továbbítja a hitelesítési üzeneteket a RADIUS-kiszolgáló és a csatlakozó eszköz között. Fontos, hogy a VPN-átjáró elérje a RADIUS-kiszolgálót. Ha a RADIUS-kiszolgáló a helyszínen található, akkor az Azure-ból a helyszíni helyre történő VPN-helyek közötti kapcsolat szükséges.
 
-Az Active Directory n kívül a RADIUS-kiszolgáló más külső identitáskezelő rendszerekkel is integrálható. Ez számos hitelesítési lehetőséget nyit meg a pont-hely VPN-ek számára, beleértve az MFA-beállításokat is. Ellenőrizze a RADIUS-kiszolgáló gyártójának dokumentációját, hogy leolvassa az identitásrendszerek listáját, amelyekkel integrálható.
+A Active Directoryon kívül a RADIUS-kiszolgáló is integrálható más külső identitás-rendszerekkel. Ez számos hitelesítési lehetőséget nyit meg a pont – hely VPN-ek számára, beleértve az MFA-beállításokat is. Tekintse meg a RADIUS-kiszolgáló gyártójának dokumentációját, hogy beolvassa a rendszerbe integrált identitási rendszerek listáját.
 
-![Kapcsolatdiagram - RADIUS](./media/point-to-site-how-to-radius-ps/radiusimage.png)
+![Összekötő diagram – sugár](./media/point-to-site-how-to-radius-ps/radiusimage.png)
 
 > [!IMPORTANT]
->A helyszíni RADIUS-kiszolgálóhoz való csatlakozáshoz csak VPN-helyek közötti kapcsolat használható. ExpressRoute-kapcsolat nem használható.
+>Csak a VPN-helyek közötti kapcsolat használható a helyszíni RADIUS-kiszolgálóhoz való csatlakozáshoz. ExpressRoute-kapcsolatok nem használhatók.
 >
 >
 
@@ -62,7 +62,7 @@ Az Active Directory n kívül a RADIUS-kiszolgáló más külső identitáskezel
 
 Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 
-### <a name="working-with-azure-powershell"></a>Az Azure PowerShell együttműködése
+### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
@@ -81,15 +81,15 @@ A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a seg
 * **VPN-ügyfelek címkészlete: 172.16.201.0/24**<br>Azok a VPN-ügyfelek, amelyek ezzel a pont–hely kapcsolattal csatlakoznak a virtuális hálózathoz, a VPN-ügyfél címkészletből kapnak IP-címet.
 * **Előfizetés:** Ha több előfizetése is van, ellenőrizze, hogy a megfelelőt használja-e.
 * **Erőforráscsoport: TestRG**
-* **Helyszín: USA keleti része**
-* **DNS-kiszolgáló:** Annak a DNS-kiszolgálónak az IP-címe, amelyet a virtuális hálózat névfeloldásához kíván használni. (nem kötelező)
+* **Hely: USA keleti régiója**
+* DNS-kiszolgáló: annak a DNS-kiszolgálónak az **IP-címe** , amelyet névfeloldásra kíván használni a VNet. (nem kötelező)
 * **Átjáró neve: Vnet1GW**
 * **Nyilvános IP-név: VNet1GWPIP**
-* **VpnType: RouteBased**
+* **VpnType: Útvonalalapú**
 
 ## <a name="1-set-the-variables"></a><a name="signin"></a>1. Állítsa be a változókat
 
-Deklarálja a használni kívánt változókat. Használja a következő példát, és szükség szerint cserélje le az értékeket a sajátjaira. Ha bezárja a PowerShell/Cloud Shell munkamenet bármely pontján az edzés során, csak másolja és illessze be az értékeket újra deklarálni a változók.
+Deklarálja a használni kívánt változókat. Használja a következő példát, és szükség szerint cserélje le az értékeket a sajátjaira. Ha a gyakorlat során bármikor lezárta a PowerShell-vagy Cloud Shell-munkamenetet, csak másolja és illessze be újra az értékeket a változók újbóli bejelentéséhez.
 
   ```azurepowershell-interactive
   $VNetName  = "VNet1"
@@ -109,9 +109,9 @@ Deklarálja a használni kívánt változókat. Használja a következő példá
   $GWIPconfName = "gwipconf"
   ```
 
-## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"> </a>Az erőforráscsoport, a virtuális hálózat és a nyilvános IP-cím létrehozása
+## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"> </a>az erőforráscsoport, a VNet és a nyilvános IP-cím létrehozása
 
-A következő lépések hozzon létre egy erőforráscsoportot és egy virtuális hálózatot az erőforráscsoportban három alhálózattal. Értékek helyettesítésekénél fontos, hogy mindig az átjáró alhálózatát nevezze el kifejezetten "GatewaySubnet".In subtuting values, it's important that you always name your gateway subnet specifically 'GatewaySubnet'. Ha valami másnak nevezi el, az átjáró létrehozása sikertelen;
+A következő lépésekben hozzon létre egy erőforráscsoportot és egy virtuális hálózatot az erőforráscsoport három alhálózattal. Az értékek behelyettesítése esetén fontos, hogy mindig nevezze el az átjáró-alhálózatot, amely kifejezetten "GatewaySubnet". Ha más néven nevezi el, az átjáró létrehozása meghiúsul;
 
 1. Hozzon létre egy erőforráscsoportot.
 
@@ -127,14 +127,14 @@ A következő lépések hozzon létre egy erőforráscsoportot és egy virtuáli
    ```
 3. Hozza létre a virtuális hálózatot.
 
-   Ebben a példában a -DnsServer paramétert nem kötelező megadni. Az érték megadásával nem jön létre új DNS-kiszolgáló. A megadott DNS-kiszolgáló IP-címének olyan DNS-kiszolgálónak kell lennie, amely fel tudja oldani azoknak az erőforrásoknak a nevét, amelyekkel Ön kapcsolatot fog létesíteni a virtuális hálózatról. Ebben a példában egy magánhálózati IP-címet használtunk, de ez valószínűleg nem az Ön DNS-kiszolgálójának IP-címe. Ügyeljen arra, hogy a saját értékeit használja. A megadott értéket a virtuális hálózatra üzembe helyezett erőforrások használják, nem pedig a P2S-kapcsolat.
+   Ebben a példában a -DnsServer paramétert nem kötelező megadni. Az érték megadásával nem jön létre új DNS-kiszolgáló. A megadott DNS-kiszolgáló IP-címének olyan DNS-kiszolgálónak kell lennie, amely fel tudja oldani azoknak az erőforrásoknak a nevét, amelyekkel Ön kapcsolatot fog létesíteni a virtuális hálózatról. Ebben a példában egy magánhálózati IP-címet használtunk, de ez valószínűleg nem az Ön DNS-kiszolgálójának IP-címe. Ügyeljen arra, hogy a saját értékeit használja. A megadott értéket a VNet telepített erőforrások használják, nem a P2S-kapcsolatban.
 
    ```azurepowershell-interactive
    New-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
    ```
 4. Egy VPN Gateway-nek rendelkeznie kell nyilvános IP-címmel. Először az IP-cím típusú erőforrást kell kérnie, majd hivatkoznia kell arra, amikor létrehozza a virtuális hálózati átjárót. Az IP-címet a rendszer dinamikusan rendeli hozzá az erőforráshoz a VPN Gateway létrehozásakor. A VPN Gateway jelenleg csak a *Dinamikus* nyilvános IP-cím lefoglalását támogatja. Nem kérheti statikus IP-cím hozzárendelését. Ez azonban nem jelenti azt, hogy az IP-cím módosul a VPN Gateway-hez való hozzárendelése után. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN Gateway belső karbantartása/frissítése során.
 
-   Adja meg azokat a változókat, amelyek dinamikusan hozzárendelt nyilvános IP-címet kérnek.
+   A dinamikusan hozzárendelt nyilvános IP-cím igénylésére szolgáló változók meghatározása.
 
    ```azurepowershell-interactive
    $vnet = Get-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG"  
@@ -143,22 +143,22 @@ A következő lépések hozzon létre egy erőforráscsoportot és egy virtuáli
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"> </a>A RADIUS-kiszolgáló beállítása
+## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"> </a>a RADIUS-kiszolgáló beállítása
 
-A virtuális hálózati átjáró létrehozása és konfigurálása előtt a RADIUS-kiszolgálót megfelelően kell konfigurálni a hitelesítéshez.
+A virtuális hálózati átjáró létrehozása és konfigurálása előtt a RADIUS-kiszolgálót helyesen kell konfigurálni a hitelesítéshez.
 
-1. Ha nincs telepítve RADIUS-kiszolgáló, telepítsen egyet. A központi telepítési lépésekről a RADIUS-szállító által biztosított telepítési útmutatóban tájékyak.  
-2. Konfigurálja a VPN-átjárót RADIUS-ügyfélként a RADIUS-on. A RADIUS-ügyfél hozzáadásakor adja meg a létrehozott virtuális hálózati GatewaySubnet-et. 
-3. A RADIUS-kiszolgáló beállítása után szerezd meg a RADIUS-kiszolgáló IP-címét és azt a megosztott titkot, amelyet a RADIUS-ügyfeleknek a RADIUS-kiszolgálóval való beszélgetéshez kell használniuk. Ha a RADIUS-kiszolgáló az Azure virtuális hálózatban található, használja a RADIUS-kiszolgáló virtuális gépének hitelesítési és hitelesítéshálózati IP-címét.
+1. Ha nincs telepítve RADIUS-kiszolgáló, telepítsen egyet. A telepítési lépésekért tekintse meg a RADIUS-gyártó által biztosított telepítési útmutatót.  
+2. Konfigurálja a VPN-átjárót RADIUS-ügyfélként a RADIUS-kiszolgálón. A RADIUS-ügyfél hozzáadásakor adja meg a létrehozott virtuális hálózati GatewaySubnet. 
+3. A RADIUS-kiszolgáló beállítása után szerezze be a RADIUS-kiszolgáló IP-címét, valamint azt a közös titkot, amelyet a RADIUS-ügyfeleknek a RADIUS-kiszolgálóval való kommunikációhoz használniuk kell. Ha a RADIUS-kiszolgáló az Azure VNet található, használja a RADIUS-kiszolgáló virtuális gép HITELESÍTÉSSZOLGÁLTATÓI IP-címét.
 
-A [Hálózati házirend-kiszolgáló (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) cikk útmutatást nyújt a Windows RADIUS-kiszolgáló (NPS) AD tartományhitelesítéshez történő konfigurálásához.
+A [hálózati házirend-kiszolgáló (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) című cikk útmutatást nyújt a Windows RADIUS-kiszolgáló (NPS) Active Directory tartományi hitelesítéshez való konfigurálásához.
 
-## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"> </a>A VPN-átjáró létrehozása
+## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"> </a>a VPN-átjáró létrehozása
 
-Konfigurálja és hozza létre a VPN-átjárót a virtuális hálózathoz.
+Konfigurálja és hozza létre a VPN-átjárót a VNet.
 
-* A -GatewayType típusnak "Vpn" típusúnak kell lennie, a -VpnType típusnak pedig "RouteBased" típusúnak.
-* A VPN-átjáró befejezése akár 45 percet is igénybe vehet, a kiválasztott [átjáró termékváltozattól](vpn-gateway-about-vpn-gateway-settings.md#gwsku) függően.
+* A-GatewayType "VPN" értékűnek kell lennie, a-VpnType pedig "Útvonalalapú" értékűnek kell lennie.
+* A VPN-átjáró akár 45 percet is igénybe vehet, attól függően, hogy melyik [átjárói SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) -t választotta.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -166,24 +166,24 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
 
-## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"> </a>Adja hozzá a RADIUS-kiszolgálót és az ügyfélcímkészletet
+## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"> </a>a RADIUS-kiszolgáló és az ügyfél-Címkészlet hozzáadása
  
-* A -RadiusServer megadható név vagy IP-cím alapján. Ha megadja a nevet, és a kiszolgáló a helyszínen található, akkor előfordulhat, hogy a VPN-átjáró nem tudja feloldani a nevet. Ha ez a helyzet, akkor jobb, ha megadja a kiszolgáló IP-címét. 
-* A -RadiusSecret értéknek meg kell egyeznie a RADIUS-kiszolgálón konfigurált értékekkel.
-* A -VpnClientAddressPool az a tartomány, amelyből a csatlakozó VPN-ügyfelek IP-címet kapnak.Olyan magánhálózati IP-címtartományt használjon, amely nincs átfedésben azzal a helyszíni hellyel, amelyről csatlakozik, vagy azzal a virtuális hálózattal, amelyhez csatlakozik. Győződjön meg arról, hogy elég nagy címkészlet van konfigurálva.  
+* A-RadiusServer név vagy IP-cím alapján is megadható. Ha megadja a nevet, és a kiszolgáló a helyszínen található, akkor előfordulhat, hogy a VPN-átjáró nem tudja feloldani a nevet. Ha ez a helyzet, akkor érdemes megadnia a kiszolgáló IP-címét. 
+* A-RadiusSecret egyeznie kell azzal, amit a RADIUS-kiszolgálón konfigurált.
+* A-Címtérről az a tartomány, amelyből a Connecting VPN-ügyfelek IP-címet kapnak.Olyan magánhálózati IP-címtartományt használjon, amely nincs átfedésben azzal a helyszíni hellyel, amelyről csatlakozik, vagy azzal a virtuális hálózattal, amelyhez csatlakozik. Ellenőrizze, hogy van-e elég nagy méretű címkészlet konfigurálva.  
 
-1. Hozzon létre egy biztonságos karakterláncot a RADIUS-titkosítmányhoz.
+1. Hozzon létre egy biztonságos karakterláncot a RADIUS-titok számára.
 
    ```azurepowershell-interactive
    $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
    ```
 
-2. A rendszer kéri, hogy adja meg a RADIUS-titkot. A beírt karakterek nem jelennek meg, hanem a "*" karakter váltja fel őket.
+2. A rendszer a RADIUS-titok megadását kéri. A beírt karakterek nem jelennek meg, hanem a "*" karakterrel lesznek lecserélve.
 
    ```azurepowershell-interactive
    RadiusSecret:***
    ```
-3. Adja hozzá a VPN-ügyfélcímkészletet és a RADIUS-kiszolgáló adatait.
+3. Adja hozzá a VPN-ügyfél címkészlet és a RADIUS-kiszolgáló adatait.
 
    SSTP-konfigurációk esetén:
 
@@ -194,7 +194,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-   OpenVPN® konfigurációk esetén:
+   Az OpenVPN® konfigurációk esetén:
 
     ```azurepowershell-interactive
     $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
@@ -205,7 +205,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     ```
 
 
-   IKEv2 konfigurációk esetén:
+   IKEv2-konfigurációk esetén:
 
     ```azurepowershell-interactive
     $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
@@ -223,15 +223,15 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"> </a>Töltse le a VPN-ügyfél konfigurációs csomagját, és állítsa be a VPN-ügyfelet
+## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"> </a>töltse le a VPN-ügyfél konfigurációs csomagját, és állítsa be a VPN-ügyfelet.
 
-A VPN-ügyfél konfigurációlehetővé teszi, hogy az eszközök P2S-kapcsolaton keresztül csatlakozzanak a virtuális hálózathoz.Vpn-ügyfélkonfigurációs csomag létrehozásához és a VPN-ügyfél beállításához olvassa el a [VPN-ügyfélkonfiguráció létrehozása radius-hitelesítéshez című témakört.](point-to-site-vpn-client-configuration-radius.md)
+A VPN-ügyfél konfigurációja lehetővé teszi, hogy az eszközök P2S-kapcsolaton keresztül csatlakozzanak a VNet.VPN-ügyfél konfigurációs csomagjának létrehozásához és a VPN-ügyfél beállításához lásd: [VPN-ügyfél konfigurációjának létrehozása a RADIUS-hitelesítéshez](point-to-site-vpn-client-configuration-radius.md).
 
-## <a name="7-connect-to-azure"></a><a name="connect"></a>7. Csatlakozás az Azure-hoz
+## <a name="7-connect-to-azure"></a><a name="connect"></a>7. kapcsolódás az Azure-hoz
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Csatlakozás Windows VPN-ügyfélről
 
-1. Csatlakozzon a virtuális hálózathoz. Ehhez navigáljon az ügyfélszámítógépen a VPN-kapcsolatokhoz, és keresse meg a létrehozott VPN-kapcsolatot. Ugyanaz a neve, mint a virtuális hálózatnak. Adja meg a tartományi hitelesítő adatokat, és kattintson a "Csatlakozás" gombra. Megjelenik egy előugró üzenet, amely emelt szintű jogokat kér. Fogadja el, és adja meg a hitelesítő adatokat.
+1. Csatlakozzon a virtuális hálózathoz. Ehhez navigáljon az ügyfélszámítógépen a VPN-kapcsolatokhoz, és keresse meg a létrehozott VPN-kapcsolatot. Ugyanaz a neve, mint a virtuális hálózatnak. Adja meg a tartományi hitelesítő adatait, majd kattintson a "kapcsolat" gombra. Megjelenik az emelt szintű jogosultságokat kérő előugró üzenet. Fogadja el, és adja meg a hitelesítő adatokat.
 
    ![A VPN-ügyfél az Azure-hoz csatlakozik](./media/point-to-site-how-to-radius-ps/client.png)
 2. A kapcsolat létrejött.
@@ -262,7 +262,7 @@ A Hálózat párbeszédpanelen keresse meg a használni kívánt ügyfél profil
       NetBIOS over Tcpip..............: Enabled
    ```
 
-A P2S-kapcsolatok hibaelhárításához olvassa el az [Azure pont-hely közötti kapcsolatok hibaelhárítása című témakört.](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+Az P2S-kapcsolatok hibaelhárításáról lásd: az [Azure pont – hely kapcsolatok hibaelhárítása](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
 
 ## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>Csatlakozás virtuális géphez
 
@@ -270,7 +270,7 @@ A P2S-kapcsolatok hibaelhárításához olvassa el az [Azure pont-hely közötti
 
 ## <a name="faq"></a><a name="faq"></a>GYIK
 
-Ez a gyakori kérdések a RADIUS-hitelesítést használó P2S-re vonatkoznak
+Ez a gyakori kérdések a RADIUS-hitelesítést használó P2S vonatkoznak
 
 [!INCLUDE [Point-to-Site RADIUS FAQ](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 

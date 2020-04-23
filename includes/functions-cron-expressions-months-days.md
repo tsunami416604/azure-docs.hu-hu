@@ -11,9 +11,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67508289"
 ---
-Hónapok vagy napok megadásához numerikus értékeket, neveket vagy nevek rövidítéseit használhatja:
+Hónapok vagy napok megadásához használhatja a numerikus értékeket, a neveket vagy a nevek rövidítését:
 
-* Napok esetén a numerikus értékek 0 és 6 között vannak, ahol a 0 vasárnapdal kezdődik.
-* A nevek angolul vannak. Például: `Monday`, `January`.
-* A nevek nem különböznek a kis- és nagybetűktől.
-* A nevek rövidíthetők. A három betű az ajánlott rövidítés hossza.  Például: `Mon`, `Jan`. 
+* Napokon a numerikus értékek 0 és 6 között vannak, ahol a 0 a Vasárnaptal kezdődik.
+* A nevek angol nyelven vannak. Például: `Monday`, `January`.
+* A nevek nem megkülönböztetik a kis-és nagybetűket.
+* A nevek rövidítve is lehetnek. Három betű az ajánlott rövidítés hossza.  Például: `Mon`, `Jan`. 

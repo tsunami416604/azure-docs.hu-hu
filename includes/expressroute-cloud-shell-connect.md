@@ -15,13 +15,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178852"
 ---
- Ha az Azure Cloud Shellt használja, automatikusan bejelentkezik az Azure-fiókjába, miután a "Próbálja ki" gombra kattintott. A helyi bejelentkezéshez nyissa meg a PowerShell-konzol emelt szintű jogosultságokkal, és futtassa a parancsmag csatlakozni.
+ Ha a Azure Cloud Shell használja, a "kipróbálás" gombra kattintás után automatikusan bejelentkezhet az Azure-fiókjába. A helyi bejelentkezéshez nyissa meg emelt szintű jogosultságokkal a PowerShell-konzolt, és futtassa a parancsmagot a kapcsolódáshoz.
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Ha egynél több előfizetéssel rendelkezik, az Azure-előfizetések listáját.
+Ha egynél több előfizetéssel rendelkezik, szerezze be az Azure-előfizetések listáját.
 
 ```azurepowershell-interactive
 Get-AzSubscription

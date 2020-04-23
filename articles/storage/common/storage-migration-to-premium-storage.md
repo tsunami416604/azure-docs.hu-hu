@@ -1,6 +1,6 @@
 ---
-title: Virtuális gépek áttelepítése az Azure Premium Storage szolgáltatásba | Microsoft dokumentumok
-description: Telepítse át meglévő virtuális gépeit az Azure Premium Storage-ba. A Prémium szintű storage nagy teljesítményű, alacsony késleltetésű lemeztámogatást nyújt az Azure virtuális gépeken futó I/O-igényű számítási feladatokhoz.
+title: Virtuális gépek migrálása az Azure Premium Storageba | Microsoft Docs
+description: Telepítse át a meglévő virtuális gépeket az Azure Premium Storageba. A Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az Azure-Virtual Machines futó I/O-igényes számítási feladatokhoz.
 services: storage
 author: roygara
 ms.service: storage
@@ -16,159 +16,159 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748348"
 ---
-# <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Áttelepítés az Azure Premium Storage szolgáltatásba (nem felügyelt lemezek)
+# <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Áttelepítés az Azure Premium Storageba (nem felügyelt lemezekre)
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan telepítheti át a virtuális gép, amely nem felügyelt szabványos lemezeket használ egy nem felügyelt prémium szintű lemezeket használó virtuális gép. Azt javasoljuk, hogy az Azure felügyelt lemezek et használja az új virtuális gépekhez, és konvertálja a korábbi nem felügyelt lemezeket felügyelt lemezekké. A felügyelt lemezek kezelik az alapul szolgáló tárfiókokat, így önnek nem kell. További információt a [Felügyelt lemezek áttekintése című témakörben talál.](../../virtual-machines/windows/managed-disks-overview.md)
+> Ez a cikk azt ismerteti, hogyan telepítheti át a nem felügyelt standard lemezeket használó virtuális gépeket a nem felügyelt prémium szintű lemezeket használó virtuális gépekre. Azt javasoljuk, hogy az Azure Managed Disks-t az új virtuális gépekhez használja, és az előző nem felügyelt lemezeket felügyelt lemezekre alakítsa át. Managed Disks kezeli a mögöttes Storage-fiókokat, hogy ne kelljen. További információkért tekintse meg a [Managed Disks áttekintését](../../virtual-machines/windows/managed-disks-overview.md).
 >
 
-Az Azure Premium Storage nagy teljesítményű, alacsony késleltetésű lemeztámogatást nyújt az I/O-igényes számítási feladatokat futtató virtuális gépek számára. Ezek a lemezek sebességét és teljesítményét kihasználva az alkalmazás virtuálisgép-lemezeit az Azure Premium Storage-ba migrálja.
+Az Azure Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az I/O-igényes számítási feladatokat futtató virtuális gépek számára. Igénybe veheti a lemezek sebességét és teljesítményét azáltal, hogy az alkalmazás virtuálisgép-lemezeit áttelepíti az Azure Premium Storageba.
 
-Ez az útmutató célja, hogy segítsen az Azure Premium Storage új felhasználóinak jobban felkészülni a jelenlegi rendszerről a prémium szintű storage-ra való zökkenőmentes áttérésre. Az útmutató a folyamat három kulcsfontosságú összetevőjével foglalkozik:
+Ennek az útmutatónak a célja, hogy segítse az Azure új felhasználóinak Premium Storage a zökkenőmentes áttérést a jelenlegi rendszerről a Premium Storagera. Az útmutató a folyamat három fő összetevőjével foglalkozik:
 
-* [A prémium szintű tárhelyre való áttérés megtervezése](#plan-the-migration-to-premium-storage)
-* [Virtuális merevlemezek (VHD-k) előkészítése és másolása a prémium szintű tárhelyre](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
-* [Azure virtuális gép létrehozása prémium szintű tárterület használatával](#create-azure-virtual-machine-using-premium-storage)
+* [A Premium Storagere való Migrálás megtervezése](#plan-the-migration-to-premium-storage)
+* [Virtuális merevlemezek (VHD-k) előkészítése és másolása Premium Storagere](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
+* [Azure-beli virtuális gép létrehozása Premium Storage használatával](#create-azure-virtual-machine-using-premium-storage)
 
-A virtuális gépeket más platformokról az Azure Premium Storage-ba telepítheti, vagy a meglévő Azure-virtuális gépeket a standard tárból a prémium szintű storage-ba. Ez az útmutató mindkét forgatókönyv lépéseit ismerteti. Kövesse a megfelelő szakaszban megadott lépéseket a forgatókönyvtől függően.
+Áttelepítheti a virtuális gépeket más platformokról az Azure-ba Premium Storage vagy áttelepítheti a meglévő Azure-beli virtuális gépeket a standard szintű tárolóból Premium Storage Ez az útmutató két forgatókönyv lépéseit ismerteti. A forgatókönyvtől függően kövesse a vonatkozó szakaszban leírt lépéseket.
 
 > [!NOTE]
-> A prémium szintű SSD-k szolgáltatásáttekintését és díjszabását a következő ben találja: [Válasszon lemeztípust az IaaS virtuális gépekhez](../../virtual-machines/windows/disks-types.md#premium-ssd). Azt javasoljuk, hogy a nagy IOPS-t igénylő virtuálisgép-lemezeket az alkalmazás legjobb teljesítménye érdekében migrálja az Azure Premium Storage-ba. Ha a lemez nem igényel magas IOPS-t, korlátozhatja a költségeket, ha a Standard Storage szolgáltatásban tartja fenn, amely az SSD-k helyett merevlemez-meghajtókon (HDD-ken) tárolja a virtuális gép lemezadatait.
+> A prémium szintű SSD-k funkcióinak áttekintését és díjszabását itt találja: [válassza ki a IaaS virtuális gépekhez tartozó lemez típusát](../../virtual-machines/windows/disks-types.md#premium-ssd). Javasoljuk, hogy az alkalmazás legjobb teljesítményének érdekében az Azure-Premium Storage magas IOPS igénylő virtuálisgép-lemez áttelepítését. Ha a lemez nem igényel magas IOPS, a költségeket a standard szintű tárolóban is korlátozhatja, amely a virtuális gépek lemezes adatait merevlemez-meghajtókon (HDD-k) tárolja SSD-k helyett.
 >
 
-Az áttelepítési folyamat teljes befejezése további műveleteket igényelhet az útmutatóban leírt lépések előtt és után is. Ilyen például a virtuális hálózatok vagy végpontok konfigurálása, vagy kódmódosítások végrehajtása magában az alkalmazáson belül, ami némi állásidőt igényelhet az alkalmazásban. Ezek a műveletek egyediek az egyes alkalmazások, és el kell végeznie őket az ebben az útmutatóban megadott lépésekkel együtt, hogy a teljes átállás a prémium szintű storage a lehető legzökkenőmentesebb.
+Az áttelepítési folyamat teljes egészében az útmutatóban ismertetett lépések előtt és után további műveleteket is igényelhet. Ilyenek például a virtuális hálózatok vagy végpontok konfigurálása, illetve a kód módosítása az alkalmazáson belül, ami bizonyos állásidőt igényelhet az alkalmazásban. Ezek a műveletek minden alkalmazás esetében egyediek, és ezeket a jelen útmutatóban ismertetett lépéseket követve a lehető legzökkenőmentesebb teheti a teljes átállást Premium Storage.
 
-## <a name="plan-for-the-migration-to-premium-storage"></a><a name="plan-the-migration-to-premium-storage"></a>A prémium szintű tárhelyre való áttérés megtervezése
-Ez a szakasz biztosítja, hogy készen áll a jelen cikkben ismertetett áttelepítési lépések követésére, és segít a legjobb döntés meghozatalában a virtuális gép és a lemeztípusok esetén.
+## <a name="plan-for-the-migration-to-premium-storage"></a><a name="plan-the-migration-to-premium-storage"></a>A Premium Storagere való Migrálás megtervezése
+Ez a szakasz gondoskodik arról, hogy készen álljon a cikk áttelepítési lépéseinek követésére, és segít a legjobb döntést hozni a virtuális gépek és a lemezek típusairól.
 
 ### <a name="prerequisites"></a>Előfeltételek
-* Rendelkeznie kell Azure-előfizetéssel. Ha még nem rendelkezik ilyen, létrehozhat egy egy hónapos ingyenes próba-előfizetést, vagy további lehetőségekért látogasson el az [Azure-díjszabásoldalra.](https://azure.microsoft.com/pricing/) [free trial](https://azure.microsoft.com/pricing/free-trial/)
-* A PowerShell-parancsmagok végrehajtásához szüksége lesz a Microsoft Azure PowerShell-modulra. A telepítési helyre és a telepítésre vonatkozó utasításokért lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
-* Ha prémium szintű storage-alapú Azure-virtuális gépeket kíván használni, a prémium szintű storage-kompatibilis virtuális gépeket kell használnia. Standard és prémium szintű storage lemezek prémium szintű storage-kompatibilis virtuális gépekkel is használható. Prémium szintű tárolólemezek lesz elérhető több virtuálisgép-típusok a jövőben. Az összes rendelkezésre álló Azure VM-lemeztípusról és -méretről a [Virtuális gépek méretei](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [a Felhőszolgáltatások méretei](../../cloud-services/cloud-services-sizes-specs.md)című témakörben talál további információt.
+* Rendelkeznie kell Azure-előfizetéssel. Ha még nem rendelkezik ilyennel, a további lehetőségekért hozzon létre egy hónapos [ingyenes próbaverziós](https://azure.microsoft.com/pricing/free-trial/) előfizetést, vagy látogasson el az [Azure díjszabására](https://azure.microsoft.com/pricing/) .
+* A PowerShell-parancsmagok végrehajtásához szüksége lesz a Microsoft Azure PowerShell modulra. A telepítési helyre és a telepítésre vonatkozó utasításokért lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
+* Ha Premium Storageon futó Azure-beli virtuális gépeket szeretne használni, akkor a Premium Storage-kompatibilis virtuális gépeket kell használnia. A Premium Storage-kompatibilis virtuális gépekkel szabványos és Premium Storage lemezeket is használhat. A Premium Storage-lemezek a jövőben több virtuálisgép-típussal lesznek elérhetők. Az összes elérhető Azure-beli virtuálisgép-lemez típusával és méretével kapcsolatos további információkért lásd: [virtuális gépek](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [méretek mérete Cloud Services számára](../../cloud-services/cloud-services-sizes-specs.md).
 
 ### <a name="considerations"></a>Megfontolandó szempontok
-Az Azure virtuális gép támogatja a több prémium szintű storage-lemez csatlakoztatását, így az alkalmazások virtuális gépenként akár 256 TB tárhellyel is rendelkezhetnek. A prémium szintű storage-kezelővel az alkalmazások 80 000 IOPS-t (bemeneti/kimeneti művelet másodpercenként) érhetnek el virtuális gépenként és 2000 MB/másodperces lemezátviteli-teljesítményt virtuális gépenként, rendkívül alacsony késleltetéssel az olvasási műveletekhez. Számos virtuális gép és lemez lehetőséget kínál. Ez a rész segít megtalálni a számítási feladatoknak leginkább megfelelő lehetőséget.
+Az Azure-beli virtuális gépek több Premium Storage lemez csatlakoztatását is lehetővé teszik, így az alkalmazások virtuális gépenként akár 256 TB tárhellyel rendelkezhetnek. Az Premium Storage segítségével az alkalmazások másodpercenként 80 000 IOPS-t (bemeneti/kimeneti műveletek másodpercenként) és 2000 MB/s sebességű átviteli sebességet érhetnek el a virtuális gépen, rendkívül alacsony késéssel az olvasási műveletekhez. A különböző virtuális gépek és lemezek számos lehetőséggel rendelkeznek. Ez a szakasz segítséget nyújt a számítási feladatokhoz legjobban illő lehetőségek megtalálásában.
 
 #### <a name="vm-sizes"></a>A virtuális gépek mérete
-Az Azure virtuális gép méretspecifikációi a [virtuális gépek méretei](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ben vannak felsorolva. Tekintse át a prémium szintű storage-tal működő virtuális gépek teljesítményjellemzőit, és válassza ki a számítási feladatoknak leginkább megfelelő virtuális gépméretet. Győződjön meg arról, hogy elegendő sávszélesség áll rendelkezésre a virtuális gép a lemezforgalom növeléséhez.
+Az Azure-beli virtuális gép méretének specifikációi a [virtuális gépek méretei](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)szerint vannak felsorolva. Tekintse át a Premium Storaget használó virtuális gépek teljesítményének jellemzőit, és válassza ki a legmegfelelőbb virtuálisgép-méretet, amely legjobban megfelel a számítási feladatnak. Győződjön meg arról, hogy elegendő sávszélesség áll rendelkezésre a virtuális gépen a lemez forgalmának elvégzéséhez.
 
-#### <a name="disk-sizes"></a>Lemezméretek
-Öt típusú lemezek, amelyek a virtuális gép, és mindegyik rendelkezik adott IP-k és átviteli korlátok. Vegye figyelembe ezeket a korlátokat, amikor kiválasztja a lemez típusát a virtuális gép igényei nek megfelelően az alkalmazás kapacitás, teljesítmény, méretezhetőség és a csúcs terhelések.
+#### <a name="disk-sizes"></a>Lemezek mérete
+A virtuális géppel öt típusú lemezt lehet használni, és mindegyikhez egyedi IOPs és átviteli sebességre vonatkozó korlátozások tartoznak. Vegye figyelembe ezeket a korlátokat, amikor az alkalmazás igényeinek megfelelően kiválasztja a lemez típusát a kapacitás, a teljesítmény, a méretezhetőség és a maximális terhelés tekintetében.
 
 | Prémium szintű lemezek típusa  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
 | Lemezméret           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
 | IOPS-érték lemezenként       | 500   | 2300  | 5000           | 7500           | 7500           | 
-| Adattovábbítás lemezenként | 100 MB másodpercenként | 150 MB másodpercenként | 200 MB másodpercenként | 250 MB másodpercenként | 250 MB másodpercenként |
+| Adattovábbítás lemezenként | 100 MB/másodperc | 150 MB/másodperc | 200 MB/másodperc | 250 MB/másodperc | 250 MB/másodperc |
 
-A számítási feladatoktól függően határozza meg, hogy szükség van-e további adatlemezekre a virtuális géphez. Több állandó adatlemezt is csatolhat a virtuális géphez. Szükség esetén csíkot szíthat a lemezekközött a kötet kapacitásának és teljesítményének növelése érdekében. (Lásd mi a Disk Striping [itt](../../virtual-machines/windows/premium-storage-performance.md#disk-striping).) Ha a Tárolóhelyek használatával csíkot használ a Prémium szintű tároló [adatlemezei,][4]akkor azt minden használt lemezhez egy oszloppal kell konfigurálnia. Ellenkező esetben a csíkozott kötet általános teljesítménye a vártnál alacsonyabb lehet a lemezek közötti forgalom egyenetlen eloszlása miatt. Linuxos virtuális gépek esetén használhatja a *mdadm* segédprogramot, hogy ugyanazt elérje. A részleteket a [SzoftverRAID konfigurálása Linuxon](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) című cikkben találja.
+A számítási feladattól függően állapítsa meg, hogy szükség van-e további adatlemezekre a virtuális géphez. A virtuális géphez több állandó adatlemez is csatolható. Ha szükséges, a lemezeket a kötetek kapacitásának és teljesítményének növelésével is elvégezheti. (Lásd: mi a lemez csíkozása [.)](../../virtual-machines/windows/premium-storage-performance.md#disk-striping) Ha a [tárolóhelyek][4]használatával szalagos Premium Storage adatlemezeket, akkor minden egyes használt lemezhez egy oszloppal kell konfigurálnia. Ellenkező esetben a csíkozott kötet általános teljesítménye a vártnál kevesebb lehet, mert a forgalom a lemezeken nem egyenletes eloszlású. Linux rendszerű virtuális gépek esetén a *mdadm* segédprogram használatával is elérheti ugyanezt. A részletekért tekintse [meg a szoftveres RAID konfigurálása Linuxon](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) című cikket.
 
-#### <a name="storage-account-scalability-targets"></a>Tárfiók méretezhetőségi céljai
+#### <a name="storage-account-scalability-targets"></a>A Storage-fiók skálázhatósági céljai
 
-Prémium szintű storage-fiókok a következő méretezhetőségi célokat rendelkezik. Ha az alkalmazás követelmények meghaladják a méretezhetőségi célok egyetlen tárfiók, hozzon létre az alkalmazást több tárfiókok használatához, és particionálja az adatokat azok között a tárfiókok között.
+Premium Storage fiókok a következő skálázhatósági célokkal rendelkeznek. Ha az alkalmazásra vonatkozó követelmények meghaladják egy adott Storage-fiók skálázhatósági céljait, az alkalmazást több Storage-fiók használatára kell felépíteni, és ezeket a tárolási fiókokba particionálni.
 
-| Teljes számlakapacitás | Teljes sávszélesség egy helyileg redundáns tárfiókhoz |
+| Teljes fiók kapacitása | Teljes sávszélesség egy helyileg redundáns Storage-fiókhoz |
 |:--- |:--- |
-| Lemez kapacitása: 35 TB<br />Pillanatkép kapacitása: 10 TB |Akár 50 gigabit másodpercenként bejövő + kimenő |
+| Lemez kapacitása: 35TB<br />Pillanatkép kapacitása: 10 TB |Akár 50 Gigabit másodpercenként a bejövő és kimenő forgalomhoz |
 
-A prémium szintű storage-specifikációkkal kapcsolatos további információkért lásd: [Skálázhatósági célok a prémium szintű lapblob storage-fiókok.](../blobs/scalability-targets-premium-page-blobs.md)
+A Premium Storage specifikációkkal kapcsolatos további információkért lásd: [a prémium szintű blob Storage-fiókok méretezhetőségi célpontjai](../blobs/scalability-targets-premium-page-blobs.md).
 
-#### <a name="disk-caching-policy"></a>Lemezgyorsítótárazási házirend
-Alapértelmezés szerint a lemezgyorsítótárazási házirend *írásvédett* az összes prémium szintű adatlemezhez, és a virtuális géphez csatlakoztatott prémium szintű *operációsrendszer-lemez írás-olvasás.* Ez a konfigurációs beállítás ajánlott az alkalmazás IOs optimális teljesítményének eléréséhez. Írási vagy csak írásra alkalmas adatlemezek (például SQL Server naplófájlok) esetén tiltsa le a lemezgyorsítótárazást, hogy jobb alkalmazásteljesítményt érjen el. A meglévő adatlemezek gyorsítótár-beállításai frissíthetők az [Azure Portalon](https://portal.azure.com) vagy a *Set-AzureDataDisk* parancsmag *-HostCaching* paraméterével.
+#### <a name="disk-caching-policy"></a>Lemezes gyorsítótárazási házirend
+Alapértelmezés szerint a lemezes gyorsítótárazási házirend a prémium szintű adatlemezek esetében *csak olvasható* , és a virtuális géphez csatlakoztatott prémium operációsrendszer-lemezre írható *írás* . Ez a konfigurációs beállítás ajánlott az alkalmazás IOs-es optimális teljesítményének eléréséhez. A írható vagy írható adatlemezek (például SQL Server naplófájlok) esetében tiltsa le a lemezes gyorsítótárazást, hogy jobban elérhető legyen az alkalmazás teljesítménye. A meglévő adatlemezek gyorsítótár-beállításai a *set-AzureDataDisk* parancsmag [Azure Portal](https://portal.azure.com) vagy a *-HostCaching* paraméterének használatával frissíthetők.
 
 #### <a name="location"></a>Hely
-Válasszon egy helyet, ahol az Azure Premium Storage elérhető. Az elérhető helyekről az [Azure-szolgáltatások régiónkénti](https://azure.microsoft.com/regions/#services) naprakész információiért tekintse meg az Azure-szolgáltatások at. A virtuális gép lemezeit tároló storage-fiókkal azonos régióban található virtuális gépek sokkal jobb teljesítményt nyújtanak, mint ha külön régiókban lennének.
+Válasszon egy helyet, ahol az Azure Premium Storage elérhető. Tekintse meg az [Azure-szolgáltatások régiónként](https://azure.microsoft.com/regions/#services) az elérhető helyszínekről szóló naprakész információkat. A virtuális gép lemezeit tároló Storage-fiókkal azonos régióban lévő virtuális gépek sokkal jobb teljesítményt biztosítanak, mint ha különálló régiókban találhatók.
 
-#### <a name="other-azure-vm-configuration-settings"></a>Egyéb Azure Virtuálisgép-konfigurációs beállítások
-Az Azure-beli virtuális gép létrehozásakor a rendszer megkéri bizonyos virtuális gép beállításainak konfigurálását. Ne feledje, hogy néhány beállítás a virtuális gép élettartama alatt van kijavítva, míg később módosíthatja vagy hozzáadhatmásokat. Tekintse át ezeket az Azure VM konfigurációs beállításokat, és győződjön meg arról, hogy ezek megfelelően vannak konfigurálva a számítási feladatok követelményeinek megfelelően.
+#### <a name="other-azure-vm-configuration-settings"></a>Egyéb Azure-beli virtuális gép konfigurációs beállításai
+Egy Azure-beli virtuális gép létrehozásakor a rendszer kérni fogja, hogy konfigurálja a virtuális gépek beállításait. Ne feledje, hogy a virtuális gép élettartama során néhány beállítás rögzített, míg később módosíthatja vagy hozzáadhatja a többi beállítást. Tekintse át ezeket az Azure-beli virtuális gépek konfigurációs beállításait, és győződjön meg arról, hogy ezek megfelelően vannak konfigurálva a számítási feladatok követelményeinek megfelelően.
 
 ### <a name="optimization"></a>Optimalizálás
-[Azure Premium Storage: A Design for High Performance](../../virtual-machines/windows/premium-storage-performance.md) útmutatást nyújt a nagy teljesítményű alkalmazások Azure Premium Storage használatával történő létrehozásához. Az irányelveket az alkalmazás által használt technológiákra vonatkozó bevált teljesítményekkel kombinálva követheti.
+[Azure Premium Storage: a nagy teljesítmény kialakításához](../../virtual-machines/windows/premium-storage-performance.md) útmutatást nyújt a nagy teljesítményű alkalmazások létrehozásához az Azure Premium Storage használatával. Az irányelveket az alkalmazás által használt technológiákra vonatkozó ajánlott eljárások és teljesítmények együttes használatával követheti nyomon.
 
-## <a name="prepare-and-copy-virtual-hard-disks-vhds-to-premium-storage"></a><a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Virtuális merevlemezek (VHD-k) előkészítése és másolása a Prémium szintű tárolóba
-A következő szakasz a virtuális gépekről származó virtuális gépek előkészítésére és a Virtuálisszámítógép-adatok Azure Storage-ba másolására vonatkozó irányelveket ismerteti.
+## <a name="prepare-and-copy-virtual-hard-disks-vhds-to-premium-storage"></a><a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Virtuális merevlemezek (VHD-k) előkészítése és másolása Premium Storagere
+A következő szakasz útmutatást nyújt a VHD-k virtuális gépről történő előkészítéséhez és a VHD-k Azure Storage-ba történő másolásához.
 
-* [1. forgatókönyv: "Áttelepítem a meglévő Azure-beli virtuális gépeket az Azure Premium Storage-ba."](#scenario1)
-* [2. forgatókönyv: "A virtuális gépeket más platformokról az Azure Premium Storage-ba telepítem át."](#scenario2)
+* [1. forgatókönyv: "a meglévő Azure-beli virtuális gépek áttelepítése az Azure Premium Storageba."](#scenario1)
+* [2. forgatókönyv: "a virtuális gépek áttelepítése más platformokról az Azure Premium Storageba."](#scenario2)
 
 ### <a name="prerequisites"></a>Előfeltételek
-A virtuális gépek áttelepítésre való előkészítéséhez a következőkre van szükség:
+A VHD-k áttelepítésre való előkészítéséhez a következőkre lesz szüksége:
 
-* Egy Azure-előfizetés, egy tárfiók és egy tároló, amelya virtuális merevlemez másolhatja. Vegye figyelembe, hogy a céltárfiók lehet standard vagy prémium szintű tárfiók a követelménytől függően.
-* A virtuális merevlemez általánosítására, ha azt tervezi, hogy több virtuálisgép-példányok belőle. Például sysprep for Windows vagy virt-sysprep ubuntu.
-* A Virtuális merevlemez-fájl feltöltésének eszköze a Storage-fiókba. Lásd: [Adatátvitel az AzCopy parancssori segédprogrammal,](storage-use-azcopy.md) vagy használhat [azure-tárolókezelőt.](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) Ez az útmutató a virtuális merevlemez nek az AzCopy eszközzel történő másolását ismerteti.
+* Egy Azure-előfizetést, egy Storage-fiókot és egy olyan tárolót, amely a virtuális merevlemez másolására használható. Vegye figyelembe, hogy a célként megadott Storage-fiók a követelménytől függően szabványos vagy Premium Storage fiók lehet.
+* Egy eszköz, amely általánosítja a VHD-t, ha több virtuálisgép-példányt szeretne létrehozni belőle. Például: Sysprep for Windows vagy virt-Sysprep for Ubuntu.
+* Egy eszköz, amellyel feltöltheti a VHD-fájlt a Storage-fiókba. Lásd: [adatok átvitele a AzCopy parancssori segédprogrammal](storage-use-azcopy.md) vagy [Azure Storage Explorer](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)használata. Ez az útmutató a virtuális merevlemez másolását ismerteti a AzCopy eszköz használatával.
 
 > [!NOTE]
-> Ha az AzCopy szinkron másolási beállítását választja, az optimális teljesítmény érdekében másolja a virtuális merevlemezt egy azure-beli virtuális gép egyikének futtatásával, amely ugyanabban a régióban található, mint a céltárfiók. Ha egy virtuális merevlemezt egy másik régióban lévő Azure-gépről másol, a teljesítmény lassabb lehet.
+> Ha a szinkron másolás lehetőséget választja a AzCopy, akkor az optimális teljesítmény érdekében másolja a virtuális merevlemezt egy olyan Azure-beli virtuális gépről, amely ugyanabban a régióban található, mint a célként megadott Storage-fiók. Ha a virtuális merevlemezt egy másik régióban lévő Azure-beli virtuális gépről másolja, a teljesítmény lassabb lehet.
 >
-> Nagy mennyiségű adat korlátozott sávszélességen történő másolásához fontolja meg [az Azure import/exportálás szolgáltatás használatát az adatok Blob Storage-ba való átviteléhez;](../storage-import-export-service.md) ez lehetővé teszi az adatok átvitelét merevlemez-meghajtók azure-adatközpontba szállításával. Az Azure import/export szolgáltatás segítségével csak egy szabványos tárfiókba másolhat adatokat. Miután az adatok a normál tárfiókban vannak, használhatja a [Blob másolása API-t](https://msdn.microsoft.com/library/azure/dd894037.aspx) vagy az AzCopy-t az adatok prémium szintű tárfiókba való átviteléhez.
+> Nagy mennyiségű adat korlátozott sávszélességre való másolásához érdemes lehet [Az Azure import/export szolgáltatást használni az adatok blob Storageba való átviteléhez](../storage-import-export-service.md). Ez lehetővé teszi az adatok átvitelét a merevlemez-meghajtók Azure-adatközpontba való szállításával. Az Azure import/export szolgáltatással csak a standard szintű Storage-fiókba másolhatók az adatsorok. Ha az adatok szerepelnek a standard Storage-fiókban, a [Másolás blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx) vagy a AzCopy használatával viheti át az adatait a Premium Storage-fiókjába.
 >
-> Ne feledje, hogy a Microsoft Azure csak a rögzített méretű VHD-fájlokat támogatja. A VHDX-fájlok vagy a dinamikus virtuális merevlemezek nem támogatottak. Ha dinamikus virtuális merevlemeze van, a [Konvertálás-VHD](https://technet.microsoft.com/library/hh848454.aspx) parancsmag segítségével rögzített méretre konvertálhatja.
+> Vegye figyelembe, hogy Microsoft Azure csak a rögzített méretű VHD-fájlokat támogatja. A VHDX-fájlok vagy a dinamikus VHD-k nem támogatottak. Ha dinamikus virtuális merevlemezt használ, a [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) parancsmaggal konvertálhatja a rögzített méretűre.
 >
 >
 
-### <a name="scenario-1-i-am-migrating-existing-azure-vms-to-azure-premium-storage"></a><a name="scenario1"></a>1. forgatókönyv: "Áttelepítem a meglévő Azure-beli virtuális gépeket az Azure Premium Storage-ba."
-Ha meglévő Azure-virtuális gépek áttelepítése, állítsa le a virtuális gépet, készítsen virtuális merevlemezek a kívánt típusú virtuális merevlemez, majd másolja a virtuális merevlemez az AzCopy vagy a PowerShell.
+### <a name="scenario-1-i-am-migrating-existing-azure-vms-to-azure-premium-storage"></a><a name="scenario1"></a>1. forgatókönyv: "a meglévő Azure-beli virtuális gépek áttelepítése az Azure Premium Storageba."
+Ha meglévő Azure-beli virtuális gépeket telepít át, állítsa le a virtuális gépet, készítse elő a VHD-ket a kívánt virtuális merevlemez típusától, majd másolja a VHD-t a AzCopy vagy a PowerShell-lel.
 
-A virtuális gép kell teljesen le a tiszta állapot áttelepítéséhez. Az áttelepítés befejezéséig állásidő áll fenn.
+A virtuális gépet teljesen le kell állítani a tiszta állapot áttelepítéséhez. Az áttelepítés befejezése után a rendszer leállást hajt végre.
 
-#### <a name="step-1-prepare-vhds-for-migration"></a>1. lépés Vhd-k előkészítése áttelepítésre
-Ha meglévő Azure-virtuális gépeket telepít át prémium szintű storage-ba, a virtuális merevlemez a következő lehet:
+#### <a name="step-1-prepare-vhds-for-migration"></a>1. lépés Virtuális merevlemezek előkészítése áttelepítésre
+Ha meglévő Azure-beli virtuális gépeket telepít át Premium Storagere, a VHD-je a következő lehet:
 
-* Általános operációsrendszer-lemezkép
-* Egyedi operációs rendszerlemez
+* Általános operációsrendszer-rendszerkép
+* Az operációs rendszer egyedi lemeze
 * Adatlemez
 
-Az alábbiakban végighaladunk a 3 forgatókönyvek a virtuális merevlemez előkészítéséhez.
+Az alábbiakban áttekintjük a virtuális merevlemez előkészítésének 3 forgatókönyvét.
 
-##### <a name="use-a-generalized-operating-system-vhd-to-create-multiple-vm-instances"></a>Általános operációsrendszer-virtuális merevlemez használata több virtuálisgép-példány létrehozásához
-Ha olyan virtuális merevlemezt tölt fel, amely több általános Azure-virtuálisgép-példány létrehozásához lesz használva, először általánosítania kell a virtuális merevlemezt egy sysprep segédprogrammal. Ez a helyszíni vagy a felhőben lévő virtuális merevlemezre vonatkozik. A Sysprep minden gépspecifikus információt eltávolít a virtuális merevlemezről.
+##### <a name="use-a-generalized-operating-system-vhd-to-create-multiple-vm-instances"></a>Általánosított operációs rendszer virtuális merevlemezének használata több virtuálisgép-példány létrehozásához
+Ha olyan virtuális merevlemezt tölt fel, amely több általános Azure-beli virtuálisgép-példány létrehozásához lesz felhasználva, először a VHD-t kell általánosítani a Sysprep segédprogram használatával. Ez a helyszínen vagy a felhőben található virtuális merevlemezre vonatkozik. A Sysprep eltávolítja a virtuálisgép-specifikus adatokat a VHD-ből.
 
 > [!IMPORTANT]
-> Készítsen pillanatképet, vagy készítsen biztonsági másolatot a virtuális gépről, mielőtt általánosítana. A sysprep futtatása leáll, és felszabadítja a virtuálisgép-példányt. A Windows operációs rendszer virtuális merevlemezének sysprep előkészítéséhez kövesse az alábbi lépéseket. Vegye figyelembe, hogy a Sysprep parancs futtatásához le kell állítania a virtuális gépet. A Sysprep programról további információt a [Sysprep áttekintése](https://technet.microsoft.com/library/hh825209.aspx) vagy a [Sysprep műszaki útmutató című témakörben talál.](https://technet.microsoft.com/library/cc766049.aspx)
+> Az általánosítás előtt készítsen pillanatképet vagy készítsen biztonsági másolatot a virtuális gépről. A Sysprep futtatása leállítja és felszabadítja a virtuálisgép-példányt. Kövesse az alábbi lépéseket a Sysprep a Windows operációs rendszer virtuális merevlemezén. Vegye figyelembe, hogy a Sysprep parancs futtatásához le kell állítania a virtuális gépet. További információ a Sysprep eszközről: a [Sysprep áttekintése](https://technet.microsoft.com/library/hh825209.aspx) vagy a [Sysprep műszaki útmutatója](https://technet.microsoft.com/library/cc766049.aspx).
 >
 >
 
-1. Nyisson meg egy parancssorablakot rendszergazdaként.
+1. Nyisson meg egy parancssori ablakot rendszergazdaként.
 2. A Sysprep megnyitásához írja be a következő parancsot:
 
     ```
     %windir%\system32\sysprep\sysprep.exe
     ```
 
-3. A Rendszerelőkészítő eszközben válassza a Rendszer kezdőélményének megadása (OOBE) lehetőséget, jelölje be a Generalize jelölőnégyzetet, válassza a **Leállítás**lehetőséget, majd kattintson az **OK**gombra, ahogy az az alábbi képen látható. A Sysprep általánosítja az operációs rendszert, és leállítja a rendszert.
+3. A rendszer-előkészítő eszközben jelölje be a rendszerindítási folyamat (OOBE) megadása elemet, jelölje be az általánosítás jelölőnégyzetet, válassza a **Leállítás**lehetőséget, majd kattintson az **OK**gombra az alábbi képen látható módon. A Sysprep általánosítja az operációs rendszert, és leállítja a rendszert.
 
     ![][1]
 
-Ubuntu virtuális gép esetén használja a virt-sysprep programot, hogy ugyanazt elérje. További részletek [a virt-sysprep témakörben](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) talál. Lásd még néhány, a nyílt forráskódú [Linux Server kiépítési szoftver](https://www.cyberciti.biz/tips/server-provisioning-software.html) más Linux operációs rendszerekhez.
+Ubuntu rendszerű virtuális gép esetén a virt-Sysprep használatával is elérheti ugyanezt. További részletekért lásd: [virt-Sysprep](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) . Lásd még a nyílt forráskódú Linux- [kiszolgáló kiépítési szoftverét](https://www.cyberciti.biz/tips/server-provisioning-software.html) más Linux operációs rendszerekhez.
 
-##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Egyetlen virtuálisgép-példány létrehozásához használjon egyedi operációsrendszer-virtuális merevlemezt
-Ha egy alkalmazás fut a virtuális gépen, amely megköveteli a gép-specifikus adatokat, ne általánosítsa a virtuális merevlemez. Egy nem általánosított virtuális merevlemez egy egyedi Azure virtuálisgép-példány létrehozásához használható. Ha például a tartományvezérlő a virtuális merevlemezen van, a sysprep végrehajtása érvénytelensé teszi tartományvezérlőként. Tekintse át a virtuális gépen futó alkalmazásokat, és a sysprep futtatásának hatását a virtuális merevlemez általánosítása előtt.
+##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Egyedi operációs rendszer virtuális merevlemezének használata egyetlen virtuálisgép-példány létrehozásához
+Ha a virtuális gépen olyan alkalmazás fut, amelyhez a gép specifikusan szükséges, ne általánosítsa a VHD-t. A nem általánosított virtuális merevlemezek egyedi Azure VM-példányok létrehozására használhatók. Ha például a virtuális merevlemezen van tartományvezérlő, a Sysprep végrehajtása a tartományvezérlőként hatástalan lesz. Tekintse át a virtuális gépen futó alkalmazásokat, és a virtuális merevlemez általánosítása előtt a Sysprep futtatásának következményeit.
 
-##### <a name="register-data-disk-vhd"></a>VHD adatlemez regisztrálása
-Ha adatlemezek et telepíthet át az Azure-ban, győződjön meg arról, hogy az adatlemezeket használó virtuális gépek le vannak állítva.
+##### <a name="register-data-disk-vhd"></a>Adatlemez VHD-fájljának regisztrálása
+Ha az Azure-ban adatlemezeket szeretne áttelepíteni, győződjön meg arról, hogy az ezeket az adatlemezeket használó virtuális gépek le vannak állítva.
 
-Kövesse az alábbi lépéseket a virtuális merevlemez Azure Premium Storage-ba másolásához és kiépített adatlemezként való regisztrálásához.
+Az alábbi lépéseket követve másolja a VHD-t az Azure Premium Storageba, és regisztrálja kiépített adatlemezként.
 
 #### <a name="step-2-create-the-destination-for-your-vhd"></a>2. lépés A virtuális merevlemez célhelyének létrehozása
-Hozzon létre egy tárfiókot a virtuális gépek karbantartásához. A virtuális gépek tárolásának tervezésekor vegye figyelembe a következő pontokat:
+Hozzon létre egy Storage-fiókot a virtuális merevlemezek karbantartásához. A virtuális merevlemezek tárolási helyének megtervezése során vegye figyelembe a következő szempontokat:
 
-* A cél prémium szintű tárfiók.
-* A tárfiók helyének meg kell egyeznie a prémium szintű storage-kompatibilis Azure-virtuális gépek végső szakaszában létre. Másolhat egy új tárfiókba, vagy azt tervezheti, hogy ugyanazt a tárfiókot használja az igényeinek megfelelően.
-* Másolja és mentse a tárfiók kulcsát a céltárfiók a következő lépéshez.
+* A cél Premium Storage-fiók.
+* A Storage-fiók helyének meg kell egyeznie Premium Storage a végső szakaszban létrehozandó Azure-beli virtuális gépekkel. Egy új Storage-fiókba másolhatja, vagy megtervezheti, hogy az igényeinek megfelelően ugyanazt a Storage-fiókot használja.
+* Másolja és mentse a cél Storage-fiókhoz tartozó Storage-fiók kulcsát a következő szakaszra.
 
-Adatlemezek esetén dönthet úgy, hogy bizonyos adatlemezeket egy szabványos tárfiókban (például a hűvösebb tárhellyel rendelkező lemezeken) tárol, de azt javasoljuk, hogy az éles számítási feladatok hoz a prémium szintű tárolás hoz.
+Adatlemezek esetén dönthet úgy, hogy egy standard Storage-fiókban tárolja az adatlemezeket (például a hidegebb tárolóval rendelkező lemezeket), de javasoljuk, hogy az éles számítási feladatokhoz az összes adatát a Premium Storage használatára helyezze át.
 
-#### <a name="step-3-copy-vhd-with-azcopy-or-powershell"></a><a name="copy-vhd-with-azcopy-or-powershell"></a>3. lépés VHD másolása az AzCopy vagy PowerShell segítségével
-A két lehetőség bármelyikének feldolgozásához meg kell találnia a tároló elérési útját és a tárfiók kulcsát. A tároló elérési útja és a tárfiók kulcsa megtalálható az **Azure Portal** > **Storage-ban.** A tároló URL-címe a\/"https: /myaccount.blob.core.windows.net/mycontainer/" lesz.
+#### <a name="step-3-copy-vhd-with-azcopy-or-powershell"></a><a name="copy-vhd-with-azcopy-or-powershell"></a>3. lépés Virtuális merevlemez másolása a AzCopy vagy a PowerShell használatával
+A két lehetőség egyikének feldolgozásához meg kell találnia a tároló elérési útját és a Storage-fiók kulcsát. A tároló elérési útja és a Storage-fiók kulcsa az **Azure Portal** > **Storage**szolgáltatásban található. A tároló URL-címe "https:\//MyAccount.blob.Core.Windows.net/mycontainer/" lesz.
 
-##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>1. lehetőség: Virtuális merevlemez másolása az AzCopy segítségével (aszinkron másolat)
+##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>1. lehetőség: virtuális merevlemez másolása AzCopy (aszinkron másolással)
 
-Az AzCopy használatával könnyedén feltöltheti a virtuális merevlemezt az interneten keresztül. A Virtuálisgépek méretétől függően ez időbe telhet. Ne felejtse el ellenőrizni a tárfiók be- és kimenő forgalom korlátait, ha ezt a beállítást használja. A részletekért tekintse meg [a méretezhetőségi és teljesítménycélokat](scalability-targets-standard-account.md) a normál tárfiókokhoz.
+A AzCopy használatával könnyedén feltöltheti a virtuális merevlemezt az interneten keresztül. A virtuális merevlemezek méretétől függően ez időt is igénybe vehet. Ha ezt a beállítást használja, ne felejtse el megnézni a Storage-fiók bejövő/kimenő korlátait. A részletekért tekintse [meg a standard Storage-fiókok méretezhetőségi és teljesítménybeli céljait](scalability-targets-standard-account.md) .
 
-1. Töltse le és telepítse az AzCopy-t innen: [AzAzCopy legújabb verziója](https://aka.ms/downloadazcopy)
-2. Nyissa meg az Azure PowerShellt, és nyissa meg azt a mappát, ahol az AzCopy telepítve van.
-3. A következő paranccsal másolja a VHD fájlt a "Forrás" és a "Cél" fájlba.
+1. Töltse le és telepítse a AzCopy-t innen: [a AzCopy legújabb verziója](https://aka.ms/downloadazcopy)
+2. Nyissa meg Azure PowerShellt, és keresse meg azt a mappát, ahol a AzCopy telepítve van.
+3. A következő paranccsal másolja át a VHD-fájlt a "forrás" értékről a "cél" értékre.
 
    ```azcopy
    AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
@@ -180,21 +180,21 @@ Az AzCopy használatával könnyedén feltöltheti a virtuális merevlemezt az i
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /Pattern:abc.vhd
     ```
  
-   Az AzCopy parancsban használt paraméterek leírásai:
+   Itt láthatók a AzCopy parancsban használt paraméterek leírása:
 
-   * **/Source:** _ &lt;&gt;source :_ A virtuális merevlemezt tartalmazó mappa vagy tárolótároló URL-címének helye.
-   * **/SourceKey:** _ &lt;&gt;source-account-key :_ A forrástárfiók tárfiókkulcsa.
-   * **/Deszt:** _ &lt;&gt;destination :_ Storage container URL-cím a virtuális merevlemez másolásához.
-   * **/DestKey:** _ &lt;dest-account-key&gt;:_ A céltárfiók tárfiókkulcsa.
-   * **/Pattern:** _ &lt;fájlnév&gt;:_ Adja meg a másolni kívánt virtuális merevlemez fájlnevét.
+   * **/Source:** _ &lt;forrás&gt;:_ a virtuális merevlemezt tartalmazó mappa vagy tárolási tároló URL-címe.
+   * **/SourceKey:** _ &lt;forrás-fiók-kulcs&gt;:_ a forrás Storage-fiókhoz tartozó Storage-fiók kulcsa.
+   * **/Dest:** _ &lt;cél&gt;:_ tároló URL-címe a virtuális merevlemez másolásához.
+   * **/DestKey:** _ &lt;cél-Account-Key&gt;:_ a cél Storage-fiók Storage-fiókjának kulcsa.
+   * **/Pattern:** _ &lt;fájlnév&gt;:_ adja meg a másolandó vhd-fájl nevét.
 
-Az AzCopy eszköz használatáról az [Adatok átvitele az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)című témakörben talál.
+További információ a AzCopy eszköz használatáról: [adatok átvitele a AzCopy parancssori segédprogrammal](storage-use-azcopy.md).
 
-##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>2. lehetőség: Virtuális merevlemez másolása powershellnel (szinkronizált másolat)
+##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>2. lehetőség: virtuális merevlemez másolása PowerShell-lel (szinkronizált másolat)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-A VHD-fájlt a Start-AzStorageBlobCopy PowerShell-parancsmag használatával is másolhatja. A vHD másolásához használja a következő parancsot az Azure PowerShellen. Cserélje le a <> értékeket a forrás- és céltárfiók megfelelő értékeire. A parancs használatához rendelkeznie kell egy vhds nevű tárolóval a céltárfiókban. Ha a tároló nem létezik, hozzon létre egyet a parancs futtatása előtt.
+A VHD-fájlt a Start-AzStorageBlobCopy PowerShell-parancsmag használatával is másolhatja. A virtuális merevlemez másolásához használja az alábbi parancsot Azure PowerShell. Cserélje le a <> értékeit a forrás és a cél Storage-fiók megfelelő értékeire. A parancs használatához rendelkeznie kell egy VHD nevű tárolóval a cél Storage-fiókban. Ha a tároló nem létezik, hozzon létre egyet a parancs futtatása előtt.
 
 ```powershell
 $sourceBlobUri = <source-vhd-uri>
@@ -218,55 +218,55 @@ C:\PS> $destinationContext = New-AzStorageContext  –StorageAccountName "destac
 C:\PS> Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="scenario-2-i-am-migrating-vms-from-other-platforms-to-azure-premium-storage"></a><a name="scenario2"></a>2. forgatókönyv: "A virtuális gépeket más platformokról az Azure Premium Storage-ba telepítem át."
-Ha a virtuális merevlemezt nem Azure-beli felhőalapú tárolóból az Azure-ba telepíti át, először exportálnia kell a virtuális merevlemezt egy helyi könyvtárba. A helyi címtár teljes forráselérési útja, ahol a virtuális merevlemez tárolják praktikus, majd az AzCopy segítségével töltse fel az Azure Storage-ba.
+### <a name="scenario-2-i-am-migrating-vms-from-other-platforms-to-azure-premium-storage"></a><a name="scenario2"></a>2. forgatókönyv: "a virtuális gépek áttelepítése más platformokról az Azure Premium Storageba."
+Ha a virtuális merevlemezt nem Azure-beli felhőalapú tárterületről az Azure-ba telepíti át, először exportálnia kell a virtuális merevlemezt egy helyi könyvtárba. Adja meg a helyi könyvtár teljes forrásának elérési útját, ahol a VHD tárolása hasznos, majd a AzCopy használatával töltse fel az Azure Storage-ba.
 
-#### <a name="step-1-export-vhd-to-a-local-directory"></a>1. lépés Virtuális merevlemez exportálása helyi könyvtárba
-##### <a name="copy-a-vhd-from-aws"></a>Virtuális merevlemez másolása az AWS-ből
-1. Ha AWS-t használ, exportálja az EC2 példányt egy Virtuális merevlemezre egy Amazon S3 gyűjtőben. Kövesse az Amazon dokumentációjában leírt lépéseket az Amazon EC2 példányok exportálásához az Amazon EC2 parancssori felület (CLI) eszköz telepítéséhez, és futtassa a create-instance-export-task parancsot az EC2 példány VHD fájlba való exportálásához. Ügyeljen arra, hogy a **CREATE-instance-export-task** parancs futtatásakor a DISK&#95;IMAGE&#95;FORMAT változóhoz használja a **Virtuális merevlemezt.** Az exportált VHD fájl a folyamat során kijelölt Amazon S3 gyűjtőbe kerül.
+#### <a name="step-1-export-vhd-to-a-local-directory"></a>1. lépés VHD exportálása helyi könyvtárba
+##### <a name="copy-a-vhd-from-aws"></a>Virtuális merevlemez másolása AWS-ből
+1. Ha AWS-t használ, exportálja a EC2 példányt egy virtuális merevlemezre egy Amazon S3-gyűjtőben. Kövesse az Amazon EC2-példányok exportálásának Amazon-dokumentációjában leírt lépéseket az Amazon EC2 parancssori felület (CLI) eszköz telepítéséhez, és futtassa a Create-instance-export-Task parancsot a EC2-példány VHD-fájlba való exportálásához. Ügyeljen **arra, hogy** a lemez&#95;RENDSZERKÉP&#95;Format változót használja a **create-instance-export-Task** parancs futtatásakor. Az exportált VHD-fájl a folyamat során kijelölt Amazon S3 gyűjtőben lesz mentve.
 
     ```
     aws ec2 create-instance-export-task --instance-id ID --target-environment TARGET_ENVIRONMENT \
       --export-to-s3-task DiskImageFormat=DISK_IMAGE_FORMAT,ContainerFormat=ova,S3Bucket=BUCKET,S3Prefix=PREFIX
     ```
 
-2. Töltse le a VHD fájlt az S3 gyűjtőből. Jelölje ki a VHD-fájlt, majd **a Műveletek** > **letöltése**lehetőséget.
+2. Töltse le a VHD-fájlt az S3 gyűjtőből. Válassza ki a VHD-fájlt, majd a **műveletek** > **letöltése**lehetőséget.
 
     ![][3]
 
-##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Virtuális merevlemez másolása más, nem Azure-felhőből
-Ha a virtuális merevlemezt nem Azure-beli felhőalapú tárolóból az Azure-ba telepíti át, először exportálnia kell a virtuális merevlemezt egy helyi könyvtárba. Másolja a virtuális merevlemezt tároló helyi könyvtár teljes forráselérési útját.
+##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Virtuális merevlemez másolása más nem Azure-beli felhőből
+Ha a virtuális merevlemezt nem Azure-beli felhőalapú tárterületről az Azure-ba telepíti át, először exportálnia kell a virtuális merevlemezt egy helyi könyvtárba. Másolja a virtuális merevlemezt tároló helyi könyvtár teljes forrásának elérési útját.
 
-##### <a name="copy-a-vhd-from-on-premises"></a>Virtuális merevlemez másolása a helyszíni környezetből
-Ha a virtuális merevlemezt egy helyszíni környezetből telepíti át, a virtuális merevlemez t tároló teljes forráselérési útvonalra lesz szüksége. A forráselérési út lehet kiszolgálói hely vagy fájlmegosztás.
+##### <a name="copy-a-vhd-from-on-premises"></a>Virtuális merevlemez másolása a helyszíni rendszerből
+Ha a virtuális merevlemezt egy helyszíni környezetből telepíti át, szüksége lesz a teljes forrás elérési útra, ahol a VHD tárolódik. A forrás elérési útja lehet kiszolgáló helye vagy fájlmegosztás.
 
 #### <a name="step-2-create-the-destination-for-your-vhd"></a>2. lépés A virtuális merevlemez célhelyének létrehozása
-Hozzon létre egy tárfiókot a virtuális gépek karbantartásához. A virtuális gépek tárolásának tervezésekor vegye figyelembe a következő pontokat:
+Hozzon létre egy Storage-fiókot a virtuális merevlemezek karbantartásához. A virtuális merevlemezek tárolási helyének megtervezése során vegye figyelembe a következő szempontokat:
 
-* A céltárfiók lehet standard vagy prémium szintű tárterület az alkalmazás követelményétől függően.
-* A tárfiók régiójának meg kell egyeznie a prémium szintű storage-kompatibilis Azure-virtuális gépek végső szakaszában létre. Másolhat egy új tárfiókba, vagy azt tervezheti, hogy ugyanazt a tárfiókot használja az igényeinek megfelelően.
-* Másolja és mentse a tárfiók kulcsát a céltárfiók a következő lépéshez.
+* A célként megadott Storage-fiók a standard vagy a Premium Storage lehet az alkalmazásra vonatkozó követelménytől függően.
+* A Storage-fiók régiójának meg kell egyeznie Premium Storage a végső szakaszban létrehozandó Azure-beli virtuális gépekkel. Egy új Storage-fiókba másolhatja, vagy megtervezheti, hogy az igényeinek megfelelően ugyanazt a Storage-fiókot használja.
+* Másolja és mentse a cél Storage-fiókhoz tartozó Storage-fiók kulcsát a következő szakaszra.
 
-Azt javasoljuk, hogy az összes adatot az éles számítási feladatok prémium szintű storage használatához.
+Javasoljuk, hogy az éles számítási feladatokhoz az összes adatát a Premium Storage használatára helyezze át.
 
-#### <a name="step-3-upload-the-vhd-to-azure-storage"></a>3. lépés A virtuális merevlemez feltöltése az Azure Storage szolgáltatásba
-Most, hogy a virtuális merevlemez a helyi címtárban, az AzCopy vagy az AzurePowerShell segítségével feltöltheti a .vhd fájlt az Azure Storage-ba. Mindkét lehetőség itt található:
+#### <a name="step-3-upload-the-vhd-to-azure-storage"></a>3. lépés A VHD feltöltése az Azure Storage-ba
+Most, hogy a virtuális merevlemez a helyi könyvtárban van, a AzCopy vagy a AzurePowerShell használatával feltöltheti a. vhd-fájlt az Azure Storage-ba. Mindkét lehetőséget itt találja:
 
-##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>1. lehetőség: Az Azure PowerShell Add-AzureVhd használata a .vhd fájl feltöltéséhez
+##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>1. lehetőség: az Azure PowerShell Add-AzureVhd használatával töltse fel a. vhd fájlt.
 
 ```powershell
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Uri \<> példa lehet **_"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_**. A \<FileInfo> példa lehet **_a "C:\path\to\upload.vhd"_**.
+Egy példa \<Uri-> lehet **_"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_**. Egy példa \<fileinfo> lehet **_"C:\path\to\upload.vhd"_**.
 
-##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>2. lehetőség: Az .vhd fájl feltöltése az AzCopy segítségével
+##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>2. lehetőség: a AzCopy használata a. vhd fájl feltöltéséhez
 
-Az AzCopy használatával könnyedén feltöltheti a virtuális merevlemezt az interneten keresztül. A Virtuálisgépek méretétől függően ez időbe telhet. Ne felejtse el ellenőrizni a tárfiók be- és kimenő forgalom korlátait, ha ezt a beállítást használja. A részletekért tekintse meg [a méretezhetőségi és teljesítménycélokat](scalability-targets-standard-account.md) a normál tárfiókokhoz.
+A AzCopy használatával könnyedén feltöltheti a virtuális merevlemezt az interneten keresztül. A virtuális merevlemezek méretétől függően ez időt is igénybe vehet. Ha ezt a beállítást használja, ne felejtse el megnézni a Storage-fiók bejövő/kimenő korlátait. A részletekért tekintse [meg a standard Storage-fiókok méretezhetőségi és teljesítménybeli céljait](scalability-targets-standard-account.md) .
 
-1. Töltse le és telepítse az AzCopy-t innen: [AzAzCopy legújabb verziója](https://aka.ms/downloadazcopy)
-2. Nyissa meg az Azure PowerShellt, és nyissa meg azt a mappát, ahol az AzCopy telepítve van.
-3. A következő paranccsal másolja a VHD fájlt a "Forrás" és a "Cél" fájlba.
+1. Töltse le és telepítse a AzCopy-t innen: [a AzCopy legújabb verziója](https://aka.ms/downloadazcopy)
+2. Nyissa meg Azure PowerShellt, és keresse meg azt a mappát, ahol a AzCopy telepítve van.
+3. A következő paranccsal másolja át a VHD-fájlt a "forrás" értékről a "cél" értékre.
 
    ```azcopy
       AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
@@ -278,91 +278,91 @@ Az AzCopy használatával könnyedén feltöltheti a virtuális merevlemezt az i
       AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
    ```
 
-   Az AzCopy parancsban használt paraméterek leírásai:
+   Itt láthatók a AzCopy parancsban használt paraméterek leírása:
 
-   * **/Source:** _ &lt;&gt;source :_ A virtuális merevlemezt tartalmazó mappa vagy tárolótároló URL-címének helye.
-   * **/SourceKey:** _ &lt;&gt;source-account-key :_ A forrástárfiók tárfiókkulcsa.
-   * **/Deszt:** _ &lt;&gt;destination :_ Storage container URL-cím a virtuális merevlemez másolásához.
-   * **/DestKey:** _ &lt;dest-account-key&gt;:_ A céltárfiók tárfiókkulcsa.
-   * **/BlobType: lap:** Itt adhatja meg, hogy a cél egy lapblob.
-   * **/Pattern:** _ &lt;fájlnév&gt;:_ Adja meg a másolni kívánt virtuális merevlemez fájlnevét.
+   * **/Source:** _ &lt;forrás&gt;:_ a virtuális merevlemezt tartalmazó mappa vagy tárolási tároló URL-címe.
+   * **/SourceKey:** _ &lt;forrás-fiók-kulcs&gt;:_ a forrás Storage-fiókhoz tartozó Storage-fiók kulcsa.
+   * **/Dest:** _ &lt;cél&gt;:_ tároló URL-címe a virtuális merevlemez másolásához.
+   * **/DestKey:** _ &lt;cél-Account-Key&gt;:_ a cél Storage-fiók Storage-fiókjának kulcsa.
+   * **/BlobType: oldal:** Megadja, hogy a cél egy oldal blobja.
+   * **/Pattern:** _ &lt;fájlnév&gt;:_ adja meg a másolandó vhd-fájl nevét.
 
-Az AzCopy eszköz használatáról az [Adatok átvitele az AzCopy parancssori segédprogrammal](storage-use-azcopy.md)című témakörben talál.
+További információ a AzCopy eszköz használatáról: [adatok átvitele a AzCopy parancssori segédprogrammal](storage-use-azcopy.md).
 
-##### <a name="other-options-for-uploading-a-vhd"></a>A virtuális merevlemez feltöltésének egyéb lehetőségei
-A virtuális merevlemezt a tárfiókba is feltöltheti az alábbi eszközök egyikével:
+##### <a name="other-options-for-uploading-a-vhd"></a>A virtuális merevlemezek feltöltésének egyéb lehetőségei
+A VHD-t a következő módon is feltöltheti a Storage-fiókjába:
 
-* [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-* [Az Azure Storage Explorer blobok feltöltése](https://azurestorageexplorer.codeplex.com/)
-* [Tárolás importálása/exportálása szolgáltatás REST API-jának](https://msdn.microsoft.com/library/dn529096.aspx)
+* [Azure Storage másolási blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+* [Blobok feltöltése Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/)
+* [Tároló importálási/exportálási szolgáltatásának REST API referenciája](https://msdn.microsoft.com/library/dn529096.aspx)
 
 > [!NOTE]
-> Javasoljuk az Importálási/Exportálási szolgáltatás használatát, ha a becsült feltöltési idő 7 napnál hosszabb. [A DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) segítségével megbecsülheti az adatméretből és az átviteli egységből származó időt.
+> Az import/export szolgáltatást javasoljuk, ha a becsült feltöltési idő hosszabb 7 napnál. A [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) segítségével megbecsülheti az időt az adatok méretétől és az adatátviteli egységtől.
 >
-> Az importálás/exportálás szabványos tárfiókba másolásra használható. Egy eszköz, például az AzCopy használatával kell másolnia a normál tárból a prémium szintű tárfiókba.
+> Az importálási/exportálási szolgáltatás a standard Storage-fiókba való másolásra használható. A standard Storage-ból prémium szintű Storage-fiókra kell másolnia egy olyan eszközzel, mint az AzCopy.
 >
 >
 
-## <a name="create-azure-vms-using-premium-storage"></a><a name="create-azure-virtual-machine-using-premium-storage"></a>Azure-beli virtuális gépek létrehozása prémium szintű tárterülethasználatával
-Miután a virtuális merevlemez feltöltése vagy másolása a kívánt tárfiókba, kövesse az ebben a szakaszban található utasításokat a virtuális merevlemez operációs rendszerképként vagy operációsrendszer-lemezként regisztrálásához a forgatókönyvtől függően, majd hozzon létre belőle egy virtuálisgép-példányt. A Virtuális merevlemez adatlemez a virtuális géphez csatlakoztatható, miután létrehozta.
-A szakasz végén egy mintaáttelepítési parancsfájl található. Ez az egyszerű parancsfájl nem felel meg minden forgatókönyvnek. Előfordulhat, hogy frissítenie kell a parancsfájlt, hogy megfeleljen az adott forgatókönyvnek. Ha meg szeretné tudni, hogy ez a parancsfájl vonatkozik-e a forgatókönyvre, olvassa el a [Mintaáttelepítési parancsfájl t.](#a-sample-migration-script)
+## <a name="create-azure-vms-using-premium-storage"></a><a name="create-azure-virtual-machine-using-premium-storage"></a>Azure-beli virtuális gépek létrehozása Premium Storage használatával
+Miután feltöltötte vagy átmásolta a VHD-t a kívánt Storage-fiókba, kövesse az ebben a szakaszban található utasításokat a virtuális merevlemez operációsrendszer-lemezképként vagy operációsrendszer-lemezként való regisztrálásához a forgatókönyvtől függően, majd hozzon létre egy VM-példányt. Az adatlemez virtuális merevlemeze a létrehozás után csatlakoztatható a virtuális géphez.
+A szakasz végén egy minta áttelepítési parancsfájl is elérhető. Ez az egyszerű parancsfájl nem felel meg az összes forgatókönyvnek. Előfordulhat, hogy frissítenie kell a parancsfájlt, hogy az megfeleljen az adott forgatókönyvnek. Ha szeretné megtekinteni, hogy a parancsfájl a forgatókönyvre vonatkozik-e, tekintse meg az alábbi [példa áttelepítési parancsfájlt](#a-sample-migration-script).
 
 ### <a name="checklist"></a>Ellenőrzőlista
-1. Várjon, amíg az összes VHD-lemez másolása befejeződik.
-2. Győződjön meg arról, hogy a Prémium szintű tárterület elérhető abban a régióban, ahamelyazáttelepítés korát.
-3. Döntse el az új virtuálisgép-sorozatot, amelyet használni fog. Prémium szintű storage-kompatibilisnek kell lennie, és a méretnek a régióban való rendelkezésre állástól és az igényeitől függően kell lennie.
-4. Döntse el a pontos virtuális gép méretét fogja használni. A virtuális gép méretének elég nagynak kell lennie ahhoz, hogy támogassa az adatlemezek számát. Például ha 4 adatlemezzel rendelkezik, a virtuális gépnek 2 vagy több maggal kell rendelkeznie. Vegye figyelembe a feldolgozási teljesítmény, a memória és a hálózati sávszélesség igényeit is.
-5. Hozzon létre egy prémium szintű tárfiókot a célrégióban. Ezt a fiókot fogja használni az új virtuális géphez.
-6. Az aktuális virtuális gép részletei kéznél, beleértve a lemezek listáját és a megfelelő Virtuális merevlemez-blobok.
+1. Várjon, amíg a VHD-lemezek másolása befejeződött.
+2. Győződjön meg arról, hogy Premium Storage elérhető az áttelepíteni kívánt régióban.
+3. Döntse el, hogy milyen új virtuálisgép-sorozatot fog használni. Premium Storage képesnek kell lennie, és a méretnek a régió rendelkezésre állása és igényei alapján kell lennie.
+4. Döntse el, hogy pontosan melyik virtuálisgép-méretet fogja használni. A virtuális gép méretének elég nagynak kell lennie az adatlemezek számának támogatásához. Például Ha 4 adatlemezzel rendelkezik, a virtuális gépnek 2 vagy több magot kell tartalmaznia. Emellett érdemes lehet a teljesítmény, a memória és a hálózati sávszélesség igényének feldolgozására is.
+5. Hozzon létre egy Premium Storage fiókot a célként megadott régióban. Ezt a fiókot fogja használni az új virtuális géphez.
+6. A virtuális gép aktuális részletei kéznél legyenek, beleértve a lemezek listáját és a megfelelő VHD-blobokat.
 
-Készítse elő az alkalmazást az állásidőre. A tiszta áttelepítéshez le kell állítania az összes feldolgozást a jelenlegi rendszerben. Csak akkor lehet kapni, hogy a következetes állapot, amely áttelepíthető az új platformra. Az állásidő időtartama az áttelepítendő lemezeken lévő adatok mennyiségétől függ.
+Készítse elő az alkalmazást állásidőre. A tiszta áttelepítés végrehajtásához le kell állítania az összes feldolgozást az aktuális rendszeren. Ezt a lehetőséget csak akkor érheti el, ha konzisztens állapotba kerül, amelyet áttelepíthet az új platformra. Az állásidő időtartama az áttelepíteni kívánt lemezeken lévő adatok mennyiségétől függ.
 
 > [!NOTE]
-> Ha egy Azure Resource Manager virtuális gép egy speciális virtuális merevlemezről, tekintse meg [ezt a sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) a Resource Manager virtuális gép meglévő lemez használatával történő üzembe helyezéséhez.
+> Ha Azure Resource Manager virtuális gépet hoz létre egy speciális VHD-lemezről, tekintse meg [ezt a sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) a Resource Manager-alapú virtuális gép meglévő lemez használatával történő üzembe helyezéséhez.
 >
 >
 
 ### <a name="register-your-vhd"></a>A virtuális merevlemez regisztrálása
-Virtuális gép létrehozásához az operációs rendszer virtuális merevlemezéről, vagy egy adatlemez t egy új virtuális géphez, először regisztrálnia kell őket. Kövesse az alábbi lépéseket a virtuális merevlemez forgatókönyvétől függően.
+Ha virtuális gépet szeretne létrehozni az operációs rendszer VHD-ről, vagy egy adatlemezt szeretne csatlakoztatni egy új virtuális géphez, először regisztrálnia kell őket. A VHD-forgatókönyvtől függően kövesse az alábbi lépéseket.
 
-#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Általános operációsrendszer-virtuális merevlemez több Azure virtuálisgép-példány létrehozásához
-Miután általánosrendszerezett operációsrendszer-rendszer virtuális merevlemez feltöltése a tárfiókba, regisztrálja **azt egy Azure virtuális gép lemezkép,** így létrehozhat egy vagy több virtuálisgép-példányok belőle. A következő PowerShell-parancsmagokkal regisztrálja a virtuális merevlemezt Azure Virtuálisgép-operációs rendszerrendszer-lemezképként. Adja meg a teljes tároló URL-címét, ahová a virtuális merevlemezt másolta.
+#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Általánosított operációs rendszer VHD-je több Azure VM-példány létrehozásához
+Az általános operációsrendszer-rendszerkép VHD-fájljának a Storage-fiókba való feltöltése után regisztrálja Azure-beli virtuálisgép- **képként** , hogy létre tudja hozni egy vagy több virtuálisgép-példányt. Használja a következő PowerShell-parancsmagokat a virtuális merevlemez Azure-beli VM operációsrendszer-rendszerképként való regisztrálásához. Adja meg a teljes tároló URL-címét, ahová a VHD-t átmásolták.
 
 ```powershell
 Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osimage.vhd" -OS Windows
 ```
 
-Másolja és mentse az új Azure virtuális gép lemezkép nevét. A fenti példában az *OSImageName*.
+Másolja és mentse az új Azure VM-rendszerkép nevét. A fenti példában ez a *OSImageName*.
 
 #### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Egyedi operációs rendszer virtuális merevlemeze egyetlen Azure virtuálisgép-példány létrehozásához
-Miután az egyedi operációsrendszer-virtuális merevlemez feltöltése a tárfiókba, regisztrálja azt **egy Azure operációs rendszer lemeze,** így létrehozhat egy virtuálisgép-példányt belőle. Ezekkel a PowerShell-parancsmagokkal regisztrálhatja a virtuális merevlemezt Azure operációs rendszerbeli lemezként. Adja meg a teljes tároló URL-címét, ahová a virtuális merevlemezt másolta.
+Miután feltöltötte az egyedi operációs rendszer VHD-jét a Storage-fiókba, regisztrálja azt **Azure operációsrendszer-lemezként** , hogy létre lehessen hozni BELŐLE egy VM-példányt. Ezekkel a PowerShell-parancsmagokkal regisztrálhatja a VHD-t Azure operációsrendszer-lemezként. Adja meg a teljes tároló URL-címét, ahová a VHD-t átmásolták.
 
 ```powershell
 Add-AzureDisk -DiskName "OSDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd" -Label "My OS Disk" -OS "Windows"
 ```
 
-Másolja és mentse az új Azure operációsrendszer-lemez nevét. A fenti példában az *OSDisk*.
+Másolja és mentse az új Azure operációsrendszer-lemez nevét. A fenti példában ez a *OSDisk*.
 
-#### <a name="data-disk-vhd-to-be-attached-to-new-azure-vm-instances"></a>Az új Azure virtuálisgép-példány(ok)hoz csatolandó virtuális merevlemez virtuális merevlemeze
-Miután a virtuális merevlemez tanév feltöltése a tárfiókba, regisztrálja azt egy Azure Data Disk, hogy csatolható legyen az új DS sorozat, DSv2 sorozat vagy GS sorozatAzure virtuális gép példány.
+#### <a name="data-disk-vhd-to-be-attached-to-new-azure-vm-instances"></a>Adatlemez virtuális merevlemeze, amely az új Azure VM-példány (ok) hoz csatlakoztatható
+Miután feltöltötte az adatlemez VHD-jét a Storage-fiókba, regisztrálja Azure-adatlemezként, hogy az új DS-sorozathoz, a DSv2-sorozathoz vagy a GS Series Azure VM-példányhoz legyen csatolva.
 
-Ezekkel a PowerShell-parancsmagokkal regisztrálhatja a virtuális merevlemezt Azure-adatlemezként. Adja meg a teljes tároló URL-címét, ahová a virtuális merevlemezt másolta.
+Ezekkel a PowerShell-parancsmagokkal regisztrálhatja a VHD-t Azure-adatlemezként. Adja meg a teljes tároló URL-címét, ahová a VHD-t átmásolták.
 
 ```powershell
 Add-AzureDisk -DiskName "DataDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk.vhd" -Label "My Data Disk"
 ```
 
-Másolja és mentse az új Azure Data Disk nevét. A fenti példában a *DataDisk*.
+Másolja és mentse az új Azure-adatlemez nevét. A fenti példában ez a *adatlemez*.
 
-### <a name="create-a-premium-storage-capable-vm"></a>Prémium szintű storage-kompatibilis virtuális gép létrehozása
-Az operációs rendszer lemezképe vagy operációsrendszer-lemez regisztrálása után hozzon létre egy új DS-sorozatú, DSv2-sorozatú vagy GS-sorozatú virtuális gép. A regisztrált operációsrendszer-lemezlemez-nevet fogja használni. Válassza ki a virtuális gép típusát a prémium szintű storage-csomagból. Az alábbi példában a *Standard_DS2* virtuális gép méretét használjuk.
+### <a name="create-a-premium-storage-capable-vm"></a>Premium Storage-kompatibilis virtuális gép létrehozása
+Az operációs rendszer lemezképének vagy operációsrendszer-lemezének regisztrálása után hozzon létre egy új DS-sorozatú, DSv2 vagy GS sorozatú virtuális gépet. A regisztrált operációs rendszer lemezképét vagy az operációs rendszer lemezének nevét fogja használni. Válassza ki a virtuális gép típusát a Premium Storage szintjéből. Az alábbi példában az *Standard_DS2* virtuális gép méretét használjuk.
 
 > [!NOTE]
-> Frissítse a lemez méretét, hogy megbizonyosodjon arról, hogy megfelel a kapacitás és a teljesítmény követelményeinek, valamint a rendelkezésre álló Azure-lemezméretek.
+> Frissítse a lemez méretét, hogy biztosan megfeleljen a kapacitásának és teljesítményének, valamint az elérhető Azure-lemez méretének.
 >
 >
 
-Kövesse az alábbi lépésről lépésre a PowerShell-parancsmagokat az új virtuális gép létrehozásához. Először állítsa be a közös paramétereket:
+Az új virtuális gép létrehozásához kövesse az alábbi PowerShell-parancsmagok lépéseit. Először állítsa be az általános paramétereket:
 
 ```powershell
 $serviceName = "yourVM"
@@ -380,10 +380,10 @@ Először hozzon létre egy felhőalapú szolgáltatást, amelyben az új virtu�
 New-AzureService -ServiceName $serviceName -Location $location
 ```
 
-Következő, a forgatókönyvtől függően hozza létre az Azure virtuálisgép-példányt az operációs rendszerlemezről vagy az operációs rendszer lemezéről, amely regisztrált.
+Ezután a forgatókönyvtől függően hozza létre az Azure VM-példányt a regisztrált operációsrendszer-lemezképből vagy operációsrendszer-lemezből.
 
-#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Általános operációsrendszer-virtuális merevlemez több Azure virtuálisgép-példány létrehozásához
-Hozzon létre egy vagy több új DS sorozatú Azure virtuálisgép-példányt a regisztrált **Azure operációs rendszerlemezkép** használatával. Adja meg ezt az operációsrendszer-lemezkép nevét a virtuális gép konfigurációjában új virtuális gép létrehozásakor az alábbiak szerint.
+#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Általánosított operációs rendszer VHD-je több Azure VM-példány létrehozásához
+Hozzon létre egy vagy több új DS sorozatú Azure VM-példányt a regisztrált **Azure operációsrendszer-rendszerkép** használatával. Az új virtuális gép létrehozásakor adja meg az operációs rendszer rendszerképének nevét a virtuális gép konfigurációjában az alább látható módon.
 
 ```powershell
 $OSImage = Get-AzureVMImage –ImageName "OSImageName"
@@ -396,7 +396,7 @@ New-AzureVM -ServiceName $serviceName -VM $vm
 ```
 
 #### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Egyedi operációs rendszer virtuális merevlemeze egyetlen Azure virtuálisgép-példány létrehozásához
-Hozzon létre egy új DS-sorozatú Azure virtuálisgép-példányt a regisztrált **Azure operációs rendszerlemez** használatával. Adja meg ezt az operációsrendszer-lemez nevet a virtuális gép konfigurációjában az új virtuális gép létrehozásakor az alábbiak szerint.
+Hozzon létre egy új DS Series Azure VM-példányt a regisztrált **Azure operációsrendszer-lemezzel** . Adja meg az operációsrendszer-lemez nevét a virtuális gép konfigurációjában az új virtuális gép létrehozásakor az alábbi ábrán látható módon.
 
 ```powershell
 $OSDisk = Get-AzureDisk –DiskName "OSDisk"
@@ -406,12 +406,12 @@ $vm = New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -DiskName $OSDisk.Di
 New-AzureVM -ServiceName $serviceName –VM $vm
 ```
 
-Adja meg az Azure virtuális gép egyéb adatait, például a felhőszolgáltatás, a régió, a tárfiók, a rendelkezésre állási készlet és a gyorsítótárazási szabályzat. Vegye figyelembe, hogy a virtuálisgép-példánynak a társított operációs rendszerrel vagy adatlemezekkel együtt kell lennie, így a kiválasztott felhőszolgáltatásnak, régiónak és tárfióknak ugyanazon a helyen kell lennie, mint a lemezek alapjául szolgáló Virtuális merevlemezeknek.
+Adja meg az egyéb Azure-beli virtuálisgép-információkat, például a felhőalapú szolgáltatást, a régiót, a tárolási fiókot, a rendelkezésre állási készletet és a gyorsítótárazási házirendet Vegye figyelembe, hogy a virtuálisgép-példánynak a társított operációs rendszer vagy adatlemezek együttes elhelyezésével kell rendelkeznie, ezért a kiválasztott felhőalapú szolgáltatás, a régió és a Storage-fióknak ugyanazon a helyen kell lennie, mint a lemezek mögöttes VHD-fájljainak.
 
 ### <a name="attach-data-disk"></a>Adatlemez csatolása
-Végül, ha regisztrált adatlemez VHD-k, csatolja őket az új prémium szintű storage-kompatibilis Azure virtuális gép.
+Végül, ha regisztrálta az adatlemezek virtuális merevlemezeit, csatolja őket az új Premium Storage képes Azure-beli virtuális géphez.
 
-A következő PowerShell-parancsmag használatával adatlemezt csatolhat az új virtuális géphez, és megadhatja a gyorsítótárazási házirendet. Példában az alábbi példában a gyorsítótárazási házirend *csak olvasható*.
+A következő PowerShell-parancsmag használatával csatlakoztassa az adatlemezt az új virtuális géphez, és határozza meg a gyorsítótárazási házirendet. Az alábbi példában a gyorsítótárazási házirend *írásvédett*értékre van állítva.
 
 ```powershell
 $vm = Get-AzureVM -ServiceName $serviceName -Name $vmName
@@ -422,27 +422,27 @@ Update-AzureVM  -VM $vm
 ```
 
 > [!NOTE]
-> Előfordulhat, hogy további lépések szükségesek az alkalmazás támogatásához, amelyekre ez az útmutató nem terjed ki.
+> Előfordulhat, hogy a jelen útmutatóban nem szereplő alkalmazás támogatásához további lépések szükségesek.
 >
 >
 
-### <a name="checking-and-plan-backup"></a>Biztonsági mentés ellenőrzése és megtervezése
-Miután az új virtuális gép működik, hozzáférés az azonos bejelentkezési azonosítót és jelszót, mint az eredeti virtuális gép, és ellenőrizze, hogy minden a várt módon működik.Once the new VM is up and running, access it using the same login id and password is as the original VM, and verify that everything is working as expected. Az összes beállítás, beleértve a csíkozott kötetek, jelen lenne az új virtuális gép.
+### <a name="checking-and-plan-backup"></a>Biztonsági mentés ellenőrzése és tervezése
+Ha az új virtuális gép működik, és a felhasználó ugyanazzal a bejelentkezési azonosítóval és jelszóval fér hozzá, akkor az eredeti virtuális gép, és ellenőrizze, hogy minden a várt módon működik-e. Az új virtuális gépen az összes beállítás, a csíkozott kötetek is szerepelnek.
 
-Az utolsó lépés az, hogy az alkalmazás igényeinek megfelelően tervezze meg az új virtuális gép biztonsági mentési és karbantartási ütemezését.
+Az utolsó lépés az új virtuális gép biztonsági mentési és karbantartási ütemtervének megtervezése az alkalmazás igényei alapján.
 
-### <a name="a-sample-migration-script"></a><a name="a-sample-migration-script"></a>Mintaáttelepítési parancsfájl
-Ha több virtuális gépet kell áttelepítenie, a PowerShell-parancsfájlok automatizálása hasznos lehet. A következőkben egy minta-parancsfájl, amely automatizálja a virtuális gép áttelepítését. Vegye figyelembe, hogy az alábbi parancsfájl csak egy példa, és kevés feltételezések et az aktuális virtuális gép lemezek. Előfordulhat, hogy frissítenie kell a parancsfájlt, hogy megfeleljen az adott forgatókönyvnek.
+### <a name="a-sample-migration-script"></a><a name="a-sample-migration-script"></a>Minta áttelepítési parancsfájl
+Ha több virtuális gépet is át szeretne telepíteni, akkor a PowerShell-parancsfájlok használatával történő automatizálás hasznos lehet. A következő példa egy olyan parancsfájlt mutat be, amely automatizálja a virtuális gép áttelepítését. Vegye figyelembe, hogy az alábbi szkript csak példaként szolgál, és az aktuális virtuálisgép-lemezekkel kapcsolatos feltételezések is vannak. Előfordulhat, hogy frissítenie kell a parancsfájlt, hogy az megfeleljen az adott forgatókönyvnek.
 
 A feltételezések a következők:
 
-* Klasszikus Azure-virtuális gépeket hoz létre.
-* A forrás operációsrendszer-lemezek és a forrás-adatlemezek ugyanabban a tárfiókban és tárolóban vannak. Ha az operációs rendszer lemezek és adatlemezek nem ugyanazon a helyen, az AzCopy vagy az Azure PowerShell segítségével virtuális merevlemezek másolása tárfiókok és tárolók. Tekintse meg az előző lépést: [VHD másolása az AzCopy vagy PowerShell](#copy-vhd-with-azcopy-or-powershell)segítségével. A parancsfájl szerkesztése a forgatókönyvnek megfelel egy másik választás, de javasoljuk az AzCopy vagy a PowerShell használatát, mivel ez egyszerűbb és gyorsabb.
+* Klasszikus Azure-beli virtuális gépeket hoz létre.
+* A forrás operációsrendszer-lemezek és a forrásoldali adatlemezek ugyanabban a Storage-fiókban és azonos tárolóban találhatók. Ha az operációsrendszer-lemezek és adatlemezek nem ugyanazon a helyen találhatók, akkor a AzCopy vagy a Azure PowerShell használatával másolhat virtuális merevlemezeket a Storage-fiókokon és a tárolókban. Tekintse meg az előző lépést: [virtuális merevlemez másolása a AzCopy vagy a PowerShell használatával](#copy-vhd-with-azcopy-or-powershell). Ha úgy szerkeszti ezt a parancsfájlt, hogy az megfeleljen a forgatókönyvnek, akkor azt javasoljuk, hogy a AzCopy vagy a PowerShellt használja, mivel az egyszerűbb és gyorsabb.
 
-Az automatizálási parancsfájl az alábbiakban érhető el. Cserélje le a szöveget az adatokkal, és frissítse a parancsfájlt az adott forgatókönyvnek megfelelően.
+Az Automation-szkriptet alább találja. Cserélje le a szöveget az adataira, és frissítse a szkriptet az adott forgatókönyvnek megfelelően.
 
 > [!NOTE]
-> A meglévő parancsfájl használata nem őrzi meg a forrás virtuális gép hálózati konfigurációját. Újra meg kell egyeznem az áttelepített virtuális gépek hálózati beállításaival.
+> A meglévő parancsfájl használata nem őrzi meg a forrásként szolgáló virtuális gép hálózati konfigurációját. Újra kell konfigurálnia az áttelepített virtuális gépek hálózati beállításait.
 >
 >
 
@@ -740,35 +740,35 @@ Az automatizálási parancsfájl az alábbiakban érhető el. Cserélje le a sz�
 ```
 
 #### <a name="optimization"></a><a name="optimization"></a>Optimalizálás
-A jelenlegi virtuális gép konfigurációja testreszabható kifejezetten a standard lemezek megfelelő működéséhez. Például a teljesítmény növelése egy csíkozott köteten lévő lemezek használatával. Például ahelyett, hogy 4 lemezt külön-külön a prémium szintű storage, akkor lehet, hogy optimalizálja a költségeket, ha egyetlen lemezt. Az ilyen optimalizálásokat eseti alapon kell kezelni, és az áttelepítés után egyéni lépéseket kell igényelni. Vegye figyelembe azt is, hogy ez a folyamat nem biztos, hogy működik olyan adatbázisokés alkalmazások esetében, amelyek a telepítésben meghatározott lemezelrendezéstől függenek.
+Előfordulhat, hogy a jelenlegi virtuálisgép-konfiguráció kifejezetten a standard szintű lemezekkel való működésre van szabva. Például a teljesítmény növeléséhez egy csíkozott kötet számos lemezének használatával. Például ahelyett, hogy 4 lemezt kellene külön használni a Premium Storageon, a költségeket egyetlen lemezzel is optimalizálhatja. Az ehhez hasonló optimalizálásokat eseti alapon kell kezelni, és az áttelepítés után egyéni lépéseket kell megkövetelni. Azt is vegye figyelembe, hogy ez a folyamat nem működik megfelelően a telepítőben definiált lemez-elrendezéstől függő adatbázisok és alkalmazások esetében.
 
 ##### <a name="preparation"></a>Előkészítés
-1. Végezze el az egyszerű áttelepítést a korábbi szakaszban leírtak szerint. Az áttelepítés után az új virtuális gépen lesz optimalizálás.
-2. Adja meg az optimalizált konfigurációhoz szükséges új lemezméreteket.
-3. Határozza meg az aktuális lemezek/kötetek hozzárendelését az új lemezspecifikációkhoz.
+1. Fejezze be az egyszerű áttelepítést az előző szakaszban leírtak szerint. A rendszer az áttelepítés után az új virtuális gépen hajtja végre az optimalizálást.
+2. Adja meg az optimalizált konfigurációhoz szükséges új méretű lemezeket.
+3. Határozza meg az aktuális lemezek/kötetek leképezését az új lemezre vonatkozó specifikációknak megfelelően.
 
 ##### <a name="execution-steps"></a>Végrehajtási lépések
-1. Hozza létre az új lemezeket a megfelelő méretű prémium szintű storage virtuális gép.
-2. Jelentkezzen be a virtuális gépre, és másolja az adatokat az aktuális kötetről az új lemezre, amely leképezi az adott kötetre. Ezt tegye meg az összes olyan aktuális kötetesetében, amelyet új lemezre kell leképezni.
-3. Ezután módosítsa az alkalmazás beállításait az új lemezekre való váltáshoz, és válassza le a régi köteteket.
+1. Hozza létre az új lemezeket a megfelelő méretekkel a Premium Storage virtuális gépen.
+2. Jelentkezzen be a virtuális gépre, és másolja az adatokat az aktuális kötetről az adott kötetre leképező új lemezre. Ezt az összes olyan aktuális kötet esetében tegye, amely új lemezre kell leképezni.
+3. Ezután módosítsa az alkalmazás beállításait úgy, hogy az új lemezekre váltson, és válassza le a régi köteteket.
 
-Az alkalmazás finomhangolása a jobb lemez teljesítmény, kérjük, olvassa el az optimalizálása alkalmazás teljesítményét szakasza [a tervezés a nagy teljesítményű](../../virtual-machines/windows/premium-storage-performance.md) cikket.
+Az alkalmazás a jobb teljesítmény érdekében történő hangolásához tekintse meg az alkalmazások teljesítményének optimalizálása című szakaszt a [nagy teljesítményű cikk kialakításához](../../virtual-machines/windows/premium-storage-performance.md) .
 
-### <a name="application-migrations"></a>Alkalmazásáttelepítések
-Az adatbázisok és más összetett alkalmazások az alkalmazásszolgáltató által az áttelepítéshez meghatározott speciális lépéseket igényelhetnek. Kérjük, olvassa el a megfelelő alkalmazásdokumentációt. Például az adatbázisok általában biztonsági mentésés visszaállítás útján telepíthetők át.
+### <a name="application-migrations"></a>Alkalmazások áttelepítése
+Az adatbázisok és más összetett alkalmazások az alkalmazás szolgáltatója által az áttelepítés során meghatározott speciális lépéseket igényelhetnek. Tekintse meg a megfelelő alkalmazás dokumentációját. Például az adatbázisok általában biztonsági mentéssel és visszaállítással is áttelepíthetők.
 
 ## <a name="next-steps"></a>További lépések
-A következő források a virtuális gépek áttelepítésére vonatkozó konkrét forgatókönyvekhez:
+A virtuális gépek áttelepítésére vonatkozó konkrét forgatókönyvek esetében tekintse meg a következő forrásokat:
 
-* [Az Azure virtuális gépek áttelepítése a tárfiókok között](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Hozzon létre és töltsön fel egy Windows Server virtuális merevlemezt az Azure-ba.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure-Virtual Machines migrálása a Storage-fiókok között](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
+* [Windows Server rendszerű virtuális merevlemez létrehozása és feltöltése az Azure-ba.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Linuxos virtuális merevlemez létrehozása és feltöltése az Azure-ba](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Virtuális gépek áttelepítése az Amazon AWS-ről a Microsoft Azure-ba](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Virtual Machines migrálása az Amazon AWS-ből a Microsoft Azureba](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-Az Azure Storage és az Azure virtuális gépekről az alábbi forrásokból is megtudhatja:
+Az Azure Storage szolgáltatással és az Azure Virtual Machinesával kapcsolatos további információkért tekintse meg a következő forrásokat is:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-* [Azure virtuális gépek](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Azure-Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [IaaS-alapú virtuális gépek lemeztípusának kiválasztása](../../virtual-machines/windows/disks-types.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

@@ -1,6 +1,6 @@
 ---
 title: Kvóták és korlátok módosítása az Azure Data Lake Analyticsben
-description: Ismerje meg, hogyan módosíthatja és növelheti a kvótákat és a korlátokat az Azure Data Lake Analytics (ADLA) fiókokban.
+description: Megtudhatja, hogyan állíthatja be és növelheti a kvótákat és a korlátokat Azure Data Lake Analytics (ADLA) fiókokban.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: omidm1
@@ -18,66 +18,66 @@ ms.locfileid: "75644715"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Kvóták és korlátok módosítása az Azure Data Lake Analyticsben
 
-Ismerje meg, hogyan módosíthatja és növelheti a kvótát és a korlátokat az Azure Data Lake Analytics (ADLA) fiókokban. Ezeknek a korlátoknak a ismerete segít megérteni az U-SQL-feladat viselkedését. Minden kvótakorlát puha, így növelheti a maximális korlátokat az Azure-támogatással való kapcsolatfelvételsel.
+Megtudhatja, hogyan módosíthatja és növelheti a kvótákat és a korlátokat Azure Data Lake Analytics (ADLA) fiókokban. A határértékek ismerete segít megérteni a U-SQL-feladatok viselkedését. Az összes kvóta-korlátozás puha, így növelheti a maximális korlátot, ha kapcsolatba lép az Azure támogatási szolgálatával.
 
-## <a name="azure-subscriptions-limits"></a>Az Azure-előfizetések korlátai
+## <a name="azure-subscriptions-limits"></a>Azure-előfizetések korlátai
 
-**Az ADLA-fiókok maximális száma előfizetésenként régiónként:** 5
+**ADLA-fiókok maximális száma előfizetésben régiónként:** 5
 
-Ha megpróbál létrehozni egy hatodik ADLA-fiókot, akkor a következő hibaüzenet jelenik meg: "Elérte a régióban engedélyezett Data Lake Analytics-fiókok maximális számát (5) az előfizetés neve alatt".
+Ha hatodik ADLA-fiókot próbál létrehozni, a következő hibaüzenet jelenik meg: "elérte az engedélyezett Data Lake Analytics fiókok maximális számát (5) a régióban az előfizetés neve alatt".
 
-Ha túl szeretne lépni ezen a korláton, próbálkozzon az alábbi lehetőségekkel:
-* válasszon másik régiót, ha az alkalmas
-* lépjen kapcsolatba az Azure-támogatással [egy támogatási jegy megnyitásával,](#increase-maximum-quota-limits) és kérjen kvótanövelést.
+Ha ezt a korlátot szeretné kipróbálni, a következő lehetőségek közül választhat:
+* Ha megfelelő, válasszon egy másik régiót
+* vegye fel a kapcsolatot az Azure támogatási szolgálatával, és [Nyisson meg egy támogatási jegyet](#increase-maximum-quota-limits) , amely a kvóta növelését kéri.
 
-## <a name="default-adla-account-limits"></a>Alapértelmezett ADLA-fiókkorlátok
+## <a name="default-adla-account-limits"></a>Alapértelmezett ADLA-fiók korlátai
 
-**Az Analytics-egységek maximális száma fiókonként:** 250, alapértelmezett 32
+**Elemzési egységek maximális száma (AUs):** 250, alapértelmezett 32
 
-Ez a fiókban egyidejűleg futtatható AUs-ok maximális száma. Ha az összes feladatban futó AUs-ok teljes száma meghaladja ezt a korlátot, az újabb feladatok automatikusan várólistára kerülnek. Példa:
+A fiókban egyidejűleg futtatható au-t maximális száma. Ha az összes feladatban az összes feladat futása meghaladja ezt a korlátot, az újabb feladatok automatikusan várólistára kerülnek. Például:
 
-* Ha csak egy feladat fut 32 AUs-szal, amikor egy második feladatot küld, akkor a feladatvárólistában fog várni, amíg az első feladat befejeződik.
-* Ha már négy feladat fut, és mindegyik 8 AUs-t használ, amikor egy ötödik, 8 AUs-t igényel, a feladatvárólistában várakozik, amíg 8 AUs elérhető.
+* Ha egy második feladatot csak egy 32 AUs-vel rendelkező feladatokkal futtat, a rendszer a feladatok várólistáján várakozik, amíg az első művelet be nem fejeződik.
+* Ha már négy feladatot futtat, és mindegyik 8 au-t használ, akkor ha olyan ötödik feladatot küld, amelynek 8 au-t kell megvárnia a feladat-várólistán, amíg nem érhető el 8 au.
 
-    ![Az Azure Data Lake Analytics korlátai és kvótaoldala](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
+    ![Azure Data Lake Analytics korlátok és kvóta lap](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
 
-**Az Analytics-egységek maximális száma feladatonként:** 250, alapértelmezett 32
+**Az elemzési egységek maximális száma (AUs):** 250, alapértelmezett 32
 
-Ez az egyes feladatokkal a fiókjában hozzárendelhető a maximális számú AT.This is the maximum number of AUs that each individual job can be assigned in your account. Az ezt a korlátnál nagyobb hozadékokat a rendszer elutasítja, kivéve, ha a beküldőre hatással van egy számítási szabályzat (feladatbenyújtási korlát), amely feladatonként több AUs-t biztosít számukra. Ennek az értéknek a felső határa a számla AU-korlátja.
+Ez az a maximális szám, amelyet minden egyes feladathoz hozzá lehet rendelni a fiókjában. Az ennél nagyobb korláttal rendelkező feladatokat a rendszer elutasítja, kivéve, ha a küldőt egy számítási szabályzat (feladat-beküldési korlát) befolyásolja, amely több AUs-t ad hozzá a feladathoz. Ennek az értéknek a felső határa a fiókhoz tartozó AU-korlát.
 
-**Az egyidejű U-SQL feladatok maximális száma fiókonként:** 20
+**Az egyidejű U-SQL-feladatok maximális száma felhasználónként:** 20
 
-Ez a fiókban egyidejűleg futtatható feladatok maximális száma. Ezen érték felett az újabb feladatok automatikusan várólistára kerülnek.
+A fiókban egyszerre futtatható feladatok maximális száma. Ezen érték felett az újabb feladatok automatikusan várólistára kerülnek.
 
-## <a name="adjust-adla-account-limits"></a>ADLA-fiókkorlátainak módosítása
+## <a name="adjust-adla-account-limits"></a>ADLA-fiók korlátainak módosítása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válasszon egy meglévő ADLA-fiókot.
 3. Kattintson a **Tulajdonságok** elemre.
-4. Állítsa be az **AUs maximális**értékét, **a futó feladatok maximális számát**és a **feladatbeküldési korlátokat** az igényeinek megfelelően.
+4. Az igényeinek megfelelően módosítsa a **maximális**au-t, a **futó feladatok maximális számát**és a **feladat beküldési korlátait** .
 
-## <a name="increase-maximum-quota-limits"></a>Maximális kvótakorlátok növelése
+## <a name="increase-maximum-quota-limits"></a>Maximális kvóták korlátozása
 
-Az Azure-korlátozásokkal kapcsolatos további információkért az [Azure-szolgáltatásspecifikus korlátozások dokumentációjában](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-analytics-limits)talál.
+Az Azure-korlátokkal kapcsolatos további információkért tekintse meg az [Azure-szolgáltatásokra vonatkozó korlátozások dokumentációját](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-analytics-limits).
 
-1. Nyisson meg egy támogatási kérelmet az Azure Portalon.
+1. Nyisson meg egy támogatási kérést Azure Portalban.
 
-    ![Az Azure Data Lake Analytics portáloldala](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
+    ![Azure Data Lake Analytics portál lapja](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
 
-    ![Az Azure Data Lake Analytics portáloldala](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
-2. Válassza ki a Kvóta típusú **problématípust.**
-3. Válassza ki az **Előfizetést** (győződjön meg róla, hogy nem "próbaverziós" előfizetés).
-4. Válassza ki a **Data Lake Analytics kvótatípust.**
+    ![Azure Data Lake Analytics portál lapja](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
+2. Válassza ki a probléma típusa **kvótát**.
+3. Válassza ki az **előfizetését** (Győződjön meg róla, hogy nem "próbaverzió" előfizetés).
+4. Válassza ki a kvóta típusát **Data Lake Analytics**.
 
-    ![Az Azure Data Lake Analytics portáloldala](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
+    ![Azure Data Lake Analytics portál lapja](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
 
-5. A probléma oldalon ismertesse a kért emelési korlátot **a Részletek** segítségével, hogy miért van szüksége erre az extra kapacitásra.
+5. A probléma lapon adja meg a kért növelési korlátot, amely **részletesen** ismerteti, hogy miért van szüksége erre a további kapacitásra.
 
-    ![Az Azure Data Lake Analytics portáloldala](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
+    ![Azure Data Lake Analytics portál lapja](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
 
-6. Ellenőrizze a kapcsolattartási adatokat, és hozza létre a támogatási kérelmet.
+6. Ellenőrizze a kapcsolattartási adatokat, és hozza létre a támogatási kérést.
 
-A Microsoft áttekinti a kérését, és a lehető leghamarabb megpróbálja kielégíteni üzleti igényeit.
+A Microsoft áttekinti a kérését, és a lehető leghamarabb megkísérli az üzleti igények kielégítését.
 
 ## <a name="next-steps"></a>További lépések
 

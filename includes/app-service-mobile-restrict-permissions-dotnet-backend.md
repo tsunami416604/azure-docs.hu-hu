@@ -11,22 +11,22 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179612"
 ---
-Alapértelmezés szerint a mobilalkalmazások háttérrendszerében lévő API-k névtelenül hívhatók meg. Ezután csak a hitelesített ügyfelekre kell korlátoznia a hozzáférést.  
+Alapértelmezés szerint a Mobile Apps háttérbeli API-k névtelenül hívhatók meg. Ezután korlátoznia kell a hozzáférést csak a hitelesített ügyfelekre.  
 
-* **Node.js háttérrendszeren keresztül (az Azure Portalon keresztül)** :  
+* **Node. js-háttér (a Azure Portalon keresztül)** :  
 
-    A Mobilalkalmazások beállításaiközött kattintson a **Táblázatok egyszerű** lehetőségre, és válassza ki a táblázatot. Kattintson **az Engedélyek módosítása**gombra, válassza a Csak hitelesített **hozzáférés** lehetőséget az összes engedélyhez, majd kattintson a **Mentés gombra.**
-* **.NET háttér-tartalék (C#)**:  
+    A Mobile Apps beállításaiban kattintson az **egyszerű táblák** elemre, és válassza ki a táblát. Kattintson az **engedélyek módosítása**elemre, válassza a **hitelesített hozzáférés csak** az összes engedélyhez lehetőséget, majd kattintson a **Mentés**gombra.
+* **.Net-háttérrendszer (C#)**:  
 
-    A kiszolgálóprojektben keresse meg a **Vezérlők** > **TodoItemController.cs.** Adja `[Authorize]` hozzá az attribútumot a **TodoItemController** osztályhoz az alábbiak szerint. Ha csak bizonyos metódusokra szeretné korlátozni a hozzáférést, ezt az attribútumot csak ezekre a metódusokra is alkalmazhatja az osztály helyett. Tegye közzé újra a kiszolgálóprojektet.
+    A kiszolgáló projektben navigáljon a **vezérlők** > **TodoItemController.cs**. Adja hozzá `[Authorize]` az attribútumot a **TodoItemController** osztályhoz az alábbiak szerint. Ha csak bizonyos módszerekre szeretné korlátozni a hozzáférést, ezt az attribútumot csak az osztály helyett a metódusokra is alkalmazhatja. A kiszolgálói projekt ismételt közzététele.
 
         [Authorize]
         public class TodoItemController : TableController<TodoItem>
 
-* **Node.js háttér (via Node.js kód)** :  
+* **Node. js-háttér (node. js-kód használatával)** :  
 
-    A táblahozzáférés hitelesítésének megköveteléséhez adja hozzá a következő sort a Node.js kiszolgáló parancsfájljához:
+    A Table Access hitelesítésének megköveteléséhez adja hozzá a következő sort a Node. js-kiszolgáló parancsfájlhoz:
 
         table.access = 'authenticated';
 
-    További részletek: [Hogyan: Hitelesítés megkövetelése a táblákhoz való hozzáféréshez.](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth) A rövid útmutató kódprojektjének a webhelyről való letöltéséről a [Hogyan töltheti le a Node.js háttérkódprojektet a Git használatával című témakörben.](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)
+    További részleteket a következő témakörben talál [: a táblákhoz való hozzáférés hitelesítésének megkövetelése](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth). Ha szeretné megtudni, hogyan töltheti le a gyors üzembe helyezési kód projektet a webhelyéről, olvassa el a következő témakört [: útmutató: a Node. js-háttér](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)gyors üzembe helyezése a git használatával.

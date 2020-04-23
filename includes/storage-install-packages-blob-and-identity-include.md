@@ -15,18 +15,18 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "74806582"
 ---
-## <a name="install-client-library-packages"></a>Ügyféltárcsomagok telepítése
+## <a name="install-client-library-packages"></a>Ügyféloldali függvénytár-csomagok telepítése
 
 > [!NOTE]
-> Az itt látható példák az Azure Storage-ügyfélkódtár 12-es verzióját használják. A 12-es verziójú ügyfélkódtár az Azure SDK része. Az Azure SDK-ról további információt az Azure SDK-tárház [a GitHubon](https://github.com/Azure/azure-sdk)című témakörben talál.
+> Az itt bemutatott példák az Azure Storage ügyféloldali kódtár 12-es verzióját használják. A 12-es verziójú ügyféloldali kódtár az Azure SDK része. Az Azure SDK-val kapcsolatos további információkért tekintse meg az Azure SDK-tárházat a [githubon](https://github.com/Azure/azure-sdk).
 
-A Blob storage csomag telepítéséhez futtassa a következő parancsot a NuGet csomagkezelő konzoljáról:
+A blob Storage-csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
 
 ```powershell
 Install-Package Azure.Storage.Blobs
 ```
 
-Az itt látható példák is használja a legújabb verzióját az [Azure Identity ügyfélkódtár .NET](https://www.nuget.org/packages/Azure.Identity/) az Azure AD hitelesítő adatokkal való hitelesítéshez. A csomag telepítéséhez futtassa a következő parancsot a NuGet csomagkezelő konzoljáról:
+Az itt bemutatott példák a [.net-hez készült Azure Identity Client Library](https://www.nuget.org/packages/Azure.Identity/) legújabb verzióját is használják az Azure ad-beli hitelesítő adatokkal való hitelesítéshez. A csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
 
 ```powershell
 Install-Package Azure.Identity

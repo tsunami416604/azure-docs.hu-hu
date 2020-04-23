@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center – gyakori kérdések – kérdések a virtuális gépekkel kapcsolatban
-description: Gyakori kérdések az Azure Security Center ben található virtuális gépekről, amely a fenyegetések megelőzésében, észlelésében és az azokra való reagálásban segít
+title: Azure Security Center GYIK – a Virtual Machines szolgáltatással kapcsolatos kérdések
+description: 'Gyakori kérdések a Azure Security Center-beli virtuális gépekkel kapcsolatban: olyan termék, amely segít a fenyegetések megelőzésében, észlelésében és megválaszolásában.'
 services: security-center
 documentationcenter: na
 author: memildin
@@ -20,40 +20,40 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/31/2020
 ms.locfileid: "80436012"
 ---
-# <a name="faq---questions-about-virtual-machines"></a>GYIK - Kérdések a virtuális gépekkel kapcsolatban
+# <a name="faq---questions-about-virtual-machines"></a>GYAKORI kérdések – a Virtual Machines szolgáltatással kapcsolatos kérdések
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>Milyen típusú virtuális gépek támogatottak?
 
-Figyelés és javaslatok érhetők el a klasszikus és az [Erőforrás-kezelő központi telepítési modelljeivel](../azure-classic-rm.md)létrehozott virtuális gépekhez .Monitoring and recommendations are available for virtual machines (VMs) created using both the classic and Resource Manager deployment models.
+A [klasszikus és a Resource Manager-alapú üzemi modellekkel](../azure-classic-rm.md)létrehozott virtuális gépek (VM-EK) figyelése és javaslatai elérhetők.
 
-A támogatott platformok listájáért tekintse meg [az Azure Security Center támogatott platformjait.](security-center-os-coverage.md)
-
-
-## <a name="why-doesnt-azure-security-center-recognize-the-antimalware-solution-running-on-my-azure-vm"></a>Miért nem ismeri fel az Azure Security Center az Azure-beli virtuális gépen futó kártevőirtó megoldást?
-
-Az Azure Security Center az Azure-bővítményeken keresztül telepített kártevőirtók raista. A Security Center például nem képes észlelni a megadott lemezképre előre telepített kártevőirtókat, vagy ha saját folyamatait (például konfigurációkezelő rendszereket) használva telepítette a kártevőirtót a virtuális gépekre.
+A támogatott platformok listáját a [Azure Security Center támogatott platformok](security-center-os-coverage.md) részben tekintheti meg.
 
 
-## <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>Miért jelenik meg a "Hiányzó bekési adatok" üzenet a virtuális gépemhez?
+## <a name="why-doesnt-azure-security-center-recognize-the-antimalware-solution-running-on-my-azure-vm"></a>Miért nem Azure Security Center ismeri fel az Azure-beli virtuális gépen futó antimalware-megoldást?
 
-Ez az üzenet jelenik meg, ha egy virtuális gép vizsgálati adatai hiányoznak. Miután az Azure Security Centerben engedélyezte az adatgyűjtést, némi időt igénybe vehet (de kevesebb mint egy órát), amíg az adatok érkezni kezdenek. A vizsgálati adatok kezdeti feltöltését követően akkor jelenhet meg ez az üzenetet, ha egyáltalán nincsenek vizsgálati adatok, vagy ha az utóbbi időben nem érkeztek. A leállított állapotú virtuális gépekről nem érkeznek vizsgálati adatok. Ez az üzenet akkor is megjelenhet, ha a bekéselt adatok nem töltődtek fel a közelmúltban (a Windows-ügynök adatmegőrzési házirendjének megfelelően, amelynek alapértelmezett értéke 30 nap).
+A Azure Security Center az Azure-bővítményeken keresztül telepített antimalware-t is betekintést biztosít. A Security Center például nem képes észlelni a megadott rendszerképre előre telepített kártevő szoftvereket, vagy ha a saját folyamatai (például a konfigurációs felügyeleti rendszerek) használatával telepítette az antimalware-t a virtuális gépekre.
 
 
-## <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Milyen gyakran keres a Security Center az operációs rendszer biztonsági réseit, a rendszerfrissítéseket és a végpontvédelmi problémákat?
+## <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>Miért kapok "hiányzó vizsgálati adataim" üzenetet a virtuális géphez?
 
-Az alábbiakban a Biztonsági központ biztonsági réseinek, frissítéseinek és problémáinak késési idejét olvashatja:
+Ez az üzenet jelenik meg, ha egy virtuális gép vizsgálati adatai hiányoznak. Miután az Azure Security Centerben engedélyezte az adatgyűjtést, némi időt igénybe vehet (de kevesebb mint egy órát), amíg az adatok érkezni kezdenek. A vizsgálati adatok kezdeti feltöltését követően akkor jelenhet meg ez az üzenetet, ha egyáltalán nincsenek vizsgálati adatok, vagy ha az utóbbi időben nem érkeztek. A leállított állapotú virtuális gépekről nem érkeznek vizsgálati adatok. Ez az üzenet akkor is megjelenhet, ha a vizsgálati adatok nem lettek a közelmúltban kitöltve (a Windows-ügynök adatmegőrzési szabályzatának megfelelően, amelynek alapértelmezett értéke 30 nap).
 
-- Operációs rendszer biztonsági konfigurációi – az adatok 48 órán belül frissülnek
-- Rendszerfrissítések – az adatok 24 órán belül frissülnek
-- Végpontvédelmi problémák – az adatok frissítése 8 órán belül
 
-A Security Center általában óránként ellenőrzi az új adatokat, és ennek megfelelően frissíti a javaslatokat. 
+## <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Milyen gyakran Security Center az operációs rendszer biztonsági réseit, a rendszerfrissítéseket és az Endpoint Protection szolgáltatással kapcsolatos problémákat?
+
+Az alábbiakban láthatók a biztonsági rések, frissítések és problémák Security Center vizsgálatainak késési ideje:
+
+- Operációs rendszer biztonsági beállításai – az Adatfrissítés 48 órán belül megtörténik
+- Rendszerfrissítések – a rendszer 24 órán belül frissíti az adatfrissítést
+- Endpoint Protection problémák – az Adatfrissítés 8 órán belül frissül
+
+Security Center általában óránként vizsgálja az új adatforrásokat, és ennek megfelelően frissíti az ajánlásokat. 
 
 > [!NOTE]
-> A Security Center a Log Analytics-ügynök segítségével gyűjti és tárolja az adatokat. További információ: [Azure Security Center Platform Migration](security-center-platform-migration.md).
+> Security Center a Log Analytics ügynök használatával gyűjti és tárolja az adatokat. További információ: [Azure Security Center platform migrálása](security-center-platform-migration.md).
 
 
-## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Miért jelenik meg a "Virtuálisgép-ügynök hiányzik?" üzenet?
+## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Miért jelenik meg a "VM-ügynök hiányzik?" üzenet?
 
-Az adatgyűjtés engedélyezéséhez a virtuális gép ügynökét telepíteni kell a virtuális gépekre. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. A virtuálisgép-ügynök más virtuális gépekre történő telepítéséről a [virtuális gépügynök és -bővítmények blogbejegyzésben](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)talál további információt.
+A virtuálisgép-ügynöknek telepítve kell lennie a virtuális gépeken az adatgyűjtés engedélyezéséhez. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. A virtuálisgép-ügynök más virtuális gépekre való telepítésével kapcsolatos információkért tekintse meg a [VM-ügynök és-bővítmények](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)című blogbejegyzést.

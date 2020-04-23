@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual WAN és távolról végzett munka
-description: Ez az oldal bemutatja, hogyan használhatja ki az Azure Virtual WAN-t a covid-19-es világjárvány miatt távolról történő munkavégzés engedélyezéséhez.
+title: Azure virtuális WAN és távoli munka
+description: Ez az oldal azt ismerteti, hogyan használhatja az Azure Virtual WAN-t a COVID-19 világjárvány miatti távoli működéshez.
 services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
@@ -14,44 +14,44 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80337127"
 ---
-# <a name="azure-virtual-wan-and-supporting-remote-work"></a>Az Azure Virtual WAN és a távoli munka támogatása
+# <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure virtuális WAN és a távoli működés támogatása
 
 >[!NOTE]
->Ez a cikk bemutatja, hogyan használhatja ki az Azure Virtual WAN, az Azure, a Microsoft hálózatés az Azure partneri ökoszisztéma segítségével a távoli munka és a covid-19-es válság miatt felmerülő hálózati problémák enyhítése.
+>Ez a cikk azt ismerteti, hogyan használhatja az Azure Virtual WAN, az Azure, a Microsoft Network és az Azure partner-ökoszisztémát a COVID-19 válság miatt felmerülő hálózati problémák megoldásához.
 >
 
-A távoli felhasználók számára biztosít kapcsolatot?
-Hirtelen szükség van arra, hogy támogassa a felhasználók megugrását a tervezettnél nagyobb mértékben?
-Szüksége van a felhasználóra, hogy otthonról csatlakozzon, és ne csak a felhőhöz férjen hozzá, hanem a helyszíni eléréshez is?
-Szüksége van a távoli felhasználókszámára, hogy a privát WAN mögött idohez jussanak el?
-Szükség van arra, hogy a felhasználók a régiók közötti kapcsolat beállítása nélkül is hozzáférjenek a felhőn belüli erőforrásokhoz?
-Mivel ez a globális világjárvány példátlan változásokat hoz létre körülöttünk, az Azure Virtual WAN csapata itt van, hogy kielégítse a kapcsolódási igényeit.
+Felhasználja a kapcsolatot a távoli felhasználók számára?
+Hirtelen látni szeretné, hogy az Ön által tervezettnél nagyobb mennyiségű felhasználót kell támogatni?
+Szüksége van a felhasználó otthonról való kapcsolódásra, és nem csak a felhőhöz, hanem a helyszínen is elérhető?
+Szüksége van a távoli felhasználók számára, hogy elérhetők legyenek a privát WAN mögötti erőforrások?
+Szükség van-e a felhasználók számára a Felhőbeli erőforrásokhoz való hozzáférésre anélkül, hogy be kellene állítania a régiók közötti kapcsolatot?
+Mivel ez a globális világjárvány példátlan változásokat teremt az USA-ban, az Azure-beli virtuális WAN csapata itt gondoskodik a kapcsolati igények kielégítéséről.
 
-Az Azure Virtual WAN egy hálózati szolgáltatás, amely számos hálózati, biztonsági és útválasztási funkciót egyesít, hogy egyetlen operatív felületet biztosítson. Ezek a funkciók magukban foglalják a branch kapcsolatot (a virtuális WAN-partnereszközök, például az SD-WAN vagy a VPN CPE kapcsolatautomatizálásán keresztül), a helyek közötti VPN-kapcsolat, a távoli felhasználói VPN (point-to-site) kapcsolat, a privát (ExpressRoute) kapcsolat, Felhőn belüli kapcsolat (tranzitív kapcsolat virtuális hálózatokhoz), VPN ExpressRoute interconnectivity, Útválasztás, Azure tűzfal, Titkosítás a privát kapcsolathoz stb. A Virtual WAN használatának megkezdéséhez nem kell rendelkeznie az összes ilyen használati esetsel. Csak egy használati tokkal kezdheti el a készüléket, és a hálózat ot is módosíthatja a fejlődés során.
+Az Azure Virtual WAN egy hálózati szolgáltatás, amely számos hálózati, biztonsági és útválasztási funkciót biztosít, így egyetlen operatív felületet biztosíthat. Ezen funkciók közé tartoznak az ág-kapcsolat (a virtuális WAN-partneri eszközöktől, például az SD-WAN vagy a VPN CPE-től származó kapcsolat automatizálásán keresztül), helyek közötti VPN-kapcsolat, a távoli felhasználói VPN (pont – hely) kapcsolat, a magánhálózati (ExpressRoute) kapcsolat, a felhőn belüli kapcsolat (virtuális hálózatok tranzitív kapcsolata), a VPN-ExpressRoute közötti kapcsolat, az Útválasztás, az Azure tűzfal, a privát kapcsolatok titkosítása stb. A virtuális WAN használatának megkezdéséhez nem szükséges az összes ilyen használati eset. Első lépésként csak egy használati esetet érhet el, és úgy állíthatja be a hálózatot, ahogy az fejlődik.
 
 ![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwan1.png)
 
-Most beszélünk távoli felhasználók, lehetővé teszi, hogy nézd meg, mit kell kap a hálózat, és fut:
+Most, hogy a távoli felhasználókról beszél, megtekintheti, hogy mire van szüksége a hálózat működésének megkezdéséhez:
 
 ## <a name="set-up-remote-user-connectivity"></a><a name="connectivity"></a>Távoli felhasználói kapcsolat beállítása
 
-Az Erőforrásokhoz IPsec/IKE (IKEv2) vagy OpenVPN-kapcsolaton keresztül csatlakozhat az erőforrásokhoz. Az ilyen típusú kapcsolathoz vpn-ügyfél szükséges a távoli felhasználó számára. Ez az ügyfél lehet az [Azure VPN-ügyfél](https://go.microsoft.com/fwlink/?linkid=2117554) vagy OpenVPN-ügyfél, vagy bármely olyan ügyfél, amely támogatja az IKEv2.This client can be the Azure VPN client or OpenVPN Client or any client that supports IKEv2. További információt a [Pont-hely kapcsolat létrehozása](virtual-wan-point-to-site-portal.md)című témakörben talál.
+Az Azure-beli erőforrásokhoz IPsec/IKE (IKEv2) vagy OpenVPN-kapcsolat használatával kapcsolódhat. Az ilyen típusú kapcsolathoz VPN-ügyfélre van szükség a távoli felhasználó számára. Ez az ügyfél lehet az [Azure VPN-ügyfél](https://go.microsoft.com/fwlink/?linkid=2117554) vagy az OpenVPN-ügyfél, vagy bármely olyan ügyfél, amely támogatja a IKEv2. További információ: [pont – hely kapcsolat létrehozása](virtual-wan-point-to-site-portal.md).
 
-## <a name="connectivity-from-the-remote-user-to-on-premises"></a><a name="remote user connectivity"></a>Kapcsolat a távoli felhasználóés a helyszíni
+## <a name="connectivity-from-the-remote-user-to-on-premises"></a><a name="remote user connectivity"></a>Kapcsolódás a távoli felhasználó és a helyszíni környezet között
 
-Két lehetőség van:
+Itt két lehetőség közül választhat:
 
-* Állítsa be a helyek közötti kapcsolatot bármely meglévő VPN-eszközzel. Amikor csatlakoztatja az IPsec VPN-eszközt az Azure Virtual WAN hubhoz, a pont-hely felhasználói VPN (távoli felhasználó) és a helyek közötti VPN közötti összekapcsolhatóság automatikus. A helyek közötti VPN-nek a helyszíni VPN-eszközről az Azure Virtual WAN-ra történő beállításáról további információt a [Helyek közötti kapcsolat létrehozása a Virtuális WAN használatával című](virtual-wan-site-to-site-portal.md)témakörben talál.
+* Helyek közötti kapcsolat beállítása bármely meglévő VPN-eszközzel. Amikor az IPsec VPN-eszközt az Azure Virtual WAN hubhoz csatlakoztatja, a pont – hely felhasználói VPN (távoli felhasználó) és a helyek közötti VPN közötti kapcsolat automatikusan megtörténik. A helyek közötti VPN a helyi VPN-eszközről az Azure Virtual WAN-ba való beállításával kapcsolatos további információkért lásd: [helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md).
 
-* Csatlakoztassa az ExpressRoute-áramkört a Virtual WAN hubhoz. Az ExpressRoute-kapcsolat csatlakoztatásához expressroute-átjárót kell telepíteni a Virtual WAN-ban. Amint telepített egyet, a point-to-site user VPN és expressroute-felhasználó közötti összekapcsolhatóság automatikus. Az ExpressRoute-kapcsolat létrehozásáról az [ExpressRoute-kapcsolat létrehozása a Virtual WAN használatával](virtual-wan-expressroute-portal.md)című témakörben található. Egy meglévő ExpressRoute-kapcsolatcsoport használatával csatlakozhat az Azure Virtual WAN-hoz.
+* Csatlakoztathatja a ExpressRoute-áramkört a virtuális WAN-hubhoz. A ExpressRoute-áramkör csatlakoztatásához egy ExpressRoute-átjárót kell telepíteni a virtuális WAN-ban. Amint üzembe helyezte az egyiket, a pont – hely felhasználói VPN-és ExpressRoute-felhasználó közötti kapcsolat automatikus. A ExpressRoute-kapcsolat létrehozásával kapcsolatban lásd: [ExpressRoute-kapcsolat létrehozása virtuális WAN használatával](virtual-wan-expressroute-portal.md). Az Azure Virtual WAN-hoz való kapcsolódáshoz meglévő ExpressRoute-áramkört használhat.
 
-## <a name="existing-basic-virtual-wan-customer"></a><a name="basic vWAN"></a>Meglévő alapvető Virtual WAN-ügyfél
+## <a name="existing-basic-virtual-wan-customer"></a><a name="basic vWAN"></a>Meglévő alapszintű virtuális WAN-ügyfél
 
-Az egyszerű virtuális WAN csak helyek közötti VPN-t biztosít. Ahhoz, hogy a távoli felhasználók csatlakozhassanak, frissítenie kell a virtuális WAN-t standard virtuális WAN-ra. A virtuális WAN frissítésének lépéseit a [Virtuális WAN frissítése alapról standardra című](upgrade-virtual-wan.md) témakörben olvassa el.
+Az alapszintű virtuális WAN csak helyek közötti VPN-t biztosít. Ahhoz, hogy a távoli felhasználók csatlakozni tudjanak, frissítenie kell a virtuális WAN-t a standard virtuális WAN-ra. A virtuális WAN verziófrissítésének lépéseiért lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md)
 
-## <a name="additional-information"></a><a name="other considerations"></a>További információk
+## <a name="additional-information"></a><a name="other considerations"></a>További információ
 
-A Virtual WAN régiónként/helyenként egy elosztót támogat. A helyekkel kapcsolatos információkért tekintse meg a [Virtual WAN-partnerek és helyek](virtual-wan-locations-partners.md) című cikket. Minden központ legfeljebb 10 000 távoli felhasználói kapcsolatot, 1000 elágazási kapcsolatot, négy ExpressRoute-áramkört és legfeljebb 500 virtuális hálózati kapcsolatot támogat. A távoli felhasználók méretezése közben, ha bármilyen kérdése van, ne habozzon azurevirtualwan@microsoft.comsegítséget kérni e-mail küldésével a rendszernek. Ha technikai támogatásra van szüksége, mindenképpen nyisson meg egy támogatási jegyet az Azure Portalról, és a súgó útban lesz.
+A virtuális WAN régiónként/helyenként egy hubot támogat. A tartózkodási helyről a [virtuális WAN-partnerek és-helyek](virtual-wan-locations-partners.md) című cikkben talál további információt. Minden központ legfeljebb 10 000 távoli felhasználói kapcsolatot, 1 000 ág-kapcsolatot, négy ExpressRoute-áramkört és legfeljebb 500 Virtual Network kapcsolatot támogat. Ha bármilyen kérdése van, a távoli felhasználók vertikális felskálázása esetén ne habozzon, hogy küldjön e-mailt a azurevirtualwan@microsoft.comcímre. Ha technikai támogatásra van szüksége, győződjön meg arról, hogy a Azure Portal egy támogatási jegyet nyit, és a Súgó a következőképpen fog megjelenni.
 
 ## <a name="faq"></a><a name="faq"></a>GYIK
 
@@ -59,4 +59,4 @@ A Virtual WAN régiónként/helyenként egy elosztót támogat. A helyekkel kapc
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Virtual WAN-ról a [Virtual WAN áttekintése című témakörben olvashat bővebben.](virtual-wan-about.md)
+A virtuális WAN-ról további információt a [virtuális WAN áttekintése](virtual-wan-about.md) című témakörben talál.

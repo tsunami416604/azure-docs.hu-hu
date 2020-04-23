@@ -17,7 +17,7 @@ ms.locfileid: "76759848"
 ---
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
-1. Az Azure Portal menüjében válassza a **Minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be a **Storage-fiókok** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Tárfiókok lehetőséget.**
+1. Az Azure Portal menüjében válassza a **Minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be a **Storage-fiókok** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Storage-fiókok**lehetőséget.
 2. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 3. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a tárfiókot.
 4. Az **Erőforráscsoport** mező alatt válassza az **Új létrehozása** elemet. Az alábbi képen látható módon nevezze el az új erőforráscsoportot.
@@ -36,7 +36,7 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
    |Replikáció     |Írásvédett georedundáns tárolás (RA-GRS)         |
    |Hozzáférési szint     |Gyakori         |
 
-8. Ha az [Azure Data Lake Storage szolgáltatást](https://azure.microsoft.com/services/storage/data-lake-storage/)tervezi, válassza a **Speciális** lapot, majd állítsa a **hierarchikus névtér** **legyen Engedélyezve beállításra.**
+8. Ha [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)használatát tervezi, válassza a **speciális** fület, majd állítsa be a **hierarchikus névteret** **engedélyezve**értékre.
 9. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
 10. Kattintson a **Létrehozás** gombra.
 

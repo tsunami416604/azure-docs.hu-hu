@@ -1,6 +1,6 @@
 ---
-title: Az Azure Firewall SNAT privát IP-címtartományai
-description: Az IP-cím magántartományait beállíthatja úgy, hogy a tűzfal ne forgalmazzon SNAT-forgalmat ezekre az IP-címekre.
+title: SNAT magánhálózati IP-címtartományok Azure Firewall
+description: Az IP-címek magánhálózati tartományait úgy is konfigurálhatja, hogy a tűzfal ne SNAT az ezen IP-címekre irányuló forgalmat.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -14,30 +14,30 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80064808"
 ---
-# <a name="azure-firewall-snat-private-ip-address-ranges"></a>Az Azure Firewall SNAT privát IP-címtartományai
+# <a name="azure-firewall-snat-private-ip-address-ranges"></a>SNAT magánhálózati IP-címtartományok Azure Firewall
 
-Az Azure Firewall nem snat hálózati szabályokkal, ha a cél IP-cím egy privát IP-címtartományban [iANA RFC 1918.](https://tools.ietf.org/html/rfc1918) Az alkalmazásszabályok alkalmazása mindig [transzparens proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) használatával lesz alkalmazva, függetlenül a cél IP-címétől.
+A Azure Firewall nem SNAT hálózati szabályokkal, ha a célként megadott IP-cím az [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)magánhálózati IP-címtartomány része. Az alkalmazási szabályok mindig [transzparens proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) használatával lesznek alkalmazva a cél IP-címről függetlenül.
 
-Ha a szervezet nyilvános IP-címtartományt használ a magánhálózatokhoz, az Azure Firewall SNAT-ok forgalmat bonyolítanak le az AzureFirewallSubnet tűzfal egyik privát IP-címére. Az Azure Firewall azonban konfigurálható úgy, hogy **ne** snat-t a nyilvános IP-címtartományba.
+Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok számára, Azure Firewall SNATs a forgalmat a AzureFirewallSubnet egyik tűzfal magánhálózati IP-címére. Azonban úgy is konfigurálhatja a Azure Firewallt, hogy **ne** SNAT a nyilvános IP-címtartományt.
 
-## <a name="configure-snat-private-ip-address-ranges"></a>SNAT privát IP-címtartományok konfigurálása
+## <a name="configure-snat-private-ip-address-ranges"></a>SNAT magánhálózati IP-címtartományok konfigurálása
 
-Az Azure PowerShell segítségével megadhatja az IP-címtartományt, amelyet a tűzfal nem snat.You can use Azure PowerShell to specify a IP address range that the firewall won't SNAT.
+A Azure PowerShell használatával olyan IP-címtartományt adhat meg, amelyet a tűzfal nem SNAT.
 
 ### <a name="new-firewall"></a>Új tűzfal
 
-Új tűzfal esetén az Azure PowerShell parancs a következő:
+Új tűzfal esetén a Azure PowerShell parancs a következő:
 
 `New-AzFirewall -Name $GatewayName -ResourceGroupName $RG -Location $Location -VirtualNetworkName $vnet.Name -PublicIpName $LBPip.Name -PrivateRange @("IANAPrivateRanges","IPRange1", "IPRange2")`
 
 > [!NOTE]
-> IANAPrivateRanges ki van bontva az Azure Tűzfal jelenlegi alapértelmezett, míg a többi tartományok hozzá.
+> A IANAPrivateRanges a Azure Firewall aktuális alapértelmezett értékeire van kiterjesztve, míg a többi tartomány hozzá van adva.
 
 További információ: [New-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall?view=azps-3.3.0).
 
 ### <a name="existing-firewall"></a>Meglévő tűzfal
 
-Meglévő tűzfal konfigurálásához használja a következő Azure PowerShell-parancsokat:
+Meglévő tűzfal konfigurálásához használja a következő Azure PowerShell parancsokat:
 
 ```azurepowershell
 $azfw = Get-AzFirewall -ResourceGroupName "Firewall Resource Group name"
@@ -47,7 +47,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ### <a name="templates"></a>Sablonok
 
-A következőt veheti `additionalProperties` fel a szakaszba:
+A `additionalProperties` szakaszhoz a következőket adhatja hozzá:
 
 ```
 "additionalProperties": {
@@ -57,4 +57,4 @@ A következőt veheti `additionalProperties` fel a szakaszba:
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [telepítheti és konfigurálhatja az Azure-tűzfalat.](tutorial-firewall-deploy-portal.md)
+- Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md).

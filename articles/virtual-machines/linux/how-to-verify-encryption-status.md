@@ -1,6 +1,6 @@
 ---
-title: Linux titkosítási állapotának ellenőrzése
-description: Ez a cikk a platform és az operációs rendszer szintjén a titkosítási állapot ellenőrzésére vonatkozó utasításokat tartalmaz.
+title: A Linux titkosítási állapotának ellenőrzése
+description: Ez a cikk útmutatást nyújt a titkosítási állapotnak a platform és az operációs rendszer szintjén történő ellenőrzéséhez.
 author: kailashmsft
 ms.service: security
 ms.topic: article
@@ -14,76 +14,76 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80123418"
 ---
-# <a name="how-to-verify-encryption-status-for-linux"></a>Linux titkosítási állapotának ellenőrzése 
+# <a name="how-to-verify-encryption-status-for-linux"></a>A Linux titkosítási állapotának ellenőrzése 
 
-**Ez a forgatókönyv az ADE kétfázisú és egymenetes bővítményekre vonatkozik.**  
-Ez a dokumentumhatókör a virtuális gépek titkosítási állapotának ellenőrzése különböző módszerekkel.
+**Ez a forgatókönyv az ADE kettős Pass és az Single-pass kiterjesztések esetében érvényes.**  
+A dokumentum hatóköre egy virtuális gép titkosítási állapotának ellenőrzése különböző módszerekkel.
 
 ### <a name="environment"></a>Környezet
 
-- Linux disztribúciók
+- Linux-disztribúciók
 
 ### <a name="procedure"></a>Eljárás
 
-A virtuális gép két- vagy egyszeres fázisú titkosítása megtörtént.
+A virtuális gépeket kettős pass vagy Single-pass használatával titkosították.
 
-A titkosítási állapot a titkosítás alatt vagy után különböző módszerekkel érvényesíthető.
+A titkosítási állapot a titkosítás során vagy után is ellenőrizhető különböző módszerekkel.
 
 >[!NOTE] 
->Változókat használunk a dokumentumban, ennek megfelelően cseréljük le az értékeket.
+>A dokumentumban változókat használunk, ennek megfelelően cserélje le az értékeket.
 
 ### <a name="verification"></a>Ellenőrzés
 
-Az ellenőrzés elvégezhető a portálról, a PowerShellből, az AZ CLI-ből és a virtuális gép operációs rendszerének oldaláról. 
+Az ellenőrzés a portál, a PowerShell, az CLI és a VM operációs rendszer oldaláról végezhető el. 
 
-Ez az ellenőrzés egy adott virtuális géphez csatlakoztatott lemezek ellenőrzésével végezhető el. 
+Ez az ellenőrzés az adott virtuális géphez csatlakoztatott lemezek ellenőrzésével végezhető el. 
 
-Vagy lekérdezi a titkosítási beállításokat minden egyes lemezen, függetlenül attól, hogy a lemez csatlakoztatva van-e vagy nincs-e csatlakoztatva.
+Vagy az egyes lemezeken lévő titkosítási beállítások lekérdezésével, hogy a lemez csatlakoztatva van-e vagy le van-e kapcsolva.
 
-A különböző validálási módszerek alatt:
+A különböző érvényesítési módszerek alatt:
 
 ## <a name="using-the-portal"></a>A portál használata
 
-Ellenőrizze a titkosítási állapotot az Azure Portalbővítmények szakaszának ellenőrzésével.
+Ellenőrizze a titkosítási állapotot a Azure Portal Extensions (bővítmények) szakaszának ellenőrzésével.
 
-A **Bővítmények** szakaszban megjelenik az ADE-bővítmény. 
+A **bővítmények** szakaszban láthatja a felsorolt ade-bővítményt. 
 
-Kattintson rá, és vessen egy pillantást az **állapotüzenetre,** amely jelzi az aktuális titkosítási állapotot:
+Kattintson rá, és tekintse meg az **állapotjelző üzenetet**, amely a jelenlegi titkosítási állapotot jelzi:
 
-![1- es portálellenőrzés](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
+![1. portál-ellenőrzési szám](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
 
-A bővítmények listájában megjelenik a megfelelő ADE bővítményverzió. A 0.x verzió az ADE Dual-Pass-nak, az 1.x verzió pedig az ADE Single-pass-nak felel meg.
+A bővítmények listájában megjelenik a megfelelő ADE-bővítmény verziója. A 0. x verzió megfelel az ade Dual-Pass és az 1. x verziónak, amely az ADE Single-pass értéknek felel meg.
 
-További részleteket a bővítményre kattintva, majd a *Részletes állapot megtekintése oldalon*kaphat.
+További részletekért kattintson a bővítményre, majd a *részletes állapot megtekintése*lehetőségre.
 
-A titkosítási folyamat részletesebb állapota json formátumban jelenik meg:
+A titkosítási folyamat részletesebb állapotát JSON formátumban fogja látni:
 
-![2- es számú portálellenőrzés](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
+![2. portál-ellenőrzési szám](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
 
-![3-as számú portálellenőrzés](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
+![Portál-ellenőrzési szám 3](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
 
-A titkosítási állapot érvényesítésének másik módja a **Lemezek** szakasz.
+A titkosítási állapot érvényesítésének egy másik módja a **lemezek** szakaszának megkeresése.
 
-![4-es számú portálellenőrzés](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
+![Portál-ellenőrzési szám 4](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
 
 >[!NOTE] 
-> Ez az állapot azt jelenti, hogy a lemezek titkosítási beállításai le vannak pecsételve, de nem azt, hogy az operációs rendszer szintjén ténylegesen titkosítva voltak.This status means the disks have encryption settings stamped but not that they were actually encrypted at OS level. A lemezeket szándékosan először lebélyegezi, majd később titkosítja. Ha a titkosítási folyamat sikertelen, előfordulhat, hogy a lemezek lepecsételve végződnek, de nem titkosítva. Annak ellenőrzéséhez, hogy a lemezek valóban titkosítva vannak-e, az operációs rendszer szintjén ellenőrizheti az egyes lemezek titkosítását.
+> Ez az állapot azt jelenti, hogy a lemezeken a titkosítási beállítások vannak lepecsételve, de nem, hogy az operációs rendszer szintjén lettek titkosítva. A lemezeket a rendszer úgy látja el, hogy először lepecsételi és titkosítja őket. Ha a titkosítási folyamat meghiúsul, előfordulhat, hogy a lemezek lebélyegzettek, de nem titkosítottak. Annak ellenőrzéséhez, hogy a lemezek valóban titkosítva vannak-e, megtekintheti az egyes lemezek titkosítását az operációs rendszer szintjén.
 
 ## <a name="using-powershell"></a>A PowerShell használata
 
-A titkosított virtuális gépek **általános** titkosítási állapotát a következő PowerShell-parancsokkal ellenőrizheti:
+A titkosított virtuális gépek **általános** titkosítási állapotát a következő PowerShell-parancsok használatával ellenőrizheti:
 
 ```azurepowershell
    $VMNAME="VMNAME"
    $RGNAME="RGNAME"
    Get-AzVmDiskEncryptionStatus -ResourceGroupName  ${RGNAME} -VMName ${VMNAME}
 ```
-![PowerShell 1 ellenőrzése](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
+![1. PowerShell-vizsgálat](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
 
-A titkosítási beállításokat az egyes lemezekről a következő PowerShell-parancsokkal rögzítheti:
+Az egyes lemezek titkosítási beállításait a következő PowerShell-parancsok használatával rögzítheti:
 
-### <a name="single-pass"></a>Egyszeres áthaladás
-Ha egymenetes, a titkosítási beállítások bélyegzővel minden egyes lemez (operációs rendszer és az adatok), akkor rögzítse az operációs rendszer lemeztitkosítási beállításait egy menetben az alábbiak szerint:
+### <a name="single-pass"></a>Egyszeres bérlet
+Ha a Single-pass, a titkosítási beállítások az egyes lemezek (operációs rendszer és adategységek) stampek, az operációs rendszer lemezének titkosítási beállításait az alábbi módon rögzítheti az egyes lemezeken:
 
 ``` powershell
 $RGNAME = "RGNAME"
@@ -101,13 +101,13 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
  Write-Host "============================================================================================================================================================="
 ```
-![Az operációs rendszer egymenetes átlépésének ellenőrzése 01](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
+![Az operációs rendszer Single pass 01 ellenőrzése](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
 
-Ha a lemezen nincs lepecsételve titkosítási beállítás, a kimenet üres lesz az alábbiak szerint:
+Ha a lemez nem rendelkezik lebélyegzett titkosítási beállításokkal, a kimenet üres lesz, ahogy az alábbi ábrán látható:
 
 ![Operációs rendszer titkosítási beállításai 2](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
 
-Adatlemez(ek) rögzítési beállításai:
+Adatlemez (ek) titkosítási beállításainak rögzítése:
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -128,12 +128,12 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "============================================================================================================================================================="
  }
 ```
-![Adatok ellenőrzése egyetlen ps 001](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
+![Az adategyetlen PS 001 ellenőrzése](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
 
-### <a name="dual-pass"></a>Kettős áthaladás
-A Dual Pass, a titkosítási beállítások a virtuális gép modell, és nem az egyes lemezeken.
+### <a name="dual-pass"></a>Kettős menet
+A kettős menetben a titkosítási beállítások a virtuálisgép-modellben vannak lepecsételve, és nem az egyes lemezeken.
 
-A titkosítási beállítások kettős átfutási szögben való lebélyegzéséhez a következő parancsokat használhatja:
+Annak ellenőrzéséhez, hogy a titkosítási beállítások a kettős menetben vannak-e lepecsételve, a következő parancsokat használhatja:
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -152,11 +152,11 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-![Kétmenetes PowerShell 1 ellenőrzése](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
+![A kettős pass PowerShell 1 ellenőrzése](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
 
-### <a name="unattached-disks"></a>Nem csatolt lemezek
+### <a name="unattached-disks"></a>Nem csatlakoztatott lemezek
 
-Ellenőrizze a titkosítási beállításokat a virtuális géphez nem csatolt lemezek.
+A virtuális géphez nem csatolt lemezek titkosítási beállításainak ellenőrzéséhez.
 
 ### <a name="managed-disks"></a>Felügyelt lemezek
 ```powershell
@@ -171,19 +171,19 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-## <a name="using-az-cli"></a>Az AZ CLI használata
+## <a name="using-az-cli"></a>Az AZ parancssori felület használata
 
-A titkosított virtuális gépek **általános** titkosítási állapotát a következő AZ CLI-parancsokkal ellenőrizheti:
+A titkosított virtuális gépek **általános** titkosítási állapotát a következő az CLI-parancsok használatával ellenőrizheti:
 
 ```bash
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
 ```
-![Általános ellenőrzés a CLI használatával ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
+![Általános ellenőrzés a parancssori felület használatával ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
 
-### <a name="single-pass"></a>Egymenetes bérlet
-A titkosítási beállításokat az egyes lemezekről a következő AZ CLI-parancsok segítségével ellenőrizheti:
+### <a name="single-pass"></a>Egyszeri továbbítás
+Az egyes lemezek titkosítási beállításait a következő az CLI-parancsok használatával ellenőrizheti:
 
 ```bash
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
@@ -192,11 +192,11 @@ az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuse
 ![Adattitkosítási beállítások](./media/disk-encryption/verify-encryption-linux/data-encryption-settings-2.png)
 
 >[!IMPORTANT]
-> Abban az esetben, ha a lemez nem rendelkezik titkosítási beállításokkal, akkor a "Lemez nincs titkosítva" formában jelenik meg.
+> Ha a lemez nem rendelkezik lepecsételt titkosítási beállításokkal, akkor a "lemez nincs titkosítva" érték jelenik meg.
 
-Részletes állapot- és titkosítási beállítások:
+Részletes állapot-és titkosítási beállítások:
 
-Operációs rendszer lemeze:
+OPERÁCIÓSRENDSZER-lemez:
 
 ```bash
 RGNAME="RGNAME"
@@ -234,15 +234,15 @@ echo "==========================================================================
 done
 ```
 
-![Adat egyetlen CLI ](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
+![Egyetlen parancssori felület ](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
 
-### <a name="dual-pass"></a>Kettős bérlet
+### <a name="dual-pass"></a>Kettős menet
 
 ``` bash
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
-![Ellenőrizze az általános ](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png) kettős cli segítségével Is ellenőrizze a titkosítási beállításokat a VM Model Storage profil az operációs rendszer lemez:
+![A CLI ](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png) -vel kapcsolatos általános kettős ellenőrzéssel ELLENŐRIZHETI az operációsrendszer-lemez virtuálisgép-modell tárolási profiljában található titkosítási beállításokat is:
 
 ```bash
 disk=`az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.osDisk.name -o tsv`
@@ -257,11 +257,11 @@ echo "==========================================================================
 done
 ```
 
-![A vm-profil kettős ellenőrzése a CLI használatával ](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
+![A VM-profil kettős ellenőrzése a CLI használatával ](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
 
-### <a name="unattached-disks"></a>Nem csatolt lemezek
+### <a name="unattached-disks"></a>Nem csatlakoztatott lemezek
 
-Ellenőrizze a titkosítási beállításokat a virtuális géphez nem csatolt lemezek.
+A virtuális géphez nem csatolt lemezek titkosítási beállításainak ellenőrzéséhez.
 
 ### <a name="managed-disks"></a>Felügyelt lemezek
 
@@ -278,31 +278,31 @@ echo "==========================================================================
 ```
 ### <a name="unmanaged-disks"></a>Nem felügyelt lemezek
 
-A nem felügyelt lemezek olyan Virtuális merevlemez-fájlok, amelyek az Azure storage-fiókokban lapblobként tárolódnak.
+A nem felügyelt lemezek az Azure Storage-fiókokban blobként tárolt VHD-fájlok.
 
-Egy adott lemez részleteinek megismeréséhez meg kell adnia a következőket:
+Egy adott lemez adatainak beszerzéséhez a következőket kell megadnia:
 
-A lemezt tartalmazó tárfiók azonosítója.
-Az adott tárfiók csatlakozási karakterlánca.
+A lemezt tartalmazó Storage-fiók azonosítója.
+Az adott Storage-fiókhoz tartozó kapcsolatok karakterlánca.
 A lemezt tároló tároló neve.
 A lemez neve.
 
-Ez a parancs felsorolja az összes tárfiók összes azonosítóját:
+Ez a parancs felsorolja az összes Storage-fiók azonosítóját:
 
 ```bash
 az storage account list --query [].[id] -o tsv
 ```
-A tárfiók-azonosítók a következő formában jelennek meg:
+A Storage-fiók azonosítói a következő formában vannak felsorolva:
 
-\</subscription/subscription id>/resourceGroups/\<erőforráscsoport neve>/providers/Microsoft.StorageAccounts/\<storage fiók neve>
+/Subscriptions/\<előfizetés-azonosító>\</Resourcegroups/erőforráscsoport neve>/Providers/Microsoft.Storage/storageaccounts/\<Storage-fiók neve>
 
-Válassza ki a megfelelő azonosítót, és tárolja egy változón:
+Válassza ki a megfelelő azonosítót, és tárolja egy változóban:
 ```bash
 id="/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name>"
 ```
-A kapcsolati karakterlánc.
+A kapcsolatok karakterlánca.
 
-Ez a parancs lekéri egy adott tárfiók kapcsolati karakterláncát, és egy változón tárolja:
+Ez a parancs beolvassa egy adott Storage-fiókhoz tartozó kapcsolatok karakterláncát, és egy változóban tárolja azt:
 
 ```bash
 ConnectionString=$(az storage account show-connection-string --ids $id --query connectionString -o tsv)
@@ -310,55 +310,55 @@ ConnectionString=$(az storage account show-connection-string --ids $id --query c
 
 A tároló neve.
 
-A következő parancs felsorolja a tárfiók összes tárolóját:
+A következő parancs a Storage-fiókban lévő összes tárolót listázza:
 ```bash
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-A lemezekhez használt tároló neve általában "vhds"
+A lemezekhez használt tároló általában VHD-k neve
 
-A tároló nevének tárolása változón 
+Tároló nevének tárolása egy változón 
 ```bash
 ContainerName="name of the container"
 ```
 
 A lemez neve.
 
-Ezzel a paranccsal listázhatoaz összes blobot egy adott tárolóban
+Ezzel a paranccsal listázhatja egy adott tároló összes blobját.
 ```bash 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-Válassza ki a lekérdezni kívánt lemezt, és tárolja a nevét egy változón.
+Válassza ki a lekérdezni kívánt lemezt, és tárolja a nevét egy változóban.
 ```bash
 DiskName="diskname.vhd"
 ```
-A lemeztitkosítási beállítások lekérdezése
+A lemez titkosítási beállításainak lekérdezése
 ```bash
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
 ## <a name="from-the-os"></a>Az operációs rendszerből
-Ellenőrizze, hogy az adatlemez-partíciók titkosítva vannak-e (és az operációsrendszer-lemez nem)
+Annak ellenőrzése, hogy az adatlemez-partíciók titkosítva vannak-e (és az operációsrendszer-lemez nem)
 
-Amikor egy partíció/lemez titkosítva van, **akkor kriptatípusként** jelenik meg, ha nem titkosított, akkor **része/lemez** típusaként jelenik meg.
+Ha egy partíció/lemez titkosítva van, akkor a rendszer a **titkosítási** típusként jeleníti meg, ha nincs titkosítva, a **kijelző/lemez** típusaként jelenik meg.
 
 ``` bash
 lsblk
 ```
 
-![Os Crypt réteg ](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
+![Operációsrendszer-Crypt réteg ](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
 
-További részleteket a következő "lsblk" változatban kaphat. 
+További részleteket a következő "lsblk" változat használatával kaphat. 
 
-Megjelenik egy **kriptatípus-réteg,** amelyet a bővítmény csatlakoztat.
+Ekkor megjelenik egy, a bővítmény által csatlakoztatott **Crypt** típusú réteg.
 
-A következő példa a logikai köteteket és a normál lemezeket mutatja be, amelyek "**crypto LUKS FSTYPE " (" crypto LUKS FSTYPE " (" crypto LUKS FSTYPE " (Kripto\_LUKS FSTYPE**" típusú .
+Az alábbi példában a logikai kötetek és a normál lemezek "**kriptográfiai\_LUKS FSTYPE**" láthatók.
 
 ```bash
 lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 ```
-![Os Kripta réteg 2](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
+![Operációs rendszer Crypt 2. rétege](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
 
-További lépésként azt is ellenőrizheti, hogy az adatlemezen vannak-e betöltve kulcsok
+További lépésként azt is ellenőrizheti, hogy az adatlemez rendelkezik-e kulcsok betöltésével
 
 ``` bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
@@ -368,7 +368,7 @@ cryptsetup luksDump /dev/VGNAME/LVNAME
 cryptsetup luksDump /dev/sdd1
 ```
 
-És mely dm eszközök vannak felsorolva kriptaként
+És mely DM-eszközök szerepelnek Crypt-ként
 
 ```bash
 dmsetup ls --target crypt

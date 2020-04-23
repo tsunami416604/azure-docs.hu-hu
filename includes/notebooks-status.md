@@ -12,6 +12,6 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "75659003"
 ---
 > [!IMPORTANT]
-> Az Azure Notebooks jelenleg nyilvános előzetes verzióban érhető el.
+> A Azure Notebooks jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

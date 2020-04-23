@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "75978831"
 ---
 > [!NOTE]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik, amelyekkel erőforrásokat hozhat létre és dolgozhat: [az Azure Resource Manager és a klasszikus.](../articles/azure-resource-manager/management/deployment-models.md) Ez a cikk az Erőforrás-kezelő központi telepítési modelljének használatát ismerteti. Javasoljuk, hogy a Resource Manager központi telepítési modell új központi telepítések helyett a klasszikus központi telepítési modell.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Azure Resource Manager és klasszikus](../articles/azure-resource-manager/management/deployment-models.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti. A klasszikus üzemi modell helyett a Resource Manager-alapú üzemi modellt javasoljuk az új központi telepítések telepítéséhez.

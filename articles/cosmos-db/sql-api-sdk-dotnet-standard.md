@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL .NET Standard API, SDK & erőforrások'
-description: Tudjon meg mindent az SQL API-ról és a .NET SDK-ról, beleértve a kiadási dátumokat, a megszüntetési dátumokat és az Azure Cosmos DB .NET SDK egyes verziói között végrehajtott módosításokat.
+title: 'Azure Cosmos DB: SQL .NET Standard API, SDK &-erőforrások'
+description: Ismerkedjen meg az SQL API-val és a .NET SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és a Azure Cosmos DB .NET SDK egyes verzióiban végrehajtott módosításokat.
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -15,30 +15,30 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "74707287"
 ---
-# <a name="azure-cosmos-db-net-standard-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET Standard SDK SQL API-hoz: Megjegyzések letöltése és kiadása
+# <a name="azure-cosmos-db-net-standard-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET Standard SDK az SQL API-hoz: letöltési és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
 > * [.NET Standard](sql-api-sdk-dotnet-standard.md)
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Aszinkron Java](sql-api-sdk-async-java.md)
+> * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Többi](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Tömeges végrehajtó - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-|**SDK letöltés**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)|
-|**API-dokumentáció**|[.NET API referenciadokumentáció](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**Minták**|[.NET kódminták](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage)|
-|**Első lépések**|[Ismerkedés az Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)|
-|**Webalkalmazás oktatóanyaga**|[Webalkalmazás-fejlesztés az Azure Cosmos DB-vel](sql-api-dotnet-application.md)|
-|**Jelenlegi támogatott keretrendszer**|[Microsoft .NET Standard 2.0](/dotnet/standard/net-standard)|
+|**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)|
+|**API-dokumentáció**|[.NET API-referenciák dokumentációja](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
+|**Példák**|[.NET-kód minták](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage)|
+|**Bevezetés**|[Ismerkedés a Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)|
+|**Webalkalmazás-oktatóanyag**|[Webalkalmazás-fejlesztés Azure Cosmos DB](sql-api-dotnet-application.md)|
+|**Jelenleg támogatott keretrendszer**|[Microsoft .NET Standard 2,0](/dotnet/standard/net-standard)|
 
 [!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v3/changelog.md)]
 
@@ -46,4 +46,4 @@ ms.locfileid: "74707287"
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még
-A Cosmos DB szolgáltatásról a [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatáslapján olvashat bővebben. 
+További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 

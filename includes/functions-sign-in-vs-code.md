@@ -15,12 +15,12 @@ ms.locfileid: "76964012"
 
 Az alkalmazás közzététele előtt be kell jelentkeznie az Azure-ba. 
 
-1. Ha még nincs bejelentkezve, válassza az Azure ikont a tevékenységsávon, majd az **Azure: Functions** területen válassza a **Bejelentkezés az Azure-ba lehetőséget.** Ha még nem rendelkezik ilyen, **létrehozhat egy ingyenes Azure-fiókot.** 
+1. Ha még nincs bejelentkezve, válassza az Azure ikont a tevékenység sávjában, majd az **Azure: functions** területen válassza a **Bejelentkezés az Azure**-ba... lehetőséget. Ha még nem rendelkezik ilyennel, **létrehozhat egy ingyenes Azure-fiókot**is. 
 
     ![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-sign-in-vs-code/functions-sign-into-azure.png)
 
-    Ha már be van jelentkezve, lépjen a következő szakaszra.
+    Ha már bejelentkezett, ugorjon a következő szakaszra.
 
-1. Amikor a böngészőben megjelenik a kérdés, válassza ki az Azure-fiókját, és jelentkezzen be az Azure-fiók hitelesítő adataival. 
+1. Ha a rendszer kéri a böngészőt, válassza ki az Azure-fiókját, és jelentkezzen be az Azure-fiókja hitelesítő adataival. 
 
-1. Miután sikeresen bejelentkezett, bezárhatja az új böngészőablakot. Az Azure-fiókjához tartozó előfizetések az oldalsávon jelennek meg.
+1. Miután sikeresen bejelentkezett, lezárhatja az új böngészőablakot. Az Azure-fiókhoz tartozó előfizetések az oldalsó sávban jelennek meg.

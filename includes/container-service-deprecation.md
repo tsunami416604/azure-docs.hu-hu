@@ -12,14 +12,14 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179671"
 ---
 > [!WARNING]
->  **Az Azure Container Service (ACS) elavult. Az ACS nem ad hozzá új funkciókat vagy funkciókat. Az összes API, portálélmény, CLI-parancs és dokumentáció elavultként van megjelölve.**
+>  **A Azure Container Service (ACS) elavult. Nincs új funkció vagy funkció az ACS-ben való hozzáadásakor. Az API-k, a portálok, a CLI-parancsok és a dokumentációk elavultként vannak megjelölve.**
 >
-> További információ: az Azure Container Service e-Azure.com.For more information, see the [Azure Container Service eprecation announcement on Azure.com.](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)
+> További információkért tekintse meg a [Azure.com-ről szóló Azure Container Service elavult közleményt](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).
 >
-> Javasoljuk, hogy az alábbi Azure Marketplace-megoldások egyikét telepítse:
+> Javasoljuk, hogy telepítse az alábbi Azure Marketplace-megoldások egyikét:
 >
-> * Mezoszféra DC/OS
->   * [Vállalati](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.enterprise-dcos?tab=Overview)
+> * Mesosphere DC/OS
+>   * [Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.enterprise-dcos?tab=Overview)
 >   * [Nyílt forráskódú kiadás](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.dcos?tab=overview)
 >
-> Ha a Kubernetes szolgáltatást szeretné használni, olvassa el az [Azure Kubernetes-szolgáltatást.](https://docs.microsoft.com/azure/aks)
+> Ha a Kubernetes-t szeretné használni, tekintse meg az [Azure Kubernetes szolgáltatást](https://docs.microsoft.com/azure/aks).

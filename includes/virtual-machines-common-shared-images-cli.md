@@ -17,32 +17,32 @@ ms.locfileid: "66814876"
 ---
 ## <a name="before-you-begin"></a>Előkészületek
 
-A jelen cikkben szereplő példa végrehajtásához rendelkeznie kell egy általánossé tett virtuális gép meglévő felügyelt rendszerképével. További információ: [Oktatóanyag: Hozzon létre egy egyéni lemezképet egy Azure virtuális gép az Azure CLI.](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) Ha a felügyelt lemez adatlemezt tartalmaz, az adatlemez mérete nem lehet több 1 TB-nál.
+A cikkben szereplő példa végrehajtásához rendelkeznie kell egy általánosított virtuális gép meglévő felügyelt képével. További információ: [oktatóanyag: egyéni rendszerkép létrehozása Azure-beli virtuális gépről az Azure CLI-vel](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Ha a felügyelt lemezkép adatlemezt tartalmaz, az adatlemez mérete nem haladhatja meg az 1 TB-ot.
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/bash](https://shell.azure.com/bash)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-Ha a CLI-t helyileg szeretné telepíteni és használni, olvassa el [az Azure CLI telepítése](/cli/azure/install-azure-cli)című témakört.
+Ha a parancssori felület helyi telepítését és használatát szeretné használni, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
-## <a name="create-an-image-gallery"></a>Képgaléria létrehozása 
+## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása 
 
-A képgaléria a képmegosztás engedélyezéséhez használt elsődleges erőforrás. A Galéria nevének megengedett karakterei a nagy- vagy kisbetűk, számjegyek, pontszámok és pont. A gyűjtemény neve nem tartalmazhat kötőjeleket.   A galérianeveknek egyedinek kell lenniük az előfizetésen belül. 
+A képgyűjtemény a képmegosztás engedélyezéséhez használt elsődleges erőforrás. A katalógus nevének megengedett karaktere nagybetűs vagy kisbetűk, számjegyek, pontok és időszakok. A gyűjtemény neve nem tartalmazhat kötőjeleket.   A katalógus nevének egyedinek kell lennie az előfizetésen belül. 
 
-Hozzon létre egy képgalériát [az az sig create](/cli/azure/sig#az-sig-create)használatával. A következő példa létrehoz egy *myGallery* nevű galériát a *myGalleryRG-ben.*
+Hozzon létre egy képtárat [az az SIG Create](/cli/azure/sig#az-sig-create)paranccsal. A következő példában létrehozunk egy *MyGallery* nevű katalógust a *myGalleryRG*-ben.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location WestCentralUS
 az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-## <a name="create-an-image-definition"></a>Képdefiníció létrehozása
+## <a name="create-an-image-definition"></a>Rendszerkép-definíció létrehozása
 
-A képdefiníciók logikai csoportosítást hoznak létre a képekhez. A bennük létrehozott lemezkép-verziók adatainak kezelésére szolgálnak. A képdefiníciós nevek nagy- vagy kisbetűkből, számjegyekből, pontokból, kötőjelekből és pontokból állnak. A képdefinícióhoz megadható értékekről a [Képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)című témakörben talál további információt.
+A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. Ezek az adatok a bennük létrehozott rendszerkép-verziókra vonatkozó információk kezelésére szolgálnak. A képdefiníciók nevei kis-és nagybetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
 
-Hozzon létre egy kezdeti képdefiníciót a gyűjteményben az [sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)használatával.
+Hozzon létre egy kezdeti rendszerkép-definíciót a galériában az [az SIG rendszerkép-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)paranccsal.
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -56,13 +56,13 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-an-image-version"></a>Képverzió létrehozása 
+## <a name="create-an-image-version"></a>Rendszerkép-verzió létrehozása 
 
-Szükség szerint hozza létre a képverzióverzióit az [az képgaléria create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create)használatával. Át kell adnia a felügyelt lemezkép azonosítóját, hogy alapvonalként használhassa a lemezkép-verzió létrehozásához. Az [képlista](/cli/azure/image?view#az-image-list) segítségével információkat kaphat az erőforráscsoportban lévő képekről. 
+Szükség szerint hozza létre a rendszerkép verzióit az [az rendszerkép-gyűjtemény létrehozása-rendszerkép-Version](/cli/azure/sig/image-version#az-sig-image-version-create)paranccsal. A rendszerkép verziójának létrehozásához meg kell adnia a felügyelt rendszerkép AZONOSÍTÓját. Az [az Image List](/cli/azure/image?view#az-image-list) paranccsal kérheti le az erőforráscsoporthoz tartozó rendszerképekkel kapcsolatos információkat. 
 
-A képverzió megengedett karakterei számok és időszakok. A számoknak a 32 bites egész szám tartományán belül kell lenniük. Formátum: *MajorVersion*. *MinorVersion*. *Patch*.
+A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
-Ebben a példában a lemezkép verziója *1.0.0,* és 2 replikát fogunk létrehozni az *USA nyugati középső régiójában,* 1 replikát az USA déli középső régiójában és 1 replikát az USA keleti *régiójában* *2* régióban zónaredundáns tárolás használatával.
+Ebben a példában a rendszerkép verziója a *1.0.0* , és két replikát fogunk létrehozni az *USA nyugati középső* régiójában, 1 replika az *USA déli középső* régiójában és 1 replika az *USA 2. keleti* régiójában, a zóna redundáns tárolásával.
 
 
 ```azurecli-interactive 
@@ -77,14 +77,14 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> Meg kell várnia, amíg a lemezkép-verzió teljesen befejeződik a létrehozás és a replikálás, mielőtt ugyanazt a felügyelt lemezképet használhatna egy másik lemezkép-verzió létrehozásához.
+> Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> Az összes lemezképverzió-replikát a [Zónaredundáns tárolásban](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) is tárolhatja, ha a lemezkép-verzió létrehozásakor hozzáadja. `--storage-account-type standard_zrs`
+> Az összes rendszerkép-verzió replikáját a [zóna redundáns tárolójában](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) `--storage-account-type standard_zrs` is tárolhatja a rendszerkép verziójának létrehozásakor.
 >
 
-## <a name="share-the-gallery"></a>A galéria megosztása
+## <a name="share-the-gallery"></a>A katalógus megosztása
 
-Azt javasoljuk, hogy ossza meg más felhasználókkal a galéria szintjén. A galéria objektumazonosítójának leszámításához használja [az az sig show -t.](/cli/azure/sig#az-sig-show)
+Javasoljuk, hogy a katalógus szintjén ossza meg más felhasználókkal. A katalógus objektum-AZONOSÍTÓjának lekéréséhez használja az [az SIG show](/cli/azure/sig#az-sig-show)lehetőséget.
 
 ```azurecli-interactive
 az sig show \
@@ -93,7 +93,7 @@ az sig show \
    --query id
 ```
 
-Használja az objektumazonosítót hatókörként, valamint egy e-mail címet és [az az szerepkör-hozzárendelést létrehozva,](/cli/azure/role/assignment#az-role-assignment-create) hogy a felhasználó nak hozzáférést biztosítson a megosztott képtárhoz.
+Használja az objektumazonosító hatókörként, valamint egy e-mail-cím és [az az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) lehetőséget, hogy a felhasználók hozzáférhessenek a megosztott képgyűjteményhez.
 
 ```azurecli-interactive
 az role assignment create --role "Reader" --assignee <email address> --scope <gallery ID>

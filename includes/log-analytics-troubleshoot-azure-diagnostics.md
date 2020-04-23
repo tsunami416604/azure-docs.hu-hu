@@ -30,8 +30,8 @@ Az erőforrás-szolgáltató regisztrálásához hajtsa végre a következő lé
 A *Microsoft.insights* erőforrás-szolgáltató regisztrálása után próbálja meg ismét konfigurálni a diagnosztikát.
 
 
-A PowerShellben, ha a következő hibaüzenet jelenik meg, frissítenie kell a PowerShell verzióját:
+Ha a PowerShellben a következő hibaüzenet jelenik meg, frissítenie kell a PowerShell verzióját:
 
 `Set-AzDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-Frissítse az Azure PowerShell verzióját, kövesse az [Azure PowerShell telepítése](/powershell/azure/install-az-ps) című cikkben található utasításokat.
+Frissítse Azure PowerShell verzióját, kövesse az [Azure PowerShell telepítése](/powershell/azure/install-az-ps) című cikkben található utasításokat.

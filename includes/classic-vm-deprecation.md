@@ -12,9 +12,9 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "77911788"
 ---
 > [!IMPORTANT]
-> A klasszikus virtuális gépek 2023. március 1-jén retired ki.
+> A klasszikus virtuális gépek 2023. március 1-től megszűnnek.
 >
-> Ha az ASM IaaS-erőforrásait használja, kérjük, 2023. Javasoljuk, hogy hamarabb váltson, hogy kihasználhassa az Azure Resource Manager számos funkciófejlesztését.
+> Ha az ASM-től származó IaaS-erőforrásokat használ, kérjük, fejezze be az áttelepítést 2023. március 1-től. Javasoljuk, hogy előbb a kapcsolót használja a Azure Resource Manager számos funkciójának kihasználása érdekében.
 >
-> További információ: [Az IaaS-erőforrások áttelepítése az Azure Resource Managerbe 2023.](../articles/virtual-machines/classic-vm-deprecation.md)
+> További információ: [a IaaS-erőforrások Áttelepítésének Azure Resource Manager a 2023. március 1-től](../articles/virtual-machines/classic-vm-deprecation.md).
 > 

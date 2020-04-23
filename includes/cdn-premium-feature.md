@@ -16,7 +16,7 @@ ms.lasthandoff: 03/27/2020
 ms.locfileid: "74284118"
 ---
 > [!IMPORTANT]
-> Ez a funkció az **Azure CDN Premium a Verizon** csak, szabályok konfigurálásához az Azure **CDN a Microsoft,** kérjük, használja a [Standard szabályok engine](../articles/cdn/cdn-standard-rules-engine-reference.md). Speciális szabályok nem érhetők el az **Akamai Azure CDN-jéhez.** A CDN-szolgáltatások teljes összehasonlítását az [Azure CDN termékszolgáltatásai című témakörben található.](../articles/cdn/cdn-features.md) 
+> Ez a csak a **Verizon Azure CDN Premium** szolgáltatása, amely a **Microsoft Azure CDN** szabályainak konfigurálását végzi el, a [standard szintű szabályok motorját](../articles/cdn/cdn-standard-rules-engine-reference.md)használja. A speciális szabályok nem érhetők el a **Akamai Azure CDN**. A CDN-funkciók teljes összehasonlítását lásd: [Azure CDN termék szolgáltatásai](../articles/cdn/cdn-features.md). 
 > 
 > 
 

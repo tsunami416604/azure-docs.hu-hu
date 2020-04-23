@@ -11,31 +11,31 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/14/2020
 ms.locfileid: "81312842"
 ---
-* A több-bérlős rendszerek, amelyek támogatják a teljes körű díjszabási tervek, kivéve elszigetelt.
-* Az App Service-környezet, amely telepíti a virtuális hálózatba, és támogatja az elkülönített díjszabási terv alkalmazások.
+* A több-bérlős rendszerek, amelyek támogatják az elkülönített díjszabási csomagok teljes skáláját.
+* A App Service Environment, amely üzembe helyezi a VNet, és támogatja az elkülönített díjszabási csomagot.
 
-A Virtuálishálózat-integráció szolgáltatás több-bérlős alkalmazásokban használatos. Ha az alkalmazás az [App Service-környezetben,][ASEintro]majd már egy virtuális hálózatban, és nem igényel a Virtuálishálózat-integráció szolgáltatás eléréséhez erőforrások ugyanabban a virtuális hálózaton. Az összes hálózati funkcióról az [App Service hálózati szolgáltatásai][Networkingfeatures]című témakörben talál további információt.
+A VNet-integrációs szolgáltatás a több-bérlős alkalmazásokban használatos. Ha az alkalmazás [app Service Environmentban][ASEintro]van, akkor már egy VNet van, és nem igényli a VNet integrációs funkciójának használatát az erőforrások eléréséhez ugyanabban a VNet. Az összes hálózati szolgáltatással kapcsolatos további információkért lásd: [app Service hálózatkezelési funkciók][Networkingfeatures].
 
-Virtuális hálózat integrációja hozzáférést biztosít az alkalmazás a virtuális hálózat ban lévő erőforrásokhoz, de nem biztosít bejövő privát hozzáférést az alkalmazáshoz a virtuális hálózatról. A privát webhely-hozzáférés azt a következőket teszi, hogy egy alkalmazás csak magánhálózatról, például egy Azure virtuális hálózaton keresztül érhető el. A virtuális hálózat integrációja csak az alkalmazásból a virtuális hálózatba érkező kimenő hívások kezdeményezéséhez használatos. A Virtuálishálózat-integráció szolgáltatás eltérően viselkedik, ha a virtuális hálózat tal ugyanabban a régióban és más régiókban a virtuális hálózattal használják. A Virtuálishálózat-integráció szolgáltatás két változatban:
+A VNet integrációja lehetővé teszi az alkalmazás számára a VNet lévő erőforrásokhoz való hozzáférést, de nem biztosít bejövő privát hozzáférést az alkalmazáshoz a VNet. A privát helyhez való hozzáférés arra utal, hogy egy alkalmazás csak magánhálózaton keresztül érhető el, például egy Azure-beli virtuális hálózaton belülről. A VNet-integráció kizárólag az alkalmazásból érkező kimenő hívások VNet való elvégzésére szolgál. A VNet-integrációs funkció másképp viselkedik, ha a VNet-ban ugyanabban a régióban és más régiókban VNet van használatban. A VNet-integrációs szolgáltatás két változattal rendelkezik:
 
-* **Regionális virtuális hálózat integrációja:** Ha ugyanabban a régióban csatlakozik az Azure Resource Manager virtuális hálózatokhoz, rendelkeznie kell egy dedikált alhálózattal a virtuális hálózatban, amelyhez integrálja.
-* **Átjáró által igényelt virtuális hálózat integráció:** Ha más régiókban lévő virtuális hálózathoz vagy ugyanabban a régióban egy klasszikus virtuális hálózathoz csatlakozik, a célvirtuális hálózatban kiépített Azure virtuális hálózati átjáróra van szükség.
+* **Regionális VNet-integráció**: Ha ugyanahhoz a régióhoz csatlakozik Azure Resource Manager virtuális hálózatokhoz, dedikált alhálózattal kell rendelkeznie azon a VNet, amelybe integrálni kívánja.
+* **Átjáró által megkövetelt VNet-integráció**: Ha más régiókban található VNet vagy ugyanazon a régióban található klasszikus virtuális hálózatra csatlakozik, szüksége lesz egy Azure Virtual Network-átjáróra, amelyet a cél VNet kell kiépíteni.
 
-A VNet-integráció funkciói:
+A VNet integrációs funkciói:
 
-* Standard, Premium, PremiumV2 vagy Elastic Premium díjszabási csomag megkövetelése.
-* Támogatja a TCP és UDP.
-* Az Azure App Service-alkalmazások és a függvényalkalmazások együttműködnek.
+* Standard, prémium, PremiumV2 vagy rugalmas prémium díjszabási csomag szükséges.
+* A TCP és az UDP támogatása.
+* Azure App Service-alkalmazások és-függvények használata.
 
-Vannak olyan dolgok, amelyeket a virtuális hálózat integrációja nem támogat, például:
+Vannak olyan dolgok, amelyeket a VNet-integráció nem támogat, például:
 
-* Meghajtó felszerelése.
-* Active Directory-integráció.
-* Netbios.
+* Meghajtó csatlakoztatása.
+* Active Directory integráció.
+* NetBIOS.
 
-Az átjáró által igényelt virtuális hálózat-integráció csak a cél virtuális hálózatban vagy a cél virtuális hálózathoz társviszony-létesítéssel vagy VPN-kapcsolattal csatlakoztatott hálózatokban biztosít hozzáférést az erőforrásokhoz. Az átjáróáltal igényelt virtuális hálózat integrációja nem teszi lehetővé az Azure ExpressRoute-kapcsolatokban elérhető erőforrásokhoz való hozzáférést, vagy szolgáltatásvégekkel működik.
+Az átjáróval megkövetelt VNet-integráció csak a célként megadott VNet, illetve a VNet és a virtuális magánhálózatok használatával csatlakozó hálózatokban biztosít hozzáférést az erőforrásokhoz. Az átjáróval megkövetelt VNet-integráció nem teszi lehetővé az Azure ExpressRoute-kapcsolatokon keresztül elérhető erőforrásokhoz való hozzáférést, vagy szolgáltatási végpontokkal működik.
 
-Függetlenül attól, hogy a használt verzió, vnet-integráció hozzáférést biztosít az alkalmazás a virtuális hálózat ban lévő erőforrásokhoz, de nem ad bejövő privát hozzáférést az alkalmazáshoz a virtuális hálózatról. A privát webhely-hozzáférés azt a következőket teszi, hogy az alkalmazás csak magánhálózatról, például egy Azure virtuális hálózaton keresztül érhető el. A virtuális hálózat integrációja csak az alkalmazásból a virtuális hálózatba érkező kimenő hívások hoz.
+A használt verziótól függetlenül a VNet integrációja lehetővé teszi az alkalmazás számára a VNet lévő erőforrásokhoz való hozzáférést, de nem biztosít bejövő privát hozzáférést az alkalmazáshoz a VNet. A privát helyhez való hozzáférés arra utal, hogy az alkalmazás csak a magánhálózaton keresztül érhető el, például egy Azure-VNet belülről. A VNet-integráció csak az alkalmazásból kimenő hívásokat tesz a VNet.
 
 <!--Links-->
 [ASEintro]: https://docs.microsoft.com/azure/app-service/environment/intro

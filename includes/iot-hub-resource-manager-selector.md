@@ -12,13 +12,13 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "75912251"
 ---
 > [!div class="op_single_selector"]
-> * [Azure-portál](../articles/iot-hub/iot-hub-create-through-portal.md)
+> * [Azure Portal](../articles/iot-hub/iot-hub-create-through-portal.md)
 > * [Azure IoT Hub VS Code-hoz](../articles/iot-hub/iot-hub-create-use-iot-toolkit.md)
-> * [Powershell](../articles/iot-hub/iot-hub-create-using-powershell.md)
+> * [PowerShell](../articles/iot-hub/iot-hub-create-using-powershell.md)
 > * [Azure CLI](../articles/iot-hub/iot-hub-create-using-cli.md)
 > * [PowerShell sablonnal](../articles/iot-hub/iot-hub-rm-template-powershell.md)
-> * [C# REST-el](../articles/iot-hub/iot-hub-rm-rest.md)
-> * [C# sablonnal](../articles/iot-hub/iot-hub-rm-template.md)
+> * [C# és REST](../articles/iot-hub/iot-hub-rm-rest.md)
+> * [C# sablon alapján](../articles/iot-hub/iot-hub-rm-template.md)
 > 
 > 
 

@@ -12,8 +12,8 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651538"
 ---
 > [!WARNING]
->  **Az Azure Container Service (ACS) elavult. Az ACS nem ad hozzá új funkciókat vagy funkciókat. Az összes API, portálélmény, CLI-parancs és dokumentáció elavultként van megjelölve.**
+>  **A Azure Container Service (ACS) elavult. Nincs új funkció vagy funkció az ACS-ben való hozzáadásakor. Az API-k, a portálok, a CLI-parancsok és a dokumentációk elavultként vannak megjelölve.**
 >
-> 2017-ben bevezettük az Azure Kubernetes-szolgáltatást (AKS) a Kubernetes felügyeletének, üzembe helyezésének és műveleteinek egyszerűsítésére. Ha a Kubernetes orchestrator, kérjük, vándorolnak AKS január 31, 2020. Első lépésekhez [lásd: Migrálás az Azure Kubernetes szolgáltatásba.](../articles/aks/aks-migration.md)
+> 2017-ben bevezetjük az Azure Kubernetes Service (ak) szolgáltatást, amely egyszerűbbé teszi a Kubernetes-felügyeletet, az üzembe helyezést és a műveleteket. Ha a Kubernetes-Orchestrator használja, akkor a 2020-es verzióra kell migrálni az AK-ra. január 31-ig. Első lépésként olvassa el az [áttelepítés az Azure Kubernetes Service-be](../articles/aks/aks-migration.md)című témakört.
 >
-> További információ: az Azure Container Service e-Azure.com.For more information, see the [Azure Container Service eprecation announcement on Azure.com.](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)
+> További információkért tekintse meg a [Azure.com-ről szóló Azure Container Service elavult közleményt](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).

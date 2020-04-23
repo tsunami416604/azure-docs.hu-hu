@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "67122553"
 ---
 >[!NOTE]
->A Microsoft Operations Management Suite-ról az Azure Monitorra való folyamatos áttérés részeként a Windows vagy Linux operations management suite ügynök a Windows és a Linux Log Analytics-ügynöke lesz.
+>A Microsoft Operations Management Suiteról Azure Monitorre való folyamatos áttérés részeként a Windows vagy Linux rendszerhez készült Operations Management Suite-ügynök a Windows rendszerhez és a Linux Log Analytics-ügynökhöz tartozó Log Analytics-ügynök.

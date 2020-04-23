@@ -1,6 +1,6 @@
 ---
-title: Peremhálózati események továbbítása az Event Grid felhőbe – Azure Event Grid IoT Edge | Microsoft dokumentumok
-description: Peremesemények továbbítása az Event Grid felhőbe
+title: Peremhálózati események továbbítása Event Grid Cloud-Azure Event Grid IoT Edge | Microsoft Docs
+description: Peremhálózati események továbbítása Event Grid felhőbe
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -16,35 +16,35 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844717"
 ---
-# <a name="tutorial-forward-events-to-event-grid-cloud"></a>Oktatóanyag: Események továbbítása az Event Grid felhőbe
+# <a name="tutorial-forward-events-to-event-grid-cloud"></a>Oktatóanyag: események továbbítása Event Grid felhőbe
 
-Ez a cikk végigvezeti az összes olyan lépést, amely a peremhálózati események nek az Azure-felhőben az Event Gridbe való továbbításához szükséges. Ezt a következő okok miatt teheti meg:
+Ez a cikk végigvezeti az Azure-felhőben Event Grid peremhálózati események továbbításához szükséges lépéseken. A következő okok miatt lehet szükség:
 
-* Reagáljon a felhőben lévő peremeseményekre.
-* Események továbbítása az Event Grid a felhőben, és használja az Azure Event Hubs vagy az Azure Storage-várólisták puffer események feldolgozása előtt a felhőben.
+* Reagáljon a Felhőbeli peremhálózati eseményekre.
+* Továbbítsa az eseményeket a felhőben Event Gridre, és az Azure Event Hubs vagy az Azure Storage-várólistákat használja az események puffereléséhez a felhőben való feldolgozás előtt.
 
- Az oktatóanyag befejezéséhez ismernie kell az Event Grid-fogalmakat [a peremhálózaton](concepts.md) és az [Azure-ban.](../concepts.md) További céltípusokról [az eseménykezelők](event-handlers.md). 
+ Az oktatóanyag elvégzéséhez ismernie kell Event Grid fogalmakat a [Edge](concepts.md) -ben és az [Azure](../concepts.md)-ban. További célhelyek: [eseménykezelők](event-handlers.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek 
-Az oktatóanyag befejezéséhez a következőkre lesz szüksége:
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* **Azure-előfizetés** – Hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free) ha még nem rendelkezik ilyen. 
-* **Azure IoT Hub és IoT Edge-eszköz** – Kövesse a lépéseket a gyors indítás [Linux](../../iot-edge/quickstart-linux.md) vagy [Windows eszközök,](../../iot-edge/quickstart.md) ha még nem rendelkezik ilyen.
+* **Azure-előfizetés** – hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) , ha még nem rendelkezik ilyennel. 
+* **Azure IoT hub és IoT Edge eszköz** – kövesse a [Linux](../../iot-edge/quickstart-linux.md) vagy [Windows rendszerű eszközök](../../iot-edge/quickstart.md) gyors üzembe helyezésének lépéseit, ha még nem rendelkezik ilyennel.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
-## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Eseményrács-témakör és -előfizetés létrehozása a felhőben
+## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Event Grid-témakör és-előfizetés létrehozása a felhőben
 
-Hozzon létre egy eseményrács-témakört és előfizetést a felhőben [az oktatóanyag](../custom-event-quickstart-portal.md)követésével. Megjegyzés `topicURL`a `sasKey`, `topicName` és az oktatóanyag későbbi részében használt újonnan létrehozott témakörről.
+Az [oktatóanyag](../custom-event-quickstart-portal.md)követésével hozzon létre egy Event Grid-témakört és-előfizetést a felhőben. Jegyezze fel, és `topicName` az újonnan létrehozott témakört, amelyet később az oktatóanyagban fog használni. `topicURL` `sasKey`
 
-Ha például az USA `testegcloudtopic` nyugati részén létrehozott egy témakört, az értékek a következőkre néznek:
+Ha például létrehozta az USA nyugati régiójában `testegcloudtopic` elnevezett témakört, az értékek a következőképpen néznek ki:
 
 * **TopicUrl**:`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
-* **Témakör neve**:`testegcloudtopic`
-* **SasKey:** A témakör **AccessKey** alatt érhető el. Használja **a key1 gombot1.**
+* **TopicName**:`testegcloudtopic`
+* **SasKey**: a témakör **AccessKey** alatt érhető el. **Key1**használata.
 
-## <a name="create-event-grid-topic-at-the-edge"></a>Eseményrács-témakör létrehozása a peremhálózaton
+## <a name="create-event-grid-topic-at-the-edge"></a>Event Grid-témakör létrehozása a peremhálózat szélén
 
-1. Hozzon létre topic3.json a következő tartalommal. A hasznos adattal kapcsolatos részletekért tekintse meg [az API dokumentációját.](api.md)
+1. Hozza létre a topic3. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
 
     ```json
         {
@@ -54,12 +54,12 @@ Ha például az USA `testegcloudtopic` nyugati részén létrehozott egy témak�
           }
         }
     ```
-1. A témakör létrehozásához futtassa a következő parancsot. A 200 OK HTTP-állapotkódot vissza kell adni.
+1. Futtassa a következő parancsot a témakör létrehozásához. Az 200-es HTTP-állapotkódot vissza kell adni.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
-1. Futtassa a következő parancsot a témakör sikeres létrehozásának ellenőrzéséhez. A 200 OK HTTP-állapotkódot vissza kell adni.
+1. A következő parancs futtatásával ellenőrizheti, hogy a témakör sikeresen létrejött-e. Az 200-es HTTP-állapotkódot vissza kell adni.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
@@ -81,11 +81,11 @@ Ha például az USA `testegcloudtopic` nyugati részén létrehozott egy témak�
         ]
    ```
   
-## <a name="create-event-grid-subscription-at-the-edge"></a>Eseményrács-előfizetés létrehozása a peremhálózaton
+## <a name="create-event-grid-subscription-at-the-edge"></a>Event Grid-előfizetés létrehozása a peremhálózat szélén
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Hozzon létre subscription3.json a következő tartalommal. A hasznos adattal kapcsolatos részletekért tekintse meg [az API dokumentációját.](api.md)
+1. Hozza létre a subscription3. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
 
    ```json
         {
@@ -103,7 +103,7 @@ Ha például az USA `testegcloudtopic` nyugati részén létrehozott egy témak�
    ```
 
    >[!NOTE]
-   > A **endpointUrl** határozza meg, hogy az Event Grid témakör URL-címét a felhőben. A **sasKey** az Event Grid felhőtémakörének kulcsára hivatkozik. A **témakörnév** értéke az összes kimenő esemény eseményrácsba történő bélyegzőjéhez lesz használva. Ez akkor lehet hasznos, ha eseményrácsos tartománytémakörbe kerül. Az Event Grid tartományi témakörről további információt az [Eseménytartományok című témakörben talál.](../event-domains.md)
+   > A **endpointUrl** megadja, hogy a Event Grid témakör URL-címe a felhőben. A **sasKey** Event Grid Felhőbeli témakör kulcsára hivatkozik. A rendszer az **topicName** -ben lévő értéket fogja használni az összes kimenő esemény Event Grid. Ez akkor lehet hasznos, ha Event Grid tartományi témakörbe való feladást végez. További információ a Event Grid tartományi témakörről: [esemény-tartományok](../event-domains.md)
 
     Például:
   
@@ -122,13 +122,13 @@ Ha például az USA `testegcloudtopic` nyugati részén létrehozott egy témak�
         }
     ```
 
-2. Futtassa a következő parancsot az előfizetés létrehozásához. A 200 OK HTTP-állapotkódot vissza kell adni.
+2. A következő parancs futtatásával hozza létre az előfizetést. Az 200-es HTTP-állapotkódot vissza kell adni.
 
      ```sh
      curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
      ```
 
-3. Futtassa a következő parancsot az előfizetés sikeres létrehozásának ellenőrzéséhez. A 200 OK HTTP-állapotkódot vissza kell adni.
+3. A következő parancs futtatásával ellenőrizheti, hogy az előfizetés sikeresen létrejött-e. Az 200-es HTTP-állapotkódot vissza kell adni.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
@@ -155,9 +155,9 @@ Ha például az USA `testegcloudtopic` nyugati részén létrehozott egy témak�
         }
     ```
 
-## <a name="publish-an-event-at-the-edge"></a>Esemény közzététele a peremhálózaton
+## <a name="publish-an-event-at-the-edge"></a>Esemény közzététele az Edge-ben
 
-1. Hozzon létre event3.json a következő tartalommal. A hasznos adattal kapcsolatos részletekért tekintse meg az [API dokumentációját.](api.md)
+1. Hozza létre a event3. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért lásd az [API dokumentációját](api.md) .
 
     ```json
         [
@@ -181,25 +181,25 @@ Ha például az USA `testegcloudtopic` nyugati részén létrehozott egy témak�
     curl -k -H "Content-Type: application/json" -X POST -g -d @event3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-edge-event-in-cloud"></a>Peremhálózati esemény ellenőrzése a felhőben
+## <a name="verify-edge-event-in-cloud"></a>Edge-esemény ellenőrzése a felhőben
 
-A felhőtémakör által közvetített események megtekintéséről az [oktatóanyagban](../custom-event-quickstart-portal.md)olvashat.
+A Felhőbeli témakör által megjelenített események megtekintésével kapcsolatos információkért tekintse meg az [oktatóanyagot](../custom-event-quickstart-portal.md).
 
 ## <a name="cleanup-resources"></a>Az erőforrások eltávolítása
 
-* A témakör és az összes előfizetéstörléséhez futtassa a következő parancsot
+* Futtassa a következő parancsot a témakör és az összes előfizetésének törléséhez
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
 
-* Törölje a felhőben létrehozott témaköröket és előfizetéseket (Azure Event Grid) is.
+* A felhőben (Azure Event Grid) létrehozott témaköröket és előfizetéseket is törölheti.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban közzétett egy eseményt a szélén, és továbbította az Event Grid az Azure-felhőben. Most, hogy már ismeri az Event Grid felhőben való továbbtovábbításának alapvető lépéseit:
+Ebben az oktatóanyagban egy eseményt tett közzé az Edge-ben, és továbbítottuk az Azure-felhőben lévő Event Gridra. Most, hogy ismeri a felhőben való Event Gridre való továbbítás alapvető lépéseit:
 
-* Az Azure Event Grid IoT Edge-en való használatával kapcsolatos problémák elhárításáról a [Hibaelhárítási útmutató](troubleshoot.md)című témakörben talál.
-* Események továbbítása az IoTHubra az [oktatóanyag](forward-events-iothub.md) követésével
-* Események továbbítása a felhőben lévő Webhookba az [oktatóanyag](pub-sub-events-webhook-cloud.md) követésével
-* [Témakörök és előfizetések figyelése a peremhálózaton](monitor-topics-subscriptions.md)
+* A IoT Edge Azure Event Grid használatával kapcsolatos problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md).
+* Események továbbítása a IoTHub az [oktatóanyag](forward-events-iothub.md) követésével
+* Események továbbítása a webhookba a felhőben az [oktatóanyag](pub-sub-events-webhook-cloud.md) követésével
+* [Témakörök és előfizetések figyelése a peremhálózat szélén](monitor-topics-subscriptions.md)

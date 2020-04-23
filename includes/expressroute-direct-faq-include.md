@@ -17,28 +17,28 @@ ms.locfileid: "73182222"
 ---
 ### <a name="what-is-expressroute-direct"></a>Mi az az ExpressRoute Direct?
 
-Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek számára a Microsoft globális hálózatához a világszerte stratégiai pontokon elhelyezett társviszony-létesítési helyszíneken át. Az ExpressRoute Direct két 100 vagy 10 Gb/s sebességű kapcsolatot biztosít, amely támogatja az aktív/aktív kapcsolatot. 
+Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek számára a Microsoft globális hálózatához a világszerte stratégiai pontokon elhelyezett társviszony-létesítési helyszíneken át. A ExpressRoute Direct kettős 100 vagy 10 GB/s kapcsolatot biztosít, amely támogatja az aktív/aktív kapcsolatot a skálán. 
 
-### <a name="how-do-customers-connect-to-expressroute-direct"></a>Hogyan csatlakozhatnak az ügyfelek az ExpressRoute Directhez? 
+### <a name="how-do-customers-connect-to-expressroute-direct"></a>Hogyan csatlakozhatnak az ügyfelek a ExpressRoute Directhez? 
 
-Az ExpressRoute Direct előnyeinek kihasználásához az ügyfeleknek együtt kell működniük a helyi szolgáltatókkal és a helyszolgáltatóikkal, hogy kapcsolatot kapjanak az ExpressRoute-útválasztókkal.
+Az ügyfeleknek a helyi szolgáltatók és a közös telephelyek használatával kell dolgozniuk a ExpressRoute-útválasztókkal való kapcsolattal, hogy kihasználhassa a ExpressRoute Direct szolgáltatás előnyeit.
 
-### <a name="what-locations-currently-support-expressroute-direct"></a>Mely helyek támogatják jelenleg az ExpressRoute Directet? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Milyen helyszínek támogatják a ExpressRoute Direct szolgáltatást? 
 
-Kérjük, ellenőrizze a rendelkezésre állás a [hely oldalon](../articles/expressroute/expressroute-locations-providers.md). 
+Tekintse meg a rendelkezésre állást a [hely lapon](../articles/expressroute/expressroute-locations-providers.md). 
 
-### <a name="what-is-the-sla-for-expressroute-direct"></a>Mi az ExpressRoute Direct SLA-ja?
+### <a name="what-is-the-sla-for-expressroute-direct"></a>Mi a ExpressRoute Direct SLA-ja?
 
-Az ExpressRoute Direct ugyanazt a [nagyvállalati szintű ExpressRoute-ot](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/)fogja használni. 
+A közvetlen ExpressRoute ugyanazt a [nagyvállalati szintű ExpressRoute](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/)fogja használni. 
 
-### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Milyen forgatókönyveket kell figyelembe venni az ügyfelek az ExpressRoute Direct?  
+### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Milyen forgatókönyveket érdemes figyelembe venni az ügyfelek a ExpressRoute Directtel?  
 
-Az ExpressRoute Direct közvetlen 100 vagy 10 Gb/s portpárokat biztosít ügyfeleinek a Microsoft globális gerinchálózatába. A forgatókönyvek, amelyek biztosítják az ügyfelek számára a legnagyobb előnyöket a következők: Tömeges adatbetöltés, a szabályozott piacok fizikai elkülönítése, és dedikált kapacitás burst forgatókönyv, például renderelés. 
+A ExpressRoute Direct 100-es vagy 10 GB/s-os portszámú ügyfeleket biztosít a Microsoft globális gerincének. Az ügyfelek számára a legnagyobb előnyökkel járó forgatókönyvek a következők: nagy mennyiségű adatfeldolgozás, a szabályozott piacok fizikai elkülönítése, valamint dedikált kapacitás a burst forgatókönyvhöz, például a rendereléshez. 
 
-### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Mi az ExpressRoute Direct számlázási modellje? 
+### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Mi a ExpressRoute Direct számlázási modellje? 
 
-Az ExpressRoute Direct fix összegben kerül számlázásra a portpárért. Standard áramkörök lesz benne, hogy nincs további óra és prémium lesz egy kis kiegészítő díjat. A kimenő forgalom számlázása a társviszony-létesítési hely zónája alapján történik.
+A ExpressRoute Direct szolgáltatás a port párja után rögzített összegű díjat számít fel. A standard szintű áramköröket további órák nélkül, a prémium pedig kisebb kiegészítő díjat számítunk fel. A kimenő forgalom számlázása a társítási hely zónája alapján, áramkör alapján történik.
 
-### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Mikor kezdődik a számlázás az ExpressRoute Direct portpárok esetében?
+### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Mikor kezdődik a ExpressRoute Direct port-párok számlázása?
 
-Az ExpressRoute Direct portpárjainak számlázása 45 nappal az ExpressRoute Direct erőforrás létrehozása után van, vagy ha 1 vagy mindkét kapcsolat engedélyezve van , amelyik előbb bekerül. A 45 napos türelmi idő lehetővé teszi az ügyfelek számára, hogy befejezhessék a kapcsolatközi folyamatot a helymegosztási szolgáltatóval.
+A 45 közvetlen ExpressRoute a ExpressRoute közvetlen erőforrásának létrehozásakor, vagy ha 1 vagy mindkét hivatkozás engedélyezve van, akkor az előbbi értéknek kell lennie. A 45 napos türelmi időszak lehetővé teszi, hogy az ügyfelek a közös elhelyezésű szolgáltatóval is elvégezzék a kapcsolatok közötti folyamatot.

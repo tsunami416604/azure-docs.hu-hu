@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Storage Gen1 Storm teljesítményhangolására vonatkozó irányelvei | Microsoft dokumentumok
-description: Az Azure Data Lake Storage Gen1 Storm teljesítményhangolási irányelvei
+title: Azure Data Lake Storage Gen1 Storm Performance tuning iránymutatásai | Microsoft Docs
+description: Azure Data Lake Storage Gen1 Storm Performance tuning iránymutatásai
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -19,123 +19,123 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "61436477"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítményhangolási útmutató a Storm hoz a HDInsight és az Azure Data Lake Storage Gen1 szolgáltatáshoz
+# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a Storm on HDInsight és Azure Data Lake Storage Gen1
 
-Az Azure Storm-topológia teljesítményének finomhangolásakor figyelembe veendő tényezők megismerése. Fontos például, hogy megértsük a spouts és a csavarok által végzett munka jellemzőit (függetlenül attól, hogy a munka I/O vagy memóriaigényes). Ez a cikk számos teljesítményhangolási irányelvet ismerteti, beleértve a gyakori problémák elhárítását.
+Megismerheti azokat a tényezőket, amelyeket figyelembe kell venni az Azure Storm-topológiák teljesítményének finomhangolása során. Például fontos megérteni a kiöntő és a csavarok által végzett munka jellemzőit (legyen szó akár I/O-, akár a memória-intenzív működésről). Ez a cikk a teljesítmény-hangolási irányelvek széles körét ismerteti, beleértve a gyakori problémák elhárítását is.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy Azure Data Lake Storage Gen1 fiók.** Az Azure Data Lake Storage Gen1 – [Első lépések az Azure Data Lake Storage Gen1 című](data-lake-store-get-started-portal.md)témakörben található.
-* **Egy Azure HDInsight-fürt,** amely egy Data Lake Storage Gen1-fiókhoz fér hozzá. Lásd: [HDInsight-fürt létrehozása a Data Lake Storage Gen1 szolgáltatással című témakört.](data-lake-store-hdinsight-hadoop-use-portal.md) Győződjön meg arról, hogy engedélyezi a Távoli asztal szolgáltatást a fürtszámára.
-* **Storm-fürt futtatása a Data Lake Storage Gen1 szolgáltatáson.** További információ: [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
-* **Teljesítményhangolási irányelvek a Data Lake Storage Gen1 szolgáltatáshoz.**  Az általános teljesítménykoncepciókról a [Data Lake Storage Gen1 teljesítményhangolási útmutatócímű témakörben talál.](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)  
+* **Egy Azure Data Lake Storage Gen1-fiók**. A létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépései](data-lake-store-get-started-portal.md)című témakört.
+* Egy Data Lake Storage Gen1 fiókhoz hozzáféréssel rendelkező **Azure HDInsight-fürt** . Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
+* **Storm-fürt futtatása Data Lake Storage Gen1on**. További információ: [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Teljesítmény-finomhangolási irányelvek a Data Lake Storage Gen1**.  Az általános teljesítménnyel kapcsolatos fogalmakat lásd: [Data Lake Storage Gen1 teljesítmény-finomhangolási útmutató](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).  
 
-## <a name="tune-the-parallelism-of-the-topology"></a>A topológia párhuzamosságának finomhangolása
+## <a name="tune-the-parallelism-of-the-topology"></a>A topológia párhuzamosságának hangolása
 
-Előfordulhat, hogy javíthatja a teljesítményt az I/O és a Data Lake Storage Gen1 egyidejűsűségének növelésével. A Storm topológia olyan konfigurációkkal rendelkezik, amelyek meghatározzák a párhuzamosságot:
-* A munkavégző folyamatok száma (a dolgozók egyenletesen oszlanak el a virtuális gépek között).
-* A spout végrehajtó példányainak száma.
+Előfordulhat, hogy a teljesítmény növelése érdekében az I/O és a Data Lake Storage Gen1 közötti párhuzamosságot kell növelni. A Storm-topológia olyan konfigurációkat tartalmaz, amelyek meghatározzák a párhuzamosságot:
+* A munkavégző folyamatok száma (a feldolgozók egyenletesen oszlanak meg a virtuális gépek között).
+* A kiöntő végrehajtó példányainak száma.
 * A bolt végrehajtó példányainak száma.
-* A spout feladatok száma.
-* A csavarfeladatok száma.
+* A kiöntő feladatok száma.
+* A bolti feladatok száma.
 
-Például egy 4 virtuális géptel és 4 munkavégző folyamattal, 32 kifolyó végrehajtóval és 32 kifolyó feladattal, valamint 256 csavarvégrehajtóval és 512 csavarfeladattal rendelkező fürtön vegye figyelembe a következőket:
+Például egy 4 virtuális géppel és 4 munkavégző folyamattal rendelkező fürtön, 32 kiöntő végrehajtó és 32 kiöntő feladat, valamint 256 bolt végrehajtói és 512 bolti feladatok, vegye figyelembe a következőket:
 
-Minden felügyelő, amely egy feldolgozó csomópont, egyetlen feldolgozó Java virtuális gép (JVM) folyamattal rendelkezik. Ez a JVM folyamat 4 kifolyó szálat és 64 csavarmenetet kezel. Az egyes szálakon belül a feladatok egymás után futnak. Az előző konfigurációval minden spout szál 1 feladattal rendelkezik, és minden csavarszál 2 feladattal rendelkezik.
+Minden olyan felügyelő, amely egy feldolgozói csomópont, egyetlen feldolgozó Java virtuális gép (JVM) folyamattal rendelkezik. Ez a JVM folyamat 4 kiöntő szálat és 64 bolti szálat kezel. Az egyes szálakon belül a feladatok egymás után futnak. Az előző konfigurációval minden kiöntő szál 1 feladatot tartalmaz, és minden egyes bolti szál 2 feladattal rendelkezik.
 
-A Storm, itt vannak a különböző alkatrészek et, és hogyan befolyásolják a párhuzamosság szintjét van:
-* A fő csomópont (úgynevezett Nimbus a Storm) a feladatok küldésére és kezelésére szolgál. Ezek a csomópontok nincsenek hatással a párhuzamosság mértékére.
-* A felügyeleti csomópontok. A HDInsightban ez egy feldolgozócsomópont nak, az Azure virtuális gépnek felel meg.
-* A dolgozói feladatok storm folyamatok futnak a virtuális gépeken. Minden dolgozói feladat egy JVM-példánynak felel meg. A Storm a munkavégző csomópontok nak a lehető legegyenletesebben osztja el a megadott munkavégző folyamatok számát.
-* Spout és bolt végrehajtó példányok. Minden végrehajtó példány a dolgozókon (JVM-ek) futó szálnak felel meg.
-* Vihar feladatok. Ezek olyan logikai feladatok, amelyeket ezek a szálak futtatnak. Ez nem változtatja meg a párhuzamosság szintjét, ezért ki kell értékelnie, hogy végrehajtónként több feladatra van-e szüksége vagy sem.
+A Storm-ben itt láthatók a különböző érintett összetevők, és hogy azok milyen mértékben befolyásolják a párhuzamosság szintjét:
+* A feladatok küldéséhez és kezeléséhez a fő csomópontot (a Storm Nimbus néven ismert) használja a rendszer. Ezek a csomópontok nem befolyásolják a párhuzamosság mértékét.
+* A felügyelő csomópontjai. A HDInsight-ben ez az Azure virtuális gép munkavégző csomópontjának felel meg.
+* A feldolgozói feladatok a virtuális gépeken futó Storm-folyamatok. Minden feldolgozói feladat egy JVM-példánynak felel meg. A Storm a lehető legegyenletesebb módon osztja el a munkavégző csomópontok számára megadott munkavégző folyamatokat.
+* Kiöntő és bolt végrehajtó példányai. Minden végrehajtó példány egy, a feldolgozón (JVMs) belül futó szálnak felel meg.
+* Storm-feladatok. Ezek azok a logikai feladatok, amelyeket ezek a szálak futtatnak. Ez nem változtatja meg a párhuzamosság szintjét, ezért érdemes kiértékelnie, hogy a végrehajtónak több feladatra van szüksége, vagy nem.
 
-### <a name="get-the-best-performance-from-data-lake-storage-gen1"></a>A legjobb teljesítmény a Data Lake Storage Gen1-től
+### <a name="get-the-best-performance-from-data-lake-storage-gen1"></a>A Data Lake Storage Gen1 legjobb teljesítményének beolvasása
 
-A Data Lake Storage Gen1 szolgáltatással végzett munka során a legjobb teljesítményt kapja, ha az alábbi módon:
-* Egyesítse a kis hozzáfűzést nagyobb méretekre (ideális esetben 4 MB).
-* Tegyen meg annyi egyidejű kérést, amennyit csak tud. Mivel minden csavarszál blokkolja az olvasásokat, azt szeretné, hogy valahol a magonként 8-12 szál tartományban legyen. Ez tartja a NIC és a CPU jól hasznosított. Egy nagyobb virtuális gép több egyidejű kérést tesz lehetővé.  
+Data Lake Storage Gen1 használatakor a legjobb teljesítményt kapja, ha a következőket hajtja végre:
+* A kis méretű hozzáfűzéseket nagyobb méretekben (ideális esetben 4 MB) egyesítheti.
+* Annyi egyidejű kérést, amennyit csak tud. Mivel minden egyes bolti szál blokkolja az olvasásokat, egy mag 8-12 szálon belül szeretne lenni. Ez tartja a hálózati adaptert és a CPU-t is. Egy nagyobb méretű virtuális gép több párhuzamos kérést tesz lehetővé.  
 
 ### <a name="example-topology"></a>Példa topológia
 
-Tegyük fel, hogy egy 8 feldolgozói csomópont-fürtddel rendelkezik egy D13v2 Azure virtuális géptel. Ez a virtuális gép 8 maggal rendelkezik, így a 8 munkavégző csomópont között összesen 64 mag van.
+Tegyük fel, hogy egy D13v2 Azure-beli virtuális géppel rendelkező 8 munkavégző csomópont-fürtöt tartalmaz. Ez a virtuális gép 8 maggal rendelkezik, így a 8 feldolgozó csomópont között összesen 64 mag van.
 
-Tegyük fel, hogy magonként 8 csavarmenetet csinálunk. Mivel 64 magok, ez azt jelenti, szeretnénk 512 teljes bolt végrehajtó példányok (azaz szálak). Ebben az esetben tegyük fel, hogy virtuális gépenként egy JVM-mel kezdjük, és főként a JVM-en belüli szál-egyidejűséget használjuk az egyidejűség eléréséhez. Ez azt jelenti, hogy 8 feldolgozói feladatra van szükség (Egy Azure virtuális gép) és 512 csavarvégrehajtók. Ebben a konfigurációban a Storm megpróbálja elosztani a dolgozók egyenletesen a munkavégző csomópontok (más néven felügyeleti csomópontok), így minden dolgozó csomópont 1 JVM. Most a felügyelőkön belül a Storm megpróbálja a végrehajtókat egyenletesen elosztani a felügyelők között, így minden egyes felügyelő (azaz jvm) 8 szálat ad meg.
+Tegyük fel, hogy 8 csavaros szálat teszünk mag-onként. Az adott 64-es magok esetében ez azt jelenti, hogy a 512 összes bolt végrehajtó példányát (azaz a szálakat) szeretnénk használni. Ebben az esetben tegyük fel, hogy a virtuális gépen egy JVM indítunk, és főleg a JVM belüli szál-párhuzamosságot használják a párhuzamosság eléréséhez. Ez azt jelenti, hogy 8 feldolgozói feladatra van szükség (egy Azure-beli virtuális gépen eggyel) és a 512-es bolt végrehajtói Ebben a konfigurációban a Storm a munkavégző csomópontok (más néven felügyeleti csomópontok) között egyenletesen osztja el a dolgozókat, így az egyes munkavégző csomópontok 1 JVM. A Storm most már a felügyelők között igyekszik a végrehajtókat egyenletesen terjeszteni a felügyelők között, így mindegyik felügyelő (azaz JVM) 8 szálat biztosít.
 
-## <a name="tune-additional-parameters"></a>További paraméterek finomhangolása
-Miután rendelkezik az alapvető topológiával, mérlegelheti, hogy módosítani szeretné-e valamelyik paramétert:
-* **JVM-ek száma munkavégző csomópontonként.** Ha nagy adatstruktúrával (például egy keresett táblával) rendelkezik, amelyet a memóriában üzemeltet, minden JVM-nek külön másolatra van szüksége. Azt is megteheti, hogy az adatszerkezetet több szálon is használhatja, ha kevesebb JVM-et használ. A csavar I/O-ja esetében a JVM-ek száma nem okoz annyi különbséget, mint a JVM-ek között hozzáadott szálak száma. Az egyszerűség kedvéért, ez egy jó ötlet, hogy egy JVM munkavállalónként. Attól függően, hogy mit csinál a csavar, vagy milyen alkalmazás feldolgozásra van szüksége, bár előfordulhat, hogy módosítania kell ezt a számot.
-* **A kifolyó végrehajtóinak száma.** Mivel az előző példa a Data Lake Storage Gen1-re való íráshoz használja a csavarokat, a spoutok száma nem közvetlenül releváns a csavar teljesítményéhez. Azonban attól függően, hogy a feldolgozás vagy az I/O történik a kifolyóban, ez egy jó ötlet, hogy beállítsa a spouts a legjobb teljesítményt. Győződjön meg arról, hogy van elég spouts, hogy képes legyen tartani a csavarok foglalt. A spoutok kimeneti sebességének meg kell egyeznie a csavarok átviteli sebességével. A tényleges konfiguráció a kifolyótól függ.
-* **A feladatok száma.** Minden csavar egyetlen szálként fut. A boltonkénti további feladatok nem biztosítanak további egyidejűséget. Az egyetlen alkalom, hogy a haszon, ha a folyamat elismerve a tuple vesz nagy részét a bolt végrehajtási idő. Érdemes sok tuple-t egy nagyobb hozzáfűzésbe csoportosítani, mielőtt nyugtát küldenél a csavarról. Így a legtöbb esetben több feladat nem nyújt további előnyt.
-* **Helyi vagy véletlen sorrendű csoportosítás.** Ha ez a beállítás engedélyezve van, a rendszer a tesztelő folyamaton belül lévő csavaroknak küldi a tuple-okat. Ez csökkenti a folyamatok közötti kommunikációt és a hálózati hívásokat. Ez a legtöbb topológiához ajánlott.
+## <a name="tune-additional-parameters"></a>További paraméterek hangolása
+Az alapszintű topológia megadását követően megtekintheti, hogy a következő paramétereket szeretné-e használni:
+* **A JVMs száma munkavégző csomóponton.** Ha nagy adatstruktúrával (például egy keresési táblával) rendelkezik a memóriában, minden JVM külön másolat szükséges. Azt is megteheti, hogy az adatszerkezetet több szálon is használhatja, ha kevesebb JVMs van. A bolt I/O esetében a JVMs száma nem annyira különbözik, mint a JVMs-k között hozzáadott szálak száma. Az egyszerűség kedvéért jó ötlet, hogy egy JVM egy munkatársa legyen. Attól függően, hogy mit csinál a bolt, vagy milyen alkalmazások feldolgozására van szükség, de előfordulhat, hogy módosítania kell ezt a számot.
+* **Kiöntő végrehajtók száma.** Mivel az előző példa a Data Lake Storage Gen1 írásához a boltokat használja, a kiöntők száma nem kapcsolódik közvetlenül a bolt teljesítményéhez. A kifolyóban megjelenő feldolgozási vagy I/O-mennyiségtől függően azonban érdemes a kiöntő teljesítményt a legjobb teljesítmény érdekében hangolni. Győződjön meg arról, hogy elegendő kiöntő áll rendelkezésre, hogy megőrizze a csavarok elfoglalt mennyiségét. A kifolyók kimeneti sebességének meg kell egyeznie a csavarok teljesítményével. A tényleges konfiguráció a kiöntőtől függ.
+* **Feladatok száma.** Minden egyes bolt egyetlen szálként fut. Az egyes boltokban további feladatok nem biztosítanak további párhuzamosságot. Az egyetlen hasznos alkalom, ha a rekord visszaigazolási folyamata a bolt végrehajtási idejének nagy hányadát veszi igénybe. Érdemes a sok rekordok egy nagyobb hozzáfűzéssel csoportosítani, mielőtt elküld egy nyugtát a boltból. Így a legtöbb esetben több feladat nem biztosít további kedvezményt.
+* **Helyi vagy véletlenszerű csoportosítás.** Ha ez a beállítás engedélyezve van, a rendszer a rekordok az ugyanazon munkavégző folyamaton belüli boltoknak továbbítja. Ez csökkenti a folyamatok közötti kommunikációt és a hálózati hívásokat. Ez a legtöbb topológiához ajánlott.
 
-Ez az alapvető forgatókönyv egy jó kiindulási pont. Tesztelje a saját adataival az előző paraméterek optimális teljesítmény ének eléréséhez.
+Ez az alapszintű forgatókönyv jó kiindulási pont. Tesztelje a saját adatait az előző paraméterek finomhangolásához az optimális teljesítmény érdekében.
 
-## <a name="tune-the-spout"></a>A kifolyó finomhangolása
+## <a name="tune-the-spout"></a>A kiöntő hangolása
 
-A kifolyó beállításához a következő beállításokat módosíthatja.
+A kiöntő hangolásához a következő beállításokat módosíthatja.
 
-- **Tuple időmegtümő: topology.message.timeout.secs**. Ez a beállítás határozza meg, hogy az üzenet mennyi időt vesz igénybe a sikertelennek ítélt üzenet befejezéséhez és visszaigazolásának fogadásához.
+- **Rekord időtúllépése: topológia. Message. timeout. mp**. Ez a beállítás határozza meg, hogy az üzenet mennyi időt vesz igénybe, és fogadja a nyugtát, mielőtt a rendszer nem veszi figyelembe a hibát.
 
-- **Maximális memória munkavégző folyamatonként: worker.childopts**. Ezzel a beállítással további parancssori paramétereket adhat meg a Java-dolgozóknak. A leggyakrabban használt beállítás itt az XmX, amely meghatározza a JVM halommemóriához lefoglalt maximális memóriát.
+- **Maximális memória/munkavégző folyamat: Worker. childopts**. Ezzel a beállítással további parancssori paramétereket adhat meg a Java-feldolgozókhoz. Az itt leggyakrabban használt beállítás a XmX, amely meghatározza a JVM halom számára lefoglalt maximális memóriát.
 
-- **Maximális kifolyó függőben: topology.max.spout.pending**. Ez a beállítás határozza meg, hogy a számlálószálonként bármikor hány olyan tuple-t lehet végrehajtani (a topológia egy csomópontjában még nem nyugtázható).
+- **Maximális kiöntő függőben: topológia. max. kiöntő. függőben**. Ezzel a beállítással megadható, hogy hány rekordok lehet a repülési (a topológia összes csomópontján még nem ismerhető fel) egy kiöntő szálon, bármikor.
 
-  Egy jó számítás az, hogy megbecsülje az egyes tuples méretét. Ezután kikell találnia, hogy mennyi memóriája van egy kifolyó szálnak. A szálhoz lefoglalt teljes memória, osztva ezzel az értékkel, megadja a maximális kifolyó függő paraméterének felső határát.
+  Egy jó számítási módszer a rekordok méretének becslése. Ebből kiderítheti, hogy mekkora memória van egy kiöntő szálban. A szál számára lefoglalt teljes memória, amelyet ez az érték oszt meg, meg kell adnia a felső korlátot a kiöntő függőben lévő paraméterhez.
 
-## <a name="tune-the-bolt"></a>Állítsa be a csavart
-Amikor a Data Lake Storage Gen1 szolgáltatásba ír, állítsa a méretszinkronizálási házirendet (az ügyféloldalon lévő puffert) 4 MB-ra. A kiürítés vagy hsync() csak akkor történik meg, ha a puffer mérete az ezen az értéken. A Data Lake Storage Gen1 illesztőprogramja a feldolgozó virtuális gép automatikusan elvégzi ezt a pufferelést, kivéve, ha explicit módon hajt végre egy hsync().
+## <a name="tune-the-bolt"></a>A bolt hangolása
+Data Lake Storage Gen1 írásakor a méret szinkronizálására szolgáló szabályzatot (az ügyféloldali puffert) állítsa 4 MB-ra. A rendszer csak akkor hajt végre kiürítést vagy vízszintes szinkronizálás nevezőjének (), ha a puffer mérete ezen az értéken van. A munkavégző virtuális gép Data Lake Storage Gen1 illesztőprogramja automatikusan ezt a pufferelést hajtja végre, kivéve, ha explicit módon elvégez egy vízszintes szinkronizálás nevezőjének ().
 
-Az alapértelmezett Data Lake Storage Gen1 storm bolt rendelkezik egy méretszinkronizálási házirend paraméterrel (fileBufferSize), amely a paraméter beállítására használható.
+Az alapértelmezett Data Lake Storage Gen1 Storm-bolt mérete szinkronizálási házirend paraméterrel (fileBufferSize) rendelkezik, amely a paraméter finomhangolásához használható.
 
-Az I/O-igényes topológiákban célszerű, ha minden egyes csavarszál at a saját fájljába ír, és fájlelforgatási házirendet (fileRotationSize) állít be. Amikor a fájl elér egy bizonyos méretet, az adatfolyam automatikusan kiürítésre kerül, és új fájl kerül írásra. Az elforgatáshoz ajánlott fájlméret 1 GB.
+Az I/O-igényes topológiákban érdemes az egyes csavarokat a saját fájljába írni, és egy fájl-rotációs szabályzatot (fileRotationSize) beállítani. Ha a fájl elér egy adott méretet, a rendszer automatikusan kiüríti az adatfolyamot, és egy új fájlt ír. Az elforgatás ajánlott fájlmérete 1 GB.
 
-### <a name="handle-tuple-data"></a>Hangadatok kezelése
+### <a name="handle-tuple-data"></a>Rekordos adatkezelés
 
-A Storm, a kifolyó tartja a tuple, amíg azt kifejezetten elismerte a bolt. Ha a bolt egy-egy támszor, de még nem nyugtázta, a spout előfordulhat, hogy nem maradt meg a Data Lake Storage Gen1 háttérrendszer. A nyomor nyugtázása után a spout garantáltan megőrzi a boltot, majd törölheti a forrásadatokat bármilyen forrásból, ahonnan olvas.  
+A Storm-ben a kiöntő egy rekordra tart, amíg a bolt kifejezetten nem ismeri el. Ha a bolt beolvasott egy rekordot, de még nem ismerte fel, előfordulhat, hogy a kiöntő nem marad meg Data Lake Storage Gen1 háttérbe. Egy rekord beérkezése után a kiöntő garantálhatja a bolt által biztosított adatmegőrzést, és törölheti a forrásadatokat a forrásból származó adatokból.  
 
-A data lake storage gen1 legjobb teljesítménye érdekében a boltpuffer 4 MB-os trom-uple adatokkal rendelkezik. Ezután írjon a Data Lake Storage Gen1 háttérrendszerébe egy 4 MB-os írási műveletként. Miután az adatok sikeresen megírták az áruházba (a hflush()hívásával), a csavar nyugtázza az adatokat a spout. Ez az, amit a példa csavar szállított itt nem. Az is elfogadható, hogy a hflush() hívás meghívása és a tuples nyugtázása előtt nagyobb számú tuple-t tartson. Ez azonban növeli a tuples a repülés, hogy a kifolyó kell tartania, és ezért növeli a szükséges memória egy JVM.However, this increases the number of tuples in flight that the spout needs to hold, and therefore increases the amount of memory required per JVM.
+A Data Lake Storage Gen1 legjobb teljesítményéhez a bolt 4 MB-nyi rekordot tartalmaz. Ezután írjon a Data Lake Storage Gen1 háttérként egy 4 MB-os írási értékre. Miután az adatgyűjtés sikeresen megtörtént a tárolóban (a hflush () hívásával), a bolt visszaigazolhatja az kiöntőt. Ez az a példa, amelyet az itt megadott. A hflush () hívásának elvégzése és a rekordok elfogadása előtt is elfogadható, hogy nagyobb számú rekordok tartson fenn. Ez azonban növeli a rekordok azon számát, amelyet a kiöntőnek tárolnia kell, és így növeli a JVM szükséges memória mennyiségét.
 
 > [!NOTE]
-> Az alkalmazások más nem teljesítési okok miatt gyakrabban (4 MB-nál kisebb adatméretben) kell nyugtáznia a törzseket. Ez azonban hatással lehet az I/O átviteli a tároló háttérrendszerére. Gondosan mérjük meg ezt a kompromisszumot a csavar I/O teljesítményével.
+> Előfordulhat, hogy az alkalmazásoknak a rekordok gyakrabban kell megismerniük (4 MB-nál kisebb adatmennyiség esetén) más nem teljesítménybeli okokból. Azonban ez hatással lehet a tárolási háttér I/O-átviteli sebességére. Gondosan mérjük meg ezt a kompromisszumot a bolt I/O-teljesítményével szemben.
 
-Ha a bejövő tuples nem magas, így a 4 MB-os puffer kitöltése hosszú időt vesz igénybe, fontolja meg ennek mérséklését:
-* A csavarok számának csökkentése, így kevesebb puffert kell kitölteni.
-* Időalapú vagy számlálásalapú szabályzattal rendelkezik, ahol a hflush() minden x flush- vagy y ezredmásodpercben aktiválódik, és az eddig felhalmozott tuple-ok visszaigazolásra kerülnek.
+Ha a rekordok bejövő sebessége nem magas, ezért a 4 MB-os puffer hosszú időt vesz igénybe, érdemes lehet ezt a következő módon enyhíteni:
+* Csökkentse a csavarok számát, így kevesebb puffert kell kitölteni.
+* Olyan időalapú vagy Count-alapú szabályzattal rendelkezik, amelyben a hflush () minden x ürítéssel vagy y ezredmásodperctel aktiválódik, és az eddig felhalmozott rekordok visszaigazolja.
 
-Vegye figyelembe, hogy az átviteli sebesség ebben az esetben alacsonyabb, de az események lassú ütemével a maximális átviteli sebesség egyébként sem a legnagyobb cél. Ezek a megoldások segítenek csökkenteni a teljes időt, hogy egy megbúvó áramlik át a boltba. Ez akkor is fontos lehet, ha valós idejű folyamatot szeretne, még alacsony eseményaránnyal is. Azt is vegye figyelembe, hogy ha a bejövő nagy szakítósebesség alacsony, módosítsa a topology.message.timeout_secs paramétert, hogy a tuples ne időtúllépést, amíg pufferelés vagy feldolgozás történik.
+Vegye figyelembe, hogy ebben az esetben az átviteli sebesség alacsonyabb, de a lassú események miatt a maximális átviteli sebesség nem a legnagyobb cél. Ezek a megoldások segítenek csökkenteni a rekordnak az áruházba való áthaladásához szükséges teljes időt. Ez akkor fordulhat elő, ha egy valós idejű adatcsatorna esetében is alacsony esemény arányt szeretne használni. Azt is vegye figyelembe, hogy ha a bejövő rekord sebessége alacsony, állítsa be a topológia. Message. timeout_secs paramétert, hogy a rekordok ne legyen időtúllépés, amíg a rendszer pufferelt vagy feldolgozott értéket kap.
 
-## <a name="monitor-your-topology-in-storm"></a>A topológia figyelése a Stormban  
-Atopológiája futása közben figyelheti a Storm felhasználói felületén. Itt vannak a fő paramétereket, hogy nézd meg:
+## <a name="monitor-your-topology-in-storm"></a>A topológia figyelése a Storm-ben  
+Amíg a topológia fut, nyomon követheti a Storm felhasználói felületén. A következő fő paramétereket tekintheti meg:
 
-* **Teljes folyamatvégrehajtási késés.** Ez az az átlagos idő, amelyalatt egy törzs a kifolyó által kibocsátott, a csavar által feldolgozott és nyugtázott.
+* **A folyamat végrehajtásának teljes késése.** Ez az az átlagos idő, amikor egy rekordot a kiöntő, a bolt által feldolgozott, és a rendszer elismerte.
 
-* **Teljes csavarfolyamat-késés.** Ez az átlagos töltött idő a csavar, amíg nem kap nyugtázást.
+* **A bolt összes folyamatának késése.** Ez az átlagos idő, amelyet a rendszer a rekordban töltött le, amíg nem kap nyugtát.
 
-* **A teljes csavar késést hajt végre.** Ez a csavar által a végrehajtási metódusban töltött átlagos idő.
+* **A bolt összes végrehajtási késése.** Ez az az átlagos idő, amelyet a bolt hajt végre a végrehajtási metódusban.
 
-* **A hibák száma.** Ez azon számlálók számára vonatkozik, amelyeket nem sikerült teljes mértékben feldolgozni az időtúllépést megelőzően.
+* **Hibák száma.** Ez azon rekordok számát jelenti, amelyeket a rendszer nem tudott teljes mértékben feldolgozni, mielőtt időtúllépés történt.
 
-* **Kapacitás.** Ez az intézkedés, hogy milyen elfoglalt a rendszer. Ha ez a szám 1, a csavarok működnek, amilyen gyorsan csak tudnak. Ha ez kevesebb, mint 1, növelje a párhuzamosság. Ha ez nagyobb, mint 1, csökkentse a párhuzamosság.
+* **Kapacitás.** Ez azt méri, hogy a rendszer mennyire foglalt. Ha ez a szám 1, a csavarok olyan gyorsan működnek, amennyit csak tud. Ha kevesebb, mint 1, növelje a párhuzamosságot. Ha az érték nagyobb, mint 1, csökkentse a párhuzamosságot.
 
 ## <a name="troubleshoot-common-problems"></a>Gyakori problémák elhárítása
 Íme néhány gyakori hibaelhárítási forgatókönyv.
-* **Sok tuples az idő túllépik az időzést.** Tekintse meg a topológia minden csomópontján, hogy meghatározza, hol van a szűk keresztmetszet. Ennek leggyakoribb oka az, hogy a csavarok nem képesek lépést tartani a spouts. Ez azt eredményezi, hogy a belső pufferek eltömődnek, miközben a feldolgozásra várnak. Fontolja meg az időtúlérték növelését vagy a függőben lévő maximális kifolyó csökkentését.
+* **Számos rekordok időtúllépéssel van elvégezve.** A szűk keresztmetszetek meghatározásához tekintse meg a topológia egyes csomópontjait. Ennek a leggyakoribb oka az, hogy a csavarok nem képesek lépést tartani a kifolyókkal. Ez azt eredményezi, hogy a rendszer feldolgozza a belső pufferek rekordok eltömődését. Vegye fontolóra az időtúllépési érték növelését vagy a függőben lévő maximális kiöntő csökkentését.
 
-* **Van egy nagy teljes folyamat végrehajtási késés, de egy alacsony csavar folyamat késése.** Ebben az esetben lehetséges, hogy a tuples nem ismerik el elég gyorsan. Ellenőrizze, hogy elegendő számú elismerő van-e. Egy másik lehetőség az, hogy túl sokáig várakoznak a várólistában, mielőtt a csavarok elkezdik feldolgozni őket. Csökkentse a függőben lévő maximális kifolyót.
+* **A folyamat végrehajtási késése magas, de a folyamat alacsony feldolgozási késéssel jár.** Ebben az esetben lehetséges, hogy a rekordok nem elég gyorsan nyugtázni. Győződjön meg arról, hogy elegendő számú nyugtázás van. Egy másik lehetőség, hogy túl sokáig várakozik a várólistán, mielőtt a csavarok megkezdik a feldolgozást. Csökkentse a függőben lévő maximális kiöntőt.
 
-* **Van egy nagy csavar végrehajtási késés.** Ez azt jelenti, hogy a csavar execute() metódusa túl sokáig tart. Optimalizálja a kódot, vagy tekintse meg az írási méreteket és a kiürítési viselkedést.
+* **Magas a bolt késése.** Ez azt jelenti, hogy a bolt Execute () metódusa túl sokáig tart. Optimalizálja a kódot, vagy nézze meg az írási méreteket és a kiürítési viselkedést.
 
 ### <a name="data-lake-storage-gen1-throttling"></a>Data Lake Storage Gen1 szabályozás
-Ha eléri a Data Lake Storage Gen1 által biztosított sávszélesség-korlátokat, előfordulhat, hogy feladathibák jelennek meg. Ellenőrizze a feladatnaplókban a szabályozási hibákat. A tároló méretének növelésével csökkentheti a párhuzamosságmértékét.    
+Ha eléri a Data Lake Storage Gen1 által biztosított sávszélesség korlátait, akkor felmerülhet a feladat hibái. A hibák szabályozásához keresse meg a naplókat. Csökkentheti a párhuzamosságot a tároló méretének növelésével.    
 
-Annak ellenőrzéséhez, hogy szabályozás van-e, engedélyezze a hibakeresési naplózást az ügyféloldalon:
+Ha szeretné megtekinteni, hogy a rendszer leszabályozza-e a szabályozást, engedélyezze a hibakeresési naplózást az ügyféloldali oldalon:
 
-1. Az **Ambari** > **Storm** > **Config** > Advanced**storm-worker-log4j**területen módosítsa ** &lt;a gyökérszintet="info"&gt; ** a root ** &lt;level="debug"&gt;parancsot.** Indítsa újra az összes csomópontot/szolgáltatást a konfiguráció érvénybe léptetéséhez.
-2. A Storm topológia naplók figyelése a munkavégző csomópontokon (a Data&lt;Lake Storage&gt;/&lt;&gt;Gen1 szabályozása kivételek /var/log/storm/worker-artifacts/ TopologyName port /worker.log) alatt.
+1. A **Ambari** > **Storm** > **Config**config > **Advanced Storm-Worker-log4j**, Change ** &lt;root level = "info&gt; "** a ** &lt;root level = "debug&gt;"**. A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
+2. Figyelje a Storm-topológiák naplóit a munkavégző csomópontokon&gt;/&lt;(&gt;a/var/log/Storm/Worker-artifacts/&lt;TopologyName-port/Worker.log alatt) Data Lake Storage Gen1 szabályozási kivételek esetében.
 
 ## <a name="next-steps"></a>További lépések
-További teljesítmény tuning Storm lehet hivatkozni ebben a [blogban](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/).
+A Storm további teljesítmény-finomhangolását ebben a [blogban](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)lehet hivatkozni.
 
-Egy további futtatásához tekintse meg [ezt a GitHubon.](https://github.com/hdinsight/storm-performance-automation)
+Ha további példát szeretne futtatni, tekintse [meg ezt a githubon](https://github.com/hdinsight/storm-performance-automation).

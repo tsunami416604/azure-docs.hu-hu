@@ -16,5 +16,5 @@ ms.lasthandoff: 04/16/2020
 ms.locfileid: "81411900"
 ---
 > [!NOTE]
-> A Notebookok (előzetes verzió) funkciót *2020. április 13-án*távolították el. A Jegyzetfüzetek lap és a felhasználói jegyzetfüzetfájlok eltávolítása jelenleg világszerte elérhető az Azure-régiókban.
+> A jegyzetfüzetek (előzetes verzió) szolgáltatást *április 13 2020*-én eltávolították. A jegyzetfüzetek és a felhasználói jegyzetfüzetek fájljainak eltávolítása jelenleg világszerte az Azure-régiókba történik.
       

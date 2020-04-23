@@ -31,7 +31,7 @@ A Table Storage a következő összetevőkből áll:
   Az Azure Cosmos DB Table API-fiókok formátuma a következő: `http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   Az Azure-táblákat közvetlenül is elérheti, ha a fenti címet használja az OData protokollal. További információ: [OData.org][OData.org].
-* **Fiókok:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A tárfiókokról a [Tárfiók áttekintéscímű témakörben olvashat bővebben.](../articles/storage/common/storage-account-overview.md)
+* **Fiókok:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A Storage-fiókokkal kapcsolatos további információkért lásd: a [Storage-fiók áttekintése](../articles/storage/common/storage-account-overview.md).
 
     Minden Azure Cosmos DB-hozzáférés Table API-fiókon keresztül valósítható meg. A Table API-fiókok létrehozásával kapcsolatos információkért lásd a [Table API-fiók létrehozását](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account) ismertető témakört.
 * **Tábla:** A tábla az entitások gyűjteményét tartalmazza. A táblák nem kényszerítenek sémát az entitásokra, ami azt jelenti, hogy egyetlen tábla különböző tulajdonságkészletekkel rendelkező entitásokat is tartalmazhat.  

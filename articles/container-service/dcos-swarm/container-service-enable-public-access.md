@@ -1,6 +1,6 @@
 ---
-title: (ELAVULT) Hozzáférés engedélyezése az Azure DC/OS tárolóalkalmazáshoz
-description: Hogyan engedélyezheti a nyilvános hozzáférést a DC/os tárolókhoz az Azure Container Service-ben.
+title: ELAVULT Az Azure DC/OS Container app elérésének engedélyezése
+description: A DC/OS-tárolók nyilvános hozzáférésének engedélyezése Azure Container Serviceban.
 services: container-service
 author: sauryadas
 manager: madhana
@@ -16,72 +16,72 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "61457328"
 ---
-# <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>(ELAVULT) Nyilvános hozzáférés engedélyezése egy Azure Container Service-alkalmazáshoz
+# <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>ELAVULT Azure Container Service alkalmazáshoz való nyilvános hozzáférés engedélyezése
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Az ACS [nyilvános ügynökkészletében](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) lévő tartományvezérlő/operációs rendszer tárolói automatikusan elérhetővé lesznek téve az internetnek. Alapértelmezés szerint a **80,** **443**, **8080** portok megnyílnak, és az adott portokon figyelő (nyilvános) tárolók elérhetők. Ez a cikk bemutatja, hogyan nyithat meg további portokat az alkalmazásokhoz az Azure Container Service-ben.
+Az ACS [nyilvános ügynök készletében](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) lévő összes DC/os-tároló automatikusan elérhetővé válnak az interneten. Alapértelmezés szerint a **80**-es, **443**-as és **8080** -as portok meg vannak nyitva, és az ilyen portokat figyelő bármely (nyilvános) tároló elérhető. Ez a cikk bemutatja, hogyan nyithat meg több portot az alkalmazásaihoz Azure Container Serviceban.
 
 ## <a name="open-a-port-portal"></a>Port megnyitása (portál)
-Először is meg kell nyitnunk a kikötőt, amit akarunk.
+Először meg kell nyitnia a kívánt portot.
 
 1. Jelentkezzen be a portálra.
-2. Keresse meg azt az erőforráscsoportot, amelybe az Azure Container Service-t telepítette.
-3. Válassza ki az ügynök terheléselosztóját (amely az **XXXX-agent-lb-XXXX-hez**hasonló).
+2. Keresse meg azt az erőforráscsoportot, amelyet központilag telepített a Azure Container Service.
+3. Válassza ki az ügynök Load balancert (amely a következőhöz hasonló: **XXXX-Agent-LB-XXXX**).
    
-    ![Az Azure container szolgáltatás terheléselosztója](./media/container-service-enable-public-access/agent-load-balancer.png)
-4. Kattintson **a Mintavételek,** majd a **Hozzáadás gombra.**
+    ![Azure Container Service terheléselosztó](./media/container-service-enable-public-access/agent-load-balancer.png)
+4. Kattintson a mintavételek **, majd a** **Hozzáadás**elemre.
    
-    ![Az Azure container service load balancer mintavételei](./media/container-service-enable-public-access/add-probe.png)
+    ![Azure Container Service terheléselosztó-tesztek](./media/container-service-enable-public-access/add-probe.png)
 5. Töltse ki a mintavételi űrlapot, és kattintson **az OK**gombra.
    
    | Mező | Leírás |
    | --- | --- |
-   | Név |A szonda leíró neve. |
-   | Port |A vizsgálandó tartály portja. |
-   | Útvonal |(HTTP módban) A mintavételhez vezető relatív webhely elérési útja. A HTTPS nem támogatott. |
-   | Intervallum |A mintavételi kísérletek közötti idő másodpercben. |
-   | Nem kifogástalan állapot küszöbértéke |Egymást követő mintavételi kísérletek száma, mielőtt a tároló tanuskodik. |
-6. Az ügynök terheléselosztótulajdonságainál kattintson a **Terheléselosztási szabályok** elemre, majd **a Hozzáadás gombra.**
+   | Name (Név) |A mintavétel leíró neve. |
+   | Port |A vizsgálandó tároló portja. |
+   | Útvonal |(HTTP-módban) A mintavételhez a relatív webhely elérési útja. A HTTPS nem támogatott. |
+   | Intervallum |A mintavételi kísérletek közötti időtartam másodpercben kifejezve. |
+   | Nem kifogástalan állapot küszöbértéke |Az egymást követő mintavételi kísérletek száma, mielőtt a tárolót nem megfelelő állapotba venné. |
+6. Vissza az ügynök terheléselosztó tulajdonságainál kattintson a terheléselosztási **szabályok** elemre, majd a **Hozzáadás**gombra.
    
-    ![Az Azure container szolgáltatás terheléselosztószabályai](./media/container-service-enable-public-access/add-balancer-rule.png)
-7. Töltse ki a terheléselosztó űrlapot, és kattintson az **OK**gombra.
+    ![Az Azure Container Service terheléselosztó szabályai](./media/container-service-enable-public-access/add-balancer-rule.png)
+7. Töltse ki a terheléselosztó űrlapot, és kattintson **az OK**gombra.
    
    | Mező | Leírás |
    | --- | --- |
-   | Név |A terheléselosztó leíró neve. |
+   | Name (Név) |A terheléselosztó leíró neve. |
    | Port |A nyilvános bejövő port. |
-   | Háttérablak |A konténer belső-nyilvános portja, ahhoz, hogy a forgalmat irányítsa. |
-   | A háttérkészlet |A készletben lévő tárolók lesznek a terheléselosztó célja. |
-   | Mintavétel |A mintavétel, amely annak megállapítására, hogy a cél a **háttérkészletben** kifogástalan.The probe used to determine if a target in the Backend pool is healthy. |
-   | Munkamenet-állandóság |Meghatározza, hogy az ügyféltől érkező forgalmat hogyan kell kezelni a munkamenet időtartama alatt.<br><br>**Nincs**: Az ugyanazon ügyféltől érkező egymást követő kéréseket bármely tároló kezelheti.<br>**Ügyfél IP-címe**: Az azonos ügyfélIP-címről érkező egymást követő kérelmeket ugyanaz a tároló kezeli.<br>**Ügyfél IP-címe és protokollja:** Az azonos ügyfél IP- és protokollkombinációból származó egymást követő kérelmeket ugyanaz a tároló kezeli. |
-   | Tétlen időelés |(csak TCP esetén) Percek alatt a TCP/HTTP-ügyfél nyitva tartásának ideje az *életben tartást eredményező* üzenetekre való támaszkodás nélkül. |
+   | Háttér-port |A tároló belső nyilvános portja, amelybe irányítja a forgalmat. |
+   | A háttérkészlet |A készletben található tárolók a terheléselosztó célját fogják használni. |
+   | Mintavétel |Az a mintavétel, amellyel megállapítható, hogy a **háttér-készletben** lévő cél kifogástalan állapotú-e. |
+   | Munkamenet-állandóság |Meghatározza, hogy a rendszer hogyan kezelje az ügyfelek forgalmát a munkamenet időtartama alatt.<br><br>**Nincs**: az azonos ügyféltől származó egymást követő kérelmek bármelyik tárolóban kezelhetők.<br>**Ügyfél IP-** címe: ugyanazon ügyfél IP-címéről érkező egymást követő kérelmeket ugyanaz a tároló kezeli.<br>**Ügyfél IP-címe és protokollja**: ugyanazon ügyfél IP-címéről és protokoll-kombinációból származó egymást követő kérelmeket ugyanaz a tároló kezeli. |
+   | Üresjárat időkorlátja |(Csak TCP) Percek alatt a TCP/HTTP-ügyfél nyitva tartása a *Keep-Alive* üzenetekre való támaszkodás nélkül. |
 
 ## <a name="add-a-security-rule-portal"></a>Biztonsági szabály hozzáadása (portál)
-Ezután hozzá kell adnunk egy biztonsági szabályt, amely a megnyitott portról a tűzfalon keresztül irányítja a forgalmat.
+Ezután hozzá kell adnia egy biztonsági szabályt, amely átirányítja a forgalmat a megnyitott portról a tűzfalon keresztül.
 
 1. Jelentkezzen be a portálra.
-2. Keresse meg azt az erőforráscsoportot, amelybe az Azure Container Service-t telepítette.
-3. Válassza ki a **nyilvános** ügynök hálózati biztonsági csoportját (amely az **XXXX-agent-public-nsg-XXXX-hez**hasonló).
+2. Keresse meg azt az erőforráscsoportot, amelyet központilag telepített a Azure Container Service.
+3. Válassza ki a **nyilvános** ügynök hálózati biztonsági csoportot (amely a következőhöz hasonló: **XXXX-Agent-Public-NSG-XXXX**).
    
-    ![Az Azure container service hálózati biztonsági csoportja](./media/container-service-enable-public-access/agent-nsg.png)
-4. Válassza **a Bejövő biztonsági szabályok,** majd a **Hozzáadás lehetőséget.**
+    ![Azure Container Service hálózati biztonsági csoport](./media/container-service-enable-public-access/agent-nsg.png)
+4. Válassza a **bejövő biztonsági szabályok** lehetőséget, majd **adja hozzá**a elemet.
    
-    ![Az Azure container service hálózati biztonsági csoport szabályai](./media/container-service-enable-public-access/add-firewall-rule.png)
-5. Töltse ki a tűzfalszabályt a nyilvános port engedélyezéséhez, majd kattintson az **OK**gombra.
+    ![Azure Container Service hálózati biztonsági csoport szabályai](./media/container-service-enable-public-access/add-firewall-rule.png)
+5. Töltse ki a tűzfalszabály a nyilvános port engedélyezéséhez, majd kattintson **az OK**gombra.
    
    | Mező | Leírás |
    | --- | --- |
-   | Név |A tűzfalszabály leíró neve. |
-   | Prioritás |A szabály elsőbbségi rangja. Minél alacsonyabb a szám, annál magasabb a prioritás. |
-   | Forrás |Korlátozza a beérkező IP-címtartományt, amelyet ez a szabály engedélyez vagy meg fog tagadni. A **Bármely** használatával ne adjon meg korlátozást. |
-   | Szolgáltatás |Válassza ki azokat az előre definiált szolgáltatásokat, amelyekhez a biztonsági szabály szól. Ellenkező esetben az **Egyéni** használatával hozzon létre sajátot. |
-   | Protocol (Protokoll) |A forgalom korlátozása **TCP** vagy **UDP**alapján. A **Bármely** használatával ne adjon meg korlátozást. |
-   | Porttartomány |Ha a **Szolgáltatás** **egyéni**, megadja a szabály által hatással lévő portok tartományát. Használhatja egyetlen portot, például **80**, vagy egy tartományt, például **1024-1500**. |
-   | Műveletek |A feltételeknek megfelelő forgalom engedélyezése vagy megtagadása. |
+   | Name (Név) |A tűzfalszabály leíró neve. |
+   | Prioritás |A szabály prioritási rangsora. Minél alacsonyabb a szám, annál magasabb a prioritás. |
+   | Forrás |Korlátozza a bejövő IP-címtartományt a szabály által engedélyezett vagy letiltva. Ha **nem** szeretne korlátozást megadni, használja a következőt:. |
+   | Szolgáltatás |Válassza ki az előre definiált szolgáltatások készletét, amelyre ez a biztonsági szabály vonatkozik. Más esetben **Egyéni** használatával hozza létre a sajátját. |
+   | Protocol (Protokoll) |A forgalom korlátozása **TCP** vagy **UDP**alapján. Ha **nem** szeretne korlátozást megadni, használja a következőt:. |
+   | Porttartomány |Ha **Service** a szolgáltatás **Egyéni**, a szabály által érintett portok tartományát adja meg. Használhat egyetlen portot, például az **80**-et vagy egy olyan tartományt, mint a **1024-1500**. |
+   | Műveletek |Engedélyezheti vagy megtagadhatja a feltételeket teljesítő forgalmat. |
 
 ## <a name="next-steps"></a>További lépések
-További információ a [nyilvános és a privát DC/OS ügynökök](container-service-dcos-agents.md)közötti különbségről.
+Ismerje meg a [nyilvános és a privát DC/os-ügynökök](container-service-dcos-agents.md)közötti különbséget.
 
-További információ [a DC/OS tárolók kezeléséről.](container-service-mesos-marathon-ui.md)
+További információ a [DC/os-tárolók kezeléséről](container-service-mesos-marathon-ui.md).
 

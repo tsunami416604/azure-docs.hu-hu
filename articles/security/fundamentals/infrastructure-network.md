@@ -1,6 +1,6 @@
 ---
 title: Azure hálózati architektúra
-description: Ez a cikk a Microsoft Azure infrastruktúra-hálózat általános leírását tartalmazza.
+description: Ez a cikk a Microsoft Azure infrastruktúra hálózatának általános leírását tartalmazza.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -23,89 +23,89 @@ ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727174"
 ---
 # <a name="azure-network-architecture"></a>Azure hálózati architektúra
-Az Azure hálózati architektúra az iparági szabvány nak megfelelő core/distribution/access modell módosított verzióját követi, különböző hardverrétegekkel. A rétegek a következők:
+Az Azure hálózati architektúrája az iparági standard alap-/terjesztési/hozzáférési modell módosított verzióját követi, amely különböző hardverabsztrakciós rétegekkel rendelkezik. A rétegek a következők:
 
-- Core (adatközpont-útválasztók)
-- Elosztás (hozzáférési útválasztók és L2 összesítés). Az elosztási réteg elválasztja az L3 útválasztást az L2 kapcsolástól.
-- Hozzáférés (L2 állomáskapcsolók)
+- Mag (Datacenter útválasztók)
+- Eloszlás (hozzáférési útválasztók és L2-összesítés). A terjesztési réteg elkülöníti az L3-útválasztást az L2-váltástól.
+- Hozzáférés (L2 gazdagép-kapcsolók)
 
-A hálózati architektúra két réteg 2 kapcsolóval rendelkezik. Az egyik réteg összesíti a forgalmat a másik rétegről. A második réteg hurkok bele redundancia. Az architektúra rugalmasabb VLAN lábnyomot biztosít, és javítja a portméretezést. Az architektúra megkülönbözteti az L2-t és az L3-at, ami lehetővé teszi a hardver használatát a hálózat minden egyes rétegében, és minimálisra csökkenti az egyik réteg hibáját a másik réteg(ek) befolyásolásában. A törzsek használata lehetővé teszi az erőforrások megosztását, például az L3 infrastruktúrához való csatlakozást.
+A hálózati architektúra a 2. rétegbeli kapcsolók két szintje. Az egyik réteg a másik réteg forgalmát összesíti. A második réteg hurkokat tartalmaz a redundancia beépítéséhez. Az architektúra rugalmasabb VLAN-lábnyomot biztosít, és javítja a portok skálázását. Az architektúra megtartja az L2 és az L3 különbséget, ami lehetővé teszi a hardverek használatát a hálózat különböző rétegeiben, és az egyik rétegben lévő hibák minimalizálásával befolyásolja a többi réteget. A Trunks használata lehetővé teszi az erőforrások megosztását, például az L3-infrastruktúrához való kapcsolódást.
 
 ## <a name="network-configuration"></a>Hálózati konfiguráció
-Egy adatközponton belüli Azure-fürt hálózati architektúrája a következő eszközökből áll:
+Az adatközponton belüli Azure-fürtök hálózati architektúrája a következő eszközökből áll:
 
-- Útválasztók (adatközpont, hozzáférési útválasztó és határlevelű útválasztók)
-- Kapcsolók (aggregáció és felső rack-kapcsolók)
-- Digi-k
-- Energiaelosztó egységek
+- Útválasztók (Datacenter, hozzáférési útválasztó és szegély nélküli útválasztók)
+- Kapcsolók (Összesítés és felső szintű kapcsolók)
+- Digi CMs
+- Energiaellátási egységek
 
-Az Azure két különálló architektúrával rendelkezik. Néhány meglévő Azure-ügyfél és megosztott szolgáltatás az alapértelmezett LAN-architektúrán (DLA) található, míg az új régiók és virtuális ügyfelek a Quantum 10 (Q10) architektúrán vannak. A DLA architektúra egy hagyományos fatervezés, aktív/passzív hozzáférési útválasztókkal és biztonsági hozzáférés-vezérlési listákkal (ACL-ekkel) a hozzáférési útválasztókra. A Quantum 10 architektúra az útválasztók close/mesh kialakítása, ahol az ACL-k nem alkalmazhatók az útválasztóknál. Ehelyett az ACL-ek az útválasztás alatt, a szoftveres terheléselosztás (SLB) vagy a szoftver által definiált VLAN-ok on keresztül kerülnek alkalmazásra.
+Az Azure két különálló architektúrával rendelkezik. Néhány meglévő Azure-ügyfél és-szolgáltatás az alapértelmezett LAN-architektúrán (DLA) található, míg az új régiók és a virtuális ügyfelek a Quantum 10 (Q10) architektúrán helyezkednek el. A DLA architektúra egy hagyományos faszerkezetes kialakítás, amely aktív/passzív hozzáférési útválasztókkal és a hozzáférési útválasztók számára alkalmazott biztonsági hozzáférés-vezérlési listákkal (ACL-ekkel) rendelkezik. A Quantum 10 architektúra az útválasztók bezárási/rácsvonali kialakítása, ahol az ACL-eket nem alkalmazza az útválasztók. Az ACL-eket az Útválasztás alatt, a szoftveres terheléselosztás (SLB) vagy a szoftveresen megadott VLAN-ok alapján alkalmazza a rendszer.
 
-Az alábbi ábra magas szintű áttekintést nyújt az Azure-fürthálózati architektúráról:
+Az alábbi ábra áttekintést nyújt az Azure-fürtön belüli hálózati architektúráról:
 
-![Az Azure-hálózat diagramja](./media/infrastructure-network/network-arch.png)
+![Az Azure Network diagramja](./media/infrastructure-network/network-arch.png)
 
-### <a name="quantum-10-devices"></a>Quantum 10 eszközök
-A Quantum 10 kialakítás a 3-as rétegváltást több eszközre, clos/mesh kivitelben vezeti. A Q10 kialakítás előnyei közé tartozik a nagyobb képesség és a meglévő hálózati infrastruktúra méretezésének nagyobb képessége. A kialakítás határlevelű útválasztókat, gerinckapcsolókat és állványtetejére futó útválasztókat alkalmaz, hogy a forgalmat több útvonalon továbbítsa a fürtöknek, lehetővé téve a hibatűrést. A hardvereszközök helyett a szoftveres terheléselosztás kezeli a biztonsági szolgáltatásokat, például a hálózati címfordítást.
+### <a name="quantum-10-devices"></a>Quantum 10-es eszközök
+A Quantum 10 terv a 3. rétegbeli váltást hajtja végre több eszközön a Clos/Mesh kialakításban. A koenzim kialakításának előnyei közé tartozik a nagyobb képesség és a meglévő hálózati infrastruktúra méretezésének lehetősége. A kialakítás a Border Leaf-útválasztók, a gerinc-kapcsolók és a Top-of-rack útválasztók használatával továbbítja a forgalmat a fürtökhöz több útvonalon keresztül, ami lehetővé teszi a hibatűrést. A szoftveres terheléselosztás hardveres eszközök helyett a biztonsági szolgáltatásokat, például a hálózati címfordítást kezeli.
 
-### <a name="access-routers"></a>Hozzáférés-útválasztók
-A terjesztési/hozzáférési L3 útválasztók (ARs) a terjesztési és hozzáférési rétegek elsődleges útválasztási funkcióját hajtják végre. Ezek az eszközök párként vannak telepítve, és az alhálózatok alapértelmezett átjárói. Minden AR-pár több L2 aggregációs kapcsolópárt is támogathat, a kapacitástól függően. A maximális szám az eszköz kapacitásátótól, valamint a hibatartományoktól függ. Egy tipikus szám három L2 aggregációs kapcsolópár ar páronként.
+### <a name="access-routers"></a>Hozzáférési útválasztók
+A Distribution/Access L3 útválasztók (ARs) elvégzik az elsődleges útválasztási funkciót a terjesztési és hozzáférési rétegekhez. Ezeket az eszközöket a rendszer pár-ként telepíti, és az alhálózatok alapértelmezett átjárója. Az egyes AR-párok a kapacitástól függően több L2 aggregációs kapcsolót is támogatnak. A maximális szám az eszköz képességeitől és a meghibásodási tartománytól függ. Egy tipikus szám három L2 aggregációs kapcsoló pár AR pár.
 
-### <a name="l2-aggregation-switches"></a>L2 összesítési kapcsolók  
-Ezek az eszközök aggregációs pontként szolgálnak az L2 forgalomhoz. Ezek az L2 háló elosztási rétegei, és nagy mennyiségű forgalmat képesek kezelni. Mivel ezek az eszközök összesítik a forgalmat, 802.1q funkciókat és nagy sávszélességű technológiákat, például portösszesítést és 10GE-t igényelnek.
+### <a name="l2-aggregation-switches"></a>L2-összesítési kapcsolók  
+Ezek az eszközök az L2-forgalom összesítési pontként szolgálnak. Ezek az L2 háló terjesztési rétege, és nagy mennyiségű forgalmat kezelhetnek. Mivel ezek az eszközök összesítik a forgalmat, 802.1 q funkciókat és nagy sávszélességű technológiákat igényelnek, például a portok összesítését és a 10GE.
 
-### <a name="l2-host-switches"></a>L2 állomáskapcsolók
-A gazdagépek közvetlenül ezekhez a kapcsolókhoz csatlakoznak. Ezek lehetnek rackbe szerelt kapcsolók, vagy a ház üzembe helyezése. A 802.1q szabvány lehetővé teszi egy VLAN natív VLAN-ként való megjelölését, amely a VLAN-t normál (címkézetlen) Ethernet keretezésként kezeli. Normál körülmények között a natív VLAN-on lévő kereteket egy 802.1q törzsporton címkézetlenül továbbítják és fogadják. Ezt a funkciót a 802.1q-ra való áttéréshez és a nem 802.1q képes eszközökkel való kompatibilitáshoz tervezték. Ebben az architektúrában csak a hálózati infrastruktúra használja a natív VLAN.In this architecture, only the network infrastructure uses the native VLAN.
+### <a name="l2-host-switches"></a>L2 gazdagép kapcsolói
+A gazdagépek közvetlenül csatlakoznak ezekhez a kapcsolókhoz. Lehetnek állványra csatlakoztatott kapcsolók vagy alváz-telepítések. A 802.1 q szabvány lehetővé teszi, hogy egy VLAN-t natív VLAN-ként megtervezzen, a VLAN-t normál (címkézett) Ethernet-keretezésként kezelje. A normál körülmények között a natív VLAN kereteit a rendszer a 802.1 q Trunk porton továbbított és címkézett címkével fogadja el. Ez a szolgáltatás a 802.1 q-ra való áttelepítésre és a nem 802.1 q-kompatibilis eszközökkel való kompatibilitásra lett tervezve. Ebben az architektúrában csak a hálózati infrastruktúra használja a natív VLAN-t.
 
-Ez az architektúra szabványt határoz meg a natív VLAN-kijelöléshez. A szabvány biztosítja, ahol lehetséges, hogy az AR-eszközök egy egyedi, natív VLAN minden törzs és az L2Aggregation l2Aggregation törzsek. Az L2Aggregation to L2Host Switch trunks rendelkezik egy nem alapértelmezett natív VLAN.The L2Aggregation to L2Host Switch trunks have a non-default native VLAN.
+Ez az architektúra egy szabványt határoz meg a natív VLAN kiválasztásához. A standard biztosítja, hogy ha lehetséges, az AR-eszközök egyedi, natív VLAN-t biztosítanak minden törzshöz és a L2Aggregation L2Aggregation-törzsekhez. A L2Host kapcsoló törzsei nem alapértelmezett natív VLAN-L2Aggregation rendelkeznek.
 
-### <a name="link-aggregation-8023ad"></a>Hivatkozás összesítése (802.3ad)
-A csatolásösszesítés lehetővé teszi, hogy több egyedi hivatkozást egyesítsen, és egyetlen logikai hivatkozásként kezelje őket. Az operatív hibakeresés megkönnyítése érdekében szabványosítsa a portcsatorna-összeköttetések kijelöléséhez használt számot. A hálózat többi része ugyanazt a számot használja a portcsatorna mindkét végén.
+### <a name="link-aggregation-8023ad"></a>Csatolás összesítése (802.3 ad)
+A csatolások összesítése lehetővé teszi, hogy több különálló hivatkozás együtt legyen összecsomagolva, és egyetlen logikai hivatkozásként legyen kezelve. Az operatív hibakeresés megkönnyítése érdekében a port-Channel felületek kijelöléséhez használt számot szabványosítani kell. A hálózat többi része ugyanazt a számot használja a port csatornájának mindkét végén.
 
-Az L2Agg–L2Host kapcsolóhoz megadott számok az L2Agg oldalon használt portcsatorna-számok. Mivel a számok tartománya korlátozottabb az L2Host oldalon, a szabvány az 1-es és 2-es számok használata az L2Host oldalon. Ezek az "a" oldalra, illetve a "b" oldalra haladó portcsatornára vonatkoznak.
+A L2Agg a L2Host kapcsolóhoz megadott számok a L2Agg oldalon használt port-Channel számok. Mivel a számok tartománya korlátozottabb a L2Host oldalon, a standard az 1. és a 2. szám használata a L2Host oldalon. Ezek az "a" és a "b" oldalon található portra vonatkoznak.
 
-### <a name="vlans"></a>Vlan
-A hálózati architektúra VLAN-ok segítségével csoportosítja a kiszolgálókat egyetlen szórásos tartományba. A VLAN-számok megfelelnek a 802.1q szabványnak, amely támogatja az 1–4094 számozott VLAN-okat.
+### <a name="vlans"></a>VLAN
+A hálózati architektúra VLAN-okat használ a kiszolgálók csoportosítására egyetlen szórási tartományba. A VLAN-számok megfelelnek a 802.1 q szabványnak, amely támogatja az 1 – 4094 VLAN-okat.
 
 ### <a name="customer-vlans"></a>Ügyfél VLAN-ok
-Az Azure Portalon keresztül üzembe helyezheti a vlan-implementációs lehetőségeket, amelyek megfelelnek a megoldás elkülönítési és architektúrás igényeinek. Ezeket a megoldásokat virtuális gépeken keresztül telepíti. Az ügyfél-referencia architektúra példák: [Azure referencia architektúrák.](https://docs.microsoft.com/azure/architecture/reference-architectures/)
+Számos VLAN-megvalósítási lehetőség közül választhat a Azure Portal segítségével, hogy megfeleljen a megoldás elkülönítési és architektúrára vonatkozó igényeinek. Ezeket a megoldásokat virtuális gépeken keresztül helyezheti üzembe. Az ügyfélszolgálati architektúrával kapcsolatos Példákért lásd: [Azure-referenciák architektúrái](https://docs.microsoft.com/azure/architecture/reference-architectures/).
 
-### <a name="edge-architecture"></a>Peremarchitektúra
-Az Azure-adatközpontok rendkívül redundáns és jól kiépített hálózati infrastruktúrákra épülnek. A Microsoft az Azure-adatközpontokban lévő hálózatokat "need plus one" (N+1) redundanciaarchitektúrával vagy annál jobb megoldással valósítja meg. Az adatközpontokon belüli és azok közötti teljes feladatátvételi szolgáltatások segítenek a hálózat és a szolgáltatás rendelkezésre állásának biztosításában. Külsőleg az adatközpontokat dedikált, nagy sávszélességű hálózati áramkörök szolgálják ki. Ezek az áramkörök redundánsan több mint 1200 internetszolgáltatóval kötnek össze tulajdonságokat több társviszony-létesítési ponton. Ez több mint 2000 Gb/s potenciális peremhálózati kapacitást biztosít a hálózaton.
+### <a name="edge-architecture"></a>Peremhálózati architektúra
+Az Azure-adatközpontok nagyon redundáns és jól kiépített hálózati infrastruktúrára épülnek. A Microsoft az Azure-adatközpontokban található hálózatokat a "szükséges plusz egy" (N + 1) redundancia-architektúrával vagy annál jobb megoldással valósítja meg. Az adatközpontok teljes feladatátvételi szolgáltatásai segítenek a hálózat és a szolgáltatás rendelkezésre állásának biztosításában. Külsőleg az adatközpontokat dedikált, nagy sávszélességű hálózati áramkörök szolgálják ki. Ezek az áramkörök redundánsan csatlakoznak a több mint 1200 internetszolgáltatóval rendelkező szolgáltatásokhoz. Ez több, mint 2 000 GB/s potenciális peremhálózati kapacitást biztosít a hálózaton belül.
 
-Az Azure-hálózat peremhálózati és hozzáférési rétegei szerinti útválasztók szűrése jól megalapozott biztonságot nyújt a csomag szintjén, és segít megakadályozni az Azure-hoz való jogosulatlan csatlakozást. Az útválasztók segítenek biztosítani, hogy a csomagok tényleges tartalma a várt formátumú adatokat tartalmazzon, és megfeleljen a várt ügyfél-kiszolgáló kommunikációs sémának. Az Azure egy rétegzett architektúrát valósít meg, amely a következő hálózati elkülönítési és hozzáférés-vezérlési összetevőkből áll:
+Az útválasztók az Azure-hálózat peremhálózati és hozzáférési rétegében való szűrése jól bevált biztonságot biztosít a csomagok szintjén, és segít megakadályozni az Azure-hoz való kapcsolódást a jogosulatlan kísérletekben. Az útválasztók segítenek biztosítani, hogy a csomagok tényleges tartalma a várt formátumú adatokat tartalmazza, és megfeleljen a várt ügyfél/kiszolgáló kommunikációs sémának. Az Azure többplatformos architektúrát valósít meg, amely a következő hálózati elkülönítési és hozzáférés-vezérlési összetevőkből áll:
 
-- **Peremhálózati útválasztók.** Ezek elkülönítik az alkalmazáskörnyezetet az internettől. A peremhálózati útválasztókat úgy tervezték, hogy hamisításelleni védelmet nyújtsanak, és a hozzáférés korlátozása a hozzáférés-hozzáférés-hozzáférés sel.
-- **Terjesztési (hozzáférési) útválasztók.** Ezek csak a Microsoft által jóváhagyott IP-címeket engedélyezik, hamisítás elleni védelmet biztosítanak, és kapcsolatokat hoznak létre a közel-, mint a cl-k használatával.
+- **Edge-útválasztók.** Ezek elkülönítik az alkalmazási környezetet az internetről. Az Edge-útválasztók úgy vannak kialakítva, hogy a hamisítás elleni védelmet és a hozzáférés korlátozását ACL-ek használatával korlátozzák.
+- **Terjesztési (hozzáférési) útválasztók.** Ezek csak a Microsoft által jóváhagyott IP-címeket engedélyezik, hamisítást tesznek lehetővé, és az ACL-eket használva kapcsolatok hozhatók létre.
 
-### <a name="ddos-mitigation"></a>DDOS-kockázatcsökkentés
-Az elosztott szolgáltatásmegtagadási (DDoS) támadások továbbra is valós veszélyt jelentenek az online szolgáltatások megbízhatóságára. Ahogy a támadások egyre célzottabbá és kifinomultabbá válnak, és a Microsoft által nyújtott szolgáltatások földrajzilag sokszínűbbé válnak, a támadások hatásának azonosítása és minimalizálása kiemelt fontosságú.
+### <a name="ddos-mitigation"></a>DDOS-mérséklés
+Az elosztott szolgáltatásmegtagadási (DDoS) támadások továbbra is valós fenyegetést jelentenek a online szolgáltatások megbízhatósága szempontjából. Mivel a támadások célzottabbak és kifinomultabbak lesznek, és a Microsoft által nyújtott szolgáltatások földrajzilag sokrétűek, a támadások hatásainak azonosítása és minimalizálása magas prioritást jelent.
 
-[Az Azure DDoS Protection Standard](../../virtual-network/ddos-protection-overview.md) védelmet nyújt a DDoS-támadások ellen. Tekintse meg [az Azure DDoS-védelem: Gyakorlati tanácsok és referencia architektúrák](ddos-best-practices.md) további információkért.
+[Azure DDoS Protection standard](../../virtual-network/ddos-protection-overview.md) védelmet nyújt a DDOS-támadások ellen. További információért lásd [Azure DDoS Protection: ajánlott eljárások és hivatkozási architektúrák](ddos-best-practices.md) .
 
 > [!NOTE]
-> A Microsoft alapértelmezés szerint DDoS-védelmet biztosít az összes Azure-ügyfél számára.
+> A Microsoft alapértelmezés szerint minden Azure-ügyfél számára biztosít DDoS-védelmet.
 >
 >
 
-## <a name="network-connection-rules"></a>Hálózati kapcsolat szabályai
-Hálózatán az Azure olyan peremhálózati útválasztókat telepít, amelyek csomagszinten biztosítják a biztonságot, hogy megakadályozzák az Azure-hoz való jogosulatlan csatlakozást. A peremhálózati útválasztók biztosítják, hogy a csomagok tényleges tartalma a várt formátumú adatokat tartalmazzon, és megfeleljen a várt ügyfél-kiszolgáló kommunikációs sémának.
+## <a name="network-connection-rules"></a>Hálózati kapcsolatok szabályai
+A hálózatán az Azure olyan Edge-útválasztókat helyez üzembe, amelyek a csomagok szintjén biztosítanak biztonságot, hogy megakadályozzák az Azure-hoz való jogosulatlan kapcsolódást. Az Edge-útválasztók biztosítják, hogy a csomagok tényleges tartalma a várt formátumú adatokat tartalmazza, és megfeleljen a várt ügyfél/kiszolgáló kommunikációs sémának.
 
-Az edge útválasztók elkülönítik az alkalmazáskörnyezetet az internettől. Ezeket az útválasztókat úgy tervezték, hogy hamisítás elleni védelmet nyújtsanak, és korlátozzák a hozzáférést az ACL-ek használatával. A Microsoft rétegzett ACL-megközelítéssel konfigurálja a peremhálózati útválasztókat, hogy korlátozza a peremhálózati útválasztók átvitelére és az útválasztók elérésére engedélyezett hálózati protokollokat.
+Az Edge-útválasztók elkülönítik az alkalmazás környezetét az internetről. Ezek az útválasztók a hamisítás elleni védelem biztosítására szolgálnak, és ACL-ek használatával korlátozzák a hozzáférést. A Microsoft többplatformos ACL-megközelítéssel konfigurálja az Edge-útválasztókat, így korlátozhatja a peremhálózati útválasztók és az elérési útválasztók átadására jogosult hálózati protokollokat.
 
-A Microsoft a hálózati eszközöket a hozzáférési és peremhelyekre helyezte el, hogy határpontként működjön, ahol a be- vagy kilépési szűrőket alkalmazza.
+A Microsoft a hozzáférési és a peremhálózati helyeken lévő hálózati eszközöket olyan határként viselkedik, ahol a bejövő vagy kimenő szűrőket alkalmazza.
 
 ## <a name="next-steps"></a>További lépések
-Ha többet szeretne megtudni arról, hogy a Microsoft mit tesz az Azure-infrastruktúra védelme érdekében, olvassa el a következő témakört:
+Ha többet szeretne megtudni arról, hogy mit tesz a Microsoft az Azure-infrastruktúra biztonságossá tételéhez, tekintse meg a következőt:
 
-- [Az Azure létesítményei, helyiségei és fizikai biztonsága](physical-security.md)
-- [Az Azure-infrastruktúra rendelkezésre állása](infrastructure-availability.md)
-- [Az Azure információs rendszer összetevői és határai](infrastructure-components.md)
-- [Azure éles hálózat](production-network.md)
-- [Az Azure SQL Database biztonsági szolgáltatásai](infrastructure-sql.md)
-- [Az Azure éles üzemei és kezelése](infrastructure-operations.md)
-- [Az Azure-infrastruktúra figyelése](infrastructure-monitoring.md)
-- [Az Azure infrastruktúra integritása](infrastructure-integrity.md)
-- [Az Azure-beli ügyfelek adatainak védelme](protection-customer-data.md)
+- [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)
+- [Azure-infrastruktúra rendelkezésre állása](infrastructure-availability.md)
+- [Azure Information System-összetevők és-határok](infrastructure-components.md)
+- [Azure-beli üzemi hálózat](production-network.md)
+- [Azure SQL Database biztonsági funkciók](infrastructure-sql.md)
+- [Azure-beli üzemi műveletek és felügyelet](infrastructure-operations.md)
+- [Azure-infrastruktúra figyelése](infrastructure-monitoring.md)
+- [Azure-infrastruktúra integritása](infrastructure-integrity.md)
+- [Azure Customer-adatvédelem](protection-customer-data.md)
 
 

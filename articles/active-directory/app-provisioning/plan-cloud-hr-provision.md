@@ -1,6 +1,6 @@
 ---
-title: Felhőalapú HR-alkalmazás tervezése az Azure Active Directory felhasználói kiépítéséhez
-description: Ez a cikk ismerteti a felhőbeli HR-rendszerek, például a Workday és a SuccessFactors integrálásának üzembe helyezését az Azure Active Directoryval. Az Azure AD és a felhőhr-rendszer integrálása teljes identitáséletciklus-kezelési rendszert eredményez.
+title: A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
+description: Ez a cikk a Felhőbeli HR-rendszerek (például a munkanapok és a SuccessFactors) integrálásának telepítési folyamatát ismerteti Azure Active Directoryokkal. Az Azure AD és a Felhőbeli HR rendszer integrálásával egy teljes identitás-életciklus-kezelési rendszer is elérhető.
 services: active-directory
 author: martincoetzer
 manager: CelesteDG
@@ -19,402 +19,402 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "77522432"
 ---
-# <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Felhőalapú HR-alkalmazás tervezése az Azure Active Directory felhasználói kiépítéséhez
+# <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
-Az informatikai munkatársak korábban manuális módszerekre támaszkodtak az alkalmazottak létrehozásához, frissítéséhez és törléséhez. Olyan módszereket használtak, mint például CSV-fájlok vagy egyéni parancsfájlok feltöltése az alkalmazottak adatainak szinkronizálásához. Ezek a kiépítési folyamatok hibalehetőségek, nem biztonságosak és nehezen kezelhetők.
+Az informatikai munkatársak az alkalmazottak létrehozására, frissítésére és törlésére szolgáló manuális metódusokra támaszkodtak. Olyan módszereket használtak, mint például a CSV-fájlok vagy egyéni parancsfájlok feltöltése az alkalmazotti adatszinkronizáláshoz. Ezek a kiépítési folyamatok a hibákra hajlamosak, nem biztonságosak, és nehezen kezelhetők.
 
-Az alkalmazottak, szállítók vagy függő dolgozók identitáséletciklusának kezeléséhez az [Azure Active Directory (Azure AD) felhasználói kiépítési szolgáltatás](../app-provisioning/user-provisioning.md) a felhőalapú humánerőforrás-alkalmazásokkal (HR) való integrációt kínál. Az alkalmazások közé tartozik például a Workday vagy a SuccessFactors.
+Az alkalmazottak, szállítók vagy függő munkavégzők identitási életciklusának kezeléséhez [Azure Active Directory (Azure ad) felhasználó-kiépítési szolgáltatás](../app-provisioning/user-provisioning.md) a felhőalapú emberi erőforrások (HR) alkalmazásaival való integrációt is biztosítja. Ilyenek például a munkanap vagy a SuccessFactors.
 
-Az Azure AD ezt az integrációt használja a következő felhőalapú HR-alkalmazások (alkalmazás) munkafolyamatok engedélyezéséhez:
+Az Azure AD ezt az integrációt használja a következő Felhőbeli HR-alkalmazás-munkafolyamatok engedélyezéséhez:
 
-- **Felhasználók kiépítése az Active Directoryba:** A felhőbeli HR-alkalmazásból kiválasztott felhasználói csoportok at egy vagy több Active Directory-tartományba helyezheti.
-- **Csak felhőalapú felhasználók kiépítése az Azure AD-hez:** Olyan esetekben, ahol az Active Directory nincs használatban, a felhasználók kiépítése közvetlenül a felhőhr-alkalmazásból az Azure AD.In scenarios where Active Directory is isn't used, provision users directly from the cloud HR app to Azure AD.
-- **Írjon vissza a felhőhr-alkalmazásba:** Írja vissza az e-mail-címeket és a felhasználónév-attribútumokat az Azure AD-ből a felhőhr-alkalmazásba.
+- **Felhasználók kiépítése a Active Directoryba:** Egy Felhőbeli HR-alkalmazásból kiválasztott felhasználói készletek kiépítése egy vagy több Active Directory tartományba.
+- **Csak felhőalapú felhasználók kiépítése az Azure ad-be:** Olyan helyzetekben, ahol a Active Directory nincs használatban, közvetlenül a Cloud HR-alkalmazásból kiépítheti a felhasználókat az Azure AD-be.
+- **Írjon vissza a Cloud HR alkalmazásba:** Az Azure AD-beli e-mail-címek és felhasználónevek attribútumainak megírása a Cloud HR alkalmazásba.
 
 > [!NOTE]
-> Ez a telepítési terv bemutatja, hogyan telepítheti a felhőbeli HR-alkalmazás munkafolyamatait az Azure AD-felhasználók kiépítésével. Az automatikus felhasználói kiépítés szolgáltatásként (SaaS) alkalmazásokra történő központi telepítéséről a [Felhasználói üzembe helyezés megtervezése című témakörben](https://aka.ms/deploymentplans/provisioning)talál további információt.
+> Ez a telepítési terv bemutatja, hogyan helyezheti üzembe a Felhőbeli HR-alkalmazás munkafolyamatait az Azure AD-beli felhasználók kiépítésével. További információ az automatikus felhasználó-kiépítési szolgáltatás (SaaS) alkalmazásaiban történő üzembe helyezéséről: [automatikus felhasználó üzembe helyezésének megtervezése](https://aka.ms/deploymentplans/provisioning).
 
 ## <a name="enabled-hr-scenarios"></a>Engedélyezett HR-forgatókönyvek
 
-Az Azure AD felhasználói létesítési szolgáltatás lehetővé teszi a következő HR-alapú identitáséletciklus-kezelési forgatókönyvek automatizálását:
+Az Azure AD-beli felhasználói kiépítési szolgáltatás lehetővé teszi a következő HR-alapú identitás-kezelési forgatókönyvek automatizálását:
 
-- **Új alkalmazotti felvétel:** Amikor új alkalmazottat ad hozzá a felhőhr-alkalmazáshoz, a rendszer automatikusan létrehoz egy felhasználói fiókot az Active Directoryban és az Azure AD-ben azzal a lehetőséggel, hogy visszaírja az e-mail címet és a felhasználónév-attribútumokat a felhőhr-alkalmazásba.
-- **Alkalmazotti attribútum- és profilfrissítések:** Amikor egy alkalmazotti rekord, például a név, a cím vagy a kezelő frissül a felhőhr-alkalmazásban, a felhasználói fiók automatikusan frissül az Active Directoryban és az Azure AD-ben.
-- **Az alkalmazottak felmondása:** Ha egy alkalmazott megszűnik a felhőhr-alkalmazásban, a felhasználói fiók automatikusan le van tiltva az Active Directoryban és az Azure AD-ben.
-- **Alkalmazott újrafelvétel:** Amikor egy alkalmazottat újra felvesznek a felhőhr-alkalmazásban, a régi fiók automatikusan újraaktiválható vagy újra kiépíthető az Active Directoryés az Azure AD számára.
+- **Új alkalmazottak felvétele:** Amikor új alkalmazott van hozzáadva a Cloud HR-alkalmazáshoz, a rendszer automatikusan létrehoz egy felhasználói fiókot a Active Directory és az Azure AD-ben, hogy az e-mail-cím és a username attribútumokat a Cloud HR alkalmazásba írja vissza.
+- **Az Employee attribútum és a profil frissítései:** Ha a Cloud HR alkalmazásban egy alkalmazotti rekord, például a név, a cím vagy a felettes frissül, a felhasználói fiókja automatikusan frissül Active Directory és az Azure AD-ben.
+- **Alkalmazotti megszakítások:** Ha egy alkalmazott leáll a Cloud HR alkalmazásban, a felhasználói fiókja automatikusan le lesz tiltva Active Directory és az Azure AD-ben.
+- **Alkalmazottak újrabérlése:** Ha egy alkalmazottat a Cloud HR alkalmazásban újra felvesznek, a régi fiókja automatikusan újraaktiválható vagy újraépíthető a Active Directory és az Azure AD szolgáltatásba.
 
-## <a name="who-is-this-integration-best-suited-for"></a>Kinek a legalkalmasabb ez az integráció?
+## <a name="who-is-this-integration-best-suited-for"></a>Ki a legmegfelelőbb integrációs csomag?
 
-A felhőbeli HR-alkalmazás integrációja az Azure AD-felhasználó-kiépítéssel ideális olyan szervezetek számára, amelyek:
+A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók üzembe helyezése ideális olyan szervezetek számára, amelyek:
 
-- Előre összeállított, felhőalapú megoldást szeretne a felhőbeli HR-felhasználók kiépítéséhez.
-- Közvetlen felhasználói kiépítés megkövetelése a felhőbeli HR-alkalmazásból az Active Directoryba vagy az Azure AD-be.
-- A felhasználók kiépítése a felhőhr-alkalmazásból beszerzett adatok használatával.
-- Csatlakozás, áthelyezés és a felhasználók szinkronizálásának megkövetelése egy vagy több Active Directory-erdővel, tartománnyal és számítógép-rendszerrel csak a felhőbeli HR-alkalmazásban észlelt változásadatok alapján.
-- Használja az Office 365-öt levelezéshez.
+- Szeretne egy előre elkészített felhőalapú megoldást használni a Felhőbeli HR-felhasználók üzembe helyezéséhez.
+- A Felhőbeli HR-alkalmazásból Active Directory vagy az Azure AD-be való közvetlen felhasználói üzembe helyezés szükséges.
+- A Felhőbeli HR-alkalmazásból beszerzett adatok használatával kell kiépíteni a felhasználókat.
+- A felhasználók egy vagy több Active Directory-erdő, tartomány és szervezeti egység számára való szinkronizálásának megkövetelése csak a Cloud HR alkalmazásban észlelt változási információk alapján.
+- Az Office 365 e-mail-cím használata.
 
 ## <a name="learn"></a>Tanulás
 
-A felhasználói kiépítés megteremti a folyamatos identitás-szabályozás alapjait. Javítja a mérvadó identitásadatokra támaszkodó üzleti folyamatok minőségét.
+A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
 ### <a name="terms"></a>Fogalmak
 
 Ez a cikk a következő kifejezéseket használja:
 
-- **Forrásrendszer**: A felhasználók tárháza, amelyből az Azure AD rendelkezéseket. Egy példa egy felhőHR-alkalmazás, például a Workday vagy a SuccessFactors.
-- **Célrendszer:** A felhasználók tárháza, amely az Azure AD rendelkezéseket. Ilyenek például az Active Directory, az Azure AD, az Office 365 vagy más SaaS-alkalmazások.
-- **Joiners-Movers-Leavers folyamat**: Az új alkalmazottak, átvitelek és végződtetések kifejezése egy felhőhr-alkalmazás rekordrendszerként való használatával. A folyamat akkor fejeződik be, amikor a szolgáltatás sikeresen leteszi a célrendszerhez szükséges attribútumokat.
+- **Forrásoldali rendszer**: az Azure ad által kiépített felhasználók tárháza. Ilyen például egy Felhőbeli HR-alkalmazás, például a munkanap vagy a SuccessFactors.
+- Célrendszer: az Azure AD által **kiépített**felhasználók tárháza. Ilyenek például az Active Directory, az Azure AD, az Office 365 vagy más SaaS-alkalmazások.
+- **Csatlakozások**– a kimaradók folyamata: az új bérletek, átadások és leállítások kifejezése, amely egy FELHŐbeli HR-alkalmazás a rekordok rendszereként való használatával történik. A folyamat akkor fejeződik be, amikor a szolgáltatás sikeresen kiépíti a szükséges attribútumokat a célszámítógépen.
 
 ### <a name="key-benefits"></a>Főbb előnyök
 
-A HR-alapú it-ellátás ezen képessége a következő jelentős üzleti előnyöket kínálja:
+A HR-alapú IT-kiépítés ezen funkciója a következő jelentős üzleti előnyöket kínálja:
 
-- **Növelje a termelékenységet:** Most már automatizálhatja a felhasználói fiókok és az Office 365-licencek hozzárendelését, és hozzáférést biztosíthat a kulcscsoportokhoz. A feladatok automatizálása azonnali hozzáférést biztosít az új alkalmazottakszámára a munkaeszközeikhez, és növeli a termelékenységet.
-- **Kockázat kezelése:** Növelheti a biztonságot azáltal, hogy automatizálja a módosításokat az alkalmazottak állapota vagy a csoporttagságok alapján a felhőhr-alkalmazásból beáramló adatokkal. A módosítások automatizálása biztosítja, hogy a felhasználói identitások és a kulcsfontosságú alkalmazásokhoz való hozzáférés automatikusan frissüljön, amikor a felhasználók átváltanak vagy elhagyják a szervezetet.
-- **A megfelelőség és az irányítás kezelése:** Az Azure AD támogatja a natív naplózási naplók a felhasználói kiépítési kérelmek által végrehajtott alkalmazások mind a forrás-, mind a célrendszerek. A naplózással egyetlen képernyőről követheti nyomon, hogy ki férhet hozzá az alkalmazásokhoz.
-- **Költség kezelése:** Az automatikus kiépítés csökkenti a költségeket azáltal, hogy elkerüli a hatékonysági hiányosságokat és a manuális kiépítéshez kapcsolódó emberi hibákat. Csökkenti az örökölt és elavult platformok használatával idővel épített, egyedi fejlesztésű felhasználói kiépítési megoldások szükségességét.
+- **Növelje a termelékenységet:** Mostantól automatizálhatja a felhasználói fiókok és az Office 365-licencek hozzárendelését, és hozzáférést biztosíthat a kulcsfontosságú csoportokhoz. A hozzárendelések automatizálása lehetővé teszi, hogy az új Hirek azonnal hozzáférjenek a feladathoz, és növelik a termelékenységet.
+- **Kockázat kezelése:** Növelheti a biztonságot úgy, hogy az alkalmazottak állapota vagy csoporttagságok alapján automatizálja a módosításokat a Felhőbeli HR-alkalmazásból származó adatokkal. A változások automatizálása biztosítja, hogy a felhasználói identitások és a Key apps hozzáférése automatikusan megtörténjen, amikor a felhasználók áttérnek vagy elhagyják a szervezetet.
+- **Címek megfelelősége és szabályozása:** Az Azure AD támogatja a natív naplókat a forrás-és a célként megadott alkalmazások által végrehajtott felhasználói kiépítési kérelmek esetében. A naplózás segítségével nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
+- **Kezelés díja:** Az automatikus kiépítés csökkenti a költségeket, és elkerüli a manuális kiépítés során felmerülő eredménytelenség és emberi hibák elkerülését. Ez csökkenti a régi és elavult platformok használatával az idő múlásával létrehozott, egyéni fejlesztésű felhasználói megoldások igényét.
 
 ### <a name="licensing"></a>Licencek
 
-A felhőbeli HR-alkalmazás konfigurálásához az Azure AD-felhasználók kiépítési integrációja, szüksége van egy érvényes [Azure AD Premium-licenc](https://azure.microsoft.com/pricing/details/active-directory/) és egy licenc a felhőHR-alkalmazás, például a Workday vagy a SuccessFactors.
+Ha a Cloud HR-alkalmazást az Azure AD-beli felhasználók kiépítéséhez szeretné konfigurálni, érvényes [prémium szintű Azure ad licencre](https://azure.microsoft.com/pricing/details/active-directory/) és licencre van szükség a Cloud HR-alkalmazáshoz, például a munkanapokhoz vagy a SuccessFactors.
 
-Emellett minden olyan felhasználóhoz érvényes Azure AD Premium P1 vagy magasabb előfizetési licencre is szüksége van, amely a felhőhr-alkalmazásból származik, és az Active Directoryba vagy az Azure AD-be lesz kiépítve. A felhőhr-alkalmazásban tulajdonában lévő licencek nem megfelelő száma hibákat okozhat a felhasználó kiépítése során.
+Emellett érvényes prémium szintű Azure AD P1 vagy magasabb szintű előfizetési licencre van szükség minden olyan felhasználóhoz, aki a Cloud HR-alkalmazásból származik, és amely Active Directory vagy az Azure AD-hez lett kiépítve. A Felhőbeli HR-alkalmazás tulajdonában lévő licencek helytelen száma hibát okozhat a felhasználók kiosztása során.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure AD globális rendszergazdai hozzáférésaz Azure AD Connect kiépítési ügynök konfigurálásához.
-- A felhőhr-alkalmazás teszt- és éles példánya.
-- Rendszergazdai engedélyek a felhőhr-alkalmazásban a rendszerintegrációs felhasználó létrehozásához és az alkalmazotti adatok tesztelési célokra történő teszteléséhez.
-- Az Azure [AD Connect kiépítési ügynök](https://go.microsoft.com/fwlink/?linkid=847801)üzemeltetéséhez windows Server 2012 vagy nagyobb, .NET 4.7.1+ futtató vel rendelkező kiszolgáló szükséges az Active Directoryba való kiépítéshez.
-- [Az Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) a felhasználók szinkronizálása az Active Directory és az Azure AD között.
+- Az Azure AD globális rendszergazdai hozzáférése az Azure AD Connect létesítési ügynök konfigurálásához.
+- A Cloud HR-alkalmazás tesztelési és éles példánya.
+- Rendszergazdai jogosultságok a Cloud HR alkalmazásban egy rendszerintegrációs felhasználó létrehozásához, valamint a tesztelési célú alkalmazottak ellenőrzésének megváltoztatásához.
+- A Active Directory való felhasználók számára a [Azure ad Connect kiépítési ügynök](https://go.microsoft.com/fwlink/?linkid=847801)futtatásához a .net 4.7.1 + futtatókörnyezettel rendelkező, Windows Server 2012 vagy újabb rendszert futtató kiszolgáló szükséges.
+- [Azure ad Connect](../hybrid/whatis-azure-ad-connect.md) a felhasználók Active Directory és az Azure ad közötti szinkronizálásához.
 
-### <a name="training-resources"></a>Képzési források
+### <a name="training-resources"></a>Erőforrások betanítása
 
 | **Erőforrások** | **Hivatkozás és leírás** |
 |:-|:-|
-| Videók | [Mi a felhasználói kiépítés az Active Azure Directoryban?](https://youtu.be/_ZjARPpI6NI) |
-| | [A felhasználói kiépítés telepítése az Active Azure Directoryban](https://youtu.be/pKzyts6kfrw) |
-| Oktatóanyagok | [Az SaaS-alkalmazások Azure AD-vel való integrálásáról szóló oktatóanyagok listája](../saas-apps/tutorial-list.md) |
-| | [Oktatóanyag: A Munkanap konfigurálása automatikus felhasználói kiépítéshez](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| GYIK | [Automatikus felhasználói kiépítés](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
-| | [Kiépítés a Workday-től az Azure AD-ig](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| Videók | [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) |
+| | [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) |
+| Oktatóanyagok | [Az SaaS-alkalmazások Azure AD-vel való integrálásával kapcsolatos oktatóanyagok listája](../saas-apps/tutorial-list.md) |
+| | [Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| GYIK | [Automatikus felhasználó-kiépítés](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| | [Kiépítés a munkanapokból az Azure AD-be](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Megoldásarchitektúra
 
-A következő példa a közös hibrid környezetek végpontok között történő felhasználói kiépítési megoldásarchitektúráját ismerteti, és a következőket tartalmazza:
+Az alábbi példa bemutatja a teljes körű felhasználó kiépítési megoldási architektúráját a gyakori hibrid környezetekhez, és a következőket tartalmazza:
 
-- **Mérvadó HR-adatok a felhőhr-alkalmazásból az Active Directoryba.** Ebben a folyamatban a HR-esemény (Joiners-Movers-Leavers folyamat) a felhőbeli HR-alkalmazás bérlője. Az Azure AD-kiépítési szolgáltatás és az Azure AD Connect kiépítési ügynök kiépítése a felhasználói adatokat a felhőbeli HR-alkalmazás bérlőaz Active Directoryba. Az eseménytől függően az Active Directoryban műveletek et hozhat létre, frissíthet, engedélyezhet és letilthatja.
-- **Szinkronizáljon az Azure AD-vel, és írja vissza az e-maileket és a felhasználóneveket a helyszíni Active Directoryból a felhőalapú HR-alkalmazásba.** Miután a fiókok frissítése az Active Directoryban, az Azure AD-vel az Azure AD-n keresztül szinkronizálódik. Az e-mail-címek és a felhasználónév attribútumok írhatók vissza a felhőhr-alkalmazás bérlője.
+- **Mérvadó HR-adatfolyam a Cloud HR-alkalmazásból a Active Directoryba.** Ebben a folyamatban a HR-eseményt (összekapcsolások – a kimaradók folyamatát) a Cloud HR-alkalmazás bérlője kezdeményezi. Az Azure AD kiépítési szolgáltatás és a Azure AD Connect kiépítési ügynök kiépíti a felhasználói adatait a Cloud HR-alkalmazás bérlőből a Active Directoryba. Az eseménytől függően előfordulhat, hogy létrehoz, frissít, engedélyez és letilt műveleteket a Active Directoryban.
+- **Szinkronizálja az Azure AD-vel, és írjon vissza e-maileket és felhasználóneveket a helyszíni Active Directory a Cloud HR alkalmazásba.** A fiókok Active Directory-ben való frissítése után szinkronizálva lesz az Azure AD-val Azure AD Connecton keresztül. Az e-mail-címek és a felhasználónevek attribútumai visszaírhatók a Cloud HR-alkalmazás bérlője számára.
 
 ![Munkafolyamat-diagram](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img1.png)
 
 #### <a name="description-of-workflow"></a>A munkafolyamat leírása
 
-Az alábbi kulcsfontosságú lépéseket az ábra jelzi:  
+A következő fő lépések szerepelnek a diagramon:  
 
-1. **A HR-csapat** a tranzakciókat a felhőbeli HR-alkalmazás bérlőjében hajtja végre.
-2. **Az Azure AD-kiépítési szolgáltatás** futtatja az ütemezett ciklusokat a felhőbeli HR-alkalmazás bérlőjéből, és azonosítja azokat a módosításokat, amelyeket fel kell dolgozni az Active Directoryval való szinkronizáláshoz.
-3. **Az Azure AD-kiépítési szolgáltatás** meghívja az Azure AD Connect kiépítési ügynök egy kérelem hasznos, amely tartalmazza az Active Directory-fiók létrehozása, frissítése, engedélyezése és letiltása műveleteket.
-4. **Az Azure AD Connect kiépítési ügynök** egy szolgáltatásfiókot használ az Active Directory-fiók adatainak kezeléséhez.
-5. **Az Azure AD Connect** a [különbözeti szinkronizálást](../hybrid/how-to-connect-sync-whatis.md) futtatja a frissítések lekérése az Active Directoryban.
-6. **Az Active Directory-frissítések** szinkronizálása az Azure AD-vel történik.
-7. **Az Azure AD létesítési szolgáltatás** írási támogatja az e-mail attribútum és a felhasználónév az Azure AD a felhőHR-alkalmazás bérlője.
+1. **HR-csapat** végzi el a tranzakciókat a Cloud HR-alkalmazás bérlője számára.
+2. Az **Azure ad-kiépítési szolgáltatás** futtatja az ütemezett ciklusokat a Cloud HR-alkalmazás bérlőn, és azonosítja azokat a módosításokat, amelyeket a Active Directory való szinkronizáláshoz fel kell dolgozni.
+3. Az **Azure ad-kiépítési szolgáltatás** meghívja a Azure ad Connect létesítési ügynököt egy olyan kérési adattartalommal, amely Active Directory fiók létrehozási, frissítési, engedélyezési és letiltási műveleteit tartalmazza.
+4. **Azure ad Connect kiépítési ügynök** egy szolgáltatásfiókot használ a Active Directory fiókadatok kezeléséhez.
+5. A **Azure ad Connect** a különbözeti [szinkronizálást](../hybrid/how-to-connect-sync-whatis.md) futtatja a frissítések Active Directoryban való lekéréséhez.
+6. **Active Directory** frissítések szinkronizálva vannak az Azure ad-vel.
+7. Az **Azure ad-kiépítési szolgáltatás** az Azure ad-ből a Cloud HR-alkalmazás bérlője számára ír e-mail-attribútumot és felhasználónevet.
 
-## <a name="plan-the-deployment-project"></a>A telepítési projekt megtervezése
+## <a name="plan-the-deployment-project"></a>Az üzembe helyezési projekt megtervezése
 
-Vegye figyelembe a szervezeti igényeket, amíg meghatározza a környezetben a központi telepítés stratégiáját.
+A környezetében érdemes figyelembe vennie a szervezeti igényeket is.
 
-### <a name="engage-the-right-stakeholders"></a>Vonja be a megfelelő érdekelt feleket
+### <a name="engage-the-right-stakeholders"></a>A megfelelő résztvevők bevonása
 
-Ha a technológiai projektek kudarcot vallanak, ezt általában a hatásra, az eredményekre és a felelősségre vonatkozó, nem megfelelő elvárások miatt teszik. Hogy elkerülje ezeket a buktatókat, [győződjön meg arról, hogy a megfelelő érdekelt feleket vonja be.](https://aka.ms/deploymentplans) Győződjön meg arról is, hogy az érdekelt felek szerepei a projektben jól ismertek. Dokumentálja az érdekelt feleket, valamint projektbemeneteiket és elszámoltathatóságukat.
+Ha a technológiai projektek sikertelenek, ezek általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](https://aka.ms/deploymentplans). Győződjön meg arról is, hogy a projektben szereplő érintett szerepkörök jól megértettek. Dokumentálja az érintett feleket és a projekt bemenetét és elszámoltathatóság.
 
-A HR-szervezet képviselőjének felvétele, aki a meglévő HR-üzleti folyamatokhoz és dolgozói identitáshoz, valamint a feladatadat-feldolgozási követelményekhez képest bemeneteket tud biztosítani.
+Vegyen fel egy képviselőt a HR-szervezetből, amely a meglévő HR üzleti folyamatokon és a feldolgozó identitáson, valamint a feladatok adatfeldolgozási követelményein keresztül biztosít bemeneteket.
 
 ### <a name="plan-communications"></a>A kommunikáció tervezése
 
-A kommunikáció minden új szolgáltatás sikeréhez elengedhetetlen. Proaktív módon kommunikáljon a felhasználókkal arról, hogy mikor és hogyan változik a felhasználói élményük. Hadd tudják meg, hogyan szerezhetnek támogatást, ha problémákat tapasztalnak.
+A kommunikáció minden új szolgáltatás sikeressége szempontjából kritikus fontosságú. Proaktív módon kommunikálhat a felhasználókkal arról, hogy mikor és hogyan változnak a felhasználói élmény. Tudassa velük, hogyan szerezhetnek támogatást, ha problémákat tapasztalnak.
 
 ### <a name="plan-a-pilot"></a>Pilóta megtervezése
 
-A HR üzleti folyamatok és identitás-munkafolyamatok integrálása a felhőhr-alkalmazásból a célrendszerekbe jelentős mennyiségű adatérvényesítést, adatátalakítást, adattisztítást és teljes körű tesztelést igényel, mielőtt üzembe helyezheti a megoldást az éles környezetben.
+A HR üzleti folyamatainak és az identitás munkafolyamatainak a Cloud HR-alkalmazásból a megcélzott rendszerbe való integrálásához jelentős mennyiségű adatellenőrzésre, adatátalakításra, Adattisztításra és teljes körű tesztelésre van szükség, mielőtt üzembe helyezi a megoldást éles környezetben.
 
-Futtassa a kezdeti konfigurációt egy [próbakörnyezetben,](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) mielőtt az éles környezetben lévő összes felhasználóra méretezi.
+Futtassa a kezdeti konfigurációt egy [kísérleti környezetben](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) , mielőtt az összes éles üzemben lévő felhasználóra méretezni kívánja.
 
-## <a name="select-cloud-hr-provisioning-connector-apps"></a>Válassza ki a felhőbeli HR-kiépítési összekötő alkalmazásokat
+## <a name="select-cloud-hr-provisioning-connector-apps"></a>Felhőbeli HR kiépítési összekötő alkalmazásainak kiválasztása
 
-Az Azure AD-nek a felhőbeli HR-alkalmazás és az Active Directory közötti üzembe építési munkafolyamatainak megkönnyítése érdekében az Azure AD alkalmazásgalériából több üzembe létesítési összekötő alkalmazást is hozzáadhat:
+Az Azure AD üzembe helyezési munkafolyamatainak a Cloud HR-alkalmazás és a Active Directory közötti megkönnyítéséhez több kiépítési összekötő-alkalmazást is hozzáadhat az Azure AD-alkalmazás-katalógusból:
 
-- **Felhőhr-alkalmazás az Active Directory felhasználói kiépítés:** Ez a kiépítési összekötő alkalmazás megkönnyíti a felhasználói fiók kiépítését a felhőHR-alkalmazás egyetlen Active Directory-tartományba. Ha több tartománnyal rendelkezik, az alkalmazás egy példányát hozzáadhatja az Azure AD alkalmazásgyűjteményéből minden olyan Active Directory-tartományhoz, amelybe ki kell építenie.
-- **Felhőbeli HR-alkalmazás az Azure AD-felhasználók kiépítése:** Bár az Azure AD Connect az az eszköz, amelyet az Active Directory-felhasználók azure AD-vel való szinkronizálásához kell használni, ez a kiépítési összekötő alkalmazás segítségével megkönnyítheti a csak felhőbeli felhasználók kiépítését a felhőbeli HR-alkalmazásból egyetlen Azure AD-bérlőhöz.
-- **Felhőbeli HR-alkalmazás-visszaírás:** Ez a kiépítési összekötő alkalmazás megkönnyíti a felhasználó e-mail-címeinek visszaírását az Azure AD-ből a felhőbeli HR-alkalmazásba.
+- **Cloud HR-alkalmazás a Active Directory a felhasználók üzembe**helyezéséhez: Ez a kiépítési összekötő alkalmazás a Cloud HR-alkalmazásból egyetlen Active Directory tartományba helyezi el a felhasználói fiókok kiépítési folyamatát. Ha több tartománya van, az alkalmazás egy példányát hozzáadhatja az Azure AD-alkalmazás-katalógusból minden Active Directory-tartományhoz, amelyre telepítenie kell.
+- **Cloud HR-alkalmazás az Azure ad-** beli felhasználók számára: míg Azure ad Connect az az eszköz, amelyet a felhasználók Azure ad-vel való Active Directory szinkronizálásához kell használni, ez a kiépítési összekötő alkalmazás a Cloud HR-alkalmazásból egyetlen Azure ad-bérlővé való kiépítés megkönnyítésére használható.
+- **Cloud HR-alkalmazás írása**: Ez a kiépítési összekötő alkalmazás megkönnyíti a felhasználó e-mail-címeinek visszaírását az Azure ad-ből a Cloud HR alkalmazásba.
 
-Például az alábbi kép felsorolja a Workday-összekötő alkalmazások, amelyek az Azure AD-alkalmazás gyűjteményében érhetők el.
+Az alábbi képen például megtekintheti az Azure AD App Galleryben elérhető munkanapokat összekötő alkalmazásokat.
 
-![Az Azure Active Directory portálalkalmazás-gyűjtemény](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img2.png)
+![Azure Active Directory portál alkalmazás-gyűjtemény](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img2.png)
 
-### <a name="decision-flow-chart"></a>Döntési folyamatdiagram
+### <a name="decision-flow-chart"></a>Döntési folyamatábra
 
-A következő döntési folyamatábrával azonosíthatja, hogy mely felhőalapú HR-kiépítési alkalmazások relevánsak a forgatókönyv szempontjából.
+A következő döntési folyamatábra segítségével azonosíthatja, hogy mely Felhőbeli HR-kiépítési alkalmazások kapcsolódnak a forgatókönyvhöz.
 
-![Döntési folyamatdiagram](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img3.png)
+![Döntési folyamatábra](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img3.png)
 
-## <a name="design-the-azure-ad-connect-provisioning-agent-deployment-topology"></a>Tervezze meg az Azure AD Connect kiépítési ügynök üzembe helyezési topológiáját
+## <a name="design-the-azure-ad-connect-provisioning-agent-deployment-topology"></a>A Azure AD Connect létesítési ügynök telepítési topológiájának megtervezése
 
-A felhőhr-alkalmazás és az Active Directory közötti integráció négy összetevőt igényel:
+A Cloud HR-alkalmazás és Active Directory közötti kiépítési integrációhoz négy összetevő szükséges:
 
-- Felhőbeli HR-alkalmazás bérlője
-- Összekötő alkalmazás kiépítése
+- Cloud HR-alkalmazás bérlője
+- Összekötő-alkalmazás üzembe helyezése
 - Azure AD Connect kiépítési ügynök
 - Active Directory-tartomány
 
-Az Azure AD Connect üzembe helyezési ügynök telepítési topológiája a felhőbeli HR-alkalmazás-bérlők és az Active Directory alárendelt tartományok, amelyek integrálását tervezi. Ha több Active Directory-tartománnyal rendelkezik, az attól függ, [disjoint](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)hogy az Active Directory-tartományok összefüggőek vagy különállóak-e.
+A Azure AD Connect kiépítési ügynök üzembe helyezési topológiája a felhőalapú HR-alkalmazások bérlői számától és az integrálni kívánt, Active Directory alárendelt tartományokból függ. Ha több Active Directory tartománya van, attól függ, hogy a Active Directory tartományok folytonos vagy [különállóak](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)-e.
 
-A döntés alapján válasszon egyet a telepítési forgatókönyvek közül:
+Az Ön döntése alapján válasszon egyet a telepítési forgatókönyvek közül:
 
-- Egyfelhős HR-alkalmazás bérlője - > egy vagy több Active Directory gyermektartományt céloz meg egy megbízható erdőben
-- Egyfelhős HR-alkalmazás bérlője -> több gyermektartományt céloz meg egy különálló Active Directory-erdőben
+- Egyetlen Felhőbeli HR-alkalmazás bérlője – > cél egy vagy több Active Directory gyermektartomány egy megbízható erdőben
+- Egyetlen Felhőbeli HR-alkalmazás bérlője – > több gyermektartomány megcélzása különálló Active Directory erdőben
 
-### <a name="single-cloud-hr-app-tenant---target-single-or-multiple-active-directory-child-domains-in-a-trusted-forest"></a>Egyfelhős HR-alkalmazás bérlője - > egy vagy több Active Directory gyermektartományt céloz meg egy megbízható erdőben
+### <a name="single-cloud-hr-app-tenant---target-single-or-multiple-active-directory-child-domains-in-a-trusted-forest"></a>Egyetlen Felhőbeli HR-alkalmazás bérlője – > cél egy vagy több Active Directory gyermektartomány egy megbízható erdőben
 
-A következő éles környezetet javasoljuk:
-
-|Követelmény|Ajánlás|
-|:-|:-|
-|Az üzembe helyezhető Azure AD Connect-kiépítési ügynökök száma|Kettő (magas rendelkezésre állás és feladatátvétel esetén)
-|Konfigurálandó összekötőalkalmazások kiépítési száma|Gyermektartományonként egy alkalmazás|
-|Kiszolgálóállomás az Azure AD Connect kiépítési ügynökéhez|Windows 2012 R2+ a földrajzi lagúna active directory tartományvezérlőklátótávolságával</br>Együtt létezhet az Azure AD Connect szolgáltatással|
-
-![Flow a helyszíni ügynökökhöz](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img4.png)
-
-### <a name="single-cloud-hr-app-tenant---target-multiple-child-domains-in-a-disjoint-active-directory-forest"></a>Egyfelhős HR-alkalmazás bérlője -> több gyermektartományt céloz meg egy különálló Active Directory-erdőben
-
-Ebben a forgatókönyvben a felhasználók kiépítése a felhőhr-alkalmazásból a tartományok különálló Active Directory-erdőkben.
-
-A következő éles környezetet javasoljuk:
+A következő éles konfigurációt javasoljuk:
 
 |Követelmény|Ajánlás|
 |:-|:-|
-|A helyszíni üzembe helyezendő Azure AD Connect-létesítési ügynökök száma|Különálló Active Directory-erdőnként kettő|
-|Konfigurálandó összekötőalkalmazások kiépítési száma|Gyermektartományonként egy alkalmazás|
-|Kiszolgálóállomás az Azure AD Connect kiépítési ügynökéhez|Windows 2012 R2+ a földrajzi lagúna active directory tartományvezérlőklátótávolságával</br>Együtt létezhet az Azure AD Connect szolgáltatással|
+|Telepítendő Azure AD Connect kiépítési ügynökök száma|Kettő (a magas rendelkezésre álláshoz és a feladatátvételhez)
+|A konfigurálni kívánt kiépítési összekötő-alkalmazások száma|Egy alkalmazás/gyermektartomány|
+|Azure AD Connect kiépítési ügynök kiszolgálójának gazdagépe|Windows 2012 R2 + a köthetők Active Directory tartományvezérlőkön</br>A Azure AD Connect szolgáltatással együtt is létezhet|
 
-![Egyfelhős HR-alkalmazás-bérlő szétválasztják az Active Directory erdőt](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img5.png)
+![A helyszíni ügynökök felé irányuló folyamat](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img4.png)
 
-### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Az Azure AD Connect kiépítési ügynökre vonatkozó követelmények
+### <a name="single-cloud-hr-app-tenant---target-multiple-child-domains-in-a-disjoint-active-directory-forest"></a>Egyetlen Felhőbeli HR-alkalmazás bérlője – > több gyermektartomány megcélzása különálló Active Directory erdőben
 
-A felhőhr-alkalmazás az Active Directory felhasználói kiépítési megoldás megköveteli, hogy egy vagy több Azure AD Connect kiépítési ügynökök a Windows 2012 R2 vagy újabb rendszert futtató kiszolgálókon. A kiszolgálóknak legalább 4 GB RAM memóriával és .NET 4.7.1+ futásidővel kell rendelkezniük. Győződjön meg arról, hogy a gazdakiszolgáló hálózati hozzáféréssel rendelkezik a cél Active Directory tartományhoz.
+Ez a forgatókönyv magában foglalja a felhasználókat a Cloud HR-alkalmazásból a különálló Active Directory erdőkben lévő tartományokra való kiépítés során.
 
-A helyszíni környezet előkészítéséhez az Azure AD Connect kiépítési ügynök konfigurációs varázsló regisztrálja az ügynököt az Azure AD-bérlővel, megnyitja a [portokat](../manage-apps/application-proxy-add-on-premises-application.md#open-ports), engedélyezi az [URL-címekelérését,](../manage-apps/application-proxy-add-on-premises-application.md#allow-access-to-urls)és támogatja a [kimenő HTTPS-proxykonfigurációt.](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)
+A következő éles konfigurációt javasoljuk:
 
-A kiépítési ügynök egy szolgáltatásfiókot használ az Active Directory-tartományokkal való kommunikációhoz. Az ügynök telepítése előtt hozzon létre egy olyan szolgáltatásfiókot az Active Directory – felhasználók és számítógépek beépülő modulban, amely megfelel az alábbi követelményeknek:
+|Követelmény|Ajánlás|
+|:-|:-|
+|A helyszíni üzembe helyezéshez Azure AD Connect kiépítési ügynökök száma|Két különálló Active Directory erdőben|
+|A konfigurálni kívánt kiépítési összekötő-alkalmazások száma|Egy alkalmazás/gyermektartomány|
+|Azure AD Connect kiépítési ügynök kiszolgálójának gazdagépe|Windows 2012 R2 + a köthetők Active Directory tartományvezérlőkön</br>A Azure AD Connect szolgáltatással együtt is létezhet|
 
-- Nem lejáró jelszó
+![Egyetlen Felhőbeli HR-alkalmazás bérlője különálló Active Directory erdőben](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img5.png)
+
+### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Azure AD Connect kiépítési ügynökre vonatkozó követelmények
+
+A Felhőbeli HR-alkalmazásnak Active Directory a felhasználó kiépítési megoldásához egy vagy több Azure AD Connect üzembe helyezési ügynököt kell telepítenie a Windows 2012 R2 vagy újabb rendszert futtató kiszolgálókon. A kiszolgálóknak legalább 4 GB RAM-mal és .NET 4.7.1 + futtatókörnyezettel kell rendelkezniük. Győződjön meg arról, hogy a gazdagépnek van hálózati hozzáférése a cél Active Directory tartományhoz.
+
+A helyszíni környezet előkészítéséhez az Azure AD Connect létesítési ügynök konfigurálása varázsló regisztrálja az ügynököt az Azure AD-Bérlővel, megnyitja a [portokat](../manage-apps/application-proxy-add-on-premises-application.md#open-ports), [engedélyezi az URL-címek elérését](../manage-apps/application-proxy-add-on-premises-application.md#allow-access-to-urls), és támogatja a [kimenő HTTPS-proxy konfigurációját](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
+
+A kiépítési ügynök egy szolgáltatásfiókot használ a Active Directory tartományokkal való kommunikációhoz. Az ügynök telepítése előtt hozzon létre egy szolgáltatásfiókot Active Directory felhasználók és számítógépek számára, amelyek megfelelnek az alábbi követelményeknek:
+
+- Olyan jelszó, amely nem jár le
 - Delegált vezérlési engedélyek a felhasználói fiókok olvasásához, létrehozásához, törléséhez és kezeléséhez
 
-Kiválaszthatja azokat a tartományvezérlőket, amelyeknek kezelniük kell a létesítési kérelmeket. Ha több földrajzilag elosztott tartományvezérlővel rendelkezik, telepítse a létesítő ügynököt ugyanazon a helyen, mint az előnyben részesített tartományvezérlők. Ez a pozicionálás javítja a végpontok között megoldás megbízhatóságát és teljesítményét.
+Kiválaszthatja azokat a tartományvezérlőket, amelyeknek kezelniük kell a kiépítési kérelmeket. Ha több földrajzilag elosztott tartományvezérlővel rendelkezik, telepítse a kiépítési ügynököt az elsődleges tartományvezérlővel megegyező helyen. Ez a pozíció javítja a végpontok közötti megoldás megbízhatóságát és teljesítményét.
 
-Magas rendelkezésre állás érdekében több Azure AD Connect-létesítési ügynök is üzembe helyezhető. Regisztrálja az ügynököt a helyszíni Active Directory-tartományok azonos készletének kezeléséhez.
+A magas rendelkezésre állás érdekében több Azure AD Connect kiépítési ügynököt is telepíthet. Regisztrálja az ügynököt a helyszíni Active Directory tartományok azonos készletének kezeléséhez.
 
-## <a name="plan-scoping-filters-and-attribute-mapping"></a>Hatókörszűrők és attribútumleképezések tervezése
+## <a name="plan-scoping-filters-and-attribute-mapping"></a>A hatóköri szűrők és az attribútumok megfeleltetésének megtervezése
 
-Ha engedélyezi a kiépítést a felhőhr-alkalmazásból az Active Directoryba vagy az Azure AD-be, az Azure Portal az attribútumértékekattribútum-leképezésen keresztül szabályozza az attribútumértékeket.
+Ha engedélyezi az üzembe helyezést a Cloud HR alkalmazásból Active Directory vagy az Azure AD-be, a Azure Portal attribútum-hozzárendelésen keresztül vezérli az attribútum értékeit.
 
-### <a name="define-scoping-filters"></a>Hatókörszűrők definiálása
+### <a name="define-scoping-filters"></a>Hatóköri szűrők definiálása
 
-A [hatókör-szűrők](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) használatával határozza meg az attribútum-alapú szabályokat, amelyek meghatározzák, hogy mely felhasználókat kell kiépíteni a felhőhr-alkalmazásból az Active Directoryba vagy az Azure AD-be.
+A [hatóköri szűrők](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) használatával meghatározhatja azokat az attribútum-alapú szabályokat, amelyek meghatározzák, hogy mely felhasználókat kell kiépíteni a Cloud HR-alkalmazásból a Active Directory vagy az Azure ad-ba.
 
-Az Asztalosok folyamatának indításakor gyűjtse össze a következő követelményeket:
+Az összekapcsolási folyamat indításakor a következő követelményeket kell összegyűjtenie:
 
-- A felhőhr-alkalmazás az alkalmazottak és a függő alkalmazottak fedélzetére történő bejárására szolgál?
-- Azt tervezi, hogy a felhőhr-alkalmazást használja az Azure AD-felhasználók kiépítéséhez az alkalmazottak és a függő dolgozók kezelésére?
-- Tervezi, hogy a felhőbeli HR-alkalmazást csak a felhőbeli HR-alkalmazás felhasználóinak kiépítése az Azure AD-felhasználók számára szeretné kiépíteni? Példalehet, hogy csak alkalmazottak.
+- A Felhőbeli HR-alkalmazás az alkalmazottakat és a függő alkalmazottakat is felhasználja?
+- Azt tervezi, hogy a Cloud HR-alkalmazást az Azure AD-ben a felhasználók és a függőben lévő munkavállalók kezelésére használja?
+- Tervezi, hogy a Cloud HR-alkalmazást az Azure AD-felhasználók számára csak a Cloud HR-alkalmazás felhasználói számára szeretné kiépíteni? Lehetséges például, hogy csak az alkalmazottak.
 
-A követelményektől függően az attribútumleképezések konfigurálásakor beállíthatja a **Forrásobjektum-hatókör** mezőt, hogy kiválassza, hogy a felhőhr-alkalmazásban mely felhasználói csoportok legyenek hatókörben az Active Directoryba való kiépítéshez. További információkért tekintse meg a felhőhr-alkalmazás oktatóanyaga a gyakran használt hatókörszűrők.
+A követelményektől függően az attribútumok leképezésének konfigurálásakor beállíthatja a **forrás objektum hatóköre** mezőt, hogy kiválassza a FELHŐbeli HR-alkalmazás felhasználói készleteit, hogy a kiépítés hatóköre Active Directory. További információ: a Cloud HR alkalmazás oktatóanyaga a gyakran használt hatóköri szűrőkhöz.
 
 ### <a name="determine-matching-attributes"></a>Egyező attribútumok meghatározása
 
-A kiépítés, a forrás és a célrendszer közötti meglévő fiókok egyeztetése. Amikor integrálja a felhőhr-alkalmazást az Azure AD-kiépítési szolgáltatással, [konfigurálhatja az attribútum-leképezést](../app-provisioning/configure-automatic-user-provisioning-portal.md#mappings) annak meghatározásához, hogy milyen felhasználói adatoknak kell a felhőhr-alkalmazásból az Active Directoryba vagy az Azure AD-be áramlania.
+A kiépítés lehetővé teszi a meglévő fiókok egyeztetését a forrás-és a célként megadott rendszeren. Ha az Azure AD-létesítési szolgáltatással integrálja a Felhőbeli HR-alkalmazást, [konfigurálhatja az attribútum-hozzárendelést](../app-provisioning/configure-automatic-user-provisioning-portal.md#mappings) annak meghatározásához, hogy a felhő HR-alkalmazásból milyen felhasználói adatok kerüljenek a Active Directory vagy az Azure ad-ba.
 
-Az Asztalosok folyamatának indításakor gyűjtse össze a következő követelményeket:
+Az összekapcsolási folyamat indításakor a következő követelményeket kell összegyűjtenie:
 
-- Mi az egyedi azonosító ebben a felhőbeli HR-alkalmazásban, amely az egyes felhasználók azonosítására szolgál?
-- Az identitás életciklusának szempontjából hogyan kezeli az újrafelvett? Az újrafelvett alkalmazottak megtartják a régi alkalmazotti azonosítóikat?
-- Feldolgozza a jövőbeli dátummal ellátott alkalmazottakat, és előre létrehoz számukra Active Directory-fiókokat?
-- Az identitás életciklusának szempontjából hogyan kezeli az alkalmazottfüggő dolgozói átalakítást, vagy más módon?
-- A konvertált felhasználók megtartják a régi Active Directory-fiókjukat, vagy újakat kapnak?
+- Mi a Felhőbeli HR-alkalmazás egyedi azonosítója, amely az egyes felhasználók azonosítására szolgál?
+- Az identitás életciklusának perspektívájában hogyan kezeli az újratelepítést? Megőrzik a régi alkalmazotti azonosítókat?
+- Készen áll-e a jövőbeli bérletek feldolgozására és Active Directory fiókok előzetes létrehozására?
+- Az identitás életciklusának perspektívájában hogyan kezelheti az alkalmazottakat a függőben lévő munkavégzők átalakítására, vagy egyéb módon?
+- A konvertált felhasználók megtartják a régi Active Directory fiókjaikat, vagy újakat kapnak?
 
-A követelményektől függően az Azure AD támogatja a közvetlen attribútum-attribútum leképezést állandó értékek biztosításával vagy [kifejezések írása az attribútumleképezésekhez.](../app-provisioning/functions-for-customizing-application-data.md) Ez a rugalmasság biztosítja a végső ellenőrzést, hogy mi van feltöltve a célzott alkalmazás attribútum. A Microsoft [Graph API és](../app-provisioning/export-import-provisioning-configuration.md) a Graph Explorer segítségével exportálhatja a felhasználói kiépítési attribútum-hozzárendeléseket és sémát egy JSON-fájlba, és importálhatja azt az Azure AD-be.
+A követelményektől függően az Azure AD támogatja a közvetlen attribútum-attribútum hozzárendelést, ha állandó értékeket biztosít, vagy [kifejezést ír az attribútum-hozzárendelésekhez](../app-provisioning/functions-for-customizing-application-data.md). Ez a rugalmasság lehetővé teszi, hogy a megtekintett app attribútumban lévő adatokra vonatkozó végső felügyeletet biztosítson. A [Microsoft Graph API](../app-provisioning/export-import-provisioning-configuration.md) és a Graph Explorer használatával exportálhatja a felhasználók kiépítési attribútumait a JSON-fájlba, majd importálhatja azt az Azure ad-be.
 
-Alapértelmezés szerint az attribútum a felhőhr-alkalmazásban, amely az egyedi alkalmazotti azonosítót jelöli, az *Active Directory egyedi attribútumához leképezett megfelelő* attribútumként lesz használatos. Például a Workday alkalmazás forgatókönyv, a **Workday** **WorkerID** attribútum van leképezve az Active Directory **employeeID** attribútum.
+Alapértelmezés szerint a Felhőbeli HR alkalmazás azon attribútuma, amely az egyedi alkalmazott AZONOSÍTÓját jelöli, a rendszer a *Active Directory egyedi attribútumához hozzárendelt* egyező attribútumként használja. A munkanap alkalmazási forgatókönyvben például a **munkanap** **WorkerID** attribútum a Active Directory **AlkalmazottKód** attribútumra van leképezve.
 
-Több egyező attribútumot is beállíthat, és hozzárendelheti az egyeztetési prioritást. A rendszer egyező prioritással értékeli ki őket. Amint egyezést talál, a rendszer nem értékeli ki a további egyező attribútumokat.
+Több egyező attribútumot is beállíthat, és hozzárendelheti a megfeleltetési prioritást. A kiértékelésük a megfeleltetések sorrendje szerint történik. Amint talál egyezést, nem lesz kiértékelve további egyező attribútumok.
 
-[Testre szabhatja az alapértelmezett attribútumleképezéseket](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)is, például módosíthatja vagy módosíthatja a meglévő attribútumleképezéseket. Az üzleti igényeknek megfelelően új attribútumleképezéseket is létrehozhat. További információkért tekintse meg a felhő HR-alkalmazás oktatóanyag (például [Workday)](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)az egyéni attribútumok leképezéséhez.
+[Testre szabhatja az alapértelmezett attribútumok leképezéseit](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)is, például módosíthatja vagy törölheti a meglévő attribútumok hozzárendeléseit. Az üzleti igényeknek megfelelően új attribútum-leképezéseket is létrehozhat. További információ: a Cloud HR-alkalmazás oktatóanyaga (például [munkanap](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) a leképezésre szolgáló egyéni attribútumok listájához.
 
 ### <a name="determine-user-account-status"></a>Felhasználói fiók állapotának meghatározása
 
-Alapértelmezés szerint a létesítési összekötő alkalmazás leképezi a HR felhasználói profil állapotát a felhasználói fiók állapotát az Active Directoryban vagy az Azure AD-ben annak meghatározásához, hogy engedélyezi vagy letiltja a felhasználói fiókot.
+Alapértelmezés szerint a kiépítési összekötő alkalmazás a HR felhasználói profil állapotát az Active Directory vagy az Azure AD felhasználói fiókjának állapotára képezi le, hogy eldöntse, hogy engedélyezi vagy letiltja a felhasználói fiókot.
 
-Amikor elindítja a Joiners-Leavers folyamatot, gyűjtse össze az alábbi követelményeket.
-
-| Folyamat | Követelmények |
-| - | - |
-| **Asztalos** | Az identitás életciklusának szempontjából hogyan kezeli az újrafelvett? Az újrafelvett alkalmazottak megtartják a régi alkalmazotti azonosítóikat? |
-| | Feldolgozza a jövőbeli dátummal ellátott alkalmazottakat, és előre létrehoz számukra Active Directory-fiókokat? Ezek a fiókok engedélyezett vagy letiltott állapotban jönnek létre? |
-| | Az identitás életciklusának szempontjából hogyan kezeli az alkalmazottfüggő dolgozói átalakítást, vagy más módon? |
-| | A konvertált felhasználók megtartják a régi Active Directory-fiókjukat, vagy újakat kapnak? |
-| **Kilépők** | Az Active Directoryban dolgozó alkalmazottak és függő dolgozók esetében eltérően kezelik a felmondásokat? |
-| | Milyen érvényességi dátumokat kell figyelembe venni a felhasználó megszüntetésének feldolgozásához? |
-| | Hogyan befolyásolják az alkalmazottak és a függő dolgozók átalakításai a meglévő Active Directory-fiókokat? |
-| | Hogyan dolgozza fel a Rescind műveletet az Active Directoryban? A visszasiktatási műveleteket kezelni kell, ha a jövőbeli dátummal ellátott alkalmazottak az Active Directoryban jönnek létre az Asztalegyesítő folyamat részeként. |
-
-A követelményektől függően testreszabhatja a leképezési logikát [az Azure AD-kifejezések](../app-provisioning/functions-for-customizing-application-data.md) használatával, hogy az Active Directory-fiók engedélyezve van vagy le van tiltva az adatpontok kombinációja alapján.
-
-### <a name="map-cloud-hr-app-to-active-directory-user-attributes"></a>Felhőalapú HR-alkalmazás hozzárendelése az Active Directory felhasználói attribútumaihoz
-
-Minden felhőalapú HR-alkalmazás az alapértelmezett felhőhr-alkalmazással az Active Directory-hozzárendelésekhez kapcsolódik.
-
-Amikor elindítja a Joiners-Movers-Leavers folyamatot, gyűjtse össze a következő követelményeket.
+Az összekapcsolhatók – kimaradók folyamat indításakor a következő követelményeket kell összegyűjtenie.
 
 | Folyamat | Követelmények |
 | - | - |
-| **Asztalos** | Az Active Directory-fiók létrehozási folyamatának kézikönyve automatikus vagy részben automatizált? |
-| | Tervezi az egyéni attribútumok propagálását a felhőhr-alkalmazásból az Active Directoryba? |
-| **Mozgatói** | Milyen attribútumokat szeretne feldolgozni, ha egy Movers-művelet a felhőhr-alkalmazásban történik? |
-| | Végez konkrét attribútum-ellenőrzést a felhasználói frissítések idején? Ha igen, adja meg a részleteket. |
-| **Kilépők** | Az Active Directoryban dolgozó alkalmazottak és függő dolgozók esetében eltérően kezelik a felmondásokat? |
-| | Milyen érvényességi dátumokat kell figyelembe venni a felhasználó megszüntetésének feldolgozásához? |
-| | Hogyan befolyásolják az alkalmazottak és a függő dolgozók átalakításai a meglévő Active Directory-fiókokat? |
+| **Asztalos** | Az identitás életciklusának perspektívájában hogyan kezeli az újratelepítést? Megőrzik a régi alkalmazotti azonosítókat? |
+| | Készen áll-e a jövőbeli bérletek feldolgozására és Active Directory fiókok előzetes létrehozására? Ezek a fiókok engedélyezve vagy letiltott állapotban lettek létrehozva? |
+| | Az identitás életciklusának perspektívájában hogyan kezelheti az alkalmazottakat a függőben lévő munkavégzők átalakítására, vagy egyéb módon? |
+| | A konvertált felhasználók megtartják a régi Active Directory fiókjaikat, vagy újakat kapnak? |
+| **Iskolaelhagyók** | Az alkalmazottak és a függőben lévő munkavállalók eltérő módon kezelhetők a Active Directoryban? |
+| | Milyen érvényes dátumokat kell figyelembe venni a felhasználói megszakítás feldolgozásához? |
+| | Hogyan befolyásolja az alkalmazottak és a függő Worker-átalakítások a meglévő Active Directory fiókokat? |
+| | Hogyan dolgozza fel az elhagyás műveletet a Active Directoryban? Az elállási műveleteket kezelni kell, ha a jövőbeli dátummal rendelkező bérletek Active Directory az asztalos folyamat részeként jönnek létre. |
 
-A követelményektől függően módosíthatja a leképezéseket, hogy megfeleljenek az integrációs céloknak. További információkért tekintse meg az adott felhőHR-alkalmazás oktatóanyagát (például [a Workday-t)](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)a leképezendő egyéni attribútumok listájáért.
+A követelményektől függően testreszabhatja a leképezési logikát az [Azure ad-kifejezések](../app-provisioning/functions-for-customizing-application-data.md) használatával, hogy az Active Directory fiók engedélyezve legyen vagy le legyen tiltva az adatpontok kombinációja alapján.
+
+### <a name="map-cloud-hr-app-to-active-directory-user-attributes"></a>A Cloud HR-alkalmazás leképezése Active Directory felhasználói attribútumokra
+
+A Felhőbeli HR-alkalmazások alapértelmezett Felhőbeli HR-alkalmazásával Active Directory leképezéseket.
+
+Az összekapcsolást kezdeményezők által kezdeményezett folyamat indításakor a következő követelményeket kell összegyűjtenie.
+
+| Folyamat | Követelmények |
+| - | - |
+| **Asztalos** | A Active Directory fiók létrehozási folyamata manuális, automatizált vagy részlegesen automatizált? |
+| | Tervezi a Cloud HR-alkalmazás egyéni attribútumainak propagálását Active Directoryre? |
+| **Mozgatói** | Milyen attribútumokat szeretne feldolgozni a Cloud HR-alkalmazásban, amikor egy mozgató művelet zajlik? |
+| | A felhasználói frissítések időpontjában bizonyos attribútumok érvényesek? Ha igen, adja meg a részleteket. |
+| **Iskolaelhagyók** | Az alkalmazottak és a függőben lévő munkavállalók eltérő módon kezelhetők a Active Directoryban? |
+| | Milyen érvényes dátumokat kell figyelembe venni a felhasználói megszakítás feldolgozásához? |
+| | Hogyan befolyásolja az alkalmazottak és a függő munkavégzők a meglévő Active Directory fiókokat? |
+
+A követelményektől függően módosíthatja a leképezéseket, hogy azok megfeleljenek az integrációs céloknak. További információkért tekintse meg az adott Felhőbeli HR-alkalmazás oktatóanyagát (például a [munkanapokat](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) a leképezésre szolgáló egyéni attribútumok listájához.
 
 ### <a name="generate-a-unique-attribute-value"></a>Egyedi attribútumérték létrehozása
 
-Az Asztalosok folyamatának kezdeményezésekor előfordulhat, hogy egyedi attribútumértékeket kell létrehoznia, amikor olyan attribútumokat állít be, mint a CN, a samAccountName és az egyedi megkötésekkel rendelkező upn.
+Az összekapcsolási folyamat indításakor előfordulhat, hogy egyedi attribútum-értékeket kell létrehoznia, amikor olyan attribútumokat állít be, mint például a CN, a samAccountName és az egyszerű felhasználónév, amely egyedi korlátozásokkal rendelkezik.
 
-Az Azure AD függvény [SelectUniqueValues](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) kiértékeli az egyes szabályokat, és majd ellenőrzi a létrehozott érték egyediségét a célrendszerben. Például [lásd: Egyedi érték létrehozása a userPrincipalName (UPN) attribútumhoz.](../app-provisioning/functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute)
+Az Azure AD-függvény [SelectUniqueValues](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) értékeli az egyes szabályokat, majd ellenőrzi az egyediséghez generált értéket a célként megadott rendszeren. Példaként tekintse meg [a userPrincipalName (UPN) attribútum egyedi értékének létrehozása](../app-provisioning/functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute)című témakört.
 
 > [!NOTE]
-> Ez a funkció jelenleg csak az Active Directory felhasználói kiépítése esetén támogatott a Workday szolgáltatásban. Más kiépítési alkalmazásokkal nem használható.
+> Ez a függvény jelenleg csak a munkanapokon Active Directory a felhasználók üzembe helyezését támogatja. Más kiépítési alkalmazásokkal nem használható.
 
-### <a name="configure-active-directory-ou-container-assignment"></a>Active Directory szervezeti egység tároló-hozzárendelésének konfigurálása
+### <a name="configure-active-directory-ou-container-assignment"></a>Active Directory OU-tároló hozzárendelésének konfigurálása
 
-Gyakori követelmény, hogy az Active Directory felhasználói fiókjait részlegek, helyek és részlegek alapján tárolókba helyezze. Amikor kezdeményez egy Mozgatos folyamatot, és a felügyeleti szervezet változása történik, előfordulhat, hogy át kell helyeznie a felhasználót az egyik szervezeti egységből a másikba az Active Directoryban.
+Ez egy gyakori követelmény, hogy a felhasználói fiókokat az üzleti egységeken, helyeken és részlegeken alapuló tárolókban helyezze el Active Directory. Amikor kezdeményezői folyamatot indít el, és ha a felügyeleti szervezet módosul, előfordulhat, hogy a felhasználót át kell helyeznie az egyik szervezeti egységből a másikba Active Directory.
 
-A [Switch()](../app-provisioning/functions-for-customizing-application-data.md#switch) függvénnyel konfigurálhatja a szervezeti egység hozzárendelésének üzleti logikáját, és leképezheti azt az Active Directory **parentDistinguishedName**attribútumra.
+A [Switch ()](../app-provisioning/functions-for-customizing-application-data.md#switch) függvénnyel konfigurálja az üzleti logikát a szervezeti egység hozzárendeléséhez, és leképezheti azt a Active Directory attribútum **parentDistinguishedName**.
 
-Ha például a Helyi község HR-attribútuma alapján szeretne felhasználókat létrehozni a szervezeti egységben, a következő kifejezést **használhatja:**
+Ha például a HR-attribútum **helyhatósága**alapján szeretne felhasználókat létrehozni a szervezeti egységben, a következő kifejezést használhatja:
 
 `
 Switch([Municipality], "OU=Default,OU=Users,DC=contoso,DC=com", "Dallas", "OU=Dallas,OU=Users,DC=contoso,DC=com", "Austin", "OU=Austin,OU=Users,DC=contoso,DC=com", "Seattle", "OU=Seattle,OU=Users,DC=contoso,DC=com", "London", "OU=London,OU=Users,DC=contoso,DC=com")
 `
 
-Ezzel a kifejezéssel, ha az önkormányzati érték Dallas, Austin, Seattle vagy London, a felhasználói fiók a megfelelő szervezeti egységben jön létre. Ha nincs egyezés, akkor a fiók az alapértelmezett szervezeti egységben jön létre.
+Ezzel a kifejezéssel, ha a település értéke Dallas, Austin, Seattle vagy London, a felhasználói fiók a megfelelő szervezeti egységben lesz létrehozva. Ha nincs egyezés, a rendszer az alapértelmezett szervezeti egységben hozza létre a fiókot.
 
-## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Új felhasználói fiókok jelszókézbesítésének megtervezése
+## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Új felhasználói fiókok jelszavas kézbesítésének megtervezése
 
-Amikor elindítja a Joiners folyamatot, be kell állítania és biztosítania kell az új felhasználói fiókok ideiglenes jelszavát. A felhőHR-es Azure AD-felhasználók kiépítése, az Azure AD [önkiszolgáló jelszó-visszaállítási](../authentication/quickstart-sspr.md) (SSPR) képesség a felhasználó számára az első napon.
+Az összekapcsolási folyamat indításakor be kell állítania és kézbesíteni kell az új felhasználói fiókok ideiglenes jelszavát. A Felhőbeli HR és az Azure AD felhasználói üzembe helyezése esetén az Azure AD önkiszolgáló [jelszó-visszaállítási](../authentication/quickstart-sspr.md) (SSPR) képességét kivezetheti a felhasználó számára az első napon.
 
-Az SSPR egy egyszerű eszköz a rendszergazdák számára, hogy lehetővé tegyék a felhasználók számára jelszavuk visszaállítását vagy fiókjuk feloldását. A **mobilszám** attribútum a felhőhr-alkalmazásból az Active Directoryba, és szinkronizálhatja az Azure AD-vel. Miután a **Mobilszám** attribútum az Azure AD-ben, engedélyezheti az SSPR a felhasználó fiókjához. Ezután az első napon az új felhasználó használhatja a regisztrált és ellenőrzött mobilszámot a hitelesítéshez.
+A SSPR egy egyszerű módja annak, hogy a rendszergazdák lehetővé tegyék a felhasználók számára a jelszavuk visszaállítását vagy a fiókok feloldását. A **Mobile Number** attribútumot kiépítheti a Cloud HR-alkalmazásból, hogy Active Directory és szinkronizálja az Azure ad-vel. Miután a **Mobile Number** attribútum az Azure ad-ben van, engedélyezheti a SSPR a felhasználói fiókhoz. Ezután az új felhasználó használhatja a regisztrált és ellenőrzött mobil számot a hitelesítéshez.
 
 ## <a name="plan-for-initial-cycle"></a>A kezdeti ciklus megtervezése
 
-Amikor az Azure AD-kiépítési szolgáltatás első alkalommal fut, egy [kezdeti ciklust](../app-provisioning/how-provisioning-works.md#initial-cycle) hajt végre a felhőhr-alkalmazással, hogy pillanatképet hozzon létre a felhőbeli HR-alkalmazás összes felhasználói objektumáról. A kezdeti ciklusok idejéből közvetlenül függ, hogy hány felhasználó van jelen a forrásrendszerben. A kezdeti ciklus néhány felhőbeli HR-alkalmazás bérlők több mint 100.000 felhasználó is eltarthat egy hosszú ideig.
+Amikor az Azure AD-létesítési szolgáltatás első alkalommal fut, a a Cloud HR-alkalmazásból [kezdeti ciklust](../app-provisioning/how-provisioning-works.md#initial-cycle) hajt végre a Cloud HR alkalmazásban lévő összes felhasználói objektum pillanatképének létrehozásához. A kezdeti ciklusokhoz szükséges idő közvetlenül attól függ, hogy hány felhasználó van jelen a forrásoldali rendszeren. Néhány Felhőbeli HR-alkalmazás, több mint 100 000 felhasználó esetén a kezdeti ciklus hosszú időt vehet igénybe.
 
-**A nagy felhőbeli HR-alkalmazások bérlői (>30 000 felhasználó)** futtassa a kezdeti ciklust progresszív szakaszokban. Csak azt követően indítsa el a növekményes frissítéseket, hogy ellenőrizze, hogy a megfelelő attribútumok vannak-e beállítva az Active Directoryban a különböző felhasználói kiépítési forgatókönyvekhez. Kövesse a sorrendet itt.
+A **nagyméretű Felhőbeli HR-alkalmazások bérlői számára (>30 000 felhasználó)** futtassa a kezdeti ciklust a fokozatos fázisokban. A növekményes frissítések csak akkor indíthatók el, ha ellenőrzi, hogy a megfelelő attribútumok be vannak-e állítva a Active Directory a különböző felhasználói kiépítési forgatókönyvek esetében. Kövesse a sorrendet.
 
-1. Futtassa a kezdeti ciklust csak a felhasználók korlátozott köre számára a [hatókörszűrő](#plan-scoping-filters-and-attribute-mapping)beállításával.
-2. Ellenőrizze az Active Directory-fiók kiépítését és az első futtatásra kiválasztott felhasználók attribútumértékeit. Ha az eredmény megfelel az elvárásoknak, bontsa ki a hatókörszűrőt, hogy fokozatosan több felhasználót vegyen fel, és ellenőrizze a második futtatás eredményeit.
+1. A kiindulási ciklust csak korlátozott felhasználók számára futtassa a hatókör- [szűrő](#plan-scoping-filters-and-attribute-mapping)beállításával.
+2. Ellenőrizze Active Directory fiók kiépítés és az első futtatáshoz kiválasztott felhasználók számára beállított attribútumok értékét. Ha az eredmény megfelel az elvárásainak, bontsa ki a hatókör-szűrőt, hogy fokozatosan több felhasználót tartalmazzon, és ellenőrizze a második Futtatás eredményét.
 
-Miután elégedett a tesztfelhasználók kezdeti ciklusának eredményeivel, indítsa el a [növekményes frissítéseket.](../app-provisioning/how-provisioning-works.md#incremental-cycles)
+Miután elégedett a kezdeti ciklus eredményével a felhasználók teszteléséhez, indítsa el a [növekményes frissítéseket](../app-provisioning/how-provisioning-works.md#incremental-cycles).
 
-## <a name="plan-testing-and-security"></a>Terv tesztelése és biztonsága
+## <a name="plan-testing-and-security"></a>A tesztelés és a biztonság tervezése
 
-A központi telepítés minden egyes szakaszában a kezdeti próbaverzión keresztül a felhasználói kiépítés engedélyezéséig győződjön meg arról, hogy teszteli, hogy az eredmények a várt módon, és a kiépítési ciklusok naplózása.
+Az üzembe helyezés minden egyes fázisában a kezdeti tesztelésen keresztül a felhasználók kiépítésének engedélyezésével győződjön meg arról, hogy a várt módon teszteli az eredményeket, és naplózza a kiépítési ciklusokat.
 
-### <a name="plan-testing"></a>Terv tesztelése
+### <a name="plan-testing"></a>Tesztelési terv
 
-Miután konfigurálta a felhőhr-alkalmazást az Azure AD-felhasználók kiépítésére, futtasson teszteseteket annak ellenőrzésére, hogy ez a megoldás megfelel-e a szervezet követelményeinek.
+Miután beállította a Cloud HR-alkalmazást az Azure AD-felhasználók üzembe helyezéséhez, futtasson tesztelési eseteket annak ellenőrzéséhez, hogy a megoldás megfelel-e a szervezet követelményeinek.
 
 |Forgatókönyvek|Várt eredmények|
 |:-|:-|
-|Új alkalmazottat veszünk fel a felhőHR-alkalmazásban.| - A felhasználói fiók ki van építve az Active Directoryban.</br>- A felhasználó bejelentkezhet az Active Directory tartományi alkalmazásokba, és végrehajthatja a kívánt műveleteket.</br>- Ha az Azure AD Connect szinkronizálás konfigurálva van, a felhasználói fiók is jön létre az Azure AD-ben.
-|A felhasználó leáll a felhőHR-alkalmazásban.|- A felhasználói fiók le van tiltva az Active Directoryban.</br>- A felhasználó nem tud bejelentkezni az Active Directory által védett vállalati alkalmazásokba.
-|A felhasználói felügyeleti szervezet frissül a felhőhr-alkalmazásban.|Az attribútumleképezés alapján a felhasználói fiók az Active Directory egyik szervezeti egységéből a másikba kerül.|
-|A HR frissíti a felhasználó kezelőjét a felhőHR-alkalmazásban.|Az Active Directory kezelője mezője frissül, hogy tükrözze az új vezető nevét.|
-|A HR újra felvesz egy alkalmazottat egy új szerepkörbe.|A viselkedés attól függ, hogy a felhőalapú HR-alkalmazás hogyan van konfigurálva az alkalmazottazonosítók létrehozásához:</br>- Ha a régi alkalmazottazonosítót újra felhasználja egy újrafelvételhez, az összekötő engedélyezi a meglévő Active Directory-fiókot a felhasználó számára.</br>- Ha az újbóli felvétel új alkalmazottazonosítót kap, az összekötő új Active Directory-fiókot hoz létre a felhasználó számára.|
-|A HR az alkalmazottat szerződéses dolgozóvá alakítja, vagy fordítva.|Új Active Directory-fiók jön létre az új személyhez, és a régi fiók letiltásra kerül a konvertálás hatálybalépési napján.|
+|Új alkalmazott a Cloud HR alkalmazásban.| – A felhasználói fiók Active Directory van kiépítve.</br>– A felhasználó be tud jelentkezni Active Directory tartományi alkalmazásokba, és végrehajthatja a kívánt műveleteket.</br>– Ha a Azure AD Connect Sync konfigurálva van, a felhasználói fiók is létrejön az Azure AD-ben.
+|A felhasználó leáll a Cloud HR-alkalmazásban.|– A felhasználói fiók le van tiltva Active Directoryban.</br>– A felhasználó nem tud bejelentkezni Active Directory által védett vállalati alkalmazásba.
+|A felhasználó-felügyeleti szervezet frissült a Cloud HR-alkalmazásban.|Az attribútumok leképezése alapján a felhasználói fiók az egyik szervezeti egységből egy másikba kerül át Active Directory.|
+|A HR frissíti a felhasználó felettesét a Cloud HR alkalmazásban.|A Active Directory vezető mezője frissül, hogy tükrözze az új felettes nevét.|
+|HR új szerepkörbe helyezi át az alkalmazottat.|A viselkedés attól függ, hogy a Cloud HR-alkalmazás hogyan állítható be az alkalmazotti azonosítók létrehozásához:</br>-Ha a régi alkalmazott AZONOSÍTÓját újra felhasználják, az összekötő engedélyezi a meglévő Active Directory fiókot a felhasználó számára.</br>– Ha a rehire új alkalmazotti azonosítót kap, az összekötő létrehoz egy új Active Directory fiókot a felhasználó számára.|
+|Az HR átalakítja az alkalmazottat egy szerződéses feldolgozóra, vagy fordítva.|Új Active Directory fiók jön létre az új personához, és a régi fiók le lesz tiltva az átalakítás érvényességi dátumán.|
 
-A korábbi eredmények segítségével határozza meg, hogyan válthatja át az automatikus felhasználói kiépítési megvalósítási megvalósításéles környezetbe a megadott ütemtervek alapján.
+Az előző eredmények alapján meghatározhatja, hogyan alakíthatja át az automatikus felhasználó-kiépítési implementációt éles környezetben a létrehozott ütemtervek alapján.
 
 > [!TIP]
-> Olyan technikákat alkalmazhat, mint az adatcsökkentés és az adattisztítás, amikor a tesztkörnyezetet éles adatokkal frissíti, hogy eltávolítson vagy elfedje a bizalmas személyes adatokat, hogy megfeleljen az adatvédelmi és biztonsági szabványoknak. 
+> Használjon olyan technikákat, mint például az adatok csökkentése és az adattisztítás, amikor a tesztkörnyezetben frissíti a környezeti adatokat a bizalmas személyes adatok eltávolításához vagy maszkolásához, hogy azok megfeleljenek az adatvédelmi és biztonsági előírásoknak. 
 
 ### <a name="plan-security"></a>A biztonság megtervezése
 
-Gyakori, hogy egy biztonsági felülvizsgálatot kell kérni egy új szolgáltatás központi telepítésének részeként. Ha biztonsági felülvizsgálatra van szükség, vagy még nem hajtották végre, tekintse meg a számos Azure [AD-tanulmányok,](https://www.microsoft.com/download/details.aspx?id=36391) amelyek áttekintést nyújtanak az identitás, mint szolgáltatás.
+Egy új szolgáltatás üzembe helyezésének részeként gyakran előfordul, hogy biztonsági felülvizsgálatra van szükség. Ha egy biztonsági felülvizsgálatra van szükség vagy nem történt meg, tekintse meg a számos [Azure ad-tanulmányt](https://www.microsoft.com/download/details.aspx?id=36391) , amely áttekintést nyújt az identitásról szolgáltatásról.
 
 ### <a name="plan-rollback"></a>Terv visszaállítása
 
-Előfordulhat, hogy a felhőbeli HR-felhasználó létesítési megvalósítása nem működik a kívánt módon az éles környezetben. Ha igen, a következő visszaállítási lépések segíthetnek a korábbi ismert jó állapotra való visszatérésben.
+Előfordulhat, hogy a Felhőbeli HR-felhasználó kiépítési implementációja nem fog megfelelően működni az éles környezetben. Ha igen, a következő visszaállítási lépések segíthetnek a korábbi ismert jó állapot visszaállításában.
 
-1. Tekintse át a [kiépítési összefoglaló jelentést](../app-provisioning/check-status-user-account-provisioning.md#getting-provisioning-reports-from-the-azure-portal) és [a kiépítési naplókat,](../app-provisioning/check-status-user-account-provisioning.md#provisioning-logs-preview) hogy megállapítsa, milyen helytelen műveleteket hajtottak végre az érintett felhasználókon vagy csoportokon. Az összefoglaló jelentésről és naplókról a [Felhőbeli HR-alkalmazás felhasználóinak kiépítése című témakörben](#manage-your-configuration)talál további információt.
-2. Az érintett felhasználók vagy csoportok utolsó ismert helyes állapota meghatározható a létesítési naplózási naplók vagy a célrendszerek (Azure AD vagy Active Directory) áttekintésével.
-3. Az alkalmazás tulajdonosával együttműködve frissítse az érintett felhasználókat vagy csoportokat közvetlenül az alkalmazásban az utolsó ismert helyes állapotértékek használatával.
+1. Tekintse át a [kiépítési összegző jelentést](../app-provisioning/check-status-user-account-provisioning.md#getting-provisioning-reports-from-the-azure-portal) és az üzembe helyezési [naplókat](../app-provisioning/check-status-user-account-provisioning.md#provisioning-logs-preview) , és állapítsa meg, hogy az érintett felhasználók vagy csoportok milyen helytelen műveleteket hajtottak végre. További információ a kiépítési összegző jelentésről és a naplókról: a [Cloud HR-alkalmazás felhasználó általi üzembe](#manage-your-configuration)helyezésének kezelése.
+2. Az érintett felhasználók vagy csoportok utolsó ismert megfelelő állapota a kiépítési naplók alapján vagy a megcélzott rendszerek (Azure AD vagy Active Directory) felülvizsgálatával határozható meg.
+3. Az alkalmazás tulajdonosával az utolsó ismert helyes állapotinformációkat használva frissítheti a közvetlenül az alkalmazásban érintett felhasználókat vagy csoportokat.
 
-## <a name="deploy-the-cloud-hr-app"></a>A felhőhr-alkalmazás üzembe helyezése
+## <a name="deploy-the-cloud-hr-app"></a>A Cloud HR-alkalmazás üzembe helyezése
 
-Válassza ki a megoldási követelményekhez igazodó felhőhr-alkalmazást.
+Válassza ki a Felhőbeli HR-alkalmazást, amely igazodik a megoldás követelményeihez.
 
-**Munkanap**: Ha munkavégző profilokat szeretne importálni a Workday szolgáltatásból az Active Directoryba és az Azure AD-be, olvassa el [az Oktatóanyag: A munkanap konfigurálása automatikus felhasználói kiépítéshez című témakört.](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment) Opcionálisan visszaírhatja az e-mail címet és a felhasználónevet a Workday-nek.
+**Munkanap**: Ha munkavégző profilokat szeretne importálni a munkanapokból Active Directory és Azure ad-be, tekintse meg a következőt [: oktatóanyag: munkanapok konfigurálása automatikus felhasználó](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)kiépítéséhez. Igény szerint visszaírhatja az e-mail-címet és a felhasználónevet a munkanapokra.
 
 ## <a name="manage-your-configuration"></a>A konfiguráció kezelése
 
-Az Azure AD további betekintést nyújthat a szervezet felhasználói kiépítési használatába és működési állapotába a naplók és jelentések segítségével.
+Az Azure AD további betekintést nyújt a szervezet felhasználó általi használatára és működési állapotára a naplók és a jelentések segítségével.
 
-### <a name="gain-insights-from-reports-and-logs"></a>Betekintést nyerhet a jelentésekből és naplókból
+### <a name="gain-insights-from-reports-and-logs"></a>Jelentések és naplók betekintése
 
-Sikeres [kezdeti ciklus](../app-provisioning/how-provisioning-works.md#initial-cycle)után az Azure AD-kiépítési szolgáltatás továbbra is fut back-to-back növekményes frissítések et határozatlan ideig, időközönként meghatározott oktatóanyagok az egyes alkalmazások, amíg az alábbi események egyike történik:
+A sikeres [kezdeti ciklust](../app-provisioning/how-provisioning-works.md#initial-cycle)követően az Azure ad-kiépítési szolgáltatás továbbra is határozatlan ideig futtatja az egyes alkalmazásokra vonatkozó oktatóanyagokban meghatározott időközöket, amíg az alábbi események valamelyike be nem következik:
 
-- A szolgáltatás manuálisan leáll. Egy új kezdeti ciklus az [Azure Portal](https://portal.azure.com/) vagy a megfelelő [Microsoft Graph API-parancs](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) használatával aktiválódik.
-- Az attribútumleképezések vagy a hatókörszűrők változása miatt új kezdeti ciklus indul el.
-- A kiépítési folyamat magas hibaarány miatt karanténba kerül. Több mint négy hétig marad karanténban, ekkor automatikusan le van tiltva.
+- A szolgáltatás kézi leállítása megtörténik. Az új kezdeti ciklust a [Azure Portal](https://portal.azure.com/) vagy a megfelelő [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) -parancs használatával indítja el.
+- Az attribútum-hozzárendelések és a hatóköri szűrők módosítása miatt új kezdeti ciklust indítunk el.
+- A kiépítési folyamat a nagy hibák miatt Karanténba kerül. Több mint négy hétig marad karanténba helyezve, ekkor automatikusan le van tiltva.
 
-Ezeknek az eseményeknek és a kiépítési szolgáltatás által végzett összes egyéb tevékenységnek a megtekintéséhez és a [kiépítési tevékenységről szóló jelentések betekintéséhez olvassa el a naplók áttekintését.](../app-provisioning/check-status-user-account-provisioning.md)
+Az események és a kiépítési szolgáltatás által végrehajtott egyéb tevékenységek áttekintéséhez tekintse [át a naplók áttekintését és a kiépítési tevékenységekről szóló jelentések beszerzését ismertető témakört](../app-provisioning/check-status-user-account-provisioning.md).
 
 #### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-A kiépítési szolgáltatás által végrehajtott összes tevékenység et az Azure AD naplózási naplói rögzítik. Az Azure AD naplózási naplóit további elemzés céljából átirányíthatja az Azure Monitor-naplókba. Az Azure Monitor naplók (más néven Log Analytics-munkaterület) segítségével adatokat kérdezhet le az események megkereséséhez, trendek elemzéséhez és a különböző adatforrások közötti korreláció végrehajtásához. Ebből a [videóból](https://youtu.be/MP5IaCTwkQg) megtudhatja, milyen előnyökkel jár az Azure Monitor-naplók használata az Azure AD-naplókhoz gyakorlati felhasználói forgatókönyvekben.
+A kiépítési szolgáltatás által végrehajtott összes tevékenységet az Azure AD-naplók rögzítik. További elemzés céljából átirányíthatja az Azure AD-naplókat Azure Monitor naplókba. A Azure Monitor-naplók (más néven Log Analytics munkaterület) segítségével lekérdezheti az eseményeket, elemezheti a trendeket, és elvégezheti a különböző adatforrások közötti korrelációt. Tekintse meg ezt a [videót](https://youtu.be/MP5IaCTwkQg) , amelyből megtudhatja, milyen előnyökkel jár a Azure monitor naplók használata az Azure ad-naplókhoz gyakorlati felhasználói helyzetekben.
 
-Telepítse az [Azure AD-tevékenységnaplók naplóelemzési nézeteit,](../reports-monitoring/howto-install-use-log-analytics-views.md) hogy hozzáférjen a környezetében lévő események kiépítési eseményeiről szóló [előre összeállított jelentésekhez.](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views)
+Telepítse a [log Analytics-nézeteket az Azure ad-tevékenység naplóihoz](../reports-monitoring/howto-install-use-log-analytics-views.md) , hogy hozzáférjen az előre elkészített [jelentésekhez](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) a környezetében található kiépítési események köré.
 
-További információkért tekintse meg, hogyan [elemezheti az Azure AD-tevékenységnaplók at az Azure Monitor naplók.](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)
+További információkért lásd: [Az Azure ad-tevékenységek naplóinak elemzése az Azure monitor naplókkal](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md).
 
 ### <a name="manage-personal-data"></a>Személyes adatok kezelése
 
-A Windows-kiszolgálóra telepített Azure AD Connect-kiépítési ügynök naplókat hoz létre a Windows eseménynaplójában, amelyek a felhőhr-alkalmazástól az Active Directory-hozzárendelésekhez való függően személyes adatokat tartalmazhatnak. A felhasználói adatvédelmi kötelezettségek nek való megfelelés érdekében állítson be egy Windows-ütemezett feladatot az eseménynapló törlésére, és biztosítsa, hogy az adatok at 48 óránál tovább ne tárolják.
+A Windows Serverre telepített Azure AD Connect üzembe helyezési ügynök olyan naplókat hoz létre a Windows-eseménynaplóban, amelyek a Felhőbeli HR-alkalmazástól függően személyes adatait is tartalmazhatják Active Directory attribútum-hozzárendeléseket. A felhasználói adatvédelmi kötelezettségek betartása érdekében állítson be egy Windows ütemezett feladatot az Eseménynapló törléséhez, és győződjön meg arról, hogy a 48 órán túli adatok nem maradnak meg.
 
-Az Azure AD-kiépítési szolgáltatás nem hoz létre jelentéseket, elemzéseket, és nem nyújt elemzéseket 30 napon túl, mert a szolgáltatás nem tárol, nem dolgoz fel és nem tárol semmilyen adatot 30 napon túl.
+Az Azure AD-létesítési szolgáltatás nem hoz létre jelentéseket, nem végez elemzést, vagy 30 napon túli elemzéseket biztosít, mivel a szolgáltatás 30 napon belül nem tárolja, dolgozza fel vagy nem tartja meg az adatokból.
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-A kiépítés során esetlegesen felmerülő problémák elhárításához olvassa el az alábbi cikkeket:
+A kiépítés során esetlegesen felmerülő problémák elhárításához tekintse meg a következő cikkeket:
 
-- [Probléma a felhasználók Azure AD Gallery-alkalmazásba való kiépítésének konfigurálásakor](application-provisioning-config-problem.md)
-- [Attribútum szinkronizálása a helyszíni Active Directoryból az Azure AD-hez egy alkalmazásba való kiépítéshez](user-provisioning-sync-attributes-for-mapping.md)
-- [Az Azure AD Gallery-alkalmazásba való felhasználói kiépítés órákat vagy többet vesz igénybe](application-provisioning-when-will-provisioning-finish.md)
-- [Probléma a rendszergazdai hitelesítő adatok mentése az Azure Active Directory-csoportalkalmazásba való felhasználói kiépítés konfigurálása során](application-provisioning-config-problem-storage-limit.md)
-- [Egyetlen felhasználó sincs kiépítve egy Azure AD Gallery-alkalmazáshoz](application-provisioning-config-problem-no-users-provisioned.md)
-- [A felhasználók helytelen készlete van kiépítve egy Azure AD Gallery-alkalmazáshoz](application-provisioning-config-problem-wrong-users-provisioned.md)
-- [A Windows Eseménynapló beállítása ügynökhibaelhárításhoz](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
-- [Az Azure Portal naplózási naplóinak beállítása a szolgáltatások kalkapcsolatos hibaelhárításához](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
-- [Az AD felhasználói fiók létrehozásához felelős műveletek naplóinak ismertetése](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
-- [A Kezelő frissítési műveleteinek naplóinak ismertetése](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
-- [Gyakran előforduló hibák megoldása](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
+- [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](application-provisioning-config-problem.md)
+- [Egy attribútum szinkronizálása a helyszíni Active Directory az Azure AD-be az alkalmazásba való kiépítéshez](user-provisioning-sync-attributes-for-mapping.md)
+- [Az Azure AD Gallery alkalmazásba történő felhasználói üzembe helyezése órákat vesz igénybe](application-provisioning-when-will-provisioning-finish.md)
+- [Probléma a rendszergazdai hitelesítő adatok mentésekor, miközben a felhasználók üzembe helyezését egy Azure Active Directory Gallery-alkalmazáshoz konfigurálja](application-provisioning-config-problem-storage-limit.md)
+- [Egyetlen felhasználó sincs kiépítve egy Azure AD Gallery-alkalmazásba](application-provisioning-config-problem-no-users-provisioned.md)
+- [Helytelenek a felhasználók egy Azure AD Gallery-alkalmazásban való üzembe helyezése](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Windows Eseménynapló beállítása az ügynökhöz – hibaelhárítás](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
+- [Azure Portal naplók beállítása a szolgáltatás hibaelhárításához](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
+- [Az AD felhasználói fiók létrehozási műveleteinek naplói](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
+- [A kezelői frissítési műveletek naplóinak ismertetése](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
+- [Gyakran előforduló hibák elhárítása](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
 ### <a name="next-steps"></a>További lépések
 
-- [Kifejezések írása attribútumleképezéshez](functions-for-customizing-application-data.md)
-- [Az Azure AD szinkronizálási API áttekintése](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
-- [A hatókörön kívül eső felhasználói fiókok törlésének kihagyása](skip-out-of-scope-deletions.md)
-- [Azure AD Connect kiépítési ügynök: verziókiadási előzmények](provisioning-agent-release-version-history.md)
+- [Kifejezések írása attribútum-hozzárendelésekhez](functions-for-customizing-application-data.md)
+- [Az Azure AD szinkronizációs API áttekintése](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [A hatókörön kívüli felhasználói fiókok törlésének kihagyása](skip-out-of-scope-deletions.md)
+- [Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei](provisioning-agent-release-version-history.md)

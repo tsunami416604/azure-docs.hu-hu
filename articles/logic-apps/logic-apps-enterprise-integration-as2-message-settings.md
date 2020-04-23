@@ -1,6 +1,6 @@
 ---
 title: AS2-üzenetek beállításai
-description: Útmutató az AS2 küldési és fogadási beállításaihoz az Azure Logic Apps enterprise integration pack csomaggal
+description: Útmutató az AS2-beli küldési és fogadási beállításokhoz Azure Logic Appsban Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -15,47 +15,47 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "74793028"
 ---
-# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Hivatkozás az AS2 üzenetbeállításaihoz az Azure Logic Apps vállalati integrációs csomaggal
+# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Az AS2-üzenet beállításainak referenciája Azure Logic Appsban Enterprise Integration Pack
 
-Ez a hivatkozás azokat a tulajdonságokat ismerteti, amelyeket beállíthat annak megadásához, hogy az AS2-megállapodás hogyan kezelje a kereskedelmi partnerek között küldött és fogadott üzeneteket. Ezeket a tulajdonságokat az Önnel üzeneteket cserélő partnerrel kötött megállapodás alapján állítsa be.
+Ez a hivatkozás azokat a tulajdonságokat ismerteti, amelyekkel megadható, hogy az AS2-egyezmény hogyan kezelje a kereskedelmi partnerek között küldött és fogadott üzeneteket. Állítsa be ezeket a tulajdonságokat a partnerrel kötött szerződése alapján, amely üzeneteket cserél Önnel.
 
 <a name="AS2-incoming-messages"></a>
 
-## <a name="as2-receive-settings"></a>AS2 fogadási beállítások
+## <a name="as2-receive-settings"></a>AS2-fogadási beállítások
 
-![Válassza ki a "Fogadási beállítások" lehetőséget](./media/logic-apps-enterprise-integration-as2-message-settings/receive-settings.png)
+![Válassza a "fogadási beállítások" lehetőséget.](./media/logic-apps-enterprise-integration-as2-message-settings/receive-settings.png)
 
 | Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
-| **Üzenet tulajdonságainak felülbírálása** | Nem | Felülírja a bejövő üzenetek tulajdonságait a tulajdonságbeállításokkal. |
-| **Az üzenetet alá kell írni** | Nem | Itt adható meg, hogy az összes bejövő üzenetet digitálisan alá kell-e írni. Ha aláírásra van szüksége, a **Tanúsítvány** listából válasszon ki egy meglévő vendégpartnernyilvános tanúsítványt az üzenetek aláírásának érvényesítéséhez. Ha nem rendelkezik tanúsítvánnyal, további információ a [tanúsítványok hozzáadásáról.](../logic-apps/logic-apps-enterprise-integration-certificates.md) |
-| **Az üzenetet titkosítani kell** | Nem | Itt adható meg, hogy az összes bejövő üzenetet titkosítani kell-e. A nem titkosított üzenetek et a rendszer elutasítja. Ha titkosításra van szüksége, a **Tanúsítvány** listából válasszon ki egy meglévő állomáspartneri magántanúsítványt a bejövő üzenetek visszafejtéséhez. Ha nem rendelkezik tanúsítvánnyal, további információ a [tanúsítványok hozzáadásáról.](../logic-apps/logic-apps-enterprise-integration-certificates.md) |
-| **Az üzenetet tömöríteni kell** | Nem | Itt adható meg, hogy az összes bejövő üzenetet tömöríteni kell-e. A nem tömörített üzenetek et a rendszer elutasítja. |
-| **Üzenetazonosító-ismétlődések leengedése** | Nem | Itt adható meg, hogy engedélyezi-e az ismétlődő azonosítóval rendelkező üzenetek et. Ha nem engedélyezi az ismétlődő azonosítókat, adja meg a csekkek közötti napok számát. Azt is megadhatja, hogy felfüggeszti-e az ismétlődéseket. |
-| **MDN-szöveg** | Nem | Itt adható meg az üzenet küldőjének elküldeni kívánt alapértelmezett üzenetintézkedési értesítés (MDN). |
-| **MDN küldése** | Nem | Itt adható meg, hogy a fogadott üzenetekhez küldjön-e szinkron MDN-eket.  |
-| **Aláírt MDN küldése** | Nem | Itt adható meg, hogy a fogadott üzenetekhez küldjön-e aláírt MDN-eket. Ha aláírásra van szüksége, a **MIC algoritmus** listából válassza ki az üzenetek aláírásához használni kívánt algoritmust. |
-| **Aszinkron MDN küldése** | Nem | Itt adható meg, hogy az MDN-eket aszinkron módon kell-e küldeni. Ha aszinkron MDN-eket választ, az **URL-címmezőben** adja meg az MDN-ek elküldésének helyének URL-címét. |
+| **Üzenet felülbírálásának tulajdonságai** | Nem | Felülbírálja a beérkező üzenetek tulajdonságait a tulajdonságok beállításaival. |
+| **Az üzenetet alá kell írni** | Nem | Megadja, hogy az összes bejövő üzenetnek digitálisan aláírtnak kell-e lennie. Ha aláírásra van szüksége, a **tanúsítvány** listáról válasszon ki egy meglévő vendég partner nyilvános tanúsítványt az aláírás érvényesítéséhez az üzeneteken. Ha nem rendelkezik tanúsítvánnyal, további tudnivalók a [tanúsítványok hozzáadásáról](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Az üzenetnek titkosítottnak kell lennie** | Nem | Meghatározza, hogy az összes bejövő üzenetet titkosítani kell-e. A nem titkosított üzenetek el lesznek utasítva. Ha titkosításra van szüksége, a **tanúsítvány** listából válasszon ki egy meglévő, a beérkező üzenetek visszafejtésére szolgáló fogadó partner privát tanúsítványát. Ha nem rendelkezik tanúsítvánnyal, további tudnivalók a [tanúsítványok hozzáadásáról](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Az üzenetnek tömörítettnek kell lennie** | Nem | Meghatározza, hogy az összes bejövő üzenetnek tömörítettnek kell-e lennie. A nem tömörített üzenetek elutasítása. |
+| **Üzenetek AZONOSÍTÓjának ismétlődésének tiltása** | Nem | Megadja, hogy a duplikált azonosítókkal rendelkező üzenetek engedélyezve legyenek-e. Ha nem engedélyezi az ismétlődő azonosítókat, válassza ki a napok számát a csekkek között. Azt is megadhatja, hogy a duplikált elemek felfüggesztése megtörténjen-e. |
+| **MDN szövege** | Nem | Megadja az üzenet küldőjének elküldeni kívánt alapértelmezett üzenet-törlési értesítést (MDN). |
+| **MDN küldése** | Nem | Megadja, hogy a rendszer szinkron MDNs küldjön-e a fogadott üzenetekhez.  |
+| **Aláírt MDN küldése** | Nem | Megadja, hogy a fogadott üzenetekhez aláírt MDNs kell-e küldeni. Ha aláírásra van szüksége, a **MIC algoritmus** listából válassza ki az üzenetek aláírásához használandó algoritmust. |
+| **Aszinkron MDN küldése** | Nem | Megadja, hogy aszinkron módon kívánja-e elküldeni a MDNs. Ha az aszinkron MDNs lehetőséget választja, az **URL-cím** mezőben adja meg azt az URL-címet, ahová el szeretné küldeni a MDNs. |
 ||||
 
 <a name="AS2-outgoing-messages"></a>
 
-## <a name="as2-send-settings"></a>AS2 Küldési beállítások
+## <a name="as2-send-settings"></a>AS2-küldési beállítások
 
-![Válassza a "Beállítások küldése" lehetőséget](./media/logic-apps-enterprise-integration-as2-message-settings/send-settings.png)
+![Válassza a "küldési beállítások" lehetőséget.](./media/logic-apps-enterprise-integration-as2-message-settings/send-settings.png)
 
 | Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
-| **Üzenetaláírás engedélyezése** | Nem | Itt adható meg, hogy az összes kimenő üzenetet digitálisan alá kell-e írni. Ha aláírásra van szüksége, válassza ki a következő értékeket: <p>- Az **Aláíró algoritmus** listában válassza ki az üzenetek aláírásához használni kívánt algoritmust. <br>- A **Tanúsítvány** listából válasszon ki egy meglévő állomáspartner magántanúsítványt az üzenetek aláírásához. Ha nem rendelkezik tanúsítvánnyal, további információ a [tanúsítványok hozzáadásáról.](../logic-apps/logic-apps-enterprise-integration-certificates.md) |
-| **Üzenettitkosítás engedélyezése** | Nem | Itt adható meg, hogy az összes kimenő üzenetet titkosítani kell-e. Ha titkosításra van szüksége, válassza ki a következő értékeket: <p>- A **Titkosítási algoritmus** listából válassza ki az üzenetek titkosításához használni kívánt vendégpartner nyilvános tanúsítványalgoritmusát. <br>- A **Tanúsítvány** listából válasszon ki egy meglévő vendégpartner iontológiát a kimenő üzenetek titkosításához. Ha nem rendelkezik tanúsítvánnyal, további információ a [tanúsítványok hozzáadásáról.](../logic-apps/logic-apps-enterprise-integration-certificates.md) |
-| **Üzenettömörítés engedélyezése** | Nem | Itt adható meg, hogy az összes kimenő üzenetet tömöríteni kell-e. |
-| **HTTP-fejlécek kibontása** | Nem | A HTTP-fejlécet `content-type` egyetlen sorba helyezi. |
-| **Fájlnév továbbítása a MIME fejlécben** | Nem | Itt adható meg, hogy a fájlnév szerepeljen-e a MIME fejlécben. |
-| **MDN kérése** | Nem | Itt adható meg, hogy az összes kimenő üzenethez fogadja-e az üzenetintézkedési értesítéseket.Specifies whether to receive message at message to position position notifications (MDNs) for all a menyed messages. |
-| **Aláírt MDN-kérelem** | Nem | Itt adható meg, hogy az összes kimenő üzenethez megkapja-e az aláírt MDN-eket. Ha aláírásra van szüksége, a **MIC algoritmus** listából válassza ki az üzenetek aláírásához használni kívánt algoritmust. |
-| **Aszinkron MDN kérése** | Nem | Itt adható meg, hogy az MDN-eket aszinkron módon fogadja-e. Ha aszinkron MDN-eket választ, az **URL-címmezőben** adja meg az MDN-ek elküldésének helyének URL-címét. |
-| **NRR engedélyezése** | Nem | Itt adható meg, hogy szükség van-e megtagadási elismervényre (NRR). Ez a kommunikációs attribútum bizonyítja, hogy az adatok címzettként érkeztek. |
-| **SHA2 algoritmus formátum** | Nem | Megadja a kimenő AS2-üzenetek vagy MDN-üzenetek fejléceiben való aláíráshoz használandó MIC algoritmusformátumot. |
+| **Üzenetek aláírásának engedélyezése** | Nem | Megadja, hogy az összes kimenő üzenetnek digitálisan aláírtnak kell-e lennie. Ha aláírásra van szüksége, válassza ki a következő értékeket: <p>– Az **aláírási algoritmus** listából válassza ki az üzenetek aláírásához használandó algoritmust. <br>– A **tanúsítvány** listából válasszon ki egy meglévő, a gazdagéphez tartozó privát tanúsítványt az üzenetek aláírásához. Ha nem rendelkezik tanúsítvánnyal, további tudnivalók a [tanúsítványok hozzáadásáról](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Üzenetek titkosításának engedélyezése** | Nem | Meghatározza, hogy az összes kimenő üzenetet titkosítani kell-e. Ha titkosításra van szüksége, válassza ki a következő értékeket: <p>– A **titkosítási algoritmus** listából válassza ki az üzenetek titkosításához használandó vendég partner nyilvános tanúsítvány-algoritmust. <br>– A **tanúsítvány** listából válasszon ki egy meglévő vendég partner privát tanúsítványt a kimenő üzenetek titkosításához. Ha nem rendelkezik tanúsítvánnyal, további tudnivalók a [tanúsítványok hozzáadásáról](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
+| **Üzenetek tömörítésének engedélyezése** | Nem | Meghatározza, hogy az összes kimenő üzenetnek tömörítettnek kell-e lennie. |
+| **HTTP-fejlécek kidobása** | Nem | A HTTP `content-type` -fejlécet egyetlen sorba helyezi. |
+| **Fájlnév továbbítása a MIME-fejlécben** | Nem | Megadja, hogy a fájl neve szerepeljen-e a MIME-fejlécben. |
+| **MDN kérése** | Nem | Itt adható meg, hogy az összes kimenő üzenet esetében megjelenjen-e az üzenet-törlési értesítések (MDNs). |
+| **Aláírt MDN kérése** | Nem | Megadja, hogy a rendszer az összes kimenő üzenet esetében fogad-e aláírt MDNs. Ha aláírásra van szüksége, a **MIC algoritmus** listából válassza ki az üzenetek aláírásához használandó algoritmust. |
+| **Aszinkron MDN kérése** | Nem | Megadja, hogy aszinkron módon kell-e fogadni a MDNs. Ha az aszinkron MDNs lehetőséget választja, az **URL-cím** mezőben adja meg azt az URL-címet, ahová el szeretné küldeni a MDNs. |
+| **NRR engedélyezése** | Nem | Itt adható meg, hogy szükséges-e a nem megtagadási visszaigazolás (NRR). Ez a kommunikációs attribútum igazolja, hogy az adatok címzettként érkeztek meg. |
+| **SHA2 algoritmus formátuma** | Nem | Meghatározza a kimenő AS2-üzenetek vagy MDN fejlécében való bejelentkezéshez használandó MIC-algoritmus formátumát. |
 ||||
 
 ## <a name="next-steps"></a>További lépések

@@ -14,10 +14,10 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "76277368"
 ---
-Ez az Azure Functions-fejlesztők referenciainformációi. Ha most ismeri az Azure Functions szolgáltatást, kezdje a következő erőforrásokkal:
+A Azure Functions fejlesztőknek szóló referenciák. Ha még nem Azure Functions, kezdje a következő erőforrásokkal:
 
-* Hozza létre az első függvényt: [C#](../articles/azure-functions/functions-create-first-azure-function.md), [JavaScript,](../articles/azure-functions/functions-create-first-azure-function.md) [Java](../articles/azure-functions/functions-create-first-java-maven.md)vagy [Python.](../articles/azure-functions/functions-create-first-function-python.md)
-* [Az Azure Functions fejlesztői útmutatója.](../articles/azure-functions/functions-reference.md)
-* Nyelvspecifikus hivatkozás: [C#](../articles/azure-functions/functions-dotnet-class-library.md), [C# script,](../articles/azure-functions/functions-reference-csharp.md) [F#](../articles/azure-functions/functions-reference-fsharp.md), [Java,](../articles/azure-functions/functions-reference-java.md) [JavaScript](../articles/azure-functions/functions-reference-node.md)vagy [Python.](../articles/azure-functions/functions-reference-python.md)
-* [Az Azure Functions elindítja és kötések fogalmak.](../articles/azure-functions/functions-triggers-bindings.md)
-* [Helyileg kódolja és tesztelje az Azure Functions-t.](../articles/azure-functions/functions-develop-local.md)
+* Hozza létre első függvényét: [C#](../articles/azure-functions/functions-create-first-azure-function.md), [JavaScript](../articles/azure-functions/functions-create-first-azure-function.md), [Java](../articles/azure-functions/functions-create-first-java-maven.md)vagy [Python](../articles/azure-functions/functions-create-first-function-python.md).
+* [Azure Functions fejlesztői referenciája.](../articles/azure-functions/functions-reference.md)
+* Nyelvspecifikus hivatkozás: [c#](../articles/azure-functions/functions-dotnet-class-library.md), [c# parancsfájl](../articles/azure-functions/functions-reference-csharp.md), [F #](../articles/azure-functions/functions-reference-fsharp.md), [Java](../articles/azure-functions/functions-reference-java.md), [JavaScript](../articles/azure-functions/functions-reference-node.md)vagy [Python](../articles/azure-functions/functions-reference-python.md).
+* [Azure Functions eseményindítók és kötések fogalmakat.](../articles/azure-functions/functions-triggers-bindings.md)
+* [A kód és a tesztelés Azure Functions helyileg.](../articles/azure-functions/functions-develop-local.md)

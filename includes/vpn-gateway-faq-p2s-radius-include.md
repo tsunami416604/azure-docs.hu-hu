@@ -39,7 +39,7 @@ Nem. Csak helyek közötti kapcsolaton keresztül lehetséges.
  
 ### <a name="is-there-a-change-in-the-number-of-sstp-connections-supported-with-radius-authentication-what-is-the-maximum-number-of-sstp-and-ikev2-connections-supported"></a>Változik a RADIUS-hitelesítés használatakor a támogatott SSTP-kapcsolatok száma? Legfeljebb hány SSTP- vagy IKEv2-kapcsolat támogatott?
 
-RADIUS-hitelesítést használó átjárókon nem változik a támogatott SSTP-kapcsolatok maximális száma. Továbbra is 128 SSTP, de függ az átjáró Termékváltozat ikev2.A támogatott kapcsolatok számáról további információt az [átjáró-számos kiszolgáló című témakörben talál.](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)
+RADIUS-hitelesítést használó átjárókon nem változik a támogatott SSTP-kapcsolatok maximális száma. Az SSTP esetében 128 marad, de a IKEv2 átjáró SKU-jának függvénye.A támogatott kapcsolatok számával kapcsolatos további információkért lásd: [átjáró SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)-i.
  
 ### <a name="what-is-the-difference-between-doing-certificate-authentication-using-a-radius-server-vs-using-azure-native-certificate-authentication-by-uploading-a-trustedcertificate-to-azure"></a>Mi a különbség a RADIUS-kiszolgáló használatával végzett tanúsítványalapú hitelesítés és az Azure natív tanúsítványalapú hitelesítése (egy megbízható tanúsítvány Azure-ba való feltöltése) között?
 
@@ -53,4 +53,4 @@ Igen, a RADIUS-hitelesítés az IKEv2-höz és az SSTP VPN-hez is támogatott. 
 
 ### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>Működik a RADIUS-hitelesítés az OpenVPN-ügyféllel?
 
-Radius-hitelesítés csak a PowerShellen keresztül támogatott az OpenVPN protokoll számára.
+A RADIUS-hitelesítés csak a PowerShell használatával támogatott az OpenVPN protokoll esetében.

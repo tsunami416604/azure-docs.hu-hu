@@ -1,6 +1,6 @@
 ---
-title: Az Azure lemeztitkosítás linuxos virtuális gépekhez történő hibaelhárítása
-description: Ez a cikk hibaelhárítási tippeket tartalmaz a Microsoft Azure lemeztitkosítás linuxos virtuális gépekhez.
+title: Linux rendszerű virtuális gépek hibaelhárítási Azure Disk Encryption
+description: Ez a cikk hibaelhárítási tippeket tartalmaz a Linux rendszerű virtuális gépekhez Microsoft Azure lemezes titkosításhoz.
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -15,11 +15,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970478"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure lemeztitkosításhiba-elhárítási útmutatója
+# <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption hibaelhárítási útmutató
 
-Ez az útmutató informatikai szakembereknek, információbiztonsági elemzőknek és felhőrendszergazdáknak szól, akiknek a szervezetei az Azure Disk Encryption szolgáltatást használják. Ez a cikk a lemeztitkosítással kapcsolatos problémák elhárításában nyújt segítséget.
+Ez az útmutató olyan informatikai szakemberek, Információbiztonsági elemzők és Felhőbeli rendszergazdák számára készült, akiknek a vállalata Azure Disk Encryptiont használ. Ez a cikk segítséget nyújt a lemezes titkosítással kapcsolatos problémák elhárításában.
 
-Az alábbi lépések bármelyikének megtétele előtt először győződjön meg arról, hogy a titkosítani kívánt virtuális gépek a [támogatott virtuálisgép-méretek és operációs rendszerek](disk-encryption-overview.md#supported-vms-and-operating-systems)közé tartoznak, és hogy minden előfeltételnek megfelelt:
+Az alábbi lépések bármelyikének megkezdése előtt győződjön meg arról, hogy a titkosítani kívánt virtuális gépek a támogatott virtuálisgép- [méretek és operációs rendszerek](disk-encryption-overview.md#supported-vms-and-operating-systems)közé tartoznak, és az összes előfeltétel teljesült:
 
 - [A virtuális gépekre vonatkozó további követelmények](disk-encryption-overview.md#supported-vms-and-operating-systems)
 - [Hálózati követelmények](disk-encryption-overview.md#networking-requirements)
@@ -27,22 +27,22 @@ Az alábbi lépések bármelyikének megtétele előtt először győződjön me
 
  
 
-## <a name="troubleshooting-linux-os-disk-encryption"></a>Linux os lemeztitkosítás – hibaelhárítás
+## <a name="troubleshooting-linux-os-disk-encryption"></a>A Linux operációsrendszer-lemez titkosításának hibaelhárítása
 
-A Linux operációs rendszer (OS) lemeztitkosításának le kell választania az operációs rendszer meghajtóját, mielőtt végigfutna a teljes lemeztitkosítási folyamaton. Ha nem tudja leválasztani a meghajtót, egy hibaüzenet a "nem sikerült leválasztani után ..." valószínűleg bekövetkezik.
+A Linux operációs rendszer (OS) lemezének titkosítása előtt le kell választania az operációsrendszer-meghajtót a teljes lemezes titkosítási folyamat futtatása előtt. Ha nem tudja leválasztani a meghajtót, a "nem sikerült leválasztani..." hibaüzenet jelenik meg. valószínűleg előfordul.
 
-Ez a hiba akkor fordulhat elő, ha az operációs rendszer lemeztitkosítását megkísérli egy virtuális gép olyan környezetben, amely megváltozott a támogatott készletgyűjtemény-lemezképről. A támogatott lemezképtől való eltérések zavarhatják a bővítmény azon képességét, hogy leszeretné választani az operációs rendszer meghajtóját. Az eltérések közé tartozhatnak például a következő elemek:
-- A testreszabott képek már nem egyeznek meg a támogatott fájlrendszerrel vagy particionálási sémával.
-- A nagy alkalmazások, például az SAP, a MongoDB, az Apache Cassandra és a Docker nem támogatottak, ha titkosítás előtt telepítve vannak és futnak az operációs rendszerben. Az Azure Disk Encryption nem tudja biztonságosan leállítani ezeket a folyamatokat, ahogy az az operációsrendszer-meghajtó lemeztitkosításhoz szükséges előkészítése. Ha még mindig vannak aktív folyamatok, amelyek az operációs rendszer meghajtójára nyitott fájlleírókat tartanak, az operációs rendszer meghajtója nem bontható le, ami az operációs rendszer meghajtójának titkosításának sikertelenvé vált. 
-- Egyéni parancsfájlok, amelyek szoros anamúgy futnak, hogy a titkosítás engedélyezve van, vagy ha bármilyen más változás történik a virtuális gép en a titkosítási folyamat során. Ez az ütközés akkor fordulhat elő, ha egy Azure Resource Manager-sablon több bővítményegyidejű végrehajtását határozza meg, vagy ha egy egyéni parancsfájl-bővítmény vagy más művelet egyidejűleg fut lemeztitkosításra. Az ilyen lépések szerializálása és elkülönítése megoldhatja a problémát.
-- A Security Enhanced Linux (SELinux) nem lett letiltva a titkosítás engedélyezése előtt, így a leválasztási lépés sikertelen. Az SELinux a titkosítás befejezése után újra engedélyezhető.
-- Az operációs rendszer lemeze logikai kötetkezelő (LVM) sémát használ. Bár az LVM-adatlemez-támogatás korlátozott, az LVM operációs rendszer lemeze nem.
-- A minimális memóriakövetelmények nem teljesülnek (az operációs rendszer lemeztitkosításához 7 GB javasolt).
-- Az adatmeghajtókre rekurzív módon van csatlakoztatva az /mnt/ könyvtár ba vagy egymáshoz (például /mnt/data1, /mnt/data2, /data3 + /data3/data4).
+Ez a hiba akkor fordulhat elő, ha az operációsrendszer-lemez titkosítását egy olyan környezettel kísérli meg, amely a támogatott Stock Gallery-rendszerképből lett módosítva. A támogatott rendszerképtől való eltérések zavarhatják a bővítménynek az operációs rendszer meghajtójának leválasztására való képességét. Az eltérések például a következők lehetnek:
+- A testreszabott lemezképek már nem egyeznek a támogatott fájlrendszerrel vagy particionálási sémával.
+- Azok a nagyméretű alkalmazások, mint az SAP, a MongoDB, az Apache Cassandra és a Docker, nem támogatottak, ha a titkosítás előtt telepítik és futtatják az operációs rendszert. Azure Disk Encryption nem tudja leállítani ezeket a folyamatokat az operációsrendszer-meghajtó lemezes titkosításhoz való előkészítésekor szükséges módon. Ha még vannak aktív folyamatok, amelyek nyitott fájlkezelőket tárolnak az operációsrendszer-meghajtón, az operációsrendszer-meghajtó nem választható le, így az operációs rendszer meghajtójának titkosítása nem sikerült. 
+- Az olyan egyéni parancsfájlok, amelyek a titkosítás engedélyezésekor közel vannak a titkosításhoz, vagy ha a titkosítási folyamat során a virtuális gépen bármilyen egyéb módosítás történik. Ez az ütközés akkor fordulhat elő, ha egy Azure Resource Manager-sablon egyszerre több bővítményt határoz meg, vagy ha egy egyéni parancsfájl-kiterjesztés vagy más művelet egyidejűleg fut a lemez titkosítása során. Az ilyen lépések szerializálása és elkülönítése megoldhatja a problémát.
+- A titkosítás engedélyezése előtt a fokozott biztonságú Linux (SELinux) nem lett letiltva, így a leválasztási lépés sikertelen lesz. A SELinux újraengedélyezhető a titkosítás befejeződése után.
+- Az operációsrendszer-lemez egy logikai kötet-kezelő (LVM) sémát használ. Bár a korlátozott LVM adatlemez-támogatás elérhető, az LVM operációsrendszer-lemez nem.
+- Nem teljesülnek a minimális memória-követelmények (az operációsrendszer-lemez titkosításához 7 GB ajánlott).
+- Az adatmeghajtók rekurzív módon vannak csatlakoztatva a/mnt/könyvtárában vagy egymáshoz (például/mnt/Data1,/mnt/data2,/data3 +/data3/data4).
 
-## <a name="update-the-default-kernel-for-ubuntu-1404-lts"></a>Az Ubuntu 14.04 LTS alapértelmezett rendszermagjának frissítése
+## <a name="update-the-default-kernel-for-ubuntu-1404-lts"></a>Az Ubuntu 14,04 LTS alapértelmezett kernelének frissítése
 
-Az Ubuntu 14.04 LTS image a 4.4 alapértelmezett kernel verziójával szállít. Ez a kernel verzió egy ismert probléma, amelyben Out of Memory Killer helytelenül leállítja a dd parancsot az operációs rendszer titkosítási folyamat során. Ezt a hibát a legutóbbi Azure-hangolt Linux kernel javította. A hiba elkerülése érdekében a rendszerkép titkosításának engedélyezése előtt frissítsen az [Azure 4.15-ös](https://packages.ubuntu.com/trusty/linux-azure) vagy újabb kernelére a következő parancsokkal:
+Az Ubuntu 14,04 LTS-rendszerkép a 4,4-es alapértelmezett kernel-verzióval rendelkezik. Ennek a kernel-verziónak van egy ismert hibája, amely miatt a memóriából való gyilkos helytelenül leállítja a dd parancsot az operációs rendszer titkosítási folyamata során. Ezt a hibát a legújabb Azure tuned Linux kernelben javítottuk. Ha el szeretné kerülni ezt a hibát, mielőtt engedélyezi a titkosítást a rendszerképben, frissítsen az Azure-ban [hangolt kernel 4,15](https://packages.ubuntu.com/trusty/linux-azure) -es vagy újabb verziójára az alábbi parancsok használatával:
 
 ```
 sudo apt-get update
@@ -50,27 +50,27 @@ sudo apt-get install linux-azure
 sudo reboot
 ```
 
-Miután a virtuális gép újraindult az új kernelbe, az új kernelverzió a következő használatával megerősíthető:
+Miután a virtuális gép újra lett indítva az új kernelbe, az új kernel verziója a következő használatával erősíthető meg:
 
 ```
 uname -a
 ```
 
-## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Az Azure virtuálisgép-ügynök és a bővítmény verzióinak frissítése
+## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Az Azure-beli virtuálisgép-ügynök és-bővítmények verziójának frissítése
 
-Az Azure Disk Encryption műveletek sikertelenek lehetnek a virtuálisgép-lemezképek en az Azure virtuálisgép-ügynök nem támogatott verzióival. A 2.2.38-nál korábbi ügynökverzióval rendelkező Linux-lemezképeket a titkosítás engedélyezése előtt frissíteni kell. További információ: [Az Azure Linux-ügynök frissítése virtuális gépen](../extensions/update-linux-agent.md) és [minimális verziótámogatás virtuálisgép-ügynökök az Azure-ban.](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+A Azure Disk Encryption műveletek a virtuálisgép-rendszerképeken az Azure Virtual Machine Agent nem támogatott verzióit használva sikertelenek lehetnek. A titkosítás engedélyezése előtt frissíteni kell a 2.2.38-nál korábbi ügynök-verziókkal rendelkező Linux-lemezképeket. További információkért lásd: [Az Azure Linux-ügynök frissítése](../extensions/update-linux-agent.md) virtuális gépen, valamint a [virtuálisgép-ügynökök minimális verziójának támogatása az Azure-ban](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
-A Microsoft.Azure.Security.AzureDiskEncryption vagy a Microsoft.Azure.Security.AzureDiskEncryptionForLinux vendégügynök-bővítmény megfelelő verziója is szükséges. A bővítményverziókat a platform automatikusan karbantartja és frissíti, ha az Azure Virtual Machine ügynök előfeltételei teljesülnek, és a virtuálisgép-ügynök támogatott verzióját használja.
+A Microsoft. Azure. Security. AzureDiskEncryption vagy a Microsoft. Azure. Security. AzureDiskEncryptionForLinux megfelelő verziója is szükséges. A bővítmények verzióit a platform automatikusan karbantartja és frissíti, amikor az Azure-beli virtuális gépek ügynökének előfeltételei teljesülnek, és a rendszer a virtuálisgép-ügynök támogatott verzióját használja.
 
-A Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux bővítmény elavult, és már nem támogatott.  
+A Microsoft. OSTCExtensions. AzureDiskEncryptionForLinux kiterjesztés elavult, és már nem támogatott.  
 
-## <a name="unable-to-encrypt-linux-disks"></a>Nem lehet titkosítani a Linux-lemezeket
+## <a name="unable-to-encrypt-linux-disks"></a>A Linux-lemezek nem titkosíthatók
 
-Bizonyos esetekben úgy tűnik, hogy a Linux lemeztitkosítás beragadt az "OS lemeztitkosítás indításakor", és az SSH le van tiltva. A titkosítási folyamat 3-16 órát is igénybe vehet egy stock gallery kép. Több terabájtos adatlemezek hozzáadása esetén a folyamat napokig is eltarthat.
+Bizonyos esetekben a Linux-lemez titkosítása úgy tűnik, hogy az "operációs rendszer lemezének titkosítása megkezdődött", és az SSH le van tiltva. A titkosítási folyamat 3-16 óráig is eltarthat, hogy befejezze a Stock Gallery-rendszerképét. Ha több terabájt méretű adatlemezt ad hozzá, a folyamat napokat is igénybe vehet.
 
-A Linux operációs rendszer lemeztitkosítási szekvencia ideiglenesen leoldja az operációsrendszer-meghajtót. Ezután végrehajtja a teljes operációsrendszer-lemez blokkról blokkra titkosítását, mielőtt titkosított állapotába újracsatlakoztatná. A Linux disk encryption nem teszi lehetővé a virtuális gép egyidejű használatát, amíg a titkosítás folyamatban van. A virtuális gép teljesítményjellemzői jelentős különbséget tehetnek a titkosítás befejezéséhez szükséges idő között. Ezek a jellemzők magukban foglalják a lemez méretét, és azt, hogy a tárfiók szabványos vagy prémium (SSD) tároló.These characteristics include the size of the disk and whether the storage account is standard or premium (SSD) storage.
+A Linux operációs rendszer lemezének titkosítási folyamata ideiglenesen leválasztja az operációsrendszer-meghajtót. Ezután a teljes operációsrendszer-lemez blokkolása blokkolja a titkosítást, mielőtt a rendszer titkosított állapotba csatlakoztatja azt. A Linux-lemez titkosítása nem teszi lehetővé a virtuális gép egyidejű használatát, miközben a titkosítás folyamatban van. A virtuális gép teljesítménybeli jellemzői jelentős eltérést okozhatnak a titkosítás befejezéséhez szükséges idő alatt. Ezek a tulajdonságok tartalmazzák a lemez méretét, valamint azt, hogy a Storage-fiók standard vagy prémium (SSD) tároló-e.
 
-A titkosítási állapot ellenőrzéséhez jelölje ki a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancsból visszaadott **ProgressMessage** mezőt. Az operációs rendszer meghajtója titkosítás alatt van, a virtuális gép karbantartási állapotba lép, és letiltja az SSH-t a folyamatban lévő folyamat megszakításának megakadályozása érdekében. A **EncryptionInProgress** üzenet az idő nagy részében jelentést tesz, amíg a titkosítás folyamatban van. Néhány órával később egy **VMRestartPending** üzenet kéri, hogy indítsa újra a virtuális gép. Példa:
+A titkosítás állapotának megtekintéséhez lekérdezheti a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancs által visszaadott **feladatnézetben** mezőt. Az operációs rendszer meghajtójának titkosítása közben a virtuális gép karbantartási állapotba kerül, és letiltja az SSH-t a folyamatban lévő folyamat megszakadásának megakadályozása érdekében. A **EncryptionInProgress** az idő nagy részében a titkosítás folyamatban van. Néhány órával később egy **VMRestartPending** -üzenet arra kéri, hogy indítsa újra a virtuális gépet. Például:
 
 
 ```azurepowershell
@@ -87,29 +87,29 @@ OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncry
 ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 ```
 
-Miután a rendszer kéri, hogy indítsa újra a virtuális gépet, és a virtuális gép újraindítása után, meg kell várnia 2-3 percet az újraindítás, és a végső lépéseket kell végrehajtani a célon. Az állapotüzenet megváltozik, amikor a titkosítás végre befejeződik. Miután ez az üzenet elérhetővé válik, a titkosított operációsrendszer-meghajtó várhatóan készen áll a használatra, és a virtuális gép készen áll az újra használatra.
+Miután a rendszer felszólítja a virtuális gép újraindítására és a virtuális gép újraindítása után, várjon 2-3 percet az újraindítás és a cél utolsó lépéseinek végrehajtásához. Az állapotüzenetek megváltoznak, ha a titkosítás végül elkészült. Az üzenet elérhetővé tétele után a rendszer készen áll a titkosított operációsrendszer-meghajtó használatára, és a virtuális gép készen áll a használatra.
 
-A következő esetekben azt javasoljuk, hogy állítsa vissza a virtuális gép vissza a pillanatkép vagy biztonsági mentés közvetlenül a titkosítás előtt:
+A következő esetekben javasoljuk, hogy a virtuális gépet vissza kell állítania a pillanatképre, vagy közvetlenül a titkosítás előtt kell elvégezni a biztonsági mentést:
    - Ha a korábban leírt újraindítási folyamat nem történik meg.
-   - Ha a rendszerindítási információk, a folyamatindító üzenet vagy más hibajelzők arról számolnak be, hogy az operációs rendszer titkosítása nem sikerült a folyamat közepén. Egy üzenet például a "nem sikerült leválasztani" hiba, amely az útmutatóban ismertet.
+   - Ha a rendszerindítási információ, az állapotjelző üzenet vagy más hibaüzenetek azt jelentik, hogy az operációs rendszer titkosítása nem sikerült a folyamat közepén. Ilyen üzenet például az útmutatóban ismertetett "nem sikerült leválasztani" hibaüzenet.
 
 A következő kísérlet előtt értékelje újra a virtuális gép jellemzőit, és győződjön meg arról, hogy az összes előfeltétel teljesül.
 
-## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Az Azure lemeztitkosítás tűzfal mögötti hibaelhárítása
+## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Hibaelhárítás Azure Disk Encryption tűzfal mögött
 
-Lásd: [Lemeztitkosítás elszigetelt hálózaton](disk-encryption-isolated-network.md)
+Lásd: [lemez titkosítása elszigetelt hálózaton](disk-encryption-isolated-network.md)
 
-## <a name="troubleshooting-encryption-status"></a>Titkosítási állapot elhárítása 
+## <a name="troubleshooting-encryption-status"></a>Titkosítási állapot hibaelhárítása 
 
-Előfordulhat, hogy a portál egy lemezt titkosítottként jelenít meg, még akkor is, ha a virtuális gépen belül titkosítatlan.  Ez akkor fordulhat elő, ha alacsony szintű parancsokat használnak a lemez közvetlen titkosításának feloldására a virtuális gépen belül, a magasabb szintű Azure Lemeztitkosítás-kezelési parancsok használata helyett.  A magasabb szintű parancsok nem csak a virtuális gépen belüli lemez titkosításának feloldása, hanem a virtuális gépen kívül is frissítik a fontos platformszintű titkosítási beállításokat és a virtuális géphez társított bővítménybeállításokat.  Ha ezek nem tartják az összehangolás, a platform nem lesz képes jelenteni a titkosítási állapot, vagy a virtuális gép kiépítése megfelelően.   
+A portál titkosított lemezként jelenhet meg, miután a virtuális gépen titkosítva lett.  Ez akkor fordulhat elő, ha az alacsony szintű parancsok használatával a rendszer a virtuális gépről közvetlenül titkosítja a lemezt a magasabb szintű Azure Disk Encryption felügyeleti parancsok használata helyett.  A magasabb szintű parancsok nem csak a virtuális gépről titkosítják a lemezt, hanem a virtuális GÉPEN kívül is frissítik a virtuális géphez tartozó fontos platform szintű titkosítási beállításokat és bővítmény-beállításokat.  Ha ezeket nem tartja összhangban, a platform nem fogja tudni bejelenteni a titkosítási állapotot, vagy megfelelően kiépíteni a virtuális gépet.   
 
-Az Azure Disk Encryption letiltásához a PowerShell segítségével használja [az Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsot, majd az [Remove-AzVMDiskEncryptionExtension parancsot.](/powershell/module/az.compute/remove-azvmdiskencryptionextension) Az Remove-AzVMDiskEncryptionExtension futtatása a titkosítás letiltása előtt sikertelen lesz.
+A Azure Disk Encryption PowerShell-lel való letiltásához használja a [disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) parancsot, majd a [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). A Remove-AzVMDiskEncryptionExtension futtatása a titkosítás letiltása előtt sikertelen lesz.
 
-Az Azure Disk Encryption cli-vel történő letiltásához használja [az az vm titkosításletiltást.](/cli/azure/vm/encryption) 
+A CLI-vel való Azure Disk Encryption letiltásához használja [az az VM encryption disable](/cli/azure/vm/encryption)parancsot. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban többet megtudhat az Azure disk encryption néhány gyakori problémájáról, és arról, hogyan háríthatja el ezeket a problémákat. A szolgáltatásról és annak képességeiről az alábbi cikkekben talál további információt:
+Ebben a dokumentumban többet is megtudhat a Azure Disk Encryption és a problémák elhárításával kapcsolatos gyakori problémákról. A szolgáltatással és képességeivel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Lemeztitkosítás alkalmazása az Azure Security Centerben](../../security-center/security-center-apply-disk-encryption.md)
-- [Azure-adattitkosítás inaktív helyen](../../security/fundamentals/encryption-atrest.md)
+- [Lemez titkosításának alkalmazása Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
+- [Az Azure-beli adattitkosítás inaktív állapotban](../../security/fundamentals/encryption-atrest.md)

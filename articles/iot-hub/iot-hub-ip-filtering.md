@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub IP-kapcsolatszűrői | Microsoft dokumentumok
-description: IP-szűrés használatával blokkolja a kapcsolatokat adott IP-címek az Azure IoT hub. Letilthatja az IP-címek egyéni vagy tartományaiból származó kapcsolatokat.
+title: Azure IoT Hub IP-kapcsolatok szűrőinek | Microsoft Docs
+description: Az IP-szűrés használata az adott IP-címek és az Azure IoT hub közötti kapcsolatok blokkolására. Letilthatja az egyes vagy IP-címtartományok kapcsolatait.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -16,75 +16,75 @@ ms.locfileid: "68414284"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
-A biztonság az Azure IoT Hubon alapuló bármely IoT-megoldás fontos szempontja. Néha explicit módon meg kell adnia azokat az IP-címeket, amelyekről az eszközök a biztonsági konfiguráció részeként csatlakozhatnak. Az *IP-szűrő* szolgáltatás lehetővé teszi, hogy szabályokat állítson be az adott IPv4-címekről érkező forgalom elutasítására vagy elfogadására.
+A biztonság az Azure IoT Hub-alapú IoT-megoldások fontos aspektusa. Időnként explicit módon meg kell adnia azokat az IP-címeket, amelyekről az eszközök a biztonsági konfiguráció részeként csatlakozni tudnak. Az *IP-szűrési* funkció lehetővé teszi, hogy szabályokat konfiguráljon a megadott IPv4-címekről érkező forgalom elutasítására vagy fogadására.
 
 ## <a name="when-to-use"></a>A következő esetekben használja
 
-Két konkrét használati eset van, amikor bizonyos IP-címek esetében hasznos az IoT Hub végpontjainak blokkolása:
+A IoT Hub végpontok bizonyos IP-címekhez való letiltásához két konkrét használati eset van:
 
-* Az IoT hub csak egy adott IP-címtartományból fogadhat forgalmat, és minden mást elutasíthat. Például az IoT-központot az [Azure Express Route-szal](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) használja az IoT-központ és a helyszíni infrastruktúra közötti privát kapcsolatok létrehozásához.
+* Az IoT hub csak a megadott IP-címtartományból érkező forgalmat fogadja, és minden mást visszautasít. Például az IoT hub és az [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) használatával privát kapcsolatokat hozhat létre az IoT hub és a helyszíni infrastruktúra között.
 
-* Az IoT-központ rendszergazdája által gyanúsnak minősített IP-címekről érkező forgalmat el kell utasítania.
+* El kell utasítania azokat az IP-címekről érkező forgalmat, amelyeket az IoT hub rendszergazdája gyanúsnak talált.
 
-## <a name="how-filter-rules-are-applied"></a>A szűrőszabályok alkalmazásának szabályai
+## <a name="how-filter-rules-are-applied"></a>A szűrési szabályok alkalmazása
 
-Az IP-szűrőszabályok az IoT Hub szolgáltatási szintjén kerülnek alkalmazásra. Ezért az IP-szűrőszabályok az eszközökről és a támogatott protokollt használó háttéralkalmazásokból származó összes kapcsolatra vonatkoznak.
+Az IP-szűrési szabályok a IoT Hub szolgáltatási szinten lesznek alkalmazva. Ezért az IP-szűrési szabályok az eszközök és a háttérbeli alkalmazások összes kapcsolatára érvényesek bármely támogatott protokoll használatával.
 
-Az IoT hubban egy elutasító IP-szabálynak megfelelő IP-címről tett csatlakozási kísérlet jogosulatlan 401-es állapotkódot és -leírást kap. A válaszüzenet nem említi az IP-szabályt.
+Minden olyan IP-címről érkező kapcsolódási kísérlet, amely megfelel az IoT hub elutasító IP-szabályának, a rendszer jogosulatlanul 401 állapotkódot és leírást kap. A válaszüzenet nem említi az IP-szabályt.
 
 ## <a name="default-setting"></a>Alapértelmezett beállítás
 
-Alapértelmezés szerint az **IP-szűrő** rács a portálon egy IoT hub üres. Ez az alapértelmezett beállítás azt jelenti, hogy a hub bármely IP-címről fogadja a kapcsolatokat. Ez az alapértelmezett beállítás megegyezik a 0.0.0.0/0 IP-címtartományt elfogadó szabállyal.
+Alapértelmezés szerint a IoT hub-portálon található **IP-szűrő** rács üres. Ez az alapértelmezett beállítás azt jelenti, hogy a hub bármely IP-címről fogad kapcsolatokat. Ez az alapértelmezett beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt.
 
-![Az IoT Hub alapértelmezett IP-szűrőbeállításai](./media/iot-hub-ip-filtering/ip-filter-default.png)
+![Alapértelmezett IP-szűrési beállítások IoT Hub](./media/iot-hub-ip-filtering/ip-filter-default.png)
 
-## <a name="add-or-edit-an-ip-filter-rule"></a>IP-szűrőszabály hozzáadása vagy szerkesztése
+## <a name="add-or-edit-an-ip-filter-rule"></a>IP-szűrési szabály hozzáadása vagy szerkesztése
 
-IP-szűrőszabály hozzáadásához válassza a **+ IP-szűrőszabály hozzáadása**lehetőséget .
+IP-szűrési szabály hozzáadásához válassza az **+ IP-szűrési szabály hozzáadása**lehetőséget.
 
-![IP-szűrőszabály hozzáadása IoT-központhoz](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
+![IP-szűrési szabály hozzáadása egy IoT hubhoz](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
 
-Miután az **IP-szűrőszabály hozzáadása**lehetőséget választotta, töltse ki a mezőket.
+Az **IP-szűrési szabály hozzáadása**lehetőség kiválasztását követően töltse ki a mezőket.
 
-![Ip-szűrőszabály hozzáadása lehetőség kiválasztása után](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
+![Az IP-szűrési szabály hozzáadása lehetőség kiválasztását követően](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Adja meg az IP-szűrő szabály **nevét.** Ennek egyedi, kis- és nagybetűket nem megkülönböztető, legfeljebb 128 karakter hosszú alfanumerikus karakterláncnak kell lennie. Csak az ASCII 7 bites alfanumerikus karakterek plusz `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` fogadnak el.
+* Adja meg az IP-szűrési szabály **nevét** . Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karaktereket és `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` a rendszer fogadja el.
 
-* Adjon meg egyetlen IPv4-címet vagy IP-címblokkot CIDR jelöléssel. A CIDR 192.168.100.0/22 jelölésében például a 1024 IPv4-cím 192.168.100.0-tól 192.168.103.255-ig.
+* Adjon meg egyetlen IPv4-címet vagy IP-címet a CIDR-jelölésben. Például a CIDR 192.168.100.0/22 jelölése 1024 a 192.168.100.0 és a 192.168.103.255 közötti IPv4-címeket jelöli.
 
-* Az IP-szűrőszabály műveleteként válassza az **Engedélyezés** vagy a **Letiltás** **lehetőséget.**
+* Válassza az **Engedélyezés** vagy a **Letiltás** lehetőséget az IP-szűrési szabály **művelete** elemnél.
 
-A mezők kitöltése után válassza a **Mentés** gombot a szabály mentéséhez. Megjelenik egy figyelmeztetés, amely arról tájékoztatja, hogy a frissítés folyamatban van.
+A mezők kitöltése után kattintson a **Mentés** gombra a szabály mentéséhez. Megjelenik egy riasztás, amely értesíti, hogy a frissítés folyamatban van.
 
-![Értesítés az IP-szűrőszabály mentéséről](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
+![Értesítés IP-szűrési szabály mentéséről](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
 
-A **Hozzáadás** beállítás le van tiltva, ha eléri a legfeljebb 10 IP-szűrőszabályt.
+A **Hozzáadás** lehetőség le van tiltva, amikor eléri a legfeljebb 10 IP-szűrési szabályt.
 
-Meglévő szabály szerkesztéséhez jelölje ki a módosítani kívánt adatokat, módosítsa, majd a **Szerkesztés gombra** a szerkesztés mentéséhez.
+Meglévő szabály szerkesztéséhez válassza ki a módosítani kívánt adatait, végezze el a módosítást, majd válassza a **Mentés** lehetőséget a Szerkesztés mentéséhez.
 
 > [!NOTE]
-> Az IP-címek elutasítása megakadályozhatja, hogy más Azure-szolgáltatások (például az Azure Stream Analytics, az Azure virtuális gépek vagy a portálon lévő Eszközkezelő) kommunikáljon az IoT-központtal.
+> Az IP-címek elutasítása megakadályozhatja, hogy más Azure-szolgáltatások (például a Azure Stream Analytics, az Azure Virtual Machines vagy a portálon lévő Device Explorer) az IoT hub használatával legyenek kommunikálva.
 
 > [!WARNING]
-> Ha az Azure Stream Analytics (ASA) használatával üzeneteket olvas egy IoT-központból, ahol engedélyezve van az IP-szűrés, használja az IoT Hub-kompatibilis nevét és végpontját az ASA-kapcsolati karakterláncban.
+> Ha Azure Stream Analytics (ASA) használatával olvas be üzeneteket egy olyan IoT-hubhoz, amelyen engedélyezve van az IP-szűrés, használja a IoT Hub Event hub-kompatibilis nevét és végpontját az ASA-kapcsolati karakterláncban.
 
-## <a name="delete-an-ip-filter-rule"></a>IP-szűrőszabály törlése
+## <a name="delete-an-ip-filter-rule"></a>IP-szűrési szabály törlése
 
-IP-szűrőszabály törléséhez jelölje ki a kuka ikont a sorban, majd kattintson a **Mentés gombra.** A rendszer eltávolítja a szabályt, és menti a módosítást.
+Ha törölni szeretne egy IP-szűrési szabályt, válassza a Kuka ikont az adott sorban, majd válassza a **Mentés**lehetőséget. A szabály el lett távolítva, és a módosítás mentve lesz.
 
-![IoT Hub IP-szűrőszabályának törlése](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
+![IoT Hub IP-szűrési szabály törlése](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
 
-## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>IP-szűrők lekérése és frissítése az Azure CLI használatával
+## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>IP-szűrők beolvasása és frissítése az Azure CLI-vel
 
-Az IoT Hub IP-szűrői az [Azure CLI-n](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)keresztül lehívhatók és frissíthetők.
+A IoT Hub IP-szűrőinek lekérhető és frissíthető az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)-n keresztül.
 
-Az IoT Hub aktuális IP-szűrőinek lekéréséhez futtassa a következőket:
+A IoT Hub aktuális IP-szűrőinek lekéréséhez futtassa a következőt:
 
 ```azurecli-interactive
 az resource show -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs
 ```
 
-Ez egy JSON-objektumot ad vissza, ahol `properties.ipFilterRules` a meglévő IP-szűrők a kulcs alatt vannak felsorolva:
+Ez egy JSON-objektumot ad vissza, amelyben a meglévő IP-szűrők a `properties.ipFilterRules` kulcs alatt vannak felsorolva:
 
 ```json
 {
@@ -108,25 +108,25 @@ Ez egy JSON-objektumot ad vissza, ahol `properties.ipFilterRules` a meglévő IP
 }
 ```
 
-Új IP-szűrő hozzáadása az IoT Hubhoz:
+Ha új IP-szűrőt szeretne hozzáadni a IoT Hubhoz, futtassa a következőt:
 
 ```azurecli-interactive
 az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --add properties.ipFilterRules "{\"action\":\"Reject\",\"filterName\":\"MaliciousIP\",\"ipMask\":\"6.6.6.6/6\"}"
 ```
 
-Meglévő IP-szűrő eltávolítása az IoT Hubon, futtassa a következőket:
+A IoT Hub meglévő IP-szűrőjének eltávolításához futtassa a következőt:
 
 ```azurecli-interactive
 az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --add properties.ipFilterRules <ipFilterIndexToRemove>
 ```
 
-Vegye `<ipFilterIndexToRemove>` figyelembe, hogy meg kell felelnie az IP-szűrők rendezését az IoT Hub.Note that must correspond to the ordering of IP filters in your IoT Hub's. `properties.ipFilterRules`
+Vegye figyelembe `<ipFilterIndexToRemove>` , hogy az IP-szűrők sorrendjét meg kell egyeznie `properties.ipFilterRules`a IoT hub.
 
-## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>IP-szűrők lekérése és frissítése az Azure PowerShell használatával
+## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>IP-szűrők beolvasása és frissítése Azure PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az IoT Hub IP-szűrői lehívhatók és beállíthatók az [Azure PowerShellen](/powershell/azure/overview)keresztül.
+A IoT Hub IP-szűrőinek lekérhető és beállítható [Azure PowerShell](/powershell/azure/overview).
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
@@ -148,25 +148,25 @@ $iothubResource.Properties.ipFilterRules = @($iothubResource.Properties.ipFilter
 $iothubResource | Set-AzResource -Force
 ```
 
-## <a name="update-ip-filter-rules-using-rest"></a>IP-szűrőszabályok frissítése rest használatával
+## <a name="update-ip-filter-rules-using-rest"></a>IP-szűrési szabályok frissítése a REST használatával
 
-Az IoT Hub IP-szűrőjét is lekérheti és módosíthatja az Azure resource Provider REST-végponthasználatával. Lásd `properties.ipFilterRules` a [createorupdate metódusban.](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate)
+A IoT Hub IP-szűrőjét az Azure erőforrás-szolgáltató REST-végpontjának használatával is lekérheti és módosíthatja. Lásd `properties.ipFilterRules` : a [createorupdate metódusban](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
 
-## <a name="ip-filter-rule-evaluation"></a>IP-szűrőszabály kiértékelése
+## <a name="ip-filter-rule-evaluation"></a>IP-szűrési szabály kiértékelése
 
-Az IP-szűrőszabályok sorrendben kerülnek alkalmazásra, és az IP-címnek megfelelő első szabály határozza meg az elfogadási vagy elutasítási műveletet.
+Az IP-szűrési szabályok a sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
 
-Ha például a 192.168.100.0/22 tartományban lévő címeket szeretné elfogadni, és minden mást el szeretne utasítani, a rács első szabályának a 192.168.100.0/22 címtartományt kell elfogadnia. A következő szabálynak a 0.0.0.0/0 tartomány használatával el kell utasítania az összes címet.
+Ha például a 192.168.100.0/22-es tartományba szeretne címeket fogadni, és minden mást visszautasít, a rács első szabályának el kell fogadnia a 192.168.100.0/22 címtartományt. A következő szabálynak el kell utasítania az összes címet a 0.0.0.0/0 tartomány használatával.
 
-Az IP-szűrőszabályok sorrendjét úgy módosíthatja a rácsban, hogy a sor elején a három függőleges elemre kattint, és húzással lehúzhatja a készüléket.
+Az IP-szűrési szabályok sorrendjét megváltoztathatja a rácson úgy, hogy a sorok elején lévő három függőleges pontra kattint, és a drag and drop parancsot használja.
 
-Az új IP-szűrőszabály-sorrend mentéséhez kattintson a **Mentés gombra.**
+Az új IP-szűrési szabály sorrendjének mentéséhez kattintson a **Mentés**gombra.
 
-![Az IoT Hub IP-szűrőszabályainak sorrendjének módosítása](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
+![IoT Hub IP-szűrési szabályok sorrendjének módosítása](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Az IoT Hub képességeinek további megismeréséhez lásd:
+A IoT Hub képességeinek további megismeréséhez lásd:
 
 * [Műveletek figyelése](iot-hub-operations-monitoring.md)
-* [IoT Hub-metrikák](iot-hub-metrics.md)
+* [IoT Hub metrikák](iot-hub-metrics.md)

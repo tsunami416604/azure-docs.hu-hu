@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás apache Spark-alkalmazáshoz – Azure Event Hubs | Microsoft dokumentumok
-description: Ez a cikk az Apache Spark használatáról nyújt tájékoztatást a Kafka Azure Event Hubs szolgáltatással.
+title: Kapcsolódjon a Apache Spark-alkalmazáshoz – Azure Event Hubs | Microsoft Docs
+description: Ez a cikk tájékoztatást nyújt arról, hogyan használható a Apache Spark az Azure Event Hubs for Kafka szolgáltatással.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -16,8 +16,8 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2020
 ms.locfileid: "80632765"
 ---
-# <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Az Apache Spark-alkalmazás csatlakoztatása az Azure Event Hubs-szal
-Ez az oktatóanyag végigvezeti a Spark-alkalmazás és az Event Hubs valós idejű streamelési csatlakoztatásán. Ez az integráció anélkül engedélyezi a streamelést, hogy módosítani kellene hozzá a protokollügyfeleket, vagy saját Kafka- vagy Zookeeper-fürtöket kellene futtatnia. Az oktatóanyaghoz az Apache Spark 2.4-es vagy újabb, illetve az Apache Kafka 2.0-s vagy újabb verziójára lesz szükség.
+# <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Apache Spark-alkalmazás összekötése az Azure-Event Hubs
+Ez az oktatóanyag végigvezeti a Spark-alkalmazás a valós idejű folyamatos átvitelhez Event Hubs való csatlakoztatásának lépésein. Ez az integráció anélkül engedélyezi a streamelést, hogy módosítani kellene hozzá a protokollügyfeleket, vagy saját Kafka- vagy Zookeeper-fürtöket kellene futtatnia. Az oktatóanyaghoz az Apache Spark 2.4-es vagy újabb, illetve az Apache Kafka 2.0-s vagy újabb verziójára lesz szükség.
 
 > [!NOTE]
 > Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/).
@@ -43,7 +43,7 @@ Mielőtt nekikezdene az oktatóanyagnak, győződjön meg arról, hogy rendelkez
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
-Az Event Hubs-szolgáltatásokból való küldéshez és fogadáshoz szükség van egy Event Hubs-névtérre. A névtér és az eseményközpont létrehozásáról az [Eseményközpont létrehozása](event-hubs-create.md) című témakörben talál útmutatást. Szerezze be az Event Hubs kapcsolati sztringjét és teljes tartománynevét (FQDN) későbbi használatra. Útmutatásért lásd az [Event Hubs kapcsolati sztring lekérésével](event-hubs-get-connection-string.md) foglalkozó témakört. 
+Az Event Hubs-szolgáltatásokból való küldéshez és fogadáshoz szükség van egy Event Hubs-névtérre. A névtér és az Event hub létrehozásával kapcsolatos utasításokért tekintse meg az [Event hub létrehozása](event-hubs-create.md) című témakört. Szerezze be az Event Hubs kapcsolati sztringjét és teljes tartománynevét (FQDN) későbbi használatra. Útmutatásért lásd az [Event Hubs kapcsolati sztring lekérésével](event-hubs-get-connection-string.md) foglalkozó témakört. 
 
 ## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 Klónozza az Azure Event Hubs-adattárat, és keresse meg a `tutorials/spark` almappát:
@@ -79,7 +79,7 @@ val df_write = df.writeStream
 ```
 
 ## <a name="write-to-event-hubs-for-kafka"></a>Írás a Kafkához készült Event Hubsba
-Az Event Hubs-ba is ugyanúgy írhat, mint a Kafka.You can also write to Event Hubs as you write to Kafka. Ne felejtse el frissíteni a konfigurációt, és módosítani a **BOOTSTRAP_SERVERS** és az **EH_SASL** elemet az Event Hubs-névtér adataival.  A teljes mintakódért tekintse meg a sparkProducer.scala fájlt a GitHubon. 
+Azt is megteheti, hogy a Kafka-íráshoz hasonlóan Event Hubs is ír. Ne felejtse el frissíteni a konfigurációt, és módosítani a **BOOTSTRAP_SERVERS** és az **EH_SASL** elemet az Event Hubs-névtér adataival.  A teljes mintakódért tekintse meg a sparkProducer.scala fájlt a GitHubon. 
 
 ```scala
 df = /**Dataframe**/
@@ -99,12 +99,12 @@ df.writeStream
 
 
 ## <a name="next-steps"></a>További lépések
-Ha többet szeretne megtudni a Kafka eseményközpontjairól és eseményközpontjairól, olvassa el az alábbi cikkeket:  
+Ha többet szeretne megtudni a Kafka Event Hubséről és Event Hubsról, tekintse meg a következő cikkeket:  
 
 - [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
-- [A Kafka Connect integrálása egy eseményközponttal](event-hubs-kafka-connect-tutorial.md)
+- [A Kafka-kapcsolat integrálása az Event hubhoz](event-hubs-kafka-connect-tutorial.md)
 - [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Akka-adatfolyamok csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
-- [Az Apache Kafka fejlesztői útmutatója az Azure Event Hubs-hoz](apache-kafka-developer-guide.md)
+- [Az Akka Streams csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
+- [Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs](apache-kafka-developer-guide.md)
 

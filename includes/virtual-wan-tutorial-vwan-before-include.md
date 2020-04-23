@@ -15,8 +15,8 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "74896614"
 ---
-A konfiguráció megkezdése előtt ellenőrizze, hogy megfelel-e az alábbi feltételeknek:
+A konfiguráció elindítása előtt ellenőrizze, hogy teljesülnek-e az alábbi feltételek:
 
-* Ha már rendelkezik olyan virtuális hálózattal, amelyhez csatlakozni szeretne, ellenőrizze, hogy a helyszíni hálózat egyik alhálózata sem fedi-e át azt. A virtuális hálózat nem igényel átjáró alhálózatot, és nem rendelkezhet virtuális hálózati átjárókkal. Ha nem rendelkezik virtuális hálózattal, a cikkben ismertetett lépésekkel hozhat létre egyet.
-* Igényeljen egy IP-címtartományt az elosztó régiójában. A hub egy virtuális hálózat, és a hub régióhoz megadott címtartomány nem fedheti át a meglévő virtuális hálózatot, amelyhez csatlakozik. Nem lehet átfedésben a helyszíni kapcsolattartományokat. Ha nem ismeri a helyszíni hálózati konfigurációban található IP-címtartományokat, egyeztessen valakivel, aki meg tudja adni ezeket az adatokat.
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+* Ha már rendelkezik olyan virtuális hálózattal, amelyhez csatlakozni szeretne, ellenőrizze, hogy a helyszíni hálózat egyik alhálózata sem fedi-e egymást. A virtuális hálózat nem igényel átjáró-alhálózatot, és nem rendelkezhet virtuális hálózati átjárókkal. Ha nem rendelkezik virtuális hálózattal, létrehozhat egyet a cikkben ismertetett lépések segítségével.
+* Igényeljen egy IP-címtartományt az elosztó régiójában. A hub egy virtuális hálózat, és a hub-régióhoz megadott címtartomány nem fedi át a meglévő virtuális hálózatot, amelyhez csatlakozik. Nem fedi átfedésben a helyszíni kapcsolatokhoz kapcsolódó címtartományt is. Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtartományok körét, akkor egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek.
+* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .

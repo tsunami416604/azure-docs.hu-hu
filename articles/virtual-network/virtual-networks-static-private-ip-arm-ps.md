@@ -1,6 +1,6 @@
 ---
-title: Statikus privát IP-címmel rendelkező virtuális gép létrehozása – Azure PowerShell
-description: Ismerje meg, hogyan hozhat létre egy virtuális gépet egy privát IP-címmel a PowerShell használatával.
+title: Statikus magánhálózati IP-címmel rendelkező virtuális gép létrehozása – Azure PowerShell
+description: Megtudhatja, hogyan hozhat létre egy magánhálózati IP-címmel rendelkező virtuális gépet a PowerShell használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -23,18 +23,18 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244757"
 ---
-# <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Statikus privát IP-címmel rendelkező virtuális gép létrehozása a PowerShell használatával
+# <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Statikus magánhálózati IP-címmel rendelkező virtuális gép létrehozása a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Létrehozhat egy statikus privát IP-címmel rendelkező virtuális gépet (VM).You can create a virtual machine (VM) with a static private IP address. Rendeljen hozzá egy statikus privát IP-címet, nem pedig egy dinamikus címet, ha azt szeretné, hogy melyik cím van hozzárendelve egy virtuális géphez. További információ a [statikus privát IP-címekről.](virtual-network-ip-addresses-overview-arm.md#allocation-method) Ha egy meglévő virtuális géphez rendelt privát IP-címet dinamikusról statikusra szeretne módosítani, vagy nyilvános IP-címekkel szeretne dolgozni, olvassa el az [IP-címek hozzáadása, módosítása vagy eltávolítása című témakört.](virtual-network-network-interface-addresses.md)
+A virtuális gépet (VM) statikus magánhálózati IP-címmel is létrehozhatja. Statikus magánhálózati IP-címet rendeljen hozzá, nem pedig dinamikus címet, ha ki szeretné választani, hogy egy alhálózat melyik címét rendeli hozzá a virtuális géphez. További információ a [statikus magánhálózati IP-címekről](virtual-network-ip-addresses-overview-arm.md#allocation-method). Ha egy meglévő virtuális géphez hozzárendelt magánhálózati IP-címet szeretne módosítani dinamikusról statikusra, vagy nyilvános IP-címekkel szeretne dolgozni, tekintse meg az [IP-címek hozzáadása, módosítása vagy eltávolítása](virtual-network-network-interface-addresses.md)című témakört.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-A következő lépéseket a helyi számítógépről vagy az Azure Cloud Shell használatával hajthatja végre. A helyi számítógép használatához győződjön meg arról, hogy az [Azure PowerShell telepítve](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)van. Az Azure Cloud Shell használatához válassza a **Try It (Kipróbálás a** jobb felső sarokban) lehetőséget az alábbi parancsmező jobb felső sarkában. A Cloud Shell bejelentkezik az Azure-ba.
+A következő lépéseket a helyi számítógépről vagy a Azure Cloud Shell használatával végezheti el. A helyi számítógép használatához győződjön meg arról, hogy telepítve van a [Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). A Azure Cloud Shell használatához válassza a **kipróbálás** elemet az alábbi parancsok bármelyikének jobb felső sarkában. A Cloud Shell aláírja az Azure-t.
 
-1. Ha a Cloud Shellt használja, ugorjon a 2. Nyisson meg egy parancsmunkamenetet, és jelentkezzen be az Azure-ba a segítségével. `Connect-AzAccount`
-2. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. A következő példa létrehoz egy erőforráscsoportot az USA keleti részén az Azure régióban:
+1. Ha a Cloud Shell használja, ugorjon a 2. lépésre. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az `Connect-AzAccount`Azure-ba.
+2. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal. Az alábbi példa egy erőforráscsoportot hoz létre az USA keleti régiója Azure-régióban:
 
    ```azurepowershell-interactive
    $RgName = "myResourceGroup"
@@ -42,7 +42,7 @@ A következő lépéseket a helyi számítógépről vagy az Azure Cloud Shell h
    New-AzResourceGroup -Name $RgName -Location $Location
    ```
 
-3. Hozzon létre alhálózati konfigurációt és virtuális hálózatot a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) és a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) parancsokkal:
+3. Hozzon létre egy alhálózati konfigurációt és egy virtuális hálózatot a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) és a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) paranccsal:
 
    ```azurepowershell-interactive
    # Create a subnet configuration
@@ -62,7 +62,7 @@ A következő lépéseket a helyi számítógépről vagy az Azure Cloud Shell h
    $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
    ```
 
-4. Hozzon létre egy hálózati adaptert a virtuális hálózatban, és rendeljen hozzá egy privát IP-címet az alhálózatból a hálózati adapterhez a [New-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig) és a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) parancsokkal:
+4. Hozzon létre egy hálózati adaptert a virtuális hálózaton, és rendeljen hozzá egy magánhálózati IP-címet az alhálózatból a hálózati adapterhez a [New-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig) és a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) paranccsal:
 
    ```azurepowershell-interactive
    $IpConfigName1 = "IPConfig-1"
@@ -79,7 +79,7 @@ A következő lépéseket a helyi számítógépről vagy az Azure Cloud Shell h
      -IpConfiguration $IpConfig1
    ```
 
-5. Hozzon létre egy virtuális gép konfigurációját a [New-AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig)segítségével, majd hozza létre a virtuális gép [új-AzVM.Create](/powershell/module/az.Compute/New-azVM)a VM configuration with New-AzVM Config , and then create the VM with New-AzVM . Amikor a rendszer kéri, adjon meg egy felhasználónevet és egy jelszót, amelyet a virtuális gép bejelentkezési hitelesítő adataiként kell használni:
+5. Hozzon létre egy új VM-konfigurációt a [New-AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig), majd hozza létre a virtuális gépet a [New-AzVM](/powershell/module/az.Compute/New-azVM). Ha a rendszer kéri, adjon meg egy felhasználónevet és egy jelszót a virtuális gép bejelentkezési hitelesítő adatainak használata esetén:
 
    ```azurepowershell-interactive
    $VirtualMachine = New-AzVMConfig -VMName MyVM -VMSize "Standard_DS3"
@@ -90,17 +90,17 @@ A következő lépéseket a helyi számítógépről vagy az Azure Cloud Shell h
    ```
 
 > [!WARNING]
-> Bár hozzáadhat privát IP-címbeállításokat az operációs rendszerhez, azt javasoljuk, hogy csak a [Privát IP-cím hozzáadása az operációs rendszerhez](virtual-network-network-interface-addresses.md#private)című elolvasása után tegye meg ezt.
+> Bár a magánhálózati IP-címek beállításait az operációs rendszerhez adhatja, ezt a műveletet csak akkor javasoljuk, ha az olvasás után nem [ad hozzá magánhálózati IP-címet az operációs rendszerhez](virtual-network-network-interface-addresses.md#private).
 > 
 > 
 > <a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
 > 
 > [!IMPORTANT]
-> A virtuális gép az internetről való eléréséhez hozzá kell rendelnie egy nyilvános IP-címet a virtuális géphez. Dinamikus személyes IP-címhozzárendelésstatikus hozzárendelésre is módosítható. További információt az [IP-címek hozzáadása vagy módosítása](virtual-network-network-interface-addresses.md)című témakörben talál. Emellett azt is javasoljuk, hogy korlátozza a hálózati forgalmat a virtuális gép társításával hálózati biztonsági csoport a hálózati adapter, az alhálózat, amelyben létrehozta a hálózati adapter, vagy mindkettő. További információt a [Hálózati biztonsági csoportok kezelése (Manage network security groups) (Hálózati biztonsági csoportok kezelése) (Hálózati biztonsági csoportok kezelése) (Hálózati biztonsági csoportok](manage-network-security-group.md)
+> A virtuális gép internetről való eléréséhez nyilvános IP-címet kell hozzárendelni a virtuális géphez. A dinamikus magánhálózati IP-címek hozzárendelését is módosíthatja statikus hozzárendelésre. További információ: [IP-címek hozzáadása vagy módosítása](virtual-network-network-interface-addresses.md). Emellett azt javasoljuk, hogy korlátozza a virtuális gép hálózati forgalmát úgy, hogy hálózati biztonsági csoportot társít a hálózati adapterhez, az alhálózatot, amelyet a hálózati adaptert vagy mindkettőt létrehozott. Részletekért lásd: [hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) segítségével eltávolíthatja az erőforráscsoportot és az összes benne lévő erőforrást:
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -108,5 +108,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [magánhálózati IP-címekről,](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) és egy [statikus privát IP-cím](virtual-network-network-interface-addresses.md#add-ip-addresses) hozzárendelése egy Azure virtuális géphez.
-- További információ a [Linux és](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [windowsos](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek létrehozásáról.
+- További információk a [magánhálózati IP-címekről](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) és a [statikus magánhálózati IP-](virtual-network-network-interface-addresses.md#add-ip-addresses) címek egy Azure-beli virtuális géphez való hozzárendeléséről.
+- További információ a [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Windows rendszerű](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek létrehozásáról.

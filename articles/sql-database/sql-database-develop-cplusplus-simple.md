@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás AZ SQL-adatbázishoz C és C++ használatával
-description: Ebben a gyorsindításban a mintakód segítségével egy modern alkalmazást hozhat létre C++ technológiával, és amelyet egy hatékony relációs adatbázis támogat a felhőben az Azure SQL Database használatával.
+title: Kapcsolódás SQL Database C és C++ használatával
+description: Ebben a rövid útmutatóban a mintakód segítségével modern alkalmazást hozhat létre C++ nyelven, és egy hatékony, a felhőben található, a Azure SQL Databaset használó, nagy teljesítményű kapcsolatot biztosító adatbázist támogat.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -18,70 +18,70 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/01/2020
 ms.locfileid: "80529222"
 ---
-# <a name="connect-to-sql-database-using-c-and-c"></a>Csatlakozás AZ SQL-adatbázishoz C és C++ használatával
+# <a name="connect-to-sql-database-using-c-and-c"></a>Kapcsolódás SQL Database C és C++ használatával
 
-Ez a bejegyzés az Azure SQL DB-hez csatlakozni próbáló C és C++ fejlesztőknek szól. Szakaszokra van bontva, így arra a szakaszra ugorhat, amely a legjobban megragadja az érdeklődését.
+Ez a bejegyzés a C és C++ fejlesztők számára készült, akik megpróbálnak csatlakozni az Azure SQL-ADATBÁZIShoz. Szakaszokra bontva, így a legjobban felhasználható szakaszra ugorhat.
 
 ## <a name="prerequisites-for-the-cc-tutorial"></a>A C/C++ oktatóanyag előfeltételei
 
 Győződjön meg róla, hogy rendelkezik az alábbi elemekkel:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, regisztrálhat az [Azure ingyenes próbaverziójára](https://azure.microsoft.com/pricing/free-trial/).
-* [Visual Studio](https://www.visualstudio.com/downloads/). A minta létrehozásához és futtatásához telepítenie kell a C++ nyelvi összetevőket.
-* [Visual Studio Linux fejlesztés](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Ha Linuxon dolgozik, telepítenie kell a Visual Studio Linux bővítményt is.
+* [Visual Studio](https://www.visualstudio.com/downloads/). A minta létrehozásához és futtatásához telepítenie kell a C++ nyelvi összetevőit.
+* A [Visual Studio Linux fejlesztése](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Ha Linux rendszeren fejleszt, a Visual Studio Linux-bővítményt is telepítenie kell.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database és SQL Server virtuális gépeken
-Az Azure SQL a Microsoft SQL Server kiszolgálóra épül, és úgy lett kialakítva, hogy magas rendelkezésre állású, nagy teljesítményű és méretezhető szolgáltatást nyújtson. Az SQL Azure használatának számos előnye van a saját, a helyszínen futó adatbázison keresztül. Az SQL Azure-ral nem kell telepítenie, beállítani, karbantartania vagy kezelnie az adatbázist, hanem csak az adatbázis tartalmát és szerkezetét. Az olyan adatbázisok, mint a hibatűrés és a redundancia jellemző dolgok mind be vannak építve.
+Az Azure SQL Microsoft SQL Server épül, és magas rendelkezésre állást, teljesítményt és skálázható szolgáltatást biztosít. Számos előnnyel jár a SQL Azure használata a helyszíni adatbázison keresztül. A SQL Azure nem kell telepítenie, beállítania, karbantartani vagy kezelnie az adatbázist, de csak az adatbázis tartalmát és szerkezetét. Az olyan adatbázisok esetében, mint például a hibatűrés és a redundancia, az olyan általános dolgok, amiket az összes beépített.
 
-Az Azure jelenleg két lehetőség üzemelteti az SQL server számítási feladatok: Azure SQL-adatbázis, adatbázis szolgáltatásként és SQL-kiszolgáló virtuális gépeken (VM). Nem fogunk részletekbe bocsátkozni a kettő közötti különbségekről, kivéve, hogy az Azure SQL-adatbázis a legjobb választás az új felhőalapú alkalmazások számára, hogy kihasználhassa a felhőszolgáltatások által nyújtott költségmegtakarítást és teljesítményoptimalizálást. Ha azt fontolgatja, hogy áttelepíti vagy kiterjeszti a helyszíni alkalmazásokat a felhőre, az Azure virtuális gépen lévő SQL-kiszolgáló jobban kiműködhet az Ön számára. Ha a cikk hez a dolgok egyszerűek maradnak, hozzon létre egy Azure SQL-adatbázist.
+Az Azure jelenleg két lehetőséget kínál az SQL Server számítási feladatainak üzemeltetésére: az Azure SQL Database-t, az adatbázis-szolgáltatást és az SQL Servert Virtual Machineson (VM). Nem fogjuk részletesen megjelenni a két különbség között, kivéve, hogy az Azure SQL Database a legjobb megoldás az új felhőalapú alkalmazások számára, hogy kihasználhassa a Cloud Services által nyújtott költségmegtakarítást és a teljesítmény optimalizálását. Ha a helyszíni alkalmazások felhőbe való áttelepítését vagy kiterjesztését tervezi, az Azure-beli virtuális gépen futó SQL Server jobban dolgozhat Önnek. A cikk egyszerű megtartásához hozzon létre egy Azure SQL Database-adatbázist.
 
 ## <a name="data-access-technologies-odbc-and-ole-db"></a><a id="ODBC"></a>Adatelérési technológiák: ODBC és OLE DB
-Az Azure SQL DB-hez való csatlakozás nem különbözik, és jelenleg két módon lehet csatlakozni az adatbázisokhoz: ODBC (Open Database connectivity) és OLE DB (Objektumcsatolás és -beágyazás i. adatbázis). Az elmúlt években a Microsoft az [ODBC-hez igazodott a natív relációs adatok eléréséhez.](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/) ODBC viszonylag egyszerű, és sokkal gyorsabb, mint az OLE DB. Az egyetlen kikötés itt az, hogy ODBC nem használ egy régi C-stílusú API.The only caveat here is that ODBC does use an old C-style API.
+Az Azure SQL DB-hez való csatlakozás nem különbözik, és jelenleg kétféleképpen lehet csatlakozni az adatbázisokhoz: ODBC (nyílt adatbázis-kapcsolat) és OLE DB (objektumok összekapcsolása és beágyazási adatbázis). Az elmúlt években a Microsoft az ODBC-vel igazította a [natív kapcsolati adathozzáférést](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/). Az ODBC viszonylag egyszerű, és sokkal gyorsabb, mint a OLE DB. Az egyetlen kivétel az, hogy az ODBC a régi C stílusú API-t használja.
 
-## <a name="step-1--creating-your-azure-sql-database"></a><a id="Create"></a>1. lépés: Az Azure SQL-adatbázis létrehozása
-Tekintse meg az [első lépések lapot,](sql-database-single-database-get-started.md) hogy hogyan hozhat létre mintaadatbázist.  Másik lehetőségként kövesse ezt a [rövid, kétperces videót](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) egy Azure SQL-adatbázis létrehozásához az Azure Portalhasználatával.
+## <a name="step-1--creating-your-azure-sql-database"></a><a id="Create"></a>1. lépés: a Azure SQL Database létrehozása
+Tekintse meg az [első lépéseket ismertető oldalt](sql-database-single-database-get-started.md) , amelyből megtudhatja, hogyan hozhat létre egy mintaadatbázis-adatbázist.  Azt is megteheti, hogy ezt a [rövid két perces videót](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) használja az Azure Portal használatával létrehozott Azure SQL Database-adatbázis létrehozásához.
 
-## <a name="step-2--get-connection-string"></a><a id="ConnectionString"></a>2. lépés: Kapcsolati karakterlánc bekése
-Az Azure SQL-adatbázis kiépítése után el kell végeznie a következő lépéseket a kapcsolati adatok meghatározásához és az ügyfél IP-címének hozzáadásához a tűzfalhoz való hozzáféréshez.
+## <a name="step-2--get-connection-string"></a><a id="ConnectionString"></a>2. lépés: a kapcsolatok karakterláncának beolvasása
+Az Azure SQL Database üzembe helyezése után el kell végeznie az alábbi lépéseket a kapcsolódási adatok meghatározásához és az ügyfél IP-címének a tűzfal-hozzáféréshez való hozzáadásához.
 
-Az [Azure Portalon](https://portal.azure.com/)nyissa meg az Azure SQL-adatbázis ODBC-kapcsolati karakterláncát az adatbázis áttekintő szakaszának részeként felsorolt **adatbázis-kapcsolati karakterláncok megjelenítése** használatával:
+A [Azure Portal](https://portal.azure.com/)az adatbázis áttekintés szakaszának részeként megjelenített **adatbázis-kapcsolati karakterláncok megjelenítésével** nyissa meg az Azure SQL Database ODBC-kapcsolati karakterláncát:
 
 ![ODBCConnectionString](./media/sql-database-develop-cplusplus-simple/azureportal.png)
 
 ![ODBCConnectionStringProps](./media/sql-database-develop-cplusplus-simple/dbconnection.png)
 
-Másolja az **ODBC (Tartalmazza a Node.js fájlt) [SQL-hitelesítés]** karakterlánc tartalmára. Ezt a karakterláncot később használjuk a C++ ODBC parancssori értelmezőből való csatlakozáshoz. Ez a karakterlánc olyan részleteket tartalmaz, mint például az illesztőprogram, a kiszolgáló és az adatbázis egyéb kapcsolati paraméterei.
+Másolja az **ODBC (tartalmazza a Node. js fájlt) [SQL Authentication]** karakterláncot. Ezt a karakterláncot később használjuk a C++ ODBC parancssori tolmácsból való kapcsolódáshoz. Ez a karakterlánc részletes adatokat tartalmaz, például az illesztőprogramot, a kiszolgálót és az egyéb adatbázis-kapcsolati paramétereket.
 
-## <a name="step-3--add-your-ip-to-the-firewall"></a><a id="Firewall"></a>3. lépés: Az IP hozzáadása a tűzfalhoz
-Nyissa meg az adatbázis-kiszolgáló tűzfalszakaszát, és adja hozzá az [ügyfél IP-címét a tűzfalhoz az alábbi lépésekkel,](sql-database-configure-firewall-settings.md) hogy megbizonyosodjon arról, hogy sikeres kapcsolatot tudunk létesíteni:
+## <a name="step-3--add-your-ip-to-the-firewall"></a><a id="Firewall"></a>3. lépés: az IP-cím hozzáadása a tűzfalhoz
+Nyissa meg az adatbázis-kiszolgáló tűzfal szakaszát, és adja hozzá az [ügyfél IP-címét a tűzfalhoz ezekkel a lépésekkel](sql-database-configure-firewall-settings.md) , és ellenőrizze, hogy sikerült-e sikeres kapcsolatot létesíteni:
 
 ![AddyourIPWindow](./media/sql-database-develop-cplusplus-simple/ip.png)
 
-Ezen a ponton konfigurálta az Azure SQL DB-t, és készen áll a C++ kódból való csatlakozásra.
+Ekkor konfigurálta az Azure SQL DB-t, és készen áll a C++-kódból való kapcsolódásra.
 
-## <a name="step-4-connecting-from-a-windows-cc-application"></a><a id="Windows"></a>4. lépés: Csatlakozás Windows C/C++ alkalmazásból
-Könnyedén csatlakozhat az [Azure SQL DB-hoz az ODBC windowsos használatával ezzel a visual](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29) studióval épülő mintával. A minta egy ODBC parancssori értelmezőt valósít meg, amely az Azure SQL DB-hez való csatlakozáshoz használható. Ez a minta egy adatbázis-forrásnévfájl (DSN) fájlt vesz fel parancssori argumentumként, vagy az Azure Portalról korábban másolt részletes kapcsolati karakterláncot. A projekt tulajdonságlapjának létrehozása és a kapcsolati karakterlánc beillesztése parancsargumentumként az itt látható módon:
+## <a name="step-4-connecting-from-a-windows-cc-application"></a><a id="Windows"></a>4. lépés: csatlakozás Windows C/C++ alkalmazásból
+Az Azure SQL-ADATBÁZIShoz egyszerűen kapcsolódhat az [ODBC használatával a Windowsban](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29) a Visual Studióval építhető minta használatával. A minta egy ODBC parancssori tolmácsot valósít meg, amely az Azure SQL-ADATBÁZIShoz való kapcsolódáshoz használható. Ez a példa egy adatbázis forrásának (DSN) fájlját veszi igénybe parancssori argumentumként, vagy pedig a korábban a Azure Portalból másolt részletes kapcsolatok sztringjét. Hozza létre a projekt tulajdonságlapját, és illessze be a (z) paramétert az itt látható módon:
 
 ![DSN Propsfile](./media/sql-database-develop-cplusplus-simple/props.png)
 
-Győződjön meg arról, hogy az adatbázis kapcsolati karakterláncának részeként adja meg az adatbázis megfelelő hitelesítési adatait.
+Győződjön meg arról, hogy a megfelelő hitelesítési adatokat adja meg az adatbázishoz az adatbázis-kapcsolati karakterlánc részeként.
 
-Indítsa el az alkalmazást a létrehozásához. A sikeres kapcsolatot érvényesítő következő ablaknak kell megtekintenie. Néhány alapvető SQL-parancsot is futtathat, **például táblát hozhat létre** az adatbázis-kapcsolat érvényesítéséhez:
+Indítsa el az alkalmazást a létrehozásához. A sikeres kapcsolatok érvényesítéséhez a következő ablaknak kell megjelennie. Az adatbázis-kapcsolat érvényesítéséhez olyan alapszintű SQL-parancsokat is futtathat, mint például a **create Table (tábla létrehozása** ):
 
 ![SQL-parancsok](./media/sql-database-develop-cplusplus-simple/sqlcommands.png)
 
-Másik lehetőségként létrehozhat egy DSN-fájlt a varázsló val, amely akkor indul el, ha nincs megadva parancsargumentum. Javasoljuk, hogy próbálja meg ezt a lehetőséget is. Ezt a DSN-fájlt használhatja az automatizáláshoz és a hitelesítési beállítások védelméhez:
+Azt is megteheti, hogy létrehoz egy DSN-fájlt a varázsló segítségével, amely akkor indul el, ha nincs megadva parancs argumentum. Azt javasoljuk, hogy ezt a lehetőséget is kipróbálhatja. Ezt a DSN-fájlt használhatja az automatizáláshoz és a hitelesítési beállítások védelméhez:
 
 ![DSN-fájl létrehozása](./media/sql-database-develop-cplusplus-simple/datasource.png)
 
-Gratulálunk! Ezzel sikeresen csatlakozott az Azure SQL-hez a C++ és az ODBC használatával Windows rendszeren. Folytathatja az olvasást, hogy ugyanezt tegye a Linux platformon is.
+Gratulálunk! Mostantól sikeresen csatlakozott az Azure SQL-hez a C++ és az ODBC használatával Windows rendszeren. A Linux platformon is megteheti az olvasást.
 
-## <a name="step-5-connecting-from-a-linux-cc-application"></a><a id="Linux"></a>5. lépés: Csatlakozás Linux C/C++ alkalmazásból
-Abban az esetben, ha még nem hallotta a híreket, a Visual Studio most lehetővé teszi a C++ Linux alkalmazás fejlesztését is. Erről az új forgatókönyvről a [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) blogban olvashat. A Linux hoz való építéshez egy távoli gépre van szükség, ahol a Linux disztribúció fut. Ha nem rendelkezik elérhetővel, a Linux Azure virtuális gépek használatával gyorsan [beállíthatja.](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## <a name="step-5-connecting-from-a-linux-cc-application"></a><a id="Linux"></a>5. lépés: csatlakozás Linux C/C++-alkalmazásból
+Ha még nem hallotta a híreket, a Visual Studio mostantól lehetővé teszi a C++ Linux-alkalmazások fejlesztését is. Erről az új forgatókönyvről a [Visual C++ for Linux fejlesztői](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) blogjában olvashat. A Linuxra való kiépítéshez szüksége van egy távoli gépre, amelyen a Linux-disztribúció fut. Ha még nem rendelkezik ilyennel, a [Linux Azure Virtual Machines](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával gyorsan beállíthatja a virtuális gépeket.
 
-Ebben a bemutatóban tegyük fel, hogy van egy Ubuntu 16.04 Linux disztribúció. Az itt leírt lépések nek az Ubuntu 15.10, a Red Hat 6 és a Red Hat 7-re is vonatkozniuk kell.
+Ebben az oktatóanyagban tegyük fel, hogy Ubuntu 16,04 Linux-disztribúció van beállítva. A lépéseket az Ubuntu 15,10, a Red Hat 6 és a Red Hat 7 rendszerre is alkalmazni kell.
 
-A következő lépések telepítik a distro hoz szükséges SQL és ODBC könyvtárakat:
+A következő lépésekkel telepítheti az SQL és az ODBC számára szükséges kódtárakat a disztribúcióban:
 
     sudo su
     sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/mssql-ubuntu-test/ xenial main" > /etc/apt/sources.list.d/mssqlpreview.list'
@@ -90,16 +90,16 @@ A következő lépések telepítik a distro hoz szükséges SQL és ODBC könyvt
     apt-get install msodbcsql
     apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
 
-Indítsa el a Visual Studiót. Az Eszközök -> beállítások -> Cross Platform -> Connection Manager csoportban adjon hozzá egy kapcsolatot a Linux dobozához:
+Indítsa el a Visual Studiót. Az eszközök – > lehetőségek – > platformfüggetlen – > Csatlakozáskezelő, vegyen fel egy kapcsolódást a linuxos Box-hoz:
 
 ![Eszközök beállításai](./media/sql-database-develop-cplusplus-simple/tools.png)
 
-Az SSH-n keresztüli kapcsolat létrejötte után hozzon létre egy Üres projekt (Linux) sablont:
+Miután létrejött a kapcsolat az SSH-val, hozzon létre egy üres Project-(Linux-) sablont:
 
-![Új projektsablon](./media/sql-database-develop-cplusplus-simple/template.png)
+![Új projekt sablonja](./media/sql-database-develop-cplusplus-simple/template.png)
 
-Ezután hozzáadhat egy [új C forrásfájlt, és lecserélheti erre a tartalomra](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c). Az SQLAllocHandle, AZ SQLSetConnectAttr és az SQLDriverConnect ODBC API-k használatával inicializálhatja és kapcsolatot hozhat létre az adatbázissal.
-A Windows ODBC-mintához hasonlóan le kell cserélnie az SQLDriverConnect hívást az Azure Portalról korábban másolt adatbázis-kapcsolati karakterlánc-paraméterek részleteire.
+Ezután hozzáadhat egy [új C-forrásfájlt, és lecserélheti ezt a tartalmat](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c). Az ODBC API-k SQLAllocHandle, a SQLSetConnectAttr és a SQLDriverConnect használatával inicializálhatja és létrehozhatja a kapcsolatot az adatbázissal.
+A Windows ODBC-mintához hasonlóan a SQLDriverConnect hívást is le kell cserélnie az adatbázis-kapcsolati karakterlánc paraméterei közül a Azure Portal korábban átmásolt adatokból.
 
      retcode = SQLDriverConnect(
         hdbc, NULL, "Driver=ODBC Driver 13 for SQL"
@@ -107,31 +107,31 @@ A Windows ODBC-mintához hasonlóan le kell cserélnie az SQLDriverConnect hív�
                     "yourpassword>;database=<yourdatabase>",
         SQL_NTS, outstr, sizeof(outstr), &outstrlen, SQL_DRIVER_NOPROMPT);
 
-Az utolsó dolog, amit a fordítás előtt meg kell tenni, hogy **add odbc** könyvtárfüggőségként:
+A fordítás előtt a legutolsó teendő, ha az **ODBC** -t függvénytár-függőségként adja hozzá:
 
-![ODBC hozzáadása beviteli tárként](./media/sql-database-develop-cplusplus-simple/lib.png)
+![ODBC hozzáadása bemeneti kódtárként](./media/sql-database-develop-cplusplus-simple/lib.png)
 
-Az alkalmazás elindításához hozza létre a Linux konzolt a **Hibakeresési** menüből:
+Az alkalmazás elindításához nyissa meg a Linux-konzolt a **hibakeresési** menüből:
 
-![Linux konzol](./media/sql-database-develop-cplusplus-simple/linuxconsole.png)
+![Linux-konzol](./media/sql-database-develop-cplusplus-simple/linuxconsole.png)
 
-Ha a kapcsolat sikeres volt, most látnia kell az aktuális adatbázisnevet a Linux konzolon:
+Ha sikeresen megtörtént a hozzáférés, az aktuális adatbázis neve jelenik meg a Linux-konzolon:
 
-![Linux konzolablak kimenete](./media/sql-database-develop-cplusplus-simple/linuxconsolewindow.png)
+![A Linux-konzol ablakának kimenete](./media/sql-database-develop-cplusplus-simple/linuxconsolewindow.png)
 
-Gratulálunk! Sikeresen befejezte az oktatóanyagot, és most már csatlakozhat az Azure SQL DB-hoz C++ -ból Windows és Linux platformokon.
+Gratulálunk! Sikeresen elvégezte az oktatóanyagot, és most már csatlakozhat az Azure SQL-ADATBÁZIShoz a C++ használatával Windows-és Linux-platformokon.
 
-## <a name="get-the-complete-cc-tutorial-solution"></a><a id="GetSolution"></a>A teljes C/C++ oktatóanyag-megoldás beszerezni
-A GetStarted megoldás, amely tartalmazza az összes mintát ebben a cikkben a GitHubon:
+## <a name="get-the-complete-cc-tutorial-solution"></a><a id="GetSolution"></a>A teljes C/C++ oktatóanyag-megoldás beszerzése
+Az ebben a cikkben szereplő összes mintát tartalmazó GetStarted-megoldás megtalálható a GitHubon:
 
-* [ODBC C++ Windows-minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29), Töltse le a Windows C++ ODBC mintát az Azure SQL-hez való csatlakozáshoz
-* [ODBC C++ Linux minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29), Töltse le a Linux C++ ODBC mintát az Azure SQL-hez való csatlakozáshoz
+* [ODBC C++ Windows-minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29), töltse le a Windows C++ ODBC-mintát az Azure SQL-hez való kapcsolódáshoz
+* [ODBC C++ Linux-minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29), töltse le a Linux C++ ODBC-mintát az Azure SQL-hez való kapcsolódáshoz
 
 ## <a name="next-steps"></a>További lépések
-* Az [SQL-adatbázis-fejlesztési áttekintés áttekintése](sql-database-develop-overview.md)
+* Tekintse át a [SQL Database fejlesztés áttekintését](sql-database-develop-overview.md)
 * További információ az [ODBC API-referenciáról](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 * [Tervezési minták az Azure SQL Database-t használó több-bérlős SaaS-alkalmazásokhoz](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * Fedezze fel az [SQL Database összes képességét](https://azure.microsoft.com/services/sql-database/)
 

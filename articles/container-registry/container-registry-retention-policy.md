@@ -1,6 +1,6 @@
 ---
-title: A címkézetlen jegyzékek megőrzésére vonatkozó házirend
-description: Megtudhatja, hogyan engedélyezheti az adatmegőrzési szabályzatot az Azure-tároló beállításjegyzékében, a címkézetlen jegyzékek automatikus törléséhez egy meghatározott időszak után.
+title: A címkézetlen jegyzékfájlok megőrzésére szolgáló szabályzat
+description: Megtudhatja, hogyan engedélyezheti az adatmegőrzési szabályzatot az Azure Container registryben a címkézetlen jegyzékfájlok meghatározott időszak után történő automatikus törléséhez.
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
@@ -10,99 +10,99 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "74454811"
 ---
-# <a name="set-a-retention-policy-for-untagged-manifests"></a>Adatmegőrzési házirend beállítása a címkézetlen jegyzékekhez
+# <a name="set-a-retention-policy-for-untagged-manifests"></a>Adatmegőrzési szabályzat beállítása a címkézetlen jegyzékekhez
 
-Az Azure Container Registry lehetőséget ad arra, hogy *adatmegőrzési szabályzatot* állítson be a tárolt rendszerfájllistákhoz, amelyek nem rendelkeznek társított címkékkel (*címkézetlen jegyzékek).* Ha egy adatmegőrzési házirend engedélyezve van, a beállításjegyzékben lévő címkézetlen jegyzékek a beállított napok után automatikusan törlődnek. Ez a szolgáltatás megakadályozza, hogy a beállításjegyzék olyan összetevőkkel töltse ki a hibákat, amelyekre nincs szükség, és segít a tárolási költségek megtakarításában. Ha `delete-enabled` egy címkézetlen jegyzékfájl attribútuma `false`be van állítva, a jegyzékfájl nem törölhető, és az adatmegőrzési házirend nem alkalmazható.
+Azure Container Registry lehetővé teszi az *adatmegőrzési szabályzat* beállítását olyan tárolt képjegyzékek esetében, amelyek nem rendelkeznek társított címkékkel (*címkézett jegyzékfájlokkal*). Ha egy adatmegőrzési szabály engedélyezve van, a beállításjegyzékben lévő címkézetlen jegyzékfájlok automatikusan törlődnek a megadott számú nap elteltével. Ez a szolgáltatás megakadályozza, hogy a beállításjegyzék nem szükséges összetevőkkel töltse fel a szolgáltatást, és segít a tárolási költségek megtakarításában. Ha a `delete-enabled` címkézetlen jegyzékfájl attribútuma a értékre van `false`állítva, a jegyzékfájl nem törölhető, és a megőrzési szabály nem érvényes.
 
-Használhatja az Azure Cloud Shell vagy az Azure CLI helyi telepítését a cikkben szereplő parancspéldák futtatásához. Ha helyileg szeretné használni, a 2.0.74-es vagy újabb verzió szükséges. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+Az Azure CLI Azure Cloud Shell vagy helyi telepítése segítségével futtathatja a jelen cikkben szereplő példákat. Ha helyileg szeretné használni, a 2.0.74 vagy újabb verziót kötelező megadni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 > [!IMPORTANT]
-> Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek.](#preview-limitations) Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 > [!WARNING]
-> Adatmegőrzési szabály beállítása care-törölt képadatok nem helyreállítható. Ha olyan rendszerekkel rendelkezik, amelyek a listákat tartalmazó kivonatolással lekérik a képeket (ellentétben a lemezkép nevével), ne állítson be adatmegőrzési házirendet a címkézetlen jegyzékekhez. A címkézetlen képek törlése megakadályozza, hogy ezek a rendszerek lehúzzák a képeket a rendszerleíró adatbázisból. Ahelyett, hogy a manifesztet húzná, fontolja meg egy *egyedi címkézési* rendszer elfogadását, amely [ajánlott ajánlott eljárás.](container-registry-image-tag-version.md)
+> Adatmegőrzési házirend beállítása gondossággal – törölt képadatokkal nem állítható helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne állítson be adatmegőrzési szabályt a címkézetlen jegyzékekhez. A címkézetlen lemezképek törlésével megakadályozhatja, hogy ezek a rendszerek kihúzzanak a lemezképeket a beállításjegyzékből. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás](container-registry-image-tag-version.md).
 
-## <a name="preview-limitations"></a>Előnézeti korlátozások
+## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-* Csak egy **prémium szintű** tároló beállításjegyzék konfigurálható adatmegőrzési házirenddel. A beállításjegyzék-szolgáltatási szintekről az [Azure Container Registry ska](container-registry-skus.md)című témakörben talál további információt.
-* Csak a címkézetlen jegyzékjegyzékek adatmegőrzési házirendje állítható be.
-* Az adatmegőrzési szabály jelenleg csak azokra a jegyzéklistákra vonatkozik, amelyek a házirend engedélyezése *után* nincsenek címkézve. A beállításjegyzékben meglévő, címkézetlen jegyzékfájlokra nem vonatkozik a házirend. A meglévő címkézetlen jegyzékek törléséhez tekintse meg a példákat a [Tárolórendszerképek törlése az Azure Container Registry alkalmazásban.](container-registry-delete.md)
+* Csak a **prémium** szintű tároló-beállításjegyzék állítható be adatmegőrzési házirenddel. További információ a beállításjegyzék szolgáltatási szintjeiről: [Azure Container Registry SKU](container-registry-skus.md)-ban.
+* Csak a címkézetlen jegyzékek adatmegőrzési szabályzata állítható be.
+* Az adatmegőrzési szabály jelenleg csak azokra a jegyzékfájlokra vonatkozik, amelyeket a szabályzat engedélyezése *után* címkéztek. A beállításjegyzékben meglévő címkézetlen jegyzékek nem vonatkoznak a szabályzatra. Meglévő címkézetlen jegyzékfájlok törléséhez tekintse meg a példák a [tároló lemezképének törlése a Azure Container Registry](container-registry-delete.md)-ben című témakört.
 
-## <a name="about-the-retention-policy"></a>Az adatmegőrzési szabályról
+## <a name="about-the-retention-policy"></a>Tudnivalók az adatmegőrzési szabályzatról
 
-Az Azure Container Registry a jegyzékben lévő jegyzékjegyzékek számlálására hivatkozik. Ha egy jegyzékfájl nincs címkézve, ellenőrzi az adatmegőrzési házirendet. Ha egy adatmegőrzési házirend engedélyezve van, a jegyzékfájl törlése művelet várólistára kerül, egy adott dátummal, a házirendben beállított napok számának megfelelően.
+A Azure Container Registry a beállításjegyzékben lévő jegyzékfájlok leltározását végzi. Ha egy jegyzékfájl címkézetlen, ellenőrzi az adatmegőrzési szabályt. Ha egy adatmegőrzési szabály engedélyezve van, egy jegyzékfájl törlési művelete várólistára kerül, egy adott dátummal, a szabályzatban beállított napok száma szerint.
 
-Egy külön várólista-kezelési feladat folyamatosan feldolgozza az üzeneteket, szükség szerint skálázva. Tegyük fel például, hogy két, 1 óra különbséggel lévő jegyzékben címkézetlen két jegyzéket címkézett, 30 napos adatmegőrzési házirenddel. Két üzenet lenne várólistára. Ezután 30 nappal később, körülbelül 1 óra különbséggel az üzenetek et a rendszer lekéri a várólistából, és feldolgozza, feltételezve, hogy a házirend még érvényben van.
+Egy külön üzenetsor-kezelési feladatokkal folyamatosan dolgozza fel az üzeneteket, igény szerint méretezhető. Tegyük fel például, hogy egy 30 napos adatmegőrzési szabályzattal rendelkező beállításjegyzékben a két jegyzékfájlt (1 óra) megcímkézte. Két üzenet várólistára kerül. Ezután 30 nappal később, körülbelül 1 órával az üzenetek lekérése a sorból és a feldolgozás után történik, feltételezve, hogy a házirend még érvényben volt.
 
-## <a name="set-a-retention-policy---cli"></a>Adatmegőrzési szabály beállítása - CLI
+## <a name="set-a-retention-policy---cli"></a>Adatmegőrzési szabály beállítása – parancssori felület
 
-A következő példa bemutatja, hogyan használhatja az Azure CLI-t a nem címkézett jegyzékek adatmegőrzési szabályzatának beállítására.
+Az alábbi példa bemutatja, hogyan állíthatja be a beállításjegyzékben az Azure CLI használatával a címkézetlen jegyzékfájlok megőrzési szabályát.
 
-### <a name="enable-a-retention-policy"></a>Adatmegőrzési házirend engedélyezése
+### <a name="enable-a-retention-policy"></a>Adatmegőrzési szabályzat engedélyezése
 
-Alapértelmezés szerint nincs adatmegőrzési szabály beállítva a tároló beállításjegyzékében. Adatmegőrzési szabályzat beállítása vagy frissítése, futtassa az [az acr config megőrzési frissítő][az-acr-config-retention-update] parancsot az Azure CLI.To set or update a retention policy, run the az acr config retention update command in the Azure CLI. 0 és 365 között megadhat néhány napot a címkézetlen jegyzékek megőrzéséhez. Ha nem ad meg napokszámát, a parancs 7 napos alapértelmezett értéket állít be. A megőrzési időszak után a rendszerleíró adatbázisban lévő összes címkézetlen jegyzék automatikusan törlődik.
+Alapértelmezés szerint a tároló-beállításjegyzékben nincs beállítva adatmegőrzési szabály. Adatmegőrzési szabály beállításához vagy frissítéséhez futtassa az az [ACR config adatmegőrzési frissítés][az-acr-config-retention-update] parancsot az Azure CLI-ben. 0 és 365 közötti napokat is megadhat a címkézetlen jegyzékfájlok megőrzéséhez. Ha nem adja meg a napok számát, a parancs alapértelmezés szerint 7 napot állít be. A megőrzési időtartam után a beállításjegyzékben szereplő összes címkézetlen jegyzékfájl automatikusan törlődik.
 
-A következő példa 30 napos adatmegőrzési házirendet állít be a rendszerleíró *adatbázisban*lévő címkézetlen jegyzékek esetében:
+A következő példa egy 30 napos adatmegőrzési szabályzatot állít be címkézetlen jegyzékekhez a beállításjegyzék *myregistry*:
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 30 --type UntaggedManifests
 ```
 
-A következő példa beállítja a házirendet, hogy törölje a jegyzékben, amint az nem címkézett. Hozza létre ezt a házirendet 0 napos megőrzési idő beállításával. 
+A következő példa egy szabályzatot állít be a beállításjegyzékben lévő összes jegyzékfájl törlésére, amint a címke fel van jelölve. Hozza létre ezt a házirendet 0 napos megőrzési időtartam beállításával. 
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 0 --type UntaggedManifests
 ```
 
-### <a name="validate-a-retention-policy"></a>Adatmegőrzési szabály ellenőrzése
+### <a name="validate-a-retention-policy"></a>Adatmegőrzési szabály érvényesítése
 
-Ha az előző házirendet 0 napos megőrzési idővel engedélyezi, gyorsan ellenőrizheti, hogy a címkézetlen jegyzékek törlődnek-e:
+Ha az előző szabályzatot 0 napos megőrzési időtartammal engedélyezi, gyorsan ellenőrizheti, hogy a címkézetlen jegyzékfájlok törlődnek-e:
 
-1. Nyomjon le `hello-world:latest` egy tesztlemezképet a rendszerleíró adatbázisba, vagy helyettesítsen egy másik, ön által kiválasztott tesztképet.
-1. A rendszerkép címkézésének `hello-world:latest` visszavonása például az az [acr repository untag][az-acr-repository-untag] paranccsal. A címkézetlen jegyzékfájl a rendszerleíró adatbázisban marad.
+1. Küldjön le egy `hello-world:latest` képképet a beállításjegyzékbe, vagy cserélje le egy másik, tetszés szerinti tesztelési képet.
+1. Jelölését a `hello-world:latest` képet, például az az [ACR adattár jelölését][az-acr-repository-untag] parancs használatával. A címkézetlen jegyzékfájl a beállításjegyzékben marad.
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```
-1. Néhány másodpercen belül a címkézetlen jegyzékfájl törlődik. A törlést a jegyzékjegyzékek listázásával ellenőrizheti a tárházban, például az [az acr repository show-manifests][az-acr-repository-show-manifests] paranccsal. Ha a tesztkép volt az egyetlen a tárházban, maga a tárház törlődik.
+1. Néhány másodpercen belül töröljük a címkézetlen jegyzékfájlt. A törlést a tárház jegyzékfájlok listázásával ellenőrizheti, például az az [ACR repository show-Manifests][az-acr-repository-show-manifests] parancs használatával. Ha a rendszerkép csak egyetlen a tárházban, a tárház törlődik.
 
-### <a name="disable-a-retention-policy"></a>Adatmegőrzési házirend letiltása
+### <a name="disable-a-retention-policy"></a>Adatmegőrzési szabály letiltása
 
-A rendszerleíró adatbázisban beállított adatmegőrzési házirend megtekintéséhez futtassa az [az acr config retention show][az-acr-config-retention-show] parancsot:
+Ha meg szeretné tekinteni a beállításjegyzékben beállított adatmegőrzési szabályzatot, futtassa az az [ACR config adatmegőrzési show][az-acr-config-retention-show] parancsot:
 
 ```azurecli
 az acr config retention show --registry myregistry
 ```
 
-Ha le szeretne tiltani egy adatmegőrzési házirendet egy beállításjegyzékben, futtassa az [azacr config retention update][az-acr-config-retention-update] parancsot, és állítsa be a következőt: `--status disabled`
+Ha le szeretne tiltani egy adatmegőrzési szabályt egy beállításjegyzékben, futtassa az az [ACR config megőrzési frissítés][az-acr-config-retention-update] parancsot, és állítsa be `--status disabled`a következőt:
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests
 ```
 
-## <a name="set-a-retention-policy---portal"></a>Adatmegőrzési szabály beállítása - portál
+## <a name="set-a-retention-policy---portal"></a>Adatmegőrzési szabályzat beállítása – portál
 
-A beállításjegyzék adatmegőrzési szabályzatát az [Azure Portalon](https://portal.azure.com)is beállíthatja. A következő példa bemutatja, hogyan használhatja a portált a nem címkézett jegyzékek adatmegőrzési házirendjének beállítására.
+A beállításjegyzék adatmegőrzési házirendjét is beállíthatja a [Azure Portalban](https://portal.azure.com). A következő példa azt mutatja be, hogyan használható a portál a címkézetlen jegyzékfájlok megőrzési szabályának beállítására a beállításjegyzékben.
 
-### <a name="enable-a-retention-policy"></a>Adatmegőrzési házirend engedélyezése
+### <a name="enable-a-retention-policy"></a>Adatmegőrzési szabályzat engedélyezése
 
-1. Keresse meg az Azure-tároló beállításjegyzékét. A **Házirendek**csoportban válassza **az Adatmegőrzés** (előzetes verzió) lehetőséget.
-1. Az **Állapot csoportban**válassza **az Engedélyezve**lehetőséget.
-1. A címkézetlen jegyzékek megőrzéséhez jelöljön ki néhány napot 0 és 365 között. Kattintson a **Mentés** gombra.
+1. Navigáljon az Azure Container Registry szolgáltatáshoz. A **házirendek**területen válassza a **megőrzés** (előzetes verzió) lehetőséget.
+1. Az **állapot**területen válassza az **engedélyezve**lehetőséget.
+1. A címkézetlen jegyzékfájlok megőrzéséhez válassza ki a 0 és 365 közötti napok számát. Kattintson a **Mentés** gombra.
 
-![Adatmegőrzési házirend engedélyezése az Azure Portalon](media/container-registry-retention-policy/container-registry-retention-policy01.png)
+![Adatmegőrzési szabályzat engedélyezése Azure Portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
-### <a name="disable-a-retention-policy"></a>Adatmegőrzési házirend letiltása
+### <a name="disable-a-retention-policy"></a>Adatmegőrzési szabály letiltása
 
-1. Keresse meg az Azure-tároló beállításjegyzékét. A **Házirendek**csoportban válassza **az Adatmegőrzés** (előzetes verzió) lehetőséget.
-1. Az **Állapot csoportban**válassza **a Letiltva**lehetőséget. Kattintson a **Mentés** gombra.
+1. Navigáljon az Azure Container Registry szolgáltatáshoz. A **házirendek**területen válassza a **megőrzés** (előzetes verzió) lehetőséget.
+1. Az **állapot**területen válassza a **Letiltva**lehetőséget. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [képek és adattárak azure](container-registry-delete.md) container registry szolgáltatásában való törlésének lehetőségeiről
+* További információ a [lemezképek és adattárak Azure Container Registry való törlésének](container-registry-delete.md) lehetőségeiről
 
-* A kijelölt képek és jegyzékek [automatikus törlése](container-registry-auto-purge.md) a rendszerleíró adatbázisból
+* Megtudhatja, hogyan lehet [automatikusan törölni](container-registry-auto-purge.md) a kijelölt lemezképeket és jegyzékeket egy beállításjegyzékből
 
-* További információ a [képek és jegyzékek rendszerleíró](container-registry-image-lock.md) adatbázisban való zárolásának lehetőségeiről
+* További információ a [lemezképek és](container-registry-image-lock.md) a jegyzékek beállításjegyzékben való zárolásának lehetőségeiről
 
 <!-- LINKS - external -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

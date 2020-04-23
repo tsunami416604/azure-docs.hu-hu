@@ -16,42 +16,42 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "77123153"
 ---
-### <a name="general-availability-and-preview-comparison"></a>Általános elérhetőség és előnézeti összehasonlítás
+### <a name="general-availability-and-preview-comparison"></a>Általános elérhetőség és előzetes verzió összehasonlítása
 
-Az alábbi táblázat összefoglalja az Azure Time Series Insights általános rendelkezésre állása (GA) és az előzetes verziók közötti számos kulcsfontosságú különbséget.
+Az alábbi táblázat a Azure Time Series Insights általánosan elérhető (GA) és az előzetes verziójú példányok közötti főbb különbségeket foglalja össze.
 
 | | FE | Előzetes verzió |
 | --- | --- | ---|
-| Első osztályú polgár | Eseményközpontú | Idősorozat-centrikus |
-| Szemantikai érvelés | Alacsony szintű (referenciaadatok) | Magas szintű (modellek) |
-| Adatkörnyezet-szinkronizálás | Nem eszközszint | Eszköz- és nem eszközszint |
-| Számítási logikai tárolás | Nem | A típusváltozókban tárolt modell része |
-| Tárolás és hozzáférés-vezérlés | Nem | Engedélyezve a modellen keresztül |
-| Összesítések/mintavétel | Nem | Esemény súlyozása és idősúlyozott |
-| Jelrekonstrukció | Nem | Interpoláció |
-| Származtatott idősorok gyártása | Nem | Igen, egyesítések és illesztések |
-| Nyelvi rugalmasság | Nem kompozható | Kompozható |
-| Kifejezés nyelve | Predikátumkarakterlánc | Idősorozat-kifejezések (predikátumkarakterláncok, értékek, kifejezések és függvények) |
+| Első osztályú polgár | Esemény-központú | Idősorozat-központú |
+| Szemantikai indoklás | Alacsony szintű (hivatkozási adatértékek) | Magas szintű (modellek) |
+| Az adatcontextualization | Nem eszköz szint | Eszköz és nem eszköz szintje |
+| Számítási logikai tároló | Nem | Típus változói a modell részeként tárolva |
+| Tárolás és hozzáférés-vezérlés | Nem | Modellen keresztül engedélyezve |
+| Összesítések/mintavételezés | Nem | Az esemény súlyozása és az idő súlyozása |
+| Jel újraépítése | Nem | Interpolációs |
+| Származtatott idősorozatok előállítása | Nem | Igen, egyesítések és illesztések |
+| Nyelvi rugalmasság | Nem komponálható | Algyűjteményeinek összefüggő |
+| Kifejezés nyelve | Predikátum karakterlánca | Idősorozat-kifejezések (predikátum-karakterláncok, értékek, kifejezések és függvények) |
 
-### <a name="property-limits"></a>Ingatlankorlátok
+### <a name="property-limits"></a>Tulajdonságok korlátai
 
-A Time Series Insights tulajdonságszámai 1000-re nőttek a ga-ban legfeljebb 800-as felső korlátról. A megadott eseménytulajdonságok megfelelő JSON-, CSV- és diagramoszlopokkal rendelkeznek, amelyeket a [Time Series Insights előzetes verziókezelőjében](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)tekinthet meg.
+Time Series Insights a tulajdonságok korlátai 1 000-re növekedtek a GA-ban lévő maximális 800. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyeket megtekinthet a [Time Series Insights Preview Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
 
 | SKU | Maximális tulajdonságok |
 | --- | --- |
-| PAYG előzetes megtekintése | 1000 tulajdonság (oszlopok) |
-| GA S1 | 600 tulajdonság (oszlopok) |
-| GA S2 | 800 tulajdonság (oszlopok) |
+| Előzetes verzió TB | 1 000 tulajdonságok (oszlopok) |
+| GA S1 | 600 tulajdonságok (oszlopok) |
+| GA S2 | 800 tulajdonságok (oszlopok) |
 
 ### <a name="event-sources"></a>Eseményforrások
 
-Példányonként legfeljebb két eseményforrás támogatott. 
+A példányok száma legfeljebb két eseményforrás esetén támogatott. 
 
-* További információ az [eseményközpont-forrás hozzáadásáról.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)
-* [Konfiguráljon egy IoT hubforrást.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)
+* Ismerje meg, hogyan [adhat hozzá egy Event hub-forrást](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
+* [IoT hub-forrás](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)konfigurálása.
 
-Alapértelmezés szerint az előzetes verziójú környezetek környezetenként legfeljebb **1 megabájt (MB/s)** sebességű be- és [bájtot támogatnak.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations) Az ügyfelek szükség esetén **legfeljebb 16 MB/s** átviteli sebességre méretezhetik az előzetes verziójú környezeteiket. Partíciónként **0,5 MB/s**a korlát. 
+Alapértelmezés szerint az [előzetes verziójú környezetek](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations) legfeljebb **1 megabájt/másodperc (MB/s)** sebességű bejövő forgalmat támogatnak. Ha szükséges, az ügyfelek akár **16 MB/s** sebességig méretezhetik az előzetes verziójú környezeteket. A partíciós korlát **0,5 MB/s**. 
 
 ### <a name="api-limits"></a>API-korlátok
 
-A Time Series Insights előzetes verziójának REST API-korlátait a [REST API referenciadokumentációja](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#limits)határozza meg.
+A Time Series Insights előzetes verziójának REST API korlátai a [REST API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#limits)dokumentációjában vannak megadva.

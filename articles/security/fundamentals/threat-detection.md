@@ -1,6 +1,6 @@
 ---
-title: Az Azure speciális veszélyészlelési szolgáltatása | Microsoft dokumentumok
-description: Ismerje meg az Azure AD Identity Protection és annak képességeit.
+title: Azure komplex veszélyforrások észlelése | Microsoft Docs
+description: Ismerkedjen meg a Azure AD Identity Protection és képességeivel.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -24,319 +24,319 @@ ms.locfileid: "75981464"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure fejlett fenyegetésészlelés
 
-Az Azure fejlett fenyegetésészlelési funkciókat kínál olyan szolgáltatásokon keresztül, mint az Azure Active Directory (Azure AD), az Azure Monitor-naplók és az Azure Security Center. A biztonsági szolgáltatások és képességek ezen gyűjteménye egyszerű és gyors módot kínál annak megértésére, hogy mi történik az Azure-környezetekben.
+Az Azure komplex veszélyforrások észlelésére szolgáló funkciókat kínál olyan szolgáltatásokon keresztül, mint az Azure Active Directory (Azure AD), a Azure Monitor a naplók és a Azure Security Center. A biztonsági szolgáltatások és képességek ezen gyűjteménye egyszerű és gyors megoldást kínál arra, hogy megértse, mi történik az Azure-beli üzembe helyezéseken belül.
 
-Az Azure a biztonság konfigurálásához és testreszabásához számos lehetőséget biztosít az alkalmazástelepítések követelményeinek megfelelően. Ez a cikk ismerteti, hogyan felel meg ezeknek a követelményeknek.
+Az Azure számos lehetőséget kínál a biztonsági beállítások konfigurálására és testreszabására az alkalmazások központi telepítésének követelményeinek kielégítése érdekében. Ebből a cikkből megtudhatja, hogyan teljesítheti ezeket a követelményeket.
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-[Az Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) az [Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) kiadásának egyik szolgáltatása, amely áttekintést nyújt a szervezet identitását érintő kockázatészlelésekről és potenciális biztonsági résekről. Az Identity Protection az Azure AD anomáliaészlelési képességeket használja, amelyek az [Azure AD rendellenes tevékenységjelentéseken](../../active-directory/active-directory-reporting-azure-portal.md)keresztül érhetők el, és új kockázatészlelési típusokat vezet be, amelyek valós idejű anomáliákat észlelnek.
+A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy [prémium szintű Azure Active Directory P2](../../active-directory/active-directory-whatis.md) kiadási funkció, amely áttekintést nyújt a szervezet identitásait érintő kockázati észlelésekről és lehetséges sebezhetőségekről. Az Identity Protection meglévő Azure AD-anomália-észlelési képességeket használ, amelyek az [Azure ad rendellenes tevékenységi jelentéseiben](../../active-directory/active-directory-reporting-azure-portal.md)érhetők el, és új kockázati észlelési típusokat vezetnek be, amelyek valós idejű rendellenességek észlelésére képesek.
 
-![Az Azure AD identitásvédelem diagramja](./media/threat-detection/azure-threat-detection-fig1.png)
+![Azure AD Identity Protection diagram](./media/threat-detection/azure-threat-detection-fig1.png)
 
-Az Identity Protection adaptív gépi tanulási algoritmusokat és heurisztikát használ az anomáliák és a kockázatészlelések észlelésére, amelyek azt jelezhetik, hogy egy identitás sérült. Ezen adatok használatával az Identity Protection jelentéseket és riasztásokat hoz létre, így megvizsgálhatja ezeket a kockázatészleléseket, és megteheti a megfelelő szervizelési vagy kockázatcsökkentési műveletet.
+Az Identity Protection adaptív gépi tanulási algoritmusokat és heurisztikus használatot alkalmaz a rendellenességek és a kockázati észlelések észlelésére, ami arra utalhat, hogy az identitás biztonsága sérült. Ezeknek az adatoknak a használatával az Identity Protection jelentéseket és riasztásokat hoz létre, így kivizsgálhatja ezeket a kockázati észleléseket, és elvégezheti a megfelelő szervizelési vagy kockázatcsökkentő műveleteket.
 
-Az Azure Active Directory identity protection több, mint egy figyelési és jelentéskészítő eszköz. A kockázatészlelések alapján az Identity Protection kiszámítja a felhasználói kockázati szintet az egyes felhasználók számára, így konfigurálhatja a kockázatalapú házirendeket a szervezet identitásainak automatikus védelmére.
+Azure Active Directory Identity Protection több, mint egy figyelési és jelentéskészítési eszköz. A kockázati észlelések alapján az Identity Protection kiszámítja az egyes felhasználókra vonatkozó felhasználói kockázati szintet, így a kockázatkezelési szabályzatokat konfigurálhatja a szervezet identitásának automatikus védelméhez.
 
-Ezek a kockázatalapú szabályzatok az Azure Active Directory és [az EMS](../../active-directory/active-directory-conditional-access-azure-portal.md)által biztosított egyéb [feltételes hozzáférési vezérlők](../../active-directory/active-directory-conditional-access-azure-portal.md) mellett automatikusan blokkolhatják vagy felajánlhatják az adaptív javítási műveleteket, amelyek magukban foglalják a jelszó-visszaállítást és a többtényezős hitelesítés kényszerítését.
+Ezek a kockázatalapú házirendek a Azure Active Directory és az [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md)által biztosított egyéb [feltételes hozzáférés-vezérlések](../../active-directory/active-directory-conditional-access-azure-portal.md) mellett automatikusan letilthatják vagy felhasználhatják az olyan adaptív szervizelési műveleteket, amelyek a jelszó-visszaállítást és a többtényezős hitelesítés kényszerítését tartalmazzák.
 
-### <a name="identity-protection-capabilities"></a>Identitásvédelmi képességek
+### <a name="identity-protection-capabilities"></a>Identity Protection-képességek
 
-Az Azure Active Directory identity protection több, mint egy figyelési és jelentéskészítő eszköz. A szervezet identitásainak védelme érdekében konfigurálhatja a kockázatalapú házirendeket, amelyek automatikusan reagálnak az észlelt problémákra, ha egy adott kockázati szintet elértek. Ezek a szabályzatok az Azure Active Directory és az EMS által biztosított egyéb feltételes hozzáférés-vezérlések mellett automatikusan blokkolhatják vagy kezdeményezhetik az adaptív javítási műveleteket, beleértve a jelszó-visszaállítást és a többtényezős hitelesítés kényszerítését.
+Azure Active Directory Identity Protection több, mint egy figyelési és jelentéskészítési eszköz. A szervezet identitásának megóvása érdekében olyan kockázatalapú házirendeket állíthat be, amelyek automatikusan válaszolnak az észlelt problémákra, amikor a rendszer elérte az adott kockázati szintet. Ezek a házirendek a Azure Active Directory és az EMS által biztosított egyéb feltételes hozzáférés-vezérlések mellett automatikusan letilthatják vagy indíthatják el az adaptív szervizelési műveleteket, beleértve a jelszó-visszaállítást és a többtényezős hitelesítés kényszerítését.
 
-Példák néhány módja annak, hogy az Azure Identity Protection segítséget nyújtson fiókjai és identitásainak védelmében:
+Néhány példa az Azure Identity Protection által a fiókok és identitások biztonságossá tételéhez:
 
-[A kockázatészlelés és a kockázatos fiókok észlelése](../../active-directory/identity-protection/overview.md)
--   Hat kockázatészlelési típus észlelése gépi tanulás és heurisztikus szabályok használatával.
--   A felhasználói kockázati szintek kiszámítása.
--   A biztonsági rések kiemelésével egyéni javaslatokat adhat az általános biztonsági helyzet javítására.
+[Kockázati észlelések és kockázatos fiókok észlelése](../../active-directory/identity-protection/overview.md)
+-   A hat kockázati észlelési típus észlelése gépi tanulással és heurisztikus szabályokkal.
+-   Felhasználói kockázati szintek kiszámítása.
+-   A biztonsági rések kiemelésével egyéni ajánlásokat adhat meg az általános biztonsági testhelyzet javításához.
 
-[Kockázatészlelések vizsgálata](../../active-directory/identity-protection/overview.md)
--   Értesítések küldése a kockázatészlelésekről.
--   Vizsgálja meg a kockázatészlelések et a releváns és kontextuális információk alapján.
--   A vizsgálatok nyomon követéséhez alapvető munkafolyamatokat biztosít.
--   Egyszerű hozzáférést biztosít a javítási műveletekhez, például a jelszó alaphelyzetbe állításához.
+[A kockázati észlelések kivizsgálása](../../active-directory/identity-protection/overview.md)
+-   Értesítések küldése a kockázati észlelésekhez.
+-   A kockázatok észlelésének vizsgálata a releváns és a környezetfüggő információk használatával.
+-   Alapvető munkafolyamatok biztosítása a vizsgálatok nyomon követéséhez.
+-   Könnyű hozzáférést biztosít a javítási műveletekhez, például a jelszó-visszaállításhoz.
 
-[Kockázatalapú, feltételes hozzáférési házirendek](../../active-directory/identity-protection/overview.md)
--   A kockázatos bejelentkezések csökkentése a bejelentkezések blokkolásával vagy a többtényezős hitelesítési kihívások megkövetelésével.
--   Kockázatos felhasználói fiókok letiltása vagy biztonságossá tétele.
--   A felhasználók regisztrációjának megkövetelése a többtényezős hitelesítéshez.
+[Kockázatalapú, feltételes hozzáférési szabályzatok](../../active-directory/identity-protection/overview.md)
+-   A kockázatos bejelentkezések enyhítése a bejelentkezések blokkolásával vagy a többtényezős hitelesítési kihívások megkövetelésével.
+-   Kockázatos felhasználói fiókok blokkolása vagy biztonságossá tétele.
+-   A többtényezős hitelesítés regisztrálásának megkövetelése a felhasználóknak.
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-Az [Azure Active Directory privilegizált identitáskezelés (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)segítségével kezelheti, szabályozhatja és figyelheti a szervezeten belüli hozzáférést. Ez a funkció hozzáférést biztosít az Azure AD és más Microsoft online szolgáltatások, például az Office 365 vagy a Microsoft Intune erőforrásaihoz.
+A [Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)segítségével felügyelheti, vezérelheti és figyelheti a szervezeten belüli hozzáférését. Ez a funkció magában foglalja az Azure AD-ban és más Microsoft-online szolgáltatásokban található erőforrásokhoz való hozzáférést, például az Office 365-et vagy Microsoft Intune.
 
-![Azure AD kiemelt identitáskezelési diagram](./media/threat-detection/azure-threat-detection-fig2.png)
+![Azure AD Privileged Identity Management diagram](./media/threat-detection/azure-threat-detection-fig2.png)
 
-A PIM segít:
+A PIM a következőket teszi lehetővé:
 
--   Értesítéseket és jelentéseket kaphat az Azure AD-rendszergazdákról, valamint a Microsoft online szolgáltatásaihoz, például az Office 365-höz és az Intune-hoz való just-in-time (JIT) felügyeleti hozzáférésről.
+-   Riasztások és jelentések beszerzése az Azure AD-rendszergazdákkal és az igény szerinti (JIT) rendszergazdai hozzáférés a Microsoft online szolgáltatások, például az Office 365 és az Intune szolgáltatáshoz.
 
--   Jelentéseket kaphat a rendszergazdai hozzáférési előzményekről és a rendszergazdai hozzárendelések változásairól.
+-   A rendszergazdai hozzáférési előzményekkel és a rendszergazdai hozzárendelések változásaival kapcsolatos jelentések beolvasása.
 
--   A kiemelt szerepkörhöz való hozzáféréssel kapcsolatos riasztások.
+-   Riasztást kaphat a Kiemelt szerepkörhöz való hozzáférésről.
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-[Az Azure Monitor naplói](../../azure-monitor/index.yml) egy Microsoft felhőalapú informatikai felügyeleti megoldás, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében. Mivel az Azure Monitor naplók felhőalapú szolgáltatásként vannak megvalósítva, az infrastruktúra-szolgáltatásokba történő minimális befektetéssel gyorsan fel- és működtetheti azt. Az új biztonsági funkciók automatikusan kézbesítve lesznek, így a rendszer megtakarítja a folyamatos karbantartási és frissítési költségeket.
+A [Azure monitor naplók](../../azure-monitor/index.yml) egy olyan Microsoft felhőalapú informatikai felügyeleti megoldás, amely segít a helyszíni és a Felhőbeli infrastruktúra felügyeletében és kezelésében. Mivel Azure Monitor naplókat felhőalapú szolgáltatásként implementálják, az infrastruktúra-szolgáltatások minimális beruházásainak köszönhetően gyorsan üzembe helyezhető. Az új biztonsági funkciók automatikusan, a folyamatos karbantartási és frissítési költségek megtakarításával lesznek elérhetők.
 
-Az értékes szolgáltatások önmagukban történő biztosítása mellett az Azure Monitor naplói integrálhatók a System Center-összetevőkkel, például a [System Center Operations Managerrel,](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/)hogy kiterjesszék a meglévő biztonságkezelési beruházásokat a felhőbe. A System Center és az Azure Monitor naplók együtt teljes körű hibrid felügyeleti élményt biztosíthatnak.
+Amellett, hogy az értékes szolgáltatásokat saját maga is biztosítja, Azure Monitor naplók integrálható a System Center-összetevőkkel, például [System Center Operations managerekkel](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), hogy kiterjessze a meglévő biztonsági felügyeleti beruházásokat a felhőbe. A System Center és a Azure Monitor naplók együtt használhatók teljes hibrid felügyeleti élmény biztosításához.
 
-### <a name="holistic-security-and-compliance-posture"></a>Holisztikus biztonsági és megfelelőségi testtartás
+### <a name="holistic-security-and-compliance-posture"></a>Holisztikus biztonsági és megfelelőségi testhelyzet
 
-A [Log Analytics biztonsági és naplózási irányítópultja](../../security-center/security-center-intro.md) átfogó képet nyújt a szervezet informatikai biztonsági helyzetéről, és beépített keresési lekérdezéseket biztosít a figyelmet igénylő, jelentős problémákra. A Biztonság és naplózás irányítópultja az Azure Monitor-naplók biztonságával kapcsolatos mindenszolgáltatás kezdőképernyője. Magas szintű betekintést tesz lehetővé a számítógépek biztonsági állapotába. Megtekintheti az összes eseményt az elmúlt 24 órából, 7 napból vagy bármely más egyéni időkeretből.
+A [Log Analytics Security and Audit irányítópult](../../security-center/security-center-intro.md) átfogó áttekintést nyújt a szervezet informatikai biztonsági állapotáról, és beépített keresési lekérdezéseket tartalmaz a jelentős problémákra, amelyek szükségesek a beavatkozáshoz. A Security and Audit irányítópult a Azure Monitor naplókban a biztonsággal kapcsolatos összes adathoz tartozó kezdőképernyő. Magas szintű betekintést tesz lehetővé a számítógépek biztonsági állapotába. Az elmúlt 24 óra, 7 nap vagy bármely más egyéni időkeret alapján is megtekintheti az összes eseményt.
 
-Az Azure Monitor naplói segítségével gyorsan és egyszerűen megismerheti az informatikai műveletek környezetében, beleértve a szoftverfrissítési értékelést, a kártevőirtó értékelést és a konfigurációs alapkonfigurációk általános biztonsági állapotát. A biztonsági napló adatai könnyen elérhetők a biztonsági és megfelelőségi naplózási folyamatok egyszerűsítése érdekében.
+Azure Monitor naplók segítségével gyorsan és könnyen megismerheti bármely környezet általános biztonsági állapotát, mindezt az IT-műveletek kontextusában, beleértve a szoftverfrissítés értékelését, a kártevők értékelését és az alapkonfigurációkat. A biztonsági naplókra vonatkozó adatszolgáltatások könnyen elérhetők a biztonsági és megfelelőségi naplózási folyamatok egyszerűsítése érdekében.
 
-![A Log Analytics biztonsági és naplózási irányítópultja](./media/threat-detection/azure-threat-detection-fig3.jpg)
+![A Log Analytics Security and Audit irányítópult](./media/threat-detection/azure-threat-detection-fig3.jpg)
 
-A Log Analytics biztonsági és naplózási irányítópultja négy fő kategóriába sorolható:
+A Log Analytics Security and Audit irányítópult négy fő kategóriába van rendezve:
 
--   **Biztonsági tartományok:** Lehetővé teszi a biztonsági rekordok további feltárását az idő múlásával; a rosszindulatú programok értékeléséhez való hozzáférés; aktualizálási értékelések; a hálózati biztonság, az identitás és a hozzáférési információk megtekintése; a biztonsági eseményekkel rendelkező számítógépek megtekintése; és gyorsan elérheti az Azure Security Center irányítópultját.
+-   **Biztonsági tartományok**: lehetővé teszi a biztonsági rekordok további megismerését az idő múlásával; hozzáférés a kártevők értékeléséhez; frissítési felmérések; hálózati biztonsági, identitási és hozzáférési információk megtekintése; biztonsági eseményekkel rendelkező számítógépek megtekintése; és gyorsan hozzáférhet a Azure Security Center irányítópulthoz.
 
--   **Figyelemre méltó problémák:** Lehetővé teszi az aktív problémák számának és súlyosságának gyors azonosítását.
+-   **Jelentős problémák**: lehetővé teszi az aktív problémák számának és a problémák súlyosságának gyors azonosítását.
 
--   **Észlelések (előzetes verzió)**: Lehetővé teszi a támadási minták azonosítását a biztonsági riasztások megjelenítésével, amint azok az erőforrásokkal szemben történnek.
+-   **Észlelések (előzetes verzió)**: lehetővé teszi a támadási minták azonosítását azáltal, hogy biztonsági riasztásokat jelenít meg az erőforrásokon.
 
--   **Fenyegetésfelderítés:** Lehetővé teszi a támadási minták azonosítását a kimenő rosszindulatú IP-forgalommal rendelkező kiszolgálók teljes számának, a rosszindulatú fenyegetés típusának és az IP-helyek térképének megjelenítésével.
+-   **Fenyegetések felderítése**: lehetővé teszi a támadási minták azonosítását úgy, hogy megjeleníti a kimenő kártékony IP-forgalmat, a kártékony veszélyforrás típusát és az IP-címek helyeinek térképét.
 
--   **Gyakori biztonsági lekérdezések**: Felsorolja a környezet figyeléséhez leggyakrabban használt biztonsági lekérdezéseket. Amikor kiválaszt egy lekérdezést, megnyílik a Keresés ablaktábla, és megjeleníti az adott lekérdezés eredményeit.
+-   **Gyakori biztonsági lekérdezések**: felsorolja a környezet figyeléséhez használható leggyakoribb biztonsági lekérdezéseket. Ha bármelyik lekérdezést kiválasztja, megnyílik a keresés ablaktábla, és megjeleníti a lekérdezés eredményét.
 
 ### <a name="insight-and-analytics"></a>Betekintés és elemzés
-Az Azure [Monitor naplók középpontjában](../../log-analytics/log-analytics-queries.md) a tárház, amely az Azure üzemelteti.
+[Azure monitor naplók](../../log-analytics/log-analytics-queries.md) középpontjában az Azure által üzemeltetett adattár található.
 
-![Insight és analytics diagram](./media/threat-detection/azure-threat-detection-fig4.png)
+![Insight and Analytics diagram](./media/threat-detection/azure-threat-detection-fig4.png)
 
-Adatokat gyűjthet a tárházba a csatlakoztatott forrásokból az adatforrások konfigurálásával és megoldások hozzáadásával az előfizetéshez.
+Adatokat gyűjt a tárházhoz a csatlakoztatott forrásokból az adatforrások konfigurálásával és a megoldások az előfizetéshez való hozzáadásával.
 
-![Az Azure Monitor naplózza az irányítópultot](./media/threat-detection/azure-threat-detection-fig5.png)
+![A Azure Monitor naplók irányítópultja](./media/threat-detection/azure-threat-detection-fig5.png)
 
-Az adatforrások és a megoldások külön rekordtípusokat hoznak létre saját tulajdonságkészlettel, de a tárház lekérdezéseiben továbbra is elemezheti őket. Ugyanazokat az eszközöket és módszereket használhatja a különböző források által gyűjtött különböző adatokkal való munkához.
+Az egyes adatforrások és megoldások külön bejegyzéstípusokat hoznak létre a saját tulajdonságokkal, de továbbra is elemezheti őket a tárházban lévő lekérdezésekben. Ugyanazokat az eszközöket és metódusokat használhatja a különböző forrásokból összegyűjtött különféle adatokkal való munkához.
 
 
-Az Azure Monitor-naplókkal való interakció nagy része az Azure Portalon keresztül történik, amely bármely böngészőben fut, és hozzáférést biztosít a konfigurációs beállításokhoz és több eszközhöz az összegyűjtött adatok elemzéséhez és kezeléséhez. A portálról a következőket használhatja:
-* [Naplókeresés,](../../log-analytics/log-analytics-queries.md) ahol lekérdezéseket hozhat létre az összegyűjtött adatok elemzéséhez.
-* [Irányítópultok](../../azure-monitor/learn/tutorial-logs-dashboards.md), amelyeket a legértékesebb keresések grafikus nézeteivel testreszabhat.
+A Azure Monitor naplókkal való interakciójának nagy része az a Azure Portal, amely bármely böngészőben fut, és hozzáférést biztosít a konfigurációs beállításokhoz és több eszközhöz, amelyekkel elemezheti és kezelheti az összegyűjtött adatokat. A portálról a következőket használhatja:
+* A [naplóban megkeresi](../../log-analytics/log-analytics-queries.md) a gyűjtött adatok elemzéséhez szükséges lekérdezéseket.
+* [Irányítópultok](../../azure-monitor/learn/tutorial-logs-dashboards.md), amelyek a legértékesebb keresések grafikus nézeteivel testreszabhatók.
 * [Megoldások](../../monitoring/monitoring-solutions.md), amelyek további funkciókat és elemzési eszközöket biztosítanak.
 
 ![Elemzési eszközök](./media/threat-detection/azure-threat-detection-fig6.png)
 
-A megoldások funkciókat adnak az Azure Monitor naplóihoz. Ezek elsősorban a felhőben futnak, és a naplóelemzési tárházban gyűjtött adatok elemzését biztosítják. A megoldások olyan új rekordtípusokat is definiálhatnak, amelyek naplókeresésekkel vagy a megoldás által a naplóelemzési irányítópulton biztosított további felhasználói felület használatával elemezhetők.
+A megoldások funkciókkal bővítik Azure Monitor naplókat. Elsősorban a felhőben futnak, és a log Analytics-tárházban összegyűjtött adatok elemzését teszik lehetővé. A megoldások olyan új bejegyzéstípusokat is meghatározhatnak, amelyeket a rendszer a naplók keresésével vagy egy, a log Analytics-irányítópulton a megoldás által biztosított további felhasználói felület használatával elemezni lehet.
 
-A Biztonsági és naplózás i irányítópult egy példa az ilyen típusú megoldásokra.
+Az Security and Audit irányítópult az ilyen típusú megoldások egyik példája.
 
-### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automatizálás és vezérlés: Riasztás a biztonsági konfigurációs eltolódásokról
+### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automatizálás és vezérlés: riasztás a biztonsági beállításokról
 
-Az Azure Automation automatizálja a felügyeleti folyamatokat a PowerShellen alapuló és a felhőben futó runbookokkal. A runbookok futtathatók a helyi adatközpontban is, és kezelhetők velük a helyi erőforrások. Az Azure Automation konfigurációkezelést biztosít a PowerShell kívánt állapotkonfigurációjával (DSC).
+Azure Automation automatizálja a felügyeleti folyamatokat a PowerShellen alapuló és a felhőben futó runbookok. A runbookok futtathatók a helyi adatközpontban is, és kezelhetők velük a helyi erőforrások. Azure Automation a PowerShell desired State Configuration (DSC) használatával biztosítja a konfiguráció felügyeletét.
 
-![Az Azure Automation-diagram](./media/threat-detection/azure-threat-detection-fig7.png)
+![Azure Automation diagram](./media/threat-detection/azure-threat-detection-fig7.png)
 
-Az Azure-ban üzemeltetett DSC-erőforrásokat létrehozhatja és kezelheti, és alkalmazhatja őket a felhőalapú és a helyszíni rendszerekre. Ezzel meghatározhatja és automatikusan kényszerítheti a konfigurációjukat, vagy jelentéseket kaphat a driftről, így biztosíthatja, hogy a biztonsági konfigurációk a házirenden belül maradjanak.
+Létrehozhatja és kezelheti az Azure-ban üzemeltetett DSC-erőforrásokat, és alkalmazhatja őket a Felhőbeli és a helyszíni rendszerekre is. Ezzel meghatározhatja és automatikusan érvényesítheti a konfigurációt, vagy jelentéseket készíthet a drift szolgáltatásban, így biztosítva, hogy a biztonsági konfigurációk a házirendben maradjanak.
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Az Azure Security Center segít megvédeni az Azure-erőforrásokat. Integrált biztonsági figyelést és házirend-kezelést biztosít az Azure-előfizetésekben. A szolgáltatáson belül az Azure-előfizetések és [az erőforráscsoportok](../../azure-resource-manager/management/manage-resources-portal.md) használatával szemben is definiálhat házirendeket a nagyobb részletesség érdekében.
+Azure Security Center segíti az Azure-erőforrások megóvását. Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetések között. A szolgáltatáson belül az Azure-előfizetések és- [erőforráscsoportok](../../azure-resource-manager/management/manage-resources-portal.md) esetében is meghatározhatja a szabályzatokat.
 
-![Az Azure Security Center diagramja](./media/threat-detection/azure-threat-detection-fig8.png)
+![Azure Security Center diagram](./media/threat-detection/azure-threat-detection-fig8.png)
 
 A Microsoft biztonsági kutatói folyamatosan figyelik a megjelenő fenyegetéseket. Rendelkezésükre áll a telemetriai adatok kiterjedt halmaza, amelyet a Microsoft a globális felhőbeli és helyszíni jelenléte során gyűjtött össze. Ezen adatkészletek széles körű és változatos gyűjteményére alapozva a Microsoft fel tudja fedezni az új támadási mintákat és trendeket a helyszíni fogyasztói és a vállalati termékeiben, valamint az online szolgáltatásaiban.
 
-Így a Security Center gyorsan frissítheti észlelési algoritmusait, mivel a támadók új és egyre kifinomultabb biztonsági réseket adnak ki. Ez a megközelítés segít lépést tartani a gyorsan változó fenyegetési környezettel.
+Így a Security Center gyorsan frissítheti az észlelési algoritmusokat, mivel a támadók új és egyre kifinomultabb biztonsági réseket szabadítanak fel. Ez a megközelítés segít lépést tartani egy gyorsan változó fenyegetési környezettel.
 
-![A Security Center fenyegetésészlelése](./media/threat-detection/azure-threat-detection-fig9.jpg)
+![Security Center fenyegetések észlelése](./media/threat-detection/azure-threat-detection-fig9.jpg)
 
-A Security Center fenyegetésészlelése úgy működik, hogy automatikusan összegyűjti a biztonsági információkat az Azure-erőforrásokból, a hálózatból és a csatlakoztatott partneri megoldásokból. Elemzi ezt az információt, több forrásból származó információkat korrelálva, hogy azonosítsa a fenyegetéseket.
+A Security Center fenyegetésészlelése úgy működik, hogy automatikusan összegyűjti a biztonsági információkat az Azure-erőforrásokból, a hálózatból és a csatlakoztatott partneri megoldásokból. Elemzi ezeket az információkat, és korrelálja a különböző forrásokból származó információkat a fenyegetések azonosítása érdekében.
 
 A Security Center prioritás szerinti sorolja be a biztonsági riasztásokat, és javaslatokat tesz a fenyegetés kiiktatására.
 
-A Security Center olyan fejlett biztonsági elemzéseket alkalmaz, amelyek messze túlmutatnak az aláírás-alapú megközelítéseken. A big data- és [gépi tanulási](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) technológiák terén elért áttörések a teljes felhőalapú háló eseményeinek kiértékelésére szolgálnak. A fejlett analitika képes észlelni azokat a fenyegetéseket, amelyeket manuális megközelítésekkel és a támadások alakulásának előrejelzésével lehetetlen lenne azonosítani. Ezeket a biztonsági elemzési típusokat a következő szakaszok ismertetik.
+A Security Center olyan fejlett biztonsági elemzéseket alkalmaz, amelyek messze túlmutatnak az aláírás-alapú megközelítéseken. A big data és a [gépi tanulási](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) technológiák áttöréseit a teljes felhőalapú hálóban lévő események kiértékelésére használják. A speciális elemzések képesek észlelni azokat a fenyegetéseket, amelyek a manuális megközelítések és a támadások alakulásának előrejelzése révén lehetetlenek. Ezek a biztonsági elemzési típusok a következő fejezetekben találhatók.
 
 ### <a name="threat-intelligence"></a>Fenyegetésészlelési intelligencia
 
-A Microsoft nak hatalmas mennyiségű globális fenyegetésfelderítési információja van.
+A Microsoft a globális fenyegetést jelentő intelligenciát jelentős mértékben elérheti.
 
-A telemetria több forrásból, például az Azure-ból, az Office 365-ből, a Microsoft CRM online-ból, a Microsoft Dynamics AX-ből, a outlook.com-ból, a MSN.com-ból, a Microsoft Digital Crimes Unit (DCU) és a Microsoft Security Response Centerből (MSRC) áramlik be.
+A telemetria több forrásból, például az Azure-ból, az Office 365-ból, a Microsoft CRM Online-ból, a Microsoft Dynamics AX-ből, a outlook.com, a MSN.com, a Microsoft Digital Crimes Unit (DCU) és a Microsoft Security Response Center (MSRC) szolgáltatásból zajlik.
 
-![Fenyegetésfelderítési megállapítások](./media/threat-detection/azure-threat-detection-fig10.jpg)
+![Fenyegetések felderítésének eredményei](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
-A kutatók olyan fenyegetésfelderítési információkat is kapnak, amelyeket megosztanak a főbb felhőszolgáltatók között, és feliratkoznak harmadik felek tőlük származó fenyegetésfelderítési hírcsatornákra. Az Azure Security Center mindezeket az adatokat fel tudja használni arra, hogy értesítse Önt az ismert kártékony elemektől eredő fenyegetésekről. Néhány példa:
+A kutatók emellett a nagy felhőalapú szolgáltatók között megosztott fenyegetést jelentő intelligenciával kapcsolatos információkat is kapnak, és előfizethetnek harmadik féltől származó veszélyforrások elleni intelligenciára. Az Azure Security Center mindezeket az adatokat fel tudja használni arra, hogy értesítse Önt az ismert kártékony elemektől eredő fenyegetésekről. Néhány példa:
 
--   **A gépi tanulás nyújtotta lehetőségek kiaknázása:** Az Azure Security Center hatalmas mennyiségű adathoz fér hozzá a felhőhálózati tevékenységről, amelyek az Azure-telepítéseket célzó fenyegetések észlelésére használhatók.
+-   **A gépi tanulás hatékonyságának kiaknázása**: Azure Security Center a Felhőbeli hálózati tevékenységekkel kapcsolatos nagy mennyiségű adattal fér hozzá, ami felhasználható az Azure-környezetek számára célzott fenyegetések észlelésére.
 
--   **Találgatásos kényszerítés észlelése:** A gépi tanulás a távoli hozzáférési kísérletek előzménymintájának létrehozására szolgál, amely lehetővé teszi a Secure Shell (SSH), a Remote Desktop Protocol (RDP) és az SQL portok elleni találgatásos támadások észlelését.
+-   **Találgatásos támadás észlelése**: a gépi tanulás a távelérési kísérletek egy korábbi mintájának létrehozására szolgál, amely lehetővé teszi, hogy észlelje a nyers támadásokat a Secure Shell (SSH), a RDP protokoll (RDP) és az SQL portokkal szemben.
 
--   **Kimenő DDoS és botnet észlelése:** A felhőbeli erőforrásokat célzó támadások közös célja, hogy ezeknek az erőforrásoknak a számítási teljesítményét más támadások végrehajtására használja.
+-   **Kimenő DDoS-és botnet-észlelés**: a felhőalapú erőforrásokra irányuló támadások általános célja, hogy az ilyen erőforrások számítási erejét a többi támadás végrehajtásához használja.
 
--   **Új viselkedéselemző kiszolgálók és virtuális gépek**: A kiszolgáló vagy a virtuális gép feltörése után a támadók sokféle technikát alkalmaznak a rosszindulatú kód végrehajtására a rendszeren, elkerülve az észlelést, biztosítva az adatmegőrzést és a biztonsági vezérlők elkerülését.
+-   **Új viselkedési elemzési kiszolgálók és virtuális gépek**: Ha egy kiszolgáló vagy virtuális gép biztonsága sérül, a támadók számos technikát alkalmaznak a kártékony kódok végrehajtására az adott rendszeren, miközben elkerüli az észlelést, gondoskodik az adatmegőrzésről és a szükségtelenné téve biztonsági ellenőrzésekről.
 
--   **Azure SQL Database Threat Detection:** Fenyegetésészlelése az Azure SQL Database, amely azonosítja a rendellenes adatbázis-tevékenységek, amelyek azt jelzik, szokatlan és potenciálisan káros kísérletek adatbázisok elérésére vagy az adatbázisok kihasználására.
+-   **Azure SQL Database veszélyforrások észlelése**: a fenyegetések észlelése Azure SQL Database, amely azonosítja a rendellenes adatbázis-tevékenységeket, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
 
 ### <a name="behavioral-analytics"></a>Működés elemzése
 
 A működés elemzése olyan módszer, amely megvizsgálja és összehasonlítja az adatokat az ismert minták gyűjteményével. Ezek a minták azonban nem csak egyszerű aláírások. Meghatározásuk hatalmas adatkészletekre alkalmazott összetett gépi tanulási algoritmusokkal történt.
 
-![Viselkedéselemzési megállapítások](./media/threat-detection/azure-threat-detection-fig11.jpg)
+![Viselkedési elemzési eredmények](./media/threat-detection/azure-threat-detection-fig11.jpg)
 
-A mintákat a rosszindulatú viselkedések szakértői elemzők általi gondos elemzésével is meghatározzák. Az Azure Security Center viselkedéselemzéssel azonosíthatja a feltört erőforrásokat a virtuálisgép-naplók, a virtuális hálózati eszköznaplók, a hálónaplók, az összeomlási memóriaképek és más források elemzése alapján.
+A mintákat a szakértői elemzők által a kártékony viselkedések alapos elemzésével is meghatározták. A Azure Security Center a viselkedési elemzések segítségével azonosíthatja a feltört erőforrásokat a virtuális gépek naplói, a virtuális hálózati eszközök naplói, a háló naplói, az összeomlási memóriaképek és más források elemzése alapján.
 
-Ezenkívül a minták összefüggenek más jelzésekkel, hogy ellenőrizzék a széles körben elterjedt kampány alátámasztó bizonyítékait. Az összefüggések felderítése segít azonosítani a feltörés meghatározott tüneteit mutató eseményeket.
+Emellett a mintázatok más jelekkel vannak összekapcsolva, hogy megkeressék a széleskörű kampány alátámasztó bizonyítékait. Az összefüggések felderítése segít azonosítani a feltörés meghatározott tüneteit mutató eseményeket.
 
 Néhány példa:
--   **Gyanús folyamat-végrehajtás**: a támadók különböző módszereket vetnek be a kártékony szoftverek észrevétlen végrehajtásához. Előfordulhat például, hogy a támadó a rosszindulatú programoknak ugyanazokat a neveket adja meg, mint a legitim rendszerfájlok, de ezeket a fájlokat egy másik helyre helyezi, a jóindulatú fájlhoz hasonló nevet használ, vagy elfedi a fájl valódi kiterjesztését. A Security Center-modellek feldolgozzák a viselkedéseket, és figyelik a folyamatvégrehajtásokat az ilyen kiugró értékek észleléséhez.
+-   **Gyanús folyamat-végrehajtás**: a támadók különböző módszereket vetnek be a kártékony szoftverek észrevétlen végrehajtásához. Előfordulhat például, hogy egy támadó a legitim rendszerfájlokkal megegyező neveket ad a kártevők számára, de ezeket a fájlokat egy másik helyen helyezi el, olyan nevet használ, amely hasonló egy jóindulatú fájlhoz, vagy a fájl valódi kiterjesztését. Security Center modellek folyamatok viselkedését és a folyamatok végrehajtásának figyelését a kiugró értékek, például a következő észlelése érdekében.
 
--   **Rejtett kártevők és -kizsákmányolás kísérlet:** Kifinomult malware tud elkerül hagyományos antimalware termékek mellett egyik soha írás -hoz korong vagy titkosító szoftver összetevő raktározott -ra korong. Az ilyen kártevők azonban memóriaelemzéssel észlelhetők, mivel a kártevőnek nyomokat kell hagynia a memóriában a működéshez. Amikor a szoftver összeomlik, egy összeomlási memóriakép rögzíti a memória egy részét az összeomlás időpontjában. Az összeomlási memóriakép memóriájának elemzésével az Azure Security Center észleli a szoftver biztonsági réseinek kihasználására, a bizalmas adatok elérésére és a rendszer titokban megőrzött módon való megőrzésére használt technikákat anélkül, hogy befolyásolná a Gép.
+-   **Rejtett kártevők és kiaknázási kísérletek**: a kifinomult kártevők megkerüljék a hagyományos antimalware-termékeket, ha soha nem ír lemezre vagy a lemezen tárolt szoftver-összetevők titkosítására. Az ilyen kártevők azonban a memória-elemzés használatával észlelhetők, mivel a kártevőnek a memóriában lévő nyomkövetést kell hagyni a működéshez. Amikor a szoftver összeomlik, egy összeomlási memóriakép rögzíti a memória egy részét az összeomlás időpontjában. Az összeomlási memóriakép memóriájának elemzésével a Azure Security Center képes felderíteni a szoftverek sebezhetőségének kihasználásához használt technikákat, a bizalmas adatok elérését és a titokban tartást a számítógép teljesítményének befolyásolása nélkül.
 
--   **Oldalirányú mozgás és belső felderítés**: A feltört hálózatban való megmaradáshoz, valamint az értékes adatok megtalálásához és begyűjtéséhez a támadók gyakran megpróbálnak oldalirányban áthelyezni a feltört gépről másokra ugyanazon a hálózaton belül. A Security Center figyeli a folyamat- és bejelentkezési tevékenységeket, hogy felderítse a támadó hálózati megtágazásának kísérletét, például a távoli parancsvégrehajtást, a hálózati vizsgálatot és a fiók számbavételét.
+-   **Oldalirányú mozgás és belső felderítés**: a feltört hálózatban való megőrzéshez és értékes adatok megkereséséhez, valamint a támadók gyakran a feltört gépről a hálózaton belül más felhasználókhoz próbálnak áthelyezni. Security Center figyeli a folyamat-és bejelentkezési tevékenységeket, hogy felderítse a támadók lábát a hálózaton belül, például távoli parancs végrehajtásával, hálózati szondázás és fiókok enumerálásával.
 
--   **Rosszindulatú PowerShell-parancsfájlok:** A PowerShell segítségével a támadók rosszindulatú kódot futtathatnak a célvirtuális gépeken különböző célokra. A Security Center megvizsgálja a PowerShell tevékenységeit, hogy megtalálja a gyanús tevékenységek nyomait.
+-   **Rosszindulatú PowerShell-parancsfájlok**: a támadók különböző célokra kártékony kódokat futtathatnak a célként szolgáló virtuális gépeken. A Security Center megvizsgálja a PowerShell tevékenységeit, hogy megtalálja a gyanús tevékenységek nyomait.
 
--   **Kimenő támadások**: a támadók gyakran felhőbeli erőforrásokat céloznak meg azzal a szándékkal, hogy ezeket az erőforrásokat használják fel a további támadások kibontakoztatásához. A feltört virtuális gépek például felhasználhatók más virtuális gépek elleni találgatásos támadások indítására, levélszemét küldésére, illetve nyitott portok és más eszközök interneten történő vizsgálatára. A hálózati forgalomra irányított gépi tanulás alkalmazásával a Security Center észlelni tudja, ha a szokásosnál nagyobb mértékű a kimenő hálózati kommunikáció. Ha levélszemetet észlel, a Security Center a szokatlan e-mail forgalmat az Office 365-ből származó intelligenciával is korrelálja annak megállapítása érdekében, hogy az e-mail valószínűleg aljas-e, vagy egy jogszerű e-mail kampány eredménye.
+-   **Kimenő támadások**: a támadók gyakran felhőbeli erőforrásokat céloznak meg azzal a szándékkal, hogy ezeket az erőforrásokat használják fel a további támadások kibontakoztatásához. A feltört virtuális gépek például felhasználhatók más virtuális gépek elleni találgatásos támadásokra, levélszemét küldésére, vagy nyitott portok és egyéb eszközök vizsgálatára az interneten. A hálózati forgalomra irányított gépi tanulás alkalmazásával a Security Center észlelni tudja, ha a szokásosnál nagyobb mértékű a kimenő hálózati kommunikáció. Ha a rendszer levélszemét észlelését észleli, Security Center a szokatlan e-mail-forgalmat is összekapcsolja az Office 365 intelligenciával annak megállapítása érdekében, hogy a levél valószínűleg aljas vagy egy legitim e-mail-kampány eredménye-e.
 
 ### <a name="anomaly-detection"></a>Rendellenességek észlelése
 
-Az Azure Security Center további módszere a fenyegetések felderítésére a rendellenességek észlelése. A működés elemzésével (amely a nagy adatkészletekből kinyert ismert mintákon alapul) ellentétben a rendellenességek észlelése „testre szabottabb”, és az üzemelő példányokhoz tartozó alapkonfigurációkra összpontosít. A gépi tanulás a központi telepítések normál tevékenységének meghatározásához kerül alkalmazásra, majd szabályok jönnek létre a biztonsági eseményt képviselő kiugró feltételek meghatározásához. Például:
+Az Azure Security Center további módszere a fenyegetések felderítésére a rendellenességek észlelése. A működés elemzésével (amely a nagy adatkészletekből kinyert ismert mintákon alapul) ellentétben a rendellenességek észlelése „testre szabottabb”, és az üzemelő példányokhoz tartozó alapkonfigurációkra összpontosít. A gépi tanulás az üzemelő példányok normál tevékenységének meghatározására lett alkalmazva, majd szabályok jönnek létre a biztonsági eseményt képviselő kiugró állapotok meghatározásához. Például:
 
--   **Bejövő RDP/SSH találgatásos támadások:** Előfordulhat, hogy a központi telepítések foglalt virtuális gépek sok bejelentkezési minden nap, és más virtuális gépek, amelyek kevés, ha van ilyen, bejelentkezések. Az Azure Security Center meghatározhatja ezeknek a virtuális gépeknek az alapkonfigurációs bejelentkezési tevékenységét, és gépi tanulással definiálhatja a normál bejelentkezési tevékenységeket. Ha eltérés van a bejelentkezéssel kapcsolatos jellemzőkhöz meghatározott alaptervvel, riasztás keletkezhet. Ebben az esetben is gépi tanulás alapján határozza meg, hogy mi számít szignifikáns eltérésnek.
+-   **Bejövő RDP/SSH találgatásos támadások**: az üzemelő példányok olyan forgalmas virtuális gépekkel rendelkezhetnek, amelyek naponta több bejelentkezést és más virtuális gépeket foglalnak magukban, ha vannak ilyenek. A Azure Security Center meghatározhatja a virtuális gépek alapkonfigurációjának bejelentkezési tevékenységeit, és a gépi tanulás használatával határozhatja meg a szokásos bejelentkezési tevékenységeket. Ha a bejelentkezéshez kapcsolódó jellemzőkkel kapcsolatban meghatározott alaptervnek nincs eltérése, akkor a rendszer riasztást generálhat. Ebben az esetben is gépi tanulás alapján határozza meg, hogy mi számít szignifikáns eltérésnek.
 
 ### <a name="continuous-threat-intelligence-monitoring"></a>A fenyegetésekre vonatkozó intelligencia folyamatos figyelése
 
-Az Azure Security Center világszerte biztonsági kutatási és adatelemzési csapatokkal működik, amelyek folyamatosan figyelik a fenyegetési környezet változásait. Ide tartoznak a következők:
+A Azure Security Center az egész világon a biztonsági kutatási és adatelemzési csapatokkal működik, amely folyamatosan figyeli a fenyegetések tájképének változásait. Ide tartoznak a következők:
 
--   **Fenyegetésfelderítésfigyelés:** A fenyegetésfelderítés mechanizmusokat, mutatókat, következményeket és a meglévő vagy újonnan megjelenő fenyegetésekre vonatkozó végrehajtható tanácsokat tartalmaz. Ezeket az információkat megosztja a biztonsági közösség, és a Microsoft folyamatosan figyeli a fenyegetésfelderítési hírcsatornák at belső és külső forrásokból.
+-   A fenyegetések **felderítésének figyelése**: a fenyegetések felderítése magában foglalja a meglévő vagy újonnan felmerülő fenyegetésekkel kapcsolatos mechanizmusokat, indikátorokat, következményeket és gyakorlati tanácsokat. Ezeket az információkat a biztonsági Közösség osztja meg, a Microsoft folyamatosan figyeli a belső és külső forrásokból származó veszélyforrások felderítését.
 
--   **Jelmegosztás:** A biztonsági csapatok tól származó, a felhőbeli és helyszíni szolgáltatások, kiszolgálók és ügyfélvégpont-eszközök széles Microsoft-portfóliójának elemzései megosztásra és elemzésre kerülnek.
+-   A **jelek megosztása**: a biztonsági csapatokkal kapcsolatos elemzések a Felhőbeli és a helyszíni szolgáltatások, kiszolgálók és ügyfél-végponti eszközök átfogó Microsoft-portfóliójában osztoznak és elemezhetők.
 
--   **Microsoft biztonsági szakemberek**: Folyamatos elkötelezettség a microsoftos csapatokkal, amelyek speciális biztonsági területeken dolgoznak, például a kriminalisztika és a webes támadások észlelése terén.
+-   **Microsoft biztonsági szakemberek**: folyamatos együttműködés a Microsoft különböző csoportjaival, amelyek speciális biztonsági mezőkben működnek, például a kriminalisztika és a webes támadás észlelése terén.
 
--   **Észlelési hangolás:** Az algoritmusok valós ügyfél-adatkészleteken futnak, és a biztonsági kutatók együttműködnek az ügyfelekkel az eredmények érvényesítésében. Az igazi és a téves találatok megjelölésével pontosítják a gépi algoritmusokat.
+-   **Észlelés finomhangolása**: az algoritmusok valós ügyfél-adatkészleteken futnak, és a biztonsági kutatók az ügyfelekkel együttműködve érvényesítik az eredményeket. Az igazi és a téves találatok megjelölésével pontosítják a gépi algoritmusokat.
 
-Ezek az együttes erőfeszítések új és továbbfejlesztett észlelésekben csúcsosodnak ki, amelyek azonnal hasznosak lehetnek. Nincs mit tettél volna.
+Ezek az összetett erőfeszítések új és továbbfejlesztett észlelésekkel zárulnak, amelyeket azonnal kihasználhat. Nem kell végrehajtania a műveletet.
 
-## <a name="advanced-threat-detection-features-other-azure-services"></a>Speciális fenyegetésészlelési funkciók: Egyéb Azure-szolgáltatások
+## <a name="advanced-threat-detection-features-other-azure-services"></a>Összetett veszélyforrások észlelési funkciói: egyéb Azure-szolgáltatások
 
-### <a name="virtual-machines-microsoft-antimalware"></a>Virtuális gépek: Microsoft kártevőirtó
+### <a name="virtual-machines-microsoft-antimalware"></a>Virtual Machines: Microsoft antimalware
 
-A [Microsoft antimalware](antimalware.md) for Azure egy ügynökkel rendelkező megoldás alkalmazások és a bérlői környezetek, amelynek célja, hogy fut a háttérben emberi beavatkozás nélkül. Az alkalmazásszámítási feladatok igényei alapján telepítheti a védelmet, akár alapszintű biztonságos, akár speciális egyéni konfigurációval, beleértve a kártevőirtó figyelést is. Az Azure kártevőirtó egy biztonsági lehetőség az Azure virtuális gépek, amely automatikusan telepítve van az összes Azure PaaS virtuális gépek.
+Az Azure-hoz készült [Microsoft antimalware](antimalware.md) egyetlen ügynökből álló megoldás az alkalmazások és a bérlői környezetek számára, amelyeket emberi beavatkozás nélkül lehet a háttérben futtatni. A védelmet az alkalmazás számítási feladatainak igényei szerint helyezheti üzembe, amely alapszintű biztonsági vagy speciális konfigurációval rendelkezik, beleértve a kártevő szoftverek figyelését is. Az Azure antimalware egy biztonsági lehetőség az Azure-beli virtuális gépekhez, amelyeket az Azure-beli virtuális gépeken automatikusan telepítenek.
 
-#### <a name="microsoft-antimalware-core-features"></a>A Microsoft kártevőirtó fő szolgáltatásai
+#### <a name="microsoft-antimalware-core-features"></a>Microsoft antimalware Core-funkciók
 
-Az alábbiakban az Azure azon funkcióit ismertetik, amelyek telepítik és engedélyezik a Microsoft kártevőirtóját az alkalmazásokhoz:
+Az Azure azon funkcióit tartalmazza, amelyek a Microsoft antimalware alkalmazást helyezik üzembe és engedélyezik alkalmazásai számára:
 
--   **Valós idejű védelem**: Figyeli a felhőszolgáltatásokban és a virtuális gépeken végzett tevékenységeket a rosszindulatú programok végrehajtásának észleléséhez és blokkolásához.
+-   **Valós idejű védelem**: figyeli a Cloud Services és a Virtual Machines tevékenységeit a kártevő szoftverek végrehajtásának észleléséhez és blokkolásához.
 
--   **Ütemezett vizsgálat**: Rendszeres időközönként célzott vizsgálathajt végre a rosszindulatú programok észleléséhez, beleértve az aktívan futó programokat is.
+-   **Ütemezett vizsgálat**: a kártevők észlelése, beleértve az aktívan futó programokat is.
 
--   **Kártevő-szervizelés:** Automatikusan fellép az észlelt kártevők reklisen, például rosszindulatú fájlok törlése vagy karanténba törlése, valamint a kártékony rendszerleíró bejegyzések törlése.
+-   **Kártevő-szervizelés**: a automatikusan észleli az észlelt kártevő szoftvereket, például a rosszindulatú fájlok törlését vagy karanténba helyezését, valamint a kártékony beállításjegyzék-bejegyzések tisztítását.
 
--   **Aláírás-frissítések**: Automatikusan telepíti a legújabb védelmi aláírásokat (vírusdefiníciókat) annak érdekében, hogy a védelem egy előre meghatározott gyakorisággal naprakész legyen.
+-   **Aláírás-frissítések**: a automatikusan telepíti a legújabb védelmi aláírásokat (vírus-definíciókat), így biztosítva, hogy a védelem előre meghatározott gyakorisággal legyen naprakész.
 
--   **Kártevőirtó motor frissítései:** Automatikusan frissíti a Microsoft Kártevőirtó motort.
+-   **Antimalware-motor frissítései**: automatikusan frissíti a Microsoft antimalware motort.
 
--   **Kártevőirtó platform frissítései:** Automatikusan frissíti a Microsoft kártevőirtó platformját.
+-   **Kártevők elleni platform frissítései**: automatikusan frissíti a Microsoft antimalware platformot.
 
--   **Aktív védelem**: A microsoft Azure-nak jelenti az észlelt fenyegetésekés gyanús erőforrások telemetriai metaadatait, hogy biztosítsa a fenyegetések változó helyzetére való gyors reagálást, lehetővé téve a valós idejű szinkron aláírás-kézbesítést a Microsoft aktív védelmi rendszeren keresztül.
+-   **Aktív védelem**: a jelentések az észlelt fenyegetésekkel és a gyanús erőforrásokkal kapcsolatos metaadatokat telemetria Microsoft Azure a kialakulóban lévő veszélyforrások tájképének gyors reagálásának biztosítása érdekében, amely lehetővé teszi a valós idejű szinkron aláírások továbbítását a Microsoft Active Protection rendszeren keresztül.
 
--   **Mintajelentés**: Mintákat biztosít és jelent a Microsoft kártevőirtó szolgáltatásának a szolgáltatás finomítása és a hibaelhárítás engedélyezése érdekében.
+-   **Samples Reporting**: a Microsoft antimalware szolgáltatással kapcsolatos példákkal és jelentésekkel segíti a szolgáltatás pontosítását, és lehetővé teszi a hibaelhárítást.
 
--   **Kizárások**: Lehetővé teszi, hogy az alkalmazás- és szolgáltatásgazdák bizonyos fájlokat, folyamatokat és meghajtókat konfiguráljanak a védelemből és a vizsgálatból való kizárásra teljesítmény és egyéb okok miatt.
+-   **Kizárások**: lehetővé teszi, hogy az alkalmazás-és szolgáltatás-rendszergazdák bizonyos fájlokat, folyamatokat és meghajtókat konfiguráljanak a védelem kizárása és a teljesítmény és egyéb okok miatt.
 
--   **Kártevőirtó eseménygyűjtemény:** rögzíti a kártevőirtó szolgáltatás állapotát, a gyanús tevékenységeket és az operációs rendszer eseménynaplójában végrehajtott javítási műveleteket, és összegyűjti azokat az ügyfél Azure-tárfiókjába.
+-   **Antimalware-események gyűjteménye**: rögzíti a kártevő szolgáltatás állapotát, a gyanús tevékenységeket, valamint az operációs rendszer eseménynaplójában végrehajtott szervizelési műveleteket, és az ügyfél Azure Storage-fiókjába gyűjti azokat.
 
-### <a name="azure-sql-database-threat-detection"></a>Azure SQL adatbázis fenyegetésészlelése
+### <a name="azure-sql-database-threat-detection"></a>Azure SQL Database fenyegetések észlelése
 
-[Az Azure SQL Database Threat Detection](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/) egy új biztonsági intelligencia szolgáltatás az Azure SQL Database szolgáltatásba épített. Az Azure SQL Database Threat Detection éjjel-nappal dolgozik a rendellenes adatbázis-tevékenységek megismeréséhez, profiljához és észleléséhez, és azonosítja az adatbázist fenyegető potenciális veszélyeket.
+A [veszélyforrások észlelése Azure SQL Database](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/) a Azure SQL Database szolgáltatásba épített új biztonsági intelligencia szolgáltatás. A rendellenes adatbázis-tevékenységek megismeréséhez, profiljához és észleléséhez, Azure SQL Database veszélyforrások észlelése az adatbázis lehetséges fenyegetéseit azonosítja.
 
-A biztonsági tisztviselők vagy más kijelölt rendszergazdák azonnali értesítést kaphatnak a gyanús adatbázis-tevékenységekről, amint azok bekövetkeznek. Minden értesítés részletesen ismerteti a gyanús tevékenységet, és azt javasolja, hogyan tovább vizsgálja ki és csökkentse a fenyegetést.
+A biztonsági tisztviselők vagy más kijelölt rendszergazdák azonnali értesítést kaphatnak a gyanús adatbázis-tevékenységekről, amikor azok történnek. Minden értesítés tartalmazza a gyanús tevékenység részleteit, és a fenyegetés további kivizsgálását és enyhítését javasolja.
 
-Jelenleg az Azure SQL Database Threat Detection észleli a potenciális biztonsági réseket és az SQL-injektálási támadásokat, valamint a rendellenes adatbázis-hozzáférési mintákat.
+Jelenleg Azure SQL Database veszélyforrások észlelése észleli a potenciális biztonsági réseket és az SQL-injektálási támadásokat, valamint a rendellenes adatbázis-hozzáférési mintákat.
 
-A fenyegetésészlelési e-mail értesítés kézhezvételét követően a felhasználók az e-mailben található mély hivatkozáson keresztül navigálhatnak és tekinthetik meg a megfelelő naplózási rekordokat. A hivatkozás megnyit egy naplót vagy egy előre konfigurált auditáló Excel-sablont, amely a gyanús esemény időpontjában megjeleníti a megfelelő naplózási rekordokat, a következők szerint:
+A veszélyforrások észlelésére vonatkozó e-mail-értesítések fogadásakor a felhasználók a levélben lévő mély hivatkozáson keresztül navigálhatnak és megtekinthetik a vonatkozó naplózási rekordokat. A hivatkozás egy naplózási megjelenítőt vagy egy előre konfigurált naplózási Excel-sablont nyit meg, amely megjeleníti a gyanús esemény időpontja körüli megfelelő naplózási rekordokat a következők szerint:
 
--   Az adatbázis/kiszolgáló tárházának naplózása a rendellenes adatbázis-tevékenységekkel.
+-   Naplózza az adatbázis/kiszolgáló számára a rendellenes adatbázis-tevékenységeket.
 
--   Az esemény időpontjában a napló írásához használt megfelelő naplózási tárolótábla.
+-   Az esemény időpontjában a napló írásához használt releváns naplózási tábla.
 
--   Az esemény előfordulását közvetlenül követő óra naplózása.
+-   Az óra rekordjait közvetlenül az esemény bekövetkezése után naplózza.
 
--   Az esemény időpontjában hasonló eseményazonosítóval rendelkező rekordok naplózása (egyes érzékelők esetében nem kötelező).
+-   Naplózza az esemény időpontjában egy hasonló AZONOSÍTÓJÚ rekordot (egyes érzékelők esetében nem kötelező).
 
-Az SQL Database fenyegetésérzékelői az alábbi észlelési módszerek egyikét használják:
+SQL Database fenyegetések észlelése a következő észlelési módszerek egyikét használja:
 
--   **Determinisztikus észlelés:** Észleli a gyanús mintákat (szabályok on- és alapja) az SQL-ügyféllekérdezésekben, amelyek megfelelnek az ismert támadásoknak. Ez a módszer magas észlelési és alacsony hamis pozitív, de korlátozott lefedettség, mert kategóriájába tartozik a "atomi észlelések."
+-   **Determinisztikus észlelése**: észleli a gyanús mintákat (szabályok alapján) az SQL-ügyfél olyan lekérdezésekben, amelyek megfelelnek az ismert támadásoknak. Ez a módszer magas észlelést és alacsony téves pozitív, de korlátozott lefedettséget biztosít, mivel az "atomi észlelések" kategóriába tartozik.
 
--   **Viselkedési észlelés:** Észleli a rendellenes tevékenység, amely rendellenes viselkedés az adatbázisban, amely nem volt látható a legutóbbi 30 nap. Sql-ügyfél rendellenes tevékenység például a sikertelen bejelentkezések vagy lekérdezések csúcsa, nagy mennyiségű kinyert adat, szokatlan kanonikus lekérdezések vagy ismeretlen IP-címek az adatbázis eléréséhez használt.
+-   **Viselkedés észlelése**: észleli a rendellenes tevékenységeket, ami rendellenes viselkedést jelent az adatbázisban, amely a legutóbbi 30 napban nem volt látható. Az SQL-ügyfél rendellenes tevékenysége például a sikertelen bejelentkezések vagy lekérdezések, a kinyert adatok nagy mennyisége, a szokatlan kanonikus lekérdezések vagy az adatbázis eléréséhez használt ismeretlen IP-címek.
 
-### <a name="application-gateway-web-application-firewall"></a>Alkalmazásátjáró webalkalmazás-tűzfala
+### <a name="application-gateway-web-application-firewall"></a>Webalkalmazási tűzfal Application Gateway
 
-[A Web Application Firewall (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) az [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) egyik szolgáltatása, amely védelmet nyújt azon webalkalmazások számára, amelyek alkalmazásátjárót használnak a szabványos [alkalmazáskézbesítési vezérlő](https://kemptechnologies.com/in/application-delivery-controllers) funkciókhoz. A Web Application Firewall ezt úgy éri el, hogy megvédi őket az [OWASP (Open Web Application Security Project, OWASP) 10 leggyakoribb webes biztonsági rése idomításaitól.](https://www.owasp.org/index.php/Top_10_2010-Main)
+A [webalkalmazási tűzfal (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) az [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) szolgáltatása, amely védelmet nyújt az Application Gatewayt használó webalkalmazások számára a szabványos [alkalmazások kézbesítés-vezérlési](https://kemptechnologies.com/in/application-delivery-controllers) funkcióihoz. A webalkalmazási tűzfal ezt azáltal védi, hogy az [Open Web Application Security Project (OWASP) Top 10 leggyakoribb webes biztonsági rései](https://www.owasp.org/index.php/Top_10_2010-Main)közül a legtöbbat megvédi.
 
-![Alkalmazásátjáró webalkalmazás-tűzfaldiagramja](./media/threat-detection/azure-threat-detection-fig13.png)
+![Application Gateway webalkalmazási tűzfal diagramja](./media/threat-detection/azure-threat-detection-fig13.png)
 
-A védelem a következőket tartalmazza:
+A védelem többek között a következők:
 
--   SQL injekciózás elleni védelem.
+-   SQL-befecskendezéses védelem.
 
--   Helyek közötti parancsfájlok védelme.
+-   Helyek közötti parancsfájlok elleni védelem.
 
--   Gyakori webes támadások elleni védelem, például parancsinjektálás, HTTP-kérelem-csempészet, HTTP-válaszfelosztás és távoli fájlfelvétel-támadás.
+-   Gyakori webes támadások elleni védelem, például a parancsok befecskendezése, a HTTP-kérések csempészete, a HTTP-válaszok felosztása és a távoli fájl-integrációs támadás.
 
--   Védelem a HTTP protokoll megsértése ellen.
+-   A HTTP protokoll megsértésének védelme.
 
--   Http-protokoll anomáliák, például a hiányzó gazdagép user-agent és elfogadja a fejlécek elleni védelem.
+-   A HTTP protokollal kapcsolatos rendellenességek, például a gazdagépek hiányzó felhasználói ügynökének védelme és a fejlécek elfogadása.
 
--   A robotok, a robot- és a lapolvasók elleni megelőzés.
+-   A robotok, a keresőrobotok és a szkennerek elleni megelőzés.
 
--   Gyakori alkalmazáshelytelen konfigurációk észlelése (azaz Apache, IIS és így tovább).
+-   Az alkalmazások gyakori konfigurációs beállításainak (azaz Apache, IIS stb.) észlelése.
 
-A WAF konfigurálása az alkalmazásátjárón a következő előnyökkel jár:
+Az WAF konfigurálása az Application gatewayben a következő előnyöket biztosítja:
 
--   Megvédi a webalkalmazást a webes biztonsági résektől és támadásoktól a háttérkód módosítása nélkül.
+-   A webes biztonsági rések és támadások elleni védelem a háttér kódjának módosítása nélkül is védelmet biztosít a webalkalmazásoknak.
 
--   Több webalkalmazást véd egyidejűleg egy alkalmazásátjáró mögött. Az alkalmazásátjáró legfeljebb 20 webhely üzemeltetését támogatja.
+-   Egy Application Gateway mögötti időben több webalkalmazás védelmét is védi. Az Application Gateway akár 20 webhely üzemeltetését is támogatja.
 
--   Az alkalmazásátjáró WAF-naplói által létrehozott valós idejű jelentések használatával figyeli a támadások elleni támadásokat.
+-   Az Application Gateway WAF naplófájljai által generált valós idejű jelentéseket használva figyeli a támadások elleni webes alkalmazásokat.
 
--   Segít megfelelni a megfelelőségi követelményeknek. Bizonyos megfelelőségi vezérlők megkövetelik, hogy az összes internetfelé néző végpontot WAF-megoldás védi.
+-   Segíti a megfelelőségi követelmények teljesítését. Bizonyos megfelelőségi vezérlők esetében az internetre irányuló összes végpontot WAF-megoldással védeni kell.
 
-### <a name="anomaly-detection-api-built-with-azure-machine-learning"></a>Anomáliadetektálási API: Az Azure Machine Learning segítségével készült
+### <a name="anomaly-detection-api-built-with-azure-machine-learning"></a>Rendellenesség-észlelési API: beépített Azure Machine Learning
 
-Az Anomáliadetektálás API egy API, amely hasznos az idősorozat-adatok ban a rendellenes minták különböző észleléséhez. Az API anomáliapontszámot rendel az idősorok minden adatpontjához, amely riasztások létrehozására, irányítópultokon keresztüli figyelésre vagy a jegyértékesítési rendszerekhez való csatlakozásra használható.
+A rendellenesség-észlelési API egy olyan API, amely számos rendellenes mintázat észlelésére használható az idősorozat-adataiban. Az API egy anomália-pontszámot rendel az idősorozat minden adatpontjához, amely riasztások generálására, irányítópultokon keresztüli figyelésre vagy a jegyrendszer-szolgáltatásokhoz való csatlakozásra használható.
 
-Az [Anomáliadetektálási API](../../machine-learning/team-data-science-process/apps-anomaly-detection-api.md) a következő típusú anomáliákat észleli az idősorozat-adatokon:
+A [rendellenesség-észlelési API](../../machine-learning/team-data-science-process/apps-anomaly-detection-api.md) a következő típusú rendellenességek észlelésére képes az idősorozat-adatmennyiségek esetében:
 
--   **Tüskék és dipek:** Ha egy szolgáltatás bejelentkezési hibáinak számát vagy egy e-kereskedelmi webhelyen a kijelentkezések számát figyeli, a szokatlan kiugrások vagy dipek biztonsági támadásokat vagy szolgáltatáskimaradásokat jelezhetnek.
+-   **Tüskék és dips**: Ha egy adott szolgáltatáshoz vagy egy e-kereskedelmi helyen lévő fizetési hibák számának figyelésére van szüksége, a szokatlan tüskék vagy a dips a biztonsági támadásokat vagy a szolgáltatás megszakadását jelezheti.
 
--   **Pozitív és negatív trendek:** Ha a memóriahasználatot figyeli a számítástechnikában, a szabad memória méretének csökkentése potenciális memóriavesztést jelez. A szolgáltatásvárólista hosszának figyelése esetén a tartósan emelkedő tendencia egy mögöttes szoftverproblémát jelezhet.
+-   **Pozitív és negatív trendek**: Ha a használatban lévő memóriahasználat figyelése folyamatban van, a szabad memória méretének csökkentése a lehetséges memória-szivárgást jelzi. A szolgáltatási várólista hosszának figyelése esetén az állandó felfelé irányuló tendencia egy mögöttes szoftveres problémát jelezhet.
 
--   **Szintváltozások és az értékek dinamikus tartományának változásai:** Érdekes lehet figyelni a szolgáltatás késések változásait a szolgáltatás frissítése után, vagy alacsonyabb kivételszinteket a frissítés után.
+-   Az **értékek dinamikus tartományában**bekövetkezett változások és változások: a szolgáltatások késésében bekövetkezett változások a szolgáltatás frissítése után vagy a kivételek alacsonyabb szintje a frissítés után érdekes lehet a figyeléshez.
 
-A gépi tanuláson alapuló API a következőket teszi lehetővé:
+A Machine learning-alapú API a következőket teszi lehetővé:
 
--   **Rugalmas és robusztus defektálás:** Az anomáliadetektálási modellek lehetővé teszik a felhasználók számára az érzékenységi beállítások konfigurálását és a szezonális és nem szezonális adatkészletek közötti anomáliák észlelését. A felhasználók módosíthatják az anomáliadetektálási modellt, hogy az észlelési API kevésbé vagy érzékenyebb legyen az igényeiknek megfelelően. Ez azt jelentené, hogy észleli a kevésbé vagy több látható anomáliák at adatok szezonális minták és anélkül.
+-   **Rugalmas és robusztus észlelés**: az anomáliák észlelési modelljei lehetővé teszik a felhasználók számára az érzékenységi beállítások konfigurálását és a szezonális és nem szezonális adatkészletek közötti rendellenességek észlelését. A felhasználók az anomáliák észlelési modelljét úgy módosíthatják, hogy az észlelési API-t az igényeiknek megfelelően kisebb vagy nagyobb legyen. Ez azt jelenti, hogy a kevésbé vagy több látható rendellenességek észlelése a szezonális mintázattal és anélkül.
 
--   **Méretezhető és időszerű észlelés:** A szakértők tartományismeretei által meghatározott jelenlegi küszöbértékekkel történő figyelés hagyományos módja költséges, és nem méretezhető dinamikusan változó adatkészletek millióira. Az api-ban az anomáliadetektálási modelleket a rendszer megtanulja, és a modelleket automatikusan a korábbi és a valós idejű adatokból is rendszerezi.
+-   **Méretezhető és kellő időben történő észlelés**: a szakértők tartományi ismeretei által meghatározott, a meglévő küszöbértékekkel való figyelés hagyományos módja költséges, és nem méretezhető több millió dinamikusan változó adathalmazra. Az API rendellenesség-észlelési modelljei megtanultak, és a modelleket a rendszer automatikusan behangolja mind a régi, mind a valós idejű adatokból.
 
--   **Proaktív és végrehajtható detektálás:** Lassú trend- és szintváltozás-észlelés alkalmazható a korai anomáliadetektáláshoz. A korai abnormális jeleket, hogy az észlelt lehet használni, hogy közvetlen embereket, hogy vizsgálja meg, és járjon el a problémás területeken. Emellett a kiváltó ok-elemzési modellek és riasztási eszközök ezen anomália-detektálási API-szolgáltatás on fejleszthetők.
+-   **Proaktív és működés közbeni észlelés**: a korai anomáliák észleléséhez a lassú trend és a szint változás észlelése is alkalmazható. Az észlelt korai rendellenes jeleket felhasználhatja az emberek számára a problémás területek kivizsgálására és a problémák elhárítására. Emellett az alapvető okokat elemző modellek és riasztási eszközök ezen anomália-észlelési API szolgáltatáson felül is fejleszthetők.
 
-Az anomáliadetektálási API hatékony és hatékony megoldás a forgatókönyvek széles köréhez, például a szolgáltatás állapotához és a KPI-figyeléshez, az IoT-hez, a teljesítményfigyeléshez és a hálózati forgalom figyeléséhez. Íme néhány népszerű forgatókönyv, ahol ez az API hasznos lehet:
+Az anomália-észlelési API hatékony és hatékony megoldás a különböző forgatókönyvek, például a szolgáltatások állapotának és a KPI-k figyelésére, a IoT, a teljesítmény figyelésére és a hálózati forgalom figyelésére. Íme néhány népszerű forgatókönyv, ahol ez az API hasznos lehet:
 
-- Az informatikai részlegeknek eszközökre van szükségük az események, a hibakód, a használati napló és a teljesítmény (CPU, memória és így tovább) időben történő nyomon követéséhez.
+- Az informatikai részlegeknek olyan eszközökre van szükségük, amelyekkel időben nyomon követhetik az eseményeket, a hibakódot, a használati naplót és a teljesítményt (CPU, memória stb.).
 
--   Az online kereskedelmi webhelyek nyomon szeretnék követni az ügyfelek tevékenységeit, az oldalmegtekintéseket, a kattintásokat és így tovább.
+-   Az online kereskedelmi webhelyek nyomon szeretnék követni az ügyfelek tevékenységeit, a lapok nézeteit, a kattintásokat stb.
 
--   A közüzemi vállalatok nyomon akarják követni a víz-, gáz-, villamosenergia-és egyéb erőforrások fogyasztását.
+-   A közmű-vállalatok a víz, a gáz, a villamos energia és az egyéb erőforrások felhasználását szeretnék követni.
 
--   Létesítmény vagy épület menedzsment szolgáltatások szeretné figyelemmel kíséri a hőmérséklet, a nedvesség, a forgalom, és így tovább.
+-   A hőmérséklet, a nedvesség, a forgalom és így továbbra is figyelni kell a létesítményeket vagy a felügyeleti szolgáltatásokat.
 
--   Az IoT/gyártók az idősorokban lévő érzékelők adatait szeretnék felhasználni a munkafolyamat, a minőség és így tovább figyelésére.
+-   A IoT/gyártók az idősorozatokban szeretnék használni az érzékelőket a munkafolyamatok, a minőség és egyéb folyamatok figyelésére.
 
--   A szolgáltatóknak, például a hívásközpontoknak figyelniük kell a szolgáltatásigény alakulását, az incidens volumenét, a várakozási várlista hosszát és így tovább.
+-   A szolgáltatóknak (például a Call centereknek) figyelniük kell a szolgáltatási igények trendjeit, az incidensek mennyiségét, a várakozási sor hosszát és így tovább.
 
--   Az üzleti elemzési csoportok valós időben szeretnék figyelni az üzleti kpi-k (például az értékesítési volumen, az ügyfélhangulat vagy az árképzés) rendellenes mozgását.
+-   Az üzleti elemzési csoportok valós időben figyelik az üzleti KPI-ket (például az értékesítések mennyiségét, az ügyfelek hangulatát vagy árképzését).
 
 ### <a name="cloud-app-security"></a>Cloud App Security
 
-[A Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) a Microsoft Cloud Security verem kritikus összetevője. Ez egy átfogó megoldás, amely segítséget nyújt a szervezetnek, ahogy mozog, hogy teljes mértékben kihasználják a felhőalapú alkalmazások ígéretét. Ez tartja meg az irányítást, a jobb láthatóságot a tevékenység. Emellett a felhőalkalmazások kritikus adatainak védelmét is növeli.
+[Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) a Microsoft Cloud biztonsági verem kritikus összetevője. Ez egy átfogó megoldás, amely segítséget nyújt a szervezetnek a Felhőbeli alkalmazások ígérete teljes körű kihasználása érdekében. Kézben tarthatja a szabályozást a tevékenységek jobb láthatóságával. Emellett a felhőalkalmazások kritikus adatainak védelmét is növeli.
 
 A Cloud App Security eszközeivel könnyebb az informatikai árnyék-infrastruktúra feltárása, a kockázatfelmérés, a szabályzatok kényszerítése, a tevékenységek vizsgálata, valamint a veszélyek megakadályozása. A szervezet így biztonságosan helyezheti át az adatait a felhőbe a kritikus adatok felügyelete mellett.
 
@@ -345,45 +345,45 @@ A Cloud App Security eszközeivel könnyebb az informatikai árnyék-infrastrukt
 | Felderítés | Felfedheti az informatikai árnyék-infrastruktúrát a Cloud App Security használatával. A felhőalapú környezet alkalmazásainak, tevékenységeinek, felhasználóinak, adatainak és fájljainak felderítésével nagyobb láthatóságot érhet el. Felderítheti a felhőhöz csatlakoztatott harmadik féltől származó alkalmazásokat.|
 |Vizsgálat | Megvizsgálhatja a felhőalkalmazásait felhőalapú nyomkereső eszközökkel, és részletesen megismerheti a hálózatban lévő kockázatos alkalmazásokat, meghatározott felhasználókat és fájlokat. Mintákat kereshet a felhőből gyűjtött adatokban. Jelentéseket hozhat létre a felhő figyelésére. |
 | Vezérlés | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
-| Védelem | A Cloud App Security használatával szankcionálhatja vagy letilthatja az alkalmazásokat, kényszerítheti az adatvesztés megelőzését, szabályozhatja az engedélyeket és a megosztást, valamint egyéni jelentéseket és riasztásokat hozhat létre. |
+| Védelem | A Cloud App Security használatával szankcionálhatja vagy tilthatja le az alkalmazásokat, kényszerítheti az adatvesztés megelőzését, szabályozhatja az engedélyeket és a megosztást, valamint egyéni jelentéseket és riasztásokat hozhat elő. |
 | Vezérlés | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
 | | |
 
 
-![Felhőalapú alkalmazásbiztonsági diagram](./media/threat-detection/azure-threat-detection-fig14.png)
+![Cloud App Security diagram](./media/threat-detection/azure-threat-detection-fig14.png)
 
-A Cloud App Security a következők szerint integrálja a láthatóságot a felhőbe:
+A Cloud App Security a következőket biztosítja a felhővel való láthatósághoz:
 
--   A Cloud Discovery segítségével leképezheti és azonosíthatja a felhőkörnyezetet és a szervezet által használt felhőalkalmazásokat.
+-   A Cloud Discovery használatával leképezheti és azonosíthatja a felhőalapú környezetét és a szervezete által használt felhőalapú alkalmazásokat.
 
--   Alkalmazások szankcionálása és tiltása a felhőben.
+-   A felhőben lévő alkalmazások engedélyezése és letiltása.
 
--   A szolgáltatóapi-k előnyeit kihasználó, könnyen telepíthető alkalmazásösszekötők használata a kapcsolódó alkalmazások láthatósága és irányítása érdekében.
+-   Egyszerűen telepíthető alkalmazás-összekötők használatával, amelyek kihasználják a szolgáltatói API-k előnyeit, és megtekintheti és irányíthatja az alkalmazásokat, amelyekhez csatlakozik.
 
--   Folyamatos vezérlést biztosít a házirendek beállításával, majd folyamatos finomhangolásával.
+-   Ezzel a beállítással folyamatos szabályozást, majd folyamatosan finomhangolást, szabályzatokat is használhat.
 
-Az ezekből a forrásokból történő adatgyűjtéskor a Cloud App Security kifinomult elemzést futtat rajta. Azonnal értesíti Önt a rendellenes tevékenységekről, valamint részletes információkat biztosít a felhőalapú környezetről. A Cloud App Security szolgáltatásban konfigurálhat egy szabályzatot, amellyel megvédheti a teljes felhőalapú környezetet.
+Az ezekből a forrásokból származó adatok összegyűjtésekor Cloud App Security kifinomult elemzést futtat rajta. Azonnal értesíti Önt a rendellenes tevékenységekről, valamint részletes információkat biztosít a felhőalapú környezetről. A Cloud App Security szolgáltatásban konfigurálhat egy szabályzatot, amellyel megvédheti a teljes felhőalapú környezetet.
 
-## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Külső féltől származó speciális fenyegetésészlelési képességek az Azure Piactéren keresztül
+## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Harmadik féltől származó komplex veszélyforrások észlelési képességei az Azure Marketplace-en keresztül
 
 ### <a name="web-application-firewall"></a>Web Application Firewall (Webalkalmazási tűzfal)
 
-Web Alkalmazás tűzfal ellenőrzi a bejövő webes forgalom és blokkolja az SQL injekciók, cross-site scripting, malware feltöltések, alkalmazás DDoS támadások, és egyéb támadások célzott a webes alkalmazások. Azt is megvizsgálja a válaszokat a háttér-webkiszolgálók adatvesztés megelőzésére (DLP). Az integrált hozzáférés-vezérlési motor lehetővé teszi a rendszergazdák számára, hogy részletes hozzáférés-vezérlési házirendeket hozzanak létre a hitelesítéshez, az engedélyezéshez és a számlázáshoz (AAA), amely erős hitelesítést és felhasználói vezérlést biztosít a szervezeteknek.
+A webalkalmazási tűzfal ellenőrzi a bejövő webes forgalmat, és blokkolja az SQL-injektálásokat, a helyek közötti parancsfájlkezelést, a kártevők feltöltését, az alkalmazások DDoS-támadásait, valamint a webalkalmazásokra irányuló más támadásokat. Emellett megvizsgálja a háttér-webkiszolgálók válaszait az adatveszteség-megelőzési (DLP) szolgáltatáshoz. Az integrált hozzáférés-vezérlési motor lehetővé teszi, hogy a rendszergazdák részletes hozzáférés-vezérlési házirendeket hozzanak létre a hitelesítéshez, engedélyezéshez és nyilvántartáshoz (AAA), amely erős hitelesítést és felhasználói vezérlést biztosít a szervezeteknek
 
-A WebApplication Firewall a következő előnyöket nyújtja:
+A webalkalmazási tűzfal a következő előnyöket biztosítja:
 
--   Észleli és blokkolja az SQL injekciókat, a webhelyek közötti parancsfájlokat, a rosszindulatú programok feltöltését, az alkalmazás DDoS-t vagy az alkalmazás elleni bármely más támadást.
+-   Észleli és blokkolja az SQL-injektálásokat, a helyek közötti parancsfájlkezelést, a kártevő szoftverek feltöltését, a DDoS-et vagy az alkalmazással szembeni bármilyen más támadást.
 
 -   Hitelesítés és hozzáférés-vezérlés.
 
--   Megvizsgálja a kimenő forgalmat a bizalmas adatok észleléséhez, és elfedheti vagy letilthatja az adatok kiszivárgását.
+-   Megvizsgálja a kimenő forgalmat a bizalmas adatok észlelése érdekében, és képes az adatok kiszivárgására vagy blokkolására.
 
--   Felgyorsítja a webalkalmazások tartalmának kézbesítését olyan funkciók kal, mint a gyorsítótárazás, a tömörítés és más forgalomoptimalizálás.
+-   Felgyorsítja a webalkalmazás tartalmának kézbesítését, például gyorsítótárazást, tömörítést és más forgalmi optimalizációt használó képességeket.
 
-Példák az Azure Piactéren elérhető webalkalmazás-tűzfalakra: [Barracuda WAF, Brocade virtual webapplication firewall (vWAF), Imperva SecureSphere és threatstop IP-tűzfal.](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf)
+Példa az Azure Marketplace-en elérhető webalkalmazási tűzfalakra: [BARRACUDA WAF, brokát Virtual Web Application Firewall (vWAF), inperverz SecureSphere és a ThreatSTOP IP-tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Válasz a mai fenyegetések:](../../security-center/security-center-alerts-overview.md#respond-threats)Segít azonosítani az aktív fenyegetések, amelyek célja az Azure-erőforrások at, és biztosítja a szükséges betekintést a gyors reagáláshoz.
+- [Válaszadás a mai fenyegetésekre](../../security-center/security-center-alerts-overview.md#respond-threats): segít azonosítani az Azure-erőforrásokat megcélzó aktív fenyegetéseket, és biztosítja a gyors reagáláshoz szükséges megállapításokat.
 
-- [Azure SQL Database fenyegetésészlelés:](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/)Segít az adatbázisokat fenyegető potenciális fenyegetésekkel kapcsolatos aggodalmak kezelésében.
+- [Azure SQL Database veszélyforrások észlelése](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): segít a lehetséges fenyegetésekkel kapcsolatos problémáinak megoldásában az adatbázisokban.

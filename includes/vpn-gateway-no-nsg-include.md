@@ -16,6 +16,6 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "72935527"
 ---
 > [!IMPORTANT]
-> Amikor átjáró-alhálózatokkal dolgozik, kerülje a hálózati biztonsági csoportok (NSG) társítását az átjáró-alhálózathoz. Ha egy hálózati biztonsági csoportot társít ehhez az alhálózathoz, a virtuális hálózati átjáró (VPN, Express Route átjáró) a várt módon leállhat. További információ a hálózati biztonsági csoportokról: [What is a Network Security Group?](../articles/virtual-network/security-overview.md) (Mi az a hálózati biztonsági csoport?)
+> Amikor átjáró-alhálózatokkal dolgozik, kerülje a hálózati biztonsági csoportok (NSG) társítását az átjáró-alhálózathoz. Ha hálózati biztonsági csoportot társít ehhez az alhálózathoz, előfordulhat, hogy az Virtual Network átjáró (VPN, Express Route Gateway) leállítja a várt működést. További információ a hálózati biztonsági csoportokról: [What is a Network Security Group?](../articles/virtual-network/security-overview.md) (Mi az a hálózati biztonsági csoport?)
 > 
 > 

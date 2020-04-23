@@ -1,6 +1,6 @@
 ---
-title: Növekményes adatok betöltése a PowerShell használatával
-description: Ez a PowerShell-parancsfájl bemutatja, hogyan használhatja az Azure Data Factory segítségével az Azure SQL-adatbázisból az Azure Blob Storage-ba növekményes adatok másolása.
+title: Az adatterhelés növekményes betöltése a PowerShell használatával
+description: Ez a PowerShell-szkript azt mutatja be, hogyan használhatók a Azure Data Factory az adatok növekményes másolásához egy Azure SQL Databaseból egy Azure-Blob Storageba.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -17,31 +17,31 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79462489"
 ---
-# <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell-parancsfájl – Növekményes adatok betöltése az Azure Data Factory használatával
+# <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell-parancsfájl – az adatgyűjtés növekményes betöltése a Azure Data Factory használatával
 
-Ez a minta PowerShell-parancsfájl csak új vagy frissített rekordokat tölt be egy forrás-adattárból egy fogadó adattárba a forrásból a fogadóba származó adatok kezdeti teljes másolása után.  
+Ez a PowerShell-parancsfájl csak az új vagy frissített rekordokat tölti be a forrás adattárolóból a fogadó adattárba, miután a forrásról a fogadóba másolta az adatok kezdeti teljes másolatát.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-Lásd: [növekményes másolat](../tutorial-incremental-copy-powershell.md#prerequisites) a minta futtatásának előfeltételei. 
+Tekintse meg a minta futtatásához szükséges előfeltételeket [ismertető oktatóanyagot: növekményes másolás](../tutorial-incremental-copy-powershell.md#prerequisites) . 
 
 ## <a name="sample-script"></a>Példaszkript
 
 > [!IMPORTANT]
-> Ez a parancsfájl JSON-fájlokat hoz létre, amelyek a c:\ Mappa.
+> Ez a szkript olyan JSON-fájlokat hoz létre, amelyek meghatározzák Data Factory entitásokat (társított szolgáltatás, adatkészlet és folyamat) a merevlemezen a c:\ mappa.
 
 :::code language="powershell" source="~/powershell_scripts/data-factory/incremental-copy-from-azure-sql-to-blob/incremental-copy-from-azure-sql-to-blob.ps1":::
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A mintaparancsfájl futtatása után a következő paranccsal eltávolíthatja az erőforráscsoportot és a hozzá tartozó összes erőforrást:
+A minta parancsfájl futtatása után a következő paranccsal távolíthatja el az erőforráscsoportot és az ahhoz társított összes erőforrást:
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Ha el szeretné távolítani az adat-előállítót az erőforráscsoportból, futtassa a következő parancsot: 
+A következő parancs futtatásával távolíthatja el az adatgyárat az erőforráscsoporthoz: 
 
 ```powershell
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -55,11 +55,11 @@ Ez a szkript a következő parancsokat használja:
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Adat-előállító létrehozása |
-| [Set-AzDataFactoryV2Linkedservice](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | Csatolt szolgáltatást hoz létre az adat-előállítóban. A csatolt szolgáltatás adattort vagy számítást kapcsol össze egy adat-előállítóval. |
-| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Adatkészletet hoz létre az adat-előállítóban. Az adatkészlet egy folyamatban lévő tevékenység bemeneti/kimeneti bemenetét/kimenetét jelöli. | 
-| [Set-AzDataFactoryV2pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | Létrehoz egy folyamatot az adat-előállítóban. A folyamat egy vagy több olyan tevékenységet tartalmaz, amelyek egy bizonyos műveletet hajtanak végre. Ebben a folyamatban egy másolási tevékenység adatokat másol az egyik helyről egy másik helyre egy Azure Blob Storage.In this pipeline, a copy activity copys copys copys data from one location in an Azure Blob Storage. |
-| [Invoke-AzDataFactoryV2pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | Futást hoz létre a folyamathoz. Más szóval fut a folyamat. |
-| [Get-AzDataFactoryV2Activityrun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | A folyamatban lévő tevékenység (tevékenységfuttatás) futtatásának részletei. 
+| [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | Létrehoz egy társított szolgáltatást az adatelőállítóban. A társított szolgáltatások adattárakhoz vagy számítási feladatokhoz kapcsolódnak egy adatgyárban. |
+| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | Létrehoz egy adatkészletet az adat-előállítóban. Az adatkészlet egy folyamat egy tevékenységének bemenetét/kimenetét jelöli. | 
+| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | Folyamat létrehozása az adatelőállítóban. Egy folyamat egy vagy több olyan tevékenységet tartalmaz, amely egy bizonyos műveletet hajt végre. Ebben a folyamatban a másolási tevékenységek az egyik helyről egy másik helyre másolják az adatok egy Azure-Blob Storage. |
+| [Meghívás – AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | Létrehoz egy futtatást a folyamathoz. Más szóval a folyamat futtatása folyamatban van. |
+| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | A folyamaton belüli tevékenység futtatásának (tevékenység futtatása) részleteinek beolvasása. 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
@@ -67,4 +67,4 @@ Ez a szkript a következő parancsokat használja:
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Data Factory PowerShell-parancsfájlminták találhatók az [Azure Data Factory PowerShell-parancsfájlokban.](../samples-powershell.md)
+További Azure Data Factory PowerShell-szkriptek is találhatók a [Azure Data Factory PowerShell-parancsfájlokban](../samples-powershell.md).

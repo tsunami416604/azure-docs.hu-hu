@@ -15,7 +15,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178947"
 ---
-A "Get-AzVirtualNetworkNetworkConnection" parancsmag segítségével ellenőrizheti, hogy a kapcsolat sikeres volt-e a "-Debug" használatával. 
+A "Get-AzVirtualNetworkGatewayConnection" parancsmag használatával ellenőrizheti, hogy sikeresen befejeződött-e a kapcsolatok "-debug" vagy anélkül. 
 
 1. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Ha a rendszer arra kéri, válassza az „A” lehetőséget az összes futtatásához. A példában a „-Name” a tesztelni kívánt kapcsolat nevére utal.
 

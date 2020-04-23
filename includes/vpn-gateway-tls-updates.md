@@ -16,15 +16,15 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178943"
 ---
 >[!NOTE]
->2018. július 1-től az Azure VPN Gatewayből el lett távolítva a TLS 1.0 és 1.1 támogatása. Ettől kezdve az Azure VPN Gateway csak a TLS 1.2-es verzióját támogatja. A támogatás fenntartásához tekintse meg a [TLS1.2 támogatásának engedélyezéséhez szükséges frissítéseket.](#tls1)
+>2018. július 1-től az Azure VPN Gatewayből el lett távolítva a TLS 1.0 és 1.1 támogatása. Ettől kezdve az Azure VPN Gateway csak a TLS 1.2-es verzióját támogatja. A támogatás fenntartásához tekintse meg a [TLS 1.2 támogatását engedélyező frissítéseket](#tls1).
 
-2018. július 1-jén a következő régebbi algoritmusok is elavultak lesznek a TLS-ben:
+Emellett a következő örökölt algoritmusok is elavultak lesznek a TLS-hez a 2018-es július 1-jén:
 
 * RC4 (Rivest Cipher 4)
 * DES (adattitkosítási algoritmus)
 * 3DES (háromszoros adattitkosítási algoritmus)
 * MD5 (Message Digest 5)
 
-### <a name="how-do-i-enable-support-for-tls-12-in-windows-7-and-windows-81"></a><a name="tls1"></a>Hogyan engedélyezhetem a TLS 1.2 támogatását windows 7 és Windows 8.1 rendszerben?
+### <a name="how-do-i-enable-support-for-tls-12-in-windows-7-and-windows-81"></a><a name="tls1"></a>Hogyan engedélyezi a TLS 1,2 támogatását a Windows 7 és a Windows 8,1 rendszerben?
 
 [!INCLUDE [tls 1.2](vpn-gateway-tls-include.md)]

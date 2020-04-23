@@ -37,7 +37,7 @@ Ha létrehoz egy távoli asztali kapcsolatot a virtuális géppel, csatlakozhat 
      ```
 
 2. Győződjön meg arról, hogy pont–hely típusú VPN-kapcsolattal csatlakozik a virtuális hálózathoz.
-3. Nyissa **meg a Távoli asztali kapcsolat** szolgáltatást úgy, hogy beírja az "RDP" vagy a "Távoli asztali kapcsolat" kifejezést a tálca keresőmezőjébe, majd válassza a Távoli asztali kapcsolat lehetőséget. A távoli asztali kapcsolatot megnyithatja a PowerShell „mstsc” parancsával is. 
+3. Nyissa meg **Távoli asztali kapcsolat** az "RDP" vagy a "távoli asztali kapcsolat" beírásával a tálcán található keresőmezőbe, majd válassza a távoli asztali kapcsolat lehetőséget. A távoli asztali kapcsolatot megnyithatja a PowerShell „mstsc” parancsával is. 
 4. A távoli asztali kapcsolatban írja be a virtuális gép magánhálózati IP-címét. A további beállításokat a „Beállítások megjelenítése” gombra kattintva módosíthatja. Ha végzett, hozza létre a kapcsolatot.
 
 ### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>Egy virtuális géppel létrehozni kívánt RDP-kapcsolat hibaelhárítása

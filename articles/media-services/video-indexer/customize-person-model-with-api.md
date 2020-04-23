@@ -1,7 +1,7 @@
 ---
-title: Személymodell testreszabása a Video Indexer API-val
+title: Személy modell testreszabása Video Indexer API-val
 titleSuffix: Azure Media Services
-description: Ismerje meg, hogyan szabhatja testre a személymodellt a Video Indexer API-val.
+description: Megtudhatja, hogyan szabhatja testre a személy modelljét a Video Indexer API-val.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -17,27 +17,27 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80127893"
 ---
-# <a name="customize-a-person-model-with-the-video-indexer-api"></a>Személymodell testreszabása a Video Indexer API-val
+# <a name="customize-a-person-model-with-the-video-indexer-api"></a>Személy modell testreszabása a Video Indexer API-val
 
-A Video Indexer támogatja a videotartalmak arcfelismerését és híresség-felismerését. A híresség elismerés vonás borít körülbelül egy millió szembenéz azon alapszik általában igényelt adatforrás mint IMDB, Wikipedia, és tető Összekapcsolt influencers. A rendszer olyan arcokat észlel, amelyeket a hírességek felismerése nem ismer fel, de névtelenül hagy. Miután feltöltötted a videódat a Video Indexerbe, és visszaszerezed az eredményeket, visszamehetsz, és elnevezheted a nem felismert arcokat. Miután megcímkézett egy arcot egy névvel, az arc és a név hozzáadódik a fiók személymodelljéhez. A Video Indexer ezután felismeri ezt az arcot a jövőbeli és a korábbi videókban.
+A Video Indexer támogatja az arcfelismerés és a Celebrity-felismerés használatát a videók tartalmához. A híresség-felismerési funkció a gyakran igényelt adatforrások (például a IMDB, a wikipedia és a legnépszerűbb LinkedIn-befolyásoló) alapján 1 000 000 Faces-t ölel fel. A híresség-felismerési funkció által nem felismerhető arcok észlelhetők, de a név nem a neve. Miután feltöltötte a videót Video Indexerre, és visszakeresi az eredményeket, visszatérhet, és megadhatja azokat az arcokat, amelyeket nem ismert fel. Miután felcímkéz egy nevet a névvel, az arc és a név bekerül a fiókja személy modelljébe. Ezt követően a Video Indexer felismeri ezt az arcot a későbbi videókban és a korábbi videókban is.
 
-A Video Indexer API-val szerkesztheti a videóban észlelt arcokat, a jelen témakörben leírtak szerint. A Video Indexer webhelyet is használhatja a [Személy testreszabása modellben leírtak szerint a Video Indexer webhely használatával.](customize-person-model-with-api.md)
+A jelen témakörben ismertetett módon szerkesztheti a videóban észlelt arcokat a Video Indexer API használatával. A Video Indexer webhelyét a [személy modell testreszabása a video Indexer webhelyről](customize-person-model-with-api.md)című témakörben leírtak szerint is használhatja.
 
-## <a name="managing-multiple-person-models"></a>Több személy modell kezelése
+## <a name="managing-multiple-person-models"></a>Több személyből származó modellek kezelése
 
-A Video Indexer fiókonként több személymodellt támogat. Ez a funkció jelenleg csak a Video Indexer API-kon keresztül érhető el.
+A Video Indexer fiókkal több person modellt is támogat. Ez a funkció jelenleg csak a Video Indexer API-kon keresztül érhető el.
 
-Ha a fiók különböző használati eseteket lát el, fiókonként több személymodellt is létrehozhat. Ha például a tartalom sporthoz kapcsolódik, akkor minden sportághoz (labdarúgás, kosárlabda, foci és így tovább) külön személymodellt hozhat létre.
+Ha a fiókja más használati esetekre is kiterjed, érdemes lehet több személyből származó modellt létrehozni. Ha például a tartalma a sporthoz kapcsolódik, létrehozhat egy külön személy modellt minden sportághoz (labdarúgás, kosárlabda, futball stb.).
 
-A modell létrehozása után használhatja azt egy adott személy modell modellazonosítójának megadásával egy videó feltöltésekor/indexelésekor vagy újraindexelésekor. A videó új arcának betanítása frissíti azt az egyéni modellt, amelyhez a videó társítva volt.
+A modell létrehozása után használhatja azt egy adott személy modell AZONOSÍTÓjának megadásával, amikor feltölti/indexeli vagy újraindexeli a videót. A videó új arca betanítása frissíti azt a konkrét egyéni modellt, amelyhez a videó társítva lett.
 
-Minden fióklegfeljebb 50 személy modell. Ha nincs szükséged a többszemélyes modell támogatására, ne rendelj személymodell-azonosítót a videódhoz feltöltés/indexelés vagy újraindexelés közben. Ebben az esetben a Video Indexer az alapértelmezett egyéni személy modellt használja a fiókjában.
+Minden fiókhoz legfeljebb 50 személy-modell tartozik. Ha nincs szüksége a több személyre vonatkozó modell támogatására, ne rendeljen hozzá egy személy modell-azonosítót a videóhoz feltöltés/indexelés vagy újraindexelés során. Ebben az esetben a Video Indexer az alapértelmezett egyéni személy modellt használja a fiókjában.
 
-## <a name="create-a-new-person-model"></a>Új személymodell létrehozása
+## <a name="create-a-new-person-model"></a>Új személy modell létrehozása
 
-Ha új személymodellt szeretne létrehozni a megadott fiókban, használja a [személymodell létrehozása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) API-t.
+Ha új személy modellt szeretne létrehozni a megadott fiókban, használja a [create a person Model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) API-t.
 
-A válasz az alábbi példa formátumát követve létrehozott Személy modell nevét és generált modellazonosítóját tartalmazza.
+A válasz megadja az imént létrehozott személy modell nevét és a generált modell AZONOSÍTÓját, amelyet az alábbi példa formátuma követ.
 
 ```json
 {
@@ -46,21 +46,21 @@ A válasz az alábbi példa formátumát követve létrehozott Személy modell n
 }
 ```
 
-Ezután a **personModelId** paraméter **azonosítóértékét** használja, amikor videót tölt fel a videó [indexelésére](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy [újraindexelésére.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)
+Ezután használja a **personModelId** paraméter **azonosító** értékét, amikor [feltölt egy videót egy videó indexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy [újraindexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
 
-## <a name="delete-a-person-model"></a>Személymodell törlése
+## <a name="delete-a-person-model"></a>Személy modell törlése
 
-Egyéni személy modell törlése a megadott fiókból, használja a [személy törlése modell](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) API-t.
+Ha törölni szeretne egy egyéni személy modellt a megadott fiókból, használja a [személyes modell törlése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) API-t.
 
-A Személy modell sikeres törlése után a törölt modellt használó aktuális videók indexe mindaddig változatlan marad, amíg újra nem indexeli őket. Az újraindexeléskor a törölt modellben elnevezett arcokat a Video Indexer nem ismeri fel az aktuális videókban, amelyeket az adott modell használatával indexeltek, de az arcok továbbra is észlelni fogják őket. A törölt modell használatával indexelt aktuális videók mostantól a fiók alapértelmezett Személy modelljét fogják használni. Ha a törölt modell ből származó arcok is szerepelnek a fiók alapértelmezett modelljében, akkor ezeket az arcokat továbbra is felismeri a rendszer a videókban.
+Miután sikeresen törölte a személy modelljét, a törölt modellt használó aktuális videók indexe változatlan marad, amíg újra nem indexeli őket. Az újraindexelés során a törölt modellben megnevezett arcok nem ismerhetők fel Video Indexer az adott modellel indexelt aktuális videókon, de az arcok továbbra is észlelhetők lesznek. A törölt modell használatával indexelt aktuális videók mostantól a fiók alapértelmezett személyének modelljét fogják használni. Ha a törölt modellből származó arcok a fiók alapértelmezett modelljében is megtalálhatók, akkor a rendszer továbbra is felismeri ezeket az arcokat a videókban.
 
-Nincs visszaadott tartalom, ha a Személy modell sikeresen törlődik.
+A személy modelljének törlése után nincs visszaadott tartalom.
 
-## <a name="get-all-person-models"></a>Az összes Személy modell beszereznie
+## <a name="get-all-person-models"></a>Összes modell lekérése
 
-A megadott fiókban az összes person modell lehívásához használja a személymodell API [beszerzése.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?)
+A megadott fiókban található összes modell beszerzéséhez használja a [személyre szabott modell](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) API-t.
 
-A válasz tartalmazza a fiókjában lévő összes Személy modell (beleértve az alapértelmezett személy modellt a megadott fiókban), valamint az egyes nevük és azonosítóik listáját az alábbi példa formátumát követve.
+A válasz felsorolja a fiókban lévő összes személy modelljét (beleértve a megadott fiókban található alapértelmezett személy modellt is) és az alábbi példa formátumát követő neveket és azonosítókat.
 
 ```json
 [
@@ -75,20 +75,20 @@ A válasz tartalmazza a fiókjában lévő összes Személy modell (beleértve a
 ]
 ```
 
-A videó `id` [indexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy [újraindexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)használt személy modell `personModelId` értékével választhatja ki, hogy melyik modellt szeretné használni.
+Kiválaszthatja, hogy melyik modellt kívánja használni `id` a videóhoz `personModelId` , ha egy videót tölt fel az [indexbe](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) , vagy [újraindexel egy](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)videót.
 
 ## <a name="update-a-face"></a>Arc frissítése
 
-Ez a parancs lehetővé teszi, hogy frissítse az arc a videó egy nevet az azonosítót a videó és az azonosító az arc. Ez a művelet ezután frissíti azt a személymodellt, amelyhez a videó társítva volt a feltöltés/indexelés vagy újraindexelés során. Ha nincs személymodell hozzárendelése, frissíti a fiók alapértelmezett személy modelljét.
+Ez a parancs lehetővé teszi a videóban lévő arc frissítését a videó és az arc AZONOSÍTÓját használó névvel. Ez a művelet ezután frissíti azt a személy-modellt, amelyet a videó a feltöltéshez, az indexeléshez vagy az újraindexeléshez társított. Ha nincs személy modell rendelve, akkor a fiók alapértelmezett személy modelljét frissíti.
 
-A rendszer ezután felismeri az azonos arc előfordulásait a többi aktuális videóban, amelyek ugyanazt a Személy modellt használják. Az arc felismerése a többi aktuális videóban időbe telhet, amíg érvénybe lép, mivel ez egy kötegelt folyamat.
+A rendszer ezután felismeri, hogy ugyanaz az arc fordul elő a többi aktuális videóban, amelyek ugyanazt a személyt használják. A többi aktuális videóban lévő arc felismerése hosszabb időt is igénybe vehet, mivel ez egy batch-folyamat.
 
-Frissítheti azt az arcot, amelyet a Video Indexer új néven ismer fel hírességként. Az új nevet, hogy adsz elsőbbséget élveznek a beépített híresség elismerést.
+Frissíthet egy olyan arcot, amely új néven hírességként Video Indexer ismert. Az Ön által megadott új név elsőbbséget élvez a beépített híresség felismerésével szemben.
 
-Az arc frissítéséhez használja a [frissítés egy videoarc](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) API.To update the face, use the update a video face API.
+Az arc frissítéséhez használja a [video Face API frissítése lapot](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) .
 
-A nevek egyediek a Személy modellekhez, így ha két `name` különböző arcot adsz ugyanabban a Személy modellben ugyanazt a paraméterértéket, a Video Indexer ugyanannak a személynek tekinti meg az arcokat, és a videó újraindexelése után konvergálja őket.
+A nevek egyediek a személy modellek esetében, így ha két különböző arcot ad meg ugyanabban a `name` paraméter-értékben, video Indexer megtekinti az arcokat ugyanazzal a személlyel, és a videó újraindexelése után átszervezi őket.
 
 ## <a name="next-steps"></a>További lépések
 
-[Személymodell testreszabása a Video Indexer webhely használatával](customize-person-model-with-website.md)
+[Személy modell testreszabása a Video Indexer webhely használatával](customize-person-model-with-website.md)

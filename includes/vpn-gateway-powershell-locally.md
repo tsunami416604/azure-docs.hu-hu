@@ -15,4 +15,4 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660484"
 ---
-Az Azure PowerShell-parancsmagokat helyileg is telepítheti és futtathatja a számítógépen. A PowerShell-parancsmagok gyakran frissülnek. Ha még nem telepítette a legújabb verziót, az utasításokban megadott értékek sikertelenek lehetnek. A számítógépre telepített Azure PowerShell-verziók megkereséséhez használja a `Get-Module -ListAvailable Az` parancsmast. A telepítéshez vagy frissítéshez [olvassa el az Azure PowerShell-modul telepítése című témakört.](/powershell/azure/install-az-ps)
+A Azure PowerShell-parancsmagokat helyileg is telepítheti és futtathatja a számítógépen. A PowerShell-parancsmagok gyakran frissülnek. Ha még nem telepítette a legújabb verziót, az utasításokban megadott értékek sikertelenek lehetnek. A számítógépen telepített Azure PowerShell verzióinak megkereséséhez használja a `Get-Module -ListAvailable Az` parancsmagot. A telepítéséhez vagy frissítéséhez tekintse meg [a Azure PowerShell modul telepítését](/powershell/azure/install-az-ps)ismertető témakört.

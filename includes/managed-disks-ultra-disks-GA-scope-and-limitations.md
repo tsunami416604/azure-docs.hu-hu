@@ -15,14 +15,14 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/10/2020
 ms.locfileid: "81008636"
 ---
-Most, ultra lemezek további korlátozások, ezek a következők:
+Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
-Az ultralemezek számára jelenleg csak a rendelkezésre állási zónák érhetők el infrastruktúra-redundancia-beállítások. Más redundanciabeállításokat használó virtuális gépek nem tudnak ultralemezt csatolni.
+A jelenleg csak az ultra-lemezek számára elérhető infrastruktúra-redundancia lehetőség a rendelkezésre állási zónák. A más redundancia-beállításokat használó virtuális gépek nem csatolhatnak Ultra-lemezt.
 
-Az alábbi táblázat ismerteti az ultralemezek régióit, valamint a megfelelő rendelkezésre állási lehetőségeket:
+Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk tartozó rendelkezésre állási lehetőségeket:
 
 > [!NOTE]
-> Ezeken a régiókon belül néhány rendelkezésre állási zóna nem kínál ultralemezeket.
+> Az ezekben a régiókban található egyes rendelkezésre állási zónák nem biztosítanak Ultra-lemezeket.
 
 |Régiók  |Nincs infrastruktúra-redundancia  |Rendelkezésre állási zónák  |
 |---------|---------|---------|
@@ -35,17 +35,17 @@ Az alábbi táblázat ismerteti az ultralemezek régióit, valamint a megfelelő
 |Nyugat-Európa     |Nem         |Igen         |
 |Az Egyesült Királyság déli régiója     |Nem         |Igen         |
 
-- Csak a következő virtuálisgép-sorozatban támogatottak:
-    - [ESv3 között](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - [DSv3 között](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
+- Csak a következő virtuálisgép-sorozatokban támogatott:
+    - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
+    - [DSv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
     - FSv2
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-    - [Mv2 között](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-- Nem minden virtuális gép méret érhető el minden támogatott régióban ultralemezekkel
-- Csak adatlemezként érhetők el, és csak a 4k fizikai szektorméretet támogatják. Az Ultra Disk 4K natív szektormérete miatt vannak olyan alkalmazások, amelyek nem kompatibilisek az ultralemezekkel. Erre példa az Oracle Database, amely 12.2-es vagy újabb kiadást igényel az ultralemezek támogatásához.  
+    - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+- Nem minden virtuálisgép-méret érhető el minden olyan támogatott régióban, ahol az ultra Disks
+- Csak adatlemezként érhetők el, és csak a 4k fizikai szektor méretének támogatásához. Az ultra-lemez 4K-os natív szektorának mérete miatt bizonyos alkalmazások nem lesznek kompatibilisek az ultra Disks szolgáltatással. Az ultra-lemezek támogatásához az egyik példa a Oracle Database, amely a 12,2-as vagy újabb kiadást igényli.  
 - Csak üres lemezként hozható létre  
-- Jelenleg nem támogatja a lemezpillanatképeket, a virtuálisgép-lemezképeket, a rendelkezésre állási csoportokat, az Azure dedikált gazdagépeket vagy az Azure lemeztitkosítást
-- Jelenleg nem támogatja az Azure Backup vagy az Azure Site Recovery szolgáltatással való integrációt
-- A ga-virtuális gépeki IOPS jelenlegi maximális korlátja 80 000.
+- Jelenleg nem támogatja a lemezes pillanatképeket, a virtuálisgép-lemezképeket, a rendelkezésre állási csoportokat, az Azure dedikált gazdagépeket vagy az Azure Disk Encryption
+- Jelenleg nem támogatja az integrációt Azure Backup vagy Azure Site Recovery
+- A GA virtuális gépek IOPS jelenlegi maximális korlátja 80 000.
 
-Az Azure ultra lemezek alapértelmezés szerint alapértelmezés szerint régiónként és előfizetésenként akár 16 TiB-t is kínálnak, de az ultralemezek kérésre nagyobb kapacitást támogatnak. A kapacitás növelésének kéréséhez forduljon az Azure-támogatáshoz.
+Az Azure Ultra Disks szolgáltatás alapértelmezés szerint akár 16 TiB-előfizetést is kínál, de az ultra-lemezek kéréssel magasabb szintű kapacitást is nyújtanak. A kapacitás növelésének igényléséhez forduljon az Azure ügyfélszolgálatához.

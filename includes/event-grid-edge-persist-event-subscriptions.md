@@ -16,4 +16,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "76844546"
 ---
 >[!NOTE]
-> Ha garantálnia kell, hogy a függőben lévő események az eszköz újraindítása esetén megmaradnak, engedélyeznie kell az adatmegőrzést az esemény-előfizetéshez. Az adatmegőrzés beállításáról a következő cikkekben talál további információt: [Állapot megőrzése Linux alatt](../articles/event-grid/edge/persist-state-linux.md) vagy [Perzisztencia állapot a Windows rendszerben.](../articles/event-grid/edge/persist-state-windows.md)
+> Ha egy eszköz újraindítása esetén meg kell őriznie a függőben lévő eseményeket, engedélyeznie kell az esemény-előfizetés megőrzését. Az adatmegőrzés beállításával kapcsolatos további információkért tekintse meg a következő cikkeket: állapot megtartása [Linuxon](../articles/event-grid/edge/persist-state-linux.md) vagy [az állapot megőrzése a Windowsban](../articles/event-grid/edge/persist-state-windows.md).

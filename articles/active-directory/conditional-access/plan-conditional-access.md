@@ -1,6 +1,6 @@
 ---
-title: Feltételes hozzáférési házirendek tervezése az Azure Active Directoryban | Microsoft dokumentumok
-description: Ebből a cikkből megtudhatja, hogyan tervezheti meg az Azure Active Directory feltételes hozzáférési szabályzatait.
+title: Feltételes hozzáférési szabályzatok tervezése a Azure Active Directoryban | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan tervezhet feltételes hozzáférési szabályzatokat a Azure Active Directoryhoz.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,182 +18,182 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671830"
 ---
-# <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Útmutató: A feltételes hozzáférés telepítésének megtervezése az Azure Active Directoryban
+# <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Útmutató: a feltételes hozzáférési telepítés megtervezése Azure Active Directory
 
-A feltételes hozzáférés központi telepítésének megtervezése elengedhetetlen ahhoz, hogy a szervezetben az alkalmazásokhoz és erőforrásokhoz szükséges hozzáférési stratégiát érje el. A legtöbb időt a telepítés tervezési fázisában arra fordíthatja, hogy megtervezze a felhasználók számára a kiválasztott feltételek mellett a hozzáférést biztosító vagy letiltáshoz szükséges különböző házirendeket. Ez a dokumentum ismerteti a biztonságos és hatékony feltételes hozzáférési házirendek megvalósításához szükséges lépéseket. Mielőtt elkezdené, győződjön meg arról, hogy megértette, hogyan működik [a feltételes hozzáférés,](overview.md) és mikor kell használni.
+A feltételes hozzáférés központi telepítésének megtervezése kritikus fontosságú ahhoz, hogy a szervezet alkalmazásai és erőforrásai számára elérhetővé tegye a szükséges hozzáférési stratégiát. Az üzembe helyezés tervezési fázisában az idő nagy részében az Ön által választott feltételek alapján megtervezheti a felhasználók hozzáférésének megadásához vagy letiltásához szükséges különböző házirendeket. Ez a dokumentum ismerteti a biztonságos és hatékony feltételes hozzáférési házirendek megvalósításának lépéseit. Mielőtt elkezdené, győződjön meg arról, hogyan működik a [feltételes hozzáférés](overview.md) , és hogy mikor érdemes használni.
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
-Gondoljon a feltételes hozzáférés keretrendszerére, amely lehetővé teszi a szervezet alkalmazásaihoz és erőforrásaihoz való hozzáférés szabályozását, nem pedig önálló funkcióként. Ezért egyes feltételes hozzáférési beállítások további szolgáltatásokat igényelnek. Konfigurálhat például egy szabályzatot, amely egy adott [bejelentkezési kockázati szintre](../identity-protection/howto-identity-protection-configure-risk-policies.md)válaszol. Azonban egy szabályzat, amely egy bejelentkezési kockázati szint alapú, az [Azure Active Directory identitásvédelem](../identity-protection/overview-identity-protection.md) engedélyezéséhez szükséges.
+Tekintse át a feltételes hozzáférést olyan keretrendszerként, amely lehetővé teszi a szervezet alkalmazásaihoz és erőforrásaihoz való hozzáférés szabályozását önálló szolgáltatás helyett. Ennek következtében bizonyos feltételes hozzáférési beállításokhoz további funkciók konfigurálására van szükség. Beállíthat például egy olyan szabályzatot, amely egy adott [bejelentkezési kockázati szintre](../identity-protection/howto-identity-protection-configure-risk-policies.md)válaszol. Azonban a bejelentkezési kockázati szinten alapuló házirendhez engedélyezni kell [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) szolgáltatást.
 
-Ha további funkciókra van szükség, előfordulhat, hogy a kapcsolódó licenceket is be kell szereznie. Például, míg a feltételes hozzáférés az Azure AD Premium P1 funkció, az identitásvédelem hez egy Azure AD Premium P2 licenc szükséges.
+Ha további funkciókra van szükség, szükség lehet a kapcsolódó licencek beszerzésére is. Ha például a feltételes hozzáférés prémium szintű Azure AD P1 funkció, az Identity Protection prémium szintű Azure AD P2-licencet igényel.
 
-A feltételes hozzáférési házirendeknek két típusa van: alapkonfiguráció és normál. Az [alaptervi házirend](baseline-protection.md) egy előre definiált feltételes hozzáférési házirend. Ezeknek a házirendeknek az a célja, hogy megbizonyosodjanak arról, hogy legalább az alapszintű biztonsági szint engedélyezve van. Alapházirendek. Az alapszintű szabályzatok az Azure AD összes kiadásában elérhetők, és csak korlátozott testreszabási lehetőségeket biztosítanak. Ha egy forgatókönyv nagyobb rugalmasságot igényel, tiltsa le az alapszintű házirendet, és valósítsa meg a követelményeket egy egyéni szabványos házirendben.
+A feltételes hozzáférési szabályzatok két típusa létezik: alapterv és standard. Az alapkonfiguráció [szabályzata](baseline-protection.md) előre definiált feltételes hozzáférési szabályzat. Ezen szabályzatok célja, hogy ellenőrizze, hogy rendelkezik-e legalább az alapszintű biztonsági beállítással. Alapterv-házirendek. Az alapkonfigurációs házirendek az Azure AD minden kiadásában elérhetők, és csak korlátozott testreszabási lehetőségeket biztosítanak. Ha egy forgatókönyv nagyobb rugalmasságot igényel, tiltsa le az alapszintű szabályzatot, és alkalmazza a követelményeit egy egyéni szabványos házirendben.
 
-Egy szabványos feltételes hozzáférési házirendben testreszabhatja az összes beállítást, hogy a házirend az üzleti igényekhez igazodjon. A standard szabályzatok hoz egy Azure AD Premium P1 licenc.
+A standard feltételes hozzáférési szabályzatban az összes beállítást testreszabhatja, hogy a szabályzatot az üzleti igényeknek megfelelően módosítsa. A standard szabályzatokhoz prémium szintű Azure AD P1 licenc szükséges.
 
 >[!NOTE]
-> Azt javasoljuk, hogy az Azure AD-eszköz alapú feltételes hozzáférési szabályzat a legjobb kényszerítés a kezdeti eszköz hitelesítése után. Ez magában foglalja a munkamenetek lezárását, ha az eszköz kiesik a megfelelőségi és az eszköz kódáramlását.
+> Azt javasoljuk, hogy az Azure AD-alapú feltételes hozzáférési szabályzat használatával a kezdeti eszköz hitelesítése után a legjobb kényszerítést kapja meg. Ez magában foglalja a záró munkameneteket, ha az eszköz nem felel meg a megfelelőségi és az eszköz kódjának.
 
-## <a name="draft-policies"></a>Politikatervezetek
+## <a name="draft-policies"></a>Piszkozat-szabályzatok
 
-Az Azure Active Directory feltételes hozzáférése lehetővé teszi, hogy a felhőalapú alkalmazások védelmét egy új szintre. Ezen az új szinten a felhőalapú alkalmazások elérésének célja a statikus hozzáférési konfiguráció helyett dinamikus szabályzatkiértékelés. Feltételes hozzáférési házirend esetén meg kell adni a hozzáférési feltételre **(ha ez megtörténik)** választ **(ezt megteheti)**
+Azure Active Directory feltételes hozzáférés lehetővé teszi, hogy a Felhőbeli alkalmazások védelmét új szintre vigye. Ebben az új szinten a felhőalapú alkalmazások elérésének módja a statikus hozzáférési konfiguráció helyett a dinamikus szabályzat kiértékelésén alapul. A feltételes hozzáférési szabályzattal választ adhat meg a hozzáférési feltételnek **(****Ha ez történik**).
 
 ![Ok és válasz](./media/plan-conditional-access/10.png)
 
-Definiálja az összes olyan feltételes hozzáférési szabályzatot, amelyet ezzel a tervezési modellel kíván megvalósítani. A tervezési gyakorlat:
+Határozza meg a tervezési modell használatával megvalósítani kívánt feltételes hozzáférési szabályzatokat. A tervezési gyakorlat:
 
-- Segít az egyes házirendek válaszainak és feltételeinek felvázolásában.
-- Jól dokumentált feltételes hozzáférési házirend-katalógust eredményez a szervezet számára. 
+- Segít az egyes szabályzatok válaszait és feltételeit körvonalazni.
+- Egy jól dokumentált feltételes hozzáférési házirend-katalógust eredményez a szervezet számára. 
 
-A katalógus segítségével felmérheti, hogy a házirend megvalósítása tükrözi-e a szervezet üzleti követelményeit. 
+A katalógus használatával kivizsgálhatja, hogy a szabályzat megvalósítása megfelel-e a szervezet üzleti követelményeinek. 
 
-A következő példasablon segítségével hozzon létre feltételes hozzáférési házirendeket a szervezet számára:
+A következő példa sablonnal feltételes hozzáférési szabályzatokat hozhat létre a szervezet számára:
 
-|Amikor *ez* megtörténik:|Akkor tegye *ezt:*|
+|Ha *Ez* történik:|Ezután tegye *a*következőket:|
 |-|-|
-|A program hozzáférési kísérletet kísérelt meg:<br>- Egy felhő app*<br>- A felhasználók és csoportok*<br>Használ:<br>- 1. feltétel (például a Corp hálózaton kívül)<br>- 2. feltétel (például eszközplatformok)|Az alkalmazáshoz való hozzáférés letiltása|
-|A program hozzáférési kísérletet kísérelt meg:<br>- Egy felhő app*<br>- A felhasználók és csoportok*<br>Használ:<br>- 1. feltétel (például a Corp hálózaton kívül)<br>- 2. feltétel (például eszközplatformok)|Hozzáférés megadása az (ÉS) értékkel:<br>- 1.<br>- 2. követelmény (például eszközmegfelelőség)|
-|A program hozzáférési kísérletet kísérelt meg:<br>- Egy felhő app*<br>- A felhasználók és csoportok*<br>Használ:<br>- 1. feltétel (például a Corp hálózaton kívül)<br>- 2. feltétel (például eszközplatformok)|Hozzáférés megadása a (OR) értékkel:<br>- 1.<br>- 2. követelmény (például eszközmegfelelőség)|
+|Hozzáférési kísérlet történt:<br>–*<br>Felhasználók és csoportok által Felhőbeli alkalmazásokhoz*<br>Használatával<br>– 1. feltétel (például a Corp hálózaton kívül)<br>– 2. feltétel (például az eszközök platformja)|Az alkalmazáshoz való hozzáférés letiltása|
+|Hozzáférési kísérlet történt:<br>–*<br>Felhasználók és csoportok által Felhőbeli alkalmazásokhoz*<br>Használatával<br>– 1. feltétel (például a Corp hálózaton kívül)<br>– 2. feltétel (például az eszközök platformja)|Hozzáférés biztosítása a következővel (és):<br>– 1. követelmény (például MFA)<br>– 2. követelmény (például eszköz megfelelősége)|
+|Hozzáférési kísérlet történt:<br>–*<br>Felhasználók és csoportok által Felhőbeli alkalmazásokhoz*<br>Használatával<br>– 1. feltétel (például a Corp hálózaton kívül)<br>– 2. feltétel (például az eszközök platformja)|Hozzáférés biztosítása (vagy):<br>– 1. követelmény (például MFA)<br>– 2. követelmény (például eszköz megfelelősége)|
 
-Legalább, **ha ez megtörténik,** meghatározza a fő **(aki**), amely megpróbálja elérni a felhő app (**mi**). Szükség esetén a hozzáférési kísérlet **elvégzésének módját** is megadhatja. A Feltételes hozzáférés, az elemek, amelyek meghatározzák a ki, mit és hogyan ismert feltételek. További információ: [Mik a feltételek az Azure Active Directory feltételes hozzáférés?](concept-conditional-access-conditions.md) 
+**Ha ez megtörténik, akkor ez** határozza meg azt a rendszerbiztonsági tag (**WHO**), amely megpróbál hozzáférni a felhőalapú alkalmazásokhoz (**mi**). Szükség esetén megadhatja a hozzáférési kísérlet **módját** is. A feltételes hozzáférésben azok az elemek határozzák meg, amelyek meghatározzák a WHO, mi, és hogyan ismert feltételeket. További információ: [Mi a feltételek a Azure Active Directory feltételes hozzáférésben?](concept-conditional-access-conditions.md) 
 
-**Ezzel adja**meg a házirend hozzáférési feltételre adott válaszát. A válaszban letilthatja vagy hozzáférést adhat további követelményekkel, például többtényezős hitelesítéssel (MFA). A teljes áttekintést a [Mik azok a hozzáférés-vezérlések az Azure Active Directory feltételes hozzáférésében?](controls.md)  
+**Ezt követően**megadhatja a házirendre adott választ a hozzáférési feltételnek. A válaszában a további követelményekkel, például a többtényezős hitelesítéssel (MFA) is blokkolhatja vagy engedélyezheti a hozzáférést. A teljes áttekintést lásd: [Mi a hozzáférés-vezérlés Azure Active Directory feltételes hozzáférés?](controls.md)  
 
-A feltételek és a hozzáférés-vezérlők kombinációja feltételes hozzáférési szabályzatot jelent.
+A feltételek és a hozzáférés-vezérlések kombinációja feltételes hozzáférési szabályzatot jelöl.
 
 ![Ok és válasz](./media/plan-conditional-access/51.png)
 
-További információkért tekintse meg, [hogy mi szükséges ahhoz, hogy a házirend működjön.](best-practices.md#whats-required-to-make-a-policy-work)
+További információ: [Mi szükséges a szabályzat működéséhez](best-practices.md#whats-required-to-make-a-policy-work).
 
-Ezen a ponton, ez egy jó ideje, hogy döntsön a szabályzatok elnevezési szabvány. Az elnevezési szabvány segít megtalálni a szabályzatokat, és megérteni azok célját anélkül, hogy megnyitnák őket az Azure felügyeleti portálon. Nevezze el a megjeleníteni a házirendet:
+Ezen a ponton érdemes eldönteni, hogy a szabályzatok elnevezési szabványa milyen. Az elnevezési szabvány segítségével megtalálhatja a szabályzatokat, és megtekintheti azok célját anélkül, hogy megnyitná őket az Azure felügyeleti portálon. Nevezze el a szabályzatot, hogy megjelenjen:
 
 - Sorszám
-- Az a felhőalkalmazás, amelyet alkalmaz
+- A felhőalapú alkalmazás a következőre vonatkozik
 - A válasz
-- Kire vonatkozik?
-- Amikor a rendelet alkalmazandó (adott esetben)
+- Kik érvényesek
+- Ha érvényes (ha van ilyen)
  
 ![Elnevezési szabvány](./media/plan-conditional-access/11.png)
 
-Bár egy leíró név segít a feltételes hozzáférés megvalósításának áttekintésében, a sorszám akkor hasznos, ha egy beszélgetésben egy házirendre kell hivatkoznia. Ha például telefonon beszél egy rendszergazdatársával, megkérheti őket, hogy nyissák meg az EM063 házirendet egy probléma megoldásához.
+Míg a leíró név segít megőrizni a feltételes hozzáférési megvalósítás áttekintését, a sorozatszám hasznos lehet, ha egy beszélgetési szabályzatra kell hivatkoznia. Ha például egy társ-rendszergazdával kommunikál a telefonon, megkérheti őket, hogy a probléma megoldásához nyissa meg a szabályzat EM063.
 
-Az alábbi név például azt állítja, hogy a házirend a Dynamics CRP alkalmazás használatával külső hálózatokon lévő felhasználók marketingjeihez többfa szükséges:
+A következő név például azt jelzi, hogy a házirendben a többtényezős hitelesítés szükséges a külső hálózatokon a Dynamics CRP-alkalmazás használatával:
 
 `CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
-Az aktív szabályzatok mellett célszerű olyan letiltott házirendeket is megvalósítani, amelyek másodlagos [rugalmas hozzáférés-vezérlésként működnek a szolgáltatáskimaradási/vészhelyzeti forgatókönyvekben.](../authentication/concept-resilient-controls.md) A vészhelyzeti házirendek elnevezési szabványának tartalmaznia kell még néhány elemet: 
+Az aktív szabályzatok mellett javasolt olyan letiltott szabályzatokat is megvalósítani, amelyek másodlagos [rugalmas hozzáférés-vezérlést biztosítanak az kimaradási/vészhelyzeti helyzetekben](../authentication/concept-resilient-controls.md). A készenléti szabályzatok elnevezési szabványának néhány további elemet is tartalmaznia kell: 
 
-- `ENABLE IN EMERGENCY`az elején, hogy a név kitűnjön a többi politika.
-- A megzavarás neve, amelyre vonatkoznia kell.
-- Rendelési sorszám, amely segít a rendszergazdának tudni, hogy mely sorrendbeli házirendeket kell engedélyezni. 
+- `ENABLE IN EMERGENCY`az elején, hogy a név kitűnjön a többi szabályzat között.
+- Annak a megszakadásnak a neve, amelyre érvényesnek kell lennie.
+- Egy megrendelési sorozatszám, amely segít a rendszergazdának megismerni, hogy mely rendelési házirendeket kell engedélyezni. 
 
-A következő név például azt jelzi, hogy ez a házirend az első olyan házirend, amelyet engedélyeznie kell, ha mfa-zavar van:
+A következő név például azt jelzi, hogy ez a házirend az első négy házirendből áll, ha MFA-megszakadást tapasztal:
 
 `EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
 
-## <a name="plan-policies"></a>Házirendek tervezése
+## <a name="plan-policies"></a>Szabályzatok tervezése
 
-A feltételes hozzáférésházirend-megoldás tervezésekor mérje fel, hogy létre kell-e hoznia a következő eredmények eléréséhez szükséges házirendeket. 
+A feltételes hozzáférési szabályzat megtervezésekor mérje fel, hogy létre kell-e hoznia házirendeket a következő eredmények eléréséhez. 
 
-### <a name="block-access"></a>Fájlhozzáférés
+### <a name="block-access"></a>Hozzáférés letiltása
 
-A hozzáférés blokkolásának lehetősége azért hatékony, mert:
+A hozzáférés blokkolásának lehetősége hatékony, mert:
 
-- Minden más felhasználó megbízásának aduja
-- Megvan a hatalma, hogy megakadályozza a teljes szervezet bejelentkezését a bérlő
+- Kiszorítja a felhasználó összes többi hozzárendelését
+- A teljes szervezet beléptetésének letiltása a bérlőre való bejelentkezéssel
  
-Ha azt szeretné, hogy blokkolja a hozzáférést az összes felhasználó számára, legalább egy felhasználót (általában a segélyhívó fiókokat) ki kell zárnia a házirendből. További információt a [Felhasználók és csoportok kijelölése](block-legacy-authentication.md#select-users-and-cloud-apps)című témakörben talál.  
+Ha le szeretné tiltani az összes felhasználó hozzáférését, legalább egy felhasználót ki kell zárnia (általában vészhelyzeti hozzáférési fiókok) a szabályzatból. További információ: [felhasználók és csoportok kiválasztása](block-legacy-authentication.md#select-users-and-cloud-apps).  
 
 ### <a name="require-mfa"></a>MFA megkövetelése
 
-A felhasználók bejelentkezési élményének egyszerűsítése érdekében érdemes engedélyezni e felhasználók számára, hogy felhasználónév vel és jelszóval jelentkezzenek be a felhőalapú alkalmazásokba. Azonban általában vannak olyan forgatókönyvek, amelyekesetében tanácsos erősebb fiókellenőrzést igényelni. Feltételes hozzáférési szabályzattal korlátozhatja az MFA követelményét bizonyos esetekre. 
+A felhasználók bejelentkezési élményének egyszerűsítése érdekében érdemes lehet engedélyezni a felhőalapú alkalmazásoknak a Felhasználónév és jelszó használatával történő bejelentkezést. Azonban általában vannak olyan helyzetek, amelyeknek javasolt a fiókok ellenőrzésének erősebb formáját követelni. A feltételes hozzáférési szabályzattal bizonyos helyzetekben korlátozhatja az MFA követelményeit. 
 
-Az MFA-t igénylő gyakori használati esetek a következők:
+Az MFA megkövetelésének gyakori felhasználási esetei a következők:
 
-- [Az adminok szerint](howto-baseline-protect-administrators.md)
-- [Adott alkalmazásokra](app-based-mfa.md) 
-- [Hálózati helyekről nem bízik](untrusted-networks.md)meg.
+- [Adminisztrátorok szerint](howto-baseline-protect-administrators.md)
+- [Adott alkalmazások számára](app-based-mfa.md) 
+- [A hálózati helyekről nem bízik meg](untrusted-networks.md).
 
-### <a name="respond-to-potentially-compromised-accounts"></a>Adott, potenciálisan feltört fiókokra adott válaszadás
+### <a name="respond-to-potentially-compromised-accounts"></a>Válaszadás potenciálisan feltört fiókokra
 
-Feltételes hozzáférési szabályzatok segítségével automatikus válaszokat hozhat létre a potenciálisan veszélyeztetett identitások bejelentkezések. Annak a valószínűsége, hogy egy számla feltörése kockázati szintek formájában van kifejezve. Az identitásvédelem által számított kockázati szintek: a bejelentkezési kockázat és a felhasználói kockázat két kockázati szint. A bejelentkezési kockázatra adott válasz megvalósításához két lehetősége van:
+A feltételes hozzáférési szabályzatokkal automatizált válaszokat alkalmazhat a bejelentkezések potenciálisan feltört identitásokból való bevezetésére. A fiók biztonságának valószínűsége kockázati szintek formájában van kifejezve. Az Identity Protection két kockázati szintet számít ki: a bejelentkezési kockázat és a felhasználói kockázat. A bejelentkezési kockázatra adott válasz megvalósításához két lehetőség közül választhat:
 
-- A feltételes hozzáférési házirend [bejelentkezési kockázati feltétele](concept-conditional-access-conditions.md#sign-in-risk)
-- [A bejelentkezési kockázati házirend](../identity-protection/howto-sign-in-risk-policy.md) az identitásvédelemben 
+- [A bejelentkezési kockázati feltétel](concept-conditional-access-conditions.md#sign-in-risk) a feltételes hozzáférési házirendben
+- [A bejelentkezési kockázati szabályzat](../identity-protection/howto-sign-in-risk-policy.md) az Identity Protectionben 
 
-A bejelentkezési kockázat feltételként történő kezelése az előnyben részesített módszer, mivel több testreszabási lehetőséget biztosít.
+A bejelentkezési kockázat feltételként való kezelése az előnyben részesített módszer, mert további testreszabási lehetőségeket biztosít.
 
-A felhasználói kockázati szint csak az identitásvédelem [felhasználói kockázati házirendjeként](../identity-protection/howto-user-risk-policy.md) érhető el. 
+A felhasználói kockázati szint csak az Identity Protection [felhasználói kockázati házirendjében](../identity-protection/howto-user-risk-policy.md) érhető el. 
 
-További információ: [Mi az Azure Active Directory identity protection?](../identity-protection/overview.md) 
+További információ: [Mi az Azure Active Directory Identity Protection?](../identity-protection/overview.md) 
 
 ### <a name="require-managed-devices"></a>Felügyelt eszközök megkövetelése
 
-A támogatott eszközök elterjedése a felhőbeli erőforrások eléréséhez segít a felhasználók termelékenységének növelésében. A másik oldalon valószínűleg nem szeretné, hogy a környezet bizonyos erőforrásait ismeretlen védelmi szintű eszközök érjék el. Az érintett erőforrások esetében meg kell követelnie, hogy a felhasználók csak felügyelt eszközzel férhessenek hozzájuk. További információ: [Felügyelt eszközök megkövetelése a felhőalapú alkalmazások hoz való hozzáféréshez feltételes hozzáféréssel.](require-managed-devices.md) 
+A támogatott eszközöknek a Felhőbeli erőforrások eléréséhez való elterjedése segíti a felhasználók termelékenységének növelését. A flip oldalon valószínűleg nem szeretné, hogy a környezet bizonyos erőforrásaihoz olyan eszközök férhessenek hozzá, amelyek ismeretlen védelmi szinttel rendelkeznek. Az érintett erőforrások esetében meg kell követelnie, hogy a felhasználók csak felügyelt eszköz használatával férhessenek hozzájuk. További információkért lásd: [felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](require-managed-devices.md). 
 
 ### <a name="require-approved-client-apps"></a>Jóváhagyott ügyfélalkalmazások megkövetelése
 
-Az egyik első döntés, amit meg kell hoznia a saját eszközök (BYOD) forgatókönyvek, hogy kell-e kezelni a teljes eszközt, vagy csak az adatokat rajta. Az alkalmazottak mobileszközöket használnak a személyes és munkahelyi feladatokhoz. Miközben gondoskodik arról, hogy alkalmazottai hatékonyak legyenek, az adatvesztést is meg szeretné akadályozni. Az Azure Active Directory (Azure AD) feltételes hozzáféréssel korlátozhatja a felhőalapú alkalmazásokhoz való hozzáférést a jóváhagyott ügyfélalkalmazásokra, amelyek megvédhetik a vállalati adatokat. További információ: [A jóváhagyott ügyfélalkalmazások megkövetelése a felhőalapú alkalmazások feltételes hozzáféréssel való eléréséhez.](app-based-conditional-access.md)
+A saját eszközök (BYOD) használatának egyik első döntése, hogy szükség van-e a teljes eszköz vagy csak a rajta lévő adatok kezelésére. Az alkalmazottak mobileszközöket használnak a személyes és munkahelyi feladatokhoz. Az adatvesztés elkerülése érdekében az alkalmazottak is hatékonyak lehetnek. A Azure Active Directory (Azure AD) feltételes hozzáféréssel korlátozhatja a Felhőbeli alkalmazásokhoz való hozzáférést a vállalati adatai védelme érdekében jóváhagyott ügyfélalkalmazások számára. További információkért lásd: [jóváhagyott ügyfélalkalmazások megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](app-based-conditional-access.md).
 
 ### <a name="block-legacy-authentication"></a>Régi hitelesítési folyamat letiltása
 
-Az Azure AD támogatja a legszélesebb körben használt hitelesítési és engedélyezési protokollok, beleértve az örökölt hitelesítést. Hogyan akadályozhatja meg, hogy az örökölt hitelesítést használó alkalmazások hozzáférjenek a bérlő erőforrásaihoz? A javaslat az, hogy csak blokkolja őket egy feltételes hozzáférési szabályzattal. Szükség esetén csak bizonyos felhasználók nak és adott hálózati helyeknek engedélyezi az örökölt hitelesítésen alapuló alkalmazások használatát. További információ: [Az örökölt hitelesítés blokkolása az Azure AD feltételes hozzáféréssel című témakörben.](block-legacy-authentication.md)
+Az Azure AD számos, a legszélesebb körben használt hitelesítési és engedélyezési protokollt támogat, beleértve az örökölt hitelesítést is. Hogyan akadályozhatja meg, hogy az örökölt hitelesítést használó alkalmazások hozzáférjenek a bérlő erőforrásaihoz? A javaslat célja, hogy csak feltételes hozzáférési házirenddel blokkolja őket. Ha szükséges, csak bizonyos felhasználóknak és adott hálózati helyszíneknek engedélyezi az örökölt hitelesítésen alapuló alkalmazások használatát. További információ: [az örökölt hitelesítés letiltása az Azure ad-ben feltételes hozzáféréssel](block-legacy-authentication.md).
 
 ## <a name="test-your-policy"></a>A szabályzat tesztelése
 
-Mielőtt egy szabályzatot éles környezetbe, tesztelje, hogy ellenőrizze, hogy a várt módon viselkedik.Before rolling out a policy into production, you should test to verify that it is behave is a expected.
+Mielőtt üzembe helyezi a szabályzatot az éles környezetben, tesztelje, hogy a várt módon viselkedik-e.
 
-1. Tesztfelhasználók létrehozása
-1. Tesztterv létrehozása
+1. Tesztelési felhasználók létrehozása
+1. Tesztelési terv létrehozása
 1. A szabályzat konfigurálása
 1. Szimulált bejelentkezés kiértékelése
 1. A szabályzat tesztelése
 1. Felesleges tartalmak törlése
 
-### <a name="create-test-users"></a>Tesztfelhasználók létrehozása
+### <a name="create-test-users"></a>Tesztelési felhasználók létrehozása
 
-Házirend teszteléséhez hozzon létre olyan felhasználókat, amelyek hasonlóak a környezetben lévő felhasználókhoz. A tesztfelhasználók létrehozása lehetővé teszi annak ellenőrzését, hogy a házirendek a várt módon működnek-e, mielőtt hatással lenne a valódi felhasználókra, és potenciálisan megzavarná az alkalmazásokhoz és erőforrásokhoz való hozzáférésüket. 
+A szabályzatok teszteléséhez hozzon létre egy olyan felhasználói készletet, amely hasonló a környezetben lévő felhasználókhoz. A tesztek felhasználóinak létrehozásával ellenőrizheti, hogy a szabályzatok a várt módon működnek-e, mielőtt a valós felhasználókra hatással lenne, és potenciálisan megzavarják az alkalmazásokhoz és erőforrásokhoz való hozzáférésüket. 
 
-Egyes szervezetek teszt bérlők erre a célra. Azonban nehéz lehet újra létrehozni az összes feltételt és alkalmazásokat egy tesztbérlőben, hogy teljes mértékben tesztelje a szabályzat eredményét. 
+Egyes szervezetek erre a célra rendelkeznek tesztelési Bérlővel. Azonban nehéz lehet az összes feltételt és alkalmazást újra létrehozni egy tesztelési bérlőben, hogy teljes körűen tesztelje a szabályzatok eredményét. 
 
-### <a name="create-a-test-plan"></a>Tesztterv létrehozása
+### <a name="create-a-test-plan"></a>Tesztelési terv létrehozása
 
-A vizsgálati terv fontos a várt eredmények és a tényleges eredmények összehasonlítása érdekében. Mindig kell egy elvárás, mielőtt tesztelvalamit. Az alábbi táblázat a példateszteseteket ismerteti. A hitelesítésbiztosítási házirendek konfigurálása alapján módosíthatja az eseteket és a várt eredményeket.
+A tesztelési terv fontos, hogy összehasonlítsa a várt eredmények és a tényleges eredmények összehasonlítását. A tesztelés előtt mindig legyen várakozás. A következő táblázat példákat mutat be a tesztelési esetekre. Állítsa be a forgatókönyveket és a várt eredményeket a HITELESÍTÉSSZOLGÁLTATÓI házirendek konfigurálásának módja alapján.
 
 |Szabályzat |Forgatókönyv |Várt eredmény | Eredmény |
 |---|---|---|---|
-|[Többszinten nem végzett munka esetén az MFA megkövetelése](/azure/active-directory/conditional-access/untrusted-networks)|A jogosult felhasználó bejelentkezik az *alkalmazásba,* miközben megbízható helyen / munkahelyen van|A rendszer nem kéri a felhasználót az MFA-ra| |
-|[Többszinten nem végzett munka esetén az MFA megkövetelése](/azure/active-directory/conditional-access/untrusted-networks)|A jogosult felhasználó bejelentkezik az *alkalmazásba,* miközben nem megbízható helyen / munkahelyen|A felhasználó a rendszer kéri az MFA-t, és sikeresen bejelentkezhet| |
-|[Többkori faszükséglés megkövetelése (rendszergazda esetén)](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Globális rendszergazdai jelentkezések az *alkalmazásba*|A rendszergazda a többkori makro-együzenetben kéri a rendszergazdákat| |
-|[Kockázatos bejelentkezések](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|A felhasználó bejelentkezik *az alkalmazásba* egy [Tor böngészővel](/azure/active-directory/active-directory-identityprotection-playbook)|A rendszergazda a többkori makro-együzenetben kéri a rendszergazdákat| |
-|[Eszközfelügyelet](/azure/active-directory/conditional-access/require-managed-devices)|A jogosult felhasználó hivatalos eszközről próbál bejelentkezni|Hozzáférés engedélyezve| |
-|[Eszközfelügyelet](/azure/active-directory/conditional-access/require-managed-devices)|Jogosulatlan felhasználó megpróbál bejelentkezni egy jogosulatlan eszközről|Hozzáférés letiltva| |
-|[Jelszómódosítása kockázatos felhasználók számára](/azure/active-directory/identity-protection/howto-user-risk-policy)|A jogosult felhasználó megpróbál bejelentkezni sérült hitelesítő adatokkal (magas kockázatú bejelentkezés)|A rendszer kéri a felhasználót, hogy változtassa meg a jelszavát, vagy a rendszer a házirend alapján letiltja a hozzáférést| |
+|[MFA megkövetelése, ha nem működik](/azure/active-directory/conditional-access/untrusted-networks)|A meghatalmazott felhasználó bejelentkezik az *alkalmazásba* egy megbízható helyen/munkahelyen|A felhasználónak nem kell megadnia az MFA-t| |
+|[MFA megkövetelése, ha nem működik](/azure/active-directory/conditional-access/untrusted-networks)|Az engedélyezve lévő felhasználó bejelentkezik az *alkalmazásba* , és nem megbízható helyen/munkahelyen|A rendszer felszólítja a felhasználót az MFA használatára, és sikeresen bejelentkezhet| |
+|[MFA megkövetelése (rendszergazda)](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Globális rendszergazda bejelentkezik az *alkalmazásba*|A rendszergazda az MFA-t kéri| |
+|[Kockázatos bejelentkezések](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|A felhasználó bejelentkezik az *alkalmazásba* egy [Tor-böngésző](/azure/active-directory/active-directory-identityprotection-playbook) használatával|A rendszergazda az MFA-t kéri| |
+|[Eszközfelügyelet](/azure/active-directory/conditional-access/require-managed-devices)|A jogosultsággal rendelkező felhasználó megpróbál bejelentkezni egy jóváhagyott eszközről|Hozzáférés engedélyezve| |
+|[Eszközfelügyelet](/azure/active-directory/conditional-access/require-managed-devices)|Az engedéllyel rendelkező felhasználó megpróbál bejelentkezni egy jogosulatlan eszközről|Hozzáférés letiltva| |
+|[A kockázatos felhasználók jelszavának módosítása](/azure/active-directory/identity-protection/howto-user-risk-policy)|A jogosultsággal rendelkező felhasználó megpróbál bejelentkezni a feltört hitelesítő adatokkal (nagy kockázatú bejelentkezés)|A rendszer megkéri a felhasználót, hogy változtassa meg a jelszót, vagy a hozzáférés le legyen tiltva a szabályzat alapján| |
 
 ### <a name="configure-the-policy"></a>A szabályzat konfigurálása
 
-A feltételes hozzáférési házirendek kezelése manuális feladat. Az Azure Portalon kezelheti a feltételes hozzáférési szabályzatok egy központi helyen - a feltételes hozzáférés lap. A feltételes hozzáférés lap egyik belépési pontja az **Active Directory** navigációs **ablakának Biztonsági** szakasza. 
+A feltételes hozzáférési szabályzatok kezelése kézi feladat. A Azure Portal a feltételes hozzáférési szabályzatokat egyetlen központi helyen kezelheti – a feltételes hozzáférés lapon. A feltételes hozzáférés oldalának egyik belépési pontja a **Active Directory** navigációs ablaktábla **biztonsági** szakasza. 
 
 ![Feltételes hozzáférés](media/plan-conditional-access/03.png)
 
-Ha szeretne többet megtudni a feltételes hozzáférési szabályzatok létrehozásáról, olvassa [el az MFA megkövetelése bizonyos alkalmazásokhoz az Azure Active Directory feltételes hozzáféréssel című témakört.](app-based-mfa.md) Ez a rövid útmutató a következőket segíti:
+Ha többet szeretne megtudni a feltételes hozzáférési szabályzatok létrehozásáról, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört. Ez a rövid útmutató a következőket teszi lehetővé:
 
 - Ismerkedjen meg a felhasználói felülettel.
-- Első benyomás a feltételes hozzáférés működéséről. 
+- A feltételes hozzáférés működésének első benyomása. 
 
 ### <a name="evaluate-a-simulated-sign-in"></a>Szimulált bejelentkezés kiértékelése
 
-Most, hogy konfigurálta a feltételes hozzáférési házirendet, valószínűleg tudni szeretné, hogy a várt módon működik-e. Első lépésként használja a feltételes [hozzáférés, mi van, ha a házirend eszköz](what-if-tool.md) szimulálja a bejelentkezést a teszt felhasználó. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.
+Most, hogy konfigurálta a feltételes hozzáférési házirendet, érdemes tudnia, hogy a várt módon működik-e. Első lépésként használja a feltételes hozzáférés, [Mi a teendő, ha a szabályzat eszközzel](what-if-tool.md) szimulálni kívánja a felhasználó bejelentkezési adatait. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.
 
 >[!NOTE]
-> Míg a szimulált futtatás a feltételes hozzáférési házirend hatásának benyomását kelti, nem helyettesíti a tényleges tesztfuttatást.
+> Míg a szimulált futtatáskor bemutatjuk, hogy milyen hatással van a feltételes hozzáférési házirend, nem helyettesíti a tényleges teszt-futtatást.
 
 ### <a name="test-your-policy"></a>A szabályzat tesztelése
 
-Futtasson teszteseteket a tesztterv szerint. Ebben a lépésben végigfut egy végpontok között teszt minden egyes szabályzat a teszt felhasználók számára, hogy megbizonyosodjon arról, minden szabályzat megfelelően viselkedik. Használja a fent létrehozott forgatókönyvek az egyes teszteket.
+Tesztelési esetek futtatása a tesztelési tervnek megfelelően. Ebben a lépésben az egyes szabályzatok teljes körű tesztelésén keresztül futtatja a felhasználók számára, hogy biztosan minden házirend megfelelően működjön. A fent létrehozott forgatókönyvek segítségével hajtsa végre az egyes teszteket.
 
-Fontos, hogy tesztelje a házirend kizárási kritériumait. Kizárhat például egy felhasználót vagy csoportot egy olyan házirendből, amely többfa-t igényel. Tesztelje, hogy a kizárt felhasználók többfa-t kérnek-e, mert más házirendek kombinációja többkori többkori be- és a felhasználók számára többfa-t igényelhet.
+Fontos, hogy ellenőrizze a szabályzat kizárási feltételeinek tesztelését. Előfordulhat például, hogy kizár egy felhasználót vagy csoportot egy olyan szabályzatból, amely MFA-t igényel. Annak tesztelése, hogy a rendszer a kizárt felhasználókat kéri-e a többtényezős hitelesítésre, mert az egyéb házirendek kombinációja megköveteli az MFA használatát a felhasználók számára.
 
 ### <a name="cleanup"></a>Felesleges tartalmak törlése
 
@@ -201,39 +201,39 @@ A tisztítási eljárás a következő lépésekből áll:
 
 1. Tiltsa le a házirendet.
 1. Távolítsa el a hozzárendelt felhasználókat és csoportokat.
-1. Törölje a tesztfelhasználókat.  
+1. Törölje a tesztek felhasználóit.  
 
 ## <a name="move-to-production"></a>Átállás éles üzemre
 
-Ha az új házirendek készen állnak a környezetre, telepítse őket fázisokban:
+Ha az új szabályzatok készen állnak a környezetre, a következő fázisokban telepítse őket:
 
-- Belső változáskommunikáció biztosítása a végfelhasználók számára.
-- Kezdje a felhasználók egy kis készletével, és ellenőrizze, hogy a házirend a várt módon viselkedik-e.
-- Ha egy házirendet több felhasználóra bont ki, továbbra is zárja ki az összes rendszergazdát. A rendszergazdák kizárása biztosítja, hogy szükség esetén valaki továbbra is hozzáférhessen a házirendhez.
-- Csak akkor alkalmazzon házirendet az összes felhasználóra, ha az szükséges.
+- Belső módosítási kommunikáció biztosítása a végfelhasználók számára.
+- Kezdje a felhasználókat egy kis készlettel, és ellenőrizze, hogy a szabályzat a várt módon működik-e.
+- Ha kibővít egy szabályzatot több felhasználó belefoglalásához, folytassa az összes rendszergazda kizárásával. A rendszergazdák kizárásával gondoskodhat arról, hogy valaki továbbra is hozzáférhessen egy szabályzathoz, ha módosításra van szükség.
+- Csak akkor alkalmazza a házirendet az összes felhasználóra, ha szükséges.
 
-Ajánlott eljárásként hozzon létre legalább egy felhasználói fiókot, amely:
+Ajánlott eljárásként hozzon létre legalább egy felhasználói fiókot:
 
-- A házirend-felügyeletnek szentelve
-- Minden irányelvből kizárva
+- Házirend-felügyeletre dedikált
+- Kizárva az összes házirendből
 
 ## <a name="rollback-steps"></a>Visszaállítási lépések
 
-Abban az esetben, ha vissza kell vonnia az újonnan megvalósított házirendeket, az alábbi lehetőségek közül választhat a visszaállításhoz:
+Ha vissza kell állítania az újonnan megvalósított szabályzatokat, az alábbi beállítások közül egyet vagy többet kell használnia a visszaállításhoz:
 
-1. **A házirend letiltása** – A házirend letiltása biztosítja, hogy az ne legyen érvényes, amikor a felhasználó megpróbál bejelentkezni. Bármikor visszajöhet, és engedélyezheti a házirendet, ha használni szeretné.
+1. **A házirend letiltása** – a szabályzat letiltásával gondoskodhat arról, hogy ne legyen érvényes, amikor egy felhasználó megpróbál bejelentkezni. Bármikor visszatérhet, és engedélyezheti a szabályzatot, ha azt szeretné használni.
 
    ![Szabályzat letiltása](media/plan-conditional-access/07.png)
 
-1. **Felhasználó/csoport kizárása a házirendből** – Ha egy felhasználó nem tud hozzáférni az alkalmazáshoz, kizárhatja a felhasználót a szabályzatból
+1. **Felhasználó/csoport kizárása egy házirendből** – ha a felhasználó nem tud hozzáférni az alkalmazáshoz, dönthet úgy, hogy kizárja a felhasználót a szabályzatból.
 
-   ![Felhasználók kiirtása](media/plan-conditional-access/08.png)
+   ![Exluce-felhasználók](media/plan-conditional-access/08.png)
 
    > [!NOTE]
-   > Ezt a beállítást takarékosan kell használni, csak olyan helyzetekben, amikor a felhasználó megbízható. A felhasználót a lehető leghamarabb vissza kell adni a házirendhez vagy csoporthoz.
+   > Ezt a beállítást takarékosan kell használni, csak olyan helyzetekben, amikor a felhasználó megbízható. A felhasználót a lehető leghamarabb vissza kell venni a szabályzatba vagy a csoportba.
 
-1. **A házirend törlése** – Ha a házirendre már nincs szükség, törölje azt.
+1. **A házirend törlése** – ha a házirend már nem szükséges, törölje.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg [az Azure AD feltételes hozzáférési dokumentációt,](index.yml) hogy áttekintést kapjon a rendelkezésre álló információkról.
+Tekintse át az [Azure ad feltételes hozzáférési dokumentációját](index.yml) , és tekintse át a rendelkezésre álló információkat.

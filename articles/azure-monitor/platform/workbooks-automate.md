@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor-munkafüzetek és Azure Resource Manager-sablonok
-description: Egyszerűsítse az összetett jelentéseket az Azure Resource Manager-sablonokon keresztül telepített, előre összeállított és egyéni paraméterezett Azure Monitor-munkafüzetekkel
+title: Azure Monitor munkafüzetek és Azure Resource Manager sablonok
+description: Egyszerűsítse a komplex jelentéskészítést az előre összeállított és egyéni paraméteres Azure Monitor Azure Resource Manager-sablonokkal üzembe helyezett munkafüzetek használatával
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -18,25 +18,25 @@ ms.locfileid: "77658404"
 ---
 # <a name="programmatically-manage-workbooks"></a>Munkafüzetek programozott kezelése
 
-Az erőforrás-tulajdonosok programozott módon hozhatják létre és kezelhetik munkafüzeteiket az Erőforrás-kezelő sablonjain keresztül. 
+Az erőforrás-tulajdonosok lehetőségük van a munkafüzetek programozott módon történő létrehozására és kezelésére Resource Manager-sablonok használatával. 
 
 Ez olyan esetekben lehet hasznos, mint például:
-* Org- vagy tartományspecifikus elemzési jelentések üzembe helyezése az erőforrások központi telepítései mellett. Például előfordulhat, hogy org-specifikus teljesítmény- és hibamunkafüzeteket telepít az új alkalmazásokhoz vagy virtuális gépekhez.
-* Szabványos jelentések vagy irányítópultok telepítése a meglévő erőforrások munkafüzetei használatával.
+* Szervezeti vagy tartomány-specifikus elemzési jelentések üzembe helyezése az erőforrás-telepítésekkel együtt. Előfordulhat például, hogy üzembe helyezi az új alkalmazások vagy virtuális gépek szervezeti teljesítményével és meghibásodásával kapcsolatos munkafüzeteket.
+* Szabványos jelentések vagy irányítópultok üzembe helyezése meglévő erőforrások munkafüzetek használatával.
 
-A munkafüzet a kívánt al/erőforráscsoportban és az Erőforrás-kezelő sablonokban megadott tartalommal jön létre.
+A munkafüzet a kívánt alcsoportban/erőforrás-csoportban és a Resource Manager-sablonokban megadott tartalommal lesz létrehozva.
 
-## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>Azure Resource Manager-sablon munkafüzetek üzembe helyezéséhez
-1. Nyisson meg egy programozottan telepíteni kívánt munkafüzetet.
-2. Az eszköztárelemre kattintva átváltson _Edit_ a munkafüzetet szerkesztési módra.
-3. Nyissa meg a _</>_ Speciális _szerkesztőt_ az eszköztár gombjával.
-4. A szerkesztőben váltson _a Sablontípus_ és _az Erőforrás-kezelő sablon ra._
-5. Megjelenik a szerkesztőben a létrehozandó Erőforrás-kezelő sablon. Másolja a tartalmat, és használja a hogy van, vagy egyesítse azt egy nagyobb sablont, amely szintén telepíti a cél erőforrást.
+## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>Azure Resource Manager sablon a munkafüzetek telepítéséhez
+1. Nyisson meg egy olyan munkafüzetet, amelyet programozott módon szeretne üzembe helyezni.
+2. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
+3. Nyissa _Advanced Editor_ meg a speciális szerkesztő _</>_ az eszköztáron található gomb használatával.
+4. A szerkesztőben váltson a _sablon típusára_ _Resource Manager-sablonra_.
+5. A létrehozáshoz használt Resource Manager-sablon megjelenik a szerkesztőben. Másolja a tartalmat, és használja a as-t, vagy egyesítse egy nagyobb sablonnal, amely a célként megadott erőforrást is telepíti.
 
-    ![Az Erőforráskezelő sablon beszerezése a munkafüzet felhasználói felületéről](./media/workbooks-automate/programmatic-template.png)
+    ![A Resource Manager-sablonnak a munkafüzet felhasználói felületéről való beszerzését bemutató kép](./media/workbooks-automate/programmatic-template.png)
 
 ## <a name="sample-azure-resource-manager-template"></a>Minta Azure Resource Manager sablon
-Ez a sablon bemutatja, hogyan helyezhet ő egy egyszerű munkafüzetet, amely "Hello World!" üzenetet jelenít meg.
+Ez a sablon bemutatja, hogyan helyezhet üzembe egy egyszerű munkafüzetet, amely a következőt jeleníti meg: ""Helló világ!"alkalmazás!"
 ```json
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -101,27 +101,27 @@ Ez a sablon bemutatja, hogyan helyezhet ő egy egyszerű munkafüzetet, amely "H
 
 | Paraméter | Magyarázat |
 | :------------- |:-------------|
-| `workbookDisplayName` | A gyűjteményben vagy a Mentett listában használt munkafüzet rövid neve. Az erőforráscsoport és a forrás hatókörében egyedinek kell lennie |
-| `workbookType` | Az a gyűjtemény, amely alatt a munkafüzet látható lesz. A támogatott értékek `tsg`közé tartozik a munkafüzet, az Azure Monitor stb. |
-| `workbookSourceId` | Annak az erőforráspéldánynak az azonosítója, amelyhez a munkafüzet társítva lesz. Az új munkafüzet megjelenik ehhez az erőforráspéldányhoz kapcsolódóan – például az erőforrás _tartalomtáblájában_a Munkafüzet csoportban. Ha azt szeretné, hogy a munkafüzet megjelenjen az Azure Monitor munkafüzetgyűjteményében, használja az _Azure Monitor_ karakterláncot erőforrás-azonosító helyett. |
-| `workbookId` | A munkafüzetpéldány egyedi guid-ja. A [newGuid()] segítségével automatikusan hozzon létre egy új guid.Use _[newGuid()]_ to automatically create a new guid. |
-| `kind` | Itt adható meg, hogy a létrehozott munkafüzet megosztott vagy privát.It s to specify if the created workbook is shared or private. A megosztott _értéket_ a megosztott munkafüzetekben és a _felhasználók_ számára használja a privát munkafüzetekben. |
-| `location` | Az Azure-hely, ahol a munkafüzet et létre kell hozni. _A[resourceGroup(.location]_ segítségével hozza létre az erőforráscsoporttal azonos helyen |
-| `serializedData` | A munkafüzetben használandó tartalmat vagy hasznos tartalmat tartalmazza. Az erőforrás-kezelő sablon használata a munkafüzetek felhasználói felületéről az érték leéséhez |
+| `workbookDisplayName` | A katalógusban vagy a mentett listán használt munkafüzet rövid neve. Egyedinek kell lennie az erőforráscsoport és a forrás hatókörében |
+| `workbookType` | A katalógus, amelyben a munkafüzet megjelenik. A támogatott értékek a következők `tsg`: munkafüzet,, Azure monitor stb. |
+| `workbookSourceId` | Annak az erőforrás-példánynak az azonosítója, amelyhez a munkafüzet társítva lesz. Az új munkafüzet megjelenik az adott erőforrás-példánnyal kapcsolatban – például az erőforrás tartalomjegyzékében a _munkafüzetben_. Ha azt szeretné, hogy a munkafüzet megjelenjen a Azure Monitor munkafüzet-katalógusában, használja az erőforrás-azonosító helyett _Azure monitor_ karakterláncot. |
+| `workbookId` | A munkafüzet-példány egyedi GUID azonosítója. A _[newGuid ()]_ használatával hozzon létre automatikusan egy új GUID azonosítót. |
+| `kind` | Annak megadására szolgál, hogy a létrehozott munkafüzet megosztott vagy privát. A megosztott munkafüzetekhez és a _felhasználókhoz_ _megosztott_ értéket használjon magánjellegűként. |
+| `location` | Az Azure-beli hely, ahol a munkafüzet létre lesz hozva. A _[resourceGroup (). location]_ használatával hozza létre ugyanazt a helyet, mint az erőforráscsoportot. |
+| `serializedData` | A munkafüzetben használandó tartalmat vagy adattartalmat tartalmazza. Az érték beszerzéséhez használja a munkafüzetek felhasználói felületének Resource Manager-sablonját. |
 
-### <a name="workbook-types"></a>Munkafüzet-típusok
-A munkafüzettípusok határozzák meg, hogy az új munkafüzetpéldány melyik munkafüzetgyűjtemény-típus alatt jelenjen meg. A lehetőségek a következők:
+### <a name="workbook-types"></a>Munkafüzetek típusai
+A munkafüzetek típusai határozzák meg, hogy melyik munkafüzet-gyűjteménybe írja be az új munkafüzet-példányt. A lehetőségek a következők:
 
-| Típus | Galéria helye |
+| Típus | Gyűjtemény helye |
 | :------------- |:-------------|
-| `workbook` | A legtöbb jelentésben használt alapértelmezett beállítás, beleértve az Application Insights munkafüzet-gyűjteményét, az Azure Monitort stb.  |
-| `tsg` | Az Alkalmazáselemzési útmutatók hibaelhárítási útmutatóinak gyűjteménye |
-| `usage` | A _További_ galéria az Application Insights _használata_ csoportban |
+| `workbook` | A legtöbb jelentésben használt alapértelmezett érték, beleértve a munkafüzetek Application Insights, Azure Monitor stb. gyűjteményét.  |
+| `tsg` | A hibaelhárítási útmutatók gyűjteménye Application Insights |
+| `usage` | A _további_ katalógus a _használat_ alatt Application Insights |
 
 ### <a name="limitations"></a>Korlátozások
-Technikai okokból ez a mechanizmus nem használható munkafüzetpéldányok _Workbooks_ létrehozására az Application Insights munkafüzet-gyűjteményében. Dolgozunk e korlátozás kezelésén. Addig is azt javasoljuk, hogy használja a Hibaelhárítási `tsg`útmutató gyűjtemény (workbookType: ) az Application Insights kapcsolódó munkafüzetek.
+Technikai okokból ez a mechanizmus nem használható munkafüzet-példányok létrehozására a Application Insights _munkafüzetek_ galériájában. Dolgozunk ennek a korlátozásnak a kezelésén. Addig is javasoljuk, hogy a hibaelhárítási útmutató (workbookType: `tsg`) használatával Application Insights kapcsolódó munkafüzeteket telepítsen.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan használják a munkafüzeteket az új [Azure Monitor for Storage-élmény működtetéséhez.](../insights/storage-insights-overview.md)
+Ismerje meg, hogyan használják a munkafüzetek az új Azure Monitor a [tárolási élményhez](../insights/storage-insights-overview.md).
 

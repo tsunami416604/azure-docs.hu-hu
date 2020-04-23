@@ -11,90 +11,90 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/17/2020
 ms.locfileid: "81604876"
 ---
-A regionális virtuális hálózat-integráció használata lehetővé teszi az alkalmazás számára a következők elérését:
+A regionális VNet-integráció használata lehetővé teszi, hogy az alkalmazás hozzáférjen:
 
-* Erőforrások egy virtuális hálózatban ugyanabban a régióban, mint az alkalmazás.
-* A virtuális hálózatokban az alkalmazás ba integrált virtuális hálózatra társviszonyba épített erőforrások.
-* Szolgáltatásvégpont biztonságos szolgáltatásai.
+* Az VNet lévő erőforrások ugyanabban a régióban, mint az alkalmazás.
+* A virtuális hálózatok-ben lévő erőforrások az alkalmazás integrált VNet vannak társítva.
+* Szolgáltatás végpontjának biztonságos szolgáltatásai.
 * Erőforrások az Azure ExpressRoute-kapcsolatokon keresztül.
-* A virtuális hálózatban lévő erőforrások, amelyekkel integrálva van.
-* Erőforrások társviszony-létesítési kapcsolatok között, amely magában foglalja az Azure ExpressRoute-kapcsolatokat.
+* A-ben integrált VNet erőforrásai.
+* Többek között az Azure ExpressRoute-kapcsolatokat tartalmazó, egymással összetartozó kapcsolatok erőforrásai.
 * Privát végpontok 
 
-Ha a virtuális hálózat tal való integrációt használja ugyanabban a régióban, a következő Azure hálózati funkciókat használhatja:
+Ha VNet-integrációt használ az virtuális hálózatok-ben ugyanabban a régióban, akkor a következő Azure hálózati funkciókat használhatja:
 
-* **Hálózati biztonsági csoportok (NSG-k):** Az integrációs alhálózaton elhelyezett NSG-vel letilthatja a kimenő forgalmat. A bejövő szabályok nem vonatkoznak, mert nem használhatja a Virtuálishálózat-integráció az alkalmazás hoz való bejövő hozzáférést.
-* **Útvonaltáblák (UDRs):** Az integrációs alhálózaton elhelyezhet egy útvonaltáblát, hogy a kimenő forgalmat a kívánt helyre küldje.
+* **Hálózati biztonsági csoportok (NSG)**: letilthatja a kimenő forgalmat egy olyan NSG, amely az integrációs alhálózaton van elhelyezve. A bejövő szabályok nem érvényesek, mert nem használhatja a VNet-integrációt az alkalmazáshoz való bejövő hozzáférés biztosításához.
+* **Útválasztási táblák (UDR)**: az integrációs alhálózaton elhelyezhető egy útválasztási táblázat, amely a kívánt kimenő forgalmat küldi el.
 
-Alapértelmezés szerint az alkalmazás csak az RFC1918 forgalmat irányítja a virtuális hálózatba. Ha az összes kimenő forgalmat a virtuális hálózatba szeretné irányítani, alkalmazza az alkalmazásbeállítást WEBSITE_VNET_ROUTE_ALL az alkalmazásra. Az alkalmazásbeállítás konfigurálása:
+Az alkalmazás alapértelmezés szerint csak a RFC1918-forgalmat irányítja át a VNet. Ha az összes kimenő forgalmat át szeretné irányítani a VNet, alkalmazza az alkalmazás beállítását WEBSITE_VNET_ROUTE_ALL az alkalmazásra. Az alkalmazás beállításának konfigurálása:
 
-1. Nyissa meg a **konfigurációs** felhasználói felületet az alkalmazásportálon. Válassza **az Új alkalmazás beállítás lehetőséget.**
-1. Írja be **WEBSITE_VNET_ROUTE_ALL** a **Név** mezőbe, az **1** értéket pedig az **Érték** mezőbe.
+1. Nyissa meg a **konfigurációs** felhasználói felületet az alkalmazás-portálon. Válassza az **új alkalmazás beállítása**lehetőséget.
+1. Írja **WEBSITE_VNET_ROUTE_ALL** be a WEBSITE_VNET_ROUTE_ALL **nevet a név** mezőbe, és írja be az **1** **értéket az érték** mezőbe.
 
-   ![Alkalmazásbeállítás biztosítása][4]
+   ![Alkalmazásbeállítás megadása][4]
 
-1. Válassza **az OK gombot.**
+1. Kattintson az **OK** gombra.
 1. Kattintson a **Mentés** gombra.
 
-Ha az összes kimenő forgalmat a virtuális hálózatra irányítja, az integrációs alhálózatra alkalmazott NSG-k és UDRs-ek függvényében van kitéve. Amikor az összes kimenő forgalmat a virtuális hálózatba irányítja, a kimenő címek továbbra is azok a kimenő címek, amelyek szerepelnek az alkalmazás tulajdonságaiban, kivéve, ha útvonalakat biztosít a forgalom máshol való küldéséhez.
+Ha az összes kimenő forgalmat átirányítja a VNet, a rendszer az integrációs alhálózatra alkalmazott NSG és UDR vonatkozik. Ha az összes kimenő forgalmat átirányítja a VNet, a kimenő címek továbbra is az alkalmazás tulajdonságaiban felsorolt kimenő címek lesznek, kivéve, ha olyan útvonalakat ad meg, amelyek máshová nem küldik a forgalmat.
 
-A virtuális hálózatok virtuális hálózatokkal való integrációja ugyanabban a régióban bizonyos korlátozásokat alkalmaz:
+Bizonyos korlátozások vonatkoznak a VNet-integrációnak az azonos régióban található virtuális hálózatok való használatára:
 
-* Globális társviszony-létesítési kapcsolatokon keresztül nem érhető el erőforrás.
-* A funkció csak a PremiumV2 App Service-csomagokat támogató újabb Azure App Service-méretezési egységekből érhető el.
-* Az integrációs alhálózatot csak egy App Service-csomag használhatja.
-* A funkciót nem használhatják az App Service-környezetben lévő elkülönített csomagalkalmazások.
-* A szolgáltatás hoz egy nem használt alhálózat, amely egy /27 32-es vagy nagyobb egy Azure Resource Manager virtuális hálózat.
-* Az alkalmazásnak és a virtuális hálózatnak ugyanabban a régióban kell lennie.
-* Nem törölheti a virtuális hálózat integrált alkalmazással. A virtuális hálózat törlése előtt távolítsa el az integrációt.
-* Csak az alkalmazással azonos előfizetésben integrálható a virtuális hálózatokkal.
-* Az App Service-csomagonként csak egy regionális virtuális hálózat-integrációt rendelkezhet. Ugyanabban az App Service-csomagban több alkalmazás is használhatja ugyanazt a virtuális hálózatot.
-* Nem módosíthatja egy alkalmazás vagy csomag előfizetését, amíg van egy olyan alkalmazás, amely regionális virtuális hálózat-integrációt használ.
-* Az alkalmazás konfigurációs módosítások nélkül nem tudja feloldani a címeket az Azure DNS-beli magánzónákban
+* A globális társ-összekapcsolási kapcsolatok erőforrásai nem érhetők el.
+* A szolgáltatás csak a PremiumV2 App Service csomagokat támogató újabb Azure App Service skálázási egységekből érhető el.
+* Az integrációs alhálózatot csak egy App Service csomag használhatja.
+* A funkciót nem lehet használni a App Service Environmentban található elkülönített csomagbeli alkalmazások.
+* A szolgáltatáshoz egy nem használt alhálózat szükséges, amely a/27 32-es vagy nagyobb méretű egy Azure Resource Manager VNet.
+* Az alkalmazásnak és a VNet ugyanabban a régióban kell lennie.
+* A VNet nem törölhető integrált alkalmazással. A VNet törlése előtt távolítsa el az integrációt.
+* Csak a virtuális hálózatok integrálható az alkalmazással megegyező előfizetésben.
+* App Service-csomag esetében csak egy regionális VNet-integráció lehet. Ugyanazon a App Service csomagon belül több alkalmazás is használhatja ugyanazt a VNet.
+* Egy alkalmazás vagy csomag előfizetése nem módosítható, amíg van olyan alkalmazás, amely regionális VNet-integrációt használ.
+* Az alkalmazás a konfiguráció módosítása nélkül nem tudja feloldani a Azure DNS Private Zones címeit
 
-Minden csomagpéldányhoz egy cím használatos. Ha az alkalmazást öt példányra méretezi, akkor öt címet használ. Mivel az alhálózat mérete nem módosítható a hozzárendelés után, olyan alhálózatot kell használnia, amely elég nagy ahhoz, hogy az alkalmazás által elérhető méreteket elférjen. A /26 64 címmel az ajánlott méret. A /26 64 címmel egy 30 példányú prémium csomag nak ad helyet. Amikor egy tervet fel- vagy leskáláz, rövid ideig kétszer annyi címre van szüksége.
+Az egyes csomag-példányok esetében egy-egy-egy-egy címnek Ha öt példányra méretezi az alkalmazást, akkor öt címet használ a rendszer. Mivel az alhálózat mérete nem módosítható a hozzárendelés után, olyan alhálózatot kell használnia, amely elég nagy ahhoz, hogy megfeleljen az alkalmazásnak. Az ajánlott méret a/26, 64 címmel. Az a/26, 64 címmel rendelkező Prémium csomag 30 példányban. Ha felfelé vagy lefelé méretezi a tervet, a rövid ideig kétszer annyi címre van szüksége.
 
-Ha azt szeretné, hogy egy másik csomagban lévő alkalmazások elérjék azt a virtuális hálózatot, amelyhez már egy másik csomagban lévő alkalmazások csatlakoznak, válasszon egy másik alhálózatot, mint amelyet a már meglévő virtuális hálózat-integráció használ.
+Ha azt szeretné, hogy egy másik csomagban lévő alkalmazásai olyan VNet érjenek el, amely már kapcsolódik egy másik csomagban lévő alkalmazásokhoz, válasszon egy másik alhálózatot, mint amelyet a meglévő VNet-integráció használ.
 
-A funkció előzetes verzióban érhető el Linux esetén. A funkció Linux formája csak az 1918-as RFC-címekre (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) történő hívásokat támogatja.
+A szolgáltatás előzetes verzióban érhető el a Linux rendszerben. A szolgáltatás Linux-formája csak az RFC 1918-címekre irányuló hívások kezdeményezését támogatja (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
 
-### <a name="web-or-function-app-for-containers"></a>Web- vagy függvényalkalmazás tárolókhoz
+### <a name="web-or-function-app-for-containers"></a>Webes vagy függvényalkalmazás tárolók számára
 
-Ha az alkalmazást Linuxon, a beépített rendszerképek, regionális virtuális hálózat integrációja további módosítások nélkül működik. Ha web- vagy függvényalkalmazást használ tárolókhoz, a vnet-integráció használatához módosítania kell a docker-lemezképet. A docker-lemezkép ben használja a PORT környezeti változó, mint a fő webkiszolgáló figyelő port, használata helyett egy kódolt port számát. A PORT környezeti változót a platform automatikusan beállítja a tároló indítási időpontjában. SSH használata esetén az SSH démont úgy kell konfigurálni, hogy a SSH_PORT környezeti változó által megadott portszámon figyelje a regionális virtuális hálózat-integráció használatakor. Nincs támogatja az átjáró által igényelt virtuális hálózat integráció Linux on.
+Ha az alkalmazást Linux rendszeren futtatja a beépített rendszerképekkel, a regionális VNet-integráció további változtatások nélkül működik. Ha web vagy függvényalkalmazást használ a tárolók számára, módosítania kell a Docker-rendszerképet a VNet-integráció használatához. A Docker-rendszerképben használja a PORT környezeti változót a fő webkiszolgáló figyelési portjának hardcoded helyett. A PORT környezeti változóját a tároló indítási ideje automatikusan beállítja a platformon. Ha SSH-t használ, az SSH démont úgy kell konfigurálni, hogy az SSH_PORT környezeti változó által megadott portszámot figyelje, amikor a regionális VNet-integrációt használja. Az átjárók számára szükséges VNet-integráció nem támogatott a Linux rendszeren.
 
 ### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
-A regionális virtuális hálózat-integráció lehetővé teszi a szolgáltatásvégpontok használatát. A szolgáltatásvégpontok az alkalmazással, a regionális virtuális hálózat integráció használatával csatlakozzon egy kijelölt virtuális hálózathoz, majd konfigurálja a szolgáltatásvégpontok a célszolgáltatás az integrációhoz használt alhálózaton. Ha ezután egy szolgáltatáshoz szeretne hozzáférni a szolgáltatás végpontjai felett:
+A regionális VNet-integráció lehetővé teszi a szolgáltatási végpontok használatát. Ha szolgáltatási végpontokat szeretne használni az alkalmazással, a regionális VNet-integráció segítségével csatlakozhat egy kiválasztott VNet, majd a szolgáltatási végpontokat az integrációhoz használt alhálózaton a célként megadott szolgáltatással konfigurálhatja. Ha ezt követően egy szolgáltatáshoz szeretne hozzáférni a szolgáltatási végpontokon keresztül:
 
-1. konfigurálja a helyi virtuális hálózat integrációját a webalkalmazással
-1. lépjen a célszolgáltatásra, és konfigurálja a szolgáltatásvégpontokat az integrációhoz használt alhálózattal
+1. a regionális VNet-integráció konfigurálása a webalkalmazással
+1. Lépjen a célhely szolgáltatáshoz, és konfigurálja a szolgáltatási végpontokat az integrációhoz használt alhálózattal.
 
 ### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
-A hálózati biztonsági csoportok segítségével blokkolhatja a virtuális hálózat erőforrásainak bejövő és kimenő forgalmát. A regionális virtuális hálózat integrációt használó alkalmazások [egy hálózati biztonsági csoport][VNETnsg] segítségével blokkolhatják a virtuális hálózaton vagy az interneten lévő erőforrások kimenő forgalmát. A nyilvános címekre irányuló forgalom blokkolásához az alkalmazásbeállításWEBSITE_VNET_ROUTE_ALL 1-re kell állítva. Az NSG bejövő szabályai nem vonatkoznak az alkalmazásra, mert a virtuális hálózat integrációja csak az alkalmazásból érkező kimenő forgalmat érinti.
+Hálózati biztonsági csoportok használatával blokkolhatja a bejövő és a kimenő forgalmat egy VNet erőforrásaihoz. A regionális VNet-integrációt használó alkalmazások [hálózati biztonsági csoporttal][VNETnsg] letilthatják a VNet vagy az interneten lévő erőforrásokra irányuló kimenő forgalmat. A nyilvános címekre irányuló forgalom letiltásához az alkalmazás beállítását WEBSITE_VNET_ROUTE_ALL 1-re kell beállítani. Egy NSG bejövő szabályai nem érvényesek az alkalmazásra, mert a VNet-integráció csak az alkalmazásból érkező kimenő forgalmat érinti.
 
-Az alkalmazás baérkező forgalom szabályozásához használja a Hozzáférési korlátozások funkciót. Az integrációs alhálózatra alkalmazott NSG érvényben van, függetlenül az integrációs alhálózatra alkalmazott útvonalaktól. Ha WEBSITE_VNET_ROUTE_ALL 1-re van állítva, és nincs olyan útvonala, amely befolyásolja a nyilvános cím forgalmát az integrációs alhálózaton, akkor a kimenő forgalom egészére továbbra is az integrációs alhálózathoz rendelt NSG-k vonatkoznak. Ha WEBSITE_VNET_ROUTE_ALL nincs beállítva, az NSG-k csak az RFC1918 forgalomra lesznek alkalmazva.
+Az alkalmazás bejövő forgalmának szabályozásához használja a hozzáférési korlátozások funkciót. Az integrációs alhálózatra alkalmazott NSG az integrációs alhálózatra alkalmazott útvonalaktól függetlenül érvényesek. Ha WEBSITE_VNET_ROUTE_ALL értéke 1, és nincs olyan útvonala, amely hatással van a nyilvános címek forgalmára az integrációs alhálózaton, az összes kimenő forgalom továbbra is az integrációs alhálózathoz rendelt NSG függ. Ha WEBSITE_VNET_ROUTE_ALL nincs beállítva, a rendszer csak a RFC1918-forgalomra alkalmazza a NSG.
 
 ### <a name="routes"></a>Útvonalak
 
-Az útvonaltáblák segítségével az alkalmazásból oda irányíthatja a kimenő forgalmat, ahová csak szeretné. Alapértelmezés szerint az útvonaltáblák csak az RFC1918 célforgalmára vannak hatással. Ha WEBSITE_VNET_ROUTE_ALL 1-re állítja, az összes kimenő hívást érinti. Az integrációs alhálózaton beállított útvonalak nem befolyásolják a bejövő alkalmazáskérelmekre adott válaszokat. A gyakori célhelyek közé tartozhatnak a tűzfaleszközök vagy átjárók.
+Az útválasztási táblázatok használatával a kimenő forgalmat az alkalmazásból bárhonnan irányíthatja, bárhol is legyenek. Alapértelmezés szerint az útválasztási táblák csak a RFC1918 vonatkoznak. Ha a WEBSITE_VNET_ROUTE_ALL 1 értékre állítja, az összes kimenő hívást érinti. Az integrációs alhálózaton beállított útvonalak nem érintik a bejövő alkalmazások kéréseire adott válaszokat. A gyakori célhelyek lehetnek tűzfalak vagy átjárók.
 
-Ha azt szeretné, hogy az összes kimenő forgalmat a helyszínen, egy útvonaltábla segítségével küldheti az összes kimenő forgalmat az ExpressRoute-átjáró. Ha a forgalmat egy átjáróhoz irányítja, ügyeljen arra, hogy a külső hálózaton lévő útvonalakat állítsa be a válaszok visszaküldéséhez.
+Ha a helyszíni összes kimenő forgalmat is át szeretné irányítani, az útválasztási táblázat segítségével elküldheti az összes kimenő forgalmat a ExpressRoute-átjárónak. Ha átirányítja a forgalmat egy átjáróra, ügyeljen arra, hogy a külső hálózatban lévő útvonalakat az összes válasz visszaküldéséhez adja meg.
 
-A Border Gateway Protocol (BGP) útvonalai szintén hatással vannak az alkalmazás forgalmára. Ha a BGP-útvonalak valami, mint egy ExpressRoute-átjáró, az alkalmazás kimenő forgalma t. Alapértelmezés szerint a BGP-útvonalak csak az RFC1918 célforgalmat érintik. Ha WEBSITE_VNET_ROUTE_ALL 1-re van állítva, az összes kimenő forgalmat befolyásolhatják a BGP-útvonalak.
+A Border Gateway Protocol (BGP) útvonalak az alkalmazások forgalmára is hatással vannak. Ha az ExpressRoute-átjáróhoz hasonló BGP-útvonalak vannak, akkor az alkalmazás kimenő forgalmát fogja érinteni. Alapértelmezés szerint a BGP-útvonalak csak a RFC1918-forgalmat érintik. Ha WEBSITE_VNET_ROUTE_ALL értéke 1, az összes kimenő forgalmat érintheti a BGP-útvonalak.
 
-### <a name="azure-dns-private-zones"></a>Azure DNS-személyes zónák 
+### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-Miután az alkalmazás integrálódik a virtuális hálózattal, ugyanazt a DNS-kiszolgálót használja, amelyhez a virtuális hálózat konfigurálva van. Alapértelmezés szerint az alkalmazás nem fog működni az Azure DNS-személyes zónákkal. Az Azure DNS-személyes zónákkal való munkához a következő alkalmazásbeállításokat kell megadnia:
+Miután az alkalmazás integrálva van a VNet, ugyanazt a DNS-kiszolgálót használja, amelyhez a VNet konfigurálva van. Alapértelmezés szerint az alkalmazás nem fog működni Azure DNS Private Zones. A Azure DNS Private Zones való együttműködéshez a következő Alkalmazásbeállítások hozzáadására van szükség:
 
-1. 168,63,129,16-os értékkel rendelkező WEBSITE_DNS_SERVER 
-1. 1-es értékkel rendelkező WEBSITE_VNET_ROUTE_ALL
+1. WEBSITE_DNS_SERVER értékkel 168.63.129.16 
+1. 1. értékkel rendelkező WEBSITE_VNET_ROUTE_ALL
 
-Ezek a beállítások az összes kimenő hívást az alkalmazásból a virtuális hálózatba küldik, amellett, hogy engedélyezi az alkalmazás számára az Azure DNS privát zónák használatát.
+Ezek a beállítások elküldik az alkalmazásból érkező összes kimenő hívást a VNet, továbbá lehetővé teszi, hogy az alkalmazás Azure DNS privát zónákat használjon.
 
 ### <a name="private-endpoints"></a>Privát végpontok
 
-Ha privát [végpontok hívásait][privateendpoints]szeretné kezdeményezni, akkor vagy integrálnia kell az Azure DNS privát zónáival, vagy kezelnie kell az alkalmazás által használt DNS-kiszolgáló privát végpontját. 
+Ha [privát végpontokra][privateendpoints]szeretne hívásokat kezdeményezni, akkor integrálnia kell Azure DNS Private Zones, vagy az alkalmazás által használt DNS-kiszolgálón kell kezelnie a privát végpontot. 
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png

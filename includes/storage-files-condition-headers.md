@@ -15,18 +15,18 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "70737491"
 ---
-## <a name="error-conditionheadersnotsupported-from-a-web-application-using-azure-files-from-browser"></a>Hiba feltételfejlécekNem támogatottak webalkalmazásból az Azure Files from Browser használatával
+## <a name="error-conditionheadersnotsupported-from-a-web-application-using-azure-files-from-browser"></a>Hiba történt a webalkalmazásból való ConditionHeadersNotSupported Azure Files böngészőből való használatával
 
-A ConditionHeadersNotSupported hiba akkor fordul elő, amikor az Azure Files-ban tárolt tartalom elérése feltételes fejléceket, például webböngészőt használó alkalmazáson keresztül sikertelen. A hiba azt jelenti, hogy a feltételfejlécek nem támogatottak.
+A ConditionHeadersNotSupported hiba akkor fordul elő, amikor a Azure Files futtatott tartalmat egy olyan alkalmazáson keresztül éri el, amely feltételes fejléceket (például webböngészőt) használ, és a hozzáférés meghiúsul. Ez a hiba azt jelzi, hogy a feltétel fejlécei nem támogatottak.
 
-![Azure Files feltételes fejlécek hiba](media/storage-files-condition-headers/conditionalerror.png)
+![Feltételes fejlécek Azure Files hiba](media/storage-files-condition-headers/conditionalerror.png)
 
 ### <a name="cause"></a>Ok
 
-A feltételes fejlécek még nem támogatottak. Az azokat végrehajtó alkalmazásoknak minden alkalommal meg kell kérniük a teljes fájlt, amikor a fájlhoz hozzáférnek.
+A feltételes fejlécek még nem támogatottak. Az azokat megvalósító alkalmazásoknak a fájlhoz való hozzáféréskor minden alkalommal le kell kérniük a teljes fájlt.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-Új fájl feltöltésekéna alapértelmezés szerint a gyorsítótár-vezérlő tulajdonság "nincs gyorsítótár". Ahhoz, hogy az alkalmazás minden alkalommal kérje a fájlt, a fájl gyorsítótár-vezérlő tulajdonságát frissíteni kell a "nincs gyorsítótár" tulajdonságról a "nincs gyorsítótár, nincs tároló, must-revalidate" tulajdonságra. Ez az Azure [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használatával érhető el.
+Új fájl feltöltésekor a Cache-Control tulajdonság alapértelmezés szerint "no-cache". Ha szeretné kényszeríteni az alkalmazást, hogy minden alkalommal igényelje a fájlt, a fájl Cache-Control tulajdonságát frissíteni kell a "no-cache" értékről a "no-cache", a No-Store, a revalidate "műveletre. Ezt [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)használatával lehet megvalósítani.
 
-![A Storage Explorer tartalomgyorsítótárának módosítása az Azure Files feltételes fejléceihez](media/storage-files-condition-headers/storage-explorer-cache.png)
+![A Storage Explorer tartalom-gyorsítótárának módosítása Azure Files feltételes fejlécek esetében](media/storage-files-condition-headers/storage-explorer-cache.png)

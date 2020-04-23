@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179228"
 ---
 > [!NOTE]
-> Az oktatóanyag megkezdése előtt fejezze be a [Raspberry Pi online szimulátor](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz oktatóanyagait; például [a Raspberry Pi a node.js-szel.](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md) Ezekben a cikkekben beállítja az Azure IoT-eszközt és az IoT-központot, és üzembe helyez egy mintaalkalmazást az eszközön való futtatáshoz. Az alkalmazás elküldi az összegyűjtött érzékelőadatokat az IoT hubba.
+> Az oktatóanyag elkezdése előtt végezze el a [málna PI online Simulator](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszközök egyikét. például: [málna PI és Node. js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md). Ezekben a cikkekben be kell állítania az Azure IoT-eszközt és az IoT hub-t, és üzembe kell helyeznie egy minta alkalmazást az eszközön való futtatáshoz. Az alkalmazás elküldi a gyűjtött érzékelő adatait az IoT hubhoz.

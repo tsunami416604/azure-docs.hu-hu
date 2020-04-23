@@ -1,6 +1,6 @@
 ---
-title: JavaScript használata fájlokhoz & AC-khez az Azure Data Lake Storage Gen2 szolgáltatásban
-description: Használja az Azure Storage Data Lake javascript-ügyfélkönyvtárát a könyvtárak és a fájl- és címtárhozzáférés-vezérlési listák (ACL) kezeléséhez a hierarchikus névtérrel (HNS) engedélyezve lévő tárfiókokban.
+title: A JavaScript használata fájlok & ACL-ekkel Azure Data Lake Storage Gen2
+description: Az Azure Storage Data Lake ügyféloldali függvénytárának használatával kezelheti a könyvtárakat és a fájl-és címtár-hozzáférés-vezérlési listákat (ACL) olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS).
 author: normesta
 ms.service: storage
 ms.date: 03/20/2020
@@ -15,42 +15,42 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80061541"
 ---
-# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Könyvtárak, fájlok és AC-k kezelése a JavaScript használatával az Azure Data Lake Storage Gen2 szolgáltatásban
+# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A JavaScript használata a címtárak, a fájlok és a hozzáférés-vezérlési listák kezeléséhez Azure Data Lake Storage Gen2
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat és engedélyeket a hierarchikus névtérrel (HNS) rendelkező tárfiókokban a JavaScript használatával. 
+Ez a cikk bemutatja, hogyan lehet a JavaScript használatával könyvtárakat, fájlokat és engedélyeket létrehozni és kezelni olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér (HNS). 
 
-[Csomag (node package manager)](https://www.npmjs.com/package/@azure/storage-file-datalake) | [minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [visszajelzést adnak](https://github.com/Azure/azure-sdk-for-java/issues)
+[A csomag (node csomagkezelő-kezelő)](https://www.npmjs.com/package/@azure/storage-file-datalake) | [mintái](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [visszajelzést adnak](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
 > * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-> * Olyan tárfiók, amelynek hierarchikus névtere (HNS) engedélyezve van. Az [alábbi](data-lake-storage-quickstart-create-account.md) utasításokat követve hozzon létre egyet.
-> * Ha ezt a csomagot node.js alkalmazásban használja, szüksége lesz a Node.js 8.0.0 vagy újabb verzióra.
+> * Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](data-lake-storage-quickstart-create-account.md) útmutatást követve hozzon létre egyet.
+> * Ha ezt a csomagot egy Node. js-alkalmazásban használja, akkor a Node. js 8.0.0 vagy újabb verziójára lesz szüksége.
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Telepítse a Data Lake javascript-es ügyfélkönyvtárát egy terminálablak megnyitásával, majd írja be a következő parancsot.
+Telepítse Data Lake ügyféloldali kódtárat a JavaScripthez egy terminál ablak megnyitásával, majd írja be a következő parancsot.
 
 ```javascript
 npm install @azure/storage-file-datalake
 ```
 
-Importálja `storage-file-datalake` a csomagot úgy, hogy ezt a nyilatkozatot a kódfájl tetejére helyezi. 
+Importálja `storage-file-datalake` a csomagot úgy, hogy a fájl elejére helyezi ezt az utasítást. 
 
 ```javascript
 const AzureStorageDataLake = require("@azure/storage-file-datalake");
 ```
 
-## <a name="connect-to-the-account"></a>Csatlakozás a fiókhoz 
+## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz 
 
-A jelenések ebben a cikkben, létre kell hoznia egy **DataLakeServiceClient** példányt, amely a tárfiókot jelöli. 
+A cikkben szereplő kódrészletek használatához létre kell hoznia egy **DataLakeServiceClient** -példányt, amely a Storage-fiókot jelképezi. 
 
-### <a name="connect-by-using-an-account-key"></a>Csatlakozás fiókkulcs használatával
+### <a name="connect-by-using-an-account-key"></a>Csatlakozási fiók kulcsa alapján
 
-Ez a legegyszerűbb módja annak, hogy csatlakozzon egy fiókhoz. 
+Ez a legegyszerűbb módszer a fiókhoz való kapcsolódásra. 
 
-Ez a példa egy **DataLakeServiceClient-példányt** hoz létre egy fiókkulcs használatával.
+Ez a példa egy **DataLakeServiceClient** -példányt hoz létre a fiók kulcsa alapján.
 
 ```javascript
 
@@ -67,13 +67,13 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 
 ```
 > [!NOTE]
-> Ez az engedélyezési módszer csak a Node.js alkalmazások esetében működik. Ha azt tervezi, hogy futtassa a kódot a böngészőben, engedélyezheti az Azure Active Directory (AD) használatával. 
+> Ez az engedélyezési módszer csak Node. js-alkalmazásokhoz használható. Ha a kódot egy böngészőben szeretné futtatni, akkor a Azure Active Directory (AD) használatával engedélyezheti. 
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>Csatlakozás az Azure Active Directory (AD) használatával
+### <a name="connect-by-using-azure-active-directory-ad"></a>Kapcsolat Azure Active Directory (AD) használatával
 
-Használhatja az [Azure identity ügyfélkódtár JS](https://www.npmjs.com/package/@azure/identity) az alkalmazás hitelesítéséhez az Azure AD.You can use the Azure identity client library for JS to authenticate your application with Azure AD.
+Az [Azure Identity Client Library for js](https://www.npmjs.com/package/@azure/identity) használatával hitelesítheti alkalmazását az Azure ad-vel.
 
-Ez a példa egy **DataLakeServiceClient-példányt** hoz létre egy ügyfélazonosító, egy ügyféltitok és egy bérlői azonosító használatával.  Ezeknek az értékeknek a [beszerzése, olvassa el a jogkivonat beszerzése az Azure AD-től az ügyfélalkalmazásból érkező kérelmek engedélyezéséhez](../common/storage-auth-aad-app.md)című témakört.
+Ez a példa egy **DataLakeServiceClient** -példányt hoz létre egy ügyfél-azonosítóval, egy ügyfél-titkos kulccsal és egy BÉRLŐi azonosítóval.  Az értékek [lekéréséhez lásd: token beszerzése az Azure ad-ből az ügyfélalkalmazások kéréseinek engedélyezéséhez](../common/storage-auth-aad-app.md).
 
 ```javascript
 function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantID) {
@@ -88,13 +88,13 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 ```
 
 > [!NOTE]
-> További példák: az [Azure identity client library for JS](https://www.npmjs.com/package/@azure/identity) dokumentáció.
+> További példákért tekintse meg az [Azure Identity Client Library for js](https://www.npmjs.com/package/@azure/identity) dokumentációját.
 
 ## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
 
-A fájlrendszer a fájlok tárolójaként működik. Létrehozhat egyet egy **FileSystemClient** példány beszerzésével, majd a **FileSystemClient.Create** metódus hívásával.
+A fájlrendszer tárolóként működik a fájlok számára. Hozzon létre egyet egy **FileSystemClient** -példány beszerzésével, majd hívja meg a **FileSystemClient. Create** metódust.
 
-Ez a példa létrehoz `my-file-system`egy fájlrendszert. 
+Ez a példa egy nevű `my-file-system`fájlrendszert hoz létre. 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -110,9 +110,9 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-**DirectoryClient-példány** beszerzésével hozzon létre könyvtárhivatkozást, majd hívja meg a **DirectoryClient.create** metódust.
+Hozzon létre egy címtár-referenciát egy **DirectoryClient** -példány beszerzésével, majd hívja meg a **DirectoryClient. Create** metódust.
 
-Ez a példa `my-directory` egy fájlrendszerhez nevezett könyvtárat ad hozzá. 
+Ez a példa egy nevű `my-directory` könyvtárat helyez el egy fájlrendszerhez. 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {
@@ -124,11 +124,11 @@ async function CreateDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Könyvtár átnevezése vagy áthelyezése
+## <a name="rename-or-move-a-directory"></a>Címtár átnevezése vagy áthelyezése
 
-Könyvtár átnevezése vagy áthelyezése a **DirectoryClient.rename** metódus meghívásával. Adja át a kívánt könyvtár elérési útját egy paraméternek. 
+Nevezze át vagy helyezze át a könyvtárat a **DirectoryClient. Rename** metódus meghívásával. Adja meg a kívánt könyvtár elérési útját (a paramétert). 
 
-Ez a példa átnevezi az `my-directory-renamed`alkönyvtárat a nevére.
+Ez a példa átnevez egy alkönyvtárat a névre `my-directory-renamed`.
 
 ```javascript
 async function RenameDirectory(fileSystemClient) {
@@ -139,7 +139,7 @@ async function RenameDirectory(fileSystemClient) {
 }
 ```
 
-Ez a példa `my-directory-renamed` áthelyezi a névvel ellátott `my-directory-2`könyvtárat egy könyvtár alkönyvtárába. 
+Ez a példa egy nevű `my-directory-renamed` könyvtárat helyez át egy nevű könyvtár alkönyvtárába. `my-directory-2` 
 
 ```javascript
 async function MoveDirectory(fileSystemClient) {
@@ -152,9 +152,9 @@ async function MoveDirectory(fileSystemClient) {
 
 ## <a name="delete-a-directory"></a>Könyvtár törlése
 
-Könyvtár törlése a **DirectoryClient.delete** metódus hívásával.
+A **DirectoryClient. Delete** metódus meghívásával törölhet egy könyvtárat.
 
-Ez a példa törli `my-directory`a .   
+Ez a példa törli a nevű `my-directory`könyvtárat.   
 
 ```javascript
 async function DeleteDirectory(fileSystemClient) {
@@ -165,12 +165,12 @@ async function DeleteDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Címtár ACL kezelése
+## <a name="manage-a-directory-acl"></a>Címtár-ACL kezelése
 
-Ez a példa bekerül, majd beállítja a névvel ellátott könyvtár ACL-ét. `my-directory` Ebben a példában a tulajdonában lévő felhasználó olvasási, írási és végrehajtási engedélyeket ad, a tulajdonában lévő csoport csak olvasási és végrehajtási engedélyeket ad, és az összes többi olvasási hozzáférést biztosít.
+Ez a példa lekéri, majd beállítja a nevű `my-directory`könyvtár ACL-listáját. Ez a példa az olvasási, írási és végrehajtási engedélyeket adja meg, így a tulajdonos csoport csak olvasási és végrehajtási engedélyekkel rendelkezik, és minden más olvasási hozzáférést biztosít.
 
 > [!NOTE]
-> Ha az alkalmazás engedélyezi a hozzáférést az Azure Active Directory (Azure AD) használatával, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá van rendelve a [Storage Blob Data Owner szerepkörhöz.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) Ha többet szeretne tudni az ACL-engedélyek alkalmazásáról és módosításuk hatásairól, olvassa el [a Hozzáférés-vezérlés az Azure Data Lake Storage Gen2 alkalmazásban című témakört.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
 
 ```javascript
 async function ManageDirectoryACLs(fileSystemClient) {
@@ -221,9 +221,9 @@ async function ManageDirectoryACLs(fileSystemClient) {
 
 ## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba
 
-Először olvassa el az aktát. Ez a példa a Node.js modult `fs` használja. Ezután hozzon létre egy fájlhivatkozást a célkönyvtárban egy **FileClient** példány létrehozásával, majd hívja meg a **FileClient.create** metódust. Töltsön fel egy fájlt a **FileClient.append** metódus hívásával. Győződjön meg arról, hogy a feltöltést a **FileClient.flush** metódus hívásával fejezi be.
+Először olvassa el a fájlt. Ez a példa a Node. js `fs` -modult használja. Ezután hozzon létre egy fájlt a **FileClient** -példány létrehozásával, majd hívja meg a **FileClient. Create** metódust. Töltsön fel egy fájlt a **FileClient. Append** metódus meghívásával. Ügyeljen arra, hogy a feltöltést a **FileClient. flush** metódus meghívásával végezze el.
 
-Ez a példa egy .' `my-directory`nevű könyvtárba tölt fel egy szövegfájlt.
+Ez a példa egy szövegfájlt tölt fel egy nevű `my-directory`könyvtárba. "
 
 ```javascript
 async function UploadFile(fileSystemClient) {
@@ -247,12 +247,12 @@ async function UploadFile(fileSystemClient) {
 }
 ```
 
-## <a name="manage-a-file-acl"></a>Fájl acl kezelése
+## <a name="manage-a-file-acl"></a>Fájl hozzáférés-vezérlési listájának kezelése
 
-Ez a példa bekerül, majd beállítja a fájl acl nevű `upload-file.txt`. Ebben a példában a tulajdonában lévő felhasználó olvasási, írási és végrehajtási engedélyeket ad, a tulajdonában lévő csoport csak olvasási és végrehajtási engedélyeket ad, és az összes többi olvasási hozzáférést biztosít.
+Ez a példa lekéri, majd beállítja a nevű `upload-file.txt`fájl ACL-listáját. Ez a példa az olvasási, írási és végrehajtási engedélyeket adja meg, így a tulajdonos csoport csak olvasási és végrehajtási engedélyekkel rendelkezik, és minden más olvasási hozzáférést biztosít.
 
 > [!NOTE]
-> Ha az alkalmazás engedélyezi a hozzáférést az Azure Active Directory (Azure AD) használatával, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá van rendelve a [Storage Blob Data Owner szerepkörhöz.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) Ha többet szeretne tudni az ACL-engedélyek alkalmazásáról és módosításuk hatásairól, olvassa el [a Hozzáférés-vezérlés az Azure Data Lake Storage Gen2 alkalmazásban című témakört.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
 
 ```javascript
 async function ManageFileACLs(fileSystemClient) {
@@ -301,12 +301,12 @@ await fileClient.setAccessControl(acl);
 }
 ```
 
-## <a name="download-from-a-directory"></a>Letöltés könyvtárból
+## <a name="download-from-a-directory"></a>Letöltés egy címtárból
 
-Először hozzon létre egy **FileSystemClient** példányt, amely a letölteni kívánt fájlt jelöli. A fájl olvasásához használja a **FileSystemClient.read** metódust. Ezután írja meg a fájlt. Ez a példa a Node.js modult `fs` használja ehhez. 
+Először hozzon létre egy **FileSystemClient** -példányt, amely a letölteni kívánt fájlt jelöli. A fájl olvasásához használja a **FileSystemClient. Read** metódust. Ezután írja be a fájlt. Ebben a példában a Node. js `fs` -modult használja. 
 
 > [!NOTE]
-> Ez a fájlletöltési módszer csak node.js alkalmazások esetén működik. Ha azt tervezi, hogy futtassa a kódot a böngészőben, tekintse meg az [Azure Storage File Data Lake ügyfélkönyvtár JavaScript](https://www.npmjs.com/package/@azure/storage-file-datalake) readme fájlt egy példa, hogyan kell ezt a böngészőben. 
+> A fájlok letöltésének módja csak Node. js-alkalmazásokhoz használható. Ha azt tervezi, hogy futtatja a kódot egy böngészőben, tekintse meg az [Azure Storage-fájl data Lake az ügyféloldali kódtár JavaScript](https://www.npmjs.com/package/@azure/storage-file-datalake) -fájlhoz című témakört, amelyből megtudhatja, hogyan teheti ezt meg egy böngészőben. 
 
 ```javascript
 async function DownloadFile(fileSystemClient) {
@@ -341,7 +341,7 @@ async function DownloadFile(fileSystemClient) {
 
 ## <a name="list-directory-contents"></a>Könyvtár tartalmának listázása
 
-Ebben a példában kinyomtatja a könyvtárban található könyvtárak `my-directory`és fájlok nevét.
+Ez a példa a nevű `my-directory`könyvtárban található minden könyvtár és fájl nevét kiírja.
 
 ```javascript
 async function ListFilesInDirectory(fileSystemClient) {
@@ -360,6 +360,6 @@ async function ListFilesInDirectory(fileSystemClient) {
 
 ## <a name="see-also"></a>Lásd még
 
-* [Package (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)
-* [Minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
+* [Csomag (node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)
+* [Példák](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
 * [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-java/issues)

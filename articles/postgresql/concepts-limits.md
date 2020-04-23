@@ -1,6 +1,6 @@
 ---
-title: Korlátok - Azure-adatbázis a PostgreSQL számára - Egykiszolgálós
-description: Ez a cikk az Azure Database for PostgreSQL – Single Server korlátozásokat ismerteti, például a kapcsolatés a tárolómotor-beállítások számát.
+title: Korlátok – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk Azure Database for PostgreSQL – egyetlen kiszolgáló korlátozásait ismerteti, például a kapcsolatok számát és a tárolási motor beállításait.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -14,14 +14,14 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "76836456"
 ---
-# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Korlátok az Azure Database for PostgreSQL-ben – Egykiszolgálós
-A következő szakaszok az adatbázis-szolgáltatás kapacitás- és funkcionális korlátait ismertetik. Ha szeretne többet megtudni az erőforrás-(számítási, memória, tárolási) szintekről, tekintse meg a [tarifacsomagokról](concepts-pricing-tiers.md) szóló cikket.
+# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Korlátok Azure Database for PostgreSQL – egyetlen kiszolgáló
+Az alábbi szakaszok az adatbázis-szolgáltatás kapacitását és működési korlátait ismertetik. Ha szeretne többet megtudni az erőforrásról (számítási, memória-, tárolási) szintjeiről, tekintse meg a [díjszabási szintek](concepts-pricing-tiers.md) című cikket.
 
 
 ## <a name="maximum-connections"></a>Kapcsolatok maximális száma
-A tarifacsomagonkénti és virtuális magok szerinti kapcsolatok maximális száma az alábbiakban látható. Az Azure-rendszer öt kapcsolatra van szükség az Azure Database for PostgreSQL-kiszolgáló figyeléséhez. 
+Alább láthatók a kapcsolatok maximális száma az árképzési szinten és a virtuális mag. Az Azure-rendszernek öt kapcsolattal kell rendelkeznie a Azure Database for PostgreSQL-kiszolgáló figyeléséhez. 
 
-|**Árképzési szint**| **virtuális mag(k)**| **Kapcsolatok maximális száma** | **Felhasználói kapcsolatok maximális száma** |
+|**Díjszabási csomag**| **Virtuális mag (ok)**| **Kapcsolatok maximális száma** | **Felhasználói kapcsolatok maximális száma** |
 |---|---|---|---|
 |Basic| 1| 55 | 50|
 |Basic| 2| 105 | 100|
@@ -38,36 +38,36 @@ A tarifacsomagonkénti és virtuális magok szerinti kapcsolatok maximális szá
 |Memóriaoptimalizált| 32| 1987| 1982|
 
 Ha a kapcsolatok túllépik a korlátot, a következő hibaüzenet jelenhet meg:
-> VÉGZETES: sajnálom, túl sok ügyfél már
+> VÉGZETES: Sajnos túl sok ügyfél már
 
 > [!IMPORTANT]
-> A legjobb élmény érdekében azt javasoljuk, hogy a kapcsolatok hatékony kezeléséhez használja a pgBouncer hez hasonló kapcsolatgyűjtőt.
+> A legjobb megoldás érdekében javasoljuk, hogy használjon olyan kapcsolati Pooler, mint a pgBouncer, hogy hatékonyan kezelhesse a kapcsolatokat.
 
-A PostgreSQL kapcsolat, még tétlen, elfoglalhatja mintegy 10MB memória. Az új kapcsolatok létrehozása is időt vesz igénybe. A legtöbb alkalmazás sok rövid életű kapcsolatot kér, ami összetette ezt a helyzetet. Az eredmény kevesebb erőforrás áll rendelkezésre a tényleges munkaterheléshez, ami a teljesítmény csökkenéséhez vezet. Az alapjárati kapcsolatokat csökkentő és a meglévő kapcsolatokat újrafeltöltő kapcsolatgyűjtő segít elkerülni ezt. Ha többet szeretne megtudni, látogasson el [blogbejegyzést](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
+A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát foglalnak magukban. Emellett az új kapcsolatok létrehozása időt vesz igénybe. A legtöbb alkalmazás sok rövid életű kapcsolatot igényel, amely ezt a helyzetet összeképezi. Ennek eredményeképpen kevesebb erőforrás érhető el a tényleges munkaterheléshez, ami csökkenti a teljesítményt. Egy kapcsolati Pooler, amely csökkenti az üresjárati kapcsolatokat, és a meglévő kapcsolatokat újra felhasználva segít elkerülni ezt. További információért látogasson el a [blogbejegyzésbe](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
 
 ## <a name="functional-limitations"></a>Funkcionális korlátozások
-### <a name="scale-operations"></a>Méretezési műveletek
-- Az alapszintű tarifacsomagok dinamikus skálázása jelenleg nem támogatott.
-- A kiszolgáló tárhelyének csökkentése jelenleg nem támogatott.
+### <a name="scale-operations"></a>Skálázási műveletek
+- A dinamikus skálázás az alapszintű díjszabási szintekre és a rendszerből nem támogatott.
+- A kiszolgáló tárolási méretének csökkentése jelenleg nem támogatott.
 
-### <a name="server-version-upgrades"></a>Kiszolgálóverzió-frissítések
-- A fő adatbázis-motorverziók közötti automatikus áttelepítés jelenleg nem támogatott. Ha a következő főverzióra szeretne frissíteni, fogjon egy [memóriaképet, és állítsa vissza](./howto-migrate-using-dump-and-restore.md) egy olyan kiszolgálóra, amelyet az új motorverzióval hoztak létre.
+### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítése
+- A fő adatbázismotor-verziók közötti automatikus áttelepítés jelenleg nem támogatott. Ha a következő főverzióra szeretne frissíteni, hozzon létre egy [memóriaképet, és állítsa vissza](./howto-migrate-using-dump-and-restore.md) egy olyan kiszolgálóra, amely az új motor verziójával lett létrehozva.
 
-> Ne feledje, hogy a PostgreSQL 10-es verziója előtt a [PostgreSQL verziószámozási politikája](https://www.postgresql.org/support/versioning/) úgy tekintette, hogy a _főverziófrissítése_ az első _vagy_ a második szám növekedését jelent (például a 9,5-9,6-ot _főverziófrissítésnek_ tekintették).
-> A 10-es verziótól csak az első szám módosítása számít főverzió-frissítésnek (például a 10.0–10.1 _verziófrissítés_ alverziófrissítés, a 10–11 pedig _a főverziófrissítése)._
+> Vegye figyelembe, hogy a PostgreSQL-es verzió előtt a [PostgreSQL verziószámozási házirendje](https://www.postgresql.org/support/versioning/) _jelentős_ verziófrissítést eredményezett, hogy az első _vagy_ a második szám (például 9,5 – 9,6 _) nagyobb legyen_ .
+> A 10-es verziótól kezdve a rendszer csak az első szám változását tekinti jelentős verziófrissítésnek (például 10,0 – 10,1 egy alverzió verziófrissítése, és 10 – _11 a_ _főverzió frissítése_ ).
 
 ### <a name="vnet-service-endpoints"></a>VNet-szolgáltatásvégpontok
-- A Virtuálishálózat-szolgáltatás végpontjainak támogatása csak általános célú és memóriaoptimalizált kiszolgálókhoz érhető el.
+- A VNet szolgáltatás-végpontok támogatása csak a általános célú és a memóriára optimalizált kiszolgálók esetében támogatott.
 
 ### <a name="restoring-a-server"></a>Kiszolgáló visszaállítása
-- A PITR szolgáltatás használatakor az új kiszolgáló ugyanazokkal a tarifaréteg-konfigurációkkal jön létre, mint az a kiszolgáló, amelyen alapul.
-- A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón létező tűzfalszabályokkal. Az új kiszolgálóhoz külön kell beállítani a tűzfalszabályokat.
+- A PITR szolgáltatás használatakor az új kiszolgáló ugyanazzal az árképzési szintű konfigurációval jön létre, mint a kiszolgáló.
+- A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található tűzfalszabályok szabályaival. Ehhez az új kiszolgálóhoz külön kell beállítani a tűzfalszabályok beállításait.
 - A törölt kiszolgáló visszaállítása nem támogatott.
 
-### <a name="utf-8-characters-on-windows"></a>UTF-8 karakter a Windows rendszeren
-- Bizonyos esetekben az UTF-8 karakterek nem támogatottak teljes mértékben a nyílt forráskódú PostgreSQL windowsrendszeren, amely hatással van az Azure Database for PostgreSQL.In some scenarios UTF-8 characters are not be fully in open source PostgreSQL on Windows, which affects Azure Database for PostgreSQL. Kérjük, olvassa el a téma a [Bug #15476 a postgresql-archívum](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) további információkért.
+### <a name="utf-8-characters-on-windows"></a>UTF-8 karakter a Windowsban
+- Bizonyos esetekben az UTF-8 karakterek nem támogatottak teljes mértékben a nyílt forráskódú PostgreSQL-ben Windows rendszeren, amely hatással van a Azure Database for PostgreSQLra. További információért tekintse meg a [hiba #15476 a PostgreSQL-Archive](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) webhelyen.
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje [meg, hogy mi érhető el az egyes tarifacsomagokban](concepts-pricing-tiers.md)
-- További információ a [támogatott PostgreSQL adatbázis-verziókról](concepts-supported-versions.md)
-- Tekintse [át, hogyan lehet biztonsági másolatot küldeni és visszaállítani egy kiszolgálót a PostgreSQL Azure-adatbázisában az Azure Portalhasználatával](howto-restore-server-portal.md)
+- [Az egyes díjszabási szinten elérhető](concepts-pricing-tiers.md) tartalmak ismertetése
+- További információ a [PostgreSQL-adatbázisok támogatott verzióiról](concepts-supported-versions.md)
+- Tekintse át [Azure Database for PostgreSQL kiszolgáló biztonsági mentését és visszaállítását a Azure Portal használatával](howto-restore-server-portal.md)

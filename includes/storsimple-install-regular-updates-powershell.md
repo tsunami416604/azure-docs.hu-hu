@@ -11,13 +11,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179152"
 ---
-#### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>Rendszeres frissítések telepítése a Windows PowerShell for StorSimple rendszeren keresztül
-1. Nyissa meg az eszköz soros konzolját, és válassza az 1-es lehetőséget, **a Bejelentkezés teljes hozzáféréssel**. Írja be a jelszót. Az alapértelmezett jelszó a *Password1*. 
+#### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>A rendszeres frissítések telepítése Windows PowerShell StorSimple-bővítménye használatával
+1. Nyissa meg az eszköz soros konzolját, és válassza az 1. lehetőséget, **Jelentkezzen be teljes hozzáféréssel**. Írja be a jelszót. Az alapértelmezett jelszó a *jelszó1*. 
 2. A parancssorba írja be a következőt:
    
      `Get-HcsUpdateAvailability`
    
-    Értesítést kap, ha a frissítések elérhetők, és hogy a frissítések zavaróak vagy nem zavaróak.You will be be available if updates are available and whether the updates are disruptive or non-disruptive.
+    Értesítést kap, ha elérhetők a frissítések, és hogy a frissítések zavaróak vagy nem zavaróak-e.
 3. A parancssorba írja be a következőt:
    
      `Start-HcsUpdate`
@@ -25,8 +25,8 @@ ms.locfileid: "67179152"
     A frissítési folyamat elindul.
 
 > [!IMPORTANT]
-> * Ez a parancs csak a rendszeres frissítésekre vonatkozik. Ezt a parancsot csak egy vezérlőn futtatja, de mindkét vezérlő frissülni fog. 
-> * Előfordulhat, hogy a frissítési folyamat során vezérlőfeladat-átvételt észlel; a feladatátvétel azonban nem befolyásolja a rendszer rendelkezésre állását vagy működését.
+> * Ez a parancs csak a rendszeres frissítésekre vonatkozik. Ezt a parancsot csak egy vezérlőn futtatja, de a rendszer mindkét vezérlőt frissíti. 
+> * A frissítési folyamat során észreveheti, hogy a vezérlő feladatátvételt végez; a feladatátvétel azonban nem fogja érinteni a rendszer rendelkezésre állását vagy működését.
 > 
 > 
 

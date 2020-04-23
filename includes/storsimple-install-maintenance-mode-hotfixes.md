@@ -11,18 +11,18 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179149"
 ---
-#### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>Karbantartási mód gyorsjavításainak telepítése a StorSimple-hez szervizelt Windows PowerShell rendszeren keresztül
+#### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>A karbantartási módú gyorsjavítások telepítése Windows PowerShell StorSimple-bővítménye használatával
 > [!IMPORTANT]
-> Karbantartás módban először a gyorsjavítást kell alkalmazniaz egyik vezérlőre, majd a másik vezérlőre.
+> Karbantartási módban először az egyik vezérlőn, majd a másik vezérlőn kell alkalmaznia a gyorsjavítást.
 > 
 > 
 
-1. Helyezze a készüléket karbantartási üzemmódba. A Karbantartási [módba](../articles/storsimple/storsimple-update-device.md#step2) való belépésmódjáról a 2.
+1. Helyezze az eszközt karbantartási módba. A karbantartási mód megadására vonatkozó utasításokért lásd a [2. lépés: a karbantartási mód megadása](../articles/storsimple/storsimple-update-device.md#step2) című témakört.
 2. A gyorsjavítás alkalmazásához írja be a következőt:
    
      `Start-HcsHotfix` 
-3. Amikor a rendszer kéri, adja meg a gyorsjavításfájlokat tartalmazó megosztott hálózati mappa elérési útját.
-4. A rendszer a művelet megerősítését kéri. Írja be az **Y** típust a gyorsjavítás telepítésének folytatásához.
-5. Miután alkalmazta a gyorsjavítást az egyik vezérlőn, jelentkezzen be a másik vezérlőbe. Alkalmazza a gyorsjavítást az előző vezérlőhöz képest.
-6. A gyorsjavítások alkalmazása után lépjen ki a Karbantartási módból. Lásd [a 4.](../articles/storsimple/storsimple-update-device.md#step4)
+3. Ha a rendszer kéri, adja meg a gyorsjavítási fájlokat tartalmazó megosztott hálózati mappa elérési útját.
+4. A rendszer a művelet megerősítését kéri. A gyorsjavítás telepítésének folytatásához írja be az **Y karaktert** .
+5. Miután alkalmazta a gyorsjavítást egy vezérlőn, jelentkezzen be a másik vezérlőbe. Alkalmazza a gyorsjavítást az előző vezérlőhöz.
+6. A gyorsjavítások alkalmazása után lépjen ki a karbantartási módból. Lásd: [4. lépés: Kilépés a karbantartási módból](../articles/storsimple/storsimple-update-device.md#step4) az utasításokhoz.
 

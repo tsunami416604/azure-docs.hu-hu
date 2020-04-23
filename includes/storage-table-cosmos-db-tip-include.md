@@ -12,5 +12,5 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "75351188"
 ---
 > [!TIP]
-> A cikk információi az eredeti Azure Table Storage-ra vonatkoznak. Azonban most már van egy prémium ajánlat a table storage: az Azure Cosmos DB Table API.However, there is now a premium offering for table storage: the Azure Cosmos DB Table API. Ez az API átviteli sebességű táblákat, globális terjesztést és automatikus másodlagos indexeket kínál. Az [Azure Cosmos DB-ben és az Azure table storage-ban](../articles/cosmos-db/faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)a Table API szolgáltatása között van néhány funkciókülönbség. További információkért és a prémium szintű élmény kipróbálásához lásd: [Azure Cosmos DB Table API.](https://aka.ms/premiumtables) 
+> A cikk információi az eredeti Azure Table Storage-ra vonatkoznak. Azonban most már van egy prémium ajánlat a Table Storage-hoz: a Azure Cosmos DB Table API. Ez az API átviteli sebességre optimalizált táblákat, globális eloszlást és automatikus másodlagos indexeket biztosít. A [Azure Cosmos db és az Azure Table storage Table API között néhány szolgáltatásbeli különbség](../articles/cosmos-db/faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)van. További információ és a prémium szintű élmény kipróbálása: [Azure Cosmos DB Table API](https://aka.ms/premiumtables). 
 >

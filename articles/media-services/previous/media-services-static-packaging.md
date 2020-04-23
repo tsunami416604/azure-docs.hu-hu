@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Packager használata statikus csomagolási feladatok elvégzésére | Microsoft dokumentumok
-description: Ez a témakör az Azure Media Packager használatával végrehajtott különböző feladatokat jeleníti meg.
+title: Az Azure Media Packaging használata statikus csomagolási feladatok elvégzéséhez | Microsoft Docs
+description: Ez a témakör az Azure Media csomagoló különböző feladatait mutatja be.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -21,44 +21,44 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "74970125"
 ---
-# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Az Azure Media Packager használata statikus csomagolási feladatok elvégzésére  
+# <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Az Azure Media Packaging használata statikus csomagolási feladatok elvégzéséhez  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 
 ## <a name="overview"></a>Áttekintés
 
-Annak érdekében, hogy digitális videót szállíthasson az interneten keresztül, tömörítenie kell a médiát. A digitális videofájlok nagyok, és túl nagyok lehetnek ahhoz, hogy az interneten keresztül szállítsák, vagy hogy az ügyfelek eszközei megfelelően jelenjenek meg. A kódolás a video- és hanganyagok tömörítésének folyamata, hogy ügyfelei megtekinthessék a médiatartalmakat. A videó kódolása után különböző fájltárolókba helyezhető. A kódolt adathordozó tárolóba helyezésének folyamatát csomagolásnak nevezzük. Például egy MP4-fájlt, és konvertálni sima streamelési vagy HLS-tartalom az Azure Media Packager használatával. 
+Az interneten keresztüli digitális videó továbbításához tömöríteni kell az adathordozót. A digitális videofájlok nagy méretűek, és előfordulhat, hogy túl nagy méretűek az interneten vagy az ügyfelek eszközeinek megfelelő megjelenítéséhez. A kódolás a videó és hang tömörítésének folyamata, így az ügyfelek megtekinthetik az adathordozót. A videó kódolása után a fájl különböző tárolókra helyezhető el. A kódolt adathordozók tárolóba való helyezésének folyamatát csomagolásnak nevezzük. Megteheti például, hogy MP4-fájlt alakít ki, és átalakítja Smooth Streaming vagy HLS tartalomba az Azure Media csomagoló használatával. 
 
-A Media Services támogatja a dinamikus és statikus csomagolást. Statikus csomagolás használata esetén a tartalomról minden olyan formátumban létre kell hoznia egy másolatot, amelyet az ügyfelek megkövetelnek. A dinamikus csomagolásnak köszönhetően mindössze egy adaptív sávszélességű MP4- vagy sima streamelési fájlokat tartalmazó eszközt kell létrehoznia. Ezután a jegyzékfájlban vagy a töredékkérelemben megadott formátum alapján az igény szerinti streamelési kiszolgáló biztosítja, hogy a felhasználók megkapják az adatfolyamot az általuk választott protokollban. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
-
-> [!NOTE]
-> Javasoljuk, hogy [dinamikus csomagolást](media-services-dynamic-packaging-overview.md)használjon .
-> 
-> 
-
-Vannak azonban olyan esetek, amelyek statikus csomagolást igényelnek: 
-
-* Külső kódolókkal kódolt adaptív sávszélességű MP4-ek ellenőrzése (például külső gyártótól származó kódolók használatával).
-
-Statikus csomagolást is használhat a következő feladatok végrehajtásához: Azonban ajánlott dinamikus titkosítást használni.
-
-* Statikus titkosítás használata a Sima és az MPEG DASH játék védelmére a PlayReady segítségével
-* Statikus titkosítás használata a HLSv3 védelmére AES-128-val
-* Statikus titkosítás használata a HLSv3 védelmére a PlayReady segítségével
-
-## <a name="validating-adaptive-bitrate-mp4s-encoded-with-external-encoders"></a>Adaptív sávszélességű MP4-ek ellenőrzése külső kódolókkal kódolva
-Ha olyan adaptív sávszélességű (többsávszélességű) MP4-fájlokat szeretne használni, amelyek nincsenek kódolva a Media Services kódolóival, a további feldolgozás előtt ellenőrizze a fájlokat. A Media Services Packager ellenőrizhet egy eszközt, amely MP4-fájlokkészletét tartalmazza, és ellenőrizheti, hogy az eszköz csomagolható-e smooth streaming vagy HLS-be. Ha az érvényesítési feladat sikertelen, a feladatot feldolgozó feladat hibával fejeződik be. Az érvényesítési feladat készletét meghatározó XML az [Azure Media Packager feladatkészletében](https://msdn.microsoft.com/library/azure/hh973635.aspx) található.
+A Media Services támogatja a dinamikus és a statikus csomagolást. Statikus csomagolás használatakor létre kell hoznia a tartalom másolatát az ügyfelek által igényelt minden egyes formátumban. A dinamikus csomagolás esetében mindössze annyit kell tennie, hogy olyan eszközt kell létrehoznia, amely adaptív sávszélességű MP4-vagy Smooth Streaming-fájlokat tartalmaz. Ezután a manifest vagy a fragment kérelem megadott formátuma alapján az igény szerinti folyamatos átviteli kiszolgáló biztosítja, hogy a felhasználók megkapják az adatfolyamot a választott protokollon. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
 
 > [!NOTE]
-> A Media Encoder Standard segítségével készítsen, vagy a Media Services Packager segítségével ellenőrizze a tartalmat a futásidejű problémák elkerülése érdekében. Ha az igény szerinti streamelési kiszolgáló futásidőben nem tudja elemezni a forrásfájlokat, a HTTP 1.1 "415 nem támogatott adathordozó-típus" hibaüzenete jelenik meg. Ha a kiszolgáló ismételten nem elemzi a forrásfájlokat, az hatással van az igény szerinti streamelési kiszolgáló teljesítményére, és csökkentheti a más kérések kiszolgálására rendelkezésre álló sávszélességet. Az Azure Media Services szolgáltatásiszint-szerződést (SLA) kínál az igény szerinti streamelési szolgáltatásaihoz; ez az SLA azonban nem tartható tiszteletben, ha a kiszolgálóval a fent leírt módon élnek vissza.
+> A [dinamikus csomagolás](media-services-dynamic-packaging-overview.md)használata javasolt.
 > 
 > 
 
-Ez a szakasz bemutatja, hogyan kell feldolgozni az érvényesítési feladatot. Azt is bemutatja, hogyan láthatja a JobStatus.Error-mal teljessé tett feladat állapotát és hibaüzenetét.
+Vannak azonban olyan forgatókönyvek, amelyek statikus csomagolást igényelnek: 
 
-Az MP4-fájlok Media Services Packager szolgáltatással való érvényesítéséhez létre kell hoznia saját jegyzékfájl-fájlt (.ism), és fel kell töltenie azt a forrásfájlokkal együtt a Media Services-fiókba. Az alábbiakban a Media Encoder Standard által készített .ism fájl mintája látható. A fájlnevekben a kis- és nagybetűket nem lehet figyelembe tenni. Győződjön meg arról is, hogy az .ism fájl szövege UTF-8 kódolású.
+* A külső kódolók (például külső gyártótól származó kódolók) használatával kódolt adaptív sávszélesség-MP4 ellenőrzése.
+
+A statikus csomagolás a következő feladatok elvégzésére is használható: azonban ajánlott a dinamikus titkosítás használata.
+
+* Statikus titkosítás használata a zökkenőmentes és az MPEG-kötőjel PlayReady való védelemmel való ellátásához
+* Statikus titkosítás használata a HLSv3 és AES-128 elleni védelemhez
+* Statikus titkosítás használata a HLSv3 és a PlayReady elleni védelemhez
+
+## <a name="validating-adaptive-bitrate-mp4s-encoded-with-external-encoders"></a>A külső kódolókkal kódolt adaptív sávszélesség-MP4 ellenőrzése
+Ha olyan adaptív sávszélességű (többszörös sávszélességű) MP4-fájlokat szeretne használni, amelyek nem Media Services kódolókkal lettek kódolva, a további feldolgozás előtt érvényesítse a fájlokat. A Media Services-csomagoló olyan adategységet tud érvényesíteni, amely MP4-fájlokat tartalmaz, és ellenőrzi, hogy az eszköz becsomagolható-e Smooth Streaming vagy HLS. Ha az érvényesítési feladat meghiúsul, a feladatot feldolgozó feladat egy hibával fejeződött be. Az érvényesítési feladat számára beállított XML-kód az [Azure Media-csomagoló feladatának előfeltételei](https://msdn.microsoft.com/library/azure/hh973635.aspx) című cikkben található.
+
+> [!NOTE]
+> A futtatási problémák elkerülése érdekében használja a Media Encoder Standard a tartalom ellenőrzéséhez, illetve a Media Services-csomagoló létrehozásához. Ha az igény szerinti folyamatos átviteli kiszolgáló nem tudja értelmezni a forrásfájlokat futásidőben, akkor a HTTP 1,1 "415 nem támogatott adathordozó-típus" hibaüzenet jelenik meg. Ha a kiszolgáló többször nem tudja elemezni a forrásfájlokat, hatással van az igény szerinti adatfolyam-kiszolgáló teljesítményére, és csökkentheti a más kérések kiszolgálására rendelkezésre álló sávszélességet. Azure Media Services szolgáltatói szerződés (SLA) szolgáltatást nyújt igény szerinti streaming szolgáltatásaira vonatkozóan; Ez az SLA azonban nem számítható ki, ha a kiszolgáló nem használható a fent leírt módon.
+> 
+> 
+
+Ez a szakasz az érvényesítési feladat feldolgozását mutatja be. Azt is bemutatja, hogyan tekintheti meg az állapotot és a JobStatus. Error művelettel Befejezett feladatok hibaüzenetét.
+
+Az MP4-fájlok Media Services Csomagolóval való ellenőrzéséhez létre kell hoznia egy saját jegyzékfájl-fájlt (. ISM), és fel kell töltenie a forrásfájlokat a Media Services fiókba. Alább látható a Media Encoder Standard által készített. ISM-fájl mintája. A fájlnevek megkülönböztetik a kis-és nagybetűket. Győződjön meg arról is, hogy az. ISM fájlban lévő szöveg UTF-8 kódolással van kódolva.
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -81,9 +81,9 @@ Az MP4-fájlok Media Services Packager szolgáltatással való érvényesítés�
     </smil>
 ```
 
-Miután beállította az adaptív mp4-es átviteli sebességet, kihasználhatja a dinamikus csomagolás előnyeit. A dinamikus csomagolás lehetővé teszi, hogy a megadott protokollban további csomagolás nélkül szállítson streameket. További információt a [dinamikus csomagolás ban](media-services-dynamic-packaging-overview.md)talál.
+Ha már rendelkezik az adaptív sávszélességű MP4-készlettel, kihasználhatja a dinamikus csomagolás előnyeit. A dinamikus csomagolás lehetővé teszi, hogy további csomagolás nélkül továbbítson adatfolyamokat a megadott protokollon. További információ: [dinamikus csomagolás](media-services-dynamic-packaging-overview.md).
 
-A következő kódminta az Azure Media Services .NET SDK Extensions.The following code sample uses Azure Media Services .NET SDK Extensions.  Ügyeljen arra, hogy a kód frissítése arra a mappára mutasson, amelyben a bemeneti MP4-fájlok és az .ism fájl található. És azt is, ahol a MediaPackager_ValidateTask.xml fájl található. Ez az XML-fájl az [Azure Media Packager feladatkészletében](https://msdn.microsoft.com/library/azure/hh973635.aspx) van definiálva.
+Az alábbi mintakód Azure Media Services .NET SDK-bővítményeket használ.  Ügyeljen arra, hogy frissítse a kódot úgy, hogy arra a mappára mutasson, ahol a bemeneti MP4-fájlok és az. ISM fájl található. Valamint azt is, hogy hol található a MediaPackager_ValidateTask. xml fájl. Ez az XML-fájl az [Azure Media-csomagoló-cikk feladatának előre definiált beállításában](https://msdn.microsoft.com/library/azure/hh973635.aspx) van meghatározva.
 
 ```csharp
     using Microsoft.WindowsAzure.MediaServices.Client;
@@ -258,23 +258,23 @@ A következő kódminta az Azure Media Services .NET SDK Extensions.The followin
     }
 ```
 
-## <a name="using-static-encryption-to-protect-your-smooth-and-mpeg-dash-with-playready"></a>Statikus titkosítás használata a sima és mpeg dash védelmére a PlayReady segítségével
-Ha a PlayReady segítségével szeretné védeni a tartalmat, választhat a [dinamikus titkosítás](media-services-protect-with-playready-widevine.md) (ajánlott beállítás) vagy statikus titkosítás (az ebben a szakaszban leírtak szerint).
+## <a name="using-static-encryption-to-protect-your-smooth-and-mpeg-dash-with-playready"></a>Statikus titkosítás használata a zökkenőmentes és az MPEG-kötőjel PlayReady való védelemmel való ellátásához
+Ha a tartalmat a PlayReady-mel szeretné védelemmel ellátni, a [dinamikus titkosítás](media-services-protect-with-playready-widevine.md) (az ajánlott beállítás) vagy a statikus titkosítás (az ebben a részben leírtak szerint) közül választhat.
 
-A jelen szakaszban szereplő példa egy mezzanine fájlt (ebben az esetben MP4) adaptív MP4-fájlokba kódol. Ezután az MP4-eket smooth streaming-be csomagolja, majd titkosítja a Smooth Streaming-et a PlayReady segítségével. Ennek eredményeképpen simán streamelhető vagy MPEG DASH.
+Az ebben a szakaszban szereplő példa egy köztes fájlt (ebben az esetben az MP4-t) az adaptív sávszélességű MP4-fájlokká kódolja. Ezután csomagokat MP4 be Smooth Streaming, majd titkosítja Smooth Streaming a PlayReady. Ennek eredményeképpen Smooth Streaming vagy MPEG DASH streamet tud továbbítani.
 
-A Media Services mostantól a Microsoft PlayReady licencek kézbesítésének szolgáltatását biztosítja. Ebben a cikkben látható példa bemutatja, hogyan konfigurálható a Media Services PlayReady licenckézbesítési szolgáltatás (lásd az alábbi kódban meghatározott ConfigureLicenseDeliveryService metódust). A Media Services PlayReady licenckézbesítési szolgáltatásáról a [PlayReady dinamikus titkosítás és licenckézbesítési szolgáltatás használata című témakörben](media-services-protect-with-playready-widevine.md)talál további információt.
+Media Services mostantól biztosít egy szolgáltatást a Microsoft PlayReady-licencek kézbesítéséhez. A cikkben szereplő példa azt mutatja be, hogyan konfigurálható a Media Services PlayReady-licenc kézbesítési szolgáltatása (lásd az alábbi kódban definiált ConfigureLicenseDeliveryService metódust). További információ a Media Services PlayReady licencelési szolgáltatásáról: [a PlayReady dinamikus titkosításának és a licenc-kézbesítési szolgáltatásnak a használata](media-services-protect-with-playready-widevine.md).
 
 > [!NOTE]
-> Az MPEG DASH PlayReady-vel titkosított kézbesítéséhez győződjön meg arról, hogy cenc-beállításokat használ a useSencBox beállításával, és állítsa beaSubSamples tulajdonságokat (az [Azure Media Encryptor feladatkészletében](https://msdn.microsoft.com/library/azure/hh973610.aspx) ismertetett) true értékre.  
+> Ha a PlayReady-mel titkosított MPEG DASH-t szeretne biztosítani, akkor ügyeljen arra, hogy a useSencBox és a adjustSubSamples tulajdonságok (az [Azure Media encrypting](https://msdn.microsoft.com/library/azure/hh973610.aspx) című cikkben ismertetett) igaz értéket adja meg az CENC-beállítások használatával.  
 > 
 > 
 
-Győződjön meg arról, hogy a következő kódot úgy frissíti, hogy az arra a mappára mutasson, amelyben a bemeneti MP4-fájl található.
+Győződjön meg arról, hogy a következő kódot frissíti, hogy arra a mappára mutasson, ahol a bemeneti MP4-fájl található.
 
-És azt is, hogy hol található a MediaPackager_MP4ToSmooth.xml és MediaEncryptor_PlayReadyProtection.xml fájlokat. MediaPackager_MP4ToSmooth.xml van definiálva [feladatkészlet az Azure Media Packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) és MediaEncryptor_PlayReadyProtection.xml van definiálva az [Azure Media Encryptor cikk feladatkészlet.](https://msdn.microsoft.com/library/azure/hh973610.aspx) 
+Valamint azt is, hogy hol találhatók a MediaPackager_MP4ToSmooth. XML és a MediaEncryptor_PlayReadyProtection. XML fájlok. A MediaPackager_MP4ToSmooth. xml az [Azure Media csomagoló szolgáltatáshoz beállított feladatban](https://msdn.microsoft.com/library/azure/hh973635.aspx) van definiálva, és a MediaEncryptor_PlayReadyProtection. xml fájl az [Azure Media encrypting szolgáltatáshoz beállított Feladatsorban](https://msdn.microsoft.com/library/azure/hh973610.aspx) van definiálva. 
 
-A példa az UpdatePlayReadyConfigurationXMLFile metódust határozza meg, amely a MediaEncryptor_PlayReadyProtection.xml fájl dinamikus frissítéséhez használható. Ha rendelkezik a kulcsmaggal, használhatja a CommonEncryption.GeneratePlayReadyContentKey metódust a tartalomkulcs létrehozásához a keySeedValue és keyId értékek alapján.
+A példa azt a UpdatePlayReadyConfigurationXMLFile metódust határozza meg, amelyet a MediaEncryptor_PlayReadyProtection. xml fájl dinamikus frissítéséhez használhat. Ha rendelkezésre áll a kulcshoz tartozó mag, a CommonEncryption. GeneratePlayReadyContentKey metódus használatával hozhatja elő a tartalom kulcsát a keySeedValue és a KeyId értékek alapján.
 
 ```csharp
     using System;
@@ -711,17 +711,17 @@ A példa az UpdatePlayReadyConfigurationXMLFile metódust határozza meg, amely 
     }
 ```
 
-## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>Statikus titkosítás használata a HLSv3 védelmére Az AES-128 segítségével
-Ha a HLS-t AES-128-as sal szeretné titkosítani, választhat a dinamikus titkosítás (ajánlott beállítás) vagy statikus titkosítás (ahogy az ebben a szakaszban látható). Ha úgy dönt, hogy dinamikus titkosítást használ, olvassa el [az AES-128 dinamikus titkosítás és kulcskézbesítési szolgáltatás használata .](media-services-protect-with-aes128.md)
+## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>Statikus titkosítás használata a HLSv3 és AES-128 elleni védelemhez
+Ha AES-128-mel szeretné titkosítani a HLS, választhat, hogy dinamikus titkosítást használ (az ajánlott beállítás) vagy a statikus titkosítást (az ebben a szakaszban látható módon). Ha úgy dönt, hogy dinamikus titkosítást használ, tekintse meg az [AES-128 dinamikus titkosítás és a Key Delivery Service](media-services-protect-with-aes128.md)használatát ismertető témakört.
 
 > [!NOTE]
-> Annak érdekében, hogy a tartalmat HLS-re konvertálja, először konvertálni / kódolnia kell a tartalmat smooth streaming-re.
-> Ahhoz is, hogy a HLS titkosítva legyen az AES-szel, győződjön meg arról, hogy a következő tulajdonságokat állítja be a MediaPackager_SmoothToHLS.xml fájlban: állítsa a titkosítási tulajdonságot true értékre, állítsa be a kulcs értéket, és a keyuri értéket a hitelesítési\engedélyezési kiszolgálóra.
-> A Media Services létrehoz egy kulcsfájlt, és elhelyezi azt az eszköztárolóban. Másolja a /asset-containerguid/*.key fájlt a kiszolgálóra (vagy hozzon létre saját kulcsfájlt), majd törölje a *.key fájlt az eszköztárolóból.
+> A tartalom HLS alakításához először konvertálnia/kódolni kell a tartalmat Smooth Streamingba.
+> Emellett ahhoz, hogy a HLS titkosítani lehessen az AES-sel, győződjön meg róla, hogy a következő tulajdonságokat állítja be a MediaPackager_SmoothToHLS. xml fájlban: állítsa a titkosítás tulajdonságot True értékre, állítsa be a kulcs értékét, és a keyuri értéket, hogy az authentication\authorization-kiszolgálóra mutasson.
+> Media Services létrehoz egy kulcsot, és elhelyezi az eszköz tárolójában. Másolja a/Asset-containerguid/*. Key fájlt a kiszolgálóra (vagy hozzon létre egy saját kulcsot), majd törölje a *. Key fájlt az objektum tárolóból.
 > 
 > 
 
-A példa ebben a szakaszban kódolja a mezzanine fájlt (ebben az esetben MP4) a multibitrate MP4 fájlokat, majd csomagok MP4s a Smooth Streaming. Ezután csomagok smooth streaming http live streaming (HLS) titkosított Advanced Encryption Standard (AES) 128 bites stream titkosítást. Győződjön meg arról, hogy a következő kódot úgy frissíti, hogy az arra a mappára mutasson, amelyben a bemeneti MP4-fájl található. És azt is, hogy hol található a MediaPackager_MP4ToSmooth.xml és MediaPackager_SmoothToHLS.xml konfigurációs fájlokat. Ezek a fájlok definícióját az [Azure Media Packager feladatkészletében](https://msdn.microsoft.com/library/azure/hh973635.aspx) találja.
+Az ebben a szakaszban szereplő példa egy köztes fájlt kódol (ebben az esetben MP4) a több sávszélességű MP4-fájlokba, majd a csomagokat MP4 a Smooth Streamingba. Ezután a HTTP Live Streaming (HLS) Advanced Encryption Standard (AES) 128 bites adatfolyam-titkosítással titkosított csomagokat Smooth Streaming. Győződjön meg arról, hogy a következő kódot frissíti, hogy arra a mappára mutasson, ahol a bemeneti MP4-fájl található. Valamint azt is, hogy hol találhatók a MediaPackager_MP4ToSmooth. XML és a MediaPackager_SmoothToHLS. xml konfigurációs fájlok. Ezeknek a fájloknak a definícióját az [Azure Media-csomagoló feladatának előfeltételei](https://msdn.microsoft.com/library/azure/hh973635.aspx) című cikkben találja.
 
 ```csharp
     using System;
@@ -997,19 +997,19 @@ A példa ebben a szakaszban kódolja a mezzanine fájlt (ebben az esetben MP4) a
     }
 ```
 
-## <a name="using-static-encryption-to-protect-hlsv3-with-playready"></a>Statikus titkosítás használata a HLSv3 védelmére a PlayReady segítségével
-Ha a PlayReady segítségével szeretné védeni a tartalmat, választhat a [dinamikus titkosítás](media-services-protect-with-playready-widevine.md) (ajánlott beállítás) vagy statikus titkosítás (az ebben a szakaszban leírtak szerint).
+## <a name="using-static-encryption-to-protect-hlsv3-with-playready"></a>Statikus titkosítás használata a HLSv3 és a PlayReady elleni védelemhez
+Ha a tartalmat a PlayReady-mel szeretné védelemmel ellátni, a [dinamikus titkosítás](media-services-protect-with-playready-widevine.md) (az ajánlott beállítás) vagy a statikus titkosítás (az ebben a részben leírtak szerint) közül választhat.
 
 > [!NOTE]
-> Annak érdekében, hogy megvédje a tartalmat playready először konvertálni / kódolni a tartalmat egy Sima Streaming formátumban.
+> A tartalom PlayReady-mel való ellátásához először Smooth Streaming formátumban kell konvertálnia/kódolni a tartalmat.
 > 
 > 
 
-A példa ebben a szakaszban kódolja a mezzanine fájl (ebben az esetben MP4) a multibitrate MP4 fájlokat. Ezután az MP4-eket smooth streaming-be csomagolja, és titkosítja a Smooth Streaming-et a PlayReady segítségével. A PlayReady-vel titkosított HTTP Live Streaming (HLS) létrehozásához a PlayReady Smooth Streaming eszközt hls-be kell csomagolni. Ez a cikk bemutatja, hogyan hajthatja végre ezeket a lépéseket.
+Az ebben a szakaszban szereplő példa egy köztes fájlt kódol (ebben az esetben MP4) a több sávszélességű MP4-fájlokba. Ezután csomagokat MP4 a Smooth Streamingba, és titkosítja a Smooth Streamingt a PlayReady. A PlayReady-mel titkosított HTTP Live Streaming (HLS) létrehozásához a PlayReady Smooth Streaming objektumot a HLS-be kell csomagolni. Ez a cikk bemutatja, hogyan hajthatja végre ezeket a lépéseket.
 
-A Media Services mostantól a Microsoft PlayReady licencek kézbesítésének szolgáltatását biztosítja. Ebben a cikkben látható példa bemutatja, hogyan konfigurálható a Media Services PlayReady licenckézbesítési szolgáltatás (lásd az alábbi kódban meghatározott **ConfigureLicenseDeliveryService** metódust). 
+Media Services mostantól biztosít egy szolgáltatást a Microsoft PlayReady-licencek kézbesítéséhez. A cikkben szereplő példa azt mutatja be, hogyan konfigurálható a Media Services PlayReady-licenc kézbesítési szolgáltatása (lásd az alábbi kódban definiált **ConfigureLicenseDeliveryService** metódust). 
 
-Győződjön meg arról, hogy a következő kódot úgy frissíti, hogy az arra a mappára mutasson, amelyben a bemeneti MP4-fájl található. És azt is, hogy hol található a MediaPackager_MP4ToSmooth.xml, MediaPackager_SmoothToHLS.xml és MediaEncryptor_PlayReadyProtection.xml fájlokat. MediaPackager_MP4ToSmooth.xml és MediaPackager_SmoothToHLS.xml az [Azure Media Packager feladatkészletében](https://msdn.microsoft.com/library/azure/hh973635.aspx) vannak definiálva, a MediaEncryptor_PlayReadyProtection.xml pedig az [Azure Media Encryptor feladatkészletében.](https://msdn.microsoft.com/library/azure/hh973610.aspx)
+Győződjön meg arról, hogy a következő kódot frissíti, hogy arra a mappára mutasson, ahol a bemeneti MP4-fájl található. Továbbá a MediaPackager_MP4ToSmooth. XML, MediaPackager_SmoothToHLS. XML és a MediaEncryptor_PlayReadyProtection. XML fájlok helye. A MediaPackager_MP4ToSmooth. XML és a MediaPackager_SmoothToHLS. xml fájl definiálva van az [Azure Media csomagoló feladatának](https://msdn.microsoft.com/library/azure/hh973635.aspx) előtagjaként, és a MediaEncryptor_PlayReadyProtection. xml az [Azure Media encrypting szolgáltatáshoz beállított Feladatsorban](https://msdn.microsoft.com/library/azure/hh973610.aspx) van definiálva.
 
 ```csharp
     using System;
@@ -1481,7 +1481,7 @@ Győződjön meg arról, hogy a következő kódot úgy frissíti, hogy az arra 
 
 ## <a name="additional-notes"></a>További megjegyzések
 
-* A Widevine a Google Inc. által nyújtott szolgáltatás, amely a Google, Inc. szolgáltatási feltételei és adatvédelmi irányelvei szerint működik.
+* A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

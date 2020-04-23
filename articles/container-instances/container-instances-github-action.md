@@ -1,6 +1,6 @@
 ---
-title: Tárolópéldány üzembe helyezése a GitHub-művelettel
-description: Konfiguráljon egy GitHub-műveletet, amely automatizálja a tárolórendszerkép létrehozásának, leküldéseésének és üzembe helyezésének lépéseit az Azure Container Instances-ba
+title: Tároló-példány üzembe helyezése a GitHub-művelettel
+description: Hozzon létre egy GitHub-műveletet, amely automatizálja a szükséges lépéseket a tároló lemezképének kiépítéséhez, leküldéséhez és üzembe helyezéséhez Azure Container Instances
 ms.topic: article
 ms.date: 03/18/2020
 ms.custom: ''
@@ -11,49 +11,49 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80258039"
 ---
-# <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub-művelet konfigurálása tárolópéldány létrehozásához
+# <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub-művelet beállítása tároló-példány létrehozásához
 
-[A GitHub-műveletek](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) a GitHub egy szolgáltatáscsomagja, amely ekkel automatizálhatja a szoftverfejlesztési munkafolyamatokat ugyanazon a helyen, ahol a kódot tárolja, és együttműködik a lekéréses kérelmeken és problémákon.
+A [GitHub-műveletek](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) a GitHub szolgáltatásainak egyik csomagja, amellyel automatizálható a szoftverfejlesztői munkafolyamatok ugyanazon a helyen, mint a kód tárolása és a lekéréses kérelmek és problémák közös használata.
 
-Az [Azure Container Instances](https://github.com/azure/aci-deploy) githubra való üzembe helyezés művelet használatával automatizálhatja egy tároló üzembe helyezését az Azure Container Instances számára. A művelet lehetővé teszi, hogy az az [container create][az-container-create] parancshoz hasonló tulajdonságokat állítson be egy tárolópéldányhoz.
+Az [üzembe helyezés Azure Container instances](https://github.com/azure/aci-deploy) GitHub művelettel automatizálhatja a tárolók üzembe helyezését Azure Container instances. A művelettel az az [Container Create][az-container-create] parancshoz hasonló tároló-példány tulajdonságait állíthatja be.
 
 Ez a cikk bemutatja, hogyan állíthat be egy munkafolyamatot egy GitHub-tárházban, amely a következő műveleteket hajtja végre:
 
-* Kép létrehozása Docker-fájlból
-* A lemezkép leküldése egy Azure-tároló beállításjegyzékébe
-* A tárolórendszerkép üzembe helyezése egy Azure-tárolópéldányra
+* Rendszerkép létrehozása Docker
+* A rendszerkép leküldése egy Azure Container registrybe
+* A tároló lemezképének üzembe helyezése Azure Container-példányon
 
 Ez a cikk a munkafolyamat beállításának két módját mutatja be:
 
-* Konfiguráljon egy munkafolyamatot saját maga egy GitHub-tárházban az Azure Container Instances üzembe helyezéséhez művelet és egyéb műveletek használatával.  
-* Használja `az container app up` a parancsot az [Azure CLI Üzembe helyezése az Azure-hoz](https://github.com/Azure/deploy-to-azure-cli-extension) bővítményben. Ez a parancs leegyszerűsíti a GitHub-munkafolyamat és a telepítési lépések létrehozását.
+* Saját munkafolyamatot állíthat be egy GitHub-tárházban az üzembe helyezés Azure Container Instances művelettel és egyéb műveletekkel.  
+* Használja az `az container app up` Azure CLI [üzembe helyezés az Azure](https://github.com/Azure/deploy-to-azure-cli-extension) -ban bővítményének parancsát. Ez a parancs leegyszerűsíti a GitHub-munkafolyamatok és a telepítés lépéseinek létrehozását.
 
 > [!IMPORTANT]
-> Az Azure Container Instances GitHub-művelet jelenleg előzetes verzióban érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> A Azure Container Instances GitHub-művelete jelenleg előzetes verzióban érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **GitHub-fiók** – Hozzon létre egy fiókot, https://github.com ha még nem rendelkezik ilyen.
-* **Azure CLI** – Használhatja az Azure Cloud Shell vagy az Azure CLI helyi telepítését az Azure CLI lépések végrehajtásához. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
-* **Azure container registry** – Ha nem rendelkezik ilyen, hozzon létre egy Azure-tároló beállításjegyzékaz alapszintű az [Azure CLI](../container-registry/container-registry-get-started-azure-cli.md), [Azure Portal](../container-registry/container-registry-get-started-portal.md), vagy más módszerek használatával. Vegye figyelembe a központi telepítéshez használt erőforráscsoportot, amely a GitHub-munkafolyamathoz használatos.
+* **GitHub-fiók** – hozzon létre https://github.com egy fiókot, ha még nem rendelkezik ilyennel.
+* **Azure CLI** – a Azure Cloud Shell vagy az Azure CLI helyi telepítését használhatja az Azure CLI lépéseinek elvégzéséhez. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+* **Azure Container Registry** – ha még nem rendelkezik ilyennel, hozzon létre egy Azure Container registryt az alapszintű szinten az [azure CLI](../container-registry/container-registry-get-started-azure-cli.md), [Azure Portal](../container-registry/container-registry-get-started-portal.md)vagy más módszerek használatával. Jegyezze fel a központi telepítéshez használt erőforráscsoportot, amelyet a GitHub-munkafolyamathoz használ a rendszer.
 
-## <a name="set-up-repo"></a>Tártár beállítása
+## <a name="set-up-repo"></a>Tárház beállítása
 
-* A jelen cikkben szereplő példákért használja a GitHubot a következő tárház elágazásához:https://github.com/Azure-Samples/acr-build-helloworld-node
+* A cikkben szereplő példákhoz használja a GitHubot a következő tárház elágazásához:https://github.com/Azure-Samples/acr-build-helloworld-node
 
-  Ez a tárfájl egy Docker-fájl- és forrásfájlokat tartalmaz egy kis webalkalmazás tárolórendszerképének létrehozásához.
+  Ez a tárház egy Docker és forrásfájlokat tartalmaz egy kis webalkalmazás tároló-rendszerképének létrehozásához.
 
   ![A GitHub Fork (Leágaztatás) gombjának (kiemelve) képernyőképe](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* Győződjön meg arról, hogy a műveletek engedélyezve vannak a tárházhoz. Nyissa meg a villás tárházat, és válassza a **Beállítások** > **műveletek lehetőséget.** A **Műveletek engedélyek ben**győződjön meg arról, hogy a **tárház helyi és harmadik féltől származó műveletek engedélyezése** jelölőnégyzet be van jelölve.
+* Győződjön meg arról, hogy a műveletek engedélyezve vannak a tárházban. Navigáljon az elágazó tárházhoz, és válassza a **Beállítások** > **műveletek**lehetőséget. A **műveletek engedélyei**területen győződjön meg arról, hogy a **helyi és a harmadik féltől származó műveletek engedélyezése ehhez a tárházhoz** beállítás van kiválasztva.
 
-## <a name="configure-github-workflow"></a>A GitHub-munkafolyamat konfigurálása
+## <a name="configure-github-workflow"></a>GitHub-munkafolyamat konfigurálása
 
-### <a name="create-service-principal-for-azure-authentication"></a>Egyszerű szolgáltatás létrehozása az Azure-hitelesítéshez
+### <a name="create-service-principal-for-azure-authentication"></a>Egyszerű szolgáltatásnév létrehozása az Azure-hitelesítéshez
 
-A GitHub-munkafolyamatban meg kell adnia az Azure hitelesítő adatait az Azure CLI hitelesítéséhez. A következő példa létrehoz egy egyszerű szolgáltatás a közreműködői szerepkör hatóköre az erőforráscsoport a tároló beállításjegyzék.
+A GitHub-munkafolyamatban Azure-beli hitelesítő adatokat kell megadnia az Azure CLI-vel való hitelesítéshez. Az alábbi példa létrehoz egy szolgáltatásnevet a közreműködői szerepkörrel a tároló-beállításjegyzékhez tartozó erőforráscsoporthoz.
 
-Először az erőforráscsoport erőforrás-azonosítóját. Helyettesítse a csoport nevét a következő [az csoportshow][az-acr-show] parancsban:
+Először kérje le az erőforráscsoport erőforrás-AZONOSÍTÓját. Helyettesítse be a csoport nevét a következő az [Group show][az-acr-show] paranccsal:
 
 ```azurecli
 groupId=$(az group show \
@@ -61,7 +61,7 @@ groupId=$(az group show \
   --query id --output tsv)
 ```
 
-Az [ad sp create-for-rbac][az-ad-sp-create-for-rbac] használatával hozza létre a szolgáltatásnév:
+Használja az az [ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] az egyszerű szolgáltatás létrehozásához:
 
 ```azurecli
 az ad sp create-for-rbac \
@@ -87,13 +87,13 @@ A kimenet a következőhöz hasonló:
 }
 ```
 
-Mentse a JSON kimenetet, mert egy későbbi lépésben használja. Vegye figyelembe `clientId`a , amely a következő szakaszban frissítenie kell a szolgáltatásnév.
+Mentse a JSON-kimenetet, mert egy későbbi lépésben használatos. Jegyezze fel a `clientId`-t is, amelyre frissítenie kell a szolgáltatásnevet a következő szakaszban.
 
-### <a name="update-service-principal-for-registry-authentication"></a>Egyszerű szolgáltatásfrissítése a beállításjegyzék-hitelesítéshez
+### <a name="update-service-principal-for-registry-authentication"></a>Szolgáltatásnév frissítése a beállításjegyzék-hitelesítéshez
 
-Frissítse az Azure egyszerű szolgáltatás hitelesítő adatait, hogy leküldéses és lekéréses engedélyeket a tároló beállításjegyzékben. Ez a lépés lehetővé teszi, hogy a GitHub-munkafolyamat a szolgáltatásnév használatával [hitelesítse magát a tároló beállításjegyzékével.](../container-registry/container-registry-auth-service-principal.md) 
+Frissítse az Azure-szolgáltatás egyszerű hitelesítő adatait, hogy leküldéses és lekéréses engedélyeket engedélyezzen a tároló beállításjegyzékében. Ez a lépés lehetővé teszi, hogy a GitHub-munkafolyamat az egyszerű szolgáltatásnév használatával [hitelesítse a tároló-beállításjegyzéket](../container-registry/container-registry-auth-service-principal.md). 
 
-A tároló beállításjegyzékének erőforrás-azonosítójának beszereznie. Helyettesítse a rendszerleíró adatbázis nevét a következő [az acr show][az-acr-show] parancsban:
+Szerezze be a tároló-beállításjegyzék erőforrás-AZONOSÍTÓját. Helyettesítse be a beállításjegyzék nevét a következő az [ACR show][az-acr-show] paranccsal:
 
 ```azurecli
 registryId=$(az acr show \
@@ -101,7 +101,7 @@ registryId=$(az acr show \
   --query id --output tsv)
 ```
 
-Az [szerepkör-hozzárendelés létrehozása][az-role-assignment-create] az AcrPush szerepkör hozzárendeléséhez használja az AcrPush szerepkört, amely leküldéses és lekéréses hozzáférést biztosít a beállításjegyzékhez. A szolgáltatásnév ügyfélazonosítójának helyettesítése:
+Az az [role hozzárendelés Create][az-role-assignment-create] paranccsal rendelje hozzá a AcrPush szerepkört, amely leküldéses és lekéréses hozzáférést biztosít a beállításjegyzékhez. Az egyszerű szolgáltatásnév ügyfél-AZONOSÍTÓjának behelyettesítése:
 
 ```azurecli
 az role assignment create \
@@ -110,26 +110,26 @@ az role assignment create \
   --role AcrPush
 ```
 
-### <a name="save-credentials-to-github-repo"></a>Hitelesítő adatok mentése a GitHub-tárfélre
+### <a name="save-credentials-to-github-repo"></a>Hitelesítő adatok mentése a GitHub-tárházba
 
-1. A GitHub felhasználói felületén keresse meg a villás tárházat, és válassza a **Beállítások** > **titkos kulcsok**lehetőséget. 
+1. A GitHub felhasználói felületén navigáljon az elágazó tárházhoz, és válassza a **Beállítások** > **titkok**lehetőséget. 
 
-1. Válassza **az Új titok hozzáadása** lehetőséget a következő titkos kulcsok hozzáadásához:
+1. A következő titkok hozzáadásához válassza az **új titok hozzáadása** lehetőséget:
 
 |Titkos  |Érték  |
 |---------|---------|
-|`AZURE_CREDENTIALS`     | A szolgáltatásegyszerű létrehozása teljes JSON-kimenet |
-|`REGISTRY_LOGIN_SERVER`   | A rendszerleíró adatbázis bejelentkezési kiszolgálójának neve (az összes kisbetű). Példa: *myregistry.azure.cr.io*        |
-|`REGISTRY_USERNAME`     |  A `clientId` szolgáltatásegyszerű létrehozása JSON-kimenetből származik       |
-|`REGISTRY_PASSWORD`     |  A `clientSecret` szolgáltatásegyszerű létrehozása JSON-kimenetből származik |
-| `RESOURCE_GROUP` | Az egyszerű szolgáltatás hatóköréhez használt erőforráscsoport neve |
+|`AZURE_CREDENTIALS`     | Az egyszerű szolgáltatás létrehozásakor a teljes JSON-kimenet |
+|`REGISTRY_LOGIN_SERVER`   | A beállításjegyzék bejelentkezési kiszolgálójának neve (az összes kisbetűs). Példa: *myregistry.Azure.CR.IO*        |
+|`REGISTRY_USERNAME`     |  Az `clientId` egyszerű szolgáltatás létrehozásakor a JSON-kimenetből       |
+|`REGISTRY_PASSWORD`     |  Az `clientSecret` egyszerű szolgáltatás létrehozásakor a JSON-kimenetből |
+| `RESOURCE_GROUP` | Az egyszerű szolgáltatásnév hatóköréhez használt erőforráscsoport neve |
 
 ### <a name="create-workflow-file"></a>Munkafolyamat-fájl létrehozása
 
-1. A GitHub felhasználói felületén válassza **a Műveletek** > **új munkafolyamatát.**
-1. Válassza **a Munkafolyamat saját beállítása**lehetőséget.
-1. Az **Új fájl szerkesztése**mezőben illessze be a következő YAML-tartalmat a mintakód felülírásához. Fogadja el az `main.yml`alapértelmezett fájlnevet , vagy adja meg a választott fájlnevet.
-1. Válassza **a Véglegesítés indítása**lehetőséget, és adja meg a véglegesítés rövid és bővített leírását, majd válassza **az Új fájl véglegesítése**lehetőséget.
+1. A GitHub felhasználói felületén válassza a **műveletek** > **Új munkafolyamat**elemet.
+1. Válassza **a munkafolyamat beállítása saját maga**lehetőséget.
+1. Az **új fájl szerkesztése**területen illessze be a következő YAML-tartalmat a mintakód felülírásához. Fogadja el az `main.yml`alapértelmezett fájlnevet, vagy adja meg a választott fájlnevet.
+1. Válassza a **véglegesítés indítása**lehetőséget, opcionálisan adja meg a véglegesítés rövid és részletes leírását, majd válassza az **új fájl véglegesítés**elemet.
 
 ```yml
 on: [push]
@@ -173,13 +173,13 @@ jobs:
 
 ### <a name="validate-workflow"></a>Munkafolyamat ellenőrzése
 
-A munkafolyamat-fájl véglegesítése után a munkafolyamat aktiválódik. A munkafolyamat előrehaladásának áttekintéséhez keresse meg a **Műveletek** > **munkafolyamatait.** 
+A munkafolyamat-fájl véglegesíte után a rendszer elindítja a munkafolyamatot. A munkafolyamat előrehaladásának áttekintéséhez navigáljon a **műveletek** > **munkafolyamatok**elemre. 
 
-![Munkafolyamat-állapot megtekintése](./media/container-instances-github-action/github-action-progress.png)
+![Munkafolyamat-folyamatjelző megtekintése](./media/container-instances-github-action/github-action-progress.png)
 
-A munkafolyamat egyes lépéseinek állapotáról és eredményeiről a [Munkafolyamat futtatásának kezelése](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) című témakörben talál tájékoztatást.
+A munkafolyamat egyes lépései állapotának és eredményének megtekintésével kapcsolatos információkért tekintse meg a [munkafolyamat futtatásának kezelése](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) című témakört.
 
-Amikor a munkafolyamat befejeződik, az [az container show][az-container-show] parancs futtatásával információkat kaphat az *aci-sampleapp* nevű tárolópéldányról. Az erőforráscsoport nevének helyettesítése: 
+Amikor a munkafolyamat befejeződik, az az [Container show][az-container-show] paranccsal lekérheti az *ACI-PéldaAlkalmazás* nevű tároló példány adatait. Helyettesítse be az erőforráscsoport nevét: 
 
 ```azurecli
 az container show \
@@ -197,35 +197,35 @@ FQDN                                   ProvisioningState
 aci-action01.westus.azurecontainer.io  Succeeded
 ```
 
-A példány kiépítése után keresse meg a tároló teljes tartománynevét a böngészőben a futó webalkalmazás megtekintéséhez.
+A példány üzembe helyezése után navigáljon a tároló teljes tartománynevéhez a böngészőben, és tekintse meg a futó webalkalmazást.
 
 ![Webalkalmazás futtatása böngészőben](./media/container-instances-github-action/github-action-container.png)
 
-## <a name="use-deploy-to-azure-extension"></a>A Deploy to Azure bővítmény használata
+## <a name="use-deploy-to-azure-extension"></a>Üzembe helyezés az Azure-bővítmény használatával
 
-Másik lehetőségként használja a [Deploy to Azure bővítményt](https://github.com/Azure/deploy-to-azure-cli-extension) az Azure CLI-ben a munkafolyamat konfigurálásához. A `az container app up` bővítményben lévő parancs bemeneti paramétereket vesz igénybe az Azure Container Instances-re való üzembe helyezéshez. 
+Azt is megteheti, hogy az Azure CLI-ben az [üzembe helyezés az Azure](https://github.com/Azure/deploy-to-azure-cli-extension) -ban bővítmény használatával konfigurálja a munkafolyamatot. A `az container app up` bővítményben lévő parancs bemeneti paramétereket hoz létre a Azure Container instances üzembe helyezéséhez szükséges munkafolyamatok beállításához. 
 
-Az Azure CLI által létrehozott munkafolyamat hasonló ahhoz a munkafolyamathoz, [amelyet manuálisan hozhat létre a GitHub használatával.](#configure-github-workflow)
+Az Azure CLI-vel létrehozott munkafolyamat hasonló ahhoz a munkafolyamathoz, amelyet [manuálisan létrehozhat a GitHub használatával](#configure-github-workflow).
 
-### <a name="additional-prerequisite"></a>További előfeltétel
+### <a name="additional-prerequisite"></a>További előfeltételek
 
-A forgatókönyv [előfeltételein](#prerequisites) és [tártárbeállításán](#set-up-repo) kívül telepítenie kell az Azure CLI **Üzembe helyezése az Azure-ba bővítményt.**
+A forgatókönyv [előfeltételeinek](#prerequisites) és tárházának [beállítása](#set-up-repo) mellett telepítenie kell az Azure CLI **üzembe helyezés az Azure-ba bővítményét** is.
 
-Futtassa az [az extension add][az-extension-add] parancsot a bővítmény telepítéséhez:
+A bővítmény telepítéséhez futtassa az az [Extension Add][az-extension-add] parancsot:
 
 ```azurecli
 az extension add \
   --name deploy-to-azure
 ```
 
-A bővítmények kereséséről, telepítéséről és kezeléséről a [Bővítmények használata az Azure CLI-vel című](/cli/azure/azure-cli-extensions-overview)témakörben talál.
+További információ a bővítmények kereséséről, telepítéséről és kezeléséről: [bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
 
 ### <a name="run-az-container-app-up"></a>Futtassa a `az container app up` parancsot.
 
-Az [az container app up][az-container-app-up] parancs futtatásához legalább a következőket kell megadnia:
+Az az [Container app up][az-container-app-up] parancs futtatásához legalább a következőket kell megadnia:
 
-* Az Azure-tároló beállításjegyzékének neve, például *myregistry*
-* A GitHub-tár-tárlat URL-címe, például:`https://github.com/<your-GitHub-Id>/acr-build-helloworld-node`
+* Az Azure Container Registry neve, például *myregistry*
+* A GitHub-tárház URL-címe, például:`https://github.com/<your-GitHub-Id>/acr-build-helloworld-node`
 
 Minta parancs:
 
@@ -235,16 +235,16 @@ az container app up \
   --repository https://github.com/myID/acr-build-helloworld-node
 ```
 
-### <a name="command-progress"></a>Parancs állapotának
+### <a name="command-progress"></a>Parancs állapota
 
-* Amikor a rendszer kéri, adja meg a GitHub-hitelesítő adatait, vagy adjon meg egy [GitHub-személyes hozzáférési jogkivonatot](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT), amely *tárpát* és *felhasználói* hatókört rendelkezik a beállításjegyzékkel való hitelesítéshez. Ha github-hitelesítő adatokat ad meg, a parancs létrehoz egy PAT-t.
+* Ha a rendszer kéri, adja meg a GitHub hitelesítő adatait, vagy adja meg a [githubhoz tartozó személyes hozzáférési tokent](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (Pat), amely a beállításjegyzékben való hitelesítéshez tartalmaz tárházat *és* *felhasználói* hatóköröket. Ha a GitHub hitelesítő adatait adja meg, a parancs létrehoz egy PAT-t az Ön számára.
 
-* A parancs tárpokkal titkos kulcsokat hoz létre a munkafolyamathoz:
+* A parancs a munkafolyamat adattárházának titkait hozza létre:
 
-  * Az Azure CLI szolgáltatásnévhitelesítő adatai
-  * Hitelesítő adatok az Azure-tároló beállításjegyzékének eléréséhez
+  * Egyszerű szolgáltatásnév hitelesítő adatai az Azure CLI-hez
+  * Az Azure Container Registry eléréséhez szükséges hitelesítő adatok
 
-* Miután a parancs véglegesíti a munkafolyamat-fájlt a tárműre, a munkafolyamat aktiválódik. 
+* Miután a parancs véglegesíti a munkafolyamat-fájlt a tárházba, a rendszer elindítja a munkafolyamatot. 
 
 A kimenet a következőhöz hasonló:
 
@@ -260,9 +260,9 @@ Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer
 
 ### <a name="validate-workflow"></a>Munkafolyamat ellenőrzése
 
-A munkafolyamat üzembe helyez egy Azure-tárolópéldányt a GitHub-tárház alapnevével, ebben az esetben az acr-build-helloworld-node.The workflow deploys an Azure container instance with the base name of your GitHub repo, in this case, *acr-build-helloworld-node.* A böngészőben a futó webalkalmazás megtekintéséhez keresse meg a megadott hivatkozást. Ha az alkalmazás nem 8080-as porton figyel, adja meg azt az URL-címben.
+A munkafolyamat üzembe helyez egy Azure Container-példányt a GitHub-tárház alapnevével, ebben az esetben: *ACR-Build-HelloWorld-Node*. A böngészőben a futó webalkalmazás megtekintéséhez keresse meg a megadott hivatkozást. Ha az alkalmazás a 8080-től eltérő porton figyel, adja meg az URL-címet a helyett.
 
-A GitHub felhasználói felületén az egyes lépések munkafolyamat-állapotának és eredményeinek megtekintéséhez olvassa el a Munkafolyamat futtatásának kezelése című [témakört.](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)
+A GitHub felhasználói felületen a munkafolyamat állapotának és eredményeinek megtekintéséhez tekintse meg a [munkafolyamat-Futtatás kezelése](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)című témakört.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -274,7 +274,7 @@ az container delete \
   --resource-group <resource-group-name>
 ```
 
-Az erőforráscsoport és a benne lévő összes erőforrás törléséhez futtassa az [az csoport törlési][az-group-delete] parancsát:
+Az erőforráscsoport és az ahhoz tartozó összes erőforrás törléséhez futtassa az az [Group delete][az-group-delete] parancsot:
 
 ```azurecli
 az group delete \
@@ -283,7 +283,7 @@ az group delete \
 
 ## <a name="next-steps"></a>További lépések
 
-Böngésszen a [GitHub Piactéren](https://github.com/marketplace?type=actions) további műveletekért a fejlesztési munkafolyamat automatizálásához
+További műveletek a [GitHub-piactéren](https://github.com/marketplace?type=actions) a fejlesztési munkafolyamat automatizálásához
 
 
 <!-- LINKS - external -->

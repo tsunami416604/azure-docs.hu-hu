@@ -1,10 +1,10 @@
 ---
-title: Hogyan működik a fürt beállítása az Azure Dev Spaces számára?
+title: Fürt beállítása az Azure dev Spaces működéséhez
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Bemutatja, hogyan működik az Azure Kubernetes-szolgáltatásfürt beállítása az Azure dev spaces-hez
-keywords: Azure dev spaces, fejlesztői terek, Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók
+description: Útmutató Azure Kubernetes Service-fürt beállításához az Azure dev Spaces működéséhez
+keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
 ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
@@ -12,87 +12,87 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "80241724"
 ---
-# <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Hogyan működik a fürt beállítása az Azure Dev Spaces számára?
+# <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Fürt beállítása az Azure dev Spaces működéséhez
 
-Az Azure Dev Spaces többféle lehetőséget kínál a Kubernetes-alkalmazások gyors iterálására és hibakeresésére, valamint a csapatával való együttműködésre egy Azure Kubernetes-szolgáltatás (AKS) fürtön. Ennek egyik módja, hogy engedélyezze az Azure Dev Spaces-t az AKS-fürtön, így [a szolgáltatásokat közvetlenül a fürtön futtathatja,][how-it-works-up] és [további hálózati és útválasztási lehetőségeket][how-it-works-routing]használhat. Ez a cikk ismerteti, mi történik, amikor előkészíti a fürtöt, és engedélyezi az Azure dev spaces.
+Az Azure dev Spaces lehetővé teszi a Kubernetes-alkalmazások gyors megismétlését és hibakeresését, valamint a csapattal való együttműködését egy Azure Kubernetes szolgáltatásbeli (ak-beli) fürtön. Az egyik módszer az, hogy engedélyezi az Azure dev-helyeket az AK-fürtön, így [közvetlenül a fürtön futtathatja a szolgáltatásokat][how-it-works-up] , és [további hálózatkezelési és útválasztási képességeket][how-it-works-routing]is használhat. Ez a cikk azt ismerteti, hogy mi történik a fürt előkészítésekor és az Azure dev Spaces használatának engedélyezésekor.
 
-## <a name="prepare-your-aks-cluster"></a>Az AKS-fürt előkészítése
+## <a name="prepare-your-aks-cluster"></a>Az AK-fürt előkészítése
 
-Az AKS-fürt dev-terek előkészítése, ellenőrizze, hogy az AKS-fürt az [Azure Dev Spaces által támogatott][supported-regions] régióban van-e, és a Kubernetes 1.10.3 vagy újabb webhelyet futtatja. Ha engedélyezni szeretné az Azure Dev Spaces szolgáltatást a fürtön az Azure Portalról, keresse meg a fürtöt, kattintson a *fejlesztői terek*elemre, módosítsa *a Fejlesztői terek használata lehetőséget* *igen*re, majd kattintson a *Mentés gombra.* Az Azure DEV Spaces-t az Azure `az aks use-dev-spaces`CLI-ből is engedélyezheti a futtatásával.
+Az AK-fürt fejlesztői tárhelyekre való előkészítéséhez ellenőrizze, hogy az AK-fürt az [Azure dev Spaces által támogatott][supported-regions] régióban van-e, és Kubernetes 1.10.3 vagy újabb verziót futtat. Ha engedélyezni szeretné az Azure dev Spaces szolgáltatást a fürtön a Azure Portal, navigáljon a fürthöz, kattintson a *dev Spaces (fejlesztői*szóközök *használata* ) elemre *, és*kattintson a *Mentés*gombra. Az Azure dev Spaces az Azure CLI-vel is engedélyezhető `az aks use-dev-spaces`a futtatásával.
 
-A fejlesztői tárolóhelyek AKS-fürtjének beállítását a csapatfejlesztési rövid útmutató ban [például a csoportfejlesztés ről.For][quickstart-team]example of setting an AKS cluster for Dev Spaces, see the team development quickstart.
+Ha például egy AK-fürtöt kíván beállítani a fejlesztői tárhelyekhez, tekintse meg a [Team Development][quickstart-team]rövid útmutatót.
 
-Ha az Azure Dev Spaces engedélyezve van az AKS-fürtön, telepíti a fürt vezérlőjét. A vezérlő az AKS-fürtön kívül található. Ez hajtja a viselkedést és a kommunikációt az ügyféloldali eszközök és az AKS-fürt között. Ha engedélyezve van, az ügyféloldali eszközök segítségével kommunikálhat a vezérlővel.
+Ha az Azure dev-helyek engedélyezve vannak az AK-fürtön, akkor a fürthöz telepíti a vezérlőt. A vezérlő az AK-fürtön kívül található. Az ügyféloldali eszközök és az AK-fürt közötti viselkedést és kommunikációt vezérli. Ha engedélyezve van, használhatja a vezérlőt az ügyféloldali eszközök használatával.
 
 A vezérlő a következő műveleteket hajtja végre:
 
-* A fejlesztői terület létrehozását és kiválasztását kezeli.
-* Telepíti az alkalmazás Helm diagramját, és létrehozza a Kubernetes objektumokat.
-* Az alkalmazás tárolórendszerképének létrehozása.
-* Az alkalmazás telepítése az AKS-re.
-* Növekményes buildek és újraindul, amikor a forráskód megváltozik.
-* Kezeli a naplókat és a HTTP-nyomkövetéseket.
-* Előre stdout és stderr az ügyféloldali szerszámozás.
-* Útválasztást állít be a térben belüli, valamint a szülő- és gyermektereken belüli alkalmazásokhoz.
+* Felügyeli a fejlesztési terület létrehozását és a kijelölést.
+* Telepíti az alkalmazás Helm-diagramját, és létrehozza a Kubernetes objektumokat.
+* Létrehozza az alkalmazás tárolójának rendszerképét.
+* Üzembe helyezi az alkalmazást az AK-ban.
+* A növekményes buildek és újraindítások a forráskód módosításakor.
+* A naplókat és a HTTP-nyomkövetéseket kezeli.
+* Az stdout és a stderr továbbítása az ügyféloldali eszközökhöz.
+* Az útválasztást a szóközen belüli alkalmazások, valamint a szülő és a gyermek szóközök között konfigurálja.
 
-A vezérlő egy külön Azure-erőforrás a fürtön kívül, és a fürt erőforrásait a következőkre végzi:
+A vezérlő egy különálló Azure-erőforrás a fürtön kívül, és a fürt erőforrásaihoz a következő:
 
-* Létrehoz vagy kijelöl egy Kubernetes-névteret, amelyet fejlesztési térként használhat.
-* Eltávolítja az *azds*nevű Kubernetes névteret, ha létezik, és létrehoz egy újat.
-* Kubernetes webhook-konfiguráció t telepít.
-* Webhook felvételi kiszolgáló telepítése.
+* Létrehoz vagy kijelöl egy Kubernetes-névteret, amelyet fejlesztői területként kíván használni.
+* Eltávolítja a *azds*nevű Kubernetes-névteret, ha létezik, és létrehoz egy újat.
+* Üzembe helyez egy Kubernetes webhook-konfigurációt.
+* Üzembe helyez egy webhook-beléptetési kiszolgálót.
 
-Ugyanazt a egyszerű szolgáltatást használja, amelyet az AKS-fürt más Azure Dev Spaces-összetevőkszolgáltatás-hívások kezdeményezéséhez használ.
+Ugyanazt a egyszerű szolgáltatást használja, amelyet az AK-fürt más Azure dev Spaces-összetevőkhöz használ.
 
-![Az Azure dev spaces előkészíti a fürtöt](media/how-dev-spaces-works/prepare-cluster.svg)
+![Azure dev Spaces – fürt előkészítése](media/how-dev-spaces-works/prepare-cluster.svg)
 
-Az Azure Dev Spaces használatához legalább egy fejlesztői területnek kell lennie. Az Azure dev spaces kubernetes névtereket használ az AKS-fürtön a fejlesztési terekhez. A vezérlő telepítésekor egy új Kubernetes-névtér létrehozása vagy egy meglévő névtér kiválasztása az első fejlesztési területként használható. Alapértelmezés szerint a vezérlő felajánlja a meglévő *alapértelmezett* Kubernetes névtér frissítését az első fejlesztési területre.
+Az Azure dev Spaces használatához legalább egy fejlesztői területnek kell lennie. Az Azure dev Spaces Kubernetes-névtereket használ az AK-fürtön belül a dev Spaces szolgáltatásban. A vezérlő telepítésekor a rendszer felszólítja, hogy hozzon létre egy új Kubernetes-névteret, vagy válasszon egy meglévő névteret, amelyet az első fejlesztői területként kíván használni. Alapértelmezés szerint a vezérlő a meglévő *alapértelmezett* Kubernetes-névtér frissítését kínálja az első fejlesztői területére.
 
-Ha egy névtér fejlesztési térként van kijelölve, a vezérlő hozzáadja a *azds.io/space=true* címkét a névtérhez, hogy fejlesztői térként azonosíthassa. A létrehozott vagy kijelölt kezdeti fejlesztési terület alapértelmezés szerint a fürt előkészítése után van kiválasztva. Ha egy terület van kiválasztva, az Azure Dev Spaces új számítási feladatok létrehozásához használja.
+Ha egy névtér fejlesztői területként van kijelölve, a vezérlő hozzáadja a *azds.IO/Space=True* címkét a névtérhez, hogy az a fejlesztői területként azonosítható legyen. A létrehozás vagy a kijelölés kezdeti fejlesztői területe alapértelmezés szerint ki van választva a fürt előkészítése után. Ha kijelöl egy szóközt, az Azure dev Spaces új munkaterhelések létrehozásához használja.
 
-Az ügyféloldali eszközintézés segítségével új fejlesztői tereket hozhat létre, és eltávolíthatja a meglévő fejlesztési tereket. A Kubernetes korlátozása miatt az *alapértelmezett* fejlesztői terület nem távolítható el. A vezérlő eltávolítja az *ügyféloldali* eszközelem által használt `azds` paranccsal való ütközéseket a meglévő Kubernetes-névterekből is.
+Az ügyféloldali eszközkészlet használatával új fejlesztői tárhelyeket hozhat létre, és eltávolíthatja a meglévő fejlesztői helyeket. A Kubernetes korlátozásai miatt az *alapértelmezett* fejlesztői terület nem távolítható el. A vezérlő eltávolítja a *azds* nevű meglévő Kubernetes-névtereket is, hogy elkerülje az `azds` ügyféloldali szerszámozás által használt parancs ütközését.
 
-A Kubernetes webhook felvételi kiszolgáló segítségével adja podok három tárolók üzembe helyezés során a műszerek: egy devspaces-proxy tároló, egy devspaces-proxy-init tároló, és egy devspaces-build tároló. **Mindhárom tároló az AKS-fürt root hozzáféréssel fut.** Ugyanazt a egyszerű szolgáltatást is használják, amelyet az AKS-fürt más Azure Dev Spaces-összetevőkszolgáltatás-hívások kezdeményezéséhez használ.
+A Kubernetes webhook-belépésvezérlés a hüvelyek három tárolóval való beadására szolgál a rendszerállapot-kialakítás során: egy devspaces-tárolót, egy devspaces-proxy-init tárolót és egy devspaces-tárolót. **Mindhárom tároló a root hozzáféréssel fut az AK-fürtön.** Ugyanazt a szolgáltatásnevet is használják, amelyet az AK-fürt más Azure dev Spaces-összetevőkhöz használ.
 
-![Azure dev spaces Kubernetes webhook felvételi kiszolgáló](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
+![Azure dev Spaces Kubernetes webhook-beléptetési kiszolgáló](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
-A devspaces-proxy tároló egy oldalkocsitároló, amely kezeli az összes TCP-forgalmat az alkalmazástárolóba, és segít az útválasztás végrehajtásában. A devspaces-proxy tároló átirányítja a HTTP-üzeneteket, ha bizonyos szóközöket használ. Például segíthet a HTTP-üzenetek továbbításában a szülő- és gyermekterekben lévő alkalmazások között. Minden nem HTTP-forgalom áthalad devspaces-proxy módosítatlan. A devspaces-proxy tároló is naplózza az összes bejövő és kimenő HTTP-üzeneteket, és elküldi azokat az ügyféloldali eszközküldés nyomkövetésként. Ezeket a nyomkövetéseket ezután a fejlesztő megtekintheti az alkalmazás viselkedésének vizsgálatához.
+A devspaces-proxy tároló egy olyan oldalkocsi-tároló, amely az alkalmazás-tárolón belüli és kívüli összes TCP-forgalmat kezeli, és segít az útválasztásban. A devspaces-proxy tároló a HTTP-üzeneteket átirányítja, ha vannak ilyenek. Például segíthet a HTTP-üzenetek továbbításában a szülő és a gyermek szóközökben lévő alkalmazások között. Az összes nem HTTP-forgalom áthalad a devspaces-proxyn keresztül. A devspaces-proxy tároló az összes bejövő és kimenő HTTP-üzenetet is naplózza, és a nyomkövetésként elküldi őket az ügyféloldali eszközöknek. Ezeket a nyomkövetéseket a fejlesztő megtekintheti, hogy megvizsgálja az alkalmazás viselkedését.
 
-A devspaces-proxy-init tároló egy [init tároló,](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) amely további útválasztási szabályokat ad hozzá a térhierarchia alapján az alkalmazás tárolójához. Útválasztási szabályokat ad hozzá az alkalmazástároló */etc/resolv.conf* fájljának és iptables konfigurációjának frissítésével az indítás előtt. Az */etc/resolv.conf* frissítései lehetővé teszik a szolgáltatások DNS-feloldását a szülőterekben. Az iptables konfigurációs frissítések biztosítják az alkalmazás tárolójába be- és kivezető tcp-forgalmat a devspaces-proxy útvonalon. A Devspaces-proxy-init összes frissítése a Kubernetes által hozzáadott szabályok mellett történik.
+A devspaces-proxy-init tároló egy olyan [init-tároló](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) , amely további útválasztási szabályokat is feltesz az alkalmazás tárolójának terület-hierarchiája alapján. Az útválasztási szabályok hozzáadásával az alkalmazás-tároló */etc/resolv.conf* -fájlját és az iptables-konfigurációt az indítás előtt frissíti. A */etc/resolv.conf* -frissítések lehetővé teszik a szolgáltatások DNS-feloldását a fölérendelt helyeken. Az iptables-konfiguráció frissítései biztosítják, hogy az alkalmazás tárolóján belüli és onnan kifelé irányuló összes TCP-forgalom átirányítva legyen, bár a devspaces-proxy. A devspaces-proxy-init összes frissítése a Kubernetes által hozzáadott szabályok mellett történik.
 
-A devspaces-build tároló egy init tároló, és a projekt forráskód és a Docker-szoftvercsatorna csatlakoztatva van. A projekt forráskódja és a Docker-hozzáférés lehetővé teszi, hogy az alkalmazástároló közvetlenül a pod által épüljenek.
+A devspaces-Build tároló egy init tároló, amelynek a projekt forráskódja és a Docker-szoftvercsatorna csatlakoztatva van. A projekt forráskódja és a Docker-hozzáférés lehetővé teszi, hogy az alkalmazás-tárolót közvetlenül a pod-hoz lehessen felépíteni.
 
 > [!NOTE]
-> Az Azure Dev Spaces ugyanazt a csomópontot használja az alkalmazás tárolójának létrehozásához és futtatásához. Ennek eredményeképpen az Azure Dev Spaces nem kell egy külső tároló beállításjegyzék az alkalmazás létrehozásához és futtatásához.
+> Az Azure dev-helyek ugyanazt a csomópontot használják az alkalmazás tárolójának létrehozásához és futtatásához. Ennek eredményeképpen az Azure dev Spaces szolgáltatásnak nincs szüksége külső tároló beállításjegyzékre az alkalmazás létrehozásához és futtatásához.
 
-A Kubernetes webhook felvételi kiszolgáló figyel minden új pod, amely az AKS-fürtben létrehozott. Ha a pod telepítve van bármely névtér a *azds.io/space=true* címkével, a további tárolók at adja be, hogy a pod. A devspaces-build tároló csak akkor injektált, ha az alkalmazás tárolója fut az ügyféloldali eszközhasználat használatával.
+A Kubernetes webhook-beléptetési kiszolgáló az AK-fürtben létrehozott összes új Pod-t figyeli. Ha a hüvely bármely, a *azds.IO/Space=True* címkével rendelkező névtérbe van telepítve, akkor a pod a további tárolókat is beadja. A devspaces-Build tároló csak akkor van befecskendezve, ha az alkalmazás tárolója az ügyféloldali eszköz használatával fut.
 
-Miután elkészítette az AKS-fürtöt, az ügyféloldali eszközök segítségével előkészítheti és futtathatja a kódot a fejlesztői térben.
+Miután felkészítette az AK-fürtöt, az ügyféloldali eszközkészlet segítségével előkészítheti és futtathatja a kódot a fejlesztői térben.
 
 ## <a name="client-side-tooling"></a>Ügyféloldali eszközök
 
-Az ügyféloldali eszközeszköz lehetővé teszi a felhasználó számára, hogy:
-* Hozzon létre egy Dockerfile, Helm chart és az Azure Dev Spaces konfigurációs fájlt az alkalmazáshoz.
-* Hozzon létre szülő- és gyermekfejlesztői tereket.
-* Mondja meg a vezérlőnek, hogy építse fel és indítsa el az alkalmazást.
+Az ügyféloldali eszközök lehetővé teszik a felhasználó számára a következőket:
+* Docker, Helm-diagram és Azure dev Spaces konfigurációs fájl létrehozása az alkalmazáshoz.
+* Hozzon létre szülő és gyermek fejlesztői szóközöket.
+* Kérje meg a vezérlőt, hogy hozza létre és indítsa el az alkalmazást.
 
-Az alkalmazás futása közben az ügyféloldali eszközök is:
-* Fogadja és megjeleníti az AKS-ben futó alkalmazás stdout és stderr.
-* [Port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) használatával engedélyezi az alkalmazás hoz\/való webes hozzáférést a http: /localhost használatával.
-* Csatol egy hibakeresőt a futó alkalmazáshoz az AKS-ben.
-* A forráskódot szinkronizálja a fejlesztői térben, amikor a növekményes buildek változása, amely lehetővé teszi a gyors iteráció.
-* Lehetővé teszi, hogy a fejlesztői gépet közvetlenül az AKS-fürthöz csatlakoztassa.
+Az alkalmazás futása közben az ügyféloldali eszköz is:
+* Az stdout és a stderr fogadása és megjelenítése az alkalmazásban, az AK-ban fut.
+* A [Port-Forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) használatával engedélyezi az alkalmazás webes elérését http:\//localhost.
+* Egy hibakeresőt csatlakoztat a futó alkalmazáshoz az AK-ban.
+* Szinkronizálja a forráskódot a fejlesztői területére, amikor változást észlel a növekményes buildek esetében, ami lehetővé teszi a gyors iterációt.
+* Lehetővé teszi a fejlesztői gép közvetlen összekapcsolását az AK-fürthöz.
 
-Az ügyféloldali eszköza a parancssorból a `azds` parancs részeként használható. Az ügyféloldali eszközök a következőkkel is használhatók:
+A parancs részeként `azds` használhatja az ügyféloldali eszközt a parancssorból. Az ügyféloldali eszközt az alábbiakkal is használhatja:
 
-* Visual Studio-kód az [Azure Dev Spaces bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)használatával.
-* Visual Studio [a Visual Studio Tools for Kubernetes segítségével.](https://aka.ms/get-vsk8stools)
+* Visual Studio Code az [Azure dev Spaces bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)használatával.
+* Visual Studio [Kubernetes-hez készült Visual Studio-eszközökkel](https://aka.ms/get-vsk8stools).
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni arról, hogy miként készül het elő és futtathat a kód dev-tárhelyén, olvassa el a [Projekt előkészítése az Azure Dev Spaces-hez című][how-it-works-prep]témakört.
+Ha többet szeretne megtudni az ügyféloldali eszközök használatáról a kód előkészítéséhez és a fejlesztői tárhelyen való futtatásához, tekintse meg a [projekt előkészítése az Azure dev Spaces működéséhez][how-it-works-prep]című témakört.
 
-Az Azure Dev Spaces csapatfejlesztéshez való használatának első lépései az [Azure Dev Spaces rövid útmutatójában.][quickstart-team]
+Az Azure dev Spaces for Team Development használatának megkezdéséhez tekintse meg a [csapat fejlesztését az Azure dev Spaces][quickstart-team] rövid útmutatójában.
 
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

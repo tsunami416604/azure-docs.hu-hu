@@ -1,6 +1,6 @@
 ---
-title: Konzisztencia kezelése az Azure Cosmos DB-ben
-description: Megtudhatja, hogy miként konfigurálhatja és kezelheti a konzisztenciaszinteket az Azure Cosmos DB-ban az Azure Portal, a .Net SDK, a Java SDK és számos más SDK használatával
+title: Konzisztencia kezelése Azure Cosmos DBban
+description: Megtudhatja, hogyan konfigurálhatja és kezelheti Azure Cosmos DB egységességi szintjeit a Azure Portal, a .net SDK, a Java SDK és számos más SDK használatával
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -15,13 +15,13 @@ ms.locfileid: "79369403"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB konzisztenciaszintjeinek kezelése
 
-Ez a cikk ismerteti, hogyan kezelheti a konzisztenciaszinteket az Azure Cosmos DB-ben. Megtudhatja, hogyan konfigurálhatja az alapértelmezett konzisztenciaszintet, felülbírálhatja az alapértelmezett konzisztenciát, manuálisan kezelheti a munkamenet-jogkivonatokat, és hogyan ismerheti meg a Probabilistically Bounded Staleness (PBS) metrikát.
+Ez a cikk azt ismerteti, hogyan kezelhető a konzisztencia szintjei Azure Cosmos DBban. Megtudhatja, hogyan konfigurálhatja az alapértelmezett konzisztencia-szintet, felülbírálhatja az alapértelmezett konzisztenciát, manuálisan kezelheti a munkamenet-jogkivonatokat, és megismerheti a Probabilistically kötött elavulás (PBS) metrikáját.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configure-the-default-consistency-level"></a>Az alapértelmezett konzisztenciaszint beállítása
 
-Az [alapértelmezett konzisztenciaszint](consistency-levels.md) az ügyfelek által alapértelmezés szerint használt konzisztenciaszint. Az ügyfelek bármikor felülírhatják.
+Az [alapértelmezett konzisztencia-szint](consistency-levels.md) az ügyfelek által alapértelmezés szerint használt konzisztencia-szint. Az ügyfelek bármikor felülbírálják.
 
 ### <a name="cli"></a>parancssori felület
 
@@ -35,7 +35,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-Ebben a példában egy új Azure Cosmos-fiókot hoz létre, amelyen engedélyezve van az USA keleti és az USA nyugati régióiban. Az alapértelmezett konzisztenciaszint munkamenet-konzisztenciára van állítva. *Session*
+Ez a példa egy új Azure Cosmos-fiókot hoz létre, amely több írási régiót is engedélyez, az USA keleti régiójában és az USA nyugati régiójában. Az alapértelmezett konzisztencia-érték a *munkamenet* konzisztenciája.
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -59,15 +59,15 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
   -Properties $CosmosDBProperties
 ```
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
-Az alapértelmezett konzisztenciaszint megtekintéséhez vagy módosításához jelentkezzen be az Azure Portalra. Keresse meg az Azure Cosmos-fiókot, és nyissa meg az **alapértelmezett konzisztencia** ablaktáblát. Válassza ki a kívánt konzisztenciaszintet az új alapértelmezettként, majd kattintson a **Mentés gombra.** Az Azure Portal is biztosít egy vizualizációs különböző konzisztenciaszintek zenei jegyzetek. 
+Ha szeretné megtekinteni vagy módosítani az alapértelmezett konzisztencia-szintet, jelentkezzen be a Azure Portalba. Keresse meg az Azure Cosmos-fiókját, és nyissa meg az **alapértelmezett konzisztencia** -ablaktáblát. Válassza ki az új alapértelmezettként használni kívánt konzisztencia szintjét, majd kattintson a **Mentés**gombra. A Azure Portal a különböző konzisztencia-szintek vizualizációját is megjeleníti zenei megjegyzésekkel. 
 
-![Konzisztencia menü az Azure Portalon](./media/how-to-manage-consistency/consistency-settings.png)
+![Konzisztencia menü a Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>Az alapértelmezett konzisztenciaszint felülírása
 
-Az ügyfelek felülírhatják a szolgáltatás által beállított alapértelmezett konzisztenciaszintet. Konzisztenciaszint állítható be egy kérés, amely felülbírálja az alapértelmezett konzisztenciaszint a fiók szintjén beállított.
+Az ügyfelek felülírhatják a szolgáltatás által beállított alapértelmezett konzisztenciaszintet. A konzisztencia szintje igény szerint állítható be, ami felülbírálja a fiók szintjén beállított alapértelmezett konzisztencia-szintet.
 
 ### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
 
@@ -140,9 +140,9 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 ## <a name="utilize-session-tokens"></a>Munkamenet-jogkivonatok használata
 
-Az Azure Cosmos DB egyik konzisztenciaszintje a munkamenet-konzisztencia. *Session* Ez az alapértelmezett szint a Cosmos-fiókok alapértelmezetten alkalmazott. A munkamenet-konzisztenciával végzett munka során az ügyfél minden egyes olvasási/lekérdezési kérelemmel belső munkamenet-jogkivonatot fog használni a beállított konzisztenciaszint fenntartásának biztosításához. *Session*
+A Azure Cosmos DB konzisztencia-szintjeinek egyike a *munkamenet* konzisztenciája. Alapértelmezés szerint ez az alapértelmezett szint a Cosmos-fiókok esetében. Ha a *munkamenet* konzisztenciájával dolgozik, az ügyfél a munkamenet-jogkivonatot belsőleg fogja használni minden olvasási/lekérdezési kérelemmel annak érdekében, hogy a rendszer karbantartsa a beállított konzisztencia-szintet.
 
-A munkamenet-jogkivonatok manuális kezeléséhez kérje le a munkamenet-jogkivonatot a válaszból, és állítsa be őket kérésenként. Ha nem kell manuálisan kezelnie a munkamenet-jogkivonatokat, nem kell használnia ezeket a mintákat. Az SDK automatikusan nyomon követi a munkamenet-jogkivonatokat. Ha nem állítja be manuálisan a munkamenet-jogkivonatot, alapértelmezés szerint az SDK a legutóbbi munkamenet-jogkivonatot használja.
+A munkamenet-tokenek manuális kezeléséhez szerezze be a válaszból a munkamenet-jogkivonatot, és állítsa be őket kérésre. Ha nem kell manuálisan kezelnie a munkamenet-jogkivonatokat, ezeket a mintákat nem kell használnia. Az SDK automatikusan nyomon követi a munkamenet-jogkivonatokat. Ha a munkamenet-tokent nem manuálisan állítja be, az SDK alapértelmezés szerint a legutóbbi munkamenet-tokent használja.
 
 ### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
 
@@ -231,18 +231,18 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>A valószínűség alapján korlátozott frissesség (PBS) metrika monitorozása
 
-Mennyire végleges a végleges konzisztencia? Az átlagos esetben, tudunk kínálnak állság határok tekintetében verzióelőzmények és az idő. A [**Probabilistically Bounded Staleness (PBS)**](https://pbs.cs.berkeley.edu/) metrika megpróbálja számszerűsíteni a valószínűségét a frissesség, és azt a metrika. A PBS-metrika megtekintéséhez nyissa meg az Azure Cosmos-fiókot az Azure Portalon. Nyissa meg a **Metrikák** ablaktáblát, és válassza **Probability of strongly consistent reads based on your workload (see PBS)** a **Konzisztencia** lapot.
+Hogyan lehetséges a végleges konzisztencia? Az átlagos esetben a korábbi verziókra és időpontokra vonatkozó elévülési korlátokat is kínáljuk. A [**Probabilistically határos elavulás (PBS)**](https://pbs.cs.berkeley.edu/) mérőszáma megpróbálja számszerűsíteni az elavultság valószínűségét, és mérőszámként jeleníti meg azt. A PBS-metrika megtekintéséhez lépjen a Azure Portal Azure Cosmos-fiókjába. Nyissa meg a **metrikák** ablaktáblát, és válassza a **konzisztencia** fület. tekintse meg a számítási feladaton **alapuló, erősen konzisztens olvasás valószínűségét mutató diagramot (lásd: PBS)**.
 
-![PBS-grafikon az Azure portalon](./media/how-to-manage-consistency/pbs-metric.png)
+![PBS gráf a Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az adatütközések kezeléséről, illetve az Azure Cosmos DB következő kulcskoncepciójának továbbfejlesztéséről. Lásd az alábbi cikkeket:
+További információ az Adatütközések kezeléséről, illetve a Azure Cosmos DB következő kulcsfontosságú koncepciójának bevezetéséről. Lásd az alábbi cikkeket:
 
-* [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md)
+* [Azure Cosmos DB konzisztenciáji szintjei](consistency-levels.md)
 * [Régiók közötti ütközések kezelése](how-to-manage-conflicts.md)
 * [Particionálás és adatelosztás](partition-data.md)
-* [Konzisztencia kompromisszumok a modern elosztott adatbázis-rendszerek tervezésében](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [Konzisztencia-kompromisszumok a modern elosztott adatbázis-rendszerek kialakításában](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [Magas rendelkezésre állás](high-availability.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

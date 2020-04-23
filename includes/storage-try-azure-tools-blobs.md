@@ -13,7 +13,7 @@ ms.locfileid: "67178795"
 ---
 > [!TIP]
 > 
-> Az Azure Blob tárolási erőforrásainak kezelése az Azure Storage Explorer segítségével. 
-> [Az Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a Microsoft ingyenes, önálló alkalmazása, amely lehetővé teszi az [Azure Blob storage-erőforrások kezelését.](../articles/vs-azure-tools-storage-explorer-blobs.md) Az Azure Storage Explorer használatával vizuálisan létrehozhat, olvashat, frissíthet és törölhet blobtárolókat és -blobokat, valamint kezelheti a blobtárolókhoz és blobokhoz való hozzáférést.
+> Az Azure Blob Storage-erőforrások kezelése Azure Storage Explorerokkal. 
+> A [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) egy ingyenes, önálló alkalmazás a Microsofttól, amely lehetővé teszi az [Azure Blob Storage-erőforrások kezelését](../articles/vs-azure-tools-storage-explorer-blobs.md). A Azure Storage Explorer segítségével vizuálisan hozhat létre, olvashat, frissíthet és törölhet blob-tárolókat és blobokat, valamint kezelheti a blob-tárolók és Blobok elérését.
 
 

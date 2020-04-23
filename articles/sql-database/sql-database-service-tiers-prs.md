@@ -1,6 +1,6 @@
 ---
-title: Prémium RS szolgáltatási szint kivonása
-description: A prémium RS szolgáltatási szint kivonásalatt áll, és annak támogatása megszűnik – lásd az áttelepítési lehetőségeket.
+title: prémium RS szolgáltatási szintek nyugdíjazása
+description: 'Folyamatban van a prémium RS szolgáltatási réteg kivonása, és a támogatása megszűnik – lásd: áttelepítési beállítások.'
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -18,86 +18,86 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821048"
 ---
-# <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Az Azure SQL Database Premium RS szolgáltatási szint (előzetes verzió) kivonása folyamatban van – áttelepítési lehetőségek
+# <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database prémium RS szolgáltatási réteg (előzetes verzió) kivonása folyamatban van – áttelepítési lehetőségek
 
-2018 februárjában a Microsoft bejelentette, hogy az Azure SQL Database premium RS szolgáltatási szintje nem lesz általánosan elérhető, és 2019. A támogatási határidőt 2019. június 30-ig meghosszabbították. Ez a cikk ismerteti a prémium RS szolgáltatási szintről egy másik szolgáltatási szintre való áttelepítés lehetőségeit. 2019. június 30-a után a Microsoft automatikusan áttelepíti a prémium szintű RS-adatbázisokat egy általánosan elérhető szolgáltatási szintre, amely a leginkább megfelel a Prémium RS-adatbázis teljesítménykövetelményeinek.
+Február 2018-án a Microsoft bejelentette, hogy a Azure SQL Database prémium RS szolgáltatási szintje nem jelent meg általánosan elérhetővé, és a továbbiakban nem lesz támogatott a 2019. január 31. után. A támogatási határidő lejárt a 2019. június 30-ig. Ez a cikk a prémium RS szolgáltatási szintjéről egy másik szolgáltatási szintjére való Migrálás lehetőségeit ismerteti. 2019. június 30-ig a Microsoft automatikusan áttelepíti a prémium RS-adatbázisokat egy általánosan elérhető szolgáltatási szinten, amely leginkább megfelel a prémium RS-adatbázis teljesítménybeli követelményeinek.
 
-Az áttelepítési célpontok és az árképzési lehetőségek a következők:
+Az alábbi áttelepítési célhelyek és díjszabási lehetőségek lehetnek prémium RS ügyfelek számára megfelelőek:
 
-- virtuálismagos szolgáltatási szintek
+- Virtuális mag szolgáltatási szintek
 
-  Az **általános célú** és üzleti **legkritikusabb** szolgáltatási szintek a [virtuálismag-alapú vásárlási modellben.](sql-database-service-tiers-vcore.md) Ez a két szolgáltatási szint általánosan elérhető. A virtuálismag-alapú vásárlási modell is kínál a **nagy kapacitású** szolgáltatási szint, amely alkalmazkodik az igény szerinti a számítási feladatok igényeinek automatikus skálázás akár 100 TB adatbázisonként. A nagy kapacitású szolgáltatási szint a Prémium RS szolgáltatási szinthez közelebbi áron biztosítja a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) prémium szolgáltatási szintjéhez hasonló I/O-teljesítményt.
-- Fejlesztési/tesztelési árképzés
+  A [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) **általános célú** és **üzletileg kritikus** szolgáltatási szintjei. Ez a két szolgáltatási szint általánosan elérhető. A virtuális mag-alapú vásárlási modell a **nagy kapacitású** szolgáltatási szintet is biztosítja, amely igény szerint alkalmazkodik a számítási feladatokhoz, és akár 100 TB-os automatikus skálázást is biztosít az adatbázison. A nagy kapacitású szolgáltatási szint a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) prémium szolgáltatási szintjéhez hasonló IO-teljesítményt biztosít, amely közelebb áll a prémium rs szolgáltatási szintjéhez.
+- Fejlesztési/tesztelési díjszabás
 
-  [A fejlesztési és tesztelési díjszabás](https://azure.microsoft.com/pricing/dev-test/) akár 55%-os megtakarítást is eredményezhet a Visual Studio-előfizetéssel a licencet tartalmazó díjakkal szemben.
-- Azure Hybrid Benefit és fenntartott kapacitásdíjszabás
+  A [dev/test díjszabása](https://azure.microsoft.com/pricing/dev-test/) a Visual Studio-előfizetéssel együtt akár 55%-os megtakarítást is biztosít, valamint a licencekhez tartozó díjszabást.
+- A Azure Hybrid Benefit és a fenntartott kapacitás díjszabása
 
-  [Az Azure Hybrid Benefit és a fenntartott kapacitásdíj](https://azure.microsoft.com/pricing/details/sql-database/) akár 80%-os megtakarítást is eredményezhet a licenccel együtt foglalt díjakkal szemben. Ezekről a lehetőségekről az [Azure Hybrid Benefit for SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) és az Azure SQL Database fenntartott [kapacitáscímű témakörben](sql-database-reserved-capacity.md)talál további információt.
+  A [Azure Hybrid Benefit és a fenntartott kapacitás díjszabása](https://azure.microsoft.com/pricing/details/sql-database/) akár 80%-os megtakarítást biztosít a licencekkel együtt. További információ ezekről a lehetőségekről: [Azure Hybrid Benefit SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) és [Azure SQL Database fenntartott kapacitással](sql-database-reserved-capacity.md)kapcsolatban.
 
-## <a name="act-now-to-migrate-your-premium-rs-databases-to-alternative-sql-database-service-tiers"></a>A prémium szintű RS-adatbázisok alternatív SQL Database szolgáltatási szintekre való áttelepítéséhez
+## <a name="act-now-to-migrate-your-premium-rs-databases-to-alternative-sql-database-service-tiers"></a>Cselekedjen most, hogy áttelepítse a prémium RS adatbázisait alternatív SQL Database szolgáltatási rétegekbe
 
-Tekintse át az ebben a cikkben található útmutatást az árképzéssel és a dokumentációval együtt, hogy meghatározza a prémium szintű RS-munkaterhelések megfelelő áttelepítési célhelyét.Review the guidance in this article along with our pricing and documentation to determine the right migration destination(s) for your Premium RS workloads.
+Tekintse át az ebben a cikkben található útmutatást, valamint a díjszabást és a dokumentációt a prémium RS munkaterhelések megfelelő áttelepítési célhelyének meghatározásához.
 
-## <a name="migrate-compute-intensive-workloads-and-save"></a>Nagy számítási feladatok áttelepítése és mentés
+## <a name="migrate-compute-intensive-workloads-and-save"></a>Nagy számítási igényű számítási feladatok migrálása és mentés
 
-A számításigényes prémium szintű prémium szintű RS-számítási feladatok esetében azt javasoljuk, hogy migráljon az általánosan elérhető virtuálismag-alapú Általános célú szolgáltatási szintre, és takarítson meg többet az Azure Hybrid Benefit for SQL Server és a reserved capacity ajánlatok használatával. Ha inkább egy DTU-alapú vásárlási lehetőség, áttelepítheti a számításigényes prémium szintű prémium RS-adatbázisok egy standard szolgáltatási szintre, és továbbra is menteni, szemben a prémium RS általános rendelkezésre állási díjszabás (ha ment az általános elérhetőség).
+A nagy számítási igényű prémium RS munkaterhelések esetében javasoljuk, hogy az általánosan elérhető virtuális mag-alapú általános célú szolgáltatási szintjére váltson át, és a SQL Server és a fenntartott kapacitási ajánlatok Azure Hybrid Benefit használatával több, a licencekkel kapcsolatos díjszabást is mentsen. Ha inkább egy DTU-alapú vásárlási lehetőségre lenne szüksége, akkor áttelepítheti a nagy számítási igényű prémium RS-adatbázisokat egy standard szolgáltatási rétegre, és továbbra is mentheti a prémium RS általános elérhetőségi díjszabását (ha az általánosan elérhetővé vált).
 
 > [!WARNING]
-> A Prémium RS-számítási feladatok DTU-alapú prémium szolgáltatási szintekre való áttelepítése növelheti a havi költségeket a jelenlegi Prémium RS-díjszabással szemben. Azt javasoljuk, hogy fontolja meg a nagy kapacitású vagy üzleti legkritikusabb szintek az Azure Hybrid Benefit és a fenntartott kapacitás díjszabása fenntartása hasonló vagy alacsonyabb költségek, mint a prémium RS.
+> A prémium RS számítási feladatok DTU-alapú prémium szintű szolgáltatási szintjére való áttelepítése növelheti a havi költségeket és a jelenlegi prémium RS díjszabását. Azt javasoljuk, hogy a nagy kapacitású vagy a üzletileg kritikus csomagokat a Azure Hybrid Benefit és a fenntartott kapacitás díjszabása alapján a prémium RS hasonló és alacsonyabb költségek fenntartása érdekében.
 
-### <a name="premium-rs-databases"></a>Prémium RS adatbázisok
+### <a name="premium-rs-databases"></a>Adatbázisok prémium RS
 
-|**Ha jelenleg a ...**|**Áttelepítés hasonló virtuálismag-alapú...**|**Áttelepítés hasonló DTU-alapú...**|
+|**Ha jelenleg be van kapcsolva...**|**Migrálás hasonló virtuális mag-alapú...**|**Migrálás hasonló DTU-alapú...**|
 |---|---|---|
-|Prémium RS 1|Általános célú 1 virtuális mag (Gen4)|3. sz.|
-|Prémium RS 2|Általános célú 2 virtuális magok (Gen4)|4.|
-|Prémium RS 4|Általános célú 4 virtuális magok (Gen4)|6. sz.|
-|Prémium RS 6|Általános célú 6 virtuális magok (Gen4)|7. sz.|
+|prémium RS 1|Általános célú 1 virtuális mag (Gen4)|Standard 3|
+|prémium RS 2|Általános célú 2 virtuális mag (Gen4)|Standard 4|
+|prémium RS 4|Általános célú 4 virtuális mag (Gen4)|Standard 6|
+|prémium RS 6|Általános célú 6 virtuális mag (Gen4)|Standard 7|
 
-### <a name="premium-rs-pools"></a>Prémium RS-medencék
+### <a name="premium-rs-pools"></a>prémium RS készletek
 
-|**Ha jelenleg a ...**|**Áttelepítés hasonló virtuálismag-alapú...**|**Áttelepítés hasonló DTU-alapú...**|
+|**Ha jelenleg be van kapcsolva...**|**Migrálás hasonló virtuális mag-alapú...**|**Migrálás hasonló DTU-alapú...**|
 |---|---|---|
-|Prémium RS medence 125 DTU|Általános célú 1 virtuális mag (Gen4)|Standard készlet 100 eDTO|
-|Prémium RS medence 250 DTU|Általános célú 2 virtuális magok (Gen4)|Standard készlet 250 eDTO|
-|Prémium RS medence 500 DTU|Általános célú 4 virtuális magok (Gen4)|Standard készlet 500 eDTO|
-|Prémium RS medence 1000 DTU|Általános célú 8 virtuális magok (Gen4)|Standard készlet 1000 eDTO|
+|prémium RS Pool 125 DTU|Általános célú 1 virtuális mag (Gen4)|Standard Pool 100 Edtu|
+|prémium RS Pool 250 DTU|Általános célú 2 virtuális mag (Gen4)|Standard Pool 250 Edtu|
+|prémium RS Pool 500 DTU|Általános célú 4 virtuális mag (Gen4)|Standard Pool 500 Edtu|
+|prémium RS Pool 1000 DTU|Általános célú 8 virtuális mag (Gen4)|Standard Pool 1000 Edtu|
 
-## <a name="optimize-savings-and-performance-for-your-io-intensive-workloads"></a>Optimalizálja a megtakarításokat és a teljesítményt az I/O-igényes munkaterhelések számára
+## <a name="optimize-savings-and-performance-for-your-io-intensive-workloads"></a>Az IO-igényes számítási feladatok megtakarításának és teljesítményének optimalizálása
 
-Azt javasoljuk, hogy az Io-igényes egyetlen adatbázisok at a virtuálismag-alapú, jelenleg előzetes verzióban elérhető, és az IO-igényes adatbázis-készletek a mi általánosan elérhető üzleti kritikus szint, az optimális kombinációja a teljesítmény és a költségek optimális kombinációja érdekében.  A következő virtuálismag-alapú beállítások fenntartják vagy javítják az aktuális teljesítményt, és pénzt takaríthatnak meg az Azure Hybrid Benefit és a fenntartott kapacitás díjszabása kombinálva.
+Javasoljuk, hogy az IO-igényes önálló adatbázisok áttelepítését a virtuális mag-alapú nagy kapacitású-rétegre, amely jelenleg előzetes verzióban érhető el, valamint az IO-igényes adatbázis-készleteket az általánosan elérhető üzletileg kritikus szintjére a teljesítmény és a költséghatékonyság optimális kombinációja érdekében.  A következő virtuális mag-alapú lehetőségek megtartják vagy javítják az aktuális teljesítményt, és a Azure Hybrid Benefit és a fenntartott kapacitás díjszabásával kombinálva pénzt takarítanak meg.
 
-|**Ha jelenleg a ...**|**Áttelepítés hasonló virtuálismag-alapú...**|**Áttelepítés hasonló DTU-alapú...**|
+|**Ha jelenleg be van kapcsolva...**|**Migrálás hasonló virtuális mag-alapú...**|**Migrálás hasonló DTU-alapú...**|
 |---|---|---|
-|Prémium RS 1| 1 virtuális mag (Gen4) vagy business critical 1 virtuális mag (Gen4)|Prémium 1|
-|Prémium RS 2| 2 virtuális mag (Gen4) vagy üzleti legkritikusabb 2 virtuális mag (Gen4)|Prémium 2|
-|Prémium RS 4| 4 virtuális mag (Gen4) vagy üzleti legkritikusabb 4 virtuális mag (Gen4)|4. prémium
-|Prémium RS 6| 6 virtuális mag (Gen4) vagy üzleti legkritikusabb 6 virtuális mag (Gen4)|Prémium 6|
+|prémium RS 1| Nagy kapacitású 1 virtuális mag (Gen4) vagy üzletileg kritikus 1 virtuális mag (Gen4)|1. prémium|
+|prémium RS 2| Nagy kapacitású 2 virtuális mag (Gen4) vagy üzletileg kritikus 2 virtuális mag (Gen4|Prémium 2|
+|prémium RS 4| Nagy kapacitású 4 virtuális mag (Gen4) vagy üzletileg kritikus 4 virtuális mag (Gen4)|Prémium 4
+|prémium RS 6| Nagy kapacitású 6 virtuális mag (Gen4) vagy üzletileg kritikus 6 virtuális mag (Gen4)|Prémium 6|
 
-|**Ha jelenleg a ...**|**Áttelepítés hasonló virtuálismag-alapú...**|**Áttelepítés hasonló DTU-alapú...**|
+|**Ha jelenleg be van kapcsolva...**|**Migrálás hasonló virtuális mag-alapú...**|**Migrálás hasonló DTU-alapú...**|
 |---|---|---|
-|Prémium RS medence 125 DTU|Üzleti legkritikusabb 2 virtuális magok (Gen4)|Prémium pool 125 eDTO-k|
-|Prémium RS medence 250 DTU|Üzleti legkritikusabb 2 virtuális magok (Gen4)|Prémium pool 250 eDTO|
-|Prémium RS medence 500 DTU|Üzleti legkritikusabb 4 virtuális magok (Gen4)|Prémium pool 500 eDTO-k|
-|Prémium RS medence 1000 DTU|Üzleti legkritikusabb 8 virtuális mag (Gen4)|Prémium alap 1000 eDTO|
+|prémium RS Pool 125 DTU|Üzletileg kritikus 2 virtuális mag (Gen4)|Prémium szintű Pool 125 Edtu|
+|prémium RS Pool 250 DTU|Üzletileg kritikus 2 virtuális mag (Gen4)|Prémium szintű Pool 250 Edtu|
+|prémium RS Pool 500 DTU|Üzletileg kritikus 4 virtuális mag (Gen4)|Prémium szintű Pool 500 Edtu|
+|prémium RS Pool 1000 DTU|Üzletileg kritikus 8 virtuális mag (Gen4)|Prémium szintű Pool 1000 Edtu|
 
-## <a name="take-advantage-of-our-new-offers"></a>Használja ki új ajánlatainkat
+## <a name="take-advantage-of-our-new-offers"></a>Használja ki az új ajánlataink előnyeit
 
-A virtuálismag-alapú vásárlási modellben lévő szolgáltatási szintjeink olyan különleges ajánlatokra jogosultak, amelyek akár 80%-ot is megtakaríthatnak a licencet tartalmazó díjszabáshoz képest. Az SQL Server Standard vagy Enterprise Edition licencekkel akár 55%-ot is megtakaríthat az [Azure Hybrid Benefit for SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)licencével. A hibrid előnyöket kombinálhatja az [Azure SQL Database által fenntartott kapacitásdíjszabással,](sql-database-reserved-capacity.md) és akár 80%-ot is megtakaríthat, ha előre elkötelezi magát egy vagy három éves időtartamra.  Aktiválja mindkét előnyt még ma az Azure Portalon.
+Szolgáltatási szintjeink a virtuális mag-alapú vásárlási modellben olyan speciális ajánlatokra jogosultak, amelyek akár 80%-ot is megtakaríthat, a licencekkel együtt. Az aktív frissítési garanciával rendelkező SQL Server Standard vagy Enterprise Edition-licencek használatával akár 55%-ot is megtakaríthat, valamint a licencekkel kapcsolatos díjszabást a [SQL Server Azure Hybrid Benefitával](https://azure.microsoft.com/pricing/hybrid-benefit/). A Hybrid benefitet a [Azure SQL Database fenntartott kapacitás](sql-database-reserved-capacity.md) díjszabásával kombinálhatja, és akár 80%-ot is megtakaríthat, ha előzetesen egy vagy három éves időszakra véglegesít.  Mindkét előny aktiválása Azure Portal.
 
-Ha bármilyen kérdése vagy aggálya van a módosítással kapcsolatban, vagy áttelepítési segítségre van szüksége, forduljon a [Microsofthoz.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+Ha bármilyen kérdése vagy problémája van a változással kapcsolatban, vagy ha áttelepítési segítségre van szüksége, forduljon a [Microsofthoz](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-## <a name="migration-from-a-premium-rs-service-tier-to-a-service-tier-in-either-the-dtu-or-the-vcore-model"></a>A prémium RS-szolgáltatási szintről a DTU-n vagy a virtuálismag-modellben lévő szolgáltatási szintre való áttérés
+## <a name="migration-from-a-premium-rs-service-tier-to-a-service-tier-in-either-the-dtu-or-the-vcore-model"></a>Áttelepítés prémium RS szolgáltatási szinten a DTU vagy a virtuális mag modellben lévő szolgáltatási szintjére
 
 ### <a name="migration-of-a-database"></a>Adatbázis áttelepítése
 
-Az adatbázis átáttelepítése egy prémium RS szolgáltatási szintről egy szolgáltatási szintre a DTU vagy a virtuálismag-modellben hasonló a prémium rs szolgáltatási szint szolgáltatási szintek frissítése vagy visszaminősítése.
+A prémium RS szolgáltatási szintjéről a DTU vagy a virtuális mag modellbe való Migrálás hasonló a szolgáltatási szintek prémium RS szolgáltatási szinten való frissítéséhez vagy visszalépéséhez.
 
-### <a name="using-database-copy-to-convert-a-premium-rs-database-to-a-dtu-based-or-vcore-based-database"></a>Prémium RS-adatbázis DTU- vagy virtuálismag-alapú adatbázissá konvertálása adatbázismásoló használatával
+### <a name="using-database-copy-to-convert-a-premium-rs-database-to-a-dtu-based-or-vcore-based-database"></a>Adatbázis-másolat használata prémium RS adatbázis átalakítására DTU-alapú vagy virtuális mag-alapú adatbázisba
 
-Bármely prémium rs-számítási méretű adatbázist átmásolhat egy DTU-alapú vagy virtuálismag-alapú számítási mérettel rendelkező adatbázisba korlátozás vagy speciális szekvenálás nélkül, feltéve, hogy a cél számítási méret támogatja a forrásadatbázis maximális adatbázisméretét. Az adatbázis-másolat a másolási művelet kezdő időpontjától pillanatképet hoz létre az adatokról, és nem hajt végre adatszinkronizálást a forrás és a cél között.
+A prémium RS számítási mérettel rendelkező adatbázisok átmásolhatók olyan adatbázisra, amely korlátozások vagy speciális sorrendek nélkül DTU vagy virtuális mag számítási mérettel rendelkezik, feltéve, hogy a célként megadott számítási méret támogatja a forrásadatbázis maximális adatbázis-méretét. Az adatbázis-másolat létrehoz egy pillanatképet az adatokról a másolási művelet kezdési időpontjáról, és nem hajtja végre az adatszinkronizálást a forrás és a cél között.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az egyes adatbázisokhoz rendelkezésre álló konkrét számítási méretekkel és tárterület-méretválasztékkal kapcsolatos részletekért tekintse meg [az SQL Database virtuálismagalapú erőforráskorlátokat az egyes adatbázisokhoz.](sql-database-vcore-resource-limits-single-databases.md)
-- A rugalmas készletekhez rendelkezésre álló konkrét számítási méretekkel és tárolási méretválasztékkal kapcsolatos részleteket az [SQL Database virtuálismagalapú erőforrások rugalmas készleteihez című témakörben](sql-database-vcore-resource-limits-elastic-pools.md)találja.
+- Az önálló adatbázisokhoz rendelkezésre álló számítási méretekről és a tárolási méretekről a következő témakörben talál további információt: [SQL Database virtuális mag-alapú erőforrás-korlátok egyetlen](sql-database-vcore-resource-limits-single-databases.md) adatbázishoz
+- A rugalmas készletekhez rendelkezésre álló számítási méretekről és a tárhelyek méretére vonatkozó választási lehetőségekről a [rugalmas készletek SQL Database virtuális mag-alapú erőforrás-korlátozásait](sql-database-vcore-resource-limits-elastic-pools.md)ismertető cikk nyújt tájékoztatást.

@@ -11,11 +11,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179148"
 ---
-#### <a name="to-exit-maintenance-mode"></a>Kilépés a karbantartási módból
-1. A parancssorba írja be a következőt:
+#### <a name="to-exit-maintenance-mode"></a>A karbantartási mód kilépése
+1. Írja be a parancssorba a következőt:
    
      `Exit-HcsMaintenanceMode`
-2. Egy figyelmeztető üzenet és egy megerősítő üzenet jelenik meg. Írja be az **Y** parancsot a karbantartási módból való kilépéshez.
+2. Megjelenik egy figyelmeztető üzenet, és egy megerősítési üzenet jelenik meg. A karbantartási módból való kilépéshez írja be az **Y karaktert** .
    
-    Mindkét vezérlő újraindul. Amikor az újraindítás befejeződött, egy másik üzenet jelenik meg, amely azt jelzi, hogy az eszköz normál módban van.
+    Mindkét vezérlő újra fog indulni. Ha az újraindítás befejeződött, egy másik üzenet jelenik meg, amely azt jelzi, hogy az eszköz normál módban van.
 

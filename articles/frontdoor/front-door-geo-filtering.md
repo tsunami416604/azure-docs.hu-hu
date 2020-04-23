@@ -1,6 +1,6 @@
 ---
-title: Geoszűrés az Azure Bejárati ajtajának tartományában | Microsoft dokumentumok
-description: Ebben a cikkben az Azure Bejárati ajtó geoszűrési szabályzatát
+title: Geo-szűrés egy tartományon az Azure bejárati ajtón | Microsoft Docs
+description: Ebben a cikkben megismerheti az Azure-beli bejáratra vonatkozó geo-szűrési szabályzatot
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -22,13 +22,13 @@ ms.locfileid: "80411177"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Mit jelent az Azure Front Door egyik tartományán végzett geoszűrés?
 
-Alapértelmezés szerint az Azure Bejárati ajtajának válaszol a felhasználói kérelmekre, függetlenül a ttól, hogy a felhasználó a kérelmet küldi.Default Azure Front Door responds to user requests regardless the location of the request. Bizonyos esetekben azonban ország/régió szerint korlátozhatja a webes alkalmazásokhoz való hozzáférést. Webalkalmazás tűzfal (WAF) szolgáltatás a Bejárati ajtó lehetővé teszi, hogy meghatározza a házirend et használó egyéni hozzáférési szabályok at adott elérési a végponton, hogy engedélyezze vagy blokkolja a hozzáférést a megadott országok/régiók. 
+Alapértelmezés szerint az Azure-beli bejárati ajtó a kérést kérő felhasználó helyétől függetlenül válaszol a felhasználói kérésekre. Bizonyos esetekben azonban előfordulhat, hogy az ország/régió alapján korlátozni szeretné a webalkalmazásokhoz való hozzáférést. A webalkalmazási tűzfal (WAF) a bejárati ajtón lehetővé teszi, hogy egyéni hozzáférési szabályokkal Definiáljon egy házirendet a végpont megadott elérési útjához, hogy engedélyezze vagy tiltsa le a hozzáférést a megadott országokból/régiókból. 
 
-A WAF-házirendek általában egyéni szabályokkészletét tartalmazzák. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  A geoszűrési szabályok esetében az egyeztetési változó a REMOTE_ADDR, az operátor a GeoMatch, az érték pedig az érintett kétbetűs országkód. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
+A WAF szabályzat általában egyéni szabályok készletét tartalmazza. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  A geoszűrési szabályok esetében az egyeztetési változó a REMOTE_ADDR, az operátor a GeoMatch, az érték pedig az érintett kétbetűs országkód. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
 
-A bejárati ajtó geoszűrési szabályzatát az [Azure PowerShell](front-door-tutorial-geo-filtering.md) használatával vagy [a rövid útmutató sablonhasználatával](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)konfigurálhatja.
+A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell](front-door-tutorial-geo-filtering.md) vagy a rövid útmutató [sablonjának](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)használatával.
 
-## <a name="country-code-reference"></a>Országkód hivatkozása
+## <a name="country-code-reference"></a>Országkód-hivatkozás
 
 |Országhívószám | Ország neve |
 | ----- | ----- |
@@ -53,7 +53,7 @@ A bejárati ajtó geoszűrési szabályzatát az [Azure PowerShell](front-door-t
 | BH | Bahrein|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Szent Barthélemy|
+| BL | Saint Barthélemy|
 | BN | Brunei Szultanátus|
 | BO | Bolívia|
 | BR | Brazília|

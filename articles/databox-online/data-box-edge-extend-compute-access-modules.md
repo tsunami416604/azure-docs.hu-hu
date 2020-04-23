@@ -1,6 +1,6 @@
 ---
-title: Számítási hálózat kezelése az Azure Data Box Edge-en a modulok eléréséhez| Microsoft dokumentumok
-description: Ez a témakör azt ismerteti, hogy miként bővítheti ki a számítási hálózatot a Data Box Edge-en a modulok külső IP-címen keresztüli elérésére.
+title: Számítási hálózat kezelése Azure Data Box Edge a modulok eléréséhez | Microsoft Docs
+description: Ismerteti, hogyan lehet kiterjeszteni a számítási hálózatot a Data Box Edge a modulok külső IP-n keresztüli eléréséhez.
 services: databox
 author: alkohli
 ms.service: databox
@@ -15,55 +15,55 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "65917235"
 ---
-# <a name="enable-compute-network-on-your-azure-data-box-edge"></a>Számítási hálózat engedélyezése az Azure Data Box Edge-en
+# <a name="enable-compute-network-on-your-azure-data-box-edge"></a>Számítási hálózat engedélyezése a Azure Data Box Edge
 
-Ez a cikk ismerteti, hogy az Azure Data Box Edge-en futó modulok hogyan férhetnek hozzá az eszközön engedélyezett számítási hálózathoz.
+Ez a cikk azt ismerteti, hogy a Azure Data Box Edge futó modulok milyen módon férhetnek hozzá az eszközön engedélyezett számítási hálózathoz.
 
-A hálózat konfigurálásához tegye a következő lépéseket:
+A hálózat konfigurálásához hajtsa végre a következő lépéseket:
 
-- Hálózati felület engedélyezése a Data Box Edge eszközön a számításhoz
-- Modul hozzáadása a Data Box Edge számítási hálózatának eléréséhez
-- Annak ellenőrzése, hogy a modul hozzáférhet-e az engedélyezett hálózati adapterhez
+- Hálózati adapter engedélyezése a Data Box Edge eszközön a számítási feladatokhoz
+- Modul hozzáadása a számítási hálózat eléréséhez a Data Box Edge
+- Ellenőrizze, hogy a modul hozzáférhet-e az engedélyezett hálózati adapterhez
 
-Ebben az oktatóanyagban egy webkiszolgáló-alkalmazásmodult fog használni a forgatókönyv bemutatásához.
+Ebben az oktatóanyagban egy webkiszolgáló-alkalmazás modult fog használni a forgatókönyv bemutatásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, szüksége lesz:
+A Kezdés előtt a következőkre lesz szüksége:
 
-- A Data Box Edge eszköz eszköz beállítása befejeződött.
-- Elvégezte a számítási lépés **konfigurálása** az [oktatóanyag: Adatok átalakítása](data-box-edge-deploy-configure-compute-advanced.md#configure-compute) az Azure Data Box Edge az eszközön. Az eszköznek rendelkeznie kell egy társított IoT Hub-erőforrással, egy IoT-eszközzel és egy IoT Edge-eszközzel.
+- Egy Data Box Edge eszköz telepítése befejeződött.
+- Elvégezte a **számítási lépés konfigurálását** a következő [oktatóanyagként: az adatok átalakítása Azure Data Box Edgesal](data-box-edge-deploy-configure-compute-advanced.md#configure-compute) az eszközön. Az eszköznek rendelkeznie kell egy társított IoT Hub erőforrással, egy IoT eszközzel és egy IoT Edge eszközzel.
 
-## <a name="enable-network-interface-for-compute"></a>Hálózati adapter engedélyezése a számításhoz
+## <a name="enable-network-interface-for-compute"></a>Hálózati adapter engedélyezése a számítási feladatokhoz
 
-Ha külső hálózaton keresztül szeretné elérni az eszközön futó modulokat, hozzá kell rendelnie egy IP-címet az eszköz hálózati adapteréhez. Ezeket a számítási beállításokat a helyi webes felhasználói felületen kezelheti.
+Ha külső hálózaton keresztül szeretné elérni az eszközön futó modulokat, IP-címet kell rendelnie az eszköz egyik hálózati adapteréhez. Ezeket a számítási beállításokat a helyi webes felhasználói felületről kezelheti.
 
-A számítási beállítások konfigurálásához tegye a következő lépéseket a helyi webes felhasználói felületen.
+A számítási beállítások konfigurálásához hajtsa végre a következő lépéseket a helyi webes felületen.
 
-1. A helyi webes felhasználói felületen nyissa meg **a Konfigurációs > számítási beállítások című részt.**  
+1. A helyi webes KEZELŐFELÜLETen lépjen a **konfiguráció > számítási beállítások**elemre.  
 
-2. **Engedélyezze** a használni kívánt hálózati adaptert az eszközön futtatandó számítási modulhoz való csatlakozáshoz.
+2. **Engedélyezze** az eszközön futtatni kívánt számítási modulhoz való kapcsolódáshoz használni kívánt hálózati adaptert.
 
-    - Statikus IP-címek használata esetén adja meg a hálózati adapter IP-címét.
-    - DHCP használata esetén a rendszer automatikusan hozzárendeli az IP-címeket. Ez a példa DHCP-t használ.
+    - Ha statikus IP-címeket használ, adjon meg egy IP-címet a hálózati adapterhez.
+    - Ha DHCP-t használ, a rendszer automatikusan hozzárendeli az IP-címeket. Ez a példa DHCP-t használ.
 
     ![Számítási beállítások engedélyezése 1](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-1.png)
 
-3. A beállítások alkalmazásához válassza az **Alkalmaz** lehetőséget. A DHCP használata esetén jegyezze fel a hálózati adapterhez rendelt IP-címet.
+3. A beállítások alkalmazásához kattintson az **alkalmaz** gombra. Jegyezze fel a hálózati adapterhez hozzárendelt IP-címet, ha DHCP-t használ.
 
     ![Számítási beállítások engedélyezése](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-2.png)
 
-## <a name="add-webserver-app-module"></a>Webkiszolgáló-alkalmazásmodul hozzáadása
+## <a name="add-webserver-app-module"></a>Webkiszolgáló-alkalmazás hozzáadása modul
 
-A következő lépésekkel vegyen fel egy webkiszolgáló-alkalmazásmodult a Data Box Edge eszközre.
+A következő lépésekkel adhat hozzá egy webkiszolgáló-alkalmazás-modult a Data Box Edge eszközhöz.
 
-1. Nyissa meg a Data Box Edge-eszközhöz társított IoT Hub-erőforrást, és válassza az **IoT Edge-eszközt.**
-2. Válassza ki a Data Box Edge-eszközhöz társított IoT Edge-eszközt. Az **Eszköz részletei**ben válassza a **Modulok beállítása**lehetőséget. A **Modulok hozzáadása területen**válassza a + **Add** and or **IoT Edge Module (IoT edge module**) lehetőséget.
-3. Az **IoT Edge egyéni modulok** panelen:
+1. Lépjen a Data Box Edge eszközhöz társított IoT Hub erőforráshoz, majd válassza ki **IoT Edge eszközt**.
+2. Válassza ki a Data Box Edge eszközhöz társított IoT Edge eszközt. Az **eszköz részletei**lapon válassza a **modulok beállítása**lehetőséget. A **modulok hozzáadása**lapon válassza a **+ Hozzáadás** lehetőséget, majd válassza ki **IoT Edge modult**.
+3. A **IoT Edge egyéni modulok** panelen:
 
-    1. Adja meg a webkiszolgálóalkalmazás-modulnak a telepíteni kívánt **nevét.**
-    2. Adjon meg egy **lemezképURI-t** a modulképhez. A megadott névnek és címkéknek megfelelő modult a rendszer lekéri. Ebben az `nginx:stable` esetben egy stabil nginx-lemezképet (stabilként címkézett) fog lehúzni a nyilvános [Docker-tárházból.](https://hub.docker.com/_/nginx/)
-    3. A **Tároló létrehozási beállításai párbeszédpanelen**illessze be a következő mintakódot:  
+    1. Adja meg a telepíteni kívánt webkiszolgáló-modul **nevét** .
+    2. Adjon meg egy **rendszerkép-URI** -t a modul rendszerképéhez. A megadott névvel és címkékkel egyező modul beolvasása. Ebben az esetben egy `nginx:stable` stabil Nginx-rendszerképet fog lekérni a nyilvános [Docker-tárházból](https://hub.docker.com/_/nginx/).
+    3. Illessze be a következő mintakód a **tároló létrehozási beállításai**között:  
 
         ```
         {
@@ -79,22 +79,22 @@ A következő lépésekkel vegyen fel egy webkiszolgáló-alkalmazásmodult a Da
         }
         ```
 
-        Ez a konfiguráció lehetővé teszi a modul elérését a számítási hálózati IP *http-n* keresztül a 8080-as TCP-porton (az alapértelmezett webkiszolgáló-port 80).
+        Ez a konfiguráció lehetővé teszi a modul elérését a számítási hálózati IP-cím használatával *http* protokollon keresztül a 8080-as TCP-porton (az alapértelmezett webkiszolgáló-port a 80-es).
 
-        ![Portadatok megadása az IoT Edge egyéni modulpaneljén](media/data-box-edge-extend-compute-access-modules/module-information.png)
+        ![A port adatainak meghatározása IoT Edge egyéni modul panelen](media/data-box-edge-extend-compute-access-modules/module-information.png)
 
     4. Kattintson a **Mentés** gombra.
 
-## <a name="verify-module-access"></a>Modulhozzáférés ellenőrzése
+## <a name="verify-module-access"></a>Modul-hozzáférés ellenőrzése
 
-1. Ellenőrizze, hogy a modul telepítése sikeresen megtörtént-e, és fut-e. Az **Eszköz részletei** lap **Modulok** lapján a modul futásidejű állapotának **futnia**kell.  
-2. Csatlakozás a webkiszolgáló alkalmazásmoduljához. Nyisson meg egy böngészőablakot, és írja be a következőt:
+1. Ellenőrizze, hogy a modul telepítése sikeres volt-e, és fut-e. Az **eszköz adatai** lap **modulok** lapján a modul futásidejű állapotának **futnia**kell.  
+2. Kapcsolódjon a webkiszolgáló-alkalmazás modulhoz. Nyisson meg egy böngészőablakot, és írja be a következőt:
 
     `http://<compute-network-IP-address>:8080`
 
     Látnia kell, hogy a webkiszolgáló alkalmazás fut.
 
-    ![A modullal való kapcsolat ellenőrzése a megadott porton keresztül](media/data-box-edge-extend-compute-access-modules/verify-connect-module-1.png)
+    ![A modulhoz való kapcsolódás ellenőrzése a megadott porton keresztül](media/data-box-edge-extend-compute-access-modules/verify-connect-module-1.png)
 
 ## <a name="next-steps"></a>További lépések
 

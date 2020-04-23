@@ -1,6 +1,6 @@
 ---
-title: A StorSimple 8000 sorozatú telepítési problémák elhárítása | Microsoft dokumentumok
-description: Ez a témakör a StorSimple első üzembe helyezésekor előforduló hibák diagnosztizálása és javítása.
+title: A StorSimple 8000 sorozat üzembe helyezési problémáinak elhárítása | Microsoft Docs
+description: Leírja, hogyan diagnosztizálhatja és javíthatja a StorSimple első telepítésekor előforduló hibákat.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -21,192 +21,192 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267624"
 ---
-# <a name="troubleshoot-storsimple-device-deployment-issues"></a>A StorSimple eszköztelepítési problémáinak elhárítása
+# <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple-eszközök üzembe helyezésével kapcsolatos problémák elhárítása
 ## <a name="overview"></a>Áttekintés
-Ez a cikk hasznos hibaelhárítási útmutatást nyújt a Microsoft Azure StorSimple központi telepítéséhez. Ismerteti a gyakori problémákat, a lehetséges okokat és az ajánlott lépéseket, amelyek segítenek a StorSimple konfigurálása során esetlegesen felmerülő problémák megoldásában. 
+Ez a cikk hasznos hibaelhárítási útmutatót nyújt a Microsoft Azure StorSimple telepítéséhez. Ismerteti a gyakori problémákat, a lehetséges okokat és a javasolt lépéseket, amelyek segítenek megoldani a StorSimple konfigurálásakor felmerülő problémákat. 
 
-Ez az információ a StorSimple 8000 sorozatú fizikai eszközre és a StorSimple cloud appliance-ra egyaránt vonatkozik.
+Ezek az információk az StorSimple 8000 sorozatú fizikai eszközre és a StorSimple Cloud Appliance egyaránt érvényesek.
 
 > [!NOTE]
-> Az eszköz konfigurációval kapcsolatos problémái előfordulhatnak, amikor először telepíti az eszközt, vagy később, amikor az eszköz működőképes. Ez a cikk az első üzembe helyezési problémák elhárítására összpontosít. Egy működő eszköz hibaelhárításához nyissa meg [a Diagnosztikai eszköz használata egy működő eszköz hibaelhárításához című témakört.](storsimple-8000-diagnostics.md)
+> Az eszköz konfigurálásával kapcsolatos problémák, amelyek akkor fordulhatnak elő, ha az eszközt első alkalommal telepíti, vagy később is előfordulhat, ha az eszköz működőképes. Ez a cikk az első alkalommal történő üzembe helyezéssel kapcsolatos hibák elhárítására koncentrál. Egy operatív eszköz hibakereséséhez lépjen [a diagnosztika eszköz használatára az operatív eszköz hibakereséséhez](storsimple-8000-diagnostics.md).
 
-Ez a cikk a StorSimple-telepítések hibaelhárítási eszközeit is ismerteti, és egy részletes hibaelhárítási példát is tartalmaz.
+Ez a cikk az StorSimple-telepítésekkel kapcsolatos hibaelhárítási eszközöket is ismerteti, és részletes hibaelhárítási példát is tartalmaz.
 
-## <a name="first-time-deployment-issues"></a>Első üzembe helyezési problémák
-Ha az eszköz első üzembe helyezésekor problémába ütközik, vegye figyelembe az alábbiakat:
+## <a name="first-time-deployment-issues"></a>Üzembe helyezési problémák az első alkalommal
+Ha az eszköz első üzembe helyezése során problémát tapasztal, vegye figyelembe a következőket:
 
-* Ha fizikai eszközt hárít el, győződjön meg arról, hogy a hardver telepítve és konfigurálva van [a StorSimple 8100 eszköz telepítése](storsimple-8100-hardware-installation.md) vagy a [StorSimple 8600 eszköz telepítése](storsimple-8600-hardware-installation.md)című témakörben leírtak szerint.
-* Ellenőrizze az üzembe helyezés előfeltételeit. Győződjön meg arról, hogy rendelkezik a [központi telepítési konfigurációs ellenőrzőlistában](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist)leírt összes információval.
-* Tekintse át a StorSimple kiadási megjegyzések, hogy ha a probléma leírása. A kibocsátási megjegyzések az ismert telepítési problémák megoldását tartalmazzák. 
+* Ha fizikai eszközt használ, győződjön meg arról, hogy a hardver telepítve és konfigurálva van a [StorSimple 8100-eszköz telepítése](storsimple-8100-hardware-installation.md) vagy [a StorSimple 8600-eszköz telepítése](storsimple-8600-hardware-installation.md)című részben leírtak szerint.
+* Az üzembe helyezés előfeltételeinek ellenőrzése. Győződjön meg arról, hogy az összes információ megtalálható a [központi telepítési konfiguráció ellenőrzőlistáján](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist).
+* Tekintse át a StorSimple kibocsátási megjegyzéseit, és ellenőrizze, hogy a probléma le van-e írva. A kibocsátási megjegyzések az ismert telepítési problémákra vonatkozó megkerülő megoldásokat tartalmaznak. 
 
-Az eszköz telepítése során a leggyakoribb problémák, amelyekkel a felhasználók szembesülnek, amikor futtatják a telepítő varázslót, és amikor regisztrálják az eszközt a Windows PowerShell for StorSimple rendszeren keresztül. (A StorSimple windows PowerShell használatával regisztrálja és konfigurálja a StorSimple-eszközt. Az eszközregisztrációról további információt a [3.](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)
+Az eszköz telepítése során a felhasználók által felmerülő leggyakoribb problémák a telepítővarázsló futtatásakor és az eszköz Windows PowerShell StorSimple-bővítménye-on keresztüli regisztrálásakor fordulnak elő. (Windows PowerShell StorSimple-bővítménye használatával regisztrálja és konfigurálja a StorSimple-eszközt. Az eszközök regisztrálásával kapcsolatos további információkért tekintse meg a [3. lépés: az eszköz konfigurálása és regisztrálása a Windows PowerShell StorSimple-bővítménye használatával](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)című témakört.
 
-A következő szakaszok segíthetnek a StorSimple eszköz első konfigurálásakor felmerülő problémák megoldásában.
+A következő részekben a StorSimple-eszköz első konfigurálásakor felmerülő problémák megoldásában talál segítséget.
 
-## <a name="first-time-setup-wizard-process"></a>Első beállítási varázsló folyamata
-A következő lépések összefoglalják a telepítővarázsló folyamatát. A részletes telepítési információkért [olvassa el a helyszíni StorSimple-eszköz telepítése című témakört.](storsimple-8000-deployment-walkthrough-u2.md)
+## <a name="first-time-setup-wizard-process"></a>A telepítővarázsló első lépéseinek folyamata
+Az alábbi lépések összefoglalják a telepítővarázsló folyamatát. Részletes telepítési információk: helyszíni [StorSimple-eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md).
 
-1. Az [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) parancsmag futtatásával indítsa el a telepítővarázslót, amely végigvezeti a további lépéseken. 
-2. A hálózat konfigurálása: a telepítővarázsló lehetővé teszi a Data 0 hálózati felület hálózati beállításainak konfigurálását a StorSimple eszközön. Ezek a beállítások a következők:
-   * Virtuális IP (VIP), alhálózati maszk és átjáró – A [Set-HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) parancsmag a háttérben kerül végrehajtásra. Konfigurálja az IP-címet, az alhálózati maszkot és az átjárót a Data 0 hálózati adapterhez a StorSimple-eszközön.
-   * Elsődleges DNS-kiszolgáló – A [Set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) parancsmag végrehajtása a háttérben történik. Konfigurálja a StorSimple-megoldás DNS-beállításait.
-   * NTP-kiszolgáló – A [Set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmag végrehajtása a háttérben történik. Konfigurálja a StorSimple megoldás NTP-kiszolgálóbeállításait.
-   * Választható webproxy – A [Set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) parancsmag végrehajtása a háttérben történik. Beállítja, és lehetővé teszi a web proxy konfigurációa a StorSimple megoldás.
-3. Állítsa be a jelszót: a következő lépés az eszközrendszergazdai jelszó beállítása.
+1. Futtassa a [Meghívási-hcssetupwizard parancsmagot](https://technet.microsoft.com/library/dn688135.aspx) parancsmagot a telepítővarázsló elindításához, amely végigvezeti Önt a hátralévő lépéseken. 
+2. A hálózat konfigurálása: a telepítővarázsló lehetővé teszi a hálózati beállítások konfigurálását a StorSimple-eszközön lévő 0 hálózati adapterhez. Ezek a beállítások a következők:
+   * Virtuális IP-cím (VIP), alhálózati maszk és átjáró – a [set-HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) parancsmag a háttérben fut. Konfigurálja az IP-címet, az alhálózati maszkot és az átjárót a StorSimple-eszközön található adat0 hálózati adapterhez.
+   * Elsődleges DNS-kiszolgáló – a [set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) parancsmag a háttérben fut. Konfigurálja a StorSimple-megoldás DNS-beállításait.
+   * NTP-kiszolgáló – a [set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmag a háttérben fut. Konfigurálja az NTP-kiszolgáló beállításait a StorSimple-megoldáshoz.
+   * Opcionális webes proxy – a [set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) parancsmag a háttérben fut. Beállítja és engedélyezi a StorSimple-megoldás webproxy-konfigurációját.
+3. A jelszó beállítása: a következő lépés az eszköz rendszergazdai jelszavának beállítása.
    Az eszköz rendszergazdai jelszava az eszközre való bejelentkezéshez használható. Az eszköz alapértelmezett jelszava: **Password1**.
         
      > [!IMPORTANT]
-     > A jelszavak at a regisztráció előtt gyűjtjük, de csak az eszköz sikeres regisztrálása után alkalmazza. Ha nem sikerül alkalmazni a jelszót, a rendszer kéri, hogy adja meg újra a jelszót, amíg a szükséges jelszavakat (amelyek megfelelnek az összetettségi követelményeknek) gyűjtik.
+     > A rendszer a regisztráció előtt összegyűjti a jelszavakat, de csak az eszköz sikeres regisztrálását követően alkalmazza. Ha hiba lép fel a jelszó alkalmazása során, a rendszer kérni fogja a jelszó újbóli megadását, amíg begyűjti a szükséges jelszavakat (amelyek megfelelnek az összetettségi követelményeknek).
      
-4. Regisztrálja az eszközt: az utolsó lépés az eszköz regisztrálása a Microsoft Azure-ban futó StorSimple Eszközkezelő szolgáltatással. A regisztráció megköveteli, hogy [a szolgáltatás regisztrációs kulcsot az](storsimple-8000-manage-service.md#get-the-service-registration-key) Azure Portalon, és adja meg a beállítási varázsló. **Az eszköz sikeres regisztrálása után egy szolgáltatásadat-titkosítási kulcsot biztosítunk. Ügyeljen arra, hogy ezt a titkosítási kulcsot biztonságos helyen tartsa, mert minden további eszközt regisztrálnia kell a szolgáltatásban.**
+4. Az eszköz regisztrálása: az utolsó lépés az eszköz regisztrálása a Microsoft Azure-ben futó StorSimple Eszközkezelő szolgáltatással. A regisztrációhoz le kell [kérnie a szolgáltatás regisztrációs kulcsát](storsimple-8000-manage-service.md#get-the-service-registration-key) a Azure Portal, és meg kell adnia a telepítő varázslóban. **Az eszköz sikeres regisztrálása után a szolgáltatás adattitkosítási kulcsát kapja meg. Ügyeljen arra, hogy a titkosítási kulcsot biztonságos helyen tárolja, mert az összes további eszközt regisztrálni kell a szolgáltatással.**
 
-## <a name="common-errors-during-device-deployment"></a>Gyakori hibák az eszköz telepítése során
-Az alábbi táblázatok azokat a gyakori hibákat sorolják fel, amelyek a következő kedvéváláskor fordulhatnak elő:
+## <a name="common-errors-during-device-deployment"></a>Az eszköz üzembe helyezése során felmerülő gyakori hibák
+Az alábbi táblázatok felsorolják az esetlegesen előforduló gyakori hibákat:
 
-* Adja meg a szükséges hálózati beállításokat.
-* Konfigurálja a választható webproxy-beállításokat.
+* Konfigurálja a szükséges hálózati beállításokat.
+* Adja meg a nem kötelező webproxy-beállításokat.
 * Állítsa be az eszköz rendszergazdai jelszavát.
 * Regisztrálja az eszközt.
 
-## <a name="errors-during-the-required-network-settings"></a>Hibák a szükséges hálózati beállítások során
+## <a name="errors-during-the-required-network-settings"></a>Hibák a szükséges hálózati beállításokban
 | Nem. | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 | --- | --- | --- | --- |
-| 1 |Invoke-HcsSetupWizard: Ez a parancs csak az aktív vezérlőn futtatható. |A konfiguráció a passzív vezérlőn történt. |Futtassa ezt a parancsot az aktív vezérlőből. További információt az [Aktív vezérlő azonosítása az eszközön](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)című témakörben talál. |
-| 2 |Invoke-HcsSetupWizard: Az eszköz nem áll készen. |Problémák vannak a DATA 0 hálózati kapcsolatával. |Ellenőrizze a fizikai hálózati kapcsolatot a DATA 0-n. |
-| 3 |Invoke-HcsSetupWizard: Ip-címütközés van a hálózat egy másik rendszerével (Kivétel a HRESULT-ből: 0x80070263). |A DATA 0 protokollt már egy másik rendszer használta. |Adjon meg egy új IP-címet, amely nincs használatban. |
-| 4 |Invoke-HcsSetupWizard: Egy fürterőforrás nem sikerült. (Kivétel a HRESULT alól: 0x800713AE). |Duplikált VIP. A mellékelt IP már használatban van. |Adjon meg egy új IP-címet, amely nincs használatban. |
-| 5 |Invoke-HcsSetupWizard: Érvénytelen IPv4-cím. |Az IP-cím nem megfelelő formátumban van megadva. |Ellenőrizze a formátumot, és adja meg újra az IP-címét. További információt az [Ipv4-címzés című témakörben talál.][1] |
-| 6 |Invoke-HcsSetupWizard: Érvénytelen IPv6-cím. |Az IP-cím nem megfelelő formátumban van megadva. |Ellenőrizze a formátumot, és adja meg újra az IP-címét. További információt az [Ipv6-címzés című témakörben talál.][2] |
-| 7 |Invoke-HcsSetupWizard: Nincs több végpont elérhető a végpont leképező. (Kivétel a HRESULT alól: 0x800706D9) |A fürt funkciónem működik. |A következő lépésekért forduljon a [Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md) |
+| 1 |Meghívás – Hcssetupwizard parancsmagot: Ez a parancs csak az aktív vezérlőn futtatható. |A konfiguráció a passzív vezérlőn lett elvégezve. |Futtassa ezt a parancsot az aktív vezérlőről. További információ: [aktív vezérlő azonosítása az eszközön](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
+| 2 |Meghívás – Hcssetupwizard parancsmagot: az eszköz nem áll készen. |Problémák léptek fel a 0. adatkapcsolat hálózati kapcsolataival kapcsolatban. |Keresse meg a fizikai hálózati kapcsolatot a 0. adatkapcsolaton. |
+| 3 |Meghívás – Hcssetupwizard parancsmagot: az IP-címek ütköznek a hálózat egy másik rendszerével (kivétel a HRESULT: 0x80070263). |A 0. adatcsomaghoz megadott IP-címet már egy másik rendszer használta. |Olyan új IP-címet adjon meg, amely nincs használatban. |
+| 4 |Meghívás – Hcssetupwizard parancsmagot: A fürterőforrás nem sikerült. (Kivétel a HRESULT: 0x800713AE). |Ismétlődő VIP-cím. A megadott IP-cím már használatban van. |Olyan új IP-címet adjon meg, amely nincs használatban. |
+| 5 |Meghívó-Hcssetupwizard parancsmagot: érvénytelen IPv4-címe. |Az IP-cím formátuma helytelen. |Keresse meg a formátumot, és adja meg újra az IP-címét. További információ: IPv4- [címzés][1]. |
+| 6 |Meghívás – Hcssetupwizard parancsmagot: érvénytelen IPv6-cím. |Az IP-cím formátuma helytelen. |Keresse meg a formátumot, és adja meg újra az IP-címét. További információ: [IPv6-címzés][2]. |
+| 7 |Meghívás – Hcssetupwizard parancsmagot: a Endpoint Mapper nem érhető el több végpont. (Kivétel a HRESULT: 0x800706D9) |A fürt funkciója nem működik. |A következő lépésekhez [forduljon Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) . |
 
-## <a name="errors-during-the-optional-web-proxy-settings"></a>Hibák a választható webproxy-beállítások során
+## <a name="errors-during-the-optional-web-proxy-settings"></a>Hibák a nem kötelező Webproxy-beállítások alatt
 | Nem. | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 | --- | --- | --- | --- |
-| 1 |Invoke-HcsSetupWizard: Érvénytelen paraméter (Kivétel a HRESULT-ből: 0x80070057) |A proxybeállításokhoz megadott paraméterek egyike érvénytelen. |Az URI nem a megfelelő formátumban van megadva. A*\<webproxy-kiszolgáló>http:// IP-címe vagy teljes tartományszáma: **\<TCP-portszáma>* |
-| 2 |Invoke-HcsSetupWizard: Az RPC-kiszolgáló nem érhető el (Kivétel a HRESULT-ből: 0x800706ba) |A kiváltó ok az alábbiak egyike:<ol><li>A fürt nem áll fel.</li><li>A passzív vezérlő nem tud kommunikálni az aktív vezérlővel, és a parancs a passzív vezérlőből fut.</li></ol> |A kiváltó októl függően:<ol><li>Lépjen kapcsolatba a [Microsoft támogatási szolgálatával,](storsimple-8000-contact-microsoft-support.md) és győződjön meg arról, hogy a fürt nem.</li><li>Futtassa a parancsot az aktív vezérlőből. Ha a parancsot a passzív vezérlőből szeretné futtatni, gondoskodnia kell arról, hogy a passzív vezérlő képes legyen kommunikálni az aktív vezérlővel. Ha a kapcsolat megszakadt, kapcsolatba kell lépnie a [Microsoft támogatási szolgálatával.](storsimple-8000-contact-microsoft-support.md)</li></ol> |
-| 3 |Invoke-HcsSetupWizard: Az RPC-hívás nem sikerült (Kivétel a HRESULT-ből: 0x800706be) |A fürt nem. |Lépjen kapcsolatba a [Microsoft támogatási szolgálatával,](storsimple-8000-contact-microsoft-support.md) és győződjön meg arról, hogy a fürt nem. |
-| 4 |Invoke-HcsSetupWizard: A fürterőforrás nem található (Kivétel a HRESULT-ből: 0x8007138f) |A fürterőforrás nem található. Ez akkor fordulhat elő, ha a telepítés nem volt helyes. |Előfordulhat, hogy vissza kell állítania az eszközt a gyári alapértelmezett beállításokra. Fürterőforrás létrehozásához forduljon a [Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md) |
-| 5 |Invoke-HcsSetupWizard: A fürterőforrás nem online (Kivétel a HRESULT-ből: 0x8007138c) |A fürterőforrások nincsenek online állapotban. |A következő lépésekért forduljon a [Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md) |
+| 1 |Meghívó-Hcssetupwizard parancsmagot: Érvénytelen paraméter (kivétel a HRESULT: 0x80070057) |A proxybeállítások számára megadott paraméterek egyike érvénytelen. |Az URI-azonosító nem a megfelelő formátumban van megadva. Használja a következő formátumot: http://*\<IP-címe vagy a webproxy-kiszolgáló teljes tartományneve>*:*\<TCP-port száma>* |
+| 2 |Meghívás – Hcssetupwizard parancsmagot: az RPC-kiszolgáló nem érhető el (kivétel a HRESULT: 0x800706ba) |A kiváltó ok a következők egyike:<ol><li>A fürt nem működik.</li><li>A passzív vezérlő nem tud kommunikálni az aktív vezérlővel, és a parancs a passzív vezérlőről fut.</li></ol> |Az alapvető okoktól függően:<ol><li>[Lépjen kapcsolatba Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) , és ellenőrizze, hogy a fürt működik-e.</li><li>Futtassa a parancsot az aktív vezérlőből. Ha a parancsot a passzív vezérlőből szeretné futtatni, gondoskodnia kell arról, hogy a passzív vezérlő kommunikáljon az aktív vezérlővel. Ha a kapcsolat megszakad, [kapcsolatba kell lépnie Microsoft ügyfélszolgálataval](storsimple-8000-contact-microsoft-support.md) .</li></ol> |
+| 3 |Meghívó-Hcssetupwizard parancsmagot: az RPC-hívás sikertelen volt (kivétel a HRESULT: 0x800706be) |A fürt nem üzemel. |[Lépjen kapcsolatba Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) , és ellenőrizze, hogy a fürt működik-e. |
+| 4 |Meghívás – Hcssetupwizard parancsmagot: a fürterőforrás nem található (kivétel a HRESULT: 0x8007138f) |A fürterőforrás nem található. Ez akkor fordulhat elő, ha a telepítés nem megfelelő. |Előfordulhat, hogy alaphelyzetbe kell állítania az eszközt az alapértelmezett gyári beállításokra. Fürterőforrás létrehozásához [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md) . |
+| 5 |Meghívás – Hcssetupwizard parancsmagot: a fürterőforrás nem online állapotú (kivétel a HRESULT: 0x8007138c) |A fürterőforrás nem online állapotú. |A következő lépésekhez [forduljon Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) . |
 
-## <a name="errors-related-to-device-administrator-password"></a>Az eszközrendszergazda jelszavával kapcsolatos hibák
-Az eszköz alapértelmezett rendszergazdai jelszava a **Jelszó1**. Ez a jelszó az első bejelentkezés után lejár; ezért a beállítási varázslóval kell módosítania. Az eszköz első regisztrálásakor meg kell adnia egy új eszközrendszergazdai jelszót. 
+## <a name="errors-related-to-device-administrator-password"></a>Az eszköz rendszergazdai jelszavával kapcsolatos hibák
+Az eszköz alapértelmezett rendszergazdai jelszava **jelszó1**. Ez a jelszó az első bejelentkezés után lejár. Ezért a telepítővarázsló segítségével módosítania kell a telepítési varázslót. Ha első alkalommal regisztrálja az eszközt, meg kell adnia egy új rendszergazdai jelszót. 
 
-Győződjön meg arról, hogy a jelszavak megfelelnek az alábbi követelményeknek:
+Győződjön meg arról, hogy a jelszavuk megfelel a következő követelményeknek:
 
-* Az eszköz rendszergazdai jelszavának 8 és 15 karakter közötti nek kell lennie.
-* A jelszavaknak a következő 4 karakterközül 3 karaktert kell tartalmazniuk: kisbetű, nagybetű, numerikus és speciális. 
+* Az eszköz rendszergazdai jelszavának 8 – 15 karakter hosszúnak kell lennie.
+* A jelszavaknak a következő 4 karakterből álló típusokat kell tartalmazniuk: kisbetűs, nagybetűs, numerikus és speciális. 
 * A jelszó nem egyezhet meg az utolsó 24 jelszóval.
 
-Ezenkívül ne feledje, hogy a jelszavak minden évben lejárnak, és csak az eszköz sikeres regisztrálása után módosíthatók. Ha a regisztráció bármilyen okból sikertelen, a jelszavak nem változnak.
+Ne feledje továbbá, hogy a jelszavak minden évben lejárnak, és csak az eszköz sikeres regisztrálása után módosíthatók. Ha a regisztráció bármilyen okból meghiúsul, a rendszer nem módosítja a jelszavakat.
 
-Az eszközrendszergazda jelszavával kapcsolatos további tudnivalókért látogasson el [a StorSimple Eszközkezelő szolgáltatás használata a StorSimple jelszó módosításához című webhelyre.](storsimple-8000-change-passwords.md)
+Az eszköz rendszergazdai jelszavával kapcsolatos további információkért látogasson el [a StorSimple Eszközkezelő szolgáltatás használatára a StorSimple jelszavának módosításához](storsimple-8000-change-passwords.md).
 
-Az eszközadminisztrátor és a StorSimple Snapshot Manager-jelszavak beállításakor az alábbi hibák közül egyet vagy többet tapasztalhat.
+Az eszköz rendszergazdája és a StorSimple Snapshot Manager jelszavának beállításakor előfordulhat, hogy a következő hibák közül egyet vagy többet tapasztal.
 
 | Nem. | Hibaüzenet | Javasolt művelet |
 | --- | --- | --- |
-| 1 |A jelszó hossza meghaladja a maximális hosszt. |Az eszköz rendszergazdai jelszavának 8 és 15 karakter közötti nek kell lennie. |
-| 2 |A jelszó nem felel meg a kívánt hossznak. |Az eszköz rendszergazdai jelszavának 8 és 15 karakter közötti nek kell lennie.|
-| 3 |A jelszónak kisbetűket kell tartalmaznia. |A jelszavaknak a következő 4 karakterközül 3 karaktert kell tartalmazniuk: kisbetű, nagybetű, numerikus és speciális. Győződjön meg arról, hogy a jelszó megfelel ezeknek a követelményeknek. |
-| 4 |A jelszónak numerikus karaktereket kell tartalmaznia. |A jelszavaknak a következő 4 karakterközül 3 karaktert kell tartalmazniuk: kisbetű, nagybetű, numerikus és speciális. Győződjön meg arról, hogy a jelszó megfelel ezeknek a követelményeknek. |
-| 5 |A jelszónak speciális karaktereket kell tartalmaznia. |A jelszavaknak a következő 4 karakterközül 3 karaktert kell tartalmazniuk: kisbetű, nagybetű, numerikus és speciális. Győződjön meg arról, hogy a jelszó megfelel ezeknek a követelményeknek. |
-| 6 |A jelszónak a következő 4 karakterközül 3 karaktert kell tartalmaznia: nagybetűs, kisbetűs, numerikus és speciális. |A jelszó nem tartalmazza a szükséges karaktertípusokat. Győződjön meg arról, hogy a jelszó megfelel ezeknek a követelményeknek. |
-| 7 |A paraméter nem felel meg a megerősítésnek. |Győződjön meg arról, hogy a jelszó megfelel az összes követelménynek, és helyesen adta meg. |
-| 8 |A jelszó nem felel meg az alapértelmezettnek. |Az alapértelmezett jelszó a *Password1*. Ezt a jelszót az első bejelentkezés után módosítania kell. |
-| 9 |A megadott jelszó nem egyezik meg az eszköz jelszavával. Írja be újra a jelszót. |Ellenőrizze a jelszót, és írja be újra. |
+| 1 |A jelszó hossza meghaladja a maximális hosszt. |Az eszköz rendszergazdai jelszavának 8 – 15 karakter hosszúnak kell lennie. |
+| 2 |A jelszó nem felel meg a szükséges hossznak. |Az eszköz rendszergazdai jelszavának 8 – 15 karakter hosszúnak kell lennie.|
+| 3 |A jelszónak kisbetűket kell tartalmaznia. |A jelszónak a következő 4 karakterből kell állnia: kisbetűs, nagybetűs, numerikus és speciális. Ellenőrizze, hogy a Jelszó megfelel-e a követelményeknek. |
+| 4 |A jelszónak numerikus karaktereket kell tartalmaznia. |A jelszónak a következő 4 karakterből kell állnia: kisbetűs, nagybetűs, numerikus és speciális. Ellenőrizze, hogy a Jelszó megfelel-e a követelményeknek. |
+| 5 |A jelszónak speciális karaktereket kell tartalmaznia. |A jelszónak a következő 4 karakterből kell állnia: kisbetűs, nagybetűs, numerikus és speciális. Ellenőrizze, hogy a Jelszó megfelel-e a követelményeknek. |
+| 6 |A jelszónak a következő 4 karakterből kell állnia: nagybetűs, kisbetűs, numerikus és speciális. |A jelszó nem tartalmazza a szükséges típusú karaktereket. Ellenőrizze, hogy a Jelszó megfelel-e a követelményeknek. |
+| 7 |A paraméter nem felel meg a megerősítésnek. |Ellenőrizze, hogy a Jelszó megfelel-e az összes követelménynek, és hogy helyesen adta-e meg. |
+| 8 |A jelszó nem egyezhet meg az alapértelmezett értékkel. |Az alapértelmezett jelszó a *jelszó1*. Az első bejelentkezés után módosítania kell ezt a jelszót. |
+| 9 |A beírt jelszó nem egyezik meg az eszköz jelszavával. Írja be újra a jelszót. |Győződjön meg a jelszó megadásáról, majd írja be újra. |
 
-A jelszavakat az eszköz regisztrálása előtt gyűjtik, de csak a sikeres regisztráció után alkalmazzák. A jelszó-helyreállítási munkafolyamat megköveteli az eszköz regisztrálását.
+A rendszer a jelszavakat az eszköz regisztrálása előtt gyűjti, de csak a sikeres regisztráció után alkalmazza. A jelszó-helyreállítási munkafolyamat megköveteli az eszköz regisztrálását.
 
 > [!IMPORTANT]
-> Általánosságban elmondható, hogy ha a jelszó alkalmazására tett kísérlet sikertelen, a szoftver ismételten megpróbálja összegyűjteni a jelszót, amíg sikeres nem lesz. Ritka esetekben a jelszó nem alkalmazható. Ebben az esetben regisztrálhatja az eszközt, és folytathatja, azonban a jelszavak nem változnak. Módosíthatja az eszköz rendszergazdai jelszavát az Azure Portalon történő regisztráció után.
+> Általánosságban elmondható, hogy ha egy jelszó alkalmazására tett kísérlet meghiúsul, a szoftver ismételten megkísérli a jelszó gyűjtését, amíg a művelet nem sikerült. Ritka esetekben a jelszó nem alkalmazható. Ebben az esetben regisztrálhatja az eszközt, és folytathatja a jelszót, azonban a jelszavak nem lesznek módosítva. Az eszköz rendszergazdai jelszavát a Azure Portal regisztrációját követően is módosíthatja.
 
 
-A storSimple Eszközkezelő szolgáltatás segítségével alaphelyzetbe állíthatja a jelszót az Azure Portalon. További információt az [Eszköz rendszergazdai jelszavának módosítása](storsimple-8000-change-passwords.md#change-the-device-administrator-password)című területen talál.
+A Azure Portal jelszavát a StorSimple Eszközkezelő szolgáltatáson keresztül állíthatja alaphelyzetbe. További információért lépjen [az eszköz rendszergazdai jelszavának módosítása](storsimple-8000-change-passwords.md#change-the-device-administrator-password)elemre.
 
 ## <a name="errors-during-device-registration"></a>Hibák az eszközregisztráció során
-Az eszköz regisztrálásához használja a Microsoft Azure-ban futó StorSimple Eszközkezelő szolgáltatást. Az eszköz regisztrációja során az alábbi problémák közül egyet vagy többet is előfordulhat.
+Az eszköz regisztrálásához használja a Microsoft Azure futó StorSimple Eszközkezelő szolgáltatást. Az eszköz regisztrációja során a következő problémák valamelyike merülhet fel.
 
 | Nem. | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 | --- | --- | --- | --- |
-| 1 |350027-es hiba: Nem sikerült regisztrálni az eszközt a StorSimple Eszközkezelővel. | |Várjon néhány percet, majd próbálkozzon újra a művelettel. Ha a probléma továbbra is fennáll, [forduljon a Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md) |
-| 2 |350013-as hiba: Hiba történt az eszköz regisztrálása során. Ennek oka lehet a helytelen szolgáltatásregisztrációs kulcs. | |Regisztrálja újra az eszközt a megfelelő szolgáltatásregisztrációs kulccsal. További információ: [A szolgáltatás regisztrációs kulcsának beszereznie.](storsimple-8000-manage-service.md#get-the-service-registration-key) |
-| 3 |350063-as hiba: A StorSimple Eszközkezelő szolgáltatás hitelesítése lejárt, de a regisztráció nem sikerült. Próbálkozzon újra a művelettel egy idő után. |Ez a hiba azt jelzi, hogy az ACS-vel végzett hitelesítés sikeres volt, de a szolgáltatásregiszterhívás sikertelen volt. Ez egy szórványos hálózati hiba eredménye lehet. |Ha a probléma továbbra is fennáll, [forduljon a Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md) |
-| 4 |350049-es hiba: A szolgáltatás nem érhető el a regisztráció során. |Amikor a szolgáltatás hívása történik, webes kivétel érkezik. Bizonyos esetekben ez a művelet későbbi újbóli megkísérlésével kijavítható. |Ellenőrizze az IP-címet és a DNS-nevet, majd próbálkozzon újra a művelettel. Ha a probléma továbbra is fennáll, [forduljon a Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md) |
-| 5 |350031-es hiba: Az eszköz már regisztrálva van. | |Nincs szükség beavatkozásra. |
-| 6 |350016-os hiba: Az eszközregisztráció nem sikerült. | |Ellenőrizze, hogy a regisztrációs kulcs helyes-e. |
-| 7 |Invoke-HcsSetupWizard: Hiba történt az eszköz regisztrálása közben; ennek oka lehet helytelen IP-cím vagy DNS-név. Ellenőrizze a hálózati beállításokat, majd próbálkozzon újra. Ha a probléma továbbra is fennáll, [forduljon a Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md) (350050-es hiba) |Győződjön meg arról, hogy az eszköz képes pingelni a külső hálózatot. Ha nem rendelkezik kapcsolattal a külső hálózathoz, a regisztráció sikertelen lehet ezzel a hibával. Ez a hiba az alábbiak közül egy vagy több kombinációja lehet:<ul><li>Helytelen IP</li><li>Helytelen alhálózat</li><li>Helytelen átjáró</li><li>Helytelen DNS-beállítások</li></ul> |Tekintse meg a [lépésenkénti hibaelhárítási példában](#step-by-step-storsimple-troubleshooting-example)található lépéseket. |
-| 8 |Invoke-HcsSetupWizard: Az aktuális művelet belső szolgáltatáshiba miatt nem sikerült [0x1FBE2] miatt. Próbálkozzon újra a művelettel valamikor. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |Ez egy általános hiba, amely a szolgáltatásból vagy ügynökből származó összes felhasználó láthatatlan hibájára vonatkozóan jelenik meg. A leggyakoribb ok az lehet, hogy az ACS-hitelesítés sikertelen volt. A hiba egyik lehetséges oka, hogy problémák vannak az NTP-kiszolgáló konfigurációjával kapcsolatban, és az eszköz ideje nincs megfelelően beállítva. |Javítsa ki az időt (ha problémák vannak), majd próbálkozzon újra a regisztrációs művelettel. Ha a Set-HcsSystem -Timezone paranccsal állítja be az időzónát, nagybetűvel használja az időzónában lévő egyes szavakat (például "csendes-óceáni téli idő").  Ha a probléma továbbra is fennáll, lépjen kapcsolatba a [Microsoft támogatási szolgálatával](storsimple-8000-contact-microsoft-support.md) a következő lépésekért. |
-| 9 |Figyelmeztetés: Nem lehetett aktiválni az eszközt. Az eszköz rendszergazdája és a StorSimple Snapshot Manager jelszavai nem változtak. |Ha a regisztráció sikertelen, az eszköz rendszergazdája és a StorSimple Snapshot Manager jelszavai nem változnak. | |
+| 1 |350027-es hiba: nem sikerült regisztrálni az eszközt a StorSimple Eszközkezelő. | |Várjon néhány percet, majd próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md). |
+| 2 |350013-es hiba: hiba történt az eszköz regisztrálásakor. Ennek oka az, hogy a szolgáltatás regisztrációs kulcsa helytelen. | |Regisztrálja újra az eszközt a megfelelő szolgáltatás regisztrációs kulcsával. További információ: [a szolgáltatás regisztrációs kulcsának beszerzése.](storsimple-8000-manage-service.md#get-the-service-registration-key) |
+| 3 |350063-es hiba: a StorSimple Eszközkezelő szolgáltatás hitelesítése sikeres, de a regisztráció nem sikerült. Némi idő elteltével próbálja megismételni a műveletet. |Ez a hiba azt jelzi, hogy az ACS-vel való hitelesítés át lett adva, de a szolgáltatáshoz való regisztrálási hívás sikertelen volt. Ez lehet egy szórványos hálózati hiba eredménye. |Ha a probléma továbbra is fennáll, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md). |
+| 4 |350049-es hiba: a szolgáltatás nem érhető el a regisztráció során. |Ha a szolgáltatás hívása történik, a rendszer egy webes kivételt fogad. Bizonyos esetekben előfordulhat, hogy a művelet később újra próbálkozik. |Ellenőrizze az IP-címet és a DNS-nevet, majd próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, [forduljon a Microsoft ügyfélszolgálatahoz.](storsimple-8000-contact-microsoft-support.md) |
+| 5 |350031-es hiba: az eszköz már regisztrálva van. | |Nincs szükség beavatkozásra. |
+| 6 |350016-es hiba: az eszköz regisztrálása nem sikerült. | |Győződjön meg arról, hogy a regisztrációs kulcs helyes. |
+| 7 |Meghívás – Hcssetupwizard parancsmagot: hiba történt az eszköz regisztrálása közben; Ennek oka az lehet, hogy helytelen az IP-cím vagy a DNS-név. Ellenőrizze a hálózati beállításokat, és próbálkozzon újra. Ha a probléma továbbra is fennáll, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md). (350050-es hiba) |Győződjön meg arról, hogy az eszköz képes pingelni a külső hálózatot. Ha nem rendelkezik kapcsolattal a külső hálózattal, akkor a regisztráció meghiúsulhat ezzel a hibával. Ez a hiba a következők közül egy vagy több kombinációja lehet:<ul><li>Helytelen IP-cím</li><li>Helytelen alhálózat</li><li>Helytelen átjáró</li><li>Helytelen DNS-beállítások</li></ul> |Tekintse meg a [lépésenkénti hibaelhárítási példa](#step-by-step-storsimple-troubleshooting-example)lépéseit. |
+| 8 |Meghívás – Hcssetupwizard parancsmagot: az aktuális művelet végrehajtása egy belső szolgáltatási hiba miatt meghiúsult [0x1FBE2]. Némi várakozás után próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |Ez egy általános hiba, amely a szolgáltatás vagy az ügynök összes felhasználójának láthatatlan hibáját felváltja. A leggyakoribb ok az lehet, hogy az ACS-hitelesítés sikertelen volt. A hiba lehetséges oka az, hogy az NTP-kiszolgáló konfigurációjának problémái vannak, és az eszközön beállított idő nincs megfelelően beállítva. |Javítsa ki az időt (ha vannak problémák), majd próbálja megismételni a regisztrációs műveletet. Ha a set-HcsSystem-timezone paranccsal állítja be az időzónát, az időzónában lévő összes szót kihasználja (például "csendes-óceáni téli idő").  Ha a probléma továbbra is fennáll, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md) a következő lépésekhez. |
+| 9 |Figyelmeztetés: nem aktiválható az eszköz. Az eszköz rendszergazdája és a StorSimple Snapshot Manager jelszava nem módosult. |Ha a regisztráció meghiúsul, az eszköz rendszergazdája és StorSimple Snapshot Manager jelszavak nem változnak. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>A StorSimple-környezetek hibaelhárítási eszközei
-A StorSimple számos eszközt tartalmaz, amelyek segítségével elháríthatja a StorSimple-megoldást. Ezek a következők:
+A StorSimple több eszközt is tartalmaz, amelyek segítségével elháríthatja a StorSimple-megoldást. Ezek a következők:
 
-* Támogatási csomagok és eszköznaplók.
+* A csomagok és az eszközök naplófájljainak támogatása.
 * Kifejezetten hibaelhárításra tervezett parancsmagok.
 
-## <a name="support-packages-and-device-logs-available-for-troubleshooting"></a>Hibaelhárításhoz rendelkezésre álló támogatási csomagok és eszköznaplók
-A támogatási csomag tartalmazza az összes olyan naplót, amely segítséget nyújthat a Microsoft támogatási csapatának az eszközhibák elhárításában. A Windows PowerShell for StorSimple segítségével létrehozhat egy titkosított támogatási csomagot, amelyet ezután megoszthat a támogatási személyzettel.
+## <a name="support-packages-and-device-logs-available-for-troubleshooting"></a>A hibaelhárításhoz elérhető támogatási csomagok és eszközök naplói
+A támogatási csomag tartalmazza az összes olyan naplót, amely segítséget nyújt a Microsoft ügyfélszolgálata csapatnak az eszköz hibáinak elhárításához. A Windows PowerShell StorSimple-bővítménye használatával létrehozhat egy titkosított támogatási csomagot, amelyet aztán megoszthat a támogatási személyzettel.
 
-### <a name="to-view-the-logs-or-the-contents-of-the-support-package"></a>A támogatási csomag naplóinak vagy tartalmának megtekintése
-1. A StorSimple hez létrehozott Windows PowerShell segítségével hozzon létre egy támogatási csomagot a [Támogatási csomag létrehozása és kezelése](storsimple-8000-create-manage-support-package.md)című részben leírtak szerint.
+### <a name="to-view-the-logs-or-the-contents-of-the-support-package"></a>A támogatási csomag naplófájljainak vagy tartalmának megtekintése
+1. A Windows PowerShell StorSimple-bővítménye használatával hozzon létre egy támogatási csomagot a [támogatási csomag létrehozása és kezelése](storsimple-8000-create-manage-support-package.md)című témakörben leírtak szerint.
 2. Töltse le a [visszafejtési parancsfájlt](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) helyileg az ügyfélszámítógépen.
-3. Ezzel a [lépésről lépésre történő eljárással](storsimple-8000-create-manage-support-package.md#edit-a-support-package) megnyithatja és visszafejtheti a támogatási csomagot.
-4. A visszafejtett támogatási csomag naplók etw/etvx formátumban vannak. A fájlok Windows Eseménynaplóban való megtekintéséhez a következő lépéseket hajthatja végre:
+3. Ezzel a [lépésenkénti eljárással](storsimple-8000-create-manage-support-package.md#edit-a-support-package) megnyithatja és visszafejtheti a támogatási csomagot.
+4. A visszafejtett támogatási csomag naplói ETW/etvx formátumban vannak. A következő lépések végrehajtásával tekintheti meg ezeket a fájlokat a Windows Eseménynaplóban:
    
-   1. Futtassa az **eventvwr** parancsot a Windows-ügyfélen. Ezzel elindítja az Eseménynaplót.
-   2. A **Műveletek** ablaktáblán kattintson a **Mentett napló megnyitása** elemre, és mutasson a naplófájlokra etvx/etw formátumban (a támogatási csomag). Most már megtekintheti a fájlt. A fájl megnyitása után a jobb gombbal kattinthat, és szövegként mentheti a fájlt.
+   1. Futtassa a **eventvwr** parancsot a Windows-ügyfélen. Ekkor elindul a Eseménynapló.
+   2. A **műveletek** ablaktáblán kattintson a **mentett napló megnyitása** lehetőségre, és mutasson a naplófájlok etvx/ETW formátumban (a támogatási csomag) elemre. Most már megtekintheti a fájlt. A fájl megnyitása után kattintson a jobb gombbal, és mentse a fájlt szövegként.
       
       > [!IMPORTANT]
-      > A **Get-WinEvent** parancsmag segítségével is megnyithatja ezeket a fájlokat a Windows PowerShellben. További információ: [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx) a Windows PowerShell-parancsmag referenciadokumentációjában.
+      > A **Get-WinEvent** parancsmag használatával is megnyithatja ezeket a fájlokat a Windows PowerShellben. További információ: [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx) a Windows PowerShell-parancsmagok dokumentációjában.
      
-5. Amikor a naplók megnyílnak az Eseménynaplóban, keresse meg az alábbi naplókat, amelyek az eszköz konfigurációjával kapcsolatos problémákat tartalmaznak:
+5. Ha a naplók Eseménynaplóban nyílnak meg, keresse meg a következő naplókat, amelyek az eszköz konfigurációjával kapcsolatos problémákat tartalmaznak:
    
-   * hcs_pfconfig/működési napló
-   * hcs_pfconfig/Config
-6. A naplófájlokban keresse meg a telepítővarázsló által hívott parancsmagokhoz kapcsolódó karakterláncokat. Lásd az [első beállítási varázsló folyamatát](#first-time-setup-wizard-process) ezeknek a parancsmagoknak a listájáról.
-7. Ha nem tudja kideríteni a probléma okát, a következő lépésekért forduljon a [Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md) Használja a [Támogatási kérelem létrehozása](storsimple-8000-contact-microsoft-support.md#create-a-support-request) című részben leírt lépéseket, amikor segítségért forduljon a Microsoft támogatási szolgálatához.
+   * hcs_pfconfig/Operational-napló
+   * hcs_pfconfig/config
+6. A naplófájlokban keressen a telepítővarázsló által meghívott parancsmagokkal kapcsolatos karakterláncokra. A parancsmagok listájáért tekintse meg a telepítővarázsló [első alkalommal történő feldolgozását](#first-time-setup-wizard-process) ismertető témakört.
+7. Ha nem tudja kideríteni a probléma okát, [lépjen kapcsolatba Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) a következő lépésekhez. Ha segítségre Microsoft ügyfélszolgálata van szüksége, használja a [támogatási kérelem létrehozása](storsimple-8000-contact-microsoft-support.md#create-a-support-request) című témakör lépéseit.
 
-## <a name="cmdlets-available-for-troubleshooting"></a>Hibaelhárításhoz rendelkezésre álló parancsmagok
-A következő Windows PowerShell-parancsmagokkal észlelheti a csatlakozási hibákat.
+## <a name="cmdlets-available-for-troubleshooting"></a>Hibaelhárításhoz elérhető parancsmagok
+A kapcsolódási hibák észleléséhez használja az alábbi Windows PowerShell-parancsmagokat.
 
-* `Get-NetAdapter`: Ezzel a parancsmagval észlelheti a hálózati adapterek állapotát.
+* `Get-NetAdapter`: Ezzel a parancsmaggal észlelhető a hálózati adapterek állapota.
 * `Test-Connection`: Ezzel a parancsmaggal ellenőrizheti a hálózaton belüli és kívüli hálózati kapcsolatot.
-* `Test-HcsmConnection`: Ezzel a parancsmagval ellenőrizheti a sikeresen regisztrált eszköz kapcsolatát.
-* `Sync-HcsTime`: Ezzel a parancsmaggal megjelenítheti az eszköz idejét, és kényszerítheti az ntp-kiszolgálóval való időszinkronizálást.
-* `Enable-HcsPing`és `Disable-HcsPing`: Használja ezeket a parancsmagokat, hogy a gazdagépek pingelhetjék a hálózati adaptereket a StorSimple eszközön. Alapértelmezés szerint a StorSimple hálózati csatolók nem válaszolnak a pingkérésekre.
-* `Trace-HcsRoute`: Használja ezt a parancsmagot útvonal-nyomkövetési eszközként. Csomagokat küld minden útválasztónak a végső célfelé vezető úton egy adott időszakban, majd kiszámítja az eredményeket az egyes ugrásokból visszaadott csomagok alapján. Mivel `Trace-HcsRoute` egy adott útválasztón vagy kapcsolaton a csomagvesztés mértékét mutatja, meghatározhatja, hogy mely útválasztók vagy kapcsolatok okozhatnak hálózati problémákat.
-* `Get-HcsRoutingTable`: Ezzel a parancsmagval jelenítheti meg a helyi IP-útválasztási táblát.
+* `Test-HcsmConnection`: Ezzel a parancsmaggal ellenőrizheti egy sikeresen regisztrált eszköz kapcsolatát.
+* `Sync-HcsTime`: Ezzel a parancsmaggal megjelenítheti az eszköz időpontját, és kényszerítheti az időszinkronizálást az NTP-kiszolgálóval.
+* `Enable-HcsPing`és `Disable-HcsPing`: ezekkel a parancsmagokkal engedélyezheti a gazdagépek számára a StorSimple-eszközön lévő hálózati adapterek pingelését. Alapértelmezés szerint a StorSimple hálózati adapterek nem válaszolnak a pingelési kérelmekre.
+* `Trace-HcsRoute`: Használja ezt a parancsmagot útvonal-nyomkövetési eszközként. A csomagokat az egyes útválasztóknak egy adott időszakon belül egy végső célhelyre küldi, majd az egyes ugrásokból visszaadott csomagok alapján kiszámítja az eredményeket. Mivel `Trace-HcsRoute` a csomagok elvesztésének mértékét az adott útválasztón vagy hivatkozáson jeleníti meg, meghatározhatja, hogy mely útválasztók vagy hivatkozások okozhatnak hálózati problémákat.
+* `Get-HcsRoutingTable`: Ezzel a parancsmaggal jelenítheti meg a helyi IP-útválasztási táblázatot.
 
-## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Hibaelhárítás a Get-NetAdapter parancsmaggal
-Amikor hálózati adaptereket állít be az eszköz első központi telepítéséhez, a hardver állapota nem érhető el a StorSimple Eszközkezelő szolgáltatás felhasználói felületén, mert az eszköz még nincs regisztrálva a szolgáltatásban. Emellett előfordulhat, hogy a **Hardver állapotpanel** nem mindig tükrözi megfelelően az eszköz állapotát, különösen akkor, ha olyan problémák merülnek fel, amelyek befolyásolják a szolgáltatás szinkronizálását. Ezekben az esetekben a `Get-NetAdapter` parancsmag segítségével meghatározhatja a hálózati adapterek állapotát és állapotát.
+## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>A Get-NetAdapter parancsmaggal való problémamegoldás
+Amikor a hálózati adaptereket konfigurálja egy első alkalommal üzemelő eszköz telepítésére, a hardver állapota nem érhető el a StorSimple Eszközkezelő szolgáltatás felhasználói felületén, mert az eszköz még nincs regisztrálva a szolgáltatásban. Emellett előfordulhat, hogy a **hardver állapota** panel nem mindig megfelelően tükrözi az eszköz állapotát, különösen akkor, ha olyan problémák merülnek fel, amelyek befolyásolják a szolgáltatás szinkronizálását. Ilyen helyzetekben a `Get-NetAdapter` parancsmaggal határozható meg a hálózati adapterek állapota és állapota.
 
-### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Az eszközön lévő összes hálózati adapter listájának megtekintése
-1. Indítsa el a Windows PowerShell torSimple-hez, majd írja be a következőt: `Get-NetAdapter`. 
-2. A hálózati adapter `Get-NetAdapter` állapotának megismeréséhez használja a parancsmag kimenetét és az alábbi irányelveket.
+### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Az eszközön található összes hálózati adapter listájának megjelenítése
+1. Indítsa el Windows PowerShell StorSimple-bővítménye, majd írja `Get-NetAdapter`be a következőt:. 
+2. Használja a `Get-NetAdapter` parancsmag kimenetét és a következő irányelveket a hálózati adapter állapotának megismeréséhez.
    
-   * Ha a kapcsolat kifogástalan és engedélyezve van, az **ifIndex** állapota **Up**.
-   * Ha a kapcsolat kifogástalan, de fizikailag nem csatlakozik (hálózati kábellel), az **ifIndex** **letiltva**jelenik meg.
-   * Ha a kapcsolat kifogástalan, de nincs engedélyezve, az **ifIndex** állapota NotPresent néven jelenik **meg.**
-   * Ha a kapcsolat nem létezik, akkor nem jelenik meg ebben a listában. A StorSimple Eszközkezelő szolgáltatás felhasználói felülete továbbra is hibás állapotban jeleníti meg ezt a felületet.
+   * Ha a csatoló állapota Kifogástalan, és engedélyezve van, a **előtérillesztő ifindex** **állapot jelenik meg.**
+   * Ha az illesztőfelület kifogástalan állapotú, de nincs fizikailag csatlakoztatva (hálózati kábel), a **előtérillesztő ifindex** **letiltottként**jelenik meg.
+   * Ha az illesztőfelület kifogástalan, de nincs engedélyezve, a **előtérillesztő ifindex** állapota **NotPresent**lesz látható.
+   * Ha az illesztőfelület nem létezik, akkor nem jelenik meg a listában. A StorSimple Eszközkezelő szolgáltatás felhasználói felülete továbbra is hibás állapotban jeleníti meg ezt az illesztőfelületet.
 
-A parancsmag használatáról a [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) a Windows PowerShell-parancsmag hivatkozási lapban található további információért.
+A parancsmag használatáról további információt a [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) című témakörben olvashat a Windows PowerShell-parancsmagok dokumentációjában.
 
-A következő szakaszok a `Get-NetAdapter` parancsmag kimeneti mintáit mutatják be.
+A következő részekben a `Get-NetAdapter` parancsmag kimenetének mintái láthatók.
 
- Ezekben a mintákban a 0 vezérlő volt a passzív vezérlő, és a következőképpen lett konfigurálva:
+ Ezekben a mintákban a Controller 0 a passzív vezérlő volt, és a következőképpen lett konfigurálva:
 
-* Data 0, DATA 1, DATA 2 és DATA 3 hálózati interfészek léteztek az eszközön.
-* A DATA 4 és a DATA 5 hálózati kártyák nem voltak jelen; ezért ezek nem szerepelnek a kimenetben.
-* A DATA 0 engedélyezve volt.
+* Az eszközön a 0, az 1., a 2. és a 3. adatkapcsolatú hálózati adapter található.
+* A 4. és az 5. adatkártyák hálózati adapterei nem voltak jelen; ezért nem szerepelnek a kimenetben.
+* AZ adat0 engedélyezve lett.
 
-Az 1-es vezérlő volt az aktív vezérlő, és a következőképpen lett konfigurálva:
+Az 1. vezérlő volt az aktív vezérlő, és a következőképpen lett konfigurálva:
 
-* Data 0, DATA 1, DATA 2, DATA 3, DATA 4 és DATA 5 hálózati interfészek léteztek az eszközön.
-* A DATA 0 engedélyezve volt.
+* Az eszközön a 0, az 1., a 2., a 3., a 4. és az 5. adathálózati adapter található.
+* AZ adat0 engedélyezve lett.
 
-**Mintakimenet – vezérlő 0**
+**Minta kimenete – 0. vezérlő**
 
-A következő a 0 vezérlő (a passzív vezérlő) kimenete. Data 1, DATA 2 és DATA 3 nincsenek csatlakoztatva. A DATA 4 és a DATA 5 nem jelenik meg, mert nincsenek jelen az eszközön.
+A következő a vezérlő 0 (a passzív vezérlő) kimenete. Az 1., a 2. és a 3. adatkapcsolat nincs csatlakoztatva. A 4. és az 5. adatértékek nem szerepelnek a felsorolásban, mert nem szerepelnek az eszközön.
 
      Controller0>Get-NetAdapter
      Name                 InterfaceDescription                        ifIndex  Status
@@ -218,9 +218,9 @@ A következő a 0 vezérlő (a passzív vezérlő) kimenete. Data 1, DATA 2 és 
      DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
 
 
-**Mintakimenet – vezérlő 1**
+**Minta kimenet – 1. vezérlő**
 
-A következő az 1-es vezérlő (az aktív vezérlő) kimenete. Csak az eszközön lévő DATA 0 hálózati adapter van konfigurálva és működik.
+A következő az 1. vezérlő (az aktív vezérlő) kimenete. Az eszközön csak az adat0 hálózati adapter van konfigurálva és működik.
 
      Controller1>Get-NetAdapter
      Name                 InterfaceDescription                        ifIndex  Status
@@ -234,80 +234,80 @@ A következő az 1-es vezérlő (az aktív vezérlő) kimenete. Csak az eszköz�
      DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPresent
 
 
-## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Hibaelhárítás a testkapcsolat parancsmaggal
-A `Test-Connection` parancsmag segítségével meghatározhatja, hogy a StorSimple eszköz csatlakozhat-e a külső hálózathoz. Ha a beállítási varázslóban az összes hálózati paraméter, beleértve a DNS-t is, megfelelően van konfigurálva, a `Test-Connection` parancsmag segítségével pingelhet egy ismert címet a hálózaton kívül, például outlook.com.
+## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>A test-kapcsolatok parancsmaggal kapcsolatos hibák megoldása
+A `Test-Connection` parancsmag segítségével meghatározhatja, hogy a StorSimple-eszköz csatlakozhat-e a külső hálózathoz. Ha az összes hálózati paraméter, beleértve a DNS-t is, helyesen van konfigurálva a telepítő varázslóban, a `Test-Connection` parancsmag használatával pingelheti a hálózaton kívüli ismert címeket, például a Outlook.com.
 
-Ha a ping le van tiltva, engedélyezze a pingelést a parancsmaggal kapcsolatos csatlakozási problémák elhárításához.
+Ha a pingelés le van tiltva, engedélyezze a ping parancsot a parancsmag csatlakozási problémáinak elhárításához.
 
-Tekintse meg a `Test-Connection` parancsmagból származó kimenet alábbi mintáit.
+Tekintse meg az alábbi, kimenetből `Test-Connection` származó mintákat a parancsmagból.
 
 > [!NOTE]
 > Az első mintában az eszköz helytelen DNS-sel van konfigurálva. A második mintában a DNS helyes.
 
-**Mintakimenet – helytelen DNS**
+**Minta kimenete – helytelen DNS**
 
-A következő példában nincs kimenet az IPV4- és Az IPV6-címekhez, ami azt jelzi, hogy a DNS nincs feloldva. Ez azt jelenti, hogy nincs kapcsolat a külső hálózattal, és megfelelő DNS-t kell biztosítani.
-
-     Source        Destination     IPV4Address      IPV6Address
-     ------        -----------     -----------      -----------
-     HCSNODE0      outlook.com
-     HCSNODE0      outlook.com
-     HCSNODE0      outlook.com
-     HCSNODE0      outlook.com
-
-**Minta kimenet – helyes DNS**
-
-A következő mintában a DNS az IPV4-címet adja vissza, jelezve, hogy a DNS megfelelően van konfigurálva. Ez megerősíti, hogy van kapcsolat a külső hálózattal.
+Az alábbi példában nincs kimenet az IPV4-és IPV6-címekhez, ami azt jelzi, hogy a DNS nincs feloldva. Ez azt jelenti, hogy nincs kapcsolat a külső hálózattal, és helyes DNS-t kell megadni.
 
      Source        Destination     IPV4Address      IPV6Address
      ------        -----------     -----------      -----------
+     HCSNODE0      outlook.com
+     HCSNODE0      outlook.com
+     HCSNODE0      outlook.com
+     HCSNODE0      outlook.com
+
+**Minta kimenete – helyes DNS**
+
+A következő példában a DNS az IPV4-címeket adja vissza, ami azt jelzi, hogy a DNS megfelelően van konfigurálva. Ezzel megerősíti, hogy a külső hálózathoz van kapcsolat.
+
+     Source        Destination     IPV4Address      IPV6Address
+     ------        -----------     -----------      -----------
      HCSNODE0      outlook.com     132.245.92.194
      HCSNODE0      outlook.com     132.245.92.194
      HCSNODE0      outlook.com     132.245.92.194
      HCSNODE0      outlook.com     132.245.92.194
 
-## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Hibaelhárítás a Test-HcsmConnection parancsmaggal
-Használja `Test-HcsmConnection` a parancsmabot egy eszköz, amely már csatlakozik a StorSimple Device Manager szolgáltatáshoz, és regisztrált. Ez a parancsmag segít a regisztrált eszköz és a megfelelő StorSimple Eszközkezelő szolgáltatás közötti kapcsolat ellenőrzésében. Ezt a parancsot a StorSimple-hez való Windows PowerShell en futtathatja.
+## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Hibakeresés a test-HcsmConnection parancsmaggal
+Használja a `Test-HcsmConnection` parancsmagot olyan eszközhöz, amely már csatlakozott a StorSimple Eszközkezelő szolgáltatáshoz, és regisztrálja őket. Ez a parancsmag segítséget nyújt a regisztrált eszközök és a hozzájuk tartozó StorSimple Eszközkezelő szolgáltatás közötti kapcsolat ellenőrzéséhez. Ezt a parancsot Windows PowerShell StorSimple-bővítménye futtathatja.
 
-### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>A Test-HcsmConnection parancsmag futtatása
-1. Ellenőrizze, hogy az eszköz regisztrálva van-e.
-2. Ellenőrizze az eszköz állapotát. Ha az eszköz inaktív, karbantartási módban vagy offline módban van, az alábbi hibák egyike jelenhet meg:
+### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>A test-HcsmConnection parancsmag futtatása
+1. Győződjön meg arról, hogy az eszköz regisztrálva van.
+2. Keresse meg az eszköz állapotát. Ha az eszköz inaktiválva van, karbantartási módban vagy offline üzemmódban, a következő hibák valamelyike jelenhet meg:
    
-   * ErrorCode.CiSDeviceDecommissioned – ez azt jelzi, hogy az eszköz inaktív.
-   * ErrorCode.DeviceNotReady – ez azt jelzi, hogy az eszköz karbantartási módban van.
-   * ErrorCode.DeviceNotReady – ez azt jelzi, hogy az eszköz nincs online állapotban.
-3. Ellenőrizze, hogy a StorSimple Eszközkezelő szolgáltatás fut-e (használja a [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) parancsmag). Ha a szolgáltatás nem fut, a következő hibák jelenhetnek meg:
+   * ErrorCode. CiSDeviceDecommissioned – ez azt jelzi, hogy az eszköz inaktiválva van.
+   * ErrorCode. DeviceNotReady – jelzi, hogy az eszköz karbantartási módban van.
+   * ErrorCode. DeviceNotReady – ez azt jelenti, hogy az eszköz nem online állapotú.
+3. Ellenőrizze, hogy fut-e a StorSimple Eszközkezelő szolgáltatás (használja a [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) parancsmagot). Ha a szolgáltatás nem fut, a következő hibák jelenhetnek meg:
    
-   * Errorcode.CiSapplianceAgentNotOnline
-   * ErrorCode.CisPowershellScriptHcsError – ez azt jelzi, hogy kivétel történt a Get-ClusterResource (Get-ClusterResource) futtatásakor.
-4. Ellenőrizze a hozzáférés-vezérlési szolgáltatás (ACS) jogkivonatát. Ha webes kivételt okoz, az átjáróprobléma, hiányzó proxyhitelesítés, helytelen DNS vagy hitelesítési hiba eredménye lehet. A következő hibák jelenhetnek meg:
+   * ErrorCode. CiSApplianceAgentNotOnline
+   * ErrorCode. CisPowershellScriptHcsError – ez azt jelzi, hogy kivétel történt a Get-ClusterResource futtatásakor.
+4. Keresse meg az Access Control Service (ACS) tokent. Ha webes kivételt dob, akkor lehetséges, hogy egy átjáróval kapcsolatos probléma, hiányzó proxy-hitelesítés, helytelen DNS vagy hitelesítési hiba okozta. A következő hibák jelenhetnek meg:
    
-   * ErrorCode.CiSApplianceGateway – ez egy HttpStatusCode.BadGateway kivételt jelez: a névfeloldó szolgáltatás nem tudta feloldani az állomásnevet.
-   * ErrorCode.CiSApplianceProxy – ez egy HttpStatusCode.ProxyAuthenticationRequired kivételt (407-es HTTP-állapotkód) jelzi): az ügyfél nem tudott hitelesíteni a proxykiszolgálóval.
-   * ErrorCode.CiSApplianceDNSError – ez webExceptionstatus.nameresolutionfailure kivételt jelez: a névfeloldó szolgáltatás nem tudta feloldani az állomásnevet.
-   * ErrorCode.CiSApplianceACSError – ez azt jelzi, hogy a szolgáltatás hitelesítési hibát adott vissza, de van kapcsolat.
+   * ErrorCode. CiSApplianceGateway – ez egy HttpStatusCode. BadGateway kivételt jelez: a név-feloldó szolgáltatás nem tudja feloldani az állomásnév nevét.
+   * ErrorCode. CiSApplianceProxy – ez egy HttpStatusCode. ProxyAuthenticationRequired kivételt jelez (407-es HTTP-állapotkód): az ügyfél nem tudott hitelesíteni a proxykiszolgálót.
+   * ErrorCode. CiSApplianceDNSError – ez egy WebExceptionStatus. NameResolutionFailure kivételt jelez: a név-feloldó szolgáltatás nem tudja feloldani az állomásnév nevét.
+   * ErrorCode. CiSApplianceACSError – ez azt jelzi, hogy a szolgáltatás hitelesítési hibát adott vissza, de van kapcsolat.
      
-     Ha nem jelent webes kivételt, ellenőrizze az ErrorCode.CiSApplianceFailure fájlt. Ez azt jelzi, hogy a készülék meghibásodott.
-5. Ellenőrizze a felhőszolgáltatás kapcsolatát. Ha a szolgáltatás webes kivételt okoz, a következő hibák jelenhetnek meg:
+     Ha nem mutat webes kivételt, ellenőrizze a ErrorCode. CiSApplianceFailure. Ez azt jelzi, hogy a berendezés nem sikerült.
+5. A Cloud Service-kapcsolat ellenőrzése. Ha a szolgáltatás webes kivételt dob, a következő hibák jelenhetnek meg:
    
-   * ErrorCode.CiSApplianceGateway – ez egy HttpStatusCode.BadGateway kivételt jelez: egy köztes proxykiszolgáló rossz kérést kapott egy másik proxytól vagy az eredeti kiszolgálótól.
-   * ErrorCode.CiSApplianceProxy – ez egy HttpStatusCode.ProxyAuthenticationRequired kivételt (407-es HTTP-állapotkód) jelzi): az ügyfél nem tudott hitelesíteni a proxykiszolgálóval.
-   * ErrorCode.CiSApplianceDNSError – ez webExceptionstatus.nameresolutionfailure kivételt jelez: a névfeloldó szolgáltatás nem tudta feloldani az állomásnevet.
-   * ErrorCode.CiSApplianceACSError – ez azt jelzi, hogy a szolgáltatás hitelesítési hibát adott vissza, de van kapcsolat.
+   * ErrorCode. CiSApplianceGateway – ez egy HttpStatusCode. BadGateway kivételt jelez: egy közbenső proxykiszolgáló rossz kérést kapott egy másik proxytól vagy az eredeti kiszolgálótól.
+   * ErrorCode. CiSApplianceProxy – ez egy HttpStatusCode. ProxyAuthenticationRequired kivételt jelez (407-es HTTP-állapotkód): az ügyfél nem tudott hitelesíteni a proxykiszolgálót.
+   * ErrorCode. CiSApplianceDNSError – ez egy WebExceptionStatus. NameResolutionFailure kivételt jelez: a név-feloldó szolgáltatás nem tudja feloldani az állomásnév nevét.
+   * ErrorCode. CiSApplianceACSError – ez azt jelzi, hogy a szolgáltatás hitelesítési hibát adott vissza, de van kapcsolat.
      
-     Ha nem jelent webes kivételt, ellenőrizze az ErrorCode.CiSApplianceSaasServiceError.If it does not throw a web exception, check for ErrorCode.CiSApplianceSaasServiceError. Ez a StorSimple Eszközkezelő szolgáltatással kapcsolatos problémára utal.
-6. Ellenőrizze az Azure Service Bus-kapcsolatot. Az ErrorCode.CiSApplianceServiceBusError azt jelzi, hogy az eszköz nem tud csatlakozni a service bushoz.
+     Ha nem mutat webes kivételt, ellenőrizze a ErrorCode. CiSApplianceSaasServiceError. Ez a StorSimple Eszközkezelő szolgáltatással kapcsolatos problémát jelez.
+6. Azure Service Bus kapcsolat ellenőrzése. A ErrorCode. CiSApplianceServiceBusError azt jelzi, hogy az eszköz nem tud csatlakozni a Service Bushoz.
 
-A CiSCommandletLog0Curr.errlog és a CiSAgentsvc0Curr.errlog naplófájlok további információkat tartalmaznak, például a kivétel részleteit.
+A CiSCommandletLog0Curr. errlog és a CiSAgentsvc0Curr. errlog naplófájlok további információkat fognak tartalmazni, például a kivétel részleteit.
 
-A parancsmag használatáról a Windows PowerShell referenciadokumentációjában található [Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) című részben olvashat bővebben.
+További információ a parancsmag használatáról: [test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) a Windows PowerShell-dokumentációban.
 
 > [!IMPORTANT]
-> Ezt a parancsmalapot az aktív és a passzív vezérlőhöz is futtathatja.
+> Ezt a parancsmagot az aktív és a passzív vezérlőhöz is futtathatja.
 
-Tekintse meg a `Test-HcsmConnection` parancsmagból származó kimenet alábbi mintáit.
+Tekintse meg az alábbi, kimenetből `Test-HcsmConnection` származó mintákat a parancsmagból.
 
-**Mintakimenet – sikeresen regisztrált eszköz, amely en fut a StorSimple Update 3**
+**Minta kimenet – a StorSimple 3. frissítését futtató eszköz regisztrálása sikeresen megtörtént**
 
       Controller1>Test-HcsmConnection
 
@@ -337,23 +337,23 @@ Tekintse meg a `Test-HcsmConnection` parancsmagból származó kimenet alábbi m
       Checking connectivity to Microsoft Update servers  ... Success
       Controller1>
 
-**Mintakimenet – offline eszköz** 
+**Minta kimenet – offline eszköz** 
 
-Ez a minta egy olyan eszközről származik, amely **offline** állapotú az Azure Portalon.
+Ez a minta olyan eszközről származik, amely **Offline** állapotú állapotban van a Azure Portal.
 
      Checking device registrationstate: Success
      Device is registered successfully
      Checking connectivity from device to SaaS.. Failure
 
-Az eszköz nem tudott csatlakozni az aktuális webproxy-konfigurációval. Ez a probléma a webproxy-konfigurációval vagy a hálózati kapcsolattal kapcsolatos probléma lehet. Ebben az esetben győződjön meg arról, hogy a web proxy beállítások helyesek, és a web proxy szerverek online és elérhető.
+Az eszköz nem tudott kapcsolatot létesíteni az aktuális webproxy-konfiguráció használatával. Ez lehet a webproxy-konfigurációval vagy a hálózati kapcsolattal kapcsolatos probléma. Ebben az esetben győződjön meg arról, hogy a webproxy beállításai helyesek, és a webproxy-kiszolgálók online állapotban vannak és elérhetők.
 
-## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Hibaelhárítás a Sync-HcsTime parancsmaggal
-Ezzel a parancsmagval megjelenítheti az eszköz idejét. Ha az eszköz idő eltolása van az NTP-kiszolgálóval, akkor ezzel a parancsmaggal kényszerítheti az idő és az NTP-kiszolgáló közötti szinkronizálást.
+## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>A Sync-HcsTime parancsmaggal való problémamegoldás
+Ezzel a parancsmaggal megjelenítheti az eszköz időpontját. Ha az eszköz órája eltolással rendelkezik az NTP-kiszolgálóval, akkor ezzel a parancsmaggal kényszerítheti az időt az NTP-kiszolgálóval való szinkronizálásra.
 - Ha az eszköz és az NTP-kiszolgáló közötti eltolás 5 percnél hosszabb, figyelmeztetés jelenik meg. 
-- Ha az eltolás meghaladja a 15 percet, akkor az eszköz offline állapotba kerül. Ezzel a parancsmagval továbbra is kényszerítheti az időszinkronizálást. 
-- Ha azonban az eltolás meghaladja a 15 órát, akkor nem tudja kényszeríteni az idő szinkronizálását, és hibaüzenet jelenik meg.
+- Ha az eltolás meghaladja a 15 percet, az eszköz offline állapotba kerül. Ezt a parancsmagot továbbra is használhatja az időszinkronizálás kényszerítéséhez. 
+- Ha azonban az eltolás meghaladja a 15 órát, akkor nem fogja tudni kikényszeríteni – szinkronizálni az időt, és hibaüzenet jelenik meg.
 
-**Mintakimenet – kényszerített időszinkronizálás a Sync-HcsTime használatával**
+**Minta kimenet – kényszerített idő szinkronizálása a Sync-HcsTime használatával**
 
      Controller0>Sync-HcsTime
      The current device time is 4/24/2015 4:05:40 PM UTC.
@@ -362,10 +362,10 @@ Ezzel a parancsmagval megjelenítheti az eszköz idejét. Ha az eszköz idő elt
      [Y] Yes [N] No (Default is "Y"): Y
      Controller0>
 
-## <a name="troubleshoot-with-the-enable-hcsping-and-disable-hcsping-cmdlets"></a>Hibaelhárítás az Enable-HcsPing és disable-HcsPing parancsmagokkal
-Ezekkel a parancsmagokkal biztosíthatja, hogy az eszköz hálózati interfészei reagáljanak az ICMP pingkérésekre. Alapértelmezés szerint a StorSimple hálózati csatolók nem válaszolnak a pingkérésekre. Ezzel a parancsmaghasználatával a legegyszerűbben tudhatja, hogy az eszköz online állapotban van-e, és elérhető-e.
+## <a name="troubleshoot-with-the-enable-hcsping-and-disable-hcsping-cmdlets"></a>Az Enable-HcsPing és a Disable-HcsPing parancsmagok hibáinak megoldása
+Ezekkel a parancsmagokkal biztosíthatja, hogy az eszközön lévő hálózati adapterek válaszoljanak az ICMP ping-kérelmekre. Alapértelmezés szerint a StorSimple hálózati adapterek nem válaszolnak a pingelési kérelmekre. Ezzel a parancsmaggal megtudhatja, hogy az eszköz online állapotban van-e, és elérhető-e.
 
-**Mintakimenet – Enable-HcsPing és Disable-HcsPing**
+**Minta kimenet – Enable-HcsPing és disable-HcsPing**
 
      Controller0>
      Controller0>Enable-HcsPing
@@ -376,10 +376,10 @@ Ezekkel a parancsmagokkal biztosíthatja, hogy az eszköz hálózati interfésze
      Successfully disabled ping.
      Controller0>
 
-## <a name="troubleshoot-with-the-trace-hcsroute-cmdlet"></a>Hibaelhárítás a Trace-HcsRoute parancsmaggal
-Ezt a parancsmamot útvonalnyomat-ellenőrző eszközként használja. Csomagokat küld minden útválasztónak a végső célfelé vezető úton egy adott időszakban, majd kiszámítja az eredményeket az egyes ugrásokból visszaadott csomagok alapján. Mivel a parancsmag egy adott útválasztón vagy kapcsolaton a csomagvesztés mértékét mutatja, meghatározhatja, hogy mely útválasztók vagy kapcsolatok okozhatnak hálózati problémákat.
+## <a name="troubleshoot-with-the-trace-hcsroute-cmdlet"></a>Hibakeresés a trace-HcsRoute parancsmaggal
+Használja ezt a parancsmagot útvonal-nyomkövetési eszközként. A csomagokat az egyes útválasztóknak egy adott időszakon belül egy végső célhelyre küldi, majd az egyes ugrásokból visszaadott csomagok alapján kiszámítja az eredményeket. Mivel a parancsmag a csomagok elvesztésének mértékét mutatja az adott útválasztón vagy hivatkozáson, megadhatja, hogy mely útválasztók vagy hivatkozások okozhatnak hálózati problémákat.
 
-**Mintakimenet, amely bemutatja, hogyan lehet nyomon követni egy csomag útvonalát a Trace-HcsRoute segítségével**
+**Minta kimenet, amely bemutatja, hogyan lehet nyomon követni egy csomag útvonalát a trace-HcsRoute**
 
      Controller0>Trace-HcsRoute -Target 10.126.174.25
 
@@ -398,16 +398,16 @@ Ezt a parancsmamot útvonalnyomat-ellenőrző eszközként használja. Csomagoka
 
      Trace complete.
 
-## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>Hibaelhárítás a Get-HcsRoutingTable parancsmaggal
-Ezzel a parancsmagból megtekintheti a StorSimple-eszköz útválasztási tábláját. Az útválasztási tábla olyan szabálykészlet, amely segít meghatározni, hogy az IP-hálózaton keresztül áthaladó adatcsomagok hová legyenek irányítva.
+## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>A Get-HcsRoutingTable parancsmaggal való problémamegoldás
+Ezzel a parancsmaggal megtekintheti a StorSimple-eszköz útválasztási táblázatát. Az útválasztási táblázat olyan szabályok halmaza, amelyek segítségével meghatározható, hogy az Internet Protocol (IP) hálózaton áthaladó adatcsomagok hová legyenek irányítva.
 
-Az útválasztási tábla az okat a megadott hálózatokhoz vezető összeköttetéseket és átjárót jeleníti meg. Azt is ad az útválasztási metrika, amely a döntéshozó az adott cél eléréséhez megtett útvonalat. Minél alacsonyabb az útválasztási metrika, annál nagyobb a preferencia.
+Az útválasztási táblázat megjeleníti a csatolókat és az átjárót, amely a megadott hálózatokra irányítja az adatközpontot. Azt is megadja, hogy az útválasztási metrika melyik a döntéshozó az adott célhely eléréséhez szükséges útvonalhoz. Minél alacsonyabb az útválasztási metrika, annál magasabb a preferencia.
 
-Ha például 2 hálózati interfész ( DATA 2 és DATA 3 ) csatlakozik az internethez. Ha a DATA 2 és a DATA 3 útválasztási metrikák 15, illetve 261, majd a DATA 2 az alacsonyabb útválasztási metrika az előnyben részesített felület az internet eléréséhez használt.
+Ha például 2 hálózati adaptere van, a 2. és a 3. adatkapcsolat az internethez csatlakozik. Ha a 2. és a 3. adat útválasztási mérőszámai 15 és 261, akkor a 2. adat az alacsonyabb útválasztási metrikával az Internet eléréséhez használt előnyben részesített felület.
 
-Ha az 1. Ez azt jelenti, hogy még ha vannak más felhőalapú interfészek is, a felhőforgalom a DATA 0-n keresztül lesz irányítva.
+Ha a StorSimple-eszközön az 1. frissítést futtatja, az adatok 0 hálózati adaptere a legmagasabb prioritású a Felhőbeli forgalom számára. Ez azt jelenti, hogy ha más felhőalapú felületek is vannak, akkor a Felhőbeli forgalom a 0. ADATon keresztül lesz átirányítva.
 
-Ha a `Get-HcsRoutingTable` parancsmast paraméterek megadása nélkül futtatja (ahogy az a következő példa is mutatja), a parancsmag iPv4- és IPv6-útválasztási táblákat is kiad. Másik lehetőségként `Get-HcsRoutingTable -IPv4` megadhatja `Get-HcsRoutingTable -IPv6` vagy beszerezheti a megfelelő útválasztási táblát.
+Ha a (következő `Get-HcsRoutingTable` példában látható) paraméterek megadása nélkül futtatja a parancsmagot, a parancsmag az IPv4-és IPv6-útválasztási táblákat is kiírja. Másik lehetőségként `Get-HcsRoutingTable -IPv4` megadhatja `Get-HcsRoutingTable -IPv6` vagy beolvashatja a megfelelő útválasztási táblázatot.
 
       Controller0>
       Controller0>Get-HcsRoutingTable
@@ -473,8 +473,8 @@ Ha a `Get-HcsRoutingTable` parancsmast paraméterek megadása nélkül futtatja 
 
       Controller0>
 
-## <a name="step-by-step-storsimple-troubleshooting-example"></a>Példa a StorSimple részletes hibaelhárítási példájára
-A következő példa a StorSimple központi telepítésének lépésről lépésre történő hibaelhárítását mutatja be. A példaforgatókönyvben az eszközregisztráció sikertelen, és hibaüzenet jelzi, hogy a hálózati beállítások vagy a DNS-név helytelen.
+## <a name="step-by-step-storsimple-troubleshooting-example"></a>Lépésről lépésre StorSimple – hibaelhárítási példa
+A következő példa egy StorSimple-telepítés lépésenkénti hibaelhárítását mutatja be. A példában az eszköz regisztrálása egy hibaüzenettel meghiúsul, amely azt jelzi, hogy a hálózati beállítások vagy a DNS-név helytelen.
 
 A visszaadott hibaüzenet a következő:
 
@@ -482,52 +482,52 @@ A visszaadott hibaüzenet a következő:
      +CategoryInfo: Not specified
      +FullyQualifiedErrorID: CiSClientCommunicationErros, Microsoft.HCS.Management.PowerShell.Cmdlets.InvokeHcsSetupWizardCommand
 
-A hibát az alábbi lehetőségek bármelyike okozhatja:
+A hibát a következők bármelyike okozhatja:
 
-* Helytelen hardvertelepítés
-* Hibás hálózati adapter(ek)
+* Helytelen a hardver telepítése
+* Hibás hálózati adapter (ek)
 * Helytelen IP-cím, alhálózati maszk, átjáró, elsődleges DNS-kiszolgáló vagy webproxy
 * Helytelen regisztrációs kulcs
 * Helytelen tűzfalbeállítások
 
-### <a name="to-locate-and-fix-the-device-registration-problem"></a>Az eszközregisztrációs probléma megkeresése és javítása
-1. Ellenőrizze az eszköz konfigurációját: az `Invoke-HcsSetupWizard`aktív vezérlőn futtassa a futtassa a futtassa a futtassa a futtassa.
+### <a name="to-locate-and-fix-the-device-registration-problem"></a>Az eszköz regisztrációs problémájának megkeresése és javítása
+1. Keresse meg az eszköz konfigurációját: az aktív vezérlőn `Invoke-HcsSetupWizard`futtassa a parancsot.
    
    > [!NOTE]
-   > A telepítővarázslónak az aktív vezérlőn kell futnia. Annak ellenőrzéséhez, hogy csatlakozik-e az aktív vezérlőhöz, tekintse meg a soros konzolon megjelenő szalagcímet. A szalagcím azt jelzi, hogy a 0-as vagy az 1-es vezérlőhöz csatlakozik-e, és hogy a vezérlő aktív vagy passzív. További információt az [Aktív vezérlő azonosítása az eszközön](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)című területen talál.
+   > A telepítővarázsló az aktív vezérlőn kell futnia. Annak ellenőrzéséhez, hogy csatlakozik-e az aktív vezérlőhöz, tekintse meg a soros konzolon megjelenő szalagcímet. A szalagcím jelzi, hogy csatlakozik-e a Controller 0 vagy az 1. vezérlőhöz, és hogy a vezérlő aktív vagy passzív. További információért lépjen az [aktív vezérlő azonosítása az eszközön](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
    
-2. Ellenőrizze, hogy a készülék megfelelően van-e kábelezve: ellenőrizze a hálózati kábelezést a készülék hátsó síkján. A kábelezés az eszköz típusára jellemző. További információ: [Telepítse a StorSimple 8100 eszközt,](storsimple-8100-hardware-installation.md) vagy [telepítse a StorSimple 8600 eszközt.](storsimple-8600-hardware-installation.md)
+2. Győződjön meg arról, hogy az eszköz megfelelően van-e kitöltve: Ellenőrizze a hálózati kábeleket az eszköz hátsó síkja. A kábelezés az eszköz modelljére jellemző. További információ: [telepítse a StorSimple 8100 eszközt](storsimple-8100-hardware-installation.md) , vagy [telepítse a StorSimple 8600 eszközt](storsimple-8600-hardware-installation.md).
    
    > [!NOTE]
-   > Ha 10 GbE hálózati portot használ, a megadott QSFP-SFP adaptereket és SFP-kábeleket kell használnia. További információt a [10 GbE-portokhoz ajánlott kábelek, kapcsolók és adó-vevők listájában talál.](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+   > Ha 10 GbE hálózati portot használ, akkor a megadott QSFP-SFP adaptereket és SFP-kábeleket kell használnia. További információkért tekintse meg a [10 GbE-porthoz ajánlott kábelek, kapcsolók és adóvevők listáját](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
   
 3. Ellenőrizze a hálózati adapter állapotát:
    
-   * A Get-NetAdapter parancsmag segítségével észlelheti a DATA 0 hálózati csatolóinak állapotát. 
-   * Ha a kapcsolat nem működik, az **ifindex** állapota azt jelzi, hogy a kapcsolat nem működik. Ezután ellenőriznie kell a port hálózati kapcsolatát a készülékhez és a kapcsolóhoz. Azt is meg kell, hogy zárja ki a rossz kábeleket. 
-   * Ha azt gyanítja, hogy az aktív vezérlő DATA 0 portja meghibásodott, ezt az 1-es vezérlő DATA 0 portjához való csatlakozással erősítheti meg. Ennek megerősítéséhez válassza le a hálózati kábelt az eszköz hátuljáról a 0 vezérlőről, csatlakoztassa a kábelt az 1-es vezérlőhöz, majd futtassa újra a Get-NetAdapter parancsmagát.
-     Ha egy vezérlő DATA 0 portja meghibásodik, a következő lépésekért forduljon a [Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md) Előfordulhat, hogy ki kell cserélnie a vezérlőt a rendszeren.
-4. Ellenőrizze a kapcsolóhoz való csatlakozást:
+   * A Get-NetAdapter parancsmaggal azonosíthatja a 0 adatmennyiség hálózati adapterének állapotát. 
+   * Ha a hivatkozás nem működik, a **előtérillesztő ifindex** állapota azt jelzi, hogy az illesztőfelület le van állítva. Ezután ellenőriznie kell a port hálózati csatlakozását a készülékhez és a kapcsolóhoz. Emellett a hibás kábelek kizárására is szükség lesz. 
+   * Ha azt gyanítja, hogy az aktív vezérlőn található 0. adatport sikertelen volt, ezt úgy ellenőrizheti, hogy az 1. vezérlőn csatlakozik az adat0 porthoz. Ennek megerősítéséhez válassza le a hálózati kábelt az eszköz hátoldaláról a 0 vezérlőről, csatlakoztassa a kábelt az 1. vezérlőhöz, majd futtassa újra a Get-NetAdapter parancsmagot.
+     Ha a vezérlőn található adat 0 port nem sikerül, a következő lépésekhez [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md) . Előfordulhat, hogy cserélnie kell a vezérlőt a rendszeren.
+4. Ellenőrizze, hogy van-e kapcsolat a kapcsolóval:
    
-   * Győződjön meg arról, hogy a DATA 0 hálózati csatolók a 0 vezérlőn és az 1-es vezérlőn az elsődleges házban ugyanazon az alhálózaton találhatók. 
-   * Ellenőrizze az elosztót vagy az útválasztót. Általában mindkét vezérlőt ugyanahhoz az elosztóhoz vagy útválasztóhoz kell csatlakoztatni. 
-   * Győződjön meg arról, hogy a kapcsolathoz használt kapcsolók data 0-val rendelkeznek az azonos vLAN-hálózat mindkét vezérlőjéhez.
-5. A felhasználói hibák kiküszöbölése:
+   * Győződjön meg arról, hogy az elsődleges ház 0. és 1. vezérlője hálózati adapterei ugyanazon az alhálózaton találhatók. 
+   * Keresse meg a hubot vagy az útválasztót. A vezérlőket általában ugyanahhoz a hubhoz vagy útválasztóhoz kell csatlakoztatni. 
+   * Győződjön meg arról, hogy a kapcsolódáshoz használt kapcsolók rendelkeznek a 0 ÉRTÉKkel ugyanazon a vLAN-ban mindkét vezérlőnél.
+5. A felhasználói hibák megszüntetése:
    
-   * Futtassa újra a telepítővarázslót (futtassa az **Invoke-HcsSetupWizard programot),** és adja meg újra az értékeket, hogy megbizonyosodjon arról, hogy nincsenek hibák. 
-   * Ellenőrizze a használt regisztrációs kulcsot. Ugyanaz a regisztrációs kulcs több eszköz csatlakoztatására használható a StorSimple Eszközkezelő szolgáltatáshoz. A Szolgáltatás [regisztrációs kulcsának beszerezhetése](storsimple-8000-manage-service.md#get-the-service-registration-key) című eljárással győződjön meg arról, hogy a megfelelő regisztrációs kulcsot használja.
+   * Futtassa újra a telepítővarázslót (futtassa a **meghívást-hcssetupwizard parancsmagot**), és adja meg újra az értékeket, és győződjön meg róla, hogy nincsenek hibák. 
+   * Ellenőrizze a használt regisztrációs kulcsot. Ugyanez a regisztrációs kulcs több eszköz StorSimple Eszközkezelő szolgáltatáshoz való csatlakoztatására is használható. A [szolgáltatás regisztrációs kulcsának beszerzése](storsimple-8000-manage-service.md#get-the-service-registration-key) című eljárás használatával ellenőrizze, hogy a megfelelő regisztrációs kulcsot használja-e.
      
      > [!IMPORTANT]
-     > Ha több szolgáltatás fut, meg kell győződnie arról, hogy a regisztrációs kulcs a megfelelő szolgáltatás regisztrálásához. Ha nem a megfelelő StorSimple Eszközkezelő szolgáltatással regisztrált egy eszközt, a következő lépésekért kapcsolatba kell [lépnie](storsimple-8000-contact-microsoft-support.md) a Microsoft támogatási szolgálatával. Előfordulhat, hogy az eszköz gyári alaphelyzetbe állítását kell végrehajtania (ami adatvesztést okozhat), majd csatlakoztatnia kell a kívánt szolgáltatáshoz.
+     > Ha több szolgáltatás fut, meg kell győződnie arról, hogy a megfelelő szolgáltatás regisztrációs kulcsa az eszköz regisztrálására szolgál. Ha olyan eszközt regisztrált, amely nem megfelelő StorSimple Eszközkezelő szolgáltatással rendelkezik, akkor a következő lépésekhez [fel kell vennie a kapcsolatot a Microsoft ügyfélszolgálataval](storsimple-8000-contact-microsoft-support.md) . Előfordulhat, hogy el kell végeznie az eszköz gyári visszaállítását (ami adatvesztéshez vezethet), majd a kívánt szolgáltatáshoz kapcsolódhat.
      > 
      > 
-6. A Test-Connection parancsmag segítségével ellenőrizze, hogy rendelkezik-e kapcsolattal a külső hálózathoz. További információt a [Hibaelhárítás a Tesztkapcsolat parancsmaggal című témakörben](#troubleshoot-with-the-test-connection-cmdlet)talál.
-7. Ellenőrizze, hogy nem interferencia-e a tűzfal. Ha ellenőrizte, hogy a virtuális IP-cím (VIP), az alhálózat, az átjáró és a DNS-beállítások helyesek-e, és továbbra is kapcsolódási problémák at látnak, akkor lehetséges, hogy a tűzfal blokkolja az eszköz és a külső hálózat közötti kommunikációt. Győződjön meg arról, hogy a 80-as és 443-as portok elérhetők a StorSimple-eszközön a kimenő kommunikációhoz. További információ: [Hálózati követelmények a StorSimple eszközhöz.](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device)
-8. Nézd meg a naplókat. Nyissa meg [a hibaelhárításhoz rendelkezésre álló támogatási csomagok at és eszköznaplókat.](#support-packages-and-device-logs-available-for-troubleshooting)
-9. Ha az előző lépések nem oldják meg a problémát, kérjen segítséget a [Microsoft támogatási szolgálatátél.](storsimple-8000-contact-microsoft-support.md)
+6. A test-connectivity parancsmag használatával ellenőrizze, hogy van-e kapcsolat a külső hálózattal. További információ: [hibakeresés a test-kapcsolódási parancsmaggal](#troubleshoot-with-the-test-connection-cmdlet).
+7. A tűzfal zavarásának keresése. Ha meggyőződött arról, hogy a virtuális IP-cím (VIP), az alhálózat, az átjáró és a DNS-beállítások megfelelőek, és a kapcsolódási problémák továbbra is láthatók, akkor előfordulhat, hogy a tűzfal blokkolja az eszköz és a külső hálózat közötti kommunikációt. Győződjön meg arról, hogy a 80-es és a 443-es portok elérhetők a StorSimple-eszközön a kimenő kommunikációhoz. További információ: [hálózati követelmények a StorSimple-eszközhöz](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
+8. Tekintse meg a naplókat. [A hibaelhárításhoz keresse fel a támogatási csomagokat és az eszközök naplóit](#support-packages-and-device-logs-available-for-troubleshooting).
+9. Ha a fenti lépések nem oldják meg a problémát, [kérje a Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) segítségét.
 
 ## <a name="next-steps"></a>További lépések
-[Ismerje meg, hogyan hárítható el a Diagnosztika eszköz a StorSimple eszközök hibaelhárításához.](storsimple-8000-diagnostics.md)
+[Megtudhatja, hogyan használhatja a diagnosztikai eszközt a StorSimple-eszközök hibakereséséhez](storsimple-8000-diagnostics.md).
 
 <!--Link references-->
 

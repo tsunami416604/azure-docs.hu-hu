@@ -1,6 +1,6 @@
 ---
-title: Figyelés és hibaelhárítás hana oldalról az SAP HANA-n az Azure-on (nagy példányok) | Microsoft dokumentumok
-description: Figyelés és hibaelhárítás hana oldalról az SAP HANA egy Azure-beli (nagy példányok).
+title: Az Azure-beli SAP HANA HANA oldalának figyelése és hibaelhárítása (nagyméretű példányok) | Microsoft Docs
+description: A HANA oldalának figyelése és hibaelhárítása SAP HANA Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -22,151 +22,151 @@ ms.locfileid: "77617071"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA-oldali monitorozás és hibaelhárítás
 
-Az Azure-beli SAP HANA -val kapcsolatos problémák hatékony elemzéséhez hasznos leszűkíteni a probléma kiváltó okát. Az SAP nagy mennyiségű dokumentációt tett közzé, amelyek segítenek Önnek.
+Az Azure-SAP HANAokkal kapcsolatos problémák hatékony elemzése érdekében (nagyméretű példányok) hasznos lehet a probléma kiváltó okának szűkítése. Az SAP nagy mennyiségű dokumentációt tett közzé, hogy segítsen Önnek.
 
-Az SAP HANA teljesítményével kapcsolatos vonatkozó gyakori kérdések a következő SAP-megjegyzésekben találhatók:
+A SAP HANA teljesítményével kapcsolatos vonatkozó gyakori kérdések a következő SAP-megjegyzésekben találhatók:
 
-- [SAP Note #2222200 – gyakori kérdések: SAP HANA Network](https://launchpad.support.sap.com/#/notes/2222200)
-- [SAP Megjegyzés #2100040 – gyakori kérdések: SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)
-- [SAP Note #199997 – gyakori kérdések: SAP HANA memória](https://launchpad.support.sap.com/#/notes/2177064)
-- [SAP Note #200000 – gyakori kérdések: SAP HANA teljesítményoptimalizálás](https://launchpad.support.sap.com/#/notes/2000000)
-- [SAP Note #199930 – gyakori kérdések: SAP HANA I/O elemzés](https://launchpad.support.sap.com/#/notes/1999930)
-- [SAP Note #2177064 – gyakori kérdések: AZ SAP HANA szolgáltatás újraindítása és összeomlása](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP-Megjegyzés #2222200 – gyakori kérdések: SAP HANA Network](https://launchpad.support.sap.com/#/notes/2222200)
+- [SAP-Megjegyzés #2100040 – gyakori kérdések: SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)
+- [SAP-Megjegyzés #199997 – gyakori kérdések: SAP HANA memória](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP-Megjegyzés #200000 – gyakori kérdések: SAP HANA teljesítmény optimalizálása](https://launchpad.support.sap.com/#/notes/2000000)
+- [SAP-Megjegyzés #199930 – gyakori kérdések: SAP HANA I/O-elemzés](https://launchpad.support.sap.com/#/notes/1999930)
+- [SAP-Megjegyzés #2177064 – gyakori kérdések: SAP HANA szolgáltatás újraindítása és összeomlik](https://launchpad.support.sap.com/#/notes/2177064)
 
-## <a name="sap-hana-alerts"></a>SAP HANA riasztások
+## <a name="sap-hana-alerts"></a>Riasztások SAP HANA
 
-Első lépésként ellenőrizze az aktuális SAP HANA riasztási naplók. Az SAP HANA Studio,go to **Administration Console: Alerts: Show: all alerts**. Ez a lap a beállított minimális és maximális küszöbértékeken kívül esik adott értékekre (szabad fizikai memória, CPU-kihasználtság stb.) vonatkozó összes SAP HANA-riasztást jeleníti meg. Alapértelmezés szerint az ellenőrzések 15 percenként automatikusan frissülnek.
+Első lépésként tekintse meg az aktuális SAP HANA riasztási naplókat. A SAP HANA Studióban lépjen a **felügyeleti konzol: riasztások: megjelenítés: minden riasztás**elemre. Ezen a lapon jelennek meg a minimális és maximális küszöbértékeken kívül eső adott értékek (szabad fizikai memória, CPU-kihasználtság stb.) összes SAP HANA riasztása. Alapértelmezés szerint a rendszer 15 percenként automatikusan frissíti az ellenőrzéseket.
 
-![Az SAP HANA Studio-ban nyissa meg a Felügyeleti konzol: Riasztások: Megjelenítés: az összes riasztást](./media/troubleshooting-monitoring/image1-show-alerts.png)
+![A SAP HANA Studióban nyissa meg a felügyeleti konzolt: riasztások: megjelenítés: minden riasztás](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
 ## <a name="cpu"></a>CPU
 
-A nem megfelelő küszöbérték-beállítás miatt kiváltott riasztás esetén a megoldás az alapértelmezett értékre vagy egy ésszerűbb küszöbértékre való visszaállítás.
+A nem megfelelő küszöbérték miatt kiváltott riasztás esetén a rendszer visszaállítja a feloldást az alapértelmezett értékre vagy egy ésszerű küszöbértékre.
 
-![Visszaállítás az alapértelmezett értékre vagy egy ésszerűbb küszöbértékre](./media/troubleshooting-monitoring/image2-cpu-utilization.png)
+![Visszaállítás az alapértelmezett értékre vagy egy ésszerű küszöbértékre](./media/troubleshooting-monitoring/image2-cpu-utilization.png)
 
-A következő riasztások jelezhetik a CPU-erőforrások problémáit:
+A következő riasztások a CPU-erőforrásokkal kapcsolatos problémákat jelezhetik:
 
-- Állomás CPU-használat (5. riasztás)
-- Legutóbbi mentésipont-művelet (28. riasztás)
-- A mentési pont időtartama (54. riasztás)
+- Gazdagép CPU-használata (riasztás 5)
+- Legutóbbi mentésipont művelet (riasztás 28)
+- Mentésipont időtartama (riasztás 54)
 
-Az SAP HANA-adatbázis magas processzorfogyasztását tapasztalhatja az alábbi eszközök egyikén:
+A SAP HANA-adatbázis nagy CPU-felhasználását a következők egyikével figyelheti:
 
-- Az 5-ös riasztás (host CPU-használat) a jelenlegi vagy a korábbi CPU-használatra
-- A megjelenített CPU-használat az áttekintő képernyőn
+- 5. riasztás (gazda CPU-használat) az aktuális vagy korábbi CPU-használat esetén
+- Az áttekintő képernyőn megjelenő CPU-használat
 
-![Cpu-használat jelenik meg az áttekintő képernyőn](./media/troubleshooting-monitoring/image3-cpu-usage.png)
+![A CPU-használat megjelenítése az áttekintő képernyőn](./media/troubleshooting-monitoring/image3-cpu-usage.png)
 
-A Terhelés grafikon magas processzorfogyasztást vagy a múltban magas fogyasztást mutathat:
+A betöltési gráf magas CPU-fogyasztást vagy a múltban magas kihasználtságot mutathat:
 
-![A Terhelés grafikon magas cpu-fogyasztást vagy a múltban magas fogyasztást mutathat](./media/troubleshooting-monitoring/image4-load-graph.png)
+![A betöltési gráf magas CPU-fogyasztást vagy a múltban nagy fogyasztást mutathat be](./media/troubleshooting-monitoring/image4-load-graph.png)
 
-A magas CPU-kihasználtság miatt kiváltott riasztást több ok is okozhatja, többek között, de nem kizárólagosan: bizonyos tranzakciók végrehajtása, adatbetöltés, nem válaszoló feladatok, hosszú ideig futó SQL-utasítások és rossz lekérdezési teljesítmény (például a BW a HANA kocka).
+A magas CPU-kihasználtság miatt kiváltott riasztás több okból is járhat, többek között a következők miatt: bizonyos tranzakciók végrehajtása, adatok betöltése, nem válaszoló feladatok, hosszú ideig futó SQL-utasítások és hibás lekérdezési teljesítmény (például a BW on HANA-kockák esetében).
 
-Tekintse meg az [SAP HANA hibaelhárítás: CPU kapcsolatos okok és megoldások](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) hely részletes hibaelhárítási lépéseket.
+A hibaelhárítással kapcsolatos további információkért tekintse meg a [SAP HANA hibaelhárítás: a CPU-hoz kapcsolódó okait és megoldásait](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) ismertető oldalt.
 
 ## <a name="operating-system"></a>Operációs rendszer
 
-Az SAP HANA egyik legfontosabb ellenőrzése Linuxon, hogy megbizonyosodjon arról, hogy az átlátszó hatalmas oldalak le vannak tiltva, lásd [az SAP Note #2131662 - Transparent Huge Pages (THP) az SAP HANA szervereken.](https://launchpad.support.sap.com/#/notes/2131662)
+A Linux SAP HANAének egyik legfontosabb ellenőrzése az, hogy az átlátszó, hatalmas lapok le legyenek tiltva, lásd: [SAP Note #2131662 – transzparens hatalmas lapok (THP) a SAP HANA-kiszolgálókon](https://launchpad.support.sap.com/#/notes/2131662).
 
-- Ellenőrizheti, hogy az Átlátszó Hatalmas oldalak engedélyezve vannak-e a következő Linux paranccsal: **cat /sys/kernel/mm/transparent\_hugepage/enabled**
-- Ha _mindig_ zárójelben van, az azt jelenti, hogy az Átlátszó hatalmas oldalak engedélyezve vannak: [mindig] madvise soha; ha _soha nem_ van mellékelve zárójelben, mint az alábbiakban, ez azt jelenti, hogy az Átlátszó Hatalmas oldalak le vannak tiltva: mindig madvise [soha]
+- A következő Linux-paranccsal ellenőrizhető, hogy a transzparens hatalmas lapok engedélyezve vannak **-e:\_Cat/sys/kernel/mm/transparent hugepage/enabled**
+- Ha _mindig_ az alábbi zárójelek közé van bejelölve, az azt jelenti, hogy az átlátszó hatalmas lapok engedélyezve vannak: [mindig] madvise soha; Ha _soha nem_ az alábbi zárójelek közé van lefoglalva, az azt jelenti, hogy az átlátszó hatalmas lapok le vannak tiltva: mindig madvise [soha]
 
-A következő Linux parancs nem ad vissza semmit: **rpm -qa | grep ulimit.** Ha úgy tűnik, _ulimit_ telepítve van, távolítsa el azonnal.
+A következő Linux-parancsnak semmit nem kell visszaadnia: **rpm-QA | grep ulimit.** Ha úgy tűnik, hogy a _ulimit_ telepítve van, azonnal távolítsa el.
 
 ## <a name="memory"></a>Memory (Memória)
 
-Előfordulhat, hogy az SAP HANA-adatbázis által lefoglalt memória mennyisége a vártnál magasabb. A következő riasztások a magas memóriahasználattal kapcsolatos problémákat jelzik:
+Előfordulhat, hogy a SAP HANA-adatbázis által lefoglalt memória mennyisége nagyobb a vártnál. A következő riasztások nagy memória-használattal kapcsolatos problémákat jeleznek:
 
-- Gazdafizikai memória használata (1. riasztás)
-- Névkiszolgáló memóriahasználata (12. riasztás)
-- Oszloptároló-táblák teljes memóriahasználata (40. riasztás)
-- Szolgáltatások memóriahasználata (43. riasztás)
-- Az Oszloptároló-táblák fő tárolójának memóriahasználata (45. riasztás)
-- Futásidejű memóriaképfájlok (46. riasztás)
+- Gazdagép fizikai memóriahasználat (riasztás 1)
+- Névkiszolgáló memóriahasználat (12. riasztás)
+- Az oszlopok tárolására szolgáló táblák teljes memóriahasználat (riasztás 40)
+- Szolgáltatások memóriahasználat (riasztás 43)
+- Az oszlopok tárolására szolgáló táblák fő tárterületének memóriahasználat (riasztás 45)
+- Futásidejű memóriaképek fájljai (riasztás 46)
 
-Tekintse meg az [SAP HANA hibaelhárítás: Memóriaproblémák](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) hely részletes hibaelhárítási lépéseket.
+A hibaelhárítással kapcsolatos további információkért tekintse meg a [SAP HANA hibaelhárítás: memória problémáit](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) ismertető oldalt.
 
 ## <a name="network"></a>Network (Hálózat)
 
-Tekintse meg az [SAP Note #2081065 – Sap HANA hálózat hibaelhárítása,](https://launchpad.support.sap.com/#/notes/2081065) és hajtsa végre a hálózati hibaelhárítási lépéseket ebben az SAP Megjegyzésben.
+Tekintse meg az [SAP note #2081065 – hibaelhárítás SAP HANA hálózat](https://launchpad.support.sap.com/#/notes/2081065) és az SAP-Megjegyzés hálózati hibaelhárítási lépéseinek elvégzése című témakört.
 
-1. A kiszolgáló és az ügyfél közötti oda-vissza idő elemzése.
-  A. Futtassa a [_HANA\_\_hálózati ügyfelek SQL-parancsfájlt._](https://launchpad.support.sap.com/#/notes/1969700)_._
+1. A kiszolgáló és az ügyfél közötti oda-és visszautazási idő elemzése.
+  A. Futtassa az SQL- [_parancsfájl\_HANA\_hálózati ügyfeleit_](https://launchpad.support.sap.com/#/notes/1969700)_._
   
-2. Internode kommunikáció elemzése.
-  A. Futtassa a [_HANA\_\_Network Services SQL-parancsfájlt._](https://launchpad.support.sap.com/#/notes/1969700)_._
+2. A csomópontok közötti kommunikáció elemzése.
+  A. Futtassa az SQL [_-\_parancsfájl\_HANA hálózati szolgáltatásait_](https://launchpad.support.sap.com/#/notes/1969700)_._
 
-3. Futtassa a Linux parancsot **ifconfig** (a kimenet azt mutatja, ha bármilyen csomagveszteség fordul elő).
-4. Futtassa a Linux **tcpdump parancsot.**
+3. Linux-parancs futtatása **ifconfig** (a kimenetben látható, hogy van-e a csomag elvesztése).
+4. Futtassa a Linux parancs **tcpdump**.
 
-Emellett a nyílt forráskódú [IPERF](https://iperf.fr/) eszközzel (vagy hasonlóval) mérheti a valós alkalmazáshálózati teljesítményt.
+Emellett a nyílt forráskódú [IPERF](https://iperf.fr/) eszközt (vagy hasonlót) is használhatja a valós alkalmazás hálózati teljesítményének méréséhez.
 
-Tekintse meg az [SAP HANA hibaelhárítás: Hálózati teljesítmény és kapcsolódási problémák](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) hely részletes hibaelhárítási lépéseket.
+A hibaelhárítással kapcsolatos részletes utasításokért tekintse meg a [hálózati teljesítménnyel és a kapcsolódási problémákkal kapcsolatos SAP HANA hibaelhárítási](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) webhelyét.
 
 ## <a name="storage"></a>Storage
 
-A végfelhasználó szempontjából egy alkalmazás (vagy a rendszer egésze) lassan fut, nem válaszol, vagy akár úgy tűnik, hogy nem válaszol, ha problémák merülnek fel az I/O teljesítményével kapcsolatban. Az SAP HANA Studio **Kötetek** lapján láthatja a csatolt köteteket, és az egyes szolgáltatások által használt köteteket.
+A végfelhasználói szempontból az alkalmazás (vagy a rendszer teljes egészében) lassabban fut, nem válaszol, vagy úgy tűnik, hogy nem válaszol, ha probléma van az I/O-teljesítménnyel. SAP HANA Studio **kötetek** lapján megtekintheti a csatlakoztatott köteteket, és az egyes szolgáltatások által használt köteteket.
 
-![Az SAP HANA Studio Kötetek lapján láthatja a csatolt köteteket, és az egyes szolgáltatások által használt köteteket](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
+![SAP HANA Studio kötetek lapján megtekintheti a csatlakoztatott köteteket, és az egyes szolgáltatások milyen köteteket használnak](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
-A képernyő alsó részén csatolt kötetek a kötetek részleteit, például a fájlokat és az I/O-statisztikákat láthatja.
+A képernyő alsó részén található csatolt köteteknél láthatja a kötetek részleteit, például a fájlokat és az I/O-statisztikákat.
 
-![A képernyő alsó részén csatolt kötetek a kötetek részleteit, például a fájlokat és az I/O-statisztikákat láthatja.](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
+![A képernyő alsó részén található csatolt köteteknél láthatja a kötetek részleteit, például a fájlokat és az I/O-statisztikát.](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
 
-Tekintse meg az [SAP HANA hibaelhárítás: I/O kapcsolódó kiváltó okok és megoldások](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) és az SAP [HANA hibaelhárítás: Lemezzel kapcsolatos kiváltó okok és megoldások](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) hely részletes hibaelhárítási lépéseket.
+Tekintse át a [SAP HANA hibaelhárítási: I/O-hez kapcsolódó kiváltó okokat és megoldásokat](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) , valamint [SAP HANA hibaelhárítást: lemezzel kapcsolatos alapvető okok és megoldások](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) webhely részletes hibaelhárítási lépéseket.
 
 ## <a name="diagnostic-tools"></a>Diagnosztikai eszközök
 
-SAP HANA állapot-ellenőrzés\_hana\_konfigurációs miniellenőrzések en keresztül. Ez az eszköz olyan potenciálisan kritikus technikai problémákat ad vissza, amelyeket már riasztásként kellett volna felvetni az SAP HANA Studio-ban.
+SAP HANA állapot-ellenőrzés végrehajtása a HANA\_konfigurációs\_Minichecks. Ez az eszköz olyan potenciálisan kritikus technikai problémákat ad vissza, amelyeket SAP HANA Studióban már riasztásként kellett volna kiváltani.
 
-Tekintse meg az [SAP Note #1969700 – SQL utasítás gyűjtemény az SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) és töltse le az SQL Statements.zip fájlt csatolt, hogy a megjegyzés. Tárolja ezt a .zip fájlt a helyi merevlemezen.
+Tekintse meg az [SAP note #1969700 – SQL-utasítás gyűjteményét SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) és töltse le a megjegyzéshez csatolt SQL-utasítások. zip fájlt. Tárolja a. zip fájlt a helyi merevlemezen.
 
-Az SAP HANA Studio **Rendszerinformáció** lapján kattintson a jobb gombbal a **Név** oszlopra, és válassza az SQL **utasítások importálása parancsot.**
+SAP HANA Studióban a **rendszerinformációk** lapon kattintson a jobb gombbal a **név** oszlopra, és válassza az **SQL-utasítások importálása**lehetőséget.
 
-![Az SAP HANA Studio Rendszerinformáció lapján kattintson a jobb gombbal a Név oszlopra, és válassza az SQL-utasítások importálása parancsot.](./media/troubleshooting-monitoring/image7-import-statements-a.png)
+![SAP HANA Studióban a rendszerinformációk lapon kattintson a jobb gombbal a név oszlopra, és válassza az SQL-utasítások importálása elemet.](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
-Jelölje ki a helyileg tárolt SQL Statements.zip fájlt, és a program importálja a megfelelő SQL-utasításokat tartalmazó mappát. Ezen a ponton a számos különböző diagnosztikai ellenőrzések futtathatók ezekkel az SQL utasításokkal.
+Válassza ki a helyileg tárolt SQL-utasítások. zip fájlt, és a rendszer importálja a megfelelő SQL-utasításokkal rendelkező mappát. Ezen a ponton számos különböző diagnosztikai ellenőrzés futtatható ezekkel az SQL-utasításokkal.
 
-Például az SAP HANA rendszer replikációs sávszélesség-követelményeinek teszteléséhez kattintson a jobb gombbal a **Sávszélesség** utasításra a **Replikáció: Sávszélesség** csoportban, és válassza a **Megnyitás** az SQL Konzolban parancsot.
+A rendszerreplikálási sávszélességre vonatkozó követelmények SAP HANA teszteléséhez például kattintson a jobb gombbal a **sávszélesség** -utasításra a **replikálás: sávszélesség** területen, és válassza a **Megnyitás** az SQL-konzolban lehetőséget.
 
-A teljes SQL utasítás megnyílik, amely lehetővé teszi a bemeneti paraméterek (módosítási szakasz) módosítását, majd végrehajtását.
+Ekkor megnyílik a teljes SQL-utasítás, amely lehetővé teszi a bemeneti paraméterek (módosítási szakasz) módosítását és végrehajtását.
 
-![Megnyílik a teljes SQL utasítás, amely lehetővé teszi a bemeneti paraméterek (módosítási szakasz) módosítását, majd végrehajtását](./media/troubleshooting-monitoring/image8-import-statements-b.png)
+![Megnyílik a teljes SQL-utasítás, amely lehetővé teszi a bemeneti paraméterek (módosítási szakasz) módosítását és végrehajtását.](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-Egy másik példa a jobb gombbal a **replikáció: Áttekintés**. Válassza a helyi menü **Végrehajtás** parancsát:
+Egy másik példa a jobb gombbal a **replikálás: Áttekintés**területen található utasításokra kattint. Válassza a **végrehajtás** elemet a helyi menüből:
 
-![Egy másik példa a jobb gombbal a replikáció: áttekintés. Válassza a Helyi menü Végrehajtás parancsát](./media/troubleshooting-monitoring/image9-import-statements-c.png)
+![Egy másik példa a jobb gombbal a replikálás: Áttekintés területen található utasításokra kattint. Válassza a végrehajtás lehetőséget a helyi menüben](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
-Ez olyan információkat eredményez, amelyek segítenek a hibaelhárításban:
+Ennek eredményeként a következő információk segítenek a hibaelhárításban:
 
-![Ez olyan információkat eredményez, amelyek segítenek a hibaelhárításban](./media/troubleshooting-monitoring/image10-import-statements-d.png)
+![Ez olyan információkat eredményez, amelyek segítséget nyújtanak a hibaelhárításhoz](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-Tegye ugyanezt a\_\_HANA konfigurációs miniellenőrzésekesetében, és ellenőrizze a _C_ (Kritikus) oszlopban lévő _X_ jeleket.
+Végezze el ugyanezt\_a\_HANA-konfiguráció Minichecks, és keressen _X_ jeleket a _C_ (kritikus) oszlopban.
 
-Mintakimenetek:
+Példa kimenetek:
 
-**HANA\_\_konfigurációs\_miniellenőrzések Rev102.01+1** általános SAP HANA-ellenőrzések.
+**HANA\_-\_konfiguráció\_MiniChecks Rev 102.01 + 1** az általános SAP HANA ellenőrzésekhez.
 
-![HANA\_\_konfigurációs\_miniellenőrzések Rev102.01+1 általános SAP HANA ellenőrzések](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
+![HANA\_-\_konfiguráció\_MiniChecks rev 102.01 + 1 az általános SAP HANA ellenőrzésekhez](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
 
-**\_\_HANA-szolgáltatások áttekintése** az SAP HANA-szolgáltatások jelenlegi futtatásának áttekintéséhez.
+**A\_HANA\_Services áttekintése áttekintést** nyújt arról, hogy milyen SAP HANA szolgáltatások futnak jelenleg.
 
-![HANA-szolgáltatások\_\_– áttekintés az SAP HANA-szolgáltatások jelenlegi működéséről](./media/troubleshooting-monitoring/image12-services-overview.png)
+![A\_HANA\_Services áttekintése a jelenleg futó SAP HANA-szolgáltatások áttekintéséhez](./media/troubleshooting-monitoring/image12-services-overview.png)
 
-**HANA\_\_szolgáltatások statisztikája** az SAP HANA szolgáltatás információihoz (CPU, memória stb.).
+**HANA\_Services\_-statisztikák** SAP HANA szolgáltatással kapcsolatos információkhoz (CPU, memória stb.).
 
-![HANA\_\_szolgáltatások statisztikája az SAP HANA szolgáltatás adataihoz](./media/troubleshooting-monitoring/image13-services-statistics.png)
+![HANA\_Services\_-statisztikák SAP HANA szolgáltatás adataihoz](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-**HANA\_\_konfigurációáttekintése\_Rev110+** az SAP HANA-példány általános információiért.
+**HANA\_-\_konfiguráció\_áttekintése Rev110 +** az SAP HANA példányra vonatkozó általános információkhoz.
 
-![HANA\_\_konfigurációáttekintése\_Rev110+ az SAP HANA-példányáltalános információihoz](./media/troubleshooting-monitoring/image14-configuration-overview.png)
+![HANA\_-\_konfiguráció\_áttekintése Rev110 + az SAP HANA példányra vonatkozó általános információkért](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**HANA\_\_konfigurációs\_paraméterek Rev70+** az SAP HANA-paraméterek ellenőrzéséhez.
+**HANA\_konfigurációs\_paraméterek\_Rev70 +** a SAP HANA paramétereinek vizsgálatához.
 
-![Hana\_\_konfigurációs\_paraméterek Rev70+ az SAP HANA paramétereinek ellenőrzéséhez](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
+![HANA\_konfigurációs\_paraméterek\_Rev70 + a SAP HANA paramétereinek vizsgálatához](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
 **További lépések**
 
-- A [SUSE-ban beállított magas rendelkezésre állás a STONITH használatával jelenik meg.](ha-setup-with-stonith.md)
+- Tekintse át [a magas rendelkezésre állású készletet a SuSE-ben a STONITH használatával](ha-setup-with-stonith.md).

@@ -16,4 +16,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "76844545"
 ---
 >[!NOTE]
-> Mindig ellenőrizze a kép verzióját, hogy biztosan a kívánt feautures-t használja.Always check the version of your image to ensure it has the feautures you require. Ha a tárolórendszerkép egy korábbi verziója már levan húzva a számítógépen, meg kell adnia a kívánt verziócímkét, vagy törölnie kell a meglévő képet, mielőtt újra lekéri a `:latest` címkét. A képverziókról és -címkékről a [kibocsátási megjegyzések ben található.](../articles/event-grid/edge/release-notes.md)
+> Mindig ellenőrizze a rendszerkép verzióját, és győződjön meg arról, hogy rendelkezik a szükséges feautures. Ha a tároló rendszerképének egy korábbi verziója már be van húzva a gépen, meg kell adnia a kívánt verzió címkéjét, vagy törölnie kell a meglévő rendszerképet, mielőtt ismét megkezdené a `:latest` címkével. További információ a képek verzióiról és a címkékről: [kibocsátási megjegyzések](../articles/event-grid/edge/release-notes.md).

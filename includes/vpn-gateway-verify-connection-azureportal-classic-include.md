@@ -21,10 +21,10 @@ Az Azure Portalon a kapcsolatra lépve tekintheti meg a klasszikus virtuális h�
 2. A virtuális hálózat panelen kattintson az **Áttekintés** gombra a panel **VPN-kapcsolatok** szakaszának megnyitásához.
 3. A VPN-kapcsolatok ábrán kattintson a helyre.
 
-    ![Helyi kemping](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "helyi kemping")
+    ![Helyi webhely](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "helyi webhely")
 4. A **Webhelyek közötti VPN-kapcsolatok** panelen tekintse meg a webhely adatait.
 
     ![A kapcsolat állapota](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "A kapcsolat állapota")
 5. A kapcsolat további információinak megtekintéséhez kattintson a kapcsolat nevére a **Webhelyek közötti VPN-kapcsolat** panel megnyitásához.
 
-    ![Kapcsolat állapota több](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Kapcsolat állapota további információ")
+    ![További kapcsolatok állapota](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "További információ a kapcsolatok állapotáról")

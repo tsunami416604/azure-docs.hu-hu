@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure Media Services 3-as v3 API-hoz – Node.js
-description: Ez a cikk bemutatja, hogyan csatlakozhat a Media Services v3 API-hoz a Node.js.
+title: Kapcsolódás a Azure Media Services V3 API-Node. js-hez
+description: Ez a cikk bemutatja, hogyan csatlakozhat a Media Services V3 API-hoz a Node. js használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -20,21 +20,21 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "74896104"
 ---
-# <a name="connect-to-media-services-v3-api---nodejs"></a>Csatlakozás a Media Services 3-as v3 API-jához – Node.js
+# <a name="connect-to-media-services-v3-api---nodejs"></a>Kapcsolódás a Media Services V3 API-Node. js-hez
 
-Ez a cikk bemutatja, hogyan csatlakozhat az Azure Media Services v3-node.js SDK szolgáltatásegyszerű bejelentkezési módszer használatával.
+Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 Node. js SDK-hoz az egyszerű szolgáltatás bejelentkezési metódusának használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Telepítse [a Node.js programot.](https://nodejs.org/en/download/)
-- [Hozzon létre egy Media Services-fiókot](create-account-cli-how-to.md). Ne felejtse el megjegyezni az erőforráscsoport nevét és a Media Services-fiók nevét.
+- Telepítse a [Node. js](https://nodejs.org/en/download/)-t.
+- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
 
 > [!IMPORTANT]
-> Tekintse át [az elnevezési konvenciókat.](media-services-apis-overview.md#naming-conventions)
+> Tekintse át az [elnevezési konvenciókat](media-services-apis-overview.md#naming-conventions).
 
-## <a name="create-packagejson"></a>Package.json létrehozása
+## <a name="create-packagejson"></a>Package. JSON létrehozása
 
-1. Hozzon létre egy package.json fájlt a kedvenc szerkesztőjével.
+1. Hozzon létre egy Package. JSON fájlt a kedvenc szerkesztő használatával.
 1. Nyissa meg a fájlt, és illessze be a következő kódot:
 
 ```json
@@ -52,25 +52,25 @@ Ez a cikk bemutatja, hogyan csatlakozhat az Azure Media Services v3-node.js SDK 
 }
 ```
 
-A következő csomagokat kell meghatározni:
+A következő csomagokat kell megadni:
 
 |Csomag|Leírás|
 |---|---|
-|`azure-arm-mediaservices`|Az Azure Media Services SDK-t. <br/>Győződjön meg arról, hogy a legújabb Azure Media Services-csomagot használja, ellenőrizze az [NPM telepítését az azure-arm-mediaservices.To](https://www.npmjs.com/package/azure-arm-mediaservices/)make sure you are using the latest Azure Media Services package, check NPM install azure-arm-mediaservices .|
-|`azure-storage`|Tároló SDK. Fájlok eszközökbe való feltöltésekén.|
-|`ms-rest-azure`| Régebben bejelentkezett.|
+|`azure-arm-mediaservices`|Azure Media Services SDK. <br/>Győződjön meg arról, hogy a legújabb Azure Media Services csomagot használja, és [telepítse az Azure-ARM-Mediaservices NPM](https://www.npmjs.com/package/azure-arm-mediaservices/).|
+|`azure-storage`|Storage SDK. Fájlok eszközökre való feltöltésekor használatos.|
+|`ms-rest-azure`| A bejelentkezéshez használatos.|
 
-A következő paranccsal ellenőrizheti, hogy a legújabb csomagot használja-e:
+A következő parancs futtatásával gondoskodhat arról, hogy a legújabb csomagot használja:
 
 ```
 npm install azure-arm-mediaservices
 ```
 
-## <a name="connect-to-nodejs-client"></a>Csatlakozás a Node.js ügyfélhez
+## <a name="connect-to-nodejs-client"></a>Kapcsolódás Node. js-ügyfélhez
 
-1. Hozzon létre egy .js fájlt a kedvenc szerkesztőjével.
+1. Hozzon létre egy. js-fájlt a kedvenc szerkesztője segítségével.
 1. Nyissa meg a fájlt, és illessze be a következő kódot.
-1. Állítsa be az "endpoint config" szakaszban a [hozzáférési API-kból](access-api-cli-how-to.md)kapott értékeket.
+1. Állítsa be az "Endpoint config" (végpont konfigurációja) szakaszban található értékeket az [Access API](access-api-cli-how-to.md)-k által kapott értékekre.
 
 ```js
 'use strict';
@@ -116,7 +116,7 @@ msRestAzure.loginWithServicePrincipalSecret(aadClientId, aadSecret, aadTenantId,
 
 ## <a name="run-your-app"></a>Az alkalmazás futtatása
 
-Nyisson meg egy parancssort. Tallózással keresse meg a minta könyvtárát, és hajtsa végre a következő parancsokat:
+Nyisson meg egy parancssort. Keresse meg a minta címtárát, és hajtsa végre a következő parancsokat:
 
 ```
 npm install 
@@ -125,10 +125,10 @@ node index.js
 
 ## <a name="see-also"></a>Lásd még
 
-- [A Media Services fogalmai](concepts-overview.md)
+- [Media Services fogalmak](concepts-overview.md)
 - [NPM-telepítés, azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
 ## <a name="next-steps"></a>További lépések
 
-Fedezze fel a Media Services [Node.js ref](/javascript/api/overview/azure/mediaservices/management) dokumentációját, és tekintse meg azokat a [mintákat,](https://github.com/Azure-Samples/media-services-v3-node-tutorials) amelyek bemutatják a Media Services API használatát a node.js használatával.
+Ismerkedjen meg a Media Services [Node. js ref](/javascript/api/overview/azure/mediaservices/management) -dokumentációval, és tekintse meg a Media Services API Node. js-sel való használatát bemutató [példákat](https://github.com/Azure-Samples/media-services-v3-node-tutorials) .
 

@@ -17,9 +17,9 @@ ms.locfileid: "75968302"
 ---
 ## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
-Az első Azure-tárfiók létrehozásának legegyszerűbb módja az [Azure Portal](https://portal.azure.com)használata. További tudnivalókért lásd: [Create a storage account](../articles/storage/common/storage-account-create.md) (Tárfiók létrehozása).
+Az első Azure Storage-fiók létrehozásának legegyszerűbb módja a [Azure Portal](https://portal.azure.com)használata. További tudnivalókért lásd: [Create a storage account](../articles/storage/common/storage-account-create.md) (Tárfiók létrehozása).
 
 Ezenkívül az [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), az [Azure CLI](../articles/storage/common/storage-azure-cli.md), illetve a [.NET-keretrendszerhez készült Azure Storage erőforrás-szolgáltató](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/) használatával is létrehozhat egy Azure-tárfiókot.
 
-Ha jelenleg nem szeretne tárfiókot létrehozni az Azure-ban, az Azure storage-emulátor használatával helyi környezetben futtathatja és tesztelheti a kódot. További információ: [Az Azure Storage-emulátor használata fejlesztési és tesztelési célokra](../articles/storage/common/storage-use-emulator.md)című témakörben talál.
+Ha jelenleg nem szeretne Storage-fiókot létrehozni az Azure-ban, az Azure Storage Emulator használatával futtathatja és tesztelheti a programkódot egy helyi környezetben. További információ: [Az Azure Storage Emulator használata fejlesztéshez és teszteléshez](../articles/storage/common/storage-use-emulator.md).
 

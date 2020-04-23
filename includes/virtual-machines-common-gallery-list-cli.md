@@ -15,34 +15,34 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "66226019"
 ---
-## <a name="using-rbac-to-share-images"></a>Képek megosztása az RBAC segítségével
+## <a name="using-rbac-to-share-images"></a>Képek megosztása a RBAC használatával
 
-A szerepköralapú hozzáférés-vezérlés (RBAC) használatával a képeket előfizetések között is megoszthatja. Minden olyan felhasználó, aki olvasási engedéllyel rendelkezik egy lemezkép-verzióhoz, még az előfizetések között is, a lemezkép-verzió használatával telepítheti a virtuális gépet.
+A rendszerképeket a szerepköralapú Access Control (RBAC) használatával megoszthatja az előfizetések között. Minden olyan felhasználó, aki olvasási engedéllyel rendelkezik a lemezkép verziójához, még az előfizetések között is, telepítheti a virtuális gépet a lemezkép verziójának használatával.
 
-Az erőforrások RBAC használatával történő megosztásáról a [Hozzáférés kezelése az RBAC és](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)az Azure CLI használatával című témakörben talál további információt.
+Az erőforrások RBAC használatával történő megosztásával kapcsolatos további információkért lásd: [hozzáférés kezelése a RBAC és az Azure CLI használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
 
 
-## <a name="list-information"></a>Listainformáció
+## <a name="list-information"></a>Információk listázása
 
-Az [az sig lista](/cli/azure/sig#az-sig-list)segítségével lepeltheti a rendelkezésre álló képgalériák helyét, állapotát és egyéb információit.
+A rendelkezésre álló képtárak helyének, állapotának és egyéb információinak lekérése az az [SIG List](/cli/azure/sig#az-sig-list)paranccsal.
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-Sorolja fel a képdefiníciókat egy gyűjteményben, beleértve az operációs rendszer típusára és állapotára vonatkozó információkat [az az sig image-definition lista használatával.](/cli/azure/sig/image-definition#az-sig-image-definition-list)
+Egy katalógus képdefinícióinak listázása, beleértve az operációs rendszer típusával és állapotával kapcsolatos információkat az [az SIG rendszerkép-definition List](/cli/azure/sig/image-definition#az-sig-image-definition-list)paranccsal.
 
 ```azurecli-interactive 
 az sig image-definition list --resource-group myGalleryRG --gallery-name myGallery -o table
 ```
 
-A megosztott képverziók felsorolása egy gyűjteményben az [sig image-version lista használatával.](/cli/azure/sig/image-version#az-sig-image-version-list)
+A katalógusban szereplő megosztott rendszerkép-verziók listázása az [az SIG rendszerkép-Version List](/cli/azure/sig/image-version#az-sig-image-version-list)paranccsal.
 
 ```azurecli-interactive
 az sig image-version list --resource-group myGalleryRG --gallery-name myGallery --gallery-image-definition myImageDefinition -o table
 ```
 
-A képverzió azonosítójának beszereznie az [sig image-version show](/cli/azure/sig/image-version#az-sig-image-version-show)használatával.
+Szerezze be egy rendszerkép-verzió AZONOSÍTÓját az [az SIG rendszerkép-Version show](/cli/azure/sig/image-version#az-sig-image-version-show)paranccsal.
 
 ```azurecli-interactive
 az sig image-version show \

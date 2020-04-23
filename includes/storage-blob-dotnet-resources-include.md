@@ -15,25 +15,25 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128473"
 ---
-## <a name="resources-for-development-with-net"></a>Fejlesztési erőforrások a .NET segítségével
+## <a name="resources-for-development-with-net"></a>Erőforrások a .NET-tel való fejlesztéshez
 
-Az alábbi hivatkozások hasznos erőforrásokat biztosítanak a .NET Azure Storage-ügyfélkódtárhasználatával használó fejlesztők számára.
+Az alábbi hivatkozások hasznos erőforrásokat biztosítanak a fejlesztők számára az Azure Storage .NET-hez készült ügyféloldali kódtára használatával.
 
-### <a name="azure-storage-common-apis"></a>Az Azure Storage gyakori API-jai
+### <a name="azure-storage-common-apis"></a>Azure Storage – általános API-k
 
 - [API-referenciadokumentáció](/dotnet/api/overview/azure/storage)
-- [Tár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Common)
+- [Könyvtár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Common)
 - [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 
-### <a name="blob-storage-apis"></a>Blob tárolási API-k
+### <a name="blob-storage-apis"></a>BLOB Storage API-k
 
 - [API-referenciadokumentáció](/dotnet/api/overview/azure/storage)
-- [Tár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Blob)
-- [Csomag (NuGet) a 11.x verzióhoz](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
-- [Csomag (NuGet) a 12.x verzióhoz](https://www.nuget.org/packages/Azure.Storage.Blobs)
-- [Minták](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+- [Könyvtár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Blob)
+- [Csomag (NuGet) a 11. x verzióhoz](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+- [Csomag (NuGet) a 12. x verzióhoz](https://www.nuget.org/packages/Azure.Storage.Blobs)
+- [Példák](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
-### <a name="net-tools"></a>.NET eszközök
+### <a name="net-tools"></a>.NET-eszközök
 
 - [.NET](https://dotnet.microsoft.com/download/)
-- [Vizuális stúdió](https://visualstudio.microsoft.com/)
+- [Visual Studio](https://visualstudio.microsoft.com/)

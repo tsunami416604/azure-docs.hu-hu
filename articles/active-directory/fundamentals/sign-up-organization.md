@@ -1,6 +1,6 @@
 ---
-title: A szervezet regisztrálása – Azure Active Directory | Microsoft dokumentumok
-description: Útmutató a szervezet regisztrálásához az Azure és az Azure Active Directory használatához.
+title: A szervezet regisztrálása – Azure Active Directory | Microsoft Docs
+description: Útmutatás a szervezet Azure-beli és Azure Active Directory használatára való regisztrálásához.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -20,25 +20,25 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "68561617"
 ---
-# <a name="sign-up-your-organization-to-use-azure-active-directory"></a>A szervezet regisztrálása az Azure Active Directory használatához
-Regisztráljon az Azure Active Directory (Azure AD) vagy egy új Microsoft Azure-előfizetésre a következő használatával:
+# <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Regisztrálja a szervezetét Azure Active Directory használatára
+Regisztráljon Azure Active Directory (Azure AD) vagy egy új Microsoft Azure-előfizetésre, vagy használja a következőt:
 
-- **Microsoft-fiók.** Személyes Microsoft-fiókjával hozzáférhet az Azure-hoz és az összes fogyasztóorientált Microsoft-termékhez és felhőszolgáltatáshoz, például az Outlookhoz (Hotmail), a Messengerhez, a OneDrive-hoz, az MSN-hez, az Xbox LIVE-hoz vagy az Office 365-höz. A Outlook.com-postaládára való feliratkozás automatikusan létrehoz egy Microsoft-fiókot. További információt a [Microsoft-fiók áttekintése című témakörben talál.](https://account.microsoft.com/account)
+- **Microsoft-fiók.** Személyes, Microsoft-fiók használhatja az Azure-t és az összes fogyasztói Microsoft-terméket és felhőalapú szolgáltatást (például Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE vagy Office 365). Egy Outlook.com-postaláda regisztrálása automatikusan létrehoz egy Microsoft-fiók. További információ: [Microsoft-fiók Overview (áttekintés](https://account.microsoft.com/account)).
 
-- **Munkahelyi vagy iskolai fiók.** Munkahelyi vagy iskolai fiókjával hozzáférhet a Microsoft összes kis-, közepes és nagyvállalati felhőszolgáltatásához, például az Azure-hoz, a Microsoft Intune-hoz vagy az Office 365-höz. Miután feliratkozott egy ilyen szolgáltatásra szervezetként, az Azure AD automatikusan egy felhőalapú címtárat rendel el, amely a szervezetet képviseli. További információt [az Azure AD-könyvtár kezelése](active-directory-administer.md)című témakörben talál.
+- **Munkahelyi vagy iskolai fiók.** A munkahelyi vagy iskolai fiókkal hozzáférhet a Microsoft által használt kis, közepes és nagyvállalati felhőalapú szolgáltatásokhoz, például az Azure-hoz, a Microsoft Intunehoz vagy az Office 365-hez. Miután regisztrálta az egyik szolgáltatást a szervezet számára, az Azure AD automatikusan kiépít egy felhőalapú könyvtárat, amely a szervezetét képviseli. További információ: [Az Azure ad-címtár kezelése](active-directory-administer.md).
 
   > [!Note]
-  >   Azt javasoljuk, hogy használja a munkahelyi vagy iskolai fiók, ha már rendelkezik hozzáféréssel az Azure AD.We recommend that you use your work or school account if you already have access to Azure AD. Azonban azt a fióktípust kell használnia, amely az Azure-előfizetéséhez van társítva.
+  >   Javasoljuk, hogy használja munkahelyi vagy iskolai fiókját, ha már rendelkezik hozzáféréssel az Azure AD-hoz. Azonban az Azure-előfizetéshez tartozó bármelyik típusú fiókot kell használnia.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hogyan vásárolhat Azure-t?](https://azure.microsoft.com/pricing/purchase-options/)
+- [Az Azure megvásárlása](https://azure.microsoft.com/pricing/purchase-options/)
 
 - [Prémium szintű Azure Active Directory-kiadások – Regisztráció](active-directory-get-started-premium.md)
 
 - [További információ az Azure AD-ről](active-directory-whatis.md)
 
-- [A helyszíni identitásinfrastruktúra használata a felhőben](../connect/active-directory-aadconnect.md)
+- [A helyszíni identitás-infrastruktúra használata a felhőben](../connect/active-directory-aadconnect.md)
 
 - [Látogasson el a Microsoft Azure blogra](https://azure.microsoft.com/blog/)
 

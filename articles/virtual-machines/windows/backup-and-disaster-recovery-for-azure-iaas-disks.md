@@ -1,6 +1,6 @@
 ---
-title: Biztonsági mentés és vészhelyreállítás IaaS-lemezekhez Windows virtuális gépeken
-description: Ez a cikk bemutatja, hogyan tervezhet biztonsági mentést és vészhelyreállítást az IaaS virtuális gépek és lemezek az Azure-ban. Ez a dokumentum a felügyelt és a nem felügyelt lemezeket egyaránt ismerteti.
+title: Biztonsági mentés és vész-helyreállítás a Windows rendszerű virtuális gépeken futó IaaS-lemezeken
+description: Ez a cikk bemutatja, hogyan tervezheti meg a IaaS virtuális gépek és lemezek biztonsági mentését és vész-helyreállítását az Azure-ban. Ez a dokumentum a felügyelt és a nem felügyelt lemezeket is tartalmazza.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
@@ -14,5 +14,5 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "75375542"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Biztonsági mentés és vészhelyreállítás Az Azure IaaS-lemezekhez
+# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS-lemezek biztonsági mentése és vész-helyreállítás
 [!INCLUDE [virtual-machines-common-premium-storage.md](../../../includes/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks.md)]

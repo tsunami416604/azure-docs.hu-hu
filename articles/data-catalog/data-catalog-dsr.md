@@ -1,6 +1,6 @@
 ---
-title: Támogatott adatforrások az Azure Data Catalogban
-description: Ez a cikk az Azure Data Catalog jelenleg támogatott adatforrásainak specifikációit sorolja fel.
+title: Azure Data Catalog támogatott adatforrások
+description: Ez a cikk a Azure Data Catalog jelenleg támogatott adatforrásainak specifikációit sorolja fel.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
@@ -13,17 +13,17 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898152"
 ---
-# <a name="supported-data-sources-in-azure-data-catalog"></a>Támogatott adatforrások az Azure Data Catalogban
+# <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog támogatott adatforrások
 
-Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással történő regisztrációs eszköz használatával, vagy manuálisan adatok at az Azure Data Catalog webportálon. Az alábbi táblázat összefoglalja a katalógus által ma támogatott összes adatforrást és az egyes adatok közzétételi lehetőségeit. Szintén felsorolt a külső adateszközök, hogy minden adatforrás indíthat a portál "open-in" tapasztalat. A második tábla az egyes adatforrás-csatlakozási tulajdonságok technikai specifikációját tartalmazza.
+A metaadatokat nyilvános API-k vagy egyszer használatos regisztrációs eszköz használatával vagy közvetlenül az Azure Data Catalog webes portálra történő manuális bevitelsel teheti közzé. A következő táblázat összefoglalja a katalógus által jelenleg támogatott összes adatforrást, valamint a közzétételi képességeket. Ezen kívül szerepelnek azok a külső Adateszközök is, amelyeket az egyes adatforrások megnyithatnak a portál "nyitott" felületén. A második táblázat az egyes adatforrások közötti kapcsolatok tulajdonságainak technikai leírását tartalmazza.
 
 ## <a name="list-of-supported-data-sources"></a>Támogatott adatforrások listája
 
 <table>
     <tr>
        <td><b>Adatforrás-objektum</b></td>
-       <td><b>Api</b></td>
-       <td><b>Kézi bevitel</b></td>
+       <td><b>API</b></td>
+       <td><b>Manuális bejegyzés</b></td>
        <td><b>Regisztrációs eszköz</b></td>
        <td><b>Nyitott eszközök</b></td>
        <td><b>Megjegyzések</b></td>
@@ -37,7 +37,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store fájl (csak 1. generációs)</td>
+      <td>Azure Data Lake Store fájl (csak 1. gen)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -53,7 +53,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>Azure Storage-könyvtár</td>
+      <td>Azure Storage-címtár</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -87,7 +87,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>Hive tábla</td>
+      <td>Struktúra táblázata</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -95,7 +95,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>Hive nézet</td>
+      <td>Struktúra nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -103,7 +103,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>MySQL tábla</td>
+      <td>MySQL-táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -119,7 +119,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>Oracle adatbázis tábla</td>
+      <td>Oracle Database táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -127,7 +127,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td>Oracle 10 és újabb verziók.</td>
     </tr>
     <tr>
-      <td>Oracle adatbázis nézet</td>
+      <td>Oracle Database nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -135,7 +135,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td>Oracle 10 és újabb verziók.</td>
     </tr>
     <tr>
-      <td>Egyéb (generikus eszköz)</td>
+      <td>Egyéb (általános eszköz)</td>
       <td>✓</td>
       <td>✓</td>
       <td></td>
@@ -143,11 +143,11 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>Azure SQL Data Warehouse tábla</td>
+      <td>Azure SQL Data Warehouse táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop, SQL Server adateszközök</td>
+      <td>Excel, Power BI Desktop, SQL Server Adateszközök</td>
       <td></td>
     </tr>
     <tr>
@@ -155,7 +155,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop, SQL Server adateszközök</td>
+      <td>Excel, Power BI Desktop, SQL Server Adateszközök</td>
       <td></td>
     </tr>
     <tr>
@@ -164,7 +164,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 és újabb verziók.</td>
+      <td>SQL Server 2008-es és újabb verziók.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services KPI</td>
@@ -172,7 +172,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 és újabb verziók.</td>
+      <td>SQL Server 2008-es és újabb verziók.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services mérték</td>
@@ -180,15 +180,15 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 és újabb verziók.</td>
+      <td>SQL Server 2008-es és újabb verziók.</td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services tábla</td>
+      <td>SQL Server Analysis Services táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 és újabb verziók.</td>
+      <td>SQL Server 2008-es és újabb verziók.</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services jelentés</td>
@@ -196,26 +196,26 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td>✓</td>
       <td>✓</td>
       <td>Böngésző</td>
-      <td>Csak natív módú kiszolgálók. A SharePoint mód nem támogatott. Csak SQL Server 2008-as és újabb verziói</td>
+      <td>Csak natív üzemmódú kiszolgálók. A SharePoint-mód nem támogatott. Csak SQL Server 2008-es és újabb verziók</td>
     </tr>
     <tr>
-      <td>SQL Server tábla</td>
+      <td>SQL Server táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop, SQL Server adateszközök</td>
-      <td>SQL Server 2008 és újabb verziók.</td>
+      <td>Excel, Power BI Desktop, SQL Server Adateszközök</td>
+      <td>SQL Server 2008-es és újabb verziók.</td>
     </tr>
     <tr>
       <td>SQL Server nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Excel, Power BI Desktop, SQL Server adateszközök</td>
-      <td>SQL Server 2008 és újabb verziók.</td>
+      <td>Excel, Power BI Desktop, SQL Server Adateszközök</td>
+      <td>SQL Server 2008-es és újabb verziók.</td>
     </tr>
     <tr>
-      <td>Teradata tábla</td>
+      <td>Teradata táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -236,7 +236,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Csak angolul működik. Az intézkedések nem támogatottak.</td>
+      <td>Csak angol nyelven működik. A mértékek nem támogatottak.</td>
     </tr>
     <tr>
       <td>SAP HANA nézet</td>
@@ -247,7 +247,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>DB2 tábla</td>
+      <td>DB2-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -255,7 +255,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>DB2 nézet</td>
+      <td>DB2-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -263,7 +263,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>Fájlrendszerfájl</td>
+      <td>Fájlrendszer fájlja</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -311,7 +311,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>OData entitáskészlet</td>
+      <td>OData-entitás beállítása</td>
       <td>✓</td>
       <td></td>
       <td></td>
@@ -327,7 +327,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>PostgreSQL tábla</td>
+      <td>PostgreSQL-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -335,7 +335,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>PostgreSQL nézet</td>
+      <td>PostgreSQL-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -367,23 +367,15 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>Az Azure Cosmos DB gyűjteménye</td>
+      <td>Azure Cosmos DB gyűjtemény</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>Csak az Azure DocumentDB és az Azure Cosmos DB SQL API-gyűjtemények csak az örökölt gyűjtemények kompatibilisek. Az újabb Cosmos DB API-k még nem támogatottak. Válassza az Azure DocumentDB elemet az adatforráslistában.</td>
+      <td>A Azure Cosmos DBban csak az Azure DocumentDB és az SQL API-gyűjteményekből származó örökölt gyűjtemények kompatibilisek. Az újabb Cosmos DB API-k még nem támogatottak. Az adatforrás listában válassza az Azure DocumentDB lehetőséget.</td>
     </tr>
     <tr>
-      <td>Általános ODBC-tábla</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Általános ODBC nézet</td>
+      <td>Általános ODBC-táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -391,7 +383,15 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>Cassandra asztal</td>
+      <td>Általános ODBC-nézet</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Cassandra-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -407,7 +407,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td>Közzététel általános ODBC-eszközként</td>
     </tr>
     <tr>
-      <td>Sybase tábla</td>
+      <td>Sybase-táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -415,7 +415,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>Sybase nézet</td>
+      <td>Sybase-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -423,7 +423,7 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
       <td></td>
     </tr>
     <tr>
-      <td>MongoDB tábla</td>
+      <td>MongoDB táblázat</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -440,12 +440,12 @@ Metaadatok közzététele nyilvános API vagy egy egyszeri kattintással törté
     </tr>
 </table>
 
-Ha egy adott adatforrás támogatottat szeretne látni, javasoljon azt (vagy a támogatást, ha már javasolták) [az Azure visszajelzési fórumain lévő adatkatalógusban.](https://feedback.azure.com/forums/906052-data-catalog)
+Ha egy adott adatforrást szeretne megtekinteni, javasolja azt (vagy ha már javasolta), az [Azure visszajelzési fórumokon Data Catalog](https://feedback.azure.com/forums/906052-data-catalog).
 
 
-## <a name="data-source-reference-specification"></a>Adatforrás-referencia specifikáció
+## <a name="data-source-reference-specification"></a>Adatforrás-referenciák specifikációja
 > [!NOTE]
-> A **DSL-struktúra** oszlop a következő táblázatban csak a kapcsolat tulajdonságait a "cím" tulajdonságtáska által használt Azure Data Catalog. Ez azt jelenti, hogy a "address" tulajdonságcsomag tartalmazhat az adatforrás más kapcsolati tulajdonságait, amelyeket az Azure Data Catalog megtart, de nem használ.
+> A következő táblázat **DSL-struktúra** oszlopa csak az Azure Data Catalog által használt "címnek" tulajdonsághoz tartozó kapcsolatok tulajdonságait sorolja fel. Ez azt jelentheti, hogy a "címe" tulajdonsághoz tartozó táska más, az adatforráshoz tartozó kapcsolatokat is tartalmazhat, amelyek Azure Data Catalog megmaradnak, de nem használják.
 
 <table>
     <tr>

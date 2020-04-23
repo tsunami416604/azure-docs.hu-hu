@@ -1,6 +1,6 @@
 ---
-title: Azure Értesítési központok sablonjai
-description: Ismerje meg az Azure Értesítési központok sablonjainak használatát.
+title: Azure Notification Hubs-sablonok
+description: Tudnivalók az Azure Notification Hubs sablonjainak használatáról.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -25,24 +25,24 @@ ms.locfileid: "76263744"
 ---
 # <a name="templates"></a>Sablonok
 
-A sablonok lehetővé teszik, hogy az ügyfélalkalmazás pontosan megadja a fogadni kívánt értesítések pontos formátumát. A sablonok használatával az alkalmazások számos különböző előnyt érhetnek el, többek között a következőket:
+A sablonok lehetővé teszik az ügyfélalkalmazás számára, hogy megadják a fogadni kívánt értesítések pontos formátumát. A sablonok használatával az alkalmazások számos különböző előnnyel járhatnak, többek között az alábbiakkal:
 
-- Platformfüggetlen háttér
+- Platform-agnosztikus háttérrendszer
 - Személyre szabott értesítések
-- Ügyfélverzió függetlensége
-- Egyszerű lokalizáció
+- Ügyfél-verzió függetlenség
+- Egyszerű honosítás
 
-Ez a szakasz két részletes példát mutat be arra, hogyan használhat sablonokat platformfüggetlen értesítések küldésére, amelyek az összes eszközt platformon keresztül célozzák meg, és hogyan szabhatja személyre a szórásos értesítéseket az egyes eszközökre.
+Ez a szakasz két részletes példát tartalmaz arra vonatkozóan, hogyan használhatók a sablonok a platformok közötti, az összes eszközön a platformon megcélzott, és a szórásos értesítések személyre szabásához.
 
-## <a name="using-templates-cross-platform"></a>Sablonok használata platformfüggetlen
+## <a name="using-templates-cross-platform"></a>Sablonok használata platformfüggetlen platformon
 
-A leküldéses értesítések küldésének szokásos módja, hogy minden egyes elküldendő értesítéshez küldjön egy adott hasznos terhet a platformértesítési szolgáltatásoknak (WNS, APNS). Ha például riasztást szeretne küldeni az APNS-nek, a hasznos adat a következő űrlap JSON-objektuma:
+A leküldéses értesítések küldésének szabványos módja az elküldött értesítések küldése, a platform Notification Services (WNS, APNS) egy adott adattartalom. Ha például riasztást szeretne küldeni a APNS, a hasznos adat a következő űrlap JSON-objektuma:
 
 ```json
 {"aps": {"alert" : "Hello!" }}
 ```
 
-Ha hasonló bejelentési üzenetet szeretne küldeni egy Windows Áruházbeli alkalmazásban, az XML-tartalom a következő:
+Ha egy Windows áruházbeli alkalmazáshoz hasonló Toast-üzenetet szeretne küldeni, az XML-tartalom a következő:
 
 ```xml
 <toast>
@@ -54,23 +54,23 @@ Ha hasonló bejelentési üzenetet szeretne küldeni egy Windows Áruházbeli al
 </toast>
 ```
 
-Hasonló hasznos adatokat hozhat létre MPNS (Windows Phone) és FCM (Android) platformokhoz.
+A MPNS (Windows Phone-telefon) és az FCM (Android) platformokhoz hasonló adattartalmakat is létrehozhat.
 
-Ez a követelmény arra kényszeríti az alkalmazás háttér-létrehozásához különböző hasznos adatokat az egyes platformok, és hatékonyan teszi a háttérrendszer felelős része a megjelenítési réteg az alkalmazás. Egyes aggályok közé tartozik a honosítás és a grafikus elrendezések (különösen a Különböző típusú csempékre vonatkozó értesítéseket tartalmazó Windows Áruházbeli alkalmazások esetében).
+Ez a követelmény arra kényszeríti az alkalmazási hátteret, hogy az egyes platformokon különböző adattartalmakat hozzon létre, és hatékonyan hozza létre az alkalmazás megjelenítési rétegének egy részéért felelős hátteret. Néhány probléma például a honosítás és a grafikus elrendezés (különösen a Windows áruházbeli alkalmazásokhoz, amelyek a különböző típusú csempék értesítéseit tartalmazzák).
 
-Az Értesítési központok sablonfunkció lehetővé teszi, hogy az ügyfélalkalmazás speciális regisztrációkat, úgynevezett sablonregisztrációkat hozzon létre, amelyek a címkék készletén kívül egy sablont is tartalmaznak. Az Értesítési központok sablonfunkció lehetővé teszi, hogy az ügyfélalkalmazás hozzátársítsa az eszközöket a sablonokhoz, függetlenül attól, hogy telepítésekkel (előnyben részesített) vagy regisztrációkkal dolgozik.The Notification Hubs template feature enables a client app to associate devices with templates whether you are working with Installations (preferred) or Registrations. Az előző hasznos adatra vonatkozó példákat figyelembe véve az egyetlen platformfüggetlen információ a tényleges figyelmeztető üzenet (Hello!). A sablon az értesítési központ utasítása aplatformfüggetlen üzenetek formálásához az adott ügyfélalkalmazás regisztrálására. Az előző példában a platformfüggetlen üzenet egyetlen `message = Hello!`tulajdonság: .
+A Notification Hubs sablon funkció lehetővé teszi, hogy az ügyfélalkalmazás olyan speciális regisztrációkat hozzon létre, amelyeket sablon-regisztrációknak neveznek, beleértve a címkék készletét is. A Notification Hubs sablon funkció lehetővé teszi, hogy az ügyfélalkalmazások sablonokkal társítsák az eszközöket, függetlenül attól, hogy a telepítések (előnyben részesített) vagy a regisztrációk használatával működnek. Az előző adattartalomra vonatkozó példák miatt az egyetlen platformtól független információ a tényleges riasztási üzenet (Hello!). A sablon az értesítési központ utasításait mutatja be, amely bemutatja, hogyan formázhatja a platformtól független üzenetet az adott ügyfélalkalmazás regisztrálásához. Az előző példában a platform-független üzenet egyetlen tulajdonság: `message = Hello!`.
 
-Az alábbi képen a folyamat látható:
+A következő kép szemlélteti a folyamatot:
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
-Az iOS-ügyfélalkalmazás-regisztráció sablonja a következő:
+Az iOS-ügyfélalkalmazás regisztrációjának sablonja a következő:
 
 ```json
 {"aps": {"alert": "$(message)"}}
 ```
 
-A Windows Áruházbeli ügyfélalkalmazás megfelelő sablonja:
+A Windows áruházbeli ügyfélalkalmazás megfelelő sablonja a következő:
 
 ```xml
 <toast>
@@ -82,17 +82,17 @@ A Windows Áruházbeli ügyfélalkalmazás megfelelő sablonja:
 </toast>
 ```
 
-Figyelje meg, hogy a tényleges üzenet a $(message) kifejezést helyettesíti. Ez a kifejezés arra utasítja az értesítési központot, amikor üzenetet küld az adott regisztrációnak, hogy hozzon létre egy üzenetet, amely követi azt, és átvált a közös értékre.
+Figyelje meg, hogy a tényleges üzenet a $ (üzenet) kifejezés helyébe kerül. Ez a kifejezés arra utasítja az értesítési központot, hogy ha üzenetet küld erre a regisztrációra, hozzon létre egy üzenetet, amely az azt követő és a közös értékre vált.
 
-Ha a telepítési modellel dolgozik, a telepítési "sablonok" kulcs több sablonJSON-t tartalmaz. Ha a Regisztrációs modellel dolgozik, az ügyfélalkalmazás több regisztrációt is létrehozhat több sablon használatához; például egy figyelmeztető üzeneteksablon és egy sablon a csempefrissítésekhez. Az ügyfélalkalmazások a natív regisztrációkat (sablon nélküli regisztrációkat) és a sablonregisztrációkat is keverhetik.
+Ha a telepítési modellel dolgozik, a "templates" (Sablonok) kulcs több sablon JSON-fájlját tartalmazza. Ha a regisztrációs modellel dolgozik, az ügyfélalkalmazás több regisztrációt is létrehozhat, hogy több sablont lehessen használni; például egy sablon a riasztási üzenetekhez, valamint egy sablon a csempék frissítéseihez. Az ügyfélalkalmazások a natív regisztrációkat (sablon nélküli regisztrációkat) és a sablonok regisztrációját is összekeverik.
 
-Az értesítési központ minden sablonhoz egy értesítést küld anélkül, hogy figyelembe venné, hogy ugyanahhoz az ügyfélalkalmazáshoz tartoznak-e. Ez a viselkedés platformfüggetlen értesítések további értesítésekké fordítására használható. Például ugyanazt a platformfüggetlen üzenetet az értesítési központ zökkenőmentesen lefordítani egy pirítós riasztást, és egy csempe frissítés, anélkül, hogy a háttérrendszer, hogy tudatában legyenek. Egyes platformok (például az iOS) összecsukhatnak több értesítést ugyanarra az eszközre, ha rövid időn belül elküldik őket.
+Az értesítési központ egy értesítést küld az egyes sablonokhoz anélkül, hogy azok ugyanahhoz az ügyfélalkalmazás ugyanahhoz az alkalmazáshoz tartozzanak. Ez a viselkedés a platformtól független értesítések további értesítésekre való fordítására használható. Például az értesítési központhoz hasonló platform-független üzenet zökkenőmentesen lefordítható egy Toast-riasztásban és egy csempe-frissítésben anélkül, hogy a háttérnek tudniuk kell róla. Egyes platformok (például iOS) több értesítést is összecsuknak ugyanarra az eszközre, ha rövid időn belül elküldik őket.
 
 ## <a name="using-templates-for-personalization"></a>Sablonok használata személyre szabáshoz
 
-A sablonok használatának másik előnye, hogy az értesítési központok segítségével végezheti el az értesítések regisztrációnkénti személyre szabását. Vegyünk például egy időjárás-alkalmazást, amely egy adott helyen az időjárási körülményeket tartalmazó csempét jelenít meg. A felhasználó választhat Celsius- vagy Fahrenheit-fok, valamint egy- vagy ötnapos előrejelzés között. Sablonok használatával minden ügyfélalkalmazás telepítése regisztrálhat a szükséges formátumra (1 napos Celsius, 1 napos Fahrenheit, 5 nap Celsius, 5 nap Fahrenheit), és a háttérrendszer egyetlen üzenetet küld, amely tartalmazza a sablonok kitöltéséhez szükséges összes információt (például egy ötnapos előrejelzés Celsius és Fahrenheit-fok).
+A sablonok használatának másik előnye, hogy a Notification Hubs használatával végezheti el az értesítések regisztrációjának személyre szabását. Vegyünk például egy olyan időjárási alkalmazást, amely egy adott helyen időjárási feltételekkel jeleníti meg a csempét. A felhasználók a Celsius-vagy Fahrenheit-fok, valamint egy vagy öt napos előrejelzés közül választhatnak. A sablonok használatával minden ügyfélalkalmazás telepítése regisztrálhat a szükséges formátumra (1 napos Celsius, 1 napos Fahrenheit, 5 napos Celsius-fok, 5 napos Fahrenheit), és a háttérrendszer egyetlen üzenetet küld, amely tartalmazza a sablonok kitöltéséhez szükséges összes információt (például egy ötéves, Celsius-és Fahrenheit-fok szerinti előrejelzést).
 
-A Celsius-hőmérséklettel rendelkező egynapos előrejelzés sablonja a következő:
+A Celsius hőmérséklettel rendelkező egynapos előrejelzés sablonja a következő:
 
 ```xml
 <tile>
@@ -119,33 +119,33 @@ Az értesítési központnak küldött üzenet a következő tulajdonságokat ta
 </table><br/>
 ```
 
-Ezzel a mintával a háttérrendszer csak egyetlen üzenetet küld anélkül, hogy az alkalmazás felhasználóinak adott személyre szabási beállításait tárolnia kellene. Az alábbi képen ez a forgatókönyv látható:
+Ennek a mintának a használatával a háttérrendszer csak egyetlen üzenetet küld anélkül, hogy az alkalmazás felhasználói számára speciális személyre szabott beállításokat kellene tárolnia. A következő kép szemlélteti ezt a forgatókönyvet:
 
 ![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>Sablonok regisztrálása
 
-A telepítési modell (előnyben részesített) vagy a regisztrációs modell használatával történő sablonokkal való regisztrációról a Regisztráció kezelése című [témakörben](notification-hubs-push-notification-registration-management.md)olvashat.
+Ha regisztrálni szeretne a sablonokkal a telepítési modell (előnyben részesített) vagy a regisztrációs modell használatával, tekintse meg a [regisztráció kezelése](notification-hubs-push-notification-registration-management.md)című témakört.
 
-## <a name="template-expression-language"></a>Sablonkifejezés nyelve
+## <a name="template-expression-language"></a>Sablon kifejezésének nyelve
 
-A sablonok XML- vagy JSON-dokumentumformátumokra korlátozódnak. Emellett csak bizonyos helyeken helyezhet el kifejezéseket; például az XML csomópontattribútumai vagy értékei, a JSON karakterlánctulajdonság-értékei.
+A sablonok XML-vagy JSON-dokumentumok formátumára korlátozódnak. Emellett a kifejezéseket csak bizonyos helyeken helyezheti el; például: csomópont-attribútumok vagy XML-értékek, karakterlánc-tulajdonságértékek a JSON-hoz.
 
-Az alábbi táblázat a sablonokban engedélyezett nyelvet mutatja be:
+A következő táblázat a sablonokban engedélyezett nyelvet mutatja be:
 
 | Kifejezés       | Leírás |
 | ---------------- | --- |
-| $(prop)          | Hivatkozás a megadott nevű eseménytulajdonságra. A tulajdonságnevek nem érzékenyek a kis- és nagybetűkre. Ez a kifejezés a tulajdonság szöveges értékébe vagy üres karakterláncba oldódik fel, ha a tulajdonság nincs jelen. |
-| $(prop, n)       | Mint fent, de a szöveg kifejezetten levan vágva n karakterek, például $(cím, 20) klipek tartalmát a cím tulajdonság 20 karakter. |
-| . (kellék, n)       | Mint fent, de a szöveg van utótag -val három pöttyök mint ez vág. A levágott karakterlánc és utótag teljes mérete nem haladja meg az n karaktereket. . (title, 20) egy input tulajdonsága "Ez a címsor" eredmények **Ez a cím ...** |
-| %(prop)          | Hasonló a $(name) értékhez, azzal a különbséggel, hogy a kimenet URI-kódolású. |
-| #(prop)          | JSON-sablonokban (például iOS és Android sablonokesetén).<br><br>Ez a függvény pontosan ugyanúgy működik, mint a korábban megadott $(prop), kivéve, ha JSON-sablonokban (például Apple-sablonokban) használja. Ebben az esetben, ha ezt a függvényt nem veszi körül "{',""}" (például "myJsonProperty" : '#(name)"), és javascript formátumú számot ad ki, például regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?, akkor a kimeneti JSON egy szám.<br><br>Például a "jelvény: "#(name)" lesz a "jelvény" : 40 (és nem "40"). |
-| "szöveg" vagy "szöveg" | Szó szerint. A konstansok tetszőleges, egy- vagy dupla idézőjelek közé zárt szöveget tartalmaznak. |
-| Kif1 + kif2    | Az összefűző operátor két kifejezést egyetlen karakterláncba köt. |
+| $ (prop)          | Hivatkozás a megadott nevű Event tulajdonságra. A tulajdonságok neve nem megkülönbözteti a kis-és nagybetűket. Ez a kifejezés a tulajdonság szöveges értékére vagy üres karakterláncba kerül, ha a tulajdonság nincs jelen. |
+| $ (prop, n)       | A fentiek szerint azonban a szöveg kifejezetten n karakterből van kivágva, például $ (title, 20) – a title tulajdonság tartalma 20 karakternél. |
+| . (prop, n)       | A fentiek szerint azonban a szöveg három ponttal van ellátva, ahogy azt levágja. A kivágott karakterlánc és az utótag teljes mérete nem haladja meg az n karaktert. . (title, 20) a "this a title line" (cím) mezőben a következő cím jelenik meg: **.** .. |
+| % (prop)          | Hasonló a $ (Name) értékhez, kivéve, ha a kimenet URI-kódolású. |
+| # (prop)          | JSON-sablonokban használatos (például iOS és Android rendszerű sablonok esetén).<br><br>Ez a függvény pontosan ugyanaz, mint a korábban megadott $ (prop), kivéve, ha JSON-sablonokban (például Apple Templates) használatosak. Ebben az esetben, ha ez a függvény nem a "{", "}" (például "myJsonProperty": "# (Name)"), és egy JavaScript formátumú számot ad vissza, például regexp: (0&#124; (&#91;1-9&#93;&#91;0-9&#93; *)) (\.&#91;0-9&#93;+)? ((e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, majd a kimenet JSON egy szám.<br><br>Például a "BADGE:" # (név) "lesz" jelvény ": 40 (és nem" 40 "). |
+| "text" vagy "text" | Egy szövegkonstans. A literálek egyetlen vagy idézőjelek közé foglalt tetszőleges szöveget tartalmaznak. |
+| Kif1 + Kif2    | Az összefűzési operátor két kifejezést egyesít egyetlen karakterláncban. |
 
-A kifejezések az előző űrlapok bármelyike lehetnek.
+A kifejezések az előző űrlapok bármelyike lehet.
 
-Összefűzés esetén a teljes kifejezést a `{}`használatával kell körülvenni. Például: `{$(prop) + ‘ - ’ + $(prop2)}`.
+Az Összefűzés használatakor a teljes kifejezést körül kell lennie `{}`. Például: `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 A következő sablon például nem érvényes XML-sablon:
 
@@ -159,7 +159,7 @@ A következő sablon például nem érvényes XML-sablon:
 </tile>
 ```
 
-Amint azt korábban kifejtettük, az összefűzés során a kifejezéseket göndör zárójelbe kell csomagolni. Példa:
+Ahogy korábban már említettük, az összefűzéskor a kifejezéseket kapcsos zárójelbe kell becsomagolni. Például:
 
 ```xml
 <tile>
@@ -173,4 +173,4 @@ Amint azt korábban kifejtettük, az összefűzés során a kifejezéseket gönd
 
 ## <a name="next-steps"></a>További lépések
 
-[További információ az Azure értesítési központokról](notification-hubs-push-notification-overview.md)
+[További tudnivalók az Azure Notification Hubs](notification-hubs-push-notification-overview.md)

@@ -12,15 +12,15 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "80272674"
 ---
 * PDF
-* Microsoft Office formátumok: DOCX/DOC/DOCM, XLSX/XLS/XLSM, PPTX/PPT/PPTM, MSG (Outlook e-mailek), XML (2003-as és 2006-os WORD XML)
-* Dokumentumformátumok megnyitása: ODT, ODS, ODP  
+* Microsoft Office formátumok: DOCX/DOC/DOCM, XLSX/XLS/XLSM, PPTX/PPT/PPTM, MSG (Outlook e-mailek), XML (2003 és 2006 WORD XML)
+* Dokumentumok formátumának megnyitása: ODT, ODS, ODP  
 * HTML
 * XML
-* Zip
-* Gz
-* Epub
-* Eml
-* Rtf
-* Egyszerű szöveges fájlok (lásd [még: Egyszerű szöveg indexelése)](../articles/search/search-howto-indexing-azure-blob-storage.md#IndexingPlainText)
-* JSON (lásd: [JSON-blobok indexelése)](../articles/search/search-howto-index-json-blobs.md)
-* CSV (lásd [CSV-blobok indexelése)](../articles/search/search-howto-index-csv-blobs.md)
+* ZIP
+* GZ
+* EPUB
+* EML
+* RTF
+* Egyszerű szövegfájlok (lásd még: [egyszerű szöveg indexelése](../articles/search/search-howto-indexing-azure-blob-storage.md#IndexingPlainText))
+* JSON (lásd: [JSON-Blobok indexelése](../articles/search/search-howto-index-json-blobs.md))
+* CSV (lásd: [CSV-Blobok indexelése](../articles/search/search-howto-index-csv-blobs.md))

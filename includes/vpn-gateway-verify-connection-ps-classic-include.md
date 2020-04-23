@@ -15,14 +15,14 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178951"
 ---
-A "Get-AzureVNetConnection" parancsmag használatával ellenőrizheti, hogy a kapcsolat sikeres volt-e.
+A "Get-AzureVNetConnection" parancsmag használatával ellenőrizheti, hogy a sikeres-e a kapcsolatok.
 
-1. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. A virtuális hálózat nevének idézőjelek között kell lennie, ha szóközöket tartalmaz.
+1. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. A virtuális hálózat nevének idézőjelben kell lennie, ha szóközt tartalmaz.
 
    ```azurepowershell
    Get-AzureVNetConnection "Group ClassicRG ClassicVNet"
    ```
-2. A parancsmag futtatása után tekintse meg az értékeket. Az alábbi példában a kapcsolati állapot "Connected" néven jelenik meg, és láthatja a bejövő és kimenő bájtok bejövő és kimenő bájtok.
+2. A parancsmag futtatása után tekintse meg az értékeket. Az alábbi példában a kapcsolati állapot "Connected" állapotúként jelenik meg, és láthatja a bejövő és a kimenő bájtokat.
 
         ConnectivityState         : Connected
         EgressBytesTransferred    : 181664

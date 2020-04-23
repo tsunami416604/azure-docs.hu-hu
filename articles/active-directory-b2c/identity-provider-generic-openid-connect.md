@@ -1,7 +1,7 @@
 ---
-title: Regisztráció és bejelentkezés beállítása az OpenID Connect segítségével
+title: Az OpenID Connecttel való regisztráció és bejelentkezés beállítása
 titleSuffix: Azure AD B2C
-description: Az Azure Active Directory B2C bármely OpenID Connect identitásszolgáltatójával (IdP) beállíthat regisztrációt és bejelentkezést.
+description: A regisztráció és bejelentkezés beállítása bármely OpenID Connect Identity providerrel (identitásszolgáltató) Azure Active Directory B2Cban.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -18,56 +18,56 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188256"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása az OpenID Connect segítségével az Azure Active Directory B2C használatával
+# <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Az OpenID Connecttel való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
 
-[Az OpenID Connect](openid-connect.md) az OAuth 2.0-s rendszerre épülő hitelesítési protokoll, amely biztonságos felhasználói bejelentkezéshez használható. A protokollt használó legtöbb identitásszolgáltatót támogatja az Azure AD B2C. Ebből a cikkből megtudhatja, hogyan vehet fel egyéni OpenID Connect identitásszolgáltatókat a felhasználói folyamatokba.
+Az [OpenID Connect](openid-connect.md) egy OAuth 2,0-re épülő hitelesítési protokoll, amely biztonságos felhasználói bejelentkezéshez használható. A protokollt használó legtöbb identitás-szolgáltató Azure AD B2C támogatott. Ez a cikk azt ismerteti, hogyan adhat hozzá egyéni OpenID Connect-szolgáltatókat a felhasználói folyamatokhoz.
 
-## <a name="add-the-identity-provider"></a>Az identitásszolgáltató hozzáadása
+## <a name="add-the-identity-provider"></a>Az identitás-szolgáltató hozzáadása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja, kattintson a felső menü **Directory + előfizetésszűrőre,** és válassza ki a bérlőt tartalmazó könyvtárat.
+1. Győződjön meg arról, hogy az Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben kattintson a **könyvtár + előfizetés** szűrőre, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
-1. Válassza **az Identitásszolgáltatók**lehetőséget, majd az **Új OpenID Connect szolgáltató**lehetőséget.
+1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider**lehetőséget.
 
-## <a name="configure-the-identity-provider"></a>Az identitásszolgáltató konfigurálása
+## <a name="configure-the-identity-provider"></a>Az identitás-szolgáltató konfigurálása
 
-Minden OpenID Connect identitásszolgáltató olyan metaadat-dokumentumot ír le, amely a bejelentkezéshez szükséges legtöbb információt tartalmazza. Ez olyan információkat is tartalmaz, mint például a használandó URL-címek és a szolgáltatás nyilvános aláíró kulcsainak helye. Az OpenID Connect metaadat-dokumentum mindig a végződésű végponton `.well-known\openid-configuration`található. A hozzáadni kívánt OpenID Connect identitásszolgáltató nak adja meg a metaadat-URL-címét.
+Minden OpenID Connect Identity szolgáltató olyan metaadat-dokumentumot ír le, amely a bejelentkezéshez szükséges információk nagy részét tartalmazza. Ide tartozik például a használni kívánt URL-címek és a szolgáltatás nyilvános aláíró kulcsainak helye. Az OpenID Connect metaadat-dokumentum mindig olyan végponton található, amely a `.well-known\openid-configuration`-ben végződik. A hozzáadni kívánt OpenID Connect-szolgáltatóhoz adja meg a metaadatok URL-címét.
 
-## <a name="client-id-and-secret"></a>Ügyfélazonosító és titkos titok
+## <a name="client-id-and-secret"></a>Ügyfél-azonosító és titok
 
-Ahhoz, hogy a felhasználók bejelentkezhessenek, az identitásszolgáltató megköveteli a fejlesztőktől, hogy regisztráljanak egy alkalmazást a szolgáltatásukban. Az alkalmazás azonosítója az **ügyfélazonosító** és az **ügyféltitok.** Másolja ezeket az értékeket az identitásszolgáltatóból, és adja meg azokat a megfelelő mezőkbe.
+Annak engedélyezéséhez, hogy a felhasználók bejelentkezzenek, az identitás-szolgáltató megköveteli a fejlesztőknek, hogy regisztráljanak egy alkalmazást a szolgáltatásban. Az alkalmazáshoz tartozik egy **ügyfél-azonosító** és egy **ügyfél-titok**néven ismert azonosító. Másolja ezeket az értékeket az identitás-szolgáltatóból, és írja be őket a megfelelő mezőkbe.
 
 > [!NOTE]
-> Az ügyféltitkos kulcsot nem lehet kibékülve. Azonban meg kell adnia egy ügyféltitkos kulcsot, ha az [engedélyezési kód folyamatát](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)szeretné használni, amely a titkos kulcsot használja a kód tokenre való cseréjéhez.
+> Az ügyfél titkos kulcsa nem kötelező. Ha azonban az [engedélyezési kód folyamatát](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)szeretné használni, meg kell adnia egy ügyfél titkos kulcsát, amely a titkos kódot használja a jogkivonat kódjának cseréjéhez.
 
 ## <a name="scope"></a>Hatókör
 
-A hatókör határozza meg az egyéni identitásszolgáltatótól begyűjteni kívánt információkat és engedélyeket. Az OpenID Connect `openid` kérelmeknek tartalmazniuk kell a hatókör értékét ahhoz, hogy az azonosító tokent az identitásszolgáltatótól kaphassák. Az azonosító jogkivonat nélkül a felhasználók nem tudnak bejelentkezni az Azure AD B2C-be az egyéni identitásszolgáltató használatával. Más hatókörök is hozzáfűzhetők térben elválasztva. Tekintse meg az egyéni identitásszolgáltató dokumentációját, hogy milyen más hatókörök érhetők el.
+A hatókör határozza meg az egyéni identitás-szolgáltatótól összegyűjtött információkat és engedélyeket. Az OpenID Connect-kérelmeknek `openid` tartalmaznia kell a hatókör értékét, hogy az azonosító jogkivonatot megkaphassa az identitás-szolgáltatótól. Az azonosító jogkivonat nélkül a felhasználók nem tudnak bejelentkezni a Azure AD B2Cra az egyéni identitás-szolgáltató használatával. Más hatóköröket szóközzel lehet elválasztani egymástól. Tekintse át az egyéni identitás szolgáltatójának dokumentációját, amelyből megtudhatja, hogy milyen egyéb hatókörök is elérhetők.
 
 ## <a name="response-type"></a>Válasz típusa
 
-A választípus leírja, hogy milyen típusú információkat küld `authorization_endpoint` vissza az egyéni identitásszolgáltató nak szóló első hívásban. A következő választípusok használhatók:
+A válasz típusa azt írja le, hogy `authorization_endpoint` milyen típusú információkat küld vissza a rendszer az egyéni identitás-szolgáltató kezdeti hívását. A következő típusú válaszokat lehet használni:
 
-* `code`: Az [engedélyezési kód folyamata](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)szerint egy kódot vissza ad vissza az Azure AD B2C.: Per per the authorization code flow, a code will be returned returned to Azure AD B2C. Az Azure AD B2C `token_endpoint` folytatja a jogkivonat cseréjéhez a kód hívása.
-* `id_token`: Egy azonosító jogkivonat ot visszaaz Azure AD B2C az egyéni identitásszolgáltató.
+* `code`: Az [engedélyezési kód folyamata](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)során a rendszer visszaadja a kódot Azure ad B2C. Azure AD B2C folytatja a meghívását `token_endpoint` a tokenhez tartozó kód cseréjére.
+* `id_token`: A rendszer visszaadja az azonosító jogkivonatot az egyéni identitás-szolgáltató Azure AD B2C.
 
 ## <a name="response-mode"></a>Válasz mód
 
-A válaszmód határozza meg azt a módszert, amelyet az adatok nak az egyéni identitásszolgáltatótól az Azure AD B2C-nek való visszaküldéséhez kell használni. A következő válaszmódok használhatók:
+A válasz mód határozza meg azt a módszert, amelyet az adatoknak az egyéni identitás szolgáltatótól a Azure AD B2Cba való visszaküldéséhez kell használni. A következő módokat használhatja:
 
-* `form_post`: Ez a válaszmód a legjobb biztonság érdekében ajánlott. A válasz a HTTP-módszerrel `POST` történik, a kód vagy a token `application/x-www-form-urlencoded` kódolása a törzsben a formátum használatával történik.
-* `query`: A kód vagy jogkivonat lekérdezési paraméterként kerül visszaadásra.
+* `form_post`: Ez a válasz mód ajánlott a legjobb biztonság érdekében. A válasz továbbítása a HTTP `POST` -metódussal történik, és a kódot vagy a tokent a törzsbe kódolja a `application/x-www-form-urlencoded` formátum használatával.
+* `query`: A kód vagy token lekérdezési paraméterként lesz visszaadva.
 
-## <a name="domain-hint"></a>Tartomány tipp
+## <a name="domain-hint"></a>Tartományi tipp
 
-A tartománytipp segítségével közvetlenül a megadott identitásszolgáltató bejelentkezési oldalára ugorhat, ahelyett, hogy a felhasználó nak ki kellene választania az elérhető identitásszolgáltatók listájából. Az ilyen viselkedés engedélyezéséhez adjon meg egy értéket a tartománytipphez. Az egyéni identitásszolgáltatóra való ugráshoz `domain_hint=<domain hint value>` fűzze hozzá a paramétert a kérés végéhez, amikor az Azure AD B2C-t hívja a bejelentkezéshez.
+A tartomány-emlékeztetővel közvetlenül a megadott Identity Provider bejelentkezési lapjára ugorhat, így a felhasználó nem választhat a rendelkezésre álló identitás-szolgáltatók listáján. Az ilyen viselkedés engedélyezéséhez adjon meg egy értéket a tartományhoz. Az egyéni identitás-szolgáltatóra való ugráshoz fűzze hozzá `domain_hint=<domain hint value>` a (z) paramétert a kérés végéhez, amikor meghívja Azure ad B2C a bejelentkezéshez.
 
-## <a name="claims-mapping"></a>Jogcímek leképezése
+## <a name="claims-mapping"></a>Jogcím-hozzárendelés
 
-Miután az egyéni identitásszolgáltató egy azonosító jogkivonatot küld vissza az Azure AD B2C-nek, az Azure AD B2C-nek képesnek kell lennie a kapott jogkivonat jogcímének hozzárendelésére az Azure AD B2C által felismert és használt jogcímekhez. Az alábbi leképezések mindegyikéhez tekintse meg az egyéni identitásszolgáltató dokumentációját az identitásszolgáltató jogkivonataiban visszaadott jogcímek megértéséhez:
+Miután az egyéni identitás-szolgáltató visszaküldi az azonosító jogkivonatot a Azure AD B2Cnak, Azure AD B2Cnak képesnek kell lennie a kapott token jogcímeinek hozzárendelésére a Azure AD B2C által felismert és használt jogcímekre. A következő leképezések mindegyike esetében tekintse át az egyéni identitás szolgáltatójának dokumentációját, és Ismerje meg, hogy milyen jogcímeket ad vissza az identitás-szolgáltató jogkivonatában:
 
-* **Felhasználói azonosító**: Adja meg azt a jogcímet, amely a bejelentkezett felhasználó *egyedi azonosítóját* adja meg.
-* **Megjelenítendő név**: Adja meg azt a jogcímet, amely megadja a felhasználó *megjelenítendő vagy* *teljes nevét.*
-* **Megadott név**: Adja meg a felhasználó *utónevét* megadó jogcímet.
-* **Vezetéknév**: Adja meg a felhasználó *vezetéknevét* megadó jogcímet.
-* **E-mail**: Adja meg a felhasználó *e-mail címét* megadó jogcímet.
+* **Felhasználói azonosító**: adja meg a bejelentkezett felhasználó *egyedi azonosítóját* biztosító jogcímet.
+* **Megjelenítendő név**: adja meg azt a jogcímet, amely megadja a felhasználó *megjelenítendő nevét* vagy *teljes nevét* .
+* **Utónév: adja**meg a *felhasználó vezetéknevét* biztosító jogcímet.
+* **Vezetéknév**: adja meg a felhasználó *vezetéknevét* biztosító jogcímet.
+* **E-mail**: adja meg a felhasználó *e-mail-címét* biztosító jogcímet.

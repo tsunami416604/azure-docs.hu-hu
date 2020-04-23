@@ -12,16 +12,16 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "75466730"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
-Az **Azure Storage-hoz kapcsolódó szolgáltatás** lehetővé teszi, hogy egy Azure-tárfiókot egy Azure-adat-előállító a **fiókkulcs**használatával, amely biztosítja az adatgyár globális hozzáférést biztosít az Azure Storage-hoz. Az alábbi táblázat az Azure Storage-hoz csatolt szolgáltatásra jellemző JSON-elemek leírását tartalmazza.
+Az **Azure Storage társított szolgáltatása** lehetővé teszi, hogy egy Azure Storage-fiókot egy Azure-beli adatgyárhoz társítson a **fiók kulcsa**segítségével, amely az Azure Storage-hoz való globális hozzáféréssel rendelkező adatelőállítót biztosít. Az alábbi táblázat az Azure Storage társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |A típustulajdonságot a következőre kell állítani: **AzureStorage** |Igen |
-| connectionString (kapcsolati karakterlánc) |Adja meg a connectionString tulajdonság Azure storage-hoz való csatlakozásához szükséges információkat. |Igen |
+| type |A Type tulajdonságot a következőre kell beállítani: **AzureStorage** |Igen |
+| connectionString |Itt adhatja meg az Azure Storage-hoz a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. |Igen |
 
-A tárfiók hozzáférési kulcsainak beolvasásáról a [Tárfiók hozzáférési kulcsainak kezelése](../articles/storage/common/storage-account-keys-manage.md)című témakörben talál további információt.
+További információ a Storage-fiók hozzáférési kulcsainak beolvasásáról: a [Storage-fiók hozzáférési kulcsainak kezelése](../articles/storage/common/storage-account-keys-manage.md).
 
-**Példa:**  
+**Például**  
 
 ```json
 {
@@ -35,24 +35,24 @@ A tárfiók hozzáférési kulcsainak beolvasásáról a [Tárfiók hozzáféré
 }
 ```
 
-### <a name="azure-storage-sas-linked-service"></a>Azure Storage Sas csatolt szolgáltatás
-A közös hozzáférésű jogosultságkód (SAS) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Lehetővé teszi, hogy korlátozott engedélyeket adjon az ügyfélnek a tárfiókban lévő objektumokhoz egy meghatározott ideig és egy megadott engedélykészlettel, anélkül, hogy meg kellene osztania a fiók hozzáférési kulcsait. A SAS egy URI, amely magában foglalja a lekérdezési paraméterek minden szükséges információt a tárolási erőforrás hitelesített hozzáférést. A SAS-szal való tárolási erőforrások eléréséhez az ügyfélnek csak a Megfelelő konstruktornak vagy metódusnak kell átadnia a SAS-t. A SAS-ről további információt az [Azure Storage-erőforrásokhoz megosztott hozzáférésű aláírások (SAS) használatával való korlátozott hozzáférés megadása](../articles/storage/common/storage-sas-overview.md)című témakörben talál.
+### <a name="azure-storage-sas-linked-service"></a>Azure Storage sas társított szolgáltatás
+A közös hozzáférésű jogosultságkód (SAS) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Lehetővé teszi, hogy az ügyfél korlátozott engedélyeket biztosítson a Storage-fiókban lévő objektumoknak egy adott időtartamra és egy meghatározott engedélyekkel, anélkül, hogy meg kellene osztania a fiók hozzáférési kulcsait. Az SAS egy URI, amely magában foglalja a lekérdezési paramétereit, a tárolási erőforrásokhoz való hitelesített hozzáféréshez szükséges összes információt. A tároló erőforrásainak SAS-vel való eléréséhez az ügyfélnek csak az SAS-t kell átadnia a megfelelő konstruktorba vagy metódusba. Az SAS-vel kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférési aláírások (SAS) használatával](../articles/storage/common/storage-sas-overview.md).
 
 > [!IMPORTANT]
-> Az Azure Data Factory mostantól csak a **Service SAS-t** támogatja, de a fiók SAS-t nem. Vegye figyelembe, hogy az Azure Portalról vagy a Storage Explorerből származó SAS-URL-cím egy fiók SAS, amely nem támogatott.
+> A Azure Data Factory mostantól csak a **Service sas** -t támogatja, de nem a fiók sas-t. Vegye figyelembe, hogy a SAS URL-generable Azure Portal vagy Storage Explorer egy fiók SAS, amely nem támogatott.
 
 > [!TIP]
-> A PowerShell-parancsok alatt futtathatja a tárfiók hozlétre egy Service SAS-t (cserélje le a helyőrzőket, és adja meg a szükséges engedélyt):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> Az alábbi PowerShell-parancsok futtatásával létrehozhat egy Service SAS-t a Storage-fiókjához (cserélje le a tulajdonosokat, és adja meg a szükséges engedélyt):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-Az Azure Storage SAS-alapú szolgáltatás lehetővé teszi, hogy egy Azure Storage-fiók összekapcsolásával egy Azure-adat-előállító egy megosztott hozzáférésű aláírás (SAS) használatával. Az adat-előállító korlátozott/időhöz kötött hozzáférést biztosít a tárolóban lévő összes/adott erőforrásokhoz (blob/tároló). Az alábbi táblázat az Azure Storage SAS-alapú szolgáltatásra jellemző JSON-elemek leírását tartalmazza. 
+Az Azure Storage SAS társított szolgáltatása lehetővé teszi egy Azure Storage-fiók összekapcsolását egy Azure-beli adatgyárhoz egy közös hozzáférési aláírás (SAS) használatával. Az adat-előállítót a tárolóban lévő összes/meghatározott erőforrás (blob/tároló) számára korlátozott/időhöz kötött hozzáféréssel biztosítja. Az alábbi táblázat az Azure Storage SAS társított szolgáltatásához tartozó JSON-elemek leírását tartalmazza. 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |A típustulajdonságot a következőre kell állítani: **AzureStorageSas** |Igen |
-| sasUri között |Adja meg a megosztott hozzáférésű aláírás URI-t az Azure Storage-erőforrásokhoz, például blobhoz, tárolóhoz vagy táblához.  |Igen |
+| type |A Type tulajdonságot a következőre kell beállítani: **AzureStorageSas** |Igen |
+| sasUri |Az Azure Storage-erőforrásokhoz, például a blobhoz, a tárolóhoz vagy a táblához válassza a közös hozzáférési aláírás URI-JÁT.  |Igen |
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -66,9 +66,9 @@ Az Azure Storage SAS-alapú szolgáltatás lehetővé teszi, hogy egy Azure Stor
 }
 ```
 
-**SAS URI**létrehozásakor a következőket veszi figyelembe:  
+**Sas URI**létrehozásakor a következőket kell figyelembe venni:  
 
-* Állítsa be a megfelelő olvasási/írási **engedélyeket** az objektumokhoz a csatolt szolgáltatás (olvasás, írás, írás/írás) adat-előállítóban való használatával.
-* Megfelelően állítsa be **a lejárati időt.** Győződjön meg arról, hogy az Azure Storage-objektumokhoz való hozzáférés nem jár le a folyamat aktív időszakán belül.
-* Uri kell létrehozni a megfelelő tároló/blob vagy tábla szinten az igény alapján. A SAS Uri egy Azure blob lehetővé teszi, hogy a Data Factory szolgáltatás az adott blob eléréséhez. A SAS Uri egy Azure blob tároló lehetővé teszi, hogy a Data Factory szolgáltatás iterálni a tárolóban lévő blobok on keresztül. Ha később több/kevesebb objektumot kell biztosítania, vagy frissítenie kell a SAS URI-t, ne felejtse el frissíteni a csatolt szolgáltatást az új URI-val.   
+* Állítsa be a megfelelő olvasási/írási **engedélyeket** az objektumokon attól függően, hogy a társított szolgáltatás (olvasás, írás, olvasás/írás) hogyan legyen használatban az adatelőállítóban.
+* Megfelelő **lejárati idő** beállítása. Győződjön meg arról, hogy az Azure Storage-objektumokhoz való hozzáférés nem jár le a folyamat aktív időszakán belül.
+* Az URI-t a megfelelő tárolóban, blobban vagy táblázatban kell létrehozni a szükséges érték alapján. Az Azure-Blobok SAS URI-ja lehetővé teszi, hogy az Data Factory szolgáltatás hozzáférjen az adott blobhoz. Az Azure Blob-tároló SAS URI-ja lehetővé teszi, hogy az Data Factory szolgáltatás megismételje az adott tárolóban lévő blobokat. Ha később több vagy kevesebb objektumot kell megadnia, vagy frissítenie kell az SAS URI-t, ne felejtse el frissíteni a társított szolgáltatást az új URI-val.   
 

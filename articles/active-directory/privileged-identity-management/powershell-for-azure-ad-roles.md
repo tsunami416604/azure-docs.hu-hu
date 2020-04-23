@@ -1,6 +1,6 @@
 ---
-title: PowerShell Azure AD-szerepkörök pim - Azure AD | Microsoft dokumentumok
-description: Azure AD-szerepkörök kezelése powershell-parancsmagokkal az Azure AD kiemelt identitáskezelés (PIM) használatával.
+title: PowerShell Azure AD-szerepkörökhöz a PIM-ben – Azure AD | Microsoft Docs
+description: Azure AD-szerepkörök kezelése a Azure AD Privileged Identity Management (PIM) PowerShell-parancsmagjai használatával.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -23,81 +23,81 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/01/2020
 ms.locfileid: "80519649"
 ---
-# <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell azure-beli AD-szerepkörök a kiemelt identitáskezelés
+# <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell Azure AD-szerepkörökhöz Privileged Identity Management
 
-Ez a cikk az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatára vonatkozó utasításokat tartalmaz az Azure AD-szerepkörök emelt szintű identitáskezelésben (PIM) történő kezeléséhez. Azt is bemutatja, hogyan lehet beállítani az Azure AD PowerShell-modul.
+Ez a cikk a Azure Active Directory (Azure AD) PowerShell-parancsmagok használatát ismerteti az Azure AD-szerepkörök Privileged Identity Management (PIM) szolgáltatásban való kezeléséhez. Emellett azt is bemutatja, hogyan lehet beállítani az Azure AD PowerShell-modult.
 
 > [!Note]
-> A hivatalos PowerShell csak akkor támogatott, ha az Azure AD kiemelt identitáskezelés új verzióját használja. Kérjük, lépjen a Privilegizált identitáskezelés, és győződjön meg arról, hogy a következő banner a gyorsindítási panelen.
-> [![ellenőrizze a kiemelt identitáskezelés verzióját](media/pim-how-to-add-role-to-user/pim-new-version.png "Válassza ki az Azure AD > kiemelt identitáskezelés")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) Ha nem rendelkezik ezzel a banner, kérjük, várjon, mint mi jelenleg a folyamatban gördülő ki ezt a frissített élményt az elkövetkező hetekben.
-> A kiemelt identitáskezelés PowerShell-parancsmagokat az Azure AD előzetes verzió modul támogatja. Ha egy másik modult használ, és a modul most hibaüzenetet ad vissza, kérjük, kezdje el használni ezt az új modult. Ha egy másik modulra épített termelési rendszerrel rendelkezik, kérjük,pim_preview@microsoft.com
+> A hivatalos PowerShell csak akkor támogatott, ha a Azure AD Privileged Identity Management új verzióját támogatja. Lépjen a Privileged Identity Managementra, és győződjön meg róla, hogy a következő szalagcím szerepel a gyors üzembe helyezés panelen.
+> [![tekintse át a Privileged Identity Management telepített verzióját](media/pim-how-to-add-role-to-user/pim-new-version.png "Válassza az Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) Ha nem rendelkezik ezzel a bannerrel, várjon, amíg jelenleg a következő heteken belül bevezetjük a frissített élményt.
+> Az Privileged Identity Management PowerShell-parancsmagok az Azure AD előzetes verziójának moduljában támogatottak. Ha egy másik modult használ, és a modul mostantól hibaüzenetet ad vissza, kezdje el használni ezt az új modult. Ha olyan éles rendszerek vannak, amelyek egy másik modulra épülnek, lépjen kapcsolatba a következővelpim_preview@microsoft.com
 
 ## <a name="installation-and-setup"></a>Telepítés és beállítás
 
-1. Az Azure AD előzetes modul telepítése
+1. Az Azure AD Preview-modul telepítése
 
         Install-module AzureADPreview
 
-1. A folytatás előtt győződjön meg arról, hogy rendelkezik a szükséges szerepkör-engedélyekkel. Ha felügyeleti feladatokat próbál végrehajtani, például szerepkör-hozzárendelést vagy szerepkör-beállítást szeretne végrehajtani, győződjön meg arról, hogy globális rendszergazdai vagy kiemelt szerepkör-rendszergazdai szerepkörrel rendelkezik. Ha csak a saját hozzárendelését próbálja aktiválni, az alapértelmezett felhasználói engedélyeken kívül nincs szükség engedélyekre.
+1. A folytatás előtt győződjön meg arról, hogy rendelkezik a szükséges szerepkör-engedélyekkel. Ha olyan felügyeleti feladatokat próbál végrehajtani, mint a szerepkör-hozzárendelés vagy a szerepkör-beállítás frissítése, győződjön meg arról, hogy rendelkezik a globális rendszergazda vagy a Kiemelt szerepkörű rendszergazda szerepkörrel. Ha csak a saját hozzárendelését próbálja aktiválni, az alapértelmezett felhasználói engedélyeken túli engedélyek megadása nem kötelező.
 
-1. Csatlakozzon az Azure AD-hez.
+1. Kapcsolódjon az Azure AD-hez.
 
         $AzureAdCred = Get-Credential  
         Connect-AzureAD -Credential $AzureAdCred
 
-1. Keresse meg a bérlői azonosítót az **Azure Active Directory** > tulajdonságai**címtárazonosítójának****Properties** > megkeresésével. A parancsmagok szakaszban használja ezt az azonosítót, ha szükséges a resourceId.
+1. A bérlő azonosítójának megkereséséhez nyissa meg **Azure Active Directory** > **Tulajdonságok** > **könyvtár-azonosítóját**. A parancsmagok szakaszban ezt az azonosítót kell használnia, amikor meg kell adnia a resourceId.
 
-    ![A bérlőazonosító megkeresése az Azure AD-szervezet tulajdonságaiközött](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
+    ![A bérlő AZONOSÍTÓjának megkeresése az Azure AD-szervezet tulajdonságainál](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> A következő szakaszok egyszerű példák, amelyek segíthetnek önnek, és fut. A következő parancsmagokra vonatkozó részletesebb dokumentációt a. https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management Azonban a providerID paraméterben az "azureResources" "aadRoles" helyett kell cserélnie. Azt is meg kell emlékezni, hogy a bérlői azonosítót az Azure AD-szervezet erőforrás-azonosító paraméterként.
+> A következő fejezetekben egyszerű példákat talál, amelyek segítségével megkezdheti a működést. A következő parancsmagokkal kapcsolatos részletesebb dokumentációt itt talál: https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management. A providerID paraméterben azonban a "aadRoles" értékre kell cserélni a "azureResources" kifejezést. Arra is emlékeznie kell, hogy az Azure AD-szervezet bérlői AZONOSÍTÓját resourceId paraméterként használja.
 
 ## <a name="retrieving-role-definitions"></a>Szerepkör-definíciók beolvasása
 
-A következő parancsmag használatával az Azure AD-szervezet (bérlő) összes beépített és egyéni Azure AD-szerepkörét lejuthat. Ez a fontos lépés a szerepkör neve és a roleDefinitionId közötti leképezést adja meg. A roleDefinitionId ezekben a parancsmagokban egy adott szerepkörre való hivatkozásérdekében használatos.
+Az alábbi parancsmaggal kérheti le az Azure AD-szervezet (bérlő) összes beépített és egyéni Azure AD-szerepkörét. Ez a fontos lépés a szerepkör neve és a roleDefinitionId közötti leképezést biztosítja. A roleDefinitionId a parancsmagok egészében használják egy adott szerepkörre való hivatkozáshoz.
 
-A roleDefinitionId az Azure AD-szervezetre jellemző, és eltér a szerepkör-kezelési API által visszaadott roleDefinitionId.The roleDefinitionId is specific to your Azure AD organization and is different from the roleDefinitionId returned by the roleManagement API.
+A roleDefinitionId az Azure AD-szervezetre jellemző, és eltér a szerepkör-felügyeleti API által visszaadott roleDefinitionId.
 
     Get-AzureADMSPrivilegedRoleDefinition -ProviderId aadRoles -ResourceId 926d99e7-117c-4a6a-8031-0cc481e9da26
 
 Eredmény:
 
-![Az Azure AD-szervezet összes szerepkörének beszereznie](./media/powershell-for-azure-ad-roles/get-all-roles-result.png)
+![Az Azure AD-szervezet összes szerepkörének beolvasása](./media/powershell-for-azure-ad-roles/get-all-roles-result.png)
 
 ## <a name="retrieving-role-assignments"></a>Szerepkör-hozzárendelések beolvasása
 
-A következő parancsmag használatával az Azure AD-szervezet összes szerepkör-hozzárendelését lekérheti.
+Az alábbi parancsmaggal kérheti le az összes szerepkör-hozzárendelést az Azure AD-szervezetben.
 
     Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26"
 
-A következő parancsmag segítségével egy adott felhasználó összes szerepkör-hozzárendelését lekérheti. Ez a lista az Azure AD-portálon "Saját szerepkörök" néven is ismert. Az egyetlen különbség itt az, hogy hozzáadott egy szűrőt a tárgyazonosítóhoz. Ebben a környezetben a tulajdonosazonosító a felhasználói azonosító vagy a csoportazonosító.
+A következő parancsmaggal kérhet le egy adott felhasználó összes szerepkör-hozzárendelését. Ezt a listát az Azure AD portál "saját szerepkörök" néven is ismert. Az egyetlen különbség az, hogy hozzáadott egy szűrőt a tulajdonos AZONOSÍTÓhoz. Ebben a kontextusban a tulajdonos azonosítója a felhasználóazonosító vagy a csoport azonosítója.
 
     Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "subjectId eq 'f7d1887c-7777-4ba3-ba3d-974488524a9d'" 
 
-A következő parancsmag segítségével egy adott szerepkör összes szerepkör-hozzárendelését lekérheti. A roleDefinitionId itt az előző parancsmag által visszaadott azonosító.
+A következő parancsmaggal kérhet le egy adott szerepkör összes szerepkör-hozzárendelését. Az roleDefinitionId itt látható az előző parancsmag által visszaadott azonosító.
 
     Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "roleDefinitionId eq '0bb54a22-a3df-4592-9dc7-9e1418f0f61c'"
 
-A parancsmagok az alábbi szerepkör-hozzárendelési objektumok listáját eredményezik. A tulajdonosazonosító annak a felhasználónak a felhasználói azonosítója, akihez a szerepkör hozzá van rendelve. A hozzárendelési állapot lehet aktív vagy jogosult. Ha a felhasználó aktív, és van egy azonosító a LinkedEligibleRoleAssignmentId mezőben, az azt jelenti, hogy a szerepkör jelenleg aktiválva van.
+A parancsmagok az alább látható szerepkör-hozzárendelési objektumok listáját eredményezik. A tulajdonos azonosítója annak a felhasználónak a felhasználói azonosítója, akihez a szerepkör hozzá van rendelve. A hozzárendelési állapot lehet aktív vagy jogosult. Ha a felhasználó aktív, és a LinkedEligibleRoleAssignmentId mezőben van egy azonosító, az azt jelenti, hogy a szerepkör jelenleg aktiválva van.
 
 Eredmény:
 
-![Az Azure AD-szervezet összes szerepkör-hozzárendelésének lekérése](./media/powershell-for-azure-ad-roles/get-all-role-assignments-result.png)
+![Az Azure AD-szervezet összes szerepkör-hozzárendelésének beolvasása](./media/powershell-for-azure-ad-roles/get-all-role-assignments-result.png)
 
-## <a name="assign-a-role"></a>Szerepkör hozzárendelése
+## <a name="assign-a-role"></a>Szerepkör kiosztása
 
-A következő parancsmag használatával hozzon létre egy jogosult hozzárendelést.
+Egy jogosult hozzárendelés létrehozásához használja a következő parancsmagot.
 
     Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'ff690580-d1c6-42b1-8272-c029ded94dec' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Eligible' -schedule $schedule -reason "dsasdsas" 
 
-Az ütemezés, amely meghatározza a hozzárendelés kezdési és befejezési idejét, egy olyan objektum, amely a következő példához hasonlóan hozható létre:
+A hozzárendelés kezdési és befejezési időpontját meghatározó ütemterv egy olyan objektum, amely az alábbi példához hasonló módon hozható létre:
 
     $schedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule
     $schedule.Type = "Once"
     $schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
     $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
 > [!Note]
-> Ha a endDateTime értéke null értékű, az állandó hozzárendelést jelez.
+> Ha a Befejeződátumidő értéke NULL értékre van állítva, állandó hozzárendelést jelez.
 
 ## <a name="activate-a-role-assignment"></a>Szerepkör-hozzárendelés aktiválása
 
@@ -105,36 +105,36 @@ A következő parancsmag használatával aktiválhat egy jogosult hozzárendelé
 
     Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas" 
 
-Ez a parancsmag majdnem megegyezik a szerepkör-hozzárendelés létrehozásához szükséges parancsmagével. A legfontosabb különbség a parancsmagok között az, hogy a –Type paraméter aktiválása "userAdd" helyett "adminAdd". A másik különbség az, hogy a -AssignmentState paraméter "Aktív" a "Jogosult" helyett.
+Ez a parancsmag majdnem azonos a szerepkör-hozzárendelés létrehozásához használt parancsmaggal. A parancsmagok közötti fő különbség az, hogy a – Type paraméter esetében az aktiválás "hozzáadási" helyett "adminAdd". A másik különbség az, hogy a – AssignmentState paraméter "aktív" a "jogosult" helyett.
 
 > [!Note]
-> A PowerShellen keresztüli szerepkör-aktiváláshoz két korlátozó forgatókönyv létezik.
-> 1. Ha a szerepkör-beállításban jegyrendszer / jegyszám szükséges, akkor ezeket nem lehet paraméterként megadni. Így nem lenne lehetséges a szerepkör aktiválása az Azure Portalon túl. Ez a funkció a következő néhány hónapban kerül bevezetésre a PowerShellben.
-> 1. Ha többtényezős hitelesítést igényel a szerepkör aktiválásához, jelenleg nincs mód arra, hogy a PowerShell kihívást jelentsen a felhasználószámára a szerepkör aktiválásakor. Ehelyett a felhasználóknak el kell indítaniuk az MFA-kihívást, amikor az Azure AD-hez csatlakoznak, az egyik mérnökünk [blogbejegyzését](http://www.anujchaudhary.com/2020/02/connect-to-azure-ad-powershell-with-mfa.html) követve. Ha pim-alkalmazást fejleszt, az egyik lehetséges megvalósítás a felhasználók kihívása és újracsatlakoztatása a modulhoz, miután "MfaRule" hibaüzenetet kaptak.
+> Két korlátozási forgatókönyv van a szerepkör-aktiváláshoz a PowerShell használatával.
+> 1. Ha a szerepkör-beállításban jegyrendszer/jegy száma szükséges, akkor nem lehet paraméterként megadni ezeket. Így nem lehet aktiválni a szerepkört a Azure Portalon túl. A szolgáltatás a következő néhány hónap során a PowerShellbe van bevezetve.
+> 1. Ha a szerepkör-aktiváláshoz többtényezős hitelesítésre van szükség, a PowerShell számára jelenleg nincs lehetőség arra, hogy megtámadja a felhasználót, amikor aktiválja a szerepkört. Ehelyett a felhasználóknak aktiválnia kell az MFA-kihívást az Azure AD-hez való kapcsolódáskor, ha [ezt a blogbejegyzést](http://www.anujchaudhary.com/2020/02/connect-to-azure-ad-powershell-with-mfa.html) követik az egyik mérnöktől. Ha egy PIM-alkalmazást fejleszt, az egyik lehetséges megvalósítás a felhasználók megtámadása és a modulhoz való Újrakapcsolódás, miután "MfaRule" hibaüzenetet kapnak.
 
 ## <a name="retrieving-and-updating-role-settings"></a>Szerepkör-beállítások beolvasása és frissítése
 
-A következő parancsmag használatával az Azure AD-szervezet összes szerepkör-beállítását lekaphatja.
+Az alábbi parancsmaggal kérheti le az összes szerepkör-beállítást az Azure AD-szervezetben.
 
     Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
 
-A beállításban négy fő objektum található. Ezek közül az objektumok közül jelenleg csak hármat használ a PIM. A UserMemberSettings az aktiválási beállítások, az AdminEligibleSettings a jogosult hozzárendelések hozzárendelési beállításai, a RendszergazdatagBeállítások pedig az aktív hozzárendelések hozzárendelési beállításai.
+A beállításban négy fő objektum található. A PIM jelenleg csak három objektumot használ. A UserMemberSettings az aktiválási beállítások, a AdminEligibleSettings a jogosult hozzárendelések hozzárendelési beállításai, a AdminmemberSettings pedig az aktív hozzárendelések hozzárendelési beállításai.
 
 [![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
-A szerepkör-beállítás frissítéséhez először meg kell határoznia egy beállítási objektumot a következőképpen:
+A szerepkör-beállítás frissítéséhez először meg kell adnia egy beállítási objektumot az alábbiak szerint:
 
     $setting = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting 
     $setting.RuleIdentifier = "JustificationRule"
     $setting.Setting = "{'required':false}"
 
-Ezután folytathatja a beállítást az egyik objektumra egy adott szerepkörhöz az alábbiak szerint. Az azonosító itt az a szerepkör-beállítási azonosító, amely a listaszerepkör-beállítások parancsmagjának eredményéből beolvasható.
+Ezután előre elvégezheti a beállítást, és alkalmazhatja egy adott szerepkör egyik objektumára az alábbi ábrán látható módon. Az azonosító itt a szerepkör-beállítási azonosító, amely a lista szerepkör-beállítások parancsmagjának eredményéről kérhető le.
 
     Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure AD egyéni szerepkör hozzárendelése](azure-ad-custom-roles-assign.md)
-- [Azure AD egyéni szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)
-- [Azure AD egyéni szerepkör-hozzárendelés konfigurálása](azure-ad-custom-roles-configure.md)
+- [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)
+- [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)
+- [Egyéni Azure AD-szerepkör-hozzárendelés konfigurálása](azure-ad-custom-roles-configure.md)
 - [Szerepkör-definíciók az Azure AD-ben](../users-groups-roles/directory-assign-admin-roles.md)

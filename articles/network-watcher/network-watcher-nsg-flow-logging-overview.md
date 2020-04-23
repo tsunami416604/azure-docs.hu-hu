@@ -1,7 +1,7 @@
 ---
-title: Bevezetés az NSG-k áramlásnaplózásának bevezetésébe
+title: A flow naplózásának bemutatása a NSG
 titleSuffix: Azure Network Watcher
-description: Ez a cikk bemutatja, hogyan használhatja az Azure Network Watcher NSG-folyamatnaplók szolgáltatás.
+description: Ez a cikk azt ismerteti, hogyan használható az Azure Network Watcher NSG flow-naplói szolgáltatás.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -19,90 +19,90 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "78228257"
 ---
-# <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok folyamatnaplózásába
+# <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok flow-naplózásának bemutatása
 
 A hálózati biztonsági csoport (NSG) forgalomnaplózása a Network Watcher szolgáltatása, amellyel megtekintheti az NSG-n keresztül bejövő és kimenő IP-forgalom adatait. A folyamatnaplók JSON formátumban vannak megírva, és szabályonként jelenítik meg a kimenő és bejövő forgalmat, a forgalom esetében érintett hálózati adaptert (NIC), a forgalomhoz tartozó ötféle információt (forrás/cél IP, forrás-/célport és protokoll), hogy a forgalmat a rendszer engedélyezte vagy elutasította, valamint a 2. verzióban az átviteli sebességre vonatkozó adatokat is (bájtok és csomagok).
 
 
-![folyamatnaplók – áttekintés](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
+![a flow naplói – áttekintés](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
-Míg a folyamatnaplók a cél NSG-k, azok nem jelennek meg ugyanaz, mint a többi naplók. A folyamatnaplók csak egy tárfiókon belül tárolódnak, és a következő példában látható naplózási útvonalat követik:
+A flow naplózza a célként megadott NSG, de nem ugyanazokat a naplókat jeleníti meg. A flow-naplókat a rendszer csak egy Storage-fiókon belül tárolja, és az alábbi példában látható naplózási útvonalat követi:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
-A [forgalomelemzés](traffic-analytics.md)segítségével elemezheti a folyamatnaplókat, és betekintést nyerhet a hálózati forgalomba.
+A [Traffic Analytics](traffic-analytics.md)segítségével elemezheti a folyamat naplóit, és betekintést nyerhet a hálózati forgalomba.
 
-A többi naplóesetében ugyanazok az adatmegőrzési házirendek vonatkoznak a folyamatnaplókra. A napló-megőrzési házirend et 1 napról 365 napra állíthatja be. Ha az adatmegőrzési szabály nincs beállítva, a naplók örökre megmaradnak.
+A más naplókra vonatkozó adatmegőrzési szabályzatok a folyamat naplófájljaira is érvényesek. A naplózási adatmegőrzési szabályzatot 1 napról 365 napra állíthatja be. Ha nincs beállítva adatmegőrzési szabály, a rendszer örökre karbantartja a naplókat.
 
 ## <a name="log-file"></a>Naplófájl
 
-A folyamatnaplók a következő tulajdonságokat tartalmazzák:
+A flow-naplók a következő tulajdonságokat tartalmazzák:
 
-* **idő** - Az esemény naplózásának időpontja
-* **systemId** - Hálózati biztonsági csoport erőforrásazonosítója.
-* **kategória** - Az esemény kategóriája. A kategória mindig **NetworkSecurityGroupFlowEvent**
-* **resourceid** - Az NSG erőforrásazonosítója
-* **operationName** - Mindig NetworkSecurityGroupFlowEvents
-* **tulajdonságok** - A gyűjtemény tulajdonságait a folyamat
-    * **Verzió** - A folyamatnapló eseménysémájának verziószáma
-    * **folyamatok** - a folyamatok gyűjteménye. Ez a tulajdonság több bejegyzéssel rendelkezik a különböző szabályokhoz
-        * **szabály** - Az a szabály, amelynél a folyamatok szerepelnek
-            * **áramlások** - a folyamatok gyűjteménye
-                * **mac** - A virtuális gép hálózati adapterének MAC-címe, ahol a folyamatot gyűjtötték
-                * **flowTuples** - Olyan karakterlánc, amely a folyamatlemez több tulajdonságát tartalmazza vesszővel tagolt formátumban
-                    * **Időbélyegző** – Ez az érték annak az időbélyegzőnek az időbélyegzője, amikor a folyamat UNIX korszakformátumban történt.
-                    * **Forrás IP** - A forrás IP
-                    * **Cél IP** - A cél IP
-                    * **Forrásport** – a forrásport
-                    * **Célport** - A célport
-                    * **Protokoll** - A protokoll a flow. Érvényes értékek **T** a TCP és **az U** UDP esetén.
-                    * **Traffic Flow** - A forgalom iránya. Az érvényes értékek a bejövő **és** **az O** a kimenő értékek.
-                    * **Közlekedési döntés** - Hogy a forgalom engedélyezett vagy megtagadták. Az érvényes értékek az **Engedélyezett A,** a **"D"** érték pedig a megtagadva.
-                    * **Flow-állapot – Csak 2-es verzió** – a folyamat állapotát rögzíti. Lehetséges állapotok: **B**: Kezdés, folyamat létrehozásakor. A statisztikák nincsenek megadva. **C**: Folyamatos áramlás folytatása. A statisztikák 5 perces időközönként állnak rendelkezésre. **E**: Vége, ha egy folyamat véget ér. Statisztikai adatok rendelkezésre állnak.
-                    * **Csomagok - Forrás a célhoz - Csak 2-es verzió** A forrásból a célhoz a legutóbbi frissítés óta küldött TCP- vagy UDP-csomagok teljes száma.
-                    * **Küldött bájtok - Forrás a célhoz - Csak 2-es verzió** A forrásból a célhoz a legutóbbi frissítés óta küldött TCP- vagy UDP-csomagbájtok teljes száma. A csomagbájtok tartalmazzák a csomagfejlécet és a hasznos adatot.
-                    * **Csomagok - Cél a forráshoz - Csak 2-es verzió** A célról a forrásra küldött TCP- vagy UDP-csomagok teljes száma a legutóbbi frissítés óta.
-                    * **Küldött bájtok - Cél a forráshoz - Csak 2-es verzió** A célról a forrásra küldött TCP- és UDP-csomagbájtok teljes száma a legutóbbi frissítés óta. A csomagbájtok tartalmazzák a csomagfejlécet és a hasznos adatot.
+* az esemény naplózásának **időpontja**
+* **systemId** – hálózati biztonsági csoport erőforrás-azonosítója.
+* **Kategória** – az esemény kategóriája. A kategória mindig **NetworkSecurityGroupFlowEvent**
+* **ResourceId** – a NSG erőforrás-azonosítója
+* **operationName** – mindig NetworkSecurityGroupFlowEvents
+* **Tulajdonságok** – a folyamat tulajdonságainak gyűjteménye
+    * A flow log esemény sémájának **verziószáma**
+    * **flow** -folyamatok gyűjteménye. Ez a tulajdonság több bejegyzést tartalmaz a különböző szabályokhoz
+        * **szabály** – a folyamatok listáját tartalmazó szabály
+            * **folyamatok** – folyamatok gyűjteménye
+                * **Mac** – a virtuális gép hálózati adapterének MAC-címe, ahová a folyamat begyűjtése történik
+                * **flowTuples** – a flow-rekord több tulajdonságát tartalmazó sztring vesszővel tagolt formátumban
+                    * **Időbélyegző – ez** az érték a folyamat UNIX EPOCH formátumban való előfordulásának időbélyegzője.
+                    * **Forrás IP** -címe – a forrás IP-címe
+                    * **Cél IP** -címe – a cél IP-címe
+                    * **Forrásoldali port** – a forrásport
+                    * **Célport** – a célport
+                    * **Protokoll** – a folyamat protokollja. Az UDP esetében érvényes értékek: **T** , TCP és **U**
+                    * **Forgalmi folyamat** – a forgalom iránya. Az érvényes értékek **a bejövő** és kimenő **kimeneti** értékekhez tartoznak.
+                    * **Forgalmi döntés** – azt, hogy a forgalom engedélyezett vagy tiltott. **Az érvényes** értékek a megengedettek, a **D** megtagadva.
+                    * **Flow State – csak 2-es verzió** – rögzíti a folyamat állapotát. A lehetséges állapotok a **B**: Begin, amikor létrejön egy folyamat. Nincs megadva statisztika. **C**: folyamatos folyamat folytatása. A statisztikák 5 perces időközönként vannak megadva. **E**: Befejezés, ha egy folyamat leáll. Statisztikákat biztosítunk.
+                    * **Csomagok – forrás – cél – csak 2-es verzió** A forrásról a célhelyre küldött TCP-vagy UDP-csomagok teljes száma az utolsó frissítés óta.
+                    * **Eljuttatott bájtok – forrás – cél – csak 2-es verzió** A forrás és a célhely között a legutóbbi frissítés óta küldött TCP-vagy UDP-csomagok teljes száma. A csomagok bájtjai a csomagok fejlécét és a hasznos adatokat tartalmazzák.
+                    * **Csomagok – cél a forrás – csak 2-es verzió** Az utolsó frissítés óta a célhelyről a forrásba küldött TCP-vagy UDP-csomagok teljes száma.
+                    * **Eljuttatott bájtok – cél – forrás – csak 2-es verzió** A célhelyről a forrásig a legutóbbi frissítés óta küldött TCP-és UDP-csomagok teljes száma. A csomagok bájtjai tartalmazzák a csomagok fejlécét és a hasznos adatokat.
 
-## <a name="nsg-flow-logs-version-2"></a>NSG-folyamatnaplók 2-es verziójú
+## <a name="nsg-flow-logs-version-2"></a>NSG flow-naplók 2. verzió
 
-A naplók 2-es verziója folyamatállapotot vezet be. Beállíthatja, hogy a folyamatnaplók melyik verzióját kapja meg. A folyamatnaplók engedélyezéséről az [NSG-folyamatnaplózás engedélyezése](network-watcher-nsg-flow-logging-portal.md)című témakörben olvashat.
+A naplók 2-es verziója bevezeti a flow állapotát. Beállíthatja, hogy a rendszer milyen verziójú flow-naplókat kapjon. A flow-naplók engedélyezésével kapcsolatos további információkért lásd: a [NSG folyamat naplózásának engedélyezése](network-watcher-nsg-flow-logging-portal.md).
 
-A *"B"* áramlási állapotot az áramlás indításakor kell rögzíteni. A *C* áramlási állapot és az *E* áramlási állapot olyan állapotok, amelyek az áramlás és az áramlás végződésének folytatását jelölik. Mind *a C,* mind *az E* állapot forgalmi sávszélesség-információkat tartalmaz.
+A " *B* " folyamat a folyamat indításakor kerül rögzítésre. A *C* és a *flow állapot olyan* állapotú, amely a folyamat folytatását és a folyamat befejezését jelöli. A *C* és az *E* -Államok forgalmi sávszélességgel kapcsolatos információkat tartalmaznak.
 
-**Példa:** Flow-t a TCP-beszélgetésből 185.170.185.105:35370 és 10.2.0.4:23 között:
+**Példa**: a flow rekordok TCP-beszélgetésből a 185.170.185.105:35370 és a 10.2.0.4:23 között:
 
-"1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,,,," "1493695838,185 170.185.105,10.2.0.0.4,35370,23,T,I,I,A,C,1021,588096,8005,4610880" "1493696138,185.175.185.10.2.0.4,35370,23,I,A,E,52,29952,47,27072"
+"1493763938, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, B,,,," "1493695838, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, C, 1021, 588096, 8005, 4610880" "1493696138, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, E, 52, 29952, 47, 27072"
 
-A *folytatási C* és end *E* folyamat állapotok esetén a bájt- és csomagszámok az előző folyamatrekord időpontjától kezdve összesítő számok. Az előző példabeszélgetésre hivatkozva az átvitt csomagok száma összesen 1021+52+8005+47 = 9125. Az átvitt bájtok teljes száma: 588096+29952+4610880+27072 = 5256000.
+A " *C* " és a "End *E* flow" állapot esetén a bájt és a csomagok száma az előző folyamat rekordjának időpontjától számított összesített szám. Az előző példában szereplő beszélgetésre hivatkozva az átvitt csomagok teljes száma 1021 + 52 + 8005 + 47 = 9125. Az átvitt bájtok teljes száma: 588096 + 29952 + 4610880 + 27072 = 5256000.
 
-Az alábbi szöveg egy folyamatnapló példája. Amint láthatja, több rekord is található, amelyek követik az előző szakaszban ismertetett tulajdonságlistát.
+Az alábbi szöveg egy folyamat naplóját szemlélteti. Ahogy láthatja, több rekord is van, amelyek követik az előző szakaszban ismertetett tulajdonságokat.
 
-## <a name="nsg-flow-logging-considerations"></a>NSG-folyamatnaplózási szempontok
+## <a name="nsg-flow-logging-considerations"></a>NSG-folyamatok naplózási szempontjai
 
-**A tárfiókkal kapcsolatos szempontok:** 
+A **Storage-fiókkal kapcsolatos megfontolások**: 
 
-- Hely: A használt tárfióknak ugyanabban a régióban kell lennie, mint az NSG.Location: The storage account used must be in the same region as the NSG.
-- Saját kezelés kulcsrotáció: Ha módosítja/elforgatja a hozzáférési kulcsokat a tárfiókhoz, az NSG flow naplók leáll. A probléma megoldásához le kell tiltania, majd újra engedélyeznie kell az NSG-folyamatnaplókat.
+- Hely: a használt Storage-fióknak ugyanabban a régióban kell lennie, mint a NSG.
+- A kulcs önálló kezelése: Ha módosítja vagy elforgatja a hozzáférési kulcsokat a Storage-fiókhoz, a NSG-naplók nem fognak működni. A probléma megoldásához le kell tiltania, majd újra engedélyeznie kell a NSG folyamat naplóit.
 
-**NSG-folyamatnaplózás engedélyezése az erőforráshoz csatlakoztatott összes NSG-n:** Az Azure-beli folyamatnaplózás az NSG-erőforráson van konfigurálva. A folyamat csak egy NSG-szabályhoz lesz társítva. Olyan esetekben, ahol több NSG-t használnak, azt javasoljuk, hogy az NSG-folyamatnaplózás engedélyezve legyen az összes NSG-n, amely egy erőforrás alhálózatát vagy hálózati illesztőjét alkalmazza annak érdekében, hogy az összes forgalom rögzítésre kerüljön. További információt a [forgalom kiértékelésének módjáról a](../virtual-network/security-overview.md#how-traffic-is-evaluated) hálózati biztonsági csoportokban talál.
+**NSG-naplózás engedélyezése az erőforráshoz csatolt összes NSG**: az Azure-ban a flow naplózása a NSG-erőforráson van konfigurálva. Egy folyamat csak egyetlen NSG-szabályhoz lesz társítva. Olyan helyzetekben, ahol több NSG van használatban, javasoljuk, hogy a NSG flow naplózása engedélyezve legyen minden olyan NSG, amely az erőforrás alhálózatát vagy hálózati adapterét alkalmazza az összes forgalom rögzítésének biztosításához. További információ: a [forgalom kiértékelése](../virtual-network/security-overview.md#how-traffic-is-evaluated) a hálózati biztonsági csoportokban.
 
-**Flow naplózási költségek:** NSG folyamat naplózása a napló mennyisége előállított. A nagy forgalom nagy folyamatnapló-mennyiséget és a kapcsolódó költségeket eredményezhet. Az NSG-folyamatnapló díjszabása nem tartalmazza a tárolás mögöttes költségeit. Az adatmegőrzési házirend szolgáltatás NSG flow naplózása azt jelenti, hogy külön tárolási költségek hosszabb ideig. Ha nincs szüksége az adatmegőrzési házirend szolgáltatásra, azt javasoljuk, hogy állítsa ezt az értéket 0-ra. További információ: [Network Watcher Pricing](https://azure.microsoft.com/pricing/details/network-watcher/) and [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/) fortovábbi részletekért.
+A **flow naplózási költségei**: a NSG folyamatának naplózása a létrehozott naplók mennyiségétől függ. A nagy forgalmú kötetek nagy flow-naplózási kötetet és a hozzájuk kapcsolódó költségeket okozhatják. A NSG-forgalmi napló díjszabása nem tartalmazza a tárterület alapjául szolgáló költségeket. Az adatmegőrzési házirend szolgáltatás NSG flow-naplózással való használata esetén a tárolási költségek hosszabb ideig tartanak. Ha nincs szüksége az adatmegőrzési házirend funkcióra, azt javasoljuk, hogy állítsa 0 értékre. További információkért tekintse meg a [Network Watcher díjszabását](https://azure.microsoft.com/pricing/details/network-watcher/) és az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető témakört.
 
-**Az internetes IP-kből nyilvános IP-cím nélküli virtuális gépekre naplózott bejövő forgalom:** olyan virtuális gépek, amelyek nem rendelkeznek nyilvános IP-címmel a hálózati adapterhez egy példányszintű nyilvános IP-címként társított nyilvános IP-címen keresztül, vagy amelyek egy alapszintű terheléselosztó háttérkészlet részét képezik, használja [az alapértelmezett SNAT-ot,](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) és rendelkezik az Azure által a kimenő kapcsolat megkönnyítése érdekében az Azure által hozzárendelt IP-címmel. Ennek eredményeképpen előfordulhat, hogy az internetes IP-címekről érkező folyamatok folyamatai hoz nak flow-naplóbejegyzéseket, ha a folyamat az SNAT-hoz rendelt portok tartományának portjára irányul. Bár az Azure nem engedélyezi ezeket a folyamatokat a virtuális gépre, a kísérlet naplózza, és megjelenik a Network Watcher NSG-folyamatnaplójában. Azt javasoljuk, hogy a nem kívánt bejövő internetes forgalmat explicit módon blokkolja az NSG.
+Az internetes IP-címekről a nyilvános IP-címek **nélküli virtuális gépekre naplózott bejövő folyamatok**: olyan virtuális gépek, amelyek nem rendelkeznek nyilvános IP-címmel a hálózati adapterhez társított nyilvános IP-címen keresztül, vagy amelyek egy alapszintű terheléselosztó-készlet részét képezik, az [alapértelmezett SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) használják, és az Azure által hozzárendelt IP-címmel rendelkeznek a kimenő kapcsolatok megkönnyítéséhez. Ennek eredményeképpen előfordulhat, hogy az internetes IP-címekről érkező adatfolyamok esetében a flow-naplóbejegyzések megjelennek, ha a folyamat a SNAT hozzárendelt portok tartományában lévő portra van szánva. Amíg az Azure nem engedélyezi ezeket a folyamatokat a virtuális gép számára, a rendszer naplózza a kísérletet, és a Network Watcher NSG flow-naplójában jelenik meg. Javasoljuk, hogy a nem kívánt bejövő internetes forgalmat explicit módon tiltsa le a NSG.
 
-**Helytelen bájt- és csomagszámok állapotnélküli folyamatok esetén**: [A hálózati biztonsági csoportok (NSG-k)](https://docs.microsoft.com/azure/virtual-network/security-overview) [állapotalapú tűzfalként](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)vannak megvalósítva. Azonban sok alapértelmezett/belső szabályok, amelyek szabályozzák a forgalom forgalom végrehajtása állapot nélküli módon. A platform korlátai miatt a bájtok és a csomagok száma nem kerül rögzítésre az állapotnélküli folyamatok (azaz a forgalom folyamatai megy keresztül állapotmentes szabályok), ezek csak az állapotalapú folyamatok. Ennek következtében az NSG flow naplókban (és a Traffic Analytics) jelentett bájtok és csomagok száma eltérhet a tényleges folyamatoktól. Ezt a korlátozást a tervek szerint 2020 júniusára rögzítik.
+**Az állapot nélküli folyamatok esetében helytelen a bájt és a csomagok száma**: a [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview) [állapot-nyilvántartó tűzfalként](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)vannak implementálva. A forgalom áramlását szabályozó alapértelmezett/belső szabályok azonban állapot nélküli módon lesznek implementálva. A platformok korlátai miatt a rendszer nem rögzíti a bájtok és a csomagok számát az állapot nélküli folyamatok esetében (azaz az állapot nélküli szabályokon keresztüli forgalom), csak állapot-nyilvántartó folyamatokban lesznek rögzítve. Következésképpen a NSG-naplók (és Traffic Analytics) által jelentett bájtok és csomagok száma eltérő lehet a tényleges folyamatokban. Ezt a korlátozást az ütemezi, hogy a 2020-es időpontban rögzítettek legyenek.
 
-## <a name="sample-log-records"></a>Mintanapló-rekordok
+## <a name="sample-log-records"></a>Minta napló rekordjai
 
-Az alábbi szöveg egy folyamatnapló példája. Amint láthatja, több rekord is található, amelyek követik az előző szakaszban ismertetett tulajdonságlistát.
+Az alábbi szöveg egy folyamat naplóját szemlélteti. Ahogy láthatja, több rekord is van, amelyek követik az előző szakaszban ismertetett tulajdonságokat.
 
 
 > [!NOTE]
-> A **flowTuples* tulajdonság értékei vesszővel tagolt lista.
+> A **flowTuples* tulajdonságban szereplő értékek vesszővel tagolt lista.
  
-### <a name="version-1-nsg-flow-log-format-sample"></a>1. verziójú NSG-folyamatnapló-formátum minta
+### <a name="version-1-nsg-flow-log-format-sample"></a>1. verzió NSG folyamat naplójának formátuma minta
 ```json
 {
     "records": [
@@ -211,7 +211,7 @@ Az alábbi szöveg egy folyamatnapló példája. Amint láthatja, több rekord i
         ,
         ...
 ```
-### <a name="version-2-nsg-flow-log-format-sample"></a>2-es verziójú NSG-folyamatnapló-formátum minta
+### <a name="version-2-nsg-flow-log-format-sample"></a>2. verzió NSG-folyamatábra-formátum minta
 ```json
  {
     "records": [
@@ -285,7 +285,7 @@ Az alábbi szöveg egy folyamatnapló példája. Amint láthatja, több rekord i
 
 ## <a name="next-steps"></a>További lépések
 
-- A folyamatnaplók engedélyezéséről az [NSG-folyamatnaplózás engedélyezése](network-watcher-nsg-flow-logging-portal.md)című témakörben olvashat.
-- A folyamatnaplók olvasásáról az [NSG-folyamatnaplók olvasása](network-watcher-read-nsg-flow-logs.md)című témakörben olvashat.
-- Az NSG-naplózásról az [Azure Monitor hálózati biztonsági csoportok (NSG-k) naplói](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)című témakörben olvashat bővebben.
-- Annak megállapításához, hogy a forgalom engedélyezett vagy tiltott-e virtuális gépről vagy virtuális gépről, olvassa el [a Virtuálisgép hálózati forgalom szűrőproblémájának diagnosztizálása című témakört.](diagnose-vm-network-traffic-filtering-problem.md)
+- A flow-naplók engedélyezésével kapcsolatos további információkért lásd: a [NSG folyamat naplózásának engedélyezése](network-watcher-nsg-flow-logging-portal.md).
+- A flow-naplók beolvasásával kapcsolatos további információkért lásd: [NSG flow-naplók olvasása](network-watcher-read-nsg-flow-logs.md).
+- A NSG-naplózással kapcsolatos további tudnivalókért tekintse meg [a hálózati biztonsági csoportok (NSG) naplóinak Azure monitor](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- Annak megállapításához, hogy a forgalom engedélyezett vagy letiltott egy virtuális gépről, tekintse meg [a virtuális gép hálózati forgalmának szűrése problémával kapcsolatos problémát](diagnose-vm-network-traffic-filtering-problem.md) .

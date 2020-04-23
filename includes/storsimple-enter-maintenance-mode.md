@@ -11,13 +11,13 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179146"
 ---
-#### <a name="to-enter-maintenance-mode"></a>A karbantartási módba való belépéshez
-1. A soros konzol menüjében **Log in with full access**válassza az 1.
-2. Írja be a jelszót. Az alapértelmezett jelszó a **Password1**.
+#### <a name="to-enter-maintenance-mode"></a>Karbantartási mód megadása
+1. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel.
+2. Írja be a jelszót. Az alapértelmezett jelszó a **jelszó1**.
 3. A parancssorba írja be a következőt:
    
      `Enter-HcsMaintenanceMode`
-4. Megjelenik egy figyelmeztető üzenet, amely arról szól, hogy a Karbantartási mód megszakítja az összes I/O-kérést, és megszakítja a kapcsolatot az Azure klasszikus portállal, és megerősítést kér. A Karbantartási módba való belépéshez írja be az **Y** értéket.
+4. Megjelenik egy figyelmeztető üzenet, amely tájékoztatja, hogy a karbantartási mód megszakítja az összes I/O-kérést, és a klasszikus Azure portálhoz való csatlakozást, és a rendszer megerősítést kér. A karbantartási mód megadásához írja be az **Y karaktert** .
    
-    Mindkét vezérlő újraindul. Amikor az újraindítás befejeződött, egy másik üzenet jelenik meg, amely azt jelzi, hogy az eszköz karbantartási üzemmódban van.
+    Mindkét vezérlő újra fog indulni. Ha az újraindítás befejeződött, egy másik üzenet jelenik meg, amely azt jelzi, hogy az eszköz karbantartási módban van.
 

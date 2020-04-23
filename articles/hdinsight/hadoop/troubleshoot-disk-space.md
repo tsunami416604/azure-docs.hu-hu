@@ -1,6 +1,6 @@
 ---
-title: Lemezterület kezelése az Azure HDInsightban
-description: Az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák lépéseinek és lehetséges megoldásai elhárítása.
+title: Lemezterület kezelése az Azure HDInsight
+description: Hibaelhárítási lépések és lehetséges megoldások az Azure HDInsight-fürtökkel való interakció során felmerülő problémákhoz.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -14,42 +14,42 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "77473011"
 ---
-# <a name="manage-disk-space-in-azure-hdinsight"></a>Lemezterület kezelése az Azure HDInsightban
+# <a name="manage-disk-space-in-azure-hdinsight"></a>Lemezterület kezelése az Azure HDInsight
 
-Ez a cikk az Azure HDInsight-fürtökkel való kommunikáció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
-## <a name="hive-log-configurations"></a>Hive-napló konfigurációi
+## <a name="hive-log-configurations"></a>Struktúra-naplózási konfigurációk
 
-1. Egy webböngészőből keresse `https://CLUSTERNAME.azurehdinsight.net`meg `CLUSTERNAME` a , ahol a fürt neve.
+1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
 
-1. Keresse meg a Hive**Configs** > Advanced**Advanced hive-log4j** **(Hive** > Configs**Advanced** > Advanced hive-log4j) fájlját. Tekintse át a következő beállításokat:
+1. Navigáljon a **kaptár** > **konfigurációk** > **speciális** > **speciális kaptár-log4j**. Tekintse át a következő beállításokat:
 
-    * `hive.root.logger=DEBUG,RFA`. Ez az alapértelmezett érték, módosítsa `INFO` a napló [szintet](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) úgy, hogy kevesebb naplóbejegyzést nyomtasson.
+    * `hive.root.logger=DEBUG,RFA`. Ez az alapértelmezett érték, és a [naplózási szintet](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) `INFO` módosítsa a kevesebb napló bejegyzéseinek kinyomtatásához.
 
-    * `log4jhive.log.maxfilesize=1024MB`. Ez az alapértelmezett érték, szükség szerint módosítva.
+    * `log4jhive.log.maxfilesize=1024MB`. Ez az alapértelmezett érték, amelyet igény szerint kell módosítani.
 
-    * `log4jhive.log.maxbackupindex=10`. Ez az alapértelmezett érték, szükség szerint módosítva. Ha a paraméter nincs megadva, a létrehozott naplófájlok végtelenek lesznek.
+    * `log4jhive.log.maxbackupindex=10`. Ez az alapértelmezett érték, amelyet igény szerint kell módosítani. Ha a paraméter ki lett hagyva, a létrehozott naplófájlok végtelenek lesznek.
 
-## <a name="yarn-log-configurations"></a>Fonalnapló-konfigurációk
+## <a name="yarn-log-configurations"></a>A fonalak naplózási beállításai
 
 Tekintse át a következő konfigurációkat:
 
-* Az Ambari
+* Apache Ambari
 
-    1. Egy webböngészőből keresse `https://CLUSTERNAME.azurehdinsight.net`meg `CLUSTERNAME` a , ahol a fürt neve.
+    1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
 
-    1. Nyissa meg a Hive Configs Advanced Resource Manager **(Hive** > Configs Advanced Resource Manager)**(Hive** > **Configs** > Advanced**Resource Manager) elemre.** Győződjön meg **arról, hogy a naplóösszesítés engedélyezése** be van jelölve. Ha le van tiltva, a névcsomópontok helyileg tartják a naplókat, és nem összesítik őket a távoli tárolóban az alkalmazás befejezésekor vagy megszüntetésekor.
+    1. Navigáljon a **struktúra** > -**konfigurációk** > **speciális** > **erőforrás-kezelőjéhez**. Ellenőrizze, hogy be van-e jelölve a **naplózási összesítés engedélyezése** jelölőnégyzet. Ha le van tiltva, a name csomópontok helyileg megőrzik a naplókat, és nem összesítik azokat a távoli tárolóban az alkalmazás befejezésekor vagy megszakításakor.
 
-* Győződjön meg arról, hogy a fürt mérete megfelelő a számítási feladathoz. Lehet, hogy a munkaterhelés nemrég módosult, vagy a fürt átlett méretezve. A fürt [felskálázása,](../hdinsight-scaling-best-practices.md) hogy megfeleljen a nagyobb számítási feladatoknak.
+* Győződjön meg arról, hogy a fürt mérete megfelelő a számítási feladathoz. Lehetséges, hogy a számítási feladat nemrég módosult, vagy előfordulhat, hogy a fürt átméretezése megtörtént. A fürt vertikális [Felskálázása nagyobb számítási](../hdinsight-scaling-best-practices.md) feladatokhoz.
 
-* `/mnt/resource`lehet, hogy árva fájlokkal van megtöltve (mint az erőforrás-kezelő újraindítása esetén). Szükség esetén manuálisan `/mnt/resource/hadoop/yarn/local`tisztítsa meg és tisztítsa `/mnt/resource/hadoop/yarn/log` meg a .
+* `/mnt/resource`Előfordulhat, hogy az árva fájlokkal van feltöltve (a Resource Manager újraindítása esetén). Ha szükséges, manuálisan törölje `/mnt/resource/hadoop/yarn/log` és `/mnt/resource/hadoop/yarn/local`.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
