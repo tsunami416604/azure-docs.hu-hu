@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-parancsfájl: Az engedélyezett virtuálisgép-méretek beállítása az Azure Lab Servicesben | Microsoft dokumentumok'
-description: Ez a cikk egy minta PowerShell-parancsfájlt tartalmaz, amely beállítja az engedélyezett virtuális gép (VM) méreteket az Azure Lab Servicesben.
+title: 'PowerShell-parancsfájl: engedélyezett virtuálisgép-méretek beállítása a Azure Lab Servicesban | Microsoft Docs'
+description: Ez a cikk egy PowerShell-parancsfájlt tartalmaz, amely az engedélyezett virtuális gépek (VM) méretét állítja be Azure Lab Servicesban.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,25 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: a1b0e9a4aed475f04ec8dcffa9bc95b7c7c713e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3dbee7d0ac928c4f18f25348e714aba9c1cd13
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760456"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100770"
 ---
-# <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>A PowerShell használatával állítsa be az engedélyezett virtuálisgép-méreteket az Azure Lab Servicesben
+# <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Az engedélyezett virtuálisgép-méretek beállítása a PowerShell használatával Azure Lab Services
 
-Ez a minta PowerShell-parancsfájl lehetővé teszi a virtuális gép (VM) méreteit az Azure Lab Servicesben.
+Ez a PowerShell-parancsfájl az engedélyezett virtuális gépek (VM) méretét állítja be Azure Lab Servicesban.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Egy labor.** A parancsfájl megköveteli, hogy egy meglévő labor. 
+* **Egy labor**. A parancsfájlhoz meglévő labor szükséges. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -40,13 +40,13 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| Find-AzResource | Erőforrások keresése a megadott paraméterek alapján. |
-| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Erőforrásokat kap. |
-| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Egy erőforrást módosít. |
-| [Új-AzResource](/powershell/module/az.resources/new-azresource) | Erőforrásokat hozhat létre. |
+| Keresés – AzResource | Erőforrások keresése megadott paraméterek alapján. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Erőforrások beolvasása. |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Módosítja az erőforrást. |
+| [Új – AzResource](/powershell/module/az.resources/new-azresource) | Erőforrásokat hozhat létre. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Lab Services PowerShell-parancsfájlminták az [Azure Lab Services PowerShell-mintákban](../samples-powershell.md)találhatók.
+További Azure Lab Services PowerShell-szkriptek is találhatók a [Azure Lab Services PowerShell-mintákban](../samples-powershell.md).

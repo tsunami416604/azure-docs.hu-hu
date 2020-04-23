@@ -1,7 +1,7 @@
 ---
-title: Tokengyorsítótár szerializálása (MSAL.NET) | Azure
+title: Jogkivonat-gyorsítótár szerializálási (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Információ a tokengyorsítótár szerializálásáról és ügyfélszeresítéséről a Microsoft Authentication Library for .NET (MSAL.NET) használatával.
+description: A jogkivonat-gyorsítótár szerializálásának és ügyfél-szerializálásának megismerése a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,58 +13,58 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1bd348ad27d892d0421b13c16ce81bc4f5dfb021
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6cb164628923b7a0b4fd0e48e3b9a6095591060
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262801"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099019"
 ---
-# <a name="token-cache-serialization-in-msalnet"></a>Jogkivonat-gyorsítótár szerializálása MSAL.NET
-A [token beolvasása](msal-acquire-cache-tokens.md)után a Microsoft Authentication Library (MSAL) gyorsítótárba helyezi.  Az alkalmazáskódnak meg kell próbálnia egy jogkivonatot beszerezni a gyorsítótárból, mielőtt egy jogkivonatot más módszerrel beszerezne.  Ez a cikk a MSAL.NET tokengyorsítótár alapértelmezett és egyéni szerializálását ismerteti.
+# <a name="token-cache-serialization-in-msalnet"></a>Jogkivonat-gyorsítótár szerializálása a MSAL.NET-ben
+A [jogkivonat beszerzése](msal-acquire-cache-tokens.md)után a Microsoft Authentication Library (MSAL) gyorsítótárazza azt.  Az alkalmazás kódjának meg kell próbálnia kapni a tokent a gyorsítótárból, mielőtt másik módszerrel beszerezze a jogkivonatot.  Ez a cikk a jogkivonat-gyorsítótár alapértelmezett és egyéni szerializálását ismerteti a MSAL.NET-ben.
 
-Ez a cikk a MSAL.NET 3.x. Ha érdekli a MSAL.NET 2.x, [lásd: Token cache serialization in MSAL.NET 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Token-cache-serialization-2x).
+Ez a cikk a 3. x MSAL.NET. Ha érdekli a 2. x MSAL.NET, tekintse meg [a jogkivonat-gyorsítótár szerializálását a MSAL.NET 2. x verzióban](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Token-cache-serialization-2x).
 
-## <a name="default-serialization-for-mobile-platforms"></a>Alapértelmezett szerializálás mobil platformokon
+## <a name="default-serialization-for-mobile-platforms"></a>A mobil platformok alapértelmezett szerializálása
 
-A MSAL.NET alapértelmezés szerint egy memórián belüli jogkivonat-gyorsítótár at biztosít. A szerializálás alapértelmezés szerint olyan platformokon érhető el, ahol a platform részeként biztonságos tárterület áll a felhasználó rendelkezésére. Ez a helyzet az Univerzális Windows platform (UWP), a Xamarin.iOS és a Xamarin.Android esetében.
+A MSAL.NET-ben alapértelmezés szerint a memóriában tárolt jogkivonat-gyorsítótár van megadva. Alapértelmezés szerint a szerializálást olyan platformokhoz biztosítjuk, ahol a platform részeként a biztonságos tárterület elérhető a felhasználók számára. Ez a Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android esetében.
 
 > [!Note]
-> Amikor egy Xamarin.Android-projektet MSAL.NET 1.x-ről MSAL.NET 3.x-re telepít át, érdemes hozzáadni `android:allowBackup="false"` a projekthez, hogy a régi gyorsítótárazott jogkivonatok ne térjenek vissza, amikor a Visual Studio központi telepítései a helyi tároló visszaállítását indítják el. Lásd: [#659](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938).
+> Ha egy Xamarin. Android projektet telepít át a MSAL.NET 1. x verzióról a MSAL.NET 3. x-re, érdemes `android:allowBackup="false"` lehet hozzáadni a projekthez, hogy elkerülje a régi gyorsítótárazott tokenek visszaszerzését, amikor a Visual Studio-telepítések elindítják a helyi tároló visszaállítását. Lásd: [probléma #659](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938).
 
-## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Egyéni szerializálás Windows asztali alkalmazásokhoz és webalkalmazásokhoz/webes API-khoz
+## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Egyéni szerializálás Windowsos asztali alkalmazásokhoz és webalkalmazásokhoz/webes API-khoz
 
-Ne feledje, hogy az egyéni szerializálás nem érhető el mobil platformokon (UWP, Xamarin.iOS és Xamarin.Android). Az MSAL már definiál egy biztonságos és előleges szerializálási mechanizmust ezekhez a platformokhoz. A .NET asztali és a .NET Core alkalmazások azonban változatos architektúrával rendelkeznek, és az MSAL nem tud általános célú szerializálási mechanizmust megvalósítani. Előfordulhat például, hogy a webhelyek a tokeneket redis-gyorsítótárban tárolják, vagy az asztali alkalmazások titkosított fájlban tárolják a tokeneket. Tehát a szerializálás nem biztosított out-of-the-box. Ha állandó tokengyorsítótár-alkalmazást szeretne a .NET asztali vagy a .NET Core fájlban, testre kell szabnia a szerializálást.
+Ne feledje, hogy az egyéni szerializálás nem érhető el a mobil platformokon (UWP, Xamarin. iOS és Xamarin. Android). A MSAL már definiál egy biztonságos és teljesítménybeli szerializálási mechanizmust ezekhez a platformokhoz. A .NET Desktop és a .NET Core alkalmazások azonban eltérő architektúrákkal rendelkeznek, és a MSAL nem tudnak általános célú szerializálási mechanizmust megvalósítani. A webhelyek például dönthetnek úgy, hogy Redis-gyorsítótárban tárolják a jogkivonatokat, vagy az asztali alkalmazások egy titkosított fájlban tárolják a jogkivonatokat. Így a szerializálás nem áll rendelkezésére. Ha állandó jogkivonat-gyorsítótárazási alkalmazást szeretne telepíteni a .NET Desktopban vagy a .NET Core-ban, testre kell szabnia a szerializálást.
 
-A tokengyorsítótár-szerializálásban a következő osztályok és összeköttetések használatosak:
+A következő osztályok és felületek használatosak a jogkivonat-gyorsítótár szerializálásakor:
 
-- `ITokenCache`, amely meghatározza a tokengyorsítótár-szerializálási kérelmekre való előfizetés eseményeit, valamint a gyorsítótár különböző formátumokban (ADAL v3.0, MSAL 2.x és MSAL 3.x = ADAL v5.0) szerializálásának vagy szerializálásának módszereit.
-- `TokenCacheCallback`az eseményeknek átadott visszahívás, így kezelni tudja a szerializálást. A nemi típusú argumentumokkal `TokenCacheNotificationArgs`fogják hívni őket.
-- `TokenCacheNotificationArgs`csak az `ClientId` alkalmazás, és egy hivatkozást a felhasználó, amelyhez a jogkivonat elérhető.
+- `ITokenCache`, amely a jogkivonat-gyorsítótár szerializálási kéréseire előfizetett eseményeket, valamint a gyorsítótár szerializálásának vagy deszerializálásának módszereit határozza meg különböző formátumokban (ADAL v 3.0, MSAL 2. x és MSAL 3. x = ADAL v 5.0).
+- `TokenCacheCallback`az eseményeknek átadott visszahívás, hogy kezelni tudja a szerializálást. A rendszer a típusú `TokenCacheNotificationArgs`argumentumokkal hívja meg őket.
+- `TokenCacheNotificationArgs`a csak az `ClientId` alkalmazás és annak a felhasználónak a hivatkozását adja meg, amelyhez a jogkivonat elérhető.
 
-  ![Osztálydiagram](media/msal-net-token-cache-serialization/class-diagram.png)
+  ![Osztály diagramja](media/msal-net-token-cache-serialization/class-diagram.png)
 
 > [!IMPORTANT]
-> MSAL.NET jogkivonat-gyorsítótárakat hoz `IToken` létre, és az alkalmazás `UserTokenCache` `AppTokenCache` és a tulajdonságok hívásakor gyorsítótárat biztosít. Ön nem kellene végrehajtani a felület magad. Egyéni tokengyorsítótár-szerializálás megvalósításakor a feladata a következő:
-> - Reagáljon `BeforeAccess` `AfterAccess` és "események" (vagy azok Async ízek). A `BeforeAccess` delegált felelős a gyorsítótár deszerializálásáért, míg az `AfterAccess` egyik felelős a gyorsítótár szerializálásáért.
-> - Ezek az események egy része tárolja vagy töltse be a blobokat, amelyek az esemény argumentumon keresztül bármilyen tárolóba kerülnek.
+> A MSAL.NET jogkivonat-gyorsítótárat hoz létre az Ön számára, `IToken` és megadja a gyorsítótárat az alkalmazás `UserTokenCache` és `AppTokenCache` a tulajdonságok meghívásakor. Saját magának nem kell megvalósítani a felületet. Az egyéni jogkivonat-gyorsítótár szerializálásának megvalósításakor a következőt kell tennie:
+> - Reagálás az `BeforeAccess` `AfterAccess` "események" (vagy az aszinkron ízek) értékre. A `BeforeAccess` delegált feladata a gyorsítótár deszerializálása, míg az `AfterAccess` egyik felelős a gyorsítótár szerializálásához.
+> - Az események egy része tárolja vagy betölti a blobokat, amelyeket az Event argumentumon át kell adni a kívánt tárterülethez.
 
-A stratégiák eltérőek attól függően, hogy egy nyilvános [ügyfélalkalmazás](msal-client-applications.md) (asztal) vagy egy [bizalmas ügyfélalkalmazás](msal-client-applications.md)(webapp / web API, démon alkalmazás) tokengyorsítótár-szerializálást ír.
+A stratégiák eltérőek attól függően, hogy egy [nyilvános ügyfélalkalmazás](msal-client-applications.md) (asztali) vagy egy [bizalmas ügyfélalkalmazás](msal-client-applications.md)(webalkalmazás/webes API, Daemon-alkalmazás) esetében a jogkivonat-gyorsítótár szerializálását írja-e a rendszer.
 
-### <a name="token-cache-for-a-public-client"></a>Jogkivonat-gyorsítótár nyilvános ügyfél számára 
+### <a name="token-cache-for-a-public-client"></a>Nyilvános ügyfél jogkivonat-gyorsítótára 
 
-A MSAL.NET 2.x-es e-MSAL.NET számos lehetősége van egy nyilvános ügyfél tokengyorsítótárának szerializálására. A gyorsítótárat csak a MSAL.NET formátumban szerializálhatja (az egyesített formátumú gyorsítótár gyakori az MSAL-on és a platformokon).  Az ADAL V3 [örökölt](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) tokengyorsítótár-szerializálását is támogathatja.
+A MSAL.NET v2. x óta számos lehetőség van a nyilvános ügyfél jogkivonat-gyorsítótárának szerializálására. A gyorsítótárat csak a MSAL.NET-formátumra lehet szerializálni (az egyesített formátum gyorsítótára közös a MSAL és a platformok között).  Az [örökölt](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) jogkivonat-gyorsítótár szerializálását is támogathatja a ADAL V3 esetében.
 
-A tokengyorsítótár szerializálásának testreszabása az egyszeri bejelentkezési állapot megosztásához ADAL.NET 3.x, ADAL.NET 5.x és MSAL.NET között a következő minta egy része ismerteti: [active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2).
+A jogkivonat-gyorsítótár szerializálásának testreszabásával megoszthatja a ADAL.NET 3. x, ADAL.NET 5. x és MSAL.NET közötti egyszeri bejelentkezési állapotot a következő példa részeként: [Active-Directory-DotNet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2).
 
 > [!Note]
-> Az MSAL.NET 1.1.4-preview token cache formátum már nem támogatott MSAL 2.x. Ha az alkalmazások kihasználva MSAL.NET 1.x, a felhasználók nak kell újra bejelentkezni. Az ADAL 4.x (és a 3.x) alkalmazásból történő áttelepítés is támogatott.
+> A MSAL.NET 1.1.4 – előzetes verziójú tokenek gyorsítótárazási formátuma már nem támogatott a MSAL 2. x verzióban. Ha a MSAL.NET 1. x-et használó alkalmazásokkal rendelkezik, a felhasználóknak újra be kell jelentkezniük. Másik lehetőségként a ADAL 4. x (és 3. x) közötti áttelepítés támogatott.
 
-#### <a name="simple-token-cache-serialization-msal-only"></a>Egyszerű tokengyorsítótár-szerializálás (csak MSAL esetén)
+#### <a name="simple-token-cache-serialization-msal-only"></a>Egyszerű jogkivonat-gyorsítótár szerializálása (csak MSAL)
 
-Az alábbiakban egy példa egy naiv végrehajtása egyéni szerializálása egy token cache asztali alkalmazások. Itt a felhasználói jogkivonat-gyorsítótár egy fájl ugyanabban a mappában, mint az alkalmazás.
+Az alábbi példa egy jogkivonat-gyorsítótár egyéni szerializálásának naiv implementációját mutatja be asztali alkalmazásokhoz. Itt a felhasználói jogkivonat gyorsítótára egy olyan fájl, amely ugyanabban a mappában található, mint az alkalmazás.
 
-Az alkalmazás létrehozása után a metódus hívásával `TokenCacheHelper.EnableSerialization()` és az `UserTokenCache`alkalmazás átadásával engedélyezheti a szerializálást.
+Az alkalmazás létrehozása után a `TokenCacheHelper.EnableSerialization()` metódus meghívásával és az alkalmazás `UserTokenCache`átadásával engedélyezheti a szerializálást.
 
 ```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
@@ -72,7 +72,7 @@ app = PublicClientApplicationBuilder.Create(ClientId)
 TokenCacheHelper.EnableSerialization(app.UserTokenCache);
 ```
 
-A `TokenCacheHelper` segítő osztály definíciója:
+A `TokenCacheHelper` segítő osztály a következőképpen van definiálva:
 
 ```csharp
 static class TokenCacheHelper
@@ -122,11 +122,11 @@ static class TokenCacheHelper
  }
 ```
 
-A [microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) nyílt forráskódú kódtárból a nyilvános ügyfélalkalmazások (Windows, Mac és Linux rendszeren futó asztali alkalmazások) termékminőségi tokengyorsítótár-fájlalapú szerializálójának előnézete érhető el. Az alkalmazásokba a következő nuget csomagból foglalhatja bele: [Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
+A termék minőségi jogkivonat-gyorsítótárazási fájlon alapuló szerializálásának előzetes verziója a nyilvános ügyfélalkalmazások számára (Windows, Mac és Linux rendszereken futó asztali alkalmazások esetén) a [Microsoft. Identity. Client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) nyílt forráskódú könyvtárában érhető el. Az alkalmazásokban a következő nuget-csomaggal veheti fel: [Microsoft. Identity. Client. Extensions. Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
-#### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>Kettős tokengyorsítótár-szerializálás (MSAL egyesített gyorsítótár és ADAL v3)
+#### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>Kettős jogkivonat-gyorsítótár szerializálási (MSAL Unified cache és ADAL v3)
 
-Ha a tokengyorsítótár szerializálását az egyesített gyorsítótár-formátummal (a ADAL.NET 4.x, MSAL.NET 2.x és más, azonos generációs vagy régebbi MSAL-okkal szeretné megvalósítani ugyanazon a platformon), vessen egy pillantást a következő kódra:
+Ha a jogkivonat-gyorsítótár szerializálását az egyesített gyorsítótár formátumával (Common ADAL.NET 4. x, MSAL.NET 2. x és más, ugyanazon generáció vagy régebbi MSALs) szeretné megvalósítani, tekintse meg a következő kódot:
 
 ```csharp
 string appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location;
@@ -143,7 +143,7 @@ FilesBasedTokenCacheHelper.EnableSerialization(app.UserTokenCache,
 
 ```
 
-Ezúttal a segítő osztály meghatározása:
+Ezúttal a segítő osztály a következőként van meghatározva:
 
 ```csharp
 using System;
@@ -267,18 +267,18 @@ namespace CommonCacheMsalV3
 }
 ```
 
-### <a name="token-cache-for-a-web-app-confidential-client-application"></a>Egy webalkalmazás tokengyorsítótára (bizalmas ügyfélalkalmazás)
+### <a name="token-cache-for-a-web-app-confidential-client-application"></a>Jogkivonat-gyorsítótár webalkalmazásokhoz (bizalmas ügyfélalkalmazás)
 
-A webalkalmazásokban vagy webes API-kban a gyorsítótár kihasználhatja a munkamenetet, a Redis-gyorsítótárat vagy az adatbázist.
+A Web Apps vagy webes API-k esetében a gyorsítótár kihasználhatja a munkamenetet, a Redis cache-t vagy egy adatbázist.
 
-A webes alkalmazásokban vagy webes API-kban fiókonként egy jogkivonat-gyorsítótárat tarthat meg.  A webalkalmazások esetében a jogkivonat-gyorsítótárat a fiókazonosítónak kell megkell keyd-nek lennie.  Webes API-k esetén a fiókot az API-k hívásához használt jogkivonat kivonatának kell megadnia. MSAL.NET egyéni tokengyorsítótár-szerializálást biztosít a .NET Framework és a . Események aktiválódnak, amikor a gyorsítótár elérésekor, alkalmazások választhatnak, hogy szeriaializálja vagy deszerializálja a gyorsítótárat. A felhasználókat kezelő bizalmas ügyfélalkalmazásokon (a felhasználókat bejelentkező és webes API-kat hívó webes API-k, valamint az alsóbb rétegbeli webes API-kat hívó webes API-k hívása) számos felhasználó és a felhasználók feldolgozása párhuzamosan történik. Biztonsági és teljesítménybeli okokból javasoljuk, hogy felhasználónként egy gyorsítótárat szerializáljanak. A szerializálási események a feldolgozott felhasználó identitása alapján számítják ki a gyorsítótárkulcsot, és szerializálják/deszerimizizálják az adott felhasználó tokengyorsítótárát.
+A Web Apps vagy a webes API-k esetében fiókon belül egy jogkivonat-gyorsítótárat kell megőrizni.  A webalkalmazások esetében a jogkivonat-gyorsítótárat a fiók AZONOSÍTÓjának kell megadnia.  Webes API-k esetében a fióknak az API meghívásához használt jogkivonat kivonatával kell megjelennie. A MSAL.NET egyéni jogkivonat-gyorsítótárazási szerializálást biztosít a .NET-keretrendszer és a .NET Core alplatformok számára. Ha a gyorsítótár elérhető, az alkalmazások eldönthetik, hogy szerializálják vagy deszerializálják a gyorsítótárat. A felhasználókat kezelő bizalmas ügyfélalkalmazások (webalkalmazások, amelyek bejelentkeznek a felhasználók számára, és meghívhatják a webes API-kat, valamint a webes API-kat hívó webes API-k), több felhasználó is lehet, és a felhasználók párhuzamosan lesznek feldolgozva. A biztonság és a teljesítmény érdekében javasoljuk, hogy felhasználónként egy gyorsítótárat szerializáljon. A szerializálási események kiszámítják a gyorsítótár-kulcsot a feldolgozott felhasználó identitása alapján, valamint az adott felhasználóhoz tartozó jogkivonat-gyorsítótár szerializálása/deszerializálása.
 
-Példák a token-gyorsítótárak webalkalmazásokhoz és webes API-khoz való használatára a [ASP.NET Core webalkalmazás oktatóanyagában](https://ms-identity-aspnetcore-webapp-tutorial) a [2-2 token gyorsítótárban.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) A megvalósítások tekintse meg a [mappát TokenCacheProviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders) a [microsoft-hitelesítés-extensions-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) könyvtár (a [Microsoft.Identity.Client.Extensions.Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) mappában. 
+Példák a Web Apps és a webes API-k jogkivonat-gyorsítótárának használatára a [ASP.net Core webalkalmazás-oktatóanyagban](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) az 2-2-os [token gyorsítótárában](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). A megvalósítások esetében tekintse meg a [Microsoft-Authentication-Extensions-for-DotNet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) Library [TokenCacheProviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders) mappáját (a [Microsoft. Identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) mappában. 
 
 ## <a name="next-steps"></a>További lépések
-A következő minták a tokengyorsítótár szerializálását szemléltetik.
+A következő minták a jogkivonat-gyorsítótár szerializálását szemléltetik.
 
 | Sample | Platform | Leírás|
 | ------ | -------- | ----------- |
-|[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Asztal (WPF) | A Microsoft Graph API-t hívó Windows Desktop .NET (WPF) alkalmazás. ![Topológia](media/msal-net-token-cache-serialization/topology.png)|
-|[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Asztal (konzol) | Visual Studio-megoldások készlete, amely az Azure AD 1.0-s alkalmazások (ADAL.NET használatával) azure AD v2.0-s alkalmazásokba való migrálását szemlélteti, más néven konvergens alkalmazások (MSAL.NET használatával), különösen [a tokengyorsítótár-áttelepítés](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|
+|[Active-Directory-DotNet-Desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Asztali (WPF) | A Microsoft Graph API-t hívó Windowsos asztali .NET (WPF) alkalmazás. ![Topológia](media/msal-net-token-cache-serialization/topology.png)|
+|[Active-Directory-DotNet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Asztal (konzol) | A Visual Studio-megoldások készlete az Azure AD v 1.0-alkalmazások (ADAL.NET használatával) Azure AD v 2.0-alkalmazásokba való áttelepítését mutatja be (MSAL.NET használatával), különösen a [jogkivonat-gyorsítótár áttelepítését](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md) .|

@@ -1,6 +1,6 @@
 ---
-title: Alkalmazáshitelesítés áthelyezése az AD FS szolgáltatásból az Azure Active Directoryba
-description: Ez a cikk célja, hogy segítsen a szervezeteknek megérteni, hogyan helyezheti át az alkalmazásokat az Azure AD-be, az összevont SaaS-alkalmazásokra összpontosítva.
+title: Alkalmazás-hitelesítés áthelyezése AD FSról Azure Active Directoryra
+description: Ebből a cikkből megtudhatja, hogyan helyezhet át alkalmazásokat az Azure AD-be az összevont SaaS-alkalmazásokra összpontosítva.
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,32 +13,32 @@ ms.devlang: na
 ms.date: 04/01/2020
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb39606cdbb6488ccdee2828029d3617d689508
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: e104fa26d6657c06a0df31bad8c773fb444a1105
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891938"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100872"
 ---
-# <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Alkalmazáshitelesítés áthelyezése az Active Directory összevonási szolgáltatásokból az Azure Active Directoryba
+# <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Alkalmazás-hitelesítés áthelyezése Active Directory összevonási szolgáltatások (AD FS)ról Azure Active Directoryra
 
-[Az Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) egy univerzális identitásplatformot kínál, amely egyetlen identitást biztosít az emberek, partnerek és az ügyfelek számára az alkalmazások eléréséhez és az együttműködéshez bármely platformról és eszközről. Az Azure AD [az identitáskezelési képességek teljes csomagjával rendelkezik.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) Az alkalmazás (alkalmazás) hitelesítésének és az Azure AD-nek való engedélyezésének szabványosítása lehetővé teszi a képességek által nyújtott előnyöket. 
+[Azure Active Directory (Azure ad)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) univerzális identitási platformot kínál, amely a felhasználók, partnerek és ügyfelek számára egyetlen identitást biztosít az alkalmazások eléréséhez és a bármely platformról és eszközről való együttműködéshez. Az Azure AD [teljes körű Identitáskezelés-kezelési képességekkel](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)rendelkezik. Az alkalmazás (alkalmazás) hitelesítésének és az Azure AD-engedélyezésének egységesítése lehetővé teszi, hogy ezek a képességek milyen előnyöket biztosítanak. 
 
 > [!NOTE]
-> Ez a cikk az alkalmazáshitelesítés áthelyezése a helyszíni Active Directory és az Active Directory összevonási szolgáltatások az Azure AD.This article focuses to moving application authentication from on-premises Active Directory and Active Directory Federation Services to Azure AD. Az áthelyezés megtervezésének áttekintését tekintse meg az [alkalmazáshitelesítés Azure AD-be való áttelepítéséről](https://aka.ms/migrateapps/whitepaper) szóló tanulmányban. A tanulmány bemutatja, hogyan tervezd meg az áttelepítést, a tesztelést és az elemzéseket.
+> Ez a cikk az alkalmazás-hitelesítés helyszíni Active Directory és Active Directory összevonási szolgáltatások (AD FS) az Azure AD-be való áthelyezését ismerteti. Az áthelyezés megtervezésének áttekintéséhez tekintse meg az [alkalmazás-hitelesítés áttelepítését az Azure ad-be](https://aka.ms/migrateapps/whitepaper) című tanulmányt. A tanulmány bemutatja, hogyan tervezze meg az áttelepítést, a tesztelést és a bepillantást.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
-Ha olyan helyszíni címtárral rendelkezik, amely felhasználói fiókokat tartalmaz, valószínűleg sok olyan alkalmazással rendelkezik, amelyekhez a felhasználók hitelesítik magukat. Ezen alkalmazások mindegyike úgy van beállítva, hogy a felhasználók identitásuk használatával férjenek hozzá. 
+Ha olyan helyszíni címtárral rendelkezik, amely felhasználói fiókokat tartalmaz, valószínűleg sok alkalmazásra van szüksége, amelyhez a felhasználók hitelesítést végeznek. Ezek az alkalmazások úgy vannak konfigurálva, hogy a felhasználók identitásuk alapján férhessenek hozzájuk. 
 
 
-A felhasználók közvetlenül is hitelesíthetik magukat a helyszíni Active Directoryval. Az Active Directory összevonási szolgáltatások (AD FS) egy helyszíni identitáskezelési szolgáltatáson alapuló szabványok. Az AD FS kibővíti az egyszeri bejelentkezés (SSO) funkcióit a megbízható üzleti partnerek között anélkül, hogy a felhasználóknak külön kellene bejelentkezniük az egyes alkalmazásokba. Ezt Föderációnak nevezik.
+A felhasználók közvetlenül a helyszíni Active Directory is hitelesíthetők. A Active Directory összevonási szolgáltatások (AD FS) (AD FS) egy szabványon alapuló helyszíni Identitáskezelő szolgáltatás. AD FS kiterjeszti az egyszeri bejelentkezés (SSO) funkcióinak használatát a megbízható üzleti partnerek között anélkül, hogy a felhasználóknak külön kell bejelentkezniük az egyes alkalmazásokra. Ez az összevonás.
 
-Számos szervezet rendelkezik Szoftver szolgáltatásként (SaaS) vagy egyéni üzletági (LOB) alkalmazásokkal, amelyekközvetlenül az AD FS-hez vannak összeszervezve, az Office 365 és az Azure AD-alapú alkalmazások mellett. 
+Számos szervezet rendelkezik olyan szoftverrel (SaaS) vagy egyéni üzletági (LOB) alkalmazásokkal, amelyek közvetlenül összevontak a AD FSba, az Office 365 és az Azure AD-alapú alkalmazások mellett. 
 
 ![Közvetlenül a helyszínen csatlakoztatott alkalmazások](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
-**Az alkalmazások biztonságának növelése érdekében a cél az, hogy egyetlen hozzáférés-vezérlési és szabályzatkészlettel rendelkezik a helyszíni és a felhőalapú környezetekben.** 
+Az **alkalmazások biztonságának növeléséhez a cél az, hogy egyetlen hozzáférés-vezérlést és szabályzatot hozzon létre a helyszíni és a felhőalapú környezetekben**. 
 
 ![Az Azure AD-n keresztül csatlakoztatott alkalmazások](media/migrate-adfs-apps-to-azure/app-integration-after-migration1.png)
 
@@ -46,97 +46,97 @@ Számos szervezet rendelkezik Szoftver szolgáltatásként (SaaS) vagy egyéni �
 
 ## <a name="types-of-apps-to-migrate"></a>Az áttelepítendő alkalmazások típusai
 
-Az alkalmazás hitelesítésének áttelepítése az Azure AD-be optimális, mivel egyetlen vezérlősíkot biztosít az identitás- és hozzáférés-kezeléshez.
+Az összes alkalmazás-hitelesítés az Azure AD-be való migrálása optimális, mivel egyetlen vezérlési síkot biztosít az identitás-és hozzáférés-kezeléshez.
 
-Az alkalmazások modern vagy régebbi protokollokat használhatnak a hitelesítéshez. Fontolja meg először a modern hitelesítési protokollokat (például SAML és Open ID Connect) használó alkalmazások áttelepítését. Ezek az alkalmazások újrakonfigurálhatók az Azure AD-vel való hitelesítéshez az Alkalmazásgalériában egy beépített összekötőn keresztül, vagy az alkalmazás Azure AD-ben történő regisztrálásával. A régebbi protokollokat használó alkalmazások integrálhatók [az Alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy)használatával. 
+Alkalmazásai használhatnak modern vagy örökölt protokollokat a hitelesítéshez. Érdemes megfontolni a modern hitelesítési protokollt használó alkalmazások (például SAML és Open ID-kapcsolat) áttelepítését. Ezek az alkalmazások Újrakonfigurálhatók az Azure AD-vel való hitelesítéshez az alkalmazás-katalógus beépített összekötője vagy az alkalmazás Azure AD-ben való regisztrálása révén. A régebbi protokollokat használó alkalmazások a [alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy)használatával integrálhatók. 
 
-További információ: [Milyen típusú alkalmazások integrálhatók az Azure AD-vel?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-management)
+További információ: [milyen típusú alkalmazásokat tud integrálni az Azure ad-vel](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-management)?
 
-Az [AD FS-alkalmazástevékenység-jelentés segítségével áttelepítheti az alkalmazásokat az Azure AD-be,](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity) ha engedélyezve van az [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs). 
+Ha [Azure ad Connect Health engedélyezve](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)van, a [AD FS alkalmazás tevékenységi jelentés használatával áttelepítheti az alkalmazásokat az Azure ad-be](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity) . 
 
 ### <a name="the-migration-process"></a>Az áttelepítési folyamat
 
-Az alkalmazáshitelesítés Azure AD-be való áthelyezésének folyamata során megfelelően tesztelheti az alkalmazásokat és a konfigurációt. Azt javasoljuk, hogy továbbra is használja a meglévő tesztkörnyezetek áttelepítési tesztelés áthelyezése az éles környezetbe. Ha egy tesztkörnyezet jelenleg nem érhető el, az alkalmazás architektúrájának függően beállíthat egyet az [Azure App Service](https://azure.microsoft.com/services/app-service/) vagy az Azure virtuális [gépek](https://azure.microsoft.com/free/virtual-machines/search/?OCID=AID2000128_SEM_lHAVAxZC&MarinID=lHAVAxZC_79233574796345_azure%20virtual%20machines_be_c__1267736956991399_kwd-79233582895903%3Aloc-190&lnkd=Bing_Azure_Brand&msclkid=df6ac75ba7b612854c4299397f6ab5b0&ef_id=XmAptQAAAJXRb3S4%3A20200306231230%3As&dclid=CjkKEQiAhojzBRDg5ZfomsvdiaABEiQABCU7XjfdCUtsl-Abe1RAtAT35kOyI5YKzpxRD6eJS2NM97zw_wcB)használatával.
+Az alkalmazás Azure AD-hitelesítésre való áthelyezése során az alkalmazások és a konfiguráció megfelelő tesztelését. Javasoljuk, hogy az éles környezetbe való áttéréshez a meglévő tesztelési környezeteket továbbra is használja. Ha a tesztkörnyezet jelenleg nem érhető el, az alkalmazás architektúrája alapján beállíthatja [Azure app Service](https://azure.microsoft.com/services/app-service/) vagy az [Azure Virtual Machines](https://azure.microsoft.com/free/virtual-machines/search/?OCID=AID2000128_SEM_lHAVAxZC&MarinID=lHAVAxZC_79233574796345_azure%20virtual%20machines_be_c__1267736956991399_kwd-79233582895903%3Aloc-190&lnkd=Bing_Azure_Brand&msclkid=df6ac75ba7b612854c4299397f6ab5b0&ef_id=XmAptQAAAJXRb3S4%3A20200306231230%3As&dclid=CjkKEQiAhojzBRDg5ZfomsvdiaABEiQABCU7XjfdCUtsl-Abe1RAtAT35kOyI5YKzpxRD6eJS2NM97zw_wcB)használatával.
 
-Dönthet úgy, hogy egy külön teszt et azure AD-bérlő az alkalmazás konfigurációk fejlesztése során használni. 
+Dönthet úgy, hogy külön Azure AD-bérlőt állít be, amelyet az alkalmazás konfigurációjának fejlesztésekor használ. 
 
-Az áttelepítési folyamat a következőképpen nézhet ki:
+Az áttelepítési folyamat így néz ki:
 
-**1. szakasz – Jelenlegi állapot: Az AD FS-sel hitelesítő éles alkalmazás**
+**1. fázis – aktuális állapot: az üzemi alkalmazás hitelesítése AD FS**
 
-![Áttelepítési szakasz 1 ](media/migrate-adfs-apps-to-azure/stage1.jpg)
+![1. áttelepítési fázis ](media/migrate-adfs-apps-to-azure/stage1.jpg)
 
  
-**2. szakasz – NEM KÖTELEZŐ: Az Azure-bérlő tesztelésére mutató alkalmazás tesztpéldányának tesztelése**
+**2. fázis – nem kötelező: az alkalmazás tesztelési példánya, amely az Azure-bérlő tesztelésére mutat**
 
-Frissítse a konfigurációt, hogy az alkalmazás tesztpéldányát egy teszt Azure AD-bérlőre irányítsa, és hajtsa végre a szükséges módosításokat. Az alkalmazás tesztelhető a felhasználók a teszt Az Azure AD-bérlő. A fejlesztési folyamat során olyan eszközökkel, mint a [Fiddler,](https://www.telerik.com/fiddler) összehasonlíthatja és ellenőrizheti a kéréseket és a válaszokat.
+Frissítse a konfigurációt úgy, hogy az alkalmazás tesztelési példányát egy teszt Azure AD-bérlőre mutassa, és végezze el a szükséges módosításokat. Az alkalmazás a teszt Azure AD-bérlőben található felhasználókkal tesztelhető. A fejlesztési folyamat során olyan eszközöket használhat, mint például a [Hegedűs](https://www.telerik.com/fiddler) a kérelmek és válaszok összehasonlításához és ellenőrzéséhez.
 
-Ha egy külön tesztbérlő beállítása nem valósítható meg, hagyja ki ezt a szakaszt, és álljon fel egy alkalmazás tesztpéldányára, és irányítsa az éles Azure AD-bérlőre az alábbi 3.
+Ha egy különálló tesztelési bérlő beállítása nem valósítható meg, ugorja át ezt a szakaszt, és állítsa be az alkalmazás egy tesztelési példányát, és mutasson rá az éles Azure AD-bérlőre az alábbi 3. szakaszban leírtak szerint.
 
-![2. migrációs szakasz ](media/migrate-adfs-apps-to-azure/stage2.jpg)
+![2. áttelepítési fázis ](media/migrate-adfs-apps-to-azure/stage2.jpg)
 
-**3. szakasz – Az éles Azure-bérlőre mutató tesztalkalmazás**
+**3. fázis – az Azure-bérlő éles üzemre mutató alkalmazásának tesztelése**
 
-Frissítse a konfigurációt, hogy az alkalmazás tesztpéldányát az Azure éles példányára irányítsa. Most már tesztelheti a felhasználók kal a termelési példányban. Ha szükséges, tekintse át a jelen cikk átalakuló felhasználókról szóló szakaszát.
+Frissítse a konfigurációt úgy, hogy az alkalmazás tesztelési példányát az Azure éles példányára mutassa. Mostantól tesztelheti az éles példányban lévő felhasználókat. Ha szükséges, tekintse át a cikk szakaszát a felhasználók átváltásához.
 
-![Migrációs szakasz ](media/migrate-adfs-apps-to-azure/stage3.jpg)
+![3. áttelepítési fázis ](media/migrate-adfs-apps-to-azure/stage3.jpg)
 
-**4. szakasz – Éles aD-bérlőre mutató éles alkalmazás**
+**4. fázis – üzemi AD-bérlőre mutató éles Üzembeli alkalmazás**
 
-Frissítse az éles alkalmazás konfigurációját, hogy az éles Azure-bérlőre mutasson.
+Frissítse a termelési alkalmazás konfigurációját, hogy az éles Azure-bérlőre mutasson.
 
-![Áttelepítési szakasz 1 ](media/migrate-adfs-apps-to-azure/stage4.jpg)
+![1. áttelepítési fázis ](media/migrate-adfs-apps-to-azure/stage4.jpg)
 
- Az AD FS szolgáltatással hitelesítő alkalmazások az Active Directory-csoportokat használhatják az engedélyekhez. Az [Azure AD Connect szinkronizálása](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) segítségével szinkronizálhatja az identitásadatokat a helyszíni környezet és az Azure AD között az áttelepítés megkezdése előtt. Ellenőrizze ezeket a csoportokat és a tagságot az áttelepítés előtt, hogy az alkalmazás áttelepítésekekénél hozzáférést biztosítson ugyanazoknak a felhasználóknak.
+ A AD FS hitelesítő alkalmazások Active Directory csoportokat használhatnak az engedélyekhez. A Migrálás megkezdése előtt a [Azure ad Connect Sync](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) használatával szinkronizálhatja a helyszíni környezet és az Azure ad-beli identitás adatait. Az áttelepítés előtt ellenőrizze ezeket a csoportokat és tagságot, hogy az alkalmazás áttelepítésekor ugyanazokhoz a felhasználókhoz is hozzáférést biztosíthat.
 
 ### <a name="line-of-business-lob-apps"></a>Üzletági (LOB) alkalmazások
 
-A LOB-alkalmazásokat a szervezet belsőleg fejleszti, vagy az adatközpontban telepített szabványos csomagolt termékként érhető el. Ilyenek például a Windows Identity Foundation és a SharePoint-alkalmazásokra épülő alkalmazások (nem a SharePoint Online). 
+A LOB-alkalmazásokat a szervezet belsőleg fejleszti, vagy az adatközpontba telepített szabványos csomagolt termékként is elérhetővé válik. Ilyenek például a Windows Identity Foundation és a SharePoint-alkalmazások (nem a SharePoint Online) szolgáltatásokra épülő alkalmazások. 
 
-Az OAuth 2.0, az OpenID Connect vagy a WS-Federation szolgáltatást használó lob-alkalmazások integrálhatók az Azure AD-vel [alkalmazásregisztrációként.](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users) Integrálja azokat az egyéni alkalmazásokat, amelyek az SAML 2.0 vagy a WS-Federation szolgáltatást [nem galériaalkalmazásokként](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) használják az [Azure Portal](https://portal.azure.com/)vállalati alkalmazáslapján.
+Az OAuth 2,0, az OpenID Connect vagy a WS-Federation szolgáltatást használó LOB-alkalmazások az Azure AD-ben az [alkalmazás regisztrációja](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users)révén integrálhatók. Integrálhatja az SAML 2,0 vagy WS-Federation szolgáltatást használó egyéni alkalmazásokat a [Azure Portal](https://portal.azure.com/)vállalati alkalmazások lapján található nem katalógusbeli [alkalmazásként](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) .
 
 ## <a name="saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés
 
-A hitelesítéshez SAML 2.0-s hitelesítést használó alkalmazások konfigurálhatók [saml-alapú egyszeri bejelentkezéshez](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (SAML-alapú egyszeri bejelentkezés). Az [SAML-alapú egyszeri bejelentkezéssel](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)a felhasználókat az SAML-jogcímekben megadott szabályok alapján adott alkalmazásszerepkörökhöz képezheti. 
+Az SAML 2,0 hitelesítést használó alkalmazások az [SAML-alapú egyszeri bejelentkezéshez](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (SAML-alapú SSO) konfigurálhatók. Az [SAML-alapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)használata esetén a felhasználókat az SAML-jogcímek által meghatározott szabályok alapján rendelheti hozzá bizonyos alkalmazási szerepkörökhöz. 
 
-Saml-alapú egyszeri bejelentkezéss saas-alkalmazás konfigurálásához olvassa [el az SAML-alapú egyszeri bejelentkezés konfigurálása című témakört.](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications) 
+Az SAML-alapú egyszeri bejelentkezéshez használható SaaS-alkalmazás konfigurálásával kapcsolatban lásd: [SAML-alapú egyszeri bejelentkezés konfigurálása](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications). 
 
 ![SSO SAML felhasználói képernyőképek ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
  
-Számos SaaS-alkalmazás rendelkezik egy [alkalmazásspecifikus oktatóanyaggal,](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) amely végiglépaz SAML-alapú egyszeri bejelentkezés konfigurációján.
+Számos SaaS-alkalmazás rendelkezik egy [alkalmazásspecifikus oktatóanyaggal](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) , amely VÉGIGVEZETI az SAML-alapú egyszeri bejelentkezés konfigurációjának lépésein.
 
-![alkalmazás oktatóanyaga](media/migrate-adfs-apps-to-azure/app-tutorial.png)
+![alkalmazás-oktatóanyag](media/migrate-adfs-apps-to-azure/app-tutorial.png)
 
-Egyes alkalmazások migrálása egyszerű. Az összetettebb követelményekkel rendelkező, például egyedi jogcímeket igénylő alkalmazások esetében azonban további konfigurálásra lehet szükség az Azure AD-ben és/vagy az Azure AD Connectben. A támogatott jogcím-hozzárendelésekről a [Jogcímleképezés az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping)című témakörben talál további információt.
+Egyes alkalmazások migrálása egyszerű. Az összetettebb követelményekkel rendelkező, például egyedi jogcímeket igénylő alkalmazások esetében azonban további konfigurálásra lehet szükség az Azure AD-ben és/vagy az Azure AD Connectben. További információ a támogatott jogcímek hozzárendeléséről: [jogcím-hozzárendelés Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping).
 
-Ne feledje, hogy az attribútumok leképezésekénél a következő korlátozások vannak:
+Vegye figyelembe a következő korlátozásokat az attribútumok leképezése során:
 
-* Az AD FS-ben kiadható attribútumok közül nem mindegyik jelenik meg az Azure AD-ben az SAML-jogkivonatok számára kibocsátott attribútumként, még akkor is, ha ezek az attribútumok szinkronizálva vannak. Az attribútum szerkesztésekor az Érték legördülő lista megmutatja az Azure AD-ben elérhető különböző attribútumokat. Ellenőrizze [az Azure AD Connect szinkronizálási](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) konfigurációját, és győződjön meg arról, hogy egy szükséges attribútum – például samAccountName – szinkronizálás alatt áll az Azure AD-vel. A bővítményattribútumok segítségével bármely jogcím, amely nem része az Azure AD általános jogszámú felhasználói séma.
+* Nem minden AD FS kiállítható attribútum jelenik meg az Azure AD-ben az SAML-tokenekre való kibocsátáshoz, még akkor is, ha ezek az attribútumok szinkronizálva vannak. Amikor szerkeszti az attribútumot, az érték legördülő lista megjeleníti az Azure AD-ben elérhető különböző attribútumokat. Ellenőrizze [Azure ad Connect szinkronizálási](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) konfigurációját, hogy a szükséges attribútumok – például a sAMAccountName – szinkronizálva legyenek az Azure ad-val. A bővítmény attribútumaival olyan jogcímeket hozhat létre, amelyek nem részei az Azure AD általános felhasználói sémájának.
 
-* A leggyakoribb forgatókönyvekben csak a NameID jogcím és egyéb általános felhasználóazonosító jogcímek szükségesek az alkalmazáshoz. Annak megállapításához, hogy szükség van-e további jogcímekre, vizsgálja meg, hogy milyen jogcímeket állít ki az AD FS-től.
+* A leggyakoribb forgatókönyvekben csak a NameID jogcím és egyéb általános felhasználóazonosító jogcímek szükségesek az alkalmazáshoz. Annak megállapításához, hogy szükség van-e további jogcímek elvégzésére, vizsgálja meg, milyen jogcímeket kell kiadnia AD FS
 
-* Nem minden jogcím lehet probléma, mivel egyes jogcímek védettek az Azure AD-ben. 
+* Nem minden jogcím lehet probléma, mivel egyes jogcímek védelme az Azure AD-ben történik. 
 
-* A titkosított SAML-tokenek használatának lehetősége már előzetes verzióban érhető el. Lásd: [Az SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
+* A titkosított SAML-tokenek használatának lehetősége már előzetes verzióban érhető el. További információ [: a vállalati alkalmazások SAML-jogkivonatában kiadott jogcímek testreszabása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
 
  
 
-### <a name="software-as-a-service-saas-apps"></a>Szoftver szolgáltatásként (SaaS) alkalmazások
+### <a name="software-as-a-service-saas-apps"></a>Szolgáltatott szoftver (SaaS) alkalmazások
 
-Ha a felhasználó bejelentkezik a SaaS-alkalmazásokba, például a Salesforce, a ServiceNow vagy a Workday, és integrálva van az AD FS-sel, akkor összevont bejelentkezést használ az SaaS-alkalmazásokhoz. 
+Ha a felhasználó SaaS-alkalmazásokba, például Salesforce, ServiceNow vagy munkanapokba jelentkezik be, és integrálva van AD FS, akkor összevont bejelentkezést használ az SaaS-alkalmazásokhoz. 
 
-A legtöbb SaaS-alkalmazás már konfigurálható az Azure AD-ben. A Microsoft számos előre konfigurált kapcsolattal rendelkezik az [Azure AD-alkalmazások gyűjteményében](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)található SaaS-alkalmazásokkal, amelyek megkönnyítik az átállást. Az SAML 2.0-s alkalmazások integrálhatók az Azure AD-vel az Azure AD alkalmazásgalérián vagy [nem galériaalkalmazásokon](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)keresztül. 
+A legtöbb SaaS-alkalmazás már konfigurálható az Azure AD-ben. A Microsoft számos előre konfigurált kapcsolattal rendelkezik az SaaS-alkalmazásokhoz az [Azure ad-alkalmazás galériájában](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps), amely egyszerűbbé teszi az áttérést. Az SAML 2,0-alkalmazások az Azure AD-katalógusban vagy nem katalógusbeli [alkalmazásokban](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)is integrálhatók az Azure ad-be. 
 
-Az OAuth 2.0 vagy OpenID Connect hitelesítést használó alkalmazások hasonló módon, [alkalmazásregisztrációként](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users) integrálhatók az Azure AD-be. Az örökölt protokollokat használó alkalmazások az [Azure AD-alkalmazásproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) használatával hitelesíthetik magukat az Azure AD-vel.
+Az OAuth 2.0 vagy OpenID Connect hitelesítést használó alkalmazások hasonló módon, [alkalmazásregisztrációként](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users) integrálhatók az Azure AD-be. Az örökölt protokollokat használó alkalmazások az [azure ad Application proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) használatával hitelesíthetők az Azure ad-vel.
 
-A SaaS-alkalmazások bevezetésével kapcsolatos problémákesetén forduljon a [SaaS-alkalmazásintegrációtámogatási aliashoz.](mailto:SaaSApplicationIntegrations@service.microsoft.com)
+Az SaaS-alkalmazások bevezetésével kapcsolatos esetleges problémákért forduljon a [SaaS Application Integration support aliashoz](mailto:SaaSApplicationIntegrations@service.microsoft.com).
 
-**SAML-aláíró tanúsítványok az SSO-hoz:** Az aláíró tanúsítványok fontos részét képezik az SSO telepítésének. Az Azure AD létrehozza az aláíró tanúsítványokat saml-alapú összevont egyszeri bejelentkezés létrehozásához a SaaS-alkalmazásokhoz. Miután hozzáadta a katalógust vagy a nem katalógusalkalmazásokat, konfigurálni fogja a hozzáadott alkalmazást az összevont egyszeri egyszeri megt, és konfigurálni fogja. Lásd: [Tanúsítványok kezelése az azure-beli egyszeri bejelentkezéshez.](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on)
+**SAML-aláíró tanúsítványok az egyszeri**bejelentkezéshez: a tanúsítványok aláírása fontos részét képezi az SSO-telepítésnek. Az Azure AD létrehozza az aláíró tanúsítványokat, hogy SAML-alapú összevont SSO-t hozzon létre SaaS-alkalmazásaihoz. A katalógus vagy a nem katalógusbeli alkalmazások hozzáadása után a hozzáadott alkalmazást az összevont egyszeri bejelentkezés lehetőséggel állíthatja be. Lásd: a [tanúsítványok kezelése összevont egyszeri bejelentkezéshez Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on).
 
-### <a name="apps-and-configurations-that-can-be-moved-today"></a>Alkalmazások és konfigurációk, amelyek ma áthelyezhetők
+### <a name="apps-and-configurations-that-can-be-moved-today"></a>A ma áthelyezhető alkalmazások és konfigurációk
 
-A ma könnyen mozgatható alkalmazások olyan SAML 2.0-alkalmazásokat tartalmaznak, amelyek a konfigurációs elemek és jogcímek szabványos készletét használják:
+Az egyszerűen áthelyezhető alkalmazások közé tartoznak az SAML 2,0-alkalmazások, amelyek a konfigurációs elemek és jogcímek szabványos készletét használják:
 
 * Felhasználó egyszerű neve
 
@@ -150,346 +150,346 @@ A ma könnyen mozgatható alkalmazások olyan SAML 2.0-alkalmazásokat tartalmaz
 
 * Egyéni jogcímek.
 
-Az alábbi további konfigurációs lépéseket igényel az Azure AD-re való áttelepítéshez:
+Az Azure AD-ba való Migrálás további konfigurációs lépéseinek megkövetelése:
 
-* Egyéni engedélyezési vagy többtényezős hitelesítési (MFA) szabályok az AD FS-ben. Konfigurálja őket az [Azure AD feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) szolgáltatás használatával.
+* Egyéni engedélyezési vagy Multi-Factor Authentication (MFA) szabályok a AD FSban. Ezeket az [Azure ad feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) funkciója segítségével konfigurálhatja.
 
-* Több Válasz URL-végponttal rendelkező alkalmazások. Konfigurálja őket az Azure AD-ben a PowerShell vagy az Azure Portal felületen.
+* Több válasz URL-végponttal rendelkező alkalmazások. Ezeket az Azure AD-ben a PowerShell vagy a Azure Portal felület használatával konfigurálhatja.
 
-* A WS-Federationt használó alkalmazások, például a SharePoint-alkalmazások, amelyek SAML 1.1-es verziójú jogkivonatot igényelnek. Manuálisan konfigurálhatja őket a PowerShell használatával. A katalógusból előre integrált általános sablont is hozzáadhat a SharePoint- és SAML 1.1-es alkalmazásokhoz. Támogatjuk az SAML 2.0 protokollt.
+* A WS-Federationt használó alkalmazások, például a SharePoint-alkalmazások, amelyek SAML 1.1-es verziójú jogkivonatot igényelnek. Ezeket manuálisan is konfigurálhatja a PowerShell használatával. Hozzáadhat egy előre integrált általános sablont is a SharePoint és SAML 1,1-alkalmazásokhoz a katalógusból. Az SAML 2,0 protokollt támogatjuk.
 
-* Az összetett jogcímek kiállítása átalakítja a szabályokat. A támogatott jogcím-hozzárendelésekről a következő témakörökben talál tájékoztatást:
+* Az összetett jogcímek kiállítása átalakítja a szabályokat. A támogatott jogcímek hozzárendelésével kapcsolatos további információkért lásd:
    *  [Jogcímtársítások az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping) 
-   * [Az Azure Active Directoryban nagyvállalati alkalmazások SAML-jogkivonatában kiadott jogcímek testreszabása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
+   * [Az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
 
  
 
 ### <a name="apps-and-configurations-not-supported-in-azure-ad-today"></a>Az Azure AD-ben jelenleg nem támogatott alkalmazások és konfigurációk
 
-A következő képességeket igénylő alkalmazások ma nem telepíthetők át.
+A következő képességeket igénylő alkalmazások nem telepíthetők át még ma.
 
-**Protokoll-képességek**
+**Protokoll képességei**
 
 * A WS-Trust ActAs minta támogatása
 
 * Az SAML-összetevő felbontása
 
-* Aláírt SAML-kérelmek aláírása  
-Vegye figyelembe, hogy az aláírt kérelmeket a rendszer elfogadja, de az aláírást nem ellenőrzi.  
-Mivel az Azure AD csak az alkalmazásban előre konfigurált végpontok jogkivonatát adja vissza, a legtöbb esetben valószínűleg nincs szükség aláírás-ellenőrzésre.
+* Aláírt SAML-kérelmek aláírásának ellenőrzése  
+Vegye figyelembe, hogy az aláírt kérelmek el lesznek fogadva, de az aláírás nem lett ellenőrizve.  
+Mivel az Azure AD csak a jogkivonatot adja vissza az alkalmazásban előre konfigurált végpontoknak, az aláírás-ellenőrzés valószínűleg nem szükséges a legtöbb esetben.
 
-**Jogcímek jogkivonat-képességekben**
+**Jogkivonatokkal kapcsolatos jogcímek**
 
-* Az Azure AD-címtártól eltérő attribútumtárolókból származó jogcímek, kivéve, ha az adatok szinkronizálva vannak az Azure AD-vel. További információt az [Azure AD szinkronizálási API áttekintése című témakörben talál.](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+* Nem az Azure AD-címtárból származó attribútum-tárolók jogcímei, kivéve, ha az adatok szinkronizálva vannak az Azure AD-vel. További információ: az [Azure ad SYNCHRONIZATION API áttekintése](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta).
 
-* Címtár többértékű attribútumainak kiadása. Például jelenleg nem adhatunk ki többértékű jogcímet a proxycímekre vonatkozóan.
+* Több értékkel rendelkező címtár-attribútumok kiállítása. Például nem lehet kiadni többértékű jogcímet a proxy címeihez.
 
-## <a name="map-app-settings-from-ad-fs-to-azure-ad"></a>Alkalmazásbeállítások leképezése az AD FS-ről az Azure AD-re
+## <a name="map-app-settings-from-ad-fs-to-azure-ad"></a>Alkalmazásbeállítások leképezése AD FSról az Azure AD-be
 
-A migrálás első lépéseként mérje fel az alkalmazás helyszíni konfigurációját, majd képezze le az Azure AD-be. Az AD FS és az Azure AD hasonlóan működik, így a megbízhatósági, a bejelentkezési és kijelentkezési URL-címek és az azonosítók konfigurálásának fogalma mindkét esetben érvényes. Dokumentálja az alkalmazások AD FS konfigurációs beállításait, hogy könnyen konfigurálhassa őket az Azure AD-ben.
+A migrálás első lépéseként mérje fel az alkalmazás helyszíni konfigurációját, majd képezze le az Azure AD-be. A AD FS és az Azure AD hasonlóan működik, így a megbízhatóság, a bejelentkezési és a kijelentkezési URL-címek, valamint az azonosítók konfigurálásának fogalmai mindkét esetben érvényesek. Dokumentálja az alkalmazások AD FS konfigurációs beállításait, így egyszerűen konfigurálhatja őket az Azure AD-ben.
 
-### <a name="map-app-configuration-settings"></a>Alkalmazáskonfigurációs beállítások leképezése
+### <a name="map-app-configuration-settings"></a>Az alkalmazás konfigurációs beállításainak leképezése
 
-Az alábbi táblázat az AD FS-függő entitás megbízhatósága és az Azure AD Enterprise Alkalmazás beállításainak leggyakoribb leképezését ismerteti:
+Az alábbi táblázat egy AD FS függő entitás megbízhatósága Azure AD Enterprise-alkalmazáshoz való beállításainak leggyakoribb leképezéseit ismerteti:
 
-* AD FS – Keresse meg a beállítást az Alkalmazás AD FS függő entitás megbízhatósági kapcsolatában. Kattintson a jobb gombbal a függő entitásra, és válassza a Tulajdonságok parancsot. 
+* AD FS – megkeresheti a beállítást az alkalmazáshoz tartozó AD FS függő entitás megbízhatóságában. Kattintson a jobb gombbal a függő entitásra, és válassza a tulajdonságok lehetőséget. 
 
-* Azure AD– A beállítás az [Azure Portalon](https://portal.azure.com/) belül konfigurálva van az egyes alkalmazások egyszeri bejelentkezési tulajdonságaiban.
+* Azure AD – a beállítás az egyes alkalmazások egyszeri bejelentkezési tulajdonságaiban [Azure Portal](https://portal.azure.com/) belül van konfigurálva.
 
-| Konfigurációs beállítás| AD FS| Konfigurálás az Azure AD-ben| SAML-token |
+| Konfigurációs beállítás| AD FS| Konfigurálás az Azure AD-ben| SAML-jogkivonat |
 | - | - | - | - |
-| **Alkalmazás bejelentkezési URL-címe** <p>A felhasználó által kezdeményezett SAML-folyamatban az alkalmazásba való bejelentkezéshez megadott URL-cím.| N/A| Egyszerű SAML-konfiguráció megnyitása SAML alapú bejelentkezésből| N/A |
-| **Alkalmazás válasz URL-címe** <p>Az alkalmazás URL-címe az identitásszolgáltató (IdP) szemszögéből. Az IdP elküldi a felhasználót és a jogkivonatot, miután a felhasználó bejelentkezett az IdP-be.  Ezt **SAML-helyességi feltétel fogyasztói végpontnak is nevezik.**| A **Végpontok** lap kijelölése| Egyszerű SAML-konfiguráció megnyitása SAML alapú bejelentkezésből| Az SAML-jogkivonat céleleme. Példa érték:[https://contoso.my.salesforce.com](https://contoso.my.salesforce.com/) |
-| **Alkalmazás kijelentkezési URL-címe** <p>Ez az az URL-cím, amelyre a "kijelentkezési törlési" kérelmeket küldi el a rendszer, amikor egy felhasználó kijelentkezik egy alkalmazásból. Az IdP elküldi a kérelmet, hogy jelentkezzen ki a felhasználó az összes többi alkalmazás is.| A **Végpontok** lap kijelölése| Egyszerű SAML-konfiguráció megnyitása SAML alapú bejelentkezésből| N/A |
-| **Alkalmazásazonosító** <p>Ez az idp szempontjából az alkalmazás azonosítója. A bejelentkezési URL-értéket gyakran használják az azonosítóhoz (de nem mindig).  Néha az alkalmazás ezt az "entitásazonosítónak" nevezi.| Az **Azonosítók** lap kijelölése|Egyszerű SAML-konfiguráció megnyitása SAML alapú bejelentkezésből| Leképezi az SAML token **Közönség** elemére. |
-| **Alkalmazás összevonási metaadatai** <p>Ez az alkalmazás összevonási metaadatainak helye. Az identitásszolgáltató használja egyes konfigurációs beállítások, például a végpontok vagy a titkosítási tanúsítványok automatikus frissítéséhez.| A **Figyelés** lap kijelölése| N/A. Az Azure AD nem támogatja az alkalmazásösszevonási metaadatok közvetlen fogyasztását. Az összevonási metaadatokat manuálisan is importálhatja.| N/A |
-| **Felhasználói azonosító/ névazonosító** <p>A felhasználó identitását az Azure AD-ből vagy az AD FS-ből az alkalmazás felé egyértelműen azonosító attribútum.  Ez az attribútum általában vagy az upn vagy a felhasználó e-mail címe.| Igénylési szabályok. A legtöbb esetben a jogcímszabály olyan jogcímet ad ki, amely a NameIdentifier végződésű.| Az azonosítót a **Felhasználói attribútumok és jogcímek**fejléc alatt találja. Alapértelmezés szerint az upn| Leképezi az SAML token **NameID** eleméhez. |
-| **Egyéb követelések** <p>Az IdP által az alkalmazásnak általában küldött egyéb jogcímadatok közé tartozik a utónév, a vezetéknév, az e-mail-cím és a csoporttagság.| Az AD FS-ben ez a függő entitásra vonatkozó egyéb jogcímszabályokként található meg.| Az azonosítót a **Felhasználói attribútumok & jogcímek**fejlécalatt találja. Válassza ki az **Egyéb felhasználói attribútumok megtekintése** és szerkesztése elemet.| N/A |
+| **Alkalmazás bejelentkezési URL-címe** <p>Az alkalmazásba a szolgáltató (SP) által kezdeményezett SAML-folyamatba bejelentkező felhasználó URL-címe.| N/A| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| N/A |
+| **Alkalmazás válasz URL-címe** <p>Az alkalmazás URL-címe az identitás-szolgáltató (identitásszolgáltató) szemszögéből. A identitásszolgáltató elküldi a felhasználót és a tokent, miután a felhasználó bejelentkezett a identitásszolgáltató.  Ezt az SAML-jogcímek **fogyasztói végpontjának**is nevezzük.| Válassza a **végpontok** fület.| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| A cél elem az SAML-jogkivonatban. Példa értéke:[https://contoso.my.salesforce.com](https://contoso.my.salesforce.com/) |
+| **Alkalmazás kijelentkezési URL-címe** <p>Ezt az URL-címet kell elküldeni a "kijelentkezési tisztítási" kérések elküldésekor, amikor egy felhasználó kijelentkezik az alkalmazásból. A identitásszolgáltató elküldi a kérést, hogy kijelentkezzen a felhasználótól az összes többi alkalmazásból is.| Válassza a **végpontok** fület.| Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| N/A |
+| **Alkalmazásazonosító** <p>Ez az alkalmazás azonosítója a identitásszolgáltató szemszögéből. A bejelentkezési URL-cím értéke gyakran használatos az azonosítóhoz (de nem mindig).  Néha az alkalmazás meghívja ezt az "Entity ID"-t.| Az **azonosítók** lap kijelölése|Alapszintű SAML-konfiguráció megnyitása SAML-alapú bejelentkezéssel| Leképezi az SAML-jogkivonat **célközönség** elemét. |
+| **Alkalmazás összevonási metaadatai** <p>Ez az alkalmazás összevonási metaadatainak helye. Az identitásszolgáltató használja egyes konfigurációs beállítások, például a végpontok vagy a titkosítási tanúsítványok automatikus frissítéséhez.| A **figyelés** lap kiválasztása| N/A. Az Azure AD nem támogatja az alkalmazások összevonási metaadatainak közvetlen felhasználását. Az összevonási metaadatokat manuálisan is importálhatja.| N/A |
+| **Felhasználói azonosító/név azonosítója** <p>A felhasználó identitását az Azure AD-ből vagy az AD FS-ből az alkalmazás felé egyértelműen azonosító attribútum.  Ez az attribútum általában a felhasználó egyszerű felhasználóneve vagy e-mail-címe.| Jogcím-szabályok. A legtöbb esetben a jogcím szabály a NameIdentifier végződő típussal rendelkező jogcímet bocsát ki.| Az azonosítót a **felhasználói attribútumok és jogcímek**fejléce alatt találja. Alapértelmezés szerint a rendszer az UPN-t használja| Leképezi az SAML-token **NameID** elemét. |
+| **Egyéb jogcímek** <p>A identitásszolgáltató és az alkalmazás között gyakran küldött egyéb jogcím-információk közé tartozik például az utónév, a vezetéknév, az E-mail cím és a csoporttagság.| Az AD FS-ben ez a függő entitásra vonatkozó egyéb jogcímszabályokként található meg.| Az azonosító a fejléc **felhasználói attribútumok & jogcímek**alatt található. Válassza ki az **Egyéb felhasználói attribútumok megtekintése** és szerkesztése elemet.| N/A |
 
 
-### <a name="map-identity-provider-idp-settings"></a>Az identitásszolgáltató (IdP) beállításai
+### <a name="map-identity-provider-idp-settings"></a>A Térkép identitás-szolgáltatója (identitásszolgáltató) beállításai
 
-Konfigurálja úgy az alkalmazásokat, hogy az Azure AD és az AD FS sso pontra mutassanak. Itt az SAML protokollt használó SaaS-alkalmazásokra összpontosítunk. Ez a koncepció azonban az egyéni LOB-alkalmazásokra is kiterjed.
+Konfigurálja úgy az alkalmazásokat, hogy az egyszeri bejelentkezéshez az Azure AD-t és a AD FS mutassanak. Itt az SAML protokollt használó SaaS-alkalmazásokra fogunk összpontosítani. Ez a koncepció azonban az egyéni LOB-alkalmazásokra is kiterjed.
 
 > [!NOTE]
-> Az Azure AD konfigurációs értékei azt a mintát követik, amelyben az Azure-bérlői azonosító lecseréli a(z) {tenant-id} azonosítót, és az alkalmazásazonosító a(z) {application-id} helyébe lép. Ezeket az információkat az [Azure Active](https://portal.azure.com/) Directory > tulajdonságok csoportban találja az Azure Active Directory > tulajdonságai csoportban: 
+> A konfigurációs értékek az Azure AD-ben azt a mintát követik, ahol az Azure-bérlő azonosítója {bérlő-azonosító}, az alkalmazás azonosítója pedig {Application-ID} értékre vált. Ezeket az információkat a [Azure Portal](https://portal.azure.com/) Azure Active Directory > tulajdonságok területén találja: 
 
-* Válassza a címtárazonosítót a bérlői azonosító megtekintéséhez. 
+* Válassza a címtár-azonosító lehetőséget a bérlő AZONOSÍTÓjának megtekintéséhez. 
 
-* Válassza az alkalmazásazonosító t az alkalmazásazonosító megtekintéséhez.
+* Válassza ki az alkalmazás AZONOSÍTÓját az alkalmazás AZONOSÍTÓjának megtekintéséhez.
 
- Magas szinten rendelje hozzá a következő fontos SaaS-alkalmazások konfigurációs elemeit az Azure AD-hez. 
+ Az Azure AD-ben a következő Key SaaS-alkalmazások konfigurációs elemeit magas szinten képezheti le. 
 
  
 
 | Elem| Konfigurációs érték |
 | - | - |
-| Identitásszolgáltató kibocsátója| [https://sts.windows.net/{tenant-id}/](https://sts.windows.net/{tenant-id}/) |
-| Identitásszolgáltató bejelentkezési URL-címe| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
-| Identitásszolgáltató kijelentkezési URL-címe| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
+| Identitás-szolgáltató kiállítója| https:\//STS.Windows.net/{Tenant-ID}/ |
+| Identitás-szolgáltató bejelentkezési URL-címe| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
+| Identitás-szolgáltató kijelentkezési URL-címe| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
 | Összevonási metaadatok helye| [https://login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id}](https://login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id}) |
 
 
-### <a name="map-sso-settings-for-saas-apps"></a>SSO-beállítások leképezése SaaS-alkalmazásokhoz
+### <a name="map-sso-settings-for-saas-apps"></a>Az SaaS-alkalmazások SSO-beállításainak leképezése
 
-SaaS-alkalmazások tudnia kell, hogy hová küldje a hitelesítési kérelmeket, és hogyan érvényesítheti a fogadott jogkivonatokat. Az alábbi táblázat ismerteti az alkalmazás SSO-beállításainak konfigurálásának elemeit, valamint azok értékeit vagy helyét az AD FS-en és az Azure AD-n belül
+Az SaaS-alkalmazásoknak ismerniük kell, hogy hol kell elküldeni a hitelesítési kéréseket, és hogyan kell érvényesíteni a kapott jogkivonatokat. Az alábbi táblázat az egyszeri bejelentkezés beállításainak konfigurálásához szükséges elemeket ismerteti az alkalmazásban, valamint a AD FS és az Azure AD-n belüli értékeit vagy helyét.
 
 | Konfigurációs beállítás| AD FS| Konfigurálás az Azure AD-ben |
 | - | - | - |
-| **IdP bejelentkezési URL-címe** <p>Az IdP bejelentkezési URL-címe az alkalmazás szemszögéből (ahol a felhasználó torkig van irányítva a bejelentkezéshez).| Az AD FS bejelentkezési URL-címe az AD FS összevonási szolgáltatás neve, amelyet a "/adfs/ls/" követ. <p>Például:[https://fs.contoso.com/adfs/ls/](https://fs.contoso.com/adfs/ls/)| Cserélje le a(z) {tenant-id} azonosítóját a bérlői azonosítóra. <p> Saml-P protokollt használó alkalmazások esetén:[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>A WS-Federation protokollt használó alkalmazások esetén:[https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
-| **IdP kijelentkezési URL-címe**<p>Az IdP kijelentkezési URL-címe az alkalmazás szemszögéből (ahol a felhasználó átirányításra kerül, amikor úgy dönt, hogy kijelentkezik az alkalmazásból).| A kijelentkezési URL-cím vagy megegyezik a bejelentkezési URL-címmel, vagy ugyanaz ta- Például:[https://fs.contoso.com/adfs/ls/?wa=wsignout1.0](https://fs.contoso.com/adfs/ls/?wa=wsignout1.0)| Cserélje le a(z) {tenant-id} azonosítóját a bérlői azonosítóra.<p>Saml-P protokollt használó alkalmazások esetén:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> A WS-Federation protokollt használó alkalmazások esetén:[https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
-| **Jogkivonat-aláíró tanúsítvány**<p>Az IdP a tanúsítvány személyes kulcsát használja a kiállított jogkivonatok aláírásához. Igazolja, hogy a jogkivonat attól az identitásszolgáltatótól származik, amellyel az alkalmazás megbízhatósági kapcsolata konfigurálva van.| Az AD FS jogkivonat-aláíró tanúsítványa az AD FS-kezelőben a **Tanúsítványok** területen található.| Keresse meg az Azure Portalon az alkalmazás **egyszeri bejelentkezési tulajdonságai** alatt a fejléc **SAML aláíró tanúsítvány.** Innen letöltheti a tanúsítványt, hogy feltöltse az alkalmazásba.  <p>Ha az alkalmazás egynél több tanúsítvánnyal rendelkezik, az összes tanúsítvány megtalálható az összevonási metaadat-XML-fájlban. |
-| **Azonosító/ "kibocsátó"**<p>Az IdP azonosítója az alkalmazás szemszögéből (néha "kibocsátóazonosító").<p>Az SAML-tokenben az érték a Kiállító elemként jelenik meg.| Az AD FS azonosítója általában az AD FS Management összevonási szolgáltatásazonosítója **a Szolgáltatás > az összevonási szolgáltatás tulajdonságainak szerkesztése területen.** Például:[http://fs.contoso.com/adfs/services/trust](http://fs.contoso.com/adfs/services/trust)| Cserélje le a(z) {tenant-id} azonosítóját a bérlői azonosítóra.<p>[https://sts.windows.net/{tenant-id}/](https://sts.windows.net/{tenant-id}/) |
-| **IdP összevonási metaadatok**<p>Az IdP nyilvánosan elérhető összevonási metaadatainak helye. (Az összevonási metaadatokat egyes alkalmazások alternatív megoldásként használják, hogy a rendszergazdának ne kelljen egyenként konfigurálnia az URL-címeket, azonosítókat és jogkivonat-aláíró tanúsítványokat.)| Keresse meg az AD FS összevonás metaadat-CÍMÉT az AD FS-kezelés **szolgáltatás> végpontok > metaadatok > Típus: Összevonási metaadatok**csoportban. Például:[https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml](https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml)| Az Azure AD megfelelő értéke [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml)a mintát követi. Cserélje le a(z) {TenantDomainName} nevet a bérlő nevére "contoso.onmicrosoft.com" formátumban.   <p>További információkat itt talál: [Összevonási metaadatok](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata). |
+| **Identitásszolgáltató bejelentkezési URL-címe** <p>A identitásszolgáltató bejelentkezési URL-címe az alkalmazás szemszögéből (ahol a felhasználó át lesz irányítva a bejelentkezéshez).| A AD FS bejelentkezési URL-cím a AD FS összevonási szolgáltatás neve, majd a "/adfs/ls/." <p>Például:[https://fs.contoso.com/adfs/ls/](https://fs.contoso.com/adfs/ls/)| Cserélje le a {bérlő-azonosító} helyet a bérlői AZONOSÍTÓra. <p> Az SAML-P protokollt használó alkalmazások esetében:[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>A WS-Federation protokollt használó alkalmazások esetében:[https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
+| **Identitásszolgáltató kijelentkezési URL-címe**<p>A identitásszolgáltató kijelentkezési URL-címe az alkalmazás szemszögéből (ahol a rendszer átirányítja a felhasználót, amikor kijelentkezik az alkalmazásból).| A kijelentkezési URL-cím vagy azonos a bejelentkezési URL-címmel, vagy a "WA = wsignout 1.0" utótaggal megegyező URL-címmel. Például:[https://fs.contoso.com/adfs/ls/?wa=wsignout1.0](https://fs.contoso.com/adfs/ls/?wa=wsignout1.0)| Cserélje le a {bérlő-azonosító} helyet a bérlői AZONOSÍTÓra.<p>Az SAML-P protokollt használó alkalmazások esetében:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> A WS-Federation protokollt használó alkalmazások esetében:[https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
+| **Jogkivonat-aláíró tanúsítvány**<p>A identitásszolgáltató a tanúsítvány titkos kulcsát használja a kiállított jogkivonatok aláírására. Igazolja, hogy a jogkivonat attól az identitásszolgáltatótól származik, amellyel az alkalmazás megbízhatósági kapcsolata konfigurálva van.| Az AD FS jogkivonat-aláíró tanúsítványa az AD FS-kezelőben a **Tanúsítványok** területen található.| Keresse meg az alkalmazás **egyszeri bejelentkezési tulajdonságainál** az **SAML-aláíró tanúsítvány**alatt található Azure Portalban. Innen letöltheti a tanúsítványt, hogy feltöltse az alkalmazásba.  <p>Ha az alkalmazás több tanúsítvánnyal is rendelkezik, az összes tanúsítvány megtalálható az összevonási metaadatok XML-fájljában. |
+| **Azonosító/"kiállító"**<p>Az alkalmazás perspektívájában lévő identitásszolgáltató azonosítója (más néven "kiállító azonosító").<p>Az SAML-tokenben az érték a kiállító elemként jelenik meg.| A AD FS azonosítója általában az összevonási szolgáltatás azonosítója AD FS kezelés területen a **szolgáltatás > szerkesztés összevonási szolgáltatás tulajdonságok**elemre. Például:[http://fs.contoso.com/adfs/services/trust](http://fs.contoso.com/adfs/services/trust)| Cserélje le a {bérlő-azonosító} helyet a bérlői AZONOSÍTÓra.<p>https:\//STS.Windows.net/{Tenant-ID}/ |
+| **Identitásszolgáltató-összevonási metaadatok**<p>A identitásszolgáltató nyilvánosan elérhető összevonási metaadatainak helye. (Az összevonási metaadatokat egyes alkalmazások alternatív megoldásként használják, hogy a rendszergazdának ne kelljen egyenként konfigurálnia az URL-címeket, azonosítókat és jogkivonat-aláíró tanúsítványokat.)| Keresse meg a AD FS összevonási metaadatok URL-címét AD FS kezelés területen **> végpontok > metaadatok > típus: összevonási metaadatok**. Például:[https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml](https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml)| Az Azure AD megfelelő értéke követi a mintát [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml). Cserélje le a (z) {Bérlőtartományneve} nevet a bérlő nevére "contoso.onmicrosoft.com" formátumban.   <p>További információkat itt talál: [Összevonási metaadatok](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata). |
 
 
-## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>AD FS biztonsági szabályzatok az Azure AD-ben
+## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>AD FS biztonsági szabályzatok jelölése az Azure AD-ben
 
-Amikor áthelyezi az alkalmazáshitelesítést az Azure AD-be, hozzon létre leképezéseket a meglévő biztonsági szabályzatokból az Azure AD-ben elérhető egyenértékű vagy alternatív változatokba. Annak biztosítása, hogy ezek a leképezések elvégezhetők legyenek az alkalmazástulajdonosok által megkövetelt biztonsági szabványok teljesítése mellett, jelentősen megkönnyíti az alkalmazás áttelepítésének többi részét.
+Ha áthelyezi az alkalmazást az Azure AD-ba, hozzon létre leképezéseket a meglévő biztonsági házirendekről az Azure AD-ben elérhető egyenértékű vagy alternatív változatokra. Annak biztosítása, hogy ezek a leképezések az alkalmazás tulajdonosai által megkövetelt biztonsági szabványok teljesítése közben is megvalósíthatók legyenek, az alkalmazások áttelepítésének a többi része lényegesen egyszerűbb lesz.
 
-Minden szabálytípus és példák, azt javasoljuk, hogy itt a szabály hogyan néz ki az AD FS, az AD FS szabály nyelvi egyenértékű kódot, és hogyan ez a térkép az Azure AD-ben.
+Az egyes szabálytípus és a hozzájuk tartozó példák esetében azt javasoljuk, hogy a szabály hogyan néz ki a AD FSban, a AD FS szabály nyelvének megfelelő kódja, és hogyan jelennek meg a Térkép az Azure AD-ben.
 
 ### <a name="map-authorization-rules"></a>Engedélyezési szabályok leképezése
 
-Az alábbiakban példákat mutatunk be az AD FS-ben található engedélyezési szabályok típusaira, valamint arra, hogyan képezheti le őket az Azure AD-hez:
+Az alábbiakban példákat talál a AD FS engedélyezési szabályaira, valamint arról, hogy miként képezhetők le az Azure AD-be:
 
-#### <a name="example-1-permit-access-to-all-users"></a>1. példa: Hozzáférés engedélyezése minden felhasználó számára
+#### <a name="example-1-permit-access-to-all-users"></a>1. példa: az összes felhasználó hozzáférésének engedélyezése
 
-Hozzáférés engedélyezése minden felhasználószámára így néz ki az AD FS-ben: 
+Az összes felhasználóhoz való hozzáférés engedélyezése AD FSban: 
 
-![Áttelepítési szakasz 1 ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
+![1. áttelepítési fázis ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
 
-Ez az alábbi módokon képezi le az Azure AD-t:
+Ez az alábbi módokon mutat az Azure AD-re:
 
-Az [Azure portalon:](https://portal.azure.com/)
-* 1. lehetőség: Állítsa a szükséges felhasználói hozzárendelést Nem-re ![hozzáférés-vezérlési házirend szerkesztése SaaS-alkalmazásokhoz ](media/migrate-adfs-apps-to-azure/permit-access-to-all-users-2.png)
+A [Azure Portalban](https://portal.azure.com/):
+* 1. lehetőség: a nem kötelező felhasználói hozzárendelés beállítása ![az SaaS-alkalmazások hozzáférés-vezérlési házirendjének szerkesztése ](media/migrate-adfs-apps-to-azure/permit-access-to-all-users-2.png)
 
-    Vegye figyelembe, hogy a Felhasználói hozzárendelés szükséges kapcsoló igen beállításához a felhasználóknak hozzá kell rendelniük az alkalmazáshoz a hozzáféréshez. Ha a beállítás Nem, minden felhasználó nak hozzáférése van. Ez a kapcsoló nem szabályozza, hogy mit jelenít meg a felhasználók számára a Saját alkalmazások élményben. 
+    Vegye figyelembe, hogy a felhasználói hozzárendelés szükséges kapcsolójának Igen értékre való beállítása megköveteli, hogy a felhasználók hozzá legyenek rendelve az alkalmazáshoz, hogy hozzáférjenek. Ha a nem értékre van állítva, minden felhasználó rendelkezik hozzáféréssel. Ez a kapcsoló nem szabályozza, hogy a felhasználók mit láthatnak a saját alkalmazások felületén. 
 
  
-* 2. lehetőség: A Felhasználók és csoportok lapon rendelje hozzá az alkalmazást a "Minden felhasználó" automatikus csoporthoz. <p>
-Engedélyeznie kell [a dinamikus csoportok](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) az Azure AD-bérlőaz alapértelmezett "Minden felhasználó" csoport elérhetővé kell tenni.
+* 2. lehetőség: a felhasználók és csoportok lapon rendelje hozzá az alkalmazást a "minden felhasználó" automatikus csoporthoz. <p>
+Engedélyeznie kell a [dinamikus csoportokat](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) az Azure ad-bérlőben az alapértelmezett "minden felhasználó" csoport számára.
 
    ![Saját SaaS-alkalmazások az Azure AD-ben ](media/migrate-adfs-apps-to-azure/permit-access-to-all-users-3.png)
 
 
-#### <a name="example-2-allow-a-group-explicitly"></a>2. példa: Csoport explicit engedélyezése
+#### <a name="example-2-allow-a-group-explicitly"></a>2. példa: explicit módon egy csoport engedélyezése
 
-Explicit csoportengedélyezés az AD FS-ben:
-
-
-![kiállításengedélyezési szabályok ](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-1.png)
+Explicit csoportos hitelesítés AD FSban:
 
 
-A szabály így kerül az Azure AD-re:
+![kiállítási engedélyezési szabályok ](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-1.png)
 
-Az [Azure Portalon](https://portal.azure.com/)először létre kell [hoznia egy felhasználói csoportot,](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) amely megfelel az AD FS felhasználói csoportjának, majd alkalmazásengedélyeket rendel a csoporthoz:
+
+Ez a szabály az Azure AD-hez való leképezése:
+
+A [Azure Portal](https://portal.azure.com/)először [létre kell hoznia egy felhasználói csoportot](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) , amely megfelel a AD FS felhasználói csoportjának, majd az alkalmazás engedélyeit a következő csoporthoz rendeli hozzá:
 
 ![Hozzárendelés hozzáadása ](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-2.png)
 
 
-#### <a name="example-3-authorize-a-specific-user"></a>3. példa: Adott felhasználó engedélyezése
+#### <a name="example-3-authorize-a-specific-user"></a>3. példa: egy adott felhasználó engedélyezése
 
-Explicit felhasználói engedélyezés az AD FS-ben:
+Explicit felhasználói hitelesítés AD FSban:
 
-![kiállításengedélyezési szabályok ](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
+![kiállítási engedélyezési szabályok ](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
 
-A szabály így kerül az Azure AD-re:
+Ez a szabály az Azure AD-hez való leképezése:
 
-Az [Azure Portalon](https://portal.azure.com/)az alkalmazás Hozzárendelés hozzáadása lapján az alkalmazás hoz egy felhasználót az alábbi módon:
+A [Azure Portal](https://portal.azure.com/)adjon hozzá egy felhasználót az alkalmazáshoz az alkalmazás hozzárendelés hozzáadása lapján az alábbi ábrán látható módon:
 
 ![Saját SaaS-alkalmazások az Azure-ban ](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-2.png)
 
  
-### <a name="map-multi-factor-authentication-rules"></a>Többtényezős hitelesítési szabályok leképezése 
+### <a name="map-multi-factor-authentication-rules"></a>Térkép Multi-Factor Authentication szabályok 
 
-A [többtényezős hitelesítés (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication) és az AD FS helyszíni telepítése az áttelepítés után is működni fog, mivel az AD FS-sel van összeegyezve. Fontolja meg azonban az Azure beépített MFA-képességeire való áttérést, amelyek az Azure AD feltételes hozzáférésű munkafolyamataihoz vannak kötve. 
+[Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication) és AD FS helyszíni telepítése továbbra is az áttelepítés után fog működni, mert AD FS összevonták. Azonban érdemes lehet áttelepíteni az Azure-ba az Azure AD feltételes hozzáférési munkafolyamataihoz kötött beépített MFA-képességeket. 
 
-Az alábbiakban példákat mutatunk be az AD FS-ben található MFA-szabályok típusaira, valamint arra, hogyan képezheti le őket az Azure AD-hez különböző feltételek alapján:
+Az alábbiakban példákat talál a AD FS MFA-szabályok típusaira, és azt, hogy miként képezhetők le az Azure AD-be különböző feltételek alapján:
 
-MFA-szabályok beállításai az AD FS-ben:
+MFA-szabályok beállításai a AD FSban:
 
-![Az Azure AD MFA-beállításai](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
-
-
-#### <a name="example-1-enforce-mfa-based-on-usersgroups"></a>1. példa: Többkori fa érvényesítése felhasználók/csoportok alapján
-
-A Felhasználó/csoport választó egy olyan szabály, amely lehetővé teszi az MFA kényszerítése csoportonként (csoport-SID) vagy felhasználónkénti (elsődleges SID) alapon. A Felhasználó/csoportok hozzárendeléseken kívül az AD FS MFA konfigurációs felhasználói felületének minden további jelölőnégyzete további szabályként működik, amelyeket a rendszer a Felhasználó/csoportok szabály érvényesítése után értékel ki. 
+![Azure AD MFA-beállítások](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
 
 
-Adja meg az MFA-szabályokat egy felhasználóhoz vagy csoporthoz az Azure AD-ben:
+#### <a name="example-1-enforce-mfa-based-on-usersgroups"></a>1. példa: az MFA érvényesítése felhasználók/csoportok alapján
+
+A felhasználó/csoport választó egy olyan szabály, amely lehetővé teszi, hogy az MFA-t csoportonként (csoport SID) vagy felhasználónkénti (elsődleges SID) alapon kényszerítse ki. A felhasználók/csoportok hozzárendelésein kívül a AD FS MFA konfigurációs felhasználói felületének minden további jelölőnégyzete a felhasználó/csoport szabály érvényesítése után kiértékelt további szabályok. 
+
+
+MFA-szabályok megadása egy felhasználó vagy egy csoport számára az Azure AD-ben:
 
 1. Hozzon létre egy [új feltételes hozzáférési szabályzatot](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
 
-2. Válassza **a Hozzárendelések**lehetőséget. Adja hozzá azokat a felhasználókat vagy csoportokat, amelyeken az MFA-t érvényesíteni szeretné.
+2. Válassza a **hozzárendelések**lehetőséget. Adja hozzá azokat a felhasználó (ka) t vagy csoportot, amelyeken az MFA-t szeretné kikényszeríteni.
 
-3. Az **Access-vezérlők** beállításainak konfigurálása az alábbi módon:  
+3. Konfigurálja a **hozzáférés-vezérlési** beállításokat az alább látható módon:  
 ‎
 
-![AAD MFA-beállítások](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
+![HRE MFA-beállítások](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
 
  
- #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>2. példa: Többkori fa érvényesítésénem regisztrált eszközökre
+ #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>2. példa: az MFA kikényszerítés a nem regisztrált eszközökre
 
-Adja meg a nem regisztrált eszközök MFA-szabályait az Azure AD-ben:
+MFA-szabályok megadása a nem regisztrált eszközökhöz az Azure AD-ben:
 
 1. Hozzon létre egy [új feltételes hozzáférési szabályzatot](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
 
-2. Állítsa a **Hozzárendelések** beállítását **minden felhasználóra.**
+2. Állítsa be a **hozzárendeléseket** az **összes felhasználóra**.
 
-3. Az **Access-vezérlők** beállításainak konfigurálása az alábbi módon:  
+3. Konfigurálja a **hozzáférés-vezérlési** beállításokat az alább látható módon:  
 ‎
 
-![AAD MFA-beállítások](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
+![HRE MFA-beállítások](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
 
  
-Ha a Több vezérlőhöz beállítást úgy állítja be, hogy a kijelölt vezérlők egyikének megkövetelése legyen, az azt jelenti, hogy ha a jelölőnégyzetben megadott feltételek bármelyike teljesül a felhasználó által, akkor hozzáférést kap az alkalmazáshoz.
+Ha úgy állítja be a több vezérlőt, hogy megkövetelje a kiválasztott vezérlők valamelyikét, az azt jelenti, hogy ha a felhasználó a jelölőnégyzetben megadott feltételek valamelyikét betölti, akkor hozzáférést kap az alkalmazáshoz.
 
-#### <a name="example-3-enforce-mfa-based-on-location"></a>3. példa: Az MFA érvényesítése a hely alapján
+#### <a name="example-3-enforce-mfa-based-on-location"></a>3. példa: MFA érvényesítése hely alapján
 
-Adja meg az MFA-szabályokat a felhasználó helye alapján az Azure AD-ben:
+A felhasználó Azure AD-beli helye alapján megadott MFA-szabályok meghatározása:
 
 1. Hozzon létre egy [új feltételes hozzáférési szabályzatot](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
 
-1. Állítsa a **Hozzárendelések** beállítását **minden felhasználóra.**
+1. Állítsa be a **hozzárendeléseket** az **összes felhasználóra**.
 
-1. [Konfigurálja a névvel ellátott helyeket az Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) egyébként összevonása a vállalati hálózaton belül megbízható. 
+1. A [nevesített helyek konfigurálása az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) , máskülönben a vállalati hálózaton belülről történő összevonás megbízható. 
 
-1. Konfigurálja a **Feltételek szabályokat,** hogy adja meg azokat a helyeket, amelyekre az MFA érvényesítéséhez.
+1. Adja meg a **feltételek szabályait** , hogy megadja azokat a helyszíneket, amelyeknek az MFA-t ki szeretné kényszeríteni.
 
-![Az Azure AD MFA-beállításai](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
+![Azure AD MFA-beállítások](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
 
-5. Az **Access-vezérlők** beállításainak konfigurálása az alábbi módon:
+5. Konfigurálja a **hozzáférés-vezérlési** beállításokat az alább látható módon:
 
 
 ![Hozzáférés-vezérlési házirendek leképezése](media/migrate-adfs-apps-to-azure/mfa-location-2.png)
 
  
-### <a name="map-emit-attributes-as-claims-rule"></a>Emit attribútumok leképezése jogcímszabályként
+### <a name="map-emit-attributes-as-claims-rule"></a>Attribútumok kibocsátása jogcím szabályként
 
-Íme egy példa arra, hogyan vannak leképezve attribútumok az AD FS-ben:
+Íme egy példa arra, hogy az attribútumok hogyan vannak leképezve a AD FSban:
 
-![Az Azure AD MFA-beállításai](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-1.png)
-
-
-A szabály így kerül az Azure AD-re:
-
-Az [Azure Portalon](https://portal.azure.com/)válassza az **Enterprise Applications**lehetőséget, **válassza az egyszeri bejelentkezés**lehetőséget, és adja hozzá az **SAML token attribútumokat** az alábbiak szerint:
-
-![Az Azure AD MFA-beállításai](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
+![Azure AD MFA-beállítások](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-1.png)
 
 
+Ez a szabály az Azure AD-hez való leképezése:
 
-### <a name="map-built-in-access-control-policies"></a>Beépített hozzáférés-vezérlési házirendek leképezése
+A [Azure Portal](https://portal.azure.com/)válassza a **vállalati alkalmazások**, az **egyszeri bejelentkezés**lehetőséget, és adja hozzá az **SAML-jogkivonat attribútumait** az alábbi ábrán látható módon:
 
-Az AD FS 2016 számos beépített hozzáférés-vezérlési szabályzatközül választhat:
+![Azure AD MFA-beállítások](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
 
-![Beépített Azure AD hozzáférés-vezérlés](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
+
+
+### <a name="map-built-in-access-control-policies"></a>Beépített hozzáférés-vezérlési szabályzatok leképezése
+
+A AD FS 2016 számos beépített hozzáférés-vezérlési szabályzattal rendelkezik, amelyek közül választhat:
+
+![Az Azure AD beépített hozzáférés-vezérléssel rendelkezik](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
 
  
-Az Azure AD beépített szabályzatok megvalósításához használhat egy [új feltételes hozzáférési szabályzatot,](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json) és konfigurálhatja a hozzáférés-vezérléseket, vagy használhatja az AD FS 2016 egyéni szabályzattervezőjét a hozzáférés-vezérlési házirendek konfigurálásához. A szabályszerkesztő nek van egy kimerítő listája az engedélyről és a lehetőségek kivételével, amelyek segíthetnek mindenféle permutációt készíteni.
+A beépített szabályzatok Azure AD-ben történő megvalósításához használhat [új feltételes hozzáférési házirendet](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json) , és konfigurálhatja a hozzáférés-vezérlést, vagy használhatja az egyéni házirend-tervezőt AD FS 2016-ben a hozzáférés-vezérlési házirendek konfigurálásához. A szabály szerkesztőjének teljes listája lehetővé teszi az engedélyezést, és kivéve azokat a lehetőségeket, amelyek segítségével bármilyen típusú permutációt készíthet.
 
-![Azure AD hozzáférés-vezérlési szabályzatok](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
-
-
-
-Ebben a táblázatban felsoroltunk néhány hasznos engedély és kivéve lehetőségeket, és hogyan vannak leképezve az Azure AD-re. 
+![Azure AD-hozzáférés-vezérlési szabályzatok](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
 
 
-| | Hogyan konfigurálható az Engedélyezés lehetőség az Azure AD-ben?| Hogyan lehet beállítani, kivéve lehetőség az Azure AD? |
+
+Ebben a táblázatban néhány hasznos engedély szerepel, de a lehetőségek és az Azure AD-hez való leképezésük is. 
+
+
+| | Az engedélyezési lehetőség konfigurálása az Azure AD-ben| Az Azure AD-ban való kivétel beállítása |
 | - | - | - |
-| Adott hálózatról| Leképezi a [megnevezett hely az](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) Azure AD-ben| A **Kizárás** lehetőség [használata megbízható helyekhez](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) |
-| Meghatározott csoportokból| [Felhasználói/csoporthozzárendelés beállítása](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| A **Kizárás** lehetőség használata a Felhasználók és csoportok csoportban |
-| Adott megbízhatósági szinttel rendelkező eszközökről| Állítsa be ezt az "Eszközállapot" vezérlőből a Hozzárendelések -> feltételek csoportban| A **Kizárás** lehetőség használata az Eszközállapot és az **Összes eszköz belefoglalása csoportban** |
-| Konkrét követelésekkel a kérelemben| Ez a beállítás nem telepíthető át| Ez a beállítás nem telepíthető át |
+| Adott hálózatról| Leképezi az Azure AD-ben [elnevezett helyre](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)| A [megbízható helyek](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) **kizárási** beállításának használata |
+| Adott csoportoktól| [Felhasználó/csoport hozzárendelésének beállítása](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| A **kizárás** lehetőség használata a felhasználók és csoportok számára |
+| Megadott megbízhatósági szinttel rendelkező eszközökről| Állítsa be ezt az "Eszközállapot" vezérlőelemből a hozzárendelések – > feltételek szakaszban| Használja a **kizárás** lehetőséget az eszköz állapota feltételnél, és adja meg az **összes eszközt** |
+| A kérelemben megadott jogcímek| Ez a beállítás nem telepíthető át| Ez a beállítás nem telepíthető át |
 
 
-Példa a megbízható helyek kizárása beállításkonfigurálására az Azure Portalon:
+Példa a megbízható helyek kizárási beállításának konfigurálására az Azure Portalon:
 
-![Képernyőkép a leképezési hozzáférés-vezérlési házirendekről](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-3.png)
+![A hozzáférés-vezérlési szabályzatok leképezése képernyőkép](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-3.png)
 
 
 
-## <a name="transition-users-from-ad-fs-to-azure-ad"></a>Felhasználók áttérése az AD FS-ről az Azure AD-re
+## <a name="transition-users-from-ad-fs-to-azure-ad"></a>Felhasználók átváltása AD FSról az Azure AD-be
 
-### <a name="sync-ad-fs-groups-in-azure-ad"></a>AD FS-csoportok szinkronizálása az Azure AD-ben
+### <a name="sync-ad-fs-groups-in-azure-ad"></a>AD FS csoportok szinkronizálása az Azure AD-ben
 
-Az engedélyezési szabályok leképezésekénél az AD FS-sel hitelesítő alkalmazások az Active Directory-csoportokat használhatják az engedélyekhez. Ebben az esetben az [Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) használatával szinkronizálja ezeket a csoportokat az Azure AD-vel az alkalmazások áttelepítése előtt. Győződjön meg arról, hogy az áttelepítés előtt ellenőrzi ezeket a csoportokat és a tagságot, hogy az alkalmazás áttelepítésekekénél hozzáférést biztosítson ugyanazoknak a felhasználóknak.
+Az engedélyezési szabályok leképezése esetén a AD FS hitelesítő alkalmazások Active Directory csoportokat használhatnak az engedélyekhez. Ilyen esetben a [Azure ad Connect](https://go.microsoft.com/fwlink/?LinkId=615771) használatával szinkronizálja ezeket a csoportokat az Azure ad-vel az alkalmazások áttelepítése előtt. Győződjön meg arról, hogy az áttelepítés előtt ellenőrzi a csoportokat és a tagságot, hogy az alkalmazás áttelepítésekor ugyanazokhoz a felhasználókhoz is hozzáférést biztosíthat.
 
-További információ: [Az Active Directoryból szinkronizált csoportattribútumok használatának előfeltételei című témakörben talál.](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims)
+További információ: [Active Directoryról szinkronizált Group attributes használatának előfeltételei](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims).
 
-### <a name="setup-user-self-provisioning"></a>Felhasználó önkiépítési beállításai 
+### <a name="setup-user-self-provisioning"></a>Felhasználó önálló kiépítés beállítása 
 
-Egyes SaaS-alkalmazások támogatják a felhasználók önkiszolgáló kiépítését, amikor először jelentkeznek be az alkalmazásba. Az Azure Active Directoryban (Azure AD) az alkalmazáskiépítés kifejezés a felhasználói identitások és szerepkörök automatikus létrehozására utal a felhőben ([SaaS)](https://azure.microsoft.com/overview/what-is-saas/)alkalmazások, amelyekhez a felhasználóknak hozzáférésre van szükségük. Az áttelepített felhasználók már rendelkeznek egy fiókkal a SaaS-alkalmazásban. Az áttelepítés után hozzáadott új felhasználókat ki kell építeni. Tesztelje [az SaaS-alkalmazások kiépítését](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) az alkalmazás áttelepítése után.
+Egyes SaaS-alkalmazások támogatják a felhasználók önálló kiépítését, amikor először jelentkeznek be az alkalmazásba. Azure Active Directory (Azure AD) esetében az alkalmazás üzembe helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez[SaaS](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. Az áttelepített felhasználók már rendelkeznek fiókkal az SaaS-alkalmazásban. Az áttelepítés után hozzáadott összes új felhasználót ki kell építeni. Az [SaaS-alkalmazások üzembe](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) helyezésének tesztelése az alkalmazás migrálása után.
 
 ### <a name="sync-external-users-in-azure-ad"></a>Külső felhasználók szinkronizálása az Azure AD-ben
 
-A meglévő külső felhasználók kétféleképpen állíthatók be az AD FS-en belül:
+A meglévő külső felhasználók két fő módon állíthatók be AD FSon belül:
 
-#### <a name="external-users-with-a-local-account-within-your-organization"></a>Külső felhasználók helyi fiókkal a szervezeten belül
+#### <a name="external-users-with-a-local-account-within-your-organization"></a>A szervezeten belüli helyi fiókkal rendelkező külső felhasználók
 
-Ezeket a fiókokat továbbra is ugyanúgy használhatja, mint a belső felhasználói fiókokat. Ezek a külső felhasználói fiókok elvi névvel rendelkeznek a szervezeten belül, bár a fiók e-mail címe külsőleg is rámutathat. Az áttelepítés előrehaladásával kihasználhatja az [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) által nyújtott előnyöket, ha ezeket a felhasználókat áttelepíti saját vállalati identitásuk használatára, ha ilyen identitás érhető el. Ez leegyszerűsíti a bejelentkezési folyamatot a felhasználók számára, mivel gyakran saját vállalati bejelentkezéssel jelentkeznek be. A szervezet felügyelete is enyhülni fog azáltal, hogy a továbbiakban nem kell külső felhasználók fiókjait kezelnie.
+Továbbra is használhatja ezeket a fiókokat ugyanúgy, ahogy a belső felhasználói fiókok működnek. Ezeknek a külső felhasználói fiókoknak van egy alapelve a szervezeten belül, bár a fiók e-mail-címe külsőleg is mutathat. Az áttelepítés folyamata során kihasználhatja az [Azure ad B2B](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) által kínált előnyök előnyeit azáltal, hogy áttelepíti ezeket a felhasználókat a saját vállalati identitásának használatára, ha az identitás elérhető. Ez egyszerűbbé teszi a felhasználók bejelentkezési folyamatát, mivel azok gyakran be vannak jelentkezve a saját vállalati bejelentkezéssel. A szervezet adminisztrációja is megenyhül, mivel a továbbiakban nem kell a külső felhasználók fiókjait kezelni.
 
 #### <a name="federated-external-identities"></a>Összevont külső identitások
 
-Ha jelenleg egy külső szervezettel van összeegyezve, néhány módszert kell figyelembe vennie:
+Ha jelenleg egyesítő egy külső szervezettel, néhány módszer áll rendelkezésére a következők elvégzéséhez:
 
-* [Adja hozzá az Azure Active Directory B2B együttműködési felhasználóit az Azure Portalon.](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator) Proaktív módon elküldheti a B2B együttműködési meghívókat az Azure AD felügyeleti portálról a partnerszervezetnek, hogy az egyes tagok továbbra is használhatják a hozzájuk használt alkalmazásokat és eszközöket. 
+* [Vegye fel Azure Active Directory B2B együttműködési felhasználókat a Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator). Proaktív módon küldhet VÁLLALATKÖZI együttműködést az Azure AD felügyeleti portálról a partnerszervezet számára az egyes tagok számára, hogy továbbra is használhassa azokat az alkalmazásokat és eszközöket, amelyekhez a használatban van. 
 
-* [Hozzon létre egy önkiszolgáló B2B regisztrációs munkafolyamatot,](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal) amely a B2B meghívási API használatával kérelmet generál a partnerszervezet egyéni felhasználói számára.
+* [Hozzon létre egy önkiszolgáló vállalatközi regisztrációs munkafolyamatot](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal) , amely a vállalatközi MEGHÍVó API-val kérelmet készít a partnervállalat egyes felhasználói számára.
 
-Nem számít, hogy a meglévő külső felhasználók vannak konfigurálva, akkor valószínűleg rendelkeznek engedélyekkel, amelyek a fiókjukhoz vannak társítva, akár csoporttagságban, akár adott engedélyekben. Kikell-e dolgozni, hogy ezeket az engedélyeket át kell-e telepíteni vagy meg kell tisztítani. A szervezeten belüli, külső felhasználót képviselő fiókokat le kell tiltani, miután a felhasználót áttelepítették egy külső identitásba. Az áttelepítési folyamatot meg kell vitatni az üzleti partnerekkel, mivel előfordulhat, hogy megszakad az erőforrásokhoz való kapcsolódási képességük.
+Függetlenül attól, hogy a meglévő külső felhasználók hogyan vannak konfigurálva, valószínűleg rendelkeznek a fiókjához társított engedélyekkel a csoporttagság vagy a konkrét engedélyek szerint. Ellenőrizze, hogy az engedélyeket át kell-e telepíteni vagy törölni kell-e. A szervezeten belüli, külső felhasználót képviselő fiókokat le kell tiltani, ha a felhasználót áttelepítették egy külső identitásra. Az áttelepítési folyamatot az üzleti partnerekkel kell megvitatni, mivel előfordulhat, hogy a rendszer megszakítja az erőforrásokhoz való kapcsolódás lehetőségét.
 
-## <a name="migrate-and-test-your-apps"></a>Alkalmazások áttelepítése és tesztelése
+## <a name="migrate-and-test-your-apps"></a>Alkalmazások migrálása és tesztelése
 
-Kövesse az ebben a cikkben részletezett áttelepítési folyamatot.
+Kövesse a cikkben részletezett áttelepítési folyamatot.
 
-Ezután nyissa meg az [Azure Portalon,](https://aad.portal.azure.com/) és ellenőrizze, hogy az áttelepítés sikeres volt-e. Kövesse az alábbi utasításokat:
-1. Válassza a **Vállalati alkalmazások** > **minden alkalmazás lehetőséget,** és keresse meg az alkalmazást a listából.
+Ezután lépjen a [Azure Portalra](https://aad.portal.azure.com/) , és ellenőrizze, hogy sikeres volt-e az áttelepítés. Kövesse az alábbi utasításokat:
+1. Válassza a **vállalati alkalmazások** > **minden alkalmazás** lehetőséget, és keresse meg az alkalmazást a listából.
 
-1. Válassza a**Felhasználók és csoportok** kezelése **lehetőséget,** > ha legalább egy felhasználót vagy csoportot szeretne az alkalmazáshoz rendelni.
+1. Válassza a**felhasználók és csoportok** **kezelése** > lehetőséget, ha legalább egy felhasználót vagy csoportot szeretne hozzárendelni az alkalmazáshoz.
 
-1. Válassza a**Feltételes hozzáférés** **kezelése** > lehetőséget. Tekintse át a házirendek listáját, és győződjön meg arról, hogy nem blokkolja az alkalmazáshoz való hozzáférést [feltételes hozzáférési szabályzattal.](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+1. Válassza a**feltételes hozzáférés** **kezelése** > lehetőséget. Tekintse át a szabályzatok listáját, és ellenőrizze, hogy nem blokkolja-e az alkalmazáshoz való hozzáférést [feltételes hozzáférési szabályzattal](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
 
-Az alkalmazás konfigurálásától függően ellenőrizze, hogy az SSO megfelelően működik-e. 
+Az alkalmazás konfigurálásának módjától függően ellenőrizze, hogy az SSO megfelelően működik-e. 
 
 | Hitelesítés típusa| Tesztelés |
 | - | - |
-| OAuth / OpenID Connect| Válassza a **Vállalati alkalmazások > engedélyek et,** és győződjön meg arról, hogy hozzájárult ahhoz, hogy az alkalmazás az alkalmazás felhasználói beállításaiban a szervezetben használható legyen.  
+| OAuth/OpenID Connect| Válassza a **vállalati alkalmazások > engedélyek** lehetőséget, és győződjön meg arról, hogy hozzájárult a szervezetében az alkalmazás felhasználói beállításaiban való használathoz.  
 ‎ |
-| SAML-alapú egyszeri bejelentkezés| Használja az Egyszeri bejelentkezés csoportban található [SAML-beállítások](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) **tesztelése**gombját.  
+| SAML-alapú egyszeri bejelentkezés| Használja az **egyszeri bejelentkezés**alatt található [SAML-beállítások tesztelése](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) gombot.  
 ‎ |
-| Jelszóalapú egyszeri bejelentkezés| Töltse le és telepítse a [MyApps Secure Sign](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[in Extension alkalmazást.](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) Ez a bővítmény segít elindítani a szervezet bármely felhőalapú alkalmazását, amelyek egy SSO-folyamat használatát igénylik.  
+| Jelszó-alapú egyszeri bejelentkezés| Töltse le és telepítse a [MyApps biztonságos bejelentkezési](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[bővítményét](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction). Ez a bővítmény segítséget nyújt a szervezet olyan felhőalapú alkalmazásainak elindításához, amelyekhez egyszeri bejelentkezéses folyamatot kell használni.  
 ‎ |
-| Alkalmazásproxy| Győződjön meg arról, hogy az összekötő fut, és az alkalmazáshoz van rendelve. További segítségért látogasson el az [alkalmazásproxy hibaelhárítási útmutatójába.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) [ ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)  
+| Alkalmazásproxy| Győződjön meg arról, hogy az összekötő fut, és hozzá van rendelve az alkalmazáshoz. További segítségért tekintse meg az [alkalmazásproxy hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) [ ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot).  
 ‎ |
 
 > [!NOTE]
-> A régi AD FS-környezetből származó cookie-k továbbra is állandóak lesznek a felhasználó gépein. Ezek a cookie-k problémákat okozhatnak az áttelepítés, mivel a felhasználók lehet irányítani a régi AD FS bejelentkezési környezet, szemben az új Azure AD bejelentkezési. Előfordulhat, hogy manuálisan vagy parancsfájl használatával kell törölnie a felhasználói böngésző cookie-jait. Használhatja a System Center Configuration Manager vagy egy hasonló platform is.
+> A régi AD FS környezetből származó cookie-k továbbra is tartósak lesznek a felhasználó számítógépén. Ezek a cookie-k problémákat okozhatnak az áttelepítés során, mivel a felhasználók a régi AD FS bejelentkezési környezethez, illetve az új Azure AD-bejelentkezéshez irányíthatók. Előfordulhat, hogy manuálisan kell törölnie a felhasználói böngésző cookie-jait, vagy parancsfájlt kell használnia. Használhatja a System Center Configuration Manager vagy egy hasonló platformot is.
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha az áttelepített alkalmazások tesztjének hibái vannak, a hibaelhárítás lehet az első lépés, mielőtt visszaesne a meglévő AD FS függő felekre. Lásd: [Saml-alapú egyszeri bejelentkezés az Alkalmazásokba az Azure Active Directoryban című témakört.](https://docs.microsoft.com/azure/active-directory/azuread-dev/howto-v1-debug-saml-sso-issues)
+Ha az áttelepített alkalmazások tesztelése hibákba ütközik, akkor előfordulhat, hogy az első lépés a meglévő AD FS függő entitásokhoz való visszatérés előtt. Lásd: az [SAML-alapú egyszeri bejelentkezések hibakeresése Azure Active Directory-alkalmazásokban](https://docs.microsoft.com/azure/active-directory/azuread-dev/howto-v1-debug-saml-sso-issues).
 
-### <a name="rollback-migration"></a>Visszaváltás áttelepítése
+### <a name="rollback-migration"></a>Áttelepítés visszaállítása
 
-Ha az áttelepítés sikertelen, javasoljuk, hogy hagyja a meglévő függő feleket az AD FS-kiszolgálókon, és távolítsa el a hozzáférést a függő entitásokhoz. Ez lehetővé teszi a gyors tartalék, ha szükséges a központi telepítés során.
+Ha az áttelepítés sikertelen, javasoljuk, hogy hagyja meg a meglévő függő entitásokat a AD FS-kiszolgálókon, és távolítsa el a függő entitásokhoz való hozzáférést. Ez lehetővé teszi, hogy a telepítés során szükség esetén gyors tartalékot biztosítson.
 
 ### <a name="end-user-communication"></a>Végfelhasználói kommunikáció
 
-Bár maga a tervezett kimaradási ablak minimális lehet, továbbra is tervezze meg, hogy ezeket az időkereteket proaktív módon kommunikálja az alkalmazottakkal, miközben az AD FS-ről az Azure AD-re való átépítést teszi lehetővé. Győződjön meg arról, hogy az alkalmazás élménye rendelkezik egy Visszajelzés gombbal, vagy az ügyfélszolgálatra mutató mutatóval kapcsolatos problémákat.
+Míg maga a tervezett leállási időszak is minimális lehet, továbbra is meg kell terveznie, hogy az alkalmazottak proaktív módon kommunikálnak-e az alkalmazottakkal, miközben a AD FS az Azure AD-be. Győződjön meg arról, hogy az alkalmazás felhasználói felülete rendelkezik visszajelzési gombbal, vagy ha problémákba ütközik az ügyfélszolgálatnál.
 
-Az üzembe helyezés befejezése után elküldheti a kommunikációt, tájékoztatva a felhasználókat a sikeres üzembe helyezésről, és emlékeztetheti őket a szükséges új lépésekre.
+Az üzembe helyezés befejezése után a kommunikációt a sikeres üzembe helyezést követően tájékoztathatja a felhasználókat, és emlékeztetheti őket a szükséges új lépésekre.
 
-* Utasítsa a felhasználókat, hogy a [Hozzáférési panel](https://myapps.microsoft.com.com/) segítségével férjenek el az összes áttelepített alkalmazáshoz. 
+* Kérje meg a felhasználókat, hogy a [hozzáférési panel](https://myapps.microsoft.com) használatával férhessenek hozzá az összes áttelepített alkalmazáshoz. 
 
-* Emlékeztesse a felhasználókat, hogy szükség lehet frissíteni a MFA-beállításokat. 
+* Emlékeztesse a felhasználókat, hogy frissíteniük kell az MFA-beállításait. 
 
-* Ha telepítve van az önkiszolgáló jelszó-visszaállítás, előfordulhat, hogy a felhasználóknak frissíteniük kell vagy ellenőrizniük kell a hitelesítési módszereiket. Lásd: [MFA](https://aka.ms/mfatemplates) és [SSPR](https://aka.ms/ssprtemplates) végfelhasználói kommunikációs sablonok.
+* Ha az önkiszolgáló jelszó-visszaállítás üzembe helyezése megtörténik, előfordulhat, hogy a felhasználóknak frissíteniük vagy ellenőriznie kell a hitelesítési módszereiket. Lásd: [MFA](https://aka.ms/mfatemplates) és [SSPR](https://aka.ms/ssprtemplates) végfelhasználói kommunikációs sablonok.
 
-Kommunikáció külső felhasználókkal: Ez a felhasználói csoport általában a leginkább érintett problémák esetén. Ez különösen akkor igaz, ha a biztonsági állapot a feltételes hozzáférés szabályainak vagy a külső partnerek kockázati profiljainak különböző készletét diktálja. Győződjön meg arról, hogy a külső partnerek tisztában vannak a felhőmigrálási ütemezéssel, és rendelkeznek egy időkerettel, amely alatt arra ösztönzik őket, hogy vegyenek részt egy kísérleti telepítésben, amely a külső együttműködésre egyedi folyamatokat tesztel. Végül győződjön meg arról, hogy van egy módja annak, hogy hozzáférjenek az ügyfélszolgálathoz, ha a problémák megszakadnak.
+Külső felhasználókkal folytatott kommunikáció: a felhasználók ezen csoportja általában a legjelentősebb hatással van a probléma esetére. Ez különösen akkor igaz, ha a biztonsági helyzet a feltételes hozzáférési szabályok vagy kockázati profilok eltérő készletét diktálja külső partnerek számára. Győződjön meg arról, hogy a külső partnerek tisztában vannak a felhő áttelepítési időpontjával, és olyan időkerettel rendelkeznek, amelyben a rendszer azt javasolja, hogy vegyen részt egy olyan kísérleti környezetben, amely a külső együttműködésre jellemző összes folyamatot teszteli. Végezetül ellenőrizze, hogy van-e lehetőség az ügyfélszolgálat elérésére a problémák elhárítása esetén.
 
 ## <a name="next-steps"></a>Következő lépések
-Az [Azure AD-re való migrálási alkalmazáshitelesítés olvasása](https://aka.ms/migrateapps/whitepaper)<p>
-Feltételes [hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) és [többéves kor –, mint az MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) beállítása
+[Az alkalmazás hitelesítésének áttelepítése az Azure ad-be](https://aka.ms/migrateapps/whitepaper)<p>
+[Feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) és [MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) beállítása

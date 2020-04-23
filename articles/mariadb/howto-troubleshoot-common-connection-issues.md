@@ -1,61 +1,61 @@
 ---
-title: Csatlakozási problémák elhárítása – Azure Database for MariaDB
-description: Megtudhatja, hogyan háríthatja el a kapcsolattal kapcsolatos problémákat a MariaDB Azure Database szolgáltatással, például az újrapróbálkozást, a tűzfalproblémákat és a kimaradásokat igénylő átmeneti hibákat.
-author: jasonwhowell
-ms.author: jasonh
+title: A kapcsolatok problémáinak elhárítása – Azure Database for MariaDB
+description: Ismerje meg, hogy miként lehet elhárítani a Azure Database for MariaDB kapcsolódási problémáit, beleértve az újrapróbálkozásokat igénylő átmeneti hibákat, a tűzfal problémáit és az kimaradásokat.
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 6817807d0a85b1465beafc86045ea1e0dd8a31ec
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770346"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101450"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Az Azure Database for MariaDB-hez való csatlakozás hibáinak elhárítása
 
-A csatlakozási problémákat számos dolog okozhatja, többek között:
+A kapcsolódási problémákat számos különböző dolog okozhatja, többek között:
 
 * Tűzfalbeállítások
-* Csatlakozási időtúllépés
+* A kapcsolatok időtúllépése
 * Helytelen bejelentkezési adatok
-* A MariaDB-erőforrások egyes Azure-adatbázisában elért maximális korlát
-* A szolgáltatás infrastruktúrájával kapcsolatos problémák
-* Karbantartás a szervizben
-* A kiszolgáló számítási lefoglalása a virtuális magok számának méretezésével vagy egy másik szolgáltatási szintre való áthelyezéssel változik
+* Néhány Azure Database for MariaDB erőforráshoz elérte a maximális korlátot
+* A szolgáltatás infrastruktúrájának problémái
+* A szolgáltatásban végrehajtott karbantartás
+* A kiszolgáló számítási kiosztását a virtuális mag számának méretezésével vagy egy másik szolgáltatási szinten való áthelyezéssel módosítjuk.
 
-A MariaDB Azure Database szolgáltatással kapcsolatos csatlakozási problémák általában a következőképpen sorolhatók be:
+A Azure Database for MariaDBhoz való kapcsolódási problémák általában a következőképpen sorolhatók be:
 
-* Átmeneti hibák (rövid életű vagy szakaszos)
-* Állandó vagy nem átmeneti hibák (rendszeresen visszatérő hibák)
+* Átmeneti hibák (rövid életű vagy időszakos)
+* Állandó vagy nem átmeneti hibák (a rendszeresen ismétlődő hibák)
 
 ## <a name="troubleshoot-transient-errors"></a>Átmeneti hibák elhárítása
 
-Átmeneti hibák fordulnak elő a karbantartás végrehajtásakor, a rendszer hibát észlel a hardverrel vagy a szoftverrel, vagy módosítja a kiszolgáló virtuális magjait vagy szolgáltatási szintjét. Az Azure Database for MariaDB szolgáltatás beépített magas rendelkezésre állású, és célja, hogy az ilyen típusú problémák automatikusan mérsékelhető. Az alkalmazás azonban rövid, általában legfeljebb 60 másodpercre megszakad a kapcsolata a kiszolgálóval. Egyes események időközben hosszabb időt vehet igénybe, például ha egy nagy tranzakció hosszú ideig tartó helyreállítást okoz.
+Átmeneti hibák történnek a karbantartás végrehajtásakor, a rendszer hibát észlel a hardverrel vagy a szoftverrel kapcsolatban, vagy megváltoztatja a kiszolgáló virtuális mag vagy szolgáltatási szintjét. A Azure Database for MariaDB szolgáltatás beépített magas rendelkezésre állással rendelkezik, és úgy van kialakítva, hogy az ilyen típusú problémákat automatikusan enyhítse. Az alkalmazás azonban nem éri el a kiszolgálóval való kapcsolatát egy rövid ideig, amely általában kevesebb, mint 60 másodperc. Egyes események esetenként hosszabb időt vehetnek igénybe, például ha egy nagy tranzakció hosszan futó helyreállítást okoz.
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Az átmeneti kapcsolódási problémák megoldásának lépései
 
-1. Ellenőrizze a [Microsoft Azure Service Dashboard](https://azure.microsoft.com/status) minden olyan ismert kimaradások során, amikor a hibákat jelentett az alkalmazás.
-2. Alkalmazások, amelyek egy felhőalapú szolgáltatáshoz, például az Azure Database for MariaDB kell várni a tranziens hibákat, és valósítsa meg újrapróbálkozási logika kezelni ezeket a hibákat, ahelyett, hogy ezeket a hibákat alkalmazáshibák a felhasználók számára. Tekintse át [az Azure Database for MariaDB átmeneti kapcsolódási hibáinak kezelését](concepts-connectivity.md) az ajánlott eljárásokért és az átmeneti hibák kezeléséhez vezető tervezési irányelvekért.
-3. Akiszolgáló az erőforráskorlátok hoz közeledtével a hibák átmeneti kapcsolódási problémának tűnhetnek. Lásd: [A MariaDB Azure-adatbázisának korlátai.](concepts-limits.md)
-4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az az időtartam, amelyre az alkalmazás a hibába ütközik, meghaladja a 60 másodpercet, vagy ha egy adott napon a hiba több előfordulása jelenik meg, az [Azure-támogatás](https://azure.microsoft.com/support/options) **kérése** lehetőséget választva nyújtson be egy Azure-támogatási kérelmet.
+1. Győződjön meg arról, hogy a [Microsoft Azure szolgáltatás irányítópultján](https://azure.microsoft.com/status) az alkalmazás által jelentett hibák ideje alatt bekövetkezett ismert kimaradások szerepelnek.
+2. A felhőalapú szolgáltatásokhoz, például Azure Database for MariaDBokhoz csatlakozó alkalmazásoknak átmeneti hibákat kell elvárniuk, és az újrapróbálkozási logikát kell végrehajtaniuk, hogy ezeket a hibákat az alkalmazás hibáiként felhasználja a felhasználók számára. Az átmeneti hibák kezelésével kapcsolatos ajánlott eljárásokért és tervezési útmutatóért tekintse át [Azure Database for MariaDB átmeneti csatlakozási hibák kezelését](concepts-connectivity.md) .
+3. Mivel a kiszolgáló megközelíti az erőforrás-korlátait, úgy tűnik, hogy a hibák átmeneti kapcsolódási problémát jelentenek. Tekintse [meg a Azure Database for MariaDB korlátozásait](concepts-limits.md).
+4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az [Azure](https://azure.microsoft.com/support/options) támogatási webhelyén, a **támogatás beszerzése** lehetőség választásával kérheti le.
 
 ## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
 
-Ha az alkalmazás tartósan nem tud csatlakozni a MariaDB Azure Database szolgáltatásához, az általában az alábbi probléma egyikével kapcsolatos problémát jelez:
+Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MariaDBhoz, általában a következők egyikével kapcsolatos problémát jelez:
 
-* Tűzfal konfigurációja: A MariaDB-kiszolgáló vagy az ügyféloldali tűzfal Azure-adatbázisa blokkolja a kapcsolatokat.
-* Hálózati újrakonfigurálás az ügyféloldalon: Új IP-cím vagy proxykiszolgáló lett hozzáadva.
-* Felhasználói hiba: Előfordulhat például, hogy elgépelt kapcsolatparamétereket, például a kapcsolati karakterláncban lévő kiszolgálónevet vagy a felhasználónévben hiányzó * \@kiszolgálónév-utótagot.*
+* Tűzfal-konfiguráció: a Azure Database for MariaDB-kiszolgáló vagy az ügyféloldali tűzfal blokkolja a kapcsolatokat.
+* Hálózati újrakonfigurálás az ügyféloldali oldalon: új IP-cím vagy proxykiszolgáló lett hozzáadva.
+* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva * \@* , például a kiszolgáló neve a (z) vagy a felhasználónévben lévő kiszolgálónév-utótaggal.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó kapcsolódási problémák megoldásának lépései
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 
-1. Állítsa be [a tűzfalszabályokat](howto-manage-firewall-portal.md) az ügyfél IP-címének engedélyezéséhez. Csak ideiglenes tesztelési célokra állítson be egy 0.0.0.0-s tűzfalszabályt kezdő IP-címként, és a 255.255.255.255-ös t a záró IP-címet. Ezzel megnyitja a kiszolgálót az összes IP-cím hez. Ha ez megoldja a kapcsolódási problémát, távolítsa el ezt a szabályt, és hozzon létre egy tűzfalszabályt egy megfelelően korlátozott IP-címhez vagy címtartományhoz.
-2. Az ügyfél és az internet közötti összes tűzfalon győződjön meg arról, hogy a 3306-os port meg van nyitva a kimenő kapcsolatok számára.
-3. Ellenőrizze a kapcsolati karakterláncot és az egyéb csatlakozási beállításokat. Tekintse át [az alkalmazások csatlakoztatása a MariaDB Azure Database szolgáltatáshoz való csatlakoztatása](howto-connection-string.md)is.
-4. Ellenőrizze a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy van egy regionális kimaradás, [olvassa el az üzletmenet folytonosságának áttekintése](concepts-business-continuity.md) az Azure Database for MariaDB lépéseket egy új régióba helyreállítása.
+1. [Tűzfalszabályok](howto-manage-firewall-portal.md) beállítása az ügyfél IP-címének engedélyezéséhez. Csak ideiglenes tesztelési célokra állítson be egy tűzfalszabály használatát a 0.0.0.0 értékkel a kezdő IP-címként, és használja a 255.255.255.255 a záró IP-címként. Ekkor megnyílik a kiszolgáló minden IP-címre. Ha ezzel feloldja a kapcsolódási problémát, távolítsa el ezt a szabályt, és hozzon létre egy tűzfalszabályot a megfelelő korlátozott IP-címhez vagy címtartomány létrehozásához.
+2. Az ügyfél és az Internet közötti összes tűzfalon ellenőrizze, hogy a 3306-es port nyitva van-e a kimenő kapcsolatok számára.
+3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat. Tekintse át az [alkalmazások Azure Database for MariaDBhoz való kapcsolódásának módját](howto-connection-string.md).
+4. Keresse meg a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy regionális leállás van, tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md) című témakört, amely az új régióba való helyreállítás lépéseit Azure Database for MariaDB.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Átmeneti kapcsolódási hibák kezelése a MariaDB Azure Database szolgáltatásában](concepts-connectivity.md)
+* [Azure Database for MariaDB átmeneti kapcsolódási hibáinak kezelése](concepts-connectivity.md)

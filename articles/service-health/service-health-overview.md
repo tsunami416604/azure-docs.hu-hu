@@ -1,71 +1,71 @@
 ---
-title: A szolgáltatás állapotának áttekintése | Microsoft dokumentumok
-description: Személyre szabott információk arról, hogy az Azure-alkalmazásokat hogyan befolyásolják az Azure-szolgáltatások jelenlegi és jövőbeli problémái és karbantartása.
+title: Service Health áttekintése | Microsoft Docs
+description: Személyre szabott információk arról, hogy az Azure-alkalmazások milyen hatással vannak a jelenlegi és jövőbeli Azure-szolgáltatásokkal kapcsolatos problémákra és karbantartásra.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 280be9f0df1f94dad59c1af147d499860571f86e
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898442"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097251"
 ---
-# <a name="service-health-overview"></a>Szolgáltatásállapot – áttekintés
+# <a name="service-health-overview"></a>Service Health áttekintése
 
-A Service Health egy testreszabható irányítópultot biztosít, amely nyomon követi az Azure-szolgáltatások állapotát azokban a régiókban, ahol használja őket. Ezen az irányítópulton nyomon követheti az aktív eseményeket, például a folyamatban lévő szolgáltatási problémákat, a közelgő tervezett karbantartást vagy a megfelelő egészségügyi tanácsokat. Amikor az események inaktívvá válnak, akár 90 napig is bekerülnek az ön kórtörténetébe. Végül a Service Health irányítópultsegítségével hozhat létre és kezelhet szolgáltatásállapot-riasztásokat, amelyek proaktív módon értesítik, ha a szolgáltatási problémák érintik Önt.
+A Service Health testreszabható irányítópultot biztosít, amely nyomon követi az Azure-szolgáltatások állapotát azokon a régiókban, amelyeken azokat használja. Ezen az irányítópulton nyomon követheti az aktív eseményeket, például a folyamatos szolgáltatással kapcsolatos problémákat, a közelgő tervezett karbantartást vagy az érintett egészségügyi tanácsadókat. Ha az események inaktívvá válnak, a rendszer akár 90 napig helyezi el az állapotát. Végezetül használhatja a Service Health irányítópultot a szolgáltatás állapotával kapcsolatos riasztások létrehozásához és kezeléséhez, amelyek proaktívan értesítik Önt, ha a szolgáltatási problémák érintik Önt.
 
-## <a name="service-health-events"></a>Szolgáltatás-állapotesemények
+## <a name="service-health-events"></a>Események Service Health
 
-A Service Health négy féle állapoteseményt követ nyomon, amelyek hatással lehetnek az erőforrásokra:
+A Service Health négy olyan típusú eseményt követ nyomon, amelyek hatással lehetnek az erőforrásokra:
 
-1. **Szolgáltatási problémák** – Problémák az Azure-szolgáltatások, amelyek hatással vannak jelenleg. 
-2. **Tervezett karbantartás** – Közelgő karbantartás, amely befolyásolhatja a szolgáltatások jövőbeli elérhetőségét.  
-3. **Egészségügyi tanácsok** – Az Azure-szolgáltatások, amelyek a figyelmet. Ilyenek például az Azure-funkciók elavult, vagy ha túllépi a használati kvótát.
-4. **Biztonsági tanácsok (előzetes verzió)** – Az Azure-szolgáltatások rendelkezésre állását befolyásoló, biztonsággal kapcsolatos értesítések.
+1. **Szolgáltatásokkal kapcsolatos problémák** – az Azure-szolgáltatások által jelenleg érintett problémák. 
+2. **Tervezett karbantartás** – közelgő karbantartás, amely hatással lehet a szolgáltatások rendelkezésre állására a jövőben.  
+3. **Egészségügyi tanácsadók** – a figyelmet igénylő Azure-szolgáltatások változásai. Ilyenek például az Azure-szolgáltatások vagy a frissítési követelmények elavulása (például egy támogatott PHP-keretrendszerre való frissítés).
+4. **Biztonsági tanácsadók (előzetes verzió)** – a biztonsággal kapcsolatos értesítések, amelyek befolyásolhatják az Azure-szolgáltatások rendelkezésre állását.
 
 > [!NOTE]
-> A Szolgáltatásállapot-események megtekintéséhez a felhasználóknak meg kell [adni az olvasó szerepkört](../role-based-access-control/role-assignments-portal.md) egy előfizetésen.
+> Service Health események megtekintéséhez a felhasználóknak meg kell [adni az olvasó szerepkört az](../role-based-access-control/role-assignments-portal.md) előfizetésben.
 
-## <a name="get-started-with-service-health"></a>Ismerkedés a Szolgáltatásállapotszolgáltatással
+## <a name="get-started-with-service-health"></a>Ismerkedés a Service Health
 
-A Service Health irányítópult elindításához válassza a Szolgáltatásállapot csempét a portál irányítópultján. Ha korábban már eltávolította a csempét, vagy egyéni irányítópultot használ, keressen rá a Szolgáltatásállapot-szolgáltatásra a "További szolgáltatások" (az irányítópult bal alsó sarkában) című részben.
+A Service Health irányítópult elindításához válassza a portál irányítópultján a Service Health csempét. Ha korábban eltávolította a csempét, vagy egyéni irányítópultot használ, keressen rá Service Health szolgáltatásra a "További szolgáltatások" területen (az irányítópulton balra lent).
 
-![Ismerkedés a Szolgáltatásállapotszolgáltatással](./media/service-health-overview/azure-service-health-overview-1.png)
+![Ismerkedés a Service Health](./media/service-health-overview/azure-service-health-overview-1.png)
 
-## <a name="see-current-issues-which-impact-your-services"></a>A szolgáltatásokat érintő aktuális problémák megtekintése
+## <a name="see-current-issues-which-impact-your-services"></a>Tekintse meg a szolgáltatásait érintő aktuális problémákat
 
-A **Szolgáltatás-problémák** nézet az Azure-szolgáltatásokban az erőforrásokat befolyásoló, folyamatban lévő problémákat jeleníti meg. Megértheti, hogy mikor kezdődött a probléma, és milyen szolgáltatásokat és régiókat érint. A legújabb frissítést is elolvashatja, hogy tisztában van azzal, hogy az Azure mit tesz a probléma megoldásához. 
+A **szolgáltatással kapcsolatos problémák** nézet az Azure-szolgáltatásokban az erőforrásokat érintő esetleges problémákat mutatja. Megtudhatja, hogy mikor kezdődött el a probléma, és milyen szolgáltatásokat és régiókat érint. A legújabb frissítést is beolvashatja, hogy megtudja, mit tesz az Azure a probléma megoldásához. 
 
 ![Szolgáltatási probléma kezelése](./media/service-health-overview/azure-service-health-overview-2.png)
 
-Válassza a **Lehetséges hatás** lapot a saját erőforrásainak a probléma által esetlegesen érintett konkrét listájának megtekintéséhez. Letöltheti ezeknek az erőforrásoknak a CSV-listáját, amelyet megoszthat a csapatával.
+A **lehetséges hatás** lapon megtekintheti a probléma által befolyásolható erőforrások adott listáját. Letöltheti ezeket az erőforrásokat tartalmazó CSV-listát a csapattal való megosztáshoz.
 
-![Szolgáltatási probléma kezelése - Hatás](./media/service-health-overview/azure-service-health-overview-4.png)
+![Szolgáltatási probléma kezelése – hatás](./media/service-health-overview/azure-service-health-overview-4.png)
 
-## <a name="get-links-and-downloadable-explanations"></a>Linkeket és letölthető magyarázatokat kaphat 
+## <a name="get-links-and-downloadable-explanations"></a>Hivatkozások és letölthető magyarázatok beolvasása 
 
-A problémakezelő rendszerben használható probléma hivatkozását is beszerezheti. Pdf- és néha CSV-fájlokat tölthet le, amelyeket megoszthat olyan okkal, akik nem férnek hozzá az Azure Portalhoz.   
+A probléma kezelésére szolgáló hivatkozásra kattintva kérheti le a problémát. A PDF-fájlok és a CSV-fájlok letöltése a megosztáshoz olyan személyekkel is megosztható, akik nem rendelkeznek hozzáféréssel a Azure Portalhoz.   
 
-![Szolgáltatási probléma kezelése - Problémakezelés](./media/service-health-overview/azure-service-health-overview-3.png)
+![Szolgáltatási probléma kezelése – probléma kezelése](./media/service-health-overview/azure-service-health-overview-3.png)
 
-## <a name="get-support-from-microsoft"></a>Támogatás beszerezni a Microsofttól
+## <a name="get-support-from-microsoft"></a>Támogatás kérése a Microsofttól
 
-Lépjen kapcsolatba az ügyfélszolgálattal, ha az erőforrás a probléma megoldása után is rossz állapotban van.  Használja az oldal jobb oldalán található támogatási hivatkozásokat.  
+Forduljon az ügyfélszolgálathoz, ha az erőforrás a probléma megoldása után is rossz állapotban marad.  Használja az oldal jobb oldalán található támogatási hivatkozásokat.  
 
-## <a name="pin-a-personalized-health-map-to-your-dashboard"></a>Személyre szabott állapottérkép rögzítése az irányítópulton
+## <a name="pin-a-personalized-health-map-to-your-dashboard"></a>Személyre szabott állapotadatok rögzítése az irányítópulton
 
-A Szolgáltatás állapotának szűrése az üzleti legkritikusabb előfizetések, régiók és erőforrástípusok megjelenítéséhez. Mentse a szűrőt, és rögzítse az állapotokat mutató, személyre szabott világtérképet a portál irányítópultján. 
+Az üzleti szempontból kritikus előfizetések, régiók és erőforrástípusok megjelenítéséhez Service Health szűrheti. Mentse a szűrőt, és rögzítse az állapotokat mutató, személyre szabott világtérképet a portál irányítópultján. 
 
-![Személyre szabott állapottérkép szűrése](./media/service-health-overview/azure-service-health-overview-6a.png)
+![Személyre szabott állapot-hozzárendelés szűrése](./media/service-health-overview/azure-service-health-overview-6a.png)
 
-![Személyre szabott egészségügyi térkép rögzítése](./media/service-health-overview/azure-service-health-overview-6b.png)
+![Személyre szabott állapot-hozzárendelés rögzítése](./media/service-health-overview/azure-service-health-overview-6b.png)
 
-## <a name="configure-service-health-alerts"></a>Szolgáltatásállapot-riasztások konfigurálása
+## <a name="configure-service-health-alerts"></a>A szolgáltatás állapotára vonatkozó riasztások konfigurálása
 
-A Service Health integrálható az Azure Monitorral, hogy e-mailekkel, szöveges üzenetekkel és webhook-értesítésekkel figyelmeztesse Önt, ha az üzleti legkritikusabb erőforrásokat érinti. Hozzon létre egy tevékenységnapló-riasztást a megfelelő szolgáltatásállapot-eseményhez. A riasztás tág antolhatja a riasztást a szervezet megfelelő embereinek a műveletcsoportok használatával. További információ: [Riasztások konfigurálása a szolgáltatás állapotához](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
+A Service Health integrálható Azure Monitorekkel, hogy e-mailben, szöveges üzenetben és webhook-értesítésekben figyelmeztessen az üzleti szempontból kritikus fontosságú erőforrások hatására. Hozzon létre egy műveletnapló riasztást a megfelelő szolgáltatási állapot eseményéhez. Irányítsa a riasztást a szervezet megfelelő tagjaira a műveleti csoportok használatával. További információ: [riasztások konfigurálása Service Healthhoz](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
 ## <a name="next-steps"></a>További lépések
 
-Állítsa be a riasztásokat, hogy értesítést kapjon az egészségügyi problémákról. További információt az [Azure Service Health Alerts beállításával kapcsolatos gyakorlati tanácsok című témakörben talál.](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s) 
+Riasztások beállítása, hogy értesítést kapjon az állapottal kapcsolatos problémákról. További információ: [ajánlott eljárások Azure Service Health riasztások beállításához](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s). 

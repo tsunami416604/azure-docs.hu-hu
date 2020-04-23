@@ -1,35 +1,28 @@
 ---
-title: Virtuális gépek egy Azure Resource Manager-sablonban | Microsoft Azure
-description: További információ avirtuálisba, hogyan definiálható a virtuálisgép-erőforrás egy Azure Resource Manager-sablonban.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Azure Resource Manager sablonban található virtuális gépek | Microsoft Azure
+description: További információ arról, hogyan van definiálva a virtuális gép erőforrása egy Azure Resource Manager sablonban.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: c9bf1cf0564655c932e066e5b74225382375e9c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235422"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100532"
 ---
-# <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuális gépek egy Azure Resource Manager-sablonban
+# <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager sablonban található virtuális gépek
 
-Ez a cikk egy Azure Resource Manager-sablon virtuális gépekre vonatkozó szempontjait ismerteti. Ez a cikk nem ismerteti a virtuális gépek létrehozásához szükséges teljes sablont; ahhoz, hogy szükség van erőforrás-definíciók tárfiókok, hálózati adapterek, nyilvános IP-címek és a virtuális hálózatok. Az erőforrások együttes definiálásáról az [Erőforrás-kezelő sablon forgatókönyve című témakörben olvashat bővebben.](../../azure-resource-manager/resource-manager-template-walkthrough.md)
+Ez a cikk egy Azure Resource Manager sablonnak a virtuális gépekre vonatkozó aspektusait ismerteti. Ez a cikk nem ismerteti a virtuális gépek létrehozásának teljes sablonját. Ehhez a Storage-fiókok, hálózati adapterek, nyilvános IP-címek és virtuális hálózatok erőforrás-definíciói szükségesek. További információt ezekről az erőforrásokról a [Resource Manager-sablonok áttekintése](../../azure-resource-manager/resource-manager-template-walkthrough.md)című témakörben talál.
 
-A katalógusban számos [sablon található,](https://azure.microsoft.com/documentation/templates/?term=VM) amelyek tartalmazzák a virtuális gép erőforrást. A sablonban nem minden elem szerepel, hanem az itt található.
+A katalógusban sok olyan [sablon található](https://azure.microsoft.com/documentation/templates/?term=VM) , amely tartalmazza a virtuális gép erőforrását. A sablonban nem szereplő összes elem leírását itt találja.
 
  
 
-Ez a példa egy sablon tipikus erőforrásszakaszát mutatja be a megadott számú virtuális gép létrehozásához:
+Ebben a példában egy sablon egy tipikus erőforrás szakasza látható egy adott számú virtuális gép létrehozásához:
 
 ```json
 "resources": [
@@ -147,30 +140,30 @@ Ez a példa egy sablon tipikus erőforrásszakaszát mutatja be a megadott szám
 ``` 
 
 > [!NOTE] 
->Ez a példa egy korábban létrehozott tárfiókra támaszkodik. Létrehozhatja a tárfiókot a sablonból történő üzembe helyezésével. A példa egy hálózati adapterre és a sablonban definiált függő erőforrásokra is támaszkodik. Ezek az erőforrások nem jelennek meg a példában.
+>Ez a példa egy korábban létrehozott Storage-fiókra támaszkodik. A Storage-fiókot a sablonból való üzembe helyezésével hozhatja létre. A példa egy hálózati adapterre és a sablonban definiált függő erőforrásokra is támaszkodik. Ezek az erőforrások nem jelennek meg a példában.
 >
 >
 
 ## <a name="api-version"></a>API-verzió
 
-Amikor egy sablon használatával telepíti az erőforrásokat, meg kell adnia az API egy verzióját. A példa a virtuálisgép-erőforrást mutatja az apiVersion elem használatával:
+Ha sablon használatával telepít erőforrásokat, meg kell adnia a használni kívánt API-verziót. A példa a virtuális gép erőforrását mutatja a következő apiVersion elem használatával:
 
 ```json
 "apiVersion": "2016-04-30-preview",
 ```
 
-A sablonban megadott API-verzió befolyásolja, hogy a sablonban definiálható tulajdonságok at. Általánosságban elmondható, hogy a legújabb API-verziót kell kiválasztania a sablonok létrehozásakor. Meglévő sablonok esetén eldöntheti, hogy egy korábbi API-verziót szeretne-e használni, vagy frissíti a sablont a legújabb verzióhoz az új funkciók előnyeinek kihasználásához.
+A sablonban megadott API-verzió befolyásolja a sablonban megadható tulajdonságokat. Általánosságban a sablonok létrehozásakor ki kell választani a legújabb API-verziót. Meglévő sablonok esetében eldöntheti, hogy szeretné-e tovább használni a korábbi API-verziót, vagy a legújabb verzióra frissíti a sablont, hogy kihasználhassa az új funkciókat.
 
-Használja ezeket a lehetőségeket a legújabb API-verziók beszerzése:
+A legújabb API-verziók beszerzéséhez használja a következő lehetőségeket:
 
-- REST API – [Az összes erőforrás-szolgáltató listázása](https://docs.microsoft.com/rest/api/resources/providers)
+- REST API – [az összes erőforrás-szolgáltató listázása](https://docs.microsoft.com/rest/api/resources/providers)
 - PowerShell – [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
-- Azure CLI - [az szolgáltató show](https://docs.microsoft.com/cli/azure/provider)
+- Azure CLI – [az Provider show](https://docs.microsoft.com/cli/azure/provider)
 
 
 ## <a name="parameters-and-variables"></a>Paraméterek és változók
 
-[A paraméterek](../../resource-group-authoring-templates.md) megkönnyítik a sablon értékeinek megadását a sablon futtatásakor. Ez a paraméterszakasz a példa:
+A [Paraméterek](../../resource-group-authoring-templates.md) megkönnyítik a sablon értékének megadását a futtatásakor. A következő példában a paraméterek szakaszt használjuk:
 
 ```json
 "parameters": {
@@ -180,9 +173,9 @@ Használja ezeket a lehetőségeket a legújabb API-verziók beszerzése:
 },
 ```
 
-A példasablon telepítésekor adja meg a rendszergazdai fiók nevét és jelszavát az egyes virtuális gépeken, valamint a létrehozandó virtuális gépek számát. Lehetősége van paraméterértékek megadására egy külön fájlban, amelyet a sablonnal kezelnek, vagy amikor a rendszer kéri, értékeket adjon meg.
+A példában szereplő sablon telepítésekor adja meg a rendszergazdai fiók nevét és jelszavát az egyes virtuális gépeken, valamint a létrehozandó virtuális gépek számát. Lehetősége van paraméterek értékének megadására egy külön fájlban, amelyet a sablon felügyel, vagy ha a rendszer kéri, adja meg az értékeket.
 
-[A változók megkönnyítik](../../resource-group-authoring-templates.md) a sablonban ismétlődően használt vagy idővel változható értékek beállítását. Ez a változószakasz a példa:
+A [változók](../../resource-group-authoring-templates.md) segítségével könnyedén állíthatja be a sablonban azokat az értékeket, amelyeket a rendszer ismételten használ, vagy amelyek idővel változhatnak. A következő példában a változók szakaszt használjuk:
 
 ```json
 "variables": { 
@@ -215,11 +208,11 @@ A példasablon telepítésekor adja meg a rendszergazdai fiók nevét és jelsza
 }, 
 ```
 
-A példasablon telepítésekor a rendszer változóértékeket használ a korábban létrehozott tárfiók nevéhez és azonosítójához. Változók is használják, hogy a beállításokat a diagnosztikai bővítmény. Az [Azure Resource Manager-sablonok létrehozásához ajánlott eljárások](../../resource-manager-template-best-practices.md) segítségével eldöntheti, hogyan szeretné strukturálni a paramétereket és a változókat a sablonban.
+A példában szereplő sablon telepítésekor a rendszer változó értékeket használ a korábban létrehozott Storage-fiók nevének és azonosítójának megadásához. A változók a diagnosztikai bővítmény beállításainak megadására is használhatók. Az [ajánlott eljárásokkal Azure Resource Manager sablonokat hozhat létre](../../resource-manager-template-best-practices.md) , amelyek segítségével eldöntheti, hogyan szeretné felstrukturálni a sablonban lévő paramétereket és változókat.
 
-## <a name="resource-loops"></a>Erőforráshurkok
+## <a name="resource-loops"></a>Erőforrás-hurkok
 
-Ha egynél több virtuális gépre van szüksége az alkalmazáshoz, használhat egy másolási elemet egy sablonban. Ez a választható elem a paraméterként megadott virtuális gépek számának létrehozásával ismétlődik:
+Ha több virtuális gépre van szüksége az alkalmazáshoz, használhat egy másolási elemet a sablonban. Ez a választható elem hurkokat mutat be a paraméterként megadott virtuális gépek számának létrehozásával:
 
 ```json
 "copy": {
@@ -228,7 +221,7 @@ Ha egynél több virtuális gépre van szüksége az alkalmazáshoz, használhat
 },
 ```
 
-Is, figyelje meg a példában, hogy a hurok index az erőforrás egyes értékeinek megadásakor használatos. Ha például három példányszámot adott meg, az operációs rendszer lemezeinek neve a következő: myOSDisk1, myOSDisk2 és myOSDisk3:
+Emellett figyelje meg a példában, hogy a hurok indexe az erőforrás egyes értékeinek megadásakor használatos. Ha például három példányban adta meg a példányszámot, az operációsrendszer-lemezek neve myOSDisk1, myOSDisk2 és myOSDisk3:
 
 ```json
 "osDisk": { 
@@ -243,7 +236,7 @@ Is, figyelje meg a példában, hogy a hurok index az erőforrás egyes értékei
 >
 >
 
-Ne feledje, hogy a sablonban lévő egyik erőforráshoz szükség lehet a hurok használatára más erőforrások létrehozásakor vagy elérésekor. Például több virtuális gép nem használhatja ugyanazt a hálózati adaptert, így ha a sablon három virtuális gép létrehozásával hurkol, akkor három hálózati adapter ek on-val is meg kell ismétlődnie. Amikor hálózati adaptert rendel egy virtuális géphez, a ciklusindex azonosítására szolgál:
+Ne feledje, hogy a sablonban lévő egyik erőforráshoz tartozó hurok létrehozásához szükség lehet a hurok használatára más erőforrások létrehozásakor vagy azokhoz való hozzáféréskor. Például több virtuális gép nem használhatja ugyanazt a hálózati adaptert, így ha a sablon három virtuális gép létrehozásán keresztül hurkokat használ, a három hálózati adapter létrehozásával is hurkot kell létrehoznia. Amikor hálózati adaptert rendel egy virtuális géphez, a rendszer a hurok indexét használja a következő azonosítására:
 
 ```json
 "networkInterfaces": [ { 
@@ -254,7 +247,7 @@ Ne feledje, hogy a sablonban lévő egyik erőforráshoz szükség lehet a hurok
 
 ## <a name="dependencies"></a>Függőségek
 
-A legtöbb erőforrás más erőforrások megfelelő működésétől függ. A virtuális gépeket virtuális hálózathoz kell társozni, és ehhez hálózati adapterre van szükség. A [dependsOn](../../resource-group-define-dependencies.md) elem annak biztosításához szolgál, hogy a hálózati adapter készen álljon a virtuális gépek létrehozása előtt:
+A legtöbb erőforrás attól függ, hogy a többi erőforrás megfelelően működik-e. A virtuális gépeket egy virtuális hálózattal kell társítani, és az informatikai részlegnek hálózati adapterre van szüksége. A [dependsOn](../../resource-group-define-dependencies.md) elem használatával meggyőződhet arról, hogy a hálózati adapter készen áll a virtuális gépek létrehozása előtt való használatra:
 
 ```json
 "dependsOn": [
@@ -262,9 +255,9 @@ A legtöbb erőforrás más erőforrások megfelelő működésétől függ. A v
 ],
 ```
 
-Az Erőforrás-kezelő párhuzamosan telepít idoben minden olyan erőforrást, amely nem függ egy másik erőforrás üzembe helyezésétől. Legyen óvatos a függőségek beállításakor, mert véletlenül lelassíthatja a telepítést a szükségtelen függőségek megadásával. A függőségek több erőforráson keresztül is láncolhatók. A hálózati adapter például a nyilvános IP-címtől és a virtuális hálózati erőforrásoktól függ.
+A Resource Manager párhuzamosan helyez üzembe minden olyan erőforrást, amely nem függ más üzembe helyezett erőforrástól. A függőségek beállításakor körültekintően járjon el, mert a szükségtelen függőségek megadásával véletlenül lelassíthatja a telepítést. A függőségek több erőforráson keresztül is elhelyezhetők. A hálózati adapter például a nyilvános IP-címről és a virtuális hálózati erőforrástól függ.
 
-Honnan tudja, hogy szükség van-e függőségre? Tekintse meg a sablonban beállított értékeket. Ha a virtuálisgép-erőforrás-definíció egy eleme egy másik erőforrásra mutat, amely ugyanabban a sablonban van telepítve, függőségre van szüksége. A példavirtuális gép például egy hálózati profilt határoz meg:
+Honnan tudható, hogy szükséges-e függőség? Tekintse meg a sablonban megadott értékeket. Ha a virtuális gép erőforrás-definíciójában lévő elem egy másik, ugyanabban a sablonban üzembe helyezett erőforrásra mutat, függőségre van szüksége. Például a virtuális gép egy hálózati profilt definiál:
 
 ```json
 "networkProfile": { 
@@ -275,25 +268,25 @@ Honnan tudja, hogy szükség van-e függőségre? Tekintse meg a sablonban beál
 },
 ```
 
-A tulajdonság beállításához a hálózati adapternek léteznie kell. Ezért függőségre van szüksége. Akkor is be kell állítania egy függőséget, ha egy erőforrás (egy gyermek) egy másik erőforráson (szülőn) belül van definiálva. Például a diagnosztikai beállítások és az egyéni parancsfájl-bővítmények egyaránt a virtuális gép gyermekerőforrásaiként vannak definiálva. Nem hozhatók létre, amíg a virtuális gép nem létezik. Ezért mindkét erőforrás a virtuális géptől függőként van megjelölve.
+A tulajdonság beállításához a hálózati adapternek léteznie kell. Ezért függőségre van szükség. Akkor is meg kell adnia egy függőséget, ha egy erőforrás (gyermek) egy másik erőforrásban (szülő) van definiálva. A diagnosztikai beállítások és az egyéni parancsfájl-bővítmények például a virtuális gép alárendelt erőforrásaiként vannak meghatározva. Nem hozhatók létre, amíg a virtuális gép nem létezik. Ezért mindkét erőforrás a virtuális gépről függőként van megjelölve.
 
 ## <a name="profiles"></a>Profilok
 
-A virtuálisgép-erőforrások definiálásakor számos profilelem használatos. Néhány szükséges, és néhány nem kötelező. Például a hardwareProfile, osProfile, storageProfile és networkProfile elemek szükségesek, de a diagnosticsProfile nem kötelező. Ezek a profilok olyan beállításokat határoznak meg, mint például:
+A virtuális gépek erőforrásának definiálásakor több profil elemet is használ a rendszer. Néhány szükséges, néhányat pedig nem kötelező megadni. Például a hardwareProfile, a osProfile, a storageProfile és a networkProfile elem megadása kötelező, de a diagnosticsProfile megadása nem kötelező. Ezek a profilok olyan beállításokat határoznak meg, mint például:
    
-- [Méret](sizes.md)
+- [méret](sizes.md)
 - [név](/azure/architecture/best-practices/resource-naming) és hitelesítő adatok
-- lemez- és [operációsrendszer-beállítások](cli-ps-findimage.md)
+- lemez-és [operációsrendszer-beállítások](cli-ps-findimage.md)
 - [hálózati adapter](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - rendszerindítási diagnosztika
 
-## <a name="disks-and-images"></a>Lemezek és képek
+## <a name="disks-and-images"></a>Lemezek és lemezképek
    
-Az Azure-ban a vhd-fájlok [lemezeket vagy képeket](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)jelölhetnek. Ha az operációs rendszer egy vhd fájl ban van specializálva, hogy egy adott virtuális gép, ez a továbbiakban lemez. Ha az operációs rendszer egy vhd fájl általánosított létrehozásához használt sok virtuális gép, ez a továbbiakban egy lemezkép.   
+Az Azure-ban a VHD-fájlok [lemezek vagy lemezképek](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ábrázolására használhatók. Ha egy VHD-fájlban lévő operációs rendszer speciális virtuális géphez van kiépítve, akkor azt lemeznek nevezzük. Ha egy VHD-fájlban lévő operációs rendszer általánosítva számos virtuális gép létrehozásához használatos, azt képként kell megadnia.   
     
-### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Új virtuális gépek és új lemezek létrehozása platformlemezről
+### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Új virtuális gépek és új lemezek létrehozása egy platform rendszerképből
 
-Virtuális gép létrehozásakor el kell döntenie, hogy milyen operációs rendszert használjon. A imageReference elem egy új virtuális gép operációs rendszerének definiálására szolgál. A példa egy Windows Server operációs rendszer definícióját mutatja be:
+Amikor létrehoz egy virtuális gépet, el kell döntenie, hogy milyen operációs rendszert kíván használni. A imageReference elem az új virtuális gép operációs rendszerének definiálására szolgál. A példa egy Windows Server operációs rendszer definícióját mutatja be:
 
 ```json
 "imageReference": { 
@@ -304,7 +297,7 @@ Virtuális gép létrehozásakor el kell döntenie, hogy milyen operációs rend
 },
 ```
 
-Ha Linux operációs rendszert szeretne létrehozni, a következő definíciót használhatja:
+Ha Linux operációs rendszert szeretne létrehozni, akkor használhatja ezt a definíciót:
 
 ```json
 "imageReference": {
@@ -315,7 +308,7 @@ Ha Linux operációs rendszert szeretne létrehozni, a következő definíciót 
 },
 ```
 
-Az operációs rendszer lemezének konfigurációs beállításai az osDisk-elemhez vannak rendelve. A példa egy új felügyelt lemezt határoz meg, amelynek gyorsítótárazási módja **ReadWrite,** és hogy a lemez egy [platformlemezről](cli-ps-findimage.md)jön létre:
+Az operációs rendszer lemezének konfigurációs beállításai a osDisk elemmel vannak társítva. A példa egy új felügyelt lemezt határoz meg a gyorsítótárazási móddal, amely **READWRITE** van beállítva, és hogy a lemez egy [platform-rendszerképből](cli-ps-findimage.md)jön létre:
 
 ```json
 "osDisk": { 
@@ -327,7 +320,7 @@ Az operációs rendszer lemezének konfigurációs beállításai az osDisk-elem
 
 ### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Új virtuális gépek létrehozása meglévő felügyelt lemezekről
 
-Ha meglévő lemezekről szeretne virtuális gépeket létrehozni, távolítsa el a imageReference és az osProfile elemeket, és adja meg a következő lemezbeállításokat:
+Ha a virtuális gépeket meglévő lemezekről szeretné létrehozni, távolítsa el a imageReference és a osProfile elemeket, és adja meg a lemez beállításait:
 
 ```json
 "osDisk": { 
@@ -340,9 +333,9 @@ Ha meglévő lemezekről szeretne virtuális gépeket létrehozni, távolítsa e
 },
 ```
 
-### <a name="create-new-virtual-machines-from-a-managed-image"></a>Új virtuális gépek létrehozása felügyelt lemezképből
+### <a name="create-new-virtual-machines-from-a-managed-image"></a>Új virtuális gépek létrehozása felügyelt rendszerképből
 
-Ha felügyelt lemezképből szeretne virtuális gépet létrehozni, módosítsa a imageReference elemet, és adja meg a következő lemezbeállításokat:
+Ha a virtuális gépet felügyelt lemezképből szeretné létrehozni, módosítsa a imageReference elemet, és adja meg a lemez beállításait:
 
 ```json
 "storageProfile": { 
@@ -360,7 +353,7 @@ Ha felügyelt lemezképből szeretne virtuális gépet létrehozni, módosítsa 
 
 ### <a name="attach-data-disks"></a>Adatlemezek csatolása
 
-Igény szerint adatlemezeket adhat hozzá a virtuális gépekhez. A [lemezek száma](sizes.md) a használt operációsrendszer-lemez méretétől függ. A virtuális gépek mérete Standard_DS1_v2, a hozzájuk adható adatlemezek maximális száma kettő. A példában minden virtuális géphez egy felügyelt adatlemez kerül hozzáadásra:
+Szükség esetén adatlemezeket is hozzáadhat a virtuális gépekhez. A [lemezek száma](sizes.md) a használt operációsrendszer-lemez méretétől függ. Ha a virtuális gépek mérete Standard_DS1_v2 értékre van állítva, akkor a hozzájuk tartozó adatlemezek maximális száma kettő. A példában egy felügyelt adatlemez kerül be az egyes virtuális gépekbe:
 
 ```json
 "dataDisks": [
@@ -376,7 +369,7 @@ Igény szerint adatlemezeket adhat hozzá a virtuális gépekhez. A [lemezek sz�
 
 ## <a name="extensions"></a>Bővítmények
 
-Bár [a bővítmények](extensions-features.md) egy külön erőforrás, szorosan kapcsolódnak a virtuális gépekhez. A bővítmények hozzáadhatók a virtuális gép gyermekerőforrásaként vagy külön erőforrásként. A példa azt [mutatja,](extensions-diagnostics-template.md) hogy a diagnosztikai bővítmény hozzáadódik a virtuális gépekhez:
+Bár a [bővítmények](extensions-features.md) különálló erőforrások, a virtuális gépekhez szorosan kötődnek. A bővítmények a virtuális gép alárendelt erőforrásaiként vagy külön erőforrásként vehetők fel. A példa a virtuális gépekhez hozzáadott [diagnosztikai bővítményt](extensions-diagnostics-template.md) mutatja be:
 
 ```json
 { 
@@ -409,9 +402,9 @@ Bár [a bővítmények](extensions-features.md) egy külön erőforrás, szorosa
 },
 ```
 
-Ez a bővítmény erőforrás a storageName változót és a diagnosztikai változókat használja az értékek megadásához. Ha módosítani szeretné a bővítmény által gyűjtött adatokat, további teljesítményszámlálókat adhat hozzá a wadperfcounters változóhoz. Azt is választhatja, hogy helyezze el a diagnosztikai adatokat egy másik tárfiókba, mint ahol a virtuális gép lemezek találhatók.
+Ez a kiterjesztési erőforrás a storageName változót és a diagnosztikai változókat használja az értékek megadásához. Ha módosítani szeretné a bővítmény által összegyűjtött adatokat, további teljesítményszámlálókat adhat hozzá a wadperfcounters változóhoz. Azt is megteheti, hogy a diagnosztikai adatait egy másik Storage-fiókba helyezi, mint ahol a virtuális gépek lemezeit tárolja.
 
-Sok kiterjesztés, amely telepítheti a virtuális gép, de a leghasznosabb valószínűleg az [egyéni parancsfájl-bővítmény](extensions-customscript.md). A példában egy start.ps1 nevű PowerShell-parancsfájl minden virtuális számítógépen fut, amikor először elindul:
+Számos bővítmény telepíthető egy virtuális gépre, de a leghasznosabb valószínűleg az [Egyéni szkriptek bővítménye](extensions-customscript.md). A példában egy Start. ps1 nevű PowerShell-szkript fut az összes virtuális gépen az első indításkor:
 
 ```json
 {
@@ -438,27 +431,27 @@ Sok kiterjesztés, amely telepítheti a virtuális gép, de a leghasznosabb val�
 }
 ```
 
-A start.ps1 parancsfájl számos konfigurációs feladatot képes elvégezni. Például a példában a virtuális gépekhez hozzáadott adatlemezek nincsenek inicializálva; inicializálhatja őket. Ha több indítási feladatot kell elvégeznie, a start.ps1 fájl használatával más PowerShell-parancsfájlokat hívhat meg az Azure storage-ban. A példa a PowerShellt használja, de bármilyen parancsfájlkezelési módszert használhat, amely elérhető a használt operációs rendszeren.
+A Start. ps1 parancsfájl számos konfigurációs feladatot képes végrehajtani. A példában szereplő virtuális gépekhez hozzáadott adatlemezek például nem lettek inicializálva; az inicializáláshoz egyéni szkriptet is használhat. Ha több indítási feladattal rendelkezik, a Start. ps1 fájllal hívhat meg más PowerShell-parancsfájlokat az Azure Storage szolgáltatásban. A példa a PowerShellt használja, de bármilyen, a használt operációs rendszeren elérhető parancsfájl-módszert használhat.
 
-A telepített bővítmények állapotát a portál bővítmények beállításai között láthatja:
+A telepített bővítmények állapotát a portál bővítmények beállításainál tekintheti meg:
 
-![A bővítmény állapotának beírása](./media/template-description/virtual-machines-show-extensions.png)
+![Bővítmény állapotának beolvasása](./media/template-description/virtual-machines-show-extensions.png)
 
-A **Get-AzVMExtension** PowerShell paranccsal, a **vm-bővítmény beolvassa** az Azure CLI parancsot vagy a **bővítményinformáció-információk beszerezni** a REST API-t is kaphatja.
+A bővítmény információit a **Get-AzVMExtension** PowerShell-paranccsal, a virtuálisgép- **BŐVÍTMÉNY Get** Azure CLI-paranccsal vagy a **bővítmény információinak beolvasása** REST API is lekérheti.
 
 ## <a name="deployments"></a>Központi telepítés
 
-Sablon üzembe helyezésekor az Azure nyomon követi a csoportként üzembe helyezett erőforrásokat, és automatikusan hozzárendel egy nevet ehhez az üzembe helyezett csoporthoz. A központi telepítés neve megegyezik a sablon nevével.
+A sablonok központi telepítésekor az Azure nyomon követi a csoportként telepített erőforrásokat, és automatikusan hozzárendel egy nevet ehhez a telepített csoporthoz. A központi telepítés neve megegyezik a sablon nevével.
 
-Ha kíváncsi az erőforrások állapotára a központi telepítésben, tekintse meg az erőforráscsoportot az Azure Portalon:
+Ha kíváncsi a telepítésben lévő erőforrások állapotára, tekintse meg az erőforráscsoportot a Azure Portalban:
 
-![Telepítési információk beszerezni](./media/template-description/virtual-machines-deployment-info.png)
+![Üzembe helyezési információk beolvasása](./media/template-description/virtual-machines-deployment-info.png)
     
-Nem probléma, hogy ugyanazt a sablont használja erőforrások létrehozásához vagy meglévő erőforrások frissítéséhez. Amikor parancsokat használ a sablonok telepítéséhez, lehetősége van megmondani, hogy melyik [módot](../../resource-group-template-deploy.md) szeretné használni. A mód teljes **vagy** **növekményes.** Az alapértelmezett beállítás a növekményes frissítések megcsinálása. Legyen óvatos a **Teljes** mód használatakor, mert véletlenül törölheti az erőforrásokat. Ha a módot **Befejezés**módra állítja, az Erőforrás-kezelő törli az erőforráscsoport azon erőforrásait, amelyek nem a sablonban vannak.
+Nem probléma, hogy ugyanazt a sablont használja az erőforrások létrehozásához vagy a meglévő erőforrások frissítéséhez. Amikor parancsokat használ a sablonok üzembe helyezéséhez, lehetősége van megmondani, hogy melyik [módot](../../resource-group-template-deploy.md) kívánja használni. A mód beállítható **teljes** vagy **növekményes**értékre is. Az alapértelmezett érték a növekményes frissítések használata. Ügyeljen arra, hogy a **teljes** módot használja, mert véletlenül törölheti az erőforrásokat. Ha a módot a **befejezésre**állítja, a Resource Manager törli a sablonban nem szereplő összes erőforrást.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Hozzon létre saját [sablont az Azure Resource Manager-sablonok](../../resource-group-authoring-templates.md)szerzői használatával.
-- Telepítse a létrehozott sablont [a Windows létrehozása virtuális gép használatával egy Erőforrás-kezelő sablonnal](ps-template.md).
-- Megtudhatja, hogyan kezelheti a létrehozott virtuális gépeket a [Windows virtuális gépek létrehozása és kezelése az Azure PowerShell-modullal című áttekintéssel.](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-- A JSON szintaxisát és a sablonokban lévő erőforrástípusok tulajdonságait az [Azure Resource Manager sablonhivatkozás című témakörében olvashat.](/azure/templates/)
+- Hozzon létre saját sablont a [szerzői Azure Resource Manager sablonok](../../resource-group-authoring-templates.md)használatával.
+- Telepítse a létrehozott sablont a [Windows rendszerű virtuális gép Resource Manager-sablonnal történő létrehozásával](ps-template.md).
+- Megtudhatja, hogyan kezelheti a létrehozott virtuális gépeket a [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című témakör áttekintésével.
+- A sablonokban található erőforrástípusok JSON-szintaxisához és tulajdonságaihoz lásd: [Azure Resource Manager sablon referenciája](/azure/templates/).

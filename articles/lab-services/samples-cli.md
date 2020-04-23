@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-minták az Azure Lab Services-hez | Microsoft dokumentumok
-description: Ez a cikk az Azure CLI-parancsfájlminták listáját tartalmazza, amelyek segítenek a laborok kezelésében az Azure Lab Servicesben.
+title: Azure CLI-minták a Azure Lab Serviceshoz | Microsoft Docs
+description: Ez a cikk felsorolja az Azure CLI-szkriptek azon mintáit, amelyek segítenek a Azure Lab Servicesban található laborok kezelésében.
 services: lab-services
 author: spelluru
 manager: ''
@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 35c1a18587ebae1253bd1661a57e21c39f34ee51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 075b5dc06c59682b33c20b182e0dc585b2727027
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760504"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097846"
 ---
-# <a name="azure-cli-samples-for-azure-lab-services"></a>Azure CLI-minták az Azure Lab Services-hez
+# <a name="azure-cli-samples-for-azure-lab-services"></a>Azure CLI-minták a Azure Lab Serviceshoz
 
-Az alábbi táblázat az Azure CLI-parancsfájlok az Azure Lab Services használatával készített bash parancsfájlokra mutató hivatkozásokat tartalmaz. 
+Az alábbi táblázat a Azure Lab Services Azure CLI-parancsfájlokkal létrehozott bash-szkriptekre mutató hivatkozásokat tartalmaz. 
 
 | | |
 |---|---|
-| [Virtuális gép létrehozása és elérhetőségének ellenőrzése](scripts/create-verify-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Minimális konfigurációval létrehozott windowsos virtuális gépet. |
-| [Virtuális gép elindítása](scripts/start-connect-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Elindítja a virtuális gép. |
-| [Virtuális gép leállítása és törlése](scripts/stop-delete-virtual-machine-in-lab-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Leállítja és törli a virtuális gépeket. |
+| [Virtuális gép rendelkezésre állásának létrehozása és ellenőrzése](scripts/create-verify-virtual-machine-in-lab-cli.md) | Egy minimális konfigurációval rendelkező Windows rendszerű virtuális gépet hoz létre. |
+| [Virtuális gép elindítása](scripts/start-connect-virtual-machine-in-lab-cli.md) | Elindítja a virtuális gépet. |
+| [Virtuális gép leállítása és törlése](scripts/stop-delete-virtual-machine-in-lab-cli.md) | Leállítja és törli a virtuális gépet. |

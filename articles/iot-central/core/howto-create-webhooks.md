@@ -1,47 +1,119 @@
 ---
-title: Webhookok létrehozása szabályokon az Azure IoT Centralban | Microsoft dokumentumok
-description: Hozzon létre webhookokat az Azure IoT Centralban, hogy automatikusan értesítse a többi alkalmazást, amikor a szabályok elindulnak.
+title: Webhookok létrehozása a szabályokban az Azure IoT Centralban | Microsoft Docs
+description: Hozzon létre webhookokat az Azure IoT Centralban, hogy automatikusan értesítse a többi alkalmazást, amikor a szabályok tüzet mutatnak.
 author: viv-liu
 ms.author: viviali
-ms.date: 12/02/2019
+ms.date: 04/03/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: d97bd7a3c6de92f22a9880040f407960d5257f6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb80b54c75d637842c5f50d9336629dedf758fa
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158095"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100124"
 ---
-# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Webhook-műveletek létrehozása szabályokon az Azure IoT Centralban
+# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Webhook-műveletek létrehozása az Azure-beli szabályokon IoT Central
 
-*Ez a témakör az építőkre és a rendszergazdákra vonatkozik.*
+*Ez a témakör az építők és a rendszergazdákra vonatkozik.*
 
-A webhookok lehetővé teszik az IoT Central alkalmazás más alkalmazásokkal és szolgáltatásokkal való csatlakoztatását a távoli figyelés és értesítések érdekében. A webhookok automatikusan értesítik a többi alkalmazást és szolgáltatást, amelyeket akkor kapcsol össze, amikor egy szabály aktiválódik az IoT Central alkalmazásban. Az IoT Central alkalmazás postakérést küld a másik alkalmazás HTTP-végpontjára, amikor egy szabály aktiválódik. A hasznos adat tartalmazza az eszköz adatait és a szabály eseményindító részleteit.
+A webhookok lehetővé teszik a IoT Central alkalmazás csatlakoztatását más alkalmazásokhoz és szolgáltatásokhoz távoli figyeléshez és értesítésekhez. A webhookok automatikusan értesítik a többi olyan alkalmazást és szolgáltatást, amely akkor csatlakozik, amikor egy szabály aktiválódik a IoT Central alkalmazásban. A IoT Central alkalmazás POST-kérést küld a másik alkalmazás HTTP-végpontjának, amikor egy szabály aktiválódik. A hasznos adat tartalmazza az eszköz adatait és a szabály-trigger részleteit.
 
 ## <a name="set-up-the-webhook"></a>A webhook beállítása
 
-Ebben a példában a RequestBin-hoz csatlakozik, hogy értesítést kapjon, ha a szabályok webhookok használatával tűz.
+Ebben a példában a RequestBin-hez csatlakozik, hogy értesítést kapjon a szabályok webhookok használatával történő bejelentéséről.
 
-1. Nyissa [meg a RequestBin](https://requestbin.net/)t.
+1. Nyissa meg a [RequestBin](https://requestbin.net/).
 
-1. Hozzon létre egy új RequestBin-t, és másolja a **raktárhely URL-címét.**
+1. Hozzon létre egy új RequestBin, és másolja a **bin URL-címét**.
 
-1. [Telemetriai szabály](tutorial-create-telemetry-rules.md)létrehozása. Mentse a szabályt, és adjon hozzá új műveletet.
+1. Hozzon létre egy [telemetria-szabályt](tutorial-create-telemetry-rules.md). Mentse a szabályt, és adjon hozzá egy új műveletet.
 
-    ![Webhook létrehozási képernyő](media/howto-create-webhooks/webhookcreate.png)
+    ![Webhook-létrehozási képernyő](media/howto-create-webhooks/webhookcreate.png)
 
-1. Válassza ki a webhook műveletet, és adjon meg egy megjelenítendő nevet, és illessze be a bin URL-t a visszahívás URL-címeként.
+1. Válassza ki a webhook műveletet, és adjon meg egy megjelenítendő nevet, és illessze be a bin URL-címet a visszahívási URL-címként.
 
-1. Mentsd a szabályt.
+1. Mentse a szabályt.
 
-Most, amikor a szabály aktiválódik, megjelenik egy új kérelem jelenik meg a RequestBin.
+Most, hogy a szabály aktiválódik, megjelenik egy új kérelem a RequestBin.
 
-## <a name="payload"></a>Hasznos teher
+## <a name="payload"></a>Adattartalom
 
-Amikor egy szabály aktiválódik, egy HTTP POST-kérelem érkezik a visszahívási URL-címet tartalmazó json tartalom a telemetriai adatok, eszköz, szabály és az alkalmazás részleteit. A hasznos teher a következőkre néz ki:
+Egy szabály indításakor a rendszer HTTP POST-kérelmet küld a telemetria, az eszköz, a szabály és az alkalmazás részleteit tartalmazó JSON-adattartalommal rendelkező visszahívási URL-címre. A hasznos adatok a következőhöz hasonlóak:
+
+```json
+{
+    "timestamp": "2020-04-06T00:20:15.06Z",
+    "action": {
+        "id": "<id>",
+        "type": "WebhookAction",
+        "rules": [
+            "<rule_id>"
+        ],
+        "displayName": "Webhook 1",
+        "url": "<callback_url>"
+    },
+    "application": {
+        "id": "<application_id>",
+        "displayName": "Contoso",
+        "subdomain": "contoso",
+        "host": "contoso.azureiotcentral.com"
+    },
+    "device": {
+        "id": "<device_id>",
+        "etag": "<etag>",
+        "displayName": "MXChip IoT DevKit - 1yl6vvhax6c",
+        "instanceOf": "<device_template_id>",
+        "simulated": true,
+        "provisioned": true,
+        "approved": true,
+        "cloudProperties": {
+            "City": {
+                "value": "Seattle"
+            }
+        },
+        "properties": {
+            "deviceinfo": {
+                "firmwareVersion": {
+                    "value": "1.0.0"
+                }
+            }
+        },
+        "telemetry": {
+            "<interface_instance_name>": {
+                "humidity": {
+                    "value": 47.33228889360127
+                }
+            }
+        }
+    },
+    "rule": {
+        "id": "<rule_id>",
+        "displayName": "Humidity monitor"
+    }
+}
+```
+Ha a szabály az összesített telemetria egy adott időszakon belül figyeli, akkor a hasznos adatok egy másik telemetria szakaszt fognak tartalmazni.
+
+```json
+{
+    "telemetry": {
+        "<interface_instance_name>": {
+            "Humidity": {
+                "avg": 39.5
+            }
+        }
+    }
+}
+```
+
+## <a name="data-format-change-notice"></a>Adatformátum-változási Megjegyzés
+
+Ha egy vagy több, a **2020. április 3.** előtt létrehozott webhooktal rendelkezik, akkor törölnie kell a webhookot, és létre kell hoznia egy új webhookot. Ennek az az oka, hogy a régebbi webhookok egy régebbi hasznos adattartalom-formátumot használnak, amely a jövőben elavulttá válik.
+
+### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>Webhook hasznos adatai (2020. április 3.)
 
 ```json
 {
@@ -80,10 +152,10 @@ Amikor egy szabály aktiválódik, egy HTTP POST-kérelem érkezik a visszahív�
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 
-Jelenleg nincs programozott módon feliratkozás / leiratkozás ezekből webhooks egy API-t.
+Jelenleg nincs programozási mód a webhookok API-n keresztül történő előfizetésére/lemondása.
 
-Ha van ötlete, hogyan lehetne javítani ezt a funkciót, tegye a javaslatokat, hogy a [felhasználói hang fórum](https://feedback.azure.com/forums/911455-azure-iot-central).
+Ha Ötletei vannak a funkció fejlesztéséhez, tegye a javaslatait a [felhasználói hangalapú fórumba](https://feedback.azure.com/forums/911455-azure-iot-central).
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta a webhookok beállítását és használatát, a javasolt következő lépés az [Azure Monitor műveletcsoportok konfigurálásának](howto-use-action-groups.md)feltárása.
+Most, hogy megismerte a webhookok beállítását és használatát, a javasolt következő lépés az [Azure monitor műveleti csoportok konfigurálásának](howto-use-action-groups.md)megismerése.

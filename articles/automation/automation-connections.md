@@ -1,87 +1,87 @@
 ---
-title: Kapcsolatok kezelése az Azure Automationben
-description: Az Azure Automation kapcsolati eszközei tartalmazzák a runbookból vagy DSC-konfigurációból egy külső szolgáltatáshoz vagy alkalmazáshoz való csatlakozáshoz szükséges információkat. Ez a cikk ismerteti a kapcsolatok részleteit, és hogyan működik velük mind szöveges, mind grafikus szerzői nyelven.
+title: Kapcsolatok kezelése Azure Automationban
+description: A Azure Automation kapcsolati eszközei tartalmazzák azokat az információkat, amelyek a külső szolgáltatáshoz vagy alkalmazáshoz való kapcsolódáshoz szükségesek egy runbook vagy DSC-konfigurációból. Ez a cikk ismerteti a kapcsolatok részleteit, valamint azt, hogy miként dolgozhat velük a szöveges és a grafikus létrehozásban.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 90d4ec1bbfd0d76ffedf1505c9147376e3947c3c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 39a41a60f4cabe995ebd458c4b906438d1e31bde
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729058"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097115"
 ---
-# <a name="manage-connections-in-azure-automation"></a>Kapcsolatok kezelése az Azure Automationben
+# <a name="manage-connections-in-azure-automation"></a>Kapcsolatok kezelése Azure Automationban
 
-Az Automation-kapcsolati eszköz tartalmazza a runbookvagy DSC-konfigurációból egy külső szolgáltatáshoz vagy alkalmazáshoz való csatlakozáshoz szükséges információkat. Ez magában foglalhatja a hitelesítéshez szükséges információkat, például a kapcsolati adatokon, például az URL-címen vagy a porton kívül a felhasználónevet és a jelszót. A kapcsolat értéke megtartja az összes tulajdonságot egy adott alkalmazáshoz való csatlakozáshoz egy eszközben, szemben a több változó létrehozásával. A felhasználó egy helyen szerkesztheti egy kapcsolat értékeit, és egyetlen paraméterben átadhatja a kapcsolat nevét egy runbook- vagy DSC-konfigurációhoz. A kapcsolatok tulajdonságai a runbook vagy a DSC konfigurációjában érhetők el a `Get-AutomationConnection` tevékenységgel.
+Az Automation-kapcsolati eszköz tartalmazza azokat az információkat, amelyek szükségesek egy külső szolgáltatáshoz vagy alkalmazáshoz való kapcsolódáshoz egy runbook vagy DSC-konfigurációból. Ez magában foglalhatja a hitelesítéshez szükséges adatokat, például a felhasználónevet és a jelszót, valamint a kapcsolódási adatokat, például egy URL-címet vagy egy portot. A kapcsolat értéke egy adott alkalmazáshoz való csatlakozáshoz szükséges összes tulajdonság megtartása egy adott eszközön, a több változó létrehozása helyett. A felhasználó egy helyen szerkesztheti a kapcsolatok értékeit, és egy runbook vagy DSC-konfigurációhoz is átadhatja a kapcsolatok nevét egyetlen paraméterben. A kapcsolat tulajdonságai a runbook vagy a `Get-AutomationConnection` DSC-konfigurációban a tevékenységgel érhetők el.
 
-Kapcsolat létrehozásakor meg kell adnia egy kapcsolattípust. A kapcsolat típusa egy olyan sablon, amely tulajdonságok készletét határozza meg. A kapcsolat a kapcsolat típusában meghatározott minden egyes tulajdonság értékeit határozza meg. A kapcsolattípusok az integrációs modulokban lévő Azure Automation-hez kerülnek, vagy az [Azure Automation API-val](/previous-versions/azure/reference/mt163818(v=azure.100)) jönnek létre, ha az integrációs modul kapcsolattípust tartalmaz, és importálja az Automation-fiókba. Ellenkező esetben létre kell hoznia egy metaadatfájlt az Automation-kapcsolat típusának megadásához. Ezzel kapcsolatban további információt az [Integrációs modulok című témakörben talál.](automation-integration-modules.md)
-
->[!NOTE]
->Az Azure Automation biztonságos eszközei közé tartoznak a hitelesítő adatok, tanúsítványok, kapcsolatok és titkosított változók. Ezek az eszközök titkosítva vannak, és az Azure Automation-ben egy egyedi kulcs használatával, amely minden Automation-fiókhoz létrejön. Ez a kulcs egy rendszer által felügyelt Key Vault tárolja. A biztonságos eszköz tárolása előtt a kulcs betöltődik a Key Vaultból, és ezután az eszköz titkosításához használható. Ezt a folyamatot az Azure Automation kezeli.
+A kapcsolatok létrehozásakor meg kell adnia egy kapcsolattípus-típust. A kapcsolat típusa egy olyan sablon, amely a tulajdonságok készletét határozza meg. A kapcsolat meghatározza a kapcsolati típusában definiált egyes tulajdonságok értékeit. A kapcsolódási típusok hozzáadása a Azure Automation integrációs modulokban vagy a [Azure Automation API](/previous-versions/azure/reference/mt163818(v=azure.100)) -val együtt, ha az integrációs modul tartalmaz egy kapcsolattípust, és az Automation-fiókjába lett importálva. Ellenkező esetben létre kell hoznia egy metaadat-fájlt az Automation-kapcsolattípus megadásához. Ezzel kapcsolatban további információt az [integrációs modulok](automation-integration-modules.md)című témakörben talál.
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](automation-update-azure-modules.md)
+>Azure Automation a biztonságos adategységek közé tartoznak a hitelesítő adatok, a tanúsítványok, a kapcsolatok és a titkosított változók. Ezeket az eszközöket a rendszer titkosítja és tárolja Azure Automation az egyes Automation-fiókokhoz generált egyedi kulcs használatával. Ezt a kulcsot a rendszer felügyelt Key Vault tárolja. A biztonságos eszköz tárolása előtt a kulcs betöltődik Key Vault, majd az eszköz titkosítására szolgál. Ezt a folyamatot a Azure Automation felügyeli.
+
+>[!NOTE]
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="connection-types"></a>Kapcsolattípusok
 
-Az Azure Automationben háromféle beépített kapcsolat érhető el:
+A Azure Automationban háromféle beépített kapcsolat érhető el:
 
-* **Azure** – Ez a kapcsolat klasszikus erőforrások kezelésére használható.
-* **AzureClassicCertificate** – Ezt a kapcsolatot az **AzureClassicRunAs-fiók** használja.
-* **AzureServicePrincipal** – Ezt a kapcsolatot az **AzureRunAs-fiók** használja.
+* **Azure** – ez a Kapcsolódás a klasszikus erőforrások kezelésére használható.
+* **AzureClassicCertificate** – ezt a kapcsolatokat a **AzureClassicRunAs** -fiók használja.
+* **AzureServicePrincipal** – ezt a kapcsolatokat a **AzureRunAs** -fiók használja.
 
-A legtöbb esetben nem kell kapcsolati erőforrást létrehoznia, mert az [futtatási mint fiók](manage-runas-account.md)létrehozásakor jön létre.
+A legtöbb esetben nem kell létrehoznia egy kapcsolódási erőforrást, mert a [futtató fiók](manage-runas-account.md)létrehozásakor jön létre.
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell-parancsmagok
 
-Az alábbi táblázatban található parancsmagok a Windows PowerShell automation-kapcsolatainak létrehozásához és kezeléséhez használatosak. Az [Azure PowerShell-modul](/powershell/azure/overview)részeként szállítanak, amely az Automation runbookok és a DSC-konfigurációk ban használható.
+Az alábbi táblázatban található parancsmagokkal automatizálási kapcsolatokat hozhat létre és kezelhet a Windows PowerShell használatával. A [Azure PowerShell modul](/powershell/azure/overview)részeként szállítják, amely az Automation runbookok és a DSC-konfigurációkhoz is használható.
 
 |Parancsmag|Leírás|
 |---|---|
-|[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Beolvassa a kapcsolatot. Tartalmaz egy kivonattáblát a kapcsolatmezők értékeivel.|
-|[Új-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Új kapcsolatot hoz létre.|
-|[Eltávolítás-AzAutomationConnection](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Meglévő kapcsolat eltávolítása.|
-|[Set-AzAutomationConnectionFieldValue érték](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Beállítja egy létező kapcsolat adott mezőjének az értékét.|
+|[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Egy-egy kapcsolatok beolvasása. A szórótábla tartalmazza a kapcsolatok mezőinek értékeit.|
+|[Új – AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Új kapcsolatot hoz létre.|
+|[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Eltávolítja a meglévő kapcsolatokat.|
+|[Set-AzAutomationConnectionFieldValue](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Beállítja egy létező kapcsolat adott mezőjének az értékét.|
 
 ## <a name="activities"></a>Tevékenységek
 
-Az alábbi táblázatban szereplő tevékenységek runbook- vagy DSC-konfigurációban lévő kapcsolatok elérésére szolgálnak.
+Az alábbi táblázatban szereplő tevékenységek a runbook vagy DSC-konfigurációban lévő kapcsolatok elérésére szolgálnak.
 
 |Tevékenységek|Leírás|
 |---|---|
-|`Get-AutomationConnection` | Kapcsolatot kap a használatához. A kapcsolat tulajdonságaival rendelkező kivonatot ad eredményül.|
+|`Get-AutomationConnection` | Lekéri a használni kívánt kapcsolódási lehetőséget. Egy olyan szórótábla ad vissza, amely a kapcsolatok tulajdonságaival rendelkezik.|
 
 >[!NOTE]
->Kerülje a változók `Name` használatát `Get-AutomationConnection`a paraméterrel. Ennek a paraméternek a használata megnehezítheti a runbookok vagy dsc-konfigurációk és a csatlakozási eszközök közötti függőségek felderítését a tervezés időpontjában.
+>Ne használjon változókat a `Name` paraméterrel `Get-AutomationConnection`. Ennek a paraméternek a használata megnehezítheti a runbookok vagy DSC-konfigurációk közötti függőségek felderítését, valamint a kapcsolati adategységeket a tervezéskor.
 
 ## <a name="python-2-functions"></a>Python 2 függvények
 
-Az alábbi táblázatban található függvény a Python 2 runbookok kapcsolatainak elérésére szolgál.
+A következő táblázatban szereplő függvény a kapcsolatoknak a Python 2 runbook való elérésére szolgál.
 
 | Függvény | Leírás |
 |:---|:---|
-| `automationassets.get_automation_connection` | Beolvassa a kapcsolatot. A kapcsolat tulajdonságaival rendelkező szótárat ad eredményül. |
+| `automationassets.get_automation_connection` | Egy-egy kapcsolatok beolvasása. Egy olyan szótárt ad vissza, amely a kapcsolatok tulajdonságaival rendelkezik. |
 
 > [!NOTE]
-> Az eszközfüggvények eléréséhez importálnia kell a `automationassets` modult a Python runbook tetején.
+> Az Asset functions `automationassets` eléréséhez importálnia kell a modult a Python-runbook tetején.
 
-## <a name="creating-a-new-connection"></a>Új kapcsolat létrehozása
+## <a name="creating-a-new-connection"></a>Új kapcsolatok létrehozása
 
-### <a name="to-create-a-new-connection-with-the-azure-portal"></a>Új kapcsolat létrehozása az Azure Portalon
+### <a name="create-a-new-connection-with-the-azure-portal"></a>Új kapcsolatok létrehozása a Azure Portal
 
-1. Az Automation-fiókból kattintson az **Eszközök** részre az **Eszközök** panel megnyitásához.
-2. Kattintson a **Kapcsolatok** **menügombra** a Kapcsolatok panel megnyitásához.
-3. Kattintson a panel tetején a **Kapcsolat hozzáadása** elemre.
-4. A **Típus** legördülő menüben válassza ki a létrehozni kívánt kapcsolat típusát. Az űrlap bemutatja az adott típus tulajdonságait.
-5. Töltse ki az űrlapot, és kattintson a **Létrehozás** gombra az új kapcsolat mentéséhez.
+1. Az Automation-fiókban kattintson az **assets** (eszközök) elemre az **eszközök** panel megnyitásához.
+2. Kattintson a **kapcsolatok** elemre a **kapcsolatok** panel megnyitásához.
+3. Kattintson a panel tetején a **kapcsolatok hozzáadása** lehetőségre.
+4. A **típus** legördülő menüben válassza ki a létrehozni kívánt kapcsolódási típust. Az űrlap az adott típus tulajdonságait fogja bemutatni.
+5. Töltse ki az űrlapot, és kattintson a **Létrehozás** gombra az új kapcsolódás mentéséhez.
 
-### <a name="to-create-a-new-connection-with-windows-powershell"></a>Új kapcsolat létrehozása a Windows PowerShell lel
+### <a name="create-a-new-connection-with-windows-powershell"></a>Új Windows PowerShell-kapcsolatok létrehozása
 
-Hozzon létre egy új kapcsolatot `New-AzAutomationConnection` a Windows PowerShell a parancsmag használatával. Ennek a parancsmagnak `ConnectionFieldValues` van egy nevű paramétere, amely [kivonatoló](https://technet.microsoft.com/library/hh847780.aspx) értékeket vár a kapcsolattípus által meghatározott tulajdonságok mindegyikéhez.
+Hozzon létre egy új Windows PowerShell-kapcsolatokat `New-AzAutomationConnection` a parancsmag használatával. Ehhez a parancsmaghoz tartozik egy `ConnectionFieldValues` nevű paraméter, amely egy [szórótábla](https://technet.microsoft.com/library/hh847780.aspx) határozza meg a kapcsolattípus által meghatározott egyes tulajdonságok értékeit.
 
-A következő példaparancsokat használhatja a Futtatás másként fiók portálról történő létrehozásának alternatívájaként egy új kapcsolati eszköz létrehozásához.
+Az alábbi parancsokkal Alternatív megoldásként is létrehozhatja a futtató fiókot a portálon egy új kapcsolódási eszköz létrehozásához.
 
 ```powershell
 $ConnectionAssetName = "AzureRunAsConnection"
@@ -89,15 +89,15 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-A parancsfájl segítségével létrehozhatja a kapcsolati eszközt, mert az Automation-fiók létrehozásakor alapértelmezés szerint automatikusan `AzureServicePrincipal` több `AzureRunAsConnection` globális modult is tartalmaz a kapcsolattípussal együtt a kapcsolati eszköz létrehozásához. Ezt fontos szem előtt tartani, mert ha megpróbál létrehozni egy új kapcsolati eszközt, hogy egy másik hitelesítési módszerrel csatlakozzon egy szolgáltatáshoz vagy alkalmazáshoz, az sikertelen lesz, mert a kapcsolat típusa még nincs definiálva az Automation-fiókban. Ha többet szeretne tudni arról, hogy miként hozhat létre saját kapcsolattípust egyéni vagy modulhoz a [PowerShell-galériából,](https://www.powershellgallery.com)olvassa el az Integrációs modulok című [témakört.](automation-integration-modules.md)
+Az Automation-fiók létrehozásakor a szolgáltatás alapértelmezés szerint több globális modult is tartalmaz, valamint a kapcsolódási `AzureServicePrincipal` típust `AzureRunAsConnection` a kapcsolódási eszköz létrehozásához. Ha egy másik hitelesítési módszerrel rendelkező szolgáltatáshoz vagy alkalmazáshoz való csatlakozáshoz próbál új kapcsolati objektumot létrehozni, a művelet meghiúsul, mert a kapcsolat típusa még nincs definiálva az Automation-fiókban. Az egyéni [PowerShell-Galéria](https://www.powershellgallery.com) modulhoz tartozó saját kapcsolattípus létrehozásával kapcsolatos további információkért lásd: [integrációs modulok](automation-integration-modules.md).
 
-## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Kapcsolat használata runbook- vagy DSC-konfigurációban
+## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Runbook vagy DSC-konfigurációban létesített kapcsolatok használata
 
-Kapcsolat lekérése egy runbook vagy DSC konfigurációban a `Get-AutomationConnection` parancsmaggal. A `Get-AzAutomationConnection` tevékenység nem használható. Ez a tevékenység beolvassa a kapcsolat különböző mezőinek értékeit, és kivonattáblázatként adja vissza [azokat.](https://go.microsoft.com/fwlink/?LinkID=324844) Ez a kivonatolás ezután használható a megfelelő parancsokkal a runbook vagy a DSC konfigurációjában.
+Runbook vagy DSC-konfigurációval rendelkező kapcsolatok lekérése `Get-AutomationConnection` a parancsmaggal. A `Get-AzAutomationConnection` tevékenység nem használható. Ez a tevékenység lekéri a kapcsolatok különböző mezőinek értékeit, és visszaadja őket [szórótábla](https://go.microsoft.com/fwlink/?LinkID=324844). Ezt a szórótábla ezután a runbook vagy a DSC-konfiguráció megfelelő parancsaival használhatja.
 
 ### <a name="textual-runbook-sample"></a>Szöveges runbook minta
 
-A következő mintaparancsok bemutatják, hogyan használhatja a Futtatás mint korábban említett fiókot az Azure Resource Manager erőforrásaival való hitelesítéshez a runbookban. A Futtatás másként fiókot képviselő csatlakozási eszközt használja, amely a tanúsítványalapú egyszerű szolgáltatásra hivatkozik, nem a hitelesítő adatokra.
+Az alábbi példák azt mutatják be, hogyan használható a korábban említett futtató fiók a runbook Azure Resource Manager erőforrásaival történő hitelesítéshez. A futtató fiókot jelképező, a tanúsítványon alapuló egyszerű szolgáltatásnév, a hitelesítő adatokkal nem rendelkező eszközre hivatkozik.
 
 ```powershell
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -105,21 +105,21 @@ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.
 ```
 
 > [!NOTE]
-> Nem grafikus PowerShell-runbookok esetén, `Add-AzAccount` és `Add-AzureRMAccount` a [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Használhatja ezeket a parancsmagokat, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verziókra. Előfordulhat, hogy frissítenie kell a modulokat, még akkor is, ha nemrég létrehozott egy új Automation-fiókot.
+> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint `Add-AzureRMAccount` a [csatlakozási-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
 
-### <a name="graphical-runbook-samples"></a>Grafikus runbook-minták
+### <a name="graphical-runbook-samples"></a>Grafikus runbook minták
 
-Tevékenység `Get-AutomationConnection` hozzáadása grafikus runbookhoz úgy, hogy a jobb gombbal a grafikus szerkesztő Könyvtár ablaktáblájában a kapcsolatra kattint, és a **Hozzáadás a vászonhoz parancsot**választja.
+A `Get-AutomationConnection` tevékenységek grafikus runbook való hozzáadásához kattintson a jobb gombbal a kapcsolódásra a grafikus szerkesztő könyvtár paneljén, és válassza a **Hozzáadás a vászonhoz**lehetőséget.
 
-![hozzáadás vászonhoz](media/automation-connections/connection-add-canvas.png)
+![Hozzáadás a vászonhoz](media/automation-connections/connection-add-canvas.png)
 
-Az alábbi képen egy példa egy kapcsolat használata egy grafikus runbook. Ez ugyanaz a példa, mint a fent látható a Futtatás másként fiók szöveges runbookhasználatával történő hitelesítéséhez. Ez a `Constant value` példa a `Get RunAs Connection` kapcsolatobjektumot hitelesítéshez használó tevékenység adatkészletét használja. A [folyamatkapcsolat](automation-graphical-authoring-intro.md#links-and-workflow) itt használatos, mivel a `ServicePrincipalCertificate` paraméterkészlet egyetlen objektumot vár.
+Az alábbi ábrán egy példa látható a kapcsolatok grafikus runbook való használatára. Ez ugyanaz a példa, ahogy a fentiekben is látható, a futtató fiókkal a szöveges runbook való hitelesítéshez. Ez a példa az `Constant value` adatkészletet használja `Get RunAs Connection` arra a tevékenységre, amely a hitelesítéshez egy kapcsolatok objektumot használ. Itt szerepel egy [folyamat hivatkozása](automation-graphical-authoring-intro.md#links-and-workflow) , mert `ServicePrincipalCertificate` a paraméter-készlet egyetlen objektumot vár.
 
-![kapcsolatok bekapcsolása](media/automation-connections/automation-get-connection-object.png)
+![kapcsolatok beolvasása](media/automation-connections/automation-get-connection-object.png)
 
 ### <a name="python-2-runbook-sample"></a>Python 2 runbook minta
 
-Az alábbi minta bemutatja, hogyan hitelesíthető a Futtatás másként kapcsolat használatával egy Python 2 runbookban.
+A következő minta azt mutatja be, hogyan lehet hitelesíteni a hitelesítést a Python 2 runbook futtató kapcsolódási funkciójával.
 
 ```python
 """ Tutorial to show how to authenticate against Azure resource manager resources """
@@ -164,7 +164,7 @@ azure_credential = get_automation_runas_credential(runas_connection)
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át [a hivatkozásokat a grafikus szerzői,](automation-graphical-authoring-intro.md#links-and-workflow) hogy megértsék, hogyan irányíthatja és szabályozhatja a logikát a runbookok.
-* A PowerShell-parancsmag referencia, lásd: [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+- Tekintse át a [grafikus authoring-hivatkozásokat](automation-graphical-authoring-intro.md#links-and-workflow) , hogy megtudja, hogyan irányíthatja és irányíthatja a logikát a runbookok.
+* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
-- Ha többet szeretne megtudni arról, hogy az Azure Automation hogyan használja a PowerShell-modulokat, és gyakorlati tanácsokat szeretne saját PowerShell-modulok létrehozásához, hogy integrációs modulként működjenek az Azure Automationben, olvassa el az Integrációs modulok című [témakört.](automation-integration-modules.md)
+- Ha többet szeretne megtudni a PowerShell-modulok Azure Automation használatáról, valamint a saját PowerShell-modulok létrehozásával kapcsolatos ajánlott eljárásokat a Azure Automationon belüli integrációs modulokként való munkához, tekintse meg az [integrációs modulokat](automation-integration-modules.md).

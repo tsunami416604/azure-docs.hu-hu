@@ -1,101 +1,99 @@
 ---
-title: A teljesítmény optimalizálása az Azure Lsv2 sorozatú virtuális gépeken – Storage
-description: Ismerje meg, hogyan optimalizálhatja a teljesítményt a megoldáshoz az Lsv2 sorozatú virtuális gépeken.
-services: virtual-machines-windows
+title: Teljesítmény optimalizálása az Azure Lsv2-sorozatú virtuális gépeken – tárterület
+description: Ismerje meg, hogyan optimalizálhatja megoldásának teljesítményét a Lsv2-sorozatú virtuális gépeken.
 author: sasha-melamed
-manager: gwallace
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.subservice: sizes
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 57b248908a02327f2521be05920259681a26817a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd15df2a7074463789bcf4a2d4de3c41bd012bbb
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920229"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100549"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimalizálja a teljesítményt az Lsv2 sorozatú virtuális gépeken
+# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>A Lsv2-sorozatú virtuális gépek teljesítményének optimalizálása
 
-Az Lsv2 sorozatú virtuális gépek számos olyan számítási feladatot támogatnak, amelyek magas I/O-t és átviteli kapacitást igényelnek a helyi tárolókban az alkalmazások és iparágak széles körében.  Az Lsv2 sorozat ideális big data, SQL, NoSQL adatbázisok, adattárház és nagy tranzakciós adatbázisok, beleértve a Cassandra, MongoDB, Cloudera és Redis.
+A Lsv2 sorozatú virtuális gépek számos olyan munkaterhelést támogatnak, amelyek nagy I/O-és átviteli sebességet igényelnek a helyi tárterületen számos alkalmazás és iparág esetében.  A Lsv2 sorozat ideális a Big Database, az SQL, a NoSQL adatbázisok, az adattárházak és a nagy tranzakciós adatbázisok, például a Cassandra, a MongoDB, a Cloudera és a Redis számára.
 
-Az Lsv2 sorozatú virtuális gépek (VM-ek) kialakítása maximalizálja az AMD EPYC™ 7551 processzort, hogy a legjobb teljesítményt nyújtsa a processzor, a memória, az NVMe-eszközök és a virtuális gépek között. A hardverteljesítmény maximalizálása mellett az Lsv2 sorozatú virtuális gépeket úgy tervezték, hogy a hardverrel és a szoftverrel való jobb teljesítmény érdekében a Windows és Linux operációs rendszerek igényeinek megfelelően működjenek.
+A Lsv2 sorozatú Virtual Machines (VM-EK) kialakítása maximalizálja az AMD EPYC™ 7551 processzort, hogy a lehető legjobb teljesítményt nyújtsa a processzor, a memória, a NVMe-eszközök és a virtuális gépek között. A hardveres teljesítmény maximalizálása mellett a Lsv2 sorozatú virtuális gépek úgy vannak kialakítva, hogy a Windows-és Linux-operációs rendszerek igényeivel működjenek a hardver és a szoftver jobb teljesítményének növelése érdekében.
 
-A szoftver és a hardver finomhangolása a [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)optimalizált verzióját eredményezte , amely 2018 december elején jelent meg az Azure Piactéren, amely támogatja az Lsv2 sorozatú virtuális gépek NVMe-eszközeinek maximális teljesítményét.
+A szoftver és a hardver finomhangolása a [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)optimalizált verzióját eredményezte, amely az Azure Marketplace-en 2018 jelent meg, amely támogatja a maximális teljesítményt a NVMe-eszközökön a Lsv2 sorozatú virtuális gépeken.
 
-Ez a cikk tippeket és javaslatokat tartalmaz annak biztosítására, hogy a számítási feladatok és az alkalmazások a virtuális gépekbe tervezett maximális teljesítményt érjék el. Az ezen az oldalon található információk folyamatosan frissülnek, amint több Lsv2-re optimalizált lemezkép kerül az Azure Piactérre.
+Ez a cikk tippeket és javaslatokat tartalmaz, amelyekkel biztosíthatja, hogy a munkaterhelések és az alkalmazások a virtuális gépek számára tervezett maximális teljesítményt érjenek el. Az ezen a lapon található információk folyamatosan frissülnek, mivel az Azure piactéren egyre több Lsv2 optimalizált rendszerkép kerül be.
 
-## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™ lapkakészlet architektúra
+## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™ lapkakészlet architektúrája
 
-Az Lsv2 sorozatú virtuális gépek AMD EYPC™ zen mikroarchitektúrán alapuló kiszolgálóprocesszorokat használnak. Az AMD az Infinity Fabric (IF) for EYPC™ as ascalable connect for its NUMA model that could be used for on-die, on-package, and multi-package communications. Az Intel modern monolitikus processzorain használt QPI-vel (Quick-Path Interconnect) és UPI-vel (Ultra-Path Interconnect) összehasonlítva az AMD sok NUMA kis-die architektúrája mind a teljesítményelőnyöket, mind a kihívásokat növelheti. A memória sávszélességének és a késési korlátoknak a tényleges hatása a futó számítási feladatok típusától függően változhat.
+Az Lsv2 sorozatú virtuális gépek az AMD EYPC™ kiszolgálói processzorokat használják a Zen-architektúrán alapuló kiszolgálókon. Az AMD által fejlesztett Infinity Fabric (IF) a EYPC™ méretezhető összekötőként a NUMA-modellhez, amely a Die, a Package és a multi-Package kommunikációhoz használható. A QPI (Quick-Path Interconnect) és az UPI (Ultra-Path Interconnect) az Intel modern monolitikus-Die-processzorokkal való összevetésével az AMD sok NUMA-alapú kis testű architektúrája teljesítménybeli előnyökkel és kihívásokkal is járhat. A memória-sávszélesség és a késési korlátok tényleges hatása a futtatott számítási feladatok típusától függően változhat.
 
 ## <a name="tips-for-maximizing-performance"></a>Tippek a teljesítmény maximalizálásához
 
-* Az Lsv2 sorozatú virtuális gépeket működtető hardver nyolc I/O várólista-párral (QP) használja az NVMe-eszközöket. Minden NVMe eszköz I/O-várólista valójában egy pár: egy beküldési és egy befejezési várólista. Az NVMe illesztőprogram úgy van beállítva, hogy optimalizálja a nyolc I/O qP kihasználtságát az I/O-k ciklikus multiplexelési ütemezésben történő terjesztésével. A maximális teljesítmény érdekében eszközenként nyolc feladatot kell futtatni, hogy megfeleljen.
+* A Lsv2 sorozatú virtuális gépeket kihasználó hardverek nyolc I/O üzenetsor (QP) s NVMe-eszközöket használnak. Minden NVMe-eszköz I/O-várólistája tulajdonképpen egy pár: egy küldési várólista és egy befejezési várólista. A NVMe illesztőprogram úgy van beállítva, hogy optimalizálja a nyolc I/O-QPs kihasználtságát, ha az I/O-t egy ciklikus időszeletelési ütemterv szerint terjeszti. A maximális teljesítmény érdekében minden eszközön nyolc feladatot futtasson az egyeztetéshez.
 
-* Ne keverje az NVMe felügyeleti parancsokat (például NVMe SMART info lekérdezést stb.) az NVMe I/O parancsokkal az aktív munkaterhelések során. Az Lsv2 NVMe eszközöket a Hyper-V NVMe Direct technológia támogatja, amely "lassú módba" vált, ha bármely NVMe admin parancs függőben van. Lsv2 használók tudna lát egy drámai előadás csepp -ban NVMe I/O előadás ha amit történik.
+* Ne keverje a NVMe-felügyeleti parancsokat (például NVMe SMART info Query stb.) az aktív számítási feladatok során NVMe I/O-parancsokkal. A Lsv2 NVMe-eszközöket a Hyper-V NVMe Direct technológiája támogatja, amely a "lassú üzemmód" értékre vált, amikor bármilyen NVMe rendszergazdai parancs függőben van. Ha ez történik, a Lsv2-felhasználók drámai teljesítménybeli csökkenést láthatnak a NVMe I/O-teljesítményében.
 
-* Lsv2 felhasználók nem támaszkodhat eszköz NUMA adatok (mind 0) jelentett a virtuális gép adatmeghajtók dönta numa affinitása az alkalmazások. A jobb teljesítmény ajánlott módja a számítási feladatok terjesztése a processzorok között, ha lehetséges. 
+* A Lsv2-felhasználók nem hivatkozhatnak a virtuális gépen belül az adatmeghajtók számára jelentett NUMA-információkra (mind a 0-ra), hogy kidöntsenek a NUMA-affinitást az alkalmazásaikban. A jobb teljesítmény érdekében ajánlott a számítási feladatok felosztása a processzorok között, ha lehetséges. 
 
-* Az Lsv2 VM NVMe eszköz I/O-várólista-páronkénti maximális támogatott várólista-mélysége 1024 (szemben az Amazon i3 QD 32 korláttal). Az Lsv2-felhasználóknak a (szintetikus) teljesítményértékelési számítási feladataikat az 1024-es vagy alacsonyabb várólistamélységre kell korlátozniuk, hogy elkerüljék a várólista teljes feltételeinek kiváltását, ami csökkentheti a teljesítményt.
+* A Lsv2 VM NVMe-eszközhöz tartozó I/O-várólista-párok maximális támogatott üzenetsor-mélysége 1024 (vs. Amazon i3 QD 32 limit). A Lsv2-felhasználóknak a (szintetikus) teljesítménytesztek számítási feladatait a 1024-es vagy alacsonyabb várólista-mélységre kell korlátoznia a várólista teljes feltételeinek elindításához, ami csökkentheti a teljesítményt.
 
-## <a name="utilizing-local-nvme-storage"></a>Helyi NVMe tároló felhasználásával
+## <a name="utilizing-local-nvme-storage"></a>Helyi NVMe-tároló használata
 
-Az 1,92 TB-os NVMe lemezen lévő helyi tárolás az összes Lsv2 virtuális gépen rövid élettartamú. A virtuális gép sikeres szabványos újraindítása során a helyi NVMe-lemezen lévő adatok megmaradnak. Az adatok nem maradnak meg az NVMe-n, ha a virtuális gép újratelepítése, de-lefoglalt, vagy törölt. Az adatok nem maradnak meg, ha egy másik probléma okozza a virtuális gép, vagy a hardver fut, nem kifogástalan lesz. Ha ez történik, a régi állomáson lévő adatok biztonságosan törlődnek.
+Az 1,92 TB-os NVMe-lemez helyi tárterülete minden Lsv2 virtuális gépen elmúló. A virtuális gép sikeres újraindításakor a helyi NVMe-lemezen lévő összes információ megmarad. Ha a virtuális gépet újra üzembe helyezi, lefoglalják vagy törölték, az NVMe nem maradnak meg. Az adatvédelem nem szűnik meg, ha egy másik probléma miatt a virtuális gép vagy a rajta futó hardver nem Kifogástalan állapotba kerül. Ha ez történik, a régi gazdagépen lévő összes adat biztonságos törlésre kerül.
 
-Lesznek olyan esetek is, amikor a virtuális gépet át kell helyezni egy másik gazdagépre, például egy tervezett karbantartási művelet során. Tervezett karbantartási műveletek és néhány hardverhiba várható [az ütemezett eseményekkel.](scheduled-events.md) Ütemezett események kell használni, hogy naprakész maradjon az előre jelzett karbantartási és helyreállítási műveletek.
+Olyan esetek is előfordulnak, amikor a virtuális gépet egy másik gazdagépre kell áthelyezni, például egy tervezett karbantartási művelet során. A tervezett karbantartási műveletek és néhány hardverhiba a [Scheduled Eventssal](scheduled-events.md)várható. A Scheduled Eventst kell használni az előre jelzett karbantartási és helyreállítási műveletek frissítésének megmaradása érdekében.
 
-Abban az esetben, ha egy tervezett karbantartási esemény megköveteli, hogy a virtuális gép újra létre kell hozni egy új állomás üres helyi lemezekkel, az adatokat újra kell szinkronizálni (ismét a régi állomás on-t, hogy biztonságosan törlik). Ennek az az oka, hogy az Lsv2 sorozatú virtuális gépek jelenleg nem támogatják az élő áttelepítést a helyi NVMe-lemezen.
+Abban az esetben, ha egy tervezett karbantartási esemény megköveteli, hogy a virtuális gép új, üres helyi lemezekkel rendelkező gazdagépen legyen létrehozva, akkor az adatokat újra kell szinkronizálni (a régi gazdagépen lévő összes adat biztonságos törléséhez). Ez azért fordul elő, mert a Lsv2-sorozatú virtuális gépek jelenleg nem támogatják a helyi NVMe-lemez élő áttelepítését.
 
 A tervezett karbantartásnak két módja van.
 
-### <a name="standard-vm-customer-controlled-maintenance"></a>Standard virtuális gép ügyfél által ellenőrzött karbantartás
+### <a name="standard-vm-customer-controlled-maintenance"></a>Standard szintű, ügyfél által vezérelt karbantartás
 
-- A virtuális gép egy 30 napos időszakban egy frissített állomásra kerül.
-- Lsv2 helyi tárolási adatok elveszhetnek, ezért az esemény előtti biztonsági mentési adatok ajánlott.
+- A virtuális gép egy 30 napos időszak alatt a frissített gazdagépre kerül.
+- A Lsv2 helyi tárolási adatvesztést okoz, ezért ajánlott a biztonsági másolat készítése az esemény előtt.
 
 ### <a name="automatic-maintenance"></a>Automatikus karbantartás
 
-- Akkor következik be, ha az ügyfél nem hajt végre ügyfél által ellenőrzött karbantartást, vagy vészhelyzetesetén, például egy biztonsági nulladik napi esemény esetén.
-- Az ügyféladatok megőrzése, de van egy kis kockázata a virtuális gép lefagyása vagy újraindítása.
-- Lsv2 helyi tárolási adatok elveszhetnek, ezért az esemény előtti biztonsági mentési adatok ajánlott.
+- Akkor következik be, ha az ügyfél nem hajtja végre az ügyfél által vezérelt karbantartást, vagy vészhelyzeti eljárások, például egy biztonsági nulladik nap esetén.
+- Az ügyféladatok megőrzésére szolgál, de a virtuális gépek kis kockázatú, hogy lefagynak vagy újraindulnak.
+- A Lsv2 helyi tárolási adatvesztést okoz, ezért ajánlott a biztonsági másolat készítése az esemény előtt.
 
-A közelgő szolgáltatási események esetén használja az ellenőrzött karbantartási folyamatot a frissítéshez legmegfelelőbb időpont kiválasztásához. Az esemény előtt biztonsági másolatot kaphat adatairól a prémium szintű tárhelyen. A karbantartási esemény befejezése után visszaküldheti az adatokat a frissített Lsv2 virtuális gépek helyi NVMe tárolóba.
+Bármely közelgő szolgáltatási esemény esetén az ellenőrzött karbantartási folyamattal kiválaszthatja a frissítéshez legalkalmasabb időpontot. Az esemény előtt biztonsági mentést készíthet az adatairól a Premium Storage-ban. A karbantartási esemény befejeződése után visszatérhet az adataihoz a frissített Lsv2 virtuális gépek helyi NVMe-tárolójába.
 
-A helyi NVMe-lemezeken adatokat karbantartó forgatókönyvek a következők:
+A helyi NVMe-lemezeken tárolt adatok kezelésére szolgáló forgatókönyvek a következők:
 
-- A virtuális gép fut, és kifogástalan állapotú.
-- A virtuális gép újraindul a helyén (ön vagy az Azure).
-- A virtuális gép szünetel (leállítva a foglalás törlése nélkül).
-- A tervezett karbantartási karbantartási műveletek többsége.
+- A virtuális gép fut és kifogástalan állapotú.
+- A virtuális gép a helyén (Ön vagy az Azure) újraindul.
+- A virtuális gép szüneteltetve van (leállítva, de lefoglalás nélkül).
+- A tervezett karbantartás-karbantartási műveletek többsége.
 
-Az adatokbiztonságos törlését szolgáló forgatókönyvek a következők:
+Az ügyfél védelme érdekében az adatok biztonságos törlését szolgáló forgatókönyvek a következők:
 
-- A virtuális gép újratelepítése, leállítása (de-lefoglalt), vagy törli (ön által).
-- A virtuális gép nem megfelelő állapotúvá válik, és hardverhiba miatt egy másik csomópontnak kell kiszolgálnia a gyógyulást.
-- A tervezett karbantartási karbantartási műveletek egy kis száma, amely megköveteli, hogy a virtuális gép újra kell osztani egy másik állomás ra d.
+- A virtuális gépet újra üzembe helyezi, leállították vagy törölték (Ön).
+- A virtuális gép nem Kifogástalan állapotba kerül, és hardveres probléma miatt egy másik csomópontra kell a szolgáltatást meggyógyítania.
+- Kis mennyiségű tervezett karbantartási karbantartási művelet, amely megköveteli, hogy a virtuális gép egy másik gazdagépre legyen hozzárendelve a karbantartáshoz.
 
-Ha többet szeretne tudni az adatok helyi tárolóban való biztonsági mentésének lehetőségeiről, olvassa [el az Azure IaaS-lemezek biztonsági mentése és vészhelyreállítása.](backup-and-disaster-recovery-for-azure-iaas-disks.md)
+Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági mentés lehetőségeiről, tekintse meg [Az Azure IaaS-lemezek biztonsági mentésével és vész-helyreállításával foglalkozó](backup-and-disaster-recovery-for-azure-iaas-disks.md)témakört.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-* **Hogyan kezdhetem el telepíteni az Lsv2 sorozatú virtuális gépeket?**  
-   Más virtuális gépekhez hasonlóan használja a [portál](quick-create-portal.md), [Azure CLI](quick-create-cli.md)vagy [PowerShell](quick-create-powershell.md) virtuális gép létrehozásához.
+* **Hogyan megkezdeni a Lsv2-sorozatú virtuális gépek üzembe helyezését?**  
+   Hasonlóan más virtuális géphez, a [portál](quick-create-portal.md), az [Azure CLI](quick-create-cli.md)vagy a [PowerShell](quick-create-powershell.md) használatával hozhat létre virtuális gépet.
 
-* **Egyetlen NVMe-lemez hiba okozza az összes virtuális gép a gazdagépen, hogy nem?**  
-   Ha a hardvercsomóponton lemezhiba észlelhető, a hardver meghibásodott állapotban van. Ha ez bekövetkezik, a csomóponton lévő összes virtuális gép automatikusan leleszfoglalva, és egy kifogástalan állapotú csomópontra kerül. Az Lsv2 sorozatú virtuális gépek esetében ez azt jelenti, hogy az ügyfél hibás csomóponton lévő adatai is biztonságosan törlődnek, és az ügyfélnek újra létre kell hoznia az új csomóponton. Mint megjegyezte, mielőtt az élő áttelepítés elérhetővé válik az Lsv2, a hibás csomópont adatait proaktív módon áthelyezik a virtuális gépek, ahogy azok egy másik csomópontra.
+* **Egyetlen NVMe lemezhiba miatt a gazdagépen lévő összes virtuális gép meghibásodik?**  
+   Ha a hardver csomóponton lemezhiba észlelhető, a hardver hibás állapotban van. Ha ez történik, a csomóponton lévő összes virtuális gép automatikusan le lesz osztva, és egy kifogástalan állapotú csomópontra kerül. Az Lsv2 sorozatú virtuális gépek esetében ez azt jelenti, hogy az ügyfél hibás csomópontján lévő adatai is biztonságosan törlődnek, és az ügyfélnek újra létre kell hoznia az új csomóponton. Ahogy azt az élő áttelepítés az Lsv2-on való elérhetővé válása előtt megtörtént, a hibás csomóponton lévő adatai proaktív módon lesznek áthelyezve a virtuális gépekkel, mivel azokat egy másik csomópontra helyezzük át.
 
-* **El kell végeznem a lekérdezések módosítását Windows Server 2012 vagy Windows Server 2016 rendszerben?**  
-   Az NVMe-lekérdezés csak az Azure-on elérhető Windows Server 2019 rendszeren érhető el.  
+* **Szükség van-e a Windows Server 2012 vagy a Windows Server 2016 rendszerben a Windows rendszerhez tartozó lekérdezési beállítások megtételéhez?**  
+   A NVMe lekérdezés csak az Azure-beli Windows Server 2019-es számítógépen érhető el.  
 
-* **Visszaválthatok egy hagyományos megszakítási szolgáltatásrutin (ISR) modellre?**  
-   Az Lsv2 sorozatú virtuális gépek NVMe-lekérdezésre vannak optimalizálva. A szavazás teljesítményének javítása érdekében folyamatosan biztosítunk frissítéseket.
+* **Válthatok vissza egy hagyományos megszakítási szolgáltatás rutin (ISR) modellre?**  
+   A Lsv2 sorozatú virtuális gépek NVMe lekérdezésre vannak optimalizálva. A rendszer folyamatosan biztosít frissítéseket a lekérdezési teljesítmény javítása érdekében.
 
-* **Módosíthatom a lekérdezési beállításokat a Windows Server 2019-ben?**  
-   A lekérdezési beállítások nem állíthatók a felhasználó számára.
+* **Módosíthatom a Windows Server 2019 lekérdezési beállításait?**  
+   A lekérdezési beállítások nem állíthatók be a felhasználó számára.
    
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse meg az [Azure-beli tárolási teljesítményre optimalizált](sizes-storage.md) összes virtuális gép specifikációit
+* Tekintse meg az Azure [tárolási teljesítményére optimalizált összes virtuális gép](sizes-storage.md) specifikációit

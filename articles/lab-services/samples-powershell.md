@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-minták az Azure Lab Services-hez | Microsoft dokumentumok
-description: Azure PowerShell-minták – Parancsfájlok, amelyek segítenek a laborok kezelésében az Azure Lab Servicesben
+title: Azure PowerShell minták a Azure Lab Serviceshoz | Microsoft Docs
+description: Azure PowerShell minták – parancsfájlok, amelyek segítenek a laborok kezelésében Azure Lab Services
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,24 +10,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 09b93cc1d1f05e185a1550fb8141423447e802b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44050ab9367572a8160f6e268781478ca3313419
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64730602"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100855"
 ---
-# <a name="azure-powershell-samples-for-azure-lab-services"></a>Azure PowerShell-minták az Azure Lab Services-hez
+# <a name="azure-powershell-samples-for-azure-lab-services"></a>Azure PowerShell minták a Azure Lab Services
 
-Az alábbi táblázat az Azure PowerShell-parancsfájlok azure-beli PowerShell-parancsfájlok mintájára mutató hivatkozásokat tartalmaz.
+A következő táblázat hivatkozásokat tartalmaz a Azure Lab Services Azure PowerShell parancsfájljaira.
 
 | |  |
 |---|---|
-|[Külső felhasználó hozzáadása laborkörnyezetbe](scripts/add-external-user-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-parancsfájl egy külső felhasználót ad hozzá egy tesztkörnyezethez az Azure DevTest Labsben. |
-|[Piactéri lemezképek hozzáadása laborkörnyezetbe](scripts/add-marketplace-images-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-parancsfájl marketplace-rendszerképeket ad hozzá az Azure DevTest Labs laborjában. |
-|[Egyéni kép létrehozása virtuális merevlemezről](scripts/create-custom-image-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-parancsfájl létrehoz egy egyéni lemezképet az Azure DevTest Labs laborjában. |
-|[Egyéni szerepkör létrehozása laborban](scripts/create-custom-role-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-parancsfájl létrehoz egy egyéni szerepkört az Azure Lab Services laborjában. |
-|[Az engedélyezett virtuálisgép-méretek beállítása laborban](scripts/set-allowed-vm-sizes-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-parancsfájl lehetővé teszi a virtuális gép (VM) méreteit egy tesztkörnyezetben. |
+|[Külső felhasználó hozzáadása laborhoz](scripts/add-external-user-to-lab.md)| Ez a PowerShell-szkript egy külső felhasználót hoz létre egy laborban Azure DevTest Labs. |
+|[Piactér-rendszerképek hozzáadása laborhoz](scripts/add-marketplace-images-to-lab.md)| Ez a PowerShell-parancsfájl hozzáadja a piactér lemezképeit a Azure DevTest Labs egy laborhoz. |
+|[Egyéni rendszerkép létrehozása VHD-ből](scripts/create-custom-image-from-vhd.md)| Ez a PowerShell-szkript egy egyéni rendszerképet hoz létre egy laborban Azure DevTest Labsban. |
+|[Egyéni szerepkör létrehozása tesztkörnyezetben](scripts/create-custom-role-in-lab.md)| Ez a PowerShell-parancsfájl egy egyéni szerepkört hoz létre Azure Lab Servicesban található laborban. |
+|[Engedélyezett virtuálisgép-méretek beállítása tesztkörnyezetben](scripts/set-allowed-vm-sizes-in-lab.md)| Ez a PowerShell-szkript beállítja a virtuális gép (VM) méretét a laborban. |
 

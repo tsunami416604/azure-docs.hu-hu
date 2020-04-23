@@ -1,77 +1,77 @@
 ---
 title: Átmeneti kapcsolódási hibák – Azure Database for MySQL
-description: Ismerje meg, hogyan kezelhetők az átmeneti kapcsolódási hibák, és hogyan csatlakozhat hatékonyan az Azure Database for MySQL-hez.
-keywords: mysql kapcsolat,kapcsolati karakterlánc,kapcsolódási problémák,átmeneti hiba,csatlakozási hiba,csatlakozás hatékony
-author: jasonwhowell
-ms.author: jasonh
+description: Megtudhatja, hogyan kezelheti az átmeneti kapcsolódási hibákat, és hogyan csatlakozhat hatékonyan a Azure Database for MySQLhoz.
+keywords: MySQL-kapcsolat, kapcsolati karakterlánc, kapcsolódási problémák, átmeneti hiba, kapcsolódási hiba, hatékony csatlakozás
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4f9101b4108f5512ee9779f4633845b34fdfad5a
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: cb5adb3787176e3bdbfb7897aa7d7deb9cc2dae7
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767864"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100141"
 ---
-# <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Átmeneti hibák kezelése és hatékony csatlakozás a MySQL-hez készült Azure Database-hez
+# <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Átmeneti hibák kezelése és hatékony kapcsolódás Azure Database for MySQL
 
-Ez a cikk ismerteti, hogyan oldhatja meg az átmeneti hibákat, és hatékonyan csatlakozhat az Azure Database for MySQL-hez.
+Ez a cikk bemutatja, hogyan kezelheti az átmeneti hibákat, és hogyan csatlakozhat hatékonyan a Azure Database for MySQLhoz.
 
 ## <a name="transient-errors"></a>Átmeneti hibák
 
-Egy átmeneti hiba, más néven átmeneti hiba, egy hiba, amely megoldja magát. Ezek a hibák általában az adatbázis-kiszolgálóval való kapcsolatként jelennek meg. A kiszolgálóval létesített új kapcsolatok sem nyithatók meg. Átmeneti hibák fordulhatnak elő például hardver- vagy hálózati hiba esetén. Egy másik ok lehet egy új verziója a PaaS szolgáltatás, amely folyamatban van kivezetve. A legtöbb ilyen eseményt a rendszer kevesebb mint 60 másodperc alatt automatikusan enyhíti. A felhőben lévő alkalmazások tervezésére és fejlesztésére vonatkozó ajánlott eljárás az, ha átmeneti hibákra számíthat. Tegyük fel, hogy bármikor bármely összetevőben előfordulhatnak, és hogy megfelelő logikával rendelkeznek az ilyen helyzetek kezeléséhez.
+Egy átmeneti hiba (más néven átmeneti hiba) egy olyan hiba, amely magát a megoldást fogja megoldani. Ezek a hibák általában az eldobott adatbázis-kiszolgálóval létesített kapcsolatok. Nem nyitható meg a kiszolgálóval létesített új kapcsolatok. Átmeneti hibák merülhetnek fel, például ha hardveres vagy hálózati hiba történik. Egy másik ok lehet a Pásti-szolgáltatás új verziója. Az események többségét a rendszer automatikusan csökkenti a 60 másodpercnél kisebb mértékben. A Felhőbeli alkalmazások tervezéséhez és fejlesztéséhez ajánlott eljárás az átmeneti hibák elvárható. Tegyük fel, hogy bármikor megtörténhetnek bármely összetevőben, és az ilyen helyzetek kezeléséhez megfelelő logikával kell rendelkeznie.
 
-## <a name="handling-transient-errors"></a>Átmeneti hibák kezelése
+## <a name="handling-transient-errors"></a>Átmeneti hibák elhárítása
 
-Az átmeneti hibákat újrapróbálkozási logikával kell kezelni. Figyelembe veendő helyzetek:
+Az átmeneti hibákat az újrapróbálkozási logikával kell kezelni. Olyan helyzetek, amelyeket figyelembe kell venni:
 
-* Hiba történik a kapcsolat megnyitásakor
-* A kiszolgáló oldalon megszakad az az idlés kapcsolat. Amikor megpróbál kiadni egy parancsot, az nem hajtható végre
-* A rendszer elejt egy aktív kapcsolatot, amely jelenleg egy parancsot hajt végre.
+* Hiba történik a kapcsolatok megnyitásakor
+* Az üresjárati kapcsolatok el lettek dobva a kiszolgáló oldalán. Amikor megpróbál kiadni egy parancsot, nem hajtható végre
+* A rendszer eldobott egy olyan aktív kapcsolatokat, amely jelenleg egy parancsot futtat.
 
-Az első és a második esetben meglehetősen egyenesen kezelni. Próbálja meg újra megnyitni a kapcsolatot. Ha sikeres, a rendszer enyhítette az átmeneti hibát. Az Azure Database for MySQL ismét használhatja. Javasoljuk, hogy várjon, mielőtt újra próbálkozna a kapcsolattal. Visszalépés, ha a kezdeti újrapróbálkozások sikertelenek lesznek. Így a rendszer minden rendelkezésre álló erőforrást felhasználhat a hibahelyzet leküzdésére. Egy jó minta, hogy kövesse a következő:
+Az első és a második eset viszonylag azonnal továbbítható a kezelésére. Próbálja meg újra megnyitni a kapcsolódást. Ha a művelet sikeres, az átmeneti hibát a rendszeren enyhítjük. Újra használhatja a Azure Database for MySQL. Azt javasoljuk, hogy várjon a kapcsolódás megkísérlése előtt. Vissza, ha a kezdeti újrapróbálkozások sikertelenek lesznek. Így a rendszeren az összes rendelkezésre álló erőforrás felhasználható a hiba helyzetének leküzdésére. A követendő példa a következő:
 
-* Várjon 5 másodpercet az első újrapróbálkozás előtt.
-* Minden következő újrapróbálkozás esetén a várakozás exponenciálisan, legfeljebb 60 másodpercig növekszik.
-* Állítsa be az újrapróbálkozások maximális számát, amelynek során az alkalmazás a művelet sikertelennek tekinti.
+* Várjon 5 másodpercig az első újrapróbálkozás előtt.
+* Minden egyes újrapróbálkozáskor a várakozás exponenciálisan növekszik, akár 60 másodpercre.
+* Állítsa be az újrapróbálkozások maximális számát, amikor az alkalmazás nem tudta végrehajtani a műveletet.
 
-Ha egy aktív tranzakcióval való kapcsolat sikertelen, nehezebb a helyreállítás megfelelő kezelése. Két eset van: Ha a tranzakció csak olvasható jellegű volt, biztonságos újra megnyitni a kapcsolatot, és újra megpróbálni a tranzakciót. Ha azonban a tranzakció is írt az adatbázisba, meg kell állapítania, hogy a tranzakció vissza lett-e állítva, vagy sikeres volt-e az átmeneti hiba bekövetkezése előtt. Ebben az esetben előfordulhat, hogy egyszerűen nem kapta meg a véglegesítési nyugtát az adatbázis-kiszolgálótól.
+Ha egy aktív tranzakcióval rendelkező kapcsolat meghiúsul, nehezebb a helyreállítás megfelelő kezelése. Két eset létezik: Ha a tranzakció csak olvasható, akkor a rendszer biztonságosan újra megnyithatja a kapcsolódást, és újrapróbálkozhat a tranzakcióval. Ha azonban a tranzakciót is megírta az adatbázisba, meg kell határoznia, hogy a tranzakció vissza lett-e állítva, vagy az átmeneti hiba miatt sikeres volt-e. Ebben az esetben előfordulhat, hogy nem fogadta el az adatbázis-kiszolgálóról a véglegesítő nyugtát.
 
-Ennek egyik módja az, hogy létrehoz egy egyedi azonosítót az ügyfélen, amely az összes újrapróbálkozáshoz használatos. Ezt az egyedi azonosítót a tranzakció részeként adja át a kiszolgálónak, és egy egyedi megkötéssel rendelkező oszlopban tárolja. Így biztonságosan újra próbálkozhat a tranzakcióval. Sikeres lesz, ha az előző tranzakció vissza lett állítva, és az ügyfél által létrehozott egyedi azonosító még nem létezik a rendszerben. Sikertelen lesz a duplikált kulcs megsértése, ha az egyedi azonosítót korábban tárolták, mert az előző tranzakció sikeresen befejeződött.
+Ennek egyik módja egy egyedi azonosító létrehozása az ügyfélen, amely az összes újrapróbálkozáshoz használatos. Ezt az egyedi azonosítót a tranzakció részeként adja át a kiszolgálónak, és egy egyedi korlátozással rendelkező oszlopban tárolja. Így biztonságosan újrapróbálkozhat a tranzakcióval. A művelet sikeres lesz, ha az előző tranzakció vissza lett állítva, és az ügyfél által generált egyedi azonosító még nem létezik a rendszeren. Ha az egyedi azonosítót korábban tárolta, a rendszer duplikált kulcs megsértését jelzi, mert az előző tranzakció sikeresen befejeződött.
 
-Amikor a program harmadik féltől származó köztes szoftveren keresztül kommunikál az Azure Database for MySQL szolgáltatással, kérdezze meg a szállítótól, hogy a köztes szoftver tartalmaz-e átmeneti hibák újrapróbálkozási logikáját.
+Ha a program a Azure Database for MySQL harmadik féltől származó middleware-n keresztül kommunikál, kérje meg a gyártót, hogy az átmeneti hibák esetén a middleware tartalmazza-e az újrapróbálkozási logikát.
 
-Győződjön meg róla, hogy tesztelje a logika újrapróbálkozását. Például próbálja meg végrehajtani a kódot, miközben az Azure Database for MySQL-kiszolgáló számítási erőforrásainak fel- és leskálázása közben. Az alkalmazásnak gond nélkül kezelnie kell a művelet során észlelt rövid állásidőt.
+Ügyeljen arra, hogy tesztelje újra a logikát. Próbálja meg például végrehajtani a kódot a Azure Database for MySQL-kiszolgáló számítási erőforrásainak felfelé vagy lefelé skálázásakor. Az alkalmazásnak gond nélkül kell kezelnie a művelet során észlelt rövid állásidőt.
 
-## <a name="connect-efficiently-to-azure-database-for-mysql"></a>Csatlakozás hatékonyan a MySQL Azure Database-hez
+## <a name="connect-efficiently-to-azure-database-for-mysql"></a>Hatékony kapcsolódás Azure Database for MySQL
 
-Az adatbázis-kapcsolatok korlátozott erőforrást jelentenek, így a mySQL-hez való hozzáféréshez a kapcsolatkészletezés hatékony használata optimalizálja a teljesítményt. Az alábbi szakasz bemutatja, hogyan használhatja a kapcsolatkészletezésvagy az állandó kapcsolatok hatékonyabb eléréséhez az Azure Database for MySQL.
+Az adatbázis-kapcsolatok korlátozott erőforrást jelentenek, így a kapcsolatok készletezésének hatékony felhasználása Azure Database for MySQL a teljesítmény optimalizálása érdekében. Az alábbi szakasz azt ismerteti, hogyan használhatók a kapcsolatok készletezési vagy állandó kapcsolatai a hatékonyabb hozzáférés Azure Database for MySQL.
 
-## <a name="access-databases-by-using-connection-pooling-recommended"></a>Adatbázisok elérése kapcsolatkészletezés használatával (ajánlott)
+## <a name="access-databases-by-using-connection-pooling-recommended"></a>Adatbázisok elérése a kapcsolati készletezés használatával (ajánlott)
 
-Az adatbázis-kapcsolatok kezelése jelentős hatással lehet az alkalmazás egészének teljesítményére. Az alkalmazás teljesítményének optimalizálása érdekében a cél a kapcsolatok létrehozásának és a kulcskódelérési utak kapcsolatok létrehozásának ideje csökkentésének csökkentése kell, hogy legyen. Erősen javasoljuk, hogy adatbázis-kapcsolat készletezése vagy állandó kapcsolatok segítségével csatlakozzon az Azure Database for MySQL. Az adatbázis-kapcsolatkészletezés kezeli az adatbázis-kapcsolatok létrehozását, kezelését és elosztását. Amikor egy program adatbázis-kapcsolatot kér, az új kapcsolat létrehozása helyett a meglévő tétlen adatbázis-kapcsolatok lefoglalását helyezi előtérbe. Miután a program befejezte az adatbázis-kapcsolat használatát, a kapcsolat helyreáll a további használatra való felkészülés során, nem pedig egyszerűen bezárva.
+Az adatbázis-kapcsolatok kezelése jelentős hatással lehet az alkalmazás teljesítményére. Az alkalmazás teljesítményének optimalizálása érdekében a cél az, hogy csökkentse a kapcsolatok számát, valamint a kapcsolatok létrehozásának idejét a kulcstartó elérési útjain. Javasoljuk, hogy az adatbázis-kapcsolat készletezésével vagy állandó kapcsolataival kapcsolódjon Azure Database for MySQLhoz. Az adatbázis-kapcsolat készletezése kezeli az adatbázis-kapcsolatok létrehozását, kezelését és kiosztását. Amikor egy program adatbázis-kapcsolatot kér, az új kapcsolat létrehozása helyett rangsorolja a meglévő tétlen adatbázis-kapcsolatok kiosztását. Miután a program befejezte az adatbázis-kapcsolatok használatát, a rendszer az előkészítés során visszaállítja a kapcsolatokat a további használatra, nem pedig egyszerűen bezárták.
 
-A jobb illusztráció érdekében ez a cikk [egy mintakódot](./sample-scripts-java-connection-pooling.md) tartalmaz, amely példaként a JAVA-t használja. További információ: [Apache common DBCP](https://commons.apache.org/proper/commons-dbcp/).
+A jelen cikk jobb illusztrációként tartalmaz [egy olyan mintakód-kódot](./sample-scripts-java-connection-pooling.md) , amely példaként a Java-t használja. További információ: [apache Common DBCP](https://commons.apache.org/proper/commons-dbcp/).
 
 > [!NOTE]
-> A kiszolgáló időtúllépési mechanizmust konfigurál az erőforrások felszabadításához egy ideje tétlen állapotban lévő kapcsolat bezárásához. Ügyeljen arra, hogy hozzanak létre az ellenőrzési rendszer hatékonyságának biztosítása érdekében a tartós kapcsolatok, amikor használja őket. További információ: [Verification systems on the client side to ensure the effectiveness of persistent connections](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).
+> A kiszolgáló egy időtúllépési mechanizmust konfigurál egy olyan kapcsolat bezárásához, amely inaktív állapotban van egy bizonyos ideig, hogy erőforrásokat szabadítson fel. Ügyeljen arra, hogy az ellenőrzési rendszert úgy állítsa be, hogy biztosítsa az állandó kapcsolatok hatékonyságát a használatakor. További információ: az [ellenőrzési rendszerek konfigurálása az ügyféloldali oldalon az állandó kapcsolatok hatékonyságának biztosítása érdekében](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).
 
 ## <a name="access-databases-by-using-persistent-connections-recommended"></a>Adatbázisok elérése állandó kapcsolatok használatával (ajánlott)
 
-Az állandó kapcsolatok fogalma hasonló a kapcsolatkészletezéséhez. A rövid kapcsolatok állandó kapcsolatokkal való lecserélése csak a kód kisebb módosításait igényli, de számos tipikus alkalmazási forgatókönyvben jelentős hatással van a teljesítmény javítására.
+Az állandó kapcsolatok fogalma hasonló a kapcsolati készletezéshez. Az állandó kapcsolatokkal rendelkező rövid kapcsolatok cseréje csak kisebb módosításokat igényel a kódban, de jelentős hatással van a teljesítmény javítására számos tipikus alkalmazási helyzetben.
 
-## <a name="access-databases-by-using-wait-and-retry-mechanism-with-short-connections"></a>Adatbázisok elérése rövid kapcsolattal rendelkező várakozási és újrapróbálkozási mechanizmus sal
+## <a name="access-databases-by-using-wait-and-retry-mechanism-with-short-connections"></a>Adatbázisok elérése a várakozási és újrapróbálkozási mechanizmussal rövid kapcsolatok használatával
 
-Ha erőforrás-korlátozásokkal rendelkezik, javasoljuk, hogy adatbázis-készletezést vagy állandó kapcsolatokat használjon az adatbázisok eléréséhez. Ha az alkalmazás rövid kapcsolatokat használ, és csatlakozási hibákat tapasztal, amikor megközelíti az egyidejű kapcsolatok számának felső határát, megpróbálhatja a várakozást, és újrapróbálkozhat a mechanizmussal. Beállíthatja a megfelelő várakozási időt, rövidebb várakozási idővel az első kísérlet után. Ezt követően többször is megvárhatja az eseményeket.
+Ha erőforrás-korlátozásokkal rendelkezik, javasoljuk, hogy adatbázis-készletezési vagy állandó kapcsolatokat használjon az adatbázisok eléréséhez. Ha az alkalmazás rövid kapcsolatokat használ, és kapcsolódási hibákat tapasztal, ha az egyidejű kapcsolatok számának felső határát közelíti meg, próbálkozzon a várakozással és az újrapróbálkozási mechanizmussal. Megadhatja a megfelelő várakozási időt, az első kísérlet után rövidebb várakozási idővel. Ezt követően többször is megpróbálhat eseményeket várni.
 
-## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>Ellenőrzési mechanizmusok konfigurálása az ügyfeleknél az állandó kapcsolatok hatékonyságának megerősítésére
+## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>Ellenőrzési mechanizmusok konfigurálása az ügyfeleken az állandó kapcsolatok hatékonyságának megerősítéséhez
 
-A kiszolgáló időtúllépési mechanizmust konfigurál az erőforrások felszabadításához egy ideje tétlen állapotban lévő kapcsolat bezárásához. Amikor az ügyfél ismét hozzáfér az adatbázishoz, az egyenértékű az ügyfél és a kiszolgáló közötti új kapcsolatkérés létrehozásával. A kapcsolatok hatékonyságának biztosítása érdekében a használatuk során konfiguráljon egy ellenőrzési mechanizmust az ügyfélen. Ahogy az alábbi példában is látható, a Tomcat JDBC kapcsolatkészletezés segítségével konfigurálhatja ezt az ellenőrzési mechanizmust.
+A kiszolgáló egy időtúllépési mechanizmust konfigurál egy üresjárati állapotban lévő kapcsolat bezárására egy kis idő elteltével, hogy erőforrásokat szabadítson fel. Amikor az ügyfél ismét hozzáfér az adatbázishoz, azzal egyenértékű az ügyfél és a kiszolgáló közötti új kapcsolódási kérelem létrehozásával. Ha biztosítani szeretné a kapcsolatok hatékonyságát a használatuk során, állítson be egy ellenőrzési mechanizmust az ügyfélen. Ahogy az az alábbi példában is látható, a Tomcat JDBC-kapcsolatok készletezési szolgáltatásával konfigurálhatja ezt az ellenőrzési mechanizmust.
 
-A TestOnBorrow paraméter beállításával, amikor új kérelem van, a kapcsolatkészlet automatikusan ellenőrzi a rendelkezésre álló üresjárati kapcsolatok hatékonyságát. Ha egy ilyen kapcsolat hatékony, a közvetlenül visszaadott egyébként kapcsolatkészlet visszavonja a kapcsolatot. A kapcsolatkészlet ezután létrehoz egy új hatékony kapcsolatot, és visszaadja azt. Ez a folyamat biztosítja az adatbázis hatékony elérését. 
+Ha a TestOnBorrow paramétert új kérelemre állítja be, a kapcsolati készlet automatikusan ellenőrzi a rendelkezésre álló tétlen kapcsolatok hatékonyságát. Ha ez a kapcsolat érvényes, akkor a közvetlenül visszaadott másik kapcsolati készlet visszavonja a kapcsolatokat. A kapcsolatfájl Ezután létrehoz egy új, hatékony és visszaadott kapcsolatokat. Ez a folyamat biztosítja, hogy az adatbázis hatékonyan legyen elérhető. 
 
-A konkrét beállításokkal kapcsolatos információkért tekintse meg a [JDBC-kapcsolatkészlet hivatalos bevezető dokumentumát.](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes) Elsősorban a következő három paramétert kell beállítania: TestOnBorrow (igaz értékre), ValidationQuery (SELECT 1 értékre), és ValidationQueryTimeout (1-re). A konkrét mintakód az alábbiakban látható:
+Az adott beállításokkal kapcsolatos további információkért lásd a [JDBC-kapcsolatok készletének hivatalos bevezetési dokumentumát](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes). Elsősorban a következő három paramétert kell megadnia: TestOnBorrow (True értékre állítva), ValidationQuery (1. kiválasztva) és ValidationQueryTimeout (1 értékre állítva). Az adott mintakód alább látható:
 
 ```java
 public class SimpleTestOnBorrowExample {

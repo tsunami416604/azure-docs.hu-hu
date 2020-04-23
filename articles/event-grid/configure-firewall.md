@@ -1,34 +1,34 @@
 ---
-title: IP-tűzfal konfigurálása az Azure Event Grid témaköreihez vagy tartományaihoz (előzetes verzió)
-description: Ez a cikk azt ismerteti, hogy miként konfigurálható az Event Grid témaköreihez vagy tartományaihoz.
+title: IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz (előzetes verzió)
+description: Ez a cikk a tűzfalbeállítások konfigurálását ismerteti Event Grid témakörökhöz vagy tartományokhoz.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: b195872ca1002970fa96ae133d5eb47a9267796d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aa86b3619897c310473f12e1c28101185ebf3ab
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299867"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100991"
 ---
-# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>IP-tűzfal konfigurálása az Azure Event Grid témaköreihez vagy tartományaihoz (előzetes verzió)
-Alapértelmezés szerint a témakör és a tartomány elérhető az internetről, amíg a kérelem érvényes hitelesítéssel és engedélyezéssel érkezik. Az IP-tűzfal lal tovább korlátozhatja a [CIDR (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelölésben lévő IPv4-címek vagy IPv4-címtartományok készletére. Bármely más IP-címről származó megjelenítők elutasításra kerülnek, és 403 (Tiltott) választ kapnak. Az Event Grid által támogatott hálózati biztonsági szolgáltatásokról az [Eseményrács hálózatbiztonsága](network-security.md)című témakörben talál további információt.
+# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz (előzetes verzió)
+Alapértelmezés szerint a témakör és a tartomány elérhető az internetről, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel. A más IP-címről származó közzétevőket a rendszer elutasítja, és 403 (tiltott) választ fog kapni. A Event Grid által támogatott hálózati biztonsági funkciókkal kapcsolatos további információkért lásd: [Event Grid hálózati biztonsága](network-security.md).
 
-Ez a cikk ismerteti, hogyan konfigurálhatja az IP-tűzfal beállításait az Azure Event Grid-témakörökhöz vagy tartományokhoz.
+Ez a cikk azt ismerteti, hogyan konfigurálható az IP-tűzfalbeállítások Azure Event Grid témakörökhöz vagy tartományokhoz.
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
-Ez a szakasz bemutatja, hogyan használhatja az Azure Portalbejövő IP-tűzfal szabályok létrehozása. Az ebben a szakaszban látható lépések témakörökre vonatkozóak. Hasonló lépésekkel hozhat létre bejövő IP-szabályokat a **tartományokhoz.** 
+Ez a szakasz bemutatja, hogyan használható a Azure Portal a bejövő IP-tűzfalszabályok létrehozásához. Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a **tartományok**bejövő IP-szabályainak létrehozásához. 
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg az eseményrács témakörét vagy tartományát, és váltson a **Hálózat** lapra.
-2. Válassza a **Nyilvános hálózatok** lehetőséget, ha azt szeretné, hogy az összes hálózat, beleértve az internetet is, hozzáférjen az erőforráshoz. 
+1. A [Azure Portal](https://portal.azure.com)navigáljon az Event Grid-témakörhöz vagy a tartományhoz, és váltson a **hálózatkezelés** lapra.
+2. Válassza a **nyilvános hálózatok** lehetőséget az erőforrás eléréséhez az összes hálózat, beleértve az internetet. 
 
-    A forgalmat IP-alapú tűzfalszabályok kal korlátozhatja. Adjon meg egyetlen IPv4-címet vagy IP-címtartományt az osztály nélküli tartományok közötti útválasztás (CIDR) jelölésben. 
+    Az IP-alapú tűzfalszabályok használatával korlátozhatja a forgalmat. Egyetlen IPv4-címet vagy IP-címtartományt kell megadnia az osztály nélküli Inter-domain Routing (CIDR) jelöléssel. 
 
     ![Nyilvános hálózatok lap](./media/configure-firewall/public-networks-page.png)
-3. Válassza csak **a Privát végpontok** lehetőséget, ha csak a magánhálózati végpontkapcsolatok számára szeretné engedélyezni az erőforrás elérését. A kapcsolatok kezeléséhez használja a lap **Privát végpontkapcsolatok** lapját. 
+3. Válassza a **privát végpontok** lehetőséget, hogy csak a privát végponti kapcsolatok férhessenek hozzá ehhez az erőforráshoz. A kapcsolatok kezeléséhez használja ezen a lapon a **Private Endpoint Connections** fület. 
 
     ![Nyilvános hálózatok lap](./media/configure-firewall/private-endpoints-page.png)
 4. Válassza az eszköztár **Save** (Mentés) elemét. 
@@ -36,66 +36,145 @@ Ez a szakasz bemutatja, hogyan használhatja az Azure Portalbejövő IP-tűzfal 
 
 
 ## <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
-Ez a szakasz bemutatja, hogyan azure CLI-parancsok at a bejövő IP-szabályokkal rendelkező témakörök létrehozásához. Az ebben a szakaszban látható lépések témakörökre vonatkozóak. Hasonló lépésekkel hozhat létre bejövő IP-szabályokat a **tartományokhoz.** 
+Ebből a szakaszból megtudhatja, hogyan hozhat létre a bejövő IP-szabályokkal rendelkező témaköröket az Azure CLI-parancsok használatával. Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a **tartományok**bejövő IP-szabályainak létrehozásához. 
 
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>Nyilvános hálózati hozzáférés engedélyezése meglévő témakörhöz
-Alapértelmezés szerint a nyilvános hálózati hozzáférés engedélyezve van a témakörökés tartományok számára. A bejövő IP-tűzfalszabályok beállításával korlátozhatja a forgalmat. 
-
-```azurecli-interactive
-az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Enabled\""}}"
-```
-
-### <a name="disable-public-network-access-for-an-existing-topic"></a>Nyilvános hálózati hozzáférés letiltása meglévő témakörhöz
-Ha egy témakör vagy tartomány nyilvános hálózati hozzáférése le van tiltva, a nyilvános interneten keresztüli forgalom nem engedélyezett. Csak a privát végpontkapcsolatok férhetnek hozzá ezekhez az erőforrásokhoz. 
+### <a name="prerequisites"></a>Előfeltételek
+Frissítse a CLI Azure Event Grid bővítményét a következő parancs futtatásával: 
 
 ```azurecli-interactive
-az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Disabled\""}}"
+az extension update -n eventgrid
 ```
 
-### <a name="create-topic-with-inbound-ip-rules"></a>Témakör létrehozása bejövő IP-szabályokkal
-A következő minta CLI parancs létrehoz egy eseményrács-témakört bejövő IP-szabályokkal egy lépésben. 
+Ha a bővítmény nincs telepítve, futtassa a következő parancsot a telepítéséhez: 
 
 ```azurecli-interactive
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"",\""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+az extension add -n eventgrid
 ```
 
-### <a name="create-topic-first-and-then-add-inbound-ip-rules"></a>Először hozzon létre témakört, majd adjon hozzá bejövő IP-szabályokat
-Ez a példa először létrehoz egy eseményrács-témakört, majd egy külön parancsban hozzáadja a témakör bejövő IP-szabályait. Frissíti a második parancsban beállított bejövő IP-szabályokat is. 
+### <a name="enable-or-disable-public-network-access"></a>Nyilvános hálózati hozzáférés engedélyezése vagy letiltása
+Alapértelmezés szerint a nyilvános hálózati hozzáférés engedélyezve van a témakörökhöz és a tartományokhoz. Azt is engedélyezheti explicit módon, vagy letilthatja. A bejövő IP-tűzfalszabályok beállításával korlátozhatja a forgalmat. 
+
+#### <a name="enable-public-network-access-while-creating-a-topic"></a>Nyilvános hálózati hozzáférés engedélyezése témakör létrehozásakor
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled
+```
+
+
+#### <a name="disable-public-network-access-while-creating-a-topic"></a>Nyilvános hálózati hozzáférés letiltása témakör létrehozása közben
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access disabled
+```
+
+> [!NOTE]
+> Ha egy témakör vagy tartomány nyilvános hálózati hozzáférése le van tiltva, a nyilvános interneten keresztüli forgalom nem engedélyezett. Ezekhez az erőforrásokhoz csak a magánhálózati végponti kapcsolatok férhetnek hozzá. 
+
+
+#### <a name="enable-public-network-access-for-an-existing-topic"></a>Nyilvános hálózati hozzáférés engedélyezése meglévő témakörhöz
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled 
+```
+
+#### <a name="disable-public-network-access-for-an-existing-topic"></a>Nyilvános hálózati hozzáférés letiltása meglévő témakörhöz 
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access disabled
+```
+
+### <a name="create-a-topic-with-single-inbound-ip-rule"></a>Témakör létrehozása egyetlen bejövő IP-szabállyal
+Az alábbi CLI-parancs egy Event Grid-témakört hoz létre a bejövő IP-szabályokkal. 
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR or CIDR MASK> allow 
+```
+
+### <a name="create-a-topic-with-multiple-inbound-ip-rules"></a>Témakör létrehozása több bejövő IP-szabállyal
+
+Az alábbi CLI-parancs létrehoz egy Event Grid-témakört két bejövő IP-szabályként egy lépésben: 
+
+```azurecli-interactive
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow \
+    --inbound-ip-rules <IP ADDR 2 or CIDR MASK 2> allow
+```
+
+### <a name="update-an-existing-topic-to-add-inbound-ip-rules"></a>Meglévő témakör frissítése a bejövő IP-szabályok hozzáadásához
+Ez a példa először létrehoz egy Event Grid-témakört, majd egy külön parancsban hozzáadja a témakörhöz tartozó bejövő IP-szabályokat. Emellett frissíti a második parancsban beállított bejövő IP-szabályokat is. 
 
 ```azurecli-interactive
 
 # create the event grid topic first
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" \
-    --body {\""location\"":\""<LOCATION>\""}
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location
 
-# add inbound IP rules
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" 
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"", \""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+# add inbound IP rules to an existing topic
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR or CIDR MASK> allow
 
-# later, update topic with additional ip rules or remove them. 
-az rest --method put \
-    --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" 
-    --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"", \""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""}, {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
+# later, update topic with additional ip rules
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow \
+    --inbound-ip-rules <IP ADDR 2 or CIDR MASK 2> allow
+```
+
+### <a name="remove-an-inbound-ip-rule"></a>Bejövő IP-szabály eltávolítása
+A következő parancs eltávolítja az előző lépésben létrehozott második szabályt úgy, hogy csak az első szabályt adta meg a beállítás frissítésekor. 
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access enabled \
+    --inbound-ip-rules <IP ADDR 1 or CIDR MASK 1> allow
 ```
 
 
 ## <a name="use-powershell"></a>A PowerShell használata
-Ez a szakasz bemutatja, hogyan azure PowerShell-parancsokkal hozhat létre Azure Event Grid-témaköröket bejövő IP-tűzfalszabályokkal. Az ebben a szakaszban látható lépések témakörökre vonatkozóak. Hasonló lépésekkel hozhat létre bejövő IP-szabályokat a **tartományokhoz.** 
+Ebből a szakaszból megtudhatja, hogyan hozhat létre Azure PowerShell-parancsokat a bejövő IP-tűzfalszabályok használatával Azure Event Grid témakörök létrehozásához. Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a **tartományok**bejövő IP-szabályainak létrehozásához. 
 
-### <a name="prerequisite"></a>Előfeltétel
-Kövesse [az Útmutató: A portál használatával hozzon létre egy Azure AD-alkalmazást és egyszerű szolgáltatást, amely erőforrásokhoz férhet hozzá](../active-directory/develop/howto-create-service-principal-portal.md) egy Azure Active Directory-alkalmazás létrehozásához, és a következő értékeket jegyezze fel:
+### <a name="prerequisites"></a>Előfeltételek
+Kövesse az utasításokat a következő témakör útmutatását követve [: a portál használatával hozzon létre egy Azure ad-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md) Azure Active Directory-alkalmazás létrehozásához, és jegyezze fel az alábbi értékeket:
 
 - Címtár (bérlő) azonosítója
 - Alkalmazás (ügyfél) azonosítója
-- Alkalmazás (ügyfél) titkos
+- Alkalmazás (ügyfél) titka
 
-### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Token és fejlécek előkészítése REST API-hívásokhoz 
-Futtassa a következő előfeltételek parancsokat a REST API-hívásokhoz, valamint az engedélyezési és egyéb fejlécadatokhoz használható hitelesítési jogkivonat lekéréséhez. 
+### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Jogkivonatok és fejlécek előkészítése REST API-hívásokhoz 
+A következő előfeltétel-utasítások futtatásával szerezzen be egy hitelesítési tokent REST API hívásokkal, valamint az engedélyezési és egyéb fejléc-információkkal való használatra. 
 
 ```azurepowershell-interactive
 # replace <CLIENT ID> and <CLIENT SECRET>
@@ -114,7 +193,7 @@ $Headers.Add("Content-Type","application/json")
 ```
 
 ### <a name="enable-public-network-access-for-an-existing-topic"></a>Nyilvános hálózati hozzáférés engedélyezése meglévő témakörhöz
-Alapértelmezés szerint a nyilvános hálózati hozzáférés engedélyezve van a témakörökés tartományok számára. A bejövő IP-tűzfalszabályok beállításával korlátozhatja a forgalmat. 
+Alapértelmezés szerint a nyilvános hálózati hozzáférés engedélyezve van a témakörökhöz és a tartományokhoz. A bejövő IP-tűzfalszabályok beállításával korlátozhatja a forgalmat. 
 
 ```azurepowershell-interactive
 $body = @{"properties"=@{"publicNetworkAccess"="enabled"}} | ConvertTo-Json -Depth 5
@@ -127,7 +206,7 @@ Invoke-RestMethod -Method 'Patch' `
 ```
 
 ### <a name="disable-public-network-access-for-an-existing-topic"></a>Nyilvános hálózati hozzáférés letiltása meglévő témakörhöz
-Ha egy témakör vagy tartomány nyilvános hálózati hozzáférése le van tiltva, a nyilvános interneten keresztüli forgalom nem engedélyezett. Csak a privát végpontkapcsolatok férhetnek hozzá ezekhez az erőforrásokhoz. 
+Ha egy témakör vagy tartomány nyilvános hálózati hozzáférése le van tiltva, a nyilvános interneten keresztüli forgalom nem engedélyezett. Ezekhez az erőforrásokhoz csak a magánhálózati végponti kapcsolatok férhetnek hozzá. 
 
 ```azurepowershell-interactive
 $body = @{"properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json -Depth 5
@@ -139,12 +218,12 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="create-an-event-grid-topic-with-inbound-rules-in-one-step"></a>Eseményrács-témakör létrehozása bejövő szabályokkal egy lépésben
+### <a name="create-an-event-grid-topic-with-inbound-rules-in-one-step"></a>Event Grid-témakör létrehozása bejövő szabályokkal egy lépésben
 
 ```azurepowershell-interactive
 
 # prepare the body for the REST PUT method. Notice that inbound IP rules are included. 
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"})}} | ConvertTo-Json -Depth 5
+$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # create the event grid topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
@@ -160,7 +239,7 @@ Invoke-RestMethod -Method 'Get' `
 ```
 
 
-### <a name="create-event-grid-topic-first-and-then-add-inbound-ip-rules"></a>Először hozzon létre eseményrács-témakört, majd adjon hozzá bejövő IP-szabályokat
+### <a name="create-event-grid-topic-first-and-then-add-inbound-ip-rules"></a>Először hozzon létre egy Event Grid-témakört, majd adja hozzá a bejövő IP-szabályokat
 
 ```azurepowershell-interactive
 
@@ -180,7 +259,7 @@ Invoke-RestMethod -Method 'Get' `
     | ConvertTo-Json -Depth 5
 
 # prepare the body for REST PUT method. Notice that it includes inbound IP rules now. This feature available in both basic and premium tiers.
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"}, @{"ipmask"="<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>";"action"="allow"})}} | ConvertTo-Json -Depth 5
+$body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"publicNetworkAccess"="enabled"; "inboundIpRules"=@(@{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"}, @{"ipmask"="<IP ADDR or CIDR MASK>";"action"="allow"})}} | ConvertTo-Json -Depth 5
 
 # update the topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
@@ -198,6 +277,6 @@ Invoke-RestMethod -Method 'Get'
 
 ## <a name="next-steps"></a>További lépések
 
-* Az eseménykézbesítésfigyelésről az [Eseményrács üzenetkézbesítésének figyelése](monitor-event-delivery.md)című témakörben talál további információt.
-* A hitelesítési kulcsról további információt az [Event Grid biztonsága és hitelesítése](security-authentication.md)című témakörben talál.
-* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.
+* További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
+* További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).
+* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

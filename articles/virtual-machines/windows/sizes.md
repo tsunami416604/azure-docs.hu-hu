@@ -1,63 +1,56 @@
 ---
-title: Windows virtuális gépek méreteaz Azure-ban
-description: Az Azure-ban a Windows virtuális gépekhez elérhető különböző méretek listája.
-services: virtual-machines-windows
-documentationcenter: ''
-author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: aabf0d30-04eb-4d34-b44a-69f8bfb84f22
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+title: VM-méretek az Azure-ban
+description: Felsorolja az Azure-beli virtuális gépekhez elérhető különböző méreteket.
+author: ju-shim
+ms.service: virtual-machines
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
-ms.author: jonbeck
-ms.openlocfilehash: 398575cc5c3dea96aa644533eb6ce8a262d1981c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: e37fea471bea91f2ac5219b5c423db38b369b692
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164491"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100668"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>A Windows rendszerű virtuális gépek méretei az Azure-ban
 
-Ez a cikk ismerteti a windowsos alkalmazások és számítási feladatok futtatásához használható Azure-virtuális gépek elérhető méreteit és beállításait. Azt is előírja, hogy üzembe helyezési szempontokat, hogy tudatában legyenek, ha azt tervezi, hogy használja ezeket az erőforrásokat.  Ez a cikk [Linux os virtuális gépekhez](../linux/sizes.md)is elérhető.
+Ez a cikk a Windows-alkalmazások és-munkaterhelések futtatására használható Azure-beli virtuális gépek rendelkezésre álló méreteit és lehetőségeit ismerteti. Emellett üzembe helyezési megfontolásokat is biztosít, hogy a rendszer mikor tervezi ezeket az erőforrásokat.  Ez a cikk a Windows és a Linux rendszerű virtuális gépekre is vonatkozik.
 
 | Típus | Méretek | Leírás |
 |------|-------|-------------|
-| [Általános célú](../sizes-general.md) | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC, DCv2 | Kiegyensúlyozott CPU-memória arány. Ideális választások a teszteléshez és a fejlesztéshez, a kicsi és közepes adatbázisokhoz, illetve az alacsony és közepes forgalmú webkiszolgálókhoz. |
-| [Számításra optimalizált](../sizes-compute.md) | Fsv2 között | Magas CPU-memória arány. Jó közepes forgalmú webkiszolgálókhoz, hálózati készülékekhez, kötegelt folyamatokhoz és alkalmazáskiszolgálókhoz. |
+| [Általános célú](../sizes-general.md) | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC, DCv2 | Kiegyensúlyozott processzor-memória arány. Ideális választások a teszteléshez és a fejlesztéshez, a kicsi és közepes adatbázisokhoz, illetve az alacsony és közepes forgalmú webkiszolgálókhoz. |
+| [Számításra optimalizált](../sizes-compute.md) | Fsv2 | Magas processzor-memória arány. Jó a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazáskiszolgáló számára. |
 | [Memóriaoptimalizált](../sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Mv2, M, DSv2, Dv2 | Magas memória-CPU arány. Ideális választások a relációs adatbázisok kiszolgálóihoz, a közepes és nagy gyorsítótárakhoz, valamint a memóriában végzett elemzésekhez. |
-| [Tárolásra optimalizált](../sizes-storage.md)  | Lsv2 között | Nagy lemezátható és i/o ideális Big Data, SQL, NoSQL adatbázisok, adattárház és nagy tranzakciós adatbázisok.  |
-| [GPU](../sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (Előzetes), NV, NVv3, NVv4 | Speciális virtuális gépek, amelyek a nehéz grafikus renderelésre és videoszerkesztésre, valamint a modelloktatásra és -következtetésre (ND) irányulnak mély tanulással. Egy vagy több GPU-val érhető el. |
-| [Nagy teljesítményű számítás](../sizes-hpc.md) | HB, HBv2, HC, H | Leggyorsabb és legerősebb CPU virtuális gépeink opcionális, nagy átmenőteljesítményű hálózati interfészekkel (RDMA). |
+| [Tárolásra optimalizált](../sizes-storage.md)  | Lsv2 | A nagy adatátviteli sebesség és az i/o ideális megoldás a Big Database, az SQL, a NoSQL adatbázisok, az adattárházak és a nagy tranzakciós adatbázisok számára.  |
+| [GPU](../sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (előzetes verzió), NV, NVv3, NVv4 | A speciális virtuális gépek nagy grafikai renderelést és videoszerkesztőt céloznak meg, valamint a képzési és következtetési (ND) modellek mély tanulással. Egyetlen vagy több GPU-val is elérhető. |
+| [Nagy teljesítményű számítás](../sizes-hpc.md) | HB, HBv2, HC, H | A leggyorsabb és leghatékonyabb CPU-alapú virtuális gépek, amelyek opcionális nagy átviteli sebességű hálózati adapterrel (RDMA) rendelkeznek. |
 
-- A különböző méretű árakról a [Virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)című témakörben talál további információt.
-- Az Azure virtuális gépek általános korlátozásait az [Azure-előfizetési és szolgáltatáskorlátok, kvóták és korlátozások megtekintéséről](../../azure-subscription-service-limits.md)olvassa el.
-- A tárolási díjak számítása ettől külön történik a tárfiókban használt oldalak mennyisége alapján. További részletekért az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
-- További információ arról, hogy [az Azure számítási egységei (ACU)](../acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
+- További információ a különböző méretek díjszabásáról: [Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows).
+- Az Azure-beli virtuális gépekre vonatkozó általános korlátokat lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-subscription-service-limits.md).
+- A tárolási díjak számítása ettől külön történik a tárfiókban használt oldalak mennyisége alapján. Részletekért lásd az [Azure Storage szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/storage/).
+- További információ arról, hogy az [Azure számítási egységei (ACU)](../acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
 
 ## <a name="rest-api"></a>REST API
 
-A REST API virtuális gépméretek lekérdezéséhez való használatáról az alábbi témakörökben talál további információt:
+A virtuális gépek méretének lekérdezéséhez REST API használatáról a következő témakörben tájékozódhat:
 
-- [A virtuális gépek átméretezéséhez rendelkezésre álló méretek listája](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
-- [Előfizetéshez rendelkezésre álló virtuális gépméretek listája](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
-- [A rendelkezésre állási csoportban elérhető virtuális gépméretek listája](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+- [Az átméretezéshez rendelkezésre álló virtuálisgép-méretek listázása](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
+- [Az előfizetéshez elérhető virtuálisgép-méretek listázása](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
+- [Rendelkezésre álló virtuálisgép-méretek listázása rendelkezésre állási csoportokban](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
 
 ## <a name="acu"></a>ACU
 
-További információ arról, hogy [az Azure számítási egységei (ACU)](../acu.md) hogyan segíthetnek a számítási teljesítmény összehasonlításában az Azure-sKU-k között.
+További információ arról, hogy az [Azure számítási egységei (ACU)](../acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
 
 ## <a name="benchmark-scores"></a>Teljesítményteszt pontszámai
 
-További információ a Windows-beli virtuális gépek számítási teljesítményéről a [CoreMark teljesítménypontszámainak](compute-benchmark-scores.md)használatával.
+További információ a Windows rendszerű virtuális gépek számítási teljesítményéről a [megjegyzésekkel kapcsolatos teljesítménytesztek pontszámai](compute-benchmark-scores.md)alapján.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a rendelkezésre álló virtuálisgép-méretekről:
+További információ a rendelkezésre álló különböző virtuálisgép-méretekről:
 
 - [Általános célú](../sizes-general.md)
 - [Számításra optimalizált](../sizes-compute.md)
@@ -65,4 +58,4 @@ További információ a rendelkezésre álló virtuálisgép-méretekről:
 - [Tárolásra optimalizált](../sizes-storage.md)
 - [GPU-optimalizált](../sizes-gpu.md)
 - [Nagy teljesítményű számítás](../sizes-hpc.md)
-- Ellenőrizze az [Előző generációs](../sizes-previous-gen.md) lapon az A Standard, Dv1 (D1-4 és D11-14 v1) és Az A8-A11 sorozatot
+- A standard, a Dv1 (D1-4 és D11-14 v1), valamint az A8-A11 sorozat [előző generációs](../sizes-previous-gen.md) oldalának keresése

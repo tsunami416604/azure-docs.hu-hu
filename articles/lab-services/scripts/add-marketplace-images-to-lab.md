@@ -1,6 +1,6 @@
 ---
-title: PowerShell – Marketplace-lemezkép hozzáadása egy laborhoz az Azure DevTest Labsben
-description: Ez a PowerShell-parancsfájl egy piactéri lemezképet ad hozzá egy tesztkörnyezethez az Azure DevTest Labsben.
+title: PowerShell – Piactéri rendszerkép hozzáadása laborhoz Azure DevTest Labs
+description: Ez a PowerShell-parancsfájl egy piactér-rendszerképet hoz létre Azure DevTest Labsban található laborba.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,25 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 3d699a22ed06022c6d9df12ade7f202fb304648c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2f5d6b6b9500ccd90630e8920c09340658fb76f
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76166446"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100183"
 ---
-# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>A PowerShell használatával marketplace-lemezképet adhat hozzá egy laborhoz az Azure DevTest Labsben
+# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Piactéri rendszerkép hozzáadása a Azure DevTest Labshoz a PowerShell használatával
 
-Ez a minta PowerShell-parancsfájl egy piactéri lemezképet ad hozzá egy laborhoz az Azure DevTest Labs-ben. 
+Ez a minta PowerShell-parancsfájl egy Piactéri rendszerképet hoz létre Azure DevTest Labsban található laborba. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Egy labor.** A parancsfájl megköveteli, hogy egy meglévő labor. 
+* **Egy labor**. A parancsfájlhoz meglévő labor szükséges. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -40,13 +40,13 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| Find-AzResource | Erőforrások keresése a megadott paraméterek alapján. |
-| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Erőforrásokat kap. |
-| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Egy erőforrást módosít. |
-| [Új-AzResource](/powershell/module/az.resources/new-azresource) | Erőforrásokat hozhat létre. |
+| Keresés – AzResource | Erőforrások keresése megadott paraméterek alapján. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Erőforrások beolvasása. |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Módosítja az erőforrást. |
+| [Új – AzResource](/powershell/module/az.resources/new-azresource) | Erőforrásokat hozhat létre. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Lab Services PowerShell-parancsfájlminták az [Azure Lab Services PowerShell-mintákban](../samples-powershell.md)találhatók.
+További Azure Lab Services PowerShell-szkriptek is találhatók a [Azure Lab Services PowerShell-mintákban](../samples-powershell.md).

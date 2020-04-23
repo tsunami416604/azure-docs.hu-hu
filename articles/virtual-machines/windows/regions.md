@@ -1,19 +1,18 @@
 ---
-title: Azure-régiók Windows virtuális gépekhez
-description: Információ a Windows virtuális gépek Azure-beli futtatásának régióiról
+title: Azure-régiók Windows rendszerű virtuális gépekhez
+description: Ismerje meg a Windows rendszerű virtuális gépek Azure-ban való futtatásának régióit
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/10/2019
-ms.openlocfilehash: 56d0d674a135e8060394d2f76a248ef103923d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c44b3fc6178ff426ba18b5ad303da9fb6dbc817
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277622"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099954"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek régiói
 [!INCLUDE [virtual-machines-common-regions](../../../includes/virtual-machines-common-regions.md)]

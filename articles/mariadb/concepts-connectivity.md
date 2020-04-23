@@ -1,48 +1,48 @@
 ---
-title: Átmeneti kapcsolódási hibák – Azure-adatbázis a MariaDB-hez
-description: Ismerje meg, hogyan kezelhetők az Azure Database for MariaDB átmeneti kapcsolódási hibái.
-keywords: mysql-kapcsolat,kapcsolati karakterlánc,kapcsolódási problémák,átmeneti hiba,csatlakozási hiba
-author: jasonwhowell
-ms.author: jasonh
+title: Átmeneti kapcsolódási hibák – Azure Database for MariaDB
+description: Megtudhatja, hogyan kezelheti Azure Database for MariaDB átmeneti kapcsolódási hibáit.
+keywords: MySQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problémák, átmeneti hiba, kapcsolódási hiba
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 2d162b5123cdaabe17859863c148f6483175d1e1
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 3e6c5c8b6c3f118f1b19c5e2b3455f1f66f7e70e
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770233"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100804"
 ---
-# <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Átmeneti kapcsolódási hibák kezelése a MariaDB Azure Database szolgáltatásában
+# <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>Azure Database for MariaDB átmeneti kapcsolódási hibáinak kezelése
 
-Ez a cikk ismerteti, hogyan kezelhető konzisztitusos hibák az Azure Database for MariaDB.
+Ez a cikk azt ismerteti, hogyan kezelhető az Azure Database for MariaDBhoz csatlakozó átmeneti hibák.
 
 ## <a name="transient-errors"></a>Átmeneti hibák
 
-Egy átmeneti hiba, más néven átmeneti hiba, egy hiba, amely megoldja magát. Ezek a hibák általában az adatbázis-kiszolgálóval való kapcsolatként jelennek meg. A kiszolgálóval létesített új kapcsolatok sem nyithatók meg. Átmeneti hibák fordulhatnak elő például hardver- vagy hálózati hiba esetén. Egy másik ok lehet egy új verziója a PaaS szolgáltatás, amely folyamatban van kivezetve. A legtöbb ilyen eseményt a rendszer kevesebb mint 60 másodperc alatt automatikusan enyhíti. A felhőben lévő alkalmazások tervezésére és fejlesztésére vonatkozó ajánlott eljárás az, ha átmeneti hibákra számíthat. Tegyük fel, hogy bármikor bármely összetevőben előfordulhatnak, és hogy megfelelő logikával rendelkeznek az ilyen helyzetek kezeléséhez.
+Egy átmeneti hiba (más néven átmeneti hiba) egy olyan hiba, amely magát a megoldást fogja megoldani. Ezek a hibák általában az eldobott adatbázis-kiszolgálóval létesített kapcsolatok. Nem nyitható meg a kiszolgálóval létesített új kapcsolatok. Átmeneti hibák merülhetnek fel, például ha hardveres vagy hálózati hiba történik. Egy másik ok lehet a Pásti-szolgáltatás új verziója. Az események többségét a rendszer automatikusan csökkenti a 60 másodpercnél kisebb mértékben. A Felhőbeli alkalmazások tervezéséhez és fejlesztéséhez ajánlott eljárás az átmeneti hibák elvárható. Tegyük fel, hogy bármikor megtörténhetnek bármely összetevőben, és az ilyen helyzetek kezeléséhez megfelelő logikával kell rendelkeznie.
 
-## <a name="handling-transient-errors"></a>Átmeneti hibák kezelése
+## <a name="handling-transient-errors"></a>Átmeneti hibák elhárítása
 
-Az átmeneti hibákat újrapróbálkozási logikával kell kezelni. Figyelembe veendő helyzetek:
+Az átmeneti hibákat az újrapróbálkozási logikával kell kezelni. Olyan helyzetek, amelyeket figyelembe kell venni:
 
-* Hiba történik a kapcsolat megnyitásakor
-* A kiszolgáló oldalon megszakad az az idlés kapcsolat. Amikor megpróbál kiadni egy parancsot, az nem hajtható végre
-* A rendszer elejt egy aktív kapcsolatot, amely jelenleg egy parancsot hajt végre.
+* Hiba történik a kapcsolatok megnyitásakor
+* Az üresjárati kapcsolatok el lettek dobva a kiszolgáló oldalán. Amikor megpróbál kiadni egy parancsot, nem hajtható végre
+* A rendszer eldobott egy olyan aktív kapcsolatokat, amely jelenleg egy parancsot futtat.
 
-Az első és a második esetben meglehetősen egyenesen kezelni. Próbálja meg újra megnyitni a kapcsolatot. Ha sikeres, a rendszer enyhítette az átmeneti hibát. Az Azure Database for MariaDB-t ismét használhatja. Javasoljuk, hogy várjon, mielőtt újra próbálkozna a kapcsolattal. Visszalépés, ha a kezdeti újrapróbálkozások sikertelenek lesznek. Így a rendszer minden rendelkezésre álló erőforrást felhasználhat a hibahelyzet leküzdésére. Egy jó minta, hogy kövesse a következő:
+Az első és a második eset viszonylag azonnal továbbítható a kezelésére. Próbálja meg újra megnyitni a kapcsolódást. Ha a művelet sikeres, az átmeneti hibát a rendszeren enyhítjük. Újra használhatja a Azure Database for MariaDB. Azt javasoljuk, hogy várjon a kapcsolódás megkísérlése előtt. Vissza, ha a kezdeti újrapróbálkozások sikertelenek lesznek. Így a rendszeren az összes rendelkezésre álló erőforrás felhasználható a hiba helyzetének leküzdésére. A követendő példa a következő:
 
-* Várjon 5 másodpercet az első újrapróbálkozás előtt.
-* Minden következő újrapróbálkozás esetén a várakozás exponenciálisan, legfeljebb 60 másodpercig növekszik.
-* Állítsa be az újrapróbálkozások maximális számát, amelynek során az alkalmazás a művelet sikertelennek tekinti.
+* Várjon 5 másodpercig az első újrapróbálkozás előtt.
+* Minden egyes újrapróbálkozáskor a várakozás exponenciálisan növekszik, akár 60 másodpercre.
+* Állítsa be az újrapróbálkozások maximális számát, amikor az alkalmazás nem tudta végrehajtani a műveletet.
 
-Ha egy aktív tranzakcióval való kapcsolat sikertelen, nehezebb a helyreállítás megfelelő kezelése. Két eset van: Ha a tranzakció csak olvasható jellegű volt, biztonságos újra megnyitni a kapcsolatot, és újra megpróbálni a tranzakciót. Ha azonban a tranzakció is az adatbázisba írt, meg kell állapítania, hogy a tranzakció vissza lett-e állítva, vagy sikeres volt-e az átmeneti hiba bekövetkezése előtt. Ebben az esetben lehet, hogy nem kapta meg a véglegesítési nyugtát az adatbázis-kiszolgálótól.
+Ha egy aktív tranzakcióval rendelkező kapcsolat meghiúsul, nehezebb a helyreállítás megfelelő kezelése. Két eset létezik: Ha a tranzakció csak olvasható, akkor a rendszer biztonságosan újra megnyithatja a kapcsolódást, és újrapróbálkozhat a tranzakcióval. Ha azonban a tranzakciót is megírta az adatbázisba, meg kell határoznia, hogy a tranzakció vissza lett-e állítva, vagy az átmeneti hiba miatt sikeres volt-e. Ebben az esetben előfordulhat, hogy nem kapta meg a véglegesítő nyugtát az adatbázis-kiszolgálóról.
 
-Ennek egyik módja az, hogy létrehoz egy egyedi azonosítót az ügyfélen, amely az összes újrapróbálkozáshoz használatos. Ezt az egyedi azonosítót a tranzakció részeként adja át a kiszolgálónak, és egy egyedi megkötéssel rendelkező oszlopban tárolja. Így biztonságosan újra próbálkozhat a tranzakcióval. Sikeres lesz, ha az előző tranzakció vissza lett állítva, és az ügyfél által létrehozott egyedi azonosító még nem létezik a rendszerben. Sikertelen lesz a duplikált kulcs megsértése, ha az egyedi azonosítót korábban tárolták, mert az előző tranzakció sikeresen befejeződött.
+Ennek egyik módja egy egyedi azonosító létrehozása az ügyfélen, amely az összes újrapróbálkozáshoz használatos. Ezt az egyedi azonosítót a tranzakció részeként adja át a kiszolgálónak, és egy egyedi korlátozással rendelkező oszlopban tárolja. Így biztonságosan újrapróbálkozhat a tranzakcióval. A művelet sikeres lesz, ha az előző tranzakció vissza lett állítva, és az ügyfél által generált egyedi azonosító még nem létezik a rendszeren. Ha az egyedi azonosítót korábban tárolta, a rendszer duplikált kulcs megsértését jelzi, mert az előző tranzakció sikeresen befejeződött.
 
-Amikor a program harmadik féltől származó köztes szoftveren keresztül kommunikál a MariaDB-alapú Azure-adatbázissal, kérdezze meg a szállítótól, hogy a köztes szoftver tartalmaz-e átmeneti hibák újrapróbálkozási logikáját.
+Ha a program a Azure Database for MariaDB harmadik féltől származó middleware-n keresztül kommunikál, kérje meg a gyártót, hogy az átmeneti hibák esetén a middleware tartalmazza-e az újrapróbálkozási logikát.
 
-Győződjön meg róla, hogy tesztelje a logika újrapróbálkozását. Például próbálja meg végrehajtani a kódot, miközben felskálázás a számítási erőforrások at Azure Database for MariaDB-kiszolgáló. Az alkalmazásnak gond nélkül kezelnie kell a művelet során észlelt rövid állásidőt.
+Ügyeljen arra, hogy tesztelje újra a logikát. Például próbálja meg végrehajtani a kódot a Azure Database for MariaDB kiszolgáló számítási erőforrásainak felfelé vagy lefelé skálázásakor. Az alkalmazásnak gond nélkül kell kezelnie a művelet során észlelt rövid állásidőt.
 
 ## <a name="next-steps"></a>További lépések
 

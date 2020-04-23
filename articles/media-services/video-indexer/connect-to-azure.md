@@ -1,180 +1,189 @@
 ---
-title: Azure-hoz csatlakoztatott videoindexelő-fiók létrehozása
+title: Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
 titleSuffix: Azure Media Services
-description: Ismerje meg, hogyan hozhat létre Az Azure-hoz csatlakoztatott Video Indexer-fiókot.
+description: Megtudhatja, hogyan hozhat létre az Azure-hoz csatlakoztatott Video Indexer fiókot.
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/05/2019
+ms.date: 04/22/2020
 ms.author: juliako
-ms.openlocfilehash: 7ec8004fa0a54265962e79320c02287b2fcf814a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89360f062f0198a6b0c857395b4956caa1109e82
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499915"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097172"
 ---
-# <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure-hoz csatlakoztatott videoindexelő-fiók létrehozása
+# <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
 
-Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol bizonyos számú ingyenes indexelési percet kap) vagy egy fizetett opciót (ahol nem korlátozza a kvóta). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználóinak, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználók számára. A fizetős beállítással létrehozhat egy Video Indexer-fiókot, amely az Azure-előfizetéséhez kapcsolódik, és egy Azure Media Services-fiókot. Az indexelt percekért, valamint a médiafiókkal kapcsolatos díjakért kell fizetnie.
+Video Indexer-fiók létrehozásakor kiválaszthat egy ingyenes próbaverziós fiókot (amely bizonyos számú ingyenes indexelési percet igénybe vehet) vagy egy fizetős lehetőséget (ha nem korlátozza a kvótát). Az ingyenes próbaverzióval a Video Indexer akár 600 perces ingyenes indexelést biztosít a webhely felhasználói számára, illetve akár 2400 perc ingyenes indexelést az API-felhasználók számára. A fizetős lehetőséggel létrehoz egy Video Indexer fiókot, amely az Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik. Az indexelt percek és a Media Accounting szolgáltatás díját is fizetni kell.
 
-Ez a cikk bemutatja, hogyan hozhat létre egy Azure-előfizetéshez és egy Azure Media Services-fiókhoz kapcsolódó Video Indexer-fiókot. A témakör az automatikus (alapértelmezett) folyamat használatával az Azure-hoz való csatlakozás lépéseit ismerteti. Azt is bemutatja, hogyan csatlakozhat manuálisan az Azure-hoz (speciális).
+Ez a cikk bemutatja, hogyan hozhat létre egy Azure-előfizetéshez és egy Azure Media Services-fiókhoz kapcsolódó Video Indexer fiókot. A témakör lépéseit követve csatlakozhat az Azure-hoz az automatikus (alapértelmezett) folyamat használatával. Azt is bemutatja, hogyan csatlakozhat az Azure-hoz manuálisan (speciális).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés.
 
-    Ha még nem rendelkezik Azure-előfizetéssel, regisztráljon az [Ingyenes Azure-próbaverzióra.](https://azure.microsoft.com/free/)
+    Ha még nem rendelkezik Azure-előfizetéssel, regisztráljon az [Azure ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 
 * Egy Azure Active Directory (Azure AD) tartomány.
 
-    Ha nem rendelkezik Azure AD-tartománnyal, hozza létre ezt a tartományt az Azure-előfizetéssel. További információ: [Egyéni tartománynevek kezelése az Azure AD-ben](../../active-directory/users-groups-roles/domains-manage.md)
+    Ha nem rendelkezik Azure AD-tartománnyal, hozza létre ezt a tartományt az Azure-előfizetésével. További információ: [Egyéni tartománynevek kezelése az Azure ad-ben](../../active-directory/users-groups-roles/domains-manage.md)
 
-* Az Azure AD-tartomány ban egy **alkalmazás rendszergazdai** szerepkörrel rendelkező felhasználó. Ezt a tagot fogja használni a Video Indexer-fiók Azure-hoz való csatlakoztatásakor.
+* Egy felhasználó az Azure AD-tartományban egy **alkalmazás-rendszergazdai** szerepkörrel. Ezt a tagot fogja használni a Video Indexer-fiók Azure-hoz való csatlakoztatásakor.
 
-    Ez a felhasználó egy Azure AD-felhasználó egy munkahelyi vagy iskolai fiókkal. Ne használjon személyes fiókot, például outlook.com, live.com vagy hotmail.com.
+    A felhasználónak munkahelyi vagy iskolai fiókkal rendelkező Azure AD-felhasználónak kell lennie. Ne használjon személyes fiókot (például outlook.com, live.com vagy hotmail.com).
 
-    ![az összes AAD-felhasználó](./media/create-account/all-aad-users.png)
+    ![minden HRE-felhasználó](./media/create-account/all-aad-users.png)
 
-### <a name="additional-prerequisites-for-automatic-flow"></a>Az automatikus áramlás további előfeltételei
+### <a name="additional-prerequisites-for-automatic-flow"></a>Az automatikus folyamat további előfeltételei
 
-* Az Azure AD-tartomány egyik felhasználója és tagja.
+* Egy felhasználó és egy tag az Azure AD-tartományban.
 
     Ezt a tagot fogja használni a Video Indexer-fiók Azure-hoz való csatlakoztatásakor.
 
-    Ennek a felhasználónak az Azure-előfizetés tagja kell lennie **tulajdonosi** szerepkörrel, vagy **közreműködői** és **felhasználói hozzáférés-rendszergazdai** szerepkörökkel. A felhasználó kétszer is hozzáadható, két szerepkörrel. Egyszer a közreműködővel, egyszer pedig a felhasználói hozzáférés-rendszergazda.
+    Ennek a felhasználónak az Azure-előfizetésében egy **tulajdonosi** szerepkörrel, vagy a **közreműködő** és a **felhasználói hozzáférés rendszergazdai** szerepköreivel rendelkező tagnak kell lennie. A felhasználók kétszer is hozzáadhatók két szerepkörrel. Egyszer a közreműködővel és egyszer a felhasználói hozzáférés rendszergazdájával.
 
     ![hozzáférés-vezérlés](./media/create-account/access-control-iam.png)
 
-### <a name="additional-prerequisites-for-manual-flow"></a>A kézi áramlás további előfeltételei
+### <a name="additional-prerequisites-for-manual-flow"></a>További előfeltételek a manuális adatforgalomhoz
 
-* Regisztrálja az EventGrid-erőforrás-szolgáltatót az Azure Portalon.
+* Regisztrálja a EventGrid erőforrás-szolgáltatót a Azure Portal használatával.
 
-    Az [Azure Portalon](https://portal.azure.com/)nyissa meg **az Előfizetések**->[előfizetés]->**ResourceProviders**.
+    A [Azure Portal](https://portal.azure.com/)lépjen az **előfizetések**-> [előfizetés] – >**ResourceProviders**elemre.
 
-    Keresse meg a **Microsoft.Media** és a **Microsoft.EventGrid**. Ha nem a "Regisztrált" állapotban, kattintson a **Regisztráció gombra.** A regisztráció néhány percet vesz igénybe.
+    Keressen rá a **Microsoft. Media** és a **Microsoft. EventGrid**kifejezésre. Ha nem a "regisztrált" állapotban van, kattintson a **regisztráció**elemre. A regisztráció néhány percet vesz igénybe.
 
     ![EventGrid](./media/create-account/event-grid.png)
 
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
 
 > [!NOTE]
-> Ha az Azure-előfizetés tanúsítványalapú többtényezős hitelesítést használ, rendkívül fontos, hogy a következő lépéseket hajtsa végre egy olyan eszközön, amelyrendelkezik a szükséges tanúsítványokkal.
+> Ha az Azure-előfizetése tanúsítványalapú többtényezős hitelesítést használ, rendkívül fontos, hogy a következő lépéseket olyan eszközön végezze el, amelyen telepítve vannak a szükséges tanúsítványok.
 
 1. Nyissa meg a [Video Indexer](https://www.videoindexer.ai/) webhelyét, és jelentkezzen be.
 
-2. Válassza az **Új fiók létrehozása** gombot:
+2. Válassza az **új fiók létrehozása** gombot:
 
-    ![Új videoindexelő-fiók létrehozása](./media/create-account/connect-to-azure.png)
+    ![Új Video Indexer fiók létrehozása](./media/create-account/connect-to-azure.png)
 
 3. Amikor megjelenik az előfizetések listája, válassza ki a használni kívánt előfizetést.
 
-    ![Videoindexelő csatlakoztatása az Azure-hoz](./media/create-account/connect-vi-to-azure-subscription.png)
+    ![Video Indexer kapcsolódása az Azure-hoz](./media/create-account/connect-vi-to-azure-subscription.png)
 
-4. Válasszon ki egy Azure-régiót a támogatott helyekközül: USA nyugati régiója 2, Észak-Európa vagy Kelet-Ázsia.
-5. Az **Azure Media Services-fiók csoportban**válasszon az alábbi lehetőségek közül:
+4. Válasszon ki egy Azure-régiót a támogatott helyekről: USA 2. nyugati régiója, Észak-Európa vagy Kelet-Ázsia.
+5. A **Azure Media Services fiók**területen válasszon egyet a következő lehetőségek közül:
 
-    * Új Media Services-fiók létrehozásához válassza **az Új erőforráscsoport létrehozása**lehetőséget. Adja meg az erőforráscsoport nevét.
+    * Új Media Services-fiók létrehozásához válassza az **Új erőforráscsoport létrehozása**lehetőséget. Adja meg az erőforráscsoport nevét.
 
-        Az Azure létrehozza az új fiókot az előfizetésében, beleértve egy új Azure Storage-fiókot is. Az új Media Services-fiók alapértelmezett kezdeti konfigurációval rendelkezik egy streamelési végponttal és 10 S3 fenntartott egységgel.
-    * Meglévő Media Services-fiók használatához válassza **a Meglévő erőforrás használata**lehetőséget. A fióklistában válassza ki a fiókját.
+        Az Azure létrehoz egy új fiókot az előfizetésében, beleértve egy új Azure Storage-fiókot is. Az új Media Services fiók alapértelmezett kezdeti konfigurációja egy streaming Endpoint és 10 S3 fenntartott egység.
+    * Meglévő Media Services-fiók használatához válassza a **meglévő erőforrás használata**lehetőséget. A fiókok listából válassza ki a fiókját.
 
-        A Media Services-fióknak a Video Indexer-fiókkal azonos régióval kell rendelkeznie.
+        A Media Services-fióknak a Video Indexer-fiókkal megegyező régióval kell rendelkeznie.
 
         > [!NOTE]
-        > Az indexelés időtartamának és az alacsony átviteli feszültségnek a minimalizálása érdekében erősen ajánlott a Media Services-fiókban [lévő fenntartott egységek](../previous/media-services-scale-media-processing-overview.md ) típusát és számát **10 S3 fenntartott egységre**módosítani. Lásd: [A portál használata a fenntartott egységek módosításához](../previous/media-services-portal-scale-media-processing.md).
+        > Az indexelési időtartam és az alacsony átviteli sebesség minimálisra csökkentése érdekében erősen ajánlott a Media Services-fiókban lévő [fenntartott egységek](../previous/media-services-scale-media-processing-overview.md ) típusának és számának módosítása **10 S3 fenntartott egységre**. [A fenntartott egységek módosításához lásd: a portál használata](../previous/media-services-portal-scale-media-processing.md).
 
-    * A kapcsolat manuális konfigurálásához válassza a **Váltás kézi konfigurációra** kapcsolatot.
+    * A kapcsolat manuális konfigurálásához válassza a **váltás manuális konfigurációra** hivatkozásra.
 
-        Részletes információt a Csatlakozás az [Azure-hoz manuálisan](#connect-to-azure-manually-advanced-option) (speciális beállítás) című, az alábbi szakaszban talál.
+        Részletes információk: [Kapcsolódás az Azure-hoz manuálisan](#connect-to-azure-manually-advanced-option) (speciális beállítás) szakasz, amely az alábbiak szerint jelenik meg.
 6. Ha elkészült, válassza a **Csatlakozás**lehetőséget. Ez a művelet akár néhány percet is igénybe vehet.
 
-    Miután csatlakozott az Azure-hoz, az új Video Indexer-fiókja megjelenik a fióklistában:
+    Miután csatlakozott az Azure-hoz, az új Video Indexer fiók megjelenik a fiók listában:
 
     ![új fiók](./media/create-account/new-account.png)
 
 7. Tallózással keresse meg az új fiókot.
 
-## <a name="connect-to-azure-manually-advanced-option"></a>Csatlakozás manuálisan az Azure-hoz (speciális beállítás)
+## <a name="connect-to-azure-manually-advanced-option"></a>Kapcsolódás az Azure-hoz manuálisan (speciális beállítás)
 
-Ha az Azure-ral létesített kapcsolat nem sikerült, manuális csatlakozással megkísérelheti a probléma elhárítását.
+Ha nem sikerült csatlakozni az Azure-hoz, a probléma megoldásához manuálisan is csatlakozhat.
 
 > [!NOTE]
-> Erősen ajánlott, hogy a következő három fiók ugyanabban a régióban: a Video Indexer fiók, amely csatlakozik a Media Services-fiók, valamint az Azure storage-fiók csatlakozik ugyanahhoz a Media Services-fiókhoz.
+> Javasoljuk, hogy a következő három fiókkal rendelkezzen ugyanabban a régióban: a Media Services-fiókkal összekapcsolt Video Indexer fiókkal, valamint az ugyanahhoz a Media Services fiókhoz csatlakoztatott Azure Storage-fiókkal.
 
-### <a name="create-and-configure-a-media-services-account"></a>Media Services-fiók létrehozása és konfigurálása
+### <a name="create-and-configure-a-media-services-account"></a>Media Services fiók létrehozása és konfigurálása
 
-1. Az [Azure](https://portal.azure.com/) Portal használatával hozzon létre egy Azure Media Services-fiókot, a fiók létrehozása című részben leírtak [szerint.](../previous/media-services-portal-create-account.md)
+1. Az [Azure](https://portal.azure.com/) Portal használatával hozzon létre egy Azure Media Services fiókot a [fiók létrehozása](../previous/media-services-portal-create-account.md)című témakörben leírtak szerint.
 
-    Amikor tárfiókot hoz létre a Media Services-fiókjához, válassza a **StorageV2** lehetőséget a fiók-típusú és **a georedundáns (GRS)** lehetőséget a replikációs mezőkhöz.
+    A Media Services-fiókhoz tartozó Storage-fiók létrehozásakor válassza a **StorageV2** és a **geo-redundáns (GRS)** beállítást a replikálási mezőkhöz.
 
     ![Új AMS-fiók](./media/create-account/create-ams-account1.png)
 
     > [!NOTE]
-    > Győződjön meg arról, hogy írja le a Media Services erőforrás- és fiókneveket. A következő szakaszban található lépésekhez szüksége lesz rájuk.
+    > Ügyeljen rá, hogy jegyezze fel a Media Services erőforrás és fiók nevét. Ehhez a következő szakaszban ismertetett lépéseket kell elvégeznie.
 
-2. Állítsa be a [lefoglalt egységek](../previous/media-services-scale-media-processing-overview.md ) típusát és számát **10 S3 lefoglalt egységre** a létrehozott Media Services-fiókban. Lásd: [A portál használata a fenntartott egységek módosításához](../previous/media-services-portal-scale-media-processing.md).
-3. Mielőtt lejátszhatja a videókat a Video Indexer webalkalmazásban, el kell indítania az új Media Services-fiók alapértelmezett **streamelési végpontját.**
+2. Állítsa be a [fenntartott egységek](../previous/media-services-scale-media-processing-overview.md ) típusát és számát **10 S3 fenntartott egységre** a létrehozott Media Services fiókban. [A fenntartott egységek módosításához lásd: a portál használata](../previous/media-services-portal-scale-media-processing.md).
+3. A videók a Video Indexer webalkalmazásban való lejátszása előtt el kell indítania az új Media Services-fiók alapértelmezett **adatfolyam-végpontját** .
 
-    Az új Media Services-fiókban válassza a **Streamelési végpontok**lehetőséget. Ezután válassza ki a streamelési végpontot, és nyomja le a start gombot.
+    Az új Media Services fiókban válassza a **folyamatos átviteli végpontok**lehetőséget. Ezután válassza ki a folyamatos átviteli végpontot, és kattintson a Start gombra.
 
     ![Új AMS-fiók](./media/create-account/create-ams-account2.png)
 
-4. Ahhoz, hogy a Video Indexer hitelesítse magát a Media Services API-val, létre kell hozni egy AD-alkalmazást. A következő lépések végigvezetik az Azure AD hitelesítési folyamat a [Get started with Azure AD-hitelesítés az Azure Portal használatával:](../previous/media-services-portal-get-started-with-aad.md)
+4. A Media Services API-val való hitelesítéshez Video Indexer létre kell hozni egy AD-alkalmazást. Az alábbi lépések végigvezetik az Azure ad- [hitelesítés használatának első lépései a Azure Portal használatával](../previous/media-services-portal-get-started-with-aad.md)című témakörben ismertetett Azure ad-hitelesítési folyamaton:
 
-    1. Az új Media Services-fiókban válassza az **API-hozzáférés**lehetőséget.
-    2. Válassza [az egyszerű szolgáltatás hitelesítési módját](../previous/media-services-portal-get-started-with-aad.md).
-    3. Az ügyfélazonosító és az ügyféltitok beszerezése
+    1. Az új Media Services fiókban válassza az **API-hozzáférés**lehetőséget.
+    2. Válassza ki az [egyszerű szolgáltatás hitelesítési módszerét](../previous/media-services-portal-get-started-with-aad.md).
+    3. Az ügyfél-azonosító és az ügyfél titkos kulcsának beolvasása
 
-        Miután kiválasztotta a **Beállítások**->**kulcsok lehetőséget,** adja hozzá a **Leírás elemet,** nyomja le a **Mentés**billentyűt, és a kulcs értéke kitöltődik.
+        Miután kiválasztotta a **Beállítások**->**kulcsokat**, adja hozzá a **leírást**, nyomja meg a **Mentés**gombot, és a kulcs értéke feltöltve lesz.
 
-        Ha a kulcs lejár, a fiók tulajdonosának kapcsolatba kell lépnie a Video Indexer ügyfélszolgálatával a kulcs megújításához.
+        Ha a kulcs lejár, a fiók tulajdonosának kapcsolatba kell lépnie Video Indexer támogatással a kulcs megújításához.
 
         > [!NOTE]
-        > Győződjön meg arról, hogy írja le a kulcs értékét és az alkalmazás azonosítóját. A következő szakaszban található lépésekhez szüksége lesz rá.
+        > Ügyeljen rá, hogy jegyezze fel a kulcs értékét és az alkalmazás AZONOSÍTÓját. Ehhez a következő szakaszban ismertetett lépések szükségesek.
 
-### <a name="connect-manually"></a>Csatlakozás manuálisan
+### <a name="connect-manually"></a>Manuális kapcsolat
 
-A **Videoindexelő csatlakoztatása a** [Videoindexelő](https://www.videoindexer.ai/) hez a Video Indexelő lapjának egy Azure-előfizetési párbeszédpanelén válassza a **Váltás manuális konfigurációra** hivatkozást.
+A **video Indexer csatlakoztatása egy Azure-előfizetéshez** párbeszédpanel [video Indexer](https://www.videoindexer.ai/) lapján válassza a **váltás kézi konfigurációra** hivatkozásra.
 
-A párbeszédpanelen adja meg a következő információkat:
+A párbeszédpanelen adja meg a következő adatokat:
 
 |Beállítás|Leírás|
 |---|---|
-|Videoindexer-fiók régiója|A Video Indexer-fiók régió neve. A jobb teljesítmény és az alacsonyabb költségek érdekében erősen ajánlott megadni annak a régiónak a nevét, ahol az Azure Media Services-erőforrás és az Azure Storage-fiók található. |
-|Azure AD-bérlő|Az Azure AD-bérlő neve, például "contoso.onmicrosoft.com". A bérlői adatok az Azure Portalon lehívhatók. Helyezze a kurzort a bejelentkezett felhasználó neve fölé a jobb felső sarokban. Keresse meg a **domain**jobb oldalán található nevet.|
-|Előfizetés azonosítója|Az Azure-előfizetés, amely alatt ezt a kapcsolatot létre kell hozni. Az előfizetés-azonosító lehívható az Azure Portalon. Válassza a Minden **szolgáltatás lehetőséget** a bal oldali panelen, és keressen az "előfizetések" kifejezésre. Válassza **az Előfizetések** lehetőséget, és válassza ki a kívánt azonosítót az előfizetések listájából.|
-|Az Azure Media Services erőforráscsoportjának neve|Annak az erőforráscsoportnak a neve, amelyben létrehozta a Media Services-fiókot.|
-|Médiaszolgáltatás-erőforrás neve|Az előző szakaszban létrehozott Azure Media Services-fiók neve.|
-|Alkalmazásazonosító|Az Azure AD alkalmazásazonosítója (a megadott Media Services-fiók engedélyeivel), amelyet az előző szakaszban hozott létre.|
-|Alkalmazáskulcs|Az előző szakaszban létrehozott Azure AD alkalmazáskulcs. |
+|Video Indexer fiók régiója|Az Video Indexer-fiók régiójának neve. A jobb teljesítmény és az alacsonyabb költségek érdekében javasoljuk, hogy adja meg annak a régiónak a nevét, ahol a Azure Media Services erőforrás és az Azure Storage-fiók található. |
+|Azure AD-bérlő|Az Azure AD-bérlő neve, például "contoso.onmicrosoft.com". A bérlő adatai a Azure Portalból kérhetők le. Vigye a kurzort a bejelentkezett felhasználó nevére a jobb felső sarokban. Keresse meg a **tartománytól**jobbra található nevet.|
+|Előfizetés azonosítója|Az Azure-előfizetés, amely alatt ezt a kapcsolatokat létre kell hozni. Az előfizetés-azonosító a Azure Portalból kérhető le. Válassza a **minden szolgáltatás** lehetőséget a bal oldali panelen, és keressen rá az "előfizetések" kifejezésre. Válassza az **előfizetések** lehetőséget, majd válassza ki a kívánt azonosítót az előfizetések listájából.|
+|Azure Media Services erőforráscsoport neve|Azon erőforráscsoport neve, amelyben létrehozta a Media Services fiókot.|
+|Media Service-erőforrás neve|Az előző szakaszban létrehozott Azure Media Services fiók neve.|
+|Alkalmazásazonosító|Az Azure AD-alkalmazás azonosítója (a megadott Media Services fiókra vonatkozó engedélyekkel), amelyeket az előző szakaszban hozott létre.|
+|Alkalmazás kulcsa|Az előző szakaszban létrehozott Azure AD-alkalmazás kulcsa. |
+
+## <a name="import-your-content-from-the-trial-account"></a>Tartalom importálása a *próbaverziós* fiókból
+
+[Új fiók létrehozásakor](#connect-to-azure)lehetősége van importálni a tartalmat a *próbaverziós* fiókból az új fiókba. Ha az **új fiók létrehozása az Azure-előfizetéshez** párbeszédpanelen az *Importálás* lehetőséget választja, a rendszer a *próbaverziós* fiókból az új fiókba másolja a média és a tartalom modell testreszabását.
+
+A tartalom importálásának lehetősége a fent ismertetett automatizált és manuális megközelítések esetében is érvényes.
+
+> [!NOTE]
+> A tartalom csak egyszer importálható minden fiókból.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Az Azure Media Services következő kapcsolódó szempontjai érvényesek:
+A következő Azure Media Services kapcsolódó megfontolások érvényesek:
 
-* Ha automatikusan csatlakozik, megjelenik egy új erőforráscsoport, media services-fiók és egy Storage-fiók az Azure-előfizetésben.
-* Ha automatikusan csatlakozik, a Video Indexer 10 S3 egységre állítja a **media Reserved Units értéket:**
+* Ha automatikusan kapcsolódik, megjelenik egy új erőforráscsoport, Media Services fiók és egy Storage-fiók az Azure-előfizetésében.
+* Ha automatikusan csatlakozik, Video Indexer beállítja a Media szolgáltatás **számára fenntartott egységeket** 10 S3 egységre:
 
-    ![Media Services által fenntartott egységek](./media/create-account/ams-reserved-units.png)
+    ![Media Services fenntartott egységek](./media/create-account/ams-reserved-units.png)
 
-* Ha meglévő Media Services-fiókhoz csatlakozik, a Video Indexelő nem módosítja a meglévő média **fenntartott egységek konfigurációját.**
+* Ha meglévő Media Services-fiókhoz csatlakozik, Video Indexer nem módosítja a meglévő Media szolgáltatás **számára fenntartott egységek** konfigurációját.
 
-   Előfordulhat, hogy a tervezett terhelésnek megfelelően módosítania kell a Media számára fenntartott egységek típusát és számát. Ne feledje, hogy ha a terhelés magas, és nincs elég egység vagy sebesség, a videók feldolgozása időtúllépési hibákat eredményezhet.
+   Előfordulhat, hogy a tervezett terhelésnek megfelelően módosítania kell a Media szolgáltatás számára fenntartott egységek típusát és számát. Ne feledje, hogy ha a terhelés magas, és nincs elég egysége vagy sebessége, a videók feldolgozása időtúllépési hibát okozhat.
 
-* Ha új Media Services-fiókhoz csatlakozik, a Video Indexer automatikusan elindítja benne az alapértelmezett **streamelési végpontot:**
+* Ha új Media Services-fiókhoz csatlakozik, Video Indexer automatikusan elindítja az alapértelmezett **folyamatos átviteli végpontot** :
 
-    ![Media Services streamelési végpontja](./media/create-account/ams-streaming-endpoint.png)
+    ![Media Services streaming végpont](./media/create-account/ams-streaming-endpoint.png)
 
-    A streamelési végpontok jelentős indítási idővel rendelkeznek. Ezért a fiók Azure-hoz való csatlakoztatása óta több percig is eltarthat, amíg a videóit streameli és meg nem nézi a Video Indexer webalkalmazásban.
+    A streaming-végpontok jelentős indítási idővel rendelkeznek. Ezért több percet is igénybe vehet, amikor a fiókját az Azure-ba csatlakoztatta, amíg a videók nem továbbíthatók és nem nézték a Video Indexer webalkalmazásban.
 
-* Ha meglévő Media Services-fiókhoz csatlakozik, a Video Indexer nem módosítja az alapértelmezett streamelési végpont-konfigurációt. Ha nincs futó **streamelési végpont,** nem nézhet videókat ebből a Media Services-fiókból vagy a Video Indexer ben.
+* Ha meglévő Media Services-fiókhoz csatlakozik, Video Indexer nem módosítja az alapértelmezett adatfolyam-végpont konfigurációját. Ha nincs futó adatfolyam- **végpont**, akkor nem nézhet meg videókat ebből a Media Services fiókból vagy video Indexerból.
 
 ## <a name="next-steps"></a>További lépések
 
-Programozott módon kezelheti próbafiókját és/vagy az Azure-hoz kapcsolódó Video Indexer-fiókjait a következő utasítások követésével: [API-k használata](video-indexer-use-apis.md).
+Programozott módon használhatja a próbaverziós fiókját és/vagy az Azure-hoz kapcsolódó Video Indexer-fiókokat a következő témakörben található utasítások végrehajtásával: API-k [használata](video-indexer-use-apis.md).
 
 Ugyanazt az Azure AD-felhasználót kell használnia, amelyet az Azure-hoz való csatlakozáskor használt.

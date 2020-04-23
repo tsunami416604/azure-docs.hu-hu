@@ -1,59 +1,60 @@
 ---
-title: Az Azure fájlmegosztás biztonsági másolata
-description: Ismerje meg, hogyan lehet biztonsági másolatot adni az Azure-fájlmegosztásokról a Recovery Services-tárolóban
+title: Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
+description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure-fájlmegosztás számára a Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: bea5035ff50eaf4047f56cde3bd671d81e21f5d3
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396279"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101423"
 ---
-# <a name="about-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági másolata
+# <a name="about-azure-file-share-backup"></a>Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 
-Az Azure fájlmegosztási biztonsági mentés egy natív, felhőalapú biztonsági mentési megoldás, amely védi az adatokat a felhőben, és kiküszöböli a helyszíni biztonsági mentési megoldásokban felmerülő további karbantartási költségeket. Az Azure Backup szolgáltatás zökkenőmentesen integrálható az Azure-fájlszinkronizálással, és lehetővé teszi a fájlmegosztási adatok és a biztonsági mentések központosítását. Ez az egyszerű, megbízható és biztonságos megoldás lehetővé teszi, hogy a vállalati fájlmegosztások védelmét néhány egyszerű lépésben konfigurálja, és garantálja, hogy bármilyen katasztrófa esetén helyreállíthatja az adatokat.
+Az Azure fájlmegosztás biztonsági mentése natív, felhőalapú biztonsági mentési megoldás, amely megvédi a felhőben tárolt adatait, és kiküszöböli a helyszíni biztonsági mentési megoldásokban érintett További karbantartási költségeket. A Azure Backup szolgáltatás zökkenőmentesen integrálható az Azure file Sync szolgáltatással, és lehetővé teszi a fájlmegosztás-és a biztonsági másolatok központi kezelését. Ez az egyszerű, megbízható és biztonságos megoldás lehetővé teszi, hogy néhány egyszerű lépéssel konfigurálja a vállalati fájlmegosztás védelmét, és gondoskodjon arról, hogy vészhelyzet esetén helyreállítsa az adatokat.
 
-## <a name="key-benefits-of-azure-file-share-backup"></a>Az Azure fájlmegosztásbiztonsági biztonsági mentésének legfontosabb előnyei
+## <a name="key-benefits-of-azure-file-share-backup"></a>Az Azure-fájlmegosztás biztonsági mentésének főbb előnyei
 
-* Nulla infrastruktúra: Nincs szükség üzembe helyezésre a fájlmegosztások védelmének konfigurálásához.
-* Beépített felügyeleti képességek: Ütemezheti a biztonsági mentéseket, és megadhatja a kívánt megőrzési időszakot az adatmetszés további többletterhelése nélkül.
-* Azonnali visszaállítás: Az Azure fájlmegosztásbiztonsági mentése fájlmegosztási pillanatképeket használ, így csak azokat a fájlokat választhatja ki, amelyeket azonnal vissza szeretne állítani.
-* Riasztás és jelentéskészítés: Beállíthatja a biztonsági mentési és visszaállítási hibák riasztási és visszaállítási riasztási megoldását, és az Azure Backup által biztosított jelentéskészítő megoldás sal betekintést nyerhet a fájlmegosztások biztonsági másolatairól.
+* Nulla infrastruktúra: nincs szükség központi telepítésre a fájlmegosztás védelmének konfigurálásához.
+* Testreszabott megőrzés: a biztonsági mentéseket a követelményeinek megfelelően napi/heti/havi/éves megőrzéssel állíthatja be.
+* Beépített felügyeleti képességek: ütemezheti a biztonsági mentéseket, és megadhatja a kívánt megőrzési időtartamot az adatok további terhelése nélkül.
+* Azonnali visszaállítás: az Azure fájlmegosztás biztonsági mentése fájlmegosztási pillanatképeket használ, így egyszerűen kiválaszthatja azokat a fájlokat, amelyeket azonnal vissza szeretne állítani.
+* Riasztások és jelentéskészítés: beállíthatja a riasztásokat a biztonsági mentési és visszaállítási hibákhoz, és a Azure Backup által biztosított jelentéskészítési megoldás használatával bepillantást nyerhet a fájlok megosztásainak biztonsági másolatából.
 
 ## <a name="architecture"></a>Architektúra
 
-![Azure fájlmegosztás biztonsági mentési architektúrája](./media/azure-file-share-backup-overview/azure-file-shares-backup-architecture.png)
+![Azure-fájlmegosztás biztonsági mentési architektúrája](./media/azure-file-share-backup-overview/azure-file-shares-backup-architecture.png)
 
 ## <a name="how-the-backup-process-works"></a>A biztonsági mentési folyamat működése
 
-1. Az Azure File shares biztonsági mentésének konfigurálása első lépése a helyreállítási szolgáltatások tárolójának létrehozása. A tároló a különböző munkaterhelések között konfigurált biztonsági mentések összesített nézetét biztosítja.
+1. Az Azure-fájlmegosztás biztonsági mentésének konfigurálásának első lépése a Recovery Services-tároló létrehozása. A tároló a különböző munkaterhelések között konfigurált biztonsági másolatok összevont nézetét jeleníti meg.
 
-2. Miután létrehozott egy trezort, az Azure Backup szolgáltatás felderíti a tárolóban regisztrálható tárfiókokat. Kiválaszthatja a védeni kívánt fájlmegosztásokat tároló tárfiókot.
+2. A tár létrehozása után a Azure Backup szolgáltatás felfedi a tárolóban regisztrálható Storage-fiókokat. Kiválaszthatja azt a Storage-fiókot, amely a védelemmel ellátni kívánt fájlmegosztást üzemelteti.
 
-3. Miután kiválasztotta a tárfiókot, az Azure Backup szolgáltatás felsorolja a tárfiókban található fájlmegosztások készletét, és a nevüket a felügyeleti réteg katalógusában tárolja.
+3. A Storage-fiók kiválasztása után a Azure Backup szolgáltatás felsorolja a Storage-fiókban lévő fájlmegosztás készletét, és a nevüket a felügyeleti réteg katalógusában tárolja.
 
-4. Ezután konfigurálja a biztonsági mentési házirendet (ütemezésés és megőrzés) a követelményeknek megfelelően, és válassza ki a fájlmegosztásokat a biztonsági mentéshez. Az Azure Backup szolgáltatás regisztrálja az ütemezések a vezérlősíkon az ütemezett biztonsági mentések.
+4. Ezután konfigurálja a biztonsági mentési szabályzatot (az ütemtervet és a megőrzést) a követelmények szerint, és válassza ki a biztonsági mentésre kijelölt fájlmegosztást. A Azure Backup szolgáltatás regisztrálja az ütemezéseket a vezérlő síkon az ütemezett biztonsági mentések elvégzéséhez.
 
-5. A megadott szabályzat alapján az Azure Backup ütemező elindítja a biztonsági mentést az ütemezett időpontban. Ennek a feladatnak a részeként a fájlmegosztás pillanatképe a Fájlmegosztás API használatával jön létre. Csak a pillanatkép URL-címe tárolódik a metaadat-tárolóban.
+5. A megadott házirend alapján az Azure Backup ütemező a biztonsági mentéseket az ütemezett időpontban indítja el. Ennek a feladatoknak a részeként a fájlmegosztás-pillanatkép a fájlmegosztás API használatával jön létre. A rendszer csak a pillanatkép URL-címét tárolja a metaadat-tárolóban.
 
     >[!NOTE]
-    >A fájlmegosztási adatok nem kerülnek át a Biztonsági mentés szolgáltatásba, mivel a Biztonsági másolat szolgáltatás létrehozza és kezeli a tárfiók részét tartalmazó pillanatképeket.
+    >A fájlmegosztás adatai nem kerülnek át a Backup szolgáltatásba, mivel a Backup szolgáltatás létrehozza és kezeli a Storage-fiókhoz tartozó pillanatképeket, és a biztonsági mentések nem kerülnek át a tárolóba.
 
-6. Az Azure-fájlmegosztás tartalmát (az egyes fájlokat vagy a teljes megosztást) a forrásfájl-megosztáson elérhető pillanatképekből állíthatja vissza. A művelet aktiválása után a pillanatkép URL-címe beolvasásra kerül a metaadat-tárolóból, és az adatok megjelennek, és a forráspillanatképből a választott célfájl-megosztásra kerülnek.
+6. Az Azure-fájlmegosztás tartalmát (az egyes fájlokat vagy a teljes megosztást) visszaállíthatja a forrásfájl-megosztáson elérhető pillanatképekről. A művelet elindítása után a rendszer beolvassa a pillanatkép URL-címét a metaadat-tárolóból, és az adatok szerepelnek a forrás-pillanatképből a választott célfájl-megosztásra.
 
-7. A biztonsági mentési és visszaállítási feladat figyelési adatok leküldéses az Azure Backup monitoring szolgáltatás. Ez lehetővé teszi a fájlmegosztások felhőbeli biztonsági másolatainak egyetlen irányítópulton való figyelését. Emellett riasztásokat vagy e-mail értesítéseket is konfigurálhat, ha a biztonsági mentés állapota érintett. Az e-maileket az Azure e-mail szolgáltatásán keresztül küldik.
+7. A biztonsági mentési és visszaállítási feladatok figyelési adatai a Azure Backup figyelési szolgáltatásba vannak leküldve. Ez lehetővé teszi, hogy egyetlen irányítópulton figyelje a fájlmegosztás Felhőbeli biztonsági másolatait. Emellett riasztásokat vagy e-mail-értesítéseket is konfigurálhat a biztonsági mentés állapotának befolyásolása esetén. Az e-maileket az Azure e-mail szolgáltatáson keresztül küldi el a rendszer.
 
-## <a name="backup-costs"></a>Biztonsági mentésköltségei
+## <a name="backup-costs"></a>Biztonsági mentési költségek
 
-Az Azure File share backup egy pillanatkép-alapú megoldás, és a pillanatképekért felmerülő tárolási díjakat az Azure Files Usage-nal együtt számlázunk az [itt](https://azure.microsoft.com/pricing/details/storage/files/)említett díjszabási részleteknek megfelelően.
+Az Azure fájlmegosztás biztonsági másolata egy pillanatkép-alapú megoldás, és a pillanatképekhez felmerülő tárolási költségek számlázása a Azure Files használattal együtt történik, az [itt](https://azure.microsoft.com/pricing/details/storage/files/)említett díjszabási adatokkal együtt.
 
-A biztonsági mentési megoldás kihasználásáért fizetendő védett példánydíj azonban a [Biztonsági mentés az Azure Files](https://azure.microsoft.com/pricing/details/backup/) számára szakaszban ismertetett díjszabási modell szerint történik. Jelenleg a tényleges ár csak az USA nyugati középső régiója esetében lett frissítve. Más régiók esetében a pontos árak hamarosan frissülnek néhány regionális változással, de ugyanazt az árképzési modellt használva.
+A biztonsági mentési megoldás kihasználása esetében azonban a védett példány díja a [Azure Files biztonsági mentése](https://azure.microsoft.com/pricing/details/backup/) szakaszban leírt díjszabási modellnek megfelelően történik. A tényleges díj jelenleg csak az USA nyugati középső régiójában frissült. Más régiókban a pontos árak néhány regionális változattal is frissülnek, azonban ugyanazt az árképzési modellt használják.
 
 >[!NOTE]
->Az előzetes verzió során nincs "Védett példány díja", és csak az [itt](https://azure.microsoft.com/pricing/details/storage/files/)említett áraknak megfelelően számítunk fel díjat a pillanatképekért.
+>A "Protected instance" díj már nem érhető el, és csak az [itt](https://azure.microsoft.com/pricing/details/storage/files/)említett díjszabás szerint kell fizetnie.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az [Azure-fájlmegosztások biztonsági és biztonsági rendszerről](backup-afs.md)
-* Válaszok az [Azure Files biztonsági mentésével kapcsolatos kérdésekre](backup-azure-files-faq.md)
+* Ismerje meg, hogyan [készíthet biztonsági mentést az Azure file shares](backup-afs.md) -ről
+* Válaszokat talál a [Azure Files biztonsági mentésével kapcsolatos kérdésekre](backup-azure-files-faq.md) .

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Automation runbookhibáinak elhárítása
-description: Ismerje meg, hogyan háríthatja el és oldhatja meg az Azure Automation runbookokkal esetleg felmerülő problémákat.
+title: Runbook hibák elhárítása Azure Automation
+description: Ismerje meg, hogy miként lehet elhárítani a Azure Automation runbookok kapcsolatban felmerülő problémákat.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,47 +8,47 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5ed25821f606b98bacf2acf3c2c389a8437406fa
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 73f79145f63e0d8afee7596f1f8231a054ef1c2e
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770903"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097693"
 ---
-# <a name="troubleshoot-runbook-errors"></a>Runbook-hibák elhárítása
+# <a name="troubleshoot-runbook-errors"></a>Runbook hibák elhárítása
 
- Ez a cikk ismerteti a különböző Runbook-hibák, amelyek előfordulhatnak, és hogyan lehet megoldani őket.
+ Ez a cikk az esetlegesen előforduló különböző runbook-hibákat és azok megoldásának módját ismerteti.
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az Az modul telepítési utasításait a hibrid Runbook-feldolgozó, [az Azure PowerShell-modul telepítése.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0) Automation-fiókjához frissítheti a modulokat a legújabb verzióra az [Azure PowerShell-modulok frissítése az Azure Automationben.](../automation-update-azure-modules.md)
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
 
-## <a name="diagnosing-runbook-issues"></a>Runbook-problémák diagnosztizálása
+## <a name="diagnosing-runbook-issues"></a>Runbook problémák diagnosztizálása
 
-Ha hibaüzenetet kap a Runbook-végrehajtás során az Azure Automationben, az alábbi lépésekkel diagnosztizálhatja a problémákat.
+Ha a runbook végrehajtása során hibákat kap a Azure Automationban, a következő lépésekkel diagnosztizálhatja a problémákat.
 
-1. **Győződjön meg arról, hogy a runbook-parancsfájl végrehajtása sikeresen a helyi számítógépen.** 
+1. **Győződjön meg arról, hogy a runbook-parancsfájl sikeresen lefut a helyi gépen.** 
 
-    Tekintse meg a [PowerShell-dokumentumok](/powershell/scripting/overview) vagy [python docs](https://docs.python.org/3/) nyelvi referencia-és tanulási modulok. A parancsfájl helyi végrehajtása felderítheti és megoldhatja a gyakori hibákat, például a következőket:
+    A nyelvi referenciák és a tanulási modulok a [PowerShell-dokumentumok](/powershell/scripting/overview) vagy a [Python-dokumentumok](https://docs.python.org/3/) című témakörben találhatók. A szkript helyi végrehajtása a gyakori hibák felderítését és megoldását, például a következőket hajtja végre:
 
       * Hiányzó modulok
       * Szintaktikai hibák
       * Logikai hibák
 
-2. **Vizsgálja meg a runbook [hibaadatfolyamait.](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output)**
+2. **Vizsgálja meg a runbook- [hibák folyamait](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output).**
 
-    Tekintse meg ezeket az adatfolyamokat az egyes üzenetekért, és hasonlítsa össze őket a cikkben dokumentált hibákkal.
+    Tekintse meg ezeket a streameket bizonyos üzenetekhez, és hasonlítsa össze azokat a cikkben leírt hibákkal.
 
-3. **Győződjön meg arról, hogy a csomópontok és az automatizálásmunkaterület rendelkezik a szükséges modulokkal.** 
+3. **Győződjön meg arról, hogy a csomópontok és az Automation-munkaterület rendelkezik a szükséges modulokkal.** 
 
-    Ha a runbook importál ja a modulokat, ellenőrizze, hogy azok elérhetők-e az Automation-fiók számára a [modulok importálása](../shared-resources/modules.md#importing-modules)című részben felsorolt lépések segítségével. Frissítse a modulokat a legújabb verzióra az [Azure Automation Azure-modulok frissítésével](..//automation-update-azure-modules.md)kapcsolatos utasításokat követve. További hibaelhárítási információt a [Modulok hibaelhárítása című témakörben talál.](shared-resources.md#modules)
+    Ha a runbook bármely modult importál, ellenőrizze, hogy elérhetők-e az Automation-fiókjához az [importálási modulok](../shared-resources/modules.md#importing-modules)részben felsorolt lépések segítségével. Frissítse a modulokat a legújabb verzióra az [Azure-modulok frissítése Azure Automationban](..//automation-update-azure-modules.md)című témakör útmutatásait követve. További hibaelhárítási információkért lásd: [modulok hibaelhárítása](shared-resources.md#modules).
 
-4. **Teendő, ha a runbook fel van függesztve, vagy váratlanul meghibásodik.**
+4. **Ha a runbook fel van függesztve vagy váratlanul leáll.**
 
-    * [Ellenőrizze a feladat állapota](https://docs.microsoft.com/azure/automation/automation-runbook-execution#job-statuses) határozza meg runbook állapotait és néhány lehetséges okait.
-    * [Adjon hozzá további kimenetet](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams) a runbookhoz, hogy azonosítsa, mi történik a runbook felfüggesztése előtt.
-    * Kezelje a feladatai által okozott [kivételeket.](https://docs.microsoft.com/azure/automation/automation-runbook-execution#handling-exceptions)
+    * A [feladatok állapotának megadásával](https://docs.microsoft.com/azure/automation/automation-runbook-execution#job-statuses) meghatározhatja a runbook állapotát és a lehetséges okokat.
+    * [További kimenet hozzáadása](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams) a runbook annak azonosításához, hogy mi történjen a runbook felfüggesztése előtt.
+    * [Kezelje](https://docs.microsoft.com/azure/automation/automation-runbook-execution#handling-exceptions) a feladatokban felmerülő kivételeket.
 
-## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Forgatókönyv: A bejelentkezési adatok futtatása az AzureRM-fiókkal a bejelentkezéshez
+## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Forgatókönyv: a login-AzureRMAccount futtatása a bejelentkezéshez
 
 ### <a name="issue"></a>Probléma
 
@@ -60,34 +60,34 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordulhat elő, ha nem használ Futtatás másként fiókot, vagy a Futtatás másként fiók lejárt. Lásd: [Azure Automation Futtatás másként fiókok kezelése.](https://docs.microsoft.com/azure/automation/manage-runas-account)
+Ez a hiba akkor fordulhat elő, ha nem futtató fiókot használ, vagy lejárt a futtató fiók. Lásd: [Azure Automation futtató fiókok kezelése](https://docs.microsoft.com/azure/automation/manage-runas-account).
 
-Ennek a hibának két fő oka van:
+Ennek a hibának két elsődleges oka van:
 
-* Az AzureRM vagy az Az modul különböző verziói vannak.
-* Az erőforrásokat külön előfizetésben próbálja elérni.
+* A AzureRM vagy az a modul különböző verziói vannak.
+* Egy külön előfizetésben próbál hozzáférni az erőforrásokhoz.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha egy AzureRM vagy Az modul frissítése után ez a hibaüzenet jelenik meg, az összes modult ugyanabba a verzióra kell frissítenie.
+Ha ezt a hibaüzenetet egy AzureRM vagy az a modul frissítése után kapja meg, akkor az összes modult ugyanarra a verzióra kell frissítenie.
 
-Ha egy másik előfizetés erőforrásaihoz próbál hozzáférni, az alábbi lépéseket követve konfigurálhatja az engedélyeket.
+Ha egy másik előfizetésben lévő erőforrásokhoz próbál hozzáférni, az engedélyek konfigurálásához kövesse az alábbi lépéseket.
 
-1. Nyissa meg az Automation Run As fiókot, és másolja az alkalmazásazonosítót és az ujjlenyomatot.
+1. Nyissa meg az Automation futtató fiókot, és másolja az alkalmazás AZONOSÍTÓját és ujjlenyomatát.
 
-    ![Azonosító és ujjlenyomat másolása](../media/troubleshoot-runbooks/collect-app-id.png)
+    ![AZONOSÍTÓ és ujjlenyomat másolása](../media/troubleshoot-runbooks/collect-app-id.png)
 
-1. Nyissa meg az előfizetés hozzáférés-vezérlését, ahol az Automation-fiók NEM található, és adjon hozzá egy új szerepkör-hozzárendelést.
+1. Nyissa meg az előfizetéshez tartozó Access Control, ahol az Automation-fiók nem található, és adjon hozzá egy új szerepkör-hozzárendelést.
 
     ![Hozzáférés-vezérlés](../media/troubleshoot-runbooks/access-control.png)
 
-1. Adja hozzá a korábban gyűjtött alkalmazásazonosítót. Válassza a Közreműködői engedélyek lehetőséget.
+1. Adja hozzá a korábban összegyűjtött alkalmazás-azonosítót. Válassza a közreműködői engedélyek lehetőséget.
 
     ![Szerepkör-hozzárendelés hozzáadása](../media/troubleshoot-runbooks/add-role-assignment.png)
 
-1. Másolja az előfizetés nevére.
+1. Másolja az előfizetés nevét.
 
-1. Most már használhatja a következő Runbook-kódot az Automation-fiók engedélyeinek teszteléséhez a másik előfizetéshez. Cserélje `"\<CertificateThumbprint\>"` le az 1. Cserélje `"\<SubscriptionName\>"` le a 4.
+1. Mostantól a következő runbook-kóddal tesztelheti az Automation-fiókjából a másik előfizetésre vonatkozó engedélyeket. Cserélje `"\<CertificateThumbprint\>"` le az értéket az 1. lépésben átmásolt értékre. Cserélje `"\<SubscriptionName\>"` le a értéket a 4. lépésben átmásolt értékre.
 
     ```powershell
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -104,11 +104,11 @@ Ha egy másik előfizetés erőforrásaihoz próbál hozzáférni, az alábbi l�
     }
     ```
 
-## <a name="scenario-unable-to-find-the-azure-subscription"></a><a name="unable-to-find-subscription"></a>Forgatókönyv: Nem található az Azure-előfizetés
+## <a name="scenario-unable-to-find-the-azure-subscription"></a><a name="unable-to-find-subscription"></a>Forgatókönyv: nem található az Azure-előfizetés
 
 ### <a name="issue"></a>Probléma
 
-A , `Select-AzureSubscription` `Select-AzureRMSubscription`vagy `Select-AzSubscription` a parancsmaggal végzett munka során a következő hibaüzenet jelenik meg:
+A (z), `Select-AzureSubscription` `Select-AzureRMSubscription`, vagy `Select-AzSubscription` parancsmag használatakor a következő hibaüzenet jelenik meg:
 
 ```error
 The subscription named <subscription name> cannot be found.
@@ -119,17 +119,17 @@ The subscription named <subscription name> cannot be found.
 Ez a hiba akkor fordulhat elő, ha:
 
 * Az előfizetés neve érvénytelen.
-* Az Azure Active Directory-felhasználó, aki megpróbálja beszerezni az előfizetés adatait nincs konfigurálva az előfizetés rendszergazdája.
+* Az előfizetést beolvasni próbáló Azure Active Directory felhasználó nem az előfizetés rendszergazdájaként van konfigurálva.
 * A parancsmag nem érhető el.
 
 ### <a name="resolution"></a>Megoldás:
 
-Az alábbi lépéseket követve állapítsa meg, hogy hitelesítette-e az Azure-t, és hozzáfér-e a kijelölni kívánt előfizetéshez.
+Az alábbi lépéseket követve megállapíthatja, hogy hitelesített-e az Azure-ban, és hozzáfér-e a kiválasztani kívánt előfizetéshez.
 
-1. Győződjön meg arról, hogy a parancsfájl önállóan működik, tesztelje az Azure Automationen kívül.
-2. Győződjön meg arról, hogy a parancsfájl a `Select-*` parancsmag futtatása előtt futtatja a [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) parancsmamot.
-3. Adja `Disable-AzContextAutosave –Scope Process` hozzá a runbook elejéhez. Ez a parancsmag-hívás biztosítja, hogy a hitelesítő adatok csak az aktuális runbook végrehajtására vonatkozzanak.
-4. Ha továbbra is megjelenik ez a hibaüzenet, módosítsa a kódot a `AzContext` paraméter `Connect-AzAccount`hozzáadásával, majd hajtsa végre a kódot.
+1. Annak ellenőrzéséhez, hogy a parancsfájl önállóan működik-e, tesztelje a Azure Automationon kívül.
+2. A `Select-*` parancsmag futtatása előtt győződjön meg arról, hogy a parancsfájl a [AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) parancsmagot futtatja.
+3. Hozzáadás `Disable-AzContextAutosave –Scope Process` a runbook elejéhez. Ez a parancsmag-hívás biztosítja, hogy a hitelesítő adatok csak az aktuális runbook végrehajtásához legyenek érvényesek.
+4. Ha továbbra is megjelenik ez a hibaüzenet, módosítsa a kódját a `AzContext` paraméter hozzáadásával `Connect-AzAccount`, majd hajtsa végre a kódot.
 
    ```powershell
    Disable-AzContextAutosave –Scope Process
@@ -142,11 +142,11 @@ Az alábbi lépéseket követve állapítsa meg, hogy hitelesítette-e az Azure-
    Get-AzVM -ResourceGroupName myResourceGroup -AzContext $context
     ```
 
-## <a name="scenario-authentication-to-azure-failed-because-multi-factor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>Forgatókönyv: Az Azure-hitelesítés sikertelen, mert a többtényezős hitelesítés engedélyezve van
+## <a name="scenario-authentication-to-azure-failed-because-multi-factor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>Forgatókönyv: az Azure-hitelesítés nem sikerült, mert a többtényezős hitelesítés engedélyezve van
 
 ### <a name="issue"></a>Probléma
 
-A következő hibaüzenet jelenik meg, amikor azure-felhasználónevével és jelszavával hitelesíti az Azure-ba:
+Az Azure-beli felhasználónevével és jelszavával történő hitelesítéskor a következő hibaüzenet jelenik meg:
 
 ```error
 Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required
@@ -154,17 +154,17 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 ### <a name="cause"></a>Ok
 
-Ha többtényezős hitelesítéssel rendelkezik az Azure-fiókjában, nem használhat Azure Active Directory-felhasználót az Azure-ba való hitelesítéshez. Ehelyett a hitelesítéshez tanúsítványt vagy egyszerű szolgáltatást kell használnia.
+Ha az Azure-fiókjában többtényezős hitelesítés van, nem használhat Azure Active Directory felhasználót az Azure-beli hitelesítéshez. Ehelyett tanúsítványt vagy szolgáltatásnevet kell használnia a hitelesítéshez.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha klasszikus Azure-telepítési modellparancsmagokkal szeretne tanúsítványt használni, olvassa el [az Azure-szolgáltatások kezeléséhez használt tanúsítvány létrehozása és hozzáadása című tanúsítványt.](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Ha egyszerű szolgáltatást szeretne használni az Azure Resource Manager parancsmagokkal, olvassa el az Egyszerű szolgáltatás létrehozása az [Azure Portal használatával és](../../active-directory/develop/howto-create-service-principal-portal.md) az egyszerű szolgáltatás [hitelesítése az Azure Resource Manager használatával.](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+Ha az Azure-beli klasszikus üzemi modell-parancsmagokkal rendelkező tanúsítványt szeretne használni, tekintse meg az [Azure-szolgáltatások kezeléséhez szükséges tanúsítvány létrehozását és hozzáadását](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)ismertető témakört. Ha Azure Resource Manager-parancsmagokkal szeretne szolgáltatásnevet használni, tekintse meg az [egyszerű szolgáltatásnév létrehozása Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) és [a szolgáltatásnév hitelesítése az Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)használatával című témakört.
 
-## <a name="scenario-you-see-an-error-in-your-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>Eset: Hibaüzenet jelenik meg a feladatstreamekben a get_SerializationSettings metódussal kapcsolatban.
+## <a name="scenario-you-see-an-error-in-your-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>Forgatókönyv: a get_SerializationSettings metódussal kapcsolatos feladatokban szereplő hiba jelenik meg
 
 ### <a name="issue"></a>Probléma
 
-A következő hiba jelenik meg a runbook feladatstreamjeiben:
+A runbook a következő hiba jelenik meg a feladatokban:
 
 ```error
 Connect-AzAccount : Method 'get_SerializationSettings' in type
@@ -180,17 +180,17 @@ At line:16 char:1
 
 ### <a name="cause"></a>Ok
 
-Ezt a hibát az Okozza, hogy az AzureRM és az Az modul parancsmagjait egy runbookban használja. Ez akkor fordul elő, amikor importálja az Az modult az AzureRM-modul importálása előtt.
+Ezt a hibát a AzureRM és az az Module parancsmagok egy runbook való használata okozza. Akkor következik be, amikor importálja az az modult a AzureRM modul importálása előtt.
 
 ### <a name="resolution"></a>Megoldás:
 
-Az és az AzureRM-parancsmagok nem importálhatók és nem használhatók ugyanabban a runbookban. Ha többet szeretne megtudni az Az-parancsmagokról az Azure Automationben, olvassa [el a Modulok kezelése az Azure Automationben](../shared-resources/modules.md).
+Az az és a AzureRM parancsmag nem importálható és nem használható ugyanabban a runbook. Ha többet szeretne megtudni az az parancsmagokról Azure Automationban, tekintse meg [a modulok kezelése a Azure Automationban](../shared-resources/modules.md)című témakört.
 
-## <a name="scenario-the-runbook-fails-with-the-error-a-task-was-canceled"></a><a name="task-was-cancelled"></a>Eset: A runbook sikertelen a hibával: Egy feladat meglett szakítva
+## <a name="scenario-the-runbook-fails-with-the-error-a-task-was-canceled"></a><a name="task-was-cancelled"></a>Forgatókönyv: a runbook sikertelen a következő hibával: a feladat meg lett szakítva
 
 ### <a name="issue"></a>Probléma
 
-A runbook a következő példához hasonló hibával sikertelen:
+A runbook az alábbi példához hasonló hibával meghiúsul:
 
 ```error
 Exception: A task was canceled.
@@ -198,30 +198,30 @@ Exception: A task was canceled.
 
 ### <a name="cause"></a>Ok
 
-Ezt a hibát az elavult Azure-modulok használata okozhatja.
+Ezt a hibát az elavult Azure-modulok használatával lehet okozni.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ezt a hibát az Azure-modulok legújabb verzióra való frissítésével oldhatja meg. 
+A hiba megoldásához frissítse az Azure-modulokat a legújabb verzióra. 
 
-1. Az Automation-fiókban kattintson a **Modulok**elemre, majd **az Azure-modulok frissítése parancsra.** 
-2. A frissítés körülbelül 15 percet vesz igénybe. Miután befejeződött, futtassa újra a sikertelen runbookot.
+1. Az Automation-fiókban kattintson a **modulok**, majd az **Azure-modulok frissítése**elemre. 
+2. A frissítés nagyjából 15 percet vesz igénybe. Ha elkészült, futtassa újra a sikertelen runbook.
 
-Ha többet szeretne tudni a modulok frissítéséről, olvassa [el az Azure-modulok frissítése az Azure Automationben.](../automation-update-azure-modules.md)
+A modulok frissítésével kapcsolatos további információkért lásd: [Azure-modulok frissítése Azure Automationban](../automation-update-azure-modules.md).
 
-## <a name="scenario-runbooks-fail-when-dealing-with-multiple-subscriptions"></a><a name="runbook-auth-failure"></a>Eset: Runbooks fail kezelése esetén több előfizetések
+## <a name="scenario-runbooks-fail-when-dealing-with-multiple-subscriptions"></a><a name="runbook-auth-failure"></a>Forgatókönyv: a Runbookok sikertelen a több előfizetés kezelésekor
 
 ### <a name="issue"></a>Probléma
 
-Runbookok végrehajtásakor a runbook nem kezeli az Azure-erőforrásokat.
+A runbookok végrehajtásakor a runbook nem tudja kezelni az Azure-erőforrásokat.
 
 ### <a name="cause"></a>Ok
 
-A runbook nem a megfelelő környezetben fut.
+A runbook nem a megfelelő környezetet használja a futtatásakor.
 
 ### <a name="resolution"></a>Megoldás:
 
-Az előfizetési környezet elveszhet, ha egy runbook több runbookot hív meg. Annak érdekében, hogy az előfizetési környezet átkerüljön a runbookok, az `AzureRmContext` ügyfél runbook adja át a környezetet a `Start-AzureRmAutomationRunbook` paraméter ben a parancsmag. Használja `Disable-AzureRmContextAutosave` a parancsmag `Scope` a paraméter `Process` készlet, győződjön meg arról, hogy a megadott hitelesítő adatok csak az aktuális runbook. További információ: [Több előfizetés megmunkálata.](../automation-runbook-execution.md#working-with-multiple-subscriptions)
+Előfordulhat, hogy az előfizetési környezet elvész, ha egy runbook több runbookok hív meg. Annak biztosítása érdekében, hogy az előfizetési környezet átkerüljön a runbookok, az ügyfélnek runbook kell adnia a `Start-AzureRmAutomationRunbook` kontextust a `AzureRmContext` paraméterben található parancsmagnak. A `Disable-AzureRmContextAutosave` parancsmaggal állítsa `Scope` `Process` be a paramétert annak biztosítására, hogy a megadott hitelesítő adatok csak az aktuális runbook legyenek felhasználva. További információ: [több előfizetés használata](../automation-runbook-execution.md#working-with-multiple-subscriptions).
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
@@ -248,11 +248,11 @@ Start-AzAutomationRunbook `
     –Parameters $params –wait
 ```
 
-## <a name="scenario-term-not-recognized-as-the-name-of-a-cmdlet-function-script"></a><a name="not-recognized-as-cmdlet"></a>Eset: A kifejezés nem ismeri fel a parancsmag, a függvény, a parancsfájl nevét
+## <a name="scenario-term-not-recognized-as-the-name-of-a-cmdlet-function-script"></a><a name="not-recognized-as-cmdlet"></a>Forgatókönyv: a kifejezés nem ismerhető fel parancsmag, függvény, parancsfájl neveként
 
 ### <a name="issue"></a>Probléma
 
-A runbook a következő példához hasonló hibával sikertelen:
+A runbook az alábbi példához hasonló hibával meghiúsul:
 
 ```error
 The term 'Connect-AzAccount' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if the path was included verify that the path is correct and try again.
@@ -262,22 +262,22 @@ The term 'Connect-AzAccount' is not recognized as the name of a cmdlet, function
 
 Ez a hiba a következő okok miatt fordulhat elő:
 
-* A parancsmast tartalmazó modul nem importálva az Automation-fiókba.
-* A rendszer importálja a parancsmacst tartalmazó modult, de elavult.
+* A parancsmagot tartalmazó modul nem lett importálva az Automation-fiókba.
+* A parancsmagot tartalmazó modul importálva van, de elavult.
 
 ### <a name="resolution"></a>Megoldás:
 
-A hiba megoldásához végezze el az alábbi feladatok egyikét. 
+A hiba elhárításához hajtsa végre az alábbi műveletek egyikét. 
 
-* Egy Azure-modul, [hogyan frissítheti az Azure PowerShell-modulok az Azure Automation-ben,](../automation-update-azure-modules.md) hogyan frissítheti a modulokat az Automation-fiókban.
+* Az Azure-modulokkal kapcsolatban lásd: [Azure PowerShell-modulok frissítése Azure Automationban](../automation-update-azure-modules.md) , hogy megtudja, hogyan frissítheti a modulokat az Automation-fiókban.
 
-* Egy nem Azure-modul, győződjön meg arról, hogy a modul importált az Automation-fiókba.
+* Nem Azure-modul esetén győződjön meg arról, hogy a modul az Automation-fiókba lett importálva.
 
-## <a name="scenario-the-runbook-job-start-was-attempted-three-times-but-failed-to-start-each-time"></a><a name="job-attempted-3-times"></a>Eset: A runbook-feladat indítása háromszor történt megkísérlésre, de nem sikerült minden alkalommal elindulni
+## <a name="scenario-the-runbook-job-start-was-attempted-three-times-but-failed-to-start-each-time"></a><a name="job-attempted-3-times"></a>Forgatókönyv: a runbook-feladatok indítását háromszor próbálta meg, de minden alkalommal nem indult el
 
 ### <a name="issue"></a>Probléma
 
-A runbook a következő hibával sikertelen:
+A runbook a következő hiba miatt meghiúsul:
 
 ```error
 The job was tried three times but it failed
@@ -285,35 +285,35 @@ The job was tried three times but it failed
 
 ### <a name="cause"></a>Ok
 
-A hiba az alábbi problémák valamelyike miatt fordul elő:
+Ez a hiba az alábbi problémák egyike miatt fordul elő:
 
-* Memóriakorlát. Egy feladat sikertelen lehet, ha 400 MB-nál több memóriát használ. A rendszer a sandbox számára lefoglalt memória dokumentált korlátai az [Automation szolgáltatás korlátaiban](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)találhatók. 
+* Memória korlátja Egy feladat meghiúsulhat, ha több mint 400 MB memóriát használ. A sandbox számára lefoglalt memória dokumentált korlátai az [Automation szolgáltatás korlátain](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)találhatók. 
 
-* Hálózati szoftvercsatornák. Az Azure sandboxok 1000 egyidejű hálózati szoftvercsatornára korlátozódnak. Lásd: [Automatizálási szolgáltatáskorlátok](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
+* Hálózati szoftvercsatornák. Az Azure-beli munkaterületek 1000 egyidejű hálózati szoftvercsatornára korlátozódnak. Lásd: az [Automation szolgáltatás korlátai](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
 
-* Modul nem kompatibilis. Előfordulhat, hogy a modulfüggőségek nem megfelelőek. Ebben az esetben a runbook `Command not found` általában `Cannot bind parameter` egy vagy üzenetet ad vissza.
+* A modul nem kompatibilis. Előfordulhat, hogy a modul függőségei nem megfelelőek. Ebben az esetben a runbook általában egy vagy `Command not found` `Cannot bind parameter` egy üzenetet ad vissza.
 
-* Nincs hitelesítés az Active Directory val a sandbox. A runbook megkísérelt meghívni egy futtatható vagy részfolyamat, amely egy Azure-sandbox ban fut. Runbookok konfigurálása az Azure AD-vel az Azure Active Directory hitelesítési könyvtár (ADAL) használatával hitelesítésre nem támogatott.
+* Nincs hitelesítés Active Directory a homokozóban. A runbook megpróbált meghívni egy Azure-beli homokozóban futó végrehajtható fájlt vagy alfolyamatot. A runbookok konfigurálása az Azure AD-val való hitelesítéshez az Azure Active Directory Authentication Library (ADAL) használatával nem támogatott.
 
-* Túl sok kivételadat. A runbook túl sok kivételadatot próbált írni a kimeneti adatfolyamba.
+* Túl sok kivételi érték. A runbook túl sok kivételi adatokat próbált meg írni a kimeneti adatfolyamba.
 
 ### <a name="resolution"></a>Megoldás:
 
-* Memóriakorlát, hálózati szoftvercsatornák. A memóriakorlátokon belül a munkafeladat felosztása több runbook között, kevesebb adat feldolgozása a memóriában, a runbookok felesleges kimenetének írása, valamint a PowerShell-munkafolyamat-runbookok beírásának mérlegelése javasolt módszer. Használja a tiszta módszert, például `$myVar.clear`a , `[GC]::Collect` a változók törléséhez és a szemétgyűjtés azonnali futtatásához. Ezek a műveletek csökkentik a runbook memóriaigényét futásidőben.
+* Memória korlátja, hálózati szoftvercsatorna. A memória korlátain belüli munkaterhelések használatának javasolt módjai a munkaterhelés több runbookok közötti felosztása, a memóriában kevesebb adat feldolgozása, a felesleges kimenetek írása a runbookok, valamint a PowerShell-munkafolyamatok runbookok való beírásának gyakorisága. A Clear metódussal, például `$myVar.clear`a paranccsal törölheti a változókat, `[GC]::Collect` és azonnal futtathatja a szemetet. Ezek a műveletek csökkentik a runbook memória-lábnyomát futtatókörnyezet közben.
 
-* Modul nem kompatibilis. Az Azure-modulok frissítéséhez kövesse az [Azure PowerShell-modulok frissítése](../automation-update-azure-modules.md)az Azure Automationben című lépéseit.
+* A modul nem kompatibilis. Frissítse az Azure-modulokat a [Azure Automation Azure PowerShell moduljainak frissítése](../automation-update-azure-modules.md)című témakör lépéseit követve.
 
-* Nincs hitelesítés az Active Directory sandboxhoz szolgáltatással. Amikor egy runbookkal hitelesíti az Azure AD-t, győződjön meg arról, hogy az Azure AD-modul elérhető az Automation-fiókban. Ügyeljen arra, hogy adja meg a Futtatás másként fiók nak a szükséges engedélyeket a runbook által automatizálható feladatok végrehajtásához.
+* Nincs hitelesítés Active Directory a homokozóban. Az Azure AD-runbook való hitelesítéskor győződjön meg arról, hogy az Azure AD-modul elérhető az Automation-fiókjában. Ügyeljen arra, hogy a futtató fióknak meg kell adnia a szükséges engedélyeket a runbook automatizálható feladatok végrehajtásához.
 
-  Ha a runbook nem tudja meghívni az Azure-sandboxban futó végrehajtható vagy részfolyamatot, használja a runbookot egy [hibrid Runbook-feldolgozón.](../automation-hrw-run-runbooks.md) A hibrid dolgozókat nem korlátozzák az Azure sandboxok memória- és hálózati korlátai.
+  Ha a runbook nem hívhat meg egy Azure-beli homokozóban futó végrehajtható fájlt vagy alfolyamatot, használja a runbook [hibrid runbook-feldolgozón](../automation-hrw-run-runbooks.md). A hibrid feldolgozók nem korlátozódnak az Azure-beli munkaterületek által használt memória-és hálózati korlátokra.
 
-* Túl sok kivételadat. Van egy 1 MB-os korláta a feladat kimeneti adatfolyam. Győződjön meg arról, hogy a runbook `try` egy `catch` végrehajtható vagy részfolyamathoz zárja a hívásokat, és blokkolja. Ha a műveletek kivételt okoznak, a kód írja be az üzenetet a kivételből egy Automation-változóba. Ez a módszer megakadályozza, hogy az üzenet a feladat kimeneti adatfolyamba kerüljön.
+* Túl sok kivételi érték. A feladatok kimeneti adatfolyama 1MB-ra van korlátozva. Győződjön meg arról, hogy a runbook egy végrehajtható fájlhoz vagy egy alfolyamathoz tartozó hívásokat csatol a és `try` `catch` a blokk használatával. Ha a műveletek kivételt jeleznek, a kódnak kell megírnia az üzenetet a kivételből egy Automation-változóba. Ezzel a technikával megakadályozható, hogy a rendszer beírja az üzenetet a feladatok kimeneti adatfolyamba.
 
-## <a name="scenario-sign-in-to-azure-account-failed"></a><a name="sign-in-failed"></a>Forgatókönyv: Nem sikerült bejelentkezni az Azure-fiókba
+## <a name="scenario-sign-in-to-azure-account-failed"></a><a name="sign-in-failed"></a>Forgatókönyv: nem sikerült az Azure-fiókba való bejelentkezés
 
 ### <a name="issue"></a>Probléma
 
-A `Connect-AzAccount` parancsmaggal végzett munka során az alábbi hibák egyike jelenik meg:
+A `Connect-AzAccount` parancsmag használatakor a következő hibák valamelyike jelenik meg:
 
 ```error
 Unknown_user_type: Unknown User Type
@@ -325,14 +325,14 @@ No certificate was found in the certificate store with thumbprint
 
 ### <a name="cause"></a>Ok
 
-Ezek a hibák akkor fordulnak elő, ha a hitelesítő egység neve érvénytelen. Ezek akkor is előfordulhatnak, ha az Automation hitelesítő adatok eszközének beállításához használt felhasználónév és jelszó érvénytelen.
+Ezek a hibák akkor jelentkeznek, ha a hitelesítőadat-eszköz neve érvénytelen. Az is előfordulhat, hogy az Automation hitelesítőadat-eszköz beállításához használt Felhasználónév és jelszó nem érvényes.
 
 ### <a name="resolution"></a>Megoldás:
 
-A hiba meghatározásához tegye a következő lépéseket:
+A probléma okának megállapításához hajtsa végre a következő lépéseket:
 
-1. Győződjön meg arról, hogy nincsenek különleges karakterek. Ezek a `\@` karakterek tartalmazzák a karaktert az Automation hitelesítő egység neve, amely az Azure-hoz való csatlakozáshoz használ.
-2. Ellenőrizze, hogy használhatja-e a helyi PowerShell ISE-szerkesztőben az Azure Automation hitelesítő adatában tárolt felhasználónevet és jelszót. Futtassa a következő parancsmagokat a PowerShell ISE-ben.
+1. Győződjön meg arról, hogy nincs speciális karaktere. A karakterek közé tartozik `\@` az Automation hitelesítőadat-eszköz neve, amelyet az Azure-hoz való kapcsolódáshoz használ.
+2. Ellenőrizze, hogy használhatja-e a Azure Automation hitelesítő adatokban tárolt felhasználónevet és jelszót a helyi PowerShell ISE-szerkesztőben. Futtassa a következő parancsmagokat a PowerShell ISE-ben.
 
    ```powershell
    $Cred = Get-Credential
@@ -342,9 +342,9 @@ A hiba meghatározásához tegye a következő lépéseket:
    Connect-AzAccount –Credential $Cred
    ```
 
-3. Ha a hitelesítés helyileg sikertelen, nem állította be megfelelően az Azure Active Directory hitelesítő adatait. Tekintse meg a [hitelesítés az Azure-ban az Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) blogbejegyzést az Azure Active Directory-fiók megfelelő beállítása.
+3. Ha a hitelesítés helyileg meghiúsul, nem állította be megfelelően a Azure Active Directory hitelesítő adatait. Tekintse át a hitelesítés az Azure-ban [Azure Active Directory blogbejegyzés használatával](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) című témakört, hogy helyesen állítsa be a Azure Active Directory fiókot.
 
-4. Ha a hiba átmenetinek tűnik, próbálja meg újrapróbálkozási logikát hozzáadni a hitelesítési rutinhoz, hogy a hitelesítés hatékonyabbá tegye a hitelesítést.
+4. Ha a hiba úgy tűnik, hogy átmeneti, próbálkozzon újra az újrapróbálkozási logikával a hitelesítési rutinhoz, hogy megbízhatóbb legyen a hitelesítés.
 
    ```powershell
    # Get the connection "AzureRunAsConnection"
@@ -368,11 +368,25 @@ A hiba meghatározásához tegye a következő lépéseket:
    }
    ```
 
-## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>Eset: Az objektumhivatkozás nincs objektumpéldányra állítva
+## <a name="scenario-incorrect-object-reference-on-call-to-add-azaccount"></a><a name="object-reference-not-set"></a>Forgatókönyv: helytelen objektum-hivatkozás az Add-AzAccount hívásához
 
 ### <a name="issue"></a>Probléma
 
-A következő hibaüzenet jelenik meg, amikor egy `Wait` gyermek runbookot a paraméterrel, és a kimeneti adatfolyam objektumot tartalmaz:
+Ez a hibaüzenet akkor jelenik meg `Add-AzAccount`, ha a használatakor a `Connect-AzAccount` parancsmag aliasa:
+
+```error
+Add-AzAccount : Object reference not set to an instance of an object
+```
+
+### <a name="cause"></a>Ok
+
+Ez a hiba akkor fordulhat elő, ha a runbook nem hajtja `Add-AzAccount` végre a megfelelő lépéseket az Automation-fiók hozzáadásának meghívása előtt. A szükséges lépések egyikének példája egy futtató fiókkal való bejelentkezés. A runbook használt helyes műveletekért lásd: [runbook-végrehajtás a Azure Automation-ben](https://docs.microsoft.com/azure/automation/automation-runbook-execution).
+
+## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>Forgatókönyv: az objektum hivatkozása nem az objektum egy példányára van beállítva
+
+### <a name="issue"></a>Probléma
+
+A következő hibaüzenetet kapja, amikor egy gyermek runbook meghívása `Wait` a paraméterrel, és a kimeneti adatfolyam tartalmaz egy objektumot:
 
 ```error
 Object reference not set to an instance of an object
@@ -380,11 +394,11 @@ Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Ok
 
-`Start-AzAutomationRunbook`nem kezeli megfelelően a kimeneti adatfolyamot, ha az adatfolyam objektumokat tartalmaz.
+`Start-AzAutomationRunbook`a nem kezeli megfelelően a kimeneti adatfolyamot, ha az adatfolyam objektumokat tartalmaz.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ajánlott egy lekérdezési logika megvalósítása, és a [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) parancsmag használatával a kimenet lekéréséhez. Ennek a logikának a mintája az alábbiakban van meghatározva.
+Javasoljuk, hogy hozzon létre egy lekérdezési logikát, és használja a [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) parancsmagot a kimenet lekéréséhez. Az alábbi logika mintája alább látható.
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -408,11 +422,11 @@ while((IsJobTerminalState $job.Status) -eq $false -and $waitTime -lt $maxTimeout
 $jobResults | Get-AzAutomationJobOutput | Get-AzAutomationJobOutputRecord | Select-Object -ExpandProperty Value
 ```
 
-## <a name="scenario-runbook-fails-because-of-deserialized-object"></a><a name="fails-deserialized-object"></a>Eset: Runbook sikertelen, mert deszerializált objektum
+## <a name="scenario-runbook-fails-because-of-deserialized-object"></a><a name="fails-deserialized-object"></a>Forgatókönyv: a Runbook nem sikerül deszerializált objektum miatt
 
 ### <a name="issue"></a>Probléma
 
-A runbook a következő hibával sikertelen:
+A runbook a következő hibával meghiúsul:
 
 ```error
 Cannot bind parameter <ParameterName>.
@@ -422,21 +436,21 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 ### <a name="cause"></a>Ok
 
-Ha a runbook egy PowerShell-munkafolyamat, összetett objektumokat tárol deszerializált formátumban, hogy a munkafolyamat felfüggesztése esetén megőrizte a runbook állapotát.
+Ha a runbook egy PowerShell-munkafolyamat, akkor az összetett objektumokat egy deszerializált formátumban tárolja, hogy a runbook állapot maradjon, ha a munkafolyamat fel van függesztve.
 
 ### <a name="resolution"></a>Megoldás:
 
 A probléma megoldásához használja az alábbi megoldások bármelyikét.
 
-* Ha összetett objektumokat csőel az egyik parancsmagból a másikba, `InlineScript` csomagolja ezeket a parancsmagokat egy tevékenységbe.
-* Adja át a szükséges nevet vagy értéket az összetett objektumból ahelyett, hogy a teljes objektumot átadná.
-* PowerShell-runbook használata a PowerShell-munkafolyamat-runbook helyett.
+* Ha a komplex objektumokat az egyik parancsmagból egy másikba végzi, a parancsmagokat egy `InlineScript` tevékenységbe csomagolja.
+* Adja meg a szükséges nevet vagy értéket a komplex objektumból a teljes objektum átadása helyett.
+* PowerShell-munkafolyamatok runbook helyett használjon PowerShell-runbook.
 
-## <a name="scenario-runbook-job-fails-because-allocated-quota-exceeded"></a><a name="quota-exceeded"></a>Eset: A Runbook-feladat sikertelen, mert a lefoglalt kvóta túllépte a kvótát
+## <a name="scenario-runbook-job-fails-because-allocated-quota-exceeded"></a><a name="quota-exceeded"></a>Forgatókönyv: a Runbook feladata meghiúsult, mert a lefoglalt kvóta túllépte a korlátot
 
 ### <a name="issue"></a>Probléma
 
-A runbook-feladat a következő hibával sikertelen:
+A runbook-feladata a következő hibával meghiúsul:
 
 ```error
 The quota for the monthly total job run time has been reached for this subscription
@@ -444,22 +458,22 @@ The quota for the monthly total job run time has been reached for this subscript
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha a feladat végrehajtása meghaladja a fiók 500 perces szabad kvótáját. Ez a kvóta a feladat-végrehajtási feladatok minden típusára vonatkozik. Ezek a feladatok egy feladat tesztelése, a feladat indítása a portálról, egy feladat végrehajtása webhookok használatával, vagy egy feladat ütemezése az Azure Portalon vagy az adatközpontban. Ha többet szeretne tudni az Automatizálás díjszabásáról, olvassa el az [Automatizálásdíj.](https://azure.microsoft.com/pricing/details/automation/)
+Ez a hiba akkor fordul elő, ha a feladatok végrehajtása meghaladja a fiókhoz tartozó 500 perces ingyenes kvótát. Ez a kvóta a feladat-végrehajtási feladatok összes típusára vonatkozik. Ezek közül néhány feladat teszteli a feladatot, elindítja a feladatot a portálról, webhookok használatával hajt végre feladatot, vagy a Azure Portal vagy az adatközpont használatával végrehajtja a feladat ütemezését. További információ az automatizálás díjszabásáról: az [Automation díjszabása](https://azure.microsoft.com/pricing/details/automation/).
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha havonta több mint 500 perc feldolgozást szeretne használni, módosítsa az előfizetést az ingyenes szintről az alapszintű szintre.
+Ha havonta több mint 500 perces feldolgozást szeretne használni, módosítsa az előfizetést az ingyenes szintről az alapszintű csomagra.
 
-1. Jelentkezzen be Azure-előfizetésbe.
-2. Válassza ki a frissíteni kívánt Automation-fiókot.
-3. Kattintson a **Beállítások** **gombra, majd az Árképzés parancsra.**
-4. Kattintson az **Engedélyezés** gombra a lap alján, ha a fiókot az alapszintre szeretné frissíteni.
+1. Jelentkezzen be az Azure-előfizetésbe.
+2. Válassza ki a frissítendő Automation-fiókot.
+3. Kattintson a **Beállítások**, majd a **díjszabás**elemre.
+4. Kattintson az **Engedélyezés** elemre az oldal alján a fiók alapszintű szintre való frissítéséhez.
 
-## <a name="scenario-cmdlet-not-recognized-when-executing-a-runbook"></a><a name="cmdlet-not-recognized"></a>Eset: A parancsmag nem ismerhető fel a runbook végrehajtásakor
+## <a name="scenario-cmdlet-not-recognized-when-executing-a-runbook"></a><a name="cmdlet-not-recognized"></a>Forgatókönyv: a parancsmag nem ismerhető fel egy runbook végrehajtásakor
 
 ### <a name="issue"></a>Probléma
 
-A runbook-feladat a következő hibával sikertelen:
+A runbook-feladata a következő hibával meghiúsul:
 
 ```error
 <cmdlet name>: The term <cmdlet name> is not recognized as the name of a cmdlet, function, script file, or operable program.
@@ -467,50 +481,50 @@ A runbook-feladat a következő hibával sikertelen:
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba akkor jön, ha a PowerShell-motor nem találja a runbookban használt parancsmamot. Lehetséges, hogy a parancsmacst tartalmazó modul hiányzik a fiókból, van egy név ütközés egy runbook nevét, vagy a parancsmag is létezik egy másik modulban, és az Automation nem tudja feloldani a nevet.
+Ezt a hibát akkor okozza a rendszer, ha a PowerShell-motor nem találja a runbook használt parancsmagot. Lehetséges, hogy a parancsmagot tartalmazó modul hiányzik a fiókból, a név ütközik a runbook nevével, vagy a parancsmag egy másik modulban is létezik, és az Automation nem tudja feloldani a nevet.
 
 ### <a name="resolution"></a>Megoldás:
 
 A probléma megoldásához használja az alábbi megoldások bármelyikét.
 
-* Ellenőrizze, hogy helyesen adta-e meg a parancsmag nevét.
-* Győződjön meg arról, hogy a parancsmag létezik az Automation-fiókban, és hogy nincsenek ütközések. Annak ellenőrzéséhez, hogy a parancsmag jelen van-e, nyisson meg egy runbookot szerkesztési módban, és keresse meg a tárban keresett parancsmagát, vagy futtassa a parancsot. `Get-Command <CommandName>` Miután meggyőződött arról, hogy a parancsmag elérhető a fiók számára, és hogy nincsenek névütközések más parancsmagokkal vagy runbookokkal, adja hozzá a parancsmast a vászonhoz, és győződjön meg arról, hogy érvényes paraméterkészletet használ a runbookban.
-* Ha névütközése van, és a parancsmag két különböző modulban érhető el, oldja meg a problémát a parancsmag teljesen minősített nevének használatával. Így használhatja például a következőt: `ModuleName\CmdletName`.
-* Ha a runbook ot egy hibrid feldolgozócsoportban hajtja végre, győződjön meg arról, hogy a modul és a parancsmag telepítve van a hibrid feldolgozót tartalmazó gépen.
+* Győződjön meg arról, hogy helyesen adta meg a parancsmag nevét.
+* Győződjön meg arról, hogy a parancsmag létezik az Automation-fiókban, és nincsenek ütközések. Annak ellenőrzéséhez, hogy a parancsmag megtalálható-e, nyisson meg egy runbook szerkesztési módban, és keresse meg a könyvtárban megkeresni kívánt parancsmagot `Get-Command <CommandName>`, vagy futtassa a parancsot. Miután ellenőrizte, hogy a parancsmag elérhető-e a fiók számára, és hogy a név nem ütközik más parancsmagokkal vagy runbookok, adja hozzá a parancsmagot a vászonhoz, és győződjön meg arról, hogy érvényes paramétert használ a runbook.
+* Ha a név ütközik, és a parancsmag két különböző modulban érhető el, oldja meg a problémát a parancsmag teljes nevének használatával. Így használhatja például a következőt: `ModuleName\CmdletName`.
+* Ha a helyszíni runbook egy hibrid feldolgozói csoportban hajtja végre, győződjön meg arról, hogy a modul és a parancsmag telepítve van a hibrid feldolgozót futtató számítógépen.
 
-## <a name="scenario-a-long-running-runbook-fails-to-complete"></a><a name="long-running-runbook"></a>Eset: Egy hosszú ideig futó runbook nem fejeződik be
+## <a name="scenario-a-long-running-runbook-fails-to-complete"></a><a name="long-running-runbook"></a>Forgatókönyv: A hosszan futó runbook nem fejeződik be
 
 ### <a name="issue"></a>Probléma
 
-A runbook 3 óra futás után leállított állapotban jelenik meg. A következő hibaüzenet jelenhet meg:
+A runbook 3 órán belül leállított állapotban jelenik meg. Előfordulhat, hogy a következő hibaüzenet is megjelenik:
 
 ```error
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running.
 ```
 
-Ez a viselkedés az Azure sandboxes, mert a [méltányos megosztás](../automation-runbook-execution.md#fair-share) nyomon követése folyamatok az Azure Automation-ben. Ha egy folyamat három óránál hosszabb ideig hajt végre, a méltányos megosztás automatikusan leállítja a runbookot. A runbook állapota, amely túllépi a méltányos megosztási időkorlátot, runbook-típusonként eltérő. A PowerShell és a Python runbookok leállított állapotra vannak beállítva. A PowerShell-munkafolyamat runbookjai sikertelenek.
+Ez a viselkedés az Azure-beli munkafolyamatok tervezésekor, a Azure Automationon belüli folyamatok [valós megosztásának](../automation-runbook-execution.md#fair-share) figyelése miatt. Ha egy folyamat három óránál hosszabb ideig fut, a valós megosztás automatikusan leállítja a runbook. A valós megosztási időkorláttal meghaladó runbook állapota eltér a runbook típustól. A PowerShell és a Python runbookok leállított állapotra vannak állítva. A PowerShell-munkafolyamat runbookok beállítása sikertelen.
 
 ### <a name="cause"></a>Ok
 
-A runbook átfutotta a 3 órás korlátot, amelyet egy Azure-sandboxban való méltányos megosztás engedélyezett.
+A runbook egy Azure-beli homokozóban a méltányos megosztás által engedélyezett 3 órás korlátot futtatott.
 
 ### <a name="resolution"></a>Megoldás:
 
-Az egyik ajánlott megoldás a runbook futtatása [egy hibrid Runbook-feldolgozón.](../automation-hrw-run-runbooks.md) A hibrid feldolgozók nincsenek korlátozva az Azure sandboxes 3 órás méltányos megosztású runbook-korláttal. Runbookok futtatásához hibrid Runbook feldolgozók kell fejleszteni, hogy támogassa az újraindítási viselkedést, ha nem várt helyi infrastruktúra problémák.
+Egy javasolt megoldás, ha a runbook egy [hibrid runbook-feldolgozón](../automation-hrw-run-runbooks.md)futtatja. A hibrid feldolgozók nem korlátozódnak az Azure-beli munkaterületek 3 órás, méltányos megosztásra vonatkozó runbook-korlátozására. A hibrid Runbook-feldolgozókon futó runbookok úgy kell kialakítani, hogy támogassa az újraindítási viselkedést, ha váratlan helyi infrastruktúra-problémák merülnek fel.
 
-Egy másik megoldás a runbook optimalizálása [gyermek runbookok](../automation-child-runbooks.md)létrehozásával. Ha a runbook hurkok ugyanazon a függvényen keresztül több erőforrás, például egy adatbázis-művelet több adatbázison, áthelyezheti a függvényt egy gyermek runbook. Minden gyermek runbook végrehajtása párhuzamosan egy külön folyamat. Ez a viselkedés csökkenti a szülő runbook befejezéséhez szükséges teljes időt.
+Egy másik megoldás a runbook optimalizálása [gyermek runbookok](../automation-child-runbooks.md)létrehozásával. Ha a runbook több erőforráson ugyanazt a függvényt futtatja, például egy adatbázis-műveletben több adatbázison, áthelyezheti a függvényt egy alárendelt runbook. Minden gyermek runbook párhuzamosan, külön folyamatban hajtja végre. Ez a viselkedés csökkenti a szülő runbook befejezésének teljes időtartamát.
 
-A PowerShell-parancsmagok, amelyek lehetővé teszik a gyermek runbook forgatókönyv:
+A gyermek runbook-forgatókönyvet engedélyező PowerShell-parancsmagok a következők:
 
 * [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). Ez a parancsmag lehetővé teszi, hogy elindítson egy runbookot, és paramétereket adjon át a számára.
 
-* [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Ha vannak olyan műveletek, amelyeket a gyermek runbook befejezése után kell végrehajtani, ez a parancsmag lehetővé teszi, hogy ellenőrizze a feladat állapotát minden gyermek.
+* [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Ha vannak olyan műveletek, amelyeket a gyermek runbook befejezését követően kell végrehajtani, ez a parancsmag lehetővé teszi, hogy minden gyermeknél ellenőrizze a feladatok állapotát.
 
-## <a name="scenario-status-400-bad-request-when-calling-a-webhook"></a><a name="expired webhook"></a>Forgatókönyv: Állapot: 400 hibás kérelem webhook hívásakor
+## <a name="scenario-status-400-bad-request-when-calling-a-webhook"></a><a name="expired webhook"></a>Forgatókönyv: Status: 400 hibás kérelem webhook meghívásakor
 
 ### <a name="issue"></a>Probléma
 
-Amikor megpróbál meghívni egy webhookot egy Azure Automation-runbookhoz, a következő hibaüzenet jelenik meg:
+Amikor egy Azure Automation runbook próbál meg meghívni egy webhookot, a következő hibaüzenet jelenik meg:
 
 ```error
 400 Bad Request : This webhook has expired or is disabled
@@ -518,17 +532,17 @@ Amikor megpróbál meghívni egy webhookot egy Azure Automation-runbookhoz, a k�
 
 ### <a name="cause"></a>Ok
 
-A hívni kívánt webhook le van tiltva, vagy lejárt.
+A meghívni próbált webhook le van tiltva vagy lejárt.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha a webhook le van tiltva, újra engedélyezheti a webhook az Azure Portalon keresztül. Ha a webhook lejárt, törölnie kell, majd újra létre kell hoznia. Csak [akkor újíthatja meg a webhookot,](../automation-webhooks.md#renew-webhook) ha még nem járt le.
+Ha a webhook le van tiltva, újra engedélyezheti a webhookot a Azure Portalon keresztül. Ha a webhook lejárt, akkor törölnie kell, majd újra létre kell hoznia. Csak akkor [újíthat meg egy webhookot](../automation-webhooks.md#renew-webhook) , ha még nem járt le.
 
-## <a name="scenario-429-the-request-rate-is-currently-too-large"></a><a name="429"></a>Forgatókönyv: 429: A kérelem aránya jelenleg túl nagy...
+## <a name="scenario-429-the-request-rate-is-currently-too-large"></a><a name="429"></a>Forgatókönyv: 429: a kérelmek aránya jelenleg túl nagy...
 
 ### <a name="issue"></a>Probléma
 
-A parancsmag futtatásakor `Get-AzAutomationJobOutput` a következő hibaüzenet jelenik meg:
+A `Get-AzAutomationJobOutput` parancsmag futtatásakor a következő hibaüzenet jelenik meg:
 
 ```error
 429: The request rate is currently too large. Please try again
@@ -536,21 +550,21 @@ A parancsmag futtatásakor `Get-AzAutomationJobOutput` a következő hibaüzenet
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordulhat elő, ha a feladatkimenetet olyan runbookról kéri le, amely sok [részletes adatfolyamot rendelkezik.](../automation-runbook-output-and-messages.md#verbose-stream)
+Ez a hiba akkor fordulhat elő, ha a feladatok kimenetét olyan runbook kérdezi le, amely sok [részletes adatfolyammal](../automation-runbook-output-and-messages.md#verbose-stream)rendelkezik.
 
 ### <a name="resolution"></a>Megoldás:
 
-A hiba megoldásához tegye az alábbiak egyikét.
+A hiba elhárításához hajtsa végre az alábbi műveletek egyikét.
 
-* Szerkesztheti a runbookot, és csökkentheti az általa kibocsátott feladatstreamek számát.
+* Szerkessze a runbook, és csökkentse az általa kibocsátott feladatokhoz tartozó adatfolyamok számát.
 
-* Csökkentse a parancsmag futtatásakor beolvasandó adatfolyamok számát. Ehhez beállíthatja a `Stream` [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) parancsmag paraméterének értékét, hogy csak a kimeneti adatfolyamokat olvassa be. 
+* Csökkentse a lekérdezni kívánt adatfolyamok számát a parancsmag futtatásakor. Ehhez a `Stream` [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) parancsmag paraméterének értékét állíthatja be csak kimeneti adatfolyamok lekéréséhez. 
 
-## <a name="scenario-powershell-job-fails-with-error-cannot-invoke-method"></a><a name="cannot-invoke-method"></a>Eset: A PowerShell-feladat hiba miatt sikertelen: Metódus nem hívható meg
+## <a name="scenario-powershell-job-fails-with-error-cannot-invoke-method"></a><a name="cannot-invoke-method"></a>Forgatókönyv: a PowerShell-feladatok sikertelenek, hiba: a metódus nem hívható meg
 
 ### <a name="issue"></a>Probléma
 
-A következő hibaüzenet jelenik meg, amikor egy PowerShell-feladatot indít el egy Azure-ban futó runbookban:
+A következő hibaüzenet jelenik meg, amikor elindítja a PowerShell-feladatot egy Azure-ban futó runbook:
 
 ```error
 Exception was thrown - Cannot invoke method. Method invocation is supported only on core types in this language mode.
@@ -558,63 +572,63 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba azt jelezheti, hogy az Azure-sandboxban futó runbookok nem futtathatók [teljes nyelvi módban.](/powershell/module/microsoft.powershell.core/about/about_language_modes)
+Ez a hiba arra utalhat, hogy az Azure-beli homokozóban végrehajtott runbookok nem futtatható [teljes nyelvi módban](/powershell/module/microsoft.powershell.core/about/about_language_modes).
 
 ### <a name="resolution"></a>Megoldás:
 
-A hiba kétféleképpen oldható meg.
+Ez a hiba kétféleképpen oldható meg.
 
-* A [Start-Job](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)használata helyett használja [a Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) a runbook elindításához.
-* Próbálja meg futtatni a runbookot egy hibrid Runbook-feldolgozón.
+* A [Start-Job](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)használata helyett a [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) használatával indítsa el a runbook.
+* Próbálja meg futtatni a runbook egy hibrid Runbook-feldolgozón.
 
-Ha többet szeretne megtudni erről a viselkedésről és az Azure Automation-runbookok egyéb viselkedéséről, olvassa el a [Runbook-viselkedés című témakört.](../automation-runbook-execution.md#runbook-behavior)
+Ha többet szeretne megtudni erről a viselkedésről és a Azure Automation runbookok egyéb viselkedéséről, tekintse meg a [Runbook viselkedését](../automation-runbook-execution.md#runbook-behavior)ismertető témakört.
 
-## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>Eset: A Linux hibrid Runbook-feldolgozó egy jelszót kér a runbook aláírásakor
+## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>Forgatókönyv: a Linux Hybrid Runbook Worker a Runbook aláírásakor kéri a jelszót
 
 ### <a name="issue"></a>Probléma
 
-A `sudo` linuxos hibrid runbook-feldolgozó parancsfuttatása váratlan jelszót kér.
+A `sudo` Linux Hybrid Runbook Worker parancs futtatása nem várt jelszót kér le.
 
 ### <a name="cause"></a>Ok
 
-A Log Analytics ügynök Linux-ügynök **nxautomationuser** fiókja nincs megfelelően konfigurálva a **sudoers** fájlban. A hibrid Runbook-feldolgozónak szüksége van a fiókengedélyek és egyéb adatok megfelelő konfigurációjára, hogy aláírhassa a Runbookokat a Linux Runbook Worker en.
+A Linux rendszerhez készült Log Analytics-ügynök **nxautomationuser** -fiókja helytelenül van konfigurálva a **sudoers** fájlban. A hibrid Runbook-feldolgozónak szüksége van a fiók engedélyeinek és egyéb adatmennyiségének megfelelő konfigurálására, hogy a runbookok a Linux Runbook-feldolgozó számára is aláírható legyen.
 
 ### <a name="resolution"></a>Megoldás:
 
-* Győződjön meg arról, hogy a hibrid Runbook-feldolgozó rendelkezik a GnuPG (GPG) végrehajtható a számítógépen.
+* Győződjön meg arról, hogy a hibrid Runbook Worker rendelkezik a GnuPG (GPG) végrehajtható fájllal a gépen.
 
-* Ellenőrizze az **nxautomationuser** fiók konfigurációját a **sudoers** fájlban. Lásd: [Runbookok futtatása hibrid Runbook-feldolgozón](../automation-hrw-run-runbooks.md)
+* Ellenőrizze a **nxautomationuser** -fiók konfigurációját a **sudoers** fájlban. Lásd: [Runbookok futtatása hibrid Runbook-feldolgozón](../automation-hrw-run-runbooks.md)
 
-## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>Eset: A Parancsmag meghibásodott az Azure Automation PnP PowerShell-runbookjában
+## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>Forgatókönyv: a parancsmag sikertelen a PnP PowerShell runbook Azure Automation
 
 ### <a name="issue"></a>Probléma
 
-Amikor egy runbook közvetlenül az Azure Automation-kimenetre ír egy PnP PowerShell által létrehozott objektumot, a parancsmag kimenete nem streamelhető vissza az Automation be.
+Amikor egy runbook egy PnP PowerShell által generált objektumot ír közvetlenül a Azure Automation kimenetre, a parancsmag kimenete nem tud visszaküldeni az Automation szolgáltatásba.
 
 ### <a name="cause"></a>Ok
 
-Ez a probléma leggyakrabban akkor fordul elő, amikor az Azure Automation folyamatok runbookok, amelyek meghívja a PnP PowerShell-parancsmag, például anélkül, `add-pnplistitem`hogy a visszatérési objektumok at.
+Ez a probléma leggyakrabban akkor fordul elő, amikor a Azure Automation feldolgozza a PnP PowerShell-parancsmagokat meghívó runbookok, például `add-pnplistitem`a visszatérési objektumok kifogása nélkül.
 
 ### <a name="resolution"></a>Megoldás:
 
-A parancsfájlok szerkesztésével rendeljen visszaértékeket a változókhoz, hogy a parancsmagok ne próbáljanak egész objektumokat írni a szabványos kimenetre. A parancsfájl átirányíthatja a kimeneti adatfolyamot egy parancsmagba az alábbiak szerint.
+Szerkessze a parancsfájlokat úgy, hogy bármilyen visszatérési értéket rendeljen a változókhoz, hogy a parancsmagok ne próbáljanak teljes objektumokat írni a standard kimenetre. Egy parancsfájl átirányíthatja a kimeneti adatfolyamot egy parancsmagra az alább látható módon.
 
 ```azurecli
   $null = add-pnplistitem
 ```
 
-Ha a parancsfájl parancsmag kimenetet elemez, a parancsfájlnak egy változóban kell tárolnia a kimenetet, és a kimenet egyszerű streamelése helyett manipulálnia kell a változót.
+Ha a parancsfájl a parancsmag kimenetét elemzi, a szkriptnek egy változóban kell tárolnia a kimenetet, és a változót csak a kimenet továbbítása helyett kell módosítania.
 
 ```azurecli
 $SomeVariable = add-pnplistitem ....
 if ($SomeVariable.someproperty -eq ....
 ```
 
-## <a name="scenario-invalid-status-code-forbidden-when-using-key-vault-inside-a-runbook"></a>Eset: Érvénytelen állapotkód "Tiltott" a Key Vault runbookon belüli használatakor
+## <a name="scenario-invalid-status-code-forbidden-when-using-key-vault-inside-a-runbook"></a>Forgatókönyv: Érvénytelen "tiltott" állapotkód, ha Key Vaultt használ egy runbook belül
 
 ### <a name="issue"></a>Probléma
 
-Amikor egy Azure Automation-runbookon keresztül próbál hozzáférni a Key Vaulthoz, a következő hibaüzenet jelenik meg:
+Ha Azure Automation runbook keresztül próbál meg hozzáférni Key Vault, a következő hibaüzenet jelenik meg:
 
 ```error
 Operation returned an invalid status code 'Forbidden' 
@@ -624,77 +638,77 @@ Operation returned an invalid status code 'Forbidden'
 
 A probléma lehetséges okai:
 
-* Nem használja a Futtatás másként fiókot.
-* Nincs elegendő engedélye.
+* Nem használ futtató fiókot.
+* Nem megfelelő engedélyek.
 
 ### <a name="resolution"></a>Megoldás:
 
-#### <a name="not-using-run-as-account"></a>Nem használja a Futtatás másként fiókot
+#### <a name="not-using-run-as-account"></a>Nem használja a futtató fiókot
 
-Kövesse az [5.](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) 
+Kövesse az [5. lépés – hitelesítés hozzáadása az Azure-erőforrások kezeléséhez című szakasz](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) lépéseit, és győződjön meg arról, hogy a futtató fiókot használja a Key Vault eléréséhez. 
 
-#### <a name="insufficient-permissions"></a>Nincs elég engedély
+#### <a name="insufficient-permissions"></a>Nem megfelelő engedélyek
 
-Kövesse az [Engedélyek hozzáadása a Key Vaulthoz](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) című lépéseket, és győződjön meg arról, hogy a Futtatás másként fiók megfelelő engedélyekkel rendelkezik a Key Vault eléréséhez. 
+Kövesse az [engedélyek hozzáadása a Key Vaulthoz](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) című szakasz lépéseit, és győződjön meg arról, hogy a futtató fiók megfelelő engedélyekkel rendelkezik a Key Vault eléréséhez. 
 
-## <a name="my-problem-isnt-listed-above"></a><a name="other"></a>A problémám nem szerepel a fenti felsorolásban
+## <a name="my-problem-isnt-listed-above"></a><a name="other"></a>A probléma nem szerepel a fenti felsorolásban
 
-Az alábbi szakaszok felsorolják az egyéb gyakori hibákat, és alátámasztó dokumentációt tartalmaznak a probléma megoldásához.
+Az alábbi szakaszokban más gyakori hibák is szerepelnek, és a probléma megoldásához segítséget nyújtó dokumentációt nyújtanak.
 
 ### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>A hibrid runbook-feldolgozó nem futtat feladatokat vagy nem válaszol
 
-Ha az Azure Automation helyett hibrid Runbook-feldolgozón futtat feladatokat, előfordulhat, hogy magának a hibrid dolgozónak kell [elhárítania a feladatokat.](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)
+Ha Azure Automation helyett hibrid Runbook-feldolgozón futtat feladatokat, lehetséges, hogy [a hibrid feldolgozót is el kell hárítania](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker).
 
-### <a name="runbook-fails-with-no-permission-or-some-variation"></a>A Runbook sikertelen, engedély nélkül vagy valamilyen változatban
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>A Runbook nincs engedélye vagy valamilyen változat
 
-Futtatás másként fiókok előfordulhat, hogy nem rendelkezik az Azure-erőforrásokkal való azonos engedélyekkel, mint az aktuális fiók. Győződjön meg arról, hogy a Futtatás másként fiók rendelkezik-e a parancsfájlban használt [erőforrások eléréséhez szükséges engedélyekkel.](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+Előfordulhat, hogy a futtató fiókok nem rendelkeznek ugyanazokkal az engedélyekkel az Azure-erőforrásokhoz, mint az aktuális fiók. Győződjön meg arról, hogy a futtató fiók rendelkezik a parancsfájlban használt [erőforrások eléréséhez szükséges engedélyekkel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) .
 
-### <a name="issues-passing-parameters-into-webhooks"></a>Problémák átadása paraméterek webhooks
+### <a name="issues-passing-parameters-into-webhooks"></a>Paraméterek átadása webhookokra
 
-A paraméterek webhookokba való átvitelével kapcsolatban a [Runbook indítása webhookból](../automation-webhooks.md#parameters-used-when-the-webhook-starts-a-runbook)című témakörben talál segítséget.
+A paraméterek webhookok való átadásával kapcsolatos segítségért lásd: [runbook indítása webhookból](../automation-webhooks.md#parameters-used-when-the-webhook-starts-a-runbook).
 
-### <a name="issues-using-az-modules"></a>Az modulok használatával kapcsolatos problémák
+### <a name="issues-using-az-modules"></a>Az az modulok használatával kapcsolatos problémák
 
-Az modulok és az AzureRM-modulok használata ugyanabban az Automation-fiókban nem támogatott. További részletekért tekintse meg [az Az modulokat a runbookokban.](https://docs.microsoft.com/azure/automation/az-modules)
+Ugyanazon Automation-fiókban az az modulok és a AzureRM modulok használata nem támogatott. További részleteket az [az modulok a runbookok](https://docs.microsoft.com/azure/automation/az-modules) című témakörben talál.
 
 ### <a name="inconsistent-behavior-in-runbooks"></a>Következetlen viselkedés a runbookokban
 
-Kövesse a [Runbook-végrehajtás](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) útmutatóját, hogy elkerülje az egyidejű feladatokkal, az erőforrások többszöri létrehozásával vagy a runbookok más időzítés-érzékeny logikájával kapcsolatos problémákat.
+Kövesse a [Runbook végrehajtásának](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) utasításait, hogy elkerülje az egyidejű feladatokkal, a több alkalommal létrehozott erőforrásokkal vagy más, az runbookok-ben használt időérzékeny logikával kapcsolatos problémákat.
 
-### <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook nem sikerül a hiba Nincs engedély, Tiltott (403), vagy valamilyen változata
+### <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>A Runbook sikertelen a következő hiba miatt: nem engedélyezett, tiltott (403), vagy valamilyen variáció
 
-Futtatás másként fiókok előfordulhat, hogy nem rendelkezik az Azure-erőforrásokkal való azonos engedélyekkel, mint az aktuális fiók. Győződjön meg arról, hogy a Futtatás másként fiók rendelkezik-e a parancsfájlban használt [erőforrások eléréséhez szükséges engedélyekkel.](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+Előfordulhat, hogy a futtató fiókok nem rendelkeznek ugyanazokkal az engedélyekkel az Azure-erőforrásokhoz, mint az aktuális fiók. Győződjön meg arról, hogy a futtató fiók rendelkezik a parancsfájlban használt [erőforrások eléréséhez szükséges engedélyekkel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) .
 
 ### <a name="runbooks-were-working-but-suddenly-stopped"></a>A runbookok működtek, de váratlanul leálltak
 
-* Győződjön meg arról, hogy a Futtatás másként fiók nem járt le. Lásd: [a tanúsítvány megújítása](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
-* Ha egy [webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook) ot használ egy runbook indításához, győződjön meg arról, hogy a webhook nem járt le.
+* Győződjön meg arról, hogy a futtató fiók nem járt le. Lásd: a [tanúsítvány megújítása](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
+* Ha [webhookot](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook) használ egy runbook elindításához, győződjön meg arról, hogy a webhook nem járt le.
 
 ### <a name="passing-parameters-into-webhooks"></a>Paraméterek átadása a webhookoknak
 
-A paraméterek webhookokba való átvitelével kapcsolatban a [Runbook indítása webhookból](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters-used-when-the-webhook-starts-a-runbook)című témakörben talál segítséget.
+A paraméterek webhookok való átadásával kapcsolatos segítségért lásd: [runbook indítása webhookból](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters-used-when-the-webhook-starts-a-runbook).
 
 ### <a name="using-az-modules"></a>Az modulok használata
 
-Az modulok és az AzureRM-modulok használata ugyanabban az Automation-fiókban nem támogatott. Lásd: [Az modulok a runbookokban.](https://docs.microsoft.com/azure/automation/az-modules)
+Ugyanazon Automation-fiókban az az modulok és a AzureRM modulok használata nem támogatott. Lásd [az az modulok a runbookok](https://docs.microsoft.com/azure/automation/az-modules).
 
 ### <a name="using-self-signed-certificates"></a>Önaláírt tanúsítványok használata
 
-Az önaláírt tanúsítványok használatához olvassa el [Az új tanúsítvány létrehozása témakört.](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)
+Önaláírt tanúsítványok használatához tekintse meg az [új tanúsítvány létrehozása](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)című témakört.
 
-### <a name="access-denied-when-using-azure-sandbox-for-a-runbook"></a>Hozzáférés megtagadva, ha Az Azure sandbox egy runbook
+### <a name="access-denied-when-using-azure-sandbox-for-a-runbook"></a>Hozzáférés megtagadva az Azure-beli homokozó runbook való használatakor
 
-Az Azure sandbox megakadályozza a hozzáférést az összes folyamaton kívüli COM-kiszolgálók. Egy sandboxos alkalmazás vagy runbook például nem hívhatja be a Windows Management Instrumentation (WMI) szolgáltatást, illetve a Windows Installer szolgáltatást (msiserver.exe). A sandbox használatáról a [Runbook-végrehajtás az Azure Automationben](https://docs.microsoft.com/azure/automation/automation-runbook-execution)című témakörben talál további információt.
+Az Azure-beli homokozó megakadályozza az összes folyamaton kívüli COM-kiszolgáló elérését. Például egy munkapéldányos alkalmazás vagy runbook nem hívható meg Windows Management Instrumentation (WMI) vagy a Windows Installer szolgáltatásba (MSIServer. exe). A sandbox használatával kapcsolatos részletekért lásd: [Runbook végrehajtása Azure Automationban](https://docs.microsoft.com/azure/automation/automation-runbook-execution).
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
-* [Runbook indítása az Azure Automationben](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Runbook indítása Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
 * [Runbook végrehajtása az Azure Automationben](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* Válaszokat kaphat az Azure szakértőitől [az Azure Forums segítségével.](https://azure.microsoft.com/support/forums/)
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba – a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében, ha az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
-* Ha további segítségre van szüksége, benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**
+* Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
+* Az Azure [@AzureSupport](https://twitter.com/azuresupport) -Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal csatlakozhat a felhasználói élmény fokozásához: válaszok, támogatás és szakértők.
+* Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

@@ -1,47 +1,41 @@
 ---
-title: WinRM-hozzáférés beállítása Azure-beli virtuális géphez
-description: WinRM-hozzáférés beállítása az Erőforrás-kezelő telepítési modelljében létrehozott Azure virtuális géppel való használatra.
-services: virtual-machines-windows
-documentationcenter: ''
+title: WinRM-hozzáférés beállítása Azure-beli virtuális gépekhez
+description: A WinRM-hozzáférés beállítása a Resource Manager-alapú üzemi modellben létrehozott Azure-beli virtuális gépekkel való használatra.
 author: mimckitt
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 9718e85b-d360-4621-90b8-0b0b84a21208
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
-ms.openlocfilehash: 317e9376e0b8242758cd6e3f455b3f3dc9c0dc78
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 75fa2071f2ad54292e1cff6856de2091b74d3187
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879564"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101535"
 ---
-# <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>A WinRM-hozzáférés beállítása virtuális gépekhez az Azure Resource Managerben
+# <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>WinRM-hozzáférés beállítása Virtual Machineshoz Azure Resource Manager
 
-Az alábbiakban azokkal a lépésekkel kell megtelnie a WinRM-kapcsolattal rendelkező virtuális gép beállításához
+A virtuális gépek WinRM-kapcsolattal való beállításához szükséges lépéseket itt találja.
 
 1. Kulcstartó létrehozása
 2. Önaláírt tanúsítvány létrehozása
-3. Töltse fel önaláírt tanúsítványát a Key Vaultba
-4. Az önaláírt tanúsítvány URL-címének beszereznie a Key Vaultban
-5. Hivatkozzon az önaláírt tanúsítványok URL-címére virtuális gép létrehozása közben
+3. Saját aláírású tanúsítvány feltöltése Key Vault
+4. Az önaláírt tanúsítvány URL-címének lekérése a Key Vault
+5. A virtuális gép létrehozásakor az önaláírt tanúsítványok URL-címére való hivatkozás
 
  
 
 ## <a name="step-1-create-a-key-vault"></a>1. lépés: Key Vault létrehozása
-Az alábbi paranccsal létrehozhatja a Key Vaultot
+A Key Vault létrehozásához az alábbi parancsot használhatja.
 
 ```
 New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## <a name="step-2-create-a-self-signed-certificate"></a>2. lépés: Önaláírt tanúsítvány létrehozása
-Ezzel a PowerShell-parancsfájllal önaláírt tanúsítványt hozhat létre
+## <a name="step-2-create-a-self-signed-certificate"></a>2. lépés: önaláírt tanúsítvány létrehozása
+Létrehozhat egy önaláírt tanúsítványt a PowerShell-parancsfájl használatával
 
 ```
 $certificateName = "somename"
@@ -55,8 +49,8 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>3. lépés: Töltse fel önaláírt tanúsítványát a Key Vaultba
-Mielőtt feltöltené a tanúsítványt az 1. Az alábbi PowerShell-parancsfájl lehetővé teszi, hogy ezt
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>3. lépés: az önaláírt tanúsítvány feltöltése a Key Vaultba
+Mielőtt feltölti a tanúsítványt az 1. lépésben létrehozott Key Vaultba, konvertálnia kell a Microsoft. számítási erőforrás-szolgáltatójának formátumára. Az alábbi PowerShell-parancsfájl lehetővé teszi, hogy
 
 ```
 $fileName = "<Path to the .pfx file>"
@@ -78,25 +72,25 @@ $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
-## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>4. lépés: Az önaláírt tanúsítvány URL-címének beszereznie a Key Vaultban
-A Microsoft.Compute erőforrás-szolgáltatónak szüksége van egy URL-címet a kulcs a Key Vault ban, miközben a virtuális gép kiépítése. Ez lehetővé teszi, hogy a Microsoft.Compute erőforrás-szolgáltató töltse le a titkos kulcsot, és hozza létre az egyenértékű tanúsítványt a virtuális gépen.
+## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>4. lépés: az önaláírt tanúsítvány URL-címének lekérése a Key Vault
+A Microsoft. számítási erőforrás-szolgáltatónak a virtuális gép üzembe helyezése során a Key Vaulton belüli titok URL-címét kell tartalmaznia. Ez lehetővé teszi, hogy a Microsoft. számítási erőforrás-szolgáltató letöltse a titkot, és létrehozza a megfelelő tanúsítványt a virtuális gépen.
 
 > [!NOTE]
-> Az URL-t a titkos tartalmaznia kell a verziót is. Egy példa URL-cím\/az alábbi https: /contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> A titok URL-címének is szerepelnie kell a verzióban. Egy példaként szolgáló URL-cím a\/következőhöz hasonlít: https:/contosovault.Vault.Azure.net:443/Secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>Sablonok
-Az alábbi kód használatával a sablonban található URL-re mutató hivatkozást
+A sablon URL-címére mutató hivatkozást az alábbi kód használatával érheti el
 
     "certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
 
 #### <a name="powershell"></a>PowerShell
-Ezt az URL-címet az alábbi PowerShell-paranccsal szerezheti be
+Ezt az URL-címet az alábbi PowerShell-parancs használatával szerezheti be
 
     $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>5. lépés: Hivatkozzon az önaláírt tanúsítványok URL-címére a virtuális gép létrehozása közben
-#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
-A virtuális gép sablonokon keresztüli létrehozása során a tanúsítvány a titkos kulcsok és a winRM szakaszban hivatkozik az alábbiak szerint:
+## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>5. lépés: az önaláírt tanúsítványok URL-címére való hivatkozás a virtuális gép létrehozásakor
+#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager sablonok
+A virtuális gépek sablonokon keresztüli létrehozása közben a tanúsítvány a Secrets (titkok) szakaszban, a winRM szakaszban pedig az alábbi módon lesz hivatkozva:
 
     "osProfile": {
           ...
@@ -130,9 +124,9 @@ A virtuális gép sablonokon keresztüli létrehozása során a tanúsítvány a
           }
         },
 
-A minta sablon a fenti megtalálható itt [201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
+A fenti minta sablon itt található: [201-VM-WinRM-kulcstartó-Windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
 
-A sablon forráskódja megtalálható a [GitHubon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
+A sablon forráskódja a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows) érhető el
 
 #### <a name="powershell"></a>PowerShell
     $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
@@ -143,16 +137,16 @@ A sablon forráskódja megtalálható a [GitHubon](https://github.com/Azure/azur
     $CertificateStore = "My"
     $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
-## <a name="step-6-connecting-to-the-vm"></a>6. lépés: Csatlakozás a virtuális géphez
-A virtuális géphez való csatlakozás előtt meg kell győződnie arról, hogy a számítógép a WinRM távoli kezelése konfigurálva van. Indítsa el a PowerShellt rendszergazdaként, és hajtsa végre az alábbi parancsot, hogy megbizonyosodjon arról, hogy be van állítva.
+## <a name="step-6-connecting-to-the-vm"></a>6. lépés: csatlakozás a virtuális géphez
+Ahhoz, hogy csatlakozhasson a virtuális géphez, meg kell győződnie arról, hogy a számítógép konfigurálva van a WinRM távoli felügyeletéhez. Indítsa el a PowerShellt rendszergazdaként, és hajtsa végre az alábbi parancsot, és győződjön meg róla, hogy be van állítva.
 
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> Ha a fentiek nem működnek, előfordulhat, hogy meg kell győződnie arról, hogy a Rendszerfelügyeleti webszolgáltatások szolgáltatás a szolgáltatás fut. Ezt megteheti a`Get-Service WinRM`
+> Előfordulhat, hogy a fentiekben leírtak szerint meg kell győződnie arról, hogy a WinRM szolgáltatás fut. Ezt a használatával végezheti el`Get-Service WinRM`
 > 
 > 
 
-Miután a telepítés befejeződött, csatlakozhat a virtuális géphez az alábbi paranccsal
+A telepítés befejezése után a következő paranccsal csatlakozhat a virtuális géphez.
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate

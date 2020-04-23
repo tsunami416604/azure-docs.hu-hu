@@ -1,20 +1,19 @@
 ---
-title: Virtuális gép méretének rugalmassága –Azure számára fenntartott virtuálisgép-példányok
-description: Ismerje meg, hogy milyen méretű sorozatra vonatkozik a foglalási engedmény, ha egy fenntartott virtuálisgép-példány által.
-services: virtual-machines-windows
+title: Virtuális gépek méretének rugalmassága – Azure Reserved VM Instances
+description: A fenntartott VM-példányok esetében megtudhatja, hogy a foglalási kedvezmény mekkora adatsorozatot foglal magában.
 author: bandersmsft
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.reviewer: yashar
-ms.openlocfilehash: 8d2df39328ec3ebf037ddaaaef2005ed6c7a6fab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b322535fe7b0437c1d3644584fde71e219dcf47
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471456"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099920"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>A Reserved VM Instances virtuális gépeinek méretrugalmassága
 [!INCLUDE [virtual-machines-common-reserved-vm-instance-size-flexibility](../../../includes/virtual-machines-common-reserved-vm-instance-size-flexibility.md)]

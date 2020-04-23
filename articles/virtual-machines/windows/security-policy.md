@@ -1,26 +1,21 @@
 ---
-title: Biztonságos és használható házirendek a Windows virtuális gépeken az Azure-ban
-description: Ismerje meg a Windows és a virtuális gépek azure-beli biztonsági és szabályzatait.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Szabályzatok védelme és használata az Azure-beli virtuális gépeken
+description: Ismerje meg az Azure-beli virtuális gépek biztonsági és szabályzatait.
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 514e86075f7671d237536d812557d709a28b51a5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4910acd99abd6059de40e67a1b1629259c8215cc
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460290"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099410"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Biztonságos és használható házirendek az Azure-ban lévő virtuális gépeken
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Házirendek biztonságossá tétele és használata az Azure-beli virtuális gépeken
 
 [!INCLUDE [virtual-machines-security-policy](../../../includes/virtual-machines-security-policy.md)]
 

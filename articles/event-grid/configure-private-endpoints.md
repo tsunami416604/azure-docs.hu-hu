@@ -1,133 +1,133 @@
 ---
-title: Privát végpontok konfigurálása Azure Event Grid-témakörökhöz vagy tartományokhoz
-description: Ez a cikk ismerteti, hogyan konfigurálhatja a privát végpontok az Azure Event Grid-témakörök vagy a tartomány.
+title: Privát végpontok konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz
+description: Ez a cikk ismerteti, hogyan konfigurálhat privát végpontokat Azure Event Grid témakörökhöz vagy tartományhoz.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: how-to
-ms.date: 03/11/2020
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: d08afe00c13a3f96b9526c3cb29804cfad688ddc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97f08bf0f89fdb65f0ffef7d18557f210e45a8d3
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299906"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101008"
 ---
-# <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains-preview"></a>Privát végpontok konfigurálása Azure Event Grid-témakörökhöz vagy tartományokhoz (előzetes verzió)
-[A privát végpontok](../private-link/private-endpoint-overview.md) használatával engedélyezheti az események közvetlenül a virtuális hálózatról a témakörökbe és tartományokba biztonságosan egy [privát kapcsolaton](../private-link/private-link-overview.md) keresztül, anélkül, hogy a nyilvános interneten keresztül haladna. A privát végpont a témakör vagy tartomány virtuális hálózat címterületéről származó IP-címet használ. További általános tudnivalókért lásd: [Hálózatbiztonság](network-security.md).
+# <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains-preview"></a>Privát végpontok konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz (előzetes verzió)
+A [privát végpontok](../private-link/private-endpoint-overview.md) lehetővé teszik, hogy közvetlenül a virtuális hálózatról küldje el az eseményeket egy [privát kapcsolaton](../private-link/private-link-overview.md) keresztül, anélkül, hogy a nyilvános interneten kellene haladnia. A privát végpont egy IP-címet használ a témakörhöz vagy tartományhoz tartozó VNet. További elméleti információkat a [hálózati biztonság](network-security.md)című témakörben talál.
 
-Ez a cikk ismerteti, hogyan konfigurálhatja a magánvégpontok témakörökhöz vagy tartományokhoz.
+Ez a cikk bemutatja, hogyan konfigurálhat saját végpontokat témakörökhöz vagy tartományokhoz.
 
 > [!IMPORTANT]
-> A privát végpontok szolgáltatás csak a prémium szintű témakörökhöz és tartományokhoz érhető el. Az alapszintű szintről a prémium szintre való frissítéshez tekintse meg a [Tarifacsomag frissítése](update-tier.md) cikket. 
+> A privát végpontok szolgáltatás csak prémium szintű szinten érhető el témakörökhöz és tartományokhoz. Az alapszintű és a prémium szintű csomagra való frissítéshez tekintse meg a [frissítés díjszabási szintjét](update-tier.md) ismertető cikket. 
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata 
-Ez a szakasz bemutatja, hogyan használhatja az Azure Portalon egy témakör vagy egy tartomány privát végpontjának létrehozásához.
+Ebből a szakaszból megtudhatja, hogyan hozhat létre saját végpontot egy témakörhöz vagy tartományhoz a Azure Portal használatával.
 
 > [!NOTE]
-> Az ebben a szakaszban látható lépések többnyire témakörök. Hasonló lépésekkel privát végpontokat hozhat létre a **tartományokhoz.** 
+> Az ebben a szakaszban bemutatott lépések többnyire témakörök. A hasonló lépéseket követve saját végpontokat hozhat létre a **tartományokhoz**. 
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és keresse meg a témakört vagy tartományt.
-2. Váltson a témakörlap **Hálózat lapjára.** Válassza a **+ Privát végpont lehetőséget** az eszköztáron.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a témakörhöz vagy tartományhoz.
+2. Váltson a témakör oldal **hálózatkezelés** lapjára. Válassza a **+ privát végpont** lehetőséget az eszköztáron.
 
     ![Privát végpont hozzáadása](./media/configure-private-endpoints/add-button.png)
-2. Az **alapok** lap az alábbi lépésekkel: 
-    1. Válasszon ki egy **Azure-előfizetést,** amelyben létre szeretné hozni a saját végpontot. 
-    2. Válasszon ki egy **Azure-erőforráscsoportot** a privát végponthoz. 
-    3. Adja meg a végpont **nevét.** 
-    4. Válassza ki a végpont **régióját.** A privát végpontnak ugyanabban a régióban kell lennie, mint a virtuális hálózatnak, de a magánkapcsolati erőforrástól eltérő régióban (ebben a példában egy eseményrács-témakörben). 
-    5. Ezután válassza a **Tovább: Erőforrás >** gombot a lap alján. 
+2. Az **alapvető beállítások** lapon kövesse az alábbi lépéseket: 
+    1. Válassza ki azt az **Azure-előfizetést** , amelyben létre szeretné hozni a privát végpontot. 
+    2. Válasszon ki egy **Azure-erőforráscsoportot** a privát végpont számára. 
+    3. Adja meg a végpont **nevét** . 
+    4. Válassza ki a végpont **régióját** . A privát végpontnak ugyanabban a régióban kell lennie, mint a virtuális hálózatnak, de a privát kapcsolati erőforrástól (ebben a példában egy Event Grid-témakör) eltérő régióban lehet. 
+    5. Ezután válassza a **Tovább: erőforrás >** gombot az oldal alján. 
 
-      ![Saját végpont - alapok lap](./media/configure-private-endpoints/basics-page.png)
-3. Az **Erőforrás** lapon hajtsa végre az alábbi lépéseket: 
-    1. A csatlakozási módszer, ha a **Csatlakozás egy Azure-erőforráshoz a címtárban,** kövesse az alábbi lépéseket. Ez a példa bemutatja, hogyan csatlakozhat egy Azure-erőforrása a címtárban. 
-        1. Válassza ki azt az **Azure-előfizetést,** amelyben a **témakör/tartomány** létezik. 
-        1. Az **Erőforrás típus esetén**válassza a **Microsoft.EventGrid/topics** vagy a **Microsoft.EventGrid/domains** lehetőséget az **Erőforrás típushoz.**
-        2. Az **Erőforrás**listában válasszon ki egy témakört/tartományt a legördülő listából. 
-        3. Ellenőrizze, hogy a **Cél alerőforrás** **témakörre** vagy **tartományra** van-e állítva (a kiválasztott erőforrástípus alapján).    
-        4. Válassza a **Tovább: A >** gomb a lap alján lehetőséget. 
+      ![Privát végpont – alapismeretek lap](./media/configure-private-endpoints/basics-page.png)
+3. Az **erőforrás** oldalon hajtsa végre az alábbi lépéseket: 
+    1. A kapcsolódási módszer esetén, ha a **címtárban a kapcsolódás Azure-erőforráshoz**lehetőséget választja, kövesse az alábbi lépéseket. Ez a példa bemutatja, hogyan csatlakozhat egy Azure-erőforráshoz a címtárban. 
+        1. Válassza ki azt az **Azure-előfizetést** , amelyben a **témakör/tartomány** létezik. 
+        1. Az **erőforrástípus**mezőben válassza a **Microsoft. EventGrid/témák** vagy a **Microsoft. EventGrid/tartományok** elemet az **erőforrás típushoz**.
+        2. Az **erőforrás**területen válasszon ki egy témakört vagy tartományt a legördülő listából. 
+        3. Győződjön meg arról, hogy a **célként megadott alerőforrás** a (z) **témakörre** vagy **tartományra** van beállítva (a kiválasztott erőforrástípus alapján).    
+        4. Válassza a **Tovább: konfigurációs >** gombot az oldal alján. 
 
-            ![Saját végpont - erőforráslap](./media/configure-private-endpoints/resource-page.png)
-    2. Ha a **Csatlakozás erőforráshoz erőforrásazonosítóval vagy aliassal lehetőséget választja,** kövesse az alábbi lépéseket:
-        1. Adja meg az erőforrás azonosítóját. Például: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
-        2. Az **Erőforrás**mezőbe írja be a **témakört** vagy **a tartományt.** 
-        3. (nem kötelező) Kérésüzenet hozzáadása. 
-        4. Válassza a **Tovább: A >** gomb a lap alján lehetőséget. 
+            ![Magánhálózati végpont – Erőforrás lap](./media/configure-private-endpoints/resource-page.png)
+    2. Ha a **Kapcsolódás erőforráshoz erőforrás-azonosító vagy alias használatával**lehetőséget választja, kövesse az alábbi lépéseket:
+        1. Adja meg az erőforrás AZONOSÍTÓját. Például: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
+        2. Az **erőforrás**mezőbe írja be a következőt: **témakör** vagy **tartomány**. 
+        3. választható Adja meg a kérelem üzenetét. 
+        4. Válassza a **Tovább: konfigurációs >** gombot az oldal alján. 
 
-            ![Saját végpont - erőforráslap](./media/configure-private-endpoints/connect-azure-resource-id.png)
-4. A **Konfiguráció lapon** kijelöli az alhálózatot egy virtuális hálózatban oda, ahol telepíteni szeretné a saját végpontot. 
-    1. Válasszon **egy virtuális hálózatot**. Csak az aktuálisan kiválasztott előfizetésben és helyen lévő virtuális hálózatok jelennek meg a legördülő listában. 
-    2. Jelöljön ki egy **alhálózatot** a kiválasztott virtuális hálózatban. 
-    3. Válassza a **Tovább: Címkék >** gomb baloldalán. 
+            ![Magánhálózati végpont – Erőforrás lap](./media/configure-private-endpoints/connect-azure-resource-id.png)
+4. A **konfiguráció** lapon válassza ki azt az alhálózatot egy virtuális hálózaton, ahová a magánhálózati végpontot telepíteni szeretné. 
+    1. Válasszon ki egy **virtuális hálózatot**. A legördülő listában csak a jelenleg kijelölt előfizetésben és helyen lévő virtuális hálózatok jelennek meg. 
+    2. Válasszon egy **alhálózatot** a kiválasztott virtuális hálózatban. 
+    3. Válassza a **Tovább: címkék >** gombot az oldal alján. 
 
-    ![Saját végpont - konfigurációs lap](./media/configure-private-endpoints/configuration-page.png)
-5. A **Címkék** lapon hozzon létre olyan címkéket (neveket és értékeket), amelyeket a magánvégpont-erőforráshoz társítani szeretne. Ezután válassza **a Véleményezés + létrehozás** gombot az oldal alján. 
-6. A **Véleményezés + létrehozás**párbeszédpanelen tekintse át az összes beállítást, és válassza a **Létrehozás** gombot a saját végpont létrehozásához. 
+    ![Magánhálózati végpont – konfigurációs lap](./media/configure-private-endpoints/configuration-page.png)
+5. A **címkék** lapon hozzon létre minden olyan címkét (nevet és értéket), amelyet hozzá szeretne rendelni a privát végpont-erőforráshoz. Ezután kattintson az oldal alján található **felülvizsgálat + létrehozás** gombra. 
+6. A **felülvizsgálat + létrehozás**lapon tekintse át az összes beállítást, majd kattintson a **Létrehozás** elemre a privát végpont létrehozásához. 
 
-    ![Saját végpont – tekintse át & hozzon létre lapot](./media/configure-private-endpoints/review-create-page.png)
+    ![Privát végpont – áttekintés & lap létrehozása](./media/configure-private-endpoints/review-create-page.png)
     
 
-## <a name="manage-private-link-connection"></a>Privát kapcsolat kezelése
+### <a name="manage-private-link-connection"></a>Privát kapcsolat kapcsolatának kezelése
 
-Privát végpont létrehozásakor a kapcsolatot jóvá kell hagyni. Ha az erőforrás, amelyhez privát végpontot hoz létre, a címtárban található, jóváhagyhatja a csatlakozási kérelmet, feltéve, hogy rendelkezik a megfelelő engedélyekkel. Ha egy másik címtárban csatlakozik egy Azure-erőforráshoz, meg kell várnia, amíg az erőforrás tulajdonosa jóváhagyja a csatlakozási kérelmet.
+Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az erőforrás, amelyhez privát végpontot hoz létre, akkor jóváhagyhatja a megfelelő engedélyekkel rendelkező kapcsolatkérelem-kérést. Ha egy másik címtárban található Azure-erőforráshoz csatlakozik, meg kell várnia, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolódási kérelmet.
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | Szolgáltatás fogyasztói privát végpont állapota | Leírás |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| None | Függőben | A kapcsolat manuálisan jön létre, és a személyes hivatkozás erőforrás tulajdonosának jóváhagyása vár. |
-| Jóváhagyás | Approved | A kapcsolat automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
-| Elutasítás | Elutasítva | A kapcsolatot a magánkapcsolati erőforrás tulajdonosa elutasította. |
-| Eltávolítás | Elválasztott | A kapcsolatot a magánkapcsolati erőforrás tulajdonosa eltávolította, a privát végpont informatívsá válik, és törlésre kell törölni. |
+| None | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
+| Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
+| Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
  
-###  <a name="how-to-manage-a-private-endpoint-connection"></a>Privát végpontkapcsolat kezelése
-A következő szakaszok bemutatják, hogyan lehet jóváhagyni vagy elutasítani egy privát végponti kapcsolatot. 
+###  <a name="how-to-manage-a-private-endpoint-connection"></a>Privát végponti kapcsolatok kezelése
+A következő részben bemutatjuk, hogyan lehet jóváhagyni vagy visszautasítani egy privát végponti kapcsolat létrejöttét. 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. A keresősávba írja be az **Eseményrács témaköreit** vagy **az Eseményrács tartományait.**
-1. Jelölje ki a kezelni kívánt **témakört** vagy **tartományt.**
-1. Válassza a **Hálózat** lapot.
-1. Ha vannak függőben lévő kapcsolatok, a létesítési állapotban a **Függő** ben felsorolt kapcsolat jelenik meg. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A keresősáv mezőbe írja be **Event Grid témaköröket** vagy **Event Grid tartományokat**.
+1. Válassza ki a kezelni kívánt **témakört** vagy **tartományt** .
+1. Válassza a **hálózatkezelés** lapot.
+1. Ha van függőben lévő kapcsolat, a rendszer a kiépítési állapot **függőben lévő** kapcsolatát fogja látni. 
 
 ### <a name="to-approve-a-private-endpoint"></a>Privát végpont jóváhagyása
-Jóváhagyhat egy privát végpontot, amely a függőállapotban van. A jóváhagyáshoz kövesse az alábbi lépéseket: 
+Jóvá is hagyhatja a függő állapotú privát végpontokat. A jóváhagyáshoz kövesse az alábbi lépéseket: 
 
 > [!NOTE]
-> Az ebben a szakaszban látható lépések többnyire témakörök. Hasonló lépésekkel jóváhagyhatja a tartományok privát **végpontjait.** 
+> Az ebben a szakaszban bemutatott lépések többnyire témakörök. A **tartományokhoz**tartozó magánhálózati végpontok jóváhagyásához hasonló lépések használhatók. 
 
-1. Jelölje ki a jóváhagyni kívánt **privát végpontot,** és az eszköztáron válassza a **Jóváhagyás** lehetőséget.
+1. Válassza ki a jóváhagyni kívánt **privát végpontot** , és válassza a **jóváhagyás** lehetőséget az eszköztáron.
 
-    ![Privát végpont - függőállapot](./media/configure-private-endpoints/pending.png)
-1. A **Kapcsolat jóváhagyása** párbeszédpanelen írjon be egy megjegyzést (nem kötelező), és válassza az **Igen**lehetőséget. 
+    ![Magánhálózati végpont – függő állapot](./media/configure-private-endpoints/pending.png)
+1. A **kapcsolatok jóváhagyása** párbeszédpanelen írjon be egy megjegyzést (nem kötelező), majd válassza az **Igen**lehetőséget. 
 
-    ![Privát végpont - jóváhagyás](./media/configure-private-endpoints/approve.png)
-1. Ellenőrizze, hogy a végpont állapota **Jóváhagyva**állapotú.Confirm that you see the status of the endpoint as Approved . 
+    ![Magánhálózati végpont – jóváhagyás](./media/configure-private-endpoints/approve.png)
+1. Győződjön meg róla, hogy a végpont állapota **jóváhagyottként**jelenik meg. 
 
-    ![Privát végpont - jóváhagyott állapot](./media/configure-private-endpoints/approved-status.png)
+    ![Magánhálózati végpont – jóváhagyott állapot](./media/configure-private-endpoints/approved-status.png)
 
 ### <a name="to-reject-a-private-endpoint"></a>Privát végpont elutasítása
-Elutasíthatja a függőben lévő vagy jóváhagyott állapotban lévő privát végpontot. Az elutasításhoz hajtsa végre az alábbi lépéseket: 
+Elutasítja a függő állapotú vagy jóváhagyott állapotú privát végpontokat. Az elutasításhoz kövesse az alábbi lépéseket: 
 
 > [!NOTE]
-> Az ebben a szakaszban látható lépések témakörökre vonatkozóak. Hasonló lépésekkel elutasíthatja a tartományok privát **végpontjait.** 
+> Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a privát végpontok elutasításához a **tartományokban**. 
 
-1. Jelölje ki az elutasítandó **magánvégpontot,** és az eszköztáron válassza az **Elutasítás** gombot.
+1. Válassza ki azt a **privát végpontot** , amelyet el szeretne utasítani, majd válassza az **elutasítás** lehetőséget az eszköztáron.
 
-    ![Privát végpont - elutasítás](./media/configure-private-endpoints/reject-button.png)
-1. A **Kapcsolat elvetése** párbeszédpanelen írjon be egy megjegyzést (nem kötelező), és válassza az **Igen**lehetőséget. 
+    ![Privát végpont – elutasítás](./media/configure-private-endpoints/reject-button.png)
+1. A **kapcsolatok elutasítása** párbeszédpanelen írjon be egy megjegyzést (nem kötelező), majd válassza az **Igen**lehetőséget. 
 
-    ![Privát végpont - elutasítás](./media/configure-private-endpoints/reject.png)
-1. Ellenőrizze, hogy a végpont állapota Elutasított állapotú.Confirm that you see the status of the endpoint as **Rejected**. 
+    ![Privát végpont – elutasítás](./media/configure-private-endpoints/reject.png)
+1. Ellenőrizze, hogy a végpont állapota **visszautasítva**állapotú-e. 
 
-    ![Privát végpont - elutasított állapot](./media/configure-private-endpoints/rejected-status.png)
+    ![Magánhálózati végpont – elutasított állapot](./media/configure-private-endpoints/rejected-status.png)
 
     > [!NOTE]
-    > Az Azure Portalon nem hagyhat jóvá egy privát végpontot, miután elutasították. 
+    > Egy privát végpontot nem hagyhat jóvá a Azure Portal a visszautasítása után. 
 
 
 ## <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
-Privát végpont létrehozásához használja az [az hálózati magánvégpont-létrehozási](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) módszert az alábbi példában látható módon:
+Privát végpont létrehozásához használja az az [Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) metódust az alábbi példában látható módon:
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -141,31 +141,75 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-A példában használt paraméterek leírását lásd az [az hálózati magánvégpont létrehozásának dokumentációjában.](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) Néhány megjegyzés ebben a példában a következő: 
+A példában használt paraméterek leírását az az [Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)című dokumentációban találja. Ebben a példában a következő szempontokat kell figyelembe venni: 
 
-- A `private-connection-resource-id`esetén adja meg a **témakör** vagy **tartomány**erőforrásazonosítóját. Az előző példa a következő típust használja: témakör.
-- a `group-ids`, `topic` `domain`adja meg vagy. Az előző példában a használatban `topic` van. 
+- A `private-connection-resource-id`esetében a **témakör** vagy **tartomány**erőforrás-azonosítóját kell megadnia. Az előző példa a következő típust használja: témakör.
+- a `group-ids`esetében válassza `topic` a `domain`vagy a következőt:. Az előző példában a használatban `topic` van. 
 
-Privát végpont törléséhez használja az [az hálózati magánvégpont-törlési](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) módszert a következő példában látható módon:
+Privát végpont törléséhez használja az az [Network Private-Endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) metódust az alábbi példában látható módon:
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
 ```
 
 > [!NOTE]
-> Az ebben a szakaszban látható lépések témakörökre vonatkozóak. Hasonló lépésekkel privát végpontokat hozhat létre a **tartományokhoz.** 
+> Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. A hasonló lépéseket követve saját végpontokat hozhat létre a **tartományokhoz**. 
+
+
+
+### <a name="prerequisites"></a>Előfeltételek
+Frissítse a CLI Azure Event Grid bővítményét a következő parancs futtatásával: 
+
+```azurecli-interactive
+az extension update -n eventgrid
+```
+
+Ha a bővítmény nincs telepítve, futtassa a következő parancsot a telepítéséhez: 
+
+```azurecli-interactive
+az extension add -n eventgrid
+```
 
 ### <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
-Az alábbi Azure-erőforrásokat hozó mintaparancsfájl:
+Privát végpont létrehozásához használja az az [Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) metódust az alábbi példában látható módon:
+
+```azurecli-interactive
+az network private-endpoint create \
+    --resource-group <RESOURECE GROUP NAME> \
+    --name <PRIVATE ENDPOINT NAME> \
+    --vnet-name <VIRTUAL NETWORK NAME> \
+    --subnet <SUBNET NAME> \
+    --private-connection-resource-id "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<TOPIC NAME> \
+    --connection-name <PRIVATE LINK SERVICE CONNECTION NAME> \
+    --location <LOCATION> \
+    --group-ids topic
+```
+
+A példában használt paraméterek leírását az az [Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)című dokumentációban találja. Ebben a példában a következő szempontokat kell figyelembe venni: 
+
+- A `private-connection-resource-id`esetében a **témakör** vagy **tartomány**erőforrás-azonosítóját kell megadnia. Az előző példa a következő típust használja: témakör.
+- a `group-ids`esetében válassza `topic` a `domain`vagy a következőt:. Az előző példában a használatban `topic` van. 
+
+Privát végpont törléséhez használja az az [Network Private-Endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) metódust az alábbi példában látható módon:
+
+```azurecli-interactive
+az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
+```
+
+> [!NOTE]
+> Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. A hasonló lépéseket követve saját végpontokat hozhat létre a **tartományokhoz**. 
+
+#### <a name="sample-script"></a>Példaszkript
+Íme egy példa, amely a következő Azure-erőforrásokat hozza létre:
 
 - Erőforráscsoport
 - Virtuális hálózat
-- Alhálózat a virtuális hálózatban
-- Az Azure Event Grid témaköre (prémium szint)
-- A témakör privát végpontja
+- Alhálózat a virtuális hálózaton
+- Azure Event Grid témakör (prémium szint)
+- Privát végpont a témakörhöz
 
 > [!NOTE]
-> Az ebben a szakaszban látható lépések témakörökre vonatkozóak. Hasonló lépésekkel hozhat létre privát végpontokat a tartományokhoz.
+> Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. A hasonló lépéseket követve saját végpontokat hozhat létre a tartományokhoz.
 
 ```azurecli-interactive
 subscriptionID="<AZURE SUBSCRIPTION ID>"
@@ -176,9 +220,6 @@ subNetName="<SUBNET NAME>"
 topicName = "<TOPIC NAME>"
 connectionName="<ENDPOINT CONNECTION NAME>"
 endpointName=<ENDPOINT NAME>
-
-# URI for the topic. replace <SUBSCRIPTION ID>, <RESOURCE GROUP NAME>, and <TOPIC NAME>
-topicUri="/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<TOPIC NAME>?api-version=2020-04-01-preview"
 
 # resource ID of the topic. replace <SUBSCRIPTION ID>, <RESOURCE GROUP NAME>, and <TOPIC NAME>
 topicResourceID="/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<TOPIC NAME>"
@@ -210,13 +251,16 @@ az network vnet subnet update \
     --disable-private-endpoint-network-policies true
 
 # create event grid topic. update <LOCATION>
-az rest --method put \
-    --uri $topicUri \
-    --body "{\""location\"":\""LOCATION\"", \""sku\"": {\""name\"": \""premium\""}, \""properties\"": {\""publicNetworkAccess\"":\""Disabled\""}}"
+az eventgrid topic create \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --location $location \
+    --sku "Premium" 
 
 # verify that the topic was created.
-az rest --method get \
-    --uri $topicUri
+az eventgrid topic show \
+    --resource-group $resourceGroupName \
+    --name $topicName
 
 # create private endpoint for the topic you created
 az network private-endpoint create 
@@ -230,35 +274,54 @@ az network private-endpoint create
     --group-ids topic
 
 # get topic 
-az rest --method get \
-    --uri $topicUri
+az eventgrid topic show \
+    --resource-group $resourceGroupName \
+    --name $topicName
 
 ```
 
-### <a name="approve-a-private-endpoint-connection"></a>Privát végpontkapcsolat jóváhagyása
-A következő minta CLI-kódrészlet bemutatja, hogyan lehet jóváhagyni egy privát végponti kapcsolatot. 
+### <a name="approve-a-private-endpoint"></a>Privát végpont jóváhagyása
+Az alábbi CLI-kódrészletből megtudhatja, hogyan hagyhatja jóvá a privát végpontok közötti kapcsolatokat. 
 
 ```azurecli-interactive
-az rest --method put --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-04-01-preview" --body "{\""properties\"":{\""privateLinkServiceConnectionState\"": {\""status\"":\""approved\"",\""description\"":\""connection approved\"", \""actionsRequired\"": \""none\""}}}"
+az eventgrid topic private-endpoint-connection approve \
+    --resource-group $resourceGroupName \
+    --topic-name $topicName \
+    --name  $endpointName \
+    --description "connection approved"
 ```
 
 
-### <a name="reject-a-private-endpoint-connection"></a>Privát végpontkapcsolat elutasítása
-A következő minta CLI-kódrészlet bemutatja, hogyan utasíthatja el a privát végponti kapcsolatot. 
+### <a name="reject-a-private-endpoint"></a>Privát végpont elutasítása
+A következő minta CLI-kódrészletből megtudhatja, hogyan utasítsa el a privát végponti kapcsolatokat. 
 
 ```azurecli-interactive
-az rest --method put --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-04-01-preview" --body "{\""properties\"":{\""privateLinkServiceConnectionState\"": {\""status\"":\""rejected\"",\""description\"":\""connection rejected\"", \""actionsRequired\"": \""none\""}}}"
+az eventgrid topic private-endpoint-connection reject \
+    --resource-group $resourceGroupName \
+    --topic-name $topicName \
+    --name $endpointName \
+    --description "Connection rejected"
+```
+
+### <a name="disable-public-network-access"></a>Nyilvános hálózati hozzáférés letiltása
+Alapértelmezés szerint a nyilvános hálózati hozzáférés engedélyezve van egy Event Grid témakörhöz vagy tartományhoz. Ha csak privát végpontokon keresztül szeretné engedélyezni a hozzáférést, tiltsa le a nyilvános hálózati hozzáférést a következő parancs futtatásával:  
+
+```azurecli-interactive
+az eventgrid topic update \
+    --resource-group $resourceGroupName \
+    --name $topicName \
+    --public-network-access disabled
 ```
 
 
 ## <a name="use-powershell"></a>A PowerShell használata
-Ez a szakasz bemutatja, hogyan hozhat létre egy privát végpontot egy témakörhöz vagy tartományhoz a PowerShell használatával. 
+Ebből a szakaszból megtudhatja, hogyan hozhat létre saját végpontot egy témakörhöz vagy tartományhoz a PowerShell használatával. 
 
 ### <a name="prerequisite"></a>Előfeltétel
-Kövesse [az Útmutató: A portál használatával hozzon létre egy Azure AD-alkalmazást és egyszerű szolgáltatást, amely erőforrásokhoz férhet hozzá](../active-directory/develop/howto-create-service-principal-portal.md) egy Azure Active Directory-alkalmazás létrehozásához, és jegyezze fel a **címtár (bérlői) azonosító,** **az alkalmazás (ügyfél) azonosító**és az alkalmazás **(ügyfél) titkos**értékeinek értékét. 
+Kövesse az utasításokat a következő témakör útmutatását követve [: a portál használatával hozzon létre egy Azure ad-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md) Azure Active Directory alkalmazás létrehozásához, és jegyezze fel a **címtár (bérlő) azonosító**, az **alkalmazás (ügyfél) azonosítója**és az **alkalmazás (ügyfél) titkos kulcsának**értékét. 
 
-### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Token és fejlécek előkészítése REST API-hívásokhoz 
-Futtassa a következő előfeltételek parancsokat a REST API-hívásokhoz és engedélyezéshez és egyéb fejlécadatokhoz használható hitelesítési jogkivonat lekéréséhez. 
+### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Jogkivonatok és fejlécek előkészítése REST API-hívásokhoz 
+A következő előfeltétel-utasítások futtatásával szerezzen be egy hitelesítési tokent REST API hívásokkal és engedélyezéssel, valamint más fejléc-információkkal való használatra. 
 
 ```azurepowershell-interactive
 $body = "grant_type=client_credentials&client_id=<CLIENT ID>&client_secret=<CLIENT SECRET>&resource=https://management.core.windows.net"
@@ -274,7 +337,7 @@ $Headers = @{}
 $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_token)")
 ```
 
-### <a name="create-a-subnet-with-endpoint-network-policies-disabled"></a>Alhálózat létrehozása letiltott végponthálózati házirendekkel
+### <a name="create-a-subnet-with-endpoint-network-policies-disabled"></a>Alhálózat létrehozása végponti hálózati házirendekkel letiltva
 
 ```azurepowershell-interactive
 
@@ -299,10 +362,10 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-### <a name="create-an-event-grid-topic-with-a-private-endpoint"></a>Eseményrács-témakör létrehozása saját végponttal
+### <a name="create-an-event-grid-topic-with-a-private-endpoint"></a>Event Grid-témakör létrehozása privát végponttal
 
 > [!NOTE]
-> Az ebben a szakaszban látható lépések témakörökre vonatkozóak. Hasonló lépésekkel privát végpontokat hozhat létre a **tartományokhoz.** 
+> Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. A hasonló lépéseket követve saját végpontokat hozhat létre a **tartományokhoz**. 
 
 
 ```azurepowershell-interactive
@@ -349,7 +412,7 @@ Invoke-RestMethod -Method 'Get'  `
 
 ```
 
-A végpont létrehozásának ellenőrzésekor az alábbihoz hasonló eredményt kell látnia:
+Ha ellenőrzi, hogy létrejött-e a végpont, a következőhöz hasonló eredményt kell látnia:
 
 ```json
 
@@ -378,11 +441,11 @@ A végpont létrehozásának ellenőrzésekor az alábbihoz hasonló eredményt 
 }
 ```
 
-### <a name="approve-a-private-endpoint-connection"></a>Privát végpontkapcsolat jóváhagyása
-A következő minta PowerShell-kódrészlet bemutatja, hogyan lehet jóváhagyni egy privát végpontot. 
+### <a name="approve-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása
+Az alábbi PowerShell-kódrészletből megtudhatja, hogyan hagyhat jóvá egy privát végpontot. 
 
 > [!NOTE]
-> Az ebben a szakaszban látható lépések témakörökre vonatkozóak. Hasonló lépésekkel jóváhagyhatja a tartományok privát **végpontjait.** 
+> Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. A **tartományokhoz**tartozó magánhálózati végpontok jóváhagyásához hasonló lépések használhatók. 
 
 ```azurepowershell-interactive
 $approvedBody = @{"properties"=@{"privateLinkServiceConnectionState"=@{"status"="approved";"description"="connection approved";"actionsRequired"="none"}}} | ConvertTo-Json
@@ -400,11 +463,11 @@ Invoke-RestMethod -Method 'Get'  `
 
 ```
 
-### <a name="reject-a-private-endpoint-connection"></a>Privát végpontkapcsolat elutasítása
-A következő példa bemutatja, hogyan utasíthatja el a privát végpont powershell használatával. A privát végpont GUID-ja az előző GET parancs eredményéből szerezhető be. 
+### <a name="reject-a-private-endpoint-connection"></a>Privát végponti kapcsolatok elutasítása
+Az alábbi példa bemutatja, hogyan utasíthatja el a privát végpontot a PowerShell használatával. A privát végpont GUID azonosítóját az előző GET parancs eredménye alapján szerezheti be. 
 
 > [!NOTE]
-> Az ebben a szakaszban látható lépések témakörökre vonatkozóak. Hasonló lépésekkel elutasíthatja a tartományok privát **végpontjait.** 
+> Az ebben a szakaszban bemutatott lépések témakörökre vonatkoznak. Hasonló lépéseket használhat a privát végpontok elutasításához a **tartományokban**. 
 
 
 ```azurepowershell-interactive
@@ -422,7 +485,7 @@ Invoke-RestMethod -Method 'Get'
     -Headers $Headers
 ```
 
-A kapcsolatot akkor is jóváhagyhatja, ha az API-n keresztül elutasították. Ha az Azure Portal, nem hagyhatja jóvá a végpont, amely elutasított. 
+Az API-n keresztüli elutasítása után is jóváhagyhatja a kapcsolatokat. Ha Azure Portal használ, nem hagyhat jóvá egy elutasított végpontot. 
 
 ## <a name="next-steps"></a>További lépések
-Az IP-tűzfal beállításainak konfigurálásáról az [IP-tűzfal konfigurálása az Azure Event Grid témaköreihez vagy tartományaihoz](configure-firewall.md)című témakörben olvashat.
+Az IP-tűzfalbeállítások konfigurálásával kapcsolatos további tudnivalókért lásd: [IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz](configure-firewall.md).

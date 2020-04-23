@@ -1,24 +1,23 @@
 ---
-title: Az Azure Windows virtuális gépek biztonsági vezérlői
-description: Az Azure Windows virtuális gépek kiértékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
-services: virtual-machines
+title: Az Azure Windows Virtual Machines biztonsági vezérlői
+description: Az Azure-Windows Virtual Machines kiértékelésére szolgáló biztonsági ellenőrzési ellenőrzőlista
 ms.service: virtual-machines
-documentationcenter: ''
+ms.subservice: security
 author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 569c989e8876bb7213d1469c7a70da99aa0b1e9c
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ac1ed9ac25d65d0391175fc6d43b48048da74926
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455342"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101586"
 ---
-# <a name="security-controls-for-windows-virtual-machines"></a>Biztonsági vezérlők a Windows virtuális gépekhez
+# <a name="security-controls-for-windows-virtual-machines"></a>A Windows Virtual Machines biztonsági vezérlői
 
-Ez a cikk a Windows virtuális gépekbe beépített biztonsági vezérlőket dokumentálja.
+Ez a cikk a Windows Virtual Machines beépített biztonsági vezérlőket dokumentálja.
 
 [!INCLUDE [Security controls header](../../../includes/security-controls-header.md)]
 
@@ -26,18 +25,18 @@ Ez a cikk a Windows virtuális gépekbe beépített biztonsági vezérlőket dok
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| A szolgáltatás végpontjának támogatása| Igen | |
-| A VNet injekciózás támogatása| Igen | |
-| Hálózati elkülönítés és tűzfaltámogatás| Igen |  |
-| Kényszerített bújtatástámogatása| Igen | Lásd: [Kényszerített bújtatás konfigurálása az Azure Resource Manager telepítési modelljével.](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) |
+| Szolgáltatás végpontjának támogatása| Igen | |
+| VNet-befecskendezés támogatása| Igen | |
+| Hálózati elkülönítés és tűzfalak támogatása| Igen |  |
+| Kényszerített bújtatás támogatása| Igen | Lásd: [kényszerített bújtatás konfigurálása a Azure Resource Manager üzemi modell használatával](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
 
-## <a name="monitoring--logging"></a>Naplózás & figyelése
+## <a name="monitoring--logging"></a>& naplózás figyelése
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure figyelési támogatás (Naplóelemzés, Alkalmazáselemzések stb.)| Igen | [Windows-virtuális gépek figyelése és frissítése az Azure-ban.](tutorial-monitoring.md) |
-| Vezérlő és felügyeleti sík naplózása és naplózása| Igen |  |
-| Adatsík naplózása és naplózása | Nem |  |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | [Windows rendszerű virtuális gépek monitorozása és frissítése az Azure-ban](tutorial-monitoring.md). |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen |  |
+| Adatsíkok naplózása és naplózása | Nem |  |
 
 ## <a name="identity"></a>Identitás
 
@@ -50,11 +49,11 @@ Ez a cikk a Windows virtuális gépekbe beépített biztonsági vezérlőket dok
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| Kiszolgálóoldali titkosítás inaktív állapotban: Microsoft által felügyelt kulcsok | Igen | Lásd: [Virtuális lemezek titkosítása Windows virtuális gépen.](/azure/virtual-machines/windows/disk-encryption-overview) |
-| Titkosítás átvitel közben (például ExpressRoute-titkosítás, virtuális hálózat titkosítása és Virtuálishálózati titkosítás)| Igen | Az Azure virtuális gépek támogatja az [ExpressRoute](/azure/expressroute) és a Virtuális hálózat titkosítását. Lásd: [Bejövő titkosítás a virtuális gépeken.](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms) |
-| Kiszolgálóoldali titkosítás inaktív állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfél által felügyelt kulcsok egy támogatott Azure titkosítási forgatókönyv; lásd: [Azure-titkosítás – áttekintés.](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)|
-| Oszlopszintű titkosítás (Azure Data Services)| N/A | |
-| TITKOSÍTOTT API-hívások| Igen | HTTPS-en és TLS-en keresztül. |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | Lásd: [virtuális lemezek titkosítása egy Windows rendszerű virtuális gépen](/azure/virtual-machines/windows/disk-encryption-overview). |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Az Azure Virtual Machines támogatja a [ExpressRoute](/azure/expressroute) és a VNet titkosítást. Lásd: [tranzitraktár titkosítás a virtuális gépeken](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfél által felügyelt kulcsok egy támogatott Azure-titkosítási forgatókönyv; Lásd: az [Azure-titkosítás áttekintése](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
+| Oszlop szintű titkosítás (Azure Data Services)| N/A | |
+| Titkosított API-hívások| Igen | HTTPS és TLS protokollon keresztül. |
 
 
 
@@ -62,8 +61,8 @@ Ez a cikk a Windows virtuális gépekbe beépített biztonsági vezérlőket dok
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfigurációkezelés támogatása (a konfiguráció verziószámozása stb.)| Igen |  | 
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen |  | 
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [Azure-szolgáltatások beépített biztonsági vezérlőiről.](../../security/fundamentals/security-controls.md)
+- További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../../security/fundamentals/security-controls.md).

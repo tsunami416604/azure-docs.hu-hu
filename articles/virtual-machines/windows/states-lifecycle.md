@@ -1,30 +1,24 @@
 ---
-title: Windows virtuális gép életciklusa és állapotaaz Azure-ban
-description: A Windows virtuális gépek életciklusának áttekintése az Azure-ban, beleértve a virtuális gép különböző állapotainak leírását.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Windows rendszerű virtuális gépek életciklusa és állapota az Azure-ban
+description: Egy Windows rendszerű virtuális gép életciklusának áttekintése az Azure-ban, beleértve a különböző állapotok leírását, melyeket a virtuális gép bármikor tartalmazhat.
 author: shandilvarun
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: f7823d0e34fb6a79e79e9feab8eea77785b3d0da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dbe236cc4a407cca78f7f7ab64f3809797c02614
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74068216"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100600"
 ---
-# <a name="virtual-machines-lifecycle-and-states"></a>A virtuális gépek életciklusa és állapotai
+# <a name="virtual-machines-lifecycle-and-states"></a>Virtuális gépek életciklusa és állapota
 
 [!INCLUDE [virtual-machines-common-states-lifecycle](../../../includes/virtual-machines-common-states-lifecycle.md)]
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a virtuális gép figyeléséről, olvassa el [a Virtuális gépek figyelése az Azure-ban.](monitor.md)
+A virtuális gép figyelésével kapcsolatos további tudnivalókért tekintse meg a [Virtual Machines Azure-beli figyelését](monitor.md)ismertető témakört.

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory portálon kockázatra megjelölt felhasználók | Microsoft dokumentumok
+title: A Azure Active Directory-portálon kockázatra megjelölt felhasználók | Microsoft Docs
 description: Ismerje meg az Azure Active Directory portál kockázatosként megjelölt felhasználókról szóló biztonsági jelentését
 services: active-directory
 author: MarkusVi
@@ -15,55 +15,55 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d02c5484ea4cce2953eac6b1b7b26a17c142bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68989699"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100787"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználók szervizelése az Azure Active Directory portálon
 
-Az Azure Active Directoryban (Azure AD) található biztonsági jelentésekkel felmérheti a környezetben a feltört felhasználói fiókok valószínűségét. A kockázatosként megjelölt felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága.
+A Azure Active Directory (Azure AD) biztonsági jelentéseivel a környezetben feltört felhasználói fiókok valószínűsége is mérhető. A kockázatosként megjelölt felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága.
 
 A Microsoft elkötelezte magát az Ön környezeteinek védelmére. Ezen kötelezettségvállalás részeként a Microsoft folyamatosan monitorozza a szokatlan vagy az ismert támadási mintákat követő tevékenységeket. 
 
-Ha olyan szokatlan tevékenységeket észlel, amelyek a felhasználók egyes fiókjaihoz való jogosulatlan hozzáférést jelezhetnek, értesítéseket kap, amelyek lehetővé teszik a cselekvést. Ez nem jelenti azt, hogy a Microsoft saját rendszerei veszélybe kerültek.
+Ha a rendszer olyan szokatlan tevékenységeket észlel, amelyek egy bizonyos felhasználói fiókhoz való jogosulatlan hozzáférést jelezhetnek, akkor értesítést kap, amely lehetővé teszi a művelet elvégzését. Ez nem jelenti azt, hogy a Microsoft saját rendszereit feltörték.
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>A kockázatosként megjelölt felhasználókról szóló jelentés elérése
 
-Tekintse át a kockázati kockázatnak kitett [felhasználók](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) által az Azure Portalon megjelölt felhasználókat. Ha nem rendelkezik Azure AD-vel, ingyenesen [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD)regisztrálhat a. 
+Áttekintheti a kockázatnak kitett felhasználókat a Azure Portal [kockázati jelentésében lévő felhasználók](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) számára. Ha nem rendelkezik Azure AD-val, regisztráljon ingyenesen a következő címen: [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD). 
 
-A kockázati jelentéshez megjelölt felhasználók közül a következő műveleteket teheti meg minden felhasználó esetében:
+A kockázati jelentésre megjelölt felhasználók a következő műveleteket hajtják végre minden felhasználónál:
 
 - Ideiglenes jelszó létrehozása
 - Biztonságos jelszóváltoztatás megkövetelése a felhasználótól a következő bejelentkezéskor
 - A felhasználó kockázatos voltának figyelmen kívül hagyása szervizelési művelet nélkül.
 
-További információ: [A Felhasználók a kockázatbiztonsági jelentéshez.](concept-user-at-risk.md)
+További információ: [a kockázat biztonsági jelentésére megjelölt felhasználók](concept-user-at-risk.md).
 
 ### <a name="azure-ad-subscription-for-office-365-customers"></a>Azure AD-előfizetés Office 365-ügyfelek számára
 
-Office 365-ös hitelesítő adataival is elérheti az **Azure Felügyeleti központot.** Miután aktiválta Azure AD-hozzáférését, a rendszer átirányítja az Azure AD portáljára. Az alapszintű előfizetési szinten a jelentésekben biztosított adatok mennyisége korlátozott. Az Azure Premium-előfizetők további adatokat és elemzéseket érhetnek el.
+Az Office 365 hitelesítő adatait használhatja az **Azure felügyeleti központ**eléréséhez is. Miután aktiválta Azure AD-hozzáférését, a rendszer átirányítja az Azure AD portáljára. Az alapszintű előfizetési szinten a jelentésekben biztosított adatok mennyisége korlátozott. Az Azure Premium-előfizetők további adatokat és elemzéseket érhetnek el.
 
-A Microsoft 365 Felügyeleti központban **a kockázati jelentésekhez megjelölt felhasználók** elérése:
+A kockázati jelentésekhez **megjelölt felhasználók** elérése a Microsoft 365 felügyeleti központban:
 
-1.  A bal oldali navigációs menüben válassza a **Felügyeleti központok lehetőséget.** 
-2.  Válassza az **Azure AD**lehetőséget.
+1.  A bal oldali navigációs menüből válassza a **felügyeleti központok**lehetőséget. 
+2.  Válassza az **Azure ad**lehetőséget.
 3.  Jelentkezzen be az **Azure Active Directory felügyeleti központba**.
-4.  Ha egy szalagcím jelenik meg az oldal tetején, amely azt **mondja: Nézze meg az új portált,** válassza ki a hivatkozást.
-4.  A bal oldali navigációs menüben válassza az **Azure Active Directory**lehetőséget. 
-5.  A navigációs ablakban válassza a **Felhasználók** megjelölve a biztonság szakaszban a **kockázatmegjelölése** lehetőséget.
+4.  Ha megjelenik egy szalagcím az oldal tetején, amely azt jelzi, hogy az **új portálra**kattint, válassza ki a hivatkozást.
+4.  A bal oldali navigációs menüben válassza a **Azure Active Directory**lehetőséget. 
+5.  A navigációs ablaktáblán válassza ki a **Biztonság** szakaszban a **kockázatként megjelölt felhasználókat** .
 
 ## <a name="remediation-actions"></a>Szervizelési műveletek
 
 Végezze el a következő műveleteket az érintett fiókok javításához és a környezet biztonságossá tételéhez:
 
-1.  [Ellenőrizze a megfelelő adatokat](https://aka.ms/MFAValid) a többtényezős hitelesítéshez és az önkiszolgáló jelszó-visszaállításhoz. 
-2.  [Engedélyezze a többtényezős hitelesítést](https://aka.ms/MFAuth) minden felhasználó számára. 
-3.  Ezt a [szervizelési parancsfájlt](https://aka.ms/remediate) minden érintett fiókhoz használhatja a következő lépések automatikus végrehajtásához: 
+1.  A többtényezős hitelesítés és az önkiszolgáló jelszó-visszaállítás [helyes adatainak ellenőrzése](https://aka.ms/MFAValid) . 
+2.  [Engedélyezze a többtényezős hitelesítést](https://aka.ms/MFAuth) az összes felhasználó számára. 
+3.  Használja ezt a [szervizelési parancsfájlt](https://aka.ms/remediate) minden érintett fiókhoz, hogy automatikusan végrehajtsa a következő lépéseket: 
 
-    a. Állítsa alaphelyzetbe a jelszót a fiók biztonságossá tétele és az aktív munkamenetek megölése érdekében.
+    a. Jelszó alaphelyzetbe állítása a fiók biztonságossá tételéhez és az aktív munkamenetek megöléséhez.
 
     b. A postaláda meghatalmazottjainak eltávolítása.
 
@@ -77,20 +77,19 @@ Végezze el a következő műveleteket az érintett fiókok javításához és a
 
     g. A postaláda-naplózás engedélyezése.
 
-    h. Naplót kell készítenie a rendszergazdának, hogy áttekintse.
+    h. Napló létrehozása a rendszergazdának a felülvizsgálathoz.
 
 4. Vizsgálja meg az Office 365-bérlőt és a többi informatikai infrastruktúrát, beleértve az összes bérlőbeállítást, felhasználói fiókokat és a felhasználónkénti konfigurációs beállításokat, hogy nem hajtottak-e rajtuk végre módosításokat. Keressen perzisztenciára utaló jeleket, valamint ellenőrizze, hogy egy esetleges támadónak a behatolási kísérlet során sikerült-e hozzáférnie a VPN-hitelesítőadatokhoz vagy más vállalati erőforrásokhoz. 
 
-5.  A vizsgálat részeként fontolja meg, hogy értesítenie kell-e a kormányzati hatóságokat, beleértve a bűnüldözést is.
+5.  A vizsgálat részeként gondolja át, hogy értesítenie kell-e a kormányzati hatóságokat, beleértve a bűnüldöző szerveket is.
 
 Ezenkívül el a következőket kell elvégeznie:
 
-- Olvassa el és hajtsa végre ezt [az útmutatót a szokatlan tevékenységek kezelésére vonatkozóan.](https://aka.ms/fixaccount) 
-- [Engedélyezze a naplózási folyamatot,](https://aka.ms/improvesecurity) hogy segítsen a bérlőben lévő tevékenység elemzésében. Miután elkészült, a naplózási tároló tevékenységnaplók feltöltése kezdődik. Ezen a ponton a [Biztonsági és Megfelelőségi központ keresési és vizsgálati erőforrását is használhatja.](https://aka.ms/sccsearch) 
-- Ezzel a parancsfájllal engedélyezheti a [postaláda-naplózást](https://aka.ms/mailboxaudit1) az összes fiókjában. 
+- Olvassa el és implementálja ezt az [útmutatót a szokatlan tevékenységek kezeléséhez](https://aka.ms/fixaccount). 
+- [A naplózási folyamat lehetővé teszi](https://aka.ms/improvesecurity) a tevékenység elemzését a bérlőben. Ha elkészült, a naplózási tároló megkezdi a tevékenységek naplóinak feltöltését. Ezen a ponton a [biztonsági és megfelelőségi központ keresési és vizsgálati erőforrásait](https://aka.ms/sccsearch)is kihasználhatja. 
 - Tekintse át az összes postafiók engedélyek delegálásával és levelek továbbításával kapcsolatos szabályait. Ezzel a [PowerShell-szkripttel](https://aka.ms/delegateforwardrules) végezheti el ezt a feladatot. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure Active Directory identitásvédelem](../active-directory-identityprotection.md)
+* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
 * [Kockázatosként megjelölt felhasználók](concept-user-at-risk.md)
