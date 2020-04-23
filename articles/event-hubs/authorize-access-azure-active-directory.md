@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 1fa8f7a48c03ead7e939185b23834b3049b3e21c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6216b56c8e8f0de4f9cd60306bbf9c5ed49a11ad
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064865"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025203"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Hozzáférés engedélyezése az Event Hubs-erőforrásokhoz az Azure Active Directory használatával
 Az Azure Event Hubs támogatja az Azure Active Directory (Azure AD) használatát az Event Hubs-erőforrásokra vonatkozó kérelmek engedélyezéséhez. Az Azure AD használatával szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket adhat egy rendszerbiztonsági tagnak, amely lehet felhasználó vagy egy egyszerű alkalmazásszolgáltatás. Ha többet szeretne megtudni a szerepkörökről és a szerepkör-hozzárendelésekről, olvassa [el a Különböző szerepkörök ismertetése című témakört.](../role-based-access-control/overview.md)
@@ -65,7 +65,7 @@ A beépített szerepkörök definiálásáról a [Szerepkör-definíciók ismert
 ## <a name="samples"></a>Példák
 - [Microsoft.Azure.EventHubs mintákat](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    Ezek a minták a régi **Microsoft.Azure.EventHubs-könyvtárat** használják, de könnyedén frissítheti azt a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával. Ha át szeretné helyezni a mintát a régi könyvtár használatából az újkönyvtárba, olvassa el a [Microsoft.Azure.EventHubs-ról az Azure.Messaging.EventHubs szolgáltatásba való áttelepítés útmutatóját.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)
+    Ezek a minták a régi **Microsoft.Azure.EventHubs-könyvtárat** használják, de könnyedén frissítheti azt a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával. Ha át szeretné helyezni a mintát a régi könyvtár használatából az újkönyvtárba, olvassa el a [Microsoft.Azure.EventHubs-ról az Azure.Messaging.EventHubs szolgáltatásba való áttelepítés útmutatóját.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 - [Az Azure.Messaging.EventHubs-minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     Ez a minta frissítve lett a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával.

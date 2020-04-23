@@ -3,12 +3,12 @@ title: Vendégkonfigurációs házirendek létrehozása a Windows rendszerhez
 description: Ismerje meg, hogyan hozhat létre egy Azure Policy Vendég konfigurációs szabályzatot a Windows hoz létre.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 7b06aa0a70bfa17d67da9c6af447138f8bb9e712
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: f09bb543f73e37bd211a55e2238808f57585bb18
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81757413"
+ms.locfileid: "82024897"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs házirendek létrehozása a Windows rendszerhez
 
@@ -27,9 +27,8 @@ A következő műveletek segítségével hozzon létre saját konfigurációt eg
 > A Vendégkonfigurációval rendelkező egyéni házirendek előzetes verziójú funkciók.
 >
 > A vendégkonfiguráció bővítmény az Azure virtuális gépeken végzett naplózáshoz szükséges.
-> A bővítmény nagy méretekben történő üzembe helyezéséhez rendelje hozzá a következő házirend-definíciókat:
->   - Előfeltételek telepítése a vendégkonfigurációs házirend windowsos virtuális gépeken való engedélyezéséhez.
->   - A vendégkonfigurációs házirend linuxos virtuális gépeken való engedélyezéséhez telepítse az előfeltételeket.
+> Ha a bővítményt az összes Windows-gépen nagy méretekben szeretné telepíteni, rendelje hozzá a következő házirend-definíciókat:
+>   - [Előfeltételek telepítése a vendégkonfigurációs házirend windowsos virtuális gépeken való engedélyezéséhez.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
 ## <a name="install-the-powershell-module"></a>A PowerShell-modul telepítése
 

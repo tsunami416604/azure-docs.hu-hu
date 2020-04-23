@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1dbc08e01b9a36b1bc80ee6b81ceb2d92ff831cc
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273715"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870217"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets – gyakori kérdések
 
@@ -445,7 +445,7 @@ A virtuális gépek jelszavának módosítása két fő módon, méretezési cso
 
     Frissítse a rendszergazdai hitelesítő adatokat közvetlenül a méretezési csoport modell (például az Azure Resource Explorer, powershell vagy CLI használatával). A méretezési készlet frissítése után az összes új virtuális gép rendelkezik az új hitelesítő adatokkal. A meglévő virtuális gépek csak akkor rendelkeznek az új hitelesítő adatokkal, ha újralevannak mévülve.
 
-- Állítsa alaphelyzetbe a jelszót a virtuális gép hozzáférési bővítményei használatával.
+- Állítsa alaphelyzetbe a jelszót a virtuális gép hozzáférési bővítményei használatával. Ügyeljen arra, hogy kövesse az [itt](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)leírt jelszókövetelményeket.
 
     Használja a következő PowerShell-példát:
 

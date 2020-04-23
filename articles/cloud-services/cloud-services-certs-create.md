@@ -8,19 +8,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811463"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024608"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services – tanúsítványok áttekintése
 A tanúsítványokat az Azure-ban felhőszolgáltatásokhoz ([szolgáltatástanúsítványokhoz)](#what-are-service-certificates)és a felügyeleti API-val ([felügyeleti tanúsítványok)](#what-are-management-certificates)való hitelesítésre használják. Ez a témakör általános áttekintést nyújt mindkét tanúsítványtípusról, hogyan [hozhat létre](#create) és helyezhet i üzembe az Azure-ban.
 
 Az Azure-ban használt tanúsítványok x.509 v3-as tanúsítványok, és aláírhatók egy másik megbízható tanúsítvány, vagy lehet önaláírt. Az önaláírt tanúsítványt saját létrehozója írja alá, ezért alapértelmezés szerint nem megbízható. A legtöbb böngésző figyelmen kívül tudja hagyni ezt a problémát. Csak önaláírt tanúsítványokat használjon a felhőszolgáltatások fejlesztése és tesztelése során. 
 
-Az Azure által használt tanúsítványok tartalmazhatnak egy személyes vagy nyilvános kulcsot. A tanúsítványok ujjlenyomata egyértelmű módon biztosítja azok azonosítását. Ez az ujjlenyomat az Azure [konfigurációs fájlban](cloud-services-configure-ssl-certificate-portal.md) található a felhőszolgáltatás által használandó tanúsítvány azonosítására. 
+Az Azure által használt tanúsítványok nyilvános kulcsot is tartalmaznak. A tanúsítványok ujjlenyomata egyértelmű módon biztosítja azok azonosítását. Ez az ujjlenyomat az Azure [konfigurációs fájlban](cloud-services-configure-ssl-certificate-portal.md) található a felhőszolgáltatás által használandó tanúsítvány azonosítására. 
 
 >[!Note]
 >Az Azure Cloud Services nem fogadja el az AES256-SHA256 titkosított tanúsítványt.
@@ -51,7 +51,7 @@ Előfizetésenként legfeljebb 100 kezelési tanúsítvány lehet. Egy adott szo
 Bármilyen rendelkezésre álló eszközzel létrehozhat önaláírt tanúsítványt, amennyiben azok megfelelnek ezeknek a beállításoknak:
 
 * Egy X.509-es tanúsítvány.
-* Személyes kulcsot tartalmaz.
+* Nyilvános kulcsot tartalmaz.
 * Kulcscsere (.pfx fájl) esetén készült.
 * A tulajdonos nevének meg kell egyeznie a felhőszolgáltatás eléréséhez használt tartománnyal.
 

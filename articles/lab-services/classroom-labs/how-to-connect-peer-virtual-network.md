@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: b0efed83237c191f02bfffd9b26a0fd9cd2c871f
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 6ed0d743f9b9cdc136b8f52f4d9d02583fc63eb9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606579"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870182"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>A labor hálózatának csatlakoztatása egyenrangú virtuális hálózattal az Azure Lab Servicesben
 
@@ -46,7 +46,7 @@ Az új [tesztkörnyezet-fiók létrehozása során](tutorial-setup-lab-account.m
 
 ### <a name="address-range"></a>Címtartomány
 
-Lehetőség van arra is, hogy **címtartományt** biztosítson a virtuális gépekhez a laborok számára. Ha a címtartomány meg van adva, a laborok ban a laborfiók ban lévő összes virtuális gép az adott címtartományban jön létre. A címtartománynak CIDR jelöléssel kell lennie (pl. 10.20.0.0/20), és nem lehet átfedésben a meglévő címtartományokkal.  Címtartomány megadásakor fontos átgondolni a létrehozandó *laborok* számát, és megadni egy címtartományt ennek megfelelően. A Lab Services laboronként legfeljebb 512 virtuális gépet feltételez.  Például egy ip-tartomány "/23" hozhat létre csak egy labor.  A "/21" tartomány lehetővé teszi négy laboratórium létrehozását.
+Lehetőség van arra is, hogy **címtartományt** biztosítson a virtuális gépekhez a laborok számára.  A **Címtartomány** tulajdonság csak akkor **érvényes,** ha a társ virtuális hálózat engedélyezve van a tesztkörnyezetben.  Ha a címtartomány meg van adva, a laborok ban a laborfiók ban lévő összes virtuális gép az adott címtartományban jön létre. A címtartománynak CIDR jelöléssel kell lennie (pl. 10.20.0.0/20), és nem lehet átfedésben a meglévő címtartományokkal.  Címtartomány megadásakor fontos átgondolni a létrehozandó *laborok* számát, és megadni egy címtartományt ennek megfelelően. A Lab Services laboronként legfeljebb 512 virtuális gépet feltételez.  Például egy ip-tartomány "/23" hozhat létre csak egy labor.  A "/21" tartomány lehetővé teszi négy laboratórium létrehozását.
 
 Ha a **címtartomány** nincs megadva, a Lab Services az Azure által megadott alapértelmezett címtartományt fogja használni a virtuális hálózattal társviszonyba kerülő virtuális hálózat létrehozásakor.  A tartomány gyakran olyasmi, mint 10.x.0.0/16.  Ez az ip-tartomány átfedéséhez vezethet, ezért győződjön meg arról, hogy adja meg és a címtartománya a labor beállításait, vagy ellenőrizze a címkén a virtuális hálózat társviszonyban lévő.
 

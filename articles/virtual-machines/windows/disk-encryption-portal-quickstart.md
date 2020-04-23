@@ -3,15 +3,16 @@ title: Windows rendszerű virtuális gép létrehozása és titkosítása az Azu
 description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre és titkosíthat windowsos virtuális gépet az Azure Portal használatával
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 2518de3ad5d0f583cd4962796e4adda5751351df
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3a5fb354ab32dd560a94875dd84d891ce0b9d68c
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74151038"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081744"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Rövid útmutató: Windows-alapú virtuális gép létrehozása és titkosítása az Azure Portalon
 
@@ -21,7 +22,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása

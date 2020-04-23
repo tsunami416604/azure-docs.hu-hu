@@ -7,12 +7,12 @@ manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 907aa83bc293aacd9920d8fd79a1b3184dd1d5dc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 7a71d3bd70d97df884f1bc962c0ef9897d7fd2cb
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767597"
+ms.locfileid: "82024404"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -25,7 +25,7 @@ Az AKS két felügyelt identitást hoz létre:
 - **Rendszer által hozzárendelt felügyelt identitás**: Az identitás, amely a Kubernetes felhőszolgáltató használja az Azure-erőforrások létrehozásához a felhasználó nevében. A rendszer által hozzárendelt identitás életciklusa a fürt életciklusához van kötve. Az identitás törlődik a fürt törlésekor.
 - **Felhasználó által hozzárendelt felügyelt identitás**: A fürtben az engedélyezéshez használt identitás. Például a felhasználó által kijelölt identitás segítségével engedélyezheti az AKS-t az Azure Container Regisz-nyilvántartások (AR) használatára, vagy a kubelet engedélyezésére metaadatok azure-ból való lekérni.
 
-A bővítmények felügyelt identitással is hitelesítik magukat. Minden bővítményhez az AKS felügyelt identitást hoz létre, és a bővítmény élettartamára tart. Saját virtuális hálózat, statikus IP-cím vagy csatlakoztatott Azure-lemez létrehozásához és használatához, ahol az erőforrások kívül esnek a MC_* erőforráscsoporton, használja a fürt Rendszerazonosítóját egy szerepkör-hozzárendelés végrehajtásához. A szerepkör-hozzárendeléssel kapcsolatos további információkért [lásd: Hozzáférés delegálása más Azure-erőforrásokhoz.](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)
+A bővítmények felügyelt identitással is hitelesítik magukat. Minden bővítményhez az AKS felügyelt identitást hoz létre, és a bővítmény élettartamára tart. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -58,6 +58,9 @@ A felügyelt identitások használatával sikeres fürtlétrehozás a szolgálta
     "secret": null
   }
 ```
+
+> [!NOTE]
+> Saját virtuális hálózat, statikus IP-cím vagy csatlakoztatott Azure-lemez létrehozásához és használatához, ahol az erőforrások kívül esnek a MC_* erőforráscsoporton, használja a fürtrendszer felügyelt identitásának Rendszerazonosítóját egy szerepkör-hozzárendelés végrehajtásához. A szerepkör-hozzárendeléssel kapcsolatos további információkért [lásd: Hozzáférés delegálása más Azure-erőforrásokhoz.](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)
 
 Végül a fürt höz való hozzáféréshez hitelesítő adatokat szerezzen be:
 

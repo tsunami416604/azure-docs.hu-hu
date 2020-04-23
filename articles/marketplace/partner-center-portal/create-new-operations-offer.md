@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f7c4b25dad50b8fe620d358aa7fb3e9decabc2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd8d9bdfb356ff9816056b85b1dc5688d17b58c
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294356"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869757"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Új Dynamics 365 for Operations ajánlat létrehozása
 
@@ -108,7 +108,7 @@ Válasszon legalább egy és legfeljebb három kategóriát. Ezeket a kategóri�
 
 Adja meg az ajánlat verziószámát. Az ügyfelek ezt a verziót az ajánlat részletes oldalán fogják látni.
 
-### <a name="terms-and-conditions"></a>Feltételek és kikötések
+### <a name="terms-and-conditions"></a>használati feltételei
 
 Adja meg saját jogi feltételeit az **Általános Szerződési Feltételek** mezőben. Azt az URL-t is megadhatod, ahol a feltételek találhatók. Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt megpróbálhatnák az ajánlatát.
 
@@ -121,7 +121,7 @@ Meg kell adnia a piactér adatait (ajánlat neve, leírása, képek stb.) az egy
 > [!NOTE]
 > Az ajánlat tartalma (például leírás, dokumentumok, képernyőképek, használati feltételek stb.) nem szükséges angol nyelven, amennyiben az ajánlat leírása a következő mondattal kezdődik: "Ez az alkalmazás csak [nem angol nyelven] érhető el." Az is elfogadható, hogy *egy hasznos link URL-t* kínál tartalmat más nyelven, mint amelyet az ajánlat lista tartalmát.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlathirdetés címeként jelenik meg az ügyfelek számára. Ez a mező előre ki van töltve az **Ajánlat aliashoz** az ajánlat létrehozásakor megadott szöveggel, de ezt az értéket módosíthatja. Ez a név védjeggyel is ellátott lehet (és ön védjegy- vagy szerzői jogi szimbólumokat is tartalmazhat). A név nem lehet több 50 karakternél, és nem tartalmazhat hangulatjeleket.
 
@@ -195,6 +195,9 @@ Itt legalább egy (és legfeljebb három) kapcsolódó marketingdokumentumot, p�
 ### <a name="marketplace-images"></a>Marketplace-képek
 
 Ebben a szakaszban olyan emblémákat és képeket adhat meg, amelyeket az ajánlat ügyfélnek való megjelenítésekor fog használni. Minden képnek .png formátumúnak kell lennie.
+
+>[!Note]
+>Ha probléma van a fájlok feltöltésével, győződjön https://upload.xboxlive.com meg arról, hogy a helyi hálózat nem blokkolja a Partnerközpont által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Áruházi emblémák
 

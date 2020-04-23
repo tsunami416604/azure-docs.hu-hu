@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c040907c6101d11ee645f9967278d3cf297bd74a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991620"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869811"
 ---
 # <a name="create-a-new-managed-service-offer"></a>Új felügyelt szolgáltatásajánlat létrehozása
 
@@ -63,7 +63,7 @@ A **Tulajdonságok** lapon meghatározhatja az ajánlat csoportosításához has
 
 Válasszon ki legalább egy és legfeljebb öt kategóriát, amelyek segítségével az ajánlatot a megfelelő piactérkeresési területekre helyezi. Ügyeljen arra, hogy hívja ki, hogy az ajánlat támogatja ezeket a kategóriákat az ajánlat leírása.
 
-### <a name="terms-and-conditions"></a>Feltételek és kikötések
+### <a name="terms-and-conditions"></a>használati feltételei
 
 Adja meg saját jogi feltételeit az **Általános Szerződési Feltételek** mezőben. Azt az URL-t is megadhatod, ahol a feltételek találhatók. Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt megpróbálhatnák az ajánlatát.
 
@@ -74,7 +74,7 @@ Adja meg saját jogi feltételeit az **Általános Szerződési Feltételek** me
 > [!NOTE]
 > Az ajánlat tartalma (például leírás, dokumentumok, képernyőképek, használati feltételek stb.) nem szükséges angol nyelven, amennyiben az ajánlat leírása a következő mondattal kezdődik: "Ez az alkalmazás csak [nem angol nyelven] érhető el." Az is elfogadható, hogy *egy hasznos link URL-t* kínál tartalmat más nyelven, mint amelyet az ajánlat lista tartalmát.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlathirdetés címeként jelenik meg az ügyfelek számára. Ez a mező előre ki van töltve az **Ajánlat aliashoz** az ajánlat létrehozásakor megadott szöveggel, de ezt az értéket módosíthatja. Ez a név védjeggyel is ellátott lehet (és ön védjegy- vagy szerzői jogi szimbólumokat is tartalmazhat). A név nem lehet több 50 karakternél, és nem tartalmazhat hangulatjeleket.
 
@@ -137,6 +137,9 @@ Ha az Azure **Global customers** és/vagy az **Azure Government-ügyfelek**támo
 ### <a name="marketplace-images"></a>Marketplace-képek
 
 Ebben a szakaszban olyan emblémákat és képeket adhat meg, amelyeket az ajánlat ügyfélnek való megjelenítésekor fog használni. Minden képnek .png formátumúnak kell lennie.
+
+>[!Note]
+>Ha probléma van a fájlok feltöltésével, győződjön https://upload.xboxlive.com meg arról, hogy a helyi hálózat nem blokkolja a Partnerközpont által használt szolgáltatást.
 
 #### <a name="marketplace-logos"></a>Marketplace-emblémák
 

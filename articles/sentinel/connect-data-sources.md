@@ -9,22 +9,22 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e59359d791729d2136003596d80dd1f31a9a2aac
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240085"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025152"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
-A beépített Azure Sentinel, először kell csatlakoznia az adatforrásokhoz. Az Azure Sentinel számos, a microsoftos megoldásokhoz elérhető összekötőt kínál, amelyek azonnal elérhetők, és valós idejű integrációt biztosítanak, beleértve a Microsoft Threat Protection megoldásokat és a Microsoft 365-forrásokat, beleértve az Office 365-öt, az Azure AD-t, az Azure ATP-t és a Microsoft Cloud App Security, és így tovább. Emellett a nem Microsoft-megoldások szélesebb biztonsági ökoszisztémájához beépített összekötők is találhatók. A közös eseményformátum, a Syslog vagy a REST-API segítségével is csatlakoztathatja az adatforrásokat az Azure Sentinelhez.  
+A beépített Azure Sentinel, először kell csatlakoznia az adatforrásokhoz. Az Azure Sentinel számos, a microsoftos megoldásokhoz elérhető összekötőt kínál, amelyek azonnal elérhetők, és valós idejű integrációt biztosítanak, beleértve a Microsoft Threat Protection megoldásokat és a Microsoft 365-forrásokat, beleértve az Office 365-öt, az Azure AD-t, az Azure ATP-t és a Microsoft Cloud App Security-t stb. Emellett a nem Microsoft-megoldások szélesebb biztonsági ökoszisztémájához beépített összekötők is találhatók. A közös eseményformátum, a Syslog vagy a REST-API segítségével is csatlakoztathatja az adatforrásokat az Azure Sentinelhez.  
 
 1. A menüben válassza az **Adatösszekötők**lehetőséget. Ezen a lapon megtekintheti az Azure Sentinel által biztosított összekötők teljes listáját és azok állapotát. Jelölje ki a csatlakoztatni kívánt összekötőt, és válassza **az Összekötő lap megnyitása**lehetőséget. 
 

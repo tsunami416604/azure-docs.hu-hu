@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 5c28697b27e9cf910302b7379e1443f7e78e96b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: 20d8e46d6fa6b031c809d629a6af41e8e682bcef
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530614"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025084"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése a MariaDB Azure Database-ben az Azure Portal használatával
 
@@ -45,9 +45,6 @@ Az olvasási replikakiszolgáló a következő lépésekkel hozható létre:
 6. Válassza ki a replikakiszolgáló helyét. Az alapértelmezett hely megegyezik a főkiszolgáló ével.
 
     ![Azure-adatbázis a MariaDB-hez – Replika helye](./media/howto-read-replica-portal/replica-location.png)
-
-   > [!NOTE]
-   > A régiók közötti replikáció előzetes verzióban érhető el. Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre kópiát, olvassa el a [replikaolvasással kapcsolatos útmutatóról szóló cikket.](concepts-read-replicas.md) 
 
 7. A replika létrehozásának megerősítéséhez válassza az **OK gombot.**
 

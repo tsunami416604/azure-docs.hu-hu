@@ -1,19 +1,19 @@
 ---
-title: Tárolók üzembe helyezése helmtel a Kubernetes-ben az Azure-ban
+title: Meglévő alkalmazások telepítése a Helm segítségével az AKS-ben
 description: Ismerje meg, hogyan helyezheti üzembe a Helm csomagolási eszközt az Azure Kubernetes-szolgáltatás (AKS) fürtjében lévő tárolók üzembe helyezéséhez
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4a9ccaff0e3425c365a64ecb4fbadf3c7aa8dcfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e46bed5fc9fd83a907f8c9e716317a54548c58cc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595178"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870248"
 ---
-# <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Alkalmazások telepítése helmtel az Azure Kubernetes szolgáltatásban (AKS)
+# <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>Meglévő alkalmazások telepítése helmtel az Azure Kubernetes szolgáltatásban (AKS)
 
 [A Helm][helm] egy nyílt forráskódú csomagolási eszköz, amely segít a Kubernetes-alkalmazások életciklusának telepítésében és kezelésében. Hasonló a Linux csomagkezelők, mint az *APT* és *a Yum,* Helm kezelésére használják Kubernetes diagramok, amelyek csomagok előre konfigurált Kubernetes erőforrások.
 

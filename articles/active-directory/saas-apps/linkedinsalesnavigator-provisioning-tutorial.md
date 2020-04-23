@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f789f82288c9820214c4ab32c271bb547945d4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77057379"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869744"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Oktatóanyag: A LinkedIn Sales Navigator konfigurálása automatikus felhasználói kiépítéshez
 
@@ -53,7 +53,7 @@ A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell
 
 ## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>A felhasználó kiépítésének konfigurálása a LinkedIn Sales Navigator szolgáltatásba
 
-Ez a szakasz végigvezeti az Azure AD és a LinkedIn Sales Navigator SCIM felhasználói fiók létesítési API-jának összekapcsolásával, valamint a kiépítési szolgáltatás konfigurálásával a hozzárendelt felhasználói fiókok létrehozásához, frissítéséhez és letiltásához a LinkedIn Sales Navigator-ban a felhasználó és csoporthozzárendelés az Azure AD-ben.
+Ez a szakasz végigvezeti az Azure AD-nek a LinkedIn Sales Navigator SCIM felhasználói fiók létesítési API-jával való összekapcsolásával, valamint a kiépítési szolgáltatás konfigurálásával a linkedin-i értékesítési navigátorhoz rendelt felhasználói fiókok létrehozásához, frissítéséhez és letiltásához az Azure AD-ben a felhasználó- és csoporthozzárendelés alapján.
 
 > [!TIP]
 > Az [Azure Portalon](https://portal.azure.com)megadott utasításokat követve engedélyezheti az SAML-alapú egyszeri bejelentkezést a LinkedIn Sales Navigator számára. Egyszeri bejelentkezés konfigurálható az automatikus kiépítéstől függetlenül, bár ez a két funkció kiegészíti egymást.
@@ -99,7 +99,7 @@ Az első lépés a LinkedIn-hozzáférési jogkivonat beolvasása. Ha Ön válla
 
 11. Töltse ki a következő mezőket a **Rendszergazdai hitelesítő adatok** csoportban:
 
-    * A **Bérlő URL-címe** mezőbe írja be a mezőt. https://api.linkedin.com
+    * A **Bérlő URL-címe** mezőbe írja be a mezőt. https://developer.linkedin.com
 
     * A **Titkos jogkivonat** mezőbe írja be az **1.**
 
@@ -107,7 +107,7 @@ Az első lépés a LinkedIn-hozzáférési jogkivonat beolvasása. Ha Ön válla
 
 12. Adja meg annak a személynek vagy csoportnak az e-mail címét, akinek kiépítési hibaértesítéseket kell kapnia az **Értesítési e-mail** mezőben, és jelölje be az alábbi jelölőnégyzetet.
 
-13. Kattintson a **Mentés** gombra.
+13. Kattintson a **Save** (Mentés) gombra.
 
 14. Az **Attribútum-leképezések** szakaszban tekintse át az Azure AD és a LinkedIn Sales Navigator között szinkronizálandó felhasználói és csoportattribútumokat. Vegye figyelembe, hogy az **Egyező** tulajdonságokként kijelölt attribútumok a LinkedIn Sales Navigator felhasználói fiókjainak és csoportjainak megfelelően lesznek felhasználva a frissítési műveletekhez. A módosítások véglegesítéséhez kattintson a Mentés gombra.
 
@@ -115,7 +115,7 @@ Az első lépés a LinkedIn-hozzáférési jogkivonat beolvasása. Ha Ön válla
 
 15. Az Azure AD-kiépítési szolgáltatás linkedin sales navigator engedélyezéséhez módosítsa a **Kiépítés állapotát** **Be** értékre a **Beállítások** szakaszban
 
-16. Kattintson a **Mentés** gombra.
+16. Kattintson a **Save** (Mentés) gombra.
 
 Ezzel elindítja a Felhasználók és csoportok szakaszBan a LinkedIn Sales Navigatorhoz rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg a szolgáltatás fut. A Szinkronizálás **részletei** szakaszban figyelheti a folyamatot, és követheti a kiépítési tevékenységnaplókra mutató hivatkozásokat, amelyek a kiépítési szolgáltatás által a LinkedIn Sales Navigator alkalmazásban végrehajtott összes műveletet ismertetik.
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: ffaab22efb2f6969f03720abba4a7afc6387021a
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 38152889ad43b41aeb345f59963cbfb869964b98
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758219"
+ms.locfileid: "82025237"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -60,7 +60,7 @@ Megoldásszerkesztőként az IoT Central segítségével hozhat létre egy egyé
 - Egy felhőalapú alkalmazás, amely telemetriai adatokat fogad az eszközökről és lehetővé teszi az eszközök felügyeletét.
 - Több eszköz, amelyek egyéni kódokat futtatnak és a felhőalapú alkalmazáshoz csatlakoznak.
 
-Gyorsan üzembe helyezhet egy új IoT Central-alkalmazást, majd testreszabhatja azt a böngészőben az adott követelményeknek megfelelően. Kezdheti egy általános _alkalmazássablonnal,_ vagy a [kiskereskedelemre](../retail/overview-iot-central-retail-pnp.md), [energiára](../energy/overview-iot-central-energy.md), [kormányzati](../government/overview-iot-central-government.md)vagy [egészségügyi ellátásra](../healthcare/overview-iot-central-healthcare.md)vonatkozó iparág-központú alkalmazássablonokkal.
+Gyorsan üzembe helyezhet egy új IoT Central-alkalmazást, majd testreszabhatja azt a böngészőben az adott követelményeknek megfelelően. Kezdheti egy általános _alkalmazássablonnal,_ vagy a [kiskereskedelemre](../retail/overview-iot-central-retail.md), [energiára](../energy/overview-iot-central-energy.md), [kormányzati](../government/overview-iot-central-government.md)vagy [egészségügyi ellátásra](../healthcare/overview-iot-central-healthcare.md)vonatkozó iparág-központú alkalmazássablonokkal.
 
 Megoldásszerkesztőként a webalapú eszközök segítségével hozzon létre egy _eszközsablont_ az alkalmazáshoz csatlakozó eszközökhöz. Az eszközsablon az a tervrajz, amely meghatározza egy eszköztípus jellemzőit és viselkedését, például a következőket:
 

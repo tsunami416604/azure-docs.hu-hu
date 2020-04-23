@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b0943098041af4c247ccd35715161bfb2e91895
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 972f4119fa17b4449fae4038283a183f097ccc4d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81726241"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081438"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ally"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Ally-vel
 
@@ -37,7 +37,7 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integráci
 A kezdéshez a következő elemekre van szükség:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Ally egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
+* Az Ally egyszeri bejelentkezés (SSO) engedélyezett előfizetés. Ha nem rendelkezik előfizetéssel, [indítsa el az ingyenes próbaidőszakot.](https://www.ally.io/?utm_source=azure&utm_medium=mktgplace&utm_term=tutorial)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -83,13 +83,13 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
 1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://app.ally.io/saml/consume/<CUSTOM_GUID>`
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://app.ally.io/saml/consume/<CUSTOM_UUID>`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://app.ally.io/saml/consume/<CUSTOM_GUID>`
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://app.ally.io/saml/consume/<CUSTOM_UUID>`
 
 1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet:`https://app.ally.io/saml/consume/<CUSTOM_GUID>`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet:`https://app.ally.io/saml/consume/<CUSTOM_UUID>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címével. Lépjen kapcsolatba [az Ally ügyféltámogatási csapatával,](mailto:contact@ally.io) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
@@ -157,7 +157,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hoz
 
 Amikor a Hozzáférési panelen az Ally csempére kattint, automatikusan be kell jelentkeznie arra az szövetségesbe, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 - [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

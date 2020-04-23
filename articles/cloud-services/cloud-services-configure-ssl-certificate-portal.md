@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811680"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024846"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>TLS konfigurálása egy alkalmazáshoz az Azure-ban
 
@@ -32,7 +32,7 @@ Egy alkalmazás TLS-ének konfigurálásához először be kell szereznie egy TL
 
 A tanúsítványnak meg kell felelnie a TLS-/SSL-tanúsítványokra vonatkozó alábbi követelményeknek az Azure-ban:
 
-* A tanúsítványnak titkos kulcsot kell tartalmaznia.
+* A tanúsítványnak nyilvános kulcsot kell tartalmaznia.
 * A tanúsítványt kulcscseréhez kell létrehozni, amely személyes adatcserefájlba (.pfx) exportálható.
 * A tanúsítvány tulajdonosnevének meg kell egyeznie a felhőszolgáltatás eléréséhez használt tartománnyal. A cloudapp.net tartományhitelesítésszolgáltatójától nem szerezhet be TLS/SSL-tanúsítványt. A szolgáltatás elérésekor egyéni tartománynevet kell beszereznie. Amikor tanúsítványt kér egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Ha például az egyéni tartománynév **contoso.com** a hitelesítésszolgáltatótól a ***.contoso.com** vagy a **www\.contoso.com**tanúsítványt kell kérnie.
 * A tanúsítványnak legalább 2048 bites titkosítást kell használnia.

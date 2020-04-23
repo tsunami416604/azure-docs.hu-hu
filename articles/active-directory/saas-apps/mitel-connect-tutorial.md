@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 30a4dcbd15d8a47d99b3a61879a7e61938d3b133
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 26a761708f56ff7aba8daf86d2991579e60291cb
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160534"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870192"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>Oktatóanyag: Az Azure Active Directory integrációja a Mitel MiCloud Connecttel
 
@@ -202,7 +202,7 @@ Ebben a szakaszban engedélyezi Britta Simon számára az Azure egyszeri bejelen
 
 Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a MiCloud Connect-fiókjában. A felhasználókat az egyszeri bejelentkezés előtt létre kell hozni és aktiválni kell.
 
-A felhasználók mitel-fiókportálon való hozzáadásáról a Mitel Tudásbázis [Felhasználói hozzáadása](https://docs.shoretel.com/connectcloud/Account/Users/AddUser) című cikkben olvashat részletesen.
+A felhasználók mitel-fiókportálon való hozzáadásáról a Mitel Tudásbázis [Felhasználói hozzáadása](https://oneview.mitel.com/s/article/Adding-a-User-092815) című cikkben olvashat részletesen.
 
 Hozzon létre egy felhasználót MiCloud Connect fiókjában a következő adatokkal:
 

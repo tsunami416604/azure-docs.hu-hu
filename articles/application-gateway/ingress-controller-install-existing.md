@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 048ab7249b27839890bab3e677154ca3c7a0cc98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 949f1b3ee3db72e1c541c3dd4c5f74f364f1b514
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239432"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869899"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Alkalmazásátjáró be- és élesztire vonatkozó vezérlőjének (AGIC) telepítése meglévő alkalmazásátjáró használatával
 
@@ -117,7 +117,7 @@ Az ARM-hoz egy Kubernetes-titokon keresztül is lehet hozzáférést biztosítan
 1. Hozzon létre egy Active Directory egyszerű szolgáltatást, és kódolja a base64.Create an Active Directory Service Principal and encode with base64. A base64 kódolás szükséges a JSON blob kubernetes menti.
 
 ```azurecli
-az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0
+az ad sp create-for-rbac --sdk-auth | base64 -w0
 ```
 
 2. Adja hozzá a base64 kódolású JSON blobot a `helm-config.yaml` fájlhoz. További információ `helm-config.yaml` a következő szakaszban található.
@@ -184,7 +184,7 @@ Az első néhány lépésben telepítjük a Helm's Tiller-t a Kubernetes fürtre
     ## Alternatively you can use Service Principal credentials
     # armAuth:
     #    type: servicePrincipal
-    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
+    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --sdk-auth | base64 -w0" >>
     
     ################################################################################
     # Specify if the cluster is RBAC enabled or not
@@ -221,7 +221,7 @@ Az első néhány lépésben telepítjük a Helm's Tiller-t a Kubernetes fürtre
          --set appgw.subscriptionId=subscription-uuid \
          --set appgw.shared=false \
          --set armAuth.type=servicePrincipal \
-         --set armAuth.secretJSON=$(az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0) \
+         --set armAuth.secretJSON=$(az ad sp create-for-rbac --sdk-auth | base64 -w0) \
          --set rbac.enabled=true \
          --set verbosityLevel=3 \
          --set kubernetes.watchNamespace=default \

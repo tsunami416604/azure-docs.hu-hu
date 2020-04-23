@@ -3,12 +3,12 @@ title: Ismerje meg a virtuális gépek tartalmának naplózását
 description: Ismerje meg, hogy az Azure Policy hogyan használja a Vendég konfigurációs ügynököt a virtuális gépeken belüli beállítások naplózásához.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1721c0f1ca7c084d636278aabc96f8dac3293038
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 89f7cc3931971d70b441490f77b67ace89434c2b
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759074"
+ms.locfileid: "82025220"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure-szabályzat vendégkonfigurációjának megismerése
 
@@ -31,8 +31,8 @@ A beállítások naplózásához egy gépen belül, a [virtuális gép bővítm�
 > [!Important]
 > A vendégkonfiguráció bővítmény az Azure virtuális gépeken végzett naplózáshoz szükséges.
 > A bővítmény nagy méretekben történő üzembe helyezéséhez rendelje hozzá a következő házirend-definíciókat:
->   - Előfeltételek telepítése a vendégkonfigurációs házirend windowsos virtuális gépeken való engedélyezéséhez.
->   - A vendégkonfigurációs házirend linuxos virtuális gépeken való engedélyezéséhez telepítse az előfeltételeket.
+>   - [Előfeltételek telepítése a vendégkonfigurációs házirend windowsos virtuális gépeken való engedélyezéséhez.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>   - [A vendégkonfigurációs házirend linuxos virtuális gépeken való engedélyezéséhez telepítse az előfeltételeket.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ### <a name="limits-set-on-the-extension"></a>A kiterjesztésre beállított korlátok
 
@@ -67,6 +67,8 @@ Vendég konfigurációs házirendek tartalmazzák az új verziók. Az Azure piac
 |OpenLogic|CentOS|7.3 és újabb|
 |Red Hat|Red Hat Enterprise Linux|7.4 és újabb|
 |Suse|SLES|12 SP3 és újabb|
+
+Az egyéni virtuálisgép-lemezképeket vendégkonfigurációs házirendek támogatják, amennyiben azok a fenti táblázatban szereplő operációs rendszerek egyike.
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyféltípusok
 

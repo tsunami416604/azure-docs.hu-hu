@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad06d2f695109866bab60502a67f0d2c2f425477
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4280bd1385bbf936dc9188df259ca1a4b4a62d6a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68480495"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870382"
 ---
 # <a name="tutorial-integrate-cognidox-with-azure-active-directory"></a>Oktatóanyag: A Cognidox integrálása az Azure Active Directoryval
 
@@ -101,9 +101,9 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
 6. A fentieken kívül a Cognidox alkalmazás azt várja, hogy néhány további attribútumot kell visszaadni az SAML válaszban. A Felhasználói attribútumok párbeszédpanel Felhasználói jogcímek szakaszában hajtsa végre az alábbi lépéseket az SAML token attribútum hozzáadásához az alábbi táblázatban látható módon: 
 
-    | Név | Névtér  |  Átalakítás | 1. paraméter |
+    | Name (Név) | Névtér  |  Átalakítás | 1. paraméter |
     | ---------------| --------------- | --------- |
-    | wanshort között | http://appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
+    | wanshort között | http:\//appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
 
 
     a. Kattintson **az Új jogcím hozzáadása** gombra a Felhasználói **jogcímek kezelése** párbeszédpanel megnyitásához.
@@ -118,7 +118,7 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
     f. Az **1.**
 
-    g. Kattintson a **Mentés** gombra.
+    g. Kattintson a **Save** (Mentés) gombra.
 
 4. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az SAML aláíró tanúsítvány szakaszban keresse meg az **összevonási** **metaadatok XML-jét,** és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 

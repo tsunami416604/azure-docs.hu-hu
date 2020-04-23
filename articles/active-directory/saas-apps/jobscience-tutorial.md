@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f0ea5b922b2c958aabf5be3a6123bb81a8f0234
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80048511"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870543"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Oktatóanyag: Az Azure Active Directory integrációja a Jobscience szolgáltatással
 
@@ -116,7 +116,7 @@ Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Po
     A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
-    > Ez az érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Ezt az értéket [a Jobscience Ügyfél támogatási csapat,](https://www.jobscience.com/support) vagy az SSO-profilt hoz létre, amely később az oktatóanyag ismerteti. 
+    > Ez az érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Ezt az értéket [a Jobscience Ügyfél támogatási csapat,](http://www.jobscience.com/support) vagy az SSO-profilt hoz létre, amely később az oktatóanyag ismerteti. 
  
 1. Az **SAML aláíró tanúsítvány csoportban** kattintson a **Tanúsítvány (Base64)** elemre, majd mentse a tanúsítványfájlt a számítógépre.
 
@@ -134,7 +134,7 @@ Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Po
 
 1. Nyissa meg a **telepítőt.**
    
-   ![Telepítés](./media/jobscience-tutorial/IC784358.png "Telepítés")
+   ![Setup](./media/jobscience-tutorial/IC784358.png "Setup")
 
 1. A bal oldali navigációs ablak **Felügyeleti** szakaszában kattintson a **Tartománykezelés gombra** a kapcsolódó szakasz kibontásához, majd a **Saját tartomány** elemre kattintva nyissa meg a Saját **tartomány** lapot. 
    
@@ -176,7 +176,7 @@ Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Po
 
     h. Az **Identitásszolgáltató kijelentkezési URL-címmezőjébe** illessze be a **Kijelentkezési URL értékét,** amelyet az Azure Portalról másolt.
 
-    i. Kattintson a **Mentés** gombra.
+    i. Kattintson a **Save** (Mentés) gombra.
 
 1. A bal oldali navigációs ablak **Felügyeleti** szakaszában kattintson a **Tartománykezelés gombra** a kapcsolódó szakasz kibontásához, majd a **Saját tartomány** elemre kattintva nyissa meg a Saját **tartomány** lapot. 
     
@@ -245,7 +245,7 @@ Annak érdekében, hogy az Azure AD-felhasználók bejelentkezhessenek a Jobscie
 
 1. Nyissa meg a telepítőt.
    
-   ![Telepítés](./media/jobscience-tutorial/ic784358.png "Telepítés")
+   ![Setup](./media/jobscience-tutorial/ic784358.png "Setup")
 1. Nyissa meg a **Felhasználók \> kezelése lehetőséget.**
    
    ![Felhasználók](./media/jobscience-tutorial/ic784369.png "Felhasználók")
@@ -268,7 +268,7 @@ Annak érdekében, hogy az Azure AD-felhasználók bejelentkezhessenek a Jobscie
 
    f. A **Nick név** mezőbe írja be a felhasználó nicknevét, például Simont.
 
-   g. Kattintson a **Mentés** gombra.
+   g. Kattintson a **Save** (Mentés) gombra.
 
     
 > [!NOTE]
@@ -311,7 +311,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hoz
 Amikor a Hozzáférési panelen a Feladattudományi csempére kattint, automatikusan bejelentkezik a Feladattudományi alkalmazásba.
 A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](../user-help/active-directory-saas-access-panel-introduction.md)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 * [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

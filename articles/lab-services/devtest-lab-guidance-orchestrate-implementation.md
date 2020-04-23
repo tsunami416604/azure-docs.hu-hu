@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc6cbbd0aa9cb0750e497c7cc7edbd42f21bda55
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62127344"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024999"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Az Azure DevTest Labs megvalósításának koordinálása
 Ez a cikk az Azure DevTest Labs gyors üzembe helyezéséhez és megvalósításához ajánlott megközelítést biztosít. Az alábbi kép az általános folyamatot előíró útmutatásként helyezi el, miközben megfigyeli a különböző iparági követelmények és forgatókönyvek támogatásának rugalmasságát.
@@ -43,7 +43,7 @@ Az Azure DevTest Labs-megoldás üzembe helyezésekor az első fókuszterület a
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>2. mérföldkő: A kísérleti labor telepítése
 Miután a hálózati topológia a helyén van, az első/kísérleti labor a következő lépések végrehajtásával hozható létre:
 
-1. Hozzon létre egy kezdeti DevTest Labs környezetet (lépésről-lépésre itt [található)](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md)
+1. Hozzon létre egy kezdeti DevTest Labs környezetet.
 2. Határozza meg a megengedett virtuális gép lemezképeit és méreteit a laborban való használatra. Döntse el, hogy az egyéni lemezképek feltölthetők-e az Azure-ba a DevTest Labs használatával való használatra.
 3. Biztonságos hozzáférést biztosít a laborhoz a tesztkörnyezet (labortulajdonosok és tesztkörnyezet-felhasználók) kezdeti szerepkör-alap hozzáférés-vezérlésének (RBAC) létrehozásával. Azt javasoljuk, hogy az Azure Active Directoryval szinkronizált active directory fiókok at a DevTest Labs identitás használata.
 4. Konfigurálja a DevTest Labs-t olyan házirendek használatára, mint az ütemezések, a költségkezelés, a követelhető virtuális gépek, az egyéni lemezképek vagy a képletek.

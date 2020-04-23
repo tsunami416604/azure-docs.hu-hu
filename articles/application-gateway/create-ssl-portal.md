@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/13/2019
+ms.date: 04/22/2019
 ms.author: victorh
-ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 62f5375a0d468f5b137c4628c89c802d83dee102
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312378"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024492"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Oktatóanyag: Alkalmazásátjáró konfigurálása TLS-végződtetéssel az Azure Portal használatával
 
@@ -56,13 +56,11 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-Használja [az Export-PfxCertificate-t](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) a visszaadott ujjlenyomattal a pfx fájl exportálásához a tanúsítványból:
+Használja [az Export-PfxCertificate-t](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) a visszaadott ujjlenyomattal a pfx fájl exportálásához a tanúsítványból. Győződjön meg arról, hogy a jelszó 4-12 karakter hosszú:
 
-> [!NOTE]
-> Ne használjon speciális karaktereket a .pfx fájl jelszavában. Csak alfanumerikus karakterek támogatottak.
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String <your password> -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
@@ -150,7 +148,7 @@ A **Konfiguráció** lapon az útválasztási szabállyal létrehozott előtér-
 
    - **PFX tanúsítványfájl** – Keresse meg és jelölje ki a korábban létrehozott c:\appgwcert.pfx fájlt.
    - **Tanúsítvány neve** - Írja be a *mycert1* nevet a tanúsítvány nevéhez.
-   - **Jelszó** – Írja be az *Azure123456-ot* a jelszóhoz.
+   - **Jelszó** – Írja be a jelszavát.
   
         Fogadja el a **Figyelő** lap többi beállításának alapértelmezett értékeit, majd a **Háttérrendszer-célok** lapra a művelettervi szabály többi részének konfigurálásához.
 
@@ -194,10 +192,10 @@ Ehhez a következőkre van szüksége:
     - **Erőforráscsoport**: Válassza ki a **myResourceGroupAG** elemet az erőforráscsoport nevéhez.
     - **Virtuális gép neve**: Adja meg a *virtuális* gép nevét.
     - **Felhasználónév**: Adja meg *az azureuser* t a rendszergazdai felhasználónévhez.
-    - **Jelszó:** Adja meg *az Azure123456-ot* a rendszergazdai jelszóért.
-4. Fogadja el a többi alapértelmezést, majd válassza **a Tovább: Lemezek**lehetőséget.  
-5. Fogadja el a **Lemezek** lap alapértelmezett beállításait, és válassza **a Tovább: Hálózat lehetőséget.**
-6. A **Hálózat** lapon ellenőrizze, hogy a **myVNet** ki van-e jelölve a **virtuális hálózathoz,** és az **alhálózat** beállítása **myBackendSubnet**. Fogadja el a többi alapértelmezést, majd válassza **a Tovább: Kezelés**lehetőséget.
+    - **Jelszó**: Adja meg a rendszergazdai fiók jelszavát.
+1. Fogadja el a többi alapértelmezést, majd válassza **a Tovább: Lemezek**lehetőséget.  
+2. Fogadja el a **Lemezek** lap alapértelmezett beállításait, és válassza **a Tovább: Hálózat lehetőséget.**
+3. A **Hálózat** lapon ellenőrizze, hogy a **myVNet** ki van-e jelölve a **virtuális hálózathoz,** és az **alhálózat** beállítása **myBackendSubnet**. Fogadja el a többi alapértelmezést, majd válassza **a Tovább: Kezelés**lehetőséget.
 
    Az Application Gateway képes kommunikálni a virtuális hálózaton kívüli példányokkal, de biztosítania kell az IP-kapcsolatot.
 1. A **Kezelés** lapon állítsa a **Rendszerindításdia imát** **Ki**beállításra. Fogadja el a többi alapértelmezést, majd válassza **a Véleményezés + létrehozás**lehetőséget.

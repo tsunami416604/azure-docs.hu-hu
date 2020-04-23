@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 672b663a9cab72d465ea00e0a5ade364eadbf64e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfc60fbc03021e72dccc0f60a7ac34d204ef6df9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251535"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025186"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Felügyelt identitás hitelesítése az Azure Active Directoryval az Event Hubs-erőforrások eléréséhez
 Az Azure Event Hubs támogatja az Azure Active Directory (Azure AD) hitelesítését [az Azure-erőforrások felügyelt identitásaival.](../active-directory/managed-identities-azure-resources/overview.md) Az Azure-erőforrások felügyelt identitásai engedélyezhetik az Event Hubs-erőforrásokhoz való hozzáférést az Azure Virtuális gépeken (VM-ekben), a Függvényalkalmazásokban, a virtuálisgép-méretezési csoportokban és más szolgáltatásokban futó alkalmazások Azure AD-hitelesítő adatainak használatával. Felügyelt identitások használatával az Azure-erőforrások és az Azure AD-hitelesítés, elkerülheti a hitelesítő adatok tárolása a felhőben futó alkalmazások használatával.
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést egy eseményközpon
 ## <a name="enable-managed-identities-on-a-vm"></a>Felügyelt identitások engedélyezése virtuális számítógépen
 Mielőtt az Azure Resources felügyelt identitások használatával engedélyezheti az Event Hubs-erőforrásokat a virtuális gépről, először engedélyeznie kell az Azure Resources felügyelt identitásait a virtuális gépen. Ha tudni szeretné, hogyan engedélyezheti az Azure Resources felügyelt identitásait, tekintse meg az alábbi cikkek egyikét:
 
-- [Azure-portál](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sablon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -149,7 +149,7 @@ Az Apache Kafka-alkalmazásokkal üzeneteket küldhet és fogadhat az Azure Even
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 - [Microsoft.Azure.EventHubs mintákat](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    Ezek a minták a régi **Microsoft.Azure.EventHubs-könyvtárat** használják, de könnyedén frissítheti azt a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával. Ha át szeretné helyezni a mintát a régi könyvtár használatából az újkönyvtárba, olvassa el a [Microsoft.Azure.EventHubs-ról az Azure.Messaging.EventHubs szolgáltatásba való áttelepítés útmutatóját.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)
+    Ezek a minták a régi **Microsoft.Azure.EventHubs-könyvtárat** használják, de könnyedén frissítheti azt a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával. Ha át szeretné helyezni a mintát a régi könyvtár használatából az újkönyvtárba, olvassa el a [Microsoft.Azure.EventHubs-ról az Azure.Messaging.EventHubs szolgáltatásba való áttelepítés útmutatóját.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
     Ez a minta frissítve lett a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával.
 - [A Kafka eseményközpontjai – üzenetek küldése és fogadása felügyelt identitással OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 

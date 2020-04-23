@@ -3,15 +3,16 @@ title: Windows virtuális gép konvertálása nem felügyelt lemezekből felügy
 description: Windows virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekké a PowerShell használatával az Erőforrás-kezelő telepítési modelljében
 author: roygara
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8069b174b7a69cc2e6c47171159569c56a15563
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460130"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081948"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows virtuális gép konvertálása nem felügyelt lemezekből felügyelt lemezekké
 
@@ -94,7 +95,7 @@ Konvertálás előtt győződjön meg arról, hogy az összes virtuálisgép-bő
 
 A nem felügyelt lemezeket felügyelt lemezekké is konvertálhatja az Azure Portalhasználatával.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a virtuális gépet a portálon lévő virtuális gépek listájából.
 3. A panela virtuális gép, válassza **a lemezek** a menüből.
 4. A **Lemezek** panel tetején válassza az **Áttelepítés felügyelt lemezekre**lehetőséget.

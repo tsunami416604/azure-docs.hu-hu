@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: e591a7035db82425952a16f5c4c220e25d8517fe
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ee8bee832e48dc7354b4136e25be9bcc43eb90c5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457178"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870553"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és adatok az Azure Logic-alkalmazásokban
 
@@ -655,7 +655,7 @@ Ha az [Ügyféltanúsítvány](../active-directory/authentication/active-directo
 
 | Ingatlan (tervező) | Ingatlan (JSON) | Kötelező | Érték | Leírás |
 |---------------------|-----------------|----------|-------|-------------|
-| **Hitelesítés** | `type` | Igen | **Ügyféltanúsítvány** <br>vagy <br>`ClientCertificate` | A TLS/SSL ügyféltanúsítványokhoz használandó hitelesítési típus. Bár az önaláírt tanúsítványok támogatottak, a TLS/SSL önaláírt tanúsítványai nem támogatottak. |
+| **Hitelesítés** | `type` | Igen | **Ügyféltanúsítvány** <br>vagy <br>`ClientCertificate` | A TLS/SSL-ügyféltanúsítványokhoz használandó hitelesítési típus <p><p>**Megjegyzés:** Bár az önaláírt tanúsítványok támogatottak, a TLS/SSL önaláírt tanúsítványai nem támogatottak. A HTTP-összekötő nem támogatja a köztes TLS/SSL tanúsítványokat. |
 | **Pfx** | `pfx` | Igen | <*kódolt-pfx-fájl-tartalom*> | A személyes adatcsere (PFX) fájlból származó base64 kódolású tartalom <p><p>A PFX-fájl base64 kódolású formátumra való konvertálásához a PowerShell t az alábbi lépésekkel használhatja: <p>1. Mentse a tanúsítvány tartalmát egy változóba: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Konvertálja a tanúsítvány `ToBase64String()` tartalmát a funkció használatával, és mentse a tartalmat egy szöveges fájlba: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Jelszó** | `password`| Nem | <*jelszó-for-pfx-fájl*> | A PFX-fájl elérésének jelszava |
 |||||

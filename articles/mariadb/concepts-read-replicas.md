@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: b2e8bec18f4f5df6fb78a3c31aa0956ec7333eb5
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770113"
+ms.locfileid: "82024625"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Olvasási replikák az Azure Database for MariaDB-ben
 
@@ -33,9 +33,6 @@ Az olvasási replika szolgáltatás aszinkron replikációt használ. A szolgál
 
 ## <a name="cross-region-replication"></a>Régiók közötti replikáció
 A főkiszolgálótól eltérő régióban hozhat létre olvasási kópiát. A régiók közötti replikáció hasznos lehet olyan esetekben, mint a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.
-
-> [!NOTE]
-> A régiók közötti replikáció előzetes verzióban érhető el.
 
 A MariaDB régió bármely [Azure-adatbázisában](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)rendelkezhet főkiszolgálóval.  A főkiszolgáló rendelkezhet egy replika a párosított régióban vagy az univerzális replika régiókban. Az alábbi képen látható, hogy mely replikarégiók érhetők el a fő régiótól függően.
 

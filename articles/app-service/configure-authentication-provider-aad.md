@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f625f5df4f33c6516bd5c50f97c52404d76757a0
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392558"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024455"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Az App Service vagy az Azure Functions alkalmazás konfigurálása az Azure AD bejelentkezési adatainak használatára
 
@@ -100,7 +100,7 @@ Hajtsa végre a következő lépéseket:
     |Mező|Leírás|
     |-|-|
     |Ügyfél-azonosító| Használja az **alkalmazásregisztráció alkalmazásazonosítóját (ügyfélazonosítóját).** |
-    |Kiállító url-címe| Használja `https://login.microsoftonline.com/<tenant-id>/v2.0`a , és cserélje le * \<a bérlői azonosító>* az alkalmazásregisztráció **címtár (bérlői) azonosítójára.** Ez az érték a felhasználók átirányítására a megfelelő Azure AD-bérlő, valamint a megfelelő metaadatok letöltéséhez a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kibocsátó jogcímértéke például. Az `/v2.0` AAD v1-et használó alkalmazások esetében a szakasz elhagyható. |
+    |Kiállító url-címe| Használja `<authentication-endpoint>/<tenant-id>/v2.0`a , és cserélje kihttps://login.microsoft.com * \<a hitelesítési-végpont>* a [hitelesítési végpont a felhőbeli környezetben](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (pl. " " a globális Azure), továbbá a * \<bérlő-id>* helyett a **címtár (bérlői) azonosító,** amelyben az alkalmazás regisztrációja jött létre. Ez az érték a felhasználók átirányítására a megfelelő Azure AD-bérlő, valamint a megfelelő metaadatok letöltéséhez a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kibocsátó jogcímértéke például. Az `/v2.0` AAD v1-et használó alkalmazások esetében a szakasz elhagyható. |
     |Ügyféltitok (nem kötelező)| Használja az alkalmazásregisztrációsorán létrehozott ügyféltitkot.|
     |Engedélyezett tokenközönségek| Ha felhőalapú vagy kiszolgálóalkalmazásról van szó, és egy webalkalmazásból szeretné engedélyezni a hitelesítési jogkivonatokat, adja hozzá a webalkalmazás **alkalmazásazonosító-URI-ját.** A konfigurált **ügyfélazonosító** *t mindig* hallgatólagosan engedélyezett célközönségnek tekinti. |
 

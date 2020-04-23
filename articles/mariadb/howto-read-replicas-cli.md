@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: abf80e98881b73bed53c5a939a79bc8b3a9de2db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530580"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025050"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Olvasási replikák létrehozása és kezelése a MariaDB Azure Database-ben az Azure CLI és REST API használatával
 
@@ -45,9 +45,6 @@ A `az mariadb server replica create` parancshoz a következő paraméterek szük
 | source-server | mydemoserver | A replikálandó meglévő főkiszolgáló neve vagy azonosítója. |
 
 Régióközi olvasási replika `--location` létrehozásához használja a paramétert. 
-
-> [!NOTE]
-> A régiók közötti replikáció előzetes verzióban érhető el.
 
 Az alábbi CLI-példa létrehozza a replika az USA nyugati részén.
 

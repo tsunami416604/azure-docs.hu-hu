@@ -3,12 +3,12 @@ title: Függőségelemzés az Azure Áttelepítési kiszolgáló értékeléséb
 description: Bemutatja, hogyan használhatja a függőségi elemzést az Azure Áttelepítési kiszolgáló értékelése használatával.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b11796f2c5d7c1d87f383e6780444e572352eff5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537746"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024761"
 ---
 # <a name="dependency-analysis"></a>Függőségi elemzés
 
@@ -51,7 +51,7 @@ A lekérdezés gépekről gyűjti ezeket az adatokat:
 
 ### <a name="collected-data"></a>Összegyűjtött adatok
 
-Az ügynökalapú vizualizációhoz a következő adatokat gyűjtjük:
+Az ügynökalapú elemzéshez a következő adatokat gyűjtjük:
 
 - A forrásgép kiszolgálójának neve, folyamata, alkalmazásneve.
 - A célszámítógép kiszolgálójának neve, folyamata, alkalmazásneve és portja.

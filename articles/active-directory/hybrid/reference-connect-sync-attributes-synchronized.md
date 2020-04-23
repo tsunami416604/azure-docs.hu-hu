@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/24/2019
+ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253610"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082118"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect szinkronizálási szolgáltatás: Az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör felsorolja az Azure AD Connect szinkronizálása által szinkronizált attribútumokat.  
@@ -375,7 +375,7 @@ Ez a csoport egy általános számítási feladathoz vagy alkalmazáshoz szüks�
 * Yammer (csak a felhasználó taszatba kerül)
 * [Hibrid vállalkozások közötti (B2B) több szervezeti együttműködési forgatókönyvek által kínált erőforrások, mint a SharePoint](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-Ez a csoport olyan attribútumok csoportja, amelyek akkor használhatók, ha az Azure AD könyvtárat nem használják az Office 365, a Dynamics vagy az Intune támogatására. Ez egy kis sor alapvető attribútumok.
+Ez a csoport olyan attribútumok csoportja, amelyek akkor használhatók, ha az Azure AD könyvtárat nem használják az Office 365, a Dynamics vagy az Intune támogatására. Ez egy kis sor alapvető attribútumok. Vegye figyelembe, hogy az egyszeri bejelentkezés vagy egyes külső alkalmazások ba való kiépítés az itt leírt attribútumokon kívül az attribútumok szinkronizálásának konfigurálását is igényli. Az alkalmazáskövetelményeit az egyes [alkalmazások SaaS-alkalmazásoktatóanyagismerteti.](../saas-apps/tutorial-list.md)
 
 | Attribútum neve | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |

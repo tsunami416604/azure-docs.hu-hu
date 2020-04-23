@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9b39a672cb5640a36490f2cd088092f40065870
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ef715ed7df1cc203e66bb33cd1493a7f7a713327
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454781"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081608"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások - referenciaútmutató
 
@@ -399,8 +399,8 @@ A Security Center által támogatott kill chain szándékok a [MITRE ATT&trade;&
 
 |Szándék|Leírás|
 |------|-------|
-|**Támadás előtti támadás**</br>(helyettesíti a szondázást)|A PreAttack lehet egy kísérlet egy bizonyos erőforrás elérésére, függetlenül a rosszindulatú szándéktól, vagy sikertelen kísérlet a célrendszerhez való hozzáférésre, hogy a felhasználás előtt információkat gyűjtsön. Ezt a lépést a rendszer általában a hálózaton kívülről származó kísérletként észleli a célrendszer beszkanderálására és egy belépési pont azonosítására.</br>További részletek a PreAttack szakaszban olvasható [MITRE oldalán](https://attack.mitre.org/matrices/pre/).|
-|**InitialAccess (Kezdőhozzáférés)**</br>(helyettesíti a hasznosítást)|InitialAccess az a szakasz, ahol a támadó sikerül megaratni a lábát a megtámadott erőforrás. Ez a szakasz a számítási állomások és erőforrások, például a felhasználói fiókok, tanúsítványok stb. A fenyegetésszereplők gyakran képesek lesznek az erőforrás vezérlésére ezen a szakasz után.|
+|**Támadás előtti támadás**|A PreAttack lehet egy kísérlet egy bizonyos erőforrás elérésére, függetlenül a rosszindulatú szándéktól, vagy sikertelen kísérlet a célrendszerhez való hozzáférésre, hogy a felhasználás előtt információkat gyűjtsön. Ezt a lépést a rendszer általában a hálózaton kívülről származó kísérletként észleli a célrendszer beszkanderálására és egy belépési pont azonosítására.</br>További részletek a PreAttack szakaszban olvasható [MITRE oldalán](https://attack.mitre.org/matrices/pre/).|
+|**InitialAccess (Kezdőhozzáférés)**|InitialAccess az a szakasz, ahol a támadó sikerül megaratni a lábát a megtámadott erőforrás. Ez a szakasz a számítási állomások és erőforrások, például a felhasználói fiókok, tanúsítványok stb. A fenyegetésszereplők gyakran képesek lesznek az erőforrás vezérlésére ezen a szakasz után.|
 |**Kitartás**|Adatmegőrzési minden olyan hozzáférés, művelet vagy konfiguráció módosítása a rendszer, amely a fenyegetés szereplő állandó jelenléte a rendszeren. A fenyegetésszereplőknek gyakran meg kell őrizniük a rendszerekhez való hozzáférést megszakítások, például a rendszer újraindítása, a hitelesítő adatok elvesztése vagy más olyan hibák miatt, amelyek újraindításához vagy egy másik hátsó ajtó biztosításához szükséges a hozzáférés visszaszerzéséhez.|
 |**Jogosultságeszkaláció**|A jogosultságok eszkalációja olyan műveletek eredménye, amelyek lehetővé teszik az ellenség számára, hogy magasabb szintű engedélyeket szerezzen egy rendszeren vagy hálózaton. Bizonyos eszközök vagy műveletek nagyobb szintű jogosultságot igényelnek a működéshez, és valószínűleg a művelet során számos ponton szükségesek. A jogosultság okainak eszkalálódásának minősülnek azok a felhasználói fiókok is, amelyek engedéllyel rendelkeznek bizonyos rendszerek eléréséhez vagy az ellenfelek célja eléréséhez szükséges funkciók elvégzéséhez szükséges funkciók elvégzéséhez.|
 |**DefenseAdócsalás**|A védelmi kijátszás olyan technikákból áll, amelyeket az ellenség az észlelés elkerülésére vagy más védelem elkerülésére használhat. Néha ezek a műveletek ugyanazok , mint (vagy variációk) technikák más kategóriákban, amelyek a hozzáadott előnye, hogy felforgatják egy adott védelmi vagy enyhítése.|

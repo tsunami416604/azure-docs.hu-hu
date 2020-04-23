@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
-ms.date: 03/02/2020
-ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/21/2020
+ms.openlocfilehash: dd0b4d1b0998bd4b13a17fb8345b87924bc27e1d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251951"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869970"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Apache Spark-adatok elemzése a POWER BI használatával a HDInsightban
 
-Ebben az oktatóanyagban megtudhatja, hogyan jelenítheti meg az adatokat az [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)ban az Apache Spark-fürtökben az Azure Power [BI](https://powerbi.microsoft.com/) használatával.
+Ebben az oktatóanyagban megtudhatja, hogyan jelenítheti meg az adatokat az Azure HDInsight ban az Apache Spark-fürtökben az Azure Power BI használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -70,9 +70,6 @@ Ebben a szakaszban a Power BI-t fogja használni a vizualizációk, jelentések 
 ### <a name="create-a-report-in-power-bi-desktop"></a>Jelentés létrehozása a Power BI Desktopban
 
 A Spark használatba vételének első lépései a csatlakozás a fürthöz a Power BI Desktopban, az adatok betöltése a fürtből, és az ezen adatokon alapuló, alapszintű vizualizáció létrehozása.
-
-> [!NOTE]  
-> A jelen cikkben bemutatott összekötő jelenleg előzetes verzióban érhető el. Visszajelzéseit a [Power BI-közösség](https://community.powerbi.com/) webhelyén vagy a [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) oldalon keresztül küldheti el.
 
 1. Nyissa meg a Power BI Desktopot. Zárja be az indítási kezdőképet, ha megnyílik.
 
@@ -180,7 +177,7 @@ Fürt törléséről a [HDInsight-fürt törlése a böngésző, a PowerShell va
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan jelenítheti meg az adatokat az Azure HDInsight ban egy Apache Spark-fürtben az Adatok Microsoft [Power BI](https://powerbi.microsoft.com/) [használatával.](https://azure.microsoft.com/services/hdinsight/) Tekintse át a következő cikket, és tekintse meg, hogy létrehozhat egy gépi tanulási alkalmazást.
+Ebben az oktatóanyagban megtanulta, hogyan használhatja a Microsoft Power BI-t az Azure HDInsight Apache Spark-fürtjében lévő adatok megjelenítésére. Tekintse át a következő cikket, és tekintse meg, hogy létrehozhat egy gépi tanulási alkalmazást.
 
 > [!div class="nextstepaction"]
 > [Gépi tanulási alkalmazás létrehozása](./apache-spark-ipython-notebook-machine-learning.md)

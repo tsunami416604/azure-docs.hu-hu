@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti és figyelheti a Microsoft Azure Reco
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 404341c8324d9e127e8d8e6bc8083926c0d3106f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537355"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025101"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>A Microsoft Azure Recovery Services (MARS) ügynökbiztonsági mentések kezelése az Azure Backup szolgáltatás használatával
 
@@ -79,8 +79,8 @@ Kizárási szabályok hozzáadásával kihagyhatja azokat a fájlokat és mappá
 
     ![Az elemek kijelölése](./media/backup-azure-manage-mars/select-items-remove.png)
 
-> [!NOTE]
-> Óvatosan járjon el, ha teljesen eltávolít egy kötetet a házirendből.  Ha újra hozzá kell adnia, akkor a lesz kezelve, mint egy új kötetet. A következő ütemezett biztonsági mentés a növekményes biztonsági mentés helyett kezdeti biztonsági mentést (teljes biztonsági mentést) hajt végre. Ha később ideiglenesen el kell távolítania és elemeket kell hozzáadnia, akkor az **Elemek eltávolítása** helyett ajánlott **a Kizárási beállítások használata** a teljes biztonsági mentés helyett a növekményes biztonsági mentés biztosításához.
+    > [!NOTE]
+    > Óvatosan járjon el, ha teljesen eltávolít egy kötetet a házirendből.  Ha újra hozzá kell adnia, akkor a lesz kezelve, mint egy új kötetet. A következő ütemezett biztonsági mentés a növekményes biztonsági mentés helyett kezdeti biztonsági mentést (teljes biztonsági mentést) hajt végre. Ha később ideiglenesen el kell távolítania és elemeket kell hozzáadnia, akkor az **Elemek eltávolítása** helyett ajánlott **a Kizárási beállítások használata** a teljes biztonsági mentés helyett a növekményes biztonsági mentés biztosításához.
 
 2. Végezze el a következő lépéseket, és kattintson a **Befejezés** gombra a művelet befejezéséhez.
 
@@ -90,7 +90,7 @@ A Fájlok és mappák biztonsági mentésének védelmét kétféleképpen szün
 
 - **A védelem leállítása és a biztonsági mentési adatok megőrzése**.
   - Ez a beállítás leállítja az összes jövőbeli biztonsági mentési feladatok védelme.
-  - Az Azure Backup szolgáltatás megőrzi az összes meglévő helyreállítási pontok a végtelenségig. A helyreállítási pontok at a védelem folytatásáig nem ellenőrzi a rendszer a lejárati idő.
+  - Az Azure Backup szolgáltatás továbbra is megtartja az összes meglévő helyreállítási pontokat.  
   - A le nem járt helyreállítási pontok biztonsági mentési adatait visszaállíthatja.
   - Ha úgy dönt, hogy folytatja a védelmet, akkor használhatja a *Biztonsági mentés ütemezésének újbóli engedélyezése* lehetőséget. Ezt követően az adatok az új adatmegőrzési szabály alapján maradnak meg.
 - **A védelem leállítása és a biztonsági mentési adatok törlése**.
@@ -167,7 +167,6 @@ A jelszó az adatok titkosítására és visszafejtésére szolgál, miközben b
 
     ![Jelszó létrehozása.](./media/backup-azure-manage-mars/passphrase2.png)
 - Győződjön meg arról, hogy a jelszó biztonságosan menti egy másik helyen (kivéve a forrásgép), lehetőleg az Azure Key Vault. Kövesse nyomon az összes jelszót, ha több gépről is biztonsági másolatot készül a MARS-ügynökökkel.
-
 
 ## <a name="next-steps"></a>További lépések
 

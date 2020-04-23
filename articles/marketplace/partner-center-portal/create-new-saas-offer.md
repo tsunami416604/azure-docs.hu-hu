@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a39e1e19f65722b4b5ae809ca943da719a3c6e22
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314091"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869776"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -206,7 +206,7 @@ A kereskedelmi piactér kiadói számára kétféle módosítás érhető el:
 - **Bérlői azonosítók** (szükséges): Minden egyéni módosítás legfeljebb 20 bérlői azonosítók megcélozható. Ha egyéni módosítást ad hozzá, legalább egy bérlői azonosítót meg kell adnia. A bérlői azonosító azonosítja az ügyfelet az Azure-ban. Kérheti az ügyfél ezt az azonosítót, és ők is megtalálhatja azt a portal.azure.com > Azure Active Directory > properties. A címtárazonosító értéke a bérlőazonosító (például 50c464d3-4930-494c-963c-1e951d15360e). A szervezet ügyfél bérlői azonosítóját is megkeresheti a Domainname URL-címük használatával [a Mi a Microsoft Azure és az Office 365-ös bérlői azonosítóm?](https://www.whatismytenantid.com).
 - **Leírás** (nem kötelező): Opcionálisan adjon meg egy rövid leírást a bérlői azonosítóhoz, amely segít azonosítani a módosítással megcélzott ügyfelet.
 
-#### <a name="terms-and-conditions"></a>Feltételek és kikötések
+#### <a name="terms-and-conditions"></a>használati feltételei
 
 Ha saját egyéni feltételeket szeretne megadni, megadhatja azokat a Feltételek mezőben. Ebben a mezőben legfeljebb 10 000 karakternyi szöveget írhat be. Ha a szerződési feltételek hosszabb leírást igényelnek, adjon meg egy URL-hivatkozást ebbe a mezőbe, ahol a feltételek megtalálhatók. Aktív hivatkozásként jelenik meg az ügyfelek számára.
 
@@ -289,6 +289,9 @@ A Rich Text szerkesztő használatához kövesse az alábbi utasításokat:
 - **Videók** (nem kötelező): Az ajánlatot bemutató videókhoz mutató hivatkozásokat adhatsz hozzá. YouTube- és/vagy Vimeo-videókra mutató hivatkozásokat is használhatsz, amelyek az ügyfeleknek szóló ajánlatoddal együtt jelennek meg. Meg kell adnia a videó miniatűr képét is, amely 1280 x 720 képpontméretű PNG formátumban. Ajánlatonként legfeljebb négy videót jeleníthet meg.
 
 Ne felejtse el **menteni,** mielőtt továbblépne a következő szakaszra.
+
+>[!Note]
+>Ha probléma van a fájlok feltöltésével, győződjön https://upload.xboxlive.com meg arról, hogy a helyi hálózat nem blokkolja a Partnerközpont által használt szolgáltatást.
 
 #### <a name="additional-marketplace-listing-resources"></a>További piactér-listaforrások
 
@@ -399,7 +402,7 @@ Válassza ki azt a gyakoriságot, amelyet a vevőknek a felsorolt árért fizetn
 
 - **Ár:** USD havonta vagy USD évente
 
-A helyi pénznemben (USD = amerikai dollár) meghatározott árakat a rendszer a beállítás során rendelkezésre álló aktuális árfolyamok alapján az összes kiválasztott piac helyi pénznemére váltja át. A közzététel előtt ellenőrizze ezeket az árakat az árképzési táblázat exportálásával és az egyes piacok árainak áttekintésével. Ha egyéni árakat szeretne beállítani egy adott piacon, módosítsa és importálja az árképzési táblázatot. Ön a felelős az árak érvényesítéséért, és a beállítások a saját tulajdonában van.
+Az USD-ben (USD = amerikai dollár) meghatározott árakat az összes kiválasztott piac helyi pénznemére konvertálja a mentett aktuális árfolyamok használatával. A közzététel előtt ellenőrizze ezeket az árakat az árképzési táblázat exportálásával és az egyes piacok árainak áttekintésével. Ha egyéni árakat szeretne beállítani egy adott piacon, módosítsa és importálja az árképzési táblázatot. Ön a felelős az árak érvényesítéséért, és a beállítások a saját tulajdonában van.
 *\*Az árképzési adatok exportálásának engedélyezéséhez először mentenie kell az árképzési módosításokat.*
 
 A közzététel előtt alaposan tekintse át az árakat, mivel a terv közzététele után bizonyos korlátozások vonatkoznak arra, hogy mi változhat:

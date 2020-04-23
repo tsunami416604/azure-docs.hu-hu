@@ -2,17 +2,17 @@
 title: Áttekintés
 description: Ismerteti, hogyan használja az Azure Resource Manager eszközt erőforrások telepítésére, felügyeletére és hozzáférés-vezérlésére az Azure portálon.
 ms.topic: overview
-ms.date: 03/25/2020
-ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/21/2020
+ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80258141"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870490"
 ---
 # <a name="what-is-azure-resource-manager"></a>Mi az Azure Resource Manager?
 
-Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetéserőforrásainak létrehozását, frissítését és törlését. A felügyeleti funkciókat, például a hozzáférés-vezérlést, a zárolásokat és a címkéket az erőforrások üzembe helyezés utáni védelmére és rendszerezésére használhatja.
+Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Felügyeleti réteget biztosít, amely lehetővé teszi az Azure-fiók erőforrásainak létrehozását, frissítését és törlését. A felügyeleti funkciókat, például a hozzáférés-vezérlést, a zárolásokat és a címkéket az erőforrások üzembe helyezés utáni védelmére és rendszerezésére használhatja.
 
 Az Azure Resource Manager-sablonokról a [Sablon üzembe helyezése – áttekintés című témakörben](../templates/overview.md)olvashat.
 
@@ -30,10 +30,10 @@ A portálon elérhető összes funkció a PowerShellen, az Azure CLI-n, a REST A
 
 Ha új felhasználója az Azure Resource Managernek, találkozhat néhány olyan kifejezéssel, amelyet még nem ismer.
 
-* **erőforrás** – Egy olyan kezelhető elem, amely az Azure-on keresztül érhető el. A virtuális gépek, a tárfiókok, a webalkalmazások, az adatbázisok és a virtuális hálózatok példák az erőforrásokra.
+* **erőforrás** – Egy olyan kezelhető elem, amely az Azure-on keresztül érhető el. A virtuális gépek, a tárfiókok, a webalkalmazások, az adatbázisok és a virtuális hálózatok példák az erőforrásokra. Erőforráscsoportok, előfizetések, felügyeleti csoportok és címkék is példák az erőforrások.
 * **erőforráscsoport** – Egy olyan tároló, amely egy Azure-megoldáshoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport a csoportként kezelni kívánt erőforrásokat tartalmazza. A cég szempontjai alapján Ön döntheti el, hogy mely erőforrások tartozzanak ugyanahhoz az erőforráscsoporthoz. Lásd: [erőforráscsoportok](#resource-groups).
 * **erőforrás-szolgáltató** – Olyan szolgáltatás, amely Azure-erőforrásokat biztosít. Egy közös erőforrás-szolgáltató például a Microsoft.Compute, amely a virtuálisgép-erőforrást látja el. A Microsoft.Storage egy másik gyakori erőforrás-szolgáltató. Lásd: [Erőforrás-szolgáltatók és -típusok](resource-providers-and-types.md).
-* **Resource Manager-sablon** – Egy JavaScript-objektumjelölési (JSON) fájl, amely egy vagy több erőforrást határoz meg egy erőforráscsoportba vagy előfizetésbe való üzembe helyezéshez. A sablon erőforrások konzisztens és ismétlődő telepítésére használandó. Lásd: [Sablon üzembe helyezése – áttekintés.](../templates/overview.md)
+* **Resource Manager-sablon** – Egy JavaScript-objektumnotúcés (JSON) fájl, amely egy vagy több erőforrást határoz meg egy erőforráscsoportba, előfizetésbe, felügyeleti csoportba vagy bérlőhöz való üzembe helyezéshez. A sablon erőforrások konzisztens és ismétlődő telepítésére használandó. Lásd: [Sablon üzembe helyezése – áttekintés.](../templates/overview.md)
 * **deklaratív szintaxis** – Egy olyan szintaxis, amellyel anélkül határozhatja meg, mit szeretne létrehozni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A Resource Manager-sablon a deklaratív szintaxis egy példája. A fájlban meghatározhatja az Azure-ra telepíteni kívánt infrastruktúra tulajdonságait.  Lásd: [Sablon üzembe helyezése – áttekintés.](../templates/overview.md)
 
 ## <a name="the-benefits-of-using-resource-manager"></a>A Resource Manager használatának előnyei
@@ -48,7 +48,7 @@ Az Erőforrás-kezelővel a következőket teheti:
 
 * Határozza meg az erőforrások közötti függőségeket, hogy a megfelelő sorrendben legyenek üzembe helyezve.
 
-* Hozzáférés-vezérlés alkalmazása az erőforráscsoport összes szolgáltatására, mert a szerepköralapú hozzáférés-vezérlés (RBAC) natív módon integrálva van a felügyeleti platformba.
+* A hozzáférés-vezérlés alkalmazása az összes szolgáltatásra, mert a szerepköralapú hozzáférés-vezérlés (RBAC) natív módon integrálva van a felügyeleti platformba.
 
 * Címkék alkalmazása az erőforrásokra az előfizetés összes erőforrásának logikai rendezéséhez.
 
@@ -58,11 +58,11 @@ Az Erőforrás-kezelővel a következőket teheti:
 
 Az Azure négy hatóköri szintet biztosít: [felügyeleti csoportokat,](../../governance/management-groups/overview.md)előfizetéseket, [erőforráscsoportokat](#resource-groups)és erőforrásokat. Az alábbi ábra ezekre a rétegekre mutat egy példát.
 
-![Hatókör](./media/overview/scope-levels.png)
+![Felügyeleti szintek](./media/overview/scope-levels.png)
 
 Felügyeleti beállításokat a hatókörszintek bármelyikéhez megadhat. A kiválasztott szint határozza meg, milyen széles körben lesz alkalmazva a beállítás. Az alacsonyabb szintek öröklik a magasabb szintek beállításait. Ha például egy [szabályzatot](../../governance/policy/overview.md) alkalmaz az előfizetésre, a szabályzat az előfizetés összes erőforráscsoportjára és erőforrására vonatkozik. Amikor házirendet alkalmaz az erőforráscsoportra, akkor a házirend az erőforráscsoportot és annak összes erőforrását alkalmazza. Egy másik erőforráscsoport azonban nem rendelkezik ezzel a házirend-hozzárendelésel.
 
-Sablonokat felügyeleti csoportokba, előfizetésekbe vagy erőforráscsoportokba helyezhet.
+Sablonokat telepíthet bérlőkre, felügyeleti csoportokra, előfizetésekbe vagy erőforráscsoportokba.
 
 ## <a name="resource-groups"></a>Erőforráscsoportok
 
@@ -71,6 +71,8 @@ Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport megha
 * A csoportban lévő összes erőforrásnak azonos életciklussal kell rendelkeznie. Egyszerre fogja őket telepíteni, frissíteni és törölni. Ha egy erőforrásnak, például egy adatbázis-kiszolgálónak különböző fejlesztési ciklusban kell léteznie, azt másik erőforráscsoportba kell elhelyezni.
 
 * Az egyes erőforrások csak egy erőforráscsoportban létezhetnek.
+
+* Egyes erőforrások egy erőforráscsoporton kívül is létezhetnek. Ezek az erőforrások az [előfizetésre](../templates/deploy-to-subscription.md), a [felügyeleti csoportra](../templates/deploy-to-management-group.md)vagy a [bérlőre](../templates/deploy-to-tenant.md)vannak telepítve. Ezek a hatókörök csak bizonyos erőforrástípusokat támogatnak.
 
 * Az erőforráscsoporthoz bármikor hozzáadhat, vagy onnan eltávolíthat egy erőforrást.
 

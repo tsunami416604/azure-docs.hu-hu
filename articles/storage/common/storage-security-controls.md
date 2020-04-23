@@ -1,23 +1,24 @@
 ---
-title: Biztonsági vezérlők az Azure Storage-hoz
-description: Az Azure Storage kiértékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
+title: Biztonsági vezérlők
+titleSuffix: Azure Storage
+description: Az Azure Storage kiértékelésére szolgáló biztonsági vezérlők ellenőrzőlistája.
 services: storage
 author: msmbaldwin
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 379acaf48c02f0a579c07773cd48366d962a44f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f03f497051367d36bd229a3f358d28a1130ec620
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061113"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082356"
 ---
 # <a name="security-controls-for-azure-storage"></a>Biztonsági vezérlők az Azure Storage-hoz
 
-Ez a cikk az Azure Storage beépített biztonsági vezérlőket dokumentálja. 
+Ez a cikk az Azure Storage beépített biztonsági vezérlőket dokumentálja.
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
@@ -36,6 +37,7 @@ Ez a cikk az Azure Storage beépített biztonsági vezérlőket dokumentálja.
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
 | A szolgáltatás végpontjának támogatása| Igen |  |
+| Szolgáltatáscímkék támogatása| Igen | Az Azure Storage által támogatott szolgáltatáscímkékkel kapcsolatos további információkért tekintse meg az [Azure-szolgáltatáscímkék áttekintését.](../../virtual-network/service-tags-overview.md) |
 | A VNet injekciózás támogatása| N/A |  |
 | Hálózati elkülönítés és tűzfaltámogatás| Igen | |
 | Kényszerített bújtatástámogatása| N/A |  |

@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 18ffb48b2e7978831155afaf2e675bb720e57544
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312854"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082203"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory átadó hitelesítése: Rövid útmutató
 
@@ -37,6 +37,9 @@ Kövesse az alábbi utasításokat az átmenő hitelesítés bérlőn történő
 ## <a name="step-1-check-the-prerequisites"></a>1. lépés: Az előfeltételek ellenőrzése
 
 Győződjön meg arról, hogy a következő előfeltételek vannak érvényben.
+
+>[!IMPORTANT]
+>Biztonsági szempontból a rendszergazdáknak a PTA-ügynököt futtató kiszolgálót tartományvezérlőként kell kezelniük.  A PTA-ügynökkiszolgálókat a [tartományvezérlők támadás elleni védelme](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) című dokumentumban ismertetett módon kell megerősíteni.
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Az Azure Active Directory felügyeleti központban
 

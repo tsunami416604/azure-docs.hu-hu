@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
 ms.author: borisb
-ms.openlocfilehash: e6a2e7c646782f5ad874124e4a86809ed1d79eea
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687400"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870499"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Az Oracle alkalmazások és megoldások áttekintése az Azure-ban
 
@@ -49,7 +49,7 @@ Nagyvállalati alkalmazások futtatása az Azure-ban a támogatott Oracle operá
 
 * Az [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) használatával az Azure-beli Oracle Linux-beli virtuális gépek vészutáni helyreállítását vezényelheti és kezelheti. 
 
-* Engedélyezze az Oracle Real Application Clusters (RAC) szolgáltatást az Azure-ban az [Azure VMWare-megoldásvagy](https://docs.azure.cloudsimple.com/oracle-rac/) a [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)használatával.
+* Engedélyezze az Oracle Real Application Clusters (RAC) szolgáltatást az Azure-ban az [Azure VMWare-megoldásvagy](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) a [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)használatával.
 
 ## <a name="backup-oracle-workloads"></a>Oracle-munkaterhelések biztonsági mentése
 

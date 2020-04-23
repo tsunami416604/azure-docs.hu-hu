@@ -1,26 +1,21 @@
 ---
 title: Áttelepítés az AWS-ről és más platformokról felügyelt lemezekre az Azure-ban
 description: Hozzon létre virtuális gépeket az Azure-ban más felhőkből, például az AWS-ből vagy más virtualizációs platformokról feltöltött virtuális merevlemezek használatával, és használja ki az Azure felügyelt lemezeinek előnyeit.
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbce2969ccb508c2bf3ee33730d0b112caa45c9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc283d1845926b79fb541d8ccb011fe853f50484
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243158"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870286"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Áttelepítés az Amazon Web Services (AWS) szolgáltatásból és más platformokról felügyelt lemezekre az Azure-ban
 

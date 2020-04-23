@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: ab3ab25df6ce41d4045a270754830d501fe40689
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8eb59eebd29c2cc94e20b71b467866686deec2f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80347171"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869728"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Bejelentkezés és alkalmazások indítása a Saját alkalmazások portálról
 
@@ -110,7 +110,7 @@ Ha rendelkezik engedéllyel a szervezet felhőalapú alkalmazásai eléréséhez
 
 Megtekintheti és használhatja szervezete alkalmazásait egy Intune felügyelt böngészőjében iOS- és Android-eszközökön.
 
-1. Mobileszközén töltse le és telepítse az Intune Felügyelt böngésző alkalmazást az [Apple App Store-ból](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) és a [Google Play Áruházból.](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)
+1. Mobileszközén töltse le és telepítse az Intune felügyelt böngésző alkalmazást az Apple App Store-ból és a Google Play Áruházból.
 
 2. Nyissa meg az Intune felügyelt https://myapps.microsoft.comböngésző alkalmazását, nyissa meg a t, vagy használja a https://myapps.microsoft.com/contoso.comszervezet által biztosított hivatkozást, ha azok egy testreszabott lapra, például a rendszerre irányítják.
 

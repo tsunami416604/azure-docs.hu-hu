@@ -9,25 +9,25 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025316"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870478"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>A Privát felhőbeli vCenter-jogosultságok eszkalációja a CloudSimple portálról
 
 A privát felhőbeli vCenter felügyeleti hozzáférés, ideiglenesen bővítheti a CloudSimple jogosultságait.  Emelt szintű jogosultságok használatával telepítheti a VMware-megoldásokat, identitásforrásokat adhat hozzá, és kezelheti a felhasználókat.
 
-Új felhasználók hozhatók létre a vCenter SSO-tartományban, és hozzáférést kapnak a vCenterhez.  Amikor új felhasználókat hoz létre, adja hozzá őket a CloudSimple beépített csoportok hoz a vCenter eléréséhez.  További információ: [CloudSimple Private Cloud permission model of VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
+Új felhasználók hozhatók létre a vCenter SSO-tartományban, és hozzáférést kapnak a vCenterhez.  Amikor új felhasználókat hoz létre, adja hozzá őket a CloudSimple beépített csoportok hoz a vCenter eléréséhez.  További információ: [CloudSimple Private Cloud permission model of VMware vCenter](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/).
 
 > [!CAUTION]
 > Ne módosítsa a felügyeleti összetevők konfigurációját. Az eszkalált privilegizált állapotban végrehajtott műveletek hátrányosan befolyásolhatják a rendszert, vagy a rendszer elérhetetlenné válását okozhatják.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="escalate-privileges"></a>Jogosultságok eszkalációja
 
@@ -88,5 +88,5 @@ Miután a felügyeleti feladatok befejeződtek, meg kell fokoznia a jogosultság
 
 ## <a name="next-steps"></a>További lépések
 
-* [VCenter-identitásforrások beállítása az Active Directory használatára](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* Biztonsági mentési megoldás telepítése a [számítási feladatok virtuális gépei](https://docs.azure.cloudsimple.com/backup-workloads-veeam/) számára
+* [VCenter-identitásforrások beállítása az Active Directory használatára](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
+* Biztonsági mentési megoldás telepítése a [számítási feladatok virtuális gépei](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/) számára

@@ -1,18 +1,18 @@
 ---
 title: Fiókáttelepítés a Felhőpartner-portálról a Partnerközpontba – az Azure kereskedelmi piactere
-description: A fiók áttelepítése a CPP-ről a Partnerközpontba. - kereskedelmi piac az Azure számára
+description: A fiók áttelepítése a CPP-ről a Partnerközpontba – az Azure kereskedelmi piactere
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730490"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024421"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Fiók migrálása a Cloud Partner Portalról a Partnerközpontba
 
@@ -42,6 +42,16 @@ Kattintson a bannerre a fiók áttelepítési folyamatának elindításához. A 
 2. Regisztráció a Microsoft Partner Network programra
 
     Ha cpp-fiókja nem rendelkezik Microsoft Partner Network-azonosítóval, vagy érvénytelen, akkor az aktiválási folyamat részeként regisztrálnia kell a Microsoft Partner Network programra.
+
+## <a name="publishers-moving-from-cpp"></a>A CPP-ből átköltöző kiadók
+
+Ha fiókját áttelepítették a [Felhőpartner-portálról (CPP),](https://cloudpartner.azure.com)nem kell új Partnerközpont-fiókot létrehoznia. A meglévő CPP-fiókba való bejelentkezés után személyre szabott hivatkozást kellett volna kapnia az új Partnerközpont-fiókjához, és szalaghirdetésben.
+
+Miután engedélyezte új Partnerközpont-fiókját, és ellátogatta ezt a testreszabott hivatkozást, visszatérhet a fiókjához, ha felkeresi a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) a Partnerközpontban.
+
+A közzétételi szerződés és a vállalati profil adatai átkerülnek az új Partnerközpont-fiókba, a korábban beállított fiókkifizetési profil adataival, a felhasználói fiókokkal és engedélyekkel, valamint a CPP-fiókhoz társított aktív ajánlatokkal együtt.
+
+Miután a fiókadatait áthelyezte a CPP-ről a Partnerközpontba, a továbbiakban nem fogja a CPP-t fiókfrissítésekre használni, illetve a felhasználók, engedélyek és számlázás kezelésére használni. Korlátozott ideig a Partnerközpontban végzett fiókfrissítések automatikusan frissülnek az írásvédett CPP-fiókban, amíg a CPP-portál végül elavult.
 
 ## <a name="sign-up-for-microsoft-partner-network-program"></a>Regisztráció a Microsoft Partner Network programra
 

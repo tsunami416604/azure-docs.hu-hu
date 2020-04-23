@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 2a3b14acad4990059a27201b7e1e6b9e93123194
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398358"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025169"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Események küldése az Azure Event Hubs-ba vagy fogadhat eseményeket a .NET Core (Microsoft.Azure.EventHubs) használatával
 Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket egy eseményközpontba, és hogyan fogadhat eseményeket egy eseményközpontból a **Microsoft.Azure.EventHubs** .NET Core könyvtár használatával.
@@ -373,7 +373,7 @@ Olvassa el a következő cikkeket:
 
 - [Szerepköralapú hozzáférés-vezérlési (RBAC) minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    Ezek a minták a régi **Microsoft.Azure.EventHubs-könyvtárat** használják, de könnyedén frissítheti azt a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával. Ha át szeretné helyezni a mintát a régi könyvtár használatából az újkönyvtárba, olvassa el a [Microsoft.Azure.EventHubs szolgáltatásból az Azure.Messaging.EventHubs szolgáltatásba való áttelepítés útmutatóját.)](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)
+    Ezek a minták a régi **Microsoft.Azure.EventHubs-könyvtárat** használják, de könnyedén frissítheti azt a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával. Ha át szeretné helyezni a mintát a régi könyvtár használatából az újkönyvtárba, olvassa el a [Microsoft.Azure.EventHubs-ról az Azure.Messaging.EventHubs szolgáltatásba való áttelepítés útmutatóját.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Az Azure Event Hubs funkciói és terminológiája](event-hubs-features.md)
 - [Event Hubs – gyakori kérdések](event-hubs-faq.md)

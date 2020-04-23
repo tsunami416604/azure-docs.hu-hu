@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/09/2020
+ms.date: 04/22/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 5e628626f2db49ff67d6d7ab425a3a19870b1ebd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240897"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082322"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rövid útmutató: Ügyfélalkalmazás konfigurálása webes API-k eléréséhez
 
@@ -110,7 +110,10 @@ Ha az alkalmazásbeállításokat a platform vagy az eszköz alapján szeretné 
    | **Web**              | Adja meg az alkalmazás **átirányítási** URI-ját. |
    | **iOS / macOS**              | Adja meg az alkalmazás **Bundle ID**- amely megtalálható az XCode az Info.plist, vagy Build Beállítások. A kötegazonosító hozzáadása automatikusan létrehoz egy átirányítási URI-t az alkalmazásszámára. |
    | **Android**          | Adja meg az alkalmazás **csomag nevét**, amely megtalálható az AndroidManifest.xml fájlban.<br/>Az aláírási kivonat létrehozása és **beírása.** Az aláírás-kivonat hozzáadása automatikusan létrehoz egy átirányítási URI-t az alkalmazásszámára.  |
-   | **Mobil- és asztali alkalmazások**  | Választható. Válassza ki az ajánlott **átirányítási URI-k** egyikét, ha asztali és eszközalkalmazásokat hoz létre.<br/>Választható. Adjon meg egy **egyéni átirányítási URI-t,** amely az a hely, ahol az Azure AD a hitelesítési kérelmekre válaszul átirányítja a felhasználókat. Ha például a .NET Core alkalmazásokhoz, ahol interakciót szeretne használni, használja a használatát. `https://localhost` |
+   | **Mobil- és asztali alkalmazások**  | Választható. Válassza ki az ajánlott **átirányítási URI-k** egyikét, ha asztali és eszközalkalmazásokat hoz létre.<br/>Választható. Adjon meg egy **egyéni átirányítási URI-t,** amely az a hely, ahol az Azure AD a hitelesítési kérelmekre válaszul átirányítja a felhasználókat. Ha például a .NET Core alkalmazásokhoz, ahol interakciót szeretne használni, használja a használatát. `http://localhost` |
+
+   > [!NOTE]
+   > Az Active Directory összevonási szolgáltatások (AD FS) és az Azure AD B2C, meg kell adnia egy port számát.  Például: `http://localhost:1234`. 
 
    > [!IMPORTANT]
    > Azon mobilalkalmazások esetében, amelyek nem a legújabb Microsoft Authentication Library (MSAL) könyvtárat vagy nem közvetítőt használnak, az asztali + eszközök ben konfigurálnia kell az átirányítási URI-kat ezekhez az **alkalmazásokhoz.**

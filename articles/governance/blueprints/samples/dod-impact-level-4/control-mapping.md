@@ -3,12 +3,12 @@ title: DoD Impact Level 4 tervezet minta ellenőrzések
 description: A DoD 4-es hatásszint énekének feltérképezése. Minden vezérlő le van képezve egy vagy több Azure-szabályzatok, amelyek segítik az értékelést.
 ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 001c838ed6a19269a6abbcebd59ee2e344b6a296
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a11a8637618bb42831ccf1a7001e4da40529ba74
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79415393"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024829"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>A DoD 4.
 
@@ -18,7 +18,7 @@ A következő leképezések a **DoD Impact Level 4** vezérlők. A jobb oldali n
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure-szabályzat-definícióhoz](../../../policy/overview.md) vannak társítva. Ezek a szabályzatok segíthetnek [az ellenőrzésnek való megfelelés értékelésében;](../../../policy/how-to/get-compliance-data.md) azonban gyakran nincs 1:1 vagy teljes egyezés egy vezérlő és egy vagy több házirend között. Az Azure-szabályzatban **megfelelő** csak magukra a szabályzatokra vonatkozik; ez nem biztosítja, hogy teljes mértékben megfelel-e a vezérlő összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyeket jelenleg egyetlen Azure-szabályzat-definíció sem kezel. Ezért az Azure Policy-ben való megfelelőség csak részleges nézet az általános megfelelőségi állapotról. A vezérlők és az Azure Policy-definíciók közötti társítások a megfelelőségi tervezet minta idővel változhat.
-> A módosítási előzmények megtekintéséhez tekintse meg a [GitHub véglegesítési előzményeit.](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/DoDIL4/control-mapping.md)
+> A módosítási előzmények megtekintéséhez tekintse meg a [GitHub véglegesítési előzményeit.](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md)
 
 ## <a name="ac-2-account-management"></a>AC-2 számlakezelés
 
@@ -427,8 +427,8 @@ Most, hogy áttekintette a DoD Impact Level 4 tervrajz vezérlőleképezését, 
 
 További cikkek a tervekről és azok használatáról:
 
-- További információ a [tervterv életciklusáról.](../../concepts/lifecycle.md)
-- Ismerje meg, hogyan kell statikus [és dinamikus paramétereket](../../concepts/parameters.md)használni.
-- Ismerje meg a [tervezet szekvenálási sorrendjének testreszabását.](../../concepts/sequencing-order.md)
-- Ismerje meg, hogyan használhatja a [tervezet erőforrás-zárolást.](../../concepts/resource-locking.md)
-- További információ a [meglévő hozzárendelések frissítéséhez.](../../how-to/update-existing-assignments.md)
+- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
+- A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [meglévő hozzárendelések frissítésének](../../how-to/update-existing-assignments.md) elsajátítása.

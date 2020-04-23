@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f307553a97973d03b0699248373e53e4845aa39a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78248844"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869918"
 ---
 # <a name="what-are-security-defaults"></a>Mik a biztonsági alapértékek?
 
@@ -83,7 +83,7 @@ Miután a biztonsági alapértelmezések engedélyezve vannak a bérlőben, a re
 
 A szervezetek az Azure Resource Manager API-n keresztül kezelt számos Azure-szolgáltatást használnak, többek között a következőket:
 
-- Azure portál 
+- Azure Portal 
 - Azure PowerShell 
 - Azure CLI
 
@@ -92,8 +92,6 @@ Az Azure Resource Manager használatával a szolgáltatások kezelése rendkív�
 Fontos, hogy ellenőrizze a felhasználók identitását, akik szeretnék elérni az Azure Resource Manager és a konfigurációk frissítése. A hozzáférés engedélyezése előtt további hitelesítést igényel.
 
 Miután engedélyezte a biztonsági alapértékeket a bérlőben, minden olyan felhasználónak, aki hozzáfér az Azure Portalhoz, az Azure PowerShellhez vagy az Azure CLI-hez, további hitelesítést kell végrehajtania. Ez a szabályzat minden olyan felhasználóra vonatkozik, aki az Azure Resource Manager hez fér hozzá, függetlenül attól, hogy rendszergazda vagy felhasználó. 
-
-Ha a felhasználó nincs regisztrálva a többtényezős hitelesítéshez, a folytatáshoz regisztrálnia kell a Microsoft Authenticator alkalmazással. Nem 14 napos többtényezős hitelesítésregisztrációs időszak kerül rendelkezésre.
 
 > [!NOTE]
 > A 2017 előtti Exchange Online-bérlők korszerű hitelesítése alapértelmezés szerint le van tiltva. Annak érdekében, hogy elkerülje a bejelentkezési hurok lehetőségét a bérlőkhitelesítés során, engedélyeznie kell a [modern hitelesítést.](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)

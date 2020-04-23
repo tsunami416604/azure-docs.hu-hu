@@ -6,17 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437046"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023605"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldása az Azure-ban (előzetes verzió)
 
 ![Office 365-embléma](media/solution-office-365/icon.png)
-
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Megoldás frissítése
@@ -36,8 +35,8 @@ ms.locfileid: "80437046"
 >
 > ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>K: Lehetséges-e az Office 365 Azure Monitor megoldásának fedélzetre kapcsolása mostantól április 30-ig?
-> Nem, az Azure Monitor Office 365-megoldás bevezetési parancsfájljai már nem érhetők el. A megoldást április 30-án távolítják el.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>K: Lehetséges az Office 365 Azure Monitor megoldásának fedélzetre kapcsolása mostantól július 30-ig?
+> Nem, az Azure Monitor Office 365-megoldás bevezetési parancsfájljai már nem érhetők el. A megoldást július 30-án távolítják el.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>K: Megváltoznak a táblák és a sémák?
 > Az **OfficeActivity** tábla neve és sémája ugyanaz marad, mint az aktuális megoldásban. Továbbra is használhatja ugyanazokat a lekérdezéseket az új megoldásban, kivéve az Azure AD-adatokat hivatkozó lekérdezéseket.
@@ -103,11 +102,11 @@ ms.locfileid: "80437046"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>K: Az Azure Sentinel további összekötők a megoldás részeként?
 > Igen, lásd: [Azure Sentinel connect adatforrások](../../sentinel/connect-data-sources.md).
 > 
-> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>K: Mi történik április 30-án? Előre le kell mondanom?
+> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>K: Mi történik július 30-án? Előre le kell mondanom?
 > 
 > - Az **Office365-megoldásból** nem fog tudni adatokat fogadni. A megoldás a továbbiakban nem lesz elérhető a Marketplace-en
 > - Az Azure Sentinel-ügyfelek számára az **Office365** Log Analytics-munkaterületi megoldás az Azure Sentinel **SecurityInsights-megoldás** része lesz.
-> - Ha nem veszi ki manuálisan a megoldást, az adatok automatikusan lelesznek választva április 30-án.
+> - Ha nem veszi ki manuálisan a megoldást, az adatok július 30-án automatikusan megszakadnak.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>K: Átfog-e az adattovábbítás az új megoldásba?
 > Igen. Amikor eltávolítja az **Office 365-megoldást** a munkaterületről, az adatok ideiglenesen elérhetetlenné válnak, mert a séma eltávolításra kerül. Ha engedélyezi az új **Office 365-összekötőt** a Sentinelben, a séma visszaáll a munkaterületre, és a már összegyűjtött adatok elérhetővé válnak. 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c895a13eb9b2bed9e3a8a5a250c4e925dfa834c5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80331807"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024438"
 ---
 # <a name="what-is-a-device-identity"></a>Mi az az eszközidentitás?
 
@@ -53,6 +53,9 @@ Ahhoz, hogy egy eszköz az Azure AD-ben, több lehetőség közül választhat:
 
 ![Az Azure AD-eszközök panelen megjelenített eszközök](./media/overview/azure-active-directory-devices-all-devices.png)
 
+> [!NOTE]
+> A hibrid állapot nem csak az eszköz állapotára utal. Ahhoz, hogy egy hibrid állapot érvényes legyen, egy érvényes Azure AD-felhasználó is szükséges.
+
 ## <a name="device-management"></a>Eszközfelügyelet
 
 Az Azure AD-ben lévő eszközök kezelhetők a Mobileszköz-kezelés (MDM) eszközeivel, például a Microsoft Intune-nal, a Microsoft Endpoint Configuration Managerrel, a csoportházirenddel (hibrid Azure AD-csatlakozás), a Mobilalkalmazás-kezelés (MAM) eszközeivel vagy más külső eszközökkel.
@@ -63,6 +66,8 @@ Az eszközök regisztrálása és az Azure AD-hez való csatlakoztatása zökken
 
 > [!NOTE]
 > Az eszközalapú feltételes hozzáférés-házirendek hibrid Azure AD-hez csatlakozó eszközöket vagy megfelelő Azure AD-illesztést vagy Az Azure AD-ben regisztrált eszközöket igényelnek.
+
+Az elsődleges frissítési jogkivonat (PRT) információkat tartalmaz az eszközről, és az egyszeri biztonsági felelőshöz szükséges. Ha egy alkalmazáson eszközalapú feltételes hozzáférési házirend et állít be a PRT nélkül, a rendszer megtagadja a hozzáférést. A hibrid feltételes hozzáférési házirendek hibrid állapotú eszközt és egy bejelentkezett érvényes felhasználót igényelnek.
 
 Az Azure AD-hez csatlakozott vagy hibrid Azure AD-hez csatlakozott eszközök az egyszeri szolgáltató előnyeit élvezik a szervezet helyszíni erőforrásaival és a felhőbeli erőforrásokkal. További információ a cikkben található, [hogyan sso a helyszíni erőforrások az Azure AD-hez csatlakozott eszközök.](azuread-join-sso.md)
 

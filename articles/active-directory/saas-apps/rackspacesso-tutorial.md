@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 31826f5d4d88c977f859a009bface2fddf3a1c88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093185"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Oktatóanyag: Az Azure Active Directory integrációja a Rackspace SSO-val
 
@@ -153,7 +153,7 @@ Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalo
 
     a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. A BrittaSimon@contoso.com például
 
     c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
@@ -187,7 +187,7 @@ Ebben a szakaszban engedélyezi Britta Simon az Azure egyszeri bejelentkezést a
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>Attribútumleképezés beállítása a Rackspace vezérlőpulton
 
-A Rackspace **egy attribútumleképezési szabályzatot** használ a Rackspace szerepkörök és csoportok egyszeri bejelentkezési felhasználókhoz rendelésére. Az **attribútumleképezési szabályzat** lefordítja az Azure AD SAML jogcímeket a Rackspace által igényelt felhasználói konfigurációs mezőkre. További dokumentáció a Rackspace [Attribute Mapping Basics dokumentációban](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)található. Néhány szempont:
+A Rackspace **egy attribútumleképezési szabályzatot** használ a Rackspace szerepkörök és csoportok egyszeri bejelentkezési felhasználókhoz rendelésére. Az **attribútumleképezési szabályzat** lefordítja az Azure AD SAML jogcímeket a Rackspace által igényelt felhasználói konfigurációs mezőkre. További dokumentáció a Rackspace [Attribute Mapping Basics dokumentációban](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)található. Néhány szempont:
 
 * Ha az Azure AD-csoportok használatával a Rackspace-hozzáférés különböző szintjeit szeretné hozzárendelni, engedélyeznie kell a csoportok jogcímét az Azure **Rackspace egyszeri** bejelentkezési beállításaiban. Az **attribútumleképezési házirend** ezután a következő kretén csoportokat a kívánt Rackspace szerepkörökhöz és csoportokhoz igazítja:
 
@@ -226,7 +226,7 @@ mapping:
 > [!TIP]
 > Győződjön meg arról, hogy olyan szövegszerkesztőt használ, amely a házirendfájl szerkesztésekor érvényesíti a YAML szintaxisát.
 
-További példákat a Rackspace [Attribútumleképezés alapjai dokumentációban](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/) talál.
+További példákat a Rackspace [Attribútumleképezés alapjai dokumentációban](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/) talál.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

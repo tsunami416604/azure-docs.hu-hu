@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 159b38962fe91cedfc8d313bef943dbc74e9974e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
-ms.translationtype: MT
+ms.openlocfilehash: e8c4e1fcca347ad2783238c0f5ec4fe407849d3b
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520255"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024528"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
@@ -42,16 +42,12 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot.
-
-A következő példában az <app_name> helyett adjon meg egy egyedi alkalmazásnevet.
+Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot. A következő példában az <app_name> helyett adjon meg egy egyedi alkalmazásnevet. A statikus tartalmat `--html` a zászló jelzi.
 
 ```bash
 cd html-docs-hello-world
-```
 
-```azurecli
-az webapp up --location westeurope --name <app_name> 
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 Az `az webapp up` parancs a következő műveleteket hajtja végre:
@@ -102,7 +98,7 @@ Mentse a módosításokat, és lépjen ki a nanóból. A mentéshez a `^O`, a ki
 
 Most újra üzembe helyezzük az alkalmazást ugyanazzal az `az webapp up` paranccsal.
 
-```azurecli
+```bash
 az webapp up --location westeurope --name <app_name> --html
 ```
 
@@ -130,7 +126,7 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha várhatóan nem lesz szüksége ezekre az erőforrásokra a jövőben, törölje az erőforráscsoportot a következő parancs Cloud Shellben történő futtatásával. Ne feledje, hogy az erőforráscsoport neve automatikusan jött létre a [webalkalmazást létrehozó](#create-a-web-app) lépés során.
 
-```azurecli
+```bash
 az group delete --name appsvc_rg_Windows_westeurope
 ```
 

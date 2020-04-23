@@ -1,5 +1,5 @@
 ---
-title: Excel & Apache Hadoop ODBC illesztőprogrammal – Azure HDInsight
+title: Az Excel & Apache Hadoop open database connectivity (ODBC) driverrel – Azure HDInsight
 description: Megtudhatja, hogy miként állíthatja be és használhatja az Excelhez készült Microsoft Hive ODBC illesztőprogramot a Microsoft Excel HDInsight-fürtökben lévő adatok lekérdezésére.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,21 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 03/02/2020
-ms.openlocfilehash: f356009197c0446efa2ea2d7f0e90040229df47b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 5aefd2c344565bf6dcb384996c42c1bc30e7291d
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251064"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024931"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Az Excel és az Apache Hadoop csatlakoztatása az Azure HDInsightban a Microsoft Hive ODBC-illesztővel
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-A Microsoft Big Data-megoldása integrálja a Microsoft Business Intelligence (BI) összetevőit az Azure HDInsightban telepített Apache Hadoop-fürtökkel. Az integráció egyik példája az Excel csatlakoztatása a HDInsight Hadoop-fürtjének Hive-adattárházához a Microsoft Hive Open Database Connectivity (ODBC) illesztőprogram használatával.
+A Microsoft Big Data-megoldása integrálja a Microsoft Business Intelligence (BI) összetevőit a HDInsightban telepített Apache Hadoop-fürtökkel. Ilyen például az Excel csatlakoztatása a Hadoop-fürt Hive-adattárházához. Csatlakozás a Microsoft Hive Open Database Connectivity (ODBC) illesztőprogramsegítségével.
 
-A HDInsight-fürthöz és más adatforrásokhoz társított adatok, köztük más (nem HDInsight- hadoop- fürtök) is csatlakoztathatók az Excelből az Excel Microsoft Power Query bővítményének használatával. A Power Query telepítéséről és használatáról az [Excel csatlakoztatása a HDInsighthoz a Power Queryvel](../hdinsight-connect-excel-power-query.md)című témakörben olvashat.
+Az Excelből az Excelből egy HDInsight-fürthöz társított adatokat összekapcsolhatja az Excel Microsoft Power Query bővítményével. További információt az [Excel csatlakoztatása a HDInsighthoz a Power Queryvel](../hdinsight-connect-excel-power-query.md)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,13 +32,13 @@ A cikk megkezdése előtt a következő elemekkel kell rendelkeznie:
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>A Microsoft Hive ODBC illesztőprogram telepítése
 
-Töltse le és telepítse a [Microsoft Hive ODBC driver](https://www.microsoft.com/download/details.aspx?id=40886) verziót, amely megfelel annak az alkalmazásnak a verziójával, amelyen az ODBC-illesztőprogramot használni fogja.  Ebben a cikkben az illesztőprogramot az Office Excel ben használják.
+Töltse le és telepítse a [Microsoft Hive ODBC drivert.](https://www.microsoft.com/download/details.aspx?id=40886) Válassza ki azt a verziót, amely megfelel annak az alkalmazásnak, amelyen az ODBC-illesztőprogramot használni fogja.  Ebben a cikkben az illesztőprogramot az Office Excel ben használják.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC adatforrás létrehozása
 
 A következő lépések bemutatják, hogyan hozhat létre egy Hive ODBC adatforrást.
 
-1. A Windows rendszerből nyissa meg a Windows felügyeleti eszközök > > ODBC adatforrások (32 bites) /(64 bites) lapot.  Ezzel megnyitja az **ODBC adatforrás-felügyelő** ablakot.
+1. Windows rendszerből nyissa meg **a Windows felügyeleti eszközök > > az ODBC adatforrások (32 bites) /(64 bites).**  Ez a művelet megnyitja az **ODBC adatforrás-felügyelő** ablakot.
 
     ![OBDC adatforrás-rendszergazda](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "DSN konfigurálása az ODBC adatforrás-felügyelővel")
 
@@ -64,11 +64,11 @@ A következő lépések bemutatják, hogyan hozhat létre egy Hive ODBC adatforr
    | --- | --- |
    |  Natív lekérdezés használata |Ha be van jelölve, az ODBC illesztőprogram nem próbálja meg a TSQL-t HiveQL-lé konvertálni. Csak akkor használhatod, ha 100%-ig biztos vagy benne, hogy tiszta HiveQL nyilatkozatokat nyújtasz be. Az SQL Server vagy az Azure SQL Database csatlakozásakor hagyja bejelölve. |
    |  Blokkonként lekért sorok |Nagy számú rekord beolvasásakor szükség lehet erre a paraméterre az optimális teljesítmény biztosításához. |
-   |  Alapértelmezett karakterláncoszlop hossza, Bináris oszlophosszak, Decimális oszloplépték |Az adattípusok hossza és pontossága befolyásolhatja az adatok visszaadásának módját. A pontosság és/vagy a csonkolás elvesztése miatt helytelen adatokat adnak vissza. |
+   |  Alapértelmezett karakterláncoszlop hossza, Bináris oszlophosszak, Decimális oszloplépték |Az adattípusok hossza és pontossága befolyásolhatja az adatok visszaadásának módját. Hibás adatokat ad vissza a pontosság és a csonkolás elvesztése miatt. |
 
     ![Speciális dsn konfigurációs beállítások](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Speciális dsn konfigurációs beállítások")
 
-1. Válassza a **Teszt** lehetőséget az adatforrás teszteléséhez. Ha az adatforrás megfelelően van konfigurálva, a teszt eredménye a **SUCCESS!**.  
+1. Válassza a **Teszt** lehetőséget az adatforrás teszteléséhez. Ha az adatforrás megfelelően van konfigurálva, a teszt eredménye a **SUCCESS!**
 
 1. A Teszt ablak bezárásához válassza az **OK gombot.**  
 
@@ -100,8 +100,5 @@ Ebben a cikkben megtanulta, hogyan használhatja a Microsoft Hive ODBC illesztő
 
 * [Az Apache Hive-adatok megjelenítése a Microsoft Power BI szolgáltatással az Azure HDInsightban.](apache-hadoop-connect-hive-power-bi.md)
 * [Jelenítse meg az interaktív lekérdezéshive-adatokat az Azure HDInsight Power BI szolgáltatásában.](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
-* [Az Apache Zeppelin segítségével apache hive-lekérdezéseket futtataz az Azure HDInsightban.](../interactive-query/hdinsight-connect-hive-zeppelin.md)
 * [Az Excel csatlakoztatása az Apache Hadoophoz a Power Query használatával.](apache-hadoop-connect-excel-power-query.md)
 * [Csatlakozzon az Azure HDInsighthoz, és futtasson Apache Hive-lekérdezéseket a Data Lake Tools for Visual Studio használatával.](apache-hadoop-visual-studio-tools-get-started.md)
-* [Használja az Azure HDInsight eszközt a Visual Studio-kódhoz.](../hdinsight-for-vscode.md)
-* [Adatok feltöltése a HDInsight ba.](./../hdinsight-upload-data.md)

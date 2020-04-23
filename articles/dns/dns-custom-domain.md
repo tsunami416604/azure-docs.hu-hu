@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
-ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56a7680de3127da06341ac03252a9ab0cff9da7c
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266233"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024948"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Az Azure DNS használata egyéni tartománybeállítások biztosításához egy Azure-szolgáltatáshoz
 
@@ -40,7 +40,7 @@ Nyissa meg a DNS-zónát, és kattintson **a + Rekordkészlet gombra.** Töltse 
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Név     | myfunctionapp        | Ez az érték a tartománynév címkével együtt az egyéni tartománynév teljes tartományneve.        |
+|Name (Név)     | myfunctionapp        | Ez az érték a tartománynév címkével együtt az egyéni tartománynév teljes tartományneve.        |
 |Típus     | CNAME        | A CNAME rekord aliast használ.        |
 |Élettartam     | 1        | 1 használt 1 óra        |
 |TTL mértékegysége     | Óra        | Az órák időmérésként használatosak         |
@@ -65,7 +65,7 @@ Nyissa meg a DNS-zónát, és kattintson **a + Rekordkészlet gombra.** Töltse 
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Név     | webkiszolgáló        | Ez az érték a tartománynév címkével együtt az egyéni tartománynév teljes tartományneve.        |
+|Name (Név)     | webkiszolgáló        | Ez az érték a tartománynév címkével együtt az egyéni tartománynév teljes tartományneve.        |
 |Típus     | A        | Használjon A rekordot, mivel az erőforrás IP-cím.        |
 |Élettartam     | 1        | 1 használt 1 óra        |
 |TTL mértékegysége     | Óra        | Az órák időmérésként használatosak         |
@@ -92,7 +92,7 @@ Nyissa meg a DNS-zónát, és kattintson **a + Rekordkészlet gombra.** Töltse 
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Név     | webkiszolgáló        | Ez az érték a tartománynév címkével együtt az egyéni tartománynév teljes tartományneve.        |
+|Name (Név)     | webkiszolgáló        | Ez az érték a tartománynév címkével együtt az egyéni tartománynév teljes tartományneve.        |
 |Típus     | CNAME        | A CNAME rekord aliast használ. Ha az erőforrás IP-címet használt, akkor a program A rekordot használ.        |
 |Élettartam     | 1        | 1 használt 1 óra        |
 |TTL mértékegysége     | Óra        | Az órák időmérésként használatosak         |
@@ -128,13 +128,13 @@ Nyissa meg a DNS-zónát, és kattintson **a + Rekordkészlet gombra.** Töltse 
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Név     | asverify.mystorageaccount        | Ez az érték a tartománynév címkével együtt az egyéni tartománynév teljes tartományneve.        |
+|Name (Név)     | asverify.mystorageaccount        | Ez az érték a tartománynév címkével együtt az egyéni tartománynév teljes tartományneve.        |
 |Típus     | CNAME        | A CNAME rekord aliast használ.        |
 |Élettartam     | 1        | 1 használt 1 óra        |
 |TTL mértékegysége     | Óra        | Az órák időmérésként használatosak         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Az a DNS-név, amelyhez az aliast létrehozza, ebben a példában ez a asverify.adatumfunctiona9ed.blob.core.windows.net DNS-név, amelyet alapértelmezés szerint a tárfiókhoz ad meg.        |
 
-Navigáljon vissza a tárfiókhoz a > **Tárfiókok**elemre kattintva, jelölje ki a tárfiókot, és kattintson az **Egyéni tartomány**elemre. **Storage** Írja be a szövegmezőbe a hitelesítés előtagja nélkül létrehozott aliast, jelölje be a **Közvetett CNAME-érvényesítés használata, majd kattintson a **Mentés gombra.** Ha ez a lépés befejeződött, térjen vissza a DNS-zónába, és hozzon létre egy CNAME rekordot a hitelesítéselőtag nélkül.  Ezt követően a CNAME rekord a cdnverify előtaggal törölhető.
+Navigáljon vissza a tárfiókhoz a > **Tárfiókok**elemre kattintva, jelölje ki a tárfiókot, és kattintson az **Egyéni tartomány**elemre. **Storage** Írja be a szövegmezőbe a hitelesítés előtagja nélkül létrehozott aliast, jelölje be **a Közvetett CNAME-érvényesítés használata**jelölőnégyzetet, és kattintson a Mentés **gombra.** Ha ez a lépés befejeződött, térjen vissza a DNS-zónába, és hozzon létre egy CNAME rekordot a hitelesítéselőtag nélkül.  Ezt követően a CNAME rekord a cdnverify előtaggal törölhető.
 
 ![blob storage egyéni tartomány](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -156,7 +156,7 @@ Nyissa meg a DNS-zónát, és kattintson **a + Rekordkészlet gombra.** Töltse 
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
-|Név     | cdnverify.mycdnendpoint        | Ez az érték a tartománynév címkével együtt az egyéni tartománynév teljes tartományneve.        |
+|Name (Név)     | cdnverify.mycdnendpoint        | Ez az érték a tartománynév címkével együtt az egyéni tartománynév teljes tartományneve.        |
 |Típus     | CNAME        | A CNAME rekord aliast használ.        |
 |Élettartam     | 1        | 1 használt 1 óra        |
 |TTL mértékegysége     | Óra        | Az órák időmérésként használatosak         |

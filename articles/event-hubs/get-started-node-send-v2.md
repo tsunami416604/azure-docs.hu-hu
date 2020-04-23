@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 063f2e1005db177420da7f81b799ab01fd212d7e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42c58a84c71b6573814e82517373db6900a83658
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478476"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025016"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Események küldése eseményközpontokba vagy események fogadása az eseményközpontokból javaScript használatával (azazure/event-hubs 5-ös verzió)
 Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket egy eseményközpontba, és hogyan fogadhat eseményeket az **azure/event-hubs 5-ös verziójú JavaScript-csomag** használatával. 
@@ -185,7 +185,7 @@ Azure-tárfiók és blobtároló létrehozásához tegye a következő művelete
 1. Futtassa `node receive.js` a parancssorban a fájl végrehajtásához. Az ablakban meg kell jeleníteni a fogadott eseményekről szóló üzeneteket.
 
     > [!NOTE]
-    > A teljes forráskód, beleértve a további tájékoztató megjegyzéseket, látogasson el a [GitHub receiveEventsUsingCheckpointStore.js oldalon](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js).
+    > A teljes forráskód, beleértve a további tájékoztató megjegyzéseket, látogasson el a [GitHub receiveEventsUsingCheckpointStore.js oldalon](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js).
 
 Gratulálunk! Most már kapott eseményeket az eseményközpontból. A fogadó program az eseményközpont alapértelmezett fogyasztói csoportjának összes partíciójáról fogadja az eseményeket.
 

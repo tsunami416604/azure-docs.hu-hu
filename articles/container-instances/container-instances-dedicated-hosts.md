@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934147"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025033"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Üzembe helyezés dedikált gazdagépeken
 
@@ -37,7 +37,7 @@ A `sku` tulajdonság az alábbi értékek egyikével rendelkezhet:
 ## <a name="modify-your-json-deployment-template"></a>A JSON-telepítési sablon módosítása
 
 A központi telepítési sablonban módosítsa vagy adja hozzá a következő tulajdonságokat:
-* A `resources`területen `apiVersion` `2012-12-01`a beállítás a.
+* A `resources`területen `apiVersion` `2019-12-01`a beállítás a.
 * A tárolócsoport tulajdonságai alatt `sku` adjon `Dedicated`hozzá egy értékű tulajdonságot.
 
 Íme egy példa egy tárolócsoport központi telepítési sablonerőforrás-szakaszának, amely a dedikált termékváltozatot használja:

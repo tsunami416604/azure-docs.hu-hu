@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 195fa26a38d89d9ef738e6060ff7dab602d5c234
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 875114c53cb3193b1b140e95be19daf7fb6415a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095914"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870315"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Oktatóanyag: Az Azure Active Directory integrációja a Oneteam-szel
 
@@ -118,7 +118,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre a kö
     A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<team name>.one-team.io/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [a Oneteam ügyféltámogatási csapatával](https://support.one-team.com/hc/requests/new) az értékek lefelvételéhez. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba a Oneteam ügyféltámogatási csapatával az értékek lefelvételéhez. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
 6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
@@ -136,7 +136,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre a kö
 
 ### <a name="configure-oneteam-single-sign-on"></a>Oneteam egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálásához a **Oneteam** oldalon el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról a [Oneteam támogatási csapatának.](https://support.one-team.com/hc/requests/new) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Az egyszeri bejelentkezés konfigurálásához a **Oneteam** oldalon el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról a Oneteam támogatási csapatának. Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
@@ -157,7 +157,7 @@ Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalo
     a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
     b. A **Felhasználónév** mezőtípusban**brittasimon@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    A BrittaSimon@contoso.com például
 
     c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
@@ -194,7 +194,7 @@ Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés haszn
 Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Oneteam-ben. Oneteam támogatja a just-in-time felhasználói kiépítés, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik a Oneteam, egy új jön létre a hitelesítés után.
 
 >[!NOTE]
->Ha manuálisan kell létrehoznia egy felhasználót, a [Oneteam támogatási csapatával](https://support.one-team.com/hc/requests/new)emelheti a támogatási jegyet.
+>Ha manuálisan kell létrehoznia egy felhasználót, a Oneteam támogatási csapatával emelheti a támogatási jegyet.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

@@ -4,22 +4,22 @@ description: Ismerje meg, hogyan azonosíthatja, diagnosztizálhatja és hárít
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/10/2020
+ms.date: 04/20/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 852ed8c49eda7f13542eb0bad63d84e1cf770e92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a8b61f3719a60af567d10f8839987e613babc9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131385"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870459"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Lekérdezési problémák elhárítása az Azure Cosmos DB használatakor
 
 Ez a cikk az Azure Cosmos DB-ben a lekérdezések hibaelhárításához ajánlott általános anamnézist ismerteti. Bár a cikkben ismertetett lépéseket nem érdemes teljes körűvédelemnek tekinteni a potenciális lekérdezési problémák kal szemben, itt a leggyakoribb teljesítménytippeket is beépítettük. Ezt a cikket kell használnia kiindulási helyként az Azure Cosmos DB core (SQL) API lassú vagy költséges lekérdezéseinek hibaelhárításához. Diagnosztikai naplók segítségével is [azonosíthatja](cosmosdb-monitor-resource-logs.md) a lassú vagy jelentős mennyiségű átviteli energiát használó lekérdezéseket.
 
-Az Azure Cosmos DB-ben széles körben kategorizálhatja a lekérdezésoptimalizálást: 
+Az Azure Cosmos DB-ben széles körben kategorizálhatja a lekérdezésoptimalizálást:
 
 - A lekérdezés kérelemegység (RU) terhelését csökkentő optimalizálások
 - Optimalizálás, amely csak csökkenti a késést
@@ -28,19 +28,18 @@ Ha csökkenti a ru-díj a lekérdezés, akkor szinte biztosan csökkenti a kés�
 
 Ez a cikk példákat, amelyek etetési [adatkészlet](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) használatával újra létrehozhat.
 
-## <a name="important"></a>Fontos
+## <a name="common-sdk-issues"></a>Gyakori SDK-problémák
 
 - A legjobb teljesítmény érdekében kövesse a [Teljesítményre vonatkozó tippeket.](performance-tips.md)
     > [!NOTE]
     > A jobb teljesítmény érdekében a Windows 64 bites gazdagép-feldolgozást javasoljuk. Az SQL SDK tartalmaz egy natív ServiceInterop.dll a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop.dll csak a Windows x64 platformon támogatott. Linux és más nem támogatott platformok, ahol ServiceInterop.dll nem érhető el, egy további hálózati hívás történik az átjáróhoz az optimalizált lekérdezés lehívásához.
-- Az Azure Cosmos DB-lekérdezések nem támogatják a minimális elemszámot.
-    - A kódnak kezelnie kell minden oldalméretet, nullától a maximális cikkszámig.
-    - Az oldalon lévő elemek száma értesítés nélkül változhat és meg is változik.
-- A lekérdezésekhez üres lapok at várnak, és bármikor megjelenhetnek.
-    - Az üres oldalak megjelennek az SDK-kban, mert ez az expozíció több lehetőséget kínál a lekérdezés megszakítására. Azt is egyértelművé teszi, hogy az SDK több hálózati hívást is kezdeményez.
-    - Üres lapok jelenhetnek meg a meglévő számítási feladatok, mert egy fizikai partíció van osztva az Azure Cosmos DB. Az első partíció nulla eredménnyel jár, ami az üres oldalt okozza.
-    - Az üres lapokat az okozza, hogy a háttérrendszer megelőzi a lekérdezést, mivel a lekérdezés a dokumentumok beolvasásához a háttérrendszeren több mint néhány meghatározott időt vesz igénybe. Ha az Azure Cosmos DB egy lekérdezést megelőzően, akkor visszaad egy folytatási jogkivonatot, amely lehetővé teszi a lekérdezés folytatását.
-- Ügyeljen arra, hogy teljesen ürítse ki a lekérdezést. Tekintse meg az SDK-mintákat, és egy `while` ciklus használatával ürítse `FeedIterator.HasMoreResults` ki a teljes lekérdezést.
+- Beállíthat egy `MaxItemCount` elemet a lekérdezésekhez, de nem adhat meg minimális cikkszámot.
+    - A kódnak kezelnie kell minden `MaxItemCount`oldalméretet, nullától a ig.
+    - Az oldalon lévő elemek száma mindig kisebb lesz `MaxItemCount`a megadottnál. Azonban `MaxItemCount` szigorúan a maximális, és nem lehet kevesebb eredményt, mint ez az összeg.
+- Előfordulhat, hogy a lekérdezések üres oldalakkal rendelkeznek, még akkor is, ha egy jövőbeli oldalon eredmények jelennek meg. Ennek okai lehetnek:
+    - Az SDK több hálózati hívást is kezdeményezhet.
+    - A lekérdezés beolvasása hosszú időt vehet igénybe.
+- Minden lekérdezés rendelkezik egy folytatási jogkivonat, amely lehetővé teszi a lekérdezés folytatását. Ügyeljen arra, hogy teljesen ürítse ki a lekérdezést. Tekintse meg az SDK-mintákat, és egy `while` ciklus használatával ürítse `FeedIterator.HasMoreResults` ki a teljes lekérdezést.
 
 ## <a name="get-query-metrics"></a>Lekérdezési mutatók begyűjtése
 
@@ -61,6 +60,8 @@ Tekintse meg a következő szakaszokat a forgatókönyv megfelelő lekérdezéso
 - [A szükséges elérési utak felvétele az indexelési házirendbe.](#include-necessary-paths-in-the-indexing-policy)
 
 - [Ismerje meg, hogy mely rendszerfüggvények használják az indexet.](#understand-which-system-functions-use-the-index)
+
+- [Ismerje meg, hogy mely összesített lekérdezések használják az indexet.](#understand-which-aggregate-queries-use-the-index)
 
 - [Módosítsa azokat a lekérdezéseket, amelyek szűrővel és ORDER BY záradékkal is rendelkeznek.](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
 
@@ -190,7 +191,7 @@ Az indexelési házirendhez bármikor hozzáadhat tulajdonságokat, az írás el
 
 Ha egy kifejezés karakterlánc-értékek tartományába fordítható, használhatja az indexet. Különben nem.
 
-Az indexet használó karakterláncfüggvények listája:
+Íme néhány gyakori karakterlánc-függvény, amely használhatja az indexet:
 
 - STARTSWITH(str_expr, str_expr)
 - LEFT(str_expr, num_expr) = str_expr
@@ -207,6 +208,50 @@ Az alábbiakban felsodkán felsoghat néhány gyakori rendszerfüggvény, amelye
 ------
 
 A lekérdezés más részei továbbra is használhatják az indexet, még akkor is, ha a rendszerfüggvények nem.
+
+### <a name="understand-which-aggregate-queries-use-the-index"></a>Annak ismertetése, hogy mely összesítő lekérdezések használják az indexet
+
+A legtöbb esetben az Azure Cosmos DB összesített rendszerfüggvények az indexet fogja használni. Az összesítő lekérdezés szűrőitől vagy további záradékaitól függően azonban előfordulhat, hogy a lekérdezési motorra nagy számú dokumentum betöltéséhez van szükség. A lekérdezési motor általában először egyenlőségi és tartományszűrőket alkalmaz. A szűrők alkalmazása után a lekérdezési motor kiértékelheti a további szűrőket, és szükség esetén a fennmaradó dokumentumok betöltéséhez folyamodhat az összesítés kiszámításához.
+
+Ha például ez a két mintalekérdezés van, `CONTAINS` az egyenlőségi és rendszerfüggvény-szűrővel `CONTAINS` rendelkező lekérdezés általában hatékonyabb lesz, mint egy rendszerfüggvény-szűrővel rendelkező lekérdezés. Ennek az az oka, hogy először az egyenlőségszűrőt alkalmazza a `CONTAINS` rendszer, és az indexet használja, mielőtt a drágább szűrőhöz dokumentumokat kellene betölteni.
+
+Lekérdezés csak `CONTAINS` szűrővel - magasabb RU-töltés:
+
+```sql
+SELECT COUNT(1) FROM c WHERE CONTAINS(c.description, "spinach")
+```
+
+Lekérdezés egyenlőségi szűrővel `CONTAINS` és szűrővel - alacsonyabb RU-töltés:
+
+```sql
+SELECT AVG(c._ts) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" AND CONTAINS(c.description, "spinach")
+```
+
+Az alábbiakban további példákat talál az olyan összesítő lekérdezésekre, amelyek nem használják teljes mértékben az indexet:
+
+#### <a name="queries-with-system-functions-that-dont-use-the-index"></a>Az indexet nem használó rendszerfüggvényekkel rendelkező lekérdezések
+
+A megfelelő [rendszerfüggvény oldalához kell látnia,](sql-query-system-functions.md) hogy az indexet használja-e.
+
+```sql
+SELECT MAX(c._ts) FROM c WHERE CONTAINS(c.description, "spinach")
+```
+
+#### <a name="aggregate-queries-with-user-defined-functionsudfs"></a>Lekérdezések összesítése felhasználó által definiált függvényekkel (UDF-ek)
+
+```sql
+SELECT AVG(c._ts) FROM c WHERE udf.MyUDF("Sausages and Luncheon Meats")
+```
+
+#### <a name="queries-with-group-by"></a>LEKÉRDEZÉSEK GROUP BY-VEL
+
+A RU-díj `GROUP BY` a `GROUP BY` záradékban szereplő tulajdonságok számosságának növekedésével nő. Ebben a példában a lekérdezési motornak `c.foodGroup = "Sausages and Luncheon Meats"` be kell töltenie minden dokumentumot, amely megfelel a szűrőnek, így a ru díj várhatóan magas lesz.
+
+```sql
+SELECT COUNT(1) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" GROUP BY c.description
+```
+
+Ha azt tervezi, hogy gyakran futtatja ugyanazokat az összesítő lekérdezéseket, hatékonyabb lehet egy valós idejű materializált nézet létrehozása az [Azure Cosmos DB módosítási hírcsatornával,](change-feed.md) mint az egyéni lekérdezések futtatása.
 
 ### <a name="modify-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Szűrővel és ORDER BY záradékkal is rendelkező lekérdezések módosítása
 

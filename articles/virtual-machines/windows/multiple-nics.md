@@ -1,24 +1,18 @@
 ---
 title: Több hálózati adaptert használó Windows-virtuális gépek létrehozása és kezelése az Azure-ban
 description: Megtudhatja, hogyan hozhat létre és kezelhet olyan Windows virtuális gépeket, amelyekhez több hálózati adapter van csatolva az Azure PowerShell vagy az Erőforrás-kezelő sablonjainak használatával.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249983"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870270"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Több hálózati adapterrel rendelkező Windows virtuális gép létrehozása és kezelése
 Az Azure-ban lévő virtuális gépekhez több virtuális hálózati adapter (NIC) is tartozhat. Gyakori forgatókönyv, hogy különböző alhálózatok előtér-és háttér-kapcsolat. A virtuális gépeken több hálózati adaptert is társíthat több alhálózathoz, de ezeknek az alhálózatoknak ugyanabban a virtuális hálózatban (vNet) kell rendelkezniük. Ez a cikk ismerteti, hogyan hozhat létre egy virtuális gép, amely több hálózati adapterek csatolták. Azt is megtudhatja, hogyan adhat hozzá vagy távolíthat el hálózati adaptereket egy meglévő virtuális gépről. A különböző [virtuálisgép-méretek](sizes.md) különböző számú hálózati adaptert támogatnak, így a virtuális gép ennek megfelelően méretezze.

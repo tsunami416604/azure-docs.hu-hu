@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 48be73a6385c9690909cb70abe558a2def1ace88
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: f557753c61af1e57490ae2d10b7f42475bd7c0a6
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730513"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870234"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Útmutató a függvények használatához az Azure Logic Apps és a Power Automate kifejezésekben
 
@@ -82,11 +82,11 @@ A karakterlánc-függvények csak karakterláncokon működnek.
 | [Concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Két vagy több karakterlánc egyesítése és a kombinált karakterlánc visszaadása. |
 | [végződikWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Ellenőrizze, hogy egy karakterlánc a megadott karakterlánccal végződik-e. |
 | [formatNumber](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Szám visszaadása karakterláncként a megadott formátum alapján |
-| [Guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Globálisan egyedi azonosító (GUID) létrehozása karakterláncként. |
+| [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Globálisan egyedi azonosító (GUID) létrehozása karakterláncként. |
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Adja vissza a részkarakterlánc kezdőpozícióját. |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Adja vissza a részkarakterlánc utolsó előfordulásának kezdő pozícióját. |
 | [Helyettesít](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Cseréljen le egy részkarakterláncot a megadott karakterláncra, és adja vissza a frissített karakterláncot. |
-| [felosztás](../logic-apps/workflow-definition-language-functions-reference.md#split) | Olyan tömböt ad vissza, amely vesszővel elválasztva részkarakterláncokat tartalmaz egy nagyobb karakterlánctól, amely az eredeti karakterlánc megadott határoló karakterén alapul. |
+| [Split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Olyan tömböt ad vissza, amely vesszővel elválasztva részkarakterláncokat tartalmaz egy nagyobb karakterlánctól, amely az eredeti karakterlánc megadott határoló karakterén alapul. |
 | [kezdődik](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Ellenőrizze, hogy egy karakterlánc egy adott karakterlánccal kezdődik-e. |
 | [Substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Karakterlánc karaktereit adja vissza a megadott pozíciótól kezdve. |
 | [lassabbra](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Karakterlánc visszaadása kisbetűs formátumban. |
@@ -151,7 +151,7 @@ Az egyes függvényekkel kapcsolatos teljes körű hivatkozást az [alfabetikus 
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Base64 kódolású karakterlánc bináris verzióját adja vissza. |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Egy base64 kódolású karakterlánc-verziót adja vissza. |
 | [Bináris](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Adja vissza a bemeneti érték bináris verzióját. |
-| [Bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Adja vissza a logikai verziót egy bemeneti értékhez. |
+| [logikai](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Adja vissza a logikai verziót egy bemeneti értékhez. |
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Tömb visszaadása több bemenetből. |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Adja vissza a bemeneti érték adatURI-értékét. |
 | [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | AdatURI bináris verzióját adja vissza. |
@@ -161,9 +161,9 @@ Az egyes függvényekkel kapcsolatos teljes körű hivatkozást az [alfabetikus 
 | [dekódurikomponens](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Visszaad egy karakterláncot, amely az escape karaktereket dekódolt verziókkal helyettesíti. |
 | [kódolásuriösszetevő](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Olyan karakterláncot ad vissza, amely az URL-ben nem biztonságos karaktereket escape-karakterekre cseréli. |
 | [lebegőpontos](../logic-apps/workflow-definition-language-functions-reference.md#float) | Lebegőpontos számot ad vissza egy bemeneti értékhez. |
-| [Int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Adja vissza egy karakterlánc egész verzióját. |
+| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Adja vissza egy karakterlánc egész verzióját. |
 | [Json](../logic-apps/workflow-definition-language-functions-reference.md#json) | Adja vissza a JavaScript-objektumnotika (JSON) típusú értéket vagy objektumot egy karakterlánchoz vagy XML-hez. |
-| [Karakterlánc](../logic-apps/workflow-definition-language-functions-reference.md#string) | Adja vissza egy bemeneti érték karakterlánc-verzióját. |
+| [sztring](../logic-apps/workflow-definition-language-functions-reference.md#string) | Adja vissza egy bemeneti érték karakterlánc-verzióját. |
 | [uriKomponens](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Adja vissza a bemeneti érték URI-kódolású verzióját úgy, hogy az URL-nem biztonságos karaktereket escape karakterekre cseréli. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Adja vissza egy URI-kódolású karakterlánc bináris verzióját. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Adja vissza egy URI-kódolású karakterlánc karakterlánc-verzióját. |
@@ -1077,7 +1077,7 @@ body('Get_user')
 
 <a name="bool"></a>
 
-### <a name="bool"></a>Bool
+### <a name="bool"></a>logikai
 
 Egy érték logikai változatának visszaadása.
 
@@ -2223,7 +2223,7 @@ greaterOrEquals('apple', 'banana')
 
 <a name="guid"></a>
 
-### <a name="guid"></a>Guid
+### <a name="guid"></a>guid
 
 Globálisan egyedi azonosító (GUID) létrehozása karakterláncként, például "c2ecc88d-88c8-4096-912c-d6f2e2b138ce":
 
@@ -2426,9 +2426,11 @@ iterationIndexes('<loopName>')
 
 *Példa* 
 
-Ez a példa létrehoz egy számláló változót, és minden egyes iteráció során egy-egy lépéssel megnövekszik, amíg a számláló értéke el nem éri az ötöt. A példa is létrehoz egy változót, amely nyomon követi az aktuális index minden iteráció. Az Esztor ciklusban minden egyes ismétlés során a példa megnő a számlálón, majd hozzárendeli a számláló értékét az aktuális indexértékhez, majd megnöveli a számlálót. Az aktuális iterációs számot bármikor meghatározhatja az aktuális indexérték beolvasásával.
+Ez a példa létrehoz egy számláló változót, és minden egyes iteráció során egy-egy lépéssel megnövekszik, amíg a számláló értéke el nem éri az ötöt. A példa is létrehoz egy változót, amely nyomon követi az aktuális index minden iteráció. Az Esztor ciklusban minden egyes ismétlés során a példa megnő a számlálón, majd hozzárendeli a számláló értékét az aktuális indexértékhez, majd megnöveli a számlálót. A ciklusban ez a példa az aktuális iterációs `iterationIndexes` indexre hivatkozik a függvény használatával:
 
-```
+`iterationIndexes('Until_Max_Increment')`
+
+```json
 {
    "actions": {
       "Create_counter_variable": {
@@ -2459,7 +2461,7 @@ Ez a példa létrehoz egy számláló változót, és minden egyes iteráció so
             "Create_counter_variable": [ "Succeeded" ]
          }
       },
-      "Until": {
+      "Until_Max_Increment": {
          "type": "Until",
          "actions": {
             "Assign_current_index_to_counter": {
@@ -2472,6 +2474,15 @@ Ez a példa létrehoz egy számláló változót, és minden egyes iteráció so
                   "Increment_variable": [ "Succeeded" ]
                }
             },
+            "Compose": {
+               "inputs": "'Current index: ' @{iterationIndexes('Until_Max_Increment')}",
+               "runAfter": {
+                  "Assign_current_index_to_counter": [
+                     "Succeeded"
+                    ]
+                },
+                "type": "Compose"
+            },           
             "Increment_variable": {
                "type": "IncrementVariable",
                "inputs": {

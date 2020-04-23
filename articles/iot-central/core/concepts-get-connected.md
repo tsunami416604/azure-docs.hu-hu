@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f37b070c74abd8511fc597f9b159312d91281083
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759112"
+ms.locfileid: "82024693"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozzon az Azure IoT Centralhoz
 
@@ -50,7 +50,7 @@ Ez a megközelítés akkor hasznos, ha az IoT Central vagy a tesztelési eszköz
 
 ![SAS-kulcsok egy adott eszközhöz](./media/concepts-get-connected/single-device-sas.png)
 
-További információkért tekintse meg a [Node.js ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazás](./tutorial-connect-device.md) oktatóanyagát.
+További információkért tekintse meg a [Node.js ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazás](./tutorial-connect-device-nodejs.md) oktatóanyagát.
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Eszközök csatlakoztatása a SAS használatával
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d738868e0e4ca7599f4aaf8d6e09d22f26a8db92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77016374"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024472"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Oktatóanyag: Vízminőség-figyelő alkalmazás létrehozása az Azure IoT Central ban
 
@@ -58,7 +58,7 @@ Ebben a szakaszban az Azure IoT központi **vízminőség-figyelési** sablon ha
     * **URL**: Bármilyen URL-t megadhat, vagy később módosíthatja az URL-értéket.
     * Ha Rendelkezik Azure-előfizetéssel, adja meg a **Címtár,** **az Azure-előfizetés**és a **Régió**értékét. Ha nem rendelkezik előfizetéssel, bekapcsolhatja a **7 napos ingyenes próbaverziót,** és kivégezheti a szükséges kapcsolattartási adatokat.
 
-    A könyvtárakról és az előfizetésekről további információt az [Alkalmazás létrehozása](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) rövid útmutató című témakörben talál.
+    A könyvtárakról és az előfizetésekről további információt az [Alkalmazás létrehozása](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) rövid útmutató című témakörben talál.
 
 1. A lap bal alsó részén válassza a **Létrehozás** gombot.
 

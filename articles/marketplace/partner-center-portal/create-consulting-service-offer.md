@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873820"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869797"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatási ajánlat létrehozása
 
@@ -115,7 +115,7 @@ Itt&#39;határozza meg a piactéren megjelenő ajánlat részleteit. Ez magában
 > [!NOTE]
 > Ajánlat részletei nem&#39;, hogy az angol, ha az &quot;ajánlat leírása kezdődik a mondat, Ez az alkalmazás csak akkor érhető el [nem angol nyelven]. &quot; Az is&#39;, hogy hasznos linket ad meg, hogy olyan nyelven kínáljon tartalmat, amely&#39;eltér az Ajánlat lista részleteiben használttól.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az **Ajánlat alias** mezőjében az ajánlat létrehozásakor megadott szöveggel. A nevet később módosíthatja.
 
@@ -173,6 +173,9 @@ Legfeljebb három (de legalább egy) támogató PDF-dokumentum hozzáadása az a
 ### <a name="marketplace-images"></a>Marketplace-képek
 
 Adjon meg emblémákat és képeket az ajánlatához. Minden képnek .png formátumúnak kell lennie. Az elmosódott képek elutasításra kerülnek.
+
+>[!Note]
+>Ha probléma van a fájlok feltöltésével, győződjön https://upload.xboxlive.com meg arról, hogy a helyi hálózat nem blokkolja a Partnerközpont által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Áruházi emblémák
 

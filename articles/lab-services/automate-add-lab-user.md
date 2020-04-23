@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81a8c5030f716246caf3dcd8b540bb47fcaf6520
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718139"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023622"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Laborfelhasználó automatikus hozzáadása laborkörnyezethez az Azure DevTest Labsben
-Az Azure DevTest Labs lehetővé teszi, hogy gyorsan hozzon létre önkiszolgáló fejlesztési-tesztelési környezeteket az Azure Portal használatával. Ha azonban több csapattal és több DevTest Labs-példával rendelkezik, a létrehozási folyamat automatizálása időt takaríthat meg. [Az Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) lehetővé teszik, hogy laborokat, laborvirtuális gépeket, egyéni lemezképeket, képleteket hozzon létre, és automatizált módon adjon hozzá felhasználókat. Ez a cikk kifejezetten a felhasználók hozzáadása a DevTest Labs-példány.
+Az Azure DevTest Labs lehetővé teszi, hogy gyorsan hozzon létre önkiszolgáló fejlesztési-tesztelési környezeteket az Azure Portal használatával. Ha azonban több csapattal és több DevTest Labs-példával rendelkezik, a létrehozási folyamat automatizálása időt takaríthat meg. [Az Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Environments) lehetővé teszik, hogy laborokat, laborvirtuális gépeket, egyéni lemezképeket, képleteket hozzon létre, és automatizált módon adjon hozzá felhasználókat. Ez a cikk kifejezetten a felhasználók hozzáadása a DevTest Labs-példány.
 
 Ha hozzá szeretne adni egy felhasználót egy tesztkörnyezetbe, adja hozzá a felhasználót a **devtest labs felhasználói** szerepköréhez a laborban. Ez a cikk bemutatja, hogyan automatizálhatja egy felhasználó hozzáadása a laborhoz az alábbi módok on:
 

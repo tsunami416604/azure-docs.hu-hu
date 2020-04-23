@@ -1,23 +1,19 @@
 ---
 title: Azure Diagnosztikai bővítmény windowsos használatra
 description: Az Azure Windows virtuális gépek figyelése az Azure Diagnosztikai bővítmény használatával
-services: virtual-machines-windows
-documentationcenter: ''
 author: johnkemnetz
 manager: ashwink
-editor: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d38a3cac5525de6835bbb0f9873cbd0636d44a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471618"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869674"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure diagnosztikai bővítmény Windows virtuális gépekhez
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73906857"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024880"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -62,11 +62,11 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 
 1. Válasszon az ezen az oldalon elérhető lehetőségek közül:
 
-    1. Az iparági irányelvekkel való munkához kattintson **a További szabványok hozzáadása**gombra. További információt a Dinamikus megfelelőségi csomagok frissítése című [témakörben talál.](update-regulatory-compliance-packages.md)
+    1. Az iparági irányelvekkel való munkához válassza **a További szabványok hozzáadása**lehetőséget. További információt a Dinamikus megfelelőségi csomagok frissítése című [témakörben talál.](update-regulatory-compliance-packages.md)
 
-    1. Egyéni kezdeményezések hozzárendeléséhez és kezeléséhez kattintson **az Egyéni kezdeményezések hozzáadása gombra.** További információt az [Egyéni biztonsági házirendek használata](custom-security-policies.md)című témakörben talál.
+    1. Egyéni kezdeményezések hozzárendeléséhez és kezeléséhez válassza **az Egyéni kezdeményezések hozzáadása**lehetőséget. További információt az [Egyéni biztonsági házirendek használata](custom-security-policies.md)című témakörben talál.
 
-    1. Az alapértelmezett házirend megtekintéséhez és szerkesztéséhez kattintson a **Hatályos házirend megtekintése** elemre, és folytassa az alábbiakban leírtak szerint. 
+    1. Az alapértelmezett házirend megtekintéséhez és szerkesztéséhez válassza a **Hatályos házirend megtekintése** lehetőséget, és folytassa az alábbiakban leírtak szerint. 
 
        ![házirend képernyő](./media/security-center-policies/policy-screen.png)
        
@@ -96,20 +96,20 @@ A Security Center szerepköralapú hozzáférés-vezérlést (RBAC) használ, am
 Ha az alapértelmezett biztonsági házirend olyan javaslatot hoz létre, amely nem releváns a környezetében, leállíthatja azt a házirend-definíció letiltásával, amely elküldi a javaslatot.
 A javaslatokról a [Biztonsági javaslatok kezelése](security-center-recommendations.md)című témakörben talál további információt.
 
-1. A Biztonsági központ **Házirend & megfelelősége** szakaszban kattintson a **Biztonsági házirend gombra.**
+1. A Biztonsági központ **házirend & megfelelősége** szakaszában válassza a **Biztonsági házirend**lehetőséget.
 
    ![házirend-kezelés](./media/tutorial-security-policy/policy-management.png)
 
-2. Kattintson arra az előfizetésre vagy felügyeleti csoportra, amelynek a javaslatát le szeretné tiltani.
+2. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelynek a javaslatát le szeretné tiltani.
 
    > [!NOTE]
    > A felügyeleti csoport az előfizetésekre alkalmazza a szabályzatokat. Így ha letiltja egy előfizetés szabályzatát, az előfizetés pedig egy olyan felügyeleti csoporthoz tartozik, amely ugyanazt a szabályzatot alkalmazza, továbbra is megkapja a szabályzatra vonatkozó javaslatokat. A rendszer továbbra is a felügyeleti szinten alkalmazza a szabályzatot, valamint létrehoz javaslatokat.
 
-1. Kattintson **a Hatályos házirend megtekintése gombra.**
+1. Válassza **a Hatályos házirend megtekintése**lehetőséget.
 
    ![házirend letiltása](./media/tutorial-security-policy/view-effective-policy.png)
 
-1. Kattintson a hozzárendelt házirendre.
+1. Válassza ki a hozzárendelt házirendet.
 
    ![házirend letiltása](./media/tutorial-security-policy/security-policy.png)
 
