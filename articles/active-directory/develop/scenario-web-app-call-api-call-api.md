@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6f7634d16eeaa631f6d9f3c13ce23181ce7b40b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: c07241345a724e4489fb137cfe862cde6518b318
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881808"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868716"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó webalkalmazás: Webes API hívása
 
@@ -26,7 +26,7 @@ Most, hogy rendelkezik egy jogkivonatot, meghívhat egy védett webes API-t.
 
 Az alábbiakban egyszerűsített kódot olvashat `HomeController`a művelethez. Ez a kód kap egy jogkivonatot a Microsoft Graph hívásához. A kód hozzáadva megmutatja, hogyan hívhatja meg a Microsoft Graphot REST API-ként. A Microsoft Graph API URL-címe az appsettings.json fájlban található, és a következő változóban `webOptions`olvasható:
 
-```JSon
+```json
 {
   "AzureAd": {
     "Instance": "https://login.microsoftonline.com/",

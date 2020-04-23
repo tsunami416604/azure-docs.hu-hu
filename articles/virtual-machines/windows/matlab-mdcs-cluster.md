@@ -1,24 +1,19 @@
 ---
 title: MATLAB-fürtök virtuális gépeken
 description: A Microsoft Azure virtuális gépeivel MATLAB elosztott számítástechnikai kiszolgálófürtöket hozhat létre a nagy számítási igényű párhuzamos MATLAB-számítási feladatok futtatásához
-services: virtual-machines-windows
-documentationcenter: ''
 author: mscurrell
-manager: gwallace
-editor: ''
-ms.assetid: e9980ce9-124a-41f1-b9ec-f444c8ea5c72
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: Windows
+ms.subservice: workloads
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: a2fb2479f5544b869b51e796085fcb4d0b76121a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038145"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869423"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB elosztott számítástechnikai kiszolgálófürtjeinek létrehozása az Azure virtuális gépein
 A Microsoft Azure virtuális gépeivel egy vagy több MATLAB elosztott számítástechnikai kiszolgálófürtöt hozhat létre a nagy számítási igényű párhuzamos MATLAB-számítási feladatok futtatásához. Telepítse a MATLAB distributed Computing Server szoftvert egy virtuális gépre alaplemezképként való használatra, és használjon Egy Azure gyorsindítási sablont vagy egy [(a GitHubon](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)elérhető) Azure PowerShell-parancsfájlt a fürt üzembe helyezéséhez és kezeléséhez. Üzembe helyezés után csatlakozzon a fürthöz a számítási feladatok futtatásához.
@@ -26,7 +21,7 @@ A Microsoft Azure virtuális gépeivel egy vagy több MATLAB elosztott számít�
 ## <a name="about-matlab-and-matlab-distributed-computing-server"></a>A MATLAB és a MATLAB Distributed Computing Server szolgáltatásról
 A [MATLAB](https://www.mathworks.com/products/matlab/) platform mérnöki és tudományos problémák megoldására van optimalizálva. A nagyléptékű szimulációkkal és adatfeldolgozási feladatokkal rendelkező MATLAB-felhasználók a MathWorks párhuzamos számítástechnikai termékeit használhatják a számítási igényű munkaterhelések felgyorsítására a számítási fürtök és a hálózati szolgáltatások kihasználásával. [A Párhuzamos számításkezelő eszközkészlet](https://www.mathworks.com/products/parallel-computing/) lehetővé teszi a MATLAB-felhasználók számára, hogy párhuzamosítsák az alkalmazásokat, és kihasználják a többmagos processzorok, GPU-k és számítási fürtök előnyeit. [A MATLAB Distributed Computing Server](https://www.mathworks.com/products/distriben/) lehetővé teszi a MATLAB-felhasználók számára, hogy számos számítógépet használjanak egy számítási fürtben.
 
-Az Azure virtuális gépeinek használatával matlab elosztott számítástechnikai kiszolgálófürtöket hozhat létre, amelyek ugyanazokat a mechanizmusokat biztosítják a párhuzamos munka elküldéséhez, mint a helyszíni fürtök, például interaktív feladatok, kötegelt feladatok, független feladatok és kommunikáció Feladatok. Az Azure-nak a MATLAB platformmal való együttes használata számos előnnyel jár a hagyományos helyszíni hardverek kiépítéséhez és használatához képest: a virtuális gépméretek széles választéka, a fürtök igény szerinti létrehozása, így csak a használt számítási erőforrásokért kell fizetnie, és a képes tesztelni modellek et méretarányosan.  
+Az Azure virtuális gépek használatával matlab elosztott számítástechnikai kiszolgáló fürtök, amelyek mind ugyanazokat a mechanizmusokat, amelyek rendelkezésre állnak, hogy párhuzamos munkát, mint a helyszíni fürtök, például interaktív feladatok, kötegelt feladatok, független feladatok, és a kommunikáció feladatok. Az Azure-nak a MATLAB platformmal való együttes használata számos előnnyel jár a hagyományos helyszíni hardverek kiépítéséhez és használatához képest: a virtuális gépméretek széles skálája, a fürtök igény szerinti létrehozása, így csak a használt számítási erőforrásokért kell fizetnie, és a modellek nagy méretekben történő tesztelésének lehetősége.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Ügyfélszámítógép** – Az Azure-ral és a MATLAB distributed Computing Server fürttel való kommunikációhoz windows-alapú ügyfélszámítógépre van szükség a telepítés után.

@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2a39dbb3676df5ed916203bdcbbc51d5a0da32a4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 42f3ca233597d0fbc31ce656bd856875e873e3c2
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677834"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868480"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>A Microsoft identity platform és az OAuth 2.0 eszközengedélyezési engedélyezési folyamat
 
@@ -40,7 +40,7 @@ Az ügyfélnek először ellenőriznie kell a hitelesítési kiszolgálón a hit
 > Próbálja meg végrehajtani ezt a kérést a Postman!
 > [![Próbálja meg futtatni ezt a kérést a Postman ben](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
@@ -81,7 +81,7 @@ Ha a felhasználó személyes fiókkal hitelesíti magát (a /common vagy /consu
 
 Amíg a felhasználó a, `verification_uri`az ügyfél a `/token` rendszer segítségével a rendszer `device_code`nek kell lekérnie a kért jogkivonat végpontját.
 
-```
+```HTTP
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 

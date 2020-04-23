@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77082968"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868147"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>A CloudSimple privát felhőkörnyezet és alkalmazások elérése a helyszíni környezetből
 
@@ -35,7 +35,7 @@ A Private Cloud vCenter és az NSX-T-kezelő eléréséhez az alábbi táblázat
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>A helyszíni active directory identitásforrásként való használatához szükséges portok
 
-A helyszíni active directory identitásforrásként való konfigurálásához a Private Cloud vCenter szolgáltatásban a táblában definiált portokat meg kell nyitni.  A konfigurációs lépésekért tekintse [meg az Azure AD használata identitásszolgáltatóként a felhőbeli magánfelhőben lévő vCentert.](https://docs.azure.cloudsimple.com/azure-ad/)
+A helyszíni active directory identitásforrásként való konfigurálásához a Private Cloud vCenter szolgáltatásban a táblában definiált portokat meg kell nyitni.  A konfigurációs lépésekért tekintse [meg az Azure AD használata identitásszolgáltatóként a felhőbeli magánfelhőben lévő vCentert.](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/)
 
 | Port         | Forrás                           | Cél                                         | Cél                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,6 +60,6 @@ A magánfelhőn futó hozzáférési számítási feladatok virtuális gépei ha
 
 ## <a name="next-steps"></a>További lépések
 
-* [VLAN-ok és alhálózatok létrehozása és kezelése](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
-* [Csatlakozás helyszíni hálózathoz az Azure ExpressRoute használatával](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [Helyek közötti VPN beállítása a helyszínen](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [VLAN-ok és alhálózatok létrehozása és kezelése](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)
+* [Csatlakozás helyszíni hálózathoz az Azure ExpressRoute használatával](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-connection/)
+* [Helyek közötti VPN beállítása a helyszínen](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway/)

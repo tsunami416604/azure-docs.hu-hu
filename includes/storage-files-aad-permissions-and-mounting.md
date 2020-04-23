@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e40171b95e6faae0020f8bf61410aad8999ddecb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 608c2619c19a2b5fa7e39c1ecb82be40ff4e83f4
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536529"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82072620"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Hozzáférési engedélyek hozzárendelése identitáshoz
 
@@ -87,15 +87,6 @@ A következő engedélykészletek támogatottak a fájlmegosztás gyökérkönyv
 - NT HATÓSÁG\RENDSZER:(F)
 - LÉTREHOZÓ TULAJDONOSA:(OI)(CI)(IO)(F)
 
-### <a name="configure-ntfs-permissions-with-icacls"></a>NTFS-engedélyek konfigurálása icacls-szel
-A következő Windows-paranccsal teljes körű engedélyeket adhat a fájlmegosztás alatt lévő összes könyvtárnak és fájlnak, beleértve a gyökérkönyvtárat is. Ne felejtse el lecserélni a példában lévő helyőrző értékeket a saját értékeire.
-
-```
-icacls <mounted-drive-letter>: /grant <user-email>:(f)
-```
-
-Az NTFS-engedélyek beállításához és a támogatott engedélyek különböző típusainak beállításához szükséges icacls használatáról a [icacls parancssori hivatkozásában](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)talál további információt.
-
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>Fájlmegosztás csatlakoztatása a parancssorból
 
 Az **Azure-fájlmegosztás** csatlakoztatása a Windows net use paranccsal csatlakoztathatja. Ne felejtse el lecserélni a helyőrző értékeket a következő példában a saját értékeire. A fájlmegosztások csatlakoztatásáról az [Azure-fájlmegosztás használata a Windows rendszerrel](../articles/storage/files/storage-how-to-use-files-windows.md)című témakörben talál további információt. 
@@ -103,6 +94,7 @@ Az **Azure-fájlmegosztás** csatlakoztatása a Windows net use paranccsal csatl
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
 ```
+
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>NTFS-engedélyek konfigurálása a Windows Fájlkezelővel
 A Windows Fájlkezelővel teljes körű engedélyt adhat a fájlmegosztás alatt lévő összes könyvtárnak és fájlnak, beleértve a gyökérkönyvtárat is.
 
@@ -114,6 +106,15 @@ A Windows Fájlkezelővel teljes körű engedélyt adhat a fájlmegosztás alatt
 7.    Válassza **az OK gombot.**
 8.    A **Biztonság** lapon jelölje ki az új felhasználónak adni kívánt összes engedélyt.
 9.    Kattintson az **Alkalmaz** gombra.
+
+### <a name="configure-ntfs-permissions-with-icacls"></a>NTFS-engedélyek konfigurálása icacls-szel
+A következő Windows-paranccsal teljes körű engedélyeket adhat a fájlmegosztás alatt lévő összes könyvtárnak és fájlnak, beleértve a gyökérkönyvtárat is. Ne felejtse el lecserélni a példában lévő helyőrző értékeket a saját értékeire.
+
+```
+icacls <mounted-drive-letter>: /grant <user-email>:(f)
+```
+
+Az NTFS-engedélyek beállításához és a támogatott engedélyek különböző típusainak beállításához szükséges icacls használatáról a [icacls parancssori hivatkozásában](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)talál további információt.
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. Fájlmegosztás csatlakoztatása tartományhoz csatlakoztatott virtuális gépről
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 733a225c66040cb2ab819f041647120c8b63b6a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016017"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868077"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizálja a CloudSimple private cloud-ot az Oracle RAC telepítéséhez
 
@@ -169,7 +169,7 @@ VSphere-fürt privát felhőn való üzembe helyezéséhez kövesse az alábbi e
 
 a vSAN-házirendek határozzák meg a virtuális gép lemezeken tárolt adatok tolerálandó és lemezcsíkozási hibákat.  A létrehozott tárolási szabályzatot a virtuális gép lemezein kell alkalmazni a virtuális gép létrehozása közben.
 
-1. Jelentkezzen be a privát felhő [vSphere kliensébe.](https://docs.azure.cloudsimple.com/vsphere-access)
+1. Jelentkezzen be a privát felhő [vSphere kliensébe.](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)
 2. A felső menüben válassza a **Házirendek és profilok lehetőséget.**
 3. A bal oldali menüben válassza a **Virtuálisgép-tárolási házirendek,** majd **a Virtuálisgép-tárolási szabályzat létrehozása**lehetőséget.
 4. Adjon meg egy értelmes nevet a házirendnek, és kattintson a **TOVÁBB**gombra.

@@ -1,18 +1,18 @@
 ---
-title: Hibakeresési renderelés
+title: Renderelés hibakeresése
 description: A kiszolgálóoldali hibakeresési renderelési hatások áttekintése
 author: jumeder
 ms.author: jumeder
 ms.date: 04/09/2020
 ms.topic: article
-ms.openlocfilehash: 675f8d988e64ed7b556f154f681ccb53ed1000c6
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f10c736cad9322752d5d552d29ef0c63635628a5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394292"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868161"
 ---
-# <a name="debug-rendering"></a>Hibakeresési renderelés
+# <a name="debug-rendering"></a>Renderelés hibakeresése
 
 A hibakeresési renderelési API számos globális lehetőséget kínál a kiszolgálóoldali renderelés különböző hibakeresési hatásokkal történő módosításához.
 
@@ -22,7 +22,7 @@ A hibakeresési renderelési API számos globális lehetőséget kínál a kiszo
 |---------------------------------|:-------------------------------------|
 |Keretszámláló                    | Szövegátfedés megjelenítése a keret bal felső sarkába. A szöveg az aktuális kiszolgálóoldali keretazonosítót mutatja, amely a renderelés előrehaladtával folyamatosan növekszik. |
 |Sokszögek száma                    | Szövegátfedés megjelenítése a keret bal felső sarkába. A szöveg a jelenleg megjelenített sokszögek mennyiségét mutatja, amely megegyezik a [kiszolgálóoldali teljesítménylekérdezések](performance-queries.md) által lekérdezett értékkel| 
-|Drótváz                        | Ha engedélyezve van, a kiszolgálóra betöltött összes objektumgeometria vezetékes módban jelenik meg. Ebben az üzemmódban csak a sokszögek szélei lesznek raszterizálva. |
+|Drótváz                        | Ha engedélyezve van, a kiszolgálóra betöltött összes objektumgeometria vezetékes módban jelenik meg. Ebben a módban csak a sokszögek szélei raszterizálódnak. |
 
 A következő kód lehetővé teszi a következő hibakeresési hatásokat:
 
@@ -56,7 +56,7 @@ A megadott hatások azonban nem adnak részletes önvizsgálatot a szolgáltatá
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
 * A szövegátfedések engedélyezése kevés vagy semmilyen teljesítményterhelést jelent.
-* Ezenkívül az átfedés engedélyezése nem triviális teljesítményterheléssel jár, bár a jelenettől függően változhat. Összetett jelenetek esetén ez a mód azt eredményezheti, hogy a képkockasebesség a 60 Hz-es cél alá csökken.
+* A drótváz üzemmód engedélyezése nem triviális teljesítményterheléssel jár, bár a jelenettől függően változhat. Összetett jelenetek esetén ez a mód azt eredményezheti, hogy a képkockasebesség a 60 Hz-es cél alá csökken.
 
 ## <a name="next-steps"></a>További lépések
 

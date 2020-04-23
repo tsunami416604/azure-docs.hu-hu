@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 828bdab26684b29d664ea42d0b36f475c7872a80
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a282264ed3e9539bcc96babfc41376d2c6c35628
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309466"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868651"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft identity platform és OAuth 2.0 Erőforrás-tulajdonos jelszóhitelesítő adatai
 
@@ -50,8 +50,8 @@ A ROPC-folyamat egyetlen kérelem: elküldi az ügyfélazonosítót és a felhas
 > [![Próbálja meg futtatni ezt a kérést a Postman ben](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
-```
-// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
+```HTTP
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -67,13 +67,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
 | `tenant` | Kötelező | Az a címtár-bérlő, amelybe a felhasználót be szeretné jelentkezni. Ez lehet GUID vagy rövid név formátumban. Ez a paraméter nem `common` állítható `consumers`be a vagy `organizations`a ikonra, de lehet. |
-| `client_id` | Kötelező | Az alkalmazás (ügyfél) azonosítója, amely az [Azure Portal – App regisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap az alkalmazáshoz rendelt. | 
+| `client_id` | Kötelező | Az alkalmazás (ügyfél) azonosítója, amely az [Azure Portal – App regisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap az alkalmazáshoz rendelt. |
 | `grant_type` | Kötelező | A beállításnak `password`a beállítására kell beállítható. |
 | `username` | Kötelező | A felhasználó e-mail címe. |
 | `password` | Kötelező | A felhasználó jelszava. |
 | `scope` | Ajánlott | Az alkalmazás által [igényelt, térelválasztott hatókörök](v2-permissions-and-consent.md)vagy engedélyek listája. Egy interaktív folyamat, a rendszergazda vagy a felhasználó nak hozzá kell járulnia, hogy ezeket a hatóköröket előre. |
-| `client_secret`| Néha szükséges | Ha az alkalmazás nyilvános ügyfél, `client_secret` `client_assertion` akkor a vagy nem vehető fel.  Ha az alkalmazás bizalmas ügyfél, akkor azt is tartalmaznia kell. | 
-| `client_assertion` | Néha szükséges | A tanúsítvány `client_secret`segítségével létrehozott, a alkalmazás egy másik formája.  További részleteket a [tanúsítványhitelesítő](active-directory-certificate-credentials.md) adatok ban talál. | 
+| `client_secret`| Néha szükséges | Ha az alkalmazás nyilvános ügyfél, `client_secret` `client_assertion` akkor a vagy nem vehető fel.  Ha az alkalmazás bizalmas ügyfél, akkor azt is tartalmaznia kell. |
+| `client_assertion` | Néha szükséges | A tanúsítvány `client_secret`segítségével létrehozott, a alkalmazás egy másik formája.  További részleteket a [tanúsítványhitelesítő](active-directory-certificate-credentials.md) adatok ban talál. |
 
 ### <a name="successful-authentication-response"></a>Sikeres hitelesítési válasz
 

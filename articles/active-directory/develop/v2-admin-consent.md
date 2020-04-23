@@ -12,16 +12,16 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c9f633e0d205adaf5cefb2e3c036ce7f48253651
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886381"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868667"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Rendszergazdai hozzájárulás a Microsoft identitásplatformján
 
-Egyes engedélyek hez a rendszergazda hozzájárulása szükséges ahhoz, hogy a bérlőn belül megadhatók legyenek.  A rendszergazdai hozzájárulási végpont használatával engedélyeket adhat a teljes bérlőnek.  
+Egyes engedélyek hez a rendszergazda hozzájárulása szükséges ahhoz, hogy a bérlőn belül megadhatók legyenek.  A rendszergazdai hozzájárulási végpont használatával engedélyeket adhat a teljes bérlőnek.
 
 ## <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott: Írja alá a felhasználót az alkalmazásba
 
@@ -33,15 +33,15 @@ Amikor bejelentkezik a felhasználóaz alkalmazásba, azonosíthatja azt a szerv
 
 Ha készen áll arra, hogy engedélyeket kérjen a szervezet rendszergazdájától, átirányíthatja a felhasználót a Microsoft identity platform *rendszergazdájának hozzájárulási végpontjára.*
 
-```
+```HTTP
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://graph.microsoft.com/calendars.read
+https://graph.microsoft.com/mail.send
 ```
 
 
@@ -51,7 +51,7 @@ Ha készen áll arra, hogy engedélyeket kérjen a szervezet rendszergazdáját�
 | `client_id` | Kötelező | Az **Alkalmazás (ügyfél) azonosító,** amely az [Azure Portal – Alkalmazás regisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt élmény. |
 | `redirect_uri` | Kötelező |Az átirányítási URI, ahol azt szeretné, hogy a választ kell küldeni az alkalmazás kezelni. Pontosan meg kell egyeznie az alkalmazásregisztrációs portálon regisztrált átirányítási URI-k egyikével. |
 | `state` | Ajánlott | A kérelemben szereplő érték, amely a jogkivonat-válaszban is vissza kerül. Ez lehet egy sor bármilyen tartalmat akarsz. Az állapot segítségével kódolhat információkat a felhasználó állapotáról az alkalmazásban a hitelesítési kérelem bekövetkezése előtt, például azt az oldalt vagy nézetet, amelyen voltak. |
-|`scope`        | Kötelező      | Az alkalmazás által kért engedélyek készletét határozza meg. Ez lehet statikus (a /.default használatával) vagy dinamikus hatókörök.  Ez magában foglalhatja az`openid`OIDC hatóköröket ( , `profile`, `email`. ). | 
+|`scope`        | Kötelező      | Az alkalmazás által kért engedélyek készletét határozza meg. Ez lehet statikus (a /.default használatával) vagy dinamikus hatókörök.  Ez magában foglalhatja az`openid`OIDC hatóköröket ( , `profile`, `email`. ). |
 
 
 Ezen a ponton az Azure AD megköveteli a bérlői rendszergazda a kérelem teljesítéséhez. A rendszergazdának jóvá kell hagynia a `scope` paraméterben kért összes engedélyt.  Ha statikus (`/.default`) értéket használt, az a v1.0-s rendszergazdai hozzájárulási végponthoz hasonlóan fog működni, és az alkalmazáshoz szükséges engedélyekben található összes hatókörhöz beleegyezést kér.

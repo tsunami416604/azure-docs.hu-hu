@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0c4cb553ee7edc92b5cb3d319631a985de476b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 15b31bf14b01a215d99814ce57eb9cd5f2cb2773
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159304"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Oktatóanyag: Az Azure Active Directory integrációja a CS Stars-szal
 
@@ -111,7 +111,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre a kö
     b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<subdomain>.csstars.com/enterprise/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Bejelentkezési URL-címmel és azonosítóval. Lépjen kapcsolatba [a CS Stars ügyféltámogatási csapatával,](http://www.riskonnectclearsight.com/support/) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Bejelentkezési URL-címmel és azonosítóval. Lépjen kapcsolatba [a CS Stars ügyféltámogatási csapatával,](https://riskonnect.com/support/) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
 4. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
@@ -129,7 +129,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre a kö
 
 ### <a name="configure-cs-stars-single-sign-on"></a>Cs Stars egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálásához a **CS Stars** oldalán el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról a [CS Stars támogatási csapatának.](http://www.riskonnectclearsight.com/support/) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Az egyszeri bejelentkezés konfigurálásához a **CS Stars** oldalán el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról a [CS Stars támogatási csapatának.](https://riskonnect.com/support/) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
@@ -150,7 +150,7 @@ Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalo
     a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
     b. A **Felhasználónév** mezőbe írja be **a\@brittasimon yourcompanydomain.extension típusú felhasználónév mezőt.**  
-    Például: BrittaSimon@contoso.com
+    A BrittaSimon@contoso.com például
 
     c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
@@ -184,7 +184,7 @@ Ebben a szakaszban engedélyezi Britta Simon számára az Azure egyszeri bejelen
 
 ### <a name="create-cs-stars-test-user"></a>CS Stars tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a CS Stars-ban. Működjön együtt a [CS Stars támogatási csapatával](http://www.riskonnectclearsight.com/support/) a felhasználók hozzáadása a CS Stars platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a CS Stars-ban. Működjön együtt a [CS Stars támogatási csapatával](https://riskonnect.com/support/) a felhasználók hozzáadása a CS Stars platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

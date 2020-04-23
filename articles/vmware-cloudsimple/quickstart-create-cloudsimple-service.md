@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8ca8c5cacd2b1a1a7b4f70615831d2901510045e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024432"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868015"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Rövid útmutató – Azure VMware-megoldás létrehozása a CloudSimple szolgáltatással
 
@@ -34,7 +34,7 @@ Tekintse át [a hálózati előfeltételeket.](cloudsimple-network-checklist.md)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-the-service"></a>A szolgáltatás létrehozása
 
@@ -87,4 +87,4 @@ A cloudsimple-i privát felhőkörnyezet fizetős kapacitásának beállítása,
 ## <a name="next-steps"></a>További lépések
 
 * [Magánfelhő létrehozása és környezet konfigurálása](quickstart-create-private-cloud.md)
-* További információ a [CloudSimple szolgáltatásról](https://docs.azure.cloudsimple.com/cloudsimple-service)
+* További információ a [CloudSimple szolgáltatásról](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service)

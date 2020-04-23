@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b9de6c2b8d9f7b11b686e820aab54fdd8e8a02f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67442839"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Oktatóanyag: Az Azure Active Directory integrációja a Merces HR2day szolgáltatásával
 
@@ -121,7 +121,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához a Merces HR2day szo
 
 6. A **Felhasználói attribútumok** párbeszédpanel **Felhasználói jogcímek** szakaszában a **Szerkesztés ikon** használatával szerkesztse a jogcímeket, vagy adja hozzá a jogcímeket az **Új jogcím hozzáadása** paragrafussal az SAML token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Név |  Forrás attribútuma |
+    | Name (Név) |  Forrás attribútuma |
     | ---------- | ----------- |
     | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
     | | |
@@ -142,7 +142,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához a Merces HR2day szo
 
     f. Kattintson **az Ok gombra**
 
-    g. Kattintson a **Mentés** gombra.
+    g. Kattintson a **Save** (Mentés) gombra.
 
 7. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
@@ -163,7 +163,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához a Merces HR2day szo
 Az egyszeri bejelentkezés **mercesi** oldalon történő konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket az Azure Portalról a [Merces támogatási csapatának a HR2day-nek.](mailto:servicedesk@merces.nl) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
 > [!NOTE]
-> Említse meg a Merces csapatának, hogy ennek az **https://hr2day.force.com/INSTANCENAME**integrációnak be kell állítania az entitásazonosítót a mintával.
+> Említse meg a Merces csapatnak, hogy ennek az integrációnak be kell állítania az entitásazonosítót a **\/https: /hr2day.force.com/INSTANCENAME**mintával.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
@@ -184,7 +184,7 @@ Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalo
     a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
     b. A **Felhasználónév** mezőtípusban`brittasimon@yourcompanydomain.extension`  
-    Például: BrittaSimon@contoso.com
+    A BrittaSimon@contoso.com például
 
     c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 

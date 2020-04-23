@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5e462c52c8b06af6da5081f84a082138cd53a3f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: fcd80c052edf659f93f97800da3112c1f11309cc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677946"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868492"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft identity platform és OAuth 2.0 engedélyezési kód folyamat
 
@@ -35,7 +35,7 @@ Magas szinten a natív/mobilalkalmazások teljes hitelesítési folyamata egy ki
 
 ## <a name="request-an-authorization-code"></a>Engedélyezési kód kérése
 
-Az engedélyezési kód folyamata azzal kezdődik, `/authorize` hogy az ügyfél a végpontra irányítja a felhasználót. Ebben a kérésben az `openid` `offline_access`ügyfél `https://graph.microsoft.com/mail.read `a , és engedélyeket kér a felhasználótól.  Egyes engedélyek rendszergazdai korlátozások, például adatok írása a `Directory.ReadWrite.All`szervezet címtárába a használatával. Ha az alkalmazás hozzáférést kér egy szervezeti felhasználótól az engedélyek egyikéhez, a felhasználó hibaüzenetet kap, amely szerint nincs engedélye az alkalmazás engedélyeinek hozzájárulására. A korlátozott rendszergazdai hatókörökhöz való hozzáférés kéréséhez közvetlenül a vállalati rendszergazdától kell kérnie őket.  További információért olvassa el [a Rendszergazdai engedélyek című.](v2-permissions-and-consent.md#admin-restricted-permissions)
+Az engedélyezési kód folyamata azzal kezdődik, `/authorize` hogy az ügyfél a végpontra irányítja a felhasználót. Ebben a kérésben az `openid` `offline_access`ügyfél `https://graph.microsoft.com/mail.read ` a , és engedélyeket kér a felhasználótól.  Egyes engedélyek rendszergazdai korlátozások, például adatok írása a `Directory.ReadWrite.All`szervezet címtárába a használatával. Ha az alkalmazás hozzáférést kér egy szervezeti felhasználótól az engedélyek egyikéhez, a felhasználó hibaüzenetet kap, amely szerint nincs engedélye az alkalmazás engedélyeinek hozzájárulására. A korlátozott rendszergazdai hatókörökhöz való hozzáférés kéréséhez közvetlenül a vállalati rendszergazdától kell kérnie őket.  További információért olvassa el [a Rendszergazdai engedélyek című.](v2-permissions-and-consent.md#admin-restricted-permissions)
 
 ```
 // Line breaks for legibility only
@@ -76,7 +76,7 @@ Miután a felhasználó hitelesíti magát, és megadja a jóváhagyást, a Micr
 
 A sikeres `response_mode=query` válasz a következőképpen néz ki:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
 code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
@@ -91,7 +91,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 
 Hibaválaszok is küldhető a, `redirect_uri` így az alkalmazás tudja kezelni őket megfelelően:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -122,7 +122,7 @@ Az alábbi táblázat a hibaválasz `error` paraméterében visszaadható külö
 
 Most, hogy beszerzett egy authorization_code, és a felhasználó engedélyt kapott, beválthatja a `code` kívánt `access_token` erőforrást. Ehhez küldjön `POST` egy kérést a `/token` végpontnak:
 
-```
+```HTTP
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -221,7 +221,7 @@ Most, hogy sikeresen beszerzett egy, `access_token`használhatja a jogkivonatot 
 > [!TIP]
 > Hajtsa végre ezt a kérést postás! (Először `Authorization` cserélje le a fejlécet) [Próbálja meg futtatni ezt a kérést a Postman ben ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 GET /v1.0/me/messages
 Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
@@ -235,7 +235,7 @@ A frissítési jogkivonatok nem rendelkeznek megadott élettartammal. A frissít
 
 Bár a frissítési jogkivonatok nem vonják vissza, ha új hozzáférési jogkivonatok beszerzésére használják, a régi frissítési jogkivonat ot kell elvetni. Az [OAuth 2.0 specifikáció](https://tools.ietf.org/html/rfc6749#section-6) ja: "Az engedélyezési kiszolgáló új frissítési jogkivonatot adhat ki, amely esetben az ügyfélnek el kell vetnie a régi frissítési jogkivonatot, és le kell cserélnie az új frissítési jogkivonatra. Az engedélyezési kiszolgáló visszavonhatja a régi frissítési jogkivonatot, miután új frissítési jogkivonatot adott ki az ügyfélnek."
 
-```
+```HTTP
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -276,6 +276,7 @@ A sikeres jogkivonat-válasz így fog kinézni:
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
+
 | Paraméter     | Leírás         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | A kért hozzáférési jogkivonat. Az alkalmazás használhatja ezt a jogkivonatot a biztonságos erőforrás, például egy webes API hitelesítéséhez. |

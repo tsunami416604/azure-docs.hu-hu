@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c13c6ab180a172c034d25ac84781f5d3f83ae186
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 43fbc158c9ed0bbe87a75cd845433c7a7be2e6d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086644"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867899"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Oktatóanyag: Az Azure Active Directory integrációja a Workstars-szal
 
@@ -110,7 +110,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre a kö
     b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<subdomain>.workstars.com/saml/login_check`
 
     > [!NOTE]
-    > Az érték nem valós. Frissítse az értéket a tényleges Válasz URL-címével. Lépjen kapcsolatba [a Workstars ügyféltámogatási csapatával](https://support.workstars.com/) az érték lefelvételéhez. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Az érték nem valós. Frissítse az értéket a tényleges Válasz URL-címével. Lépjen kapcsolatba [a Workstars ügyféltámogatási csapatával](http://support.workstars.com/) az érték lefelvételéhez. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
 5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
@@ -176,7 +176,7 @@ Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalo
 
     a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mező brittasimon@yourcompanydomain.extensiontípusa mezőben. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező brittasimon@yourcompanydomain.extensiontípusa mezőben. A BrittaSimon@contoso.com például
 
     c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
@@ -210,7 +210,7 @@ Ebben a szakaszban engedélyezheti Britta Simon számára, hogy egyetlen bejelen
 
 ### <a name="create-workstars-test-user"></a>Workstars tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Workstars-ban. A [Workstars támogatási csapatával](https://support.workstars.com) együttműködve vegye fel a felhasználókat a Workstars platformra.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Workstars-ban. A [Workstars támogatási csapatával](http://support.workstars.com) együttműködve vegye fel a felhasználókat a Workstars platformra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

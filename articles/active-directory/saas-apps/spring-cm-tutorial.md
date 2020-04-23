@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be4edfe3262ab74d903384eb00c0282acc7a3299
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74233384"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Oktatóanyag: Az Azure Active Directory integrációja a SpringCM-mel
 
@@ -145,7 +145,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre a kö
             
     d. Válassza az **Engedélyezés** **saml** lehetőséget.
 
-    e. Kattintson a **Mentés** gombra.
+    e. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
@@ -165,7 +165,7 @@ Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalo
 
     a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. A BrittaSimon@contoso.com például
 
     c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
@@ -202,7 +202,7 @@ Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés t spr
 Ahhoz, hogy az Azure Active Directory-felhasználók bejelentkezhessenek a SpringCM-be, ki kell építeni őket a SpringCM-be. SpringCM esetén kiépítése manuális feladat.
 
 > [!NOTE]
-> További információ: [SpringCM-felhasználó létrehozása és szerkesztése.](https://knowledge.springcm.com/create-and-edit-a-springcm-user) 
+> További információ: [SpringCM-felhasználó létrehozása és szerkesztése.](http://community.springcm.com/s/article/Create-and-Edit-a-SpringCM-User-1619481053) 
 
 **Ha felhasználói fiókot szeretne kiépíteni a SpringCM rendszerbe, hajtsa végre az alábbi lépéseket:**
 
@@ -222,7 +222,7 @@ Ahhoz, hogy az Azure Active Directory-felhasználók bejelentkezhessenek a Sprin
 
 1. Adja hozzá a felhasználót egy **biztonsági csoporthoz.**
 
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
    > [!NOTE]
    > A SpringCM-fiók létrehozása bármely más SpringCM felhasználói fiók-létrehozási eszközzel vagy API-k használatával azure AD felhasználói fiókok kiépítése.
@@ -233,7 +233,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hoz
 
 Amikor a Hozzáférési panelen a SpringCM csempére kattint, automatikusan be kell jelentkeznie arra a SpringCM-be, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
 - [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

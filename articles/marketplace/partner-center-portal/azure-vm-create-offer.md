@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731266"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869062"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Azure virtuálisgép-ajánlat létrehozása
 
@@ -21,7 +21,7 @@ ms.locfileid: "81731266"
 
 Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy Azure virtuálisgép-ajánlatot az [Azure Piactéren.](https://azuremarketplace.microsoft.com/) Mind a Windows- és Linux-alapú virtuális gépek, amelyek tartalmazzák az operációs rendszer, virtuális merevlemez (VHD), és akár 16 adatlemezek.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 ### <a name="publishing-benefits"></a>Közzétételi előnyök
 
@@ -254,6 +254,9 @@ Adja meg a Microsoft elérhetőségi adatait, amelyeket akkor használhat, ha pr
 ### <a name="marketplace-media"></a>Marketplace-média
 
 Adjon meg emblémákat és képeket az ajánlatához. Minden képnek PNG formátumúnak kell lennie. Az elmosódott képek a beküldött anyag elutasítását eredményezik.
+
+>[!Note]
+>Ha probléma van a fájlok feltöltésével, győződjön https://upload.xboxlive.com meg arról, hogy a helyi hálózat nem blokkolja a Partnerközpont által használt szolgáltatást.
 
 #### <a name="marketplace-logos"></a>Marketplace-emblémák
 

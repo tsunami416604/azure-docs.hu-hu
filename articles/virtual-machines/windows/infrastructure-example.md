@@ -1,26 +1,19 @@
 ---
 title: Példa az Azure-infrastruktúra forgatókönyve
 description: Ismerje meg a példainfrastruktúra Azure-beli üzembe helyezésére vonatkozó legfontosabb tervezési és megvalósítási irányelveket.
-documentationcenter: ''
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: example-scenario
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43e96b891e60dfcf8bc3c29b202bb60213905372
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038567"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869465"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Példa az Azure-infrastruktúra forgatókönyve windowsos virtuális gépekhez
 Ez a cikk végigvezeti egy példa alkalmazás-infrastruktúra kiépítése. Részletesen tervezzük meg egy egyszerű online áruház infrastruktúrájának tervezését, amely egyesíti az elnevezési konvenciókkal, a rendelkezésre állási készletekkel, a virtuális hálózatokkal és a terheléselosztókkal kapcsolatos irányelveket és döntéseket, és ténylegesen üzembe helyezi a virtuális gépeket (VM).We detailing ing a infrastructure for a simple store that together the guidelines and decisions around naming conventions, availability sets, virtual networks and load balancers, and tényleges deploying your virtual machines (VMs).
@@ -47,7 +40,7 @@ Az így kapott formatervezési mintának a következőket kell tartalmaznia:
 * Azure Managed Disks
 * Két alhálózattal rendelkező virtuális hálózat
 * A hasonló szerepkörrel rendelkező virtuális gépek rendelkezésre állási készletei
-* Virtuális gépek
+* Virtual machines (Virtuális gépek)
 
 A fentiek mindegyike követi az alábbi elnevezési konvenciókat:
 
@@ -89,7 +82,7 @@ Annak érdekében, hogy online áruházuk mind a négy szintjének magas rendelk
 * **azos-use-as-sql** az SQL-kiszolgálók
 * **azos-use-as-dc** tartományvezérlőkhöz
 
-## <a name="virtual-machines"></a>Virtuális gépek
+## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 A Kalandor-worksciklusok az alábbi neveket határozta meg az Azure-beli virtuális gépekhez:
 
 * **azos-use-vm-web01** az első webszerver

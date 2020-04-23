@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0941a6cdde5b60b71da6f58ea6b0fd2ccbb262
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d64307c4f91839c466b5f3f495cad8d7410ed364
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160962"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Oktatóanyag: Az Azure Active Directory integrációja a Splunk Enterprise-szal és a Splunk Cloud-dal
 
@@ -113,7 +113,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához a Splunk Enterprise
     c. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<splunkserver>/saml/acs`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Lépjen kapcsolatba [a Splunk Enterprise és a Splunk Cloud Client támogatási csapatával,](https://www.splunk.com/about-us/contact.html#tabs/customer-support) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Lépjen kapcsolatba [a Splunk Enterprise és a Splunk Cloud Client támogatási csapatával,](https://www.splunk.com/en_us/about-splunk/contact-us.html) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
 5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
@@ -121,7 +121,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához a Splunk Enterprise
 
 ### <a name="configure-splunk-enterprise-and-splunk-cloud-single-sign-on"></a>Splunk Enterprise és Splunk Cloud Single Sign-On konfigurálása
 
-A **Splunk Enterprise és a Splunk Cloud** oldalon történő egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról a [Splunk Enterprise és a Splunk Cloud támogatási csapatának.](https://www.splunk.com/about-us/contact.html#tabs/customer-support) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+A **Splunk Enterprise és a Splunk Cloud** oldalon történő egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról a [Splunk Enterprise és a Splunk Cloud támogatási csapatának.](https://www.splunk.com/en_us/about-splunk/contact-us.html) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
@@ -142,7 +142,7 @@ Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalo
     a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
     b. A **Felhasználónév** mezőbe írja be **a\@brittasimon yourcompanydomain.extension típusú felhasználónév mezőt.**  
-    Például: BrittaSimon@contoso.com
+    A BrittaSimon@contoso.com például
 
     c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
@@ -176,7 +176,7 @@ Ebben a szakaszban engedélyezheti Britta Simon számára az Azure egyszeri beje
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Splunk Enterprise és Splunk Cloud tesztfelhasználó létrehozása
 
-Ebben a szakaszban hozzon létre egy felhasználó nevű Britta Simon a Splunk Enterprise és Splunk Cloud. A [Splunk Enterprise és a Splunk Cloud támogatási csapatával](https://www.splunk.com/about-us/contact.html#tabs/customer-support) együttműködve hozzáadhatja a felhasználókat a Splunk Enterprise és a Splunk Cloud platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban hozzon létre egy felhasználó nevű Britta Simon a Splunk Enterprise és Splunk Cloud. A [Splunk Enterprise és a Splunk Cloud támogatási csapatával](https://www.splunk.com/en_us/about-splunk/contact-us.html) együttműködve hozzáadhatja a felhasználókat a Splunk Enterprise és a Splunk Cloud platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

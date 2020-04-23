@@ -12,12 +12,12 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 161f97dc99ce5ce16d7c40126b95a769c4b79621
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677685"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868330"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft identity platform és OpenID Connect protokoll
 
@@ -38,6 +38,7 @@ Az OpenID Connect olyan metaadat-dokumentumot ír le, amely az alkalmazás bejel
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
+
 > [!TIP]
 > Próbálja ki! Kattintson [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) ide `common` a bérlők konfigurációjának megtekintéséhez.
 
@@ -52,7 +53,7 @@ A `{tenant}` négy érték egyikét veheti fel:
 
 A metaadatok egy egyszerű JavaScript objektumjelölés (JSON) dokumentum. Tekintse meg a következő kódrészletet egy példát. A kódrészlet tartalmát teljes körűen leírjuk az [OpenID Connect specifikációban.](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)
 
-```
+```json
 {
   "authorization_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/authorize",
   "token_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/token",
@@ -84,7 +85,7 @@ Ha a webalkalmazásnak hitelesítenie kell a felhasználót, a végpontra irány
 
 Például:
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -123,7 +124,7 @@ Miután a felhasználó hitelesíti és megadja a jóváhagyást, a Microsoft id
 
 A sikeres válasz `response_mode=form_post` használata a következőképpen néz ki:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -140,7 +141,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 Hibaválaszok is küldhető az átirányítási URI-ba, hogy az alkalmazás kezelni tudja őket. A hibaválasz így néz ki:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -187,7 +188,7 @@ Ha ki szeretné jelentkezni a felhasználót az alkalmazásból, az nem elegend�
 
 A felhasználóát átirányíthatja `end_session_endpoint` az OpenID Connect metaadat-dokumentumban felsoroltakhoz:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
@@ -211,7 +212,7 @@ A teljes OpenID Connect bejelentkezési és tokenbeszerzési folyamat a követke
 ## <a name="get-access-tokens"></a>Hozzáférési jogkivonatok beszereznie
 Hozzáférési jogkivonatok beszerzéséhez módosítsa a bejelentkezési kérelmet:
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -236,7 +237,7 @@ Az engedélyható körök nek a `response_type=id_token code`kérelembe való be
 
 A sikeres válasz `response_mode=form_post` használata így néz ki:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -254,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 Hibaválaszok is küldhető az átirányítási URI-ba, hogy az alkalmazás megfelelően tudja kezelni őket. A hibaválasz így néz ki:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded

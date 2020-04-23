@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244731"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869334"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>A VMware-megoldás elérése a CloudSimple portálon keresztül az Azure Portalról
 
@@ -34,7 +34,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="access-the-cloudsimple-portal"></a>Hozzáférés a CloudSimple portáljához
 
@@ -71,5 +71,5 @@ Ha az engedélyek nem engedélyezik a hozzáférést a CloudSimple portálhoz, l
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [magánfelhő létrehozásáról](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* További információ a [magánfelhő létrehozásáról](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/)
 * További információ a [magánfelhő-környezet konfigurálásáról](quickstart-create-private-cloud.md)
