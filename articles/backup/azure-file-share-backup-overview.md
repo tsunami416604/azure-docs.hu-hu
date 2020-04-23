@@ -3,12 +3,12 @@ title: Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure-fájlmegosztás számára a Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: bea5035ff50eaf4047f56cde3bd671d81e21f5d3
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101423"
+ms.locfileid: "82105743"
 ---
 # <a name="about-azure-file-share-backup"></a>Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 
@@ -47,12 +47,7 @@ Az Azure fájlmegosztás biztonsági mentése natív, felhőalapú biztonsági m
 
 ## <a name="backup-costs"></a>Biztonsági mentési költségek
 
-Az Azure fájlmegosztás biztonsági másolata egy pillanatkép-alapú megoldás, és a pillanatképekhez felmerülő tárolási költségek számlázása a Azure Files használattal együtt történik, az [itt](https://azure.microsoft.com/pricing/details/storage/files/)említett díjszabási adatokkal együtt.
-
-A biztonsági mentési megoldás kihasználása esetében azonban a védett példány díja a [Azure Files biztonsági mentése](https://azure.microsoft.com/pricing/details/backup/) szakaszban leírt díjszabási modellnek megfelelően történik. A tényleges díj jelenleg csak az USA nyugati középső régiójában frissült. Más régiókban a pontos árak néhány regionális változattal is frissülnek, azonban ugyanazt az árképzési modellt használják.
-
->[!NOTE]
->A "Protected instance" díj már nem érhető el, és csak az [itt](https://azure.microsoft.com/pricing/details/storage/files/)említett díjszabás szerint kell fizetnie.
+Jelenleg csak Pillanatképek után kell fizetnie, mivel az Azure-fájlmegosztás biztonsági másolata egy pillanatkép-alapú megoldás. A pillanatképekkel kapcsolatban felmerülő tárolási költségek számlázása Azure Files használattal együtt történik, az [itt](https://azure.microsoft.com/pricing/details/storage/files/)említett díjszabási adatok alapján.
 
 ## <a name="next-steps"></a>További lépések
 

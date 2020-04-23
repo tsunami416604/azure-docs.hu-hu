@@ -3,12 +3,12 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b89e4a55bc8bc4ef2f4cdb50059537fe7708b6a6
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: d7b19fd11e6784a188a18f6a613eef5ff4f77764
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101161"
+ms.locfileid: "82105641"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
@@ -74,7 +74,7 @@ Igen. A részletes dokumentációt [itt](backup-azure-afs-automation.md)találja
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Hozzáférhetek az Azure Backups által készített pillanatképekhez, és csatlakoztatják őket?
 
-A Azure Backup által készített Pillanatképek a portálon, a PowerShellben vagy a CLI-ben is elérhetők. Az Azure Files megosztási pillanatképeiről információkért lásd: [Az Azure Files megosztási pillanatképeinek áttekintése (előzetes verzió)](../storage/files/storage-snapshots-files.md).
+A Azure Backup által készített Pillanatképek a portálon, a PowerShellben vagy a CLI-ben is elérhetők. Ha többet szeretne megtudni a Azure Files-megosztási pillanatképekről, tekintse meg a [Azure Files megosztási Pillanatképek áttekintése](../storage/files/storage-snapshots-files.md)című témakört.
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Mi a biztonsági mentésekhez konfigurálható maximális adatmegőrzés?
 

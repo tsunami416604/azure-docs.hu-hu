@@ -12,5 +12,5 @@ ms.locfileid: "66814916"
 ---
 A minta futtatásához telepítse az [Azure CLI](/cli/azure/install-azure-cli)legújabb verzióját. Első lépésként futtassa a `az login` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.
 
-Minták az Azure CLI a `bash` rendszerhéjhoz írt. A minta Windows PowerShell vagy parancssori rendszerben való futtatásához szükség lehet a parancsfájl elemeinek módosítására.
+Az Azure CLI-hez készült mintákat a rendszer `bash` a rendszerhéjhoz írja. Ha ezt a mintát szeretné futtatni a Windows PowerShellben vagy a parancssorban, előfordulhat, hogy módosítania kell a parancsfájl elemeit.
 

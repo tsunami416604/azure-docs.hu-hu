@@ -1,98 +1,113 @@
 ---
-title: Az Azure Event Hubs integrálása az Azure Private Link szolgáltatással
-description: Ismerje meg, hogyan integrálható az Azure Event Hubs az Azure Private Link szolgáltatással
+title: Az Azure Event Hubs integrálása az Azure Private link Service szolgáltatással
+description: Ismerje meg, hogyan integrálható az Azure Event Hubs az Azure Private link Service használatával
 services: event-hubs
 author: spelluru
 ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: bcc360bbe4dd58200993b9377317ccb608b3529d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 110d4b94eda8315c20f4baa70256f7e5ed378530
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383646"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106474"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Az Azure Event Hubs integrálása az Azure Private Link (előzetes verzió) szolgáltatással
-Az Azure Private Link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és az Azure Cosmos DB) és az Azure által üzemeltetett ügyfél-/partnerszolgáltatások elérését a virtuális hálózat **egy privát végpontján** keresztül.
+# <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Az Azure Event Hubs integrálása az Azure Private Linktel (előzetes verzió)
+Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
 
-A privát végpont egy hálózati adapter, amely privát és biztonságos kapcsolatot biztosít az Azure Private Link által működtetett szolgáltatással. A privát végpont egy privát IP-címet használ a virtuális hálózatból, hatékonyan hozza a szolgáltatást a virtuális hálózatba. A szolgáltatáshoz irányuló összes forgalom átirányítható a privát végponton keresztül, így nincs szükség átjárókra, NAT-eszközökre, ExpressRoute- vagy VPN-kapcsolatokra vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Csatlakozhat egy Azure-erőforrás egy példányához, így a legmagasabb szintű részletességet biztosíthatja a hozzáférés-vezérlésben.
+A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
-További információ: [Mi az Azure Private Link?](../private-link/private-link-overview.md)
+További információ: [Mi az az Azure Private link?](../private-link/private-link-overview.md)
 
-> [!NOTE]
-> Ez a funkció csak a **dedikált** szint támogatott. A dedikált szinttel kapcsolatos további információkért [lásd: Dedikált eseményközpontok áttekintése.](event-hubs-dedicated-overview.md) 
+> [!IMPORTANT]
+> Ez a funkció csak a **dedikált** szinten támogatott. További információ a dedikált platformról: [dedikált Event Hubs áttekintése](event-hubs-dedicated-overview.md). 
 >
-> Ez a funkció jelenleg **előzetes verzióban érhető el.** 
+> Ez a funkció jelenleg **előzetes**verzióban érhető el. 
 
+>[!WARNING]
+> A privát végpontok engedélyezése megakadályozhatja, hogy más Azure-szolgáltatások a Event Hubs használatával kommunikálnak.
+>
+> A megbízható Microsoft-szolgáltatások nem támogatottak, ha a virtuális hálózatok implementálva vannak.
+>
+> Olyan általános Azure-forgatókönyvek, amelyek nem működnek a virtuális hálózatokkal (vegye figyelembe, hogy a lista **nem** teljes) –
+> - Azure Monitor (diagnosztikai beállítás)
+> - Azure Stream Analytics
+> - Integráció a Azure Event Grid
+> - Azure IoT Hub útvonalak
+> - Azure IoT Device Explorer
+>
+> A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
+> - Azure Web Apps
+> - Azure Functions
 
-## <a name="add-a-private-endpoint-using-azure-portal"></a>Privát végpont hozzáadása az Azure Portalhasználatával
+## <a name="add-a-private-endpoint-using-azure-portal"></a>Privát végpont hozzáadása a Azure Portal használatával
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Ha integrálni szeretne egy Event Hubs-névteret az Azure Private Linkkel, a következő entitásokra vagy engedélyekre van szüksége:
+Event Hubs névtér Azure Private-hivatkozással való integrálásához a következő entitásokra vagy engedélyekre lesz szüksége:
 
-- Eseményközpontok névtere.
-- Egy Azure virtuális hálózat.
-- A virtuális hálózat alhálózata.
-- Tulajdonosi vagy közreműködői engedélyek a névtérhez és a virtuális hálózathoz egyaránt.
+- Egy Event Hubs névtér.
+- Egy Azure-beli virtuális hálózat.
+- Egy alhálózat a virtuális hálózaton.
+- A névtérhez és a virtuális hálózathoz tartozó tulajdonosi vagy közreműködői engedélyek.
 
-A privát végpontnak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Amikor kiválaszt egy régiót a privát végponthoz a portál használatával, automatikusan csak az adott régióban lévő virtuális hálózatokat szűri. A névtér lehet egy másik régióban.
+A privát végpontnak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Ha a portál használatával kiválaszt egy régiót a privát végponthoz, akkor az automatikusan csak az adott régióban lévő virtuális hálózatokat fogja szűrni. A névtér lehet egy másik régióban is.
 
-A privát végpont egy privát IP-címet használ a virtuális hálózatban.
+A privát végpont egy magánhálózati IP-címet használ a virtuális hálózaton.
 
 ### <a name="steps"></a>Lépések
-Ha már rendelkezik Eseményközpont-névtérrel, az alábbi lépésekkel hozhat létre privát kapcsolatkapcsolatot:
+Ha már rendelkezik Event Hubs névtérrel, a következő lépések végrehajtásával hozhat létre privát kapcsolati kapcsolatot:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. A keresősávba írja be az **eseményközpontokat**.
-3. Jelölje ki azt a **névteret** a listából, amelyhez saját végpontot szeretne hozzáadni.
-4. Válassza a **Hálózat** lapot a **Beállítások csoportban.**
-5. Válassza a lap tetején található **Privát végpontkapcsolatok (előnézet)** lapot. Ha nem az Event Hubs dedikált rétegét használja, megjelenik egy üzenet: **Az Event Hubs privát végpontkapcsolatait csak egy dedikált fürt ben létrehozott névterek támogatják.**
-6. A lap tetején kattintson a **+ Privát végpont** gombra.
+2. A keresősáv mezőbe írja be az **Event hubok**kifejezést.
+3. Válassza ki a listából azt a **névteret** , amelyhez privát végpontot szeretne hozzáadni.
+4. Válassza a **hálózatkezelés** fület a **Beállítások**területen.
+5. Válassza ki a **privát Endpoint Connections (előzetes verzió)** fület az oldal tetején. Ha nem a Event Hubs dedikált szintjét használja, egy üzenet jelenik meg: **a Event Hubson a magánhálózati végponti kapcsolatok csak a dedikált fürtben létrehozott névterek által támogatottak**.
+6. A lap tetején kattintson a **+ privát végpont** gombra.
 
     ![Kép](./media/private-link-service/private-link-service-3.png)
-7. Az Alapok lapon **hajtsa** végre az alábbi lépéseket: 
-    1. Válassza ki azt az **Azure-előfizetést,** amelyben létre szeretné hozni a privát végpontot. 
-    2. Válassza ki a magánvégpont-erőforrás **erőforráscsoportját.**
-    3. Adja meg a magánvégpont **nevét.** 
-    5. Válasszon ki egy **régiót** a privát végponthoz. A privát végpontnak ugyanabban a régióban kell lennie, mint a virtuális hálózatnak, de lehet egy másik régióban, amelyben a magánkapcsolati erőforrás, amelyhez csatlakozik. 
-    6. Válassza a **Tovább: Erőforrás >** gombot a lap alján.
+7. Az **alapvető beállítások** lapon kövesse az alábbi lépéseket: 
+    1. Válassza ki azt az **Azure-előfizetést** , amelyben létre szeretné hozni a privát végpontot. 
+    2. Válassza ki a privát végpont erőforráshoz tartozó **erőforráscsoportot** .
+    3. Adja meg a magánhálózati végpont **nevét** . 
+    5. Válasszon ki egy **régiót** a privát végpont számára. A privát végpontnak ugyanabban a régióban kell lennie, mint a virtuális hálózatnak, de a privát kapcsolati erőforráshoz tartozó másik régióban is lehet, amelyhez csatlakozik. 
+    6. Válassza a **Tovább: erőforrás >** gombot az oldal alján.
 
-        ![Saját végpont létrehozása – Alapok lap](./media/private-link-service/create-private-endpoint-basics-page.png)
-8. Az **Erőforrás** lapon hajtsa végre az alábbi lépéseket:
-    1. A csatlakozási módszer esetében, ha a **Csatlakozás egy Azure-erőforráshoz lehetőséget választja a címtárban,** kövesse az alábbi lépéseket: 
-        1. Válassza ki azt az **Azure-előfizetést,** amelyben az **Event Hubs névtér** létezik. 
-        2. Az **Erőforrás típus esetén**válassza a **Microsoft.EventHub/namespaces** elemet az **Erőforrás típushoz.**
-        3. Az **Erőforrás listában**válasszon ki egy Eseményközpontok névteret a legördülő listából. 
-        4. Ellenőrizze, hogy a **Cél alerőforrás** **névtérre van-e**állítva.
-        5. Válassza a **Tovább: A >** gomb a lap alján lehetőséget. 
+        ![Privát végpont létrehozása – alapismeretek lap](./media/private-link-service/create-private-endpoint-basics-page.png)
+8. Az **erőforrás** oldalon hajtsa végre az alábbi lépéseket:
+    1. A kapcsolódási módszer esetén, ha a **címtárban a kapcsolódás Azure-erőforráshoz**lehetőséget választja, kövesse az alábbi lépéseket: 
+        1. Válassza ki azt az **Azure-előfizetést** , amelyben a **Event Hubs névtere** létezik. 
+        2. Az **erőforrástípus**mezőben válassza ki a **Microsoft. EventHub/Namespaces** elemet az **erőforrás típushoz**.
+        3. Az **erőforrás**mezőben válasszon ki egy Event Hubs névteret a legördülő listából. 
+        4. Győződjön meg arról, hogy a **cél alerőforrás** a **névtérre**van beállítva.
+        5. Válassza a **Tovább: konfigurációs >** gombot az oldal alján. 
         
-            ![Saját végpont létrehozása – Erőforrás lap](./media/private-link-service/create-private-endpoint-resource-page.png)    
-    2. Ha a **Csatlakozás egy Azure-erőforráshoz erőforrás-azonosító vagy alias szerint lehetőséget választja,** kövesse az alábbi lépéseket:
-        1. Adja meg az **erőforrás-azonosítót** vagy **az aliast.** Ez lehet az erőforrás-azonosító vagy alias, amelyet néhány megosztott Önnel.
-        2. A **Cél alerőforrás**mezőbe írja be a **névteret.** Ez az al-erőforrás típusa, amely a privát végpont férhet hozzá.
-        3. (nem kötelező) Adjon meg egy **kérésüzenetet**. Az erőforrás-tulajdonos látja ezt az üzenetet a privát végpontkapcsolat kezelése közben.
-        4. Ezután válassza a **Tovább: Konfigurációs >** gombot a lap alján.
+            ![Privát végpont létrehozása – Erőforrás lap](./media/private-link-service/create-private-endpoint-resource-page.png)    
+    2. Ha a **Kapcsolódás Azure-erőforráshoz erőforrás-azonosító vagy alias alapján**lehetőséget választja, kövesse az alábbi lépéseket:
+        1. Adja meg az **erőforrás-azonosítót** vagy az **aliast**. Ez lehet az az erőforrás-azonosító vagy alias, amelyet mások megosztanak Önnel.
+        2. A **cél alerőforrásnál**adja meg a **névteret**. Ez a saját végpont által elérhető alerőforrás típusa.
+        3. választható Adja meg a **kérelem üzenetét**. Az erőforrás tulajdonosa látja ezt az üzenetet a privát végponti kapcsolatok kezelése során.
+        4. Ezután válassza a **Tovább: konfigurációs >** gombot az oldal alján.
 
-            ![Saját végpont létrehozása – Csatlakozás erőforrás-azonosító használatával](./media/private-link-service/connect-resource-id.png)
-9. A **Konfiguráció lapon** kijelöli az alhálózatot egy virtuális hálózatban oda, ahol telepíteni szeretné a saját végpontot. 
-    1. Válasszon **egy virtuális hálózatot**. Csak az aktuálisan kiválasztott előfizetésben és helyen lévő virtuális hálózatok jelennek meg a legördülő listában. 
-    2. Jelöljön ki egy **alhálózatot** a kiválasztott virtuális hálózatban. 
-    3. Válassza a **Tovább: Címkék >** gomb baloldalán. 
+            ![Privát végpont létrehozása – kapcsolat az erőforrás-AZONOSÍTÓval](./media/private-link-service/connect-resource-id.png)
+9. A **konfiguráció** lapon válassza ki azt az alhálózatot egy virtuális hálózaton, ahová a magánhálózati végpontot telepíteni szeretné. 
+    1. Válasszon ki egy **virtuális hálózatot**. A legördülő listában csak a jelenleg kijelölt előfizetésben és helyen lévő virtuális hálózatok jelennek meg. 
+    2. Válasszon egy **alhálózatot** a kiválasztott virtuális hálózatban. 
+    3. Válassza a **Tovább: címkék >** gombot az oldal alján. 
 
-        ![Saját végpont létrehozása – Konfiguráció lap](./media/private-link-service/create-private-endpoint-configuration-page.png)
-10. A **Címkék** lapon hozzon létre olyan címkéket (neveket és értékeket), amelyeket a magánvégpont-erőforráshoz társítani szeretne. Ezután válassza **a Véleményezés + létrehozás** gombot az oldal alján. 
-11. A **Véleményezés + létrehozás**párbeszédpanelen tekintse át az összes beállítást, és válassza a **Létrehozás** gombot a saját végpont létrehozásához.
+        ![Privát végpont létrehozása – konfigurációs lap](./media/private-link-service/create-private-endpoint-configuration-page.png)
+10. A **címkék** lapon hozzon létre minden olyan címkét (nevet és értéket), amelyet hozzá szeretne rendelni a privát végpont-erőforráshoz. Ezután kattintson az oldal alján található **felülvizsgálat + létrehozás** gombra. 
+11. A **felülvizsgálat + létrehozás**lapon tekintse át az összes beállítást, majd kattintson a **Létrehozás** elemre a privát végpont létrehozásához.
     
-    ![Saját végpont létrehozása – Véleményezés és létrehozás lap](./media/private-link-service/create-private-endpoint-review-create-page.png)
-12. Ellenőrizze, hogy a létrehozott privát végpont-kapcsolat megjelenik-e a végpontok listájában. Ebben a példában a privát végpont automatikusan jóváhagyott, mert csatlakozik egy Azure-erőforrás a címtárban, és rendelkezik a megfelelő engedélyekkel. 
+    ![Privát végpont létrehozása – oldal áttekintése és létrehozása](./media/private-link-service/create-private-endpoint-review-create-page.png)
+12. Ellenőrizze, hogy megjelenik-e a létrehozott privát végponti kapcsolatok a végpontok listájában. Ebben a példában a privát végpontot automatikusan jóváhagyjuk, mert egy Azure-erőforráshoz kapcsolódott a címtárban, és rendelkezik a megfelelő engedélyekkel. 
 
-    ![Létrehozott privát végpont](./media/private-link-service/private-endpoint-created.png)
+    ![Saját végpont létrehozva](./media/private-link-service/private-endpoint-created.png)
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>Privát végpont hozzáadása a PowerShell használatával
-A következő példa bemutatja, hogyan azure PowerShell segítségével hozzon létre egy privát végpont-kapcsolat. Nem hoz létre dedikált fürtöt az Ön számára. A [cikk](event-hubs-dedicated-cluster-create-portal.md) lépéseit követve hozzon létre egy dedikált Eseményközpontok-fürtöt. 
+Az alábbi példa bemutatja, hogyan használható a Azure PowerShell egy privát végponti kapcsolatok létrehozásához. Nem hoz létre dedikált fürtöt. A [cikkben](event-hubs-dedicated-cluster-create-portal.md) ismertetett lépéseket követve hozzon létre egy dedikált Event Hubs-fürtöt. 
 
 ```azurepowershell-interactive
 # create resource group
@@ -153,8 +168,8 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 ```
 
-### <a name="configure-the-private-dns-zone"></a>A privát DNS-zóna konfigurálása
-Hozzon létre egy privát DNS-zónát az Event Hubs tartományhoz, és hozzon létre társítási kapcsolatot a virtuális hálózattal:
+### <a name="configure-the-private-dns-zone"></a>A magánhálózati DNS-zóna konfigurálása
+Hozzon létre egy magánhálózati DNS-zónát Event Hubs tartományhoz, és hozzon létre egy társítási hivatkozást a virtuális hálózattal:
 
 ```azurepowershell-interactive
 $zone = New-AzPrivateDnsZone -ResourceGroupName $rgName `
@@ -179,62 +194,62 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 }
 ```
 
-## <a name="manage-private-endpoints-using-azure-portal"></a>Privát végpontok kezelése az Azure Portal használatával
+## <a name="manage-private-endpoints-using-azure-portal"></a>Privát végpontok kezelése Azure Portal használatával
 
-Privát végpont létrehozásakor a kapcsolatot jóvá kell hagyni. Ha az erőforrás, amelyhez privát végpontot hoz létre, a címtárban található, jóváhagyhatja a csatlakozási kérelmet, feltéve, hogy rendelkezik a megfelelő engedélyekkel. Ha egy másik címtárban csatlakozik egy Azure-erőforráshoz, meg kell várnia, amíg az erőforrás tulajdonosa jóváhagyja a csatlakozási kérelmet.
+Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az erőforrás, amelyhez privát végpontot hoz létre, akkor jóváhagyhatja a megfelelő engedélyekkel rendelkező kapcsolatkérelem-kérést. Ha egy másik címtárban található Azure-erőforráshoz csatlakozik, meg kell várnia, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolódási kérelmet.
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | Szolgáltatás fogyasztói privát végpont állapota | Leírás |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| None | Függőben | A kapcsolat manuálisan jön létre, és a Magánkapcsolat erőforrás tulajdonosának jóváhagyása vár. |
-| Jóváhagyás | Approved | A kapcsolat automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
-| Elutasítás | Elutasítva | A kapcsolatot a magánkapcsolati erőforrás tulajdonosa elutasította. |
-| Eltávolítás | Elválasztott | A kapcsolatot a magánkapcsolati erőforrás tulajdonosa eltávolította, a privát végpont informatívsá válik, és törlésre kell törölni. |
+| None | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
+| Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
+| Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
  
-###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Privát végpontkapcsolat jóváhagyása, elutasítása vagy eltávolítása
+###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása, elutasítása vagy eltávolítása
 
 1. Jelentkezzen be az Azure portálra.
-2. A keresősávba írja be az **eseményközpontokat**.
-3. Jelölje ki a kezelni kívánt **névteret.**
-4. Válassza a **Hálózat** lapot.
-5. Nyissa meg az alábbi megfelelő szakaszt a jóváhagyni, elutasítani vagy eltávolítani kívánt művelet alapján.
+2. A keresősáv mezőbe írja be az **Event hubok**kifejezést.
+3. Válassza ki a kezelni kívánt **névteret** .
+4. Válassza a **hálózatkezelés** lapot.
+5. Nyissa meg az alábbi megfelelő szakaszt a kívánt művelet alapján: jóváhagyás, elutasítás vagy eltávolítás.
 
-### <a name="approve-a-private-endpoint-connection"></a>Privát végpontkapcsolat jóváhagyása
-1. Ha vannak függőben lévő kapcsolatok, a **létesítési** állapotban a Függő ben felsorolt kapcsolat jelenik meg. 
-2. Válassza ki a jóváhagyni kívánt **privát végpontot.**
-3. Válassza a **Jóváhagyás** gombot.
+### <a name="approve-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása
+1. Ha van függőben lévő kapcsolat, a kiépítési állapotban **függőben lévő** kapcsolat jelenik meg. 
+2. Válassza ki a jóváhagyni kívánt **privát végpontot**
+3. Kattintson a **jóváhagyás** gombra.
 
     ![Kép](./media/private-link-service/approve-private-endpoint.png)
-4. A **Kapcsolat jóváhagyása** lapon adjon hozzá megjegyzést (nem kötelező), és válassza az **Igen**lehetőséget. Ha a **Nem**lehetőséget választja, semmi sem történik. 
-5. A privát végpontkapcsolat állapotát a listában jóvá változtatva kell **látnia.** 
+4. A **kapcsolatok jóváhagyása** lapon adjon hozzá egy megjegyzést (nem kötelező), majd válassza az **Igen**lehetőséget. Ha a **nem**lehetőséget választja, semmi nem történik. 
+5. A privát végponti kapcsolatok állapota a listában a **jóváhagyott**értékre módosult. 
 
-### <a name="reject-a-private-endpoint-connection"></a>Privát végpontkapcsolat elutasítása
+### <a name="reject-a-private-endpoint-connection"></a>Privát végponti kapcsolatok elutasítása
 
-1. Ha vannak olyan privát végpontkapcsolatok, amelyeket el szeretne utasítani, függetlenül attól, hogy függőben lévő kérelemről vagy meglévő kapcsolatról van-e szó, jelölje ki a kapcsolatot, és kattintson az **Elutasítás** gombra.
+1. Ha van olyan privát végponti kapcsolat, amelyet el szeretne utasítani, legyen az egy függőben lévő kérelem vagy létező kapcsolat, válassza ki a kapcsolatot, és kattintson az **elutasítás** gombra.
 
     ![Kép](./media/private-link-service/private-endpoint-reject-button.png)
-2. A **Kapcsolat elvetése** lapon írjon be egy megjegyzést (nem kötelező), és válassza az **Igen**lehetőséget. Ha a **Nem**lehetőséget választja, semmi sem történik. 
-3. A privát végpontkapcsolat állapotát az **Elutasított**névre módosított listában kell látnia. 
+2. A **kapcsolatok elutasítása** lapon írjon be egy megjegyzést (nem kötelező), majd válassza az **Igen**lehetőséget. Ha a **nem**lehetőséget választja, semmi nem történik. 
+3. A privát végponti kapcsolatok állapota a listában **visszautasította**értékre módosult. 
 
-### <a name="remove-a-private-endpoint-connection"></a>Privát végpontkapcsolat eltávolítása
+### <a name="remove-a-private-endpoint-connection"></a>Privát végponti kapcsolatok eltávolítása
 
-1. Ha el szeretne távolítani egy privát végpontkapcsolatot, jelölje ki azt a listában, és válassza az **eszköztár Eltávolítás parancsát.**
-2. A **Kapcsolat törlése** lapon válassza az **Igen** lehetőséget a privát végpont törlésének megerősítéséhez. Ha a **Nem**lehetőséget választja, semmi sem történik.
-3. Az állapot nak leválasztva állapotra kell **változotta.** Ezután látni fogja, hogy a végpont eltűnik a listáról.
+1. Privát végponti kapcsolatok eltávolításához jelölje ki azt a listában, majd az eszköztáron kattintson az **Eltávolítás** elemre.
+2. A **Kapcsolódás törlése** lapon válassza az **Igen** lehetőséget a privát végpont törlésének megerősítéséhez. Ha a **nem**lehetőséget választja, semmi nem történik.
+3. A **kapcsolat megszakadt**állapotra módosult. Ezután megjelenik a végpont a listából.
 
-## <a name="validate-that-the-private-link-connection-works"></a>Annak ellenőrzése, hogy a privát kapcsolat kapcsolata működik-e
+## <a name="validate-that-the-private-link-connection-works"></a>Annak ellenőrzése, hogy a magánhálózati kapcsolat működik-e
 
-Ellenőrizze, hogy a magánvégpont-erőforrás ugyanazon alhálózatán belüli erőforrások privát IP-címen keresztül csatlakoznak-e az Event Hubs névtérhez, és hogy rendelkeznek-e a megfelelő privát DNS-zóna-integrációval.
+Győződjön meg arról, hogy a magánhálózati végpont erőforrásának ugyanazon alhálózatán belüli erőforrásai csatlakoznak a Event Hubs névtérhez egy magánhálózati IP-címen keresztül, valamint a saját DNS-zónák megfelelő integrálását.
 
-Először hozzon létre egy virtuális gépet a Windows virtuális gép létrehozása az [Azure Portalon](../virtual-machines/windows/quick-create-portal.md) című csoportban leírt lépések végrehajtásával
+Először hozzon létre egy virtuális gépet a [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/windows/quick-create-portal.md) című témakör lépéseit követve.
 
-A **Hálózat** lapon:
+A **hálózatkezelés** lapon:
 
-1. Adja meg **a virtuális hálózatot** és **az alhálózatot.** Létrehozhat egy új virtuális hálózatot, vagy kiválaszthat egy meglévőt. Ha egy meglévőt választ, győződjön meg arról, hogy a régió egyezik.If selecting an existing one, make sure the region matches.
-1. Adjon meg egy **nyilvános IP-erőforrást.**
-1. A **hálózati adapter hálózati biztonsági csoportjában**válassza a **Nincs**lehetőséget.
-1. A **Terheléselosztás**ban válassza a **Nem**lehetőséget.
+1. Határozza meg a **virtuális hálózatot** és az **alhálózatot**. Létrehozhat egy új virtuális hálózatot, vagy kijelölhet egy meglévőt is. Ha egy meglévőt választ ki, győződjön meg arról, hogy a régió megfelel.
+1. **Nyilvános IP-** erőforrást kell megadni.
+1. A **NIC hálózati biztonsági csoportban**válassza a **nincs**lehetőséget.
+1. A **terheléselosztás**területen válassza a **nem**lehetőséget.
 
 Nyissa meg a parancssort, és futtassa a következő parancsot:
 
@@ -242,7 +257,7 @@ Nyissa meg a parancssort, és futtassa a következő parancsot:
 nslookup <your-event-hubs-namespace-name>.servicebus.windows.net
 ```
 
-Ha az ns-lookup paranccsal oldja fel egy Event Hubs névtér IP-címét egy nyilvános végponton keresztül, a következő höz hasonló eredmény jelenik meg:
+Ha az NS lookup parancs futtatásával oldja fel egy Event Hubs névtér IP-címét egy nyilvános végponton keresztül, a következőhöz hasonló eredményt fog látni:
 
 ```console
 c:\ >nslookup <your-event-hubs-namespae-name>.servicebus.windows.net
@@ -253,7 +268,7 @@ Address:  (public IP address)
 Aliases:  <your-event-hubs-namespace-name>.servicebus.windows.net
 ```
 
-Ha az ns-lookup paranccsal oldja fel egy Event Hubs névtér IP-címét egy privát végponton keresztül, a következő höz hasonló eredmény jelenik meg:
+Ha az NS lookup parancs futtatásával oldja fel egy Event Hubs névtér IP-címét egy privát végponton keresztül, a következőhöz hasonló eredményt fog látni:
 
 ```console
 c:\ >nslookup your_event-hubs-namespace-name.servicebus.windows.net
@@ -264,17 +279,17 @@ Address:  10.1.0.5 (private IP address)
 Aliases:  <your-event-hub-name>.servicebus.windows.net
 ```
 
-## <a name="limitations-and-design-considerations"></a>Korlátozások és tervezési szempontok
+## <a name="limitations-and-design-considerations"></a>Korlátozások és kialakítási szempontok
 
-**Díjszabás:** A díjszabási információkért lásd: [Azure Private Link díjszabása.](https://azure.microsoft.com/pricing/details/private-link/)
+**Díjszabás**: díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Korlátozások:** Az Azure Event Hubs privát végpontja nyilvános előzetes verzióban érhető el. Ez a funkció az Azure összes nyilvános régiójában elérhető.
+**Korlátozások**: az Azure Event Hubs magánhálózati végpontja nyilvános előzetes verzióban érhető el. Ez a funkció az összes Azure-beli nyilvános régióban elérhető.
 
-**A privát végpontok maximális száma eseményközpontok névterében:** 120.
+**Privát végpontok maximális száma Event Hubs névtérben**: 120.
 
-További információkért lásd: [Azure Private Link szolgáltatás: Korlátozások](../private-link/private-link-service-overview.md#limitations)
+További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [Azure Private Linkről](../private-link/private-link-service-overview.md)
-- További információ az [Azure Event Hubs-ról](event-hubs-about.md)
+- További információ az [Azure Private linkről](../private-link/private-link-service-overview.md)
+- További információ az [Azure Event Hubs](event-hubs-about.md)

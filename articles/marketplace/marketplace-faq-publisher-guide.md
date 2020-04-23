@@ -1,476 +1,477 @@
 ---
-title: Gyakori kérdések a Microsoft kereskedelmi piacterén
-description: Válaszok az Azure Piactérre és a Microsoft AppSource-ra kapcsolatos gyakori kérdésekre
+title: Microsoft kereskedelmi piactér – gyakori kérdések
+description: Válaszok az Azure Marketplace-re és a Microsoft AppSourcera vonatkozó gyakori kérdésekre
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: da324e1e1a40e515cac4b26d6c9f8661f344e1d7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 4b166af219c8983e5765ef4c884ced7eb0689f54
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687603"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106678"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft kereskedelmi piactér – gyakori kérdések
 
-Válaszok a kereskedelmi piaccal kapcsolatos gyakori kérdésekre.
+Válaszok a kereskedelmi piactérsel kapcsolatos gyakori kérdésekre.
 
-## <a name="faq-for-customers"></a>Gyakran feltett kérdések az ügyfelek számára
+## <a name="faq-for-customers"></a>GYIK ügyfelek számára
 
-### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Mit kell tudni a kereskedelmi piacon
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Mit kell tudni a kereskedelmi piactérről?
 
 **Mi az Azure Marketplace?**
 
-[Az Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) hozzáférést és információkat biztosít a Microsoft és partnereink által elérhető megoldásokról és szolgáltatásokról. Az ügyfelek felfedezhetik, kipróbálhatják vagy megvásárolhatják az Azure-ra vagy az Azure-ra épülő felhőalapú szoftvermegoldásokat. Több mint 8000-es katalógusunk azure-építőelemeket, például virtuális gépeket, API-kat, Azure-alkalmazásokat, megoldássablonokat és felügyelt alkalmazásokat, SaaS-alkalmazásokat, tárolókat és tanácsadási szolgáltatásokat kínál.
+Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) hozzáférést és információkat biztosít a Microsofttól és partnereinktől származó megoldásokkal és szolgáltatásokkal kapcsolatban. Az ügyfelek felfedezhetik, kipróbálhatják vagy vásárolhatják az Azure-ra épülő felhőalapú szoftveres megoldásokat. A 8000 és a listings katalógusa Azure-építőelemeket, például Virtual Machines (VM), API-kat, Azure-alkalmazásokat, megoldás-sablonokat és felügyelt alkalmazásokat, SaaS-alkalmazásokat, tárolókat és tanácsadási szolgáltatásokat biztosít.
 
 **Kik az Azure Marketplace-ügyfelek?**
 
-Az Azure Marketplace a kereskedelmi informatikai szoftverek és szolgáltatások iránt érdeklődő informatikai szakemberek és felhőfejlesztők számára készült.
+Az Azure Marketplace olyan informatikai szakembereknek és felhőalapú fejlesztőknek készült, akik érdeklődnek a kereskedelmi IT-szoftverek és-szolgáltatások iránt.
 
-**Milyen típusú termékek érhetők el jelenleg az Azure Marketplace-en?**
+**Milyen típusú termékek érhetők el jelenleg az Azure piactéren?**
 
-Az Azure Piactér a Microsoft és az Azure-termékek és -szolgáltatások bővítésére készült partnerek technikai megoldásait és szolgáltatásait kínálja. A megoldáskatalógus több kategóriára is kiterjed, többek között a következőkre:
+Az Azure Marketplace a Microsoft és partnerei által készített technikai megoldásokat és szolgáltatásokat kínál, amelyek az Azure-termékek és-szolgáltatások bővítésére készültek. A megoldás katalógusa több kategóriára is kiterjed, beleértve a következőket:
 
-* alap operációs rendszerek
+* alapszintű operációs rendszerek
 * adatbázisok
 * biztonság
 * identity
-* Hálózati
-* blokklánc
+* hálózati
+* blockchain
 * fejlesztői eszközök
 
-### <a name="azure-marketplace-for-customers"></a>Azure Piactér az ügyfelek számára
+### <a name="azure-marketplace-for-customers"></a>Azure Marketplace ügyfelek számára
 
-**Hogyan kezdhetem el az Azure Marketplace-en?**
+**Hogyan első lépések az Azure piactéren?**
 
-Az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps)való futtatásra optimalizált és optimalizált vállalati alkalmazások és megoldások széles skáláját találhatja meg. Az Azure Marketplace is elérhető az [Azure Portalon] keresztül, amikor [**létrehoz egy erőforrást.**](https://portal.azure.com/#create/hub)
+Az Azure [piactéren](https://azuremarketplace.microsoft.com/marketplace/apps)megtekintheti az Azure-on való futtatásra hitelesített és optimalizált nagyvállalati alkalmazásokat és megoldásokat. Az Azure Marketplace a [Azure Portal] használatával is elérhető, amikor [**létrehoz egy erőforrást**](https://portal.azure.com/#create/hub).
 
-**Melyek az Azure Marketplace legfontosabb előnyei?**
+**Mik az Azure Marketplace legfőbb előnyei?**
 
-Az Azure Piactér segítségével az ügyfelek felfedezhetik az Azure-hoz készült vagy az Azure-ra épülő műszaki alkalmazásokat. A Microsoft Azure megoldás- és szolgáltatáspiacát egyetlen, egységes platformon egyesíti, hogy néhány kattintással felderítse, kipróbálhatja, megvásárolja vagy üzembe helyezze a megoldásokat.
+Az Azure piactéren az ügyfelek felfedezhetik az Azure-ra épülő vagy azokra épülő technikai alkalmazásokat. A megoldások és szolgáltatások Microsoft Azure piacát egyetlen, egységesített platformon ötvözi, így csupán néhány kattintással felderítheti, kipróbálhatja, megvásárolhatja vagy üzembe helyezheti a megoldásokat.
 
-**Hogyan vásárolhatok termékeket az Azure Piactéren?**
+**Hogyan termékeket vásárolni az Azure piactéren?**
 
-Az Azure Piactér ajánlatai a következő keresztül vásárolhatók meg:
+Az Azure Marketplace-ajánlatok a következőket vehetik fel:
 
 * [A web-alapú kirakat](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Az Azure portal] [Azure portal]
+* [Azure Portal](https://portal.azure.com) <br>
+[!Note] Azure-fiókot igényel. Ha még nem rendelkezik ilyennel, a rendszer átirányítja az **üdvözli az Azure** oldalra, hogy létrehozzon egyet.  
 * [Az Azure parancssori felülete (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
->Az előre fizetett kreditek és a pénzügyi kötelezettségvállalás egyéb formái nem használhatók fel a szoftverlicenc-díjak kifizetésére, hanem a kapcsolódó Azure-használati díjak kifizetésére használhatók. A kivételek az [Azure pénzügyi kötelezettségvállalásában](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)találhatók .
+>Az előre fizetett kreditek és a pénzügyi kötelezettségvállalás egyéb formái nem használhatók a szoftverlicenc-díjak fizetésére, de felhasználhatók a kapcsolódó Azure-használati díjak megfizetésére is. A kivételek az [Azure-beli pénzügyi kötelezettségvállalásban](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)szerepelnek.
 
-**Kiválaszthatja, hogy melyik Azure-régió(k) telepítsék az Azure Marketplace-en vásárolt?**
+**Kiválaszthatom, hogy mely Azure-régió (k) telepíthetők az Azure Marketplace-beli vásárlásra?**
 
-Az ügyfél nek lehetősége van üzembe helyezése bármely Azure adatközpont-régióban engedélyeznek. Javasoljuk, hogy a teljesítmény optimalizálása és a költségvetés szabályozása érdekében válassza ki a szolgáltatásokhoz legközelebb eső adatközponti helyeket.
+Az ügyfél bármely olyan Azure-beli adatközpont-régióban üzembe helyezhető, amelyet engedélyeznek. Javasoljuk, hogy a teljesítmény és a szabályozás költségvetésének optimalizálása érdekében a szolgáltatásokhoz legközelebb eső adatközpont-helyet válassza ki.
 
-**Ha véletlenül töröltem egy Azure *undo* Marketplace-vásárlást, visszavonhatom a műveletet?**
+**Ha véletlenül törölek egy Azure Marketplace-beli vásárlást, *visszavonhatja* a műveletet?**
 
-Nem, a törlés végleges. Ha egy előfizetést véletlenül törölnek, visszavásárolhatja azt. A nem használt funkciók vagy az előre fizetett szolgáltatások elvesznek.
+Nem, a törlés végleges. Ha egy előfizetést véletlenül törölnek, akkor a rendszer visszavásárolhatja. A fel nem használt funkciók vagy előre fizetett szolgáltatások elvesznek.
 
-**Figyelmezteti, ha megpróbálom törölni az Azure Marketplace-en vásárolt, amely az egyik alkalmazás által használt?**
+**Figyelmeztetem, ha olyan Azure Marketplace-beli vásárlást próbálok törölni, amelyet az egyik alkalmazásom használ?**
 
-Nem, az Azure nem figyelmeztet a vásárlás törlésekor, még akkor is, ha az jelenleg használatban van, vagy egy alkalmazás függ.
+Nem, az Azure nem biztosít figyelmeztetést a vásárlás törlésekor, még akkor is, ha a szolgáltatás jelenleg használatban van, vagy egy alkalmazás függ.
 
-**Ha az Azure Marketplace-en vásárolt bármilyen függőséget más eszközök, például egy Azure-webhely, kell kezelni őket?**
+**Ha az Azure Marketplace-beli vásárlás más eszközökre (például egy Azure-webhelyre) vonatkozó függőségekkel rendelkezik, akkor szeretném kezelni őket?**
 
-A függőségek nem lesznek automatikusan kezelve az Azure Marketplace-ajánlatokban. A megoldás üzembe helyezése előtt figyelmesen tekintse át az Azure Marketplace-en vásárolt azure piactéri vásárlás leírását, és állapítsa meg, hogy szükség van-e függőségre.
+Az Azure Marketplace-ajánlatok nem kezelik automatikusan a függőségeket. Körültekintően tekintse át az Azure Marketplace-beli vásárlás leírását, mielőtt használja azt annak megállapításához, hogy szükséges-e függőségek a megoldás üzembe helyezése előtt.
 
-**Vásárolhatok Azure Marketplace-megoldásokat egy Azure felhőszolgáltatótól?**
+**Vásárolhatok Azure Marketplace-megoldásokat egy Azure Cloud Solution Provider?**
 
-Ha a közzétevő úgy állította be ajánlatát, hogy az elérhető legyen a Felhőszolgáltató (CSP) csatornán keresztül, a felhőszolgáltató partnerei nek lehetősége van a megoldás viszonteladására.
+Ha a közzétevő úgy konfigurálta az ajánlatát, hogy az elérhető legyen a Cloud Solution Provider (CSP) csatornán keresztül, a felhőalapú megoldás-szolgáltatói partnerek a megoldás viszonteladására is jogosultak.
 
-**Mely országok/régiók támogatottak az Azure Marketplace-en keresztül értékesített/kiépített alkalmazások és szolgáltatások megvásárlásához?**
+**Milyen országok/régiók támogatottak az Azure piactéren eladott/kiépített alkalmazások és szolgáltatások megvásárlásához?**
 
-Az Azure Marketplace a [részvételi szabályzatokban](/legal/marketplace/participation-policy)felsorolt országokban/régiókban érhető el az Azure-ügyfelek számára.
+Az Azure Marketplace az Azure-ügyfelek számára érhető el a [részvételi szabályzatokban](/legal/marketplace/participation-policy)felsorolt országokban és régiókban.
 
 **Milyen pénznemeket támogat az Azure Marketplace?**
 
 A tranzakciók a következő 17 pénznemben hajthatók végre: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
 
-### <a name="deploying-a-solution-from-azure-marketplace"></a>Megoldás üzembe helyezése az Azure Piactérről
+### <a name="deploying-a-solution-from-azure-marketplace"></a>Megoldás üzembe helyezése az Azure Marketplace-en
 
-**Telepítettem egy Azure Marketplace virtuális gépet (VM) egy előfizetésbe, és most át szeretném telepíteni az előfizetést az egyik Azure-fiókból a másikba. Ez jelenleg támogatott?**
+**Üzembe helyezettem egy Azure Marketplace-beli virtuális gépet egy előfizetéshez, és most egy Azure-fiókból egy másikba szeretném áttelepíteni az előfizetést. Ez jelenleg támogatott?**
 
-Egy Azure-előfizetés, beleértve az Azure Marketplace virtuális gépek és szolgáltatások áttelepítéséhez törölje vagy törölje a korábbi Azure-előfizetést, mielőtt az új Azure-fiókhoz társítana. Az áttelepítés befejezése után az így kapott használati díjakat az új regisztrált fiók fizetési módja alapján számlázunk.
+Azure-előfizetések áttelepítéséhez, beleértve az Azure Marketplace-beli virtuális gépeket és szolgáltatásokat, törölje vagy szakítsa meg az összes korábbi Azure-előfizetést az új Azure-fiók társítása előtt Az áttelepítés befejezése után a használati díjak számlázása az új regisztrált fiók fizetési mód használatával történik.
 
-**Szeretnék áttelepíteni egy Azure Marketplace virtuális gép (VM) előfizetést a nagyvállalati szerződéshez. Ez jelenleg támogatott?**
+**Szeretnék áttelepíteni egy Azure Marketplace virtuálisgép-előfizetést a Nagyvállalati Szerződésra. Ez jelenleg támogatott?**
 
-Az Azure Marketplace virtuális gép (VM) előfizetésének nagyvállalati szerződésbe való áttelepítéséhez állítsa le vagy mondja le az áttelepítés előtt az előzetes előfizetést. Miután az Azure-fiók és a kapcsolódó előfizetések áttelepítése befejeződött, újramegvásárolhatja az Azure Marketplace virtuális gép vagy szolgáltatás.  Az ebből eredő használati díjakat negyedévente számlázunk a nagyvállalati szerződés alapján.
+Az Azure Marketplace virtuálisgép-előfizetés Nagyvállalati Szerződésra való áttelepítéséhez állítsa le vagy szakítsa meg az összes korábbi előfizetést az áttelepítés előtt. Miután elvégezte az Azure-fiók és a kapcsolódó előfizetések áttelepítését, újra megvásárolhatja az Azure Marketplace-beli virtuális gépet vagy szolgáltatást.  Az eredményül kapott használati díjak negyedéves számlázása a Nagyvállalati Szerződés alapján történik.
 
-### <a name="pricing-and-payment"></a>Árképzés és fizetés
+### <a name="pricing-and-payment"></a>Díjszabás és fizetés
 
-**Hogyan történik az Azure Marketplace-előfizetések díja?**
+**Hogyan történik az Azure Marketplace-előfizetések díjszabása?**
 
-A díjszabás a terméktípusoktól és a kiadók specifikációitól függ. A szoftverlicenc-díjakat és az Azure használati költségeit külön számítjuk fel az Azure-előfizetésen keresztül.
+A díjszabás a terméktípusoktól és a kiadók specifikációitól függ. A szoftverlicenc-díjakat és az Azure-használati költségeket az Azure-előfizetésen keresztül külön számoljuk el.
 
-*Szétengedés:*
+*Átengedése*
 
-+ *Bring-your-own-license (BYOL) modell:* Ha közvetlenül a kiadótól vagy viszonteladótól szerez be szoftverlicencet, nincstovábbi szoftverrel kapcsolatos díj vagy díj.
++ *Saját Licences (BYOL) modell*: Ha közvetlenül a közzétevőtől vagy viszonteladótól szerzi be a szoftvert, nincs további szoftverekkel kapcsolatos díj vagy díj.
 
-*Köteg:*
+*Köteg*
 
-Az Azure-előfizetés a közzétevő független szoftverszállítók (ISV) megoldásdíjszabása tartalmazza.
+Az Azure-előfizetést a kiadó független szoftvergyártók (ISV-k) megoldásának díjszabása tartalmazza.
 
-*Töltött:*
+*Felszámolásra*
 
-+ *Ingyenes:* Ingyenes Termékváltozat. A szoftverlicenc-díjakért vagy az ajánlat használatáért nem számítunk fel díjat.
++ *Ingyenes:* Ingyenes SKU. Nem számítunk fel díjat az ajánlat szoftverlicenc-díja vagy használata esetén.
 
-+ *Ingyenes szoftverpróba:* Egy ajánlat, amely korlátozott ideig ingyenes. A próbaidőszak alatt a kiadó szoftverlicenc-díja nem számít fel díjat. A lejáratkor automatikusan fizetős ajánlattá alakul át a kiadó által kiadott normál díjak alapján.
++ *Ingyenes szoftver próbaverziója:* Korlátozott ideig ingyenes ajánlat. A kiadó szoftverlicenc-díja nem számítható fel a próbaidőszak alatt történő használathoz. A lejárat után a rendszer automatikusan átalakítja a fizetős ajánlatot a kiadó által kiadott normál díjszabás alapján.
 
-+ *Használatalapú:* Az árak at az ajánlat használatának mértéke alapján számítjuk fel vagy számítjuk fel. A virtuális gép-lemezképek esetén óránkénti díj ellenében kell fizetni. Fejlesztői szolgáltatások és API-k esetében az ajánlat által meghatározott mértékegységenként számítják fel.
++ *Használat-alapú:* A díjszabást a szolgáltatás mértékének használata alapján számítjuk fel vagy számlázzák. Virtual Machines lemezképek esetében óradíjat számolunk fel. A fejlesztői szolgáltatások és API-k esetében az ajánlat által meghatározott mértékegység alapján kell fizetni.
 
-+ *Átalánydíj:* A SaaS-előfizetések díjszabása havi vagy évente számlázott átalánydíjként is megadható. Ez további számlázási dimenziókat is tartalmazhat, amelyek a felhasználás (például sávszélesség, e-mailek vagy jegyek) szerint számítanak fel. 
++ *Átalánydíjas díj:* Az SaaS-előfizetések díjszabása havi vagy évenkénti átalány lehet. Ez tartalmazhat további számlázási dimenziókat is, amelyeket a használati díj (például sávszélesség, e-mailek vagy jegyek) alapján számítunk fel. 
 
-+ *Felhasználónként:* Az SaaS-előfizetések díja díja díja díja díja havonta vagy évente történik. 
++ *Felhasználónkénti:* Az SaaS-előfizetések díjszabása felhasználónként, havonta vagy évente történik. 
 
-Az ajánlatspecifikus díjszabási részletek az [Azure [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) Portalon] vagy az [Azure Portalon] található megoldás részletei oldalon találhatók.
+Az ajánlat-specifikus díjszabás a megoldás részleteit ismertető oldalon [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) vagy a [Azure Portal] webhelyen található.
 
 > [!Note]
-> A havi díjak kivételével az Azure használati díjai minden díjszabási modellre vonatkoznak, kivéve, ha másként van feltüntetve.
+> A havi díjak kivételével az Azure-használati díjak minden díjszabási modellre érvényesek, kivéve, ha másként van megadva.
 
-**Hogyan kell megadni a BYOL piactéri megoldások szoftverlicenc-kulcsát, és milyen szerepet játszik az Azure Marketplace?**
+**Hogyan biztosíthatom a BYOL Marketplace-megoldások és az Azure Marketplace lejátszási szerepkörének megadásához szükséges szoftverlicenc-kulcsot?**
 
-A BYOL-megoldások licenchitelesítő adatainak megszerzése és érvényesítése a közzétevő felelőssége. A Virtuálisgép-ajánlatok esetében a licenckulcs beszerzése általában a közzétevő alkalmazásában történik az alkalmazás indítása után. Ha egy Azure-alkalmazásmegoldás-sablonon keresztül üzembe helyezett virtuálisgép-ajánlatot használ, az Erőforrás-kezelő sablon konfigurálható úgy, hogy a felhasználótól egy sor bemenetet, köztük licenchitelesítő adatokat is megkér.
+A BYOL-megoldások licenc-hitelesítő adatainak beszerzése és kényszerítése a közzétevő feladata. A virtuálisgép-ajánlatok esetében a licenckulcs beszerzése jellemzően a közzétevő alkalmazásban történik az alkalmazás elindítása után. Ha Azure Application Solution-sablonnal üzembe helyezett virtuálisgép-ajánlatot használ, a Resource Manager-sablon úgy konfigurálható, hogy a felhasználótól a licencek hitelesítő adatait tartalmazó tartományra kérdezzen.
 
-Ezek a leggyakoribb lehetőségek ajánlattípusonként:
+Ezek a leggyakoribb lehetőségek az ajánlat típusa szerint:
 
-*Virtuális gép ajánlat:*
+*Virtuális gép ajánlata:*
 
-+ *1. lehetőség:* A licenckulcs beszerzése általában a közzétevő alkalmazásában történik az alkalmazás indítása után.
++ *1. lehetőség:* A licenckulcs beszerzése jellemzően a közzétevő alkalmazásban történik az alkalmazás elindítása után.
 
-+ *2. lehetőség:* A licenckulcsot a végfelhasználó adta meg (az ajánlat által biztosított parancssori / webes felületen keresztül) a virtuális gép ajánlatának a kiválasztott előfizetésben történő üzembe helyezése után. A licenc lehet kulcs és/vagy fájl, a közzétevő meghatározása szerint.
++ *2. lehetőség:* A licencet a végfelhasználó adja meg (az ajánlat által biztosított parancssori vagy webes felületen keresztül) a kiválasztott előfizetésben lévő virtuálisgép-ajánlat telepítése után. A licenc lehet a közzétevő által meghatározott kulcs és/vagy fájl.
 
-*Azure Apps (megoldássablon és felügyelt alkalmazások):*
+*Azure-alkalmazások (megoldás-sablon és felügyelt alkalmazások):*
 
-+ *1. lehetőség:* Az Erőforrás-kezelő sablon beállítható úgy, hogy számos bemenetet kér, beleértve a licenchitelesítő adatokat is. Ez történhet licencfájlként (fájlfeltöltés) vagy kulcsként (szövegdoboz bevitele) az ajánlat központi telepítése előtt, a végfelhasználói előfizetésben.
++ *1. lehetőség:* A Resource Manager-sablon úgy konfigurálható, hogy egy sor bemenetet kérjen, beleértve a licenc hitelesítő adatait is. Ezt a végfelhasználói előfizetéshez tartozó licencfájl (fájl feltöltése) vagy kulcs (szövegmező-bevitel) megadásával teheti meg az ajánlat üzembe helyezése előtt.
 
-+ *2. lehetőség:* Megadhatja a licenckulcsot az ajánlat által biztosított parancssori / webes felületen keresztül.  Ez az Azure Apps-ajánlat üzembe helyezése után történik a kiválasztott előfizetésben. A licenc lehet kulcs és/vagy fájl, a közzétevő meghatározása szerint.
++ *2. lehetőség:* A licenckulcs az ajánlat által biztosított parancssori/webes felületen keresztül is megadható.  A kiválasztott előfizetésben az Azure apps ajánlat üzembe helyezése után történik. A licenc lehet a közzétevő által meghatározott kulcs és/vagy fájl.
 
-**Milyen típusú kísérletek támogatottak?**
+**Milyen típusú próbaverziók támogatottak?**
 
-A közzétevők egy ingyenes hónapot adhatnak hozzá a fizetős SaaS-ajánlatokhoz, és egy vagy három hónap szabad fogyasztást a virtuálisgép-lemezképekhez. Ingyenes próbaajánlatok listáját a felhívást, hogy kezdeményezzen egy próbaverziót. Ezek az ügyfelet a közzétevő által meghatározott webhelyre vezetik a próbaverzió beállításához. A próbatételek et is hozzáadhatják a fizetett ajánlatokhoz, ha az első hónap ingyenes. 
+A kiadók hozzáadhatnak egy ingyenes hónapot a fizetős SaaS-ajánlatok számára, valamint egy vagy három ingyenes hónapot a virtuálisgép-lemezképekhez. Az ingyenes próbaverziós ajánlatok a próbaverziót kezdeményező műveletre irányuló hívással rendelkeznek. Ezek az ügyfelet egy, a közzétevő által definiált webhelyre vezetik a próbaverzió beállításához. A próbaverziók olyan fizetős ajánlatokhoz is hozzáadhatók, ahol az első hónap ingyenes. 
 
-**Szükségem van egy fizetési eszköz (például hitelkártya) a fájlban telepíteni Free Tier, vagy hogy a saját licenc (BYOL) ajánlatok?**
+**Szükség van-e egy fizetési eszközre (például bankkártya) a fájlon az ingyenes csomag üzembe helyezéséhez vagy a saját licencek (BYOL) ajánlatokhoz?**
 
-Nem. Az ingyenes szint vagy byol-ajánlatok telepítéséhez nincs szükség fizetési eszközre. Az ingyenes próbaverzióhoz azonban fizetési eszköz szükséges. A **Get it now** vagy az Ingyenes **szoftverpróbagombokat** tartalmazó listák a kiválasztott Azure-előfizetésbe kerülnek.  Ezeket az adatlapokat a kiválasztott fiók regisztrált fizetési módjának megfelelően számlázunk. Az Azure használati díjait a szoftverlicenc-díjaktól elkülönítve számlázunk.
+Nem. Az ingyenes csomag vagy BYOL-ajánlatok üzembe helyezéséhez nincs szükség fizetési eszközre. Az ingyenes próbaverziós ajánlatoknak azonban fizetési eszközre van szükségük. A **beolvasás most** vagy **ingyenes próbaverziós** gombokat tartalmazó listák a kiválasztott Azure-előfizetésbe vannak telepítve.  A lista számlázása a kiválasztott fiók regisztrált fizetési mód használatával történik. Az Azure-használati díjak számlázása a szoftverlicenc-díjaktól függetlenül történik.
 
-**Ha kérdéseik vannak az Azure Marketplace-en értékesített ajánlatok díjszabásával kapcsolatban, ki végez közvetett ügyfélkapcsolatot a nagyvállalati szerződéssel (EA) kapcsolatban?**
+**Ha kérdése van az Azure piactéren eladott ajánlatok díjszabásával kapcsolatban, kinek van egy Nagyvállalati Szerződés (EA) közvetett vásárlói kapcsolata?**
 
-A nagyvállalati szerződés (EA) közvetett ügyfeleinek minden Azure Marketplace-díjszabási kérdésesetén kapcsolatba kell lépniük a licencelési megoldásszolgáltatójukkal (LSP).
+Nagyvállalati Szerződés (EA) közvetett ügyfeleknek az Azure Marketplace díjszabási kérdéseire kell felvenniük a kapcsolatot a licencelési megoldás szolgáltatójával (LSP).
 
-**Szabályozhatom az alkalmazottaim hozzáférését az Azure Piactérhez és a vásárlási jogosultságokhoz?**
+**Szabályozható az alkalmazottak hozzáférése az Azure piactérhez és a vásárlási jogosultságok?**
 
-Igen, nagyvállalati szerződés (EA) ügyfelek, a regisztrációs rendszergazda kikapcsolhatja a vásárlási jogosultságokat az összes fiók a regisztráció, és kapcsolja vissza a vásárláshoz elég hosszú.
+Igen, Nagyvállalati Szerződés (EA) ügyfelek esetében a beléptetési rendszergazda kikapcsolhatja a beléptetéshez tartozó összes fiókra vonatkozó vásárlási jogosultságokat, és a vásárláshoz elég hosszú ideig visszakapcsolhat.
 
-**Milyen fizetési módok támogatottak a kereskedelmi piactérvásárlásaihoz?**
+**Milyen fizetési módok támogatottak a kereskedelmi piactéren történő vásárlások esetében?**
 
-Az ügyfelek hitelkártyával vásárolhatnak ajánlatokat a kereskedelmi piactérről. Ha meglévő Azure-előfizetéssel rendelkezik, az Azure Marketplace-en történő vásárlások a fiókban beállított fizetési módot fogják használni, és ugyanazon a számlán jelennek meg, mint egy külön sor. Egyes ajánlatok az Azure pénzügyi kötelezettségvállalását használják fel, de a legtöbb kereskedelmi piactéri vásárlás nem vonja le a nagyvállalati szerződésre vonatkozó kötelezettségvállalásokat, bár az Azure infrastruktúra-felhasználása igen.
+Az ügyfelek hitelkártyák használatával vásárolhatnak ajánlatokat a kereskedelmi piactéren. Ha már rendelkezik Azure-előfizetéssel, az Azure Marketplace-en keresztüli vásárlások a fiókon konfigurált fizetési módot fogják használni, és ugyanazon a számlán jelennek meg, amely külön sorban szerepel. Egyes ajánlatok Azure-beli pénzügyi kötelezettségvállalást használnak, de a kereskedelmi piactéren vásárolt vásárlások nem készítenek Nagyvállalati Szerződés kötelezettségvállalásokat, noha az Azure-infrastruktúra fogyasztása is megtörténik.
 
-**Alkalmazhatok Azure-előfizetési krediteket vagy pénzbeli kötelezettségvállalási összegeket a fiókomban az Azure Marketplace-ajánlatokra?**
+**Használhatom-e az Azure-előfizetések kreditjét vagy a fiókomban lévő pénzügyi kötelezettségvállalási forrásokat az Azure Marketplace-ajánlatokhoz?**
 
-Az Azure Marketplace-ajánlatok azure-előfizetési krediteket vagy pénzügyi kötelezettségvállalási alapokat használhatnak. A programban részt vevő termékek teljes listájáért tekintse meg az [Azure-beli pénzügyi keretet](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/). Ezek az ajánlatok nem tartalmazzák a BYOL vagy a BYOS beállításokat. Az Azure Marketplace-ajánlatok nem használhatják az Azure-előfizetési krediteket vagy a pénzügyi kötelezettségvállalást: például az ingyenes egyhónapos próba-jóváírást, a havi MSDN-krediteket, az Azure-promóciókból származó krediteket, a pénzügyi kötelezettségvállalási egyenlegeket és az Azure-ból biztosított egyéb ingyenes krediteket.
+Az Azure piactéren elérhető ajánlatok az Azure-előfizetési kreditek vagy a pénzügyi kötelezettségvállalás összegét is használhatják. A programban részt vevő termékek teljes listájáért tekintse meg az [Azure-beli pénzügyi keretet](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/). Ezek az ajánlatok nem tartalmaznak BYOL-vagy BYOS-beállításokat. A többi Azure Marketplace-ajánlat nem használhatja az Azure-előfizetési krediteket vagy a pénzügyi kötelezettségvállalást: ilyen például az egy hónapos próbaidőszakos kredit, a havi MSDN-kreditek, az Azure-promóciókból származó kreditek, a pénzügyi kötelezettségvállalás egyenlege, valamint az Azure által biztosított egyéb ingyenes kreditek.
 
-**Mennyiségi licenckedvezmények vonatkoznak az Azure Marketplace-en vásárolt tartalmakra?**
+**A mennyiségi licencekre vonatkozó kedvezmények az Azure piactér-beli vásárlásokra is érvényesek?**
 
-Nem. Az Azure Marketplace-en megoldásokat birtokló közzétevő díjszabást állíthat be.  A Microsoft szabványos mennyiségi licenckedvezményei nem vonatkoznak az Azure Marketplace-en történő vásárlásokra.
+Nem. Az Azure Marketplace-en található megoldásokat birtokló közzétevők díjszabást állíthatnak be.  A Microsoft mennyiségi licencének szabványos kedvezményei nem alkalmazhatók az Azure Marketplace-beli vásárlásokra.
 
-**Hol tekinthetem meg az Azure Marketplace-előfizetésem adatait és számlázási adatait?**
+**Hol tekinthetem meg az Azure Marketplace-előfizetés részleteit és a számlázási adatokat?**
 
-MOSP – [A Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web direct) ügyfelei az [Azure Portal] Költségkezelés + Számlázás szakaszának Számlák lapján tekinthetik meg a Marketplace-vásárlási adatokat.
+MOSP – a [Microsoft online előfizetési program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web Direct) ügyfelei a (z) [Azure Portal] Cost Management + számlázási szakaszának számlák lapján tekinthetik meg a Piactéri vásárlás részleteit.
 
-A nagyvállalati szerződés (EA) ügyfelei az [Azure Portal] Költségkezelés + Számlázás szakaszának Számlák lapján tekinthetik meg a Marketplace vásárlási adatait.
+A Nagyvállalati Szerződés (EA) ügyfelek a (z) [Azure Portal] Cost Management + számlázás szakaszának számlák lapján tekinthetik meg a Piactéri vásárlás részleteit.
 
-A felhőszolgáltató (CSP) partnerei megtekinthetik az egyes ügyfelek piactéri vásárlási adatait a Partnerközpontban a Rendelési előzmények lapon, miután kiválasztottak egy vállalatot az Ügyfelek nézetben.
+A felhőalapú megoldás-szolgáltató (CSP) partnerei a megrendelési Előzmények lapon tekinthetik meg a Piactéri vásárlási adatokat a partner Centerben, miután kiválasztotta a vállalatot az ügyfelek nézetben.
 
-**Hogyan mondhatom le az Azure Piactér bővítményét az Azure virtuális géphez?**
+**Hogyan megszakít egy Azure Marketplace-bővítményt az Azure-beli virtuális gépre?**
 
-Mivel a bővítmény az Azure virtuális géphez (VM) van társítva, az Azure Marketplace-vásárlás megszakításához először állítsa le a virtuális gépet a virtuális gép törlésével. Így leállítja az előfizetések használatát és díjait az Azure Marketplace-en történő vásárláskor.
+Mivel a bővítmény az Azure-beli virtuális géphez (VM) van társítva, az Azure Marketplace-beli vásárlás megszakításához először állítsa le a virtuális gépet. Így az összes előfizetés-használat és-díj leállítása az Azure Marketplace-en vásárolható meg.
 
-**Milyen gyakran kell számláznom az Azure Marketplace-en vásárolt tartalmakért?**
+**Milyen gyakran fizetnem kell az Azure Marketplace-beli vásárlásért?**
 
-Minden Olyan Azure Marketplace-ajánlat, amely nem von le a pénzügyi kötelezettségvállalásból, havonta, hátralékban kerül számlázásra. Az éves SaaS-előfizetések számlázása egy teljes éves szolgáltatásért egyszer történik.
+Minden olyan Azure Marketplace-ajánlat, amely nem a pénzügyi kötelezettségvállalásból származik, a számlázást havonta kell fizetni. Az éves SaaS-előfizetések számlázása egy teljes éves szolgáltatás esetén történik.
 
-MOSP – [A Microsoft Online Subscription Program](https://azure.microsoft.com/support/legal/subscription-agreement/) (web direct) ügyfeleinek havonta ugyanazt a hitelkártyát kell fizetniük, amely az Azure-előfizetési profiljukon szerepel. Az éves SaaS-előfizetések számlázása egy teljes éves szolgáltatásért egyszer történik.
+MOSP – a [Microsoft online előfizetési program](https://azure.microsoft.com/support/legal/subscription-agreement/) (web Direct) ügyfeleinek havonta, az Azure-előfizetési profilhoz tartozó bankkártyán kell fizetniük. Az éves SaaS-előfizetések számlázása egy teljes éves szolgáltatás esetén történik.
 
-**Hogyan helyezhetem át az Azure Marketplace-en vásárolt vásárlásaimat a MOSP-előfizetésemből a közvetlen nagyvállalati szerződés (EA) előfizetésembe?**
+**Hogyan helyezhetem át az Azure Marketplace-beli vásárlásokat a MOSP-előfizetésből a közvetlen Nagyvállalati Szerződés (EA) előfizetésre?**
 
-Bár a legtöbb Microsoft-előfizetés könnyen átalakítható nagyvállalati szerződéssé, az Azure Marketplace-en keresztül történő vásárlások nem.
+Habár a Microsoft-előfizetések többsége könnyedén átalakítható Nagyvállalati Szerződésre, az Azure Marketplace-beli vásárlások nem használhatók.
 
-Az Azure Marketplace-en vásárolt egyéb szolgáltatások nagy- és nagytámogatási szolgáltatásba való áttelepítéséhez először törölje az alkalmazásokat a meglévő MOSP-előfizetésből, majd vásárolja meg újra ezeket az alkalmazásokat az EA-előfizetésen belül. Ezzel benyújthat egy hitelkérelmet visszatérítésre a Marketplace-szolgáltatás-előfizetések közötti átfedések lehetséges hónapjában – hozzon létre egy [támogatási jegyet.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+Ha az Azure piactéren vásárolt egyéb szolgáltatásokat egy nagyvállalati szerződésre kívánja áttelepíteni, először szakítsa meg az alkalmazásokat a meglévő MOSP-előfizetésből, és az EA-előfizetésen belül vásárolja meg az alkalmazásokat. Így a piactér szolgáltatás-előfizetések közötti átfedés lehetséges hónapjában elküldheti a visszatérítésre vonatkozó jóváírási kérelmet – [támogatási jegy](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)létrehozása.
 
-**Mi a különbség az *ár,* a *szoftverár*és a *teljes ár* között az Azure Marketplace-en a virtuálisgép-ajánlatok költségstruktúrájában?**
+**Mi a különbség az *Ár*, a *szoftver ára*és a *teljes díj* között az Azure piactéren a virtuális gépekre vonatkozó díjszabásban?**
 
-*Az ár* az Azure virtuális gép szoftver futtatásához. *A szoftverár* a Marketplace-kiadó egy Azure virtuális gépen futó szoftverének költségét veszi alapul. *A teljes ár* az Azure virtuális gép és a Piactér kiadójának egy Azure virtuális gépen futó szoftverének együttes összköltségét adja.
+Az *Ár* a szoftver futtatásához szükséges Azure-beli virtuális gép költségére utal. A *szoftver ára* a piactér-közzétevő Azure-beli virtuális gépen futó szoftverének költségére utal. A *teljes díj* az Azure-beli virtuális gép és a piactér-közzétevő Azure-beli virtuális gépen futó szoftverének összesített teljes költségére utal.
 
-**Hogyan tudom meg, hogy az Azure Marketplace-en vásárolt vásárlásból mennyit használtam fel?**
+**Hogyan megtudhatja, mennyibe került az Azure Marketplace-beli vásárlásom?**
 
-A becsült használati adatok az [Azure Portalon] találhatók. Előfordulhat, hogy ezek a becsült használati információk nem tartalmaznak közelmúltbeli tevékenységeket, és alapulhatnak a múltbeli fogyasztásból származó előrejelzéseken. A nyilvános előzetes verzió során előfordulhat, hogy ez a funkció nem érhető el minden vásárláshoz, és a termék típusától függően változhat.
+A becsült használati adatok a következő címen találhatók: [Azure Portal]. A becsült használati adatok nem tartalmazhatják a közelmúltbeli tevékenységeket, és a múltbeli felhasználásból származtatott előrejelzések alapján is előfordulhatnak. Előfordulhat, hogy a nyilvános előzetes verzióban ez a funkció nem érhető el minden vásárláshoz, és a terméktípus alapján eltérő lehet.
 
 ### <a name="customer-support"></a>Ügyféltámogatás
 
-**Kihez fordulhatok általános támogatási problémák esetén az Azure Marketplace-en?**
+**Kihez fordulok az Azure Marketplace általános támogatási problémáira?**
 
-A használattal vagy a hibaelhárítással kapcsolatos általános alkalmazástámogatásért forduljon közvetlenül az alkalmazás közzétevőjéhez.
+A használattal vagy hibaelhárítással kapcsolatos általános alkalmazás-támogatáshoz forduljon közvetlenül az alkalmazás-közzétevőhöz.
 
-Az Azure Marketplace-en vásárolt számlázási és előfizetési problémákesetén forduljon az [Azure-támogatáshoz.](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)
+Az Azure Marketplace megvásárlásával kapcsolatos számlázási és előfizetési problémákért forduljon az [Azure ügyfélszolgálatához](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
 **Kihez fordulhatok technikai támogatásért az Azure Marketplace-en megvásárolt megoldásokkal kapcsolatban?**
 
-Az összes technikai terméktámogatásért forduljon a kiadó szolgáltatójához. A közzétevőelérhetőségi adatok és/vagy a támogatási webhelyre mutató hivatkozás megtalálható a megoldás részletei oldalon az Azure Marketplace-en.
+Forduljon a közzétevő szolgáltatóhoz az összes technikai terméktámogatásért. A közzétevő kapcsolattartási adatai és/vagy a támogatási webhelyre mutató hivatkozás az Azure Marketplace-en elérhető megoldás részletei oldalon található.
 
-**Kihez fordulhatok számlázási támogatásért/kérdésekért a Marketplace-en vásárolt külső megoldással kapcsolatban?**
+**Kik vehetnek fel számlázási támogatást/kérdéseket a piactéren vásárolt harmadik féltől származó megoldással kapcsolatban?**
 
-Lépjen kapcsolatba a Microsoft támogatási szolgálatával az [Azure-támogatási szolgálatnál.](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)
+Forduljon Microsoft ügyfélszolgálata az [Azure-támogatási szolgálathoz](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
-**Kihez fordulhatok, ha kérdéseim vannak az Azure Marketplace-en értékesített partnermegoldások díjszabásával vagy feltételeivel kapcsolatban?**
+**Hogyan léphetek kapcsolatba, ha az Azure piactéren eladott partneri megoldások díjszabásával vagy feltételeivel kapcsolatban kérdése van?**
 
-Az összes technikai terméktámogatásért forduljon a kiadó szolgáltatójához. A Publisher elérhetőségi adatai és/vagy a támogatási webhelyre mutató hivatkozás az Azure Piactéren található minden megoldásrészletes oldalon megtalálható.
+Forduljon a közzétevő szolgáltatóhoz az összes technikai terméktámogatásért. A közzétevő kapcsolattartási adatai és/vagy a támogatási webhelyre mutató hivatkozás az Azure piactéren elérhető minden megoldás részleteit tartalmazó oldalon található.
 
-**Ha nem vagyok elégedett, visszaküldhetem a vásárlást?**
+**Ha nem vagyok elégedett, visszaadhatok egy vásárlást?**
 
-Az Azure [Marketplace-en](https://azuremarketplace.microsoft.com/) végrehajtott vásárlások nem adhatók vissza, de visszavonhatók/törölhetők. A fogyasztásalapú ajánlatok számlázása a használat nak megfelelően kerül kiszámlázásra, így amikor leáll, a díjak is leállnak. Az előfizetések lemondása megszűnik, és nem kerül számlázásra az aktuális számlázási időszak után. Ha az előfizetést röviddel a vásárlás után törlik (havi 24 óra, éves szinten pedig 14 nap), a teljes visszatérítés biztosított.
+Az [Azure piactéren](https://azuremarketplace.microsoft.com/) lebonyolított vásárlások nem adhatók vissza, de visszavonhatók/törölhetők. A fogyasztáson alapuló ajánlatokat a használat alapján számítjuk fel, így ha leáll, a díjak is leállnak. Az előfizetéseket a rendszer megszakította, és az aktuális számlázási időszak lejártakor nem számítunk fel díjat. Ha egy előfizetést röviddel a vásárlás után megszakítanak (24 óra havonta és 14 nap az éves időszakra), a rendszer teljes visszatérítést biztosít.
 
-Az ügyfeleknek közvetlenül kapcsolatba kell lépniük a közzétevővel a Marketplace-szolgáltatásukkal vagy vásárlásukkal kapcsolatos technikai problémák esetén. A közzétevőelérhetőségi adatok és/vagy a támogatási webhelyre mutató hivatkozás megtalálható a megoldás részletei oldalon az Azure Marketplace-en.
+Az ügyfeleknek közvetlenül kapcsolatba kell lépniük a közzétevővel a Piactéri szolgáltatással vagy a vásárlással kapcsolatos technikai problémákkal kapcsolatban. A közzétevő kapcsolattartási adatai és/vagy a támogatási webhelyre mutató hivatkozás az Azure Marketplace-en elérhető megoldás részletei oldalon található.
 
-**Hogyan történik a licenckiegészítések kezelése a félidős növekedés során?**
+**Hogyan történik a licencek kiegészítéseinek kezelése a megnövekedett középtávú időszakokban?**
 
-A meglévő előfizetéshez hozzáadott licencek az előfizetés időtartamának fennmaradó részére arányosan vannak értékelve.
+A meglévő előfizetéshez hozzáadott licencek az előfizetés hátralévő időtartamára érvényesek.
 
-**Hogyan történik a licenceltávolítás oka a félidős időszakban?**
+**Hogyan történik a licencek eltávolítása a félidőben?**
 
-A törölt licencekre a GYIK-ben található visszatérítési szabályzat vonatkozik.  Minden visszavont licencet azonnal eltávolítunk a fiókjából, és a továbbiakban nem lesznek elérhetők.
+A megszakított licencek a jelen GYIK-ban található visszatérítési szabályzat hatálya alá esnek.  Az összes megszakított licenc azonnal törlődik a fiókból, és többé nem lesz használható.
 
-**Támogatottak a visszatérítések a fogyasztásalapú ajánlatokesetében?**
+**Támogatottak-e a felhasználáson alapuló ajánlatok?**
 
-A fogyasztáson alapuló díjak – legyen ek akár óránkénti virtuális gépekről, akár egyéni fogyasztásmérőkről – lemondás sal nem téríthetők vissza. A felhasználás megtörténtét követően a díjakat a Microsoft kereskedelmi platformja dolgozza fel, és a visszatérítés igénylésekor felmerülő szolgáltatási vitákat a Microsoft-rendszereken kívül közvetlenül a kiadó és az ügyfél kezeli. Az átalánydíjas és forgalmi díjas számlázást támogató ajánlatok az átalánydíjakra vonatkozó általános visszatérítési politikát követik.
+Bármilyen, használaton alapuló díj – akár óránkénti, akár egyéni mérőszámok – nem lehet visszatéríteni a lemondás útján. A felhasználás után a díjakat a Microsoft kereskedelmi platformja dolgozza fel, és a szolgáltatással kapcsolatos bármilyen minőségi kérdés a Microsoft rendszerein kívülre kerül a kiadó és az ügyfél között. Az átalánydíjas díjszabást és a mért számlázást támogató ajánlatok a standard visszatérítési szabályzatot követik a átalánydíjas díjakért.
 
-**Lehet-e változtatni a terveket félidőben?**
+**Lehetséges a csomagok középtávú módosítása?**
 
-Nem, nem lehet áttérni a havi és az éves között.
+Nem, a havi és az éves közötti váltás nem lehetséges.
 
-**Vásárolhat egy ügyfél két csomagot ugyanabból az ajánlatból?**
+**Vásárolhatnak egy ügyfelet két csomagból ugyanabból az ajánlatból?**
 
-Igen, lehetséges, hogy egy ügyfél egyszerre két csomagkal is elsajátuljon ugyanabból az ajánlatból.
+Igen, lehetséges, hogy az ügyfél két, egyazon ajánlatból származó csomagját egyszerre használja.
 
-**A visszatérítési és a tervmódosítási irányelvek kirakatonként eltérőek?**
+**A visszatérítési és tervezési szabályzatok eltérőek a kirakattól?**
 
-Nem, az üzleti irányelvek konzisztensek a kereskedelmi piacon. Ha a Felhőalapú megoldásbiztosítása programban részt vevő partner továbbértékesíti, a partner más szabályzatot kényszeríthet ki ügyfelei számára.
+Nem, az üzleti házirendek konzisztensek a kereskedelmi piactéren. Ha a felhőalapú megoldás egyik partnere eladja a programot, a partner más szabályzatot is kikényszerítheti az ügyfelek számára.
 
 
-## <a name="faq-for-publishers"></a>Gyakran feltett kérdések a közzétevők számára
+## <a name="faq-for-publishers"></a>A kiadókkal kapcsolatos gyakori kérdések
 
-### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Mit kell tudni a kereskedelmi piacon
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Mit kell tudni a kereskedelmi piactérről?
 
 **Mi az Azure Marketplace?**
 
-[Az Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) egy online alkalmazások és szolgáltatások piactere. Az ügyfelek (főként informatikai szakemberek és fejlesztők) felfedezhetik és megvásárolhatják az Azure-ral vagy az Azure-ral készített felhőalapú szoftvermegoldásokat. A katalógus több mint 8000 listát tartalmaz, például az Azure építőkövei, például a virtuális gépek (VM),API-k, megoldássablonok, SaaS-alkalmazások és tanácsadási szolgáltatások.
+Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) egy online alkalmazás és szolgáltatás piactér. Az ügyfelek (főleg az informatikai szakemberek és fejlesztők) felfedezhetik és vásárolhatják meg az Azure-hoz készült felhőalapú szoftveres megoldásokat. Katalógusa több mint 8 000-listát tartalmaz, például az Azure-építőelemeket, mint például az Virtual Machines (VM), az API-kat, a megoldási sablonokat, az SaaS-alkalmazásokat és a tanácsadási szolgáltatásokat.
 
-Az Azure Piactér a Microsoft piacra lépő közös tevékenységeinek kiindulópontja.  Arra összpontosítunk, hogy segítsünk a partnereknek több ügyfelet elérni. Új listákat tehet közzé, és az Azure Marketplace-en promóciós és igény szerinti létrehozási kampányokat hajthat végre, és közös értékesítési/marketingtevékenységeket végezhet a Microsofttal.
+Az Azure Marketplace az összes közös Microsoft piaci megjelenési tevékenység kiindulási pontja.  Arra koncentrálunk, hogy segítse a partnereket a további ügyfelek elérésében. Közzéteheti az új listákat, és az Azure Marketplace-en is felhasználhatja a promóciós és igény szerinti generációs kampányokat, és közös értékesítési/marketing tevékenységeket hajthat végre a Microsofttal.
 
 **Kik az Azure Marketplace-ügyfelek?**
 
-Az Azure Marketplace-t informatikai szakemberek és felhőfejlesztők számára tervezték, akik érdeklődnek a kereskedelmi informatikai szoftverek és szolgáltatások iránt.
+Az Azure Marketplace informatikai szakembereknek és felhőalapú fejlesztőknek készült, akik a kereskedelmi IT-szoftverek és-szolgáltatások iránt érdeklődnek.
 
-### <a name="azure-marketplace-for-publishers"></a>Azure Piactér kiadóknak
+### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace kiadóknak
 
-**Miért tegyem közzé az alkalmazásomat az Azure Marketplace-en, és milyen előnyökkel jár számomra?**
+**Miért érdemes közzétenni az alkalmazást az Azure Marketplace-en, és hogyan előnyös?**
 
-Az Azure Piactér piacot biztosít a Microsoft-partnerek számára, ahol termékeket és szolgáltatásokat reklámozhatnak és értékesítsennek az Azure-ügyfelek nek. A kiadók azonnal hozzáférhetnek 140 globális piachoz, több mint 300 000 partnerünkhöz és az Azure nagyvállalati ügyfeleinek hálózatához.  A piacon a Fortune 500-as cégek több mint 90%-a és a világ vezető fejlesztőinek több mint 90%-a található. Az Azure Marketplace-en az új partnerek automatikusan kínálnak egy sor [ingyenes piacra kerülési előnyöket,](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) hogy segítsen felhívni a figyelmet ajánlataik az Azure piactéren.
+Az Azure Marketplace piacot biztosít a Microsoft partnerei számára termékeinek és szolgáltatásainak az Azure-ügyfeleknek való népszerűsítéséhez és értékesítéséhez. A kiadók, azonnal hozzáférhetnek a 140 globális piacaihoz, a 300000 + partnerekhez és az Azure nagyvállalati ügyfeleihez.  A piactér a Fortune 500 vállalatok több mint 90%-át és a világ számos vezető fejlesztőjét is magában foglalja. Az Azure piactéren elérhető új partnerek automatikusan [nem költséghatékony előnyökkel](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) szolgálnak, amelyek segítenek az Azure piactéren kínált ajánlatokkal kapcsolatos ismeretek növelésében.
 
-**Mi a különbségtételi tényező az Azure Marketplace és az AppSource között?**
+**Mi a különbség az Azure Marketplace és a AppSource között?**
 
-A Microsoft-partnerek a célközönségük alapján kiválaszthatják, hogy hol tegyenek közzé.
+A Microsoft partnerei választhatnak, hogy a célközönségük alapján hol teszik közzé a közzétételt.
 
-A Microsoft két különböző felhőalapú piactér-kirakatokat biztosít – az Azure Marketplace-t és az AppSource-t. Ezek a kirakatok lehetővé teszik az ügyfelek számára a felhőalkalmazások és -szolgáltatások keresését, kipróbálását és megvásárlását. Minden kirakat egyedi ügyféligényeket elég, és lehetővé teszi a Microsoft-partnerek számára, hogy megoldásaikat vagy szolgáltatásaikat a célközönség alapján célozzák meg.
+A Microsoft két különböző felhőalapú piactér-kirakatot biztosít – az Azure Marketplace és a AppSource. Ezek a kirakatok lehetővé teszik, hogy az ügyfelek megtalálják, kipróbálhatják és megvásárolhatják a felhőalapú alkalmazásokat és szolgáltatásokat. Minden kirakat egyedi felhasználói igényeket kínál, és lehetővé teszi a Microsoft partnerei számára, hogy a célközönség alapján célozzák meg megoldásaikat vagy szolgáltatásaikat.
 
-Válassza az [Azure Piactér](https://azuremarketplace.microsoft.com/marketplace/apps) kiválasztásával informatikai szakembereket és fejlesztőket, illetve műszaki felhasználókat szeretne megcélozni.
+Válassza az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) lehetőséget az informatikai szakemberek és fejlesztők, illetve a technikai felhasználók megcélzásához.
 
-Válassza [az AppSource](https://appsource.microsoft.com/) lehetőséget az üzletági döntéshozók és a vállalkozások tulajdonosainak megcélzásához.
+Válassza a [AppSource](https://appsource.microsoft.com/) lehetőséget az üzletági döntéshozók és az üzleti tulajdonosok megcélzásához.
 
-Tekintse át a [Publisher-útmutatót](marketplace-publishers-guide.md) az Azure Marketplace és az AppSource további részleteiért és előnyeiért.
+Tekintse át a [kiadói útmutatót](marketplace-publishers-guide.md) az Azure Marketplace és a AppSource további részleteiről és előnyeiről.
 
-**A Microsoft Partner Network (MPN) tagjának kell lennem ahhoz, hogy felsorolhassam alkalmazásaimat és szolgáltatásaimat az Azure Piactéren?**
+**Az alkalmazások és szolgáltatások listázásához az Azure Marketplace-en a Microsoft Partner Network (MPN) tagjának kell lennie?**
 
-Igen, az Azure Marketplace-en való közzétételhez MPN szükséges. A kezdéshez látogasson el a [Microsoft Partner Network](https://partner.microsoft.com/membership) oldalra.
+Igen, az Azure Marketplace-en való közzétételhez MPN szükséges. A kezdéshez látogasson el [Microsoft Partner Network](https://partner.microsoft.com/membership) .
 
-**Mi a megoldás azure Marketplace-en való közzétételének feltétele?**
+**Milyen feltételt jelent a megoldás közzététele az Azure Marketplace-en?**
 
-Az Azure Marketplace-en való közzétételhez a partnereknek bizonyítaniuk kell, hogy az alkalmazásuk az Azure-on fut, vagy kiterjeszti azt. A kiadóknak [szolgáltatásiszint-szerződést,](https://azure.microsoft.com/support/legal/sla/) [adatvédelmi szabályzatot,](https://privacy.microsoft.com/privacystatement)valamint telefonos és online támogatást kell biztosítaniuk az ügyfelek számára. A különböző számítási feladatok további követelményekkel rendelkeznek. További útmutatásért tekintse át az [Azure Piactér részvételi szabályzatait](./marketplace-participation-policy.md) és a [Publisher-útmutatót.](marketplace-publishers-guide.md)
+Az Azure Marketplace-en való közzétételhez a partnereknek be kell mutatniuk, hogy az alkalmazásuk fut vagy kiterjeszti az Azure-t. A kiadóknak [szolgáltatói szerződés](https://azure.microsoft.com/support/legal/sla/), [adatvédelmi szabályzattal](https://privacy.microsoft.com/privacystatement), valamint telefonos és online támogatással kell rendelkezniük az ügyfeleknek. A különböző számítási feladatok további követelményekkel rendelkeznek. További útmutatásért tekintse át az [Azure Marketplace részvételi szabályzatait](./marketplace-participation-policy.md) és a [kiadói útmutatót](marketplace-publishers-guide.md) .
 
-**Van-e díj az Azure Marketplace-en való közzétételért?**
+**Díjköteles az Azure Marketplace-en való közzététel?**
 
-Nincsenek közzétételi díjak, ha egy lista, próba- vagy BYOL (Hozd a saját licenc) megoldás azure Marketplace-en keresztül.
+Lista, próbaverzió vagy BYOL (saját licenc használata) Azure Marketplace-en való feltöltésekor nincs közzétételi díj.
 
-**Vannak-e tranzakciós díjak az Azure Marketplace-en történő vásárlásokért?**
+**Vannak tranzakciós díjak az Azure Marketplace-en keresztül történő vásárlásokhoz?**
 
-Ha a megoldáslicencet az Azure Marketplace-en keresztül vásárolják meg, a szoftverlicenc bevételei megoszlanak a közzétevő és a Microsoft között.  Ez a [Marketplace Kiadói Szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)feltételeinek megfelelően történik. Ezenkívül a BYOL (Bring Your Own License) megjelenítőkkel rendelkező megoldások nem vonnak fel tranzakciós díjakat.
+Ha a megoldás licencét az Azure Marketplace-en keresztül vásárolta meg, a szoftverlicenc bevételei a közzétevő és a Microsoft között oszlanak meg.  Ez a [piactér kiadói szerződésében](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)foglalt feltételekkel összhangban történik. Emellett a BYOL (saját licenc használata) közzétevői által kínált megoldások nem számítanak fel tranzakciós díjakat.
 
-**Mi az általános szerződés?**
+**Mi az a standard szerződés?**
 
-A Microsoft olyan általános szerződési feltételeket kínál, amelyeket a közzétevő kihasználhat, hogy az ügyfelek egyszerűsített beszerzési és jogi felülvizsgálati folyamattal rendelkezhessenek.
+A Microsoft szabványos szerződési feltételeket kínál, amelyekkel a kiadó kiválaszthatja, hogy az ügyfelek egyszerűsített beszerzési és jogi felülvizsgálati folyamattal rendelkezzenek.
 
-**Hol találhatok irányelveket az alkalmazásazure-Active Directoryval (AAD) való integrálásához?**
+**Hol találhatok útmutatást az alkalmazásom integrálásához Azure Active Directory (HRE)?**
 
-A Microsoft hitelesíti az Összes Marketplace-felhasználót Az AAD-vel.  Közvetlenül kiépíthető egy próbaverzióba anélkül, hogy további bejelentkezési lépésre lenne szükség.  Például egy hitelesített felhasználó rákattint egy próbaverziós adatlapra a Marketplace-en, és átirányítja egy próbaverziós környezetbe.
+A Microsoft hitelesíti az összes piactér-felhasználót a HRE.  A próbaverzióhoz közvetlenül is kiépíthető, ha további bejelentkezési lépésre van szüksége.  Egy hitelesített felhasználó például a piactéren lévő próbaverzióra kattint, és átirányítja a próbaverziós környezetbe.
 
-További információkért és az AAD-vel való próbaverzió engedélyezésének megkezdéséhez látogasson el az [Azure Active Directory szakaszra a Publisher-útmutatóban.](enable-appsource-marketplace-using-azure-ad.md)
+További információért és a próbaverzió HRE való engedélyezésének megkezdéséhez látogasson el a [Azure Active Directory szakaszra a közzétevői útmutatóban](enable-appsource-marketplace-using-azure-ad.md).
 
-**Hogyan kezdheti el a Fejlesztői központ regisztrációját?**
+**Hogyan Ismerkedés a Fejlesztői központ regisztrálásával?**
 
-A kezdéshez a közzétevőknek ellenőrizniük kell, hogy a [fejlesztői központ-fiók](deprecated/register-dev-center.md) még nincs regisztrálva -e (a párhuzamosságok megelőzése érdekében). A megerősítést követően a következő lépés a regisztráció egy [Microsoft-fiókkal való bejelentkezéssel,](https://account.microsoft.com/account/) amely a fejlesztői fiókhoz lesz társítva.
+Első lépésként a közzétevőnek ellenőriznie kell, hogy nincs-e már regisztrálva a [fejlesztői központ fiókja](deprecated/register-dev-center.md) (az ismétlődés megakadályozása érdekében). A megerősítést követően a következő lépésben regisztrálnia kell egy Microsoft-fiókval való [bejelentkezéssel](https://account.microsoft.com/account/) , amely a fejlesztői fiókhoz lesz társítva.
 
-Ha még nem rendelkezik Microsoft-fiókkal, [létrehozhat egy fiókot](https://signup.live.com/) (például: contoso_marketplace@live.com).
+Ha még nem rendelkezik Microsoft-fiók, [létrehozhat egy fiókot](https://signup.live.com/) (például: contoso_marketplace@live.com).
 
-**Miért van szükség a Fejlesztői központ-fiókra?**
+**Miért szükséges a Fejlesztői központ fiókja?**
 
-Fejlesztői központ-fiók szükséges ahhoz, hogy a Microsoft a közzétevő nevében számlázhassa az ügyfeleknek a Transact listaelem-típusokért. A Fejlesztői központ fiókregisztrációja lehetővé teszi a Microsoft számára a jogi, adózási és banki adatok érvényesítését. További információ: [Register in Dev Center](./partner-center-portal/create-account.md).
+Egy fejlesztői központ fiókra van szükség, amely lehetővé teszi a Microsoft számára, hogy az ügyfeleket a közzétevő nevében a Transact Listing-típusok számlájára számlázza. A Fejlesztői központ fiókjának regisztrációja lehetővé teszi a Microsoft számára a jogi, adózási és banki információk érvényesítését. További információ: [regisztráció a fejlesztői központban](./partner-center-portal/create-account.md).
 
-**Mik azok az érdeklődők, és miért fontosak számomra kiadóként a Marketplace-en?**
+**Mik azok az érdeklődők, és miért fontosak a piactéren közzétevőként?**
 
-Az érdeklődők olyan ügyfelek, akik a Marketplace-en telepítik a termékeit. Függetlenül attól, hogy a termék szerepel-e az [Azure Marketplace-en](https://azuremarketplace.microsoft.com) vagy az [AppSource-ban,](https://appsource.microsoft.com)érdeklődik a termék iránt érdeklődő ügyfelektől.  Az érdeklődő célállomását beállíthatja az ajánlatban. További információ: [Legyen Felhőalapú piactér-közzétevő.](./partner-center-portal/create-account.md)
+Az érdeklődők olyan ügyfelek, akik a piactéren telepítik termékeiket. Az, hogy a termék szerepel-e az [Azure Marketplace](https://azuremarketplace.microsoft.com) -en vagy a [AppSource](https://appsource.microsoft.com)-on, kaphat-e olyan érdeklődőket, akik a termék iránt érdeklődnek.  Az ajánlaton beállíthatja a vezető célhelyet. További információ: [Legyél a Cloud Marketplace Publisher](./partner-center-portal/create-account.md).
 
-**Hol kaphatok segítséget az érdeklődő célhelyének beállításához?**
+**Hol kaphatok segítséget az érdeklődői cél beállításakor?**
 
-További információ a [Partnerközpont érdeklődőinek beküldése](./partner-center-portal/commercial-marketplace-get-customer-leads.md) dokumentációjában, vagy támogatási jegy beküldése az [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) ajánlat típusának és az érdeklődőkezelésnek a kiválasztásával.
+További információ: a [partner Center – az ügyfél-érdeklődők dokumentációjának beszerzése](./partner-center-portal/commercial-marketplace-get-customer-leads.md) , illetve támogatási jegy [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) beküldése az ajánlat típusának és a vezető felügyeletének kiválasztásával.
 
-**Be kell állítanom egy érdeklődő célját, hogy közzétegyek egy ajánlatot a Marketplace-en?**
+**Meg kell-e adni egy érdeklődői célhelyet egy ajánlat közzétételéhez a piactéren?**
 
-Igen, ha a **Kapcsolati,** **SaaS-alkalmazás**vagy **a tanácsadási szolgáltatások** ajánlatának közzétételekor konfigurálnia kell egy érdeklődő célját.
+Igen, ha a velem, az **SaaS-alkalmazással**vagy a **tanácsadási szolgáltatásokkal** **kapcsolatban**tesz közzé egy érdeklődői célhelyet.
 
-**Hogyan győződhetek meg arról, hogy az érdeklődő konfigurációja helyes?**
+**Hogyan ellenőrizhető, hogy helyes-e az érdeklődő konfigurációja?**
 
-Az ajánlat befejezése és az érdeklődő célállomásának beállítása után a listamegfelelően közzétehető a [Partnerközpontban.](https://partner.microsoft.com/) Mielőtt a listaelem élessé válna, ellenőrizheti, hogy az érdeklődő konfigurációjának beállítása megfelelően működik-e.  Küldjön egy tesztérdeklődőt az ajánlatban konfigurált érdeklődő célállomásra.
+Az ajánlat befejezése és a vezető célhely beállítása után a lista megfelelően közzétehető a [partner Centerben](https://partner.microsoft.com/). A lista életbe lépését megelőzően ellenőrizheti, hogy megfelelően működik-e a vezető konfigurációjának beállítása.  Teszt küldése az ajánlatban konfigurált vezető célhelyre.
 
-**Milyen országokban/régiókban érhető el a kiadók számára az Azure Marketplace?**
+**Mely országok/régiók érhetők el a kiadók számára az Azure piactéren?**
 
-A következő országokban/régiókban működő kiadók jelenleg értékesíthetnek az Azure Piactéren: Afganisztán, Albánia, Algéria, Angola, Antigua és Barbuda, Argentína, Örményország, Ausztrália, Ausztria, Azerbajdzsán, Bahrein, Banglades, Fehéroroszország, Belgium, Benin, Bolívia, Bosznia és Hercegovina, Botswana, Brazília, Bulgária, Burkina Faso, Burundi, Kambodzsa, Kamerun, Kanada, Közép-afrikai Köztársaság, Csád, Chile, Kolumbia, Cooros, Kongó, Kongó (KDK), Costa Rica, Elefántcsontpart, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Dominika, Dominikai Köztársaság, Ecuador, Egyiptom, Salvador, Eritrea, Észtország, Etiópia, Fidzsi-szigetek, Finnország, Franciaország, Grúzia, Németország, Ghána, Görögország, Guatemala, Guinea, Haiti, Honduras, Hongkong KKT, Magyarország, Izland, India, Indonézia, Irak, Írország, Izrael, Olaszország, Jamaica, Japán, Jordánia, Kazahsztán, Kenya, Korea (Dél), Kuvait, Laosz, Lettország, Libanon, Libéria, Liechtenstein, Litvánia, Luxemburg, Madagaszkár, Malawi, Malajzia, Mali, Málta, Mauritius, Mexikó, Monaco, Mongólia, Mongólia , Marokkó, Mozambik, Nepál, Hollandia, Új-Zéland, Nicaragua, Niger, Nigéria, Norvégia, Omán, Pakisztán, Panama, Paraguay, Peru, Fülöp-szigetek, Lengyelország, Portugália, Katar, Románia, Oroszország, Ruanda, Szaúd-Arábia, Szenegál, Szerbia, Sierra Leone, Szingapúr, Szlovákia, Szlovénia, Szomália, Dél-Afrika, Spanyolország, Srí Lanka, Svédország, Svájc, Tádzsikisztán, Tanzánia, Thaiföld, Kelet-Timor, Togo, Tonga, Trinidad és Tobago, Tunézia, Törökország, Türkmenisztán, Uganda, Ukrajna, Egyesült Arab Emírségek, Egyesült Királyság, Egyesült Államok, Uruguay, Üzbegisztán, Venezuela, Vietnam, Zambia és Zimbabwe.
+A következő országokban és régiókban található közzétevők jelenleg az Azure piactéren értékesíthetők: Afganisztán, Albánia, Algéria, Angola, Antigua és Barbuda, Argentína, Örményország, Ausztrália, Ausztria, Azerbajdzsán, Bahrein, Banglades, Fehéroroszország, Belgium, Benin, Bolívia, Bosznia-Hercegovina, Botswana, Brazília, Bulgária, Cseh Köztársaság, Egyesült Királyság, Dél-afrikai Köztársaság, Németország, Cseh Köztársaság, Kongó, Kongói Demokratikus Köztársaság, Kelet-Kanada, Elefántcsontpart, Horvátország, Ciprus, Egyesült Királyság, Dánia, Egyesült Királyság, Csehország, Dominikai Köztársaság, Ecuador, Egyiptom, Salvador, Eritrea, Észtország, Etiópia, Fidzsi-szigetek, Finnország, Franciaország, Grúzia, Németország, Ghána, Görögország, Guatemala, Guinea, Haiti, Honduras, Hongkong KKT, Magyarország, Izland, India, Indonézia, Irak, Írország, Izrael, Olaszország, Jamaica, Japán, Jordánia, Kazahsztán, Kenya, Korea (Dél), Kuvait, Laosz, Lettország, Libanon, Libéria, Liechtenstein, Litvánia, Luxemburg, Madagaszkár, Malawi, Malajzia, Mali, Málta, Mauritius, Mexikó, Monaco, Mongólia, Montenegró , Marokkó, Mozambik, Nepál, Hollandia, Új-Zéland, Nicaragua, Niger, Nigéria, Norvégia, Omán, Pakisztán, Panama, Paraguay, Peru, Fülöp-szigetek, Lengyelország, Portugália, Katar, Románia, Oroszország, Ruanda, Szaúd-Arábia, Szenegál, Szerbia, Sierra Leone, Szingapúr, Szlovákia, Szlovénia, Szomália, Dél-Afrika, Spanyolország, Sri Lanka, Svédország, Svájc, Tádzsikisztán, Tanzánia, Thaiföld, Kelet-Timor, Togo, Tonga, Trinidad és Tobago, Tunézia, Törökország, Türkmenisztán, Uganda, Ukrajna, Egyesült Arab Emírségek, Egyesült Királyság, Egyesült Államok, Uruguay, Üzbegisztán, Venezuela, Vietnam, Zambia és Zimbabwe.
 
-**Hogyan törölhetek egy hirdetést az Azure Piactérről?**
+**Hogyan törölni az Azure Marketplace-en található listát?**
 
-*Virtuális gép & Azure-alkalmazások:*
+*Azure-alkalmazások & virtuális gép:*
 
-1. Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/).
-1. Válassza ki az ajánlatot a **Minden ajánlat** lapon.
-1. A képernyő bal oldalán lévő ablaktáblán válassza a **SK-k** lapot.
-1. Válassza ki a termékváltozat törlését, és kattintson a **törlés** gombra, hogy a termékváltozat.
-1. [Tegye közzé újra](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) az ajánlatot az Azure Marketplace-en.
+1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/).
+1. Válassza ki az ajánlatot a **minden ajánlat** lapon.
+1. A képernyő bal oldalán lévő ablaktáblán válassza a **SKUs** fület.
+1. Válassza ki a törölni kívánt SKU-t, és kattintson az adott SKU **Törlés** gombjára.
+1. [Tegye közzé](./partner-center-portal/update-existing-offer.md#review-and-publish-an-updated-offer) újra az ajánlatot az Azure Marketplace-en.
 
-További információt az ajánlat frissítése című témakörben [talál.](./partner-center-portal/update-existing-offer.md)
+További információ: [az ajánlat frissítése](./partner-center-portal/update-existing-offer.md).
 
-*Webalkalmazások (SaaS-alkalmazások, bővítmények) & tanácsadási szolgáltatások:*
+*Web Apps (SaaS-alkalmazások,-bővítmények) & Consulting Services:*
 
-1. A Partnerközpontban jelölje ki a kérdőjel ikont, majd kattintson a **Támogatás gombra.**
+1. A partner Centerben válassza a kérdőjel ikont, majd kattintson a **támogatás**elemre.
 1. Nyissa meg a következőt: <https://go.microsoft.com/fwlink/?linkid=844975>.
-1. A támogatási lapon válassza ki az ajánlat típusát.
-1. Válassza a Közzétett ajánlat **eltávolítása lehetőséget.**
-1. Hozzon létre egy incidensjegyet.
+1. A támogatás lapon válassza ki az ajánlat típusát.
+1. Válassza a közzétett ajánlat **eltávolítása** lehetőséget.
+1. Hozzon létre egy incidens jegyet.
 1. Benyújtja.
 
 *O365 alkalmazások:*
 
-1.    Jelentkezzen be <https://sellerdashboard.microsoft.com> a fejlesztői fiókjával.
+1.    <https://sellerdashboard.microsoft.com> Jelentkezzen be a fejlesztői fiókjával.
 1.    Vonja vissza a bővítményt.
 
     > [!NOTE]
-    > Az alkalmazások 90 nap elteltével eltűnnek egy meglévő adatlapról.
+    > Az alkalmazások 90 nap után eltűnnek egy meglévő bejegyzésből.
 
-**Miért nem jelennek meg a módosítások az ajánlatban?**
+**Miért nem tükröződnek a módosítások az ajánlatban?**
 
-A Partnerközpontban végrehajtott módosítások csak az ajánlat újbóli közzétételét követően frissülnek a rendszerben és az áruházi frontokon. Kérjük, győződjön meg arról, hogy a módosítások után elküldte az ajánlatot közzétételre.
+A partner Centerben végrehajtott módosítások csak akkor frissülnek a rendszeren, ha újra közzétette az ajánlatot. Győződjön meg arról, hogy minden módosítás után elküldte az ajánlatot közzétételre.
 
-### <a name="benefits-and-go-to-market-gtm-resources"></a>Előnyök és piacra jutási (GTM) források
+### <a name="benefits-and-go-to-market-gtm-resources"></a>Előnyök és piaci megjelenés (GTM) erőforrásai
 
-**Melyek az Azure Marketplace-en felsorolt megjelenítők piacra kerülési előnyei?**
+**Melyek az Azure Marketplace-en felsorolt kiadók piacra lépésének előnyei?**
 
-Az Azure Marketplace a Microsofttal való közös piacra kerülési tevékenységek kiindulópontja, valamint a Co-Sell Ready partnerség kiindulópontja. Az Azure Marketplace-en minden új listaelem automatikusan elérhető, [költségmentes piacra kerülési előnyökkel,](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) amelyek segítenek felhívni a microsoftos ügyfelek számára az ajánlatok ismertségét. Az ajánlat közzététele után a Microsoft GTM csapata felveszi Önvel a kapcsolatot, és megkezdi az előnyök biztosítását.
+Az Azure Marketplace a Microsofttal közös piaci részesedéssel rendelkező tevékenységek kiindulási pontja, és az átjáró egy közös értékesítésre kész partnerséghez. Az Azure Marketplace-en az összes új lista automatikusan [nem költséghatékony piaci előnyökkel jár](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) , így segítve a Microsoft ügyfeleinek nyújtotta lehetőségeket. Az ajánlat közzétételekor a Microsoft GTM csapata felveszi Önnel a kapcsolatot, és megkezdi a juttatások nyújtását.
 
-Látogasson el a [Microsoft GTM-szolgáltatásokba,](https://partner.microsoft.com/reach-customers/gtm) ahol további információt talál gtm-előnyeinkről és arról, hogyan növelheti vállalkozását a piacon.
+Látogasson el a [Microsoft GTM Services webhelyére](https://partner.microsoft.com/reach-customers/gtm) , ahol további információkat tudhat meg a GTM előnyeiről és lehetőségeiről a piactéren.
 
-**Hol népszerűsítik az Azure Piactér-megoldásokat a Microsoft webes tulajdonságaiban?**
+**Hol támogatják a Microsoft Web Properties szolgáltatásban elérhető Azure Marketplace-megoldásokat?**
 
-Az Azure Marketplace-megoldások a Microsoft [Azure Portal] és az [Azure Marketplace webhelyén](https://azuremarketplace.microsoft.com/marketplace/)érhetők el. Az Azure-t használó felhőfejlesztők és informatikai szakemberek minden bejelentkezéskor partnermegoldásoknak vannak kitéve. A partnermegoldások egy részét az Azure Marketplace [kezdőlapján](https://azuremarketplace.microsoft.com/marketplace) és az [Azure-megoldások oldalon](https://azure.microsoft.com/solutions/)is bemutatjuk és elforgatjuk.
+Az Azure Marketplace-megoldások a Microsoft [Azure Portal] és az [Azure Marketplace webhelyén](https://azuremarketplace.microsoft.com/marketplace/)érhetők el. Az Azure-t használó felhőalapú fejlesztők és informatikai szakemberek minden bejelentkezéskor a partneri megoldásokat használják. A partneri megoldások egy részhalmaza is be van mutatva és el lesz forgatva az [Azure Marketplace kezdőlapján](https://azuremarketplace.microsoft.com/marketplace) és az [Azure Solutions oldalán](https://azure.microsoft.com/solutions/).
 
-### <a name="billing-and-payments"></a>Számlázás és kifizetések
+### <a name="billing-and-payments"></a>Számlázás és fizetés
 
-**Hogyan kaphatok fizetést az Azure Marketplace-értékesítéseimért?**
+**Az Azure Marketplace Sales szolgáltatásban Hogyan kap fizetést?**
 
-A Microsoft minden befizetése PayPal-on vagy elektronikus átutaláson (EFT) keresztül történik havonta. A fizetés a ttól az időponttól számított két hónapon belül történik, amikor a vevő igénybe veszi a szolgáltatást, bár a pontos időzítés a vevő fizetési eszközétől függ. A hitelkártya-ügyfelekre 45 napos letéti időszak vonatkozik.
+A Microsofttól érkező összes kifizetést havonta, PayPalon vagy elektronikus átutaláson (EFT) keresztül dolgozzák fel. A fizetés az ügyfél által használt szolgáltatástól számított két hónapon belül történik, de a pontos időzítés az ügyfél fizetési eszközének függvénye. A 45 napos letéti időszak a hitelkártya-ügyfelekre vonatkozik.
 
-**A használatalapú számlázással vásárolt virtuális gép alapú megoldások esetében, amikor egy ügyfél méretei vagy leépítéseaz alapul szolgáló virtuális gépet, a szoftverlicenc díjszabása követi?**
+**A használati alapú számlázással megvásárolt virtuálisgép-alapú megoldások esetében, ha az ügyfél mérete vagy a mögöttes virtuális gép csökkentése történik, a szoftveres licenc díjszabása követhető?**
 
-Igen, az új árat azonnal kiszámlázom.  Árképzési változások történnek, ha egy ügyfél megváltoztatja a virtuális gép méretét, és meghatározza a különböző árak at a díjszabástábla, amelyek alapján a virtuális gép mérete.
+Igen, az új díj azonnal kiszámlázásra kerül.  A díjszabás akkor fordul elő, amikor az ügyfél megváltoztatja a virtuális gép méretét, és a díjszabási táblázatban különböző árakat határoz meg, amelyek a virtuális gépek méretétől függenek.
 
-**A csomópontonkénti számlázás elérhető az Azure Marketplace-en?**
+**Elérhető-e az Azure Marketplace-en a csomópontok közötti számlázás?**
 
-Az Azure Piactér jelenleg nem támogatja a csomópontonkénti számlázást a virtuális gépekkel. A közzétevők továbbra is meghatározhatják a csomópontonkénti számlázási díjakat a Microsoft VM számlázási díjaival.  A számítás célja a virtuális gépek számának meghatározása a felhasznált órák száma és az óránkénti díj alapján.
+Az Azure Marketplace jelenleg nem támogatja a csomópontok közötti számlázást Virtual Machines. A kiadók a Microsoft virtuális gépek számlázási díjszabásával továbbra is meghatározhatnak egy csomópontos számlázási díjat.  A számítás célja, hogy meghatározza a virtuális gépek számát a felhasznált órák száma és az óránkénti sebesség alapján.
 
-**Kihez fordulhatok számlázási vagy ajánlatkezelési kérdések esetén?**
+**Kihez kell fordulni a számlázási vagy ajánlat-kezelési kérdésekért?**
 
-Jegy naplózása a [Microsoft támogatási szolgálatával](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=15635).
+Jelentkezzen be [Microsoft ügyfélszolgálatatel](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=15635)rendelkező jegyet.
 
-### <a name="publisher-support"></a>A Publisher támogatása
+### <a name="publisher-support"></a>Közzétevő támogatása
 
-**Kihez fordulhatok általános támogatási problémák esetén az Azure Marketplace-en?**
+**Kihez fordulok az Azure Marketplace általános támogatási problémáira?**
 
-A használhatósággal és a hibaelhárítással kapcsolatos általános alkalmazástámogatásért forduljon [a Partnerközpont támogatási szolgálatához.](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007)
+A használhatósággal vagy hibaelhárítással kapcsolatos általános alkalmazások támogatásához forduljon a [partner Center támogatási szolgálatához](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
 
-Az Azure Marketplace-en vásárolt számlázási és előfizetési problémákesetén forduljon az [Azure-támogatáshoz.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+Az Azure Marketplace megvásárlásával kapcsolatos számlázási és előfizetési problémákért forduljon az [Azure ügyfélszolgálatához](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-**Kihez fordulhatok kiadói vagy vezetői kérdésekkel kapcsolatban?**
+**Kivel tudok kapcsolatba lépni a közzétételi vagy ajánlat-kezelési kérdésekkel?**
 
-Látogasson el a [kereskedelmi piactér kiadói útmutató](marketplace-publishers-guide.md) a up-to-date erőforrás és dokumentáció a gyakran ismételt kérdésekre. Ezenkívül a Partnerközpontban is bejelentkezhet egy jegyet [a Microsoft támogatási szolgálatával.](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)
+Látogasson el a [kereskedelmi Marketplace kiadói útmutatóba](marketplace-publishers-guide.md) naprakész erőforrásokhoz és dokumentumokhoz a gyakran ismételt kérdésekre. Emellett a [partner Center Microsoft ügyfélszolgálata](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)is naplózhatja a jegyeket.
 
-### <a name="azure-marketplace-for-publishers"></a>Azure Piactér kiadóknak
+### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace kiadóknak
 
-**Hogyan határozhatom meg a földrajzi elérhetőségemet, hogy lehetővé tehessem az értékesítést a különböző országokban/régiókban?**
+**Hogyan a földrajzi rendelkezésre állást a különböző országokban/régiókban való értékesítés engedélyezéséhez?**
 
-1.  A Partnerközpontban keresse meg azt a termékváltozatot, amelyhez új országokat/régiókat szeretne hozzáadni.  A **Termékváltozat részletei**között keresse meg **az Ország/régió elérhetőségét,** és kattintson a **Régiók kiválasztása gombra.**
+1.  A partner Centerben Navigáljon arra az SKU-ra, amelyhez új országokat/régiókat szeretne hozzáadni.  Az **SKU részletei**között navigáljon az **ország/régió rendelkezésre állása** területre, és kattintson a **régiók kiválasztása**elemre.
 
     ![Régiók kiválasztása](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  Megjelenik egy lista az összes elérhető országgal/régióval, ahol értékesíthető.  Kattintson a termékváltozat elérhetővé tenni kívánt ország/régió melletti jelölőnégyzetre. Kattintson az **OK** gombra.
+1.  A lista az összes elérhető országot/régiót felveszi a termékbe.  Kattintson a jelölőnégyzetre minden olyan ország/régió mellett, amely számára elérhetővé szeretné tenni az SKU-t. Kattintson az **OK** gombra.
 
-    ![Ország/régió listájának kiválasztása](media/marketplace-publishers-guide/FAQ-select-countries.png)
+    ![Ország/régió lista kiválasztása](media/marketplace-publishers-guide/FAQ-select-countries.png)
 
-1.  Végül az élő ajánlatra vonatkozó módosításokhoz kattintson a **Közzététel gombra.**  
+1.  Végül a módosítások alkalmazása az élő ajánlatra lehetőségre kattintva kattintson a **publish (közzététel**) elemre.  
 
     > [!Note]
-    > 24 órába telik, amíg a módosítások életbe lépnek.
+    > A módosítások életbe léptetése 24 órát vesz igénybe.
 
 <!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
 
-**Hogyan módosíthatja egy közzétevő egy meglévő ajánlat földrajzi elérhetőségét?**
+**Hogyan változtathatja meg a kiadó a meglévő ajánlat földrajzi elérhetőségét?**
 
-A közzétevő szerkeszthet egy meglévő ajánlatot, kiválaszthatja az új országokat/régiókat, és a számolótábla letöltési/feltöltési funkciójával beállíthatja az árképzést.
+A közzétevő szerkesztheti a meglévő ajánlatokat, kiválaszthatja az új országokat/régiókat, és a táblázat letöltés/feltöltés függvény használatával állíthatja be a díjszabást.
 
-**Mely országokban/régiókban vásárolhatnak az ügyfelek azure piactéri ajánlatokat?**
+**Milyen országokban/régiókban vásárolhatják meg az ügyfelek az Azure Marketplace-ajánlatokat?**
 
-Az Azure Marketplace támogatja a 141 vásárlás földrajzi az ügyfél számlázási címe által meghatározott. Az országok/régiók listáját a [részvételi irányelvekben](/legal/marketplace/participation-policy) láthatja.
+Az Azure Marketplace a 141-es vásárlást támogatja az ügyfél számlázási címe által meghatározott földrajzi helyekről. Tekintse meg az országok/régiók listáját a [részvételi szabályzatokban](/legal/marketplace/participation-policy) .
 
 **Milyen pénznemeket támogat az Azure Marketplace?**
 
 A tranzakciók a következő 17 pénznemben hajthatók végre: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JPY, KRW, NOK, NZD, RUB, SEK, TWD és USD.
 
-### <a name="pricing-and-payment"></a>Árképzés és fizetés
+### <a name="pricing-and-payment"></a>Díjszabás és fizetés
 
-**Mi a különbség az ingyenes szint és az ingyenes szoftverpróba verzió között?**
+**Mi a különbség az ingyenes csomag és a szoftver ingyenes próbaverziója között?**
 
-Az ingyenes csomag előfizetési ajánlat folyamatosan ingyenes.  Az ingyenes szoftverpróba (Try It Now) ajánlat fizetett előfizetés, csak korlátozott ideig ingyenes.
+Az ingyenes szintű előfizetési ajánlat állandóan ingyenes.  Egy ingyenes próbaverzió (kipróbálás most) a díjköteles előfizetés, amely csak korlátozott ideig ingyenes.
 
-**Mi az a folyamat, amely érvényesíti a végpontok után történő beszerzési és kiépítési folyamatot?**
+**Milyen eljárással ellenőrizhető a végpontok közötti vásárlás és a kiépítési folyamat?**
 
-A közzétételi folyamat során hozzáférést kap az ajánlat előzetes verziójához. A hozzáférés az Előnézet lapon megadott felhasználókra korlátozódik, és ez egy olyan élő ajánlat, amely senki más számára nem látható. Ezt megvásárolhatja, és tesztelheti a folyamatot; azonban a teljes összeget az ajánlat konfigurációjának megfelelően számítjuk fel.
+A közzétételi folyamat során elérhetővé válik az ajánlat előnézete. A hozzáférés csak azokra a felhasználókra korlátozódik, akiket az Előnézet lapon adott meg, és ez egy élő ajánlat, amelyet bárki más nem láthat. Ezt megvásárolhatja, és tesztelheti is a folyamatot; a teljes összeget azonban az ajánlat konfigurációjától függően számítjuk fel.
 
-A vásárlás nagyon alacsony áron történő befejezéséhez a Microsoft azt javasolja, hogy egy privát csomagot tegyél közzé saját magának olyan áron, amelyet a tesztelés költségeként el tud fogadni. Nulla támogatott, de nem tükrözi a teljes élményt, mint egy fizetett előfizetés.
+Ha a vásárlást nagyon alacsony áron szeretné elvégezni, a Microsoft javaslatot tesz arra, hogy saját maga is kiadja a saját csomagját, amelyet Ön a tesztelési költségként fogad el. A nulla támogatott, de nem tükrözi a díjköteles előfizetéshez hasonló teljes élményt.
 
-**A Microsoft az általános szabályzatokon kívül nyújt visszatérítést?**
+**A Microsoft a standard szabályzatokon kívüli visszatérítést is biztosít?**
 
-Igen, a támogatási jegyen keresztül történő kérésre a Microsoft feldolgozza a krediteket az Ön számára, ha Ön ezt helyénvalónak tartja.
+Igen, a támogatási jegyen keresztüli kérelme alapján a Microsoft feldolgozza a krediteket az ügyfélnek, ha azt indokoltnak tartja.
 
 ## <a name="next-steps"></a>További lépések
 
-Látogasson el a [kereskedelmi piactér kiadói útmutató](/azure/marketplace/marketplace-publishers-guide) oldalára.
+Látogasson el a [kereskedelmi piactér közzétevői útmutató](/azure/marketplace/marketplace-publishers-guide) oldalára.
