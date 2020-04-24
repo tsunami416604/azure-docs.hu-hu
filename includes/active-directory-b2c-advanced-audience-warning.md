@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183166"
 ---
 > [!NOTE]
-> Az Azure Active Directory B2C-ben [az egyéni szabályzatok](../articles/active-directory-b2c/custom-policy-get-started.md) elsősorban összetett forgatókönyvek kezelésére szolgálnak. A legtöbb esetben azt javasoljuk, hogy használjon beépített [felhasználói folyamatokat.](../articles/active-directory-b2c/user-flow-overview.md)
+> Azure Active Directory B2C az [egyéni házirendeket](../articles/active-directory-b2c/custom-policy-get-started.md) elsősorban összetett forgatókönyvek kezelésére tervezték. A legtöbb esetben javasoljuk, hogy a beépített [felhasználói folyamatokat](../articles/active-directory-b2c/user-flow-overview.md)használja.
