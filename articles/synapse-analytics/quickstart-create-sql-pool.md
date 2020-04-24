@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Szinapszis SQL-készlet létrehozása
-description: Hozzon létre egy új Synapse SQL-készletet egy Azure Synapse Analytics Synapse Workspace számára az útmutató lépéseit követve.
+title: Rövid útmutató – szinapszis SQL-készlet létrehozása
+description: Hozzon létre egy új szinapszis SQL-készletet az Azure szinapszis Analytics szinapszis munkaterülethez az útmutató lépéseit követve.
 services: synapse-analytics
 author: malvenko
 ms.service: synapse-analytics
@@ -9,77 +9,77 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b3cd4ed280529efbde32fb89e6bac20640940fff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a50f203b8057dd4ea51eff1cf09fc97fb598cb3e
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423907"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096435"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool"></a>Rövid útmutató: Szinapszis SQL-készlet létrehozása
+# <a name="quickstart-create-a-synapse-sql-pool"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása
 
-Az Azure Synapse Analytics különböző elemzési motorokat kínál az adatok betöltéséhez, átalakításához, modellezéséhez, elemzéséhez és kiszolgálásához. Az SQL-készlet T-SQL alapú számítási és tárolási lehetőségeket kínál. Miután létrehozott egy SQL-készletet a Szinapszis-munkaterületen, az adatok betölthetők, modellezhetők, feldolgozhatók és szolgálhatók az elemzések megszerzéséhez.
+Az Azure szinapszis Analytics számos analitikai motort kínál az adatai betöltéséhez, átalakításához, modellezéséhez, elemzéséhez és kiszolgálásához. Az SQL-készlet A T-SQL-alapú számítási és tárolási funkciókat kínál. Miután létrehozta az SQL-készletet a szinapszis-munkaterületen, betöltheti, modellezheti, feldolgozhatja és kiszolgálhatja az elemzések beszerzését.
 
-Ebben a rövid útmutatóban megtudhatja, hogy hozzon létre egy SQL-készlet egy synapse-munkaterület az Azure Portal használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy SQL-készletet egy szinapszis-munkaterületen a Azure Portal használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot a kezdés előtt.](https://azure.microsoft.com/free/)
+Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Szinapszis munkaterület](quickstart-create-workspace.md)
+[Szinapszis-munkaterület](quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/)
+Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 
 ## <a name="create-new-sql-pool"></a>Új SQL-készlet létrehozása
 
-1. A Synapse munkaterületen, ahol létre szeretné hozni az SQL-készletet, kattintson az **Új SQL-készlet** parancs a felső sávon.
-![A Synapse-munkaterület áttekintése egy piros mezővel a parancs körül egy új SQL-készlet létrehozásához.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-01.png)
-2. Írja be a következő részleteket az **Alapok** lapon:
+1. A szinapszis munkaterületen, ahol az SQL-készletet létre szeretné hozni, kattintson a felső sávban található **új SQL Pool** parancsra.
+![Az új SQL-készlet létrehozásához szükséges, a szinapszis munkaterület áttekintése a parancs körüli piros mezővel.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-01.png)
+2. Az **alapok** lapon adja meg a következő adatokat:
 
     | Beállítás | Ajánlott érték | Leírás |
     | :------ | :-------------- | :---------- |
     | **SQL-készlet neve** | Bármely érvényes név | Az SQL-készlet neve. |
-    | **Teljesítményszint** | DW100c | Állítsa a legkisebb méretre a rövid útmutató költségeinek csökkentéséhez |
+    | **Teljesítményszint** | DW100c | Állítsa a legkisebb méretre a gyors üzembe helyezés költségeinek csökkentése érdekében |
     ||||
   
-    ![SQL-készlet létrehozása folyamat - alapjai lapon.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-02.png)
+    ![SQL-készlet folyamat létrehozása – alapbeállítások lap.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-02.png)
     > [!IMPORTANT]
-    > Vegye figyelembe, hogy az SQL-készletek által használható nevekre vonatkozóan speciális korlátozások vonatkoznak. A nevek nem tartalmazhatnak speciális karaktereket, legfeljebb 15 karakterből állhatatosak, nem tartalmazhatnak fenntartott szavakat, és nem tartalmazhatnak egyedi karaktereket a munkaterületen.
+    > Vegye figyelembe, hogy az SQL-készletek által használható nevekre vonatkozó korlátozások érvényesek. A nevek nem tartalmazhatnak speciális karaktereket, csak 15 karakterből állhatnak, és nem tartalmazhatnak fenntartott szavakat, és egyedinek kell lenniük a munkaterületen.
 
-3. Kattintson **a Tovább gombra: További beállítások**.
-4. Válassza a **Nincs** lehetőséget az SQL-készlet adatok nélküli kiépítéséhez. Hagyja kijelölve az alapértelmezett illesztést.
-![SQL készlet létrehozása folyamat - további beállítások lapon.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-03.png)
+3. Kattintson a **Tovább gombra: további beállítások**.
+4. Válassza a **nincs** lehetőséget, ha az SQL-készletet adatnélkül szeretné kiépíteni. Hagyja bejelölve az alapértelmezett rendezést.
+![SQL-készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-03.png)
 
 5. Kattintson az **Áttekintés + létrehozás** elemre.
-6. Győződjön meg arról, hogy a részletek a korábban megadottadatok alapján helyesnek tűnnek, majd kattintson a **Létrehozás gombra.**
-![SQL készlet létrehozása folyamat - ellenőrzés beállítások lap.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-04.png)
+6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek, majd kattintson a **Létrehozás**gombra.
+![SQL-készlet létrehozása folyamat – felülvizsgálati beállítások lap.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-04.png)
 
-7. Ezen a ponton az erőforrás-létesítési folyamat elindul.
- ![SQL-készlet létrehozása folyamat - erőforrás-kiépítés.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-06.png)
+7. Ekkor elindul az erőforrás-kiépítési folyamat.
+ ![SQL-készlet folyamat létrehozása – erőforrás-kiépítés.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-06.png)
 
-8. A kiépítés befejezése után a munkaterületre való visszanavigálás új bejegyzést jelenít meg az újonnan létrehozott SQL-készlethez.
- ![SQL-készlet létrehozása folyamat - erőforrás-kiépítés.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-07.png)
+8. A kiépítés befejezése után lépjen vissza a munkaterületre, majd egy új bejegyzést fog látni az újonnan létrehozott SQL-készlethez.
+ ![SQL-készlet folyamat létrehozása – erőforrás-kiépítés.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-07.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az alábbi lépéseket követve törölje az SQL-készletet a munkaterületről.
+Az alábbi lépéseket követve törölheti az SQL-készletet a munkaterületről.
 > [!WARNING]
-> Az SQL-készlet törlése eltávolítja az elemzési motort és a törölt SQL-készlet adatbázisában tárolt adatokat a munkaterületről. A továbbiakban nem lehet csatlakozni az SQL-készlethez, és az SQL-készletbe olvasott vagy beolvasott összes lekérdezés, folyamat és jegyzetfüzet a továbbiakban nem fog működni.
+> Egy SQL-készlet törlésével a rendszer eltávolítja az elemzési motort és a törölt SQL-készlet adatbázisában tárolt adatok a munkaterületről. Többé nem lehet csatlakozni az SQL-készlethez, és az SQL-készletbe beolvasott vagy írt összes lekérdezés, folyamat és jegyzetfüzet többé nem fog működni.
 
-Ha törölni szeretné az SQL-készletet, hajtsa végre az alábbi lépéseket:
+Ha törölni szeretné az SQL-készletet, hajtsa végre a következő lépéseket:
 
-1. Keresse meg az SQL-készletek panelt a munkaterület panelen
-1. Válassza ki a törölni kívánt SQL-készletet (ebben az esetben **contosoedw)**
-1. Jelölje ki, és nyomja le a **delete billentyűt.**
-1. Erősítse meg a törlést, és nyomja meg a **Törlés** gombot.
- ![SQL-készlet áttekintése – a törlés megerősítésének kiemelése.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-11.png)
-1. Ha a folyamat sikeresen befejeződik, az SQL-készlet a továbbiakban nem jelenik meg a munkaterületi erőforrásokban.
+1. Navigáljon az SQL-készletek panelre a munkaterület panelen
+1. Válassza ki a törölni kívánt SQL-készletet (ebben az esetben **contosoedw**)
+1. Jelölje ki, majd nyomja le a **delete**billentyűt.
+1. Erősítse meg a törlést, majd nyomja le a **delete (Törlés** ) gombot.
+ ![SQL Pool – áttekintés – a törlés megerősítésének kiemelése.](media/quickstart-create-sql-pool/quickstart-create-sql-pool-11.png)
+1. Ha a folyamat sikeresen befejeződik, az SQL-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-Az SQL-készlet létrehozása után a munkaterületen lesz elérhető az adatok betöltéséhez, az adatfolyamok feldolgozásához, a tóból való olvasáshoz stb.
+Az SQL-készlet létrehozása után elérhető lesz a munkaterületen az adatok betöltéséhez, a streamek feldolgozásához, a tótól való olvasáshoz stb.
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [Rövid útmutató: Hozzon létre egy Apache Spark-készletet a Synapse Studio-ban webes eszközök használatával.](spark/apache-spark-notebook-create-spark-use-sql.md)
-- Lásd: [Rövid útmutató: Hozzon létre egy Apache Spark-készletet az Azure Portalon.](quickstart-create-apache-spark-pool.md)
+- Lásd [: rövid útmutató: Apache Spark-készlet létrehozása a szinapszis Studióban webes eszközök használatával](quickstart-apache-spark-notebook.md).
+- Lásd [: rövid útmutató: Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool.md).

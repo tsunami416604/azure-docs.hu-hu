@@ -1,28 +1,23 @@
 ---
-title: Oktatóanyag – SQL, IIS, .NET verem használatával működő virtuális gépek létrehozása az Azure-ban
+title: Oktatóanyag – SQL-, IIS-, .NET stack-alapú virtuális gépek létrehozása az Azure-ban
 description: Ez az oktatóanyag bemutatja, hogyan telepítheti az Azure SQL, IIS, .NET vermet Windows rendszerű virtuális gépeken az Azure-ban.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e67f4dfebc00897b7a4ed4d675159a848e4b2fdf
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3e44236f74a5448c540c58ba730d65b412d48bd0
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455682"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101705"
 ---
-# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Oktatóanyag: Telepítse az SQL, IIS, .NET verem egy Windows virtuális gép az Azure PowerShell
+# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Oktatóanyag: az SQL, az IIS és a .NET stack telepítése egy Windows rendszerű virtuális gépen Azure PowerShell
 
-Ebben az oktatóanyagban egy SQL, IIS, .NET verem az Azure PowerShell használatával. Ez a verem két, Windows Server 2016-alapú virtuális gépből áll, amelyek közül az egyiken az IIS és a .NET, a másikon pedig az SQL Server fut.
+Ebben az oktatóanyagban egy SQL-, IIS-, .NET stack-t telepítünk Azure PowerShell használatával. Ez a verem két, Windows Server 2016-alapú virtuális gépből áll, amelyek közül az egyiken az IIS és a .NET, a másikon pedig az SQL Server fut.
 
 > [!div class="checklist"]
 > * Virtuális gép létrehozása 
@@ -34,11 +29,11 @@ Ebben az oktatóanyagban egy SQL, IIS, .NET verem az Azure PowerShell használat
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/powershell](https://shell.azure.com/powershell)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-## <a name="create-an-iis-vm"></a>IIS virtuális gép létrehozása 
+## <a name="create-an-iis-vm"></a>IIS-alapú virtuális gép létrehozása 
 
-Ebben a példában a PowerShell [Felhőrendszerhéjban található New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag használatával gyorsan létrehozhatunk egy Windows Server 2016 virtuális rendszert, majd telepíthetjük az IIS-t és a .NET Framework-et. Az IIS-t és az SQL-t futtató virtuális gépek közös erőforráscsoportban és virtuális hálózaton találhatók, ezért a nevekhez változókat hozunk létre.
+Ebben a példában a PowerShell-Cloud Shell a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmagot használjuk a Windows Server 2016 virtuális gép gyors létrehozásához, majd az IIS és a .NET-keretrendszer telepítéséhez. Az IIS-t és az SQL-t futtató virtuális gépek közös erőforráscsoportban és virtuális hálózaton találhatók, ezért a nevekhez változókat hozunk létre.
 
 
 ```azurepowershell-interactive
@@ -57,7 +52,7 @@ New-AzVm `
     -OpenPorts 80,3389 
 ```
 
-Telepítse az IIS-t és a .NET keretrendszert az egyéni parancsfájlkiterjesztés és a [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) parancsmag használatával.
+Telepítse az IIS-t és a .NET-keretrendszert az egyéni szkriptek bővítménnyel a [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) parancsmag használatával.
 
 ```azurepowershell-interactive
 Set-AzVMExtension `
@@ -73,7 +68,7 @@ Set-AzVMExtension `
 
 ## <a name="create-another-subnet"></a>Másik alhálózat létrehozása
 
-Hozzon létre egy második alhálózatot az SQL virtuális gép számára. A virtuális hálózat beszereznie a [Get-AzVirtualNetwork]{/powershell/module/az.network/get-azvirtualnetwork} használatával.
+Hozzon létre egy második alhálózatot az SQL virtuális gép számára. A vNet lekérése a [Get-AzVirtualNetwork] {/PowerShell/Module/az.Network/Get-azvirtualnetwork}.
 
 ```azurepowershell-interactive
 $vNet = Get-AzVirtualNetwork `
@@ -81,7 +76,7 @@ $vNet = Get-AzVirtualNetwork `
    -ResourceGroupName $resourceGroup
 ```
 
-Hozzon létre egy konfigurációt az alhálózathoz az [Add-AzVirtualSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig)használatával.
+Az [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig)használatával hozzon létre egy konfigurációt az alhálózathoz.
 
 
 ```azurepowershell-interactive
@@ -92,7 +87,7 @@ Add-AzVirtualNetworkSubnetConfig `
    -ServiceEndpoint Microsoft.Sql
 ```
 
-A virtuális hálózat frissítése az új alhálózati adatokkal a [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) használatával
+A vNet frissítése az új alhálózati információkkal a [set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) használatával
    
 ```azurepowershell-interactive   
 $vNet | Set-AzVirtualNetwork
@@ -116,7 +111,7 @@ New-AzVm `
     -OpenPorts 3389,1401 
 ```
 
-A [Set-AzVMSqlServerExtension használatával](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension) adja hozzá az [SQL Server bővítményt](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) az SQL virtuális géphez.
+A [set-AzVMSqlServerExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension) használatával adja hozzá a [SQL Server BŐVÍTMÉNYT](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) az SQL virtuális géphez.
 
 ```azurepowershell-interactive
 Set-AzVMSqlServerExtension `
@@ -136,8 +131,8 @@ Ebben az oktatóanyagban egy SQL&#92;IIS&#92;.NET vermet telepített az Azure Po
 > * SQL Servert futtató virtuális gép létrehozása
 > * Az SQL Server-bővítmény telepítése
 
-A következő oktatóanyagra lépésként megtudhatja, hogyan biztosítható az IIS webkiszolgáló TLS/SSL-tanúsítványokkal.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan védheti meg az IIS-webkiszolgálót a TLS/SSL-tanúsítványokkal.
 
 > [!div class="nextstepaction"]
-> [Biztonságos IIS webkiszolgáló TLS/SSL-tanúsítványokkal](tutorial-secure-web-server.md)
+> [AZ IIS-webkiszolgáló védelme TLS/SSL-tanúsítványokkal](tutorial-secure-web-server.md)
 

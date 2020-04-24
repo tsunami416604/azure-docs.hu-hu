@@ -1,51 +1,49 @@
 ---
-title: Rendereléskezelő támogatása – Azure Batch
-description: Az Azure Batch renderkezelő-integráció használata. További információ a népszerű renderelési kezelők beépített támogatásáról és bővítményeiről.
-services: batch
-ms.service: batch
+title: A render Manager támogatása
+description: A Azure Batch Render Manager integrációjának használata. Ismerkedjen meg a népszerű Render managerek beépített támogatásával vagy bővítményeivel.
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 246907b16534d1a91833cab633a1973c97429f47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9921c68bf6ebe44d6d2a6b7b74afbe3fa98e0803
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75449686"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115737"
 ---
-# <a name="using-azure-batch-with-render-farm-managers"></a>Az Azure Batch használata renderelési farmkezelőkkel
+# <a name="using-azure-batch-with-render-farm-managers"></a>Azure Batch használata a render Farm Managerrel
 
-Ha egy meglévő helyszíni renderelő farmot használ, akkor nagyon valószínű, hogy egy rendereléskezelő szabályozza a renderelési farm kapacitását és a feladatok renderelését.
+Ha egy meglévő helyszíni Render farmot használ, akkor nagy valószínűséggel a render Manager a farmok renderelési kapacitását és a renderelési feladatokat vezérli.
 
-Az Azure beépített támogatást vagy bővítményeket biztosít a népszerű rendereléskezelők számára. Ezután hozzáadhatja és eltávolíthatja az Azure virtuális gépeket, beleértve a fizetős alkalmazáslicencelést és az alacsony prioritású virtuális gépeket.
+Az Azure beépített támogatást vagy bővítményeket biztosít a népszerű Render managerekhez. Ezután hozzáadhat és eltávolíthat Azure-beli virtuális gépeket, beleértve a használaton kívüli alkalmazások licencelését és az alacsony prioritású virtuális gépeket is.
 
-A következő renderkezelők támogatottak:
+A következő Render managerek támogatottak:
 
 * [PipelineFX Qube!](https://www.pipelinefx.com/)
-* [Királyi render](https://www.royalrender.de/)
-* [Thinkbox határidő](https://deadline.thinkboxsoftware.com/)
+* [Royal Render](https://www.royalrender.de/)
+* [Thinkbox határideje](https://deadline.thinkboxsoftware.com/)
 
-## <a name="azure-render-hub"></a>Azure renderelő központ
+## <a name="azure-render-hub"></a>Azure Render hub
 
-Az Azure Render Hub leegyszerűsíti az Azure renderelési farmok létrehozását és kezelését.  A Render Hub natív támogatást nyújt a PipelineFx Qube és a Deadline 10 számára.  További információkért és részletes utasításokért tekintse meg [a GitHub-tárházat.](https://github.com/Azure/azure-render-hub)
+Az Azure Render hub leegyszerűsíti az Azure Render-farmok létrehozását és felügyeletét.  A render hub natív módon támogatja a PipelineFx Qube és a 10. határidőt.  További információkért és részletes utasításokért lásd [a GitHub-tárházat](https://github.com/Azure/azure-render-hub).
 
-## <a name="using-azure-with-pipelinefx-qube"></a>Az Azure használata a PipelineFX Qube-vel
+## <a name="using-azure-with-pipelinefx-qube"></a>Az Azure használata a PipelineFX Qube
 
-Az Azure Render Hub támogatja a népszerű renderelési kezelőket, beleértve a Deadline-ot is.  A Render Hub telepítésével és használatával kapcsolatos tudnivalókért tekintse meg [a GitHub-tárházat.](https://github.com/Azure/azure-render-hub)
+Az Azure Render hub támogatja a népszerű Render managereket, beleértve a határidőt is.  A render hub üzembe helyezésével és használatával kapcsolatos utasításokért lásd [a GitHub-tárházat](https://github.com/Azure/azure-render-hub).
 
-Parancsfájlok és utasítások, amelyek lehetővé teszik az Azure Batch-készlet virtuális gépei Qube-dolgozókként való használatára, szintén elérhetők [a GitHub-tárházban.](https://github.com/Azure/azure-qube)
+Azok a parancsfájlok és utasítások, amelyek lehetővé teszik, hogy Azure Batch készletben lévő virtuális gépek Qube feldolgozóként is használhatók legyenek [a GitHub-tárházban](https://github.com/Azure/azure-qube).
 
-## <a name="using-azure-with-royal-render"></a>Az Azure használata royal rendereléssel
+## <a name="using-azure-with-royal-render"></a>Az Azure és a Royal Render használata
 
-A Royal Render beépített Azure- és Azure Batch-integrációval rendelkezik, amely lehetővé teszi a renderelési farm azure-alapú virtuális gépekhez való kiterjesztését. Összefoglalást a [súgófájlokban](https://www.royalrender.de/help8/index.html?Cloudrendering.html)talál.
+A Royal Render rendelkezik az Azure-nal és Azure Batch integrációs szolgáltatással, amely lehetővé teszi a render farmok Azure-alapú virtuális gépekkel való bővítését. Az összegzést [a súgófájlok](https://www.royalrender.de/help8/index.html?Cloudrendering.html)részben tekintheti meg.
 
-Az Azure-integrációt használó Royal Render-ügyfél példáját lásd a [Medúzaképek ügyféltörténetében.](https://customers.microsoft.com/story/jellyfishpictures)
+Az Azure-integrációt használó Royal Render-ügyfélre például a medúza- [képek vásárlói történetében](https://customers.microsoft.com/story/jellyfishpictures)olvashat.
 
 ## <a name="using-azure-with-thinkbox-deadline"></a>Az Azure használata a Thinkbox határidővel
 
-Az Azure Render Hub támogatja a népszerű renderelési kezelőket, beleértve a Deadline-ot is.  A Render Hub telepítésével és használatával kapcsolatos tudnivalókért tekintse meg [a GitHub-tárházat.](https://github.com/Azure/azure-render-hub)
+Az Azure Render hub támogatja a népszerű Render managereket, beleértve a határidőt is.  A render hub üzembe helyezésével és használatával kapcsolatos utasításokért lásd [a GitHub-tárházat](https://github.com/Azure/azure-render-hub).
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az Azure Batch-integrációt a rendereléskezelőhöz a megfelelő beépülő modul és adott esetben a GitHubon található utasítások használatával.
+Próbálja ki a render Manager Azure Batch integrációját a megfelelő beépülő modullal és a GitHubon megjelenő utasításokkal, ahol lehetséges.

@@ -11,4 +11,4 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "67179534"
 ---
-Ha már nincs szüksége a cikk használatával létrehozott erőforrásokra, törölje őket, hogy elkerülje a költségek felmerülését. Ebből a cikkből megtudhatja, hogy miként [olvassa el a terméken lévő felhasználói adatok exportálása és törlése című cikket.](../articles/machine-learning/studio/export-delete-personal-data-dsr.md#delete)
+Ha már nincs szüksége az ebben a cikkben létrehozott erőforrásokra, törölje őket, hogy elkerülje a költségek viselését. A cikkből megtudhatja, hogyan [exportálhatja és törölheti a terméken belüli felhasználói információkat](../articles/machine-learning/studio/export-delete-personal-data-dsr.md#delete).

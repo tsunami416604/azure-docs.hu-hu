@@ -16,6 +16,6 @@ ms.lasthandoff: 03/26/2020
 ms.locfileid: "75473394"
 ---
 > [!div class="op_single_selector"]
-> * [C #](../articles/iot-pnp/quickstart-connect-pnp-device-solution-csharp.md)
+> * [C#](../articles/iot-pnp/quickstart-connect-pnp-device-solution-csharp.md)
 > * [Java](../articles/iot-pnp/quickstart-connect-pnp-device-solution-java.md)
 > * [Node.js](../articles/iot-pnp/quickstart-connect-pnp-device-solution-node.md)

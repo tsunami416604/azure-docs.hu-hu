@@ -1,7 +1,7 @@
 ---
-title: Adatátalakítás - LUIS
+title: Adatkonverzió – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan lehet a kimondott szövegeket módosítani, mielőtt előrejelzések nyelvi megértés (LUIS)
+description: Ismerje meg, hogyan változtathatók meg a hosszúságú kimondott szöveg a Language Understanding (LUIS) előrejelzések előtt
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,33 +11,33 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: aeb9094db83b14af988f70485788934a7854200c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2455df87c8eae1a48cb6c8b1381dad85d304bf4
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68619807"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82099240"
 ---
-# <a name="convert-data-format-of-utterances"></a>Kimondott szöveg adatformátumának konvertálása
-A LUIS a következő konverziókat biztosítja a felhasználói utterance (kifejezés) előrejelzés előtt"
+# <a name="convert-data-format-of-utterances"></a>Hosszúságú kimondott szöveg adatformátumának konvertálása
+A LUIS a következő konverziókat biztosítja a felhasználók teljes leírásához az előrejelzés előtt: "
 
-* Beszéd-szöveg a [Cognitive Services beszédszolgáltatásával.](../Speech-Service/overview.md) 
+* Beszéd a szövegben [Cognitive Services Speech](../Speech-Service/overview.md) Service használatával.
 
 ## <a name="speech-to-text"></a>Diktálás
 
-A szövegfelismerés a LUIS-szal való integrációként biztosított. 
+A beszéd szövege a LUIS-nal való integrációként van megadva.
 
-### <a name="intent-conversion-concepts"></a>Szándékkonverziós fogalmak
-A beszéd szöveggé konvertálása a LUIS lehetővé teszi, hogy küldjön szóbeli kimondott szöveget egy végpontra, és kap egy LUIS előrejelzési választ. A folyamat a [beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Speech) és a LUIS integrálása. További információ a beszédfelismerési szándékról az [oktatóanyaggal.](../speech-service/how-to-recognize-intents-from-speech-csharp.md)
+### <a name="intent-conversion-concepts"></a>Szándék-átalakítási fogalmak
+Ha a LUIS szövegre konvertálja a szöveget, lehetővé teszi a szóbeli hosszúságú kimondott szöveg küldését egy végpontra, és megkapta a LUIS-előrejelzési választ. A folyamat a [Speech](https://docs.microsoft.com/azure/cognitive-services/Speech) Service és a Luis közötti integráció. További információ a beszédfelismerési szándékról az [oktatóanyaghoz](../speech-service/how-to-recognize-intents-from-speech-csharp.md).
 
 ### <a name="key-requirements"></a>Fő követelmények
-Ehhez az integrációhoz nem kell **Bing Speech API-kulcsot** létrehoznia. Az Azure Portalon létrehozott **Language Understanding** kulcs ehhez az integrációhoz működik. Ne használja a LUIS indítókulcsot.
+Ehhez az integrációhoz nem kell **Bing Speech API** kulcsot létrehoznia. Az integrációhoz a Azure Portalban létrehozott **Language Understanding** kulcs működik. Ne használja a LUIS Starter-kulcsot.
 
 ### <a name="pricing-tier"></a>Tarifacsomag
-Ez az integráció a szokásos nyelvi megértési tarifacsomagoktól eltérő [árképzési](luis-boundaries.md#key-limits) modellt használ. 
+Ez az integráció eltérő [díjszabási](luis-limits.md#key-limits) modellt használ, mint a szokásos Language Understanding árképzési szintek.
 
-### <a name="quota-usage"></a>Kvótahasználat
-Az információk [kulcskorlátai](luis-boundaries.md#key-limits) című témakörben található. 
+### <a name="quota-usage"></a>Kvóta használata
+További információ: [kulcs korlátai](luis-limits.md#key-limits) .
 
 ## <a name="next-steps"></a>További lépések
 

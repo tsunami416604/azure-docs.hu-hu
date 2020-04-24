@@ -1,41 +1,35 @@
 ---
-title: Rövid útmutató – Windows virtuális gép létrehozása az Azure CLI használatával
-description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre windowsos virtuális gépet az Azure CLI segítségével
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: Rövid útmutató – Windows rendszerű virtuális gép létrehozása az Azure CLI használatával
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Windows rendszerű virtuális gépet az Azure CLI használatával
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 37f86f480e0d2a46bb54ad9b041fb1892a9ebbc4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: c6f1663924f338b6b17c760afe64527f563f5bc2
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458164"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098016"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure CLI segítségével
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe az Azure CLI segítségével Windows Server 2016 rendszerű virtuális gépeket (VM-eket) az Azure-ban. Ha látni szeretné a virtuális gépet feladatvégzés közben, hozzon létre RDP-kapcsolatot a virtuális géphez, és telepítse az IIS webkiszolgálót.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/bash](https://shell.azure.com/bash)is elindíthatja a segítségével. Válassza a **Másolás** lehetőséget a kódblokkok másolásához, beillesztéséhez a Felhőrendszerhéjba, és nyomja le az **Enter** billentyűt a futtatásához.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash). Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -43,10 +37,10 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hoz létre. Ez a példa *azureusert* használ egy felügyeleti felhasználónévhez. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hoz létre. Ez a példa egy rendszergazdai felhasználónévhez tartozó *azureuser* -t használ. 
 
-Meg kell adnia egy jelszót, amely megfelel az [Azure virtuális gépek jelszókövetelményeinek.](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-) Az alábbi példában a rendszer kéri, hogy adjon meg egy jelszót a parancssorból. A paramétert a `--admin-password` jelszó értékével is hozzáadhatja. A felhasználónév és a jelszó később, amikor csatlakozik a virtuális géphez.
+Meg kell adnia egy jelszót, amely megfelel az Azure-beli [virtuális gépek jelszavára vonatkozó követelményeknek](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+). Az alábbi példa használatával a rendszer felszólítja, hogy adjon meg egy jelszót a parancssorban. Azt is megteheti, `--admin-password` hogy hozzáadta a paraméter értékét a jelszavához. A felhasználónevet és a jelszót később fogja használni a rendszer a virtuális géphez való csatlakozáskor.
 
 ```azurecli-interactive
 az vm create \

@@ -1,6 +1,6 @@
 ---
-title: A PIM használatának megkezdése – Azure Active Directory | Microsoft dokumentumok
-description: Ismerje meg, hogyan engedélyezheti és kezdheti el használni az Azure AD kiemelt identitáskezelés (PIM) használatát az Azure Portalon.
+title: A PIM használatának megkezdése – Azure Active Directory | Microsoft Docs
+description: Megtudhatja, hogyan engedélyezheti és kezdheti a Azure AD Privileged Identity Management (PIM) használatát a Azure Portalban.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,88 +10,89 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/13/2020
+ms.date: 04/23/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cbb9b4340a7cdb9be5039722a8f75e09288ec48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46f6c77916c7be62247c69b12dff1982e5781aff
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472860"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112218"
 ---
 # <a name="start-using-privileged-identity-management"></a>A Privileged Identity Management használatának első lépései
 
-A kiemelt identitáskezelés (PIM) segítségével kezelheti, szabályozhatja és figyelheti a hozzáférést az Azure Active Directory (Azure AD) szervezeten belül. Ez a hatókör az Azure-erőforrásokhoz, az Azure AD-hez és más Microsoft online szolgáltatásokhoz, például az Office 365-höz vagy a Microsoft Intune-hoz való hozzáférést is magában foglalja.
+Ez a cikk a Privileged Identity Management (PIM) engedélyezését és a használatának első lépéseit ismerteti.
 
-Ez a cikk ismerteti, hogyan engedélyezheti és kezdheti el használni a kiemelt identitáskezelés.
+A Privileged Identity Management (PIM) használatával felügyelheti, vezérelheti és figyelheti a hozzáférést a Azure Active Directory (Azure AD) szervezeten belül. A PIM segítségével igény szerint és az Azure-erőforrásokhoz, Azure AD-erőforrásokhoz és más Microsoft-online szolgáltatásokokhoz, például az Office 365-hez vagy Microsoft Intunehoz is igény szerinti hozzáférést biztosíthat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kiemelt identitáskezelés használatához az alábbi licencek egyikével kell rendelkeznie:
+Privileged Identity Management használatához a következő licencek egyike szükséges:
 
 - Prémium szintű Azure AD P2
 - Enterprise Mobility + Security (EMS) E5
 
-További információt a [Kiemelt identitáskezelés használatára vonatkozó licenckövetelmények](subscription-requirements.md)című témakörben talál.
+További információ: [a Privileged Identity Management használatára vonatkozó licencfeltételek](subscription-requirements.md).
 
-## <a name="sign-up-pim-for-azure-ad-roles"></a>PiM-regisztráció az Azure AD-szerepkörökhöz
+## <a name="prepare-pim-for-azure-ad-roles"></a>A PIM előkészítése Azure AD-szerepkörökhöz
 
-Miután engedélyezte a kiemelt identitáskezelést a címtárhoz, az Azure AD-szerepkörök kezeléséhez regisztrálnia kell a kiemelt identitáskezelés szolgáltatást.
+Miután engedélyezte a Privileged Identity Management a címtárban, előkészítheti Privileged Identity Management az Azure AD-szerepkörök kezelésére.
 
-1. Nyissa meg **az Azure AD kiemelt identitáskezelés .**
+Az alábbi feladatokat javasoljuk az Azure AD-szerepkörök előkészítéséhez, sorrendben:
 
-1. Válassza az **Azure AD-szerepkörök lehetőséget.**
+1. [Azure ad-szerepkör beállításainak konfigurálása](pim-how-to-change-default-settings.md).
+1. [Adja meg a jogosult hozzárendeléseket](pim-how-to-add-role-to-user.md).
+1. [Engedélyezze a jogosult felhasználók számára az Azure ad-szerepkör igény szerinti aktiválását](pim-how-to-activate-role.md).
 
-    ![Jogosultsággal rendelkező identitáskezelés az Azure AD-szerepkörökhöz](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
+## <a name="prepare-pim-for-azure-roles"></a>A PIM előkészítése az Azure-szerepkörökhöz
 
-1. Válassza **a Regisztráció**lehetőséget.
+Miután engedélyezte a Privileged Identity Management a címtárhoz, előkészítheti a Privileged Identity Managementt az Azure-erőforrásokhoz való hozzáféréshez szükséges Azure-szerepkörök kezeléséhez az előfizetésben.
 
-1. A megjelenő üzenetben kattintson az **Igen** gombra a Kiemelt identitáskezelés regisztrálásához az Azure AD-szerepkörök kezeléséhez.
+Az alábbi feladatokat javasoljuk az Azure-szerepkörök előkészítéséhez, sorrendben:
 
-    ![Jogosultsággal rendelkező identitáskezelés az Azure AD-szerepkörök üzenetéhez](./media/pim-getting-started/sign-up-pim-message.png)
-
-    Amikor a regisztráció befejeződik, az Azure AD-beállítások engedélyezve lesznek. Előfordulhat, hogy frissítenie kell a portált.
-
-    A kiemelt identitáskezeléssel védett Azure-erőforrások felderítéséről és kiválasztásáról az [Azure-erőforrások felderítése a Kiemelt identitáskezelés szolgáltatásban való kezeléscímű témakörben](pim-resource-roles-discover-resources.md)talál.
+1. [Az Azure-erőforrások felfedezése](pim-resource-roles-discover-resources.md)
+1. [Konfigurálja az Azure-szerepkör beállításait](pim-resource-roles-configure-role-settings.md).
+1. [Adja meg a jogosult hozzárendeléseket](pim-resource-roles-assign-roles.md).
+1. [Lehetővé teheti a jogosult felhasználók számára az Azure-szerepkörök aktiválását](pim-resource-roles-activate-your-roles.md).
 
 ## <a name="navigate-to-your-tasks"></a>A feladatok megkeresése
 
-Miután a kiemelt identitáskezelés be van állítva, elindíthatja az identitáskezelési feladatokat.
+A Privileged Identity Management beállítása után megismerheti a módját.
 
-![A Kiemelt identitáskezelés navigációs ablaka a Feladatok és a Kezelés beállításokkal](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Navigációs ablak Privileged Identity Management feladatok és kezelési beállítások megjelenítése](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Feladat + Kezelés | Leírás |
+| Feladat + kezelés | Leírás |
 | --- | --- |
-| **Saját szerepek**  | Megjeleníti az Önhöz rendelt jogosult és aktív szerepkörök listáját. Itt aktiválhatja az Önhöz rendelt elérhető szerepköröket. |
-| **Kéréseim** | Megjeleníti a függőben lévő kérelmeket a jogosult szerepkör-hozzárendelések aktiválásához. |
-| **Kérések jóváhagyása** | Megjeleníti a jogosult szerepkörök aktiválására vonatkozó kérelmek listáját a címtárban lévő felhasználók számára, akiket jóváhagyhat. |
-| **Hozzáférés áttekintése** | Felsorolja azokat az aktív hozzáférési ellenőrzéseket, amelyekhez hozzá van rendelve, függetlenül attól, hogy saját maga vagy valaki más számára tekinti-e át a hozzáférést. |
-| **Azure AD-szerepkörök** | Megjeleníti az irányítópultot és a kiemelt szerep-rendszergazdák beállításait az Azure AD szerepkör-hozzárendelések kezeléséhez. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett. |
-| **Azure-erőforrások** | Megjeleníti az irányítópultot és a kiemelt szerep-rendszergazdák beállításait az Azure-erőforrás-szerepkör-hozzárendelések kezeléséhez. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett. |
+| **Saját szerepkörök**  | Megjeleníti az Önhöz hozzárendelt jogosult és aktív szerepkörök listáját. Itt aktiválhatja az Önhöz rendelt elérhető szerepköröket. |
+| **Saját kérések** | Megjeleníti a jogosult szerepkör-hozzárendelések aktiválásához függőben lévő kéréseit. |
+| **Kérések jóváhagyása** | Megjeleníti azoknak a kéréseknek a listáját, amelyekkel az Ön által jóváhagyott címtárban lévő felhasználók jogosult szerepköröket aktiválhat. |
+| **Hozzáférés áttekintése** | Felsorolja a befejezéshez hozzárendelt aktív hozzáférési felülvizsgálatokat, függetlenül attól, hogy saját maga vagy valaki másnak tekinti-e meg a hozzáférést. |
+| **Azure AD-szerepkörök** | Megjeleníti a Kiemelt szerepkörű rendszergazdák irányítópultját és beállításait az Azure AD szerepkör-hozzárendelések kezeléséhez. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett. |
+| **Azure-erőforrások** | Megjeleníti a Kiemelt szerepkörű rendszergazdák irányítópultját és beállításait az Azure-erőforrás szerepkör-hozzárendeléseinek kezeléséhez. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett. |
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>PIM-csempe hozzáadása az irányítópulthoz
 
-A kiemelt identitáskezelés megnyitásának megkönnyítése érdekében adjon hozzá egy emelt szintű identitáskezelési csempét az Azure Portal irányítópultjához.
+A Privileged Identity Management megnyitásának megkönnyítéséhez adjon hozzá egy PIM-csempét a Azure Portal irányítópulthoz.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza ki az **összes szolgáltatást,** és keresse meg az **Azure AD kiemelt identitáskezelési** szolgáltatás.
+1. Válassza a **minden szolgáltatás** lehetőséget, és keresse meg a **Azure ad Privileged Identity Management** szolgáltatást.
 
-    ![Azure AD kiemelt identitáskezelés minden szolgáltatásban](./media/pim-getting-started/pim-all-services-find.png)
+    ![Azure AD Privileged Identity Management az összes szolgáltatásban](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Válassza ki a kiemelt identitáskezelés rövid útmutató.
+1. Válassza ki a Privileged Identity Management rövid útmutatót.
 
-1. Jelölje be **a Pin panelt** az irányítópulthoz a Kiemelt identitáskezelés rövid útmutató panel rögzítéséhez az irányítópulton.
+1. Az irányítópultra rögzítheti az Privileged Identity Management rövid útmutató panelt az **irányítópulton** .
 
-    ![Pushpin ikon a Kiemelt identitáskezelés panel műszerfalra rögzítéséhez](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Gombostű ikonja Privileged Identity Management panel rögzítése az irányítópulton](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
-    Az Azure irányítópultján az ehhez hasonló csempe jelenik meg:
+    Az Azure-irányítópulton a következőhöz hasonló csempe látható:
 
-    ![Kiemelt identitáskezelés – rövid útmutató csempe az irányítópulton](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Privileged Identity Management rövid útmutató csempe az irányítópulton](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure AD-szerepkörök hozzárendelése a kiemelt identitáskezelésben](pim-how-to-add-role-to-user.md)
-- [Fedezze fel az Azure-erőforrásokat a kiemelt identitáskezelés ben kezelhető](pim-resource-roles-discover-resources.md)
+- [Azure AD-szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
+- [Azure-erőforrásokhoz való hozzáférés kezelése Privileged Identity Management](pim-resource-roles-discover-resources.md)

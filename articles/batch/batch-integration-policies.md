@@ -1,42 +1,32 @@
 ---
-title: Integráció az Azure-szabályzatokkal - Azure Batch | Microsoft dokumentumok
-description: ''
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
+title: Integráció az Azure-szabályzatokkal
+description: Azure Policy egy Azure-beli szolgáltatás, amellyel olyan házirendeket hozhat létre, rendelhet hozzá és kezelhet, amelyek az erőforrásokra vonatkozó szabályokat kényszerítenek.
 ms.topic: article
 ms.date: 02/24/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 9a306457f838fc79d12be3217d96cc8fb25c9c1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74c087031a024b0c50d6c40057a4e2eda554be6f
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77618372"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116077"
 ---
-# <a name="integration-with-azure-policy"></a>Integráció az Azure-szabályzattal
+# <a name="integration-with-azure-policy"></a>Integráció a Azure Policy
 
-Az Azure Policy egy olyan azure-szolgáltatás, amelyet olyan szabályzatok létrehozására, hozzárendelésére és kezelésére használhat, amelyek szabályokat kényszerítenek ki az erőforrásokra, hogy ezek az erőforrások továbbra is megfeleljenek a vállalati szabványoknak és a szolgáltatásiszint-szerződéseknek. Az Azure Policy kiértékeli az erőforrásokat, hogy nem felelnek-e meg a hozzárendelt szabályzatok. 
+Azure Policy egy Azure-beli szolgáltatás, amellyel olyan házirendeket hozhat létre, rendelhet hozzá és kezelhet, amelyek az erőforrásokra vonatkozó szabályokat kényszerítenek, így biztosítva, hogy az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatói szerződéseknek. Azure Policy kiértékeli az erőforrásokat, és nem felel meg a hozzárendelt szabályzatoknak. 
 
-Az Azure Batch két beépített bővítményt is rendelkezik, amelyek segítenek a szabályzatok megfelelőségének kezelésében. 
+A Azure Batch két beépített bővítménnyel segíti a szabályzatok megfelelőségének kezelését. 
 
-|**Név**...|   **Leírás**|**Hatás(ok)**|  **Verzió**|    **Forrás**
+|**Név**...|   **Leírás**|**Hatás (ok)**|  **Verzió**|    **Forrás**
 |----------------|----------|----------|----------------|---------------|
-|A Batch-fiókok diagnosztikai naplóit engedélyezni kell|   Diagnosztikai naplók engedélyezése. Ez lehetővé teszi a vizsgálati célokra használt tevékenységnyomvonalak újbóli létrehozását; biztonsági incidens esetén, vagy ha a hálózat biztonsága sérül|AuditIfNotExists, Letiltva|  2.0.0|  GitHub|
-|Metrikariasztási szabályokat kell konfigurálni a Batch-fiókokban| Metrikariasztási szabályok naplózási konfigurációjának naplózása a Batch-fiókban a szükséges metrika engedélyezéséhez|   AuditIfNotExists, Letiltva| 1.0.0|  GitHub|
+|A Batch-fiókokban lévő diagnosztikai naplókat engedélyezni kell|   Diagnosztikai naplók engedélyezésének naplózása. Ez lehetővé teszi, hogy újból létrehozza a vizsgálati célokra használandó tevékenység-nyomvonalat; biztonsági incidens bekövetkezésekor vagy a hálózat biztonsága esetén|AuditIfNotExists, letiltva|  2.0.0|  GitHub|
+|A metrika riasztási szabályait a Batch-fiókokon kell konfigurálni| A metrika riasztási szabályainak konfigurálása a Batch-fiókban a szükséges metrika engedélyezéséhez|   AuditIfNotExists, letiltva| 1.0.0|  GitHub|
 
-A házirend-definíciók leírják azokat a feltételeket, amelyeknek teljesülniük kell. Egy feltétel összehasonlítja az erőforrás tulajdonságot egy szükséges értékkel. Az erőforrástulajdonság-mezők előre definiált aliasokkal érhetők el. Tulajdonságaliasok használatával férhet hozzá egy erőforrástípus bizonyos tulajdonságaihoz. Az aliasok lehetővé teszik, hogy korlátozza, milyen értékek vagy feltételek engedélyezettek egy erőforrás egy tulajdonságához. Minden alias leképezi az adott erőforrástípus különböző API-verziókelérési útjait. A házirend-kiértékelés során a házirend-motor lekéri az API-verzió tulajdonságelérési útját.
+A szabályzat-definíciók azokat a feltételeket írják le, amelyeknek teljesülniük kell. A feltétel összehasonlítja az erőforrás tulajdonságot egy szükséges értékkel. Az erőforrás-tulajdonságok mezői előre definiált aliasokkal érhetők el. Tulajdonság-Aliasok használatával férhet hozzá az erőforrástípus adott tulajdonságaihoz. Az aliasok lehetővé teszik annak korlátozását, hogy az adott erőforrás egy tulajdonsága milyen értékeket vagy feltételeket engedélyezzen. Az egyes aliasok egy adott erőforrástípus különböző API-verzióinak elérési útjaira mutatnak. A házirend kiértékelése során a házirend-kezelő beolvassa az adott API-verzióhoz tartozó tulajdonság elérési útját.
 
-A Batch által igényelt erőforrások a következők: fiók, számítási csomópont, készlet, feladat és feladat. Így a tulajdonságaliasok használatával hozzáférhet az erőforrások adott tulajdonságaihoz. További információ az [aliasokról](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+A Batch számára szükséges erőforrások közé tartoznak a következők: fiók, számítási csomópont, készlet, feladat és feladat. Ezért a tulajdonságok aliasai használatával férhet hozzá az adott erőforrásokhoz. További információ az [aliasokról](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
-Győződjön meg arról, hogy ismeri az aktuális aliasokat, és tekintse át az erőforrásokat és szabályzatokat, használja az Azure-szabályzat bővítményt a Visual Studio-kódhoz. Minden olyan platformra telepíthető, amelyet a Visual Studio Kód támogat. Ez a támogatás magában foglalja a Windows, Linux és macOS operációs rendszert. Lásd a [telepítési útmutatót.](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode)
+A Visual Studio Code-hoz készült Azure Policy bővítménnyel ellenőrizheti, hogy ismeri-e az aktuális aliasokat, és tekintse át az erőforrásokat és a szabályzatokat. Ez a Visual Studio Code által támogatott összes platformon telepíthető. Ez a támogatás magában foglalja a Windows, a Linux és a macOS rendszer használatát. Lásd: [telepítési irányelvek](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode).
 
 
 

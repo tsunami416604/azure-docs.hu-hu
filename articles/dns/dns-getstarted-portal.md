@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76937134"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Gyors útmutató: Azure DNS zóna és rekord létrehozása a Azure Portal használatával
@@ -28,7 +28,7 @@ Ebben a rövid útmutatóban létrehoz egy tesztelési tartományt, majd létreh
 You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
 --->
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 Az összes portál lépéseihez jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
@@ -89,7 +89,7 @@ Most, hogy rendelkezik egy "A" teszttel rendelkező DNS-zónával, tesztelheti a
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Példa:
+   Például:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -99,13 +99,13 @@ Most, hogy rendelkezik egy "A" teszttel rendelkező DNS-zónával, tesztelheti a
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-A (z) **www\.contoso. xyz** állomásnév a **10.10.10.10**-re van feloldva, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e. 
+A **www\.contoso. xyz** nevű állomásnév a **10.10.10.10**hasonlóan oldódik meg, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az ebben a rövid útmutatóban létrehozott erőforrásokra, távolítsa el őket a **MyResourceGroup** -erőforráscsoport törlésével. Nyissa meg a **MyResourceGroup** erőforráscsoportot, majd válassza az **erőforráscsoport törlése**elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban](./dns-web-sites-custom-domain.md)

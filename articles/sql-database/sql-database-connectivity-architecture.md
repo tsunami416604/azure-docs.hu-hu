@@ -1,6 +1,6 @@
 ---
-title: Csatlakoztatási architektúra
-description: Ez a dokumentum ismerteti az Azure SQL-kapcsolatarchitektúrát az Azure-on belüli vagy az Azure-on kívüli adatbázis-kapcsolatokhoz.
+title: Kapcsolati architektúra
+description: Ez a dokumentum ismerteti az Azure SQL-kapcsolati architektúráját az Azure-on belüli vagy az Azure-on kívüli adatbázis-kapcsolatokhoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,75 +12,75 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b4e7d827536245a22d168c7d9923c2e5b82830b0
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419263"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111793"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL kapcsolati architektúrája
 > [!NOTE]
-> Ez a cikk az Azure SQL-kiszolgálóra, valamint az Azure SQL-kiszolgálón létrehozott SQL Database és SQL Data Warehouse adatbázisokra is vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+> Ez a cikk az Azure SQL Serverre vonatkozik, valamint az Azure SQL Serveren létrehozott SQL Database és SQL Data Warehouse adatbázisokra is. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
 
 > [!IMPORTANT]
-> Ez a cikk *nem* vonatkozik az **Azure SQL Database felügyelt példányára.** Tekintse meg [a felügyelt példány kapcsolatarchitektúráját.](sql-database-managed-instance-connectivity-architecture.md)
+> Ez a cikk *nem* vonatkozik **Azure SQL Database felügyelt példányra**. Tekintse át a [felügyelt példány kapcsolati architektúráját](sql-database-managed-instance-connectivity-architecture.md).
 
-Ez a cikk ismerteti a különböző összetevők architektúráját, amelyek az Azure SQL Database vagy az SQL Data Warehouse hálózati forgalmat irányítanak. Azt is ismerteti, a különböző kapcsolati szabályzatok, és milyen hatással van az Azure-on belül csatlakozó ügyfelek és az Azure-on kívülről csatlakozó ügyfelek. 
+Ez a cikk ismerteti a különböző összetevők architektúráját, amelyek közvetlen hálózati forgalmat Azure SQL Database vagy SQL Data Warehouse. Ismerteti továbbá a különböző kapcsolati szabályzatokat, valamint azt, hogy a hogyan befolyásolja az Azure-ból és az Azure-on kívülről csatlakozó ügyfelektől érkező ügyfeleket. 
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 
-Az alábbi ábra az Azure SQL Database-kapcsolatarchitektúrájának magas szintű áttekintését tartalmazza.
+Az alábbi ábra a Azure SQL Database kapcsolati architektúrájának áttekintését nyújtja.
 
 ![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
-Az alábbi lépések azt ismertetik, hogyan jön létre egy kapcsolat egy Azure SQL-adatbázissal:
+A következő lépések azt ismertetik, hogyan történik a kapcsolatok létrehozása egy Azure SQL Database-adatbázisba:
 
-- Az ügyfelek az átjáróhoz csatlakoznak, amely nyilvános IP-címmel rendelkezik, és az 1433-as porton figyel.
-- Az átjáró a hatékony kapcsolati házirendtől függően átirányítja vagy proxykat irányít át a megfelelő adatbázis-fürtre.
-- Az adatbázis-fürt forgalom továbbítása a megfelelő Azure SQL-adatbázisba.
+- Az ügyfelek csatlakoznak az átjáróhoz, amely nyilvános IP-címmel rendelkezik, és az 1433-es porton figyel.
+- Az átjáró a hatályos kapcsolódási házirendtől függően átirányítja vagy proxyként továbbítja a forgalmat a megfelelő adatbázis-fürtre.
+- Az adatbázis-fürt forgalmát a megfelelő Azure SQL Database-adatbázisba továbbítja a rendszer.
 
-## <a name="connection-policy"></a>Csatlakozási házirend
+## <a name="connection-policy"></a>Kapcsolatok házirendje
 
-Az Azure SQL Database a következő három lehetőséget támogatja az SQL Database-kiszolgáló kapcsolatházirend-beállításához:
+A Azure SQL Database a következő három lehetőséget támogatja egy SQL Database-kiszolgáló kapcsolatbiztonsági házirendjének beállításához:
 
-- **Átirányítás (ajánlott):** Az ügyfelek közvetlenül az adatbázist üzemeltető csomóponthoz létesítenek kapcsolatot, ami csökkentett késést és jobb átviteli teljesítményhez vezet. A hálózati kapcsolatok használatához az ügyfeleknek a következőket kell tenniük:
-   - Az ügyfél kimenő kommunikációját az 11000 11999-es tartományban lévő portokon a régió összes Azure SQL IP-címével engedélyezze. Használja a Service Tags for SQL, hogy ez könnyebben kezelhető.  
-   - Engedélyezze a kimenő kommunikációt az ügyféltől az Azure SQL Database átjáró IP-címeiközött az 1433-as porton.
+- **Átirányítás (ajánlott):** Az ügyfelek közvetlenül az adatbázist üzemeltető csomóponthoz csatlakoznak, ami csökkenti a késést és a jobb teljesítményt. A mód használatára szolgáló kapcsolatok esetén az ügyfeleknek a következőket kell tenniük:
+   - Engedélyezi a kimenő kommunikációt az ügyféltől a régió összes Azure SQL IP-címére a 11000 11999 tartományon belüli portoknál. A szolgáltatáshoz tartozó címkék használatával könnyebben kezelheti ezt az SQL-szolgáltatást.  
+   - A kimenő kommunikáció engedélyezése az ügyféltől az 1433-es porton keresztüli átjáró IP-címeinek Azure SQL Database.
 
-- **Proxy:** Ebben a módban az összes kapcsolat az Azure SQL Database-átjárókon keresztül lesz proxied, ami nagyobb késést és csökkentett átviteli. Ahhoz, hogy a kapcsolatok ezt a módot használhassa, az ügyfeleknek engedélyezniük kell az ügyfél től az Azure SQL Database átjáró IP-címeibe irányuló kimenő kommunikációt az 1433-as porton.
+- **Proxy:** Ebben a módban az összes kapcsolat a Azure SQL Database-átjárón keresztül történik, ami növeli a késést és a kisebb átviteli sebességet. A módot használó kapcsolatok esetében az ügyfeleknek engedélyeznie kell a kimenő kommunikációt az ügyféltől az 1433-es porton Azure SQL Database átjáró IP-címeinek eléréséhez.
 
-- **Alapértelmezett:** Ez a kapcsolati házirend a létrehozás után minden kiszolgálón érvényben van, kivéve, ha kifejezetten módosítja a kapcsolati házirendet vagy `Proxy` a számára. `Redirect` Az alapértelmezett`Redirect` szabályzat az Azure-on belülről (például egy Azure virtuális `Proxy`gépről) származó összes ügyfélkapcsolatra és a külső ügyfélkapcsolatokra (például a helyi munkaállomásról származó kapcsolatokra) vonatkozóan.
+- **Alapértelmezett:** Ez a kapcsolódási házirend a létrehozás után minden kiszolgálón érvényben van, kivéve, ha explicit módon módosítja a kapcsolódási házirendet a `Proxy` vagy `Redirect`a rendszerre. Az alapértelmezett házirend`Redirect` az Azure-ból (például egy Azure-beli virtuális gépről) és `Proxy`a kívülről származó összes ügyfélkapcsolatra (például a helyi munkaállomásról létesített kapcsolatokra) vonatkozó összes ügyfélkapcsolat.
 
- A `Redirect` legalacsonyabb késés `Proxy` és a legmagasabb átviteli képesség esetén a kapcsolatházirend et javasoljuk a kapcsolatházirenden keresztül. A fent vázolt hálózati forgalom engedélyezéséhez azonban meg kell felelnie a további követelményeknek. Ha az ügyfél egy Azure virtuális gép, ezt a hálózati biztonsági csoportok (NSG) [szolgáltatáscímkékkel elvégezheti.](../virtual-network/security-overview.md#service-tags) Ha az ügyfél helyszíni munkaállomásról csatlakozik, akkor előfordulhat, hogy a hálózati rendszergazdával kell együttműködnie a vállalati tűzfalon keresztüli hálózati forgalom engedélyezéséhez.
+ A kapcsolati szabályzatot a legalacsonyabb késés `Proxy` és a legmagasabb átviteli sebesség érdekében javasoljuk `Redirect` . Azonban meg kell felelnie a fentiekben ismertetett hálózati forgalom engedélyezésének további követelményeinek. Ha az ügyfél egy Azure-beli virtuális gép, ezt a hálózati biztonsági csoportok (NSG) és a [szolgáltatás-címkék](../virtual-network/security-overview.md#service-tags)használatával végezheti el. Ha az ügyfél helyszíni munkaállomásról csatlakozik, akkor előfordulhat, hogy a hálózati rendszergazdával kell dolgoznia a vállalati tűzfalon keresztüli hálózati forgalom engedélyezéséhez.
 
-## <a name="connectivity-from-within-azure"></a>Kapcsolat az Azure-on belülről
+## <a name="connectivity-from-within-azure"></a>Kapcsolat az Azure-on belül
 
-Ha az Azure-on belülről csatlakozik, `Redirect` a kapcsolatok alapértelmezés szerint rendelkeznek egy kapcsolati szabályzattal. A szabályzat `Redirect` azt jelenti, hogy miután a TCP-munkamenet jön létre az Azure SQL-adatbázis, az ügyfél-munkamenet ezután átirányítja a megfelelő adatbázis-fürtre a változás a cél virtuális IP-cím az Azure SQL Database átjáró, hogy a fürt. Ezt követően az összes további csomagok közvetlenül a fürtbe, megkerülve az Azure SQL Database átjáró. Az alábbi ábra ezt a forgalmat mutatja be.
+Ha az Azure-on belülről csatlakozik, a kapcsolatokhoz alapértelmezés `Redirect` szerint csatlakozási házirend tartozik. Az `Redirect` azt jelenti, hogy a TCP-munkamenet az Azure SQL Database-adatbázishoz való létrehozása után a rendszer átirányítja az ügyfél-munkamenetet a megfelelő adatbázis-fürtre, amely a célként megadott virtuális IP-címet a fürt Azure SQL Database átjárójának egy másik példányára módosítja. Ezt követően az összes további csomag közvetlenül a fürtre áramlik, és megkerüli a Azure SQL Database-átjárót. A következő ábra szemlélteti ezt a forgalmat.
 
 ![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
-## <a name="connectivity-from-outside-of-azure"></a>Kapcsolat az Azure-on kívülről
+## <a name="connectivity-from-outside-of-azure"></a>Kapcsolódás az Azure-on kívülről
 
-Ha az Azure-on kívülről csatlakozik, a `Proxy` kapcsolatok alapértelmezés szerint rendelkeznek egy kapcsolati szabályzattal. A szabályzat `Proxy` azt jelenti, hogy a TCP-munkamenet az Azure SQL Database átjárón keresztül jön létre, és az összes további csomagok az átjárón keresztül. Az alábbi ábra ezt a forgalmat mutatja be.
+Ha az Azure-on kívülről csatlakozik, a kapcsolatok alapértelmezés `Proxy` szerint csatlakozási házirendtel rendelkeznek. A szabályzat `Proxy` azt jelenti, hogy a TCP-munkamenet a Azure SQL Database átjárón és az összes további, az átjárón keresztüli adatcsomagon keresztül jön. A következő ábra szemlélteti ezt a forgalmat.
 
 ![architektúra – áttekintés](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> Ezenfelül nyissa meg az 14000-14999-es portokat, hogy a [DAC-hoz kapcsolódjon](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> Emellett a 1434-es és a 14000-14999-as TCP-porton is megnyitható a [DAC](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database-átjárók IP-címei
 
-Az alábbi táblázat az átjárók IP-címeit sorolja fel régiónként. Az Azure SQL-adatbázishoz való csatlakozáshoz engedélyeznie kell a hálózati forgalmat a régió **összes** átjárójából &.
+Az alábbi táblázat az átjárók régió szerinti IP-címeit sorolja fel. Azure SQL Databasehoz való kapcsolódáshoz engedélyeznie kell a hálózati forgalmat, hogy & a régió **összes** átjáróján.
 
-A forgalom új átjárókba való átáttelepítésének részletei az egyes régiókban a következő cikkben találhatók: [Az Azure SQL Database-forgalom átáttelepítése újabb átjárókra](sql-database-gateway-migration.md)
+A forgalom áttelepítésének részletei az egyes régiókban lévő új átjárók számára a következő cikkben olvashatók: [Azure SQL Database forgalom áttelepítése újabb átjáróra](sql-database-gateway-migration.md)
 
 
 | Régiónév          | Átjáró IP-címei |
 | --- | --- |
 | Ausztrália középső régiója    | 20.36.105.0 |
-| Ausztrália Central2   | 20.36.113.0 |
+| Ausztráliai Central2   | 20.36.113.0 |
 | Kelet-Ausztrália       | 13.75.149.87, 40.79.161.1 |
 | Délkelet-Ausztrália | 191.239.192.109, 13.73.109.251 |
 | Dél-Brazília         | 104.41.11.5, 191.233.200.14 |
@@ -88,15 +88,15 @@ A forgalom új átjárókba való átáttelepítésének részletei az egyes ré
 | Kelet-Kanada          | 40.86.226.166      |
 | USA középső régiója           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | Kelet-Kína           | 139.219.130.35     |
-| Kína Keleti 2         | 40.73.82.1         |
+| Kelet-Kína 2         | 40.73.82.1         |
 | Észak-Kína          | 139.219.15.17      |
-| Kína Észak 2        | 40.73.50.0         |
+| Észak-Kína 2        | 40.73.50.0         |
 | Kelet-Ázsia            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
 | USA keleti régiója              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA 2. keleti régiója            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
 | Közép-Franciaország       | 40.79.137.0, 40.79.129.1 |
 | Közép-Németország      | 51.4.144.100       |
-| Németország Északkelet   | 51.5.144.179       |
+| Kelet-Észak-Németország   | 51.5.144.179       |
 | Közép-India        | 104.211.96.159     |
 | Dél-India          | 104.211.224.146    |
 | Nyugat-India           | 104.211.160.80     |
@@ -106,14 +106,14 @@ A forgalom új átjárókba való átáttelepítésének részletei az egyes ré
 | Dél-Korea déli régiója          | 52.231.200.86      |
 | USA északi középső régiója     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Észak-Európa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
-| Norvégia Kelet          | 51.120.96.0        |
-| Norvégia Nyugati          | 51.120.216.0       |
-| Dél-Afrika Észak-Afrika   | 102.133.152.0      |
-| Dél-Afrika Nyugati    | 102.133.24.0       |
+| Kelet-Norvégia          | 51.120.96.0        |
+| Norvégia nyugati régiója          | 51.120.216.0       |
+| Dél-Afrika északi régiója   | 102.133.152.0      |
+| Dél-Afrika nyugati régiója    | 102.133.24.0       |
 | USA déli középső régiója     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | Délkelet-Ázsia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
-| Egyesült Arab Emírségek központi          | 20.37.72.64        |
-| Egyesült Arab Emírségek északi            | 65.52.248.0        |
+| UAE középső régiója          | 20.37.72.64        |
+| Észak-Egyesült Arab            | 65.52.248.0        |
 | Az Egyesült Királyság déli régiója             | 51.140.184.11      |
 | Az Egyesült Királyság nyugati régiója              | 51.141.8.11        |
 | USA nyugati középső régiója      | 13.78.145.25       |
@@ -126,6 +126,6 @@ A forgalom új átjárókba való átáttelepítésének részletei az egyes ré
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure SQL Database-kiszolgáló Azure SQL Database kapcsolati szabályzatának módosításáról a [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)című témakörben talál további információt.
-- Az Azure SQL Database-kapcsolat viselkedéséről ADO.NET a 4.5-ös vagy újabb verziót használó ügyfelek számára a [Portok 1433-nál ADO.NET 4.5-höz](sql-database-develop-direct-route-ports-adonet-v12.md)című témakörben talál.
-- Az általános alkalmazásfejlesztési áttekintésről az [SQL Database Application Development Overview című témakörben olvashat.](sql-database-develop-overview.md)
+- Az Azure SQL Database-kiszolgálók Azure SQL Database-kapcsolódási szabályzatának módosításáról további információt a következő témakörben talál: [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- A ADO.NET 4,5-as vagy újabb verziót használó ügyfelek Azure SQL Database-kapcsolatainak működéséről további információért lásd: [a 1433-nál nagyobb portok a ADO.NET 4,5](sql-database-develop-direct-route-ports-adonet-v12.md)-ban.
+- Az alkalmazások fejlesztésének általános áttekintését lásd: [SQL Database alkalmazásfejlesztés áttekintése](sql-database-develop-overview.md).

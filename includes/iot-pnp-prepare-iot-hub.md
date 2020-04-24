@@ -11,27 +11,27 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "80234168"
 ---
-## <a name="prepare-an-iot-hub"></a>IoT-központ előkészítése
+## <a name="prepare-an-iot-hub"></a>IoT hub előkészítése
 
-A rövid útmutató befejezéséhez az Azure-előfizetésben is szüksége van egy Azure IoT-hubra. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené. Ha nem rendelkezik IoT-központtal, kövesse [az alábbi utasításokat a létrehozáshoz.](../articles/iot-hub/iot-hub-create-using-cli.md)
+A rövid útmutató elvégzéséhez szüksége lesz egy Azure IoT hub-ra is az Azure-előfizetésében. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . Ha nem rendelkezik IoT-hubhoz, kövesse az [alábbi utasításokat, és hozzon létre egyet](../articles/iot-hub/iot-hub-create-using-cli.md).
 
-Ha az Azure CLI-t helyileg használja, először `az login`jelentkezzen be az Azure-előfizetésébe a használatával. Ha ezeket a parancsokat az Azure Cloud Shellben futtatja, automatikusan be van jelentkezve.
+Ha helyileg használja az Azure CLI-t, először jelentkezzen be az Azure-előfizetésbe a használatával `az login`. Ha ezeket a parancsokat a Azure Cloud Shell futtatja, a rendszer automatikusan bejelentkezett.
 
-Ha az Azure CLI-t helyileg `az` használja, a verziónak **2.0.73-as** vagy újabb verziónak kell lennie; az Azure Cloud Shell a legújabb verziót használja. A `az --version` parancs segítségével ellenőrizze a számítógépre telepített verziót.
+Ha helyileg használja az Azure CLI-t, akkor `az` a verziónak **2.0.73** vagy újabbnak kell lennie. a Azure Cloud Shell a legújabb verziót használja. A `az --version` parancs használatával keresse meg a számítógépen telepített verziót.
 
-Futtassa a következő parancsot, és adja hozzá a Microsoft Azure IoT-bővítményt az Azure CLI-hez a példányhoz:
+A következő parancs futtatásával adja hozzá a Microsoft Azure IoT-bővítményt az Azure CLI-hez a példányhoz:
 
 ```azurecli-interactive
 az extension add --name azure-iot
 ```
 
-Futtassa a következő parancsot az eszköz identitásának létrehozásához az IoT hubban. Cserélje le a **YourIoTHubName** és **a YourDeviceID** helyőrzők a saját _IoT Hub-név_ és egy _eszközazonosítót_ a választás.
+A következő parancs futtatásával hozza létre az eszköz identitását az IoT hub-ban. Cserélje le a **YourIoTHubName** és a **YourDeviceID** helyőrzőket a saját _IoT hub nevére_ és az Ön által választott _eszköz-azonosítóra_ .
 
 ```azurecli-interactive
 az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-Futtassa a következő parancsot az imént regisztrált eszköz _eszközkapcsolati karakterláncának_ lekérni (megjegyzés későbbi használatra):
+Futtassa a következő parancsot az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ lekéréséhez (jegyezze fel később a használatot):
 
 ```azurecli-interactive
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table

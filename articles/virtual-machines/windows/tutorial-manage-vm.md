@@ -1,25 +1,19 @@
 ---
-title: Oktatóanyag – Windows-virtuális gépek létrehozása és kezelése az Azure PowerShell használatával
+title: Oktatóanyag – Windows rendszerű virtuális gépek létrehozása és kezelése Azure PowerShell
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és felügyelhet Windows rendszerű virtuális gépeket az Azure-ban az Azure PowerShell használatával.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d9db21fd350ccd3b860742877a958a6ee9377404
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 229df5d2f5186ad7cec08952f2a44790f9220dfe
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455597"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100311"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Oktatóanyag: Windows rendszerű virtuális gépek létrehozása és felügyelete Azure PowerShell-lel
 
@@ -36,13 +30,13 @@ Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és ruga
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/powershell](https://shell.azure.com/powershell)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) paranccsal.
 
-Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni. A következő példában egy *myResourceGroupVM* nevű erőforráscsoport jön létre az *EastUS* régióban:
+Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni. A következő példában létrehozunk egy *myResourceGroupVM* nevű erőforráscsoportot a *EastUS* régióban:
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -54,7 +48,7 @@ Az erőforráscsoport meghatározására a virtuális gép létrehozásakor vagy
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Virtuális gép létrehozásakor számos lehetőség áll rendelkezésre, például az operációs rendszer lemezképe, a hálózati konfiguráció és a rendszergazdai hitelesítő adatok. Ez a példa létrehoz egy *myVM* nevű virtuális gépet, amely a Windows Server 2016 Datacenter alapértelmezett verzióját futtatja.
+A virtuális gépek létrehozásakor több lehetőség is elérhető, például az operációs rendszer képe, a hálózati konfiguráció és a rendszergazdai hitelesítő adatok. Ez a példa létrehoz egy *myVM* nevű virtuális gépet, amely a Windows Server 2016 Datacenter alapértelmezett verzióját futtatja.
 
 A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) paranccsal:
 
@@ -62,7 +56,7 @@ A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát 
 $cred = Get-Credential
 ```
 
-Hozza létre a virtuális gép [new-azvm.](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)
+Hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -99,13 +93,13 @@ A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**
 
 Az Azure Marketplace-en számos rendszerkép található, amelyekkel új virtuális gépeket lehet létrehozni. Az előző lépések során a virtuális gépet a Windows Server 2016 Datacenter rendszerképének használatával hoztuk létre. Ebben a lépésben a PowerShell-modul segítségével további Windows-rendszerképeket keresünk a piactéren, amelyek az új virtuális gépek alapjául szolgálhatnak. Ez a folyamat a rendszerkép [azonosításához](cli-ps-findimage.md#terminology) szükséges közzétevő, ajánlat, termékváltozat és esetleg verziószám megkereséséből áll.
 
-A [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) paranccsal adja vissza a képközzétevők listáját:
+A [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) parancs használatával visszaállíthatja a rendszerkép-közzétevők listáját:
 
 ```azurepowershell-interactive
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-A [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) segítségével adja vissza a képajánlatok listáját. Ezzel a paranccsal a lekért lista az adott közzétevőre lesz szűrve, amelynek neve `MicrosoftWindowsServer`:
+A [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) segítségével visszaállíthatja a képajánlatok listáját. Ezzel a paranccsal a lekért lista az adott közzétevőre lesz szűrve, amelynek neve `MicrosoftWindowsServer`:
 
 ```azurepowershell-interactive
 Get-AzVMImageOffer `
@@ -123,7 +117,7 @@ WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS
 ```
 
-A [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) parancs ezután szűri a közzétevőt, és felajánlja a nevét, hogy visszaadja a képnevek listáját.
+A [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) parancs ezután a közzétevő és az ajánlat neve alapján szűri a képnevek listáját.
 
 ```azurepowershell-interactive
 Get-AzVMImageSku `
@@ -173,7 +167,7 @@ Az `-AsJob` paraméter háttérfeladatként létrehozza a virtuális gépet, íg
 
 ## <a name="understand-vm-sizes"></a>Virtuális gépek méreteinek ismertetése
 
-A virtuális gép mérete határozza meg a számítási erőforrások, például a CPU, a GPU és a virtuális gép számára elérhetővé tett memória mennyiségét. Virtuális gépek kell létrehozni a számítási feladatnak megfelelő virtuális gép mérete használatával. Ha a számítási feladatok mennyisége nő, a meglévő virtuális gépet át is lehet méretezni.
+A virtuális gép mérete határozza meg a virtuális gép számára elérhető számítási erőforrások, például a processzor, a GPU és a memória mennyiségét. A virtuális gépeket a számítási feladatok számára megfelelő virtuálisgép-mérettel kell létrehozni. Ha a számítási feladatok mennyisége nő, a meglévő virtuális gépet át is lehet méretezni.
 
 ### <a name="vm-sizes"></a>A virtuális gépek mérete
 
@@ -182,9 +176,9 @@ Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.
 | Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
-| [Számításra optimalizált](sizes-compute.md)   | Fsv2 között          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
+| [Számításra optimalizált](sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
 | [Memóriaoptimalizált](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
-| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, Ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
+| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
 | [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Specializált virtuális gépek nagy terhelést jelentő grafikus rendereléshez és videószerkesztéshez.       |
 | [Nagy teljesítmény](sizes-hpc.md) | H        | Leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű hálózati adapterekkel (RDMA). |
 
@@ -206,7 +200,7 @@ A virtuális gép átméretezése előtt ellenőrizze, hogy a kívánt méret el
 Get-AzVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
 ```
 
-Ha a méret elérhető, a virtuális gép átméretezhető egy powered-on állapotból, azonban a művelet során újraindul.
+Ha a méret elérhető, a virtuális gép átméretezhető a bekapcsolt állapotból, azonban a művelet során újraindul.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM `
@@ -218,7 +212,7 @@ Update-AzVM `
    -ResourceGroupName "myResourceGroupVM"
 ```
 
-Ha a kívánt méret nem érhető el az aktuális fürtön, a virtuális gép kell felosztani, mielőtt az átméretezési művelet bekövetkezhet. A virtuális gép felszabadítása törli az ideiglenes lemezen található adatokat, és a nyilvános IP-cím is módosul, ha nem statikus IP-címet használ.
+Ha a kívánt méret nem érhető el az aktuális fürtön, akkor a virtuális gépet fel kell osztani az átméretezési művelet megkezdése előtt. A virtuális gép felszabadítása törli az ideiglenes lemezen található adatokat, és a nyilvános IP-cím is módosul, ha nem statikus IP-címet használ.
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -246,12 +240,12 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 | Fut | A virtuális gép fut. |
 | Leállítás | A virtuális gép leállítása folyamatban van. |
 | Leállítva | A virtuális gép leállt. A leállított virtuális gépekért továbbra is díjat kell fizetni.  |
-| Felszabadítás | A virtuális gép felvan osztva. |
-| Felszabadítva | Azt jelzi, hogy a virtuális gép törlődik a hipervizor, de továbbra is elérhető a vezérlősíkban. A `Deallocated` állapotban lévő virtuális gépekért nem kell díjat fizetni. |
-| - | A virtuális gép energiaállapota ismeretlen. |
+| Felszabadítás | A virtuális gép fel van foglalva. |
+| Felszabadítva | Azt jelzi, hogy a virtuális gép el lett távolítva a hypervisorból, de továbbra is elérhető a vezérlési síkon. A `Deallocated` állapotban lévő virtuális gépekért nem kell díjat fizetni. |
+| - | A virtuális gép energiagazdálkodási állapota ismeretlen. |
 
 
-Egy adott virtuális gép állapotának leigazolásához használja a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) parancsot. Ügyeljen arra, hogy érvényes nevet adjon meg a virtuális gép és az erőforráscsoport számára.
+Egy adott virtuális gép állapotának beszerzéséhez használja a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) parancsot. Ügyeljen arra, hogy érvényes nevet adjon meg a virtuális gép és az erőforráscsoport számára.
 
 ```azurepowershell-interactive
 Get-AzVM `
@@ -270,11 +264,11 @@ PowerState/running
 
 ## <a name="management-tasks"></a>Felügyeleti feladatok
 
-A virtuális gép életciklusa során előfordulhat, hogy felügyeleti feladatokat szeretne futtatni, például egy virtuális gép indítása, leállítása vagy törlése. Emellett előfordulhat, hogy szkripteket is szeretne létrehozni az ismétlődő vagy összetett feladatok automatizálására. Az Azure PowerShell használatával számos gyakori felügyeleti feladat futtatható a parancssorból vagy szkriptek segítségével.
+A virtuális gépek életciklusa során előfordulhat, hogy olyan felügyeleti feladatokat szeretne futtatni, mint például a virtuális gépek elindítása, leállítása vagy törlése. Emellett előfordulhat, hogy szkripteket is szeretne létrehozni az ismétlődő vagy összetett feladatok automatizálására. Az Azure PowerShell használatával számos gyakori felügyeleti feladat futtatható a parancssorból vagy szkriptek segítségével.
 
 ### <a name="stop-a-vm"></a>Virtuális gép leállítása
 
-A [Stop-AzVM-mel](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)rendelkező virtuális gép leállítása és felszabadítása:
+Állítsa le és szabadítson fel egy virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm):
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -294,7 +288,7 @@ Start-AzVM `
 
 ### <a name="delete-resource-group"></a>Erőforráscsoport törlése
 
-Az erőforráscsoport törlésekor az erőforráscsoport minden, az erőforráscsoporton belül minden törlődik.
+Az erőforráscsoport minden elemét törli, amikor törli az erőforráscsoportot.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup `
@@ -316,4 +310,4 @@ Ebben az oktatóanyagban a virtuális gépek létrehozásának és kezelésének
 Folytassa a következő oktatóanyaggal, amely a virtuálisgép-lemezeket ismerteti.  
 
 > [!div class="nextstepaction"]
-> [Virtuálisgép-lemezek létrehozása és kezelése](./tutorial-manage-data-disk.md)
+> [VM-lemezek létrehozása és kezelése](./tutorial-manage-data-disk.md)

@@ -13,23 +13,23 @@ ms.locfileid: "75453703"
 ---
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha további IoT Plug and Play-cikkekkel szeretné folytatni, megtarthatja és újra felhasználhatja az ebben a rövid útmutatóban használt erőforrásokat. Ellenkező esetben törölheti az ebben a rövid útmutatóban létrehozott erőforrásokat a további költségek elkerülése érdekében.
+Ha azt tervezi, hogy folytatja a további IoT Plug and Play cikkekkel, megtarthatja és újra felhasználhatja az ebben a rövid útmutatóban használt erőforrásokat. Ellenkező esetben törölheti az ebben a rövid útmutatóban létrehozott erőforrásokat a további díjak elkerülése érdekében.
 
-A hub és a regisztrált eszköz egyszerre törölheti a teljes erőforráscsoport törlésével a következő parancsot az Azure CLI. (Ne használja azonban ezt, ha ezek az erőforrások megosztanak egy erőforráscsoportot más erőforrásokkal, amelyekkel különböző célokra rendelkezik.)
+A hub és a regisztrált eszköz egyszerre is törölhető a teljes erőforráscsoport törlésével a következő paranccsal az Azure CLI-hez. (Ne használja ezt, azonban ha ezek az erőforrások megosztanak egy erőforráscsoportot más, különböző célokra használt erőforrásokkal.)
 
 ```azurecli-interactive
 az group delete --name <YourResourceGroupName>
 ```
-Csak az IoT hub törléséhez futtassa a következő parancsot az Azure CLI használatával:
+Ha csak az IoT hubot szeretné törölni, futtassa az alábbi parancsot az Azure CLI használatával:
 
 ```azurecli-interactive
 az iot hub delete --name <YourIoTHubName>
 ```
 
-Ha csak az IoT hubon regisztrált eszközidentitást szeretné törölni, futtassa a következő parancsot az Azure CLI használatával:
+Ha csak az IoT hub-ban regisztrált eszköz identitását szeretné törölni, futtassa az alábbi parancsot az Azure CLI használatával:
 
 ```azurecli-interactive
 az iot hub device-identity delete --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-Előfordulhat, hogy el szeretné távolítani a klónozott mintafájlokat a fejlesztői gépről.
+Előfordulhat, hogy el kívánja távolítani a klónozott minta fájlokat a fejlesztői gépről.

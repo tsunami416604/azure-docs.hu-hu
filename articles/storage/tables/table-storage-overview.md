@@ -36,4 +36,4 @@ A Table Storage segítségével olyan rugalmas adatkészleteket tárolhat, mint 
 
     * [A Storage ügyféloldali kódtára a .NET-hez – referencia](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [REST API-hivatkozás](https://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API-referencia](https://msdn.microsoft.com/library/azure/dd179355)

@@ -1,30 +1,25 @@
 ---
-title: Rövid útmutató – Windows virtuális gép létrehozása az Azure Portalon
+title: Rövid útmutató – Windows rendszerű virtuális gép létrehozása a Azure Portal
 description: Ez a rövid útmutató a Windows rendszerű virtuális gépek az Azure Portallal történő létrehozását ismerteti.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a304e400d193eb4b2d0c2e8ec30ea03ea41977f8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 5cf23a9c66c76f778dbd5d2b126b28a5a577c978
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606637"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097999"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
-Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a virtuális gépek és a társított erőforrások létrehozásához. Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Portalon egy virtuális gép (VM) üzembe helyezéséhez az Azure-ban, amely windows Server 2019-et futtat. Ha látni szeretné a virtuális gépet feladatvégzés közben, hozzon létre RDP-kapcsolatot a virtuális géphez, és telepítse az IIS webkiszolgálót.
+Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a virtuális gépek és a társított erőforrások létrehozásához. Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy virtuális gép (VM) üzembe helyezéséhez az Azure-ban, amely a Windows Server 2019-et futtatja. Ha látni szeretné a virtuális gépet feladatvégzés közben, hozzon létre RDP-kapcsolatot a virtuális géphez, és telepítse az IIS webkiszolgálót.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -33,13 +28,13 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
 1. Írja be a **virtuális gépeket** a keresésbe.
-1. A **Szolgáltatások csoportban**válassza a **Virtuális gépek**lehetőséget.
-1. A **Virtuális gépek** lapon válassza a **Hozzáadás**lehetőséget. 
-1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. Írja be a nevet a *myResourceGroup* névmezőbe. 
+1. A **szolgáltatások**területen válassza a **virtuális gépek**lehetőséget.
+1. A **virtuális gépek** lapon válassza a **Hozzáadás**lehetőséget. 
+1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. A név mezőbe írja be a *myResourceGroup* nevet. 
 
     ![Új erőforráscsoport létrehozása saját virtuális géphez](./media/quick-create-portal/project-details.png)
 
-1. A **Példány részletei**csoportban írja be a *myVM* parancsot a virtuális gép **nevéhez,** és válassza az USA keleti *régióját* a **régióhoz,** majd válassza a Windows *Server 2019 Datacenter* lehetőséget a **lemezképhez.** Hagyja meg a többi alapértelmezett értéket.
+1. A **példány részletei**területen írja *myVM* be a myVM **nevet a virtuális GÉPNEK** , majd válassza az *USA keleti* **régiója**lehetőséget, majd a **rendszerképhez**válassza a *Windows Server 2019 Datacenter* lehetőséget. Hagyja meg a többi alapértelmezett értéket.
 
     ![Példány részletei szakasz](./media/quick-create-portal/instance-details.png)
 
@@ -47,7 +42,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
     ![Felhasználónév és jelszó megadása](./media/quick-create-portal/administrator-account.png)
 
-1. A **Bejövő portszabályok csoportban**válassza **a Kijelölt portok engedélyezése** lehetőséget, majd válassza az **RDP (3389)** és a **HTTP (80)** elemet a legördülő menüből.
+1. A **bejövő portszabályok**területen válassza a **kijelölt portok engedélyezése** lehetőséget, majd válassza az **RDP (3389)** és a **http (80)** elemet a legördülő menüből.
 
     ![Az RDP- és a HTTP-portok megnyitása](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -60,17 +55,17 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel. Ezek az utasítások ismertetik, hogyan csatlakozhat a virtuális gépéhez egy Windows rendszerű gépről. Mac rendszerben szüksége van egy RDP-kliensre, mint például a Mac App Store áruházban elérhető [távoli asztali ügyfélre](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12).
 
-1. Kattintson a virtuális gép áttekintő lapján a **Csatlakozás** gombra. 
+1. Kattintson a virtuális gép áttekintés lapján található **kapcsolat** gombra. 
 
     ![Csatlakozás az Azure-beli virtuális gépekhez a portálról](./media/quick-create-portal/portal-quick-start-9.png)
     
-2. A Csatlakozás a **virtuális géphez** lapon tartsa meg az alapértelmezett beállításokat az IP-cím szerint való csatlakozáshoz a 3389-es porton keresztül, majd kattintson az **RDP-fájl letöltése gombra**.
+2. A **Csatlakozás virtuális géphez** lapon tartsa meg az alapértelmezett beállításokat az IP-cím, az 3389-as porton keresztül történő csatlakozáshoz, majd kattintson az **RDP-fájl letöltése**elemre.
 
 2. Nyissa meg a letöltött RDP-fájlt, és kattintson a **Csatlakozás** gombra, amikor a rendszer erre kéri. 
 
-3. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Írja be a felhasználónevet **localhost**\\*felhasználónévként,* írja be a virtuális géphez létrehozott jelszót, majd kattintson az **OK**gombra.
+3. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Írja be a felhasználónevet **localhost**\\*felhasználónévként*, adja meg a virtuális géphez létrehozott jelszót, majd kattintson **az OK**gombra.
 
-4. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. A kapcsolat létrehozásához kattintson az **Igen** vagy a **Folytatás** gombra.
+4. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. A kapcsolódás létrehozásához kattintson az **Igen** vagy a **Folytatás** gombra.
 
 ## <a name="install-web-server"></a>A webkiszolgáló telepítése
 
@@ -85,7 +80,7 @@ Ha befejezte, zárja be a virtuális gép RDP-kapcsolatát.
 
 ## <a name="view-the-iis-welcome-page"></a>Az IIS kezdőlapjának megtekintése
 
-A portálon válassza ki a virtuális gép, és a virtuális gép áttekintésében a **Kattintásra másolása** gombra az IP-cím jobbra másolja, és illessze be egy böngésző lapra. Megnyílik az alapértelmezett IIS üdvözlőlap, amely a következőképp fog kinézni:
+A portálon válassza ki a virtuális gépet, és a virtuális gép áttekintésében kattintson az IP-cím jobb oldalán található **Másolás** gombra a másoláshoz, és illessze be egy böngésző lapra. Ekkor megnyílik az alapértelmezett IIS-Kezdőlap, és a következőhöz hasonlóan kell kinéznie:
 
 ![Alapértelmezett IIS-webhely](./media/quick-create-powershell/default-iis-website.png)
 
@@ -93,7 +88,7 @@ A portálon válassza ki a virtuális gép, és a virtuális gép áttekintésé
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. 
 
-Jelölje ki a virtuális gép erőforráscsoportját, majd válassza a **Törlés**lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
+Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 

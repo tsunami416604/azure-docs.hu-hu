@@ -23,16 +23,16 @@ Az oktatóanyag elvégzéséhez rendelkeznie kell egy Azure-beli tárolóregiszt
 
 ## <a name="create-a-github-personal-access-token"></a>Személyes hozzáférési jogkivonat létrehozása a GitHubban
 
-A Git-tárház véglegesítésének elindításához az ACR-feladatoknak személyes hozzáférési jogkivonatra (PAT) van szükségük a tárház eléréséhez. Ha még nem rendelkezik PAT-tal, kövesse az alábbi lépéseket a GitHubon való létrehozáshoz:
+Ha a feladatot egy git-tárházban szeretné elindítani, az ACR-feladatokhoz személyes hozzáférési jogkivonat (PAT) szükséges az adattár eléréséhez. Ha még nem rendelkezik PAT-rel, kövesse az alábbi lépéseket egy GitHubon való létrehozásához:
 
 1. Lépjen a GitHub PAT-létrehozási oldalára a https://github.com/settings/tokens/new címen.
 1. Adja meg a jogkivonat rövid **leírását**, például „ACR Tasks bemutatója”.
-1. Válassza ki az ACR hatóköreit a tártár eléréséhez. Nyilvános tártár eléréséhez, mint ebben az oktatóanyagban, **a tárházban**engedélyezze **a repo:status** és **a public_repo**
+1. Válassza ki az ACR hatókörét a tárház eléréséhez. Ha egy nyilvános tárházat szeretne elérni ebben az oktatóanyagban **, a tárház alatt engedélyezze**az adattárat **: állapot** és **public_repo**
 
    ![A GitHub személyes hozzáférési jogkivonatok létrehozására szolgáló oldalának képernyőképe][build-task-01-new-token]
 
    > [!NOTE]
-   > Ha egy *privát* tártár eléréséhez pat-ot szeretne létrehozni, válassza ki a teljes **tártárvezérlés** hatókörét.
+   > Ha egy *privát* **tárházhoz** szeretné elérni a Patt, válassza ki a teljes tárház-vezérlés hatókörét.
 
 1. Kattintson a **Generate token** (Jogkivonat létrehozása) gombra (a rendszer kérheti a jelszó megadását).
 1. Másolja és mentse a létrehozott jogkivonatot egy **biztonságos helyre** (ezt a jogkivonatot egy feladat definiálására fogja használni a következő szakaszban).

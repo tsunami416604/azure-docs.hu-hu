@@ -1,6 +1,6 @@
 ---
-title: A felhasználókat bejelentkező webalkalmazás áthelyezése éles környezetbe – Microsoft identity platform | Azure
-description: Megtudhatja, hogyan hozhat létre olyan webalkalmazást, amely bejelentkezik a felhasználókba (ugrás éles környezetbe)
+title: A felhasználók által az éles környezetbe bejelentkező webalkalmazás áthelyezése – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan hozhat létre egy webalkalmazást, amely aláírja a felhasználókat (éles környezetbe helyezi)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,53 +11,62 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9c5fd444c55a20441325088912a07eb051219b84
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a8e275a41637950139598ac7c4f2513841bb4d0d
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881468"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112507"
 ---
-# <a name="web-app-that-signs-in-users-move-to-production"></a>A felhasználókban bejelentkező webalkalmazás: Ugrás éles környezetbe
+# <a name="web-app-that-signs-in-users-move-to-production"></a>Felhasználók számára bejelentkező webalkalmazás: áthelyezés éles környezetbe
 
-Most, hogy már tudja, hogyan kaphat egy jogkivonatot webes API-k hívásához, ismerje meg, hogyan helyezheti át éles környezetbe.
+Most, hogy tudja, hogyan szerezhet be jogkivonatot webes API-k hívására, megtudhatja, hogyan helyezheti át az éles környezetbe.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-### <a name="same-site"></a>Ugyanaz a webhely
+### <a name="troubleshooting"></a>Hibaelhárítás
+
+> [!NOTE]
+> Amikor a felhasználók első alkalommal jelentkeznek be a webalkalmazásba, hozzá kell járulniuk. Egyes szervezeteknél azonban a felhasználók a következőhöz hasonló üzenetet tekinthetnek meg:
+>
+> *A AppName engedélyre van szüksége a szervezet erőforrásaihoz való hozzáféréshez, melyeket csak rendszergazda adhat meg. Kérje meg a rendszergazdát, hogy adjon engedélyt az alkalmazásnak, mielőtt használni lehetne.*
+>
+> Ennek az az oka, hogy a bérlői rendszergazdája **letiltotta** a felhasználók beleegyező jogosultságát. Ebben az esetben kapcsolatba kell lépnie a bérlői rendszergazdákkal, hogy az alkalmazás által igényelt hatókörökhöz rendszergazdai jogosultságot adjanak.
+
+### <a name="same-site"></a>Ugyanazon a helyen
 
 Győződjön meg arról, hogy megértette a Chrome böngésző új verzióival kapcsolatos lehetséges problémákat
 
 > [!div class="nextstepaction"]
-> [A SameSite cookie-k változásainak kezelése a Chrome böngészőben](howto-handle-samesite-cookie-changes-chrome-browser.md)
+> [A SameSite-cookie-változások kezelése a Chrome böngészőben](howto-handle-samesite-cookie-changes-chrome-browser.md)
 
-### <a name="scenario-for-calling-web-apis"></a>Webes API-k hívásának forgatókönyve
+### <a name="scenario-for-calling-web-apis"></a>Forgatókönyv a webes API-k meghívásához
 
-Miután a webalkalmazás bejelentkezik a felhasználók, hívhatja webes API-k a bejelentkezett felhasználók nevében. A webes API-k webappból való hívása a következő forgatókönyv tárgyát képezi:
+Miután a webalkalmazás bejelentkezett a felhasználókba, a webes API-kat hívhat a bejelentkezett felhasználók nevében. A webes API-k hívása a webalkalmazásból a következő forgatókönyv objektuma:
 
 > [!div class="nextstepaction"]
 > [Webes API-kat hívó webalkalmazás](scenario-web-app-call-api-overview.md)
 
-## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Mély merülés: ASP.NET Core web app bemutató
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep Dive: ASP.NET Core webalkalmazás-oktatóanyag
 
-További információ arról, hogyan jelentkeztethat be a felhasználók ebbe ASP.NET Core oktatóanyag: 
+További információ a felhasználók bejelentkezésének egyéb módjairól a ASP.NET Core oktatóanyagban: 
 
 > [!div class="nextstepaction"]
-> [A webalkalmazások bejelentkezésének és API-k hívásának engedélyezése a Fejlesztőknek készült Microsoft-identitásplatformmal](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+> [A webalkalmazások bejelentkezhetnek a felhasználókba, és meghívhatják az API-kat a Microsoft Identity platform for Developers szolgáltatással](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
 
-Ez a progresszív oktatóanyag éles használatra kész kódot kapott egy webalkalmazáshoz, többek között azt is, hogyan adhat hozzá bejelentkezést a fiókokkal:
+Ez a progresszív oktatóanyag éles használatra kész kóddal rendelkezik a webalkalmazásokhoz, többek között a bejelentkezéshez a következő fiókokkal:
 
-- Az Ön szervezete
+- A szervezet
 - Több szervezet
-- Munkahelyi vagy iskolai fiókok, illetve személyes Microsoft-fiókok
+- Munkahelyi vagy iskolai fiókok, vagy személyes Microsoft-fiókok
 - [Azure AD B2C](https://aka.ms/aadb2c)
 - Nemzeti felhők
 
-## <a name="sample-code-java-web-app"></a>Mintakód: Java webalkalmazás
+## <a name="sample-code-java-web-app"></a>Mintakód: Java-webalkalmazás
 
-Tudjon meg többet a Java webappról a GitHubon található mintából: 
+További információ a Java-webalkalmazásról ebből a mintából a GitHubon: 
 
 > [!div class="nextstepaction"]
-> [Java webalkalmazás, amely a Microsoft identity platformmal rendelkező felhasználókat jelentkezik be, és meghívja a Microsoft Graph-ot](https://github.com/Azure-Samples/ms-identity-java-webapp)
+> [Egy Java-webalkalmazás, amely a Microsoft Identity platformmal és a hívások Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)

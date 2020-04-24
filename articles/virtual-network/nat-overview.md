@@ -1,7 +1,7 @@
 ---
-title: Mi az Azure virtuális hálózati hálózati hálózati szerződési szolgáltatás?
+title: Mi az Azure Virtual Network NAT?
 titlesuffix: Azure Virtual Network
-description: Virtuális hálózati NAT-szolgáltatások, erőforrások, architektúra és megvalósítás áttekintése. Ismerje meg, hogyan működik a virtuális hálózati nat, és hogyan használhatja a NAT-átjáró erőforrásait a felhőben.
+description: A Virtual Network NAT funkcióinak, erőforrásainak, architektúrájának és megvalósításának áttekintése. Megtudhatja, hogyan működik Virtual Network NAT és hogyan használható a NAT Gateway-erőforrások a felhőben.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -21,9 +21,9 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/02/2020
 ms.locfileid: "80548388"
 ---
-# <a name="what-is-virtual-network-nat"></a>Mi az a virtuális hálózati NAT?
+# <a name="what-is-virtual-network-nat"></a>Mi az Virtual Network NAT?
 
-A virtuális hálózati hálózati címfordítás (hálózati címfordítás) leegyszerűsíti a virtuális hálózatok csak kimenő internetkapcsolatát. Ha egy alhálózaton konfigurálva van, az összes kimenő kapcsolat a megadott statikus nyilvános IP-címeket használja.  Kimenő kapcsolat lehetséges terheléselosztó vagy nyilvános IP-címek közvetlenül a virtuális gépekhez csatlakoztatott nélkül. A NAT teljes mértékben felügyelt és rendkívül rugalmas.
+Virtual Network NAT (hálózati címfordítás) egyszerűbbé teszi a csak kimenő internetkapcsolatot a virtuális hálózatokhoz. Ha egy alhálózaton van konfigurálva, minden kimenő kapcsolat a megadott statikus nyilvános IP-címeket használja.  A kimenő kapcsolat a virtuális gépekhez közvetlenül csatlakoztatott terheléselosztó vagy nyilvános IP-címek nélkül is lehetséges. A NAT teljes körűen felügyelt és rugalmas.
 
 <!-- 
 <img src="./media/nat-overview/flow-map.svg" width="270" align="center">
@@ -31,70 +31,70 @@ A virtuális hálózati hálózati címfordítás (hálózati címfordítás) le
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" width="256" title="Virtuális hálózati NAT">
+  <img src="./media/nat-overview/flow-map.svg" width="256" title="Virtual Network NAT">
 </p>
 
 
 
-*Ábra: Virtuális hálózati NAT*
+*Ábra: Virtual Network NAT*
 
-## <a name="static-ip-addresses-for-outbound-only"></a>Statikus IP-címek csak kimenő célokra
+## <a name="static-ip-addresses-for-outbound-only"></a>Statikus IP-címek csak kimenőként
 
-Kimenő kapcsolat definiálható minden nat-tal rendelkező alhálózathoz.  Ugyanazon a virtuális hálózaton belül több alhálózat különböző NAT-okkal rendelkezhet. Az alhálózat konfigurálása a használandó NAT-átjáró-erőforrás megadásával történik. Bármely virtuálisgép-példány összes UDP- és TCP kimenő folyamata nat-t fog használni. 
+A kimenő kapcsolatok a NAT-vel rendelkező minden egyes alhálózat esetében meghatározhatók.  Ugyanazon a virtuális hálózaton belül több alhálózat is rendelkezhet különböző NAT-hálózatokkal. Az alhálózat konfigurálásához meg kell adni a NAT-átjáró által használt erőforrást. Bármely virtuálisgép-példány UDP-és TCP-kimenő forgalma a NAT protokollt fogja használni. 
 
-A NAT kompatibilis a szabványos termékváltozat nyilvános IP-cím erőforrásaival vagy nyilvános IP-előtag-erőforrásokkal, illetve ezek kombinációjával.  Nyilvános IP-előtag közvetlenül is használható, vagy az előtag nyilvános IP-címeit több NAT-átjáró-erőforrás között is eloszthatja. A NAT az előtag IP-címtartományba irányuló összes forgalmat ápolja.  A központi telepítések IP-engedélyezési listája mostantól egyszerű.
+A NAT kompatibilis a szabványos SKU nyilvános IP-címek erőforrásaival vagy a nyilvános IP-előtag erőforrásaival vagy a kettő kombinációjával.  A nyilvános IP-előtagot közvetlenül is használhatja, vagy eloszthatja az előtag nyilvános IP-címeit több NAT Gateway-erőforrás között. A NAT a teljes adatforgalmat az előtag IP-címeinek tartományához irányítja.  Az üzemelő példányok IP-engedélyezési listája már könnyen elérhető.
 
-Az alhálózat összes kimenő forgalmát a NAT automatikusan, ügyfélkonfiguráció nélkül dolgozza fel.  A felhasználó által definiált útvonalaknem szükségesek. A NAT elsőbbséget élvez a többi kimenő forgatókönyvvel szemben, és felváltja az alhálózat alapértelmezett internetes célját.
+Az alhálózat összes kimenő forgalmát a NAT automatikusan dolgozza fel az ügyfél-konfiguráció nélkül.  A felhasználó által megadott útvonalak nem szükségesek. A NAT elsőbbséget élvez más kimenő forgatókönyvekkel szemben, és lecseréli egy alhálózat alapértelmezett internetes célját.
 
-## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>Igény szerinti SNAT több IP-címmel a méretezéshez
+## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>Igény szerinti SNAT több IP-címmel a skálázáshoz
 
-A NAT a "porthálózati címfordítást" (PNAT vagy PAT) használja, és a legtöbb számítási feladathoz ajánlott. A dinamikus vagy eltérő számítási feladatok könnyen elhelyezhetők az igény szerinti kimenő forgalom allokációjával. A kimenő erőforrások széles körű előtervezése, előre felosztása és végső soron túlterhelése elkerülhető. Az SNAT-port erőforrásai meg vannak osztva, és az összes alhálózat között elérhetők egy adott NAT-átjáró-erőforrás használatával, és szükség esetén rendelkezésre állnak.
+A NAT a "port hálózati címfordítást" (PNAT vagy PAT) használja, és a legtöbb munkaterheléshez ajánlott. A dinamikus vagy eltérő munkaterhelések könnyen elhelyezhetők az igény szerinti kimenő forgalom lefoglalásával. A rendszer elkerüli a részletes előzetes tervezést, előzetes kiosztást, és végül a kimenő erőforrások túlzott kiépítését. A SNAT-portok erőforrásai megosztva és minden alhálózaton elérhetők egy adott NAT Gateway-erőforrás használatával, és szükség esetén rendelkezésre állnak.
 
-A NAT-hoz csatolt nyilvános IP-cím legfeljebb 64 000 egyidejű folyamatot biztosít az UDP és a TCP számára. Egyetlen IP-címmel kezdheti, és legfeljebb 16 nyilvános IP-címet skálázhat.
+A NAT-hoz csatlakoztatott nyilvános IP-címek akár 64 000 egyidejű folyamatot biztosítanak az UDP és a TCP számára. Elkezdheti egyetlen IP-cím megadását, és akár 16 nyilvános IP-címet is felméretezhető.
 
-A NAT lehetővé teszi a virtuális hálózatról az internetre irányuló folyamatok létrehozását. Az internetről érkező forgalom visszaadása csak aktív folyamatra válaszul engedélyezett.
+A NAT lehetővé teszi, hogy a folyamatok a virtuális hálózatról az internetre jöjjenek létre. Az internetről érkező adatforgalom csak aktív folyamatra adott válaszként engedélyezett.
 
-A terheléselosztó kimenő SNAT-tal ellentétben a NAT-nak nincsenek korlátozásai arra vonatkozóan, hogy egy virtuálisgép-példány privát IP-címe melyik kimenő kapcsolatot hozhat létre.  A másodlagos IP-konfigurációk kimenő internetkapcsolatot hozhatnak létre a NAT-tal.
+A terheléselosztó kimenő SNAT eltérően a NAT nem rendelkezik korlátozásokkal, amelyek esetében a virtuálisgép-példányok magánhálózati IP-címe kimenő kapcsolatokat hajthat végre.  A másodlagos IP-konfigurációk kimenő internetkapcsolatot hozhatnak létre a NAT használatával.
 
-## <a name="coexistence-of-inbound-and-outbound"></a>A bejövő és kimenő konélmények együttélése
+## <a name="coexistence-of-inbound-and-outbound"></a>A bejövő és a kimenő együttes létezése
 
-A NAT a következő szabványos termékváltozat-erőforrásokkal kompatibilis:
+A NAT a következő szabványos SKU-erőforrásokkal kompatibilis:
 
 - Terheléselosztó
 - Nyilvános IP-cím
 - Nyilvános IP-előtag
 
-A NAT-tal együtt használva ezek az erőforrások bejövő internetkapcsolatot biztosítanak az alhálózat(ok)hoz. A NAT az alhálózat(ok) összes kimenő internetkapcsolatát biztosítja.
+NAT-vel együtt használva ezek az erőforrások bejövő internetkapcsolatot biztosítanak az alhálózat (k) számára. A NAT biztosítja az alhálózat (k) összes kimenő internetkapcsolatát.
 
-A NAT és a kompatibilis standard termékváltozat-szolgáltatások tisztában vannak a folyamat elindításának irányával. A bejövő és a kimenő forgatókönyvek egymás mellett létezhetnek. Ezek a forgatókönyvek a megfelelő hálózati címfordításokat kapják, mivel ezek a szolgáltatások tisztában vannak a folyamat irányával. 
+A NAT és a kompatibilis szabványos SKU-funkciók tisztában vannak a folyamat elindításának irányával. A bejövő és a kimenő forgatókönyvek is létezhetnek. Ezek a forgatókönyvek megkapják a hálózati címfordítás helyes fordítását, mivel ezek a funkciók tisztában vannak a folyamat irányával. 
 
 <!-- 
 <img src="./media/nat-overview/flow-direction4.svg" width="500" align="center">
 ![Virtual Network NAT flow direction](./media/nat-overview/flow-direction4.svg)
 -->
 <p align="center">
-  <img src="./media/nat-overview/flow-direction4.svg" width="512" title="Virtuális hálózati nat-folyamat iránya">
+  <img src="./media/nat-overview/flow-direction4.svg" width="512" title="Virtual Network NAT-folyamat iránya">
 </p>
 
-*Ábra: Virtuális hálózati NAT-folyamat iránya*
+*Ábra: Virtual Network NAT flow iránya*
 
-## <a name="fully-managed-highly-resilient"></a>Teljes körűen irányított, rendkívül rugalmas
+## <a name="fully-managed-highly-resilient"></a>Teljes körűen felügyelt, nagyon rugalmas
 
-A NAT a kezdetektől teljesen ki van kicsinyített. Nincs szükség felföldi vagy kibővített műveletre.  Az Azure kezeli a NAT működését.  A NAT mindig több tartalék tartománnyal rendelkezik, és több hiba is képes fenntartani a szolgáltatás kimaradása nélkül.
+A NAT teljes mértékben ki van bővítve az elejétől. Nincs szükség Felskálázási vagy kibővített műveletre.  Az Azure kezeli a NAT működését.  A NAT-nak mindig több tartalék tartománya van, és a szolgáltatás kimaradása nélkül több hibát is képes fenntartani.
 
-## <a name="tcp-reset-for-unrecognized-flows"></a>TCP reset ismeretlen folyamatok esetén
+## <a name="tcp-reset-for-unrecognized-flows"></a>Ismeretlen folyamatok TCP-visszaállítása
 
-A NAT privát oldala TCP Reset csomagokat küld a nem létező TCP-kapcsolaton való kommunikációra irányuló kísérletekhez. Erre példa az olyan kapcsolatok, amelyek elérték az tétlen időoutot. A következő fogadott csomag egy TCP reset-et ad vissza a privát IP-címre a kapcsolat lezárásának jelzésére és kényszerítésére.
+A NAT privát oldala TCP-átállítási csomagokat küld a nem létező TCP-kapcsolatban lévő kommunikációra tett kísérletekhez. Az egyik példa olyan kapcsolat, amely elérte az üresjárati időkorlátot. A következő fogadott csomag visszaállítja a TCP-visszaállítást a magánhálózati IP-címekre, hogy jelezze és kényszerítse a kapcsolat bezárását.
 
-A NAT nyilvános oldala nem hoz létre TCP Reset csomagokat vagy más forgalmat.  Csak az ügyfél virtuális hálózata által termelt forgalom kerül kibocsátásra.
+A NAT nyilvános oldala nem hoz létre TCP-visszaállítási csomagokat vagy bármilyen más forgalmat.  Csak az ügyfél virtuális hálózata által előállított forgalom van kibocsátva.
 
-## <a name="configurable-tcp-idle-timeout"></a>Konfigurálható TCP tétlen időmeghosszabbítás
+## <a name="configurable-tcp-idle-timeout"></a>Konfigurálható TCP Üresjárati időkorlát
 
-A rendszer egy 4 perces alapértelmezett TCP-időoutot használ, amely akár 120 percre is növelhető. A folyamatminden tevékenysége visszaállíthatja az alapjárati időzítőt is, beleértve a TCP keepalives-t is.
+A rendszer 4 perces alapértelmezett TCP üresjárati időkorlátot használ, és akár 120 percre is növelhető. A folyamat bármely tevékenysége visszaállíthatja az üresjárati időzítőt, beleértve a TCP-Keepalives is.
 
-## <a name="regional-or-zone-isolation-with-availability-zones"></a>Regionális vagy zónaelkülönítés rendelkezésre állási zónákkal
+## <a name="regional-or-zone-isolation-with-availability-zones"></a>Területi vagy zónák elkülönítése rendelkezésre állási zónákkal
 
-A NAT alapértelmezés szerint regionális. [Rendelkezésre állási zónák forgatókönyvek](../availability-zones/az-overview.md) létrehozásakor a NAT elkülöníthető egy adott zónában (zónaszintű központi telepítés).
+A NAT alapértelmezés szerint regionális. A [rendelkezésre állási zónák](../availability-zones/az-overview.md) létrehozásakor a NAT el lehet különíteni egy adott zónában (a zóna központi telepítése).
 
 <!-- 
 <img src="./media/nat-overview/az-directions.svg" width="500" align="center">
@@ -102,61 +102,61 @@ A NAT alapértelmezés szerint regionális. [Rendelkezésre állási zónák for
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/az-directions.svg" width="512" title="Virtuális hálózati hálózati hálózati kapcsolat rendelkezésre állási zónákkal">
+  <img src="./media/nat-overview/az-directions.svg" width="512" title="NAT Virtual Network rendelkezésre állási zónákkal">
 </p>
 
-*Ábra: Virtuális hálózati hálózati hálózati kapcsolat rendelkezésre állási zónákkal*
+*Ábra: Virtual Network NAT és rendelkezésre állási zónák*
 
-## <a name="multi-dimensional-metrics-for-observability"></a>Többdimenziós mérőszámok a megfigyelhetőség érdekében
+## <a name="multi-dimensional-metrics-for-observability"></a>Többdimenziós mérőszámok a megfigyeléshez
 
-A NAT működését az Azure Monitorban elérhetőtöbbdimenziós metrikák segítségével figyelheti. Ezek a mérőszámok a használat megfigyelésére és a hibaelhárításra használhatók.  A NAT-átjáró-erőforrások a következő metrikákat teszik elérhetővé:
+A NAT működését a Azure Monitorban elérhető többdimenziós metrikák használatával figyelheti. Ezek a metrikák a használat és a hibaelhárítás megtartására használhatók.  A NAT-átjáró erőforrásai a következő metrikákat teszik elérhetővé:
 - Bájt
 - Csomagok
 - Eldobott csomagok
-- Összes SNAT-kapcsolat
-- Az SNAT-kapcsolat állapota intervallumonként áttűnések.
+- SNAT-kapcsolatok összesen
+- SNAT-kapcsolatok állapotának átállítása időszakonként.
 
 <!-- "ADD when PM is done" Learn more about [NAT gateway metrics](./nat-gateway-metrics.md) -->
 
 ## <a name="sla"></a>SLA
 
-Általános elérhetőség esetén a NAT-adatok elérési útja legalább 99,9%.
+Általánosan elérhető a NAT-adatelérési út legalább 99,9%-os rendelkezésre állású.
 
 
 ## <a name="pricing"></a>Díjszabás
 
-A NAT átjáró számlázása két külön méter:
+A NAT-átjáró számlázása két külön mérőszámmal történik:
 
 | Mérő | Rate (Egységár) |
 | --- | --- |
 | Erőforrás-órák | $0.045/óra |
-| Feldolgozott adatok | $0,045/GB |
+| Feldolgozott adatfeldolgozás | $0.045/GB |
 
-Az erőforrásórák azt az időtartamot számlálják, amely alatt a NAT-átjáró-erőforrás létezik.
-A NAT-átjáró-erőforrás által feldolgozott összes forgalom feldolgozott adatfeldolgozási fiókok.
+Az erőforrás-órák a NAT-átjáró erőforrásának időtartama alatt.
+Az adatok feldolgozott fiókjai a NAT-átjáró erőforrásai által feldolgozott összes forgalomhoz.
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-Virtual Network NAT and the NAT gateway resource are available in all Azure public cloud [regions](https://azure.microsoft.com/global-infrastructure/regions/).
+Virtual Network NAT és a NAT-átjáró erőforrás az összes Azure-beli nyilvános felhő- [régióban](https://azure.microsoft.com/global-infrastructure/regions/)elérhető.
 
 ## <a name="support"></a>Támogatás
 
-A NAT normál támogatási csatornákon keresztül támogatott.
+A NAT a normál támogatási csatornákon keresztül támogatott.
 
 ## <a name="feedback"></a>Visszajelzés
 
-Azt akarjuk tudni, hogyan tudjuk javítani a szolgáltatást. Javaslatot tesz, és szavazni, hogy mit kell építeni a következő [UserVoice a NAT](https://aka.ms/natuservoice).
+Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szavazzon arra, hogy mi a következő lépés a [NAT-UserVoice](https://aka.ms/natuservoice).
 
 
 ## <a name="limitations"></a>Korlátozások
 
-* A NAT kompatibilis a szabványos termékváltozat nyilvános IP-címével, nyilvános IP-előtaggal és terheléselosztó erőforrásokkal. Az alapvető erőforrások, például az alapterhelés-elosztó és az ezekből származó termékek nem kompatibilisek a NAT-tal.  Az alapvető erőforrásokat olyan alhálózaton kell elhelyezni, amely nincs konfigurálva a Hálózati címtón.
-* Az IPv4-címcsalád támogatott.  A NAT nem lép kapcsolatba az IPv6-címcsaláddal.  A hálózati címt nem lehet iPv6-előtaggal rendelkező alhálózaton telepíteni.
-* NSG-folyamatnaplózás nem támogatott, ha nat használatával.
-* A Hálózati atta nem terjedhet ki több virtuális hálózatra.
+* A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival. Az alapszintű erőforrások, például az alapszintű Load Balancer és az ezekből származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
+* Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.  A NAT nem helyezhető üzembe IPv6-előtaggal rendelkező alhálózaton.
+* A NSG folyamat naplózása nem támogatott a NAT használata esetén.
+* A NAT nem tud több virtuális hálózatot kifogni.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [NAT átjáró-erőforrásról.](./nat-gateway-resource.md)
-* [Mondja el, mit kell építeni a következő virtuális hálózati NAT a UserVoice](https://aka.ms/natuservoice).
+* További információ a [NAT-átjáró erőforrásáról](./nat-gateway-resource.md).
+* [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).
 

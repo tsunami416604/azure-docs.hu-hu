@@ -1,6 +1,6 @@
 ---
-title: CIS Microsoft Azure Foundations Benchmark-minta telepítése
-description: A CIS Microsoft Azure Foundations Blueprint-minta lépéseit, beleértve a tervezetösszetevő paraméterének részleteit is.
+title: A CIS Microsoft Azure alapítványok teljesítményteszt-tervének üzembe helyezése minta
+description: Telepítse a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének lépéseit, beleértve a Blueprint-összetevők paraméterének részleteit.
 ms.date: 10/14/2019
 ms.topic: sample
 ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
@@ -10,104 +10,104 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "74544529"
 ---
-# <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure Foundations Benchmark-minta üzembe helyezése
+# <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének üzembe helyezése minta
 
-Az Azure Blueprints CIS Microsoft Azure Foundations Benchmark minta üzembe helyezéséhez a következő lépéseket kell elvégezni:
+Az Azure-Microsoft Azure tervezetek az alábbi lépéseket kell végrehajtania:
 
 > [!div class="checklist"]
-> - Új tervrajz létrehozása a mintából
-> - A minta példányának megjelölése **közzétettként**
-> - A tervrajz másolatának hozzárendelése egy meglévő előfizetéshez
+> - Új terv létrehozása a mintából
+> - A minta másolatának megjelölése **közzétettként**
+> - A terv másolatának kiosztása meglévő előfizetéshez
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
 
-## <a name="create-blueprint-from-sample"></a>Tervrajz létrehozása mintából
+## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
-Először valósítsa meg a tervtervezet minta egy új tervtervezet a környezetben a minta, mint a kezdő.
+Először is implementálja a terv mintáját úgy, hogy létrehoz egy új tervet a környezetben a minta kezdőként való használatával.
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. A bal oldali **Első lépések** lapon válassza a **Létrehozás** gombot a _Rajzrajz létrehozása_csoportban.
+1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
 
-1. Keresse meg a **CIS Microsoft Azure Foundations Benchmark v1.1.0-s** tervezetminta az _Egyéb minták csoportban,_ és válassza **a Használja ezt a mintát.**
+1. Keresse meg a **CIS Microsoft Azure founds benchmark v 1.1.0** Blueprint mintát _más minták_ alatt, és válassza **a minta használata**lehetőséget.
 
-1. Adja meg a tervminta _alapjait:_
+1. Adja meg a tervezet mintájának _alapjait_ :
 
-   - **Blueprint neve:** Adja meg a cis Microsoft Azure Foundations Benchmark-minta példányának nevét.
-   - **Definíció helye:** Használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
+   - **Terv neve**: adjon meg egy nevet a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének mintájának.
+   - **Definíció helye**: használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
 
-1. Válassza az _Eltérések_ lapot a lap tetején, vagy a **Tovább: Eltérések** a lap alján.
+1. Válassza ki az oldal tetején található _összetevők fület_ , vagy a **következőt:** összetevők az oldal alján.
 
-1. Tekintse át a tervmintát kiálló összetevők listáját. Sok összetevő nek vannak paraméterei, amelyeket később definiálunk. Válassza **a Vázlat mentése lehetőséget,** ha befejezte a tervezetminta áttekintését.
+1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
-## <a name="publish-the-sample-copy"></a>A mintapéldány közzététele
+## <a name="publish-the-sample-copy"></a>A minta másolatának közzététele
 
-A tervtervezet minta példánya most már létre lett hozva a környezetében. **Vázlat** módban jön létre, és közzé kell **tenni,** mielőtt hozzárendelhető és üzembe helyezhető. A tervezetminta példánya testreszabható a környezetés az igények igényei szerint, de ez a módosítás áthelyezheti a CIS Microsoft Azure Foundations Benchmark javaslatokkal való igazodástól.
+A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás a CIS Microsoft Azure alapítványok teljesítményértékelési javaslatai alapján áthelyezhető.
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza ki a **blueprint definíciók** lap a bal oldalon. A szűrők segítségével keresse meg a tervezet minta példányát, majd válassza ki.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza a **Tervrajz közzététele** lehetőséget a lap tetején. A jobb oldali új lapon adja meg a tervezetminta egy **verzióját.** Ez a tulajdonság akkor hasznos, ha később módosítja a munkát. Adjon **meg módosítási megjegyzéseket,** például "A CIS Microsoft Azure Foundations Benchmark-mintából közzétett első verzió". Ezután válassza a **Közzététel** lehetőséget a lap alján.
+1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldalon található új lapon adjon meg egy **verziót** a tervezet mintájának másolatához. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint például az "első verzió a CIS Microsoft Azure az alapítók teljesítményteszt-tervezet mintája." Ezután válassza a **Közzététel** elemet az oldal alján.
 
-## <a name="assign-the-sample-copy"></a>A mintapéldány hozzárendelése
+## <a name="assign-the-sample-copy"></a>A minta másolatának kiosztása
 
-Miután a tervezetminta példánya sikeresen **közzélett,,** hozzárendelhető egy előfizetéshez a felügyeleti csoporton belül, amelybe mentve mentették. Ez a lépés az, ahol paraméterek et biztosítanak, hogy a tervezet minta másolatának minden egyes központi telepítése egyedi legyen.
+Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza a **Tervrajzok lehetőséget.**
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza ki a **blueprint definíciók** lap a bal oldalon. A szűrők segítségével keresse meg a tervezet minta példányát, majd válassza ki.
+1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
 
-1. Válassza **a Blueprint hozzárendelése** lehetőséget a tervezetdefiníciós lap tetején.
+1. Válassza a terv **kiosztása** elemet a terv definíciója oldal tetején.
 
-1. Adja meg a tervezet hozzárendelésének paraméterértékeit:
+1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
    - Alapvető beállítások
 
-     - **Előfizetések:** Válasszon ki egy vagy több előfizetést, amely abban a felügyeleti csoportban van, amelybe a tervezetminta másolatát mentette. Ha egynél több előfizetést választ ki, mindegyikhez egy-egy hozzárendelés jön létre a megadott paraméterek használatával.
-     - **Hozzárendelés neve**: A név előre ki van töltve a tervrajz neve alapján.
-       Szükség szerint változtassa meg, vagy hagyja úgy, ahogy van.
-     - **Hely**: Válassza ki azt a régiót, amelyben a felügyelt identitást létre szeretné hozni. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További információ: [Felügyelt identitások az Azure-erőforrásokhoz.](../../../../active-directory/managed-identities-azure-resources/overview.md)
-     - **Blueprint-definíciós verzió:** Válasszon egy **közzétett** változata a tervezet minta példánya.
+     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
+       Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
+     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Terv definíciójának verziója**: válasszon egy **közzétett** verziót a terv mintájának másolatáról.
 
    - Hozzárendelés zárolása
 
-     Válassza ki a környezetéhez való tervezetzárolási beállítást. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
+     Válassza ki a környezethez tartozó terv zárolási beállítását. További információkat talál a [terv-erőforrások zárolásáról](../../concepts/resource-locking.md) szóló cikkben.
 
    - Felügyelt identitás
 
-     Hagyja meg az alapértelmezett _rendszer hez rendelt_ felügyelt identitás beállítást.
+     Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás beállítást.
 
-   - Műtermék-paraméterek
+   - Összetevő paramétereinek
 
-     Az ebben a szakaszban meghatározott paraméterek a műtermékre vonatkoznak, amely alatt definiálva van. Ezek a paraméterek [dinamikus paraméterek,](../../concepts/parameters.md#dynamic-parameters) mivel a terv hozzárendelése során vannak definiálva. A teljes lista- vagy műtermék-paramétereket és azok leírását a [Műtermék paraméterek táblázatban láthatja.](#artifact-parameters-table)
+     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
-1. Miután az összes paramétert megadta, válassza a **Hozzárendelés** lehetőséget a lap alján. A tervrajz-hozzárendelés jön létre, és a műtermék üzembe helyezése kezdődik. A telepítés nagyjából egy órát vesz igénybe. A telepítés állapotának ellenőrzéséhez nyissa meg a tervhozzárendelést.
+1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet. A terv-hozzárendelés létrejött, és az összetevő üzembe helyezése megkezdődik. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának megtekintéséhez nyissa meg a terv-hozzárendelést.
 
 > [!WARNING]
-> Az Azure Blueprints szolgáltatás és a beépített tervezetminták **ingyenesek.** Az Azure-erőforrások [ára termékenként.](https://azure.microsoft.com/pricing/) A [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) segítségével becsülje meg a tervezet minta által üzembe helyezett erőforrások futtatásának költségét.
+> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták **díjmentesek**. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
 
-## <a name="artifact-parameters-table"></a>Műtermék-paraméterek táblája
+## <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
-Az alábbi táblázat a tervezet összetevő paramétereinek listáját tartalmazza:
+A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Műtermék neve|Műtermék típusa|Paraméter neve|Leírás|
+|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|\[Előzetes\]verzió : A CIS Microsoft Azure Foundations Benchmark 1.1.0-s verziójú javaslatainak naplózása és a virtuálisgép-bővítmények konkrét támogató bővítményeinek üzembe helyezése|Szabályzat-hozzárendelés|Azon régiók listája, ahol a Hálózatfigyelőt engedélyezni kell|A területek pontosvesszővel elválasztott listája. A régiók teljes listájának megtekintéséhez használja a Get-AzLocation(Get-AzLocation) műveletet. Pl.: eastus; eastus2|
-|\[Előzetes\]verzió : A CIS Microsoft Azure Foundations Benchmark 1.1.0-s verziójú javaslatainak naplózása és a virtuálisgép-bővítmények konkrét támogató bővítményeinek üzembe helyezése|Szabályzat-hozzárendelés|A használatra jóváhagyott virtuálisgép-bővítmények listája|A bővítmények pontosvesszővel elválasztott listája . A virtuálisgép-bővítmények teljes listájának megtekintéséhez használja a Get-AzVMExtensionImage.To see a complete list of virtual machine extensions, use Get-AzVMExtensionImage. Pl.: AzureDiskEncryption; IaaSAntimalware|
+|\[Előzetes\]verzió: a CIS Microsoft Azure alapítványok teljesítményteszt-ajánlásainak és a speciális virtuálisgép-bővítmények üzembe helyezésének ellenőrzése|Szabályzat-hozzárendelés|Azon régiók listája, amelyeken engedélyezni kell a Network Watcher|Régiók pontosvesszővel tagolt listája. A régiók teljes listájának megtekintéséhez használja a Get-AzLocation. Pl.: eastus; eastus2|
+|\[Előzetes\]verzió: a CIS Microsoft Azure alapítványok teljesítményteszt-ajánlásainak és a speciális virtuálisgép-bővítmények üzembe helyezésének ellenőrzése|Szabályzat-hozzárendelés|A használatra jóváhagyott virtuálisgép-bővítmények listája|A bővítmények pontosvesszővel tagolt listája. A virtuálisgép-bővítmények teljes listájának megtekintéséhez használja a Get-AzVMExtensionImage. Pl.: AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy áttekintette a CIS Microsoft Azure Foundations Benchmark-minta telepítésének lépéseit, az alábbi cikkekben megtudhatja a tervezetet és a vezérlőleképezést:
+Most, hogy áttekintette a CIS Microsoft Azure Founds teljesítményteszt-tervezetének üzembe helyezéséhez szükséges lépéseket, tekintse meg a következő cikkeket a terv és a vezérlés leképezésének megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [CIS Microsoft Azure Foundations Benchmark blueprint – Áttekintés a](./index.md)
-> [CIS Microsoft Azure Foundations Benchmark tervezetében – Control mapping](./control-mapping.md)
+> [CIS Microsoft Azure alapítványok teljesítményteszt-terv – áttekintés](./index.md)
+> [CIS Microsoft Azure alapítványok teljesítményteszt – vezérlés leképezése](./control-mapping.md)
 
 További cikkek a tervekről és azok használatáról:
 
-- További információ a [tervterv életciklusáról.](../../concepts/lifecycle.md)
-- Ismerje meg, hogyan kell statikus [és dinamikus paramétereket](../../concepts/parameters.md)használni.
-- Ismerje meg a [tervezet szekvenálási sorrendjének testreszabását.](../../concepts/sequencing-order.md)
-- Ismerje meg, hogyan használhatja a [tervezet erőforrás-zárolást.](../../concepts/resource-locking.md)
-- További információ a [meglévő hozzárendelések frissítéséhez.](../../how-to/update-existing-assignments.md)
+- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
+- A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [meglévő hozzárendelések frissítésének](../../how-to/update-existing-assignments.md) elsajátítása.

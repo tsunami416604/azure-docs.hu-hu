@@ -1,25 +1,21 @@
 ---
-title: Oktatóanyag – Virtuális gépek kezelése a PowerShell segítségével
+title: Oktatóanyag – virtuális gépek kezelése a PowerShell-lel
 description: Ez az oktatóanyag bemutatja, hogyan kezelheti Azure-beli virtuális gépeit az RBAC, szabályzatok, zárolások és címkék alkalmazásával az Azure PowerShell-lel
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: tfitzmac
-manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-windows
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: d8cb1895c980fa9f84983ea8364cb2f0f5dcb982
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b4ce4cd53f9dda3d0f96e892128d543e59c83b26
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456022"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100362"
 ---
-# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Oktatóanyag: Ismerje meg a Windows virtuálisgépek kezelését az Azure PowerShell segítségével
+# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Oktatóanyag: a Windows rendszerű virtuális gépek felügyeletének megismerése Azure PowerShell
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -27,7 +23,7 @@ ms.locfileid: "81456022"
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/powershell](https://shell.azure.com/powershell)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="understand-scope"></a>A hatókör bemutatása
 
@@ -57,7 +53,7 @@ A virtuálisgép-megoldások kezeléséhez három erőforrás-specifikus szerepk
 
 Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb egy azokat a felhasználókat tartalmazó Azure Active Directory-csoportot használni, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ehhez a cikkhez használhat egy meglévő csoportot a virtuális gép kezeléséhez, vagy a portálon [létrehozhat egy Azure Active Directory-csoportot](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Új csoport létrehozása vagy egy meglévő keresése után a [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) paranccsal rendelje hozzá az Azure Active Directory-csoportot az erőforráscsoport virtuálisgép-közreműködői szerepköréhez.  
+Új csoport létrehozása vagy egy meglévő megkeresése után a [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) parancs használatával rendelje hozzá a Azure Active Directory csoportot a virtuálisgép-közreműködő szerepkörhöz az erőforráscsoporthoz.  
 
 ```azurepowershell-interactive
 $adgroup = Get-AzADGroup -DisplayName <your-group-name>
@@ -67,13 +63,13 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-Ha olyan hibaüzenetet kap, amely szerint **a> \<nem létezik a címtárban,** az új csoport nem propagált az Azure Active Directoryban. Próbálja meg ismét futtatni a parancsot.
+Ha olyan hibaüzenetet kap, amely ** \<> nem létezik a címtárban**, akkor az új csoport nem lett propagálva a Azure Active Directory során. Próbálja meg ismét futtatni a parancsot.
 
 A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közreműködő* szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Az [Azure Policy](../../governance/policy/overview.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. A rendelkezésre álló házirend-definíciók megtekintéséhez használja a [Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition) parancsot:
+Az [Azure Policy](../../governance/policy/overview.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzat-definíciók megtekintéséhez használja a [Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition) parancsot:
 
 ```azurepowershell-interactive
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -85,7 +81,7 @@ Itt láthatja a meglévő szabályzatdefiníciókat. A szabályzat típusa lehet
 * Korlátozzák a virtuális gépek termékváltozatait.
 * Naplózzák a felügyelt lemezeket nem használó virtuális gépeket.
 
-A következő példában három olyan szabályzatdefiníciót fog lekérni, amely a megjelenítendő néven alapul. A [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) paranccsal ezeket a definíciókat rendelheti az erőforráscsoporthoz. Egyes szabályzatoknál paraméterértékekkel határozhatja meg az engedélyezett értékeket.
+A következő példában három olyan szabályzatdefiníciót fog lekérni, amely a megjelenítendő néven alapul. A [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) parancs használatával rendelje hozzá ezeket a definíciókat az erőforráscsoporthoz. Egyes szabályzatoknál paraméterértékekkel határozhatja meg az engedélyezett értékeket.
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -167,11 +163,11 @@ Megjelenik egy hibaüzenet, amely szerint a törlési művelet nem hajtható vé
 
 ## <a name="tag-resources"></a>Erőforrások címkézése
 
-[Címkéket](../../azure-resource-manager/management/tag-resources.md) alkalmazhat az Azure-erőforrásoklogikusan rendszerezheti őket kategóriák szerint. Minden címke egy névből és egy értékből áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
+[Címkéket](../../azure-resource-manager/management/tag-resources.md) alkalmazhat az Azure-erőforrásokra, hogy logikusan szervezze őket kategóriák szerint. Minden címke egy névből és egy értékből áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-Ha címkéket szeretne alkalmazni egy virtuális gépre, használja a [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) parancsot:
+Ha címkéket szeretne alkalmazni egy virtuális gépre, használja a [set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) parancsot:
 
 ```azurepowershell-interactive
 # Get the virtual machine
@@ -185,7 +181,7 @@ Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } 
 
 ### <a name="find-resources-by-tag"></a>Erőforrások keresése címke szerint
 
-A címkenévvel és értékkel rendelkező erőforrások megkereséséhez használja a [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) parancsot:
+Ha meg szeretné keresni az erőforrásokat a címke nevével és értékével, használja a [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) parancsot:
 
 ```azurepowershell-interactive
 (Get-AzResource -Tag @{ Environment="Test"}).Name
@@ -203,7 +199,7 @@ Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. A zárolás eltávolításához használja az [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) parancsot:
+A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. A zárolás eltávolításához használja a [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) parancsot:
 
 ```azurepowershell-interactive
 Remove-AzResourceLock -LockName LockVM `
@@ -216,7 +212,7 @@ Remove-AzResourceLock -LockName LockNSG `
   -ResourceGroupName myResourceGroup
 ```
 
-Ha már nincs szükség rá, az [Eltávolítás-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gépés az összes kapcsolódó erőforrást.
+Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
@@ -232,7 +228,7 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 > * Kritikus erőforrások védelme zárolásokkal
 > * Erőforrások címkézése számlázáshoz és felügyelethez
 
-A következő oktatóanyagra lépve megismerkedhet a módosításokkal és a csomagfrissítések linuxos virtuális gépen történő kezelésével kapcsolatos tudnivalókat.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan azonosíthatja a módosításokat, és hogyan kezelheti a csomagok frissítéseit Linux rendszerű virtuális gépen.
 
 > [!div class="nextstepaction"]
 > [Virtuális gépek kezelése](tutorial-config-management.md)

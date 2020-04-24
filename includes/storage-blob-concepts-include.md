@@ -15,7 +15,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136018"
 ---
-Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. Strukturálatlan adatok olyan adatok, amelyek nem felelnek meg egy adott adatmodellhez vagy definícióhoz, például szöveges vagy bináris adatokhoz.
+Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem felelnek meg egy adott adatmodellnek vagy definíciónak, például szöveges vagy bináris adatoknak.
 
 ## <a name="about-blob-storage"></a>Az Azure Blob Storage névjegye
 
@@ -28,23 +28,23 @@ A Blob Storage használati lehetőségei:
 * Adattárolás biztonsági mentésekhez és helyreállításhoz, vészhelyreállításhoz és archiváláshoz.
 * Adattárolás helyszíni vagy az Azure-ban üzemeltetett szolgáltatásban való elemzéshez.
 
-A felhasználók vagy az ügyfélalkalmazások http/HTTPS-en keresztül érhetik el a Blob storage objektumait a világ bármely pontjáról. A Blob storage-ban lévő objektumok az [Azure Storage REST API-n,](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)az Azure [PowerShellen,](https://docs.microsoft.com/powershell/module/azure.storage)az [Azure CLI-n](https://docs.microsoft.com/cli/azure/storage)vagy egy Azure Storage-ügyfélkódtáron keresztül érhetők el. Az ügyféltárak különböző nyelveken érhetők el, többek között a következőkben:
+A felhasználók vagy ügyfélalkalmazások a blob Storage-ban lévő objektumokat HTTP/HTTPS használatával érhetik el a világ bármely pontján. A blob Storage-ban lévő objektumok az [Azure storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), az [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), az [Azure CLI](https://docs.microsoft.com/cli/azure/storage)vagy egy Azure Storage ügyféloldali kódtár használatával érhetők el. Az ügyféloldali kódtárak különböző nyelvekhez érhetők el, beleértve a következőket:
 
 * [.NET](/dotnet/api/overview/azure/storage?view=azure-dotnet)
 * [Java](https://docs.microsoft.com/java/api/overview/azure/storage)
 * [Node.js](https://azure.github.io/azure-storage-node) 
 * [Python](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-python)
 * [Ugrás](https://github.com/azure/azure-storage-blob-go/)
-* [Php](https://azure.github.io/azure-storage-php/)
+* [PHP](https://azure.github.io/azure-storage-php/)
 * [Ruby](https://azure.github.io/azure-storage-ruby)
 
-## <a name="about-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2- ről
+## <a name="about-azure-data-lake-storage-gen2"></a>Tudnivalók Azure Data Lake Storage Gen2
 
-A Blob Storage támogatja az Azure Data Lake Storage Gen2-t, amely a Microsoft felhőbeli, vállalati adatok big data koncepción alapuló elemzési megoldása. Az Azure Data Lake Storage Gen2 hierarchikus fájlrendszert, valamint a Blob storage előnyeit kínálja, többek között a következőket:
+A Blob Storage támogatja az Azure Data Lake Storage Gen2-t, amely a Microsoft felhőbeli, vállalati adatok big data koncepción alapuló elemzési megoldása. Azure Data Lake Storage Gen2 hierarchikus fájlrendszert biztosít, valamint a blob Storage előnyeit, beleértve a következőket:
 
-* Alacsony költségű, többszintű tárolás
+* Alacsony árú, többrétegű tárolás
 * Magas rendelkezésre állás
 * Erős konzisztencia
-* Vész-helyreállítási képességek
+* Vész-helyreállítási lehetőségek
 
-A Data Lake Storage Gen2 szolgáltatásról további információt az [Azure Data Lake Storage Gen2 – Bevezetés](../articles/storage/data-lake-storage/introduction.md)című témakörben talál.
+További információ a Data Lake Storage Gen2ről: a [Azure Data Lake Storage Gen2 bemutatása](../articles/storage/data-lake-storage/introduction.md).

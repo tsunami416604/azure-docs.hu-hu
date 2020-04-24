@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Akamai-val | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az Akamai között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Akamai között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,153 +23,153 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "74979594"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Akamai-val
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az Akamai-t az Azure Active Directoryval (Azure AD). Ha integrálja az Akamai-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Akamai a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Akamai-t az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD- ban, aki hozzáfér az Akamai.Control in Azure AD who has access to Akamai.
-* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve Akamai az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* A Akamai-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Akamai az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Akamai egyszeri bejelentkezés (SSO) engedélyezve van előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Akamai egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-- A Tartalékidő támogatja az IDP által kezdeményezett sso-t
+- A Slack támogatja a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést
 
-## <a name="adding-akamai-from-the-gallery"></a>Akamai hozzáadása a galériából
+## <a name="adding-akamai-from-the-gallery"></a>Akamai hozzáadása a gyűjteményből
 
-Az Akamai Azure AD-be való integrációjának konfigurálásához hozzá kell adnia az Akamai-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Akamai Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Akamai a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a gyűjteményből szakaszban** írja be az **Akamai** kifejezést a keresőmezőbe.
-1. Válassza az **Akamai** elemet az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Akamai** kifejezést a keresőmezőbe.
+1. Válassza ki a **Akamai** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése az Akamai számára
+## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Akamai
 
-Konfigurálja és tesztelje az Azure AD SSO-t az Akamai segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó akamai ban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Akamai a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Akamai-ben.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez az Akamai segítségével hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a Akamai konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja az Akamai SSO-t](#configure-akamai-sso)** - az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    * **[Hozzon létre Akamai teszt felhasználó](#create-akamai-test-user)** - egy megfelelője B.Simon a akamai, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Akamai SSO konfigurálása](#configure-akamai-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre Akamai-teszt felhasználót](#create-akamai-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Akamai rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)az **Akamai** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza ki **az egyszeri bejelentkezést.**
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **Akamai** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<Yourapp>.login.go.akamai-access.com/sp/response`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<Yourapp>.login.go.akamai-access.com/sp/response`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https:// <Yourapp>.login.go.akamai-access.com/sp/response`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https:// <Yourapp>.login.go.akamai-access.com/sp/response`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címével. Lépjen kapcsolatba [az Akamai ügyféltámogatási csapatával,](https://www.akamai.com/us/en/contact-us/) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a Akamai ügyfélszolgálati [csapatához](https://www.akamai.com/us/en/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az SAML aláíró tanúsítvány szakaszban keresse meg az **összevonási** **metaadatok XML-jét,** és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. Az **Akamai beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
+1. A **Akamai beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés használatával hozzáférést biztosít az Akamai.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Akamai.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza az **Akamai**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Akamai**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-akamai-sso"></a>Akamai SSO konfigurálása
 
-### <a name="setting-up-idp"></a>Az IDP beállítása
+### <a name="setting-up-idp"></a>IDENTITÁSSZOLGÁLTATÓ beállítása
 
-1. Jelentkezzen be az **Akamai Enterprise Application Access** konzolra.
-1. Az **Akamai EAA konzolon**válassza az > **Identitásazonosító-szolgáltatók lehetőséget.** **Identity**
+1. Bejelentkezési a **Akamai Enterprise Application Access** -konzolra.
+1. Az **Akamai EAA konzolon**válassza az **Identity** > **Identity Providers**elemet.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure01.png)
 
-1. Kattintson **az Identitásszolgáltató hozzáadása gombra.**
+1. Kattintson a **személyazonosság-szolgáltató hozzáadása**elemre.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure02.png)
 
-    a. Adja meg az **Egyedi nevet**.
+    a. Adja meg az **egyedi nevet**.
     
-    b. Válassza **a Harmadik fél SAML (Harmadik fél SAML)** lehetőséget, majd kattintson az **Identitásszolgáltató létrehozása és a Konfigurálás parancsra.**
+    b. Válasszon **harmadik féltől származó SAML** -t, és kattintson az **Identity Provider létrehozása és konfigurálása**elemre.
 
 ### <a name="general-settings"></a>Általános beállítások
 
-1. **Identity Intercept** – Adja meg a nevét a (SP alap URL-fogja használni az Azure AD konfiguráció)
+1. **Identitás feltartóztatása** – adja meg az Azure ad-konfigurációhoz használandó (SP Base URL-cím) nevét.
 
     > [!NOTE]
-    > Választhat, hogy saját egyéni tartománya van (DNS-bejegyzésre és tanúsítványra lesz szükség). Ebben a példában fogjuk használni az Akamai domain.
+    > Dönthet úgy is, hogy saját egyéni tartományt használ (DNS-bejegyzést és tanúsítványt igényel). Ebben a példában a Akamai tartományt fogjuk használni.
 
-1. **Akamai Cloud Zone** - Válassza ki a megfelelő felhőzónát.
-1. **Tanúsítványérvényesítés** - Ellenőrizze az Akamai dokumentációt (nem kötelező)
+1. **Akamai Cloud Zone** – válassza ki a megfelelő felhő zónát.
+1. **Tanúsítvány érvényesítése** – a Akamai dokumentációjának ellenőrzése (nem kötelező)
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure03.png)
 
-### <a name="authentication-configuration"></a>Hitelesítés konfigurációja
+### <a name="authentication-configuration"></a>Hitelesítési konfiguráció
 
-1. URL – Adja meg az URL-t ugyanaz, mint az identitás elfogása (ez az, ahol a felhasználók átirányítás hitelesítés után).
-2. Kijelentkezési URL: Frissítse a kijelentkezés URL-címét.
-3. Saml-kérelem aláírása: az alapértelmezett nincs bejelölve.
-4. Az IDP metaadat-fájl, adja hozzá az alkalmazást az Azure AD console.For the IDP Metadata File, add hozzá az alkalmazást az Azure AD Console.For the IDP Metadata File, add a Application in the Azure AD Console.
+1. URL-cím – megegyező URL-cím megadása az identitás feltartóztatva (ez az a hely, ahol a felhasználók a hitelesítés után átirányíthatók).
+2. Kijelentkezési URL: frissítse a kijelentkezési URL-címet.
+3. SAML-kérelem aláírása: az alapértelmezett beállítás nincs bejelölve.
+4. A IDENTITÁSSZOLGÁLTATÓ metaadat-fájljához adja hozzá az alkalmazást az Azure AD-konzolon.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure04.png)
 
-### <a name="header-based-authentication"></a>Fejlécalapú hitelesítés
+### <a name="header-based-authentication"></a>Fejléc alapú hitelesítés
 
-Akamai fejlécalapú hitelesítés
+Akamai-fejléc alapú hitelesítés
 
-1. Válassza az **Egyéni HTTP-űrlap** lehetőséget, az Alkalmazások hozzáadása varázslót.
+1. Válassza az **Egyéni http** -űrlap az alkalmazások hozzáadása varázslót.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure05.png)
 
@@ -187,23 +187,23 @@ Akamai fejlécalapú hitelesítés
 
 #### <a name="services"></a>Szolgáltatások
 
-1. Kattintson a Mentés és ugrás a hitelesítésre gombra.
+1. Kattintson a Mentés gombra, és válassza a hitelesítés lehetőséget.
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure11.png)
 
 #### <a name="advanced-settings"></a>Speciális beállítások
 
-1. A **VevőHTTP-fejlécek**csoportban adja meg a **CustomerHeader** és **az SAML attribútumot.**
+1. Az **ügyfél http-fejlécei**területen a **CustomerHeader** és az **SAML attribútumot**kell megadni.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure12.png)
 
-1. Kattintson a **Mentés gombra, és lépjen a Telepítés** gombra.
+1. Kattintson **a Save (Mentés) gombra, és válassza a telepítés** gombot.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure13.png)
 
-#### <a name="deploy-the-application"></a>Az alkalmazás telepítése
+#### <a name="deploy-the-application"></a>Az alkalmazás üzembe helyezése
 
-1. Kattintson **az Alkalmazás telepítése** gombra.
+1. Kattintson az **alkalmazás központi telepítése** gombra.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure14.png)
 
@@ -215,7 +215,7 @@ Akamai fejlécalapú hitelesítés
 
 #### <a name="remote-desktop"></a>Távoli asztal
 
-1. Válassza az **RDP** lehetőséget az ADD Applications varázslóból.
+1. Az alkalmazások hozzáadása varázslóban válassza az **RDP** elemet.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure16.png)
 
@@ -223,25 +223,25 @@ Akamai fejlécalapú hitelesítés
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure18.png)
 
-1. Adja meg azt az összekötőt, amely ezt a kiszolgálót fogja elszolgálni.
+1. Itt adhatja meg a karbantartáshoz használandó összekötőt.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure19.png)
 
 #### <a name="authentication"></a>Hitelesítés
 
-Kattintson a **Mentés gombra, és nyissa meg a Szolgáltatásokat**.
+Kattintson **a Mentés gombra, és válassza a szolgáltatások**lehetőséget.
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure20.png)
 
 #### <a name="services"></a>Szolgáltatások
 
-Kattintson a **Mentés gombra, és lépjen a Speciális beállítások gombra.**
+Kattintson **a Save (Mentés) gombra, és válassza a speciális beállítások lehetőséget**.
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure21.png)
 
 #### <a name="advanced-settings"></a>Speciális beállítások
 
-Kattintson a **Mentés gombra, és nyissa meg a Telepítés menüt.**
+Kattintson **a Mentés gombra, és válassza a telepítés**lehetőséget.
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure22.png)
 
@@ -249,53 +249,53 @@ Kattintson a **Mentés gombra, és nyissa meg a Telepítés menüt.**
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure24.png)
 
-### <a name="deployment"></a>Környezet
+### <a name="deployment"></a>Üzembe helyezés
 
 #### <a name="ssh"></a>SSH
 
-1. Nyissa meg az Alkalmazások hozzáadása lehetőséget, válassza az **SSH**lehetőséget.
+1. Lépjen az alkalmazások hozzáadása elemre, és válassza az **SSH**lehetőséget.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure25.png)
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure26.png)
 
-1. Alkalmazásidentitás konfigurálása.
+1. Adja meg az alkalmazás identitását.
 
     ![Akamai konfigurálása](./media/header-akamai-tutorial/configure27.png)
 
-    a. Adja meg a nevet / leírást.
+    a. Adja meg a nevet és a leírást.
 
-    b. Adja meg az alkalmazáskiszolgáló IP/FQDN azonosítóját és portját az SSH-hoz.
+    b. Az alkalmazáskiszolgáló IP/FQDN és portjának megadása az SSH-hoz.
 
-    c. Adja meg az SSH felhasználónevet / jelszót *Ellenőrizze az Akamai EAA-t.
+    c. A Akamai EAA megadása az SSH-Felhasználónév/jelszó beállításnál.
 
-    d. Adja meg a külső állomás nevét.
+    d. Adja meg a külső állomásnév nevét.
 
     e. Adja meg az összekötő helyét, és válassza ki az összekötőt.
 
 #### <a name="authentication"></a>Hitelesítés
 
-Kattintson a **Mentés gombra, és lépjen a Szolgáltatások menügombra.**
+Kattintson a **Save (Mentés**) gombra, és válassza a szolgáltatások lehetőséget.
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure28.png)
 
 #### <a name="services"></a>Szolgáltatások
 
-Kattintson a **Mentés gombra, és lépjen a Speciális beállítások gombra.**
+Kattintson **a Save (Mentés) gombra, és válassza a speciális beállítások lehetőséget**.
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure29.png)
 
 #### <a name="advanced-settings"></a>Speciális beállítások
 
-Kattintson a Mentés és ugrás telepítésre
+Kattintson a Mentés gombra, és lépjen a központi telepítésre
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure30.png)
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure31.png)
 
-#### <a name="deployment"></a>Környezet
+#### <a name="deployment"></a>Üzembe helyezés
 
-Kattintson **az Alkalmazás telepítése gombra.**
+Kattintson az **alkalmazás központi telepítése**elemre.
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure32.png)
 
@@ -311,22 +311,22 @@ Kattintson **az Alkalmazás telepítése gombra.**
 
 ![Akamai konfigurálása](./media/header-akamai-tutorial/configure36.png)
 
-### <a name="create-akamai-test-user"></a>Akamai tesztfelhasználó létrehozása
+### <a name="create-akamai-test-user"></a>Akamai-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy B.Simon nevű felhasználót hoz létre az Akamai ban. Együttműködve [Akamai ügyfél támogatási csapat](https://www.akamai.com/us/en/contact-us/) a felhasználók hozzáadása az Akamai platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat. 
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Akamai-ben. A [Akamai ügyfél-támogatási csapattal](https://www.akamai.com/us/en/contact-us/) együttműködve veheti fel a felhasználókat a Akamai-platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat. 
 
-## <a name="test-sso"></a>SSO tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a hozzáférési panelen az Akamai csempére kattint, automatikusan be kell jelentkeznie arra az Akamai-ba, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a Akamai csempére kattint, automatikusan be kell jelentkeznie arra a Akamai, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki az Akamai-t az Azure AD-vel](https://aad.portal.azure.com/)
+- [A Akamai kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

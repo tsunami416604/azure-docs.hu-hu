@@ -1,5 +1,5 @@
 ---
-title: Az első adatgyár (PowerShell) létrehozása
+title: Az első adatgyár létrehozása (PowerShell)
 description: Az oktatóanyag során létrehoz egy minta Azure Data Factory-folyamatot az Azure PowerShell használatával.
 services: data-factory
 documentationcenter: ''
@@ -21,8 +21,8 @@ ms.locfileid: "75438996"
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Oktatóanyag: Az első Azure data factory létrehozása az Azure PowerShell használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
-> * [Vizuális stúdió](data-factory-build-your-first-pipeline-using-vs.md)
-> * [Powershell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 >
@@ -71,7 +71,7 @@ Ebben a lépésben az Azure PowerShell használatával létrehozza a **FirstData
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     Az oktatóanyag különböző lépései során feltételezzük, hogy az ADFTutorialResourceGroup elnevezésű erőforráscsoportot használja. Ha másik erőforráscsoportot használ, akkor az oktatóanyagban azt használja az ADFTutorialResourceGroup helyett.
-3. Futtassa a **New-AzDataFactory** parancsmagát, amely létrehoz egy **FirstDataFactoryPSH**nevű adatgyárat.
+3. Futtassa a **New-AzDataFactory** parancsmagot, amely létrehoz egy **FirstDataFactoryPSH**nevű adatelőállítót.
 
     ```PowerShell
     New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
@@ -117,9 +117,9 @@ Ebben a lépésben társítani fogja Azure Storage-fiókját az adat-előállít
         }
     }
     ```
-    Az **account name** kifejezést cserélje az Azure Storage-fiókja nevére, az **account key** kifejezést pedig az Azure Storage-fiók kulcsára. A tárfiók hozzáférési kulcsának [kezelése( Tárfiók-hozzáférési kulcsok kezelése)](../../storage/common/storage-account-keys-manage.md)témakörből megtudhatja, hogy miként szerezheti be a tárfiók hozzáférési kulcsait.
+    Az **account name** kifejezést cserélje az Azure Storage-fiókja nevére, az **account key** kifejezést pedig az Azure Storage-fiók kulcsára. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
 2. Az Azure PowerShellben váltson az ADFGetStarted mappára.
-3. Használhatja a **New-AzDataFactoryLinkedService** parancsmag, amely létrehoz egy csatolt szolgáltatást. Ehhez, valamint az oktatóanyagban használt többi Data Factory-parancsmaghoz is meg kell adnia értékeket a *ResourceGroupName* és a *DataFactoryName* paraméterek számára. Másik lehetőségként a **Get-AzDataFactory** segítségével lekaphat egy **DataFactory** objektumot, és átadhatja az objektumot a *ResourceGroupName* és *a DataFactoryName* minden egyes parancsmag futtatásakor. Futtassa a következő parancsot a **Get-AzDataFactory** parancsmag kimenetének **hozzárendeléséhez** egy $df változóhoz.
+3. Használhatja a **New-AzDataFactoryLinkedService** parancsmagot, amely létrehoz egy társított szolgáltatást. Ehhez, valamint az oktatóanyagban használt többi Data Factory-parancsmaghoz is meg kell adnia értékeket a *ResourceGroupName* és a *DataFactoryName* paraméterek számára. Azt is megteheti, hogy a **Get-AzDataFactory** használatával beolvas egy **DataFactory** objektumot, és a *ResourceGroupName* és a *DataFactoryName* megadása nélkül adja át az objektumot a parancsmagok minden egyes futtatásakor. Futtassa a következő parancsot a **Get-AzDataFactory** parancsmag kimenetének **$DF** változóhoz való hozzárendeléséhez.
 
     ```PowerShell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
@@ -129,12 +129,12 @@ Ebben a lépésben társítani fogja Azure Storage-fiókját az adat-előállít
     ```PowerShell
     New-AzDataFactoryLinkedService $df -File .\StorageLinkedService.json
     ```
-    Ha nem futtatta a **Get-AzDataFactory** parancsmagát, és nem rendelte hozzá a kimenetet a **$df** változóhoz, akkor a *ResourceGroupName* és a *DataFactoryName* paraméterek értékeit az alábbiak szerint kell megadnia.
+    Ha nem futtatta a **Get-AzDataFactory** parancsmagot, és hozzárendelte a kimenetet a **$DF** változóhoz, a következőképpen kell megadnia a *ResourceGroupName* és a *DataFactoryName* paraméterek értékeit.
 
     ```PowerShell
     New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName FirstDataFactoryPSH -File .\StorageLinkedService.json
     ```
-    Ha bezárja az Azure PowerShell az oktatóanyag közepén, futtatnia kell a **Get-AzDataFactory** parancsmag következő indításakor az Azure PowerShell az oktatóanyag befejezéséhez.
+    Ha lezárta Azure PowerShell az oktatóanyag közepén, akkor a következő indításakor futtatnia kell a **Get-AzDataFactory** parancsmagot, Azure PowerShell az oktatóanyag befejezéséhez.
 
 ### <a name="create-azure-hdinsight-linked-service"></a>Azure HDInsight társított szolgáltatás létrehozása
 Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factoryhoz. A HDInsight-fürtöt a rendszer automatikusan létrehozza a futásidő során, majd törli a feldolgozás befejezését követően, miután egy adott ideig tétlen volt. Igény szerinti HDInsight-fürt helyett saját HDInsight-fürtöt is használhat. További információ: [Compute Linked Services](data-factory-compute-linked-services.md) (Számítási társított szolgáltatás).
@@ -167,13 +167,13 @@ Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factor
     Vegye figyelembe a következő szempontokat:
 
    * A Data Factory létrehoz egy **Linux-alapú** HDInsight-fürtöt a JSON-fájllal. További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás).
-   * Igény szerinti HDInsight-fürt használata helyett **használhatja a saját HDInsight-fürtöt.** További információ: [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (HDInsight társított szolgáltatás).
+   * Igény szerinti HDInsight-fürt használata helyett **saját HDInsight-fürtöt** is használhat. További információ: [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (HDInsight társított szolgáltatás).
    * A HDInsight-fürt létrehoz egy **alapértelmezett tárolót** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez a működésmód szándékos. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer a szeletek feldolgozásakor mindig létrehoz egy HDInsight-fürtöt, kivéve, ha van meglévő élő fürt (**timeToLive**). A fürt automatikusan törlődik a feldolgozás megtörténtekor.
 
-       Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg az Azure Blob Storage-fiókban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. Ezeknek a tárolóknak a nevei a következő mintát követik: "adf**yourdatafactoryname**-**linkedservicename**-datetimestamp". Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](https://storageexplorer.com/).
+       Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg az Azure Blob Storage-fiókban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: "ADF**yourdatafactoryname**-**linkedservicename**-datetimestamp". Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](https://storageexplorer.com/).
 
      További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás).
-2. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot, amely létrehozza a HDInsightOnDemandLinkedService nevű csatolt szolgáltatást.
+2. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot, amely létrehozza a HDInsightOnDemandLinkedService nevű társított szolgáltatást.
     
     ```PowerShell
     New-AzDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
@@ -336,12 +336,12 @@ Ebben a lépésben létrehozza a **HDInsightHive** tevékenységgel rendelkező 
 ## <a name="monitor-pipeline"></a>Folyamat figyelése
 Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data factory eseményeit.
 
-1. Futtassa **a Get-AzDataFactory parancsot,** és rendelje hozzá a kimenetet egy **$df** változóhoz.
+1. Futtassa a **Get-AzDataFactory** parancsot, és rendelje hozzá a kimenetet egy **$DF** változóhoz.
 
     ```PowerShell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-2. **Futtassa a Get-AzDataFactorySlice parancsot** az **EmpSQLTable**összes szeletének , amely a folyamat kimeneti táblája.
+2. A **Get-AzDataFactorySlice** futtatásával részletes információkat kaphat a **EmpSQLTable**összes szeletéről, amely a folyamat kimeneti táblázata.
 
     ```PowerShell
     Get-AzDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
@@ -360,7 +360,7 @@ Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data fac
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-3. **Futtassa a Get-AzDataFactoryRun futtatások** részleteit egy adott szelethez.
+3. A **Get-AzDataFactoryRun** futtatásával lekérheti egy adott szelet tevékenység-futtatásának részleteit.
 
     ```PowerShell
     Get-AzDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
@@ -392,7 +392,7 @@ Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data fac
     ![kimeneti adatok](./media/data-factory-build-your-first-pipeline-using-powershell/three-ouptut-files.png)
 
 > [!IMPORTANT]
-> Az igény szerinti HDInsight-fürt létrehozása általában eltart egy ideig (körülbelül 20 percig). Ezért várható, hogy a folyamat **körülbelül 30 percet** vesz igénybe a szelet feldolgozásához.
+> Az igény szerinti HDInsight-fürt létrehozása általában eltart egy ideig (körülbelül 20 percig). Ezért várhatóan **körülbelül 30 percet** vesz igénybe a folyamat a szelet feldolgozásához.
 >
 > A szelet sikeres feldolgozásakor a rendszer törli a bemeneti fájlt. Ezért ha újra le szeretné futtatni a szeletet, vagy újra el szeretné végezni az oktatóanyagban foglaltakat, töltse fel a bemeneti fájlt (input.log) az adfgetstarted tároló inputdata mappájába.
 >

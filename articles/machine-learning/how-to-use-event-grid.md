@@ -1,7 +1,7 @@
 ---
 title: Eseményvezérelt gépi tanulási munkafolyamatok létrehozása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja az eseményrácsot az Azure Machine Learning szolgáltatással az eseményvezérelt megoldások engedélyezéséhez.
+description: Ismerje meg, hogyan használható az Event Grid és a Azure Machine Learning az Event-vezérelt megoldások engedélyezéséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,63 +10,63 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 03/11/2020
-ms.openlocfilehash: fe6125682f669e453100488b7e0afc4c49409588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a1440dcda27a487c89be4ac63e624a2bb6b393a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79129739"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111878"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Eseményvezérelt gépi tanulási munkafolyamatok létrehozása (előzetes verzió)
 
-[Az Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) támogatja az Azure Machine Learning-eseményeket. Előfizethet és felhasználhatja az olyan eseményeket, mint a futtatási állapot megváltozott, a futtatás befejezése, a modell regisztrációja, a modell telepítése és az adateltolódás észlelése egy munkaterületen belül.
+[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) támogatja Azure Machine learning eseményeket. Előfizethet és használhat olyan eseményeket, mint például a Futtatás állapota, a Futtatás befejezése, a modell regisztrálása, a modell üzembe helyezése és az adateltolódás észlelése egy munkaterületen belül.
 
-Az eseménytípusokról az [Azure Machine Learning-integráció](concept-event-grid-integration.md) az Event Griddel és az [Azure Machine Learning eseményrács-sémával](/azure/event-grid/event-schema-machine-learning)című témakörben talál.
+További információ az események típusairól: [Azure Machine learning integráció a Event Grid](concept-event-grid-integration.md) és az [Azure Machine learning Event Grid sémával](/azure/event-grid/event-schema-machine-learning).
 
-Az Eseményrács használatával olyan gyakori eseteket engedélyez, mint például:
+A Event Grid használatával engedélyezze a gyakori forgatókönyveket, például a következőket:
 
-* E-mailek küldése üzemi hiba esetén és futtatás befejezésekor
-* Az azure-függvény használata a modell regisztrálása után
-* Események streamelése az Azure Machine Learningből különböző végpontokba
-* A rendszer eltibóvás észlelésekor elindítja a hibaindító tanfolyamatt
+* E-mailek küldése a futtatási hibákról és a Futtatás befejezéséről
+* Azure-függvény használata a modell regisztrálása után
+* Azure Machine Learning különböző végpontokra irányuló folyamatos átviteli események
+* ML-folyamat elindítása a drift észlelésekor
 
 > [!NOTE] 
-> Jelenleg a runStatusChanged események csak akkor aktiválódnak, ha a futtatási állapot **sikertelen**
+> Jelenleg a runStatusChanged események csak akkor aktiválódnak, ha a futtatási állapot **meghiúsult**
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Közreműködői vagy tulajdonosi hozzáférés az Azure Machine Learning-munkaterülethez, amelyhez eseményeket hoz létre.
+* Közreműködői vagy tulajdonosi hozzáférés az Azure Machine Learning munkaterülethez, amelyekhez eseményeket fog létrehozni.
 
-### <a name="configure-eventgrid-using-the-azure-portal"></a>Az EventGrid konfigurálása az Azure Portal használatával
+### <a name="configure-eventgrid-using-the-azure-portal"></a>EventGrid konfigurálása a Azure Portal használatával
 
-1. Nyissa meg az [Azure Portalon,](https://portal.azure.com) és nyissa meg az Azure Machine Learning-munkaterületet.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com) , és lépjen a Azure Machine learning munkaterületére.
 
-1. A bal oldali sávon válassza az __Események__ lehetőséget, majd válassza **az Esemény-előfizetések**lehetőséget. 
+1. A bal oldali sávon válassza az __események__ lehetőséget, majd válassza az **esemény-előfizetések**lehetőséget. 
 
-    ![select-events-in-workspace.png](./media/how-to-use-event-grid/select-event.png)
+    ![Select-events-in-Workspace. png](./media/how-to-use-event-grid/select-event.png)
 
-1. Válassza ki a felhasználandó eseménytípust. Például a következő képernyőkép a Model registered , __Model deployed__, Run completed , and Dataset drift detected __(Modell regisztrálva__, Telepített modell , __Futtatás befejeződött__és __adatkészlet-eltolódás__) lehetőséget választotta:
+1. Válassza ki a használni kívánt eseménytípus típusát. Az alábbi képernyőképen például a __regisztrált modell__van kiválasztva, a __modell üzembe helyezése__, a __Futtatás befejeződött__és az __adatkészlet-eltolódás észlelhető__:
 
-    ![add-event-type](./media/how-to-use-event-grid/add-event-type-updated.png)
+    ![hozzáadási esemény típusa](./media/how-to-use-event-grid/add-event-type-updated.png)
 
-1. Válassza ki azt a végpontot, amelynek közzé szeretné tenni az eseményt. A következő képernyőképen az __Eseményközpont__ a kiválasztott végpont:
+1. Válassza ki azt a végpontot, amelyen közzé kívánja tenni az eseményt. A következő képernyőképen az __Event hub__ a kiválasztott végpont:
 
-    ![kijelölés-eseménykezelő](./media/how-to-use-event-grid/select-event-handler.png)
+    ![Select-Event-Handler](./media/how-to-use-event-grid/select-event-handler.png)
 
-Miután megerősítette a kijelölést, kattintson a __Létrehozás gombra.__ A konfiguráció után ezek az események a végpontra kerülnek.
+Miután megerősítette a kijelölést, kattintson a __Létrehozás__gombra. A konfigurálás után ezeket az eseményeket a rendszer leküldi a végpontnak.
 
 
-### <a name="configure-eventgrid-using-the-cli"></a>Az EventGrid konfigurálása a CLI használatával
+### <a name="configure-eventgrid-using-the-cli"></a>EventGrid konfigurálása a parancssori felület használatával
 
-Telepítheti a legújabb [Azure CLI-t,](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)vagy használhatja az Azure Cloud Shellt, amely az Azure-előfizetés részeként biztosított.
+Telepítheti a legújabb [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t, vagy használhatja az Azure-előfizetésének részeként biztosított Azure Cloud Shell is.
 
-Az Event Grid bővítmény telepítéséhez használja a CLI következő parancsát:
+A Event Grid bővítmény telepítéséhez használja az alábbi parancsot a parancssori felületről:
 
 ```azurecli-interactive
 az add extension --name eventgrid
 ```
 
-A következő példa bemutatja, hogyan választhat ki egy Azure-előfizetést, és hogyan hoz létre egy új esemény-előfizetést az Azure Machine Learninghez:
+Az alábbi példa bemutatja, hogyan választhat ki egy Azure-előfizetést, és létrehoz egy új esemény-előfizetést a Azure Machine Learning számára:
 
 ```azurecli-interactive
 # Select the Azure subscription that contains the workspace
@@ -83,102 +83,100 @@ az eventgrid event-subscription create \
 
 ## <a name="filter-events"></a>Események szűrése
 
-Az események beállításakor szűrőket alkalmazhat csak az eseményindítókra az adott eseményadatokon. Az alábbi példában a futtatási állapot módosított események esetén futtatási típusok szerint szűrhet. Az esemény csak akkor aktiválódik, ha a feltételek teljesülnek. Tekintse meg az [Azure Machine Learning eseményrács sémája,](/azure/event-grid/event-schema-machine-learning) hogy az esemény adatok szűrése. 
+Az események beállításakor szűrőket alkalmazhat, hogy csak adott esemény adatain aktiválja az eseményindítót. Az alábbi példában a Futtatás állapotának megváltozása események esetében a futtatási típusok alapján szűrhet. Az esemény csak akkor aktiválódik, ha a feltételek teljesülnek. Tekintse át az [Azure Machine learning Event Grid-sémát](/azure/event-grid/event-schema-machine-learning) , ahol megismerheti azokat az események adatait, amelyeket szűrni tud. 
 
-1. Nyissa meg az Azure Portalon, válasszon ki egy új előfizetést vagy egy meglévőt. 
+1. Nyissa meg a Azure Portal, válasszon ki egy új előfizetést, vagy egy meglévőt. 
 
-1. Jelölje ki a Szűrők lapot, és görgessen le a Speciális szűrők lapra. A **Kulcs** és **érték mezőben** adja meg a szűrni kívánt tulajdonságtípusokat. Itt láthatja, hogy az esemény csak akkor aktiválódik, ha a futtatástípusa folyamatfuttatás vagy folyamatlépés-futtatás.  
+1. Válassza a szűrők fület, és görgessen le a speciális szűrők elemre. A **kulcs** és az **Érték mezőben**adja meg a szűréshez használni kívánt tulajdonságokat. Itt láthatja, hogy az esemény csak akkor aktiválódik, ha a futtatási típus folyamat-futtatási vagy folyamati lépés fut.  
 
-    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="események szűrése":::
+    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="Események szűrése":::
 
-## <a name="sample-scenarios"></a>Mintaforgatókönyvek
+## <a name="sample-send-email-alerts"></a>Minta: e-mail értesítések küldése
 
-### <a name="use-a-logic-app-to-send-email-alerts"></a>E-mailes értesítések küldése logikai alkalmazással
+A [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) használatával konfigurálhatja az összes eseményhez tartozó e-maileket. Testre szabhatja a feltételeket, és megadhatja a címzetteket, hogy az együttműködés és a tájékoztatás lehetővé váljon a csapatok között.
 
-Használja ki [az Azure Logic Apps-t](https://docs.microsoft.com/azure/logic-apps/) az összes esemény e-mailjeinek konfigurálásához. Testreszabás feltételekkel, és adja meg a címzettek, hogy az együttműködés és a tudatosság a csapatok együtt dolgoznak.
+1. A Azure Portal nyissa meg a Azure Machine Learning munkaterületet, és válassza a bal oldali sáv események lapját. Innen válassza a __Logic apps__lehetőséget. 
 
-1. Az Azure Portalon nyissa meg az Azure Machine Learning-munkaterületet, és válassza ki az események lapot a bal oldali sávon. Itt válassza a __Logikai alkalmazások lehetőséget.__ 
+    ![Select-Logic-AP](./media/how-to-use-event-grid/select-logic-ap.png)
 
-    ![select-logic-ap](./media/how-to-use-event-grid/select-logic-ap.png)
+1. Jelentkezzen be a logikai alkalmazás felhasználói felületére, és válassza a Machine Learning szolgáltatás lehetőséget a témakör típusaként. 
 
-1. Jelentkezzen be a Logic App felhasználói felületére, és válassza a Machine Learning szolgáltatás témakörtípusként. 
+    ![Select-topic-Type](./media/how-to-use-event-grid/select-topic-type.png)
 
-    ![select-topic-típus](./media/how-to-use-event-grid/select-topic-type.png)
+1. Válassza ki, hogy mely esemény (ek) ra kell értesítést kapni. Például a következő képernyőkép- __RunCompleted__.
 
-1. Válassza ki, hogy melyik esemény(ek)ről szeretne értesítést kapni. Például a következő képernyőkép __RunCompleted__.
+    ![Select-Event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-    ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
+1. A fenti szakaszban található szűrési módszer használatával vagy szűrők hozzáadásával csak a logikai alkalmazást aktiválhatja az eseménytípus egy részhalmazán. A következő képernyőképen a __/datadriftID/Runs/__ __előtag-szűrőjét__ használja a rendszer.
 
-1. Használhatja a szűrési módszert a fenti szakaszban, vagy szűrők hozzáadása csak a logikai alkalmazás aktiválásához az eseménytípusok egy részhalmazán. A következő képernyőképen a __/datadriftID/runs/__ __előtagszűrőt__ használja a rendszer.
+    ![szűrés – események](./media/how-to-use-event-grid/filtering-events.png)
 
-    ![szűrőesemények](./media/how-to-use-event-grid/filtering-events.png)
+1. Ezután adjon hozzá egy lépést az esemény felhasználásához és az e-mailek kereséséhez. Az események fogadására több különböző levelezési fiók is használható. Megadhatja a feltételeket is, amikor e-mail riasztást küld.
 
-1. Ezután adjon hozzá egy lépést az esemény felhasználásához és az e-mailek kereséséhez. Az események fogadására számos különböző e-mail fiók használható. Azt is beállíthatja, hogy mikor kell e-mail értesítést küldeni.
+    ![e-mail – művelet kiválasztása](./media/how-to-use-event-grid/select-email-action.png)
 
-    ![select-email-művelet](./media/how-to-use-event-grid/select-email-action.png)
+1. Válassza az __E-mail küldése__ lehetőséget, és adja meg a paramétereket. A tárgyban megadhatja az __esemény típusát__ és a __témakört__ , hogy segítsen szűrni az eseményeket. A munkaterületre mutató hivatkozást is tartalmazhat, ha az üzenet törzsében fut. 
 
-1. Válassza __az E-mail küldése__ lehetőséget, és töltse ki a paramétereket. A tárgyban az __eseménytípust__ és a __témakört__ is felveheti az események szűréséhez. Az üzenet törzsében futtatható futtatások munkaterületi lapjára mutató hivatkozást is megadhat. 
+    ![konfigurálás – e-mail – törzs](./media/how-to-use-event-grid/configure-email-body.png)
 
-    ![configure-email-body](./media/how-to-use-event-grid/configure-email-body.png)
+1. A művelet mentéséhez válassza a **Mentés másként** lehetőséget az oldal bal oldali sarkában. A megjelenő jobb oldali sávon erősítse meg a művelet létrehozását.
 
-1. A művelet mentéséhez válassza a lap bal sarkán a **Mentés másként** lehetőséget. A megjelenő jobb oldali sávról erősítse meg a művelet létrehozását.
-
-    ![megerősítés-logika-alkalmazás-létrehozás](./media/how-to-use-event-grid/confirm-logic-app-create.png)
+    ![Confirm-Logic-app-Create](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
-### <a name="use-a-logic-app-to-trigger-retraining-workflows-when-data-drift-occurs"></a>Logikai alkalmazás használata átképzési munkafolyamatok aktiválásához adateltolódás esetén
+## <a name="sample-trigger-retraining-when-data-drift-occurs"></a>Minta: az adateltolódás bekövetkezésekor aktiválja az újraképzést
 
-A modellek idővel elavultak, és nem maradnak hasznosak abban a környezetben, amelyben fut. Az egyik módja annak, hogy megállapítsa, hogy itt az ideje, hogy újratanítsa a modell észlelése adateltolódás. 
+A modellek elavultak az idő múlásával, és nem maradnak hasznosak abban a kontextusban, amelyben a fut. Az egyik módszer, ha meg szeretné tudni, hogy a modell újratanításához szükséges idő az adateltolódás észlelése. 
 
-Ebben a példában bemutatja, hogyan használhatja az eseményrácsot egy Azure Logic Alkalmazással az átképzés aktiválásához. A példa elindítja az Azure Data Factory folyamat, amikor az adatok eltolódása között történik a modell betanítása és az adatkészletek kiszolgálása.
+Ez a példa azt mutatja be, hogyan használható az Event Grid egy Azure Logic App-alkalmazással az újraképzés elindításához. A példa egy Azure Data Factory folyamatot indít el, amikor adateltolódás történik a modell betanítása és az adatkészletek kiszolgálása között.
 
 Mielőtt elkezdené, hajtsa végre a következő műveleteket:
 
-* Adatkészlet-figyelő beállítása a [munkaterületadat-eltolódásának észlelésére]( https://aka.ms/datadrift)
-* Közzétett [Azure Data Factory-folyamat létrehozása.](https://docs.microsoft.com/azure/data-factory/)
+* Adatkészlet-figyelő beállítása a munkaterület [adateltolódásának észleléséhez]( https://aka.ms/datadrift)
+* Közzétett [Azure Data Factory folyamat](https://docs.microsoft.com/azure/data-factory/)létrehozása.
 
-Ebben a példában egy egyszerű Data Factory-folyamat fájlok másolására szolgál egy blob store és egy közzétett Machine Learning-folyamat futtatásához. Ebben a forgatókönyvben további információt a [Machine Learning-lépés](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service) beállítása az Azure Data Factoryban című témakörben talál.
+Ebben a példában egy egyszerű Data Factory folyamatot használunk a fájlok blob-tárolóba történő másolásához és egy közzétett Machine Learning folyamat futtatásához. További információ erről a forgatókönyvről: [Machine learning lépés beállítása Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)
 
-![adf-mlcsővezeték-szakasz](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
+![ADF – mlpipeline – fázis](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
-1. Kezdje a logikai alkalmazás létrehozásával. Nyissa meg az [Azure Portalon,](https://portal.azure.com)keresse meg a Logikai alkalmazásokat, és válassza a Létrehozás lehetőséget.
+1. Kezdje a logikai alkalmazás létrehozásával. Lépjen a [Azure Portalra](https://portal.azure.com), keresse meg a Logic apps, majd kattintson a Létrehozás gombra.
 
-    ![keresés-logika-alkalmazás](./media/how-to-use-event-grid/search-for-logic-app.png)
+    ![Keresés – Logic-app](./media/how-to-use-event-grid/search-for-logic-app.png)
 
-1. Adja meg a kért adatokat. A felhasználói élmény egyszerűsítése érdekében használja ugyanazt az előfizetési és erőforráscsoportot, mint az Azure Data Factory Pipeline és az Azure Machine Learning munkaterület.
+1. Adja meg a kért információkat. A felhasználói élmény egyszerűsítése érdekében használja ugyanazt az előfizetést és erőforráscsoportot, mint a Azure Data Factory folyamat és a Azure Machine Learning munkaterület.
 
-    ![beállítás-logika-app-for-adf](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
+    ![beállítás-Logic-app-for-ADF](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 
-1. Miután létrehozta a logikai alkalmazást, válassza a __When An Event Grid erőforrásesemény eseményének bekövetkeztekor__lehetőséget. 
+1. Miután létrehozta a logikai alkalmazást, válassza ki, __hogy mikor történjen egy Event Grid erőforrás esemény__. 
 
-    ![select-event-grid-trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
+    ![Select-Event-Grid-trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
 
-1. Jelentkezzen be, és töltse ki az esemény részleteit. Állítsa be az __erőforrás nevét__ a munkaterület nevére. Állítsa az __eseménytípust__ __DatasetDriftDetected (DatasetDriftDetected .__
+1. Jelentkezzen be, és adja meg az esemény részleteit. Állítsa az __erőforrás nevét__ a munkaterület nevére. Állítsa az __DatasetDriftDetected__az __esemény típusára__ .
 
-    ![bejelentkezési és add-esemény](./media/how-to-use-event-grid/login-and-add-event.png)
+    ![bejelentkezés és Hozzáadás – esemény](./media/how-to-use-event-grid/login-and-add-event.png)
 
-1. Adjon hozzá egy új lépést, és keressen az __Azure Data Factory__. Válassza __a Folyamatfuttatás létrehozása__lehetőséget. 
+1. Adjon hozzá egy új lépést, és keressen rá __Azure Data Factory__. Válassza __a folyamat futtatásának létrehozása__lehetőséget. 
 
-    ![create-adfpipeline-run](./media/how-to-use-event-grid/create-adfpipeline-run.png)
+    ![létrehozás – adfpipeline – Futtatás](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
-1. Jelentkezzen be, és adja meg a futtatandó közzétett Azure Data Factory-folyamatot.
+1. Jelentkezzen be, és adja meg a közzétett Azure Data Factory folyamat futtatását.
 
-    ![specify-adf-pipeline](./media/how-to-use-event-grid/specify-adf-pipeline.png)
+    ![-ADF-folyamat meghatározása](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
-1. Mentse és hozza létre a logikai alkalmazást a lap bal felső részén található **Mentés** gombbal. Az alkalmazás megtekintéséhez nyissa meg a munkaterületet az [Azure Portalon,](https://portal.azure.com) és kattintson az **Események gombra.**
+1. Mentse és hozza létre a logikai alkalmazást a lap bal felső részén található **Mentés** gombbal. Az alkalmazás megtekintéséhez lépjen a [Azure Portal](https://portal.azure.com) munkaterületére, majd kattintson az **események**elemre.
 
-    ![show-logic-app-webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
+    ![Logic-app-webhook megjelenítése](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
-Most az adat-gyári folyamat aktiválódik, ha sodródás történik. Az [új munkaterületi portálon](https://ml.azure.com)megtekintheti az adateltolódás im2-es futtatásának és a gépi tanulási folyamatnak a részleteit. 
+Ekkor a rendszer a folyamatban lévő adatfeldolgozási folyamatot indítja el a drift bekövetkeztekor. Tekintse meg az adatdrift futtatásával és a Machine learning folyamatával kapcsolatos adatokat az [Új munkaterület portálon](https://ml.azure.com). 
 
-![munkaterületen lévő nézet](./media/how-to-use-event-grid/view-in-workspace.png)
+![munkaterület megtekintése](./media/how-to-use-event-grid/view-in-workspace.png)
 
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Címkéken alapuló modell üzembe helyezése az Azure Functions használatával
+## <a name="sample-deploy-a-model-based-on-tags"></a>Minta: modellek üzembe helyezése címkék alapján
 
-Az Azure Machine Learning modellobjektum olyan paramétereket tartalmaz, amelyeket a modell név, a verzió, a címke és a tulajdonság alapján hozhat el. A modell regisztrációs esemény egy végpontot válthat ki, és egy Azure-függvény használatával üzembe helyezhet egy modellt a paraméterek értéke alapján.
+Az Azure Machine Learning Model objektum olyan paramétereket tartalmaz, amelyekkel az üzemelő példányok elhelyezhetők, például a modell neve, verziója, címkéje és tulajdonsága. A modell regisztrációs eseménye elindíthat egy végpontot, és használhat egy Azure-függvényt egy modell üzembe helyezéséhez a paraméterek értéke alapján.
 
-Például tekintse meg [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) a tárházat, és kövesse a readme fájl **lépéseit.**
+Példaként tekintse meg a [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) tárházat, és kövesse a **readme** fájlban található lépéseket.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha többet szeretne megtudni az elérhető eseményekről, tekintse meg az [Azure Machine Learning eseménysémáját](/azure/event-grid/event-schema-machine-learning)
+* Ha többet szeretne megtudni az elérhető eseményekről, tekintse meg az [Azure Machine learning esemény sémáját](/azure/event-grid/event-schema-machine-learning) .

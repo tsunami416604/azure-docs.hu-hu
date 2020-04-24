@@ -1,6 +1,6 @@
 ---
-title: A Synapse Studio használata (előzetes verzió)
-description: Ebben a rövid útmutatóban megtudhatja, hogy milyen egyszerű lekérdezni a különböző típusú fájlokat a Synapse Studio használatával.
+title: A szinapszis Studio használata (előzetes verzió)
+description: Ebből a rövid útmutatóból megtudhatja, hogy milyen egyszerűen lekérdezheti a különböző típusú fájlokat a szinapszis Studio használatával.
 services: synapse-analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 294f53fe929343708bdbb9564b23c46865cf02ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423865"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096333"
 ---
-# <a name="quickstart-using-synapse-studio-preview"></a>Rövid útmutató: A Synapse Studio használata (előzetes verzió)
+# <a name="quickstart-using-synapse-studio-preview"></a>Rövid útmutató: a szinapszis Studio használata (előzetes verzió)
 
-Ebben a rövid útmutatóban megtudhatja, hogyan kérdezheti le a fájlokat a Synapse Studio használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan lehet fájlokat lekérdezni a szinapszis Studio használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -28,43 +28,43 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Hozzon létre egy Azure Synapse munkaterületet és a társított tárfiókot.](quickstart-create-workspace.md)
+[Hozzon létre egy Azure szinapszis-munkaterületet és egy társított Storage-fiókot](quickstart-create-workspace.md).
 
-## <a name="launch-synapse-studio"></a>Indítsd el a Synapse Stúdiót
+## <a name="launch-synapse-studio"></a>A szinapszis Studio elindítása
 
-Az Azure Synapse-munkaterületen az Azure Portalon kattintson a **Synapse Studio indítása**elemre.
+A Azure Portal Azure szinapszis munkaterületén kattintson a **szinapszis Studio elindítása**elemre.
 
-![Indítsd el a Synapse Stúdiót](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
+![A szinapszis Studio elindítása](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
 
-Másik lehetőségként elindíthatja a Synapse Studio-t az [Azure Synapse Analytics](https://web.azuresynapse.net) elemre kattintva, és megadva a megfelelő bérlői, előfizetési és munkaterületi értékeket.
+Azt is megteheti, hogy az [Azure szinapszis Analytics](https://web.azuresynapse.net) elemre kattintva elindítja a szinapszis Studio alkalmazást, és megadja a megfelelő bérlői, előfizetési és munkaterület-értékeket.
 
-## <a name="browse-storage-accounts"></a>Tárfiókok böngészése
+## <a name="browse-storage-accounts"></a>Storage-fiókok tallózása
 
-Miután megnyitotta a Synapse Studio-t, keresse fel az **Adatok,** majd **bontsa ki a Storage-fiókokat** a tárfiók megtekintéséhez a munkaterületen.
+Miután megnyitotta a szinapszis Studio alkalmazást, tallózással keresse meg az **adatvédelmet** , majd bontsa ki a **Storage-fiókok** elemet a Storage-fiók megnyitásához
 
 ![Fájlok tallózása a tárhelyen](./media/quickstart-synapse-studio/browse-files-on-storage.png)
 
-Új mappákat hozhat létre, és fájlokat tölthet fel az eszköztár hivatkozásai segítségével a fájlok rendszerezéséhez.
+Új mappákat hozhat létre, és fájlokat tölthet fel az eszköztárban található hivatkozások használatával a fájlok rendszerezéséhez.
 
-## <a name="query-files-on-storage-account"></a>Fájlok lekérdezése a tárfiókban
+## <a name="query-files-on-storage-account"></a>Fájlok lekérdezése a Storage-fiókban
 
 > [!IMPORTANT]
-> A fájlok lekérdezéséhez az `Storage Blob Reader` alapul szolgáló tároló szerepkör tagjának kell lennie. Megtudhatja, hogyan [rendelhet hozzá Storage Blob Data **Reader** vagy Storage Blob **Data Contributor** RBAC engedélyeket az Azure Storage-hoz.](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
+> Ahhoz, hogy le tudja kérdezni a `Storage Blob Reader` fájlokat, a mögöttes tárolóban lévő szerepkör tagjának kell lennie. Megtudhatja, hogyan [rendelhet hozzá **Storage blob-adatolvasót** vagy **Storage blob-adatközreműködői** RBAC engedélyeket az Azure Storage-](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)ban.
 
-1. Töltsön `PARQUET` fel néhány fájlt.
-2. Jelöljön ki egy vagy több fájlt, majd hozzon létre egy új SQL-parancsfájlt vagy egy Spark-jegyzetfüzetet a fájlok tartalmának megtekintéséhez. Ha jegyzetfüzetet szeretne létrehozni, létre kell hoznia [az Apache Spark-készletet a munkaterületen.](spark/apache-spark-notebook-create-spark-use-sql.md)
+1. Töltsön fel `PARQUET` néhány fájlt.
+2. Válasszon ki egy vagy több fájlt, majd hozzon létre egy új SQL-szkriptet vagy egy Spark-jegyzetfüzetet a fájlok tartalmának megtekintéséhez. Ha jegyzetfüzetet szeretne létrehozni, létre kell hoznia [Apache Spark készletet a munkaterületen](quickstart-create-apache-spark-pool.md).
 
-   ![Fájlok lekérdezése a tárolóban](./media/quickstart-synapse-studio/query-files-on-storage.png)
+   ![Fájlok lekérdezése a tárhelyen](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
-3. Futtassa a létrehozott lekérdezést vagy jegyzetfüzetet a fájl tartalmának megtekintéséhez:
+3. Futtassa a generált lekérdezést vagy jegyzetfüzetet a fájl tartalmának megtekintéséhez:
 
-   ![A fájl tartalmának megtekintése](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
+   ![A fájl tartalmának megjelenítése](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
 
-4. A lekérdezés módosíthatja az eredmények szűrését és rendezését. Keresse meg az SQL-szolgáltatások ban igény szerint elérhető nyelvi szolgáltatásokat az [SQL-szolgáltatások áttekintésében.](sql/overview-features.md)
+4. A lekérdezés módosításával szűrheti és rendezheti az eredményeket. Megtalálhatja az SQL igény szerint elérhető nyelvi funkcióit az [SQL-funkciók áttekintésében](sql/overview-features.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure AD-felhasználók lekérdezése a [storage Blob Data Reader vagy storage **Blob** **Data Contributor** RBAC engedélyek hozzárendelésével az Azure Storage-hoz](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
-- [Fájlok lekérdezése az Azure Storage-ban az SQL On-Demand használatával](sql/on-demand-workspace-overview.md)
-- [Apache Spark-készlet létrehozása](spark/apache-spark-notebook-create-spark-use-sql.md)
-- [Power BI-jelentés létrehozása az Azure Storage-ban tárolt fájlokon](sql/tutorial-connect-power-bi-desktop.md)
+- Az Azure AD-felhasználók számára lehetővé teszi fájlok lekérdezését [a **Storage blob-Adatolvasó** vagy a **Storage blob adatközreműködői** RBAC engedélyeinek hozzárendelésével az Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role) szolgáltatásban
+- [Fájlok lekérdezése az Azure Storage-ban az SQL igény szerinti használatával](sql/on-demand-workspace-overview.md)
+- [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool.md)
+- [Power BI jelentés létrehozása az Azure Storage-ban tárolt fájlokról](sql/tutorial-connect-power-bi-desktop.md)

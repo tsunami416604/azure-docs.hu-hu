@@ -1,5 +1,5 @@
 ---
-title: Csatlakozás c++ használatával - Azure Database for MySQL
+title: Kapcsolat C++ használatával – Azure Database for MySQL
 description: Ez a rövid útmutató egy C++-mintakódot biztosít, amellyel csatlakozhat a MySQL-hez készült Azure Database-hez, illetve adatokat kérdezhet le róla.
 author: ajlam
 ms.author: andrela
@@ -16,7 +16,7 @@ ms.lasthandoff: 03/26/2020
 ms.locfileid: "80062583"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>A MySQL-hez készült Azure Database: Csatlakozás és adatlekérdezés összekötő/C++ használatával
-Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet C++-alkalmazás használatával csatlakozni egy Azure Database for MySQL kiszolgálóhoz. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. Ez a témakör feltételezi, hogy ismeri a C++ használatával történő fejlesztést, és még csak most dolgozik az Azure Database for MySQL használatával.
+Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet C++-alkalmazás használatával csatlakozni egy Azure Database for MySQL kiszolgálóhoz. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. Ez a témakör feltételezi, hogy már ismeri a C++ használatával való fejlesztést, és Ön még nem működik együtt a Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehozott erőforrásokat használunk kiindulási pontként:
@@ -24,31 +24,31 @@ Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehoz
 - [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Emellett a következőket kell elvégezni:
-- A [.NET Framework](https://www.microsoft.com/net/download) telepítése
+- A [.NET-keretrendszer](https://www.microsoft.com/net/download) telepítése
 - A [Visual Studio](https://www.visualstudio.com/downloads/) telepítése
 - A [MySQL-összekötő/C++](https://dev.mysql.com/downloads/connector/cpp/) telepítése 
 - A [Boost](https://www.boost.org/) telepítése
 
 ## <a name="install-visual-studio-and-net"></a>A Visual Studio és a .NET telepítése
-Az ebben a szakaszban ismertetett lépéseket feltételezia.The steps in this section assume that you're familiar with developing using .NET.
+A jelen szakaszban ismertetett lépések feltételezik, hogy már ismeri a .NET használatával történő fejlesztést.
 
 ### <a name="windows"></a>**Windows**
-- Telepítse a Visual Studio 2019 közösséget. Visual Studio 2019 Közösség egy teljes funkcionalitású, bővíthető, ingyenes IDE. Ezzel az IDE-vel modern alkalmazásokat hozhat létre Android, iOS, Windows, webes és adatbázis-alkalmazásokhoz és felhőszolgáltatásokhoz. Telepítheti a teljes .NET-keretrendszert vagy csak a .NET Core-t: a rövid útmutatóban foglalt kódrészletek mindkettővel működnek. Ha a Visual Studio már telepítve van a számítógépén, a következő két lépés kihagyható.
-   1. Töltse le a [Visual Studio 2019 telepítőjét.](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) 
+- Telepítse a Visual Studio 2019 közösségét. A Visual Studio 2019 Community egy teljes funkcionalitású, bővíthető, ingyenes IDE. Ezzel az IDE modern alkalmazásokat hozhat létre Android-, iOS-, Windows-, web-és adatbázis-alkalmazásokhoz, valamint Cloud Serviceshez. Telepítheti a teljes .NET-keretrendszert vagy csak a .NET Core-t: a rövid útmutatóban foglalt kódrészletek mindkettővel működnek. Ha a Visual Studio már telepítve van a számítógépén, a következő két lépés kihagyható.
+   1. Töltse le a [Visual Studio 2019 telepítőjét](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
    2. Futtassa a telepítőt, és kövesse a telepítési utasításokat a telepítés befejezéséhez.
 
 ### <a name="configure-visual-studio"></a>**A Visual Studio konfigurálása**
-1. A Visual Studio,Project -> Properties -> Linker -> General > További könyvtárkönyvtárak, add hozzá a "\lib\opt" könyvtár (például: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt).
+1. A Visual studióból, a Project-> Properties-> linker-> általános > további könyvtári könyvtárakat, adja hozzá a "\lib\opt" könyvtárat (például: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ lib\opt) a C++ összekötőn.
 2. A Visual Studióban válassza a Project -> Properties -> C/C++ -> General -> Additional Include Directories (További belefoglalt könyvtárak) lehetőséget:
-   - Adja hozzá a c++ összekötő "\include" könyvtárát (például: C:\Program Files (x86)\MySQL\MySQL\)Connector C++ 1.1.9\include .
-   - Adja hozzá a Boost könyvtár gyökérkönyvtárát (például: C:\boost_1_64_0\).
+   - Adja hozzá a c++ összekötő "\include" könyvtárát (például: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ include\).
+   - Adja hozzá a Boost kódtár gyökérkönyvtárát (például: C:\ boost_1_64_0\).
 3. A Visual Studióban válassza Project -> Properties -> Linker -> Input (Bemenet) -> Additional Dependencies (További függőségek) lehetőséget, és adja hozzá a **mysqlcppconn.lib** elemet a szövegmezőhöz.
 4. Másolja át a **mysqlcppconn.dll** fájlt a 3. lépésben szereplő C++-összekötő könyvtárából az alkalmazás futtatható fájlját tartalmazó könyvtárba, vagy adja hozzá környezeti változóként, hogy az alkalmazás megtalálhassa azt.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
@@ -57,7 +57,7 @@ Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szüks�
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
 A következő kóddal csatlakozhat, és betöltheti az adatokat a **CREATE TABLE** és az **INSERT INTO** SQL-utasításokkal. A kód az sql::Driver osztályt használja a connect() metódussal a MySQL-lel létesített kapcsolat létrehozásához. A kód ezután a createStatement() és az execute() metódust használja az adatbázis-parancsok futtatásához. 
 
-Cserélje le az Állomás, a DBName, a Felhasználó és a Jelszó paramétert. A paramétereket lecserélheti a kiszolgáló és az adatbázis létrehozásakor megadott értékekre. 
+Cserélje le a gazdagép, a DBName, a felhasználó és a jelszó paramétereit. A paramétereket lecserélheti azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
 
 ```c++
 #include <stdlib.h>
@@ -131,7 +131,7 @@ int main()
 
 A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással. A kód az sql::Driver osztályt használja a connect() metódussal a MySQL-lel létesített kapcsolat létrehozásához. A kód ezután a prepareStatement() és az executeQuery() metódust használja a select-parancsok futtatásához. Ezután a kód a next() metódust használja az eredményekben lévő rekordokra lépéshez. Végül a kód a getInt() és a getString() metódussal elemzi a rekord értékeit.
 
-Cserélje le az Állomás, a DBName, a Felhasználó és a Jelszó paramétert. A paramétereket lecserélheti a kiszolgáló és az adatbázis létrehozásakor megadott értékekre. 
+Cserélje le a gazdagép, a DBName, a felhasználó és a jelszó paramétereit. A paramétereket lecserélheti azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
 
 ```c++
 #include <stdlib.h>
@@ -190,7 +190,7 @@ int main()
 ## <a name="update-data"></a>Adatok frissítése
 A következő kóddal csatlakozhat, és beolvashatja az adatokat az **UPDATE** SQL-utasítással. A kód az sql::Driver osztályt használja a connect() metódussal a MySQL-lel létesített kapcsolat létrehozásához. A kód ezután a prepareStatement() és az executeQuery() metódust használja az update-parancsok futtatásához. 
 
-Cserélje le az Állomás, a DBName, a Felhasználó és a Jelszó paramétert. A paramétereket lecserélheti a kiszolgáló és az adatbázis létrehozásakor megadott értékekre. 
+Cserélje le a gazdagép, a DBName, a felhasználó és a jelszó paramétereit. A paramétereket lecserélheti azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
 
 ```c++
 #include <stdlib.h>
@@ -248,7 +248,7 @@ int main()
 ## <a name="delete-data"></a>Adat törlése
 A következő kóddal csatlakozhat, és beolvashatja az adatokat a **DELETE** SQL-utasítással. A kód az sql::Driver osztályt használja a connect() metódussal a MySQL-lel létesített kapcsolat létrehozásához. A kód ezután a prepareStatement() és az executeQuery() metódust használja a delete-parancsok futtatásához.
 
-Cserélje le az Állomás, a DBName, a Felhasználó és a Jelszó paramétert. A paramétereket lecserélheti a kiszolgáló és az adatbázis létrehozásakor megadott értékekre. 
+Cserélje le a gazdagép, a DBName, a felhasználó és a jelszó paramétereit. A paramétereket lecserélheti azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
 
 ```c++
 #include <stdlib.h>

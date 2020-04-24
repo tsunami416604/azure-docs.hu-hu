@@ -17,9 +17,9 @@ ms.locfileid: "75351229"
 ---
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>A hitelesítési adatok másolása az Azure Portalról
 
-Amikor a mintaalkalmazás kérelmet küld az Azure Storage-nak, engedélyezni kell. Kérés engedélyezéséhez adja hozzá a tárfiók hitelesítő adatait az alkalmazáshoz kapcsolati karakterláncként. A tárfiók hitelesítő adatainak megtekintéséhez kövesse az alábbi lépéseket:
+Ha a minta alkalmazás az Azure Storage-ba irányuló kérést tesz elérhetővé, akkor azt engedélyezni kell. A kérések engedélyezéséhez adja hozzá a Storage-fiók hitelesítő adatait az alkalmazáshoz kapcsolódási karakterláncként. A tárfiók hitelesítő adatainak megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Keresse meg a Storage-fiókját.
 3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Itt megtekintheti a fiókhoz tartozó hozzáférési kulcsokat, valamint az egyes kulcsokhoz tartozó teljes kapcsolati sztringeket.
 4. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához. A kapcsolati sztring értékét hozzáadja egy környezeti változóhoz a következő lépés során.
@@ -28,7 +28,7 @@ Amikor a mintaalkalmazás kérelmet küld az Azure Storage-nak, engedélyezni ke
 
 ### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 
-A kapcsolati sztring másolása után írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje `<yourconnectionstring>` le a tényleges kapcsolati karakterláncra.
+A kapcsolati sztring másolása után írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje `<yourconnectionstring>` le a-t a tényleges kapcsolatok karakterláncára.
 
 #### <a name="windows"></a>Windows
 
@@ -36,7 +36,7 @@ A kapcsolati sztring másolása után írja azt egy új környezeti változóba 
 setx AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
 ```
 
-Miután hozzáadja a környezeti változót a Windows rendszerben, el kell indítania a parancsablak egy új példányát.
+Miután hozzáadta a környezeti változót a Windows rendszerben, el kell indítania a parancssorablak új példányát.
 
 #### <a name="linux"></a>Linux
 
@@ -52,4 +52,4 @@ export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 
 #### <a name="restart-programs"></a>Programok újraindítása
 
-A környezeti változó hozzáadása után indítsa újra azösszes olyan futó programot, amelynek el kell olvasnia a környezeti változót. Például a folytatás előtt indítsa újra a fejlesztői környezetet vagy a szerkesztőt.
+A környezeti változó hozzáadását követően indítsa újra a futó programokat, amelyeknek olvasnia kell a környezeti változót. A folytatás előtt indítsa el például a fejlesztési környezetet vagy a szerkesztőt.

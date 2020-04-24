@@ -1,105 +1,103 @@
 ---
-title: Renderelés – Azure Batch
-description: Bevezetés az Azure rendereléshez való használatának bevezetésére és az Azure Batch renderelési képességeinek áttekintése
-services: batch
-ms.service: batch
+title: Megjelenítés áttekintése – Azure Batch
+description: Az Azure használatának bemutatása és a Azure Batch renderelési képességeinek áttekintése
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: d4423b22c4c8afea5afa9c7040e081665b17ba87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 515fc92aa14c0a86746d0a97d2bc601fab553aa3
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60774029"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115703"
 ---
 # <a name="rendering-using-azure"></a>Renderelés az Azure használatával
 
-A renderelés a 3D modellek bevételének és 2D-s képekké alakításának folyamata. A 3D-s jelenetfájlok olyan alkalmazásokban készülnek, mint az Autodesk 3ds Max, az Autodesk Maya és a Blender.  A renderelési alkalmazások, például az Autodesk Maya, az Autodesk Arnold, a Chaos Group V-Ray és a Blender Cycles 2D-s képeket hoznak létre.  Néha egyetlen kép jön létre a jelenet fájlokat. Azonban gyakori, hogy több képet modelleznek és renderelnek, majd animációban kombinálják őket.
+A renderelés a 3D modellek készítésének és a 2D-képekbe való átalakításának folyamata. a 3D-jelenet fájljai olyan alkalmazásokban vannak létrehozva, mint az Autodesk 3ds Max, a Autodesk Maya és a Blender.  Az olyan alkalmazások renderelése, mint a Autodesk Maya, a Autodesk Arnold, a Chaos Group V-Ray és a Blender ciklusok 2D-képeket készítenek.  Néha egyetlen lemezkép jön létre a jelenet fájljaiból. Azonban gyakori a több rendszerkép modellezése és renderelése, majd egy animációban való kombinálása.
 
-A renderelési munkaterhelés terősen speciális effektusok (VFX) számára használják a média- és szórakoztatóiparban. A renderelés számos más iparágban is használatos, például a reklámokban, a kereskedelemben, az olaj- és gáziparban és a gépiparban.
+A renderelési munkaterhelést nagy mértékben használják a média és a szórakoztató ipar különleges hatásaira (VFX). A renderelés számos más iparágban is használatos, például a reklámokban, a kereskedelemben, az olaj- és gáziparban és a gépiparban.
 
-A renderelés folyamata számításigényes; nem lehet sok kép / kép, hogy készítsen, és minden kép is eltarthat több órát, hogy.  A renderelés ezért tökéletes kötegelt feldolgozási számítási feladat, amely az Azure és az Azure Batch segítségével számos renderet futtathat párhuzamosan.
+A renderelés folyamata számítási igényű; számos képkocka vagy rendszerkép hozható létre, és az egyes képek renderelése több órát is igénybe vehet.  A renderelés ezért egy tökéletes batch-feldolgozási feladat, amely képes az Azure-t és a Azure Batcht egyszerre több renderelés futtatására használni.
 
-## <a name="why-use-azure-for-rendering"></a>Miért érdemes az Azure-t használni a rendereléshez?
+## <a name="why-use-azure-for-rendering"></a>Miért érdemes az Azure-t renderelésre használni?
 
-Több okból is a renderelés az Azure és az Azure Batch számára tökéletesen megfelelő számítási feladat:
+Számos ok miatt a renderelés az Azure-hoz és a Azure Batchhoz tökéletesen illeszkedő munkaterhelés:
 
-* A renderelési feladatok több darabra oszthatók, amelyek több virtuális gép használatával párhuzamosan futtathatók:
-  * Az animációk sok képkockából állnak, és minden képkocka párhuzamosan renderelhető.  Minél több virtuális gép áll rendelkezésre az egyes képkockák feldolgozásához, annál gyorsabban előállítható az összes képkocka és az animáció.
-  * Egyes renderelő szoftverek lehetővé teszik, hogy egyetlen képkocka több darabra, például mozaikra vagy szeletre legyen felosztva.  Minden darab külön renderelhető, majd a végső képbe kombinálható, amikor az összes darab elkészült.  Minél több virtuális gép érhető el, annál gyorsabban renderelhető egy keret.
-* A renderelési projektek hatalmas méreteket vehetnek igénybe:
-  * Az egyes keretek összetettek lehetnek, és sok órát igényelnek a rendereléshez, még a csúcskategóriás hardvereken is; animációk több százezer képkockából állhatnak.  A kiváló minőségű animációk ésszerű időn át való megjelenítéséhez hatalmas mennyiségű számításra van szükség.  Egyes esetekben több mint 100 000 magot használtak több ezer képkocka párhuzamos megjelenítésére.
-* A renderelési projektek projektalapúak, és különböző számítási mennyiségeket igényelnek:
-  * Szükség esetén foglalja le a számítási és tárolási kapacitást, méretezse fel- vagy le a projekt során betöltésszerint, és távolítsa el, amikor a projekt befejeződött.
-  * A kapacitás kifizetése lefoglaláskor, de nem fizet érte, ha nincs terhelés, például a projektek között.
-  * A váratlan változások miatti sorozatok kielégítése; magasabb skálán feljebb, ha a projekt késői elkésése váratlan változásokat hajt végre, és ezeket a módosításokat szoros ütemezés szerint kell feldolgozni.
-* Válasszon a hardverek széles választékából az alkalmazás, a munkaterhelés és az időkeret szerint:
-  * Az Azure-ban elérhető hardverek széles választéka áll rendelkezésre, amelyek a Batch-tel foglalhatók le és kezelhetők.
-  * A projekttől függően a követelmény lehet a legjobb ár/teljesítmény vagy a legjobb általános teljesítmény.  A különböző jelenetek és/vagy renderelési alkalmazások eltérő memóriaigényűek lesznek.  Egyes renderelési alkalmazások a GPU-kat a legjobb teljesítmény vagy bizonyos funkciók érdekében használhatják. 
+* A renderelési feladatok számos darabra bonthatók, amelyek több virtuális gép használatával párhuzamosan is futtathatók:
+  * Az animációk számos képkockát tartalmaznak, és az egyes keretek párhuzamosan is megjeleníthető.  Minél több virtuális gép áll rendelkezésre az egyes keretek feldolgozásához, annál gyorsabban hozhatók létre az összes keret és az animáció.
+  * Egyes renderelési szoftverek lehetővé teszik, hogy az egyes keretek több darabra legyenek bontva, például csempék vagy szeletek számára.  Mindegyik darab külön jeleníthető meg, majd a végső képhez kombinálva, ha az összes darab elkészült.  Minél több virtuális gép érhető el, annál gyorsabban lehet megjeleníteni a keretet.
+* A renderelési projektek nagy léptéket igényelhetnek:
+  * Az egyes keretek összetettek lehetnek, és több órát is igénybe vehetnek, még a nagy teljesítményű hardveren is. az animációk több száz ezer képkockából állhatnak.  Nagy mennyiségű számításra van szükség a kiváló minőségű animációk ésszerű időtartamú megjelenítéséhez.  Néhány esetben több mint 100 000 magot használtak párhuzamosan több ezer keret megjelenítéséhez.
+* A renderelési projektek projekt-alapúak, és különböző mennyiségű számítást igényelnek:
+  * Szükség esetén kioszthatja a számítási és a tárolási kapacitást, felskálázást végez a projekt során betöltésnek megfelelően, és eltávolíthatja a projekt befejezésekor.
+  * A kapacitás kiosztása után kell fizetnie, de nem kell fizetnie, ha nincs betöltés, például a projektek között.
+  * A váratlan változások miatt gondoskodik a kitörésekről; nagyobb skálázás, ha a projektben váratlan változások történnek, és ezeket a módosításokat szűk időben kell feldolgozni.
+* Az alkalmazások, a számítási feladatok és az időkeretek alapján széles választékban választhat:
+  * Az Azure-ban széles körben elérhetők a rendelkezésre álló hardverek, amelyeket a Batch szolgáltatással lehet kiosztani és felügyelni.
+  * A projekttől függően előfordulhat, hogy a követelmény a legjobb ár/teljesítmény vagy a legjobb általános teljesítmény.  A különböző jelenetek és/vagy megjelenítési alkalmazások eltérő memóriabeli követelményekkel rendelkeznek.  Egyes renderelési alkalmazások a legjobb teljesítményhez vagy bizonyos funkciókhoz használhatják a GPU-ket. 
 * Az alacsony prioritású virtuális gépek csökkentik a költségeket:
-  * Alacsony prioritású virtuális gépek állnak rendelkezésre a rendszeres igény szerinti virtuális gépekhez képest nagy kedvezményt, és alkalmasak bizonyos feladattípusok.
-  * Alacsony prioritású virtuális gépek et lehet kiosztani az Azure Batch, a Batch rugalmasságot biztosít, hogyan használják a követelmények széles körének kielégítésére.  Batch készletek állhat dedikált és alacsony prioritású virtuális gépek, azzal, hogy bármikor módosíthatja a virtuálisgép-típusok keveréke.
+  * Az alacsony prioritású virtuális gépek a normál igény szerinti virtuális gépekhez képest nagy kedvezményekhez érhetők el, és bizonyos feladatokhoz megfelelőek.
+  * Az alacsony prioritású virtuális gépeket Azure Batch kioszthatja, a Batch pedig rugalmasságot biztosít, hogy a követelmények széles körének ellátása milyen módon történik.  A Batch-készletek tartalmazhatnak dedikált és alacsony prioritású virtuális gépeket is, így bármikor módosíthatók a virtuálisgép-típusok kombinációja.
 
-## <a name="options-for-rendering-on-azure"></a>Az Azure-beli megjelenítés lehetőségei
+## <a name="options-for-rendering-on-azure"></a>Az Azure-on való renderelés lehetőségei
 
-Számos Azure-képességek, amelyek a számítási feladatok renderelése használható.  A használandó képességek a meglévő környezettől és követelményektől függenek.
+A számítási feladatok megjelenítéséhez számos Azure-funkció használható.  A használni kívánt képességek a meglévő környezettől és követelményektől függenek.
 
-### <a name="existing-on-premises-rendering-environment-using-a-render-management-application"></a>Meglévő helyszíni renderelési környezet rendereléskezelő alkalmazás használatával
+### <a name="existing-on-premises-rendering-environment-using-a-render-management-application"></a>Meglévő helyszíni megjelenítési környezet renderelési felügyeleti alkalmazás használatával
 
-A leggyakoribb eset az, hogy van egy meglévő helyszíni render farm által kezelt render kezelő alkalmazás, mint a PipelineFX Qube, Royal Render, vagy Thinkbox határidő.  A követelmény az Azure-beli virtuális gépek használatával a helyszíni renderelési farm kapacitásának kiterjesztése.
+A leggyakoribb eset az, hogy egy meglévő helyszíni Render Farm felügyelhető egy renderelési felügyeleti alkalmazással, például a PipelineFX Qube, a Royal Render vagy a Thinkbox határidővel.  A követelmény a helyszíni rendering Farm kapacitásának kiterjesztése Azure-beli virtuális gépek használatával.
 
-A rendereléskezelő szoftver beépített Azure-támogatással rendelkezik, vagy elérhetővé tesszük az Azure-támogatást hozzáadó beépülő modulokat. A támogatott renderkezelőkről és funkciókról további információt a [renderkezelők használatáról](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers)szóló cikktartalmaz.
+A renderelési felügyeleti szoftver beépített Azure-támogatással rendelkezik, vagy elérhetővé tettük az Azure-támogatást hozzáadó beépülő modulokat. A támogatott Render managerekkel és funkciókkal kapcsolatos további információkért tekintse meg a [Render Manager használatával](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers)foglalkozó cikket.
 
-### <a name="custom-rendering-workflow"></a>Egyéni leképezési munkafolyamat
+### <a name="custom-rendering-workflow"></a>Egyéni renderelési munkafolyamat
 
-A követelmény az, hogy a virtuális gépek egy meglévő renderelési farmot bővítsenek ki.  Az Azure Batch-készletek nagy számú virtuális gépet foglalhatnak le, lehetővé teszik az alacsony prioritású virtuális gépek használatát és dinamikus automatikus skálázását a teljes árú virtuális gépek segítségével, és a népszerű renderelési alkalmazások számára díjfizetéses licencelést biztosítanak.
+A szükséges, hogy a virtuális gépek kiterjesszék a meglévő Render farmokat.  Azure Batch-készletek nagy mennyiségű virtuális gépet foglalhatnak le, lehetővé teszik az alacsony prioritású virtuális gépek használatát, valamint a teljes árú virtuális gépekkel való dinamikusan automatikus méretezést, valamint a népszerű renderelési alkalmazások számára a használaton kívüli licencelést.
 
-### <a name="no-existing-render-farm"></a>Nincs meglévő renderfarm
+### <a name="no-existing-render-farm"></a>Nincs meglévő Render Farm
 
-Lehet, hogy az ügyfélmunkaállomások végzik renderelést, de a renderelési munkaterhelés növekszik, és túl sokáig tart a munkaállomás-kapacitás kizárólagos használata.  Az Azure Batch egyaránt használható renderelési farm számítási igény szerinti lefoglalására, valamint a renderelési feladatok ütemezésére az Azure renderelési farmra.
+Előfordulhat, hogy az ügyfél-munkaállomások renderelést végeznek, de a renderelési feladat egyre nő, és a munkaállomás kapacitása túl hosszú.  A Azure Batch a render Farm számítási igény szerinti kiosztásához, valamint a renderelési feladatok Azure Render farmhoz való ütemezéséhez is használható.
 
-## <a name="azure-batch-rendering-capabilities"></a>Az Azure Batch leképezési képességei
+## <a name="azure-batch-rendering-capabilities"></a>Renderelési képességek Azure Batch
 
-Az Azure Batch lehetővé teszi a párhuzamos számítási feladatok futtatását az Azure-ban.  Lehetővé teszi a létrehozása és kezelése nagy számú virtuális gépek, amelyeken alkalmazások vannak telepítve és futtatva.  Emellett átfogó feladatütemezési lehetőségeket biztosít az alkalmazások példányainak futtatásához, a feladatok virtuális gépekhez való hozzárendelését, a sorban állást, az alkalmazásfigyelést és így tovább.
+Azure Batch lehetővé teszi a párhuzamos számítási feladatok futtatását az Azure-ban.  Lehetővé teszi nagy számú virtuális gép létrehozását és felügyeletét, amelyen az alkalmazások telepítve vannak és futnak.  Emellett átfogó feladatütemezés-képességeket is biztosít az alkalmazások példányainak futtatásához, így biztosítva a tevékenységek hozzárendelését a virtuális gépekhez, a sorba állításhoz, az alkalmazások figyeléséhez és így tovább.
 
-Az Azure Batch számos számítási feladathoz használható, de a következő képességek érhetők el, hogy megkönnyítse és gyorsabban futtassa a renderelési számítási feladatokat.
+Azure Batch számos számítási feladathoz használatos, de a következő lehetőségek állnak rendelkezésre, hogy könnyebb és gyorsabb legyen a renderelési feladatok futtatása.
 
-* Virtuálisgép-lemezképek előre telepített grafikus és renderelő alkalmazásokkal:
-  * Az Azure Marketplace virtuálisgép-lemezképek állnak rendelkezésre, amelyek népszerű grafikus és renderelési alkalmazásokat tartalmaznak, így nem kell saját maga telepíteniaz alkalmazásokat, vagy saját egyéni lemezképeket létrehozni a telepített alkalmazásokkal. 
-* Használatalapú licencelés renderelési alkalmazásokhoz:
-  * Dönthet úgy, hogy az alkalmazások ért a perc, amellett, hogy fizet a számítási virtuális gépek, amely elkerüli, hogy vásárolni licenceket, és potenciálisan konfigurálja a licenckiszolgáló az alkalmazások.  A használat kifizetése azt is jelenti, hogy lehetőség van a változó és váratlan terheléskielégítésére, mivel nincs meghatározott számú licenc.
-  * Lehetőség van az előre telepített alkalmazások saját licenccel való használatára is, és nem használhatja a használatalapú licencelést. Ehhez általában telepíteni e helyszíni vagy Azure-alapú licenckiszolgáló, és egy Azure virtuális hálózat segítségével csatlakoztassa a renderelési készlet a licenckiszolgálóhoz.
-* Beépülő modulok az ügyfelek tervezéséhez és modellezéséhez:
-  * A beépülő modulok lehetővé teszik a végfelhasználók számára, hogy közvetlenül az ügyfélalkalmazásból, például az Autodesk Maya-ból használják az Azure Batchet, lehetővé téve számukra, hogy készleteket hozzanak létre, feladatokat küldjenek el, és több számítási kapacitást használjanak a gyorsabb renderelések végrehajtásához.
-* Rendereléskezelő integrációja:
-  * Az Azure Batch integrálva van a renderelési felügyeleti alkalmazásokba, vagy beépülő modulok állnak rendelkezésre az Azure Batch-integráció biztosításához.
+* Virtuálisgép-lemezképek előre telepített grafikus és megjelenítési alkalmazásokkal:
+  * Az Azure piactéren elérhető virtuálisgép-lemezképek népszerű grafikát és megjelenítési alkalmazásokat tartalmaznak, elkerülve az alkalmazások telepítését, vagy saját egyéni lemezképek létrehozását a telepített alkalmazásokkal. 
+* Felhasználónkénti licencelés az alkalmazások megjelenítéséhez:
+  * Kiválaszthatja, hogy az alkalmazásokra a számítási virtuális gépekért fizetett díj mellett az alkalmazásokért fizet, így nem kell licenceket vásárolnia, és konfigurálnia kell a licenckiszolgálót az alkalmazásokhoz.  A használat megfizetése azt is jelenti, hogy a különböző és váratlan terhelések is fennállnak, mivel nem rögzített számú licenc.
+  * Az előre telepített alkalmazásokat is használhatja saját licencekkel, és nem használhatja a használaton kívüli licencelést. Ehhez általában egy helyszíni vagy Azure-alapú licenckiszolgálót kell telepítenie, és egy Azure-beli virtuális hálózattal kell összekapcsolni a renderelési készletet a licenckiszolgálóval.
+* Beépülő modulok az ügyfél tervezési és modellezési alkalmazásaihoz:
+  * A beépülő modulok lehetővé teszik, hogy a végfelhasználók a Azure Batch közvetlenül az ügyfélalkalmazás, például a Autodesk Maya használatával használják, így készleteket hozhatnak létre, feladatokat küldhetnek, és nagyobb számítási kapacitást használhatnak a gyorsabb renderelés érdekében.
+* Render Manager-integráció:
+  * A Azure Batch a renderelési felügyeleti alkalmazások vagy a beépülő modulok számára elérhetővé teszik a Azure Batch-integrációt.
 
-Az Azure Batch számos módon használható, amelyek mindegyike az Azure Batch-renderelésre is vonatkozik.
+A Azure Batch számos módon használható, amelyek mindegyike a Azure Batch renderelésre is vonatkozik.
 
 * API-k:
-  * Kódot írhat a [REST](https://docs.microsoft.com/rest/api/batchservice), [.NET,](https://docs.microsoft.com/dotnet/api/overview/azure/batch) [Python,](https://docs.microsoft.com/python/api/overview/azure/batch) [Java](https://docs.microsoft.com/java/api/overview/azure/batch)vagy más támogatott API-k használatával.  A fejlesztők integrálhatják az Azure Batch-képességeket meglévő alkalmazásaikba vagy munkafolyamataikba, akár felhőben, akár helyszíni környezetben.  Az [Autodesk Maya beépülő modul](https://github.com/Azure/azure-batch-maya) például a Batch Python API-t használja a Batch meghívásához, a készletek létrehozásához és kezeléséhez, a feladatok és feladatok elküldéséhez, valamint az állapot figyeléséhez.
+  * Kód írása a [Rest](https://docs.microsoft.com/rest/api/batchservice), a [.net](https://docs.microsoft.com/dotnet/api/overview/azure/batch), a [Python](https://docs.microsoft.com/python/api/overview/azure/batch), a [Java](https://docs.microsoft.com/java/api/overview/azure/batch)vagy más támogatott API-k használatával.  A fejlesztők a meglévő alkalmazásokhoz vagy munkafolyamatokhoz, akár a felhőben, akár a helyszínen is integrálhatja Azure Batch képességeit.  A [Autodesk Maya beépülő modul](https://github.com/Azure/azure-batch-maya) például a Batch Python API-t használja a kötegek meghívásához, a készletek létrehozásához és kezeléséhez, a feladatok és a feladatok elküldéséhez, valamint a figyelési állapothoz.
 * Parancssori eszközök:
-  * Az [Azure parancssori vagy](https://docs.microsoft.com/cli/azure/) Azure [PowerShell](https://docs.microsoft.com/powershell/azure/overview) parancsfájl batch használatra használható.
-  * A Batch CLI sablon támogatása különösen megkönnyíti a gyűjtők létrehozását és a feladatok elküldését.
-* Felülete:
-  * [A Batch Explorer](https://github.com/Azure/BatchExplorer) egy platformfüggetlen ügyféleszköz, amely lehetővé teszi a Batch-fiókok kezelését és figyelését is, de az Azure Portal felhasználói felületéhez képest néhány gazdagabb képességet biztosít.  Készlet- és feladatsablonok készlete, amelyek minden támogatott alkalmazáshoz vannak szabva, és segítségével egyszerűen létrehozhatkészleteket és küldhet feladatokat.
-  * Az Azure Portal azure-köteg kezelésére és figyelésére használható.
-* Az ügyfélalkalmazás beépülő moduljai:
-  * Beépülő modulok állnak rendelkezésre, amelyek lehetővé teszik a Batch renderelés takarásos használható közvetlenül az ügyfél tervezési és modellezési alkalmazások. A beépülő modulok főként a Batch Explorer alkalmazást hívja meg az aktuális 3D modell kontextuális adataival.
-  * A következő beépülő modulok állnak rendelkezésre:
-    * [Azure Batch maya számára](https://github.com/Azure/azure-batch-maya)
+  * Az [Azure parancssori](https://docs.microsoft.com/cli/azure/) vagy [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) használható a Batch-használat parancsfájlhoz.
+  * Különösen a Batch CLI-sablon támogatása sokkal egyszerűbbé teszi a készletek létrehozását és a feladatok elküldését.
+* Felhasználóifelület
+  * A [Batch Explorer](https://github.com/Azure/BatchExplorer) egy platformfüggetlen ügyfél-eszköz, amely lehetővé teszi a Batch-fiókok felügyeletét és figyelését is, de a Azure Portal felhasználói felületéhez képest gazdagabb képességeket biztosít.  A készlet és a feladatütemezés készlete minden támogatott alkalmazáshoz testreszabható, és felhasználható a készletek egyszerű létrehozására és a feladatok elküldésére.
+  * A Azure Portal a Azure Batch felügyeletére és figyelésére használható.
+* Ügyfélalkalmazás beépülő modul:
+  * Olyan beépülő modulok érhetők el, amelyek lehetővé teszik, hogy a Batch rendering közvetlenül az ügyfél-tervezési és modellező alkalmazásokban legyen használatban. A beépülő modulok elsősorban a Batch Explorer alkalmazást hívja meg az aktuális 3D-modellel kapcsolatos környezetfüggő információkkal.
+  * A következő beépülő modulok érhetők el:
+    * [Maya Azure Batch](https://github.com/Azure/azure-batch-maya)
     * [3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
-    * [Turmixgép](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+    * [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
 
-## <a name="getting-started-with-azure-batch-rendering"></a>Az Azure Batch-renderelés első lépései
+## <a name="getting-started-with-azure-batch-rendering"></a>Azure Batch renderelés – első lépések
 
-Az Azure Batch-renderelés kipróbálásához tekintse meg az alábbi bevezető oktatóanyagokat:
+Tekintse meg a következő bevezető oktatóanyagokat a Azure Batch megjelenítésének kipróbálásához:
 
-* [Blender-jelenet renderelése a Batch Explorer segítségével](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
-* [A Batch CLI segítségével jelenítsen meg egy Autodesk 3ds Max jelenetet](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [A Batch Explorer használata Turmixgépi jelenet megjelenítéséhez](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Az Autodesk 3ds Max-jelenet megjelenítése a Batch CLI használatával](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
 
 ## <a name="next-steps"></a>További lépések
 
-Határozza meg a [jelen cikkben](https://docs.microsoft.com/azure/batch/batch-rendering-applications)az Azure Marketplace virtuálisgép-lemezképekben szereplő renderelési alkalmazások és verziók listáját.
+Határozza meg az Azure Marketplace virtuálisgép-lemezképekben található renderelési alkalmazások és verziók listáját [ebben a cikkben](https://docs.microsoft.com/azure/batch/batch-rendering-applications).

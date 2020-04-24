@@ -15,4 +15,4 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "72818662"
 ---
-Az Azure Cosmos DB Table API-fiók létrehozásával kapcsolatos tudnivalókért olvassa el az [Adatbázis-fiók létrehozása című témakört.](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)
+Azure Cosmos DB Table API-fiók létrehozásával kapcsolatos utasításokért tekintse meg az [adatbázis-fiók létrehozása](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)című témakört.

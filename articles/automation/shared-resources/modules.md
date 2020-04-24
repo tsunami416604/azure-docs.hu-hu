@@ -8,12 +8,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 995c87ca6f091e9ccf0b82af831bbf43ff17846f
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100838"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114274"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modulok kezelése az Azure Automationben
 
@@ -22,7 +22,6 @@ Azure Automation lehetővé teszi a PowerShell-modulok importálását a runbook
 * [Azure PowerShell az. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 * [Azure PowerShell AzureRM. Automation](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)
 * Belső `Orchestrator.AssetManagement.Cmdlets` modul a Windows log Analytics ügynökéhez
-* [AzureAutomationAuthoringToolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9)
 * Egyéb PowerShell-modulok
 * Létrehozott egyéni modulok 
 
@@ -40,7 +39,7 @@ Amikor Azure Automation végrehajtja a runbook és a DSC fordítási feladatait,
 
 A következő táblázat felsorolja az Automation-fiók létrehozásakor alapértelmezés szerint Azure Automation importálási modulokat. Az Automation képes a modulok újabb verzióinak importálására. Az eredeti verziót azonban nem távolíthatja el Automation-fiókjából, még akkor is, ha újabb verziót töröl. Vegye figyelembe, hogy ezek az alapértelmezett modulok több AzureRM-modult is tartalmaznak. 
 
-Az az Automation-modulok a runbookok és a DSC-konfigurációknál javasoltak. A Azure Automation azonban nem importálja automatikusan az új vagy meglévő Automation-fiókba. A modulok használatával kapcsolatos további információkért lásd: [áttelepítés az modulokra](#migrating-to-az-modules).
+Azure Automation nem importálja automatikusan az új vagy meglévő Automation-fiókba a gyökeret az modult. A modulok használatával kapcsolatos további információkért lásd: [áttelepítés az modulokra](#migrating-to-az-modules).
 
 > [!NOTE]
 > Nem javasoljuk, hogy módosítsa a modulokat és a runbookok olyan Automation-fiókokban, amelyek a [Azure Automation Start/Stop VMS During off-hours megoldást](../automation-solution-vm-management.md)tartalmazzák.
@@ -72,6 +71,10 @@ Az az Automation-modulok a runbookok és a DSC-konfigurációknál javasoltak. A
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
+## <a name="az-module-cmdlets"></a>Az Module parancsmagok
+
+Az az. Automation esetében a parancsmagok többsége ugyanazokkal a névvel rendelkezik, mint a AzureRM-modulok esetében, azzal a különbséggel, hogy a AzureRm előtag az az értékre módosult. Az azon modulok listáját, amelyek nem követik ezt az elnevezési konvenciót, tekintse meg [a kivételek listáját](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
+
 ## <a name="internal-cmdlets"></a>Belső parancsmagok
 
 A következő táblázat a `Orchestrator.AssetManagement.Cmdlets` modul által támogatott belső parancsmagokat határozza meg. Ezeket a parancsmagokat a runbookok és a DSC-konfigurációkban használhatja az Automation-fiókon belüli Azure-eszközök használatához. A parancsmagokat úgy tervezték, hogy Azure PowerShell parancsmagok helyett a titkos változók, a hitelesítő adatok és a titkosított kapcsolatok kulcsainak beolvasására szolgálnak. 
@@ -91,41 +94,47 @@ A következő táblázat a `Orchestrator.AssetManagement.Cmdlets` modul által t
 
 Vegye figyelembe, hogy a belső parancsmagok eltérnek az az és a AzureRM parancsmagok elnevezésével. A belső parancsmagok nevei nem tartalmaznak olyan szavakat, mint az "Azure" vagy az "az" a főnév esetében, de az "Automation" szót használják. Azt javasoljuk, hogy használja az az vagy a AzureRM parancsmag használatát az Azure-beli homokozóban vagy egy Windowsos hibrid feldolgozón a runbook végrehajtása során. Kevesebb paramétert igényelnek, és a már végrehajtás alatt álló feladatok kontextusában futnak.
 
-Az az vagy az AzureRM parancsmag használatával Azure Automation erőforrásokat kezelhet a runbook környezetén kívül. Ezekben az esetekben implicit módon kell csatlakoznia az Azure-hoz a parancsmagok használatakor, mint amikor egy futtató fiókot használ az Azure-ban való hitelesítéshez. 
+Azt javasoljuk, hogy az az vagy az AzureRM parancsmagot használja a runbook környezetén kívüli Azure Automation-erőforrások kezeléséhez. 
 
-## <a name="modules-supporting-get-automationpscredential"></a>A Get-AutomationPSCredential támogató modulok
+## <a name="module-supporting-get-automationpscredential"></a>A Get-AutomationPSCredential támogató modul
 
-A Azure Automation authoring Toolkit használatával történő helyi fejlesztéshez `Get-AutomationPSCredential` a parancsmag a szerelvény [AzureAutomationAuthoringToolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9)része. Az Azure Automation-környezettel való használata esetén a parancsmag a `Orchestrator.AssetManagement.Cmdlets`következő:. Ha többet szeretne megtudni a hitelesítő adatok használatáról a Azure Automationban, tekintse meg a [hitelesítő adatok a Azure Automationban](credentials.md)című témakört.
-
-Vegye figyelembe `Get-AutomationPsCredential` , hogy `PSCredential` egy objektumot ad vissza, amelyet a legtöbb, a hitelesítő adatokkal működő PowerShell-parancsmag várt. Leggyakrabban a [Get-AzAutomationCredential](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationcredential?view=azps-3.8.0) parancsmag helyett ezt a parancsmagot kell használnia. `Get-AzAutomationCredential`a hitelesítő adatokkal kapcsolatos metaadatokat tartalmazó [CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) objektum beolvasása. Ezek az információk általában nem hasznosak egy másik parancsmagnak való továbbításra.
+A `Get-AutomationPSCredential` parancsmag a modul `Orchestrator.AssetManagement.Cmdlets`részét képezi. Ez a parancsmag egy `PSCredential` objektumot ad vissza, amelyet a legtöbb, a hitelesítő adatokkal működő PowerShell-parancsmag várt. Ha többet szeretne megtudni a hitelesítő adatok használatáról a Azure Automationban, tekintse meg a [hitelesítő adatok a Azure Automationban](credentials.md)című témakört.
 
 ## <a name="migrating-to-az-modules"></a>Áttelepítés az az modulokba
 
-Több szempontot is figyelembe kell venni a Azure Automation moduljainak használatakor:
+### <a name="migration-considerations"></a>A migrálás szempontjai
 
-* Nem javasoljuk, hogy futtasson AzureRM-modulokat és az-modulokat ugyanabban az Automation-fiókban, mivel ez a probléma megoldásában garantált. Lásd: [Azure PowerShell migrálása a AzureRM-ről az-](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)ra. 
+Ez a szakasz azokat a szempontokat ismerteti, amelyeket figyelembe kell venni az az Azure Automation-ban lévő moduljaiba való Migrálás során. Lásd még: [Azure PowerShell migrálása a AzureRM-ről az-](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)ra. 
 
-* Ügyeljen arra, hogy az az modulok importálása előtt gondosan tesztelje az összes runbookok és DSC-konfigurációt egy külön Automation-fiókban. 
+#### <a name="use-of-azurerm-modules-and-az-modules-in-the-same-automation-account"></a>AzureRM-modulok és az az modulok használata ugyanabban az Automation-fiókban
 
-* Az az modul az Automation-fiókba való importálása nem importálja automatikusan a modult a runbookok által használt PowerShell-munkamenetbe. A modulok a következő helyzetekben importálhatók a PowerShell-munkamenetbe:
+ Nem javasoljuk, hogy futtassa az AzureRM modulokat és az az modulokat ugyanabban az Automation-fiókban. Ha biztos abban, hogy át szeretné telepíteni a AzureRM-ről az az-ra, a legjobb megoldás, ha teljes mértékben véglegesíti a teljes áttelepítést. Ennek a legfontosabb oka az, hogy Azure Automation gyakran újrahasználja az Automation-fiókban lévő munkaterületeket az indítási időpontokban való mentéshez. Ha nem hajtja végre a modul teljes áttelepítését, elindíthat egy feladatot csak AzureRM-modulok használatával, majd egy másik feladatot is indíthat, csak az az modulok használatával. A homokozó hamarosan összeomlik, és végzetes hibaüzenetet kap arról, hogy a modulok nem kompatibilisek. Ez a helyzet véletlenszerűen előforduló összeomlásokat eredményez bármely adott runbook vagy konfigurációnál. 
 
-    * Amikor egy runbook meghívja a parancsmagot egy modulból
-    * Ha egy runbook explicit módon importálja a modult az [import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) parancsmaggal
-    * Ha egy runbook egy másik függő modult importál
+#### <a name="import-of-az-modules-into-the-powershell-session"></a>Az az modulok importálása a PowerShell-munkamenetbe
 
-Miután elvégezte a modulok áttelepítését, ne próbálja meg elindítani a runbookok az Automation-fiók AzureRM moduljaival. Azt is javasoljuk, hogy ne importáljon vagy frissítsen AzureRM-modulokat a fiókhoz. Vegye figyelembe, hogy a fiók az az. Automation-ba lett áttelepítve, és csak az az modulok használatával működik.
+Az az modul az Automation-fiókba való importálása nem importálja automatikusan a modult a runbookok által használt PowerShell-munkamenetbe. A modulok a következő helyzetekben importálhatók a PowerShell-munkamenetbe:
 
->[!IMPORTANT]
->Új Automation-fiók létrehozásakor Azure Automation alapértelmezés szerint telepíti a AzureRM modulokat. Az oktatóanyag runbookok továbbra is frissítheti az AzureRM-parancsmagokkal. Ezeket a runbookok azonban nem kell futtatnia.
+* Amikor egy runbook meghívja a parancsmagot egy modulból
+* Ha egy runbook explicit módon importálja a modult az [import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) parancsmaggal
+* Ha egy runbook egy másik függő modult importál
+    
+#### <a name="testing-for-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>A runbookok és a DSC-konfigurációk tesztelése a modul áttelepítése előtt
+
+Ügyeljen arra, hogy alaposan tesztelje az összes runbookok és DSC-konfigurációt egy külön Automation-fiókban, mielőtt áttelepíti az az modulba. 
+
+#### <a name="updates-for-tutorial-runbooks"></a>Az oktatóanyag runbookok frissítései 
+
+Amikor új Automation-fiókot hoz létre, akkor is, ha az az modulba való áttelepítést követően Azure Automation telepíti a AzureRM modulokat. Az oktatóanyag runbookok továbbra is frissítheti az AzureRM-parancsmagokkal. Ezeket a runbookok azonban nem kell futtatnia.
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>Az összes AzureRM-modult használó runbookok leállítása és visszaírása
 
-Annak érdekében, hogy ne futtasson olyan meglévő runbookok, amely AzureRM-modulokat használ, állítsa le és ütemezze be az összes érintett runbookok a [Remove-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) parancsmag használatával. Fontos, hogy az egyes ütemterveket külön tekintse át, hogy szükség esetén a későbbiekben újra lehessen ütemezni a runbookok.
+Annak biztosítása érdekében, hogy ne futtasson olyan meglévő runbookok-vagy DSC-konfigurációkat, amelyek AzureRM-modulokat használnak, le kell állítania és el kell indítania az összes érintett runbookok és konfigurációt. Először is győződjön meg arról, hogy az egyes runbook-vagy DSC-konfigurációkat és azok ütemezett beállításait külön tekinti át, hogy a későbbiekben szükség esetén újraütemezze az elemeket. 
 
-```powershell
-Get-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01" 
-Remove-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01"
-```
+Ha készen áll az ütemtervek eltávolítására, használhatja a Azure Portal vagy a [Remove-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) parancsmagot. Lásd: [az ütemterv eltávolítása](schedules.md#removing-a-schedule).
+
+### <a name="remove-the-azurerm-modules"></a>A AzureRM modulok eltávolítása
+
+Az az modulok importálása előtt el lehet távolítani a AzureRM modulokat. A AzureRM modulok törlése azonban megszakíthatja a verziókövetés szinkronizálását, és a még sikertelenül ütemezett parancsfájlokat is okozhatja. Ha úgy dönt, hogy eltávolítja a modulokat, tekintse meg a [AzureRM eltávolítása](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm)című témakört.
 
 ### <a name="import-the-az-modules"></a>Az az modulok importálása
 
@@ -144,17 +153,11 @@ Ez az importálási folyamat a [PowerShell-galériaon](https://www.powershellgal
 
 ### <a name="test-your-runbooks"></a>A runbookok tesztelése
 
-Miután importálta az az modulokat az Automation-fiókba, megkezdheti a runbookok szerkesztését az új modulok használatához. A parancsmagok többsége ugyanazokkal a névvel rendelkezik, mint a AzureRM-modulok esetében, azzal a különbséggel, hogy a AzureRm-előtag az az értékre módosult. Az elnevezési konvenciót nem követő modulok listáját itt tekintheti meg: [kivételek listája](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
-
-A runbook módosításának az új parancsmagok használatára való tesztelésének egyik módja a runbook elején használatos `Enable-AzureRmAlias -Scope Process` . Ha hozzáadja ezt a parancsot a runbook, a parancsfájl módosítása nélkül is futtatható. 
+Miután importálta az az modulokat az Automation-fiókba, megkezdheti a runbookok és a DSC-konfigurációk szerkesztését az új modulok használatához. A runbook módosításának az új parancsmagok használatára való tesztelésének egyik módja a runbook elején használatos `Enable-AzureRmAlias -Scope Process` . Ha hozzáadja ezt a parancsot a runbook, a parancsfájl módosítása nélkül is futtatható. 
 
 ## <a name="authoring-modules"></a>Modulok készítése
 
 Javasoljuk, hogy kövesse az ebben a szakaszban ismertetett szempontokat, amikor egy PowerShell-modult hoz létre Azure Automationban való használatra.
-
-### <a name="references-to-azurerm-and-az"></a>Hivatkozások a AzureRM és az
-
-Ha a modulban található modulokra hivatkozik, győződjön meg arról, hogy nem hivatkozik a AzureRM-modulokra is. Egyszerre nem használhat mindkét modult. 
 
 ### <a name="version-folder"></a>Verzió mappája
 

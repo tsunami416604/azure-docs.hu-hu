@@ -1,100 +1,114 @@
 ---
-title: Az Azure Service Bus integrálása az Azure Private Link szolgáltatással
-description: Ismerje meg, hogyan integrálható az Azure Service Bus az Azure Private Link szolgáltatással
+title: Azure Service Bus integrálása az Azure Private link Service szolgáltatással
+description: Ismerje meg, hogyan integrálható Azure Service Bus az Azure Private link Service használatával
 services: service-bus-messaging
 author: spelluru
 ms.author: spelluru
 ms.date: 03/13/2020
 ms.service: service-bus-messaging
 ms.topic: article
-ms.openlocfilehash: b8c4248b7275ac96acce96f890f6ff0148116f48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f456137b61a96f555b2604e7871516fd1d38ab42
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79478005"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116706"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>Az Azure Service Bus integrálása az Azure Private Link (előzetes verzió) segítségével
+# <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>Azure Service Bus integrálása az Azure Private Linktel (előzetes verzió)
 
-Az Azure Private Link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Service Bus, az Azure Storage és az Azure Cosmos DB) és az Azure által üzemeltetett ügyfél-/partnerszolgáltatások elérését a virtuális hálózat **egy privát végpontján** keresztül.
+Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Service Bus, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél-és partneri szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
 
-A privát végpont egy hálózati adapter, amely privát és biztonságos kapcsolatot biztosít az Azure Private Link által működtetett szolgáltatással. A privát végpont egy privát IP-címet használ a virtuális hálózatból, hatékonyan hozza a szolgáltatást a virtuális hálózatba. A szolgáltatáshoz irányuló összes forgalom átirányítható a privát végponton keresztül, így nincs szükség átjárókra, NAT-eszközökre, ExpressRoute- vagy VPN-kapcsolatokra vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Csatlakozhat egy Azure-erőforrás egy példányához, így a legmagasabb szintű részletességet biztosíthatja a hozzáférés-vezérlésben.
+A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
-További információ: [Mi az Azure Private Link?](../private-link/private-link-overview.md)
+További információ: [Mi az az Azure Private link?](../private-link/private-link-overview.md)
 
-> [!NOTE]
-> Ezt a funkciót az Azure Service Bus **prémium** szintje támogatja. A prémium szintről további információt a Service Bus Premium és a [Standard üzenetkezelési csomagok](service-bus-premium-messaging.md) cikkben talál.
+>[!WARNING]
+> A privát végpontok megvalósítása megakadályozhatja, hogy más Azure-szolgáltatások is interakciót Service Bus.
 >
-> Ez a funkció jelenleg **előzetes verzióban érhető el.** 
+> A megbízható Microsoft-szolgáltatások nem támogatottak, ha a virtuális hálózatok implementálva vannak.
+>
+> Olyan általános Azure-forgatókönyvek, amelyek nem működnek a virtuális hálózatokkal (vegye figyelembe, hogy a lista **nem** teljes) –
+> - Integráció a Azure Event Grid
+> - Azure IoT Hub útvonalak
+> - Azure IoT Device Explorer
+>
+> Az alábbi Microsoft-szolgáltatások szükségesek virtuális hálózaton
+> - Azure App Service
+> - Azure Functions
+
+> [!IMPORTANT]
+> Ez a funkció a Azure Service Bus **Premium** szintjével támogatott. A prémium szintű csomaggal kapcsolatos további információkért tekintse meg a [prémium és standard szintű üzenetkezelési szintek Service Busét](service-bus-premium-messaging.md) ismertető cikket.
+>
+> Ez a funkció jelenleg **előzetes**verzióban érhető el. 
 
 
-## <a name="add-a-private-endpoint-using-azure-portal"></a>Privát végpont hozzáadása az Azure Portalhasználatával
+## <a name="add-a-private-endpoint-using-azure-portal"></a>Privát végpont hozzáadása a Azure Portal használatával
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-A Service Bus-névtér azure private linkdel való integrálásához a következő entitásokra vagy engedélyekre van szüksége:
+Service Bus névtér Azure Private-hivatkozással való integrálásához a következő entitásokra vagy engedélyekre lesz szüksége:
 
-- A Service Bus névtér.
-- Egy Azure virtuális hálózat.
-- A virtuális hálózat alhálózata.
-- Tulajdonosvagy közreműködői engedélyek a Service Bus névtér és a virtuális hálózat számára.
+- Egy Service Bus névtér.
+- Egy Azure-beli virtuális hálózat.
+- Egy alhálózat a virtuális hálózaton.
+- A Service Bus névtérhez és a virtuális hálózathoz tartozó tulajdonosi vagy közreműködői engedélyek.
 
-A privát végpontnak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Amikor kiválaszt egy régiót a privát végponthoz a portál használatával, automatikusan csak az adott régióban lévő virtuális hálózatokat szűri. A Service Bus névtér lehet egy másik régióban. És a privát végpont egy privát IP-címet használ a virtuális hálózatban.
+A privát végpontnak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Ha a portál használatával kiválaszt egy régiót a privát végponthoz, akkor az automatikusan csak az adott régióban lévő virtuális hálózatokat fogja szűrni. A Service Bus névtér lehet egy másik régióban. A privát végpont pedig egy magánhálózati IP-címet használ a virtuális hálózaton.
 
 ### <a name="steps"></a>lépések
 
-Ha már rendelkezik meglévő névtérrel, az alábbi lépésekkel hozhat létre saját végpontot:
+Ha már rendelkezik egy meglévő névtérrel, a következő lépések végrehajtásával hozhat létre privát végpontot:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
-2. A keresősávba írja be a **Service Bus (Szolgáltatásbusz) mezőbe.**
-3. Jelölje ki azt a **névteret** a listából, amelyhez saját végpontot szeretne hozzáadni.
-4. Válassza a **Hálózat** lapot a **Beállítások csoportban.**
-5. A lap tetején található **Privát végpontkapcsolatok (előnézet)** lap kijelölése
-6. A lap tetején kattintson a **+ Privát végpont** gombra.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+2. A keresősáv mezőbe írja be a következőt: **Service Bus**.
+3. Válassza ki a listából azt a **névteret** , amelyhez privát végpontot szeretne hozzáadni.
+4. Válassza a **hálózatkezelés** fület a **Beállítások**területen.
+5. Válassza ki a **Private Endpoint Connections (előzetes verzió)** fület az oldal tetején.
+6. A lap tetején kattintson a **+ privát végpont** gombra.
 
     ![Privát végpont hozzáadása gomb](./media/private-link-service/private-link-service-3.png)
-7. Az Alapok lapon **hajtsa** végre az alábbi lépéseket: 
-    1. Válassza ki azt az **Azure-előfizetést,** amelyben létre szeretné hozni a privát végpontot. 
-    2. Válassza ki a magánvégpont-erőforrás **erőforráscsoportját.**
-    3. Adja meg a magánvégpont **nevét.** 
-    5. Válasszon ki egy **régiót** a privát végponthoz. A privát végpontnak ugyanabban a régióban kell lennie, mint a virtuális hálózatnak, de lehet egy másik régióban, amelyben a magánkapcsolati erőforrás, amelyhez csatlakozik. 
-    6. Válassza a **Tovább: Erőforrás >** gombot a lap alján.
+7. Az **alapvető beállítások** lapon kövesse az alábbi lépéseket: 
+    1. Válassza ki azt az **Azure-előfizetést** , amelyben létre szeretné hozni a privát végpontot. 
+    2. Válassza ki a privát végpont erőforráshoz tartozó **erőforráscsoportot** .
+    3. Adja meg a magánhálózati végpont **nevét** . 
+    5. Válasszon ki egy **régiót** a privát végpont számára. A privát végpontnak ugyanabban a régióban kell lennie, mint a virtuális hálózatnak, de a privát kapcsolati erőforráshoz tartozó másik régióban is lehet, amelyhez csatlakozik. 
+    6. Válassza a **Tovább: erőforrás >** gombot az oldal alján.
 
-        ![Saját végpont létrehozása – Alapok lap](./media/private-link-service/create-private-endpoint-basics-page.png)
-8. Az **Erőforrás** lapon hajtsa végre az alábbi lépéseket:
-    1. A csatlakozási módszer esetében, ha a **Csatlakozás egy Azure-erőforráshoz lehetőséget választja a címtárban,** kövesse az alábbi lépéseket:   
-        1. Válassza ki azt az **Azure-előfizetést,** amelyben a **Service Bus-névtér** létezik. 
-        2. Az **Erőforrás típus nál**válassza a **Microsoft.ServiceBus/namespaces** elemet az **Erőforrás típushoz.**
-        3. Az **Erőforrás listában**válasszon ki egy Service Bus-névteret a legördülő listából. 
-        4. Ellenőrizze, hogy a **Cél alerőforrás** **névtérre van-e**állítva.
-        5. Válassza a **Tovább: A >** gomb a lap alján lehetőséget. 
+        ![Privát végpont létrehozása – alapismeretek lap](./media/private-link-service/create-private-endpoint-basics-page.png)
+8. Az **erőforrás** oldalon hajtsa végre az alábbi lépéseket:
+    1. A kapcsolódási módszer esetén, ha a **címtárban a kapcsolódás Azure-erőforráshoz**lehetőséget választja, kövesse az alábbi lépéseket:   
+        1. Válassza ki azt az **Azure-előfizetést** , amelyben a **Service Bus névtere** létezik. 
+        2. Az **erőforrástípus**mezőben válassza ki a **Microsoft. ServiceBus/Namespaces** elemet az **erőforrás típushoz**.
+        3. Az **erőforrás**mezőben válasszon ki egy Service Bus névteret a legördülő listából. 
+        4. Győződjön meg arról, hogy a **cél alerőforrás** a **névtérre**van beállítva.
+        5. Válassza a **Tovább: konfigurációs >** gombot az oldal alján. 
         
-            ![Saját végpont létrehozása – Erőforrás lap](./media/private-link-service/create-private-endpoint-resource-page.png)
-    2. Ha a **Csatlakozás egy Azure-erőforráshoz erőforrás-azonosító vagy alias szerint lehetőséget választja,** kövesse az alábbi lépéseket:
-        1. Adja meg az **erőforrás-azonosítót** vagy **az aliast.** Ez lehet az erőforrás-azonosító vagy alias, amelyet néhány megosztott Önnel.
-        2. A **Cél alerőforrás**mezőbe írja be a **névteret.** Ez az al-erőforrás típusa, amely a privát végpont férhet hozzá. 
-        3. (nem kötelező) Adjon meg egy **kérésüzenetet**. Az erőforrás-tulajdonos látja ezt az üzenetet a privát végpontkapcsolat kezelése közben. 
-        4. Ezután válassza a **Tovább: Konfigurációs >** gombot a lap alján. 
+            ![Privát végpont létrehozása – Erőforrás lap](./media/private-link-service/create-private-endpoint-resource-page.png)
+    2. Ha a **Kapcsolódás Azure-erőforráshoz erőforrás-azonosító vagy alias alapján**lehetőséget választja, kövesse az alábbi lépéseket:
+        1. Adja meg az **erőforrás-azonosítót** vagy az **aliast**. Ez lehet az az erőforrás-azonosító vagy alias, amelyet mások megosztanak Önnel.
+        2. A **cél alerőforrásnál**adja meg a **névteret**. Ez a saját végpont által elérhető alerőforrás típusa. 
+        3. választható Adja meg a **kérelem üzenetét**. Az erőforrás tulajdonosa látja ezt az üzenetet a privát végponti kapcsolatok kezelése során. 
+        4. Ezután válassza a **Tovább: konfigurációs >** gombot az oldal alján. 
 
-            ![Saját végpont létrehozása – csatlakozás erőforrás-azonosító használatával](./media/private-link-service/connect-resource-id.png)
-9. A **Konfiguráció lapon** kijelöli az alhálózatot egy virtuális hálózatban oda, ahol telepíteni szeretné a saját végpontot. 
-    1. Válasszon **egy virtuális hálózatot**. Csak az aktuálisan kiválasztott előfizetésben és helyen lévő virtuális hálózatok jelennek meg a legördülő listában. 
-    2. Jelöljön ki egy **alhálózatot** a kiválasztott virtuális hálózatban. 
-    3. Válassza a **Tovább: Címkék >** gomb baloldalán. 
+            ![Privát végpont létrehozása – kapcsolat az erőforrás-AZONOSÍTÓval](./media/private-link-service/connect-resource-id.png)
+9. A **konfiguráció** lapon válassza ki azt az alhálózatot egy virtuális hálózaton, ahová a magánhálózati végpontot telepíteni szeretné. 
+    1. Válasszon ki egy **virtuális hálózatot**. A legördülő listában csak a jelenleg kijelölt előfizetésben és helyen lévő virtuális hálózatok jelennek meg. 
+    2. Válasszon egy **alhálózatot** a kiválasztott virtuális hálózatban. 
+    3. Válassza a **Tovább: címkék >** gombot az oldal alján. 
 
-        ![Saját végpont létrehozása – Konfiguráció lap](./media/private-link-service/create-private-endpoint-configuration-page.png)
-10. A **Címkék** lapon hozzon létre olyan címkéket (neveket és értékeket), amelyeket a magánvégpont-erőforráshoz társítani szeretne. Ezután válassza **a Véleményezés + létrehozás** gombot az oldal alján. 
-11. A **Véleményezés + létrehozás**párbeszédpanelen tekintse át az összes beállítást, és válassza a **Létrehozás** gombot a saját végpont létrehozásához.
+        ![Privát végpont létrehozása – konfigurációs lap](./media/private-link-service/create-private-endpoint-configuration-page.png)
+10. A **címkék** lapon hozzon létre minden olyan címkét (nevet és értéket), amelyet hozzá szeretne rendelni a privát végpont-erőforráshoz. Ezután kattintson az oldal alján található **felülvizsgálat + létrehozás** gombra. 
+11. A **felülvizsgálat + létrehozás**lapon tekintse át az összes beállítást, majd kattintson a **Létrehozás** elemre a privát végpont létrehozásához.
     
-    ![Saját végpont létrehozása – Véleményezés és létrehozás lap](./media/private-link-service/create-private-endpoint-review-create-page.png)
-12. Ellenőrizze, hogy a privát végpont létrejött-e. Ha Ön az erőforrás tulajdonosa, és a Csatlakozás egy Azure-erőforráshoz lehetőséget választotta a **Kapcsolat módszer** **címtárbeállításában,** a végpontkapcsolatot **automatikusan jóvá**kell hagyni. Ha a **függőben lévő** állapotban van, tekintse meg a [Privát végpontok kezelése](#manage-private-endpoints-using-azure-portal) az Azure Portal használatával szakaszban.
+    ![Privát végpont létrehozása – oldal áttekintése és létrehozása](./media/private-link-service/create-private-endpoint-review-create-page.png)
+12. Győződjön meg arról, hogy a magánhálózati végpont létrejött. Ha Ön az erőforrás tulajdonosa, és kiválasztotta a Kapcsolódás az **Azure-erőforráshoz a saját címtárban** lehetőséget a **kapcsolati módszerhez**, a végponti kapcsolatot **automatikusan jóvá**kell hagyni. Ha **függő** állapotban van, tekintse meg a [privát végpontok kezelése Azure Portal szakasz használatával](#manage-private-endpoints-using-azure-portal) című részt.
 
-    ![Létrehozott privát végpont](./media/private-link-service/private-endpoint-created.png)
+    ![Saját végpont létrehozva](./media/private-link-service/private-endpoint-created.png)
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>Privát végpont hozzáadása a PowerShell használatával
-A következő példa bemutatja, hogyan azure PowerShell használatával hozzon létre egy privát végpont kapcsolatot a Service Bus névtér.
+Az alábbi példa azt mutatja be, hogyan használható a Azure PowerShell egy magánhálózati végponti kapcsolatok Service Bus névtérhez való létrehozásához.
 
-A privát végpontnak és a virtuális hálózatnak ugyanabban a régióban kell lennie. A Service Bus névtér lehet egy másik régióban. És a privát végpont egy privát IP-címet használ a virtuális hálózatban.
+A privát végpontnak és a virtuális hálózatnak ugyanabban a régióban kell lennie. A Service Bus névtér lehet egy másik régióban. A privát végpont pedig egy magánhálózati IP-címet használ a virtuális hálózaton.
 
 ```azurepowershell-interactive
 
@@ -153,76 +167,76 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 ```
 
 
-## <a name="manage-private-endpoints-using-azure-portal"></a>Privát végpontok kezelése az Azure Portal használatával
+## <a name="manage-private-endpoints-using-azure-portal"></a>Privát végpontok kezelése Azure Portal használatával
 
-Privát végpont létrehozásakor a kapcsolatot jóvá kell hagyni. Ha az erőforrás, amelyhez privát végpontot hoz létre, a címtárban található, jóváhagyhatja a csatlakozási kérelmet, feltéve, hogy rendelkezik a megfelelő engedélyekkel. Ha egy másik címtárban csatlakozik egy Azure-erőforráshoz, meg kell várnia, amíg az erőforrás tulajdonosa jóváhagyja a csatlakozási kérelmet.
+Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az erőforrás, amelyhez privát végpontot hoz létre, akkor jóváhagyhatja a megfelelő engedélyekkel rendelkező kapcsolatkérelem-kérést. Ha egy másik címtárban található Azure-erőforráshoz csatlakozik, meg kell várnia, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolódási kérelmet.
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | Szolgáltatás fogyasztói privát végpont állapota | Leírás |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| None | Függőben | A kapcsolat manuálisan jön létre, és a Magánkapcsolat erőforrás tulajdonosának jóváhagyása vár. |
-| Jóváhagyás | Approved | A kapcsolat automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
-| Elutasítás | Elutasítva | A kapcsolatot a magánkapcsolati erőforrás tulajdonosa elutasította. |
-| Eltávolítás | Elválasztott | A kapcsolatot a magánkapcsolati erőforrás tulajdonosa eltávolította, a privát végpont informatívsá válik, és törlésre kell törölni. |
+| None | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
+| Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
+| Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
  
-###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Privát végpontkapcsolat jóváhagyása, elutasítása vagy eltávolítása
+###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása, elutasítása vagy eltávolítása
 
 1. Jelentkezzen be az Azure portálra.
-1. A keresősávba írja be a **Service Bus (Szolgáltatásbusz) mezőbe.**
-1. Jelölje ki a kezelni kívánt **névteret.**
-1. Válassza a **Hálózat** lapot.
-5. Nyissa meg az alábbi megfelelő szakaszt a jóváhagyni, elutasítani vagy eltávolítani kívánt művelet alapján. 
+1. A keresősáv mezőbe írja be a következőt: **Service Bus**.
+1. Válassza ki a kezelni kívánt **névteret** .
+1. Válassza a **hálózatkezelés** lapot.
+5. Nyissa meg az alábbi megfelelő szakaszt a kívánt művelet alapján: jóváhagyás, elutasítás vagy eltávolítás. 
 
-### <a name="approve-a-private-endpoint-connection"></a>Privát végpontkapcsolat jóváhagyása
+### <a name="approve-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása
 
-1. Ha vannak függőben lévő kapcsolatok, a **létesítési** állapotban a Függő ben felsorolt kapcsolat jelenik meg. 
-2. Válassza ki a jóváhagyni kívánt **privát végpontot.**
-3. Válassza a **Jóváhagyás** gombot.
+1. Ha van függőben lévő kapcsolat, a kiépítési állapotban **függőben lévő** kapcsolat jelenik meg. 
+2. Válassza ki a jóváhagyni kívánt **privát végpontot**
+3. Kattintson a **jóváhagyás** gombra.
 
     ![Privát végpont jóváhagyása](./media/private-link-service/private-endpoint-approve.png)
-4. A **Kapcsolat jóváhagyása** lapon adjon meg egy nem kötelező **megjegyzést**, és válassza az **Igen**lehetőséget. Ha a **Nem**lehetőséget választja, semmi sem történik. 
+4. A **kapcsolatok jóváhagyása** lapon adjon meg egy nem kötelező **megjegyzést**, és válassza az **Igen**lehetőséget. Ha a **nem**lehetőséget választja, semmi nem történik. 
 
-    ![Kapcsolatlap jóváhagyása](./media/private-link-service/approve-connection-page.png)
-5. A listában a kapcsolat állapotának **jóváhagyottnak**kell lennie. 
+    ![Kapcsolatok jóváhagyása lap](./media/private-link-service/approve-connection-page.png)
+5. A listában a kapcsolatok állapota **Jóváhagyottra**módosult. 
 
-    ![Kapcsolat állapota - jóváhagyva](./media/private-link-service/connection-status-approved.png)
+    ![A kapcsolatok állapota – jóváhagyott](./media/private-link-service/connection-status-approved.png)
 
-### <a name="reject-a-private-endpoint-connection"></a>Privát végpontkapcsolat elutasítása
+### <a name="reject-a-private-endpoint-connection"></a>Privát végponti kapcsolatok elutasítása
 
-1. Ha vannak olyan privát végpontkapcsolatok, amelyeket el szeretne utasítani, legyen az függőben lévő kérelem vagy korábban jóváhagyott meglévő kapcsolat, jelölje ki a végpontkapcsolatot, és kattintson az **Elutasítás** gombra.
+1. Ha van olyan privát végponti kapcsolat, amelyet el szeretne utasítani, legyen az egy függőben lévő kérelem vagy korábban jóváhagyott meglévő kapcsolat, válassza ki a végponti kapcsolatot, majd kattintson az **elutasítás** gombra.
 
     ![Elutasítás gomb](./media/private-link-service/private-endpoint-reject.png)
-2. A **Kapcsolat elvetése** lapon írjon be egy nem kötelező megjegyzést, és válassza az **Igen**lehetőséget. Ha a **Nem**lehetőséget választja, semmi sem történik. 
+2. A **kapcsolatok elutasítása** lapon adjon meg egy nem kötelező megjegyzést, és válassza az **Igen**lehetőséget. Ha a **nem**lehetőséget választja, semmi nem történik. 
 
-    ![Kapcsolatlap elutasítása](./media/private-link-service/reject-connection-page.png)
-3. A kapcsolat állapotát az **Elutasítva**listában kell látnia. 
+    ![A kapcsolatok elutasítása lap](./media/private-link-service/reject-connection-page.png)
+3. Ekkor meg kell jelennie a listán szereplő kapcsolatok állapotának **.** 
 
-    ![Elutasítva a végpontot](./media/private-link-service/endpoint-rejected.png)
+    ![Végpont elutasítva](./media/private-link-service/endpoint-rejected.png)
 
 
-### <a name="remove-a-private-endpoint-connection"></a>Privát végpontkapcsolat eltávolítása
+### <a name="remove-a-private-endpoint-connection"></a>Privát végponti kapcsolatok eltávolítása
 
-1. Ha el szeretne távolítani egy privát végpontkapcsolatot, jelölje ki azt a listában, és válassza az **eszköztár Eltávolítás parancsát.** 
+1. Privát végponti kapcsolatok eltávolításához jelölje ki azt a listában, majd az eszköztáron kattintson az **Eltávolítás** elemre. 
 
     ![Eltávolítás gomb](./media/private-link-service/remove-endpoint.png)
-2. A **Kapcsolat törlése** lapon válassza az **Igen** lehetőséget a privát végpont törlésének megerősítéséhez. Ha a **Nem**lehetőséget választja, semmi sem történik. 
+2. A **Kapcsolódás törlése** lapon válassza az **Igen** lehetőséget a privát végpont törlésének megerősítéséhez. Ha a **nem**lehetőséget választja, semmi nem történik. 
 
-    ![Kapcsolatlap törlése](./media/private-link-service/delete-connection-page.png)
-3. Az állapot nak leválasztva állapotra kell **változotta.** Ezután látni fogja, hogy a végpont eltűnik a listáról. 
+    ![A kapcsolatok törlése lap](./media/private-link-service/delete-connection-page.png)
+3. A **kapcsolat megszakadt**állapotra módosult. Ezután megjelenik a végpont a listából. 
 
-## <a name="validate-that-the-private-link-connection-works"></a>Annak ellenőrzése, hogy a privát kapcsolat kapcsolata működik-e
+## <a name="validate-that-the-private-link-connection-works"></a>Annak ellenőrzése, hogy a magánhálózati kapcsolat működik-e
 
-Ellenőrizze, hogy a privát végponterőforrás ugyanazon alhálózatán belüli erőforrások privát IP-címen keresztül csatlakoznak-e a Service Bus-névtérhez, és hogy rendelkeznek-e a megfelelő privát DNS-zóna-integrációval.
+Győződjön meg arról, hogy a magánhálózati végpont erőforrásának ugyanazon alhálózatán belüli erőforrásai csatlakoznak a Service Bus névtérhez egy magánhálózati IP-címen keresztül, valamint a saját DNS-zónák megfelelő integrálását.
 
-Először hozzon létre egy virtuális gépet a Windows virtuális gép létrehozása az [Azure Portalon](../virtual-machines/windows/quick-create-portal.md) című csoportban leírt lépések végrehajtásával
+Először hozzon létre egy virtuális gépet a [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/windows/quick-create-portal.md) című témakör lépéseit követve.
 
-A **Hálózat** lapon:
+A **hálózatkezelés** lapon:
 
-1. Adja meg **a virtuális hálózatot** és **az Alhálózatot**. Létrehozhat egy új virtuális hálózatot, vagy kiválaszthat egy meglévőt. Ha egy meglévőt választ, győződjön meg arról, hogy a régió egyezik.If selecting an existing one, make sure the region matches.
-1. Adjon meg egy **nyilvános IP-erőforrást.**
-1. A **hálózati adapter hálózati biztonsági csoportjában**válassza a **Nincs**lehetőséget.
-1. A **Terheléselosztás**hoz válassza a **Nem**lehetőséget.
+1. Határozza meg a **virtuális hálózatot** és az **alhálózatot**. Létrehozhat egy új virtuális hálózatot, vagy kijelölhet egy meglévőt is. Ha egy meglévőt választ ki, győződjön meg arról, hogy a régió megfelel.
+1. **Nyilvános IP-** erőforrást kell megadni.
+1. A **NIC hálózati biztonsági csoportban**válassza a **nincs**lehetőséget.
+1. A **terheléselosztáshoz**válassza a **nem**lehetőséget.
 
 Nyissa meg a parancssort, és futtassa a következő parancsot:
 
@@ -230,7 +244,7 @@ Nyissa meg a parancssort, és futtassa a következő parancsot:
 nslookup <your-service-bus-namespace-name>.servicebus.windows.net
 ```
 
-Ha az ns lookup parancsot futtatja egy Service Bus névtér IP-címének feloldásához egy nyilvános végponton keresztül, a következő höz hasonló eredmény jelenik meg:
+Ha egy Service Bus névtér IP-címének egy nyilvános végponton keresztüli feloldásához futtatja az NS lookup parancsot, a következőhöz hasonló eredményt fog látni:
 
 ```console
 c:\ >nslookup <your-service-bus-namespace-name>.servicebus.windows.net
@@ -241,7 +255,7 @@ Address:  (public IP address)
 Aliases:  <your-service-bus-namespace-name>.servicebus.windows.net
 ```
 
-Ha az ns lookup paranccsal oldja fel egy Service Bus-névtér IP-címét egy privát végponton keresztül, a következő höz hasonló eredmény jelenik meg:
+Ha az NS lookup parancsot futtatja egy Service Bus névtér IP-címének egy privát végponton keresztüli feloldásához, a következőhöz hasonló eredményt fog látni:
 
 ```console
 c:\ >nslookup your_service-bus-namespace-name.servicebus.windows.net
@@ -252,17 +266,17 @@ Address:  10.1.0.5 (private IP address)
 Aliases:  <your-service-bus-namespace-name>.servicebus.windows.net
 ```
 
-## <a name="limitations-and-design-considerations"></a>Korlátozások és tervezési szempontok
+## <a name="limitations-and-design-considerations"></a>Korlátozások és kialakítási szempontok
 
-**Díjszabás:** A díjszabási információkért lásd: [Azure Private Link díjszabása.](https://azure.microsoft.com/pricing/details/private-link/)
+**Díjszabás**: díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Korlátozások:** Az Azure Service Bus privát végpontja nyilvános előzetes verzióban érhető el. Ez a funkció az Azure összes nyilvános régiójában elérhető.
+**Korlátozások**: a Azure Service Bus magánhálózati végpontja nyilvános előzetes verzióban érhető el. Ez a funkció az összes Azure-beli nyilvános régióban elérhető.
 
-**A privát végpontok maximális száma szolgáltatásbusz-névtérenként:** 120.
+**Privát végpontok maximális száma Service Bus névtérben**: 120.
 
-További információkért lásd: [Azure Private Link szolgáltatás: Korlátozások](../private-link/private-link-service-overview.md#limitations)
+További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az [Azure Private Linkről](../private-link/private-link-service-overview.md)
-- További információ az [Azure Service Busról](service-bus-messaging-overview.md)
+- További információ az [Azure Private linkről](../private-link/private-link-service-overview.md)
+- További információ a [Azure Service Bus](service-bus-messaging-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hozzon létre egy folyamatot az adatok áthelyezéséhez az Azure PowerShell használatával '
+title: 'Oktatóanyag: adatátviteli folyamat létrehozása Azure PowerShell használatával '
 description: Az oktatóanyag során létrehoz egy Azure Data Factory-folyamatot másolási tevékenységgel az Azure PowerShell használatával.
 services: data-factory
 documentationcenter: ''
@@ -24,8 +24,8 @@ ms.locfileid: "73682858"
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
-> * [Vizuális stúdió](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [Powershell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
@@ -35,7 +35,7 @@ ms.locfileid: "73682858"
 
 A cikk útmutatást nyújt adat-előállítók PowerShell használatával való létrehozására olyan folyamatokkal, amelyek az Azure Blob Storage-ból másolnak adatokat egy Azure SQL-adatbázisba. Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md) című cikket az oktatóanyag elvégzése előtt.   
 
-Az oktatóanyag segítségével egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot hozhat létre. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. A másolási tevékenységről további információt az [Adatmozgatási tevékenységek című témakörben talál.](data-factory-data-movement-activities.md)
+Az oktatóanyag segítségével egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot hozhat létre. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
 
 Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További információ az [egy folyamaton belüli több tevékenységről](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) szóló témakörben található.
 
@@ -49,15 +49,15 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 - Hajtsa végre [Az oktatóanyag előfeltételei](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikkben előfeltételként felsorolt lépéseket.
-- Telepítse **az Azure PowerShellt.** Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
+- Telepítse a **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 
 ## <a name="steps"></a>Lépések
 Az oktatóanyag során a következő lépéseket fogja elvégezni:
 
-1. Hozzon létre egy **Azure-adat-előállító.** Ebben a lépésben egy adat-előállítót hoz létre ADFTutorialDataFactoryPSH néven. 
+1. Hozzon létre egy Azure-beli **adatgyárat**. Ebben a lépésben egy adat-előállítót hoz létre ADFTutorialDataFactoryPSH néven. 
 1. Hozzon létre **társított szolgáltatásokat** az adat-előállítóban. Ebben a lépésben a következő két típusú társított szolgáltatást hozza létre: Azure Storage és Azure SQL Database. 
     
-    Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Az előfeltételek részeként létrehozott egy [tárolót,](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)és adatokat töltött fel erre a tárfiókra.   
+    Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Az [Előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)részeként létrehozott egy tárolót, és feltöltötte az adattárat ebbe a Storage-fiókba.   
 
     Az AzureSqlLinkedService az Azure SQL-adatbázist társítja az adat-előállítóval. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az SQL-táblát az adatbázisban.   
 1. Hozza létre a bemeneti és kimeneti **adatkészleteket** az adat-előállítóban.  
@@ -90,7 +90,7 @@ A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy 
     Get-AzSubscription
     ```
 
-    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le ** &lt;a NameOfAzureSubscription-t** &gt; az Azure-előfizetés nevére:
+    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje ** &lt;** le az NameOfAzureSubscription&gt; -t az Azure-előfizetés nevére:
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -101,8 +101,8 @@ A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy 
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     
-    Az oktatóanyag néhány lépése feltételezi, hogy az **ADFTutorialResourceGroup**nevű erőforráscsoportot használja. Ha másik erőforráscsoportot használ, akkor az oktatóanyagban azt használja az ADFTutorialResourceGroup helyett.
-1. Futtassa a **New-AzDataFactory** parancsmagát egy **ADFTutorialDataFactoryPSH**nevű adatgyár létrehozásához:  
+    Az oktatóanyag egyes lépései azt feltételezik, hogy a **ADFTutorialResourceGroup**nevű erőforráscsoportot használja. Ha másik erőforráscsoportot használ, akkor az oktatóanyagban azt használja az ADFTutorialResourceGroup helyett.
+1. A **New-AzDataFactory** parancsmag futtatásával hozzon létre egy **ADFTutorialDataFactoryPSH**nevű adatelőállítót:  
 
     ```powershell
     $df=New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
@@ -162,7 +162,7 @@ Ebben a lépésben társítja az Azure Storage-fiókot az adat-előállítójáh
      }
     ``` 
 1. Az **Azure PowerShellben** váltson az **ADFGetStartedPSH** mappára.
-1. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot a csatolt szolgáltatás létrehozásához: **AzureStorageLinkedService**. Ez a parancsmag és az ebben az oktatóanyagban használt egyéb Data Factory-parancsmagok megkövetelik a **ResourceGroupName** és a **DataFactoryName** paraméterek értékeinek átadásához. Azt is megteheti, hogy átadja a New-AzDataFactory parancsmag által visszaadott DataFactory objektumot a ResourceGroupName és a DataFactoryName minden egyes parancsmag futtatásakor. 
+1. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService**. Ez a parancsmag és az oktatóanyagban használt többi Data Factory-parancsmag megköveteli a **ResourceGroupName** és a **DataFactoryName** paraméterek értékének megadását. Azt is megteheti, hogy a New-AzDataFactory parancsmag által visszaadott DataFactory objektumot a ResourceGroupName és a DataFactoryName beírása nélkül adja át a parancsmagok minden egyes futtatásakor. 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
@@ -220,7 +220,7 @@ Ebben a lépésben társítani fogja az Azure SQL-adatbázist az adat-előállí
 
    Győződjön meg arról, hogy az **Allow access to Azure services** (Azure-szolgáltatásokhoz való hozzáférés engedélyezése) beállítás BE van kapcsolva az SQL-adatbáziskiszolgálón. Az ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
 
-    1. Bejelentkezés az [Azure Portalra](https://portal.azure.com)
+    1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
     1. Kattintson a bal oldalon a **További szolgáltatások>** menüpontra, majd az **SQL kiszolgálók**ra az **ADATBÁZISOK** kategóriában.
     1. Válassza ki a kiszolgálóját az SQL-kiszolgálók listájából.
     1. Az SQL-kiszolgáló panelen kattintson a **Tűzfal-beállítások mutatása** hivatkozásra.
@@ -375,7 +375,7 @@ Ebben a lépésben létrehoz egy **másolási tevékenységgel** rendelkező fol
 Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagban a kimeneti adatkészletet úgy konfiguráljuk, hogy a szeletek létrehozása óránként történjen meg. A folyamat kezdő és befejező időpontja között egy nap, azaz 24 óra telik el. Ezért a folyamat a kimeneti adatkészletből 24 szeletet hoz létre. 
 
 
-1. Hozzon létre egy **ADFTutorialPipeline.json** nevű JSON-fájlt a **C:\ADFGetStartedPSH** mappában, a következő tartalommal:
+1. Hozzon létre egy **ADFTutorialPipeline. JSON** nevű JSON-fájlt a **C:\ADFGetStartedPSH** mappában a következő tartalommal:
 
     ```json   
     {
@@ -429,7 +429,7 @@ Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagb
      
      Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601) kell megadni. Például: 2016-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk. 
      
-     Ha nem adja meg a **záró** tulajdonság értékét, akkor a program a "**start + 48 óra**" értékként számítja ki. A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz.
+     Ha nem ad meg értéket a **Befejezés** tulajdonsághoz, a rendszer a következőt számítja ki: "**Start + 48 óra**". A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz.
      
      Az előző példában 24 adatszelet van, mert a rendszer óránként létrehoz egy adatszeletet.
 
@@ -455,13 +455,13 @@ Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagb
 ## <a name="monitor-the-pipeline"></a>A folyamat figyelése
 Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data factory eseményeit.
 
-1. Cserélje &lt;le&gt; a DataFactoryName-t az adat-előállító nevére, és futtassa a **Get-AzDataFactory**parancsot, és rendelje hozzá a kimenetet egy változóhoz, $df.
+1. Cserélje &lt;le&gt; a DataFactoryName nevet az adatgyárának nevére, és futtassa a **Get-AzDataFactory**parancsot, és rendelje hozzá a kimenetet egy változóhoz $DF.
 
     ```powershell  
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
     ```
 
-    Példa:
+    Például:
     ```powershell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
@@ -479,7 +479,7 @@ Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data fac
     Properties        : Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties
     ProvisioningState : Succeeded
     ```
-1. **Futtassa a Get-AzDataFactorySlice parancsot** a **OutputDataset**összes szeletének, amely a folyamat kimeneti adatkészletének részletei.  
+1. A **Get-AzDataFactorySlice** futtatásával részletes információkat kaphat a **OutputDataset**összes szeletéről, amely a folyamat kimeneti adatkészlete.  
 
     ```powershell   
     Get-AzDataFactorySlice $df -DatasetName OutputDataset -StartDateTime 2017-05-11T00:00:00Z
@@ -523,7 +523,7 @@ Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data fac
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-1. **Futtassa a Get-AzDataFactoryRun futtatások** részleteit egy **adott** szelethez. Az előbbi parancs kimenetéből kimásolt dátum-idő értékkel adjon értéket a StartDateTime paraméternek. 
+1. A **Get-AzDataFactoryRun** futtatásával lekérheti egy **adott** szelet tevékenység-futtatásának részleteit. Az előbbi parancs kimenetéből kimásolt dátum-idő értékkel adjon értéket a StartDateTime paraméternek. 
 
     ```powershell  
     Get-AzDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
@@ -559,7 +559,7 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, hogy adatokat máso
 1. Létrehozott egy Azure **data factoryt**.
 1. **Társított szolgáltatásokat** hozott létre:
 
-   a. Egy **Azure Storage-hoz** kapcsolódó szolgáltatás az Azure storage-fiók összekapcsolására, amely bemeneti adatokat tartalmaz.     
+   a. Egy **Azure Storage** -beli társított szolgáltatás a bemeneti adatokat tároló Azure Storage-fiók összekapcsolásához.     
    b. Egy **Azure SQL** társított szolgáltatást a kimeneti adatokat tároló SQL Database társításához.
 1. **Adatkészleteket** hozott létre, amelyek a folyamat bemeneti és kimeneti adatait írják le.
 1. Létrehozott egy **folyamatot** egy **Másolási tevékenységgel**, ahol a **BlobSource** a forrás, az **SqlSink** pedig a fogadó.

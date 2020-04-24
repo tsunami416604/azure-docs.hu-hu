@@ -1,6 +1,6 @@
 ---
-title: IoT Plug and Play preview mintaeszköz-kód csatlakoztatása az IoT Hubhoz (Linux) | Microsoft dokumentumok
-description: IoT Plug and Play preview mintaeszköz-kódot hozhat létre és futtatható Linuxon, amely egy IoT-központhoz csatlakozik. Az Azure CLI segítségével tekintse meg az eszköz által a hubra küldött információkat.
+title: A IoT csatlakoztatása Plug and Play minta-eszköz kódja a IoT Hubhoz (Linux) | Microsoft Docs
+description: Hozzon létre és futtasson IoT Plug and Play előzetes minta-eszköz kódját Linux rendszeren, amely egy IoT hubhoz csatlakozik. Az Azure CLI használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/23/2019
@@ -15,28 +15,28 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "75531250"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-to-iot-hub-c-linux"></a>Rövid útmutató: Csatlakoztasson egy Linuxon futó IoT Plug and Play előzetes eszközalkalmazást az IoT Hubhoz (C Linux)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-to-iot-hub-c-linux"></a>Gyors útmutató: a Linuxon futó minta IoT Plug and Play előnézeti alkalmazás csatlakoztatása IoT Hub (C Linux)
 
 [!INCLUDE [iot-pnp-quickstarts-2-selector.md](../../includes/iot-pnp-quickstarts-2-selector.md)]
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre egy minta IoT Plug and Play eszközalkalmazást Linuxon, hogyan csatlakoztathatja az IoT bub-hoz, és az Azure CLI segítségével megtekintheti a hubnak küldött információkat. The sample application is written in C and is included in the Azure IoT device SDK for C. A megoldásfejlesztő használhatja az Azure CLI-t az IoT Plug and Play eszközök képességeinek megismeréséhez anélkül, hogy bármilyen eszközkódot kellene megtekintenie.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy minta IoT Plug and Play Linux rendszeren, hogyan csatlakoztathatja a IoT-bub, és az Azure CLI használatával megtekintheti az általa az adott hubhoz küldött adatokat. A minta alkalmazás C nyelven íródott, amely a C Azure IoT Device SDK-ban szerepel. A megoldás fejlesztője az Azure CLI használatával megismerheti egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató feltételezi, hogy Ubuntu Linuxot használ. Az oktatóanyag lépéseit ubuntu 18.04-es tesztelték.
+Ez a rövid útmutató feltételezi, hogy a Ubuntu Linux használja. Az oktatóanyag lépései az Ubuntu 18,04 használatával lettek tesztelve.
 
-A rövid útmutató végrehajtásához a következő szoftvert kell telepítenie a helyi Linux-gépre:
+A rövid útmutató elvégzéséhez telepítenie kell a következő szoftvereket a helyi linuxos gépre:
 
-Telepítse **a GCC,** **Git**, **cmake** `apt-get` és az összes függőséget a paranccsal:
+Telepítse a **GCC**, a **git**, a **CMAK**és az összes függőséget a `apt-get` parancs használatával:
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Ellenőrizze, hogy `cmake` a verzió meghaladja-e a **2.8.12-t,** és a **GCC** verziója **4.4.7**felett van- e.
+Ellenőrizze, hogy a `cmake` verziója meghaladja-e a **2.8.12** , és hogy a **GCC** verziója meghaladja-e a **4.4.7**-t.
 
 ```sh
 cmake --version
@@ -47,9 +47,9 @@ gcc --version
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
-Ebben a rövid útmutatóban előkészíti a fejlesztői környezetet, amely az Azure IoT Hub-eszköz C SDK klónozásához és létrehozásához használható.
+Ebben a rövid útmutatóban olyan fejlesztési környezetet készít elő, amellyel klónozott és felépítheti az Azure IoT Hub Device C SDK-t.
 
-Nyisson meg egy parancssort az Ön által választott könyvtárban. Az alábbi parancs végrehajtása az [Azure IoT C SDK-k és a GitHub-tárház](https://github.com/Azure/azure-iot-sdk-c) ezen a helyen történő klónozásához:
+Nyisson meg egy parancssort az Ön által választott könyvtárban. Futtassa az alábbi parancsot az [Azure IoT C SDK-k és könyvtárak GitHub-](https://github.com/Azure/azure-iot-sdk-c) tárházának klónozásához a következő helyre:
 
 ```bash
 git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
@@ -59,9 +59,9 @@ Ez a művelet várhatóan több percig is eltarthat.
 
 ## <a name="build-the-code"></a>A kód létrehozása
 
-Az sdk eszköz segítségével hozhatja létre a mellékelt mintakódot. Az alkalmazást hoz létre szimulálja egy eszköz, amely csatlakozik egy IoT hub. Az alkalmazás telemetriai adatokat és tulajdonságokat küld, és parancsokat fogad.
+Az eszköz SDK-val felépítheti a mellékelt mintakód-kódot. Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy IoT hubhoz csatlakozik. Az alkalmazás telemetria és tulajdonságokat küld, és parancsokat fogad.
 
-1. Hozzon `cmake` létre egy alkönyvtárat az eszköz SDK-gyökérmappájában, és keresse meg azt a mappát:
+1. Hozzon `cmake` létre egy alkönyvtárat az eszköz SDK gyökérkönyvtárában, és navigáljon a következő mappába:
 
     ```bash
     cd azure-iot-sdk-c
@@ -69,38 +69,38 @@ Az sdk eszköz segítségével hozhatja létre a mellékelt mintakódot. Az alka
     cd cmake
     ```
 
-1. Futtassa a következő parancsokat az eszköz SDK és a létrehozott kódcsonk létrehozásához:
+1. A következő parancsok futtatásával hozza létre az eszköz SDK-t és a generált kódot:
 
     ```bash
     cmake ..
     cmake --build .
     ```
 
-## <a name="update-your-model-repository"></a>A modelltárház frissítése
+## <a name="update-your-model-repository"></a>A modell adattárának frissítése
 
-A minta futtatása előtt adja hozzá az eszközképességi modellt és a felületdefiníciókat a vállalati modelltárházhoz:
+A minta futtatása előtt adja hozzá az eszköz képességeinek modelljét és az illesztőfelület-definíciókat a vállalati modell adattárához:
 
-1. Jelentkezzen be az [Azure Certified for IoT portal](https://preview.catalog.azureiotsolutions.com) portálra microsoftos munkahelyi vagy iskolai fiókjával, vagy ha rendelkezik ilyennel, jelentkezzen be.
+1. Jelentkezzen be az [Azure Certified for IoT portál](https://preview.catalog.azureiotsolutions.com) portálra a Microsoft munkahelyi vagy iskolai fiókjával vagy a Microsoft partner-azonosítójával, ha rendelkezik ilyennel.
 
-1. Válassza **a Vállalati tárházat,** majd **a Képességmodellek lehetőséget.**
+1. Válassza a **vállalati tárház** , majd a **képesség modellek**lehetőséget.
 
-1. Válassza az **Új** lehetőséget, majd **a Feltöltés lehetőséget.**
+1. Válassza az **új** , majd a **feltöltés**lehetőséget.
 
-1. Jelölje ki `SampleDevice.capabilitymodel.json` a `digitaltwin_client/samples` fájlt az eszköz SDK gyökérmappájában lévő mappában. Válassza **a Megnyitás,** majd a **Mentés** lehetőséget, ha fel szeretné tölteni a modellfájlt a tárházba.
+1. Válassza ki a `SampleDevice.capabilitymodel.json` fájlt `digitaltwin_client/samples` az eszköz SDK gyökérmappa mappájában. Válassza a **Megnyitás** , majd a **Mentés** lehetőséget a modell fájljának a tárházba való feltöltéséhez.
 
-1. Válassza **a Vállalati tárházat,** majd **a Interfaces lehetőséget.**
+1. Válassza a **vállalati tárház** , majd a **felületek**elemet.
 
-1. Válassza az **Új** lehetőséget, majd **a Feltöltés lehetőséget.**
+1. Válassza az **új** , majd a **feltöltés**lehetőséget.
 
-1. Jelölje ki `EnvironmentalSensor.interface.json` a `digitaltwin_client/samples/digitaltwin_sample_environmental_sensor` fájlt az eszköz SDK gyökérmappájában lévő mappában. Válassza **a Megnyitás,** majd a **Mentés** lehetőséget, ha fel szeretné tölteni a felületfájlt a tárházba.
+1. Válassza ki a `EnvironmentalSensor.interface.json` fájlt `digitaltwin_client/samples/digitaltwin_sample_environmental_sensor` az eszköz SDK gyökérmappa mappájában. Válassza a **Megnyitás** , majd a **Mentés** lehetőséget, hogy feltöltse a csatoló fájlt a tárházba.
 
-1. Válassza **a Vállalati tárház,** majd **a Kapcsolati karakterláncok lehetőséget.** Jegyezze fel az első _vállalati modell tárház kapcsolati karakterláncát,_ ahogy azt a rövid útmutató későbbi részében használja.
+1. Válassza a **vállalati tárház** , majd a **kapcsolatok karakterláncok**lehetőséget. Jegyezze fel az első _vállalati modell-adattárhoz_tartozó, a rövid útmutató későbbi részében használatos karakterláncot.
 
-## <a name="run-the-device-sample"></a>Az eszközminta futtatása
+## <a name="run-the-device-sample"></a>Az eszköz mintájának futtatása
 
-Futtasson egy mintaalkalmazást az SDK-ban egy IoT Plug and Play-eszköz szimulálására, amely telemetriát küld az IoT hubnak. A mintaalkalmazás futtatása:
+Futtasson egy minta alkalmazást az SDK-ban egy IoT Plug and Play-eszköz szimulálásához, amely telemetria küld az IoT hubhoz. A minta alkalmazás futtatása:
 
-1. A `cmake` mappából keresse meg a végrehajtható fájlt tartalmazó mappát:
+1. A `cmake` mappában navigáljon a végrehajtható fájlt tartalmazó mappához:
 
     ```bash
     cd digitaltwin_client/samples/digitaltwin_sample_device
@@ -112,19 +112,19 @@ Futtasson egy mintaalkalmazást az SDK-ban egy IoT Plug and Play-eszköz szimul�
     ./digitaltwin_sample_device "<YourDeviceConnectionString>"
     ```
 
-Az eszköz most már készen áll a parancsok és a tulajdonságfrissítések fogadására, és megkezdte a telemetriai adatok küldését a hubra. A következő lépések végrehajtásával tartsa a mintát.
+Az eszköz most már készen áll a parancsok és a tulajdonságok frissítéseinek fogadására, és megkezdte a telemetria adatok küldését a központba. A következő lépések elvégzése közben tartsa a mintát.
 
-### <a name="use-the-azure-iot-cli-to-validate-the-code"></a>Az Azure IoT CLI segítségével érvényesítheti a kódot
+### <a name="use-the-azure-iot-cli-to-validate-the-code"></a>A kód érvényesítése az Azure IoT CLI használatával
 
-Az eszközügyfél-minta indítása után ellenőrizze, hogy az Azure CLI-vel működik-e.
+Az ügyfél mintájának elindítása után ellenőrizze, hogy működik-e az Azure CLI-vel.
 
-A következő paranccsal megtekintheti a mintaeszköz által küldött telemetriai adatokat. Előfordulhat, hogy várnia kell egy-két percet, mielőtt bármilyen telemetriai adatokat látna a kimenetben:
+A következő parancs használatával megtekintheti a telemetria küldő eszközét. Előfordulhat, hogy várnia kell egy percet vagy kettőt, mielőtt bármilyen telemetria lát a kimenetben:
 
 ```azurecli-interactive
 az iot dt monitor-events --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-Az eszköz által küldött tulajdonságok megtekintéséhez használja a következő parancsot:
+A következő parancs használatával tekintheti meg az eszköz által eljuttatott tulajdonságokat:
 
 ```azurecli-interactive
 az iot dt list-properties --hub-name <YourIoTHubName> --device-id <YourDeviceID> --interface sensor --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
@@ -133,7 +133,7 @@ az iot dt list-properties --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat ioT Plug and Play-eszközt egy IoT-központhoz. Ha többet szeretne tudni arról, hogyan hozhat létre olyan megoldást, amely kölcsönhatásba lép az IoT Plug and Play eszközeivel, olvassa el a következő témaköröket:
+Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hubhoz. Ha többet szeretne megtudni arról, hogyan hozhat létre olyan megoldást, amely együttműködik a IoT Plug and Play eszközökkel, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [Útmutató: Eszközhöz való csatlakozás és az eszközzel való interakció](howto-develop-solution.md)
+> [Útmutató: Kapcsolódás az eszközhöz](howto-develop-solution.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory integrációja a GoToMeeting programmal | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a GoToMeeting között.
+title: 'Oktatóanyag: Azure Active Directory integráció a GoToMeeting-szel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és GoToMeeting között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -22,164 +22,164 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "76290665"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gotomeeting"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a GoToMeeting programmal
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gotomeeting"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GoToMeeting
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a GoToMeeting szolgáltatást az Azure Active Directoryval (Azure AD). Ha integrálja a GoToMeeting szolgáltatást az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a GoToMeeting a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az GoToMeeting-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a GoToMeeting.
-* Engedélyezze, hogy a felhasználók automatikusan bejelentkezve legyenek a GoToMeeting beírásába az Azure AD-fiókjukkal.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* A GoToMeeting-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a GoToMeeting az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* GoToMeeting egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* GoToMeeting egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A GoToMeeting támogatja az **IDP** által kezdeményezett sso-t.
-* A GoToMeeting konfigurálása után kényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlők a feltételes hozzáféréstől származnak. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* A GoToMeeting támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
+* A GoToMeeting konfigurálása után kikényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-gotomeeting-from-the-gallery"></a>A GoToMeeting hozzáadása a galériából
+## <a name="adding-gotomeeting-from-the-gallery"></a>GoToMeeting hozzáadása a gyűjteményből
 
-A GoToMeeting azure AD-be való integrációjának konfigurálásához hozzá kell adnia a GoToMeeting-et a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A GoToMeeting Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a GoToMeeting a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **Gyűjtemény hozzáadás szakaszába** írja be a Keresőmezőbe a **GoToMeeting** kifejezést.
-1. Válassza a **GoToMeeting** elemet az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **GoToMeeting** kifejezést a keresőmezőbe.
+1. Válassza ki a **GoToMeeting** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-gotomeeting"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése a GoToMeeting szolgáltatáshoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-gotomeeting"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a GoToMeeting
 
-Konfigurálja és tesztelje az Azure AD SSO-t a GoToMeeting segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a GoToMeeting.For SSO to work, you need to establish a link relationship between a Azure AD user and the related user in GoToMeeting.
+Konfigurálja és tesztelje az Azure AD SSO-t a GoToMeeting a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a GoToMeeting-ben.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez a GoToMeeting segítségével hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a GoToMeeting konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja a GoToMeeting SSO-t](#configure-gotomeeting-sso)** - az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
-    * **[Hozzon létre GoToMeeting teszt felhasználó](#create-gotomeeting-test-user)** - egy megfelelője B.Simon a GoToMeeting, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[GOTOMEETING SSO konfigurálása](#configure-gotomeeting-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre GoToMeeting-teszt felhasználót](#create-gotomeeting-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-GoToMeeting rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **GoToMeeting** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **GoToMeeting** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://authentication.logmeininc.com/saml/sp`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://authentication.logmeininc.com/saml/sp`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://authentication.logmeininc.com/saml/acs`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://authentication.logmeininc.com/saml/acs`
 
-    c. Kattintson **a további URL-ek beállítása** és az alábbi URL-címek konfigurálása elemre
+    c. Kattintson a **további URL-címek beállítása** és az alábbi URL-címek konfigurálása elemre.
 
-    d. **Bejelentkezési URL-cím** (ezt ne hagyja üresen)
+    d. **Bejelentkezési URL-cím** (ezt hagyja üresen)
 
-    e. A **RelayState** mezőbe írjon be egy URL-címet a következő minta használatával:
+    e. A **RelayState** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-   - A GoToMeeting alkalmazáshoz használja a`https://global.gotomeeting.com`
+   - GoToMeeting alkalmazás esetén használja a következőt:`https://global.gotomeeting.com`
 
-   - A GoToTraining`https://global.gototraining.com`
+   - GoToTraining esetén használja a következőt:`https://global.gototraining.com`
 
-   - A GoToWebinar`https://global.gotowebinar.com` 
+   - GoToWebinar esetén használja a következőt:`https://global.gotowebinar.com` 
 
-   - GoToAssist esetén használja a`https://app.gotoassist.com`
+   - GoToAssist esetén használja a következőt:`https://app.gotoassist.com`
 
      > [!NOTE]
-     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címével. Lépjen kapcsolatba [a GoToMeeting ügyfél támogatási csapatával](https://go.microsoft.com/fwlink/?linkid=845985) az értékek lehívásához. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a GoToMeeting ügyfélszolgálati [csapatához](https://go.microsoft.com/fwlink/?linkid=845985) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. A **GoToMeeting beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+6. A **GoToMeeting beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure-hirdetésazonosító
+    b. Azure ad-azonosító
 
-    c. Kijelentkezés URL-címe
+    c. Kijelentkezési URL-cím
 
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a GoToMeeting hozzáférést biztosítva.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a GoToMeeting.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **GoToMeeting**lehetőséget.
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **GoToMeeting**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-gotomeeting-sso"></a>GoToMeeting sso konfigurálása
+## <a name="configure-gotomeeting-sso"></a>GoToMeeting SSO konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a [GoToMeeting Szervezeti központba.](https://organization.logmeininc.com/) A rendszer kéri, hogy ellenőrizze, hogy az IdP frissítve lett-e.
+1. Egy másik böngészőablakban jelentkezzen be a [GoToMeeting szervezeti központjába](https://organization.logmeininc.com/). A rendszer kérni fogja, hogy erősítse meg a identitásszolgáltató frissítését.
 
-2. Engedélyezze a "Saját identitásszolgáltató frissítve lett az új tartománnyal" jelölőnégyzet. Ha végzett, kattintson a **Kész** gombra.
+2. Engedélyezze a "saját identitás-szolgáltató frissítése az új tartománnyal" jelölőnégyzetet. Ha elkészült, kattintson a **kész** gombra.
 
-### <a name="create-gotomeeting-test-user"></a>GoToMeeting tesztfelhasználó létrehozása
+### <a name="create-gotomeeting-test-user"></a>GoToMeeting-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a GoToMeeting alkalmazásban. A GoToMeeting támogatja a just-in-time kiépítést, amely alapértelmezés szerint engedélyezve van.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a GoToMeeting-ben. A GoToMeeting támogatja az igény szerinti üzembe helyezést, amely alapértelmezés szerint engedélyezve van.
 
-Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik a GoToMeeting programban, a GoToMeeting elérésekor új felhasználó jön létre.
+Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a GoToMeeting-ben, akkor létrejön egy új, amikor megpróbál hozzáférni a GoToMeeting.
 
 > [!NOTE]
-> Ha manuálisan kell létrehoznia egy felhasználót, forduljon a [GoToMeeting támogatási csapatához.](https://support.logmeininc.com/gotomeeting)
+> Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [GoToMeeting támogatási csapatával](https://support.logmeininc.com/gotomeeting).
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a Hozzáférési panelEn a GoToMeeting csempére kattint, a rendszer automatikusan bejelentkezik arra a GoToMeeting be, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a GoToMeeting csempére kattint, automatikusan be kell jelentkeznie arra a GoToMeeting, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a GoToMeeting szolgáltatást az Azure AD-vel](https://aad.portal.azure.com/)
+- [A GoToMeeting kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
-- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [A GoToMeeting védelme fejlett láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A GoToMeeting és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

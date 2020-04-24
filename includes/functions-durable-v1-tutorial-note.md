@@ -12,4 +12,4 @@ ms.lasthandoff: 03/26/2020
 ms.locfileid: "73614568"
 ---
 > [!NOTE]
-> Ez egy oktatóanyag a durable functions 1.x. A Durable Functions 2.x használatához olvassa el a [Durable Functions verziók dokumentációját.](../articles/azure-functions/durable/durable-functions-versions.md)
+> Ez az Durable Functions 1. x oktatóanyaga. A 2. x Durable Functions használatához tekintse meg a [Durable functions Versions](../articles/azure-functions/durable/durable-functions-versions.md) dokumentációját.

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Table storage áttekintése
+title: Az Azure Table Storage áttekintése
 description: Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -36,4 +36,4 @@ A Table Storage segítségével olyan rugalmas adatkészleteket tárolhat, mint 
 
     * [A Storage ügyféloldali kódtára a .NET-hez – referencia](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [REST API-hivatkozás](https://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API-referencia](https://msdn.microsoft.com/library/azure/dd179355)

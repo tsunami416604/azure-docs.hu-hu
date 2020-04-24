@@ -1,74 +1,74 @@
 ---
-title: 'Képbesorolási oktatóanyag: Vonatmodellek'
+title: 'Rendszerképek besorolása oktatóanyag: a betanítási modellek'
 titleSuffix: Azure Machine Learning
-description: Az Azure Machine Learning használatával betaníthat egy lemezkép-besorolási modellt egy Python Jupyter-jegyzetfüzetben. Ez az oktatóanyag a második rész.
+description: A Azure Machine Learning segítségével betaníthat egy képbesorolási modellt a scikit-Learn használatával egy Python Jupyter notebookon. Ez az oktatóanyag a kettő első része.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 02/10/2020
+ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8cf46db06a4a2f8fa86f97dab5a8477cf427c999
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bcc9e748cb5f88084b9cd3254654f9dc0fbc8aa1
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80159075"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115567"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Oktatóanyag: Vonat képbesorolási modellek MNIST adatokkal és scikit-learn 
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Oktatóanyag: képosztályozási modellek betanítása MNIST-adatokkal és scikit-Learn 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben az oktatóanyagban egy gépi tanulási modell betanítása távoli számítási erőforrásokon. Az Azure Machine Learning betanítási és üzembe helyezési munkafolyamatát egy Python Jupyter-jegyzetfüzetben fogja használni.  Ezután a notebookot sablonként használhatja a saját gépi tanulási modelljének saját adatokkal való betanításához. Ez az oktatóanyag **egy kétrészes sorozat első része**.  
+Ebben az oktatóanyagban egy gépi tanulási modellt fog betanítani a távoli számítási erőforrásokra. A Azure Machine Learning képzési és üzembe helyezési munkafolyamatát egy Python Jupyter notebookon fogja használni.  Ezután a notebookot sablonként használhatja a saját gépi tanulási modelljének saját adatokkal való betanításához. Ez az oktatóanyag **egy kétrészes sorozat első része**.  
 
-Ez az oktatóanyag egy egyszerű logisztikai regressziót képez az [MNIST](http://yann.lecun.com/exdb/mnist/) adatkészlet és a [scikit-learn](https://scikit-learn.org) használatával az Azure Machine Learning használatával. Az MNIST egy 70 000 szürkeárnyalatos képből álló, népszerű adathalmaz. Minden kép egy 28 x 28 képpontméretű, kézzel írt számjegy, amely nullától kilencig közelítő számot jelent. A cél egy többosztályos besoroló létrehozása, amely képes azonosítani az egyes képeken látható számjegyeket.
+Ez az oktatóanyag egy egyszerű logisztikai regressziót mutat be a [MNIST](http://yann.lecun.com/exdb/mnist/) adatkészlettel és a [scikit-Learn](https://scikit-learn.org) Azure Machine learning használatával. Az MNIST egy 70 000 szürkeárnyalatos képből álló, népszerű adathalmaz. Minden rendszerkép egy 28 x 28 képpontos, a nulla és kilenc közötti számot jelölő, kézzel írt számjegy. A cél egy többosztályos besoroló létrehozása, amely képes azonosítani az egyes képeken látható számjegyeket.
 
-További információ a következő műveletek elmisztika a műveletről:
+Ismerje meg, hogyan végezheti el a következő műveleteket:
 
 > [!div class="checklist"]
-> * Állítsa be a fejlesztői környezetet.
-> * Hozzáférés és vizsgálja meg az adatokat.
-> * Egyszerű logisztikai regressziós modell betanítása egy távoli fürtön.
-> * Tekintse át a betanítási eredményeket, és regisztrálja a legjobb modellt.
+> * Állítsa be a fejlesztési környezetet.
+> * Az adathozzáférés és a vizsgálat.
+> * Egy egyszerű logisztikai regressziós modell betanítása egy távoli fürtön.
+> * Tekintse át a képzés eredményeit, és regisztrálja a legjobb modellt.
 
-Megtudhatja, hogyan válasszon ki egy modellt, és telepítse azt [a második részben ez a bemutató](tutorial-deploy-models-with-aml.md).
+Megtudhatja, hogyan választhatja ki a modelleket, és hogyan telepítheti azt az [oktatóanyag második részében](tutorial-deploy-models-with-aml.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki még ma [az Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 >[!NOTE]
-> Ebben a cikkben az [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.65-ös verziójával teszteltük a kódot.
+> A cikkben ismertetett kód [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.83-verzióval lett tesztelve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az [oktatóanyag befejezése: Első Azure ML-kísérlet létrehozásának első lépései:](tutorial-1st-experiment-sdk-setup.md)
+* Fejezze be az [oktatóanyagot: első lépésként hozza létre első Azure ml-kísérletét](tutorial-1st-experiment-sdk-setup.md) :
     * Munkaterület létrehozása
-    * Klónozza az oktatóanyagok jegyzetfüzetét a munkaterületi mappába.
-    * Hozzon létre egy felhőalapú számítási példányt.
+    * Az oktatóanyagok notebookjának klónozása a munkaterületen lévő mappába.
+    * Felhőalapú számítási példány létrehozása.
 
-* A klónozott *oktatóanyagok/image-classification-mnist-data* mappában nyissa meg az *img-classification-part1-training.ipynb* notebookot. 
+* A klónozott *oktatóanyagok/képbesorolás-mnist-adat* mappában Nyissa meg az *IMG-besorolás-part1-Training. ipynb* notebookot. 
 
 
-A bemutató és a mellékelt **utils.py** fájl is elérhető a [GitHubon,](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) ha saját [helyi környezetben](how-to-configure-environment.md#local)szeretné használni. Futtassa `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` az oktatóanyag függőségei nek telepítéséhez.
+Az oktatóanyag és a kapcsolódó **utils.py** -fájl a [githubon](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) is elérhető, ha a saját [helyi környezetében](how-to-configure-environment.md#local)szeretné használni. Az `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` oktatóanyaghoz tartozó függőségek telepítéséhez futtassa a parancsot.
 
 > [!Important]
-> A cikk többi része ugyanazt a tartalmat tartalmazza, mint a jegyzetfüzetben.  
+> A cikk többi része ugyanazt a tartalmat tartalmazza, mint amit a jegyzetfüzetben lát.  
 >
-> Váltson most a Jupyter-jegyzetfüzetre, ha a kód futtatásakor szeretne olvasni. 
-> Ha egy jegyzetfüzetben egyetlen kódcellát szeretne futtatni, kattintson a kódcellára, és nyomja meg a **Shift+Enter billentyűkombinációt.** Vagy futtassa a teljes jegyzetfüzetet a Felső eszköztár **Összes futtatása** parancsával.
+> Váltson a Jupyter jegyzetfüzetre, ha a kód futtatása közben szeretné olvasni. 
+> Ha egyetlen kód cellát szeretne futtatni egy jegyzetfüzetben, kattintson a kód cellára, és nyomja le a **SHIFT + ENTER billentyűkombinációt**. Vagy futtassa a teljes jegyzetfüzetet úgy, hogy az **összes futtatása** lehetőséget választja a felső eszköztáron.
 
 ## <a name="set-up-your-development-environment"></a><a name="start"></a>A fejlesztési környezet beállítása
 
 Egy Python-notebookban a fejlesztési munka összes beállítása megadható. A telepítő a következő műveleteket tartalmazza:
 
 * Python-csomagok importálása.
-* Csatlakozzon egy munkaterülethez, hogy a helyi számítógép kommunikálhasson a távoli erőforrásokkal.
-* Hozzon létre egy kísérletet, hogy nyomon kövesse az összes fut.
-* Hozzon létre egy távoli számítási célt a betanításhoz.
+* Kapcsolódjon egy munkaterülethez, hogy a helyi számítógép képes legyen kommunikálni a távoli erőforrásokkal.
+* Hozzon létre egy kísérletet az összes Futtatás nyomon követéséhez.
+* Hozzon létre egy távoli számítási célt, amelyet a képzéshez használhat.
 
 ### <a name="import-packages"></a>Csomagok importálása
 
-Importálja azokat a Python-csomagokat, amelyekre ebben a munkamenetben szüksége lesz. Jelenítse meg az Azure Machine Learning SDK verzióját is:
+Importálja azokat a Python-csomagokat, amelyekre ebben a munkamenetben szüksége lesz. Megjeleníti a Azure Machine Learning SDK verzióját is:
 
 ```python
 %matplotlib inline
@@ -82,9 +82,9 @@ from azureml.core import Workspace
 print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```
 
-### <a name="connect-to-a-workspace"></a>Csatlakozás munkaterülethez
+### <a name="connect-to-a-workspace"></a>Kapcsolódás munkaterülethez
 
-Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. `Workspace.from_config()`beolvassa a **config.json** fájlt, és `ws`betölti a részleteket egy objektumnak nevezett objektumba:
+Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. `Workspace.from_config()`beolvassa a **config. JSON** fájlt, és betölti a részleteket `ws`egy nevű objektumba:
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -94,7 +94,7 @@ print(ws.name, ws.location, ws.resource_group, sep='\t')
 
 ### <a name="create-an-experiment"></a>Kísérlet létrehozása
 
-Hozzon létre egy kísérletet a munkaterületen végrehajtott futtatások nyomon követéséhez. Egy munkaterület több kísérletet is használhat:
+Hozzon létre egy kísérletet a munkaterületen végrehajtott futtatások nyomon követéséhez. Egy munkaterület több kísérlettel is rendelkezhet:
 
 ```python
 from azureml.core import Experiment
@@ -105,11 +105,11 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-or-attach-an-existing-compute-target"></a>Meglévő számítási cél létrehozása vagy csatolása
 
-Az Azure Machine Learning Compute felügyelt szolgáltatás használatával az adatszakértők gépi tanulási modelleket taníthatnak be az Azure virtuális gépek fürtjein. Ilyenek például a GPU-támogatással rendelkező virtuális gépek. Ebben az oktatóanyagban az Azure Machine Learning Compute-t hozza létre betanítási környezetként. Az oktatóanyag későbbi részében elküldi a Python-kódot a virtuális gép futtatásához. 
+A felügyelt Azure Machine Learning számítási szolgáltatással az adatszakértők a gépi tanulási modelleket az Azure-beli virtuális gépek fürtjén is betanítják. Ilyenek például a GPU-támogatással rendelkező virtuális gépek. Ebben az oktatóanyagban Azure Machine Learning számítást hoz létre képzési környezetként. Az oktatóanyag későbbi részében a virtuális gépen való futtatáshoz a Python-kódot kell elküldenie. 
 
 Az alábbi kód létrehozza a számítási fürtöket, ha azok még nem léteznek a munkaterületen.
 
- **A számítási cél létrehozása körülbelül öt percet vesz igénybe.** Ha a számítási erőforrás már a munkaterületen van, a kód használja, és kihagyja a létrehozási folyamatot.
+ **A számítási cél létrehozása körülbelül öt percet vesz igénybe.** Ha a számítási erőforrás már szerepel a munkaterületen, a kód ezt használja, és kihagyja a létrehozási folyamatot.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -152,18 +152,18 @@ Most már rendelkezésre állnak a modell felhőben történő betanításához 
 
 ## <a name="explore-data"></a>Adatok megismerése
 
-A modell betanítása előtt meg kell értenie a betanításához használt adatokat. Ebben a szakaszban megtanulhatja a következőket:
+A modellek betanítása előtt meg kell ismernie a betanításához használt adattípust. Ebben a szakaszban megtanulhatja a következőket:
 
-* Töltse le az MNIST adatkészletet.
+* Töltse le a MNIST adatkészletet.
 * Néhány mintakép megjelenítése.
 
 ### <a name="download-the-mnist-dataset"></a>Az MNIST-adathalmaz letöltése
 
-Azure Open datasets segítségével a nyers MNIST adatfájlok beolvasása. [Az Azure Open Datasets](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) olyan nyilvános adatkészletek, amelyek segítségével forgatókönyv-specifikus funkciókat adhat a gépi tanulási megoldásokhoz a pontosabb modellek érdekében. Minden adatkészlet rendelkezik egy `MNIST` megfelelő osztály, ebben az esetben az adatok beolvasása különböző módon.
+A nyers MNIST-adatfájlok beszerzéséhez használja az Azure Open adatkészleteket. Az [Azure Open-adatkészletek](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) olyan beszerzett nyilvános adatkészletek, amelyekkel pontosabb modelleket adhat hozzá a gépi tanulási megoldásokhoz. Ebben az esetben minden adatkészlet rendelkezik egy `MNIST` megfelelő osztállyal, amely különböző módokon kéri le az adatokat.
 
-Ez a kód `FileDataset` objektumként olvassa be az adatokat, amely a alosztálya. `Dataset` A `FileDataset` hivatkozások egyetlen vagy több fájlt bármilyen formátumban az adattárak vagy nyilvános URL-eket. Az osztály lehetővé teszi a fájlok letöltését vagy csatlakoztatását a számításhoz az adatforrás helyére való hivatkozás létrehozásával. Emellett regisztrálja az adatkészletet a munkaterületre a betanítás során történő egyszerű lekérés érdekében.
+Ez a kód egy `FileDataset` objektumként kérdezi le az adatmennyiséget, amely a `Dataset`következő alosztálya:. A `FileDataset` egy vagy több fájlra hivatkozik az adattárolókban vagy a nyilvános URL-címekben. Az osztály lehetővé teszi a fájlok a számításhoz való letöltését vagy csatlakoztatását az adatforrás helyére mutató hivatkozás létrehozásával. Emellett regisztrálja az adatkészletet a munkaterületen a betanítás során történő egyszerű lekéréshez.
 
-Kövesse az [útmutatót, ha](how-to-create-register-datasets.md) többet szeretne megtudni az adatkészletekről és azok SDK-ban való használatáról.
+Az adatkészletekről és azok használatáról az SDK-ban kövesse az [útmutató](how-to-create-register-datasets.md) című témakört.
 
 ```python
 from azureml.core import Dataset
@@ -183,17 +183,20 @@ mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
 
 ### <a name="display-some-sample-images"></a>Mintaképek megjelenítése
 
-Töltse be a tömörített fájlokat `numpy` tömbökbe. Ezután a `matplotlib` használatával ábrázoljon 30 véletlenszerű képet az adathalmazból, felettük a hozzájuk tartozó címkével. Ehhez a `load_data` lépéshez egy `util.py` fájlban található függvény szükséges. Ezt a fájlt a mintamappa tartalmazza. Győződjön meg arról, hogy ugyanabba a mappába van helyezve, mint ez a jegyzetfüzet. A `load_data` függvény egyszerűen numpy tömbökbe elemzi a tömörített fájlokat.
+Töltse be a tömörített fájlokat `numpy` tömbökbe. Ezután a `matplotlib` használatával ábrázoljon 30 véletlenszerű képet az adathalmazból, felettük a hozzájuk tartozó címkével. Ehhez a lépéshez egy `load_data` `util.py` fájlhoz tartozó függvényre van szükség. Ezt a fájlt a mintamappa tartalmazza. Győződjön meg arról, hogy az a jegyzetfüzettel megegyező mappába van helyezve. A `load_data` függvény egyszerűen elemzi a tömörített fájlokat a NumPy tömbökben.
 
 ```python
 # make sure utils.py is in the same directory as this code
 from utils import load_data
+import glob
+
 
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the model converge faster.
-X_train = load_data(os.path.join(data_folder, "train-images-idx3-ubyte.gz"), False) / 255.0
-X_test = load_data(os.path.join(data_folder, "t10k-images-idx3-ubyte.gz"), False) / 255.0
-y_train = load_data(os.path.join(data_folder, "train-labels-idx1-ubyte.gz"), True).reshape(-1)
-y_test = load_data(os.path.join(data_folder, "t10k-labels-idx1-ubyte.gz"), True).reshape(-1)
+X_train = load_data(glob.glob(os.path.join(data_folder,"**/train-images-idx3-ubyte.gz"), recursive=True)[0], False) / 255.0
+X_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-images-idx3-ubyte.gz"), recursive=True)[0], False) / 255.0
+y_train = load_data(glob.glob(os.path.join(data_folder,"**/train-labels-idx1-ubyte.gz"), recursive=True)[0], True).reshape(-1)
+y_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-labels-idx1-ubyte.gz"), recursive=True)[0], True).reshape(-1)
+
 
 # now let's show some randomly chosen images from the traininng set.
 count = 0
@@ -211,16 +214,16 @@ plt.show()
 
 A véletlenszerű képminta a következőket jeleníti meg:
 
-![Véletlenszerű képminta](./media/tutorial-train-models-with-aml/digits.png)
+![Véletlenszerűen kiválasztott képek](./media/tutorial-train-models-with-aml/digits.png)
 
 Most már van elképzelése arról, hogy néznek ki ezek a képek, és milyen előrejelzési eredmény várható.
 
 ## <a name="train-on-a-remote-cluster"></a>Betanítás távoli fürtön
 
-Ehhez a feladathoz elküldi a feladatot a korábban beállított távoli betanítási fürtön való futtatáshoz.  A feladat elküldésének menete:
+Ehhez a feladathoz be kell nyújtania a feladatot a korábban beállított távoli képzési fürtön való futtatáshoz.  A feladat elküldésének menete:
 * Könyvtár létrehozása
 * Betanító szkript létrehozása
-* Becslő objektum létrehozása
+* Kalkulátor-objektum létrehozása
 * Feladat küldése
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
@@ -228,6 +231,7 @@ Ehhez a feladathoz elküldi a feladatot a korábban beállított távoli betaní
 Hozzon létre egy kódtárat, amellyel eljuttathatja a szükséges kódot a számítógépéről a távoli erőforrásra.
 
 ```python
+import os
 script_folder = os.path.join(os.getcwd(), "sklearn-mnist")
 os.makedirs(script_folder, exist_ok=True)
 ```
@@ -245,7 +249,7 @@ import numpy as np
 import glob
 
 from sklearn.linear_model import LogisticRegression
-from sklearn.externals import joblib
+import joblib
 
 from azureml.core import Run
 from utils import load_data
@@ -265,6 +269,7 @@ X_train = load_data(glob.glob(os.path.join(data_folder, '**/train-images-idx3-ub
 X_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
 y_train = load_data(glob.glob(os.path.join(data_folder, '**/train-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
 y_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
+
 print(X_train.shape, y_train.shape, X_test.shape, y_test.shape, sep = '\n')
 
 # get hold of the current run
@@ -291,11 +296,11 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 Figyelje meg, hogyan kéri le a szkript az adatokat, és menti a modelleket:
 
-+ A betanítási parancsfájl argumentumot olvas fel az adatokat tartalmazó könyvtár megkereséséhez. Amikor később elküldi a feladatot, az adattárban a következő argumentumra kell mutatnia: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
++ A betanítási parancsfájl beolvas egy argumentumot, amely az adatokat tartalmazó könyvtárat keresi. Amikor később elküldi a feladatot, az adattárban a következő argumentumra kell mutatnia: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ A betanítási parancsfájl a modellt egy **kimenetnevű**könyvtárba menti. Az ebbe a könyvtárba írt összes fájl automatikusan fel lesz töltve a munkaterületére. A modell elérése ebből a könyvtárból később az oktatóanyagban. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
++ A betanítási szkript egy **kimenet**nevű könyvtárba menti a modellt. Az ebbe a könyvtárba írt összes fájl automatikusan fel lesz töltve a munkaterületére. Ehhez a címtárhoz az oktatóanyagban később férhet hozzá a modellhez. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
-+ A betanítási `utils.py` parancsfájl megköveteli, hogy a fájl megfelelően töltse be az adatkészletet. A következő kód `utils.py` `script_folder` másolja be, hogy a fájl elérhető legyen a betanítási parancsfájllal együtt a távoli erőforráson.
++ A betanítási parancsfájl használatához `utils.py` a fájlnak megfelelően be kell töltenie az adatkészletet. A következő kód bemásolja `utils.py` `script_folder` a fájlt, hogy a fájl elérhető legyen a távoli erőforráson lévő betanítási parancsfájllal együtt.
 
   ```python
   import shutil
@@ -304,89 +309,99 @@ Figyelje meg, hogyan kéri le a szkript az adatokat, és menti a modelleket:
 
 ### <a name="create-an-estimator"></a>Becslő létrehozása
 
-Egy [SKLearn estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) objektum ot használ a futtatás elküldéséhez. A becslő létrehozásához határozza meg a következő elemeket az alábbi kód futtatásával:
+A futtatás elküldése egy becslőobjektummal történik. Azure Machine Learning előre konfigurált becslések rendelkezik a gyakori gépi tanulási keretrendszerek, valamint az általános kalkulátorok számára. Hozzon létre egy kalkulátort a megadásával
+
 
 * A becslőobjektum neve (`est`).
 * A szkripteket tartalmazó könyvtár. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából.
 * A számítási cél. Ebben az esetben a létrehozott Azure Machine Learning számítási fürtöt használja.
-* A betanítási parancsfájl neve **train.py**.
+* A betanítási szkript neve, **Train.py**.
+* A parancsfájl futtatásához szükséges kódtárakat tartalmazó környezet.
 * A betanítási szkript szükséges paraméterei.
 
-Ebben az oktatóanyagban ez a cél az AmlCompute. A parancsfájlmappában lévő összes fájl feltöltésre kerül a fürtcsomópontokba futtatásra. A **data_folder** az adatkészlet használatára van beállítva. Először hozzon létre egy környezeti objektumot, amely meghatározza a képzéshez szükséges függőségeket. 
+Ebben az oktatóanyagban ez a cél a AmlCompute. A parancsfájl mappájában lévő összes fájl a fürt csomópontjaiba lesz feltöltve futtatásra. A **data_folder** az adatkészlet használatára van beállítva. "Először is hozzon létre egy környezetet, amely tartalmazza a következőket: a scikit-Learn Library, a azureml-adatelőkészítés, amely az adatkészlet eléréséhez szükséges, és a azureml – alapértékek, amelyek a naplózási metrikák függőségeit tartalmazzák. A azureml-alapértékek a modell webszolgáltatásként való üzembe helyezéséhez szükséges függőségeket is tartalmazzák az oktatóanyag 2. részében.
+
+A környezet meghatározása után regisztrálja a munkaterületet, hogy újra használhassa azt az oktatóanyag 2. részében.
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 
-env = Environment('my_env')
-cd = CondaDependencies.create(pip_packages=['azureml-sdk','scikit-learn','azureml-dataprep[pandas,fuse]>=1.1.14'])
+# to install required packages
+env = Environment('tutorial-env')
+cd = CondaDependencies.create(pip_packages=['azureml-dataprep[pandas,fuse]>=1.1.14', 'azureml-defaults'], conda_packages = ['scikit-learn==0.22.1'])
+
 env.python.conda_dependencies = cd
+
+# Register environment to re-use later
+env.register(workspace = ws)
 ```
 
-Ezután hozza létre a becslőt a következő kóddal.
+Ezután hozza létre a kalkulátort a következő kóddal.
 
 ```python
-from azureml.train.sklearn import SKLearn
+from azureml.train.estimator import Estimator
 
 script_params = {
+    # to mount files referenced by mnist dataset
     '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
     '--regularization': 0.5
 }
 
-est = SKLearn(source_directory=script_folder,
+est = Estimator(source_directory=script_folder,
               script_params=script_params,
               compute_target=compute_target,
-              environment_definition=env, 
+              environment_definition=env,
               entry_script='train.py')
 ```
 
 ### <a name="submit-the-job-to-the-cluster"></a>Feladat küldése a fürtnek
 
-Futtassa a kísérletet a becslő objektum elküldésével:
+Futtassa a kísérletet a kalkulátor-objektum elküldésével:
 
 ```python
 run = exp.submit(config=est)
 run
 ```
 
-Mivel a hívás aszinkron, a feladat **indításakor egy felkészülési** vagy **futási** állapotot ad vissza.
+Mivel a hívás aszinkron, egy **előkészítési** vagy **futtatási** állapotot ad vissza, amint a feladatot elindítják.
 
 ## <a name="monitor-a-remote-run"></a>Távoli futtatás monitorozása
 
-Összességében az első futás **körülbelül 10 percet**vesz igénybe. De a későbbi futtatások, mindaddig, amíg a parancsfájl-függőségek nem változnak, ugyanazt a lemezképet újra felhasználja. Tehát a konténer indítási ideje sokkal gyorsabb.
+Összességében az első futtatás **körülbelül 10 percet**vesz igénybe. A későbbi futtatások esetében azonban, ha a parancsfájl függőségei nem változnak, ugyanazt a rendszerképet használja a rendszer. Így a tároló indítási ideje sokkal gyorsabb.
 
-Mi történik várakozás közben:
+Mi történik a várakozás közben:
 
-- **Lemezkép létrehozása:** Létrejön egy Docker-rendszerkép, amely megfelel a becslés által megadott Python-környezetnek. A rendszerkép feltöltődik a munkaterületre. A képek létrehozása és feltöltése **körülbelül öt percet**vesz igénybe.
+- **Rendszerkép létrehozása**: a rendszer létrehoz egy Docker-rendszerképet, amely megfelel a kalkulátor által meghatározott Python-környezetnek. A rendszerkép feltöltődik a munkaterületre. A képek létrehozása és feltöltése **körülbelül öt percet**vesz igénybe.
 
-  Ez a szakasz minden Python-környezetben egyszer történik, mert a tároló gyorsítótárazva van a későbbi futtatások hoz. A kép létrehozása során a rendszer a futási előzményekbe streameli a naplókat. Ezek a naplók segítségével figyelheti a lemezkép létrehozásának folyamatát.
+  Ez a szakasz egyszer fordul elő minden Python-környezetben, mert a tároló gyorsítótárazva lesz a későbbi futtatásokhoz. A kép létrehozása során a rendszer a futási előzményekbe streameli a naplókat. A képlétrehozási folyamat nyomon követhető a naplók használatával.
 
-- **Méretezés**: Ha a távoli fürt a jelenleg rendelkezésre állónál több csomópontot igényel a futtatáshoz, a rendszer automatikusan további csomópontokat ad hozzá. Méretezés általában **körülbelül öt percet** vesz igénybe.
+- **Skálázás**: Ha a távoli fürtnek több csomópontra van szüksége a jelenleg elérhető futtatáshoz, a további csomópontok automatikusan hozzáadódnak. A skálázás általában **körülbelül öt percet** vesz igénybe.
 
-- **Futás:** Ebben a szakaszban a szükséges parancsfájlok és fájlok küldése a számítási cél. Ezután az adattárak csatlakoztatva vagy másolva lesznek. És akkor a **entry_script** fut. Afeladat futása közben a **stdout** és a **./logs** könyvtár a futtatási előzményekbe kerül. Ezek a naplók segítségével figyelheti a futtatás folyamatát.
+- **Futtatás**: ebben a szakaszban a szükséges parancsfájlokat és fájlokat a rendszer elküldi a számítási célra. Az adattárolók csatlakoztatása vagy másolása megtörtént. Ezután a **entry_script** fut. Amíg a feladatok futnak, az **StdOut** és a **./logs** könyvtár a futtatási előzményekre van továbbítva. A Futtatás előrehaladását a naplók használatával figyelheti.
 
-- **Utófeldolgozás:** A futtatás **./outputkönyvtárát** a rendszer átmásolja a munkaterület futtatási előzményeibe, így elérheti ezeket az eredményeket.
+- **Feldolgozás után**a rendszer átmásolja a futtatáshoz tartozó **./outputs** könyvtárat a munkaterület futtatási előzményeibe, így elérheti ezeket az eredményeket.
 
-A futó feladat előrehaladását többféleképpen ellenőrizheti. Ez az oktatóanyag Jupyter `wait_for_completion` widgetet és egy módszert használ.
+A futó feladatok előrehaladását többféleképpen is megtekintheti. Ez az oktatóanyag egy Jupyter widgetet és `wait_for_completion` egy metódust használ.
 
 ### <a name="jupyter-widget"></a>Jupyter-vezérlő
 
-Nézze meg a haladást a távon egy [Jupyter widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). A futtatási beküldéshez hasonlóan a widget is aszinkron, és 10-15 másodpercenként élő frissítéseket biztosít, amíg a feladat befejeződik:
+Tekintse meg a Futtatás folyamatát egy [Jupyter widgettel](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). A futtatási beküldéshez hasonlóan a widget aszinkron módon működik, és 10 – 15 másodpercig élő frissítéseket biztosít a feladatok befejezéséig:
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(run).show()
 ```
 
-A widget a következőhöz fog hasonlítani a képzés végén:
+A widget a következőhöz hasonlóan fog kinézni a képzés végén:
 
 ![Jegyzetfüzet widget](./media/tutorial-train-models-with-aml/widget.png)
 
-Ha meg kell szakítania a futást, kövesse [az alábbi utasításokat.](https://aka.ms/aml-docs-cancel-run)
+Ha le kell mondania egy futtatást, kövesse [az alábbi utasításokat](https://aka.ms/aml-docs-cancel-run).
 
 ### <a name="get-log-results-upon-completion"></a>Naplóeredmények lekérése a befejezéskor
 
-A modell betanítása és monitorozása a háttérben zajlik. Várjon, amíg a modell befejezi a betanítást, mielőtt további kódot futtatna. A `wait_for_completion` modellbetanítás befejezésének megjelenítése:
+A modell betanítása és monitorozása a háttérben zajlik. Várjon, amíg a modell befejezte a képzést, mielőtt további kódokat futtasson. A `wait_for_completion` következő paranccsal jelenítheti meg, hogy mikor fejeződik be a modell betanítása:
 
 ```python
 run.wait_for_completion(show_output=False)  # specify True for a verbose log
@@ -400,23 +415,23 @@ Most már rendelkezik egy távoli fürtön betanított modellel. Kérje le a mod
 print(run.get_metrics())
 ```
 
-A kimenet azt mutatja, hogy a távoli modell pontossága 0,9204:
+A kimenetben látható, hogy a távoli modell pontossága 0,9204:
 
 `{'regularization rate': 0.8, 'accuracy': 0.9204}`
 
-A következő oktatóanyagban részletesebben is megismerheti ezt a modellt.
+A következő oktatóanyagban részletesebben megismerheti ezt a modellt.
 
 ## <a name="register-model"></a>Modell regisztrálása
 
-A betanítási parancsfájl utolsó `outputs/sklearn_mnist_model.pkl` lépése írta `outputs` a fájlt egy könyvtárban a virtuális gép a fürt, ahol a feladat fut. `outputs`egy speciális könyvtár, hogy a könyvtár összes tartalma automatikusan feltöltődik a munkaterületre. Ez a tartalom a futtatásrekordban jelenik meg a kísérletben a munkaterületén. Így a modellfájl most már a munkaterületen is elérhető.
+A betanítási parancsfájl utolsó lépése a fájlt `outputs/sklearn_mnist_model.pkl` egy, a fürt virtuális `outputs` gépe nevű könyvtárban írta, amelyben a feladatot futtatja. `outputs`egy speciális könyvtár, amelyben a címtárban található összes tartalom automatikusan fel lesz töltve a munkaterületre. Ez a tartalom a futtatásrekordban jelenik meg a kísérletben a munkaterületén. Így a modell fájlja már elérhető a munkaterületen is.
 
-A futtatáshoz kapcsolódó fájlok a következők:
+A futtatáshoz tartozó fájlok láthatók:
 
 ```python
 print(run.get_file_names())
 ```
 
-Regisztrálja a modellt a munkaterületen, hogy Ön vagy más közreműködők később lekérdezhessék, megvizsgálhassák és telepíthessék ezt a modellt:
+Regisztrálja a modellt a munkaterületen, hogy Ön vagy más közreműködők később is lekérdezzenek, megvizsgálják és üzembe helyezhetik a modellt:
 
 ```python
 # register model
@@ -429,7 +444,7 @@ print(model.name, model.id, model.version, sep='\t')
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-Csak az Azure Machine Learning Compute-fürtis törölhető. Az automatikus skálázás azonban be van kapcsolva, és a fürt minimális értéke nulla. Így ez az erőforrás nem jár további számítási díjakkal, ha nincs használatban:
+A Azure Machine Learning számítási fürtöt is törölheti. Az autoskálázás azonban be van kapcsolva, és a fürt minimális értéke nulla. Így az adott erőforrás nem jár további számítási költségekkel, ha nincs használatban:
 
 ```python
 # Optionally, delete the Azure Machine Learning Compute cluster
@@ -438,13 +453,13 @@ compute_target.delete()
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az Azure Machine Learning-oktatóanyagban a Pythont használta a következő feladatokhoz:
+Ebben a Azure Machine Learning oktatóanyagban a Pythont használtuk a következő feladatokhoz:
 
 > [!div class="checklist"]
-> * Állítsa be a fejlesztői környezetet.
-> * Hozzáférés és vizsgálja meg az adatokat.
-> * Több modell betanítása egy távoli fürtön a népszerű scikit-learn gépi tanulási könyvtár használatával
-> * Tekintse át a betanításrészleteit, és regisztrálja a legjobb modellt.
+> * Állítsa be a fejlesztési környezetet.
+> * Az adathozzáférés és a vizsgálat.
+> * Több modell betanítása egy távoli fürtön a népszerű scikit-Learn Machine learning-kódtár használatával
+> * Tekintse át a képzés részleteit, és regisztrálja a legjobb modellt.
 
 Készen áll a regisztrált modell üzembe helyezésére az oktatóanyag-sorozat következő részében található utasítások használatával:
 

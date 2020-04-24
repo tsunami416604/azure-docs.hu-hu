@@ -1,6 +1,6 @@
 ---
-title: A minősítésre kész IoT Plug and Play előzetes eszköz létrehozása | Microsoft dokumentumok
-description: Eszközfejlesztőként ismerje meg, hogyan hozhat létre olyan IoT Plug and Play előzetes verziójú eszközt, amely készen áll a minősítésre.
+title: IoT-Plug and Play előnézeti eszköz létrehozása, amely készen áll a minősítésre | Microsoft Docs
+description: Az eszköz fejlesztőinek megtudhatja, hogyan hozhat létre olyan IoT-Plug and Play előnézeti eszközt, amely készen áll a minősítésre.
 author: tbhagwat3
 ms.author: tanmayb
 ms.date: 12/28/2019
@@ -16,51 +16,51 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/25/2020
 ms.locfileid: "80239911"
 ---
-# <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>A minősítésre kész IoT Plug and Play előzetes eszköz létrehozása
+# <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>IoT Plug and Play előnézeti eszköz létrehozása, amely készen áll a minősítésre
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre egy IoT Plug and Play előzetes verziójú eszközt eszközfejlesztőként, amely készen áll a minősítésre.
+Ebből az oktatóanyagból megtudhatja, hogyan fejlesztheti a IoT Plug and Play előnézeti eszközt, amely készen áll a minősítésre.
 
-A tanúsítási tesztek ellenőrzik, hogy:
+A minősítési tesztek a következőket ellenőrzi:
 
-- Az IoT Plug and Play eszközkódja telepítve van az eszközön.
-- Az IoT Plug and Play eszközkódja az Azure IoT SDK-val készült.
-- Az eszközkód támogatja az [Azure IoT Hub eszközkiépítési szolgáltatást.](../iot-dps/about-iot-dps.md)
-- Az eszközkód megvalósítja az eszközinformációs felületet.
-- A képességmodell és az eszközkód együttműködik az IoT Centrallal.
+- A IoT Plug and Play eszköz kódja telepítve van az eszközön.
+- A IoT Plug and Play eszköz kódját az Azure IoT SDK-val készítettük.
+- Az eszköz kódja támogatja az [Azure-IoT hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
+- Az eszköz kódja megvalósítja az eszköz információs felületét.
+- A képesség modell és az eszköz kódja IoT Centralekkel működik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-- [Visual Studio kód](https://code.visualstudio.com/download)
-- [Azure IoT-eszközök a VS Code bővítménycsomaghoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Azure IoT-eszközök a vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Packhez
 
-Az [Eszközképesség-modell használata](quickstart-create-pnp-device-windows.md) eszközgyorsindítást is el kell végeznie a Windows számára. A rövid útmutató bemutatja, hogyan állíthatja be a fejlesztői környezetet vcpkg használatával, és hozzon létre egy mintaprojektet.
+A Windows rendszerhez készült [eszköz-gyors útmutató létrehozásához az eszköz képességeinek modelljét](quickstart-create-pnp-device-windows.md) is be kell fejeznie. A rövid útmutató bemutatja, hogyan állíthatja be a fejlesztési környezetet a Vcpkg használatával, és hogyan hozhat létre egy minta projektet.
 
-## <a name="store-a-capability-model-and-interfaces"></a>Képességmodell és -összeköttetések tárolása
+## <a name="store-a-capability-model-and-interfaces"></a>Képesség-modell és felületek tárolása
 
-Az IoT Plug and Play eszközök esetében létre kell adnia egy képességmodellt és felületeket, amelyek az eszköz képességeit JSON-fájlokként határozzák meg.
+A IoT Plug and Play eszközökön olyan képességi modellt és interfészeket kell létrehoznia, amelyek az eszköznek a JSON-fájlként való használatát határozzák meg.
 
 Ezeket a JSON-fájlokat három különböző helyen tárolhatja:
 
 - A nyilvános modell tárháza.
 - A vállalati modell tárháza.
-- A készüléken.
+- Az eszközön.
 
-Az eszköz hitelesítéséhez a fájlokat vagy a vállalati modelltárházban, vagy a nyilvános modelltárházban kell tárolni.
+Jelenleg az eszköz hitelesítéséhez a fájlokat a vállalati modell adattárában vagy a nyilvános modell adattárában kell tárolni.
 
-## <a name="include-the-required-interfaces"></a>A szükséges felületek felvétele
+## <a name="include-the-required-interfaces"></a>A szükséges felületek belefoglalása
 
-A minősítési folyamat végrehajtásához a képességmodellben fel kell tüntetnie és végre kell hajtania az **Eszközinformációs** felületet. Ez az interfész a következő azonosítóval rendelkezik:
+A minősítési folyamat átadásához be kell vonnia és végre kell hajtania az **eszköz adatai** felületet a képesség modellben. Ez az illesztőfelület a következő azonosítóval rendelkezik:
 
 ```json
 "@id": "urn:azureiot:DeviceManagement:DeviceInformation:1"
 ```
 
 > [!NOTE]
-> Ha befejezte a [rövid útmutató: Eszközképesség-modell használatával hozzon létre egy eszközt,](quickstart-create-pnp-device-windows.md)akkor már felvette a modellbe az **Eszközinformáció** felületet.
+> Ha elvégezte a gyors üzembe helyezést: eszköz- [képesség modell használata eszköz létrehozásához](quickstart-create-pnp-device-windows.md), a modellben már szerepel az **eszköz információi** felülete.
 
-Ha az **eszközinformációs felületet** fel szeretné felvenni az `implements` eszközmodellbe, adja hozzá a kapcsolatazonosítót a képességmodell tulajdonságához:
+Az **eszköz adatai** felületének az eszköz modelljébe való felvételéhez adja hozzá az interfész azonosítóját a képesség modell `implements` tulajdonságához:
 
 ```json
 {
@@ -75,62 +75,62 @@ Ha az **eszközinformációs felületet** fel szeretné felvenni az `implements`
 }
 ```
 
-Az **Eszközinformációs** felület megtekintése a VS-kódban:
+Az **eszköz információs** felületének megtekintése a vs Code-ban:
 
-1. A parancspaletta megnyitásához használja a **Ctrl+Shift+P** billentyűkombinációt.
+1. A Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt.
 
-1. Írja be a **Plug and Play parancsot,** majd válassza az **IoT Plug and Play Open Model Repository parancsot.** Válassza **a Nyilvános modell tárházának megnyitása**lehetőséget. A nyilvános modell tárház a VS-kódban nyílik meg.
+1. Adja meg **Plug and Play** , majd válassza ki a **IoT Plug and Play nyissa meg a Model repository** parancsot. Válassza a **nyilvános modell-adattár megnyitása**lehetőséget. A nyilvános modell tárháza a VS Code-ban nyílik meg.
 
-1. A nyilvános modelltárban válassza a **Kapcsolatok** lapot, jelölje ki a szűrő ikont, és írja be az **Eszközadatok értéket** a szűrőmezőbe.
+1. A nyilvános modell adattárában válassza a **felületek** fület, válassza a szűrő ikont, majd írja be az **eszköz adatait** a szűrő mezőbe.
 
-1. Az **Eszközinformáció-felület** helyi példányának létrehozásához jelölje ki azt a szűrt listában, majd kattintson a **Letöltés gombra.** A VS Code megjeleníti a kapcsolatfájlt.
+1. Az **eszköz adatai** felület helyi másolatának létrehozásához jelölje ki azt a szűrt listában, majd válassza a **Letöltés**lehetőséget. A VS Code megjeleníti a csatoló fájlját.
 
-Az **Eszközinformációs** felület megtekintése az Azure CLI használatával:
+Az **eszköz információs** felületének megtekintése az Azure CLI használatával:
 
-1. [Telepítse az Azure IoT CLI bővítményt.](howto-install-pnp-cli.md)
+1. [Telepítse az Azure IOT CLI bővítményt](howto-install-pnp-cli.md).
 
-1. A következő Azure CLI-paranccsal megjeleníthetegy felületet az eszközinformációs felület azonosítójával:
+1. Az alábbi Azure CLI-paranccsal megjelenítheti az eszköz információs felületének AZONOSÍTÓját tartalmazó felületet:
 
     ```azurecli
     az iot pnp interface show --interface urn:azureiot:DeviceManagement:DeviceInformation:1
     ```
 
-További információ: [Az Azure IoT-bővítmény telepítése és használata az Azure CLI-hez](howto-install-pnp-cli.md)című témakörben.
+További információkért lásd: [Az Azure IoT bővítmény telepítése és használata az Azure CLI-hez](howto-install-pnp-cli.md).
 
-## <a name="update-device-code"></a>Eszközkód frissítése
+## <a name="update-device-code"></a>Eszköz kódjának frissítése
 
-### <a name="enable-device-provisioning-through-the-azure-iot-device-provisioning-service-dps"></a>Eszközkiépítés engedélyezése az Azure IoT-eszközkiépítési szolgáltatáson (DPS) keresztül
+### <a name="enable-device-provisioning-through-the-azure-iot-device-provisioning-service-dps"></a>Eszköz kiépítés engedélyezése az Azure IoT Device kiépítési szolgáltatással (DPS)
 
-Az eszköz hitelesítéséhez engedélyeznie kell az [Azure IoT-eszközlétesítési szolgáltatáson (DPS)](https://docs.microsoft.com/azure/iot-dps/about-iot-dps)keresztül történő kiépítést. A DPS használatának hozzáadásához létrehozhatja a C-kódcsonkot a VS-kódban. Kövesse az alábbi lépéseket:
+Az eszköz hitelesítéséhez engedélyeznie kell az üzembe [helyezést az Azure IoT Device kiépítési szolgáltatás (DPS)](https://docs.microsoft.com/azure/iot-dps/about-iot-dps)használatával. Ha hozzá szeretné adni a DPS használatát, a C Code-t is létrehozhatja a VS Code-ban. Kövesse az alábbi lépéseket:
 
-1. Nyissa meg a DCM-fájlt tartalmazó mappát a VS-kódban, a **Ctrl+Shift+P** billentyűkombinációval nyissa meg a parancspalettát, írja be az **IoT Plug and Play parancsot,** és válassza **az Eszközkód csonk létrehozása lehetőséget.**
+1. Nyissa meg a fájlt a VS Code-ban a DCM-fájllal, a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza az **eszköz kódjának előállítása**lehetőséget.
 
-1. Válassza ki azt a DCM-fájlt, amelyet az eszközkódcsonk létrehozásához kíván használni.
+1. Válassza ki azt a DCM-fájlt, amelyet az eszköz kódjának létrehozásához használni kíván.
 
-1. Írja be a projekt nevét, például **sample_device**. Ez az eszközalkalmazás neve.
+1. Adja meg a projekt nevét, például **sample_device**. Ez az eszköz-alkalmazás neve.
 
-1. Válassza az **ANSI C nyelvet.**
+1. Válassza az **ANSI C** nyelvet.
 
-1. Válassza **a Via DPS (Device Provisioning Service) szimmetrikus kulcsot** csatlakozási módszerként.
+1. Válasszon a következőn **keresztül: DPS (Device kiépítési szolgáltatás) szimmetrikus kulcs** , mint a kapcsolatok módszere.
 
-1. Projektsablonként válassza **a CMake Project on Windows** lehetőséget.
+1. Válassza a **Windows rendszerhez készült CMAK-projekt** lehetőséget a Project sablonként.
 
-1. Válassza a **Via Vcpkg** lehetőséget az eszköz SDK-jának felvételére.
+1. Válassza a **Vcpkg-on keresztül** lehetőséget az eszköz SDK-val való felvételéhez.
 
-1. A VS Code új ablakot nyit meg generált eszközkódcsonkfájlokkal.
+1. A VS Code egy új ablakot nyit meg a generált kódlap-fájlokkal.
 
 ## <a name="build-and-run-the-code"></a>A kód létrehozása és futtatása
 
-A Vcpkg csomag segítségével hozza létre a generált eszközkód csonkot. Az alkalmazást hoz létre szimulálja egy eszköz, amely csatlakozik egy IoT hub. Az alkalmazás telemetriai adatokat és tulajdonságokat küld, és parancsokat fogad.
+A létrehozott Vcpkg-csomag használatával létrehozza a generált eszköz kódját. Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy IoT hubhoz csatlakozik. Az alkalmazás telemetria és tulajdonságokat küld, és parancsokat fogad.
 
-1. Hozzon `cmake` létre egy `sample_device` alkönyvtárat a mappában, és keresse meg azt a mappát:
+1. Hozzon `cmake` létre egy alkönyvtárat a `sample_device` mappában, és navigáljon a következő mappába:
 
     ```cmd
     mkdir cmake
     cd cmake
     ```
 
-1. Futtassa a következő parancsokat a létrehozott kódcsonk létrehozásához (a helyőrző helyett a Vcpkg tártár könyvtára):
+1. Futtassa a következő parancsokat a generált kód létrehozásához (a helyőrzőt cserélje le a Vcpkg-tárház könyvtárára):
 
     ```cmd
     cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
@@ -139,7 +139,7 @@ A Vcpkg csomag segítségével hozza létre a generált eszközkód csonkot. Az 
     ```
     
     > [!NOTE]
-    > Ha a Visual Studio 2017-et vagy 2015-öt használja, a CMake-generátort a használt buildeszközök alapján kell megadnia:
+    > A Visual Studio 2017-es vagy a 2015-es verziójának használata esetén meg kell adnia a CMak-generátort az Ön által használt build-eszközök alapján:
     >```cmd
     ># Either
     >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
@@ -148,35 +148,35 @@ A Vcpkg csomag segítségével hozza létre a generált eszközkód csonkot. Az 
     >```
 
     > [!NOTE]
-    > Ha a cmake nem találja a C++ fordítót, az előző parancs futtatásakor buildhibákat kap. Ebben az esetben próbálja meg futtatni ezt a parancsot a [Visual Studio parancssori parancssorból.](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)
+    > Ha a CMAK nem találja a C++ fordítót, akkor az előző parancs futtatásakor hibaüzeneteket kap. Ha ez történik, próbálja meg futtatni ezt a parancsot a [Visual Studio parancssorában](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
 
-1. A létrehozás sikeres befejezése után adja meg a DPS hitelesítő adatait **(DPS ID hatókör,** **DPS szimmetrikus kulcs**, **eszközazonosító)** az alkalmazás paramétereiként. A hitelesítő adatok beszerezése a tanúsítványportálról, [olvassa el az IoT Plug and Play eszköz csatlakoztatása és tesztelése című témakört.](tutorial-certification-test.md#connect-and-discover-interfaces)
+1. A létrehozás sikeres befejezése után adja meg a DPS hitelesítő adatait (DPS-**azonosító hatóköre**, **DPS szimmetrikus kulcs**, **eszköz azonosítója**) az alkalmazás paramétereinek megfelelően. A hitelesítő adatoknak a minősítési portálról való lekéréséhez tekintse [meg a IoT Plug and Play eszköz csatlakoztatása és tesztelése](tutorial-certification-test.md#connect-and-discover-interfaces)című témakört.
 
     ```cmd\sh
     .\Debug\sample_device.exe [Device ID] [DPS ID Scope] [DPS symmetric key]
     ```
 
-### <a name="implement-standard-interfaces"></a>Szabványos összeköttetések megvalósítása
+### <a name="implement-standard-interfaces"></a>Standard felületek implementálása
 
-#### <a name="implement-the-model-information-and-sdk-information-interfaces"></a>A modellinformációs és SDK-információs felületek megvalósítása
+#### <a name="implement-the-model-information-and-sdk-information-interfaces"></a>A modell információinak és az SDK-információs felületek implementálása
 
-Az Azure IoT-eszköz SDK megvalósítja a modell információs és SDK-információs felületek. Ha a VS Code kódkód kódgenerálási funkcióját használja, az eszközkód az IoT Plug and Play eszköz SDK-t használja.
+Az Azure IoT eszközoldali SDK implementálja a modell információit és az SDK információs felületeit. Ha a Code generálási függvényt használja a VS Code-ban, az eszköz kódja a IoT Plug and Play Device SDK-t használja.
 
-Ha úgy döntött, hogy nem használja az Azure IoT-eszköz SDK, használhatja az SDK-forráskódot referenciaként a saját megvalósítása.
+Ha úgy döntött, hogy nem használja az Azure IoT eszközoldali SDK-t, a saját megvalósításához használhatja az SDK forráskódját is.
 
-#### <a name="implement-the-device-information-interface"></a>Az eszközinformációs felület megvalósítása
+#### <a name="implement-the-device-information-interface"></a>Az eszköz információs felületének implementálása
 
-Valósítsa meg az **eszközinformációs felületet** az eszközön, és adja meg az eszközspecifikus információkat futási időben.
+Implementálja az eszköz **információs** felületét az eszközön, és adja meg az eszközre vonatkozó információkat az eszközről a futási időben.
 
-Használhatja a [linuxos](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) **eszközinformációs** felület példaimplementációját referenciaként.
+Példaként használhatja a [Linux](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) rendszerhez készült **eszköz információi** felületének implementációját.
 
 ### <a name="implement-all-the-capabilities-defined-in-your-model"></a>A modellben definiált összes képesség megvalósítása
 
-A minősítés során az eszközt programozott módon teszteljük annak érdekében, hogy az interfészekben meghatározott képességeket valósítson meg. Az 501-es HTTP-állapotkód dal válaszolhat az írási és olvasási tulajdonság- és parancskérelmekre, ha az eszköz nem valósítja meg őket.
+A minősítés során az eszköz programozott módon van tesztelve, hogy biztosítsa a felületén definiált képességek megvalósítását. Az 501-as HTTP-állapotkód használatával válaszoljon az írási és olvasási tulajdonságra, és ha az eszköz nem valósítja meg az eszközt, a parancs kéri.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már készített egy IoT Plug and Play eszközt, amely készen áll a minősítésre, a javasolt következő lépés a következő:
+Most, hogy már létrehozott egy IoT Plug and Play eszközre készen áll a minősítésre, a javasolt következő lépés:
 
 > [!div class="nextstepaction"]
-> [További információ az eszköz hitelesítéséhez](tutorial-certification-test.md)
+> [Ismerje meg, hogyan tanúsíthatja eszközét](tutorial-certification-test.md)

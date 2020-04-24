@@ -1,6 +1,6 @@
 ---
-title: AS2 üzenetek küldése és fogadása a B2B-hez
-description: Exchange AS2-üzenetek B2B vállalati integrációs forgatókönyvekhez az Azure Logic Apps vállalati integrációs csomaggal való használatával
+title: AS2-üzenetek küldése és fogadása a B2B-hez
+description: Exchange AS2-üzenetek a B2B vállalati integrációs forgatókönyvekhez Azure Logic Apps és Enterprise Integration Pack használatával
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,122 +8,122 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 0e7c34e42d0ab68a5dab9718075f02a85322ce6c
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458828"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115499"
 ---
-# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>EXCHANGE AS2-üzenetek a B2B vállalati integrációhoz az Azure Logic Apps vállalati integrációs csomaggal
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange AS2-üzenetek a B2B vállalati integrációhoz Azure Logic Apps a Enterprise Integration Pack
 
 > [!IMPORTANT]
-> Az eredeti AS2-összekötő elavult, ezért győződjön meg arról, hogy az **AS2 (v2)** összekötőt használja helyette. Ez a verzió ugyanazokat a képességeket biztosítja, mint az eredeti verzió, a Logic Apps futásidejű, és jelentős teljesítményjavulást biztosít az átviteli teljesítmény és az üzenet mérete tekintetében. Emellett a natív v2-összekötő nem követeli meg, hogy hozzon létre egy kapcsolatot az integrációs fiókkal. Ehelyett, az előfeltételekben leírtak szerint győződjön meg arról, hogy az integrációs fiók csatolása a logikai alkalmazás, ahol azt tervezi, hogy használja az összekötőt.
+> Az eredeti AS2-összekötő elavult, ezért ne felejtse el használni az **AS2 (v2)** összekötőt. Ez a verzió ugyanazokat a képességeket biztosítja, mint az eredeti verzió, a Logic Apps futtatókörnyezetnek natív, és jelentős teljesítménybeli továbbfejlesztéseket biztosít az átviteli sebesség és az üzenetek mérete tekintetében. Emellett a natív v2-összekötő nem igényli, hogy az integrációs fiókhoz hozzon létre egy kapcsolódást. Ehelyett az előfeltételek szakaszban leírtaknak megfelelően ügyeljen arra, hogy összekapcsolja az integrációs fiókját ahhoz a logikai alkalmazáshoz, ahol az összekötőt használni szeretné.
 
-Az AS2-üzenetek azure Logic Apps használata, használhatja az AS2-összekötő, amely eseményindítók és műveletek az AS2 kommunikáció kezelésére. Az üzenetek továbbításakor például az alábbi műveleteket használhatja:
+Az AS2-üzenetek Azure Logic Appsban való használatához használhatja az AS2-összekötőt, amely az AS2-kommunikáció kezelésére szolgáló eseményindítókat és műveleteket biztosít. Ha például az üzenetek továbbításakor meg szeretné teremteni a biztonságot és a megbízhatóságot, a következő műveleteket használhatja:
 
-* [ **AS2 Kódolási** művelet](#encode) a titkosítás, a digitális aláírás és a visszaigazolások üzenetrögzítési értesítésekkel (MDN) keresztül történő biztosításához, amelyek segítik a nem megtagadást. Ez a művelet például AS2/HTTP fejléceket alkalmaz, és konfiguráláskor végrehajtja a következő feladatokat:
+* Az [ **AS2** ](#encode) a titkosítás, a digitális aláírás és a nyugták küldését teszi lehetővé az üzenet-törlési értesítések (MDN) révén, ami segít a nem megtagadási támogatásban. Ez a művelet például az AS2/HTTP fejléceket alkalmazza, és a következő konfiguráláskor hajtja végre ezeket a feladatokat:
 
-  * Kimenő üzenetek et ír alá.
+  * A kimenő üzeneteket aláírja.
   * Titkosítja a kimenő üzeneteket.
   * Tömöríti az üzenetet.
-  * A fájlnév továbbítása a MIME fejlécben.
+  * Továbbítja a fájl nevét a MIME-fejlécben.
 
-* [ **AS2 Dekódolási** művelet](#decode) a visszafejtés, a digitális aláírás és a nyugtázás üzenettörlési értesítéseken (MDN) keresztül történő biztosításához. Ez a művelet például a következő feladatokat hajtja végre:
+* [ **AS2-dekódolási** művelet](#decode) a visszafejtés, a digitális aláírás és a nyugták küldéséhez üzenet-törlési értesítések (MDN) használatával. Ez a művelet például a következő feladatokat hajtja végre:
 
-  * As2/HTTP fejléceket dolgoz fel.
-  * A fogadott MDN-ek és az eredeti kimenő üzenetek egyeztetése.
-  * Frissíti és korrelálja a nem megtagadási adatbázis rekordjait.
-  * Rekordok at ír az AS2 állapotjelentéshez.
-  * Alap64 kódolású tartalom kimenete.
-  * Azt határozza meg, hogy szükség van-e MDN-re. Az AS2-megállapodás alapján határozza meg, hogy az MDN-ek szinkronvagy aszinkron legyenek.Based on the AS2 agreement, determines whether MDNs should be be synchronous or aszinkron.
-  * Szinkron vagy aszinkron MDN-eket hoz létre az AS2-megállapodás alapján.
-  * Beállítja a korrelációs jogkivonatokat és tulajdonságokat az MDN-eken.
+  * AS2/HTTP-fejlécek feldolgozása.
+  * Egyezteti a kapott MDNs az eredeti kimenő üzenetekkel.
+  * Frissíti és korrelálja a nem megtagadási adatbázisban lévő rekordokat.
+  * Az AS2-állapot jelentéskészítési rekordjait írja be.
+  * A hasznos adatok tartalmát Base64 kódolással adja vissza.
+  * Meghatározza, hogy szükség van-e a MDNs. Az AS2-szerződés alapján meghatározza, hogy a MDNs szinkron vagy aszinkron legyen-e.
+  * Az AS2-szerződés alapján szinkron vagy aszinkron MDNs generál.
+  * A korrelációs jogkivonatok és tulajdonságok beállítása a MDNs.
 
-  Ez a művelet a következő feladatokat is végrehajtja, ha konfigurálva van:
+  A művelet a konfiguráláskor is végrehajtja ezeket a feladatokat:
 
   * Ellenőrzi az aláírást.
   * Visszafejti az üzeneteket.
   * Kibontja az üzenetet.
-  * Az üzenetazonosító-ismétlődések ellenőrzése és leengedése.
+  * Az üzenetek AZONOSÍTÓjának duplikálása és letiltása.
 
-Ez a cikk bemutatja, hogyan adhat hozzá az AS2 kódolási és dekódolási műveleteket egy meglévő logikai alkalmazáshoz.
+Ez a cikk bemutatja, hogyan adhatja hozzá az AS2-kódolást és a dekódolási műveleteket egy meglévő logikai alkalmazáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókot.](https://azure.microsoft.com/free/)
+* Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* A logikai alkalmazás, ahonnan szeretné használni az AS2-összekötőt, és egy eseményindító, amely elindítja a logikai alkalmazás munkafolyamatát. Az AS2-összekötő csak műveleteket biztosít, nem eseményindítók. Ha most kezdi meg a logikai alkalmazásokat, tekintse át [az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a Rövid útmutató: Az első logikai alkalmazás létrehozása című ismertetése című ismertetése című ismertetése. [Quickstart: Create your first logic app](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* A logikai alkalmazás, amelyből az AS2-összekötőt és egy olyan triggert szeretne használni, amely elindítja a logikai alkalmazás munkafolyamatát. Az AS2-összekötő csak olyan műveleteket biztosít, amelyek nem triggerek. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget.
 
-* Az Azure-előfizetéshez társított és az AS2-összekötő t használó logikai alkalmazáshoz kapcsolódó [integrációs fiók.](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) Mind a logikai alkalmazás és az integrációs fiók léteznie kell ugyanazon a helyen vagy az Azure-régióban.
+* Az Azure-előfizetéshez társított [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amely ahhoz a logikai alkalmazáshoz van társítva, ahol az AS2-összekötőt tervezi használni. A logikai alkalmazásnak és az integrációs fióknak ugyanazon a helyen vagy az Azure-régióban kell lennie.
 
-* Legalább két [olyan kereskedelmi partner,](../logic-apps/logic-apps-enterprise-integration-partners.md) amelyet már definiált az integrációs fiókjában az AS2 identitásminősítő használatával.
+* Legalább két olyan [kereskedelmi partner](../logic-apps/logic-apps-enterprise-integration-partners.md) , amelyet már definiált az integrációs fiókjában az AS2 Identity minősítő használatával.
 
-* Az AS2-összekötő használata előtt létre kell hoznia egy [AS2-megállapodást](../logic-apps/logic-apps-enterprise-integration-agreements.md) a kereskedelmi partnerei között, és a megállapodást az integrációs fiókjában kell tárolnia.
+* Az AS2-összekötő használata előtt létre kell hoznia egy AS2- [szerződést](../logic-apps/logic-apps-enterprise-integration-agreements.md) a kereskedelmi partnerei között, és a szerződést az integrációs fiókban kell tárolnia.
 
-* Ha [az Azure Key Vault](../key-vault/general/overview.md) tanúsítványkezelés, ellenőrizze, hogy a tároló kulcsok lehetővé teszik a **titkosítási** és **visszafejtési** műveletek. Ellenkező esetben a kódolási és dekódolási műveletek sikertelenek.
+* Ha [Azure Key Vaultt](../key-vault/general/overview.md) használ a Tanúsítványkezelők számára, ellenőrizze, hogy a tároló kulcsai engedélyezik-e a **titkosítási** és a **visszafejtési** műveleteket. Ellenkező esetben a kódolási és a dekódolási műveletek meghiúsulnak.
 
-  Az Azure Portalon nyissa meg a kulcsot a kulcstartóban, tekintse át a kulcs **engedélyezett műveleteit,** és győződjön meg arról, hogy a **titkosítási** és **visszafejtési** műveletek vannak kiválasztva, például:
+  A Azure Portal nyissa meg a Key Vault kulcsát, tekintse át a kulcs **engedélyezett műveleteit**, és győződjön meg arról, hogy a **titkosítási** és **visszafejtési** műveletek ki vannak választva, például:
 
-  ![A tároló kulcsműveleteinek ellenőrzése](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
+  ![A Vault-kulcsok műveleteinek megtekintése](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
-## <a name="encode-as2-messages"></a>AS2 üzenetek kódolása
+## <a name="encode-as2-messages"></a>AS2-üzenetek kódolása
 
-1. Ha még nem, az [Azure Portalon](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic App Designer.
+1. Ha még nem tette meg, a [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
 1. A tervezőben adjon hozzá egy új műveletet a logikai alkalmazáshoz.
 
-1. A Művelet kiválasztása és a keresőmező **csoportban** válassza az **Összes**lehetőséget. A keresőmezőbe írja be az "as2 kódolás" parancsot, és győződjön meg arról, hogy az AS2 (v2) műveletet **választja: AS2 Kódolás**
+1. A **művelet kiválasztása** és a keresőmező területen válassza az **összes**lehetőséget. A keresőmezőbe írja be az "AS2 kódolása" kifejezést, és győződjön meg arról, hogy az AS2 (v2) műveletet választotta: **AS2-kódolás**
 
-   ![Válassza az "AS2 Kódolás" lehetőséget](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
+   !["AS2 kódolás" kiválasztása](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
-1. Most adjon tájékoztatást ezekről a tulajdonságokról:
+1. Most adja meg a következő tulajdonságokkal kapcsolatos információkat:
 
    | Tulajdonság | Leírás |
    |----------|-------------|
-   | **Kódolandó üzenet** | Az üzenet hasznos |
-   | **AS2-tól** | Az üzenet küldőjének azonosítója az AS2-megállapodásban meghatározottak szerint |
-   | **AS2-hez** | Az üzenetfogadó azonosítója az AS2-szerződésben meghatározottak szerint |
+   | **A kódolásra szolgáló üzenet** | Az üzenet tartalma |
+   | **AS2-ból** | Az AS2-szerződés által meghatározott üzenet feladójának azonosítója |
+   | **AS2-ből** | Az AS2-szerződés által meghatározott üzenet-fogadó azonosítója |
    |||
 
    Például:
 
-   ![Üzenetkódolási tulajdonságok](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
+   ![Üzenet kódolásának tulajdonságai](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
 > [!TIP]
-> Ha az aláírt vagy titkosított üzenetek küldésekor problémákat tapasztal, érdemes kipróbálni a különböző SHA256 algoritmusformátumokat. Az AS2 specifikáció nem nyújt semmilyen információt az SHA256 formátumokról, így minden szolgáltató saját implementációt vagy formátumot használ.
+> Ha aláírt vagy titkosított üzenetek küldésével kapcsolatos problémákat tapasztal, érdemes lehet különböző SHA256-algoritmusokat kipróbálni. Az AS2-specifikáció nem biztosít semmilyen információt a SHA256-formátumokról, így minden szolgáltató saját implementációt vagy formátumot használ.
 
 <a name="decode"></a>
 
-## <a name="decode-as2-messages"></a>AS2 üzenetek dekódolása
+## <a name="decode-as2-messages"></a>AS2-üzenetek dekódolása
 
-1. Ha még nem, az [Azure Portalon](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic App Designer.
+1. Ha még nem tette meg, a [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
 1. A tervezőben adjon hozzá egy új műveletet a logikai alkalmazáshoz.
 
-1. A Művelet kiválasztása és a keresőmező **csoportban** válassza az **Összes**lehetőséget. A keresőmezőbe írja be az "as2 dekódolás" parancsot, és győződjön meg arról, hogy az AS2 (v2) műveletet **választja: AS2 Dekódolni**
+1. A **művelet kiválasztása** és a keresőmező területen válassza az **összes**lehetőséget. A keresőmezőbe írja be az "AS2 dekódolása" lehetőséget, és győződjön meg arról, hogy az AS2 (v2) műveletet választotta: **AS2-dekódolás**
 
-   ![Válassza az "AS2 Dekódolás" lehetőséget](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
+   ![Válassza az AS2 dekódolása lehetőséget](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
-1. Ahhoz, hogy az **üzenet kódoljon** és az **Üzenetfejlécek** tulajdonságait, jelölje ki ezeket az értékeket az előző eseményindító vagy műveletkimenetek közül.
+1. Az **üzenet kódolásához** és az **üzenetek fejlécének** tulajdonságaihoz válassza ki ezeket az értékeket az előző triggerből vagy a művelet kimenetből.
 
-   Tegyük fel például, hogy a logikai alkalmazás üzeneteket fogad egy kérelem eseményindítón keresztül. Kiválaszthatja a kimeneteket az adott eseményindítóból.
+   Tegyük fel például, hogy a logikai alkalmazás fogadja az üzeneteket egy kérelem-triggeren keresztül. Kiválaszthatja az adott trigger kimeneteit.
 
-   ![Törzs és fejlécek kijelölése a kimenetek kérése között](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
+   ![Törzs és fejlécek kiválasztása a kérelmek kimenetei közül](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
 ## <a name="sample"></a>Sample
 
-Egy teljesen működőképes logikai alkalmazás üzembe helyezéséhez és az AS2-forgatókönyv mintaalkalmazásához tekintse meg az [AS2 logikai alkalmazássablonját és forgatókönyvét.](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)
+Egy teljesen működőképes logikai alkalmazás és példa AS2-forgatókönyv üzembe helyezéséhez tekintse meg az [AS2 Logic app-sablon és-forgatókönyv](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)című témakört.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötővel kapcsolatos további technikai részleteket, például az összekötő Swagger-fájljában leírt műveleteket és korlátokat az [összekötő referencialapján](https://docs.microsoft.com/connectors/as2/)találja. 
+Az összekötő részletes technikai részleteit, például az összekötő hencegő fájljában leírt műveleteket és korlátokat az összekötő [hivatkozási oldalán](https://docs.microsoft.com/connectors/as2/)találja. 
 
 > [!NOTE]
-> Az [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)lévő logikai alkalmazások esetében az összekötő eredeti ISE-címkével ellátott verziója az [ISE-üzenetkorlátokat](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja.
+> Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében ez az összekötő ISE által címkézett verziója az [ISE B2B-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)használja.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

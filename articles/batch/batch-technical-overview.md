@@ -1,25 +1,14 @@
 ---
-title: Nagyméretű párhuzamos feladatok futtatása a felhőben az Azure Batch használatával | Microsoft Docs
+title: A Azure Batch nagyméretű párhuzamos feladatokat futtat a felhőben
 description: Megismerheti, hogyan használhatja az Azure Batch szolgáltatást nagyméretű párhuzamos és HPC számítási feladatokhoz.
-services: batch
-documentationcenter: ''
-author: mscurrell
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/19/2018
-ms.author: markscu
-ms.custom: mvc
-ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022800"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116349"
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
 
@@ -29,7 +18,7 @@ A fejlesztők a Batch platformszolgáltatásként való használatával olyan Sa
 
 A Batch felár nélkül használható. Csak a mögöttes erőforrások, például a virtuális gépek, a tárolók és a hálózatkezelés használatáért kell fizetnie.
 
-A Batch és az Azure egyéb HPC-megoldásbeállításainak összehasonlítását az [Azure Nagy teljesítményű számítástechnikája (HPC) című témakörben találja.](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)
+Az Azure batch és egyéb HPC-megoldási lehetőségeinek összehasonlítását lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)-ban.
 
 ## <a name="run-parallel-workloads"></a>Párhuzamos számítási feladatok futtatása
 A Batch nagyszerűen működik a belsőleg párhuzamos (más néven „zavaróan párhuzamos”) számítási feladatokkal. A belsőleg párhuzamos számítási feladatok azok, amelyek esetében az alkalmazások egymástól függetlenül futtathatóak, és mindegyik példány a munka egy részét végzi el. Az alkalmazások végrehajtásakor a példányok hozzáférhetnek bizonyos közös adatokhoz, de egymás között nem kommunikálnak. A belsőleg párhuzamos számítási feladatok ezért nagy méretben futtathatók, amit csupán az alkalmazások egyidejű futtatásához rendelkezésre álló számítási erőforrások mennyisége határoz meg.
@@ -73,12 +62,12 @@ Az alábbi diagram egy általános Batch-munkafolyamat lépéseit mutatja be, ah
 
 |Lépés  |Leírás  |
 |---------|---------|
-|1. Töltse fel a **bemeneti fájlokat** és az **alkalmazásokat** a fájlok Azure Storage-fiókjába történő feldolgozásához.     |A bemeneti fájlok az alkalmazás által feldolgozható bármilyen adatok lehetnek, például pénzügyi modellezési adatok vagy átkódolni kívánt videofájlok. Az alkalmazásfájlok az adatokat feldolgozó szkriptek vagy alkalmazások lehetnek, például adathordozó-átkódolók.|
-|2. Hozzon létre egy batch **készlet** számítási csomópontok a Batch-fiókban, egy **feladatot** a számítási feladatok futtatásához a készlet, és **a feladatok** a feladatban.     | A készlet csomópontjai a feladatokat végrehajtó virtuális gépek. Adja meg a tulajdonságokat, például a csomópontok számát és méretét, egy Windows- vagy Linux-alapú virtuálisgép-rendszerképet, valamint a csomópontok a készletre való csatlakozásakor telepíteni kívánt alkalmazást. A készlet költségeit és méretét [alacsony prioritású virtuális gépek](batch-low-pri-vms.md) használatával vagy a csomópontok a számítási feladat változását követő [automatikus méretezésével](batch-automatic-scaling.md) szabályozhatja. <br/><br/>Amikor tevékenységeket ad hozzá egy munkához, a Batch szolgáltatás automatikusan ütemezi a tevékenységeket a készletben lévő számítási csomópontokon. Mindegyik tevékenység a bemeneti fájlok feldolgozásához feltöltött alkalmazást használja. |
-|3. Töltse le a **bemeneti fájlokat** és az **alkalmazásokat** a Batch     |Az egyes tevékenységek a végrehajtásuk előtt letölthetik a feldolgozandó bemeneti adatokat a hozzárendelt számítási csomópontra. Ha az alkalmazás még nincs telepítve a készlet csomópontjain, helyette ide tölthető le. Amikor az Azure Storage-ból való letöltés befejeződött, a tevékenység lefut a hozzá rendelt csomóponton.|
-|4. **Feladat-végrehajtás figyelése**     |A tevékenységek futtatásakor lekérdezheti a Batch szolgáltatást a feladat és a tevékenységei állapotának figyeléséhez. Az Ön által készített ügyfélalkalmazások vagy szolgáltatások HTTPS használatával kommunikálhatnak a Batch szolgáltatással. Mivel előfordulhat, hogy számítási csomópontok ezrein futó több ezer tevékenységet kell figyelnie, gondoskodjon arról, hogy [hatékonyan kérdezi le a Batch szolgáltatást](batch-efficient-list-queries.md).|
-|5. **Feladat kimenetének** feltöltése     |A tevékenységek befejeződésekor a tevékenységek feltöltik eredményadataikat az Azure Storage-ba. Közvetlenül a számítási csomóponton lévő fájlrendszerből is lekérhet fájlokat.|
-|6. **Kimeneti fájlok** letöltése     |Amikor a megfigyelés észleli, hogy a feladat tevékenységei befejeződtek, az ügyfélalkalmazás vagy szolgáltatás letöltheti a kimeneti adatokat további feldolgozás céljából.|
+|1. Töltse fel a **bemeneti fájlokat** és az **alkalmazásokat** , és dolgozza fel ezeket a fájlokat az Azure Storage-fiókjába.     |A bemeneti fájlok az alkalmazás által feldolgozható bármilyen adatok lehetnek, például pénzügyi modellezési adatok vagy átkódolni kívánt videofájlok. Az alkalmazásfájlok az adatokat feldolgozó szkriptek vagy alkalmazások lehetnek, például adathordozó-átkódolók.|
+|2. hozzon létre egy számítási csomópontokból álló batch- **készletet** a Batch-fiókban, egy **feladatot** a készleten futó munkaterhelés és a feladat **tevékenységeinek** futtatásához.     | A készlet csomópontjai a feladatokat végrehajtó virtuális gépek. Adja meg a tulajdonságokat, például a csomópontok számát és méretét, egy Windows- vagy Linux-alapú virtuálisgép-rendszerképet, valamint a csomópontok a készletre való csatlakozásakor telepíteni kívánt alkalmazást. A készlet költségeit és méretét [alacsony prioritású virtuális gépek](batch-low-pri-vms.md) használatával vagy a csomópontok a számítási feladat változását követő [automatikus méretezésével](batch-automatic-scaling.md) szabályozhatja. <br/><br/>Amikor tevékenységeket ad hozzá egy munkához, a Batch szolgáltatás automatikusan ütemezi a tevékenységeket a készletben lévő számítási csomópontokon. Mindegyik tevékenység a bemeneti fájlok feldolgozásához feltöltött alkalmazást használja. |
+|3. **bemeneti fájlok** és **alkalmazások** kötegelt letöltése     |Az egyes tevékenységek a végrehajtásuk előtt letölthetik a feldolgozandó bemeneti adatokat a hozzárendelt számítási csomópontra. Ha az alkalmazás még nincs telepítve a készlet csomópontjain, helyette ide tölthető le. Amikor az Azure Storage-ból való letöltés befejeződött, a tevékenység lefut a hozzá rendelt csomóponton.|
+|4. a **feladatok végrehajtásának** figyelése     |A tevékenységek futtatásakor lekérdezheti a Batch szolgáltatást a feladat és a tevékenységei állapotának figyeléséhez. Az Ön által készített ügyfélalkalmazások vagy szolgáltatások HTTPS használatával kommunikálhatnak a Batch szolgáltatással. Mivel előfordulhat, hogy számítási csomópontok ezrein futó több ezer tevékenységet kell figyelnie, gondoskodjon arról, hogy [hatékonyan kérdezi le a Batch szolgáltatást](batch-efficient-list-queries.md).|
+|5. **feladat kimenetének** feltöltése     |A tevékenységek befejeződésekor a tevékenységek feltöltik eredményadataikat az Azure Storage-ba. Közvetlenül a számítási csomóponton lévő fájlrendszerből is lekérhet fájlokat.|
+|6. **kimeneti fájlok** letöltése     |Amikor a megfigyelés észleli, hogy a feladat tevékenységei befejeződtek, az ügyfélalkalmazás vagy szolgáltatás letöltheti a kimeneti adatokat további feldolgozás céljából.|
 
 
 

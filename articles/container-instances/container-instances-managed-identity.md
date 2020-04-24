@@ -1,62 +1,57 @@
 ---
-title: Felügyelt identitás engedélyezése a tárolócsoportban
-description: Megtudhatja, hogyan engedélyezheti a felügyelt identitásokat az Azure Container-példányokban, amelyek más Azure-szolgáltatásokkal is hitelesíthetők
+title: Felügyelt identitás engedélyezése a tároló csoportban
+description: Megtudhatja, hogyan engedélyezheti a felügyelt identitást olyan Azure Container Instancesban, amelyek más Azure-szolgáltatásokkal is hitelesíthetők
 ms.topic: article
-ms.date: 01/29/2020
-ms.openlocfilehash: 19d2ab22eea15278c7753046f9222c7856fbf5ef
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 04/15/2020
+ms.openlocfilehash: 31dc198bfb2023684f3a9022bec5a5f50f0d9a72
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685649"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115720"
 ---
-# <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata az Azure Container Instances használatával
+# <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata Azure Container Instances
 
-Felügyelt [identitások azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md) futtatásához kódot Azure Container Instances, amely kölcsönhatásba lép más Azure-szolgáltatásokkal anélkül, hogy titkos kulcsokat vagy hitelesítő adatokat a kódban. A szolgáltatás egy Azure Container Instances központi telepítés egy automatikusan felügyelt identitás az Azure Active Directoryban.
+[Felügyelt identitások használata az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) olyan Azure Container instances kód futtatásához, amely más Azure-szolgáltatásokkal is együttműködik – anélkül, hogy az összes titkot vagy hitelesítő adatot megtartja a kódban. A szolgáltatás Azure Container Instances központi telepítést biztosít automatikusan felügyelt identitással Azure Active Directoryban.
 
-Ebben a cikkben további információ a felügyelt identitásokról az Azure Container-példányokban, és:
+Ebben a cikkben további információt talál a felügyelt identitásokról Azure Container Instances és:
 
 > [!div class="checklist"]
-> * Felhasználó által hozzárendelt vagy rendszerhez rendelt identitás engedélyezése tárolócsoportban
-> * Az identitás-hozzáférés megadása egy Azure-kulcstartóhoz
-> * A felügyelt identitás használatával egy futó tárolóból származó kulcstartó eléréséhez
+> * Felhasználó által hozzárendelt vagy rendszerhez rendelt identitás engedélyezése egy tároló csoportban
+> * Az identitás hozzáférésének biztosítása egy Azure Key vaulthoz
+> * A felügyelt identitás használata egy futó tárolóból származó kulcstartó eléréséhez
 
-A példák adaptálása az Azure Container Instances identitásainak engedélyezéséhez és használatához más Azure-szolgáltatások eléréséhez. Ezek a példák interaktívak. Azonban a gyakorlatban a tárolórendszerképek en futna kódot az Azure-szolgáltatások eléréséhez.
-
-> [!NOTE]
-> Jelenleg nem használható felügyelt identitás egy virtuális hálózatra telepített tárolócsoportban.
+A példákkal a többi Azure-szolgáltatás eléréséhez az identitásokat engedélyezheti és használhatja Azure Container Instancesban. Ezek a példák interaktívak. A gyakorlatban azonban a tároló lemezképei programkódot futtatnak az Azure-szolgáltatások eléréséhez.
+ 
+> [!IMPORTANT]
+> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt. A Azure Container Instances felügyelt identitások jelenleg csak Linux-tárolókkal és a Windows-tárolókkal még nem támogatottak.
 
 ## <a name="why-use-a-managed-identity"></a>Miért érdemes felügyelt identitást használni?
 
-Felügyelt identitás használatával egy futó tárolóban hitelesítést minden [olyan szolgáltatás, amely támogatja az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nélkül hitelesítő adatok kezelése a tárolókódban. Az AD-hitelesítést nem támogató szolgáltatások esetében titkos kulcsokat tárolhat egy Azure-kulcstartóban, és a felügyelt identitás használatával hozzáférhet a kulcstartóhoz a hitelesítő adatok lekéréséhez. A felügyelt identitások használatával kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások?](../active-directory/managed-identities-azure-resources/overview.md)
-
-> [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt. Jelenleg az Azure Container Instances felügyelt identitások csak Linux-tárolók, és még nem a Windows-tárolók.
->  
+Felügyelt identitást használhat egy futó tárolóban bármely olyan szolgáltatás hitelesítéséhez, [amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) , és nem kezeli a hitelesítő adatokat a tároló kódjában. Az AD-hitelesítést nem támogató szolgáltatások esetében az Azure Key vaultban tárolhatja a titkos kulcsokat, és a felügyelt identitás használatával elérheti a Key vaultot a hitelesítő adatok lekéréséhez. A felügyelt identitás használatával kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitása?](../active-directory/managed-identities-azure-resources/overview.md)
 
 ### <a name="enable-a-managed-identity"></a>Felügyelt identitás engedélyezése
 
- Az Azure Container-példányokban az Azure-erőforrások felügyelt identitásait a REST API 2018-10-10-01-es verziója és a megfelelő SDK-k és eszközök támogatja. Tárolócsoport létrehozásakor engedélyezze egy vagy több felügyelt identitást egy [ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) tulajdonság beállításával. A tárolócsoport futása után is engedélyezheti vagy frissítheti a felügyelt identitásokat – vagy a művelet hatására a tárolócsoport újraindul. Az identitások beállítása egy új vagy meglévő tárolócsoport, használja az Azure CLI, egy Resource Manager-sablon vagy egy YAML-fájl. 
+ Amikor létrehoz egy tároló csoportot, egy vagy több felügyelt identitást egy [ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) tulajdonság beállításával engedélyezhet. Emellett engedélyezheti vagy frissítheti a felügyelt identitásokat, miután egy tároló csoport fut – vagy a művelet hatására a tároló csoport újraindul. Az identitások új vagy meglévő YAML való beállításához használja az Azure CLI-t, egy Resource Manager-sablont, egy-fájlt vagy egy másik Azure-eszközt. 
 
-Az Azure Container Instances támogatja mindkét típusú felügyelt Azure-identitások: felhasználó által hozzárendelt és a rendszer által hozzárendelt. Egy tárolócsoportban engedélyezheti a rendszer által hozzárendelt identitást, egy vagy több felhasználó által hozzárendelt identitást vagy mindkét típusú identitást. 
-
-* A **felhasználó által kijelölt** felügyelt identitás jön létre, mint egy önálló Azure-erőforrás az Azure AD-bérlő, amely a használatban lévő előfizetés megbízható. Az identitás létrehozása után az identitás hozzárendelhető egy vagy több Azure-erőforráshoz (az Azure Container Instances vagy más Azure-szolgáltatásokban). A felhasználó által hozzárendelt identitás életciklusa a tárolócsoportok vagy más szolgáltatáserőforrások életciklusától elkülönítve történik, amelyekhez hozzá van rendelve. Ez a viselkedés különösen hasznos az Azure Container Instances. Mivel az identitás túlnyúlik egy tárolócsoport élettartamán, újra felhasználhatja azt más szabványos beállításokkal együtt, hogy a tárolócsoport központi telepítések nagymértékben megismételhetőlegyen.
-
-* A **rendszer által hozzárendelt** felügyelt identitás közvetlenül engedélyezve van egy tárolócsoportban az Azure Container Instances. Ha engedélyezve van, az Azure létrehoz egy identitást a csoport számára az Azure AD-bérlőben, amely a példány előfizetése által megbízhatónak van. Az identitás létrehozása után a hitelesítő adatok a tárolócsoport minden egyes tárolójában ki vannak építve. A rendszer által hozzárendelt identitás életciklusa közvetlenül kapcsolódik ahhoz a tárolócsoporthoz, amelyen engedélyezve van. A csoport törlésekor az Azure automatikusan törli a hitelesítő adatokat és az identitást az Azure AD-ben.
+Azure Container Instances a felügyelt Azure-identitások mindkét típusát támogatja: felhasználó által hozzárendelt és rendszerhez rendelt. Egy tároló csoporton engedélyezheti a rendszerhez rendelt identitást, egy vagy több felhasználó által hozzárendelt identitást vagy mindkét típusú identitást. Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [áttekintést](../active-directory/managed-identities-azure-resources/overview.md).
 
 ### <a name="use-a-managed-identity"></a>Felügyelt identitás használata
 
-Felügyelt identitás használatához az identitásnak kezdetben hozzáférést kell biztosítani egy vagy több Azure-szolgáltatás-erőforrásokhoz (például egy webalkalmazáshoz, egy kulcstartóhoz vagy egy tárfiókhoz) az előfizetésben. Az Azure-erőforrások elérése egy futó tárolóból, a kód be kell szereznie egy *hozzáférési jogkivonatot* egy Azure AD-végpont. Ezután a kód elküldi a hozzáférési jogkivonatot egy hívás egy szolgáltatás, amely támogatja az Azure AD-hitelesítést. 
+Felügyelt identitás használatához az identitásnak hozzáférést kell biztosítania egy vagy több Azure-szolgáltatási erőforráshoz (például egy webalkalmazáshoz, egy kulcstartóhoz vagy egy Storage-fiókhoz) az előfizetésben. Egy futó tárolóban felügyelt identitás használata hasonló az Azure-beli virtuális gépek identitásának használatához. Tekintse meg a virtuális gépekkel kapcsolatos útmutatót [token](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md), [Azure POWERSHELL vagy Azure CLI](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)vagy az [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md)-k használatával.
 
-Felügyelt identitás használata egy futó tárolóban lényegében ugyanaz, mint egy azure-beli virtuális gép identitásának használata. Tekintse meg a virtuális gép útmutató egy [jogkivonat,](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)Az Azure PowerShell vagy az [Azure CLI,](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)vagy az [Azure SDK-k.](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md)
+### <a name="limitations"></a>Korlátozások
+
+* Jelenleg nem használhat felügyelt identitást egy virtuális hálózatra központilag telepített tároló csoportba.
+* Tároló-csoport létrehozásakor nem használhat felügyelt identitást Azure Container Registry rendszerkép lekérésére. Az identitás csak futó tárolón belül érhető el.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, ez a cikk megköveteli, hogy az Azure CLI 2.0.49-es vagy újabb verzióját futassza. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.49 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-## <a name="create-an-azure-key-vault"></a>Azure-kulcstartó létrehozása
+## <a name="create-an-azure-key-vault"></a>Azure Key Vault létrehozása
 
-A példák ebben a cikkben egy felügyelt identitás azure-tárolópéldányok egy Azure-key vault titkos eléréséhez. 
+A cikkben szereplő példák felügyelt identitást használnak Azure Container Instances egy Azure Key Vault-titok eléréséhez. 
 
 Először hozzon létre egy erőforráscsoportot *myResourceGroup* néven az *eastus* helyen az alábbi [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal:
 
@@ -64,7 +59,7 @@ Először hozzon létre egy erőforráscsoportot *myResourceGroup* néven az *ea
 az group create --name myResourceGroup --location eastus
 ```
 
-Használja az [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot egy key vault létrehozásához. Ügyeljen arra, hogy adjon meg egy egyedi kulcstartó nevét. 
+A Key Vault létrehozásához használja az az kulcstartó [létrehozása](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot. Ügyeljen arra, hogy egyedi kulcstároló-nevet adjon meg. 
 
 ```azurecli-interactive
 az keyvault create \
@@ -73,7 +68,7 @@ az keyvault create \
   --location eastus
 ```
 
-Az [az keyvault titkoskészlet](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) parancsával egy mintatitkos kulcsot tárolanak a key vault titkostárolójában:
+Hozzon létre egy minta titkos kulcsot a kulcstartóban az az Key [Vault Secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) paranccsal:
 
 ```azurecli-interactive
 az keyvault secret set \
@@ -82,13 +77,13 @@ az keyvault secret set \
   --description ACIsecret --vault-name mykeyvault
 ```
 
-Folytassa az alábbi példákkal a kulcstároló eléréséhez egy felhasználó által hozzárendelt vagy rendszeráltal hozzárendelt felügyelt identitás használatával az Azure Container Instances használatával.
+Folytassa a következő példákkal a Key Vault elérését egy felhasználó által hozzárendelt vagy rendszer által hozzárendelt felügyelt identitás használatával Azure Container Instancesban.
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>1. példa: Az Azure key vault eléréséhez használjon felhasználó által hozzárendelt identitást
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>1. példa: felhasználó által hozzárendelt identitás használata az Azure Key Vault eléréséhez
 
 ### <a name="create-an-identity"></a>Identitás létrehozása
 
-Először hozzon létre egy identitást az előfizetésben az [az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot a key vault létrehozásához, vagy egy másikat.
+Először hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amely a kulcstartó létrehozásához használatos, vagy egy másikat is használhat.
 
 ```azurecli-interactive
 az identity create \
@@ -96,21 +91,39 @@ az identity create \
   --name myACIId
 ```
 
-Az identitás használata a következő lépésekben, használja az [identitásshow-parancs](/cli/azure/identity?view=azure-cli-latest#az-identity-show) az identitás egyszerű szolgáltatásazonosítóját és erőforrás-azonosítóját változókban tárolja.
+Ha az identitást a következő lépésekben szeretné használni, használja az az [Identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) parancsot az identitás egyszerű szolgáltatásnév és erőforrás-azonosítójának a változókban való tárolásához.
 
 ```azurecli-interactive
 # Get service principal ID of the user-assigned identity
-spID=$(az identity show --resource-group myResourceGroup --name myACIId --query principalId --output tsv)
+spID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACIId \
+  --query principalId --output tsv)
 
 # Get resource ID of the user-assigned identity
-resourceID=$(az identity show --resource-group myResourceGroup --name myACIId --query id --output tsv)
+resourceID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACIId \
+  --query id --output tsv)
 ```
 
-### <a name="enable-a-user-assigned-identity-on-a-container-group"></a>Felhasználó által hozzárendelt identitás engedélyezése tárolócsoportban
+### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Felhasználó által hozzárendelt identitás elérésének engedélyezése a kulcstartóhoz
 
-Futtassa a következő [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create) parancsot `azure-cli` a Microsoft lemezképe alapján létrehozott tárolópéldány létrehozásához. Ebben a példában egy egytárolós csoportot biztosít, amely interaktív módon futtathatja az Azure CLI-t más Azure-szolgáltatások eléréséhez. Ebben a szakaszban csak az alap Ubuntu operációs rendszert használják. 
+A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy](/cli/azure/keyvault?view=azure-cli-latest) paranccsal. A következő példa lehetővé teszi, hogy a felhasználó által hozzárendelt identitás a Key vaultból kapjon titkos kódokat:
 
-A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt felügyelt identitást a csoportnak. A hosszú ideig futó parancs tartja a tároló fut. Ez a példa ugyanazt az erőforráscsoportot használja a key vault létrehozásához, de megadhat egy másikat.
+```azurecli-interactive
+ az keyvault set-policy \
+    --name mykeyvault \
+    --resource-group myResourceGroup \
+    --object-id $spID \
+    --secret-permissions get
+```
+
+### <a name="enable-user-assigned-identity-on-a-container-group"></a>Felhasználó által hozzárendelt identitás engedélyezése egy tároló csoporton
+
+A Microsoft `azure-cli` rendszerképe alapján hozzon létre egy tároló példányt a következő az [Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) paranccsal. Ez a példa egy egytárolós csoportot biztosít, amelyet interaktív módon használhat az Azure CLI-vel más Azure-szolgáltatásokhoz való hozzáféréshez. Ebben a szakaszban csak az alap operációs rendszer van használatban. Ha például az Azure CLI-t a tárolóban szeretné használni, tekintse [meg a rendszer által hozzárendelt identitás engedélyezése egy tároló csoporton](#enable-system-assigned-identity-on-a-container-group)című témakört. 
+
+A `--assign-identity` paraméter a felhasználó által hozzárendelt felügyelt identitást továbbítja a csoportnak. A hosszan futó parancs megtartja a tárolót. Ez a példa ugyanazt az erőforráscsoportot használja, amelyet a kulcstartó létrehozásához használtak, de megadhat egy másikat is.
 
 ```azurecli-interactive
 az container create \
@@ -121,7 +134,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-Pár másodpercen belül az üzembe helyezés befejezéséről tájékoztató választ kell kapnia az Azure CLI-ről. Ellenőrizze az állapotát az [az container show](/cli/azure/container?view=azure-cli-latest#az-container-show) paranccsal.
+Pár másodpercen belül az üzembe helyezés befejezéséről tájékoztató választ kell kapnia az Azure CLI-ről. Az az [Container show](/cli/azure/container?view=azure-cli-latest#az-container-show) paranccsal tekintse meg az állapotát.
 
 ```azurecli-interactive
 az container show \
@@ -129,7 +142,7 @@ az container show \
   --name mycontainer
 ```
 
-A `identity` kimeneti szakasz a következőhöz hasonlóan néz ki, és az identitás a tárolócsoportban van beállítva. Az `principalID` `userAssignedIdentities` alul az Azure Active Directoryban létrehozott identitás egyszerű szolgáltatása:
+A `identity` kimenetben található szakasz a következőhöz hasonlóan néz ki, ami azt mutatja, hogy az identitás be van állítva a Container csoportban. A `principalID` alatt `userAssignedIdentities` a Azure Active Directoryban létrehozott identitás egyszerű szolgáltatásnév:
 
 ```console
 [...]
@@ -147,21 +160,9 @@ A `identity` kimeneti szakasz a következőhöz hasonlóan néz ki, és az ident
 [...]
 ```
 
-### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Felhasználó által hozzárendelt identitás-hozzáférés megadása a key vaulthoz
+### <a name="use-user-assigned-identity-to-get-secret-from-key-vault"></a>A Key vaultból a felhasználó által hozzárendelt identitás használatával szerezheti be a titkos kulcsot
 
-Futtassa a következő [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) parancsot egy hozzáférési szabályzat beállításához a key vaulton. A következő példa lehetővé teszi, hogy a felhasználó által kijelölt identitás titkos kulcsokat szerezzen be a key vaultból:
-
-```azurecli-interactive
- az keyvault set-policy \
-    --name mykeyvault \
-    --resource-group myResourceGroup \
-    --object-id $spID \
-    --secret-permissions get
-```
-
-### <a name="use-user-assigned-identity-to-get-secret-from-key-vault"></a>Felhasználó által hozzárendelt identitás használata titkos beírása a kulcstartóból
-
-Most már használhatja a felügyelt identitása a futó tárolópéldányon belül a key vault eléréséhez. Először indítson el egy bash shell a tartályban:
+Most már használhatja a felügyelt identitást a futó tároló példányán a kulcstartó eléréséhez. Először indítson el egy bash-rendszerhéjat a tárolóban:
 
 ```azurecli-interactive
 az container exec \
@@ -170,7 +171,7 @@ az container exec \
   --exec-command "/bin/bash"
 ```
 
-Futtassa a következő parancsokat a tárolóban lévő bash rendszerhéjban. Ha egy hozzáférési jogkivonatot szeretne beszerezni az Azure Active Directory kulcstárolón történő hitelesítéséhez, futtassa a következő parancsot:
+Futtassa a következő parancsokat a tárolóban lévő bash-rendszerhéjban. A következő parancs futtatásával kérhet hozzáférési tokent a Key Vault hitelesítéséhez Azure Active Directory használatával:
 
 ```bash
 curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true -s
@@ -182,32 +183,32 @@ Kimenet:
 {"access_token":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9......xxxxxxxxxxxxxxxxx","refresh_token":"","expires_in":"28799","expires_on":"1539927532","not_before":"1539898432","resource":"https://vault.azure.net/","token_type":"Bearer"}
 ```
 
-Ha a hozzáférési jogkivonatot egy olyan változóban szeretné tárolni, amelyet a hitelesítéshez a későbbi parancsokban kell használni, futtassa a következő parancsot:
+Ha a hozzáférési tokent egy változóban szeretné tárolni a következő parancsokban a hitelesítéshez, futtassa a következő parancsot:
 
 ```bash
 token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true | jq -r '.access_token')
 
 ```
 
-Most használja a hozzáférési jogkivonatot a kulcstartó hitelesítéséhez, és egy titkos kulcsot olvas. Ügyeljen arra, hogy helyettesítse a kulcstartó nevét az URL-ben (*https:\//mykeyvault.vault.azure.net/...*):
+Most használja a hozzáférési tokent a Key Vault hitelesítéséhez, és olvassa el a titkos kulcsot. Ügyeljen arra, hogy a Key Vault nevét a következő URL-címben (*https:\//mykeyvault.Vault.Azure.net/..*.) cserélje le:
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
 ```
 
-A válasz a következőhöz hasonlóan néz ki, és a titkos kulcsot mutatja. A kódban ezt a kimenetet a titkos fájl megszerzéséhez elemezné. Ezután használja a titkos kulcsot egy későbbi műveletben egy másik Azure-erőforrás eléréséhez.
+A válasz a következőhöz hasonlóan néz ki, amely a titkos kulcsot mutatja. A kódban elemezheti ezt a kimenetet a titok beszerzéséhez. Ezután egy későbbi művelet titkát használva férhet hozzá egy másik Azure-erőforráshoz.
 
 ```bash
 {"value":"Hello Container Instances","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>2. példa: Az Azure key vault eléréséhez használjon rendszeráltal hozzárendelt identitást
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>2. példa: a rendszer által hozzárendelt identitás használata az Azure Key Vault eléréséhez
 
-### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>Rendszeráltal hozzárendelt identitás engedélyezése tárolócsoportban
+### <a name="enable-system-assigned-identity-on-a-container-group"></a>Rendszer által hozzárendelt identitás engedélyezése egy tároló csoporton
 
-Futtassa a következő [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create) parancsot `azure-cli` a Microsoft lemezképe alapján létrehozott tárolópéldány létrehozásához. Ebben a példában egy egytárolós csoportot biztosít, amely interaktív módon futtathatja az Azure CLI-t más Azure-szolgáltatások eléréséhez. 
+A Microsoft `azure-cli` rendszerképe alapján hozzon létre egy tároló példányt a következő az [Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) paranccsal. Ez a példa egy egytárolós csoportot biztosít, amelyet interaktív módon használhat az Azure CLI-vel más Azure-szolgáltatásokhoz való hozzáféréshez. 
 
-A `--assign-identity` további érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt felügyelt identitást a csoporton. Az identitás hatóköre a tárolócsoport erőforráscsoportja. A hosszú ideig futó parancs tartja a tároló fut. Ez a példa ugyanazt az erőforráscsoportot használja a key vault létrehozásához, de megadhat egy másikat.
+A `--assign-identity` további érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt felügyelt identitást a csoporton. Az identitás hatóköre a tároló csoport erőforráscsoporthoz tartozik. A hosszan futó parancs megtartja a tárolót. Ez a példa ugyanazt az erőforráscsoportot használja, amely a Key Vault létrehozásához használatos, amely az identitás hatókörében található.
 
 ```azurecli-interactive
 # Get the resource ID of the resource group
@@ -222,7 +223,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-Pár másodpercen belül az üzembe helyezés befejezéséről tájékoztató választ kell kapnia az Azure CLI-ről. Ellenőrizze az állapotát az [az container show](/cli/azure/container?view=azure-cli-latest#az-container-show) paranccsal.
+Pár másodpercen belül az üzembe helyezés befejezéséről tájékoztató választ kell kapnia az Azure CLI-ről. Az az [Container show](/cli/azure/container#az-container-show) paranccsal tekintse meg az állapotát.
 
 ```azurecli-interactive
 az container show \
@@ -230,7 +231,7 @@ az container show \
   --name mycontainer
 ```
 
-A `identity` kimeneti szakasz a következőhöz hasonlóan néz ki, amely azt mutatja, hogy a rendszer által hozzárendelt identitás az Azure Active Directoryban jön létre:
+A `identity` kimenetben található szakasz a következőhöz hasonlóan néz ki, amely azt mutatja, hogy a rendszerhez hozzárendelt identitást Azure Active Directory hozza létre:
 
 ```console
 [...]
@@ -243,15 +244,18 @@ A `identity` kimeneti szakasz a következőhöz hasonlóan néz ki, amely azt mu
 [...]
 ```
 
-Állítson be egy `principalId` változót az identitás (egyszerű szolgáltatásazonosítója) értékére, amelyet későbbi lépésekben kell használni.
+Állítson be egy változót az `principalId` identitás (egyszerű szolgáltatásnév) értékére a későbbi lépésekben való használathoz.
 
 ```azurecli-interactive
-spID=$(az container show --resource-group myResourceGroup --name mycontainer --query identity.principalId --out tsv)
+spID=$(az container show \
+  --resource-group myResourceGroup \
+  --name mycontainer \
+  --query identity.principalId --out tsv)
 ```
 
-### <a name="grant-container-group-access-to-the-key-vault"></a>Tárolócsoport-hozzáférés megadása a kulcstartóhoz
+### <a name="grant-container-group-access-to-the-key-vault"></a>Tároló csoport hozzáférésének engedélyezése a kulcstartóhoz
 
-Futtassa a következő [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) parancsot egy hozzáférési szabályzat beállításához a key vaulton. A következő példa lehetővé teszi, hogy a rendszer által felügyelt identitás titkos kulcsokat szerezzen be a key vaultból:
+A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy](/cli/azure/keyvault?view=azure-cli-latest) paranccsal. A következő példa lehetővé teszi, hogy a rendszer által felügyelt identitás a Key vaultból beszerezze a titkos kulcsokat:
 
 ```azurecli-interactive
  az keyvault set-policy \
@@ -261,9 +265,9 @@ Futtassa a következő [az keyvault set-policy](/cli/azure/keyvault?view=azure-c
    --secret-permissions get
 ```
 
-### <a name="use-container-group-identity-to-get-secret-from-key-vault"></a>Tárolócsoport-identitás használata titkos kulcstárolóból való titkos beíráshoz
+### <a name="use-container-group-identity-to-get-secret-from-key-vault"></a>A kulcstároló-identitás használata a Key vaultból való titkos kulcs beszerzéséhez
 
-Most már használhatja a felügyelt identitást a futó tárolópéldányon belüli kulcstartó eléréséhez. Először indítson el egy bash shell a tartályban:
+Mostantól a felügyelt identitás használatával férhet hozzá a kulcstárolóhoz a futó tároló példányán belül. Először indítson el egy bash-rendszerhéjat a tárolóban:
 
 ```azurecli-interactive
 az container exec \
@@ -272,13 +276,13 @@ az container exec \
   --exec-command "/bin/bash"
 ```
 
-Futtassa a következő parancsokat a tárolóban lévő bash rendszerhéjban. Első bejelentkezés az Azure CLI-be a felügyelt identitás használatával:
+Futtassa a következő parancsokat a tárolóban lévő bash-rendszerhéjban. Először jelentkezzen be az Azure CLI-be a felügyelt identitás használatával:
 
 ```bash
 az login --identity
 ```
 
-A futó tárolóból olvassa be a titkos kulcsot a kulcstárolóból:
+A futó tárolóból kérje le a titkos kulcsot a Key vaultból:
 
 ```bash
 az keyvault secret show \
@@ -286,25 +290,25 @@ az keyvault secret show \
   --vault-name mykeyvault --query value
 ```
 
-A rendszer lekéri a titkos kulcsot:
+A titok értékét a rendszer lekéri:
 
 ```bash
 "Hello Container Instances"
 ```
 
-## <a name="enable-managed-identity-using-resource-manager-template"></a>Felügyelt identitás engedélyezése az Erőforrás-kezelő sablonnal
+## <a name="enable-managed-identity-using-resource-manager-template"></a>Felügyelt identitás engedélyezése Resource Manager-sablon használatával
 
-Ha egy tárolócsoportban engedélyezni szeretné a felügyelt identitást `identity` egy `Microsoft.ContainerInstance/containerGroups` [Erőforrás-kezelő sablon](container-instances-multi-container-group.md)használatával, állítsa be az objektum tulajdonságát egy `ContainerGroupIdentity` objektummal. A következő kódrészletek `identity` a különböző esetekhez konfigurált tulajdonságot jelenítik meg. Tekintse meg az [Erőforrás-kezelő sablon hivatkozását](/azure/templates/microsoft.containerinstance/containergroups). Adja meg `apiVersion` `2018-10-01`a minimumot.
+Ha egy [Resource Manager-sablonnal](container-instances-multi-container-group.md)szeretne felügyelt identitást engedélyezni egy tároló csoportban, állítsa `identity` az `Microsoft.ContainerInstance/containerGroups` objektum tulajdonságát `ContainerGroupIdentity` objektumra. A következő kódrészletek a `identity` különböző forgatókönyvekhez konfigurált tulajdonságot mutatják be. Tekintse meg a [Resource Manager-sablonok referenciáját](/azure/templates/microsoft.containerinstance/containergroups). Legalább a minimális `apiVersion` érték `2018-10-01`adható meg.
 
 ### <a name="user-assigned-identity"></a>Felhasználó által hozzárendelt identitás
 
-A felhasználó által hozzárendelt identitás az űrlap erőforrásazonosítója:
+A felhasználó által hozzárendelt identitás az űrlap erőforrás-azonosítója:
 
 ```
 "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}"
 ``` 
 
-Egy vagy több felhasználó által hozzárendelt identitást engedélyezhet.
+Egy vagy több felhasználó által hozzárendelt identitást is engedélyezhet.
 
 ```json
 "identity": {
@@ -316,7 +320,7 @@ Egy vagy több felhasználó által hozzárendelt identitást engedélyezhet.
     }
 ```
 
-### <a name="system-assigned-identity"></a>Rendszerhez rendelt identitás
+### <a name="system-assigned-identity"></a>Rendszer által hozzárendelt identitás
 
 ```json
 "identity": {
@@ -324,9 +328,9 @@ Egy vagy több felhasználó által hozzárendelt identitást engedélyezhet.
     }
 ```
 
-### <a name="system--and-user-assigned-identities"></a>Rendszer- és felhasználó által hozzárendelt identitások
+### <a name="system--and-user-assigned-identities"></a>Rendszer-és felhasználó által hozzárendelt identitások
 
-Egy tárolócsoportban engedélyezheti a rendszer által hozzárendelt identitást és egy vagy több felhasználó által hozzárendelt identitást is.
+Egy tároló csoportban engedélyezheti a rendszerhez rendelt identitást és egy vagy több felhasználó által hozzárendelt identitást is.
 
 ```json
 "identity": {
@@ -339,20 +343,20 @@ Egy tárolócsoportban engedélyezheti a rendszer által hozzárendelt identitá
 ...
 ```
 
-## <a name="enable-managed-identity-using-yaml-file"></a>Felügyelt identitás engedélyezése YAML-fájlhasználatával
+## <a name="enable-managed-identity-using-yaml-file"></a>Felügyelt identitás engedélyezése a YAML-fájllal
 
-Ha engedélyezni szeretné a felügyelt identitást egy [YAML-fájl](container-instances-multi-container-yaml.md)használatával telepített tárolócsoportban, adja meg a következő YAML-fájlt.
-Adja meg `apiVersion` `2018-10-01`a minimumot.
+Ahhoz, hogy egy [YAML-fájl](container-instances-multi-container-yaml.md)használatával üzembe helyezett tároló csoport felügyelt identitást engedélyezzen, a következő YAML kell megadnia.
+Legalább a minimális `apiVersion` érték `2018-10-01`adható meg.
 
 ### <a name="user-assigned-identity"></a>Felhasználó által hozzárendelt identitás
 
-A felhasználó által hozzárendelt identitás az űrlap erőforrásazonosítója 
+A felhasználó által hozzárendelt identitás az űrlap erőforrás-azonosítója. 
 
 ```
 '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'
 ```
 
-Egy vagy több felhasználó által hozzárendelt identitást engedélyezhet.
+Egy vagy több felhasználó által hozzárendelt identitást is engedélyezhet.
 
 ```YAML
 identity:
@@ -361,16 +365,16 @@ identity:
     {'myResourceID1':{}}
 ```
 
-### <a name="system-assigned-identity"></a>Rendszerhez rendelt identitás
+### <a name="system-assigned-identity"></a>Rendszer által hozzárendelt identitás
 
 ```YAML
 identity:
   type: SystemAssigned
 ```
 
-### <a name="system--and-user-assigned-identities"></a>Rendszer- és felhasználó által hozzárendelt identitások
+### <a name="system--and-user-assigned-identities"></a>Rendszer-és felhasználó által hozzárendelt identitások
 
-Egy tárolócsoportban engedélyezheti a rendszer által hozzárendelt identitást és egy vagy több felhasználó által hozzárendelt identitást is.
+Egy tároló csoportban engedélyezheti a rendszerhez rendelt identitást és egy vagy több felhasználó által hozzárendelt identitást is.
 
 ```YAML
 identity:
@@ -381,13 +385,13 @@ identity:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben az Azure Container Instances felügyelt identitásairól és a következőkről szerzett tudomást:
+Ebben a cikkben megtanulta a felügyelt identitásokat a Azure Container Instancesban, és a következőket:
 
 > [!div class="checklist"]
-> * Felhasználó által hozzárendelt vagy rendszerhez rendelt identitás engedélyezése tárolócsoportban
-> * Az identitás-hozzáférés megadása egy Azure-kulcstartóhoz
-> * A felügyelt identitás használatával egy futó tárolóból származó kulcstartó eléréséhez
+> * Felhasználó által hozzárendelt vagy rendszerhez rendelt identitás engedélyezése egy tároló csoportban
+> * Az identitás hozzáférésének biztosítása egy Azure Key vaulthoz
+> * A felügyelt identitás használata egy futó tárolóból származó kulcstartó eléréséhez
 
-* További információ [az Azure-erőforrások felügyelt identitásairól.](/azure/active-directory/managed-identities-azure-resources/)
+* További információ az [Azure-erőforrások felügyelt identitásáról](/azure/active-directory/managed-identities-azure-resources/).
 
-* Tekintse meg az [Azure Go SDK példáját](https://medium.com/@samkreter/c98911206328) egy felügyelt identitás használatával az Azure Container Instances kulcstárolóeléréséhez.
+* Tekintse meg az [Azure go SDK példáját](https://medium.com/@samkreter/c98911206328) , amely felügyelt identitás használatával fér hozzá egy kulcstartóhoz Azure Container Instancesról.

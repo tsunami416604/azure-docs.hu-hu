@@ -1,26 +1,21 @@
 ---
 title: Oktatóanyag – Azure-lemezek kezelése az Azure PowerShell-lel
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és felügyelhet Azure-lemezeket virtuális gépekhez az Azure PowerShell használatával.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.subservice: disks
-ms.openlocfilehash: 1957ae620cccee619c8608b79d9e804c356adf17
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: c9f514b70eda7d74950576a1a6f3a1199cddb232
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455665"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100328"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Oktatóanyag – Azure-lemezek kezelése az Azure PowerShell-lel
 
@@ -37,13 +32,13 @@ Az Azure-beli virtuális gépek lemezeket használnak a virtuális gépek operá
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/powershell](https://shell.azure.com/powershell)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="default-azure-disks"></a>Alapértelmezett Azure-lemezek
 
 Egy Azure-beli virtuális gép létrehozásakor a rendszer két lemezt automatikusan a virtuális géphez csatol. 
 
-**Operációsrendszer-lemez** – Az operációsrendszer-lemezek akár 4 terabájt méretűek is lehetnek, és a virtuális gépek operációs rendszerei találhatók rajtuk. Ha egy új virtuális gép (VM) egy [Azure Marketplace-lemezkép,](https://azure.microsoft.com/marketplace/) a jellemzően 127 GB(de néhány lemez kisebb operációs rendszer lemezméretek). Az operációs rendszert futtató lemezhez alapértelmezés szerint a *C:* meghajtóbetűjel van hozzárendelve. Az operációsrendszer-lemez gyorsítótárazási konfigurációja az operációs rendszer teljesítményéhez van optimizálva. Az operációsrendszer-lemez **nem** üzemeltethet alkalmazásokat, és nem tárolhat adatokat. Alkalmazásokhoz és adatokhoz használjon adatlemezeket, amelyekről később lesz szó.
+**Operációsrendszer-lemez** – Az operációsrendszer-lemezek akár 4 terabájt méretűek is lehetnek, és a virtuális gépek operációs rendszerei találhatók rajtuk. Ha egy új virtuális gépet (VM) hoz létre egy [Azure Marketplace](https://azure.microsoft.com/marketplace/) -rendszerképből, a JELLEMZŐEN 127 GB (de néhány RENDSZERKÉP kisebb operációsrendszer-lemezzel rendelkezik). Az operációs rendszert futtató lemezhez alapértelmezés szerint a *C:* meghajtóbetűjel van hozzárendelve. Az operációsrendszer-lemez gyorsítótárazási konfigurációja az operációs rendszer teljesítményéhez van optimizálva. Az operációsrendszer-lemez **nem** üzemeltethet alkalmazásokat, és nem tárolhat adatokat. Alkalmazásokhoz és adatokhoz használjon adatlemezeket, amelyekről később lesz szó.
 
 **Ideiglenes lemez** – Az ideiglenes lemezek olyan tartós állapotú meghajtót (SSD-t) használnak, amely ugyanazon az Azure-gazdagépen található, mint a virtuális gép. Az ideiglenes lemezek nagy teljesítményűek és olyan műveletekhez használhatók, mint például az ideiglenes adatfeldolgozás. Ha azonban a virtuális gépet egy új gazdagépre költöztetik, az ideiglenes lemezen tárolt adatokat a rendszer eltávolítja. Az ideiglenes lemez méretét a [virtuális gép mérete](sizes.md) határozza meg. Az ideiglenes lemezekhez alapértelmezés szerint a *D:* meghajtóbetűjel van hozzárendelve.
 
@@ -71,7 +66,7 @@ Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglé
 A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal:
 
 
-Hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)segítségével. Amikor a rendszer kéri, adja meg a virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát.
+Hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Amikor a rendszer kéri, adja meg a virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -85,7 +80,7 @@ New-AzVm `
 ```
 
 
-Hozza létre a kezdeti konfigurációt a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig)segítségével. A következő példa egy 128 GB méretű lemezt konfigurál.
+Hozza létre a kezdeti konfigurációt a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig). A következő példa egy 128 GB méretű lemezt konfigurál.
 
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
@@ -103,7 +98,7 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-A [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) paranccsal beszerezni azt a virtuális gépet, amelyhez hozzá szeretné adni az adatlemezt.
+Szerezze be azt a virtuális gépet, amelyhez hozzá szeretné adni az adatlemezt a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) paranccsal.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A REST API használatával hozzon létre egy Azure Data Factory-folyamatot '
+title: 'Oktatóanyag: Azure Data Factory folyamat létrehozása a REST API használatával '
 description: Az oktatóanyagban a REST API használatával hoz létre egy másolási tevékenységgel rendelkező Azure Data Factory-folyamatot az adatok Azure Blob Storage-tárból egy Azure SQL-adatbázisba való másolásához.
 services: data-factory
 documentationcenter: ''
@@ -24,8 +24,8 @@ ms.locfileid: "75438874"
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
-> * [Vizuális stúdió](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [Powershell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
@@ -37,7 +37,7 @@ ms.locfileid: "75438874"
 
 A cikk útmutatást nyújt adat-előállítók REST API használatával való létrehozására olyan folyamatokkal, amelyek az Azure Blob Storage-tárból másolnak adatokat egy Azure SQL-adatbázisba. Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md) című cikket az oktatóanyag elvégzése előtt.   
 
-Az oktatóanyag segítségével egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot hozhat létre. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. A másolási tevékenységről további információt az [Adatmozgatási tevékenységek című témakörben talál.](data-factory-data-movement-activities.md)
+Az oktatóanyag segítségével egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot hozhat létre. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
 
 Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet két tevékenységet (egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. További információ az [egy folyamaton belüli több tevékenységről](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) szóló témakörben található.
 
@@ -55,9 +55,9 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
 * Az [ebben a cikkben](../../active-directory/develop/howto-create-service-principal-portal.md) szereplő utasításokat követve végezze el a következőket: 
   1. Hozzon létre egy **ADFCopyTutorialApp** nevű webalkalmazást az Azure Active Directoryban.
   2. Szerezze be az **ügyfél-azonosítót** és a **titkos kulcsot**. 
-  3. Bérlőazonosító **beszerzése**. 
+  3. **Bérlő azonosítójának**beolvasása. 
   4. Rendelje az **ADFCopyTutorialApp** alkalmazáshoz a **Data Factory közreműködője** szerepkört.  
-* Telepítse [az Azure PowerShellt.](/powershell/azure/overview)  
+* Telepítse a [Azure PowerShell](/powershell/azure/overview).  
 * Indítsa el a **PowerShellt**, és végezze el az alábbi lépéseket. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
   
   1. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
@@ -70,12 +70,12 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
      ```PowerShell     
      Get-AzSubscription
      ``` 
-  3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le ** &lt;a NameOfAzureSubscription-t** &gt; az Azure-előfizetés nevére. 
+  3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje ** &lt;** le az NameOfAzureSubscription&gt; -t az Azure-előfizetés nevére. 
      
      ```PowerShell
      Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
      ```
-  4. Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot a Következő parancs futtatásával a PowerShellben:  
+  4. Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot a következő parancs futtatásával a PowerShellben:  
 
      ```PowerShell     
       New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
@@ -103,7 +103,7 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> Az **accountname** és az **accountkey** kifejezés helyére írja be Azure Storage-tárfiókja nevére, illetve kulcsát. A tárfiók hozzáférési kulcsának [kezelése( Tárfiók-hozzáférési kulcsok kezelése)](../../storage/common/storage-account-keys-manage.md)témakörből megtudhatja, hogy miként szerezheti be a tárfiók hozzáférési kulcsait.
+> Az **accountname** és az **accountkey** kifejezés helyére írja be Azure Storage-tárfiókja nevére, illetve kulcsát. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
 
 ```JSON
 {
@@ -119,7 +119,7 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
 
 A JSON tulajdonságokról további részleteket tartalmaz az [Azure Storage társított szolgáltatás](data-factory-azure-blob-connector.md#azure-storage-linked-service) című cikk.
 
-### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice.json
+### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice. JSON
 > [!IMPORTANT]
 > A **servername**, a **databasename**, a **username** és a **password** kifejezés helyére írja be Azure SQL-kiszolgálója nevét, az SQL-adatbázis nevét, a felhasználói fiókot, valamint a fiók jelszavát.  
 > 
@@ -287,7 +287,7 @@ A **start** (kezdés) tulajdonság értékét cserélje az aktuális, az **end**
  
 Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601) kell megadni. Például: 2016-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk. 
  
-Ha nem adja meg a **záró** tulajdonság értékét, akkor a program a "**start + 48 óra**" értékként számítja ki. A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz.
+Ha nem ad meg értéket a **Befejezés** tulajdonsághoz, a rendszer a következőt számítja ki: "**Start + 48 óra**". A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz.
  
 Az előző példában 24 adatszelet van, mert a rendszer óránként létrehoz egy adatszeletet.
 

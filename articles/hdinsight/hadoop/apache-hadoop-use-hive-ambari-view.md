@@ -1,45 +1,45 @@
 ---
-title: Az Apache Ambari Hive view használata az Apache Hadoop segítségével az Azure HDInsightban
-description: Ismerje meg, hogyan használhatja a Hive nézetet a webböngészőből a Hive-lekérdezések küldéséhez. A Hive-nézet a Linux-alapú HDInsight-fürthöz mellékelt Ambari web felhasználói felület része.
+title: Az Apache Ambari kaptár nézet használata az Azure HDInsight Apache Hadoop
+description: Megtudhatja, hogyan használhatja a kaptár nézetet a webböngészőjéből a kaptár-lekérdezések elküldéséhez. A kaptár nézet a Linux-alapú HDInsight-fürthöz elérhető Ambari webes felhasználói felület részét képezi.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/06/2020
-ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 04/23/2020
+ms.openlocfilehash: a230d4f775207afc37172dae9f0709d66a6d1aa1
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745093"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116621"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-nézet használata Apache Hadooppal a HDInsightban
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ismerje meg, hogyan futtathatja a Hive-lekérdezéseket az Apache Ambari Hive View használatával. A Hive nézet lehetővé teszi a hive-lekérdezések létrehozását, optimalizálását és futtatását a webböngészőből.
+Megtudhatja, hogyan futtathat kaptár-lekérdezéseket az Apache Ambari kaptár nézet használatával. A kaptár nézet lehetővé teszi kaptár-lekérdezések létrehozását, optimalizálását és futtatását a böngészőben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy Hadoop-fürt a HDInsighton. Lásd: [Első lépések a HDInsight linuxos alkalmazásával.](./apache-hadoop-linux-tutorial-get-started.md)
+Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
-1. Az [Azure Portalon](https://portal.azure.com/)válassza ki a fürtöt.  Az utasításokat a [Fürtök listája és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters) című témakörben találja. A fürt új portálnézetben nyílik meg.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt.  Útmutatásért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters) . A fürt új portál nézetben nyílik meg.
 
-1. A **Fürtirányítópultok területen**válassza az **Ambari nézetek lehetőséget.** Amikor hitelesítésre van szüksége, használja a `admin`fürt bejelentkezési nevét (alapértelmezett) fióknevét és jelszavát, amelyet a fürt létrehozásakor adott meg. A böngészőben `https://CLUSTERNAME.azurehdinsight.net/#/main/views` arra is `CLUSTERNAME` navigálhat, hogy hol van a fürt neve.
+1. A **fürt irányítópultok**területen válassza a **Ambari nézetek**elemet. Amikor a rendszer kéri a hitelesítést, használja a fürt létrehozásakor `admin`megadott bejelentkezési (alapértelmezett) fióknevet és jelszót. Azt is `https://CLUSTERNAME.azurehdinsight.net/#/main/views` megnyithatja a böngészőben, ahol `CLUSTERNAME` a a fürt neve.
 
-1. A nézetek listájában válassza a __Hive nézet lehetőséget.__
+1. A nézetek listájában válassza a __struktúra nézet__lehetőséget.
 
-    ![Az Apache Ambari válassza az Apache Hive nézetet](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    ![Apache Ambari – Apache Hive nézet kiválasztása](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
-    A Hive nézet lapja hasonló az alábbi képhez:
+    A kaptár nézet oldal a következő képhez hasonló:
 
-    ![A Hive nézet lekérdezési munkalapjának képe](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
+    ![A struktúra nézet lekérdezési munkalapjának képe](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-1. A __Lekérdezés__ lapon illessze be a következő HiveQL-állításokat a munkalapra:
+1. A __lekérdezés__ lapon illessze be az alábbi HiveQL-utasításokat a munkalapra:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -58,112 +58,108 @@ Egy Hadoop-fürt a HDInsighton. Lásd: [Első lépések a HDInsight linuxos alka
         GROUP BY t4;
     ```
 
-    Ezek a kijelentések a következő műveleteket követik:
+    Ezek az utasítások a következő műveleteket végzik el:
 
     |Nyilatkozat | Leírás |
     |---|---|
-    |TÁBLÁZAT LEDOBÁSA|Törli a táblát és az adatfájlt, ha a tábla már létezik.|
-    |KÜLSŐ TÁBLA LÉTREHOZÁSA|Új "külső" táblát hoz létre a Hive-ban. A külső táblák csak a tábladefiníciót tárolják a Hive-ban. Az adatok az eredeti helyen maradnak.|
-    |SOR FORMÁTUMA|Megmutatja, hogyan vannak formázva az adatok. Ebben az esetben az egyes naplók mezőit szóköz választja el egymástól.|
-    |TÁROLT SZÖVEGFÁJL HELYE|Megmutatja, hogy az adatok hol tárolódnak, és hogy szövegként tárolódnak.Shows where the data is stored, and that it's stored as text.|
-    |SELECT|Kijelöli az összes olyan sor számát, ahol a t4 oszlop a [HIBA] értéket tartalmazza.|
+    |TÁBLÁZAT ELDOBÁSA|Törli a táblát és az adatfájlt arra az esetre, ha a tábla már létezik.|
+    |KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy új "külső" táblát a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.|
+    |SOR FORMÁTUMA|Megjeleníti az adat formázásának módját. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.|
+    |TEXTFILE HELYEN TÁROLVA|Megjeleníti az adattárolás helyét, valamint a szövegként tárolt fájlokat.|
+    |SELECT|Kiválasztja az összes olyan sor számát, ahol a T4 oszlop tartalmazza a [hiba] értéket.|
 
    > [!IMPORTANT]  
-   > Hagyja az __Adatbázis__ beállítást __alapértelmezetten.__ A jelen dokumentumban szereplő példák a HDInsight alapértelmezett adatbázisát használják.
+   > Hagyja meg az __adatbázis__ __alapértelmezett__beállítását. A jelen dokumentumban szereplő példák a HDInsight alapértelmezett adatbázisát használják.
 
-1. A lekérdezés elindításához válassza a Munkalap alatti **Végrehajtás** lehetőséget. A gomb narancssárgára vált, és a szöveg **Leállítás**lesz.
+1. A lekérdezés elindításához válassza a **végrehajtás** a munkalap alatt lehetőséget. A gomb a narancssárga színűre változik, és a szöveg **leáll**.
 
-1. A lekérdezés befejezése után az **Eredmények** lap megjeleníti a művelet eredményeit. A következő szöveg a lekérdezés eredménye:
+1. A lekérdezés befejeződése után az **eredmények** lap a művelet eredményét jeleníti meg. A lekérdezés eredménye a következő szöveg:
 
         loglevel       count
         [ERROR]        3
 
-    A **NAPLÓ** lapon megtekintheti a feladat által létrehozott naplózási információkat.
+    A **napló** lapon megtekintheti a feladatok által létrehozott naplózási adatokat.
 
    > [!TIP]  
-   > Eredmények letöltése vagy mentése az **Eredmények** lap **Műveletek** legördülő párbeszédpanelén.
+   > Töltse le vagy mentse az eredményeket az **eredmények** lap **műveletek** legördülő párbeszédpanelén.
 
-### <a name="visual-explain"></a>Vizuális magyarázat
+### <a name="visual-explain"></a>Vizualizáció magyarázata
 
-A lekérdezési terv vizualizációjának megjelenítéséhez kattintson a Munkalap alatti **Vizuális magyarázat** fülre.
+A lekérdezési terv vizualizációjának megjelenítéséhez válassza a munkalap alatti **vizuális magyarázat** lapot.
 
-A lekérdezés **Vizuális magyarázat** nézete hasznos lehet az összetett lekérdezések áramlásának megértésében.
+A lekérdezés **vizuális magyarázatot** ábrázoló nézete hasznos lehet az összetett lekérdezések folyamatának megismeréséhez.
 
 ### <a name="tez-ui"></a>Tez felhasználói felület
 
-A lekérdezés Tez felhasználói felületének megjelenítéséhez kattintson a munkalap alatti **Tez felhasználói felület** fülre.
+A lekérdezés TEZ felhasználói felületének megjelenítéséhez válassza a **TEZ felhasználói felület** fület a munkalap alatt.
 
 > [!IMPORTANT]  
-> A Tez nem használható az összes lekérdezés feloldására. Számos lekérdezést feloldhat a Tez használata nélkül.
+> A TEZ nem az összes lekérdezés feloldására szolgál. A TEZ használata nélkül is megoldhat sok lekérdezést.
 
 ## <a name="view-job-history"></a>Feladatelőzmények megtekintése
 
-A __Feladatok__ lap a Hive-lekérdezések előzményeit jeleníti meg.
+A __feladatok__ lap a struktúra-lekérdezések előzményeit jeleníti meg.
 
-![Apache Hive nézet feladatok lap előzményei](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Apache Hive a feladatok lap előzményeinek megtekintése](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>Adatbázistáblák
 
-A __Táblák__ lapon a Hive-adatbázistábláival dolgozhat.
+A __Tables (táblák__ ) lapon egy struktúra-adatbázisban lévő táblákkal dolgozhat.
 
-![Az Apache Hive-táblák lap képe](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+![A Apache Hive Tables lap képe](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>Mentett lekérdezések
 
-A **Lekérdezés** lapon tetszés szerint mentheti a lekérdezéseket. A lekérdezés mentése után a __Mentett lekérdezések__ lapon újra felhasználhatja azt.
+A **lekérdezés** lapon igény szerint mentheti a lekérdezéseket. A lekérdezés mentése után újra felhasználhatja azt a __mentett lekérdezések__ lapról.
 
-![Az Apache Hive nézetek mentett lekérdezések lapja](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Apache Hive nézetek mentett lekérdezések lap](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> A mentett lekérdezések az alapértelmezett fürttárolóban tárolódnak. A mentett lekérdezéseket az `/user/<username>/hive/scripts`elérési út alatt találhatja meg. Ezek egyszerű szöveges `.hql` fájlként tárolódnak.
+> A mentett lekérdezések az alapértelmezett fürtöt tárolóban tárolódnak. A mentett lekérdezéseket az elérési út `/user/<username>/hive/scripts`alatt találja. Ezeket egyszerű szöveges `.hql` fájlként tárolja a rendszer.
 >
-> Ha törli a fürtöt, de megtartja a tárhelyet, használhatja a segédprogramot, például [az Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) vagy a Data Lake Storage Explorer (az Azure [Portalról)](https://portal.azure.com)a lekérdezések lekéréséhez.
+> Ha törli a fürtöt, de megtartja a tárolót, használhat olyan segédprogramot, mint a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) vagy a Data Lake Storage Explorer (az [Azure Portalról](https://portal.azure.com)) a lekérdezések lekéréséhez.
 
 ## <a name="user-defined-functions"></a>Felhasználó által meghatározott függvények
 
-A Hive kiterjeszthető a felhasználó által definiált függvények (UDF) keresztül. UDF használatával olyan funkciókat vagy logikát valósíthat meg, amelyek nem könnyen modellezhetők a HiveQL-ben.
+A struktúrát a felhasználó által definiált függvények (UDF) használatával is kiterjesztheti. Az UDF használatával olyan funkciót vagy logikát alkalmazhat, amely nem könnyen modellezhető a HiveQL-ben.
 
-Deklarálja és mentse az UDF-ek készletét a Hive nézet tetején található **UDF** lapon. Ezek az UDF-ek a **Lekérdezésszerkesztővel**használhatók.
+Deklaráljon és mentsen egy UDF a kaptár nézet tetején található **UDF** lapon. Ezek a UDF a **lekérdezés-szerkesztővel**is használhatók.
 
-![Az Apache Hive nézet UDF-lapja](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Apache Hive megtekintés UDF lap megjelenítése](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-A **Lekérdezésszerkesztő**alján megjelenik egy **Udfs** beszúrási gomb. Ez a bejegyzés a Hive nézetben definiált UDF-ek legördülő listáját jeleníti meg. UdF kiválasztása hozzáadja a HiveQL-utasítások a lekérdezéshez, hogy az UDF.
+Megjelenik a **UDF beszúrása** gomb a **lekérdezési szerkesztő**alján. Ez a bejegyzés a kaptár nézetben definiált UDF legördülő listáját jeleníti meg. Az UDF kiválasztásával HiveQL-utasítások adhatók hozzá a lekérdezéshez az UDF engedélyezéséhez.
 
-Ha például a következő tulajdonságokkal rendelkező UDF-et definiált:
+Ha például egy UDF-t definiált a következő tulajdonságokkal:
 
 * Erőforrás neve: myudfs
 
-* Erőforrás elérési útja: /myudfs.jar
+* Erőforrás elérési útja:/myudfs.jar
 
-* UDF név: myawesomeudf
+* UDF-név: myawesomeudf
 
-* UDF osztály neve: com.myudfs.Awesome
+* UDF-osztálynév: com. myudfs. Awesome
 
-Az **Udfs beszúrása** gombbal megjelenik egy **myudfs**nevű bejegyzés, amely az adott erőforráshoz definiált minden egyes UDF-hez egy másik legördülő listát jelenít meg. Ebben az esetben, ez **myawesomeudf**. A bejegyzés bejelölésével a következő a lekérdezés elejére:
+A **UDF beszúrása** gomb a **myudfs**nevű bejegyzést jeleníti meg, és az adott erőforráshoz definiált összes UDF számára egy másik legördülő listát. Ebben az esetben ez a **myawesomeudf**. A bejegyzés kiválasztásával hozzáadja a következőt a lekérdezés elejéhez:
 
 ```hiveql
 add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-Ezután használhatja az UDF-et a lekérdezésben. Például: `SELECT myawesomeudf(name) FROM people;`.
+Ezután használhatja az UDF-t a lekérdezésben. Például: `SELECT myawesomeudf(name) FROM people;`.
 
-Az UDF-ek HIVe-vel hdinsight-on történő használatáról az alábbi cikkekben talál további információt:
+A UDF és a HDInsight struktúrával való használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Python használata Apache Hive-val és Apache Pig-szel a HDInsightban](python-udf-hdinsight.md)
-* [Java UDF használata Apache Hive-val a HDInsightban](./apache-hadoop-hive-java-udf.md)
+* [A Python használata Apache Hive és Apache Pig használatával a HDInsight-ben](python-udf-hdinsight.md)
+* [Java UDF használata Apache Hive HDInsight](./apache-hadoop-hive-java-udf.md)
 
-## <a name="hive-settings"></a>Hive-beállítások
+## <a name="hive-settings"></a>Struktúra beállításai
 
-Módosíthatja a különböző Hive-beállításokat, például a Hive végrehajtási motorjának módosítása Tez-ről (az alapértelmezett) a MapReduce-re.
+Módosíthatja a kaptárak különböző beállításait, például megváltoztathatja a kaptár végrehajtó motorját a TEZ (az alapértelmezett) értékről a MapReduce.
 
 ## <a name="next-steps"></a>További lépések
 
-Általános információk a HIVE a HDInsight:
+A HDInsight struktúra általános információi:
 
-* [Az Apache Hive használata az Apache Hadoop segítségével a HDInsighton](hdinsight-use-hive.md)
-
-A Hadoop hdinsight-on való egyéb működéséről további információt talál:
-
-* [Az Apache Pig használata az Apache Hadoop segítségével a HDInsighton](hdinsight-use-pig.md)
-* [A MapReduce használata az Apache Hadoop segítségével a HDInsighton](hdinsight-use-mapreduce.md)
+* [Apache Hive használata a HDInsight Apache Hadoop használatával](hdinsight-use-hive.md)
+* [Az Apache Beeline-ügyfél használata Apache Hive-val](apache-hadoop-use-hive-beeline.md)

@@ -1,38 +1,30 @@
 ---
-title: Azure Batch-statisztika
-description: A Batch Analytics témakörei a Batch service-erőforrásokhoz elérhető eseményekre és riasztásokra vonatkozó referenciainformációkat tartalmaznak.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Azure Batch Analitika
+description: A Batch Analytics témakörei a Batch szolgáltatás erőforrásaihoz elérhető eseményekre és riasztásokra vonatkozó információkat tartalmaznak.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: d9538461dfa48a961f9325566b2adaf265e8daeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d35bf249a3ae5dd06f42b89c3d5c2773f9508603
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025962"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113068"
 ---
 # <a name="batch-analytics"></a>Batch-elemzés
-A Batch Analytics témakörei a Batch service-erőforrásokhoz elérhető eseményekre és riasztásokra vonatkozó referenciainformációkat tartalmaznak.
+A Batch Analytics témakörei a Batch szolgáltatás erőforrásaihoz elérhető eseményekre és riasztásokra vonatkozó információkat tartalmaznak.
 
-A Batch diagnosztikai naplók engedélyezésével és használatával kapcsolatos további információkért tekintse meg az [Azure Batch diagnosztikai naplózását.](https://azure.microsoft.com/documentation/articles/batch-diagnostics/)
+A Batch diagnosztikai naplók engedélyezésével és elfogyasztásával kapcsolatos további információkért tekintse meg a [Azure batch diagnosztikai naplózást](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) ismertető témakört.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Az Azure Batch szolgáltatás a következő diagnosztikai naplóeseményeket bocsátja ki bizonyos Batch-erőforrások élettartama alatt.
+A Azure Batch szolgáltatás a következő diagnosztikai naplózási eseményeket bocsátja ki bizonyos batch-erőforrások élettartama alatt.
 
-**Szolgáltatásnapló eseményei**
+**Szolgáltatás-naplózási események**
 * [Készlet létrehozása](batch-pool-create-event.md)
-* [Készlet törlése kezdete](batch-pool-delete-start-event.md)
+* [Készlet törlésének kezdete](batch-pool-delete-start-event.md)
 * [Készlet törlése kész](batch-pool-delete-complete-event.md)
-* [Készlet átméretezési kezdete](batch-pool-resize-start-event.md)
-* [Készlet átméretezése kész](batch-pool-resize-complete-event.md)
-* [Tevékenység kezdete](batch-task-start-event.md)
-* [Feladat befejezve](batch-task-complete-event.md)
-* [A feladat sikertelen](batch-task-fail-event.md)
+* [Készlet átméretezésének kezdete](batch-pool-resize-start-event.md)
+* [A készlet átméretezése befejeződött](batch-pool-resize-complete-event.md)
+* [Feladat indítása](batch-task-start-event.md)
+* [A feladat befejeződött](batch-task-complete-event.md)
+* [Sikertelen feladat](batch-task-fail-event.md)

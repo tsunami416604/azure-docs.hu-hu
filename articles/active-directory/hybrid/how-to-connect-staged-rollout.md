@@ -1,23 +1,23 @@
 ---
 title: 'Azure AD Connect: felhőalapú hitelesítés szakaszos bevezetéssel | Microsoft Docs'
-description: Ez a cikk azt ismerteti, hogyan lehet áttelepíteni az összevont hitelesítésről a Felhőbeli hitelesítésre egy előkészített bevezetéssel.
+description: Ez a cikk azt ismerteti, hogyan lehet áttelepítést végezni az összevont hitelesítésből a felhőalapú hitelesítésre egy előkészített bevezetéssel.
 author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3044ebdd716eb85dc63d3a77089912d0d51d8b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80b7536704d68e96429d715705a0518410db399a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74915233"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112320"
 ---
-# <a name="migrate-to-cloud-authentication-by-using-staged-rollout-preview"></a>Áttelepítés a felhőalapú hitelesítésbe szakaszos bevezetés használatával (előzetes verzió)
+# <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
 A szakaszos bevezetési megközelítés használatával áttelepítheti az összevont hitelesítést a felhőalapú hitelesítésbe. Ez a cikk bemutatja, hogyan hajthatja végre a kapcsolót. Mielőtt elkezdené a szakaszos bevezetést, érdemes figyelembe vennie a következményeket, ha az alábbi feltételek közül egy vagy több teljesül:
     

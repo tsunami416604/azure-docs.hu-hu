@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/21/2020
+ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1377023af9d4f153671f15e214516ac29536638
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100073"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112201"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -47,6 +47,14 @@ Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshe
 >Ha engedélyezte a Azure AD Connect for Sync szolgáltatást, hamarosan automatikusan megkezdi az olyan állapotadatok fogadását, amelyek figyelmeztetik a közelgő elavult verziókra, amikor az egyik régebbi verziót futtatja.
 >
 >[Ebben a cikkben](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) további információt talál arról, hogyan frissítheti Azure ad Connect a legújabb verzióra.
+
+## <a name="15290"></a>1.5.29.0
+
+### <a name="release-status"></a>Kiadás állapota
+04/23/2020: kiadva a letöltéshez
+
+### <a name="fixed-issues"></a>Hibák kijavítva:
+Ez a gyorsjavítás-Build javít egy olyan problémát, amely olyan build 1.5.20.0 jelent meg, ahol az MFA-val rendelkező bérlői rendszergazda nem tudta engedélyezni a DSSO.
 
 ## <a name="15220"></a>1.5.22.0
 

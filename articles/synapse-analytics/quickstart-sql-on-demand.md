@@ -1,6 +1,6 @@
 ---
-title: Az SQL igény szerinti használata (előzetes verzió)
-description: Ebben a rövid útmutatóban megtudhatja, hogy milyen egyszerű lekérdezni a különböző típusú fájlokat az SQL on-demand (előzetes verzió) használatával.
+title: Igény szerinti SQL-használat (előzetes verzió)
+description: Ebből a rövid útmutatóból megtudhatja, hogy milyen egyszerű a különböző típusú fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,53 +9,53 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d543abc88c1e45f2c1f5503473d8e92566fc582
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: d49918fc67a45419e5c7ca123642c48e689a1496
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457382"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113782"
 ---
-# <a name="quickstart-using-sql-on-demand"></a>Rövid útmutató: SQL igény szerinti használata
+# <a name="quickstart-using-sql-on-demand"></a>Gyors útmutató: SQL igény szerinti használata
 
-A Synapse SQL igény szerinti (előzetes verzió) egy kiszolgáló nélküli lekérdezési szolgáltatás, amely lehetővé teszi az Sql-lekérdezések futtatását az Azure Storage-ban elhelyezett fájlokon. Ebben a rövid útmutatóban megtudhatja, hogyan lehet lekérdezni a különböző típusú fájlokat az SQL igény szerinti használatával.
+A szinapszis SQL on-demand (előzetes verzió) egy kiszolgáló nélküli lekérdezési szolgáltatás, amely lehetővé teszi az SQL-lekérdezések futtatását az Azure Storage-ba helyezett fájlokon. Ebből a rövid útmutatóból megtudhatja, hogyan kérdezheti le a különböző típusú fájlokat az SQL igény szerinti használatával.
 
 A következő fájltípusok támogatottak: JSON, CSV, Apache Parquet
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Válasszon egy SQL-ügyfelet a lekérdezések kérdéséhez:
+Válasszon ki egy SQL-ügyfelet a lekérdezések kibocsátásához:
 
-- [Az Azure Synapse Studio](quickstart-synapse-studio.md) egy webes eszköz, amellyel tallózhat a tárolóban lévő fájlok között, és SQL-lekérdezést hozhat létre.
-- [Az Azure Data Studio](sql/get-started-azure-data-studio.md) egy olyan ügyféleszköz, amely lehetővé teszi az SQL-lekérdezések és notebookok futtatását az igény szerinti adatbázisban.
-- [Az SQL Server Management Studio](sql/get-started-ssms.md) egy olyan ügyféleszköz, amely lehetővé teszi az SQL-lekérdezések futtatását az igény szerinti adatbázisban.
+- Az [Azure szinapszis Studio](quickstart-synapse-studio.md) egy webes eszköz, amellyel böngészheti a fájlokat a tárolóban, és SQL-lekérdezést hozhat létre.
+- A [Azure Data Studio](sql/get-started-azure-data-studio.md) egy ügyfél-eszköz, amely lehetővé teszi, hogy SQL-lekérdezéseket és jegyzetfüzeteket futtasson az igény szerinti adatbázison.
+- A [SQL Server Management Studio](sql/get-started-ssms.md) egy ügyfél-eszköz, amely lehetővé teszi, hogy SQL-lekérdezéseket futtasson az igény szerinti adatbázison.
 
-A rövid útmutató paraméterei:
+A gyors üzembe helyezési paraméterek:
 
 | Paraméter                                 | Leírás                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL igény szerinti szolgáltatás végpontcíme    | Kiszolgálónévként használva                                   |
-| SQL igény szerinti szolgáltatásvégpont-régió     | Annak meghatározására szolgál, hogy milyen tárolót fogunk használni a mintákban |
-| Felhasználónév és jelszó a végpontokhoz való hozzáféréshez | Végpont eléréséhez használva                               |
-| Nézetek létrehozásához használt adatbázis         | A minták kiindulási pontjaként használt adatbázis       |
+| Igény szerinti SQL-szolgáltatás végpontjának címe    | Kiszolgáló neveként használatos                                   |
+| Igény szerinti SQL-szolgáltatás végpontjának régiója     | Annak meghatározására szolgál, hogy milyen tárterületet fogunk használni a mintákban |
+| A végpontok hozzáférésének felhasználóneve és jelszava | Végponthoz való hozzáféréshez használatos                               |
+| A nézetek létrehozásához használt adatbázis         | A mintákban kezdőpontként használt adatbázis       |
 
 ## <a name="first-time-setup"></a>Első beállítás
 
-Minták használata előtt:
+A minták használata előtt:
 
-- Adatbázis létrehozása a nézetekhez (ha nézeteket szeretne használni)
-- Az SQL igény szerinti hozzáférési adatainak létrehozása a tárolóban lévő fájlok eléréséhez
+- Adatbázis létrehozása a nézetekhez (ha a nézeteket szeretné használni)
+- A Storage-ban tárolt fájlok eléréséhez igény szerint használandó hitelesítő adatok létrehozása
 
 ### <a name="create-database"></a>Adatbázis létrehozása
 
-Hozzon létre saját adatbázist demo célokra. Ebben az adatbázisban hozhatja létre a nézeteket. Használja ezt az adatbázist a cikkben található mintalekérdezésekben.
+Saját adatbázis létrehozása bemutató céljára. Ez az adatbázis, amelyben létrehozza a nézeteket. Használja ezt az adatbázist a cikkben szereplő lekérdezésekben.
 
 > [!NOTE]
-> Az adatbázisok csak a metaadatok megtekintésére szolgálnak, a tényleges adatokra nem.
+> Az adatbázisokat csak a metaadatok megtekintésére használják, a tényleges adatok esetében nem.
 >
-> Írja le a rövid útmutató későbbi részében használható adatbázisnevet.
+> Jegyezze fel az adatbázis nevét, amelyet később a gyors útmutatóban használhat.
 
-Használja a következő `mydbname` lekérdezést, és váltson egy választott névre:
+Használja a következő lekérdezést, amely `mydbname` a választott névre változik:
 
 ```sql
 CREATE DATABASE mydbname
@@ -63,12 +63,18 @@ CREATE DATABASE mydbname
 
 ### <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
-A lekérdezések futtatása sql igény szerint, hozzon létre hitelesítő adatokat az SQL igény szerint a tárolóban lévő fájlok eléréséhez.
+Ha SQL igény szerint szeretné futtatni a lekérdezéseket, hozzon létre hitelesítő adatokat az SQL igény szerinti használatához a tárolóban lévő fájlok eléréséhez.
 
 > [!NOTE]
-> Vegye figyelembe, hogy létre kell hoznia a tárfiókhoz való hozzáféréshez szükséges hitelesítő adatokat. Bár az SQL igény szerinti hozzáférés különböző régiókból származó tárolókhoz férhet hozzá, a storage és az Azure Synapse munkaterület ugyanabban a régióban jobb teljesítményélményt nyújt.
+> Az ebben a szakaszban található minták sikeres futtatásához az SAS-tokent kell használnia.
+>
+> Az SAS-tokenek használatának megkezdéséhez el kell dobnia a UserIdentity, amelyet az alábbi [cikkben](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)ismertetünk.
+>
+> Alapértelmezés szerint az SQL igény szerinti használata mindig a HRE-továbbítást használja.
 
-Módosítsa a következő kódrészletet a CSV-, JSON- és parkettatárolók hitelesítő adatainak létrehozásához:
+A tárterület-hozzáférés-vezérlés kezelésével kapcsolatos további információkért olvassa el ezt a [hivatkozást](sql/develop-storage-files-storage-access-control.md).
+
+A következő kódrészlet végrehajtásával hozza létre az ebben a szakaszban található mintákban használt hitelesítő adatokat:
 
 ```sql
 -- create credentials for containers in our demo storage account
@@ -86,11 +92,11 @@ GO
 
 ## <a name="querying-csv-files"></a>CSV-fájlok lekérdezése
 
-A következő kép a lekérdezendő fájl előnézete:
+A következő kép a lekérdezni kívánt fájl előnézete:
 
-![A CSV fájl első 10 sora fejléc nélkül, a Windows új sort stílusa.](./sql/media/query-single-csv-file/population.png)
+![A CSV-fájl első 10 sora fejléc nélkül, Windows stílusú új sor.](./sql/media/query-single-csv-file/population.png)
 
-A következő lekérdezés bemutatja, hogyan lehet olvasni egy olyan CSV-fájlt, amely nem tartalmaz fejlécsort, Windows stílusú új sorés vesszővel tagolt oszlopokkal:
+A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy olyan CSV-fájlt, amely nem tartalmaz fejlécsort, Windows-stílusú új sorral és vesszővel tagolt oszlopokkal:
 
 ```sql
 SELECT TOP 10 *
@@ -110,15 +116,15 @@ WHERE
   country_name = 'Luxembourg' AND year = 2017
 ```
 
-A sémát a lekérdezés fordítási idejében adhatja meg.
-További példákat a [CSV-fájl lekérdezése talál.](sql/query-single-csv-file.md)
+A sémát megadhatja a lekérdezés fordítási idején.
+További példákat a [CSV-fájl lekérdezése](sql/query-single-csv-file.md)című témakörben talál.
 
-## <a name="querying-parquet-files"></a>Parkettafájlok lekérdezése
+## <a name="querying-parquet-files"></a>Parquet-fájlok lekérdezése
 
-Az alábbi minta a Parquet-fájlok lekérdezéséhez szükséges automatikus sémakövetkeztetési képességeket mutatja be. A sorok számát adja vissza 2017 szeptemberében séma megadása nélkül.
+Az alábbi példa a Parquet-fájlok lekérdezésének automatikus séma-következtetéseit mutatja be. A 2017 szeptemberében visszaadja a sorok számát a séma meghatározása nélkül.
 
 > [!NOTE]
-> A Parquet fájlok `OPENROWSET WITH` olvasásakor nem kell oszlopokat megadnia a záradékban. Ebben az esetben az SQL igény szerinti metaadatokat használ a Parquet fájlban, és név szerint köti az oszlopokat.
+> A Parquet-fájlok olvasásakor nem `OPENROWSET WITH` kell megadnia az oszlopok a záradékban. Ebben az esetben az SQL on-demand metaadatokat használ a Parquet fájlban, és az oszlopokat név alapján köti össze.
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -129,13 +135,13 @@ FROM OPENROWSET
   ) AS nyc
 ```
 
-További információ [a parkettafájlok lekérdezéséről](sql/query-parquet-files.md)].
+További információ a [Parquet-fájlok lekérdezéséről](sql/query-parquet-files.md)].
 
 ## <a name="querying-json-files"></a>JSON-fájlok lekérdezése
 
-### <a name="json-sample-file"></a>JSON mintafájl
+### <a name="json-sample-file"></a>JSON-minta fájl
 
-A fájlok *json* tárolóban, *mappakönyvekben*tárolódnak, és egykönyves bejegyzést tartalmaznak, amelynek szerkezete a következő:
+A fájlok *JSON* -tárolóban, *címjegyzékekben*tárolódnak, és az alábbi struktúrával rendelkező egykönyves bejegyzéseket tartalmaznak:
 
 ```json
 {  
@@ -155,7 +161,7 @@ A fájlok *json* tárolóban, *mappakönyvekben*tárolódnak, és egykönyves be
 
 ### <a name="querying-json-files"></a>JSON-fájlok lekérdezése
 
-A következő lekérdezés bemutatja, hogyan lehet [használni JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) lekérni skaláris értékek (cím, kiadó) egy könyv címe *valószínűségi és statisztikai módszerek cryptology, Bevezetés a kiválasztott cikkek:*
+A következő lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) a skaláris értékek (title, kiadó) egy könyvből való lekéréséhez a *Cryptology-ben a valószínűségi és statisztikai metódusok címmel, a kiválasztott cikkek bevezetésével*:
 
 ```sql
 SELECT
@@ -177,22 +183,22 @@ WHERE
 ```
 
 > [!IMPORTANT]
-> A teljes JSON fájlt egy soros/oszlopként olvassuk, így a FIELDTERMINATOR, a FIELDQUOTEOR és a ROWTERMINATOR 0x0b-re van állítva, mert nem várjuk, hogy megtaláljuk a fájlban.
+> A teljes JSON-fájlt egyetlen sor/oszlopként olvasjuk, így a FIELDTERMINATOR, a FIELDQUOTE és a ROWTERMINATOR a 0x0b értékre vannak állítva, mert nem számítunk fel a fájlba.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már készen áll a következő rövid útmutató cikkek:
+Most már készen áll a következő rövid útmutató cikkeire:
 
 - [Egyetlen CSV-fájl lekérdezése](sql/query-single-csv-file.md)
 - [Mappák és több CSV-fájl lekérdezése](sql/query-folders-multiple-csv-files.md)
 - [Adott fájlok lekérdezése](sql/query-specific-files.md)
 - [Parquet-fájlok lekérdezése](sql/query-parquet-files.md)
-- [Parketta beágyazott típusai lekérdezése](sql/query-parquet-nested-types.md)
+- [A Parquet beágyazott típusainak lekérdezése](sql/query-parquet-nested-types.md)
 - [JSON-fájlok lekérdezése](sql/query-json-files.md)
 - [Nézetek létrehozása és használata](sql/create-use-views.md)
 - [Külső táblák létrehozása és használata](sql/create-use-external-tables.md)
-- [Lekérdezéseredmény megőrzése az Azure storage-ban](sql/create-external-table-as-select.md)
+- [Lekérdezési eredmények megőrzése az Azure Storage-ban](sql/create-external-table-as-select.md)
 
-A következő cikkből megtudhatja, hogyan kérdezhet le egyetlen CSV-fájlt.
+A következő cikkből megtudhatja, hogyan kérdezheti le az egyetlen CSV-fájlt.
 > [!div class="nextstepaction"]
 > [Egyetlen CSV-fájl lekérdezése](sql/query-single-csv-file.md)

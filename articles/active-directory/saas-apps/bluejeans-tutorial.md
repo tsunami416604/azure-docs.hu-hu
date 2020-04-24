@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Azure AD-hez tartozó BlueJeans szolgáltatással | Microsoft dokumentumok'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a BlueJeans for Azure AD között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BlueJeans for Azure AD-vel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést az Azure AD Azure Active Directory és BlueJeans között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -23,209 +23,209 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "72595054"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Azure AD-hez való BlueJeans csomaggal
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BlueJeans for Azure AD-vel
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a BlueJeans for Azure AD-t az Azure Active Directoryval (Azure AD). Ha integrálja a BlueJeans for Azure AD-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az Azure AD BlueJeans az Azure Active Directory (Azure AD) szolgáltatással. Ha az Azure ad-val integrálja az BlueJeans-t az Azure AD-be, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a BlueJeans for Azure AD.Control in Azure AD who has access to BlueJeans for Azure AD.
-* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve bluejeans for Azure AD az Azure AD-fiókok.
-* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
+* A BlueJeans for Azure AD-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az Azure AD-fiókkal való BlueJeans.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kezdéshez a következő elemekre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* BlueJeans az Azure AD egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* BlueJeans az Azure AD egyszeri bejelentkezés (SSO) számára engedélyezett előfizetés esetén.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A BlueJeans for Azure AD támogatja az **SP** által kezdeményezett SSO-t
+* Az BlueJeans for Azure AD támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-* A BlueJeans for Azure AD támogatja [ **az automatikus** felhasználói kiépítést](bluejeans-provisioning-tutorial.md)
+* A BlueJeans for Azure AD támogatja a [felhasználók **automatikus** kiépítési felállítását](bluejeans-provisioning-tutorial.md)
 
 > [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egy bérlőben.
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
-## <a name="adding-bluejeans-for-azure-ad-from-the-gallery"></a>BlueJeans hozzáadása az Azure AD-hez a galériából
+## <a name="adding-bluejeans-for-azure-ad-from-the-gallery"></a>BlueJeans hozzáadása az Azure AD-hez a katalógusból
 
-A BlueJeans for Azure AD Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a BlueJeans for Azure AD-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az Azure ad-hez készült BlueJeans az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a BlueJeans for Azure AD-t a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
-1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
-1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
-1. A **hozzáadás a katalógusból** szakaszban írja be **a BlueJeans for Azure AD** a keresőmezőbe.
-1. Válassza ki **a BlueJeans for Azure AD** az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **BLUEJEANS for Azure ad** kifejezést a keresőmezőbe.
+1. Válassza az **BlueJeans for Azure ad** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-bluejeans-for-azure-ad"></a>Konfigurálja és tesztelje az Azure AD egyszeri bejelentkezését az AzureJeans azure AD-hez
+## <a name="configure-and-test-azure-ad-single-sign-on-for-bluejeans-for-azure-ad"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az Azure AD-hez készült BlueJeans
 
-Konfigurálja és tesztelje az Azure AD SSO-t a BlueJeans for Azure AD-vel egy **B.Simon**nevű tesztfelhasználó használatával. Az SSO működéséhez létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a BlueJeans for Azure AD-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a BlueJeans for Azure AD-vel egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a BlueJeans for Azure AD-ben.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez az Azure AD-hez készült BlueJeans szolgáltatással hajtsa végre az alábbi építőelemeket:
+Az Azure AD SSO az Azure AD-vel való BlueJeans való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    1. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
-    1. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
-1. **[Konfigurálja a BlueJeans az Azure AD Egyszeri bejelentkezés](#configure-bluejeans-for-azure-ad-sso)** – az alkalmazás oldalán az egyszeri bejelentkezési beállítások konfigurálásához.
-    1. **[Hozzon létre BlueJeans azure AD teszt felhasználó](#create-bluejeans-for-azure-ad-test-user)** – egy megfelelője B.Simon a BlueJeans azure AD, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. Az **[Azure ad SSO BlueJeans konfigurálása](#configure-bluejeans-for-azure-ad-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[BlueJeans létrehozása az Azure ad test userhez](#create-bluejeans-for-azure-ad-test-user)** – ha az Azure ad-hez tartozó, a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-BlueJeans rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az [Azure Portalon](https://portal.azure.com/)a **BlueJeans for Azure AD** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/)az **Azure ad** -alkalmazás integrációjának BlueJeans lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **Egyszerű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<companyname>.bluejeans.com`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.bluejeans.com`
 
     > [!NOTE]
-    > Az érték nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Lépjen kapcsolatba [a BlueJeans for Azure AD ügyfél támogatási csapatával](https://support.bluejeans.com/contact) az érték lekéri. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba az [Azure ad-ügyfél támogatási csapatának BlueJeans](https://support.bluejeans.com/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **BlueJeans beállítása az Azure AD-hez** szakaszban másolja a megfelelő URL-cím(ek) a követelmény alapján.
+1. Az **Azure ad BlueJeans beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
-1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
-   1. Kattintson **a Létrehozás gombra.**
+   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t, hozzáférést biztosítva a BlueJeans az Azure AD.In this section, you'll enable B.Simon to use Azure single sign-on by access to BlueJeans for Azure AD.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a BlueJeans for Azure AD-hoz.
 
-1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza a **BlueJeans for Azure AD lehetőséget.**
-1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza az **BlueJeans az Azure ad**-hoz lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-bluejeans-for-azure-ad-sso"></a>BlueJeans konfigurálása az Azure AD SSO-hoz
+## <a name="configure-bluejeans-for-azure-ad-sso"></a>Az Azure AD SSO BlueJeans konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a **BlueJeans for Azure AD** vállalati webhelyére rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a **BlueJeans az Azure ad** vállalati webhelyre rendszergazdaként.
 
-2. Nyissa meg a **FELÜGYELETI \> CSOPORT BEÁLLÍTÁSAINAK \> BIZTONSÁGA lapot.**
+2. Lépjen a **felügyeleti \> csoport beállításai \> biztonság**menüpontra.
 
     ![Felügyelet](./media/bluejeans-tutorial/ic785868.png "Rendszergazda")
 
-3. A **BIZTONSÁG szakaszban** hajtsa végre az alábbi lépéseket:
+3. A **Biztonság** szakaszban hajtsa végre a következő lépéseket:
 
     ![SAML egyszeri bejelentkezés](./media/bluejeans-tutorial/ic785869.png "SAML egyszeri bejelentkezés")
 
-    a. Válassza **az SAML Single Sign On lehetőséget.**
+    a. Válassza **az SAML egyszeri bejelentkezés**lehetőséget.
 
-    b. Válassza **az Automatikus kiépítés engedélyezése**lehetőséget.
+    b. Válassza az **automatikus kiépítés engedélyezése**lehetőséget.
 
-4. Lépjen tovább a következő lépésekkel:
+4. A következő lépésekkel léphet be:
 
     ![Tanúsítvány elérési útja](./media/bluejeans-tutorial/ic785870.png "Tanúsítvány elérési útja")
 
-    a. Kattintson **a Fájl kiválasztása**gombra az Azure Portalról letöltött 64-es alapú kódolt tanúsítvány feltöltéséhez.
+    a. Kattintson a **Fájl választása**gombra a Azure Portal által letöltött base-64 kódolt tanúsítvány feltöltéséhez.
 
-    b. A **Bejelentkezési URL-cím** mezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet az Azure Portalról másolt.
+    b. A **bejelentkezési URL** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét.
 
-    c. A **Jelszómódosítása URL-címmezőbe** illessze be a **Jelszó url-címének módosítása** az Azure Portalról másolt értékét.
+    c. A **jelszó-módosítási URL** szövegmezőbe illessze be a **jelszó módosítása URL-címet** , amelyet a Azure Portal másolt.
 
-    d. A **Kijelentkezés URL-cím** beírt mezőjébe illessze be a **Kijelentkezés i URL-címét,** amelyet az Azure Portalról másolt.
+    d. A **kijelentkezési URL** szövegmezőben illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portalból másolt.
 
-5. Lépjen tovább a következő lépésekkel:
+5. A következő lépésekkel léphet be:
 
     ![Módosítások mentése](./media/bluejeans-tutorial/ic785874.png "Módosítások mentése")
 
-    a. A **Felhasználói azonosító** mezőbe írja `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`be a következőt:
+    a. A **felhasználói azonosító** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`a következőt:.
 
-    b. Az **E-mail** mezőbe `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`írja be a következőt:
+    b. Az **e-mail** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`a következőt:.
 
-    c. Kattintson **a Módosítások mentése gombra.**
+    c. Kattintson a **módosítások mentése**gombra.
 
-### <a name="create-bluejeans-for-azure-ad-test-user"></a>BlueJeans létrehozása az Azure AD tesztfelhasználójának
+### <a name="create-bluejeans-for-azure-ad-test-user"></a>BlueJeans létrehozása az Azure AD test userhez
 
-Ez a szakasz célja, hogy hozzon létre egy b.Simon nevű felhasználó ta- Azure AD.The objective of this section is to create a user called B.Simon in BlueJeans for Azure AD. A BlueJeans for Azure AD támogatja az automatikus felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Az automatikus felhasználói [here](bluejeans-provisioning-tutorial.md) kiépítés konfigurálásáról itt olvashat bővebben.
+Ennek a szakasznak a célja, hogy létrehozzon egy B. Simon nevű felhasználót az Azure AD BlueJeans. Az Azure AD-hez készült BlueJeans támogatja a felhasználók automatikus üzembe helyezését, amely alapértelmezés szerint engedélyezve van. További részletekért tekintse [meg az automatikus](bluejeans-provisioning-tutorial.md) felhasználó-kiépítés konfigurálását ismertető témakört.
 
-**Ha manuálisan kell létrehoznia a felhasználót, hajtsa végre az alábbi lépéseket:**
+**Ha manuálisan kell létrehoznia a felhasználót, hajtsa végre a következő lépéseket:**
 
-1. Jelentkezzen be a **BlueJeans for Azure AD** vállalati webhelyére rendszergazdaként.
+1. Jelentkezzen be a **BlueJeans az Azure ad** vállalati webhelyre rendszergazdaként.
 
-2. Tovább a ** \> ADMIN \> KEZELÉSE FELHASZNÁLÓK HOZZÁADÁSA FELHASZNÁLÓ**.
+2. Nyissa meg a ** \> rendszergazda \> felhasználók hozzáadása felhasználót**.
 
     ![Felügyelet](./media/bluejeans-tutorial/ic785877.png "Rendszergazda")
 
     > [!IMPORTANT]
-    > Az **ADD USER** lap csak akkor érhető el, ha a **SECUTIRY lapon**nincs bejelölve az Automatikus **kiépítés engedélyezése.**
+    > A **felhasználó hozzáadása** lap csak akkor érhető el, ha a **biztonsági lapon**az **automatikus kiépítés engedélyezése** nincs bejelölve.
 
-3. Az **ADD USER (FELHASZNÁLÓ hozzáadása)** szakaszban hajtsa végre az alábbi lépéseket:
+3. A **felhasználó hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
     ![Felhasználó hozzáadása](./media/bluejeans-tutorial/ic785886.png "Felhasználó hozzáadása")
 
-    a. Az **Utónév** mezőbe írja be a felhasználó keresztnevét, például **B.**
+    a. Az **Utónév** szövegmezőbe írja be a (z) " **B**" felhasználó utónevét.
 
-    b. A **Vezetéknév** mezőbe írja be a felhasználó vezetéknevét, például **Simon**.
+    b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    c. A **BlueJeans for Azure AD username** mezőbe írja be a felhasználó felhasználónevét, például **Brittasimon**
+    c. A **válasszon BlueJeans for Azure ad-felhasználónevet** szövegmezőbe írja be a felhasználó (például a **Brittasimon** ) felhasználónevét.
 
-    d. A **Jelszó létrehozása** mezőbe írja be a jelszót.
+    d. A **jelszó létrehozása** szövegmezőbe írja be a jelszavát.
 
-    e. A **Vállalat** mezőbe írja be a Vállalat értéket.
+    e. A **vállalati** szövegmezőbe írja be a vállalatát.
 
-    f. Az **E-mail cím** mezőbe írja `b.simon\@contoso.com`be a felhasználó e-mail címét, például .
+    f. Az **e-mail-cím** szövegmezőbe írja be a felhasználóhoz hasonló `b.simon\@contoso.com`e-mail-címet.
 
-    g. A **BlueJeans létrehozása az Azure AD-értekezlet azonosítójának** szövegmezőjében adja meg az értekezlet azonosítóját.
+    g. A **BlueJeans létrehozása az Azure ad Meeting I. D** szövegmezőbe mezőben adja meg az értekezlet azonosítóját.
 
-    h. A **Válassza ki a moderátor jelkód** szövegmező, adja meg a jelszót.
+    h. A **válasszon egy moderátori PIN-kódot** szövegmezőbe írja be a PIN-kódját.
 
-    i. Kattintson **a FOLYTATÁS gombra.**
+    i. Kattintson a **Folytatás**gombra.
 
     ![Felhasználó hozzáadása](./media/bluejeans-tutorial/ic785887.png "Felhasználó hozzáadása")
 
-    J. Kattintson **a Felhasználó hozzáadása gombra.**
+    J. Kattintson a **felhasználó hozzáadása**elemre.
 
 > [!NOTE]
-> Az Azure AD-felhasználói fiókok létrehozásához használt bármely más BlueJeans-eszköz vagy API-k azure AD-hez való kiépítéséhez használhatja a BlueJeans for Azure AD által biztosított eszközöket.
+> A BlueJeans for Azure ad által biztosított Azure ad felhasználói fiók létrehozási eszközeihez vagy API-khoz bármilyen más BlueJeans is használhat az Azure ad felhasználói fiókjainak kiépítéséhez.
 
-## <a name="test-sso"></a>SSO tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a Hozzáférési panelen a BlueJeans for Azure AD csempére kattint, automatikusan be kell jelentkeznie a BlueJeans for Azure AD-be, amelyhez beállítja az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Ha a hozzáférési panelen a BlueJeans for Azure AD csempére kattint, automatikusan be kell jelentkeznie a BlueJeans for Azure AD-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a BlueJeans for Azure AD-t az Azure AD-vel](https://aad.portal.azure.com/)
+- [Az Azure ad BlueJeans kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 

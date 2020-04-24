@@ -1,6 +1,6 @@
 ---
-title: PowerShell-parancsfájl az Azure Cosmos DB Table API-ban való létrehozáshoz
-description: Megtudhatja, hogy miként frissítheti egy PowerShell-parancsfájlt egy adatbázis vagy egy tároló átviteli teljesítményének frissítéséhez az Azure Cosmos DB Table API-ban
+title: PowerShell-szkript egy tábla létrehozásához Azure Cosmos DB Table API
+description: Ismerje meg, hogyan lehet PowerShell-parancsfájlokkal frissíteni egy adatbázis vagy egy tároló átviteli sebességét Azure Cosmos DB Table API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -14,7 +14,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "80365589"
 ---
-# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Tábla létrehozása az Azure Cosmos DB - Table API-hoz
+# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Táblázat létrehozása a Azure Cosmos DB-Table API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,10 +39,10 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure-erőforrások**| |
-| [Új-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Erőforrást hoz létre. |
+| [Új – AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Létrehoz egy erőforrást. |
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBTable tábla](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Creates or updates a Cosmos DB Table API Table. |
-|**Azure erőforráscsoportok**| |
+| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Egy Cosmos DB Table API tábla létrehozása vagy frissítése. |
+|**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

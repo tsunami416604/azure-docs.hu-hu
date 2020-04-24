@@ -15,4 +15,4 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "72818619"
 ---
-Táblázatokat az Azure Table Storage vagy az Azure Cosmos DB segítségével használhat. Ha többet szeretne megtudni a szolgáltatások közötti különbségekről, olvassa el a Táblaajánlatok című [témakört.](../articles/cosmos-db/table-introduction.md#table-offerings) Az Ön által kiválasztott szolgáltatás használatához hozzon létre egy fiókot.
+Táblázatokat az Azure Table Storage vagy az Azure Cosmos DB segítségével használhat. Ha többet szeretne megtudni a szolgáltatások közötti különbségekről, tekintse meg a [Table offers](../articles/cosmos-db/table-introduction.md#table-offerings)című témakört. Az Ön által kiválasztott szolgáltatás használatához hozzon létre egy fiókot.

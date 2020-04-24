@@ -1,33 +1,33 @@
 ---
-title: Listaentitás típusa - LUIS
-description: A listaentitások a kapcsolódó szavak rögzített, zárt készletét és szinonimáit jelölik. A LUIS nem észlel további értékeket a listaentitásokhoz. Az Ajánlás funkcióval az aktuális lista alapján megtekintheti az új szavakra vonatkozó javaslatokat.
+title: Entitás típusának listázása – LUIS
+description: Az entitások listája a kapcsolódó szavak rögzített, lezárt készletét jelöli a szinonimákkal együtt. A LUIS nem észlel további értékeket a List entitások számára. Az ajánlott funkció használatával megtekintheti az új szavakra vonatkozó javaslatokat az aktuális lista alapján.
 ms.topic: reference
 ms.date: 03/12/2020
-ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297237"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097574"
 ---
 # <a name="list-entity"></a>Listaentitás
 
-A listaentitások a kapcsolódó szavak rögzített, zárt készletét és szinonimáit jelölik. A LUIS nem észlel további értékeket a listaentitásokhoz. Az **Ajánlás** funkcióval az aktuális lista alapján megtekintheti az új szavakra vonatkozó javaslatokat. Ha egynél több listaentitás van ugyanazzal az értékkel, akkor a végpontlekérdezésben minden entitás visszakerül.
+Az entitások listája a kapcsolódó szavak rögzített, lezárt készletét jelöli a szinonimákkal együtt. A LUIS nem észlel további értékeket a List entitások számára. Az **ajánlott** funkció használatával megtekintheti az új szavakra vonatkozó javaslatokat az aktuális lista alapján. Ha egynél több azonos értékű listaelem szerepel, a rendszer az összes entitást visszaadja a végponti lekérdezésben.
 
-A listaentitás nem gépmegtanult. Ez egy pontos szövegegyezés. A LUIS a válaszban entitásként jelöli meg bármelyik lista bármely elemére való egyezést.
+Egy lista entitás nem gépi megtanult. Ez egy pontos szöveges egyezés. LUIS a válaszban entitásként jelöli meg a listában szereplő elemek bármelyikének egyezését.
 
-**Az entitás akkor megfelelő, ha a szöveges adatok:**
+**Az entitás jól illeszkedik a szöveges adatként:**
 
-* Egy ismert készlet.
-* Nem változik gyakran. Ha gyakran kell módosítania a listát, vagy azt szeretné, hogy a lista önkitázza, egy kifejezéslistával kiturbózott egyszerű entitás jobb választás.
-* A készlet nem haladja meg a LUIS maximális [határait](luis-boundaries.md) ezen entitástípus esetében.
-* Az utterance (kifejezés) szöveg egy kis- és nagybetűket nem megkülönböztető egyezés egy szinonimával vagy a gyűjtőnévvel. A LUIS nem használja a listát az egyezésen kívül. Az intelligens megfeleltetés, a származtatás, a többes szám és az egyéb változatok nem oldódnak fel egy listaentitással. A változatok kezeléséhez érdemes lehet egy [mintát](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) használni a választható szövegszintaxissal.
+* Ismert készlet.
+* Nem változik gyakran. Ha módosítania kell a listát, vagy ha szeretné, hogy a lista kibontható legyen, egy egyszerű entitás jobb választás egy kifejezési listával.
+* A készlet nem haladja meg a LUIS maximális [határait](luis-limits.md) ezen entitástípus esetében.
+* A kiírásban szereplő szöveg a kis-és nagybetűk megkülönböztetése egy szinonimával vagy a kanonikus névvel. LUIS nem használja az egyezésen felüli listát. A zavaros egyezés, a létrehozás, a többes szám és az egyéb változatok nem oldhatók meg egy listával rendelkező entitással. A változatok kezeléséhez érdemes [mintát](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) használni a választható szöveges szintaxissal.
 
-![lista entitás](./media/luis-concept-entities/list-entity.png)
+![entitás listázása](./media/luis-concept-entities/list-entity.png)
 
-## <a name="example-json-to-import-into-list-entity"></a>Példa .json a listaentitásba való importáláshoz
+## <a name="example-json-to-import-into-list-entity"></a>Példa. JSON a List entitásba való importáláshoz
 
-  Az értékeket a következő .json formátumban importálhatja egy meglévő listaentitásba:
+  A következő. JSON formátum használatával importálhat értékeket egy meglévő listára:
 
   ```JSON
   [
@@ -52,18 +52,18 @@ A listaentitás nem gépmegtanult. Ez egy pontos szövegegyezés. A LUIS a vála
 
 ## <a name="example-json-response"></a>Példa JSON-válaszra
 
-Tegyük fel, hogy `Cities`az alkalmazás rendelkezik egy lista, nevű , amely lehetővé teszi a változatok a város nevét, beleértve a város repülőtér (Sea-tac), repülőtér-kód (ST), irányítószám (98101), és a telefon körzetszám (206).
+Tegyük fel, hogy az alkalmazás rendelkezik `Cities`egy nevű listával, amely lehetővé teszi a városi nevek (például a Sea-Tac), a repülőtéri kód (Sea), a irányítószám (98101) és a telefonos körzetszám (206) változatának módosítását.
 
-|Listaelem|Elem szinonimái|
+|Listaelem|Elemek szinonimái|
 |---|---|
 |`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
 |`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
 
 `book 2 tickets to paris`
 
-Az előző utterance (kifejezés) a szó `paris` van leképezve `Cities` a párizsi elem részeként a lista entitás. A listaentitás megfelel az elem normalizált nevének és az elem szinonimáinak is.
+Az előző részletben a Word `paris` a `Cities` lista entitás részeként van leképezve a párizsi elemre. A lista entitás megegyezik az elem normalizált nevével és az elem szinonimákkal.
 
-#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpontra adott válasza](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
 ```JSON
   "entities": [
@@ -81,7 +81,7 @@ Az előző utterance (kifejezés) a szó `paris` van leképezve `Cities` a pári
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpontra adott válasza](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
 
 Ez a JSON, ha `verbose=false` be van állítva a lekérdezési karakterláncban:
@@ -127,9 +127,9 @@ Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 
 |Adatobjektum|Entitás neve|Érték|
 |--|--|--|
-|Lista entitás|`Cities`|`paris`|
+|Entitás listázása|`Cities`|`paris`|
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az [oktatóanyagban megtudhatja,](tutorial-list-entity.md)hogyan **használhatja a listaentitást** a szöveg pontos egyezéseinek kinyerésére az ismert elemek listájából.
+Ebből az [oktatóanyagból](tutorial-list-entity.md)megtudhatja, hogyan használhatja a **lista entitást** az ismert elemek listájának pontos egyezésének kinyeréséhez.

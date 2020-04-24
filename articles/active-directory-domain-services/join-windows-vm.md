@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás Windows Server virtuális géphez felügyelt tartományhoz | Microsoft dokumentumok
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat egy Windows Server-virtuális géphez egy Azure Active Directory tartományi szolgáltatások által felügyelt tartományhoz.
+title: Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakozhat egy Windows Server rendszerű virtuális géphez Azure Active Directory Domain Services felügyelt tartományhoz.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -16,226 +16,226 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/01/2020
 ms.locfileid: "80476254"
 ---
-# <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Oktatóanyag: Csatlakozás Windows Server rendszerű virtuális géphez felügyelt tartományhoz
+# <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Oktatóanyag: Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz
 
-Az Azure Active Directory tartományi szolgáltatások (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM-hitelesítés, amelyek teljes mértékben kompatibilisek a Windows Server Active Directoryval. Az Azure AD DS felügyelt tartományhasználatával tartománycsatlakozási funkciókat és felügyeletet biztosíthat az Azure-beli virtuális gépekhez. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Windows Server virtuális gép, majd csatlakozzon hozzá egy Azure AD DS felügyelt tartományhoz.
+Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Az Azure AD DS felügyelt tartománya lehetővé teszi a tartományhoz való csatlakozást és a felügyeletet az Azure-beli virtuális gépekhez (VM). Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Windows Server rendszerű virtuális gépet, majd hogyan csatlakozhat egy Azure AD DS felügyelt tartományhoz.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Windows Server virtuális gép létrehozása
-> * A Windows Server virtuális gép csatlakoztatása egy Azure virtuális hálózathoz
-> * Csatlakozzon a virtuális géphez az Azure AD DS felügyelt tartományához
+> * Windows Server rendszerű virtuális gép létrehozása
+> * A Windows Server-alapú virtuális gép összekötése egy Azure-beli virtuális hálózattal
+> * A virtuális gép csatlakoztatása az Azure AD DS felügyelt tartományhoz
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag befejezéséhez a következő erőforrásokra van szükség:
+Az oktatóanyag elvégzéséhez a következő erőforrásokra lesz szüksége:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
-    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
-* Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány a konfigurált és konfigurált az Azure AD-bérlő.
-    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory tartományi szolgáltatások példányát.][create-azure-ad-ds-instance]
-* Egy felhasználói fiók, amely az Azure AD DS felügyelt tartomány ának része.
-    * Győződjön meg arról, hogy az Azure AD Connect jelszókivonat-szinkronizálás vagy önkiszolgáló jelszó-visszaállítás történt, így a fiók képes bejelentkezni az Azure AD DS felügyelt tartományba.
-* Az Azure AD DS virtuális hálózatában üzembe helyezett Azure Bastion gazdagép.
-    * Szükség esetén [hozzon létre egy Azure-bástya-gazdat.][azure-bastion]
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
+* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
+    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance].
+* Egy olyan felhasználói fiók, amely az Azure AD DS felügyelt tartomány részét képezi.
+    * Győződjön meg arról, hogy Azure AD Connect jelszó-kivonat szinkronizálása vagy az önkiszolgáló jelszó-visszaállítás végrehajtása megtörtént, hogy a fiók be tudja jelentkezni az Azure AD DS felügyelt tartományba.
+* Az Azure-beli AD DS virtuális hálózatban üzembe helyezett Azure Bastion-gazdagép.
+    * Ha szükséges, [hozzon létre egy Azure Bastion-gazdagépet][azure-bastion].
 
-Ha már rendelkezik egy virtuális gép, amely tartományhoz szeretne csatlakozni, ugorjon a szakaszhoz, hogy [csatlakozzon a virtuális gép hez az Azure AD DS felügyelt tartományhoz.](#join-the-vm-to-the-azure-ad-ds-managed-domain)
+Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne csatlakoztatni, ugorjon a szakaszra a [virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásához](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Ebben az oktatóanyagban hozzon létre egy Windows Server virtuális gép, hogy csatlakozzon az Azure AD DS felügyelt tartományhoz az Azure Portalon keresztül. Első lépésekhez először jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+Ebben az oktatóanyagban egy Windows Server rendszerű virtuális gépet hoz létre, amely az Azure Portal használatával csatlakozik az Azure AD DS felügyelt tartományhoz. Első lépésként jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
-## <a name="create-a-windows-server-virtual-machine"></a>Windows Server virtuális gép létrehozása
+## <a name="create-a-windows-server-virtual-machine"></a>Windows Server rendszerű virtuális gép létrehozása
 
-Ha meg szeretné tekinteni, hogyan csatlakozhat egy számítógéphez egy Azure AD DS felügyelt tartományhoz, hozzon létre egy Windows Server virtuális gép. Ez a virtuális gép egy Azure virtuális hálózathoz csatlakozik, amely kapcsolatot biztosít az Azure AD DS felügyelt tartományához. Az Azure AD DS felügyelt tartományhoz való csatlakozás folyamata megegyezik egy rendszeres helyszíni Active Directory tartományi szolgáltatások tartományhoz való csatlakozással.
+Ha szeretné megtekinteni, hogyan csatlakoztatható egy számítógép egy Azure AD DS felügyelt tartományhoz, hozzon létre egy Windows Server rendszerű virtuális gépet. Ez a virtuális gép egy Azure-beli virtuális hálózathoz csatlakozik, amely kapcsolatot biztosít az Azure AD DS felügyelt tartományával. Az Azure AD DS felügyelt tartományhoz való csatlakozás folyamata megegyezik a normál helyszíni Active Directory tartományi szolgáltatások tartományhoz való csatlakozással.
 
-Ha már rendelkezik egy virtuális gép, amely tartományhoz szeretne csatlakozni, ugorjon a szakaszhoz, hogy [csatlakozzon a virtuális gép hez az Azure AD DS felügyelt tartományhoz.](#join-the-vm-to-the-azure-ad-ds-managed-domain)
+Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne csatlakoztatni, ugorjon a szakaszra a [virtuális gép Azure AD DS felügyelt tartományhoz való csatlakoztatásához](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
-1. Az Azure Portal menüben vagy a **kezdőlapon** válassza az **Erőforrás létrehozása**lehetőséget.
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
 
-1. Az **Első lépések területen**válassza a Windows Server **2016 Datacenter**lehetőséget.
+1. Az első **lépések**területen válassza a **Windows Server 2016 Datacenter**lehetőséget.
 
-    ![Válassza ki, hogy hozzon létre egy Windows Server 2016 Datacenter virtuális gép az Azure Portalon](./media/join-windows-vm/select-vm-image.png)
+    ![Válassza a Windows Server 2016 Datacenter rendszerű virtuális gép létrehozását a Azure Portal](./media/join-windows-vm/select-vm-image.png)
 
-1. Az **Alapok ablakban** konfigurálja a virtuális gép alapvető beállításait. Hagyja meg az Alapértelmezett értékeket a *Rendelkezésre állási,* *a Kép*és a *Méret beállításhoz.*
+1. Az **alapvető** beállítások ablakban adja meg a virtuális gép alapvető beállításait. Hagyja meg az alapértelmezett *beállításokat a rendelkezésre állási beállítások*, a *képek*és a *méretek*számára.
 
     | Paraméter            | Ajánlott érték   |
     |----------------------|-------------------|
-    | Erőforráscsoport       | Erőforráscsoport, például *myResourceGroup* kiválasztása vagy létrehozása |
-    | Virtuális gép neve | Adja meg a virtuális gép nevét, például *a myVM-et* |
-    | Régió               | Válassza ki a régiót, amelyben létre szeretné hozni a virtuális gépét, például *az USA keleti régióját* |
-    | Felhasználónév             | Adja meg a helyi rendszergazdai fiók hoz létre a virtuális gép, például *azureuser* |
-    | Jelszó             | Adja meg, majd erősítse meg a biztonságos jelszót a helyi rendszergazda számára, hogy hozzon létre a virtuális gép. Ne adja meg a tartományi felhasználói fiók hitelesítő adatait. |
+    | Erőforráscsoport       | Válasszon ki vagy hozzon létre egy erőforráscsoportot, például *myResourceGroup* |
+    | Virtuális gép neve | Adja meg a virtuális gép nevét, például *myVM* |
+    | Régió               | Válassza ki azt a régiót, amelyben létre szeretné hozni a virtuális gépet, például: *USA keleti* régiója |
+    | Felhasználónév             | Adjon meg egy felhasználónevet a virtuális gépen létrehozandó helyi rendszergazdai fiókhoz, például: *Azureus* |
+    | Jelszó             | Adja meg és erősítse meg a virtuális gépen a helyi rendszergazda számára létrehozott biztonságos jelszót. Ne határozzon meg tartományi felhasználói fiók hitelesítő adatait. |
 
-1. Alapértelmezés szerint az Azure-ban létrehozott virtuális gépek rdp használatával érhetők el az internetről. Ha az RDP engedélyezve van, automatikus bejelentkezési támadások valószínűleg előfordulnak, ami letilthatja a közös nevű fiókokat, például *a rendszergazda* vagy *a rendszergazda* több sikertelen, egymást követő bejelentkezési kísérlet miatt.
+1. Alapértelmezés szerint az Azure-ban létrehozott virtuális gépek az RDP használatával érhetők el az internetről. Ha az RDP engedélyezve van, előfordulhat, hogy az automatikus bejelentkezési támadások valószínűleg megtörténnek, ami letilthatja az olyan fiókokat, amelyek közös névvel rendelkeznek *, mint például a rendszergazda vagy a* *rendszergazda* , több sikertelen bejelentkezési kísérlet miatt.
 
-    Az RDP csak akkor engedélyezhető, ha szükséges, és engedélyezett IP-tartományokra korlátozva. Ez a konfiguráció segít a virtuális gép biztonságának javításában, és csökkenti a potenciális támadások területét. Vagy hozzon létre és használjon egy Azure Bastion-állomást, amely csak az Azure Portalon keresztül engedélyezi a hozzáférést a TLS-en keresztül. Az oktatóanyag következő lépésében egy Azure-bástya-gazdagép használatával biztonságosan csatlakozhat a virtuális géphez.
+    Az RDP-t csak szükség esetén kell engedélyezni, és az engedélyezett IP-címtartományok körére korlátozódik. Ez a konfiguráció segít javítani a virtuális gép biztonságát, és csökkenti a lehetséges támadási területét. Vagy létrehozhat és használhat egy olyan Azure Bastion-gazdagépet, amely csak a TLS-en keresztül Azure Portal hozzáférést. Az oktatóanyag következő lépéseként egy Azure Bastion-gazdagépet használ a virtuális géphez való biztonságos kapcsolódáshoz.
 
-    A **Nyilvános bejövő portok csoportban**válassza a *Nincs*lehetőséget.
+    A **nyilvános bejövő portok**területen válassza a *nincs*lehetőséget.
 
-1. Ha elkészült, válassza a **Tovább: Lemezek**lehetőséget.
-1. Az **operációs rendszer lemeztípusának**legördülő menüjében válassza a *Szabványos SSD*lehetőséget, majd válassza a **Tovább: Hálózat lehetőséget.**
-1. A virtuális gépnek csatlakoznia kell egy Azure virtuális hálózati alhálózathoz, amely képes kommunikálni az Azure AD DS felügyelt tartományában üzembe helyezett alhálózattal. Azt javasoljuk, hogy egy Azure AD DS felügyelt tartomány telepítve van a saját dedikált alhálózat. Ne telepítse a virtuális gép ugyanabban az alhálózatban, mint az Azure AD DS felügyelt tartomány.
+1. Ha elkészült, válassza a **Tovább: lemezek**elemet.
+1. Az **operációsrendszer-lemez típusa**legördülő menüben válassza a *standard SSD*, majd a **Tovább: hálózatkezelés**lehetőséget.
+1. A virtuális gépnek csatlakoznia kell egy olyan Azure-beli virtuális hálózati alhálózathoz, amely képes kommunikálni az Azure AD DS felügyelt tartományához tartozó alhálózattal. Javasoljuk, hogy egy Azure AD DS felügyelt tartományt a saját dedikált alhálózatán telepítsen. Ne telepítse a virtuális gépet ugyanabban az alhálózatban, mint az Azure AD DS felügyelt tartományát.
 
-    A virtuális gép üzembe helyezésének és a megfelelő virtuális hálózati alhálózathoz való csatlakozásának két fő módja van:
+    A virtuális gép üzembe helyezésének két fő módja van, és csatlakozhat a megfelelő virtuális hálózati alhálózathoz:
     
-    * Hozzon létre egy, vagy válasszon ki egy meglévő alhálózatot ugyanabban a virtuális hálózatban, mint az Azure AD DS felügyelt tartomány a telepített.
-    * Válasszon egy alhálózatot egy azure-beli virtuális hálózatban, amely [az Azure virtuális hálózati társviszony-létesítésével][vnet-peering]csatlakozik hozzá.
+    * Hozzon létre egy meglévő alhálózatot, vagy válasszon ki egy olyan virtuális hálózatot, amelyben az Azure AD DS felügyelt tartománya telepítve van.
+    * Válasszon egy alhálózatot egy Azure-beli virtuális hálózatban, amely az [Azure Virtual Network][vnet-peering]-társítás használatával csatlakozik hozzá.
     
-    Ha olyan virtuális hálózati alhálózatot választ, amely nem csatlakozik az Azure AD DS-példány alhálózatához, nem csatlakozhat a virtuális géphez a felügyelt tartományhoz. Ebben az oktatóanyagban hozzon létre egy új alhálózatot az Azure virtuális hálózatában.
+    Ha olyan virtuális hálózati alhálózatot választ, amely nem kapcsolódik az Azure AD DS-példány alhálózatához, nem csatlakoztathatja a virtuális gépet a felügyelt tartományhoz. Ebben az oktatóanyagban hozzunk létre egy új alhálózatot az Azure Virtual Networkben.
 
-    A **Hálózat ablaktáblán** válassza ki azt a virtuális hálózatot, amelyben az Azure AD DS által felügyelt tartomány telepítve van, például *az aaads-vnet*
-1. Ebben a példában a meglévő *aaads-alhálózat* látható, amely az Azure AD DS felügyelt tartomány csatlakozik. Ne csatlakoztassa a virtuális gép ét erről az alhálózatról. Ha alhálózatot szeretne létrehozni a virtuális géphez, válassza **az Alhálózat-konfiguráció kezelése lehetőséget.**
+    A **hálózatkezelés** ablaktáblán válassza ki azt a virtuális hálózatot, amelyben az Azure AD DS felügyelt tartománya telepítve van, például *aaads-vnet*
+1. Ebben a példában a meglévő *aaads-alhálózat* látható, hogy az Azure AD DS felügyelt tartománya csatlakoztatva van. Ne kapcsolódjon a virtuális géphez ehhez az alhálózathoz. Ha alhálózatot szeretne létrehozni a virtuális géphez, válassza az **alhálózat konfigurációjának kezelése**lehetőséget.
 
-    ![Válassza ki az alhálózati konfiguráció kezelését az Azure Portalon](./media/join-windows-vm/manage-subnet.png)
+    ![Válassza az alhálózat konfigurációjának kezelését a Azure Portal](./media/join-windows-vm/manage-subnet.png)
 
-1. A virtuális hálózat ablakának bal oldali menüjében válassza a **Címterület lehetőséget.** A virtuális hálózat egyetlen címterülettel jön *létre: 10.0.2.0/24*, amelyet az alapértelmezett alhálózat használ. Más alhálózatok, például a *számítási feladatok* vagy az Azure Bastion is létezhetnek.
+1. A virtuális hálózat ablak bal oldali menüjében válassza a **címterület**lehetőséget. A virtuális hálózat egy *10.0.2.0/24*-es címtartomány használatával jön létre, amelyet az alapértelmezett alhálózat használ. Más alhálózatok, például a *munkaterhelések* vagy az Azure-alapú kihelyezés már létezhetnek.
 
-    Adjon hozzá egy további IP-címtartományt a virtuális hálózathoz. A címtartomány mérete és a ténylegesen használandó IP-címtartomány a már üzembe helyezett egyéb hálózati erőforrásoktól függ. Az IP-címtartomány nem fedheti át az Azure-ban vagy a helyszíni környezetben meglévő címtartományokat. Győződjön meg arról, hogy az IP-címtartomány mérete elég nagy ahhoz, hogy az alhálózatba telepíteni kívánt virtuális gépek száma.
+    Adjon hozzá egy további IP-címtartományt a virtuális hálózathoz. A címtartomány mérete és a használni kívánt IP-címtartomány a már telepített többi hálózati erőforrástól függ. Az IP-címtartomány nem fedi át az Azure-ban vagy a helyszíni környezetben lévő összes meglévő címtartományt. Győződjön meg arról, hogy az IP-címtartomány elég nagy méretű az alhálózatba telepítendő virtuális gépek számához.
 
-    A következő példában egy további *10.0.5.0/24* IP-címtartomány kerül hozzáadásra. Ha készen áll, válassza a **Mentés gombot.**
+    A következő példában egy *10.0.5.0/24* további IP-címtartomány van hozzáadva. Ha elkészült, válassza a **Mentés**lehetőséget.
 
-    ![További virtuális hálózati IP-címtartomány hozzáadása az Azure Portalon](./media/join-windows-vm/add-vnet-address-range.png)
+    ![További virtuális hálózati IP-címtartomány hozzáadása a Azure Portal](./media/join-windows-vm/add-vnet-address-range.png)
 
-1. Ezután a virtuális hálózati ablak bal oldali menüjében válassza az **Alhálózatok**lehetőséget, majd válassza a **+ Alhálózat** lehetőséget az alhálózat hozzáadásához.
+1. Ezután a virtuális hálózat ablak bal oldali menüjében válassza az **alhálózatok**elemet, majd válassza az **+ alhálózat** lehetőséget az alhálózat hozzáadásához.
 
-1. Válassza a **+ Alhálózat**lehetőséget, majd adja meg az alhálózat nevét, például a *felügyeletet.* Adjon meg **egy címtartományt (CIDR-blokk),** például *10.0.5.0/24.* Győződjön meg arról, hogy ez az IP-címtartomány nem fedi át más azure-vagy helyszíni címtartományokat. Hagyja a többi beállítást alapértelmezett értékként, majd kattintson **az OK gombra.**
+1. Válassza az **+ alhálózat**lehetőséget, majd adja meg az alhálózat nevét (például *felügyelet*). Adja meg a **címtartományt (CIDR blokk)**, például *10.0.5.0/24*. Győződjön meg arról, hogy ez az IP-címtartomány nem fedi át a többi meglévő Azure-vagy helyszíni címtartományt. Hagyja meg a többi beállítást alapértelmezett értékként, majd kattintson az **OK gombra**.
 
-    ![Alhálózati konfiguráció létrehozása az Azure Portalon](./media/join-windows-vm/create-subnet.png)
+    ![Alhálózat-konfiguráció létrehozása a Azure Portalban](./media/join-windows-vm/create-subnet.png)
 
-1. Az alhálózat létrehozása néhány másodpercet vesz igénybe. Létrehozása után válassza az *X* lehetőséget az alhálózati ablak bezárásához.
-1. A **Virtuális gép** létrehozásához a Hálózat ablaktáblán válassza ki a legördülő menüből létrehozott alhálózatot, például a felügyelet *menüből.* Ismét győződjön meg arról, hogy válassza ki a megfelelő alhálózatot, és ne telepítse a virtuális gép ugyanabban az alhálózatban, mint az Azure AD DS felügyelt tartományban.
-1. **Nyilvános IP,válassza** *a Nincs* a legördülő menüből, ahogy használja az Azure Bastion a felügyeleti kapcsolathoz való csatlakozáshoz, és nem kell egy nyilvános IP-cím hozzárendelve.
-1. Hagyja a többi beállítást alapértelmezett értékként, majd válassza a **Kezelés**lehetőséget.
-1. Állítsa **a rendszerindítási diagnosztikát** *Ki*beállításra. Hagyja a többi beállítást alapértelmezett értékként, majd válassza **a Véleményezés + létrehozás**lehetőséget.
-1. Tekintse át a virtuális gép beállításait, majd válassza **a Létrehozás gombot.**
+1. Az alhálózat létrehozása eltarthat néhány másodpercig. A létrehozás után válassza az X- *et* az alhálózat ablak bezárásához.
+1. A **hálózatkezelés** ablaktáblán a virtuális gép létrehozásához válassza ki a létrehozott alhálózatot a legördülő menüből, például a *felügyelet*lehetőséget. Győződjön meg arról, hogy a megfelelő alhálózatot választja, és ne telepítse a virtuális gépet ugyanabban az alhálózatban, mint az Azure AD DS felügyelt tartománya.
+1. A **nyilvános IP-címek**esetében válassza a *nincs* lehetőséget a legördülő menüből, ahogy az Azure Bastion használatával csatlakozik a felügyelethez, és nincs szükség nyilvános IP-cím hozzárendelésére.
+1. Hagyja meg a többi beállítást alapértelmezett értékként, majd válassza a **felügyelet**lehetőséget.
+1. Állítsa *ki*a **rendszerindítási diagnosztikát** . Hagyja meg a többi beállítást alapértelmezett értékként, majd válassza a **felülvizsgálat + létrehozás**lehetőséget.
+1. Tekintse át a virtuális gép beállításait, majd kattintson a **Létrehozás**gombra.
 
-A virtuális gép létrehozása néhány percet vesz igénybe. Az Azure Portalon a központi telepítés állapotát mutatja. Miután a virtuális gép készen áll, válassza **az Ugrás az erőforrásra**lehetőséget.
+A virtuális gép létrehozása néhány percet vesz igénybe. A Azure Portal az üzemelő példány állapotát jeleníti meg. Ha a virtuális gép elkészült, válassza az **Ugrás az erőforráshoz**lehetőséget.
 
-![A virtuális gép erőforrásának megugrása az Azure Portalon sikeres létrehozása után](./media/join-windows-vm/vm-created.png)
+![A virtuális gép erőforrásának megugrása a Azure Portal a sikeres létrehozás után](./media/join-windows-vm/vm-created.png)
 
-## <a name="connect-to-the-windows-server-vm"></a>Csatlakozás a Windows Server virtuális géphez
+## <a name="connect-to-the-windows-server-vm"></a>Kapcsolódás a Windows Server rendszerű virtuális géphez
 
-A virtuális gépek biztonságos csatlakozásához használjon egy Azure-bastion gazdagépet. Az Azure Bastion segítségével egy felügyelt állomás üzembe kerül a virtuális hálózatba, és webalapú RDP- vagy SSH-kapcsolatokat biztosít a virtuális gépekhez. A virtuális gépekhez nincs szükség nyilvános IP-címekre, és nem kell megnyitnia a hálózati biztonsági csoport szabályait a külső távoli forgalomhoz. Virtuális gépekhez csatlakozik az Azure Portalon keresztül a webböngészőből.
+A virtuális gépekhez való biztonságos kapcsolódáshoz használjon egy Azure Bastion-gazdagépet. Az Azure Bastion használatával felügyelt gazdagép települ a virtuális hálózatba, és webes RDP-vagy SSH-kapcsolatokat biztosít a virtuális gépekhez. A virtuális gépekhez nincs szükség nyilvános IP-címekre, és nem kell megnyitnia a hálózati biztonsági csoport szabályait a külső távoli forgalomhoz. A virtuális gépekhez a webböngészőből származó Azure Portal használatával csatlakozhat.
 
-Ha egy megerősített gazdaton keresztül szeretne csatlakozni a virtuális géphez, hajtsa végre az alábbi lépéseket:
+Ha egy megerősített gazdagépet szeretne használni a virtuális géphez való kapcsolódáshoz, hajtsa végre a következő lépéseket:
 
-1. A virtuális **gép Áttekintő** ablaktábláján válassza a **Csatlakozás**lehetőséget, majd **a Bástya**lehetőséget.
+1. A virtuális gép **Áttekintés** paneljén válassza a **kapcsolat**, majd a **Bastion**lehetőséget.
 
-    ![Csatlakozás Windows virtuális géphez az Azure Portalon található Bastion használatával](./media/join-windows-vm/connect-to-vm.png)
+    ![Kapcsolódás Windows rendszerű virtuális géphez a Azure Portal](./media/join-windows-vm/connect-to-vm.png)
 
-1. Adja meg az előző szakaszban megadott virtuális gép hitelesítő adatait, majd válassza a **Csatlakozás lehetőséget.**
+1. Adja meg az előző szakaszban megadott virtuális gép hitelesítő adatait, majd válassza a **kapcsolat**lehetőséget.
 
-   ![Csatlakozás a Bástyagazdagépen keresztül az Azure Portalon](./media/join-windows-vm/connect-to-bastion.png)
+   ![Kapcsolódjon a megerősített gazdagépen a Azure Portal](./media/join-windows-vm/connect-to-bastion.png)
 
-Szükség esetén engedélyezze a webböngésző számára, hogy előugró ablakokat nyisson meg a Bástya-kapcsolat megjelenítéséhez. Néhány másodpercet vesz igénybe, hogy a kapcsolatot a virtuális gép.
+Ha szükséges, engedélyezze a webböngésző számára az előugró ablak megnyitását a megerősített kapcsolat megjelenítéséhez. A virtuális géphez való kapcsolódás elvégzése néhány másodpercig tart.
 
-## <a name="join-the-vm-to-the-azure-ad-ds-managed-domain"></a>Csatlakozzon a virtuális géphez az Azure AD DS felügyelt tartományához
+## <a name="join-the-vm-to-the-azure-ad-ds-managed-domain"></a>A virtuális gép csatlakoztatása az Azure AD DS felügyelt tartományhoz
 
-A virtuális gép létrehozása és az Azure Bastion használatával létrehozott webalapú RDP-kapcsolat most csatlakozzon a Windows Server virtuális géphez az Azure AD DS felügyelt tartományához. Ez a folyamat megegyezik egy hagyományos helyszíni Active Directory tartományi szolgáltatások tartományhoz csatlakozó számítógépszámítógéppel.
+A létrehozott virtuális géppel és az Azure Bastion használatával létrehozott webalapú RDP-kapcsolattal most csatlakoztassa a Windows Server rendszerű virtuális gépet az Azure AD DS felügyelt tartományhoz. Ez a folyamat megegyezik egy normál helyszíni Active Directory tartományi szolgáltatások tartományhoz csatlakozó számítógéppel.
 
-1. Ha **a Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő parancsot.**
-1. A **Kiszolgálókezelő** ablak bal oldali ablaktáblájában válassza a **Helyi kiszolgáló**lehetőséget. A jobb oldali ablaktábla **Tulajdonságok csoportjában** válassza a **Munkacsoport lehetőséget.**
+1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő**elemet.
+1. A **Kiszolgálókezelő** ablak bal oldali paneljén válassza a **helyi kiszolgáló**lehetőséget. A jobb oldali ablaktábla **Tulajdonságok** területén válassza a **munkacsoport**lehetőséget.
 
-    ![Nyissa meg a Kiszolgálókezelőt a virtuális gépen, és szerkessze a munkacsoport-tulajdonságot](./media/join-windows-vm/server-manager.png)
+    ![Nyissa meg a Kiszolgálókezelő eszközt a virtuális gépen, és szerkessze a munkacsoport tulajdonságot](./media/join-windows-vm/server-manager.png)
 
-1. A **Rendszer tulajdonságai** ablakban válassza a **Módosítás** lehetőséget az Azure AD DS felügyelt tartományhoz való csatlakozáshoz.
+1. A **rendszer tulajdonságai** ablakban válassza a **módosítás** lehetőséget az Azure AD DS felügyelt tartományhoz való csatlakozáshoz.
 
-    ![A munkacsoport vagy a tartomány tulajdonságainak módosítása](./media/join-windows-vm/change-domain.png)
+    ![Válassza a munkacsoport vagy a tartomány tulajdonságainak módosítását](./media/join-windows-vm/change-domain.png)
 
-1. A **Tartomány** mezőben adja meg az Azure AD DS felügyelt tartományának nevét, például *aaddscontoso.com,* majd kattintson az **OK gombra.**
+1. A **tartomány** mezőben adja meg az Azure AD DS felügyelt tartomány nevét, például *aaddscontoso.com*, majd kattintson **az OK gombra**.
 
-    ![Adja meg a csatlakozni kívánt Azure AD DS felügyelt tartományt](./media/join-windows-vm/join-domain.png)
+    ![Az Azure AD DS felügyelt tartományának meghatározása a csatlakozáshoz](./media/join-windows-vm/join-domain.png)
 
-1. Adja meg a tartományhoz való csatlakozáshoz szükséges tartományhitelesítő adatokat. Használja a hitelesítő adatokat egy felhasználó, amely része az Azure AD DS felügyelt tartományban. A fióknak az Azure AD DS felügyelt tartományának vagy az Azure AD-bérlőnek kell lennie – az Azure AD-bérlőhöz társított külső könyvtárakfiókjai nem hitelesíthetők megfelelően a tartományhoz való csatlakoztatási folyamat során. A fiók hitelesítő adatai az alábbi módokon adhatók meg:
+1. Adja meg a tartományhoz való csatlakozáshoz szükséges tartományi hitelesítő adatokat. Használja az Azure AD DS felügyelt tartomány részét képező felhasználó hitelesítő adatait. A fióknak az Azure AD DS felügyelt tartományhoz vagy Azure AD-bérlőhöz kell tartoznia – az Azure AD-bérlőhöz társított külső könyvtárak fiókjai nem tudnak helyesen hitelesíteni a tartományhoz való csatlakozás során. A fiók hitelesítő adatai a következő módszerek egyikével adhatók meg:
 
-    * **UPN formátum** (ajánlott) – Adja meg a felhasználói fiók egyszerű felhasználónév (UPN) utónevét az Azure AD-ben konfigurálva. Például a felhasználó *contosoadmin* upn-utótagja `contosoadmin@aaddscontoso.onmicrosoft.com`a . Van néhány gyakori használati eset, amikor az egyszerű stafétaformátum megbízhatóan használható a tartományba való bejelentkezéshez a *SAMAccountName* formátum helyett:
-        * Ha a felhasználó UPN előtagja hosszú, például *deehasareallylongname,* akkor a *SAMAccountName* automatikusan létrehozható lehet.
-        * Ha több felhasználó rendelkezik ugyanazt az UPN-előtagot az Azure AD-bérlőben, például *a dee,* előfordulhat, hogy a *SAMAccountName* formátum automatikusan létrejön.
-    * **SAMAccountName formátum** - Írja be a fiók nevét a *SAMAccountName* formátumban. A user *contosoadmin* *SAMAccountName neve* `AADDSCONTOSO\contosoadmin`például a .
+    * **UPN formátuma** (ajánlott) – Itt adhatja meg az Azure ad-ben konfigurált felhasználói fiókhoz tartozó egyszerű felhasználónév (UPN) utótagot. Például a felhasználó *CONTOSOADMIN* UPN-utótagja lenne `contosoadmin@aaddscontoso.onmicrosoft.com`. Létezik néhány gyakori felhasználási eset, ha az UPN formátuma megbízhatóan használható a tartományba való bejelentkezéshez a *sAMAccountName* formátum helyett:
+        * Ha a felhasználó UPN-előtagja hosszú (például *deehasareallylongname*), akkor előfordulhat, hogy a *sAMAccountName* automatikusan létrejön.
+        * Ha több felhasználó ugyanazzal az UPN-előtaggal rendelkezik az Azure AD-bérlőben, például a *Dee*-ben, akkor előfordulhat, hogy az *sAMAccountName* -formátuma automatikusan létrejön.
+    * **SAMAccountName formátum** – adja meg a fiók nevét a *sAMAccountName* formátumban. Például a felhasználói *Contosoadmin* `AADDSCONTOSO\contosoadmin` *sAMAccountName* .
 
-1. Az Azure AD DS felügyelt tartományához való csatlakozás néhány másodpercet vesz igénybe. Ha elkészült, a következő üzenet üdvözli Önt a tartományban:
+1. Az Azure AD DS felügyelt tartományhoz való csatlakozás néhány másodpercig tart. Ha elkészült, a következő üzenet üdvözli Önt a tartományban:
 
     ![Üdvözli a tartomány](./media/join-windows-vm/join-domain-successful.png)
 
     A folytatáshoz kattintson az **OK** gombra.
 
-1. Az Azure AD DS felügyelt tartományhoz való csatlakozás folyamatának befejezéséhez indítsa újra a virtuális gép.
+1. Az Azure AD DS felügyelt tartományhoz való csatlakozás folyamatának befejezéséhez indítsa újra a virtuális gépet.
 
 > [!TIP]
-> A PowerShell használatával tartományhoz csatlakozhat egy virtuális géphez az [Add-Computer][add-computer] parancsmaggal. A következő példa csatlakozik az *AADDSCONTOSO tartományhoz,* majd újraindítja a virtuális gép. Amikor a rendszer kéri, adja meg az Azure AD DS felügyelt tartományának részét vevő felhasználó hitelesítő adatait:
+> Tartományhoz csatlakoztathat egy virtuális gépet a PowerShell használatával a [Add-Computer][add-computer] parancsmaggal. A következő példa csatlakozik a *AADDSCONTOSO* tartományhoz, majd újraindítja a virtuális gépet. Ha a rendszer kéri, adja meg egy olyan felhasználó hitelesítő adatait, aki az Azure AD DS felügyelt tartomány részét képezi:
 >
 > `Add-Computer -DomainName AADDSCONTOSO -Restart`
 >
-> A tartományhoz való csatlakozáshoz anélkül, hogy csatlakozna hozzá, és manuálisan konfigurálja a kapcsolatot, használhatja a [Set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell-parancsmag.
+> Ha tartományhoz szeretne csatlakozni egy virtuális géphez a csatlakoztatása nélkül, és manuálisan konfigurálja a kapcsolatot, használhatja a [set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell parancsmagot.
 
-Miután a Windows Server virtuális gép újraindult, az Azure AD DS felügyelt tartományban alkalmazott szabályzatok a virtuális gépre kerül. Most már a megfelelő tartományi hitelesítő adatokkal is bejelentkezhet a Windows Server virtuális gépbe.
+A Windows Server rendszerű virtuális gép újraindítása után az Azure AD DS felügyelt tartományban alkalmazott házirendeket a rendszer leküldi a virtuális géphez. Most már bejelentkezhet a Windows Server rendszerű virtuális gépre is a megfelelő tartományi hitelesítő adatok használatával.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A következő oktatóanyagban ezzel a Windows Server virtuális géptel telepíti az Okat, amelyek lehetővé teszik az Azure AD DS felügyelt tartományfelügyeletét. Ha nem szeretné folytatni ezt az oktatóanyag-sorozatot, tekintse át az alábbi törlési lépéseket [a virtuális gép törléséhez.](#delete-the-vm) Ellenkező esetben [folytassa a következő oktatóanyaggal.](#next-steps)
+A következő oktatóanyagban ezt a Windows Server rendszerű virtuális gépet használja az Azure AD DS felügyelt tartomány felügyeletét lehetővé teszi a felügyeleti eszközök telepítéséhez. Ha nem szeretné folytatni az oktatóanyag-sorozatot, tekintse át a következő karbantartási lépéseket a [virtuális gép törléséhez](#delete-the-vm). Ellenkező esetben [folytassa a következő oktatóanyaggal](#next-steps).
 
-### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>A virtuális géphez való csatlakozás kioldása az Azure AD DS felügyelt tartományából
+### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Csatlakozás a virtuális géphez az Azure AD DS felügyelt tartományból
 
-Ha el szeretné távolítani a virtuális gép az Azure AD DS felügyelt tartományból, kövesse a lépéseket újra [csatlakozni a virtuális gép egy tartományhoz.](#join-the-vm-to-the-azure-ad-ds-managed-domain) Ahelyett, hogy csatlakozna az Azure AD DS felügyelt tartományához, válassza a munkacsoporthoz való csatlakozást, például az alapértelmezett *MUNKACSOPORTot.* A virtuális gép újraindítása után a számítógép-objektum törlődik az Azure AD DS felügyelt tartományból.
+Ha el szeretné távolítani a virtuális gépet az Azure AD DS felügyelt tartományból, kövesse újra a lépéseket a [virtuális gép tartományhoz való csatlakoztatásához](#join-the-vm-to-the-azure-ad-ds-managed-domain). Az Azure AD DS felügyelt tartományhoz való csatlakozás helyett válassza a munkacsoporthoz való csatlakozást, például az alapértelmezett *munkacsoportot*. A virtuális gép újraindítása után a számítógép-objektum el lesz távolítva az Azure AD DS felügyelt tartományból.
 
-Ha törli a virtuális gép nem csatlakozik a tartományból, egy árva számítógép-objektum marad az Azure AD DS.If [you delete the VM](#delete-the-vm) without unjoining from the domain, a orphaned computer object is left in Azure AD DS.
+Ha [törli a virtuális gépet](#delete-the-vm) a tartományból való leválasztás nélkül, egy árva számítógép-objektum marad az Azure AD DS.
 
 ### <a name="delete-the-vm"></a>A virtuális gép törlése
 
-Ha nem fogja használni ezt a Windows Server virtuális gép, törölje a virtuális gép az alábbi lépésekkel:
+Ha nem használja ezt a Windows Server-alapú virtuális gépet, törölje a virtuális gépet a következő lépésekkel:
 
-1. A bal oldali menüben válassza **az Erőforráscsoportok** lehetőséget
-1. Válassza ki az erőforráscsoportot, például *a myResourceGroup*.
-1. Válassza ki a virtuális gép, például *a myVM*, majd válassza **a Törlés**lehetőséget. Az erőforrás törlésének megerősítéséhez válassza az **Igen** lehetőséget. A virtuális gép törlése néhány percet vesz igénybe.
-1. A virtuális gép törlésekor jelölje ki az operációs rendszer lemezét, a hálózati csatoló kártyát és a *myVM-előtaggal* rendelkező egyéb erőforrásokat, és törölje őket.
+1. A bal oldali menüben válassza az **erőforráscsoportok** lehetőséget.
+1. Válassza ki az erőforráscsoportot, például *myResourceGroup*.
+1. Válassza ki a virtuális gépet, például *myVM*, majd válassza a **Törlés**lehetőséget. Válassza az **Igen** lehetőséget az erőforrás törlésének megerősítéséhez. A virtuális gép törlése néhány percet vesz igénybe.
+1. A virtuális gép törlésekor válassza ki az operációsrendszer-lemezt, a hálózati adaptert és minden más erőforrást a *myVM-* előtaggal, és törölje azokat.
 
-## <a name="troubleshoot-domain-join-issues"></a>Tartománycsatlakozási problémák elhárítása
+## <a name="troubleshoot-domain-join-issues"></a>A tartományhoz való csatlakozással kapcsolatos problémák elhárítása
 
-A Windows Server virtuális gép sikeresen csatlakozik az Azure AD DS felügyelt tartományhoz, ugyanúgy, mint egy hagyományos helyszíni számítógép csatlakozna egy Active Directory tartományi szolgáltatások tartományhoz. Ha a Windows Server virtuális gép nem tud csatlakozni az Azure AD DS felügyelt tartományhoz, az azt jelzi, hogy kapcsolati vagy hitelesítő adatokkal kapcsolatos probléma van. Tekintse át az alábbi hibaelhárítási szakaszokat, hogy sikeresen csatlakozzon a felügyelt tartományhoz.
+A Windows Server rendszerű virtuális gépnek sikeresen csatlakoznia kell az Azure AD DS felügyelt tartományhoz, ugyanúgy, mint a normál helyi számítógép Active Directory tartományi szolgáltatások tartományhoz. Ha a Windows Server rendszerű virtuális gép nem tud csatlakozni az Azure AD DS felügyelt tartományhoz, az azt jelzi, hogy van-e kapcsolat vagy hitelesítő adatokkal kapcsolatos probléma. A felügyelt tartomány sikeres csatlakoztatásához tekintse át a következő hibaelhárítási szakaszt.
 
 ### <a name="connectivity-issues"></a>Csatlakozási problémák
 
-Ha nem jelenik meg olyan üzenet, amely hitelesítő adatokat kér a tartományhoz való csatlakozáshoz, kapcsolódási probléma lép fel. A virtuális gép nem tudja elérni az Azure AD DS felügyelt tartománya a virtuális hálózaton.
+Ha nem kap olyan kérést, amely megkéri a hitelesítő adatok megadását a tartományhoz való csatlakozáshoz, fennáll a kapcsolódási probléma. A virtuális gép nem tudja elérni az Azure AD DS felügyelt tartományát a virtuális hálózaton.
 
-A hibaelhárítási lépések mindegyikének megkísérlése után próbáljon meg újra csatlakozni a Windows Server virtuális géphez a felügyelt tartományhoz.
+A hibaelhárítási lépések elvégzése után próbáljon újra csatlakozni a Windows Server rendszerű virtuális géphez a felügyelt tartományhoz.
 
-* Ellenőrizze, hogy a virtuális gép ugyanahhoz a virtuális hálózathoz csatlakozik-e, amelyben az Azure AD DS engedélyezve van, vagy társviszony-létesített hálózati kapcsolattal rendelkezik.Verify the VM is connected to the same virtual network that Azure AD DS is enabled in, or has a peered network connection.
-* Próbálja meg pingelni a felügyelt tartomány `ping aaddscontoso.com`DNS-tartománynevét, például a .
-    * Ha a pingelési kérelem sikertelen, próbálja meg pingelni a felügyelt tartomány IP-címeit, például `ping 10.0.0.4`a . A környezet IP-címe jelenik meg a *Tulajdonságok* lapon, amikor kiválasztja az Azure AD DS felügyelt tartományt az Azure-erőforrások listájából.
-    * Ha pingeli az IP-címet, de a tartományt nem, akkor a DNS helytelenül van konfigurálva. Ellenőrizze, hogy a felügyelt tartomány IP-címei a virtuális hálózat DNS-kiszolgálóiként vannak-e konfigurálva.
-* Próbálja meg kiüríteni a DNS-feloldó gyorsítótárát a virtuális gépen a `ipconfig /flushdns` paranccsal.
+* Ellenőrizze, hogy a virtuális gép ugyanahhoz a virtuális hálózathoz csatlakozik-e, amelyhez az Azure AD DS engedélyezve van, vagy rendelkezik-e társ hálózati kapcsolattal.
+* Próbálja meg pingelni a felügyelt tartomány DNS-tartománynevét, például `ping aaddscontoso.com`:.
+    * Ha a pingelési kérelem sikertelen, próbálja meg pingelni a felügyelt tartomány IP-címeit `ping 10.0.0.4`, például:. A környezet IP-címe a *Tulajdonságok* lapon jelenik meg, amikor kiválasztja az Azure AD DS felügyelt tartományt az Azure-erőforrások listájából.
+    * Ha pingelni tudja az IP-címet, de nem a tartományt, a DNS helytelenül van konfigurálva. Győződjön meg arról, hogy a felügyelt tartomány IP-címei a virtuális hálózat DNS-kiszolgálóiként vannak konfigurálva.
+* A `ipconfig /flushdns` parancs használatával próbálja meg kiüríteni a DNS-feloldó gyorsítótárát a virtuális gépen.
 
 ### <a name="credentials-related-issues"></a>Hitelesítő adatokkal kapcsolatos problémák
 
-Ha egy kérdés jelenik meg, amely hitelesítő adatokat kér a tartományhoz való csatlakozáshoz, de a hitelesítő adatok megadása után egy hiba, a virtuális gép képes csatlakozni az Azure AD DS felügyelt tartományhoz. A megadott hitelesítő adatok nem teszik lehetővé a virtuális gép számára, hogy csatlakozzanak az Azure AD DS felügyelt tartományához.
+Ha olyan kérést kap, amely megkéri a hitelesítő adatok megadását a tartományhoz való csatlakozáshoz, de a hitelesítő adatok megadása után hibaüzenet jelenik meg, a virtuális gép képes csatlakozni az Azure AD DS felügyelt tartományhoz. A megadott hitelesítő adatok nem teszik lehetővé, hogy a virtuális gép csatlakozzon az Azure AD DS felügyelt tartományhoz.
 
-A hibaelhárítási lépések mindegyikének megkísérlése után próbáljon meg újra csatlakozni a Windows Server virtuális géphez a felügyelt tartományhoz.
+A hibaelhárítási lépések elvégzése után próbáljon újra csatlakozni a Windows Server rendszerű virtuális géphez a felügyelt tartományhoz.
 
 * Győződjön meg arról, hogy a megadott felhasználói fiók az Azure AD DS felügyelt tartományhoz tartozik.
-* Győződjön meg arról, hogy a fiók az Azure AD DS felügyelt tartomány vagy az Azure AD-bérlő része. Az Azure AD-bérlőhöz társított külső könyvtárakból származó fiókok nem hitelesíthetők megfelelően a tartományhoz való csatlakozás folyamata során.
-* Próbálja meg az upn formátumot használni `contosoadmin@aaddscontoso.onmicrosoft.com`a hitelesítő adatok megadásához, például . Ha sok felhasználó ugyanazt az UPN-előtagot a bérlőben, vagy ha az UPN-előtag túl hosszú, a *SAMAccountName* a fiókjához lehet automatikusan generált. Ezekben az esetekben a fiók *SAMAccountName* formátuma eltérhet attól, amit a helyszíni tartományban elvár vagy használ.
-* Ellenőrizze, hogy engedélyezte-e a [jelszó-szinkronizálást][password-sync] a felügyelt tartománnyal. E konfigurációs lépés nélkül a szükséges jelszókiterületek nem lesznek jelen az Azure AD DS felügyelt tartományban a bejelentkezési kísérlet megfelelő hitelesítéséhez.
-* Várja meg, amíg befejeződik a jelszó-szinkronizálás. Ha egy felhasználói fiók jelszavát módosítja, az Azure AD automatikus háttérszinkronizálása frissíti a jelszót az Azure AD DS-ben. Némi időt vesz igénybe, amíg a jelszó elérhető vé válik a tartományhoz való csatlakozáshoz.
+* Győződjön meg arról, hogy a fiók az Azure AD DS felügyelt tartományhoz vagy az Azure AD-bérlőhöz tartozik. Az Azure AD-bérlőhöz társított külső könyvtárak fiókjai nem tudják megfelelően hitelesíteni magukat a tartományhoz való csatlakozás során.
+* Próbálja meg az UPN formátumot használni a hitelesítő adatok megadásához, például: `contosoadmin@aaddscontoso.onmicrosoft.com`. Ha sok felhasználó rendelkezik ugyanazzal az UPN-előtaggal a bérlőben, vagy ha az UPN-előtag túl hosszú, akkor előfordulhat, hogy a fiók *sAMAccountName* automatikusan létrejön. Ezekben az esetekben előfordulhat, hogy a fiók *sAMAccountName* formátuma eltér a helyszíni tartományban várttól vagy használattól.
+* Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást][password-sync] a felügyelt tartományhoz. A konfigurációs lépés nélkül a szükséges jelszó-kivonatok nem jelennek meg az Azure AD DS felügyelt tartományában, hogy megfelelően hitelesítse a bejelentkezési kísérletet.
+* Várjon, amíg a jelszó-szinkronizálás be nem fejeződik. A felhasználói fiók jelszavának módosításakor az Azure AD automatikus háttérben történő szinkronizálása frissíti az Azure AD DSban található jelszót. Időbe telik, amíg a jelszó elérhetővé válik a tartományhoz való csatlakozáshoz.
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Windows Server virtuális gép létrehozása
-> * Csatlakozás a Windows Server virtuális géphez egy Azure virtuális hálózathoz
-> * Csatlakozzon a virtuális géphez az Azure AD DS felügyelt tartományához
+> * Windows Server rendszerű virtuális gép létrehozása
+> * Kapcsolódás a Windows Server-alapú virtuális GÉPHEZ egy Azure-beli virtuális hálózathoz
+> * A virtuális gép csatlakoztatása az Azure AD DS felügyelt tartományhoz
 
-Az Azure AD DS felügyelt tartomány felügyeletéhez konfiguráljon egy felügyeleti virtuális gép az Active Directory felügyeleti központ (ADAC) használatával.
+Az Azure AD DS felügyelt tartományának felügyeletéhez konfigurálja a felügyeleti virtuális gépet a Active Directory felügyeleti központ (ADAC) használatával.
 
 > [!div class="nextstepaction"]
-> [Felügyeleti eszközök telepítése felügyeleti virtuális gépre](tutorial-create-management-vm.md)
+> [Felügyeleti eszközök telepítése felügyeleti virtuális gépen](tutorial-create-management-vm.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

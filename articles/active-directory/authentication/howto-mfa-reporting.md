@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8665e58dc84a2ea9b5f2ed70a41bbdd0aa3aa9b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2df562d65ad064efb1be337e0b68cb8638536981
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82099155"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112762"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Jelentések az Azure Multi-Factor Authentication
 
@@ -129,13 +129,13 @@ Először győződjön meg arról, hogy telepítve van a [MSOnline v1 PowerShell
 Azonosítsa az MFA-val regisztrált felhasználókat az alábbi PowerShell-lel. Ezek a parancsok kizárják a letiltott felhasználókat, mivel ezek a fiókok nem tudják hitelesíteni az Azure AD-t.
 
 ```powershell
-Get-MsolUser -All | Where-Object {$._StrongAuthenticationMethods -ne $null -and $._BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
+Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
 Azonosítsa azokat a felhasználókat, akik nem regisztráltak az MFA használatára az alábbi PowerShell-lel. Ezek a parancsok kizárják a letiltott felhasználókat, mivel ezek a fiókok nem tudják hitelesíteni az Azure AD-t.
 
 ```powershell
-Get-MsolUser -All | Where-Object {$._StrongAuthenticationMethods.Count -eq 0 -and $._BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
+Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
 A regisztrált felhasználók és kimeneti metódusok azonosítása. 

@@ -1,25 +1,19 @@
 ---
-title: Oktatóanyag – A Windows virtuális gépek terheléselosztása az Azure-ban
+title: Oktatóanyag – Windows rendszerű virtuális gépek terheléselosztása az Azure-ban
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre terheléselosztót az Azure PowerShell-lel egy magas rendelkezésre állású és biztonságos alkalmazáshoz három Windows rendszerű virtuális gépen keresztül
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 781ee9136c13f75ab53c662225cc12b28b1fb02e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 0ece182765be2ee3b18334569799769e251d1af4
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455699"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100345"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Oktatóanyag: Windows rendszerű Azure-beli virtuális gépek terheléselosztása az Azure PowerShell használatával magas rendelkezésre állású alkalmazások létrehozásához
 A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ebben az oktatóanyagban megismerkedhet az Azure Load Balancer különböző összetevőivel, amelyek elosztják a forgalmat, és gondoskodnak a magas rendelkezésre állásról. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -46,10 +40,10 @@ A forgalom szabályozásához terheléselosztási szabályokat kell megadnia a v
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/powershell](https://shell.azure.com/powershell)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-azure-load-balancer"></a>Azure-terheléselosztó létrehozása
-Ez a szakasz részletesen ismerteti a terheléselosztó egyes összetevőinek létrehozását és konfigurálását. A terheléselosztó létrehozása előtt hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)segítségével. A következő példa létrehoz egy *myResourceGroupLoadBalancer* nevű erőforráscsoportot az *EastUS* helyen:
+Ez a szakasz részletesen ismerteti a terheléselosztó egyes összetevőinek létrehozását és konfigurálását. A terheléselosztó létrehozása előtt hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myResourceGroupLoadBalancer* nevű erőforráscsoportot a *EastUS* helyen:
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -58,7 +52,7 @@ New-AzResourceGroup `
 ```
 
 ### <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
-Az alkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Hozzon létre egy nyilvános [IP-címet a New-AzPublicIpAddress címmel.](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) Az alábbi példában létrejön egy *myPublicIP* nevű nyilvános IP-cím a *myResourceGroupLoadBalancer* erőforráscsoportban:
+Az alkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Hozzon létre egy nyilvános IP [-címet a New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress). Az alábbi példában létrejön egy *myPublicIP* nevű nyilvános IP-cím a *myResourceGroupLoadBalancer* erőforráscsoportban:
 
 ```azurepowershell-interactive
 $publicIP = New-AzPublicIpAddress `
@@ -69,7 +63,7 @@ $publicIP = New-AzPublicIpAddress `
 ```
 
 ### <a name="create-a-load-balancer"></a>Terheléselosztó létrehozása
-Hozzon létre egy előtétes IP-készletet a [New-AzLoadBalancerFrontendIpConfig segítségével.](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) Az alábbi példában létrejön egy *myFrontEndPool* nevű előtérbeli IP-címkészlet, amely a *myPublicIP* címhez kötődik: 
+Hozzon létre egy új előtér [-IP-címkészletet a New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Az alábbi példában létrejön egy *myFrontEndPool* nevű előtérbeli IP-címkészlet, amely a *myPublicIP* címhez kötődik: 
 
 ```azurepowershell-interactive
 $frontendIP = New-AzLoadBalancerFrontendIpConfig `
@@ -77,14 +71,14 @@ $frontendIP = New-AzLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-Háttércímkészlet létrehozása [a New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig)segítségével. A virtuális gépek ehhez a háttérkészlethez lesznek csatolva a hátralévő lépések során. A következő példában egy *myBackEndPool* nevű háttércímkészlet jön létre:
+Hozzon létre egy háttér-címkészletet a [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). A virtuális gépek ehhez a háttérkészlethez lesznek csatolva a hátralévő lépések során. A következő példában egy *myBackEndPool* nevű háttércímkészlet jön létre:
 
 ```azurepowershell-interactive
 $backendPool = New-AzLoadBalancerBackendAddressPoolConfig `
   -Name "myBackEndPool"
 ```
 
-Most hozza létre a terheléselosztót a [New-AzLoadBalancer segítségével.](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) Az alábbi példában egy *myLoadBalancer* nevű terheléselosztó jön létre az előző lépésekben létrehozott elő- és háttérbeli IP-címkészletek használatával:
+Most hozza létre a terheléselosztó-t a [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer). Az alábbi példában egy *myLoadBalancer* nevű terheléselosztó jön létre az előző lépésekben létrehozott elő- és háttérbeli IP-címkészletek használatával:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -100,7 +94,7 @@ Ahhoz, hogy a terheléselosztó monitorozhassa az alkalmazás állapotát, álla
 
 Az alábbi példában egy TCP-mintavétel jön létre. Egyéni HTTP-mintavételt is létrehozhat részletesebb állapotellenőrzések elvégzéséhez. Egyéni HTTP-mintavétel használatakor létre kell hoznia az állapotellenőrzési oldalt, például: *healthcheck.aspx*. A mintavételnek a **HTTP 200 OK** választ kell visszaadnia ahhoz, hogy a terheléselosztó a gazdagépet a rotációban tartsa.
 
-TCP-állapotminta létrehozásához használja az [Add-AzLoadBalancerProbeConfig programot.](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig) Az alábbi példában egy *myHealthProbe* nevű állapotmintát hozunk létre, amely a *80*-as *TCP*-porton lévő virtuális gépeket monitorozza:
+A TCP Health-mintavétel létrehozásához használja az [Add-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig). Az alábbi példában egy *myHealthProbe* nevű állapotmintát hozunk létre, amely a *80*-as *TCP*-porton lévő virtuális gépeket monitorozza:
 
 ```azurepowershell-interactive
 Add-AzLoadBalancerProbeConfig `
@@ -112,7 +106,7 @@ Add-AzLoadBalancerProbeConfig `
   -ProbeCount 2
 ```
 
-Az állapotminta alkalmazásához frissítse a terheléselosztót a [Set-AzLoadBalancer eszközzel:](https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer)
+Az állapot-mintavétel alkalmazásához frissítse a terheléselosztó-t a [set-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer):
 
 ```azurepowershell-interactive
 Set-AzLoadBalancer -LoadBalancer $lb
@@ -121,7 +115,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 ### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. Meg kell határoznia az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Ahhoz, hogy csak a megfelelő állapotú virtuális gépek fogadhassanak forgalmat, adja meg a használandó állapotmintát is.
 
-Hozzon létre egy terheléselosztó szabályt [az Add-AzLoadBalancerRuleConfig segítségével.](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig) Az alábbi példa létrehoz egy *myLoadBalancerRule* nevű terheléselosztási szabályt, és elosztja a *80*-as *TCP*-port forgalmát:
+Hozzon létre egy terheléselosztó-szabályt az [Add-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig). Az alábbi példa létrehoz egy *myLoadBalancerRule* nevű terheléselosztási szabályt, és elosztja a *80*-as *TCP*-port forgalmát:
 
 ```azurepowershell-interactive
 $probe = Get-AzLoadBalancerProbeConfig -LoadBalancer $lb -Name "myHealthProbe"
@@ -137,7 +131,7 @@ Add-AzLoadBalancerRuleConfig `
   -Probe $probe
 ```
 
-Frissítse a terheléselosztót a [Set-AzLoadBalancer segítségével:](https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer)
+A terheléselosztó frissítése a [set-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer):
 
 ```azurepowershell-interactive
 Set-AzLoadBalancer -LoadBalancer $lb
@@ -147,7 +141,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 Mielőtt üzembe helyezne néhány virtuális gépet és tesztelné az elosztót, hozza létre a támogató virtuális hálózati erőforrásokat. További információt a virtuális hálózatokról az [Azure-beli virtuális hálózatok kezelésével](tutorial-virtual-network.md) foglalkozó oktatóanyagban talál.
 
 ### <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
-Hozzon létre egy virtuális hálózatot a [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork). Az alábbi példa létrehoz egy *mySubnet* hálózattal rendelkező *myVNet* nevű virtuális hálózatot:
+Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork). Az alábbi példa létrehoz egy *mySubnet* hálózattal rendelkező *myVNet* nevű virtuális hálózatot:
 
 ```azurepowershell-interactive
 # Create subnet config
@@ -164,7 +158,7 @@ $vnet = New-AzVirtualNetwork `
   -Subnet $subnetConfig
 ```
 
-A virtuális hálózati adapterek a [New-AzNetworkInterface segítségével](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface)jönnek létre. Az alábbi példa három virtuális NIC-t hoz létre. (Egy virtuális NIC-t minden virtuális géphez, amelyet létre fog hozni az alkalmazáshoz a következő lépések során). Bármikor létrehozhat további virtuális NIC-ket és virtuális gépeket, és hozzáadhatja őket a terheléselosztóhoz:
+A virtuális hálózati adaptereket a [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface)hozza létre. Az alábbi példa három virtuális NIC-t hoz létre. (Egy virtuális NIC-t minden virtuális géphez, amelyet létre fog hozni az alkalmazáshoz a következő lépések során). Bármikor létrehozhat további virtuális NIC-ket és virtuális gépeket, és hozzáadhatja őket a terheléselosztóhoz:
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 3; $i++)
@@ -182,7 +176,7 @@ for ($i=1; $i -le 3; $i++)
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 Az alkalmazás magas rendelkezésre állásának növeléséhez helyezze a virtuális gépeket egy rendelkezésre állási csoportba.
 
-Hozzon létre egy rendelkezésre állási készletet a [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset)segítségével. Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
+Hozzon létre egy rendelkezésre állási készletet [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset). Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
 
 ```azurepowershell-interactive
 $availabilitySet = New-AzAvailabilitySet `
@@ -200,7 +194,7 @@ A [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft
 $cred = Get-Credential
 ```
 
-Most már létrehozhatja a virtuális gépeket a New-AzVM.Now you can create the VMs with [New-AzVM.](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Az alábbi példa három virtuális gépet hoz létre, illetve a szükséges virtuális hálózati összetevőket, ha azok még nem léteznek:
+Most már létrehozhatja a virtuális gépeket a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)használatával. Az alábbi példa három virtuális gépet hoz létre, illetve a szükséges virtuális hálózati összetevőket, ha azok még nem léteznek:
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 3; $i++)
@@ -225,7 +219,7 @@ Az `-AsJob` paraméter háttérfeladatként létrehozza a virtuális gépet, íg
 ### <a name="install-iis-with-custom-script-extension"></a>IIS telepítése egyéni szkriptbővítménnyel
 A [Windows rendszerű virtuális gép testreszabásával](tutorial-automate-vm-deployment.md) foglalkozó korábbi oktatóanyagból megtudhatta, hogyan automatizálható egy virtuális gép testreszabása a Windows rendszerhez készült egyéni szkriptbővítménnyel. Ugyanezzel a módszerrel telepítheti és konfigurálhatja az IIS-t a virtuális gépeken.
 
-Az egyéni parancsfájl-bővítmény telepítéséhez használja a [Set-AzVMExtension bővítményt.](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) A bővítmény a `powershell Add-WindowsFeature Web-Server` parancs futtatásával telepíti az IIS-webkiszolgálót, majd a *Default.htm* lapot frissítve megjeleníti a virtuális gép eszköznevét:
+A [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) használatával telepítse az egyéni szkriptek bővítményét. A bővítmény a `powershell Add-WindowsFeature Web-Server` parancs futtatásával telepíti az IIS-webkiszolgálót, majd a *Default.htm* lapot frissítve megjeleníti a virtuális gép eszköznevét:
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 3; $i++)
@@ -243,7 +237,7 @@ for ($i=1; $i -le 3; $i++)
 ```
 
 ## <a name="test-load-balancer"></a>Terheléselosztó tesztelése
-Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIPAddress segítségével.](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) A következő példa a korábban létrehozott *myPublicIP* IP-címét kéri le:
+Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIP* IP-címét kéri le:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -262,7 +256,7 @@ Annak megtekintéséhez, hogyan osztja el a terheléselosztó az alkalmazást fu
 Előfordulhat, hogy karbantartás kell végeznie az alkalmazást futtató virtuális gépeken (például operációsrendszer-frissítést kell telepítenie). Az alkalmazás megnövekedett forgalmának kezeléséhez szükség lehet további virtuális gépek hozzáadására. Ez a szakasz bemutatja, hogyan távolíthat el egy virtuális gépet a terheléselosztóból, vagy hogyan adhat hozzá virtuális gépeket.
 
 ### <a name="remove-a-vm-from-the-load-balancer"></a>Virtuális gép eltávolítása a terheléselosztóból
-Töltse le a hálózati kártya [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface), majd állítsa be a *LoadBalancerBackendAddressPools* tulajdonság a virtuális HÁLÓZATI *$null*. Végül frissítse a virtuális NIC-t:
+Kérje le a hálózati adaptert a [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface), majd állítsa a virtuális hálózati adapter *LoadBalancerBackendAddressPools* tulajdonságát *$nullra*. Végül frissítse a virtuális NIC-t:
 
 ```azurepowershell-interactive
 $nic = Get-AzNetworkInterface `
@@ -275,7 +269,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 Annak megtekintéséhez, hogyan osztja el a terheléselosztó az alkalmazást futtató megmaradt kettő virtuális gép között a forgalmat, kényszerítheti a webböngésző frissítését. Most már elvégezheti a virtuális gépen a szükséges karbantartást, például telepítheti az operációs rendszer frissítéseit, vagy újraindíthatja a virtuális gépet.
 
 ### <a name="add-a-vm-to-the-load-balancer"></a>Virtuális gép hozzáadása a terheléselosztóhoz
-A virtuális gép karbantartása után, vagy ha ki kell bővítenie a kapacitást, állítsa a virtuális hálózati adapter *LoadBalancerBackendAddressPool* tulajdonságát a *BackendAddressPool* kiszolgálóra a [Get-AzLoadBalancer-ből:](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer)
+Miután elvégezte a virtuális gép karbantartását, vagy ha ki kell bővíteni a kapacitást, állítsa be a virtuális hálózati adapter *LoadBalancerBackendAddressPools* tulajdonságát a [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer) *BackendAddressPool* :
 
 A terheléselosztó lekérése:
 

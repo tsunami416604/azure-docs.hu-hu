@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Text Analytics v3 ügyfélkönyvtár a Node.js fájlhoz | Microsoft dokumentumok'
-description: Ismerkedés a node.js v3 Text Analytics ügyféltárával.
+title: 'Gyors útmutató: Text Analytics v3 ügyféloldali kódtár a Node. js-hez | Microsoft Docs'
+description: Ismerkedés a Node. js-hez készült v3 Text Analytics ügyféloldali kódtáraval.
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
@@ -9,39 +9,39 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 1414d86577e5aa17cb42762403b3767948c1e30c
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 8bcc919aee7548e8596d1f44c8a357d3f84dfb14
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81642902"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82095904"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-[v3 Referenciadokumentáció](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [v3 Könyvtár forráskód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 csomag (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3 minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[v3 hivatkozási dokumentáció](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [v3 könyvtár forráskód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 csomag (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3 minta](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-[v2 Referenciadokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [v2 Könyvtár forráskód](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [v2 csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [v2 minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[v2 hivatkozási dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [v2 függvénytár](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [-forráskód v2 csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [v2 minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ---
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [Node.js](https://nodejs.org/)jelenlegi verziója .
-* Miután rendelkezik az <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Azure-előfizetéssel, hozzon <span class="docon docon-navigate-external x-hidden-focus"></span> </a> létre egy Text Analytics-erőforrást"  target="_blank">az Azure Portalon a kulcs és a végpont leéséhez. Üzembe helyezése után kattintson **az Ugrás az erőforrásra**gombra.
-    * Szüksége lesz a kulcs és a végpont a létrehozott erőforrásból az alkalmazás és a Text Analytics API csatlakoztatásához. A kulcs és a végpont beillesztése az alábbi kódba később a rövid útmutatóban.
-    * Használhatja az ingyenes tarifacsomag ( )`F0`kipróbálni a szolgáltatást, és frissítse később egy fizetett szint éles környezetben.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* A [Node. js](https://nodejs.org/)jelenlegi verziója.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="hozzon"  target="_blank">létre egy Text Analytics erőforrást, és hozzon létre egy Text Analytics-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag (`F0`) segítségével kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
-## <a name="setting-up"></a>Beállítása
+## <a name="setting-up"></a>Beállítás
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Egy konzolablakban (például cmd, PowerShell vagy Bash) hozzon létre egy új könyvtárat az alkalmazáshoz, és keresse meg azt. 
+Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
 
 ```console
 mkdir myapp 
@@ -49,41 +49,41 @@ mkdir myapp
 cd myapp
 ```
 
-Futtassa a `npm init` parancsot egy `package.json` csomópontalkalmazás fájllal való létrehozásához. 
+Futtassa a `npm init` parancsot egy `package.json` Node-alkalmazás fájlhoz való létrehozásához. 
 
 ```console
 npm init
 ```
-### <a name="install-the-client-library"></a>Az ügyféltár telepítése
+### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-Telepítse `@azure/ai-text-analytics` az NPM-csomagokat:
+Telepítse a `@azure/ai-text-analytics` NPM-csomagokat:
 
 ```console
 npm install --save @azure/ai-text-analytics@1.0.0-preview.4
 ```
 
 > [!TIP]
-> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódfájlt? Ebben a rövid útmutatóban a kódpéldákat tartalmazó [gitHubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/TextAnalytics/text-analytics-v3-client-library.js)található. 
+> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/TextAnalytics/text-analytics-v3-client-library.js), amely a jelen rövid útmutatóban szereplő példákat tartalmazza. 
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-Telepítse `@azure/cognitiveservices-textanalytics` az NPM-csomagokat:
+Telepítse a `@azure/cognitiveservices-textanalytics` NPM-csomagokat:
 
 ```console
 npm install --save @azure/cognitiveservices-textanalytics
 ```
 
 > [!TIP]
-> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódfájlt? Ebben a rövid útmutatóban a kódpéldákat tartalmazó [gitHubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js)található. 
+> Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js), amely a jelen rövid útmutatóban szereplő példákat tartalmazza. 
 
 ---
 
-Az alkalmazás `package.json` fájlja frissül a függőségekkel.
-Hozzon létre `index.js` egy nevű fájlt, és adja hozzá a következőket:
+Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
+Hozzon létre egy `index.js` nevű fájlt, és adja hozzá a következőket:
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 ```javascript
 "use strict";
@@ -91,7 +91,7 @@ Hozzon létre `index.js` egy nevű fájlt, és adja hozzá a következőket:
 const { TextAnalyticsClient, AzureKeyCredential } = require("@azure/ai-text-analytics");
 ```
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 ```javascript
 "use strict";
@@ -100,45 +100,45 @@ const { TextAnalyticsClient, CognitiveServicesCredential } = require("@azure/cog
 ```
 ---
 
-Hozzon létre változókat az erőforrás Azure-végpontjának és kulcsának.
+Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásához.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 ```javascript
 const key = '<paste-your-text-analytics-key-here>';
-const endpoint = `<paste-your-text-analytics-endpoint-here>`;
+const endpoint = '<paste-your-text-analytics-endpoint-here>';
 ```
 
 ## <a name="object-model"></a>Objektummodell
 
-A Text Analytics-ügyfél egy `TextAnalyticsClient` olyan objektum, amely a kulcs használatával hitelesíti magát az Azure-ban. Az ügyfél számos módszert biztosít a szöveg elemzésére, egyetlen karakterláncként vagy kötegként.
+Az Text Analytics-ügyfél egy `TextAnalyticsClient` olyan objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél számos módszert biztosít a szöveg elemzéséhez, egyetlen sztringként vagy kötegként.
 
-A program a szöveget a `documents`használt `dictionary` módszertől függően `id`a `text`, `language` a kombinációját és attribútumokat tartalmazó objektumok listájaként küldi el az API-nak. Az `text` attribútum az eredeti `language`helyen tárolja az elemzendő szöveget, és az `id` bármilyen érték lehet. 
+A rendszer az API- `documents`nak elküldi a szöveget, amely a használt `dictionary` módszertől függően a, `id`a `text`és `language` az attribútumok kombinációját tartalmazó objektumokat tartalmazza. Az `text` attribútum tárolja a forrásban `language`elemezni kívánt szöveget, és a `id` értéke bármilyen lehet. 
 
-A válaszobjektum egy lista, amely az egyes dokumentumok elemzési adatait tartalmazza. 
+A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista. 
 
 ## <a name="code-examples"></a>Kódpéldák
 
-* [Ügyfél hitelesítése](#client-authentication)
+* [Ügyfél-hitelesítés](#client-authentication)
 * [Hangulatelemzés](#sentiment-analysis) 
 * [Nyelvfelismerés](#language-detection)
-* [Elnevezett entitás felismerése](#named-entity-recognition-ner)
-* [Entitáscsatolás](#entity-linking)
-* [Kulcskifejezések kinyerése](#key-phrase-extraction)
+* [Elnevezett entitások felismerése](#named-entity-recognition-ner)
+* [Entitás összekapcsolása](#entity-linking)
+* [Fő kifejezés kibontása](#key-phrase-extraction)
 
 ## <a name="client-authentication"></a>Ügyfél-hitelesítés
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-Hozzon `TextAnalyticsClient` létre egy új objektumot a kulccsal és a végpontparaméterekkel.
+Hozzon létre `TextAnalyticsClient` egy új objektumot a kulcs és a végpont paraméterként.
 
 ```javascript
 const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCredential(key));
 ```
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-Hozzon létre egy új `credentials` `endpoint` [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) objektumot paraméterrel és paraméterként.
+Hozzon létre [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) egy új TextAnalyticsClient `credentials` - `endpoint` objektumot paraméterként.
 
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
@@ -146,9 +146,9 @@ Hozzon létre egy új `credentials` `endpoint` [TextAnalyticsClient](https://doc
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-Hozzon létre egy karakterlánctömböt, amely az elemezni kívánt dokumentumot tartalmazza. Hívja meg az `analyzeSentiment()` ügyfél metódusát, és kapja meg a visszaadott `SentimentBatchResult` objektumot. Végighaladhat az eredmények listáján, és kinyomtathatja az egyes dokumentumok azonosítóját, a dokumentumszintű véleményt megbízhatósági pontszámokkal. Az eredmény minden dokumentumhoz mondatszintű véleményt, valamint eltolásokat, hosszt és megbízhatósági pontszámokat tartalmaz.
+Az elemezni kívánt dokumentumot tartalmazó karakterláncok tömbjét hozza létre. Hívja meg `analyzeSentiment()` az ügyfél metódusát, és szerezze `SentimentBatchResult` be a visszaadott objektumot. Ismételje meg az eredmények listáját, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, a dokumentum szintjének véleményét megbízhatósági pontszámokkal. Az eredmény az egyes dokumentumokhoz tartozó mondatok szintjének, valamint az eltolások, a hossz és a megbízhatósági pontszámok értékeit tartalmazza.
 
 ```javascript
 async function sentimentAnalysis(client){
@@ -174,7 +174,7 @@ async function sentimentAnalysis(client){
 sentimentAnalysis(textAnalyticsClient)
 ```
 
-Futtassa `node index.js` a kódot a konzol ablakában.
+Futtassa a kódot `node index.js` a konzoljának ablakában.
 
 ### <a name="output"></a>Kimenet
 
@@ -192,13 +192,13 @@ ID: 0
                 Positive: 0.21  Negative: 0.02  Neutral: 0.77
 ```
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-Hozzon létre egy szótárobjektumokat tartalmazó listát, amely tartalmazza az elemezni kívánt dokumentumokat. Hívja meg az ügyfél [sentiment()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) metódusát, és kapja meg a visszaadott [SentimentBatchResult értéket.](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult) Végighaladhat az eredmények listáján, és kinyomtathatja az egyes dokumentumok azonosítóját és hangulatpontszámát. A 0-hoz közelebbi pontszám negatív érzést, míg az 1-hez közelebbi pontszám pozitív véleményt jelez.
+Hozzon létre egy listát az elemezni kívánt dokumentumokat tartalmazó szótár-objektumok listájáról. Hívja meg az ügyfél [hangulati ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) metódusát, és szerezze be a visszaadott [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult). Ismételje meg az eredmények listáját, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és hangulati pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
 
 [!code-javascript[Sentiment analysis](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=sentimentAnalysis)]
 
-Futtassa `node index.js` a kódot a konzol ablakában.
+Futtassa a kódot `node index.js` a konzoljának ablakában.
 
 ### <a name="output"></a>Kimenet
 
@@ -213,9 +213,9 @@ Futtassa `node index.js` a kódot a konzol ablakában.
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-Hozzon létre egy karakterlánctömböt, amely az elemezni kívánt dokumentumot tartalmazza. Hívja fel az `detectLanguage()` ügyfél metódusát, és kapja meg a visszaküldött `DetectLanguageResultCollection`. Ezután végighaladhat az eredményeken, és nyomtassa ki az egyes dokumentumok azonosítóját a megfelelő elsődleges nyelvvel.
+Az elemezni kívánt dokumentumot tartalmazó karakterláncok tömbjét hozza létre. Hívja meg `detectLanguage()` az ügyfél metódusát, és szerezze `DetectLanguageResultCollection`be a visszaadott értéket. Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit a megfelelő elsődleges nyelvvel.
 
 ```javascript
 async function languageDetection(client) {
@@ -233,7 +233,7 @@ async function languageDetection(client) {
 languageDetection(textAnalyticsClient);
 ```
 
-Futtassa `node index.js` a kódot a konzol ablakában.
+Futtassa a kódot `node index.js` a konzoljának ablakában.
 
 ### <a name="output"></a>Kimenet
 
@@ -242,13 +242,13 @@ ID: 0
         Primary Language French
 ```
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-A dokumentumokat tartalmazó szótárobjektumok listájának létrehozása. Hívja meg az ügyfél [detectLanguage()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) metódusát, és kapja meg a visszaadott [LanguageBatchResult metódust.](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult) Ezután végighaladhat az eredményeken, és kinyomtathatja az egyes dokumentumok azonosítóját és nyelvét.
+Hozzon létre egy listát a dokumentumokat tartalmazó szótár-objektumokról. Hívja meg az ügyfél [detectLanguage ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) metódusát, és szerezze be a visszaadott [LanguageBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult). Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és nyelvét.
 
 [!code-javascript[Language detection](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=languageDetection)]
 
-Futtassa `node index.js` a kódot a konzol ablakában.
+Futtassa a kódot `node index.js` a konzoljának ablakában.
 
 ### <a name="output"></a>Kimenet
 
@@ -260,15 +260,15 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ---
 
-## <a name="named-entity-recognition-ner"></a>Elnevezett entitásfelismerés (NER)
+## <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
 > [!NOTE]
-> Verzióban `3.0-preview`:
-> * Az entitásösszekapcsolás külön kérés, mint a NER.
+> A verzióban `3.0-preview`:
+> * Az entitások összekapcsolása egy külön kérelem, mint a kapcsolatfelvétel.
 
-Hozzon létre egy karakterlánctömböt, amely az elemezni kívánt dokumentumot tartalmazza. Hívja fel az `recognizeEntities()` ügyfél metódusát, és kapja meg az `RecognizeEntitiesResult` objektumot. Végighaladva az eredmények listáján, és nyomtassa ki az entitás nevét, típusát, altípusát, eltolását, hosszát és pontszámát.
+Az elemezni kívánt dokumentumot tartalmazó karakterláncok tömbjét hozza létre. Hívja meg `recognizeEntities()` az ügyfél metódusát, és `RecognizeEntitiesResult` kérje le az objektumot. Ismételje meg az eredmények listáját, és nyomtassa ki az entitás nevét, típusát, altípusát, eltolását, hosszát és pontszámát.
 
 ```javascript
 async function entityRecognition(client){
@@ -290,7 +290,7 @@ async function entityRecognition(client){
 entityRecognition(textAnalyticsClient);
 ```
 
-Futtassa `node index.js` a kódot a konzol ablakában.
+Futtassa a kódot `node index.js` a konzoljának ablakában.
 
 ### <a name="output"></a>Kimenet
 
@@ -321,7 +321,7 @@ Document ID: 1
 
 ## <a name="entity-linking"></a>Entitáskapcsolás
 
-Hozzon létre egy karakterlánctömböt, amely az elemezni kívánt dokumentumot tartalmazza. Hívja fel az `recognizeLinkedEntities()` ügyfél metódusát, és kapja meg az `RecognizeLinkedEntitiesResult` objektumot. Végighaladhat az eredmények listáján, és nyomtassa ki az entitás nevét, azonosítóját, adatforrását, URL-címét és egyezéseit. A tömb `matches` minden objektuma tartalmazni fogja az adott egyezés eltolását, hosszát és pontszámát.
+Az elemezni kívánt dokumentumot tartalmazó karakterláncok tömbjét hozza létre. Hívja meg `recognizeLinkedEntities()` az ügyfél metódusát, és `RecognizeLinkedEntitiesResult` kérje le az objektumot. Ismételje meg az eredmények listáját, és nyomtassa ki az entitás nevét, AZONOSÍTÓját, forrását, URL-címét és egyezéseit. A tömbben `matches` lévő összes objektum eltolást, hosszúságot és pontszámot fog tartalmazni az adott egyeztetéshez.
 
 ```javascript
 async function linkedEntityRecognition(client){
@@ -345,7 +345,7 @@ async function linkedEntityRecognition(client){
 linkedEntityRecognition(textAnalyticsClient);
 ```
 
-Futtassa `node index.js` a kódot a konzol ablakában.
+Futtassa a kódot `node index.js` a konzoljának ablakában.
 
 ### <a name="output"></a>Kimenet
 
@@ -373,16 +373,16 @@ Document ID: 0
                 Text: BASIC     Score: 0.28
 ```
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
 > [!NOTE]
-> A 2.1-es verzióban az entitásösszekapcsolás szerepel a NER-válaszban.
+> Az 2,1-es verzióban az entitások összekapcsolása szerepel a megjelenő válaszban.
 
-A dokumentumokat tartalmazó objektumok listájának létrehozása. Hívja meg az ügyfél [entitás()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#entities-models-textanalyticscliententitiesoptionalparams-) metódusát, és vegye le az [EntitiesBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/entitiesbatchresult) objektumot. Végighaladhat az eredmények listáján, és kinyomtathatja az egyes dokumentumok azonosítóját. Minden észlelt entitáshoz nyomtassa ki a wikipédia nevét, a típusát és altípusait (ha van ilyen), valamint az eredeti szövegben lévő helyeket.
+Hozza létre a dokumentumokat tartalmazó objektumok listáját. Hívja meg az ügyfél [entitások ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#entities-models-textanalyticscliententitiesoptionalparams-) metódusát, és kérje le a [EntitiesBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/entitiesbatchresult) objektumot. Ismételje meg az eredmények listáját, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit. Minden észlelt entitás esetében nyomtassa ki a wikipedia nevét, típusát és altípusait (ha van), valamint az eredeti szöveg helyét.
 
 [!code-javascript[Entity recognition](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=entityRecognition)]
 
-Futtassa `node index.js` a kódot a konzol ablakában.
+Futtassa a kódot `node index.js` a konzoljának ablakában.
 
 ### <a name="output"></a>Kimenet
 
@@ -418,9 +418,9 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
-#### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
+#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
 
-Hozzon létre egy karakterlánctömböt, amely az elemezni kívánt dokumentumot tartalmazza. Hívja meg az `extractKeyPhrases()` ügyfél metódusát, és kapja meg a visszaadott `ExtractKeyPhrasesResult` objektumot. Végighaladhat az eredményekközött, és kinyomtathatja az egyes dokumentumok azonosítóját és az észlelt kulcskifejezéseket.
+Az elemezni kívánt dokumentumot tartalmazó karakterláncok tömbjét hozza létre. Hívja meg `extractKeyPhrases()` az ügyfél metódusát, és szerezze `ExtractKeyPhrasesResult` be a visszaadott objektumot. Ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az észlelt legfontosabb kifejezéseket.
 
 ```javascript
 async function keyPhraseExtraction(client){
@@ -438,7 +438,7 @@ async function keyPhraseExtraction(client){
 keyPhraseExtraction(textAnalyticsClient);
 ```
 
-Futtassa `node index.js` a kódot a konzol ablakában.
+Futtassa a kódot `node index.js` a konzoljának ablakában.
 
 ### <a name="output"></a>Kimenet
 
@@ -447,13 +447,13 @@ ID: 0
         Document Key Phrases: cat,veterinarian
 ```
 
-#### <a name="version-21"></a>[2.1-es verzió](#tab/version-2)
+#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-A dokumentumokat tartalmazó objektumok listájának létrehozása. Hívja meg az ügyfél [keyPhrases() metódusát,](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) és vegye le a visszaadott [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult) objektumot. Végighaladhat az eredményekközött, és kinyomtathatja az egyes dokumentumok azonosítóját és az észlelt kulcskifejezéseket.
+Hozza létre a dokumentumokat tartalmazó objektumok listáját. Hívja meg az ügyfél [()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) metódusát, és kérje le a visszaadott [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult) objektumot. Ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az észlelt legfontosabb kifejezéseket.
 
 [!code-javascript[Key phrase extraction](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyPhraseExtraction)]
 
-Futtassa `node index.js` a kódot a konzol ablakában.
+Futtassa a kódot `node index.js` a konzoljának ablakában.
 
 ### <a name="output"></a>Kimenet
 
@@ -470,7 +470,7 @@ Futtassa `node index.js` a kódot a konzol ablakában.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az `node` alkalmazást a parancssegítségével a rövid útmutató fájlban.
+Futtassa az alkalmazást a gyors `node` üzembe helyezési fájlban található paranccsal.
 
 ```console
 node index.js

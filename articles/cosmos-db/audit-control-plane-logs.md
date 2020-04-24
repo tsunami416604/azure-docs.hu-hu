@@ -1,52 +1,63 @@
 ---
-title: Az Azure Cosmos DB vezérlőrepülőgép-műveleteinek naplózása
-description: Megtudhatja, hogyan naplózhatja a vezérlősík-műveleteket, például egy régió hozzáadása, frissítési átviteli, régiófeladat-átvétel, virtuális hálózat hozzáadása stb.
+title: Azure Cosmos DB vezérlési sík műveleteinek naplózása
+description: Megtudhatja, hogyan naplózhatja a vezérlési sík műveleteit, például egy régió hozzáadását, a frissítés sebességét, a régió feladatátvételét, a VNet stb. hozzáadását Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: sngun
-ms.openlocfilehash: 64ad8e6b1101d8486268c857b3a7752e1801f52c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 32dd598b8fc62c0ec68f86f95b02f9f3d98cedd2
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420285"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116298"
 ---
-# <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Az Azure Cosmos DB vezérlőrepülőgép-műveleteinek naplózása
+# <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB vezérlési sík műveleteinek naplózása
 
-A vezérlősík-műveletek közé tartozik az Azure Cosmos-fiók vagy -tároló módosításai. Például hozzon létre egy Azure Cosmos-fiókot, adjon hozzá egy régiót, frissítse az átviteli, régiófeladat-átvétel, adjunk hozzá egy virtuális hálózatot, stb néhány a vezérlősík-műveletek. Ez a cikk bemutatja, hogyan naplózhatja a vezérlősík-műveleteket az Azure Cosmos DB-ben.
+A Azure Cosmos DB vezérlő síkja egy REST-szolgáltatás, amely lehetővé teszi különféle műveletek végrehajtását az Azure Cosmos-fiókban. Egy nyilvános erőforrás-modellt (például adatbázis, fiók) és különböző műveleteket tesz közzé a végfelhasználók számára az erőforrás-modell műveleteinek elvégzéséhez. A vezérlési sík műveletei az Azure Cosmos-fiók vagy-tároló módosításait tartalmazzák. Például olyan műveletek, mint például az Azure Cosmos-fiók létrehozása, a régió hozzáadása, az átviteli sebesség frissítése, a régió feladatátvétele, VNet stb. a vezérlési sík egyes műveletei. Ez a cikk azt ismerteti, hogyan lehet naplózni a vezérlési sík műveleteit a Azure Cosmos DBban. Az Azure Cosmos-fiókokon futtathatja a vezérlési sík műveleteit az Azure CLI, a PowerShell vagy a Azure Portal, míg a tárolók esetében az Azure CLI vagy a PowerShell használatával.
 
-## <a name="disable-key-based-metadata-write-access"></a>Kulcsalapú metaadat-írási hozzáférés letiltása
- 
-Mielőtt naplózza a vezérlősík-műveleteket az Azure Cosmos DB-ben, tiltsa le a kulcsalapú metaadat-írási hozzáférést a fiókjában. Ha a kulcsalapú metaadat-írási hozzáférés le van tiltva, az Azure Cosmos-fiókhoz fiókkulcsokon keresztül csatlakozó ügyfelek nem férhetnek hozzá a fiókhoz. Az írási hozzáférést letilthatja, ha a `disableKeyBasedMetadataWriteAccess` tulajdonságot true értékre állítja. A tulajdonság beállítása után bármely erőforrás módosítása történhet a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel és hitelesítő adatokkal rendelkező felhasználótól. A tulajdonság beállításáról a Módosítások megakadályozása az [SDK-kból](role-based-access-control.md#preventing-changes-from-cosmos-sdk) című cikkben olvashat bővebben.
+A következő példák olyan forgatókönyveket mutatnak be, amelyekben a naplózási vezérlési sík műveletei hasznosak lehetnek:
 
- A metaadat-írási hozzáférés kikapcsolásakor vegye figyelembe a következő pontokat:
+* Riasztást szeretne kapni az Azure Cosmos-fiókhoz tartozó tűzfalszabályok módosításakor. A riasztásnak meg kell keresnie az Azure Cosmos-fiók hálózati biztonságát szabályozó szabályok jogosulatlan módosításait, és gyors műveletet kell végeznie.
 
-* Értékelje ki és győződjön meg arról, hogy az alkalmazások nem végeznek olyan metaadat-hívásokat, amelyek megváltoztatják a fenti erőforrásokat (például gyűjteményt, frissítési átviteli értéket hoznak létre,...) az SDK- vagy fiókkulcsok használatával.
+* Riasztást szeretne kapni, ha új régiót ad hozzá vagy távolít el az Azure Cosmos-fiókjából. A régiók hozzáadása vagy eltávolítása hatással van a számlázási és az adatszuverenitási követelményekre. Ez a riasztás segítséget nyújt a régió véletlen hozzáadásának vagy eltávolításának észleléséhez a fiókjában.
 
-* Jelenleg az Azure Portal fiókkulcsokat használ a metaadat-műveletekhez, és így ezek a műveletek blokkolva lesznek. Másik lehetőségként használja az Azure CLI, SDK vagy Resource Manager sablon központi telepítések ilyen műveletek végrehajtásához.
+* További részletekért tekintse meg a változásokkal kapcsolatos diagnosztikai naplókat. Például egy VNet módosult.
 
-## <a name="enable-diagnostic-logs-for-control-plane-operations"></a>Diagnosztikai naplók engedélyezése a vezérlősík műveleteihez
+## <a name="disable-key-based-metadata-write-access"></a>Kulcs alapú metaadatok írási hozzáférésének letiltása
 
-Az Azure Portal használatával engedélyezheti a vezérlősík-műveletek diagnosztikai naplóit. A vezérlősík-műveletek naplózásának engedélyezéséhez az alábbi lépésekkel engedélyezheti a naplózást:
+Mielőtt naplózza a vezérlési sík műveleteit a Azure Cosmos DBban, tiltsa le a kulcs alapú metaadatok írási hozzáférését a fiókjában. Ha a kulcs alapú metaadatok írási hozzáférése le van tiltva, a fiók kulcsain keresztül az Azure Cosmos-fiókhoz csatlakozó ügyfelek nem férnek hozzá a fiókhoz. A tulajdonság Igaz értékre állításával letilthatja az `disableKeyBasedMetadataWriteAccess` írási hozzáférést. A tulajdonság beállítása után bármely erőforrás módosítása a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel és a hitelesítő adatokkal rendelkező felhasználótól történhet. Ha többet szeretne megtudni ennek a tulajdonságnak a beállításáról, olvassa el az [SDK-k változásainak megakadályozása](role-based-access-control.md#preventing-changes-from-cosmos-sdk) című cikket. Miután letiltotta az írási hozzáférést, az SDK-alapú változások az átviteli sebességhez, az index továbbra is működni fog.
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és keresse meg az Azure Cosmos-fiókját.
+A metaadatok írási hozzáférésének kikapcsolásakor vegye figyelembe a következő szempontokat:
 
-1. Nyissa **meg** a Diagnosztikai beállítások ablaktáblát, és adja meg a létrehozandó naplók **nevét.**
+* Értékelje ki és győződjön meg arról, hogy az alkalmazások nem tesznek lehetővé olyan metaadat-hívásokat, amelyek a fenti erőforrásokat módosítják (például a gyűjtemény létrehozása, az átviteli sebesség, a...) az SDK-val vagy a fiók kulcsainak használatával.
 
-1. Válassza **a ControlPlaneRequests** parancsot a naplótípushoz, és válassza a **Küldés a loganalytics-nek** lehetőséget.
+* A Azure Portal jelenleg a metaadatokat használja, ezért ezek a műveletek le lesznek tiltva. Az ilyen műveletek végrehajtásához használhatja az Azure CLI, SDK-k vagy Resource Manager-sablonok központi telepítését is.
 
-A naplókat egy tárfiókban is tárolhatja, vagy egy eseményközpontba továbbíthatja. Ez a cikk bemutatja, hogyan küldhet naplókat a naplóelemzéshez, majd lekérdezheti őket. Miután engedélyezte, a diagnosztikai naplók érvénybe léptetése néhány percet vesz igénybe. Az ezt követően végrehajtott összes vezérlősík-művelet nyomon követhető. Az alábbi képernyőkép bemutatja, hogyan engedélyezhetvezérlő síknaplókat:
+## <a name="enable-diagnostic-logs-for-control-plane-operations"></a>Diagnosztikai naplók engedélyezése a vezérlési sík műveleteihez
 
-![Vezérlősík-kérelmek naplózásának engedélyezése](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+A Azure Portal használatával engedélyezheti a diagnosztikai naplókat a vezérlési sík műveleteihez. Az engedélyezést követően a diagnosztikai naplók rögzítik a műveletet az indítási és a teljes eseményekre vonatkozó részletekkel. A *RegionFailoverStart* és a *RegionFailoverComplete* például elvégzi a régió feladatátvételi eseményét.
 
-## <a name="view-the-control-plane-operations"></a>A vezérlősík műveleteinek megtekintése
+A következő lépésekkel engedélyezheti a naplózást a vezérlési sík műveleteinél:
 
-A naplózás bekapcsolása után az alábbi lépésekkel nyomon követheti egy adott fiók műveleteit:
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com) , és navigáljon az Azure Cosmos-fiókjához.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-1. Nyissa **meg** a Monitor lapot a bal oldali navigációs sávon, és válassza a **Naplók** ablaktáblát. Megnyit egy felhasználói felületet, ahol könnyedén futtathat lekérdezéseket az adott fiók hatókörében. Futtassa a következő lekérdezést a vezérlősík-naplók megtekintéséhez:
+1. Nyissa meg a **diagnosztikai beállítások** ablaktáblát, adja meg a létrehozandó naplók **nevét** .
+
+1. Válassza a **ControlPlaneRequests** lehetőséget, majd kattintson a **Küldés log Analytics** lehetőségre.
+
+A naplókat egy Storage-fiókban vagy egy Event hub-adatfolyamban is tárolhatja. Ez a cikk bemutatja, hogyan küldhet naplókat a log Analyticsnek, majd hogyan kérdezheti le őket. Az engedélyezést követően néhány percet vesz igénybe, amíg a diagnosztikai naplók érvénybe lépnek. Az ezen pont után végrehajtott összes vezérlő sík nyomon követhető. A következő képernyőképen a vezérlési sík naplófájljainak engedélyezése látható:
+
+![Vezérlési sík kérelmek naplózásának engedélyezése](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+
+## <a name="view-the-control-plane-operations"></a>A vezérlő síkja műveleteinek megtekintése
+
+A naplózás bekapcsolását követően kövesse az alábbi lépéseket egy adott fiók műveleteinek nyomon követéséhez:
+
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com).
+
+1. Nyissa meg a **figyelés** lapot a bal oldali navigációs sávon, majd válassza a **naplók** panelt. Megnyílik egy felhasználói felület, amelyben egyszerűen futtathat lekérdezéseket az adott fiókkal a hatókörben. Futtassa a következő lekérdezést a vezérlési sík naplófájljainak megtekintéséhez:
 
    ```kusto
    AzureDiagnostics
@@ -54,21 +65,94 @@ A naplózás bekapcsolása után az alábbi lépésekkel nyomon követheti egy a
    | where TimeGenerated >= ago(1h)
    ```
 
-A következő képernyőképek naplót rögzítnek, amikor egy virtuális hálózatot adnak hozzá egy Azure Cosmos-fiókhoz:
+A következő képernyőképek rögzítik a naplókat, amikor egy VNET hozzáadnak egy Azure Cosmos-fiókhoz:
 
-![Vezérlősík naplók, ha egy virtuális hálózat hozzáadása](./media/audit-control-plane-logs/add-ip-filter-logs.png)
+![Vezérlési sík naplói a VNet hozzáadásakor](./media/audit-control-plane-logs/add-ip-filter-logs.png)
 
-A következő képernyőképek rögzítik a naplókat, amikor egy Cassandra-tábla átviteli fazekadusa frissül:
+A következő képernyőképek rögzítik a Cassandra-tábla átviteli sebességét:
 
-![Vezérlősík naplók átviteli frissítéskor](./media/audit-control-plane-logs/throughput-update-logs.png)
+![Vezérlési sík naplói az átviteli sebesség frissítésekor](./media/audit-control-plane-logs/throughput-update-logs.png)
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Egy adott művelethez társított identitás azonosítása
 
-Ha további hibakeresést szeretne, azonosíthat egy adott műveletet a **tevékenységnaplóban** a Tevékenységazonosító vagy a művelet időbélyege segítségével. Az időbélyeg egyes Erőforrás-kezelő-ügyfelek nél használatos, ahol a tevékenységazonosító explicit módon nem halad át. A tevékenységnapló a művelet indításának identitásával kapcsolatos részleteket tartalmazza. Az alábbi képernyőkép bemutatja, hogyan használhatja a tevékenységazonosítót, és hogyan keresheti meg a tevékenységnaplóban a hozzá kapcsolódó műveleteket:
+Ha további hibakeresést szeretne végezni, akkor a tevékenység azonosítója vagy a művelet időbélyegzője segítségével azonosíthatja a **tevékenységek naplójában** megadott műveletet. Az időbélyeg olyan Resource Manager-ügyfelek esetében használatos, amelyekben a tevékenység azonosítója nem lett explicit módon átadva. A tevékenység naplója részletesen ismerteti a műveletet kezdeményező identitást. Az alábbi képernyőfelvételen a tevékenység-azonosító használata látható, és megkeresheti az ahhoz társított műveleteket a tevékenység naplójában:
 
-![Használja a tevékenységazonosítót, és keresse meg a műveleteket](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+![A tevékenység-azonosító használata és a műveletek megkeresése](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+
+## <a name="control-plane-operations-for-azure-cosmos-account"></a>Vezérlési sík műveletei az Azure Cosmos-fiókhoz
+
+Az alábbiakban a vezérlési sík a fiók szintjén elérhető műveletei láthatók. A műveletek többségét a fiók szintjén követjük nyomon. Ezek a műveletek metrikaként érhetők el az Azure monitorban:
+
+* Régió hozzáadva
+* Régió eltávolítva
+* Fiók törölve
+* A régió feladatátvétele megtörtént
+* Fiók létrehozva
+* Virtuális hálózat törölve
+* A fiók hálózati beállításai frissítve
+* A fiók replikációs beállításainak frissítése megtörtént
+* A fiók kulcsai frissítve
+* A fiók biztonsági mentési beállításai frissítve
+* Fiók diagnosztikai beállításainak frissítése
+
+## <a name="control-plane-operations-for-database-or-containers"></a>Az adatbázishoz vagy a tárolóhoz tartozó sík-műveletek vezérlése
+
+A vezérlési sík műveletei az adatbázis és a tároló szintjén érhetők el. Ezek a műveletek metrikaként érhetők el az Azure monitorban:
+
+* SQL Database frissítve
+* SQL-tároló frissítve
+* SQL Database átviteli sebesség frissítve
+* SQL-tároló átviteli sebessége frissítve
+* SQL Database törölve
+* SQL-tároló törölve
+* Cassandra Space frissítve
+* Cassandra-tábla frissítve
+* Cassandra Space-átviteli sebesség frissítve
+* Cassandra Table átviteli sebesség frissítve
+* Cassandra szóköz törölve
+* Cassandra-tábla törölve
+* Gremlin-adatbázis frissítve
+* Gremlin gráf frissítve
+* Gremlin adatbázis átviteli sebessége frissítve
+* Gremlin gráf átviteli sebessége frissítve
+* Gremlin-adatbázis törölve
+* Gremlin gráf törölve
+* Mongo-adatbázis frissítve
+* Mongo-gyűjtemény frissítve
+* Mongo adatbázis átviteli sebessége frissítve
+* A Mongo-gyűjtési átviteli sebesség frissítve
+* Mongo-adatbázis törölve
+* Mongo-gyűjtemény törölve
+* AzureTable tábla frissítve
+* AzureTable-tábla átviteli sebessége frissítve
+* AzureTable-tábla törölve
+
+## <a name="diagnostic-log-operations"></a>Diagnosztikai naplózási műveletek
+
+A következő műveletek nevei a különböző műveletekhez tartozó diagnosztikai naplókban találhatók:
+
+* RegionAddStart, RegionAddComplete
+* RegionRemoveStart, RegionRemoveComplete
+* AccountDeleteStart, AccountDeleteComplete
+* RegionFailoverStart, RegionFailoverComplete
+* AccountCreateStart, AccountCreateComplete
+* AccountUpdateStart, AccountUpdateComplete
+* VirtualNetworkDeleteStart, VirtualNetworkDeleteComplete
+* DiagnosticLogUpdateStart, DiagnosticLogUpdateComplete
+
+Az API-specifikus műveletek esetében a művelet a következő formátumban lesz elnevezve:
+
+* ApiKind + ApiKindResourceType + OperationType + indítás/Befejezés
+* ApiKind + ApiKindResourceType + "átviteli sebesség" + operationType + Kezdés/Befejezés
+
+**Például** 
+
+* CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
+* CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete
+
+A *ResourceDetails* tulajdonság a teljes erőforrás törzsét tartalmazza kérelem hasznos adataiként, és tartalmazza a frissítéshez kért összes tulajdonságot.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Cosmos DB Azure Monitorszolgáltatás felfedezése](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
-* [Az Azure Cosmos DB metrikák figyelése és hibakeresése](use-metrics.md)
+* [Azure Cosmos DB Azure Monitor megismerése](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
+* [A Azure Cosmos DB metrikáinak monitorozása és hibakeresése](use-metrics.md)

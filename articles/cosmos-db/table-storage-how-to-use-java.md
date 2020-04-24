@@ -1,5 +1,5 @@
 ---
-title: Az Azure Table storage vagy az Azure Cosmos DB Table API használata Java-ból
+title: Az Azure Table Storage vagy a Java Azure Cosmos DB Table API használata
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -215,7 +215,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
-Egyetlen írási művelettel egy teljes entitásköteget is beszúrhat a Table Service-be. Az alábbi kód egy **TableBatchOperation** objektumot hoz létre, majd hozzáad három beszúrási műveletet. Minden beszúrási művelet egy új entitásobjektum létrehozásával, értékeinek beállításával, majd a **TableBatchOperation** objektum **beszúrási** metódusának meghívásával adja hozzá az entitást egy új beszúrási művelethez. Ezután a kód meghívja az **execute** metódust a **CloudTable** objektumra vonatkozóan a „people” tábla és a **TableBatchOperation** objektum megadásával, az pedig egyetlen kérésben küldi el a kötegelt táblaműveleteket a tárolási szolgáltatásnak.
+Egyetlen írási művelettel egy teljes entitásköteget is beszúrhat a Table Service-be. Az alábbi kód egy **TableBatchOperation** objektumot hoz létre, majd hozzáad három beszúrási műveletet. Az egyes beszúrási műveletek új entitás-objektum létrehozásával, az értékek beállításával, majd a **tablebatchoperation művelethez** objektum **Insert** metódusának meghívásával társíthatók az entitáshoz egy új beszúrási művelettel. Ezután a kód meghívja az **execute** metódust a **CloudTable** objektumra vonatkozóan a „people” tábla és a **TableBatchOperation** objektum megadásával, az pedig egyetlen kérésben küldi el a kötegelt táblaműveleteket a tárolási szolgáltatásnak.
 
 ```java
 try
@@ -454,7 +454,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
-Egy táblalekérdezéssel egy entitásnak csak bizonyos tulajdonságait is lekérdezheti. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés a **select** metódust használja a táblában található entitások e-mail-címének lekérdezéséhez. Az eredményeket a rendszer egy **EntityResolver** objektum segítségével egy **sztring** gyűjteménybe képezi le, amely a típuskonverziót a kiszolgálótól érkező entitásokon hajtja végre. A kivetítésről további tudnivalókat az [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection] című részben olvashat bővebben. A helyi Storage Emulator nem támogatja a leképezést, így a kód csak a Table Service-fiók használatával működik.
+Egy táblalekérdezéssel egy entitásnak csak bizonyos tulajdonságait is lekérdezheti. Ez a leképezésnek hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Az alábbi kódban szereplő lekérdezés a **select** metódust használja a táblában található entitások e-mail-címének lekérdezéséhez. Az eredményeket a rendszer egy **EntityResolver** objektum segítségével egy **sztring** gyűjteménybe képezi le, amely a típuskonverziót a kiszolgálótól érkező entitásokon hajtja végre. A kivetítésről az [Azure Tables: a Upsert és a Query vetítés bemutatása] [Azure Tables: Bemutatkozik a Upsert és a Query vetülete] című témakörben olvashat bővebben. A helyi Storage Emulator nem támogatja a leképezést, így a kód csak a Table Service-fiók használatával működik.
 
 ```java
 try
@@ -496,7 +496,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Entitás beszúrása vagy cseréje
-Gyakran előfordulhat, hogy egy entitást anélkül szeretne hozzáadni egy táblához, hogy tudná, az létezik-e már a táblában. A beszúrás-vagy-csere művelettel egyetlen kéréssel elvégezheti mindezt, amely beszúrja az entitást, ha az nem létezik, és lecseréli a meglévőt, ha már létezik. A korábbi példák alapján az alábbi kód beszúrja vagy lecseréli „Walter Harp” entitását. Az új entitás létrehozását követően ez a kód meghívja a **TableOperation.insertOrReplace** metódust. Ez a kód meghívja az **execute** metódust a **CloudTable** objektumra vonatkozóan, amelynek paraméterei a tábla és a beszúrás-vagy-csere táblaművelet lesznek. Ha egy entitásnak csak egy részét szeretné frissíteni, használhatja ehelyett a **TableOperation.insertOrMerge** metódust. A helyi Storage Emulator nem támogatja a beszúrás-vagy-csere műveletet, így a kód csak a Table Service-fiók használatával működik. Ebben az [Azure-táblák: Upsert és Query Projection][Azure-táblák: Upsert és Query Projection] bemutatkozása című dokumentumban további információ: A beszúrási vagy csere- és a beszúrási vagy egyesítési lehetőségekről.
+Gyakran előfordulhat, hogy egy entitást anélkül szeretne hozzáadni egy táblához, hogy tudná, az létezik-e már a táblában. A beszúrás-vagy-csere művelettel egyetlen kéréssel elvégezheti mindezt, amely beszúrja az entitást, ha az nem létezik, és lecseréli a meglévőt, ha már létezik. A korábbi példák alapján az alábbi kód beszúrja vagy lecseréli „Walter Harp” entitását. Az új entitás létrehozását követően ez a kód meghívja a **TableOperation.insertOrReplace** metódust. Ez a kód meghívja az **execute** metódust a **CloudTable** objektumra vonatkozóan, amelynek paraméterei a tábla és a beszúrás-vagy-csere táblaművelet lesznek. Ha egy entitásnak csak egy részét szeretné frissíteni, használhatja ehelyett a **TableOperation.insertOrMerge** metódust. A helyi Storage Emulator nem támogatja a beszúrás-vagy-csere műveletet, így a kód csak a Table Service-fiók használatával működik. Ebben az [Azure-táblázatokban: a Upsert és a lekérdezés-kivetítés bemutatása] [Azure Tables: Bemutatkozik a Upsert és a Query vetülete] című témakörben olvashat bővebben.
 
 ```java
 try
@@ -594,10 +594,10 @@ catch (Exception e)
 
 * [Bevezetés az Azure Table Service használatába Javában](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
-* [Azure Storage SDK Java-hoz][Azure Storage SDK for Java]
+* [Javához készült Azure Storage SDK][Azure Storage SDK for Java]
 * [Azure Storage ügyféloldali SDK-referencia][Azure Storage Client SDK Reference]
 * [Azure Storage REST API][Azure Storage REST API]
-* [Az Azure Storage Team blogja] [Az Azure Storage Team blogja]
+* [Azure Storage-csapat blogja] [Azure Storage-csapat blogja]
 
 További információ: [Azure Java-fejlesztőknek](/java/azure).
 

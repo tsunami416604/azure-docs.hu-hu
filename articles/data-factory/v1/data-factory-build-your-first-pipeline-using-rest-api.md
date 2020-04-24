@@ -1,5 +1,5 @@
 ---
-title: Az első adatgyár (REST) létrehozása
+title: Az első adatgyár létrehozása (REST)
 description: Az oktatóanyag során egy minta Azure Data Factory-adatcsatornát fogunk létrehozni a Data Factory REST API-val.
 services: data-factory
 documentationcenter: ''
@@ -21,8 +21,8 @@ ms.locfileid: "75438961"
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Oktatóanyag: Az első data factory létrehozása a Data Factory REST API használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
-> * [Vizuális stúdió](data-factory-build-your-first-pipeline-using-vs.md)
-> * [Powershell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 >
@@ -51,14 +51,14 @@ A jelen oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: e
 * Az [ebben a cikkben](../../active-directory/develop/howto-create-service-principal-portal.md) szereplő utasításokat követve végezze el a következőket:
   1. Hozzon létre egy **ADFGetStartedApp** nevű webalkalmazást az Azure Active Directoryban.
   2. Szerezze be az **ügyfél-azonosítót** és a **titkos kulcsot**.
-  3. Bérlőazonosító **beszerzése**.
+  3. **Bérlő azonosítójának**beolvasása.
   4. Rendelje az **ADFGetStartedApp** alkalmazáshoz a **Data Factory közreműködője** szerepkört.
-* Telepítse [az Azure PowerShellt.](/powershell/azure/overview)
+* Telepítse a [Azure PowerShell](/powershell/azure/overview).
 * Indítsa el a **PowerShellt**, és futtassa az alábbi parancsot. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
-  1. Futtassa **a Connect-AzAccount szolgáltatást,** és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
-  2. A **Get-AzSubscription** futtatásával megtekintheti a fiók összes előfizetését.
-  3. A **Get-AzSubscription -SubscriptionNameNameOfAzureSubscription futtatása | Set-AzContext** kiválasztásához az előfizetést, amely szeretne dolgozni. A **NameOfAzureSubscription** helyére írja be Azure-előfizetése nevét.
-* Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot a Következő parancs futtatásával a PowerShellben:
+  1. Futtassa a **AzAccount** , és írja be a Azure Portalba való bejelentkezéshez használt felhasználónevet és jelszót.
+  2. A **Get-AzSubscription** futtatásával megtekintheti a fiókhoz tartozó összes előfizetést.
+  3. A **Get-AzSubscription-SubscriptionName NameOfAzureSubscription futtatása | A set-AzContext** elem kiválasztásával válassza ki a használni kívánt előfizetést. A **NameOfAzureSubscription** helyére írja be Azure-előfizetése nevét.
+* Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot a következő parancs futtatásával a PowerShellben:
 
     ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
@@ -84,7 +84,7 @@ Hozza létre a következő JSON-fájlokat abban a mappában, ahol a curl.exe is 
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> Az **accountname** és az **accountkey** kifejezés helyére írja be Azure Storage-tárfiókja nevére, illetve kulcsát. A tárfiók hozzáférési kulcsának [kezelése( Tárfiók-hozzáférési kulcsok kezelése)](../../storage/common/storage-account-keys-manage.md)témakörből megtudhatja, hogy miként szerezheti be a tárfiók hozzáférési kulcsait.
+> Az **accountname** és az **accountkey** kifejezés helyére írja be Azure Storage-tárfiókja nevére, illetve kulcsát. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
 >
 >
 
@@ -129,10 +129,10 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 Vegye figyelembe a következő szempontokat:
 
 * A Data Factory létrehoz egy **Linux-alapú** HDInsight-fürtöt a fenti JSON-fájllal. További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás).
-* Igény szerinti HDInsight-fürt használata helyett **használhatja a saját HDInsight-fürtöt.** További információ: [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (HDInsight társított szolgáltatás).
+* Igény szerinti HDInsight-fürt használata helyett **saját HDInsight-fürtöt** is használhat. További információ: [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (HDInsight társított szolgáltatás).
 * A HDInsight-fürt létrehoz egy **alapértelmezett tárolót** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez a működésmód szándékos. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer a szeletek feldolgozásakor mindig létrehoz egy HDInsight-fürtöt, kivéve, ha van meglévő élő fürt (**timeToLive**). Ha befejeződött a feldolgozás, a rendszer törli a fürtöt.
 
-    Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg az Azure Blob Storage-fiókban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. Ezeknek a tárolóknak a nevei a következő mintát követik: "adf**yourdatafactoryname**-**linkedservicename**-datetimestamp". Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](https://storageexplorer.com/).
+    Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg az Azure Blob Storage-fiókban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: "ADF**yourdatafactoryname**-**linkedservicename**-datetimestamp". Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](https://storageexplorer.com/).
 
 További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás).
 
@@ -458,7 +458,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 ```
 
 > [!IMPORTANT]
-> Az igény szerinti HDInsight-fürt létrehozása általában eltart egy ideig (körülbelül 20 percig). Ezért várható, hogy a folyamat **körülbelül 30 percet** vesz igénybe a szelet feldolgozásához.
+> Az igény szerinti HDInsight-fürt létrehozása általában eltart egy ideig (körülbelül 20 percig). Ezért várhatóan **körülbelül 30 percet** vesz igénybe a folyamat a szelet feldolgozásához.
 >
 >
 

@@ -1,6 +1,6 @@
 ---
-title: Áttekintés – Adatok lekérdezése a tárolóban az SQL igény szerinti használatával (előzetes verzió)
-description: Ez a szakasz mintalekérdezéseket tartalmaz, amelyek segítségével kipróbálhatja az SQL igény szerinti (előzetes verzió) erőforrást az Azure Synapse Analytics-en belül.
+title: Áttekintés – adatlekérdezés a Storage-ban az SQL on-demand használatával (előzetes verzió)
+description: Ez a szakasz azokat a lekérdezéseket tartalmazza, amelyekkel kipróbálhatja az Azure-beli SQL on-demand (előzetes verzió) erőforrást az Azure szinapszis Analyticsen belül.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,52 +9,52 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cdad95b1a910a45629e85bcc716218b272afd9de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424901"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116247"
 ---
-# <a name="overview-query-data-in-storage"></a>Áttekintés: Lekérdezési adatok a tárolóban
+# <a name="overview-query-data-in-storage"></a>Áttekintés: adatlekérdezés a Storage szolgáltatásban
 
-Ez a szakasz mintalekérdezéseket tartalmaz, amelyek segítségével kipróbálhatja az SQL igény szerinti (előzetes verzió) erőforrást az Azure Synapse Analytics-en belül.
-Jelenleg támogatott fájlok a következők: 
+Ez a szakasz azokat a lekérdezéseket tartalmazza, amelyekkel kipróbálhatja az Azure-beli SQL on-demand (előzetes verzió) erőforrást az Azure szinapszis Analyticsen belül.
+A jelenleg támogatott fájlok a következők: 
 - CSV
-- Parketta
+- Parquet
 - JSON
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A lekérdezések kiadásához szükséges eszközök:
+A lekérdezések kibocsátásához szükséges eszközök:
 
-- SQL kliens az Ön által választott:
-    - Azure Synapse Studio (előzetes verzió)
+- Tetszőleges SQL-ügyfél:
+    - Azure szinapszis Studio (előzetes verzió)
     - Azure Data Studio
     - SQL Server Management Studio
 
-Ezenkívül a paraméterek a következők:
+Emellett a paraméterek a következők:
 
 | Paraméter                                 | Leírás                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL igény szerinti szolgáltatás végpontcíme    | A rendszer a kiszolgáló neveként fogja használni.                                   |
-| SQL igény szerinti szolgáltatásvégpont-régió     | A mintákban használt tároló meghatározásához lesz használva. |
-| Felhasználónév és jelszó a végpontokhoz való hozzáféréshez | A végpont eléréséhez lesz használva.                               |
-| A nézetek létrehozásához használt adatbázis     | Ez az adatbázis lesz a minták kiindulópontja.       |
+| Igény szerinti SQL-szolgáltatás végpontjának címe    | A kiszolgáló neveként lesz használva.                                   |
+| Igény szerinti SQL-szolgáltatás végpontjának régiója     | A rendszer a mintákban használt tárterület meghatározására szolgál. |
+| A végpontok hozzáférésének felhasználóneve és jelszava | A végpont eléréséhez lesz használva.                               |
+| A nézetek létrehozásához használni kívánt adatbázis     | Ezt az adatbázist a rendszer kiindulási pontként fogja használni a mintákhoz.       |
 
 ## <a name="first-time-setup"></a>Első beállítás
 
-A cikk későbbi részében ismertetett minták használata előtt két lépésből áll:
+A jelen cikk későbbi részében szereplő minták használata előtt két lépésből áll:
 
-- Adatbázis létrehozása a nézetekhez (ha nézeteket szeretne használni)
-- Az SQL igény szerinti hitelesítő adatainak létrehozása a tárolóban lévő fájlok eléréséhez
+- Hozzon létre egy adatbázist a nézetekhez (ha a nézeteket szeretné használni)
+- A tárolóban lévő fájlok eléréséhez igény szerint az SQL igény szerint használandó hitelesítő adatok létrehozása
 
 ### <a name="create-database"></a>Adatbázis létrehozása
 
-A nézetek létrehozásához adatbázisra van szükség. Ezt az adatbázist fogja használni a dokumentációban szereplő egyes mintalekérdezésekhez.
+A nézetek létrehozásához adatbázisra van szükség. Ezt az adatbázist fogja használni a dokumentációban szereplő példák némelyikére.
 
 > [!NOTE]
-> Az adatbázisok csak metaadatok megtekintésére szolgálnak, a tényleges adatokra nem.  Írja le a használt adatbázisnevet, később szüksége lesz rá.
+> Az adatbázisokat csak a metaadatok megtekintésére használják, nem a tényleges adatokhoz.  Jegyezze fel a használni kívánt adatbázis nevét, később szüksége lesz rá.
 
 ```sql
 CREATE DATABASE mydbname;
@@ -62,21 +62,18 @@ CREATE DATABASE mydbname;
 
 ### <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
-A lekérdezések futtatása előtt létre kell hoznia a hitelesítő adatokat. Ezt a hitelesítő adatot az SQL igény szerinti szolgáltatás fogja használni a tárolóban lévő fájlok eléréséhez.
+A lekérdezések futtatása előtt létre kell hoznia a hitelesítő adatokat. Ezt a hitelesítő adatot az SQL igény szerinti szolgáltatása fogja használni a tárolóban lévő fájlok eléréséhez.
 
 > [!NOTE]
-> A Hogyan kell ebben a szakaszban sikeresen futtatni a Hogyan kell használni a SAS-jogkivonatot.
+> Az ebben a szakaszban található útmutató sikeres futtatásához az SAS-tokent kell használnia.
 >
-> A SAS-tokenek használatának megkezdéséhez el kell dobnia a UserIdentity azonosítót, amelyet a következő [cikk ismertet.](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)
+> Az SAS-tokenek használatának megkezdéséhez el kell dobnia a UserIdentity, amelyet az alábbi [cikkben](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)ismertetünk.
 >
-> Az IGÉNY szerinti SQL alapértelmezés szerint mindig AAD-átmenő értéket használ.
+> Alapértelmezés szerint az SQL igény szerinti használata mindig a HRE-továbbítást használja.
 
-A tárolóhozzáférés-vezérlés kezelésével kapcsolatos további információkért tekintse meg ezt a [hivatkozást.](develop-storage-files-storage-access-control.md)
+A tárterület-hozzáférés-vezérlés kezelésével kapcsolatos további információkért olvassa el ezt a [hivatkozást](develop-storage-files-storage-access-control.md).
 
-> [!WARNING]
-> Létre kell hoznia egy hitelesítő adatokat egy tárfiók, amely a végpontrégióban található. Bár az SQL igény szerinti hozzáférés különböző régiókból származó tárolókhoz, az ugyanabban a régióban található tárolás és végpont jobb teljesítményélményt nyújt.
-
-A CSV-, JSON- és Parkettatárolók hitelesítő adatainak létrehozásához futtassa az alábbi kódot:
+A CSV-, JSON-és parketta-tárolók hitelesítő adatainak létrehozásához futtassa az alábbi kódot:
 
 ```sql
 -- create credentials for CSV container in our demo storage account
@@ -110,37 +107,37 @@ SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-
 GO
 ```
 
-## <a name="provided-demo-data"></a>Megadott bemutató adatok
+## <a name="provided-demo-data"></a>Megadott bemutatói információk
 
-A bemutató adatok a következő adatkészleteket tartalmazzák:
+A demo-adat a következő adatkészleteket tartalmazza:
 
-- NYC Taxi - Yellow Taxi Trip Records - része a nyilvános NYC adatkészlet
-  - CSV formátum
+- New York-i taxi – Yellow taxi Trip Records – a Public NYC adathalmazának része
+  - CSV-formátum
   - Parquet formátum
-- Népesség-adatkészlet
-  - CSV formátum
-- Minta parkettafájlok beágyazott oszlopokkal
+- Populációs adatkészlet
+  - CSV-formátum
+- Parketta-fájlok beágyazott oszlopokkal
   - Parquet formátum
 - Könyvek JSON
   - JSON formátum
 
 | Mappa elérési útja                                                  | Leírás                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| /csv/                                                        | Szülőmappa CSV formátumú adatokhoz                         |
-| /csv/populáció/<br />/csv/population-unix/<br />/csv/populáció-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-idézett | Különböző CSV-formátumú Population adatfájlokkal rendelkező mappák. |
-| /csv/taxi/                                                   | Mappa NYC nyilvános adatfájlok CSV formátumban              |
-| /parketta/                                                    | Szülőmappa a Parketta formátumú adatokhoz                     |
-| /parketta/taxi                                                | NYC nyilvános adatfájlok Parketta formátumban, particionált év, és hónap segítségével Hive / Hadoop particionálási séma. |
-| /parketta/beágyazott/                                             | Minta parkettafájlok beágyazott oszlopokkal                     |
-| /json/                                                       | Szülőmappa JSON formátumú adatokhoz                        |
-| /json/könyvek/                                                 | JSON fájlok könyvadatokkal                                   |
+| CSV                                                        | CSV formátumú adatszülő mappa                         |
+| /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Különböző CSV formátumú adatfájlokkal rendelkező mappák. |
+| /csv/taxi/                                                   | A New York-i nyilvános adatfájlok mappája CSV formátumban              |
+| Parquet                                                    | Az adatszülő mappa a parketta formátumban                     |
+| /parquet/taxi                                                | A New York-i nyilvános adatfájlok parkettás formátumban, évről évre, a kaptár/Hadoop particionálási sémával particionálva. |
+| /parquet/nested/                                             | Parketta-fájlok beágyazott oszlopokkal                     |
+| JSON                                                       | JSON formátumú adatszülő mappa                        |
+| /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
 ## <a name="validation"></a>Ellenőrzés
 
-Hajtsa végre a következő három lekérdezést, és ellenőrizze, hogy a hitelesítő adatok megfelelően vannak-e létrehozva.
+Hajtsa végre a következő három lekérdezést, és ellenőrizze, hogy a hitelesítő adatok megfelelően lettek-e létrehozva.
 
 > [!NOTE]
-> A mintalekérdezésekben szereplő összes URI-t az Észak-európai Azure-régióban található tárfiókot használ. Győződjön meg arról, hogy létrehozta a megfelelő hitelesítő adatokat. Futtassa az alábbi lekérdezést, és győződjön meg arról, hogy a tárfiók szerepel a listában.
+> A mintavételi lekérdezések összes URI-je az észak-európai Azure-régióban található Storage-fiókot használja. Győződjön meg arról, hogy a megfelelő hitelesítő adatokat hozta létre. Futtassa az alábbi lekérdezést, és győződjön meg arról, hogy a Storage-fiók szerepel a listában.
 
 ```sql
 SELECT name
@@ -151,11 +148,11 @@ WHERE
      'https://sqlondemandstorage.blob.core.windows.net/json');
 ```
 
-Ha nem találja a megfelelő hitelesítő adatokat, ellenőrizze [az első beállítás i.](#first-time-setup)
+Ha nem találja a megfelelő hitelesítő adatokat, tekintse meg az [első alkalommal történő telepítést](#first-time-setup).
 
 ### <a name="sample-query"></a>Mintalekérdezés
 
-Az ellenőrzés utolsó lépése a következő lekérdezés végrehajtása:
+Az érvényesítés utolsó lépése a következő lekérdezés végrehajtása:
 
 ```sql
 SELECT
@@ -167,11 +164,11 @@ FROM
     ) AS nyc;
 ```
 
-A fenti lekérdezésnek ezt a számot kell visszaadnia: **8945574**.
+A fenti lekérdezésnek a következő számot kell visszaadnia: **8945574**.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már készen áll a következő Cikkek folytatására:
+Most már készen áll a folytatásra a következő cikkekkel:
 
 - [Egyetlen CSV-fájl lekérdezése](query-single-csv-file.md)
 
@@ -181,7 +178,7 @@ Most már készen áll a következő Cikkek folytatására:
 
 - [Parquet-fájlok lekérdezése](query-parquet-files.md)
 
-- [Parketta beágyazott típusai lekérdezése](query-parquet-nested-types.md)
+- [A Parquet beágyazott típusainak lekérdezése](query-parquet-nested-types.md)
 
 - [JSON-fájlok lekérdezése](query-json-files.md)
 

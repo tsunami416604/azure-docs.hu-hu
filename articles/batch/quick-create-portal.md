@@ -1,20 +1,15 @@
 ---
 title: Azure rövid útmutató – Batch-feladat futtatása – portál
-description: Megtudhatja, hogyan hozhat létre az Azure Portalon egy Batch-fiókot, egy számítási csomópontokkészletet és egy olyan feladatot, amely alapvető feladatokat futtat a készleten.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
+description: Megtudhatja, hogyan hozhat létre egy batch-fiókot, egy számítási csomópontok készletét és egy olyan feladatot, amely alapszintű feladatokat futtat a készleten a Azure Portal használatával.
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4857b9ffb38cf48678f793284afaaf3bbefb7e42
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240435"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114139"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure Portalon
 
@@ -24,14 +19,14 @@ Ez a rövid útmutató ismerteti, hogyan lehet létrehozni az Azure Portalon Bat
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-a-batch-account"></a>Batch-fiók létrehozása
 
 Kövesse az alábbi lépéseket egy minta Batch-fiók tesztelési céllal történő létrehozásához. Készletek és feladatok létrehozásához Batch-fiók szükséges. Ahogyan az az alábbi ábrán is látható, a Batch-fiók összekapcsolható egy Azure Storage-fiókkal. Bár a rövid útmutatóhoz nem kötelező, a Storage-fiók hasznos az alkalmazások üzembe helyezéséhez, valamint a legtöbb valós számítási feladat be- és kimeneti adatainak tárolásához.
 
 
-1. Válassza **az Erőforrás** > **számítási** > kötegszolgáltatás létrehozása**lehetőséget.** 
+1. Válassza **az erőforrás** > **létrehozása számítási** > **Batch szolgáltatás**elemet. 
 
    ![Batch a Piactéren][marketplace_portal]
 
@@ -50,7 +45,7 @@ Amikor megjelenik az **Üzembe helyezés sikeres** üzenet, lépjen a Batch-fió
 Most, hogy már rendelkezik Batch-fiókkal, hozzon létre egy windowsos számítási csomópontokból álló mintakészletet tesztelési célra. A jelen rövid példában a készlet 2 csomópontból áll, amelyek Windows Server 2012 R2-rendszerképet futtatnak az Azure Marketplace-ről.
 
 
-1. A Kötegelt fiókban válassza **a Hozzáadási készletek** > **lehetőséget.**
+1. A Batch-fiókban válassza a **készletek** > **Hozzáadás**lehetőséget.
 
 2. Adja meg a következő **készletazonosítót**: *mypool*. 
 
@@ -61,7 +56,7 @@ Most, hogy már rendelkezik Batch-fiókkal, hozzon létre egy windowsos számít
    |**Rendszerkép típusa**|Marketplace (Linux/Windows)|
    |**Publisher**     |MicrosoftWindowsServer|
    |**Ajánlat**     |WindowsServer|
-   |**Sku**     |2012-R2-Datacenter-smalldisk|
+   |**SKU**     |2012-R2-Datacenter-smalldisk|
 
    ![Készlet operációs rendszerének kiválasztása][pool_os] 
 
@@ -86,7 +81,7 @@ Néhány perc elteltével a készlet állapota **Stabil** értékre változik, �
 
 Most, hogy már rendelkezik készlettel, hozzon létre egy feladatot, amelyet azon futtat. A Batch-feladat egy vagy több tevékenység logikai csoportja. Egy Batch-feladat magában foglalja a tevékenységek közös beállításait, mint a prioritást, illetve a készletet, amelyeken a tevékenységeket futtatni szeretné. A feladat kezdetben nem tartalmaz tevékenységeket. 
 
-1. A Batch-fiók nézetben válassza a **Feladatok** > **hozzáadása lehetőséget.** 
+1. A Batch-fiók nézetben válassza a **feladatok** > **Hozzáadás**lehetőséget. 
 
 2. Adja meg a következő **feladatazonosítót**: *myjob*. A **Készlet** mezőben válassza a *mypool* lehetőséget. Tartsa meg az alapértelmezett értékeket a többi beállításnál, és válassza az **OK** lehetőséget.
 

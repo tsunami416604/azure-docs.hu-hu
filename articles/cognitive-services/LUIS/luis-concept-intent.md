@@ -1,7 +1,7 @@
 ---
-title: Szándékok és entitások - LUIS
+title: Szándékok és entitások – LUIS
 titleSuffix: Azure Cognitive Services
-description: Egyetlen szándék egy olyan feladatot vagy műveletet jelöl, amelyet a felhasználó végre kíván hajtani. A felhasználó beszédeleme mögött rejlő célt vagy kívánságot jelölik. Határozza meg a szándékok, amelyek megfelelnek a felhasználók által az alkalmazásban elkívánt műveleteket.
+description: Egyetlen szándék a felhasználó által végrehajtani kívánt feladatot vagy műveletet jelöli. A felhasználó beszédeleme mögött rejlő célt vagy kívánságot jelölik. Adjon meg olyan leképezéseket, amelyek megfelelnek a felhasználók által az alkalmazásban használni kívánt műveleteknek.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,97 +11,97 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2e4f91dbc03853d6f1a5240f693ea8ff510e8c4
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220973"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101076"
 ---
-# <a name="intents-in-your-luis-app"></a>Szándékok a LUIS alkalmazásban
+# <a name="intents-in-your-luis-app"></a>Szándékok a LUIS-alkalmazásban
 
-A szándék egy olyan feladatot vagy műveletet jelöl, amelyet a felhasználó végre kíván hajtani. Ez a cél vagy cél kifejezve a felhasználó [utterance (kifejezés).](luis-concept-utterance.md)
+A szándék azt a feladatot vagy műveletet jelöli, amelyet a felhasználó végre szeretne hajtani. Ez a felhasználó [teljes](luis-concept-utterance.md)kifejezésében kifejezett cél vagy cél.
 
-Határozza meg a szándékok, amelyek megfelelnek a felhasználók által az alkalmazásban elkívánt műveleteket. Egy utazási alkalmazás például több leképezést határoz meg:
+Adjon meg olyan leképezéseket, amelyek megfelelnek a felhasználók által az alkalmazásban használni kívánt műveleteknek. Egy utazási alkalmazás például több leképezést is definiál:
 
-Utazási alkalmazás leképezései   |   Példák kimondott szövegekre   | 
+Utazási alkalmazások leképezése   |   Példák kimondott szövegekre   |
 ------|------|
- RepülőjegyFoglalás     |   "Foglaljon nekem egy repülőjegyet Rióba a jövő héten" <br/> "Repülj Rióra 24-én" <br/> "Szükségem van egy repülőjegyre jövő vasárnap Rio de Janeiróba."    |
- Üdvözlés     |   "Sziasztok" <br/>"Helló" <br/>"Jó reggelt"  |
- CheckWeather (Időjárás) | "Milyen az idő Bostonban?" <br/> "Mutasd meg a hétvégére vonatkozó előrejelzést" |
- None         | "Szerezz egy süti receptet"<br>"A Lakers nyert?" |
+ RepülőjegyFoglalás     |   "Könyv készítése a Rio-ra a jövő héten" <br/> "Fly to Rio on 24" <br/> "A következő vasárnapra van szükségem a Rio de Janeiroban"    |
+ Üdvözlés     |   Szia <br/>Hello <br/>"Jó reggel"  |
+ CheckWeather | "Mi az időjárás, mint a Boston?" <br/> "A hétvégi előrejelzés megjelenítése" |
+ None         | "Cookie-recept beszerzése"<br>"A Lakers nyerte?" |
 
-Minden alkalmazás előre definiált szándékkal érkezik, "[Nincs](#none-intent)", amely a tartalék szándék. 
+Minden alkalmazás a "[nincs](#none-intent)" előre definiált szándékkal, azaz a tartalék szándékkal van ellátva.
 
-## <a name="prebuilt-domains-provide-intents"></a>Az előre összeállított tartományok leképezéseket biztosítanak
-A megadott szándékokon kívül előre összeállított leképezéseket is használhat az [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md)egyikéből. 
+## <a name="prebuilt-domains-provide-intents"></a>Az előre elkészített tartományok biztosítanak leképezéseket
+A definiált szándékon kívül az előre [elkészített tartományok](luis-how-to-use-prebuilt-domains.md)egyikének előre összekészített leképezéseit is használhatja.
 
-## <a name="return-all-intents-scores"></a>Az összes szándék pontszámának visszaadása
-Egy utterance (kifejezés) egyetlen szándékhoz rendeli hozzá. Amikor a LUIS kap egy utterance (kifejezés) a végponton, alapértelmezés szerint, az adott utterance (kifejezés) felső szándékát adja vissza. 
+## <a name="return-all-intents-scores"></a>Az összes leképezési pontszám visszaküldése
+A teljes hozzárendelést egyetlen szándékhoz rendeli. Ha a LUIS a végpontra vonatkozó kiírást kap, alapértelmezés szerint a rendszer visszaadja az adott kifejezéshez legfelső szándékot.
 
-Ha azt szeretné, hogy a pontszámok az utterance (kifejezés) összes leképezések, megadhat egy jelzőt a lekérdezési karakterlánc az előrejelzési API-t. 
+Ha azt szeretné, hogy a pontszámok a teljes értékre legyenek kiválasztva, megadhat egy jelzőt az előrejelzési API lekérdezési karakterláncában.
 
-|Előrejelzési API-verzió|Jelző|
+|Előrejelzési API verziója|Jelző|
 |--|--|
 |2. verzió|`verbose=true`|
 |V3|`show-all-intents=true`|
 
-## <a name="intent-compared-to-entity"></a>Szándék az entitáshoz képest
-A szándék az alkalmazás által a felhasználó számára végrehajtott műveletet jelöli, és a teljes utterance (kifejezés) alapján. Egy utterance (kifejezés) csak egy felső pontozási szándékkal rendelkezhet, de sok entitást rendelkezhet. 
+## <a name="intent-compared-to-entity"></a>Az entitáshoz viszonyított szándék
+A szándék azt a műveletet jelöli, amelyet az alkalmazásnak el kell végeznie a felhasználó számára, és a teljes Kimondás alapján kell megjelennie. A Kimondás csak egyetlen Top pontozási szándékkal rendelkezhet, de számos entitást tartalmazhat.
 
 <a name="how-do-intents-relate-to-entities"></a>
 
-Hozzon létre egy szándékot, ha a felhasználó _szándéka_ egy műveletet indít el az ügyfélalkalmazásban, például a checkweather() függvény hívását. Ezután hozzon létre entitásokat a művelet végrehajtásához szükséges paraméterek ábrázolására. 
+Hozzon létre egy szándékot, ha a felhasználó _szándéka_ egy műveletet indít el az ügyfélalkalmazás, például a checkweather () függvény hívása. Ezután hozzon létre entitásokat a művelet végrehajtásához szükséges paraméterek ábrázolásához.
 
-|Szándék   | Entitás | Példa kimondott szöveg   | 
+|Szándék   | Entitás | Példa kimondott szöveg   |
 |------------------|------------------------------|------------------------------|
-| CheckWeather (Időjárás) | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.dateTimeV2.date","entity": "holnap","felbontás":"2018-05-23" } | Milyen az `Seattle` `tomorrow`idő? |
-| CheckWeather (Időjárás) | { "típus": "date_range", "entitás": "ezen a hétvégén" } | Az előrejelzés megjelenítése`this weekend` | 
+| CheckWeather | {"type": "location", "Entity": "Seattle"}<br>{"type": "beépített. datetimeV2. Date", "entitás": "Tomorrow", "megoldás": "2018-05-23"} | Milyen időjárási viszonyok `Seattle` `tomorrow`vannak? |
+| CheckWeather | {"type": "date_range", "entitás": "Ez a hétvége"} | Előrejelzés megjelenítése a következőhöz:`this weekend` |
 ||||
 
-## <a name="prebuilt-domain-intents"></a>Előre összeállított tartományi leképezések
+## <a name="prebuilt-domain-intents"></a>Előre elkészített tartományi leképezések
 
-[Előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md) leképezések utterances. 
+Az [előre elkészített tartományok](luis-how-to-use-prebuilt-domains.md) a hosszúságú kimondott szöveg-vel való leképezéseket biztosítanak.
 
 ## <a name="none-intent"></a>A None szándék
 
-A **Nincs** szándék jön létre, de szándékosan üresen marad. A **Nincs** szándék kötelező szándék, és nem törölhető vagy nevezhető át. Töltse ki a tartományon kívüli kimondott szövegekkel.
+A rendszer nem hozza létre a **nincs** szándékot, de a célra üresen hagyta. A **none** cél a kötelező szándék, ezért nem törölhető és nem nevezhető át. Töltse ki a tartományon kívüli hosszúságú kimondott szöveg.
 
-A **Nincs** szándék a tartalék szándék, fontos minden alkalmazásban, és rendelkeznie kell a teljes utterances 10%-a. Luis utterances, amelyek nem fontosak az alkalmazás tartományban (tárgyterület) nem fontos a LUIS utterances tanítására. Ha nem ad hozzá utterances a **Nincs** szándék, luis kényszeríti a tartományon kívüli utterance sance s in the domain intents. Ez megdönti az előrejelzési pontszámok a LUIS a kimondott szöveg helytelen szándékkal. 
+A **none** cél a tartalék leképezés, amely minden alkalmazásban fontos, és az összes hosszúságú kimondott szöveg 10%-át kell tartalmaznia. Az alkalmazás-tartományba (a tárgy területére) nem fontos LUIS hosszúságú kimondott szöveg tanítani. Ha nem ad hozzá semmilyen hosszúságú kimondott szöveg a **none** szándékhoz, a Luis a tartományon kívüli teljes tartománynevet kényszeríti az egyik tartományon belüli leképezésre. Ez elferdíti az előrejelzési pontszámokat, ha a LUIS nem megfelelő szándékot tanít a kiíráshoz.
 
-Amikor egy utterance (kifejezés) előre jelzett, mint a Nincs szándék, az ügyfélalkalmazás több kérdést tehet fel, vagy egy menüt, amely irányítja a felhasználót érvényes választási lehetőségeket. 
+Ha a kiírást a nem szándék alapján jósolják meg, az ügyfélalkalmazás további kérdéseket tehet fel, vagy megadhat egy menüt, amely a felhasználót az érvényes választásokra irányítja.
 
-## <a name="negative-intentions"></a>Negatív szándékok 
-Ha meg szeretné határozni a negatív és pozitív szándékokat, például a **"Szeretnék** egy autót" és a **"Nem** akarok autót", létrehozhat két szándékot (egy pozitív és egy negatív), és mindegyikhez hozzáadhatja a megfelelő kijelentéseket. Vagy létrehozhat egyetlen szándékot, és megjelölheti a két különböző pozitív és negatív kifejezést entitásként.  
+## <a name="negative-intentions"></a>Negatív szándékok
+Ha meg szeretné határozni a negatív és pozitív célokat, például a **"szeretnék** autót" és a "nem **szeretnék** autót", létrehozhat két leképezést (egy pozitív és egy negatív), és hozzáadhatja a megfelelő hosszúságú kimondott szöveg. Létrehozhat egyetlen leképezést is, és megadhatja a két különböző pozitív és negatív kifejezést entitásként.
 
 ## <a name="intents-and-patterns"></a>Szándékok és minták
 
-Ha példa kimondott szöveggel rendelkezik, amely részben vagy egészben definiálható reguláris kifejezésként, fontolja meg a [mintával](luis-concept-patterns.md)párosított [reguláris kifejezés entitás](luis-concept-entity-types.md#regular-expression-entity) használatát. 
+Ha van példa hosszúságú kimondott szöveg, amely a részben vagy egészben is meghatározható reguláris kifejezésként, érdemes lehet a [reguláris kifejezéssel](luis-concept-entity-types.md#regular-expression-entity) párosítani egy [mintázattal](luis-concept-patterns.md).
 
-Reguláris kifejezés entitás használata garantálja az adatok kinyerését, hogy a minta egyeztetve. A minta egyeztetési garantálja a pontos szándék ot adja vissza. 
+A reguláris kifejezéssel rendelkező entitások garantálják az kivonást, így a minta egyeztetése megtörténik. A minta egyeztetése garantálja a pontos szándékot.
 
-## <a name="intent-balance"></a>Szándék egyenlege
-Az alkalmazás tartományi leképezések kell rendelkeznie az egyes leképezések utterances egyensúlyával. Nem rendelkezik egy szándékkal 10 utterances és egy másik szándék 500 utterances. Ez nem kiegyensúlyozott. Ha van ez a helyzet, tekintse át a szándékot 500 utterances, hogy ha sok a szándékok átszervezhető egy [minta.](luis-concept-patterns.md) 
+## <a name="intent-balance"></a>Leképezési egyenleg
+Az alkalmazás-tartományhoz tartozó leképezéseknek egyensúlyt kell hosszúságú kimondott szöveg az egyes szándékok között. Ne legyen egy szándéka 10 hosszúságú kimondott szöveg és egy másik szándékkal a 500 hosszúságú kimondott szöveg. Ez nem kiegyensúlyozott. Ha ezt a helyzetet látja el, tekintse át a 500 hosszúságú kimondott szöveg szándékát, és ellenőrizze, hogy a szándékok közül sok átrendezhető-e egy [mintázatba](luis-concept-patterns.md).
 
-A **Nincs** szándék nem szerepel az egyenlegben. Ez a szándék tartalmaznia kell az alkalmazás teljes utterances 10%-át.
+A **nincs** szándék nem tartalmazza az egyenleget. Ennek a szándéknak az alkalmazás teljes hosszúságú kimondott szöveg 10%-át kell tartalmaznia.
 
-## <a name="intent-limits"></a>Szándékkorlátok
-Tekintse át [a korlátokat,](luis-boundaries.md#model-boundaries) hogy megtudja, hány leképezést adhat hozzá egy modellhez. 
+## <a name="intent-limits"></a>Leképezési korlátok
+Tekintse át a [korlátokat](luis-limits.md#model-boundaries) , hogy megértse, hány leképezést lehet hozzáadni egy modellhez.
 
-### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Ha a leképezések maximális számánál többre van szüksége 
-Először fontolja meg, hogy a rendszer túl sok szándékot használ-e. 
+### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Ha többre van szüksége a maximálisan megengedett számnál
+Először is gondolja át, hogy a rendszer túl sok szándékot használ-e.
 
-### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Több leképezés egyesíthető egyetlen leképezésben entitásokkal 
-A túlságosan hasonló szándékok megnehezítik a LUIS számára a különbséget közöttük. A szándékok nak elég változatosnak kell lenniük ahhoz, hogy rögzítsék a felhasználó által kért fő feladatokat, de nem kell rögzíteniük a kód minden útvonalát. Például a BookFlight és a FlightCustomerService lehet külön szándékegy utazási alkalmazásban, de a BookInternationalFlight és a BookDomesticFlight túl hasonló. Ha a rendszernek meg kell különböztetnie őket, használjon entitásokat vagy más logikát a szándékok helyett. 
+### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Több leképezés egyesíthető egyetlen szándékkal az entitások használatával.
+A túl hasonló szándékok megnehezítik a LUIS számára a közöttük való különbségtételt. A szándéknak elég változatosaknak kell lennie ahhoz, hogy rögzítse a felhasználó által kért fő feladatokat, de nem kell rögzítenie a kód minden elérési útját. Például a BookFlight és a FlightCustomerService különálló leképezések lehetnek egy utazási alkalmazásban, de a BookInternationalFlight és a BookDomesticFlight túl hasonlóak. Ha a rendszeren meg kell különböztetni őket, használjon entitásokat vagy más logikát a szándék helyett.
 
 ### <a name="dispatcher-model"></a>Diszpécser modell
-További információ a LUIS- és A QnA-készítő alkalmazások és a [feladási modell kombinálásáról.](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) 
+További információ a LUIS és a QnA Maker alkalmazások a [küldő modellel](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)való kombinálásával.
 
-### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Kérjen segítséget a jelentős számú leképezéssel rendelkező alkalmazásokhoz
-Ha a leképezések számának csökkentése vagy a szándékok több alkalmazásra való felosztása nem működik, forduljon az ügyfélszolgálathoz. Ha az Azure-előfizetés támogatási szolgáltatásokat is tartalmaz, forduljon [az Azure technikai támogatási szolgálatához.](https://azure.microsoft.com/support/options/) 
+### <a name="request-help-for-apps-with-significant-number-of-intents"></a>A jelentős számú szándékkal rendelkező alkalmazások súgójának kérése
+Ha csökkenti a leképezések számának csökkentését vagy a szándékok több alkalmazásba való felosztását, akkor forduljon az ügyfélszolgálathoz. Ha az Azure-előfizetése támogatási szolgáltatásokat tartalmaz, forduljon az [Azure technikai támogatási](https://azure.microsoft.com/support/options/)szolgálatához.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ [az okról az entitásokról,](luis-concept-entity-types.md)amelyek fontos szavak a szándékokhoz kapcsolódóan
-* Ismerje meg, hogyan [adhat hozzá és kezelhet leképezéseket](luis-how-to-add-intents.md) a LUIS-alkalmazásban.
-* A szándékkal [kapcsolatos gyakorlati tanácsok áttekintése](luis-concept-best-practices.md)
+* További információ az [entitásokról](luis-concept-entity-types.md), amelyek a szándékok szempontjából fontos szavakat mutatnak
+* Megtudhatja, hogyan [veheti fel és kezelheti a szándékait](luis-how-to-add-intents.md) a Luis-alkalmazásban.
+* [Ajánlott eljárások](luis-concept-best-practices.md) áttekintése

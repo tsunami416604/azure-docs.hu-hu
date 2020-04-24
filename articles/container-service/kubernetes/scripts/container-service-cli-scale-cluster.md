@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "76270662"
 ---
-# <a name="deprecated-scale-an-azure-container-service-cluster"></a>(ELAVULT) Azure container service-fürt méretezése
+# <a name="deprecated-scale-an-azure-container-service-cluster"></a>ELAVULT Azure Container Service-fürt méretezése
 
 [!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 

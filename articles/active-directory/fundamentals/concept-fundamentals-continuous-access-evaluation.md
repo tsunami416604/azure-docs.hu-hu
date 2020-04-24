@@ -1,6 +1,6 @@
 ---
-title: Folyamatos hozzáférés-kiértékelés az Azure AD-ben
-description: Gyorsabb annektadás a felhasználói állapot változásaira az Azure AD folyamatos hozzáférés-kiértékelésével
+title: Folyamatos hozzáférés kiértékelése az Azure AD-ben
+description: Válaszadás a felhasználói állapot változásaira a folyamatos hozzáférés kiértékelésével az Azure AD-ben
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,86 +11,88 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b70c11cd6bc24f945b437decf22586cfb97557
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873302"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112575"
 ---
-# <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-értékelés
+# <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés kiértékelése
 
-A Microsoft-szolgáltatások, például az Azure Active Directory (Azure AD) és az Office 365 nyílt szabványokat és protokollokat használnak az együttműködés maximalizálása érdekében. Az egyik legkritikusabb az Open ID Connect (OIDC). Amikor egy ügyfélalkalmazás, például az Outlook csatlakozik egy szolgáltatáshoz, például az Exchange Online-hoz, az API-kérelmek oauth 2.0-s hozzáférési jogkivonatokkal engedélyezettek. Alapértelmezés szerint ezek a hozzáférési jogkivonatok egy óráig érvényesek. Ha lejárnak, az ügyfél visszairányítja az Azure AD-hez, hogy frissítse őket. Ez azt is lehetővé teszi, hogy újraértékelje a szabályzatok a felhasználói hozzáférés – előfordulhat, hogy nem frissíti a jogkivonatot, mert a feltételes hozzáférési házirend, vagy mert a felhasználó le van tiltva a címtárban. 
+A Microsoft szolgáltatásai, például a Azure Active Directory (Azure AD) és az Office 365, nyílt szabványok és protokollok használatával maximalizálják az együttműködési képességet. Az egyik legkritikusabb is a Open ID-kapcsolat (OIDC). Ha egy ügyfélalkalmazás, például az Outlook csatlakozik egy szolgáltatáshoz, például az Exchange Online-hoz, az API-kérések a OAuth 2,0 hozzáférési jogkivonatok használatával engedélyezettek. Alapértelmezés szerint ezek a hozzáférési tokenek egy óráig érvényesek. Amikor lejárnak, a rendszer visszairányítja az ügyfelet az Azure AD-be a frissítéshez. Ez lehetőséget biztosít a felhasználói hozzáférésre vonatkozó szabályzatok újraértékelésére is – dönthet úgy, hogy nem frissíti a jogkivonatot egy feltételes hozzáférési szabályzat miatt, vagy mert a felhasználó le van tiltva a címtárban. 
 
-Hallottuk az ügyfeleink elsöprő visszajelzéseit: a feltételes hozzáférési szabályzatok újraalkalmazásának hozzáférési jogkivonat-élettartama és a felhasználói állapot változásai (például: a szabadság miatt letiltva) módosításai miatt nem elég jó.
+A jogkivonat lejárata és frissítése egy standard mechanizmus az iparágban. Ez azt jelentette, hogy az ügyfelek az adott felhasználóra vonatkozó kockázati feltételek megváltozása esetén felmerülő aggályokkal rendelkeznek (például: a vállalati irodából a helyi kávézóba vagy a fekete piacon felderített felhasználói hitelesítő adatokkal), és ha a szabályzatok az adott változáshoz kapcsolódnak. A "tompa objektum" megközelítéssel kísérleteztek a kisebb jogkivonat-élettartamok miatt, de a felhasználók a kockázatok kiküszöbölése nélkül csökkenthetik a felhasználói élményt és a megbízhatóságot.
 
-A Microsoft az OpenID Foundation [megosztott jelzések és események](https://openid.net/wg/sse/) munkacsoportjának részeként a Folyamatos hozzáférés értékelési protokoll (Continuous Access Evaluation Protocol, CAEP) kezdeményezés korai résztvevője volt. Az identitásszolgáltatók és a függő felek a munkacsoport által meghatározott biztonsági eseményeket és jelzéseket használhatják a hozzáférés újbóli engedélyezéséhez vagy megszüntetéséhez. Ez izgalmas munka, és javítja a biztonságot számos platformon és alkalmazásban.
+A Szabályzat megsértésével vagy biztonsági problémákkal kapcsolatos időben történő válaszadás esetén a token kiállítója, például az Azure AD és a függő entitás (például az Exchange Online) között "beszélgetésre van szükség. Ez a kétirányú beszélgetés két fontos képességet biztosít nekünk. A függő entitás megfigyelheti, hogy mikor változott meg a dolgok, például egy új helyről érkező ügyfél, és tájékoztassa a jogkivonat kiállítóját. Azt is megadja a jogkivonat kiállítójának, hogy elmondja, hogy a függő entitás leállítja a tokenek betartását egy adott felhasználó számára a fiókok veszélyeztetése, a nem megfelelőség vagy más problémák miatt. A beszélgetés mechanizmusa folyamatos hozzáférés kiértékelése (CAE).
 
-Mivel a biztonsági előnyök olyan nagyok, egy Microsoft-specifikus kezdeti implementációt vezetünk be a szabványügyi testületeken belüli folyamatos munkánkkal párhuzamosan. Miközben azon dolgozunk, hogy ezeket a folyamatos hozzáférés-kiértékelési (CAE) képességeket telepítsük a Microsoft szolgáltatásaiban, sokat tanultunk, és ezeket az információkat megosztjuk a szabványügyi közösséggel. Reméljük, hogy a telepítéssel kapcsolatos tapasztalataink segíthetnek egy még jobb iparági szabvány tájékoztatásában, és elkötelezettek vagyunk a szabvány ratifikálása után történő megvalósítása mellett, lehetővé téve, hogy minden részt vevő szolgáltatás számára előnyös legyen.
+A Microsoft az OpenID Foundation [közös jelek és események](https://openid.net/wg/sse/) munkacsoportjának részeként a folyamatos hozzáférés-értékelési protokoll (CAEP) kezdeményezés egyik korai résztvevője. Az identitás-szolgáltatók és a függő entitások képesek lesznek kihasználni a munkacsoport által meghatározott biztonsági eseményeket és jeleket a hozzáférés engedélyezéséhez vagy megszüntetéséhez. Izgalmas munkát tesznek, és számos platformon és alkalmazáson keresztül javítják a biztonságot.
+
+Mivel a biztonsági előnyök olyan nagyszerűek, a Microsoft-specifikus kezdeti implementáció párhuzamosan, a szabványok szervein belüli folyamatos munkavégzés keretében történik. Ahogy dolgozunk ezen a folyamatos hozzáférés-értékelési (CAE) funkcióknak a Microsoft-szolgáltatásokban való üzembe helyezésén, sokat tanultam, és megosztjuk ezeket az információkat a szabványokkal foglalkozó Közösséggel. Reméljük, hogy az üzembe helyezés során felmerülő tapasztalataink segíthetnek a még jobb iparági szabványok bevezetésében, és elkötelezettek a standard ratifikálása után is, így minden résztvevő szolgáltatás Benefit.
 
 ## <a name="how-does-cae-work-in-microsoft-services"></a>Hogyan működik a CAE a Microsoft-szolgáltatásokban?
 
-Az Exchange és a Teams folyamatos hozzáférés-értékelésének kezdeti megvalósítására összpontosítunk. Reméljük, hogy a jövőben kiterjesztjük a támogatást más Microsoft-szolgáltatásokra is. Elkezdjük engedélyezni a folyamatos hozzáférés kiértékelését csak a feltételes hozzáférési szabályzatokkal nem rendelkező bérlők számára. A CAE e fázisából származó tanulásainkat arra fogjuk használni, hogy tájékoztassuk a CAE folyamatos bevezetését.
+Az Exchange és a Teams szolgáltatás folyamatos hozzáférés-értékelésének kezdeti megvalósítására koncentrálunk. Reméljük, hogy a jövőben további Microsoft-szolgáltatásokra is kiterjesztjük a támogatást. A folyamatos hozzáférés kiértékelését a feltételes hozzáférési szabályzatok nélküli bérlők számára is engedélyezzük. A CAE ezen fázisában megtanuljuk a bevezetését, hogy tájékoztassuk a CAE folyamatos kiépítéséről.
 
 ## <a name="service-side-requirements"></a>Szolgáltatási oldali követelmények
 
-A folyamatos hozzáférés-kiértékelést úgy valósítja meg, hogy lehetővé teszi a szolgáltatások (erőforrás-szolgáltatók) számára, hogy az Azure AD kritikus eseményeire iratkozzanak fel, hogy ezek az események kiértékelhetők és kikényszeríthetők közel valós időben. Ebben a kezdeti CAE-bevezetésben a következő események lesznek érvényesítve:
+A folyamatos hozzáférés kiértékelését a szolgáltatások (erőforrás-szolgáltatók) lehetővé teszik az Azure AD kritikus eseményeire való előfizetéshez, hogy ezek az események közel valós időben legyenek kiértékelve és érvényesítve. Ebben a kezdeti CAE-bevezetésben a következő események lesznek érvényben:
 
-- A felhasználói fiók törlődik vagy le van tiltva
-- A felhasználó jelszava megváltozik vagy alaphelyzetbe áll
-- A rendszergazda kifejezetten visszavonja a felhasználó összes frissítési jogkivonatát
-- Az Azure AD Identity Protection által észlelt fokozott felhasználói kockázat
+- A felhasználói fiók törölve vagy Letiltva
+- A felhasználó jelszavának módosítása vagy alaphelyzetbe állítása
+- A rendszergazda explicit módon visszavonja a felhasználó összes frissítési jogkivonatát.
+- Emelt szintű felhasználói kockázat észlelhető Azure AD Identity Protection
 
-A jövőben reméljük, hogy további eseményeket, például hely- és eszközállapot-változásokat hozunk hozzá. **Míg a célunk az, hogy a végrehajtás azonnali legyen, egyes esetekben akár 15 perces késés figyelhető meg az esemény terjedési ideje miatt.** 
+A jövőben reméljük, hogy további eseményeket fogunk hozzáadni, beleértve az eseményeket, például a hely és az eszköz állapotának változásait. **Habár a célunk az, hogy a kényszerítés azonnali legyen, bizonyos esetekben előfordulhat, hogy az esemény propagálási ideje miatt akár 15 percet**is igénybe vehet. 
 
-## <a name="client-side-claim-challenge"></a>Ügyféloldali igénylési kihívás
+## <a name="client-side-claim-challenge"></a>Ügyféloldali jogcímek kihívása
 
-A folyamatos hozzáférés kiértékelése előtt az ügyfelek mindig megpróbálják visszajátszani a hozzáférési jogkivonatot a gyorsítótárból, amíg az nem járt le. A CAE-vel egy új esetet vezetünk be, amelyet egy erőforrás-szolgáltató akkor is elutasíthat, ha az még nem járt le. Annak érdekében, hogy tájékoztassa az ügyfeleket, hogy megkerülje a cache annak ellenére, hogy a gyorsítótárazott tokenek még nem járt le, bevezetjük a mechanizmus úgynevezett **követelés kihívás**. A CAE-nek ügyfélfrissítésre van szüksége a jogcímkihívás megértéséhez. Az alábbi alkalmazások legújabb verziója támogatási igénylési kihívás:
+A folyamatos hozzáférés kiértékelése előtt az ügyfelek mindig megpróbálják visszajátszani a hozzáférési tokent a gyorsítótárból mindaddig, amíg nem járt le. A CAE-vel új esetet vezetünk be, hogy egy erőforrás-szolgáltató akkor is elutasíthatja a tokent, ha az nem járt le. Ahhoz, hogy tájékoztassa az ügyfeleket a gyorsítótár megkerüléséről annak ellenére, hogy a gyorsítótárazott tokenek nem jártak le, bevezetünk egy **jogcím-kihívás**nevű mechanizmust. A CAE-nek szüksége van egy ügyfél frissítésére a jogcím-kihívás megismerése érdekében. A következő alkalmazások legújabb verziója támogatja a jogcím kihívását:
 
-- A Windows Outlook 
+- Windows Outlook 
 - Outlook iOS 
 - Outlook Android 
 - Outlook Mac 
-- Windows-csapatok
+- Windows rendszerű csapatok
 - Csapatok iOS 
-- Csapatok Android 
+- Csapat Android 
 - Csapatok Mac 
 
 ## <a name="token-lifetime"></a>Jogkivonat élettartama
 
-Mivel a kockázat és a szabályzat kiértékelése valós időben történik, a folyamatos hozzáférés-kiértékelésre képes munkameneteket egyeztető ügyfelek a meglévő statikus hozzáférési jogkivonat élettartamra vonatkozó szabályzatai helyett a CAE-munkamenetekre támaszkodnak, ami azt jelenti, hogy a konfigurálható jogkivonat élettartamra vonatkozó szabályzata többé nem lesz tiszteletben a CAE-kompatibilis ügyfelek számára, amelyek cae-kompatibilis munkameneteket tárgyalnak.
+Mivel a kockázatok és a házirendek valós időben lettek kiértékelve, a folyamatos hozzáférés-értékelést tárgyaló ügyfelek a meglévő statikus hozzáférési jogkivonat élettartam-szabályzatai helyett a CAE-t használják, ami azt jelenti, hogy a konfigurálható jogkivonat-élettartamra vonatkozó házirend többé nem lesz betartva a CAE-kompatibilis munkameneteket tárgyaló, a CAE-t támogató ügyfelek számára.
 
-A hozzáférési jogkivonat élettartamát 24 órára növeljük a CAE-munkamenetekben. A visszavonást kritikus események és házirend-értékelés vezérli, nem pedig egy tetszőleges időszak. Ez a módosítás növeli az alkalmazások stabilitását anélkül, hogy befolyásolná a biztonsági pozíciót. 
+A hozzáférési token élettartamát 24 órára növeljük a CAE-munkamenetekben. A visszavonást a kritikus események és a házirendek kiértékelése vezérli, nem pedig egy tetszőleges időszakra. Ez a változás növeli az alkalmazások stabilitását anélkül, hogy ez hatással lenne a biztonsági helyzetre. 
 
 ## <a name="example-flows"></a>Példa folyamatokra
 
-### <a name="user-revocation-event-flow"></a>Felhasználói visszavonási eseményfolyamat:
+### <a name="user-revocation-event-flow"></a>Felhasználó visszavonási eseményének folyamata:
 
-![Felhasználói visszavonási eseményfolyamat](./media/concept-fundamentals-continuous-access-evaluation/user-revocation-event-flow.png)
+![Felhasználó visszavonási eseményének folyamata](./media/concept-fundamentals-continuous-access-evaluation/user-revocation-event-flow.png)
 
-1. A CAE-képes ügyfél bemutatja a hitelesítő adatokat vagy egy frissítési jogkivonatot az AAD-nek, amely egy erőforrás hozzáférési jogkivonatát kéri.
-1. A rendszer egy hozzáférési jogkivonatot ad vissza az ügyfélnek más összetevőkkel együtt.
-1. A rendszergazda kifejezetten [visszavonja a felhasználó összes frissítési jogkivonatát.](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) A rendszer visszavonási eseményt küld az erőforrás-szolgáltatónak az Azure AD-ből.
-1. Egy hozzáférési jogkivonat jelenik meg az erőforrás-szolgáltató. Az erőforrás-szolgáltató kiértékeli a jogkivonat érvényességét, és ellenőrzi, hogy van-e visszavonási esemény a felhasználó számára. Az erőforrás-szolgáltató ezt az információt arra használja, hogy úgy döntsön, hogy hozzáférést biztosít-e az erőforráshoz, vagy sem.
-1. Ebben az esetben az erőforrás-szolgáltató megtagadja a hozzáférést, és 401+ jogcímkihívást küld vissza az ügyfélnek
-1. A CAE-képes ügyfél megérti a 401+ igénylési kihívást. Megkerüli a gyorsítótárakat, és visszatér az 1. Az Azure AD ezután újraértékeli az összes feltételt, és ebben az esetben a felhasználót újrahitelesíti.
+1. A CAE-kompatibilis ügyfelek bemutatják a hitelesítő adatokat vagy egy frissítési jogkivonatot, amely HRE kér egy bizonyos erőforrás hozzáférési jogkivonatát.
+1. A rendszer a hozzáférési jogkivonatot más összetevőkkel együtt adja vissza az ügyfélnek.
+1. A rendszergazda explicit módon [visszavonja a felhasználó összes frissítési jogkivonatát](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). A rendszer visszavonási eseményt küld az erőforrás-szolgáltatónak az Azure AD-től.
+1. Az erőforrás-szolgáltató hozzáférési tokent mutat be. Az erőforrás-szolgáltató kiértékeli a jogkivonat érvényességét, és ellenőrzi, hogy van-e visszavonási esemény a felhasználó számára. Az erőforrás-szolgáltató ezt az információt használja annak eldöntésére, hogy hozzáférést biztosítson az erőforráshoz, vagy sem.
+1. Ebben az esetben az erőforrás-szolgáltató megtagadja a hozzáférést, és egy 401 + jogcím-feladatot küld vissza az ügyfélnek.
+1. A CAE-kompatibilis ügyfél tisztában van a 401 + jogcím kihívással. Megkerüli a gyorsítótárat, és visszakerül az 1. lépésre, és visszaküldi a frissítési tokent az Azure AD-re vonatkozó jogcím-kihívással együtt. Az Azure AD ezután újraértékeli az összes feltételt, és megkéri a felhasználót, hogy végezze el az újrahitelesítést ebben az esetben.
  
 ## <a name="faqs"></a>Gyakori kérdések
 
-### <a name="what-is-the-lifetime-of-my-access-token"></a>Mi a hozzáférési jogkivonatom élettartama?
+### <a name="what-is-the-lifetime-of-my-access-token"></a>Mi a hozzáférési token élettartama?
 
-Ha nem cae-kompatibilis ügyfeleket használ, az alapértelmezett hozzáférési jogkivonat élettartama továbbra is 1 óra marad, hacsak nem konfigurálta a hozzáférési jogkivonat élettartamát a [konfigurálható jogkivonat élettartama (CTL)](../develop/active-directory-configurable-token-lifetimes.md) előzetes funkcióval.
+Ha nem használ CAE-kompatibilis ügyfeleket, akkor az alapértelmezett hozzáférési jogkivonat élettartama még 1 óra lesz, hacsak nem konfigurálta a hozzáférési jogkivonat élettartamát a [konfigurálható jogkivonat élettartama (CTL)](../develop/active-directory-configurable-token-lifetimes.md) előzetes verziójával.
 
-Ha CAE-kompatibilis ügyfeleket használ, amelyek egyeztetik a CAE-kompatibilis munkameneteket, a hozzáférési jogkivonat élettartamára vonatkozó CTL-beállítások felülíródnak, és az Access Token élettartama 24 óra lesz.
+Ha olyan CAE-kompatibilis ügyfeleket használ, amelyek a CAE-t támogató munkameneteket egyeztetik, a hozzáférési jogkivonat élettartamára vonatkozó CTL-beállítások felül lesznek írva, és a hozzáférési jogkivonat élettartama 24 óra lesz.
 
-### <a name="how-quick-is-enforcement"></a>Milyen gyors a végrehajtás?
+### <a name="how-quick-is-enforcement"></a>Milyen gyors a kényszerítés?
 
-A célunk az, hogy a kényszerítés azonnali legyen, bizonyos esetekben az esemény terjedési ideje miatt legfeljebb 15 perces késés figyelhető meg.
+Habár a célunk az, hogy a kényszerítés azonnali legyen, bizonyos esetekben előfordulhat, hogy az esemény propagálási ideje miatt akár 15 percet is igénybe vehet.
 
-### <a name="how-will-cae-work-with-sign-in-frequency"></a>Hogyan fog működni a CAE a bejelentkezési gyakorisággal?
+### <a name="how-will-cae-work-with-sign-in-frequency"></a>Hogyan működik a CAE a bejelentkezési gyakorisággal?
 
-A bejelentkezési gyakoriság cae-vel vagy anélkül lesz megtisztelve.
+A bejelentkezések gyakorisága a CAE-vel vagy anélkül is megbecsülhető.
 
 ## <a name="next-steps"></a>További lépések
 
-[A hozzáférés folyamatos értékelésének bejelentése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
+[A folyamatos hozzáférés kiértékelésének bejelentése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

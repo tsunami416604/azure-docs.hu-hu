@@ -1,30 +1,25 @@
 ---
-title: Oktatóanyag – Windows virtuális gépek figyelése az Azure-ban
-description: Ebben az oktatóanyagban megtudhatja, hogyan figyelheti a teljesítményt, és hogyan fedezheti fel a Windows virtuális gépeken futó alkalmazás-összetevőket.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: Oktatóanyag – Windows rendszerű virtuális gépek monitorozása az Azure-ban
+description: Ebből az oktatóanyagból megtudhatja, hogyan figyelheti a Windows rendszerű virtuális gépeken futó teljesítmény-és felderített alkalmazás-összetevőket.
 author: mgoedtel
 manager: carmonm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: monitoring
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 9e807927a10399b02c2c89359c2ffffaf87ba57b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a021675632a093d41e2565f63f8bb4e844213628
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74112488"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101620"
 ---
-# <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Windows virtuális gép figyelése az Azure-ban
+# <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Windowsos virtuális gép figyelése az Azure-ban
 
-Az Azure-figyelés ügynökök segítségével gyűjti a rendszerindítási és teljesítményadatokat az Azure virtuális gépekről, tárolja ezeket az adatokat az Azure storage-ban, és elérhetővé teszi azokat a portálon, az Azure PowerShell-modulon és az Azure CLI-n keresztül. A speciális figyelés továbbfejlesztett monitoraz Azure Monitor virtuális gépek hez teljesítménymutatók gyűjtésével, a virtuális gépre telepített alkalmazás-összetevők felderítésével, valamint teljesítménydiagramokat és függőségi térképeket tartalmaz.
+Az Azure monitoring ügynökök használatával gyűjti az Azure-beli virtuális gépekről származó rendszerindítási és teljesítményadatokat, tárolja ezeket az adatokat az Azure Storage-ban, és elérhetővé teszi a portálon, a Azure PowerShell modulon és az Azure CLI-n keresztül A speciális figyelés Azure Monitor for VMs a teljesítmény-metrikák gyűjtésével, a virtuális gépre telepített alkalmazás-összetevők felderítésével, valamint a teljesítmény-és a függőségi térképekkel együtt.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -32,15 +27,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Rendszerindítási diagnosztika engedélyezése a virtuális gépen
 > * Rendszerindítási diagnosztika megtekintése
 > * Virtuálisgép-gazda metrikáinak megtekintése
-> * Az Azure-figyelő engedélyezése virtuális gépekhez
-> * Virtuális gép teljesítménymutatóinak megtekintése
+> * Azure Monitor for VMs engedélyezése
+> * VIRTUÁLIS gépek teljesítmény-metrikáinak megtekintése
 > * Riasztás létrehozása
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/powershell](https://shell.azure.com/powershell)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -50,7 +45,7 @@ Ebben az oktatóanyagban az Azure-monitorozás és a frissítéskezelés konfigu
 $cred = Get-Credential
 ```
 
-Most hozza létre a virtuális gép [new-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem létezik, létrejön a *myResourceGroupMonitorMonitor* nevű erőforráscsoport a támogató hálózati erőforrásokkal együtt:
+Most hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem létezik, létrejön a *myResourceGroupMonitorMonitor* nevű erőforráscsoport a támogató hálózati erőforrásokkal együtt:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -64,7 +59,7 @@ Az erőforrások és a virtuális gép létrehozása néhány percig tart.
 
 ## <a name="view-boot-diagnostics"></a>Rendszerindítási diagnosztika megtekintése
 
-A Windows rendszerű virtuális gépek rendszerindítása után a rendszerindítási diagnosztikai ügynök rögzíti a képernyőkimenetet, amelyet hibaelhárítási célokra lehet felhasználni. Ez a képesség alapértelmezés szerint engedélyezve van. A rögzített képernyőképek egy Azure storage-fiókban tárolódnak, amely alapértelmezés szerint is létre jön.
+A Windows rendszerű virtuális gépek rendszerindítása után a rendszerindítási diagnosztikai ügynök rögzíti a képernyőkimenetet, amelyet hibaelhárítási célokra lehet felhasználni. Ez a képesség alapértelmezés szerint engedélyezve van. A rögzített képernyőképeket egy Azure Storage-fiók tárolja, amelyet a rendszer alapértelmezés szerint is létrehoz.
 
 A rendszerindítási diagnosztika adatait a [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) paranccsal kérheti le. A következő példában a rendszerindítási diagnosztika a *c:\* meghajtó gyökérkönyvtárába töltődik le.
 
@@ -83,38 +78,38 @@ A Windows rendszerű virtuális gép egy dedikált gazdagéppel kommunikál az A
 
 ## <a name="enable-advanced-monitoring"></a>Speciális figyelés engedélyezése
 
-Az Azure-beli virtuális gép figyelésének engedélyezése az Azure Monitor szolgáltatással:
+Az Azure-beli virtuális gép monitorozásának engedélyezése Azure Monitor for VMs használatával:
 
 1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
 
-2. A virtuális gép lapján a **Figyelés** csoportban válassza **az Insights (előzetes verzió)** lehetőséget.
+2. A virtuális gép lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
 
-3. Az **Elemzések (előnézet)** lapon válassza a **Kipróbálás most**lehetőséget.
+3. Az **áttekintések (előzetes verzió)** lapon válassza a **kipróbálás most**lehetőséget.
 
-    ![Virtuális gépek Azure-figyelőjének engedélyezése](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![Virtuális gép Azure Monitor for VMsának engedélyezése](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-4. Az **Azure Monitor Insights bevezetési** lapon, ha egy meglévő Log Analytics-munkaterület ugyanabban az előfizetésben, válassza ki a legördülő listában.  
+4. Ha egy meglévő Log Analytics munkaterülettel rendelkezik ugyanabban az előfizetésben, akkor a **Azure monitor** megállapítások bevezetése lapon válassza ki azt a legördülő listából.  
 
-    A lista előre kiválasztja az alapértelmezett munkaterületet és helyet, ahol a virtuális gép telepítve van az előfizetésben. 
+    A lista előjelöli az alapértelmezett munkaterületet és helyet, ahol a virtuális gép üzembe lett helyezve az előfizetésben. 
 
     >[!NOTE]
-    >Új Log Analytics-munkaterület létrehozásához a virtuális gép figyelési adatainak tárolására, olvassa [el a Log Analytics-munkaterület létrehozása című témakört.](../../azure-monitor/learn/quick-create-workspace.md) A Log Analytics-munkaterületnek a támogatott régiók egyikéhez kell [tartoznia.](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)
+    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok virtuális gépről való tárolásához, tekintse meg a [log Analytics munkaterület létrehozása](../../azure-monitor/learn/quick-create-workspace.md)című témakört. A Log Analytics-munkaterületnek a [támogatott régiók](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)egyikéhez kell tartoznia.
 
-Miután engedélyezte a figyelést, előfordulhat, hogy néhány percet kell várnia, mielőtt megtekintheti a virtuális gép teljesítménymutatóit.
+Ha engedélyezte a figyelést, előfordulhat, hogy néhány percet várnia kell, amíg meg nem tekinti a virtuális gép teljesítmény-metrikáit.
 
-![Az Azure Monitor engedélyezése virtuális gépek számára a központi telepítés feldolgozásának figyelése](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Azure Monitor for VMs figyelés telepítésének engedélyezése](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
-## <a name="view-vm-performance-metrics"></a>Virtuális gép teljesítménymutatóinak megtekintése
+## <a name="view-vm-performance-metrics"></a>VIRTUÁLIS gépek teljesítmény-metrikáinak megtekintése
 
-Az Azure Monitor virtuális gépekhez tartalmaz egy teljesítménydiagramok, amelyek célja több fő teljesítménymutatók (KPI-k) segítségével határozza meg, hogy milyen jól teljesít a virtuális gép. A virtuális gépről való hozzáféréshez hajtsa végre a következő lépéseket.
+Azure Monitor for VMs olyan teljesítménymutatókat tartalmaz, amelyek több fő teljesítménymutatót (KPI-ket) céloznak meg, amelyek segítségével meghatározhatja, hogy a virtuális gép milyen jól van végrehajtva. A virtuális gépről való hozzáféréshez hajtsa végre az alábbi lépéseket.
 
 1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
 
-2. A virtuális gép lapján a **Figyelés** csoportban válassza **az Insights (előzetes verzió)** lehetőséget.
+2. A virtuális gép lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
 
-3. Válassza a **Teljesítmény** lapot.
+3. Válassza a **teljesítmény** fület.
 
-Ez az oldal nem csak a teljesítménykihasználási diagramokat tartalmazza, hanem egy táblázatot is, amely minden egyes felfedezett logikai lemezhez, kapacitásához, kihasználtságához és az egyes mértékekkel átlaghoz viszonyítva jeleníti meg.
+Ez a lap nem csak a teljesítmény-kihasználtsági diagramokat tartalmazza, hanem egy táblázatot is, amely minden felderített logikai lemezhez, annak kapacitásához, kihasználtságához és teljes átlagához tartozik.
 
 ## <a name="create-alerts"></a>Riasztások létrehozása
 
@@ -143,7 +138,7 @@ Ebben az oktatóanyagban konfigurálta és megtekintette a virtuális gép telje
 > * Rendszerindítási diagnosztika engedélyezése a virtuális gépen
 > * Rendszerindítási diagnosztika megtekintése
 > * Gazdagép metrikáinak megtekintése
-> * Az Azure-figyelő engedélyezése virtuális gépekhez
+> * Azure Monitor for VMs engedélyezése
 > * Virtuálisgép-metrikák megtekintése
 > * Riasztás létrehozása
 
