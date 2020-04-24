@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Bejárati ajtó profil létrehozása az alkalmazások magas rendelkezésre állásához'
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Front Doort a magas rendelkezésre állású, nagy teljesítményű globális webalkalmazása számára.
+title: 'Gyors útmutató: magas rendelkezésre állás beállítása az Azure bejárati ajtó szolgáltatásával'
+description: Ez a rövid útmutató azt ismerteti, hogyan használható az Azure bejárati ajtó szolgáltatás a magas rendelkezésre állású és nagy teljesítményű globális webalkalmazásokhoz.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,106 +11,159 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2018
+ms.date: 04/27/2020
 ms.author: sharadag
-ms.openlocfilehash: 2b44c0cdbe2d955efe20a5f9473a29bc9f500a07
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: e7e500f0459c0f5fd4039acf316d9469e1567a09
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521455"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116952"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rövid útmutató: Front Door létrehozása magas rendelkezésre állású globális webalkalmazásokhoz
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Front Door-profilt, amely magas rendelkezésre állást és nagy teljesítményt biztosít globális webalkalmazása számára. 
+A webalkalmazások magas rendelkezésre állásának beállításához a Azure Portal használatával megismerheti az Azure bejárati ajtót.
 
-A rövid útmutatóban ismertetett forgatókönyvben egy adott webalkalmazás különböző Azure-régiókban futó két példányát használjuk. Létrejön egy Front Door-konfiguráció, amely egyenlő arányban tartalmaz [súlyozott és azonos prioritású háttérrendszereket](front-door-routing-methods.md). Ennek segítségével az alkalmazást futtató legközelebbi helyi háttérrendszerekhez irányítható a felhasználói adatforgalom. A Front Door folyamatosan monitorozza a webalkalmazást, és automatikus feladatátvételt biztosít a következő elérhető háttérrendszerre, ha a legközelebbi helyszín elérhetetlenné válna.
-
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
-
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
-Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+Ebben a rövid útmutatóban az Azure bejárati ajtó két különböző Azure-régióban futó webalkalmazást kínál. A bejárati ajtó konfigurációját az azonos súlyozású és azonos prioritású háttérrendszer alapján hozhatja létre. Ez a konfiguráció az alkalmazást futtató legközelebbi helyre irányítja a forgalmat. Az Azure bejárati ajtaja folyamatosan figyeli a webalkalmazást. A szolgáltatás automatikus feladatátvételt biztosít a következő elérhető helyre, ha a legközelebbi hely nem érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A rövid útmutatóhoz üzembe kell helyeznie egy webalkalmazás két példányát eltérő Azure-régiókban (*USA keleti régiója* és *Nyugat-Európa*). A webalkalmazás mindkét példányának aktív/aktív módban kell lennie, vagyis mindkettőnek készen kell állnia az adatforgalom fogadására, nem úgy, mint az aktív/készenléti konfiguráció esetében, ahol az egyik feladatátvételre szolgál.
 
-1. A képernyő bal felső részén válassza az > Erőforrás létrehozása**Web** > **Web App** **lehetőséget.**
-2. A **Webalkalmazás** mezőben adja meg vagy válassza ki a következő adatokat, illetve az alapértelmezett beállításokat, ahol nem adtunk meg másik lehetőséget:
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-     | Beállítás         | Érték     |
-     | ---              | ---  |
-     | Erőforráscsoport          | Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupFD1* nevet. |
-     | Név           | Adja meg a webalkalmazás egyedi nevét.  |
-     | Futtatókörnyezet verme          | Futásidejű halmok kiválasztása az alkalmazáshoz |
-     |      Régió  |   USA nyugati régiója        |
-     | App Service-csomag/hely         | Válassza az **Új**lehetőséget.  Az App Service-csomag mezőben adja meg a *myAppServicePlanEastUS* nevet, majd kattintson az **OK** gombra.| 
-     |Sku és méret  | Válassza **a Méretváltás** kiválasztása **Standard S1 100 teljes ACU, 1,75 GB memória** |
-     
-3. Válassza **a Véleményezés + Létrehozás lehetőséget.**
-4. Tekintse át a Web App összefoglaló információit. Kattintson a **Létrehozás** gombra.
-5. Körülbelül 5 perc elteltével egy alapértelmezett webhely jön létre, amikor a webalkalmazás telepítése sikeresen megtörtént.
-6. Az 1–3. lépés ismételt végrehajtásával hozzon létre egy második webhelyet egy másik Azure-régióban a következő beállításokkal:
+## <a name="create-two-instances-of-a-web-app"></a>Webalkalmazás két példányának létrehozása
 
-     | Beállítás         | Érték     |
-     | ---              | ---  |
-     | Erőforráscsoport          | Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupFD2* nevet. |
-     | Név           | Adja meg a webalkalmazás egyedi nevét.  |
-     | Futtatókörnyezet verme          | Futásidejű halmok kiválasztása az alkalmazáshoz |
-     |      Régió  |   Nyugat-Európa      |
-     | App Service-csomag/hely         | Válassza az **Új**lehetőséget.  Az App Service-csomag mezőben adja meg a *myAppServicePlanWestEurope* nevet, majd kattintson az **OK** gombra.|   
-     |Sku és méret  | Válassza **a Méretváltás** kiválasztása **Standard S1 100 teljes ACU, 1,75 GB memória** |
-    
+Ez a rövid útmutató egy olyan webalkalmazás két példányát igényli, amely különböző Azure-régiókban fut. Mind a webalkalmazás-példányok *aktív/aktív* módban futnak, így akár egy forgalom is elvégezhető. Ez a konfiguráció különbözik az *aktív/készenléti* konfigurációtól, ahol az egyik feladatátvételként működik.
+
+Ha még nem rendelkezik webalkalmazással, a következő lépésekkel állíthatja be például a webes alkalmazásokat.
+
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+
+1. A Kezdőlap vagy az Azure menüben válassza az **erőforrás létrehozása**lehetőséget.
+
+1.  > **Web App**Válassza **a webalkalmazás lehetőséget**.
+
+   ![Webalkalmazás létrehozása az Azure Portal-on](media/quickstart-create-front-door/create-web-app-for-front-door.png)
+
+1. A **Web App (webalkalmazás**) területen válassza ki a használni kívánt **előfizetést** .
+
+1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget. Adja meg *FrontDoorQS_rg1* **nevét** , majd kattintson **az OK gombra**.
+
+1. A **példány részletei**területen adjon meg egy egyedi **nevet** a webalkalmazás számára. Ez a példa a *WebAppContoso-1-* et használja.
+
+1. Válasszon ki egy **futásidejű veremet**, ebben a példában a *.net Core 2,1 (LTS)* elemet.
+
+1. Válasszon ki egy régiót, például az *USA középső*régióját.
+
+1. **Windows-csomag**esetén válassza az **új létrehozása**lehetőséget. Adja meg a *MyAppServicePlanCentralUS* **nevet** , majd kattintson **az OK gombra**.
+
+1. Győződjön meg arról, hogy az **SKU és a méret** **standard S1 100 total ACU, 1,75 GB memória**.
+
+1. Válassza a **felülvizsgálat + létrehozás**lehetőséget, tekintse át az **összegzést**, majd kattintson a **Létrehozás**gombra. A telepítés befejezéséhez több percet is igénybe vehet.
+
+   ![Webalkalmazás összegzésének áttekintése](media/quickstart-create-front-door/summary-for-web-app-for-front-door.png)
+
+A telepítés befejezése után hozzon létre egy második webalkalmazást. Ugyanazt az eljárást használja ugyanazokkal az értékekkel, az alábbi értékek kivételével:
+
+| Beállítás          | Érték     |
+| ---              | ---  |
+| **Erőforráscsoport**   | Válassza az **új** lehetőséget, majd írja be a *FrontDoorQS_rg2* |
+| **Név**             | Adjon egyedi nevet a webalkalmazásnak, ebben a példában a *WebAppContoso-2*  |
+| **Régió**           | Egy másik régió, ebben a példában az *USA déli középső* régiója |
+| **App Service terv** > **Windows-csomag**         | Válassza az **új** lehetőséget, és adja meg a *myAppServicePlanSouthCentralUS*, majd kattintson **az OK gombra** . |
+
 ## <a name="create-a-front-door-for-your-application"></a>Front Door létrehozása az alkalmazáshoz
-### <a name="a-add-a-frontend-host-for-front-door"></a>A. Előtérbeli gazdagép hozzáadása a Front Doorhoz
-Létrehozunk egy Front Door-konfigurációt, amely a kettő közül a kisebb késésű háttérrendszerre irányítja a felhasználói adatforgalmat.
 
-1. A képernyő bal felső részén válassza az **Erőforrás** > létrehozása**hálózati** > **bejárati ajtó**lehetőséget.
-2. A **Bejárati ajtó létrehozása mezőbe**írja be vagy jelölje ki a következő adatokat, és adja meg az alapértelmezett beállításokat, ha nincs megadva:
+Konfigurálja az Azure bejárati ajtaját a felhasználói forgalom közvetlen elérésére a két webalkalmazás-kiszolgáló közötti legalacsonyabb késés alapján. Első lépésként vegyen fel egy előtér-gazdagépet az Azure-ba.
 
-     | Beállítás         | Érték     |
-     | ---              | ---  |
-     |Előfizetés  | Válassza ki azt az előfizetést, amelyben létre szeretné hozni a Bejárati ajtót.|
-     | Erőforráscsoport          | Válassza az **Új**lehetőséget, majd írja be a *myResourceGroupFD0 parancsot.* |
-     | Erőforráscsoport helye  |   USA középső régiója        |
-     
-     > [!NOTE]
-     > Nem kell létrehozni egy új erőforráscsoport üzembe helyezése bejárati ajtaját.  Ha meglévő erőforráscsoportot is ki választhat.
-     
-3. Kattintson a **Tovább gombra: Konfiguráció**.
-4. Kattintson a '+' ikonra az előtér-/tartományok kartonon.  Az Állomásnév `<Your Initials>frontend`mezőbe írja be a **mezőbe.** Ennek a állomásnévnek globálisan egyedinek kell lennie, a Bejárati ajtó gondoskodik az érvényesítésről.
-5. Kattintson a **Hozzáadás** gombra.
+1. A Kezdőlap vagy az Azure menüben válassza az **erőforrás létrehozása**lehetőséget. Válassza ki a **hálózati** > **bejárati ajtót**.
 
-### <a name="b-add-application-backend-and-backend-pools"></a>B. Az alkalmazás háttérrendszerének és háttérkészletének hozzáadása
+1. A **bejárati ajtó létrehozása**lapon válasszon ki egy **előfizetést**.
 
-Ezután konfigurálnia kell az előtér-rendszerek/tartományok és az alkalmazás háttérrendszer(ek) egy háttérkészlet a Bejárati ajtajához, hogy tudja, hol található az alkalmazás. 
+1. Az **erőforráscsoport**területen válassza az **új**lehetőséget, majd írja be *FrontDoorQS_rg0* , majd kattintson **az OK gombra**.  Ehelyett használhat meglévő erőforráscsoportot.
 
-1. Kattintson a háttérmedencék karton "+" ikonjára, ha háttérkészletet szeretne `myBackendPool`hozzáadni a **háttérkészlet nevéhez,** írja be a be című részt.
-2. Ezután kattintson a **Háttérüzenet hozzáadása** elemre a korábban létrehozott webhelyek hozzáadásához.
-3. Válassza **a Háttér-állomás típusát** "App Service" néven, válassza ki azt az előfizetést, amelyben létrehozta a webhelyet, majd válassza ki az első webhelyet a **háttérbeli gazdagép név** legördülő legördülő menüből.
-4. A többi mezőt egyelőre hagyja érintetlenül, és kattintson a **Hozzáadás** gombra.
-5. Válassza **a Háttér-állomás típusát** "App Service" néven, válassza ki azt az előfizetést, amelyben létrehozta a webhelyet, majd válassza ki a **második** webhelyet a **háttérbeli gazdagép név** legördülő legördülő menüből.
-6. A többi mezőt egyelőre hagyja érintetlenül, és kattintson a **Hozzáadás** gombra.
-7. Szükség esetén módosíthatja az állapotminta és a terheléselosztás beállításait a háttérkészlethez, de az alapértelmezett értékeknek is működniük kell. Mindkét esetben kattintson a **Hozzáadás**gombra.
+1. Ha létrehozott egy erőforráscsoportot, válassza ki az **erőforráscsoport helyét**, majd válassza a **Tovább: konfigurálás**lehetőséget.
 
+1. A **frontendek/tartományok**területen válassza **+** a előtér- **gazdagép hozzáadása**lehetőséget.
 
-### <a name="c-add-a-routing-rule"></a>C. Útválasztási szabály hozzáadása
-1. Végül az Útválasztási szabályok kartonon kattintson a "+" ikonra az útválasztási szabály konfigurálásához. Ez az előtérbeli gazdagépnek a háttérkészletre való leképezéséhez szükséges, ami gyakorlatilag azt jelenti, hogy a gazdagéphez (`myappfrontend.azurefd.net`) érkező kéréseket a háttérkészlethez (`myBackendPool`) irányítja át a rendszer. 
-2. A **Név mezőbe** írja be a "LocationRule" értéket.
-3. A **Hozzáadás** gombra kattintva adhatja hozzá az útválasztási szabályt a Front Doorhoz. 
-4. Kattintson a **Véleményezés és létrehozás gombra.**
-5. Tekintse át a bejárati ajtó létrehozásának beállításait. Kattintson a **Létrehozás gombra.**
+1. A **gazdagép neve**mezőben adjon meg egy globálisan egyedi állomásnevet. Ez a példa a *contoso-frontend felületet*használja. Válassza a **Hozzáadás** lehetőséget.
 
->[!WARNING]
-> **Mindenképpen** gondoskodjon arról, hogy a Front Door minden előtérbeli gazdagépe rendelkezzen egy társított alapértelmezett útvonalat (\*) használó útválasztási szabállyal. Vagyis minden egyes előtérbeli gazdagépnek rendelkeznie kell legalább egy olyan útválasztási szabállyal, amely az alapértelmezett útvonalat (\*) használja. Ha ez a feltétel nem teljesül, akkor a végfelhasználói forgalom útvonalválasztása nem lesz megfelelő.
+   ![Előtér-gazdagép hozzáadása az Azure bejárati ajtóhoz](media/quickstart-create-front-door/add-frontend-host-for-front-door.png)
 
-## <a name="view-front-door-in-action"></a>A Front Door megtekintése működés közben
-A Front Door létrehozása után néhány percet vesz igénybe a konfiguráció globális telepítése. Ha befejeződött a folyamat, indítsa el a létrehozott előtérbeli gazdagépet, vagyis a webböngészőben nyissa meg a `myappfrontend.azurefd.net` URL-címet. A kérés automatikusan át lesz irányítva a háttérkészlet Önhöz legközelebbi háttérrendszerére. 
+Ezután hozzon létre egy háttér-készletet, amely tartalmazza a két webalkalmazást.
 
-### <a name="view-front-door-handle-application-failover"></a>A Front Door alkalmazás-feladatátvételének megtekintése
-Ha a gyakorlatban is látni szeretné a Front Door azonnali globális feladatátvételi funkcióját, keresse fel és állítsa le az egyik korábban létrehozott webhelyet. A háttérkészletben megadott Állapotadat-mintavétel beállítás alapján azonnal megtörténik az adatforgalom átirányítása a másik üzembe helyezett webhelyre. Ezt úgy is tesztelheti, hogy letiltja a háttérrendszert a Front Door háttérkészlet-konfigurációjában. 
+1. Még mindig **hozzon létre egy bejárati ajtót**, a **+** **háttérbeli készletek**területen válassza a **háttérbeli készlet hozzáadása**lehetőséget.
+
+1. A **név**mezőbe írja be a következőt: *myBackendPool*.
+
+1. Válassza **a háttér hozzáadása**lehetőséget. A **háttérbeli gazdagép típusa**beállításnál válassza a *app Service*lehetőséget.
+
+1. Válassza ki az előfizetését, majd válassza ki a **háttérbeli állomásnév**alapján létrehozott első webalkalmazást. Ebben a példában a webalkalmazás *WebAppContoso-1*volt. Válassza a **Hozzáadás** lehetőséget.
+
+1. Válassza **a háttér hozzáadása** elemet. A **háttérbeli gazdagép típusa**beállításnál válassza a *app Service*lehetőséget.
+
+1. Válassza ki az előfizetést, majd válassza ki a **háttérbeli állomásnév**alapján létrehozott második webalkalmazást. Válassza a **Hozzáadás** lehetőséget.
+
+   ![Háttérbeli gazdagép hozzáadása a bejárati ajtóhoz](media/quickstart-create-front-door/add-backend-host-to-pool-for-front-door.png)
+
+Végül adjon hozzá egy útválasztási szabályt. Egy útválasztási szabály leképezi az előtér-gazdagépet a háttér-készletre. A szabály továbbítja a kérést `contoso-frontend.azurefd.net` a **myBackendPool**.
+
+1. Még mindig **hozzon létre egy bejárati ajtót**, az **+** **útválasztási szabályok**területen válassza az útválasztási szabály konfigurálását.
+
+1. A **szabály hozzáadása**területen a **név**mezőbe írja be a következőt: *LocationRule*. Fogadja el az összes alapértelmezett értéket, majd válassza a **Hozzáadás** lehetőséget az útválasztási szabály hozzáadásához.
+
+   >[!WARNING]
+   > Győződjön **meg arról, hogy** a bevezető ajtajában lévő összes előtér-gazdagéphez tartozik egy alapértelmezett elérési úttal`\*`() rendelkező útválasztási szabály. Vagyis az összes útválasztási szabályhoz az alapértelmezett elérési úton (`\*`) megadott előtér-gazdagépekhez legalább egy útválasztási szabálynak kell tartoznia. Ha ezt elmulasztja, akkor a végfelhasználói forgalom nem lesz megfelelően átirányítva.
+
+1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás**lehetőséget.
+
+   ![Azure-beli bejárati ajtó konfigurálva](media/quickstart-create-front-door/configuration-of-front-door.png)
+
+## <a name="view-azure-front-door-in-action"></a>Azure-beli bejárati ajtó megtekintése működés közben
+
+Miután létrehozta a bejárati ajtót, eltarthat néhány percig, amíg a konfiguráció globálisan üzembe helyezhető. Ha elkészült, nyissa meg a létrehozott előtér-gazdagépet. A böngészőben nyissa meg `contoso-frontend.azurefd.net`a következőt:. A rendszer automatikusan átirányítja a kérést a legközelebbi kiszolgálóra a háttér-készletben lévő megadott kiszolgálókról.
+
+Ha létrehozta ezeket az alkalmazásokat ebben a rövid útmutatóban, megjelenik egy információs oldal.
+
+Az azonnali globális feladatátvétel teszteléséhez hajtsa végre a következő lépéseket:
+
+1. Nyisson meg egy böngészőt a fentiekben leírtak szerint, és nyissa meg a frontend címe: `contoso-frontend.azurefd.net`.
+
+1. A Azure Portal keresse meg és válassza ki az *app Services*elemet. Görgessen le, és keresse meg a webalkalmazások egyikét, a **WebAppContoso-1** ebben a példában.
+
+1. Válassza ki a webalkalmazást, majd kattintson a **Leállítás**, majd az **Igen** gombra az ellenőrzéshez.
+
+1. Frissítse a böngészőjét. Ugyanezt az információs oldalt kell látnia.
+
+   >[!TIP]
+   >Ezekhez a műveletekhez kevés a késés. Előfordulhat, hogy újra kell frissítenie.
+
+1. Keresse meg a másik webalkalmazást, és állítsa le is.
+
+1. Frissítse a böngészőjét. Ekkor egy hibaüzenet jelenik meg.
+
+   ![A webalkalmazás mindkét példánya leállt](media/quickstart-create-front-door/service-has-been-stopped.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a **myResourceGroupFD1**, **myResourceGroupFD2**és **myResourceGroupFD0** erőforráscsoportokat:
+
+Miután elkészült, eltávolíthatja az összes létrehozott elemet. Egy erőforráscsoport törlésekor a tartalma is törlődik. Ha nem kívánja ezt a bejárati ajtót használni, távolítsa el az erőforrásokat a szükségtelen költségek elkerülése érdekében.
+
+1. A Azure Portal keresse meg és válassza ki az **erőforráscsoportot**, vagy válassza az **erőforráscsoportok** lehetőséget a Azure Portal menüből.
+
+1. Szűrje vagy görgessen lefelé, és keresse meg az erőforráscsoportot, például **FrontDoorQS_rg0**.
+
+1. Válassza ki az erőforráscsoportot, majd válassza az **erőforráscsoport törlése**elemet.
+
+   >[!WARNING]
+   >Ez a művelet Irreversable.
+
+1. Írja be az erőforráscsoport nevét az ellenőrzéshez, majd válassza a **Törlés**lehetőséget.
+
+Ismételje meg a másik két csoport eljárását.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban egy Front Door-profilt hoztunk létre, amellyel átirányíthattuk egy magas rendelkezésre állást és maximális teljesítményt igénylő webalkalmazás adatforgalmát. Az adatforgalom átirányításáról a Front Door által használt [Útválasztási módszereket](front-door-routing-methods.md) ismertető dokumentumban olvashat.
+
+A következő cikkből megtudhatja, hogyan adhat hozzá egyéni tartományt az előtérben.
+> [!div class="nextstepaction"]
+> [Egyéni tartomány hozzáadása](front-door-custom-domain.md)
+
+További információ az útválasztási forgalomról: a [bejárati ajtó útválasztási módszerei](front-door-routing-methods.md).

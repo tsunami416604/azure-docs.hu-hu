@@ -1,7 +1,7 @@
 ---
-title: Az Űrlapfelismerő mintacímkéző eszköz telepítése
+title: Az űrlap-felismerő minta címkézési eszközének üzembe helyezése
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogy miként helyezheti üzembe az Űrlapfelismerő mintacímkéző eszközt a felügyelt tanulás elősegítésére.
+description: Ismerje meg a felügyelt tanulást segítő űrlap-felismerő minta címkéző eszköz különböző módszereit.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,56 +9,56 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7ddb4b2cd465b5e9542d777d33b9bd8cb952becd
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81531337"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117267"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>A mintacímkézési eszköz üzembe helyezése
 
-Az Űrlapfelismerő mintacímkéző eszköz egy olyan alkalmazás, amely egyszerű felhasználói felületet biztosít, amelyet manuálisan címkézhet fel az űrlapok (dokumentumok) felügyelet iránti tanulás céljából. Ebben a cikkben olyan hivatkozásokat és utasításokat adunk, amelyek megtanítják, hogyan kell:
+Az űrlap-felismerő minta címkéző eszköz egy egyszerű felhasználói felületet (UI) biztosító alkalmazás, amellyel a felügyelt tanulás érdekében manuálisan címkézheti az űrlapokat (dokumentumokat). Ebben a cikkben a következőkre mutató hivatkozásokat és utasításokat mutatjuk be:
 
-* [A mintacímkéző eszköz helyi futtatása](#run-the-sample-labeling-tool-locally)
-* [A mintacímkéző eszköz üzembe helyezése egy Azure Container Instance (ACI)](#deploy-with-azure-container-instances-aci)
-* [A nyílt forráskódú OCR-űrlapcímkéző eszköz használata és közreműködése](#open-source-on-github)
+* [A minta feliratozási eszköz helyi futtatása](#run-the-sample-labeling-tool-locally)
+* [A minta-címkéző eszköz üzembe helyezése Azure Container Instanceban (ACI)](#deploy-with-azure-container-instances-aci)
+* [A nyílt forráskódú OCR űrlap feliratozási eszközének használata és hozzájárulása](#open-source-on-github)
 
-## <a name="run-the-sample-labeling-tool-locally"></a>A mintacímkéző eszköz helyi futtatása
+## <a name="run-the-sample-labeling-tool-locally"></a>A minta feliratozási eszköz helyi futtatása
 
-Az adatok címkézésének megkezdésének leggyorsabb módja a mintacímkéző eszköz helyi futtatása. A következő rövid útmutató a Form Recognizer REST API-t és a mintacímkéző eszközt használja egy egyéni modell manuálisan címkézett adatokkal történő betanításához. 
+Az adatfelirat megkezdésének leggyorsabb módja a minta feliratozási eszköz helyi futtatása. A következő rövid útmutató az űrlap-felismerő REST API és a minta-címkézési eszközt használja az egyéni modell manuális címkézett adattal való betanításához. 
 
-* [Rövid útmutató: Űrlapok címkézése, modell betanítása és űrlap elemzése a mintacímkéző eszközzel](./quickstarts/label-tool.md).
+* Rövid útmutató [: űrlapok címkézése, modell betanítása és az űrlap elemzése a minta feliratozási eszköz használatával](./quickstarts/label-tool.md).
 
-## <a name="deploy-with-azure-container-instances-aci"></a>Üzembe helyezés az Azure Container Instances (ACI) segítségével
+## <a name="deploy-with-azure-container-instances-aci"></a>Üzembe helyezés Azure Container Instancessal (ACI)
 
-Mielőtt elkezdené, fontos megjegyezni, hogy két módon telepítheti a mintacímkéző eszközt egy Azure Container Instance (ACI). Mindkét beállítás az ACI-vel való mintacímkéző eszköz futtatásához használható: 
+Mielőtt elkezdenénk, fontos megjegyezni, hogy kétféleképpen lehet üzembe helyezni a minta-címkézési eszközt az Azure Container instance (ACI) szolgáltatásban. Mindkét lehetőség a minta feliratozási eszközének az ACI-val való futtatására szolgál. 
 
 * [Az Azure Portal használata](#azure-portal)
 * [Az Azure CLI-vel](#azure-cli)
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Az alábbi lépésekkel új erőforrást hozhat létre az Azure Portalon: 
+Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Portal használatával: 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/signin/index/).
 2. Válassza az **Erőforrás létrehozása** lehetőséget. 
-3. Ezután válassza a **Web App**lehetőséget . 
+3. Ezután válassza a **webalkalmazás**lehetőséget. 
 
    > [!div class="mx-imgBorder"]
    > ![Webalkalmazás kiválasztása](./media/quickstarts/formre-create-web-app.png)
    
-4. Először győződjön meg arról, hogy az **Alapok** lap ki van jelölve. Meg kell adnia néhány információt: 
+4. Először is győződjön meg arról, hogy az **alapvető beállítások** lap van kiválasztva. Most meg kell adnia néhány információt: 
 
    > [!div class="mx-imgBorder"]
    > ![Alapismeretek kiválasztása](./media/quickstarts/formre-select-basics.png)
-   * Előfizetés – Meglévő Azure-előfizetés kiválasztása
-   * Erőforráscsoport – Újra felhasználhat egy meglévő erőforráscsoportot, vagy létrehozhat egy újat ehhez a projekthez. Új erőforráscsoport létrehozása ajánlott.
-   * Név – Adjon nevet a webalkalmazásnak. 
-   * Közzététel – **Docker-tároló** kiválasztása
-   * Operációs rendszer - Válassza a **Linux ot**
-   * Régió – Válasszon egy olyan régiót, amely nek van értelme az Ön számára.
-   * Linux-csomag – Válasszon ki egy tarifacsomagot/csomagot az alkalmazásszolgáltatáshoz. 
+   * Előfizetés – válasszon ki egy meglévő Azure-előfizetést
+   * Erőforráscsoport – felhasználhat egy meglévő erőforráscsoportot, vagy létrehozhat egy újat ehhez a projekthez. Az új erőforráscsoport létrehozása ajánlott.
+   * Név – adja meg a webalkalmazás nevét. 
+   * Közzététel – a **Docker-tároló** kiválasztása
+   * Operációs rendszer – **Linux** kiválasztása
+   * Régió – válasszon egy olyan régiót, amely logikus.
+   * Linux-csomag – válassza ki az App Service díjszabási szintjét/tervét. 
 
    > [!div class="mx-imgBorder"]
    > ![A webalkalmazás konfigurálása](./media/quickstarts/formre-select-docker-linux.png)
@@ -66,63 +66,63 @@ Az alábbi lépésekkel új erőforrást hozhat létre az Azure Portalon:
 5. Ezután válassza a **Docker** fület. 
 
    > [!div class="mx-imgBorder"]
-   > ![Válassza a Docker lehetőséget](./media/quickstarts/formre-select-docker.png)
+   > ![Docker kiválasztása](./media/quickstarts/formre-select-docker.png)
 
-6. Most konfiguráljuk a Docker-tárolót. Minden mező szükséges, kivéve, ha másként van feltüntetve:
+6. Most konfigurálja a Docker-tárolót. Az összes mező megadása kötelező, kivéve, ha másként jelezzük:
 
-   * Beállítások – **Egyetlen tároló** kijelölése
-   * Kép forrása – **Privát beállításjegyzék** kiválasztása 
-   * Kiszolgáló URL-címe - Állítsa be ezt`https://mcr.microsoft.com`
-   * Felhasználónév (nem kötelező) - Felhasználónév létrehozása. 
-   * Jelszó (nem kötelező) – Hozzon létre egy biztonságos jelszót, amelyre emlékezni fog.
-   * Kép és címke - Állítsa be ezt a`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
-   * Folyamatos üzembe helyezés – Állítsa ezt **be,** ha automatikus frissítéseket szeretne kapni, amikor a fejlesztőcsapat módosítja a mintacímkéző eszközt.
-   * Indítási parancs - Állítsa ezt a`./run.sh eula=accept`
+   * Beállítások – **egyetlen tároló** kijelölése
+   * Rendszerkép forrása – **privát beállításjegyzék** kiválasztása 
+   * Kiszolgáló URL-címe – Itt adhatja meg a következőt:`https://mcr.microsoft.com`
+   * Username (nem kötelező) – hozzon létre egy felhasználónevet. 
+   * Password (nem kötelező) – hozzon létre egy biztonságos jelszót, amelyet meg szeretne jegyezni.
+   * Rendszerkép és címke – ezt állítsa be a következőre:`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Folyamatos üzembe helyezés – állítsa be ezt **a** be értékre, ha automatikus frissítéseket szeretne kapni, amikor a fejlesztői csapat megváltoztatja a minta feliratozási eszközét.
+   * Indítási parancs – ezt állítsa be a következőre:`./run.sh eula=accept`
 
    > [!div class="mx-imgBorder"]
-   > ![Docker konfigurálása](./media/quickstarts/formre-configure-docker.png)
+   > ![A Docker konfigurálása](./media/quickstarts/formre-configure-docker.png)
 
-7. Ennyi az egész. Ezután válassza **a Véleményezés + Létrehozás**lehetőséget, majd a **Létrehozás lehetőséget** a webalkalmazás üzembe helyezéséhez. Ha elkészült, elérheti a webalkalmazást az erőforrás **áttekintése** című témakörben megadott URL-címen.
+7. Ennyi az egész. Ezután válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget a webalkalmazás üzembe helyezéséhez. Ha elkészült, elérheti a webalkalmazást az erőforrás **áttekintésében** megadott URL-címen.
 
 > [!NOTE]
-> A webalkalmazás létrehozásakor engedélyezési/hitelesítési beállításokat is konfigurálhat. Ez nem szükséges az első lépésekhez. 
+> A webalkalmazás létrehozásakor konfigurálhatja az engedélyezést és a hitelesítést is. Ez nem szükséges a kezdéshez. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure Portal használatával alternatívájaként létrehozhat egy erőforrást az Azure CLI használatával. Mielőtt folytatna, telepítenie kell az [Azure CLI-t.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Ezt a lépést kihagyhatja, ha már dolgozik az Azure CLI-vel. 
+A Azure Portal használatának alternatívájaként az Azure CLI használatával is létrehozhat egy erőforrást. A folytatás előtt telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t. Ezt a lépést kihagyhatja, ha már dolgozik az Azure CLI-vel. 
 
-Van néhány dolog, amit tudnia kell erről a parancsról:
+Itt van néhány dolog, amit tudnia kell a paranccsal kapcsolatban:
 
-* `DNS_NAME_LABEL=aci-demo-$RANDOM`véletlenszerű DNS-nevet hoz létre. 
-* Ez a minta feltételezi, hogy rendelkezik egy erőforráscsoporttal, amely segítségével hozzon létre egy erőforrást. Cserélje `<resource_group_name>` le az előfizetéshez társított érvényes erőforráscsoportra. 
-* Meg kell adnia, hogy hol szeretné létrehozni az erőforrást. Cserélje `<region name>` le a kívánt régiót a webalkalmazáshoz. 
-* Ez a parancs automatikusan elfogadja a eula-t.
+* `DNS_NAME_LABEL=aci-demo-$RANDOM`létrehoz egy véletlenszerű DNS-nevet. 
+* Ez a példa azt feltételezi, hogy rendelkezik egy olyan erőforráscsoporthoz, amelyet az erőforrások létrehozásához használhat. Helyettesítse `<resource_group_name>` be az előfizetéséhez tartozó érvényes erőforráscsoportot. 
+* Meg kell adnia, hogy hová szeretné létrehozni az erőforrást. Cserélje `<region name>` le a alkalmazást a kívánt régióra a webalkalmazáshoz. 
+* Ez a parancs automatikusan elfogadja a végfelhasználói licencszerződést.
 
-Az Azure CLI-ből futtassa ezt a parancsot egy webalkalmazás-erőforrás létrehozásához a mintacímkéző eszközhöz: 
+Az Azure CLI-ből futtassa ezt a parancsot egy webalkalmazás-erőforrás létrehozásához a minta feliratozási eszközhöz: 
 
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
 az container create \
-  --resource-group <resorunce_group_name> \
+  --resource-group <resource_group_name> \
   --name <name> \
   --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
   --cpu 2 \
-  --memory 8
+  --memory 8 \
   --command-line "./run.sh eula=accept"
 ```
 
-### <a name="connect-to-azure-ad-for-authorization"></a>Csatlakozás az Azure AD-hez engedélyezésre
+### <a name="connect-to-azure-ad-for-authorization"></a>Kapcsolódás az Azure AD-hez az engedélyezéshez
 
-Javasoljuk, hogy csatlakoztassa a webalkalmazást az Azure Active Directoryhoz. Ez biztosítja, hogy csak az érvényes hitelesítő adatokkal rendelkező felhasználók jelentkezhessenek be és használhassák a webalkalmazást. Kövesse az [App Service-alkalmazás konfigurálása az](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) Azure Active Directoryhoz való csatlakozáshoz című, az utasításokat.
+Javasoljuk, hogy a webalkalmazást Azure Active Directoryhoz kapcsolja. Ez biztosítja, hogy csak érvényes hitelesítő adatokkal rendelkező felhasználók jelentkezhetnek be és használhatják a webalkalmazást. A Azure Active Directoryhoz való kapcsolódáshoz kövesse az [app Service alkalmazás konfigurálása](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) című témakör utasításait.
 
-## <a name="open-source-on-github"></a>Nyílt forráskódú a GitHubon
+## <a name="open-source-on-github"></a>Nyílt forráskód a GitHubon
 
-Az OCR-űrlapcímkéző eszköz nyílt forráskódú projektként is elérhető a GitHubon. Az eszköz egy webes alkalmazás segítségével készült React + Redux, és meg van írva TypeScript. További információért vagy közreműködésért olvassa el [az OCR-űrlapcímkéző eszköz .](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)
+Az OCR űrlap címkéző eszköze nyílt forráskódú projektként is elérhető a GitHubon. Az eszköz egy reakciós + Redux használatával létrehozott webalkalmazás, amely írógéppel van írva. További részletekért lásd: [OCR űrlap címkézése eszköz](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
 ## <a name="next-steps"></a>További lépések
 
-A [Train with labels](./quickstarts/label-tool.md) rövid útmutató segítségével megtudhatja, hogyan használhatja az eszközt a betanítási adatok manuális címkézésére és felügyelt tanulás végrehajtására.
+[A betanítási](./quickstarts/label-tool.md) útmutató segítségével megtudhatja, hogyan használhatja az eszközt a betanítási adatok manuális címkézéséhez és a felügyelt tanulás végrehajtásához.

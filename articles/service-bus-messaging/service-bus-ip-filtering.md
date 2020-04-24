@@ -1,6 +1,6 @@
 ---
-title: IP-tűzfalszabályok konfigurálása az Azure Service Bus szolgáltatáshoz
-description: Tűzfalszabályok használata adott IP-címekről az Azure Service Bushoz való csatlakozás engedélyezéséhez.
+title: A Azure Service Bus IP-tűzfalszabályok konfigurálása
+description: A tűzfalszabályok használata az adott IP-címekről Azure Service Bus való csatlakozás engedélyezéséhez.
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -11,54 +11,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 24591c20ed707d9541eece0698ecd6e6b5ddee35
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 9601689bbce9566b52664058911e9c45647152d6
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878187"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116818"
 ---
-# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>IP-tűzfalszabályok konfigurálása az Azure Service Bus szolgáltatáshoz
-Alapértelmezés szerint a Service Bus névterek érhetők el az internetről, amíg a kérelem érvényes hitelesítéssel és engedélyezéssel érkezik. Az IP-tűzfal lal tovább korlátozhatja a [CIDR (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelölésben lévő IPv4-címek vagy IPv4-címtartományok készletére.
+# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>A Azure Service Bus IP-tűzfalszabályok konfigurálása
+Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
 
-Ez a funkció olyan esetekben hasznos, amelyekben az Azure Service Bus csak bizonyos jól ismert helyekről érhető el. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekről származó forgalom fogadására. Ha például a Service Bus szolgáltatást [az Azure Express Route-szal][express-route]használja, létrehozhat egy **tűzfalszabályt,** amely csak a helyszíni infrastruktúra IP-címeiből vagy egy vállalati NAT-átjáró címéből engedélyezi a forgalmat. 
+Ez a funkció olyan helyzetekben hasznos, amikor a Azure Service Bus csak bizonyos jól ismert helyekről lehet elérhető. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekből származó forgalom fogadásához. Ha például az [Azure Express Route][express-route]Service Bust használja, létrehozhat egy **tűzfalszabályet** , amely lehetővé teszi, hogy csak a helyszíni infrastruktúra IP-címeiről vagy egy vállalati NAT-átjáró címéről érkező forgalom legyen. 
 
 > [!IMPORTANT]
-> A tűzfalak és a virtuális hálózatok csak a Service Bus **prémium** szintű csomagjában támogatottak. Ha az **első osztályú** szintre való frissítés nem lehetséges, javasoljuk, hogy tartsa meg a megosztott hozzáférésű aláírás (SAS) jogkivonatot biztonságosan, és csak a jogosult felhasználókkal ossza meg. A SAS-hitelesítésről a [Hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md#shared-access-signature)című témakörben talál további információt.
+> A tűzfalak és a virtuális hálózatok csak a **prémium** szintű Service Bus támogatottak. Ha a **Premier** szintre való frissítés nem egy lehetőség, javasoljuk, hogy a közös hozzáférésű aláírás (SAS) tokenjét biztonságos módon őrizze meg, és csak a jogosult felhasználók férhessenek hozzá. További információ az SAS-hitelesítéssel kapcsolatban: [hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md#shared-access-signature).
 
-## <a name="ip-firewall-rules"></a>IP tűzfalszabályai
-Az IP-tűzfal szabályok a Service Bus névtér szintjén kerülnek alkalmazásra. Ezért a szabályok a támogatott protokollt használó ügyfelek összes kapcsolatára vonatkoznak. A Service Bus névterén engedélyezett IP-szabálynak nem megfelelő IP-címről érkező csatlakozási kísérlet nem engedélyezett. A válasz nem említi az IP-szabályt. Az IP-szűrőszabályok sorrendben kerülnek alkalmazásra, és az IP-címnek megfelelő első szabály határozza meg az elfogadási vagy elutasítási műveletet.
+## <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
+Az IP-tűzfalszabályok a Service Bus névtér szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Olyan IP-címről érkező csatlakozási kísérletek, amely nem felel meg a Service Bus névtérben lévő engedélyezett IP-szabálynak, a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt. Az IP-szűrési szabályok sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
+
+>[!WARNING]
+> A tűzfalszabályok bevezetésével megakadályozhatja, hogy más Azure-szolgáltatások a Service Bus használatával kommunikálnak.
+>
+> A megbízható Microsoft-szolgáltatások használata nem támogatott, ha az IP-szűrés (tűzfalszabályok) be van vezetve, és hamarosan elérhetővé válik.
+>
+> Általános Azure-forgatókönyvek, amelyek nem működnek az IP-szűréssel (vegye figyelembe, hogy a lista **nem** teljes) –
+> - Integráció a Azure Event Grid
+> - Azure IoT Hub útvonalak
+> - Azure IoT Device Explorer
+>
+> A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
+> - Azure App Service
+> - Azure Functions
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
-Ez a szakasz bemutatja, hogyan használhatja az Azure Portalon a Service Bus-névtér IP-tűzfalszabályainak létrehozásához. 
+Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Portal IP-tűzfalszabályok létrehozásához egy Service Bus névtérhez. 
 
-1. Nyissa meg a **Service Bus-névteret** az [Azure Portalon.](https://portal.azure.com)
-2. A bal oldali menüben válassza a **Hálózat lehetőséget.** Alapértelmezés szerint a **Minden hálózat** beállítás be van jelölve. A Service Bus-névtér bármely IP-címről fogad kapcsolatokat. Ez az alapértelmezett beállítás megegyezik a 0.0.0.0/0 IP-címtartományt elfogadó szabállyal. 
+1. Navigáljon a **Service Bus névtérhez** a [Azure Portal](https://portal.azure.com).
+2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget. Alapértelmezés szerint a **minden hálózat** beállítás van kiválasztva. A Service Bus névtér bármely IP-címről fogad kapcsolatokat. Ez az alapértelmezett beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
 
-    ![Tűzfal – Minden hálózat beállítás kiválasztva](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
-1. Válassza a **Kijelölt hálózatok** lehetőséget a lap tetején. A **Tűzfal** szakaszban hajtsa végre az alábbi lépéseket:
-    1. Válassza **az Ügyfél IP-címének hozzáadása** lehetőséget, ha az aktuális ügyfél IP-címét szeretné elérni a névtérhez. 
-    2. A **címtartományhoz**adjon meg egy adott IPv4-címet vagy egy IPv4-címet CIDR-jelöléssel. 
-    3. Adja meg, hogy engedélyezi-e a **megbízható Microsoft-szolgáltatásoknak a tűzfal megkerülését.** 
+    ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+1. Válassza ki a **kijelölt hálózatok** lehetőséget az oldal tetején. A **tűzfal** szakaszban kövesse az alábbi lépéseket:
+    1. Válassza az **ügyfél IP-címének hozzáadása** lehetőséget, hogy a jelenlegi ügyfél IP-címe hozzáférjen a névtérhez. 
+    2. A **címtartomány**mezőben adjon meg egy adott IPv4-címeket vagy IPv4-CÍMTARTOMÁNYT a CIDR-jelölésben. 
+    3. Itt adhatja meg, hogy szeretné- **e engedélyezni a megbízható Microsoft-szolgáltatások számára a tűzfal megkerülését**. 
 
-        ![Tűzfal – Minden hálózat beállítás kiválasztva](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
-3. A beállítások mentéséhez válassza a **Mentés** gombot az eszköztáron. Várjon néhány percet, amíg a visszaigazolás megjelenik a portálértesítésein.
+        ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+3. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra az eszköztáron. Várjon néhány percet, hogy a megerősítés megjelenjen a portál értesítésein.
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sablon használata
-Ez a szakasz egy minta Azure Resource Manager sablon, amely létrehoz egy virtuális hálózatot és egy tűzfalszabályt.
+Ez a szakasz egy minta Azure Resource Manager sablonnal rendelkezik, amely létrehoz egy virtuális hálózatot és egy tűzfalszabály-szabályt.
 
 
-A következő Erőforrás-kezelő sablon lehetővé teszi egy virtuális hálózati szabály hozzáadását egy meglévő Service Bus-névtérhez.
+A következő Resource Manager-sablon lehetővé teszi egy virtuális hálózati szabály hozzáadását egy meglévő Service Bus névtérhez.
 
 Sablon paraméterei:
 
-- **Az ipMask** egyetlen IPv4-cím vagy IP-címek blokkja CIDR jelöléssel. A CIDR 70.37.104.0/24 jelölésében például a 256 IPv4-cím 70.37.104.0 és 70.37.104.255 között, 24 pedig a tartomány jelentős előtagbiteinek számát jelzi.
+- a **ipMask** egy IPv4-cím vagy IP-cím CIDR-jelölésű blokkja. A CIDR 70.37.104.0/24 jelölése például 256 a 70.37.104.0 és a 70.37.104.255 közötti IPv4-címeket jelöli, és 24 a tartomány jelentős előtagjának számát jelzi.
 
 > [!NOTE]
-> Bár nincsenek megtagadási szabályok lehetséges, az Azure Resource Manager-sablon az alapértelmezett művelet beállítása **"Engedélyezés",** amely nem korlátozza a kapcsolatokat.
-> A virtuális hálózat vagy a tűzfalak szabályainak megalkotásakor meg kell változtatnunk a ***"defaultAction"***
+> Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.
+> Virtual Network vagy tűzfalakra vonatkozó szabályok végrehajtásakor módosítania kell a ***"defaultAction"***
 > 
-> honnan
+> a
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -134,9 +148,9 @@ A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]
 
 ## <a name="next-steps"></a>További lépések
 
-A Service Bus és az Azure virtuális hálózatok elérésének korlátozását az alábbi hivatkozásban veheti el:
+Az Azure-beli virtuális hálózatokhoz való Service Bus hozzáférésének korlátozásához tekintse meg a következő hivatkozást:
 
-- [Virtuális hálózati szolgáltatás végpontjai a service bushoz][lnk-vnet]
+- [Service Bus Virtual Network szolgáltatási végpontok][lnk-vnet]
 
 <!-- Links -->
 

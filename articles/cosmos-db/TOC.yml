@@ -112,7 +112,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: Ütközéstípusok és -feloldási szabályzatok
-          displayName: 'last write wins, custom'
+          displayName: 'last write wins, custom, multi master, multi-master'
           href: conflict-resolution-policies.md
         - name: Globális terjesztés – technikai részletek
           href: global-dist-under-the-hood.md
@@ -1180,8 +1180,8 @@
       href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
-    - name: A több főkiszolgálós telepítés előnyei
-      href: multi-master-benefits.md
+    - name: Teljesítményszintek
+      href: performance-levels.md
     - name: Használati esetek
       items:
         - name: Gyakori használati helyzetek

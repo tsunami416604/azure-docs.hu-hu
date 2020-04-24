@@ -1,21 +1,15 @@
 ---
 title: Azure rövid útmutató – Batch-feladat futtatása – .NET
-description: Gyorsan futtathat egy Azure Batch-mintafeladatot és feladatokat egy C# alkalmazásból a Batch .NET ügyfélkódtárral.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.devlang: dotnet
+description: A Batch .NET ügyféloldali függvénytárával gyorsan futtathat egy Azure Batch-és egy C#-alkalmazásból származó feladatot.
 ms.topic: quickstart
 ms.date: 11/29/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 809ca9d9aafa813e05dea81eb05616eefcc65472
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1163d63f8cbd6afedfb6e5323fa469059fa8021c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77017207"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117216"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rövid útmutató: Az első Azure Batch-feladat futtatása a .NET API használatával
 
@@ -27,13 +21,13 @@ Ez a rövid útmutató egy Azure Batch-feladatot futtat egy, az Azure Batch .NET
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Visual Studio 2017 vagy újabb,](https://www.visualstudio.com/vs)illetve [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linuxra, macOS-re vagy Windows rendszerre. 
+* [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/vs), vagy [.net Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linux, MacOS vagy Windows rendszerhez. 
 
 * Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat. 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
@@ -47,7 +41,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Váltson a Visual Studio `BatchDotNetQuickstart.sln` nevű megoldásfájlját tartalmazó könyvtárra.
 
-Nyissa meg a megoldásfájlt a Visual Studióban, és frissítse a `Program.cs` hitelesítő adatait a fiókokhoz beszerzett értékekkel. Példa:
+Nyissa meg a megoldásfájlt a Visual Studióban, és frissítse a `Program.cs` hitelesítő adatait a fiókokhoz beszerzett értékekkel. Például:
 
 ```csharp
 // Batch account credentials
@@ -70,7 +64,7 @@ A Batch-munkafolyamat működésének megtekintéséhez hozza létre és futtass
 
 * Erősítse meg a NuGet-csomagok visszaállítását, ha a rendszer erre kéri. Ha hiányzó csomagokat kell letöltenie, győződjön meg arról, hogy a [NuGet-csomagkezelő](https://docs.nuget.org/consume/installing-nuget) telepítve van.
 
-Ezután futtassa azt. A mintaalkalmazás futtatásakor a konzol kimenete az alábbihoz hasonló lesz. A futtatás során szünet jelentkezhet a következőnél a készlet számítási csomópontjainak indításakor: `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`. A rendszer azonnal a futtatási várólistára helyezi a tevékenységeket, amint az első számítási csomópont fut. Nyissa meg a Batch-fiókot az [Azure Portalon](https://portal.azure.com) a készlet, a számítási csomópontok, a feladat és a feladatok figyeléséhez.
+Ezután futtassa azt. A mintaalkalmazás futtatásakor a konzol kimenete az alábbihoz hasonló lesz. A futtatás során szünet jelentkezhet a következőnél a készlet számítási csomópontjainak indításakor: `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`. A rendszer azonnal a futtatási várólistára helyezi a tevékenységeket, amint az első számítási csomópont fut. A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez nyissa meg a [Azure Portal](https://portal.azure.com) batch-fiókját.
 
 ```
 Sample start: 11/16/2018 4:02:54 PM

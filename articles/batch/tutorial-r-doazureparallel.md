@@ -1,22 +1,16 @@
 ---
 title: Párhuzamos R-szimuláció az Azure Batch segítségével
 description: Oktatóanyag – részletes útmutató Monte Carlo pénzügyi szimulációjának futtatásához az Azure Batchben az R doAzureParallel csomag használatával
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c9708360df4a7fb711a3d57b39f33c576c75a0d5
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77025843"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117097"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Oktatóanyag: párhuzamos R-szimuláció futtatása az Azure Batch segítségével 
 
@@ -40,12 +34,12 @@ Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe egy Batch-készletet és 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>A doAzureParallel telepítése
 
-Az RStudio konzolon telepítse a [doAzureParallel GitHub csomagot.](https://www.github.com/Azure/doAzureParallel) Az alábbi parancsok letöltik és telepítik a csomagot és függőségeit az aktuális R-munkamenetbe: 
+A RStudio-konzolon telepítse a [DoAzureParallel GitHub-csomagot](https://www.github.com/Azure/doAzureParallel). Az alábbi parancsok letöltik és telepítik a csomagot és függőségeit az aktuális R-munkamenetbe: 
 
 ```R
 # Install the devtools package  
@@ -226,7 +220,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-A szimuláció kiosztja a tevékenységeket a Batch-készlet csomópontjainak. A tevékenység látható a készlet hőtérképén az Azure Portalon]. Nyissa meg a **Batch-fiókok** > *myBatchAccount .* Kattintson **a** > *Készletek myPoolName elemre.* 
+A szimuláció kiosztja a tevékenységeket a Batch-készlet csomópontjainak. A tevékenység látható a készlet hőtérképén az Azure Portalon]. Nyissa meg a **Batch-fiókok** > *myBatchAccount*. Kattintson a **készletek** > *myPoolName*elemre. 
 
 ![Párhuzamos R-feladatokat futtató készlet hőtérképe](media/tutorial-r-doazureparallel/pool.png)
 

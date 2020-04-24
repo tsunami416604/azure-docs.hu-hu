@@ -1,6 +1,6 @@
 ---
-title: Az Azure NetApp Files oracle-adatbázissal való használatának előnyei | Microsoft dokumentumok
-description: Ez a témakör a technológiát ismerteti, és teljesítmény-összehasonlítást biztosít az Oracle Direct NFS (dNFS) és a hagyományos NFS-ügyfél között. A dNFS és az Azure NetApp-fájlok használatának előnyeit jeleníti meg.
+title: A Azure NetApp Files és a Oracle Database használatának előnyei | Microsoft Docs
+description: Leírja a technológiát, és teljesítménybeli összehasonlítást biztosít az Oracle Direct NFS (dNFS) és a hagyományos NFS-ügyfél között. A dNFS és a Azure NetApp Files használatának előnyeit mutatja be.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,52 +12,54 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 04/23/2020
 ms.author: b-juche
-ms.openlocfilehash: a73da39dafcc8be78fbe1c023693ffa4a19aa1d3
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 56322dc8def288ed388713e143f6b77816360ba3
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085008"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117046"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Az Azure NetApp Files Oracle Database-szel való használatának előnyei
 
-Az Oracle Direct NFS (dNFS) lehetővé teszi, hogy nagyobb teljesítményt nyújtson, mint az operációs rendszer saját NFS-illesztőprogramja. Ez a cikk ismerteti a technológiát, és teljesítmény-összehasonlítást biztosít a dNFS és a hagyományos NFS-ügyfél (Kernel NFS) között. Azt is bemutatja az előnyöket és a könnyű használata dNFS Az Azure NetApp Files.  
+Az Oracle Direct NFS (dNFS) lehetővé teszi, hogy a teljesítmény nagyobb legyen, mint az operációs rendszer saját NFS-illesztőprogramja. Ez a cikk ismerteti a technológiát, és teljesítménybeli összehasonlítást biztosít a dNFS és a hagyományos NFS-ügyfél (kernel NFS) között. Emellett a dNFS előnyeit és könnyű használatát is megjeleníti Azure NetApp Files használatával.  
 
 ## <a name="how-oracle-direct-nfs-works"></a>Az Oracle Direct NFS működése
 
-Az Oracle Direct NFS (dNFS) megkerüli az operációs rendszer puffergyorsítótárát. Az adatok gyorsítótárba helyezéséhez csak egyszer kerül sor a felhasználói térben, így a memóriamásolatok többletterhelése kiküszöböli a gyorsítótárat.  
+Az alábbi összefoglalás azt ismerteti, hogyan működik az Oracle Direct NFS magas szinten:
 
-A hagyományos NFS-ügyfél egyetlen hálózati folyamatot használ, ahogy a következő példa mutatja: 
+* Az Oracle Direct NFS megkerüli az operációs rendszer pufferének gyorsítótárát. Az adatokat a rendszer csak egyszer gyorsítótárazza a felhasználói térben, kiküszöbölve a memória-másolatok terhelését.  
 
-![Hagyományos NFS-ügyfél egyetlen hálózati folyamathasználatával](../media/azure-netapp-files/solutions-traditional-nfs-client-using-single-network-flow.png)
+* A hagyományos NFS-ügyfél egyetlen hálózati folyamatot használ, ahogy az az alábbi ábrán látható:    
 
-Ezzel szemben az Oracle dNFS javítja a teljesítményt azáltal, hogy több hálózati folyamat on-át terheléselosztási hálózati forgalmat bonyolít. Ez a képesség lehetővé teszi az Oracle-adatbázis számára, hogy dinamikusan hozzon létre jelentős számú 650 különböző hálózati kapcsolatot, amint azt az alábbi példa mutatja:  
+    ![Hagyományos NFS-ügyfél egyetlen hálózati folyamat használatával](../media/azure-netapp-files/solutions-traditional-nfs-client-using-single-network-flow.png)
 
-![Az Oracle Direct NFS teljesítményének javítása](../media/azure-netapp-files/solutions-oracle-direct-nfs-performance-load-balancing.png)
+    Az Oracle Direct NFS tovább javítja a teljesítményt a hálózati forgalom több hálózati folyamaton keresztüli terheléselosztásával. A tesztelt és az alább látható módon 650 különböző hálózati kapcsolatok lettek dinamikusan létrehozva a Oracle Database:  
 
-A [Direct NFS Oracle FAQ azt](http://www.orafaq.com/wiki/Direct_NFS) mutatja, hogy az Oracle dNFS optimalizált NFS-ügyfél. Gyors és skálázható hozzáférést biztosít a NAS tárolóeszközökön található NFS-tárolókhoz (TCP/IP-n keresztül érhető el). A dNFS ugyanúgy be van építve az adatbáziskernelbe, mint az ASM, amelyet elsősorban a DAS vagy a SAN storage használ. Mint ilyen, *az iránymutatás a dNFS használata a NAS-tároló és az ASM használata a SAN-tároló megvalósításakor.*
+    ![Az Oracle Direct NFS teljesítményének javítása](../media/azure-netapp-files/solutions-oracle-direct-nfs-performance-load-balancing.png)
 
-A dNFS az alapértelmezett beállítás az Oracle 18c-ban.
+A [közvetlen NFS-hez készült Oracle-GYIK](http://www.orafaq.com/wiki/Direct_NFS) azt mutatja, hogy az Oracle dNFS egy optimalizált NFS-ügyfél. Gyors és méretezhető hozzáférést biztosít a NAS-tárolóeszközökön található NFS-tárolóhoz (a TCP/IP protokollon keresztül érhető el). a dNFS az adatbázis-kernelhez van építve, amely az ASM, amelyet elsősorban a DAS vagy a SAN Storage használ. Ennek megfelelően *az útmutató a dNFS használata a NAS-tároló megvalósításakor és az ASM használata a Tárolóhálózati tároló megvalósításakor.*
 
-A dNFS az Oracle Database 11g-től kezdve érhető el. Az alábbi ábra összehasonlítja a dNFS-t a natív NFS-sel. DNFS használata esetén egy Azure virtuális gépen futó Oracle-adatbázis több I/O-t tud vezetni, mint a natív NFS-ügyfél.
+az dNFS az alapértelmezett beállítás az Oracle 18c.
 
-![Oracle és Azure NetApp Files a dNFS és a natív NFS összehasonlítása](../media/azure-netapp-files/solutions-oracle-azure-netapp-files-comparing-dnfs-native-nfs.png)
+a dNFS Oracle Database 11g kezdődően érhető el. Az alábbi ábra összehasonlítja a dNFS natív NFS-sel. A dNFS használatakor egy Azure-beli virtuális gépen futó Oracle-adatbázis nagyobb I/O-t tud vezetni a natív NFS-ügyféllel.
 
-A dNFS-t két parancs futtatásával és az adatbázis újraindításával engedélyezheti vagy letilthatja.
+![Az Oracle és a Azure NetApp Files dNFS összehasonlítása natív NFS-sel](../media/azure-netapp-files/solutions-oracle-azure-netapp-files-comparing-dnfs-native-nfs.png)
 
-Az engedélyezéshez:  
+Engedélyezheti vagy letilthatja a dNFS két parancs futtatásával és az adatbázis újraindításával.
+
+Engedélyezés:  
 `cd $ORACLE_HOME/rdbms/lib ; make -f ins_rdbms.mk dnfs_on`
 
 A letiltáshoz:  
 `cd $ORACLE_HOME/rdbms/lib ; make -f ins_rdbms.mk dnfs_off`
 
-## <a name="azure-netapp-files-combined-with-oracle-direct-nfs"></a>Azure NetApp-fájlok az Oracle Direct NFS-sel kombinálva
+## <a name="azure-netapp-files-combined-with-oracle-direct-nfs"></a>Azure NetApp Files az Oracle Direct NFS-sel együtt
 
-Az Azure NetApp Files szolgáltatással növelheti az Oracle dNFS teljesítményét. A szolgáltatás teljes körű vezérlést biztosít az alkalmazás teljesítményéhez. Rendkívül nagy igénybevételt jelentő alkalmazásoknak is megfelel. Az Oracle dNFS és az Azure NetApp Files kombinációja nagy előnyt jelent a számítási feladatok számára.
+Az Oracle-dNFS teljesítménye javítható a Azure NetApp Files szolgáltatással. A szolgáltatás teljes körű irányítást biztosít az alkalmazás teljesítményére. Rendkívül nagy igényű alkalmazásoknak is eleget tesz. Az Azure NetApp Files Oracle-dNFS kombinációja nagy mértékben kihasználja a számítási feladatokat.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Megoldásarchitektúrák az Azure NetApp Filesszal](azure-netapp-files-solution-architectures.md)
-- [Az Oracle alkalmazások és megoldások áttekintése az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-overview)
+- [Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-overview)

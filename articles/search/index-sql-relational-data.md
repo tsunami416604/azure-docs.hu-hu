@@ -1,54 +1,54 @@
 ---
-title: SQL relációs adatok modellezése importáláshoz és indexeléshez
+title: SQL-alapú kapcsolatok modellezése importáláshoz és indexeléshez
 titleSuffix: Azure Cognitive Search
-description: Ismerje meg, hogyan modellezi a relációs adatokat, de normalizált egy egyszerű eredményhalmaz, az indexelés és a teljes szöveges keresés az Azure Cognitive Search.
+description: Megtudhatja, hogyan modellezheti a viszonyítási adathalmazokat egy egyszerű eredményhalmaz alapján, az indexeléshez és a teljes szöveges kereséshez az Azure Cognitive Searchban.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3b973dd05d23d190c77986ca9bf6d39656739cd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72790092"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117569"
 ---
-# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Relációs SQL-adatok modellezése importáláshoz és indexeléshez az Azure Cognitive Search szolgáltatásban
+# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>A kapcsolódó SQL-adattípusok modellezése importáláshoz és indexeléshez az Azure-ban Cognitive Search
 
-Az Azure Cognitive Search egy sima sorhalmazt fogad el az [indexelési folyamat bemeneteként.](search-what-is-an-index.md) Ha a forrásadatok egy SQL Server relációs adatbázisillesztett tábláiból származnak, ez a cikk bemutatja, hogyan hozhat létre az eredményhalmazt, és hogyan modellezheti a szülő-gyermek kapcsolatot egy Azure Cognitive Search-indexben.
+Az Azure Cognitive Search egy egyszerű sorhalmazt fogad el bemenetként az [indexelési folyamathoz](search-what-is-an-index.md). Ha a forrásadatok egy SQL Server relációs adatbázisban lévő összekapcsolt táblákból származnak, ez a cikk az eredményhalmaz összeállítását és a szülő-gyermek kapcsolat Azure Cognitive Search indexben való modellezését mutatja be.
 
-Illusztrációként egy hipotetikus hoteladatbázisra hivatkozunk, amely [a bemutató adatokon](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels)alapul. Tegyük fel, hogy az adatbázis egy Hotels$ táblázatból áll, amely 50 szállodát tartalmaz, és egy Szobák$ asztal különböző típusú, árakés kényelmi szobákkal, összesen 750 szobával. A táblák között egy-a-többhöz kapcsolat van. Megközelítésünkben egy nézet biztosítja azt a lekérdezést, amely 50 sort, szállodánként egy sort ad vissza, és minden sorba beágyazódik a kapcsolódó szobarészletek.
+Illusztrációként egy feltételezett Hotels-adatbázisra fogunk hivatkozni, a [bemutató](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels)alapján. Tegyük fel, hogy az adatbázis egy 50-es Hotels $ Table-vel és egy, a különböző típusú, díjszabási és kényelmi lehetőséggel rendelkező szobával rendelkezik, és összesen 750 szobát tartalmaz. A táblák között egy-a-többhöz kapcsolat van. A megközelítésben a nézet megadja a lekérdezést, amely visszaadja a 50 sort, egy sort a szálloda egy sorában, és az egyes sorokba ágyazza be a kapcsolódó helyiségek részleteit.
 
-   ![Táblák és megtekintés a Szállodák adatbázisban](media/index-sql-relational-data/hotels-database-tables-view.png "Táblák és megtekintés a Szállodák adatbázisban")
+   ![Táblák és nézetek a Hotels adatbázisban](media/index-sql-relational-data/hotels-database-tables-view.png "Táblák és nézetek a Hotels adatbázisban")
 
 
-## <a name="the-problem-of-denormalized-data"></a>A probléma a denormalizált adatok
+## <a name="the-problem-of-denormalized-data"></a>A denormalizált adatmennyiség problémája
 
-Az egy-a-többhöz kapcsolatok használata során az egyik kihívás az, hogy az egyesített táblákra épülő szabványos lekérdezések denormalizált adatokat adnak vissza, ami nem működik jól az Azure Cognitive Search-forgatókönyvben. Vegye figyelembe a következő példát, amely csatlakozik a szállodákhoz és a szobákhoz.
+Az egy-a-többhöz kapcsolattal kapcsolatos egyik kihívás az, hogy az összekapcsolt táblákra épülő szabványos lekérdezések visszaadják a denormalizált adatok, amelyek nem működnek megfelelően az Azure Cognitive Search-forgatókönyvekben. Vegye figyelembe a következő példát, amely összekapcsolja a szállodákat és a szobákat.
 
 ```sql
 SELECT * FROM Hotels$
 INNER JOIN Rooms$
 ON Rooms$.HotelID = Hotels$.HotelID
 ```
-A lekérdezés eredményei visszaadják az összes Hotel mezőt, majd az összes Szoba mezőt, az előzetes szállodai adatok pedig minden szobaértékhez ismétlődnek.
+A lekérdezés eredményei visszaadják az összes szállodai mezőt, majd az összes hely mező értékét, az előzetes szállodai információk pedig minden egyes szobatípus esetében megismétlődnek.
 
-   ![Denormalizált adatok, redundáns szállodai adatok szobamezők hozzáadásakor](media/index-sql-relational-data/denormalize-data-query.png "Denormalizált adatok, redundáns szállodai adatok szobamezők hozzáadásakor")
+   ![Denormalizált adat, redundáns szállodai adat a helyiség mezőinek hozzáadásakor](media/index-sql-relational-data/denormalize-data-query.png "Denormalizált adat, redundáns szállodai adat a helyiség mezőinek hozzáadásakor")
 
 
-Bár ez a lekérdezés sikeres a felszínen (egy síksorkészlet összes adatának biztosítása), nem tudja biztosítani a megfelelő dokumentumstruktúrát a várt keresési élményhez. Az indexelés során az Azure Cognitive Search minden egyes bevitt sorhoz létrehoz egy keresési dokumentumot. Ha a keresési dokumentumok úgy nézett ki, mint a fenti eredmények, akkor volna érzékelt másolatai - hét külön dokumentumot a Twin Dome hotel egyedül. A lekérdezés a "szállodák Floridában" adna vissza hét eredményt csak a Twin Dome hotel, nyomja más releváns szállodák mélyen a keresési eredményeket.
+Habár ez a lekérdezés a felületen sikeres lesz (amely az összes adatát egy sík sorban adja meg), nem sikerül a megfelelő dokumentum-struktúrát kézbesíteni a várt keresési élményhez. Az indexelés során az Azure Cognitive Search egy keresési dokumentumot fog létrehozni az egyes betöltött sorokhoz. Ha a keresési dokumentumok a fenti eredményekhez hasonlóan látszanak, akkor a Twin Dome-beli hotelhez csak hét különálló dokumentumot kellene megtekinteni. A "Hotels in Florida" nevű lekérdezés hét eredményt ad vissza csupán a Twin Dome-szálloda számára, és a többi releváns szállodát kikényszeríti a keresési eredményekbe.
 
-Ahhoz, hogy a várt tapasztalat egy dokumentum egy szálloda, meg kell adnia egy sorhalmaza a megfelelő részletességgel, de teljes körű információkat. Szerencsére, meg tudod csinálni ezt könnyen elfogadásával a technikák ebben a cikkben.
+Ahhoz, hogy egy adott dokumentumhoz tartozó várható élményt igénybe vegye, meg kell adnia egy sorhalmazt a megfelelő részletességgel, de a teljes információval. Szerencsére ezt könnyedén elvégezheti a jelen cikkben ismertetett módszerek bevezetésével.
 
-## <a name="define-a-query-that-returns-embedded-json"></a>Beágyazott JSON-értéket visszaadó lekérdezés definiálása
+## <a name="define-a-query-that-returns-embedded-json"></a>Beágyazott JSON-t visszaadó lekérdezés definiálása
 
-A várt keresési élmény biztosításához az adatkészletnek az Azure Cognitive Search minden egyes keresési dokumentumához egy sorból kell állnia. A példánkban azt szeretnénk, hogy minden szállodához egy sor legyen, de azt is szeretnénk, ha a felhasználók más, a szobákkal kapcsolatos területeken is kereshetnének, mint például az éjszakai ár, az ágyak mérete és száma, vagy a strandra néző kilátás, amelyek mindegyike egy szoba részleteinek része.
+A várt keresési élmény biztosításához az adatkészletnek egy sorból kell állnia minden egyes keresési dokumentumhoz az Azure Cognitive Searchban. A példánkban egy sort szeretnénk használni az egyes hotelekhez, de azt is szeretnénk, hogy a felhasználók más, a helyiségekkel kapcsolatos mezőkre is képesek legyenek keresni, például az éjszakai díjszabás, a méret és az ágyak száma, illetve a strand nézete, amelyek mindegyike egy szoba részletének részét képezi.
 
-A megoldás az, hogy rögzítse a szoba részleteit beágyazott JSON-ként, majd helyezze be a JSON-struktúrát egy nézetben egy mezőbe, ahogy az a második lépésben látható. 
+A megoldás a helyiség részleteit beágyazott JSON-ként rögzíti, majd beszúrja a JSON-struktúrát egy nézet egyik mezőjébe, ahogy azt a második lépésben is mutatja. 
 
-1. Tegyük fel, hogy két összekapcsolt asztala van, szállodák $ és szobák$, amelyek 50 hotel és 750 szoba adatait tartalmazzák, és a HotelID mezőben csatlakoznak. Ezek az asztalok egyenként 50 szállodát és 750 kapcsolódó szobát tartalmaznak.
+1. Tegyük fel, hogy két, a 50-es és a 750-es, valamint a HotelID mezőhöz csatlakoztatott tábla, a Hotels $ és a Rooms $ érték szerepel. Ezek a táblázatok az 50-es és a 750-es kapcsolódó szobákat tartalmazzák.
 
     ```sql
     CREATE TABLE [dbo].[Hotels$](
@@ -84,7 +84,7 @@ A megoldás az, hogy rögzítse a szoba részleteit beágyazott JSON-ként, majd
     GO
     ```
 
-2. Hozzon létre egy nézetet a`SELECT * from dbo.Hotels$`szülőtábla ( ) összes mezőjéből, egy új *Szobák* mező hozzáadásával, amely egy beágyazott lekérdezés kimenetét tartalmazza. A **FOR JSON** `SELECT * from dbo.Rooms$` AUTO záradék szerkezetek a kimenet JSON. 
+2. Hozzon létre egy nézetet, amely a fölérendelt tábla összes mezőjéből áll (`SELECT * from dbo.Hotels$`), egy új *szobák* mező hozzáadásával, amely egy beágyazott lekérdezés kimenetét tartalmazza. A **for JSON Auto** záradék a `SELECT * from dbo.Rooms$` kimenet JSON-ként való felépítéséhez. 
 
      ```sql
    CREATE VIEW [dbo].[HotelRooms]
@@ -96,24 +96,24 @@ A megoldás az, hogy rögzítse a szoba részleteit beágyazott JSON-ként, majd
    GO
    ```
 
-   A következő képernyőképen látható a kapott nézet, a *Szobák* nvarchar mező alján. A *Szobák* mező csak a HotelRooms nézetben létezik.
+   A következő képernyőképen az eredményül kapott nézet jelenik meg, a *szobák* nvarchar mezője pedig alul található. A *szobák* mező csak a HotelSzobak nézetben létezik.
 
-   ![HotelSzobák kilátás](media/index-sql-relational-data/hotelsrooms-view.png "HoteRooms kilátás")
+   ![HotelSzobak nézet](media/index-sql-relational-data/hotelsrooms-view.png "HoteRooms nézet")
 
-1. Futtassa `SELECT * FROM dbo.HotelRooms` a sorkészlet beolvasásához. Ez a lekérdezés 50 sort ad vissza, szállodánként egyet, a kapcsolódó szobaadatokat JSON-gyűjteményként. 
+1. A `SELECT * FROM dbo.HotelRooms` sor beolvasásához futtassa a parancsot. Ez a lekérdezés 50 sort ad vissza, amely egy-egy helyen, a hozzá tartozó információval pedig JSON-gyűjteményként van társítva. 
 
-   ![Sorkészlet a HotelRooms nézetből](media/index-sql-relational-data/hotelrooms-rowset.png "Sorkészlet a HotelRooms nézetből")
+   ![Sorhalmaz a HotelSzobak nézetből](media/index-sql-relational-data/hotelrooms-rowset.png "Sorhalmaz a HotelSzobak nézetből")
 
-Ez a sorkészlet most már készen áll az Azure Cognitive Search importálására.
+Ez a sorhalmaz most már készen áll az Azure Cognitive Searchba való importálásra.
 
 > [!NOTE]
-> Ez a megközelítés feltételezi, hogy a beágyazott JSON az [SQL Server oszlopméret-korlátja](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)alatt van. Ha az adatok nem férnek el, kipróbálhat egy programozott megközelítést, amint azt a [Példa: Az AdventureWorks Inventory adatbázisának modellezése az Azure Cognitive Search számára.](search-example-adventureworks-modeling.md)
+> Ez a megközelítés azt feltételezi, hogy a beágyazott JSON a [SQL Server oszlopainak maximális mérete](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)alá esik. 
 
- ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>Összetett gyűjtemény használata egy-a-többhöz kapcsolat "több" oldalához
+ ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>Egy-a-többhöz kapcsolat "több" oldalához használjon összetett gyűjteményt
 
-Az Azure Cognitive Search oldalán hozzon létre egy indexsémát, amely az egy-a-többhöz kapcsolatot a beágyazott JSON használatával modellezi. Az előző szakaszban létrehozott eredményhalmaz általában megfelel az alábbi indexsémának (néhány mezőt röviden vágunk ki).
+Az Azure Cognitive Search oldalon hozzon létre egy index sémát, amely az egy-a-többhöz kapcsolatot modellezi a beágyazott JSON használatával. Az előző szakaszban létrehozott eredményhalmaz általában az alább megadott index-sémának felel meg (a kis-és nagyméretű mezőket kivágták).
 
-A következő példa hasonló az [Összetett adattípusok modellezése](search-howto-complex-data-types.md#creating-complex-fields)című példához. A *Szobák* struktúra, amely a cikk középpontjában állt, egy *hotel*nevű index mezőgyűjteményében található. Ez a példa a *Cím*összetett típusát is megjeleníti, amely abban különbözik a *Szobáktól,* hogy rögzített elemhalmazból áll, szemben a gyűjteményben engedélyezett elemek többszörös, tetszőleges számával.
+A következő példa hasonló az [összetett adattípusok modellezésének](search-howto-complex-data-types.md#creating-complex-fields)példához. A *termek* struktúrája, amely a cikk középpontjában szerepel, a *Hotels*nevű index mezőinek gyűjteménye. Ebben a példában egy összetett típust is mutatunk a *címekhez*, amely eltér a *szobák* rögzített készletének, a gyűjteményben engedélyezett többszörös, tetszőleges számú elemtől.
 
 ```json
 {
@@ -148,15 +148,15 @@ A következő példa hasonló az [Összetett adattípusok modellezése](search-h
 }
 ```
 
-Az előző eredményhalmaz és a fenti indexséma alapján rendelkezik a sikeres indexelési művelethez szükséges összes összetevővel. Az összeolvasztott adatkészlet megfelel az indexelési követelményeknek, mégis megőrzi a részletes információkat. Az Azure Cognitive Search indexben a keresési eredmények könnyen hotelalapú entitásokká esnek, miközben megőrzik az egyes szobák környezetét és azok attribútumait.
+Az előző eredményhalmaz és a fenti index séma miatt a sikeres indexelési művelethez minden szükséges összetevővel rendelkezik. Az összeolvasztott adatkészlet megfelel az indexelési követelményeknek, ugyanakkor megőrzi a részletes információkat. Az Azure Cognitive Search indexében a keresési eredmények könnyen bekerülnek a szállodai alapú entitásokra, miközben megőrizheti az egyes szobák és attribútumaik kontextusát.
 
 ## <a name="next-steps"></a>További lépések
 
-Saját adatkészlethasználatával az [Adatok importálása varázslóval](search-import-data-portal.md) hozhatja létre és töltheti be az indexet. A varázsló észleli a beágyazott JSON-gyűjteményt, például a *Rooms*gyűjteményben található gyűjteményt, és egy összetett típusgyűjteményt tartalmazó indexsémát következtet ki. 
+Az index létrehozásához és betöltéséhez használja az [adatimportálás varázsló](search-import-data-portal.md) segítségével a saját adatkészletét. A varázsló észleli a beágyazott JSON-gyűjteményt, például a *szobákban*találhatót, és egy összetett típusú gyűjteményt tartalmazó index sémát következtet ki. 
 
-  ![Az Adatok importálása varázsló által kikövetkeztetett index](media/index-sql-relational-data/search-index-rooms-complex-collection.png "Az Adatok importálása varázsló által kikövetkeztetett index")
+  ![Index következtetni az adatimportálás varázsló segítségével](media/index-sql-relational-data/search-index-rooms-complex-collection.png "Index következtetni az adatimportálás varázsló segítségével")
 
-Az alábbi rövid útmutatóval ismerkedjen meg az Adatok importálása varázsló alapvető lépéseivel.
+Az adatok importálása varázsló alapvető lépéseinek megismeréséhez próbálkozzon a következő rövid útmutatóval.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Keresési index létrehozása az Azure Portal használatával](search-get-started-portal.md)
+> [Gyors útmutató: keresési index létrehozása Azure Portal használatával](search-get-started-portal.md)

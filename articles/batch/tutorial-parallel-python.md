@@ -1,21 +1,16 @@
 ---
-title: Párhuzamos számítási feladat futtatása – Azure Batch Python
+title: Párhuzamos számítási feladatok futtatása
 description: Oktatóanyag – Médiafájlok párhuzamos feldolgozása ffmpeg segítségével az Azure Batchben a Batch Python ügyfélkódtár használatával
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: d4277e383a5cb69ef5395cb6dc477d888abd1d0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 32e42fe04ad8ce55bbbbb90e5aca6356fd1c6f22
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77023089"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117114"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a Python API használatával
 
@@ -37,13 +32,13 @@ Ebben az oktatóanyagban MP4-médiafájlokat konvertál párhuzamosan MP3 formá
 
 * [A Python 2.7-es, 3.3-as vagy újabb verziója](https://www.python.org/downloads/)
 
-* [pip](https://pip.pypa.io/en/stable/installing/) csomagkezelő
+* [pip](https://pip.pypa.io/en/stable/installing/) Package Manager
 
 * Egy Azure Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 
@@ -65,7 +60,7 @@ A Python-környezetében telepítse a szükséges csomagokat a `pip` segítség�
 pip install -r requirements.txt
 ```
 
-Nyissa meg a `config.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési sztringjét a fiókjaira jellemző egyedi értékekkel. Példa:
+Nyissa meg a `config.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési sztringjét a fiókjaira jellemző egyedi értékekkel. Például:
 
 
 ```Python
@@ -107,13 +102,13 @@ Sample end: 11/28/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez lépjen az Azure Portalon a Batch-fiókjába. Ha például a készletben lévő számítási csomópontok hőtérképét szeretné látni, kattintson a*LinuxFFmpegPool* **készletek** > elemre.
+A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez lépjen az Azure Portalon a Batch-fiókjába. Ha például meg szeretné tekinteni a készletben lévő számítási csomópontok Heat térképét, kattintson a **készletek** > *LinuxFFmpegPool*elemre.
 
 A tevékenységek futásakor a hőtérkép az alábbihoz hasonló:
 
 ![Készlet hőtérképe](./media/tutorial-parallel-python/pool.png)
 
-A tipikus végrehajtási idő körülbelül **5 perc,** amikor az alkalmazást az alapértelmezett konfigurációban futtatja. A készlet létrehozása veszi igénybe a legtöbb időt. 
+A jellemző végrehajtási idő körülbelül **5 perc** , ha az alapértelmezett konfigurációban futtatja az alkalmazást. A készlet létrehozása veszi igénybe a legtöbb időt. 
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 
@@ -165,9 +160,9 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Számításicsomópont-készlet létrehozása
 
-A következő lépésben a minta létrehozza a számítási csomópontok készletét a Batch-fiókban a `create_pool` hívásával. Ez a meghatározott funkció a Batch [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) osztályával adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) objektum [egy,](/python/api/azure-batch/azure.batch.models.imagereference) az Azure Marketplace-en közzétett Ubuntu Server 18.04 LTS-lemezképhez való képet ad meg. A Batch az Azure Marketplace virtuálisgép-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
+A következő lépésben a minta létrehozza a számítási csomópontok készletét a Batch-fiókban a `create_pool` hívásával. Ez a meghatározott funkció a Batch [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) osztályával adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) objektum az Azure Marketplace-en közzétett Ubuntu Server 18,04 LTS-rendszerképhez [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) ad meg. A Batch az Azure Marketplace virtuálisgép-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
 
-A csomópontok száma és a virtuális gépek mérete meghatározott állandókkal van megadva. A Batch támogatja a dedikált csomópontokat és [az alacsony prioritású csomópontokat,](batch-low-pri-vms.md)és a készletekben vagy mindkét ben használhatja. A dedikált csomópontok a készlet számára vannak fenntartva. Az alacsony prioritású csomópontok kedvezményes áron érhetők el az Azure többlet VM-kapacitásából. Ha az Azure nem rendelkezik elegendő kapacitással, az alacsony prioritású csomópontok elérhetetlenné válnak. A minta alapértelmezés szerint egy csupán 5 alacsony prioritású, *Standard_A1_v2* méretű csomópontot tartalmazó készletet hoz létre. 
+A csomópontok száma és a virtuális gépek mérete meghatározott állandókkal van megadva. A Batch támogatja a dedikált csomópontokat és az [alacsony prioritású csomópontokat](batch-low-pri-vms.md), és a készletekben akár mindkettőt is használhatja. A dedikált csomópontok a készlet számára vannak fenntartva. Az alacsony prioritású csomópontok kedvezményes áron érhetők el az Azure többlet VM-kapacitásából. Ha az Azure nem rendelkezik elegendő kapacitással, az alacsony prioritású csomópontok elérhetetlenné válnak. A minta alapértelmezés szerint egy csupán 5 alacsony prioritású, *Standard_A1_v2* méretű csomópontot tartalmazó készletet hoz létre. 
 
 A fizikai csomópont tulajdonságain felül ez a készletkonfiguráció tartalmaz egy [StartTask](/python/api/azure-batch/azure.batch.models.starttask) objektumot. A StartTask mindegyik csomóponton fut, amikor a csomópont csatlakozik a készlethez, vagy amikor újraindul. Ebben a példában a StartTask Bash-rendszerhéjparancsokat futtat az ffmpeg csomag és a függőségek csomópontokon való telepítéséhez.
 

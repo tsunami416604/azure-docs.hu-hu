@@ -1,22 +1,22 @@
 ---
-title: Rövid útmutató – Blob létrehozása az Azure CLI-vel
+title: Rövid útmutató – blob létrehozása az Azure CLI-vel
 titleSuffix: Azure Storage
-description: Ebben a rövid útmutatóban megtudhatja, hogyan használhatja az Azure CLI-t egy blob feltöltésével az Azure Storage-ba, töltsön le egy blobot, és sorolja fel a blobokat egy tárolóban.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan tölthet fel blobokat az Azure Storage-ba az Azure CLI használatával, hogyan töltheti le a blobokat, és hogyan listázhatja a tárolóban lévő blobokat.
 services: storage
 author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 04/23/2020
 ms.author: tamram
-ms.openlocfilehash: 2e1b1ac2ea315759b18dc882b98837bca0a84d46
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 237982c2135430891022ab7a823f8374844e8d90
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061440"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117556"
 ---
-# <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Rövid útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel
+# <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel
 
 Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelésére szolgál. Használhatja a böngészőjében az Azure Cloud Shell-lel. Vagy telepítheti macOS, Linux és Windows rendszeren, és futtathatja a parancssorból. Ebből a rövid útmutatóból megtudhatja, hogyan lehet az Azure CLI használatával adatokat fel- és letölteni az Azure Blob Storage-be.
 
@@ -30,29 +30,29 @@ Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelés�
 
 ## <a name="install-the-azure-cli-locally"></a>Az Azure CLI helyi telepítése
 
-Ha úgy dönt, hogy telepíti és használja az Azure CLI helyileg, ez a rövid útmutató megköveteli, hogy az Azure CLI 2.0.46-os vagy újabb verzióját. Futtassa az `az --version` parancsot a verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.46 vagy újabb verzióját kell futtatnia. Futtassa az `az --version` parancsot a verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-Ha az Azure CLI helyileg fut, be kell jelentkeznie, és hitelesítenie kell. Ez a lépés nem szükséges, ha az Azure Cloud Shell használata. Az Azure CLI-be `az login` való bejelentkezéshez futtassa és hitelesítse magát a böngészőablakban:
+Ha helyileg futtatja az Azure CLI-t, be kell jelentkeznie és hitelesítenie kell magát. Ez a lépés nem szükséges, ha Azure Cloud Shellt használ. Az Azure CLI-be való bejelentkezéshez `az login` futtassa a (z) és a hitelesítést a böngészőablakban:
 
 ```azurecli
 az login
 ```
 
-Az Azure CLI-vel való hitelesítésről további információt a [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli)című témakörben talál.
+Az Azure CLI-vel történő hitelesítéssel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli).
 
-## <a name="authorize-access-to-blob-storage"></a>Hozzáférés engedélyezése a Blob-tárolóhoz
+## <a name="authorize-access-to-blob-storage"></a>Hozzáférés engedélyezése a blob Storage-hoz
 
-Engedélyezheti a Blob storage-hoz való hozzáférést az Azure CLI-ből az Azure AD hitelesítő adataival vagy a tárfiók hozzáférési kulcshasználatával. Az Azure AD hitelesítő adatok használata ajánlott. Ez a cikk bemutatja, hogyan engedélyezheti a Blob storage-műveleteket az Azure AD használatával.
+Engedélyezheti a blob Storage-hoz való hozzáférést az Azure CLI-vel vagy az Azure AD hitelesítő adataival vagy a Storage-fiók elérési kulcsának használatával. Az Azure AD-beli hitelesítő adatok használata ajánlott. Ez a cikk bemutatja, hogyan engedélyezheti a blob Storage-műveleteket az Azure AD-vel.
 
-Az Azure CLI-parancsok a Blob `--auth-mode` storage elleni adatműveletekhez támogatják a paramétert, amely lehetővé teszi egy adott művelet engedélyezésének módját. Állítsa `--auth-mode` be `login` a paramétert az Azure AD-hitelesítő adatokkal való engedélyezésre. További információ: [Hozzáférés engedélyezése blob- vagy várólista-adatokhoz az Azure CLI segítségével.](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+A blob Storage-hoz kapcsolódó adatműveletekhez használható Azure `--auth-mode` CLI-parancsok támogatják a paramétert, amely lehetővé teszi egy adott művelet engedélyezésének megadását. Állítsa be `--auth-mode` a paramétert `login` az Azure ad hitelesítő adataival való engedélyezéshez. További információ: a [blob-vagy üzenetsor-adatokhoz való hozzáférés engedélyezése az Azure CLI-vel](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Csak a Blob storage-adatműveletek támogatják a `--auth-mode` paramétert. Felügyeleti műveletek, például egy erőforráscsoport vagy tárfiók létrehozása, automatikusan használja az Azure AD hitelesítő adatok at engedélyezéshez.
+Csak a blob Storage-adatműveletek támogatják a `--auth-mode` paramétert. A kezelési műveletek, például az erőforráscsoport vagy a Storage-fiók létrehozása, automatikusan az Azure AD hitelesítő adatait használják az engedélyezéshez.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy Azure-erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Ne felejtse el a szögletes zárójelekben lévő helyőrző értékeket a saját értékeire cserélni:
+Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
 ```azurecli
 az group create \
@@ -60,11 +60,11 @@ az group create \
     --location <location>
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Az [az storage account create](/cli/azure/storage/account) paranccsal hozzon létre egy általános célú tárfiókot. Az általános célú tárfiók mind a négy szolgáltatással (blobok, fájlok, táblák és üzenetsorok) használható.
 
-Ne felejtse el a szögletes zárójelekben lévő helyőrző értékeket a saját értékeire cserélni:
+Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
 ```azurecli
 az storage account create \
@@ -72,14 +72,14 @@ az storage account create \
     --resource-group <resource-group> \
     --location <location> \
     --sku Standard_ZRS \
-    --encryption blob
+    --encryption-services blob
 ```
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-A blobok minden esetben egy tárolóba lesznek feltöltve. A blobcsoportokat a tárolókban is rendszerezheti, hasonlóan ahhoz, ahogyan a számítógépen lévő fájlokat mappákba rendezi.
+A blobok minden esetben egy tárolóba lesznek feltöltve. A Blobok csoportjait ugyanúgy rendszerezheti a tárolókban, mint ahogyan a fájlokat a számítógépen mappákban rendezi.
 
-Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container) parancs segítségével. Ne felejtse el a szögletes zárójelekben lévő helyőrző értékeket a saját értékeire cserélni:
+Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container) parancs segítségével. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
 ```azurecli
 az storage container create \
@@ -90,17 +90,17 @@ az storage container create \
 
 ## <a name="upload-a-blob"></a>Blob feltöltése
 
-A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A rövid útmutató példái bemutatják, hogyan működik a blokkblobok.
+A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. Az ebben a rövid útmutatóban szereplő példák azt mutatják be, hogyan használhatók a blokkos Blobok.
 
-Először hozzon létre egy fájlt feltölteni egy blokk blobba. Ha Az Azure Cloud Shellt használja, a következő paranccsal hozzon létre egy fájlt:
+Először hozzon létre egy fájlt, amelyet egy blokk blobba kíván feltölteni. Ha Azure Cloud Shell használ, a következő paranccsal hozhat létre egy fájlt:
 
 ```bash
 vi helloworld
 ```
 
-Amikor a fájl megnyílik, nyomja le a **insert**. Írja be *a Hello world*, majd nyomja meg az **Esc**. Ezután írja be *az :x*, majd nyomja **le az Enter billentyűt.**
+A fájl megnyitásakor nyomja le a **Beszúrás**gombot. Írja be a *Hello World*értéket, majd nyomja le az **ESC**billentyűt. Ezután írja be a következőt *: x*, majd nyomja le az **ENTER**billentyűt.
 
-Ebben a példában egy blobot töltünk fel a legutóbbi lépésben, az [az storage blob upload](/cli/azure/storage/blob) paranccsal létrehozott tárolóba. Nem szükséges megadni a fájl elérési útját, mivel a fájl a gyökérkönyvtárban lett létrehozva. Ne felejtse el a szögletes zárójelekben lévő helyőrző értékeket a saját értékeire cserélni:
+Ebben a példában egy blobot töltünk fel a legutóbbi lépésben, az [az storage blob upload](/cli/azure/storage/blob) paranccsal létrehozott tárolóba. A fájl elérési útját nem szükséges megadnia, mert a fájl a gyökérkönyvtárban lett létrehozva. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
 ```azurecli
 az storage blob upload \
@@ -117,7 +117,7 @@ Ha egyszerre több fájlt szeretne feltölteni, használhatja az [az storage blo
 
 ## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-Listázza ki a tárolóban található blobokat az [az storage blob list](/cli/azure/storage/blob) paranccsal. Ne felejtse el a szögletes zárójelekben lévő helyőrző értékeket a saját értékeire cserélni:
+Listázza ki a tárolóban található blobokat az [az storage blob list](/cli/azure/storage/blob) paranccsal. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
 ```azurecli
 az storage blob list \
@@ -129,7 +129,7 @@ az storage blob list \
 
 ## <a name="download-a-blob"></a>Blob letöltése
 
-Az [az storage blob download](/cli/azure/storage/blob) paranccsal letöltheti a korábban feltöltött blobot. Ne felejtse el a szögletes zárójelekben lévő helyőrző értékeket a saját értékeire cserélni:
+Az [az storage blob download](/cli/azure/storage/blob) paranccsal letöltheti a korábban feltöltött blobot. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
 ```azurecli
 az storage blob download \
@@ -142,9 +142,9 @@ az storage blob download \
 
 ## <a name="data-transfer-with-azcopy"></a>Adatátvitel az AzCopy használatával
 
-Az AzCopy parancssori segédprogram nagy teljesítményű, parancsfájlalapú adatátvitelt kínál az Azure Storage számára. Az AzCopy segítségével adatokat vihet át a Blob storage és az Azure Files. Az AzCopy legújabb verziójáról, az AzCopy programmal kapcsolatos további tudnivalókért olvassa el az AzCopy – Első lépések az [AzCopy programot című témakört.](../common/storage-use-azcopy-v10.md) Az AzCopy v10 blobtármal való használatáról az [Adatok átvitele az AzCopy és a Blob storage használatával (Átvitel az AzCopy és a Blob storage) témakörben](../common/storage-use-azcopy-blobs.md)olvashat.
+A AzCopy parancssori segédprogram nagy teljesítményű, parancsfájl-továbbítást biztosít az Azure Storage-hoz. A AzCopy használatával adatok vihetők át a blob Storage-ba és a Azure Filesba. A AzCopy legújabb verziójával kapcsolatos további információkért lásd: AzCopy v10, a [AzCopy első lépései](../common/storage-use-azcopy-v10.md). Az AzCopy v10 blob Storage-mel történő használatáról további információt az [adatok átvitele a AzCopy és a blob Storage](../common/storage-use-azcopy-blobs.md)szolgáltatással című témakörben talál.
 
-A következő példa az AzCopy segítségével feltölt egy helyi fájlt egy blobba. Ne felejtse el helyettesíteni a mintaértékeket a saját értékeivel:
+A következő példa a AzCopy-t használja egy helyi fájl blobba való feltöltéséhez. Ne felejtse el lecserélni a minták értékeit a saját értékeire:
 
 ```bash
 azcopy login
@@ -153,7 +153,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha törölni szeretné a rövid útmutató részeként létrehozott erőforrásokat, beleértve a tárfiókot is, törölje az erőforráscsoportot az [az csoport törlése](/cli/azure/group) paranccsal. Ne felejtse el a szögletes zárójelekben lévő helyőrző értékeket a saját értékeire cserélni:
+Ha törölni szeretné a rövid útmutató részeként létrehozott erőforrásokat, beleértve a Storage-fiókot, törölje az erőforráscsoportot az az [Group delete](/cli/azure/group) paranccsal. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
 ```azurecli
 az group delete \
@@ -163,7 +163,7 @@ az group delete \
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan vihet át fájlokat egy helyi fájlrendszer és egy tároló között az Azure Blob storage-ban. Ha bővebb információra van szüksége a blobok Azure Storage-beli használatával kapcsolatban, lépjen tovább az Azure Blob Storage használatáról szóló oktatóanyagra.
+Ebben a rövid útmutatóban megtanulta, hogyan vihetők át fájlok egy helyi fájlrendszer és egy tároló az Azure Blob Storage szolgáltatásban. Ha bővebb információra van szüksége a blobok Azure Storage-beli használatával kapcsolatban, lépjen tovább az Azure Blob Storage használatáról szóló oktatóanyagra.
 
 > [!div class="nextstepaction"]
 > [Útmutató: Blob Storage-műveletek elvégzése az Azure CLI-vel](storage-how-to-use-blobs-cli.md)

@@ -1,22 +1,16 @@
 ---
-title: Párhuzamos számítási feladat feldolgozása – Azure Batch .NET
+title: Párhuzamos számítási feladatok futtatása
 description: Oktatóanyag – Médiafájlok párhuzamos átkódolása ffmpeg segítségével az Azure Batchben a Batch .NET ügyfélkódtár használatával
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 8734f748da07b36497ce143646e614ef82056d37
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 24f68ee1d2650a5f3e77b61fb30b5c0185cd82b1
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254597"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117148"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a .NET API használatával
 
@@ -37,22 +31,22 @@ Ebben az oktatóanyagban MP4-médiafájlokat konvertál párhuzamosan MP3 formá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Visual Studio 2017 vagy újabb,](https://www.visualstudio.com/vs)illetve [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linuxra, macOS-re vagy Windows rendszerre.
+* [Visual Studio 2017 vagy újabb](https://www.visualstudio.com/vs), vagy [.net Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linux, MacOS vagy Windows rendszerhez.
 
 * Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat.
 
-* [Az ffmpeg 3.4 64 bites Windowshoz készült verziója](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Töltse le a .zip-fájlt a helyi számítógépére. Ehhez az oktatóanyaghoz csak a zip fájlra van szükség. A fájlt nem kell sem kibontania, sem helyileg telepítenie.
+* [Az ffmpeg 3.4 64 bites Windowshoz készült verziója](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Töltse le a .zip-fájlt a helyi számítógépére. Ebben az oktatóanyagban csak a zip-fájlra van szükség. A fájlt nem kell sem kibontania, sem helyileg telepítenie.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="add-an-application-package"></a>Alkalmazáscsomag hozzáadása
 
 Adja hozzá az Azure Portal segítségével az ffmpeg-et a Batch-fiókjához [alkalmazáscsomagként](batch-application-packages.md). Az alkalmazáscsomagok segítenek a tevékenységalkalmazások kezelésében, valamint a készlet számítási csomópontjain való üzembe helyezésükben. 
 
-1. Az Azure Portalon kattintson a **További szolgáltatások** > **batch-fiókok**elemre, és kattintson a Batch-fiók nevére.
-3. Kattintson **az Alkalmazások** > **hozzáadása gombra.**
+1. A Azure Portal kattintson a **További szolgáltatások** > **Batch-fiókok**elemre, majd kattintson a Batch-fiókja nevére.
+3. Kattintson az **alkalmazások** > **Hozzáadás**gombra.
 4. Az **Alkalmazásazonosító**mezőben adja meg az *ffmpeg*, a csomag verziójánál pedig a *3.4* értéket. Válassza ki a korábban letöltött ffmpeg zip-fájlt, és kattintson az **OK** gombra. Ezzel hozzáadta az ffmpeg alkalmazáscsomagját a Batch-fiókjához.
 
 ![Alkalmazáscsomag hozzáadása](./media/tutorial-parallel-dotnet/add-application.png)
@@ -97,7 +91,7 @@ const string appPackageVersion = "3.4";
 
 Hozza létre és futtassa az alkalmazást a Visual Studióban vagy a parancssorban a `dotnet build` és a `dotnet run` paranccsal. Az alkalmazás futtatása után tekintse át a kódot annak megismerése érdekében, hogy mit csinálnak az alkalmazás egyes részei. Ha például a Visual Studióban:
 
-* Kattintson a jobb gombbal a megoldásra a Megoldáskezelőben, és válassza **a Megoldás összeállítása parancsra.** 
+* Kattintson a jobb gombbal a megoldásra Megoldáskezelő majd kattintson a **megoldás létrehozása**lehetőségre. 
 
 * Erősítse meg a NuGet-csomagok visszaállítását, ha a rendszer erre kéri. Ha hiányzó csomagokat kell letöltenie, győződjön meg arról, hogy a [NuGet-csomagkezelő](https://docs.nuget.org/consume/installing-nuget) telepítve van.
 
@@ -124,7 +118,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez lépjen az Azure Portalon a Batch-fiókjába. Ha például a készlet ben lévő számítási csomópontok hőtérképét szeretné látni, kattintson a*WinFFmpegPool* **készletek** > elemre.
+A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez lépjen az Azure Portalon a Batch-fiókjába. Ha például meg szeretné tekinteni a készletben lévő számítási csomópontok Heat térképét, kattintson a **készletek** > *WinFFmpegPool*elemre.
 
 A tevékenységek futásakor a hőtérkép az alábbihoz hasonló:
 
@@ -153,7 +147,7 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnection
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-Az alkalmazás létrehoz egy [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) objektumot a Batch szolgáltatásban lévő készletek, feladatok és tevékenységek létrehozásához és kezeléséhez. A példákban szereplő Batch-ügyfél megosztott kulcsos hitelesítést használ. A Batch az [Azure Active Directoryn](batch-aad-auth.md) keresztüli hitelesítést is támogatja az egyes felhasználók vagy felügyelet nélküli alkalmazások hitelesítéséhez.
+Az alkalmazás létrehoz egy [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) objektumot a Batch szolgáltatásban lévő készletek, feladatok és tevékenységek létrehozásához és kezeléséhez. A példákban szereplő Batch-ügyfél megosztott kulcsos hitelesítést használ. A Batch a [Azure Active Directoryon](batch-aad-auth.md) keresztüli hitelesítést is támogatja az egyes felhasználók vagy a felügyelet nélküli alkalmazások hitelesítéséhez.
 
 ```csharp
 BatchSharedKeyCredentials sharedKeyCredentials = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
@@ -196,10 +190,10 @@ További részleteket a fájlok egy Storage-fiókba a .NET segítségével blobk
 
 A következő lépésben a minta létrehozza a számítási csomópontok készletét a Batch-fiókban a `CreatePoolIfNotExistAsync` hívásával. Ez a meghatározott metódus a [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) metódussal adja meg a csomópontok számát, a virtuális gép méretét és a készletkonfigurációt. Itt egy [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) objektum megad egy [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) objektumot egy, az Azure Marketplace-en közzétett Windows Server-rendszerképhez. A Batch az Azure Marketplace virtuálisgép-rendszerképeinek széles választékát támogatja, de egyéni rendszerképeket is használhat.
 
-A csomópontok száma és a virtuális gépek mérete meghatározott állandókkal van megadva. A Batch támogatja a dedikált csomópontokat és [az alacsony prioritású csomópontokat,](batch-low-pri-vms.md)és a készletekben vagy mindkét ben használhatja. A dedikált csomópontok a készlet számára vannak fenntartva. Az alacsony prioritású csomópontok kedvezményes áron érhetők el az Azure többlet VM-kapacitásából. Ha az Azure nem rendelkezik elegendő kapacitással, az alacsony prioritású csomópontok elérhetetlenné válnak. A minta alapértelmezés szerint egy csupán 5 alacsony prioritású, *Standard_A1_v2* méretű csomópontot tartalmazó készletet hoz létre.
+A csomópontok száma és a virtuális gépek mérete meghatározott állandókkal van megadva. A Batch támogatja a dedikált csomópontokat és az [alacsony prioritású csomópontokat](batch-low-pri-vms.md), és a készletekben akár mindkettőt is használhatja. A dedikált csomópontok a készlet számára vannak fenntartva. Az alacsony prioritású csomópontok kedvezményes áron érhetők el az Azure többlet VM-kapacitásából. Ha az Azure nem rendelkezik elegendő kapacitással, az alacsony prioritású csomópontok elérhetetlenné válnak. A minta alapértelmezés szerint egy csupán 5 alacsony prioritású, *Standard_A1_v2* méretű csomópontot tartalmazó készletet hoz létre.
 
 >[!Note]
->Győződjön meg arról, hogy ellenőrizze a csomópont kvóták. A [csoportonkénti szolgáltatási kvóták at és a](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) kvótakérelmek létrehozására vonatkozó utasításokat lásd."
+>Ügyeljen rá, hogy ellenőrizze a csomópontok kvótáit. A kvóta-kérelem létrehozásával kapcsolatos utasításokért tekintse meg a [Batch szolgáltatás kvótái és korlátai](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) című témakört.
 
 Az ffmpeg alkalmazás a számítási csomópontokon egy [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) a készletkonfigurációhoz történő hozzáadásával lesz telepítve.
 
@@ -251,7 +245,7 @@ await job.CommitAsync();
 
 A minta tevékenységeket hoz létre a feladatban az `AddTasksAsync` metódus meghívásával, amely létrehoz egy listát a [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask)-objektumokról. Minden `CloudTask` az ffmpeg futtatásával dolgoz fel egy bemeneti `ResourceFile`-objektumot egy [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) tulajdonság segítségével. Az ffmpeg már korábban, a készlet létrehozásakor telepítve lett minden egyes csomóponton. Itt a parancssor az ffmpeg futtatásával konvertálja az egyes bemeneti MP4-videofájlokat MP3-hangfájllá.
 
-A minta a parancssor futtatása után létrehoz egy [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) tulajdonsága segítségével. A kódminta korábbi részeként egy`outputContainerSasUrl`megosztott hozzáférésű aláírás URL-címét ( ) kapjuk meg, hogy írási hozzáférést biztosítson a kimeneti tárolóhoz. Jegyezze fel az `outputFile` objektumon beállított feltételeket. Egy feladat kimeneti fájlja csak a feladat sikeres befejezése`OutputFileUploadCondition.TaskSuccess`után töltődik fel a tárolóba . Tekintse meg a teljes [kódmintát](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) a GitHubon a további megvalósítási részletekért.
+A minta a parancssor futtatása után létrehoz egy [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) tulajdonsága segítségével. Korábban a kód mintájában egy közös hozzáférésű aláírási URL`outputContainerSasUrl`-címet () kapott, amely írási hozzáférést biztosít a kimeneti tárolóhoz. Jegyezze fel az `outputFile` objektumon beállított feltételeket. Egy tevékenységből származó kimeneti fájl csak a feladat sikeres befejeződése után lesz feltöltve a tárolóba (`OutputFileUploadCondition.TaskSuccess`). További részletekért tekintse meg a GitHubon a teljes [kód mintát](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) .
 
 Ezt követően a minta tevékenységeket ad a feladathoz az [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz.
 
@@ -340,4 +334,4 @@ Batch-számításifeladatok .NET API használatával történő ütemezésére �
 > [A Batch C#-mintái](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
 
 
-A LowPriorityNodeCount=0 és a DedicatedNodeCount=5 példányváltozó beállítása javította a problémát, és lehetővé tette a feladat befejezését.
+A LowPriorityNodeCount = 0 példány változó beállítása, valamint a DedicatedNodeCount = 5 kijavította a problémát, és lehetővé tette a feladatok befejezését.

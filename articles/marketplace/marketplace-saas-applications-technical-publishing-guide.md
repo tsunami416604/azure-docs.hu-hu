@@ -1,152 +1,147 @@
 ---
-title: Az Azure Marketplace SaaS-alkalmazások közzétételi útmutatója
-description: Részletes útmutató és közzétételi ellenőrzőlisták a SaaS-alkalmazások Azure Piactéren való közzétételéhez
+title: Azure Marketplace SaaS-alkalmazások – közzétételi útmutató
+description: Részletes útmutató és közzétételi ellenőrzőlista az SaaS-alkalmazások Azure Marketplace-en való közzétételéhez
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bc2feb4d8f3f103802bd823c66cd3f54ac5d74a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687553"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117233"
 ---
-# <a name="saas-applications-offer-publishing-guide"></a>SaaS alkalmazások ajánlat közzétételi útmutató
+# <a name="saas-applications-offer-publishing-guide"></a>SaaS-alkalmazások ajánlat-közzétételi útmutató
 
-A SaaS-alkalmazások három különböző cselekvésre szólító felhívással tehetők közzé a piacon: "Kapcsolatfelvétel", "Próbálja ki most" és "Most kapja el". Ez az útmutató ismerteti ezt a három lehetőséget, beleértve az egyes követelmények. 
+Az SaaS-alkalmazások közzétehető a piactéren három különböző hívással: "Kapcsolatfelvétel", "kipróbálás" és "Letöltés most". Ez az útmutató a három lehetőséget ismerteti, beleértve az egyes követelmények követelményeit is. 
 
 ## <a name="offer-overview"></a>Ajánlat áttekintése  
 
-Az SaaS-alkalmazások mindkét Azure Storefrontban elérhetők Az alábbi táblázat az aktuálisan elérhető lehetőségeket ismerteti:
+Az SaaS-alkalmazások Microsoft AppSource és az Azure Marketplace-en érhetők el.  A kirakatok támogatják a listát, a próbaverziót és a Transact ajánlatokat is.
 
-| Kirakati lehetőség | Listázási | Próba/tranzakció |  
+**Lista:**  A tőzsdei közzétételi lehetőség egy kapcsolatfelvételi ajánlat típusát tartalmazza, és akkor használható, ha a próbaverziós vagy tranzakciós szintű részvétel nem valósítható meg. Ennek a megközelítésnek az az előnye, hogy lehetővé teszi a kiadók számára, hogy a piacon elérhető megoldással azonnal elkezdhetik a vállalkozása növekedéséhez szükséges érdeklődők fogadását.  
+**Próbaverzió/tranzakció:**  Az ügyfél lehetősége van arra, hogy közvetlenül vásároljon vagy kérjen próbaverziót a megoldásához. A próbaverziós szolgáltatás megadásával növelheti az ügyfelek számára felkínált engagement szintet, és a vásárlás előtt lehetővé teszi az ügyfeleknek a megoldás megismerését. A próbaverziós szolgáltatással jobb eséllyel népszerűsítheti a kirakatokat, és több és gazdagabb érdeklődőket kell várnia az ügyfelek bevonásával. A próbaverzióknak legalább a próbaidőszak időtartama alatt ingyenes támogatást kell tartalmazniuk.  
+
+| SaaS-alkalmazások ajánlata | Üzleti követelmények | Technikai követelmények |  
 | --- | --- | --- |  
-| AppSource | Igen | Igen |
-| Azure piactér | Nem | Igen |   
-
-**Lista:**  A Listing közzétételi lehetőség egy Kapcsolat felvételi ajánlattípusból áll, és akkor használatos, ha a próba- vagy tranzakciószintű részvétel nem valósítható meg. Ennek a megközelítésnek az az előnye, hogy lehetővé teszi a piacon lévő megoldással rendelkező megjelenítők számára, hogy azonnal elkezdjék az érdeklődőket, amelyek et üzletté alakíthatnak, hogy növeljék a vállalkozását.  
-**Próba/tranzakció:**  Az ügyfélnek lehetősége van arra, hogy közvetlenül megvásárolja vagy próbaverziót kérjen az Ön megoldásához. A próbaverzió sokkal nagyobb mértékben növeli az ügyfelek számára kínált elköteleződési szintet, és lehetővé teszi az ügyfelek számára, hogy vásárlás előtt feltárják a megoldást. A próbaverziós élménynek nagyobb esélye idái lesznek a kirakatokban való promócióra, és több és gazdagabb érdeklődőt kell várnia az ügyfelek elköteleződésétől. A próbaverzióknak tartalmazniuk kell legalább a próbaidőszak alatt nyújtott ingyenes támogatást.  
-
-| SaaS alkalmazások ajánlata | Üzleti követelmények | Műszaki követelmények |  
-| --- | --- | --- |  
-| **Kapcsolat** | Igen | Nem |  
-| **PowerBI / Dinamika** | Igen | Igen (Azure AD-integráció) |  
+| **Kapcsolatfelvétel** | Igen | Nem |  
+| **PowerBI/Dynamics** | Igen | Igen (Azure AD-integráció) |  
 | **SaaS-alkalmazások**| Igen | Igen (Azure AD-integráció) |     
 
 ## <a name="saas-list"></a>SaaS-lista
 
-A próba- és számlázási funkciók nélküli SaaS-adatlapok rakoncáttéba való felhívása a "Kapcsolatfelvétel". 
+Ha egy SaaS-listához próbaverziót szeretne felvenni, és nincs számlázási funkciója, akkor a "Kapcsolatfelvétel" lehetőséggel. 
 
-Nem kell konfigurálnia az Azure Active Directoryt egy SaaS-alkalmazás listázásához. 
-
-|Követelmények  |Részletek  |
-|---------|---------|
-|Az alkalmazás egy SaaS-ajánlat  |   A megoldás egy SaaS-ajánlat, és több-bérlős SaaS-terméket kínál.      |
-
-
-## <a name="saas-trial"></a>SaaS próba
-
-Olyan megoldást vagy alkalmazást biztosít, amely ingyenesen kipróbálhatja a szoftverszolgáltatásként (SaaS) alapú próbaverziót. Az ingyenes próbaajánlatok korlátozott használatú vagy korlátozott időtartamú próbafiókként is megjelenhetnek. 
-
+Az SaaS-alkalmazások listázásához nem kell Azure Active Directory konfigurálnia. 
 
 |Követelmények  |Részletek  |
 |---------|---------|
-|Az alkalmazás egy SaaS-ajánlat  |   A megoldás egy SaaS-ajánlat, és több-bérlős SaaS-terméket kínál.      |
-|Az alkalmazás AAD-kompatibilis     |   Az ügyfél átirányítja az Ön domain, és akkor a tranzakció az ügyfél közvetlenül       |
+|Az alkalmazás egy SaaS-ajánlat  |   A megoldás egy SaaS-ajánlat, és több-bérlős SaaS-terméket is kínál.      |
 
 
-## <a name="saas-trial-technical-requirements"></a>SaaS próbatechnikai követelmények
+## <a name="saas-trial"></a>SaaS-próbaverzió
 
-A SaaS-alkalmazások műszaki követelményei egyszerűek. A közzétevők csak akkor kell integrálni az Azure Active Directory (Azure AD) közzé kell tenni. Az Azure AD-integráció az alkalmazásokkal jól dokumentált, és a Microsoft több SDK-t és erőforrást biztosít ennek elvégzéséhez.  
+A megoldás vagy az alkalmazás egy ingyenes, szoftveres (SaaS-) alapú próbaverzió használatával biztosítható. Az ingyenes próbaverziós ajánlatokat korlátozott használati vagy korlátozott időtartamú próbaverziós fiókként lehet megjeleníteni. 
 
-Először is azt javasoljuk, hogy az Azure Marketplace-közzétételhez dedikált előfizetéssel kell rendelkeznie, amely lehetővé teszi a munka elkülönítését más kezdeményezésektől. Miután ez megtörtént, megkezdheti a SaaS-alkalmazás üzembe helyezését ebben az előfizetésben a fejlesztési munka megkezdéséhez.  
 
-A legjobb Azure Active Directory dokumentáció, minták és útmutatások találhatók a következő helyeken: 
+|Követelmények  |Részletek  |
+|---------|---------|
+|Az alkalmazás egy SaaS-ajánlat  |   A megoldás egy SaaS-ajánlat, és több-bérlős SaaS-terméket is kínál.      |
+|Az alkalmazás HRE engedélyezve van     |   A rendszer átirányítja az ügyfelet a tartományhoz, és közvetlenül az ügyféllel fog tranzakciót kötni       |
 
-* [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-* [Integráció az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
+## <a name="saas-trial-technical-requirements"></a>SaaS-próbaverzió műszaki követelményei
 
-* [Alkalmazások integrálása az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+Az SaaS-alkalmazások technikai követelményei egyszerűek. A közzétevőket csak a közzétételhez szükséges Azure Active Directory (Azure AD) integrációra kell integrálni. Az Azure AD-integráció az alkalmazásokkal jól dokumentált, és a Microsoft több SDK-t és erőforrást biztosít ennek megvalósításához.  
 
-* [Azure-ütemterv – Biztonság és identitás](https://azure.microsoft.com/roadmap/?category=security-identity)
+A kezdéshez javasoljuk, hogy az Azure Marketplace Publishing szolgáltatáshoz dedikált előfizetéssel elkülönítse a munkát más kezdeményezésekkel. Ha ez megtörtént, megkezdheti az SaaS-alkalmazás üzembe helyezését ebben az előfizetésben a fejlesztési munka elindításához.  
 
-Oktatóvideók esetén tekintse át az alábbiakat:
+A legjobb Azure Active Directory dokumentáció, minták és útmutatás a következő helyeken található: 
 
-* [Azure Active Directory hitelesítés vittorio Bertoccival](https://channel9.msdn.com/Shows/XamarinShow/Episode-27-Azure-Active-Directory-Authentication-with-Vittorio-Bertocci?term=azure%20active%20directory%20integration)
+* [Azure Active Directory fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-* [Az Azure Active Directory-identitás technikai tájékoztatója – 1/2 rész](https://channel9.msdn.com/Blogs/MVP-Enterprise-Mobility/Azure-Active-Directory-Identity-Technical-Briefing-Part-1-of-2?term=azure%20active%20directory%20integration)
+* [Integráció a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-* [Az Azure Active Directory-identitás technikai tájékoztatója – 2/2.](https://channel9.msdn.com/Blogs/MVP-Azure/Azure-Active-Directory-Identity-Technical-Briefing-Part-2-of-2?term=azure%20active%20directory%20integration)
+* [Alkalmazások integrálása a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
-* [Alkalmazások létrehozása a Microsoft Azure Active Directoryval](https://channel9.msdn.com/Blogs/Windows-Development-for-the-Enterprise/Building-Apps-with-Microsoft-Azure-Active-Directory?term=azure%20active%20directory%20integration)
+* [Azure-ütemterv – biztonság és identitás](https://azure.microsoft.com/roadmap/?category=security-identity)
 
-* [Microsoft Azure-videók az Active Directoryra fókuszálva](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
+Videós oktatóanyagok esetében tekintse át a következőket:
 
-Az ingyenes Azure Active Directory-oktatás elérhető a következő helyen:  
-* [Microsoft Azure for IT Pros tartalmi sorozat: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [Hitelesítés Azure Active Directory Vittorio Bertocci](https://channel9.msdn.com/Shows/XamarinShow/Episode-27-Azure-Active-Directory-Authentication-with-Vittorio-Bertocci?term=azure%20active%20directory%20integration)
 
-Ezenkívül az Azure Active Directory biztosít egy helyet a szolgáltatásfrissítések kereséséhez   
-* [Az Azure AD szolgáltatás frissítései](https://azure.microsoft.com/updates/?product=active-directory)
+* [Azure Active Directory Identity műszaki tájékoztató – 1. rész, 2](https://channel9.msdn.com/Blogs/MVP-Enterprise-Mobility/Azure-Active-Directory-Identity-Technical-Briefing-Part-1-of-2?term=azure%20active%20directory%20integration)
 
-## <a name="using-azure-active-directory-to-enable-trials"></a>A próbaverziók engedélyezése az Azure Active Directory használatával  
+* [Azure Active Directory Identity műszaki tájékoztató – 2. rész](https://channel9.msdn.com/Blogs/MVP-Azure/Azure-Active-Directory-Identity-Technical-Briefing-Part-2-of-2?term=azure%20active%20directory%20integration)
 
-A Microsoft hitelesíti az összes Marketplace-felhasználót az Azure AD-vel, így amikor egy hitelesített felhasználó a Marketplace-en lévő próbaverziós adatlapra kattint, és átirányítja a próbaverziós környezetbe, a felhasználót közvetlenül egy próbaverzióba helyezheti anélkül, hogy további bejelentkezési lépésre lenne szükség. Az alkalmazás által az Azure AD-től a hitelesítés során kapott jogkivonat értékes felhasználói adatokat tartalmaz, amelyek segítségével felhasználói fiókot hozhat létre az alkalmazásban, lehetővé téve a kiépítési élmény automatizálását és a konverzió valószínűségének növelését. A jogkivonatról további információt a [Mintajogtok című témakörben talál.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)
+* [Alkalmazások kiépítése Microsoft Azure Active Directory](https://channel9.msdn.com/Blogs/Windows-Development-for-the-Enterprise/Building-Apps-with-Microsoft-Azure-Active-Directory?term=azure%20active%20directory%20integration)
 
-Az Azure AD használatával egy kattintásos hitelesítést engedélyez az alkalmazáshoz vagy a próbaverzióhoz, tegye a következőket:  
-* Egyszerűsíti az ügyfélélményt a Marketplace-ről a próbaverzióra.  
-* Fenntartja a "terméken belüli élmény" érzetét, még akkor is, ha a felhasználót átirányítja a Piactérről az Ön domain- vagy próbakörnyezetébe.  
-* Csökkenti az átirányítás elhagyása valószínűségét, mert nincs további bejelentkezési lépés.  
-* Csökkenti a telepítési akadályokat az Azure AD-felhasználók nagy számú számára.  
+* [Active Directoryre összpontosító Microsoft Azure videók](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
-## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Az Azure AD-integráció hitelesítése a Marketplace-en  
+Az ingyenes Azure Active Directory képzés a következő címen érhető el:  
+* [Microsoft Azure informatikai szakembereknek szóló tartalmi sorozatban: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
-Az Azure AD-integrációt néhány különböző módon hitelesítheti, attól függően, hogy az alkalmazás egy- vagy több-bérlős, és hogy új-e az Azure AD összevont egyszeri bejelentkezés (SSO), vagy már támogatja azt.  
+Emellett Azure Active Directory biztosít a szolgáltatás frissítéseinek keresésére szolgáló helyet.   
+* [Azure AD-szolgáltatások frissítései](https://azure.microsoft.com/updates/?product=active-directory)
+
+## <a name="using-azure-active-directory-to-enable-trials"></a>A Azure Active Directory használata a próbaverziók engedélyezéséhez  
+
+A Microsoft hitelesíti az összes piactér-felhasználót az Azure AD-vel, így amikor egy hitelesített felhasználó rákattint a piactéren a próbaverzióra, és a rendszer átirányítja a próbaverziós környezetbe, a felhasználót közvetlenül is kiépítheti a próbaverzióba anélkül, hogy további bejelentkezési lépésre lenne szükség. A hitelesítés során az alkalmazás által az Azure AD-től kapott token értékes felhasználói adatokat tartalmaz, amelyekkel felhasználói fiókot hozhat létre az alkalmazásban, lehetővé téve a kiépítési élmény automatizálását és az átalakítás valószínűségének növelését. A jogkivonattal kapcsolatos további információkért lásd: [minta tokenek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
+
+Az Azure AD használatával engedélyezheti az alkalmazásra vagy próbaverzióra vonatkozó 1 kattintásos hitelesítést a következő műveleteket:  
+* A piactéren a próbaverzióra egyszerűsítheti a felhasználói élményt.  
+* A "terméken belüli felhasználói élmény" megtartása akkor is, ha a felhasználó a piactérről a tartományba vagy a próbaverziós környezetbe van átirányítva.  
+* Csökkenti annak a valószínűségét, hogy az átirányítás lemondható, mert nincs további bejelentkezési lépés.  
+* Csökkenti az Azure AD-felhasználók nagy sokaságának üzembe helyezési korlátait.  
+
+## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Az Azure AD-integráció tanúsítása a piactéren  
+
+Az Azure AD-integrációt néhány különböző módon tanúsíthatja, attól függően, hogy az alkalmazása egybérlős vagy több bérlős-e, és hogy új-e az Azure AD összevont egyszeri bejelentkezés (SSO), vagy már támogatja azt.  
 
 **Több-bérlős alkalmazások esetén:**  
 
 Ha már támogatja az Azure AD-t, tegye a következőket:
-1.    Az alkalmazás regisztrálása az Azure Portalon
-2.    Engedélyezze a több-bérlős támogatási funkciót az Azure AD-ben, hogy egy "egy kattintással" próbaverziós élményt kapjon. További információk [itt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)találhatók .  
+1.    Az alkalmazás regisztrálása a Azure Portal
+2.    Engedélyezze az Azure AD több-bérlős támogatási szolgáltatását, és kérjen le egy kattintással elérhető próbaverziót. Részletesebb információkat [itt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)találhat.  
 
-Ha most van az Azure AD összevont SSO, tegye a következőket: 
-1.  Az alkalmazás regisztrálása az Azure Portalon
-2.  SSO fejlesztése az Azure AD-vel [az OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) vagy [az OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)használatával.
-3.  Az AAD több-bérlős támogatási funkciójának engedélyezése az "egy kattintásos" próbaverzióhoz További konkrét információk találhatók [itt.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)  
+Ha még nem ismeri az Azure AD összevont egyszeri bejelentkezést, tegye a következőket: 
+1.  Az alkalmazás regisztrálása a Azure Portal
+2.  Az Azure AD-val történő egyszeri bejelentkezést az [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) vagy a [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)használatával fejlesztheti.
+3.  A HRE több-bérlős támogatási funkciója lehetővé teszi, hogy a "One-Click" próbaverzióval kapcsolatos további információkat [itt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)találja.  
 
-**Egybérlős alkalmazás esetén használja az alábbi lehetőségek egyikét:**  
-* Felhasználók hozzáadása a címtárhoz vendégfelhasználóként az [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) használatával
+**Egybérlős alkalmazások esetén használja az alábbi lehetőségek egyikét:**  
+* Felhasználók hozzáadása a címtárhoz vendégként az [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) használatával
 * Próbaverziók manuális kiépítése az ügyfelek számára a "Kapcsolatfelvétel" használatával
-* Ügyfélenkénti "tesztvezetés" kialakítása
-* Több-bérlős mintabemutató alkalmazás létrehozása egyszeri felárkal
+* Felhasználónkénti "tesztelési meghajtó" fejlesztése
+* Több-bérlős minta bemutató alkalmazás létrehozása SSO-val
 
 ## <a name="saas-subscriptions"></a>SaaS-előfizetések
 
-A SaaS-alkalmazásajánlat-típussal lehetővé teszi, hogy az ügyfél előfizetésként megvásárolhassa a SaaS-alapú, technikai megoldást. A SaaS-alkalmazáshoz az alábbi követelményeknek kell megfelelni:
-- A szolgáltatás díja és számlája egy lakásban (havi vagy éves) vagy felhasználónkénti díj.
-- Adjon meg egy módszert a szolgáltatás bármikori frissítéséhez vagy megszakításához.
-A Kereskedelmi tranzakciót a Microsoft üzemelteti. A Microsoft az Ön nevében számlázza ki az ügyfelet. SaaS-alkalmazás előfizetésként való ajánlatához integrálnia kell a SaaS teljesítési API-kat.  A szolgáltatásnak támogatnia kell a kiépítést, a frissítést és a visszavonást.
+Az SaaS-alkalmazások ajánlatának típusa lehetővé teszi, hogy az ügyfél a SaaS-alapú, technikai megoldását előfizetésként vásárolja meg. A következő követelményeknek kell teljesülniük az SaaS-alkalmazáshoz:
+- Díj és számlázás a szolgáltatással (havonta vagy évente), vagy felhasználónkénti díjszabással.
+- Adjon meg egy módszert a szolgáltatás frissítésére vagy megszakítására.
+A Microsoft üzemelteti a kereskedelmi tranzakciót. A Microsoft az Ön nevében számlázza az ügyfelet. Az SaaS-alkalmazások előfizetésként való ellátásához integrálni kell a SaaS-megvalósítási API-kkal.  A szolgáltatásnak támogatnia kell a kiépítés, a verziófrissítés és a megszakítást.
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
-|Számlázás és mérés | Az ajánlat ára a közzététel előtt kiválasztott díjszabási modell (átalánydíjas vagy felhasználónkénti) alapján történik.  Ha az átalánymodellt használja, akkor tetszés szerint további dimenziókat is megadhat, amelyek a vevőknek az átalánydíjban nem szereplő használatért számítanak fel díjat. |  
-|Lemondás | Ajánlatát az ügyfél bármikor lemondhatja. |  
-|Tranzakció céloldala | Az Azure-beli társmárkás tranzakciócéloldalt üzemelteti, ahol a felhasználók létrehozhatják és kezelhetik SaaS-szolgáltatásfiókjukat. |   
-| Előfizetéses API | Olyan szolgáltatást tesz elérhetővé, amely a SaaS-előfizetéssel együttműködve felhasználói fiókot és szolgáltatási csomagot hozhat létre, frissít het és törölhet. A kritikus API-módosításokat 24 órán belül támogatni kell. A nem kritikus API-módosítások rendszeres időközönként megjelennek. |  
+|Számlázás és mérés | Az ajánlat díjszabása a közzététel előtt kiválasztott árképzési modell alapján történik (átalány vagy felhasználónként).  Az átalány-modell használata esetén igény szerint további dimenziókat is megadhat, amelyeket a rendszer az átalányban nem szereplő használati díjak megadására használ fel. |  
+|Lemondás | Ajánlatát bármikor megszakíthatja az ügyfél. |  
+|Tranzakció kezdőlapja | Egy Azure-beli közös védjeggyel ellátott tranzakció-kezdőlapot üzemeltet, ahol a felhasználók létrehozhatják és kezelhetik az SaaS-szolgáltatásfiókot. |   
+| Előfizetés API | Olyan szolgáltatást tesz elérhetővé, amely képes kommunikálni az SaaS-előfizetéssel egy felhasználói fiók és szolgáltatáscsomag létrehozásához, frissítéséhez és törléséhez. A kritikus API-módosításokat 24 órán belül támogatni kell. A nem kritikus API-változások rendszeresen jelennek majd meg. |  
 
 >[!Note]
->A felhőszolgáltatók (CSP) partnercsatorna-opt-in már elérhető.  Az ajánlat microsoftos CSP-partnercsatornákon keresztül történő marketingről további információt a [felhőszolgáltatók](./cloud-solution-providers.md) ban talál.
+>A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető.  Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md) című témakört.
 
 ## <a name="next-steps"></a>További lépések
 Ha még nem tette meg,
 
-* [További információ](https://azuremarketplace.microsoft.com/sell) a piactérről.
+* [További](https://azuremarketplace.microsoft.com/sell) információ a Piactérről.
 
-A Partnerközpontban való regisztrációhoz kezdjen új ajánlatot létrehozni, vagy dolgozzon egy meglévőn:
+A partner Centerben való regisztrációhoz hozzon létre egy új ajánlatot, vagy dolgozzon egy meglévőn:
 
-* [Jelentkezzen be a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához vagy teljesítéséhez.
-* További információkért [tekintse meg a SaaS-alkalmazásajánlat létrehozása](./partner-center-portal/create-new-saas-offer.md) című témakört.
+* Az ajánlat létrehozásához vagy befejezéséhez [Jelentkezzen be a partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
+* További információért lásd: [SaaS-alkalmazás létrehozási ajánlata](./partner-center-portal/create-new-saas-offer.md) .
