@@ -1,64 +1,66 @@
 ---
 title: Azure Service Fabric-mintavételek
-description: Hogyan modellezze a Liveness-mintavételt az Azure Service Fabricben alkalmazás- és szolgáltatásjegyzékfájlok használatával.
+description: Az Azure Service Fabricban az alkalmazás-és szolgáltatás jegyzékfájljának használatával modellezhető az élő mintavétel.
 ms.topic: conceptual
+author: tugup
+ms.author: tugup
 ms.date: 3/12/2020
-ms.openlocfilehash: 38f3888a29bf505b723d40bc7cd08fb0c7e29eff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81431214"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137586"
 ---
-# <a name="liveness-probe"></a>Élesség szonda
-A 7.1 Service Fabric-től kezdve támogatja a Liveness Probe [mechanizmust a tárolóba kötött][containers-introduction-link] alkalmazásokhoz. A Liveness Probe segít bejelenteni a tárolóba rendezett alkalmazás élőségét, és ha nem válaszolnak időben, az újraindítást eredményez.
-Ez a cikk áttekintést nyújt arról, hogyan definiálhat egy Liveness-mintavételt a jegyzékfájlokon keresztül.
+# <a name="liveness-probe"></a>Élő mintavétel
+Az 7,1-es verziótól kezdődően az Azure Service Fabric támogatja az élő mintavételi mechanizmust a [tároló][containers-introduction-link] alkalmazások számára. Az élettartam-mintavétel segít jelenteni egy olyan tároló alkalmazás élettartamát, amely akkor indul újra, ha nem válaszol gyorsan.
+Ez a cikk áttekintést nyújt arról, hogyan határozhat meg egy élő mintavételt jegyzékfájlok használatával.
 
-Mielőtt folytatná ezt a cikket, javasoljuk, hogy ismerkedjen meg a [Service Fabric alkalmazásmodell][application-model-link] és a [Service Fabric üzemeltetési modell.][hosting-model-link]
+Mielőtt folytatná ezt a cikket, ismerkedjen meg a [Service Fabric alkalmazás modelljével][application-model-link] és a [Service Fabric üzemeltetési modellel][hosting-model-link].
 
 > [!NOTE]
-> A Liveness Probe csak NAT hálózati módban lévő tárolók esetén támogatott.
+> Az élettartam-mintavétel csak NAT hálózati módban lévő tárolók esetén támogatott.
 
 ## <a name="semantics"></a>Szemantika
-Tárolónként csak 1 Liveness Probe-ot adhat meg, és az alábbi mezőkkel szabályozhatja a működését:
+A tárolók esetében csak egy élettartam-mintavételt adhat meg, és a következő mezők használatával szabályozhatja a viselkedését:
 
-* `initialDelaySeconds`: A kezdeti késleltetés másodpercben a mintavétel végrehajtásának megkezdéséhez a tároló indítása után. A támogatott érték int. Az alapértelmezett érték 0. A minimum 0.
+* `initialDelaySeconds`: Az első késleltetés másodpercben a mintavétel a tároló elindítása utáni végrehajtásának megkezdéséhez. A támogatott érték **int**. Az alapértelmezett érték 0, a minimum pedig 0.
 
-* `timeoutSeconds`: Időszak másodpercben, amely után úgy véljük, szonda sikertelen, ha még nem fejeződött be sikeresen. A támogatott érték int. Az alapértelmezett érték 1. A minimum 1.
+* `timeoutSeconds`: Az az időtartam másodpercben, amely után a mintavétel sikertelen volt, ha nem fejeződött be sikeresen. A támogatott érték **int**. Az alapértelmezett érték 1, a minimum pedig 1.
 
-* `periodSeconds`: Időszak másodpercben, hogy meghatározza, milyen gyakran szondázunk. A támogatott érték int. Az alapértelmezett érték 10. A minimum 1.
+* `periodSeconds`: A mintavétel gyakoriságának meghatározásához szükséges idő másodpercben. A támogatott érték **int**. Az alapértelmezett érték 10, a minimum pedig 1.
 
-* `failureThreshold`: Ahibaküszöb elérése után a tároló újraindul. A támogatott érték int. Az alapértelmezett érték 3. A minimum 1.
+* `failureThreshold`: Ha elérjük ezt az értéket, a tároló újra fog indulni. A támogatott érték **int**. Az alapértelmezett érték 3, a minimum pedig 1.
 
-* `successThreshold`: A hiba, a mintavétel sikeresnek kell tekinteni, hogy sikeresnek kell lennie a SuccessThreshold. A támogatott érték int. Az alapértelmezett érték 1. A minimum 1.
+* `successThreshold`: Hiba esetén a mintavétel sikeresnek tekintendő, ezért az érték sikeres futtatására van szükséges. A támogatott érték **int**. Az alapértelmezett érték 1, a minimum pedig 1.
 
-Lesz legb.000 szonda konténer egy pillanat alatt az idő. Ha a szonda nem fejeződik be **timeoutSeconds** tartjuk várakozás, és számít, hogy a **failureThreshold**. 
+Legfeljebb egy mintavételt lehet egyszerre egy tárolóba. Ha a mintavétel nem fejeződik be a **timeoutSeconds**megadott időpontban, várjon, és számoljon a **failureThreshold**felé. 
 
-Emellett a ServiceFabric a következő [mintavételi állapotjelentéseket][health-introduction-link] veti fel a DeployedServicePackage szolgáltatáson:
+Emellett Service Fabric a következő mintavételi [állapot-jelentéseket][health-introduction-link] fogja felvenni a **DeployedServicePackage**:
 
-* `Ok`: Ha a szonda sikeres **a successThreshold,** akkor jelentjük az egészségügyi ok.
+* `OK`: A mintavétel sikeres a **successThreshold**-ben beállított értéknél.
 
-* `Error`: Ha a mintavételi hibaCount == **failureThreshold**, a tároló újraindítása előtt jelentjük hiba.
+* `Error`: A mintavételi **failureCount** ==  **failureThreshold**a tároló újraindítása előtt.
 
 * `Warning`: 
-    1. Ha a mintavétel sikertelen, és a failureCount < **failureThreshold** jelentjük figyelmeztetés. Ez az állapotjelentés addig marad, amíg a failureCount el nem éri **a failureThreshold** vagy **successThreshold küszöbértéket.**
-    2. A siker utáni hiba, még mindig jelentés Figyelmeztetés, de a frissített egymást követő siker.
+    * A mintavétel meghiúsul, és a **failureCount** < **failureThreshold**. Ez az állapotjelentés addig marad, amíg a **failureCount** el nem éri a **FailureThreshold** vagy a **successThreshold**értékben beállított értéket.
+    * A hiba után a figyelmeztetés továbbra is a frissített egymást követő sikeres sikereket követően marad.
 
-## <a name="specifying-liveness-probe"></a>Élességérzékelő megadása
+## <a name="specifying-a-liveness-probe"></a>Az élő mintavétel meghatározása
 
-Az ApplicationManifest.xml fájlban a ServiceManifestImport csoportban adhat meg mintavételt:
+A mintavételt a ApplicationManifest. xml fájlban adhatja meg a **ServiceManifestImport**alatt.
 
-A szonda a következők közül választhat:
+A mintavétel a következők bármelyikéhez tartozhat:
 
-1. HTTP
-2. TCP
-3. Exec 
+* HTTP
+* TCP
+* Exec 
 
-## <a name="http-probe"></a>HTTP-szonda
+### <a name="http-probe"></a>HTTP-mintavétel
 
-HTTP-mintavétel esetén a Service Fabric http-kérelmet küld a megadott portnak és elérési útnak. A 200 vagy annál kisebb visszatérési kód sikeres.
+HTTP-mintavétel esetén a Service Fabric HTTP-kérést küld a megadott portra és elérési útra. A 200 értéknél nagyobb vagy azzal egyenlő visszatérési kód, amely kisebb, mint 400, sikeres.
 
-Íme egy példa a HttpGet szonda megadására:
+Íme egy példa a HTTP-mintavétel megadására:
 
 ```xml
   <ServiceManifestImport>
@@ -79,21 +81,21 @@ HTTP-mintavétel esetén a Service Fabric http-kérelmet küld a megadott portna
   </ServiceManifestImport>
 ```
 
-A HttpGet mintavétel további, beállítható tulajdonságokkal rendelkezik:
+A HTTP-mintavételhez további tulajdonságok is megadhatók:
 
-* `path`: A HTTP-kérelem elérésének elérési útja.
+* `path`: A HTTP-kérelemben használandó elérési út.
 
-* `port`: A szondák eléréséhez. A távolság 1 és 65535 között van. Kötelező.
+* `port`: A mintavételhez használandó port. Ez a tulajdonság kötelező. A tartomány értéke 1 – 65535.
 
-* `scheme`: Kódcsomaghoz való csatlakozásra szolgáló séma. Ha HTTPS értékre van állítva, a tanúsítvány-ellenőrzés kimarad. Alapértelmezés szerint HTTP
+* `scheme`: A csomaghoz való kapcsolódáshoz használandó séma. Ha ez a tulajdonság HTTPS-értékre van állítva, a rendszer kihagyja a tanúsítvány ellenőrzését. Az alapértelmezett beállítás a HTTP.
 
-* `httpHeader`: A kérelemben beállítandó fejlécek. Ezek közül több is megadható.
+* `httpHeader`: A kérelemben beállított fejlécek. Több fejlécet is megadhat.
 
-* `host`: Host IP csatlakozni.
+* `host`: A gazdagép IP-címe, amelyhez csatlakozni szeretne.
 
-## <a name="tcp-probe"></a>TCP-mintavétel
+### <a name="tcp-probe"></a>TCP-mintavétel
 
-A TCP-mintavétel, Service Fabric megpróbálja megnyitni a szoftvercsatorna a tárolón a megadott porttal. Ha kapcsolatot tud létesíteni, a szonda sikeresnek minősül. Íme egy példa a TCP-szoftvercsatornát használó mintavétel megadására:
+TCP-mintavétel esetén a Service Fabric a megadott port használatával megpróbál megnyitni egy szoftvercsatornát a tárolón. Ha tud kapcsolatot létesíteni, a mintavétel sikeresnek minősül. Íme egy példa arra, hogyan lehet olyan mintavételt megadni, amely TCP-szoftvercsatornát használ:
 
 ```xml
   <ServiceManifestImport>
@@ -111,13 +113,13 @@ A TCP-mintavétel, Service Fabric megpróbálja megnyitni a szoftvercsatorna a t
   </ServiceManifestImport>
 ```
 
-## <a name="exec-probe"></a>Exec szonda
+### <a name="exec-probe"></a>Exec mintavétel
 
-Ez a mintavétel kiad egy exec a tárolóba, és várja meg a parancs befejezését.
+Ez a mintavétel egy **exec** parancsot ad ki a tárolóba, és megvárja, amíg a parancs befejeződik.
 
 > [!NOTE]
-> Exec parancs vesz egy vesszővel elválasztó karakterláncot. A következő parancs a példában működni fog a Linux-tároló.
-> Ha windows container-t próbál, használja a <Command>cmd</Command>
+> Az **exec** parancs vesszővel tagolt karakterláncot használ. A következő példában szereplő parancs egy Linux-tárolón fog működni.
+> Ha Windows-tárolót próbál meg felvenni, használja a **cmd parancsot**.
 
 ```xml
   <ServiceManifestImport>
@@ -138,8 +140,8 @@ Ez a mintavétel kiad egy exec a tárolóba, és várja meg a parancs befejezés
 ```
 
 ## <a name="next-steps"></a>További lépések
-A kapcsolódó információkat az alábbi cikkekben talál.
-* [Szolgáltatás fabric és tárolók.][containers-introduction-link]
+A kapcsolódó információk a következő cikkben találhatók:
+* [Service Fabric és tárolók][containers-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

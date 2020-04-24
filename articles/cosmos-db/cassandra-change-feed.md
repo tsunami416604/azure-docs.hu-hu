@@ -1,26 +1,26 @@
 ---
-title: A Cassandra Azure Cosmos DB API-jának módosítása
-description: Ismerje meg, hogyan használhatja a módosítási hírcsatornát az Azure Cosmos DB API-ban cassandra az adatok módosításait.
+title: A Azure Cosmos DB API-hoz tartozó hírcsatorna módosítása a Cassandra-hoz
+description: Megtudhatja, hogyan használhatja az adatváltozásokat a Azure Cosmos DB API-ban a Cassandra paranccsal az adatváltozások beszerzéséhez.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: c2c695608653130b97bf29cc9ce48e2fbb429209
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 167d9fc68cb075a2cf96d9079131be9e5a510c08
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74694622"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137416"
 ---
-# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>A Cassandra Azure Cosmos DB API-jának módosítása
+# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>A Azure Cosmos DB API-hoz tartozó hírcsatorna módosítása a Cassandra-hoz
 
-Módosítsa a [gettetési](change-feed.md) támogatás az Azure Cosmos DB API Cassandra érhető el a lekérdezési predikátumok a Cassandra lekérdezési nyelv (CQL) érhető el. Ezekkel az alapfeltételekkel lekérdezheti a változáscsatorna API-t. Az alkalmazások a CQL-ben szükséges elsődleges kulcs (más néven partíciókulcs) használatával kaphatják meg a táblán végrehajtott módosításokat. Ezután további műveleteket is végrehajthat az eredmények alapján. A tábla sorainak módosításai a módosítási idő sorrendjében kerülnek rögzítésre, és a rendezési sorrend partíciókulcsonként garantált.
+A "Cassandra" Azure Cosmos DB API-n keresztüli [adatcsatorna](change-feed.md) -támogatás módosítása a Cassandra Query Language (CQL) lekérdezési predikátumán keresztül érhető el. Ezen predikátum-feltételek használatával lekérdezheti a Change feed API-t. Az alkalmazások az elsődleges kulcs (más néven partíciós kulcs) használatával is beszerezhetik a tábla módosításait, ahogy az a CQL-ben szükséges. Ezután az eredmények alapján további műveleteket hajthat végre. A tábla sorainak módosításait a rendszer a módosítási idő sorrendjében rögzíti, a rendezési sorrendet pedig egy partíciós kulcs garantálja.
 
-A következő példa bemutatja, hogyan kaphat be módosítási hírcsatornát egy Cassandra API Keyspace tábla összes sorára a .NET használatával. A predikátum COSMOS_CHANGEFEED_START_TIME() közvetlenül a CQL-en belül használatos a változáscsatorna elemeinek lekérdezésére egy megadott kezdési időpontból (ebben az esetben az aktuális dátumidő). Letöltheti a teljes mintát [itt](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/).
+Az alábbi példa azt mutatja be, hogyan kérhető le egy módosítási hírcsatorna a Cassandra APIi tábla összes sorában a .NET használatával. Az predikátum COSMOS_CHANGEFEED_START_TIME () közvetlenül a CQL-n belül használható a változási csatornán lévő elemek lekérdezésére a megadott kezdési időpontból (ebben az esetben az aktuális datetime értéknél). A teljes minta letölthető [a C# nyelvhez itt és](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) a Javához [itt](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java).
 
-Minden iteráció, a lekérdezés folytatódik az utolsó pont változások at olvasták, a lapozási állapot használatával. Láthatjuk a folyamatos patak az új változások a táblázat ban a Keyspace. Látni fogjuk a beszúrt vagy frissített sorok módosításait. A Cassandra API-ban a módosítási hírcsatorna módosítási hírcsatornájával végzett törlési műveletek figyelése jelenleg nem támogatott. 
+Az egyes iterációkban a lekérdezés az utolsó pont módosításainál folytatódik, a lapozási állapot használatával. A tábla új változásainak folyamatos streamjét láthatjuk. Ekkor megjelenik a beszúrt vagy frissített sorok változásai. A Cassandra API változási csatornán keresztüli törlési műveletek figyelése jelenleg nem támogatott.
 
 ```C#
     //set initial start time for pulling the change feed
@@ -70,8 +70,41 @@ Minden iteráció, a lekérdezés folytatódik az utolsó pont változások at o
     }
 
 ```
+```java
+        Session cassandraSession = utils.getSession();
 
-Annak érdekében, hogy a módosításokat egy sor elsődleges kulcs, felveheti az elsődleges kulcsot a lekérdezésben. A következő példa bemutatja, hogyan követhető a "user_id = 1" sorban lévő változások nyomon követése
+        try {
+              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+               LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
+               String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+               
+             byte[] token=null; 
+             System.out.println(query); 
+             while(true)
+             {
+                 SimpleStatement st=new  SimpleStatement(query);
+                 st.setFetchSize(100);
+                 if(token!=null)
+                     st.setPagingStateUnsafe(token);
+                 
+                 ResultSet result=cassandraSession.execute(st) ;
+                 token=result.getExecutionInfo().getPagingState().toBytes();
+                 
+                 for(Row row:result)
+                 {
+                     System.out.println(row.getString("user_name"));
+                 }
+             }
+                    
+
+        } finally {
+            utils.close();
+            LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
+        }
+
+```
+Ahhoz, hogy az elsődleges kulcs egyetlen sorba módosítsa a módosításokat, felveheti az elsődleges kulcsot a lekérdezésbe. Az alábbi példa bemutatja, hogyan követheti nyomon a sor változásait, ahol "user_id = 1"
 
 ```C#
     //Return the latest change for all row in 'user' table where user_id = 1
@@ -79,21 +112,25 @@ Annak érdekében, hogy a módosításokat egy sor elsődleges kulcs, felveheti 
     $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME() = '{timeBegin.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture)}'");
 
 ```
-
+```java
+    String query="SELECT * FROM uprofile.user where user_id=1 and COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+    SimpleStatement st=new  SimpleStatement(query);
+```
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-A cassandra API-val történő módosítási hírcsatorna használatakor a következő korlátozások érvényesek:
+A következő korlátozások érvényesek a Change feed Cassandra API használatával történő használatakor:
 
-* A beszúrások és a frissítések jelenleg támogatottak. A törlési művelet még nem támogatott. Kerülő megoldásként lágy jelölőt adhat a törölt sorokhoz. Például vegyen fel egy "törölt" nevű mezőt a sorba, és állítsa "igaz" értékre.
-* Az utolsó frissítés megmarad, mivel az alapvető SQL API-ban és az entitás köztes frissítései nem érhetők el.
+* A lapkák és a frissítések jelenleg támogatottak. A törlési művelet még nem támogatott. Megkerülő megoldásként hozzáadhat egy lágy jelölőt a törölt sorokhoz. Például adjon hozzá egy mezőt a "törölt" nevű sorban, és állítsa "true" (igaz) értékre.
+* A legutóbbi frissítés az alapszintű SQL API-ban és az entitás közbenső frissítései nem érhetők el.
 
 
 ## <a name="error-handling"></a>Hibakezelés
 
-A Cassandra API módosítási hírcsatornájának használatakor a következő hibakódok és üzenetek támogatottak:
+A következő hibakódok és üzenetek támogatottak a Cassandra API változási csatornájának használatakor:
 
-* **HTTP-hibakód 429** - Ha a módosítási hírcsatorna sebessége korlátozott, üres oldalt ad vissza.
+* **Http-hibakód 429** – ha a módosítási csatornára korlátozott a ráta, üres lapot ad vissza.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Cosmos DB Cassandra API-erőforrások kezelése az Azure Resource Manager-sablonokkal](manage-cassandra-with-resource-manager.md)
+* [Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával](manage-cassandra-with-resource-manager.md)

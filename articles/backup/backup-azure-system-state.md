@@ -4,12 +4,12 @@ description: Útmutató a Windows Server és/vagy Windows rendszerű számítóg
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 847ed8fc5a6c102284a03fa593587792767d7913
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "76294014"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "82128150"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Windows rendszerállapot biztonsági mentése a Resource Manager üzembe helyezése során
 
@@ -25,7 +25,7 @@ A Windows Server rendszerállapotának biztonsági mentéséhez létre kell hozn
 
 ### <a name="to-create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/) Azure-előfizetésével.
+1. Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-előfizetése használatával.
 2. A központi menüben kattintson a **Minden szolgáltatás** elemre, majd az erőforrások listájában írja be a **Recovery Services** szöveget, és kattintson a **Recovery Services-tárolók** elemre.
 
     ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-system-state/open-rs-vault-list.png)
@@ -46,7 +46,7 @@ A Windows Server rendszerállapotának biztonsági mentéséhez létre kell hozn
 6. Az **Erőforráscsoport** szakaszban:
 
     * válassza az **Új létrehozása** lehetőséget, ha erőforráscsoportot szeretne létrehozni.
-    vagy
+    Vagy
     * válassza a **Meglévő használata** lehetőséget, és kattintson a legördülő menüben az elérhető erőforráscsoportok listájának megtekintéséhez.
 
    Átfogó információk az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md).
@@ -127,7 +127,7 @@ Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapot�
 
     ![a tároló hitelesítő adatainak letöltése](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    A tároló hitelesítő adatait a rendszer a Letöltések mappába menti. Miután a tároló hitelesítő adatainak letöltése befejeződött, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e megnyitni vagy menteni a hitelesítő adatokat. Kattintson a **Mentés** gombra. Ha véletlenül a **Megnyitás** gombra kattint, hagyja, hogy sikertelen legyen a párbeszédpanel, amely megpróbálja megnyitni a tároló hitelesítő adatait. A tároló hitelesítő adatai nem nyithatók meg. Folytassa a következő lépéssel. A tároló hitelesítő adatai a Letöltések mappában találhatók.
+    A tároló hitelesítő adatait a rendszer a Letöltések mappába menti. Miután a tároló hitelesítő adatainak letöltése befejeződött, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e megnyitni vagy menteni a hitelesítő adatokat. Kattintson a **Save** (Mentés) gombra. Ha véletlenül a **Megnyitás** gombra kattint, hagyja, hogy sikertelen legyen a párbeszédpanel, amely megpróbálja megnyitni a tároló hitelesítő adatait. A tároló hitelesítő adatai nem nyithatók meg. Folytassa a következő lépéssel. A tároló hitelesítő adatai a Letöltések mappában találhatók.
 
     ![a tároló hitelesítő adatainak letöltése befejeződött](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -222,12 +222,12 @@ A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot
 
   ![IR befejezve](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## <a name="questions"></a>Kérdése van?
+## <a name="questions"></a>Kérdései vannak?
 
-Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](https://aka.ms/azurebackup_feedback).
+Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](https://feedback.azure.com/forums/258995-azure-backup).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További részletek a [Windows rendszerű gépek biztonsági mentéséről](backup-configure-vault.md).
+* További részletek a [Windows rendszerű gépek biztonsági mentéséről](backup-windows-with-mars-agent.md).
 * Most, hogy biztonsági másolatot készített a Windows Server rendszerállapotáról, [kezelheti a tárolókat és a kiszolgálókat](backup-azure-manage-windows-server.md).
 * Ha vissza kell állítania egy biztonsági másolatot, ezzel a cikkel [állíthat vissza fájlokat Windows rendszerű gépre](backup-azure-restore-windows-server.md).
