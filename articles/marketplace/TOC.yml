@@ -441,7 +441,7 @@
           href: ./partner-center-portal/manage-account.md
         - name: Vállalati munkahelyi fiók megkeresése vagy létrehozása
           href: ./partner-center-portal/company-work-accounts.md
-        - name: Fiók áttelepítése a CPP-ből a Partnerközpontba
+        - name: Fiók migrálása a CPP-ből a Partnerközpontba
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Új ajánlat létrehozása
       items:

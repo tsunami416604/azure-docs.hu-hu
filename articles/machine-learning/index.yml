@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Az Azure Machine Learning dokumentációja
-summary: Megismerheti, hogyan használható az Azure Machine Learning gépi tanulási modellek és folyamatok nagy léptékben történő betanítására, üzembe helyezésére és kezelésére. Oktatóanyagok, kódpéldák, API-referenciák és egyebek segítségével megismerkedhet ennek végrehajtásával.
+summary: Megismerheti, hogyan használható az Azure Machine Learning gépi tanulási modellek, AutoML-kísérletek és folyamatok nagy léptékben történő betanítására, üzembe helyezésére és kezelésére. Oktatóanyagok, kódpéldák, API-referenciák és egyebek segítségével megismerkedhet ennek végrehajtásával.
 metadata:
   title: Az Azure Machine Learning dokumentációja
-  description: Megismerheti, hogyan használható az Azure Machine Learning gépi tanulási modellek és folyamatok nagy léptékben történő betanítására, üzembe helyezésére és kezelésére. Oktatóanyagok, kódpéldák, API-referenciák és egyebek segítségével megismerkedhet ennek végrehajtásával.
+  description: Megismerheti, hogyan használható az Azure Machine Learning gépi tanulási modellek, AutoML-kísérletek és folyamatok nagy léptékben történő betanítására, üzembe helyezésére és kezelésére. Oktatóanyagok, kódpéldák, API-referenciák és egyebek segítségével megismerkedhet ennek végrehajtásával.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 03/18/2020
-  ms.openlocfilehash: 5855d523bf32798166ab32b6ff336cae95e81ca1
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/22/2020
+  ms.openlocfilehash: 174c5b1164505900345e35ff58d2970bf119cc82
+  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80063961"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82084209"
 landingContent:
 - title: Ismerkedés a gépi tanulással
   linkLists:
@@ -27,16 +27,28 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: A tervező (áthúzás)
       url: tutorial-designer-automobile-price-train-score.md
+    - text: AutoML (kódírás nélkül/minimális kódírás)
+      url: tutorial-first-experiment-automated-ml.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
-    - text: Automatikus gépi tanulás
-      url: tutorial-first-experiment-automated-ml.md
+- title: A Studio webes felületének használata
+  linkLists:
   - linkListType: overview
     links:
-    - text: Mi az az Azure Machine Learning?
-      url: overview-what-is-azure-ml.md
-    - text: Architektúra és fogalmak
-      url: concept-azure-machine-learning-architecture.md
+    - text: Mi az a tervező (áthúzás)?
+      url: concept-designer.md
+    - text: Mi az automatizált gépi tanulás?
+      url: concept-automated-ml.md
+  - linkListType: tutorial
+    links:
+    - text: 'AutoML: besorolási modell összeállítása'
+      url: tutorial-first-experiment-automated-ml.md
+    - text: 'AutoML: betanítási és üzembehelyezési ML-modellek'
+      url: how-to-use-automated-ml-for-ml-models.md
+    - text: 'A tervező: autóárak előrejelzése'
+      url: tutorial-designer-automobile-price-train-score.md
+    - text: Képcímkéző projekt létrehozása
+      url: tutorial-labeling.md
 - title: A Python SDK használata
   linkLists:
   - linkListType: tutorial
@@ -45,8 +57,10 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: Képek besorolása
       url: tutorial-train-models-with-aml.md
-    - text: Taxiutak árának előrejelzése automatizált gépi tanulással
+    - text: Taxiutak árának előrejelzése az AutoML használatával
       url: tutorial-auto-train-models.md
+    - text: Azure ML-folyamatok létrehozása
+      url: tutorial-pipeline-batch-scoring-classification.md
   - linkListType: how-to-guide
     links:
     - text: A környezet kialakítása
@@ -59,20 +73,8 @@ landingContent:
       url: how-to-train-pytorch.md
     - text: Betanítás a Keras használatával
       url: how-to-train-keras.md
-- title: Gépi tanulási folyamatok buildelése
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: ML-folyamatok létrehozása (Python)
-      url: tutorial-pipeline-batch-scoring-classification.md
-    - text: Lineáris regresszió az árak előrejelzésére (tervező)
-      url: tutorial-designer-automobile-price-train-score.md
-  - linkListType: overview
-    links:
     - text: Mik azok a gépi tanulási folyamatok?
       url: concept-ml-pipelines.md
-    - text: Mi az a tervező?
-      url: concept-designer.md
 - title: Modellek üzembe helyezése és kezelése
   linkLists:
   - linkListType: how-to-guide
@@ -81,27 +83,25 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: Az üzembe helyezés módja és helye
       url: how-to-deploy-and-where.md
-    - text: MLOps-példák
-      url: https://github.com/microsoft/MLOps
     - text: Valós idejű előrejelzés
       url: how-to-consume-web-service.md
     - text: Kötegelt előrejelzés
       url: how-to-use-parallel-run-step.md
-    - text: Hitelesítés
-      url: how-to-setup-authentication.md
 - title: Alapvető referenciadokumentumok
   linkLists:
   - linkListType: reference
     links:
     - text: Pythonhoz készült SDK
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
-    - text: R-hez készült SDK
-      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html
+    - text: Tervezőalgoritmusok és modulok
+      url: algorithm-module-reference/module-reference.md
+    - text: MLOps-példák adattára
+      url: https://github.com/microsoft/MLOps
     - text: REST API
       url: https://docs.microsoft.com/rest/api/azureml/
     - text: Machine learning CLI
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
-    - text: Tervezőalgoritmusok és modulok
-      url: algorithm-module-reference/module-reference.md
     - text: AI-referenciaarchitektúrák (GitHub)
       url: https://github.com/Microsoft/AI
+    - text: R-hez készült SDK
+      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html

@@ -61,6 +61,8 @@
     - name: Ajánlott eljárások
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
+    - name: A QnA Maker és a LUIS használata
+      href: choose-natural-language-processing-service.md
 - name: Útmutatók
   items:
     - name: Azure-erőforrások kezelése
@@ -74,6 +76,8 @@
           href: How-To/collaborate-knowledge-base.md
         - name: Az aktív tanulás bekapcsolása
           href: How-To/use-active-learning.md
+        - name: Alapértelmezett válasz módosítása
+          href: How-To/change-default-answer.md
     - name: A tudásbázis kezelése
       items:
         - name: Tudásbázis létrehozása

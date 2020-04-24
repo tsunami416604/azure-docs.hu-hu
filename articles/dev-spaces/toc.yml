@@ -21,6 +21,8 @@
               href: quickstart-netcore-visualstudio.md
         - name: Fejlesztés CLI használatával
           href: quickstart-cli.md
+        - name: Fejlesztés meglévő Helm-diagram használatával
+          href: quickstart-existing-helm-chart.md
     - name: Oktatóanyagok
       items:
         - name: Java (VS Code és CLI)

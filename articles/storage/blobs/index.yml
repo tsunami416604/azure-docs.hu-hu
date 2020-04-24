@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: f937c88b70e60b7613cc08ba9d3f91748e3f0bd2
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 9db4921b6f0b8382b69dbac658536b5151bdd653
+  ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75981854"
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82117250"
 landingContent:
 - title: Az Azure Blob Storage névjegye
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
     links:
     - text: Mi az Azure Blob Storage?
       url: storage-blobs-overview.md
-- title: Első lépések
+- title: Bevezetés
   linkLists:
   - linkListType: quickstart
     links:
@@ -97,8 +97,10 @@ landingContent:
       url: storage-quickstart-blobs-java.md
     - text: Azure Blob Storage for Python
       url: storage-quickstart-blobs-python.md
-    - text: Azure Blob Storage for JavaScript
+    - text: Azure Blob Storage for JavaScript a Node.js használatával
       url: storage-quickstart-blobs-nodejs.md
+    - text: Azure Blob Storage for JavaScript böngészőben
+      url: quickstart-blobs-javascript-browser.md
     - text: Események irányítása egy webes végpontra
       url: ../../event-grid/blob-event-quickstart-portal.md
     - text: Statikus webhely üzemeltetése
@@ -125,7 +127,7 @@ landingContent:
     links:
     - text: Blobadatok elérésre Azure AD-fiókkal
       url: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - text: RBAC használata hozzáférési jogosultságok felügyeletéhez
+    - text: Hozzáférési jogosultságok felügyelete RBAC használatával
       url: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: Felügyelt identitás használata a Blob Storage elérésének engedélyezéséhez
       url: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

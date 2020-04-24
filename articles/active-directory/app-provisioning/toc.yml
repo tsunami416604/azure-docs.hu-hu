@@ -5,7 +5,7 @@
   items:
     - name: Mit jelent az alkalmazások üzembe helyezése?
       href: user-provisioning.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: G Suite
       href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
@@ -79,6 +79,8 @@
   items:
     - name: SCIM 2.0 protokoll szerinti megfelelőség
       href: application-provisioning-config-problem-scim-compatibility.md
+    - name: SCIM- és Graph-forgatókönyvek
+      href: scim-graph-scenarios.md
     - name: Az üzembehelyezési módszer kiválasztása
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Felhőalapú HR üzembe helyezése

@@ -19,6 +19,8 @@
   items:
     - name: Tanúsítvány importálása
       href: tutorial-import-certificate.md
+    - name: Tanúsítványrotálás konfigurálása
+      href: tutorial-rotate-certificates.md
 - name: Alapelvek
   items:
     - name: Bevezetés a Key Vault-tanúsítványok használatába

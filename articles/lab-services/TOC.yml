@@ -8,7 +8,7 @@
       href: devtest-lab-overview.md
     - name: Azure DevTest Labs és Lab Services
       href: lab-services-overview.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1. Tesztkörnyezet beállítása
       href: tutorial-create-custom-lab.md
@@ -20,10 +20,28 @@
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
     - name: Azure PowerShell
       href: samples-powershell.md
+      items:
+        - name: Külső felhasználó hozzáadása egy laborhoz
+          href: scripts/add-external-user-to-lab.md
+        - name: Marketplace-rendszerképek hozzáadása egy laborhoz
+          href: scripts/add-marketplace-images-to-lab.md
+        - name: Egyéni rendszerkép létrehozása VHD-ről
+          href: scripts/create-custom-image-from-vhd.md
+        - name: Egyéni szerepkör létrehozása egy laborban
+          href: scripts/create-custom-role-in-lab.md
+        - name: Az engedélyezett virtuálisgép-méretek beállítása egy laborban
+          href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: Azure PowerShell – Az.DevTestLabs2 modul
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: Azure CLI
       href: samples-cli.md
+      items:
+        - name: Virtuális gép létrehozása és az elérhetőségének ellenőrzése
+          href: scripts/create-verify-virtual-machine-in-lab-cli.md
+        - name: Virtuális gép elindítása
+          href: scripts/start-connect-virtual-machine-in-lab-cli.md
+        - name: Virtuális gép leállítása és törlése
+          href: scripts/stop-delete-virtual-machine-in-lab-cli.md
 - name: Alapelvek
   items:
     - name: DevTest Labs-fogalmak

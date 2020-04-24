@@ -232,7 +232,7 @@
           items:
             - name: Javaslattevő létrehozása
               href: index-add-suggesters.md
-            - name: Javaslatok vagy automatikus kiegészítés hozzáadása
+            - name: Automatikus kitöltés és javaslatok hozzáadása
               href: search-autocomplete-tutorial.md
         - name: Lekérdezés a Power Appsből
           href: search-howto-powerapps.md
@@ -256,8 +256,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: A gyűjteményszűrők megismerése
           href: search-query-understand-collection-filters.md
-        - name: Többszintű aspektusok példája
-          href: search-example-adventureworks-multilevel-faceting.md
+        - name: Szűrés nyelv szerint
+          href: search-filters-language.md
     - name: Results (Eredmények)
       items:
         - name: Munka az eredményül kapott adatokkal
@@ -455,10 +455,6 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK fájlok bemutató
           href: 'https://aka.ms/jfkfiles'
-        - name: NYC-feladatok bemutató
-          href: 'https://aka.ms/azjobsdemo'
-        - name: Használati esetek keresése
-          href: 'https://searchsamples.azurewebsites.net/'
     - name: Képzés
       items:
         - name: Bevezetés (Microsoft Learn)

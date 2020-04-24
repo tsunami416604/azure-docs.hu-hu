@@ -149,8 +149,9 @@
             - name: Privát kapcsolat használata
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: Webszolgáltatások biztonságossá tétele SSL használatával
+            - name: Webszolgáltatások biztonságossá tétele TLS használatával
               href: how-to-secure-web-service.md
+              displayName: ssl
             - name: Az Azure AD Identity használata AKS-környezetekben
               href: how-to-use-azure-ad-identity.md
             - name: Tárelérési kulcsok újragenerálása

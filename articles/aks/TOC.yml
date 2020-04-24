@@ -20,8 +20,8 @@
     - name: Alkalmazások fejlesztése
       expanded: true
       items:
-        - name: Vázlat használata
-          href: kubernetes-draft.md
+        - name: Fejlesztés Helm használatával
+          href: quickstart-helm.md
         - name: Azure Dev Spaces
           expanded: true
           items:
@@ -316,7 +316,7 @@
                 - name: 3 – Csoportos fejlesztés
                   href: ../dev-spaces/team-development-nodejs.md
                   maintainContext: true
-        - name: Alkalmazások futtatása a Helm használatával
+        - name: Meglévő alkalmazások telepítése Helm használatával
           href: kubernetes-helm.md
         - name: Az OpenFaaS használata
           href: openfaas.md

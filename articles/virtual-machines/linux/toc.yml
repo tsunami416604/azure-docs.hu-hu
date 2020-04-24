@@ -45,9 +45,13 @@
       href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
     - name: 14b – A Jenkins integrálása az Azure DevOpsszal
       href: ../../jenkins/tutorial-build-deploy-jenkins.md
-    - name: 15a – IaaS és PaaS a DevOpshoz az Azure-on
+    - name: 15a – Működés közbeni üzembehelyezési stratégia konfigurálása
       href: tutorial-devops-azure-pipelines-classic.md
-    - name: 15b – CI/CD az Azure Pipelines használatával (YAML)
+    - name: 15b – Kanári üzembehelyezési stratégia konfigurálása
+      href: tutorial-azure-devops-canary-strategy.md
+    - name: 15c – Kék-zöld üzembehelyezési stratégia konfigurálása
+      href: tutorial-azure-devops-blue-green-strategy.md
+    - name: 15d – CI/CD az Azure Pipelines használatával (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a – LAMP-verem létrehozása
       href: tutorial-lamp-stack.md
@@ -626,7 +630,7 @@
           items:
             - name: Architektúra
               href: ibm-db2-purescale-azure.md
-            - name: Környezet
+            - name: Üzembe helyezés
               href: deploy-ibm-db2-purescale-azure.md
     - name: Tárhely kezelése
       items:

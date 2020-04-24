@@ -26,6 +26,8 @@
       href: learn/automation-tutorial-runbook-textual-python2.md
 - name: Alapelvek
   items:
+    - name: Az Automation-fiókok hitelesítésének áttekintése
+      href: automation-security-overview.md
     - name: Runbook végrehajtása – áttekintés
       href: automation-runbook-execution.md
     - name: Hibrid runbook-feldolgozó – áttekintés
@@ -48,6 +50,8 @@
           href: automation-create-standalone-account.md
         - name: Automation-fiók létrehozása Resource Manager-sablonnal
           href: automation-create-account-template.md
+        - name: Hitelesítés konfigurálása az Amazon Web Services segítségével
+          href: automation-config-aws-account.md
         - name: Automation-futtatófiók kezelése
           href: manage-runas-account.md
         - name: Szerepköri engedélyek és biztonság kezelése
@@ -156,6 +160,8 @@
               href: automation-dsc-diagnostics.md
             - name: DSC-vel kapcsolatos problémák elhárítása
               href: troubleshoot/desired-state-configuration.md
+            - name: Az Azure DSC-bővítmény verzióelőzményei
+              href: automation-dsc-extension-history.md
         - name: Change Tracking és Inventory
           items:
             - name: Áttekintés
@@ -248,8 +254,6 @@
           href: automation-create-alert-triggered-runbook.md
         - name: Office 365-szolgáltatások kezelése
           href: manage-office-365.md
-        - name: Runbookok hitelesítése az Amazon Web Services segítségével
-          href: automation-config-aws-account.md
         - name: AWS virtuális gép üzembe helyezése Automation-runbookkal
           href: automation-scenario-aws-deployment.md
         - name: Resource Manager-sablon üzembe helyezése runbookkal

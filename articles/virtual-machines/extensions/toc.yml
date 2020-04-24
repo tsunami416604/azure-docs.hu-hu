@@ -8,7 +8,7 @@
       href: agent-linux.md
     - name: Windows rendszerű virtuálisgép-ügynök
       href: agent-windows.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Egyéni szkriptbővítmény használata
@@ -125,3 +125,5 @@
       href: export-templates.md
     - name: Hibaelhárítás
       href: troubleshoot.md
+    - name: A Python 3-kompatibilis Linux rendszerekkel kapcsolatos problémák
+      href: issues-using-vm-extensions-python-3.md

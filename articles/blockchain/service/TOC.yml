@@ -7,10 +7,12 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Tag létrehozása – portál
+    - name: Tag létrehozása a Portal használatával
       href: create-member.md
-    - name: Tag létrehozása – CLI
+    - name: Tag létrehozása a parancssori felület használatával
       href: create-member-cli.md
+    - name: Tag létrehozása sablon használatával
+      href: create-member-template.md
     - name: Csatlakozás tranzakciós csomóponthoz
       items:
         - name: A VS Code használata

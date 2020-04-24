@@ -1,21 +1,22 @@
 ---
-title: Az Azure-regisztráció hibaelhárítása
-description: Az új fiók regisztrálásakor felmerülő problémák megoldása a Microsoft Azure Portal Fiókközpontjában.
+title: Nem lehet regisztrálni új Azure-fiókot
+description: Azon problémák megoldása, amelyek egy új fiók a Microsoft Azure Portal Fiókközpontjában történő regisztrálása során merülnek fel.
+services: cost-management-billing
 author: v-miegge
-ms.reviewer: dcscontentpm
+manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 540cb5b4ca8f78c734fbc7dcd16358be8eb391c0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e8536555e3763674a2c018182e70f8d50e11556b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409459"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641737"
 ---
-# <a name="troubleshoot-azure-sign-up"></a>Az Azure-regisztráció hibaelhárítása
+# <a name="troubleshoot-issues-when-you-sign-up-a-new-account-in-azure-portal-or-azure-account-center"></a>Új fiók az Azure Portalon vagy az Azure Fiókközpontban történő regisztrálásának hibaelhárítása
 
 Előfordulhat, hogy problémába ütközik, amikor új fiókot próbál meg regisztrálni a Microsoft Azure Portalon vagy az Azure Fiókközpontban. A probléma elhárítása előtt ellenőrizze az alábbiakat:
 
@@ -25,7 +26,7 @@ Előfordulhat, hogy problémába ütközik, amikor új fiókot próbál meg regi
 
 ## <a name="resolutions"></a>Megoldások
 
-A probléma megoldásához válassza ki a problémát, amely az Azure-ba való regisztráció során jelentkezik.
+A probléma megoldásához válassza ki a problémát, amely az Azure-regisztráció során jelentkezik.
 
 ### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Hiba: *A regisztrációt nem lehet folytatni a fiókkal kapcsolatos probléma miatt. Forduljon a számlázási ügyfélszolgálathoz.*
 
@@ -110,13 +111,13 @@ A probléma megoldásához ellenőrizze, hogy az alábbiak teljesülnek-e:
 
 - Az Azure-fiók profiljában megadott adatok (például a kapcsolattartási e-mail-cím, a postai cím és a telefonszám) helyesek.
 - A hitelkártyaadatok helyesek.
-- Ugyanezekkel az adatokkal még nem hozott létre Microsoft-fiókot.
+- Nincs olyan Microsoft-fiókja, amely ugyanazokat az adatokat használja.
 
 ### <a name="error-your-current-account-type-is-not-supported"></a>Hiba: *A jelenlegi fióktípus nem támogatott*
 
-Ez a probléma akkor fordulhat elő, ha a fiók regisztrálva van egy olyan [nem felügyelt Azure AD-címtárban](../../active-directory/users-groups-roles/directory-self-service-signup.md), amely nem a szervezet Azure AD-címtára.
+Ez a probléma akkor fordulhat elő, ha a fiók regisztrálva van egy olyan [nem felügyelt Azure AD-címtárban](../../active-directory/users-groups-roles/directory-self-service-signup.md), amely nem a cég vagy szervezet Azure AD-címtára.
 
-A probléma megoldásához regisztráljon Azure-fiókra egy másik fiók használatával, vagy vegye át a nem felügyelt AD-címtárat. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../../active-directory/users-groups-roles/domains-admin-takeover.md) ismertető cikket.
+A probléma megoldásához regisztráljon egy másik fiókot Azure-fiókként, vagy vegye át a nem felügyelt AD-címtárat. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../../active-directory/users-groups-roles/domains-admin-takeover.md) ismertető cikket.
 
 ## <a name="additional-help-resources"></a>További támogatási forrásanyagok
 

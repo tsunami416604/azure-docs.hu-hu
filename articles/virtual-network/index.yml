@@ -11,12 +11,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 08/28/2019
-  ms.openlocfilehash: f96f011eedc297b3f48d8b8dda177198809bb564
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: a6c0bee32fbeb50c1eef0a9625706bcee9e1ae17
+  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70142943"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82086470"
 landingContent:
 - title: A Virtual Network bemutatása
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
     links:
     - text: Virtuális hálózat – gyakori kérdések
       url: virtual-networks-overview.md
-- title: Első lépések
+- title: Bevezetés
   linkLists:
   - linkListType: quickstart
     links:
@@ -64,6 +64,10 @@ landingContent:
     links:
     - text: Azure-erőforrásokhoz való hozzáférés védelme és elkülönítése
       url: https://docs.microsoft.com/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
+  - linkListType: video
+    links:
+    - text: Az Azure Private Link szolgáltatással biztonságosan hozzáférhet az Azure PaaS-erőforrásaihoz
+      url: https://www.youtube.com/watch?v=PWKM5KXjWno
 - title: Virtuális hálózatok csatlakoztatása
   linkLists:
   - linkListType: concept

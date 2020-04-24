@@ -34,6 +34,8 @@
       href: security-baselines-overview.md
     - name: Az Azure Cache for Redis biztonsági alapkonfigurációja
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: A Backup biztonsági alapkonfigurációja
+      href: ../../backup/security-baseline.md
     - name: A Batch biztonsági alapkonfigurációja
       href: ../../batch/security-baseline.md
     - name: A Container Registry biztonsági alapkonfigurációja
@@ -56,3 +58,5 @@
       href: ../../postgresql/security-baseline.md
     - name: Az SQL Database biztonsági alapkonfigurációja
       href: ../../sql-database/security-baseline.md
+    - name: A Storage biztonsági alapkonfigurációja
+      href: ../../storage/common/security-baseline.md

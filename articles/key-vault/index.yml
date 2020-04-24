@@ -13,12 +13,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: e969d71be3c8f77607e69205c24d6c980c9943a2
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 90867d51bd0952eea350ed9120d2274d40b30d99
+  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81536267"
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "81867260"
 highlightedContent:
   items:
   - title: Az Azure Key Vault bemutatása
@@ -89,14 +89,34 @@ conceptualContent:
     footerLink:
       url: ./secrets/index.yml
       text: Részletek
-  - title: Tárkulcsok kezelése
+  - title: Key Vault és Storage
     links:
     - url: ./secrets/overview-storage-keys.md
       itemType: overview
-      text: Tárkulcsok – parancssori felület
+      text: Tárkulcsok kezelése – parancssori felület
     - url: ./secrets/overview-storage-keys-powershell.md
       itemType: overview
-      text: Tárkulcsok – PowerShell
+      text: Tárkulcsok kezelése – PowerShell
     - url: ./secrets/storage-keys-sas-tokens-code.md
       itemType: overview
       text: SAS-tokenek beolvasása kódból
+  - title: Key Vault és Virtual Machines
+    links:
+    - url: ../virtual-machines/extensions/key-vault-windows.md
+      itemType: overview
+      text: Key Vault virtuálisgép-bővítmény – Windows
+    - url: ../virtual-machines/extensions/key-vault-linux.md
+      itemType: overview
+      text: Key Vault virtuálisgép-bővítmény – Linux
+    - url: /azure/developer/ansible/key-vault-configure-vm-security
+      itemType: overview
+      text: Key Vault és Linux rendszerű virtuális gépek az Ansible-ben
+    - url: ../virtual-machines/windows/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault és Azure Disk Encryption – Windows
+    - url: ../virtual-machines/linux/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault és Azure Disk Encryption – Linux
+    - url: ../virtual-machine-scale-sets/disk-encryption-key-vault.md
+      itemType: overview
+      text: Key Vault és Virtual Machine Scale Sets

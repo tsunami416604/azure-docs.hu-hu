@@ -60,6 +60,8 @@
           href: sql-support-matrix.md
         - name: A SAP HANA biztonsági mentésének támogatási mátrixa
           href: sap-hana-backup-support-matrix.md
+        - name: Az Azure-fájlmegosztások biztonsági mentésének támogatási mátrixa
+          href: azure-file-share-support-matrix.md
         - name: Az Azure Policy támogatott virtuálisgép-termékváltozatai
           href: backup-azure-policy-supported-skus.md
     - name: Gyakori kérdések (GYIK)
@@ -346,6 +348,8 @@
           href: backup-azure-security-feature.md
         - name: Beépített biztonsági vezérlők
           href: backup-security-controls.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Hibaelhárítás
       items:
         - name: Azure VM

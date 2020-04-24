@@ -108,7 +108,7 @@
           items:
             - name: Azure SQL-naplózás
               href: sql-database-auditing.md
-            - name: Tárolás VNet vagy tűzfal mögött
+            - name: A VNet vagy tűzfal mögötti tárfiók auditja
               href: create-auditing-storage-account-vnet-firewall.md
             - name: Auditnapló formátuma
               href: sql-database-audit-log-format.md

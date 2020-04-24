@@ -10,6 +10,9 @@
       items:
         - name: Költségelemzés indítása
           href: quick-acm-cost-analysis.md
+        - name: Költségvetés létrehozása sablon használatával
+          href: quick-create-budget-template.md
+          displayName: 'ARM template, resource manager template'
     - name: Oktatóanyagok
       items:
         - name: Költségvetések létrehozása és kezelése

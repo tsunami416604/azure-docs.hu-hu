@@ -20,8 +20,8 @@
       href: quickstart-synapse-studio.md
     - name: Készletek létrehozása
       items:
-        - name: Apache Spark-készlet létrehozása webes eszközök használatával
-          href: ./spark/apache-spark-notebook-create-spark-use-sql.md
+        - name: Apache Spark-notebook létrehozása webes eszközök használatával
+          href: quickstart-apache-spark-notebook.md
         - name: Apache Spark-készlet létrehozása az Azure Portal használatával
           href: quickstart-create-apache-spark-pool.md
         - name: SQL-készlet létrehozása

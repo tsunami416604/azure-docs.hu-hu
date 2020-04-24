@@ -31,6 +31,8 @@
           href: concept-fundamentals-block-legacy-authentication.md
         - name: Identitásbiztonság pontszám
           href: identity-secure-score.md
+        - name: Folyamatos hozzáférés-kiértékelés
+          href: concept-fundamentals-continuous-access-evaluation.md
     - name: Csoportok és felhasználók
       items:
         - name: Csoport- és hozzáférés-kezelés
