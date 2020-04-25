@@ -68,6 +68,8 @@
           href: cognitive-search-tutorial-blob.md
         - name: Python
           href: cognitive-search-tutorial-blob-python.md
+    - name: Lekérdezés a Power Appsből
+      href: search-howto-powerapps.md
 - name: Példák
   items:
     - name: 'C#-minták'
@@ -234,8 +236,6 @@
               href: index-add-suggesters.md
             - name: Automatikus kitöltés és javaslatok hozzáadása
               href: search-autocomplete-tutorial.md
-        - name: Lekérdezés a Power Appsből
-          href: search-howto-powerapps.md
         - name: Szintaxisreferencia
           items:
             - name: Egyszerű lekérdezési szintaxis

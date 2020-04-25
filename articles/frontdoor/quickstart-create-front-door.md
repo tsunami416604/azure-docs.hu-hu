@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: sharadag
-ms.openlocfilehash: e7e500f0459c0f5fd4039acf316d9469e1567a09
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: c1ce34bb7fc851d3f763241c9e92371b43ed1861
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116952"
+ms.locfileid: "82133447"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rövid útmutató: Front Door létrehozása magas rendelkezésre állású globális webalkalmazásokhoz
 
@@ -42,7 +42,7 @@ Ha még nem rendelkezik webalkalmazással, a következő lépésekkel állíthat
 
 1.  > **Web App**Válassza **a webalkalmazás lehetőséget**.
 
-   ![Webalkalmazás létrehozása az Azure Portal-on](media/quickstart-create-front-door/create-web-app-for-front-door.png)
+   ![Webalkalmazás létrehozása az Azure Portal-on](media/quickstart-create-front-door/create-web-app-azure-front-door.png)
 
 1. A **Web App (webalkalmazás**) területen válassza ki a használni kívánt **előfizetést** .
 
@@ -60,7 +60,7 @@ Ha még nem rendelkezik webalkalmazással, a következő lépésekkel állíthat
 
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget, tekintse át az **összegzést**, majd kattintson a **Létrehozás**gombra. A telepítés befejezéséhez több percet is igénybe vehet.
 
-   ![Webalkalmazás összegzésének áttekintése](media/quickstart-create-front-door/summary-for-web-app-for-front-door.png)
+   ![Webalkalmazás összegzésének áttekintése](media/quickstart-create-front-door/web-app-summary-azure-front-door.png)
 
 A telepítés befejezése után hozzon létre egy második webalkalmazást. Ugyanazt az eljárást használja ugyanazokkal az értékekkel, az alábbi értékek kivételével:
 
@@ -87,7 +87,7 @@ Konfigurálja az Azure bejárati ajtaját a felhasználói forgalom közvetlen e
 
 1. A **gazdagép neve**mezőben adjon meg egy globálisan egyedi állomásnevet. Ez a példa a *contoso-frontend felületet*használja. Válassza a **Hozzáadás** lehetőséget.
 
-   ![Előtér-gazdagép hozzáadása az Azure bejárati ajtóhoz](media/quickstart-create-front-door/add-frontend-host-for-front-door.png)
+   ![Előtér-gazdagép hozzáadása az Azure bejárati ajtóhoz](media/quickstart-create-front-door/add-frontend-host-azure-front-door.png)
 
 Ezután hozzon létre egy háttér-készletet, amely tartalmazza a két webalkalmazást.
 
@@ -103,7 +103,7 @@ Ezután hozzon létre egy háttér-készletet, amely tartalmazza a két webalkal
 
 1. Válassza ki az előfizetést, majd válassza ki a **háttérbeli állomásnév**alapján létrehozott második webalkalmazást. Válassza a **Hozzáadás** lehetőséget.
 
-   ![Háttérbeli gazdagép hozzáadása a bejárati ajtóhoz](media/quickstart-create-front-door/add-backend-host-to-pool-for-front-door.png)
+   ![Háttérbeli gazdagép hozzáadása a bejárati ajtóhoz](media/quickstart-create-front-door/add-backend-host-pool-azure-front-door.png)
 
 Végül adjon hozzá egy útválasztási szabályt. Egy útválasztási szabály leképezi az előtér-gazdagépet a háttér-készletre. A szabály továbbítja a kérést `contoso-frontend.azurefd.net` a **myBackendPool**.
 
@@ -116,7 +116,7 @@ Végül adjon hozzá egy útválasztási szabályt. Egy útválasztási szabály
 
 1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás**lehetőséget.
 
-   ![Azure-beli bejárati ajtó konfigurálva](media/quickstart-create-front-door/configuration-of-front-door.png)
+   ![Azure-beli bejárati ajtó konfigurálva](media/quickstart-create-front-door/configuration-azure-front-door.png)
 
 ## <a name="view-azure-front-door-in-action"></a>Azure-beli bejárati ajtó megtekintése működés közben
 
@@ -141,7 +141,7 @@ Az azonnali globális feladatátvétel teszteléséhez hajtsa végre a következ
 
 1. Frissítse a böngészőjét. Ekkor egy hibaüzenet jelenik meg.
 
-   ![A webalkalmazás mindkét példánya leállt](media/quickstart-create-front-door/service-has-been-stopped.png)
+   ![A webalkalmazás mindkét példánya leállt](media/quickstart-create-front-door/web-app-stopped-message.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

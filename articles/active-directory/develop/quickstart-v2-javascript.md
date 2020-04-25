@@ -1,7 +1,7 @@
 ---
-title: Felhasználók bejelentkezése JavaScript egyoldalas alkalmazásokban | Azure
+title: Bejelentkezési felhasználók JavaScript egyoldalas alkalmazásokban | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan hívhat meg egy JavaScript-alkalmazás olyan API-t, amely hozzáférési jogkivonatokat igényel a Microsoft identity platform használatával.
+description: Megtudhatja, hogyan hívhat meg egy JavaScript-alkalmazás olyan API-t, amely a Microsoft Identity platform használatával hozzáférési jogkivonatokat igényel.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,60 +12,60 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 1d22f66ad5f7adf5bb8196c3e72a2a343f4558b0
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: aad830ba7c7198077fe6073d6351c72ac9a8e662
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536097"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144395"
 ---
-# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rövid útmutató: Bejelentkezés a felhasználókközött, és kap egy hozzáférési jogkivonatot a JavaScript SPA
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban
 
-Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy a JavaScript egyoldalas alkalmazások (SPA) hogyan jelentkezhetnek be a személyes fiókok, munkahelyi fiókok és iskolai fiókok felhasználói. A JavaScript SPA is kaphat egy hozzáférési jogkivonatot a Microsoft Graph API vagy bármely webes API hívásához. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy illusztrációhoz.)
+Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be a JavaScript egyoldalas alkalmazás (SPA) a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára. A JavaScript SPA a Microsoft Graph API vagy bármely webes API meghívására is kérhet hozzáférési jogkivonatot. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure-előfizetés – [ingyenes Azure-előfizetés létrehozása](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
-* [Visual Studio-kód](https://code.visualstudio.com/download) (projektfájlok szerkesztéséhez)
+* [Visual Studio Code](https://code.visualstudio.com/download) (projektfájlok szerkesztése)
 
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-application"></a>A rövid útmutató alkalmazás regisztrálása és letöltése
-> A rövid útmutató alkalmazás elindításához használja az alábbi lehetőségek egyikét.
+> ## <a name="register-and-download-your-quickstart-application"></a>A gyors üzembe helyezési alkalmazás regisztrálása és letöltése
+> A gyors üzembe helyezési alkalmazás indításához használja az alábbi lehetőségek egyikét.
 >
-> ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség (Expressz): Regisztrálja és automatikusan konfigurálja az alkalmazást, majd töltse le a kódmintát
+> ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség (expressz): regisztrálja és állítsa be automatikusan az alkalmazást, majd töltse le a kód mintáját
 >
-> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
-> 1. Ha a fiók hozzáférést biztosít egynél több bérlőhöz, válassza ki a jobb felső sarokban lévő fiókot, majd állítsa be a portálmunkamenetet a használni kívánt Azure Active Directory (Azure AD) bérlőre.
-> 1. Nyissa meg az új [Azure Portal – Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) ablaktáblát.
+> 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+> 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókot a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure Active Directory (Azure AD) bérlőre.
+> 1. Nyissa meg az új [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) ablaktáblát.
 > 1. Adja meg az alkalmazás nevét.
-> 1. A **Támogatott fióktípusok csoportban**válassza a Fiókok lehetőséget **bármely szervezeti címtárban és személyes Microsoft-fiókban.**
+> 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 > 1. Kattintson a **Register** (Regisztrálás) elemre.
-> 1. Kövesse az utasításokat az új alkalmazás letöltéséhez és automatikus konfigurálásához.
+> 1. Az új alkalmazás letöltéséhez és automatikus konfigurálásához kövesse az utasításokat.
 >
-> ### <a name="option-2-manual-register-and-manually-configure-your-application-and-code-sample"></a>2. lehetőség (manuális): Regisztrálja és manuálisan konfigurálja az alkalmazást és a kódmintát
+> ### <a name="option-2-manual-register-and-manually-configure-your-application-and-code-sample"></a>2. lehetőség (manuális): az alkalmazás-és a kód-minta regisztrálása és manuális konfigurálása
 >
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 >
-> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+> 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 >
-> 1. Ha a fiók hozzáférést biztosít egynél több bérlőhöz, válassza ki a fiókját a jobb felső sarokban, majd állítsa be a portálmunkamenetet a használni kívánt Azure AD-bérlőre.
-> 1. Nyissa meg a Microsoft identity platform ot a [fejlesztőknek Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapon.
-> 1. Válassza **az Új regisztráció lehetőséget.**
+> 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
+> 1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapját.
+> 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
-> 1. A **Támogatott fióktípusok csoportban**válassza a Fiókok lehetőséget **bármely szervezeti címtárban és személyes Microsoft-fiókban.**
-> 1. Kattintson a **Register** (Regisztrálás) elemre. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosító** értékét későbbi használatra.
-> 1. Ehhez a rövid útmutatóhoz engedélyezni kell az [Implicit támogatási folyamatot.](v2-oauth2-implicit-grant-flow.md) A regisztrált alkalmazás bal oldali ablaktáblájában válassza a **Hitelesítés**lehetőséget.
-> 1. A **Platformkonfigurációk csoportban**válassza **a Platform hozzáadása**lehetőséget. A bal oldalon megnyílik egy panel. Itt válassza ki a **Web Applications régiót.**
-> 1. Még mindig a bal oldalon állítsa `http://localhost:3000/`az **Átirányítás URI** értékét . Ezután válassza **a Hozzáférési jogkivonat** és **az Azonosító jogkivonat lehetőséget.**
+> 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+> 1. Kattintson a **Register** (Regisztrálás) elemre. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
+> 1. Ez a rövid útmutató az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezését igényli. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
+> 1. A **platform-konfigurációk**területen válassza **a platform hozzáadása**lehetőséget. Ekkor megnyílik egy panel a bal oldalon. Itt válassza ki a **webalkalmazások** régiót.
+> 1. Továbbra is a bal oldalon adja meg az **átirányítási URI** értékét `http://localhost:3000/`. Ezután válassza a **hozzáférési jogkivonat** és az **azonosító token**lehetőséget.
 > 1. Válassza a **Konfigurálás** lehetőséget.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
-> Ahhoz, hogy a kódmintát ebben a rövid `redirectUri` `http://localhost:3000/` útmutatóban, hozzá kell adnia egy as és implicit **támogatás**engedélyezése.
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
+> Ahhoz, hogy a kód mintája ebben a rövid útmutatóban működjön, hozzá `redirectUri` kell `http://localhost:3000/` adnia a as és az **implicit**engedélyezést.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Hajtsa végre ezeket a módosításokat nekem]()
+> > [A módosítások elvégzése]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-javascript/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
@@ -73,18 +73,18 @@ Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy a J
 #### <a name="step-2-download-the-project"></a>2. lépés: A projekt letöltése
 
 > [!div renderon="docs"]
-> Ha a projektet webkiszolgálóval szeretné futtatni a Node.js fájlokkal, [töltse le az alapvető projektfájlokat.](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
+> Ha a projektet a Node. js használatával webkiszolgálóval szeretné futtatni, [töltse le az alapprojekt fájljait](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 
 > [!div renderon="portal"]
-> A projekt futtatása webkiszolgálóval a Node.js használatával
+> A projekt futtatása webkiszolgálóval a Node. js használatával
 
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [A kódminta letöltése](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
+> [A mintakód letöltése](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-javascript-app"></a>3. lépés: A JavaScript-alkalmazás konfigurálása
+> #### <a name="step-3-configure-your-javascript-app"></a>3. lépés: a JavaScript-alkalmazás konfigurálása
 >
-> A *JavaScriptSPA* mappában írja be az *authConfig.js fájlt,* és állítsa be `clientID`a és `authority` az `redirectUri` értékeket a területen. `msalConfig`
+> A *JavaScriptSPA* mappában szerkessze a *authConfig. js fájlt*, és állítsa `clientID`be `authority` a `redirectUri` és a `msalConfig`értékeket a alatt.
 >
 > ```javascript
 >
@@ -110,23 +110,23 @@ Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy a J
 > [!div renderon="docs"]
 >
 > Az elemek magyarázata:
-> - Enter_the_Application_Id_Here>a regisztrált alkalmazás **alkalmazásazonosítója.** * \<*
-> - Enter_the_Cloud_Instance_Id_Here>az Azure-felhő példánya. * \<* A fő vagy globális Azure-felhőhöz egyszerűen írja be a beírást. *https://login.microsoftonline.com* **A nemzeti** felhők (például Kína), lásd: [Nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
-> - Enter_the_Tenant_info_here>az alábbi beállítások egyikére van beállítva: * \<*
->    - Ha az alkalmazás támogatja a *fiókok ebben a szervezeti címtárban,* cserélje le ezt az értéket a **bérlői azonosító** vagy bérlő **neve** (például *contoso.microsoft.com).*
->    - Ha az alkalmazás *bármely szervezeti címtárban támogatja a fiókokat,* cserélje le ezt az értéket **szervezetekre.**
->    - Ha az alkalmazás támogatja *a szervezeti címtárban és a személyes Microsoft-fiókokban lévő fiókokat,* cserélje le ezt az értéket a **közös értékre.** Ha csak *a személyes Microsoft-fiókokra*szeretné korlátozni a támogatást, cserélje le ezt az értéket **a fogyasztókra**.
+> - Enter_the_Application_Id_Here>a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** . * \<*
+> - Enter_the_Cloud_Instance_Id_Here>az Azure-felhő példánya. * \<* A fő vagy a globális Azure-felhőhöz egyszerűen *https://login.microsoftonline.com*írja be a következőt:. Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
+> - Enter_the_Tenant_info_here>az alábbi lehetőségek egyikére van beállítva: * \<*
+>    - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com*).
+>    - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**.
+>    - Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**.
 >
 > > [!TIP]
 > > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
 >
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: Az alkalmazás konfigurálva van, és készen áll a futtatásra
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
 > A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk.
 
 > [!div renderon="docs"]
 >
-> Ezután még ugyanabban a mappában, edit *graphConfig.js* fájlt, hogy állítsa be a `graphMeEndpoint` és `graphMeEndpoint` az `apiConfig` objektum.
+> Ezután még ugyanabban a mappában szerkessze a *graphConfig. js* fájlt, `graphMeEndpoint` és állítsa be a `graphMeEndpoint` és az `apiConfig` objektumot.
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
 >   const graphConfig = {
@@ -144,40 +144,40 @@ Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy a J
 > [!div renderon="docs"]
 >
 > Az elemek magyarázata:
-> - Enter_the_Graph_Endpoint_Here>az a végpont, amely ellen API-hívások at. * \<* A fő vagy globális Microsoft Graph `https://graph.microsoft.com`API-szolgáltatáshoz egyszerűen írja be a be című t. További információ: [National cloud deployment](https://docs.microsoft.com/graph/deployments)
+> - Enter_the_Graph_Endpoint_Here>a végpont, amelyet az API-hívások fognak végezni. * \<* A fő vagy a globális Microsoft Graph API szolgáltatáshoz egyszerűen írja `https://graph.microsoft.com`be a következőt:. További információ: [belföldi Felhőbeli üzembe helyezés](https://docs.microsoft.com/graph/deployments)
 >
-> #### <a name="step-4-run-the-project"></a>4. lépés: A projekt futtatása
+> #### <a name="step-4-run-the-project"></a>4. lépés: a projekt futtatása
 
-A projekt futtatása webkiszolgálóval a [Node.js](https://nodejs.org/en/download/)használatával:
+Futtassa a projektet egy webkiszolgálóval a [Node. js](https://nodejs.org/en/download/)használatával:
 
-1. A kiszolgáló indításához futtassa a következő parancsot a projekt könyvtárából:
+1. A kiszolgáló elindításához futtassa a következő parancsot a projekt könyvtárából:
     ```batch
     npm install
     npm start
     ```
-1. Nyisson meg egy `http://localhost:3000/`webböngészőt, és nyissa meg a megnyitását.
+1. Nyisson meg egy webböngészőt, `http://localhost:3000/`és lépjen a következőre:.
 
-1. Válassza **a Bejelentkezés** lehetőséget a bejelentkezés elindításához, majd hívja meg a Microsoft Graph API-t.
+1. A bejelentkezés elindításához válassza a **Bejelentkezés** lehetőséget, majd hívja meg Microsoft Graph API-t.
 
-Miután a böngésző betölti az alkalmazást, válassza **a Bejelentkezés**lehetőséget. Amikor először jelentkezik be, a rendszer kéri, hogy adja meg hozzájárulását ahhoz, hogy az alkalmazás hozzáférhessen a profiljához, és bejelentkezhessen. Miután sikeresen bejelentkezett, a felhasználói profil adatainak meg kell jelenniük az oldalon.
+Ha a böngésző betölti az alkalmazást, válassza a **Bejelentkezés**lehetőséget. Amikor először jelentkezik be, a rendszer arra kéri, hogy adja meg a beleegyezik, hogy engedélyezze az alkalmazásnak a profil elérését és a bejelentkezést. Miután sikeresen bejelentkezett, a felhasználói profil adatai megjelennek az oldalon.
 
 ## <a name="more-information"></a>További információ
 
 ### <a name="how-the-sample-works"></a>A minta működése
 
-![A mintaalkalmazás működése ebben a rövid útmutatóban](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+![A minta JavaScript SPA működése: 1. A SPA kezdeményezi a bejelentkezést. 2. A fürdő azonosító jogkivonatot vásárol a Microsoft Identity platformon. 3. A SPA-hívások jogkivonat beszerzése. 4. A Microsoft Identity platform egy hozzáférési jogkivonatot ad vissza a SPA-nak. 5. A SPA teszi és a HTTP GET kérést az Aces Tokenrel a Microsoft Graph API-val. 6. A Graph API egy HTTP-választ ad vissza a SPA-nak.](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
-### <a name="msaljs"></a>msal.js
+### <a name="msaljs"></a>msal. js
 
-Az MSAL-kódtár bejelentkezik a felhasználók, és kéri a jogkivonatokat, amelyek a Microsoft identity platform által védett API eléréséhez használt. A rövid útmutató *index.html* fájl a tárra mutató hivatkozást tartalmaz:
+A MSAL-könyvtár bejelentkezik a felhasználók számára, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kéri. A gyors útmutató *index. html* fájlja a könyvtárra mutató hivatkozást tartalmaz:
 
 ```html
 <script type="text/javascript" src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
 ```
 > [!TIP]
-> Az előző verziót lecserélheti a legújabb verzióra az [MSAL.js kiadások](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)alatt.
+> Az előző verziót lecserélheti a legújabb, a [MSAL. js kiadásban](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)megjelent verzióra.
 
-Ha telepítve van a Node.js fájl, a node.js csomagkezelőn (npm) keresztül töltheti le a legújabb verziót:
+Ha a Node. js telepítve van, a legújabb verziót a Node. js csomagkezelő (NPM) használatával töltheti le:
 
 ```batch
 npm install msal
@@ -185,7 +185,7 @@ npm install msal
 
 ### <a name="msal-initialization"></a>Az MSAL inicializálása
 
-A rövid útmutató kódja azt is bemutatja, hogyan inicializálhatja az MSAL-könyvtárat:
+A gyors üzembe helyezési kód azt is bemutatja, hogyan inicializálható a MSAL-könyvtár:
 
 ```javascript
   // Config object to be passed to Msal on creation
@@ -206,17 +206,17 @@ const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
 > |Ahol  |  |
 > |---------|---------|
-> |`clientId`     | Az Azure Portalon regisztrált alkalmazás azonosítója.|
-> |`authority`    | (Nem kötelező) A fióktípusokat támogató hatóság URL-címe, akonfigurációs szakaszban leírtak szerint. Az alapértelmezett `https://login.microsoftonline.com/common`szolgáltató a . |
-> |`redirectUri`     | Az alkalmazásregisztráció konfigurált válasz/redirectUri. Ebben az `http://localhost:3000/`esetben, . |
-> |`cacheLocation`  | (Nem kötelező) Beállítja a böngésző tárolóját az auth állapothoz. Az alapértelmezett a sessionStorage.   |
-> |`storeAuthStateInCookie`  | (Nem kötelező) A könyvtár, amely tárolja a hitelesítési kérelem állapotát, amely a hitelesítési folyamatok érvényesítéséhez szükséges a böngésző cookie-kban. Ez a cookie az IE és edge böngészők számára van beállítva bizonyos [ismert problémák](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)enyhítésére. |
+> |`clientId`     | A Azure Portalban regisztrált alkalmazás alkalmazás-azonosítója.|
+> |`authority`    | Választható A fiók típusát támogató szolgáltatói URL-cím, a konfiguráció szakaszban korábban leírtak szerint. Az alapértelmezett szolgáltató: `https://login.microsoftonline.com/common`. |
+> |`redirectUri`     | Az alkalmazás regisztrációja konfigurált válasz-/redirectUri. Ebben az esetben a `http://localhost:3000/`. |
+> |`cacheLocation`  | Választható Beállítja a böngésző tárolóját a hitelesítési állapothoz. Az alapértelmezett érték a sessionStorage.   |
+> |`storeAuthStateInCookie`  | Választható A böngésző cookie-jai hitelesítési folyamatainak érvényesítéséhez szükséges hitelesítési kérési állapotot tároló könyvtár. Ez a cookie az IE és a Edge böngészők számára van beállítva, hogy bizonyos [ismert problémákkal](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)enyhíthető legyen. |
 
-Az elérhető konfigurálható beállításokról az [Ügyfélalkalmazások inicializálása](msal-js-initializing-client-applications.md)című témakörben talál további információt.
+További információ az elérhető konfigurálható lehetőségekről: [ügyfélalkalmazások inicializálása](msal-js-initializing-client-applications.md).
 
-### <a name="sign-in-users"></a>Bejelentkezés, felhasználók
+### <a name="sign-in-users"></a>Bejelentkezési felhasználók
 
-A következő kódrészlet bemutatja, hogyan jelentkeztetési a felhasználókhoz:
+A következő kódrészlet bemutatja, hogyan jelentkezhet be a felhasználókba:
 
 ```javascript
 // Add scopes for the id token to be used at Microsoft identity platform endpoints.
@@ -234,18 +234,18 @@ myMSALObj.loginPopup(loginRequest)
 
 > |Ahol  |  |
 > |---------|---------|
-> | `scopes`   | (Nem kötelező) Olyan hatóköröket tartalmaz, amelyek et bejelentkezéskor kérnek a felhasználó hozzájárulásához. Például `[ "user.read" ]` a Microsoft `[ "<Application ID URL>/scope" ]` Graph vagy az egyéni webes `api://<Application ID>/access_as_user`API-k (azaz. |
+> | `scopes`   | Választható Olyan hatóköröket tartalmaz, amelyeket a rendszer a bejelentkezési időben a felhasználói beleküldéshez kér. Például `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user`). |
 
 > [!TIP]
-> Azt is megteheti, hogy `loginRedirect` a módszerrel az aktuális oldalt a bejelentkezési oldalra szeretné átirányítani előugró ablak helyett.
+> Azt is megteheti, hogy a `loginRedirect` metódus használatával átirányítja az aktuális oldalt a bejelentkezési lapra a felugró ablak helyett.
 
-### <a name="request-tokens"></a>Jogkivonatok kérése
+### <a name="request-tokens"></a>Kérelmek jogkivonatai
 
-Az MSAL három módszert használ `acquireTokenRedirect` `acquireTokenPopup`a tokenek megszerzésére: , , és`acquireTokenSilent`
+A MSAL három módszert használ a tokenek beszerzésére: `acquireTokenRedirect`, és `acquireTokenPopup``acquireTokenSilent`
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-A `acquireTokenSilent` módszer kezeli a tokenek beszerzése és megújítása felhasználói beavatkozás nélkül. Miután `loginRedirect` `loginPopup` a vagy metódus végrehajtása `acquireTokenSilent` az első alkalommal, a módszer általánosan használt jogkivonatok, amelyek a védett erőforrások eléréséhez használt későbbi hívások. A tokenek kérelmezésére vagy megújítására irányuló hívások csendesen történik.
+A `acquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. A `loginRedirect` vagy `loginPopup` a metódus első `acquireTokenSilent` futtatása után a metódus általában a védett erőforrásokhoz való hozzáféréshez használt jogkivonatok beszerzésére szolgál a további hívásokhoz. A jogkivonatok kérése vagy megújítása csendesen történik.
 
 ```javascript
 
@@ -264,18 +264,18 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 > |Ahol  |  |
 > |---------|---------|
-> | `scopes`   | Tartalmazza az API hozzáférési jogkivonatában visszaadandó hatóköröket. Például `[ "mail.read" ]` a Microsoft `[ "<Application ID URL>/scope" ]` Graph vagy az egyéni webes `api://<Application ID>/access_as_user`API-k (azaz.|
+> | `scopes`   | Az API hozzáférési jogkivonatában visszaadott hatóköröket tartalmaz. Például `[ "mail.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user`).|
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Vannak olyan helyzetek, amikor a felhasználókat a Microsoft identity platform végpontjával való interakcióra kell kényszerítenie. Például:
+Vannak olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Például:
 * Előfordulhat, hogy a felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszavuk lejárt.
-* Az alkalmazás további erőforrás-hatókörökhöz való hozzáférést kér, amelyekhez a felhasználónak hozzá kell járulnia.
+* Az alkalmazása olyan további erőforrás-hatókörökhöz kér hozzáférést, amelyeknek a felhasználónak hozzá kell járulnia.
 * Kétfaktoros hitelesítés szükséges.
 
-A legtöbb alkalmazás szokásos ajánlott `acquireTokenSilent` mintája az, hogy először `acquireTokenPopup` hívja, majd elkapja a kivételt, majd hívja meg (vagy `acquireTokenRedirect`) az interaktív kérelem elindítását.
+A legtöbb alkalmazás esetében a szokásos ajánlott minta az első `acquireTokenSilent` meghívása, majd a kivétel elfogása `acquireTokenPopup` , majd `acquireTokenRedirect`a (vagy) hívása egy interaktív kérelem elindításához.
 
-Az `acquireTokenPopup` eredmények hívása egy előugró ablakban a bejelentkezéshez. (Vagy `acquireTokenRedirect` eredmények a felhasználók átirányítása a Microsoft identity platform végpontjára.) Ebben az ablakban a felhasználóknak a hitelesítő adataik megerősítésével, a szükséges erőforrás hozad hozzájárulásával vagy a kétfaktoros hitelesítés befejezésével kell együttműködniük.
+Az `acquireTokenPopup` eredmények felugró ablakban való meghívása a bejelentkezéshez. (Vagy `acquireTokenRedirect` a felhasználók átirányítása a Microsoft Identity platform végpontba.) Ebben az ablakban a felhasználóknak kapcsolatba kell lépniük a hitelesítő adataik jóváhagyásával, a szükséges erőforrás megadásával vagy a kétfaktoros hitelesítés végrehajtásával.
 
 ```javascript
 // Add here scopes for access token to be used at MS Graph API endpoints.
@@ -293,16 +293,16 @@ myMSALObj.acquireTokenPopup(requestObj)
 ```
 
 > [!NOTE]
-> Ez a rövid `loginRedirect` `acquireTokenRedirect` útmutató a Microsoft Internet Explorer programot használja, mert [ismert probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) van az internetböngésző előugró ablakainak kezelésével kapcsolatban.
+> Ez a rövid útmutató `loginRedirect` a `acquireTokenRedirect` és a metódusokat használja a Microsoft Internet Explorerrel, mert az Internet Explorer felugró ablakok kezelésére vonatkozó [ismert probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) miatt.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alkalmazás létrehozásáról a rövid útmutatóhoz részletes, részletes útmutatót a következő témakörökben talál:
+A rövid útmutatóhoz tartozó alkalmazás létrehozásával kapcsolatos részletes útmutatót a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag a bejelentkezéshez és az MS Graph hívásához](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
+> [Oktatóanyag a bejelentkezéshez és az MS Graph meghívásához](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
 
-Az MSAL tártárjában dokumentációt, gyakori kérdéseket, problémákat és egyebeket talál, lásd:
+A MSAL-tárházban a dokumentáció, a gyakori kérdések és a problémák megtekintéséhez lásd:
 
 > [!div class="nextstepaction"]
-> [MSAL.js GitHub tárcsa](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [MSAL. js GitHub-tárház](https://github.com/AzureAD/microsoft-authentication-library-for-js)

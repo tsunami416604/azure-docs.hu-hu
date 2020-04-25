@@ -107,7 +107,7 @@
           href: ./ag/bot-protection.md
         - name: Szabályzat társítása meglévő Application Gatewayjel
           href: ./ag/associate-waf-policy-existing-gateway.md
-        - name: Diagnosztikai naplók
+        - name: Erőforrásnaplók
           href: ./ag/web-application-firewall-logs.md
         - name: A WAF hibaelhárítása
           href: ./ag/web-application-firewall-troubleshoot.md

@@ -7,6 +7,9 @@
 - name: Rövid útmutatók
   expanded: true
   items:
+    - name: ARM-sablon
+      displayName: Resource Manager
+      href: quickstart-cluster-template.md
     - name: .NET-alkalmazás létrehozása
       href: service-fabric-quickstart-dotnet.md
     - name: Linux-alapú tárolóalkalmazás üzembe helyezése

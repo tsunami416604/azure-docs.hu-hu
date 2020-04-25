@@ -1,24 +1,24 @@
 ---
-title: Az Azure Disk Storage áttekintése
-description: Az Azure által felügyelt lemezek áttekintése, amelyek az Azure virtuális gépeinek használatakor kezelik a tárfiókokat
+title: Azure Disk Storage áttekintése
+description: Azure-beli felügyelt lemezek áttekintése, amelyek kezelik az Azure-beli virtuális gépek használatakor használt Storage-fiókokat
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 689fc0b5dbf590dd7f2284091188bf96d12477ad
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 4b3a66ce00582a3ef05e77f65acdc46fbde8ce72
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869995"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148083"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Az Azure-beli felügyelt lemezek bemutatása
 
-Az Azure által felügyelt lemezek blokkszintű tárolókötetek, amelyeket az Azure kezel, és amelyeket az Azure virtuális gépekkel használnak. A felügyelt lemezek olyanok, mint egy fizikai lemez egy helyszíni kiszolgálón, de virtualizáltak. A felügyelt lemezek esetén mindössze meg kell adnia a lemez méretét, a lemez típusát, és ki kell építenie a lemezt. Miután kiépítetta a lemezt, az Azure kezeli a többit.
+Az Azure Managed Disks az Azure által felügyelt és az Azure Virtual Machines-t használó, blokk szintű tárolási kötetek. A felügyelt lemezek olyanok, mint egy fizikai lemez egy helyszíni kiszolgálón, de virtualizált. A felügyelt lemezek esetében mindössze annyit kell tennie, hogy megadja a lemez méretét, a lemez típusát és a lemez kiépítését. A lemez kiépítése után az Azure kezeli a többiet.
 
-A rendelkezésre álló lemeztípusok az ultralemezek, a prémium szintű SSD-meghajtók(SSD), a szabványos SSD-k és a szabványos merevlemez-meghajtók (HDD). Az egyes lemeztípusokról az [IaaS virtuális gépek lemeztípusának kiválasztása](disks-types.md)című témakörben talál további információt.
+A lemezek elérhető típusai a következők: ultra Disks, Premium SSD-meghajtók (SSD), standard SSD-k és standard merevlemez-meghajtók (HDD). Az egyes lemezek típusával kapcsolatos további információkért lásd: [IaaS virtuális gépekhez tartozó lemez típusának kiválasztása](disks-types.md).
 
 [!INCLUDE [virtual-machines-managed-disks-overview.md](../../../includes/virtual-machines-managed-disks-overview.md)]
 
