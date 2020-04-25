@@ -1,60 +1,60 @@
 ---
-title: Spark-streamelés az Azure HDInsightban
-description: Az Apache Spark Streaming alkalmazások használata HDInsight Spark-fürtökön.
+title: Spark streaming az Azure HDInsight
+description: Apache Spark streaming-alkalmazások használata a HDInsight Spark-fürtökön.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/20/2019
-ms.openlocfilehash: 521d72642a27995d096402a4ca0e4af632b0788c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/23/2020
+ms.openlocfilehash: 98e6aedd643eb5363a3f4f3fc54984e85830aa34
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74406266"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133543"
 ---
-# <a name="overview-of-apache-spark-streaming"></a>Az Apache Spark Streaming áttekintése
+# <a name="overview-of-apache-spark-streaming"></a>A Apache Spark streaming áttekintése
 
-[Apache szikra](https://spark.apache.org/) A streamelés adatfolyam-feldolgozást biztosít a HDInsight Spark-fürtökön, és garantálja, hogy minden bemeneti eseményt pontosan egyszer dolgoz fel a rendszer, még akkor is, ha csomóponthiba lép fel. A Spark Stream egy hosszú ideig futó feladat, amely bemeneti adatokat fogad a legkülönbözőbb forrásokból, beleértve az Azure Event Hubs, az Azure IoT Hub, [az Apache Kafka, az Apache](https://kafka.apache.org/) [Flume,](https://flume.apache.org/)a Twitter, a [ZeroMQ,](http://zeromq.org/)a nyers TCP-szoftvercsatornák, vagy [az Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) fájlrendszerek figyelése. A kizárólag eseményvezérelt folyamatokkal ellentétben a Spark Stream időablakokba, például egy 2 másodperces szeletbe kötegeli a bemeneti adatokat, majd az egyes adatkötegeket térképsegítségével, csökkenti, illeszti és kibontja a műveleteket. A Spark Stream ezután az átalakított adatokat fájlrendszerekbe, adatbázisokba, irányítópultokra és a konzolra írja.
+[Apache Spark](https://spark.apache.org/) A streaming HDInsight Spark-fürtökön biztosít adatfolyam-feldolgozást. Garantáljuk, hogy minden bemeneti esemény feldolgozása pontosan egyszer történik, még akkor is, ha a csomópont meghibásodik. A Spark stream egy hosszan futó feladat, amely számos különböző forrásból fogad bemeneti adatokat, beleértve az Azure Event Hubst is. Továbbá: Azure IoT Hub, Apache Kafka, Apache Flume, Twitter, `ZeroMQ`, nyers TCP-szoftvercsatornák, vagy a Apache Hadoop fonál-fájlrendszerek figyelése. A kizárólag eseményvezérelt folyamatokkal ellentétben a Spark-adatfolyamok a bemeneti adatokat a Windowsba. Például egy 2 másodperces szelet, majd a Térkép, a csökkentés, a csatlakozás és a kinyerési műveletek használatával átalakítja az egyes kötegeket. A Spark stream ezután az átalakított adatot a fájlrendszer, az adatbázisok, az irányítópultok és a konzolba írja.
 
-![Streamfeldolgozás HDInsight-mal és Spark Streaming-el](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
+![Adatfolyam-feldolgozás a HDInsight és a Spark streaming segítségével](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-Spark Streaming alkalmazások nak meg kell várnia a másodperc tört részét, hogy összegyűjtse az egyes *mikro-köteg* események, mielőtt elküldi a kötegfeldolgozásra. Ezzel szemben egy eseményvezérelt alkalmazás minden eseményt azonnal feldolgoz. Spark Streamelés késés általában néhány másodperc alatt. A mikroköteg-megközelítés előnyei a hatékonyabb adatfeldolgozás és az egyszerűbb aggregált számítások.
+A Spark streaming-alkalmazásoknak meg kell várniuk egy második töredékét az egyes `micro-batch` események összegyűjtéséhez, mielőtt elküldené a köteget a feldolgozásra. Ezzel szemben az eseményvezérelt alkalmazások azonnal feldolgozzák az egyes eseményeket. A Spark streaming késése általában néhány másodperc alatt van. A mikro-batch megközelítés előnyei hatékonyabb adatfeldolgozást és egyszerűbb összesített számításokat tesznek elérhetővé.
 
-## <a name="introducing-the-dstream"></a>Bemutatkozik a DStream
+## <a name="introducing-the-dstream"></a>A DStream bemutatása
 
-A Spark Streaming a bejövő adatok folyamatos adatfolyamát jelenti egy DStream *nevű, különálló adatfolyam* használatával. A DStream létrehozható bemeneti forrásokból, például az Event Hubs vagy a Kafka, vagy egy másik DStream átalakítások alkalmazásával.
+A Spark streaming a beérkező adatstreamek folyamatos továbbítását jelenti egy DStream nevű *diszkretizált-adatfolyam* használatával. A DStream olyan bemeneti forrásokból is létrehozhatók, mint a Event Hubs vagy a Kafka. Vagy más DStream való átalakítások alkalmazásával.
 
-A DStream egy absztrakciós réteget biztosít a nyers eseményadatok tetején.
+A DStream egy absztrakciós réteget biztosít a nyers eseményekre vonatkozó adatmennyiségek felett.
 
-Kezdje egyetlen eseménnyel, mondja ki a hőmérséklet-leolvasást egy csatlakoztatott termosztátból. Amikor ez az esemény megérkezik a Spark Streaming-alkalmazás, az esemény megbízható módon tárolódik, ahol több csomóponton replikálódik. Ez a hibatűrések biztosítják, hogy egyetlen csomópont meghibásodása nem eredményezi az esemény elvesztését. A Spark-mag olyan adatstruktúrát használ, amely a fürt több csomópontja között osztja el az adatokat, ahol minden csomópont általában saját adatokat tart fenn a memóriában a legjobb teljesítmény érdekében. Ezt az adatstruktúrát *rugalmas elosztott adatkészletnek* (RDD) nevezzük.
+Kezdje egyetlen eseménnyel, hogy egy hőmérsékletet Olvasson egy csatlakoztatott termosztátból. Ha ez az esemény megérkezik a Spark streaming-alkalmazásba, az eseményt megbízható módon tárolja a rendszer, ahol több csomóponton replikálódik. Ez a hibatűrés biztosítja, hogy egyetlen csomópont meghibásodása ne okozza az esemény elvesztését. A Spark Core olyan adatstruktúrát használ, amely a fürt több csomópontján keresztül osztja el az adatmennyiséget. Ahol az egyes csomópontok általában a legjobb teljesítmény érdekében fenntartják a saját adataikat a memóriában. Ezt az adatstruktúrát *rugalmasan elosztott adatkészletnek* (RDD) nevezzük.
 
-Minden RDD a felhasználó által meghatározott időkereten keresztül, a *kötegelt intervallumon*keresztül gyűjtött eseményeket jelöli. Ahogy minden kötegelt intervallum eltelik, egy új RDD jön létre, amely az adott intervallum összes adatát tartalmazza. A rdd-k folyamatos készletét a dstream gyűjti. Ha például a kötegidőköz egy másodperc hosszú, a DStream minden másodpercben egy olyan RDD-t tartalmazó köteget bocsát ki, amely az adott másodperc alatt bevitt összes adatot tartalmazza. A DStream feldolgozásakor a hőmérsékleti esemény megjelenik az egyik ilyen kötegben. A Spark Streaming alkalmazás feldolgozza az eseményeket tartalmazó kötegeket, és végső soron az egyes RDD-kben tárolt adatokra hat.
+Mindegyik RDD a *Batch-intervallum*nevű felhasználó által meghatározott időkereten összegyűjtött eseményeket jelöli. Mivel minden egyes batch-intervallum eltelik, egy új RDD állít elő, amely az adott intervallum összes adatait tartalmazza. A RDD folyamatos készletét egy DStream gyűjti. Ha például a Batch-intervallum egy másodperces, a DStream egy olyan köteget bocsát ki másodpercenként, amely egy RDD tartalmaz, amely tartalmazza az adott másodpercben betöltött összes adatot. A DStream feldolgozásakor a hőmérsékleti esemény a következő kötegek egyikében jelenik meg. A Spark streaming-alkalmazás dolgozza fel az eseményeket tartalmazó kötegeket, és végül az egyes RDD tárolt adategységeket is végrehajtja.
 
-![Példa DStream hőmérsékleti események](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+![Példa DStream hőmérsékleti eseményekkel](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
-## <a name="structure-of-a-spark-streaming-application"></a>A Spark Streaming alkalmazás szerkezete
+## <a name="structure-of-a-spark-streaming-application"></a>Spark streaming-alkalmazás szerkezete
 
-A Spark Streaming alkalmazás egy hosszú ideig futó alkalmazás, amely adatokat fogad bea betöltési forrásokból, átalakításokat alkalmaz az adatok feldolgozásához, majd lelöki az adatokat egy vagy több célhelyre. A Spark Streaming alkalmazás szerkezete egy statikus és egy dinamikus rész. A statikus rész határozza meg, hogy az adatok honnan származnak, milyen feldolgozást kell végezni az adatokon, és hogy az eredményeknek hová kell menniük. A dinamikus rész fut az alkalmazás a végtelenségig, várva a stop jelet.
+A Spark streaming-alkalmazás egy hosszú ideig futó alkalmazás, amely beolvassa az adatok betöltését a forrásokból. Átalakításokat alkalmaz az adatfeldolgozásra, majd leküldi az adatvesztést egy vagy több célhelyre. A Spark streaming-alkalmazás szerkezete statikus résszel és dinamikus résszel rendelkezik. A statikus rész meghatározza, hogy az adatok honnan származnak, milyen feldolgozást kell végezni az adatokon. És hová kell mennek az eredmények. A dinamikus rész határozatlan ideig futtatja az alkalmazást, várakozás a leállítási jelre.
 
-A következő egyszerű alkalmazás például egy szövegsort kap egy TCP-foglalaton keresztül, és megszámolja, hogy az egyes szavak hányszor jelennek meg.
+Például a következő egyszerű alkalmazás egy szöveges sort kap egy TCP-szoftvercsatornán, és megszámolja, hogy az egyes szavak hányszor jelennek meg.
 
-### <a name="define-the-application"></a>Az alkalmazás meghatározása
+### <a name="define-the-application"></a>Az alkalmazás megadása
 
-Az alkalmazáslogika-definíció négy lépésből áll:
+Az alkalmazás logikai definíciója négy lépésből áll:
 
 1. Hozzon létre egy StreamingContext.
 2. Hozzon létre egy DStream a StreamingContext.
-3. Átalakítások alkalmazása a DStreamre.
-4. Adja ki az eredményeket.
+3. Átalakítások alkalmazása a DStream.
+4. Az eredmények kimenete.
 
-Ez a definíció statikus, és az alkalmazás futtatásáig a rendszer nem dolgoz fel adatokat.
+Ez a definíció statikus, és az alkalmazás futtatása előtt nem dolgozza fel a rendszer az összes adatfeldolgozást.
 
-#### <a name="create-a-streamingcontext"></a>Streamingkörnyezet létrehozása
+#### <a name="create-a-streamingcontext"></a>StreamingContext létrehozása
 
-Hozzon létre egy StreamingContext a SparkContext, amely a fürtre mutat. A StreamingContext létrehozásakor megadhatja a köteg méretét másodpercben, például:  
+Hozzon létre egy StreamingContext a SparkContext, amely a fürtre mutat. StreamingContext létrehozásakor a köteg méretét másodpercben kell megadnia, például:  
 
 ```
 import org.apache.spark._
@@ -65,7 +65,7 @@ val ssc = new StreamingContext(sc, Seconds(1))
 
 #### <a name="create-a-dstream"></a>DStream létrehozása
 
-A StreamingContext-példánysegítségével hozzon létre egy bemeneti DStream a bemeneti forráshoz. Ebben az esetben az alkalmazás figyeli az új fájlok megjelenését a HDInsight-fürthöz csatlakoztatott alapértelmezett tárolóban.
+A StreamingContext-példánnyal hozzon létre egy bemeneti DStream a bemeneti forráshoz. Ebben az esetben az alkalmazás figyeli az új fájlok megjelenését az alapértelmezett csatolt tárolóban.
 
 ```
 val lines = ssc.textFileStream("/uploads/Test/")
@@ -73,7 +73,7 @@ val lines = ssc.textFileStream("/uploads/Test/")
 
 #### <a name="apply-transformations"></a>Átalakítások alkalmazása
 
-A feldolgozást a DStream-en transzformációk alkalmazásával valósítja meg. Ez az alkalmazás kap egy sor szöveget egy időben a fájlt, osztja minden sort szavakra, majd használja a térkép-reduce mintát, hogy hány alkalommal jelenik meg az egyes szavakat.
+A feldolgozás a DStream átalakítások alkalmazásával valósítható meg. Ez az alkalmazás egyszerre egy sort kap a fájlból, és az egyes sorokra bontja a szavakat. Ezután egy Térkép-csökkentési mintát használ az egyes szavak számának megszámlálásához.
 
 ```
 val words = lines.flatMap(_.split(" "))
@@ -83,7 +83,7 @@ val wordCounts = pairs.reduceByKey(_ + _)
 
 #### <a name="output-results"></a>Kimeneti eredmények
 
-A kimeneti műveletek alkalmazásával tolja ki az átalakítási eredményeket a célrendszerekbe. Ebben az esetben a számításon való minden egyes futtatás eredménye a konzol kimenetére kerül.
+A kimeneti műveletek alkalmazásával leküldheti az átalakítás eredményeit a célhelyekre. Ebben az esetben a számításon keresztül futtatott egyes futtatások eredményét a konzol kimenetében kell kinyomtatni.
 
 ```
 wordCounts.print()
@@ -91,16 +91,16 @@ wordCounts.print()
 
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Indítsa el a streamelési alkalmazást, és futtassa, amíg a végződtetési jel nem érkezik.
+Indítsa el a folyamatos átviteli alkalmazást, és futtassa a parancsot a megszakítási jel fogadása előtt.
 
 ```
 ssc.start()
 ssc.awaitTermination()
 ```
 
-A Spark Stream API-val kapcsolatos részletekért, valamint az általa támogatott eseményforrásokról, átalakításokról és kimeneti műveletekről az [Apache Spark Streaming programozási útmutatóban](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)talál.
+További információ a Spark stream API-ról: [Apache Spark streaming programozási útmutató](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
 
-A következő mintaalkalmazás önálló, így futtathatja egy [Jupyter notebookban.](apache-spark-jupyter-notebook-kernels.md) Ebben a példában létrehoz egy modell adatforrást a DummySource osztályban, amely egy számláló értékét és az aktuális időt öt másodpercenként ezredmásodpercben adja ki. Egy új StreamingContext objektum kötegidőköze 30 másodperc. Minden alkalommal, amikor egy köteg jön létre, a streamelési alkalmazás megvizsgálja az RDD előállított, átalakítja az RDD egy Spark DataFrame, és létrehoz egy ideiglenes tábla a DataFrame felett.
+A következő minta alkalmazás önálló, így egy [Jupyter notebook](apache-spark-jupyter-notebook-kernels.md)belül futtathatja. Ez a példa egy olyan DummySource-adatforrást hoz létre a osztályban, amely egy számláló értékét és az aktuális időt ezredmásodpercben, öt másodpercenként adja vissza. Az új StreamingContext-objektumnak 30 másodperces batch-intervalluma van. Minden alkalommal, amikor létrejön egy köteg, az adatfolyam-alkalmazás megvizsgálja a létrehozott RDD. Ezután átalakítja a RDD egy Spark-DataFrame, és létrehoz egy ideiglenes táblát a DataFrame.
 
 ```
 class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
@@ -145,14 +145,14 @@ stream.foreachRDD { rdd =>
 ssc.start()
 ```
 
-Várjon körülbelül 30 másodpercet a fenti alkalmazás elindítása után.  Ezután rendszeresen lekérdezheti a DataFrame-et a kötegben lévő aktuális értékhalmaz megtekintéséhez, például ezzel az SQL-lekérdezéssel:
+Várjon körülbelül 30 másodpercig a fenti alkalmazás elindítása után.  Ezután lekérdezheti a DataFrame rendszeres időközönként, hogy megjelenjenek-e a kötegben található aktuális értékek, például az SQL-lekérdezés használatával:
 
 ```sql
 %%sql
 SELECT * FROM demo_numbers
 ```
 
-Az eredményül kapott kimenet a következőképpen néz ki:
+Az eredményül kapott kimenet a következő kimenethez hasonlít:
 
 | érték | time |
 | --- | --- |
@@ -163,19 +163,19 @@ Az eredményül kapott kimenet a következőképpen néz ki:
 |14 | 1497314485327 |
 |15 | 1497314490346 |
 
-Hat érték van, mivel a DummySource 5 másodpercenként létrehoz egy értéket, és az alkalmazás 30 másodpercenként köteget bocsát ki.
+Hat érték van, mivel a DummySource 5 másodpercenként hoz létre egy értéket, és az alkalmazás 30 másodpercenként bocsát ki egy köteget.
 
-## <a name="sliding-windows"></a>Csúszó ablakok
+## <a name="sliding-windows"></a>Ablakok becsúszása
 
-Ha a DStream-en egy bizonyos időszakon keresztül összesített számításokat szeretne végezni, például az átlagos hőmérséklet lehívásához az elmúlt két másodpercben, *használhatja* a Spark Streaming ben foglalt csúszóablak-műveleteket. A csúszó ablak időtartama (az ablak hossza) és az ablak tartalmának kiértékelésének időköze (a diaidőköz).
+Ha egy adott időszakon belül összesíteni szeretné a DStream összesített számításait, például az utolsó két másodperc átlagos hőmérsékletének beszerzéséhez, `sliding window` használja a Spark streaminghez tartozó műveleteket. A csúszó ablak rendelkezik egy időtartammal (az ablak hosszával), valamint azt az intervallumot, amely alatt a rendszer kiértékeli az ablak tartalmát (a dia intervalluma).
 
-A csúszó ablakok átfedhetik egymást, például megadhat egy két másodperces ablakot, amely minden második csúszással csúszhat. Ez azt jelenti, hogy minden alkalommal, amikor összesítési számítást hajt végre, az ablak az előző ablak utolsó egy másodpercéből származó adatokat, valamint a következő egy másodpercben lévő új adatokat tartalmazza.
+A csúszó ablakok átfedésben lehetnek, például megadható egy két másodperc hosszúságú ablak, amely a diák másodpercenkénti számát jelzi. Ez a művelet azt jelenti, hogy minden alkalommal, amikor összesítési számítást végez, az ablak az előző ablak utolsó egy másodpercének adatait fogja tartalmazni. És minden új, a következő egy másodpercben lévő adattal.
 
-![Példa kezdeti ablak hőmérsékleti eseményekre](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
+![Példa a kezdeti időszakra hőmérsékleti eseményekkel](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
 
-![Példa ablak hőmérsékletesemények után csúszik](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png)
+![Példa a hőmérsékleti eseményekre a csúszó után](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png)
 
-A következő példa frissíti a dummysource-t használó kódot, hogy összegyűjtse a kötegeket egy egyperces időtartamú és egyperces diával rendelkező ablakba.
+Az alábbi példa frissíti a DummySource használó kódot, hogy a kötegeket egy egyperces időtartammal és egy perces diához Gyűjtse.
 
 ```
 class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
@@ -220,7 +220,7 @@ stream.window(org.apache.spark.streaming.Minutes(1)).foreachRDD { rdd =>
 ssc.start()
 ```
 
-Az első perc után 12 tétel van - hat tétel az ablakban összegyűjtött két kötegből.
+Az első perc után 12 bejegyzés van – hat bejegyzés az ablakban gyűjtött két kötegből.
 
 | érték | time |
 | --- | --- |
@@ -237,22 +237,22 @@ Az első perc után 12 tétel van - hat tétel az ablakban összegyűjtött két
 | 11 | 1497316344339
 | 12 | 1497316349361
 
-A Spark Streaming API-ban elérhető csúszóablak-funkciók közé tartozik az ablak, a countByWindow, a reduceByWindow és a countByValueAndWindow. Ezekről a függvényekről további információt [a DStreamek átalakításai](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html#transformations-on-dstreams).
+A Spark streaming API-ban elérhető csúszó ablak függvények közé tartozik az ablak, a countByWindow, a reduceByWindow és a countByValueAndWindow. A függvények részleteiért lásd: [átalakítások a DStreams-on](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html#transformations-on-dstreams).
 
 ## <a name="checkpointing"></a>Ellenőrzőpontok használata
 
-A rugalmasság és a hibatűrés biztosítása érdekében a Spark Streaming ellenőrzőpontokon alapul annak érdekében, hogy az adatfolyam-feldolgozás megszakítás nélkül folytatódjon, még a csomóponthibák esetén is. A HDInsightban a Spark ellenőrzőpontokat hoz létre a tartós tároláshoz (Azure Storage vagy Data Lake Storage). Ezek az ellenőrzőpontok a streamelési alkalmazás metaadatait, például a konfigurációt, az alkalmazás által meghatározott műveleteket és a várólistára helyezett, de még fel nem dolgozott kötegeket tárolja. Bizonyos esetekben az ellenőrzőpontok is tartalmazzák az adatok mentése az RDD-kben, hogy gyorsabban újraépítse az adatok állapotát, mi van jelen a Spark által kezelt RDD-k.
+A rugalmasság és a hibatűrés biztosításához a Spark streaming az ellenőrzőpontokon alapul, így biztosítva, hogy a stream feldolgozása zavartalan maradjon, még a csomópont meghibásodása előtt is. A Spark ellenőrzőpontokat hoz létre a tartós tároláshoz (Azure Storage vagy Data Lake Storage). Ezek az ellenőrzőpontok a folyamatos átviteli alkalmazások metaadatait, például a konfigurációt és az alkalmazás által meghatározott műveleteket tárolják. Továbbá minden olyan köteg, amely még nem lett feldolgozva, várólistára került. Az ellenőrzőpontok időnként a RDD található adatok mentését is magukban foglalják, hogy gyorsabban építsék újra az adatok állapotát a Spark által felügyelt RDD.
 
-## <a name="deploying-spark-streaming-applications"></a>Spark Streaming-alkalmazások telepítése
+## <a name="deploying-spark-streaming-applications"></a>Spark streaming-alkalmazások üzembe helyezése
 
-Általában egy Spark Streaming-alkalmazást helyileg hoz létre egy JAR-fájlba, majd telepíti a Spark hdinsight-alapú üzembe helyezéséhez a JAR-fájl HDInsight-fürthöz csatlakoztatott alapértelmezett tárolóra másolásával. Az alkalmazást a fürtből elérhető LIVY REST API-kkal indíthatja el egy POST-művelet használatával. A POST törzse tartalmaz egy JSON-dokumentumot, amely biztosítja a JAR elérési útját, annak az osztálynak a nevét, amelynek fő metódusa meghatározza és futtatja a streamelési alkalmazást, valamint opcionálisan a feladat erőforrás-követelményeit (például a végrehajtók, a memória és a magok számát) , valamint az alkalmazáskód által igényelt konfigurációs beállításokat.
+A Spark streaming-alkalmazásokat általában egy JAR-fájlba építjük. Ezután telepítse a Spark on HDInsight-ba a JAR-fájl az alapértelmezett csatolt tárolóba másolásával. Az alkalmazást a fürtön elérhető REST API-k használatával LIVY a POST művelettel. A bejegyzés törzse tartalmaz egy JSON-dokumentumot, amely megadja a JAR elérési útját. Valamint annak az osztálynak a neve, amelynek a fő metódusa meghatározza és futtatja a folyamatos átviteli alkalmazást, valamint opcionálisan a feladathoz tartozó erőforrás-követelményeket (például a végrehajtók, a memória és a magok számát). Emellett az alkalmazás kódjához szükséges konfigurációs beállítások is megadhatók.
 
-![Spark Streaming-alkalmazás telepítése](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+![Spark streaming-alkalmazás üzembe helyezése](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Az összes alkalmazás állapota is ellenőrizhető egy GET kéréssel egy LIVY-végpontmal szemben. Végül egy futó alkalmazást leállíthat egy DELETE-kérelem kiadásával a LIVY-végponton. A LIVY API-val kapcsolatos részletekért tekintse [meg az Apache LIVY távoli feladatait](apache-spark-livy-rest-interface.md)
+Az összes alkalmazás állapota a GET kérelemmel is ellenőrizhető egy LIVY-végponton. Végül a LIVY-végpontra vonatkozó TÖRLÉSi kérelem kibocsátásával leállíthatja a futó alkalmazást. A LIVY API-val kapcsolatos részletekért lásd: [távoli feladatok Apache LIVY](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Apache Spark-fürt létrehozása a HDInsightban](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Apache Spark Streaming programozási útmutató](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
-* [Az Apache LIVY segítségével távolról indíthatapache Spark-feladatokat](apache-spark-livy-rest-interface.md)
+* [Apache Spark-fürt létrehozása a HDInsight-ben](../hdinsight-hadoop-create-linux-clusters-portal.md)
+* [Apache Spark streaming programozási útmutató](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
+* [Strukturált streaming Apache Spark áttekintése](apache-spark-structured-streaming-overview.md)

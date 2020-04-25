@@ -1,84 +1,94 @@
 ---
-title: 'Többosztályos döntési erdő: modul hivatkozási'
+title: 'Többosztályos döntési erdő: modul leírása'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja a többosztályos döntési erdő modul az Azure Machine Learning hozzon létre egy gépi tanulási modell alapján a *döntési erdő* algoritmus.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning többosztályos döntési erdő modulját egy gépi tanulási modell létrehozásához a *döntési erdő* algoritmusa alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 9a0a70f94be337eedf8f8ba4cc17af896f7a03b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 9e8798ea1c03ebf4c0d08adfbf5a0ee0755164a6
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477544"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137807"
 ---
 # <a name="multiclass-decision-forest-module"></a>Többosztályos döntési erdő modul
 
-Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
-Ezzel a modullal hozzon létre egy gépi tanulási modell t a döntési erdő algoritmus a *döntési erdő* algoritmus a. A döntési erdő egy együttes modell, amely gyorsan épít egy sor döntési fák, miközben a címkézett adatokból tanul.
+Ezzel a modullal gépi tanulási modellt hozhat létre a *döntési erdő* algoritmusa alapján. A döntési erdő egy olyan Ensemble-modell, amely gyorsan kiépíti a döntési fák egy sorozatát, miközben a címkézett adatokból tanul.
 
-## <a name="more-about-decision-forests"></a>További információk a döntési erdőkről
+## <a name="more-about-decision-forests"></a>További információ a döntési erdőkről
 
-A döntési erdő algoritmus egy együttes tanulási módszer osztályozás. Az algoritmus úgy működik, hogy több döntési fát épít, majd a legnépszerűbb kimeneti osztályra *szavaz.* A szavazás az összesítés egy formája, amelyben a besorolási döntésben részt vevő erdő minden egyes fája a címkék nem normalizált gyakoriságú hisztogramját adja elő. Az összesítési folyamat összegzi ezeket a histogramokat, és normalizálja az eredményt, hogy megkapja az egyes címkék "valószínűségeket". A fák, amelyek nagy előrejelzés bizalom nagyobb súlyt a végső döntést az együttes.
+A döntési erdő algoritmusa egy együttes tanulási módszer a besoroláshoz. Az algoritmus több döntési fa létrehozásával, majd a legnépszerűbb kimeneti osztályban való *szavazással* működik. A szavazás egy aggregációs űrlap, amelyben a besorolási döntési erdőben lévő összes fa a címkék nem normalizált gyakorisági hisztogramját adja vissza. Az összesítési folyamat összegzi ezeket a hisztogramokat, és normalizálja az eredményt az egyes címkék "valószínűségek" lekéréséhez. A magas előrejelző megbízhatósággal rendelkező fák nagyobb súlyt kapnak az Ensemble végső döntésében.
 
-A döntési fák általában nem parametrikus modellek, ami azt jelenti, hogy különböző eloszlású adatokat támogatnak. Minden fán egyszerű tesztek sorozata fut minden osztályhoz, növelve a fastruktúra szintjét, amíg egy levélcsomópont (döntés) el nem ér.
+Az általános döntési fák nem számszerű modellek, ami azt jelenti, hogy különböző eloszlásokkal rendelkező adattípusokat támogatnak. Minden fában egy egyszerű teszt sorozata fut minden egyes osztályhoz, így a faszerkezetek szintjei addig növekednek, amíg el nem éri a levél csomópontot (döntés).
 
-Döntés fák számos előnye van:
+A döntési fák számos előnnyel rendelkeznek:
 
-+ Nem lineáris döntési határokat képviselhetnek.
-+ Hatékonyak a számítás és a memória használat a képzés és előrejelzés során.
++ Nem lineáris döntési határokat is jelenthetnek.
++ A képzés és az előrejelzés során a számítási és a memóriahasználat hatékonyak.
 + Integrált funkciók kiválasztását és besorolását végzik.
-+ Zajos funkciók jelenlétében rugalmasak.
++ Ezek rugalmasan működnek a zajos funkciók jelenlétében.
 
-A döntési erdő osztályozó az Azure Machine Learning egy döntési fák együttese. Általában az együttes modellek jobb fedést és pontosságot biztosítanak, mint az egyes döntési fák. További információ: [Decision trees](https://go.microsoft.com/fwlink/?LinkId=403677).
+Azure Machine Learning a döntési erdő besorolása a döntési fák együttesét tartalmazza. Az Ensemble-modellek általában jobb lefedettséget és pontosságot biztosítanak, mint az önálló döntési fák. További információ: [döntési fák](https://go.microsoft.com/fwlink/?LinkId=403677).
 
-## <a name="how-to-configure-multiclass-decision-forest"></a>A többosztályos döntési erdő beállítása
+## <a name="how-to-configure-multiclass-decision-forest"></a>Többosztályos döntési erdő konfigurálása
 
-1. Adja hozzá a **többosztályos döntési erdő** modult a tervező ben lévő folyamathoz. Ezt a modult a **Machine Learning**, **Initialize Model**és **Classification**területen találja.
+1. Adja hozzá a **többosztályos döntési erdő** modult a folyamathoz a tervezőben. Ez a modul a **Machine learning**, a **modell inicializálása**és a **besorolás**területen található.
 
-2. Kattintson duplán a modulra a **Tulajdonságok** ablaktábla megnyitásához.
+2. A **Tulajdonságok** ablaktábla megnyitásához kattintson duplán a modulra.
 
-3. Az **Újraszámítás módszerhez**válassza ki az egyes fák létrehozásához használt módszert.  A zsákolás vagy a replikáció közül választhat.
+3. Az **újramintavételezési módszernél**válassza ki az egyes fák létrehozásához használt módszert.  A csomagok és a replikálás közül választhat.
 
-    + **Zsákolás:** Zsákolás is *nevezik bootstrap összesítés*. Ebben a módszerben minden fa egy új mintán van kifejlődve, amelyet úgy hoz létre, hogy véletlenszerűen mintavételezi az eredeti adatkészletet csereként, amíg az adatkészlet mérete meg nem történik az eredeti méretével. A modellek kimeneteit *szavazással*kombinálják, ami az összesítés egyik formája. További információ: A Bootstrap aggregating Wikipedia-bejegyzésében.
+    + **Poggyász**: a poggyászt rendszerindítási *összesítésnek*is nevezik. Ebben a módszerben minden fát egy új mintán termesztenek, és az eredeti adatkészlet véletlenszerűen történő mintavételezésével jön létre, és csak akkor történik meg, ha nem rendelkezik az eredeti méretű adatkészlettel. A modellek kimeneteit a rendszer *szavazással*kombinálja, amely az Összesítés formáját képezi. További információ: a rendszerindítási összesítések Wikipedia-bejegyzése.
 
-    + **Replikálás:** A replikáció során minden fa pontosan ugyanazokra a bemeneti adatokra van betanítva. Annak meghatározása, hogy melyik felosztási predikátumot használják az egyes facsomópontokhoz, véletlenszerű marad, különböző fákat hozva létre.
+    + **Replikálás**: a replikáció során minden fát pontosan ugyanazok a bemeneti adatok képeznek. Annak meghatározása, hogy az egyes facsomópontok melyik felosztó predikátumot használják, a különböző fák létrehozásakor is véletlenszerűek maradnak.
 
    
 
-4. Adja meg, hogyan szeretné betanítani a modellt az **Oktatói mód létrehozása** beállítás beállításával.
+4. Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.
 
-    + **Egyetlen paraméter**: Akkor válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és argumentumként adja meg az értékek készletét.
+    + **Egyetlen paraméter**: válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és adjon meg argumentumként egy értéket.
 
-    + **Paramétertartomány**: Akkor válassza ezt a lehetőséget, ha nem biztos a legjobb paraméterekben, és paraméterkeresést szeretne futtatni. Válasszon ki egy értéktartományt, amely felett iterálni, és a [Tune Model Hyperparameters](tune-model-hyperparameters.md) iterálja az összes lehetséges kombinációa a megadott beállítások meghatározásához a hiperparaméterek, amelyek az optimális eredményt.   
+    + **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.   
 
-5. **Döntési fák száma**: Írja be az együttesben létrehozható döntési fák maximális számát. Azáltal, hogy több döntési fák, akkor potenciálisan jobb lefedettséget, de a képzési idő növelheti.
+5. **Döntési fák száma**: Itt adhatja meg az Ensemble-ban létrehozható döntési fák maximális számát. További döntési fák létrehozásával lehetőség van jobb lefedettségre, de a képzés hosszabb ideig is növelheti.
 
-    Ez az érték azt is szabályozza, hogy a betanított modell megjelenítésekor hány fa jelenik meg az eredményekben. Egyetlen fa megtekintéséhez vagy nyomtatásához az értéket 1-re állíthatja; ez azonban azt jelenti, hogy csak egy fa állítható elő (a fa a paraméterek kezdeti készletével), és nem történik további ismétlés.
+    Ez az érték határozza meg az eredményekben megjelenített fák számát is a betanított modell megjelenítésekor. Egyetlen fa megjelenítéséhez vagy kinyomtatásához beállíthatja az értéket 1-re; azonban ez azt jelenti, hogy csak egy fát lehet előállítani (a kezdeti paraméterekkel rendelkező fát), és a rendszer nem végez további iterációkat.
 
-6. **A döntési fák maximális mélysége**: Írjon be egy számot a döntési fa maximális mélységének korlátozásához. A fa mélységének növelése növelheti a pontosságot, a túlszerelés és a megnövekedett képzési idő kockázatával.
+6. **A döntési fák maximális mélysége**: írjon be egy számot a döntési fa maximális mélységének korlátozására. A fa mélységének növelésével növelheti a pontosságot, és megnövelheti a beilleszkedő és a megnövekedett betanítási időt is.
 
-7. **Csomópontonkénti véletlenszerű felosztások száma**: Írja be a fa egyes csomópontjainak létrehozásához használandó felosztások számát. A *felosztás* azt jelenti, hogy a fa (csomópont) minden szintjén a jellemzők véletlenszerűen oszlanak meg.
+7. **Véletlenszerű felosztások száma egy csomóponton**: írja be a fa egyes csomópontjainak kiépítésekor használandó felosztások számát. A *felosztás* azt jelenti, hogy a fa (csomópont) egyes szintjeinek funkciói véletlenszerűen vannak osztva.
 
-8. **A minták minimális száma levélcsomópontonként**: Adja meg a fa bármely terminálcsomó (levél) létrehozásához szükséges esetek minimális számát. Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét.
+8. **Minták minimális száma a levél csomópontjain**: adja meg, hogy legalább hány esetben szükséges a terminál csomópont (levél) létrehozása a fában. Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét.
 
-    Ha például az alapértelmezett érték 1, még egyetlen eset is új szabály létrehozását okozhatja. Ha az értéket 5-re növeli, a betanítási adatoknak legalább öt olyan esetet kell tartalmazniuk, amelyek megfelelnek az azonos feltételeknek.
+    Ha például az alapértelmezett érték 1, akkor akár egyetlen esetben is létrehozhat egy új szabályt. Ha az értéket 5-re emeli, a betanítási adatmennyiségnek legalább öt olyan esetet kellene tartalmaznia, amelyek megfelelnek ugyanazoknak a feltételeknek.
 
 
 
-10. Címkecímkével ellátott adatkészlet és a betanítási modulok egyikének csatlakoztatása:
+10. Egy címkézett adatkészlet csatlakoztatása és a modell betanítása:
 
-    + Ha az **Oktató létrehozása módot** egy **paraméterre állítja**be, használja a [Betanítási modell](./train-model.md) modult.
+    + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
+  
+    + Ha az **oktatói mód** beállítása **paraméter-tartományra**van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Ha egy paraméter tartományát adja át a [betanítási modellnek](train-model.md), az csak az alapértelmezett értéket használja az egyetlen paraméteres listában.  
+    > 
+    > Ha egy paraméter értékének egyetlen készletét adja át a [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modulnak, amikor az egyes paraméterekhez különböző beállításokat vár, figyelmen kívül hagyja az értékeket, és a tanuló alapértelmezett értékeit használja.  
+    > 
+    > Ha a **paraméter tartománya** lehetőséget választja, és egyetlen értéket ad meg bármelyik paraméterhez, akkor a rendszer az egyetlen megadott értéket használja a teljes takarítás során, még akkor is, ha más paraméterek egy adott tartományon változnak.
 
-11. Küldje el a folyamatot.
+11. A folyamat elküldése.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

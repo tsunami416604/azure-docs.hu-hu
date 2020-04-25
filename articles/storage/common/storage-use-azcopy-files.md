@@ -1,42 +1,42 @@
 ---
-title: Adatok átvitele az Azure Files-ba vagy onnan az AzCopy v10 használatával | Microsoft dokumentumok
-description: Adatok átvitele az AzCopy programmal és a fájltárolással.
+title: Adatok átvitele Azure Files-re a AzCopy v10 használatával | Microsoft Docs
+description: Adatok átvitele a AzCopy és a file Storage szolgáltatással.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 59f5733009424c60f2b9c48e68d70bbc29ad7095
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 7f47dd05035772744fb212ef8914b25979af61e2
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263369"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137161"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>Adatátvitel átvitele az AzCopy programmal és a fájltárolással 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>Adatok átvitele a AzCopy és a file Storage szolgáltatással 
 
-Az AzCopy egy parancssori segédprogram, amely segítségével blobok vagy fájlok másolása egy tárfiókba. Ez a cikk az Azure Files szolgáltatással dolgozó példaparancsokat tartalmazza.
+A AzCopy olyan parancssori segédprogram, amellyel blobokat vagy fájlokat másolhat a Storage-fiókba, vagy átmásolhatja azokat. Ez a cikk a Azure Filesekkel használható példákat tartalmaz.
 
-Mielőtt elkezdené, tekintse meg az Első lépések az [AzCopy-t](storage-use-azcopy-v10.md) az AzCopy letöltéséhez és az eszköz megismeréséhez című cikkben.
+Mielőtt elkezdené, tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és az eszköz megismeréséhez.
 
 > [!TIP]
-> Az ebben a cikkben szereplő példák az elérési út argumentumait egyszeres idézőjelekkel (') mellékelik. A Windows parancshéj (cmd.exe) kivételével minden parancshéjban használjon egyszeres idézőjeleket. Ha Windows parancshéjat (cmd.exe) használ, az elérési út argumentumait idézőjelek ("") helyett idézőjelek (') közé kell mellékelni.
+> A cikkben szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
-## <a name="create-file-shares"></a>Fájlmegosztások létrehozása
+## <a name="create-file-shares"></a>Fájlmegosztás létrehozása
 
-Az [azcopy make](storage-ref-azcopy-make.md) paranccsal fájlmegosztást hozhat létre. Az ebben a szakaszban található `myfileshare`példa létrehoz egy fájlmegosztást.
+A [azcopy make](storage-ref-azcopy-make.md) paranccsal fájlmegosztást hozhat létre. Az ebben a szakaszban szereplő példa egy nevű `myfileshare`fájlmegosztást hoz létre.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy make 'https://<storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>'` |
-| **Példa** | `azcopy make 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Például** | `azcopy make 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
-A részletes referencia-dokumentumokról az [azcopy make című dokumentumban lehet.](storage-ref-azcopy-make.md)
+A részletes dokumentációt a következő témakörben tekintheti meg: [azcopy make](storage-ref-azcopy-make.md).
 
 ## <a name="upload-files"></a>Fájlok feltöltése
 
-Az [azcopy copy](storage-ref-azcopy-copy.md) paranccsal fájlokat és könyvtárakat tölthet fel a helyi számítógépről.
+A [azcopy másolás](storage-ref-azcopy-copy.md) parancs használatával fájlokat és könyvtárakat tölthet fel a helyi számítógépről.
 
 Ez a szakasz a következő példákat tartalmazza:
 
@@ -47,91 +47,91 @@ Ez a szakasz a következő példákat tartalmazza:
 > * Adott fájl feltöltése
 
 > [!TIP]
-> A feltöltési műveletet opcionális jelzőkkel módosíthatja. Íme néhány példa.
+> A feltöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 >
 > |Forgatókönyv|Jelző|
 > |---|---|
-> |Hozzáférés-vezérlési listák másolása a fájlokkal együtt.|**--megőrzés-smb-engedélyek**=\[\|igaz hamis\]|
-> |Másolja az SMB-tulajdonságadatait a fájlokkal együtt.|**--preserve-smb-info**=\[\|igaz hamis\]|
-> |Fájlok feltöltése blobok hozzáfűzése ként vagy lapblobként.|**--blob-típusú**=\[BlockBlob\|\|PageBlob AppendBlob\]|
-> |Töltsön fel egy adott hozzáférési szintre (például az archív szintre).|**--block-blob-tier**=\[\|Nincs\|\|Hot Cool Archívum\]|
+> |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek**=\[True\|false\]|
+> |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--megőrzése-SMB-info**=\[True\|false\]|
+> |Fájlok feltöltése hozzáfűzési Blobként vagy Blobként.|**--BLOB típusú**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |Feltöltés egy adott hozzáférési szintre (például az archiválási szintre).|**--Block-blob-réteg**=\[nincs\|gyors\|elérésű\|Archívum\]|
 > 
-> A teljes listát a [Beállítások menüben láthatja.](storage-ref-azcopy-copy.md#options)
+> A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-copy.md#options).
 
 > [!NOTE]
-> AzACopy nem számítja ki és tárolja automatikusan a fájl md5 kivonatkódját. Ha azt szeretné, hogy az AzCopy `--put-md5` ezt tegye, akkor fűzze hozzá a jelzőt minden egyes másolási parancshoz. Így a fájl letöltésekor az AzCopy kiszámítja a letöltött adatok MD5 kivonatát, és ellenőrzi, hogy `Content-md5` a fájl tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal.
+> A AzCopy nem számítja ki automatikusan a fájl MD5 kivonatoló kódját. Ha azt szeretné, hogy a AzCopy ezt a lehetőséget, `--put-md5` fűzze hozzá a jelölőt az egyes másolási parancsokhoz. Így a fájl letöltésekor a AzCopy kiszámítja a letöltött adatokat tartalmazó MD5-kivonatot, és ellenőrzi, hogy a fájl `Content-md5` tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal.
 
 ### <a name="upload-a-file"></a>Fájl feltöltése
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-name><SAS-token>'` |
-| **Példa** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Például** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
-A fájlt helyettesítő szimbólummal (*) is feltöltheti a fájl elérési útján a fájl elérési útján vagy nevében. Például: `'C:\myDirectory\*.txt'`vagy `C:\my*\*.txt`.
+A fájl elérési útja vagy fájlneve tetszőleges helyettesítő karakter (*) használatával is feltölthet egy fájlt. Például: `'C:\myDirectory\*.txt'`, vagy `C:\my*\*.txt`.
 
 ### <a name="upload-a-directory"></a>Könyvtár feltöltése
 
-Ez a példa egy könyvtárat (és a könyvtárösszes fájlt) egy fájlmegosztásba másol. Az eredmény egy könyvtár a fájlmegosztásban ugyanazzal a névvel.
+Ez a példa egy könyvtárat (és az abban a könyvtárban található összes fájlt) másol egy fájlmegosztásba. Ennek eredményeképpen a fájlmegosztás egyik könyvtára azonos néven szerepel.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Példa** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' --recursive` |
+| **Például** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' --recursive` |
 
-Ha a fájlmegosztáson belüli könyvtárba szeretne másolni, csak adja meg a könyvtár nevét a parancskarakterláncban.
+Ha a fájlmegosztást tartalmazó könyvtárba szeretne másolni, csak adja meg a könyvtár nevét a parancs karakterláncában.
 
 |    |     |
 |--------|-----------|
-| **Példa** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' --recursive` |
+| **Például** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' --recursive` |
 
-Ha olyan könyvtár nevét adja meg, amely nem létezik a fájlmegosztásban, az AzCopy ezzel a névvel hoz létre új könyvtárat.
+Ha egy olyan könyvtár nevét adja meg, amely nem szerepel a fájlmegosztást, a AzCopy létrehoz egy új könyvtárat az adott névvel.
 
 ### <a name="upload-the-contents-of-a-directory"></a>Könyvtár tartalmának feltöltése
 
-A könyvtár tartalmát a helyettesítő karakter (*) szimbólum mal történő másolása nélkül is feltöltheti.
+A könyvtár tartalmát feltöltheti anélkül, hogy a benne foglalt könyvtárat a helyettesítő karakter (*) használatával másolja.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy '<local-directory-path>/*' 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>` |
-| **Példa** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
+| **Például** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
 > [!NOTE]
-> A jelző `--recursive` hozzáfűzése a fájlok feltöltéséhez az összes alkönyvtárba.
+> Fűzze hozzá `--recursive` a jelölőt az összes alkönyvtárban található fájlok feltöltéséhez.
 
 ### <a name="upload-specific-files"></a>Adott fájlok feltöltése
 
-Megadhatja a teljes fájlneveket, vagy használhat helyettesítő karakterekkel (*) rendelkező részleges neveket.
+Megadhatja a teljes fájlnevet, vagy használhat részleges neveket helyettesítő karakterekkel (*).
 
-#### <a name="specify-multiple-complete-file-names"></a>Több teljes fájlnév megadása
+#### <a name="specify-multiple-complete-file-names"></a>Több teljes fájlnevet kell megadni
 
-Használja az [azcopy](storage-ref-azcopy-copy.md) copy `--include-path` parancsot a beállítással. Az egyes fájlneveket pontosvesszővel (`;`) válassza el.
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Az egyes fájlneveket pontosvesszővel (`;`) válassza el egymástól.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' --include-path <semicolon-separated-file-list>` |
-| **Példa** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-path 'photos;documents\myFile.txt'` |
+| **Például** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-path 'photos;documents\myFile.txt'` |
 
-Ebben a példában az `C:\myDirectory\photos` AzCopy `C:\myDirectory\documents\myFile.txt` átviszi a könyvtárat és a fájlt. Meg kell adnia a `--recursive` lehetőséget, `C:\myDirectory\photos` hogy át az összes fájlt a könyvtárban.
+Ebben a példában a AzCopy átviszi a `C:\myDirectory\photos` könyvtárat `C:\myDirectory\documents\myFile.txt` és a fájlt. Meg kell adnia a `--recursive` `C:\myDirectory\photos` könyvtárban található összes fájl átvitelének lehetőségét.
 
-A `--exclude-path` beállításokkal fájlokat is kizárhat. További információ: [azcopy copy reference](storage-ref-azcopy-copy.md) docs.
+A fájlokat a `--exclude-path` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
 #### <a name="use-wildcard-characters"></a>Helyettesítő karakterek használata
 
-Használja az [azcopy](storage-ref-azcopy-copy.md) copy `--include-pattern` parancsot a beállítással. Adja meg a helyettesítő karaktereket tartalmazó részleges neveket. Külön nevek segítségével egy`;`semicolin ( ).
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket a semicolin (`;`) használatával válassza el.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
-| **Példa** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-pattern 'myFile*.txt;*.pdf*'` |
+| **Például** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-A `--exclude-pattern` beállításokkal fájlokat is kizárhat. További információ: [azcopy copy reference](storage-ref-azcopy-copy.md) docs.
+A fájlokat a `--exclude-pattern` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
-A `--include-pattern` `--exclude-pattern` és a beállítások csak a fájlnevekre vonatkoznak, az elérési útra nem.  Ha egy könyvtárfában található összes szövegfájlt át szeretné `–recursive` másolni, használja a teljes könyvtárfa `–include-pattern` leválasztását, majd a és adja meg a lehetőséget `*.txt` az összes szövegfájl bemásolásához.
+A `--include-pattern` és `--exclude-pattern` a beállítások csak a fájlnevekre érvényesek, és nem az elérési útra.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` teljes könyvtár fájának beolvasására szolgáló lehetőséget, majd a és a `–include-pattern` érték megadásával `*.txt` töltse le az összes szövegfájlt.
 
 ## <a name="download-files"></a>Fájlok letöltése
 
-Az [azcopy copy](storage-ref-azcopy-copy.md) paranccsal fájlokat, könyvtárakat és fájlmegosztásokat tölthet le a helyi számítógépre.
+A [azcopy másolás](storage-ref-azcopy-copy.md) parancs használatával fájlokat, címtárakat és fájlmegosztást tölthet le a helyi számítógépre.
 
 Ez a szakasz a következő példákat tartalmazza:
 
@@ -142,161 +142,161 @@ Ez a szakasz a következő példákat tartalmazza:
 > * Adott fájlok letöltése
 
 > [!TIP]
-> A letöltési műveletet opcionális jelzőkkel módosíthatja. Íme néhány példa.
+> A letöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 >
 > |Forgatókönyv|Jelző|
 > |---|---|
-> |Hozzáférés-vezérlési listák másolása a fájlokkal együtt.|**--megőrzés-smb-engedélyek**=\[\|igaz hamis\]|
-> |Másolja az SMB-tulajdonságadatait a fájlokkal együtt.|**--preserve-smb-info**=\[\|igaz hamis\]|
-> |A fájlok automatikus kibontása.|**--decompress**=\[gzip\|leereszt\]|
+> |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek**=\[True\|false\]|
+> |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--megőrzése-SMB-info**=\[True\|false\]|
+> |Fájlok automatikus kibontása.|**– Kibontás**|
 > 
-> A teljes listát a [Beállítások menüben láthatja.](storage-ref-azcopy-copy.md#options)
+> A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-copy.md#options).
 
 > [!NOTE]
-> Ha `Content-md5` egy fájl tulajdonságértéke kivonatot tartalmaz, az AzCopy kiszámítja a letöltött adatok MD5-kivonatát, és ellenőrzi, `Content-md5` hogy a fájl tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal. Ha ezek az értékek nem egyeznek, a letöltés sikertelen `--check-md5=NoCheck` `--check-md5=LogOnly` lesz, hacsak nem bírálja felül ezt a viselkedést a hozzáfűzéssel vagy a másolási paranccsal.
+> Ha egy `Content-md5` fájl tulajdonságérték kivonatot tartalmaz, a AzCopy kiszámítja a letöltött adatokat tartalmazó MD5-kivonatot, és ellenőrzi, hogy a fájl `Content-md5` tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal. Ha ezek az értékek nem egyeznek, a letöltés meghiúsul, ha a hozzáfűzéssel `--check-md5=NoCheck` vagy `--check-md5=LogOnly` a másolási paranccsal felülbírálja ezt a viselkedést.
 
 ### <a name="download-a-file"></a>Fájl letöltése
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>' '<local-file-path>'` |
-| **Példa** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory\myTextFile.txt'` |
+| **Például** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory\myTextFile.txt'` |
 
 ### <a name="download-a-directory"></a>Könyvtár letöltése
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>' '<local-directory-path>' --recursive` |
-| **Példa** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory'  --recursive` |
+| **Például** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory'  --recursive` |
 
-Ez a példa egy `C:\myDirectory\myFileShareDirectory` könyvtár nevét, amely tartalmazza az összes letöltött fájlokat.
+Ez a példa egy nevű `C:\myDirectory\myFileShareDirectory` könyvtárat eredményez, amely az összes letöltött fájlt tartalmazza.
 
 ### <a name="download-the-contents-of-a-directory"></a>Könyvtár tartalmának letöltése
 
-A könyvtár tartalmát a helyettesítő karakter (*) szimbólum mal történő másolása nélkül is letöltheti.
+A könyvtár tartalmát letöltheti anélkül, hogy a benne foglalt könyvtárat a helyettesítő karakter (*) használatával másolja.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-name>/*<SAS-token>' '<local-directory-path>/'` |
-| **Példa** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory'` |
+| **Például** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory'` |
 
 > [!NOTE]
-> A jelző `--recursive` hozzáfűzése a fájlok letöltéséhez az összes alkönyvtárba.
+> Az összes `--recursive` alkönyvtárban lévő fájlok letöltéséhez fűzze hozzá a jelölőt.
 
 ### <a name="download-specific-files"></a>Adott fájlok letöltése
 
-Megadhatja a teljes fájlneveket, vagy használhat helyettesítő karakterekkel (*) rendelkező részleges neveket.
+Megadhatja a teljes fájlnevet, vagy használhat részleges neveket helyettesítő karakterekkel (*).
 
-#### <a name="specify-multiple-complete-file-names"></a>Több teljes fájlnév megadása
+#### <a name="specify-multiple-complete-file-names"></a>Több teljes fájlnevet kell megadni
 
-Használja az [azcopy](storage-ref-azcopy-copy.md) copy `--include-path` parancsot a beállítással. Külön egyedi fájlnevek segítségével semicolin (`;`).
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Különálló fájlnevek elkülönítése semicolin (`;`) használatával.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
-| **Példa** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
+| **Például** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 
-Ebben a példában az `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` AzCopy `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` átviszi a könyvtárat és a fájlt. Meg kell adnia a `--recursive` lehetőséget, `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` hogy át az összes fájlt a könyvtárban.
+Ebben a példában a AzCopy átviszi a `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` könyvtárat `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` és a fájlt. Meg kell adnia a `--recursive` `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` könyvtárban található összes fájl átvitelének lehetőségét.
 
-A `--exclude-path` beállításokkal fájlokat is kizárhat. További információ: [azcopy copy reference](storage-ref-azcopy-copy.md) docs.
+A fájlokat a `--exclude-path` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
 #### <a name="use-wildcard-characters"></a>Helyettesítő karakterek használata
 
-Használja az [azcopy](storage-ref-azcopy-copy.md) copy `--include-pattern` parancsot a beállítással. Adja meg a helyettesítő karaktereket tartalmazó részleges neveket. Külön nevek segítségével egy`;`semicolin ( ).
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket a semicolin (`;`) használatával válassza el.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name><SAS-token>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
-| **Példa** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
+| **Például** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-A `--exclude-pattern` beállításokkal fájlokat is kizárhat. További információ: [azcopy copy reference](storage-ref-azcopy-copy.md) docs.
+A fájlokat a `--exclude-pattern` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
-A `--include-pattern` `--exclude-pattern` és a beállítások csak a fájlnevekre vonatkoznak, az elérési útra nem.  Ha egy könyvtárfában található összes szövegfájlt át szeretné `–recursive` másolni, használja a teljes könyvtárfa `–include-pattern` leválasztását, majd a és adja meg a lehetőséget `*.txt` az összes szövegfájl bemásolásához.
+A `--include-pattern` és `--exclude-pattern` a beállítások csak a fájlnevekre érvényesek, és nem az elérési útra.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` teljes könyvtár fájának beolvasására szolgáló lehetőséget, majd a és a `–include-pattern` érték megadásával `*.txt` töltse le az összes szövegfájlt.
 
 ## <a name="copy-files-between-storage-accounts"></a>Fájlok másolása tárfiókok között
 
-Az AzCopy segítségével fájlokat más tárfiókokba másolhat. A másolási művelet szinkron, így amikor a parancs visszatér, az azt jelzi, hogy az összes fájl másolása meglett.
+A AzCopy használatával fájlokat másolhat más Storage-fiókokba. A másolási művelet szinkronban van, így amikor a parancs visszatér, ez azt jelzi, hogy az összes fájl másolása megtörtént.
 
-Az AzCopy [kiszolgáló-kiszolgáló](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [API-kat](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)használ, így az adatok közvetlenül a tárolókiszolgálók között lesznek másolva. Ezek a másolási műveletek nem használják a számítógép hálózati sávszélességét. Ezeknek a műveleteknek az átviteli teljesítményét a `AZCOPY_CONCURRENCY_VALUE` környezeti változó értékének beállításával növelheti. További információ: [Az átviteli átatól optimalizálása](storage-use-azcopy-configure.md#optimize-throughput).
+A AzCopy [kiszolgálók](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) közötti [API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)-kat használ, így az Adatmásolás közvetlenül a Storage-kiszolgálók között történik. Ezek a másolási műveletek nem használják a számítógép hálózati sávszélességét. A `AZCOPY_CONCURRENCY_VALUE` környezeti változó értékének megadásával növelheti a műveletek átviteli sebességét. További információ: az [átviteli sebesség optimalizálása](storage-use-azcopy-configure.md#optimize-throughput).
 
 Ez a szakasz a következő példákat tartalmazza:
 
 > [!div class="checklist"]
-> * Fájl másolása másik tárfiókba
-> * Könyvtár másolása másik tárfiókba
-> * Fájlmegosztás másolása másik tárfiókba
-> * Az összes fájlmegosztás, könyvtár és fájl másolása másik tárfiókba
+> * Fájl másolása másik Storage-fiókba
+> * Könyvtár másolása másik Storage-fiókba
+> * Fájlmegosztás másolása másik Storage-fiókba
+> * Minden fájlmegosztás, könyvtár és fájl másolása egy másik Storage-fiókba
 
 > [!TIP]
-> A másolási műveletet opcionális jelzőkkel módosíthatja. Íme néhány példa.
+> A másolási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 >
 > |Forgatókönyv|Jelző|
 > |---|---|
-> |Hozzáférés-vezérlési listák másolása a fájlokkal együtt.|**--megőrzés-smb-engedélyek**=\[\|igaz hamis\]|
-> |Másolja az SMB-tulajdonságadatait a fájlokkal együtt.|**--preserve-smb-info**=\[\|igaz hamis\]|
-> |Fájlok másolása blobok hozzáfűzése ként vagy lapblobként.|**--blob-típusú**=\[BlockBlob\|\|PageBlob AppendBlob\]|
-> |Másolás egy adott hozzáférési szintre (például az archív szintre).|**--block-blob-tier**=\[\|Nincs\|\|Hot Cool Archívum\]|
+> |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek**=\[True\|false\]|
+> |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--megőrzése-SMB-info**=\[True\|false\]|
+> |Fájlok másolása hozzáfűzési Blobként vagy Blobként.|**--BLOB típusú**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |Másolás adott hozzáférési szintre (például az archív szintre).|**--Block-blob-réteg**=\[nincs\|gyors\|elérésű\|Archívum\]|
 > 
-> A teljes listát a [Beállítások menüben láthatja.](storage-ref-azcopy-copy.md#options)
+> A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-copy.md#options).
 
-### <a name="copy-a-file-to-another-storage-account"></a>Fájl másolása másik tárfiókba
+### <a name="copy-a-file-to-another-storage-account"></a>Fájl másolása másik Storage-fiókba
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>'` |
-| **Példa** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
+| **Például** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
 
-### <a name="copy-a-directory-to-another-storage-account"></a>Könyvtár másolása másik tárfiókba
+### <a name="copy-a-directory-to-another-storage-account"></a>Könyvtár másolása másik Storage-fiókba
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Példa** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Például** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-### <a name="copy-a-file-share-to-another-storage-account"></a>Fájlmegosztás másolása másik tárfiókba
+### <a name="copy-a-file-share-to-another-storage-account"></a>Fájlmegosztás másolása másik Storage-fiókba
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Példa** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Például** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>Az összes fájlmegosztás, könyvtár és fájl másolása másik tárfiókba
+### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>Minden fájlmegosztás, könyvtár és fájl másolása egy másik Storage-fiókba
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<SAS-token>' --recursive'` |
-| **Példa** | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Például** | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ## <a name="synchronize-files"></a>Fájlok szinkronizálása
 
-A fájlmegosztás tartalmát szinkronizálhatja egy másik fájlmegosztással. A fájlmegosztásban lévő könyvtár tartalmát szinkronizálhatja egy másik fájlmegosztásban található könyvtár tartalmával is. A szinkronizálás egyirányú. Más szóval kiválaszthatja, hogy a két végpont közül melyik a forrás, és melyik a cél. A szinkronizálás kiszolgálói API-kat is használ.
+Egy fájlmegosztás tartalmát egy másik fájlmegosztást is szinkronizálhatja. Egy fájlmegosztás könyvtárának tartalmát is szinkronizálhatja egy olyan könyvtár tartalmával, amely egy másik fájlmegosztást tartalmaz. A szinkronizálás egyirányú. Más szóval kiválaszthatja, hogy a két végpont melyik a forrás, és melyik a cél. A szinkronizálás a kiszolgálót kiszolgáló API-kra is használja.
 
 > [!NOTE]
-> Jelenleg ez a forgatókönyv csak olyan fiókok esetében támogatott, amelyek nem rendelkeznek hierarchikus névtérrel. Az AzCopy jelenlegi kiadása nem szinkronizálja az Azure Files és a Blob Storage között.
+> Ez a forgatókönyv jelenleg csak olyan fiókok esetében támogatott, amelyek nem rendelkeznek hierarchikus névtérrel. A AzCopy jelenlegi kiadása nem szinkronizál Azure Files és Blob Storage között.
 
-A [szinkronizálási](storage-ref-azcopy-sync.md) parancs összehasonlítja a fájlneveket és a utoljára módosított időbélyegeket. Állítsa `--delete-destination` be a választható `true` jelzőt a célkönyvtárban lévő fájlok értékére vagy `prompt` törlésére, ha ezek a fájlok már nem léteznek a forráskönyvtárban.
+A [szinkronizálási](storage-ref-azcopy-sync.md) parancs összehasonlítja a fájlneveket és az utolsó módosítás időbélyegét. Állítsa a `--delete-destination` választható jelzőt értékre, `true` vagy `prompt` törölje a fájlokat a célhely könyvtárában, ha ezek a fájlok már nem léteznek a forrás-címtárban.
 
-Ha a `--delete-destination` jelzőt `true` AzCopy -re állítja, akkor kérdés megadása nélkül törli a fájlokat. Ha azt szeretné, hogy az AzCopy töröljön `--delete-destination` egy `prompt`fájlt, állítsa a jelzőt a beállításra.
+Ha a jelzőt `--delete-destination` úgy állítja `true` be, hogy a AzCopy törölje a fájlokat, a kérés megadása nélkül. Ha azt szeretné, hogy a AzCopy törlése előtt megjelenjen egy üzenet, állítsa a `--delete-destination` jelölőt `prompt`a következőre:.
 
 > [!TIP]
-> A szinkronizálási műveletet választható jelzők használatával módosíthatja. Íme néhány példa.
+> A szinkronizálási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 >
 > |Forgatókönyv|Jelző|
 > |---|---|
-> |Adja meg, hogy a szigorúan MD5-kihálat hogyan kell érvényesíteni a letöltés során.|**--check-md5**=\[NoCheck\|\|LogOnly\|FailIfDifferent FailIfDifferentOrMissing\]|
-> |A fájlok kizárása minta alapján.|**--kizárás-útvonal**|
-> |Adja meg, hogy milyen részletesen szeretné a szinkronizálással kapcsolatos naplóbejegyzéseket.|**--log-level**=\[\|FIGYELMEZTETÉS\|\|HIBA INFORMÁCIÓ NINCS\]|
+> |Itt adhatja meg, hogy a letöltéskor a szigorúan MD5-kivonatokat kell-e érvényesíteni.|**--pipa**=\[\|bejelentkezéses\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |Fájlok kizárása mintázat alapján.|**--kizárás – elérési út**|
+> |Adja meg, hogy a szinkronizálással kapcsolatos naplóbejegyzések milyen részletesek legyenek.|**– a naplózási szintű**=\[\|figyelmeztetési\|hiba\|információja nincs\]|
 > 
-> A teljes listát a [Beállítások menüben láthatja.](storage-ref-azcopy-sync.md#options)
+> A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-sync.md#options).
 
-### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Fájlmegosztás frissítése másik fájlmegosztás módosításaival
+### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Fájlmegosztás frissítése egy másik fájlmegosztás módosításaival
 
-A parancsban megjelenő első fájlmegosztás a forrás. A második a cél.
+Az ebben a parancsban megjelenő első fájlmegosztás a forrás. A második a cél.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Példa** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Például** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Könyvtár frissítése egy másik fájlmegosztás könyvtárának módosításaival
 
@@ -305,27 +305,27 @@ A parancsban megjelenő első könyvtár a forrás. A második a cél.
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name><SAS-token>' --recursive` |
-| **Példa** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Például** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-### <a name="update-a-file-share-to-match-the-contents-of-a-share-snapshot"></a>Fájlmegosztás frissítése a megosztáspillanatkép tartalmának megfelelően
+### <a name="update-a-file-share-to-match-the-contents-of-a-share-snapshot"></a>Fájlmegosztás frissítése a megosztási pillanatkép tartalmának megfelelően
 
-A parancsban megjelenő első fájlmegosztás a forrás. Az URI végén fűzze hozzá `&sharesnapshot=` a karakterláncot, majd a **pillanatkép DateTime** értékét. 
+Az ebben a parancsban megjelenő első fájlmegosztás a forrás. Az URI végén fűzze hozzá a karakterláncot `&sharesnapshot=` , majd a pillanatkép **datetime** értékét. 
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>&sharesnapsot<snapshot-ID>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
-| **Példa** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+| **Például** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-A megosztási pillanatképekről az [Azure Files megosztási pillanatképeinek áttekintése című témakörben olvashat bővebben.](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)
+További információ a megosztási pillanatképekről: [Azure Files-megosztási Pillanatképek áttekintése](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
 
 ## <a name="next-steps"></a>További lépések
 
-További példák a következő cikkek bármelyikében:
+További példákat a következő cikkekben talál:
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
 
-- [Adatok átvitele az AzCopy és blob tárházával](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
 
-- [Adatátvitel az AzCopy és az Amazon S3 gyűjtőkkel](storage-use-azcopy-s3.md)
+- [Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)
 
-- [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)

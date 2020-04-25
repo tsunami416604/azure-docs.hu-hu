@@ -1,110 +1,110 @@
 ---
-title: Vevőérdeklődők konfigurálása | Azure Piactér
-description: Ügyfélérdeklődők konfigurálása a kereskedelmi piacon.
+title: Érdeklődők konfigurálása a Microsoft kereskedelmi Marketplace-ajánlatból
+description: Ügyfél-érdeklődők konfigurálása a Microsoft kereskedelmi piactéren.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: a1ec89dfd2dda91a10f2cc00b6ca4d9d7abbf032
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 54c67656d7847b44c8fc83b33a4e03be3838cf76
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731143"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131086"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Érdeklődők a Marketplace-ajánlatban
 
-Az érdeklődők az [Azure Piactérről](https://azuremarketplace.microsoft.com) vagy az [AppSource-ból](https://appsource.microsoft.com)származó ajánlatok iránt érdeklődnek, illetve azok üzembe helyezése. Az ajánlat marketplace-en való közzétételét követően ügyfélérdeklődőket fog kapni. Ez a cikk elmagyarázza:
+Az érdeklődők a Microsoft [AppSource](https://appsource.microsoft.com) és az [Azure Marketplace](https://azuremarketplace.microsoft.com)-ről származó ajánlatait vagy üzembe helyezését érdeklik. A vásárlói érdeklődőket az ajánlat közzétételét követően kapja meg a piactéren. Ez a cikk a következőket ismerteti:
 
-* Hogyan generál ja a marketplace-ajánlat az ügyfelek et, biztosítva, hogy ne szalassza el az üzleti lehetőségeket. 
-* Csatlakoztassa crm-ját az ajánlatához, így egyetlen központi helyen kezelheti az érdeklődőket.
-* Ismerje meg az általunk küldött érdeklődői adatokat, hogy nyomon követhesse azokat az ügyfeleket, akik megkeresik Önt.
+* Hogyan hozza létre a piactéren az ügyfeleket, hogy ne hagyjon ki üzleti lehetőségeket. 
+* Az Ügyfélkapcsolat-kezelési (CRM) rendszernek az ajánlathoz való kapcsolódása, hogy az érdeklődők egyetlen központi helyen kezelhetők legyenek.
+* Az Ön által elküldött érdeklődői adatküldés után nyomon követheti az Ön számára elérhető ügyfeleket.
 
-## <a name="generate-customer-leads"></a>Vevői érdeklődők létrehozása
+## <a name="generate-customer-leads"></a>Ügyfél-érdeklődők előállítása
 
-Az alábbiakban az érdeklődő keletkezésének helyei:
+Az alábbi helyeken jönnek létre az érdeklődők:
 
-1. Amikor egy ügyfél beleegyezik, hogy megosztja az adatait, miután kiválasztotta a "Kapcsolat" lehetőséget a piactérről. Ez az érdeklődő egy **kezdeti érdeklődési** kör, ahol megosztjuk az információt arról az ügyfélről, aki érdeklődést mutatott a termék megszerzése iránt. Az érdeklődő az akvizíciós tölcsér teteje.
+- Az ügyfél beleegyezett, hogy megosztja az adatait, miután kiválasztotta a **kapcsolatot** a kereskedelmi piactéren. Ez az érdeklődő *kezdeti érdeklődést* eredményez. Az Önnel kapcsolatos információkat a termék beszerzésére vonatkozó érdeklődéssel rendelkező ügyféllel osztjuk meg. Az érdeklődő a beszerzési tölcsér felső része.
 
-      ![Dynamics 365 kapcsolat](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
+    ![Dynamics 365 Kapcsolatfelvétel](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
 
-2. Amikor egy ügyfél a "Get it Now" vagy a "Create" (az [Azure Portalon)](https://portal.azure.com/)lehetőséget választja az ajánlat letöltéséhez, ez az érdeklődő egy **aktív érdeklődő,** ahol megosztjuk a termék üzembe helyezését megkezdett ügyfél adatait.
+- Az ügyfél most kiválasztja a **Letöltés** lehetőséget (vagy kiválasztja a **létrehozás** elemet a [Azure Portal](https://portal.azure.com/)) az ajánlat beszerzéséhez. Ez az érdeklődő egy *aktív* érdeklődő. Az Önnel kapcsolatos információkat megosztjuk a termék üzembe helyezését megkezdő ügyféllel.
 
-    ![SQL Beszerezni most](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
+    ![SQL-Letöltés most gomb](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
 
-    ![Windows Server létrehozás](./media/commercial-marketplace-get-customer-leads/windows-server-create.png)
+    ![Windows Server létrehozás gomb](./media/commercial-marketplace-get-customer-leads/windows-server-create.png)
 
-3. Az ügyfél "Test Drive"-ot vesz igénybe, vagy elindítja az ajánlat "ingyenes próbaidőszakát". A tesztmeghajtók vagy az ingyenes próbaverziók felgyorsítják a lehetőséget, hogy vállalkozását azonnal megossza a potenciális ügyfelekkel, mindenféle belépési korlát nélkül.
+- Egy ügyfél kiválasztja a **tesztelési meghajtót** vagy az **ingyenes próbaverziót** az ajánlat kipróbálásához. A tesztelési és az ingyenes próbaverziók gyorsított lehetőséget biztosítanak az üzleti tevékenység azonnali megosztására a potenciális ügyfelekkel a belépési korlátok nélkül.
 
-    ![Dynamics 365 tesztvezetés](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
+    ![Dynamics 365 Test Drive gomb](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
 
-    ![Dynamics 365 tesztvezetés](./media/commercial-marketplace-get-customer-leads/dynamics-365-free-trial.png)
+    ![Dynamics 365 ingyenes próbaverzió gomb](./media/commercial-marketplace-get-customer-leads/dynamics-365-free-trial.png)
 
-## <a name="connect-to-your-crm-system"></a>Csatlakozás a CRM-rendszerhez
+## <a name="connect-to-your-crm-system"></a>Kapcsolódás a CRM rendszerhez
 
 [!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-## <a name="understand-lead-data"></a>Az érdeklődők adatainak ismertetése
+## <a name="understand-lead-data"></a>Az érdeklődők megismerése
 
-Az ügyfélszerzési folyamat során kapott minden érdeklődő adott mezőkben található adatokkal rendelkezik. Az első mező, hogy `LeadSource` néz ki a mező, amely követi ezt a formátumot: **Source-Action** | **Offer**.
+Az ügyfél beszerzési folyamata során kapott összes érdeklődő meghatározott mezőkben lévő adattal rendelkezik. Az első kikeresni kívánt mező az a `LeadSource` mező, amely a következő formátumot követi: **forrás-művelet** | **ajánlat**.
 
-**Források**: A mező értéke az érdeklődőt létrehozó piactér alapján kerül feltöltésre. A lehetséges `"AzureMarketplace"` `"AzurePortal"`értékek `"AppSource (SPZA)"`a , és a .
+**Források**: a mező értékét a rendszer az érdeklődőt létrehozó piactér alapján tölti fel. A `"AzureMarketplace"` `"AzurePortal"`lehetséges értékek:, és `"AppSource (SPZA)"`.
 
-**Műveletek**: A mező értéke az ügyfél által a piactéren végrehajtott művelet alapján kerül feltöltésre, amely létrehozta az érdeklődőt. 
+**Műveletek**: a mező értéke az ügyfél által az érdeklődőt létrehozó piactéren végrehajtott művelet alapján van feltöltve.
 
 Lehetséges értékek:
 
-- "INS" - telepítés. Ez a művelet az Azure Marketplace-en vagy az AppSource-on történik, amikor egy ügyfél megvásárolja a terméket.
-- "PLT" - A Partner Led trial rövidítése. Ez a művelet az AppSource-on történik, ha az ügyfél a Kapcsolatfelvétel lehetőséget használja.
-- "DNC" -- Ne érintkezz. Ez a művelet az AppSource-on történik, amikor egy partner, aki keresztlistára került az alkalmazás oldalán, felkérést kap a kapcsolatfelvételre. Megosztjuk a figyelmeztetést arról, hogy ez az ügyfél keresztlistára került az alkalmazásban, de nem kell velük kapcsolatba lépni.
-- "Létrehozás" – Ez a művelet csak az Azure Portalon belül történik, és akkor jön létre, amikor egy ügyfél megvásárolja az ajánlatot a fiókjába.
-- "StartTestDrive" – Ez a művelet csak tesztmeghajtókra szolgál, és akkor jön létre, amikor egy ügyfél elindítja a tesztvezetést.
+- **"Ins"**: a *telepítésre*áll. Ez a művelet az Azure Marketplace-en vagy a AppSource van, amikor az ügyfél megvásárolja a terméket.
+- **"PLT"**: a *partner által vezetett próbaverzióra*áll. Ez a művelet a AppSource, ha az ügyfél kiválasztja a **Kapcsolatfelvétel** lehetőséget.
+- **"DNC –"**: a (z) nem *kapcsolatra*vonatkozó. Ez a művelet abban az esetben AppSource, ha az alkalmazás oldalán felsorolt partnereket kérik a kapcsolatfelvételre. Megosztunk egy értesítést arról, hogy az ügyfél szerepel az alkalmazáson, de nem kell kapcsolatba lépnie.
+- **"Létrehozás"**: Ez a művelet csak a Azure Portal belül történik, és akkor jön létre, amikor egy ügyfél megvásárolja az ajánlatot a fiókjába.
+- **"StartTestDrive"**: Ez a művelet csak a **tesztvezetés** beállítás esetében jön létre, amikor egy ügyfél elindítja a tesztelési meghajtót.
 
-**Ajánlatok**: Lehet, hogy több ajánlat a piacon. A mező értéke az érdeklődőt létrehozó ajánlat alapján kerül feltöltésre. A Publisher-azonosító és az ajánlatazonosító is ebben a mezőben kerül elküldésre, és az ajánlat marketplace-en való közzétételekor megadott értékek.
+**Ajánlatok**: több ajánlat is lehet a kereskedelmi piactéren. A mező értékét a rendszer az érdeklődőt létrehozó ajánlat alapján tölti fel. A közzétevő AZONOSÍTÓját és az ajánlat AZONOSÍTÓját is elküldjük ebben a mezőben, és azokat az értékeket, amelyeket az ajánlatnak a piactéren való közzétételekor adott meg.
 
-A következő példák a várt `publisherid.offerid`formátumú példaértékeket mutatják be: 
+Az alábbi példák a várt formátumú `publisherid.offerid`értékeket mutatják: 
 
-1. `checkpoint.check-point-r77-10sg-byol`
-1. `bitnami.openedxcypress`
-1. `docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145`
+- `checkpoint.check-point-r77-10sg-byol`
+- `bitnami.openedxcypress`
+- `docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145`
 
-## <a name="customer-info"></a>Ügyféladatok
+## <a name="customer-information"></a>Vásárlói adatok
 
-A vevő adatait a rendszer több mezőn keresztül küldi el. A következő példa az érdeklődőben található ügyféladatokat mutatja be.
+Az ügyfél adatait több mezőn keresztül küldik el. Az alábbi példa egy érdeklődő ügyfél-információit mutatja be:
 
-- Keresztnév: János
-- Vezetéknév: Smith
-- E-mail:\@jsmith microsoft.com
+- FirstName: John
+- LastName: Smith
+- E-mail: jsmith\@Microsoft.com
 - Telefon: 1234567890
-- Ország: USA
+- Ország: Egyesült Államok
 - Vállalat: Microsoft
-- Cím: CTO
+- Cím: műszaki igazgató
 
->[!Note]
->Az előző példában nem minden adat érhető el mindig az egyes érdeklődőkhöz. Mivel az Érdeklődők körei több lépésből kap nak érdeklődőket, az érdeklődők kezelésének legjobb módja a bejegyzések másolásának törlése és a nyomon követés személyre szabása. Így minden ügyfél megkapja a megfelelő üzenetet, és ön egyedi kapcsolatot hoz létre.
+>[!NOTE]
+>Az előző példában szereplő összes érték mindig elérhető az egyes érdeklődők számára. Mivel az "ügyfél-érdeklődők létrehozása" című szakaszban említett lépések több lépésből állnak, az érdeklődők kezelésének legjobb módja a rekordok visszavonása és a követő ablakok személyre szabása. Így minden ügyfél megfelelő üzenetet kap, és létrehoz egy egyedi kapcsolatot.
 
-## <a name="best-practices-for-lead-management"></a>Ajánlott eljárások az érdeklődőkezeléshez
+## <a name="best-practices-for-lead-management"></a>Ajánlott eljárások az érdeklődők felügyeletéhez
 
-1. *Folyamat* – Egyértelmű értékesítési folyamat definiálása mérföldkövekkel, kpi-kkel és a csapat tulajdonjogának egyértelműségével.
-2. *Minősítés* – Előfeltételek meghatározása, amelyek azt jelzik, hogy egy érdeklődő teljesen képzett-e. Győződjön meg róla, hogy az értékesítési vagy marketingképviselők gondosan minősítik az érdeklődőket, mielőtt végigvennék őket a teljes értékesítési folyamaton.
-3. *Nyomon követés* - Ne felejtsük el, hogy kövesse nyomon, várják a tipikus tranzakció igényel 5-12 nyomon követési hívások
-4. *Ápolják* - ápolják a vezet, annak érdekében, hogy neked az utat a magasabb haszonkulcs.
+- **Folyamat**: adjon meg egy egyértelmű értékesítési folyamatot, a mérföldköveket, az elemzést és a csoport törlését.
+- **Minősítés**: az előfeltételek meghatározása, amely azt jelzi, hogy egy érdeklődő teljesen minősített-e. Győződjön meg arról, hogy az értékesítési vagy a marketing képviselői körültekintően vezetnek be, mielőtt a teljes értékesítési folyamaton átveszik őket.
+- **Követés**: ne felejtsen nyomon követni. A tipikus tranzakció várhatóan 5 – 12 követő hívást igényel.
+- **Ápolás**: táplálja az érdeklődőket, hogy minél magasabb haszonkulcsot kapjon.
 
-## <a name="leads-frequently-asked-questions"></a>Gyakran ismételt kérdések et vezet
+## <a name="leads-frequently-asked-questions"></a>Gyakran ismételt kérdések
 
-### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Hol kaphatok segítséget az érdeklődő célhelyének beállításához?
+### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Hol kaphatok segítséget az érdeklődői cél beállításakor?
 
-Itt megtalálhatja [a](#connect-to-your-crm-system) dokumentációt, https://partner.microsoft.com/support/v2/?stage=1 vagy támogatási jegyet küldhet be, majd válassza az **"ajánlat létrehozása"** → **az ajánlat típusa** → **"érdeklődőkezelési konfiguráció" lehetőséget.**
+Kövesse a [Kapcsolódás a CRM rendszerhez](#connect-to-your-crm-system)című szakasz lépéseit, vagy nyújtson be támogatási jegyet a [partner Center Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásán keresztül. Ezután válassza az **ajánlat létrehozása** > lehetőséget**az ajánlati** > **érdeklődők felügyeletének beállításához**.
 
-### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>Be kell állítanom egy érdeklődő célállomást ahhoz, hogy ajánlatot tegyek közzé a piacon?
+### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Meg kell-e adni egy vezető célhelyet, hogy közzé lehessen tenni egy ajánlatot a kereskedelmi piactéren?
 
-A válasz a közzéteszáltal kínált ajánlat típusától függ. A SaaS és a Dynamics 365 for Customer Engagement felajánlja, hogy "Kapcsolatfelvétel" néven szerepel, az összes Dynamics 365 for Operations ajánlat, az összes Dynamics 365 Business Central ajánlat és minden Consulting Service ajánlat hoz létre egy érdeklődőcélhoz való csatlakozást. Ha az ajánlat típusa nem szerepel a listában, akkor nem szükséges. Javasoljuk azonban, hogy állítson be egy érdeklődő célállomását, hogy ne maradjon le az üzleti lehetőségekről.
+A válasz a közzétett ajánlat típusától függ. A szolgáltatott szoftverként (SaaS) és a Dynamics 365 Customer engagement használatával **kapcsolatba léphetnek** az összes Dynamics 365 a pénzügyi és üzemeltetési ajánlatok, a Dynamics 365 üzleti központi ajánlatai és az összes tanácsadási szolgáltatás ajánlatának listázásához. Ennek eredményeképpen szükségük van egy érdeklődői célhoz való kapcsolódásra. Ha az ajánlat típusa nem szerepel a felsorolásban, nem kötelező csatlakozni egy érdeklődő céljához. Javasoljuk, hogy állítson be egy érdeklődői célhelyet, hogy ne hagyjon ki üzleti lehetőségeket.
 
-### <a name="how-can-i-find-the-test-lead"></a>Hogyan találhatom meg a tesztvezetőt?
+### <a name="how-can-i-find-the-test-lead"></a>Hogyan találhatom meg a tesztelési érdeklődőt?
 
-Keressen `"MSFT_TEST"` rá az érdeklődő célállomására, itt egy mintateszt-érdeklődő a Microsofttól:
+`"MSFT_TEST"` Keresse meg a kifejezést az érdeklődő célhelyén. Íme egy példa a Microsoft tesztelési folyamatára:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -121,46 +121,46 @@ phone = 1234567890
 title = MSFT_TEST_636573304831318844
 ```
 
-### <a name="i-have-a-live-offer-but-im-not-seeing-any-leads"></a>Van egy élő ajánlatom, de nem látok semmi nyomot?
+### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Élő ajánlatom van, de miért nem látok semmilyen érdeklődőt?
 
-Ellenőrizze, hogy a kapcsolat az érdeklődő célállomásához érvényes-e. A Partnerközpontban közzétett ajánlat a közzététel után küldünk Önnek egy tesztérdeklődőt. Ha látja a tesztvezetéket, akkor a kapcsolat érvényes. Az érdeklődőkeresési kapcsolatot úgy is tesztelheti, hogy megpróbálja megszerezni az ajánlat előnézetét az előnézeti lépés során, ha a "get it now", a "contacts me" vagy az "free trial" gombra kattint a piacon.
+Győződjön meg arról, hogy a vezető célhoz való kapcsolódás érvényes. A partner Centerben a **Közzététel** lehetőségre kattintva elküldünk egy tesztelési érdeklődőt. Ha a tesztelési érdeklődőt látja, a rendszer érvényes lesz a kapcsolatban. Azt is tesztelheti az érdeklődői kapcsolatokat, hogy az előzetes verzióban próbálja megkeresni az ajánlat előzetes verzióját. Válassza a **Letöltés most**, **Kapcsolatfelvétel**vagy **ingyenes próbaverzió** lehetőséget a kereskedelmi piactéren.
 
-Is, győződjön meg róla, hogy keresi a megfelelő adatokat. A jelen dokumentum [Érdeklődőadatok megértése](#understand-lead-data) szakaszában található tartalom az érdeklődő célállomására küldött érdeklődőadatokat ismerteti.
+Győződjön meg arról is, hogy a megfelelő adathalmazokat keresi. Ennek a cikknek a [megértési vezető adatai](#understand-lead-data) című szakaszában található tartalom a vezető célhelyre küldött érdeklődői adatokat ismerteti.
 
-### <a name="i-have-configured-azure-blob-as-my-lead-destination-why-dont-i-see-the-lead"></a>Az Azure BLOB-ot állítottam be érdeklődőcélomként, miért nem látom az érdeklődőt?
+### <a name="i-configured-azure-blob-storage-as-my-lead-destination-but-why-dont-i-see-the-lead"></a>Az Azure Blob Storage-t az érdeklődői célként konfiguráltam, de miért nem látom az érdeklődőt?
 
-Az Azure Blob érdeklődői cél már nem támogatott, így hiányzik az ajánlat által generált ügyfél érdeklődők. Váltson a többi [érdeklődőúti-beállítás bármelyikére.](./commercial-marketplace-get-customer-leads.md) 
+Az Azure Blob Storage már nem támogatott vezető célhelyként, így az ajánlat által létrehozott összes ügyfél-érdeklődő hiányzik. Váltson át a többi [érdeklődő célhelyére](./commercial-marketplace-get-customer-leads.md). 
 
-### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Kaptam egy e-mailt a Marketplace-en, miért nem találom a vezető a CRM?
+### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Kaptam egy e-mailt a kereskedelmi piactéren, de miért nem találom a vezetőt a CRM-ben?
 
-Lehetséges, hogy a végfelhasználó e-mail tartománya .edu-ból származik. Adatvédelmi okokból nem adunk át privát azonosításra alkalmas adatokat .edu tartományból. Támogatási jegy beküldése a keresztül. https://partner.microsoft.com/support/v2/?stage=1
+Lehetséges, hogy a végfelhasználó e-mail-tartománya az. edu címről származik. Adatvédelmi okokból nem adjuk át a személyazonosításra alkalmas adatokat az. edu tartományból. Támogatási jegy beküldése a [partner Center Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásán keresztül.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Az Azure Table-t állítottam be érdeklődőcélként, hogyan tekinthetem meg az érdeklődőket?
+### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Egy Azure-táblázatot konfiguráltam vezető célként. Hogyan tekinthetem meg az érdeklődőket?
 
-Az Azure-táblában tárolt érdeklődői adatokat az Azure Portalon keresztül érheti el, vagy ingyenesen letöltheti és telepítheti az [Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) az Azure storage-fiók táblázatainak megtekintéséhez.
+Az Azure-táblában tárolt érdeklődői adatok a Azure Portalból érhetők el. Az Azure Storage-fiók táblázatos adatai megtekintéséhez letöltheti és telepítheti az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) ingyen is.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Az Azure Table-t állítottam be érdeklődőcélként, értesítést kaphatok, ha a Marketplace új érdeklődőt küld?
+### <a name="i-configured-an-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-commercial-marketplace-lead-is-sent"></a>Egy Azure-táblázatot konfiguráltam vezető célként. Kaphatok értesítést, amikor új kereskedelmi Piactéri érdeklődőt küldenek?
 
-Igen, kövesse az utasításokat egy olyan Microsoft-folyamat beállításához, amely e-mailt küld, ha egy érdeklődő tad hozzá az Azure-táblázathoz az [itt](./commercial-marketplace-lead-management-instructions-azure-table.md)található dokumentációban.
+Igen. Kövesse a következő témakör utasításait: az [érdeklődők felügyeletének konfigurálása Azure-táblázat segítségével](./commercial-marketplace-lead-management-instructions-azure-table.md) , amely egy olyan Microsoft flow-t állít be, amely e-mailt küld, ha az Azure-táblához érdeklődőt adnak hozzá.
 
-### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>A Salesforce-ot állítottam be érdeklődőcélként, miért nem találom az érdeklődőket?
+### <a name="i-configured-salesforce-as-my-lead-destination-but-why-cant-i-find-the-leads"></a>Konfiguráltam Salesforce, de miért nem találom az érdeklődőket?
 
-Ellenőrizze, hogy a "web-vezető" űrlap egy választólistán alapuló kötelező mező-e. Ha igen, váltson át a mezőre egy nem kötelező szövegmezőre.
+Ellenőrizze, hogy a webes és a vezető űrlap kötelező mező-e a kivételezési lista alapján. Ha igen, váltson a mezőre egy nem kötelező szövegmezőbe.
 
-### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Volt egy kis gond a vezető úti célommal, és lemaradtam néhány nyomról. Elküldhetem őket e-mailben?
+### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Probléma merült fel a vezető célhelyen, és néhány érdeklődőt kihagytam. Küldhetek nekem egy e-mailt?
 
-A privát, azonosítható adatokra vonatkozó irányelvek miatt nem oszthatjuk meg az érdeklődői adatokat nem biztonságos e-mailben.
+A személyazonosításra alkalmas adatszabályzatok miatt a nem biztonságos e-mailen keresztül nem oszthatjuk meg az érdeklődői adatokat.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Az Azure Table-t állítottam be vezető célállomásként, mennyibe fog kerülni?
+### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Egy Azure-táblázatot konfiguráltam vezető célként. Mennyibe kerül?
 
-Az érdeklődőgen adatok alacsonyak (<1 GB szinte minden megjelenítő esetében). A költség a kapott érdeklődők számától függ, ha egy hónap alatt 1000 érdeklődő érkezik, az körülbelül 50 centbe kerül. A tárolási díjszabásról a [tárolási díjszabás című](https://azure.microsoft.com/pricing/details/storage/)témakörben talál további információt.
+Az ólom létrehozási adatkészlete alacsony. Majdnem minden közzétevőnél kevesebb, mint 1 GB. A díj a kapott érdeklődők számától függ. Ha például az 1 000-es érdeklődők egy hónapban érkeznek, a díjak körülbelül 50 centet kapnak. További információ a Storage díjszabásáról: az [Azure Storage áttekintésének díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-Ha a kérdésedre továbbra sem válaszolsz, lépj kapcsolatba az ügyfélszolgálattal aka.ms/marketplacepublishersupport keresztül, majd válaszd az **"ajánlat létrehozása"** → **az ajánlatod** → **"érdeklődőkezelési konfiguráció" lehetőséget.** 
+Ha a kérdés nem válaszol, lépjen kapcsolatba Microsoft ügyfélszolgálata a [partner Center Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásán keresztül. Ezután válassza az **ajánlat létrehozása** > lehetőséget**az ajánlati** > **érdeklődők felügyeletének beállításához**.
 
-### <a name="i-am-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-who-to-receive-these-emails"></a>E-mailes értesítéseket kapok, amikor új ügyfélérdeklődők érkeznek. Hogyan állíthatom be, hogy ki kapja ezeket az e-maileket?
+### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Értesítő e-mailt kapok az új ügyfelek fogadásakor. Hogyan állíthatom be valaki másnak az e-mailek fogadását?
 
-Érje el ajánlatát a Partnerközpontban, és keresse meg az **Ajánlat beállítási** lapját -> **Érdeklődőkezelés** -> **szerkesztése**. Frissítse az e-mail címeket a **Kapcsolattartó e-mail mezőben.**
+Nyissa meg az ajánlatát a partner Centerben, és nyissa meg az **ajánlat beállítása** lapot > az **érdeklődői felügyelet** > **szerkesztése**lehetőséget. Frissítse a **kapcsolattartási e-mail** mezőben szereplő e-mail-címeket.
 
 ## <a name="next-steps"></a>További lépések
 
-Miután a technikai beállítás megtörtént, ezeket az érdeklődőket be kell építenie a jelenlegi értékesítési & marketingstratégiájába és működési folyamataiba. Szeretnénk jobban megérteni a teljes értékesítési folyamatot, és szorosan együtt kívánunk működni Önnel a kiváló minőségű érdeklődők és elegendő adat biztosításában ahhoz, hogy sikeres legyen. Örömmel fogadjuk visszajelzését arról, hogyan optimalizálhatjuk és javíthatjuk az általunk küldött érdeklődőket további adatokkal, hogy ezek az ügyfelek sikeresek legyenek. Tudassa velünk, ha visszajelzést és javaslatokat szeretne [adni](mailto:AzureMarketOnboard@microsoft.com) annak érdekében, hogy értékesítési csapata sikeresebb legyen a Marketplace-érdeklődőkkel.
+A technikai beállítás bevezetését követően az aktuális értékesítési és marketing stratégia és működési folyamatok részeként építse be ezeket az érdeklődőket. Fontos, hogy jobban megértse a teljes értékesítési folyamatot, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne [visszajelzést](mailto:AzureMarketOnboard@microsoft.com) küldeni, és javaslatokat tesz arra, hogy az értékesítési csapat sikeresebb legyen a kereskedelmi piactéren.

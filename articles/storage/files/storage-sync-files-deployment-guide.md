@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f2c4e762ebf10a5ca2120c13a52750a7781d60b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268066"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137722"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -410,7 +410,7 @@ Ez egy hatékony forgatókönyv, amelyet általában önkiszolgáló visszaáll�
 A VSS-Pillanatképek és a korábbi verziók a Azure File Synctól függetlenül működnek. A Felhőbeli rétegek megadását azonban kompatibilis módra kell beállítani. Több Azure File Sync kiszolgálói végpont is létezhet ugyanazon a köteten. A következő PowerShell-hívást olyan köteten kell elvégeznie, amely még egy olyan kiszolgálói végponttal rendelkezik, ahol a felhő-rétegre tervez vagy használ.
 
 ```powershell
-Import-Module ‘<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll’
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
 Enable-StorageSyncSelfServiceRestore [-DriveLetter] <string> [[-Force]] 
 ```
 
@@ -426,7 +426,7 @@ A VSS-Pillanatképek egy teljes kötetről készültek. Alapértelmezés szerint
 Ha szeretné megtekinteni, hogy az önkiszolgáló visszaállítási kompatibilitás engedélyezve van-e, futtathatja a következő parancsmagot.
 
 ```powershell
-    Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
+Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 ```
 
 Felsorolja a kiszolgálón lévő összes kötetet, valamint a Felhőbeli rétegek egymással kompatibilis napjainak számát. Ezt a számot a rendszer automatikusan kiszámítja a köteten a lehetséges Pillanatképek maximális száma és az alapértelmezett pillanatkép-ütemterv alapján. Ezért alapértelmezés szerint az Information Worker szolgáltatásban bemutatott összes korábbi verzió a-ból való visszaállításra használható. Ugyanez igaz, ha úgy módosítja az alapértelmezett ütemtervet, hogy további pillanatképeket lehessen készíteni.

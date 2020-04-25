@@ -8,30 +8,30 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ee80c04a6365c2cf337c4033a90df8d2993c299d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5992726893b722b0aa46c976a0167793f5ee6bb4
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76845972"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82132294"
 ---
-A következő korlátozások az Azure Event Grid rendszertémakörökre és egyéni témakörökre vonatkoznak, *nem* az eseménytartományokra.
+A következő korlátozások vonatkoznak Azure Event Grid rendszertémakörökre és az egyéni témakörökre, és *nem* az Event-tartományokra.
 
 | Erőforrás | Korlát |
 | --- | --- |
-| Egyéni témakörök Azure-előfizetésenként | 100 |
-| Esemény-előfizetések témánként | 500 |
-| Egyéni témakör közzétételi aránya (be- és visszafordítás) | 5000 esemény másodpercenként témánként |
-| Kérelmek közzététele | 250 másodpercenként |
-| Esemény mérete | 1 MB (több 64 KB-os eseményként számítva) |
+| Egyéni témakörök az Azure-előfizetések esetében | 100 |
+| Esemény-előfizetések/témakör | 500 |
+| Egyéni témakör közzétételi arányának (bejövő) | 5 000 esemény/másodperc/téma |
+| Közzétételi kérelmek | 250 másodpercenként |
+| Esemény mérete | 1 MB. A műveletekre azonban 64 KB-os növekmények vonatkoznak. Így a 64 KB-nál több esemény is felmerül, mintha több esemény lenne. Például az 130 KB-os esemény olyan műveleteket von maga után, mintha 3 különálló esemény lenne.  |
 
-A következő korlátozások csak az eseménytartományokra vonatkoznak.
+A következő korlátozások érvényesek az esemény-tartományokra.
 
 | Erőforrás | Korlát |
 | --- | --- |
-| Témakörök eseménytartományonként | 100 000 |
-| Esemény-előfizetések témakörenként egy tartományon belül | 500 |
-| Tartományhatókör-esemény-előfizetések | 50 |
-| Eseménytartomány közzétételi aránya (be- és visszakelődés) | 5000 esemény másodpercenként |
-| Kérelmek közzététele | 250 másodpercenként |
-| Eseménytartományok Azure-előfizetésenként | 100 |
+| Témakörök/esemény tartománya | 100 000 |
+| Esemény-előfizetések témakörben egy tartományon belül | 500 |
+| Tartományi hatókörű esemény-előfizetések | 50 |
+| Esemény-tartomány közzétételi sebessége (bejövő) | 5 000 esemény másodpercenként |
+| Közzétételi kérelmek | 250 másodpercenként |
+| Azure-előfizetéshez tartozó esemény-tartományok | 100 |

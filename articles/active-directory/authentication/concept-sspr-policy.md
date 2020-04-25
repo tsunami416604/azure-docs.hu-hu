@@ -1,6 +1,6 @@
 ---
-title: Önkiszolgáló jelszó-visszaállítási házirendek – Azure Active Directory
-description: Ismerje meg az Azure Active Directory önkiszolgáló jelszó-alaphelyzetbe állítási házirendjének különböző beállításait
+title: Önkiszolgáló jelszó-visszaállítási szabályzatok – Azure Active Directory
+description: Tudnivalók a különböző Azure Active Directory önkiszolgáló jelszó-visszaállítási házirend-beállításokról
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,155 +11,155 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f5987bee82dc22d3742cb5d87040930e5d2c52d
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: e8b6d08dd2073de80ac0f7fd08f510d9cda80545
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393039"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143234"
 ---
-# <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Önkiszolgáló jelszó-alaphelyzetbe állítási házirendek és korlátozások az Azure Active Directoryban
+# <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Önkiszolgáló jelszó-visszaállítási szabályzatok és korlátozások a Azure Active Directory
 
-Ez a cikk ismerteti a jelszó szabályzatok és összetettségi követelmények az Azure Active Directory (Azure AD) bérlőben társított felhasználói fiókok.
+Ez a cikk a Azure Active Directory (Azure AD) bérlő felhasználói fiókjaihoz társított jelszóházirend-és összetettségi követelményeket ismerteti.
 
 ## <a name="administrator-reset-policy-differences"></a>A rendszergazdai visszaállítási szabályzat eltérései
 
-**A Microsoft erős alapértelmezett *kétkapus jelszó-visszaállítási* szabályzatot kényszerít ki bármely Azure-rendszergazdai szerepkörhöz.** Ez a házirend eltérhet a felhasználók számára definiált házirendtől, és ez a házirend nem módosítható. Mindig tesztelje a jelszó-visszaállítási funkciót felhasználóként anélkül, hogy Azure-rendszergazdai szerepkörök et rendelne hozzá.
+A **Microsoft minden Azure-beli rendszergazdai szerepkör esetében kikényszeríti az alapértelmezett *kétkapus jelszó-* visszaállítási szabályzatot**. Ez a szabályzat különbözhet a felhasználók számára megadott beállításoktól, és ez a szabályzat nem módosítható. A jelszó-visszaállítási funkciót mindig a felhasználó által hozzárendelt Azure rendszergazdai szerepkörök nélkül kell tesztelni.
 
-A kétkapus házirend esetén **a rendszergazdák nem használhatják a biztonsági kérdéseket.**
+A rendszergazdák kétkapus szabályzattal **nem tudják használni a biztonsági kérdéseket**.
 
-A kétkapus házirendhez két hitelesítési adat szükséges, például egy *e-mail-cím,* *egy hitelesítő alkalmazás*vagy egy *telefonszám.* A kétkapus szabályzat a következő esetekben alkalmazandó:
+A kétkapus szabályzathoz két hitelesítési adat szükséges, például *e-mail-cím*, *hitelesítő alkalmazás*vagy *telefonszám*. Kétkapus szabályzat a következő esetekben érvényes:
 
-* A következő Azure-rendszergazdai szerepkörök mindegyike érintett:
-  * Ügyfélszolgálati rendszergazda
+* A rendszer az alábbi Azure-rendszergazdai szerepköröket érinti:
+  * Segélyszolgálat rendszergazdája
   * Szolgáltatás-rendszergazda
   * Számlázási rendszergazda
-  * Partner tier1 támogatás
-  * Partner tier2 támogatás
+  * Partneri Tier1-támogatás
+  * Partneri szint-támogatás
   * Exchange-rendszergazda
   * Skype Vállalati verzió-rendszergazda
-  * Rendszergazda
-  * Címtár írók
+  * Felhasználói rendszergazda
+  * Címtár-írók
   * Globális rendszergazda vagy vállalati rendszergazda
   * SharePoint-rendszergazda
   * Megfelelőségi rendszergazda
   * Alkalmazás-rendszergazda
   * Biztonsági rendszergazda
-  * Kiemelt szerepkör-rendszergazda
+  * Kiemelt szerepkörű rendszergazda
   * Intune-rendszergazda
-  * Alkalmazásproxy-szolgáltatás rendszergazdája
-  * A Dynamics 365 rendszergazdája
+  * Alkalmazásproxy szolgáltatás rendszergazdája
+  * Dynamics 365-rendszergazda
   * Power BI-szolgáltatásadminisztrátor
-  * Hitelesítési rendszergazda
-  * Kiemelt hitelesítési rendszergazda
+  * Hitelesítés rendszergazdája
+  * Kiemelt jogosultságú hitelesítés rendszergazdája
 
-* Ha 30 nap telt el próba-előfizetés; Vagy
-* Egyéni tartomány van konfigurálva az Azure AD-bérlőhöz, például *contoso.com;* Vagy
-* Az Azure AD Connect szinkronizálja az identitásokat a helyszíni címtárból
+* Ha 30 nap telt el egy próbaverziós előfizetésben; vagy
+* Egyéni tartomány lett konfigurálva az Azure AD-bérlőhöz, például *contoso.com*; vagy
+* Azure AD Connect az identitások szinkronizálása a helyszíni címtárból
 
 ### <a name="exceptions"></a>Kivételek
 
-Az egykapus házirendhez egy hitelesítési adat szükséges, például egy e-mail cím vagy telefonszám. Az egykapus szabályzat a következő esetekben alkalmazandó:
+Az egy-kapus szabályzathoz egy hitelesítő adat szükséges, például egy e-mail-cím vagy telefonszám. Az egykapus szabályzat a következő esetekben érvényes:
 
-* Ez a próba-előfizetés első 30 napán belül van; Vagy
-* Az Azure AD-bérlőhöz nincs egyéni tartomány konfigurálva, így az alapértelmezett **.onmicrosoft.com*. Az alapértelmezett **.onmicrosoft.com* tartomány nem ajánlott éles használatra; És
+* A próbaverziós előfizetés első 30 napján belül van; vagy
+* Nincs beállítva egyéni tartomány az Azure AD-bérlőhöz, ezért az alapértelmezett **. onmicrosoft.com*használja. Az alapértelmezett **. onmicrosoft.com* tartomány nem ajánlott éles használatra; és
 * Az Azure AD Connect nem szinkronizálja az identitásokat
 
-## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>Az összes felhasználói fiókra vonatkozó UserPrincipalName házirendek
+## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>Az összes felhasználói fiókra érvényes UserPrincipalName szabályzatok
 
-Minden felhasználói fiók, amelynek be kell jelentkeznie az Azure AD-ben rendelkeznie kell egy egyedi egyszerű felhasználónév (UPN) attribútum érték társítva a fiókhoz. Az alábbi táblázat ismerteti azokat a házirendeket, amelyek a felhővel és a csak felhőalapú felhasználói fiókokkal szinkronizált helyszíni Active Directory tartományi szolgáltatások felhasználói fiókokra egyaránt vonatkoznak:
+Minden, az Azure AD-be bejelentkezni kívánt felhasználói fióknak rendelkeznie kell egy egyedi egyszerű felhasználónév (UPN) attribútum értékkel, amely hozzá van rendelve a fiókhoz. A következő táblázat azokat a házirendeket ismerteti, amelyek a felhőben és a csak felhőalapú felhasználói fiókokba szinkronizált helyszíni Active Directory tartományi szolgáltatások felhasználói fiókokra vonatkoznak:
 
-| Tulajdonság | UserPrincipalName követelmények |
+| Tulajdonság | UserPrincipalName-követelmények |
 | --- | --- |
-| Megengedett karakterek |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
-| Karakterek nem engedélyezettek |<ul> <li>Bármely\@ \" " karakter, amely nem választja el a felhasználónevet a tartománytól.</li> <li>Nem tartalmazhat pontkaraktert "." közvetlenül\@ \" a " szimbólum ot megelőzően</li></ul> |
-| Hossz-megkötések |<ul> <li>A teljes hossz nem haladhatja meg a 113 karaktert.</li><li>Legfeljebb 64 karakter lehet a\@ \" " szimbólum előtt</li><li>Legfeljebb 48 karakter lehet a\@ \" " szimbólum után</li></ul> |
+| Engedélyezett karakterek |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
+| Nem engedélyezett karakterek |<ul> <li>\@ \" Bármely olyan karakter, amely nem választja el a felhasználónevet a tartományból.</li> <li>A "." karakter nem szerepelhet közvetlenül a "\@ \" Symbol</li></ul> |
+| Megkötések hossza |<ul> <li>A teljes hossz nem haladhatja meg a 113 karaktert</li><li>A "\@ \" szimbólum előtt legfeljebb 64 karakter lehet.</li><li>A "\@ \" szimbólum után legfeljebb 48 karakter lehet.</li></ul> |
 
 ## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>A csak a felhőbeli felhasználói fiókokra vonatkozó jelszószabályzatok
 
-Az alábbi táblázat az Azure AD-ben létrehozott és kezelt felhasználói fiókokra alkalmazott jelszóházirend-beállításokat ismerteti:
+A következő táblázat az Azure AD-ben létrehozott és kezelt felhasználói fiókokra vonatkozó jelszóházirend-beállításokat ismerteti:
 
 | Tulajdonság | Követelmények |
 | --- | --- |
-| Megengedett karakterek |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ' , . ? / \`~ " ( ) ;</li> <li>üres terület</li></ul> |
-| Karakterek nem engedélyezettek | Unicode karakterek. |
-| Jelszókorlátozások |<ul><li>Legalább 8 karakter, de legfeljebb 256 karakter.</li><li>Az alábbiak közül négyből hármat igényel:<ul><li>Kisbetűk.</li><li>Nagybetűk.</li><li>Számok (0-9).</li><li>Szimbólumok (lásd a korábbi jelszókorlátozásokat).</li></ul></li></ul> |
-| A jelszó lejárati ideje (A jelszó maximális élettartama) |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Az érték konfigurálható az `Set-MsolPasswordPolicy` Azure Active Directory modul windows PowerShell hez parancsmag használatával.</li></ul> |
-| Jelszó lejárati értesítése (Ha a felhasználók értesítést kapnak a jelszó lejáratáról) |<ul><li>Alapértelmezett érték: **14** nap (a jelszó lejárta előtt).</li><li>Az érték a `Set-MsolPasswordPolicy` parancsmag használatával konfigurálható.</li></ul> |
-| A jelszó lejárata (A jelszavak soha nem járnak le) |<ul><li>Alapértelmezett érték: **false** (azt jelzi, hogy a jelszó lejárati dátummal rendelkezik).</li><li>Az érték a parancsmag használatával konfigurálható az `Set-MsolUser` egyes felhasználói fiókokhoz.</li></ul> |
-| Jelszómódosítási előzmények | Az utolsó jelszó nem használható *újra,* amikor a felhasználó megváltoztatja a jelszót. |
-| Jelszó-visszaállítási előzmények | Az utolsó jelszó újra *használható,* amikor a felhasználó visszaállítja az elfelejtett jelszót. |
-| Fiók zárolása | 10 sikertelen bejelentkezési kísérlet után a felhasználó egy percre zárolva van. További helytelen bejelentkezési kísérletek zár ki a felhasználó tág időtartamok. [Az intelligens zárolás](howto-password-smart-lockout.md) nyomon követi az utolsó három rossz jelszókimondottakat, hogy elkerülje a zárolási számláló növekményét ugyanahhoz a jelszóhoz. Ha valaki többször is beírja ugyanazt a rossz jelszót, ez a viselkedés nem zárja ki a fiókot. |
+| Engedélyezett karakterek |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $% ^ & *-_! + = [] {} &#124; \: ',. ? / \`~ " ( ) ;</li> <li>üres terület</li></ul> |
+| Nem engedélyezett karakterek | Unicode-karakterek. |
+| Jelszó korlátozásai |<ul><li>Legalább 8 karakterből és legfeljebb 256 karakterből állhat.</li><li>A három közül a következők közül hármat igényel:<ul><li>Kisbetűs karakterek.</li><li>Nagybetűs karakterek.</li><li>Számok (0-9).</li><li>Szimbólumok (lásd a jelszó korábbi korlátozásait).</li></ul></li></ul> |
+| Jelszó lejárati időtartama (jelszó maximális kora) |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Az érték konfigurálható a Windows PowerShell Azure Active Directory `Set-MsolPasswordPolicy` moduljának parancsmagjának használatával.</li></ul> |
+| Jelszó lejárati értesítése (ha a felhasználók értesítést kapnak a jelszó lejáratáról) |<ul><li>Alapértelmezett érték: **14** nap (a jelszó lejárata előtt).</li><li>Az érték a `Set-MsolPasswordPolicy` parancsmag használatával konfigurálható.</li></ul> |
+| Jelszó lejárata (hagyja, hogy a jelszavak soha ne járjanak le) |<ul><li>Alapértelmezett érték: **false** (azt jelzi, hogy a jelszó lejárati dátuma).</li><li>Az érték egyéni felhasználói fiókokhoz is konfigurálható a `Set-MsolUser` parancsmag használatával.</li></ul> |
+| Jelszó-módosítási előzmények | Az utolsó jelszó *nem* használható újra, amikor a felhasználó megváltoztatja a jelszót. |
+| Jelszó-visszaállítási előzmények | Az *utolsó jelszó újra használható,* amikor a felhasználó visszaállít egy elfelejtett jelszót. |
+| Fiókzárolási | 10 sikertelen bejelentkezési kísérlet után a rendszer egy percig kizárja a felhasználót. A további helytelen bejelentkezési kísérletek miatt a felhasználó kizárja az időtartam növelését. Az [intelligens zárolási](howto-password-smart-lockout.md) szolgáltatás az utolsó három rossz jelszó-kivonatot követi, így elkerülhető, hogy a zárolási számláló ugyanazon a jelszónál legyen növelve. Ha valaki többször is ugyanazt a jelszót adja meg, akkor ez a viselkedés nem eredményezi a fiók zárolását. |
 
-## <a name="set-password-expiration-policies-in-azure-ad"></a>Jelszóelévési szabályzatok beállítása az Azure AD-ben
+## <a name="set-password-expiration-policies-in-azure-ad"></a>Jelszó-elévülési szabályzatok beállítása az Azure AD-ben
 
-A Microsoft felhőszolgáltatás *globális rendszergazdája* vagy *felhasználói rendszergazdája* a *Microsoft Azure AD Modul a Windows PowerShell hez* segítségével beállíthatja a felhasználói jelszavak at, hogy ne járjon le. A Windows PowerShell-parancsmagokkal eltávolíthatja a soha le nem járt konfigurációt, vagy megtekintheti, hogy mely felhasználói jelszavak vannak beállítva, hogy soha nem járnak le.
+A Microsoft Cloud Service *globális rendszergazdája* vagy *felhasználói rendszergazdája* a *Windows PowerShell Microsoft Azure ad moduljának* használatával beállíthatja, hogy a felhasználói jelszavak ne járjanak le. A Windows PowerShell-parancsmagok használatával eltávolíthatja a soha nem lejáró konfigurációt, vagy megtekintheti, hogy a rendszer mely felhasználói jelszavakat állítsa le soha nem jár le.
 
-Ez az útmutató más szolgáltatókra, például az Intune-ra és az Office 365-re vonatkozik, amelyek az Azure AD-t is igénybe veszik az identitás- és címtárszolgáltatásokhoz. A jelszó lejárata a házirend egyetlen módosítható része.
+Ez az útmutató más szolgáltatókra is vonatkozik, például az Intune-ra és az Office 365-re, amely az identitás-és Címtárszolgáltatások Azure AD-szolgáltatására is támaszkodik. A jelszó lejárata a szabályzat egyetlen része, amely módosítható.
 
 > [!NOTE]
-> Csak a címtár-szinkronizálással nem szinkronizált felhasználói fiókok jelszavai állíthatók be úgy, hogy azok ne járjanak le. A címtár-szinkronizálásról az [AD csatlakoztatása az Azure AD-vel](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)című témakörben talál további információt.
+> Csak a címtár-szinkronizálással szinkronizált felhasználói fiókok jelszavai konfigurálhatók úgy, hogy ne járjanak le. További információ a címtár-szinkronizálásról: az [ad és az Azure ad közötti kapcsolat](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Jelszószabályzatok beállítása vagy ellenőrzése a PowerShell-lel
 
-Első lépésekhez [töltse le és telepítse az Azure AD PowerShell-modult.](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0) A modul telepítése után az alábbi lépésekkel konfigurálhatja az egyes mezőket.
+Első lépésként [töltse le és telepítse az Azure ad PowerShell-modult](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0) , és [kapcsolja össze az Azure ad-Bérlővel](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples). A modul telepítése után a következő lépésekkel konfigurálhatja az egyes mezőket.
 
-### <a name="check-the-expiration-policy-for-a-password"></a>Jelszó ellenőrzése az elévülési szabályzatban
+### <a name="check-the-expiration-policy-for-a-password"></a>A jelszó elévülési szabályzatának keresése
 
-1. Csatlakozzon a Windows PowerShellhez a felhasználói rendszergazda vagy a vállalati rendszergazdai hitelesítő adatok használatával.
-1. Futtassa az alábbi parancsok egyikét:
+1. Kapcsolódjon a Windows PowerShellhez a felhasználói rendszergazda vagy a vállalati rendszergazda hitelesítő adataival.
+1. Futtassa a következő parancsok egyikét:
 
-   * Ha meg szeretné tudni, hogy egyetlen felhasználó jelszava soha nem jár le, futtassa a következő parancsmalát az egyszerű felhasználónév (például *\@aprilr contoso.onmicrosoft.com)* vagy az ellenőrizni kívánt felhasználó felhasználói azonosítójával:
+   * Ha szeretné megtekinteni, hogy egy adott felhasználó jelszava úgy van-e beállítva, hogy soha ne járjon le, futtassa a következő parancsmagot az egyszerű felhasználónév (például: *april\@contoso.onmicrosoft.com*) vagy annak a felhasználónak az azonosítójának használatával, amelyet meg szeretne nézni:
 
    ```powershell
    Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
    ```
 
-   * Ha látni szeretné, hogy a **Jelszó soha nem jár le** az összes felhasználó számára, futtassa a következő parancsmast:
+   * Ha látni szeretné, hogy a **jelszó soha ne járjon le** minden felhasználónál, futtassa a következő parancsmagot:
 
    ```powershell
    Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
    ```
 
-### <a name="set-a-password-to-expire"></a>Jelszó bebeállítása a lejáratra
+### <a name="set-a-password-to-expire"></a>A lejárati jelszó beállítása
 
-1. Csatlakozzon a Windows PowerShellhez a felhasználói rendszergazda vagy a vállalati rendszergazdai hitelesítő adatok használatával.
-1. Hajtsa végre az alábbi parancsok egyikét:
+1. Kapcsolódjon a Windows PowerShellhez a felhasználói rendszergazda vagy a vállalati rendszergazda hitelesítő adataival.
+1. Hajtsa végre a következő parancsok egyikét:
 
-   * Ha egy felhasználó jelszavát úgy szeretné beállítani, hogy a jelszó lejárjon, futtassa a következő parancsmast a felhasználó egyszerű felhasználón vagy felhasználói azonosítójával:
+   * Ha egy felhasználó jelszavát szeretné beállítani, hogy a jelszó lejárjon, futtassa a következő parancsmagot a felhasználó UPN vagy felhasználói AZONOSÍTÓjának használatával:
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
    ```
 
-   * Ha a szervezet összes felhasználójának jelszavait úgy szeretné beállítani, hogy azok lejárjanak, használja a következő parancsmast:
+   * A szervezetben lévő összes felhasználó jelszavának beállításához használja a következő parancsmagot:
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None
    ```
 
-### <a name="set-a-password-to-never-expire"></a>Jelszó beállítása úgy, hogy soha ne járjon le
+### <a name="set-a-password-to-never-expire"></a>Jelszó beállítása soha nem jár le
 
-1. Csatlakozzon a Windows PowerShellhez a felhasználói rendszergazda vagy a vállalati rendszergazdai hitelesítő adatok használatával.
-1. Hajtsa végre az alábbi parancsok egyikét:
+1. Kapcsolódjon a Windows PowerShellhez a felhasználói rendszergazda vagy a vállalati rendszergazda hitelesítő adataival.
+1. Hajtsa végre a következő parancsok egyikét:
 
-   * Ha be szeretné állítani egy felhasználó jelszavát úgy, hogy soha ne járjon le, futtassa a következő parancsmast a felhasználó egyszerű felhasználónvagy felhasználói azonosítójával:
+   * Ha az egyik felhasználó jelszavát szeretné beállítani, hogy soha ne járjon le, futtassa a következő parancsmagot a felhasználó UPN vagy felhasználói AZONOSÍTÓjának használatával:
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
    ```
 
-   * Ha úgy szeretné beállítani a szervezet összes felhasználójának jelszavát, hogy soha ne járjon le, futtassa a következő parancsmast:
+   * Ha egy szervezet összes felhasználójának jelszavát szeretné beállítani, hogy soha ne járjon le, futtassa a következő parancsmagot:
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
    ```
 
    > [!WARNING]
-   > A jelszavak `-PasswordPolicies DisablePasswordExpiration` az `pwdLastSet` attribútum alapján továbbra is korra vannak állítva. Az `pwdLastSet` attribútum alapján, ha módosítja `-PasswordPolicies None`a lejárati, `pwdLastSet` a rendszer minden jelszó, amely egy régebbi, mint 90 nap szükséges a felhasználónak, hogy módosítsa őket a következő bejelentkezéskor. Ez a módosítás sok felhasználót érinthet.
+   > A jelszavak az `-PasswordPolicies DisablePasswordExpiration` `pwdLastSet` attribútum alapján még mindig korra vannak állítva. Ha az `pwdLastSet` attribútum alapján módosítja a lejárati időt `-PasswordPolicies None`, a 90 napnál `pwdLastSet` régebbi jelszavakhoz a felhasználónak a következő bejelentkezéskor módosítania kell a felhasználókat. Ez a változás nagy mennyiségű felhasználót érinthet.
 
 ## <a name="next-steps"></a>További lépések
 
-Az SSPR használatának első [lépései: Oktatóanyag: A felhasználók zárolásának engedélyezése a fiók zárolásához vagy a jelszavak alaphelyzetbe állításához az Azure Active Directory önkiszolgáló jelszó-visszaállításhasználatával.](tutorial-enable-sspr.md)
+A SSPR használatának megkezdéséhez tekintse meg az [oktatóanyag: a felhasználók számára a fiók zárolásának feloldását vagy a jelszavak visszaállítását Azure Active Directory önkiszolgáló jelszó-visszaállítással](tutorial-enable-sspr.md).
 
-Ha Önnek vagy felhasználóinak problémái vannak az SSPR-rel, olvassa el [az Önkiszolgáló jelszó-visszaállítás hibaelhárítása című témakört.](active-directory-passwords-troubleshoot.md)
+Ha Ön vagy a felhasználók problémákat tapasztalnak a SSPR kapcsolatban, olvassa el az [önkiszolgáló jelszó-visszaállítás hibaelhárítása](active-directory-passwords-troubleshoot.md) című témakört.

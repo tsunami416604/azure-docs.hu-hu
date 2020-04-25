@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42abeba310e7a30364f93e998f12129a2d3c1f15
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 4226a625918be378b14e14c55fe4dd4ca5c398d5
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114292"
+ms.locfileid: "82136685"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Hitelesítő adatok kezelése Azure Automationban
 
@@ -41,7 +41,7 @@ A Azure PowerShell az modul részeként az alábbi táblázatban található par
 
 ## <a name="activities-used-to-access-credentials"></a>A hitelesítő adatok eléréséhez használt tevékenységek
 
-Az alábbi táblázatban szereplő tevékenységek a hitelesítő adatok elérésére szolgálnak a runbookok és a DSC-konfigurációkban.
+A következő táblázatban szereplő tevékenységek a hitelesítő adatoknak a grafikus runbookok és a DSC-konfigurációkhoz való elérésére szolgálnak. Példák a tevékenységek használatára: [grafikus létrehozás Azure Automationban](../automation-graphical-authoring-intro.md#activities).
 
 | Tevékenység | Leírás |
 |:--- |:--- |

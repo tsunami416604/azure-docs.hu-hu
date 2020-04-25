@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 0d50ddbbeeaed48c14d07c42588efcbb20bb7d79
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 4cb2159b02635e659a8ca7236523e899bf01550c
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411157"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133237"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
@@ -99,7 +99,7 @@ A Azure SQL Database fejlett monitorozási és hibaelhárítási funkciókat biz
 
 A [query Store](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)egy beépített SQL Server figyelési funkciója, amely valós időben rögzíti a lekérdezések teljesítményét, és lehetővé teszi a lehetséges teljesítménnyel kapcsolatos problémák és a legfontosabb erőforrás-felhasználók azonosítását. Az automatikus hangolás és a javaslatok a romlott teljesítményével és hiányzó vagy duplikált indexekkel kapcsolatos tanácsokat nyújtanak. A SQL Database automatikus hangolásával manuálisan alkalmazhatja a hibákat kijavító szkripteket, vagy engedélyezheti SQL Database a javítás alkalmazását. A SQL Database tesztelheti és ellenőrizheti, hogy a javítás bizonyos előnyöket biztosít-e, és az eredménytől függően megőrzi vagy visszaállíthatja a változást. A lekérdezési tároló és az Automatikus hangolási funkciók mellett a standard [DMV és a XEvent](sql-database-monitoring-with-dmvs.md) is használható a munkaterhelés teljesítményének figyelésére.
 
-Az Azure [beépített teljesítmény-figyelési](sql-database-performance-guidance.md) és [riasztási](sql-database-insights-alerts-portal.md) eszközöket kínál a teljesítmény-minősítéssel együtt, amely lehetővé teszi több ezer adatbázis állapotának figyelését. Ezeknek az eszközöknek a használatával gyorsan elemezheti a fel-vagy leskálázás hatásait az aktuális vagy tervezett teljesítménybeli igények alapján. Az SQL Database emellett [metrikák és diagnosztikai naplók kibocsátásával](sql-database-metrics-diag-logging.md) is képes megkönnyíteni a felügyeletet. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
+Az Azure [beépített teljesítmény-figyelési](sql-database-performance-guidance.md) és [riasztási](sql-database-insights-alerts-portal.md) eszközöket kínál a teljesítmény-minősítéssel együtt, amely lehetővé teszi több ezer adatbázis állapotának figyelését. Ezeknek az eszközöknek a használatával gyorsan elemezheti a fel-vagy leskálázás hatásait az aktuális vagy tervezett teljesítménybeli igények alapján. Emellett a SQL Database a könnyebb monitorozás érdekében [mérőszámokat és erőforrás-naplókat is képes kibocsátani](sql-database-metrics-diag-logging.md) . Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
 
 - **Azure Storage**: nagy mennyiségű telemetria alacsony áron való archiválásához.
 - **Azure Event Hubs**: SQL Database telemetria integrálása az egyéni figyelési megoldással vagy a gyors folyamatokkal.

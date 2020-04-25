@@ -1,42 +1,42 @@
 ---
-title: Technikai információk a Power BI alkalmazásajánlathoz | Azure Piactér
-description: Konfigurálja a Microsoft AppSource Piactér Hez tartozó Power BI alkalmazásajánlat technikai információs mezőit.
+title: Power BI alkalmazás ajánlatának technikai információi | Azure piactér
+description: A Microsoft AppSource Marketplace Power BI alkalmazásra vonatkozó technikai információ mezőinek konfigurálása.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: d814ebc34193f5d7c0c3828d32aa3d2af29f3679
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b012ac012c7de3c6428ecbe2d2b922a2a9aa0523
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981358"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82141776"
 ---
-# <a name="power-bi-apps-technical-info-tab"></a>A Power BI-alkalmazások – technikai információk lap
+# <a name="power-bi-apps-technical-info-tab"></a>Power BI alkalmazások technikai információi lap
 
 >[!Important]
->2020. április 13-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
+>2020. április 13-ától kezdődően megkezdjük a Power BI alkalmazás-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse az [Power bi alkalmazás-létrehozás áttekintése című](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) témakör utasításait.
 
-Az **Új ajánlat** lapon a **Technikai adatok** lapon adja meg a Power BI telepítőcsomag URL-címét és az új ajánlat érvényesítéséhez szükséges egyéb információkat.  A kezdeti kiadásban minden Power BI-alkalmazás ingyenes, és letölthető az AppSource-ból. Emiatt ehhez az ajánlattípushoz nem határozhat meg raktározási egységeket (SK-k).
+Az **új ajánlat** oldalon a **technikai információk** lapon megadhatja a Power bi telepítőcsomag URL-címét és az új ajánlat érvényesítéséhez szükséges egyéb információkat.  A kezdeti kiadás esetében az összes Power BI alkalmazás ingyenes, és letölthető a AppSource webhelyről. Ezért nem határozhatja meg az ajánlat típusához tartozó készletezési egységeket (SKU-ket).
 
-![A Technikai adatok lap](./media/technical-info-tab.png)
+![A technikai információ lap](./media/technical-info-tab.png)
 
 
-## <a name="technical-info-fields"></a>Technikai adatok mezők 
+## <a name="technical-info-fields"></a>Technikai információk mezői 
 
-A **Technikai adatok** lapon töltse ki az alábbi táblázatban leírt mezőket. A mezőfelirat végén lévő csillag (*) azt jelenti, hogy a mező szükséges.
+A **technikai információk** lapon végezze el az alábbi táblázatban leírt mezőket. A mező feliratának végén található csillag (*) érték azt jelenti, hogy a mező megadása kötelező.
 
 |        Mező          |  Leírás                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
-| **A telepítő URL-címe\***     | A Power BI ezt az URL-címet akkor hozza létre, amikor közzéteszi az alkalmazást, és éles környezetben népszerűsíti.  További információt az [Alkalmazások közzététele irányítópultokkal és jelentésekkel a Power BI-ban című témakörben talál.](https://docs.microsoft.com/power-bi/service-create-distribute-apps)  |
-|  **Érvényesítési utasítások**  |  Ha szeretné, adjon utasításokat (legfeljebb 3000 karaktert) a Microsoft ellenőrző csapatának az alkalmazás konfigurálásához, csatlakoztatásához és teszteléséhez. Adja meg a tipikus konfigurációs beállításokat, fiókokat, paramétereket vagy egyéb információkat, amelyek az Adatok csatlakoztatása beállítás teszteléséhez használhatók. Ez az információ csak az ellenőrző csoport számára látható, és csak ellenőrzési célokra használható.  |
-| **Ez az alkalmazás Power BI-tartalomcsomagként jön létre?** | Ez a mező jelenleg csak belsőleg használatos. Hagyja meg a **Nem**alapértelmezett beállítást. Ha a beállítást **Igen-re**módosítja, leállíthatja a közzétételi folyamatot.  |  
+| **Telepítő URL-címe\***     | Power BI létrehozza ezt az URL-címet az alkalmazás közzétételekor és az éles környezetbe való előléptetése során.  További információ: [alkalmazások közzététele irányítópultokkal és jelentésekkel Power BIban](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
+|  **Érvényesítési utasítások**  |  Ha szeretné, adja meg a Microsoft ellenőrzési csapatának az alkalmazás konfigurálásához, összekapcsolásához és teszteléséhez szükséges utasításokat (legfeljebb 3 000 karakter). Az adatok összekapcsolásának tesztelésére szolgáló jellemző konfigurációs beállításokat, fiókokat, paramétereket és egyéb információkat is megadhat. Ezek az információk csak az ellenőrzési csapat számára láthatók, és csak ellenőrzési célokra használhatók.  |
+| **Az alkalmazás Power BI tartalomkezelő csomagként lett létrehozva?** | Ez a mező jelenleg csak belsőleg használatos. Hagyja meg a **nem**érték alapértelmezett beállítását. Ha az **Igen**értékre módosítja a beállítást, leállíthatja a közzétételi folyamatot.  |  
 |  |  |
 
 
 ## <a name="next-steps"></a>További lépések
 
-A [Kirakat részletei](./cpp-storefront-details-tab.md) lapon adja meg az alkalmazás marketing- és jogi adatait.
+A [kirakat részletei](./cpp-storefront-details-tab.md) lapon adja meg az alkalmazás marketing-és jogi információit.
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: eb8e06370ecbe2b104a19c4e420b5d3ae013a00e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116315"
+ms.locfileid: "82127565"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
@@ -40,6 +40,23 @@ Ismerje meg, hogy milyen [erőforrás-kvóták](how-to-manage-quotas.md) merülh
 
 ## <a name="installation-and-import"></a>Telepítés és importálás
 
+* **Pip-telepítés: a függőségek nem garantáltak, hogy konzisztensek legyenek az egysoros telepítéssel**: 
+
+   Ez a pip ismert korlátozása, mivel nem rendelkezik működő függőségi feloldóval, ha egyetlen vonalként telepíti. Az első egyedi függőség az egyetlen, amely a következőt keresi:. 
+
+   A következő kódban `azure-ml-datadrift` , és `azureml-train-automl` mindkettő telepítve van egyetlen vonal pip-telepítéssel. 
+     ```
+       pip install azure-ml-datadrift, azureml-train-automl
+     ```
+   Ebben a példában tegyük fel, `azure-ml-datadrift` hogy > 1,0-es `azureml-train-automl` verzióra van szükség, és a < 1,2-es verzióra van szükség. Ha a legújabb verziója `azure-ml-datadrift` a 1,3, akkor mindkét csomag a 1,3-re frissül, függetlenül a `azureml-train-automl` korábbi verzióra vonatkozó csomag követelményeitől. 
+
+   Annak érdekében, hogy a megfelelő verziók telepítve legyenek a csomagokhoz, telepítsen több sort is, például a következő kódban. A megrendelés nem jelent problémát, mivel a pip explicit módon visszakerül a következő sor hívásának részeként. Így a megfelelő verzió-függőségek is érvényesek.
+    
+     ```
+        pip install azure-ml-datadrift
+        pip install azureml-train-automl 
+     ```
+     
 * **Hibaüzenet: nem távolítható el a (z) PyYAML**
 
     Pythonhoz készült Azure Machine Learning SDK: a PyYAML `distutils` egy telepített projekt. Ezért nem tudjuk pontosan meghatározni, hogy mely fájlok tartoznak hozzá, ha részleges eltávolítás van. Ha továbbra is szeretné telepíteni az SDK-t a hiba figyelmen kívül hagyásával, használja a következőt:
@@ -83,20 +100,6 @@ Ismerje meg, hogy milyen [erőforrás-kvóták](how-to-manage-quotas.md) merülh
     * Adja `azureml-dataprep` hozzá a 1.1.8 vagy újabb verziót.
     * Adja `pyarrow` hozzá a 0,11-es vagy újabb verziót.
     
-* **Pip-telepítés: a dependecies nem garantálják, hogy konzisztensek legyenek az egysoros telepítéssel**: Ez a pip ismert korlátozása, mivel az egyetlen sorba való telepítésekor nem rendelkezik működő függőségi feloldóval. Az első egyedi függőség az egyetlen, amely a következőt keresi:. Ha például olyan Azure-ml-datadrift telepít, amelyhez > szükség van a 1,0-es és a azureml-Train-automl verzióra, amelyhez a < 1,2 verziója szükséges, és ha a legújabb verzió a 1,3, akkor a felhasználó az alábbi módon telepíti a csomagokat, még akkor is 1,3, ha a azureml-Train-automl csomag egy régebbi verziót igényel. 
-
-    * Az egysoros telepítéssel inkonzisztens dependecies jelenik meg.
-    ```python
-       pip install azure-ml-datadrift, azureml-train-automl
-     ```
-   
-    * Annak érdekében, hogy a megfelelő verziók telepítve legyenek a csomagokhoz, telepítsen több sort is, például a következő kódban. A sorrend nem számít itt.
-    
-     ```python
-        pip install azure-ml-datadrift
-        pip install azureml-train-automl 
-     ```
-     
 ## <a name="create-and-manage-workspaces"></a>Munkaterületek létrehozása és kezelése
 
 > [!WARNING]

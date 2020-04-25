@@ -1,66 +1,39 @@
 ---
-title: A PowerShellt használó azure-beli virtuális gépek karbantartásának vezérlése
-description: Megtudhatja, hogyan szabályozhatja, hogy mikor alkalmazza a karbantartást az Azure-beli virtuális gépeken a Maintenance Control és a PowerShell használatával.
+title: Azure-beli virtuális gépek karbantartási vezérlése a PowerShell-lel
+description: Útmutató az Azure-beli virtuális gépek karbantartásának szabályozásához a karbantartás és a PowerShell használatával.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: dc47afe9cb6eca1b10f8caca7b85087023c5eadf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1c72c2f606ab653d7e3f1d81f7278571e8e4978
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060130"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136532"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Előzetes verzió: Frissítések vezérlése a Maintenance Control és az Azure PowerShell segítségével
+# <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Frissítések vezérlése karbantartási vezérléssel és Azure PowerShell
 
-A karbantartási vezérlés használatával nem igényel újraindítást igénylő platformfrissítések kezelése. Az Azure gyakran frissíti infrastruktúráját a megbízhatóság, a teljesítmény, a biztonság és az új funkciók elindítása érdekében. A legtöbb frissítés a felhasználók számára átlátható. Egyes bizalmas számítási feladatok, például a játék, a médiaadatfolyam-továbbítás és a pénzügyi tranzakciók, még néhány másodpercig sem tolerálhatják a virtuális gépek karbantartás vagy leválasztását. A karbantartás-vezérlés lehetővé teszi, hogy megvárja a platformfrissítéseit, és alkalmazza azokat egy 35 napos gördülő ablakon belül. 
-
-A karbantartás-vezérlés lehetővé teszi annak eldöntését, hogy mikor alkalmazza a frissítéseket az elkülönített virtuális gépekre.
-
-A karbantartás vezérlésével a következőkre van lehetőség:
-- A kötegfrissítések egyetlen frissítési csomagba kerülnek.
-- Várjon akár 35 napot a frissítések alkalmazásával. 
-- Az Azure Functions használatával automatizálhatja a karbantartási időszak platformfrissítéseit.
-- A karbantartási konfigurációk előfizetések és erőforráscsoportok között működnek. 
-
-> [!IMPORTANT]
-> A Karbantartás vezérlés jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
-> 
-
-## <a name="limitations"></a>Korlátozások
-
-- A virtuális gépeknek [dedikált gazdagépen](./linux/dedicated-hosts.md)kell lenniük, vagy [elkülönített virtuálisgép-mérethasználatával](./linux/isolation.md)kell létrehozniuk.
-- 35 nap elteltével a rendszer automatikusan alkalmazza a frissítést.
-- A felhasználónak rendelkeznie kell **erőforrás-közreműködői** hozzáféréssel.
-
-
+A karbantartási ellenőrzéssel eldöntheti, hogy mikor alkalmazza a frissítéseket az elkülönített virtuális gépekre és az Azure dedikált gazdagépekre. Ez a témakör a karbantartás-vezérlés Azure PowerShell beállításait ismerteti. További információ a karbantartási ellenőrzés, a hozzá tartozó korlátozások és egyéb felügyeleti lehetőségek használatáról: a [platform frissítéseinek kezelése a karbantartási ellenőrzéssel](maintenance-control.md).
+ 
 ## <a name="enable-the-powershell-module"></a>A PowerShell-modul engedélyezése
 
-Győződjön `PowerShellGet` meg róla, hogy naprakész.
+Győződjön meg `PowerShellGet` róla, hogy naprakész.
 
 ```azurepowershell-interactive
 Install-Module -Name PowerShellGet -Repository PSGallery -Force
 ```
 
-Az Az.Maintenance PowerShell-parancsmagok előzetes verzióban vannak, ezért `AllowPrerelease` telepítenie kell a modult a paraméterrel a Cloud Shellben vagy a helyi PowerShell-telepítésben.   
+Ha helyileg telepíti a rendszert, győződjön meg róla, hogy rendszergazdaként megnyitja a PowerShell-parancssort.
 
-```azurepowershell-interactive
-Install-Module -Name Az.Maintenance -AllowPrerelease
-```
-
-Ha helyileg telepíti, győződjön meg arról, hogy rendszergazdaként nyissa meg a PowerShell-kérdést.
-
-Előfordulhat, hogy meg kell erősítenie, hogy *nem megbízható tárházból*kíván telepíteni. Írja `Y` be vagy válassza **az Igen az Összes gombra** a modul telepítéséhez.
-
+Azt is megteheti, hogy meg kell erősítenie, hogy nem *megbízható adattárból*kíván telepíteni. Írja `Y` be, vagy válassza az Igen lehetőséget az **összes** elemre a modul telepítéséhez.
 
 
 ## <a name="create-a-maintenance-configuration"></a>Karbantartási konfiguráció létrehozása
 
-Hozzon létre egy erőforráscsoportot a konfiguráció tárolójaként. Ebben a példában egy *myMaintenanceRG* nevű erőforráscsoport jön létre *az eastus alkalmazásban.* Ha már rendelkezik használni kívánt erőforráscsoporttal, kihagyhatja ezt a részt, és a többi példában lecserélheti az erőforráscsoport nevét a saját nevére.
+Hozzon létre egy erőforráscsoportot tárolóként a konfigurációhoz. Ebben a példában egy *myMaintenanceRG* nevű erőforráscsoportot hoznak létre a *eastus*-ben. Ha már van olyan erőforráscsoport, amelyet használni szeretne, kihagyhatja ezt a részt, és az erőforráscsoport nevét lecserélheti a többi példán belülre.
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -68,7 +41,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-A [New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) használatával karbantartási konfigurációt hozhat létre. Ebben a példában létrehoz egy karbantartási konfiguráció nevű *myConfig* hatókörrel a gazdagép. 
+A [New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) használatával hozzon létre egy karbantartási konfigurációt. Ez a példa létrehoz egy *konfig* nevű karbantartási konfigurációt a gazdagépre. 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -78,23 +51,23 @@ $config = New-AzMaintenanceConfiguration `
    -Location  eastus
 ```
 
-A `-MaintenanceScope host` használata biztosítja, hogy a karbantartási konfiguráció t használja a gazdagép frissítéseinek szabályozásához.
+A `-MaintenanceScope host` használata biztosítja, hogy a rendszer a karbantartási konfigurációt használja a gazdagép frissítéseinek vezérlésére.
 
-Ha azonos nevű, de más helyen lévő konfigurációt próbál létrehozni, hibaüzenetet kap. A konfigurációneveknek egyedinek kell lenniük az előfizetésben.
+Ha azonos nevű konfigurációt próbál létrehozni, de egy másik helyen, hibaüzenetet fog kapni. A konfiguráció nevének egyedinek kell lennie az előfizetésben.
 
-Az elérhető karbantartási konfigurációkat a [Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration)használatával kérdezheti le.
+A [Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration)használatával lekérdezheti a rendelkezésre álló karbantartási konfigurációkat.
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
 
-## <a name="assign-the-configuration"></a>A konfiguráció hozzárendelése
+## <a name="assign-the-configuration"></a>A konfiguráció kiosztása
 
 A [New-AzConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment) használatával rendelje hozzá a konfigurációt az elkülönített virtuális géphez vagy az Azure dedikált gazdagéphez.
 
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
-Alkalmazza a konfigurációt egy virtuális gépre a konfiguráció azonosítójának használatával. Adja `-ResourceType VirtualMachines` meg és adja meg `-ResourceName`a virtuális gép nevét és `-ResourceGroupName`a virtuális gép erőforráscsoportját. 
+Alkalmazza a konfigurációt egy virtuális gépre a konfiguráció AZONOSÍTÓjának használatával. Adja `-ResourceType VirtualMachines` meg és adja meg a virtuális gép nevét `-ResourceName`, valamint a virtuális gép erőforrás-csoportját `-ResourceGroupName`. 
 
 ```azurepowershell-interactive
 New-AzConfigurationAssignment `
@@ -109,7 +82,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="dedicated-host"></a>Dedikált gazdagép
 
-Ha egy dedikált állomásra szeretne konfigurációt `-ResourceType hosts`alkalmazni, a nevét is meg kell adnia a gazdagépcsoport `-ResourceParentName` nevével, és `-ResourceParentType hostGroups`. 
+Ha a konfigurációt dedikált gazdagépre szeretné alkalmazni, a nevet is tartalmaznia `-ResourceType hosts` `-ResourceParentName` kell a gazda csoport nevével és `-ResourceParentType hostGroups`. 
 
 
 ```azurepowershell-interactive
@@ -127,9 +100,9 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Függőben lévő frissítések keresése
 
-A [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) segítségével ellenőrizheti, hogy vannak-e függőben lévő frissítések. A `-subscription` virtuális gép Azure-előfizetésének megadásához, ha az eltér a bejelentkezetttől.
+A [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) használatával ellenőrizze, hogy van-e függőben lévő frissítés. A `-subscription` használatával megadhatja a virtuális gép Azure-előfizetését, ha az eltér a bejelentkezett fióktól.
 
-Ha nincsenek megjelenetésre kerülő frissítések, ez a parancs nem ad vissza semmit. Ellenkező esetben egy PSApplyUpdate objektumot ad vissza:
+Ha nincsenek megjeleníthető frissítések, a parancs nem ad vissza semmit. Ellenkező esetben egy PSApplyUpdate objektumot ad vissza:
 
 ```json
 {
@@ -145,7 +118,7 @@ Ha nincsenek megjelenetésre kerülő frissítések, ez a parancs nem ad vissza 
 
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
-Ellenőrizze a függőben lévő frissítések egy elkülönített virtuális gép. Ebben a példában a kimenet az olvashatóság érdekében táblázatként van formázva.
+A függőben lévő frissítések keresése egy elkülönített virtuális géphez. Ebben a példában a kimenet táblázatként van formázva az olvashatóság érdekében.
 
 ```azurepowershell-interactive
 Get-AzMaintenanceUpdate `
@@ -158,7 +131,7 @@ Get-AzMaintenanceUpdate `
 
 ### <a name="dedicated-host"></a>Dedikált gazdagép
 
-Egy dedikált állomás függőben lévő frissítéseinek keresése. Ebben a példában a kimenet az olvashatóság érdekében táblázatként van formázva. Cserélje le az erőforrások értékeit a sajátjára.
+A függőben lévő frissítések keresése egy dedikált gazdagépen. Ebben a példában a kimenet táblázatként van formázva az olvashatóság érdekében. Cserélje le az erőforrások értékeit a saját adataira.
 
 ```azurepowershell-interactive
 Get-AzMaintenanceUpdate `
@@ -173,11 +146,11 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>Frissítések alkalmazása
 
-A [New-AzApplyUpdate segítségével](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) alkalmazza a függőben lévő frissítéseket.
+A függőben lévő frissítések alkalmazásához használja a [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) .
 
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
-Hozzon létre egy kérelmet egy elkülönített virtuális gép frissítések alkalmazására.
+Hozzon létre egy, az elkülönített virtuális gépre vonatkozó frissítések alkalmazására vonatkozó kérelmet.
 
 ```azurepowershell-interactive
 New-AzApplyUpdate `
@@ -187,11 +160,11 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-A sikeres, ez a `PSApplyUpdate` parancs visszaad egy objektumot. A `Get-AzApplyUpdate` parancs Ban található Name attribútummal ellenőrizheti a frissítés állapotát. Lásd: [Frissítés állapotának ellenőrzése](#check-update-status).
+Sikeres művelet esetén a parancs egy `PSApplyUpdate` objektumot ad vissza. A frissítés állapotának megtekintéséhez használja a `Get-AzApplyUpdate` parancs Name attribútumát. Lásd: [frissítési állapot keresése](#check-update-status).
 
 ### <a name="dedicated-host"></a>Dedikált gazdagép
 
-Frissítések alkalmazása dedikált állomásra.
+Frissítések alkalmazása dedikált gazdagépre.
 
 ```azurepowershell-interactive
 New-AzApplyUpdate `
@@ -203,8 +176,8 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-## <a name="check-update-status"></a>Frissítés állapotának ellenőrzése
-A Frissítések állapotának ellenőrzéséhez használja a [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) szolgáltatást. Az alábbi parancsok a legutóbbi frissítés állapotát `default` mutatják a `-ApplyUpdateName` paraméter használatával. A frissítés (a [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) parancs által visszaadott) nevének beírásával lekérheti egy adott frissítés állapotát.
+## <a name="check-update-status"></a>Frissítés állapotának keresése
+A [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) használatával megtekintheti a frissítések állapotát. Az alábbi parancsok megjelenítik a legújabb frissítés állapotát a `default` `-ApplyUpdateName` paraméterrel való használatával. Egy adott frissítés állapotának lekéréséhez helyettesítse be a frissítés nevét (a [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) parancs által visszaadottak szerint).
 
 ```text
 Status         : Completed
@@ -216,11 +189,11 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
-LastUpdateTime lesz az az idő, amikor a frissítés befejeződött, akár Ön által kezdeményezett, vagy a platform, ha önfenntartó ablak nem használták. Ha a karbantartás-ellenőrzésen keresztül még soha nem alkalmazták a frissítést, akkor az alapértelmezett értéket jeleníti meg.
+A LastUpdateTime az az idő, amikor a frissítés befejeződött, vagy Ön által kezdeményezett, vagy a platformon, ha az önkarbantartási időszakot nem használták. Ha még soha nem történt frissítés a karbantartási ellenőrzésen, akkor az alapértelmezett értéket fogja megjeleníteni.
 
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
-Egy adott virtuális gép frissítései keresése.
+Egy adott virtuális gép frissítéseinek keresése.
 
 ```azurepowershell-interactive
 Get-AzApplyUpdate `
@@ -233,7 +206,7 @@ Get-AzApplyUpdate `
 
 ### <a name="dedicated-host"></a>Dedikált gazdagép
 
-Ellenőrizze, hogy vannak-e frissítések egy dedikált állomáshoz.
+A dedikált gazdagép frissítéseinek keresése.
 
 ```azurepowershell-interactive
 Get-AzApplyUpdate `
@@ -248,7 +221,7 @@ Get-AzApplyUpdate `
 
 ## <a name="remove-a-maintenance-configuration"></a>Karbantartási konfiguráció eltávolítása
 
-Karbantartási konfiguráció törléséhez használja [az Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) parancsot.
+A [Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) használatával törölje a karbantartási konfigurációt.
 
 ```azurepowershell-interactive
 Remove-AzMaintenanceConfiguration `
@@ -257,4 +230,4 @@ Remove-AzMaintenanceConfiguration `
 ```
 
 ## <a name="next-steps"></a>További lépések
-További információ: [Karbantartás és frissítések](maintenance-and-updates.md).
+További információ: [karbantartás és frissítések](maintenance-and-updates.md).

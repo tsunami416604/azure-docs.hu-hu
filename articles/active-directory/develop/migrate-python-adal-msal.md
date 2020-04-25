@@ -1,6 +1,6 @@
 ---
-title: Python ADAL az MSAL áttelepítési útmutató | Azure
-description: Ismerje meg, hogyan telepítheti át az Azure Active Directory hitelesítési könyvtár (ADAL) Python-alkalmazást a Microsoft Authentication Library (MSAL) for Python alkalmazásba.
+title: Python-ADAL a MSAL áttelepítési útmutatóhoz | Azure
+description: Ismerje meg, hogyan telepítheti át a Azure Active Directory Authentication Library (ADAL) Python-alkalmazást a Pythonhoz készült Microsoft Authentication Library (MSAL) szolgáltatásba.
 services: active-directory
 titleSuffix: Microsoft identity platform
 author: rayluo
@@ -14,66 +14,70 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: fe9dc6c04fe033fd518218d1b5ea971e573405fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3f95383979fd47b3baaec946f724533461729b8
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696557"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128050"
 ---
-# <a name="adal-to-msal-migration-guide-for-python"></a>ADAL a MSAL áttelepítési útmutató python
+# <a name="adal-to-msal-migration-guide-for-python"></a>ADAL a MSAL áttelepítési útmutatója a Pythonhoz
 
-Ez a cikk kiemeli azokat a módosításokat, amelyeket az Azure Active Directory hitelesítési könyvtár (ADAL) a Microsoft authentication library (MSAL) használatához használó alkalmazás áttelepítéséhez szükséges módosításokat kell végrehajtania.
+Ez a cikk azokat a módosításokat mutatja be, amelyeket a Azure Active Directory hitelesítési függvénytárat (ADAL) használó alkalmazások áttelepíteni kell a Microsoft Authentication Library (MSAL) használatára.
 
-## <a name="difference-highlights"></a>Különbség kiemeli
+## <a name="difference-highlights"></a>Különbségi csúcsfények
 
-Az ADAL az Azure Active Directory (Azure AD) 1.0-s végponttal működik. A Microsoft authentication library (MSAL) együttműködik a Microsoft identitás platform - korábbi nevén az Azure Active Directory v2.0 végpont. A Microsoft-identitásplatform annyiban különbözik az Azure AD 1.0-s verziójától:
+A ADAL együttműködik a Azure Active Directory (Azure AD) 1.0-s verziójának végpontján. A Microsoft Authentication Library (MSAL) a Microsoft Identity platformmal működik – korábbi nevén Azure Active Directory v 2.0-végpont. A Microsoft Identity platform különbözik az Azure AD 1.0-s verziótól:
 
-Támogatja:
-  - Munkahelyi és iskolai fiókok (Azure AD-vel kiépített fiókok)
+Támogatja
+  - Munkahelyi és iskolai fiókok (Azure AD-kiépített fiókok)
   - Személyes fiókok (például Outlook.com vagy Hotmail.com)
-  - Azok az ügyfelek, akik saját e-mail-címüket vagy közösségi identitásukat (például LinkedIn, Facebook, Google) hozzák az Azure AD B2C ajánlaton keresztül
+  - A saját e-mail-címét vagy közösségi identitását (például LinkedIn, Facebook, Google) használó ügyfelei az Azure AD B2C ajánlaton keresztül
 
-- A szabványok kompatibilisek-e a következőkkel:
-  - OAuth v2.0
+- A szabványokkal kompatibilis szabványok:
+  - OAuth 2.0-s verzió
   - OpenID Connect (OIDC)
 
-További részletekért olvassa el [a Microsoft identity platform (2.0-s verzió) végpontját.](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)
+További részletekért lásd: [Mi a különbség a Microsoft Identity platform (v 2.0) végpontján?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison) .
 
-### <a name="scopes-not-resources"></a>Hatókörök nem erőforrások
+### <a name="scopes-not-resources"></a>Hatókörök nem erőforrásai
 
-Az ADAL Python jogkivonatokat szerez be az erőforrásokhoz, de az MSAL Python beszerzi a hatókörök tokenjeit. Az MSAL Python API-felülete már nem rendelkezik erőforrás-paraméterrel. Meg kell adnia a hatóköröket a kívánt engedélyeket és erőforrásokat deklaráló karakterláncok listájaként. A hatókörök néhány példáját a [Microsoft Graph hatóköreinek című témakörben láthatja.](https://docs.microsoft.com/graph/permissions-reference)
+A ADAL Python jogkivonatokat vásárol az erőforrásokhoz, de a MSAL Python jogkivonatokat vásárol a hatókörökhöz. A MSAL Python API-felülete már nem rendelkezik erőforrás-paraméterrel. A hatóköröket olyan karakterláncok listájában kell megadnia, amelyek deklarálják a kívánt engedélyeket és a kért erőforrásokat. A hatókörökkel kapcsolatos néhány példa: [Microsoft Graph hatókörei](https://docs.microsoft.com/graph/permissions-reference).
+
+A `/.default` hatókör utótagját hozzáadhatja az erőforráshoz, hogy az alkalmazásokat a 1.0-s verziójú végpontról (ADAL) a Microsoft Identity platform-végpontra (MSAL) telepítse. A (z) erőforrás értékének `https://graph.microsoft.com`megfelelő hatókör értéke például a következő: `https://graph.microsoft.com/.default`.  Ha az erőforrás nem szerepel az URL-címben, de az űrlap `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`erőforrás-azonosítója, továbbra is használhatja a hatókör értékét. `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`
+
+A különböző típusú hatókörökkel kapcsolatos további részletekért tekintse [meg a Microsoft Identity platform engedélyeit és](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) a hozzájuk tartozó jogosultságokat, valamint a webes API-k 1.0-s verzióinak [elfogadására vonatkozó](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) cikkeket.
 
 ### <a name="error-handling"></a>Hibakezelés
 
-Az Azure Active Directory hitelesítési könyvtár (ADAL) a Python használja a kivételt `AdalError` annak jelzésére, hogy volt egy probléma. A Python msal-ja általában hibakódokat használ. További információ: [MSAL for Python error handling](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python).
+A Pythonhoz készült Azure Active Directory Authentication Library (ADAL) a `AdalError` kivétel alapján jelzi, hogy probléma merült fel. A MSAL for Python jellemzően hibakódokat használ. További információ: [MSAL for Python hibakezelés](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python).
 
-### <a name="api-changes"></a>API-módosítások
+### <a name="api-changes"></a>API-változások
 
-Az alábbi táblázat egy API-t sorol fel az ADAL for Pythonban, és azt, amelyet az MSAL for Python ban kell használni:
+A következő táblázat a Pythonhoz készült ADAL API-t, a MSAL for Python esetében pedig a helyét tartalmazza.
 
 | ADAL Python API-hoz  | MSAL Python API-hoz |
 | ------------------- | ---------------------------------- |
-| [AuthenticationContext (Hitelesítési környezet)](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext)  | [PublicClientApplication vagy ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)  |
-| N/A  | [get_authorization_request_url()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.get_authorization_request_url)  |
-| [acquire_token_with_authorization_code()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_authorization_code) | [acquire_token_by_authorization_code()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_by_authorization_code) |
-| [acquire_token()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token) | [acquire_token_silent()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_silent) |
-| [acquire_token_with_refresh_token()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_refresh_token) | N/A |
-| [acquire_user_code()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_user_code) | [initiate_device_flow()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.initiate_device_flow) |
-| [acquire_token_with_device_code()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_device_code) és [cancel_request_to_get_token_with_device_code()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.cancel_request_to_get_token_with_device_code) | [acquire_token_by_device_flow()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_device_flow) |
-| [acquire_token_with_username_password()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_username_password) | [acquire_token_by_username_password()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_username_password) |
-| [acquire_token_with_client_credentials()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_credentials) és [acquire_token_with_client_certificate](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_certificate) | [acquire_token_for_client()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client) |
-| N/A | [acquire_token_on_behalf_of()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) |
-| [TokenGyorsítótár()](https://adal-python.readthedocs.io/en/latest/#adal.TokenCache) | [SerializableTokenCache()](https://msal-python.readthedocs.io/en/latest/#msal.SerializableTokenCache) |
-| N/A | Az [MSAL-bővítményekből](https://github.com/marstr/original-microsoft-authentication-extensions-for-python) elérhető adatmegőrzéssel rendelkező gyorsítótár |
+| [AuthenticationContext](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext)  | [PublicClientApplication vagy ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)  |
+| N/A  | [get_authorization_request_url ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.get_authorization_request_url)  |
+| [acquire_token_with_authorization_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_authorization_code) | [acquire_token_by_authorization_code ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_by_authorization_code) |
+| [acquire_token ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token) | [acquire_token_silent ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_silent) |
+| [acquire_token_with_refresh_token ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_refresh_token) | N/A |
+| [acquire_user_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_user_code) | [initiate_device_flow ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.initiate_device_flow) |
+| [acquire_token_with_device_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_device_code) és [cancel_request_to_get_token_with_device_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.cancel_request_to_get_token_with_device_code) | [acquire_token_by_device_flow ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_device_flow) |
+| [acquire_token_with_username_password ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_username_password) | [acquire_token_by_username_password ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_username_password) |
+| [acquire_token_with_client_credentials ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_credentials) és [acquire_token_with_client_certificate ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_certificate) | [acquire_token_for_client ()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client) |
+| N/A | [acquire_token_on_behalf_of ()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) |
+| [TokenCache ()](https://adal-python.readthedocs.io/en/latest/#adal.TokenCache) | [SerializableTokenCache()](https://msal-python.readthedocs.io/en/latest/#msal.SerializableTokenCache) |
+| N/A | Gyorsítótár az adatmegőrzéssel, elérhető a [MSAL-bővítmények](https://github.com/marstr/original-microsoft-authentication-extensions-for-python) közül |
 
-## <a name="migrate-existing-refresh-tokens-for-msal-python"></a>Meglévő frissítési jogkivonatok áttelepítése az MSAL Python számára
+## <a name="migrate-existing-refresh-tokens-for-msal-python"></a>Meglévő frissítési tokenek migrálása a MSAL Pythonhoz
 
-A Microsoft hitelesítési könyvtár (MSAL) kivonatolja a frissítési jogkivonatok fogalmát. Az MSAL Python alapértelmezés szerint egy memórián belüli jogkivonat-gyorsítótárat biztosít, így nem kell tárolnia, keresnie vagy frissítenie a frissítési jogkivonatokat. A felhasználók kevesebb bejelentkezési kérdést is látni fognak, mivel a frissítési jogkivonatok általában felhasználói beavatkozás nélkül frissíthetők. A jogkivonat-gyorsítótárról további információt az [Egyéni tokengyorsítótár-szerializálás az MSAL for Python ban című témakörben talál.](msal-python-token-cache-serialization.md)
+A Microsoft Authentication Library (MSAL) elvonta a frissítési tokenek fogalmát. A MSAL Python alapértelmezés szerint a memóriában tárolt jogkivonat-gyorsítótárat biztosít, így nincs szükség a frissítési tokenek tárolására, keresésére vagy frissítésére. A felhasználók kevesebb bejelentkezési kérést is láthatnak, mivel a frissítési tokenek általában felhasználói beavatkozás nélkül frissíthetők. További információ a jogkivonat-gyorsítótárról: [Egyéni jogkivonat-gyorsítótár szerializálása a MSAL-ben a Pythonhoz](msal-python-token-cache-serialization.md).
 
-A következő kód segít áttelepíteni a frissítési jogkivonatokat egy másik OAuth2 könyvtár által felügyelt (beleértve, de nem kizárólagosan az ADAL Python) által kezelt MSAL python. A frissítési jogkivonatok áttelepítésének egyik oka annak, hogy megakadályozza a meglévő felhasználók bejelentkezését, amikor áttelepíti az alkalmazást az MSAL for Python alkalmazásba.
+A következő kód segít áttelepíteni a más OAuth2-függvénytár által kezelt frissítési tokeneket (beleértve a ADAL Pythont is), amelyet a MSAL for Python felügyel. A frissítési tokenek áttelepítésének egyik oka annak megakadályozása, hogy a meglévő felhasználók újra be kelljen jelentkezniük az alkalmazás MSAL for Python-ba való áttelepítésekor.
 
-A frissítési jogkivonat áttelepítésének módja az MSAL használata a Python számára egy új hozzáférési jogkivonat beszerzéséhez az előző frissítési jogkivonat használatával. Az új frissítési jogkivonat visszaadásakor az MSAL python-hoz tárolja azt a gyorsítótárban. Íme egy példa, hogyan kell csinálni:
+A frissítési token áttelepítésének módszere a MSAL for Python használata az előző frissítési token használatával új hozzáférési jogkivonat beszerzéséhez. Ha az új frissítési tokent adja vissza, a Python MSAL a gyorsítótárban fogja tárolni. Íme egy példa arra, hogyan teheti meg:
 
 ```python
 from msal import PublicClientApplication
@@ -100,4 +104,4 @@ for old_rt, old_scope in get_preexisting_rt_and_their_scopes_from_elsewhere(...)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: [1.0 és 2.0-s összehasonlítás.](active-directory-v2-compare.md)
+További információkért tekintse meg a [1.0-s és a 2.0-s verzió összehasonlítását](active-directory-v2-compare.md)ismertető témakört.

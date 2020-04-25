@@ -1,21 +1,21 @@
 ---
-title: Felhasználó által definiált függvények az Azure Stream Analytics szolgáltatásban
-description: Ez a cikk az Azure Stream Analytics felhasználó által definiált függvényeinek áttekintése.
+title: Felhasználó által definiált függvények Azure Stream Analytics
+description: Ez a cikk áttekintést nyújt a Azure Stream Analytics felhasználó által definiált függvényekről.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: b29d66e8bb213fbbb162c3249f022e0783f9f62f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 45e766c624ee96f7faa06fb07d00349e620a4c0a
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115585"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133487"
 ---
-# <a name="user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált függvények az Azure Stream Analytics szolgáltatásban
+# <a name="user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált függvények Azure Stream Analytics
 
-Az Azure Stream Analytics SQL-szerű lekérdezési nyelve megkönnyíti a valós idejű elemzési logika megvalósítását a streamelési adatokon. A Stream Analytics további rugalmasságot biztosít a lekérdezésben meghívott egyéni függvények révén. A következő kód példa egy `sampleFunction` UDF nevű, amely elfogadja egy paraméter, minden bemeneti rekord `sampleResult`a feladat kap, és az eredmény van írva a kimeneti .
+A Azure Stream Analytics SQL-szerű lekérdezési nyelve megkönnyíti a valós idejű elemzési logikák megvalósítását a folyamatos átviteli értékeken. Stream Analytics további rugalmasságot biztosít a lekérdezésben meghívott egyéni függvények révén. A következő mintakód egy nevű `sampleFunction` UDF, amely egy paramétert fogad el, minden bemeneti rekord a feladatot fogadja, és az eredményt a kimenetre írja `sampleResult`.
 
 ```sql
 SELECT 
@@ -26,32 +26,32 @@ FROM
     InputStream 
 ```
 
-## <a name="types-of-functions"></a>A függvények típusai
+## <a name="types-of-functions"></a>Függvények típusai
 
-Az Azure Stream Analytics a következő négy függvénytípust támogatja: 
+A Azure Stream Analytics a következő négyféle típusú függvényt támogatja: 
 
 * Felhasználói JavaScript-függvények 
-* JavaScript-felhasználó által definiált összesítések 
-* C# felhasználó által definiált függvények (a Visual Studio használatával) 
+* Felhasználó által definiált JavaScript-összesítések 
+* C# felhasználó által definiált függvények (a Visual Studióval) 
 * Azure Machine Learning 
 
-Ezeket a függvényeket olyan forgatókönyvekhez használhatja, mint a gépi tanulási modellek, a karakterlánc-műveletek, az összetett matematikai számítások, a kódolás és az adatok dekódolása. 
+Ezek a függvények olyan forgatókönyvekhez használhatók, mint például a valós idejű pontozás gépi tanulási modellek, karakterlánc-manipulációk, összetett matematikai számítások, kódolás és dekódolási adatok használatával. 
 
 ## <a name="limitations"></a>Korlátozások
 
-A felhasználó által definiált függvények állapot nélküliek, és a visszatérési érték csak skaláris érték lehet. Ezekből a felhasználó által definiált függvényekből nem hívhat ki külső REST-végpontokat, mert valószínűleg hatással lesz a feladat teljesítményére. 
+A felhasználó által definiált függvények állapot nélküliek, és a visszatérési érték csak skaláris érték lehet. Ezekből a felhasználó által definiált függvényekből nem hívhat külső REST-végpontokat, mivel ez valószínűleg hatással lesz a feladatok teljesítményére. 
 
-Az Azure Stream Analytics nem vezet nyilvántartást az összes függvény meghívásáról és a visszaadott eredményekről. Az ismételhetőség biztosítása érdekében – például a feladat régebbi időbélyegről történő `Date.GetData()` ismételt `Math.random()`futtatása újra ugyanazt az eredményt hozza létre – ne használjon olyan függvényeket, mint például a vagy a, mivel ezek a függvények nem adják vissza ugyanazt az eredményt az egyes meghívások esetén.  
+Azure Stream Analytics nem tartja nyilván az összes függvényt, és eredményként visszaadott eredményt. Az ismételhetőség garantálása érdekében – például a régebbi időbélyeg-feladatának újbóli futtatása esetén – a függvények nem használhatók, például a `Date.GetData()` vagy `Math.random()`a függvény, mivel ezek a függvények nem adják vissza ugyanazt az eredményt az egyes hívásokhoz.  
 
-## <a name="diagnostic-logs"></a>Diagnosztikai naplók
+## <a name="resource-logs"></a>Erőforrásnaplók
 
-Minden futásidejű hiba végzetesnek minősül, és tevékenység- és diagnosztikai naplókon keresztül kerül felszínre. Javasoljuk, hogy a függvény kezelje az összes kivételt és hibát, és érvényes eredményt ad vissza a lekérdezésnek. Ez megakadályozza, hogy a feladat [sikertelen állapotba kerüljön.](job-states.md)  
+A futásidejű hibák végzetesnek minősülnek, és tevékenység-és erőforrás-naplókon keresztül vannak felszínben. Azt javasoljuk, hogy a függvény minden kivételt és hibát kezelje, és érvényes eredményt ad vissza a lekérdezéshez. Ezzel megakadályozhatja, hogy a feladata [sikertelen állapotba](job-states.md)kerüljön.  
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [JavaScript-felhasználó által definiált függvények az Azure Stream Analytics szolgáltatásban](stream-analytics-javascript-user-defined-functions.md)
-* [Az Azure Stream Analytics JavaScript által definiált összesítések](stream-analytics-javascript-user-defined-aggregates.md)
-* [A .NET Standard szolgáltatásban megadott, az Azure Stream Analytics-feladatokhoz definiált függvények fejlesztése](stream-analytics-edge-csharp-udf-methods.md)
-* [Az Azure Stream Analytics integrálása az Azure Machine Learningszolgáltatással](machine-learning-udf.md)
+* [Felhasználó által definiált JavaScript-függvények Azure Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
+* [JavaScript felhasználó által definiált összesítések Azure Stream Analytics](stream-analytics-javascript-user-defined-aggregates.md)
+* [A .NET szabványú, felhasználó által definiált függvények fejlesztése Azure Stream Analytics feladatokhoz](stream-analytics-edge-csharp-udf-methods.md)
+* [Azure Stream Analytics integrálása Azure Machine Learning](machine-learning-udf.md)
 

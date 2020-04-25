@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stream Analytics bemeneteinek hibáinak elhárítása
-description: Ez a cikk az Azure Stream Analytics-feladatokbemeneti kapcsolatainak hibaelhárítási technikáit ismerteti.
+title: Azure Stream Analytics-bemenetek hibaelhárítása
+description: Ez a cikk a Azure Stream Analytics-feladatokban lévő bemeneti kapcsolatok hibaelhárítási módszereit ismerteti.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -8,95 +8,95 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3d88123b3dd79e5707c5c19cbbae13c30cbdeb84
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 68fe7da136d744e1efa76a89061afe6995a75051
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409422"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133264"
 ---
 # <a name="troubleshoot-input-connections"></a>Bemeneti kapcsolatok hibaelhárítása
 
-Ez a cikk ismerteti az Azure Stream Analytics bemeneti kapcsolatokkal kapcsolatos gyakori problémákat, a bemeneti problémák elhárításának módját és a problémák megoldásának módját. Számos hibaelhárítási lépéshez engedélyezni kell a diagnosztikai naplókat a Stream Analytics-feladathoz. Ha nincs engedélyezve a diagnosztikai naplók, olvassa el [az Azure Stream Analytics hibaelhárítása diagnosztikai naplók használatával című témakört.](stream-analytics-job-diagnostic-logs.md)
+Ez a cikk a Azure Stream Analytics bemeneti kapcsolataival, a bemeneti problémák elhárításával és a problémák megoldásával kapcsolatos gyakori problémákat ismerteti. Számos hibaelhárítási lépéshez engedélyezni kell az erőforrás-naplókat a Stream Analytics feladatokhoz. Ha nincs engedélyezve az erőforrás-naplók, tekintse meg [a Azure stream Analytics az erőforrás-naplók használatával történő hibakeresését](stream-analytics-job-diagnostic-logs.md)ismertető témakört.
 
-## <a name="input-events-not-received-by-job"></a>A feladat által nem fogadott bemeneti események 
+## <a name="input-events-not-received-by-job"></a>A feladatok által nem fogadott bemeneti események 
 
-1.  Tesztelje a bemeneti és kimeneti kapcsolatot. Ellenőrizze a bemenetekhez és kimenetekhez való kapcsolódást a **Kapcsolat tesztelése** gombbal az egyes bemenetekhez és kimenetekhez.
+1.  Tesztelje a bemeneti és kimeneti kapcsolatot. Az egyes bemenetekhez és kimenetekhez tartozó **kapcsolat tesztelése** gomb használatával ellenőrizze, hogy kapcsolódik-e a bemenetekhez és kimenetekhez.
 
 2.  Vizsgálja meg a bemeneti adatokat.
 
-    1. Használja a [**Mintaadatok**](stream-analytics-sample-data-input.md) gombot az egyes bevitelekhez. Töltse le a bemeneti mintaadatokat.
+    1. Használja az egyes bemenetek [**mintaadatok**](stream-analytics-sample-data-input.md) gombját. Töltse le a bemeneti mintaadatok.
         
-    1. Vizsgálja meg a mintaadatokat a séma és [az adattípusok megismeréséhez.](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+    1. Vizsgálja meg a mintaadatok a séma és az [adattípusok](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)megismeréséhez.
     
-    1. Ellenőrizze [az Event Hub metrikákat,](../event-hubs/event-hubs-metrics-azure-monitor.md) hogy megbizonyosodjon arról, események küldése. Az üzenetmutatóknak nullánál nagyobbnak kell lenniük, ha az Event Hubs üzeneteket fogad.
+    1. Ellenőrizze az [Event hub mérőszámait](../event-hubs/event-hubs-metrics-azure-monitor.md) az események küldésének biztosításához. Az üzenetek metrikáinak nullánál nagyobbnak kell lenniük, ha Event Hubs üzeneteket fogadnak.
 
-3.  Győződjön meg arról, hogy kijelölt egy időtartományt a bemeneti előnézetben. Válassza **az Időtartomány kiválasztása**lehetőséget, majd a lekérdezés tesztelése előtt adja meg a minta időtartamát.
+3.  Győződjön meg arról, hogy a bemeneti előnézetben időtartományt jelölt ki. Válassza az **időtartomány kiválasztása**lehetőséget, majd adja meg a minta időtartamát a lekérdezés tesztelése előtt.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>A helytelen formátumú bemeneti események deszerializálási hibákat okoznak 
 
-Deszerializációs problémák okozzák, ha a bemeneti adatfolyam a Stream Analytics-feladat hibásan formázott üzeneteket tartalmaz. Egy hibásan formázott üzenetet például egy JSON-objektumban lévő hiányzó zárójel vagy zárójel, vagy az időmező helytelen időbélyeg-formátuma okozhatja. 
+A deszerializálási problémákat akkor okozhatja a rendszer, ha a Stream Analytics-feladathoz tartozó bemeneti adatfolyam helytelenül formázott üzeneteket tartalmaz. A helytelenül formázott üzenetet például egy hiányzó zárójel vagy kapcsos zárójel, egy JSON-objektum vagy egy helytelen időbélyeg-formátum okozhatja az idő mezőben. 
  
-Amikor egy Stream Analytics-feladat hibásan formázott üzenetet kap egy bemenetről, elejti az üzenetet, és figyelmeztetést küld. A Stream Analytics-feladat **Bemeneti** csempéjén egy figyelmeztető szimbólum jelenik meg. A következő figyelmeztető szimbólum mindaddig létezik, amíg a feladat futó állapotban van:
+Ha egy Stream Analytics-feladatban helytelenül formázott üzenet érkezik egy bemenetből, a rendszer elveti az üzenetet, és figyelmeztetést küld. A Stream Analytics feladatának **bemenetek** csempén figyelmeztető szimbólum jelenik meg. A következő figyelmeztető szimbólum létezik, feltéve, hogy a feladatsor fut állapotban van:
 
-![Az Azure Stream Analytics bemeneti csempéje](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
+![Azure Stream Analytics bemenetek csempe](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-Engedélyezze a diagnosztikai naplókat a hibát okozó hiba és az üzenetet (hasznos adat) részleteinek megtekintéséhez. Ennek több oka is lehet a deszerializálási hibák nak. Az egyes deszerializálási hibákkal kapcsolatos további információkért [lásd: Bemeneti adatok hibái](data-errors.md#input-data-errors). Ha a diagnosztikai naplók nincsenek engedélyezve, egy rövid értesítés lesz elérhető az Azure Portalon.
+Az erőforrás-naplók engedélyezésével megtekintheti a hiba részleteit és a hibát okozó üzenetet (hasznos adatokat). A deszerializálási hibák több okból is előfordulhatnak. Az adott deszerializálási hibákkal kapcsolatos további információkért lásd: [bemeneti adatok hibái](data-errors.md#input-data-errors). Ha az erőforrás-naplók nincsenek engedélyezve, egy rövid értesítés lesz elérhető a Azure Portal.
 
-![A bemenet részleteifigyelmeztetés](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+![Bemeneti adatok figyelmeztetési értesítése](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
-Azokban az esetekben, amikor az üzenet hasznos adata nagyobb, mint 32 KB, vagy bináris formátumú, futtassa a CheckMalformedEvents.cs-kódot a [GitHub mintatárban.](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH) Ez a kód beolvassa a partíció azonosítóját, eltolását és nyomtatását az adott eltolásban található adatokat. 
+Abban az esetben, ha az üzenet tartalma meghaladja a 32 KB-ot, vagy bináris formátumú, futtassa a [GitHub-minták tárházában](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)elérhető CheckMalformedEvents.cs-kódot. Ez a kód beolvassa a partíció AZONOSÍTÓját, eltolását, és kinyomtatja az adott eltolásban található adatokat. 
 
-## <a name="job-exceeds-maximum-event-hub-receivers"></a>A feladat meghaladja az Event Hub-fogadók maximális
+## <a name="job-exceeds-maximum-event-hub-receivers"></a>A feladatoknál nagyobb az Event hub-vevőkészülékek maximális száma
 
-Az Event Hubs használatával kapcsolatos ajánlott eljárás, ha több fogyasztói csoportot használ a feladat méretezhetőségéhez. Az olvasók száma a Stream Analytics-feladat egy adott bemenetbefolyásolja az olvasók száma egy fogyasztói csoportban. A fogadók pontos száma a horizontális felskálázási topológia logikájának belső megvalósítási részletein alapul, és külsőleg nincs kitéve. Az olvasók száma a feladat indításakor vagy a feladat frissítésekor változhat.
+A Event Hubs használatának ajánlott gyakorlata, ha több fogyasztói csoportot használ a feladatok méretezhetőségére. Egy adott bemenet Stream Analytics feladatában szereplő olvasók száma az egyetlen fogyasztói csoportban lévő olvasók számát érinti. A fogadók pontos száma a kibővíthető topológia logikájának belső implementációs részletein alapul, és nem külsőleg van kitéve. Az olvasók száma a feladatok indításakor vagy a feladatok frissítésekor változhat.
 
 A következő hibaüzenet jelenik meg, ha az érzékelők száma túllépi a korlátot: 
 
 `The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
 
 > [!NOTE]
-> Amikor az olvasók száma megváltozik a feladat frissítése során, a rendszer átmeneti figyelmeztetéseket ír a naplóba. A Stream Analytics-feladatok automatikusan helyreállnak ezekből az átmeneti problémákból.
+> Ha az olvasók száma megváltozik a feladatok frissítésekor, a rendszer átmeneti figyelmeztetéseket ír a naplókba. Stream Analytics a feladatok automatikusan helyreállítják ezeket az átmeneti problémákat.
 
-### <a name="add-a-consumer-group-in-event-hubs"></a>Fogyasztói csoport hozzáadása az Eseményközpontokban
+### <a name="add-a-consumer-group-in-event-hubs"></a>Fogyasztói csoport hozzáadása Event Hubs
 
-Ha új fogyasztói csoportot szeretne felvenni az Event Hubs-példányba, kövesse az alábbi lépéseket:
+Ha új fogyasztói csoportot szeretne hozzáadni a Event Hubs-példányban, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure portálra.
 
-2. Keresse meg az Event Hubot.
+2. Keresse meg az Event hub-t.
 
-3. Válassza **az Eseményközpontok lehetőséget** az **Entitások** fejléc alatt.
+3. Válassza ki **Event Hubs** az **entitások** fejléc alatt.
 
-4. Válassza ki az Eseményközpontot név szerint.
+4. Válassza ki az Event hub nevet név szerint.
 
-5. Az **Eseményközpontok példánya** lap **Entitások** fejlécében válassza a **Fogyasztói csoportok**lehetőséget. A listában **$Default** nevű fogyasztói csoport szerepel.
+5. A **Event Hubs példány** lapon az **entitások** fejléc alatt válassza a **fogyasztói csoportok**lehetőséget. Megjelenik egy **$default** nevű fogyasztói csoport a listáján.
 
-6. Új fogyasztói csoport hozzáadásához válassza **a + Fogyasztói csoport** lehetőséget. 
+6. Válassza a **+ fogyasztói csoport** lehetőséget egy új fogyasztói csoport hozzáadásához. 
 
-   ![Fogyasztói csoport hozzáadása az Eseményközpontokban](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
+   ![Fogyasztói csoport hozzáadása Event Hubs](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
-7. Amikor létrehozta a bemeneti a Stream Analytics-feladat, hogy az Event Hub, megadta a fogyasztói csoport van. **$Default** akkor használatos, ha nincs megadva. Miután létrehozott egy új fogyasztói csoportot, szerkessze az Event Hub-bevitelt a Stream Analytics-feladatban, és adja meg az új fogyasztói csoport nevét.
+7. Amikor létrehozta a bemenetet a Stream Analytics feladatban az Event hub-ra való Rámutatás céljából, ott adta meg a fogyasztói csoportot. Ha nincs megadva, a rendszer **$Defaultt** használ. Miután létrehozta az új fogyasztói csoportot, szerkessze az Event hub-bemenetet a Stream Analytics feladatban, és adja meg az új fogyasztói csoport nevét.
 
-## <a name="readers-per-partition-exceeds-event-hubs-limit"></a>A partíciónkénti olvasók túllépik az Eseményközpontok korlátját
+## <a name="readers-per-partition-exceeds-event-hubs-limit"></a>Az olvasók/partíciók száma meghaladja Event Hubs korlátot
 
-Ha a streamelési lekérdezés szintaxisa többször hivatkozik ugyanarra a bemeneti Event Hub-erőforrásra, a feladatmotor ugyanazon fogyasztói csoport lekérdezésenként több olvasót is használhat. Ha túl sok hivatkozás van ugyanarra a fogyasztói csoportra, a feladat meghaladhatja az öt fős korlátot, és hibát okozhat. Ilyen körülmények között tovább oszthat több bemenethasználatával több fogyasztói csoportban a következő szakaszban ismertetett megoldás használatával. 
+Ha az adatfolyam-lekérdezési szintaxis többször is ugyanarra a bemeneti Event hub-erőforrásra hivatkozik, akkor a keresőmotor több olvasót is használhat egy adott felhasználói csoportból lekérdezéssel. Ha túl sok hivatkozás fordul elő ugyanahhoz a fogyasztói csoporthoz, a feladatokhoz legfeljebb öt korlát léphet fel. Ilyen körülmények között a következő szakaszban ismertetett megoldással tovább oszthat meg több adatbevitelt több fogyasztói csoport között. 
 
-Olyan esetek, amikor a partíciónkénti olvasók száma meghaladja az Event Hubs öt százalékos korlátját, a következőket tartalmazzák:
+Az olyan forgatókönyvek, amelyekben a partíciók száma meghaladja az 5 Event Hubs korlátot, a következők:
 
-* Több SELECT utasítás: Ha több SELECT utasítást használ, amelyek **ugyanarra** az eseményközpont-bemenetre hivatkoznak, minden SELECT utasítás új fogadót hoz létre.
+* Több SELECT utasítás: Ha több SELECT utasítást használ, amelyek **ugyanarra** az Event hub-bemenetre hivatkoznak, akkor minden SELECT utasítás új fogadót hoz létre.
 
-* UNION használata esetén lehetőség van arra, hogy több bemenettel is rendelkezik, amelyek **ugyanarra** az eseményközpontra és fogyasztói csoportra hivatkoznak.
+* UNION: Ha Uniót használ, több bemenet is lehet, amelyek **ugyanarra** az Event hub-ra és a fogyasztói csoportra vonatkoznak.
 
-* SELF JOIN: Self JOIN művelet használataesetén többször is hivatkozhat **ugyanarra** az eseményközpontra.
+* Önillesztés: Ha önillesztési műveletet használ, lehetséges, hogy többször is hivatkozhat **ugyanarra** az Event hub-ra.
 
-Az alábbi ajánlott eljárások segíthetnek a forgatókönyvek csökkentésében, amelyekben a partíciónkénti olvasók száma meghaladja az Event Hubs öt százalékos korlátját.
+Az alábbi ajánlott eljárások segíthetnek enyhíteni az olyan forgatókönyveket, amelyekben a partíciók száma meghaladja az 5 Event Hubs korlátot.
 
-### <a name="split-your-query-into-multiple-steps-by-using-a-with-clause"></a>A lekérdezés felosztása több lépésre WITH záradék kal
+### <a name="split-your-query-into-multiple-steps-by-using-a-with-clause"></a>A lekérdezés felosztása több lépésre a WITH záradék használatával
 
-A WITH záradék egy ideiglenes nevű eredményhalmazt határoz meg, amelya lekérdezésben egy FROM záradékkal hivatkozható. Egyetlen SELECT utasítás végrehajtási hatókörében definiálja a WITH záradékot.
+A WITH záradék egy ideiglenes elnevezett eredményhalmazt ad meg, amelyre a lekérdezés FROM záradéka hivatkozhat. A WITH záradék definiálása egyetlen SELECT utasítás végrehajtási hatókörében végezhető el.
 
-A lekérdezés helyett például:
+Például a következő lekérdezés helyett:
 
 ```SQL
 SELECT foo 
@@ -109,7 +109,7 @@ FROM inputEventHub
 …
 ```
 
-Használja ezt a lekérdezést:
+A lekérdezés használata:
 
 ```SQL
 WITH data AS (
@@ -126,17 +126,17 @@ FROM data
 …
 ```
 
-### <a name="ensure-that-inputs-bind-to-different-consumer-groups"></a>Annak biztosítása, hogy a bemenetek különböző fogyasztói csoportokhoz kötődjenek
+### <a name="ensure-that-inputs-bind-to-different-consumer-groups"></a>Győződjön meg arról, hogy a bemenetek a különböző fogyasztói csoportokba vannak kötve
 
-Olyan lekérdezések esetén, amelyekben három vagy több bemenet kapcsolódik ugyanahhoz az Event Hubs fogyasztói csoporthoz, hozzon létre külön fogyasztói csoportokat. Ehhez további Stream Analytics-bemenetek létrehozására van szükség.
+Azokhoz a lekérdezésekhez, amelyekben három vagy több bemenet csatlakozik ugyanahhoz a Event Hubs fogyasztói csoporthoz, hozzon létre külön fogyasztói csoportokat. Ehhez további Stream Analytics bemeneteket kell létrehoznia.
 
 ## <a name="get-help"></a>Segítségkérés
 
-További segítségért próbálja ki [az Azure Stream Analytics fórumunkat.](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Bevezetés az Azure Stream Analytics szolgáltatásba](stream-analytics-introduction.md)
+* [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

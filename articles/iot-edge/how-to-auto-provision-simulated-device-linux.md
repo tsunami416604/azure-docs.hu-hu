@@ -8,12 +8,12 @@ ms.date: 3/2/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b62f551e2532e0205159358b3618695524ae85c8
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 82bdc71a123a263fffd842a04f4837b34aaa8685
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666691"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131066"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Virtuális TPM-sel rendelkező IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű virtuális gépen
 
@@ -155,7 +155,7 @@ Miután futtatta az eszköz kiépítési szolgáltatását, másolja az **azonos
 
 Kérje le a kiépítési információkat a virtuális gépről, és ezt használva hozzon létre egy egyéni regisztrációt a Device kiépítési szolgáltatásban.
 
-Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a **kezdeti eszköz kettős állapotát**. Az eszköz Twin-ben címkéket állíthat be az eszközök csoportosításához a megoldásban szükséges mérőszámok, például a régió, a környezet, a hely vagy az eszköz típusa alapján. Ezek a címkék [automatikus központi telepítések](how-to-deploy-monitor.md)létrehozásához használhatók.
+Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a **kezdeti eszköz kettős állapotát**. Az eszköz Twin-ben címkéket állíthat be az eszközök csoportosításához a megoldásban szükséges mérőszámok, például a régió, a környezet, a hely vagy az eszköz típusa alapján. Ezek a címkék [automatikus központi telepítések](how-to-deploy-at-scale.md)létrehozásához használhatók.
 
 > [!TIP]
 > Az Azure CLI-ben létrehozhat egy [beléptetést](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) vagy egy [beléptetési csoportot](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) , és az **Edge-kompatibilis** jelző használatával meghatározhatja, hogy egy eszköz vagy egy csoport IoT Edge eszköz-e.
@@ -208,7 +208,7 @@ Az eszköz típusának megfelelő cikk megkezdése előtt Ismerje meg a DPS- **a
 
 Ahhoz, hogy a IoT Edge futtatókörnyezet automatikusan kiépítse az eszközt, hozzá kell férnie a TPM-hez.
 
-A rendszerszintű beállítások felülbírálása érdekében engedélyezheti a TPM-hez való hozzáférést a IoT Edge futtatókörnyezet számára, hogy a **iotedge** szolgáltatás gyökérszintű jogosultságokkal rendelkezzen. Ha nem szeretné megemelni a szolgáltatási jogosultságokat, az alábbi lépéseket követve manuálisan is megadhatja a TPM-hozzáférést.
+A rendszerszintű beállítások felülbírálása érdekében `iotedge` engedélyezheti a TPM hozzáférését a IoT Edge futtatókörnyezethez. Ha nem szeretné megemelni a szolgáltatási jogosultságokat, az alábbi lépéseket követve manuálisan is megadhatja a TPM-hozzáférést.
 
 1. Keresse meg az eszközön a TPM hardveres modul elérési útját, és mentse helyi változóként.
 
@@ -305,4 +305,4 @@ Ellenőrizheti, hogy a rendszer használta-e a Device kiépítési szolgáltatá
 
 ## <a name="next-steps"></a>További lépések
 
-Az eszköz kiépítési szolgáltatásának beléptetési folyamata lehetővé teszi, hogy az eszköz AZONOSÍTÓját és az eszköz Twin címkéit az új eszköz kiépítésekor egy időben állítsa be. Ezeket az értékeket használhatja az egyes eszközök vagy eszközök automatikus eszközkezelés használatával történő megcélzásához. Megtudhatja, hogyan [helyezheti üzembe és figyelheti IoT Edge-modulok méretezését a Azure Portal vagy az](how-to-deploy-monitor.md) [Azure CLI használatával](how-to-deploy-monitor-cli.md).
+Az eszköz kiépítési szolgáltatásának beléptetési folyamata lehetővé teszi, hogy az eszköz AZONOSÍTÓját és az eszköz Twin címkéit az új eszköz kiépítésekor egy időben állítsa be. Ezeket az értékeket használhatja az egyes eszközök vagy eszközök automatikus eszközkezelés használatával történő megcélzásához. Megtudhatja, hogyan [helyezheti üzembe és figyelheti IoT Edge-modulok méretezését a Azure Portal vagy az](how-to-deploy-at-scale.md) [Azure CLI használatával](how-to-deploy-cli-at-scale.md).

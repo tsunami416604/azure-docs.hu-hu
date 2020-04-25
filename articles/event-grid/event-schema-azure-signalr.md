@@ -1,37 +1,37 @@
 ---
-title: Az Azure SingnalR eseményrács forrásaként
-description: Az Azure Event Grid del az Azure SignalR-eseményekhez biztosított tulajdonságok ismertetése
+title: Azure-jelző Event Grid forrásaként
+description: Az Azure Signaler eseményeihez megadott tulajdonságok ismertetése Azure Event Grid
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/23/2020
 ms.author: babanisa
-ms.openlocfilehash: 730d1a7a053ab636c45313dd0c35a537434eb782
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393397"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133718"
 ---
-# <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid eseménysémája a SignalR szolgáltatáshoz
+# <a name="azure-event-grid-event-schema-for-signalr-service"></a>A Signaler szolgáltatáshoz tartozó Azure Event Grid esemény sémája
 
-Ez a cikk a SignalR Service-események tulajdonságait és sémáját tartalmazza.Az eseménysémák bemutatása az [Azure Event Grid eseménysémájában.](event-schema.md) Emellett az Azure SignalR eseményforrásként való használatához az Azure SignalR használatával használható gyorsindítások és oktatóanyagok listáját is tartalmazza.
+Ez a cikk a Signaler szolgáltatás eseményeinek tulajdonságait és sémáját ismerteti.Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md). Emellett a gyors indulások és oktatóanyagok listáját is tartalmazza, amelyekkel az Azure-jeleket használhatja az esemény forrásaként.
 
-## <a name="event-grid-event-schema"></a>Eseményrács eseménysémája
+## <a name="event-grid-event-schema"></a>Event Grid-eseményséma
 
-### <a name="available-event-types"></a>Elérhető eseménytípusok
+### <a name="available-event-types"></a>Elérhető események típusai
 
-A SignalR szolgáltatás a következő eseménytípusokat bocsátja ki:
+A signaler szolgáltatás a következő típusú eseményeket bocsátja ki:
 
 | Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.SignalRService.ClientConnected kapcsolat | Ügyfélkapcsolat csatlakoztatásakor. |
-| Microsoft.SignalRService.ClientKapcsolatleválasztva | Ügyfélkapcsolat leválasztásakor. |
+| Microsoft. SignalRService. ClientConnectionConnected | Az Ügyfélkapcsolat kapcsolódásakor következik be. |
+| Microsoft. SignalRService. ClientConnectionDisconnected | Az Ügyfélkapcsolat leválasztásakor következik be. |
 
-### <a name="example-event"></a>Példa esemény
+### <a name="example-event"></a>Példa eseményre
 
-A következő példa egy ügyfélkapcsolathoz csatlakoztatott esemény sémáját mutatja be: 
+Az alábbi példa egy ügyfélkapcsolathoz kapcsolódó esemény sémáját mutatja be: 
 
 ```json
 [{
@@ -51,7 +51,7 @@ A következő példa egy ügyfélkapcsolathoz csatlakoztatott esemény sémájá
 }]
 ```
 
-Az ügyfélkapcsolat leválasztott eseményének sémája hasonló: 
+Az ügyfélkapcsolati kapcsolat megszakadt eseményének sémája hasonló: 
 
 ```json
 [{
@@ -74,16 +74,16 @@ Az ügyfélkapcsolat leválasztott eseményének sémája hasonló:
 
 ### <a name="event-properties"></a>Esemény tulajdonságai
 
-Egy esemény legfelső szintű adatokat rendelkezik:
+Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | Az eseményforrás teljes erőforráselérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| Tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
-| eventTime | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
-| id | sztring | Az esemény egyedi azonosítója |
-| data | objektum | SignalR Service eseményadatai. |
+| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| data | objektum | A jelző szolgáltatás eseményeinek adattípusa. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -91,19 +91,19 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| időbélyeg | sztring | Az esemény létrehozásának időpontja a szolgáltató UTC-ideje alapján. |
-| hubName | sztring | Az a hub, amelyhez az ügyfélkapcsolat tartozik. |
-| connectionId | sztring | Az ügyfélkapcsolat egyedi azonosítója. |
-| userId | sztring | A jogcímcímben definiált felhasználói azonosító. |
-| errorMessage | sztring | A kapcsolat megszakadását okozó hiba. |
+| időbélyeg | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| hubName | sztring | Az az elosztó, amelyhez az Ügyfélkapcsolat tartozik. |
+| connectionId | sztring | Az Ügyfélkapcsolat egyedi azonosítója. |
+| userId | sztring | A jogcímben definiált felhasználói azonosító. |
+| errorMessage | sztring | A kapcsolat leválasztását okozó hiba. |
 
 ## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
 |Cím | Leírás |
 |---------|---------|
-| [Reagálás az Azure SignalR-szolgáltatás eseményeire az Event Grid használatával](../azure-signalr/signalr-concept-event-grid-integration.md) | Az Azure SignalR-szolgáltatás és az Event Grid integrálásának áttekintése. |
-| [Az Azure SignalR-szolgáltatás eseményeinek küldése az Event Gridbe](../azure-signalr/signalr-howto-event-grid-integration.md) | Bemutatja, hogyan küldhet Azure SignalR Service-eseményeket egy alkalmazásnak az Event Griden keresztül. |
+| [Az Azure Signaler szolgáltatás eseményeire való reagálás Event Grid használatával](../azure-signalr/signalr-concept-event-grid-integration.md) | Az Azure Signaler szolgáltatás és a Event Grid integrálásának áttekintése. |
+| [Az Azure szignáló szolgáltatás eseményeinek küldése Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Bemutatja, hogyan küldhetők az Azure Signaler szolgáltatás eseményei egy alkalmazásnak Event Gridon keresztül. |
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure Event Grid bemutatása a [Mi az eseményrács?](overview.md)
-* Az Azure Event Grid-előfizetés ek létrehozásáról az [Event Grid-előfizetésséma](subscription-creation-schema.md)című témakörben talál további információt.
+* A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
+* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

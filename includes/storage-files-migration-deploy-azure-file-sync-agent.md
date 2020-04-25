@@ -1,41 +1,40 @@
 ---
-title: Az Azure File Sync ügynök telepítése
-description: Az Azure File Sync ügynök telepítése. Közös szövegterület, amely et megosztanak az áttelepítési dokumentumok között.
+title: A Azure File Sync-ügynök üzembe helyezése
+description: A Azure File Sync ügynök üzembe helyezése. Közös szöveges blokk, amely az áttelepítési dokumentumok között meg van osztva.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 694becc49667204ef2071a140bb6330285089039
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66388f14949b4f398de18c9162ca453e7fb3cbe1
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78209414"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143630"
 ---
-Ebben a szakaszban telepíti az Azure File Sync ügynök a Windows Server.
-A [telepítési útmutató](../articles/storage/files/storage-sync-files-deployment-guide.md) azt mutatja, hogy ki kell kapcsolnia az **IE fokozott biztonságát**. Az IE fokozott biztonsága olyan biztonsági intézkedés, amely nem alkalmazható az Azure File Sync szolgáltatással, és kikapcsolásával minden probléma nélkül hitelesítheti magát az Azure-ban.
+Ebben a szakaszban a Azure File Sync-ügynököt telepíti a Windows Server-példányra.
 
-Nyissa meg a PowerShellt, és telepítse a szükséges PowerShell-modulokat a következő parancsokkal. A rendszer kéri:
+Az [üzembe helyezési útmutató](../articles/storage/files/storage-sync-files-deployment-guide.md) azt szemlélteti, hogy ki kell kapcsolnia az **Internet Explorer fokozott biztonsági beállításait**. Ez a biztonsági mérték nem alkalmazható a Azure File Sync. A kikapcsolás lehetővé teszi, hogy problémák nélkül hitelesítse magát az Azure-ban.
+
+Nyissa meg a PowerShellt, és telepítse a szükséges PowerShell-modulokat az alábbi parancsokkal. Ha a rendszer kéri, telepítse a teljes modult és a NuGet-szolgáltatót.
 
 ```powershell
 Install-Module -Name Az -AllowClobber
 Install-Module -Name Az.StorageSync
 ```
 
-Ha bármilyen kérdése van elérte az interneten a szerver, most van itt az ideje, hogy megoldja őket. Az Azure File Sync bármely elérhető hálózati kapcsolatot használ az internethez.
-Az internet eléréséhez proxykiszolgáló megkövetelése is támogatott. Most már konfigurálhat egy gépszintű proxyt, vagy megadhat egy proxyt, amelyet csak a fájlszinkronizálás fog használni az ügynök telepítése során.
+Ha problémák merülnek fel az internetről a kiszolgálóról, most már az idő a megoldására. Azure File Sync bármely elérhető hálózati kapcsolatot használ az internethez. A proxykiszolgáló az Internet elérésének megkövetelése is támogatott. Beállíthat egy gépi szintű proxyt, vagy megadhat egy proxyt, amelyet csak Azure File Sync fog használni az ügynök telepítése során.
 
-Ha ez azt jelenti, hogy meg kell nyitnia a tűzfalakat ehhez a kiszolgálóhoz, akkor ez elfogadható megközelítés lehet az Ön számára. A kiszolgáló telepítésének végén, a kiszolgáló regisztrációjának befejezése után, lesz egy hálózati kapcsolati jelentés, amely megmutatja a pontos végpont URL-címeket az Azure-ban, hogy a fájl szinkronizálása kell kommunikálni a kiválasztott régióban. A jelentés azt is megmondja, hogy miért van szükség kommunikációra. A jelentés segítségével a kiszolgáló körüli tűzfalakat zárolhatja adott URL-címekre.
+Ha a proxy konfigurálása azt jelenti, hogy meg kell nyitnia a tűzfalat ehhez a kiszolgálóhoz, amely elfogadható megoldás lehet. A kiszolgáló telepítésének befejezését követően a hálózati kapcsolat jelentés megjeleníti az Azure-beli pontos végponti URL-címeket, amelyeknek Azure File Sync kell kommunikálnia a kiválasztott régióval. A jelentés arról is tájékoztat, hogy miért van szükség a kommunikációra. A jelentés használatával zárolhatja a kiszolgálón lévő tűzfalakat meghatározott URL-címekre.
 
-Konzervatívabb megközelítést is követhet, amelyben nem nyitja meg a tűzfalakat széles, hanem korlátozza a kiszolgálót, hogy magasabb szintű DNS-névterekre kommunikáljon – az [Azure File Sync proxy és a tűzfal beállításairól](../articles/storage/files/storage-sync-files-firewall-and-proxy.md) szóló cikkben további dokumentáció és részletek találhatók. Kövesse saját hálózati gyakorlati tanácsait.
+Követheti az olyan konzervatív megközelítést is, amelyben nem nyitja meg a tűzfalak széles körét, hanem korlátozza a kiszolgálót a magasabb szintű DNS-névterekkel való kommunikációra. További információ: [Azure file Sync proxy és tűzfal beállításai](../articles/storage/files/storage-sync-files-firewall-and-proxy.md). Kövesse a saját hálózatkezeléssel kapcsolatos ajánlott eljárásait.
 
-A *kiszolgálótelepítő* varázsló végén megjelenik egy *kiszolgálóregisztrációs* varázsló.
-Regisztrálja a kiszolgálót a Storage Sync Service Azure-erőforráskorábbi.
+A kiszolgáló *telepítése* varázsló végén megnyílik a kiszolgáló *regisztrálása* varázsló. Regisztrálja a kiszolgálót a Storage Sync szolgáltatás Azure-erőforrásához korábban.
 
-Ezeket a lépéseket a központi telepítési útmutató ismerteti részletesebben, beleértve a fenti PowerShell-modulokat, amelyeket először telepítenie kell: [Az Azure File Sync ügynök telepítése](../articles/storage/files/storage-sync-files-deployment-guide.md).
+Ezeket a lépéseket részletesebben ismertetjük a telepítési útmutatóban, beleértve azokat a PowerShell-modulokat, amelyeket először telepítenie kell: [Azure file Sync ügynök telepítése](../articles/storage/files/storage-sync-files-deployment-guide.md).
 
-A legújabb ügynököt kell használni, és letölthető a Microsoft Letöltőközpontból: [Azure File Sync - agent](https://aka.ms/AFS/agent "Az Azure File Sync ügynök letöltése").
+Használja a legújabb ügynököt. A következőt letöltheti a Microsoft letöltőközpontból: [Azure file Sync Agent](https://aka.ms/AFS/agent "Azure File Sync ügynök letöltése").
 
-Sikeres telepítés és a kiszolgáló regisztrációja után ellenőrizheti, hogy sikeresen végrehajtotta-e ezt a lépést: Keresse meg a Storage Sync Service erőforrást az Azure Portalon, majd kövesse a bal oldali menüt a "Regisztrált kiszolgálók" parancsra. Látni fogja, hogy a szerver azonnal ott van.
+A sikeres telepítés és a kiszolgáló regisztrálása után megtekintheti, hogy sikeresen végrehajtotta-e ezt a lépést. Nyissa meg a Azure Portal Storage Sync Service-erőforrást, majd kövesse a bal oldali menüt a **regisztrált kiszolgálókon**. Itt láthatja a kiszolgálót.

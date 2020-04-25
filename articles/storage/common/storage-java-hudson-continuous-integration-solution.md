@@ -2,19 +2,19 @@
 title: A Hudson használata blob Storage-tárolóval | Microsoft Docs
 description: Leírja, hogyan használható a Hudson az Azure Blob Storage-ban a Build-összetevők tárháza.
 services: storage
-author: seguler
+author: tamram
 ms.service: storage
 ms.devlang: Java
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: tarcher
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a89439f49dd53f09d5cd40be0bf2e4981e9235d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3b76e9ded7031ce104df9251a851e5e8e430ee4
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201385"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133772"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage használata egy Hudson folyamatos integrációs megoldással
 ## <a name="overview"></a>Áttekintés

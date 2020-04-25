@@ -1,7 +1,7 @@
 ---
-title: Speciális veszélyforrások elleni védelem konfigurálása
+title: Komplex veszélyforrások elleni védelem konfigurálása
 titleSuffix: Azure Storage
-description: Konfigurálja a speciális veszélyforrások elleni védelmet az Azure Storage számára a fióktevékenység anomáliáinak észleléséhez, és értesítést kapjon a fiók elérésére irányuló potenciálisan káros kísérletekről.
+description: Az Azure Storage komplex veszélyforrások elleni védelmének beállításával észlelheti a fiókban észlelt rendellenességeket, és értesítést kaphat a fiókjához való hozzáférésre vonatkozó lehetséges ártalmas kísérletekről.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,69 +10,69 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: f390aececdbf9a20f191279892c1856332f2aa8e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 724c250b56107cb68da387bdd531602e8d239e1c
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81482095"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127530"
 ---
-# <a name="configure-advanced-threat-protection-for-azure-storage"></a>Speciális veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz
+# <a name="configure-advanced-threat-protection-for-azure-storage"></a>Komplex veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz
 
-Az Azure Storage speciális veszélyforrások elleni védelme egy további biztonsági intelligenciaréteget biztosít, amely észleli a tárfiókok elérésére vagy kihasználására irányuló szokatlan és potenciálisan káros kísérleteket. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértő lenne, vagy biztonsági figyelőrendszereket kezelne.
+Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi, hogy biztonsági szakértő vagy biztonsági figyelő rendszerek kezelése nélkül foglalkozzon a fenyegetésekkel.
 
-A biztonsági riasztások akkor aktiválódnak, ha tevékenységi rendellenességek lépnek fel. Ezek a biztonsági riasztások integrálva vannak [az Azure Security Centerrel,](https://azure.microsoft.com/services/security-center/)és e-mailben is elküldésre kerülnek az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és elhárításával kapcsolatos javaslatokkal.
+A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt.
 
-A szolgáltatás beolvassa az olvasási, írási és törlési kérelmek diagnosztikai naplóit a Blob Storage-ba a fenyegetésészleléshez. A speciális veszélyforrások elleni védelemriasztási riasztások vizsgálatához megtekintheti a kapcsolódó tárolási tevékenységeket a Storage Analytics-naplózás használatával. További információ: **A naplózás konfigurálása** [az Azure Portalon tárfiók figyelése című témakörben.](storage-monitor-storage-account.md#configure-logging)
+A szolgáltatás betölti az olvasási, írási és törlési kérelmek erőforrás-naplóit, hogy Blob Storage a fenyegetések észlelése érdekében. A komplex veszélyforrások elleni védelemből származó riasztások vizsgálatához a kapcsolódó tárolási tevékenységeket Storage Analytics naplózás használatával tekintheti meg. További információ: a **naplózás konfigurálása** a [Storage-fiók figyelése a Azure Portalban](storage-monitor-storage-account.md#configure-logging).
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-Az Azure Storage speciális veszélyforrások elleni védelme jelenleg csak a [Blob Storage számára](https://azure.microsoft.com/services/storage/blobs/)érhető el. A speciális veszélyforrások elleni védelmet támogató fióktípusok közé tartozik az általános célú v2, a blokkblob és a Blob storage-fiókok. A komplex veszélyforrások elleni védelem minden nyilvános felhőben és az Egyesült Államok kormányzati felhőiben elérhető, de más szuverén vagy Azure kormányzati felhőrégiókban nem.
+Az Azure Storage komplex veszélyforrások elleni védelme jelenleg csak [blob Storage](https://azure.microsoft.com/services/storage/blobs/)esetében érhető el. A komplex veszélyforrások elleni védelmet támogató fióktípus például az általános célú v2, a blobok és a blob Storage-fiókok. A komplex veszélyforrások elleni védelem a nyilvános felhőkben és az Egyesült Államok kormányzati felhőkben is elérhető, de nem más szuverén vagy Azure Government Felhőbeli régiókban.
 
-A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót, tekintse meg az [Azure Security Center díjszabási lapját.](https://azure.microsoft.com/pricing/details/security-center/)
+A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót is, tekintse meg a [Azure Security Center díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/).
 
 
-## <a name="set-up-advanced-threat-protection"></a>Speciális veszélyforrások elleni védelem beállítása
+## <a name="set-up-advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem beállítása
 
-A speciális veszélyforrások elleni védelmet a következő szakaszokban ismertetett módszerek bármelyike konfigurálhatja.
+A komplex veszélyforrások elleni védelem a következő szakaszokban ismertetett módon állítható be.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Indítsa el az [Azure Portalt.](https://portal.azure.com/)
-1. Keresse meg az Azure Storage-fiókját. A **Beállítások csoportban**válassza a **Speciális biztonság**lehetőséget.
-1. Válassza a **Beállítások** hivatkozást a speciális biztonsági konfigurációs lapon.
-1. Állítsa **a Speciális biztonság** beállítását BE **beállításra.**
-1. Az új vagy frissített házirend mentéséhez kattintson a **Mentés** gombra.
+1. Indítsa el a [Azure Portal](https://portal.azure.com/).
+1. Navigáljon az Azure Storage-fiókjához. A **Beállítások**területen válassza a **fokozott biztonság**lehetőséget.
+1. Válassza a **Beállítások** hivatkozást a speciális biztonsági beállítások lapon.
+1. A **fokozott biztonság** beállítása **a**következőre:.
+1. Az új vagy frissített szabályzat mentéséhez kattintson a **Mentés** gombra.
 
-    ![Az Azure Storage speciális veszélyforrások elleni védelmének bekapcsolása](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
+    ![Az Azure Storage komplex veszélyforrások elleni védelem bekapcsolása](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
-Amikor előfizet a standard szintre az Azure Security Centerben, a speciális veszélyforrások elleni védelem automatikusan be van állítva az összes tárfiókjában. Egy adott előfizetés keretében engedélyezheti vagy letilthatja a részletes veszélyforrások elleni védelmet a tárfiókokhoz az alábbiak szerint:
+Amikor előfizet a Azure Security Center Standard csomagra, a komplex veszélyforrások elleni védelem automatikusan be lesz állítva az összes Storage-fiókra. A következő módon engedélyezheti vagy letilthatja az összetett veszélyforrások elleni védelmet a Storage-fiókjaihoz egy adott előfizetésben:
 
-1. Indítsa el az **Azure Security Centert** az [Azure Portalon.](https://portal.azure.com)
-1. A főmenüben kattintson **az & beállítások díjszabása parancsra.**
-1. Kattintson arra az előfizetésre, amelyet engedélyezni vagy letiltani szeretne a tárfiókok veszélyforrások elleni védelmében.
+1. A [Azure Portal](https://portal.azure.com) **Azure Security Center** elindítása.
+1. A főmenüben kattintson a **díjszabás & beállítások**elemre.
+1. Kattintson arra az előfizetésre, amelyre engedélyezni vagy le szeretné tiltani a veszélyforrások elleni védelmet a Storage-fiókjaihoz.
 
     ![Előfizetés kiválasztása](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
-1. Kattintson **a Tarifacsomag elemre.**
-1. A **Tarifacsomag kiválasztása erőforrástípus szerint** szakasz **Storage-fiókok** sorában kattintson az **Engedélyezve** vagy **a Letiltva gombra.**
+1. Kattintson a **díjszabási**csomag elemre.
+1. Az **árképzési rétegek kiválasztása erőforrástípus szerint** szakaszban, a Storage- **fiókok** sorban kattintson az **engedélyezve** vagy a **Letiltva**lehetőségre.
 
-    ![Az ATP engedélyezése a Biztonsági központban](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
+    ![ATP engedélyezése Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="template"></a>[Sablon](#tab/template)
 
-Azure Resource Manager-sablon használatával üzembe helyezhet egy Azure Storage-fiókot, amelynek engedélyezve van a speciális veszélyforrások elleni védelem. További információ: [Storage fiók speciális veszélyforrások elleni védelemmel.](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)
+Egy Azure Resource Manager sablon használatával üzembe helyezhet egy Azure Storage-fiókot, amelyen engedélyezve van az összetett veszélyforrások védelme. További információ: Storage- [fiók komplex veszélyforrások elleni védelemmel](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
 ### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
-Azure-szabályzat használatával speciális veszélyforrások elleni védelem engedélyezése a tárfiókok között egy adott előfizetés vagy erőforráscsoport alatt.
+Egy Azure Policy használatával engedélyezheti a komplex veszélyforrások elleni védelmet egy adott előfizetés vagy erőforráscsoport alatt lévő Storage-fiókok között.
 
-1. Indítsa el az Azure **Policy - Definíciók** lapot.
+1. Indítsa el az Azure **Policy-fogalommeghatározások** lapot.
 
-1. Keresse meg a **központi veszélyforrások elleni védelem központi telepítése a tárfiókok** házirenden.
+1. Keresse meg a komplex **veszélyforrások elleni védelem telepítése a Storage-fiókokra** vonatkozó házirendet.
 
      ![Keresési szabályzat](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
 
@@ -80,52 +80,52 @@ Azure-szabályzat használatával speciális veszélyforrások elleni védelem e
 
     ![Előfizetés vagy csoport kiválasztása](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
 
-1. Rendelje hozzá a házirendet.
+1. Rendelje hozzá a szabályzatot.
 
     ![Házirend-definíciók lap](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
-A Rest API-parancsok használatával hozzon létre, frissítsen vagy szerezzen be egy adott tárfiók speciális veszélyforrások elleni védelmi beállítást.
+A REST API-parancsok használatával létrehozhat, frissíthet vagy beszerezhet egy adott Storage-fiók komplex veszélyforrások elleni védelem beállítását.
 
-* [Komplex veszélyforrások elleni védelem - Létrehozás](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-* [Komplex veszélyforrások elleni védelem - Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+* [Komplex veszélyforrások elleni védelem – létrehozás](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
+* [Komplex veszélyforrások elleni védelem – Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Használja a következő PowerShell-parancsmagokat:
 
-* [Speciális veszélyforrások elleni védelem engedélyezése](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-* [Fejlett veszélyforrások elleni védelem](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-* [Speciális veszélyforrások elleni védelem letiltása](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+* [Komplex veszélyforrások elleni védelem engedélyezése](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [Komplex veszélyforrások elleni védelem](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [A komplex veszélyforrások elleni védelem letiltása](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ---
 
-## <a name="explore-security-anomalies"></a>Biztonsági anomáliák felfedezése
+## <a name="explore-security-anomalies"></a>Biztonsági rendellenességek megismerése
 
-Ha tárolási tevékenység anomáliák fordulnak elő, e-mailben értesítést kap a gyanús biztonsági eseményről. Az esemény részletei a következők:
+Ha a tárolási tevékenységek rendellenességeket tapasztalnak, e-mailben értesítést kap a gyanús biztonsági eseményről. Az esemény részletei a következők:
 
-* Az anomália jellege
+* A rendellenesség természete
 * A tárfiók neve
-* Az esemény ideje
+* Az esemény időpontja
 * A tárolási típus
 * A lehetséges okok
 * A vizsgálat lépései
-* A javítási lépések
+* A szervizelés lépései
 
-Az e-mail is részleteket tartalmaz a lehetséges okok és ajánlott műveletek kivizsgálására és a potenciális fenyegetés enyhítésére.
+Az e-mail emellett tartalmazza a lehetséges okokat és az ajánlott műveleteket is a lehetséges fenyegetések kivizsgálásához és enyhítéséhez.
 
-![Az Azure Storage speciális veszélyforrások elleni riasztási e-mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
+![Azure Storage komplex veszélyforrások elleni védelem – riasztási e-mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
 
-Az Aktuális biztonsági riasztásokat az Azure Security Center [Biztonsági riasztások csempéjén](../../security-center/security-center-managing-and-responding-alerts.md)tekintheti át és kezelheti. Egy adott riasztásra kattintva részletesen és műveleteket biztosít az aktuális fenyegetés kivizsgálásához és a jövőbeli fenyegetések kezeléséhez.
+Az aktuális biztonsági riasztásokat a Azure Security Center [biztonsági riasztások csempéről](../../security-center/security-center-managing-and-responding-alerts.md)tekintheti meg és kezelheti. Ha egy adott riasztásra kattint, a rendszer részletesen ismerteti az aktuális fenyegetés kivizsgálásával és a jövőbeli fenyegetésekkel kapcsolatos műveleteket.
 
-![Az Azure Storage speciális veszélyforrások elleni riasztási e-mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
+![Azure Storage komplex veszélyforrások elleni védelem – riasztási e-mail](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
-A riasztásokat szokatlan és potenciálisan káros tárfiókok elérésére vagy kihasználó kísérletei generálják. Az Azure Storage riasztásainak listáját az Azure [Security Center Fenyegetésveszélyvédelme az adatszolgáltatások értcímű](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage) **témakör tárolószakaszában** található.
+A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják a Storage-fiókok eléréséhez vagy kiaknázásához. Az Azure Storage-hoz kapcsolódó riasztások listáját a [Azure Security Center adatszolgáltatásainak veszélyforrások elleni védelme](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage) **című rész tartalmazza** .
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ [az Azure Storage-fiókokban tárolt naplókról](/rest/api/storageservices/About-Storage-Analytics-Logging)
-* További információ az [Azure Security Centerről](../../security-center/security-center-intro.md)
+* További információ az [Azure Storage-fiókok naplóiról](/rest/api/storageservices/About-Storage-Analytics-Logging)
+* További információ a [Azure Security Center](../../security-center/security-center-intro.md)

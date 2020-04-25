@@ -1,44 +1,44 @@
 ---
-title: Az ONNX telepítése és előrejelzései az SQL Database Edge előzetes verzióban
-description: Ismerje meg, hogyan taníthatja be a modellt, konvertálhatja AZT ONNX-re, telepítheti azt az Azure SQL Database Edge Preview-ba, majd futtathatja a natív PREDICT-t a feltöltött ONNX-modell használatával.
-keywords: sql adatbázis peremének telepítése
+title: Előrejelzések üzembe helyezése és elkészítése a ONNX SQL Database Edge előzetes verziójában
+description: Ismerje meg, hogyan alakíthatja ki a modelleket, hogyan alakíthatja át a ONNX, hogyan telepítheti Azure SQL Database Edge előzetes verzióra, majd a feltöltött ONNX-modell használatával natív ELŐREJELZÉSt futtathat az adatairól.
+keywords: az SQL Database Edge üzembe helyezése
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.subservice: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 03/26/2020
-ms.openlocfilehash: aff9346595d3b8985d3558658af32d05f88c0554
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 04/23/2020
+ms.openlocfilehash: aa2bf5473bf5bd76cfdad39310ce793ab3921652
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365444"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129280"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>AZ ONNX-modell telepítésével és előrejelzésével az SQL Database Edge előzetes verziójában
+# <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>Előrejelzések üzembe helyezése és elkészítése egy ONNX-modellel SQL Database Edge előzetes verzióban
 
-Ebben a rövid útmutatóban megtudhatja, hogyan taníthatja be a modellt, konvertálhatja AZT ONNX-re, hogyan telepítheti az Azure SQL Database Edge Preview-ba, majd futtathatja a natív PREDICT-t a feltöltött ONNX-modell használatával. További információ: [Machine learning and AI with ONNX in SQL Database Edge Preview](onnx-overview.md).
+Ebben a rövid útmutatóban megismerheti, hogyan végezheti el a modell betanítását, hogyan alakíthatja át a ONNX, hogyan telepítheti Azure SQL Database Edge előzetes verzióra, majd a feltöltött ONNX modell használatával natív ELŐREJELZÉSt futtathat az adatairól. További információ: [Machine learning és AI with ONNX in SQL Database Edge Preview](onnx-overview.md).
 
-Ez a rövid útmutató a **scikit-learn-en** alapul, és a [Boston Housing adatkészletet](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)használja.
+Ez a rövid útmutató a **scikit-tanuláson** alapul, és a [bostoni lakhatási adatkészletet](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)használja.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Ha még nem telepítette az Azure SQL Database Edge modult, kövesse az [SQL Database Edge előzetes verziójának üzembe helyezésének](deploy-portal.md)lépéseit az Azure Portalon.
+* Ha még nem telepített Azure SQL Database Edge-modult, kövesse az [SQL Database Edge Preview üzembe helyezésének lépéseit a Azure Portal használatával](deploy-portal.md).
 
-* Telepítse [az Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download)alkalmazást.
+* Telepítse a [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download).
 
-* Nyissa meg az Azure Data Stu-t, és kövesse az alábbi lépéseket a rövid útmutatóhoz szükséges csomagok telepítéséhez:
+* Nyissa meg Azure Data Studio, és kövesse az alábbi lépéseket az ehhez a rövid útmutatóhoz szükséges csomagok telepítéséhez:
 
-    1. Nyissa meg a Python 3 kernelhez csatlakoztatott [új jegyzetfüzetet.](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) 
-    1. Kattintson **a Csomagok kezelése elemre,** és az Új **hozzáadása**csoportban keresse meg a **scikit-learn (Scikit-learn) (Scikit-learn)**(A csomagok kezelése) területen keresse meg a scikit-learn (Scikit-learn) menüt. 
-    1. Telepítse a **setuptools**, **numpy**, **onnxmltools**, **onnxruntime**, **skl2onnx**, **pyodbc**és **sqlalchemy** csomagokat is.
+    1. Nyisson meg egy, a Python 3 kernelhez csatlakoztatott [új jegyzetfüzetet](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) . 
+    1. Kattintson a **csomagok kezelése** elemre, majd az **új hozzáadása**elemre, keresse meg a **scikit – Learn (további tudnivalók**), és telepítse a scikit-Learn csomagot. 
+    1. Telepítse a **setuptools**, a **NumPy**, a **onnxmltools**, a **onnxruntime**, a **skl2onnx**, a **pyodbc**és a **SQLAlchemy** csomagokat is.
     
-* Az alábbi parancsfájlok egyes részeihez írja be azt az Azure Data Studio-jegyzetfüzet egyik cellájába, és futtassa a cellát.
+* Az alábbi szkriptekhez írja be a Azure Data Studio jegyzetfüzet egyik cellájába, és futtassa a cellát.
 
-## <a name="train-a-pipeline"></a>Csővezeték betanítása
+## <a name="train-a-pipeline"></a>Folyamat betanítása
 
-Az adatkészlet felosztása a szolgáltatások segítségével előre jelzi a ház mediánértékét.
+Ossza fel az adatkészletet a szolgáltatások használatára a ház medián értékének előrejelzéséhez.
 
 ```python
 import numpy as np
@@ -54,16 +54,12 @@ boston = load_boston()
 boston
 
 df = pd.DataFrame(data=np.c_[boston['data'], boston['target']], columns=boston['feature_names'].tolist() + ['MEDV'])
-
-# x contains all predictors (features)
-x = df.drop(['MEDV'], axis = 1)
-
-# y is what we are trying to predict - the median value
-y = df.iloc[:,-1]
-
+ 
+target_column = 'MEDV'
+ 
 # Split the data frame into features and target
-x_train = df.drop(['MEDV'], axis = 1)
-y_train = df.iloc[:,-1]
+x_train = pd.DataFrame(df.drop([target_column], axis = 1))
+y_train = pd.DataFrame(df.iloc[:,df.columns.tolist().index(target_column)])
 
 print("\n*** Training dataset x\n")
 print(x_train.head())
@@ -101,7 +97,7 @@ print(y_train.head())
 Name: MEDV, dtype: float64
 ```
 
-Hozzon létre egy folyamatot a LinearRegression modell betanításához. Más regressziós modelleket is használhat.
+Folyamat létrehozása a LinearRegression-modell betanításához. Más regressziós modelleket is használhat.
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -125,7 +121,7 @@ model = Pipeline(
 model.fit(x_train, y_train)
 ```
 
-Ellenőrizze a modell pontosságát, majd számítsa ki az R2 pontszámot és az átlagos négyzethibát.
+Győződjön meg a modell pontosságáról, majd számítsa ki az R2 pontszám és a Mean Squared Error értéket.
 
 ```python
 # Score the model
@@ -144,9 +140,9 @@ print('*** Scikit-learn MSE: {}'.format(sklearn_mse))
 *** Scikit-learn MSE: 21.894831181729206
 ```
 
-## <a name="convert-the-model-to-onnx"></a>A modell konvertálása ONNX-re
+## <a name="convert-the-model-to-onnx"></a>Modell átalakítása ONNX
 
-Konvertálja az adattípusokat a támogatott SQL-adattípusokra. Erre az átalakításra más adatkeretek esetében is szükség lesz.
+Alakítsa át az adattípusokat a támogatott SQL-adattípusokra. Ez a konverzió más dataframes is szükséges lesz.
 
 ```python
 from skl2onnx.common.data_types import FloatTensorType, Int64TensorType, DoubleTensorType
@@ -169,7 +165,7 @@ def convert_dataframe_schema(df, drop=None, batch_axis=False):
     return inputs
 ```
 
-A `skl2onnx`használatával konvertálja a LinearRegression modellt ONNX formátumra, és mentse helyileg.
+A `skl2onnx`használatával alakítsa át a LinearRegression MODELLT a ONNX formátumba, és mentse helyileg.
 
 ```python
 # Convert the scikit model to onnx format
@@ -179,12 +175,12 @@ onnx_model_path = 'boston1.model.onnx'
 onnxmltools.utils.save_model(onnx_model, onnx_model_path)
 ```
 
-## <a name="test-the-onnx-model"></a>Tesztelje az ONNX modellt
+## <a name="test-the-onnx-model"></a>A ONNX modell tesztelése
 
-Miután a modellt ONNX formátumra konvertálta, pontszerezze a modellt, hogy a teljesítmény alig vagy egyáltalán ne mutasson csökkenést.
+A modell ONNX formátumra való konvertálása után a modell kiértékelésével a teljesítményben kevés a romlás.
 
 > [!NOTE]
-> Az ONNX Runtime a páros helyett úszókat használ, így kis eltérések lehetségesek.
+> A ONNX Runtime a páros helyett lebegőpontos adatmennyiséget használ, így kis eltérések is lehetségesek.
 
 ```python
 import onnxruntime as rt
@@ -221,9 +217,9 @@ R2 Scores are equal
 MSE are equal
 ```
 
-## <a name="insert-the-onnx-model"></a>Az ONNX modell beszúrása
+## <a name="insert-the-onnx-model"></a>A ONNX-modell beszúrása
 
-A modell tárolják az Azure `models` SQL Database `onnx`Edge, egy táblában egy adatbázisban. A kapcsolati karakterláncban adja meg a **kiszolgáló címét,** **felhasználónevét**és **jelszavát.**
+A modellt Azure SQL Database Edge-ben tárolhatja egy `models` adatbázisban `onnx`lévő táblában. A kapcsolatok karakterláncában válassza ki a **kiszolgáló**nevét, a **felhasználónevet**és a **jelszót**.
 
 ```python
 import pyodbc
@@ -281,12 +277,12 @@ conn.commit()
 
 ## <a name="load-the-data"></a>Az adatok betöltése
 
-Töltse be az adatokat az Azure SQL Database Edge.Load the data into Azure SQL Database Edge.
+Az Azure SQL Database Edge-be tölti be az adathalmazt.
 
-Először hozzon létre két táblát, **funkciókat** és **célkészleteket**a bostoni házadatkészlet részhalmazainak tárolására.
+Először hozzon létre két táblát, **funkciót** és **célt**a Boston ház adatkészletének tárolására.
 
-* **A szolgáltatások** tartalmazza az összes olyan adatot, amelyet a cél, a medián érték előrejelzésére használnak. 
-* **A cél** az adatkészlet egyes rekordjának mediánértékét tartalmazza. 
+* A **szolgáltatások** a cél, a medián érték előrejelzéséhez használt összes adathalmazt tartalmazzák. 
+* A **cél** az adatkészlet egyes rekordjainak medián értékét tartalmazza. 
 
 ```python
 import sqlalchemy
@@ -341,7 +337,7 @@ print(x_train.head())
 print(y_train.head())
 ```
 
-Végül, `sqlalchemy` használja, `x_train` hogy `y_train` helyezze be a `features` és `target`pandák dataframes a táblákba, és , illetve. 
+Végül a paranccsal `sqlalchemy` szúrhatja be `x_train` a `y_train` és a pandák dataframes a `features` táblákba `target`, illetve. 
 
 ```python
 db_connection_string = 'mssql+pyodbc://' + username + ':' + password + '@' + server + '/' + database + '?driver=ODBC+Driver+17+for+SQL+Server'
@@ -350,14 +346,14 @@ x_train.to_sql(features_table_name, sql_engine, if_exists='append', index=False)
 y_train.to_sql(target_table_name, sql_engine, if_exists='append', index=False)
 ```
 
-Most megtekintheti az adatokat az adatbázisban.
+Most már megtekintheti az adatbázisban található adatfájlokat.
 
-## <a name="run-predict-using-the-onnx-model"></a>A PREDICT futtatása az ONNX modell használatával
+## <a name="run-predict-using-the-onnx-model"></a>ELŐREJELZÉS futtatása a ONNX-modell használatával
 
-A modell az Azure SQL Database Edge,futtassa natív PREDICT az adatok on a feltöltött ONNX-modell használatával.
+Azure SQL Database Edge modellben a feltöltött ONNX modell használatával natív ELŐREJELZÉSt futtathat az adatain.
 
 > [!NOTE]
-> Módosítsa a jegyzetfüzetkernelt SQL-re a fennmaradó cella futtatásához.
+> Módosítsa a notebook kernelét az SQL-re a fennmaradó cella futtatásához.
 
 ```sql
 USE onnx
@@ -393,4 +389,4 @@ FROM PREDICT(MODEL = @model, DATA = predict_input) WITH (variable1 FLOAT) AS p
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Machine Learning és AI ONNX-szel az SQL Database Edge-ben](onnx-overview.md)
+* [Machine Learning és AI a ONNX SQL Database Edge-ben](onnx-overview.md)

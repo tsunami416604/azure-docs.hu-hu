@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 07046d181e8e83e0271cb78cfb182df4e76980b5
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115516"
+ms.locfileid: "82131203"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -65,7 +65,7 @@ Az elkövetkező hetekben módosítani fogjuk, és a [video Indexer webhely](htt
     * Az URL-cím cseréje a Video Indexer widget API-ra mutató URL-címmel (például az adatellenőrzési [widgettel](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * A Video Indexer webhely használata új beágyazott URL-cím létrehozásához:
          
-         Nyomja meg a **Lejátszás** gombot a videó oldalának megtekintéséhez – > kattintson a ** &lt;beágyazás&gt; ** gombra, > másolja az URL-címet az alkalmazásba:
+         Nyomja meg a **Lejátszás** gombot a videó oldalának megtekintéséhez – > kattintson a ** &lt; / &gt; beágyazás** gombra – > másolja az URL-címet az alkalmazásba:
    
     A regionális URL-címek nem támogatottak, és az elkövetkező hetekben le lesznek tiltva.
 

@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/27/2020
+ms.date: 03/27/2020
 ms.author: radeltch
-ms.openlocfilehash: ac8ffba279fac338f3d28cec2f0d671be740150e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: MT
+ms.openlocfilehash: 436e9c6b8bdff42680d7aa5b941822090f668855
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164746"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82127635"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz
 
@@ -78,7 +78,7 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 * Az [2243692][2243692] -es SAP-Megjegyzés az Azure-beli Linuxon futó SAP-licenceléssel kapcsolatos információkat tartalmaz.
 * Az [1984787][1984787] -es SAP-Megjegyzés általános információkat tartalmaz a SUSE Linux Enterprise Server 12.
 * Az SAP Megjegyzés [1999351][1999351] további hibaelhárítási információkat tartalmaz az SAP-hez készült Azure Enhanced monitoring bővítménnyel kapcsolatban.
-* SAP Community WIKI] (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik az összes szükséges SAP-megjegyzéssel a Linux rendszerhez.
+* SAP Community WIKI] (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) az összes szükséges SAP-Megjegyzés a Linux rendszerhez.
 * [Azure Virtual Machines tervezése és implementálása Linux rendszeren az SAP-ban][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-hez Linux rendszeren][deployment-guide]
 * [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hez Linux rendszeren][dbms-guide]
@@ -94,25 +94,23 @@ Annak érdekében, hogy a SUSE Linuxon eddig is szükség volt egy különálló
 Most már lehetséges, hogy az SAP NetWeaver HA-t megosztott tároló használatával, Azure NetApp Fileson helyezi el. A megosztott tárolóhoz Azure NetApp Files használata nem igényel további NFS- [fürtöt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Az SAP NetWeaver Central Services (ASCS/SCS) esetében továbbra is a pacemaker szükséges.
 
 
-![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
+![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.png)
 
 Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához [terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) szükséges. A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)használatát javasoljuk. Az alábbi lista az (A) SCS és az ERS Load Balancer konfigurációját mutatja be.
 
-### <a name="ascs"></a>(A)SCS
+### <a name="ascs"></a>Egy SCS
 
 * Előtér-konfiguráció
   * IP-10.1.1.20
-* Háttér-konfiguráció
-  * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 * Mintavételi port
-  * 620-es port<strong>&lt;nr&gt;</strong>
+  * Port 620<strong>&lt;Nr&gt;</strong>
 * Terheléselosztási szabályok
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
   * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
-    * 32<strong>&lt;nr&gt;</strong> TCP
-    * 36<strong>&lt;nr&gt;</strong> TCP
-    * 39<strong>&lt;nr&gt;</strong> TCP
-    * 81<strong>&lt;nr&gt;</strong> TCP
+    * 32<strong>&lt;nr&gt; </strong> TCP
+    * 36<strong>&lt;nr&gt; </strong> TCP
+    * 39<strong>&lt;nr&gt; </strong> TCP
+    * 81<strong>&lt;nr&gt; </strong> TCP
     * 5<strong>&lt;nr&gt;</strong>13 TCP
     * 5<strong>&lt;nr&gt;</strong>14 TCP
     * 5<strong>&lt;nr&gt;</strong>16 TCP
@@ -121,18 +119,20 @@ Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA
 
 * Előtér-konfiguráció
   * IP-10.1.1.21
-* Háttér-konfiguráció
-  * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 * Mintavételi port
-  * 621-es port<strong>&lt;nr&gt;</strong>
+  * Port 621<strong>&lt;Nr&gt;</strong>
 * Terheléselosztási szabályok
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
   * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
-    * 32<strong>&lt;nr&gt;</strong> TCP
-    * 33<strong>&lt;nr&gt;</strong> TCP
+    * 32<strong>&lt;nr&gt; </strong> TCP
+    * 33<strong>&lt;nr&gt; </strong> TCP
     * 5<strong>&lt;nr&gt;</strong>13 TCP
     * 5<strong>&lt;nr&gt;</strong>14 TCP
     * 5<strong>&lt;nr&gt;</strong>16 TCP
+
+* Háttér-konfiguráció
+  * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>A Azure NetApp Files-infrastruktúra beállítása 
 
@@ -152,15 +152,16 @@ A jelen cikkben bemutatott SAP NetWeaver architektúra egy Azure NetApp Files ka
 
 4. Az alhálózat delegálása az Azure NetApp-fájlokba az [alhálózat delegálása Azure NetApp Filesra](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)című részben leírtak szerint.  
 
-5. Azure NetApp Files kötetek telepítéséhez kövesse az [utasításokat, amelyekkel Azure NetApp Files kötetet hozhat létre](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Telepítse a köteteket a kijelölt Azure NetApp Files [alhálózatban](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-Virtual Networkban vagy az Azure-beli virtuális hálózatokban kell lenniük. Például a sapmnt<b>QAS</b>, a usrsap<b>QAS</b>stb. a kötetek nevei<b>és sapmnt QAS, usrsap</b><b>QAS</b>stb. a filepaths a Azure NetApp Files kötetek esetében.  
+5. Azure NetApp Files kötetek telepítéséhez kövesse az [utasításokat, amelyekkel Azure NetApp Files kötetet hozhat létre](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Telepítse a köteteket a kijelölt Azure NetApp Files [alhálózatban](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-Virtual Networkban vagy az Azure-beli virtuális hálózatokban kell lenniük. Ebben a példában két Azure NetApp Files kötetet használunk: az SAP<b>QAS</b> és a Trans. A megfelelő csatlakoztatási pontokhoz csatlakoztatott fájlelérési utak a következők:/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b>QAS sys stb</b>.  
 
-   1. kötet sapmnt<b>QAS</b> (NFS://10.1.0.4/sapmnt<b>QAS</b>)
-   2. kötet usrsap<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>)
-   3. kötet usrsap<b>QAS</b>(NFS://10.1.0.5/usrsap<b>QAS</b>sys)
-   4. kötet usrsap<b>QAS</b>(NFS://10.1.0.4/usrsap<b>QAS</b>ERS)
+   1. mennyiségi SAP-<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/sapmnt<b>QAS</b>)
+   2. mennyiségi SAP-<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>ASCs)
+   3. mennyiségi SAP-<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys)
+   4. mennyiségi SAP-<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>ERS)
    5. kötet Trans (nfs://10.1.0.4/trans)
-   6. kötet usrsap<b>QAS</b>pas (NFS://10.1.0.5/usrsap<b>QAS</b>Pas)
-   7. Volume usrsap<b>QAS</b>aas (NFS://10.1.0.4/usrsap<b>QAS</b>AAS)
+   6. mennyiségi SAP-<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>Pas)
+   7. mennyiségi SAP-<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>AAS)
+
    
 Ebben a példában az összes SAP NetWeaver fájlrendszer Azure NetApp Files használták, hogy bemutassa, hogyan használható a Azure NetApp Files. Az NFS-en keresztül nem szükséges SAP-fájlrendszerek is üzembe helyezhetők az [Azure Disk Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) szolgáltatásban. Ebben a példában az <b>a-e</b> Azure NetApp Files és <b>f-g</b> (azaz/usr/SAP/<b>QAS</b>/d<b>02</b>,/usr/SAP/<b>QAS</b>/d<b>03</b>) telepíthető Azure Disk Storage-ként. 
 
@@ -172,7 +173,7 @@ Az SAP NetWeaver SUSE magas rendelkezésre állású architektúrán való Azure
 - A minimális kötet 100 GiB
 - Azure NetApp Files és az összes olyan virtuális gép, amelyben Azure NetApp Files köteteket csatlakoztatni kell, ugyanabban az Azure-Virtual Network vagy egymással azonos régióban lévő [virtuális hálózatokban](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kell lennie. A VNET-társítások ugyanazon régióban való elérésének Azure NetApp Files jelenleg támogatott. Az Azure NetApp a globális társon keresztüli hozzáférése még nem támogatott.
 - A kiválasztott virtuális hálózatnak rendelkeznie kell egy, a Azure NetApp Files delegált alhálózattal.
-- Azure NetApp Files az [exportálási szabályzatot](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (olvasási & írás, csak olvasható stb.). 
+- Azure NetApp Files az [exportálási szabályzatot](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (olvasási&írás, csak olvasható stb.). 
 - Azure NetApp Files a szolgáltatás még nem ismeri a zónát. Jelenleg Azure NetApp Files funkció nincs telepítve az Azure-régió összes rendelkezésre állási zónájában. Vegye figyelembe, hogy egyes Azure-régiókban lehetséges a késés következményei. 
 - Azure NetApp Files kötetek NFSv3 vagy NFSv 4.1 kötetként telepíthetők. Mindkét protokoll támogatott az SAP Application Layer (ASCS/ERS, SAP Application Servers) esetében. 
 
@@ -181,21 +182,21 @@ Az SAP NetWeaver SUSE magas rendelkezésre állású architektúrán való Azure
 Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben.
 
 1. Erőforráscsoport létrehozása
-1. Virtual Network létrehozása
+1. Virtuális hálózat létrehozása
 1. Rendelkezésre állási csoport létrehozása a ASCS  
    Maximális frissítési tartomány beállítása
-1. 1\. virtuális gép létrehozása  
+1. 1. virtuális gép létrehozása  
    Legalább 12 SP3 SLES4SAP, ebben a példában a SLES4SAP 12 SP3 rendszerképet használja a rendszer  
    Válassza ki a korábban létrehozott rendelkezésre állási készletet a ASCS  
-1. 2\. virtuális gép létrehozása  
+1. 2. virtuális gép létrehozása  
    Legalább 12 SP3 SLES4SAP, ebben a példában a SLES4SAP 12 SP3 rendszerképet használja a rendszer  
    Válassza ki a korábban létrehozott rendelkezésre állási készletet a ASCS  
 1. Rendelkezésre állási csoport létrehozása az SAP-alkalmazás példányaihoz (PAS, AAS)    
    Maximális frissítési tartomány beállítása
-1. 3\. virtuális gép létrehozása  
+1. 3. virtuális gép létrehozása  
    Legalább 12 SP3 SLES4SAP, ebben a példában a SLES4SAP 12 SP3 rendszerképet használja a rendszer  
    Válassza ki a korábban létrehozott rendelkezésre állási készletet a PAS/AAS számára   
-1. 4\. virtuális gép létrehozása  
+1. 4. virtuális gép létrehozása  
    Legalább 12 SP3 SLES4SAP, ebben a példában a SLES4SAP 12 SP3 rendszerképet használja a rendszer  
    Válassza ki a korábban létrehozott rendelkezésre állási készletet a PAS/AAS számára  
 
@@ -203,10 +204,10 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
 
 Az ebben a szakaszban szereplő utasítások csak akkor használhatók, ha Azure NetApp Files köteteket használ a NFSv 4.1 protokollal. Minden virtuális gépen végezze el a konfigurálást, ahol Azure NetApp Files NFSv 4.1 kötet lesz csatlakoztatva.  
 
-1. Ellenőrizze az NFS-tartomány beállítását. Győződjön meg arról, hogy a tartomány alapértelmezett Azure NetApp Files-tartományként van konfigurálva, azaz **`defaultv4iddomain.com`** , és a leképezés értéke **senki**.  
+1. Ellenőrizze az NFS-tartomány beállítását. Győződjön meg arról, hogy a tartomány alapértelmezett Azure NetApp Files-tartományként van konfigurálva, **`defaultv4iddomain.com`** azaz a leképezés értéke **senki**.  
 
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy az NFS-tartományt `/etc/idmapd.conf` a virtuális gépen, hogy megfeleljen az alapértelmezett tartományi konfigurációnak Azure NetApp Files: **`defaultv4iddomain.com`** . Ha az NFS-ügyfél (azaz a virtuális gép) és az NFS-kiszolgáló (például az Azure NetApp-konfiguráció) közötti eltérés nem egyezik, akkor a virtuális gépekre csatlakoztatott Azure NetApp-köteteken található fájlok engedélyei `nobody`ként jelennek meg.  
+    > Ügyeljen arra, hogy az NFS- `/etc/idmapd.conf` tartományt a virtuális gépen állítsa be, hogy az megfeleljen az alapértelmezett tartományi **`defaultv4iddomain.com`** konfigurációnak Azure NetApp Files:. Ha az NFS-ügyfél (azaz a virtuális gép) és az NFS-kiszolgáló (például az Azure NetApp-konfiguráció) közötti eltérés nem egyezik, akkor a virtuális gépekre csatlakoztatott Azure NetApp-köteteken található fájlok engedélyei a következőképpen `nobody`jelennek meg.  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -220,7 +221,7 @@ Az ebben a szakaszban szereplő utasítások csak akkor használhatók, ha Azure
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** ellenőrizze `nfs4_disable_idmapping`. Értékeként az **Y**értéknek kell lennie. A `nfs4_disable_idmapping` található címtár-struktúra létrehozásához hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
+4. **[A]** ellenőrzés `nfs4_disable_idmapping`. Értékeként az **Y**értéknek kell lennie. A-t tartalmazó `nfs4_disable_idmapping` könyvtár-struktúra létrehozásához hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -241,7 +242,7 @@ Ebben a példában az erőforrásokat manuálisan telepítették a [Azure Portal
 
 ### <a name="deploy-azure-load-balancer-manually-via-azure-portal"></a>Azure Load Balancer manuális üzembe helyezése Azure Portal használatával
 
-Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben.
+Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletben.
 
 1. Load Balancer létrehozása (belső, standard):  
    1. Az előtérbeli IP-címek létrehozása
@@ -249,23 +250,22 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új előtér-IP-készlet nevét (például a **frontend. QAS. ASCS**)
          1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.1.1.20**).
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
       1. A ASCS IP-10.1.1.21
          * Ismételje meg a fenti lépéseket az "a" alatt, és hozzon létre egy IP-címet az ERS számára (például **10.1.1.21** és **frontend. QAS. ERS**)
-   1. A háttér-készletek létrehozása
-      1. Háttérbeli készlet létrehozása a ASCS
-         1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
-         1. Adja meg az új háttér-készlet nevét (például **háttér. QAS**)
-         1. Kattintson a virtuális gép hozzáadása elemre.
-         1. Virtuális gép kiválasztása
-         1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket és azok IP-címeit.
-         1. Kattintson az Add (Hozzáadás) parancsra
+   1. A háttérkészlet létrehozása
+      1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
+      1. Adja meg az új háttér-készlet nevét (például **háttér. QAS**)
+      1. Kattintson a virtuális gép hozzáadása elemre.
+      1. Virtuális gép kiválasztása
+      1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket és azok IP-címeit.
+      1. Kattintson az Add (Hozzáadás) parancsra
    1. Az állapot-mintavételek létrehozása
       1. A ASCS 620**00** portja
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapotadatok (például az **állapot) nevét. QAS. ASCS**)
          1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
       1. Port 621**01** ASCS-eseknél
             * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621**01** és **Health. QAS. ERS**)
    1. Terheléselosztási szabályok
@@ -276,7 +276,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. **Ha portok** kiválasztása
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
          * A fenti lépések megismétlésével hozzon létre terheléselosztási szabályokat az ERS számára (például **LB). QAS. ERS**)
 1. Ha a forgatókönyvben alapszintű terheléselosztó (belső) szükséges, kövesse az alábbi lépéseket:  
    1. Az előtérbeli IP-címek létrehozása
@@ -284,23 +284,22 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új előtér-IP-készlet nevét (például a **frontend. QAS. ASCS**)
          1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.1.1.20**).
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
       1. A ASCS IP-10.1.1.21
          * Ismételje meg a fenti lépéseket az "a" alatt, és hozzon létre egy IP-címet az ERS számára (például **10.1.1.21** és **frontend. QAS. ERS**)
-   1. A háttér-készletek létrehozása
-      1. Háttérbeli készlet létrehozása a ASCS
-         1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
-         1. Adja meg az új háttér-készlet nevét (például **háttér. QAS**)
-         1. Kattintson a virtuális gép hozzáadása elemre.
-         1. Válassza ki a ASCS korábban létrehozott rendelkezésre állási készletet 
-         1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket.
-         1. Kattintson az OK gombra.
+   1. A háttérkészlet létrehozása
+      1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
+      1. Adja meg az új háttér-készlet nevét (például **háttér. QAS**)
+      1. Kattintson a virtuális gép hozzáadása elemre.
+      1. Válassza ki a ASCS korábban létrehozott rendelkezésre állási készletet 
+      1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket.
+      1. Kattintson az OK gombra
    1. Az állapot-mintavételek létrehozása
       1. A ASCS 620**00** portja
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapotadatok (például az **állapot) nevét. QAS. ASCS**)
          1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
       1. Port 621**01** ASCS-eseknél
             * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621**01** és **Health. QAS. ERS**)
    1. Terheléselosztási szabályok
@@ -311,11 +310,11 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Tartsa meg a protokoll **TCP**-t, írja be a **3200** portot
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
       1. További portok a ASCS
          * Ismételje meg a fenti lépéseket a "d" alatt a 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 és TCP ASCS
       1. További portok a ASCS-ESEK számára
-         * Ismételje meg a fenti lépéseket a "d" alatt a 33**01**, 5**01**13, 5**01**14, 5**01 16 és**TCP ASCS-eseknél.
+         * Ismételje meg a fenti lépéseket a "d" alatt a 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 és TCP ASCS-eseknél.
 
       > [!Note]
       > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
@@ -380,13 +379,13 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 3. **[A]** telepítési állomásnév feloldása
 
-   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
+   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév   
+   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően   
 
    <pre><code>
    # IP address of cluster node 1
@@ -398,6 +397,30 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    # IP address of the load balancer frontend configuration for SAP Netweaver ERS
    <b>10.1.1.21    anftstsapers</b>
    </code></pre>
+
+4. **[1]** hozzon létre SAP-címtárakat a Azure NetApp Files köteten.  
+   Csatlakoztassa ideiglenesen a Azure NetApp Files kötetet az egyik virtuális gépen, és hozza létre az SAP-címtárakat (fájlelérési utakat).  
+
+   ```
+    # mount temporarily the volume
+    sudo mkdir -p /saptmp
+    # If using NFSv3
+    sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.1.0.4:/sapQAS /saptmp
+    # If using NFSv4.1
+    sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys,tcp 10.1.0.4:/sapQAS /saptmp
+    # create the SAP directories
+    sudo cd /saptmp
+    sudo mkdir -p sapmntQAS
+    sudo mkdir -p usrsapQASascs
+    sudo mkdir -p usrsapQASers
+    sudo mkdir -p usrsapQASsys
+    sudo mkdir -p usrsapQASpas
+    sudo mkdir -p usrsapQASaas
+    # unmount the volume and delete the temporary directory
+    sudo cd ..
+    sudo umount /saptmp
+    sudo rmdir /saptmp
+    ``` 
 
 ## <a name="prepare-for-sap-netweaver-installation"></a>Felkészülés az SAP NetWeaver telepítésére
 
@@ -416,7 +439,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    sudo chattr +i /usr/sap/<b>QAS</b>/ERS<b>01</b>
    </code></pre>
 
-2. **[A]** `autofs` konfigurálása
+2. **[A]** konfigurálás`autofs`
 
    <pre><code>
    sudo vi /etc/auto.master
@@ -429,9 +452,9 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync 10.1.0.4:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind,sync 10.1.0.5:/usrsap<b>qas</b>sys
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind 10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind 10.1.0.4:/trans
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind 10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    Ha a NFSv 4.1-et használja, hozzon létre egy fájlt a paranccsal:
@@ -439,15 +462,15 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.4:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.5:/usrsap<b>qas</b>sys
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys 10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/trans
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sec=sys 10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    > [!NOTE]
    > Győződjön meg arról, hogy a kötetek csatlakoztatásakor meg kell egyeznie a Azure NetApp Files kötetek NFS-protokolljának verziójával. Ha a Azure NetApp Files kötetek NFSv3-kötetként jönnek létre, használja a megfelelő NFSv3-konfigurációt. Ha a Azure NetApp Files kötetek NFSv 4.1-es kötetként jönnek létre, kövesse az AZONOSÍTÓk leképezésének letiltására vonatkozó utasításokat, és ügyeljen arra, hogy a megfelelő NFSv 4.1-es konfigurációt használja. Ebben a példában a Azure NetApp Files kötetek NFSv3-kötetként lettek létrehozva.  
    
-   `autofs` újraindítása az új megosztások csatlakoztatásához
+   Az `autofs` új megosztások csatlakoztatásának újraindítása
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -478,17 +501,22 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
    > [!IMPORTANT]
    > A közelmúltbeli tesztelés feltárta a helyzeteket, ahol a netcat nem válaszol a várakozó kérelmekre, és csak egyetlen kapcsolat kezelésére vonatkozó korlátozásokat okoz. A netcat erőforrás nem figyeli az Azure Load Balancer kéréseit, és a lebegőpontos IP-cím elérhetetlenné válik.  
-   > A meglévő pacemaker-fürtök esetében javasoljuk, hogy cserélje le a netcat-t a socat-ra, és kövesse az [Azure Load-Balancer észlelési megerősítésének](https://www.suse.com/support/kb/doc/?id=7024128)utasításait. Vegye figyelembe, hogy a módosítás rövid állásidőt igényel.  
+   > A meglévő pacemaker-fürtök esetében a netcat és a socat helyett a múltban javasolt. Jelenleg a csomag erőforrás-ügynökök részét képező Azure-LB erőforrás-ügynök használatát javasoljuk a következő csomag-verzióra vonatkozó követelményekkel:
+   > - A SLES 12 SP4/SP5 esetében a verziónak legalább Resource-Agent-4.3.018. a7fb5035-3.30.1 kell lennie.  
+   > - A SLES 15/15 SP1 esetében a verziónak legalább Resource-Agent-4.3.0184.6 ee15eb2-4.13.1 kell lennie.  
+   >
+   > Vegye figyelembe, hogy a módosítás rövid állásidőt igényel.  
+   > Meglévő pacemaker-fürtök esetén, ha a konfigurációt már úgy módosították, hogy a socat használja az [Azure Load-Balancer észlelésének megerősítése](https://www.suse.com/support/kb/doc/?id=7024128)című cikkben leírtak szerint, nem kell azonnal váltania az Azure-LB erőforrás-ügynökre.
 
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
    # If using NFSv3
-   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -497,9 +525,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
      params ip=<b>10.1.1.20</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>QAS</b>_ASCS anything \
-     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:620<b>00</b>,backlog=10,fork,reuseaddr /dev/null" \
-     op monitor timeout=20s interval=10 depth=0
+   sudo crm configure primitive nc_<b>QAS</b>_ASCS azure-lb port=620<b>00</b>
    
    sudo crm configure group g-<b>QAS</b>_ASCS fs_<b>QAS</b>_ASCS nc_<b>QAS</b>_ASCS vip_<b>QAS</b>_ASCS \
       meta resource-stickiness=3000
@@ -516,7 +542,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    #
    # Resource Group: g-QAS_ASCS
    #     fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
-   #     nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
+   #     nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl1</b>
    #     vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    </code></pre>
@@ -543,13 +569,13 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    sudo crm node online <b>anftstsapcl2</b>
    sudo crm node standby <b>anftstsapcl1</b>
    # If using NFSv3
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -558,12 +584,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
      params ip=<b>10.1.1.21</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>QAS</b>_ERS anything \
-    params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:621<b>01</b>,backlog=10,fork,reuseaddr /dev/null" \
-    op monitor timeout=20s interval=10 depth=0
-   
-   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/socat"
-   # Do you still want to commit (y/n)? y
+   sudo crm configure primitive nc_<b>QAS</b>_ERS azure-lb port=621<b>01</b>
    
    sudo crm configure group g-<b>QAS</b>_ERS fs_<b>QAS</b>_ERS nc_<b>QAS</b>_ERS vip_<b>QAS</b>_ERS
    </code></pre>
@@ -580,11 +601,11 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ASCS
    #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ERS
    #      fs_QAS_ERS (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ERS (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ERS (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ERS  (ocf::heartbeat:IPaddr2):     <b>Started anftstsapcl2</b>
    </code></pre>
 
@@ -662,7 +683,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    sudo usermod -aG haclient <b>qas</b>adm
    </code></pre>
 
-8. **[1]** adja hozzá a ASCS és a ERS SAP-szolgáltatásokat a `sapservice` fájlhoz
+8. **[1]** adja hozzá a ASCS és a ERS SAP- `sapservice` szolgáltatásokat a fájlhoz
 
    Adja hozzá a ASCS-szolgáltatási bejegyzést a második csomóponthoz, és másolja az ERS szolgáltatási bejegyzést az első csomópontra.
 
@@ -738,17 +759,17 @@ Ha a sorba helyezni Server 2 architektúráját ([ENSA2](https://help.sap.com/vi
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ASCS
    #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
-   #      nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl1</b>
    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
    #      rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl1</b>
    #  Resource Group: g-QAS_ERS
    #      fs_QAS_ERS (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ERS (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ERS (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl2</b>
    #      rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl2</b>
    </code></pre>
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Az SAP NetWeaver Application Server előkészítése 
+## <a name="sap-netweaver-application-server-preparation"></a><a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Az SAP NetWeaver Application Server előkészítése 
 
 Egyes adatbázisokhoz szükséges, hogy az adatbázis példányának telepítése egy alkalmazáskiszolgáló legyen végrehajtva. Készítse elő az alkalmazáskiszolgáló virtuális gépeket, hogy azok használni tudják őket ezekben az esetekben.
 
@@ -759,7 +780,7 @@ A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetéb
 
 1. **[A]** operációs rendszer konfigurálása
 
-   A szabálytalan gyorsítótár méretének csökkentésére. További információ: [alacsony írási teljesítmény a SLES 11/12-kiszolgálókon nagyméretű RAM-mal](https://www.suse.com/support/kb/doc/?id=7010287).
+   Csökkentse a piszkos gyorsítótár méretét. További információ: [alacsony írási teljesítmény a SLES 11/12-kiszolgálókon nagyméretű RAM-mal](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>
    sudo vi /etc/sysctl.conf
@@ -770,14 +791,14 @@ A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetéb
 
 1. **[A]** telepítési állomásnév feloldása
 
-   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
+   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    ```bash
    sudo vi /etc/hosts
    ```
 
-   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév
+   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően
 
    <pre><code>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
@@ -813,7 +834,7 @@ A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetéb
    sudo chattr +i /usr/sap/<b>QAS</b>/D<b>03</b>
    </code></pre>
 
-1. **[P]** `autofs` konfigurálása a Pas-on
+1. **[P]** konfigurálás `autofs` a Pas-on
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -826,9 +847,9 @@ A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetéb
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
    Ha a NFSv 4.1-et használja, hozzon létre egy új fájlt a paranccsal:
@@ -836,19 +857,19 @@ A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetéb
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
-   `autofs` újraindítása az új megosztások csatlakoztatásához
+   Az `autofs` új megosztások csatlakoztatásának újraindítása
 
    <pre><code>
    sudo systemctl enable autofs
    sudo service autofs restart
    </code></pre>
 
-1. **[P]** `autofs` konfigurálása az AAS-ben
+1. **[P]** konfigurálás `autofs` az AAS-on
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -861,9 +882,9 @@ A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetéb
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
    Ha a NFSv 4.1-et használja, hozzon létre egy új fájlt a paranccsal:
@@ -871,12 +892,12 @@ A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetéb
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
-   `autofs` újraindítása az új megosztások csatlakoztatásához
+   Az `autofs` új megosztások csatlakoztatásának újraindítása
 
    <pre><code>
    sudo systemctl enable autofs
@@ -903,7 +924,7 @@ A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetéb
    <pre><code>sudo service waagent restart
    </code></pre>
 
-## <a name="install-database"></a>Adatbázis telepítése
+## <a name="install-database"></a>Az adatbázis telepítése
 
 Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-ban való telepítésével kapcsolatos további információkért lásd: [SAP HANA magas rendelkezésre állása Azure-beli Virtual Machines (VM)][sap-hana-ha]. A támogatott adatbázisok listáját lásd: SAP- [megjegyzés 1928533][1928533].
 
@@ -962,7 +983,7 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
 
 1. HAGetFailoverConfig, HACheckConfig és HACheckFailoverConfig tesztelése
 
-   Futtassa az alábbi parancsokat \<sapsid > adm azon a csomóponton, amelyen a ASCS-példány jelenleg fut. Ha a parancsok meghiúsulnak: nincs elég memória, a gazdagép kötőjelei okozhatja. Ez egy ismert probléma, amelyet a SUSE az SAP-SUSE-cluster-Connector csomagban fog megállapítani.
+   Futtassa az alábbi parancsokat sapsid \<>adm-ként azon a csomóponton, AMELYEN a ASCS-példány jelenleg fut. Ha a parancsok meghiúsulnak: nincs elég memória, a gazdagép kötőjelei okozhatja. Ez egy ismert probléma, amelyet a SUSE az SAP-SUSE-cluster-Connector csomagban fog megállapítani.
 
    <pre><code>
    anftstsapcl1:qasadm 52> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -1018,13 +1039,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rscsap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Starting anftstsapcl1
    </code></pre>
@@ -1047,13 +1068,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1065,18 +1086,18 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   Futtassa az alábbi parancsokat \<sapsid > adm-t a ASCS-példány áttelepíteni.
+   Futtassa a következő parancsokat sapsid \<>adm-ként a ASCS-példány áttelepíteni.
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""
@@ -1094,13 +1115,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1112,13 +1133,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1138,13 +1159,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
 
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
 
@@ -1175,13 +1196,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1193,18 +1214,18 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Hozzon létre egy sorba helyezni zárolást, például szerkesszen egy felhasználót a tranzakció su01. Futtassa az alábbi parancsokat < sapsid\>adm azon a csomóponton, amelyen a ASCS-példány fut. A parancsok leállítják a ASCS-példányt, és újra elindítják. Ha a sorba helyezni Server 1 architektúrát használja, a sorba helyezni zárolás várhatóan el fog veszni ebben a tesztben. Ha a sorba helyezni Server 2 architektúrát használja, a rendszer megőrzi a sorba helyezni. 
+   Hozzon létre egy sorba helyezni zárolást, például szerkesszen egy felhasználót a tranzakció su01. Futtassa az alábbi parancsokat <sapsid\>adm-ként azon a csomóponton, AMELYEN a ASCS-példány fut. A parancsok leállítják a ASCS-példányt, és újra elindítják. Ha a sorba helyezni Server 1 architektúrát használja, a sorba helyezni zárolás várhatóan el fog veszni ebben a tesztben. Ha a sorba helyezni Server 2 architektúrát használja, a rendszer megőrzi a sorba helyezni. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1224,13 +1245,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1242,13 +1263,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1258,7 +1279,7 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>anftstsapcl2:~ # pgrep ms.sapQAS | xargs kill -9
    </code></pre>
 
-   Ha csak egyszer fogja megölni az üzenetet kiszolgálóját, a `sapstart`újraindítja. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer fogja megölni az üzenetet kiszolgálóját, a rendszer újraindítja `sapstart`. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
 
    <pre><code>
    anftstsapcl2:~ # crm resource cleanup rsc_sap_QAS_ASCS00
@@ -1270,13 +1291,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1288,13 +1309,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1316,13 +1337,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1334,13 +1355,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1350,7 +1371,7 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   Ha csak egyszer futtatja a parancsot, `sapstart` újraindítja a folyamatot. Ha elég gyakran fut, `sapstart` nem indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer futtatja a parancsot, `sapstart` a automatikusan újraindítja a folyamatot. Ha elég gyakran fut, a nem `sapstart` indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>
@@ -1360,13 +1381,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1378,13 +1399,13 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1403,23 +1424,21 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a [SUSE aj�
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [HA SAP NW Azure-beli virtuális gépeken, SLES for SAP Applications multi-SID útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
 * [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
-* Ismerje meg, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezze meg az SAP vész-helyreállítását 
-* HANA az Azure-ban (nagyméretű példányok) a [magas rendelkezésre állást és a vész-helyreállítást az Azure-ban SAP HANA (nagyméretű példányok)](hana-overview-high-availability-disaster-recovery.md).
 * A magas rendelkezésre állás és a SAP HANA Azure-beli virtuális gépeken történő vész-helyreállítási tervének megismeréséhez lásd: [Az Azure-beli SAP HANA magas rendelkezésre állása Virtual Machines (VM)][sap-hana-ha]

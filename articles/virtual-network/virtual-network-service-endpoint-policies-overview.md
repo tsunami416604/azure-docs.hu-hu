@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 926da07ffaf0c61ca2a7fd02351ef3635ec4d73b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 495d0bce905a980f840527f4cc8cd9e2116e3e66
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651294"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133750"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Virtuális hálózati szolgáltatás végponti házirendjei az Azure Storage-hoz
 
@@ -90,7 +90,7 @@ Vessünk egy gyors pillantást a szolgáltatás-végponti házirend objektumra.
 - **A helyszínről az Azure-szolgáltatásokba irányuló forgalom szűrése**: A szolgáltatásvégpont-szabályzatok csak a szabályzatokhoz társított alhálózatokról érkező forgalomra vonatkoznak. Az egyes Azure-beli szolgáltatási erőforrásokhoz való helyszíni hozzáférés engedélyezéséhez a forgalmat virtuális hálózati berendezésekkel vagy tűzfalakkal szűrheti.
 
 ## <a name="logging-and-troubleshooting"></a>Naplózás és hibaelhárítás
-Szolgáltatásvégpont-szabályzatokhoz a központi naplózás nem érhető el. A szolgáltatásdiagnosztikai naplókkal kapcsolatos további részletekért tekintse meg a [szolgáltatásvégpontok naplózásával](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting) foglalkozó témakört.
+Szolgáltatásvégpont-szabályzatokhoz a központi naplózás nem érhető el. A szolgáltatások erőforrás-naplóival kapcsolatban lásd: [szolgáltatás-végpontok naplózása](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting).
 
 ### <a name="troubleshooting-scenarios"></a>Hibaelhárítási forgatókönyvek
 - Hozzáférés megtagadva az előzetes verzióban működő Storage-fiókokban (nem a Geo-párosítási régióban)

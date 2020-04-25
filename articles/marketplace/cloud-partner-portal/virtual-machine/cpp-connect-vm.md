@@ -1,74 +1,74 @@
 ---
-title: Csatlakozás Microsoft Azure-alapú virtuális géphez | Azure Piactér
-description: Bemutatja, hogyan csatlakozhat az Azure-ban létrehozott új virtuális géphez.
+title: Kapcsolódás a Microsoft Azure-alapú virtuális géphez | Azure piactér
+description: Ez a cikk azt ismerteti, hogyan csatlakozhat az Azure-on létrehozott új virtuális géphez.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 6f2652a98aa081b62ba80951212ef3a3de513593
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4aea624c2127c9b0a61d72b8d14929ce6f47df24
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272661"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142489"
 ---
-# <a name="connect-to-your-azure-based-virtual-machine"></a>Csatlakozás azure-alapú virtuális géphez
+# <a name="connect-to-your-azure-based-virtual-machine"></a>Kapcsolódás Azure-alapú virtuális géphez
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok partnerközpontba való áthelyezését. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Virtuálisgép technikai eszközeinek létrehozása](https://aka.ms/AzureVMTechAsset) az áttelepített ajánlatok kezeléséhez című, az Utasításokat.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli virtuális gépekre vonatkozó ajánlatoknak a partner Centerbe való áthelyezését. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse az Azure-beli [virtuális gépek technikai eszközeinek létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) című témakör utasításait.
 
-Ez a cikk bemutatja, hogyan csatlakozhat az Azure-ban létrehozott virtuális gépekhez, és hogyan jelentkezhet be.  Miután sikeresen csatlakozott, úgy dolgozhat a virtuális géptel, mintha helyileg jelentkezett volna be a gazdakiszolgálóra. 
+Ez a cikk azt ismerteti, hogyan csatlakozhat az Azure-ban létrehozott virtuális gépekhez (VM-EK), és bejelentkezhet azokba.  A sikeres csatlakozást követően ugyanúgy dolgozhat a virtuális géppel, mintha helyileg bejelentkezett volna a gazdagép kiszolgálójára.
 
-## <a name="connect-to-a-windows-based-vm"></a>Csatlakozás Windows-alapú virtuális géphez
+## <a name="connect-to-a-windows-based-vm"></a>Kapcsolódás Windows-alapú virtuális géphez
 
-A távoli asztali ügyfél segítségével csatlakozhat az Azure-ban üzemeltetett Windows-alapú virtuális géphez.  A Windows legtöbb verziója natív módon támogatja a távoli asztali protokollt (RDP).  Más gépek esetében további információt az ügyfelekről a [Távoli asztali ügyfelek ben](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)talál.  
+A távoli asztal ügyfelével csatlakozhat az Azure-ban üzemeltetett Windows-alapú virtuális géphez.  A Windows legtöbb verziója natív módon támogatja a Remote Desktop Protocol (RDP) szolgáltatást.  Más gépek esetén további információkat találhat [Távoli asztal ügyfelek](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)ügyfeleiről.  
 
-Az alábbi cikk bemutatja, hogyan használható a beépített Windows RDP-támogatás a virtuális géphez való csatlakozáshoz: [Csatlakozás és bejelentkezés Windows rendszerű Azure virtuális gépre.](../../../virtual-machines/windows/connect-logon.md)  
+A következő cikk részletesen ismerteti, hogyan használható a beépített Windows RDP-támogatás a virtuális géphez való kapcsolódáshoz: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](../../../virtual-machines/windows/connect-logon.md).  
 
 >[!TIP]
-> A folyamat során biztonsági figyelmeztetéseket kaphat, például azt, hogy az .rdp fájl ismeretlen közzétevőtől származik, vagy hogy a felhasználói hitelesítő adatok nem ellenőrizhetők.  Ezeket a figyelmeztetéseket nyugodtan figyelmen kívül hagyhatja.
+> A folyamat során biztonsági figyelmeztetéseket kaphat, például arról, hogy az. rdp fájl ismeretlen közzétevőből származik, vagy a felhasználói hitelesítő adatok nem ellenőrizhetők.  Ezeket a figyelmeztetéseket nyugodtan figyelmen kívül hagyhatja.
 
 
-## <a name="connect-to-a-linux-based-vm"></a>Csatlakozás Linux-alapú virtuális géphez
+## <a name="connect-to-a-linux-based-vm"></a>Kapcsolódás Linux-alapú virtuális géphez
 
-A Linux-alapú virtuális gép csatlakoztatásához egy biztonságos rendszerhéj-protokoll (SSH) ügyfélre van szükség.  Ez a vita fogja használni az ingyenes [PuTTY](https://www.ssh.com/ssh/putty/) SHH terminál.
+A Linux-alapú virtuális gép összekapcsolásához Secure Shell Protocol-(SSH-) ügyfélre van szükség.  Ez a vitafórum az ingyenes [Putty](https://www.ssh.com/ssh/putty/) SHH-terminált fogja használni.
 
-1. Nyissa meg az [Azure Portalt.](https://ms.portal.azure.com) Keressen és válasszon **virtuális gépek**lehetőséget. 
-2. Válassza ki azt a virtuális gép, amelyhez csatlakozni szeretne.  
-3. **Indítsa el** a virtuális gép, ha még nem fut.
-4. Kattintson a virtuális gép nevére az **Áttekintő** lap megnyitásához.
-5. Vegye figyelembe a nyilvános IP-címet és a VIRTUÁLIS GÉP DNS-nevét.  (Ha ezek az értékek nincsenek beállítva, akkor létre kell [hoznia egy hálózati adaptert](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)
+1. Lépjen a [Azure Portal](https://ms.portal.azure.com). Keresse meg és válassza ki a **virtuális gépeket**. 
+2. Válassza ki azt a virtuális gépet, amelyhez csatlakozni szeretne.  
+3. Ha még nem fut, **indítsa el** a virtuális gépet.
+4. Kattintson a virtuális gép nevére, és nyissa meg az **Áttekintés** oldalát.
+5. Jegyezze fel a virtuális gép nyilvános IP-címét és DNS-nevét.  (Ha ezek az értékek nincsenek beállítva, akkor létre kell [hoznia egy hálózati adaptert](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface) .
 
-   ![Virtuális gép – áttekintés beállításai](./media/publishvm_019.png)
+   ![VIRTUÁLIS gépek áttekintése – beállítások](./media/publishvm_019.png)
  
 6. Nyissa meg a PuTTY alkalmazást.  
-7. A PuTTY-konfiguráció párbeszédpanelen adja meg a virtuális gép IP-címét vagy DNS-nevét. 
+7. A PuTTY konfigurációja párbeszédpanelen adja meg a virtuális gép IP-címét vagy DNS-nevét. 
 
-   ![PuTTY terminál beállítások](./media/publishvm_020.png)
+   ![Putty-terminál beállításai](./media/publishvm_020.png)
  
-8. A PuTTY terminál megnyitásához kattintson a **Megnyitás** gombra.  
-9. Amikor a rendszer kéri, adja meg a Linux virtuális gép fiók nevét és jelszavát. 
+8. A PuTTY-terminál megnyitásához kattintson a **Megnyitás** gombra.  
+9. Amikor a rendszer kéri, adja meg a linuxos virtuális gép fiókjának nevét és jelszavát. 
 
-Ha csatlakozási problémái vannak, olvassa el az SSH-ügyfél dokumentációját, például [a 10.](https://www.ssh.com/ssh/putty/putty-manuals)
+Ha kapcsolódási problémák léptek fel, tekintse meg az SSH-ügyfél dokumentációját, például a [10. fejezet: gyakori hibaüzenetek](https://www.ssh.com/ssh/putty/putty-manuals).
 
-További információt, például arról, hogyan adhat hozzá asztalt egy kiépített Linux virtuális géphez, [olvassa el a Távoli asztal telepítése és konfigurálása linuxos virtuális géphez való csatlakozáshoz az Azure-ban című témakört.](../../../virtual-machines/linux/use-remote-desktop.md)
+További információt, többek között az asztal egy kiépített linuxos virtuális géphez való hozzáadásával kapcsolatban lásd: [Távoli asztal telepítése és konfigurálása egy linuxos virtuális géphez való kapcsolódáshoz az Azure-ban](../../../virtual-machines/linux/use-remote-desktop.md).
 
 
-## <a name="stop-unused-vms"></a>A nem használt virtuális gépek leállítása
-A virtuális gép üzemeltetése esetén a virtuális gép futtatása *kor vagy tétlen*ül.  Így ajánlott leállítani a virtuális gépek, amelyek jelenleg nem használatban vannak.  Például a teszt, a biztonsági mentés vagy a kiközösedett virtuális gépek leállítási jelöltek. Virtuális gép leállításához hajtsa végre az alábbi lépéseket:
+## <a name="stop-unused-vms"></a>Használaton kívüli virtuális gépek leállítása
+Azure-számlák virtuális gépek üzemeltetéséhez, ha egy virtuális gép fut *vagy üresjáratban*van.  Ezért ajánlott leállítani a jelenleg nem használt virtuális gépeket.  Például a teszt, a biztonsági mentés vagy a kivont virtuális gépek leállítására jelöltek. A virtuális gép leállításához hajtsa végre a következő lépéseket:
 
-1. A **Virtuális gépek** panelen válassza ki a leállítani kívánt virtuális gépet. 
+1. A **Virtual Machines (virtuális gépek** ) panelen válassza ki a leállítani kívánt virtuális gépet. 
 2. A lap tetején található eszköztáron kattintson a **Leállítás** gombra.
 
    ![Virtuális gép leállítása](./media/publishvm_018.png)
 
-Az Azure gyorsan leállítja a virtuális gép egy folyamat nevű *felszabadítása*, amely nem csak leállítja az operációs rendszert a virtuális gép, hanem felszabadítja a hardver és a hálózati erőforrások korábban kiépített hozzá.
+Az Azure gyorsan leállítja a virtuális gépet egy *felszabadítás*nevű folyamatban, amely nem csak a virtuális gép operációs rendszerét állítja le, hanem felszabadítja a korábban kiosztott hardver-és hálózati erőforrásokat is.
 
-Ha később újra szeretne aktiválni egy leállított virtuális gép, jelölje ki, és kattintson a **Start** gombra.
+Ha később szeretné újraaktiválni egy leállított virtuális gépet, jelölje ki, majd kattintson a **Start** gombra.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Miután távolról csatlakozott, készen áll [a virtuális gép konfigurálására.](./cpp-configure-vm.md)
+A távoli csatlakozást követően készen áll [a virtuális gép konfigurálására](./cpp-configure-vm.md).

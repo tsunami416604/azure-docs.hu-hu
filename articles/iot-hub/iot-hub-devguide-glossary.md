@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub kifejezések szószedete | Microsoft dokumentumok
-description: Fejlesztői útmutató – egy szószedet, amely ismerteti az Azure IoT Hub-cikkekben használt néhány gyakori kifejezést.
+title: Az Azure IoT Hub kifejezések szószedete | Microsoft Docs
+description: Fejlesztői útmutató – a Szószedet ismerteti az Azure IoT Hub cikkeiben használt általános feltételeket.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -11,344 +11,344 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 5c59ddf046e7ffe936b097878d5d049b43ea8aec
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729011"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133148"
 ---
-# <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub-kifejezések szószedete
+# <a name="glossary-of-iot-hub-terms"></a>IoT Hub kifejezések glosszáriuma
 
-Ez a cikk az IoT Hub-cikkekben használt néhány gyakori kifejezést sorol fel.
+Ez a cikk a IoT Hub cikkeiben használt általános kifejezéseket sorolja fel.
 
-## <a name="advanced-message-queueing-protocol"></a>Speciális üzenetsorsor-küldési protokoll
+## <a name="advanced-message-queueing-protocol"></a>Speciális üzenetsor-kezelési protokoll
 
-[Advanced Message Queueing Protocol (AMQP)](https://www.amqp.org/) egyike azoknak az üzenetkezelési protokolloknak, amelyeket az [IoT Hub](#iot-hub) támogat az eszközökkel való kommunikációhoz. Az IoT Hub által támogatott üzenetkezelési protokollokról az [Üzenetek küldése és fogadása az IoT Hubbal](iot-hub-devguide-messaging.md)című témakörben talál további információt.
+A [speciális üzenetsor-kezelési protokoll (AMQP)](https://www.amqp.org/) a [IoT hub](#iot-hub) által támogatott üzenetküldési protokollok egyike az eszközökkel való kommunikációhoz. További információ a IoT Hub által támogatott üzenetküldési protokollokról: [üzenetek küldése és fogadása IoT hub](iot-hub-devguide-messaging.md)használatával.
 
 ## <a name="automatic-device-management"></a>Automatikus eszközkezelés
 
-Az Azure IoT Hub automatikus eszközkezelése automatizálja a nagy eszközflották teljes életciklusa során végzett ismétlődő és összetett feladatainak nagy feladatainak automatizálását. Az Automatikus eszközkezelés segítségével megcélozhatja az eszközök készletét a tulajdonságaik alapján, meghatározhatja a kívánt konfigurációt, és lehetővé teheti az IoT Hub számára, hogy frissítse az eszközöket, amikor azok hatókörbe kerülnek.  [Automatikus eszközkonfigurációkból](iot-hub-auto-device-config.md) és [IoT Edge automatikus központi telepítésekből](../iot-edge/how-to-deploy-monitor.md)áll.
+Az Azure-ban az automatikus eszközkezelés IoT Hub automatizálja a nagyméretű eszközök flottáinak teljes életciklusával kapcsolatos ismétlődő és összetett feladatokat. Az automatikus eszközkezelés lehetővé teszi, hogy a tulajdonságok alapján csoportosítsa az eszközöket, Definiáljon egy kívánt konfigurációt, és hagyja IoT Hub frissíteni az eszközöket, amikor azok hatókörbe kerülnek.  [Automatikus eszköz-konfigurációkból](iot-hub-auto-device-config.md) és [IoT Edge automatikus központi telepítésből](../iot-edge/how-to-deploy-at-scale.md)áll.
 
-## <a name="automatic-device-configuration"></a>Automatikus eszközkonfiguráció
+## <a name="automatic-device-configuration"></a>Eszköz automatikus konfigurálása
 
-A megoldás háttérrendszere [automatikus eszközkonfigurációk](iot-hub-auto-device-config.md) segítségével hozzárendelheti a kívánt tulajdonságokat az [ikereszközök](#device-twin) készletéhez, és rendszermetrikák és egyéni metrikák használatával jelentheti az állapotot. 
+A megoldás háttérbe állítása [automatikus eszköz-konfigurációk](iot-hub-auto-device-config.md) használatával rendelhető hozzá a kívánt tulajdonságok az [eszközök](#device-twin) egy készletéhez és a jelentés állapotához a rendszermetrikák és az egyéni metrikák használatával. 
 
 ## <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
 
-Az [Azure classic CLI](../cli-install-nodejs.md) egy platformfüggetlen, nyílt forráskódú, rendszerhéj-alapú parancseszköz az erőforrások létrehozásához és kezeléséhez a Microsoft Azure-ban. A CLI ezen verziója csak klasszikus központi telepítésekhez használható.
+A [klasszikus Azure CLI](../cli-install-nodejs.md) egy platformfüggetlen, nyílt forráskódú, rendszerhéjon alapuló parancssori eszköz, amellyel a Microsoft Azure erőforrásai hozhatók létre és kezelhetők. A parancssori felület ezen verzióját csak a klasszikus központi telepítésekhez szabad használni.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) egy platformfüggetlen, nyílt forráskódú, rendszerhéj-alapú parancseszköz az erőforrások létrehozásához és kezeléséhez a Microsoft Azure-ban.
+Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) egy platformfüggetlen, nyílt forráskódú, rendszerhéjon alapuló parancssori eszköz, amellyel a Microsoft Azure erőforrásai hozhatók létre és kezelhetők.
 
-## <a name="azure-iot-device-sdks"></a>Azure IoT-eszköz SDK-k
+## <a name="azure-iot-device-sdks"></a>Azure IoT-eszközök SDK-k
 
-Több nyelven is _elérhetőeszköz-SDK-k_ állnak rendelkezésre, amelyek lehetővé teszik az IoT-központtal interakcióba lépő [eszközalkalmazások](#device-app) létrehozását. Az IoT Hub oktatóanyag a következőket mutatja be, hogyan használhatja ezeket az eszközöket SDK-k. Ebben a [GitHub-tárházban](https://github.com/Azure/azure-iot-sdks)megtalálhatja az eszköz SDK-ival kapcsolatos további információkat.
+Több nyelven is elérhetők az _eszközök SDK_ -k, amelyek lehetővé teszik, hogy az IoT-hubhoz interaktív [eszközöket](#device-app) hozzon létre. A IoT Hub oktatóanyagok bemutatják, hogyan használhatja ezeket az eszköz SDK-kat. Ebben a GitHub- [tárházban](https://github.com/Azure/azure-iot-sdks)megtalálja a forráskódot és további információkat az eszköz SDK-ról.
 
 ## <a name="azure-iot-explorer"></a>Azure IoT Explorer
 
-Az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) az eszköz által küldött telemetriai adatok megtekintésére, az eszköz tulajdonságainak használatára és a hívási parancsokra szolgál. Az intéző segítségével is kommunikálhat és tesztelheti eszközeit, valamint kezelheti a plug and play eszközöket.
+Az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) használatával megtekintheti az eszköz által küldött telemetria, az eszköz tulajdonságait és a hívási parancsokat. A Explorer segítségével használhatja az eszközöket, és tesztelheti az eszközöket, valamint kezelheti a Plug and Play eszközöket.
 
-## <a name="azure-iot-service-sdks"></a>Az Azure IoT szolgáltatás SDK-i
+## <a name="azure-iot-service-sdks"></a>Azure IoT Service SDK-k
 
-Több nyelven is elérhető _szolgáltatás SDK-k,_ amelyek lehetővé teszik az IoT-központtal kommunikáló [háttéralkalmazások](#back-end-app) létrehozását. Az IoT Hub oktatóanyagok bemutatják, hogyan használhatja ezeket a szolgáltatás SDK-k. Ebben a [GitHub-tárházban](https://github.com/Azure/azure-iot-sdks)megtalálhatja a forráskódot és a szolgáltatás SDK-ival kapcsolatos további információkat.
+Több nyelven is elérhetők olyan _szolgáltatási SDK_ -k, amelyek lehetővé teszik, hogy az IoT-hubhoz interaktív [háttérbeli alkalmazásokat](#back-end-app) hozzon létre. A IoT Hub oktatóanyagok bemutatják, hogyan használhatja ezeket a szolgáltatási SDK-kat. Ebben a GitHub- [tárházban](https://github.com/Azure/azure-iot-sdks)megtalálja a forráskódot és a szolgáltatás SDK-k további információit.
 
 ## <a name="azure-iot-tools"></a>Azure IoT-eszközök
 
-Az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) egy platformfüggetlen, nyílt forráskódú Visual Studio-kódbővítmény, amely segít az Azure IoT Hub és az eszközök vs code kezelésében. Az Azure IoT Tools segítségével az IoT-fejlesztők könnyedén fejleszthetik az IoT-projektet a VS Code-ban.
+Az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) egy platformfüggetlen, nyílt forráskódú Visual Studio Code-bővítmény, amely segít az Azure-IoT hub és-eszközök felügyeletében a vs Code-ban. Az Azure IoT Tools révén a IoT-fejlesztők könnyedén hozhatnak létre IoT-projekteket a VS Code-ban.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-A [Microsoft Azure portal](https://portal.azure.com) egy központi hely, ahol azure-erőforrásokat építhet ki és kezelhet. Ez szervezi a tartalmát _a pengék_.
+A [Microsoft Azure Portal](https://portal.azure.com) egy központi hely, ahol üzembe helyezheti és kezelheti Azure-erőforrásait. A tartalmat a _pengék_használatával rendezi.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[Az Azure PowerShell](/powershell/azure/overview) parancsmagok gyűjteménye, amelyekkel kezelheti az Azure-t a Windows PowerShell használatával. A parancsmagokkal hozhat létre, tesztelhet, üzembe helyezhet és kezelhet az Azure platformon keresztül szállított megoldásokat és szolgáltatásokat.
+A [Azure PowerShell](/powershell/azure/overview) parancsmagok gyűjteménye, amelyekkel az Azure a Windows PowerShell segítségével kezelhető. A parancsmagok segítségével az Azure platformon keresztül továbbított megoldásokat és szolgáltatásokat hozhat létre, tesztelheti, üzembe helyezheti és kezelheti.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-[Az Azure Resource Manager](../azure-resource-manager/management/overview.md) lehetővé teszi, hogy a megoldás erőforrásait csoportként dolgozzon. Egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti a megoldás erőforrásait.
+A [Azure Resource Manager](../azure-resource-manager/management/overview.md) lehetővé teszi, hogy csoportként működjön együtt a megoldás erőforrásaival. Egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti a megoldás erőforrásait.
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
 
-[A Service Bus](../service-bus/index.md) felhőalapú kommunikációt biztosít a vállalati üzenetküldéssel és a továbbított kommunikációval, amely segít a helyszíni megoldások és a felhő összekapcsolásához. Néhány IoT Hub-oktatóanyag a Service [Bus-várólistákat](../service-bus-messaging/service-bus-messaging-overview.md)használja.
+A [Service Bus](../service-bus/index.md) felhőalapú kommunikációt tesz lehetővé vállalati üzenetkezeléssel és közvetített kommunikációval, amely segít a helyszíni megoldások felhővel való összekapcsolásában. Egyes IoT Hub oktatóanyagok Service Bus [várólisták](../service-bus-messaging/service-bus-messaging-overview.md)használatát teszik elérhetővé.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-[Az Azure Storage](../storage/common/storage-introduction.md) egy felhőalapú tárolási megoldás. Ez magában foglalja a Blob Storage szolgáltatás, amely strukturálatlan objektumadatok tárolására használható. Néhány IoT Hub-oktatóanyag blobstorage-t használ.
+Az [Azure Storage](../storage/common/storage-introduction.md) egy felhőalapú tárolási megoldás. Tartalmazza azt a Blob Storage szolgáltatást, amelyet a strukturálatlan objektumok adattárolásához használhat. Néhány IoT Hub oktatóanyag a blob Storage-ot használja.
 
-## <a name="back-end-app"></a>Háttéralkalmazás
+## <a name="back-end-app"></a>Háttérbeli alkalmazás
 
-Az [IoT Hub](#iot-hub)környezetében egy háttéralkalmazás egy olyan alkalmazás, amely egy IoT-központ egyik szolgáltatásnéző végpontjához csatlakozik. Előfordulhat például, hogy egy háttéralkalmazás [lekéri az eszközről a felhőbe](#device-to-cloud) irányuló üzeneteket, vagy kezeli az [identitásjegyzéket.](#identity-registry) Általában egy háttéralkalmazás fut a felhőben, de sok az oktatóanyagok a háttéralkalmazások konzolalkalmazások futnak a helyi fejlesztői gépen.
+[IoT hub](#iot-hub)kontextusában a háttérbeli alkalmazás egy olyan alkalmazás, amely egy IoT hub szolgáltatáshoz kapcsolódó végpontokhoz csatlakozik. A háttérbeli alkalmazások például lekérhetik az [eszközről a felhőbe irányuló](#device-to-cloud) üzeneteket, vagy kezelhetik az [identitás-beállításjegyzéket](#identity-registry). A háttérben futó alkalmazások jellemzően a felhőben futnak, de számos oktatóanyagban a háttérbeli alkalmazások a helyi fejlesztési gépen futó konzolos alkalmazások.
 
 ## <a name="built-in-endpoints"></a>Beépített végpontok
 
-Minden IoT hub tartalmaz egy beépített [végpontot,](iot-hub-devguide-endpoints.md) amely az Event Hub-kompatibilis. Bármilyen mechanizmust, amely együttműködik az Event Hubs az eszköz ről a felhőbe üzeneteket olvasni erről a végpontról.
+Minden IoT hub tartalmaz egy beépített [végpontot](iot-hub-devguide-endpoints.md) , amely az Event hub-kompatibilis. Az eszközről a felhőbe irányuló üzenetek a végpontról való olvasásához használhatja a Event Hubs-vel használható bármely mechanizmust.
 
-## <a name="cloud-gateway"></a>Felhőátjáró
+## <a name="cloud-gateway"></a>Felhőbeli átjáró
 
-A felhőátjáró lehetővé teszi a kapcsolatot az on-fi hubhoz közvetlenül nem tud ógrás eszközök [számára.](#iot-hub) A felhőátjáró a felhőben található, szemben a [helyszíni átjáróval,](#field-gateway) amely helyi legel az eszközökön fut. A felhőátjáró kondicélja, hogy protokollfordítást valósítson meg az eszközökön.
+A Cloud Gateway lehetővé teszi a csatlakozást olyan eszközökhöz, amelyek nem tudnak közvetlenül csatlakozni a [IoT hubhoz](#iot-hub). A felhőben üzemelő átjárók a felhőben futnak, szemben egy helyi [átjáróval](#field-gateway) , amely az eszközein fut. A Felhőbeli átjáró tipikus használati esete a protokollok fordításának megvalósítása az eszközökön.
 
-## <a name="cloud-to-device"></a>Felhőből az eszközre
+## <a name="cloud-to-device"></a>Felhőből eszközre
 
-Az IoT hubról egy csatlakoztatott eszközre küldött üzenetekre hivatkozik. Ezek az üzenetek gyakran olyan parancsok, amelyek cselekvésre utasítják az eszközt. További információt az [Üzenetek küldése és fogadása az IoT Hubbal](iot-hub-devguide-messaging.md)című témakörben talál.
+Egy IoT hub-ból egy csatlakoztatott eszközre küldött üzenetekre hivatkozik. Ezek az üzenetek gyakran olyan parancsok, amelyek arra utasítja az eszközt, hogy végezze el a műveletet. További információ: [üzenetek küldése és fogadása IoT Hubsal](iot-hub-devguide-messaging.md).
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az automatikus [eszközkonfiguráció](iot-hub-auto-device-config.md)környezetében az IoT Hubon belüli konfiguráció határozza meg a kívánt konfigurációt az ikereszközök egy készletéhez, és mérőszámokat biztosít az állapot és a haladás jelentéséhez.
+Az [automatikus eszköz-konfiguráció](iot-hub-auto-device-config.md)kontextusában a IoT hub belüli konfiguráció határozza meg az eszközök egy készletének kívánt konfigurációját, és mérőszámokat biztosít az állapot és a folyamat jelentéséhez.
 
 ## <a name="connection-string"></a>Kapcsolati sztring
 
-Az alkalmazáskódban kapcsolati karakterláncok használatával beágyazni a végponthoz való csatlakozáshoz szükséges információkat. A kapcsolati karakterlánc általában tartalmazza a végpont címét és a biztonsági információkat, de a kapcsolati karakterlánc-formátumok szolgáltatásokonként eltérőek lehetnek. Az IoT Hub szolgáltatáshoz kétféle kapcsolati karakterlánc van társítva:
+Az alkalmazás kódjában kapcsolati karakterláncokat használ a végponthoz való kapcsolódáshoz szükséges információk beágyazásához. A kapcsolatok karakterlánca általában tartalmazza a végpontok és a biztonsági információk címeit, de a kapcsolatok karakterlánc-formátumai eltérőek a szolgáltatások között. A IoT Hub szolgáltatáshoz két típusú kapcsolattípus van társítva:
 
-- *Az eszközkapcsolati karakterláncok* lehetővé teszik, hogy az eszközök csatlakozzanak az IT-központ eszközfelé néző végpontjaihoz.
+- Az *eszköz kapcsolati karakterláncai* lehetővé teszik az eszközök számára az IoT hub eszközre irányuló végpontokhoz való kapcsolódását.
 
-- *Az IoT Hub kapcsolati karakterláncai* lehetővé teszik, hogy a háttéralkalmazások csatlakozzanak az IoT hub szolgáltatásnéző végpontjaihoz.
+- *IoT hub kapcsolati karakterláncok* lehetővé teszik a háttérbeli alkalmazások számára, hogy csatlakozzanak a IoT hub szolgáltatáshoz csatlakozó végpontokhoz.
 
 ## <a name="custom-endpoints"></a>Egyéni végpontok
 
-Egyéni [végpontokat](iot-hub-devguide-endpoints.md) hozhat létre egy IoT-központon az útválasztási szabály által feladott üzenetek [kézbesítéséhez.](#routing-rules) Az egyéni végpontok közvetlenül egy eseményközponthoz, egy Service Bus-várólistához vagy egy Service Bus-témakörhöz csatlakoznak.
+Létrehozhat egyéni [végpontokat](iot-hub-devguide-endpoints.md) egy IoT-hubhoz az [útválasztási szabályok](#routing-rules)által elküldött üzenetek kézbesítéséhez. Az egyéni végpontok közvetlenül kapcsolódnak egy Event hub-hoz, egy Service Bus-várólistához vagy egy Service Bus témakörhöz.
 
 ## <a name="custom-gateway"></a>Egyéni átjáró
 
-Az átjáró lehetővé teszi a kapcsolatot az on-t, amely nem tud közvetlenül csatlakozni az [IoT Hubhoz.](#iot-hub) Az Azure IoT Edge segítségével egyéni átjárókat hozhat létre, amelyek egyéni logikát valósítanak meg az üzenetek, az egyéni protokollkonverziók és a peremhálózaton lévő egyéb feldolgozások kezelésére.
+Az átjárók lehetővé teszik a kapcsolódást olyan eszközökhöz, amelyek nem tudnak közvetlenül csatlakozni a [IoT hubhoz](#iot-hub). A Azure IoT Edge használatával olyan egyéni átjárókat hozhat létre, amelyek egyéni logikát implementálnak az üzenetek kezelésére, az egyéni protokoll átalakítására és az Edge egyéb feldolgozására.
 
-## <a name="data-point-message"></a>Adatpontos üzenet
+## <a name="data-point-message"></a>Adatpontra vonatkozó üzenet
 
-Az adatpont-üzenet egy [eszközről a felhőbe](#device-to-cloud) irányuló üzenet, amely [telemetriai](#telemetry) adatokat, például szélsebességet vagy hőmérsékletet tartalmaz.
+Az adatpontok üzenete egy olyan [eszközről a felhőbe](#device-to-cloud) irányuló üzenet, amely a [telemetria](#telemetry) , például a szél sebességét vagy a hőmérsékletet tartalmazza.
 
 ## <a name="desired-configuration"></a>Kívánt konfiguráció
 
-Az [ikereszköz](iot-hub-devguide-device-twins.md)környezetében a kívánt konfiguráció az ikereszköz ben lévő, az eszközzel szinkronizálandó tulajdonságok és metaadatok teljes készletére vonatkozik.
+Egy [különálló eszköz](iot-hub-devguide-device-twins.md)kontextusában a kívánt konfiguráció a tulajdonságok és metaadatok teljes készletét jelenti, amelyeket szinkronizálni kell az eszközzel.
 
 ## <a name="desired-properties"></a>Kívánt tulajdonságok
 
-Az [ikereszköz](iot-hub-devguide-device-twins.md)környezetében a kívánt tulajdonságok az ikereszköz egy alszakasza, amely [a jelentett tulajdonságokkal](#reported-properties) együtt szinkronizálja az eszköz konfigurációját vagy állapotát. A kívánt tulajdonságokat csak egy [háttéralkalmazás](#back-end-app) állíthatja be, és az [eszközalkalmazás](#device-app)figyeli.
+Az [eszközök Twin](iot-hub-devguide-device-twins.md)-környezetében a kívánt tulajdonságok a [jelentett tulajdonságokkal](#reported-properties) rendelkező, az eszköz konfigurációjának vagy feltételének szinkronizálásához használt eszköz-iker alszakasza. A kívánt tulajdonságokat csak [háttérbeli alkalmazások](#back-end-app) állíthatják be, és az [eszköz alkalmazás](#device-app)figyeli őket.
 
-## <a name="device-to-cloud"></a>Eszközről felhőre
+## <a name="device-to-cloud"></a>Eszközről a felhőbe
 
-A csatlakoztatott eszközről az [IoT Hubra](#iot-hub)küldött üzenetekre hivatkozik. Ezek az üzenetek lehetnek [adatpont-](#data-point-message) vagy [interaktív](#interactive-message) üzenetek. További információt az [Üzenetek küldése és fogadása az IoT Hubbal](iot-hub-devguide-messaging.md)című témakörben talál.
+Egy csatlakoztatott eszközről [IoT Hubre](#iot-hub)küldött üzenetekre hivatkozik. Ezek az üzenetek [adatponthoz](#data-point-message) vagy [interaktív](#interactive-message) üzenetekhez tartozhatnak. További információ: [üzenetek küldése és fogadása IoT Hubsal](iot-hub-devguide-messaging.md).
 
 ## <a name="device"></a>Eszköz
 
-Az IoT környezetében az eszköz általában egy kis méretű, önálló számítástechnikai eszköz, amely adatokat gyűjthet, vagy más eszközök vezérlése. Lehet például egy eszköz egy környezeti ellenőrző eszköz, vagy egy ellenőrző vezérlő az öntöző- és szellőztető rendszerek egy üvegházban. Az [eszközkatalógus](https://catalog.azureiotsolutions.com/) az [IoT Hubbal](#iot-hub)való együttműködésre tanúsított hardvereszközök listáját tartalmazza.
+A IoT kontextusában az eszköz általában egy kis méretű, különálló számítástechnikai eszköz, amely adatokat gyűjthet vagy más eszközöket is vezérelheti. Előfordulhat például, hogy egy eszköz egy környezeti figyelő eszköz, vagy egy olyan vezérlő, amely egy üvegházban található öntözési és szellőzési rendszerekhez szükséges. Az [eszköz katalógusa](https://catalog.azureiotsolutions.com/) felsorolja a [IoT hub](#iot-hub)használatával tanúsított hardvereszközök listáját.
 
 ## <a name="device-app"></a>Eszközalkalmazás
 
-Egy eszközalkalmazás fut az [eszközön,](#device) és kezeli az [IoT hubbal](#iot-hub)való kommunikációt. Általában az [Azure IoT-eszköz SDK-k](#azure-iot-device-sdks) egyikét használja egy eszközalkalmazás megvalósításakor. Az IoT-oktatóanyagok nagy részében [szimulált eszközt](#simulated-device) használ a kényelem érdekében.
+Az eszközön fut egy alkalmazás [, és kezeli](#device) a kommunikációt az [IoT hubhoz](#iot-hub). Általában az [Azure IoT Device SDK](#azure-iot-device-sdks) -k egyikét használja egy eszköz alkalmazásának megvalósításakor. A IoT számos oktatóanyagában [szimulált eszközt](#simulated-device) használ a kényelem érdekében.
 
-## <a name="device-condition"></a>Eszköz állapota
+## <a name="device-condition"></a>Eszköz feltétele
 
-Az [eszközalkalmazás](#device-app)által jelentett eszközállapot-adatokra, például a jelenleg használt kapcsolódási módra hivatkozik. [Az eszközalkalmazások](#device-app) is jelenthetik képességeiket. Az ikereszközök használatával lekérdezheti a feltétel- és képességadatokat.
+Az eszköz állapotával kapcsolatos információk, például a jelenleg használatban lévő kapcsolati módszer, amelyet egy [eszköz alkalmazás](#device-app)jelentett. Az [eszközök alkalmazásai](#device-app) is jelenthetik a képességeiket. A feltételek és a képességek adatait az eszközök ikrek használatával kérdezheti le.
 
-## <a name="device-data"></a>Eszközadatok
+## <a name="device-data"></a>Eszközbeállítások
 
-Az eszközadatok az IoT Hub [identitásbeállítási nyilvántartásában](#identity-registry)tárolt eszközönkénti adatokra vonatkoznak. Lehetőség van az adatok importálására és exportálására.
+Az eszköz adatai a IoT Hub [Identity registryben](#identity-registry)tárolt eszközönkénti adatokra vonatkoznak. Az ilyen típusú adatimportálás és-exportálás lehetséges.
 
 ## <a name="device-explorer"></a>Eszközkereső
 
-Az eszközkezelőt lecserélték az [Azure IoT Explorerre,](https://github.com/Azure/azure-iot-explorer)amely az eszköz által küldött telemetriai adatok megtekintésére, az eszköz tulajdonságainak használatára és a hívási parancsokra szolgál. Az intéző segítségével is kommunikálhat és tesztelheti eszközeit, valamint kezelheti a plug and play eszközöket.
+Az Eszközkezelő le lett cserélve az [Azure IoT Explorerrel](https://github.com/Azure/azure-iot-explorer), amellyel megtekinthető az eszköz által küldött telemetria, az eszköz tulajdonságai és a hívási parancsok használata. A Explorer segítségével használhatja az eszközöket, és tesztelheti az eszközöket, valamint kezelheti a Plug and Play eszközöket.
 
 ## <a name="device-identity"></a>Eszközidentitás
 
-Az eszközidentitás az [identitásjegyzékben](#identity-registry)regisztrált összes eszközhöz rendelt egyedi azonosító.
+Az eszköz identitása az [Identity registryben](#identity-registry)regisztrált összes eszközhöz rendelt egyedi azonosító.
 
 ## <a name="device-management"></a>Eszközfelügyelet
 
-Az eszközkezelés magában foglalja az IoT-megoldásban lévő eszközök kezeléséhez kapcsolódó teljes életciklust, beleértve a tervezést, a kiépítést, a konfigurálást, a figyelést és a kivisszavonulást.
+Az eszközkezelés magában foglalja a IoT-megoldás eszközeinek kezeléséhez kapcsolódó teljes életciklust, beleértve a tervezést, a létesítést, a konfigurálást, a figyelést és a kivonást.
 
 ## <a name="device-management-patterns"></a>Eszközfelügyeleti minták
 
-[Az IoT hub](#iot-hub) lehetővé teszi a közös eszközkezelési mintákat, beleértve az újraindítást, a gyári alapbeállítások elvégzését és a belső vezérlőprogram-frissítések et az eszközökön.
+Az [IoT hub](#iot-hub) lehetővé teszi a közös eszközkezelés mintázatát, beleértve az újraindítást, a gyári beállítások visszaállítását és a belső vezérlőprogram frissítését az eszközökön.
 
-## <a name="device-rest-api"></a>Eszköz- és többmint.
+## <a name="device-rest-api"></a>Eszköz REST API
 
-Az eszközről származó [Device REST API-t](https://docs.microsoft.com/rest/api/iothub/device) használhatja az eszközről a felhőbe irányuló üzenetek IoT-központba küldésére, és [felhőből az eszközre](#cloud-to-device) irányuló üzenetek et fogadhat egy IoT-központból. Általában az IoT Hub oktatóanyagok ban látható módon a magasabb szintű [eszköz SDK-k](#azure-iot-device-sdks) egyikét kell használnia.
+Az eszközről [REST API eszközről](https://docs.microsoft.com/rest/api/iothub/device) az eszközről a felhőbe irányuló üzeneteket küldhet egy IoT hubhoz, és a [felhőből az eszközre](#cloud-to-device) irányuló üzeneteket fogadhat egy IoT hub-ból. Általában a IoT Hub oktatóanyagokban látható, a magasabb szintű [eszközök SDK](#azure-iot-device-sdks) -k egyikét kell használnia.
 
-## <a name="device-provisioning"></a>Eszközkiépítés
+## <a name="device-provisioning"></a>Eszköz kiépítés
 
-Az eszközkiépítés a kezdeti [eszközadatok](#device-data) hozzáadása a megoldás tárolóihoz. Ahhoz, hogy új eszköz csatlakozzon a hubhoz, hozzá kell adnia egy eszközazonosítót és kulcsokat az IoT Hub [identitásbeállítási jegyzékéhez.](#identity-registry) A kiépítési folyamat részeként előfordulhat, hogy más megoldástárolókban inicializálnia kell az eszközspecifikus adatokat.
+Az eszköz kiépítés során a rendszer a kezdeti [eszköz adatait](#device-data) hozzáadja a megoldásban lévő üzletekhez. Ahhoz, hogy egy új eszköz csatlakozhasson a központhoz, hozzá kell adnia egy eszköz AZONOSÍTÓját és kulcsait a IoT Hub [Identity registryhez](#identity-registry). A kiépítési folyamat részeként előfordulhat, hogy más megoldás-tárolókban is inicializálnia kell az eszközre vonatkozó adatmennyiséget.
 
 ## <a name="device-twin"></a>Ikereszközök
 
-Az [ikereszköz](iot-hub-devguide-device-twins.md) olyan JSON-dokumentum, amely az eszköz állapotadatait, például a metaadatokat, konfigurációkat és feltételeket tárolja. [Az IoT Hub](#iot-hub) egy ikereszközt tart fenn az IoT hubban üzembe helyezhető minden egyes eszközhöz. Az eszköztwins lehetővé teszi az [eszköz feltételek](#device-condition) és konfigurációk szinkronizálását az eszköz és a megoldás háttérrendszerének között. Lekérdezheti az eszköztwins adott eszközök megkereséséhez és a hosszú ideig futó műveletek állapotát.
+Az [eszköz Twin](iot-hub-devguide-device-twins.md) egy JSON-dokumentum, amely az eszköz állapotával kapcsolatos információkat, például a metaadatokat, a konfigurációkat és a feltételeket tárolja. [IoT hub](#iot-hub) megőrzi az IoT hub-ban kiépített eszközökhöz tartozó különálló eszközöket. Az eszközökhöz tartozó ikrek lehetővé teszik [az eszközök és a konfigurációk szinkronizálását](#device-condition) az eszköz és a megoldás hátterében. Lekérdezheti az eszközökből származó ikreket, hogy megkeresse az adott eszközöket, és lekérdezze a hosszan futó műveletek állapotát.
 
-## <a name="direct-method"></a>Közvetlen módszer
+## <a name="direct-method"></a>Közvetlen metódus
 
-A [közvetlen módszer](iot-hub-devguide-direct-methods.md) egy módja annak, hogy egy metódust az eszközön végrehajtandó, az IoT hubon egy API-meghívásával.
+A [közvetlen módszer](iot-hub-devguide-direct-methods.md) segítségével elindíthat egy metódust az eszközön, ha az IOT hub API-ját hívja meg.
 
 ## <a name="endpoint"></a>Végpont
 
-Az IoT-központ több [végpontot](iot-hub-devguide-endpoints.md) tesz elérhetővé, amelyek lehetővé teszik, hogy az alkalmazások csatlakozzanak az IoT hubhoz. Vannak olyan eszközfelé néző végpontok, amelyek lehetővé teszik az eszközök számára, hogy olyan műveleteket hajtsanak végre, mint az [eszközről a felhőbe](#device-to-cloud) irányuló üzenetek küldése és [a felhőből az eszközre](#cloud-to-device) irányuló üzenetek fogadása. Vannak szolgáltatás-kapcsolatú felügyeleti végpontok, amelyek lehetővé teszik a [háttér-alkalmazások](#back-end-app) műveletek et, például [az eszköz identitás-kezelés](#device-identity) és az ikereszköz-felügyelet. Az eszközről a felhőbe irányuló üzenetek olvasásához szolgáltatásra néző [beépített végpontok](#built-in-endpoints) találhatók. [Egyéni végpontokat](#custom-endpoints) hozhat létre az útválasztási szabály által küldött eszközről a felhőbe irányuló üzenetek [fogadására.](#routing-rules)
+Az IoT hub több [végpontot](iot-hub-devguide-endpoints.md) tesz elérhetővé, amelyek lehetővé teszik az alkalmazások számára az IoT hubhoz való kapcsolódást. Az eszközökön elérhető végpontok olyan műveleteket hajthatnak végre, mint például az [eszközről a felhőbe](#device-to-cloud) irányuló üzenetek küldése és [a felhőből az eszközre irányuló](#cloud-to-device) üzenetek fogadása. Vannak olyan szolgáltatásokkal kapcsolatos felügyeleti végpontok, amelyek lehetővé teszik a [háttérbeli alkalmazások](#back-end-app) számára, hogy olyan műveleteket hajtsanak végre, mint például az [eszközök identitásának](#device-identity) kezelése és az eszközök kettős kezelése. Az eszközről a felhőbe irányuló üzenetek olvasásához a szolgáltatáshoz kapcsolódó [beépített végpontok](#built-in-endpoints) tartoznak. Létrehozhat [Egyéni végpontokat](#custom-endpoints) a [útválasztási szabályok](#routing-rules)által elküldött eszközről a felhőbe irányuló üzenetek fogadásához.
 
-## <a name="event-hubs-service"></a>Eseményközpontok szolgáltatás
+## <a name="event-hubs-service"></a>Event Hubs szolgáltatás
 
-[Az Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) egy jól méretezhető adat-be- éselőanyag-szolgáltatás, amely másodpercenként több millió eseményt képes beszolgálni. A szolgáltatás lehetővé teszi a csatlakoztatott eszközök és alkalmazások által előállított hatalmas mennyiségű adat feldolgozását és elemzését. Az IoT Hub szolgáltatás összehasonlítása: [Az Azure IoT Hub és az Azure Event Hubs összehasonlítása.](iot-hub-compare-event-hubs.md)
+A [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) egy rugalmasan méretezhető adatbeviteli szolgáltatás, amely másodpercenként több millió eseményt képes fogadni. A szolgáltatás segítségével feldolgozhatja és elemezheti a csatlakoztatott eszközök és alkalmazások által előállított nagy mennyiségű adatmennyiséget. Az IoT Hub szolgáltatással való összehasonlításért tekintse meg az [azure IoT hub és az azure Event Hubs összehasonlítását](iot-hub-compare-event-hubs.md)ismertető témakört.
 
-## <a name="event-hub-compatible-endpoint"></a>Az Eseményközponttal kompatibilis végpont
+## <a name="event-hub-compatible-endpoint"></a>Event hub-kompatibilis végpont
 
-Az IoT hubba küldött [eszközök ről felhőbe](#device-to-cloud) irányuló üzenetek olvasásához csatlakozhat a hub egyik végpontjéhez, és bármely Event Hub-kompatibilis módszerrel elolvashatja ezeket az üzeneteket. Az Event Hub-kompatibilis módszerek közé tartozik az [Event Hubs SDK-k](../event-hubs/event-hubs-programming-guide.md) és az [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md)használata.
+Az IoT hub-ba küldött, az [eszközről a felhőbe](#device-to-cloud) irányuló üzenetek olvasásához csatlakozhat egy végponthoz a hub-on, és bármilyen Event hub-kompatibilis módszert használhat az üzenetek olvasásához. Az Event hub-kompatibilis módszerek közé tartozik a [Event Hubs SDK](../event-hubs/event-hubs-programming-guide.md) -k és a [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md)használata.
 
-## <a name="field-gateway"></a>Helyszíni átjáró
+## <a name="field-gateway"></a>Mező átjáró
 
-A helyszíni átjáró lehetővé teszi a kapcsolatot az eszközök, amelyek nem tudnak közvetlenül csatlakozni [az IoT Hubhoz,](#iot-hub) és általában helyileg telepített az eszközökkel. További információ: [Mi az Azure IoT Hub?](about-iot-hub.md)
+A helyszíni átjárók lehetővé teszik a csatlakozást olyan eszközökhöz, amelyek nem tudnak közvetlenül csatlakozni a [IoT hubhoz](#iot-hub) , és általában helyileg vannak telepítve az eszközökön. További információ: [Mi az az Azure IoT hub?](about-iot-hub.md)
 
 ## <a name="free-account"></a>Ingyenes fiók
 
-Létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/) az IoT Hub oktatóanyagai befejezéséhez és kísérletezhet az IoT Hub szolgáltatással (és más Azure-szolgáltatásokkal).
+Létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/) , amellyel elvégezheti a IoT hub oktatóanyagokat, és kísérletezhet a IoT hub szolgáltatással (és más Azure-szolgáltatásokkal).
 
 ## <a name="gateway"></a>Átjáró
 
-Az átjáró lehetővé teszi a kapcsolatot az on-t, amely nem tud közvetlenül csatlakozni az [IoT Hubhoz.](#iot-hub) Lásd még: [Field Gateway](#field-gateway), [Cloud Gateway](#cloud-gateway)és Custom [Gateway](#custom-gateway).
+Az átjárók lehetővé teszik a kapcsolódást olyan eszközökhöz, amelyek nem tudnak közvetlenül csatlakozni a [IoT hubhoz](#iot-hub). Lásd még: [Field Gateway](#field-gateway), [Cloud Gateway](#cloud-gateway)és [Custom Gateway](#custom-gateway).
 
-## <a name="identity-registry"></a>Azonosító beállításjegyzék
+## <a name="identity-registry"></a>Identitás-nyilvántartó
 
-Az [identitás-beállításjegyzék](iot-hub-devguide-identity-registry.md) egy IoT-központ beépített összetevője, amely az IoT-központhoz való csatlakozásra engedélyezett eszközök adatait tárolja.
+Az [Identity Registry](iot-hub-devguide-identity-registry.md) egy IoT hub beépített összetevője, amely az IoT hubhoz való kapcsolódásra jogosult egyes eszközök adatait tárolja.
 
 ## <a name="interactive-message"></a>Interaktív üzenet
 
-Az interaktív üzenet egy [felhőből az eszközre](#cloud-to-device) irányuló üzenet, amely azonnali műveletet indít el a megoldás háttérrendszerében. Előfordulhat például, hogy egy eszköz riasztást küld egy olyan hibáról, amelyet automatikusan be kell jelentkeznie egy CRM-rendszerbe.
+Az interaktív üzenet egy [felhőből az eszközre](#cloud-to-device) irányuló üzenet, amely azonnali műveletet indít el a megoldás hátterében. Előfordulhat például, hogy egy eszköz riasztást küld egy olyan hibáról, amelyet automatikusan be kell jelentkeznie egy CRM-rendszerbe.
 
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
 ## <a name="iot-hub"></a>IoT Hub
 
-Az IoT Hub egy teljes körűen felügyelt Azure-szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió eszköz és egy megoldás háttértartaléka között. További információ: [Mi az Azure IoT Hub?](about-iot-hub.md) Az [Azure-előfizetés](#subscription)használatával ioT-központokat hozhat létre az IoT-üzenetkezelési számítási feladatok kezeléséhez.
+A IoT Hub egy teljes körűen felügyelt Azure-szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió eszköz és egy megoldás hátterében. További információ: [Mi az az Azure IoT hub?](about-iot-hub.md) Az [Azure-előfizetését](#subscription)használva IoT hubokat hozhat létre a IoT üzenetkezelési számítási feladatainak kezeléséhez.
 
-## <a name="iot-hub-metrics"></a>IoT Hub-metrikák
+## <a name="iot-hub-metrics"></a>IoT Hub metrikák
 
-[Az IoT Hub-metrikák](iot-hub-metrics.md) az [Azure-előfizetésben](#subscription)lévő IoT-központok állapotára vonatkozó adatokat biztosítanak. Az IoT Hub-metrikák lehetővé teszik a szolgáltatás és a hozzá csatlakoztatott eszközök általános állapotának felmérését. Az IoT Hub-metrikák segítségével megtekintheti, hogy mi történik az IoT-központtal, és kivizsgálhatja a kiváltó problémákat anélkül, hogy kapcsolatba kellene lépnie az Azure-támogatással.
+[IoT hub mérőszámok](iot-hub-metrics.md) adatokat biztosítanak az [Azure-előfizetésében](#subscription)lévő IoT-hubok állapotáról. IoT Hub mérőszámok lehetővé teszik a szolgáltatás általános állapotának és a hozzájuk kapcsolódó eszközök értékelését. IoT Hub mérőszámok segítségével megtekintheti, hogy mi történik az IoT-hubhoz, és hogyan vizsgálja meg a kiváltó problémákat anélkül, hogy kapcsolatba kellene lépnie az Azure ügyfélszolgálatával.
 
-## <a name="iot-hub-query-language"></a>Az IoT Hub lekérdezési nyelve
+## <a name="iot-hub-query-language"></a>IoT Hub lekérdezés nyelve
 
-Az [IoT Hub lekérdezési nyelv](iot-hub-devguide-query-language.md) egy SQL-szerű [](#job) nyelv, amely lehetővé teszi, hogy lekérdezze a és az eszköz twins.
+A [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md) egy SQL-szerű nyelv, amely lehetővé teszi a [](#job) és az eszközök lekérését.
 
-## <a name="iot-hub-resource-rest-api"></a>IoT Hub erőforrás REST API
+## <a name="iot-hub-resource-rest-api"></a>Erőforrás-REST API IoT Hub
 
-Az [IoT Hub Resource REST API-val](https://docs.microsoft.com/rest/api/iothub/iothubresource) kezelheti az IoT-központokat az [Azure-előfizetésében,](#subscription) amelyek olyan műveleteket hajtanak végre, mint például a hubok létrehozása, frissítése és törlése.
+A [IoT hub erőforrás-REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) segítségével kezelheti az [Azure-előfizetéshez](#subscription) tartozó IoT-hubokat olyan műveletek végrehajtásához, mint például a hubok létrehozása, frissítése és törlése.
 
 ## <a name="iot-solution-accelerators"></a>IoT-megoldásgyorsítók
 
-Az Azure IoT-megoldásgyorsítók több Azure-szolgáltatást is tartalmazó megoldásokat kínálnak. Ezek a megoldások lehetővé teszik, hogy gyorsan elkezdhesse a gyakori IoT-forgatókönyvek végpontok között történő megvalósításait. További információ: [Mik azok az Azure IoT-megoldásgyorsítók?](../iot-accelerators/about-iot-accelerators.md)
+Az Azure IoT megoldás-gyorsító csomag több Azure-szolgáltatást is kínál a megoldásokhoz. Ezek a megoldások lehetővé teszik a gyakori IoT-forgatókönyvek teljes körű megvalósításának gyors megkezdését. További információ: [Mi az Azure IoT megoldás-gyorsító?](../iot-accelerators/about-iot-accelerators.md)
 
-## <a name="the-iot-extension-for-azure-cli"></a>Az Azure CLI IoT-bővítménye 
+## <a name="the-iot-extension-for-azure-cli"></a>Az Azure CLI-hez készült IoT-bővítmény 
 
-[Az Azure CLI IoT-bővítménye](https://github.com/Azure/azure-iot-cli-extension) egy platformfüggetlen, parancssori eszköz. Az eszköz lehetővé teszi, hogy kezelje az eszközöket az [identitás-beállításjegyzékben,](#identity-registry)üzeneteket és fájlokat küldjön és fogadjon az eszközökről, és figyelje az IoT hub műveleteit.
+[Az Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension) egy platformfüggetlen, parancssori eszköz. Az eszköz lehetővé teszi az eszközök kezelését az [Identity registryben](#identity-registry), üzenetek és fájlok küldését és fogadását az eszközökről, valamint az IoT hub-műveletek figyelését.
 
 ## <a name="job"></a>Feladat
 
-A megoldás háttér-háttér-feladatok [segítségével](iot-hub-devguide-jobs.md) ütemezheti és nyomon követheti a tevékenységeket az IoT hubregisztrált eszközök önszámára regisztrált eszközök önintézése. A tevékenységek közé tartozik az ikereszköz [kívánt tulajdonságainak](#desired-properties)frissítése , az eszköz [ikercímkéinek](#tags)frissítése és a [közvetlen módszerek](#direct-method)meghívása . [Az IoT Hub](#iot-hub) az [identitásjegyzékbe](#identity-registry) [történő importálást és exportálást](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) is használja.
+A megoldás háttérbe állítása [feladatok](iot-hub-devguide-jobs.md) használatával ütemezhet és követheti a tevékenységeket az IoT hub-ban regisztrált eszközökön. A tevékenységek közé tartozik az eszköz dupla [kívánt tulajdonságainak](#desired-properties)frissítése, az eszköz kettős [címkék](#tags)frissítése és a [közvetlen metódusok](#direct-method)meghívása. A [IoT hub](#iot-hub) az azonosítót is használja az [identitás-beállításjegyzékből](#identity-registry) [való importálásra és exportálásra](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) .
 
 ## <a name="modules"></a>Modulok
 
-Az eszköz oldalán az IoT Hub-eszköz SDK-k lehetővé teszik, hogy [olyan modulokat](iot-hub-devguide-module-twins.md) hozzon létre, ahol mindegyik önálló kapcsolatot nyit meg az IoT Hubhoz. Ez a funkció lehetővé teszi, hogy külön névtereket használjon az eszköz különböző összetevőihez.
+Az eszköz oldalon a IoT Hub eszköz SDK-k lehetővé teszik, hogy olyan [modulokat](iot-hub-devguide-module-twins.md) hozzon létre, amelyekben mindegyik egy független kapcsolódást nyit meg a IoT hubhoz. Ez a funkció lehetővé teszi, hogy külön névtereket használjon az eszköz különböző összetevőihez.
 
-A modulidentitás és az ikermodul ugyanazokat a képességeket biztosítja, mint az [eszközidentitás](#device-identity) és az [ikereszköz,](#device-twin) de finomabb részletességgel. Ez a finomabb részletesség lehetővé teszi, hogy a képes eszközök, például az operációs rendszer alapú eszközök vagy a több összetevőt kezelő belső vezérlőprogram-eszközök elkülönítsék az egyes összetevők konfigurációját és feltételeit.
+A modul identitása és a modul Twin ugyanazokat a funkciókat biztosítja, mint az [eszköz identitása](#device-identity) és az [eszközök Twin](#device-twin) , de finomabb részletességgel. Ez a finomabb részletesség lehetővé teszi, hogy a képes eszközök, például az operációs rendszer alapú eszközök vagy a belső vezérlőprogram eszközei több összetevőt kezelnek, az egyes összetevők konfigurációjának és feltételeinek elkülönítéséhez.
 
 ## <a name="module-identity"></a>Modul identitása
 
-A modulidentitás az eszközhöz tartozó minden modulhoz rendelt egyedi azonosító. A modulidentitás is regisztrálva van az [identitásjegyzékben.](#identity-registry)
+A modul identitása az eszközhöz tartozó összes modulhoz hozzárendelt egyedi azonosító. A modul identitása is regisztrálva van az [Identity registryben](#identity-registry).
 
-## <a name="module-twin"></a>Ikermodul
+## <a name="module-twin"></a>Modul Twin
 
-Az ikereszközhöz hasonlóan az ikermodul is a JSON-dokumentum, amely a modul állapotadatait, például a metaadatokat, konfigurációkat és feltételeket tárolja. Az IoT Hub egy ikermodult tart minden egyes modulidentitáshoz, amelyet az IoT hubban egy eszközidentitás keretében létesít. A modultwins lehetővé teszi a modul feltételek és konfigurációk szinkronizálását a modul és a megoldás háttérvége között. A modul twins lekérdezése adott modulok megkereséséhez és a hosszú ideig futó műveletek állapotát.
+Az eszközökhöz hasonlóan a Twin modul egy JSON-dokumentum, amely a modul állapotával kapcsolatos információkat, például metaadatokat, konfigurációkat és feltételeket tárol. IoT Hub megőrzi az IoT hub eszköz-identitása alatt kiépített modul-identitások külön modulját. Az ikrek modul lehetővé teszi, hogy szinkronizálja a modul feltételeit és konfigurációit a modul és a megoldás háttér-végpontja között. Az ikrek modulban lekérdezheti az adott modulokat, és lekérdezheti a hosszan futó műveletek állapotát.
 
 ## <a name="mqtt"></a>MQTT
 
-[Az MQTT](https://mqtt.org/) az [IoT Hub](#iot-hub) által az eszközökkel való kommunikációhoz támogatott üzenetkezelési protokollok egyike. Az IoT Hub által támogatott üzenetkezelési protokollokról az [Üzenetek küldése és fogadása az IoT Hubbal](iot-hub-devguide-messaging.md)című témakörben talál további információt.
+A [MQTT](https://mqtt.org/) az egyik üzenetküldési protokoll, amelyet a [IoT hub](#iot-hub) támogat az eszközökkel való kommunikációhoz. További információ a IoT Hub által támogatott üzenetküldési protokollokról: [üzenetek küldése és fogadása IoT hub](iot-hub-devguide-messaging.md)használatával.
 
 ## <a name="operations-monitoring"></a>Műveletek figyelése
 
-Az IoT [Hub-műveletek figyelése](iot-hub-operations-monitoring.md) lehetővé teszi, hogy valós időben figyelje az IoT hub on operations állapotát. [Az IoT Hub](#iot-hub) a műveletek több kategóriája között követi nyomon az eseményeket. Választhat ja: események küldése egy vagy több kategóriából egy IoT Hub-végpont feldolgozásra. Figyelheti az adatokat a hibákat, vagy összetettebb feldolgozást állíthat be az adatminták alapján.
+A IoT Hub [Operations monitoring](iot-hub-operations-monitoring.md) lehetővé teszi, hogy valós időben figyelje a IoT hub műveleteinek állapotát. [IoT hub](#iot-hub) az eseményeket több különböző kategóriába tartozó műveletben követi nyomon. A feldolgozáshoz egy vagy több kategóriából is küldhet eseményeket IoT Hub végpontra. A hibák figyelése és az adatmintázatok alapján összetettebb feldolgozás is beállítható.
 
 ## <a name="physical-device"></a>Fizikai eszköz
 
-A fizikai eszköz egy valódi eszköz, például egy Raspberry Pi, amely csatlakozik egy IoT hubhoz. A kényelem érdekében az IoT Hub számos [oktatóanyaga szimulált eszközöket](#simulated-device) használ, hogy lehetővé tegye a minták futtatását a helyi számítógépen.
+A fizikai eszközök olyan valódi eszközök, mint például a málna PI, amely egy IoT hubhoz csatlakozik. A IoT Hub számos oktatóanyaga [szimulált eszközök](#simulated-device) használatával teszi lehetővé, hogy mintákat futtasson a helyi gépen.
 
 ## <a name="primary-and-secondary-keys"></a>Elsődleges és másodlagos kulcsok
 
-Amikor egy IOt-központ eszközfelé vagy szolgáltatásfelé néző végpontjához csatlakozik, a [kapcsolati karakterlánc](#connection-string) kulcsot tartalmaz a hozzáférés biztosításához. Amikor hozzáad egy eszközt az [identitásbeállításjegyzékhez,](#identity-registry) vagy [megosztott hozzáférési szabályzatot](#shared-access-policy) ad hozzá a hubhoz, a szolgáltatás létrehoz egy elsődleges és másodlagos kulcsot. Két kulcs használata lehetővé teszi, hogy az egyik kulcsról a másikra, amikor frissíti a kulcsot anélkül, hogy az IoT hubhoz való hozzáférés elvesztése.
+Ha egy IoT hub eszközre irányuló vagy szolgáltatáshoz kapcsolódó végpontján csatlakozik, a [kapcsolati sztring](#connection-string) tartalmaz egy kulcsot, amely hozzáférést biztosít Önnek. Ha hozzáad egy eszközt az [azonosító beállításjegyzékhez](#identity-registry) , vagy egy [megosztott hozzáférési szabályzatot](#shared-access-policy) ad hozzá a központhoz, a szolgáltatás létrehoz egy elsődleges és egy másodlagos kulcsot. A két kulcs lehetővé teszi, hogy átadja az egyik kulcsról a másikra, ha az IoT hub elérésének elvesztése nélkül frissíti a kulcsot.
 
 ## <a name="protocol-gateway"></a>Protokollátjáró
 
-A protokollátjáró általában a felhőben van telepítve, és protokollfordítási szolgáltatásokat nyújt az [IoT Hubhoz](#iot-hub)csatlakozó eszközök számára. További információ: [Mi az Azure IoT Hub?](about-iot-hub.md)
+A protokoll-átjáró jellemzően a felhőben van üzembe helyezve, és protokoll-fordítási szolgáltatásokat biztosít a [IoT hubhoz](#iot-hub)csatlakozó eszközökhöz. További információ: [Mi az az Azure IoT hub?](about-iot-hub.md)
 
 ## <a name="quotas-and-throttling"></a>Kvóták és szabályozás
 
-Az [IoT Hub](#iot-hub)használatára különböző [kvóták](iot-hub-devguide-quotas-throttling.md) vonatkoznak, a kvóták nagy része az IoT hub szintjétől függően változik. [Az IoT Hub](#iot-hub) is alkalmazza [a szabályozást](iot-hub-devguide-quotas-throttling.md) a szolgáltatás futási időben történő használatára.
+Számos [kvóta](iot-hub-devguide-quotas-throttling.md) vonatkozik a [IoT hub](#iot-hub)használatára, a kvóták nagy része az IoT hub szintjétől függ. A [IoT hub](#iot-hub) a szolgáltatás futás közbeni használatára vonatkozó [szabályozást](iot-hub-devguide-quotas-throttling.md) is alkalmaz.
 
 ## <a name="reported-configuration"></a>Jelentett konfiguráció
 
-Az [ikereszköz](iot-hub-devguide-device-twins.md)környezetében a jelentett konfiguráció az ikereszköz tulajdonságainak és metaadatainak teljes készletére vonatkozik, amelyeket jelenteni kell a megoldás háttérrendszerének.
+Egy [különálló eszköz](iot-hub-devguide-device-twins.md)kontextusában a jelentett konfiguráció a tulajdonságok és a metaadatok teljes készletét jelenti, amelyeket jelenteni kell a megoldás hátterének.
 
 ## <a name="reported-properties"></a>Jelentett tulajdonságok
 
-Az [ikereszköz](iot-hub-devguide-device-twins.md)környezetében a jelentett tulajdonságok az ikereszköz egyik alszakasza, amelyet az eszköz konfigurációjának vagy állapotának szinkronizálásához [kívánt tulajdonságokkal](#desired-properties) használnak. A jelentett tulajdonságokat csak az [eszközalkalmazás](#device-app) állíthatja be, és egy [háttéralkalmazás](#back-end-app)olvashatja és kérdezheti le.
+Az [eszközök Twin](iot-hub-devguide-device-twins.md)-környezetében a jelentett tulajdonságok a [kívánt tulajdonságokkal](#desired-properties) rendelkező eszközök iker szakasza az eszköz konfigurációjának vagy feltételének szinkronizálásához. A jelentett tulajdonságok csak az [eszköz alkalmazásban](#device-app) állíthatók be, és egy [háttérbeli alkalmazás](#back-end-app)által olvashatók és kérhetők le.
 
 ## <a name="resource-group"></a>Erőforráscsoport
 
-[Az Azure Resource Manager](#azure-resource-manager) erőforráscsoportok at használ a kapcsolódó erőforrások csoportosításához. Az erőforráscsoport segítségével egyszerre hajthatja végre a csoport összes erőforrását.
+A [Azure Resource Manager](#azure-resource-manager) erőforráscsoportok használatával csoportosítja a kapcsolódó erőforrásokat. Egy erőforráscsoport használatával egyszerre hajthat végre műveleteket a csoporton lévő összes erőforráson.
 
 ## <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 
-Az újrapróbálkozási szabályzat használatával átmeneti [hibákat,](/azure/architecture/best-practices/transient-faults) amikor csatlakozik egy felhőalapú szolgáltatáshoz.
+A felhőalapú szolgáltatásokhoz való csatlakozáskor az újrapróbálkozási szabályzat segítségével kezelheti az [átmeneti hibákat](/azure/architecture/best-practices/transient-faults) .
 
 ## <a name="routing-rules"></a>Útválasztási szabályok
 
-Az IoT-központban beállíthatja az [útválasztási szabályokat,](iot-hub-devguide-messages-read-custom.md) hogy az eszköz ről a felhőbe irányuló üzeneteket egy beépített végpontra vagy [egyéni végpontokra](#custom-endpoints) irányítsa a megoldás háttérrendszeráltali feldolgozása [érdekében.](#built-in-endpoints)
+A IoT hub [útválasztási szabályait](iot-hub-devguide-messages-read-custom.md) úgy konfigurálja, hogy az eszközről a felhőbe irányuló üzeneteket egy [beépített végpontra](#built-in-endpoints) vagy [Egyéni végpontokra](#custom-endpoints) irányítsa a megoldás hátterének feldolgozásához.
 
-## <a name="sasl-plain"></a>SASL SIMA
+## <a name="sasl-plain"></a>SASL PLAIN
 
-A SASL PLAIN egy olyan protokoll, amelyet az AMQP protokoll biztonsági jogkivonatok átvitelére használ.
+SASL PLAIN egy protokoll, amelyet a AMQP protokoll a biztonsági jogkivonatok átvitelére használ.
 
 ## <a name="service-rest-api"></a>Szolgáltatás REST API-ja
 
-Használhatja a [Service REST API-t](https://docs.microsoft.com/rest/api/iothub/service/configuration) a megoldás háttér-az eszközök kezeléséhez. Az API lehetővé teszi [az ikereszköz tulajdonságainak](#device-twin) beolvasását és frissítését, [a közvetlen metódusok](#direct-method)meghívását és [a feladatok ütemezését.](#job) Általában az IoT Hub oktatóanyagok ban látható magasabb szintű [szolgáltatások egyikét](#azure-iot-service-sdks) kell használnia.
+Az eszközök kezeléséhez használhatja a megoldás háttér- [REST API a szolgáltatását](https://docs.microsoft.com/rest/api/iothub/service/configuration) . Az API lehetővé teszi az [eszközök Twin](#device-twin) tulajdonságainak lekérését és frissítését, a [közvetlen metódusok](#direct-method)meghívását és a [feladatok](#job)ütemezését. Általában a magasabb szintű [szolgáltatási SDK](#azure-iot-service-sdks) -k egyikét kell használnia, ahogy az a IoT hub oktatóanyagokban is látható.
 
 ## <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
 
-A megosztott hozzáférésű aláírások (SAS) az SHA-256 biztonságos kivonatain vagy URI-in alapuló hitelesítési mechanizmus. A SAS-hitelesítés két összetevőből áll: egy _megosztott hozzáférési szabályzatból_ és egy _megosztott hozzáférési kódból_ (más néven jogkivonatból). Egy eszköz SAS-t használ az IoT hubbal való hitelesítéshez. [A háttéralkalmazások](#back-end-app) is sas-t használnak a szolgáltatásfelé néző végpontok ioT hub on authenticate. Általában a SAS-jogkivonatot tartalmazza a [kapcsolati karakterláncban,](#connection-string) amelyet egy alkalmazás az IoT hubhoz való kapcsolat létrehozásához használ.
+A közös hozzáférésű aláírások (SAS) az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmus. Az SAS-hitelesítésnek két összetevője van: egy _közös hozzáférési házirend_ és egy _közös hozzáférési aláírás_ (más néven token). Az eszközök SAS használatával végzik el a hitelesítést egy IoT hub használatával. A [háttérbeli alkalmazások](#back-end-app) az SAS használatával is hitelesítik magukat az IoT hub szolgáltatással szemben lévő végpontokkal. Általában az SAS-tokent a [kapcsolati karakterláncban](#connection-string) adja meg, amelyet az alkalmazás használ a IoT hub-kapcsolat létesítéséhez.
 
-## <a name="shared-access-policy"></a>Megosztott hozzáférési házirend
+## <a name="shared-access-policy"></a>Megosztott elérési házirend
 
-A megosztott hozzáférési szabályzat határozza meg azokat az engedélyeket, akik érvényes [elsődleges vagy másodlagos kulccsal](#primary-and-secondary-keys) rendelkeznek a házirendhez társítva. A portálon kezelheti a hub megosztott hozzáférési szabályzatait és [kulcsait.](#azure-portal)
+A megosztott elérési házirend határozza meg, hogy az adott szabályzathoz tartozó érvényes [elsődleges vagy másodlagos kulccsal](#primary-and-secondary-keys) rendelkezők számára milyen engedélyek vannak megadva. A központ megosztott hozzáférési házirendjeit és kulcsait a [portálon](#azure-portal)kezelheti.
 
 ## <a name="simulated-device"></a>Szimulált eszköz
 
-A kényelem érdekében az IoT Hub számos oktatóanyaga szimulált eszközöket használ, hogy lehetővé tegye a minták futtatását a helyi számítógépen. Ezzel szemben a [fizikai eszköz](#physical-device) egy valódi eszköz, például egy Raspberry Pi, amely csatlakozik egy IoT hubhoz.
+A IoT Hub számos oktatóanyaga szimulált eszközök használatával teszi lehetővé, hogy mintákat futtasson a helyi gépen. Ezzel szemben a [fizikai eszköz](#physical-device) egy valódi eszköz, például egy málna PI, amely egy IoT hubhoz csatlakozik.
 
 ## <a name="solution"></a>Megoldás
-A _megoldás_ hivatkozhat egy Visual Studio-megoldásra, amely egy vagy több projektet tartalmaz. A _megoldás_ egy IoT-megoldásra is hivatkozhat, amely olyan elemeket tartalmaz, mint például eszközök, [eszközalkalmazások,](#device-app)egy IoT-központ, más [Azure-szolgáltatások és háttéralkalmazások.](#back-end-app)
+Egy _megoldás_ olyan Visual Studio-megoldásra is hivatkozhat, amely egy vagy több projektet tartalmaz. A _megoldások_ olyan IoT-megoldásra is hivatkozhatnak, amely olyan elemeket tartalmaz, mint például az eszközök, az eszközök [alkalmazásai](#device-app), az IoT hub, az egyéb Azure-szolgáltatások és a [háttérbeli alkalmazások](#back-end-app).
 
 ## <a name="subscription"></a>Előfizetés
 
-Az Azure-előfizetés az a hely, ahol a számlázás történik. Minden azure-erőforrást hoz létre, vagy az Azure-szolgáltatás használata egyetlen előfizetéstársított. Számos kvóta is vonatkozik az előfizetés szintjén.
+Az Azure-előfizetések esetében a számlázás zajlik. Minden Ön által létrehozott vagy az Azure-szolgáltatáshoz használt Azure-erőforrás egyetlen előfizetéshez van társítva. Az előfizetés szintjén számos kvóta is érvényes.
 
 ## <a name="system-properties"></a>Rendszertulajdonságok
 
-Az [ikereszköz](iot-hub-devguide-device-twins.md)környezetében a rendszertulajdonságok írásvédettek, és tartalmazzák az eszköz használatára vonatkozó információkat, például az utolsó tevékenység idejét és a kapcsolat állapotát.
+Egy [különálló eszköz](iot-hub-devguide-device-twins.md)kontextusában a Rendszertulajdonságok csak olvashatók, és információkat tartalmaznak az eszköz használatáról, például a legutóbbi tevékenység idejéről és a kapcsolatok állapotáról.
 
 ## <a name="tags"></a>Címkék
 
-Az [ikereszköz](iot-hub-devguide-device-twins.md)környezetében a címkék olyan eszközmetaadatok, amelyeket a megoldás háttérrendszerének egy JSON-dokumentum tárolja és olvas le. A címkék nem láthatók az eszközön lévő alkalmazások számára.
+A [Twin eszközök](iot-hub-devguide-device-twins.md)kontextusában a címkék a megoldás által tárolt, és egy JSON-dokumentum formájában lekért eszköz-metaadatok. A címkék nem láthatók az eszközön futó alkalmazások számára.
 
 ## <a name="telemetry"></a>Telemetria
 
-Az eszközök telemetriai adatokat gyűjtenek, például a szélsebességet vagy a hőmérsékletet, és adatpont-üzenetek használatával elküldik a telemetriai adatokat egy IoT-központba.
+Az eszközök telemetria adatokat gyűjtenek, például a szél sebességét vagy a hőmérsékletet, és adatpont-üzenetek használatával küldik el a telemetria egy IoT-hubhoz.
 
-## <a name="token-service"></a>Token szolgáltatás
+## <a name="token-service"></a>Jogkivonat-szolgáltatás
 
-Egy jogkivonat-szolgáltatás használatával valósíthatja meg az eszközök hitelesítési mechanizmus. Az IoT Hub [megosztott hozzáférési szabályzatot](#shared-access-policy) **használ a DeviceConnect** engedélyekkel *eszközhatókörrel rendelkező* jogkivonatok létrehozásához. Ezek a jogkivonatok lehetővé teszik, hogy egy eszköz csatlakozzon az IoT hubhoz. Az eszköz egy egyéni hitelesítési mechanizmust használ a jogkivonat-szolgáltatással való hitelesítéshez. Ha az eszköz sikeresen hitelesíti magát, a jogkivonat-szolgáltatás egy SAS-jogkivonatot ad ki az IT-központ eléréséhez.
+A jogkivonat-szolgáltatás használatával hitelesítési mechanizmust valósíthat meg az eszközökhöz. Egy IoT Hub [megosztott hozzáférési szabályzatot](#shared-access-policy) használ, amely **DeviceConnect** engedélyekkel rendelkezik az *eszköz hatókörű* jogkivonatok létrehozásához. Ezek a tokenek lehetővé teszik, hogy az eszköz csatlakozhasson az IoT hubhoz. Az eszköz egyéni hitelesítési mechanizmust használ a jogkivonat-szolgáltatással történő hitelesítéshez. Ha az eszköz hitelesítése sikeresen megtörtént, a jogkivonat szolgáltatás egy SAS-tokent bocsát ki az eszköz számára az IoT hub eléréséhez.
 
-## <a name="twin-queries"></a>Ikerlekérdezések
+## <a name="twin-queries"></a>Dupla lekérdezés
 
-[Az eszköz- és moduliker-lekérdezések](iot-hub-devguide-query-language.md) az SQL-szerű IoT Hub lekérdezési nyelvet használják az adatok lekéréséhez az eszköz twins vagy modul twins. Ugyanazt az IoT Hub lekérdezési nyelvet [](#job) használhatja az IoT hubon való futtatással kapcsolatos információk lekéréséhez.
+Az [eszközök és modulok két lekérdezése](iot-hub-devguide-query-language.md) az SQL-Like IoT hub lekérdezési nyelvet használja az eszközöktől az ikrekből vagy a modulokból származó adatok lekéréséhez. Ugyanezzel a IoT Hub lekérdezési nyelvvel kérheti le az IoT [](#job) hub futtatásával kapcsolatos információkat.
 
-## <a name="twin-synchronization"></a>Ikerszinkronizálás
+## <a name="twin-synchronization"></a>Kettős szinkronizálás
 
-A két szinkronizálás az eszköz twins vagy modul twins [az](#desired-properties) eszközök vagy modulok konfigurálásához, és lekérni [a jelentett tulajdonságokat](#reported-properties) tőlük az ikertárolóban való tároláshoz.
+A Twin synchronization a [kívánt tulajdonságokat](#desired-properties) használja az ikrek vagy a modul ikrek számára az eszközök vagy modulok konfigurálásához és a [jelentett tulajdonságok](#reported-properties) lekéréséhez a Twin-ben való tároláshoz.
 
-## <a name="x509-client-certificate"></a>X.509 ügyféltanúsítvány
+## <a name="x509-client-certificate"></a>X. 509 ügyféltanúsítvány
 
-Az eszközök X.509-es tanúsítvánnyal hitelesíthetik magukat [az IoT Hubbal.](#iot-hub) Az X.509-es tanúsítvány használata a [SAS-jogkivonat](#shared-access-signature)használatának alternatívája.
+Az eszközök X. 509 tanúsítvánnyal hitelesíthetők a [IoT hub](#iot-hub)használatával. Az X. 509 tanúsítvány használata a [sas-tokenek](#shared-access-signature)használatának alternatívája.

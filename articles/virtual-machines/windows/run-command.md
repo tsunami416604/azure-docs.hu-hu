@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: a0125c556789b1a1a5b11dcd16b852d7f57b6c50
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82099869"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143783"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Futtatás parancs használatával
 
@@ -58,7 +58,7 @@ The entity was not found in this Azure location
 |**EnableAdminAccount**|Ellenőrzi, hogy a helyi rendszergazdai fiók le van-e tiltva, és ha igen, akkor.|
 |**IPConfig**| Az IP-cím, az alhálózati maszk és az alapértelmezett átjáró részletes információit jeleníti meg a TCP/IP-hez kötött egyes adapterek esetében.|
 |**RDPSettings**|Ellenőrzi a beállításjegyzék beállításait és a tartományi házirend beállításait. Házirend-műveleteket javasol, ha a számítógép egy tartomány része, vagy módosítja a beállításokat az alapértelmezett értékekre.|
-|**ResetRDPCert**|Az RDP-figyelőhöz kötött SSL-tanúsítvány eltávolítása és az RDP-figyelő biztonsági mentése az alapértelmezett értékre. Akkor használja ezt a parancsfájlt, ha a tanúsítvánnyal kapcsolatos problémákat tapasztal.|
+|**ResetRDPCert**|Eltávolítja az RDP-figyelőhöz kötött TLS/SSL-tanúsítványt, és visszaállítja az RDP-figyelő biztonsági beállítását az alapértelmezett értékre. Akkor használja ezt a parancsfájlt, ha a tanúsítvánnyal kapcsolatos problémákat tapasztal.|
 |**SetRDPPort**|Beállítja Távoli asztal kapcsolatok alapértelmezett vagy felhasználó által megadott portszámát. Engedélyezi a tűzfalszabályok bejövő hozzáférését a porthoz.|
 
 ## <a name="azure-cli"></a>Azure CLI

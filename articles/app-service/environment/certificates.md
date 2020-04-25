@@ -1,45 +1,45 @@
 ---
-title: Tanúsítványkötések
-description: Ismertesse az App Service-környezet tanúsítványaival kapcsolatos számos témakört. Ismerje meg, hogyan működik a tanúsítványkötések az ase-i egybérlős alkalmazásokon.
+title: Tanúsítványok kötései
+description: Ismertesse a tanúsítványokkal kapcsolatos számos témakört egy App Service Environment. Ismerje meg, hogyan működnek a tanúsítvány-kötések az egybérlős alkalmazásokban egy központilag.
 author: ccompy
 ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba1d06ce83d50b6f0db84d1e423e66eae98f665d
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: dffa9571706c067834e47a656ec1d47cb884fb48
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477497"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128710"
 ---
-# <a name="certificates-and-the-app-service-environment"></a>Tanúsítványok és az App Service-környezet 
+# <a name="certificates-and-the-app-service-environment"></a>Tanúsítványok és a App Service Environment 
 
-Az App Service Environment(ASE) az Azure-alkalmazásszolgáltatás, amely az Azure virtuális hálózaton (VNet) fut. Telepíthető egy internetes elérhető alkalmazás-végpontvagy a virtuális hálózatban található alkalmazásvégpont. Ha telepíti az ASE egy internetes elérhető végpont, hogy a központi telepítés neve külső ASE. Ha üzembe helyezi az ASE egy végpontot a virtuális hálózatban, hogy a központi telepítés neve iLB ASE. Az ILB ASE-ről az [ILB ASE-dokumentum létrehozása és használata](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase) című dokumentumból tudhat meg többet.
+A App Service Environment (bevezetési) az Azure-Virtual Network (VNet) belül futó Azure App Service központi telepítése. Üzembe helyezhető egy internetről elérhető alkalmazás-végponttal vagy egy VNet található alkalmazás-végponttal. Ha a központilag elérhető Internet-végponttal telepíti a bevezetést, akkor az üzembe helyezést külső kiegészítő szolgáltatásnak nevezzük. Ha a VNet egy végponttal helyezi üzembe a bevezetést, akkor az üzembe helyezést ILB-előállító-nek nevezzük. További információt a ILB a ILB-ben való [létrehozásáról és használatáról](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase) című dokumentumban olvashat.
 
-Az ASE egyetlen bérlői rendszer. Mivel egy bérlő, vannak olyan funkciók, amelyek csak egy ASE, amelyek nem érhetők el a több-bérlős App Service. 
+A szolgáltató egyetlen bérlői rendszer. Mivel ez egyetlen bérlő, a több-bérlős App Serviceban nem elérhetővé vált egy olyan szolgáltatás, amely nem érhető el. 
 
-## <a name="ilb-ase-certificates"></a>ILB ASE-tanúsítványok 
+## <a name="ilb-ase-certificates"></a>ILB-tanúsítvány 
 
-Ha külső ASE-t használ, akkor az alkalmazások elérése az [appname] helyen található. [asename].p.azurewebsites.net. Alapértelmezés szerint minden ASEs, még az ILB ASEs, jönnek létre a tanúsítványokat, amelyek követik ezt a formátumot. Ha rendelkezik egy ILB ASE, az alkalmazások elérése alapján a tartomány nevét, amelyet az ILB ASE létrehozásakor megadott. Ahhoz, hogy az alkalmazások támogassák a TLS-t, fel kell töltenie a tanúsítványokat. Szerezzen be érvényes TLS/SSL tanúsítványt belső hitelesítésszolgáltatók segítségével, külső kibocsátótól vásároljon tanúsítványt, vagy önaláírt tanúsítványt használjon. 
+Ha külső betekintő szolgáltatást használ, akkor az alkalmazások a következő időpontban érhetők el: [AppName]. [asename]. p. azurewebsites. net. Alapértelmezés szerint az összes ASE, akár a ILB ASE is, az adott formátumot követő tanúsítványokkal jönnek létre. Ha van egy ILB-alapú beadása, az alkalmazások a ILB-előkészítés létrehozásakor megadott tartománynév alapján érhetők el. Ahhoz, hogy az alkalmazások támogassák a TLS-t, fel kell töltenie a tanúsítványokat. Szerezzen be egy érvényes TLS/SSL-tanúsítványt belső hitelesítésszolgáltatók használatával, tanúsítvány vásárlása külső kiállítótól vagy önaláírt tanúsítvány használatával. 
 
-Az ILB ASE-vel kétféleképpen konfigurálhatja a tanúsítványokat.  Beállíthat egy helyettesítő karakter alapértelmezett tanúsítványt az ILB ASE-hez, vagy tanúsítványokat állíthat be az ASE egyes webalkalmazásaihoz.  A választott tól függetlenül a következő tanúsítványattribútumokat kell megfelelően konfigurálni:
+A tanúsítványok a ILB-vel való konfigurálásának két lehetősége van.  Beállíthat egy helyettesítő karaktert a ILB beadásához, vagy beállíthat tanúsítványokat a központhoz tartozó egyes webalkalmazásokhoz.  A választott lehetőségtől függetlenül a következő tanúsítvány-attribútumokat megfelelően kell konfigurálni:
 
-- **Tárgy:** Ezt az attribútumot *-ra kell állítani. [a-root-domain-here] egy helyettesítő ILB ASE tanúsítványhoz. Ha létrehozza a tanúsítványt az alkalmazáshoz, akkor az legyen az [appname]. [a-root-domain-itt]
-- **Tárgy Alternatív neve:** Ennek az attribútumnak mindkét *-ot tartalmaznia kell. [a-root-domain-here] és a *.scm. [a-root-domain-here] a helyettesítő ILB ASE tanúsítványhoz. Ha létrehozza a tanúsítványt az alkalmazáshoz, akkor az legyen az [appname]. [your-root-domain-here] és [appname].scm. [a-root-domain-here].
+- **Tárgy:** Ezt az attribútumot a * értékre kell állítani. [a-root-domain-itt] a helyettesítő karakteres ILB-tanúsítványhoz. Ha létrehozta az alkalmazáshoz tartozó tanúsítványt, akkor a következőnek kell lennie: [AppName]. [a-root-domain-itt]
+- **Tulajdonos alternatív neve:** Ennek az attribútumnak a következőket kell tartalmaznia: *. [a-root-domain-itt] és a *. SCM. [a-root-domain-itt] a helyettesítő karakteres ILB-tanúsítványhoz. Ha létrehozta az alkalmazáshoz tartozó tanúsítványt, akkor a következőnek kell lennie: [AppName]. [a-root-domain-itt] és [AppName]. SCM. [a-root-domain-itt].
 
-Harmadik változatként létrehozhat egy ILB ASE-tanúsítványt, amely helyettesítő karakter helyett az egyes alkalmazásneveket tartalmazza a tanúsítvány san-jában. A probléma ezzel a módszerrel az, hogy meg kell tudni, hogy elöl a nevét, hogy az alkalmazások, hogy az ASE, vagy meg kell tartani az ILB ASE tanúsítvány frissítése.
+Harmadik változatként létrehozhat egy olyan ILB-alapú betekintő tanúsítványt, amely a tanúsítvány SAN-beli összes egyéni alkalmazásának nevét tartalmazza, nem helyettesítő karakteres hivatkozással. Ennek a módszernek a problémája az, hogy ismernie kell a bevezetésben üzembe helyezett alkalmazások nevét, vagy meg kell őriznie a ILB-beléptetési tanúsítvány frissítését.
 
-### <a name="upload-certificate-to-ilb-ase"></a>Tanúsítvány feltöltése az ILB ASE-be 
+### <a name="upload-certificate-to-ilb-ase"></a>Tanúsítvány feltöltése a ILB-be 
 
-Miután létrejött egy ILB ASE a portálon, a tanúsítványt be kell állítani az ILB ASE-hez. Atanúsítvány beállításáig az ASE egy szalagcímet jelenít meg, amelyszerint a tanúsítvány nincs beállítva.  
+Miután létrehozta a ILB-előállítók létrehozását a portálon, a tanúsítványt be kell állítani a ILB beadásához. Amíg a tanúsítvány be nem fejeződik, a beadási pont azt a szalagcímet jeleníti meg, amelyet a tanúsítvány nem állított be.  
 
-A feltöltött tanúsítványnak .pfx fájlnak kell lennie. A tanúsítvány feltöltése után az ASE egy méretezési műveletet hajt végre a tanúsítvány beállításához. 
+A feltöltött tanúsítványnak. pfx formátumúnak kell lennie. A tanúsítvány feltöltése után a beadási szolgáltatás a tanúsítvány beállításához méretezési műveletet hajt végre. 
 
-Az ASE nem hozható létre, és a tanúsítvány feltöltése egyetlen műveletként a portálon, vagy akár egy sablonban. Külön műveletként feltöltheti a tanúsítványt egy sablon használatával, ahogy az a [sablondokumentumból ase létrehozása](./create-from-template.md) című dokumentumban leírtak szerint szerepel.  
+A bekészítés nem hozható létre, és nem tölthető fel a tanúsítvány egyetlen műveletként a portálon, vagy akár egy sablonban is. Külön műveletként feltöltheti a tanúsítványt egy sablon használatával, a következő témakörben leírtak szerint: a bekészítés a [sablon](./create-from-template.md) alapján dokumentum.  
 
-Ha gyorsan szeretne önaláírt tanúsítványt létrehozni a teszteléshez, a PowerShell következő bitjét használhatja:
+Ha gyorsan szeretne létrehozni egy önaláírt tanúsítványt a teszteléshez, használhatja a következő PowerShell-t:
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
@@ -48,43 +48,43 @@ Ha gyorsan szeretne önaláírt tanúsítványt létrehozni a teszteléshez, a P
 
     $fileName = "exportedcert.pfx"
     Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
-Saját aláírású tanúsítvány létrehozásakor meg kell győződnie arról, hogy a tulajdonos neve CN={ASE_NAME_HERE}_InternalLoadBalancingASE formátumú.
+Önaláírt tanúsítvány létrehozásakor meg kell győződnie arról, hogy a tulajdonos nevének a CN = {ASE_NAME_HERE} _InternalLoadBalancingASE formátumúnak kell lennie.
 
-## <a name="application-certificates"></a>Alkalmazási tanúsítványok 
+## <a name="application-certificates"></a>Alkalmazás-tanúsítványok 
 
-Az ASE-ben üzemeltetett alkalmazások használhatják a több-bérlős App Service-ben elérhető alkalmazásközpontú tanúsítványfunkciókat. Ezek a funkciók a következők:  
+A szolgáltatói környezetben üzemeltetett alkalmazások használhatják a több-bérlős App Serviceban elérhető, app-centrikus tanúsítvány-szolgáltatásokat. Ezek a szolgáltatások a következők:  
 
 - SNI-tanúsítványok 
-- IP-alapú SSL, amely csak egy külső ASE támogatja.  Az ILB ASE nem támogatja az IP-alapú SSL-t.
-- A KeyVault tárolt tanúsítványai 
+- IP-alapú SSL, amely csak külső kiegészítő szolgáltatással támogatott.  Az ILB-alapú kiegészítő szolgáltatás nem támogatja az IP-alapú SSL-t.
+- Kulcstartó által üzemeltetett tanúsítványok 
 
-A tanúsítványok feltöltésére és kezelésére vonatkozó utasítások az [Azure App Service TLS/SSL-tanúsítvány ának hozzáadása](../configure-ssl-certificate.md)című dokumentumban érhetők el.  Ha egyszerűen konfigurálja a tanúsítványokat, hogy megfeleljenek a webalkalmazáshoz rendelt egyéni tartománynévnek, akkor ezek az utasítások elegendőek. Ha az alapértelmezett tartománynévvel rendelkező ILB ASE webalkalmazás tanúsítványát tölti fel, akkor adja meg az scm-helyet a tanúsítvány san-ban, ahogy azt korábban említettük. 
+A tanúsítványok feltöltésével és kezelésével kapcsolatos utasítások a [TLS/SSL-tanúsítvány hozzáadása Azure app Serviceban](../configure-ssl-certificate.md)érhetők el.  Ha egyszerűen konfigurálja a tanúsítványokat úgy, hogy azok megfeleljenek a webalkalmazáshoz rendelt egyéni tartománynévnek, akkor ezek az utasítások elegendőek lesznek. Ha az alapértelmezett tartománynévvel tölti fel a tanúsítványt egy ILB-beadási webalkalmazáshoz, akkor az SCM-helyet a tanúsítvány TÁROLÓHÁLÓZATI helyén kell megadnia a korábban feljegyzett módon. 
 
 ## <a name="tls-settings"></a>TLS-beállítások 
 
-A TLS-beállítást alkalmazásszinten konfigurálhatja.  
+A TLS-beállítást beállíthatja az alkalmazás szintjén.  
 
-## <a name="private-client-certificate"></a>Privát ügyféltanúsítvány 
+## <a name="private-client-certificate"></a>Magánhálózati ügyféltanúsítvány 
 
-Gyakori használati eset az, hogy az alkalmazást ügyfél-kiszolgáló modellben ügyfélként konfigurálja. Ha a kiszolgálót saját hitelesítésszolgáltatói tanúsítvánnyal biztosítja, fel kell töltenie az ügyféltanúsítványt az alkalmazásba.  A következő utasítások betöltik a tanúsítványokat az on-t futtató dolgozók megbízhatósági tárába. Ha betölti a tanúsítványt egy alkalmazásba, használhatja azt a többi alkalmazással ugyanabban az App Service-csomagban anélkül, hogy újra feltöltenék a tanúsítványt.
+Gyakori felhasználási eset az, ha az alkalmazást ügyfélként konfigurálja ügyfél-kiszolgáló modellben. Ha a kiszolgálót privát HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal védi, fel kell töltenie az ügyféltanúsítványt az alkalmazásba.  A következő utasítások betöltik a tanúsítványokat annak a feldolgozónak a truststore, amelyen az alkalmazás fut. Ha egy alkalmazásba tölti be a tanúsítványt, azt a többi alkalmazással is használhatja ugyanazon a App Servicei csomagban anélkül, hogy újra kellene feltöltenie a tanúsítványt.
 
-A tanúsítvány feltöltése az alkalmazásba az ASE-ben:
+A tanúsítvány feltöltése az alkalmazásba a szolgáltatásban:
 
-1. Hozzon létre egy *.cer* fájlt a tanúsítványhoz. 
-2. Nyissa meg azt az alkalmazást, amelynek szüksége van a tanúsítványra az Azure Portalon
-3. Nyissa meg az SSL-beállításokat az alkalmazásban. Kattintson az Upload Certificate (Tanúsítvány feltöltése) parancsra. Válassza a Nyilvános lehetőséget. Válassza a Helyi számítógép lehetőséget. Adjon meg egy nevet. Tallózás és a *.cer* fájl kiválasztása. Válassza a feltöltés lehetőséget. 
+1. Állítson elő egy *. cer* fájlt a tanúsítványhoz. 
+2. Nyissa meg azt az alkalmazást, amelynek szüksége van a tanúsítványra a Azure Portal
+3. Nyissa meg az SSL-beállításokat az alkalmazásban. Kattintson az Upload Certificate (Tanúsítvány feltöltése) parancsra. Válassza a Nyilvános lehetőséget. Válassza a helyi gép lehetőséget. Adjon meg egy nevet. Tallózással keresse meg és válassza ki a *. cer* fájlt. Válassza a feltöltés lehetőséget. 
 4. Másolja az ujjlenyomatot.
-5. Nyissa meg az Alkalmazás beállításai lehetőséget. Hozzon létre egy alkalmazásbeállítási WEBSITE_LOAD_ROOT_CERTIFICATES az ujjlenyomatértékkel. Ha több tanúsítvánnyal rendelkezik, akkor azokat ugyanebben a környezetben, vesszővel elválasztva helyezheti el, és nincs szóköz 
+5. Válassza az Alkalmazásbeállítások lehetőséget. Hozzon létre egy Alkalmazásbeállítás WEBSITE_LOAD_ROOT_CERTIFICATESt az ujjlenyomat értékével. Ha több tanúsítványa is van, akkor a beállításokat vesszővel elválasztva is elhelyezheti, és nem tartalmazhat szóközt (például 
 
-    84EC242A4EC7957817B8E48913E5095552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
+    84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
-A tanúsítvány elérhető lesz az összes alkalmazás ugyanabban az alkalmazásszolgáltatási csomag, mint az alkalmazás, amely konfigurálta ezt a beállítást. Ha szüksége van arra, hogy elérhető legyen egy másik App Service-csomagban lévő alkalmazásokhoz, meg kell ismételnie az alkalmazásbeállítási műveletet az adott App Service-csomagban. A tanúsítvány beállításának ellenőrzéséhez lépjen a Kudu konzolra, és adja ki a következő parancsot a PowerShell hibakeresési konzolján:
+A tanúsítvány minden olyan alkalmazás számára elérhető lesz, amely ugyanabban az App Service-csomagban van, mint az adott beállítás. Ha azt szeretné, hogy a különböző App Service-csomagban lévő alkalmazásokhoz is elérhető legyen, akkor meg kell ismételnie az alkalmazás-beállítási műveletet egy alkalmazásban az adott App Service tervben. A tanúsítvány beállításának megadásához nyissa meg a kudu-konzolt, és adja ki a következő parancsot a PowerShell hibakeresési konzolján:
 
     dir cert:\localmachine\root
 
-A teszteléshez létrehozhat egy önaláírt tanúsítványt, és létrehozhat egy *.cer* fájlt a következő PowerShell használatával: 
+A tesztelés végrehajtásához létrehozhat egy önaláírt tanúsítványt, és létrehozhatja a *. cer* fájlt a következő PowerShell-lel: 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com
+    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
     $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
     $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText

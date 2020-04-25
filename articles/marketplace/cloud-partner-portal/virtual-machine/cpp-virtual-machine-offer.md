@@ -1,50 +1,50 @@
 ---
-title: Virtuálisgép-ajánlat az Azure Piactéren
-description: A virtuális gép ajánlatának az Azure Marketplace-en való közzétételének folyamatának áttekintése.
+title: Virtuálisgép-ajánlat az Azure piactéren
+description: A virtuálisgép-ajánlat Azure Marketplace-en való közzétételének folyamatát ismertető cikk áttekintése.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: dsindona
-ms.openlocfilehash: 0f2ae9fe6f006b5418ebee82b08a44188b7c58d3
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: b857cf8b7485beb884adf77d99f82d965f55a0ad
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273069"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142803"
 ---
 # <a name="virtual-machine-offer"></a>Virtuálisgép-ajánlat
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure virtuális gép ajánlatlétrehozása](https://aka.ms/CreateAzureVMoffer) című, az áttelepített ajánlatok kezelésével című útmutatóutasításait.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli virtuálisgép-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Kövesse az Azure-beli [virtuális gép létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) az áttelepített ajánlatok kezeléséhez című témakör utasításait.
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|
-| Ez a szakasz bemutatja, hogyan tehet közzé egy új virtuálisgép-ajánlatot az [Azure Piactéren.](https://azuremarketplace.microsoft.com) Támogatás biztosított mind a Windows- és Linux-alapú virtuális gépek, amely egy operációs rendszer virtuális merevlemez (VHD) és nulla vagy több adat Virtuális merevlemez. | ![virtuális gép ikonja](./media/virtual-machine-icon.png)  |
+| Ez a szakasz azt ismerteti, hogyan tehet közzé új virtuálisgép-ajánlatot az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en. A támogatást a Windows-alapú és a Linux-alapú virtuális gépek is támogatják, amelyek az operációs rendszer virtuális merevlemezét (VHD) és nulla vagy több adatvhd-t tartalmaznak. | ![virtuális gép ikonja](./media/virtual-machine-icon.png)  |
 
 
-## <a name="publishing-overview"></a>Közzététel – áttekintés
+## <a name="publishing-overview"></a>Közzététel áttekintése
 
-A következő videó, [az Azure Marketplace-ajánlat optimalizálása](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player)– átfogó áttekintést nyújt az Azure Piactérről, többek között arról, hogyan tehet közzé ezen a piacon (virtuálisgép-megoldás használatával), hogyan optimalizálhatja a felhasználói élményt a termékoldallal és a választható Tesztdrive-élményben, hogyan jönnek létre a felhasználói érdeklődők, hogyan használhatja fel őket, és hogyan optimalizálhatja az ügyfelek elkötelezettségét.
+Az alábbi videó, az [Azure Marketplace-ajánlat optimalizálása](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), átfogó áttekintést nyújt az Azure Marketplace-ről, beleértve a piactéren való közzétételt (virtuálisgép-megoldás használatával), a felhasználói élmény optimalizálását a termék oldalával, valamint az opcionális tesztelési meghajtó élményét, a felhasználói érdeklődők létrehozását és a használatuk módját, valamint optimalizálhatja az ügyfelek részvételét.
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026/player]
 
 
-## <a name="vm-publishing-process-flow"></a>Virtuálisgép-közzétételi folyamatfolyamat
+## <a name="vm-publishing-process-flow"></a>VIRTUÁLIS gépek közzétételi folyamata
 
-Az alábbi ábra a virtuális gépajánlat közzétételének magas szintű lépéseit mutatja be. 
+A következő ábra a virtuálisgép-ajánlat közzétételének magas szintű lépéseit mutatja be. 
 
-![Virtuális gép közzétételi folyamata](./media/publishvm_001.png)
+![VM-közzétételi folyamat](./media/publishvm_001.png)
 
-1. Az ajánlat létrehozása – Az ajánlatminden részlete és információja konfigurálva van, beleértve az ajánlat leírását, a marketinganyagokat, a jogi, támogatási információkat és az eszközspecifikációkat.
+1. Ajánlat létrehozása – a szolgáltatással kapcsolatos összes adat és információ konfigurálva van, beleértve az ajánlat leírását, a marketing-anyagokat, a jogi, a támogatási információkat és az eszközök specifikációit.
 
-2. Az üzleti és technikai eszközök létrehozása – Az üzleti eszközök (jogi dokumentumok és marketinganyagok) és a kapcsolódó megoldás (itt, a virtuális gépek és a csatolt lemezek) létrehozása. 
+2. Üzleti és technikai eszközök létrehozása – a kapcsolódó megoldáshoz (itt, a virtuális gépekhez és a csatlakoztatott lemezekhez) tartozó üzleti eszközök (jogi dokumentumok és marketing-anyagok) és technikai eszközök létrehozása. 
 
-3. A termékváltozat létrehozása – Hozza létre az ajánlathoz társított termékváltozat(oka)t, és küldje el őket.  Minden közzétenni kívánt lemezképhez egyedi termékváltozat szükséges. 
+3. Hozza létre az SKU-t – hozza létre az ajánlathoz társított SKU (ka) t, és küldje el azokat.  Minden közzétenni kívánt rendszerképhez egyedi SKU szükséges. 
  
-4. Az ajánlat hitelesítése és közzététele – Miután az ajánlat és a technikai eszközök befejeződtek, benyújthatja az ajánlatot. Ez a beküldés elindítja a közzétételi folyamatot, amelyben a megoldás tesztelése, érvényesítése, hitelesítése, majd "éles" lesz a piacon.  
+4. Az ajánlat hitelesítése és közzététele – az ajánlat és a technikai eszközök befejezése után elküldheti az ajánlatot. Ez a beküldés elindítja a közzétételi folyamatot, amelyben a megoldás tesztelése, ellenőrzése, minősítése, majd a piactéren folytatott "élő adás" lép életbe.  
 
 ## <a name="next-steps"></a>További lépések
 
-Mielőtt megfontolja ezeket a lépéseket, meg kell felelnie a virtuális gép microsoft Azure Piactéren való közzétételéhez [szükséges technikai és üzleti követelményeknek.](./cpp-prerequisites.md) 
+Mielőtt figyelembe veszi ezeket a lépéseket, meg kell felelnie a virtuális gép Microsoft Azure Marketplace való közzétételének [technikai és üzleti követelményeinek](./cpp-prerequisites.md) . 

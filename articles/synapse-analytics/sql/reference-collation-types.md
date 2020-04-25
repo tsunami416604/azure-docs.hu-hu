@@ -1,31 +1,31 @@
 ---
 title: Rendezés
-description: Az Azure Synapse SQL által támogatott rendezési típusok
+description: Az Azure szinapszis SQL-ben támogatott rendezési típusok
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4270677f8f5f77e1ada0b1d9385163dad762bbda
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2b10aea962a31ba600deca866a8d9f7ab3b81ea8
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81431539"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133662"
 ---
-# <a name="database-collation-support-for-synapse-sql"></a>A Synapse SQL adatbázis-rendezési támogatása
+# <a name="database-collation-support-for-synapse-sql"></a>Adatbázis-rendezési támogatás a szinapszis SQL-hez
 
-A rendezések biztosítják a karakteralapú adattípusok területi beállítását, kódlapját, rendezési sorrendjét és karakterérzékenységi szabályait. A kiválasztás után az összes olyan oszlop és kifejezés, amely rendezési adatokat igényel, örökli a kiválasztott rendezést az adatbázis-beállítástól. Az alapértelmezett öröklődés felülbírálható, ha egy karakteralapú adattípushoz külön rendezést ad meg.
+A rendezések lehetővé teszik a területi beállítás, a kódlap, a rendezési sorrend és a karakteres adattípusok megkülönböztetésére vonatkozó szabályok megadását. Ha kiválasztotta, a rendezési adatokat igénylő összes oszlop és kifejezés örökli a kiválasztott rendezést az adatbázis-beállítástól. Az alapértelmezett öröklés felülbírálható úgy, hogy egy karakter alapú adattípus esetében explicit módon megadhat egy másik rendezést.
 
-Új SQL-készlet-adatbázis létrehozásakor módosíthatja az alapértelmezett adatbázis-rendezést az Azure Portalról. Ez a funkció még könnyebbé teszi egy új adatbázis létrehozását a 3800 támogatott adatbázis-illesztések egyikével.
+Az adatbázis alapértelmezett rendezését az új SQL Pool-adatbázis létrehozásakor módosíthatja a Azure Portal. Ezzel a képességgel még könnyebben hozhat létre egy új adatbázist a 3800 támogatott adatbázis-rendezések egyikével.
 
-Megadhatja az alapértelmezett Synapse SQL on-demand adatbázis-rendezés létrehozásakor a CREATE DATABASE utasítás használatával.
+Megadhatja az alapértelmezett szinapszis SQL on-demand adatbázis-rendezést a létrehozáskor az adatbázis létrehozása utasítás használatával.
 
-## <a name="changing-collation"></a>Az illesztés módosítása
-Az SQL-készletadatbázis alapértelmezett illesztésének módosításához egyszerűen frissítse a rendezési mezőt a kiépítési környezetben. Ha például a kis- és nagybetűk megkülönböztetésére szeretné módosítani az alapértelmezett rendezést, egyszerűen nevezze át a rendezést SQL_Latin1_General_CP1_CI_AS SQL_Latin1_General_CP1_CS_AS. 
+## <a name="changing-collation"></a>Rendezés módosítása
+Az SQL Pool-adatbázis alapértelmezett rendezésének módosításához egyszerűen frissítse a rendezési mezőt a létesítési élményben. Ha például meg szeretné változtatni az alapértelmezett rendezést a kis-és nagybetűk megkülönböztetésére, egyszerűen nevezze át a rendezést SQL_Latin1_General_CP1_CI_ASról SQL_Latin1_General_CP1_CS_ASra. 
 
-Az SQL on-demand adatbázis alapértelmezett illesztésének módosításához használhatja az ALTER DATABASE utasítást.
+Az SQL on-demand adatbázis alapértelmezett rendezésének módosításához használhatja az ALTER DATABASE utasítást.
 
 ## <a name="list-of-unsupported-collation-types"></a>Nem támogatott rendezési típusok listája
 *    Japanese_Bushu_Kakusu_140_BIN
@@ -97,23 +97,24 @@ Az SQL on-demand adatbázis alapértelmezett illesztésének módosításához h
 *    Japanese_XJIS_140_CS_AS_KS
 *    Japanese_XJIS_140_CS_AS_KS_WS
 
-Ezenkívül az SQL-készlet nem támogatja a következő rendezési típusokat:
+Emellett az SQL-készlet nem támogatja a következő rendezési típusokat:
 
 *    SQL_EBCDIC1141_CP1_CS_AS
 *    SQL_EBCDIC277_2_CP1_CS_AS
+*    UTF-8
 
-## <a name="checking-the-current-collation"></a>Az aktuális illesztés ellenőrzése
-Az adatbázis aktuális illesztésének ellenőrzéséhez futtassa a következő T-SQL kódrészletet:
+## <a name="checking-the-current-collation"></a>Az aktuális rendezés ellenőrzése
+Az adatbázis aktuális rendezésének ellenőrzését a következő T-SQL-kódrészlet futtatásával végezheti el:
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
-Ha a "Rendezés" tulajdonságparaméterként megfelel, a DatabasePropertyEx függvény a megadott adatbázis aktuális illesztését adja vissza. Az MSDN AdatbázisTulajdonságEx függvényéről többet is megtudhat.
+Ha a tulajdonság paraméterként a "rendezés" értéket adta át, a DatabasePropertyEx függvény a megadott adatbázis aktuális rendezését adja vissza. További információ a DatabasePropertyEx függvényről az MSDN webhelyen.
 
 ## <a name="next-steps"></a>További lépések
 
-Az SQL-készlet és az SQL on-demand ajánlott eljárásokról az alábbi cikkekben talál további információkat:
+Az SQL Pool és az SQL on-demand ajánlott eljárásaival kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Gyakorlati tanácsok az SQL-készlethez](best-practices-sql-pool.md)
-- [Gyakorlati tanácsok az SQL igény szerinti](best-practices-sql-on-demand.md)
+- [Ajánlott eljárások az SQL-készlethez](best-practices-sql-pool.md)
+- [Ajánlott eljárások az SQL igény szerinti kezeléséhez](best-practices-sql-on-demand.md)
 
 

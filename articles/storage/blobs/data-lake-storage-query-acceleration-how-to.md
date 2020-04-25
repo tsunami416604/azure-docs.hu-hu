@@ -1,6 +1,6 @@
 ---
-title: Adatok szűrése az Azure Data Lake Storage lekérdezésgyorsításával (előzetes verzió) | Microsoft dokumentumok
-description: A lekérdezésgyorsítás (előzetes verzió) használatával adatok egy részhalmazát kérheti le a tárfiókból.
+title: Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítással (előzetes verzió) | Microsoft Docs
+description: A lekérdezési gyorsítás (előzetes verzió) használatával lekérheti az adatok egy részhalmazát a Storage-fiókból.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: ae3dfc7681ef0d8ce3fcf679bddbd0ff195f4e3b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 22776d9498676ec77cd71845ca5e39f01926259d
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81771845"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137569"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Adatok szűrése az Azure Data Lake Storage lekérdezésgyorsításával (előzetes verzió)
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítással (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan használhatja a lekérdezésgyorsítás (előzetes verzió) az adatok egy részhalmazának lekéréséhez a tárfiókból. 
+Ez a cikk bemutatja, hogyan használhatja a lekérdezési gyorsítást (előzetes verzió) a Storage-fiókból származó adatok egy részhalmazának lekérésére. 
 
-A lekérdezésgyorsítás (előzetes verzió) az Azure Data Lake Storage új lehetősége, amely lehetővé teszi, hogy az alkalmazások és az elemzési keretrendszerek jelentősen optimalizálják az adatfeldolgozást azáltal, hogy csak azokat az adatokat kérik le, amelyek egy adott művelet végrehajtásához szükségesk. További információ: [Azure Data Lake Storage Query Acceleration (preview)](data-lake-storage-query-acceleration.md).
+A lekérdezési gyorsítás (előzetes verzió) egy új képesség a Azure Data Lake Storage számára, amely lehetővé teszi az alkalmazások és az elemzési keretrendszerek számára, hogy az adatok feldolgozását az adott művelet végrehajtásához szükséges adatok beolvasásával jelentősen optimalizálja. További információ: [Azure Data Lake Storage lekérdezési gyorsítás (előzetes verzió)](data-lake-storage-query-acceleration.md).
 
 > [!NOTE]
-> A lekérdezésgyorsítási szolgáltatás nyilvános előzetes verzióban érhető el, és a Kanadai Közép- és Franciaország-középrégiókban érhető el. A korlátozások áttekintéséhez olvassa el az [Ismert problémák](data-lake-storage-known-issues.md) című cikket. Az előnézetbe való regisztráláshoz tekintse meg [ezt az űrlapot.](https://aka.ms/adls/qa-preview-signup)  
+> A lekérdezési gyorsítási funkció nyilvános előzetes verzióban érhető el, és a közép-Kanada középső régiójában és Közép-Franciaországban található. A korlátozások áttekintéséhez tekintse meg az [ismert problémákkal foglalkozó](data-lake-storage-known-issues.md) cikket. Az előzetes verzióra való regisztráláshoz tekintse meg [ezt az űrlapot](https://aka.ms/adls/qa-preview-signup).  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-- Az Azure Storage eléréséhez szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+- Az Azure Storage eléréséhez Azure-előfizetésre lesz szüksége. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt.
 
-- Általános **célú v2-es** tárfiók. lásd: [Tárfiók létrehozása](../common/storage-quickstart-create-account.md).
+- **Általános célú v2-** es Storage-fiók. Lásd: [Storage-fiók létrehozása](../common/storage-quickstart-create-account.md).
 
-- [.NET SDK](https://dotnet.microsoft.com/download). 
+- [.net SDK](https://dotnet.microsoft.com/download). 
 
 ### <a name="java"></a>[Java](#tab/java)
 
-- Az Azure Storage eléréséhez szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+- Az Azure Storage eléréséhez Azure-előfizetésre lesz szüksége. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt.
 
-- Általános **célú v2-es** tárfiók. lásd: [Tárfiók létrehozása](../common/storage-quickstart-create-account.md).
+- **Általános célú v2-** es Storage-fiók. Lásd: [Storage-fiók létrehozása](../common/storage-quickstart-create-account.md).
 
-- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) 8-as vagy újabb verzió.
+- A [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) 8-as vagy újabb verziója.
 
 - [Apache Maven](https://maven.apache.org/download.cgi). 
 
   > [!NOTE] 
-  > Ez a cikk feltételezi, hogy az Apache Maven használatával javaprojektet hozott létre. A Project Apache Maven használatával történő létrehozásáról a [Beállítás című témakörben](storage-quickstart-blobs-java.md#setting-up)látható.
+  > Ez a cikk azt feltételezi, hogy az Apache Maven használatával létrehozott egy Java-projektet. Az Apache Maven használatával történő projekt létrehozásával kapcsolatos példát itt talál: [beállítás](storage-quickstart-blobs-java.md#setting-up).
   
 ---
 
@@ -53,11 +53,11 @@ A lekérdezésgyorsítás (előzetes verzió) az Azure Data Lake Storage új leh
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. Töltse le a lekérdezésgyorsítási csomagokat. A csomagokat tartalmazó tömörített .zip fájl a következő [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net)hivatkozással szerezhető be: . 
+1. Töltse le a lekérdezési gyorsítási csomagokat. A következő hivatkozással lehet beolvasni a csomagokat tartalmazó tömörített. zip fájlt: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net). 
 
-2. Bontsa ki a fájl tartalmát a projektkönyvtárba.
+2. Bontsa ki a fájl tartalmát a projekt könyvtárába.
 
-3. Nyissa meg a projektfájlt (*.csproj)* egy szövegszerkesztőben, \<és\> adja hozzá ezeket a csomaghivatkozásokat a Project elemhez.
+3. Nyissa meg a projektfájlt (*. csproj*) egy szövegszerkesztőben, és adja hozzá a csomag hivatkozásait a \<projekt\> elemhez.
 
    ```xml
    <ItemGroup>
@@ -67,13 +67,13 @@ A lekérdezésgyorsítás (előzetes verzió) az Azure Data Lake Storage új leh
    </ItemGroup>
    ```
 
-4. Állítsa vissza az előzetes SDK-csomagokat. Ez a példa parancs a `dotnet restore` parancs használatával visszaállítja az előzetes SDK-csomagokat. 
+4. Állítsa vissza az előzetes verziójú SDK-csomagokat. Ez a példa parancs visszaállítja az előzetes verziójú SDK-csomagokat a `dotnet restore` paranccsal. 
 
    ```console
    dotnet restore --source C:\Users\contoso\myProject
    ```
 
-5. Állítsa vissza az összes többi függőséget a nyilvános NuGet tárházból.
+5. Az összes többi függőség visszaállítása a nyilvános NuGet adattárból.
 
    ```console
    dotnet restore
@@ -81,16 +81,16 @@ A lekérdezésgyorsítás (előzetes verzió) az Azure Data Lake Storage új leh
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. Hozzon létre könyvtárat a projekt gyökerében. A gyökérkönyvtár a **pom.xml** fájlt tartalmazó könyvtár.
+1. Hozzon létre egy könyvtárat a projekt gyökerében. A gyökérkönyvtár a **Pom. XML** fájlt tartalmazó könyvtár.
 
    > [!NOTE]
-   > A cikkben szereplő példák feltételezik, hogy a könyvtár neve **lib**.
+   > A cikkben szereplő példák azt feltételezik, hogy a könyvtár neve **lib**.
 
-2. Töltse le a lekérdezésgyorsítási csomagokat. A csomagokat tartalmazó tömörített .zip fájl a következő [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java)hivatkozással szerezhető be: . 
+2. Töltse le a lekérdezési gyorsítási csomagokat. A következő hivatkozással lehet beolvasni a csomagokat tartalmazó tömörített. zip fájlt: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java). 
 
-3. Bontsa ki a .zip fájlban lévő fájlokat a létrehozott könyvtárba. A példánkban ez a könyvtár neve **lib**. 
+3. Bontsa ki a. zip fájlban található fájlokat a létrehozott könyvtárba. A példánkban a könyvtár neve **lib**. 
 
-4. Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá a következő függőségi elemeket a függőségek csoportjához. 
+4. Nyissa meg a *Pom. XML* fájlt a szövegszerkesztőben. Adja hozzá az alábbi függőségi elemeket a függőségek csoportjához. 
 
    ```xml
    <!-- Request static dependencies from Maven -->
@@ -145,7 +145,7 @@ A lekérdezésgyorsítás (előzetes verzió) az Azure Data Lake Storage új leh
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Adja `using` hozzá ezeket az állításokat a kódfájl tetejéhez.
+Adja hozzá `using` ezeket az utasításokat a fájl elejéhez.
 
 ```csharp
 using Azure.Storage.Blobs;
@@ -155,14 +155,14 @@ using Azure.Storage.QuickQuery;
 using Azure.Storage.QuickQuery.Models;
 ```
 
-A lekérdezés gyorsítása CSV- és Json-formátumú adatokat olvas be. Ezért győződjön meg arról, hogy a használni kívánt CSV- vagy Json-elemzési kódtárak hoz hozzá. A cikkben megjelenő példák egy CSV-fájlt elemeznek a NuGet-en elérhető [CsvHelper-könyvtár](https://www.nuget.org/packages/CsvHelper/) használatával. Ezért ezeket `using` az állításokat hozzáadjuk a kódfájl tetejéhez.
+A lekérdezési gyorsítás lekéri a CSV-és a JSON-formátumú adatait. Ezért ügyeljen arra, hogy a használni kívánt CSV-vagy JSON-elemzési kódtárak használatával adjon hozzá utasításokat. A cikkben megjelenő példák egy CSV-fájlt elemeznek a NuGet-on elérhető [CsvHelper](https://www.nuget.org/packages/CsvHelper/) könyvtár használatával. Ezért ezeket `using` az utasításokat a fájl elejéhez adja.
 
 ```csharp
 using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-A cikkben bemutatott példák összeállításához ezeket `using` az állításokat is hozzá kell adnia.
+A cikkben bemutatott példák fordításához is hozzá kell adnia ezeket `using` az utasításokat is.
 
 ```csharp
 using System.Threading.Tasks;
@@ -174,7 +174,7 @@ using System.Linq;
 
 ### <a name="java"></a>[Java](#tab/java)
 
-Adja `import` hozzá ezeket az állításokat a kódfájl tetejéhez.
+Adja hozzá `import` ezeket az utasításokat a fájl elejéhez.
 
 ```java
 import com.azure.storage.blob.*;
@@ -188,17 +188,17 @@ import org.apache.commons.csv.*;
 
 ---
 
-## <a name="retrieve-data-by-using-a-filter"></a>Adatok beolvasása szűrő használatával
+## <a name="retrieve-data-by-using-a-filter"></a>Adatlekérdezés szűrő használatával
 
-Az SQL segítségével megadhatja a sorszűrő predikátumok és oszlop vetületek a lekérdezés gyorsítási kérelem. A következő kód lekérdezi a tárolóban lévő CSV-fájlt, és `Hemingway, Ernest`minden olyan adatsort visszaad, amelyben a harmadik oszlop megegyezik az értékkel. 
+Az SQL segítségével megadhatja a sorcsoport-predikátumokat és az oszlopok kivetítéseit egy lekérdezési gyorsítási kérelemben. Az alábbi kód egy CSV-fájlt kérdez le a Storage szolgáltatásban, és visszaadja az összes olyan adatsort `Hemingway, Ernest`, amelyben a harmadik oszlop megfelel az értéknek. 
 
-- Az SQL-lekérdezésben `BlobStorage` a kulcsszó a lekérdezett fájlt jelöli.
+- Az SQL-lekérdezésben a kulcsszó `BlobStorage` a lekérdezni kívánt fájl jelölésére szolgál.
 
-- Az oszlophivatkozások az `_N` első oszlop helyeként vannak `_1`megadva. Ha a forrásfájl fejlécsort tartalmaz, akkor a fejlécsorban megadott névvel hivatkozhat az oszlopokra. 
+- Az oszlopok hivatkozásai az első `_N` oszlop helyeként vannak megadva `_1`. Ha a forrásfájl tartalmaz egy fejlécet, akkor az oszlopokat a fejlécsorban megadott név alapján lehet megtekinteni. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Az async `BlobQuickQueryClient.QueryAsync` metódus elküldi a lekérdezést a lekérdezés gyorsítása API-t, majd streameli az eredményeket az alkalmazásba [streamobjektumként.](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8)
+Az aszinkron metódus `BlobQuickQueryClient.QueryAsync` elküldi a lekérdezést a lekérdezési gyorsítási API-nak, majd [stream](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8) -objektumként továbbítja az eredményeket az alkalmazásnak.
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -260,7 +260,7 @@ class ProgressHandler : IProgress<long>
 
 ### <a name="java"></a>[Java](#tab/java)
 
-A `BlobQuickQueryClient.openInputStream()` metódus elküldi a lekérdezést a lekérdezés gyorsítási API-t, `InputStream` majd továbbítja az eredményeket az alkalmazásnak, mint egy objektum, amely lehet olvasni, mint bármely más InputStream objektum.
+A metódus `BlobQuickQueryClient.openInputStream()` elküldi a lekérdezést a lekérdezési gyorsítási API-nak, majd az eredményeket visszaküldi az alkalmazásnak olyan `InputStream` objektumként, amely más InputStream-objektumhoz hasonlóan olvasható.
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -314,9 +314,9 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 ## <a name="retrieve-specific-columns"></a>Adott oszlopok beolvasása
 
-Az eredményeket az oszlopok egy részhalmazára is leveheti. Így csak az adott számítás végrehajtásához szükséges oszlopokat kell beolvasnia. Ez javítja az alkalmazások teljesítményét és csökkenti a költségeket, mivel kevesebb adat kerül átvitelre a hálózaton keresztül. 
+Az eredményeket az oszlopok egy részhalmazára is szűkítheti. Így csak az adott számítás végrehajtásához szükséges oszlopokat kéri le. Ez javítja az alkalmazások teljesítményét, és csökkenti a költségeket, mivel kevesebb adat kerül át a hálózaton keresztül. 
 
-Ez a kód `PublicationYear` csak az adatkészlet összes könyvének oszlopát olvassa be. A forrásfájl fejlécsorának adatait is felhasználja a lekérdezés oszlopainak hivatkozásához.
+Ez a kód csak az `PublicationYear` adatkészletben lévő összes könyv oszlopát kérdezi le. Emellett a forrásfájl fejléc sorában található információkat is használja a lekérdezésben lévő oszlopokra.
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
@@ -341,7 +341,7 @@ static void QueryPublishDates(BlobClient blobClient)
 
 ---
 
-A következő kód egyesíti a sorszűrést és az oszlopvetületeket ugyanabba a lekérdezésbe. 
+A következő kód kombinálja a sorok szűrését és az oszlopok kivetítését ugyanabba a lekérdezésbe. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -367,7 +367,6 @@ static void QueryMysteryBooks(BlobClient blobClient)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Lekérdezésgyorsítás igénylési képernyő](https://aka.ms/adls/queryaccelerationpreview)    
-- [Azure Data Lake Storage lekérdezésgyorsítás (előzetes verzió)](data-lake-storage-query-acceleration.md)
-- [Lekérdezésgyorsítás SQL nyelvi hivatkozás (előzetes verzió)](query-acceleration-sql-reference.md)
-- Lekérdezésgyorsítás REST API-hivatkozása
+- [Lekérdezési gyorsítás beléptetésének űrlapja](https://aka.ms/adls/queryaccelerationpreview)    
+- [Azure Data Lake Storage lekérdezési gyorsítás (előzetes verzió)](data-lake-storage-query-acceleration.md)
+- [A lekérdezés gyorsításának SQL nyelvi referenciája (előzetes verzió)](query-acceleration-sql-reference.md)

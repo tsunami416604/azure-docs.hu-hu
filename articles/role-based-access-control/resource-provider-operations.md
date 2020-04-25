@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 61fb8b53d7d109fefc002b387702a240353f0dca
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: bfe0c6fcc0d1d22807bfb59b146050fb307892a0
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117607"
+ms.locfileid: "82133159"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Erőforrás-szolgáltatói műveletek Azure Resource Manager
 
@@ -4284,7 +4284,7 @@ Azure-szolgáltatás: [Event Grid](../event-grid/index.yml)
 > |  | **tartományok/privateLinkResources** |  |
 > | Műveletek | Microsoft. EventGrid/tartományok/privateLinkResources/olvasás | Tartományok PrivateLinkResources beolvasása vagy listázása |
 > |  | **tartományok/szolgáltatók/Microsoft. bepillantást/logDefinitions** |  |
-> | Műveletek | Microsoft. EventGrid/Domains/Providers/Microsoft. bepillantást/logDefinitions/READ | A diagnosztikai naplókhoz való hozzáférés engedélyezése |
+> | Műveletek | Microsoft. EventGrid/Domains/Providers/Microsoft. bepillantást/logDefinitions/READ | Erőforrás-naplókhoz való hozzáférés engedélyezése |
 > |  | **tartományok/szolgáltatók/Microsoft. bepillantást/metricDefinitions** |  |
 > | Műveletek | Microsoft. EventGrid/Domains/Providers/Microsoft. bepillantást/metricDefinitions/READ | A tartományok elérhető metrikáinak beolvasása |
 > |  | **tartományok/témakörök** |  |
@@ -4352,7 +4352,7 @@ Azure-szolgáltatás: [Event Grid](../event-grid/index.yml)
 > | Műveletek | Microsoft. EventGrid/systemTopics/Providers/Microsoft. bepillantást/diagnosticSettings/READ | A rendszertémakörök diagnosztikai beállításainak beolvasása |
 > | Műveletek | Microsoft. EventGrid/systemTopics/Providers/Microsoft. bepillantások/diagnosticSettings/írás | A rendszertémakörök diagnosztikai beállításainak létrehozása vagy frissítése |
 > |  | **systemTopics/szolgáltatók/Microsoft. bepillantások/logDefinitions** |  |
-> | Műveletek | Microsoft. EventGrid/systemTopics/Providers/Microsoft. bepillantást/logDefinitions/READ | A diagnosztikai naplókhoz való hozzáférés engedélyezése |
+> | Műveletek | Microsoft. EventGrid/systemTopics/Providers/Microsoft. bepillantást/logDefinitions/READ | Erőforrás-naplókhoz való hozzáférés engedélyezése |
 > |  | **systemTopics/szolgáltatók/Microsoft. bepillantások/metricDefinitions** |  |
 > | Műveletek | Microsoft. EventGrid/systemTopics/Providers/Microsoft. bepillantást/metricDefinitions/READ | A rendszertémakörök elérhető metrikáinak beolvasása |
 > |  | **témakörök** |  |
@@ -4376,7 +4376,7 @@ Azure-szolgáltatás: [Event Grid](../event-grid/index.yml)
 > | Műveletek | Microsoft. EventGrid/témakörök/szolgáltatók/Microsoft. bepillantást/diagnosticSettings/READ | A témakörök diagnosztikai beállításának beolvasása |
 > | Műveletek | Microsoft. EventGrid/témakörök/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | A témakörök diagnosztikai beállításának létrehozása vagy frissítése |
 > |  | **témakörök/szolgáltatók/Microsoft. bepillantást/logDefinitions** |  |
-> | Műveletek | Microsoft. EventGrid/témakörök/szolgáltatók/Microsoft. bepillantást/logDefinitions/READ | A diagnosztikai naplókhoz való hozzáférés engedélyezése |
+> | Műveletek | Microsoft. EventGrid/témakörök/szolgáltatók/Microsoft. bepillantást/logDefinitions/READ | Erőforrás-naplókhoz való hozzáférés engedélyezése |
 > |  | **témakörök/szolgáltatók/Microsoft. bepillantást/metricDefinitions** |  |
 > | Műveletek | Microsoft. EventGrid/témakörök/szolgáltatók/Microsoft. bepillantást/metricDefinitions/READ | A témakörökhöz elérhető metrikák beolvasása |
 > |  | **topictypes** |  |

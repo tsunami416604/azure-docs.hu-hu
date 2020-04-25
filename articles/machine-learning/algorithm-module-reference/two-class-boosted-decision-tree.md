@@ -1,78 +1,88 @@
 ---
-title: 'Kétosztályos súlyozott döntési fa: Modulhivatkozás'
+title: 'Kétosztályos kibővített döntési fa: modulok leírása'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja a kétosztályos súlyozott döntési fa modult az Azure Machine Learningben egy gépi tanulási modell létrehozásához, amely a kiemelt döntési fák algoritmuson alapul.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning kétosztályos felerősítő döntési famodulját egy gépi tanulási modell létrehozásához, amely a megnövelt döntési fák algoritmusán alapul.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 1d144a48f79e59b35c88c5b338747d3186ebceda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 0499d52a6fe3da7349d31748ca3b5add16369571
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920739"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137654"
 ---
-# <a name="two-class-boosted-decision-tree-module"></a>Kétosztályos súlyozott döntési fa modul
+# <a name="two-class-boosted-decision-tree-module"></a>Kétosztályos növelt döntési fa modul
 
-Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
-Ezzel a modullal hozzon létre egy gépi tanulási modell, amely a kiemelt döntési fák algoritmus on alapul. 
+Ezzel a modullal létrehozhat egy gépi tanulási modellt, amely a megnövelt döntési fák algoritmusán alapul. 
 
-A kiemelt döntési fa egy együttes tanulási módszer, amelyben a második fa kijavítja az első fa hibáit, a harmadik fa kijavítja az első és a második fa hibáit, és így tovább.  Előrejelzések alapján az egész együttese fák együtt, ami a jóslat.
+A megnövelt döntési fa egy olyan együttes tanulási módszer, amelyben a második fa kijavítja az első fa hibáit, a harmadik fa kijavítja az első és a második fa hibáit, és így tovább.  Az előrejelzések a fák teljes egészére épülnek, amely az előrejelzést végzi.
   
-Általában, ha megfelelően konfigurált, kiemelt döntési fák a legegyszerűbb módszer, amellyel a legjobb teljesítményt a legkülönbözőbb gépi tanulási feladatok. Azonban ők is az egyik több memória-intenzív tanulók, és a jelenlegi végrehajtás tart mindent a memóriában. Ezért előfordulhat, hogy egy kiemelt döntési famodell nem tudja feldolgozni azokat a nagy adatkészleteket, amelyeket egyes lineáris tanulók kezelni tudnak.
+Általában, ha megfelelően van konfigurálva, a megnövelt döntési fák a legkönnyebben használható módszerek, amelyekkel a gépi tanulási feladatok széles skáláját érhetik el. Ugyanakkor a memória-igényes tanulók egyike is, és a jelenlegi implementáció mindent megtart a memóriában. Ezért előfordulhat, hogy a megnövelt döntési famodell nem tudja feldolgozni a lineáris tanulók által kezelhető nagyméretű adatkészleteket.
 
-## <a name="how-to-configure"></a>Hogyan kell beállítani
+## <a name="how-to-configure"></a>Konfigurálás
 
-Ez a modul egy képzetlen besorolási modellt hoz létre. Mivel a besorolás felügyelt tanulási módszer, a modell betanításához egy *címkézett adatkészletre* van szükség, amely tartalmaz egy címkeoszlopot, amely minden sorhoz tartozik értéket.
+Ez a modul egy képzetlen besorolási modellt hoz létre. Mivel a besorolás egy felügyelt tanulási módszer, a modell betanításához olyan *címkézett adatkészletre* van szükség, amely tartalmazza az összes sor értékét tartalmazó címke oszlopot.
 
-Az ilyen típusú modellt a [Train Model](././train-model.md)segítségével taníthatja be. 
+Ezt a modellt betaníthatja a [betanítási modell](././train-model.md)használatával. 
 
-1.  Az Azure Machine Learningben adja hozzá a **kiemelt döntési fa** modult a folyamathoz.
+1.  A Azure Machine Learningban adja hozzá a **megnövelt döntési fa** modult a folyamathoz.
   
-2.  Adja meg, hogyan szeretné betanítani a modellt az **Oktatói mód létrehozása** beállítás beállításával.
+2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.
   
-    + **Egyetlen paraméter:** Ha tudja, hogyan szeretné konfigurálni a modellt, argumentumként megadhat egy adott értékkészletet.
+    + **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.
   
-    + **Paramétertartomány**: Ha nem biztos a legjobb paraméterekben, megtalálhatja az optimális paramétereket a [Tune Model Hyperparameters](tune-model-hyperparameters.md) modul segítségével. Ön megad néhány értéktartományt, és a tréner a beállítások több kombinációján keresztül iterálja a legjobb eredményt adó értékek kombinációját.
+    + **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
   
-3.  A **Levelek maximális száma egy fán,** adja meg a terminálcsomópontok (levelek) maximális számát, amely bármely fán létrehozható.
+3.  A **falevelek maximális számának**megadásához adja meg a fában létrehozható terminál-csomópontok (levelek) maximális számát.
   
-     Ennek az értéknek a növelésével potenciálisan növelheti a fa méretét, és jobb pontosságot kap, a túlszerelés és a hosszabb képzési idő kockázatával.
+     Ennek az értéknek a növelésével lehetőség van a fa méretének növelésére és jobb pontosságra, ha a túlillesztés és a hosszú betanítási idő fennáll.
   
-4.  A **minták minimális száma levélcsomópontonként**, adja meg a terminálcsomópontok (levél) létrehozásához szükséges esetek számát.  
+4.  A **minták minimális száma a levél csomópontjainál**adja meg, hogy hány esetben szükséges a terminál csomópont (levél) létrehozása a fában.  
   
-     Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, még egyetlen eset is új szabály létrehozását okozhatja. Ha az értéket 5-re növeli, a betanítási adatoknak legalább öt olyan esetet kell tartalmazniuk, amelyek megfelelnek az azonos feltételeknek.
+     Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, akkor akár egyetlen esetben is létrehozhat egy új szabályt. Ha az értéket 5-re emeli, a betanítási adatmennyiségnek legalább öt olyan esetet kellene tartalmaznia, amelyek megfelelnek ugyanazoknak a feltételeknek.
   
-5.  A **tanulási sebesség**hez írjon be egy 0 és 1 közötti számot, amely tanulási közben meghatározza a lépésméretet.  
+5.  A **tanulási arány**mezőben adjon meg egy 0 és 1 közötti számot, amely meghatározza a lépés méretét a tanulás során.  
   
-     A tanulási arány határozza meg, hogy a tanuló milyen gyorsan vagy lassúan közelít az optimális megoldáshoz. Ha a lépés mérete túl nagy, előfordulhat, hogy túllépi az optimális megoldást. Ha a lépés mérete túl kicsi, a betanítás hosszabb időt vesz igénybe a legjobb megoldás hoz.
+     A tanulási arány határozza meg, hogy a tanuló milyen gyorsan vagy lassabban konvergál az optimális megoldáson. Ha a lépés mérete túl nagy, lehet, hogy az optimális megoldást is lelövi. Ha a lépés mérete túl kicsi, a képzés továbbra is a legjobb megoldáshoz közeledik.
   
-6.  A **létrehozott fák száma**területen adja meg az együttesben létrehozandó döntési fák teljes számát. Azáltal, hogy több döntés fák, akkor potenciálisan jobb lefedettséget, de a képzési idő növekedni fog.
+6.  A **kiépített fák száma mezőben**adja meg az Ensemble-ben létrehozandó döntési fák teljes számát. További döntési fák létrehozásával lehetőség van jobb lefedettségre, de a képzési idő növekedni fog.
   
-     Ez az érték azt is szabályozza, hogy a betanított modell megjelenítésekor hány fa jelenik meg. Ha egyetlen fát szeretne látni vagy nyomtatni, állítsa az értéket 1-re. Ha azonban így tesz, csak egy fa keletkezik (a fa a paraméterek kezdeti készletével), és nem történik további ismétlés.
+     Ez az érték a betanított modell megjelenítésekor megjelenő fák számát is szabályozza. Ha egyetlen fát szeretne megtekinteni vagy kinyomtatni, állítsa az értéket 1-re. Ha azonban így tesz, csak egy fát hoz létre (a kezdeti paraméterekkel rendelkező fát), és nem végez további iterációt.
   
-7.  A **véletlenszámkezdőmag**esetében tetszés szerint írjon be egy nem negatív egész számot, amelyet véletlenszerű magértékként használ. A vetőmag megadása biztosítja a reprodukálhatóságot az azonos adatokkal és paraméterekkal rendelkező futtatások között.  
+7.  A **véletlenszerű számú magok**esetében opcionálisan adjon meg egy nem negatív egész számot, amelyet véletlenszerű mag értékként kíván használni. A vetőmagok megadásával biztosítható az azonos adatokkal és paraméterekkel rendelkező futtatások közötti reprodukálhatóság.  
   
-     A véletlenszerű mag alapértelmezés szerint 0, ami azt jelenti, hogy a kezdeti magérték a rendszerórából származik.  A véletlenszerű magot használó egymást követő futtatások eltérő eredményeket hozhatnak.
+     A véletlenszerű magok alapértelmezett értéke 0, ami azt jelenti, hogy a kezdeti mag értékét a rendszer órája szerzi be.  A véletlenszerű magok használatával végzett egymást követő futtatások különböző eredményekkel rendelkezhetnek.
   
 
-9. A modell betanítása.
+9. A modell betanítása:
+
+    + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
   
-    + Ha az **Oktató létrehozása módot** egy **paraméterre állítja**be, csatlakoztasson egy címkézett adatkészletet és a [Modell betanítása](./train-model.md) modult.  
+    + Ha az **oktatói mód** beállítása **paraméter-tartományra**van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Ha egy paraméter tartományát adja át a [betanítási modellnek](train-model.md), az csak az alapértelmezett értéket használja az egyetlen paraméteres listában.  
+    > 
+    > Ha egy paraméter értékének egyetlen készletét adja át a [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modulnak, amikor az egyes paraméterekhez különböző beállításokat vár, figyelmen kívül hagyja az értékeket, és a tanuló alapértelmezett értékeit használja.  
+    > 
+    > Ha a **paraméter tartománya** lehetőséget választja, és egyetlen értéket ad meg bármelyik paraméterhez, akkor a rendszer az egyetlen megadott értéket használja a teljes takarítás során, még akkor is, ha más paraméterek egy adott tartományon változnak.  
    
 ## <a name="results"></a>Results (Eredmények)
 
-A képzés befejezése után:
+A betanítás befejezése után:
 
-+ A betanított modell pillanatképének mentéséhez válassza a **Kimenetek** lapot a **Train modell** modul jobb oldali paneljén. Az **adatkészlet regisztrálása** ikonra lehetőséget választva mentse a modellt újrafelhasználható modulként.
++ Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
-+ A modell pontozási használatához adja hozzá a **Score Model** modult egy folyamathoz.
++ A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

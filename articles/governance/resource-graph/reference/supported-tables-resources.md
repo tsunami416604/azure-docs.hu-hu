@@ -1,14 +1,14 @@
 ---
 title: Támogatott Resource Manager-erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Resource Manager-erőforrástípusok listáját.
-ms.date: 04/23/2020
+ms.date: 04/24/2020
 ms.topic: reference
-ms.openlocfilehash: 021a0d595a34bc132aa0e67f2b5485ae9c321ef3
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 7092a6dccc2870c7fd7b6dc6feb3af16f0fd3b7a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116638"
+ms.locfileid: "82141899"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -65,6 +65,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Automation/automationaccounts
 - Microsoft. Automation/automationaccounts/konfigurációk
 - Microsoft. Automation/automationaccounts/runbookok
+- Microsoft. autonomoussystems/munkaterületek
 - Microsoft. azconfig/configurationstores
 - Microsoft. azureactivedirectory/b2cdirectories
 - Microsoft. azuredata/datacontrollers
@@ -104,6 +105,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Cognition/syntheticsaccounts
 - Microsoft. cognitiveservices/fiókok
 - Microsoft. számítás/availabilitysets
+- Microsoft. számítás/diskaccesses
 - Microsoft. számítás/diskencryptionsets
 - Microsoft. számítás/lemezek
 - Microsoft. számítás/galériák

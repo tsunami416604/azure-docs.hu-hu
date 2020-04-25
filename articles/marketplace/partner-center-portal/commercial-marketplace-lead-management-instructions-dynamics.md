@@ -1,201 +1,202 @@
 ---
-title: A Dynamics 365 for Customer Engagement vezetőkezelése | Azure Piactér
-description: Konfigurálja a Dynamics 365 for Customer Engagement érdeklődőkezelését.
+title: Vezető felügyelet a Dynamics 365 Customer engagement szolgáltatásban | Azure piactér
+description: A Dynamics 365-ügyfelek bevonásához vezető felügyelet konfigurálása.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b9158f7b2e3fc73a2fe2a9b20ead2558b7467f6f
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252782"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131058"
 ---
-# <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Érdeklődőkezelés konfigurálása a Dynamics 365 for Customer Engagement alkalmazáshoz
+# <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Az érdeklődők felügyeletének konfigurálása a Dynamics 365 Customer engagement szolgáltatáshoz
 
-Ez a cikk a Dynamics 365 for Customer Engagement (korábban Dynamics CRM Online) beállítását ismerteti, itt olvashat bővebben a piactéri ajánlatból származó értékesítési érdeklődők [feldolgozásához.](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online) 
+Ez a cikk bemutatja, hogyan állíthatja be a Dynamics 365 Customer Engagementt (korábban Dynamics CRM Online néven). További információ a [kiszolgáló alapú hitelesítés konfigurálása a Customer engagement és a SharePoint Online szolgáltatásban](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online) című cikkből a kereskedelmi Piactéri ajánlatból származó értékesítési érdeklődők feldolgozásához.
 
->[!Note]
->Ezek az utasítások a Microsoft által üzemeltetett Dynamics 365 for Customer Engagement környezetre vonatkoznak. Közvetlenül a Dynamics on-prem környezethez való közvetlen csatlakozás jelenleg nem támogatott, vannak más lehetőségek is az érdeklődők fogadására, például egy [https-végpont](./commercial-marketplace-lead-management-instructions-https.md) vagy egy [Azure-tábla](./commercial-marketplace-lead-management-instructions-azure-table.md) konfigurálása érdeklődők fogadására.
+>[!NOTE]
+>Ezek az utasítások a Microsoft által üzemeltetett felhőalapú környezetre vonatkoznak a Dynamics 365 Customer engagement esetében. A közvetlenül a Dynamics helyszíni környezethez való csatlakozás jelenleg nem támogatott. Más lehetőségek is rendelkezésre állnak az érdeklődők fogadására, például egy [https-végpont](./commercial-marketplace-lead-management-instructions-https.md) vagy egy [Azure-tábla](./commercial-marketplace-lead-management-instructions-azure-table.md)konfigurálására.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben ismertetett lépések végrehajtásához a következő felhasználói engedélyek szükségesek:
+A cikk lépéseinek végrehajtásához a következő felhasználói engedélyek szükségesek. A következőket kell tennie:
 
-* A megoldás telepítéséhez és az alábbi utasítások követéséhez rendszergazdaként kell eltekintenie a Dynamics 365 for Customer Engagement példányon.
-* Bérlői rendszergazdának kell lennie ahhoz, hogy új szolgáltatásfiókot hozzon létre az érdeklődőszolgáltatáshoz, amely érdeklődőket küld a piactéri ajánlatokból.
-* Hozzáféréssel kell rendelkeznie az Office 365 felügyeleti portáljához.
-* Hozzáféréssel kell rendelkeznie az Azure Portalhoz.
+* A Dynamics 365 Customer engagement-példányának rendszergazdájának kell lennie ahhoz, hogy megoldást tudjon telepíteni, és kövesse ezeket az utasításokat.
+* A bérlői rendszergazdaként hozzon létre egy új szolgáltatásfiókot az érdeklődők számára a kereskedelmi Piactéri ajánlatokból érkező érdeklődők számára.
+* Hozzáférés az Office 365 felügyeleti portálhoz.
+* Hozzáféréssel rendelkezik a Azure Portalhoz.
 
 ## <a name="install-the-solution"></a>A megoldás telepítése
 
-1.  Töltse le a [Microsoft Piactér érdeklődőírója megoldást,](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip) és mentse helyileg a számítógépre.
+1. Töltse le a [Microsoft Marketplace vezető író megoldását](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip), és mentse helyileg a számítógépre.
 
-2.  Nyissa meg a Dynamics 365 for Customer Engagement alkalmazást `https://tenant.crm.dynamics.com`úgy, hogy a Dynamics-példány (például) URL-címére navigál.
+1. Nyissa meg a Dynamics 365 Customer Engagementt a Dynamics-példány URL-címére `https://tenant.crm.dynamics.com`, például:.
 
-3.  A beállításokeléréséhez a felső navigációs sávon a fogaskerék ikon és a **Speciális beállítások lehetőséget** választva érheti el.
+1. Válassza a fogaskerék ikont a felső sávon, majd válassza a **Speciális beállítások**lehetőséget.
  
-    ![Dynamics – Speciális beállítások](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
+    ![Dynamics 365 speciális beállítások menüelem](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-advanced-settings.png)
 
-4.  Miután a Beállítások lapon a felső navigációs sávon a Beállítás menüt érheti el, és válassza a **Megoldások**lehetőséget.
+1. A **Beállítások** lapon nyissa meg a felső sávon található **Beállítások** menüt, és válassza a **megoldások**elemet.
 
-    >[!Note]
-    >Ha a következő képernyőfelvételen nem láthatók a beállítások, akkor nem rendelkezik a folytatáshoz szükséges engedélyekkel. A Dynamics 365 for Customer Engagement példány adminisztrátorát is megszólíthatja.
+    >[!NOTE]
+    >Ha nem látja a beállításokat a következő képernyőn, akkor nem rendelkezik a folytatáshoz szükséges engedélyekkel. Forduljon a Dynamics 365 Customer engagement-példány rendszergazdájához.
 
-    ![Dynamics 365 - Megoldások](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
+    ![Dynamics 365-megoldások lehetőség](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
 
-5. Miután a Megoldások lapon válassza az **Importálás** lehetőséget, és keresse meg *azt* a helyt, ahová az 1.
+1. A **megoldások** lapon válassza az **Importálás** lehetőséget, és lépjen arra a helyre, ahová az 1. lépésben letöltött **Microsoft Marketplace vezető író** megoldást mentette.
 
-    ![Dynamics 365 az ügyfelek aktivitására – importálás](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
+    ![Importálás gomb](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
 
-6. A megoldás importálásának befejezése a Megoldás importálása varázsló val.
+1. Fejezze be a megoldás importálását a megoldás importálása varázsló segítségével.
 
 ## <a name="configure-user-permissions"></a>Felhasználói engedélyek konfigurálása
 
-Ahhoz, hogy érdeklődőket írjon a Dynamics 365 for Customer Engagement példányba, meg kell osztania velünk egy szolgáltatási fiókot, és konfigurálnia kell a fiók engedélyeit.
+Ha érdeklődőket szeretne írni a Dynamics 365 Customer engagement-példányba, meg kell osztania egy szolgáltatásfiókot a Microsofttal, és konfigurálnia kell a fiókhoz tartozó engedélyeket.
 
-Az alábbi lépésekkel hozhatja létre a szolgáltatásfiókot, és engedélyeket rendelhet hozzá. Használhatja **az Azure Active Directoryt** vagy az **Office 365-öt.**
+A szolgáltatásfiók létrehozásához és az engedélyek hozzárendeléséhez kövesse az alábbi lépéseket. Azure Active Directory vagy Office 365-et is használhat.
 
->[!Note]
->A kiválasztott hitelesítési beállítás alapján a választás alapján átugorhatja a megfelelő utasításokat. Lásd: [Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) vagy Office [365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365).
+>[!NOTE]
+>Ugorjon a megfelelő utasításokra a kiválasztott hitelesítési lehetőség alapján. Lásd: [Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) vagy [Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365).
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Ezt a lehetőséget azért javasoljuk, mert a felhasználónév/jelszó frissítésének további előnye, hogy nem kell frissítenie az érdeklődőket. Az Azure Active Directory beállítás használatához adja meg az alkalmazásazonosítót, az alkalmazáskulcsot és a címtárazonosítót az Active Directory-alkalmazásból.
+Ezt a beállítást javasoljuk, mert soha nem kell frissítenie a felhasználónevet vagy a jelszót az érdeklődők beszerzéséhez. A Azure Active Directory beállítás használatához meg kell adnia az alkalmazás AZONOSÍTÓját, az alkalmazás kulcsát és a könyvtár AZONOSÍTÓját a Active Directory alkalmazásból.
 
-Az alábbi lépésekkel konfigurálhatja az Azure Active Directory for Dynamics 365 for Customer Engagement szolgáltatást.
+Azure Active Directory konfigurálása a Dynamics 365 Customer engagement szolgáltatáshoz:
 
-1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com/)majd válassza ki az Azure Active Directory-szolgáltatást a bal oldali navigációs sávon.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
 
-2. Válassza ki a **tulajdonságok** az Azure Active Directory bal navigációs, és másolja a **címtárazonosító** értékét az adott lapon. Mentse ezt az értéket, mivel ez az a *címtárazonosító* érték, amelyet meg kell adnia a közzétételi portálon ahhoz, hogy érdeklődőket kapjon a piactéri ajánlathoz.
+1. Válassza a **Tulajdonságok**lehetőséget, és másolja a **címtár-azonosító** értékét a **könyvtár tulajdonságok** lapján. Mentse ezt az értéket, mert a közzétételi portálon meg kell adnia a Piactéri ajánlathoz tartozó érdeklődőket.
 
-    ![Azure Active Directory – tulajdonságok](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
+    ![Azure Active Directory tulajdonságok menüelem](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-properties.png)
 
-3. Válassza ki **az alkalmazásregisztrációk** az Azure Active Directory bal navigációs, majd válassza az **új regisztráció** az adott lapon.
-4. Adja meg az alkalmazás nevének nevét. Adjon meg értelmes alkalmazásnevet.
-5. A Támogatott fióktípusok csoportban válassza **a Fiókok lehetőséget bármely szervezeti címtárban.**
-6. Az Átirányítás URI-csoportban válassza a `https://contosoapp1/auth` **Web** lehetőséget, és adjon meg egy URI-t (például). 
-7. Kattintson a **Register** (Regisztrálás) elemre.
+1. Válassza a **Alkalmazásregisztrációk** lehetőséget a Azure Active Directory bal oldali ablaktáblán, majd válassza az **új regisztráció** lehetőséget az oldalon.
+1. Adjon meg egy értelmes nevet az alkalmazás neveként.
+1. A **támogatott fiókok típusai**területen válassza **a fiókok lehetőséget bármely szervezeti címtárban**.
+1. Az **átirányítási URI (nem kötelező)** területen válassza a **web** lehetőséget, és adjon `https://contosoapp1/auth`meg egy URI-t, például:. 
+1. Kattintson a **Register** (Regisztrálás) elemre.
 
-    ![Egy alkalmazás regisztrálása](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
+    ![Alkalmazás-oldal regisztrálása](./media/commercial-marketplace-lead-management-instructions-dynamics/register-an-application.png)
 
-8. Most, hogy az alkalmazás regisztrálva van, hozzáférés az alkalmazás áttekintő oldalához, és másolja az **alkalmazás (ügyfél) azonosító** értékét az adott oldalon. Mentse ezt az értéket, mivel ez az *alkalmazás (ügyfél) azonosító* értéke, amelyet meg kell adnia a közzétételi portálon és a Dynamics rendszerben az érdeklődők fogadásához a piactéri ajánlathoz.
+1. Most, hogy regisztrálta az alkalmazást, nyissa meg az alkalmazás áttekintés lapját. Másolja az **alkalmazás (ügyfél) azonosító** értékét az adott oldalon. Mentse ezt az értéket, mert a közzétételi Portálon és a Dynamics 365-ben meg kell adnia a Piactéri ajánlathoz tartozó érdeklődőket.
 
-    ![Alkalmazás (ügyfél) azonosítója](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
+    ![Alkalmazás-(ügyfél-) azonosító mező](./media/commercial-marketplace-lead-management-instructions-dynamics/application-id.png)
 
-9. Válassza **a Tanúsítványok és titkok** lehetőséget az alkalmazás bal oldali navigációs sávján, és válassza az Új **ügyféltitok** lehetőséget az adott lapon. Adjon meg egy értelmes leírást az ügyféltitkos címhez, és válassza a **Soha** ne lehetőséget a Lejár. Válassza a **Hozzáadás** lehetőséget az ügyféltitok létrehozásához.
+1. Válassza ki a **tanúsítványok & Secrets** elemet az alkalmazás bal oldali paneljén, és válassza az **új ügyfél titka** gombot. Adjon meg egy értelmes leírást az ügyfél titkos kódjához, és válassza a **lejárat**alatt lévő **soha** lehetőséget. A **Hozzáadás** gombra kattintva hozza létre az ügyfél titkos kulcsát.
 
-    ![Alkalmazás - Tanúsítás és titkok](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
+    ![Tanúsítványok & Secrets menüpont](./media/commercial-marketplace-lead-management-instructions-dynamics/aad-certificates-secrets.png)
 
-10. Amint az ügyféltitok sikeresen létrejött, **másolja az ügyfél titkos értékét.** Az oldaltól való eligazodás után nem tudja beolvasni az értéket. Mentse ezt az értéket, mivel ez az *ügyfél titkos* értéket meg kell adnia a közzétételi portálon, hogy érdeklődőket kapjon a piactéri ajánlathoz. 
-11. Válassza ki az **API-engedélyeket** az alkalmazások bal oldali navigációs sávján, majd válassza **az Engedély hozzáadása**lehetőséget.
-12. Válassza a Microsoft API-k, majd a **Dynamics CRM** API-k lehetőséget.
-13. A *Milyen típusú engedélyekre van szüksége az alkalmazásnak,* győződjön meg arról, hogy **a Delegált engedélyek** ki vannak jelölve. Ellenőrizze, **hogy user_impersonation** Access Common *Data Service-t szervezeti felhasználóként.* Válassza **az Engedélyek hozzáadása**lehetőséget.
+1. Az ügyfél titkos kulcsának sikeres létrehozása után másolja ki az **ügyfél titkos** értékét. Az értéket nem fogja tudni lekérni az oldal elhagyását követően. Mentse ezt az értéket, mert a közzétételi portálon meg kell adnia a Piactéri ajánlathoz tartozó érdeklődőket. 
+1. Válassza az **API-engedélyek** lehetőséget az alkalmazás bal oldali paneljén, majd válassza az **+ engedély hozzáadása**lehetőséget.
+1. Válassza a **Microsoft API**-k lehetőséget, majd válassza a **Dynamics CRM** lehetőséget API-ként.
+1. **Milyen típusú engedélyek szükségesek az alkalmazáshoz?**, győződjön meg arról, hogy a **delegált engedélyek** van kiválasztva. 
+1. Az **engedély**területen jelölje be a **user_impersonation** jelölőnégyzetet a **hozzáférés Common Data Service szervezeti felhasználóként**. Ezután válassza az **engedélyek hozzáadása**lehetőséget.
 
-    ![Engedélyek hozzáadása](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
+    ![Engedélyek hozzáadása gomb](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. Miután elvégezte az `https://tenant.crm.dynamics.com`1-13.
-15. A Beállítások eléréséhez válassza a fogaskerék ikont és a **Speciális beállításokat** a felső navigációs sávon.
-16. Miután a Beállítások lapon a felső navigációs sávon a Beállítás menüt érheti el, és válassza a **Biztonság**lehetőséget.
-17. Miután a Biztonság lapon válassza a **Felhasználók**lehetőséget.  A Felhasználók lapon válassza az "Engedélyezett felhasználók" legördülő menüt az **Alkalmazásfelhasználók**elemre való váltáshoz.
-18. Új felhasználó létrehozásához válassza az **Új** lehetőséget. 
+1. Miután elvégezte az 1 – 14. lépést a Azure Portalban, lépjen a Dynamics 365 Customer engagement-példányra az URL-címre `https://tenant.crm.dynamics.com`, például:.
+1. Válassza a fogaskerék ikont a felső sávon, majd válassza a **Speciális beállítások**lehetőséget.
+1. A **Beállítások** lapon nyissa meg a felső sávon található **Beállítások** menüt, és válassza a **Biztonság**elemet.
+1. A **Biztonság** lapon válassza a **felhasználók**lehetőséget. A **felhasználók** lapon jelölje be az **engedélyezett felhasználók** legördülő listát, majd válassza az **alkalmazás felhasználói**lehetőséget.
+1. Új felhasználó létrehozásához válassza az **új** lehetőséget. 
 
     ![Új felhasználó létrehozása](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
-19. Az **Új felhasználó**alkalmazásban győződjön meg arról, hogy a USER: APPLICATION USER beállítás van kiválasztva. Adja meg a kapcsolathoz használni kívánt felhasználó felhasználónevét, teljes nevét és e-mail címét. Emellett illessze be az **alkalmazásazonosítót** az Azure Portalon létrehozott alkalmazás8. A felhasználó hozzáadásához válassza a **Mentés és a Bezárás** lehetőséget.
+1. Az **új felhasználó** ablaktáblán győződjön meg arról, hogy a **felhasználó: alkalmazás felhasználó** van kiválasztva. Adja meg annak a felhasználónak a felhasználónevét, teljes nevét és e-mail-címét, amelyet ezzel a kapcsolatban szeretne használni. Illessze be az **alkalmazás azonosítóját** is a 8. lépésben a Azure Portalban létrehozott alkalmazáshoz. A felhasználó hozzáadásának befejezéséhez válassza a **mentés & Bezárás** gombra.
 
-    ![Új felhasználó](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
+    ![Új felhasználó ablaktábla](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
-20. A felhasználó kapcsolatának konfigurálásának befejezéséhez nyissa meg a jelen cikk "Biztonsági beállítások" című témakörét.
+1. A jelen cikkben a "biztonsági beállítások" című szakaszban találhatja meg a felhasználóhoz való kapcsolódás konfigurálásának befejezését.
 
 ### <a name="office-365"></a>Office 365
 
-Ha nem szeretné használni az Azure Active Directoryt, regisztrálhat egy új felhasználót a *Microsoft 365 Felügyeleti központban.* 90 naponta frissítenie kell felhasználónevét/jelszavát, hogy továbbra is érdeklődjön.
+Ha nem kívánja használni a Azure Active Directoryt, regisztrálhat egy új felhasználót a Microsoft 365 felügyeleti központban. Az érdeklődők folytatásához 90 naponta frissítenie kell a felhasználónevét és a jelszavát.
 
-Az alábbi lépésekkel konfigurálhatja az Office 365 for Dynamics 365 for Customer Engagement alkalmazást.
+Az Office 365 for Dynamics 365 ügyfél-engagement konfigurálása:
 
 1. Jelentkezzen be a [Microsoft 365 Felügyeleti központba](https://admin.microsoft.com).
 
-2. Válassza **a Felhasználó hozzáadása**lehetőséget.
+1. Válassza **a felhasználó hozzáadása**elemet.
 
-    ![Microsoft 365 Felügyeleti központ – felhasználó hozzáadása](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
+    ![Microsoft 365 felügyeleti központ felhasználói lehetőség hozzáadása](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
 
-4. Hozzon létre egy új felhasználót az érdeklődőíró szolgáltatáshoz. Adja meg az alábbi beállításokat:
+1. Hozzon létre egy új felhasználót az ólom-író szolgáltatáshoz. Adja meg az alábbi beállításokat:
 
-    * Felhasználónév megadására
-    * Adjon meg egy jelszót, és törölje a jelet a "A felhasználó jelszómódosítása az első bejelentkezéskor" jelölőnégyzet ből.
-    * A felhasználó szerepköreként válassza a "Felhasználó (rendszergazdai hozzáférés)" lehetőséget.
-    * Válassza a "Dynamics 365 Customer Engagement terv" lehetőséget a következő képernyőfelvételen látható terméklicencként. A választott licencért díjat számítunk fel. 
+    * Adjon meg egy felhasználónevet.
+    * Adja meg a jelszót, és törölje a jelet az **első bejelentkezéskor a felhasználó módosítása a jelszavuk módosítására** jelölőnégyzetből.
+    * Válassza a **felhasználó (nincs rendszergazdai hozzáférés)** elemet a felhasználó szerepköre.
+    * Az alábbi képernyőn látható módon válassza ki a **Dynamics 365 Customer engagement-tervet** , amely a termék licence. A választott licencért díjat számítunk fel. 
 
-Mentse ezeket az értékeket, mivel azok a *felhasználónév és jelszó* értékeket kell megadnia a közzétételi portálon, hogy megkapja az érdeklődőket a piactéri ajánlathoz.
+Mentse ezeket az értékeket, mert a közzétételi portálon meg kell adnia a **felhasználónevet** és a **jelszót** , hogy fogadja az érdeklődőket a Piactéri ajánlathoz.
 
-![Microsoft 365 Felügyeleti központ - új felhasználó](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
+![Microsoft 365 felügyeleti központ új felhasználójának panelje](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-new-user.png)
 
 ## <a name="security-settings"></a>Biztonsági beállítások
 
-Az utolsó lépés az, hogy a felhasználó létrehozott írni az érdeklődőket.
+Az utolsó lépés az, hogy lehetővé teszi a létrehozott felhasználó számára az érdeklődők írását.
 
-1. Nyissa meg a Dynamics 365 for Customer Engagement alkalmazást `https://tenant.crm.dynamics.com`úgy, hogy a Dynamics-példány (például) URL-címére navigál.
-2. A beállításokeléréséhez a felső navigációs sávon a fogaskerék ikon és a **Speciális beállítások lehetőséget** választva érheti el.
-3. Miután a Beállítások lapon a felső navigációs sávon a Beállítás menüt érheti el, és válassza a **Biztonság**lehetőséget.
-4. Miután a Biztonság lapon válassza a **Felhasználók** lehetőséget, és jelölje ki a dokumentum Felhasználói engedélyek konfigurálása szakaszában létrehozott felhasználót, majd válassza a **Szerepkörök kezelése**lehetőséget. 
+1. Nyissa meg a Dynamics 365 Customer Engagementt a Dynamics-példány URL-címére `https://tenant.crm.dynamics.com`, például:.
+1. Válassza a fogaskerék ikont a felső sávon, majd válassza a **Speciális beállítások**lehetőséget.
+1. A **Beállítások** lapon nyissa meg a felső sávon található **Beállítások** menüt, és válassza a **Biztonság**elemet.
+1. A **Biztonság** lapon válassza a **felhasználók** lehetőséget, majd válassza ki a jelen dokumentum "felhasználói engedélyek konfigurálása" szakaszában létrehozott felhasználót. Ezután válassza a **Szerepkörök kezelése**lehetőséget. 
 
-    ![Szerepkörök kezelése](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
+    ![Szerepkörök kezelése lap](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
 
-5. Keresse meg a "Microsoft Marketplace lead Writer" szerepkörnevet, és jelölje ki a szerepkör tanévhez.
+1. Keresse meg a szerepkör nevét **Microsoft Marketplace érdeklődő író**elemnél, és válassza ki a szerepkört a felhasználó hozzárendeléséhez.
 
-    ![Felhasználó szerepkörök kezelése](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
+    ![Felhasználói szerepkörök panel kezelése](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
 
-    >[!Note]
-    >Ezt a szerepkört az importált megoldás hozta létre, és csak az érdeklődők írásához és a megoldás verziójának a kompatibilitás biztosításához történő nyomon követéséhez szükséges engedélyekkel rendelkezik.
+    >[!NOTE]
+    >Ezt a szerepkört az importált megoldás hozza létre, és csak a megfelelő jogosultsággal rendelkezik az érdeklődők írásához és a megoldás verziójának nyomon követéséhez, hogy biztosítsa a kompatibilitást.
 
-6. Lépjen vissza a Biztonság lapra, és válassza a **Biztonsági szerepkörök lehetőséget.** Keresse meg a "Microsoft Marketplace lead writer" szerepkört, és jelölje ki.
+1. Lépjen vissza a **Biztonság** lapra, és válassza a **biztonsági szerepkörök**elemet. Keresse meg a szerepkör **Microsoft Marketplace érdeklődő-író**elemet, majd válassza ki.
 
-    ![Biztonsági szerepkörök](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
+    ![Biztonsági szerepkörök panel](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-7. Miután a biztonsági szerepkör, válassza a **Core Records** fülre. Keresés a "Felhasználói entitás felhasználói felületének beállításai" entitás, és engedélyezze a létrehozása, olvasása és írása engedélyeket felhasználó (1/4 sárga kör) az adott entitás kattintva egyszer az egyes megfelelő körökben.
+1. A biztonsági szerepkörben válassza az **alaprekordok** fület. Keresse meg a **felhasználói entitás felhasználói felületének beállításai** elemet. A létrehozási, olvasási és írási engedélyek engedélyezése a felhasználó számára (1/4 sárga kör) az adott entitáshoz a megfelelő körökben egyszer kattintva.
 
-    ![A Microsoft Piactér vezető írója – Core Records](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
+    ![Microsoft Marketplace vezető Writer Core Records lap](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 
-8. Most keresse meg a **Testreszabás** lapot. Keresés a "Rendszerfeladat" entitásban, és engedélyezi az olvasási, írási és hozzáfűzési engedélyeket az adott entitáshoz (folyamatos zöld) az entitáshoz, ha négyszer kattint a megfelelő körökmindegyikére.
+1. A **Testreszabás** lapon keressen rá a **rendszerfeladat** elemre. Engedélyezze az olvasási, írási és AppendTo engedélyeket a szervezetnek (tömör zöld körök) az adott entitáshoz, ehhez kattintson négyszer a megfelelő körökben.
 
-    ![Microsoft Piactér vezető írója – testreszabás](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
+    ![Microsoft Marketplace vezető író testreszabása lap](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
 
-9. **Mentés és bezárás**.
+1. Válassza **a Mentés és bezárás**lehetőséget.
 
-## <a name="configure-your-offer-to-send-leads-to-dynamics-365-for-customer-engagement"></a>Az ajánlat konfigurálása az érdeklődők nek a Dynamics 365 for Customer Engagement alkalmazásba küldésére
+## <a name="configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement"></a>Az ajánlat beállítása a Dynamics 365 Customer engagement felé vezető érdeklődők küldéséhez 
 
-Ha készen áll az ajánlat érdeklődőkezelési adatainak konfigurálására a közzétételi portálon, kövesse az alábbi lépéseket:
+Az ajánlathoz tartozó érdeklődő-felügyeleti információk konfigurálása a közzétételi portálon:
 
-1. Nyissa meg az **ajánlat beállítási** oldalát.
-2. Válassza a **Csatlakozás** lehetőséget az Érdeklődőkezelés szakaszban.
+1. Nyissa meg az ajánlat **telepítési** lapját.
+1. Válassza a **kapcsolat** lehetőséget az **érdeklődő felügyelete** szakaszban.
 
-    ![Csatlakozás az érdeklődőkezeléshez](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
+    ![Érdeklődői felügyelet szakasz csatlakozási gombja](./media/commercial-marketplace-lead-management-instructions-dynamics/connect-lead-management.png)
 
-3. A Kapcsolat részletei előugró ablakban válassza a **Dynamics 365 for Customer Engagement** lehetőséget az érdeklődő célhelyéhez.
+1. A kapcsolat részletei előugró ablakban válassza ki a **Dynamics 365 Customer engagement** elemet a vezető célhoz.
 
-    ![Kapcsolat részletei - érdeklődő célállomása](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
+    ![Érdeklődői cél mező](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
-4. Adja meg a **Dynamics 365 példány URL-címét,** például `https://contoso.crm4.dynamics.com`.
+1. Adja meg a Dynamics 365 **-példány URL-címét** , `https://contoso.crm4.dynamics.com`például:.
 
-5. Válassza ki a **hitelesítési**módszert , az Azure Active Directoryt vagy az Office 365-öt. 
-6. Ha az Azure Active Directoryt választotta, adja meg `23456052-aaaa-bbbb-8662-1234df56788f`az **alkalmazás (ügyfél) azonosítóját** (például: ), a **címtárazonosítót** (például: `12345678-8af1-4asf-1234-12234d01db47`) és **az ügyféltitkos kulcsot** (például: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`).
+1. Válassza ki a **hitelesítési**módszert (Azure Active Directory vagy Office 365). 
+1. Ha a **Azure Active Directory**lehetőséget választotta, adja meg az **alkalmazás (ügyfél) azonosítóját** ( `23456052-aaaa-bbbb-8662-1234df56788f`például), a **könyvtár azonosítóját** ( `12345678-8af1-4asf-1234-12234d01db47`például), és az **ügyfél titkos kulcsát** (például: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`).
 
-    ![A kapcsolat részletei – Azure Active Directory](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
+    ![Hitelesítés Azure Active Directory kiválasztva](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
 
-7. Ha az Office 365-öt választotta, `contoso@contoso.onmicrosoft.com`adja meg a `P@ssw0rd` **Felhasználónevet** (például: ) és a Jelszót (például: ).
+1. Ha az **Office 365**lehetőséget választotta, adja meg a **felhasználónevet** (például `contoso@contoso.onmicrosoft.com`) és a **jelszót** (például `P@ssw0rd`).
 
-    ![Kapcsolat részletei - Felhasználónév](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+    ![Office 365 Felhasználónév mező](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 
-8. **Kapcsolatfelvételi e-mail** – E-maileket adhat meg a vállalatnál lévő személyeknek, akiknek e-mailes értesítéseket kell kapniuk, ha új érdeklődő érkezik. Több e-mailt is megadhat, ha pontosvesszővel választja el őket.
-9. Válassza **az OK gombot.**
+1. A **kapcsolattartási e-mail**cím mezőbe írja be az e-mail-címeket a vállalat azon tagjai számára, akik új érdeklődő fogadásakor e-mail-értesítéseket kapnak. A pontosvesszővel elválasztva több e-mail-címet is megadhat.
+1. Kattintson az **OK** gombra.
 
-Ha meg szeretne győződni arról, hogy sikeresen csatlakozott egy érdeklődő célállomásához, kattintson az érvényesítés gombra. Ha sikeres, akkor lesz egy teszt vezető az érdeklődő cél.
+Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 
-![Érdeklődőkezelés - kapcsolat részletei tárfiók](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
+![Kapcsolattartási e-mail mező](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
->[!Note]
->Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie, mielőtt érdeklődőket kapna az ajánlathoz.
+>[!NOTE]
+>Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie az ajánlathoz tartozó érdeklődők fogadása előtt.

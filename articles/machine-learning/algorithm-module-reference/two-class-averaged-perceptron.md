@@ -1,62 +1,72 @@
 ---
-title: 'Döntési erdő regressziója: Modul hivatkozása'
+title: 'Döntési erdő regressziója: modul leírása'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja a kétosztályos átlagérték-perceptron modult az Azure Machine Learningben egy gépi tanulási modell létrehozásához az átlagos perceptron algoritmus alapján.
+description: Ismerje meg, hogyan használható a kétosztályos átlagú Perceptron modul a Azure Machine Learningban egy gépi tanulási modell létrehozásához az átlagos Perceptron algoritmus alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 73e23dd7d350ea63e9fd8b933a525a9d8aad9e3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 53e40726a5745263ee2b3cb4ada8671bf65da963
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920773"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137671"
 ---
-# <a name="two-class-averaged-perceptron-module"></a>Kétosztályos átlagos perceptron modul
+# <a name="two-class-averaged-perceptron-module"></a>Kétosztályos átlagú Perceptron modul
 
-Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
-Ezzel a modullal hozzon létre egy gépi tanulási modell alapján az átlagos perceptron algoritmus.  
+Ezzel a modullal gépi tanulási modellt hozhat létre az átlagos perceptron algoritmus alapján.  
   
-Ez a besorolási algoritmus egy felügyelt tanulási módszer, és egy *címkézett adatkészletet*igényel, amely tartalmaz egy címkeoszlopot. A modell betanításához adja meg a modellt és a címkézett adatkészletet a [betanítási modell bemeneteként.](./train-model.md) A betanított modell ezután az új bemeneti példák értékeinek előrejelzésére használható.  
+Ez a besorolási algoritmus felügyelt tanulási módszer, és olyan *címkézett adatkészletet*igényel, amely tartalmaz egy címke oszlopot. A modellt úgy is betaníthatja, hogy a modell és a címkézett adatkészlet bemenetként adja meg a [betanítási modellt](./train-model.md). A betanított modell ezután felhasználható az új bemeneti példák értékeinek előrejelzésére.  
 
-### <a name="about-averaged-perceptron-models"></a>Körülbelül átlagos perceptron modellek
+### <a name="about-averaged-perceptron-models"></a>Az átlagos perceptron modellek
 
-Az *átlagos perceptron módszer* egy neurális hálózat korai és egyszerű változata. Ebben a megközelítésben a bemenetek lineáris függvényen alapuló több lehetséges kimenetbe vannak besorolva, majd a jellemzővektorból származó súlyokkal kombinálva – innen a "perceptron" név.
+Az *átlagos perceptron módszer* egy neurális hálózat korai és egyszerű verziója. Ebben a megközelítésben a bemenetek egy lineáris függvény alapján több lehetséges kimenetbe vannak besorolva, és a szolgáltatás vektora által származtatott súlyok készletével kombinálva, így a "perceptron" névvel.
 
-Az egyszerűbb észlelési modellek alkalmasak a lineárisan elkülöníthető minták tanulására, míg a neurális hálózatok (különösen a mély neurális hálózatok) összetettebb osztályhatárokat modellezhetnek. Az észlelések azonban gyorsabbak, és mivel az eseteket sorozatosan dolgozzák fel, az észlelések folyamatos képzéssel használhatók.
+Az egyszerűbb perceptron modellek a lineárisan elválasztható minták tanulására alkalmasak, míg a neurális hálózatok (különösen a mély neurális hálózatok) összetettebb osztálybeli határokat tudnak modellezni. Azonban a perceptrons gyorsabbak, és mivel az eseteket a sorosan dolgozzák fel, a perceptrons folyamatos képzéssel használható.
 
-## <a name="how-to-configure-two-class-averaged-perceptron"></a>A kétosztályos átlagos perceptron beállítása
+## <a name="how-to-configure-two-class-averaged-perceptron"></a>Kétosztályos átlagú Perceptron konfigurálása
 
-1.  Adja hozzá a **kétosztályos átlagú perceptron** modult a folyamathoz.  
+1.  Adja hozzá a **kétosztályos átlagú Perceptron-** modult a folyamathoz.  
 
-2.  Adja meg, hogyan szeretné betanítani a modellt az **Oktatói mód létrehozása** beállítás beállításával.  
+2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter:** Ha tudja, hogyan szeretné konfigurálni a modellt, adjon meg egy adott értékkészletet argumentumként.
+    -   **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, adjon meg egy adott értékeket argumentumként.
 
-    -   **Paramétertartomány**: Akkor válassza ezt a lehetőséget, ha nem biztos a legjobb paraméterekben, és paraméterkeresést szeretne futtatni. Válasszon ki egy értéktartományt, amely felett iterálni, és a [Tune Model Hyperparameters](tune-model-hyperparameters.md) iterálja az összes lehetséges kombinációa a megadott beállítások meghatározásához a hiperparaméterek, amelyek az optimális eredményt.  
+    -   **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.  
   
-3.  A **tanulási arány**hoz adja meg a tanulási arány *értékét*. A tanulási sebesség értékek szabályozzák a sztocastikus gradiens esésben használt lépés méretét a modell minden egyes tesztelésekor és javításakor.
+3.  A **tanulási arány**mezőben határozza meg a *képzési arány*értékét. A tanulási arány értéke a modell minden egyes tesztelésekor és javításakor a sztochasztikus gradiensben használt lépés méretét szabályozza.
   
-     Azáltal, hogy az arány kisebb, akkor tesztelje a modell gyakrabban, azzal a kockázattal, hogy esetleg elakad egy helyi fennsíkon. Azáltal, hogy a lépés nagyobb, akkor konvergál gyorsabban, a kockázat overshooting az igazi minimumok.
+     A sebesség csökkentésével gyakrabban teszteli a modellt, és azzal a kockázattal jár, hogy egy helyi fennsíkon fog elakadni. A lépés elvégzésével megközelítheti a valódi minimumokat, és így gyorsabban is megoszthatja őket.
   
-4.  Az **ismétlések maximális száma**mezőbe írja be, hogy az algoritmus hányszor vizsgálja meg a betanítási adatokat.  
+4.  Az **Ismétlések maximális száma**beállításnál adja meg, hogy az algoritmus hány alkalommal vizsgálja meg a betanítási adatmennyiséget.  
   
-     A korai megállás gyakran jobb általánosítást biztosít. Számának növelése iterációk javítja illeszkedés, a kockázata a túlszerelés.
+     A korai leállítás gyakran jobb általánosítást biztosít. Az ismétlések számának növelése növeli a beilleszkedés kockázatát.
   
-5.  A **véletlenszám-vetőmagesetében**tetszés szerint írjon be egy egész értéket, amelyet vetőmagként szeretne használni. A mag használata ajánlott, ha biztosítani szeretné a folyamat reprodukálhatóságát a futtatások között.  
+5.  A **véletlenszerű számú magok**esetében szükség esetén adjon meg egy egész számot, amelyet magként kíván használni. A magok használata ajánlott, ha biztosítani szeretné, hogy a folyamat megismételhetősége fusson.  
   
-1.  Hozzon össze egy betanítási adatkészletet és az egyik betanítási modult:
+1.  Csatlakoztasson egy betanítási adatkészletet, és tanítsa be a modellt:
+
+    + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
   
-    -   Ha az **Oktató létrehozása módot** egy **paraméterre állítja**be, használja a [Betanítási modell](train-model.md) modult.
+    + Ha az **oktatói mód** beállítása **paraméter-tartományra**van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Ha egy paraméter tartományát adja át a [betanítási modellnek](train-model.md), az csak az alapértelmezett értéket használja az egyetlen paraméteres listában.  
+    > 
+    > Ha egy paraméter értékének egyetlen készletét adja át a [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modulnak, amikor az egyes paraméterekhez különböző beállításokat vár, figyelmen kívül hagyja az értékeket, és a tanuló alapértelmezett értékeit használja.  
+    > 
+    > Ha a **paraméter tartománya** lehetőséget választja, és egyetlen értéket ad meg bármelyik paraméterhez, akkor a rendszer az egyetlen megadott értéket használja a teljes takarítás során, még akkor is, ha más paraméterek egy adott tartományon változnak.
 
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

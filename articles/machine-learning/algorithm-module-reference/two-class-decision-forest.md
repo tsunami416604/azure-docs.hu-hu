@@ -1,103 +1,113 @@
 ---
-title: 'Kétosztályos döntési erdő: modul hivatkozási'
+title: 'Kétosztályos döntési erdő: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja a kétosztályos döntési erdő modul az Azure Machine Learning hozzon létre egy gépi tanulási modell alapján a döntési erdők algoritmus.
+description: Megtudhatja, hogyan használható a kétosztályos döntési erdő modul a Azure Machine Learning egy gépi tanulási modell létrehozásához a döntési erdők algoritmusa alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: c9388da449e75dee00fd43af9a4e0407c46f597a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: c98935781699510d84247f80367d5c57cb388f6b
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77916710"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137637"
 ---
 # <a name="two-class-decision-forest-module"></a>Kétosztályos döntési erdő modul
 
-Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
-Ezzel a modullal a döntési erdők algoritmusa alapján gépi tanulási modellt hozhat létre.  
+Ezzel a modullal gépi tanulási modellt hozhat létre a döntési erdők algoritmusa alapján.  
 
-Döntés erdők gyors, felügyelt együttes modellek. Ez a modul jó választás, ha legfeljebb két eredménnyel szeretné megjósolni a célt. 
+A döntési erdők gyors, felügyelt Ensemble-modellek. Ez a modul jó választás, ha legfeljebb két kimenetet szeretne előre jelezni. 
 
-## <a name="understanding-decision-forests"></a>A döntési erdők ismertetése
+## <a name="understanding-decision-forests"></a>Döntési erdők ismertetése
 
-Ez a döntési erdő algoritmus egy együttes tanulási módszer, amelyet osztályozási feladatokra szántak. Ensemble módszerek alapján az általános elv, hogy ahelyett, hogy támaszkodva egy modell, akkor jobb eredményeket és egy általánosabb modell létrehozásával több kapcsolódó modellek és kombinálja őket valamilyen módon. Általában az együttes modellek jobb fedést és pontosságot biztosítanak, mint az egyes döntési fák. 
+Ez a döntési erdő algoritmus a besorolási feladatokhoz készült együttes tanulási módszer. A Ensemble módszerei azon általános elv alapján működnek, amely nem egyetlen modellre támaszkodik, így jobb eredményeket érhet el, és egy általánosított modellt hozhat létre több kapcsolódó modell létrehozásával, és valamilyen módon kombinálhatja azokat. Az Ensemble-modellek általában jobb lefedettséget és pontosságot biztosítanak, mint az önálló döntési fák. 
 
-Sok módja van, hogy hozzon létre az egyes modellek és összekapcsolják őket egy együttest. Ez a konkrét végrehajtása döntés erdő művek épület több döntési fák, majd **szavazni** a legnépszerűbb kimeneti osztály. A szavazás az egyik legismertebb módszer az együttesmodell eredményeinek létrehozására. 
+Számos módon hozhat létre egyéni modelleket, és kombinálhatja őket egy együttesben. A döntési erdő adott implementációja több döntési fa kiépítése, majd a legnépszerűbb kimeneti osztályban való **szavazás** alapján működik. A szavazás az egyik jobb ismert módszer, amellyel az eredményeket egy Ensemble-modellben lehet létrehozni. 
 
-+ Számos egyedi besorolási fák jönnek létre, a teljes adatkészlet, de a különböző (általában randomizált) kiindulási pontok. Ez eltér a véletlenszerű erdőmegközelítéstől, amelyben az egyes döntési fák csak az adatok vagy szolgáltatások véletlenszerű részét használhatják.
-+ A döntési erdőfa minden egyes fája nem normalizált gyakoriságú címkéket eredményez. 
-+ Az összesítési folyamat összegzi ezeket a histogramokat, és normalizálja az eredményt, hogy megkapja az egyes címkék "valószínűségeket". 
-+ A fák, amelyek nagy előrejelzés bizalom lesz nagyobb súlyt a végső döntést az együttes.
++ Számos egyéni besorolási fa jön létre a teljes adatkészlet használatával, de eltérő (általában véletlenszerű) kezdőpontokkal. Ez eltér a véletlenszerű erdő megközelítéstől, amelyben az egyes döntési fák csak az adatok vagy szolgáltatások véletlenszerű részét használhatják.
++ A döntési erdő fájának minden fastruktúrája a címkék nem normalizált gyakorisági hisztogramját adja eredményül. 
++ Az összesítési folyamat összegzi ezeket a hisztogramokat, és normalizálja az eredményt az egyes címkék "valószínűségek" lekéréséhez. 
++ A magas előrejelző megbízhatósággal rendelkező fák nagyobb súlyt kapnak az Ensemble végső döntésében.
 
-A döntési fák nak általában számos előnye van az osztályozási feladatokhoz:
+A döntési fák általában számos előnnyel rendelkeznek a besorolási feladatokhoz:
   
-- Nem lineáris döntési határokat rögzíthetnek.
-- Sok adat betanításával és előrejelzésével hatékonyan használható a számítás és a memóriahasználat.
-- A funkciókiválasztása integrálva van a képzési és osztályozási folyamatokba.  
-- A fák zajos adatokat és számos funkciót képesek befogadni.  
-- Ezek nem parametrikus modellek, ami azt jelenti, hogy különböző eloszlásokkal tudják kezelni az adatokat. 
+- A nem lineáris döntési határokat is rögzíthetik.
+- Nagy mennyiségű adattal is betaníthat és megjósolhat, mivel ezek a számítási és memóriahasználat hatékonyak.
+- A szolgáltatás kiválasztása a képzési és besorolási folyamatokban van integrálva.  
+- A fák a zajos és sok funkciót is kielégítik.  
+- Nem számszerű modellek, ami azt jelenti, hogy különböző eloszlásokkal kezelhetik az adatkezelést. 
 
-Azonban az egyszerű döntési fák túlilleszkedhetnek az adatokra, és kevésbé általánosíthatók, mint a faegyüttesek.
+Ugyanakkor az egyszerű döntési fák is overfit az adatmennyiséget, és kevésbé általánosítható, mint a faszerkezetek.
 
-További információ: [Decision Forests](https://go.microsoft.com/fwlink/?LinkId=403677).  
+További információ: [döntési erdők](https://go.microsoft.com/fwlink/?LinkId=403677).  
 
-## <a name="how-to-configure"></a>Hogyan kell beállítani
+## <a name="how-to-configure"></a>Konfigurálás
   
-1.  Adja hozzá a **kétosztályos döntési erdő** modult a folyamathoz az Azure Machine Learningben, és nyissa meg a modul **Tulajdonságok** ablaktábláját. 
+1.  Adja hozzá a **kétosztályos döntési erdő** modult a folyamathoz Azure Machine learning, majd nyissa meg a modul **Tulajdonságok** paneljét. 
 
-    A modul a **Machine Learning**( machine learning ) alatt található. Bontsa ki **az Inicializálás,** majd **a Besorolás kibontását.**  
+    A modul a **Machine learning**alatt található. Bontsa ki az **inicializálás**, majd a **besorolás**elemet.  
   
-2.  Az **Újraszámítás módszerhez**válassza ki az egyes fák létrehozásához használt módszert.  A **zsákolás** vagy a **Replikálás**közül választhat.  
+2.  Az **újramintavételezési módszernél**válassza ki az egyes fák létrehozásához használt módszert.  A **csomagok** és a **replikálás**lehetőség közül választhat.  
   
-    -   **Zsákolás:** Zsákolás is *nevezik bootstrap összesítés*. Ebben a módszerben minden fa egy új mintán van kifejlődve, amelyet úgy hoz létre, hogy véletlenszerűen mintavételezi az eredeti adatkészletet csereként, amíg az adatkészlet mérete meg nem történik az eredeti méretével.  
+    -   **Poggyász**: a poggyászt rendszerindítási *összesítésnek*is nevezik. Ebben a módszerben minden fát egy új mintán termesztenek, és az eredeti adatkészlet véletlenszerűen történő mintavételezésével jön létre, és csak akkor történik meg, ha nem rendelkezik az eredeti méretű adatkészlettel.  
   
-         A modellek kimeneteit *szavazással*kombinálják, ami az összesítés egyik formája. Minden fa egy besorolási döntés erdő kimenetek egy nem normalizált gyakorisága hisztogram címkék. Az összesítés az, hogy összefoglalja ezeket a histogramok és normalizálja, hogy a "valószínűségek" minden címke. Ily módon, a fák, amelyek nagy előrejelzés bizalom lesz nagyobb súlyt a végső döntést az együttes.  
+         A modellek kimeneteit a rendszer *szavazással*kombinálja, amely az Összesítés formáját képezi. A besorolási döntési erdőben lévő összes fa a címkék nem normalizált gyakorisági hisztogramját adja vissza. Az összesítés az, hogy összesítse ezeket a hisztogramokat, és normalizálja a "valószínűségek" kifejezést az egyes címkéknél. Ily módon a nagy előrejelzési megbízhatósággal rendelkező fák nagyobb súlyt kapnak az Ensemble végső döntésében.  
   
-         További információ: A Bootstrap aggregating Wikipedia-bejegyzésében.  
+         További információ: a rendszerindítási összesítések Wikipedia-bejegyzése.  
   
-    -   **Replikálás:** A replikáció során minden fa pontosan ugyanazokra a bemeneti adatokra van betanítva. Annak meghatározása, hogy melyik felosztási predikátumot használják minden facsomóponthoz, véletlenszerű marad, és a fák változatosak lesznek.   
+    -   **Replikálás**: a replikáció során minden fát pontosan ugyanazok a bemeneti adatok képeznek. Az egyes facsomópontok esetében a kiosztott predikátumok véletlenszerűek maradnak, és a fák sokrétűek lesznek.   
   
-3.  Adja meg, hogyan szeretné betanítani a modellt az **Oktatói mód létrehozása** beállítás beállításával.  
+3.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter:** Ha tudja, hogyan szeretné konfigurálni a modellt, argumentumként megadhat egy adott értékkészletet.
+    -   **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.
 
-    -   **Paramétertartomány**: Ha nem biztos a legjobb paraméterekben, megtalálhatja az optimális paramétereket a [Tune Model Hyperparameters](tune-model-hyperparameters.md) modul segítségével. Ön megad néhány értéktartományt, és a tréner a beállítások több kombinációján keresztül iterálja a legjobb eredményt adó értékek kombinációját.
+    -   **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
   
-4.  A **Döntési fák száma mezőbe**írja be az együttesben létrehozható döntési fák maximális számát. Azáltal, hogy több döntés ifák, akkor potenciálisan jobb lefedettséget, de a képzési idő növekszik.  
+4.  A **döntési fák száma**mezőben adja meg az Ensemble-ban létrehozható döntési fák maximális számát. További döntési fák létrehozásával jobb lefedettséget érhet el, de a képzési idő növekszik.  
   
     > [!NOTE]
-    >  Ez az érték azt is szabályozza, hogy a betanított modell megjelenítésekor hány fa jelenik meg. Ha egyetlen fát szeretne látni vagy nyomtatni, az értéket 1-re állíthatja. Azonban csak egy fa állítható elő (a fa a paraméterek kezdeti készletével), és nem történik további ismétlés.
+    >  Ez az érték a betanított modell megjelenítésekor megjelenő fák számát is szabályozza. Ha egyetlen fát szeretne látni vagy kinyomtatni, beállíthatja az értéket 1-re. Azonban csak egy fát lehet előállítani (a kezdeti paraméterekkel rendelkező fát), és a rendszer nem végez további iterációkat.
   
-5.  A **döntési fák maximális mélységéhez**írjon be egy számot a döntési fa maximális mélységének korlátozásához. A fa mélységének növelése növelheti a pontosságot, a túlszerelés és a megnövekedett képzési idő kockázatával.
+5.  **A döntési fák maximális mélységéhez**adjon meg egy számot, amely korlátozza a döntési fa maximális mélységét. A fa mélységének növelésével növelheti a pontosságot, és megnövelheti a beilleszkedő és a megnövekedett betanítási időt is.
   
-6.  A **csomópontonkénti véletlenszerű felosztások száma**mezőbe írja be a fa egyes csomópontjainak létrehozásához használandó felosztások számát. A *felosztás* azt jelenti, hogy a fa (csomópont) minden szintjén a jellemzők véletlenszerűen oszlanak meg.
+6.  A **véletlenszerű felosztások száma a csomóponton**mezőben adja meg a fa egyes csomópontjainak kiépítésekor használandó felosztások számát. A *felosztás* azt jelenti, hogy a fa (csomópont) egyes szintjeinek funkciói véletlenszerűen vannak osztva.
   
-7.  A **minták minimális száma levélcsomópontonként**, adja meg a minimális számú esetben, amelyek létrehozásához szükséges bármely terminál csomópont (levél) egy fa.
+7.  A **minták minimális száma a levél csomópontjainál**adja meg az esetek minimális számát, amely szükséges ahhoz, hogy bármely terminál csomópont (levél) a fában legyen létrehozva.
   
-     Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, még egyetlen eset is új szabály létrehozását okozhatja. Ha az értéket 5-re növeli, a betanítási adatoknak legalább öt olyan esetet kell tartalmazniuk, amelyek megfelelnek az azonos feltételeknek.  
+     Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, akkor akár egyetlen esetben is létrehozhat egy új szabályt. Ha az értéket 5-re emeli, a betanítási adatmennyiségnek legalább öt olyan esetet kellene tartalmaznia, amelyek megfelelnek ugyanazoknak a feltételeknek.  
   
-8.  Jelölje be az **Ismeretlen értékek engedélyezése a kategorikus funkciókhoz** lehetőséget, ha a betanítási vagy érvényesítési készletekben ismeretlen értékekhez szeretne csoportot létrehozni. Előfordulhat, hogy a modell kevésbé pontos az ismert értékekhez, de jobb előrejelzéseket biztosíthat az új (ismeretlen) értékekhez. 
+8.  Jelölje be az **ismeretlen értékek engedélyezése a kategorikus funkciókhoz** lehetőséget, ha a képzési vagy ellenőrzési készletekben ismeretlen értékekhez szeretne csoportot létrehozni. Előfordulhat, hogy a modell kevésbé pontos az ismert értékeknél, de az új (ismeretlen) értékek jobb előrejelzését is lehetővé teszi. 
 
-     Ha kijelöli ezt a beállítást, a modell csak a betanítási adatokban szereplő értékeket fogadhatja el.
+     Ha kijelöli ezt a beállítást, a modell csak a betanítási adatokban található értékeket fogadja el.
   
-9. Címkézett adatkészlet és az egyik [betanítási modul csatolása:](module-reference.md)  
+9. Címkézett adatkészlet csatolása és a modell betanítása:
+
+    + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](train-model.md) modult.  
   
-    -   Ha az **Oktató létrehozása módot** egy **paraméterre állítja**be, használja a [Betanítási modell](./train-model.md) modult.  
+    + Ha az **oktatói mód** beállítása **paraméter-tartományra**van beállítva, csatlakoztasson egy címkézett adatkészletet, és a modell betanításához használja a [modell hiperparaméterek beállítása](tune-model-hyperparameters.md).  
+  
+    > [!NOTE]
+    > 
+    > Ha egy paraméter tartományát adja át a [betanítási modellnek](train-model.md), az csak az alapértelmezett értéket használja az egyetlen paraméteres listában.  
+    > 
+    > Ha egy paraméter értékének egyetlen készletét adja át a [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modulnak, amikor az egyes paraméterekhez különböző beállításokat vár, figyelmen kívül hagyja az értékeket, és a tanuló alapértelmezett értékeit használja.  
+    > 
+    > Ha a **paraméter tartománya** lehetőséget választja, és egyetlen értéket ad meg bármelyik paraméterhez, akkor a rendszer az egyetlen megadott értéket használja a teljes takarítás során, még akkor is, ha más paraméterek egy adott tartományon változnak.  
     
 ## <a name="results"></a>Results (Eredmények)
 
-A képzés befejezése után:
+A betanítás befejezése után:
 
-+ A betanított modell pillanatképének mentéséhez válassza a **Kimenetek** lapot a **Train modell** modul jobb oldali paneljén. Az **adatkészlet regisztrálása** ikonra lehetőséget választva mentse a modellt újrafelhasználható modulként.
++ Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
-+ A modell pontozási használatához adja hozzá a **Score Model** modult egy folyamathoz.
++ A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -1,54 +1,54 @@
 ---
-title: Az Azure Bastion diagnosztikai naplóinak engedélyezése és az okkal való kapcsolat
-description: Ebben a cikkben megtudhatja, hogyan engedélyezheti és dolgozhat az Azure Bastion diagnosztikai naplók használatával.
+title: Azure-beli megerősített erőforrás-naplók engedélyezése és használata
+description: Ebből a cikkből megtudhatja, hogyan engedélyezheti és dolgozhat az Azure Bastion diagnosztikai naplóival.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 97f0cdb1e93ef2ad06d2daa04b2f4893fd5dfac2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 4b71dba02a311b8fa6a16645364f90d7632693a2
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619275"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131275"
 ---
-# <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Bástyadiagnosztikai naplók engedélyezése és az okkal való kapcsolat
+# <a name="enable-and-work-with-bastion-resource-logs"></a>Megerősített erőforrás-naplók engedélyezése és használata
 
-Ahogy a felhasználók az Azure Bastion használatával csatlakoznak a számítási feladatokhoz, a Bastion naplózhatja a távoli munkamenetek diagnosztikáját. Ezután a diagnosztika segítségével megtekintheti, hogy mely felhasználók mely számítási feladatokhoz, mikor, honnan és más hasonló releváns naplózási információkhoz kapcsolódnak. A diagnosztika használatához engedélyeznie kell a diagnosztikai naplók az Azure Bastion. Ez a cikk segít a diagnosztikai naplók engedélyezésében, majd a naplók megtekintésében.
+Ahogy a felhasználók az Azure Bastion használatával csatlakoznak a munkaterhelésekhez, a Bastion naplózhatja a távoli munkamenetek diagnosztikát. Ezután a diagnosztika használatával megtekintheti, hogy mely felhasználók kapcsolódtak a munkaterhelésekhez, hogy milyen időpontban, hol és más hasonló naplózási információkkal. A diagnosztika használatához engedélyeznie kell a diagnosztikai naplókat az Azure Bastion-ben. Ennek a cikknek a segítségével engedélyezheti a diagnosztikai naplókat, majd megtekintheti a naplókat.
 
-## <a name="enable-the-diagnostics-log"></a><a name="enable"></a>A diagnosztikai napló engedélyezése
+## <a name="enable-the-resource-log"></a><a name="enable"></a>Az erőforrás-napló engedélyezése
 
-1. Az [Azure Portalon](https://portal.azure.com)keresse meg az Azure-bastion erőforrást, és válassza **a Diagnosztikai beállítások** az Azure Bastion lapon.
+1. A [Azure Portal](https://portal.azure.com)navigáljon az Azure Bastion-erőforráshoz, és válassza a **diagnosztikai beállítások** lehetőséget az Azure Bastion oldalon.
 
    ![diagnosztikai beállítások](./media/diagnostic-logs/1diagnostics-settings.png)
-2. Válassza **a Diagnosztikai beállítások lehetőséget,** majd a **+Diagnosztikai beállítás hozzáadása** lehetőséget a naplók hoz való cél hozzáadásához.
+2. Válassza a **diagnosztikai beállítások**, majd a **+ diagnosztikai beállítás hozzáadása** elemet a naplók célhelyének hozzáadásához.
 
    ![diagnosztikai beállítás hozzáadása](./media/diagnostic-logs/2add-diagnostic-setting.png)
-3. A **Diagnosztikai beállítások** lapon válassza ki a diagnosztikai naplók tárolására használt tárfiók típusát.
+3. A **diagnosztikai beállítások** lapon válassza ki a diagnosztikai naplók tárolására szolgáló Storage-fiók típusát.
 
-   ![tároló helyének kiválasztása](./media/diagnostic-logs/3add-storage-account.png)
-4. Amikor elvégzi a beállításokat, a következő példához hasonlóan fog kinézni:
+   ![tárolási hely kiválasztása](./media/diagnostic-logs/3add-storage-account.png)
+4. A beállítások elvégzése után az alábbi példához hasonlóan fog kinézni:
 
-   ![példa beállítások](./media/diagnostic-logs/4example-settings.png)
+   ![Példa beállításai](./media/diagnostic-logs/4example-settings.png)
 
 ## <a name="view-diagnostics-log"></a><a name="view"></a>Diagnosztikai napló megtekintése
 
-A diagnosztikai naplók eléréséhez közvetlenül használhatja a megadott tárfiókot, miközben engedélyezi a diagnosztikai beállításokat.
+A diagnosztikai naplók eléréséhez közvetlenül használhatja azt a Storage-fiókot, amelyet a diagnosztika beállításainak engedélyezésekor adott meg.
 
-1. Keresse meg a tárfiók-erőforrást, majd a **Tárolók .** Láthatja az **insights-logs-bastionauditlogs** blob a tárfiók blob tárolójában létrehozott.
+1. Keresse meg a Storage-fiók erőforrását, majd a **tárolók**lehetőséget. Megjelenik a Storage-fiók blob-tárolójában létrehozott elemzések **– naplók – bastionauditlogs** blob.
 
    ![diagnosztikai beállítások](./media/diagnostic-logs/1-navigate-to-logs.png)
-2. Ahogy navigálasz a tárolóbelsejében, különböző mappákat látsz a blogodban. Ezek a mappák jelzik az Azure Bastion erőforrás erőforrás-hierarchiáját.
+2. Ahogy a tárolón belül navigál, a blogban különféle mappák jelennek meg. Ezek a mappák az Azure-beli megerősített erőforráshoz tartozó erőforrás-hierarchiát jelölik.
 
    ![diagnosztikai beállítás hozzáadása](./media/diagnostic-logs/2-resource-h.png)
-3. Keresse meg az Azure Bastion erőforrás teljes hierarchiáját, amelynek diagnosztikai naplóit szeretné elérni/nézetbe. Az "y=,"m=", "d=", "h=" és "m=" a diagnosztikai naplók évét, hónapját, napját, óráját és percét jelöli.
+3. Navigáljon az Azure-beli megerősített erőforrás teljes hierarchiához, amelynek diagnosztikai naplóit szeretné elérni/megtekinteni. Az "y =", 'm = ", 'd =", "h =" és "m =" érték azt jelzi, hogy az év, hónap, nap, óra és perc szerepel az erőforrás-naplóknál.
 
-   ![tároló helyének kiválasztása](./media/diagnostic-logs/3-resource-location.png)
-4. Keresse meg az Azure Bastion által létrehozott json-fájlt, amely a diagnosztikai napló adatait tartalmazza a megkeresett időszakhoz.
+   ![tárolási hely kiválasztása](./media/diagnostic-logs/3-resource-location.png)
+4. Keresse meg az Azure Bastion által létrehozott JSON-fájlt, amely a diagnosztikai napló adatait tartalmazza az adott időszakra vonatkozóan.
 
-5. Töltse le a jsonfájlt a storage blob tárolóból. A json-fájlból származó példabejegyzés az alábbiakban található:
+5. Töltse le a JSON-fájlt a Storage blob-tárolóból. A JSON-fájlból például a következő hivatkozás látható:
 
    ```json
    { 
@@ -79,4 +79,4 @@ A diagnosztikai naplók eléréséhez közvetlenül használhatja a megadott tá
 
 ## <a name="next-steps"></a>További lépések
 
-Olvassa el a [Bástya GYIK](bastion-faq.md).
+Olvassa el a [megerősített GYIK](bastion-faq.md)-t.

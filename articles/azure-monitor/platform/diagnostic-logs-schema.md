@@ -1,319 +1,319 @@
 ---
-title: Az Azure Resource Naplók támogatott szolgáltatások és sémák
-description: Ismerje meg az Azure-erőforrásnaplók támogatott szolgáltatásait és eseménysémáját.
+title: Az Azure Resource naplózza a támogatott szolgáltatásokat és sémákat
+description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatásait és esemény-sémáját.
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: 352310a6e489a96c38e85b16e9504d8eb9be38b1
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 7183c0b268342d08fe7c0ed79c7fa589e3e28afe
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457246"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128469"
 ---
-# <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrásnaplókhoz
+# <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrások naplóihoz
 
 > [!NOTE]
-> Az erőforrásnaplókat korábban diagnosztikai naplóknak nevezték.
+> Az erőforrás-naplók korábban diagnosztikai naplóként ismertek.
 
-[Az Azure Monitor erőforrás-naplók](../../azure-monitor/platform/platform-logs-overview.md) az Azure-szolgáltatások által kibocsátott naplók, amelyek leírják az ilyen szolgáltatások vagy erőforrások működését. Az Azure Monitoron keresztül elérhető összes erőforrásnapló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasan bocsáthat ki egyedi tulajdonságokat a saját eseményeihez.
+[Azure monitor az erőforrás-naplókat](../../azure-monitor/platform/platform-logs-overview.md) az Azure-szolgáltatások által kibocsátott naplók, amelyek leírják ezeknek a szolgáltatásoknak vagy erőforrásoknak a működését. A Azure Monitoron keresztül elérhető összes erőforrás-napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasságot biztosít, hogy egyedi tulajdonságokat bocsát ki a saját eseményeihez.
 
-Az erőforrástípus (a `resourceId` tulajdonságban elérhető) `category` és a séma egyedi azonosítása kombinációja. Ez a cikk az erőforrásnaplók legfelső szintű sémáját és az egyes szolgáltatások sémájára mutató hivatkozásokat ismerteti.
+Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category` séma egyedileg azonosítható kombinációja. Ez a cikk az erőforrás-naplók legfelső szintű sémáját, valamint az egyes szolgáltatások sémák mutató hivatkozásokat ismerteti.
 
-## <a name="top-level-resource-logs-schema"></a>Legfelső szintű erőforrásnaplók sémája
+## <a name="top-level-resource-logs-schema"></a>Legfelső szintű erőforrás-naplók sémája
 
 | Name (Név) | Kötelező vagy nem kötelező | Leírás |
 |---|---|---|
-| time | Kötelező | Az esemény időbélyege (UTC). |
-| resourceId | Kötelező | Az eseményt kibocsátó erőforrás erőforrásazonosítója. Bérlői szolgáltatások esetén ez a /tenants/tenant-id/providers/provider-name formában van. |
-| tenantId | Bérlői naplókhoz szükséges | Annak az Active Directory-bérlőnek a bérlői azonosítója, amelyhez ez az esemény kötődik. Ez a tulajdonság csak bérlői szintű naplókhoz használatos, nem jelenik meg az erőforrásszintű naplókban. |
-| operationName | Kötelező | Az esemény által képviselt művelet neve. Ha az esemény RBAC műveletet jelöl, akkor ez az RBAC művelet neve (pl. Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Általában erőforrás-kezelő művelet formájában modellezve, még akkor is, ha azok`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`nem ténylegesen dokumentált Erőforrás-kezelő műveletek ( ) |
-| operationVersion | Optional | A művelethez társított api-verzió, ha a operationName api használatával történt (pl. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Ha nincs olyan API, amely megfelel ennek a műveletnek, a verzió a művelet verzióját jelöli, ha a művelethez társított tulajdonságok a jövőben megváltoznak. |
-| category | Kötelező | Az esemény naplókategóriája. Kategória Az a részletesség, amelyen engedélyezheti vagy letilthatja a naplókat egy adott erőforráson. Egy esemény tulajdonságblobjában megjelenő tulajdonságok megegyeznek egy adott naplókategórián és erőforrástípuson belül. A tipikus naplókategóriák a "Naplózás" "Operatív" "Végrehajtás" és "Kérés". |
-| resultType | Optional | Az esemény állapota. A tipikus értékek a következők: Elindítva, Folyamatban, Sikeres, Sikertelen, Aktív és Megoldva. |
-| resultSignature | Optional | Az esemény alállapota. Ha ez a művelet egy REST API-hívásnak felel meg, ez a megfelelő REST-hívás HTTP-állapotkódja. |
-| resultDescription | Optional | A statikus szöveges leírása ennek a műveletnek, pl. "Tárolófájl betárolása." |
+| time | Kötelező | Az esemény időbélyegzője (UTC). |
+| resourceId | Kötelező | Az eseményt kibocsátó erőforrás erőforrás-azonosítója. A bérlői szolgáltatások esetében ez a/tenants/Tenant-ID/Providers/Provider-Name. formátumú. |
+| tenantId | A bérlői naplókhoz szükséges | Annak a Active Directory bérlőnek a bérlői azonosítója, amelyhez ez az esemény hozzá van kötve. Ez a tulajdonság csak a bérlői szintű naplók esetében használatos, nem jelenik meg az erőforrás-szintű naplókban. |
+| operationName | Kötelező | Az esemény által jelzett művelet neve. Ha az esemény egy RBAC műveletet jelöl, akkor ez a RBAC művelet neve (például Microsoft. Storage/storageAccounts/blobServices/Blobok/olvasás). Általában Resource Manager-művelet formájában modellezve, még akkor is, ha nem ténylegesen dokumentált erőforrás-kezelői műveletek`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`() |
+| operationVersion | Optional | A művelethez társított API-verzió, ha a operationName API-val (például:) lett elvégezve. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Ha nincs olyan API, amely megfelel a műveletnek, akkor a verzió a művelet azon verzióját jelöli, amely a művelethez kapcsolódó tulajdonságok jövőbeli változásakor következik be. |
+| category | Kötelező | Az esemény naplózási kategóriája. A kategória a részletesség, amelyen engedélyezheti vagy letilthatja a naplókat egy adott erőforráson. Az események tulajdonságok blobjában megjelenő tulajdonságok egy adott napló kategóriáján és erőforrás-típusán belül megegyeznek. A szokásos naplózási kategóriák "audit" "működési" "végrehajtás" és "kérelem". |
+| resultType | Optional | Az esemény állapota. A tipikus értékek a következők: elindítva, folyamatban, sikeres, sikertelen, aktív és megoldott. |
+| resultSignature | Optional | Az esemény alállapota. Ha ez a művelet egy REST API hívásnak felel meg, akkor ez a megfelelő REST-hívás HTTP-állapotkód. |
+| resultDescription | Optional | A művelet statikus szöveges leírása, például:. "Tárolási fájl beolvasása" |
 | durationMs | Optional | A művelet időtartama ezredmásodpercben. |
-| callerIpAddress | Optional | A hívó IP-címe, ha a művelet megfelel egy API-hívás, amely egy nyilvánosan elérhető IP-címmel rendelkező entitástól származik. |
-| correlationId | Optional | A kapcsolódó események csoportjának csoportosítására használt GUID azonosító. Általában, ha két esemény ugyanazt a műveletetName de két különböző állapotok (pl. "Elindítva" és "Sikeres"), azonos korrelációs azonosítóval rendelkeznek. Ez az események közötti egyéb kapcsolatokat is képviselhet. |
-| identity | Optional | JSON blob, amely leírja a műveletet végző felhasználó vagy alkalmazás identitását. Ez általában tartalmazza az active directoryból származó engedélyezést és jogcímeket / JWT-jogkivonatot. |
-| Szint | Optional | Az esemény súlyossági szintje. Tájékoztató, figyelmeztetési, hiba vagy kritikus típusúnak kell lennie. |
-| location | Optional | Az eseményt kibocsátó erőforrás régiója, pl. "USA keleti része" vagy "Dél-Franciaország" |
-| properties | Optional | Az adott eseménykategóriához kapcsolódó kiterjesztett tulajdonságok. Minden egyéni/egyedi tulajdonságot a séma "B. részébe" kell helyezni. |
+| callerIpAddress | Optional | A hívó IP-címe, ha a művelet olyan API-hívásnak felel meg, amely nyilvánosan elérhető IP-címmel rendelkező entitásból származik. |
+| correlationId | Optional | A kapcsolódó események halmazának csoportosítására szolgáló GUID. Általában, ha két esemény ugyanazzal a operationName, de két különböző állapottal rendelkezik (például "Elindítva" és "sikeres") ugyanaz a korrelációs azonosító. Ez az események közötti egyéb kapcsolatokat is jelenthet. |
+| identity | Optional | Egy JSON-blob, amely leírja a műveletet végrehajtó felhasználó vagy alkalmazás identitását. Ez általában magában foglalja az Active Directoryból származó engedélyezési és jogcímek/JWT tokent is. |
+| Szint | Optional | Az esemény súlyossági szintje. Az egyik tájékoztatási, figyelmeztetési, hiba vagy kritikus értéknek kell lennie. |
+| location | Optional | Az eseményt kibocsátó erőforrás régiója, például:. "USA keleti régiója" vagy "Dél-Franciaország" |
+| properties | Optional | Az adott kategóriába tartozó eseményekhez kapcsolódó további tulajdonságok. Minden egyéni/egyedi tulajdonságot a séma "B része" részévé kell tenni. |
 
-## <a name="service-specific-schemas-for-resource-logs"></a>Szolgáltatásspecifikus sémák erőforrásnaplókhoz
-Az erőforrásdiagnosztikai naplók sémája az erőforrás- és naplókategóriától függ. Ez a lista az összes olyan szolgáltatást tartalmazza, amely elérhetővé teszi az erőforrásnaplókat, és a szolgáltatásra és a kategóriaspecifikus sémára mutató hivatkozásokat, ahol elérhető.
+## <a name="service-specific-schemas-for-resource-logs"></a>Az erőforrás-naplók szolgáltatás-specifikus sémái
+Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kategóriától függően változik. Ez a lista az összes olyan szolgáltatást megjeleníti, amely elérhető erőforrás-naplókat készít, valamint a szolgáltatásra mutató hivatkozásokat, valamint a kategória-specifikus sémát.
 
-| Szolgáltatás | Séma & dokumentumok |
+| Szolgáltatás | Séma & docs |
 | --- | --- |
-| Azure Active Directory | [Áttekintés](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [Naplóséma](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) és [bejelentkezési séma naplózása](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Azure Active Directory | [Áttekintés](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [naplózási napló sémája](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) és [bejelentkezési sémája](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
-| API Management | [API-felügyeleti erőforrásnaplók](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
-| Application Gateway-átjárók |[Alkalmazásátjáró naplózása](../../application-gateway/application-gateway-diagnostics.md) |
-| Azure Automation |[Log analytics az Azure Automationhez](../../automation/automation-manage-send-joblogs-log-analytics.md) |
+| API Management | [Erőforrás-naplók API Management](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
+| Application Gateway-átjárók |[Application Gateway naplózása](../../application-gateway/application-gateway-diagnostics.md) |
+| Azure Automation |[Azure Automation log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch naplózás](../../batch/batch-diagnostics.md) |
-| Azure Database for MySQL | [Azure Database for MySQL diagnosztikai naplók](../../mysql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Database for PostgreSQL | [Azure-adatbázis a PostgreSQL-naplókhoz](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Data Explorer | [Az Azure Data Explorer naplói](/azure/data-explorer/using-diagnostic-logs) |
-| Cognitive Services | [Naplózás az Azure Cognitive Services szolgáltatáshoz](../../cognitive-services/diagnostic-logging.md) |
-| Container Registry | [Az Azure Container Registry naplózása](../../container-registry/container-registry-diagnostics-audit-logs.md) |
-| Content Delivery Network | [Azure-naplók a CDN-hez](../../cdn/cdn-azure-diagnostic-logs.md) |
-| CosmosDB | [Azure Cosmos DB naplózása](../../cosmos-db/logging.md) |
-| Data Factory | [Adatgyárak figyelése az Azure Monitor használatával](../../data-factory/monitor-using-azure-monitor.md) |
-| Data Lake Analytics |[Az Azure Data Lake Analytics naplóinak elérése](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
-| Data Lake Store |[Az Azure Data Lake Store naplóinak elérése](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| Event Hubs |[Az Azure Event Hubs naplói](../../event-hubs/event-hubs-diagnostic-logs.md) |
+| Azure Database for MySQL | [Diagnosztikai naplók Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Naplók Azure Database for PostgreSQL](../../postgresql/concepts-server-logs.md#resource-logs) |
+| Azure Data Explorer | [Azure Adatkezelő-naplók](/azure/data-explorer/using-diagnostic-logs) |
+| Cognitive Services | [Azure-Cognitive Services naplózása](../../cognitive-services/diagnostic-logging.md) |
+| Container Registry | [Azure Container Registry naplózása](../../container-registry/container-registry-diagnostics-audit-logs.md) |
+| Content Delivery Network | [A CDN-hez készült Azure-naplók](../../cdn/cdn-azure-diagnostic-logs.md) |
+| CosmosDB | [Azure Cosmos DB naplózás](../../cosmos-db/logging.md) |
+| Data Factory | [Az adatüzemek figyelése Azure Monitor használatával](../../data-factory/monitor-using-azure-monitor.md) |
+| Data Lake Analytics |[Naplók elérése Azure Data Lake Analyticshoz](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
+| Data Lake Store |[Naplók elérése Azure Data Lake Storehoz](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Event Hubs |[Azure Event Hubs-naplók](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | A séma nem érhető el. |
 | Azure Firewall | A séma nem érhető el. |
-| IoT Hub | [IoT Hub-műveletek](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Key Vault |[Azure key vault naplózása](../../key-vault/general/logging.md) |
-| Kubernetes Service |[Azure Kubernetes naplózás](../../aks/view-master-logs.md#log-event-schema) |
+| IoT Hub | [IoT Hub műveletek](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
+| Key Vault |[Azure Key Vault naplózás](../../key-vault/general/logging.md) |
+| Kubernetes Service |[Azure Kubernetes-naplózás](../../aks/view-master-logs.md#log-event-schema) |
 | Load Balancer |[Naplóelemzés az Azure Load Balancerhez](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B egyéni követési séma](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Hálózati biztonsági csoportok) |[Naplóelemzés hálózati biztonsági csoportokhoz](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| Védelem DDOS-támadások ellen | [Az Azure DDoS protection standard kezelése](../../virtual-network/manage-ddos-protection.md) |
-| Power BI – dedikált | [Az Azure-ba ágyazott Power BI naplózása](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
-| Recovery Services | [Adatmodell az Azure Backup hoz](../../backup/backup-azure-reports-data-model.md)|
-| Keresés |[A Keresési forgalom elemzése engedélyezése és használata](../../search/search-traffic-analytics.md) |
-| Service Bus |[Az Azure Service Bus naplói](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL Database | [Azure SQL-adatbázis naplózása](../../sql-database/sql-database-metrics-diag-logging.md) |
+| Védelem DDOS-támadások ellen | [Azure DDoS Protection standard kezelése](../../virtual-network/manage-ddos-protection.md) |
+| Power BI – dedikált | [Power BI Embedded naplózása az Azure-ban](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
+| Recovery Services | [Azure Backup adatmodellje](../../backup/backup-azure-reports-data-model.md)|
+| Keresés |[A keresési Traffic Analytics engedélyezése és használata](../../search/search-traffic-analytics.md) |
+| Service Bus |[Naplók Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
+| SQL Database | [Azure SQL Database naplózás](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Feladatnaplók](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| Traffic Manager | [Traffic Manager naplóséma](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
+| Traffic Manager | [Traffic Manager naplózási séma](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuális hálózatok | A séma nem érhető el. |
 | Virtuális hálózati átjárók | A séma nem érhető el. |
 
-## <a name="supported-log-categories-per-resource-type"></a>Támogatott naplókategóriák erőforrástípusonként
+## <a name="supported-log-categories-per-resource-type"></a>Támogatott naplózási kategóriák/erőforrás típusok
 
-Egyes kategóriák csak bizonyos típusú erőforrások esetében támogatottak. Ez a lista az összes, hogy rendelkezésre állnak valamilyen formában.  A Microsoft.Sql/servers/databases kategóriák például nem érhetők el minden típusú adatbázishoz. További információt [az SQL Database diagnosztikai naplózásáról talál.](../../sql-database/sql-database-metrics-diag-logging.md) 
+Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak. Ez az összes olyan lista, amely valamilyen formában elérhető.  Például a Microsoft. SQL/kiszolgálók/adatbázisok kategóriái nem érhetők el minden típusú adatbázishoz. További információ: [SQL Database diagnosztikai naplózással kapcsolatos információk](../../sql-database/sql-database-metrics-diag-logging.md). 
 
 |Erőforrás típusa|Kategória|Kategória megjelenítendő neve|
 |---|---|---|
-|Microsoft.AAD/domainServices|SystemSecurity rendszerbiztonság|SystemSecurity rendszerbiztonság|
-|Microsoft.AAD/domainServices|Fiókkezelés|Fiókkezelés|
-|Microsoft.AAD/domainServices|Bejelentkezés|Bejelentkezés|
-|Microsoft.AAD/domainServices|ObjectAccess|ObjectAccess|
-|Microsoft.AAD/domainServices|Házirendmódosítása|Házirendmódosítása|
-|Microsoft.AAD/domainServices|PrivilegeUse (Jogosultsághasználata)|PrivilegeUse (Jogosultsághasználata)|
-|Microsoft.AAD/domainServices|Részletek követése|Részletek követése|
-|Microsoft.AAD/domainServices|DirectoryServiceAccess|DirectoryServiceAccess|
-|Microsoft.AAD/domainServices|Fiókbejelentkezés|Fiókbejelentkezés|
-|microsoft.aadiam/bérlők|Bejelentkezés|Bejelentkezés|
-|Microsoft.AnalysisServices/kiszolgálók|Motor|Motor|
-|Microsoft.AnalysisServices/kiszolgálók|Szolgáltatás|Szolgáltatás|
-|Microsoft.ApiManagement/service|GatewayLogs|Az ApiManagement átjáróhoz kapcsolódó naplók|
-|Microsoft.AppPlatform/Tavasz|Alkalmazáskonzol|Alkalmazáskonzol|
-|Microsoft.Automation/automationAccounts|JobLogs|Feladatnaplók|
-|Microsoft.Automation/automationAccounts|JobStreams|Feladat-adatfolyamok|
-|Microsoft.Automation/automationAccounts|DscNodeStatus|Dsc csomópont állapota|
-|Microsoft.Batch/batchAccounts|Szerviznapló|Szolgáltatásnaplók|
-|Microsoft.BatchAI/munkaterületek|BaiClusterEvent|BaiClusterEvent|
-|Microsoft.BatchAI/munkaterületek|BaiClusterNodeEsemény|BaiClusterNodeEsemény|
-|Microsoft.BatchAI/munkaterületek|BaiJobEsemény|BaiJobEsemény|
-|Microsoft.Blockchain/blockchainMembers|BlockchainApplication alkalmazás|Blockchain alkalmazás|
-|Microsoft.Blockchain/blockchainMembers|Proxy|Proxy|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Lefoglalja a végpont metrikáit, például sávszélességet, kimenő forgalom, stb.|
-|Microsoft.ClassicNetwork/hálózati biztonsági csoportok|Hálózati biztonsági csoport szabályának folyamatának eseménye|Hálózati biztonsági csoport szabályának folyamatának eseménye|
-|Microsoft.CognitiveServices/fiókok|Naplózás|Naplók|
-|Microsoft.CognitiveServices/fiókok|Kérésválasz|Kérési és válasznaplók|
-|Microsoft.ContainerRegistry/regisztika|ContainerRegistryRepositoryEvents|RepositoryEvent naplók (előzetes verzió)|
-|Microsoft.ContainerRegistry/regisztika|ContainerRegistryInEvents|Bejelentkezési események (előzetes verzió)|
-|Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes API-kiszolgáló|
-|Microsoft.ContainerService/managedClusters|kube-vezérlő-menedzser|Kubernetes-kezelő|
-|Microsoft.ContainerService/managedClusters|kube-ütemező|Kubernetes ütemező|
-|Microsoft.ContainerService/managedClusters|kube-audit|Kubernetes Audit|
-|Microsoft.ContainerService/managedClusters|fürt-automatikus méretező|Kubernetes-fürt automatikus skálázója|
-|Microsoft.Databricks/munkaterületek|dbfs|Databricks fájlrendszer|
-|Microsoft.Databricks/munkaterületek|Klaszterek|Databricks klaszterek|
-|Microsoft.Databricks/munkaterületek|fiókok|Databricks-fiókok|
-|Microsoft.Databricks/munkaterületek|Munkahelyek|Databricks állás|
-|Microsoft.Databricks/munkaterületek|Notebook|Databricks-jegyzetfüzet|
-|Microsoft.Databricks/munkaterületek|Ssh|Databricks SSH|
-|Microsoft.Databricks/munkaterületek|munkaterület|Databricks munkaterület|
-|Microsoft.Databricks/munkaterületek|Titkok|Databricks titkok|
-|Microsoft.Databricks/munkaterületek|sqlPermissions|Databricks SQLPermissions|
-|Microsoft.Databricks/munkaterületek|példánykészlet|Példánykészletek|
-|Microsoft.DataCatalog/datacatalogs|ScanStatusLogEvent|ScanStatus (ScanStatus)|
-|Microsoft.DataFactory/gyárak|Tevékenységfuttatások|A folyamattevékenység naplót futtat|
-|Microsoft.DataFactory/gyárak|Csővezetékfuttatások|A folyamat naplót futtat|
-|Microsoft.DataFactory/gyárak|Eseményindítók futtatása|Az eseményindító naplót futtat|
-|Microsoft.DataLakeAnalytics/fiókok|Naplózás|Naplók|
-|Microsoft.DataLakeAnalytics/fiókok|Kérelmek|Naplók kérése|
-|Microsoft.DataLakeStore/fiókok|Naplózás|Naplók|
-|Microsoft.DataLakeStore/fiókok|Kérelmek|Naplók kérése|
-|Microsoft.DataShare/fiókok|Megosztások|Megosztások|
-|Microsoft.DataShare/fiókok|Share-előfizetések|Előfizetések megosztása|
-|Microsoft.DataShare/fiókok|SentShareSnapshots|Elküldött megosztási pillanatképek|
-|Microsoft.DataShare/fiókok|ReceivedShareSnapshots|Fogadott megosztási pillanatképek|
-|Microsoft.DBforMySQL/kiszolgálók|MySqlSlowLogs|MySQL server naplók|
-|Microsoft.DBforMySQL/kiszolgálók|MySqlAuditLogs|MySQL naplói|
-|Microsoft.DBforPostgreSQL/szerverek|PostgreSQLLogs|PostgreSQL szerver naplók|
-|Microsoft.DBforPostgreSQL/szerverek|QueryStoreRuntimeStatisztika|PostgreSQL Query Store futásidejű statisztika|
-|Microsoft.DBforPostgreSQL/szerverek|QueryStoreWaitStatisztikák|PostgreSQL Query Store várakozási statisztika|
-|Microsoft.DBforPostgreSQL/serversv2|PostgreSQLLogs|PostgreSQL szerver naplók|
-|Microsoft.DBforPostgreSQL/serversv2|QueryStoreRuntimeStatisztika|PostgreSQL Query Store futásidejű statisztika|
-|Microsoft.DBforPostgreSQL/serversv2|QueryStoreWaitStatisztikák|PostgreSQL Query Store várakozási statisztika|
-|Microsoft.DesktopVirtualization/munkaterületek|Checkpoint|Checkpoint|
-|Microsoft.DesktopVirtualization/munkaterületek|Hiba|Hiba|
-|Microsoft.DesktopVirtualization/munkaterületek|Kezelés|Kezelés|
-|Microsoft.DesktopVirtualization/munkaterületek|Adatcsatorna|Adatcsatorna|
-|Microsoft.DesktopVirtualization/applicationGroups|Checkpoint|Checkpoint|
-|Microsoft.DesktopVirtualization/applicationGroups|Hiba|Hiba|
-|Microsoft.DesktopVirtualization/applicationGroups|Kezelés|Kezelés|
-|Microsoft.DesktopVirtualization/hostPools|Checkpoint|Checkpoint|
-|Microsoft.DesktopVirtualization/hostPools|Hiba|Hiba|
-|Microsoft.DesktopVirtualization/hostPools|Kezelés|Kezelés|
-|Microsoft.DesktopVirtualization/hostPools|Kapcsolat|Kapcsolat|
-|Microsoft.DesktopVirtualization/hostPools|Állomásregisztráció|Állomásregisztráció|
-|Microsoft.Devices/IotHubs|Kapcsolatok|Kapcsolatok|
-|Microsoft.Devices/IotHubs|DeviceTelemetria|Eszköztelemetria|
-|Microsoft.Devices/IotHubs|C2DParancsok|C2D parancsok|
-|Microsoft.Devices/IotHubs|DeviceIdentityOperations (DeviceIdentityOperations)|Eszközidentitás-műveletek|
-|Microsoft.Devices/IotHubs|FileUploadOperations|Fájlfeltöltési műveletek|
-|Microsoft.Devices/IotHubs|Útvonalak|Útvonalak|
-|Microsoft.Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
-|Microsoft.Devices/IotHubs|C2DTwinOperations|C2D ikerműveletek|
-|Microsoft.Devices/IotHubs|TwinQueries|Ikerlekérdezések|
-|Microsoft.Devices/IotHubs|JobsOperations (Feladatok üzemeltetése)|Feladatműveletek|
-|Microsoft.Devices/IotHubs|DirectMethods (Közvetlen módszerek)|Közvetlen módszerek|
-|Microsoft.Devices/IotHubs|DistributedTracing|Elosztott nyomkövetés (előzetes verzió)|
-|Microsoft.Devices/IotHubs|Konfigurációk|Konfigurációk|
-|Microsoft.Devices/IotHubs|DeviceStreams|Eszközadatfolyamok (előzetes verzió)|
-|Microsoft.Devices/provisioningServices|DeviceOperations (Eszközüzemeltetés)|Eszköz műveletek|
-|Microsoft.Devices/provisioningServices|Szolgáltatási műveletek|Szolgáltatási műveletek|
-|Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
-|Microsoft.DocumentDB/databaseAccounts|MongoKérések|MongoKérések|
-|Microsoft.DocumentDB/databaseAccounts|QueryRuntimeStatisztika|QueryRuntimeStatisztika|
-|Microsoft.DocumentDB/databaseAccounts|PartitionKeyStatistics (Partíciókulcsstatisztikája)|PartitionKeyStatistics (Partíciókulcsstatisztikája)|
-|Microsoft.DocumentDB/databaseAccounts|ControlPlaneRequests|ControlPlaneRequests|
-|Microsoft.EnterpriseKnowledgeGraph/szolgáltatások|AuditEvent|Naplózási eseménynaplója|
-|Microsoft.EnterpriseKnowledgeGraph/szolgáltatások|Adatprobléma|DataIssue napló|
-|Microsoft.EnterpriseKnowledgeGraph/szolgáltatások|Kérelmek|Konfigurációs napló|
-|Microsoft.EventHub/névterek|Archiválási naplók|Archiválási naplók|
-|Microsoft.EventHub/névterek|Operatív naplók|Operatív naplók|
-|Microsoft.EventHub/névterek|Automatikus skálánaplók|Automatikus méretezési naplók|
-|Microsoft.EventHub/névterek|KafkaCoordinatorLogs|Kafka koordinátor naplók|
-|Microsoft.EventHub/névterek|KafkaUserErrorLogs|Kafka felhasználói hibanaplók|
-|Microsoft.EventHub/névterek|EventHubVNetConnectionevent|Virtuális hálózat/IP-szűrési kapcsolatnaplók|
-|Microsoft.EventHub/névterek|CustomerManagedKeyUserLogs|Ügyfél által kezelt kulcsnaplók|
-|Microsoft.HealthcareApis/services|AuditLogok|Naplók|
-|Microsoft.Insights/AutoscaleSettings|Automatikus skálázáskiértékelések|Automatikus skálázási kiértékelések|
-|Microsoft.Insights/AutoscaleSettings|Automatikus skálázási műveletek|Automatikus méretezési méretezési műveletek|
-|Microsoft.IoTSpaces/Graph|Nyomkövetés|Nyomkövetés|
-|Microsoft.IoTSpaces/Graph|Működési|Működési|
-|Microsoft.IoTSpaces/Graph|Naplózás|Naplózás|
-|Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
-|Microsoft.IoTSpaces/Graph|Bejövő forgalom|Bejövő forgalom|
-|Microsoft.IoTSpaces/Graph|Kimenő forgalom|Kimenő forgalom|
-|Microsoft.KeyVault/vaults|AuditEvent|Naplók|
-|Microsoft.Kusto/Fürtök|SucceededIngestion (Sikeres szerkesztés)|Sikeres betöltési műveletek|
-|Microsoft.Kusto/Fürtök|Sikertelen|Sikertelen betöltési műveletek|
-|Microsoft.Logic/munkafolyamatok|Munkafolyamat-futtatási idő|Munkafolyamat futásidejű diagnosztikai eseményei|
-|Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integrációs fiók nyomon követhető eseményei|
-|Microsoft.MachineLearningServices/munkaterületek|AmlComputeClusterEvent|AmlComputeClusterEvent|
-|Microsoft.MachineLearningServices/munkaterületek|AmlComputeClusterNodeEsemény|AmlComputeClusterNodeEsemény|
-|Microsoft.MachineLearningServices/munkaterületek|AmlComputeJobEsemény|AmlComputeJobEsemény|
-|Microsoft.Media/mediaservices|KeyDeliveryRequests|Kulcskézbesítési kérelmek|
-|Microsoft.Network/Networksecuritygroups|NetworkSecurityGroupEvent|Hálózati biztonsági csoport eseménye|
-|Microsoft.Network/Networksecuritygroups|NetworkSecurityGroupRuleCounter|Hálózati biztonsági csoport szabályszámlálója|
-|Microsoft.Network/Networksecuritygroups|NetworkSecurityGroupFlowEvent|Hálózati biztonsági csoport szabályának folyamatának eseménye|
-|Microsoft.Network/publicIPAddresses|DdosProtectionÉrtesítések|DDoS védelmi értesítések|
-|Microsoft.Network/publicIPAddresses|DDoSMitigationFlowLogs|A DDoS-kockázatcsökkentési döntések folyamatnaplói|
-|Microsoft.Network/publicIPAddresses|Ddosmitigationreports|Jelentések a DDoS mérséklése|
-|Microsoft.Network/virtualNetworks|VMProtectionRiasztások|Virtuális gép védelmi riasztásai|
-|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Alkalmazásátjáró-hozzáférési napló|
-|Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Alkalmazásátjáró teljesítménynaplója|
-|Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Alkalmazásátjáró tűzfalának naplója|
-|Microsoft.Network/azurefirewalls|AzureFirewallApplicationRule|Azure tűzfal alkalmazásszabály|
-|Microsoft.Network/azurefirewalls|AzureFirewallNetworkRule|Azure tűzfal hálózati szabály|
-|Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog (Átjáródiagnosztikai napló)|Átjáró diagnosztikai naplói|
-|Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog (TunnelDiagnosticLog)|Alagútdiagnosztikai naplók|
-|Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog (Útvonaldiagnosztikai napló)|Útvonaldiagnosztikai naplók|
-|Microsoft.Network/virtualNetworkGateways|IKEDiagnosticLog|Internetes kulcscsere diagnosztikai naplói|
-|Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S diagnosztikai naplók|
-|Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEsemények|Traffic Manager probe állapoteredmény-eseménye|
-|Microsoft.Network/expressRouteCircuits|Társviszony-létesítési útvonalnaplója|Társviszony-létesítési útvonaltábla-naplók|
-|Microsoft.Network/vpnGateways|GatewayDiagnosticLog (Átjáródiagnosztikai napló)|Átjáró diagnosztikai naplói|
-|Microsoft.Network/vpnGateways|TunnelDiagnosticLog (TunnelDiagnosticLog)|Alagútdiagnosztikai naplók|
-|Microsoft.Network/vpnGateways|RouteDiagnosticLog (Útvonaldiagnosztikai napló)|Útvonaldiagnosztikai naplók|
-|Microsoft.Network/vpnGateways|IKEDiagnosticLog|Internetes kulcscsere diagnosztikai naplói|
-|Microsoft.Network/frontdoors|FrontdoorAccessLog|Előtér-hozzáférési napló|
-|Microsoft.Network/frontdoors|FrontdoorWebApplicationFirewallLog|Frontdoor webes alkalmazás tűzfalának naplója|
-|Microsoft.Network/p2sVpnGateways|GatewayDiagnosticLog (Átjáródiagnosztikai napló)|Átjáró diagnosztikai naplói|
-|Microsoft.Network/p2sVpnGateways|IKEDiagnosticLog|Internetes kulcscsere diagnosztikai naplói|
-|Microsoft.Network/p2sVpnGateways|P2SDiagnosticLog|P2S diagnosztikai naplók|
-|Microsoft.Network/bastionHosts|Megerősített AuditLogok|Megerősített naplónaplók|
-|Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Terheléselosztó riasztási eseményei|
-|Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Terheléselosztó mintavételének állapota|
-|Microsoft.PowerBIDedikált/kapacitások|Motor|Motor|
-|Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure biztonsági mentési jelentési adatai|
-|Microsoft.RecoveryServices/Vaults|CoreAzureBackup|Alapvető Azure biztonsági mentési adatok|
-|Microsoft.RecoveryServices/Vaults|AddonAzureBackupJobs|Addon Azure biztonsági mentési feladat adatai|
-|Microsoft.RecoveryServices/Vaults|AddonAzureBackupAlerts|Addon Azure biztonsági mentési riasztási adatai|
-|Microsoft.RecoveryServices/Vaults|AddonAzureBackupPolicy|Addon Azure biztonsági mentési szabályzat adatai|
-|Microsoft.RecoveryServices/Vaults|AddonAzureBackupTárhely|Addon Azure biztonsági mentési tároló adatai|
-|Microsoft.RecoveryServices/Vaults|AddonAzureBackupProtectedInstance|Addon Azure biztonsági mentésvédett példányadatai|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure-hely helyreállítási feladatok|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEsemények|Azure-webhely-helyreállítási események|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicateditems|Az Azure webhely-helyreállítási replikált elemek|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationStats|Az Azure-webhely helyreállítási replikációjának statisztikái|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints pontok|Az Azure-webhely helyreállítási helyreállítási pontjai|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationDataUploadRate|Az Azure site recovery replikációs replikációs adatok feltöltési sebessége|
-|Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Azure-webhely-helyreállítási védett lemezadat-változási forgalom|
-|Microsoft.Search/searchServices|OperationLogs|Műveleti naplók|
-|Microsoft.ServiceBus/névterek|Operatív naplók|Operatív naplók|
-|Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
-|Microsoft.Sql/servers/databases|Automatikus hangolás|Automatikus hangolás|
-|Microsoft.Sql/servers/databases|QueryStoreRuntimeStatisztika|Lekérdezéstároló futásidejű statisztikája|
-|Microsoft.Sql/servers/databases|QueryStoreWaitStatisztikák|Lekérdezéstároló várakozási statisztikája|
-|Microsoft.Sql/servers/databases|Hibák|Hibák|
-|Microsoft.Sql/servers/databases|DatabaseWaitStatistics (Adatbázis–várakozási statisztika)|Adatbázis várakozási statisztikája|
-|Microsoft.Sql/servers/databases|Időtúllépések|Időtúllépések|
-|Microsoft.Sql/servers/databases|Blokkok|Blokkok|
-|Microsoft.Sql/servers/databases|Holtpontok|Holtpontok|
-|Microsoft.Sql/servers/databases|Naplózás|Naplók|
-|Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
-|Microsoft.Sql/servers/databases|DmsWorkers|Dms dolgozók|
-|Microsoft.Sql/servers/databases|ExecRequests|Exec kérések|
-|Microsoft.Sql/servers/databases|Kéréslépései|Lépések kérése|
-|Microsoft.Sql/servers/databases|SqlRequests|Sql-kérelmek|
-|Microsoft.Sql/servers/databases|Vár|Vár|
-|Microsoft.Sql/managedInstances|ResourceUsageStats|Erőforrás-használati statisztika|
-|Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
-|Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
-|Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatisztika|Lekérdezéstároló futásidejű statisztikája|
-|Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatisztikák|Lekérdezéstároló várakozási statisztikája|
-|Microsoft.Sql/managedInstances/databases|Hibák|Hibák|
-|Microsoft.Storage/storageAccounts/tableServices|StorageRead|StorageRead|
-|Microsoft.Storage/storageAccounts/tableServices|StorageWrite (Tárolás írása)|StorageWrite (Tárolás írása)|
-|Microsoft.Storage/storageAccounts/tableServices|StorageDelete (Tárolástörlése)|StorageDelete (Tárolástörlése)|
-|Microsoft.Storage/storageAccounts/blobServices|StorageRead|StorageRead|
-|Microsoft.Storage/storageAccounts/blobServices|StorageWrite (Tárolás írása)|StorageWrite (Tárolás írása)|
-|Microsoft.Storage/storageAccounts/blobServices|StorageDelete (Tárolástörlése)|StorageDelete (Tárolástörlése)|
-|Microsoft.Storage/storageAccounts/fileServices|StorageRead|StorageRead|
-|Microsoft.Storage/storageAccounts/fileServices|StorageWrite (Tárolás írása)|StorageWrite (Tárolás írása)|
-|Microsoft.Storage/storageAccounts/fileServices|StorageDelete (Tárolástörlése)|StorageDelete (Tárolástörlése)|
-|Microsoft.Storage/storageAccounts/queueServices|StorageRead|StorageRead|
-|Microsoft.Storage/storageAccounts/queueServices|StorageWrite (Tárolás írása)|StorageWrite (Tárolás írása)|
-|Microsoft.Storage/storageAccounts/queueServices|StorageDelete (Tárolástörlése)|StorageDelete (Tárolástörlése)|
-|Microsoft.StreamAnalytics/streamingjobs|Futtatási|Futtatási|
-|Microsoft.StreamAnalytics/streamingjobs|Tartalomkészítés|Tartalomkészítés|
-|microsoft.web/hostingkörnyezetek|AppServiceEnvironmentPlatformLogs|App Service-környezet platformnaplói|
-|microsoft.web/webhelyek|FunctionAppLogs|Függvény alkalmazásnaplói|
-|microsoft.web/webhelyek|AppServiceHTTPLogs|HTTP-naplók|
-|microsoft.web/webhelyek|AppServiceConsoleLogs|App Service-konzol naplók|
-|microsoft.web/webhelyek|AppServiceAppLogs|App Service-alkalmazásnaplók|
-|microsoft.web/webhelyek|AppServiceFileAuditLogs|Webhely tartalomváltozási naplói|
-|microsoft.web/webhelyek|AppServiceAuditLogs|Hozzáférés-naplónaplók|
-|microsoft.web/sites/slot|FunctionAppLogs|Függvény alkalmazásnaplói|
-|microsoft.web/sites/slot|AppServiceHTTPLogs|HTTP-naplók|
-|microsoft.web/sites/slot|AppServiceConsoleLogs|Konzolnaplók|
-|microsoft.web/sites/slot|AppServiceAppLogs|Alkalmazásnaplók|
-|microsoft.web/sites/slot|AppServiceFileAuditLogs|Webhely tartalomváltozási naplói|
-|microsoft.web/sites/slot|AppServiceAuditLogs|Hozzáférés-naplónaplók|
+|Microsoft. HRE/domainServices|SystemSecurity|SystemSecurity|
+|Microsoft. HRE/domainServices|AccountManagement|AccountManagement|
+|Microsoft. HRE/domainServices|LogonLogoff|LogonLogoff|
+|Microsoft. HRE/domainServices|ObjectAccess|ObjectAccess|
+|Microsoft. HRE/domainServices|PolicyChange|PolicyChange|
+|Microsoft. HRE/domainServices|PrivilegeUse|PrivilegeUse|
+|Microsoft. HRE/domainServices|DetailTracking|DetailTracking|
+|Microsoft. HRE/domainServices|DirectoryServiceAccess|DirectoryServiceAccess|
+|Microsoft. HRE/domainServices|AccountLogon|AccountLogon|
+|Microsoft. aadiam/bérlők|Bejelentkezési|Bejelentkezési|
+|Microsoft. AnalysisServices/kiszolgálók|Motor|Motor|
+|Microsoft. AnalysisServices/kiszolgálók|Szolgáltatás|Szolgáltatás|
+|Microsoft.ApiManagement/service|GatewayLogs|A ApiManagement-átjáróval kapcsolatos naplók|
+|Microsoft. AppPlatform/Spring|ApplicationConsole|Application Console|
+|Microsoft. Automation/automationAccounts|JobLogs|Feladatok naplói|
+|Microsoft. Automation/automationAccounts|JobStreams|Feladatok adatfolyamai|
+|Microsoft. Automation/automationAccounts|DscNodeStatus|DSC-csomópont állapota|
+|Microsoft. batch/batchAccounts|ServiceLog|Szolgáltatási naplók|
+|Microsoft. BatchAI/munkaterületek|BaiClusterEvent|BaiClusterEvent|
+|Microsoft. BatchAI/munkaterületek|BaiClusterNodeEvent|BaiClusterNodeEvent|
+|Microsoft. BatchAI/munkaterületek|BaiJobEvent|BaiJobEvent|
+|Microsoft. Blockchain/blockchainMembers|BlockchainApplication|Blockchain-alkalmazás|
+|Microsoft. Blockchain/blockchainMembers|Proxy|Proxy|
+|Microsoft. CDN/profilok/végpontok|CoreAnalytics|Lekéri a végpont metrikáit, például a sávszélességet, a kimenő adatokat stb.|
+|Microsoft. ClassicNetwork/networksecuritygroups|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|
+|Microsoft. CognitiveServices/fiókok|Naplózás|Naplók|
+|Microsoft. CognitiveServices/fiókok|RequestResponse|Kérelmek és válaszok naplói|
+|Microsoft. ContainerRegistry/nyilvántartók|ContainerRegistryRepositoryEvents|RepositoryEvent-naplók (előzetes verzió)|
+|Microsoft. ContainerRegistry/nyilvántartók|ContainerRegistryLoginEvents|Bejelentkezési események (előzetes verzió)|
+|Microsoft. Tárolószolgáltatás/managedClusters|Kube – apiserver|Kubernetes API-kiszolgáló|
+|Microsoft. Tárolószolgáltatás/managedClusters|Kube – vezérlő – kezelő|Kubernetes Controller Manager|
+|Microsoft. Tárolószolgáltatás/managedClusters|Kube – ütemező|Kubernetes Scheduler|
+|Microsoft. Tárolószolgáltatás/managedClusters|Kube – naplózás|Kubernetes naplózása|
+|Microsoft. Tárolószolgáltatás/managedClusters|fürt – automéretező|Kubernetes-fürt autoskálázása|
+|Microsoft. Databricks/munkaterületek|dbfs|Databricks fájlrendszer|
+|Microsoft. Databricks/munkaterületek|fürtök|Databricks-fürtök|
+|Microsoft. Databricks/munkaterületek|fiókok|Databricks-fiókok|
+|Microsoft. Databricks/munkaterületek|feladatok|Databricks-feladatok|
+|Microsoft. Databricks/munkaterületek|notebook|Databricks-jegyzetfüzet|
+|Microsoft. Databricks/munkaterületek|SSH|Databricks SSH|
+|Microsoft. Databricks/munkaterületek|munkaterület|Databricks-munkaterület|
+|Microsoft. Databricks/munkaterületek|titkok|Databricks titkai|
+|Microsoft. Databricks/munkaterületek|sqlPermissions|Databricks SQLPermissions|
+|Microsoft. Databricks/munkaterületek|instancePools|Példányok készletei|
+|Microsoft. DataCatalog/datacatalogs|ScanStatusLogEvent|ScanStatus|
+|Microsoft. DataFactory/gyárak|ActivityRuns|Folyamat-futtatási tevékenység naplója|
+|Microsoft. DataFactory/gyárak|PipelineRuns|Folyamat-futtatási napló|
+|Microsoft. DataFactory/gyárak|TriggerRuns|Trigger futtatási naplója|
+|Microsoft. DataLakeAnalytics/fiókok|Naplózás|Naplók|
+|Microsoft. DataLakeAnalytics/fiókok|Kérelmek|Kérelmek naplói|
+|Microsoft. Data Lake Store/fiókok|Naplózás|Naplók|
+|Microsoft. Data Lake Store/fiókok|Kérelmek|Kérelmek naplói|
+|Microsoft. DataShare/fiókok|Megosztások|Megosztások|
+|Microsoft. DataShare/fiókok|ShareSubscriptions|Előfizetések megosztása|
+|Microsoft. DataShare/fiókok|SentShareSnapshots|Eljuttatott megosztási Pillanatképek|
+|Microsoft. DataShare/fiókok|ReceivedShareSnapshots|Fogadott megosztási Pillanatképek|
+|Microsoft. DBforMySQL/kiszolgálók|MySqlSlowLogs|MySQL-kiszolgáló naplófájljai|
+|Microsoft. DBforMySQL/kiszolgálók|MySqlAuditLogs|MySQL-naplók|
+|Microsoft. DBforPostgreSQL/kiszolgálók|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|
+|Microsoft. DBforPostgreSQL/kiszolgálók|QueryStoreRuntimeStatistics|PostgreSQL Query Store futásidejű statisztikái|
+|Microsoft. DBforPostgreSQL/kiszolgálók|QueryStoreWaitStatistics|PostgreSQL lekérdezési tár várakozási statisztikái|
+|Microsoft. DBforPostgreSQL/serversv2|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|
+|Microsoft. DBforPostgreSQL/serversv2|QueryStoreRuntimeStatistics|PostgreSQL Query Store futásidejű statisztikái|
+|Microsoft. DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|PostgreSQL lekérdezési tár várakozási statisztikái|
+|Microsoft. DesktopVirtualization/munkaterületek|Checkpoint|Checkpoint|
+|Microsoft. DesktopVirtualization/munkaterületek|Hiba|Hiba|
+|Microsoft. DesktopVirtualization/munkaterületek|Kezelés|Kezelés|
+|Microsoft. DesktopVirtualization/munkaterületek|Adatcsatorna|Adatcsatorna|
+|Microsoft. DesktopVirtualization/applicationGroups|Checkpoint|Checkpoint|
+|Microsoft. DesktopVirtualization/applicationGroups|Hiba|Hiba|
+|Microsoft. DesktopVirtualization/applicationGroups|Kezelés|Kezelés|
+|Microsoft. DesktopVirtualization/hostPools|Checkpoint|Checkpoint|
+|Microsoft. DesktopVirtualization/hostPools|Hiba|Hiba|
+|Microsoft. DesktopVirtualization/hostPools|Kezelés|Kezelés|
+|Microsoft. DesktopVirtualization/hostPools|Kapcsolat|Kapcsolat|
+|Microsoft. DesktopVirtualization/hostPools|HostRegistration|HostRegistration|
+|Microsoft. Devices/IotHubs|Kapcsolatok|Kapcsolatok|
+|Microsoft. Devices/IotHubs|DeviceTelemetry|Eszköztelemetria|
+|Microsoft. Devices/IotHubs|C2DCommands|C2D parancsok|
+|Microsoft. Devices/IotHubs|DeviceIdentityOperations|Eszköz-identitási műveletek|
+|Microsoft. Devices/IotHubs|FileUploadOperations|Fájlfeltöltés-műveletek|
+|Microsoft. Devices/IotHubs|Útvonalak|Útvonalak|
+|Microsoft. Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
+|Microsoft. Devices/IotHubs|C2DTwinOperations|C2D – két művelet|
+|Microsoft. Devices/IotHubs|TwinQueries|Dupla lekérdezés|
+|Microsoft. Devices/IotHubs|JobsOperations|Feladatok műveletei|
+|Microsoft. Devices/IotHubs|DirectMethods|Közvetlen metódusok|
+|Microsoft. Devices/IotHubs|DistributedTracing|Elosztott nyomkövetés (előzetes verzió)|
+|Microsoft. Devices/IotHubs|Konfigurációk|Konfigurációk|
+|Microsoft. Devices/IotHubs|DeviceStreams|Eszköz streamek (előzetes verzió)|
+|Microsoft. Devices/provisioningServices|DeviceOperations|Eszköz műveletei|
+|Microsoft. Devices/provisioningServices|ServiceOperations|Szolgáltatási műveletek|
+|Microsoft. DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
+|Microsoft. DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
+|Microsoft. DocumentDB/databaseAccounts|QueryRuntimeStatistics|QueryRuntimeStatistics|
+|Microsoft. DocumentDB/databaseAccounts|PartitionKeyStatistics|PartitionKeyStatistics|
+|Microsoft. DocumentDB/databaseAccounts|ControlPlaneRequests|ControlPlaneRequests|
+|Microsoft. EnterpriseKnowledgeGraph/szolgáltatások|AuditEvent|AuditEvent-napló|
+|Microsoft. EnterpriseKnowledgeGraph/szolgáltatások|DataIssue|DataIssue-napló|
+|Microsoft. EnterpriseKnowledgeGraph/szolgáltatások|Kérelmek|Konfigurációs napló|
+|Microsoft. EventHub/névterek|ArchiveLogs|Archiválási naplók|
+|Microsoft. EventHub/névterek|OperationalLogs|Operatív naplók|
+|Microsoft. EventHub/névterek|AutoScaleLogs|Naplók automatikus méretezése|
+|Microsoft. EventHub/névterek|KafkaCoordinatorLogs|Kafka-koordinátor naplói|
+|Microsoft. EventHub/névterek|KafkaUserErrorLogs|Kafka felhasználói hibák naplói|
+|Microsoft. EventHub/névterek|EventHubVNetConnectionEvent|VNet/IP-szűrési kapcsolatok naplófájljai|
+|Microsoft. EventHub/névterek|CustomerManagedKeyUserLogs|Ügyfél által felügyelt kulcsok naplói|
+|Microsoft. HealthcareApis/szolgáltatások|AuditLogs|Naplók|
+|Microsoft. bepillantások/AutoscaleSettings|AutoscaleEvaluations|Az autoscale-értékelések|
+|Microsoft. bepillantások/AutoscaleSettings|AutoscaleScaleActions|Méretezési műveletek az autoskálázáshoz|
+|Microsoft. IoTSpaces/Graph|Nyomkövetés|Nyomkövetés|
+|Microsoft. IoTSpaces/Graph|Operatív|Operatív|
+|Microsoft. IoTSpaces/Graph|Naplózás|Naplózás|
+|Microsoft. IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
+|Microsoft. IoTSpaces/Graph|Bejövő forgalom|Bejövő forgalom|
+|Microsoft. IoTSpaces/Graph|Kimenő forgalom|Kimenő forgalom|
+|Microsoft. kulcstartó/tárolók|AuditEvent|Naplók|
+|Microsoft. Kusto/fürtök|SucceededIngestion|Sikeres betöltési műveletek|
+|Microsoft. Kusto/fürtök|FailedIngestion|Sikertelen betöltési műveletek|
+|Microsoft. Logic/munkafolyamatok|WorkflowRuntime|Munkafolyamat futásidejű diagnosztikai eseményei|
+|Microsoft. Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integrációs fiók követési eseményei|
+|Microsoft. MachineLearningServices/munkaterületek|AmlComputeClusterEvent|AmlComputeClusterEvent|
+|Microsoft. MachineLearningServices/munkaterületek|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
+|Microsoft. MachineLearningServices/munkaterületek|AmlComputeJobEvent|AmlComputeJobEvent|
+|Microsoft. Media/Mediaservices|KeyDeliveryRequests|Kulcsok kézbesítésére vonatkozó kérelmek|
+|Microsoft. Network/networksecuritygroups|NetworkSecurityGroupEvent|Hálózati biztonsági csoport eseménye|
+|Microsoft. Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Hálózati biztonsági csoport szabályának számlálója|
+|Microsoft. Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|
+|Microsoft. Network/nyilvános IP|DDoSProtectionNotifications|DDoS Protection-értesítések|
+|Microsoft. Network/nyilvános IP|DDoSMitigationFlowLogs|A DDoS-elhárítási döntések folyamatának naplói|
+|Microsoft. Network/nyilvános IP|DDoSMitigationReports|A DDoS enyhítésének jelentései|
+|Microsoft. Network/virtualNetworks|VMProtectionAlerts|VM-védelmi riasztások|
+|Microsoft. Network/applicationGateways|ApplicationGatewayAccessLog|Hozzáférési napló Application Gateway|
+|Microsoft. Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway Teljesítménynapló|
+|Microsoft. Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway tűzfal naplója|
+|Microsoft. Network/azurefirewalls|AzureFirewallApplicationRule|Azure Firewall alkalmazási szabály|
+|Microsoft. Network/azurefirewalls|AzureFirewallNetworkRule|Azure Firewall hálózati szabály|
+|Microsoft. Network/virtualNetworkGateways|GatewayDiagnosticLog|Átjáró diagnosztikai naplói|
+|Microsoft. Network/virtualNetworkGateways|TunnelDiagnosticLog|Alagutak diagnosztikai naplói|
+|Microsoft. Network/virtualNetworkGateways|RouteDiagnosticLog|Diagnosztikai naplók irányítása|
+|Microsoft. Network/virtualNetworkGateways|IKEDiagnosticLog|IKE diagnosztikai naplók|
+|Microsoft. Network/virtualNetworkGateways|P2SDiagnosticLog|P2S diagnosztikai naplók|
+|Microsoft. Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager mintavételi állapot eredményeinek eseménye|
+|Microsoft. Network/expressRouteCircuits|PeeringRouteLog|Egyenrangú útválasztási táblázat naplói|
+|Microsoft. Network/vpnGateways|GatewayDiagnosticLog|Átjáró diagnosztikai naplói|
+|Microsoft. Network/vpnGateways|TunnelDiagnosticLog|Alagutak diagnosztikai naplói|
+|Microsoft. Network/vpnGateways|RouteDiagnosticLog|Diagnosztikai naplók irányítása|
+|Microsoft. Network/vpnGateways|IKEDiagnosticLog|IKE diagnosztikai naplók|
+|Microsoft. Network/frontdoors|FrontdoorAccessLog|Frontdoor hozzáférési naplója|
+|Microsoft. Network/frontdoors|FrontdoorWebApplicationFirewallLog|Frontdoor webalkalmazási tűzfal naplója|
+|Microsoft. Network/p2sVpnGateways|GatewayDiagnosticLog|Átjáró diagnosztikai naplói|
+|Microsoft. Network/p2sVpnGateways|IKEDiagnosticLog|IKE diagnosztikai naplók|
+|Microsoft. Network/p2sVpnGateways|P2SDiagnosticLog|P2S diagnosztikai naplók|
+|Microsoft. Network/bastionHosts|BastionAuditLogs|Megerősített naplók|
+|Microsoft. Network/loadBalancers|LoadBalancerAlertEvent|Riasztási események Load Balancer|
+|Microsoft. Network/loadBalancers|LoadBalancerProbeHealthStatus|Load Balancer mintavétel állapotának állapota|
+|Microsoft. PowerBIDedicated/kapacitások|Motor|Motor|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AzureBackupReport|Jelentéskészítési adatgyűjtés Azure Backup|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|CoreAzureBackup|Alapvető Azure Backup-adathalmazok|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AddonAzureBackupJobs|Addon Azure Backup feladatok adatai|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AddonAzureBackupAlerts|Addon Azure Backup riasztási adatkezelési|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AddonAzureBackupPolicy|Addon Azure Backup házirend-adatbázis|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AddonAzureBackupStorage|Addon Azure Backup Storage-beli adattárak|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AddonAzureBackupProtectedInstance|Addon Azure Backup védett példányok adatvédelme|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AzureSiteRecoveryJobs|Azure Site Recovery feladatok|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AzureSiteRecoveryEvents|Események Azure Site Recovery|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AzureSiteRecoveryReplicatedItems|Replikált elemek Azure Site Recovery|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AzureSiteRecoveryReplicationStats|Azure Site Recovery replikációs statisztika|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery helyreállítási pontok|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery replikációs adatok feltöltési sebessége|
+|Microsoft. Recoveryservices szolgáltatónál/tárolók|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery védett lemez adatváltozása|
+|Microsoft. Search/searchServices|OperationLogs|Műveleti naplók|
+|Microsoft. ServiceBus/névterek|OperationalLogs|Operatív naplók|
+|Microsoft. SQL/kiszolgálók/adatbázisok|SQLInsights|SQL-ismeretek|
+|Microsoft. SQL/kiszolgálók/adatbázisok|AutomaticTuning|Automatikus hangolás|
+|Microsoft. SQL/kiszolgálók/adatbázisok|QueryStoreRuntimeStatistics|Lekérdezési tár futásidejű statisztikái|
+|Microsoft. SQL/kiszolgálók/adatbázisok|QueryStoreWaitStatistics|Lekérdezési tároló várakozási statisztikája|
+|Microsoft. SQL/kiszolgálók/adatbázisok|Hibák|Hibák|
+|Microsoft. SQL/kiszolgálók/adatbázisok|DatabaseWaitStatistics|Adatbázis várakozási statisztikája|
+|Microsoft. SQL/kiszolgálók/adatbázisok|Időtúllépések|Időtúllépések|
+|Microsoft. SQL/kiszolgálók/adatbázisok|Blokkok|Blokkok|
+|Microsoft. SQL/kiszolgálók/adatbázisok|Holtpontok|Holtpontok|
+|Microsoft. SQL/kiszolgálók/adatbázisok|Naplózás|Naplók|
+|Microsoft. SQL/kiszolgálók/adatbázisok|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
+|Microsoft. SQL/kiszolgálók/adatbázisok|DmsWorkers|DMS-feldolgozók|
+|Microsoft. SQL/kiszolgálók/adatbázisok|ExecRequests|Exec-kérelmek|
+|Microsoft. SQL/kiszolgálók/adatbázisok|RequestSteps|Kérelem lépései|
+|Microsoft. SQL/kiszolgálók/adatbázisok|SqlRequests|SQL-kérelmek|
+|Microsoft. SQL/kiszolgálók/adatbázisok|Megvárja|Megvárja|
+|Microsoft. SQL/managedInstances|ResourceUsageStats|Erőforrás-használati statisztika|
+|Microsoft. SQL/managedInstances|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
+|Microsoft. SQL/managedInstances/adatbázisok|SQLInsights|SQL-ismeretek|
+|Microsoft. SQL/managedInstances/adatbázisok|QueryStoreRuntimeStatistics|Lekérdezési tár futásidejű statisztikái|
+|Microsoft. SQL/managedInstances/adatbázisok|QueryStoreWaitStatistics|Lekérdezési tároló várakozási statisztikája|
+|Microsoft. SQL/managedInstances/adatbázisok|Hibák|Hibák|
+|Microsoft. Storage/storageAccounts/tableServices|StorageRead|StorageRead|
+|Microsoft. Storage/storageAccounts/tableServices|StorageWrite|StorageWrite|
+|Microsoft. Storage/storageAccounts/tableServices|StorageDelete|StorageDelete|
+|Microsoft. Storage/storageAccounts/blobServices|StorageRead|StorageRead|
+|Microsoft. Storage/storageAccounts/blobServices|StorageWrite|StorageWrite|
+|Microsoft. Storage/storageAccounts/blobServices|StorageDelete|StorageDelete|
+|Microsoft. Storage/storageAccounts/fileServices|StorageRead|StorageRead|
+|Microsoft. Storage/storageAccounts/fileServices|StorageWrite|StorageWrite|
+|Microsoft. Storage/storageAccounts/fileServices|StorageDelete|StorageDelete|
+|Microsoft. Storage/storageAccounts/queueServices|StorageRead|StorageRead|
+|Microsoft. Storage/storageAccounts/queueServices|StorageWrite|StorageWrite|
+|Microsoft. Storage/storageAccounts/queueServices|StorageDelete|StorageDelete|
+|Microsoft. StreamAnalytics/streamingjobs|Futtatási|Futtatási|
+|Microsoft. StreamAnalytics/streamingjobs|Tartalomkészítés|Tartalomkészítés|
+|Microsoft. Web/hostingenvironments|AppServiceEnvironmentPlatformLogs|App Service Environment platform naplói|
+|Microsoft. Web/Sites|FunctionAppLogs|Function Application-naplók|
+|Microsoft. Web/Sites|AppServiceHTTPLogs|HTTP-naplók|
+|Microsoft. Web/Sites|AppServiceConsoleLogs|App Service konzol naplófájljai|
+|Microsoft. Web/Sites|AppServiceAppLogs|App Service alkalmazás naplófájljai|
+|Microsoft. Web/Sites|AppServiceFileAuditLogs|Webhely tartalmának változási naplófájljai|
+|Microsoft. Web/Sites|AppServiceAuditLogs|Hozzáférés-naplózási naplók|
+|Microsoft. Web/Sites/Slots|FunctionAppLogs|Function Application-naplók|
+|Microsoft. Web/Sites/Slots|AppServiceHTTPLogs|HTTP-naplók|
+|Microsoft. Web/Sites/Slots|AppServiceConsoleLogs|Konzol naplófájljai|
+|Microsoft. Web/Sites/Slots|AppServiceAppLogs|Alkalmazásnaplók|
+|Microsoft. Web/Sites/Slots|AppServiceFileAuditLogs|Webhely tartalmának változási naplófájljai|
+|Microsoft. Web/Sites/Slots|AppServiceAuditLogs|Hozzáférés-naplózási naplók|
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További információ az erőforrásnaplókról](../../azure-monitor/platform/platform-logs-overview.md)
-* [Erőforrás-erőforrás-naplók streamelése **az Eseményközpontokba**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Erőforrásnapló diagnosztikai beállításainak módosítása az Azure Monitor REST API-val](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Az Azure Storage naplóinak elemzése a Log Analytics szolgáltatással](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [További információ az erőforrás-naplókról](../../azure-monitor/platform/platform-logs-overview.md)
+* [Stream erőforrás-erőforrás naplófájljai **Event Hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+* [Az erőforrás-napló diagnosztikai beállításainak módosítása a Azure Monitor használatával REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
+* [Naplók elemzése az Azure Storage-ból Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

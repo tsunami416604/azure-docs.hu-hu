@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ac9b76dd8d3c950b14f6d7b331f15647427ac89
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652739"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143224"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem tervezése és üzembe helyezése
 
@@ -134,7 +134,7 @@ Az Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatását 
 * A Microsoft Azure AD összekapcsolási ügynök frissítési szolgáltatásához a [TLS-követelményekben](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#tls-requirements)megadott TLS 1,2-lépéseket is meg kell adni.
 
 > [!WARNING]
-> Az Azure AD jelszavas védelem proxyja és az Azure AD Application Proxy a Microsoft Azure AD csatlakozás Agent Updater szolgáltatás különböző verzióit telepíti, ezért az utasítások az alkalmazásproxy tartalmára vonatkoznak. Ezek a különböző verziók nem kompatibilisek egymás mellett, ezért nem ajánlott telepíteni az Azure AD jelszavas védelmi proxyt és az alkalmazásproxy-t ugyanarra a gépre.
+> Az Azure AD jelszavas védelem proxyja és az Azure AD Application Proxy a Microsoft Azure AD csatlakozás Agent Updater szolgáltatás különböző verzióit telepíti, ezért az utasítások az alkalmazásproxy tartalmára vonatkoznak. Ezek a különböző verziók nem kompatibilisek egymás mellett, és ennek köszönhetően az ügynök frissítési szolgáltatása nem fog tudni kapcsolatba lépni az Azure-nal a szoftverfrissítések számára, ezért soha ne telepítse az Azure AD jelszavas védelmi proxyt és az alkalmazásproxy-t ugyanarra a gépre.
 
 ## <a name="download-required-software"></a>Szükséges szoftverek letöltése
 

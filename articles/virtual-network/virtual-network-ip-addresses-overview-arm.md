@@ -1,36 +1,37 @@
 ---
-title: IP-címtípusok az Azure-ban
+title: IP-címek típusai az Azure-ban
 titlesuffix: Azure Virtual Network
 description: Információk a nyilvános és privát IP-címekről az Azure-ban.
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
+ms.sudbservice: ip-services
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: kumud
-ms.openlocfilehash: 9de94dab7000cee90f4448aa6d81196d3865e021
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: 4a55ea00d46f46094e5d370ee707870212372198
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474414"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133858"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
 IP-címeket rendelhet az Azure-erőforrásokhoz a többi Azure-erőforrással, a helyszíni hálózattal és az internettel való kommunikáció céljából. Az Azure-ban két típusú IP-címet használhat:
 
-* **Nyilvános IP-címek:** Az internettel való kommunikációhoz használható, beleértve az Azure nyilvános szolgáltatások.
+* **Nyilvános IP-címek**: az internettel való kommunikációhoz használatos, beleértve az Azure nyilvános szolgáltatásait is.
 * **Magánhálózati IP-címek**: Egy Azure virtuális hálózaton (VNet) belüli és a helyszíni hálózaton belüli kommunikációra használatos, ha VPN-átjárót vagy ExpressRoute-kapcsolatcsoportot használ a hálózat kiterjesztésére az Azure-ban.
 
 Nyilvános IP-előtaggal is létrehozhat összefüggő, statikus, nyilvános IP-címtartományokat. [Nyilvános IP-előtagok ismertetése.](public-ip-address-prefix.md)
 
 > [!NOTE]
-> Az Azure két különböző üzembe helyezési modellt rendelkezik az erőforrások létrehozásához és az erőforrásokkal való munkához: [az Erőforrás-kezelőés a klasszikus.](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti, amelyet a Microsoft a legtöbb új telepítéshez a [klasszikus üzemi modell](virtual-network-ip-addresses-overview-classic.md) helyett javasol.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti, amelyet a Microsoft a legtöbb új telepítéshez a [klasszikus üzemi modell](virtual-network-ip-addresses-overview-classic.md) helyett javasol.
 > 
 
 Ha a klasszikus üzemi modellt ismeri, tekintse meg a következőt: [Az IP-címkezelés különbségei a klasszikus és a Resource Manager modellek között](/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic#differences-between-resource-manager-and-classic-deployments).
@@ -63,26 +64,26 @@ A nyilvános IP-címek a következő termékváltozatok valamelyikével jönnek 
 A termékváltozatok bevezetése előtt létrehozott minden nyilvános IP-cím alapszintű termékváltozatú nyilvános IP-cím. A termékváltozatok bevezetésének köszönhetően mostantól megadhatja, hogy milyen termékváltozatú legyen a nyilvános IP-cím. Az alapszintű termékváltozatú címek jellemzői:
 
 - A statikus vagy a dinamikus kiosztási módszerrel oszthatók ki.
-- 4–30 perces alapjárati alapjárati időhammal rendelkezik, alapértelmezés szerint 4 perc, a rögzített kimenő kimenő járattétlen időhaállás pedig 4 perc.
+- Egy állítható bejövő, 4-30 perces üresjárati időkorláttal rendelkezik, amely alapértéke 4 perc, a rögzített kimenő folyamat pedig 4 perces üresjárati időkorlátot tartalmaz.
 - Alapértelmezés szerint nyitva vannak.  A hálózati biztonsági csoportok használata ajánlott, de nem kötelező a bejövő és kimenő forgalom korlátozásához.
 - Kioszthatók bármely Azure-erőforrás számára, amelynek kiosztható nyilvános IP-cím, például hálózati adapterek, VPN-átjárók, alkalmazásátjárók és internetkapcsolattal rendelkező terheléselosztók számára.
-- Nem támogatja a rendelkezésre állási zóna forgatókönyvek.  A rendelkezésre állási zóna forgatókönyvekhez szabványos termékváltozat nyilvános IP-címet kell használnia. További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Ne támogassa a rendelkezésre állási zónák forgatókönyveit.  A rendelkezésre állási zónákhoz a standard SKU nyilvános IP-címet kell használnia. További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 #### <a name="standard"></a>Standard
 
 A standard termékváltozatú nyilvános IP-címek jellemzői:
 
-- Mindig használjon statikus elosztási módszert.
-- 4–30 perces alapjárati alapjárati időhammal rendelkezik, alapértelmezés szerint 4 perc, a rögzített kimenő kimenő járattétlen időhaállás pedig 4 perc.
+- Mindig használjon statikus kiosztási módszert.
+- Egy állítható bejövő, 4-30 perces üresjárati időkorláttal rendelkezik, amely alapértéke 4 perc, a rögzített kimenő folyamat pedig 4 perces üresjárati időkorlátot tartalmaz.
 - Alapértelmezés szerint biztonságosak és zártak a bejövő forgalommal szemben. Az engedélyezett bejövő forgalmat kifejezetten engedélyeznie kell egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups).
-- Hálózati adapterekhez, szabványos nyilvános terheléselosztókhoz vagy alkalmazásátjárókhoz rendelve. A standard terheléselosztóról az [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakörben talál további információt.
-- Zóna redundáns alapértelmezés szerint és opcionálisan zónaszintű (létrehozható zónaszintű és garantált egy adott rendelkezésre állási zónában). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- A hálózati adapterekhez, a standard nyilvános terheléselosztóhoz vagy az Application Gatewayhez van rendelve. További információ a standard Load Balancerről: [Azure standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- A zóna alapértelmezés szerint redundáns, és opcionálisan a zonay (egy adott rendelkezésre állási zónában is létrehozható és garantált). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> A standard termékváltozat-erőforrásokkal folytatott bejövő kommunikáció mindaddig sikertelen, amíg létre nem hoz és nem társít egy [hálózati biztonsági csoportot,](security-overview.md#network-security-groups) és kifejezetten engedélyezi a kívánt bejövő forgalmat.
+> A standard SKU-erőforrással való bejövő kommunikáció meghiúsul, amíg létre nem hoz egy [hálózati biztonsági csoportot](security-overview.md#network-security-groups) , és kifejezetten engedélyezi a kívánt bejövő forgalmat.
 
 > [!NOTE]
-> Csak az alapvető termékváltozattal rendelkező nyilvános IP-címek érhetők el [a példány metaadat-szolgáltatásának IMDS](../virtual-machines/windows/instance-metadata-service.md)használatával. A szabványos termékváltozat nem támogatott.
+> A [példány metaadatainak szolgáltatás IMDS](../virtual-machines/windows/instance-metadata-service.md)használata esetén csak az alapszintű SKU-val rendelkező nyilvános IP-címek érhetők el. A standard SKU nem támogatott.
 
 ### <a name="allocation-method"></a>Lefoglalási módszer
 
@@ -99,7 +100,7 @@ Statikus nyilvános IP-címeket általában a következő esetekben szoktak hasz
 * Amikor frissíteni kell a tűzfalszabályokat, hogy kommunikálhassanak az Azure-erőforrásaival.
 * DNS-névfeloldás, ahol az IP-cím változása miatt frissíteni kellene az A-rekordokat.
 * Az Ön Azure-erőforrásai más alkalmazásokkal és szolgáltatásokkal is kommunikálnak, amelyek IP-címalapú biztonsági modellt használnak.
-* Ip-címhez kapcsolt TLS/SSL-tanúsítványokat használ.
+* Egy IP-címhez társított TLS/SSL-tanúsítványokat használ.
 
 > [!NOTE]
 > Az Azure a nyilvános IP-címeket az egyes régiókhoz tartozó egyedi tartományokból foglalja le a különböző Azure-felhőkben. Letöltheti a tartományok (előtagok) listáját az Azure [nyilvános](https://www.microsoft.com/download/details.aspx?id=56519), valamint [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) és [Germany](https://www.microsoft.com/download/details.aspx?id=57064) felhője esetében.
@@ -112,8 +113,8 @@ Megadhat egy DNS-tartománynév címkét a nyilvános IP-cím erőforráshoz, am
 > Minden egyes létrehozott tartománynév-címkének egyedinek kell lennie az Azure-helyen.  
 >
 
-### <a name="dns-best-practices"></a>Gyakorlati tanácsok a DNS-nek
-Ha valaha is át kell telepítenie egy másik régióba, nem telepítheti át a nyilvános IP-cím teljes tartománynát. Ajánlott eljárásként a teljes tartománynév segítségével létrehozhat egy egyéni tartomány CNAME rekordot, amely az Azure-ban a nyilvános IP-címre mutat. Ha másik nyilvános IP-címre kell áthelyeznie, a CNAME rekord frissítésére lesz szükség ahelyett, hogy manuálisan kellene frissítenie a teljes tartománynevet az új címre. Használhatja [az Azure DNS-t](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) vagy egy külső DNS-szolgáltatót a DNS-rekordhoz. 
+### <a name="dns-best-practices"></a>Ajánlott DNS-eljárások
+Ha egy másik régióba kell migrálni, a nyilvános IP-cím teljes tartománynevét nem lehet áttelepíteni. Ajánlott eljárásként a teljes tartománynév használatával létrehozhat egy egyéni tartományi CNAME rekordot, amely az Azure nyilvános IP-címére mutat. Ha másik nyilvános IP-címhez kell áttérnie, akkor a CNAME rekord frissítésére van szükség ahelyett, hogy manuálisan frissítenie kell a teljes tartománynevet az új címére. A DNS-rekordhoz [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) vagy külső DNS-szolgáltatót is használhat. 
 
 ### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
@@ -121,7 +122,7 @@ A nyilvános IP-címet társíthatja [Windows](../virtual-machines/windows/overv
 
 ### <a name="internet-facing-load-balancers"></a>Internetkapcsolattal rendelkező terheléselosztók
 
-Bármely [termékváltozattal](#sku) létrehozott nyilvános IP-címet társíthatja az [Azure Load Balancerhöz](../load-balancer/load-balancer-overview.md), ha hozzárendeli a terheléselosztó **előtér**-konfigurációjához. A nyilvános IP-cím terheléselosztásos virtuális IP-címként (VIP) szolgál majd. Hozzárendelhet egy dinamikus vagy egy statikus nyilvános IP-címet a terheléselosztó előtérrendszerhez. Több nyilvános IP-címet is hozzárendelhet egy terheléselosztó előtérhez, amely lehetővé teszi [a több-VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) forgatókönyveket, például a Több-bérlős környezett a TLS-alapú webhelyekkel. Az Azure Load Balancer termékváltozataival kapcsolatos további információkért tekintse meg [az Azure Load Balancer standard termékváltozatáról](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szóló cikket.
+Bármely [termékváltozattal](#sku) létrehozott nyilvános IP-címet társíthatja az [Azure Load Balancerhöz](../load-balancer/load-balancer-overview.md), ha hozzárendeli a terheléselosztó **előtér**-konfigurációjához. A nyilvános IP-cím terheléselosztásos virtuális IP-címként (VIP) szolgál majd. Hozzárendelhet egy dinamikus vagy egy statikus nyilvános IP-címet a terheléselosztó előtérrendszerhez. Több nyilvános IP-címet is hozzárendelhet egy terheléselosztó kezelőfelületéhez, amely lehetővé teszi a [több-VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) forgatókönyvek, például a több-bérlős környezetek számára a TLS-alapú webhelyeket. Az Azure Load Balancer termékváltozataival kapcsolatos további információkért tekintse meg [az Azure Load Balancer standard termékváltozatáról](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szóló cikket.
 
 ### <a name="vpn-gateways"></a>VPN-átjárók
 
@@ -129,7 +130,7 @@ Az [Azure VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2f
 
 ### <a name="application-gateways"></a>Alkalmazásátjárók
 
-A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér**-konfigurációjához. Ez a nyilvános IP-cím terheléselosztásos virtuális IP-címként szolgál majd. Csak egy *dinamikus* alapszintű nyilvános IP-címet rendelhet egy alkalmazásátjáró V1 előtér-konfigurációhoz, és csak egy *statikus* szabványos Termékváltozat-címet a V2 előtér-konfigurációhoz.
+A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér**-konfigurációjához. Ez a nyilvános IP-cím terheléselosztásos virtuális IP-címként szolgál majd. Csak *dinamikus* alapszintű nyilvános IP-címet rendelhet hozzá egy Application Gateway v1 kezelőfelületi konfigurációhoz, és csak egy *statikus* szabványos SKU-címet egy v2 előtér-konfigurációhoz.
 
 ### <a name="at-a-glance"></a>Egy pillantásra
 A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekkel a nyilvános IP-címek legfelsőbb szintű erőforráshoz társíthatók, továbbá a lehetséges használható kiosztási módszereket (dinamikus vagy statikus).
@@ -139,7 +140,7 @@ A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekke
 | Virtuális gép |Hálózati illesztő |Igen |Igen |
 | Internetkapcsolattal rendelkező terheléselosztó |Előtér-konfiguráció |Igen |Igen |
 | VPN-átjáró |Átjáró IP-konfigurációja |Igen |Nem |
-| Alkalmazásátjáró |Előtér-konfiguráció |Igen (csak V1) |Igen (csak V2) |
+| Alkalmazásátjáró |Előtér-konfiguráció |Igen (csak v1) |Igen (csak v2) |
 
 ## <a name="private-ip-addresses"></a>Magánhálózati IP-címek
 A magánhálózati IP-címek segítségével az Azure-erőforrások képesek a helyszíni vagy a [virtuális hálózaton](virtual-networks-overview.md) lévő erőforrásokkal VPN-átjárón vagy ExpressRoute-kapcsolatcsoporton keresztül kommunikálni az internetről elérhető IP-címek használata nélkül is.
@@ -152,7 +153,7 @@ Az Azure Resource Manager-alapú üzemi modellben a magánhálózati IP-címek a
 
 ### <a name="allocation-method"></a>Lefoglalási módszer
 
-A magánhálózati IP-cím a virtuális hálózat azon alhálózatának a címtartományából van lefoglalva, amelyben az erőforrás üzembe van helyezve. Az Azure lefoglalja minden egyes alhálózat címtartományának első négy címét, ezért ezeket nem lehet erőforrásokhoz társítani. Ha például az alhálózat címtartománya 10.0.0.0/16, a 10.0.0.0.0.3 és a 10.0.255.255 címek nem rendelhetők erőforrásokhoz. Az alhálózati címtartományon belüli IP-címeket egyszerre csak egy erőforráshoz lehet rendelni. 
+A magánhálózati IP-cím a virtuális hálózat azon alhálózatának a címtartományából van lefoglalva, amelyben az erőforrás üzembe van helyezve. Az Azure lefoglalja minden egyes alhálózat címtartományának első négy címét, ezért ezeket nem lehet erőforrásokhoz társítani. Ha például az alhálózat 10.0.0.0/16, a 10.0.0.0-10.0.0.3 és a 10.0.255.255 cím nem rendelhető hozzá erőforrásokhoz. Az alhálózati címtartományon belüli IP-címeket egyszerre csak egy erőforráshoz lehet rendelni. 
 
 Két módszer van, amellyel a magánhálózati IP-címek lefoglalhatók:
 

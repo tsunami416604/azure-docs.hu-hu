@@ -1,6 +1,6 @@
 ---
-title: A leromlott állapot hibaelhárítása az Azure Traffic Managerben
-description: A Traffic Manager-profilok hibaelhárítása, ha az állapota csökkent.
+title: Az Azure Traffic Manager csökkentett teljesítményű állapotának elhárítása
+description: A Traffic Manager-profilok hibakeresése, ha csökkentett teljesítményű állapotot mutat.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -12,43 +12,43 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: c398763405472c9018a5c30d34fbd3963ecb93b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d720067b619b0d871899f2ac9025a9d8ab24d95
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938364"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82130767"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Az Azure Traffic Manager csökkentett teljesítményének hibaelhárítása
 
-Ez a cikk ismerteti, hogyan hárítsa el az Azure Traffic Manager-profil, amely egy leromlott állapotot jelenít meg. Az Azure Traffic Manager leromlott állapotának hibaelhárítása első lépéseként a diagnosztikai naplózás engedélyezése.  További információt a [Diagnosztikai naplók engedélyezése](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) című dokumentumban talál. Ebben a forgatókönyvben vegye figyelembe, hogy konfigurált egy Traffic Manager-profilt, amely a cloudapp.net üzemeltetett szolgáltatások néhány. Ha a Traffic Manager állapota **degradálódott** állapotot jelenít meg, akkor egy vagy több végpont állapota **csökkenhet:**
+Ez a cikk a csökkentett teljesítményű állapotot mutató Azure Traffic Manager-profilok hibaelhárítását ismerteti. Az Azure-Traffic Manager csökkentett teljesítményének elhárításának első lépéseként engedélyezze a naplózást.  További információért tekintse meg az [erőforrás-naplók engedélyezése](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) című témakört. Ebben az esetben vegye figyelembe, hogy konfigurált egy Traffic Manager profilt, amely a cloudapp.net üzemeltetett szolgáltatásaira mutat. Ha a Traffic Manager állapota **csökkentett teljesítményű** , akkor a rendszer egy vagy több végpont állapotát **csökkentheti:**
 
-![degradált végpont állapota](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
+![csökkentett teljesítményű végpont állapota](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-Ha a Traffic Manager állapota **inaktív** állapotot jelenít meg, akkor mindkét végpont **letiltható:**
+Ha a Traffic Manager állapota **inaktív** állapotot jelez, akkor előfordulhat, hogy mindkét végpont **le lesz tiltva**:
 
-![Inaktív forgalomkezelő állapota](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
+![Inaktív Traffic Manager állapota](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
-## <a name="understanding-traffic-manager-probes"></a>A Traffic Manager-mintavételek ismertetése
+## <a name="understanding-traffic-manager-probes"></a>Traffic Manager mintavételek ismertetése
 
-* A Traffic Manager csak akkor tekinti online végpontnak egy végpontot, ha a mintavétel http 200-as választ kap a mintavételi útvonalról. Ha az alkalmazás bármely más HTTP-válaszkódot ad vissza, hozzá kell adnia a válaszkódot a Traffic Manager-profil [Várt állapotkódtartományaihoz.](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring)
-* A 30x-es átirányítási válasz hibaként lesz kezelve, kivéve, ha ezt érvényes válaszkódként adta meg a Traffic Manager-profil [Várt állapotkódtartományaiban.](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) A Traffic Manager nem vizsgálja az átirányítási célt.
-* A HTTPs-mintavételek esetén a tanúsítványhibákat a rendszer figyelmen kívül hagyja.
-* A mintavételi útvonal tényleges tartalma nem számít, amíg egy 200-as értéket ad vissza. Szondázás egy URL-t, hogy néhány statikus tartalom, mint a "/favicon.ico" egy gyakori technika. Dinamikus tartalom, például az ASP-lapok, nem mindig ad vissza 200, akkor is, ha az alkalmazás kifogástalan.
-* Ajánlott eljárás: a mintavételi útvonalat olyan ra, amely elég logikával rendelkezik annak megállapításához, hogy a hely felfelé vagy lefelé van-e. Az előző példában a "/favicon.ico" elérési út beállításával csak azt teszteli, hogy a w3wp.exe válaszol-e. Ez a mintavétel nem jelezheti, hogy a webalkalmazás kifogástalan állapotú. Egy jobb megoldás az lenne, hogy egy utat egy olyan valami, mint a "/Probe.aspx", amely logikával határozza meg a hely állapotát. Használhatja például a processzorkihasználtság teljesítményszámlálóit, vagy mérheti a sikertelen kérelmek számát. Vagy megpróbálhat hozzáférni az adatbázis-erőforrásokhoz vagy a munkamenet-állapothoz, hogy megbizonyosodjon arról, hogy a webalkalmazás működik.
-* Ha egy profil összes végpontja levan csökkentve, majd a Traffic Manager az összes végpontot kifogástalanállapotúként kezeli, és a forgalmat az összes végponthoz irányítja. Ez a viselkedés biztosítja, hogy a szondázási mechanizmussal kapcsolatos problémák ne eredményezsék a szolgáltatás teljes kimaradását.
+* Traffic Manager úgy véli, hogy egy végpont csak ONLINE állapotba kerül, ha a mintavétel HTTP 200-választ kap vissza a mintavételi útvonalról. Ha az alkalmazás bármely más HTTP-hibakódot ad vissza, akkor az adott hibakódot a Traffic Manager profiljának [várt állapotkód-tartományához](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) kell hozzáadnia.
+* A 30x átirányítási válasza meghiúsul, hacsak nem adta meg ezt érvényes válaszként a Traffic Manager profiljának [várt állapotkód-tartományában](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) . Traffic Manager nem ellenőrzi az átirányítás célját.
+* HTTPs-próbák esetén a rendszer figyelmen kívül hagyja a tanúsítvány hibáit.
+* A mintavételi útvonal tényleges tartalma nem számít, feltéve, hogy a 200-as értéket adja vissza. Egy olyan statikus tartalom URL-címe, mint például a "/favicon.ico", egy gyakori módszer. Előfordulhat, hogy a dinamikus tartalom, például az ASP-lapok nem mindig adnak vissza 200-et, még akkor is, ha az alkalmazás kifogástalan állapotban van.
+* Ajánlott eljárás a mintavételi útvonal beállítása olyan értékre, amely elegendő logikával rendelkezik annak megállapításához, hogy a hely fel vagy le van-e állítva. Az előző példában a "/favicon.ico" elérési út beállításával csak azt teszteli, hogy a W3wp. exe válaszol-e. Ez a mintavétel nem utalhat arra, hogy a webalkalmazás kifogástalan állapotú. A jobb lehetőség egy olyan elérési út beállítása, mint például a "/Probe.aspx", amely a hely állapotának meghatározására szolgáló logikát tartalmaz. Használhat például teljesítményszámlálók használatával a CPU-kihasználtságot, vagy mérhetővé teheti a sikertelen kérések számát. Vagy megkísérelheti elérni az adatbázis-erőforrásokat vagy a munkamenet-állapotot, hogy meggyőződjön arról, hogy a webalkalmazás működik.
+* Ha a profilban lévő összes végpontot csökkenti, akkor Traffic Manager az összes végpontot Kifogástalan állapotba kezeli, és az összes végpontra irányítja a forgalmat. Ez a viselkedés biztosítja, hogy a szondázás mechanizmussal kapcsolatos problémák ne eredményezik a szolgáltatás teljes kimaradását.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A mintavételi hiba elhárításához olyan eszközre van szüksége, amely a mintavétel URL-címéről visszaadott HTTP-állapotkódot jeleníti meg. Számos olyan eszköz áll rendelkezésre, amely megmutatja a nyers HTTP-választ.
+A mintavételi hibák hibaelhárításához olyan eszközre van szükség, amely megjeleníti a mintavételi URL-címről visszaadott HTTP-állapotkódot. Számos eszköz áll rendelkezésre, amelyek a nyers HTTP-választ mutatják be.
 
 * [Fiddler](https://www.telerik.com/fiddler)
 * [Curl](https://curl.haxx.se/)
-* [Wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
+* [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
-Az Internet Explorer F12 hibakereső eszközeinek Hálózat lapján megtekintheti a HTTP-válaszokat is.
+Emellett a HTTP-válaszok megtekintéséhez használhatja az F12 hibakereső eszközök hálózat lapját az Internet Explorerben.
 
-Ebben a példában szeretnénk látni a választ\/a mi mintavételi URL-cím: http: /watestsdp2008r2.cloudapp.net:80/Probe. A következő PowerShell-példa bemutatja a problémát.
+Ebben a példában a mintavételi URL-címről érkező választ szeretnénk látni: http:\//watestsdp2008r2.cloudapp.net:80/Probe. A következő PowerShell-példa szemlélteti a problémát.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -60,9 +60,9 @@ Példa a kimenetre:
     ---------- -----------------
            301 Moved Permanently
 
-Figyelje meg, hogy átirányítási választ kaptunk. Ahogy azt korábban említettük, a 200-tól eltérő statuscode-kód hibanak minősül. A Traffic Manager a végpont állapotát Kapcsolat nélküli állapotra módosítja. A probléma megoldásához ellenőrizze a webhely konfigurációját, hogy a megfelelő StatusCode visszaadható-e a mintavételi útvonalról. Konfigurálja újra a Traffic Manager-mintavételt úgy, hogy egy 200-as értéket visszaadó útvonalra mutasson.
+Figyelje meg, hogy átirányítási választ kaptunk. Ahogy korábban már említettük, a 200-től eltérő StatusCode nem számít. Traffic Manager a végpont állapotát offline értékre módosítja. A probléma megoldásához tekintse meg a webhely konfigurációját, és győződjön meg arról, hogy a megfelelő StatusCode visszatérhet a mintavételi útvonalról. Konfigurálja újra az Traffic Manager mintavételt úgy, hogy az egy 200-as értéket visszaadó elérési útra mutasson.
 
-Ha a mintavétel a HTTPS protokollt használja, előfordulhat, hogy le kell tiltania a tanúsítványellenőrzést az SSL/TLS hibák elkerülése érdekében a teszt során. A következő PowerShell-utasítások letiltják az aktuális PowerShell-munkamenet tanúsítvány-érvényesítését:
+Ha a mintavétel a HTTPS protokollt használja, előfordulhat, hogy le kell tiltania a tanúsítvány-ellenőrzést, hogy elkerülje az SSL/TLS-hibákat a tesztelés során. A következő PowerShell-utasítások letiltják a tanúsítvány érvényesítését az aktuális PowerShell-munkamenethez:
 
 ```powershell
 add-type @"
@@ -81,9 +81,9 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 ## <a name="next-steps"></a>Következő lépések
 
-[A Traffic Manager forgalomirányítási módszerei](traffic-manager-routing-methods.md)
+[Tudnivalók a Traffic Manager forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)
 
-[Mi a Traffic Manager](traffic-manager-overview.md)
+[Mi az Traffic Manager?](traffic-manager-overview.md)
 
 [Felhőszolgáltatások](https://go.microsoft.com/fwlink/?LinkId=314074)
 
@@ -91,6 +91,6 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Operations on Traffic Manager (A Traffic Managerrel végezhető műveletek) (REST API-referencia)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager parancsmagok][1]
+[Azure Traffic Manager-parancsmagok][1]
 
 [1]: https://docs.microsoft.com/powershell/module/az.trafficmanager

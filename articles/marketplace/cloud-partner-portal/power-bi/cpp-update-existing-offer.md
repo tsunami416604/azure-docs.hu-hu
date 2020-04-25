@@ -1,70 +1,70 @@
 ---
-title: Power BI-alkalmazásajánlat frissítése | Azure Piactér
-description: A Power BI Alkalmazásajánlat frissítése a Microsoft AppSource Piactéren való közzétételután.
+title: Power BI alkalmazás-ajánlat frissítése | Azure piactér
+description: Power BI-alkalmazás frissítésének frissítése a Microsoft AppSource piactéren való közzététel után.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ee8f67a41d339e6e5f65548867c5458739857d50
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b210a945993457fa76703528178763fdc67e876b
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981256"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82141689"
 ---
-# <a name="update-a-power-bi-app-offer"></a>Power BI App-ajánlat frissítése
+# <a name="update-a-power-bi-app-offer"></a>Power BI alkalmazás-ajánlat frissítése
 
 >[!Important]
->2020. április 13-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
+>2020. április 13-ától kezdődően megkezdjük a Power BI alkalmazás-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse az [Power bi alkalmazás-létrehozás áttekintése című](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) témakör utasításait.
 
-Ez a cikk bemutatja, hogyan frissítheti a Microsoft Power BI alkalmazásajánlatát a [Cloud Partner Portalon,](https://cloudpartner.azure.com/) majd hogyan teheti közzé újra az ajánlatot. Az ajánlat frissítésének néhány gyakori oka:
+Ez a cikk bemutatja, hogyan frissítheti a Microsoft Power BI alkalmazás ajánlatát a [Cloud Partner Portal](https://cloudpartner.azure.com/) , majd újból közzéteheti az ajánlatot. Íme néhány gyakori ok az ajánlat frissítésére:
 
-- Az alkalmazás tartalmának frissítése a Power BI-ban, és telepítési URL bek és telepítési URL-cím bekésezése az újonnan csomagolt alkalmazásból
-- Az ajánlat Azure Marketplace-metaadatainak (értékesítési, marketing- vagy támogatási információk és eszközök) frissítése
+- Az alkalmazás tartalmának frissítése Power BI és az újonnan csomagolt alkalmazás telepítési URL-címének beszerzése
+- Az ajánlat Azure Marketplace-metaadatok (értékesítési, marketing-és támogatási információk és eszközök) frissítése
  
-A portál **Összehasonlítás** és **előzmények** funkcióival nyomon követheti az ilyen változásokat.
+A portál **összehasonlítás** és **Előzmények** funkciói segítségével nyomon követheti a változásokat, például a következőt:.
 
 ## <a name="common-update-operations"></a>Gyakori frissítési műveletek
 
-A Power BI Alkalmazásajánlat egyes attribútumai nem módosíthatók az ajánlat AppSource-ban való közzététele után. A nem engedélyezett módosítások közé tartozik **az ajánlatazonosító** és **a közzétevő azonosítója.** De még mindig lehet változtatni a jellemzők széles skáláját. Íme néhány gyakori változás.
+Egy Power BI app-ajánlat egyes attribútumai nem módosíthatók az ajánlat AppSource-ben való közzétételekor. A nem engedélyezett módosítások közé tartozik az **ajánlat azonosítója** és a **közzétevő azonosítója**. Azonban továbbra is megváltoztathatja a jellemzők széles körét. Íme néhány gyakori módosítás.
 
-### <a name="update-app-content-in-power-bi"></a>Alkalmazástartalom frissítése a Power BI-ban
+### <a name="update-app-content-in-power-bi"></a>Alkalmazás tartalmának frissítése Power BI
 
-A Power BI-alkalmazásokat gyakran rendszeresen frissítik új tartalmakkal, biztonsági javításokkal, funkciókkal és így tovább. Ha egy alkalmazás módosul, frissítse a telepítési URL-címét az alábbi lépésekkel:
+Az Power BI alkalmazások gyakran rendszeresen frissülnek az új tartalommal, a biztonsági javításokkal, a funkciókkal és így tovább. Egy alkalmazás módosításakor frissítse a telepítési URL-címét a következő lépésekkel:
 
-1.  Jelentkezzen be a [Cloud Partner Portal ba.](https://cloudpartner.azure.com/)
-2.  A **Minden ajánlat csoportban**keresse meg a frissíteni kívánt ajánlatot.
-3.  A **Műszaki adatok** lapon adjon meg egy új telepítési URL-címet.
-4.  Válassza **a Közzététel** lehetőséget a munkafolyamat elindításához az új alkalmazásverzió AppSource-ban való közzétételéhez.
-
-
-### <a name="update-the-offers-marketplace-metadata"></a>Az ajánlat Marketplace-metaadatainak frissítése
-
-Az ajánlat Marketplace-metaadatai közé tartozik a vállalat neve, emblémák és egyéb információk. A metaadatok frissítéséhez hajtsa végre az alábbi lépéseket:
-
-1.  Jelentkezzen be a [Cloud Partner Portal ba.](https://cloudpartner.azure.com/)
-2.  A **Minden ajánlat csoportban**keresse meg a frissíteni kívánt ajánlatot.
-3.  A **Kirakat részletei** lapon módosítsa a metaadatokat a [Power BI alkalmazás kirakatának részletei lapján](./cpp-storefront-details-tab.md)található utasításokat követve.
-4.  A **közzététel gombra** a munkafolyamat elindításához válassza a módosítások közzétételét.
+1.  Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+2.  A **minden ajánlat**területen keresse meg a frissíteni kívánt ajánlatot.
+3.  A **technikai információk** lapon adjon meg egy új telepítési URL-címet.
+4.  Válassza a **Közzététel** lehetőséget, hogy elindítsa a munkafolyamatot az új alkalmazás verziójának AppSource való közzétételéhez.
 
 
-## <a name="the-compare-feature"></a>Az Összehasonlítás funkció
+### <a name="update-the-offers-marketplace-metadata"></a>Az ajánlat Marketplace-metaadatok frissítése
 
-A közzétett ajánlat frissítésekén ellenőrizheti a végrehajtott módosításokat. Az **Összehasonlítás** funkció használata:
+Az ajánlat Marketplace-metaadatok közé tartozik a vállalat neve, emblémája és egyéb információ. A metaadatok frissítéséhez kövesse az alábbi lépéseket:
 
-1.  A szerkesztési folyamat bármely pontján válassza **Compare** az ajánlat Összehasonlításgombját.
+1.  Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+2.  A **minden ajánlat**területen keresse meg a frissíteni kívánt ajánlatot.
+3.  A **kirakat részletei** lapon módosítsa a metaadatokat a cikk [Power bi alkalmazás-kirakat részletei lap](./cpp-storefront-details-tab.md)utasításait követve.
+4.  Válassza a **Közzététel** lehetőséget a munkafolyamat elindításához a módosítások közzétételéhez.
+
+
+## <a name="the-compare-feature"></a>Az összehasonlítás funkció
+
+Egy közzétett ajánlat frissítésekor megtekintheti a végrehajtott módosításokat. Az **összehasonlítás** funkció használata:
+
+1.  A szerkesztési folyamat bármely pontján válassza ki az ajánlat **összehasonlítása** gombot.
 
     ![Összehasonlítás gomb](./media/compare-feature-button.png)
 
-2.  A marketingeszközök és a metaadatok egymás melletti verzióinak megtekintése.
+2.  Megtekintheti a marketing-eszközök és-metaadatok egymás melletti verzióit.
 
 
-## <a name="history-of-publishing-actions"></a>A közzétételi műveletek előzményei
+## <a name="history-of-publishing-actions"></a>Közzétételi műveletek előzményei
 
-Az ajánlat közzétételi előzményeinek megtekintéséhez nyissa meg a Felhőpartner-portál bal oldalán az **Előzmények** lapot. Itt láthatja az appsource-ajánlatok időbélyeggel ellátott műveletek előzményeit.
+Az ajánlat korábbi közzétételi előzményeinek megtekintéséhez nyissa meg az **Előzmények** lapot a Cloud Partner Portal bal oldalán. Itt megtekintheti a AppSource-ajánlatokban lévő időbélyegzővel ellátott műveletek előzményeit.
 
 ## <a name="next-steps"></a>További lépések
 
-A Cloud Partner Portal on rendszeresen használja [az Seller Insights-ot,](../../cloud-partner-portal-orig/si-getting-started.md) hogy hasznos információkat találjon a Marketplace-ügyfelekről és a használatról.  
+A Cloud Partner Portal rendszeresen használja az [értékesítői](../../cloud-partner-portal-orig/si-getting-started.md) információkat a piactér ügyfeleivel és használatával kapcsolatos hasznos információk megtalálásához.  

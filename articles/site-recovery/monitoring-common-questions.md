@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések az Azure Site Recovery figyelésével kapcsolatban
-description: Válaszok az Azure Site Recovery figyelésével kapcsolatos gyakori kérdésekre a beépített figyelés és az Azure Monitor (Log Analytics) használatával
+title: Azure Site Recovery figyelésével kapcsolatos gyakori kérdések
+description: Választ kaphat a Azure Site Recovery figyeléssel kapcsolatos gyakori kérdésekre, a beépített monitorozás és a Azure Monitor használatával (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,69 +8,69 @@ services: site-recovery
 ms.date: 07/31/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c1d30a9cdd2cd6ca288edd609a2e2e7bee9174d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66ce267581d4748ea51a3dcbd7caa61907115cc1
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68718261"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131156"
 ---
-# <a name="common-questions-about-site-recovery-monitoring"></a>Gyakori kérdések a webhely-helyreállítási figyeléssel kapcsolatban
+# <a name="common-questions-about-site-recovery-monitoring"></a>Site Recovery figyelésével kapcsolatos gyakori kérdések
 
-Ez a cikk választ ad az Azure [Site Recovery](site-recovery-overview.md)figyelésével, a beépített site recovery figyeléssel és az Azure Monitor (Log Analytics) használatával kapcsolatos gyakori kérdésekre.
+Ez a cikk az Azure [site Recovery](site-recovery-overview.md)figyelésével kapcsolatos gyakori kérdésekre ad választ, a beépített site Recovery monitorozás és a Azure Monitor (log Analytics) használatával.
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="how-is-the-rpo-value-logged-different-from-the-latest-available-recovery-point"></a>Miben különbözik a naplózott RPO-érték a legújabb elérhető helyreállítási ponttól?
+### <a name="how-is-the-rpo-value-logged-different-from-the-latest-available-recovery-point"></a>Miben különbözik a RPO érték a legutóbbi elérhető helyreállítási ponttól?
 
-A Site Recovery többlépéses, aszinkron folyamatot használ a gépek Azure-ba replikálásához.
+Site Recovery egy több lépésből álló aszinkron folyamatot használ a gépek Azure-ba történő replikálásához.
 
-- A replikáció utolsó előtti lépésében a rendszer a számítógép legutóbbi módosításait és a metaadatokat egy napló-/gyorsítótár-tárfiókba másolja.
-- Ezek a módosítások, valamint a címke, amely azonosítja a helyreállítható pontot, a célrégióban lévő tárfiókba/felügyelt lemezre kerül.
-- A Site Recovery most már létrehozhat egy helyreállítható pontot a gép számára.
-- Ezen a ponton az RPO teljesült a tárfiókba eddig feltöltött módosításokhoz. Más szóval, a gép RPO ezen a ponton egyenlő az idő, amely eltelt az időbélyeg megfelelő helyreállítható pont.
-- Most site recovery kiválasztja a feltöltött adatokat a tárfiókból, és alkalmazza azokat a replikáni létrehozott lemezek a géphez.
-- A Site Recovery ezután létrehoz egy helyreállítási pontot, és ezt a pontot feladatátvételkor elérhetővé teszi a helyreállításhoz.
-- Így a legújabb rendelkezésre álló helyreállítási pont jelzi a már feldolgozott és a replikalemezekre alkalmazott legújabb helyreállítási pontnak megfelelő időbélyeget.
-
-
-A replikáló forrásgépen vagy a helyszíni infrastruktúra-kiszolgálókon a helytelen rendszeridő megdönti a számított RPO-értéket. A pontos RPO-jelentés érdekében győződjön meg arról, hogy a rendszeróra minden kiszolgálón és gépen pontos.
+- A replikáció utolsó előtti lépésében a gép legutóbbi változásai a metaadatokkal együtt a log/cache Storage-fiókba másolódnak.
+- Ezek a változások a helyreállítható pontot azonosító címkével együtt a célként megadott régióban lévő Storage-fiókba/felügyelt lemezre íródnak.
+- Site Recovery most létrehozhat egy helyreállítható pontot a gép számára.
+- Ezen a ponton a RPO eddig a Storage-fiókba feltöltött módosítások teljesülnek. Ez azt jelenti, hogy a gép RPO ezen a ponton a helyreállítható pontnak megfelelő időbélyegből eltelt idő értékével egyenlő.
+- Most Site Recovery kiválasztja a feltöltött adatait a Storage-fiókból, és alkalmazza azt a géphez létrehozott replikás lemezekre.
+- Site Recovery Ezután létrehoz egy helyreállítási pontot, és a feladatátvételkor elérhetővé teszi ezt a pontot a helyreállításhoz.
+- Így a legújabb elérhető helyreállítási pont a legutóbbi helyreállítási pontnak megfelelő időbélyeget jelzi, amely a már feldolgozott és a replika lemezekre lett alkalmazva.
 
 
+A replikáló forrásoldali gépen vagy a helyszíni infrastruktúra-kiszolgálókon nem megfelelő rendszeridő a kiszámított RPO értéket fogja eldönteni. Pontos RPO-jelentéskészítés esetén győződjön meg arról, hogy a rendszeróra pontos az összes kiszolgálón és gépen.
 
-## <a name="inbuilt-site-recovery-logging"></a>Beépített hely helyreállítási naplózása
 
 
-### <a name="why-is-the-vm-count-in-the-vault-infrastructure-view-different-from-the-total-count-shown-in-replicated-items"></a>Miért különbözik a virtuális gépek száma a tároló infrastruktúra nézetében a replikált elemekben látható teljes számtól?
+## <a name="inbuilt-site-recovery-logging"></a>Beépített Site Recovery naplózás
 
-A tároló infrastruktúra nézet replikációs forgatókönyvek hatóköre. A nézet számában csak az aktuálisan kiválasztott replikációs forgatókönyvben lévő gépek szerepelnek. Emellett csak azokat a virtuális gépeket számoljuk, amelyek az Azure-ba replikálásra vannak konfigurálva. A feladatátvételi feladatátvételi feladatátvételi feladatátvételi feladatokkal, vagy a helyszíni helyre replikáló gépek nem számítanak a nézetben.
 
-### <a name="why-is-the-count-of-replicated-items-in-essentials-different-from-the-total-count-of-replicated-items-on-the-dashboard"></a>Miért különbözik az Essentials replikált elemek száma az irányítópulton lévő replikált elemek teljes számától?
+### <a name="why-is-the-vm-count-in-the-vault-infrastructure-view-different-from-the-total-count-shown-in-replicated-items"></a>Miért különböznek a virtuális gépek a tár infrastruktúra nézetében a replikált elemekben megjelenített összegek számától?
 
-Csak azokat a gépeket tartalmazza, amelyek kezdeti replikációja befejeződött, és amelyek száma az Essentials-ban látható. A replikált elemek összesen tartalmazza az összes gép a tárolóban, beleértve azokat is, amelyek kezdeti replikáció jelenleg folyamatban van.
+A tár infrastruktúra nézetét replikációs forgatókönyvek szerint kell kiterjeszteni. Csak a jelenleg kijelölt replikációs forgatókönyvben szereplő gépek szerepelnek a nézet darabszámában. Emellett csak azokat a virtuális gépeket számítjuk fel, amelyek az Azure-ba történő replikálásra vannak konfigurálva. A feladatátvételt végző gépek vagy egy helyszíni helyre replikált gépek nem számítanak bele a nézetbe.
+
+### <a name="why-is-the-count-of-replicated-items-in-essentials-different-from-the-total-count-of-replicated-items-on-the-dashboard"></a>Miért különböznek az alapvető eszközök replikált elemeinek száma az irányítópulton lévő replikált elemek teljes számától?
+
+Csak a kezdeti replikálást elvégező gépek szerepelnek a Essentialsben megjelenő darabszámban. A replikált elemek összesen a tároló összes számítógépét tartalmazza, beleértve azokat is, amelyekhez jelenleg folyamatban van a kezdeti replikálás.
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
 
-### <a name="how-often-does-site-recovery-send-diagnostic-logs-to-azure-monitor-log"></a>Milyen gyakran küld a Site Recovery diagnosztikai naplókat az Azure Monitor Log? 
+### <a name="how-often-does-site-recovery-send-resource-logs-to-azure-monitor-log"></a>Milyen gyakran Site Recovery az erőforrás-naplók küldése Azure Monitor naplóba? 
 
-- Az AzureSiteRecoveryReplicationStats és az AzureSiteRecoveryRecoveryPoints 15 percenként kerül elküldésre.  
-- Az AzureSiteRecoveryReplicationDataUploadRate és az AzureSiteRecoveryProtectedDiskDataChurn ötpercenként kerül elküldésre. 
-- Az AzureSiteRecoveryJobs a feladat eseményindítójára és befejezésére kerül.
-- Az AzureSiteRecoveryEvents esemény létrehozásakor kerül elküldésre. 
-- Az AzureSiteRecoveryReplicatedItems minden környezeti változás esetén elküldésre kerül. Az adatfrissítési idő általában 15 perccel a módosítás után történik. 
+- A AzureSiteRecoveryReplicationStats és a AzureSiteRecoveryRecoveryPoints 15 percenként küldik el.  
+- A AzureSiteRecoveryReplicationDataUploadRate és a AzureSiteRecoveryProtectedDiskDataChurn küldése öt percenként történik. 
+- A rendszer a AzureSiteRecoveryJobs a feladatok triggere és befejezése után továbbítja.
+- A rendszer a AzureSiteRecoveryEvents egy esemény létrehozásakor küldi el. 
+- A AzureSiteRecoveryReplicatedItems minden környezeti változás esetén elküldve. Az adatfrissítési idő jellemzően 15 perccel a változás után következik be. 
 
-### <a name="how-long-is-data-kept-in-azure-monitor-logs"></a>Mennyi ideig tárolják az adatokat az Azure Monitor-naplókban? 
+### <a name="how-long-is-data-kept-in-azure-monitor-logs"></a>Mennyi ideig tartanak a Azure Monitor naplókban tárolt adat? 
 
-Alapértelmezés szerint a megőrzés 31 napig tart. Növelheti az időszakot a **Használati és becsült költség** szakaszban a Log Analytics munkaterületen. Kattintson **az Adatmegőrzés gombra,** és válassza ki a tartományt.
+Alapértelmezés szerint a megőrzés 31 nap. A Log Analytics munkaterület **használati és becsült költségek** szakaszában növelheti az időszakot. Kattintson az **adatmegőrzés**lehetőségre, és válassza ki a tartományt.
 
-### <a name="whats-the-size-of-the-diagnostic-logs"></a>Mekkora a diagnosztikai naplók mérete? 
+### <a name="whats-the-size-of-the-resource-logs"></a>Mi az erőforrás-naplók mérete? 
 
-A napló mérete általában 15–20 KB. 
+A napló mérete általában 15-20 KB. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogy miként figyelheti a [Site Recovery beépített figyelésével](site-recovery-monitor-and-troubleshoot.md)vagy az [Azure Monitor lal.](monitor-log-analytics.md)
+Megtudhatja, hogyan figyelheti [site Recovery beépített monitorozást](site-recovery-monitor-and-troubleshoot.md)vagy [Azure monitort](monitor-log-analytics.md).
 
 

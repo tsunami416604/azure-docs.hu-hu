@@ -1,78 +1,85 @@
 ---
-title: Érdeklődőkezelés konfigurálása a Salesforce számára | Azure Piactér
-description: Konfigurálja a salesforce-on az Azure Marketplace-ügyfelek számára.
+title: A Salesforce vezető felügyeletének konfigurálása | Azure piactér
+description: Az Azure Marketplace-ügyfelek Salesforce az érdeklődők felügyeletének konfigurálása.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 087cdafe8b819e4929e1608ed7e00be2c1169414
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e0fbb09370e198772b4fc485b3c0fe8a56da4226
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263037"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133637"
 ---
-# <a name="configure-lead-management-for-salesforce"></a>Érdeklődőkezelés konfigurálása a Salesforce-hoz
+# <a name="configure-lead-management-for-salesforce"></a>A Salesforce vezető felügyeletének konfigurálása
 
-Ez a cikk bemutatja, hogyan állíthatja be a Salesforce rendszert a kereskedelmi piactér-ajánlatból származó értékesítési érdeklődők feldolgozására.
+Ez a cikk azt ismerteti, hogyan állíthatja be a Salesforce rendszerét, hogy feldolgozza a kereskedelmi Marketplace-ajánlatból származó értékesítési érdeklődőket.
 
-> [!Note]
-> A Marketplace nem támogatja az előre kitöltött listákat, például az **Ország** mező értéklistáját. A folytatás előtt győződjön meg arról, hogy nincsenek listák beállítva. Azt is megteheti, hogy konfigurálegy [HTTPS-végpontot](./commercial-marketplace-lead-management-instructions-https.md) vagy egy [Azure-táblát](./commercial-marketplace-lead-management-instructions-azure-table.md) az érdeklődők fogadására.
+> [!NOTE]
+> Az Azure Marketplace nem támogatja az előre feltöltött listákat, például az **ország** mező értékeinek listáját. A folytatás előtt győződjön meg arról, hogy nincsenek beállítva felsorolások. Másik lehetőségként beállíthat egy [https-végpontot](./commercial-marketplace-lead-management-instructions-https.md) vagy egy [Azure-táblázatot](./commercial-marketplace-lead-management-instructions-azure-table.md) az érdeklődők fogadására.
 
-## <a name="set-up-your-salesforce-system"></a>A Salesforce rendszer beállítása
+## <a name="set-up-your-salesforce-system"></a>A Salesforce-rendszerek beállítása
 
-1. Jelentkezzen be a Salesforce-ba.
-2. Ha a Salesforce világítási felületét használja.
-    1. Válassza a **Beállítás** lehetőséget a Salesforce kezdőlapjáról.
-    ![Salesforce beállítása](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
+1. Jelentkezzen be a Salesforce.
+1. Ha a Salesforce világítási élményt használja:
+    1. Válassza a **telepítő** elemet a Salesforce kezdőlapján.
 
-    1. A Beállítás lapon navigáljon a bal oldali navigációs sávon a **Platform Tools->Szolgáltatásbeállítások->Marketing->Web-to-Lead oldalra.**
+       ![Salesforce-telepítő](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
-        ![Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+    1. A **telepítés** lapon válassza a **platform eszközök** > **szolgáltatás beállítások** > **marketing** > **web – vezető**lehetőséget.
 
-3. Ha a Salesforce Classic élményt használja:
-    1. Válassza a **Beállítás** lehetőséget a Salesforce kezdőlapjáról.
-    ![Salesforce klasszikus beállítás](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
+        ![Salesforce web – Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
-    1. A Beállítás lapon navigáljon a bal oldali navigációs sávon a **Build ->Customize->Leads->web-to-lead (Build->>->web-to-lead**) elemre.
+1. Ha a klasszikus Salesforce-élményt használja:
 
-        ![Salesforce klasszikus web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+    1. Válassza a **telepítő** elemet a Salesforce kezdőlapján.
 
-A többi utasítás ugyanaz, függetlenül attól, hogy melyik Salesforce-élményt használja.
+       ![Klasszikus Salesforce-telepítő](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
-4. A **Web-to-Lead beállítás lapon**kattintson a **Web-to-Lead űrlap létrehozása** gombra.
-5. A **Web-to-Lead telepítőn**válassza **a Web-to-Lead űrlap létrehozása lehetőséget.**
-    ![Salesforce – Web-to-Lead beállítás](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
+    1. A **telepítés** lapon válassza a **Létrehozás** > **Testreszabás** > webes**érdeklődők** > **számára**lehetőséget.
 
-6. A Create a **Web-to-Lead űrlap,** győződjön meg arról, `the Include reCAPTCHA in HTML` hogy a beállítás nincs bejelölve, és válassza a **Létrehozás lehetőséget.** 
-    ![Salesforce – Webes űrlap létrehozása](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
+        ![Salesforce klasszikus webes – vezető](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
-7. Megjelenik néhány HTML-szöveg. Keresse meg az "oid" szöveget, és másolja az **oid értéket** a HTML-szövegből (csak az idézőjelek közötti szöveget), és mentse. Ezt az értéket a közzétételi portál **Szervezeti azonosító** mezőjébe kell beilleszteni.
-    ![Salesforce – Webes űrlap létrehozása](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
+A többi utasítás ugyanaz, függetlenül attól, hogy milyen Salesforce-élményt használ.
 
-8. Kijelölt **Kész**.
+1. A **webes telepítés** lapon válassza a **webes létrehozás az űrlapon** gombot.
+1. A **web – vezető beállításnál**válassza a **webes létrehozási űrlap létrehozása**lehetőséget.
 
-## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>Az ajánlat konfigurálása érdeklődők salesforce-nak való küldésére
+    ![Salesforce-alapú webes telepítés](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-Ha készen áll az ajánlat érdeklődőkezelési adatainak konfigurálására a közzétételi portálon, kövesse az alábbi lépéseket:
+1. A **webes létrehozás űrlap létrehozása**lapon győződjön meg arról, hogy a beállítás `Include reCAPTCHA in HTML` törölve van, majd válassza a **Létrehozás**lehetőséget.
 
-1. Nyissa meg az **ajánlat beállítási** oldalát.
-1. Válassza a **Csatlakozás** lehetőséget az Érdeklődőkezelés szakaszban.
-    ![Érdeklődőkezelés - Csatlakozás](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+    ![Webes Salesforce létrehozásához](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
-1. A Kapcsolat részletei előugró ablakban válassza a Salesforce for `oid` the Lead Destination (Érdeklődő **célhoz)** **lehetőséget,** és illessze be a létrehozott web-to-lead űrlapba a **Szervezet azonosító** mezőjének korábbi lépéseit követve.
+1. Néhány HTML-szöveg jelenik meg. Keressen rá az "OID" szövegre, és másolja az **"OID" értéket** a HTML-szövegből (csak az idézőjelek között lévő szöveg), majd mentse azt. Ezt az értéket a közzétételi portál **szervezeti azonosító** mezőjébe illeszti be.
 
-1. **Kapcsolatfelvételi e-mail** – E-maileket adhat meg a vállalatnál lévő személyeknek, akiknek e-mailes értesítéseket kell kapniuk, ha új érdeklődő érkezik. Több e-mailt is megadhat, ha pontosvesszővel választja el őket.
+    ![A Salesforce létrehoz egy webes – vezető űrlapot a HTML "OID" érték megjelenítéséhez](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
 
-1. Válassza az **Ok gombot.**
+1. Válassza a **kész**lehetőséget.
 
-Ha meg szeretne győződni arról, hogy sikeresen csatlakozott egy érdeklődő célállomásához, kattintson az érvényesítés gombra. Ha sikeres, akkor lesz egy teszt vezető az érdeklődő cél.
+## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>Az ajánlat beállítása, hogy érdeklődőket küldjön a Salesforce
 
->[!Note]
->Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie, mielőtt érdeklődőket kapna az ajánlathoz.
+Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk konfigurálására a közzétételi portálon, kövesse az alábbi lépéseket.
 
-![Kapcsolat részletei - Érdeklődő célhelyének kiválasztása](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+1. Nyissa meg az ajánlat **telepítési** lapját.
+1. Válassza a **kapcsolat** lehetőséget az **érdeklődő felügyelete** szakaszban.
 
-![Kapcsolat részletei - Érdeklődő célhelyének kiválasztása](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)
+    ![Érdeklődői felügyelet szakasz csatlakozási gombja](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+
+1. A **kapcsolat részletei** előugró ablakban válassza a **Salesforce** lehetőséget a **vezető célhelyhez** , és illessze be `oid` az értéket a létrehozott webes és érdeklődő űrlapból a **szervezeti azonosító** mezőbe.
+
+1. A **kapcsolattartási e-mail**cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mailt is megadhat.
+
+1. Kattintson az **OK** gombra.
+
+Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
+
+>[!NOTE]
+>Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie az ajánlathoz tartozó érdeklődők fogadása előtt.
+
+![Kapcsolat részletei előugró ablak: válasszon egy érdeklődő célhelyet](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+
+![Kapcsolat részletei – előugró ablak – a kapcsolattartási e-mail mező ellenőrzése](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

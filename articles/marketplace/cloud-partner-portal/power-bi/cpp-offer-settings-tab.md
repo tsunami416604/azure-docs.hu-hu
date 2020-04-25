@@ -1,41 +1,41 @@
 ---
-title: A Power BI Alkalmazásajánlat ajánlatbeállításai | Azure Piactér
-description: Konfigurálja a Microsoft AppSource piactér Hez a Power BI Alkalmazásajánlat ajánlatbeállításait.
+title: Ajánlati beállítások a Power BI app ajánlathoz | Azure piactér
+description: Adja meg az ajánlat beállításait egy Power BI alkalmazás-ajánlathoz a Microsoft AppSource Marketplace-en.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bf8abb2d8ac6c1c9d2e03ef5e4f1edce530cbdb
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: ddedc15b41b2b163f85f5443275daf9fbb56bac8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985762"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143031"
 ---
-# <a name="power-bi-apps-offer-settings-tab"></a>A Power BI-alkalmazások ajánlatbeállításai lap
+# <a name="power-bi-apps-offer-settings-tab"></a>Power BI alkalmazások ajánlat beállításai lap
 
 >[!Important]
->2020. április 13-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
+>2020. április 13-ától kezdődően megkezdjük a Power BI alkalmazás-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse az [Power bi alkalmazás-létrehozás áttekintése című](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) témakör utasításait.
 
-Amikor megnyitja a szolgáltatásalkalmazások **Új ajánlat** lapját, először megjelenik az **Ajánlat beállításai** lap. Ezen a lapon adja meg az ajánlat elsődleges azonosítóit és nevét. A csillag (*) egy kötelező mezőt jelöl.
+Amikor megnyitja az **új ajánlat** lapot a Service apps szolgáltatáshoz, először az **ajánlat beállításai** lapot tekintheti meg. Ezen a lapon megadhatja az ajánlat elsődleges azonosítóit és nevét. Egy csillag (*) egy kötelező mezőt jelöl.
 
 ![Ajánlatbeállítási lap](./media/offer-settings-tab.png)
 
 
-## <a name="offer-settings-fields"></a>Ajánlatbeállításai mezők 
+## <a name="offer-settings-fields"></a>Ajánlat beállításai mezők 
 
-Az **Ajánlat beállításai** lapon a következő kötelező mezőkben kell megadnia az adatokat. A kötelező mezőket csillag (*) vádolja.
+Az **ajánlat beállításai** lapon meg kell adnia az adatokat a következő kötelező mezőkben. A kötelező mezőket csillag (*) alapján vádoljuk.
 
 |  Mező        |  Leírás                                                               |
 |---------------|----------------------------------------------------------------------------|
-| **Ajánlat azonosítója\***  | Az ajánlat egyedi azonosítója (közzétevői profilon belül). Ez az azonosító látható lesz a termék URL-címek, az Azure Resource Manager-sablonok és a számlázási jelentésekben. A maximális hossz 50 karakter. Csak kisalfanumerikus karaktereket és kötőjeleket (-) tartalmazhat. Nem végződhet kötőjellel. Ez az azonosító nem módosítható, miután az ajánlat éles. Ha a Contoso ajánlatazonosítóval `sample-SvcApp`tesz közzé ajánlatot, az `https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`ajánlat az AppSource URL-címéhez van rendelve.      |
-| **Publisher\*** | A szervezet egyedi azonosítója az [AppSource alkalmazásban.](https://appsource.microsoft.com) Minden ajánlatának a közzétevő azonosítójához kell kapcsolódnia. Ez az érték nem módosítható az ajánlat mentése után.                         |
-| **név\***      | Az ajánlat megjelenítendő neve. Ez a név jelenik meg az AppSource-on és a Cloud Partner Portalon. A maximális hossz 50 karakter. Használjon olyan márkanevet, amely felismerhető a termékén. Ne adja meg a szervezet nevét itt, kivéve, ha az alkalmazás ezzel a névvel van forgalmazva. Ha ezt az ajánlatot más webhelyeken és kiadványokban nyújtja, minden kiadványban ugyanazt a nevet használja.    <br/>Ha a Power BI-alkalmazások előzetes verzióiban ad ki egy ajánlatot, adja hozzá a karakterláncot `(Preview)` az alkalmazás nevének végén, a következőket: `Sample Scv App (Preview)`. |
+| **Ajánlat azonosítója\***  | Az ajánlathoz tartozó egyedi azonosító (közzétevői profilon belül). Ez az azonosító a termék URL-címeiben, Azure Resource Manager sablonokban és számlázási jelentésekben jelenik meg. A maximális hossz 50 karakter. Csak kisbetűs alfanumerikus karaktereket és kötőjelet (-) tartalmazhat. Nem végződhet kötőjeltel. Ez az azonosító nem módosítható, ha egy ajánlat élőben lép fel. Ha a contoso ajánlatot tesz közzé az ajánlat- `sample-SvcApp`azonosítóval, az ajánlat hozzá lesz rendelve `https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`a AppSource URL-címhez.      |
+| **Publisher\*** | A szervezet egyedi azonosítója a [AppSource](https://appsource.microsoft.com)-ben. Az összes ajánlathoz társítva kell lennie a közzétevő AZONOSÍTÓjának. Ez az érték nem módosítható az ajánlat mentése után.                         |
+| **Name (Név)\***      | Az ajánlat megjelenítendő neve. Ez a név fog megjelenni a AppSource és a Cloud Partner Portal. A maximális hossz 50 karakter. Használjon a termékhez felismerhető márkanevet. Itt ne adja meg a szervezet nevét, kivéve, ha az alkalmazást az adott névvel forgalmazzák. Ha ezt az ajánlatot más webhelyekre és kiadványokra is megadja, használja ugyanazt a nevet az összes kiadványban.    <br/>Ha a Power BI-alkalmazások előzetes verziójának időtartama alatt ad ki ajánlatot, adja hozzá `(Preview)` az alkalmazás nevének végén található karakterláncot, a következőhöz hasonlóan `Sample Scv App (Preview)`:. |
 |     |     |
 
 
 ## <a name="next-steps"></a>További lépések
 
-A következő lapon meg kell adnia az ajánlat [technikai adatait.](./cpp-technical-info-tab.md)
+A következő lapon megadhatja az ajánlathoz tartozó [műszaki adatokat](./cpp-technical-info-tab.md) .

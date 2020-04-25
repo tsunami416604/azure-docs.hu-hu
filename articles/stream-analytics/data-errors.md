@@ -1,27 +1,27 @@
 ---
-title: Az Azure Stream Analytics diagnosztikai naplóadat-hibái
-description: Ez a cikk ismerteti a különböző bemeneti és kimeneti adatok hibák, amelyek az Azure Stream Analytics használata során fordulhat elő.
+title: Az erőforrás-naplózási hibák Azure Stream Analytics
+description: Ez a cikk ismerteti azokat a különböző bemeneti és kimeneti adathibákat, amelyek a Azure Stream Analytics használatakor előfordulhatnak.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 5457308d577b95201fa31bfad0a6634a7a79eda3
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 5c5da26935e489a1b9489f63b83af176921c3a5a
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398133"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133804"
 ---
-# <a name="azure-stream-analytics-data-errors"></a>Az Azure Stream Analytics adathibái
+# <a name="azure-stream-analytics-data-errors"></a>AdatAzure Stream Analyticsi hibák
 
-Az adathibák az adatok feldolgozása során előforduló hibák.  Ezek a hibák leggyakrabban az adatdeszerizálás, a szerializálás és az írási műveletek során fordulnak elő.  Adathibák esetén a Stream Analytics részletes információkat és példaeseményeket ír a diagnosztikai naplókba.  Bizonyos esetekben ezen információk összegzése portálon keresztül is biztosított.
+Az adathibák olyan hibák, amelyek az adatfeldolgozás során jelentkeznek.  Ezek a hibák leggyakrabban az adatok deszerializálása, a szerializálás és az írási műveletek során fordulnak elő.  Az adathibák előfordulása esetén Stream Analytics részletes információkat és példákat ír az erőforrás-naplókba.  Bizonyos esetekben ezen információk összefoglalása is elérhető a portál értesítésein keresztül.
 
-Ez a cikk ismerteti a bemeneti és kimeneti adatok hibáinak különböző hibatípusait, okait és diagnosztikai naplójának részleteit.
+Ez a cikk a bemeneti és kimeneti adatokhoz tartozó hibák különböző típusait, okát és erőforrás-naplóját ismerteti.
 
-## <a name="diagnostic-log-schema"></a>Diagnosztikai napló sémája
+## <a name="resource-logs-schema"></a>Erőforrás-naplók sémája
 
-Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók használatával](stream-analytics-job-diagnostic-logs.md#diagnostics-logs-schema) a diagnosztikai naplók sémájának megtekintéséhez. A következő JSON egy példa érték a diagográfiai napló **tulajdonságok** mezőjében egy adathiba.
+Az erőforrás-naplók sémájának megtekintéséhez tekintse meg az [Azure stream Analytics hibakeresése diagnosztikai naplók használatával](stream-analytics-job-diagnostic-logs.md#resource-logs-schema) című témakört. A következő JSON egy példa az adathibaok erőforrás-naplójának **Tulajdonságok** mezőjére.
 
 ```json
 {
@@ -37,16 +37,16 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 }
 ```
 
-## <a name="input-data-errors"></a>Bemeneti adatokhibái
+## <a name="input-data-errors"></a>Bemeneti adatok hibái
 
 ### <a name="inputdeserializererrorinvalidcompressiontype"></a>InputDeserializerError.InvalidCompressionType
 
-* Ok: A kiválasztott bemeneti tömörítési típus nem egyezik meg az adatokkal.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: Az érvénytelen tömörítési típust is magában foglaló deszerializálási hibákat jelző üzenetek kikerülnek a bemenetből.
+* Ok: a kiválasztott bemeneti tömörítési típus nem felel meg az adatoknak.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: bármilyen deszerializáló hibával rendelkező üzenet el lett dobva a bemenetből, beleértve az érvénytelen tömörítési típust.
 * Napló részletei
-   * Bemeneti üzenet azonosítója. Az Event Hub esetében az azonosító a PartitionId, Offset és Sequence Number.
+   * Bemeneti üzenet azonosítója. Az Event hub esetében az azonosító a PartitionId, az eltolás és a sorszám.
 
 **Hibaüzenet**
 
@@ -56,13 +56,13 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="inputdeserializererrorinvalidheader"></a>InputDeserializerError.InvalidHeader
 
-* Ok: A bemeneti adatok fejléce érvénytelen. A CSV például ismétlődő nevű oszlopokkal rendelkezik.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: Az érvénytelen fejlécet is magában foglaló deszerializálási hibákat jelző üzenetek elkelnek a bemenetről.
+* Ok: a bemeneti adatok fejléce érvénytelen. Egy CSV-fájl például ismétlődő névvel rendelkező oszlopokat tartalmaz.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: bármilyen deszerializáló hibával rendelkező üzenet el lett dobva, beleértve az érvénytelen fejlécet is.
 * Napló részletei
    * Bemeneti üzenet azonosítója. 
-   * Tényleges hasznos teher néhány kilobájtig.
+   * A tényleges adattartalom legfeljebb pár kilobájt.
 
 **Hibaüzenet**
 
@@ -72,14 +72,14 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="inputdeserializererrormissingcolumns"></a>InputDeserializerError.MissingColumns
 
-* Ok: A CREATE TABLE vagy a TIMESTAMP BY segítségével definiált bemeneti oszlopok nem léteznek.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: A hiányzó oszlopokkal rendelkező események kikerülnek a bemenetből.
+* Ok: a CREATE TABLE vagy az IDŐBÉLYEG által megadott bemeneti oszlopok nem léteznek.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: a hiányzó oszlopokkal rendelkező események el lesznek dobva a bemenetből.
 * Napló részletei
    * Bemeneti üzenet azonosítója. 
-   * A hiányzó oszlopok nevei. 
-   * Tényleges hasznos teher néhány kilobájtig.
+   * A hiányzó oszlopok neve. 
+   * A tényleges adattartalom akár néhány kilobájtos.
 
 **Hibaüzenetek**
 
@@ -93,13 +93,13 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="inputdeserializererrortypeconversionerror"></a>InputDeserializerError.TypeConversionError
 
-* Ok: Nem lehet a bemenetet a CREATE TABLE utasításban megadott típusra konvertálni.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: A típuskonverziós hibával rendelkező események kikerülnek a bemenetből.
+* Ok: a bemenet nem alakítható át a CREATE TABLE utasításban megadott típusra.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: a rendszer eldobta a beírási hiba típusú eseményeket a bemenetből.
 * Napló részletei
    * Bemeneti üzenet azonosítója. 
-   * Az oszlop neve és a várt típus.
+   * Az oszlop és a várt típus neve.
 
 **Hibaüzenetek**
 
@@ -113,13 +113,13 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="inputdeserializererrorinvaliddata"></a>InputDeserializerError.InvalidData
 
-* Ok: A bemeneti adatok formátuma nem a megfelelő formátumú. Például a bemenet nem érvényes JSON.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: Az üzenetben lévő összes esemény érvénytelen adathiba esetén kiesik a bemenetből.
+* Ok: a bemeneti adatok formátuma nem megfelelő. Például a bemenet nem érvényes JSON.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: az üzenetben szereplő összes esemény érvénytelen Adathiba miatt el lett dobva a bemenetből.
 * Napló részletei
    * Bemeneti üzenet azonosítója. 
-   * Tényleges hasznos teher néhány kilobájtig.
+   * A tényleges adattartalom legfeljebb pár kilobájt.
 
 **Hibaüzenetek**
 
@@ -133,14 +133,14 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="invalidinputtimestamp"></a>InvalidInputTimeStamp
 
-* Ok: A TIMESTAMP BY kifejezés értéke nem konvertálható datetime-ra.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: Az érvénytelen bemeneti időbélyeggel rendelkező események eldobásra kerülnek a bemenetről.
+* Ok: a TIMESTAMP BY kifejezés értéke nem konvertálható datetime értékre.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: az érvénytelen bemeneti időbélyegzővel rendelkező események el lesznek dobva a bemenetből.
 * Napló részletei
    * Bemeneti üzenet azonosítója. 
    * Hibaüzenet. 
-   * Tényleges hasznos teher néhány kilobájtig.
+   * A tényleges adattartalom legfeljebb pár kilobájt.
 
 **Hibaüzenet**
 
@@ -150,12 +150,12 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="invalidinputtimestampkey"></a>InvalidInputTimeStampKey
 
-* Ok: A TIMESTAMP BY TIMESTAMPColumn értéke NULL.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: Az érvénytelen bemeneti időbélyeg-kulccsal rendelkező események eldobásra kerülnek a bemeneti adatokból.
+* Ok: az IDŐBÉLYEG értéke több mint timestampColumn NULL értékű.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: az érvénytelen bemeneti időbélyeg-kulccsal rendelkező események el lesznek dobva a bemenetből.
 * Napló részletei
-   * A tényleges hasznos teher akár néhány kilobájt.
+   * A tényleges hasznos adatok mérete akár néhány kilobájt.
 
 **Hibaüzenet**
 
@@ -165,13 +165,13 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="lateinputevent"></a>LateInputEvent
 
-* Ok: A kiegyenlítési idő és az érkezési idő közötti különbség nagyobb, mint a késői érkezési tolerancia ablak.
-* A portál értesítése megadva: Nem
-* Diagnosztikai napló szintje: Információ
-* Érintett terület: A késői bemeneti események kezelése a feladatkonfiguráció Eseményrendezés szakaszában található "Egyéb események kezelése" beállításnak megfelelően kerül meghatározásra. További információt az [Időkezelési házirendek című témakörben talál.](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)
+* Ok: az alkalmazás ideje és az érkezési idő közötti különbség nagyobb, mint a késői beérkezés tolerancia ablaka.
+* A portálon megadott értesítés: nem
+* Erőforrás-naplózási szint: információ
+* Hatás: a késői bemeneti események kezelése a feladatok konfigurációjának események rendezése szakaszának "más események kezelése" beállításának megfelelően történik. További információ: [Időkezelési szabályzatok](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Napló részletei
-   * Alkalmazás idoés érkezési ideje. 
-   * Tényleges hasznos teher néhány kilobájtig.
+   * Az alkalmazás ideje és az érkezés időpontja. 
+   * A tényleges adattartalom legfeljebb pár kilobájt.
 
 **Hibaüzenet**
 
@@ -179,15 +179,15 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 "BriefMessage": "Input event with application timestamp '2019-01-01' and arrival time '2019-01-02' was sent later than configured tolerance."
 ```
 
-### <a name="earlyinputevent"></a>EarlyInputEvent esemény
+### <a name="earlyinputevent"></a>EarlyInputEvent
 
-* Ok: Az alkalmazás ideje és az érkezési idő közötti különbség 5 percnél hosszabb.
-* A portál értesítése megadva: Nem
-* Diagnosztikai napló szintje: Információ
-* Érintett terület: A korai bemeneti események kezelése a feladatkonfiguráció Eseményrendezés szakaszában található "Egyéb események kezelése" beállításnak megfelelően kerül meghatározásra. További információt az [Időkezelési házirendek című témakörben talál.](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)
+* Ok: az alkalmazás ideje és az érkezési idő közötti különbség 5 percnél nagyobb.
+* A portálon megadott értesítés: nem
+* Erőforrás-naplózási szint: információ
+* Hatás: a korai bemeneti események kezelése a feladatok konfigurációjának események rendezése szakaszának "más események kezelése" beállításának megfelelően történik. További információ: [Időkezelési szabályzatok](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Napló részletei
-   * Alkalmazás idoés érkezési ideje. 
-   * Tényleges hasznos teher néhány kilobájtig.
+   * Az alkalmazás ideje és az érkezés időpontja. 
+   * A tényleges adattartalom legfeljebb pár kilobájt.
 
 **Hibaüzenet**
 
@@ -195,14 +195,14 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 "BriefMessage": "Input event arrival time '2019-01-01' is earlier than input event application timestamp '2019-01-02' by more than 5 minutes."
 ```
 
-### <a name="outoforderevent"></a>OutofOrderEvent
+### <a name="outoforderevent"></a>OutOfOrderEvent
 
-* Ok: Az esemény nem megfelelőnek számít a megadott sorrenden kívüli tűréshatár szerint.
-* A portál értesítése megadva: Nem
-* Diagnosztikai napló szintje: Információ
-* Érintett terület: A nem sorrendben lebonyolított események kezelése a feladatkonfiguráció Eseményrendezés szakaszában található "Egyéb események kezelése" beállításnak megfelelően kerül rendezésre. További információt az [Időkezelési házirendek című témakörben talál.](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)
+* Ok: az eseményt a rendszer a megadott sorrendben beállított tolerancia ablak szerint tekinti sorrendbe.
+* A portálon megadott értesítés: nem
+* Erőforrás-naplózási szint: információ
+* Hatás: a megrendelési események kezelése a feladatok konfigurációjának események rendezése szakaszának "egyéb események kezelése" beállításának megfelelően történik. További információ: [Időkezelési szabályzatok](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Napló részletei
-   * Tényleges hasznos teher néhány kilobájtig.
+   * A tényleges adattartalom legfeljebb pár kilobájt.
 
 **Hibaüzenet**
 
@@ -214,12 +214,12 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 
-* Ok: A kimenethez szükséges oszlop nem létezik. Például egy oszlop azure table partitionkey néven definiált nem létezik.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: A kimeneti adatok konvertálási hibáit, beleértve a hiányzó kötelező oszlopot is, a [kimeneti adatok házirendje](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) beállítás nak megfelelően kezeli a rendszer.
+* Ok: a kimenethez szükséges oszlop nem létezik. Például létezik egy, az Azure Table PartitionKey csinál ' definiált oszlop.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve a hiányzó kötelező oszlopot, a [kimeneti adatházirend](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) -beállításnak megfelelően kezeli.
 * Napló részletei
-   * Az oszlop neve és a rekordazonosító vagy a rekord egy része.
+   * Az oszlop neve és a rekord azonosítója vagy a rekord egy része.
 
 **Hibaüzenet**
 
@@ -229,12 +229,12 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="outputdataconversionerrorcolumnnameinvalid"></a>OutputDataConversionError.ColumnNameInvalid
 
-* Ok: Az oszlop értéke nem felel meg a kimenetnek. Például az oszlop neve nem érvényes Azure-tábla oszlop.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: Az összes kimeneti adatkonverziós hiba, beleértve az érvénytelen oszlopnevet is, a [Kimeneti adatok házirendje](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) beállításnak megfelelően kerül meghatározásra.
+* Ok: az oszlop értéke nem felel meg a kimenetnek. Az oszlop neve például nem érvényes Azure Table oszlop.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve az érvénytelen oszlopnevet is, a [kimeneti adatházirend](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) -beállításnak megfelelően kezeli.
 * Napló részletei
-   * Az oszlop neve és a rekordazonosító vagy a rekord egy része.
+   * Az oszlop neve és a rekord azonosítója vagy a rekord egy része.
 
 **Hibaüzenet**
 
@@ -244,13 +244,13 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="outputdataconversionerrortypeconversionerror"></a>OutputDataConversionError.TypeConversionError
 
-* Ok: Az oszlop nem konvertálható érvényes típussá a kimenetben. Az oszlop értéke például nem kompatibilis az SQL táblában definiált megkötésekkel vagy típusokkal.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: Az összes kimeneti adatkonverziós hiba, beleértve a típuskonverziós hibát is, a [Kimeneti adatok házirendje](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) beállításnak megfelelően történik.
+* Ok: egy oszlop nem alakítható át érvényes típusra a kimenetben. Az oszlop értéke például nem kompatibilis az SQL-táblában definiált korlátozásokkal vagy típusokkal.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve a típus-átalakítási hibát, a [kimeneti adatházirend](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) -beállításnak megfelelően van kezelve.
 * Napló részletei
    * Az oszlop neve.
-   * Rekordazonosítóvagy a rekord egy része.
+   * Vagy a rekord azonosítóját vagy egy részét.
 
 **Hibaüzenet**
 
@@ -260,12 +260,12 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="outputdataconversionerrorrecordexceededsizelimit"></a>OutputDataConversionError.RecordExceededSizeLimit
 
-* Ok: Az üzenet értéke nagyobb, mint a támogatott kimeneti méret. Egy rekord például 1 MB-nál nagyobb egy Event Hub-kimenet esetén.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: A kimeneti adatok konvertálási hibáit, beleértve a rekord túllépte a méretkorlátot, a [kimeneti adatok házirendje](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) beállítás nak megfelelően kezeli a rendszer.
+* Ok: az üzenet értéke nagyobb, mint a támogatott kimeneti méret. Egy rekord például 1 MB-nál nagyobb az Event hub-kimenetnél.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve a rekord meghaladta a méretkorlátot, a [kimeneti adatházirend](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) -beállításnak megfelelően kezeli a rendszer.
 * Napló részletei
-   * Rekordazonosítóvagy a rekord egy része.
+   * Vagy a rekord azonosítóját vagy egy részét.
 
 **Hibaüzenet**
 
@@ -275,13 +275,13 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ### <a name="outputdataconversionerrorduplicatekey"></a>OutputDataConversionError.DuplicateKey
 
-* Ok: A rekord már tartalmaz egy olyan oszlopot, amelynek neve megegyezik a Rendszer oszlopéval. Például cosmosDB kimenet egy oszlop nevű azonosító, ha azonosító oszlop egy másik oszlopban.
-* A portál értesítése: Igen
-* Diagnosztikai napló szintje: Figyelmeztetés
-* Érintett terület: Az összes kimeneti adatkonverziós hiba, beleértve az ismétlődő kulcsot is, a [Kimeneti adatok házirendje](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) beállításnak megfelelően kerül meghatározásra.
+* Ok: egy rekord már tartalmaz egy olyan oszlopot, amelynek a neve megegyezik a System oszlop nevével. Például a kimenet CosmosDB egy azonosító nevű oszloppal, ha az azonosító oszlop egy másik oszlop.
+* Portálon megadott értesítés: igen
+* Erőforrás-naplózási szint: figyelmeztetés
+* Hatás: az összes kimeneti Adatátalakítási hiba, beleértve az ismétlődő kulcsot, a [kimeneti adatházirend](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) -beállításnak megfelelően van kezelve.
 * Napló részletei
    * Az oszlop neve.
-   * Rekordazonosítóvagy a rekord egy része.
+   * Vagy a rekord azonosítóját vagy egy részét.
 
 ```json
 "BriefMessage": "Column 'devicePartitionKey' is being mapped to multiple columns."
@@ -289,6 +289,6 @@ Lásd: [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók haszn�
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Stream Analytics hibaelhárítása diagnosztikai naplók használatával](stream-analytics-job-diagnostic-logs.md)
+* [Azure Stream Analytics hibakeresése diagnosztikai naplók használatával](stream-analytics-job-diagnostic-logs.md)
 
-* [A Stream Analytics-feladatfigyelés és a lekérdezések figyelésének ismertetése](stream-analytics-monitoring.md)
+* [A Stream Analytics feladatok figyelésének és a lekérdezések figyelésének ismertetése](stream-analytics-monitoring.md)

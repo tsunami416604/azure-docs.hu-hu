@@ -1,27 +1,24 @@
 ---
-title: Tárolószinkronizálási szolgáltatás telepítése
-description: Az Azure File Sync felhőalapú erőforrás üzembe helyezése. Egy tárolószinkronizálási szolgáltatás. Közös szövegterület, amely et megosztanak az áttelepítési dokumentumok között.
+title: Storage Sync szolgáltatás üzembe helyezése
+description: A Azure File Sync felhőalapú erőforrás üzembe helyezése a Storage Sync szolgáltatásban. Közös szöveges blokk, amely az áttelepítési dokumentumok között meg van osztva.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fe74bae95784dcb63a80ee7e280c02de2eadeb5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 248b61530b80a00aa10272dcb3d28b85c6ee04e5
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124718"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143637"
 ---
-Ebben a lépésben szüksége van az Azure-előfizetés hitelesítő adatait.
+Ebben a lépésben szüksége lesz az Azure-előfizetés hitelesítő adataira.
 
-Az Azure File Sync konfigurálásához szükséges alapvető erőforrást "Storage Sync Service"-nek nevezzük.
-Azt javasoljuk, hogy csak egyet telepítsen a vállalat összes olyan kiszolgálójára, amely most vagy a jövőben szinkronizálja ugyanazokat a fájlokat. Csak akkor hozzon létre több storage-szinkronizálási szolgáltatást, ha különböző kiszolgálókészletekkel rendelkezik, amelyeknek soha nem szabad adatokat cserélniük. (például: szinkronizálja ugyanazt az Azure-fájlmegosztást). Ellenkező esetben egyetlen storage-szinkronizálási szolgáltatás az ajánlott eljárás.
+Az Azure File Sync számára konfigurálandó alapvető erőforrást *Storage Sync szolgáltatásnak*nevezzük. Azt javasoljuk, hogy csak egyet helyezzen üzembe az összes olyan kiszolgálón, amely most vagy a későbbiekben is szinkronizálja ezeket a fájlokat. Csak akkor hozzon létre több tárolási szinkronizációs szolgáltatást, ha olyan kiszolgálókat tartalmaz, amelyeknek soha nem kell cserélniük az adatcserét (például szinkronizálni ugyanazt az Azure-fájlmegosztást). Ellenkező esetben az ajánlott eljárás egyetlen Storage Sync szolgáltatás.
 
-Válasszon egy Azure-régiót a storage sync szolgáltatáshoz, amely közel van az irodához. Az összes többi felhőbeli erőforrást ugyanabban a régióban kell telepíteni.
-A felügyelet egyszerűsítése érdekében hozzon létre egy új erőforráscsoportot az előfizetésben, amely szinkronizálási és tárolási erőforrásokat tárol.
+Válasszon egy Azure-régiót a Storage Sync szolgáltatáshoz, amely közel van a helyhez. Minden más Felhőbeli erőforrást ugyanabban a régióban kell üzembe helyezni.
+A felügyelet egyszerűsítése érdekében hozzon létre egy új erőforráscsoportot az előfizetésben, amely a szinkronizálási és tárolási erőforrásokat is otthont ad.
 
-A következő cikk ismerteti, hogyan telepítheti a Storage Sync Service. Csak a dokinak ezt a részét kövesd. A dokumentum más alszakaszaira mutató hivatkozások a későbbi lépésekben jelennek meg.
-
-[További információ a storage-szinkronizálási szolgáltatások üzembe helyezéséről.](../articles/storage/files/storage-sync-files-deployment-guide.md#deploy-the-storage-sync-service)
+További információ: a [Storage Sync szolgáltatás központi telepítése című rész](../articles/storage/files/storage-sync-files-deployment-guide.md#deploy-the-storage-sync-service) a Azure file Sync üzembe helyezéséről szóló cikkben. Csak a cikk ezen részének követése. A későbbi lépésekben a cikk további szakaszaira mutató hivatkozásokat talál.

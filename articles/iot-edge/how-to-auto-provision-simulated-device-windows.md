@@ -8,12 +8,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fc051e2a0ebbdae7c62ff8a249747d118d3c2ce4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 8278d9f2129ab8b213cf1b561f4b82b56dffc8da
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668694"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131039"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Szimulált IoT Edge eszköz létrehozása és kiépítése virtuális TPM-sel Windows rendszeren
 
@@ -54,7 +54,7 @@ Miután futtatta az eszköz kiépítési szolgáltatását, másolja az **azonos
 
 Hozzon létre egy szimulált TPM-eszközt a Windows fejlesztői gépen. Kérje le az eszköz **regisztrációs azonosítóját** és **záradékának kulcsát** , és hozzon létre egy egyéni beléptetési bejegyzést a DPS-ben.
 
-Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a **kezdeti eszköz kettős állapotát**. Az eszközök Twin eszközben beállíthatja a címkéket, hogy a megoldásban szükséges mérőszámok alapján csoportosítsa az eszközöket (például régió, környezet, hely vagy eszköz típusa). Ezek a címkék [automatikus központi telepítések](how-to-deploy-monitor.md)létrehozásához használhatók.
+Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a **kezdeti eszköz kettős állapotát**. Az eszközök Twin eszközben beállíthatja a címkéket, hogy a megoldásban szükséges mérőszámok alapján csoportosítsa az eszközöket (például régió, környezet, hely vagy eszköz típusa). Ezek a címkék [automatikus központi telepítések](how-to-deploy-at-scale.md)létrehozásához használhatók.
 
 Válassza ki a szimulált eszköz létrehozásához használni kívánt SDK-nyelvet, és kövesse a lépéseket, amíg létre nem hozza az egyéni regisztrációt.
 
@@ -133,4 +133,4 @@ iotedge list
 
 ## <a name="next-steps"></a>További lépések
 
-Az eszköz kiépítési szolgáltatásának beléptetési folyamata lehetővé teszi, hogy az eszköz AZONOSÍTÓját és az eszköz Twin címkéit az új eszköz kiépítésekor egy időben állítsa be. Ezeket az értékeket használhatja az egyes eszközök vagy eszközök automatikus eszközkezelés használatával történő megcélzásához. Megtudhatja, hogyan [helyezhet üzembe és figyelheti IoT Edge-modulok méretezését a Azure Portal vagy az](how-to-deploy-monitor.md) [Azure CLI használatával](how-to-deploy-monitor-cli.md)
+Az eszköz kiépítési szolgáltatásának beléptetési folyamata lehetővé teszi, hogy az eszköz AZONOSÍTÓját és az eszköz Twin címkéit az új eszköz kiépítésekor egy időben állítsa be. Ezeket az értékeket használhatja az egyes eszközök vagy eszközök automatikus eszközkezelés használatával történő megcélzásához. Megtudhatja, hogyan [helyezhet üzembe és figyelheti IoT Edge-modulok méretezését a Azure Portal vagy az](how-to-deploy-at-scale.md) [Azure CLI használatával](how-to-deploy-cli-at-scale.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault helyreállítható törlés | Microsoft dokumentumok
-description: Az Azure Key Vault ban a törlés helyreállíthatóan lehetővé teszi a törölt kulcstartók és kulcstartó-objektumok, például kulcsok, titkos kulcsok és tanúsítványok helyreállítását.
+title: Azure Key Vault – törlés | Microsoft Docs
+description: A Azure Key Vault-törléssel helyreállítható a törölt kulcstartók és a Key Vault-objektumok, például kulcsok, titkok és tanúsítványok.
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
@@ -8,91 +8,91 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: be4f124863da39cc9f6a61ebe054d451b438e8c3
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 045c1d255ae380c722506615aae9cf5d22105747
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617753"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133110"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault: a helyreállítható törlés áttekintése
 
-A Key Vault helyreállítható törlési funkciója lehetővé teszi a törölt tárolók és a tárolóobjektumok, más néven a helyreállítható törlés helyreállítását. Konkrétan a következő forgatókönyvekkel foglalkozunk:
+Key Vault a helyreállítható törlési funkció lehetővé teszi a törölt tárolók és tároló objektumok helyreállítását, amelyeket a rendszer a Soft delete néven is ismert. Pontosabban a következő forgatókönyvek jelennek meg:
 
-- A kulcstartó helyreállítható törlésének támogatása
-- Kulcstartó-objektumok helyreállítható törlésének támogatása (pl. kulcsok, titkok, tanúsítványok)
+- Key Vault helyreállítható törlésének támogatása
+- A Key Vault-objektumok helyreállítható törlésének támogatása (pl. kulcsok, titkos kódok, tanúsítványok)
 
-## <a name="supporting-interfaces"></a>Támogató interfészek
+## <a name="supporting-interfaces"></a>Támogató felületek
 
-A helyreállítható törlés i. szolgáltatás kezdetben a [REST,](/rest/api/keyvault/) [CLI](soft-delete-cli.md), [PowerShell](soft-delete-powershell.md) és [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) felületeken keresztül érhető el.
+A Soft-delete funkció kezdetben a [Rest](/rest/api/keyvault/), a [CLI](soft-delete-cli.md), a [PowerShell](soft-delete-powershell.md) és a [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) felületen érhető el.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-Az Azure Key Vaults az Azure Resource Manager által felügyelt erőforrások nyomon követhető. Az Azure Resource Manager is meghatározza a jól meghatározott viselkedés törlés, amely megköveteli, hogy egy sikeres DELETE művelet et kell eredményeznie, hogy az erőforrás nem érhető el többé. A helyreállítható törlés funkció a törölt objektum helyreállítását kezeli, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e.
+Az Azure Key Vault a Azure Resource Manager által felügyelt erőforrások nyomon követésére szolgál. A Azure Resource Manager a törlés jól definiált viselkedését is meghatározza, ami megköveteli, hogy a sikeres TÖRLÉSi művelet azt eredményezheti, hogy az erőforrás már nem érhető el. A Soft-delete szolgáltatás a törölt objektum helyreállítását kezeli, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e.
 
-1. A tipikus forgatókönyv, a felhasználó véletlenül törölt egy key vault vagy egy key vault objektumot; ha a key vault vagy key vault objektum volt, hogy egy előre meghatározott ideig helyreállítható, a felhasználó visszavonhatja a törlést, és helyreállíthatja az adatokat.
+1. A tipikus esetben előfordulhat, hogy egy felhasználó véletlenül törölt egy kulcstartót vagy egy kulcstartó objektumot; Ha a Key Vault vagy a Key Vault-objektum egy előre meghatározott időszakra állítható helyre, akkor a felhasználó visszavonhatja a törlést, és helyreállíthatja az adatokat.
 
-2. Egy másik forgatókönyv esetén egy engedélyezetlen felhasználó megpróbálhatja törölni a key vault vagy egy key vault objektum, például egy kulcs a tárolóban, üzleti zavarokat okozhat. A key vault vagy a key vault objektum törlésének és az alapul szolgáló adatok tényleges törlésének elkülönítése biztonsági intézkedésként használható, például az adatok törlésére vonatkozó engedélyek egy másik, megbízható szerepkörre korlátozásával. Ez a megközelítés hatékonyan megköveteli a kvórum egy művelet, amely egyébként azonnali adatvesztést eredményezhet.
+2. Egy másik forgatókönyvben a szélhámos felhasználó megkísérelheti törölni egy kulcstartót vagy egy kulcstartó objektumot, például egy tárolóban lévő kulcsot, hogy az üzleti fennakadást okozzon. A Key Vault vagy a Key Vault objektum törlését a mögöttes adatok tényleges törlésével lehet elválasztani biztonsági mértékként, például az adatok törlésére vonatkozó engedélyeket egy másik, megbízható szerepkörre korlátozva. Ez a megközelítés ténylegesen megköveteli a kvórumot egy olyan művelet esetében, amely egyébként azonnali adatvesztést eredményezhet.
 
-### <a name="soft-delete-behavior"></a>A törlés viselkedése
+### <a name="soft-delete-behavior"></a>Helyreállítható törlési viselkedés
 
-Ha a helyreállítható törlés engedélyezve van, a törölt erőforrásként megjelölt erőforrások egy meghatározott ideig (alapértelmezés szerint 90 napig) megmaradnak. A szolgáltatás továbbá lehetővé teszi a törölt objektum helyreállítását, lényegében a törlés visszavonása.
+Ha a helyreállítható törlés engedélyezve van, a törölt erőforrásként megjelölt erőforrások megmaradnak egy adott időszakra (alapértelmezés szerint 90 nap). A szolgáltatás továbbra is lehetővé teszi a törölt objektum helyreállítását, ami lényegében a törlés visszavonása.
 
-Új kulcstartó létrehozásakor a helyreállítható törlés alapértelmezés szerint be van kapcsolva. Az [Azure CLI-n](soft-delete-cli.md) vagy az Azure [PowerShellen](soft-delete-powershell.md)keresztül is létrehozhat egy kulcstartót a helyreállítható törlés nélkül. Ha a helyreállítható törlés engedélyezve van egy kulcstartóban, az nem tiltható le.
+Új kulcstartó létrehozásakor alapértelmezés szerint a Soft delete be van kapcsolva. A Key vaultot az [Azure CLI](soft-delete-cli.md) -n keresztül vagy a [Azure PowerShell](soft-delete-powershell.md)használatával is létrehozhatja a törlés nélkül. Ha a helyreállított törlés engedélyezve van a Key vaulton, azt nem lehet letiltani.
 
-Az alapértelmezett megőrzési időszak 90 nap, de a key vault létrehozása során az adatmegőrzési szabályzat időköze az Azure Portalon keresztül 7 és 90 nap közötti értékre állítható be. A kiürítési védelem megőrzési házirend ugyanazt az időtartamot használja. A beállítás után az adatmegőrzési házirend-időköz nem módosítható.
+Az alapértelmezett megőrzési időtartam 90 nap, de a Key Vault létrehozása során lehetséges, hogy az adatmegőrzési házirend intervallumát 7 – 90 nap értékre állítja be a Azure Portal. A kiürítési védelem adatmegőrzési szabályzata ugyanazt az intervallumot használja. A beállítás után az adatmegőrzési házirend intervalluma nem módosítható.
 
-A megőrzési időszak lejártáig nem használhatja fel újra a helyreállíthatóan törölt kulcstartó nevét.
+Nem lehet újra felhasználni egy olyan kulcstartó nevét, amelyet a rendszer a megőrzési időszak lejárta után töröl.
 
-### <a name="purge-protection"></a>Tisztítási védelem 
+### <a name="purge-protection"></a>Védelem kiürítése 
 
-A védelem kiürítése a Key Vault nem kötelező viselkedése, és **alapértelmezés szerint nincs engedélyezve.** Cli-n vagy [CLI](soft-delete-cli.md#enabling-purge-protection) [PowerShellen](soft-delete-powershell.md#enabling-purge-protection)keresztül kapcsolható be.
+A védelem kiürítése opcionális Key Vaulti viselkedés, és **alapértelmezés szerint nincs engedélyezve**. A védelem kiürítése csak akkor engedélyezhető, ha a törlés engedélyezve van.  A [parancssori](soft-delete-cli.md#enabling-purge-protection) felület vagy a [PowerShell](soft-delete-powershell.md#enabling-purge-protection)használatával kapcsolható be.
 
-Ha a kiürítési védelem be van kapcsolva, a tároló vagy a törölt állapotban lévő objektum nem törölhető, amíg a megőrzési időszak le nem telt. A helyreállítható tárolók és objektumok továbbra is helyreállíthatók, biztosítva, hogy az adatmegőrzési szabály betartatható legyen. 
+Ha a védelem kiürítése be van kapcsolva, a törölt állapotban lévő tároló vagy objektum nem törölhető, amíg meg nem adta a megőrzési időszakot. A helyreállítható tárolók és objektumok továbbra is helyreállíthatók, így biztosítható, hogy az adatmegőrzési szabályzatot követni fogjuk. 
 
-Az alapértelmezett megőrzési időszak 90 nap, de az Azure Portalon keresztül 7 és 90 nap közötti értékre állítható be az adatmegőrzési házirend-időköz. Miután az adatmegőrzési házirend-időköz be van állítva, és mentette, hogy nem módosítható az adott tárolóban. 
+Az alapértelmezett megőrzési időtartam 90 nap, de az adatmegőrzési házirend intervalluma 7 – 90 nap értékre állítható be a Azure Portalon keresztül. Ha a megőrzési időtartam beállítása és mentése megtörtént, akkor az adott tár esetében nem módosítható. 
 
-### <a name="permitted-purge"></a>Engedélyezett tisztítás
+### <a name="permitted-purge"></a>Engedélyezett kiürítés
 
-A proxyerőforrás postaműveletén keresztül véglegesen törlött, kiürítést, kulcstartó tãing néven érhető el, és speciális jogosultságokat igényel. Általában csak az előfizetés tulajdonosa lesz képes kiüríteni a key vault. A POST művelet elindítja a páncélterem azonnali és helyrehozhatatlan törlését. 
+Végleges törlés, ürítés, kulcstartó lehetséges a proxy erőforrás utáni művelettel, és speciális jogosultságok szükségesek. Általánosságban elmondható, hogy csak az előfizetés tulajdonosa törölheti a kulcstartót. A POST művelet elindítja a tár azonnali és behajthatatlan törlését. 
 
-Kivételek a következők:
-- Ha az Azure-előfizetés *thetetlenként*van megjelölve. Ebben az esetben csak a szolgáltatás hajthatja végre a tényleges törlést, és ezt ütemezett folyamatként teszi. 
-- Ha `--enable-purge-protection flag` a engedélyezve van a tárolóban is. Ebben az esetben a Key Vault 90 napot vár, attól kezdve, hogy az eredeti titkos objektumot törlésre jelölték meg az objektum végleges törléséhez.
+Kivételek:
+- Ha az Azure-előfizetés nem *törölhető*van megjelölve. Ebben az esetben csak a szolgáltatás végezheti el a tényleges törlést, és ezt ütemezett folyamatként is végrehajthatja. 
+- Ha az `--enable-purge-protection flag` engedélyezve van a tárolón. Ebben az esetben Key Vault várni fog a 90 nap, amikor az eredeti titkos objektum törlésre lett megjelölve az objektum végleges törléséhez.
 
-### <a name="key-vault-recovery"></a>Kulcstartó helyreállítása
+### <a name="key-vault-recovery"></a>Key Vault-helyreállítás
 
-A key vault törlésekor a szolgáltatás létrehoz egy proxy erőforrást az előfizetés alatt, elegendő metaadatot adva a helyreállításhoz. A proxyerőforrás egy tárolt objektum, amely ugyanazon a helyen érhető el, mint a törölt kulcstartó. 
+A kulcstároló törlésekor a szolgáltatás létrehoz egy proxy-erőforrást az előfizetés alatt, és elegendő metaadatokat ad hozzá a helyreállításhoz. A proxy erőforrás egy tárolt objektum, amely a Deleted Key vaulttal megegyező helyen érhető el. 
 
-### <a name="key-vault-object-recovery"></a>Kulcstartó objektumának helyreállítása
+### <a name="key-vault-object-recovery"></a>Key Vault-objektum helyreállítása
 
-Egy kulcstartó objektum, például egy kulcs törlésekor a szolgáltatás az objektumot törölt állapotba helyezi, így az nem érhető el a lekérési műveletekhez. Ebben az állapotban a key vault objektum csak akkor lehet felsorolni, helyreállított, vagy erőteljesen/véglegesen törölt. 
+A Key Vault-objektumok, például a kulcsok törlésekor a szolgáltatás törölt állapotba helyezi az objektumot, így elérhetetlenné válik a lekérési műveletekhez. Ebben az állapotban a Key Vault-objektum csak listázható, állítható helyre vagy kényszerített/véglegesen törölhető. 
 
-Ezzel egy időben a Key Vault ütemezi a törölt key vaultnak vagy key vault-objektumnak megfelelő alapul szolgáló adatok törlését egy előre meghatározott megőrzési időköz után. A tárolónak megfelelő DNS-rekord is megmarad a megőrzési időköz időtartamára.
+Ugyanakkor Key Vault a törölt kulcstartónak vagy a Key Vault-objektumnak megfelelő mögöttes adatok törlését fogja ütemezni a végrehajtás előre meghatározott megőrzési időköze után. A tárolóhoz tartozó DNS-rekordot a megőrzési időtartam időtartama alatt is megőrzi a rendszer.
 
-### <a name="soft-delete-retention-period"></a>Ideiglenes törlés megőrzési időszaka
+### <a name="soft-delete-retention-period"></a>Visszatartási időtartam törlése
 
-A helyreállíthatóan törölt erőforrások egy meghatározott ideig, 90 napig megmaradnak. A visszazáró időtartam alatt a következők érvényesek:
+A Soft-Deleted-erőforrások megmaradnak egy meghatározott ideig, 90 nap. A helyreállítható törlés megőrzési időköze során a következők érvényesek:
 
-- Az összes key vaults és key vault objektumok az előfizetés helyreállítható an-törölt állapotban, valamint a velük kapcsolatos törlési és helyreállítási információk.
-    - Csak a speciális engedélyekkel rendelkező felhasználók sorolhatják fel a törölt tárolókat. Azt javasoljuk, hogy a felhasználók hozzon létre egy egyéni szerepkört ezekkel a speciális engedélyekkel a törölt tárolók kezelésére.
-- Azonos nevű kulcstartó nem hozható létre ugyanazon a helyen; ennek megfelelően egy key vault objektum nem hozható létre egy adott tárolóban, ha a kulcstartó azonos nevű objektumot tartalmaz, és amely törölt állapotban van 
-- Csak egy speciálisan kiemelt jogosultsággal rendelkező felhasználó állíthatja vissza a key vault vagy a key vault objektum ot a megfelelő proxyerőforrás helyreállítási parancs kiadásával.
-    - A felhasználó, az egyéni szerepkör tagja, aki rendelkezik azzal a jogosultsággal, hogy hozzon létre egy key vault az erőforráscsoport alatt visszaállíthatja a tárolót.
-- Csak egy speciálisjogosultságú felhasználó törölheti erőszakkal a key vault vagy a key vault objektum ot a megfelelő proxy erőforrás törlési parancs ának kiadásával.
+- Az előfizetéshez tartozó összes kulcstartót és kulcstartó objektumot listázhatja, valamint a hozzáférés törlését és a helyreállítási adatokat is.
+    - Csak a speciális engedélyekkel rendelkező felhasználók listázhatja a törölt tárolókat. Javasoljuk, hogy a felhasználók egyéni szerepkört hozzanak létre ezekkel a speciális engedélyekkel a törölt tárolók kezelésére.
+- Azonos nevű kulcstartó nem hozható létre ugyanazon a helyen; Ennek megfelelően egy Key Vault-objektum nem hozható létre egy adott tárolóban, ha a Key Vault azonos nevű objektumot tartalmaz, és amely törölt állapotban van 
+- Csak egy speciális jogosultsággal rendelkező felhasználó állíthatja vissza a Key vaultot vagy a Key Vault-objektumot úgy, hogy kiállít egy Recover parancsot a megfelelő proxy erőforráson.
+    - A felhasználó, az egyéni szerepkör tagja, aki rendelkezik az erőforráscsoport alatt kulcstartó létrehozásához szükséges jogosultsággal, visszaállíthatja a tárolót.
+- Csak egy speciális jogosultsággal rendelkező felhasználó kényszerítheti a Key Vault vagy a Key Vault objektum törlését a megfelelő proxy erőforráson lévő delete parancs kiadásával.
 
-Kivéve, ha egy key vault vagy key vault objektum helyreáll, a megőrzési időköz végén a szolgáltatás elvégzi a dekett-törölt key vault vagy key vault objektum és annak tartalmát. Az erőforrás-törlés nem ütemezhető át.
+Ha egy kulcstartó vagy kulcstartó-objektum helyreáll, a megőrzési időtartam végén a szolgáltatás elvégzi a nem törölt kulcstartó vagy a kulcstartó objektum és annak tartalma kiürítését. Előfordulhat, hogy az erőforrás-törlés nem lett átütemezett.
 
-### <a name="billing-implications"></a>Számlázási vonatkozások
+### <a name="billing-implications"></a>Számlázási következmények
 
-Általában, ha egy objektum (egy kulcstartó vagy egy kulcs vagy titkos kulcs) törölt állapotban van, csak két művelet lehetséges: "kiürítés" és "helyreállítás". Az összes többi művelet sikertelen lesz. Ezért annak ellenére, hogy az objektum létezik, nem lehet műveleteket végrehajtani, és így nem történik használat, így nincs számla. Vannak azonban a következő kivételek:
+Általánosságban elmondható, hogy amikor egy objektum (kulcstartó vagy kulcs vagy titkos kód) törölve állapotban van, csak két művelet lehetséges: a "kiürítés" és a "helyreállítás". Az összes többi művelet sikertelen lesz. Ezért annak ellenére, hogy az objektum létezik, nem hajtható végre művelet, és így nem kerül sor a használatra, így nincs számla. A következő kivételek vannak azonban:
 
-- A "kiürítési" és a "helyreállítási" műveletek beleszámítanak a normál kulcstároló-műveletekbe, és számlázásra kerülnek.
-- Ha az objektum HSM-kulcs, a "HSM védett kulcs" díj kulcsverziónként és havonta terhelés t, akkor lesz érvényes, ha az elmúlt 30 napban kulcsverziót használtak. Ezt követően, mivel az objektum törölt állapotban van, nem lehet műveleteket végrehajtani ellene, így nem számítunk fel díjat.
+- a "kiürítés" és a "helyreállítás" művelet a normál Key Vault-műveletekbe kerül, és számlázásra kerül.
+- Ha az objektum egy HSM-kulcs, a "HSM-védelemmel ellátott kulcs havi díja" díjat akkor kell alkalmazni, ha az elmúlt 30 napban a kulcs verzióját használták. Ezt követően, mivel az objektum törölve állapotban van, semmilyen műveletet nem lehet végrehajtani, ezért a rendszer díjmentesen alkalmazza.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi két útmutatók kínálnak az elsődleges használati forgatókönyvek a helyreállítható törlés.
+A következő két útmutató az elsődleges használati forgatókönyveket kínálja a Soft delete használatára.
 
 - [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](soft-delete-powershell.md) 
 - [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](soft-delete-cli.md)

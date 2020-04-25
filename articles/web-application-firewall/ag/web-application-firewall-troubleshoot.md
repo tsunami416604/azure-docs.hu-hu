@@ -1,34 +1,34 @@
 ---
-title: Hibaelhárítás – Azure webalkalmazás-tűzfal
-description: Ez a cikk hibaelhárítási információkat tartalmaz az Azure Application Gateway webalkalmazás-tűzfalával (WAF) kapcsolatban
+title: Hibakeresés – Azure webalkalmazási tűzfal
+description: Ez a cikk az Azure-hoz készült webalkalmazási tűzfal (WAF) hibaelhárítási információit ismerteti Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74046192"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131256"
 ---
-# <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Webalkalmazás-tűzfal (WAF) – hibaelhárítás az Azure Application Gateway alkalmazásátjáróhoz
+# <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Az Azure Application Gateway webalkalmazási tűzfalának (WAF) hibáinak megoldása
 
-Néhány dolgot megtehet, ha a webalkalmazás-tűzfalon (WAF) áthaladó kérelmek blokkolva vannak.
+Néhány dolog elvégezhető, ha a webalkalmazási tűzfalon (WAF) továbbított kérések le vannak tiltva.
 
-Először győződjön meg arról, hogy elolvasta a [WAF áttekintését](ag-overview.md) és a [WAF konfigurációs](application-gateway-waf-configuration.md) dokumentumokat. Győződjön meg arról is, hogy engedélyezte a [WAF-figyelést:](../../application-gateway/application-gateway-diagnostics.md) Ezek a cikkek ismertetik a WAF működését, a WAF-szabálykészletek működését és a WAF-naplók elérésének módját.
+Először is győződjön meg róla, hogy elolvasta a [WAF áttekintését](ag-overview.md) és a [WAF konfigurációs](application-gateway-waf-configuration.md) dokumentumait. Győződjön meg arról is, hogy engedélyezte a [WAF-figyelést](../../application-gateway/application-gateway-diagnostics.md) . Ezek a cikkek ismertetik a WAF működését, a WAF-szabály működését, valamint a WAF-naplók elérését.
 
 ## <a name="understanding-waf-logs"></a>A WAF-naplók ismertetése
 
-A WAF-naplók célja, hogy minden olyan kérést megjelenítsen, amelyet a WAF egyeztetett vagy blokkolt. Ez az összes kiegyenlített vagy blokkolt kiértékelt kérelem főkönyve. Ha azt veszi észre, hogy a WAF blokkolja a kérelmet, hogy nem kellene (hamis pozitív), meg tudod csinálni néhány dolgot. Először szűkítse le, és keresse meg az adott kérést. Tekintse át a naplókat, hogy megtalálja a kérelem adott URI-, időbélyeg- vagy tranzakcióazonosítóját. Amikor megtalálja a kapcsolódó naplóbejegyzéseket, elkezdheti a hamis pozitív műveleteket.
+A WAF-naplók célja, hogy minden, a WAF által egyeztetett vagy letiltott kérelmet megjelenítse. Ez az összes kiértékelt kérelem főkönyve, amely megfelel vagy le van tiltva. Ha azt tapasztalja, hogy a WAF blokkol egy olyan kérést, amely nem (hamis pozitív), elvégezhet néhány dolgot. Először, Szűkítse le, és keresse meg az adott kérést. Tekintse át a naplókat, hogy megkeresse a kérelem egyedi URI-JÁT, időbélyegét vagy tranzakciós AZONOSÍTÓját. A társított naplóbejegyzések megkeresése után megkezdheti a hamis pozitív műveletek elvégzését.
 
-Tegyük fel például, hogy van egy legitim forgalma, amely az *1=1* karakterláncot tartalmazza, amelyet át szeretne haladni a WAF-on. Ha megpróbálja a kérelmet, a WAF blokkolja a forgalmat, amely tartalmazza a *1 =1* karakterlánc ot bármely paraméter vagy mezőben. Ez egy karakterlánc gyakran kapcsolódik egy SQL-injektálási támadáshoz. Megtekintheti a naplókat, és megtekintheti a kérelem időbélyegét és a blokkolt/egyeztetett szabályokat.
+Tegyük fel például, hogy rendelkezik egy olyan legitim forgalommal, amely az *1 = 1* karakterláncot tartalmazza, amelyet át szeretne adni a WAF. Ha kipróbálja a kérelmet, a WAF letiltja az *1 = 1* karakterláncot tartalmazó forgalmat bármely paraméterben vagy mezőben. Ez az SQL-injektálási támadáshoz gyakran társított karakterlánc. Megtekintheti a naplókat, és megtekintheti a kérés időbélyegét és a blokkolt/egyeztetett szabályokat.
 
-A következő példában láthatja, hogy négy szabály aktiválódik ugyanebben a kérésben (a TransactionId mező használatával). Az első azt mondja, hogy kiegyenlített, mert a felhasználó egy numerikus/IP URL-t használt a kérelemhez, ami hárommal növeli az anomáliapontszámát, mivel ez egy figyelmeztetés. A következő szabály, ami egyezik, a 942130, ami az, amit keres. Láthatjuk a *1 =* 1 `details.data` a területen. Ez tovább növeli az anomália pontszám három újra, mivel ez is egy figyelmeztetés. Általában minden szabály, amely a művelet **kiegyenlített** növeli az anomália pontszám, és ezen a ponton az anomália pontszám lenne hat. További információ: [Anomália pontozási mód.](ag-overview.md#anomaly-scoring-mode)
+A következő példában láthatja, hogy a rendszer négy szabályt indít el ugyanabban a kérésben (a tranzakcióazonosító mező használatával). Az első azt mondja, hogy megegyeznek, mert a felhasználó a kérelemhez numerikus/IP URL-címet használt, amely az anomália pontszámát háromra emeli, mivel ez egy figyelmeztetés. Az egyeztetett következő szabály a 942130, amely az, amit keres. A `details.data` mezőben az *1 = 1* érték látható. Ez tovább növeli az anomália pontszámát három újra, mivel ez egy figyelmeztetés is. Általánosságban elmondható, hogy minden olyan szabály, amely **megfelel** a műveletnek, növeli az anomália pontszámát, és ezen a ponton a anomália értéke hat lenne. További információ: [anomália pontozási mód](ag-overview.md#anomaly-scoring-mode).
 
-Az utolsó két naplóbejegyzés azt mutatja, hogy a kérelem blokkolva volt, mert az anomáliapontszám elég magas volt. Ezek a bejegyzések más művelettel rendelkeznek, mint a másik kettő. Azt mutatják, hogy valóban *blokkolta* a kérelmet. Ezek a szabályok kötelezőek, és nem tilthatók le. Nem úgy kell őket tekinteni, mint szabályokat, hanem inkább a WAF belső infrastruktúrájának.
+A két utolsó naplóbejegyzés azt mutatja, hogy a kérelem le lett tiltva, mert a rendellenesség pontszáma elég magas volt. Ezek a bejegyzések más művelettel rendelkeznek, mint a másik kettő. Megmutatják, hogy ténylegesen *letiltották* a kérést. Ezek a szabályok kötelezőek, és nem tilthatók le. Nem gondolnak a szabályokra, hanem a belső WAF alapvető infrastruktúráját.
 
 ```json
 { 
@@ -133,56 +133,56 @@ Az utolsó két naplóbejegyzés azt mutatja, hogy a kérelem blokkolva volt, me
 }
 ```
 
-## <a name="fixing-false-positives"></a>Hamis pozitív állítások rögzítése
+## <a name="fixing-false-positives"></a>Hamis pozitív elemek javítása
 
-Ezzel az információval, és azzal a tudattal, hogy a 942130-as szabály az *1=1* karakterláncnak megfelelő, néhány dolgot megtehet, hogy megakadályozza a forgalom blokkolását:
+Ezekkel az információkkal és a 942130-es szabálynak az *1 = 1* sztringnek megfelelő ismerettel a következő lépések elvégzésével állíthatja le a forgalmat:
 
 - Kizárási lista használata
 
-   A kizárási listákkal kapcsolatos további információkért lásd a [WAF-konfigurációt.](application-gateway-waf-configuration.md#waf-exclusion-lists)
+   A kizárási listával kapcsolatos további információkért tekintse meg a [WAF konfigurációját](application-gateway-waf-configuration.md#waf-exclusion-lists) .
 - Tiltsa le a szabályt.
 
 ### <a name="using-an-exclusion-list"></a>Kizárási lista használata
 
-Ahhoz, hogy tájékozott döntést hozzon a hamis pozitív kezelésről, fontos, hogy megismerkedjen az alkalmazás által használt technológiákkal. Tegyük fel például, hogy nincs SQL-kiszolgáló a technológiai veremben, és hamis pozitív a szabályokhoz kapcsolódóan. A szabályok letiltása nem feltétlenül gyengíti a biztonságát.
+Ahhoz, hogy tájékozott döntést hozzon a hamis pozitív megoldásokról, fontos, hogy megismerkedjen az alkalmazás által használt technológiákkal. Tegyük fel például, hogy a technológiai veremben nincs SQL Server-kiszolgáló, és a szabályokkal kapcsolatos téves pozitív eredményt kap. A szabályok letiltása nem feltétlenül gyengíti a biztonságot.
 
-A kizárási lista használatának egyik előnye, hogy a kérelemnek csak egy adott része van letiltva. Ez azonban azt jelenti, hogy egy adott kizárás alkalmazható a WAF-on áthaladó összes forgalomra, mert globális beállítás. Ez például akkor okozhat problémát, ha az *1=1* egy adott alkalmazás testében érvényes kérés, mások esetében azonban nem. Egy másik előny, hogy választhat a törzs, a fejlécek és a cookie-k között, amelyeket ki kell zárni, ha egy bizonyos feltétel teljesül, szemben a teljes kérés kizárásával.
+A kizárási lista használatának egyik előnye, hogy csak a kérés egy adott részét tiltja le a rendszer. Azonban ez azt jelenti, hogy egy adott kizárás a WAF áthaladó összes forgalomra érvényes, mivel ez egy globális beállítás. Ez például akkor okozhat problémát, ha *1 = 1* érvényes kérelem a törzsben egy adott alkalmazáshoz, de mások számára nem. Egy másik előny, hogy kiválaszthatja a törzs, a fejlécek és a cookie-k kizárását, ha egy bizonyos feltétel teljesül, a teljes kérelem kizárása helyett.
 
-Esetenként vannak olyan esetek, amikor bizonyos paraméterek et olyan módon adnak át a WAF-nak, amely nem lehet intuitív. Például van egy jogkivonat, amely átkerül az Azure Active Directory használatával történő hitelesítéskor. Ez a jogkivonat, *__RequestVerificationToken,* általában kap át, mint egy cookie-kérelem. Bizonyos esetekben azonban, amikor a cookie-k le vannak tiltva, ez a jogkivonat kérésattribútumként vagy "arg" néven is átkerül. Ha ez történik, meg kell győződnie arról, hogy *__RequestVerificationToken* is hozzá kerül a kizárási listához **kérelem attribútumnévként.**
+Időnként előfordulhat, hogy bizonyos paramétereket nem lehet intuitív módon átadni a WAF. Például van egy token, amely a Azure Active Directory használatával történő hitelesítéskor lesz átadva. Ez a token, *__RequestVerificationToken*, általában kérelem cookie-ként kerül beolvasásra. Bizonyos esetekben azonban, amikor a cookie-k le vannak tiltva, ez a token kérelem-attribútumként vagy "ARG"-ként is át lesz adva. Ha ez történik, gondoskodnia kell arról, hogy a *__RequestVerificationToken* a rendszer hozzáadja a kizárási listához a **kérelem-attribútum neveként** is.
 
 ![Kizárások](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 
-Ebben a példában ki szeretné zárni a Szövegnek megfelelő **Request attribútumnevet1.** *text1* Ez azért tűnik, mert az attribútum neve látható a tűzfalnaplóiban: **adatok: Egyező adatok: 1=1 található args:text1: 1=1**. Az attribútum **szöveg1**. Ezt az attribútumnevet néhány más módon is megtalálhatja, [lásd: A kérelem attribútumnevek keresése](#finding-request-attribute-names).
+Ebben a példában szeretné kizárni a **kérelem attribútumának nevét** , amely egyenlő a *TEXT1*. Ennek az az oka, hogy az attribútum neve látható a tűzfal naplófájljaiban: **adatértékek: megfeleltetett adatértékek: 1 = 1 a következő argumentumok között: TEXT1:1 = 1**. Az attribútum a **TEXT1**. Ezt az attribútumot néhány más módon is megkeresheti, lásd: a [kérelmek attribútumainak neve](#finding-request-attribute-names).
 
-![WAF kizárási listák](../media/web-application-firewall-troubleshoot/waf-config.png)
+![WAF kizárási listája](../media/web-application-firewall-troubleshoot/waf-config.png)
 
 ### <a name="disabling-rules"></a>Szabályok letiltása
 
-Egy másik módja annak, hogy kap körül egy hamis pozitív, hogy tiltsa le a szabályt, amely megfelelt a bemeneti waf gondoltam rosszindulatú volt. Mivel a WAF-naplókat elemezte, és leszűkítette a szabályt 942130-ra, letilthatja azt az Azure Portalon. Lásd: [Webes alkalmazások tűzfalszabályainak testreszabása az Azure Portalon keresztül.](application-gateway-customize-waf-rules-portal.md)
+Egy másik módszer a hamis pozitív megoldás megszerzésére, hogy letiltsa a bemenetnek megfelelő szabályt, amely a WAF szerint rosszindulatú volt. Mivel elemezte a WAF-naplókat, és letiltotta a szabályt a 942130-ra, letilthatja a Azure Portal. Lásd: [webalkalmazási tűzfalszabályok testreszabása a Azure Portalon keresztül](application-gateway-customize-waf-rules-portal.md).
 
-A szabály letiltásának egyik előnye, hogy ha ismeri az összes olyan forgalmat, amely egy bizonyos feltételt tartalmaz, amely általában blokkolva van, érvényes forgalom, letilthatja ezt a szabályt a teljes WAF-ra. Ha azonban csak egy adott használati esetben érvényes forgalomról van szó, a biztonsági rést úgy nyitja meg, hogy letiltja ezt a szabályt a teljes WAF-ra, mivel globális beállításról van szó.
+Egy szabály letiltásának egyik előnye, hogy ha ismeri az összes olyan forgalmat, amely egy általában blokkolni kívánt állapotot tartalmaz, akkor letilthatja ezt a szabályt a teljes WAF. Ha azonban csak egy adott használati eset érvényes forgalma, akkor a biztonsági rést úgy nyithatja meg, hogy letiltja ezt a szabályt a teljes WAF, mivel ez globális beállítás.
 
-Ha az Azure PowerShellt szeretné használni, olvassa [el a Webalkalmazás tűzfalszabályainak testreszabása a PowerShellen keresztül című témakört.](application-gateway-customize-waf-rules-powershell.md) Ha az Azure CLI-t szeretné használni, olvassa el [a Webalkalmazás tűzfalszabályainak testreszabása az Azure CLI-n keresztül című témakört.](application-gateway-customize-waf-rules-cli.md)
+Ha Azure PowerShell szeretne használni, tekintse meg a [webalkalmazási tűzfalszabályok testreszabása a PowerShell](application-gateway-customize-waf-rules-powershell.md)használatával című témakört. Ha az Azure CLI-t szeretné használni, tekintse meg [a webalkalmazási tűzfalszabályok testreszabása az Azure CLI](application-gateway-customize-waf-rules-cli.md)-n keresztül című témakört.
 
 ![WAF-szabályok](../media/web-application-firewall-troubleshoot/waf-rules.png)
 
-## <a name="finding-request-attribute-names"></a>Kérelem attribútumnevének keresése
+## <a name="finding-request-attribute-names"></a>Kérelem-attribútumok nevének megállapítása
 
-A [Fiddler](https://www.telerik.com/fiddler)segítségével megvizsgálja az egyes kéréseket, és meghatározza, hogy a weboldal mely mezőit hívják. Ez segíthet kizárni bizonyos mezőket az ellenőrzésből a Kizárási listák használatával.
+A [Hegedűs](https://www.telerik.com/fiddler)segítségével megvizsgálhatja az egyes kéréseket, és meghatározhatja a weblapok adott mezőit. Ez segít kizárni bizonyos mezőket az ellenőrzésből a kizárási listák használatával.
 
-Ebben a példában láthatja, hogy az *1=1* karakterláncot beírt **mezőt szövegneknevezik1.**
+Ebben a példában láthatja, hogy az *1 = 1* karakterláncot megadó mező neve **TEXT1**.
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
 
-Ezt a mezőt kizárhatja. A kizárási listákról a [Webalkalmazás tűzfala kérelemméret-korlátja és kizárási listái](application-gateway-waf-configuration.md#waf-exclusion-lists)nak további információiból olvashat. Ebben az esetben a kiértékelést a következő kizárás beállításával zárhatja ki:
+Ezt a mezőt kizárhatja. Ha többet szeretne megtudni a kizárási listáról, tekintse meg a [webalkalmazási tűzfal kérelmekre vonatkozó korlátozásait és a kizárási listát](application-gateway-waf-configuration.md#waf-exclusion-lists). Ebben az esetben kizárhatja a kiértékelést a következő kizárás konfigurálásával:
 
-![WAF-kizárás](../media/web-application-firewall-troubleshoot/waf-exclusion-02.png)
+![WAF kizárása](../media/web-application-firewall-troubleshoot/waf-exclusion-02.png)
 
-A tűzfalnaplókat is megvizsgálhatja, hogy az adatokat megkaphassa, hogy lássa, mit kell hozzáadnia a kizárási listához. A naplózás engedélyezéséhez olvassa el az [Alkalmazásátjáró háttérállapotának, diagnosztikai naplóinak és metrikáinak című témakört.](../../application-gateway/application-gateway-diagnostics.md)
+Azt is megvizsgálhatja, hogy a tűzfal naplófájljaiban megtekintheti, hogy mire van szükség a kizárási listához való hozzáadásához. A naplózás engedélyezéséhez tekintse [meg a háttér állapota, az erőforrás-naplók és a metrikák Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
 
-Vizsgálja meg a tűzfal naplóját, és tekintse meg a PT1H.json fájlt arra az órára vonatkozóan, amikor a vizsgálatozni kívánt kérelem megtörtént.
+Vizsgálja meg a tűzfal naplóját, és tekintse meg a PT1H. JSON fájlt, amely azt az órát kéri, amelyet meg szeretne vizsgálni.
 
-Ebben a példában láthatja, hogy négy szabály a transactionID, és hogy minden történt ugyanabban az időben:
+Ebben a példában láthatja, hogy négy olyan szabálya van, amely ugyanazzal a tranzakcióazonosító rendelkezik, és ezek mindegyike pontosan egy időben történt:
 
 ```json
 -   {
@@ -287,51 +287,51 @@ Ebben a példában láthatja, hogy négy szabály a transactionID, és hogy mind
 -   }
 ```
 
-A CRS-szabálykészletek működésének ismeretében, és hogy a CRS ruleset 3.0 egy anomáliapontozási rendszerrel működik (lásd: [Web Application Firewall for Azure Application Gateway),](ag-overview.md)akkor tudja, hogy a művelettel rendelkező két alsó **szabály: A letiltott** tulajdonság a teljes anomáliapontszám alapján blokkol. A szabályok, hogy összpontosítson az első kettő.
+Ismerje meg, hogy a CRS-szabályok hogyan működnek, és hogy a CRS-ek 3,0-as verziójának működése anomália-pontozási rendszerrel működik (lásd: [webalkalmazási tűzfal az Azure](ag-overview.md)-ban Application Gateway) arról, hogy az alsó két szabály a következő **művelettel: a blokkolt** tulajdonság a teljes anomália pontszám alapján blokkolható. A összpontosítani kívánt szabályok az első kettő.
 
-Az első bejegyzés naplózva van, mert a felhasználó egy numerikus IP-címet használt az Alkalmazásátjáróhoz való navigáláshoz, amely ebben az esetben figyelmen kívül hagyható.
+Az első bejegyzést a rendszer naplózza, mert a felhasználó egy numerikus IP-címet használt a Application Gatewayhoz való kapcsolódáshoz, amely ebben az esetben figyelmen kívül hagyható.
 
-A második (942130 szabály) az érdekes. A részletekben látható, hogy egy mintának megfelelő (1=1) és a mező **neve szöveg1**. Az előző lépésekkel zárhatja ki az **equals** **1=1**értékű **Kérelem attribútumnevét.**
+A második (942130-es szabály) az egyik érdekes. Megtekintheti a részleteket, amelyek megfelelnek egy mintának (1 = 1), és a mező neve **TEXT1**. Az előző lépések végrehajtásával zárja ki a **kérelem attribútumának nevét** , amely **1 = 1**értékkel **egyenlő** .
 
-## <a name="finding-request-header-names"></a>Kérelemfejléc-nevek keresése
+## <a name="finding-request-header-names"></a>Kérelmek fejlécének neveinek keresése
 
-Fiddler egy hasznos eszköz ismét keresni kérés fejléc nevét. A következő képernyőképen láthatja a GET-kérelem fejléceit, amelyek tartalmazzák *a Content-Type*, *User-Agent*és így tovább.
+A Hegedűs egy hasznos eszköz a kérelmek fejlécének neveinek megkereséséhez. A következő képernyőképen megtekintheti a GET kérelem fejléceit, amelyek közé tartozik a *Content-Type*, a *User-Agent*stb.
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
 
-A kérelem- és válaszfejlécek megtekintésének másik módja a Chrome fejlesztői eszközeinek megtekintése. Lenyomhatja az F12 billentyűt, vagy a jobb gombbal a ->**A fejlesztői eszközök** **vizsgálata** -> parancsra kattinthat, és válassza a **Hálózat** lapot.
+A kérések és válaszok fejlécek megtekintésének egy másik módja, ha a Chrome fejlesztői eszközein belül keres. Nyomja le az F12 billentyűt, vagy kattintson a jobb gombbal > **vizsgálja** -> meg a**fejlesztői eszközök**, majd válassza a **hálózat** fület. töltsön be egy weblapot, és kattintson a vizsgálni kívánt kérelemre.
 
-![Króm F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
+![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 
-## <a name="finding-request-cookie-names"></a>Kérelemcookie-nevek keresése
+## <a name="finding-request-cookie-names"></a>Kérelmek cookie-neveinek keresése
 
-Ha a kérés cookie-kat tartalmaz, a **Cookie-k** lap bejelölhető a Fiddler nézetére.
+Ha a kérelem cookie-kat tartalmaz, a **cookie-k** lapon lehet megtekinteni őket a hegedűsben.
 
-## <a name="restrict-global-parameters-to-eliminate-false-positives"></a>A globális paraméterek korlátozása a hamis pozitív értékek kiküszöbölése érdekében
+## <a name="restrict-global-parameters-to-eliminate-false-positives"></a>A globális paraméterek korlátozása a hamis pozitív adatok kiiktatására
 
-- A kérelemkérő test ellenőrzésének letiltása
+- Kérelem törzsének ellenőrzésének letiltása
 
-   Az **Ellenőrzés kérelem törzsének** kikapcsolásával a WAF nem értékeli ki az összes forgalom kérésszerveit. Ez akkor lehet hasznos, ha tudja, hogy a kérelem-szervek nem rosszindulatú az alkalmazás.
+   A **kérés törzsének** kikapcsolására vonatkozó beállítással a WAF nem értékeli ki az összes forgalomra vonatkozó kérelmeket. Ez akkor lehet hasznos, ha tudja, hogy a kérések törzse nem rosszindulatú az alkalmazásában.
 
-   A beállítás letiltásával csak a kérelem törzse nem lesz megvizsgálva. A fejlécek és a cookie-k továbbra is ellenőrzöttek maradnak, kivéve, ha az egyes eket a kizárási lista funkcióval kizárják.
+   Ha letiltja ezt a beállítást, a rendszer csak a kérés törzsét vizsgálja meg. A fejlécek és a cookie-k továbbra is megvizsgálva maradnak, kivéve, ha az egyeseket kizárják a kizárási lista funkcióival.
 
-- Fájlméret-korlátok
+- Fájlméret korlátai
 
-   A WAF fájlméretének korlátozásával korlátozza a webkiszolgálókkal való támadás lehetőségét. Azáltal, hogy lehetővé teszi a nagy fájlok feltöltését, a háttérrendszer túlterheltsének kockázata nő. A fájlméret korlátozása az alkalmazás normál használati esetére csak egy másik módja a támadások megelőzésének.
+   A WAF fájlméretének korlátozásával korlátozható a webkiszolgálók támadásának lehetősége. A nagyméretű fájlok feltöltésének engedélyezésével megnő a háttérrendszer kockázata. A fájlok méretének a szokásos használati esetre való korlátozása az alkalmazáshoz csak egy másik módszer a támadások megelőzése érdekében.
 
    > [!NOTE]
-   > Ha tudja, hogy az alkalmazásnak soha nem lesz szüksége egy adott méret feletti fájlfeltöltésre, korlátozhatja ezt egy korlát beállításával.
+   > Ha tudja, hogy az alkalmazásnak nincs szüksége a fájl feltöltésére egy adott méretnél magasabb szintre, korlátozhatja a korlátot.
 
-## <a name="firewall-metrics-waf_v1-only"></a>Tűzfal-mérőszámok (csak WAF_v1)
+## <a name="firewall-metrics-waf_v1-only"></a>Tűzfalak Metrikái (csak WAF_v1)
 
-A v1 webalkalmazás-tűzfalak esetében a következő mérőszámok érhetők el a portálon: 
+A v1-es webalkalmazási tűzfalak esetében a következő metrikák érhetők el a portálon: 
 
-1. Webalkalmazás-tűzfal blokkolt kérelmek száma A letiltott kérelmek száma
-2. Webalkalmazás tűzfal a tiltott szabályok száma Minden szabály, amely megfelelt, **és** a kérelem le van tiltva
-3. Webalkalmazás-tűzfal összes szabályeloszlása Az értékelés során egyeztetett összes szabály
+1. Webalkalmazási tűzfal letiltott kérelme a blokkolt kérelmek számának megszámlálása
+2. Webalkalmazási tűzfal letiltott szabálya az összes olyan szabály számlálása, amely megfelelt **, és** a kérés blokkolva lett
+3. Webalkalmazási tűzfal teljes szabályának elosztása az értékelés során egyeztetett szabályok szerint
      
-A mérőszámok engedélyezéséhez válassza a **Metrikák** lapot a portálon, és válassza ki a három mutató egyikét.
+A metrikák engedélyezéséhez válassza a **metrikák** fület a portálon, és válasszon egyet a három mérőszám közül.
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd: [Webalkalmazás-tűzfal konfigurálása az Application Gateway alkalmazásban.](tutorial-restrict-web-traffic-powershell.md)
+Lásd: [webalkalmazási tűzfal konfigurálása Application Gatewayon](tutorial-restrict-web-traffic-powershell.md).

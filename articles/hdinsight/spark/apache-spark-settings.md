@@ -1,46 +1,46 @@
 ---
-title: Spark-beállítások konfigurálása – Azure HDInsight
-description: Az Apache Spark beállításainak megtekintése és konfigurálása Egy Azure HDInsight-fürthöz
+title: A Spark beállításainak konfigurálása – Azure HDInsight
+description: Azure HDInsight-fürt Apache Spark beállításainak megtekintése és konfigurálása
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/15/2020
-ms.openlocfilehash: e13390067f8767e8c07b9c189264444e6d999a7a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/24/2020
+ms.openlocfilehash: cd16d898408bff46cee13b4df63cd3386d0581b1
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411301"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137841"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
 
-A HDInsight Spark-fürt az [Apache Spark-függvénytár](https://spark.apache.org/) telepítését tartalmazza.  Minden HDInsight-fürt tartalmazza az összes telepített szolgáltatás alapértelmezett konfigurációs paramétereit, beleértve a Sparkot is.  A HDInsight Apache Hadoop-fürt kezelésének egyik kulcseleme a munkaterhelés figyelése, beleértve a Spark-feladatokat is. A Spark-feladatok legjobb futtatásához vegye figyelembe a fizikai fürt konfigurációját a fürt logikai konfigurációjának meghatározásakor.
+An méretű HDInsight Spark-fürt tartalmazza a Apache Spark könyvtár telepítését.  Minden HDInsight-fürt tartalmaz alapértelmezett konfigurációs paramétereket az összes telepített szolgáltatásához, beleértve a Sparkot is.  A HDInsight Apache Hadoop-fürt kezelésének egyik fő aspektusa a munkaterhelés figyelése, beleértve a Spark-feladatokat is. A Spark-feladatok legjobb futtatásához a fürt logikai konfigurációjának meghatározásakor vegye figyelembe a fizikai fürt konfigurációját.
 
-Az alapértelmezett HDInsight Apache Spark-fürt a következő csomópontokat tartalmazza: három [Apache ZooKeeper](https://zookeeper.apache.org/) csomópont, két főcsomópont és egy vagy több munkavégző csomópont:
+Az alapértelmezett HDInsight Apache Spark-fürt a következő csomópontokat tartalmazza: három Apache ZooKeeper csomópont, két fő csomópont és egy vagy több munkavégző csomópont:
 
 ![Spark HDInsight architektúra](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
-A HDInsight-fürt csomópontjainak virtuális gépek és virtuálisgép-méretek száma hatással lehet a Spark-konfigurációra. A nem alapértelmezett HDInsight konfigurációs értékek gyakran nem alapértelmezett Spark-konfigurációs értékeket igényelnek. Amikor létrehoz egy HDInsight Spark-fürt, megjelenik a javasolt virtuális gép méreteaz egyes összetevők. Jelenleg a [memória-optimalizált Linux virtuális gép méretek](../../virtual-machines/linux/sizes-memory.md) az Azure-ban a D12 v2 vagy nagyobb.
+A virtuális gépek és a virtuálisgép-méretek száma a HDInsight-fürt csomópontjaira hatással lehet a Spark-konfigurációra. A nem alapértelmezett HDInsight-konfigurációs értékek gyakran nem alapértelmezett Spark-konfigurációs értékeket igényelnek. HDInsight Spark-fürt létrehozásakor az egyes összetevőknél javasolt virtuálisgép-méretek láthatók. Jelenleg az Azure-hoz készült [memória-optimalizált Linux virtuális gépek mérete](../../virtual-machines/linux/sizes-memory.md) D12 v2 vagy újabb.
 
 ## <a name="apache-spark-versions"></a>Apache Spark verziók
 
-Használja a legjobb Spark-verziót a fürthöz.  A HDInsight szolgáltatás a Spark és a HDInsight több verzióját is tartalmazza.  A Spark minden verziója tartalmaz egy sor alapértelmezett fürtbeállításokat.  
+Használja a fürt legjobb Spark-verzióját.  A HDInsight szolgáltatás a Spark és a HDInsight több verzióját is tartalmazza.  A Spark minden verziója tartalmaz egy alapértelmezett fürtkonfiguráció-készletet.  
 
-Amikor új fürtöt hoz létre, több Spark-verzió közül választhat. A teljes lista megtekintéséhez [HDInsight-összetevők és -verziók](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Új fürt létrehozásakor több Spark-verzió közül választhat. A teljes lista megjelenítéséhez [HDInsight összetevőket és verziókat](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 
 > [!NOTE]  
-> Az Apache Spark alapértelmezett verziója a HDInsight szolgáltatásban értesítés nélkül változhat. Ha verziófüggő, a Microsoft azt javasolja, hogy adja meg az adott verziót, amikor fürtöket hoz létre a .NET SDK, az Azure PowerShell és az Azure Classic CLI használatával.
+> A HDInsight szolgáltatás Apache Spark alapértelmezett verziója figyelmeztetés nélkül változhat. Ha a verziótól függ, a Microsoft azt javasolja, hogy a .NET SDK, a Azure PowerShell és a klasszikus Azure parancssori felület használatával hozzon létre egy adott verziót.
 
-Az Apache Spark három rendszerkonfigurációs hellyel rendelkezik:
+Apache Spark három rendszerkonfigurációs hellyel rendelkezik:
 
-* A Spark-tulajdonságok vezérelhetik a legtöbb `SparkConf` alkalmazásparamétert, és beállíthatók egy objektum vagy a Java rendszer tulajdonságai segítségével.
-* A környezeti változók segítségével beállíthatja a számítógépenkénti beállításokat, `conf/spark-env.sh` például az IP-címet, az egyes csomópontok parancsfájlján keresztül.
-* A naplózás konfigurálható a . `log4j.properties`
+* A Spark-tulajdonságok vezérlik a legtöbb alkalmazás-paramétert, `SparkConf` és egy objektum vagy Java-rendszertulajdonság használatával állíthatók be.
+* A környezeti változók az egyes csomópontokon futtatott `conf/spark-env.sh` parancsfájlokon keresztül, például az IP-cím beállítására használhatók.
+* A naplózás a használatával `log4j.properties`konfigurálható.
 
-Amikor a Spark egy adott verzióját választja ki, a fürt tartalmazza az alapértelmezett konfigurációs beállításokat.  Módosíthatja az alapértelmezett Spark konfigurációs értékeket egy egyéni Spark konfigurációs fájl használatával.  Erre mutat példát az alábbi ábra.
+A Spark egy adott verziójának kiválasztásakor a fürt tartalmazza az alapértelmezett konfigurációs beállításokat.  Az alapértelmezett Spark-konfigurációs értékeket egyéni Spark-konfigurációs fájl használatával módosíthatja.  Erre mutat példát az alábbi ábra.
 
 ```
 spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
@@ -50,95 +50,95 @@ spark.sql.files.maxPartitionBytes 1099511627776
 spark.sql.files.openCostInBytes 1099511627776
 ```
 
-A fenti példa felülír több alapértelmezett értéket öt Spark konfigurációs paraméterhez.  Ezek az értékek a tömörítési kodek, Apache Hadoop MapReduce osztott minimális mérete és parketta blokk mérete. Emellett a Spar SQL partíció és a megnyitott fájlméretek alapértelmezett értékei is.  Ezek a konfigurációs módosítások azért kerülnek kiválasztásra, mert a kapcsolódó adatok és feladatok (ebben a példában a genomikus adatokban) különleges jellemzőkkel rendelkeznek. Ezek a jellemzők jobban fognak kihasználni ezeket az egyéni konfigurációs beállításokat.
+A fenti példában szereplő példa több alapértelmezett értéket felülbírál az öt Spark konfigurációs paraméternél.  Ezek az értékek a tömörítési kodek, Apache Hadoop a MapReduce felosztásának minimális mérete és a parketta-blokkok mérete. Emellett a Spar SQL Partition és a Open File sizes alapértelmezett értékei.  Ezek a konfigurációs változások úgy vannak kiválasztva, hogy a kapcsolódó adatok és feladatok (ebben a példában a genomikai adatok) speciális tulajdonságokkal rendelkezzenek. Ezek a tulajdonságok az egyéni konfigurációs beállítások használatával hatékonyabban fognak megjelenni.
 
 ---
 
-## <a name="view-cluster-configuration-settings"></a>Fürtkonfigurációs beállítások megtekintése
+## <a name="view-cluster-configuration-settings"></a>Fürtkonfiguráció beállításainak megtekintése
 
-Ellenőrizze az aktuális HDInsight-fürt konfigurációs beállításait, mielőtt teljesítményoptimalizálást végezne a fürtön. Indítsa el a HDInsight-irányítópultot az Azure Portalról a Spark-fürt ablaktábláján található **Irányítópult** hivatkozásra kattintva. Jelentkezzen be a fürtrendszergazdának a felhasználónevével és jelszavával.
+A fürtön a teljesítmény optimalizálása előtt ellenőrizze, hogy az aktuális HDInsight-fürt konfigurációs beállításai megtalálhatók-e. Indítsa el a HDInsight-irányítópultot a Azure Portal a Spark-fürt ablaktábláján található **irányítópult** hivatkozásra kattintva. Jelentkezzen be a fürt rendszergazdai felhasználónevével és jelszavával.
 
-Megjelenik az Apache Ambari web felhasználói felülete, amely a fürt erőforrás-használati mutatóinak irányítópultját adja meg.  Az Ambari irányítópulton megjelenik az Apache Spark-konfiguráció és más telepített szolgáltatások. Az irányítópult tartalmaz egy **Konfigurációs előzmények** lapot, ahol megtekintheti a telepített szolgáltatások, köztük a Spark adatait.
+Megjelenik az Apache Ambari webes KEZELŐFELÜLETe, amely a fő fürterőforrás-használati metrikák irányítópultját jeleníti meg.  A Ambari-irányítópulton a Apache Spark konfiguráció és más telepített szolgáltatások láthatók. Az irányítópult tartalmaz egy **konfigurációs előzmények** lapot, ahol megtekintheti a telepített szolgáltatások információit, beleértve a Sparkot.
 
-Az Apache Spark konfigurációs értékeinek megtekintéséhez válassza a **Konfigurációs előzmények**lehetőséget, majd a **Spark2**lehetőséget.  Válassza a **Configs** fület, majd a szolgáltatáslistában a `Spark` (vagy `Spark2`a verziótól függően) hivatkozást.  Megjelenik a fürt konfigurációs értékeinek listája:
+A Apache Spark konfigurációs értékeinek megtekintéséhez válassza a konfiguráció **előzményei**lehetőséget, majd válassza a **Spark2**lehetőséget.  Válassza a **konfigurációk** fület, majd a szolgáltatás `Spark` listában válassza `Spark2`a (vagy a verziótól függően) hivatkozást.  Ekkor megjelenik a fürthöz tartozó konfigurációs értékek listája:
 
 ![Spark-konfigurációk](./media/apache-spark-settings/spark-configurations.png)
 
-Az egyes Spark-konfigurációs értékek megtekintéséhez és módosításához válassza ki a "szikra" a címben található bármely kapcsolatot.  A Spark konfigurációi az alábbi kategóriákban egyéni és speciális konfigurációs értékeket is tartalmaznak:
+Az egyes Spark-konfigurációs értékek megtekintéséhez és módosításához válassza a cím "Spark" elemét.  A Spark-konfigurációk a következő kategóriákban tartalmazzák az egyéni és a speciális konfigurációs értékeket is:
 
-* Egyéni Spark2-alapértelmezések
-* Egyéni Spark2-metrikák-tulajdonságok
-* Speciális Spark2-alapértelmezett értékek
-* Fejlett Spark2-env
-* Speciális szikra2-hive-site-felülírás
+* Egyéni Spark2 – alapértékek
+* Egyéni Spark2 – mérőszámok – tulajdonságok
+* Speciális Spark2 – alapértékek
+* Speciális Spark2 – env
+* Speciális spark2 – kaptár-site – felülbírálás
 
-Ha nem alapértelmezett konfigurációs értékeket hoz létre, a frissítési előzmények láthatók lesznek.  Ez a konfigurációs előzmények hasznosak lehetnek annak megtekintéséhez, hogy melyik nem alapértelmezett konfiguráció rendelkezik optimális teljesítménnyel.
-
-> [!NOTE]  
-> A Spark-fürt általános konfigurációs beállításainak megtekintéséhez, de nem módosításához válassza a **Környezet** lapot a legfelső szintű **Spark-feladat felhasználói felületén.**
-
-## <a name="configuring-spark-executors"></a>Spark végrehajtóinak konfigurálása
-
-A következő ábrán a legfontosabb Spark-objektumok láthatók: az illesztőprogram-program és a hozzá tartozó Spark-környezet, valamint a fürtkezelő és az *n* munkavégző csomópontok.  Minden munkavégző csomópont tartalmaz egy Végrehajtó, egy gyorsítótár és *n* feladatpéldányokat.
-
-![Fürtobjektumok](./media/apache-spark-settings/hdi-spark-architecture.png)
-
-A Spark-feladatok munkavégző erőforrásokat, különösen a memóriát használnak, ezért gyakori a Spark konfigurációs értékeinek módosítása a feldolgozói csomópont végrehajtóihoz.
-
-A spark-konfigurációk nak az alkalmazáskövetelmények javítása érdekében `spark.executor.instances` `spark.executor.cores`gyakran `spark.executor.memory`beállított három fő paraméter a , és a. A Végrehajtó egy Spark-alkalmazáshoz indított folyamat. A végrehajtó fut a munkavégző csomóponton, és felelős az alkalmazás feladataiért. A munkavégző csomópontok és a feldolgozói csomópont mérete határozza meg a végrehajtók számát és a végrehajtó méretét. Ezek az értékek `spark-defaults.conf` a fürtfőcsomópontokon tárolódnak.  Ezeket az értékeket egy futó fürtben szerkesztheti, ha az Ambari webes felhasználói felületén az **Egyéni szikraalapértelmezések** lehetőséget választja.  A módosítások elvégzése után a felhasználói felület felszólítja az összes érintett szolgáltatás **újraindítására.**
+Ha a konfigurációs értékek nem alapértelmezett készletét hozza létre, a frissítési előzmények láthatók.  Ez a konfigurációs előzmények segíthetnek megtekinteni, hogy melyik nem alapértelmezett konfiguráció optimális teljesítményű.
 
 > [!NOTE]  
-> Ez a három konfigurációs paraméter konfigurálható a fürt szintjén (a fürtön futó összes alkalmazáshoz), és minden egyes alkalmazáshoz meg adható.
+> Ha szeretné megtekinteni, de nem módosítja a Spark-fürt általános konfigurációs beállításait, válassza a **környezet** fület a legfelső szintű **Spark-feladatok felhasználói** felületén.
 
-A Spark-végrehajtók által használt erőforrásokkal kapcsolatos információk egy másik forrása a Spark-alkalmazás felhasználói felülete.  A felhasználói felületen a végrehajtók a konfiguráció és a felhasznált erőforrások Összegzés és Részlet nézeteit **jelenítik** meg.  Határozza meg, hogy a végrehajtók értékeit a teljes fürtre vagy a feladatvégrehajtások adott készletére módosítja-e.
+## <a name="configuring-spark-executors"></a>Spark-végrehajtók konfigurálása
 
-![Spark végrehajtók](./media/apache-spark-settings/apache-spark-executors.png)
+A következő ábrán a legfontosabb Spark-objektumok láthatók: az illesztőprogram-program és a hozzá tartozó Spark-környezet, valamint a Fürtfelügyelő és az *n* feldolgozó csomópontok.  Minden feldolgozói csomópont tartalmaz egy végrehajtót, egy gyorsítótárat és egy *n* Task instances-példányt.
 
-Vagy használhatja az Ambari REST API-t a HDInsight és a Spark fürt konfigurációs beállításainak programozott ellenőrzéséhez.  További információ az [Apache Ambari API-hivatkozással érhető el a GitHubon.](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
+![Fürtözött objektumok](./media/apache-spark-settings/hdi-spark-architecture.png)
 
-A Spark számítási feladattól függően előfordulhat, hogy egy nem alapértelmezett Spark-konfiguráció optimálisabb Spark feladat-végrehajtásokat biztosít.  A nem alapértelmezett fürtkonfigurációk érvényesítéséhez végezze el a számítási feladatok mintaszámítási feladatokkal végzett teljesítményteszteket.  Néhány gyakori paraméter, amelyeket érdemes lehet módosítani:
+A Spark-feladatok a feldolgozói erőforrásokat, különösen a memóriát használják, ezért gyakori a Spark-konfigurációs értékek beállítása a feldolgozó csomópont-végrehajtók számára.
+
+Három fő paraméter, amelyet gyakran a Spark-konfigurációk hangolására módosítanak az `spark.executor.instances`alkalmazási `spark.executor.cores`követelmények javítása `spark.executor.memory`érdekében, és. A végrehajtó egy Spark-alkalmazáshoz indított folyamat. Egy végrehajtó fut a munkavégző csomóponton, és felelős az alkalmazás feladataiért. A munkavégző csomópontok és a feldolgozó csomópontok mérete határozza meg a végrehajtók számát és a végrehajtó méretét. Ezeket az értékeket a rendszer `spark-defaults.conf` a fürt fő csomópontjain tárolja.  Ezeket az értékeket egy futó fürtben is szerkesztheti, ha az **Egyéni Spark-** alapértékek lehetőséget választja a Ambari webes felhasználói felületén.  A módosítások elvégzése után a felhasználói felület az összes érintett szolgáltatás **újraindítását** kéri.
+
+> [!NOTE]  
+> Ez a három konfigurációs paraméter konfigurálható a fürt szintjén (a fürtön futó összes alkalmazás esetében), valamint az egyes alkalmazásokhoz is.
+
+A Spark-végrehajtók által használt erőforrásokkal kapcsolatos további információforrás a Spark-alkalmazás felhasználói felülete.  A felhasználói felületen a **végrehajtók** a konfiguráció és a felhasznált erőforrások összefoglaló és részletes nézeteit jelenítik meg.  Döntse el, hogy módosítja-e a végrehajtók értékét a teljes fürtön, vagy a feladatok bizonyos készleteit.
+
+![Spark-végrehajtók](./media/apache-spark-settings/apache-spark-executors.png)
+
+Vagy használhatja a Ambari REST API a HDInsight és a Spark-fürt konfigurációs beállításainak programozott ellenőrzéséhez.  További információ a [githubon elérhető Apache AMBARI API-referenciában](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)található.
+
+A Spark számítási feladattól függően előfordulhat, hogy egy nem alapértelmezett Spark-konfiguráció optimálisabb Spark feladat-végrehajtásokat biztosít.  A nem alapértelmezett fürtkonfiguráció érvényesítéséhez végezzen teljesítményteszt-tesztelést a minta számítási feladatokkal.  Néhány gyakori paraméter, amelyeket érdemes lehet módosítani:
 
 |Paraméter |Leírás|
 |---|---|
-|--num-végrehajtók|Beállítja a végrehajtók számát.|
-|--végrehajtó-magok|Beállítja az egyes végrehajtók magjainak számát. Közepes méretű végrehajtók használatát javasoljuk, mivel más folyamatok is a rendelkezésre álló memória egy részét használják fel.|
-|--végrehajtó-memória|Az [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)egyes végrehajtóinak memóriaméretét (halomméretét) szabályozza, és a végrehajtási terheléshez memóriát kell hagynia.|
+|--NUM-végrehajtók|Beállítja a végrehajtók számát.|
+|– végrehajtó – magok|Beállítja a magok számát az egyes végrehajtók számára. Javasoljuk, hogy a közepes méretű végrehajtók használatával más folyamatok is használják a rendelkezésre álló memória egy részét.|
+|--végrehajtó – memória|Az egyes végrehajtók memória-méretének (halom méretének) szabályozása Apache Hadoop FONALon, és némi memóriát kell hagyni a végrehajtáshoz.|
 
-Íme egy példa két különböző konfigurációs értékkel rendelkező munkavégző csomópontra:
+Íme egy példa két feldolgozói csomópontra, különböző konfigurációs értékekkel:
 
-![Két csomópontkonfiguráció](./media/apache-spark-settings/executor-configuration.png)
+![Két csomópontos konfiguráció](./media/apache-spark-settings/executor-configuration.png)
 
-Az alábbi lista a Spark végrehajtója legfontosabb memóriaparamétereit tartalmazza.
+Az alábbi lista a fő Spark-végrehajtó memória paramétereit mutatja be.
 
 |Paraméter |Leírás|
 |---|---|
-|spark.executor.memory|A végrehajtó számára rendelkezésre álló memória teljes mennyiségét határozza meg.|
-|spark.storage.memoryFraction|(alapértelmezett ~60%) meghatározza a megőrzött RDD-k tárolására rendelkezésre álló memória mennyiségét.|
-|spark.shuffle.memoryFraction|(alapértelmezett ~20%) meghatározza a véletlen sorrendű memória mennyiségét.|
-|spark.storage.unrollFraction és spark.storage.safetyFraction|(összesen ~30%-a teljes memória) - ezeket az értékeket a Spark belsőleg használja, és nem kell módosítani.|
+|Spark. végrehajtó. Memory|Meghatározza a végrehajtó számára elérhető memória teljes mennyiségét.|
+|Spark. Storage. memoryFraction|(alapértelmezett ~ 60%) a megőrzött RDD tárolására rendelkezésre álló memória mennyiségét határozza meg.|
+|Spark. shuffle. memoryFraction|(alapértelmezett ~ 20%) meghatározza a shuffle számára fenntartott memória mennyiségét.|
+|Spark. Storage. unrollFraction és Spark. Storage. safetyFraction|(összesen ~ 30%-a teljes memória) – ezeket az értékeket a Spark belsőleg használja, és nem módosítható.|
 
-A YARN az egyes Spark-csomópontok tárolói által használt memória maximális összegét szabályozza. Az alábbi ábra a YARN konfigurációs objektumok és a Spark-objektumok közötti csomópontonkénti kapcsolatokat mutatja be.
+A fonal az egyes Spark-csomópontokon lévő tárolók által használt memória maximális számát szabályozza. Az alábbi ábrán a szálak konfigurációs objektumai és a Spark-objektumok közötti csomópont-kapcsolatok láthatók.
 
-![YARN Spark memóriakezelés](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
+![A fonal Spark memóriájának kezelése](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter-jegyzetfüzetben futó alkalmazás paramétereinek módosítása
 
-A HDInsight Spark-fürtjei alapértelmezés szerint számos összetevőt tartalmaznak. Ezen összetevők mindegyike tartalmazza az alapértelmezett konfigurációs értékeket, amelyek szükség szerint felülbírálhatók.
+A HDInsight-alapú Spark-fürtök több összetevőt is tartalmaznak alapértelmezés szerint. Ezen összetevők mindegyike alapértelmezett konfigurációs értékeket tartalmaz, amelyeket szükség esetén felül lehet bírálni.
 
 |Összetevő |Leírás|
 |---|---|
-|Spark Core|Spark Core, Spark SQL, Spark streamelési API-k, GraphX és Apache Spark MLlib.|
-|Anaconda|Egy python csomagkezelő.|
-|[Apache Livy](https://livy.incubator.apache.org/)|Az Apache Spark REST API, amely távoli feladatok at küld egy HDInsight Spark-fürtbe.|
-|[Jupyter](https://jupyter.org/) és [Apache Zeppelin](https://zeppelin.apache.org/) notebookok|Interaktív böngészőalapú felhasználói felület a Spark-fürttel való interakcióhoz.|
-|ODBC-illesztő|A HDInsight Spark-fürtjeit olyan üzletiintelligencia-eszközökhöz kapcsolja, mint a Microsoft Power BI és a Tableau.|
+|Spark Core|Spark Core, Spark SQL, Spark streaming API-k, GraphX és Apache Spark MLlib.|
+|Anaconda|Python csomagkezelő.|
+|Apache Livy|A HDInsight Spark-fürtre a távoli feladatok küldéséhez használt Apache Spark REST API.|
+|Jupyter és Apache Zeppelin notebookok|Interaktív böngészőalapú felhasználói felület a Spark-fürttel való interakcióhoz.|
+|ODBC-illesztő|A HDInsight-alapú Spark-fürtök összekapcsolása az üzleti intelligencia (BI) eszközeivel, például a Microsoft Power BI és a tabló használatával.|
 
-A Jupyter-jegyzetfüzetben futó alkalmazások `%%configure` esetén a paranccsal a jegyzetfüzeten belül módosíthatja a konfigurációt. Ezek a konfigurációs módosítások a Spark-feladatok a notebook példányból futnak. Az alkalmazás elején hajtson végre ilyen módosításokat, mielőtt futtatja az első kódcellát. A módosított konfiguráció a Livy-munkamenetre lesz alkalmazva, amikor létrejön.
+A Jupyter notebookon futó alkalmazások esetében használja a `%%configure` parancsot a konfiguráció módosítására a jegyzetfüzetből. Ezek a konfigurációs változások a notebook-példányról futtatott Spark-feladatokra lesznek alkalmazva. Az első kódrészlet futtatása előtt végezze el az ilyen módosításokat az alkalmazás elején. A rendszer a módosított konfigurációt alkalmazza a Livy-munkamenetre a létrehozásakor.
 
 > [!NOTE]  
-> A konfiguráció módosításához egy későbbi szakaszában `-f` az alkalmazás, használja a (force) paraméter. Az alkalmazás minden előrehaladása azonban elvész.
+> Ha az alkalmazás egy későbbi szakaszában szeretné módosítani a konfigurációt, használja a `-f` (Force) paramétert. Azonban az alkalmazás minden folyamata el fog veszni.
 
-Az alábbi kód bemutatja, hogyan módosíthatja a Jupyter-jegyzetfüzetben futó alkalmazások konfigurációját.
+Az alábbi kód azt mutatja be, hogyan lehet módosítani egy Jupyter-jegyzetfüzetben futó alkalmazás konfigurációját.
 
 ```
 %%configure
@@ -147,12 +147,11 @@ Az alábbi kód bemutatja, hogyan módosíthatja a Jupyter-jegyzetfüzetben fut�
 
 ## <a name="conclusion"></a>Összegzés
 
-Figyelje az alapvető konfigurációs beállításokat, hogy a Spark-feladatok kiszámítható és hatékony módon fussanak. Ezek a beállítások segítenek meghatározni a legjobb Spark-fürt konfigurációaz adott számítási feladatokhoz.  Emellett figyelnie kell a hosszú ideig futó és vagy erőforrás-igényes Spark-feladat-végrehajtások végrehajtását.  A leggyakoribb kihívások középpontjában a nem megfelelő konfigurációkból, például a helytelen méretű végrehajtókból eredő memórianyomás áll. Is, hosszú ideig futó műveletek, és a feladatok, amelyek eredményeként a descartes-i műveleteket.
+Az alapvető konfigurációs beállítások figyelésével biztosíthatja, hogy a Spark-feladatok kiszámítható és elvégezhető módon fussanak. Ezek a beállítások segítenek meghatározni a legjobb Spark-fürt konfigurációját az adott számítási feladatokhoz.  Emellett figyelnie kell a hosszan futó és az erőforrás-igényes Spark-feladatok végrehajtását.  A nem megfelelő konfigurációktól, például helytelen méretű végrehajtókkal kapcsolatos memória-nyomást a leggyakoribb kihívások középpontba kerül. Emellett a hosszan futó műveleteket és a feladatokat, amelyek Descartes-alapú műveleteket eredményeznek.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Apache Hadoop összetevői és verziói elérhetők a HDInsight segítségével?](../hdinsight-component-versioning.md)
-* [Apache Spark-fürt erőforrásainak kezelése a HDInsighton](apache-spark-resource-manager.md)
-* [Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Apache Spark-konfiguráció](https://spark.apache.org/docs/latest/configuration.html)
-* [Apache Spark futtatása apache hadoop YARN-on](https://spark.apache.org/docs/latest/running-on-yarn.html)
+* [A HDInsight-ben elérhető összetevők és verziók Apache Hadoop?](../hdinsight-component-versioning.md)
+* [Apache Spark-fürt erőforrásainak kezelése a HDInsight-ben](apache-spark-resource-manager.md)
+* [Apache Spark konfiguráció](https://spark.apache.org/docs/latest/configuration.html)
+* [Apache Spark futtatása Apache Hadoop-SZÁLon](https://spark.apache.org/docs/latest/running-on-yarn.html)

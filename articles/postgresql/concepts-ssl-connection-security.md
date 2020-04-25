@@ -1,71 +1,71 @@
 ---
-title: SSL - Azure-adatbázis a PostgreSQL-hez - Egykiszolgálós
-description: Utasítások és információk az SSL-kapcsolat konfigurálásához az Azure Database for PostgreSQL - Single Server szolgáltatáshoz.
+title: TLS – Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Útmutatás és információk a TLS-kapcsolat konfigurálásához Azure Database for PostgreSQL – egyetlen kiszolgáló esetén.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 303da4dcb68a79e69254f6610afc0003bf0aa22c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0482e5205b97b5c57c41e0ba98fb9ca819e5d5f
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477000"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82141748"
 ---
-# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>SSL-kapcsolat konfigurálása az Azure Database for PostgreSQL -ban – Egykiszolgálós
+# <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>TLS-kapcsolat konfigurálása Azure Database for PostgreSQL – egyetlen kiszolgálón
 
-A PostgreSQL Azure Database az ügyfélalkalmazások nak a PostgreSQL szolgáltatáshoz való csatlakoztatását részesíti előnyben a Secure Sockets Layer (SSL) használatával. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kényszerítése a kiszolgáló és az alkalmazás közötti adatfolyam titkosításával segít a "középre" irányuló támadások elleni védelemben.
+Azure Database for PostgreSQL az ügyfélalkalmazások a PostgreSQL szolgáltatáshoz való csatlakoztatását részesíti előnyben Transport Layer Security (TLS), korábbi nevén SSL (SSL) használatával. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti TLS-kapcsolatok érvényesítésével megvédheti a védelmet a kiszolgáló és az alkalmazás közötti adatfolyam titkosításával.
 
-Alapértelmezés szerint a PostgreSQL adatbázis-szolgáltatás ssl-kapcsolat megkövetelésére van konfigurálva. Dönthet úgy, hogy letiltja az SSL megkövetelését, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatot.
+Alapértelmezés szerint a PostgreSQL-adatbázis szolgáltatás úgy van konfigurálva, hogy TLS-kapcsolatokat igényeljen. Dönthet úgy, hogy letiltja a TLS megkövetelését, ha az ügyfélalkalmazás nem támogatja a TLS-kapcsolatot.
 
-## <a name="enforcing-ssl-connections"></a>Ssl-kapcsolatok kényszerítése
+## <a name="enforcing-tls-connections"></a>TLS-kapcsolatok kényszerítése
 
-Az Azure Portalon és a CLI-n keresztül kiépített összes Azure Database for PostgreSQL-kiszolgáló esetében az SSL-kapcsolatok kényszerítése alapértelmezés szerint engedélyezve van. 
+A Azure Portal és a CLI használatával kiépített összes Azure Database for PostgreSQL-kiszolgáló esetében a TLS-kapcsolatok kényszerítése alapértelmezés szerint engedélyezve van. 
 
-Hasonlóképpen, a kapcsolati karakterláncok, amelyek előre meghatározott a "Kapcsolati karakterláncok" beállítások a kiszolgáló az Azure Portalon tartalmazza a szükséges paramétereket a közös nyelvek csatlakozni az adatbázis-kiszolgáló ssl használatával. Az SSL-paraméter az összekötőtől függően változik, például "ssl=true" vagy "sslmode=require" vagy "sslmode=required" és egyéb változatok.
+Hasonlóképpen, a "kapcsolati karakterláncok" beállításokban előre definiált kapcsolati karakterláncok a Azure Portalban tartalmazzák az adatbázis-kiszolgáló TLS-vel való csatlakozásához szükséges paramétereket a közös nyelvekhez. A TLS-paraméter az összekötőtől függően változik, például: "SSL = true" vagy "sslmode = require" vagy "sslmode = Required" és egyéb variációk.
 
-## <a name="configure-enforcement-of-ssl"></a>Az SSL kényszerítésének konfigurálása
+## <a name="configure-enforcement-of-tls"></a>A TLS kényszerítésének konfigurálása
 
-Az SSL-kapcsolat kényszerítése letiltható. A Microsoft Azure azt javasolja, hogy mindig **engedélyezze az SSL-kapcsolat kényszerítése** beállítást a fokozott biztonság érdekében.
+Igény szerint letilthatja a TLS-kapcsolat kényszerítését. Microsoft Azure azt javasolja, hogy mindig engedélyezze az **SSL-kapcsolat kikényszerített** beállítását a fokozott biztonság érdekében.
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-Keresse fel az Azure Database for PostgreSQL kiszolgálót, és kattintson **a Kapcsolat biztonsága**gombra. A váltógombbal engedélyezheti vagy letilthatja az **SSL-kapcsolat kényszerítése** beállítást. Ezután kattintson a **Mentés gombra.**
+Keresse fel Azure Database for PostgreSQL-kiszolgálóját, és kattintson a **kapcsolatbiztonsági**elemre. A váltógomb használatával engedélyezheti vagy letilthatja az **SSL-kapcsolat érvényesítése** beállítást. Ezután kattintson a **Mentés**gombra.
 
-![Kapcsolatbiztonság - SSL kényszerítésének letiltása](./media/concepts-ssl-connection-security/1-disable-ssl.png)
+![Kapcsolatbiztonsági – letiltás kényszerített TLS/SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
-A beállítást az **Áttekintés** lapon ellenőrizheti az **SSL kényszerítési** állapotjelzőjének megtekintéséhez.
+A beállítás megerősítéséhez tekintse meg az **Áttekintés** lapot az SSL- **érvényesítési állapot** jelző megjelenítéséhez.
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
-Engedélyezheti vagy letilthatja az **SSL-kényszerítési** paramétert `Enabled` az Azure CLI használatával vagy `Disabled` értékeivel.
+Az **SSL-kényszerítési** paramétert engedélyezheti vagy letilthatja az Azure CLI-ben, illetve `Enabled` `Disabled` az értékek használatával.
 
 ```azurecli
 az postgres server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Enabled
 ```
 
-## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>Győződjön meg arról, hogy az alkalmazás vagy a keretrendszer támogatja az SSL-kapcsolatokat
+## <a name="ensure-your-application-or-framework-supports-tls-connections"></a>Győződjön meg arról, hogy az alkalmazás vagy a keretrendszer támogatja a TLS-kapcsolatokat
 
-Egyes alkalmazáskeretek, amelyek a PostgreSQL-t használják az adatbázis-szolgáltatásaikhoz, alapértelmezés szerint nem engedélyezik az SSL-t a telepítés során. Ha a PostgreSQL-kiszolgáló kényszeríti az SSL-kapcsolatokat, de az alkalmazás nincs SSL-hez konfigurálva, előfordulhat, hogy az alkalmazás nem tud csatlakozni az adatbázis-kiszolgálóhoz. Az SSL-kapcsolatok engedélyezéséről az alkalmazás dokumentációjában tájékozódhat.
+Néhány alkalmazás-keretrendszer, amely a PostgreSQL-t használja az adatbázis-szolgáltatásaihoz, alapértelmezés szerint nem engedélyezi a TLS-t a telepítés során. Ha a PostgreSQL-kiszolgáló kikényszeríti a TLS-kapcsolatokat, de az alkalmazás nincs konfigurálva a TLS-hez, előfordulhat, hogy az alkalmazás nem tud csatlakozni az adatbázis-kiszolgálóhoz. A TLS-kapcsolatok engedélyezésével kapcsolatos információkért tekintse meg az alkalmazás dokumentációját.
 
-## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>Az SSL-kapcsolat tanúsítványellenőrzését igénylő alkalmazások
+## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>A TLS-kapcsolat tanúsítvány-ellenőrzését igénylő alkalmazások
 
-Bizonyos esetekben az alkalmazások biztonságos csatlakozásához megbízható hitelesítésszolgáltatói (CA) tanúsítványfájlból (.cer) létrehozott helyi tanúsítványfájlra van szükség. A PostgreSQL-kiszolgálóhoz készült Azure-adatbázishoz https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pemvaló csatlakozástanúsítvány a helyen található. Töltse le a tanúsítványfájlt, és mentse a kívánt helyre.
+Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl (. cer) alapján létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. A Azure Database for PostgreSQL kiszolgálóhoz való kapcsolódáshoz szükséges tanúsítvány a következő helyen https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pemtalálható:. Töltse le a tanúsítványfájl, és mentse a kívánt helyre.
 
-### <a name="connect-using-psql"></a>Csatlakozás a psql használatával
+### <a name="connect-using-psql"></a>Összekapcsolás a psql használatával
 
-A következő példa bemutatja, hogyan csatlakozhat a PostgreSQL szerverhez a psql parancssori segédprogrammal. A `sslmode=verify-full` kapcsolati karakterlánc beállítással kényszerítheti az SSL-tanúsítványok ellenőrzését. Adja át a helyi `sslrootcert` tanúsítványfájl elérési útját a paraméternek.
+Az alábbi példa bemutatja, hogyan csatlakozhat a PostgreSQL-kiszolgálóhoz a psql parancssori segédprogram használatával. A `sslmode=verify-full` kapcsolati karakterlánc beállításával kényszerítheti a TLS/SSL-tanúsítványok ellenőrzését. Adja át a helyi tanúsítványfájl elérési útját a `sslrootcert` paraméternek.
 
-A következő parancs egy példa a psql kapcsolati karakterláncra:
+A következő parancs egy példa a psql-kapcsolatok karakterláncára:
 
 ```shell
 psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoserver.postgres.database.azure.com dbname=postgres user=myusern@mydemoserver"
 ```
 
 > [!TIP]
-> Ellenőrizze, hogy `sslrootcert` az átadott érték megegyezik-e a mentett tanúsítvány fájlelérési útvonalának.
+> Ellenőrizze, hogy az átadott `sslrootcert` érték megegyezik-e a mentett tanúsítvány elérési útjával.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a különböző alkalmazáscsatlakozási beállításokat [az Azure Database for PostgreSQL kapcsolattárakban.](concepts-connection-libraries.md)
+Tekintse át a [Azure Database for PostgreSQLhoz tartozó kapcsolódási könyvtárak](concepts-connection-libraries.md)különböző alkalmazás-csatlakozási lehetőségeit.
