@@ -1,7 +1,7 @@
 ---
-title: Adatok az Azure Machine Learningben
+title: Biztonságos adathozzáférés a felhőben
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogy az Azure Machine Learning hogyan csatlakozik biztonságosan az adatokhoz, és hogyan használja fel ezeket az adatokat gépi tanulási feladatokhoz.
+description: Ismerje meg, hogyan kapcsolódhat biztonságosan a Azure Machine Learning adataihoz, és hogyan használhatók az adatkészletek és az adattárolók a ML-feladatokhoz. Az adattárolók tárolhatnak egy Azure-Blob adatait, Azure Data Lake 1. generációs & 2, SQL db, Databricks,...
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/20/2020
-ms.openlocfilehash: 982c9c9eadec4403c8116430e1e25092de99f1d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: 614cc866529cd4ead8a6ea798526d59aff13d4d0
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128493"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144473"
 ---
-# <a name="data-access-in-azure-machine-learning"></a>Adathozzáférés az Azure Machine Learningben
+# <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 
-Az Azure Machine Learning megkönnyíti az adatokhoz való csatlakozást a felhőben.  Absztrakciós réteget biztosít az alapul szolgáló tárolási szolgáltatás felett, így biztonságosan elérheti és dolgozhat az adatokkal anélkül, hogy a tárolótípusra jellemző kódot kellene írnia. Az Azure Machine Learning a következő adatfunkciókat is biztosítja:
+A Azure Machine Learning megkönnyíti a felhőben tárolt adataihoz való kapcsolódást.  Absztrakt réteget biztosít a mögöttes tárolási szolgáltatáshoz, így biztonságosan férhet hozzá és dolgozhat az adataival anélkül, hogy kódot kellene írnia a tárolási típusra. A Azure Machine Learning a következő adatkezelési képességeket is biztosítja:
 
 *    Az adatvonal verziószámozása és nyomon követése
-*    Adatfeliratozás 
+*    Adatfelirat 
 *    Adateltérések monitorozása
-*    Interoperabilitás a Pandákkal és a Spark dataframe-ekkel
+*    Együttműködés a pandák és a Spark DataFrames
 
 ## <a name="data-workflow"></a>Adatmunkafolyamat
 
-Ha készen áll a felhőalapú tárolási megoldásban lévő adatok használatára, a következő adatkézbesítési munkafolyamatot javasoljuk. Ez a munkafolyamat feltételezi, hogy rendelkezik egy [Azure-tárfiókkal](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) és adatokkal egy felhőalapú tárolási szolgáltatásban az Azure-ban. 
+Ha készen áll a felhőalapú tárolási megoldásban tárolt adatfelhasználásra, javasoljuk, hogy a következő adattovábbítási munkafolyamatot ajánljuk. Ez a munkafolyamat feltételezi, hogy rendelkezik [Azure Storage-fiókkal](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) és-adattal az Azure felhőalapú tárolási szolgáltatásában. 
 
-1. Hozzon létre egy [Azure Machine Learning-adattáratot,](#datastores) amely kapcsolati adatokat tárol az Azure-tárhelyhez.
+1. Hozzon létre egy [Azure Machine learning adattárt](#datastores) a kapcsolódási adatok Azure Storage-ba való tárolásához.
 
-2. Ebből az adattárból hozzon létre egy [Azure Machine Learning-adatkészletet,](#datasets) amely egy adott fájl(ok)ra mutat az alapul szolgáló tárolóban. 
+2. Ebből az adattárból hozzon létre egy [Azure Machine learning adatkészletet](#datasets) , amely egy adott fájl (ok) ra mutat a mögöttes tárolóban. 
 
-3. Ahhoz, hogy ezt az adatkészletet a gépi tanulási kísérletben használja,
-    1. Csatlakoztassa a kísérlet számítási céljához a modellbetanításhoz.
+3. Ha ezt az adatkészletet a Machine learning-kísérletben szeretné használni, a következő lehetőségek közül választhat:
+    1. Csatlakoztassa a kísérlet számítási céljához a modell betanításához.
 
-        **Vagy** 
+        **VAGY** 
 
-    1. Használja ki közvetlenül az Azure Machine Learning-megoldások, mint például az automatizált gépi tanulási (automated ML) kísérletfut, gépi tanulási folyamatok, vagy az [Azure Machine Learning tervezője.](concept-designer.md)
+    1. Használja közvetlenül a Azure Machine Learning-megoldásokban, például az automatikus gépi tanulás (automatizált ML) kísérleteket, a gépi tanulási folyamatokat vagy a [Azure Machine learning designert](concept-designer.md).
 
-4. Hozzon létre [adatkészlet-figyelők](#data-drift) a modell kimeneti adatkészlet az adatok eltolódásának észleléséhez. 
+4. Hozzon létre [adatkészlet-figyelőket](#data-drift) a modell kimeneti adatkészletéhez az adateltolódás észleléséhez. 
 
-5. Adateltolódás észlelése esetén frissítse a bemeneti adatkészletet, és ennek megfelelően tanítsa be újra a modellt.
+5. Ha az adateltolódás észlelhető, frissítse a bemeneti adatkészletet, és ennek megfelelően módosítsa a modellt.
 
-Az alábbi ábra az ajánlott munkafolyamat vizuális bemutatását tartalmazza.
+Az alábbi ábra a javasolt munkafolyamat vizuális bemutatását mutatja be.
 
-![Adat-koncepció-diagram](./media/concept-data/data-concept-diagram.svg)
+![Adatkoncepció – diagram](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>Adattárolók
+## <a name="datastores"></a>Lemezét
 
-Az Azure Machine Learning-adattárak biztonságosan megőrzik a kapcsolatadatait az Azure-tárhelyen, így nem kell azokat a parancsfájlokban kódolnia. [Regisztráljon és hozzon létre egy adattaboltot,](how-to-access-data.md) amely könnyen csatlakozhat a tárfiókhoz, és hozzáférhet az alapul szolgáló Azure-tárolási szolgáltatásban lévő adatokhoz. 
+Azure Machine Learning adattárolók biztonságosan megőrzik a kapcsolódási adatokat az Azure Storage-ban, így nem kell azt a parancsfájlokba beírni. [Regisztráljon, és hozzon létre egy](how-to-access-data.md) adattárolót, amellyel könnyedén csatlakozhat a Storage-fiókjához, és elérheti a mögöttes Azure Storage szolgáltatásban tárolt adatokat. 
 
-Támogatott felhőalapú tárolási szolgáltatások az Azure-ban, amelyek adattárként regisztrálhatók:
+Az Azure-ban támogatott felhőalapú tárolási szolgáltatások, amelyek adattárként regisztrálhatók:
 
 + Azure Blob-tároló
 + Azure-fájlmegosztás
@@ -66,53 +66,53 @@ Támogatott felhőalapú tárolási szolgáltatások az Azure-ban, amelyek adatt
 
 ## <a name="datasets"></a>Adathalmazok
 
-Az Azure Machine Learning-adatkészletek olyan hivatkozások, amelyek a tárolási szolgáltatás ban lévő adatokra mutatnak. Ezek nem másolatok az adatokról, így nem merül fel további tárolási költség. A tárolóban tárolt adatok kal való interakcióhoz [hozzon létre egy adatkészletet,](how-to-create-register-datasets.md) amely gépi tanulási feladatokhoz használ az adatokat egy fogyóeszköz-objektumba csomagolja. Regisztrálja az adatkészletet a munkaterületre, hogy megossza és újra felhasználja a különböző kísérletekben adatbetöltési bonyolultság nélkül.
+Azure Machine Learning adatkészletek olyan hivatkozások, amelyek a tárolási szolgáltatásban lévő adatokra mutatnak. Nem tartoznak az adataihoz, ezért nem merül fel extra tárolási költségek. Ha a tárolóban lévő adatokkal szeretne kommunikálni, [hozzon létre egy adatkészletet](how-to-create-register-datasets.md) , amely az adatokat a gépi tanulási feladatokhoz tartozó, fogyóeszközök szerinti objektummá csomagolja. Regisztrálja az adatkészletet a munkaterületen, hogy az adatfeldolgozási bonyolultság nélkül ossza meg és használja fel a különböző kísérletek között.
 
-Az adatkészletek helyi fájlokból, nyilvános URL-címekből, [Azure Open Datasets-ből](https://azure.microsoft.com/services/open-datasets/)vagy Az Adattárakon keresztül azure storage-szolgáltatásokból hozhatók létre. Ha egy memóriapanda dataframe-ből szeretne adatkészletet létrehozni, írja az adatokat egy helyi fájlba, például egy parkettába, és hozza létre az adatkészletet abból a fájlból.  
+Az adatkészletek helyi fájlokból, nyilvános URL-címekből, [Azure Open-adatkészletből](https://azure.microsoft.com/services/open-datasets/)vagy Azure Storage-szolgáltatásokból hozhatók létre adattárolók használatával. Ha adatkészletet szeretne létrehozni egy memóriából származó pandák dataframe, írja be az adatokat egy helyi fájlba, például egy parkettával, és hozza létre az adatkészletet a fájlból.  
 
-Két féle adatkészletet támogatunk: 
-+ A [táblázatos adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumú adatokat jelöl a megadott fájl vagy fájllista elemzésével. A tabularDataset betölthetegy Pandába vagy Spark DataFrame-be további manipuláció és tisztítás céljából. A TabularDatasets létrehozásához használható adatformátumok teljes listáját a [TabularDatasetFactory osztályban](https://aka.ms/tabulardataset-api-reference)található.
+Két típusú adatkészletet támogatunk: 
++ A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. A TabularDataset egy Panda vagy Spark DataFrame is betöltheti további manipuláció és tisztítás céljából. A TabularDatasets létrehozásához használható adatformátumok teljes listáját a [TabularDatasetFactory osztályban](https://aka.ms/tabulardataset-api-reference)tekintheti meg.
 
-+ A [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) egy vagy több fájlra hivatkozik az adattárakban vagy nyilvános URL-címekben. A FileDatasets által hivatkozott [fájlokat letöltheti vagy csatlakoztathatja](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) a számítási célhoz.
++ A [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. A FileDatasets által hivatkozott fájlokat a számítási célra is [letöltheti vagy csatlakoztathatja](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) .
 
-További adatkészletek képességei a következő dokumentációban találhatók:
+Az adatkészletek további funkciói a következő dokumentációban találhatók:
 
-+ [Verzió- és nyomon követhető](how-to-version-track-datasets.md) adatkészlet-leszármazási vonal.
-+ [Az adatkészlet figyelése](how-to-monitor-datasets.md) az adateltolódás észlelésének elősegítésére.    
++ [Az adatkészlet verziószáma és nyomon követése](how-to-version-track-datasets.md) .
++ [Figyelje az adathalmazt](how-to-monitor-datasets.md) , hogy segítsen az adateltolódás észlelésében.    
 
-## <a name="work-with-your-data"></a>Az adatok kalkulát
+## <a name="work-with-your-data"></a>Az adataival dolgozhat
 
-Az adatkészletek segítségével számos gépi tanulási feladatot elvégezhet az Azure Machine Learning-funkciókkal való zökkenőmentes integrációval. 
+Az adatkészletekkel számos gépi tanulási feladatot hajthat végre Azure Machine Learning funkciókkal való zökkenőmentes integráció révén. 
 
-+ [Adatcímkézési projekt](#label)létrehozása .
-+ Gépi tanulási modellek betanítása:
-     + [automatizált ML kísérletek](how-to-use-automated-ml-for-ml-models.md)
++ [Adatcímkéző projekt](#label)létrehozása.
++ A gépi tanulási modellek betanítása:
+     + [automatizált ML-kísérletek](how-to-use-automated-ml-for-ml-models.md)
      + a [tervező](tutorial-designer-automobile-price-train-score.md#import-data)
-     + [Notebook](how-to-train-with-datasets.md)
-     + [Azure Machine Learning-folyamatok](how-to-create-your-first-pipeline.md)
-+ A [gépi tanulási](how-to-create-your-first-pipeline.md) [folyamatokban kötegkövetkeztetéssel](how-to-use-parallel-run-step.md) rendelkező adatkészletek elérése.
-+ Adatkészlet-figyelő beállítása [az adateltolódás](#drift) észlelésére.
+     + [notebookok](how-to-train-with-datasets.md)
+     + [Azure Machine Learning folyamatok](how-to-create-your-first-pipeline.md)
++ Az adatkészletek a [gépi tanulási folyamatokban](how-to-create-your-first-pipeline.md)a [Batch-következtetéssel](how-to-use-parallel-run-step.md) való pontozáshoz érhetők el.
++ Adatkészlet-figyelő beállítása az [adateltolódás](#drift) észleléséhez.
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>Adatfeliratozás
+## <a name="data-labeling"></a>Adatfelirat
 
-Nagy mennyiségű adat címkézése gyakran fejfájást okozott a gépi tanulási projektekben. Azok, akik a számítógép látás komponens, mint például a képbesorolás vagy objektum észlelése, általában több ezer kép és a megfelelő címkéket.
+A nagyméretű adatmennyiségek címkézése gyakran fejfájást eredményezett a gépi tanulási projektekben. A számítógépes látási összetevőkkel, például a képbesorolással vagy az objektum-észleléssel rendelkezők általában több ezer képet és a hozzájuk tartozó címkéket igényelnek.
 
-Az Azure Machine Learning központi helyet biztosít a címkézési projektek létrehozásához, kezeléséhez és figyeléséhez. A címkézési projektek segítenek az adatok, címkék és csapattagok koordinálásában, így hatékonyabban kezelheti a címkézési feladatokat. A jelenleg támogatott feladatok a képbesorolás, akár többcímkés, akár többosztályos, valamint az objektumazonosítás kötött mezők használatával.
+Azure Machine Learning központi helyet biztosít a címkézési projektek létrehozásához, kezeléséhez és figyeléséhez. A projektek címkézése segít az adatok, címkék és csoporttagok koordinálásában, így hatékonyabban kezelheti a címkézési feladatokat. A jelenleg támogatott feladatok a képbesorolás, a többcímkés vagy a többosztályos, valamint a kötött mezőkkel rendelkező objektumok azonosítása.
 
-Hozzon létre egy [adatcímkézési projektet](how-to-create-labeling-projects.md), és adja ki az adatkészletet gépi tanulási kísérletekhez.
+Hozzon létre egy [adatcímkéző projektet](how-to-create-labeling-projects.md), és exportálja az adatkészletet a gépi tanulási kísérletekben való használatra.
 
 <a name="drift"></a>
 
 ## <a name="data-drift"></a>Adateltolódás
 
-A gépi tanulás környezetében az adateltolódás a modell bemeneti adatainak változása, amely a modell teljesítményének csökkenéséhez vezet. Ez az egyik legfontosabb oka annak, hogy a modell pontossága idővel romlik, így az adatok eltolódásának figyelése segít a modell teljesítményproblémáinak észlelésében.
+A gépi tanulás kontextusában az adateltolódás a modellben a teljesítmény romlását eredményező bemeneti adatok változása. Ez az egyik legfontosabb ok, hogy a modell pontossága az idő múlásával csökken, így az adateltolódás monitorozása segít a modell teljesítményével kapcsolatos problémák észlelésében.
 
-Az [adatkészletfigyelő létrehozása](how-to-monitor-datasets.md) című cikkben további információ arról, hogyan észlelheti és riasztást készíthet az adatkészlet új adatainak eltolódására.
+Az adatkészlet létrehozása című cikkből megtudhatja, hogyan azonosíthatja és [figyelheti](how-to-monitor-datasets.md) az adateltolódást az adatkészletekben lévő új adatokat.
 
 ## <a name="next-steps"></a>További lépések 
 
-+ Hozzon létre egy adatkészletet az Azure Machine Learning stúdióban vagy a Python [SDK-val az alábbi lépésekkel.](how-to-create-register-datasets.md)
-+ Próbálja ki az adatkészletek betanítási [példáit mintajegyzetfüzeteinkkel.](https://aka.ms/dataset-tutorial)
-+ Az adateltolódáspéldáit lásd az [adateltolódásról szóló oktatóanyagban.](https://aka.ms/datadrift-notebook)
++ Hozzon létre egy adatkészletet a Azure Machine Learning Studióban vagy a Python SDK-val az [alábbi lépések segítségével.](how-to-create-register-datasets.md)
++ A [minta-jegyzetfüzetekkel](https://aka.ms/dataset-tutorial)kipróbálhatja az adatkészlet tanítási példáit.
++ Az adateltolódással kapcsolatos példákért tekintse meg ezt az [adateltolódási oktatóanyagot](https://aka.ms/datadrift-notebook).

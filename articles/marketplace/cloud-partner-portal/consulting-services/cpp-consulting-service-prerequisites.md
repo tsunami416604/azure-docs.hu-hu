@@ -1,35 +1,35 @@
 ---
-title: Az Azure és a Dynamics 365 tanácsadási szolgáltatásának előfeltételei | Azure Piactér
-description: Az Azure- vagy a Dynamics 365 tanácsadási szolgáltatásajánlat előfeltételei a Cloud Partner Portalon.
+title: Az Azure és a Dynamics 365 Consulting Service-ajánlat előfeltételei | Azure piactér
+description: Azure-vagy Dynamics 365 Consulting Service-ajánlat előfeltételei a Cloud Partner Portal.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 35ef732111ff0b75bba7397f7cc22b3ff08c00d5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6b5f28e5214720acd92c5e3c44411ad570272ee0
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985099"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148120"
 ---
 # <a name="consulting-service-prerequisites"></a>Tanácsadási szolgáltatás előfeltételei
 
 >[!Important]
->2020. április 13-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
+>2020. április 13-ától kezdődően megkezdjük a Consulting Service-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse a [tanácsadási szolgáltatás létrehozása – áttekintés című](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer) témakör utasításait.
 
-Tekintse át az ajánlattípus leírását és követelményeit az [Azure Marketplace-hez és az AppSource-hoz való Tanácsadási szolgáltatásokban.](../../consulting-services.md)  A következő speciális tanácsadási szolgáltatástípusoknak további követelményei vannak:
+Tekintse át az ajánlat típusának leírását és követelményeit az [Azure Marketplace és a AppSource tanácsadási szolgáltatásaiban](../../consulting-services.md).  A következő konkrét tanácsadási szolgáltatások típusai további követelményekkel rendelkeznek:
 
 | Csomag típusa | Követelmény |
 |---------|---------|
-| Dynamics 365 Sales <br> Dynamics 365 Marketing <br> Dynamics 365 ügyfélszolgálat <br> Dynamics 365 terepi szolgáltatás <br> Dynamics 365 Emberi Erőforrások |   A Customer Engagement beállításhoz Gold vagy Silver tanúsítvánnyal kell [rendelkeznie](https://partner.microsoft.com/membership/cloud-business-applications-competency) a Cloud Business Applications kompetenciában.    | 
-| Dynamics 365 pénzügyek <br> Dynamics 365 ellátásilánc-menedzsment <br> Dynamics 365 Kereskedelem <br> Dynamics 365 Emberi Erőforrások <br> Dynamics 365 Projektszolgáltatás-automatizálás |  Az Egyesített műveletek beállításhoz Gold vagy Silver minősítéssel kell rendelkeznie a [Cloud Business Applications kompetenciában.](https://partner.microsoft.com/membership/cloud-business-applications-competency)       |
-| Dynamics 365 Customer Insights | Legalább 1 sikeres, termelésen átnyúló megvalósítása [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) legalább 5 mezekkel és 5 szegmenssel. |
-| Dynamics 365 Business Central | Gold vagy Silver tanúsítvánnyal kell rendelkeznie [a Vállalati erőforrás-tervezés kompetenciában,](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) és legalább 3 Business Central ügyfél felhőszolgáltatójának kell lennie. <br> <br> VAGY <br> <br> Közzé kell tennie egy [Business Central alkalmazást az AppSource-ban](https://appsource.microsoft.com/) |
-| Power BI | Szerepelnie kell a [Power BI partnerkirakatában.](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)|
-|Power Apps | A [PowerApps Partnerségi Programban](https://aka.ms/PowerAppsPartner)jogosultnak kell lennie a speciális előnyökre. |
+| Dynamics 365 Sales <br> Dynamics 365 marketing <br> Dynamics 365 Customer szolgáltatás <br> Dynamics 365 mező szolgáltatás <br> Dynamics 365 emberi erőforrások |   Az ügyfél-bevonási lehetőséghez tartozó, a [Cloud Business Applications kompetenciában](https://partner.microsoft.com/membership/cloud-business-applications-competency) található Gold vagy Silver minősítéssel kell rendelkeznie.    | 
+| Dynamics 365 – Pénzügy <br> Dynamics 365 ellátási lánc kezelése <br> Dynamics 365 kereskedelmi <br> Dynamics 365 emberi erőforrások <br> Dynamics 365 Project szolgáltatás automatizálása |  Az Unified Operations beállításhoz tartozó [Cloud Business Applications kompetenciában](https://partner.microsoft.com/membership/cloud-business-applications-competency) az arany vagy ezüst minősítéssel kell rendelkeznie.       |
+| Dynamics 365 Customer Insights | Legalább 1 sikeres, a [Dynamics 365](https://dynamics.microsoft.com/ai/customer-insights/) -es és 5-ös szegmenst tartalmazó Customer Insights éles megvalósítását kell végrehajtania. |
+| Dynamics 365 Business Central | A [Vállalati erőforrás-tervezési kompetenciában](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) arany vagy ezüst minősítéssel kell rendelkeznie, és a felhőalapú megoldás szolgáltatójának kell lennie legalább 3 üzleti központi ügyfél számára. <br> <br> VAGY <br> <br> Közzé kell tenni az [üzleti központi alkalmazást a AppSource-ben](https://appsource.microsoft.com/) |
+| Power BI | Szerepelnie kell a [Power bi partner bemutatóján](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
+|Power Apps | A [PowerApps-partnerségi programban](https://aka.ms/PowerAppsPartner)speciális előnyökre van szükség. |
 
 ## <a name="next-steps"></a>További lépések
 
-Miután teljesítette az előző követelményeket, készen áll [egy tanácsadási szolgáltatási ajánlat létrehozására.](./cpp-consulting-service-create-offer.md)
+Az előző követelmények teljesítése után már készen áll [egy tanácsadói szolgáltatási ajánlat létrehozására](./cpp-consulting-service-create-offer.md).

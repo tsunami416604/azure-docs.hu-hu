@@ -1,80 +1,80 @@
 ---
-title: Gyakori problémák a virtuális merevlemezek létrehozása során (GYAKORI KÉRDÉSEK) az Azure Piactéren
-description: Gyakori kérdések a virtuális merevlemez ek létrehozásáról és a kapcsolódó problémákról.
+title: Gyakori problémák a VHD-k létrehozásakor (GYIK) az Azure Marketplace-en
+description: A VHD-létrehozással és a kapcsolódó problémákkal kapcsolatos gyakori kérdések.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 988121effb35949cce442ba9458789105e88feec
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: df219ad7428eed5283c7a30a232308dca84fd25f
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273443"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146976"
 ---
-# <a name="common-issues-during-vhd-creation-faq"></a>Gyakori problémák a virtuális merevlemez ek létrehozása során (GYAKORI KÉRDÉSEK)
+# <a name="common-issues-during-vhd-creation-faq"></a>Gyakori problémák a VHD létrehozásakor (GYIK)
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [VHD-vel kapcsolatos gyakori kérdések létrehozása](https://aka.ms/VHDcreationIssues) című, a virtuális merevlemezről bekövetkező gyakori kérdések című részben található utasításokat.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli virtuálisgép-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse a [VHD-GYIK létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation) című témakör utasításait.
 
-A következő gyakori kérdések (GYIK) a virtuális merevlemez (VHD) és a virtuális gép (VM) létrehozása során felmerülő gyakori problémákat fedik le. 
+A következő gyakori kérdések (GYIK) kiterjednek a virtuális merevlemez (VHD) és a virtuális gépek (VM) létrehozásakor előforduló gyakori problémákra. 
 
-## <a name="how-do-you-create-a-vm-from-the-azure-portal-using-the-vhd-that-is-uploaded-to-premium-storage"></a>Hogyan hozhat létre virtuális gép az Azure Portalon a prémium szintű storage-ba feltöltött virtuális merevlemez használatával?
+## <a name="how-do-you-create-a-vm-from-the-azure-portal-using-the-vhd-that-is-uploaded-to-premium-storage"></a>Hogyan hozhat létre virtuális gépet a Azure Portal a Premium Storage-ba feltöltött VHD használatával?
 
-Az Azure Marketplace jelenleg nem támogatja a felügyelt tárhelyen vagy az Azure Premium Storage-ban tárolt lemezképek virtuálisgép-ajánlatai létrehozását.  Ezekről a tárolási lehetőségekről az Azure felügyelt lemezek – áttekintés című témakörben olvashat [bővebben.](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)
-
-
-## <a name="can-you-use-generation-2-vms-for-offers"></a>Használhatja a 2.
-
-Nem, csak az 1.generációs Virtuális d-k támogatottak.  Jelenleg azonban együttműködünk a Microsoft Azure Platform Team szolgáltatással a 2.  A különbségekről további információt az [1- es vagy 2-es generációs virtuális gép létrehozása a Hyper-V-ben című témakörben talál.](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+Az Azure Marketplace jelenleg nem támogatja a virtuális gépeknek a felügyelt tárolón vagy az Azure Premium Storageban található rendszerképekből történő létrehozását.  További információ ezekről a tárolási lehetőségekről: az [Azure Managed Disks áttekintése](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
 
-## <a name="how-do-you-change-the-name-of-the-host"></a>Hogyan lehet megváltoztatni a nevét a fogadó?
+## <a name="can-you-use-generation-2-vms-for-offers"></a>Használhatja a 2. generációs virtuális gépeket az ajánlatokhoz?
 
-Nem lehet.  A virtuális gép létrehozása után a felhasználók (beleértve a tulajdonosokat is) nem frissíthetik az állomás nevét.
+Nem, csak az 1. generációs virtuális merevlemezek támogatottak.  Jelenleg azonban a Microsoft Azure platform csapatával dolgozunk, hogy kivizsgáljuk a 2. generációs virtuális gépek támogatását.  A különbségekről további információt az 1. [vagy 2. generációs virtuális gépek létrehozása a Hyper-V-ben](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) című témakörben talál.
 
 
-## <a name="how-do-you-reset-the-remote-desktop-service-or-its-sign-in-password"></a>Hogyan állíthatja alaphelyzetbe a Távoli asztal szolgáltatást vagy annak bejelentkezési jelszavát?
+## <a name="how-do-you-change-the-name-of-the-host"></a>Hogyan változtathatja meg a gazdagép nevét?
 
-Az alábbi cikkek ismertetik, hogyan hajthatja végre a Távoli asztali szolgáltatások visszaállítása Windows- és Linux-alapú virtuális gépeken:   
+Nem.  A virtuális gép létrehozása után a felhasználók (beleértve a tulajdonosokat is) nem tudják frissíteni a gazdagép nevét.
+
+
+## <a name="how-do-you-reset-the-remote-desktop-service-or-its-sign-in-password"></a>Hogyan állíthatja alaphelyzetbe a Távoli asztal szolgáltatást vagy a bejelentkezési jelszavát?
+
+A következő cikkek elmagyarázzák, hogyan végezhető el a Windows-és Linux-alapú virtuális gépek RDS-alaphelyzetbe állítása:   
 
 - [A távoli asztali szolgáltatás, illetve a hozzá tartozó bejelentkezési jelszó visszaállítása Windows rendszerű virtuális gépen](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-- [Linux virtuális gép jelszava vagy SSH-kulcs alaphelyzetbe állítása, az SSH-konfiguráció javítása és a lemezkonzisztencia ellenőrzése a VMAccess-bővítmény használatával](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+- [Linux rendszerű virtuális gép jelszavának vagy SSH-kulcsának alaphelyzetbe állítása, az SSH-konfiguráció javítása és a lemez konzisztenciájának vizsgálata a VMAccess-bővítmény használatával](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
 
 
-## <a name="how-do-you-generate-new-ssh-certificates"></a>Hogyan hozhat létre új SSH tanúsítványokat?
+## <a name="how-do-you-generate-new-ssh-certificates"></a>Hogyan hozhatók új SSH-tanúsítványok?
 
-A tanúsítványok létrehozását a virtuális [gép lemezképének megosztott hozzáférésű aláírásának URI-jának beszerzése](./cpp-get-sas-uri.md) című cikk ismerteti a [virtuális gép ajánlatának technikai eszközök létrehozása](./cpp-create-technical-assets.md)című szakaszában.
-
-
-## <a name="how-do-you-configure-a-virtual-private-network-vpn-to-work-with-my-vms"></a>Hogyan konfigurálható egy virtuális magánhálózat (VPN) a virtuális gépekkel való együttműködésre?
-
-Ha az Azure Resource Manager telepítési modelljét használja, akkor három gyakori lehetősége van a VPN beállítására:
-- [Útvonalalapú VPN-átjáró létrehozása az Azure Portal használatával](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
-- [Útvonalalapú VPN-átjáró létrehozása a PowerShell használatával](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
-- [Útvonalalapú VPN-átjáró létrehozása a CLI használatával](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
+A tanúsítványok előállítását a cikk a virtuálisgép- [rendszerkép megosztott hozzáférés-aláírási URI-ja beszerzése](./cpp-get-sas-uri.md) című szakaszában ismertetett szakasza [technikai eszközöket hoz létre](./cpp-create-technical-assets.md)a virtuálisgép-ajánlathoz.
 
 
-## <a name="what-are-microsoft-support-policies-for-running-microsoft-server-software-on-azure-based-vms"></a>Mik a Microsoft támogatási szabályzatai a Microsoft kiszolgálószoftverének Azure-alapú virtuális gépeken való futtatásához?
+## <a name="how-do-you-configure-a-virtual-private-network-vpn-to-work-with-my-vms"></a>Hogyan konfigurálhat virtuális magánhálózati (VPN) hálózatot a virtuális gépekkel való együttműködéshez?
 
-Ezeket a támogatási irányelveket a Microsoft Server szoftvertámogatása a [Microsoft Azure virtuális gépekhez](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)című cikkismerteti.
+Ha a Azure Resource Manager üzembe helyezési modellt használja, a VPN beállításának három gyakori lehetősége van:
+- [Route-alapú VPN-átjáró létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
+- [Route-alapú VPN-átjáró létrehozása a PowerShell használatával](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
+- [Route-alapú VPN-átjáró létrehozása a parancssori felület használatával](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
+
+
+## <a name="what-are-microsoft-support-policies-for-running-microsoft-server-software-on-azure-based-vms"></a>Mik a Microsoft-kiszolgálói szoftverek Azure-alapú virtuális gépeken való futtatására vonatkozó Microsoft-támogatási szabályzatok?
+
+Ezek a támogatási szabályzatok részletesen ismertetik a [Microsoft Server szoftver Microsoft Azure virtuális gépekkel kapcsolatos támogatását](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)ismertető cikket.
 
 
 ## <a name="do-virtual-machines-have-unique-identifiers-associated-with-them"></a>A virtuális gépekhez egyedi azonosítók vannak társítva?
 
-Igen, ha az Azure-ban üzemelteti.  Az Azure egy egyedi azonosítót rendel hozzá, amelyet az Azure virtuálisgép-egyedi azonosítónak neveznek minden új virtuálisgép-erőforráshoz, amely létre jön.  További információért olvassa el az [Azure virtuálisgép-azonosító blogbejegyzést.](https://blogs.msdn.microsoft.com/wasimbloch/2016/10/20/azure-virtual-machine-unique-id/)  Ezt az azonosítót programozott módon is beszerezheti a [List API-n](https://docs.microsoft.com/rest/api/compute/virtualmachines/list)keresztül.
+Igen, ha az Azure-ban üzemelteti.  Az Azure egy egyedi azonosítót rendel hozzá, amelynek neve az Azure virtuális gép egyedi azonosítója minden létrehozott új virtuálisgép-erőforráshoz.  További információért olvassa el az Azure-beli [virtuális gép egyedi azonosítójának](https://blogs.msdn.microsoft.com/wasimbloch/2016/10/20/azure-virtual-machine-unique-id/)közzététele című blogbejegyzést.  Ezt az azonosítót programozott módon is beszerezheti a [List API](https://docs.microsoft.com/rest/api/compute/virtualmachines/list)-n keresztül.
 
 
-## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>A virtuális gép, hogyan kezelheti az egyéni parancsfájl-bővítmény az indítási feladat?
+## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>Egy virtuális gépen hogyan kezelheti az egyéni szkriptek bővítményét az indítási feladatban?
 
-A következő cikk ismerteti, hogyan használhatja az egyéni parancsfájlbővítményt az Azure PowerShell-modul, az Azure Resource Manager-sablonok és a Windows-rendszerek hibaelhárítási lépései használatával: [Egyéni parancsfájlbővítmény Windows-hoz](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+A következő cikk részletesen ismerteti, hogyan használhatók az egyéni szkriptek bővítménye a Azure PowerShell modullal, Azure Resource Manager sablonokkal és a Windows rendszereken végzett hibaelhárítási lépésekkel: [egyéni parancsfájl-bővítmény Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/) rendszeren
 
 
-## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>A 32 bites alkalmazások vagy szolgáltatások támogatottak az Azure Marketplace-en?
+## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Támogatottak-e a 32 bites alkalmazások vagy szolgáltatások az Azure piactéren?
 
-Általában nem.  A támogatott operációs rendszerek és az Azure virtuális gépek szabványos szolgáltatásai mind 64 bitesek.  Technikai szempontból azonban a legtöbb 64 bites operációs rendszer támogatja az alkalmazások 32 bites verzióinak futtatását a visszamenőleges kompatibilitás érdekében.  A 32 bites alkalmazások virtuálisgép-megoldás részeként történő használata azonban nem támogatott, ezért *nagy mértékben elriasztja a használatát.*  Ehelyett fordítsa újra az alkalmazást 64 bites projektként.
+Általában nem.  Az Azure-beli virtuális gépekhez támogatott operációs rendszerek és standard szolgáltatások mind 64 bitesek.  Technikai szempontból azonban a legtöbb 64 bites operációs rendszer támogatja a visszamenőleges kompatibilitás érdekében az alkalmazások 32 bites verzióinak futtatását.  A virtuálisgép-megoldás részeként azonban a 32 bites alkalmazások használata nem támogatott, *ezért nem ajánlott.*  Ehelyett fordítsa újra az alkalmazást 64 bites projektként.
 
 További információkért tekintse át a következő cikkeket:
 - [32 bites alkalmazások futtatása](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
@@ -82,7 +82,7 @@ További információkért tekintse át a következő cikkeket:
 - [Microsoft kiszolgálószoftveres támogatás a Microsoft Azure Virtual Machines szolgáltatáshoz](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 
 
-## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Minden alkalommal, amikor megpróbálok létrehozni egy képet a Virtuálisgép-azonosítók, kapok a hiba `.VHD is already registered with image repository as the resource` a PowerShell. Korábban nem hoztam létre semmilyen képet, és nem találtam ilyen nevű képet az Azure-ban. Hogyan oldhatom meg a problémát?
+## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Minden alkalommal, amikor megpróbálok létrehozni egy rendszerképet a virtuális merevlemezekről, hibaüzenetet `.VHD is already registered with image repository as the resource` kapok a PowerShellben. Még nem hozott létre képeket, és nem találtam ilyen nevű képet az Azure-ban. Hogyan a probléma megoldásához?
 
-Ez a probléma általában akkor fordul elő, ha a felhasználó kiépített egy virtuális gép egy virtuális merevlemez, amely rendelkezik a zárolás.  Ellenőrizze, hogy nincs-e virtuális gép lefoglalva a virtuális merevlemez, majd próbálja meg újra a műveletet.  Ha a probléma továbbra is fennáll, nyisson meg egy támogatási jegyet a [Felhőpartner-portál támogatása című](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal)részben leírtak szerint. 
+Ez a probléma általában akkor fordul elő, ha a felhasználó olyan virtuális merevlemezről telepített egy virtuális gépet, amely zárolva van.  Győződjön meg arról, hogy nincs lefoglalva virtuális gép a virtuális merevlemezről, majd próbálja megismételni a műveletet.  Ha a probléma továbbra is fennáll, nyisson meg egy támogatási jegyet, ahogy azt a [Cloud Partner Portal támogatása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal)című témakör ismerteti. 
 

@@ -1,51 +1,51 @@
 ---
-title: Azure-tárolók lemezképének támogatási beállításai | Azure Piactér
-description: Konfigurálja az Azure-tároló támogatási beállításait.
+title: Azure-tárolók rendszerképének támogatási beállításai | Azure piactér
+description: Az Azure-tároló támogatási beállításainak konfigurálása.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: 58845401fc14950b9c446d1481b8ac6f8ecc5523
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 8369c99c5bc44a7281c9e2072c20c723974ec83a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269924"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146378"
 ---
-# <a name="container-support-tab"></a>A Tároló támogatása lap
+# <a name="container-support-tab"></a>Tároló-támogatás lap
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure Container-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Container-ajánlat létrehozása](https://aka.ms/CreateContainerOffer) című, az áttelepített ajánlatok kezeléséhez című útmutatóutasításait.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli Container-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Kövesse az [Azure Container-ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) az áttelepített ajánlatok kezeléséhez című témakör utasításait.
 
-Az **Új ajánlat** lap **Támogatás** lapján technikai és felhasználói támogatási erőforrásokat biztosíthat az ajánlathoz.  A támogatási űrlapon a következő beviteli területek találhatók: **Mérnöki kapcsolat**, **Ügyfélszolgálat**és **Támogatási URL-ek**. A mezőnévhez csatolt csillag (*) azt jelzi, hogy szükség van rá.
+Az **új ajánlat** lap **támogatás** lapján megadhatja az ajánlat technikai és felhasználói támogatási forrásait.  A következő bemeneti területek a támogatási űrlapon találhatók: **mérnöki kapcsolattartás**, **ügyfélszolgálat**és **támogatási URL-címek**. A mezőhöz hozzáfűzni kívánt csillag (*) azt jelzi, hogy a név megadása kötelező.
 
 
-## <a name="support-form-fields"></a>Űrlapmezők támogatása
+## <a name="support-form-fields"></a>Támogatási űrlap mezői
 
-Adja meg a szükséges információkat a Mérnöki kapcsolattartó és ügyfélszolgálat mezőkhöz.
+Adja meg a mérnöki kapcsolattartási és ügyfélszolgálati mezők szükséges adatait.
 
 
 ### <a name="engineering-contact"></a>Mérnöki kapcsolattartó
 
-A Mérnöki kapcsolattartó a szervezet és a Microsoft közötti műszaki kapcsolat. A kötelező mezőket csillag (*) vádolja.
+A mérnöki kapcsolattartás a szervezet és a Microsoft közötti technikai Kapcsolatfelvétel. A kötelező mezőket csillag (*) alapján vádoljuk.
 
-- **Név\* ** – a műszaki/mérnöki támogatásként szolgáló személy vagy csoport neve.
-- **E-mail\* ** - E-mail címe ennek a technikai kapcsolattartónak.
-- **Telefonszám\* ** - Telefonszám a technikai támogatáshoz.
+- Annak a személynek vagy csoportnak a neve, amely technikai/mérnöki támogatásként szolgál. **\* **
+- A technikai partner e-mail-címe. **\* **
+- **Telefonszám\* ** a technikai támogatáshoz.
 
 
 ### <a name="customer-support"></a>Ügyfélszolgálat
 
-Az ügyfélszolgálati kapcsolattartó megkapja az ügyfelek által az Azure-ban megnyitott támogatási jegyeket.  A kötelező mezőket csillag (*) vádolja.
+Az ügyfél-támogatási partner az Azure-beli ügyfelek által megnyitott támogatási jegyeket kapja meg.  A kötelező mezőket csillag (*) alapján vádoljuk.
 
-- **Név\* ** – az ügyfélszolgálatként szolgáló személy vagy csoport neve.
-- **E-mail\* ** - A támogatási kapcsolattartó e-mail címe.
-- **Telefonszám\* ** – Az ügyfélszolgálat telefonszáma.
+- Az ügyfél-támogatási szolgálatként szolgáló személy vagy csoport **neve\* ** .
+- A támogatási partner e-mail-címe. **\* **
+- **A\* telefonos** ügyfélszolgálat telefonszáma.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Miután befejezte a támogatási információk megadását, készen áll [az ajánlat közzétételére.](./cpp-publish-offer.md) 
+A támogatási információk megadása után készen áll az [ajánlat közzétételére](./cpp-publish-offer.md). 
 

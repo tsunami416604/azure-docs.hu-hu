@@ -1,78 +1,78 @@
 ---
-title: Tanácsadói szolgáltatásajánlat ajánlatbeállításainak meghatározása | Azure Piactér
-description: Adja meg az ajánlatbeállításokat egy Azure-beli vagy Dynamics 365 tanácsadási szolgáltatási ajánlatban az Azure Marketplace-hez való felhőpartnerportálon.
+title: Ajánlati beállítások megadása egy tanácsadói szolgáltatási ajánlathoz | Azure piactér
+description: Adja meg az ajánlat beállításait egy Azure-vagy Dynamics 365-tanácsadói szolgáltatásban az Azure Marketplace Cloud Partner Portal.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a3c168d0bd13e7c335841ac4016f18464cd50d5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 406a37a1ef946b1c3ceb0d7b02ba318f423dcf53
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985116"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146692"
 ---
 # <a name="offer-settings-tab"></a>Ajánlatbeállítási lap
 
 >[!Important]
->2020. április 13-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
+>2020. április 13-ától kezdődően megkezdjük a Consulting Service-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse a [tanácsadási szolgáltatás létrehozása – áttekintés című](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer) témakör utasításait.
 
-Az **Új ajánlat** képernyőn az első lépés az ajánlat identitásának létrehozása. Az ajánlat identitása három részből áll: **Ajánlatazonosító,** **Kiadóazonosító**és **Név**. E részek mindegyikét a következő szakaszok ismertetik.
+Az **új ajánlat** képernyőn az első lépés az ajánlat identitásának létrehozása. Az ajánlat identitása három részből áll: az **ajánlat azonosítója**, a **közzétevő azonosítója**és a **név**. Ezeket a részeket az alábbi részek tartalmazzák.
 
-![Új tanácsadási szolgáltatásajánlat létrehozása – Ajánlatbeállítások lap](media/consultingoffer-settings-tab.png)
+![Új tanácsadói szolgáltatás ajánlatának létrehozása – ajánlati beállítások lap](media/consultingoffer-settings-tab.png)
 
 
-### <a name="offer-id"></a>Ajánlatazonosító*
+### <a name="offer-id"></a>Ajánlat azonosítója *
 
-Ez az azonosító egy egyedi név, amelyet az ajánlat első elküldésekor hoz létre. Csak kisalfanumerikus karakterekből, kötőjelekből vagy aláhúzásjelekből állhat. Az **ajánlatazonosító** látható az URL-ben, és hatással van a keresőmotor találatai. Erre példa a *yourcompanyname_exampleservice*.
+Ez az azonosító egy egyedi név, amelyet akkor hozunk létre, amikor először küldi el az ajánlatot. Csak kisbetűkből álló alfanumerikus karaktereket, kötőjeleket vagy aláhúzásokat tartalmazhat. Az **ajánlat azonosítója** látható az URL-címben, és hatással van a keresőmotor eredményeire. Példa *yourcompanyname_exampleservice*.
 
-Amint az a példában látható, az **ajánlatazonosító** hozzáfűzi a közzétevő azonosítóját, hogy hozzon létre egy egyedi azonosítót. Ez az egyedi azonosító állandó kapcsolatként jelenik meg, amelyet a keresőmotorok lefoglalhatnak és indexelhetnek.
+Ahogy az a példában is látható, az **ajánlat azonosítóját** a rendszer hozzáfűzi a KIADÓi azonosítóhoz egy egyedi azonosító létrehozásához. Ez az egyedi azonosító olyan állandó hivatkozásként érhető el, amely a keresőmotoroknak van lefoglalva és indexelve.
 
 >[!Note]
->Miután egy ajánlat él, az azonosító nem frissíthető.
+>Az ajánlat élőben való használata után az azonosító nem frissíthető.
 
 
-### <a name="publisher-id"></a>Közzétevő azonosítója*
+### <a name="publisher-id"></a>Közzétevő azonosítója *
 
-Ez az azonosító a fiókjához kapcsolódik. Miután bejelentkezett a szervezeti fiókjával, a **Publisher-azonosító** megjelenik a legördülő menüben.
+Ez az azonosító a fiókhoz kapcsolódik. Miután bejelentkezett a szervezeti fiókjával, a **KÖZZÉTEVŐ azonosítója** megjelenik a legördülő menüben.
 
 
-### <a name="name"></a>Név*
+### <a name="name"></a>Neve
 
-Ez a karakterlánc ajánlatnévként jelenik meg az AppSource-on vagy az Azure Marketplace-en. A **Név** mező legfeljebb 50 karakter ből állhat. Előfordulhat, hogy a véleményezőnek meg kell adnia a címet, hogy hozzáfűzje az időtartamot és az ajánlat típusát az ajánlat nevéhez.
+Ez a karakterlánc a AppSource vagy az Azure Marketplace-ajánlat neveként jelenik meg. A **név** mező legfeljebb 50 karakter hosszú lehet. Előfordulhat, hogy a véleményezőnek szerkesztenie kell a címét az időtartam és az ajánlat típusának hozzáfűzéséhez az ajánlat nevéhez.
 
-A következő példa bemutatja, hogyan történik az ajánlat neve. 
+Az alábbi példa azt szemlélteti, hogyan történik az ajánlat nevének összegyűjtése. 
 
-![Új tanácsadási szolgáltatásajánlat létrehozása](media/cppsampleconsultingoffer.png)
+![Új tanácsadói szolgáltatási ajánlat létrehozása](media/cppsampleconsultingoffer.png)
 
 Az ajánlat neve négy részből áll:
 
--   **Időtartam:** A szerkesztő **Kirakatrészletei** lapján definiálva. Az időtartam órákban, napokban vagy hetekben fejezhető ki.
--   **A szolgáltatás típusa:** A szerkesztő **Kirakatrészletei** lapján definiálva. A szolgáltatások `Assessment`típusai `Proof of concept`a `Workshop`, `Briefing`, `Implementation`, , és .
--   **Elöljárószó:** A véleményező szúrta be.
--   **Név:** Az Ajánlat **beállításai** lapon definiálva.
+-   **Időtartam:** A szerkesztő **kirakat részletei** lapján adható meg. Az időtartamot óra, nap vagy hét értékben lehet megadni.
+-   **Szolgáltatás típusa:** A szerkesztő **kirakat részletei** lapján adható meg. A szolgáltatások `Assessment` `Briefing` `Implementation`típusai:,,, és `Workshop` `Proof of concept`
+-   **Alaphelyzet:** A felülvizsgáló beszúrta.
+-   **Név:** Az **ajánlat beállításai** lapon van meghatározva.
 
 >[!Note]
->A **Név** mező legfeljebb 50 karakter ből állhat. Előfordulhat, hogy a véleményezőnek meg kell adnia a címet, hogy hozzáfűzje az időtartamot és az ajánlat típusát az ajánlat nevéhez.
+>A **név** mező legfeljebb 50 karakter hosszú lehet. Előfordulhat, hogy a véleményezőnek szerkesztenie kell a címét az időtartam és az ajánlat típusának hozzáfűzéséhez az ajánlat nevéhez.
 
-Az alábbi lista számos jól elnevezett ajánlatnevet tartalmaz:
+A következő lista számos jól megnevezett ajánlatot tartalmaz:
 
--   Alapvető fontosságú a szakmai szolgáltatások: 1 órás eligazítás
--   Felhőmigrációs platform: 1 órás eligazítás
+-   Professional Services Essentials: 1 – HR-Összefoglaló
+-   Cloud Migration platform: 1 – HR-Összefoglaló
 -   PowerApps és Microsoft Flow: 1 napos workshop
--   Azure Machine Learning: 3-Wk PoC
--   Tégla és kattintson a kiskereskedelmi megoldás: 1 hr-es eligazítás
--   Hozd a saját adatok: 1-Wk Workshop
+-   Azure Machine Learning: 3 – hét PoC
+-   Tégla és kattintson a kiskereskedelmi megoldás: 1 – HR-Összefoglaló
+-   Saját adatai: 1 – hét workshop
 -   Cloud Analytics: 3 napos workshop
--   Power BI-oktatás: 3 napos workshop
--   Értékesítéskezelési megoldás: 1 hetes megvalósítás
+-   Power BI képzés: 3 napos workshop
+-   Értékesítési felügyeleti megoldás: 1 hetes megvalósítás
 -   CRM rövid útmutató: 1 napos workshop
--   Dynamics 365 for Sales: 2 napos értékelés
+-   Dynamics 365 for Sales: 2 napos Értékelés
 
-Miután kitöltötte az **Ajánlatbeállításai** lapot, mentse el a beküldött anyagot. Az ajánlat neve most a szerkesztő felett jelenik meg, és megtalálja az **Összes ajánlat ban.**
+Miután kitöltötte az **ajánlat beállításai** lapot, mentse a beküldött adatokat. Az ajánlat neve most a szerkesztő felett jelenik meg, és **minden ajánlatban**megtalálható.
 
 ## <a name="next-steps"></a>További lépések
 
-Most megadhatja [a kirakatrészleteit, és meghatározhatja, hogy az Azure Marketplace-en vagy az AppSource-on tegye-e közzé.](./cpp-consulting-service-storefront-details.md)
+Most megadhatja [a kirakat adatait, és meghatározhatja, hogy közzé kell-e tenni az Azure Marketplace-en vagy a AppSource](./cpp-consulting-service-storefront-details.md).

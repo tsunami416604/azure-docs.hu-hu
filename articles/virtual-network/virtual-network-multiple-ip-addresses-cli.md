@@ -1,41 +1,42 @@
 ---
-title: Virtuális gép több IP-címmel az Azure CLI használatával
+title: Több IP-címmel rendelkező virtuális gép az Azure CLI használatával
 titlesuffix: Azure Virtual Network
-description: Ismerje meg, hogyan rendelhet több IP-címet egy virtuális géphez az Azure parancssori felület (CLI) használatával.
+description: Megtudhatja, hogyan rendelhet hozzá több IP-címet egy virtuális géphez az Azure parancssori felületének (CLI) használatával.
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
-ms.author: kumud
-ms.openlocfilehash: 144f30463adb3dfbce1717e06548baccc8286f8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: cb101095aa95f9d41f7891bc3c18f7e5bfeb59db
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240222"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148102"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Több IP-cím hozzárendelése virtuális gépekhez az Azure CLI használatával
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Több IP-cím társítása virtuális gépekhez az Azure CLI használatával
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-Ez a cikk bemutatja, hogyan hozhat létre egy virtuális gépet (VM) az Azure Resource Manager üzembe helyezési modelljén keresztül az Azure CLI használatával. A klasszikus központi telepítési modellen keresztül létrehozott erőforrásokhoz nem rendelhető hozzá több IP-cím. Ha többet szeretne megtudni az Azure üzembe helyezési modellekről, olvassa el a [Telepítési modellek ismertetése](../resource-manager-deployment-model.md) című cikket.
+Ez a cikk azt ismerteti, hogyan hozhat létre virtuális gépet (VM) a Azure Resource Manager üzemi modellel az Azure CLI használatával. Több IP-cím nem rendelhető hozzá a klasszikus üzemi modellel létrehozott erőforrásokhoz. Ha többet szeretne megtudni az Azure-beli üzembe helyezési modellekről, olvassa el a [telepítési modellek ismertetése](../resource-manager-deployment-model.md) című cikket.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Több IP-címmel rendelkező virtuális gép létrehozása
 
-Az alábbi lépések ismertetik, hogyan hozhat létre egy példa virtuális gép több IP-cím, a forgatókönyvben leírtak szerint. Szükség szerint módosítsa a változóértékeket a "" és az IP-címtípusokban a megvalósításhoz. 
+Az alábbi lépések elmagyarázzák, hogyan hozhat létre egy példaként több IP-címmel rendelkező virtuális gépet a forgatókönyvben leírtak szerint. A megvalósításhoz szükség szerint módosítsa a változó értékeit a "" és az IP-cím típusokban. 
 
-1. Telepítse az [Azure CLI-t,](/cli/azure/install-azure-cli) ha még nincs telepítve.
-2. Hozzon létre egy SSH nyilvános és titkos kulcspárt linuxos virtuális gépekhez a [Linux os sSH nyilvános és titkos kulcspár létrehozása](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című lépés végrehajtásával.
-3. Egy parancshéjból jelentkezzen be `az login` a paranccsal, és válassza ki a használt előfizetést.
-4. Hozza létre a virtuális gép a következő parancsfájl végrehajtásával egy Linux vagy Mac számítógépen. A parancsfájl létrehoz egy erőforráscsoportot, egy virtuális hálózatot (VNet), egy hálózati adaptert három IP-konfigurációval, és egy virtuális gépet a két hálózati adapterrel. A hálózati adapternek, a nyilvános IP-címnek, a virtuális hálózatnak és a virtuális gép erőforrásainak ugyanazon a helyen és előfizetésben kell létezniük. Bár az erőforrások nem minden kell léteznie ugyanabban az erőforráscsoportban, a következő parancsfájlban teszik.
+1. Ha még nincs telepítve, telepítse az [Azure CLI](/cli/azure/install-azure-cli) -t.
+2. Hozzon létre egy nyilvános és titkos SSH-kulcspárt Linux rendszerű virtuális gépekhez az [SSH nyilvános és titkos kulcspár létrehozása Linux rendszerű virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakör lépéseinek végrehajtásával.
+3. A parancssorból jelentkezzen be a paranccsal `az login` , és válassza ki az Ön által használt előfizetést.
+4. Hozza létre a virtuális gépet egy Linux vagy Mac rendszerű számítógépen a következő parancsfájl végrehajtásával. A szkript létrehoz egy erőforráscsoportot, egy virtuális hálózatot (VNet), egy hálózati adaptert három IP-konfigurációval és egy virtuális GÉPET, amelyhez a két hálózati adapter csatlakozik. A hálózati adapternek, a nyilvános IP-címnek, a virtuális hálózatnak és a virtuálisgép-erőforrásoknak ugyanabban a helyen és előfizetésben kell lenniük. Bár az erőforrások nem mindegyikének ugyanabban az erőforráscsoporthoz kell lennie, a következő parancsfájlban.
 
 ```bash
     
@@ -153,28 +154,28 @@ az vm create \
 --ssh-key-value $SshKeyValue
 ```
 
-A mellett, hogy 3 IP-konfigurációval rendelkező hálózati adapterrel rendelkező virtuális gép létrehozása mellett a parancsfájl létrehozza a következőket:
+A virtuális gép 3 IP-konfigurációval rendelkező hálózati adapterrel való létrehozása mellett a szkript a következőt hozza létre:
 
-- Alapértelmezés szerint egyetlen prémium díjas felügyelt lemez, de a lemeztípusához más lehetőségek is rendelkezésre állnak. A részletekért olvassa el a [Linux os virtuális gép létrehozása az Azure CLI-cikk használatával.](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- Egy alhálózattal és két nyilvános IP-címmel rendelkező virtuális hálózat. Másik lehetőségként használhatja a *meglévő* virtuális hálózati, alhálózati, hálózati adapter- vagy nyilvános IP-cím erőforrásokat. Ha meg szeretné tudni, hogyan használhatja a `az vm create -h`meglévő hálózati erőforrásokat ahelyett, hogy további erőforrásokat hozna létre, írja be a .
+- Alapértelmezés szerint egy prémium szintű felügyelt lemez, de a létrehozandó lemez típusának más beállításai is vannak. A részletekért olvassa el a [Linux rendszerű virtuális gép létrehozása az Azure CLI használatával](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című cikket.
+- Egy virtuális hálózat, amely egy alhálózattal és két nyilvános IP-címmel rendelkezik. Azt is megteheti, hogy *meglévő* virtuális hálózatot, alhálózatot, hálózati adaptert vagy nyilvános IP-cím erőforrásokat használ. Ha szeretné megtudni, hogyan használhatja a meglévő hálózati erőforrásokat további erőforrások létrehozása helyett, `az vm create -h`írja be a következőt:.
 
-A nyilvános IP-címek névleges díjkötelesek. Ha többet szeretne megtudni az IP-cím díjszabásáról, olvassa el az [IP-cím díjszabási](https://azure.microsoft.com/pricing/details/ip-addresses) oldalát. Az előfizetésben használható nyilvános IP-címek száma korlátozva van. A korlátozásokkal kapcsolatos további információkért olvassa el az [Azure korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) szóló cikket.
+A nyilvános IP-címekhez névleges díj vonatkozik. Ha többet szeretne megtudni az IP-címek díjszabásáról, olvassa el az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses) ismertető oldalt. Az előfizetésben használható nyilvános IP-címek száma korlátozva van. A korlátozásokkal kapcsolatos további információkért olvassa el az [Azure korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) szóló cikket.
 
-A virtuális gép létrehozása után `az network nic show --name MyNic1 --resource-group myResourceGroup` adja meg a parancsot a hálózati adapter konfigurációjának megtekintéséhez. Adja `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` meg a hálózati adapterhez társított IP-konfigurációk listájának megtekintéséhez.
+A virtuális gép létrehozása után írja be a `az network nic show --name MyNic1 --resource-group myResourceGroup` parancsot a hálózati adapter konfigurációjának megtekintéséhez. A `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` gombra kattintva megtekintheti a hálózati adapterhez társított IP-konfigurációk listáját.
 
-Adja hozzá a privát IP-címeket a virtuális gép operációs rendszeréhez az operációs rendszer lépéseivégrehajtásával a [cikk IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakaszában.
+Adja hozzá a magánhálózati IP-címeket a virtuális gép operációs rendszeréhez úgy, hogy végrehajtja a jelen cikk [IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakaszának lépéseit.
 
-## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>IP-címek hozzáadása virtuális géphez
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>IP-címek hozzáadása egy virtuális géphez
 
-További privát és nyilvános IP-címeket adhat hozzá egy meglévő Azure-hálózati adapterhez a következő lépések végrehajtásával. A példák az ebben a cikkben ismertetett [forgatókönyvre](#scenario) épülnek.
+A következő lépések végrehajtásával további magán-és nyilvános IP-címeket adhat hozzá egy meglévő Azure hálózati adapterhez. A példák a jelen cikkben ismertetett [forgatókönyvre](#scenario) épülnek.
 
-1. Nyisson meg egy parancshéjat, és hajtsa végre a szakasz további lépéseit egyetlen munkameneten belül. Ha még nincs telepítve és konfigurálva az Azure CLI, hajtsa végre az [Azure CLI telepítési](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) cikkben leírt lépéseket, és jelentkezzen be az Azure-fiókjába a `az-login` paranccsal.
+1. Nyisson meg egy parancssort, és hajtsa végre a szakasz további lépéseit egyetlen munkameneten belül. Ha még nincs telepítve és konfigurálva az Azure CLI, hajtsa végre az [Azure CLI telepítésének](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) lépéseit, és jelentkezzen be az Azure- `az-login` fiókjába a paranccsal.
 
-2. Hajtsa végre az alábbi szakaszok valamelyikének lépéseit az Ön igényei nek megfelelően:
+2. A követelmények alapján végezze el a következő részekben ismertetett lépéseket:
 
-    **Privát IP-cím hozzáadása**
+    **Magánhálózati IP-cím hozzáadása**
     
-    Ha privát IP-címet szeretne hozzáadni egy hálózati adapterhez, a következő paranccsal létre kell hoznia egy IP-konfigurációt. A statikus IP-címnek az alhálózat nem használt címének kell lennie.
+    Magánhálózati IP-cím hálózati adapterhez való hozzáadásához az alábbi parancs használatával létre kell hoznia egy IP-konfigurációt. A statikus IP-címnek az alhálózat nem használt címének kell lennie.
 
     ```azurecli
     az network nic ip-config create \
@@ -184,17 +185,17 @@ További privát és nyilvános IP-címeket adhat hozzá egy meglévő Azure-há
     --name IPConfig-4
     ```
     
-    Hozzon létre annyi konfigurációt, amennyire szüksége van, egyedi konfigurációnevek és privát IP-címek használatával (statikus IP-címekkel rendelkező konfigurációk esetén).
+    Tetszőleges számú konfigurációt hozhat létre, egyedi konfigurációs neveket és magánhálózati IP-címeket (statikus IP-címekkel rendelkező konfigurációk esetén).
 
     **Nyilvános IP-cím hozzáadása**
     
-    A nyilvános IP-cím hozzáadódik azáltal, hogy új IP-konfigurációhoz vagy meglévő IP-konfigurációhoz társítja azt. Végezze el a következő szakaszok egyikének lépéseit, ahogy azt szeretné.
+    A nyilvános IP-cím hozzáadásához társítsa azt egy új IP-konfigurációhoz vagy egy meglévő IP-konfigurációhoz. Hajtsa végre az alábbi szakasz lépéseit, ahogy szükséges.
 
-    A nyilvános IP-címek névleges díjkötelesek. Ha többet szeretne megtudni az IP-cím díjszabásáról, olvassa el az [IP-cím díjszabási](https://azure.microsoft.com/pricing/details/ip-addresses) oldalát. Az előfizetésben használható nyilvános IP-címek száma korlátozva van. A korlátozásokkal kapcsolatos további információkért olvassa el az [Azure korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) szóló cikket.
+    A nyilvános IP-címekhez névleges díj vonatkozik. Ha többet szeretne megtudni az IP-címek díjszabásáról, olvassa el az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses) ismertető oldalt. Az előfizetésben használható nyilvános IP-címek száma korlátozva van. A korlátozásokkal kapcsolatos további információkért olvassa el az [Azure korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) szóló cikket.
 
-    - **Az erőforrás társítása új IP-konfigurációhoz**
+    - **Az erőforrás hozzárendelése új IP-konfigurációhoz**
     
-        Amikor nyilvános IP-címet ad hozzá egy új IP-konfigurációban, saját IP-címet is hozzá kell adnia, mert minden IP-konfigurációnak privát IP-címmel kell rendelkeznie. Hozzáadhat egy meglévő nyilvános IP-címerőforrást, vagy létrehozhat egy újat. Új létrehozásához írja be a következő parancsot:
+        Amikor nyilvános IP-címet ad hozzá egy új IP-konfigurációhoz, hozzá kell adnia egy magánhálózati IP-címet is, mivel minden IP-konfigurációnak magánhálózati IP-címmel kell rendelkeznie. Hozzáadhat egy meglévő nyilvános IP-cím-erőforrást, vagy létrehozhat egy újat is. Új létrehozásához írja be a következő parancsot:
     
         ```azurecli
         az network public-ip create \
@@ -204,7 +205,7 @@ További privát és nyilvános IP-címeket adhat hozzá egy meglévő Azure-há
         --dns-name mypublicdns3
         ```
 
-        Ha statikus privát IP-címmel és a kapcsolódó *myPublicIP3* nyilvános IP-cím erőforrással rendelkező új IP-konfigurációt szeretne létrehozni, írja be a következő parancsot:
+        Ha új IP-konfigurációt szeretne létrehozni statikus magánhálózati IP-címmel és a társított *myPublicIP3* nyilvános IP-cím erőforrással, írja be a következő parancsot:
 
         ```azurecli
         az network nic ip-config create \
@@ -215,7 +216,7 @@ További privát és nyilvános IP-címeket adhat hozzá egy meglévő Azure-há
         --public-ip-address myPublicIP3
         ```
 
-    - **Az erőforrás társítása meglévő IP-konfigurációhoz** Nyilvános IP-cím erőforrás csak olyan IP-konfigurációhoz társítható, amelyhez még nem tartozik. A következő parancs megadásával meghatározhatja, hogy egy IP-konfigurációrendelkezik-e nyilvános IP-címmel:
+    - **Az erőforrás hozzárendelése meglévő IP-konfigurációhoz** Egy nyilvános IP-cím erőforrás csak olyan IP-konfigurációhoz társítható, amelyhez még nincs társítva. A következő parancs megadásával határozhatja meg, hogy egy IP-konfigurációhoz tartozik-e társított nyilvános IP-cím:
 
         ```azurecli
         az network nic ip-config list \
@@ -232,7 +233,7 @@ További privát és nyilvános IP-címeket adhat hozzá egy meglévő Azure-há
             IPConfig-2  /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
             IPConfig-3
 
-        Mivel az *IpConfig-3* **PublicIpAddressId** oszlopa üres a kimenetben, jelenleg nincs hozzá nyilvános IP-címerőforrás társítva. Az IpConfig-3 protokollhoz hozzáadhat egy meglévő nyilvános IP-címerőforrást, vagy a következő parancsot adhatja meg:
+        Mivel az *IpConfig-3* **PublicIpAddressId** oszlopa üres a kimenetben, nincs társítva nyilvános IP-cím erőforrás. Hozzáadhat egy meglévő nyilvános IP-cím-erőforrást az IpConfig-3 számára, vagy megadhatja a következő parancsot egy létrehozásához:
 
         ```azurecli
         az network public-ip create \
@@ -243,7 +244,7 @@ További privát és nyilvános IP-címeket adhat hozzá egy meglévő Azure-há
         --allocation-method Static
         ```
     
-        Írja be a következő parancsot a nyilvános IP-cím erőforrás társításához az *IPConfig-3*nevű meglévő IP-konfigurációhoz:
+        A következő parancs megadásával rendelje hozzá a nyilvános IP-cím erőforrást az *ipconfig-3*nevű meglévő IP-konfigurációhoz:
     
         ```azurecli
         az network nic ip-config update \
@@ -253,7 +254,7 @@ További privát és nyilvános IP-címeket adhat hozzá egy meglévő Azure-há
         --public-ip myPublicIP3
         ```
 
-3. A hálózati adapterhez rendelt privát IP-címek és nyilvános IP-cím-azonosítók megtekintéséhez írja be a következő parancsot:
+3. A következő parancs beírásával tekintse meg a hálózati adapterhez rendelt magánhálózati IP-címeket és nyilvános IP-cím típusú erőforrás-azonosítókat:
 
     ```azurecli
     az network nic ip-config list \
@@ -271,6 +272,6 @@ További privát és nyilvános IP-címeket adhat hozzá egy meglévő Azure-há
         IPConfig-3  10.0.0.6            Static                      /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP3
     
 
-4. Adja hozzá a hálózati adapterhez hozzáadott privát IP-címeket a virtuális gép operációs rendszeréhez a cikk [IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakaszában található utasításokat követve. Ne adja hozzá a nyilvános IP-címeket az operációs rendszerhez.
+4. Adja hozzá a hálózati adapterhez hozzáadott magánhálózati IP-címeket a virtuális gép operációs rendszeréhez az [IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakasz utasításait követve. Ne adja hozzá a nyilvános IP-címeket az operációs rendszerhez.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

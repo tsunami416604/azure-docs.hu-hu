@@ -1,66 +1,66 @@
 ---
-title: 'Azure Containers létrehozása technikai eszközök : Kapcsolatkép | Azure Piactér'
-description: Hozzon létre egy Azure-tároló technikai eszközeit.
+title: Azure-tárolók rendszerképének létrehozása – technikai eszközök | Azure piactér
+description: Hozzon létre egy Azure-tárolóhoz tartozó technikai eszközöket.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 1116bd03cf0ef734b74b387ff8f3cff74b29b215
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 68db606c9a01c4b1122f9b0cce620762485ca40a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270315"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148263"
 ---
 # <a name="prepare-your-container-technical-assets"></a>Tárolók technikai eszközeinek előkészítése
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure Container-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Container technikai eszközeinek előkészítése](https://aka.ms/CreateContainerTechAssets) az áttelepített ajánlatok kezeléséhez című, az Azure Container műszaki eszközeinek előkészítése című útmutatóutasításait.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli Container-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Kövesse az [Azure Container műszaki eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) az áttelepített ajánlatok kezeléséhez című témakör utasításait.
 
-Ez a cikk ismerteti az Azure Marketplace-en egy tárolóajánlat konfigurálásának lépéseit és követelményeit.
+Ez a cikk a tárolók Azure Marketplace-hez való konfigurálásának lépéseit és követelményeit ismerteti.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Tekintse át az [Azure Container Instances dokumentációt,](https://docs.microsoft.com/azure/container-instances) amely rövid útmutatókat, oktatóanyagokat és mintákat tartalmaz.
+Tekintse át a [Azure Container instances](https://docs.microsoft.com/azure/container-instances) dokumentációját, amely rövid útmutatókat, oktatóanyagokat és mintákat tartalmaz.
 
 ## <a name="fundamental-technical-knowledge"></a>Alapvető műszaki ismeretek
 
-Ezeknek az eszközöknek a tervezése, létrehozása és tesztelése időt vesz igénybe, és mind az Azure platform, mind az ajánlat létrehozásához használt technológiák műszaki ismerete szükséges.
+Az adategységek tervezése, fejlesztése és tesztelése időt vesz igénybe, és technikai ismeretekre van szüksége az Azure platformról és az ajánlat létrehozásához használt technológiákról.
  
-A megoldástartománymellett a mérnöki csapatnak ismernie kell a következő Microsoft-technológiákat:
+A megoldás tartományán kívül a mérnöki csapatnak ismernie kell a következő Microsoft-technológiákat:
 
--    Az [Azure-szolgáltatások](https://azure.microsoft.com/services/) alapvető ismerete 
--    [Azure-alkalmazások tervezése és megtervezése](https://azure.microsoft.com/solutions/architecture/)
--    Az [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/), az Azure [Storage](https://azure.microsoft.com/services/?filter=storage) és az [Azure Networking munkaismerete](https://azure.microsoft.com/services/?filter=networking)
--    Az [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) munkaismerete
--    A [JSON](https://www.json.org/) munkaismerete
+-    Az Azure- [szolgáltatások](https://azure.microsoft.com/services/) alapszintű ismertetése 
+-    [Azure-alkalmazások tervezése és Architect](https://azure.microsoft.com/solutions/architecture/)
+-    Az [azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), az [Azure Storage](https://azure.microsoft.com/services/?filter=storage) és az [Azure Networking](https://azure.microsoft.com/services/?filter=networking) együttműködésének ismerete
+-    [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) működésének ismerete
+-    A [JSON](https://www.json.org/) működésének ismerete
 
 ## <a name="suggested-tools"></a>Javasolt eszközök
 
-A tárolórendszerkép kezeléséhez válasszon az alábbi parancsfájlok egyikének vagy mindkettőnek:
+A tároló rendszerképének kezeléséhez válasszon egyet vagy mindkettőt a következő parancsfájl-környezetek közül:
 
 -    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 -    [Azure CLI](https://docs.microsoft.com/cli/azure)
 
-Ezenkívül azt javasoljuk, hogy adja hozzá a következő eszközöket a fejlesztői környezethez:
+Emellett javasoljuk a következő eszközök hozzáadását a fejlesztői környezethez:
 
 -    [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -    [Visual Studio Code](https://code.visualstudio.com/)
-    *    Bővítmény: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *    Kiterjesztés: [Szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *    Kiterjesztés: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *    Kiterjesztés: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *    Kiterjesztés: [szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *    Kiterjesztés: [SZÉPÍT JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
-Javasoljuk továbbá, hogy tekintse át a rendelkezésre álló eszközöket az [Azure Developer Tools](https://azure.microsoft.com/tools/) lapon, és ha a Visual Studio t használja, a Visual Studio [Piacteret.](https://marketplace.visualstudio.com/)
+Javasoljuk továbbá, hogy tekintse át az [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/) oldalon elérhető eszközöket, és ha a Visual studiót használja, a [Visual Studio Marketplace](https://marketplace.visualstudio.com/)-en.
 
-## <a name="create-the-container-image"></a>A tárolórendszerkép létrehozása
+## <a name="create-the-container-image"></a>A tároló rendszerképének létrehozása
 
-További információt az alábbi témakörben talál:
+További információért tekintse meg a következőket:
 
-* [Oktatóanyag: Hozzon létre egy tárolórendszerképet az Azure Container Instances üzembe helyezéséhez](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-* [Oktatóanyag: Tárolórendszerképek létrehozása és üzembe helyezése a felhőben az Azure Container Registry Tasks segítségével](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
+* [Oktatóanyag: tároló-rendszerkép létrehozása a Azure Container Instances való üzembe helyezéshez](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [Oktatóanyag: tároló lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>További lépések
 
-[A tárolóajánlat létrehozása](./cpp-create-offer.md)
+[A tároló ajánlat létrehozása](./cpp-create-offer.md)

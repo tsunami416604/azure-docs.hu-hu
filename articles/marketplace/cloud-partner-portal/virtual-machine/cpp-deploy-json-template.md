@@ -1,25 +1,25 @@
 ---
-title: Azure VHD telepítési sablon | Azure Piactér
-description: Az Azure Resource Manager-sablon t, amely egy új Azure virtuális gép felhasználói virtuális merevlemezről való üzembe helyezéséhez szükséges.
+title: Azure VHD telepítési sablon | Azure piactér
+description: Az új Azure-beli virtuális gép felhasználói virtuális merevlemezről való üzembe helyezéséhez szükséges Azure Resource Manager sablon felsorolása.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f3e3dc6e0d73627f49ba04a8b861253bafcddfa9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273919"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148051"
 ---
-# <a name="virtual-hard-disk-deployment-template"></a>Virtuális merevlemez telepítési sablonja
+# <a name="virtual-hard-disk-deployment-template"></a>Virtuális merevlemez központi telepítési sablonja
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure VM-lemezkép-minősítés](https://aks.ms/CertifyVMimage) utasításait az áttelepített ajánlatok kezeléséhez.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli virtuálisgép-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse az [Azure VM-rendszerkép minősítésének](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) utasításait.
 
-A következő Azure Resource Manager-sablon egy új Azure virtuálisgép-példányt (VM) határoz meg, amelyet helyi virtuális merevlemezről (VHD) hozott létre.  Ez a sablon a cikkben egy [Azure virtuális gép telepítése egy felhasználói virtuális merevlemezről.](./cpp-deploy-vm-user-image.md) 
+A következő Azure Resource Manager sablon a helyi virtuális merevlemezről (VHD) létrehozott új Azure-beli virtuális gép (VM) példányát határozza meg.  Ez a sablon az [Azure virtuális gép üzembe helyezése felhasználói VHD-ről című](./cpp-deploy-vm-user-image.md)cikkben található.
 
 ```json
 {

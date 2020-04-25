@@ -1,25 +1,25 @@
 ---
-title: Azure Key Vault telepítési sablon | Azure Piactér
-description: Az Új Azure Key Vault-példány üzembe helyezéséhez szükséges Azure Resource Manager-sablon.
+title: Azure Key Vault telepítési sablon | Azure piactér
+description: Felsorolja az új Azure Key Vault példány telepítéséhez szükséges Azure Resource Manager sablont.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 0d08caf5444216666e7296b830f0af6af606dd4f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a6e7260bb761db5cfa6884baf29317a004ab1452
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273834"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147028"
 ---
 # <a name="key-vault-deployment-template"></a>Key Vault üzembehelyezési sablonja
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure VM-lemezkép-minősítés](https://aks.ms/CertifyVMimage) utasításait az áttelepített ajánlatok kezeléséhez.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli virtuálisgép-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse az [Azure VM-rendszerkép minősítésének](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) utasításait.
 
-A következő Azure Resource Manager-sablon egy új Azure Key Vault-példányt határoz meg.  A key vault [tanúsítványának létrehozása](cpp-create-key-vault-cert.md)című cikkben használatos. 
+A következő Azure Resource Manager sablon egy új Azure Key Vault példányt határoz meg.  Ez a cikk a [Key Vault-tanúsítvány létrehozása](cpp-create-key-vault-cert.md)című cikkben használatos.
 
 ```json
 {

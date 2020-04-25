@@ -1,41 +1,41 @@
 ---
-title: Az Azure Containers előfeltételeket kínál | Azure Piactér
-description: Azure-tároló közzétételének előfeltételei.
+title: Az Azure-tárolók előfeltételt biztosítanak | Azure piactér
+description: Azure-tárolók közzétételének előfeltételei.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: dsindona
-ms.openlocfilehash: 0453117ee2984e0b8ebee60145353584a02a359a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 2a5d82af609ab5eafbbc29dc95b8b6e4c8aa32df
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270128"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146241"
 ---
 # <a name="container-publishing-prerequisites"></a>Tárolók közzétételének előfeltételei
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure Container-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Container-ajánlat létrehozása](https://aka.ms/CreateContainerOffer) című, az áttelepített ajánlatok kezeléséhez című útmutatóutasításait.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli Container-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Kövesse az [Azure Container-ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) az áttelepített ajánlatok kezeléséhez című témakör utasításait.
 
-Ez a cikk ismerteti a tárolóajánlat az Azure Marketplace-en való közzétételének előfeltételeit.  Ha még nem tette meg, tekintse át a [Tárolók ajánlatközzétételi útmutatóját.](../../marketplace-containers.md)
+Ez a cikk a tárolók Azure Marketplace-en való közzétételének előfeltételeit ismerteti.  Ha még nem tette meg, tekintse át a [containers ajánlat közzétételi útmutatóját](../../marketplace-containers.md).
 
 ## <a name="publishing-prerequisites"></a>Közzétételi előfeltételek
 
-Új tárolórendszerkép közzétételéhez meg kell felelnie az alábbi előfeltételeknek:
+Új tároló-rendszerkép közzétételéhez a következő előfeltételeknek kell megfelelnie:
 
-- Hozzáférés a felhőpartneri portálhoz. További információ: Azure Marketplace és AppSource közzétételi útmutató.
-- Megállapodás az Azure Piactér feltételeiről
-- A tároló technikai eszköz egy Azure Container Registry üzemeltetése.
-- Készítse elő a tároló metaadatait. Például a következő, nem teljes körű lista:
-  - A cím
+- Hozzáférés a Cloud Partner Portalhoz. További információ: az Azure Marketplace és a AppSource közzétételi útmutatója.
+- Az Azure Marketplace használati feltételeinek megkötése
+- A tároló technikai eszközét egy Azure Container Registry üzemeltetheti.
+- A tároló metaadatai használatra készek. Például a következő nem teljes lista:
+  - Egy cím
   - Leírás (HTML formátumban)
-  - Emblémakép (PNG formátumban) és ezekben a rögzített képméretekben: 40x40 px, 90x90 px, 115x 115 px és 255x115 px.
-- Használati *feltételek* és *adatvédelmi irányelvek*
-- Konténermegoldás dokumentációja
+  - Egy embléma képe (PNG formátumban) és a rögzített képméretekben: 40x40cm px, 90x90 px, 115x 115 px és 255x115 px.
+- Használati *feltételek* és *adatvédelmi szabályzati* utasítások
+- A Container Solution dokumentációja
 - Támogatási kapcsolattartók
 
 ## <a name="next-steps"></a>További lépések
 
-Ha még nem tette meg, a tárolóajánlat létrehozása előtt elő kell [készítenie a tároló technikai](./cpp-create-technical-assets.md) [eszközeit.](./cpp-create-offer.md)  
+Ha még nem tette meg, [elő kell készítenie a tároló technikai eszközeit](./cpp-create-technical-assets.md) , mielőtt [létrehozza a tároló ajánlatát](./cpp-create-offer.md).  

@@ -1,39 +1,39 @@
 ---
-title: Az Azure és a Dynamics 365 tanácsadási szolgáltatása közzétételt kínál | Azure Piactér
-description: Azure-beli vagy Dynamics 365-tanácsadási szolgáltatásajánlat közzététele az Azure Marketplace-hez vagy az AppSource-hoz való Cloud Partner Portal szolgáltatásban.
+title: Az Azure és a Dynamics 365 Consulting Service ajánlat közzététele | Azure piactér
+description: Azure-vagy Dynamics 365 Consulting Service-ajánlat közzététele az Azure Marketplace-en vagy a AppSource-ban Cloud Partner Portal.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a06bae941c75e43a0e4ea2b66cc420e7a2467c3
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c602bbee128c3338d841cb4564add26ba1c9e841
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985082"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146634"
 ---
 # <a name="publish-a-consulting-service-offer"></a>Tanácsadási szolgáltatási ajánlat közzététele
 
 >[!Important]
->2020. április 13-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
+>2020. április 13-ától kezdődően megkezdjük a Consulting Service-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse a [tanácsadási szolgáltatás létrehozása – áttekintés című](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer) témakör utasításait.
 
-Miután befejezte **az Ajánlati beállítások,** **a Kirakatrészletei**és **a Névjegyek**lehetőséget, válassza **a Közzététel** lehetőséget, és adjon meg egy e-mail címet. Amikor a Microsoft készen áll az ajánlat közzétételére, e-mailt kap, amelyben megtekintheti azt, mielőtt az élesben megadatna. Bármikor visszatérhet a portálra, hogy ellenőrizze az ajánlat állapotát.
+Az **ajánlatok beállításainak**, **kirakat részleteinek**és **névjegyek**befejezését követően válassza a **Közzététel** lehetőséget, és adjon meg egy e-mail-címet. Ha a Microsoft készen áll az ajánlat közzétételére, egy e-mailt kap az előzetes verzió megkezdése előtt. Bármikor visszatérhet a portálra az ajánlat állapotának megtekintéséhez.
 
-Az ajánlatok "Közzététel érvénytelenítve" vagy "Sikertelen közzététel" állapotban jelenhetnek meg a közzétételi folyamat során. Ezek a megjelölések a folyamat szokásos részét képezik, és lehetővé teszik a Microsoft számára, hogy módosításokat eszközzjön az ajánlaton. Ha az ajánlat "Közzététel visszavonva" néven jelenik meg, hagyja meg az állapotként.
+Előfordulhat, hogy az ajánlatok a közzétételi folyamat során "a közzététel megszakítva" vagy "sikertelen közzététel" állapotban jelennek meg. Ezek a megjelölések a folyamat normális részét képezik, és lehetővé teszik, hogy a Microsoft szerkessze az ajánlatát. Ha az ajánlat "közzététel megszakítva" formában jelenik meg, akkor hagyja ezt az állapotot.
 
-## <a name="lead-destination"></a>Érdeklődő rendeltetése
+## <a name="lead-destination"></a>Érdeklődő célhelye
 
-Kiválaszthatja azt a CRM rendszert, amelyen az érdeklődőadatok tárolása történik. Az itt kiválasztott CRM rendszer az a hely, ahol információkat írunk az alkalmazással az AppSource-on kipróbáló felhasználókról.
+Kiválaszthat egy CRM-rendszert, amelyen a rendszer az érdeklődő adatait tárolja. Az itt kiválasztott CRM-rendszerből megtudhatja, hogy mi történik az alkalmazás AppSource-on való kipróbálására szolgáló felhasználókkal kapcsolatos információk írásakor.
 
-A kiválasztott CRM-rendszer alapján válassza ki a megfelelő URL-címet az alábbi listából a következő mezőkészlet kitöltésével kapcsolatos információkért.
+A kiválasztott CRM-rendszer alapján válassza ki a megfelelő URL-címet a következő listából a következő mezők kitöltésének módjával kapcsolatban.
 
-Válassza az [Azure Table lehetőséget,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) ha az alábbi CRM-rendszerek valamelyikével rendelkezik:  
+Ha a következő CRM-rendszerek valamelyikével rendelkezik, válassza az [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) lehetőséget:  
 * [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
 * [Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 * [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa az ajánlat közzétételének további megismerésével.
+További információ: az ajánlat közzétételének megismerése.

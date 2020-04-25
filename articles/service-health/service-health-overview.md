@@ -3,12 +3,12 @@ title: Service Health áttekintése | Microsoft Docs
 description: Személyre szabott információk arról, hogy az Azure-alkalmazások milyen hatással vannak a jelenlegi és jövőbeli Azure-szolgáltatásokkal kapcsolatos problémákra és karbantartásra.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 280be9f0df1f94dad59c1af147d499860571f86e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097251"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146910"
 ---
 # <a name="service-health-overview"></a>Service Health áttekintése
 
@@ -41,6 +41,12 @@ A **szolgáltatással kapcsolatos problémák** nézet az Azure-szolgáltatások
 A **lehetséges hatás** lapon megtekintheti a probléma által befolyásolható erőforrások adott listáját. Letöltheti ezeket az erőforrásokat tartalmazó CSV-listát a csapattal való megosztáshoz.
 
 ![Szolgáltatási probléma kezelése – hatás](./media/service-health-overview/azure-service-health-overview-4.png)
+
+## <a name="see-emerging-issues-which-may-impact-your-services"></a>Tekintse meg a felmerülő problémákat, amelyek hatással lehetnek a szolgáltatásaira
+
+Előfordulhat, hogy az elterjedt szolgáltatásokkal kapcsolatos problémák az [Azure status lapra](https://status.azure.com) kerülnek, mielőtt a rendszer megcélozta az érintett ügyfelek számára a célként megadott kommunikációt. Annak biztosítása érdekében, hogy a Azure Service Health átfogó képet biztosítson az Ön számára esetlegesen felmerülő problémákról, az aktív Azure Status Page-problémák a *felmerülő problémák*Service Health. Ha egy esemény aktív az Azure status lapon, a rendszer az új problémák szalagcímét Service Health fogja megjelenni. A probléma részletes adatainak megtekintéséhez kattintson a szalagcímre.
+
+![Új szolgáltatási probléma](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>Hivatkozások és letölthető magyarázatok beolvasása 
 

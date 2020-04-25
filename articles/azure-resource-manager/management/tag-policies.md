@@ -1,24 +1,24 @@
 ---
-title: Erőforrások címkézésével kapcsolatos házirendek
-description: Ismerteti az Azure-szabályzatok, amelyek a címke megfelelőségének biztosítása érdekében rendelhető.
+title: Erőforrások címkézésére vonatkozó szabályzatok
+description: Ismerteti azokat az Azure-szabályzatokat, amelyeket hozzárendelhet a címke megfelelőségének biztosításához.
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: e7febe4c833cefd0ee9a5c49b4b70f4901fea8d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3eeb28ea23b18c3492f68d2fac294fc014420c5
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80147017"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147867"
 ---
-# <a name="assign-policies-for-tag-compliance"></a>Házirendek hozzárendelése a címkemegfelelőséghez
+# <a name="assign-policies-for-tag-compliance"></a>Szabályzatok kiosztása a címkézési megfelelőséghez
 
-Az [Azure-szabályzat](../../governance/policy/overview.md) használatával kényszerítheti a címkézési szabályokat és konvenciókat. Egy szabályzat létrehozásával elkerülheti az olyan erőforrások üzembe helyezésének forgatókönyvét, amelyek nem rendelkeznek a szervezet várt címkéivel. Ahelyett, hogy manuálisan alkalmazna címkéket, vagy nem megfelelő erőforrásokat keresne, olyan szabályzatot hoz létre, amely automatikusan alkalmazza a szükséges címkéket a telepítés során. A címkék mostantól az új [Módosítás](../../governance/policy/concepts/effects.md#modify) irásési és [szervizelési feladattal](../../governance/policy/how-to/remediate-resources.md)rendelkező meglévő erőforrásokra is alkalmazhatók. A következő szakasz a címkék rekedő szabályzatait mutatja be.
+A [Azure Policy](../../governance/policy/overview.md) a címkézési szabályok és konvenciók betartatására használható. A szabályzat létrehozásával elkerülhető, hogy az előfizetéshez tartozó erőforrások milyen helyzetben legyenek, és hogy ne legyenek a szervezete számára várt címkék. A címkék manuális alkalmazása vagy a nem megfelelő erőforrások keresése helyett hozzon létre egy szabályzatot, amely automatikusan alkalmazza a szükséges címkéket az üzembe helyezés során. A címkék mostantól a meglévő erőforrásokra is alkalmazhatók az új [módosítási](../../governance/policy/concepts/effects.md#modify) effektussal és [szervizelési feladattal](../../governance/policy/how-to/remediate-resources.md). A következő szakasz példákat mutat be a címkékre.
 
 ## <a name="policies"></a>Házirendek
 
-[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-policies-tags.md)]
+[!INCLUDE [Tag policies](../../../includes/policy/samples/bycat/policies-tags.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-* Az erőforrások címkézéséről az [Azure-erőforrások rendszerezéséhez címkék használata.](tag-resources.md)
-* Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy alkalmazhat-e címkét egy erőforrástípusra, olvassa el [az Azure-erőforrások támogatásának címkézése.](tag-support.md)
+* Az erőforrások címkézésével kapcsolatos további tudnivalókért lásd: [címkék használata az Azure-erőforrások rendszerezéséhez](tag-resources.md).
+* Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy lehet-e címkét alkalmazni az erőforrás típusára, tekintse meg [Az Azure-erőforrások támogatásának címkézését](tag-support.md)ismertető témakört.

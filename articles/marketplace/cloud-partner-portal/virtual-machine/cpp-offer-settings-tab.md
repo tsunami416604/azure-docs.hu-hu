@@ -1,43 +1,43 @@
 ---
-title: A Virtuálisgép-ajánlat beállításai lap az Azure Piactér felhőpartneri portálján
-description: Ismerteti az Ajánlat beállításai lapot, amely et az Azure Marketplace virtuális gép ajánlatának létrehozásához használ.
+title: Virtuálisgép-ajánlat beállításai lap az Azure Marketplace Cloud Partner Portal
+description: Az Azure Marketplace virtuálisgép-ajánlat létrehozásához használt ajánlati beállítások lapot ismerteti.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 94be2e5d3c2c941ab17401a743ea86acbe8b6252
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: abeadf5f3c0a19212a12256e06602e840c9d1fa9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273800"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146832"
 ---
-# <a name="virtual-machine-offer-settings-tab"></a>Virtuális gép ajánlatbeállításai lap
+# <a name="virtual-machine-offer-settings-tab"></a>Virtuálisgép-ajánlat beállításai lap
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure virtuális gép ajánlatlétrehozása](https://aka.ms/CreateAzureVMoffer) című, az áttelepített ajánlatok kezelésével című útmutatóutasításait.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli virtuálisgép-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Kövesse az Azure-beli [virtuális gép létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) az áttelepített ajánlatok kezeléséhez című témakör utasításait.
 
-A virtuális gépek **új ajánlat** lapja az **Ajánlati beállítások**nevű első lapon nyílik meg.  
+Megnyílik a virtuális gépek **új ajánlat** lapja az **ajánlati beállítások**nevű első lapon.  
 
-![Új ajánlat lap virtuális gépekhez](./media/publishvm_004.png)
+![Új ajánlat oldal a virtuális gépekhez](./media/publishvm_004.png)
 
 
-## <a name="offer-settings-fields"></a>Ajánlatbeállításai mezők
+## <a name="offer-settings-fields"></a>Ajánlat beállításai mezők
 
-Az **Ajánlat beállításai** lapon a következő mezőket kell megadnia.  A mezőnévhez csatolt csillag (*) azt jelzi, hogy szükség van rá. 
+Az **ajánlat beállításai** lapon a következő mezőket kell megadnia.  A mező neve mezőben a hozzáfűzött csillag (*) érték azt jelzi, hogy szükség van rá. 
 
 |  **Mező**       |     **Leírás**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Ajánlat azonosítója\***   | Az ajánlat egyedi azonosítója (közzétevői profilon belül). Ez az azonosító látható lesz a termék URL-címek, az Azure Resource Manager-sablonok és a számlázási jelentésekben. Legfeljebb 50 karakter hosszú, csak kisalfanumerikus karakterekből és kötőjelekből (-) állhat, de nem végződhet kötőjellel. Ez a mező nem módosítható, miután az ajánlat éles. <br> Ha például a Contoso közzétesz egy ajánlatot ajánlatazonosító-minta-vm-mel, hozzá van rendelve az Azure Marketplace **URL-címe.** `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview` |
-| **Publisher\***  | A szervezet egyedi azonosítója az Azure Marketplace-en. Minden ajánlatának a közzétevő azonosítójához kell kapcsolódnia. Ez az érték nem módosítható az ajánlat mentése után. |
-| **név\***       | Az ajánlat megjelenítendő neve. Ez a név jelenik meg az Azure Marketplace-en és a Cloud Partner Portalon. Legfeljebb 50 karakterből állhat. Itt az útmutató az, hogy egy felismerhető márkanevet tartalmazzon a termékhez. Ne adja meg a szervezet nevét itt, kivéve, ha ez hogyan forgalmazta. Ha ezt az ajánlatot más webhelyeken és kiadványokban forgalmazza, győződjön meg arról, hogy a név pontosan ugyanaz az összes kiadványban. |
+| **Ajánlat azonosítója\***   | Az ajánlathoz tartozó egyedi azonosító (közzétevői profilon belül). Ez az azonosító a termék URL-címeiben, Azure Resource Manager sablonokban és számlázási jelentésekben jelenik meg. Legfeljebb 50 karakter hosszúságú lehet, csak kisbetűkből és kötőjelből állhat (-), de kötőjel nem végződhet. Ez a mező nem módosítható, miután egy ajánlat élőben üzemel. <br> Ha például a contoso egy ajánlat **-azonosító minta-VM-** ajánlatot tesz közzé, az Azure Marketplace URL-címét `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview` rendeli hozzá. |
+| **Publisher\***  | A szervezet egyedi azonosítója az Azure piactéren. Az összes ajánlathoz társítva kell lennie a közzétevő AZONOSÍTÓjának. Ez az érték az ajánlat mentésekor nem módosítható. |
+| **Name (Név)\***       | Az ajánlat megjelenítendő neve. Ez a név jelenik meg az Azure Marketplace-en és a Cloud Partner Portal. Legfeljebb 50 karakterből állhat. Itt találja a termék felismerhető márkájának nevét. Ne adja meg a szervezet nevét, kivéve, ha ez a piaca. Ha más webhelyeken és kiadványokban is ezt az ajánlatot látja, ügyeljen arra, hogy a név pontosan ugyanaz legyen az összes kiadványban. |
 |   |   |
  
-Kattintson a **Mentés gombra,** miután az összes mezőt megadta. 
+Kattintson a **Mentés** gombra, miután megadta az összes mezőt. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-A következő lapon [sk-eket](./cpp-skus-tab.md) ad hozzá az ajánlathoz.
+A következő lapon adja hozzá a [SKU](./cpp-skus-tab.md) -ket az ajánlathoz.

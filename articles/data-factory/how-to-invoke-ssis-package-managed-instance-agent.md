@@ -1,6 +1,6 @@
 ---
-title: SSIS-csomagok végrehajtása az Azure SQL felügyelt példányügynök által
-description: Ismerje meg, hogyan hajthat végre SSIS-csomagokat az Azure SQL felügyelt példányügynök.
+title: SSIS-csomagok futtatása Azure SQL Database felügyelt példány-ügynök használatával
+description: Megtudhatja, hogyan futtathat SSIS-csomagokat Azure SQL Database felügyelt példány-ügynök használatával.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,92 +9,108 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: b3b7a25149a9d075c81b30307ade2beb71907637
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: fcbfeb5ab3a3a80fdb8f7e355f290451d4afe804
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394721"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144805"
 ---
-# <a name="execute-ssis-packages-by-azure-sql-managed-instance-agent"></a>SSIS-csomagok végrehajtása az Azure SQL felügyelt példányügynök által
-Ez a cikk ismerteti, hogyan futtatható az SQL Server Integration Services (SSIS) csomag az Azure SQL felügyelt példányügynök használatával. Ez a szolgáltatás hasonló viselkedést biztosít, mint amikor az SQL Server Agent SSIS-csomagokat ütemezi a helyszíni környezetben.
+# <a name="run-ssis-packages-by-using-azure-sql-database-managed-instance-agent"></a>SSIS-csomagok futtatása Azure SQL Database felügyelt példány-ügynök használatával
+Ez a cikk azt ismerteti, hogyan futtathat SQL Server Integration Services (SSIS) csomagot Azure SQL Database felügyelt példány-ügynök használatával. Ez a funkció olyan viselkedést biztosít, amely hasonló ahhoz, hogy a SSIS-csomagokat a helyszíni környezetben SQL Server Agent használatával ütemezze.
 
-Ezzel a funkcióval futtathatja az Azure SQL felügyelt példány ssisdb-ben vagy a fájlrendszerben, például az Azure Files-ban tárolt SSIS-csomagokat.
+Ezzel a szolgáltatással futtathatja a SSISDB-ben tárolt SSIS-csomagokat egy Azure SQL Database felügyelt példányban vagy egy olyan fájlrendszerben, mint például a Azure Files.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A szolgáltatás használatához töltse le és telepítse az SSMS legújabb verzióját, amely a 18.5-ös vagy újabb verzió. Töltse le [erről a honlapról](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+A szolgáltatás használatához [töltse le](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) és telepítse a SQL Server Management Studio (SSMS) legújabb verzióját, amely a 18,5-es verzió.
 
-És ki kell építenie egy Azure-SSIS-integrációs futásidőt az Azure Data Factoryban, amely az Azure SQL felügyelt példányt használja végpontkiszolgálóként. Ha még nem rendelkezett, hogy már, kiépítés az [oktatóanyag](tutorial-create-azure-ssis-runtime-portal.md)utasításait követve . 
+[Egy Azure-SSIS integrációs](tutorial-create-azure-ssis-runtime-portal.md) modult is létre kell hoznia Azure Data Factory-ben. Egy Azure SQL Database felügyelt példányt használ végpont-kiszolgálóként. 
 
-## <a name="run-ssis-packages-in-ssisdb-by-azure-sql-managed-instance-agent"></a>SSIS-csomagok futtatása az SSISDB-ben az Azure SQL felügyelt példányügynök által
-Ebben a lépésben az Azure SQL felügyelt példányügynök használatával hívja meg az SSISDB-ben az Azure SQL felügyelt példányban tárolt SSISIS-csomagokmeghívását.
-1. Az SSMS legújabb verziójában csatlakozzon az Azure SQL felügyelt példányhoz.
-2. Hozzon létre egy új ügynöki feladatot és egy új feladatlépést.
+## <a name="run-an-ssis-package-in-ssisdb"></a>SSIS-csomag futtatása a SSISDB-ben
+Ebben az eljárásban Azure SQL Database felügyelt példány-ügynököt használ egy SSISDB-ben tárolt SSIS-csomag meghívásához.
 
-![Új ügynök feladat](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+1. A SSMS legújabb verziójában kapcsolódjon Azure SQL Database felügyelt példányhoz.
+1. Hozzon létre egy új Agent-feladatot és egy új feladatot. A **SQL Server Agent**alatt kattintson a jobb gombbal a **feladatok** mappára, majd válassza az **új feladat**elemet.
 
-3. Az **Új feladatlépés** lapon válassza az **SQL Server Integrációs szolgáltatások csomag** típusát.
+   ![Új ügynök feladatainak létrehozásához kiválasztott beállítások](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
-![Új SSIS feladat lépés](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+1. Az **új feladatütemezés** lapon válassza ki **SQL Server Integration Services csomagot** típusként.
 
-4. A **Csomag** lapon válassza az **SSIS-katalógust** csomagforrás-típusként.
-5. Mivel az SSISDB ugyanabban az Azure SQL felügyelt példányban található, nem kell megadnia a hitelesítést.
-6. Adjon meg egy SSIS-csomagot az SSISDB-ből.
+   ![Új SSIS-feladatok létrehozásának lépései](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
 
-![Csomagforrás típusa - SSIS katalógus](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
+1. A **csomag** lapon válassza a **SSIS katalógus** lehetőséget a csomag forrása típusaként.
+1. Mivel a SSISDB Azure SQL Database felügyelt példányban van, nem kell megadnia a hitelesítést.
+1. SSIS-csomagot kell megadnia a SSISDB.
 
-7. A **Konfigurációk** lapon **paraméterértékeket** adhat meg, felülírhatja az értékeket a **Kapcsolatkezelők**alkalmazásban, felülbírálhatja a **tulajdonságot,** és válassza a **Naplózási szint lehetőséget.**
+   ![Csomag lap a csomag forrásának kiválasztásával](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
 
-![Csomagforrás típusa – SSIS-katalógus konfigurációja](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
+1. A **konfiguráció** lapon a következőket teheti:
+  
+   - A paraméterek területen állítsa be a **paramétereket**.
+   - Felülbírálja az értékeket a **kapcsolatkezelő**alatt.
+   - Bírálja felül a tulajdonságot, és válassza a naplózási szintet a **speciális**területen.
 
-8. Miután befejezte az összes fenti konfigurációt, kattintson az **OK** gombra az Ügynöki feladat konfigurációjának mentéséhez.
-9. Indítsa el az Ügynök feladatot az SSIS-csomag végrehajtásához.
+   ![Konfiguráció lap a csomag forrás típusának kiválasztásával](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
 
-
-## <a name="run-ssis-packages-in-file-system-by-azure-sql-managed-instance-agent"></a>SSIS-csomagok futtatása a fájlrendszerben az Azure SQL felügyelt példányügynöke által
-Ebben a lépésben az Azure SQL felügyelt példányügynök használatával hívja meg a fájlrendszerben futtatandó SSIS-csomagokat.
-1. Az SSMS legújabb verziójában csatlakozzon az Azure SQL felügyelt példányhoz.
-2. Hozzon létre egy új ügynöki feladatot és egy új feladatlépést.
-
-   ![Új ügynök feladat](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
-
-3. Az **Új feladatlépés** lapon válassza az **SQL Server Integrációs szolgáltatások csomag** típusát.
-
-   ![Új SSIS feladat lépés](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
-
-4. A **Csomag** lapon válassza a **Fájlrendszer** csomagforrás-típusként lehetőséget.
-
-   ![Csomagforrás típusa - Fájlrendszer](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
-
-   1. Ha a csomag feltöltve van az Azure File, válassza **az Azure-fájlmegosztás** fájlforrás-típusként.
-      - A csomag elérési útja ** \\ <storage account name>\<.file.core.windows.net \<fájlmegosztás neve>csomag neve>.dtsx**
-      - Írja be az Azure-fájlfiók nevét és a fiókkulcsot **a Package file access credential** az Azure-fájl eléréséhez. A tartomány **Azure-ként**van beállítva.
-   2. Ha a csomagot hálózati megosztásra töltötte fel, válassza **a Hálózati megosztás** fájlforrás-típusként lehetőséget.
-      - A csomag elérési útja a csomagfájl **UNC elérési útja** annak dtsx kiterjesztésével.
-      - Írja be a megfelelő **tartományt**, **felhasználónevet**és **jelszót** a hálózati megosztási csomagfájl eléréséhez.
-   3. Ha a csomagfájl jelszóval van titkosítva, válassza **a Titkosítási jelszót,** és írja be a jelszót.
-
- 5. A **Konfigurációk** lapon írja be a **konfigurációs fájl elérési útját,** ha az SSIS-csomag végrehajtásához konfigurációs fájlra van szüksége.
- 6. A **Végrehajtási beállítások** lapon eldöntheti, hogy **windows-hitelesítést** vagy **32 bites futásidejű** t használ-e az SSIS-csomag végrehajtásához.
- 7. A Naplózás lapon **kiválaszthatja** a **naplózási elérési utat** és a megfelelő naplózási hozzáférési hitelesítő adatokat a naplófájlok tárolásához. Alapértelmezés szerint a naplózási elérési út megegyezik a csomagmappa elérési útvonalával, és a naplózási hozzáférési hitelesítő adat megegyezik a csomag-hozzáférési hitelesítő adatokkal.
- 8. Az **Értékek beállítása** lapon a **Tulajdonság elérési útja** és az **Érték** mezőbe írhatja be a csomag tulajdonságainak felülbírálásához.
- Ha például felül szeretné írni a felhasználói változó értékét, adja meg elérési útját a következő formátumban: **<variable name>\Package.Variables[Felhasználó:: ] Érték**.
- 9. Miután befejezte az összes fenti konfigurációt, kattintson az **OK** gombra az Ügynöki feladat konfigurációjának mentéséhez.
- 10. Indítsa el az Ügynök feladatot az SSIS-csomag végrehajtásához.
+1. Kattintson az **OK** gombra az ügynök-feladatok konfigurációjának mentéséhez.
+1. Indítsa el az ügynök feladatot a SSIS-csomag futtatásához.
 
 
- ## <a name="cancel-ssis-package-execution"></a>SSIS-csomag végrehajtásának megszakítása
- Ha megszakítja a csomag végrehajtását egy Azure SQL felügyelt ügynök feladatból, az alábbi lépéseket kell végrehajtania, ahelyett, hogy közvetlenül leállítana az ügynöki feladat.
- 1. Keresse meg az SQL ügynök **jobId-tól** **msdb.dbo.sysjobs**.
- 2. Keresse meg a megfelelő **SSIS-végrehajtási azonosítót** a feladatazonosító alapján az alábbi lekérdezés sel:
-    ```sql
-    select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
-    ```
- 3. Válassza **az Aktív műveletek lehetőséget** az SSIS-katalógusban.
+## <a name="run-an-ssis-package-in-the-file-system"></a>SSIS-csomag futtatása a fájlrendszerben
+Ebben az eljárásban Azure SQL Database felügyelt példány-ügynököt használ a fájlrendszerben tárolt SSIS-csomag futtatásához.
 
-    ![Csomagforrás típusa - Fájlrendszer](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+1. A SSMS legújabb verziójában kapcsolódjon Azure SQL Database felügyelt példányhoz.
+1. Hozzon létre egy új Agent-feladatot és egy új feladatot. A **SQL Server Agent**alatt kattintson a jobb gombbal a **feladatok** mappára, majd válassza az **új feladat**elemet.
 
- 4. A megfelelő művelet leállítása **a végrehajtási azonosító**alapján.
+   ![Új ügynök feladatainak létrehozásához kiválasztott beállítások](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+
+1. Az **új feladatütemezés** lapon válassza ki **SQL Server Integration Services csomagot** típusként.
+
+   ![Új SSIS-feladatok létrehozásának lépései](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+
+1. A **csomag** lapon:
+
+   1. A **csomag forrása**területen válassza a **fájlrendszer**lehetőséget.
+   
+   1. A **forrásfájl típusa**:   
+
+      - Ha a csomag fel van töltve Azure Filesre, válassza az **Azure-fájlmegosztás**lehetőséget.
+
+        ![A forrásfájl típusának beállításai](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
+      
+        A csomag elérési útja ** \\ <storage account name>:\<. file.Core.Windows.net fájlmegosztás neve \<>csomag neve>. dtsx**.
+      
+        Az Azure-fájl eléréséhez adja meg az Azure-fiók nevét és a fiók kulcsát a **fájl-hozzáférési hitelesítő adatok**megadása alatt. A tartomány az **Azure**-ban van beállítva.
+
+      - Ha a csomag egy hálózati megosztásra van feltöltve, válassza a **hálózati megosztás**lehetőséget.
+      
+        A csomag elérési útja a csomagfájl UNC elérési útja a. dtsx kiterjesztéssel.
+      
+        A hálózati megosztási csomag fájljának eléréséhez adja meg a megfelelő tartományt, felhasználónevet és jelszót.
+   1. Ha a csomagfájl jelszóval van titkosítva, válassza a **titkosítási jelszó** lehetőséget, és adja meg a jelszót.
+1. Ha a SSIS-csomag futtatásához konfigurációs fájlra van szüksége, a **konfigurációk** lapon adja meg a konfigurációs fájl elérési útját.
+1. A **végrehajtási beállítások** lapon kiválaszthatja, hogy a SSIS-csomag futtatásához **Windows-hitelesítést** vagy **32-bites futtatókörnyezetet** szeretne használni.
+1. A **naplózás** lapon kiválaszthatja a naplózási útvonalat és a naplózási hozzáférési hitelesítő adatokat a naplófájlok tárolásához. Alapértelmezés szerint a naplózási útvonal megegyezik a csomag mappájának elérési útjával, és a naplózási hozzáférési hitelesítő adatok megegyeznek a csomag hozzáférési hitelesítő adataival.
+1. Az **értékek beállítása** lapon megadhatja a tulajdonság elérési útját és értékét a csomag tulajdonságainak felülbírálásához.
+ 
+   A felhasználói változó értékének felülbírálásához például adja meg az elérési útját a következő formátumban: **\Package.variables [user:<variable name>:]. Érték**.
+1. Kattintson az **OK** gombra az ügynök-feladatok konfigurációjának mentéséhez.
+1. Indítsa el az ügynök feladatot a SSIS-csomag futtatásához.
+
+
+## <a name="cancel-ssis-package-execution"></a>SSIS-csomag végrehajtásának megszakítása
+Ha meg szeretné szüntetni a csomagok végrehajtását egy Azure SQL Database felügyelt példány-ügynök feladataiból, hajtsa végre az alábbi lépéseket az ügynök feladat közvetlen leállítása helyett:
+
+1. Keresse meg az SQL Agent **jobId** az **msdb. dbo. sysjobs**címről.
+1. Keresse meg a megfelelő SSIS- **executionId** a feladatsor alapján a következő lekérdezés használatával:
+   ```sql
+   select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
+   ```
+1. Kattintson a jobb gombbal a SSISDB-katalógusra, majd válassza az **aktív műveletek**elemet.
+
+   !["Aktív műveletek" a SSISDB-katalógus helyi menüjében](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+
+1. Állítsa le a megfelelő műveletet a **executionId**alapján.
 
 ## <a name="next-steps"></a>További lépések
- SSIS-csomagok ütemezése az Azure Data Factory használatával is ütemezheti. Részletes útmutatást az Azure [Data Factory eseményindító című témakörben talál.](how-to-create-event-trigger.md) 
+Azure Data Factory használatával is ütemezhet SSIS-csomagokat. Részletes útmutatásért lásd: [Azure Data Factory eseményvezérelt eseményindító](how-to-create-event-trigger.md). 

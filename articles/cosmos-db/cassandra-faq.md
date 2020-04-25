@@ -1,48 +1,49 @@
 ---
-title: Gyakori kérdések az Azure Cosmos DB API-ról Cassandra számára.
-description: Válaszok at kaphat a Cassandra Azure Cosmos DB API-val kapcsolatos gyakori kérdésekre.
+title: Gyakori kérdések a Cassandra APIról Azure Cosmos DB
+description: Választ kaphat a Azure Cosmos DB Cassandra APIával kapcsolatos gyakori kérdésekre.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 416f0c5f995a101298e84c81317c7d39fb5d43f8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 2d6cae3a7a41eae05783d3bcc12ec2bfe8220c4c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727384"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148325"
 ---
-# <a name="frequently-asked-questions-about-the-azure-cosmos-db-api-for-cassandra"></a>Gyakori kérdések a Cassandra Azure Cosmos DB API-jával kapcsolatban
+# <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Gyakori kérdések a Cassandra APIról Azure Cosmos DB
 
-## <a name="what-are-some-key-differences-between-apache-cassandra-and-cassandra-api"></a>Milyen fontos különbségek vannak az Apache Cassandra és a Cassandra API között?
+## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Mi a különbség az Apache Cassandra és a Cassandra API között?
 
-- Az Apache Cassandra 100 MB-os korlátot javasol a partíciókulcs méretére vonatkozóan. Cassandra API lehetővé teszi, hogy partíciónként legfeljebb 10 GB.Cassandra API allows up to 10GB per partition.
-- Az Apache Cassandra lehetővé teszi a tartós véglegesítések letiltását - azaz hagyja ki az írást a véglegesítési naplóba, és közvetlenül a Memtable(ek)hez lépjen. Ez adatvesztéshez vezethet, ha a csomópont leáll, mielőtt a Memtables kiürítése a SStables lemezre. Cosmos DB mindig tartós véglegesíti, így soha nem lesz adatvesztés.
-- Az Apache Cassandra láthatja a csökkent teljesítményt, ha a munkaterhelés sok lecserélést és/vagy törlést tartalmaz. Ennek oka a törlési kövek, hogy az olvasási számítási feladatok at kell átugrani a legújabb adatok beolvasása. Cassandra API nem fogja látni a csökkent olvasási teljesítmény, ha a számítási feladatok sok lecseréli és/vagy törli.
-- A magas csereszámítási forgatókönyvek során a tömörítésnek futnia kell az SSTables lemezen való egyesítéséhez (az egyesítésre azért van szükség, mert az Apache Cassandra írásai csak hozzáfűzést tartalmaznak, így több frissítés tárolódik különálló SSTable-bejegyzésekként, amelyeket rendszeresen egyesíteni kell). Ez azt is eredményezheti, hogy a tömörítés során csökkent az olvasási teljesítmény. Ez nem fordul elő a Cassandra API-ban, mivel nem valósítmeg tömörítést.
-- Az Apache Cassandra 1 replikációs tényezőjének beállítása lehetséges. Azonban ez alacsony rendelkezésre állást eredményez, ha az egyetlen csomópont az adatok leáll. Ez nem probléma az Azure Cosmos DB Cassandra API-val, mert mindig van egy 4-es replikációs tényező (3 kvóruma).
-- Az Apache Cassandra csomópontjainak hozzáadása/eltávolítása sok manuális beavatkozást igényel, de magas CPU-t is az új csomóponton, miközben a meglévő csomópontok áthelyezik a tokentartományok egy részét az új csomópontba. Ez ugyanaz, ha egy meglévő csomópontot denincs leszerel. A horizontális felskálázás azonban zökkenőmentesen történik az Azure Cosmos DB Cassandra API-ban, a szolgáltatásban/alkalmazásban megfigyelt problémák nélkül.
-- Nincs szükség num_tokens a fürt minden egyes csomópontjára, mint az Apache Cassandra. A csomópontokat és a tokentartományokat a Cosmos DB teljes körűen kezeli.
-- Az Azure Cosmos DB Cassandra API teljes körűen felügyelt, így nincs szükség a csomóponti eszközök parancsok, például a javítás, leszerelés, stb, amelyek az Apache Cassandra.
+- Az Apache Cassandra egy 100 MB-os korlátot javasol a partíciós kulcs méretétől függően. A Azure Cosmos DB Cassandra API legfeljebb 10 GB-nyi partíciót tesz lehetővé.
+- Az Apache Cassandra lehetővé teszi a tartós véglegesítés letiltását. Kihagyhatja az írást a véglegesítő naplóba, és közvetlenül a memtables ugorhat. Ez adatvesztéshez vezethet, ha a csomópont leáll, mielőtt memtables a lemezre SSTables. Azure Cosmos DB mindig tartós véglegesíti az adatvesztés megelőzése érdekében.
+- Az Apache Cassandra megtekintheti a csökkent teljesítményt, ha a munkaterhelés sok kihelyezést és törlést is magában foglal. Ennek az az oka, hogy az olvasási munkaterhelésnek át kell ugrania a legfrissebb adatok beolvasásához. A Cassandra API nem fog megjelenni a csökkent olvasási teljesítmény, ha a munkaterhelésnek sok kihelyezése vagy törlése van.
+- A nagy terhelésű számítási feladatokra vonatkozó forgatókönyvek során a tömörítésnek futnia kell a SSTables a lemezen való egyesítéséhez. (Egyesítésre van szükség, mert az Apache Cassandra írása csak hozzáfűzést igényel. A rendszer több frissítést tárol különálló SSTable-bejegyzésekként, amelyeket időnként egyesíteni kell). Ez a helyzet csökkentheti a tömörítés során felmerülő olvasási teljesítményt is. Ez a teljesítményre gyakorolt hatás nem történik meg a Cassandra APIban, mert az API nem implementálja a tömörítést.
+- Az Apache Cassandra-vel az 1 replikációs tényező beállítása lehetséges. Azonban alacsony rendelkezésre állást eredményez, ha az egyetlen csomópont, amelyen az adat leáll. Ez nem jelent problémát a Azure Cosmos DB Cassandra API miatt, mert mindig van egy 4-es replikációs tényező (kvórum: 3).
+- A csomópontok Apache Cassandra-ben való hozzáadásával vagy eltávolításával manuális beavatkozásra van szükség, valamint az új csomópont magas CPU-használatával, míg a meglévő csomópontok áthelyezik a jogkivonat-tartományokat az új csomópontra. Ez a helyzet ugyanaz, amikor egy meglévő csomópontot szerel le. A Cassandra API azonban a szolgáltatásban vagy alkalmazásban megfigyelt problémák nélkül méretezhető.
+- A fürt minden csomópontján nem szükséges **num_tokens** beállítani az Apache Cassandra-ban. Azure Cosmos DB teljes mértékben felügyeli a csomópontokat és a jogkivonat-tartományokat.
+- A Cassandra API teljes mértékben felügyelve van. Nincs szüksége az Apache Cassandra-ban használt **nodetool** -parancsokra, például a javításra és a leszerelésre.
 
 ## <a name="other-frequently-asked-questions"></a>Egyéb gyakori kérdések
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Mi az Azure Cosmos DB Cassandra API által támogatott protokollverzió? Van terv más protokollok támogatására?
+### <a name="what-protocol-version-does-the-cassandra-api-support"></a>Milyen protokoll-verziót támogat a Cassandra API?
 
-Az Azure Cosmos DB Cassandra API támogatja a CQL 3.x-es verzióját. A CQL-kompatibilitás a nyilvános [Apache Cassandra GitHub tárházon](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile)alapul. Ha visszajelzést kap más protokollok támogatásáról, tudassa velünk a felhasználói [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) [hangvisszajelzést,](https://feedback.azure.com/forums/263030-azure-cosmos-db) vagy küldjön e-mailt a rendszernek.
+A Azure Cosmos DB Cassandra API támogatja a CQL 3. x verzióját. A CQL kompatibilitása a nyilvános [Apache Cassandra GitHub-adattáron](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile)alapul. Ha visszajelzést szeretne küldeni más protokollok támogatásáról, tudassa velünk a [felhasználói visszajelzések](https://feedback.azure.com/forums/263030-azure-cosmos-db) segítségével, vagy küldjön e [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)-mailt a címre.
 
-### <a name="why-is-choosing-a-throughput-for-a-table-a-requirement"></a>Miért követelmény egy tábla átviteli igényének kiválasztása?
+### <a name="why-is-choosing-throughput-for-a-table-a-requirement"></a>Miért van szükség az átviteli sebességre a táblázathoz?
 
-Az Azure Cosmos DB alapátviteli értéket állít be a tárolóhoz annak alapján, hogy honnan hozza létre a táblát - portálról vagy CQL-ből.
-Az Azure Cosmos DB garantálja a teljesítményt és a késést, a működés felső határa. Ez a garancia akkor lehetséges, ha a motor kényszerítheti a bérlő műveleteinek irányítását. Az átviteli képesség beállítása biztosítja, hogy megkapja a garantált átviteli és késési, mert a platform fenntartja ezt a kapacitást, és garantálja a működés sikerességét.
-[Rugalmasan módosíthatja az átviteli szintet,](manage-scale-cassandra.md) hogy kihasználhassa az alkalmazás szezonalitását, és költségeket takaríthat meg.
+Azure Cosmos DB beállítja a tároló alapértelmezett átviteli sebességét azon alapul, hogy hol hozza létre a táblázatot a következő helyről: Azure Portal vagy CQL.
 
-Az átviteli koncepció az [Azure Cosmos DB-ben található kérelemegységek](request-units.md) ismerteti. A tábla átviteli forgalma egyenlően oszlik meg az alapul szolgáló fizikai partíciók között.
+A Azure Cosmos DB a teljesítményre és a késésre vonatkozó garanciákat biztosít a műveletek felső határain belül. Ezek a garanciák akkor lehetnek lehetségesek, ha a motor érvényesítheti a bérlő műveleteinek irányítását. Az átviteli sebesség beállításával biztosíthatja a garantált átviteli sebességet és a késést, mivel a platform fenntartja ezt a kapacitást, és garantálja a művelet sikerességét.
+[Rugalmasan módosíthatja az átviteli sebességet](manage-scale-cassandra.md) , és kihasználhatja az alkalmazás szezonális előnyeit, és megtakaríthatja a költségeket.
 
-### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>Mi a tábla alapértelmezett RU/s-a cql-on keresztül létrehozva? Mi a teendő, ha meg kell változtatnom?
+Az átviteli sebesség fogalmát Azure Cosmos DB cikkben [szereplő kérelmek egységei](request-units.md) ismertetik. A tábla átviteli sebessége egyenlően oszlik meg a mögöttes fizikai partíciók között.
 
-Az Azure Cosmos DB kérelemegység/másodperc (RU/s) pénznemként használja az átviteli értéket. A CQL-en keresztül létrehozott táblák 400 RU-val rendelkeznek. A vt.-t a portálról módosíthatja.
+### <a name="what-is-the-throughput-of-a-table-thats-created-through-cql"></a>Mi a CQL-on keresztül létrehozott tábla átviteli sebessége?
+
+A Azure Cosmos DB a másodpercenkénti kérelmek egységét (RU/s) használja az átviteli sebesség biztosításához. A CQL-en keresztül létrehozott táblák alapértelmezett értéke 400 RU. Az RU-t a Azure Portal lehet módosítani.
 
 CQL
 
@@ -60,125 +61,132 @@ outgoingPayload["cosmosdb_provisioned_throughput"] = Encoding.UTF8.GetBytes(prov
 simpleStatement.SetOutgoingPayload(outgoingPayload);
 ```
 
-### <a name="what-happens-when-throughput-is-used-up"></a>Mi történik, ha az átviteli áteresztőáltal használt?
+### <a name="what-happens-when-throughput-is-used-up"></a>Mi történik, ha a rendszer felhasználja az átviteli sebességet?
 
-Az Azure Cosmos DB garantálja a teljesítményt és a késést, a működés felső határa. Ez a garancia akkor lehetséges, ha a motor kényszerítheti a bérlő műveleteinek irányítását. Ez az átviteli képesség beállítása alapján lehetséges, amely biztosítja a garantált átviteli és késési kapacitást, mivel a platform fenntartja ezt a kapacitást, és garantálja a működés sikerét.
-Ha túllépi ezt a kapacitást, túlterhelt hibaüzenet jelenik meg, amely jelzi, hogy a kapacitás a használt volt.
-0x1001 Túlterhelt: a kérés nem dolgozható fel, mert a "Kérelem aránya nagy". Ebben a helyzetben fontos, hogy lássuk, milyen műveletek és azok mennyisége okozza ezt a problémát. A portálon metrikákkal rendelkező felhasznált kapacitásról képet kaphat. Ezután biztosítania kell, hogy a kapacitás szinte egyenlően kerüljön felhasználásra az összes alapul szolgáló partíción. Ha látja, hogy az átviteli hang nagy részét egy partíció használja fel, akkor a munkaterhelés ferde.
+A Azure Cosmos DB a teljesítményre és a késésre vonatkozó garanciákat biztosít a műveletek felső határain belül. Ezek a garanciák akkor lehetnek lehetségesek, ha a motor érvényesítheti a bérlő műveleteinek irányítását. Az átviteli sebesség beállításával biztosíthatja a garantált átviteli sebességet és a késést, mivel a platform fenntartja ezt a kapacitást, és garantálja a művelet sikerességét.
 
-Metrikák érhetők el, amelyek megmutatják, hogyan átviteli órákban, napokon és hét naponként, partíciók on vagy összesítve. További információ: [Figyelés és hibakeresés metrikákkal az Azure Cosmos DB-ben.](use-metrics.md)
+Ha túllépi ezt a kapacitást, a következő hibaüzenet jelenik meg, amely jelzi, hogy a kapacitást használta:
 
-A diagnosztikai naplók az [Azure Cosmos DB diagnosztikai naplózási](logging.md) cikkben találhatók.
+**0x1001 túlterhelt: a kérés nem dolgozható fel, mert a "kérések aránya nagy"** 
 
-### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Az elsődleges kulcs leképezi az Azure Cosmos DB partíciókulcs-koncepcióját?
+Fontos megtekinteni, hogy milyen műveletek (és a kötetek) okozzák ezt a problémát. Megtudhatja, milyen felhasználható kapacitásra lesz szüksége a kiépített kapacitáshoz a Azure Portal metrikákkal. Ezután gondoskodnia kell arról, hogy a kapacitás majdnem egyenlően legyen felhasználva az összes mögöttes partíción. Ha úgy látja, hogy az egyik partíció az átviteli sebesség nagy részét felhasználja, a számítási feladatok eldöntése megtörténik.
 
-Igen, a partíciókulcs az entitás megfelelő helyre való elhelyezéséhez használatos. Az Azure Cosmos DB-ben a fizikai partíción tárolt megfelelő logikai partíció megkereséséhez használható. A particionálási koncepció jól ismert az [Azure Cosmos DB-cikkben](partition-data.md) a partíció és a méretezés. Az alapvető elvenni itt az, hogy a logikai partíció nem megy át a 10 GB-os korlátot ma.
+A metrikák elérhetők, amelyek bemutatják, hogyan használják az átviteli sebességet óra, nap és hét nap alatt, a partíciók között vagy összesítve. További információ: [monitorozás és hibakeresés a metrikákkal a Azure Cosmos db](use-metrics.md).
 
-### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Mi történik, ha a kvóta teljes" értesítést kapok, amely jelzi, hogy egy partíció megtelt?
+A diagnosztikai naplókat a [Azure Cosmos db diagnosztikai naplózási](logging.md) cikkben ismertetjük.
 
-Az Azure Cosmos DB egy SLA-alapú rendszer, amely korlátlan skálázást biztosít, garanciákkal a késés, az átviteli, a rendelkezésre állás és a konzisztencia. Ez a korlátlan tárterület alapul horizontális horizontális adatskálázás particionálás, mint a kulcs fogalom használatával. A particionálási koncepció jól ismert az [Azure Cosmos DB-cikkben](partition-data.md) a partíció és a méretezés.
+### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Az elsődleges kulcs a Azure Cosmos DB partíciós kulcsának fogalmát képezi?
 
-A 10 GB-os korlát az entitások vagy elemek logikai partíciónként i kell tartania. Annak érdekében, hogy az alkalmazás méretezése jól, azt javasoljuk, hogy *ne* hozzon létre egy gyorsválasztó partíciót az összes információ tárolása egy partíción, és lekérdezi azt. Ez a hiba csak akkor jöhet, ha az adatok ferdeek: azaz sok adat&nbsp;van egy partíciókulcshoz (több mint 10 GB). Az adatok eloszlása a tárolóportálon található. A hiba megoldása a tábla újbóli létrehozása és egy részletes elsődleges (partíciókulcs) kiválasztása, amely lehetővé teszi az adatok jobb elosztását.
+Igen, a partíciós kulcs az entitás megfelelő helyen történő elhelyezésére szolgál. Azure Cosmos DB a fizikai partíción tárolt megfelelő logikai partíció megtalálására szolgál. A particionálási koncepció jól magyarázható a [partícióban és a skálázás Azure Cosmos db](partition-data.md) cikkben. A lényeges elvihetőség az, hogy a logikai partíciók nem haladják meg a 10 GB-os korlátot.
 
-### <a name="is-it-possible-to-use-cassandra-api-as-key-value-store-with-millions-or-billions-of-individual-partition-keys"></a>Használható-e a Cassandra API kulcsérték-tárolóként több millió vagy milliárd egyedi partíciókulcssal?
+### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Mi történik, ha értesítést kapok, hogy egy partíció megtelt?
 
-Az Azure Cosmos DB korlátlan adattárolást biztosíthat a tárterület horizontális felskálázásával. Ez független az átviteli. Igen, mindig használhatja a Cassandra API-t a kulcs/értékek tárolásához és lekéréséhez a jobb elsődleges/partíciókulcs megadásával. Ezek az egyes kulcsok kap saját logikai partíciót, és üljön a fizikai partíció problémák nélkül.
+Azure Cosmos DB a szolgáltatói szerződésen (SLA) alapuló rendszer. Korlátlan méretű, a késés, az átviteli sebesség, a rendelkezésre állás és a konzisztencia garanciáit biztosítja. Ez a korlátlan tárterület a horizontálisan kibővített adatmennyiségen alapul, és a particionálást a legfontosabb koncepcióként használja. A particionálási koncepció jól magyarázható a [partícióban és a skálázás Azure Cosmos db](partition-data.md) cikkben.
 
-### <a name="is-it-possible-to-create-more-than-one-table-with-apache-cassandra-api-of-azure-cosmos-db"></a>Létrehozhat egynél több táblát az Azure Cosmos DB Apache Cassandra API-jával?
+Az entitások vagy elemek számának 10 GB-os korlátját kell betartania logikai partíciók esetében. Annak érdekében, hogy az alkalmazás jól méretezhető legyen, azt javasoljuk, hogy *ne* hozzon létre egy gyors partíciót úgy, hogy az összes információt egy partícióban tárolja, és lekérdezi azt. Ez a hiba csak akkor jön el, ha az adatai elferdítve vannak: ez egy partíciós kulcs (több mint 10&nbsp;GB). Az adateloszlás a Storage Portal használatával található. A hiba kijavításának módja a tábla újbóli létrehozása és a részletes elsődleges (partíciós kulcs) kiválasztása, amely lehetővé teszi az adatelosztást.
 
-Igen, az Apache Cassandra API-val több táblát is létrehozhat. Minden ilyen táblák az átviteli és tárolási egységként kezelik.
+### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>Használhatom a Cassandra API a Key Value Store-ban millió vagy több milliárd partíciós kulccsal?
 
-### <a name="is-it-possible-to-create-more-than-one-table-in-succession"></a>Lehet-e egymás után több táblát létrehozni?
+A Azure Cosmos DB a tárterület horizontális felskálázásával korlátlan mennyiségű adattárolást képes tárolni. Ez a tárterület független az átviteli sebességtől. Igen, mindig a Cassandra API csak a kulcsok és értékek tárolására és lekérésére használhatja a megfelelő elsődleges/partíciós kulcs megadásával. Ezek az egyéni kulcsok a saját logikai partícióját kapják meg, és problémák nélkül, egy fizikai partíción ülnek.
 
-Az Azure Cosmos DB az adat- és vezérlősík-tevékenységek erőforrás által szabályozott rendszere. Tárolók, például a gyűjtemények, táblák futásidejű entitások, amelyek ki vannak építve adott átviteli kapacitás. Ezek a tárolók létrehozása gyors egymásutánban nem várható tevékenység és szabályozott. Ha olyan tesztjei vannak, amelyek azonnal eldobják/létre hozzák a táblákat, próbálja meg kiterezni őket.
+### <a name="can-i-create-more-than-one-table-with-the-cassandra-api"></a>Létrehozhatok több táblázatot is a Cassandra API?
 
-### <a name="what-is-maximum-number-of-tables-that-can-be-created"></a>Mi a létrehozható táblák maximális száma?
+Igen, több táblát is létre lehet hozni a Cassandra API. Ezeket a táblákat az átviteli sebesség és a tárolás egységként kezeli a rendszer.
 
-Nincs fizikai korlátozás a táblák száma, küldjön [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) egy e-mailt, ha nagy számú táblák (ahol a teljes állandó mérete meghaladja a 10 TB-os adatok), hogy létre kell hozni a szokásos 10s vagy 100s.
+### <a name="can-i-create-more-than-one-table-in-succession"></a>Több táblázatot is Létrehozhatok egymás után?
 
-### <a name="what-is-the-maximum--of-keyspace-that-we-can-create"></a>Mi a maximális # keyspace, hogy tudunk létrehozni?
+Azure Cosmos DB erőforrás-szabályozású rendszer az adatkezelési és vezérlési sík tevékenységekhez. A tárolók, például gyűjtemények és táblák olyan futásidejű entitások, amelyek egy adott átviteli kapacitáshoz vannak kiépítve. A tárolók gyors egymásutánban való létrehozása nem várt tevékenység, és lehet, hogy szabályozva van. Ha olyan tesztekkel rendelkezik, amelyek azonnal eldobják vagy létrehozzák a táblákat, próbálja meg kihúzni a helyet.
 
-Nincs fizikai korlát a kulcsterek száma, mivel azok metaadat-tárolók, küldjön egy e-mailt, [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) ha valamilyen okból nagy számú kulcsterülettel rendelkezik.
+### <a name="what-is-the-maximum-number-of-tables-that-i-can-create"></a>Legfeljebb hány tábla hozható létre?
 
-### <a name="is-it-possible-to-bring-in-lot-of-data-after-starting-from-normal-table"></a>Lehetséges-e sok adatot behozni a normál táblából való kiindulat után?
+A táblák számának nincs fizikai korlátja. Ha nagy számú táblával rendelkezik (ahol a teljes állandó méret több mint 10 TB adat), amelyeket létre kell hoznia, nem a szokásos tíz vagy száz, küldjön e-mailt [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)a címre.
 
-Igen, feltéve, hogy az egyenletesen elosztott partíciók, a tárolókapacitás automatikusan kezeli, és növekszik, ahogy több adatot. Így magabiztosan importálhat annyi adatot, amennyire szüksége van a csomópontok kezelése és kiépítése nélkül, és így tovább. Ha azonban sok azonnali adatnövekedésre számít, akkor több értelme van [közvetlenül a várható átviteli sebességgel való ellátásnak,](set-throughput.md) ahelyett, hogy alacsonyabb anamnézist indítana, és azonnal növelné azt.
+### <a name="what-is-the-maximum-number-of-keyspaces-that-i-can-create"></a>Legfeljebb mekkora lemezterületet hozhatok létre?
 
-### <a name="is-it-possible-to-supply-yaml-file-settings-to-configure-apache-casssandra-api-of-azure-cosmos-db-behavior"></a>Meg adható yaml fájlbeállítások az Azure Cosmos DB viselkedésapache Casssandra API-jának konfigurálásához?
+Nincs fizikai korlátja a kulcstárolók számának, mert metaadat-tárolók. Ha nagy számú alapterülettel rendelkezik, küldjön e-mailt a [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)címre.
 
-Az Azure Cosmos DB Apache Cassandra API-ja egy platformszolgáltatás. Protokollszintű kompatibilitást biztosít a műveletek végrehajtásához. Elrejti a felügyelet, a figyelés és a konfiguráció összetettségét. Fejlesztőként/felhasználóként nem kell aggódnia a rendelkezésre állás, a törlési kövek, a kulcsgyorsítótár, a sorgyorsítótár, a virágzásszűrő és az egyéb beállítások sokasága miatt. Az Azure Cosmos DB Apache Cassandra API-ja olyan olvasási és írási teljesítmény biztosítására összpontosít, amelya konfiguráció és a felügyelet többletterhelése nélkül szükséges.
+### <a name="can-i-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>A normál táblázatból való Kiindulás után nagy mennyiségű adatok is behelyezhetők?
 
-### <a name="will-apache-cassandra-api-for-azure-cosmos-db-support-node-additioncluster-statusnode-status-commands"></a>Az Apache Cassandra API az Azure Cosmos DB-hez támogatja a csomópont-összeadást/fürt állapot/csomópont állapotparancsokat?
+Igen. Az egységesen elosztott partíciókat feltételezve a rendszer automatikusan felügyeli a tárolókapacitást, és a további adattovábbítás során is növekszik. Így magabiztosan importálhatja a szükséges mennyiségű adatmennyiséget a csomópontok kezelése és kiépítése nélkül. Ha azonban sok azonnali adatmennyiségre van szüksége, érdemes lehet közvetlenül [kiépíteni a várt átviteli sebességet](set-throughput.md) ahelyett, hogy az alacsonyabb értéket kellene megkezdenie, és nem szeretné azonnal növelni.
 
-Az Apache Cassandra API egy platformszolgáltatás, amely megkönnyíti a kapacitástervezést, és megfelel az átviteli & tárolási rugalmassági igényeknek. Az Azure Cosmos DB-vel kikell építenie az átviteli, szükséges. Ezután a nap folyamán tetszőleges számú alkalommal skálázhatja anélkül, hogy aggódnia kellene a csomópontok hozzáadása/törlése vagy kezelése miatt. Ez azt jelenti, hogy nem kell használnia a csomópontot, a fürtkezelő eszközt is.
+### <a name="can-i-use-yaml-file-settings-to-configure-api-behavior"></a>Használhatom a YAML az API viselkedésének konfigurálására?
 
-### <a name="what-happens-with-respect-to-various-config-settings-for-keyspace-creation-like-simplenetwork"></a>Mi történik a keyspace létrehozása különböző konfigurációs beállításaival kapcsolatban, például az egyszerű/hálózat?
+A Azure Cosmos DB Cassandra API protokoll szintű kompatibilitást biztosít a műveletek végrehajtásához. Elrejti a felügyelet, a figyelés és a konfiguráció összetettségét. Fejlesztőként vagy felhasználóként nem kell aggódnia a rendelkezésre állás, a sírkövek, a kulcs gyorsítótára, a sor gyorsítótára, a Bloom Filter és számos más beállítás alapján. A Cassandra API a konfiguráció és a felügyelet nélkül szükséges olvasási és írási teljesítmény biztosítására koncentrál.
 
-Az Azure Cosmos DB globális terjesztést biztosít a rendelkezésre állás és az alacsony késés miatt. Nem kell replikákat vagy más dolgokat beállítania. Minden írási mindig tartósan kvórum elkötelezett minden olyan régióban, ahol ír, miközben teljesítménygaranciákat.
+### <a name="will-the-cassandra-api-support-node-addition-cluster-status-and-node-status-commands"></a>A Cassandra API támogatja a csomópontok hozzáadását, a fürt állapotát és a csomópont állapotára vonatkozó parancsokat?
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gc_grace-compression-memtable_flush_period-and-more"></a>Mi történik a tábla metaadatainak különböző beállításaival kapcsolatban, például a virágzásszűrővel, a gyorsítótárazással, az olvasási javítási módosítással, a gc_grace, a tömörítési memtable_flush_period stb.
+A Cassandra API leegyszerűsíti a kapacitás megtervezését, és válaszol az átviteli sebesség és a tárterület rugalmassági követelményeire. A Azure Cosmos DBával kiépítheti a szükséges átviteli sebességet. Ezt követően tetszőleges számú alkalommal felskálázást végezhet a nap folyamán, és nem kell aggódnia a csomópontok hozzáadásával, törlésével vagy kezelésével kapcsolatban. Nem szükséges eszközöket használni a csomópont-és a fürt kezeléséhez.
 
-Az Azure Cosmos DB az olvasási/írási és átviteli teljesítmény teljesítményét anélkül biztosítja, hogy meg kellene érintenie a konfigurációs beállításokat, és véletlenül manipulálnia kellene őket.
+### <a name="what-happens-with-various-configuration-settings-for-keyspace-creation-like-simplenetwork"></a>Mi történik a különböző konfigurációs beállításokkal, például az egyszerű vagy a hálózati tárterülettel?
 
-### <a name="is-time-to-live-ttl-supported-for-cassandra-tables"></a>Az élő (TTL) támogatja a Cassandra táblák?
+A Azure Cosmos DB globális elosztást biztosít a rendelkezésre álláshoz és a kis késleltetésű okokhoz. Nem kell replikákat vagy más dolgokat beállítania. Az írások mindig tartósan a kvórumot minden olyan régióban, ahol írsz, miközben teljesítménybeli garanciákat biztosítanak.
 
-Igen, a TTL támogatott.
+### <a name="what-happens-with-various-settings-for-table-metadata"></a>Mi történik a táblázat metaadatainak különböző beállításaival?
 
-### <a name="is-it-possible-to-monitor-node-status-replica-status-gc-and-os-parameters-earlier-with-various-tools-what-needs-to-be-monitored-now"></a>Lehet-e figyelni a csomópont állapotát, replika állapotát, a gc és az operációs rendszer paramétereit korábban különböző eszközökkel? Mit kell most ellenőrizni?
+A Azure Cosmos DB teljesítménybeli garanciákat biztosít az olvasási, írási és átviteli sebességhez. Így nem kell aggódnia a konfigurációs beállítások megérintése és a véletlen kezelés érdekében. Ezek a beállítások közé tartoznak a Bloom Filter, a gyorsítótárazás, a javítási lehetőség, a gc_grace és a tömörítési memtable_flush_period.
 
-Az Azure Cosmos DB egy platformszolgáltatás, amely segít növelni a termelékenységet, és nem kell aggódnia az infrastruktúra kezelése és figyelése miatt. Csak a portálmetrikákon elérhető átviteli teljesítményről kell gondoskodnia, hogy megkeresse, ha szabályozásalá kerül, és növeli vagy csökkenti az átviteli fésületi.
-Monitor [SlAs](monitor-accounts.md).
-[Metrikák](use-metrics.md) használata [Diagnosztikai naplók használata](logging.md).
+### <a name="is-time-to-live-supported-for-cassandra-tables"></a>A Cassandra Tables esetében a Time-Live támogatott?
 
-### <a name="which-client-sdks-can-work-with-apache-cassandra-api-of-azure-cosmos-db"></a>Mely ügyfél-SDK-k működhetnek az Azure Cosmos DB Apache Cassandra API-jával?
+Igen, az élettartam támogatott.
 
-Az Apache Cassandra SDK CQLv3-at használó ügyfél-illesztőprogramjait ügyfélprogramokhoz használták. Ha más illesztőprogramokat is használ, vagy ha problémákkal [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)szembesül, küldjön e-mailt a alkalmazásba.
+### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>Hogyan figyelhető meg az infrastruktúra az átviteli sebesség mellett?
 
-### <a name="is-composite-partition-key-supported"></a>Támogatott az összetett partíciókulcs?
+A Azure Cosmos DB egy olyan platform-szolgáltatás, amely segít a hatékonyság növelésében, és nem kell aggódnia az infrastruktúra kezelésével és figyelésével. Például nem szükséges a csomópontok állapotának, a replika állapotának, a GC-nek és az operációs rendszer paramétereinek a figyelése a különböző eszközökkel. Mindössze annyit kell tennie, hogy a portál metrikájában elérhető átviteli sebességet szeretné megtekinteni, hogy a rendszer leszabályozza-e a szabályozást, majd növelje vagy csökkentse az átviteli sebességet. A következőket teheti:
 
-Igen, a normál szintaxissal összetett partíciókulcsot hozhat létre.
+- [SLA](monitor-accounts.md) -figyelés
+- [Metrikák](use-metrics.md) használata
+- [Diagnosztikai naplók](logging.md) használata
 
-### <a name="can-i-use-sstableloader-for-data-loading"></a>Használhatom a sstableloadert az adatok betöltéséhez?
+### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Mely ügyféloldali SDK-k működhetnek a Cassandra API?
+
+Az Apache Cassandra SDK az CQLv3-t használó ügyféloldali illesztőprogramjait használták az ügyfélalkalmazások számára. Ha más illesztőprogramokat használ, vagy ha problémák merülnek fel, küldjön e-mailt a [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)következőnek:.
+
+### <a name="are-composite-partition-keys-supported"></a>Támogatottak-e az összetett partíciós kulcsok?
+
+Igen, használhat reguláris szintaxist összetett partíciós kulcsok létrehozásához.
+
+### <a name="can-i-use-sstableloader-for-data-loading"></a>Használhatom a sstableloader az betöltéshez?
 
 Nem, a sstableloader nem támogatott.
 
-### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>Párosítható egy helyszíni Apache Cassandra-fürt az Azure Cosmos DB Cassandra API-jával?
+### <a name="can-i-pair-an-on-premises-apache-cassandra-cluster-with-the-cassandra-api"></a>Egy helyszíni Apache Cassandra-fürtöt is párosítható a Cassandra API?
 
-Jelenleg az Azure Cosmos DB egy optimalizált élményt felhőalapú környezetben, a műveletek terhelése nélkül. Ha párosításra van szüksége, [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) küldjön e-mailt a forgatókönyv leírásával. Dolgozunk kínál kínál, hogy segítsen párosítani a helyszíni/különböző felhő Cassandra klaszter Cosomos DB Cassandra API.We are working on offering to help pair the on-premises/different cloud Cassandra cluster to Cosomos DB's Cassandra API.
+A Azure Cosmos DB jelenleg a működési terhelés nélküli felhőalapú környezethez optimalizált élményt nyújt. Ha párosításra van szüksége, küldjön e- [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) mailt a forgatókönyv leírásával. Olyan ajánlaton dolgozunk, amely segít a helyszíni vagy a Felhőbeli Cassandra-fürtnek a Azure Cosmos DB Cassandra APIhoz való párosításában.
 
-### <a name="does-cassandra-api-provide-full-backups"></a>A Cassandra API teljes biztonsági mentést biztosít?
+### <a name="does-the-cassandra-api-provide-full-backups"></a>Biztosít a Cassandra API teljes biztonsági mentést?
 
-Az Azure Cosmos DB két ingyenes teljes biztonsági mentést biztosít, amelyeket ma négy órás időközönként az összes API-ban készít. Ez biztosítja, hogy nem kell biztonsági mentési ütemezést és egyéb dolgokat beállítania.
-Ha módosítani szeretné a megőrzést és [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) a gyakoriságot, küldjön egy e-mailt, vagy emelje fel a támogatási esetet. A biztonsági mentési képességről az Automatikus online biztonsági mentés és visszaállítás az [Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) cikkben található.
+Azure Cosmos DB két teljes biztonsági mentést biztosít az összes API-ban négy órás időközönként. Így nem kell beállítania a biztonsági mentési ütemtervet. 
 
-### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Hogyan kezeli a Cassandra API-fiók feladatátvételt, ha egy régió leáll?
+Ha módosítani kívánja az adatmegőrzést és a gyakoriságot [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) , küldjön e-mailt egy támogatási esetre, vagy emeljen fel. A biztonsági mentési képességgel kapcsolatos tudnivalókat az [automatikus online biztonsági mentés és visszaállítás Azure Cosmos db](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) cikkben találja.
 
-Az Azure Cosmos DB Cassandra API az Azure Cosmos DB globálisan elosztott platformjáról kölcsönöz. Annak érdekében, hogy az alkalmazás tolerálja az adatközpont állásidejét, engedélyezze legalább még egy régiót a fiókhoz az Azure Cosmos DB portál [fejlesztése többrégiós Azure Cosmos DB-fiókokkal.](high-availability.md) Beállíthatja a régió prioritását a [Fejlesztés többrégiós Azure Cosmos DB-fiókokkal portál](high-availability.md)használatával.
+### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Hogyan kezeli a Cassandra API fiók a feladatátvételt, ha egy régió leáll?
 
-Annyi régiót adhat hozzá, amennyit csak szeretne a fiókhoz, és azt a vezérlőt, ahol feladatátvételi prioritás térhet át. Az adatbázis használatához ott is meg kell adnia egy alkalmazást. Ha így tesz, az ügyfelek nem tapasztalnak leállást.
+A Cassandra API a Azure Cosmos DB globálisan elosztott platformján kölcsönöz. Annak biztosítása érdekében, hogy az alkalmazás képes legyen az adatközpont leállásának elvégzésére, legalább egy régiót engedélyezzen a fiókhoz a Azure Portal. További információ: [a magas rendelkezésre állás és a Azure Cosmos db](high-availability.md).
 
-### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Az Apache Cassandra API alapértelmezés szerint indexeli egy entitás összes attribútumát?
+A fiókhoz tetszőleges számú régiót adhat hozzá, és szabályozhatja, hogy a feladatátvételi prioritás biztosításával miként lehet átadni a feladatokat. Az adatbázis használatához meg kell adnia egy alkalmazást is. Ha így tesz, az ügyfelek nem fognak tapasztalni állásidőt.
 
-Nem. Cassandra API támogatja a [másodlagos indexek](cassandra-secondary-index.md), amely nagyon hasonló módon viselkedik az Apache Cassandra. Alapértelmezés szerint nem indexel minden attribútumot.  
+### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Az Cassandra API indexeli az entitás összes attribútumát alapértelmezés szerint?
 
-
-### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Használhatom az új Cassandra API SDK-t helyileg az emulátorral?
-
-Igen, ez támogatott. Itt talál részleteket arról, hogyan lehet [ezt](local-emulator.md#cassandra-api) engedélyezni
+Nem. A Cassandra API támogatja a [másodlagos indexeket](cassandra-secondary-index.md), amelyek hasonló módon viselkednek az Apache Cassandra-ben. Az API alapértelmezés szerint nem indexel minden attribútumot.  
 
 
-### <a name="how-can-i-migrate-data-from-their-apache-cassandra-clusters-to-cosmos-db"></a>Hogyan telepíthetek át adatokat az Apache Cassandra-fürtökről a Cosmos DB-be?
+### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Helyileg is használhatom az új Cassandra API SDK-t az emulátorral?
 
-Az áttelepítési lehetőségekről [itt olvashat.](cassandra-import-data.md)
+Igen, ez támogatott. A következő témakörből megtudhatja, hogyan engedélyezheti ezt a [helyi fejlesztési és tesztelési célú Azure Cosmos Emulator használatával](local-emulator.md#cassandra-api) .
 
 
-### <a name="feature-x-of-regular-cassandra-api-isnt-working-as-today-where-can-the-feedback-be-provided"></a>A hagyományos Cassandra API x funkciója nem működik, mint ma, hol lehet visszajelzést adni?
+### <a name="how-can-i-migrate-data-from-apache-cassandra-clusters-to-azure-cosmos-db"></a>Hogyan telepíthetek át az Apache Cassandra-fürtökből származó adatok Azure Cosmos DB?
 
-Visszajelzés küldése [a felhasználói hangvisszajelzésen](https://feedback.azure.com/forums/263030-azure-cosmos-db)keresztül.
+Az áttelepítési lehetőségekről az adatáttelepítés [Cassandra API fiókba Azure Cosmos db](cassandra-import-data.md) oktatóanyagban olvashat.
+
+
+### <a name="where-can-i-give-feedback-on-cassandra-api-features"></a>Hol adhatok visszajelzést a Cassandra API szolgáltatásairól?
+
+Visszajelzés küldése a [felhasználói](https://feedback.azure.com/forums/263030-azure-cosmos-db)visszajelzések használatával.
 
 [azure-portal]: https://portal.azure.com
 [query]: sql-api-sql-query.md
 
 ## <a name="next-steps"></a>További lépések
 
-- Az [Azure Cosmos DB Cassandra API-fiók rugalmas méretezésével ismerkedjenek meg.](manage-scale-cassandra.md)
+- Ismerkedjen meg a [Azure Cosmos DB Cassandra API-fiók rugalmas skálázásával](manage-scale-cassandra.md).

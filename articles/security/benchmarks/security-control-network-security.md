@@ -1,191 +1,191 @@
 ---
-title: Azure Security Control – Hálózati biztonság
-description: Az Azure Security Control hálózati biztonság
+title: Azure Security Control – hálózati biztonság
+description: Azure Security Control hálózati biztonság
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f508de35470043cc71bfc8607367f28c04440b57
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dd8ff7d6e86f8534fcb14812d4ddd6dc0b3d7039
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408300"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146967"
 ---
-# <a name="security-control-network-security"></a>Biztonsági ellenőrzés: Hálózati biztonság
+# <a name="security-control-network-security"></a>Biztonsági ellenőrzés: hálózati biztonság
 
-A hálózati biztonsági javaslatok arra összpontosítanak, hogy meghatározzák, mely hálózati protokollok, TCP/UDP-portok és hálózati csatlakoztatott szolgáltatások engedélyezettek vagy megtagadva az Azure-szolgáltatásokhoz való hozzáférést.
+A hálózati biztonsági javaslatok azt határozzák meg, hogy mely hálózati protokollok, TCP/UDP-portok és hálózati csatlakoztatott szolgáltatások engedélyezettek vagy tagadják meg az Azure-szolgáltatások elérését.
 
-## <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1: Az Azure-erőforrások védelme a virtuális hálózatokon belül
+## <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.1 | 9.2, 9.4, 14.1, 14.2, 14.3 | Ügyfél |
+| 1.1 | 9,2, 9,4, 14,1, 14,2, 14,3 | Ügyfél |
 
-Győződjön meg arról, hogy a virtuális hálózat minden alhálózati központi telepítésen van egy hálózati biztonsági csoport, amely az alkalmazás megbízható portjaira és forrásaira jellemző hálózati hozzáférés-vezérléssel rendelkezik. Ha elérhető, használja a privát végpontok a privát kapcsolat tal az Azure-szolgáltatás erőforrásait a virtuális hálózatra a virtuális hálózat identitásának a szolgáltatásra való kiterjesztésével. Ha a privát végpontok és a privát kapcsolat nem érhető el, használja a szolgáltatásvégpontok. A szolgáltatásspecifikus követelményekről az adott szolgáltatásra vonatkozó biztonsági javaslatban tájékot. 
+Győződjön meg arról, hogy az összes Virtual Network alhálózati üzemelő példány rendelkezik egy hálózati biztonsági csoporttal, amely az alkalmazás megbízható portjaira és forrásaira jellemző hálózati hozzáférés-vezérléssel rendelkezik. Ha elérhető, privát végpontok használatával gondoskodhat az Azure-szolgáltatások erőforrásainak virtuális hálózatra való védelméről, ha a VNet-identitást kiterjesztjük a szolgáltatásra. Ha a privát végpontok és a privát hivatkozások nem érhetők el, használja a szolgáltatási végpontokat. A szolgáltatásra vonatkozó követelményekért tekintse meg az adott szolgáltatásra vonatkozó biztonsági javaslatot. 
 
-Másik lehetőségként, ha egy adott használati eset, követelmény lehet teljesíteni az Azure Firewall megvalósításával.
+Ha konkrét használati esettel rendelkezik, a követelmények teljesítése Azure Firewall megvalósításával lehetséges.
 
-- [A virtuális hálózati szolgáltatás végpontjainak ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [Virtual Network szolgáltatási végpontok ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
 
 - [Az Azure privát hivatkozásának megismerése](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
-- [Hogyan hozzunk létre egy virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Virtual Network létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-- [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Biztonsági konfigurációval rendelkező NSG létrehozása](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
-- [Az Azure tűzfal telepítése és konfigurálása](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Azure Firewall üzembe helyezése és konfigurálása](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
 
-## <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2: A virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
+## <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.2 | 9.3, 12.2, 12.8 | Ügyfél |
+| 1.2 | 9,3, 12,2, 12,8 | Ügyfél |
 
-Használja az Azure Security Centert, és kövesse a hálózatvédelmi javaslatokat a hálózati erőforrások azure-beli védelméhez. Engedélyezze az NSG-folyamatnaplókat, és küldjön naplókat egy tárfiókba a forgalomnaplózáshoz. NSG-folyamatnaplókat is küldhet a Log Analytics-munkaterületre, és a Traffic Analytics segítségével betekintést nyújthat az Azure-felhőben a forgalom áramlásába. A Traffic Analytics néhány előnye a hálózati tevékenység vizualizálása és a forró pontok azonosítása, a biztonsági fenyegetések azonosítása, a forgalomáramlási minták megértése és a hálózati helytelen konfigurációk azonosítása.
+Az Azure-ban a hálózati erőforrások biztonságossá tételéhez használja a Azure Security Centert, és kövesse a hálózati védelmi javaslatok című témakört. Engedélyezze a NSG folyamat naplóit, és küldje el a naplókat egy Storage-fiókba a forgalom naplózása érdekében. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-- [Az NSG-folyamatnaplók engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [A NSG folyamat naplófájljainak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
 - [A Traffic Analytics engedélyezése és használata](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
 
-- [Az Azure Security Center által biztosított hálózati biztonság megismerése](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [A Azure Security Center által biztosított hálózati biztonság ismertetése](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
 
-## <a name="13-protect-critical-web-applications"></a>1.3: Védje a kritikus webes alkalmazásokat
+## <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.3 | 9.5 | Ügyfél |
+| 1.3 | 9,5 | Ügyfél |
 
-Telepítse az Azure Web Application Firewall (WAF) a kritikus webalkalmazások előtt a bejövő forgalom további vizsgálata. Engedélyezze a diagnosztikai beállítást a WAF-hez, és betöltése naplók egy tárfiókba, Event Hub vagy Log Analytics-munkaterület.
+Telepítse az Azure webalkalmazási tűzfalat (WAF) a kritikus webalkalmazások előtt a bejövő forgalom további ellenőrzéséhez. Diagnosztikai beállítás engedélyezése a WAF és a naplók betöltéséhez egy Storage-fiókba, az Event hub-ba vagy a Log Analytics-munkaterületre.
 
-- [Az Azure WAF telepítése](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+- [Az Azure WAF üzembe helyezése](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
 
-## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Az ismert rosszindulatú IP-címekkel folytatott kommunikáció megtagadása
+## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.4 | 12.3 | Ügyfél |
+| 1.4 | 12,3 | Ügyfél |
 
-Engedélyezze a DDoS Standard védelmet az Azure virtuális hálózatokon a DDoS-támadások elleni védelem érdekében. Az Azure Security Center integrált fenyegetésfelderítési szolgáltatásával megtagadhatja az ismert rosszindulatú IP-címekkel folytatott kommunikációt.
+Az Azure-beli virtuális hálózatok DDoS standard szintű védelmének engedélyezése a DDoS-támadások elleni védelem érdekében. Az ismert kártékony IP-címekkel folytatott kommunikáció megtagadásához használja Azure Security Center integrált veszélyforrások felderítését.
 
-Telepítse az Azure Firewall-t a szervezet minden hálózati határain, és a fenyegetésfelderítés engedélyezve van, és úgy van beállítva, hogy "Riasztás és megtagadás" a rosszindulatú hálózati forgalom esetén.
+Azure Firewall üzembe helyezése minden szervezet hálózati határain, a fenyegetések felderítése engedélyezve van, és a "riasztás és megtagadás" értékre van állítva a kártékony hálózati forgalom esetében.
 
-Az Azure Security Center Just In Time hálózati hozzáféréssel konfigurálhatja az NSG-ket, hogy korlátozott ideig korlátozza a végpontok kitettségét a jóváhagyott IP-címekre.
+A NSG konfigurálásához használja a Azure Security Center igény szerinti hálózati hozzáférését, hogy korlátozza a végpontok a jóváhagyott IP-címekre való kitettségét korlátozott időtartamra.
 
-Az Azure Security Center Adaptive Network Hardening használatával olyan NSG-konfigurációkat javasolhat, amelyek a tényleges forgalom és a fenyegetésfelderítés alapján korlátozzák a portokat és a forrás IP-ket.
+Azure Security Center adaptív hálózati korlátozással olyan NSG-konfigurációkat javasolhat, amelyek a portok és a forrás IP-címeket korlátozzák a tényleges forgalom és a veszélyforrások felderítése alapján.
 
-- [A DDoS-védelem konfigurálása](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [A DDoS Protection konfigurálása](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
-- [Az Azure tűzfal telepítése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
 
-- [Az Azure Security Center integrált fenyegetésekkel kapcsolatos intelligenciájának megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
 
-- [Az Azure Security Center Adaptive Network hardening (Az Azure Security Center Adaptive Network Hardening) megismerésének ismertetése](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+- [Azure Security Center adaptív hálózat megerősítésének ismertetése](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
 
-- [Az Azure Security Center just in time hálózati hozzáférés-vezérlése](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [Azure Security Center az időponthoz tartozó hálózati Access Control ismertetése](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 
-## <a name="15-record-network-packets"></a>1.5: Hálózati csomagok rögzítése
+## <a name="15-record-network-packets"></a>1,5: hálózati csomagok rögzítése
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.5 | 12.5 | Ügyfél |
+| 1.5 | 12,5 | Ügyfél |
 
-Engedélyezze a Network Watcher csomagrögzítését a rendellenes tevékenységek kivizsgálásához.
+Network Watcher csomagok rögzítésének engedélyezése a rendellenes tevékenységek kivizsgálásához.
 
 - [A Network Watcher engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
 
-## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Hálózati behatolásészlelő/behatolás-megelőző rendszerek (IDS/IPS) telepítése
+## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.6 | 12.6, 12.7 | Ügyfél |
+| 1.6 | 12,6, 12,7 | Ügyfél |
 
-Válasszon ki egy ajánlatot az Azure Piactérről, amely támogatja az IDS/IPS funkciókat a hasznos adatvizsgálati képességekkel.  Ha a behatolásészlelés és/vagy a hasznos adatvizsgálaton alapuló megelőzés nem követelmény, az Azure Firewall fenyegetési intelligenciával használható. Az Azure Firewall Threat intelligenciaalapú szűrés riasztást adhat és megtagadhatja az ismert rosszindulatú IP-címekre és tartományokra irányuló forgalmat. Az IP-címek és tartományok a Microsoft Threat Intelligence hírcsatornából származnak.
+Válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az AZONOSÍTÓk/IP-címek funkciót a hasznos adatok ellenőrzésére szolgáló funkciókkal.  Ha a betörési észlelés és/vagy a tartalom-ellenőrzésen alapuló megelőzés nem követelmény, akkor az Azure Firewall a veszélyforrások felderítésére használható. Azure Firewall fenyegetés intelligencián alapuló szűréssel riasztást kaphat, és megtagadhatja az ismert kártékony IP-címek és tartományok felé irányuló forgalmat. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna.
 
-Telepítse az Ön által választott tűzfalmegoldást a szervezet minden hálózati határain a rosszindulatú forgalom észleléséhez és/vagy megtagadásához.
+Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatja és/vagy megtagadhatja a kártékony forgalmat.
 
 - [Azure Piactér](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-- [Az Azure tűzfal telepítése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
 
-- [Riasztások konfigurálása az Azure Tűzfallal](https://docs.microsoft.com/azure/firewall/threat-intel)
+- [Riasztások konfigurálása Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
 
-## <a name="17-manage-traffic-to-web-applications"></a>1.7: A webes alkalmazások forgalmának kezelése
+## <a name="17-manage-traffic-to-web-applications"></a>1,7: webalkalmazások forgalmának kezelése
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.7 | 12.9, 12.10 | Ügyfél |
+| 1.7 | 12,9, 12,10 | Ügyfél |
 
-Telepítse az Azure Application Gateway-t olyan webes alkalmazásokhoz, amelyeken https/SSL engedélyezve van a megbízható tanúsítványokhoz.
+Az Azure Application Gateway üzembe helyezése a megbízható tanúsítványok számára engedélyezett HTTPS/TLS-alapú webalkalmazásokhoz.
 
-- [Az Alkalmazásátjáró telepítése](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+- [Application Gateway üzembe helyezése](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 
-- [Az Application Gateway beállítása a HTTPS használatára](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+- [A Application Gateway konfigurálása a HTTPS használatára](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
 
-- [A 7.](https://docs.microsoft.com/azure/application-gateway/overview)
+- [A 7. rétegbeli terheléselosztás és az Azure-webalkalmazás-átjárók ismertetése](https://docs.microsoft.com/azure/application-gateway/overview)
 
-## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: A hálózati biztonsági szabályok összetettségének és adminisztratív terhelésének minimalizálása
+## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
 | 1.8 | 1.5 | Ügyfél |
 
-A virtuális hálózati szolgáltatás címkék segítségével hálózati hozzáférés-vezérlést definiáljon a hálózati biztonsági csoportokon vagy az Azure tűzfalon. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatáscímke nevének (pl. ApiManagement) megadásával a szabály megfelelő forrás- vagy célmezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatáscímke által felölelt címelőtagokat, és automatikusan frissíti a szolgáltatáscímkét a címek változásakor.
+A hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáférés-vezérlések definiálásához használja Virtual Network szolgáltatás címkéit. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-Az alkalmazásbiztonsági csoportok segítségével egyszerűsítheti az összetett biztonsági beállításokat is. Az alkalmazásbiztonsági csoportokkal az alkalmazás struktúrájának természetes bővítményeként konfigurálhatja a hálózati biztonságot, így csoportosíthatja a virtuális gépeket, és ezen csoportok alapján meghatározhatja a hálózati biztonsági szabályokat.
+Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az összetett biztonsági konfigurációt. Az alkalmazásbiztonsági csoportokkal az alkalmazás struktúrájának természetes bővítményeként konfigurálhatja a hálózati biztonságot, így csoportosíthatja a virtuális gépeket, és ezen csoportok alapján meghatározhatja a hálózati biztonsági szabályokat.
 
-- [A szolgáltatáscímkék ismertetése és használata](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [A szolgáltatási címkék megismerése és használata](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
-- [Az alkalmazásbiztonsági csoportok ismertetése és használata](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+- [Az alkalmazás biztonsági csoportjai megismerése és használata](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
 
-## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: A hálózati eszközök szabványos biztonsági konfigurációinak karbantartása
+## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.9 | 11.1 | Ügyfél |
+| 1.9 | 11,1 | Ügyfél |
 
-Az Azure Policy segítségével szabványos biztonsági konfigurációkat definiálhat és valósíthat meg a hálózati erőforrásokhoz.
+A hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy.
 
-Azure Blueprints is használhatja a nagy méretű Azure-központi telepítések a csomagolás kulcsfontosságú környezeti összetevők, például az Azure Resources Manager-sablonok, RBAC-vezérlők és szabályzatok, egyetlen tervezet definíciójában. A tervezetet alkalmazhatja az új előfizetésekre, és a verziószámozással finomhangolhatja a vezérlést és a felügyeletet.
+Az Azure-tervrajzok segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például az Azure Resources Manager-sablonokat, a RBAC-vezérlőket és a házirendeket egyetlen terv definíciójában. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
 
-- [Az Azure-szabályzat konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-- [Azure-szabályzatminták hálózatépítéshez](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+- [Azure Policy minták a hálózatkezeléshez](https://docs.microsoft.com/azure/governance/policy/samples/#network)
 
 - [Azure Blueprint létrehozása](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
 
-## <a name="110-document-traffic-configuration-rules"></a>1.10: A forgalom konfigurációs szabályainak dokumentálása
+## <a name="110-document-traffic-configuration-rules"></a>1,10: a dokumentum forgalmának konfigurációs szabályai
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.10 | 11.2 | Ügyfél |
+| 1.10 | 11,2 | Ügyfél |
 
-Használja címkék NSG-k és egyéb kapcsolódó források a hálózati biztonság és a forgalom áramlását. Az egyes NSG-szabályok esetében a "Leírás" mezőben adhatja meg az üzleti igényt és/vagy az időtartamot (stb.) minden olyan szabályhoz, amely engedélyezi a hálózatra irányuló/onnan érkező forgalmat.
+Címkék használata a NSG és a hálózati biztonsággal és a forgalommal kapcsolatos egyéb erőforrásokhoz. Az egyes NSG-szabályok esetében a "Leírás" mezővel adhatja meg az üzleti igényeket és/vagy időtartamot (stb.) minden olyan szabályhoz, amely engedélyezi a hálózatra irányuló adatforgalmat.
 
-Használja a címkézéssel kapcsolatos beépített Azure-szabályzat-definíciók bármelyikét, például a "Címke és annak értéke" használatával győződjön meg arról, hogy minden erőforrás címkékkel jön létre, és értesítse a meglévő címkézetlen erőforrásokról.
+A címkézéshez kapcsolódó beépített Azure Policy-definíciók bármelyikét használhatja, például a "címke és az érték megkövetelése" beállítást, hogy az összes erőforrás címkével legyen létrehozva, és értesítse a meglévő címkézetlen erőforrásokról.
 
-Használhatja az Azure PowerShell vagy az Azure CLI a look-up, vagy műveleteket hajt végre az erőforrások alapján a címkéket.
+A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon.
 
 - [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Hogyan hozzunk létre egy virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Virtual Network létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-- [Hogyan hozzunk létre egy NSG egy biztonsági config](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
-## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Automatizált eszközök használata a hálózati erőforrás-konfigurációk figyelésére és a változások észlelésére
+## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: automatikus eszközök használata a hálózati erőforrások konfigurációjának figyelésére és a változások észlelésére
 
-| Azure-azonosító | CIS-azonosítók | Felelősség |
+| Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.11 | 11.3 | Ügyfél |
+| 1,11 | 11,3 | Ügyfél |
 
-Az Azure Activity Log használatával figyelheti az erőforrás-konfigurációkat, és észlelheti az Azure-erőforrások változásait. Hozzon létre riasztásokat az Azure Monitoron belül, amelyek a kritikus erőforrások módosításakor aktiválódnak.
+Az Azure-tevékenység naplójának használatával figyelheti az erőforrás-konfigurációkat, és felderítheti az Azure-erőforrások módosításait. Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus erőforrások változásai megváltoznak.
 
-- [Az Azure-tevékenységnapló eseményeinek megtekintése és beolvasása](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
-- [Riasztások létrehozása az Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a következő biztonsági vezérlőt: [Naplózás és figyelés](security-control-logging-monitoring.md)
+- Tekintse meg a következő biztonsági vezérlőt: [naplózás és figyelés](security-control-logging-monitoring.md)

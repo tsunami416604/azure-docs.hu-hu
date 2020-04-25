@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 04/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe7b375ebafb1e8194b29061430d956e48f2c441
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: bf8c797edec143d09739272917b5781a239280ba
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100754"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147744"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -111,6 +111,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 04/24/2020: SAP HANA az Azure-beli virtuális [gépek készenléti csomópontján](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)belüli SAP HANA, a SLES-on futó ANF változásai az Azure-beli virtuális gépek készenléti csomópontjaival, a [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)-vel való ANF, az Azure-beli virtuális gépek [magas rendelkezésre állása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) a SLES ANF és [magas rendelkezésre állással](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 - 04/22/2020: a SLES-on futó Azure-beli [virtuális gépek SAP HANA magas rendelkezésre állásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) megváltozása a meta attribútumnak `is-managed` az utasításokból való eltávolításához, ahogy az ütközik a fürtnek a karbantartási módba vagy kívülre helyezésével.
 - 04/21/2020: a (z) SAP-(Hybris-) kereskedelmi platform 1811-es és újabb verzióiban elérhetővé tette SQL Azure DB-t az Azure-beli üzemelő [példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) és az [SAP-tanúsítványok, valamint a Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)
 - 04/16/2020: hozzáadva SAP HANA az SAP (Hybris) kereskedelmi platform támogatott adatbázis-kezelői szolgáltatásához, amely az Azure-környezetekben [támogatott SAP-szoftvereket](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) és az [Microsoft Azure-on futó SAP-tanúsítványokat és-konfigurációkat](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications) támogatja.

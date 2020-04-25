@@ -1,45 +1,42 @@
 ---
-title: Több IP-cím az Azure virtuális gépekhez - PowerShell | Microsoft dokumentumok
-description: Megtudhatja, hogyan rendelhet több IP-címet egy virtuális géphez a PowerShell használatával. | Erőforrás-kezelő
+title: Több IP-cím az Azure Virtual Machines szolgáltatáshoz – PowerShell | Microsoft Docs
+description: Megtudhatja, hogyan rendelhet hozzá több IP-címet egy virtuális géphez a PowerShell használatával. | Erőforrás-kezelő
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c44ea62f-7e54-4e3b-81ef-0b132111f1f8
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
-ms.author: kumud
-ms.reviewer: annahar
-ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: e4197923fa71c719611bea7603113cab331d4ba8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279571"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147799"
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Több IP-cím hozzárendelése virtuális gépekhez a PowerShell használatával
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Több IP-cím társítása virtuális gépekhez a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-Ez a cikk bemutatja, hogyan hozhat létre egy virtuális gépet (VM) az Azure Resource Manager üzembe helyezési modelljén keresztül a PowerShell használatával. A klasszikus központi telepítési modellen keresztül létrehozott erőforrásokhoz nem rendelhető hozzá több IP-cím. Ha többet szeretne megtudni az Azure üzembe helyezési modellekről, olvassa el a [Telepítési modellek ismertetése](../resource-manager-deployment-model.md) című cikket.
+Ez a cikk bemutatja, hogyan hozhat létre virtuális gépet (VM) a Azure Resource Manager üzemi modellel a PowerShell használatával. Több IP-cím nem rendelhető hozzá a klasszikus üzemi modellel létrehozott erőforrásokhoz. Ha többet szeretne megtudni az Azure-beli üzembe helyezési modellekről, olvassa el a [telepítési modellek ismertetése](../resource-manager-deployment-model.md) című cikket.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Több IP-címmel rendelkező virtuális gép létrehozása
 
-Az alábbi lépések ismertetik, hogyan hozhat létre egy példa virtuális gép több IP-cím, a forgatókönyvben leírtak szerint. Módosítsa a változóértékeket a megvalósításhoz szükséges szerint.
+Az alábbi lépések elmagyarázzák, hogyan hozhat létre egy példaként több IP-címmel rendelkező virtuális gépet a forgatókönyvben leírtak szerint. Módosítsa a változó értékeit a megvalósításhoz szükséges módon.
 
-1. Nyisson meg egy PowerShell-parancssort, és hajtsa végre a további lépéseket ebben a szakaszban egyetlen PowerShell-munkameneten belül. Ha még nincs telepítve és konfigurálva a PowerShell, hajtsa végre az [Azure PowerShell telepítéséről és konfigurálásáról](/powershell/azure/overview) szóló cikk lépéseit.
-2. Jelentkezzen be a fiókjába a `Connect-AzAccount` paranccsal.
-3. Cserélje le *a myResourceGroup-ot* és a *westus-t* az Ön által választott névre és helyre. Hozzon létre egy erőforráscsoportot. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+1. Nyisson meg egy PowerShell-parancssort, és hajtsa végre a szakasz további lépéseit egyetlen PowerShell-munkameneten belül. Ha még nincs telepítve és konfigurálva a PowerShell, hajtsa végre a [Azure PowerShell telepítésének és konfigurálásának](/powershell/azure/overview) lépései című cikk lépéseit.
+2. Jelentkezzen be a fiókjába `Connect-AzAccount` a paranccsal.
+3. Cserélje le a *myResourceGroup* és a *westus* nevet a választott névre és helyre. Hozzon létre egy erőforráscsoportot. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
    ```powershell
    $RgName   = "MyResourceGroup"
@@ -50,7 +47,7 @@ Az alábbi lépések ismertetik, hogyan hozhat létre egy példa virtuális gép
    -Location $Location
    ```
 
-4. Hozzon létre egy virtuális hálózatot (VNet) és alhálózatot ugyanazon a helyen, mint az erőforráscsoport:
+4. Hozzon létre egy virtuális hálózatot (VNet) és alhálózatot ugyanazon a helyen, mint az erőforráscsoportot:
 
    ```powershell
 
@@ -71,7 +68,7 @@ Az alábbi lépések ismertetik, hogyan hozhat létre egy példa virtuális gép
    $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
    ```
 
-5. Hozzon létre egy hálózati biztonsági csoportot (NSG) és egy szabályt. Az NSG biztonságossá teszi a virtuális gép bejövő és kimenő szabályok használatával. Ebben az esetben létrejön egy bejövő szabály a 3389-es porthoz, amely lehetővé teszi a bejövő távoli asztali kapcsolatokat.
+5. Hozzon létre egy hálózati biztonsági csoportot (NSG) és egy szabályt. A NSG a bejövő és kimenő szabályok használatával védi a virtuális gépet. Ebben az esetben létrejön egy bejövő szabály a 3389-es porthoz, amely lehetővé teszi a bejövő távoli asztali kapcsolatokat.
 
     ```powershell
     
@@ -95,9 +92,9 @@ Az alábbi lépések ismertetik, hogyan hozhat létre egy példa virtuális gép
     -SecurityRules $NSGRule
     ```
 
-6. Adja meg a hálózati adapter elsődleges IP-konfigurációját. Módosítsa a 10.0.0.4 értéket érvényes címre a létrehozott alhálózatban, ha nem a korábban megadott értéket használta. Statikus IP-cím hozzárendelése előtt ajánlott először megerősíteni, hogy még nincs használatban. Írja be `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`a parancsot . Ha a cím elérhető, a kimenet *igaz*értéket ad vissza. Ha nem érhető el, a kimenet hamis értéket ad *vissza,* és az elérhető címek listáját. 
+6. Adja meg a hálózati adapter elsődleges IP-konfigurációját. Módosítsa a 10.0.0.4 a létrehozott alhálózat érvényes címére, ha nem a korábban definiált értéket használja. Statikus IP-cím hozzárendelésének megkezdése előtt ajánlott először megerősíteni, hogy még nincs használatban. Adja meg a `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`parancsot. Ha a címe elérhető, a kimenet *igaz*értéket ad vissza. Ha nem érhető el, a kimenet *hamis* értéket ad vissza, és felsorolja a rendelkezésre álló címeket. 
 
-    A következő parancsokban **cserélje le \<a lecserélendő egyedi névre> a használandó egyedi DNS-névre.** A névnek egyedinek kell lennie az Azure-régión belüli összes nyilvános IP-cím között. Ez egy nem kötelező paraméter. Eltávolítható, ha csak a nyilvános IP-cím használatával szeretne csatlakozni a virtuális géphez.
+    A következő parancsokban **cserélje \<le a Replace-with-a-unique-Name> a használni kívánt egyedi DNS-névvel.** A névnek egyedinek kell lennie az Azure-régión belüli összes nyilvános IP-cím között. Ez egy opcionális paraméter. Akkor távolítható el, ha csak a nyilvános IP-cím használatával szeretne csatlakozni a virtuális géphez.
 
     ```powershell
     
@@ -119,12 +116,12 @@ Az alábbi lépések ismertetik, hogyan hozhat létre egy példa virtuális gép
     -Primary
     ```
 
-    Ha több IP-konfigurációt rendel egy hálózati adapterhez, egy konfigurációt kell hozzárendelni az *-Primary*.
+    Ha több IP-konfigurációt rendel egy hálózati adapterhez, az egyik konfigurációt *elsődlegesként*kell hozzárendelni.
 
     > [!NOTE]
-    > A nyilvános IP-címek névleges díjkötelesek. Ha többet szeretne megtudni az IP-cím díjszabásáról, olvassa el az [IP-cím díjszabási](https://azure.microsoft.com/pricing/details/ip-addresses) oldalát. Az előfizetésben használható nyilvános IP-címek száma korlátozva van. A korlátozásokkal kapcsolatos további információkért olvassa el az [Azure korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) szóló cikket.
+    > A nyilvános IP-címekhez névleges díj vonatkozik. Ha többet szeretne megtudni az IP-címek díjszabásáról, olvassa el az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses) ismertető oldalt. Az előfizetésben használható nyilvános IP-címek száma korlátozva van. A korlátozásokkal kapcsolatos további információkért olvassa el az [Azure korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) szóló cikket.
 
-7. Adja meg a hálózati adapter másodlagos IP-konfigurációit. Szükség esetén hozzáadhat vagy eltávolíthat konfigurációkat. Minden IP-konfigurációhoz hozzá kell rendelni egy privát IP-címet. Minden konfigurációhoz szükség van egy nyilvános IP-címhez.
+7. Adja meg a hálózati adapter másodlagos IP-konfigurációit. Szükség szerint hozzáadhat vagy eltávolíthat konfigurációkat. Minden IP-konfigurációhoz hozzá kell rendelni egy magánhálózati IP-címet. Minden konfigurációhoz szükség lehet egy nyilvános IP-címhez.
 
     ```powershell
     
@@ -150,7 +147,7 @@ Az alábbi lépések ismertetik, hogyan hozhat létre egy példa virtuális gép
     -PrivateIpAddress 10.0.0.6
     ```
 
-8. Hozza létre a hálózati adaptert, és társítsa hozzá a három IP-konfigurációt:
+8. Hozza létre a hálózati adaptert, és rendelje hozzá a három IP-konfigurációt:
 
    ```powershell
    $NIC = New-AzNetworkInterface `
@@ -162,9 +159,9 @@ Az alábbi lépések ismertetik, hogyan hozhat létre egy példa virtuális gép
    ```
 
    >[!NOTE]
-   >Bár az összes konfiguráció kontinusza van rendelve egy hálózati adapter ebben a cikkben, több IP-konfigurációk a virtuális géphez csatlakoztatott minden hálózati adapterhez rendelhető. Ha meg szeretné tudni, hogyan hozhat létre virtuális gép több hálózati adapterek, olvassa el a [virtuális gép létrehozása több hálózati adapterek](../virtual-machines/windows/multiple-nics.md) cikket.
+   >Bár ebben a cikkben az összes konfiguráció hozzá van rendelve egy hálózati adapterhez, több IP-konfigurációt is hozzárendelhet a virtuális géphez csatlakoztatott összes hálózati adapterhez. Ha többet szeretne megtudni arról, hogyan hozhat létre több hálózati adapterrel rendelkező virtuális gépet, olvassa el a [virtuális gép létrehozása több hálózati adapterrel](../virtual-machines/windows/multiple-nics.md) című cikket.
 
-9. Hozza létre a virtuális gép beírásával a következő parancsokat:
+9. Hozza létre a virtuális gépet a következő parancsok beírásával:
 
     ```powershell
     
@@ -193,14 +190,14 @@ Az alábbi lépések ismertetik, hogyan hozhat létre egy példa virtuális gép
     -VM $VmConfig
     ```
 
-10. Adja hozzá a privát IP-címeket a virtuális gép operációs rendszeréhez az operációs rendszer lépéseivégrehajtásával a [cikk IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakaszában. Ne adja hozzá a nyilvános IP-címeket az operációs rendszerhez.
+10. Adja hozzá a magánhálózati IP-címeket a virtuális gép operációs rendszeréhez úgy, hogy végrehajtja a jelen cikk [IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakaszának lépéseit. Ne adja hozzá a nyilvános IP-címeket az operációs rendszerhez.
 
-## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>IP-címek hozzáadása virtuális géphez
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>IP-címek hozzáadása egy virtuális géphez
 
-A következő lépések végrehajtásával hozzáadhat magán- és nyilvános IP-címeket az Azure hálózati felülethez. A következő szakaszokban szereplő példák feltételezik, hogy már rendelkezik egy virtuális gép a [forgatókönyvben](#scenario) a cikkben leírt három IP-konfigurációk, de nem szükséges, hogy nem.
+Az alábbi lépések végrehajtásával adhat hozzá privát és nyilvános IP-címeket az Azure hálózati adapterhez. Az alábbi szakaszokban szereplő példák azt feltételezik, hogy már rendelkezik egy virtuális géppel, amely a jelen cikkben szereplő [forgatókönyvben](#scenario) ismertetett három IP-konfigurációval rendelkezik, de erre nincs szükség.
 
-1. Nyisson meg egy PowerShell-parancssort, és hajtsa végre a további lépéseket ebben a szakaszban egyetlen PowerShell-munkameneten belül. Ha még nincs telepítve és konfigurálva a PowerShell, hajtsa végre az [Azure PowerShell telepítéséről és konfigurálásáról](/powershell/azure/overview) szóló cikk lépéseit.
-2. Módosítsa a következő $Variables "értékeit" annak a hálózati adapternek a nevére, amelyhez IP-címet szeretne adni, valamint azt az erőforráscsoportot és helyet, amelyben a hálózati adapter megtalálható:
+1. Nyisson meg egy PowerShell-parancssort, és hajtsa végre a szakasz további lépéseit egyetlen PowerShell-munkameneten belül. Ha még nincs telepítve és konfigurálva a PowerShell, hajtsa végre a [Azure PowerShell telepítésének és konfigurálásának](/powershell/azure/overview) lépései című cikk lépéseit.
+2. Módosítsa a következő $Variables értékeit annak a hálózati adapternek a nevére, amelyhez IP-címet kíván adni, valamint a hálózati adapterhez tartozó erőforráscsoportot és helyet:
 
    ```powershell
    $NicName  = "MyNIC"
@@ -208,7 +205,7 @@ A következő lépések végrehajtásával hozzáadhat magán- és nyilvános IP
    $Location = "westus"
    ```
 
-   Ha nem tudja a módosítani kívánt hálózati adapter nevét, írja be a következő parancsokat, majd módosítsa az előző változók értékeit:
+   Ha nem ismeri a módosítani kívánt hálózati adapter nevét, írja be a következő parancsokat, majd módosítsa a korábbi változók értékeit:
 
    ```powershell
    Get-AzNetworkInterface | Format-Table Name, ResourceGroupName, Location
@@ -220,53 +217,53 @@ A következő lépések végrehajtásával hozzáadhat magán- és nyilvános IP
    $MyNIC = Get-AzNetworkInterface -Name $NicName -ResourceGroupName $RgName
    ```
 
-4. A következő parancsokban módosítsa a *MyVNet* és a *MySubnet* nevet a virtuális hálózat és alhálózat nevére, amelyhez a hálózati adapter csatlakozik. Adja meg azokat a parancsokat, amelyek lekérik azokat a virtuális hálózatokat és alhálózati objektumokat, amelyekhez a hálózati adapter csatlakozik:
+4. A következő parancsokban módosítsa a *MyVNet* és a *MySubnet* nevet annak a VNet és alhálózatnak a nevére, amelyhez a hálózati adapter csatlakozik. Adja meg a VNet és az alhálózati objektumok lekéréséhez szükséges parancsokat, amelyhez a hálózati adapter csatlakozik:
 
    ```powershell
    $MyVNet = Get-AzVirtualnetwork -Name MyVNet -ResourceGroupName $RgName
    $Subnet = $MyVnet.Subnets | Where-Object { $_.Name -eq "MySubnet" }
    ```
 
-   Ha nem tudja azt a virtuális hálózatot vagy alhálózati nevet, amelyhez a hálózati adapter kapcsolódik, írja be a következő parancsot:
+   Ha nem ismeri a hálózati adapterhez csatlakoztatott VNet vagy alhálózat nevét, írja be a következő parancsot:
 
    ```powershell
    $MyNIC.IpConfigurations
    ```
 
-   A kimenetben keresse meg a következő példakimenethez hasonló szöveget:
+   A kimenetben keresse meg az alábbi példához hasonló szöveget:
 
    ```
    "Id": "/subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVNet/subnets/MySubnet"
    ```
 
-    Ebben a kimenetben *a MyVnet* a virtuális hálózat, *a MySubnet* pedig az az alhálózat, amelyhez a hálózati adapter csatlakozik.
+    Ebben a kimenetben a *MyVnet* a VNet, a *MySubnet* pedig az a hálózat, amelyhez a hálózati adapter csatlakozik.
 
-5. Hajtsa végre az alábbi szakaszok valamelyikének lépéseit az Ön igényei nek megfelelően:
+5. A követelmények alapján végezze el a következő részekben ismertetett lépéseket:
 
-   **Privát IP-cím hozzáadása**
+   **Magánhálózati IP-cím hozzáadása**
 
-   Ha privát IP-címet szeretne hozzáadni egy hálózati adapterhez, létre kell hoznia egy IP-konfigurációt. A következő parancs létrehoz egy konfigurációt, amelynek statikus IP-címe 10.0.0.7. Statikus IP-cím megadásakor az alhálózat nem használt címének kell lennie. Javasoljuk, hogy először tesztelje a címet, hogy megbizonyosodjon arról, hogy elérhető a `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` parancs beírásával. Ha az IP-cím elérhető, a kimenet *igaz*értéket ad vissza. Ha nem érhető el, a kimenet *hamis*értéket ad vissza, és az elérhető címek listáját.
+   Magánhálózati IP-cím hálózati adapterhez való hozzáadásához létre kell hoznia egy IP-konfigurációt. A következő parancs egy, a 10.0.0.7 statikus IP-címmel rendelkező konfigurációt hoz létre. Statikus IP-cím megadásakor az alhálózathoz nem használt címnek kell lennie. Javasoljuk, hogy először tesztelje a címeket, hogy az elérhető legyen a `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` parancs beírásával. Ha az IP-cím elérhető, a kimenet *igaz*értéket ad vissza. Ha nem érhető el, a kimenet *hamis*értéket ad vissza, és felsorolja a rendelkezésre álló címeket.
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
    $MyNIC -Subnet $Subnet -PrivateIpAddress 10.0.0.7
    ```
 
-   Hozzon létre annyi konfigurációt, amennyire szüksége van, egyedi konfigurációnevek és privát IP-címek használatával (statikus IP-címekkel rendelkező konfigurációk esetén).
+   Tetszőleges számú konfigurációt hozhat létre, egyedi konfigurációs neveket és magánhálózati IP-címeket (statikus IP-címekkel rendelkező konfigurációk esetén).
 
-   Adja hozzá a privát IP-címet a virtuális gép operációs rendszeréhez az operációs rendszer lépéseinek végrehajtásával a [cikk IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakaszában.
+   Adja hozzá a magánhálózati IP-címet a virtuális gép operációs rendszeréhez úgy, hogy végrehajtja a jelen cikk [IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakaszának lépéseit.
 
    **Nyilvános IP-cím hozzáadása**
 
-   A nyilvános IP-cím hozzáadódik azáltal, hogy egy nyilvános IP-cím erőforrást társít egy új IP-konfigurációhoz vagy egy meglévő IP-konfigurációhoz. Végezze el a következő szakaszok egyikének lépéseit, ahogy azt szeretné.
+   A nyilvános IP-címet egy nyilvános IP-cím típusú erőforrás társításával vagy egy új IP-konfigurációhoz, vagy egy meglévő IP-konfigurációhoz társítja. Hajtsa végre az alábbi szakasz lépéseit, ahogy szükséges.
 
    > [!NOTE]
-   > A nyilvános IP-címek névleges díjkötelesek. Ha többet szeretne megtudni az IP-cím díjszabásáról, olvassa el az [IP-cím díjszabási](https://azure.microsoft.com/pricing/details/ip-addresses) oldalát. Az előfizetésben használható nyilvános IP-címek száma korlátozva van. A korlátozásokkal kapcsolatos további információkért olvassa el az [Azure korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) szóló cikket.
+   > A nyilvános IP-címekhez névleges díj vonatkozik. Ha többet szeretne megtudni az IP-címek díjszabásáról, olvassa el az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses) ismertető oldalt. Az előfizetésben használható nyilvános IP-címek száma korlátozva van. A korlátozásokkal kapcsolatos további információkért olvassa el az [Azure korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) szóló cikket.
    >
 
-   **A nyilvános IP-cím erőforrás társítása új IP-konfigurációhoz**
+   **A nyilvános IP-cím erőforrásának hozzárendelése új IP-konfigurációhoz**
 
-   Amikor nyilvános IP-címet ad hozzá egy új IP-konfigurációban, saját IP-címet is hozzá kell adnia, mert minden IP-konfigurációnak privát IP-címmel kell rendelkeznie. Hozzáadhat egy meglévő nyilvános IP-címerőforrást, vagy létrehozhat egy újat. Új létrehozásához írja be a következő parancsot:
+   Amikor nyilvános IP-címet ad hozzá egy új IP-konfigurációhoz, hozzá kell adnia egy magánhálózati IP-címet is, mivel minden IP-konfigurációnak magánhálózati IP-címmel kell rendelkeznie. Hozzáadhat egy meglévő nyilvános IP-cím-erőforrást, vagy létrehozhat egy újat is. Új létrehozásához írja be a következő parancsot:
 
    ```powershell
    $myPublicIp3 = New-AzPublicIpAddress `
@@ -276,7 +273,7 @@ A következő lépések végrehajtásával hozzáadhat magán- és nyilvános IP
    -AllocationMethod Static
    ```
 
-   Ha statikus privát IP-címmel és a kapcsolódó *myPublicIp3* nyilvános IP-cím erőforrással rendelkező új IP-konfigurációt szeretne létrehozni, írja be a következő parancsot:
+   Ha új IP-konfigurációt szeretne létrehozni statikus magánhálózati IP-címmel és a társított *myPublicIp3* nyilvános IP-cím erőforrással, írja be a következő parancsot:
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig `
@@ -287,9 +284,9 @@ A következő lépések végrehajtásával hozzáadhat magán- és nyilvános IP
    -PublicIpAddress $myPublicIp3
    ```
 
-   **A nyilvános IP-cím erőforrás társítása meglévő IP-konfigurációhoz**
+   **A nyilvános IP-cím erőforrásának hozzárendelése meglévő IP-konfigurációhoz**
 
-   Nyilvános IP-cím erőforrás csak olyan IP-konfigurációhoz társítható, amelyhez még nem tartozik. A következő parancs megadásával meghatározhatja, hogy egy IP-konfigurációrendelkezik-e nyilvános IP-címmel:
+   Egy nyilvános IP-cím erőforrás csak olyan IP-konfigurációhoz társítható, amelyhez még nincs társítva. A következő parancs megadásával határozhatja meg, hogy egy IP-konfigurációhoz tartozik-e társított nyilvános IP-cím:
 
    ```powershell
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
@@ -305,7 +302,7 @@ A következő lépések végrehajtásával hozzáadhat magán- és nyilvános IP
    IpConfig-3 10.0.0.6                                                                     False
    ```
 
-   Mivel az *IpConfig-3* **PublicIpAddress** oszlopa üres, jelenleg nincs hozzá nyilvános IP-címerőforrás társítva. Az IpConfig-3 protokollhoz hozzáadhat egy meglévő nyilvános IP-címerőforrást, vagy a következő parancsot adhatja meg:
+   Mivel az *IpConfig-3* **PublicIpAddress** oszlopa üres, nincs társítva nyilvános IP-cím erőforrás. Hozzáadhat egy meglévő nyilvános IP-cím-erőforrást az IpConfig-3 számára, vagy megadhatja a következő parancsot egy létrehozásához:
 
    ```powershell
    $MyPublicIp3 = New-AzPublicIpAddress `
@@ -314,7 +311,7 @@ A következő lépések végrehajtásával hozzáadhat magán- és nyilvános IP
    -Location $Location -AllocationMethod Static
    ```
 
-   Írja be a következő parancsot a nyilvános IP-cím erőforrás társításához az *IpConfig-3*nevű meglévő IP-konfigurációhoz:
+   A következő parancs megadásával rendelje hozzá a nyilvános IP-cím erőforrást az *IpConfig-3*nevű meglévő IP-konfigurációhoz:
 
    ```powershell
    Set-AzNetworkInterfaceIpConfig `
@@ -324,18 +321,18 @@ A következő lépések végrehajtásával hozzáadhat magán- és nyilvános IP
    -PublicIpAddress $myPublicIp3
    ```
 
-6. Állítsa be a hálózati adaptert az új IP-konfigurációval a következő parancs megadásával:
+6. Állítsa be a hálózati adaptert az új IP-konfigurációval a következő parancs beírásával:
 
    ```powershell
    Set-AzNetworkInterface -NetworkInterface $MyNIC
    ```
 
-7. A hálózati adapterhez rendelt privát IP-címek és nyilvános IP-cím erőforrások megtekintése a következő parancs megadásával:
+7. Tekintse meg a hálózati adapterhez rendelt magánhálózati IP-címeket és nyilvános IP-címek erőforrásait a következő parancs beírásával:
 
    ```powershell
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
    ```
 
-8. Adja hozzá a privát IP-címet a virtuális gép operációs rendszeréhez az operációs rendszer lépéseinek végrehajtásával a [cikk IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakaszában. Ne adja hozzá a nyilvános IP-címet az operációs rendszerhez.
+8. Adja hozzá a magánhálózati IP-címet a virtuális gép operációs rendszeréhez úgy, hogy végrehajtja a jelen cikk [IP-címek hozzáadása a virtuális gép operációs rendszeréhez](#os-config) című szakaszának lépéseit. Ne adja hozzá a nyilvános IP-címet az operációs rendszerhez.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: b58c24fdd7912b3e424a493932fe09b1a1f058c5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: HT
+ms.openlocfilehash: 601194d3a8cc789c51b8e127001ab2367dceeee7
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661277"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148221"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files
 
@@ -32,14 +32,14 @@ ms.locfileid: "77661277"
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -97,20 +97,18 @@ Most már lehetséges, hogy az SAP NetWeaver HA-t megosztott tároló használat
 
 Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)használatát javasoljuk. A következő lista a terheléselosztó konfigurációját mutatja be a (A) SCS és ERS különálló előtér-IP-címeivel.
 
-### <a name="ascs"></a>(A)SCS
+### <a name="ascs"></a>Egy SCS
 
 * Előtér-konfiguráció
   * IP-192.168.14.9
-* Háttér-konfiguráció
-  * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 * Mintavételi port
-  * 620-es port<strong>&lt;nr&gt;</strong>
+  * Port 620<strong>&lt;Nr&gt;</strong>
 * Terheléselosztási szabályok
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 36<strong>&lt;nr&gt;</strong> TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong> TCP
+  * 32<strong>&lt;nr&gt; </strong> TCP
+  * 36<strong>&lt;nr&gt; </strong> TCP
+  * 39<strong>&lt;nr&gt; </strong> TCP
+  * 81<strong>&lt;nr&gt; </strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
@@ -119,17 +117,18 @@ Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA
 
 * Előtér-konfiguráció
   * IP-192.168.14.10
-* Háttér-konfiguráció
-  * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 * Mintavételi port
-  * 621-es port<strong>&lt;nr&gt;</strong>
+  * Port 621<strong>&lt;Nr&gt;</strong>
 * Terheléselosztási szabályok
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 33<strong>&lt;nr&gt;</strong> TCP
+  * 32<strong>&lt;nr&gt; </strong> TCP
+  * 33<strong>&lt;nr&gt; </strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
+
+* Háttér-konfiguráció
+  * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>A Azure NetApp Files-infrastruktúra beállítása 
 
@@ -147,7 +146,7 @@ A lépések azt feltételezik, hogy már telepítette az [Azure Virtual Network]
 A jelen cikkben bemutatott SAP NetWeaver architektúra egy Azure NetApp Files kapacitási készletet, prémium SKU-t használ. Javasoljuk, hogy az Azure-ban az SAP NetWeaver alkalmazás számítási feladataihoz Azure NetApp Files Premium SKU-t.  
 4. Az alhálózat delegálása az Azure NetApp-fájlokba az [alhálózat delegálása Azure NetApp Filesra](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)című részben leírtak szerint.  
 
-5. Azure NetApp Files kötetek telepítéséhez kövesse az [utasításokat, amelyekkel Azure NetApp Files kötetet hozhat létre](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Telepítse a köteteket a kijelölt Azure NetApp Files [alhálózatban](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-Virtual Networkban vagy az Azure-beli virtuális hálózatokban kell lenniük. Ebben a példában két Azure NetApp Files kötetet használunk: az SAP<b>QAS</b> és a transSAP. A megfelelő csatlakoztatási pontokhoz csatlakoztatott fájlelérési utak a következők:/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b>QAS sys stb</b>.  
+5. Azure NetApp Files kötetek telepítéséhez kövesse az [utasításokat, amelyekkel Azure NetApp Files kötetet hozhat létre](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Telepítse a köteteket a kijelölt Azure NetApp Files [alhálózatban](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Az Azure NetApp-kötetek IP-címeit a rendszer automatikusan hozzárendeli. Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-Virtual Networkban vagy az Azure-beli virtuális hálózatokban kell lenniük. Ebben a példában két Azure NetApp Files kötetet használunk: az SAP<b>QAS</b> és a transSAP. A megfelelő csatlakoztatási pontokhoz csatlakoztatott fájlelérési utak a következők:/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS</b>/usrsap<b>QAS sys stb</b>.  
 
    1. mennyiségi SAP-<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/sapmnt<b>QAS</b>)
    2. mennyiségi SAP-<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ASCs)
@@ -167,7 +166,7 @@ Az SAP NetWeaver SUSE magas rendelkezésre állású architektúrán való Azure
 - A minimális kötet 100 GiB
 - Azure NetApp Files és az összes olyan virtuális gép, amelyben Azure NetApp Files köteteket csatlakoztatni kell, ugyanabban az Azure-Virtual Network vagy egymással azonos régióban lévő [virtuális hálózatokban](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kell lennie. A VNET-társítások ugyanazon régióban való elérésének Azure NetApp Files jelenleg támogatott. Az Azure NetApp a globális társon keresztüli hozzáférése még nem támogatott.
 - A kiválasztott virtuális hálózatnak rendelkeznie kell egy, a Azure NetApp Files delegált alhálózattal.
-- Azure NetApp Files az [exportálási szabályzatot](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (olvasási & írás, csak olvasható stb.). 
+- Azure NetApp Files az [exportálási szabályzatot](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (olvasási&írás, csak olvasható stb.). 
 - Azure NetApp Files a szolgáltatás még nem ismeri a zónát. Jelenleg Azure NetApp Files funkció nincs telepítve az Azure-régió összes rendelkezésre állási zónájában. Vegye figyelembe, hogy egyes Azure-régiókban lehetséges a késés következményei. 
 - Azure NetApp Files kötetek NFSv3 vagy NFSv 4.1 kötetként telepíthetők. Mindkét protokoll támogatott az SAP Application Layer (ASCS/ERS, SAP Application Servers) esetében. 
 
@@ -177,7 +176,7 @@ Ebben a példában az erőforrásokat manuálisan telepítették a [Azure Portal
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
-Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben.
+Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletben.
 
 1. Load Balancer létrehozása (belső, standard):  
    1. Az előtérbeli IP-címek létrehozása
@@ -185,23 +184,22 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új előtér-IP-készlet nevét (például a **frontend. QAS. ASCS**)
          1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **192.168.14.9**).
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
       1. A ASCS IP-192.168.14.10
          * Ismételje meg a fenti lépéseket az "a" alatt, és hozzon létre egy IP-címet az ERS számára (például **192.168.14.10** és **frontend. QAS. ERS**)
-   1. A háttér-készletek létrehozása
-      1. Háttérbeli készlet létrehozása a ASCS
-         1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
-         1. Adja meg az új háttér-készlet nevét (például **háttér. QAS**)
-         1. Kattintson a virtuális gép hozzáadása elemre.
-         1. Válassza a virtuális gép lehetőséget. 
-         1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket és azok IP-címeit.
-         1. Kattintson az Add (Hozzáadás) parancsra
+   1. A háttérkészlet létrehozása
+      1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
+      1. Adja meg az új háttér-készlet nevét (például **háttér. QAS**)
+      1. Kattintson a virtuális gép hozzáadása elemre.
+      1. Válassza a Virtuális gép lehetőséget. 
+      1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket és azok IP-címeit.
+      1. Kattintson az Add (Hozzáadás) parancsra
    1. Az állapot-mintavételek létrehozása
       1. A ASCS 620**00** portja
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapotadatok (például az **állapot) nevét. QAS. ASCS**)
          1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
       1. Port 621**01** ASCS-eseknél
             * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621**01** és **Health. QAS. ERS**)
    1. Terheléselosztási szabályok
@@ -212,7 +210,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. **Ha portok** kiválasztása
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
          * A fenti lépések megismétlésével hozzon létre terheléselosztási szabályokat az ERS számára (például **LB). QAS. ERS**)
 1. Ha a forgatókönyvben alapszintű terheléselosztó (belső) szükséges, kövesse az alábbi lépéseket:  
    1. Az előtérbeli IP-címek létrehozása
@@ -220,23 +218,22 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új előtér-IP-készlet nevét (például a **frontend. QAS. ASCS**)
          1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **192.168.14.9**).
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
       1. A ASCS IP-192.168.14.10
          * Ismételje meg a fenti lépéseket az "a" alatt, és hozzon létre egy IP-címet az ERS számára (például **192.168.14.10** és **frontend. QAS. ERS**)
-   1. A háttér-készletek létrehozása
-      1. Háttérbeli készlet létrehozása a ASCS
-         1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
-         1. Adja meg az új háttér-készlet nevét (például **háttér. QAS**)
-         1. Kattintson a virtuális gép hozzáadása elemre.
-         1. Válassza ki a ASCS korábban létrehozott rendelkezésre állási készletet 
-         1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket.
-         1. Kattintson az OK gombra.
+   1. A háttérkészlet létrehozása
+      1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
+      1. Adja meg az új háttér-készlet nevét (például **háttér. QAS**)
+      1. Kattintson a virtuális gép hozzáadása elemre.
+      1. Válassza ki a ASCS korábban létrehozott rendelkezésre állási készletet 
+      1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket.
+      1. Kattintson az OK gombra
    1. Az állapot-mintavételek létrehozása
       1. A ASCS 620**00** portja
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapotadatok (például az **állapot) nevét. QAS. ASCS**)
          1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
       1. Port 621**01** ASCS-eseknél
             * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621**01** és **Health. QAS. ERS**)
    1. Terheléselosztási szabályok
@@ -247,7 +244,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
          1. Tartsa meg a protokoll **TCP**-t, írja be a **3200** portot
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
-         1. Kattintson az OK gombra.
+         1. Kattintson az OK gombra
       1. További portok a ASCS
          * Ismételje meg a fenti lépéseket a "d" alatt a 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 és TCP ASCS
       1. További portok a ASCS-ESEK számára
@@ -263,10 +260,10 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
 
 Az ebben a szakaszban szereplő utasítások csak akkor használhatók, ha Azure NetApp Files köteteket használ a NFSv 4.1 protokollal. Minden virtuális gépen végezze el a konfigurálást, ahol Azure NetApp Files NFSv 4.1 kötet lesz csatlakoztatva.  
 
-1. Ellenőrizze az NFS-tartomány beállítását. Győződjön meg arról, hogy a tartomány alapértelmezett Azure NetApp Files-tartományként van konfigurálva, azaz **`defaultv4iddomain.com`** , és a leképezés értéke **senki**.  
+1. Ellenőrizze az NFS-tartomány beállítását. Győződjön meg arról, hogy a tartomány alapértelmezett Azure NetApp Files-tartományként van konfigurálva, **`defaultv4iddomain.com`** azaz a leképezés értéke **senki**.  
 
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy az NFS-tartományt `/etc/idmapd.conf` a virtuális gépen, hogy megfeleljen az alapértelmezett tartományi konfigurációnak Azure NetApp Files: **`defaultv4iddomain.com`** . Ha az NFS-ügyfél (azaz a virtuális gép) és az NFS-kiszolgáló (például az Azure NetApp-konfiguráció) közötti eltérés nem egyezik, akkor a virtuális gépekre csatlakoztatott Azure NetApp-köteteken található fájlok engedélyei `nobody`ként jelennek meg.  
+    > Ügyeljen arra, hogy az NFS- `/etc/idmapd.conf` tartományt a virtuális gépen állítsa be, hogy az megfeleljen az alapértelmezett tartományi **`defaultv4iddomain.com`** konfigurációnak Azure NetApp Files:. Ha az NFS-ügyfél (azaz a virtuális gép) és az NFS-kiszolgáló (például az Azure NetApp-konfiguráció) közötti eltérés nem egyezik, akkor a virtuális gépekre csatlakoztatott Azure NetApp-köteteken található fájlok engedélyei a következőképpen `nobody`jelennek meg.  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -278,7 +275,7 @@ Az ebben a szakaszban szereplő utasítások csak akkor használhatók, ha Azure
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** ellenőrizze `nfs4_disable_idmapping`. Értékeként az **Y**értéknek kell lennie. A `nfs4_disable_idmapping` található címtár-struktúra létrehozásához hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
+4. **[A]** ellenőrzés `nfs4_disable_idmapping`. Értékeként az **Y**értéknek kell lennie. A-t tartalmazó `nfs4_disable_idmapping` könyvtár-struktúra létrehozásához hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -292,7 +289,7 @@ Az ebben a szakaszban szereplő utasítások csak akkor használhatók, ha Azure
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   További információ a `nfs4_disable_idmapping` paraméter módosításáról: https://access.redhat.com/solutions/1749883.
+   További információ a paraméterek módosításáról `nfs4_disable_idmapping` :. https://access.redhat.com/solutions/1749883
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
@@ -304,14 +301,14 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 1. **[A]** telepítési állomásnév feloldása
 
-   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
+   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
     ```
     sudo vi /etc/hosts
     ```
 
-   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév
+   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően
 
     ```
     # IP address of cluster node 1
@@ -759,14 +756,14 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
    A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetében egyaránt érvényesek **[P]** – csak a Pas vagy **[S]** esetében érvényesek.  
 
-1. **[A]** a telepítési állomásnév feloldása esetén használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
+1. **[A]** a telepítési állomásnév feloldása esetén használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra:  
 
    ```
    sudo vi /etc/hosts
    ```
 
-   Helyezze be a következő sorokat Hosts. Módosítsa az IP-címet és a gazdagépet úgy, hogy az megfeleljen a környezetének.
+   Szúrja be a következő sorokat a/etc/hosts. Módosítsa az IP-címet és a gazdagépet úgy, hogy az megfeleljen a környezetének.
 
    ```
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
@@ -892,9 +889,9 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    sudo service waagent restart
    ```
 
-## <a name="install-database"></a>Adatbázis telepítése
+## <a name="install-database"></a>Az adatbázis telepítése
 
-Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-ban való telepítésével kapcsolatos további információkért lásd: [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-beli telepítésével kapcsolatos további információkért lásd: a [SAP HANA magas rendelkezésre állása az Azure-beli virtuális gépeken Red Hat Enterprise Linuxon][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
 1. Az SAP Database-példány telepítésének futtatása
 
@@ -928,7 +925,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
 
    Frissítse a SAP HANA biztonságos tárolót, hogy az SAP HANA rendszerreplikáció beállításának virtuális nevére mutasson.
 
-   A következő parancs futtatásával sorolja fel a bejegyzéseket \<sapsid > adm-ként
+   Futtassa a következő parancsot a bejegyzések listázásához sapsid \<>adm-ként
 
    ```
    hdbuserstore List
@@ -1092,7 +1089,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   Ha csak egyszer fogja megölni az üzenetet kiszolgálóját, a `sapstart`újraindítja. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer fogja megölni az üzenetet kiszolgálóját, a rendszer újraindítja `sapstart`. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
@@ -1186,7 +1183,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
    [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   Ha csak egyszer futtatja a parancsot, `sapstart` újraindítja a folyamatot. Ha elég gyakran fut, `sapstart` nem indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer futtatja a parancsot, `sapstart` a automatikusan újraindítja a folyamatot. Ha elég gyakran fut, a nem `sapstart` indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
 
    ```
    [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
@@ -1251,7 +1248,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [HA SAP NW Azure-beli virtuális gépeken, RHEL for SAP Applications multi-SID útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]

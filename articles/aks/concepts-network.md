@@ -1,163 +1,163 @@
 ---
-title: Fogalmak – Hálózatkezelés az Azure Kubernetes-szolgáltatásokban (AKS)
-description: Ismerje meg az Azure Kubernetes-szolgáltatás (AKS) hálózatba szervezését, beleértve a kubenet és az Azure CNI-hálózatépítést, a bejövő forgalom vezérlőket, a terheléselosztókat és a statikus IP-címeket.
+title: Fogalmak – hálózatkezelés az Azure Kubernetes Servicesben (ak)
+description: Ismerje meg a hálózatkezelést az Azure Kubernetes szolgáltatásban (ak), beleértve a kubenet és az Azure CNI hálózatkezelését, a bejövő vezérlőket, a terheléselosztó és a statikus IP-címeket.
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5800254ab44b5b0f1048ce2200f90c06a8d1666a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51773a46b77cb1e9a89b9c85a5f62c4a6b7af3be
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253935"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146053"
 ---
-# <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) alkalmazásainak hálózati fogalmai
+# <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 
-Az alkalmazásfejlesztés tárolóalapú mikroszolgáltatások megközelítésében az alkalmazás-összetevőknek együtt kell működniük a feladataik feldolgozásához. A Kubernetes különböző erőforrásokat biztosít, amelyek lehetővé teszik ezt az alkalmazáskommunikációt. Az alkalmazásokhoz belsőleg vagy külsőleg is csatlakozhat és elérhetővé tehet. Magas rendelkezésre állású alkalmazások létrehozásához betöltheti az alkalmazások egyensúlyát. Összetettebb alkalmazások szükség lehet a kimenő forgalom konfigurálása az SSL/TLS-végződés vagy több összetevő útválasztása. Biztonsági okokból szükség lehet a hálózati forgalom podok és csomópontok közötti áramlását is.
+Az alkalmazások fejlesztésére szolgáló, tárolón alapuló mikroprocesszorok esetében az alkalmazás-összetevőknek együtt kell működniük a feladataik feldolgozásához. A Kubernetes különböző erőforrásokat biztosít az alkalmazás kommunikációjának engedélyezéséhez. Az alkalmazások belsőleg vagy külsőleg is csatlakoztathatók és elérhetők. A magasan elérhető alkalmazások kiépítéséhez terheléselosztást használhat az alkalmazásaiban. Az összetettebb alkalmazások az SSL/TLS-lezárás vagy több összetevő útválasztása esetén is megkövetelhetik a bejövő forgalom konfigurációját. Biztonsági okokból előfordulhat, hogy korlátozni kell a hálózati forgalom áramlását a hüvelyek és a csomópontok között.
 
-Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek az AKS-ben lévő alkalmazások hoznak hálózati hálózatot:
+Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek az AK-ban lévő alkalmazásai hálózatkezelését biztosítják:
 
 - [Szolgáltatások](#services)
-- [Az Azure virtuális hálózatai](#azure-virtual-networks)
-- [Be- és be- és visszatámadások vezérlői](#ingress-controllers)
+- [Azure-beli virtuális hálózatok](#azure-virtual-networks)
+- [Bejövő vezérlők](#ingress-controllers)
 - [Hálózati házirendek](#network-policies)
 
 ## <a name="kubernetes-basics"></a>A Kubernetes alapjai
 
-Az alkalmazásokhoz való hozzáférés, illetve az alkalmazás-összetevők egymással való kommunikációjának engedélyezéséhez a Kubernetes egy absztrakciós réteget biztosít a virtuális hálózathoz. Kubernetes csomópontok egy virtuális hálózathoz csatlakozik, és a podok bejövő és kimenő kapcsolatot biztosíthatnak. A *kube-proxy* összetevő minden csomóponton fut, hogy biztosítsa ezeket a hálózati szolgáltatásokat.
+Az alkalmazásokhoz való hozzáférés engedélyezéséhez, illetve az alkalmazás-összetevők közötti kommunikációhoz a Kubernetes egy absztrakt réteget biztosít a virtuális hálózat számára. A Kubernetes-csomópontok egy virtuális hálózathoz csatlakoznak, és a hüvelyek számára biztosítanak bejövő és kimenő kapcsolatokat. A *Kube-proxy* összetevő minden csomóponton fut, hogy megadja ezeket a hálózati szolgáltatásokat.
 
-A Kubernetes szolgáltatásban a *szolgáltatások* logikailag csoportosítják a podokat, hogy lehetővé tegyék a közvetlen hozzáférést egy IP-címen vagy DNS-névn keresztül és egy adott porton. A forgalmat *terheléselosztó*val is eloszthatja. Az alkalmazásforgalom összetettebb útválasztása a *be- és afeledt vezérlőkkel*is elérhető. A kubernetesi *hálózati házirendekkel*a podok hálózati forgalmának biztonsága és szűrése lehetséges.
+A Kubernetes-ben a *szolgáltatások* logikailag csoportosítják a hüvelyeket, amelyek lehetővé teszik a közvetlen hozzáférést egy IP-cím vagy DNS-név és egy adott porton keresztül. A forgalom *a terheléselosztó használatával is terjeszthető.* Az alkalmazások forgalmának összetettebb útválasztási lehetőségeit a *bejövő vezérlőkkel*is megvalósíthatja. A hüvelyek hálózati forgalmának biztonsága és szűrése Kubernetes *hálózati házirendekkel*lehetséges.
 
-Az Azure platform is segít egyszerűsíteni a virtuális hálózatépítés az AKS-fürtök. Kubernetes terheléselosztó létrehozásakor létrejön és konfigurálja az alapul szolgáló Azure-terheléselosztó erőforrást. Amikor megnyitja a hálózati portok podok, a megfelelő Azure hálózati biztonsági csoport szabályok vannak konfigurálva. HTTP-alkalmazás-útválasztás esetén az Azure is konfigurálhatja *a külső DNS-t,* mivel az új bejövő útvonalak vannak konfigurálva.
+Az Azure platform emellett segít leegyszerűsíteni az AK-fürtök virtuális hálózatkezelését. Kubernetes terheléselosztó létrehozásakor létrejön és konfigurálva lesz az alapul szolgáló Azure Load Balancer erőforrás. Amikor hálózati portokat nyit meg a hüvelyekhez, a megfelelő Azure hálózati biztonsági csoportra vonatkozó szabályokat konfigurálja a rendszer. A HTTP-alkalmazások útválasztásához az Azure a *külső DNS-* t is konfigurálhatja, mivel az új bejövő útvonalak vannak konfigurálva.
 
 ## <a name="services"></a>Szolgáltatások
 
-Az alkalmazás-munkaterhelések hálózati konfigurációjának egyszerűsítése érdekében a Kubernetes *a Szolgáltatások* segítségével logikailag csoportosítja a podok készletét, és hálózati kapcsolatot biztosít. A következő szolgáltatástípusok érhetők el:
+Az alkalmazások számítási feladatainak hálózati konfigurációjának leegyszerűsítése érdekében a Kubernetes a *szolgáltatásokat* használva logikailag csoportosítja a hüvelyek készletét, és hálózati kapcsolatot biztosít. A következő típusú szolgáltatások érhetők el:
 
-- **Fürt IP-címe** – Belső IP-címet hoz létre az AKS-fürtön való használatra. Csak belső alkalmazásokhoz használható, amelyek a fürtön belül más számítási feladatokat is támogatnak.
+- **Fürt IP** -címe – belső IP-címet hoz létre az AK-fürtön belüli használatra. Jó csak belső alkalmazásokhoz, amelyek támogatják a fürtön belüli egyéb munkaterheléseket.
 
-    ![Fürt IP-forgalmát bemutató diagram AKS-fürtben][aks-clusterip]
+    ![A fürt IP-forgalmának folyamatábrája egy AK-fürtben][aks-clusterip]
 
-- **NodePort** – Port-leképezést hoz létre az alapul szolgáló csomóponton, amely lehetővé teszi, hogy az alkalmazás közvetlenül elérhető legyen a csomópont IP-címével és portjával.
+- **NodePort** – létrehoz egy port-hozzárendelést az alapul szolgáló csomóponton, amely lehetővé teszi, hogy az alkalmazás közvetlenül hozzáférhessen a csomópont IP-címével és portjával.
 
-    ![NodePort-forgalmat bemutató diagram AKS-fürtben][aks-nodeport]
+    ![A NodePort adatforgalmát ábrázoló diagram egy AK-fürtben][aks-nodeport]
 
-- **LoadBalancer** – létrehoz egy Azure-terheléselosztó erőforrást, konfigurál egy külső IP-címet, és csatlakoztatja a kért podokat a terheléselosztó háttérkészlethez. Annak érdekében, hogy az ügyfelek forgalma elérje az alkalmazást, terheléselosztási szabályok jönnek létre a kívánt portokon. 
+- **Terheléselosztó** – létrehoz egy Azure Load Balancer-erőforrást, konfigurálja a külső IP-címet, és csatlakoztatja a kért hüvelyt a terheléselosztó háttér-készletéhez. Ha engedélyezni szeretné, hogy az ügyfelek forgalmát elérjék az alkalmazás, a terheléselosztási szabályok a kívánt portokon jönnek létre. 
 
-    ![AKS-fürt terheléselosztó forgalmát bemutató diagram][aks-loadbalancer]
+    ![Egy AK-fürtön Load Balancer forgalom áramlását bemutató diagram][aks-loadbalancer]
 
-    A bejövő forgalom további vezérléséhez és útválasztásához ehelyett használhat bejövő [forgalom vezérlőt.](#ingress-controllers)
+    A bejövő forgalom további vezérléséhez és útválasztásához Ehelyett használjon bejövő [vezérlőt](#ingress-controllers).
 
-- **ExternalName** - Egy adott DNS-bejegyzést hoz létre az alkalmazások könnyebb elérése érdekében.
+- **ExternalName** – egy adott DNS-bejegyzést hoz létre az alkalmazások egyszerűbb eléréséhez.
 
-A terheléselosztók és szolgáltatások IP-címe dinamikusan hozzárendelhető, vagy megadhat egy meglévő statikus IP-címet. Belső és külső statikus IP-címek is hozzárendelhetők. Ez a meglévő statikus IP-cím gyakran DNS-bejegyzéshez van kötve.
+A terheléselosztó és szolgáltatások IP-címe dinamikusan rendelhető hozzá, vagy megadhat egy meglévő statikus IP-címet is. A belső és a külső statikus IP-címek is hozzárendelhetők. Ez a létező statikus IP-cím gyakran egy DNS-bejegyzéshez van kötve.
 
-*Belső* és *külső* terheléselosztók is létrehozhatók. A belső terheléselosztók hoznak hozzá egy privát IP-címet, így nem érhetők el az internetről.
+A *belső* és *külső* terheléselosztó is létrehozható. A belső terheléselosztó csak privát IP-címet kap, ezért nem érhetők el az internetről.
 
 ## <a name="azure-virtual-networks"></a>Azure-beli virtuális hálózatok
 
 Az AKS-ben üzembe helyezhető fürt a következő két hálózati modell egyikét használja:
 
-- *Kubenet-hálózatkezelés* – A hálózati erőforrások általában jönnek létre, és konfigurálva az AKS-fürt telepítése.
-- *Azure Container Networking Interface (CNI)* hálózati – Az AKS-fürt csatlakozik a meglévő virtuális hálózati erőforrások és konfigurációk.
+- *Kubenet* hálózatkezelés – a hálózati erőforrásokat általában a rendszer az AK-fürt üzembe helyezésével hozza létre és konfigurálja.
+- *Azure Container Network Interface (CNI)* hálózatkezelés – az AK-fürt csatlakozik a meglévő virtuális hálózati erőforrásokhoz és konfigurációkhoz.
 
-### <a name="kubenet-basic-networking"></a>Kubenet (alap) hálózatépítés
+### <a name="kubenet-basic-networking"></a>Kubenet (alapszintű) hálózatkezelés
 
-A *kubenet* hálózati beállítás az AKS-fürt létrehozásának alapértelmezett konfigurációja. A *kubenet*használatával a csomópontok egy IP-címet kapnak az Azure virtuális hálózati alhálózatból. A podok IP-címe a csomópontok Azure-beli virtuális hálózati alhálózatától logikailag eltérő címtérből származik. A hálózati címfordítás (NAT) konfigurálása lehetővé teszi, hogy a podok hozzáférjenek az Azure-beli virtuális hálózat erőforrásaihoz. A forgalom forrás IP-címe NAT'd a csomópont elsődleges IP-címéhez.
+Az *kubenet* hálózatkezelési beállítás az az alapértelmezett konfiguráció az AK-fürtök létrehozásához. A *kubenet*a csomópontok IP-címet kapnak az Azure virtuális hálózat alhálózatáról. A podok IP-címe a csomópontok Azure-beli virtuális hálózati alhálózatától logikailag eltérő címtérből származik. A hálózati címfordítás (NAT) konfigurálása lehetővé teszi, hogy a podok hozzáférjenek az Azure-beli virtuális hálózat erőforrásaihoz. A forgalom forrás IP-címe a NAT-t a csomópont elsődleges IP-címére irányítja.
 
-Csomópontok használja a [kubenet][kubenet] Kubernetes plugin. Lehetővé teheti, hogy az Azure platform hozza létre és konfigurálja a virtuális hálózatokat, vagy dönthet úgy, hogy az AKS-fürtöt egy meglévő virtuális hálózati alhálózatba telepíti. Ismét csak a csomópontok kap egy irányítható IP-címet, és a podok nat-t használnak az AKS-fürtön kívüli más erőforrásokkal való kommunikációhoz. Ez a megközelítés jelentősen csökkenti az IP-címek számát, amelyeket le kell foglalnia a hálózati térben a podok számára.
+A csomópontok a [kubenet][kubenet] Kubernetes beépülő modult használják. Lehetővé teheti, hogy az Azure platform létrehozza és konfigurálja a virtuális hálózatokat, vagy dönthet úgy, hogy egy meglévő virtuális hálózati alhálózatra telepíti az AK-fürtöt. Megint csak a csomópontok kapnak egy irányítható IP-címet, és a hüvelyek a NAT használatával kommunikálnak az AK-fürtön kívüli más erőforrásokkal. Ez a megközelítés nagy mértékben csökkenti azon IP-címek számát, amelyeket a hüvelyek számára a hálózati térben le kell foglalni.
 
-További információ: [Kubenet networking konfigurálása AKS-fürthöz.][aks-configure-kubenet-networking]
+További információ: [kubenet hálózatkezelés konfigurálása AK-fürthöz][aks-configure-kubenet-networking].
 
 ### <a name="azure-cni-advanced-networking"></a>Azure CNI (speciális) hálózatkezelés
 
-Az Azure CNI használatával minden pod kap egy IP-címet az alhálózatból, és közvetlenül elérhetővé válik. Ezeknek az IP-címeknek egyedinek kell lenniük a hálózati térben, és előre meg kell tervezni őket. Minden csomópont rendelkezik egy konfigurációs paramétera podok maximális általa támogatott. A csomópontonkénti IP-címek megfelelő száma ezután előre le van foglalva az adott csomópont számára. Ez a megközelítés több tervezést igényel, mivel egyébként az IP-cím kimerüléséhez vagy a fürtök újraépítésének szükségességéhez vezethet egy nagyobb alhálózatban, ahogy az alkalmazás igényei nőnek.
+Az Azure CNI használatával minden pod kap egy IP-címet az alhálózatból, és közvetlenül elérhetővé válik. Ezeknek az IP-címeknek egyedinek kell lenniük a hálózati térben, és előre kell tervezni. Mindegyik csomóponthoz tartozik egy konfigurációs paraméter az általa támogatott hüvelyek maximális számához. A csomópontok azonos számú IP-címet, majd az adott csomópont előtt fenntartanak. Ennek a megközelítésnek több megtervezésre van szüksége, mivel ez az IP-címek kimerüléséhez vezethet, vagy a fürtök újraépítésére van szükség egy nagyobb alhálózaton, mivel az alkalmazás által igényelt növekedés szükséges.
 
-A csomópontok az [Azure Container Networking Interface (CNI)][cni-networking] Kubernetes beépülő modult használják.
+A csomópontok az [Azure Container Network Interface (CNI)][cni-networking] Kubernetes beépülő modult használják.
 
-![Két csomópontot ábrázoló, egyetlen Azure-alapú virtuális hálózathoz összekötő hidakkal][advanced-networking-diagram]
+![Diagram, amely két csomópontot mutat be egyetlen Azure-VNet csatlakozó hidakkal][advanced-networking-diagram]
 
-További információ: [Azure CNI konfigurálása AKS-fürthöz.][aks-configure-advanced-networking]
+További információ: az [Azure CNI konfigurálása az AK-fürtökhöz][aks-configure-advanced-networking].
 
 ### <a name="compare-network-models"></a>Hálózati modellek összehasonlítása
 
-A kubenet és az Azure CNI egyaránt biztosít hálózati kapcsolatot az AKS-fürtök számára. Vannak azonban előnyei és hátrányai, hogy minden. Magas szinten a következő szempontok érvényesek:
+A kubenet és az Azure CNI egyaránt biztosítanak hálózati kapcsolatot az AK-fürtökhöz. Vannak azonban előnyei és hátrányai is. Magas szinten a következő szempontokat kell figyelembe venni:
 
-* **kubenet között**
-    * Az IP-címterület megőrzése.
-    * A Kubernetes belső vagy külső terheléselosztót használja a fürtön kívüli podok eléréséhez.
-    * A felhasználó által definiált útvonalakat (UdRs) manuálisan kell kezelnie és karbantartania.
-    * Fürtenként legfeljebb 400 csomópont.
-* **Azure CNI**
-    * A podok teljes virtuális hálózati kapcsolatot kapnak, és közvetlenül elérhetők a privát IP-címükön keresztül a csatlakoztatott hálózatokról.
-    * Több IP-címterületet igényel.
+* **kubenet**
+    * Megőrzi az IP-címtartomány méretét.
+    * A Kubernetes belső vagy külső terheléselosztó használatával éri el a hüvelyeket a fürtön kívülről.
+    * A felhasználó által megadott útvonalakat (UDR) manuálisan kell kezelni és karbantartani.
+    * Fürtben legfeljebb 400 csomópont adható meg.
+* **Azure-CNI**
+    * A hüvelyek teljes virtuális hálózati kapcsolattal rendelkeznek, és közvetlenül a saját magánhálózati IP-címükkel érhetik el a csatlakoztatott hálózatokból.
+    * További IP-címtartomány szükséges.
 
-A következő viselkedésbeli különbségek vannak a kubenet és az Azure CNI között:
+A kubenet és az Azure CNI között a következő viselkedési különbségek léteznek:
 
-| Képesség                                                                                   | Kubenet között   | Azure CNI |
+| Képesség                                                                                   | Kubenet   | Azure-CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| Fürt központi telepítése meglévő vagy új virtuális hálózatban                                            | Támogatott - Az UdRs manuálisan alkalmazva | Támogatott |
-| Pod-pod kapcsolat                                                                         | Támogatott | Támogatott |
-| Pod-VM-kapcsolat; Virtuális gép ugyanabban a virtuális hálózatban                                          | Működik, ha a pod kezdeményezi | Mindkét irányban működik |
-| Pod-VM-kapcsolat; Virtuális gép társviszony-létesített virtuális hálózatban                                            | Működik, ha a pod kezdeményezi | Mindkét irányban működik |
-| Helyszíni hozzáférés VPN- vagy expressz útvonal használatával                                                | Működik, ha a pod kezdeményezi | Mindkét irányban működik |
-| Hozzáférés a szolgáltatásvégpontok által védett erőforrásokhoz                                             | Támogatott | Támogatott |
-| Kubernetes-szolgáltatások megjelenítése terheléselosztó szolgáltatás, App Gateway vagy be- éselőszolgáltatás vezérlő használatával | Támogatott | Támogatott |
-| Alapértelmezett Azure DNS- és privát zónák                                                          | Támogatott | Támogatott |
+| Fürt üzembe helyezése meglévő vagy új virtuális hálózaton                                            | Támogatott – UDR manuálisan alkalmazva | Támogatott |
+| Pod-Pod kapcsolat                                                                         | Támogatott | Támogatott |
+| Pod-VM-kapcsolat; Virtuális gép ugyanabban a virtuális hálózatban                                          | Működik, ha a pod kezdeményezi | Mindkét módon működik |
+| Pod-VM-kapcsolat; Virtuális gép a virtuális hálózatban                                            | Működik, ha a pod kezdeményezi | Mindkét módon működik |
+| Helyszíni hozzáférés VPN vagy Express Route használatával                                                | Működik, ha a pod kezdeményezi | Mindkét módon működik |
+| Hozzáférés a szolgáltatási végpontok által védett erőforrásokhoz                                             | Támogatott | Támogatott |
+| Kubernetes-szolgáltatások közzététele terheléselosztó szolgáltatás, app Gateway vagy bejövő adatkezelő használatával | Támogatott | Támogatott |
+| Alapértelmezett Azure DNS és privát zónák                                                          | Támogatott | Támogatott |
 
-Ami a DNS-t illeti, a kubenet és az Azure CNI beépülő modullal a DNS-t a CoreDNS, az AKS-ben futó démonkészlet kínálja. A Kubernetes-en található CoreDNS szolgáltatásról a [DNS-szolgáltatás testreszabása](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)című témakörben talál további információt. A CoreDNS alapértelmezés szerint úgy van konfigurálva, hogy ismeretlen tartományokat továbbítson a csomópont DNS-kiszolgálóinak, más szóval az AKS-fürt üzembe helyezését tartalmazó Azure virtuális hálózat DNS-funkciójának. Ezért az Azure DNS- és privát zónák az AKS-ben futó podok esetében is működni fognak.
+A DNS-sel kapcsolatban a CoreDNS, az kubenet és az Azure CNI beépülő modul DNS-t is kínál, amely egy AK-ban futó démon. A Kubernetes CoreDNS kapcsolatos további információkért lásd: a [DNS-szolgáltatás testreszabása](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). A CoreDNS alapértelmezés szerint úgy van konfigurálva, hogy ismeretlen tartományokat továbbítson a csomópont DNS-kiszolgálóira, vagyis az Azure Virtual Network DNS-funkcióit, amelyeken az AK-fürt telepítve van. Ezért a Azure DNS és a privát zónák az AK-ban futó hüvelyek esetében működnek.
 
-### <a name="support-scope-between-network-models"></a>Támogatási hatókör a hálózati modellek között
+### <a name="support-scope-between-network-models"></a>A hálózati modellek közötti hatókör támogatása
 
-A használt hálózati modelltől függetlenül a kubenet és az Azure CNI az alábbi módokon telepíthető:
+A használt hálózati modelltől függetlenül a kubenet és az Azure CNI is üzembe helyezhetők az alábbi módszerek egyikével:
 
-* Az Azure platform automatikusan létrehozhatja és konfigurálhatja a virtuális hálózati erőforrásokat, amikor létrehoz egy AKS-fürtöt.
-* Az AKS-fürt létrehozásakor manuálisan hozhatja létre és konfigurálhatja a virtuális hálózati erőforrásokat, és csatolhatja ezeket az erőforrásokat.
+* Az Azure platform képes automatikusan létrehozni és konfigurálni a virtuális hálózati erőforrásokat, amikor egy AK-fürtöt hoz létre.
+* A virtuális hálózati erőforrásokat manuálisan is létrehozhatja és konfigurálhatja, és csatolhatja ezeket az erőforrásokat az AK-fürt létrehozásakor.
 
-Bár a képességek, például a szolgáltatásvégpontok vagy udrs támogatottak a kubenet és az Azure CNI, az [AKS támogatási szabályzatok][support-policies] határozzák meg, milyen módosításokat végezhet. Példa:
+Bár a szolgáltatás-végpontok vagy UDR is támogatottak mind a kubenet, mind az Azure CNI esetében, az [AK támogatási szabályzatai][support-policies] határozzák meg, hogy milyen módosításokat végezhet el. Például:
 
-* Ha manuálisan hozza létre a virtuális hálózati erőforrásokat egy AKS-fürthöz, a saját UdRs vagy szolgáltatásvégpontok konfigurálása kor támogatott.
-* Ha az Azure platform automatikusan létrehozza a virtuális hálózati erőforrásokat az AKS-fürthöz, nem támogatott manuálisan módosítani az AKS által kezelt erőforrásokat a saját UdRs vagy szolgáltatásvégpontok konfigurálásához.
+* Ha egy AK-fürthöz manuálisan hozza létre a virtuális hálózati erőforrásokat, akkor a saját UDR vagy szolgáltatási végpontok konfigurálásakor is támogatott.
+* Ha az Azure-platform automatikusan létrehozza az AK-fürthöz tartozó virtuális hálózati erőforrásokat, a saját UDR vagy szolgáltatási végpontok konfigurálásához nem támogatott manuálisan módosítani az AK által felügyelt erőforrásokat.
 
 ## <a name="ingress-controllers"></a>Bejövőforgalom-vezérlők
 
-LoadBalancer típusú szolgáltatás létrehozásakor létrejön egy mögöttes Azure terheléselosztó erőforrás. A terheléselosztó úgy van konfigurálva, hogy forgalmat a podok a szolgáltatás egy adott porton. A LoadBalancer csak a 4.
+Terheléselosztó-típus szolgáltatás létrehozásakor létrejön egy mögöttes Azure Load Balancer-erőforrás. A terheléselosztó úgy van konfigurálva, hogy egy adott porton keresztül továbbítsa a forgalmat a szolgáltatásban lévő hüvelyekre. A terheléselosztó csak a 4. rétegben működik – a szolgáltatás nem ismeri a tényleges alkalmazásokat, és nem végezhet további útválasztási szempontokat.
 
-*A be- ésrémvezérlők* a 7- es rétegben működnek, és intelligensebb szabályokat használhatnak az alkalmazásforgalom elosztásához. A bejövő vezérlők gyakori használata a HTTP-forgalom különböző alkalmazásokhoz való átirányítása a bejövő URL-cím alapján.
+A belépési *vezérlők* a 7. rétegben működnek, és az alkalmazások forgalmának elosztásához intelligensebb szabályokat is használhatnak. A bejövő adatkezelők közös használata a HTTP-forgalom átirányítása különböző alkalmazásokba a bejövő URL-cím alapján.
 
-![AKS-fürt ben a forgalom áramlását bemutató diagram][aks-ingress]
+![Egy AK-fürt bejövő forgalmát bemutató diagram][aks-ingress]
 
-Az AKS-ben létrehozhat egy bejövő erőforrást az NGINX-hez hasonló valamitva, vagy használhatja az AKS HTTP alkalmazásútválasztási szolgáltatást. Ha engedélyezi a HTTP-alkalmazás-útválasztást egy AKS-fürthöz, az Azure platform létrehozza a bejövő kapcsolat vezérlőjét és egy *külső DNS-vezérlőt.* Aktaszhálózatban új bejövő erőforrások létrehozásakor a szükséges DNS A rekordok egy fürtspecifikus DNS-zónában jönnek létre. További információt a [HTTP-alkalmazás-útválasztás központi telepítése című][aks-http-routing]témakörben talál.
+Az AK-ban létrehozhat egy bejövő erőforrásokat, például NGINX-et, vagy használhatja az AK HTTP-alkalmazás útválasztási szolgáltatását. Ha egy AK-fürthöz engedélyezi a HTTP-alkalmazás útválasztását, az Azure platform létrehozza a bejövő vezérlőt és egy *külső DNS-* vezérlőt. Mivel a Kubernetes-ben új bejövő erőforrások jönnek létre, a szükséges DNS-rekordok egy fürtre vonatkozó DNS-zónában jönnek létre. További információ: a [http-alkalmazás útválasztásának telepítése][aks-http-routing].
 
-A be- és akta másik gyakori jellemzője az SSL/TLS-megszüntetés. A HTTPS-en keresztül elért nagy webalkalmazások, a TLS-végződtetés a be- és écses erőforrás, nem pedig magában az alkalmazáson belül. Az automatikus TLS-hitelesítés generálása és konfigurálása érdekében konfigurálhatja a be- és écserőforrást olyan szolgáltatók használatára, mint például a Let's Encrypt. Az NGINX ingress vezérlő let's Encrypt segítségével történő konfigurálásáról a Bejövő forgalom és a [TLS][aks-ingress-tls]című témakörben talál további információt.
+A bejövő forgalom egy másik gyakori funkciója az SSL/TLS-lezárás. A HTTPS-kapcsolaton keresztül elért nagyméretű webalkalmazások esetében a TLS-megszakítást a bejövő erőforrások nem az alkalmazáson belül, hanem a bejövő erőforrással is tudják kezelni. A TLS-hitelesítés automatikus létrehozásához és konfigurálásához beállíthatja, hogy a bejövő erőforrások olyan szolgáltatók használatára legyenek használhatók, mint például a titkosítás. Az NGINX beáramlási vezérlőnek a titkosítással való konfigurálásával kapcsolatos további információkért lásd: [bejövő és TLS][aks-ingress-tls].
 
-A bejövő kapcsolat vezérlője is konfigurálhatja, hogy megőrizze az ügyfélforrás IP-címét az AKS-fürttárolóira irányuló kérelmeken. Ha egy ügyfél kérése a bejövő kapcsolatvezérlőn keresztül egy tárolóba kerül az AKS-fürtben, a kérelem eredeti forrás IP-címe nem lesz elérhető a céltároló számára. Ha engedélyezi *az ügyfélforrás IP-megőrzését,* az ügyfél forrás IP-címe az *X-Forwarded-For*csoportban található kérelemfejlécben érhető el. Ha ügyfélforrás IP-megőrzése a be- és énekbe, nem használhatja az SSL pass-through. Az ügyfélforrás IP-megőrzése és az SSL-áthaladás más szolgáltatásokkal, például a *LoadBalancer* típussal is használható.
+A bejövő adatkezelőt úgy is konfigurálhatja, hogy megőrizze az ügyfél forrásának IP-címét az AK-fürtön lévő tárolók kéréseire. Ha az ügyfél kérelmét az AK-fürtön lévő egyik tárolóhoz irányítja át a bejövő vezérlőn keresztül, a kérelem eredeti forrás IP-címe nem lesz elérhető a cél tároló számára. Ha engedélyezi az *ügyfél forrás IP-címének megőrzését*, az ügyfél forrás IP-címe a kérelem fejlécében érhető el az *X által továbbított – esetében*. Ha ügyfél-forrás IP-megőrzést használ a bejövő adatkezelőn, akkor nem használhatja a TLS átmenő átvitelt. Az ügyfél-forrás IP-megőrzés és a TLS-továbbítás más szolgáltatásokkal, például a *terheléselosztó* típussal is használható.
 
 ## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
-A hálózati biztonsági csoport szűri a forgalmat a virtuális gépek, például az AKS-csomópontok. A szolgáltatások, például a LoadBalancer létrehozásakor az Azure platform automatikusan konfigurálja a szükséges hálózati biztonsági csoport szabályokat. Ne konfigurálja manuálisan a hálózati biztonsági csoport szabályait az AKS-fürtben lévő podok forgalmának szűrésére. Definiálja a szükséges portokat és továbbítást a Kubernetes-szolgáltatás jegyzékfájljainak részeként, és hagyja, hogy az Azure platform hozza létre vagy frissítse a megfelelő szabályokat. A következő szakaszban tárgyalt hálózati házirendek használatával is automatikusan alkalmazhatja a forgalomszűrő szabályokat a podokra.
+A hálózati biztonsági csoport a virtuális gépek, például az AK-csomópontok forgalmát szűri. A szolgáltatások, például a terheléselosztó létrehozása során az Azure platform automatikusan konfigurálja a hálózati biztonsági csoportok szükséges szabályait. Ne konfigurálja manuálisan a hálózati biztonsági csoport szabályait a hüvelyek forgalmának szűrésére egy AK-fürtben. Adja meg a szükséges portokat és továbbítást a Kubernetes szolgáltatás jegyzékfájljának részeként, és hagyja, hogy az Azure platform létrehozza vagy frissítse a megfelelő szabályokat. Hálózati házirendeket is használhat a következő szakaszban leírtak szerint, hogy automatikusan alkalmazza a forgalmi szűrő szabályait a hüvelyekre.
 
 ## <a name="network-policies"></a>Hálózati házirendek
 
-Alapértelmezés szerint az AKS-fürt összes podja korlátozás nélkül küldhet és fogadhat forgalmat. A nagyobb biztonság érdekében érdemes lehet meghatározni a forgalom áramlását szabályozó szabályokat. Háttéralkalmazások gyakran csak a szükséges előtér-szolgáltatások, vagy az adatbázis-összetevők csak az alkalmazásrétegek, amelyek csatlakoznak hozzájuk.
+Alapértelmezés szerint az összes AK-fürtben lévő hüvelyek korlátozás nélkül küldhetnek és fogadhatnak forgalmat. A fokozott biztonság érdekében érdemes lehet olyan szabályokat definiálni, amelyek vezérlik a forgalom áramlását. A háttérbeli alkalmazások gyakran csak a szükséges előtér-szolgáltatásoknak vannak kitéve, vagy az adatbázis-összetevők csak a hozzájuk csatlakozó alkalmazási rétegek számára érhetők el.
 
-A hálózati házirend egy Kubernetes szolgáltatás érhető el az AKS, amely lehetővé teszi a podok közötti forgalom szabályozását. Dönthet úgy, hogy engedélyezi vagy letagadja a forgalmat olyan beállítások alapján, mint a hozzárendelt címkék, névtér vagy forgalmi port. A hálózati biztonsági csoportok inkább az AKS-csomópontokhoz tartoznak, nem a podokhoz. A hálózati házirendek használata megfelelőbb, felhőalapú módja a forgalom áramlásának szabályozásának. A podok dinamikusan jönnek létre egy AKS-fürtben, a szükséges hálózati házirendek automatikusan alkalmazható.
+A hálózati házirend egy AK-ban elérhető Kubernetes funkció, amely lehetővé teszi a hüvelyek közötti adatforgalom szabályozását. Dönthet úgy, hogy engedélyezi vagy megtagadja a forgalmat olyan beállítások alapján, mint a hozzárendelt címkék, a névtér vagy a forgalmi port. A hálózati biztonsági csoportok többek között az AK-csomópontok, nem a hüvelyek. A hálózati házirendek használata megfelelőbb, Felhőbeli natív módszer a forgalom szabályozására. Mivel a hüvelyek dinamikusan jönnek létre egy AK-fürtben, a szükséges hálózati házirendeket automatikusan alkalmazni lehet.
 
-További információ: [Biztonságos forgalom a podok között a hálózati szabályzatok használatával az Azure Kubernetes Szolgáltatás (AKS)][use-network-policies].
+További információ: a [hüvelyek közötti biztonságos forgalom a hálózati házirendek használatával az Azure Kubernetes szolgáltatásban (ak)][use-network-policies].
 
 ## <a name="next-steps"></a>További lépések
 
-Az AKS-hálózat használatának megkezdéséhez hozzon létre és konfiguráljon egy AKS-fürtöt saját IP-címtartományaival a [kubenet][aks-configure-kubenet-networking] vagy az [Azure CNI][aks-configure-advanced-networking]használatával.
+Az AK hálózatkezelésének megkezdéséhez hozzon létre és konfiguráljon egy AK-fürtöt a saját IP-címtartományok használatával a [kubenet][aks-configure-kubenet-networking] vagy az [Azure CNI][aks-configure-advanced-networking]segítségével.
 
-A kapcsolódó gyakorlati tanácsokról az [AKS hálózati kapcsolatával és biztonságával kapcsolatos gyakorlati tanácsok című témakörben található.][operator-best-practices-network]
+A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a hálózati kapcsolathoz és a biztonsághoz az AK-ban][operator-best-practices-network].
 
-A Kubernetes és az AKS alapfogalmairól az alábbi cikkekben talál további információt:
+Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Kubernetes / AKS-fürtök és munkaterhelések][aks-concepts-clusters-workloads]
-- [Kubernetes / AKS hozzáférés és identitás][aks-concepts-identity]
-- [Kubernetes / AKS biztonság][aks-concepts-security]
-- [Kubernetes / AKS tároló][aks-concepts-storage]
-- [Kubernetes / AKS skála][aks-concepts-scale]
+- [Kubernetes/AK-fürtök és-munkaterhelések][aks-concepts-clusters-workloads]
+- [Kubernetes/AK-hozzáférés és-identitás][aks-concepts-identity]
+- [Kubernetes/AK biztonság][aks-concepts-security]
+- [Kubernetes/AK-tároló][aks-concepts-storage]
+- [Kubernetes/AK-skála][aks-concepts-scale]
 
 <!-- IMAGES -->
 [aks-clusterip]: ./media/concepts-network/aks-clusterip.png

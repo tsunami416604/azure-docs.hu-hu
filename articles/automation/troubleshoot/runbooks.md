@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 73f79145f63e0d8afee7596f1f8231a054ef1c2e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: a407461e20eefe29dd410ac6ed547b33287a5be8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097693"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145412"
 ---
 # <a name="troubleshoot-runbook-errors"></a>Runbook hibák elhárítása
 
@@ -180,11 +180,11 @@ At line:16 char:1
 
 ### <a name="cause"></a>Ok
 
-Ezt a hibát a AzureRM és az az Module parancsmagok egy runbook való használata okozza. Akkor következik be, amikor importálja az az modult a AzureRM modul importálása előtt.
+Ezt a hibát valószínűleg az okozza, hogy a AzureRM-ből a runbook-ben lévő moduloknak nem teljes áttelepítést használ. Ez azt okozhatja, hogy Azure Automation egy runbook-feladatot csak AzureRM-modulok használatával indíthat el, majd egy másik feladatot csak az az modulok használatával indít el, ami egy sandbox-összeomláshoz vezet. 
 
 ### <a name="resolution"></a>Megoldás:
 
-Az az és a AzureRM parancsmag nem importálható és nem használható ugyanabban a runbook. Ha többet szeretne megtudni az az parancsmagokról Azure Automationban, tekintse meg [a modulok kezelése a Azure Automationban](../shared-resources/modules.md)című témakört.
+Az az és a AzureRM parancsmagok használata nem ajánlott ugyanazon a runbook. Ha többet szeretne megtudni ezeknek a moduloknak a helyes használatáról, tekintse meg az [áttelepítés az modulokra](../shared-resources/modules.md#migrating-to-az-modules)című témakört.
 
 ## <a name="scenario-the-runbook-fails-with-the-error-a-task-was-canceled"></a><a name="task-was-cancelled"></a>Forgatókönyv: a runbook sikertelen a következő hibával: a feladat meg lett szakítva
 
@@ -581,7 +581,7 @@ Ez a hiba kétféleképpen oldható meg.
 * A [Start-Job](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)használata helyett a [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) használatával indítsa el a runbook.
 * Próbálja meg futtatni a runbook egy hibrid Runbook-feldolgozón.
 
-Ha többet szeretne megtudni erről a viselkedésről és a Azure Automation runbookok egyéb viselkedéséről, tekintse meg a [Runbook viselkedését](../automation-runbook-execution.md#runbook-behavior)ismertető témakört.
+Ha többet szeretne megtudni erről a viselkedésről és a Azure Automation runbookok egyéb viselkedéséről, tekintse meg a következő témakört: [Runbook-végrehajtás Azure Automation](../automation-runbook-execution.md).
 
 ## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>Forgatókönyv: a Linux Hybrid Runbook Worker a Runbook aláírásakor kéri a jelszót
 
@@ -645,11 +645,11 @@ A probléma lehetséges okai:
 
 #### <a name="not-using-run-as-account"></a>Nem használja a futtató fiókot
 
-Kövesse az [5. lépés – hitelesítés hozzáadása az Azure-erőforrások kezeléséhez című szakasz](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) lépéseit, és győződjön meg arról, hogy a futtató fiókot használja a Key Vault eléréséhez. 
+Kövesse az [5. lépés – hitelesítés hozzáadása az Azure-erőforrások kezeléséhez című témakört](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) , amely biztosítja, hogy a futtató fiókot használja a Key Vault eléréséhez. 
 
 #### <a name="insufficient-permissions"></a>Nem megfelelő engedélyek
 
-Kövesse az [engedélyek hozzáadása a Key Vaulthoz](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) című szakasz lépéseit, és győződjön meg arról, hogy a futtató fiók megfelelő engedélyekkel rendelkezik a Key Vault eléréséhez. 
+[Adja hozzá az Key Vaulthoz szükséges engedélyeket](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) annak biztosításához, hogy a futtató fiók megfelelő engedélyekkel rendelkezik a Key Vault eléréséhez. 
 
 ## <a name="my-problem-isnt-listed-above"></a><a name="other"></a>A probléma nem szerepel a fenti felsorolásban
 
@@ -669,7 +669,7 @@ A paraméterek webhookok való átadásával kapcsolatos segítségért lásd: [
 
 ### <a name="issues-using-az-modules"></a>Az az modulok használatával kapcsolatos problémák
 
-Ugyanazon Automation-fiókban az az modulok és a AzureRM modulok használata nem támogatott. További részleteket az [az modulok a runbookok](https://docs.microsoft.com/azure/automation/az-modules) című témakörben talál.
+A runbook-modulok AzureRM-ből az az-ba történő hiányos áttelepítésének használatával a sandbox összeomlik és runbook hibákat okozhat. Lásd: [modulok használata a runbookok](../automation-runbook-execution.md#using-modules-in-your-runbooks).
 
 ### <a name="inconsistent-behavior-in-runbooks"></a>Következetlen viselkedés a runbookokban
 
@@ -688,10 +688,6 @@ Előfordulhat, hogy a futtató fiókok nem rendelkeznek ugyanazokkal az engedél
 
 A paraméterek webhookok való átadásával kapcsolatos segítségért lásd: [runbook indítása webhookból](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters-used-when-the-webhook-starts-a-runbook).
 
-### <a name="using-az-modules"></a>Az modulok használata
-
-Ugyanazon Automation-fiókban az az modulok és a AzureRM modulok használata nem támogatott. Lásd [az az modulok a runbookok](https://docs.microsoft.com/azure/automation/az-modules).
-
 ### <a name="using-self-signed-certificates"></a>Önaláírt tanúsítványok használata
 
 Önaláírt tanúsítványok használatához tekintse meg az [új tanúsítvány létrehozása](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)című témakört.
@@ -702,6 +698,7 @@ Az Azure-beli homokozó megakadályozza az összes folyamaton kívüli COM-kiszo
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
+* [Runbook végrehajtása az Azure Automationben](../automation-runbook-execution.md)
 * [Runbook indítása Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
 * [Runbook végrehajtása az Azure Automationben](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 

@@ -1,6 +1,6 @@
 ---
 title: Tanúsítványalapú hitelesítés iOS rendszeren – Azure Active Directory
-description: Ismerje meg a támogatott forgatókönyveket és az Azure Active Directory tanúsítványalapú hitelesítésének iOS-eszközökkel rendelkező megoldásokban történő konfigurálásához szükséges követelményeket
+description: Ismerje meg a támogatott forgatókönyveket és a tanúsítványalapú hitelesítés konfigurálásának követelményeit az iOS-eszközökkel rendelkező megoldások Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -10,83 +10,84 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76c5e18a0bf84e96476eafd7ff35398049f1a492
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639631"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144072"
 ---
-# <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory tanúsítványalapú hitelesítés iOS rendszeren
+# <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Tanúsítvány alapú hitelesítés Azure Active Directory iOS rendszeren
 
-A biztonság növelése érdekében az iOS-eszközök tanúsítványalapú hitelesítéssel (CBA) hitelesíthetik magukat az Azure Active Directory (Azure AD) szolgáltatásban az eszközükön lévő ügyféltanúsítvány használatával, amikor a következő alkalmazásokhoz vagy szolgáltatásokhoz csatlakoznak:
+A biztonság növelése érdekében az iOS-eszközök tanúsítványalapú hitelesítést (CBA) használhatnak a Azure Active Directory (Azure AD) hitelesítésére az eszközön lévő ügyféltanúsítványt használva a következő alkalmazásokhoz vagy szolgáltatásokhoz való csatlakozáskor:
 
-* Office mobilalkalmazások, például a Microsoft Outlook és a Microsoft Word
-* Exchange ActiveSync (EAS) ügyfelek
+* Office Mobile-alkalmazások, például a Microsoft Outlook és a Microsoft Word
+* Exchange ActiveSync-(EAS-) ügyfelek
 
-A tanúsítványok használata szükségtelenné teszi, hogy felhasználónevet és jelszót adjon meg bizonyos levelezési és Microsoft Office-alkalmazásokban a mobileszközén.
+A tanúsítványok használatával nem kell megadnia a Felhasználónév és a jelszó kombinációját bizonyos mail-és Microsoft Office-alkalmazásokban a mobileszközön.
 
-Ez a cikk ismerteti a cba iOS-eszközön történő konfigurálásának követelményeit és támogatott forgatókönyveit. Az iOS-hez készült CBA az Azure nyilvános felhőiben, a Microsoft Government Cloudban, a Microsoft Cloud Germany-ben és a Microsoft Azure China 21Vianet-en érhető el.
+Ez a cikk a CBA iOS-eszközön történő konfigurálásának követelményeit és a támogatott forgatókönyveket ismerteti. Az iOS-hez készült CBA az Azure nyilvános felhők, a Microsoft Government Cloud, a Microsoft Cloud Germany és a Microsoft Azure China 21Vianet között érhető el.
 
-## <a name="microsoft-mobile-applications-support"></a>A Microsoft mobilalkalmazás-támogatása
+## <a name="microsoft-mobile-applications-support"></a>Microsoft Mobile-alkalmazások támogatása
 
 | Alkalmazások | Támogatás |
 | --- | --- |
-| Azure Information Protection alkalmazás |![Az alkalmazás támogatásának jelzése][1] |
-| Intune Vállalati portál |![Az alkalmazás támogatásának jelzése][1] |
-| Microsoft Teams |![Az alkalmazás támogatásának jelzése][1] |
-| OneNote |![Az alkalmazás támogatásának jelzése][1] |
-| OneDrive |![Az alkalmazás támogatásának jelzése][1] |
-| Outlook |![Az alkalmazás támogatásának jelzése][1] |
-| Power BI |![Az alkalmazás támogatásának jelzése][1] |
-| Skype Vállalati verzió |![Az alkalmazás támogatásának jelzése][1] |
-| Word / Excel / PowerPoint |![Az alkalmazás támogatásának jelzése][1] |
-| Yammer |![Az alkalmazás támogatásának jelzése][1] |
+| Azure Information Protection alkalmazás |![Pipa jelzi az alkalmazás támogatását][1] |
+| Intune Vállalati portál |![Pipa jelzi az alkalmazás támogatását][1] |
+| Microsoft Teams |![Pipa jelzi az alkalmazás támogatását][1] |
+| Office (mobil) |![Pipa jelzi az alkalmazás támogatását][1] |
+| OneNote |![Pipa jelzi az alkalmazás támogatását][1] |
+| OneDrive |![Pipa jelzi az alkalmazás támogatását][1] |
+| Outlook |![Pipa jelzi az alkalmazás támogatását][1] |
+| Power BI |![Pipa jelzi az alkalmazás támogatását][1] |
+| Skype Vállalati verzió |![Pipa jelzi az alkalmazás támogatását][1] |
+| Word/Excel/PowerPoint |![Pipa jelzi az alkalmazás támogatását][1] |
+| Yammer |![Pipa jelzi az alkalmazás támogatását][1] |
 
 ## <a name="requirements"></a>Követelmények
 
-A CBA iOS-szel való használatához a következő követelmények és szempontok érvényesek:
+A CBA iOS-sel való használatához a következő követelmények és szempontok érvényesek:
 
-* A készülék operációs rendszerének iOS 9 vagy újabb verziónak kell lennie.
+* Az eszköz operációsrendszer-verziójának iOS 9-es vagy újabb verziójúnak kell lennie.
 * Az iOS-es Office-alkalmazásokhoz Microsoft Authenticator szükséges.
-* Létre kell hozni egy identitás-beállítást a macOS-kulcskarikában, amely tartalmazza az ADFS-kiszolgáló hitelesítési URL-címét. További információt a [Identitásbeállítás létrehozása a Mac-es kulcskarikásban című témakörben talál.](https://support.apple.com/guide/keychain-access/create-an-identity-preference-kyca6343b6c9/mac)
+* Az identitás beállítását a macOS-kulcstartóban kell létrehozni, amely tartalmazza az ADFS-kiszolgáló hitelesítési URL-címét. További információ: [Identity preferencia létrehozása a kulcstartó-hozzáférés Mac gépen](https://support.apple.com/guide/keychain-access/create-an-identity-preference-kyca6343b6c9/mac).
 
-Az Active Directory összevonási szolgáltatások (ADFS) alábbi követelményei és szempontjai érvényesek:
+A következő Active Directory összevonási szolgáltatások (AD FS) (ADFS) követelményei és szempontjai érvényesek:
 
-* Az ADFS-kiszolgálót engedélyezni kell a tanúsítványhitelesítéshez, és összevont hitelesítést kell használni.
-* A tanúsítványnak bővített kulcshasználatot (EKU) kell használnia, és a felhasználó egyszerű felhasználónevét kell tartalmaznia a *Tulajdonos alternatív nevében (NT egyszerű név)*.
+* Az ADFS-kiszolgálónak engedélyezve kell lennie a tanúsítványalapú hitelesítéshez, és összevont hitelesítést kell használnia.
+* A tanúsítványnak a kibővített kulcshasználat (EKU) használatát kell használnia, és tartalmaznia kell a felhasználó egyszerű felhasználónevét a *tulajdonos alternatív nevében (NT egyszerű név)*.
 
-## <a name="configure-adfs"></a>A DFS konfigurálása
+## <a name="configure-adfs"></a>Az ADFS konfigurálása
 
-Ahhoz, hogy az Azure AD visszavonjon egy ügyféltanúsítványt, az ADFS-jogkivonatnak a következő jogcímekkel kell rendelkeznie. Az Azure AD hozzáadja ezeket a jogcímeket a frissítési jogkivonathoz, ha azok elérhetők az ADFS-jogkivonatban (vagy bármely más SAML-jogkivonatban). Ha a frissítési jogkivonatot érvényesíteni kell, ezt az információt használja a visszavonás ellenőrzése:
+Ahhoz, hogy az Azure AD visszavonjon egy ügyféltanúsítványt, az ADFS-tokennek a következő jogcímeket kell tartalmaznia. Az Azure AD ezeket a jogcímeket hozzáadja a frissítési jogkivonathoz, ha az ADFS-tokenben (vagy bármely más SAML-jogkivonatban) elérhetők. Ha a frissítési tokent ellenőrizni kell, a rendszer ezt az információt használja a visszavonás ellenőrzéséhez:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`- adja hozzá az ügyféltanúsítvány sorozatszámát
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`- adja hozzá a karakterláncot a kibocsátó az ügyfél tanúsítvány
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`– az ügyféltanúsítvány sorozatszámának megadása
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`-adja meg az ügyféltanúsítvány kiállítójának karakterláncát
 
-Ajánlott eljárásként a szervezet ADFS-hibalapjait is frissítenie kell a következő információkkal:
+Ajánlott eljárásként a szervezet ADFS-hibáinak oldalait is frissítenie kell a következő információkkal:
 
-* A Microsoft Authenticator iOS rendszerre történő telepítésének követelménye.
-* Útmutató a felhasználói tanúsítvány bekésezéséhez.
+* A Microsoft Authenticator iOS rendszerre való telepítésének követelménye.
+* Útmutató felhasználói tanúsítvány beszerzéséhez.
 
-További információt [az AD FS bejelentkezési lapjának testreszabása című témakörben](https://technet.microsoft.com/library/dn280950.aspx)talál.
+További információ: [AD FS bejelentkezési oldalának testreszabása](https://technet.microsoft.com/library/dn280950.aspx).
 
-## <a name="use-modern-authentication-with-office-apps"></a>Modern hitelesítés használata az Office-appokkal
+## <a name="use-modern-authentication-with-office-apps"></a>Modern hitelesítés használata az Office-alkalmazásokkal
 
-Egyes, modern hitelesítéssel `prompt=login` rendelkező Office-alkalmazások kérésben küldhetnek az Azure AD-nek. Alapértelmezés szerint az Azure `prompt=login` AD fordítja a `wauth=usernamepassworduri` kérelemben az ADFS-hez (kéri `wfresh=0` az ADFS-t, hogy tegye meg az U/P Auth) és (kéri az ADFS figyelmen kívül hagyja az SSO-állapot, és egy friss hitelesítést). Ha engedélyezni szeretné a tanúsítványalapú hitelesítést ezekhez az alkalmazásokhoz, módosítsa az azure-beli AD alapértelmezett viselkedését.
+A modern hitelesítéssel rendelkező Office-alkalmazások `prompt=login` az Azure ad-be való küldésük kérelmében vannak engedélyezve. Alapértelmezés szerint az Azure AD az ADFS `prompt=login` -re irányuló kérésben `wauth=usernamepassworduri` (az U/P hitelesítésének megadását kéri `wfresh=0` ) és (az ADFS megkeresése az SSO-állapot mellőzése és új hitelesítés elvégzése). Ha engedélyezni szeretné a tanúsítványalapú hitelesítést ezekhez az alkalmazásokhoz, módosítsa az alapértelmezett Azure AD-viselkedést.
 
-Az alapértelmezett viselkedés frissítéséhez állítsa a '*PromptLoginBehavior*' parancsot az összevont tartomány beállításaiban *Letiltva*értékre. Az [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) parancsmag segítségével végrehajthatja ezt a feladatot, ahogy az a következő példában látható:
+Az alapértelmezett viselkedés frissítéséhez állítsa le a "*PromptLoginBehavior*" értéket az összevont tartomány beállításaiban a *letiltáshoz*. Ezt a feladatot a [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) parancsmaggal hajthatja végre, ahogy az az alábbi példában is látható:
 
 ```powershell
 Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled
 ```
 
-## <a name="support-for-exchange-activesync-clients"></a>Az Exchange ActiveSync-ügyfelek támogatása
+## <a name="support-for-exchange-activesync-clients"></a>Exchange ActiveSync-ügyfelek támogatása
 
-IOS 9 vagy újabb rendszeren a natív iOS levelezőprogram támogatott. Annak megállapításához, hogy ez a szolgáltatás az összes többi Exchange ActiveSync-alkalmazás számára támogatott-e, forduljon az alkalmazás fejlesztőjéhez.
+Az iOS 9-es vagy újabb verzióiban a natív iOS levelezési ügyfélprogram támogatott. Annak megállapításához, hogy ez a funkció támogatott-e az összes többi Exchange ActiveSync-alkalmazás esetében, forduljon az alkalmazás-fejlesztőhöz.
 
 ## <a name="next-steps"></a>További lépések
 
-A tanúsítványalapú hitelesítés konfigurálásához a környezetben, olvassa el a [Tanúsítványalapú hitelesítés első lépéseit.](active-directory-certificate-based-authentication-get-started.md)
+A tanúsítványalapú hitelesítés konfigurálásához a környezetben tekintse meg a következő témakört: a [tanúsítványalapú hitelesítés](active-directory-certificate-based-authentication-get-started.md) első lépései.
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png

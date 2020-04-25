@@ -1,27 +1,27 @@
 ---
-title: Csatlakozás Oracle-adatbázishoz
-description: Rekordok beszúrása és kezelése Oracle Database REST API-kkal és Azure Logic Apps alkalmazásokkal
+title: Kapcsolódás Oracle Databasehoz
+description: Rekordok beszúrása és kezelése Oracle Database REST API-kkal és Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 03/29/2017
 tags: connectors
-ms.openlocfilehash: 99abd48bde97c2a2e085688cdfbb365e5e4cfd56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdbf7fd7dded2fc0026e5c819ca579eeddc5cdb6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74789426"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147817"
 ---
-# <a name="get-started-with-the-oracle-database-connector"></a>Első lépések az Oracle Database összekötővel
+# <a name="get-started-with-the-oracle-database-connector"></a>Ismerkedés az Oracle Database-összekötővel
 
-Az Oracle Database összekötő használatával olyan szervezeti munkafolyamatokat hozhat létre, amelyek a meglévő adatbázis ban adatokat használnak. Ez az összekötő csatlakozhat egy helyszíni Oracle-adatbázishoz, vagy egy Azure virtuális géphez, amelyen telepítve van az Oracle Database. Ezzel a csatlakozóval a következőkre tehet:
+Az Oracle Database-összekötő használatával olyan szervezeti munkafolyamatokat hozhat létre, amelyek a meglévő adatbázisban lévő adatait használják. Ez az összekötő egy helyszíni Oracle Databasehoz vagy egy Oracle Database telepített Azure-beli virtuális géphez tud csatlakozni. Ezzel az összekötővel a következőket teheti:
 
-* A munkafolyamatot úgy építheti ki, hogy új ügyfelet ad hozzá egy ügyféladatbázishoz, vagy frissít egy rendelési adatbázisban lévő rendelést.
-* A műveletek segítségével lekaphat egy adatsort, új sort szúrhat be, és akár törölheti is. Ha például egy rekordot létrehoz a Dynamics CRM Online programban (eseményindító), akkor szúrjon be egy sort egy Oracle Database (művelet) sorába. 
+* Hozza létre a munkafolyamatot úgy, hogy új ügyfelet ad hozzá egy ügyfél-adatbázishoz, vagy megrendelést frissít egy Orders adatbázisban.
+* Használjon műveleteket egy adatsor beszerzéséhez, szúrjon be egy új sort, és akár törölje is. Ha például egy rekordot hoz létre a Dynamics CRM Online-ban (egy triggerben), szúrjon be egy sort egy Oracle Databaseba (egy műveletbe). 
 
-Ez a cikk bemutatja, hogyan használhatja az Oracle Database-összekötőt egy logikai alkalmazásban.
+Ez a cikk bemutatja, hogyan használhatja a Oracle Database-összekötőt egy logikai alkalmazásban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,102 +29,102 @@ Ez a cikk bemutatja, hogyan használhatja az Oracle Database-összekötőt egy l
     * Oracle 9-es és újabb verziók
     * 8.1.7-es vagy újabb Oracle-ügyfélszoftver
 
-* Telepítse a helyszíni adatátjárót. [A helyszíni adatokhoz a logikai alkalmazásokból származó](../logic-apps/logic-apps-gateway-connection.md) adatok listája a lépéseket. Az átjáró szükséges egy helyszíni Oracle-adatbázishoz vagy egy Azure-beli virtuális géphez való csatlakozáshoz, amelyen telepítve van az Oracle DB. 
+* Telepítse a helyszíni adatátjárót. A [logikai alkalmazásokból a helyszíni adatokhoz való kapcsolódás](../logic-apps/logic-apps-gateway-connection.md) a lépéseket ismerteti. Az átjárót egy helyszíni Oracle Databasehoz vagy egy Oracle DB telepített Azure-beli virtuális géphez való kapcsolódáshoz kell megadnia. 
 
     > [!NOTE]
-    > A helyszíni adatátjáró hídként működik, és biztonságos adatátvitelt biztosít a helyszíni adatok (a nem a felhőben lévő adatok) és a logikai alkalmazások között. Ugyanaz az átjáró több szolgáltatással és több adatforrással is használható.Így előfordulhat, hogy csak egyszer kell telepítenie az átjárót.
+    > A helyszíni adatátjáró hídként működik, és biztonságos adatátvitelt biztosít a helyszíni adatok (a felhőben nem szereplő adatok) és a logikai alkalmazások között. Ugyanaz az átjáró több szolgáltatással és több adatforrással is használható.Így előfordulhat, hogy csak egyszer kell telepítenie az átjárót.
 
-* Telepítse az Oracle Client alkalmazást arra a számítógépre, amelyen a helyszíni adatátjárót telepítette.Mindenképpen telepítse a 64 bites Oracle Data Provider for .NET szolgáltatót az Oracle-től:  
+* Telepítse az Oracle-ügyfelet arra a gépre, amelyen a helyszíni adatátjárót telepítette.Ügyeljen arra, hogy a .NET-hez készült 64 bites Oracle-adatszolgáltatót az Oracle-ből telepítse:  
 
   [64 bites ODAC 12c 4-es kiadás (12.1.0.2.4) Windows x64 rendszerhez](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
-    > Ha az Oracle ügyfél nincs telepítve, hiba történik a kapcsolat létrehozásakor vagy használatakor. Tekintse meg a cikk gyakori hibáit.
+    > Ha az Oracle-ügyfél nincs telepítve, akkor hiba történik, amikor megpróbál létrehozni vagy használni a kapcsolódást. Tekintse meg a cikkben szereplő gyakori hibákat.
 
 
 ## <a name="add-the-connector"></a>Az összekötő hozzáadása
 
 > [!IMPORTANT]
-> Ez az összekötő nem rendelkezik eseményindítókkal. Csak akciói vannak. Így amikor létrehozza a logikai alkalmazást, adjon hozzá egy másik eseményindítót a logikai alkalmazás elindításához, például **a Schedule - Recurrence**vagy a Request / Response - **Response**. 
+> Ez az összekötő nem rendelkezik eseményindítókkal. Csak műveletekkel rendelkezik. Tehát a logikai alkalmazás létrehozásakor adjon hozzá egy másik eseményindítót a logikai alkalmazás elindításához, például: **Schedule-ismétlődés**, vagy **kérelem/válasz válasz**. 
 
-1. Az [Azure Portalon](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást.
+1. A [Azure Portal](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást.
 
-2. A logikai alkalmazás kezdetén válassza a **Kérés/Válasz – Kéréseseményindító** t: 
+2. A logikai alkalmazás elején válassza a **kérelem/válasz-kérelem** triggert: 
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
 3. Kattintson a **Mentés** gombra. Mentéskor a rendszer automatikusan létrehoz egy kérelem URL-címét. 
 
-4. Jelölje ki az **Új lépés**, majd a **Művelet hozzáadása** lehetőséget. Írja `oracle` be a rendelkezésre álló műveletek megtekintéséhez: 
+4. Jelölje ki az **Új lépés**, majd a **Művelet hozzáadása** lehetőséget. `oracle` Az elérhető műveletek megtekintéséhez írja be a következőt: 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
-    > Ez is a leggyorsabb módja annak, hogy az eseményindítók és műveletek bármely összekötők elérhető. Írja be az összekötő nevének `oracle`egy részét, például . A tervező felsorolja az eseményindítókat és a műveleteket. 
+    > Ez a leggyorsabb módja annak, hogy megtekintse az összekötők számára elérhető eseményindítókat és műveleteket. Írja be az összekötő nevének egy részét, például: `oracle`. A tervező felsorolja az összes eseményindítót és műveletet. 
 
-5. Válasszon egyet a műveletek közül, például **oracle adatbázis – get sor**. Válassza a **Csatlakozás a helyszíni adatátjárón keresztül**lehetőséget. Adja meg az Oracle kiszolgáló nevét, hitelesítési módját, felhasználónevét, jelszavát, és válassza ki az átjárót:
+5. Válassza ki az egyik műveletet, például **Oracle Database-beolvasás sort**. **A helyszíni adatátjárón keresztül válassza a kapcsolat**lehetőséget. Adja meg az Oracle-kiszolgáló nevét, a hitelesítési módszert, a felhasználónevet és a jelszót, majd válassza ki az átjárót:
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
-6. Miután csatlakozott, jelöljön ki egy táblázatot a listából, és adja meg a tábla sorazonosítóját. Ismernie kell a tábla azonosítóját. Ha nem tudja, forduljon az Oracle DB rendszergazdájához, és a kimenetet a alkalmazásból `select * from yourTableName`kapja meg. Ez megadja a folytatáshoz szükséges azonosítható információkat.
+6. Csatlakozás után válasszon ki egy táblázatot a listából, és írja be a sor AZONOSÍTÓját a táblába. Ismernie kell az azonosítót a táblához. Ha nem tudja, forduljon a Oracle DB rendszergazdájához, és kérje le `select * from yourTableName`a kimenetét. Ez megadja a folytatáshoz szükséges azonosításra alkalmas adatokat.
 
-    A következő példában a feladatadatok at egy humánerőforrás-adatbázisból adja vissza a rendszer: 
+    A következő példában a rendszer a feladatok adatait egy emberi erőforrás-adatbázisból adja vissza: 
 
     ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. Ebben a következő lépésben a munkafolyamat létrehozásához használhatja a többi összekötőt. Ha tesztelni szeretné az Oracle-től származó adatok beszerzését, akkor küldjön magának egy e-mailt az Oracle-adatokkal az egyik küldési e-mail-összekötő, például az Office 365 vagy a Gmail használatával. Használja az Oracle tábla dinamikus tokenjeit `Body` az e-mailek és az `Subject` e-mailek létrehozásához:
+7. Ebben a következő lépésben használhatja a többi összekötőt a munkafolyamat felépítéséhez. Ha tesztelni szeretné az Oracle-ből származó adatok beolvasását, akkor küldjön Önnek egy e-mailt az Oracle-adatokkal az e-mail küldéses összekötők (például az Office 365 Outlook) használatával. Az Oracle-táblázat dinamikus jogkivonatait használva hozza létre a `Subject` és `Body` az e-mail-címét:
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. **Mentse** a logikai alkalmazást, és válassza a **Futtatás lehetőséget.** Zárja be a tervezőt, és tekintse meg az állapot futtatási előzményeit. Ha nem sikerül, jelölje ki a sikertelen üzenetsort. Megnyílik a tervező, és megmutatja, hogy melyik lépés nem sikerült, és megjeleníti a hibainformációkat is. Ha ez sikerül, akkor meg kell kapnia egy e-mailt a hozzáadott információkkal.
+8. **Mentse** a logikai alkalmazást, majd válassza a **Futtatás**lehetőséget. Zárjuk be a tervezőt, és tekintse meg az állapot futtatási előzményeit. Ha nem sikerül, válassza a hibás üzenet sort. Megnyílik a tervező, és megmutatja, hogy melyik lépés nem sikerült, és a hiba adatait is megjeleníti. Ha ez sikeres, akkor e-mailt kell kapnia a hozzáadott információkkal.
 
 
 ### <a name="workflow-ideas"></a>Munkafolyamat-ötletek
 
-* Figyelni szeretné a #oracle hashtaget, és a tweeteket egy adatbázisba szeretné helyezni, hogy lekérdezhetők legyenek, és más alkalmazásokban is használhatók legyenek. Egy logikai alkalmazásban `Twitter - When a new tweet is posted` adja hozzá az eseményindítót, és adja meg a **#oracle** hashtag. Ezután adja `Oracle Database - Insert row` hozzá a műveletet, és jelölje ki a táblázatot:
+* Figyelni szeretné a #oracle hashtaget, és egy adatbázisba helyezi a tweeteket, hogy lekérdezhető legyen, és más alkalmazásokban is használható legyen. Egy logikai alkalmazásban adja hozzá az `Twitter - When a new tweet is posted` triggert, és adja meg a **#oracle** hashtaget. Ezután adja hozzá a `Oracle Database - Insert row` műveletet, és válassza ki a táblát:
 
     ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
-* Az üzenetek et a service bus várólistába küldi a rendszer. Meg szeretné kapni ezeket az üzeneteket, és bekell helyeznie őket egy adatbázisba. Egy logikai alkalmazásban `Service Bus - when a message is received in a queue` adja hozzá az eseményindítót, és jelölje ki a várólistát. Ezután adja `Oracle Database - Insert row` hozzá a műveletet, és jelölje ki a táblázatot:
+* Az üzenetek küldése egy Service Bus várólistára történik. Ezeket az üzeneteket szeretné lekérni, és egy adatbázisba helyezi őket. A logikai alkalmazásban adja hozzá az `Service Bus - when a message is received in a queue` triggert, majd válassza ki a várólistát. Ezután adja hozzá a `Oracle Database - Insert row` műveletet, és válassza ki a táblát:
 
     ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
 ## <a name="common-errors"></a>Gyakori hibák
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Hiba**: Nem érhető el az átjáró
+#### <a name="error-cannot-reach-the-gateway"></a>**Hiba**: az átjáró nem érhető el
 
-**Ok:** A helyszíni adatátjáró nem tud csatlakozni a felhőhöz. 
+**OK**: a helyszíni adatátjáró nem tud csatlakozni a felhőhöz. 
 
-**Kockázatcsökkentés:** Győződjön meg arról, hogy az átjáró azon a helyszíni gépen fut, ahol telepítette, és hogy képes csatlakozni az internethez.Javasoljuk, hogy ne telepítse az átjárót olyan számítógépre, amely ki van kapcsolva vagy alvó állapotban van.A helyszíni adatátjáró-szolgáltatás (PBIEgwService) újraindítása is.
+Megoldás **: Ellenőrizze**, hogy az átjáró fut-e a helyszíni gépen, amelyen telepítve van, és hogy tud-e csatlakozni az internethez.Azt javasoljuk, hogy ne telepítse az átjárót olyan számítógépre, amely kikapcsolható vagy alvó állapotba kerülhet.Újraindíthatja a helyszíni adatátjáró szolgáltatást (PBIEgwService) is.
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Hiba**: A használt szolgáltató elavult: "System.Data.OracleClient 8.1.7-es vagy újabb verziójú Oracle-ügyfélszoftvert igényel.". Lásd [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) a hivatalos szolgáltató telepítését.
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Hiba**: a használt szolgáltató elavult: "System. OracleClient – az Oracle-ügyfélszoftver 8.1.7 vagy újabb verziója szükséges." Lásd [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) : a hivatalos szolgáltató telepítése.
 
-**Ok**: Az Oracle ügyfél SDK nincs telepítve arra a számítógépre, ahol a helyszíni adatátjáró fut.  
+**OK**: az Oracle Client SDK nincs telepítve azon a gépen, amelyen a helyszíni adatátjáró fut.  
 
-**Megoldás**: Töltse le és telepítse az Oracle client SDK-t ugyanarra a számítógépre, mint a helyszíni adatátjáró.
+**Megoldás**: töltse le és telepítse az Oracle Client SDK-t ugyanarra a számítógépre, mint a helyszíni adatátjárót.
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Hiba:** A(z) '[Táblanév]" tábla nem határoz meg kulcsoszlopokat
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Hiba**: a (z) "[táblanév]" tábla nem definiál kulcs oszlopokat
 
-**Ok**: A táblában nincs elsődleges kulcs.  
+**OK**: a táblának nincs elsődleges kulcsa.  
 
-**Megoldás**: Az Oracle Database-összekötő használatához elsődleges kulcsoszlopot tartalmazó táblát kell használni.
+**Megoldás**: a Oracle Database összekötőhöz meg kell adni egy elsődleges kulcs oszlopot tartalmazó táblát.
 
 #### <a name="currently-not-supported"></a>Jelenleg nem támogatott
 
 * Nézetek 
-* Bármilyen táblázat kompozit billentyűkkel
-* Beágyazott objektumtípusok táblázatokban
+* Bármely, kompozit kulccsal rendelkező tábla
+* Beágyazott objektumtípusok a táblákban
  
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Tekintse meg a swaggerben definiált eseményindítókat és műveleteket, és tekintse meg a korlátokat az [összekötő részleteiben.](/connectors/oracle/) 
+Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/oracle/)megjelenő korlátokat is. 
 
-## <a name="get-some-help"></a>Segítség
+## <a name="get-some-help"></a>Segítség kérése
 
-Az [Azure Logic Apps fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) remek hely a kérdések feltehetésére, a kérdések megválaszolására és a többi Logic Apps-felhasználó által végzett egyéb felhasználók megtekintésére. 
+A [Azure Logic apps fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) remek megoldást tesz a kérdésekre, a kérdésekre válaszol, és megtekintheti a többi Logic apps-felhasználót. 
 
-A logikai alkalmazások és az összekötők fejlesztésében a [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish)szavazással és az ötletei elküldésével a . 
+Segítheti a Logic Apps és összekötők fejlesztését a szavazással és az ötletek [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish)elküldésével. 
 
 
 ## <a name="next-steps"></a>További lépések
-[Hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md), és fedezze fel az elérhető összekötőket a Logic Apps [API-k listájában.](apis-list.md)
+[Hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md), és fedezze fel az elérhető összekötőket Logic apps API-k [listájában](apis-list.md).

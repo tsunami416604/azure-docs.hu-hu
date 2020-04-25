@@ -1,45 +1,45 @@
 ---
-title: A Power BI Alkalmazásajánlat névjegyadatai | Azure Piactér
-description: A Partnerek mezők konfigurálása a Microsoft AppSource Piactér Power BI alkalmazásajánlatához.
+title: Kapcsolattartási adatok Power BI alkalmazás ajánlatához | Azure piactér
+description: A Microsoft AppSource piactérhez tartozó Power BI-alkalmazáshoz tartozó névjegyek konfigurálása.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b7365babd9a6cdba28da59a9113edf32d2974fb0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f3c6f3b07f878bac6e67be90947fb7109b840a3c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984827"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146751"
 ---
-# <a name="power-bi-app-contacts-tab"></a>A Power BI App névjegyei lapja
+# <a name="power-bi-app-contacts-tab"></a>Power BI alkalmazás névjegyek lapja
 
 >[!Important]
->2020. április 13-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
+>2020. április 13-ától kezdődően megkezdjük a Power BI alkalmazás-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Az áttelepített ajánlatok kezeléséhez kövesse az [Power bi alkalmazás-létrehozás áttekintése című](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) témakör utasításait.
 
-Az **Új ajánlat** lap **Névjegyalbum** lapján technikai és felhasználói támogatási erőforrásokat biztosíthat az ajánlathoz. Ez két részből áll: **Mérnöki** és **ügyfélszolgálat**.
+Az **új ajánlat** oldal **névjegyek** lapján megadhatja az ajánlatának technikai és felhasználói támogatási forrásait. Két szakaszra oszlik: **mérnöki** és **ügyfélszolgálati támogatás**.
 
 ![Névjegyek lap](media/contacts-tab.png)
 
 
-## <a name="contacts-fields"></a>Névjegymezők 
+## <a name="contacts-fields"></a>Névjegyek mezői 
 
-Az alábbi táblázat az egyes mezők célját ismerteti.  A kötelező mezőket csillag (*) vádolja. 
+A következő táblázat ismerteti az egyes mezők célját.  A kötelező mezőket csillag (*) alapján vádoljuk. 
 
 |   Mező               |   Leírás                                                            |
 |-----------------------|--------------------------------------------------------------------------|
-| *Mérnöki kapcsolattartó* | Technikai kapcsolatként szolgál az AppSource és a szervezet között.    |
-| **név\***              | A műszaki vagy mérnöki támogatásként szolgáló személy vagy csoport neve. |
-| **E-mail\***             | A technikai kapcsolattartó e-mail címe.                                  |
+| *Mérnöki kapcsolattartó* | Technikai kapcsolattartóként szolgál a AppSource és a szervezet között.    |
+| **Name (Név)\***              | Annak a személynek vagy csoportnak a neve, amely technikai vagy mérnöki támogatásként szolgál. |
+| **E-mail\***             | A technikai partner e-mail-címe.                                  |
 | **Telefon\***             | A technikai támogatás telefonszáma.                                       |
-| *Támogatási kapcsolattartó*     | Az AppSource-on belül az ügyfelek által megnyitott támogatási jegyekfogadása.            |
-| **név\***              | Az ügyfélszolgálatként szolgáló személy vagy csoport neve.              |
-| **E-mail\***             | Az ügyfélszolgálat e-mail címe.                                        |
+| *Támogatási kapcsolattartó*     | A AppSource-en belüli ügyfelek által megnyitott támogatási jegyek fogadása.            |
+| **Name (Név)\***              | Az ügyfél-támogatási szolgálatként szolgáló személy vagy csoport neve.              |
+| **E-mail\***             | Az ügyfélszolgálat e-mail-címe.                                        |
 |   |   |
 
 
 ## <a name="next-steps"></a>További lépések
 
-Miután befejezte a Power BI Alkalmazásajánlatát, ellenőrizze, hogy létrehozta-e az ajánlathoz tartozó összes [technikai eszközt.](./cpp-create-technical-assets.md)
+Miután elvégezte a Power BI alkalmazás ajánlatát, erősítse meg, hogy létrehozta az ajánlathoz tartozó összes [technikai eszközt](./cpp-create-technical-assets.md) .

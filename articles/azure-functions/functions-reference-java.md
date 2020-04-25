@@ -1,46 +1,46 @@
 ---
-title: Java fejlesztői útmutató az Azure Functionshez
-description: Ismerje meg, hogyan fejleszthet funkciókat a Java segítségével.
+title: Java fejlesztői referenciája Azure Functions
+description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4b1f39ff4fd48a3ed99b34391e9cc6efdad86a5d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 19a290fe7717d7838e8fcd1d1f5cddb3f54eb812
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672999"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145329"
 ---
-# <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
+# <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
-Az Azure Functions futásidejű támogatja a [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Ez az útmutató az Azure Functions Java-val való írásának bonyolultságáról tartalmaz információkat.
+A Azure Functions Runtime támogatja a [Java SE 8 LTS (Zulu 8.31.0.2-JRE 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Ez az útmutató a Java-Azure Functions írásának bonyolult adatait tartalmazza.
 
-Más nyelvekhez, úgy, hogy egy függvényalkalmazásnak egy vagy több funkciója is lehet. A Java függvény `public` egy módszer, díszített `@FunctionName`a jegyzet . Ez a módszer határozza meg egy Java függvény bejegyzését, és egyedinek kell lennie egy adott csomagban. A Java nyelven írt egyik függvényalkalmazás nak több osztálya `@FunctionName`is lehet, több nyilvános metódussal a cikkhez jegyzetekkel.
+Ahogy más nyelveken is előfordul, egy függvényalkalmazás lehet, hogy egy vagy több függvényt tartalmaz. A Java-függvények a `public` jegyzetekkel díszített metódusok `@FunctionName`. Ez a metódus definiálja a Java-függvények bejegyzését, és egyedinek kell lennie egy adott csomagban. A Java-ban írt függvényalkalmazás több olyan osztállyal rendelkezhet, amelyekben több nyilvános metódus `@FunctionName`is szerepel.
 
-Ez a cikk feltételezi, hogy már elolvasta az [Azure Functions fejlesztői hivatkozását.](functions-reference.md) A Functions rövid útmutatót is el kell végeznie az első függvény létrehozásához a [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) vagy a [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)használatával.
+Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első függvény létrehozásához a [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) vagy a [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)használatával is végre kell hajtania a functions rövid útmutatót.
 
 ## <a name="programming-model"></a>A programozási modell 
 
-Az [eseményindítók és kötések fogalmai](functions-triggers-bindings.md) alapvető fontosságúak az Azure Functions számára. Az eseményindítók elindítják a kód végrehajtását. A kötések leteszik az adatok átadását és a függvényből származó adatok visszaadását anélkül, hogy egyéni adatelérési kódot kellene írniuk.
+Az [Eseményindítók és kötések](functions-triggers-bindings.md) fogalmai alapvető fontosságúak a Azure functions. Elindítja a kód végrehajtását. A kötések lehetővé teszik a függvények adatainak átadását és az adatok visszaküldését anélkül, hogy egyéni adatelérési kódot kellene írnia.
 
-## <a name="create-java-functions"></a>Java függvények létrehozása
+## <a name="create-java-functions"></a>Java-függvények létrehozása
 
-A Java-függvények létrehozásának megkönnyítése érdekében vannak Olyan Maven-alapú eszközök és archetípusok, amelyek előre definiált Java-sablonokat használnak, hogy segítsenek projekteket létrehozni egy adott függvényeseményindítóval.    
+Ahhoz, hogy egyszerűbb legyen a Java-függvények létrehozása, az előre definiált Java-sablonokat használó Maven-alapú eszközök és az olyan archetípusok, amelyek segítségével meghatározott függvény-triggerrel hozhat létre projekteket.    
 
-### <a name="maven-based-tooling"></a>Maven-alapú szerszámozás
+### <a name="maven-based-tooling"></a>Maven-alapú eszközök
 
-A következő fejlesztői környezetek rendelkeznek az Azure Functions eszközzel, amely lehetővé teszi java függvényprojektek létrehozását: 
+A következő fejlesztői környezetek Azure Functions eszközzel rendelkeznek, amely lehetővé teszi a Java-függvények projektjeinek létrehozását: 
 
 + [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
 + [Eclipse](functions-create-maven-eclipse.md)
 + [IntelliJ](functions-create-maven-intellij.md)
 
-A fenti cikk hivatkozások megmutatják, hogyan lehet létrehozni az első funkciók segítségével ide a választás. 
+A fenti hivatkozások azt mutatják be, hogyan hozhatja létre az első függvényeit az IDE választása szerint. 
 
-### <a name="project-scaffolding"></a>Projekt állványzat
+### <a name="project-scaffolding"></a>Projekt – Állványzat
 
-Ha a terminálparancssor-fejlesztést részesíti előnyben, a Java-alapú függvényprojektek legegyszerűbb `Apache Maven` módja az archetípusok használata. Az Azure Functions Java Maven archetípusa a következő csoportazonosító alatt jelenik _meg:__artifactId_: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
+Ha a terminálról szeretne parancssori fejlesztést használni, a Java-alapú függvények projektjeinek legegyszerűbb módja az archetípusok használata `Apache Maven` . A Azure Functions Java Maven archetípusa a következő _GroupID_van közzétéve:_artifactId_: [com. microsoft. Azure: Azure-functions-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
-A következő parancs új Java függvényprojektet hoz létre ezzel az archetípussal:
+Az alábbi parancs egy új Java-függvény projektet hoz létre a következő archetípus használatával:
 
 ```
 mvn archetype:generate \
@@ -48,13 +48,13 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-Az archetípus használatának első lépéseiről a [Java rövid útmutatója](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)látható. 
+A jelen archetípus használatának megkezdéséhez tekintse meg a [Java](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)rövid útmutatóját. 
 
 ## <a name="create-kotlin-functions-preview"></a>Kotlin függvények létrehozása (előzetes verzió)
 
-Van egy Maven archetípus is, amely kotlin függvényeket generál. Ez a jelenleg előzetes verzióban látható archetípus a következő _csoportazonosító_:_artifactId_: [com.microsoft.azure:azure-functions-kotlin-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/)alatt jelenik meg. 
+Van egy Maven archetípusa is a Kotlin függvények létrehozásához. A jelenleg előzetes verzióban elérhető archetípus a következő _GroupID_van közzétéve:_artifactId_: [com. microsoft. Azure: Azure-functions-Kotlin-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/). 
 
-A következő parancs új Java függvényprojektet hoz létre ezzel az archetípussal:
+Az alábbi parancs egy új Java-függvény projektet hoz létre a következő archetípus használatával:
 
 ```
 mvn archetype:generate \
@@ -62,11 +62,11 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-kotlin-archetype
 ```
 
-Az archetípus használatának megkezdéséhez olvassa el a [Kotlin rövid útmutatóját.](functions-create-first-kotlin-maven.md)
+A jelen archetípus használatának megkezdéséhez tekintse meg a [Kotlin](functions-create-first-kotlin-maven.md)rövid útmutatóját.
 
-## <a name="folder-structure"></a>Mappastruktúra
+## <a name="folder-structure"></a>Mappa szerkezete
 
-Az Azure Functions Java projekt mappastruktúrája:
+Itt látható egy Azure Functions Java-projekthez tartozó mappa szerkezete:
 
 ```
 FunctionsProject
@@ -90,20 +90,20 @@ FunctionsProject
  | - pom.xml
 ```
 
-_* A Kotlin projekt nagyon hasonlít, mivel még mindig Maven_
+_* A Kotlin-projekt nagyon hasonlónak tűnik, mivel még Maven_
 
-A függvényalkalmazás konfigurálásához használhat megosztott [host.json](functions-host-json.md) fájlt. Minden függvény saját kódfájllal (.java) és kötési konfigurációs fájllal (function.json) rendelkezik.
+A Function alkalmazást a Shared [Host. JSON](functions-host-json.md) fájl használatával konfigurálhatja. Mindegyik függvényhez saját kódlap (. Java) és kötési konfigurációs fájl (function. JSON) tartozik.
 
-A projektben több függvény is behelyezhető. Ne helyezze a funkciókat külön üvegekbe. A `FunctionApp` célkönyvtárban, mi lesz telepítve a függvényalkalmazás az Azure-ban.
+Egy projektben több függvény is elhelyezhető. Kerülje a függvények különálló tégelybe való elhelyezését. A `FunctionApp` cél könyvtárban az Azure-beli Function alkalmazás üzembe helyezése történik.
 
 ## <a name="triggers-and-annotations"></a>Eseményindítók és jegyzetek
 
- A függvényeket egy eseményindító hívja meg, például egy HTTP-kérelem, egy időzítő vagy egy adatfrissítés. A függvénynek fel kell dolgoznia az eseményindítót és minden más bemenetet egy vagy több kimenet létrehozásához.
+ A függvényeket egy eseményindító hívja meg, például egy HTTP-kérelem, egy időzítő vagy egy frissítés az adatokhoz. A függvénynek fel kell dolgoznia az triggert és minden más bemenetet, hogy egy vagy több kimenetet hozzon létre.
 
-Használja a [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) csomagban található Java-jegyzeteket a bemeneti és kimeneti műveletek metódusokhoz kötéséhez. További információt a [Java referenciadokumentumaiban talál.](/java/api/com.microsoft.azure.functions.annotation)
+Használja a [com. microsoft. Azure. functions. Megjegyzés. *](/java/api/com.microsoft.azure.functions.annotation) csomagban található Java-megjegyzéseket a bemenetek és kimenetek a metódusokhoz való kötéséhez. További információ: [Java-referenciák dokumentációja](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
-> Konfigurálnia kell egy Azure Storage-fiókot a [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) az Azure Blob storage, az Azure Queue storage vagy az Azure Table storage helyi aktiválások futtatásához.
+> Konfigurálnia kell egy Azure Storage-fiókot a [Local. Settings. JSON](/azure/azure-functions/functions-run-local#local-settings-file) fájlban az Azure Blob Storage, az Azure üzenetsor-tároló vagy az Azure Table Storage-eseményindítók helyi futtatásához.
 
 Példa:
 
@@ -117,7 +117,7 @@ public class Function {
 }
 ```
 
-Itt van a `function.json` generált megfelelő az [azure-functions-maven-plugin:](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin)
+Az `function.json` [Azure-functions-Maven-beépülő modul](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin)által generált adatok:
 
 ```json
 {
@@ -141,15 +141,15 @@ Itt van a `function.json` generált megfelelő az [azure-functions-maven-plugin:
 
 ```
 
-## <a name="jdk-runtime-availability-and-support"></a>A JDK futásidejű elérhetősége és támogatása 
+## <a name="jdk-runtime-availability-and-support"></a>A JDK futtatókörnyezet rendelkezésre állása és támogatása 
 
-A Java függvényalkalmazások helyi fejlesztéséhez töltse le és használja az [Azul Zulu Enterprise for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDK-kat az [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/)rendszerből. Az Azure Functions az Azul Java 8 JDK futásidejű, amikor telepíti a függvényalkalmazásokat a felhőbe.
+A Java functions-alkalmazások helyi fejlesztéséhez töltse le és használja a Azul [Zulu Enterprise for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDK az [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/)-től. A Azure Functions az Azul Java 8 JDK futtatókörnyezetet használja a Function apps Felhőbeli üzembe helyezése során.
 
-A JDK-kkal és a függvényalkalmazásokkal kapcsolatos problémák [azure-támogatása](https://azure.microsoft.com/support/) [minősített támogatási csomaggal](https://azure.microsoft.com/support/plans/)érhető el.
+Az [Azure-támogatás](https://azure.microsoft.com/support/) a JDK és a Function alkalmazással kapcsolatos problémákhoz egy [minősített támogatási csomaggal](https://azure.microsoft.com/support/plans/)érhető el.
 
 ## <a name="customize-jvm"></a>JVM testreszabása
 
-A Függvények lehetővé teszi a Java-függvények futtatásához használt Java virtuális gép (JVM) testreszabását. Alapértelmezés szerint a [következő JVM-beállítások](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) at használja a rendszer:
+A functions lehetővé teszi a Java-függvények futtatásához használt Java virtuális gép (JVM) testreszabását. Alapértelmezés szerint a [következő JVM-beállításokat](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) használja a rendszer:
 
 * `-XX:+TieredCompilation`
 * `-XX:TieredStopAtLevel=1`
@@ -157,44 +157,53 @@ A Függvények lehetővé teszi a Java-függvények futtatásához használt Jav
 * `-Djava.net.preferIPv4Stack=true`
 * `-jar`
 
-A megadott alkalmazásbeállításban további argumentumokat adhat meg. `JAVA_OPTS` Az Azure Portalon vagy az Azure CLI-ben üzembe helyezett függvényalkalmazáshoz hozzáadhat alkalmazásbeállításokat.
+További argumentumokat is megadhat egy nevű `JAVA_OPTS`alkalmazás-beállításban. Az Azure-ban üzembe helyezett Function-alkalmazáshoz az Azure Portal vagy az Azure CLI-ben adhat hozzá Alkalmazásbeállítások.
+
+> [!IMPORTANT]  
+> A használati tervben hozzá kell adnia a 0 értékkel rendelkező WEBSITE_USE_PLACEHOLDER beállítást is a Testreszabás működéséhez. Ezzel a beállítással növelhető a Java-függvények hideg indítási ideje.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Az [Azure Portalon](https://portal.azure.com)az [Alkalmazás beállításai](functions-how-to-use-azure-function-app-settings.md#settings) `JAVA_OPTS` lapon adja hozzá a beállítást.
+A [Azure Portal](https://portal.azure.com)a `JAVA_OPTS` beállítás hozzáadásához használja az [Alkalmazásbeállítások lapot](functions-how-to-use-azure-function-app-settings.md#settings) .
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Használhatja az [az functionapp config appsettings set parancsot,](/cli/azure/functionapp/config/appsettings) hogy állítsa be `JAVA_OPTS`, mint a következő példában:
+Az az [functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) paranccsal állíthatja be `JAVA_OPTS`a következő példát, ahogy az az alábbi példában is látható:
 
+#### <a name="consumption-plan"></a>[Felhasználási terv](#tab/consumption)
 ```azurecli-interactive
-az functionapp config appsettings set --name <APP_NAME> \
---resource-group <RESOURCE_GROUP> \
---settings "JAVA_OPTS=-Djava.awt.headless=true"
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+"WEBSITE_USE_PLACEHOLDER=0" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-Ez a példa lehetővé teszi a fej nélküli módot. Cserélje `<APP_NAME>` le a függvényalkalmazás nevét `<RESOURCE_GROUP>` és az erőforráscsoportot.
+#### <a name="dedicated-plan--premium-plan"></a>[Dedikált csomag/Prémium csomag](#tab/dedicated+premium)
+```azurecli-interactive
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+---
 
-> [!WARNING]  
-> A [Felhasználás tervben](functions-scale.md#consumption-plan)a `WEBSITE_USE_PLACEHOLDER` értéket a értékkel kell hozzáadnia. `0`  
-Ez a beállítás növeli a Java-függvények hidegindítási idejét.
+Ez a példa a fej nélküli üzemmódot teszi lehetővé. Cserélje `<APP_NAME>` le a nevet a Function alkalmazás nevére, és `<RESOURCE_GROUP>` az erőforráscsoport elemre. 
 
-## <a name="third-party-libraries"></a>Külső könyvtárak 
+## <a name="third-party-libraries"></a>Harmadik féltől származó kódtárak 
 
-Az Azure Functions támogatja a külső könyvtárak használatát. Alapértelmezés szerint a projektfájlban `pom.xml` megadott összes függőség automatikusan [`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) bekerül a programba a cél alatt. A `pom.xml` fájlban függőségként nem megadott tárak esetében `lib` helyezze őket a függvény gyökérkönyvtárának könyvtárába. A `lib` címtárban elhelyezett függőségek futásidőben kerülnek a rendszerosztály betöltőjéhez.
+A Azure Functions támogatja a külső gyártótól származó kódtárak használatát. Alapértelmezés szerint a rendszer a projektfájl `pom.xml` összes függőségét automatikusan becsomagolja a [`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) cél alatt. A `pom.xml` fájlban függőségként nem megadott könyvtárak esetében helyezze azokat a függvény gyökérkönyvtárában `lib` található könyvtárba. A `lib` címtárban elhelyezett függőségek a rendszerosztály-betöltőhöz lesznek hozzáadva futásidőben.
 
-A `com.microsoft.azure.functions:azure-functions-java-library` függőség alapértelmezés szerint a classpath,, és nem kell szerepeltetni a `lib` címtárban. Emellett [az azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) hozzáadja az [itt](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) felsorolt függőségeket az osztályelérési úthoz.
+A `com.microsoft.azure.functions:azure-functions-java-library` függőség a osztályútvonal alapértelmezés szerint van megadva, és nem kell szerepelnie a `lib` címtárban. Az [Azure-functions-Java-Worker](https://github.com/Azure/azure-functions-java-worker) az [itt](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) felsorolt függőségeket is hozzáadja a osztályútvonal.
 
-## <a name="data-type-support"></a>Adattípus-támogatás
+## <a name="data-type-support"></a>Adattípusok támogatása
 
-Használhatja egyszerű régi Java objektumok (POJOs), `azure-functions-java-library`típusú definiált , vagy primitív adattípusok, mint a String és Egész a bemeneti vagy kimeneti kötések.
+Használhat egyszerű, régi Java-objektumokat (Szerializálói), definiált `azure-functions-java-library`típusokat vagy primitív adattípusokat, például karakterláncot és egész számot a bemeneti vagy kimeneti kötésekhez való kötéshez.
 
-### <a name="pojos"></a>POJOS
+### <a name="pojos"></a>Szerializálói
 
-A bemeneti adatok POJO-vá történő konvertálásához [az azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) a [gson-könyvtárat](https://github.com/google/gson) használja. A függvények bemeneteként használt `public`POJO-típusoknak kell lenniük.
+A bemeneti adatok POJO alakításához az [Azure-functions-Java-Worker](https://github.com/Azure/azure-functions-java-worker) a [gson](https://github.com/google/gson) könyvtárat használja. A függvények bemenetként használt POJO-típusok legyenek `public`.
 
 ### <a name="binary-data"></a>Bináris adatok
 
-Bináris bemenetek vagy kimenetek kötése a alkalmazáshoz úgy, hogy `byte[]`a function.json mezőjét a `dataType` következőre `binary`állítja:
+A bináris bemenetek és kimenetek `byte[]` `dataType` kötése a következőhöz `binary`:
 
 ```java
    @FunctionName("BlobTrigger")
@@ -208,13 +217,13 @@ Bináris bemenetek vagy kimenetek kötése a alkalmazáshoz úgy, hogy `byte[]`a
     }
 ```
 
-Ha null értékeket `Optional<T>`vár, használja a használatát.
+Ha a rendszer null értékeket vár, `Optional<T>`használja a értéket.
 
 ## <a name="bindings"></a>Kötések
 
-A bemeneti és kimeneti kötések deklaratív módot biztosítanak a kódon belüli adatokhoz való csatlakozásra. Egy függvény több bemeneti és kimeneti kötéssel is rendelkezhet.
+A bemeneti és kimeneti kötések deklaratív módszert biztosítanak a kódban lévő adatokhoz való kapcsolódáshoz. A függvények több bemeneti és kimeneti kötéssel is rendelkezhetnek.
 
-### <a name="input-binding-example"></a>Példa bemeneti kötésre
+### <a name="input-binding-example"></a>Bemeneti kötési példa
 
 ```java
 package com.example;
@@ -250,11 +259,11 @@ public class Function {
 }
 ```
 
-Ezt a függvényt HTTP-kérelemmel hívja meg. 
-- A HTTP-kérelem hasznos `String` adata `inputReq`az argumentum a.a.
-- Az egyik bejegyzést a table storage-ból `TestInputData` olvassa `inputData`be a rendszer, és az argumentumot illetően a program továbbítja a programot.
+Ezt a függvényt egy HTTP-kérelemmel hívja meg. 
+- Az argumentumhoz `inputReq`a HTTP-kérelem `String` adattartalmát adja át a rendszer.
+- A rendszer beolvas egy bejegyzést a Table Storage-ból, és `TestInputData` az argumentumként `inputData`adja át.
 
-A bemenetek kötegének fogadásához a `String[]` `POJO[]`, `List<String>`a `List<POJO>`, a .
+Bemeneti kötegek fogadásához `String[]`a következőhöz köthető `POJO[]` `List<String>`:,, vagy. `List<POJO>`
 
 ```java
 @FunctionName("ProcessIotMessages")
@@ -271,11 +280,11 @@ A bemenetek kötegének fogadásához a `String[]` `POJO[]`, `List<String>`a `Li
 
 ```
 
-Ez a függvény akkor aktiválódik, ha új adatok vannak a konfigurált eseményközpontban. Mivel `cardinality` a beállítás `MANY`a beállítás, a függvény üzenetek kötegét fogadja az eseményközpontból. `EventData`az eseményközpontból `TestEventData` a függvény végrehajtásához konvertálódik.
+Ez a függvény akkor aktiválódik, amikor új adat van a konfigurált Event hub-ban. Mivel a `cardinality` értéke `MANY`, a függvény egy köteg üzenetet fogad az Event hub-ból. `EventData`az Event hub-ból a `TestEventData` függvény végrehajtásához konvertálva lesz.
 
-### <a name="output-binding-example"></a>Példa kimenetkötésre
+### <a name="output-binding-example"></a>Kimeneti kötési példa
 
-A használatával kimeneti kötést köthet a visszatérési `$return`értékhez. 
+A paranccsal `$return`kötést adhat hozzá a visszatérési értékhez. 
 
 ```java
 package com.example;
@@ -292,9 +301,9 @@ public class Function {
 }
 ```
 
-Ha több kimeneti kötés van, csak az egyikhez használja a visszatérési értéket.
+Ha több kimeneti kötés is van, akkor a visszatérési értéket csak az egyikre használja.
 
-Több kimeneti érték `OutputBinding<T>` küldéséhez használja `azure-functions-java-library` a csomagban definiált értéket. 
+Több kimeneti érték küldéséhez használja `OutputBinding<T>` a `azure-functions-java-library` csomagban definiált értéket. 
 
 ```java
 @FunctionName("QueueOutputPOJOList")
@@ -328,20 +337,20 @@ Több kimeneti érték `OutputBinding<T>` küldéséhez használja `azure-functi
     }
 ```
 
-Ezt a függvényt httprequest-en hívja meg. Több értéket ír a várólista-tárolóba.
+Ezt a függvényt egy HttpRequest hívja meg. Több értéket ír a várólista-tárolóba.
 
-## <a name="httprequestmessage-and-httpresponsemessage"></a>httpRequestMessage és HttpResponseMessage
+## <a name="httprequestmessage-and-httpresponsemessage"></a>HttpRequestMessage és HttpResponseMessage
 
- Ezeket a. `azure-functions-java-library`határozza meg. Ők segítő típusú dolgozni HttpTrigger funkciókat.
+ Ezek a ben `azure-functions-java-library`vannak meghatározva. A HttpTrigger functions szolgáltatással használható segítő típusok.
 
-| Speciális típus      |       Cél        | Tipikus használat                  |
+| Speciális típus      |       Cél        | Jellemző használat                  |
 | --------------------- | :-----------------: | ------------------------------ |
-| `HttpRequestMessage<T>`  |    HTTP-trigger     | Metódus, fejlécek vagy lekérdezések beolvasása |
-| `HttpResponseMessage` | HTTP kimenetkötés | 200-tól eltérő állapotot ad eredményül.   |
+| `HttpRequestMessage<T>`  |    HTTP-trigger     | Metódusok, fejlécek vagy lekérdezések beolvasása |
+| `HttpResponseMessage` | HTTP kimeneti kötés | A 200-tól eltérő állapotot ad vissza.   |
 
 ## <a name="metadata"></a>Metaadatok
 
-Kevés eseményindítók küld [eseményindító metaadatok](/azure/azure-functions/functions-triggers-bindings) mellett bemeneti adatokat. A jegyzet `@BindingName` segítségével kötéssel aktiválhatja a metaadatokat.
+Néhány eseményindító elküldi az [eseményindító-metaadatokat](/azure/azure-functions/functions-triggers-bindings) a bemeneti adatokkal együtt. A megjegyzésekkel `@BindingName` kötést használhat a trigger metaadataihoz.
 
 
 ```Java
@@ -361,7 +370,7 @@ public class Function {
     }
 }
 ```
-Az előző példában `queryValue` a http-kérelem `name` URL-címében lévő `http://{example.host}/api/metadata?name=test`lekérdezési karakterlánc paraméterhez van kötve. Íme egy másik példa, amely `Id` bemutatja, hogyan köthető kontegyünk a várólista-aktiválási metaadatokhoz.
+Az előző példában a `queryValue` a HTTP-kérelem URL-címében a `name` lekérdezési karakterlánc paraméterhez van `http://{example.host}/api/metadata?name=test`kötve. Íme egy másik példa, amely bemutatja, hogyan lehet `Id` kötést létrehozni a várólista-trigger metaadatainak használatával.
 
 ```java
  @FunctionName("QueueTriggerMetadata")
@@ -378,15 +387,15 @@ Az előző példában `queryValue` a http-kérelem `name` URL-címében lévő `
 ```
 
 > [!NOTE]
-> A jegyzetben megadott névnek meg kell egyeznie a metaadat-tulajdonsággal.
+> A jegyzetben megadott névnek egyeznie kell a metadata tulajdonsággal.
 
 ## <a name="execution-context"></a>Végrehajtási környezet
 
-`ExecutionContext`, a `azure-functions-java-library`ban definiált a , segítő módszereket tartalmaz a függvények futásidejű kommunikációjára.
+`ExecutionContext`a `azure-functions-java-library`ben definiált, segítő metódusokat tartalmaz a functions futtatókörnyezettel folytatott kommunikációhoz.
 
 ### <a name="logger"></a>Tuskózó
 
-A `getLogger`, a `ExecutionContext`definiált használatával naplókat írhat a függvénykódból.
+A `getLogger`-ben `ExecutionContext`definiált, a naplókat a függvény kódjából való írásához használhatja.
 
 Példa:
 
@@ -407,34 +416,34 @@ public class Function {
 
 ## <a name="view-logs-and-trace"></a>Naplók és nyomkövetés megtekintése
 
-Az Azure CLI segítségével streamelheti a Java stdout és stderr naplózás, valamint más alkalmazásnaplózás. 
+Az Azure CLI-vel a Java stdout és a stderr naplózását, valamint más alkalmazások naplózását is elvégezheti. 
 
-A következőképpen konfigurálhatja a függvényalkalmazást az alkalmazásnaplózás írására az Azure CLI használatával:
+Az alábbi módon konfigurálhatja a Function alkalmazást az alkalmazások naplózásának az Azure CLI használatával történő írásához:
 
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
-Ha az Azure CLI használatával naplózhatja a naplózási kimenetet a függvényalkalmazáshoz, nyisson meg egy új parancssort, a Bash vagy a Terminal munkamenetet, és írja be a következő parancsot:
+Ha az Azure CLI használatával szeretné továbbítani a függvény alkalmazásának naplózási kimenetét, nyisson meg egy új parancssort, bash-t vagy terminál-munkamenetet, és írja be a következő parancsot:
 
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
-Az [az webapp log tail](/cli/azure/webapp/log) parancs a `--provider` beállítás használatával szűrheti a kimenetet. 
+Az az [WebApp log farok](/cli/azure/webapp/log) paranccsal a `--provider` lehetőség használatával szűrheti a kimenetet. 
 
-Ha a naplófájlokat egyetlen ZIP-fájlként szeretné letölteni az Azure CLI használatával, nyisson meg egy új parancssort, a Bash vagy a Terminal munkamenetet, és írja be a következő parancsot:
+Ha az Azure CLI használatával egyetlen ZIP-fájlként szeretné letölteni a naplófájlokat, nyisson meg egy új parancssort, bash-t vagy terminál-munkamenetet, és írja be a következő parancsot:
 
 ```azurecli-interactive
 az webapp log download --resource-group resourcegroupname --name functionappname
 ```
 
-A parancs futtatása előtt engedélyeznie kell a fájlrendszer naplózását az Azure Portalon vagy az Azure CLI-ben.
+A parancs futtatása előtt engedélyeznie kell a fájlrendszer naplózását a Azure Portal vagy az Azure CLI-ben.
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-A Funkciók alkalmazásban [az alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatáskapcsolati karakterláncok környezeti változókként jelennek meg a végrehajtás során. Ezeket a beállításokat `System.getenv("AzureWebJobsStorage")`a használatával érheti el.
+A függvények, az [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatási kapcsolatok karakterláncai a végrehajtás során környezeti változókként jelennek meg. Ezeket a beállításokat a ( `System.getenv("AzureWebJobsStorage")`) segítségével érheti el.
 
-A következő példa az [alkalmazás beállítást](functions-how-to-use-azure-function-app-settings.md#settings) `myAppSetting`kapja meg, amelynek neve a kulcs:
+A következő példa beolvassa az [alkalmazás beállítását](functions-how-to-use-azure-function-app-settings.md#settings)a nevű `myAppSetting`kulccsal:
 
 ```java
 
@@ -447,14 +456,17 @@ public class Function {
 
 ```
 
+> [!NOTE]
+> A Alkalmazásbeállítás FUNCTIONS_EXTENSION_VERSION értékének a következőnek kell lennie: ~ 2 vagy ~ 3 az optimalizált, hideg indítási élményhez.
+
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Functions Java fejlesztéséről az alábbi forrásokban talál további információt:
+Az Azure Functions Java-fejlesztéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)
-* [Az Azure Functions aktiválódik és kötéseket köt](functions-triggers-bindings.md)
-* Helyi fejlesztés és hibakeresés a [Visual Studio Code,](https://code.visualstudio.com/docs/java/java-azurefunctions) [az IntelliJ](functions-create-maven-intellij.md)és [az Eclipse segítségével](functions-create-maven-eclipse.md)
-* [Távoli debug Java Azure-függvények visual studio kóddal](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
-* [Maven beépülő modul az Azure Functionshez](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
-* Egyszerűsítse a `azure-functions:add` függvények létrehozását a célon keresztül, és készítsen elő egy átmeneti könyvtárat a [ZIP-fájlok központi telepítéséhez.](deployment-zip-push.md)
+* [Eseményindítók és kötések Azure Functions](functions-triggers-bindings.md)
+* Helyi fejlesztés és hibakeresés a [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), a [IntelliJ](functions-create-maven-intellij.md)és az [Eclipse](functions-create-maven-eclipse.md) használatával
+* [Java Azure Functions távoli hibakeresése a Visual Studio Code-ban](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Maven beépülő modul a Azure Functionshoz](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
+* Egyszerűsítse a függvények létrehozását a `azure-functions:add` cél segítségével, és készítse elő a [zip-fájl üzembe helyezésének](deployment-zip-push.md)előkészítési könyvtárát.

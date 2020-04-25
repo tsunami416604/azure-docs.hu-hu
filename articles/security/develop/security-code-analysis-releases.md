@@ -1,10 +1,10 @@
 ---
-title: A Microsoft biztonsági kódelemzési kiadásai
-description: Ez a cikk a Microsoft Security Code Analysis bővítmény közelgő kiadásait ismerteti
+title: Microsoft biztonsági kód elemzésének kiadásai
+description: Ez a cikk a Microsoft biztonsági kód elemzése bővítmény közelgő kiadásait ismerteti
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 04/14/2020
+ms.date: 04/24/2020
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,63 +12,63 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a07ce7437d664baca0cfdc310dbc2631f41fdbcc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: d4281d3b6132e551283a71cd1801ef462fbfc68c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81462034"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146131"
 ---
-# <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>A Microsoft biztonsági kódelemzési kiadásai és ütemterve
+# <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Microsoft biztonsági kód elemzésének kiadásai és ütemterve
 
-A Microsoft Security Code Analysis csapata a fejlesztői támogatással együttműködve büszkén jelenti be az MSCA-bővítmény legújabb és közelgő fejlesztéseit. Kérjük, olvassa el az alábbi ütemtervet.
+A Microsoft biztonsági kód Analysis Team a Fejlesztői támogatás partnerrel együttműködve büszkén jelenti be, hogy a legújabb és a közelgő fejlesztéseket a MSCA-bővítményben mutatjuk be. Tekintse meg az alábbi ütemtervet.
 
 ![Kiadások](./media/security-code-analysis-releases/releases.png)
 
-## <a name="credential-scanner-v20-released-on-april-1-2020"></a>Credential Scanner v2.0: Megjelent április 1, 2020
+## <a name="credential-scanner-v20-released-in-april-2020"></a>Hitelesítőadat-olvasó v 2.0: megjelent április 2020
 
-### <a name="innovations--improvements"></a>Újítások & fejlesztések
+### <a name="innovations--improvements"></a>Innovációk & fejlesztések
 
-- **Core motor**
+- **Alapszintű motor**
 
-   - Átlagos teljesítményfrissítés 25%-kal, közel lineáris futási idővel
-   - Kontextuson/bizonyítékokon alapuló keresés és rangsorolás a nagyobb pontosság érdekében
-   - Az általános jelszóészlelésés és a nyilvánvaló helyőrzők egyeztetési logikájának fejlesztései (például fakePassword)
+   - 25%-os teljesítmény-frissítés a közel lineáris futási idővel
+   - Kontextus/bizonyítékon alapuló keresés és rangsorolás a nagyobb pontosság érdekében
+   - Az általános jelszó-észlelések és a megfelelő logika fejlesztése a nyilvánvaló helyőrzők esetében (például fakePassword)
 
-- **Lefedettség** - Támogatás 25+ titkos típusok, beleértve a következő top kért:
+- **Lefedettség** – a 25 + titkos típusok támogatása, beleértve a következő kért legfelső szintű támogatást:
 
-   - Hálófiók tanúsítványának jelmondata
-   - Ügyféltitkos/API-kulcs
-   - HTTP engedélyezési fejléc
-   - Amazon S3 ügyfél titkos hozzáférési kulcs
-   - Azure Active Directory ügyfél-hozzáférési jogkivonat
-   - Azure függvény főkiszolgáló/API-kulcs
-   - Power BI access kulcs
-   - Az Azure Resource Manager sablon jelszómintája
+   - Háló fiók tanúsítványának jelszava
+   - Ügyfél titkos/API-kulcsa
+   - HTTP-engedélyezési fejléc
+   - Amazon S3-ügyfél titkos kulcs elérési kulcsa
+   - Ügyfél-hozzáférési jogkivonat Azure Active Directory
+   - Azure Function Master/API-kulcs
+   - Power BI hozzáférési kulcs
+   - Azure Resource Manager sablon jelszavának mintája
 
 - **Kimenetek**
 
-   - A SARIF 2.1 és CSV fájlkimeneti fájlformátumok támogatása
+   - A SARIF 2,1 és a CSV-fájl kimeneti fájlformátumának támogatása
 
-## <a name="binskim-v160-to-be-released-on-april-2020"></a>BinSkim v1.6.0: Fel kell szabadítani április 2020
+## <a name="binskim-v160-released-in-april-2020"></a>BinSkim v 1.6.0: megjelent április 2020
 
-### <a name="improvements"></a>Fejlesztések
+### <a name="improvements"></a>Fejlesztései
 
-- FUNKCIÓ: Frissítés a végső SARIF v2 -re (2.1.16-os verzió). Ez lehetővé teszi az eredmények gyorsítótárazását a parancssori --kikeresések esetén, ami jelentős teljesítményjavulást jelent, ha rekurzívmódon elemzi a könyvtárakat a bevizsgálati célok több példányával.
-- HIBAJAVÍTÁS: Hibaelírás javítása a BA2021-ben. DoNotMarkWritableSectionsAsExecutable kimenet.
-- TELJESÍTMÉNY: Szüntesse meg az EREDETI-dokumentum betöltését a felügyelt szerelvények összes nem vegyes üzemmódjában, beleértve az IL-könyvtárat (előre összeállított) bináris fájlokat.
-- HAMIS NEGATÍV JAVÍTÁS: Ellenőrizze, hogy egy bináris mellett elhelyezett PDB valóban megegyezik-e az elemzés alatt álló binárissal.
-- FUNKCIÓ: Adjon meg --local-symbol-könyvtárak argumentumot további (helyi, nem szimbólum-kiszolgáló) PDB-kitekintési helyek megadásához
-- HAMIS POZITÍV JAVÍTÁS: A létrehozott .NET magnatív bootstrap exe PDB-alapú elemzésének kihagyása (amely nem felhasználó által szabályozható kód).
+- SZOLGÁLTATÁS: frissítés a Final SARIF v2-re (2.1.16 verzió). Ez lehetővé teszi, hogy az eredmények gyorsítótárazása a parancssorból történő továbbításkor történjen, jelentős teljesítmény-javulást jelent, amikor rekurzív módon elemzi a címtárakat a vizsgálati célok több példányával.
+- HIBAJAVÍTÁS: a BA2021 helyesírásának javítása. DoNotMarkWritableSectionsAsExecutable kimenete.
+- TELJESÍTMÉNY: a PDB betöltésének megszüntetése a felügyelt szerelvények összes nem vegyes üzemmódja számára, beleértve az IL-függvénytárat (az idő előtt lefordított) bináris fájlokat.
+- HAMIS negatív javítás: annak ellenőrzése, hogy egy, a bináris fájl mellé helyezett PDB az elemzés alatt álló bináris ÉRTÉKkel egyezik-e.
+- SZOLGÁLTATÁS: adja meg a--local-Symbol-könyvtárak argumentumot a további (helyi, nem szimbólum-kiszolgáló) PDB kikeresési helyeinek megadásához.
+- HAMIS pozitív javítás: hagyja ki a PDB-alapú elemzést a generált .NET Core Native bootstrap exe-re (amely nem felhasználó által irányítható kód).
 
-## <a name="whats-next-in-fy20"></a>Mi a következő lépés a FY20-ban?
+## <a name="whats-next-in-fy20"></a>Mi a következő lépés a FY20-ben?
 
-- Java biztonsági elemző eszköz
-- Python biztonsági elemző eszköz
-- ES Lint helyett TS Lint typescript és JavaScript
+- Java Security Analysis Tool
+- Python biztonsági elemzési eszköz
+- Az írógéppel és a JavaScripthez tartozó
 
 ## <a name="next-steps"></a>További lépések
 
-A Microsoft biztonsági kódelemzésének üzembe helyezésével és telepítésével kapcsolatos tudnivalókért tekintse meg [a Bevezetés és telepítés útmutatóját.](security-code-analysis-onboard.md)
+A Microsoft biztonsági kódok elemzésének bevezetésével és telepítésével kapcsolatos útmutatásért tekintse meg a bevezetési [és telepítési útmutatót](security-code-analysis-onboard.md).
 
-Ha további kérdése van a kiterjesztéssel és a kínált eszközökkel kapcsolatban, tekintse meg [a GYIK oldalt.](security-code-analysis-faq.md)
+Ha további kérdései vannak a bővítményről és a rendelkezésre álló eszközökről, tekintse meg a [Gyakori kérdések oldalát](security-code-analysis-faq.md).

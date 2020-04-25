@@ -1,43 +1,43 @@
 ---
-title: Felügyelt szolgáltatási ajánlatok az Azure Piactéren
-description: A felügyelt szolgáltatásajánlatok lehetővé teszik a szolgáltatók számára, hogy erőforrás-kezelési ajánlatokat értékesítsék az Azure Marketplace-en lévő ügyfelek számára.
+title: Felügyelt szolgáltatások ajánlatai az Azure Marketplace-en
+description: A felügyelt szolgáltatás lehetővé teszi, hogy a szolgáltatók erőforrás-kezelési ajánlatokat értékesítsenek az ügyfeleknek az Azure piactéren.
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: a0670bd74971132dcf243736bdf882a00154a942
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 13e1825ae6eb50b1b376e3bd3de908a545fbe023
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672423"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144897"
 ---
-# <a name="managed-service-offers-in-azure-marketplace"></a>Felügyelt szolgáltatási ajánlatok az Azure Piactéren
+# <a name="managed-service-offers-in-azure-marketplace"></a>Felügyelt szolgáltatások ajánlatai az Azure Marketplace-en
 
-Ez a cikk a **felügyelt szolgáltatás** ajánlattípusát ismerteti az [Azure Marketplace-en.](https://azuremarketplace.microsoft.com) A felügyelt szolgáltatásajánlatok lehetővé teszik, hogy erőforrás-kezelési szolgáltatásokat kínáljon az ügyfeleknek az [Azure delegált erőforrás-kezelése](azure-delegated-resource-management.md)segítségével. Ezeket az ajánlatokat elérhetővé teheti az összes potenciális ügyfél számára, vagy csak egy vagy több konkrét ügyfél számára. Mivel az ügyfeleknek közvetlenül kell fizetnie a felügyelt szolgáltatásokkal kapcsolatos költségekért, a Microsoft nem számít fel díjat.
+Ez a cikk a **felügyelt szolgáltatások** ajánlatának típusát mutatja be az [Azure piactéren](https://azuremarketplace.microsoft.com). A felügyelt szolgáltatás lehetővé teszi, hogy erőforrás-kezelési szolgáltatásokat nyújtson az ügyfeleknek az Azure-beli [delegált erőforrás-kezelés](azure-delegated-resource-management.md)használatával. Ezeket az ajánlatokat az összes potenciális ügyfél számára elérhetővé teheti, vagy csak egy vagy több konkrét ügyfél számára. Mivel az ügyfeleket közvetlenül az ezekkel a felügyelt szolgáltatásokkal kapcsolatos költségekre számlázza, a Microsoft nem számít fel díjat.
 
-## <a name="understand-managed-service-offers"></a>A felügyelt szolgáltatási ajánlatok ismertetése
+## <a name="understand-managed-service-offers"></a>A felügyelt szolgáltatások ajánlatának ismertetése
 
-A felügyelt szolgáltatás egyszerűsíti az Azure delegált erőforrás-kezeléséhez való bevezetési ügyfelek folyamatát. Amikor egy ügyfél megvásárol egy ajánlatot az Azure Marketplace-en, megadhatja, hogy mely előfizetéseket és/vagy erőforráscsoportokat kell berakni.
+A felügyelt szolgáltatás megkönnyíti az ügyfelek Azure-beli delegált erőforrás-kezeléshez való bevezetésének folyamatát. Amikor egy ügyfél ajánlatot vásárol az Azure Marketplace-en, meg tudják határozni, hogy mely előfizetéseket és/vagy erőforráscsoportokat kell előkészíteni.
 
-Ezt követően a szervezet felhasználói a szervezet bérlőjéről dolgozhatnak ezeken az erőforrásokon, az ajánlat [felhőpartneri portálon](https://cloudpartner.azure.com/)történő létrehozásakor megadott hozzáférésnek megfelelően. Ez egy olyan jegyzékfájlon keresztül történik, amely meghatározza az Azure AD-felhasználókat, -csoportokat és egyszerű szolgáltatáscsoportokat, amelyek hozzáférhetnek az ügyfél-erőforrásokhoz az Azure delegált erőforrás-kezelése, valamint a hozzáférési szintjüket meghatározó szerepkörök használatával. Ha engedélyeket rendel egy Azure AD-csoporthoz, nem pedig egyéni felhasználói vagy alkalmazásfiókok sorozatához, hozzáadhat vagy eltávolíthat egyéni felhasználókat, amikor a hozzáférési követelmények megváltoznak.
+Ezt követően a szervezetében lévő felhasználók az ajánlat létrehozásakor meghatározott hozzáférésnek megfelelően képesek lesznek dolgozni a szervezete bérlőn belüli erőforrásain. Ez egy olyan jegyzékfájlon keresztül történik, amely megadja az Azure AD-felhasználók,-csoportok és-szolgáltatások számára, amelyek az Azure-beli delegált erőforrás-kezelés használatával férhetnek hozzá az ügyfelek erőforrásaihoz, valamint a hozzáférési szintet meghatározó szerepkörökkel. Ha az engedélyeket egy Azure AD-csoporthoz rendeli hozzá, nem pedig egyéni felhasználói vagy alkalmazási fiókokat, hozzáadhat vagy eltávolíthat egyes felhasználókat a hozzáférési követelmények változásakor.
 
 ## <a name="public-and-private-offers"></a>Nyilvános és privát ajánlatok
 
-Minden felügyelt szolgáltatás ajánlat egy vagy több csomag. A tervek lehetnek privátak vagy nyilvánosak.
+A felügyelt szolgáltatások minden ajánlata egy vagy több csomagot tartalmaz. A csomagok lehetnek magán-vagy nyilvánosak is.
 
-Ha az ajánlatot meghatározott ügyfelekre szeretné korlátozni, közzétehet egy privát csomagot. Ha így tesz, a csomag csak az Ön által megadott adott] előfizetési azonosítókhoz vásárolható meg. További információ: [Privát ajánlatok](../../marketplace/private-offers.md).
+Ha korlátozni szeretné az ajánlatát bizonyos ügyfeleknek, közzétehet egy privát csomagot. Ha így tesz, a terv csak az Ön által megadott előfizetés-azonosítók esetében vásárolható meg. További információ: [privát ajánlatok](../../marketplace/private-offers.md).
 
-A nyilvános tervek lehetővé teszik, hogy szolgáltatásait új ügyfelek számára népszerűsítse. Ezek általában megfelelőbbek, ha csak korlátozott hozzáférésre van szüksége az ügyfél bérlőjéhez. Miután kapcsolatot létesített egy ügyféllel, ha úgy döntenek, hogy további hozzáférést biztosítanak a szervezetnek, ezt megteheti, ha csak az adott ügyfél számára tesz közzé egy új privát csomagot, vagy [az Azure Resource Manager-sablonok használatával további hozzáférést biztosít számukra.](../how-to/onboard-customer.md)
+A nyilvános csomagok lehetővé teszik a szolgáltatások új ügyfelekhez való előléptetését. Ezek általában megfelelőbbek, ha csak korlátozott hozzáférésre van szüksége az ügyfél bérlője számára. Ha kapcsolatot létesített egy ügyféllel, ha úgy dönt, hogy további hozzáférést biztosítanak a szervezetnek, akkor ezt akár egy új privát csomag közzétételével is megteheti, akár [Azure Resource Manager-sablonok használatával történő további hozzáféréshez](../how-to/onboard-customer.md).
 
-Ha szükséges, nyilvános és privát csomagokat is felvehet ugyanabba az ajánlatba.
+Ha szükséges, a nyilvános és a saját csomagok is felhasználhatók ugyanabban az ajánlatban.
 
 > [!IMPORTANT]
-> Ha egy tervet nyilvánosként tettek közzé, nem módosíthatja magánjellegűvé. Annak szabályozásához, hogy mely ügyfelek fogadhatják el az ajánlatot, és milyen erőforrásokat delegálhatnak, használjon privát csomagot. Nyilvános csomag esetén nem korlátozhatja a rendelkezésre állást bizonyos ügyfelekre, vagy akár bizonyos számú ügyfélre (bár teljesen leállíthatja a csomag értékesítését, ha úgy dönt). A [delegáláshoz való hozzáférést](../how-to/onboard-customer.md#remove-access-to-a-delegation) csak akkor távolíthatja el, ha az ügyfél csak akkor fogad el egy ajánlatot, ha az ajánlat közzétételekor a [Felügyelt szolgáltatások regisztrációs hozzárendelésének törlése szerepkör-törlési](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) **szerepkör-kóddal** rendelkező **engedélyezést** is tartalmaz. Azt is elérheti az ügyfél, és kérje meg őket, hogy [távolítsa el a hozzáférést.](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)
+> Miután közzétett egy csomagot nyilvánosként, nem módosíthatja magánjellegűre. Egy privát csomag használatával szabályozhatja, hogy mely ügyfelek fogadhatják el az ajánlatot, és hogyan delegálhat erőforrásokat. Egy nyilvános csomaggal nem korlátozhatja a rendelkezésre állást bizonyos ügyfelek számára, vagy akár bizonyos számú ügyfél számára is (bár ha úgy dönt, hogy teljesen megszüntetheti a csomag értékesítését). A [delegáláshoz való hozzáférést csak akkor távolíthatja el,](../how-to/remove-delegation.md) ha az ügyfél csak akkor fogadja el az **ajánlatot, ha** az ajánlat közzétételekor a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörét](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) beállította a **szerepkör-definícióban** . Az ügyfelet is elérheti, és megkérheti, hogy [távolítsa el a hozzáférését](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
-## <a name="publish-managed-service-offers"></a>Felügyelt szolgáltatási ajánlatok közzététele
+## <a name="publish-managed-service-offers"></a>Felügyelt szolgáltatás-ajánlatok közzététele
 
-A felügyelt szolgáltatások ajánlatának közzétételéről a [Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en (Felügyelt szolgáltatások) szolgáltatás közzététele.Learn](../how-to/publish-managed-services-offers.md)how to publish a managed services offer, See Publish a Managed Services offer to Azure Marketplace . Az Azure Marketplace-en a Cloud Partner Portal használatával történő közzétételről az Azure Marketplace és az [AppSource közzétételi útmutatócímű témakörben talál általános](../../marketplace/marketplace-publishers-guide.md)információkat.
+A felügyelt szolgáltatások ajánlatának közzétételével kapcsolatos további információkért lásd: [felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace](../how-to/publish-managed-services-offers.md)-en.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg az [Azure delegált erőforrás-kezelési](azure-delegated-resource-management.md) és [több bérlőközötti felügyeleti tapasztalatait.](cross-tenant-management-experience.md)
-- [Felügyelt szolgáltatások ajánlatai közzététele](../how-to/publish-managed-services-offers.md) az Azure Marketplace-en.
+- Ismerje meg az Azure-beli [delegált erőforrás-kezelést](azure-delegated-resource-management.md) és a [több-bérlős felügyeleti tapasztalatokat](cross-tenant-management-experience.md).
+- [Felügyelt szolgáltatások ajánlatának közzététele](../how-to/publish-managed-services-offers.md) az Azure Marketplace-en.

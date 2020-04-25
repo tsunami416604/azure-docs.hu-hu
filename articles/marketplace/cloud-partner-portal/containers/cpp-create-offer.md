@@ -1,42 +1,42 @@
 ---
-title: Azure-tárolók ajánlatának létrehozása | Azure Piactér
-description: Új tárolóajánlat közzététele a Piactérhez.
+title: Azure-beli tárolók ajánlatának létrehozása | Azure piactér
+description: Új Container-ajánlat közzététele a piactéren.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 25d678ad7b8c2b786239b294de873bc1d98fa5cb
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a7266d0f32a8ac18a4a76dee7eb3c39be253f7bd
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270332"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148284"
 ---
-# <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Hozzon létre egy új tárolóajánlatot a Cloud Partner Portal segítségével
+# <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Hozzon létre egy új tároló ajánlatot a Cloud Partner Portal
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure Container-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Container-ajánlat létrehozása](https://aka.ms/CreateContainerOffer) című, az áttelepített ajánlatok kezeléséhez című útmutatóutasításait.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli Container-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Kövesse az [Azure Container-ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) az áttelepített ajánlatok kezeléséhez című témakör utasításait.
 
-Ez a cikk ismerteti, hogyan hozhat létre és tehet közzé egy tároló ajánlat bejegyzést az Azure Marketplace-en. Minden ajánlat saját entitásként jelenik meg az Azure Marketplace-en, és egy vagy több sk-hez van társítva.  A tárolóajánlat az eszközök és támogató szolgáltatások következő csoportjaiból áll:
+Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy tároló-ajánlati bejegyzést az Azure Marketplace-en. Minden ajánlat saját entitásként jelenik meg az Azure Marketplace-en, és egy vagy több SKU-hoz van társítva.  A tárolók ajánlata az eszközök és a támogató szolgáltatások következő csoportjaiból áll:
 
 |  **Eszközcsoport**   |  **Leírás**  |
 |  ---------------   |  ---------------  |
-|    Termékváltozatok            |  Az ajánlat legkisebb telepíthető egysége. Egyetlen ajánlat (termékosztály) több termékkel is rendelkezhet az ajánlathoz társítva. A biztonsági és modern alkalmazások segítségével különbséget tehet a támogatott funkciók és a számlázási modellek között. |
-|  Piactér       | Marketing, jogi és vezető menedzsment eszközöket és specifikációkat tartalmaz.  <ul><li> A marketingeszközök közé tartozik az ajánlat neve, leírása és emblémája</li> <li> A jogi eszközök közé tartozik az adatvédelmi szabályzat, a használati feltételek és egyéb jogi dokumentáció</li>  <li> Az érdeklődőkezelési szabályzat lehetővé teszi, hogy adja meg, hogyan kezelje az érdeklődőket az Azure Marketplace végfelhasználói portálról.</li> </ul> |
-| Támogatás            | Támogatási kapcsolattartóés házirend-információkat tartalmaz |
+|    Termékváltozatok            |  Egy ajánlat legkisebb üzembe helyezhető egysége. Egyetlen ajánlat (Termékkód) több SKU-t is társíthat az ajánlathoz. A SKU-ket a támogatott szolgáltatások és számlázási modellek megkülönböztetésére használhatja. |
+|  Piactér       | Marketing, jogi és vezető felügyeleti eszközöket és specifikációkat tartalmaz.  <ul><li> A marketing-eszközök közé tartozik az ajánlat neve, leírása és emblémája</li> <li> A jogi eszközök közé tartozik az adatvédelmi szabályzat, a használati feltételek és egyéb jogi dokumentáció</li>  <li> Az érdeklődői felügyeleti szabályzat segítségével megadhatja, hogyan kezelheti az érdeklődőket az Azure Marketplace végfelhasználói portálon.</li> </ul> |
+| Támogatás            | A kapcsolattartási és a házirend-információkat tartalmazza |
 
 
-## <a name="new-offer-form"></a>Új ajánlat űrlap 
+## <a name="new-offer-form"></a>Új ajánlat űrlapja 
 
-Jelentkezzen be a [Cloud Partner Portal ba](https://cloudpartner.azure.com/), és válassza a + Új **ajánlat** lehetőséget a bal oldali menüsorban. Az Új ajánlat menüben válassza a **Tárolók** lehetőséget az **Új ajánlat** űrlap megjelenítéséhez, és indítsa el az új tárolóajánlat eszközeinek meghatározását.
+Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/), majd a bal oldali menüsoron válassza az **+ új ajánlat** lehetőséget. Az új ajánlat menüben válassza a **tárolók** lehetőséget az **új ajánlat** űrlap megjelenítéséhez, és kezdje el az eszközök definiálásának folyamatát egy új tároló-ajánlathoz.
 
-![Tárolók kiválasztása az új ajánlathoz](./media/azure-container-offer.png)
+![Válassza a tárolók lehetőséget az új ajánlathoz](./media/azure-container-offer.png)
 
 ## <a name="next-steps"></a>További lépések
 
-A tárolóajánlat típusának **Új ajánlat** lapja lapok és űrlapmezők készletét biztosítja, amelyek segítségével új ajánlatot hozhat létre. Az alábbi cikkek ismerteti, hogyan használhatja a lapon az új tárolóajánlat eszközcsoportjainak és támogató szolgáltatásainak meghatározásához.
+A Container ajánlat típusának **új ajánlat** lapja olyan lapokat és űrlapmezőket tartalmaz, amelyeket egy új ajánlat létrehozásához fog használni. Az alábbi cikkekből megtudhatja, hogyan használhatja a lapot az új tároló-ajánlathoz tartozó eszközcsoport és támogató szolgáltatások definiálásához.
 
 - [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
 - [Termékváltozatok lap](./cpp-skus-tab.md)

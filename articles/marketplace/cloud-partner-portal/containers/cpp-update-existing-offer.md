@@ -1,88 +1,88 @@
 ---
-title: Meglévő Azure-tárolók ajánlatának frissítése | Azure Piactér
-description: Meglévő tárolóajánlat frissítése az Azure Marketplace-en.
+title: Meglévő Azure-tárolók ajánlatának frissítése | Azure piactér
+description: Meglévő Container-ajánlat frissítése az Azure Marketplace-en.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 650ef45e56184b67efba67810580d9d6e763a4d0
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: cc378dcc1d5f777f4e81825e2f99dedd37a87f96
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271267"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143824"
 ---
-# <a name="update-an-existing-container-offer"></a>Meglévő tárolóajánlat frissítése
+# <a name="update-an-existing-container-offer"></a>Meglévő tároló-ajánlat frissítése
 
 > [!IMPORTANT]
-> 2020. április 13-tól megkezdjük az Azure Container-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Container-ajánlat létrehozása](https://aka.ms/CreateContainerOffer) című, az áttelepített ajánlatok kezeléséhez című útmutatóutasításait.
+> 2020. április 13-ától kezdődően megkezdjük az Azure-beli Container-ajánlatok felügyeletének áthelyezését a partneri központba. Az áttelepítés után létrehozhatja és kezelheti az ajánlatokat a partner Centerben. Kövesse az [Azure Container-ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) az áttelepített ajánlatok kezeléséhez című témakör utasításait.
 
-Ez a cikk a felhőpartner-webhelyen a tárolóajánlat frissítésének különböző szempontjait [ismerteti.](https://cloudpartner.azure.com/)
+Ez a cikk a tárolói ajánlat frissítésének különböző szempontjait ismerteti a [Cloud Partner Portalban](https://cloudpartner.azure.com/).
 
-Számos oka lehet annak, hogy miért szeretné frissíteni az ajánlatot, például:
+Számos oka lehet annak, hogy az ajánlatát szeretné frissíteni, például:
 
--  Új tárolólemezkép-verzió hozzáadása a meglévő sk-ekhez.
--  Új ska hozzáadása.
--  Az ajánlat vagy az egyes sk-ek piactéri metaadatainak frissítése.
+-  Új tároló rendszerkép-verziójának hozzáadása a meglévő SKU-hoz.
+-  Új SKU-ket ad hozzá.
+-  A piactér metaadatainak frissítése az ajánlathoz vagy az egyedi SKU-hoz.
 
-A módosítások segítése érdekében a portál az **Összehasonlítás** és az **Előzmények** funkciókat biztosítja.  
+A módosítások elősegítéséhez a portálon elérhetők az **összehasonlítás** és az **Előzmények** funkció.  
 
 
-## <a name="unpermitted-changes-to-a-container-offer-or-sku"></a>Tárolóajánlat vagy termékváltozat nem engedélyezett módosításai
+## <a name="unpermitted-changes-to-a-container-offer-or-sku"></a>Tároló-ajánlat vagy SKU nem engedélyezett módosításai
 
-Vannak olyan tárolóajánlat vagy termékváltozat attribútumai, amelyek nem módosíthatók, miután az ajánlat az Azure Marketplace-en való élő ben. A következő beállítások nem módosíthatók:
+A tároló ajánlat vagy SKU attribútuma nem módosítható, miután az ajánlat az Azure piactéren elérhető. A következő beállítások nem módosíthatók:
 
--  Az ajánlat **ajánlatazonosítója** és **közzétevőazonosítója**
--  **Meglévő** termékváltozatok termékazonosítója
--  Verziócímkék, például:`1.0.1`
--  A meglévő sk-ek számlázási/licencmodell-módosításai
+-  Az ajánlat **azonosítója** és **közzétevő-azonosítója**
+-  Meglévő SKU-i **SKU-azonosító**
+-  Verziók címkéi, például:`1.0.1`
+-  Számlázási/licencelési modell módosítása a meglévő SKU-ra
 
 ## <a name="common-update-operations"></a>Gyakori frissítési műveletek
 
 A következő frissítési műveletek gyakoriak.
 
-### <a name="update-container-image-version-for-a-sku"></a>Tárolólemezkép verziójának frissítése termékváltozathoz
+### <a name="update-container-image-version-for-a-sku"></a>SKU-rendszerkép verziójának frissítése
 
-Gyakori, hogy egy tárolórendszerképet rendszeresen frissíteni kell a biztonsági javításokkal, további funkciókkal és így tovább. Ebben az esetben a következő lépésekkel szeretné frissíteni a tárolólemezképet, amelyet a termékváltozat hivatkozik:
+Ez gyakran előfordul, hogy egy tároló lemezképét rendszeresen frissíteni kell a biztonsági javításokkal, további funkciókkal és így tovább. Ebben az esetben a következő lépések végrehajtásával szeretné frissíteni az SKU-ra hivatkozó tároló-rendszerképet:
 
-1. Jelentkezzen be a [Cloud Partner Portal ba.](https://cloudpartner.azure.com/)
-2. A **Minden ajánlat csoportban**keresse meg a frissíteni kívánt ajánlatot.
-3. A **Termékváltozatok** lapon válassza ki a frissíteni kívánt tárolólemezképhez társított termékváltozatot.
-4. A **Tárolólemezkép csoportban**válassza **a + Új lemezkép verzió lehetőséget** új tárolólemezkép hozzáadásához.
-5. Adja meg az új **tárolórendszerkép-verziókat**. A lemezkép-verziónak ugyanazokat a címkékre vonatkozó irányelveket kell követnie, mint a korábbi verzióknak. A verziócímkéknek X.Y.Z formátumúnak kell lenniük, ahol X, Y és Z egész számok. Ellenőrizze, hogy a megadott új verzió nagyobb-e, mint az összes korábbi verzió.
-6. Válassza **a Közzététel** lehetőséget az új tárolólemezkép-verzió azure Piactérre való közzétételéhez.
+1. Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+2. A **minden ajánlat**területen keresse meg a frissíteni kívánt ajánlatot.
+3. A **SKU** -i lapon válassza ki a frissíteni kívánt tároló-rendszerképhez társított SKU-t.
+4. A **tároló képe**területen válassza az **+ új rendszerkép verziója** lehetőséget új tároló-rendszerkép hozzáadásához.
+5. Adja meg az új tároló **rendszerképének verzióit**. A rendszerkép verziójának ugyanazokat a címkéket kell követnie, mint a korábbi verziókat. A verziószámnak X. Y. Z formátumúnak kell lennie, ahol az X, az Y és a Z egész számok. Ellenőrizze, hogy a megadott új verzió nagyobb-e az összes korábbi verziónál.
+6. Válassza a **Közzététel** lehetőséget, hogy elindítsa a munkafolyamatot az új tároló rendszerkép-verziójának az Azure Marketplace-en való közzétételéhez.
 
-### <a name="add-a-new-sku"></a>Új termékváltozat hozzáadása
+### <a name="add-a-new-sku"></a>Új SKU hozzáadása
 
-Az alábbi lépésekkel elérhetővé tehet egy új termékváltozatot az ajánlathoz:
+Az alábbi lépéseket követve új SKU-t hozhat elérhetővé az ajánlatához:
 
-1. Jelentkezzen be a [Cloud Partner Portal ba.](https://cloudpartner.azure.com/)
-2. A **Minden ajánlat csoportban**keresse meg a frissíteni kívánt ajánlatot.
-3. A **Termékváltozatok** lapon válassza az **Új termékváltozat hozzáadása** lehetőséget, és adja meg a **termékváltozat-azonosítót** az előugró ablakban.
-4. Tegye közzé újra a tárolót a [Tároló ajánlat közzététele](./cpp-publish-offer.md)című részben ismertetett lépésekkel.
-5. Válassza **a Közzététel** lehetőséget az új termékváltozat közzétételéhez a munkafolyamat elindításához.
+1. Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+2. A **minden ajánlat**területen keresse meg a frissíteni kívánt ajánlatot.
+3. A **SKU** -i lapon válassza az **új SKU hozzáadása** lehetőséget, és adjon meg egy **SKU azonosítót** az előugró ablakban.
+4. Tegye közzé újra a tárolót a következő témakörben ismertetett lépések végrehajtásával: [Container-ajánlat közzététele](./cpp-publish-offer.md).
+5. Válassza a **Közzététel** lehetőséget, hogy elindítsa a munkafolyamatot az új SKU közzétételéhez.
 
-### <a name="update-offer-marketplace-metadata"></a>Ajánlatpiactér metaadatainak frissítése
+### <a name="update-offer-marketplace-metadata"></a>Ajánlat Marketplace-metaadatok frissítése
 
-Az alábbi lépésekkel frissítheti az ajánlathoz társított piactér metaadatait. (Például: cégnév, logók stb.)
+Az alábbi lépésekkel frissítheti az ajánlathoz tartozó Piactéri metaadatokat. (Például: cégnév, emblémák stb.)
 
-1. Jelentkezzen be a [Cloud Partner Portal ba.](https://cloudpartner.azure.com/)
-2. A **Minden ajánlat területen**keresse meg a frissíteni kívánt ajánlatot.
-3. Nyissa meg a **Piactér** lapot. [Publish container offer](./cpp-publish-offer.md)
-4. A **közzététel gombra** a munkafolyamat elindításához válassza a módosítások közzétételét.
+1. Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+2. A **minden ajánlat**területen keresse meg a frissíteni kívánt ajánlatot.
+3. Lépjen a **Marketplace (piactér** ) lapra. a metaadatok módosításainak közzétételéhez használja a [Container ajánlat közzététele](./cpp-publish-offer.md) ajánlata című cikk utasításait.
+4. Válassza a **Közzététel** lehetőséget a munkafolyamat elindításához a módosítások közzétételéhez.
 
-## <a name="compare-feature"></a>Jellemző összehasonlítása
+## <a name="compare-feature"></a>Szolgáltatás összehasonlítása
 
-Amikor módosítja a közzétett ajánlatot, az **Összehasonlítás** funkcióval naplózhatja a végrehajtott módosításokat.
+Amikor módosításokat végez egy közzétett ajánlaton, az **összehasonlítás** funkcióval naplózhatja a végrehajtott módosításokat.
 
-### <a name="to-use-the-compare-feature"></a>Az Összehasonlítás funkció használata:
+### <a name="to-use-the-compare-feature"></a>Az összehasonlítás funkció használata:
 
-1. A szerkesztési folyamat bármely pontján válassza az Összehasonlítás az ajánlathoz lehetőséget.
-2. Tekintse meg a marketingeszközök és metaadatok egymás melletti verzióit.
+1. A szerkesztési folyamat bármely pontján válassza az összehasonlítás lehetőséget az ajánlathoz.
+2. Tekintse meg a marketing eszközök és metaadatok egymás melletti verzióit.
 
 
-## <a name="history-of-publishing-actions"></a>A közzétételi műveletek előzményei
+## <a name="history-of-publishing-actions"></a>Közzétételi műveletek előzményei
 
-A korábbi közzétételi tevékenység megtekintéséhez válassza az **Előzmények** lapot a Cloud Partner Portal bal oldali navigációs menüsorában. Megtekintheti az Azure Marketplace-ajánlatok élettartama során végrehajtott időbélyeggel ellátott műveleteket.
+A korábbi közzétételi tevékenységek megtekintéséhez válassza az **Előzmények** fület a bal oldali navigációs menüsorban Cloud Partner Portal. Az Azure Marketplace-ajánlatok élettartama alatt megtekintheti az időbélyegzővel ellátott műveleteket.

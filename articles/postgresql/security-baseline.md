@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a38bb12577fd646b2e7abf773dbb2a3f138f58fe
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
-ms.translationtype: HT
+ms.openlocfilehash: eb6fc65d15ba7262b38a48e220f01d74bfcee54a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127550"
+ms.locfileid: "82146556"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Az Azure biztonsági alapkonfigurációja Azure Database for PostgreSQL egyetlen kiszolgálóhoz
 
@@ -130,7 +130,7 @@ A Azure Database for PostgreSQL szolgáltatás címkézési használatának isme
 
 - DDoS Protection a standardot engedélyezni kell
 
-- Az SSL-kapcsolat betartatását engedélyezni kell a PostgreSQL-adatbázis-kiszolgálók esetében
+- A TLS-kapcsolatok betartatását engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak
 
 Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -525,7 +525,7 @@ Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
-**Útmutató**: a Azure Database for PostgreSQL támogatja a PostgreSQL-kiszolgáló és az ügyfélalkalmazások SSL (SSL) használatával történő összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket. Az Azure Portalban alapértelmezés szerint az összes Azure Database for PostgreSQL példányra vonatkozóan engedélyezve van az "SSL-kapcsolat érvényesítése".
+**Útmutató**: a Azure Database for PostgreSQL támogatja a PostgreSQL-kiszolgáló és az ügyfélalkalmazások TRANSPORT Layer Security (TLS), korábbi nevén SSL (SSL) használatával történő összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti TLS-kapcsolatok érvényesítése segít megvédeni a "férfit a középső" támadásokkal szemben azáltal, hogy titkosítja az adatfolyamot a kiszolgáló és az alkalmazás között. Az Azure Portalban alapértelmezés szerint az összes Azure Database for PostgreSQL példányra vonatkozóan engedélyezve van az "SSL-kapcsolat érvényesítése".
 
 Jelenleg a Azure Database for PostgreSQL által támogatott TLS-verzió a TLS 1,0, a TLS 1,1, a TLS 1,2.
 
@@ -794,7 +794,7 @@ A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való ho
 
 **Útmutató**: a Azure Database for PostgreSQL példányok szabványos biztonsági konfigurációinak meghatározása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. DBforPostgreSQL" névtérben egyéni szabályzatok létrehozásához a Azure Database for PostgreSQL példányok hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. A Azure Database for PostgreSQL-példányokhoz kapcsolódó beépített szabályzat-definíciókat is használhatja, például:
 
-- Az SSL-kapcsolat betartatását engedélyezni kell a PostgreSQL-adatbázis-kiszolgálók esetében
+- A TLS-kapcsolatok betartatását engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak
 
 - A naplózási kapcsolatokat engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak
 

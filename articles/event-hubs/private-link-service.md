@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: 110d4b94eda8315c20f4baa70256f7e5ed378530
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: fb8fc93174345d0bdb09e4308a4206a65ed2270a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106474"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148200"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Az Azure Event Hubs integrálása az Azure Private Linktel (előzetes verzió)
 Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
@@ -29,7 +29,7 @@ További információ: [Mi az az Azure Private link?](../private-link/private-li
 >[!WARNING]
 > A privát végpontok engedélyezése megakadályozhatja, hogy más Azure-szolgáltatások a Event Hubs használatával kommunikálnak.
 >
-> A megbízható Microsoft-szolgáltatások nem támogatottak, ha a virtuális hálózatok implementálva vannak.
+> A megbízható Microsoft-szolgáltatások virtuális hálózatok használata esetén nem támogatottak.
 >
 > Olyan általános Azure-forgatókönyvek, amelyek nem működnek a virtuális hálózatokkal (vegye figyelembe, hogy a lista **nem** teljes) –
 > - Azure Monitor (diagnosztikai beállítás)
@@ -72,7 +72,7 @@ Ha már rendelkezik Event Hubs névtérrel, a következő lépések végrehajtá
     1. Válassza ki azt az **Azure-előfizetést** , amelyben létre szeretné hozni a privát végpontot. 
     2. Válassza ki a privát végpont erőforráshoz tartozó **erőforráscsoportot** .
     3. Adja meg a magánhálózati végpont **nevét** . 
-    5. Válasszon ki egy **régiót** a privát végpont számára. A privát végpontnak ugyanabban a régióban kell lennie, mint a virtuális hálózatnak, de a privát kapcsolati erőforráshoz tartozó másik régióban is lehet, amelyhez csatlakozik. 
+    5. Válasszon ki egy **régiót** a privát végpont számára. A privát végpontnak ugyanabban a régióban kell lennie, mint a virtuális hálózatnak, de a privát kapcsolati erőforrástól eltérő régióban lehet, amelyhez csatlakozik. 
     6. Válassza a **Tovább: erőforrás >** gombot az oldal alján.
 
         ![Privát végpont létrehozása – alapismeretek lap](./media/private-link-service/create-private-endpoint-basics-page.png)
@@ -86,7 +86,7 @@ Ha már rendelkezik Event Hubs névtérrel, a következő lépések végrehajtá
         
             ![Privát végpont létrehozása – Erőforrás lap](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Ha a **Kapcsolódás Azure-erőforráshoz erőforrás-azonosító vagy alias alapján**lehetőséget választja, kövesse az alábbi lépéseket:
-        1. Adja meg az **erőforrás-azonosítót** vagy az **aliast**. Ez lehet az az erőforrás-azonosító vagy alias, amelyet mások megosztanak Önnel.
+        1. Adja meg az **erőforrás-azonosítót** vagy az **aliast**. Ez lehet az az erőforrás-azonosító vagy alias, amelyet valaki megosztott Önnel. Az erőforrás-azonosító beszerzésének legegyszerűbb módja, ha a Azure Portal Event Hubs névterére navigál, és az URI részét másolja a-től `/subscriptions/`kezdődően. Példaként tekintse meg az alábbi ábrát. 
         2. A **cél alerőforrásnál**adja meg a **névteret**. Ez a saját végpont által elérhető alerőforrás típusa.
         3. választható Adja meg a **kérelem üzenetét**. Az erőforrás tulajdonosa látja ezt az üzenetet a privát végponti kapcsolatok kezelése során.
         4. Ezután válassza a **Tovább: konfigurációs >** gombot az oldal alján.

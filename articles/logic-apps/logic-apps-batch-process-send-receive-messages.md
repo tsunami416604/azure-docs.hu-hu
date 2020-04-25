@@ -1,6 +1,6 @@
 ---
-title: Kötegelt folyamatüzenetek csoportként
-description: Üzenetek küldése és fogadása csoportokban a munkafolyamatok között kötegelt feldolgozással az Azure Logic Apps-ben
+title: Kötegelt feldolgozási üzenetek csoportként
+description: Üzenetek küldése és fogadása csoportokban a munkafolyamatok között a kötegelt feldolgozás használatával Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,219 +8,219 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e48d2bb2ffce0dd4f9293417534165165d426784
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75666754"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144342"
 ---
-# <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Üzenetek küldése, fogadása és kötegelt feldolgozása az Azure Logic Apps alkalmazásban
+# <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Üzenetek küldése, fogadása és kötegelt feldolgozása Azure Logic Apps
 
-Ha az üzeneteket egy adott módon csoportokként szeretné elküldeni és feldolgozni, létrehozhat egy kötegelt adatkötegbe gyűjtő kötegelt küldési *megoldást,* amíg a megadott feltételek nem teljesülnek a kötegelt üzenetek kiadásához és feldolgozásához. Kötegelés csökkentheti, hogy milyen gyakran a logikai alkalmazás feldolgozza az üzeneteket. Ez a cikk bemutatja, hogyan hozhat létre kötegelési megoldást két logikai alkalmazás létrehozásával ugyanazon az Azure-előfizetésen, az Azure-régióban, és az alábbi sorrendben: 
+Az üzenetek küldéséhez és feldolgozásához egy adott módon, a csoportoknak megfelelően létrehozhat egy kötegelt megoldást, amely az üzeneteket egy *kötegbe* gyűjti, amíg a megadott feltételek teljesülnek a kötegelt üzenetek felszabadításához és feldolgozásához. A kötegelt feldolgozással csökkentheti, hogy a logikai alkalmazás milyen gyakran dolgozza fel az üzeneteket. Ez a cikk bemutatja, hogyan hozhat létre kötegelt megoldást úgy, hogy két logikai alkalmazást hoz létre ugyanabban az Azure-előfizetésben, az Azure-régióban, és az adott sorrendet követve: 
 
-* A ["batch receiver"](#batch-receiver) logikai alkalmazás, amely elfogadja és összegyűjti az üzeneteket egy kötegbe, amíg a megadott feltételek teljesülnek az üzenetek felszabadítása és feldolgozása.
+* A ["batch receiver"](#batch-receiver) logikai alkalmazás, amely az üzeneteket egy kötegbe fogadja és gyűjti, amíg a megadott feltételek teljesülnek az üzenetek felszabadításához és feldolgozásához.
 
-  Győződjön meg arról, hogy először hozza létre a kötegfogadót, hogy később kiválaszthassa a kötegcélt a kötegküldő létrehozásakor.
+  Győződjön meg arról, hogy először létrehozza a Batch-fogadót, hogy később kiválassza a Batch-célt a Batch-feladó létrehozásakor.
 
-* Egy vagy több ["kötegküldő"](#batch-sender) logikai alkalmazás, amely elküldi az üzeneteket a korábban létrehozott kötegfogadónak. 
+* Egy vagy több ["batch feladó"](#batch-sender) logikai alkalmazás, amely az üzeneteket a korábban létrehozott batch-fogadónak küldi el. 
 
-   Megadhat egy egyedi kulcsot is, például egy ügyfélszámot, amely *a célköteget az* adott kulcs alapján logikai részhalmazokra osztja, vagy felosztja azokat. Így a fogadó alkalmazás összegyűjtheti az összes elemet ugyanazzal a kulccsal, és együtt feldolgozhatja őket.
+   Megadhat egy egyedi kulcsot is, például egy vevőszámot, a *partíciókat* , illetve a cél köteget logikai részhalmazokra osztja a kulcs alapján. Így a fogadó alkalmazás összegyűjtheti az összes elemet ugyanazzal a kulccsal, és együtt is feldolgozza azokat.
 
-Győződjön meg arról, hogy a kötegelt fogadó és a kötegelt feladó ugyanazt az Azure-előfizetést *és* Az Azure-régiót osztja. Ha nem, akkor nem választhatja ki a kötegelt fogadót a kötegküldő létrehozásakor, mert azok nem láthatók egymás számára.
+Győződjön meg arról, hogy a Batch-fogadó és a Batch-küldő ugyanazzal az Azure-előfizetéssel *és Azure-* régióval rendelkezik. Ha nem, akkor nem választhatja ki a Batch-fogadót a Batch-feladó létrehozásakor, mert azok nem láthatók egymás számára.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A példa követéséhez a következő elemekre van szükség:
+* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [kezdheti egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/).
+Vagy regisztráljon az utólagos elszámolású [előfizetésre](https://azure.microsoft.com/pricing/purchase-options/).
 
-* Azure-előfizetés. Ha nem rendelkezik [előfizetéssel, kezdheti egy ingyenes Azure-fiókkal.](https://azure.microsoft.com/free/) Vagy [regisztráljon egy kiosztón-fel- már-előfordulhat rakoncátor előfizetésre.](https://azure.microsoft.com/pricing/purchase-options/)
+* E-mail-fiók minden [Azure Logic apps által támogatott e-mail-szolgáltatóval](../connectors/apis-list.md)
 
-* E-mail fiók az [Azure Logic Apps által támogatott bármely e-mail szolgáltatóval](../connectors/apis-list.md)
+  > [!IMPORTANT]
+  > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
-* Alapvető ismeretek [a logikai alkalmazások létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Ha az Azure Portal helyett a Visual Studio-t szeretné használni, győződjön meg arról, hogy [a Visual Studio-t a Logic Apps használatára állította be.](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+* Ha a Visual studiót a Azure Portal helyett szeretné használni, győződjön meg róla, hogy a [Visual studiót a Logic apps használatára állítja be](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="batch-receiver"></a>
 
-## <a name="create-batch-receiver"></a>Kötegfogadó létrehozása
+## <a name="create-batch-receiver"></a>Batch-fogadó létrehozása
 
-Mielőtt üzeneteket küldhetne egy kötegnek, a kötegnek először meg kell lennie az üzenetek küldésének céljaként. Tehát először létre kell hoznia a "batch receiver" logikai alkalmazást, amely a **Batch** eseményindítóval kezdődik. Így a "kötegelt küldő" logikai alkalmazás létrehozásakor kiválaszthatja a kötegelt fogadó logikai alkalmazást. A kötegelt fogadó folytatja az üzenetek gyűjtését, amíg a megadott feltételek nem teljesülnek az üzenetek kiadására és feldolgozására. Bár a kötegelt fogadóknak nem kell semmit tudniuk a kötegelt feladókról, a kötegelt feladóknak ismerniük kell az üzenetek küldésének helyét. 
+Ahhoz, hogy üzeneteket küldhessen egy kötegbe, a kötegnek először az üzeneteket küldő célhelyként kell lennie. Először létre kell hoznia a "batch-fogadó" logikai alkalmazást, amely a **Batch** -triggerrel kezdődik. Így a "batch Sender" logikai alkalmazás létrehozásakor kiválaszthatja a Batch-fogadó logikai alkalmazást. A Batch-fogadó folytatja az üzenetek gyűjtését, amíg a megadott feltételek teljesülnek az üzenetek felszabadításához és feldolgozásához. Habár a Batch-fogadóknak semmit nem kell tudniuk a Batch-küldők számára, a Batch-küldőknek ismerniük kell az üzeneteket küldő célhelyet. 
 
-1. Az [Azure Portalon](https://portal.azure.com) vagy a Visual Studio-ban hozzon létre egy logikai alkalmazást ezzel a névvel: "BatchReceiver" 
+1. A [Azure Portal](https://portal.azure.com) vagy a Visual Studióban hozzon létre egy logikai alkalmazást a következő névvel: "BatchReceiver" 
 
-2. A Logic Apps Designerben adja hozzá a **Batch** eseményindítót, amely elindítja a logikai alkalmazás munkafolyamatát. A keresőmezőbe írja be szűrőként a "batch" szót. Válassza ki ezt az eseményindítót: **Kötegelt üzenetek**
+2. A Logic Apps Designerben adja hozzá a **Batch** -triggert, amely elindítja a logikai alkalmazás munkafolyamatát. A keresőmezőbe írja be szűrőként a "batch" kifejezést. Válassza ki ezt az triggert: **Batch-üzenetek**
 
-   !["Batch üzenetek" eseményindító hozzáadása](./media/logic-apps-batch-process-send-receive-messages/add-batch-receiver-trigger.png)
+   !["Batch-üzenetek" trigger hozzáadása](./media/logic-apps-batch-process-send-receive-messages/add-batch-receiver-trigger.png)
 
-3. Állítsa be ezeket a tulajdonságokat a kötegelt vevőhöz: 
+3. Adja meg a következő tulajdonságokat a Batch-fogadó számára: 
 
    | Tulajdonság | Leírás | 
    |----------|-------------|
-   | **Kötegelt mód** | - **Szövegközi**: A kötegeseményindítón belüli kiadási feltételek meghatározásához <br>- **Integrációs fiók**: Több kiadási feltétel konfigurációjának [definiálása integrációs fiókon](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)keresztül . Integrációs fiókkal ezeket a konfigurációkat egy helyen, nem pedig külön logikai alkalmazásokban tarthatja fenn. | 
-   | **Köteg neve** | A köteg neve, amely ebben a példában a "TestBatch" név, és csak a **szövegközi** kötegmódra vonatkozik |  
-   | **Kiadási feltételek** | Csak a **Szövegközi** kötegmódra vonatkozik, és kiválasztja azokat a feltételeket, amelyeknek meg kell felelnie az egyes kötegek feldolgozása előtt: <p>- **Üzenetszám alapján:** Engedje fel a köteget a köteg által gyűjtött üzenetek száma alapján. <br>- **Méret alapú:** Engedje fel a köteget a köteg által gyűjtött összes üzenet teljes bájtban lévő mérete alapján. <br>- **Ütemezés**: Engedje fel a köteget egy ismétlődési ütemezés alapján, amely egy intervallumot és gyakoriságot határoz meg. A speciális beállításokban kijelölhet egy időzónát is, és megadhatja a kezdő dátumot és az időt. <br>- **Az összes kijelölése**: Használja az összes megadott feltételt. | 
-   | **Üzenetek száma** | A kötegben begyűjtandó üzenetek száma, például 10 üzenet. A kötegek határa 8000 üzenet. | 
-   | **Köteg mérete** | A kötegben összegyűjtésre váró teljes méret bájtban, például 10 MB. A köteg méretkorlátja 80 MB. | 
-   | **Ütemezés** | A kötegfelszabadítások közötti időköz és gyakoriság, például 10 perc. A minimális ismétlődés 60 másodperc vagy 1 perc. A törtperceket hatékonyan 1 percre kerekítjük fel. Időzóna vagy kezdési dátum és idő megadásához válassza **a Speciális beállítások megjelenítése**lehetőséget. | 
+   | **Batch mód** | - **Beágyazott**: a kiadási feltételek meghatározása a Batch-triggeren belül <br>- **Integrációs fiók**: több kiadási feltétel konfigurációjának definiálása egy [integrációs fiókon](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)keresztül. Integrációs fiókkal a konfigurációkat egy helyen kezelheti, nem pedig külön logikai alkalmazásokban. | 
+   | **Köteg neve** | A Batch neve, amely ebben a példában a "TestBatch", és csak a **beágyazott** batch üzemmódra vonatkozik |  
+   | **Kiadási feltételek** | Csak a **beágyazott** batch üzemmódra vonatkozik, és az egyes kötegek feldolgozása előtt kijelöli a feltételeknek megfelelő feltételeket: <p>- **Üzenetek száma**: a Batch által gyűjtött üzenetek száma alapján szabadítsa fel a köteget. <br>- **Méret alapú**: az adott köteg által gyűjtött összes üzenet bájtban kifejezett teljes mérete alapján szabadítsa fel a köteget. <br>- **Ütemezése**: a köteg felszabadítása egy ismétlődési ütemterv alapján, amely az intervallumot és a gyakoriságot határozza meg. A speciális beállítások területen kiválaszthatja az időzónát, és megadhatja a kezdő dátumot és időpontot is. <br>- Az **összes kijelölése**: használja az összes megadott feltételt. | 
+   | **Üzenetek száma** | A kötegben begyűjteni kívánt üzenetek száma, például 10 üzenet. A kötegek korlátja 8 000 üzenet. | 
+   | **Köteg mérete** | A kötegben összegyűjteni kívánt teljes méret (bájtban), például 10 MB. A kötegek maximális mérete 80 MB. | 
+   | **Ütemezés** | A kötegek kiadásainak időköze és gyakorisága, például 10 perc. A minimális ismétlődés 60 másodperc vagy 1 perc. A töredékes percek gyakorlatilag 1 percre vannak kerekítve. Időzóna vagy kezdő dátum és idő megadásához válassza a **Speciális beállítások megjelenítése**lehetőséget. | 
    ||| 
 
    > [!NOTE]
    > 
-   > Ha módosítja a kiadási feltételeket, miközben az eseményindító még kötegelt, de el nem küldött üzeneteket tartalmaz, az eseményindító a frissített kiadási feltételeket használja az el nem küldött üzenetek kezeléséhez. 
+   > Ha módosítja a kiadási feltételeket, miközben az trigger továbbra is kötegelt, de nem elküldött üzenetekkel rendelkezik, akkor az trigger a frissített kiadási feltételeket használja az el nem küldött üzenetek kezeléséhez. 
 
-   Ez a példa az összes kritériumot mutatja, de a saját teszteléshez csak egy feltételt próbáljon meg:
+   Ez a példa az összes feltételt mutatja, de a saját teszteléséhez próbáljon ki csak egy feltételt:
 
-   ![Kötegelt eseményindító részleteinek biztosítása](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-criteria.png)
+   ![Batch-trigger részleteinek megadása](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-criteria.png)
 
-4. Most adjon hozzá egy vagy több műveletet, amelyek minden köteget feldolgoznak. 
+4. Most adjon hozzá egy vagy több olyan műveletet, amely feldolgozza az egyes kötegeket. 
 
-   Ebben a példában adjon hozzá egy műveletet, amely e-mailt küld, amikor a köteg aktiválódik. 
-   Az eseményindító fut, és küld egy e-mailt, ha a köteg vagy 10 üzenetet tartalmaz, eléri a 10 MB-ot, vagy 10 perc elteltével.
+   Ebben a példában olyan műveletet adunk hozzá, amely e-mailt küld a Batch-eseményindító indításakor. 
+   Az trigger fut, és e-mailt küld, ha a köteg 10 üzenettel rendelkezik, 10 MB-nyi vagy 10 perces bérlet után.
 
-   1. A kötegeseményindító alatt válassza az **Új lépés lehetőséget.**
+   1. A Batch-trigger alatt válassza az **új lépés**lehetőséget.
 
    2. A keresőmezőbe írja be szűrőként az „e-mail küldése” kifejezést.
-   Az e-mail szolgáltató alapján válasszon egy e-mail-összekötőt.
+   Az e-mail-szolgáltató alapján válasszon ki egy e-mail-összekötőt.
 
-      Ha például személyes fiókkal rendelkezik, például @outlook.com vagy @hotmail.comválassza ki a Outlook.com összekötőt. 
-      Ha rendelkezik Gmail-fiókkal, válassza a Gmail-összekötőt. 
-      Ez a példa az Office 365 Outlookot használja. 
+      Ha például van egy személyes fiókja, például a @outlook.com vagy @hotmail.coma, válassza ki a Outlook.com-összekötőt. Ez a példa az Office 365 Outlook Connectort használja.
 
-   3. Válassza a következő műveletet: **E-mail küldése – <*e-mail szolgáltató* > **
+   3. Válassza ki ezt a műveletet: **E-mail küldése <*e-mail szolgáltatónak* > **
 
-      Példa:
+      Például:
 
-      ![Válassza az "E-mail küldése" művelet et az e-mail szolgáltatószámára](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-send-email-action.png)
+      ![Az "e-mail küldése" művelet kiválasztása az e-mail-szolgáltatóhoz](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-send-email-action.png)
 
 5. Ha a rendszer kéri, jelentkezzen be az e-mail-fiókjába. 
 
-6. Állítsa be a hozzáadott művelet tulajdonságait.
+6. Adja meg a hozzáadott művelet tulajdonságait.
 
    * A **Címzett** mezőben adja meg a címzett e-mail-címét. 
    Tesztelési célokra használhatja a saját e-mail-címét.
 
-   * A **Tárgy mezőben,** amikor megjelenik a dinamikus tartalomlista, jelölje be a **Partíció neve** mezőt.
+   * A **tulajdonos** mezőben a dinamikus tartalmak listájának megjelenésekor válassza a **partíció neve** mezőt.
 
-     ![A dinamikus tartalomlistában válassza a "Partíció neve" lehetőséget.](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
+     ![A dinamikus tartalom listából válassza a "partíció neve" lehetőséget.](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
 
-     Később a kötegküldőben megadhat egy egyedi partíciókulcsot, amely a célköteget logikai részhalmazokra osztja, ahol üzeneteket küldhet. 
-     Minden készlet rendelkezik egy egyedi számot, amely a kötegelt küldő logikai alkalmazás által generált. 
-     Ez a funkció lehetővé teszi, hogy egyetlen köteget használjon több részhalmazsal, és minden egyes részhalmazt a megadott névvel határozzon meg.
+     Később a Batch-feladóban megadhat egy egyedi partíciót, amely a cél köteget a logikai részhalmazokra osztja, ahol üzeneteket küldhet. 
+     Mindegyik készlethez tartozik egy egyedi szám, amelyet a Batch feladó logikai alkalmazás generál. 
+     Ez a funkció lehetővé teszi, hogy egyetlen köteget használjon több alkészlettel, és definiálja az egyes részhalmazokat az Ön által megadott névvel.
 
      > [!IMPORTANT]
-     > A partíció legfeljebb 5000 üzenetből vagy 80 MB-os korláttal rendelkezik. Ha bármelyik feltétel teljesül, a Logic Apps felszabadíthatja a köteget, még akkor is, ha a megadott kiadási feltétel nem teljesül.
+     > A partíciók 5 000 vagy 80 MB-os korláttal rendelkeznek. Ha bármelyik feltétel teljesül, Logic Apps a köteget is kiszabadíthatja, még akkor is, ha a megadott kiadási feltétel nem teljesül.
 
-   * A **Törzs mezőben,** amikor megjelenik a dinamikus tartalomlista, jelölje be az **Üzenetazonosító mezőt.** 
+   * A **törzs** mezőben, amikor megjelenik a dinamikus tartalom lista, válassza az **üzenet azonosítója** mezőt. 
 
-     A Logic Apps Designer automatikusan hozzáad egy "Minden" hurkot az e-mail küldése művelet körül, mert ez a művelet az előző művelet kimenetét gyűjteményként, nem pedig kötegként kezeli. 
+     A Logic Apps Designer automatikusan hozzáadja a "for each" hurkot az e-mail küldése művelethez, mert ez a művelet az előző művelet kimenetét kezeli gyűjteményként, nem pedig kötegként. 
 
-     ![A "Törzs" területen válassza az "Üzenetazonosító" lehetőséget.](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
+     ![A "Body" elemnél válassza az "üzenet azonosítója" lehetőséget.](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
-7.  Mentse a logikai alkalmazást. Most létrehozott egy kötegfogadót.
+7.  Mentse a logikai alkalmazást. Ezzel létrehozott egy batch-fogadót.
 
     ![A logikai alkalmazás mentése](./media/logic-apps-batch-process-send-receive-messages/save-batch-receiver-logic-app.png)
 
-8. Ha a Visual Studio-t használja, telepítse [a kötegelt vevő logikai alkalmazását az Azure-ba.](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure) Ellenkező esetben nem választhatja ki a kötegelt fogadót a kötegküldő létrehozásakor.
+8. Ha a Visual studiót használja, győződjön meg arról, hogy [üzembe helyezi a Batch-fogadó logikai alkalmazást az Azure-](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)ban. Ellenkező esetben a Batch-feladó létrehozásakor nem választhatja ki a Batch-fogadót.
 
 <a name="batch-sender"></a>
 
-## <a name="create-batch-sender"></a>Kötegküldő létrehozása
+## <a name="create-batch-sender"></a>Batch-feladó létrehozása
 
-Most hozzon létre egy vagy több kötegelt küldő logikai alkalmazásokat, amelyek üzeneteket küldenek a kötegelt fogadó logikai alkalmazásnak. Minden kötegküldőben megadhatja a kötegfogadót és a köteg nevét, az üzenet tartalmát és minden egyéb beállítást. Adott esetben megadhat egy egyedi partíciókulcsot, amely a köteget logikai részhalmazokba oszthatja az üzenetek ezzel a kulccsal történő gyűjtéséhez. 
+Most hozzon létre egy vagy több batch-küldő logikai alkalmazást, amely üzeneteket küld a Batch-fogadó logikai alkalmazásnak. Minden batch-feladóban meg kell adnia a Batch-fogadót és a köteg nevét, az üzenet tartalmát és az egyéb beállításokat. Megadhat egy egyedi partíciós kulcsot is, amellyel a köteget logikai részhalmazokra oszthatja, hogy üzeneteket gyűjtsön az adott kulccsal. 
 
-* Győződjön meg arról, hogy már [létrehozta a kötegfogadót,](#batch-receiver) így a kötegküldő létrehozásakor kiválaszthatja a meglévő kötegfogadót célkötegként. Bár a kötegelt fogadóknak nem kell semmit tudniuk a kötegelt feladókról, a kötegelt feladóknak tudniuk kell, hogy hová küldjenek üzeneteket. 
+* Győződjön meg arról, hogy már [létrehozta a Batch-fogadót](#batch-receiver) , így a Batch-feladó létrehozásakor kiválaszthatja a meglévő batch-fogadót célként megadott kötegként. Habár a Batch-fogadóknak semmit nem kell tudniuk a Batch-küldők számára, a kötegelt küldőknek tudniuk kell, hogy hová kell küldeniük az üzeneteket. 
 
-* Győződjön meg arról, hogy a kötegelt fogadó és a kötegelt feladó ugyanazt az Azure-régiót *és* az Azure-előfizetést osztja. Ha nem, akkor nem választhatja ki a kötegelt fogadót a kötegküldő létrehozásakor, mert azok nem láthatók egymás számára.
+* Győződjön meg arról, hogy a Batch-fogadó és a Batch-küldő ugyanazzal az Azure-régióval *és Azure-* előfizetéssel rendelkezik. Ha nem, akkor nem választhatja ki a Batch-fogadót a Batch-feladó létrehozásakor, mert azok nem láthatók egymás számára.
 
-1. Hozzon létre egy másik logikai alkalmazást ezzel a névvel: "BatchSender"
+1. Hozzon létre egy másik logikai alkalmazást a következő névvel: "BatchSender"
 
-   1. A keresőmezőbe írja be szűrőként az "ismétlődés" szót. 
-   Jelölje be ezt az eseményindítót: **Ismétlődés – Ütemezés**
+   1. A keresőmezőbe írja be a "Ismétlődés" kifejezést a szűrőként. 
+   Válassza ki ezt az eseményindítót: **Ismétlődés – ütemezése**
 
-      ![Adja hozzá az "Ismétlődés - Ütemezés" eseményindítót](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-sender.png)
+      ![Az "Ismétlődés ütemezése" eseményindító hozzáadása](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-sender.png)
 
-   2. Állítsa be a gyakoriságot és az időközt a küldő logikai alkalmazás percenkénti futtatásához.
+   2. Állítsa be a gyakoriságot és az intervallumot a küldő logikai alkalmazás percenkénti futtatásához.
 
-      ![Az ismétlődési esemény gyakoriságának és időközének beállítása](./media/logic-apps-batch-process-send-receive-messages/recurrence-trigger-batch-sender-details.png)
+      ![Ismétlődési eseményindító gyakoriságának és intervallumának megadása](./media/logic-apps-batch-process-send-receive-messages/recurrence-trigger-batch-sender-details.png)
 
-2. Új művelet hozzáadása kötegbe küldött üzenetekhez.
+2. Új művelet hozzáadása az üzenetek kötegbe való küldéséhez.
 
-   1. Az ismétlődési eseményindító alatt válassza az **Új lépés lehetőséget.**
+   1. Az ismétlődési eseményindító alatt válassza az **új lépés**lehetőséget.
 
-   2. A keresőmezőbe írja be szűrőként a "batch" szót. 
-   Válassza ki a **Műveletek** listát, majd válassza ki ezt a műveletet: **Válasszon egy logikai alkalmazások munkafolyamatot kötegelt eseményindítóval – Üzenetek küldése kötegelt**
+   2. A keresőmezőbe írja be szűrőként a "batch" kifejezést. 
+   Válassza ki a **műveletek** listát, majd válassza ki ezt a műveletet: **válasszon Logic apps munkafolyamatot batch triggerrel – üzenetek küldése kötegbe**
 
-      ![Válassza a "Logic Apps munkafolyamat kiválasztása kötegelt eseményindítóval" lehetőséget.](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
+      ![Válassza a "Logic Apps munkafolyamat kiválasztása a Batch triggerrel" lehetőséget.](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
 
-   3. Válassza ki a kötegelt fogadó logikai alkalmazást, amelyet korábban létrehozott.
+   3. Válassza ki a korábban létrehozott batch-fogadó logikai alkalmazást.
 
-      ![Válassza ki a "batch receiver" logikai alkalmazást](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch-receiver.png)
+      ![A "batch receiver" logikai alkalmazás kiválasztása](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch-receiver.png)
 
       > [!NOTE]
-      > A lista is megjeleníti a többi logikai alkalmazások, amelyek kötegelt eseményindítók. 
+      > A lista a Batch-eseményindítókkal rendelkező többi logikai alkalmazást is megjeleníti. 
       > 
-      > Ha a Visual Studio- t használja, és nem lát kiválasztható kötegelt fogadókat, ellenőrizze, hogy üzembe helyezte-e a kötegelt vevőt az Azure-ba. Ha még nem, [megtudhatja, hogyan telepítheti a kötegelt fogadó logikai alkalmazást az Azure-ba.](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure) 
+      > Ha a Visual studiót használja, és nem látja a kiválasztható batch-fogadókat, ellenőrizze, hogy üzembe helyezte-e a Batch-fogadót az Azure-ban. Ha még nem tette meg, Ismerje meg, hogyan [helyezheti üzembe a Batch-fogadó logikai alkalmazást az Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)-ban. 
 
-   4. Válassza ki ezt a műveletet: **Batch_messages - <a *kötegelt vevő* > **
+   4. Válassza ki ezt a műveletet: **Batch_messages-<*a-Batch-fogadót* > **
 
-      ![Válassza ki ezt a műveletet: "Batch_messages - <a logikai-alkalmazás>"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
+      ![Válassza ki ezt a műveletet: "Batch_messages-<a-Logic-app>"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
-3. A kötegelt feladó tulajdonságainak beállítása:
+3. A Batch-feladó tulajdonságainak beállítása:
 
    | Tulajdonság | Leírás | 
    |----------|-------------| 
-   | **Köteg neve** | A fogadó logikai alkalmazás által meghatározott kötegnév, amely ebben a példában a "TestBatch" <p>**Fontos:** A kötegnév futásidőben érvényesítve lesz, és meg kell egyeznie a fogadó logikai alkalmazás által megadott névvel. A kötegnév módosítása a kötegküldő sikertelensét okozza. | 
+   | **Köteg neve** | A fogadó logikai alkalmazás által definiált batch-név, amely ebben a példában a "TestBatch". <p>**Fontos**: a Batch neve futásidőben lesz érvényesítve, és meg kell egyeznie a fogadó logikai alkalmazás által megadott névvel. A naplólap nevének módosítása hatására a Batch-feladó meghibásodik. | 
    | **Üzenet tartalma** | Az elküldeni kívánt üzenet tartalma | 
    ||| 
 
-   Ebben a példában adja hozzá ezt a kifejezést, amely az aktuális dátumot és időt szúrja be a kötegbe küldött üzenettartalomba:
+   Ebben a példában adja hozzá ezt a kifejezést, amely beszúrja az aktuális dátumot és időpontot a kötegbe küldött üzenet tartalmába:
 
-   1. Kattintson az **Üzenet tartalma** mezőre. 
+   1. Kattintson az **üzenet tartalma** mezőre. 
 
-   2. Amikor megjelenik a dinamikus tartalomlista, válassza a **Kifejezés**lehetőséget. 
+   2. Amikor megjelenik a dinamikus tartalom lista, válassza a **kifejezés**lehetőséget. 
 
-   3. Írja be `utcnow()`a kifejezést , majd kattintson az **OK gombra.** 
+   3. Adja meg a `utcnow()`kifejezést, majd kattintson **az OK gombra**. 
 
-      ![Az "Üzenet tartalma" mezőbe válassza a "Kifejezés" lehetőséget, írja be az "utcnow()" ( "utcnow()" ( "UT") parancsot, és válassza az "OK" parancsot.](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
+      ![Az "üzenet tartalma" területen válassza a "kifejezés" értéket, írja be a "utcnow ()" kifejezést, majd kattintson az "OK" gombra.](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
-4. Most állítson be egy partíciót a köteghez. A "BatchReceiver" műveletben válassza a **Speciális beállítások megjelenítése** lehetőséget, és adja meg az alábbi tulajdonságokat:
+4. Most állítson be egy partíciót a köteghez. A "BatchReceiver" műveletnél válassza a **Speciális beállítások megjelenítése lehetőséget** , és állítsa be a következő tulajdonságokat:
 
    | Tulajdonság | Leírás | 
    |----------|-------------| 
-   | **Partíció neve** | Opcionális egyedi partíciókulcs, amelya célköteg logikai részhalmazokra osztásához és az adott kulcson alapuló üzenetek gyűjtéséhez használható | 
-   | **Üzenetazonosító** | Nem kötelező üzenetazonosító, amely üresen létrehozott globálisan egyedi azonosító (GUID) | 
+   | **Partíció neve** | Opcionális egyedi partíciós kulcs, amely a cél köteg logikai részhalmazokra osztására és az üzenetek az adott kulcs alapján történő összegyűjtésére használható. | 
+   | **Üzenet azonosítója** | Egy opcionális, globálisan egyedi azonosítót (GUID) tartalmazó üzenet, amely üres | 
    ||| 
 
-   Ebben a példában a **Partíció neve** mezőben adjon hozzá egy kifejezést, amely egy és öt közötti véletlen számot hoz létre. Hagyja üresen az **Üzenetazonosító mezőt.**
+   Ebben a példában a **partíció neve** mezőben adjon meg egy olyan kifejezést, amely véletlenszerűen generált számot hoz létre egy és öt között. Hagyja üresen az **üzenet-azonosító** mezőt.
    
-   1. Kattintson a **Partíció neve** mezőbe, hogy a dinamikus tartalomlista megjelenjen. 
+   1. Kattintson a **partíció neve** mezőre, hogy megjelenjen a dinamikus tartalmak listája. 
 
    2. A dinamikus tartalmak listájában válassza a **Kifejezés** lehetőséget.
    
-   3. Írja be `rand(1,6)`a kifejezést , majd kattintson az **OK gombra.**
+   3. Adja meg a `rand(1,6)`kifejezést, majd kattintson **az OK gombra**.
 
-      ![Partíció beállítása a célköteghez](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
+      ![Partíció beállítása a cél köteghez](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 
-      Ez **a rand** függvény egy és öt közötti számot hoz létre. 
-      Tehát ezt a köteget öt számozott partícióra osztja fel, amelyeket ez a kifejezés dinamikusan beállít.
+      Ez a **Rand** függvény egy számot hoz létre egy és öt között. 
+      Így a köteget öt számú partícióra osztja, amelyek ezt a kifejezést dinamikusan határozzák meg.
 
-5. Mentse a logikai alkalmazást. A feladó logikai alkalmazása most hasonlónak tűnik a következő példához:
+5. Mentse a logikai alkalmazást. A küldő logikai alkalmazás most az alábbi példához hasonlóan néz ki:
 
-   ![A feladó logikai alkalmazásának mentése](./media/logic-apps-batch-process-send-receive-messages/batch-sender-finished.png)
+   ![A küldő logikai alkalmazás mentése](./media/logic-apps-batch-process-send-receive-messages/batch-sender-finished.png)
 
 ## <a name="test-your-logic-apps"></a>A logikai alkalmazások tesztelése
 
-A kötegelési megoldás teszteléséhez hagyja futni a logikai alkalmazásokat néhány percig. Hamarosan elkezdi az e-maileket öt csoportban, mindegyik ugyanazzal a partíciós kulccsal.
+A batching-megoldás teszteléséhez a logikai alkalmazásait néhány percen belül el kell hagyni. Hamarosan megkezdi az e-mailek lekérését az öt, mind ugyanazzal a partíciós kulccsal rendelkező csoportokba.
 
-A kötegelt küldő logikai alkalmazás percenként fut, létrehoz egy és öt közötti véletlen számot, és ezt a generált számot használja a célköteg partíciókulcsaként, ahol az üzeneteket küldik. Minden alkalommal, amikor a köteg öt elem ugyanazzal a partíciókat kulccsal rendelkezik, a kötegelt fogadó logikai alkalmazás aktiválódik, és minden egyes üzenethez küld e-mailt.
+A Batch-küldő logikai alkalmazás percenként fut, és egy véletlenszerűen generált számot hoz létre egy és öt között, és ezt a generált számot használja a cél köteghez tartozó partíciós kulcsként, ahol az üzenetek küldése történik. Minden alkalommal, amikor a kötegnek öt eleme van ugyanazzal a partíciós kulccsal, a Batch-fogadó logikai alkalmazás elindít minden üzenetet, és e-mailt küld.
 
 > [!IMPORTANT]
-> Ha végzett a teszteléssel, győződjön meg arról, hogy letiltja a BatchSender logikai alkalmazást az üzenetek küldésének leállításához és a beérkező üzenetek túlterhelésének elkerüléséhez.
+> Ha végzett a teszteléssel, győződjön meg arról, hogy letiltotta a BatchSender logikai alkalmazást az üzenetek küldésének leállításához és a beérkezett fájlok túlterhelésének elkerüléséhez.
 
 ## <a name="next-steps"></a>További lépések
 
 * [EDI-üzenetek kötegelése és küldése](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
-* [Logic app-definíciókra építve a JSON használatával](../logic-apps/logic-apps-author-definitions.md)
-* [Kiszolgáló nélküli alkalmazás létrehozása a Visual Studióban az Azure Logic-alkalmazásokkal és -funkciókkal](../logic-apps/logic-apps-serverless-get-started-vs.md)
-* [A logikai alkalmazások kivételkezelése és hibanaplózása](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [A Logic app-definíciók létrehozása JSON használatával](../logic-apps/logic-apps-author-definitions.md)
+* [Kiszolgáló nélküli alkalmazás létrehozása a Visual Studióban Azure Logic Apps és függvények](../logic-apps/logic-apps-serverless-get-started-vs.md)
+* [Kivételek és hibák naplózása a Logic apps esetében](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
