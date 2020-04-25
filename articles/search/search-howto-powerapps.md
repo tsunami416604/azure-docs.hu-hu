@@ -1,180 +1,265 @@
 ---
-title: Az Azure Cognitive Search lekérdezése a Power Apps alkalmazásból
+title: 'Oktatóanyag: Power apps-lekérdezés'
 titleSuffix: Azure Cognitive Search
-description: Lépésről lépésre bemutatja, hogyan hozhat létre egyéni összekötőt a Cognitive Search szolgáltatáshoz, és hogyan jelenítheti meg azt egy Power Appból
+description: Részletes útmutató az Azure Cognitive Search indexhez csatlakozó, lekérdezések küldéséhez és az eredmények megjelenítéséhez kapcsolódó Power apps létrehozásához.
 author: luiscabrer
 manager: eladz
 ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: c246f8652227a5ad2c0798880e530d6039cdeea8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.topic: tutorial
+ms.date: 04/25/2020
+ms.openlocfilehash: eafd0ced64567ec7b51ff0f8aac19668343867ea
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385112"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129751"
 ---
-# <a name="how-to-query-a-cognitive-search-index-from-power-apps"></a>Kognitív keresési index lekérdezése a Power Apps alkalmazásból
+# <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Oktatóanyag: Cognitive Search index lekérdezése a Power Appsből
 
-Ez a dokumentum bemutatja, hogyan hozhat létre egyéni Power Apps-összekötőt, hogy keresési eredményeket olvashasson le a keresési indexből. Azt is bemutatja, hogyan adhat ki keresési lekérdezést, és hogyan jelenítheti meg az eredményeket egy Power Appból. 
+Kihasználhatja a Power apps gyors alkalmazás-fejlesztési környezetét, hogy egyéni alkalmazást hozzon létre az Azure Cognitive Search kereshető tartalmához.
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+
+> [!div class="checklist"]
+> * Kapcsolódás az Azure Cognitive Searchhoz
+> * Lekérdezési kérelem beállítása
+> * Eredmények megjelenítése vászon alkalmazásban
+
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt nyisson meg egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
-*    A Power Apps-fiókhoz való hozzáférés egyéni összekötők létrehozásának lehetőségével.
-*    Feltételezzük, hogy már létrehozott egy Azure Search Indexet.
 
-## <a name="create-a-custom-connector-to-query-azure-search"></a>Egyéni összekötő létrehozása az Azure Search lekérdezéséhez
+* [Power apps-fiók](http://make.powerapps.com)
 
-Két fő lépés, hogy egy PowerApp, amely az Azure Cognitive Search eredményeit jeleníti meg. Először hozzon létre egy összekötőt, amely lekérdezheti a keresési indexet. A [következő szakaszban](#visualize-results-from-the-custom-connector) frissítjük a Power Apps-alkalmazást, hogy megjelenítsük az összekötő által visszaadott eredményeket.
+* [Hotelek – minta index](search-get-started-portal.md)
 
-1. Nyissa meg [a make.powerapps.com](http://make.powerapps.com) és **a Bejelentkezés**t.
+* [Lekérdezési API-kulcs](search-security-api-keys.md#find-existing-keys)
 
-1. **Adategyéni** > **összekötők** keresése
+## <a name="1---create-a-custom-connector"></a>1 – egyéni összekötő létrehozása
+
+A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létrehoz egy egyéni összekötőt, amely a felhőben található keresési indexhez csatlakozik.
+
+1. [Jelentkezzen be](http://make.powerapps.com) a Power Apps szolgáltatásba.
+
+1. A bal **oldalon bontsa ki** > az**Egyéni adatösszekötők**elemet.
  
     :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="Egyéni összekötő menü" border="true":::
 
-1. Kattintson **a + Új egyéni összekötő** elemre, majd válassza a **Létrehozás üres ből**lehetőséget.
+1. Válassza az **+ új egyéni összekötő**lehetőséget, majd válassza **a létrehozás üresből**lehetőséget.
 
     :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Létrehozás üres menüből" border="true":::
 
-1. Adjon nevet az egyéni összekötőnek. (azaz *az AzureSearchQuery),* majd kattintson a **Folytatás gombra.** Ekkor megjelenik egy varázsló az új összekötő létrehozásához.
+1. Adja meg az egyéni összekötő nevét (például *AzureSearchQuery*), majd kattintson a Continue ( **Folytatás**) gombra.
 
-1. Adja meg az adatokat az általános oldalon.
+1. Adja meg az Általános lapon található adatokat:
 
-    - Ikon háttérszíne (például #007ee5)
-    - Leírás (például "Az Azure Cognitive Search összekötője")
-    - A Gazdagépben meg kell adnia a keresési `<yourservicename>.search.windows.net`szolgáltatás URL-címét (például)
-    - Az Alap URL-címhez egyszerűen írja be a "/"
-    
+   * Ikon háttérszíne (például #007ee5)
+   * Leírás (például "összekötő az Azure Cognitive Search")
+   * A gazdagépen meg kell adnia a keresési szolgáltatás URL-címét (például `<yourservicename>.search.windows.net`).
+   * Az alap URL-cím mezőben egyszerűen írja be a "/" értéket
+
     :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Általános tájékoztatási párbeszéd" border="true":::
 
-1. A Biztonsági lapon állítsa be az *API-kulcsot* **hitelesítési típusként,** állítsa be a paramétercímkét, a paraméternév mezőket pedig *api-kulcsként.* A **Paraméter helye**területen válassza a *Fejléc* lehetőséget az alábbi módon.
- 
-    :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="Hitelesítéstípus beállítás" border="true":::
+1. A biztonság lapon állítsa be az *API-kulcsot* **hitelesítési típusként**, állítsa a paraméter címkéjét és a paraméter nevét az *API-Key*értékre. A **paraméter helye**mezőben válassza a *fejléc* lehetőséget az alább látható módon.
 
-1. A Definíciók lapon válassza a **+ Új művelet** lehetőséget, ha olyan műveletet szeretne létrehozni, amely lekérdezi az indexet. Adja meg az összegzés "Lekérdezés" értékét és a műveletazonosító nevét. Írjon be egy olyan leírást, mint *"Lekérdezések a keresési index"*.
- 
-    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Új cselekvési lehetőségek" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="Hitelesítés típusa beállítás" border="true":::
 
+1. A definíciók lapon válassza az **+ új művelet** lehetőséget egy olyan művelet létrehozásához, amely lekérdezi az indexet. Adja meg a "Query" értéket az összegzéshez, valamint a művelet AZONOSÍTÓjának nevét. Adjon meg egy leírást, például *"a keresési index lekérdezése" kifejezést*.
 
-1. A paraméterek és a fejlécek meghatározásához nyomja meg a **+ Importálás mintából** gombot. Ezután definiálja a lekérdezési kérelmet.  
+    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Új művelet beállításai" border="true":::
 
-    * Az ige kijelölése`GET`
-    * Az URL-címhez adjon meg egy mintalekérdezést a keresési indexhez, például:
-       
-    >https://yoursearchservicename.search.windows.net/indexes/yourindexname/docs?search=*&api-version=2019-05-06-Preview
-    
+1. Görgessen le. A kérelmek területen válassza a **+ Importálás mintából** gombot a keresési szolgáltatás lekérdezési kérelmének konfigurálásához:
 
-    **A Power Apps** a szintaxissegítségével bontja ki a paramétereket a lekérdezésből. Figyelje meg, hogy kifejezetten meghatároztuk a keresési mezőt. 
+   * Válassza ki a műveletet`GET`
 
-    :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Importálás mintából" border="false":::
+   * Az URL-cím mezőben adja meg a keresési index mintájának`search=*` lekérdezését (az `$select=` összes dokumentum visszaadása lehetővé teszi a mezők kiválasztását). Az API-verziót kötelező megadni. Teljesen meg van adva egy URL-cím, amely a következőhöz hasonló lehet:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2019-05-06`
 
-1.  Kattintson **az Importálás gombra** a Kérés párbeszédpanel automatikus előzetes kitöltéséhez.
+   * A fejlécek mezőbe `Content-Type`írja be a következőt:. 
 
-    :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Importálás mintapárbeszédből" border="false":::
+     A **Power apps** a szintaxis használatával Kinyeri a paramétereket a lekérdezésből. Figyelje meg, hogy explicit módon definiálta a keresőmezőt. 
 
+       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Importálás mintából" border="true":::
 
-1. A paraméter metaadatainak beállítása a **...** gombra kattintva az egyes paraméterek mellett.
+1. A kérelem automatikus kitöltéséhez kattintson az **Importálás** gombra. A paraméter metaadatainak beállításához kattintson a **.** .. a paraméterek melletti szimbólum. A **vissza** gombra kattintva térjen vissza a kérelem oldalára az egyes paraméterek frissítése után.
 
-    - *Keresés :* `*` Állítsa be **az alapértelmezett értéket**, állítsa be a **szükséges** *hamis* értéket, és állítsa a **láthatóságot** *nincs*értékre. 
+   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Importálás a minta-párbeszédből" border="true":::
+
+1. *Keresés*: `*` **alapértelmezett értékként**állítsa be a **kötelező** értéket, és állítsa a *nincs* *értékre* a **láthatóságot** . 
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Keresési paraméter metaadatai" border="true":::
 
-    - *Api-version*esetén: `2019-05-06-Preview` Állítsa be **az alapértelmezett értéket,** állítsa *True*a **láthatóságot** belsőként, és állítsa true **értékre.**  
+1. A *Select*(kiválasztás `HotelName,Description,Address/City` ) beállításnál állítsa be az alapértelmezett értéket **, állítsa a** *false (hamis*) **értékre**, **és állítsa a** *nincs*értékre.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Verzióparaméter metaadatai" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Version paraméter metaadatai" border="true":::
 
-    - Hasonlóképpen, az *api-key*, állítsa be, ha **szükséges**, *a belső* **láthatóság**. Adja meg a keresési szolgáltatás API-kulcsát **alapértelmezett értékként.**
-    
-    Miután elvégzette ezeket a módosításokat, váltson a **Swagger Szerkesztő** nézetre. A paraméterek szakaszban a következő konfigurációt kell látnia:    
+1. Az *API-Version*: beállítás `2019-05-06` értékeként **állítsa be az** **alapértelmezett értéket**, állítsa *igaz*értékre, és *belsőként*állítsa be a **láthatóságot** .  
 
+    :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Version paraméter metaadatai" border="true":::
+
+1. A *Content-Type*: értéknél `application/json`állítsa be a következőt:.
+
+1. A módosítások végrehajtása után váltson át a **hencegő szerkesztő** nézetre. A parameters (paraméterek) szakaszban a következő konfigurációnak kell megjelennie:
+
+    ```JSON
+    parameters:
+      - {name: search, in: query, required: false, type: string, default: '*'}
+      - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
+      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+        x-ms-visibility: internal}
+      - {name: Content-Type, in: header, required: false, type: string}
     ```
-          parameters:
-          - {name: search, in: query, required: false, type: string, default: '*'}
-          - {name: api-version, in: query, required: true, type: string, default: 2019-05-06-Preview,
-            x-ms-visibility: internal}
-          - {name: api-key, in: header, required: true, type: string, default: YOURKEYGOESHERE,
-            x-ms-visibility: internal}
-    ```
 
-1. A Válasz csoportban kattintson az **"Alapértelmezett válasz hozzáadása"** gombra. Ez azért fontos, mert segít a **Power Apps-nek** megérteni a válasz sémáját. Mintaválasz beillesztése.
+1. Térjen vissza a **3. Kérjen** lépést, és görgessen le a válasz szakaszhoz. Kattintson az **"alapértelmezett válasz hozzáadása"** lehetőségre. Ez azért fontos, mert segíteni fog a Power apps számára a válasz sémájának megismerésében. 
+
+1. Egy minta válasz beillesztése. A minta válaszok rögzítésének egyszerű módja a Azure Portal keresési ablaka. A Search Explorerben ugyanazt a lekérdezést kell megadnia, mint a kérelemhez, de vegye fel **$Top = 2** értéket, hogy csak két dokumentumra korlátozza az `search=*&$select=HotelName,Description,Address/City&$top=2`eredményeket::. 
+
+   A Power apps szolgáltatásnak csak néhány eredményre van szüksége a séma észleléséhez.
+
+    ```JSON
+    {
+        "@odata.context": "https://mydemo.search.windows.net/indexes('hotels-sample-index')/$metadata#docs(*)",
+        "value": [
+            {
+                "@search.score": 1,
+                "HotelName": "Arcadia Resort & Restaurant",
+                "Description": "The largest year-round resort in the area offering more of everything for your vacation – at the best value!  What can you enjoy while at the resort, aside from the mile-long sandy beaches of the lake? Check out our activities sure to excite both young and young-at-heart guests. We have it all, including being named “Property of the Year” and a “Top Ten Resort” by top publications.",
+                "Address": {
+                    "City": "Seattle"
+                }
+            },
+            {
+                "@search.score": 1,
+                "HotelName": "Travel Resort",
+                "Description": "The Best Gaming Resort in the area.  With elegant rooms & suites, pool, cabanas, spa, brewery & world-class gaming.  This is the best place to play, stay & dine.",
+                "Address": {
+                    "City": "Albuquerque"
+                }
+            }
+        ]
+    }
+    ```
 
     > [!TIP] 
-    > A Beírható JSON-válasznak van egy karakterkorlátja, ezért a beillesztés előtt egyszerűsítheti a JSON-t. A válasz fontos szempontja. A mintaválasz tényleges értékei kevésbé fontosak, és egyszerűsíthetők a karakterszám csökkentése érdekében.
-    
+    > A JSON-válasz megadható, ezért érdemes lehet leegyszerűsíteni a JSON-t a beillesztés előtt. A válasz sémája és formátuma fontosabb, mint maga az érték. A Description (Leírás) mező például csak az első mondatra egyszerűsített.
 
-1.    A tesztelés előtt kattintson az **összekötő létrehozása** gombra a képernyő jobb felső részén.
+1. Kattintson a jobb felső sarokban található **összekötő létrehozása** gombra.
 
-1.  A Teszt lapon kattintson a **+ Új kapcsolat gombra,** és adja meg a keresési szolgáltatás lekérdezési kulcsát az *api-kulcs*értékeként.
+## <a name="2---test-the-connection"></a>2 – a kapcsolatok tesztelése
 
-    Ezzel a lépéssel a varázslóból ki, majd a Kapcsolatok lapra léphet. Előfordulhat, hogy vissza szeretne menni az Egyéni kapcsolatok szerkesztőbe, hogy ténylegesen tesztelje a kapcsolatot. Ugrás **az Egyéni összekötő** > Válassza ki az újonnan létrehozott összekötő > *...* > **Tulajdonságok** > megtekintése**Szerkesztés** > **4. Tesztelje,** hogy visszatérjen a tesztoldalra.
+Az összekötő első létrehozásakor újra meg kell nyitni az egyéni összekötők listájáról, hogy tesztelni lehessen. Később, ha további frissítéseket végez, tesztelheti a varázslót a varázslóból.
 
-1.    Most kattintson **a Teszt művelet** elemre, és győződjön meg arról, hogy az indexből kap eredményeket. Ha sikeres volt, 200-as állapotot kell látnia, és a válasz törzsében a JSON-t kell látnia, amely leírja a keresési eredményeket.
+Ehhez a feladathoz szüksége lesz egy [lekérdezési API-kulcsra](search-security-api-keys.md#find-existing-keys) . Minden alkalommal, amikor létrejön egy kapcsolat, függetlenül attól, hogy egy teszt futtatása vagy belefoglalása egy alkalmazásba történik, az összekötőnek szüksége van az Azure Cognitive Searchhoz való csatlakozáshoz használt lekérdezési API-kulcsra.
 
+1. A bal szélen kattintson az **Egyéni összekötők**lehetőségre.
 
+1. Keresse meg az összekötőt név szerint (ebben az oktatóanyagban a "AzureSearchQuery").
 
+1. Válassza ki az összekötőt, bontsa ki a műveletek listát, és válassza a **tulajdonságok megtekintése**lehetőséget.
 
-## <a name="visualize-results-from-the-custom-connector"></a>Az egyéni összekötő ből származó eredmények megjelenítése
-A bemutató célja nem az, hogy megmutassa, hogyan hozhat létre puccos felhasználói élményt a power alkalmazásoksegítségével, így a felhasználói felület elrendezése minimalista lesz. Hozzunk létre egy PowerApp-ot keresőmezővel, egy keresőgombbal, és jelenítsük meg az eredményeket egy galériavezérlőben.  A PowerApp csatlakozik a nemrég létrehozott egyéni összekötőhöz, hogy levegye az adatokat az Azure Searchből.
+    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="Tulajdonságok megtekintése" border="true":::
 
-1. Hozzon létre új Power Appot. Nyissa meg az **Alkalmazások szakaszt,** kattintson a **+ Új alkalmazás**elemre, és válassza a **Vászon**lehetőséget.
+1. Válassza a **Szerkesztés** lehetőséget a jobb felső sarokban.
+
+1. Válassza a **4 lehetőséget. Tesztelje** a teszt oldal megnyitását.
+
+1. A tesztelési művelet menüben kattintson az **+ új kapcsolatok**elemre.
+
+1. Adja meg a lekérdezési API-kulcsot. Ez egy Azure Cognitive Search-lekérdezés, amely csak olvasási hozzáférést biztosít az indexekhez. A kulcsot a Azure Portalban [találja](search-security-api-keys.md#find-existing-keys) . 
+
+1. A műveletek területen kattintson a **tesztelési művelet** gombra. Ha sikeres, akkor egy 200 állapotot kell megjelennie, és a válasz törzsében meg kell jelennie a JSON-nek, amely leírja a keresési eredményeket.
+
+    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="JSON-válasz" border="true":::
+
+## <a name="3---visualize-results"></a>3 – eredmények megjelenítése
+
+Ebben a lépésben hozzon létre egy energiagazdálkodási alkalmazást egy keresőmező, egy keresési gomb és egy megjelenített területen az eredményekhez. A Power app a legutóbb létrehozott egyéni összekötőhöz csatlakozik, hogy lekérje az Azure Searchból származó adatok beolvasását.
+
+1. A bal oldalon bontsa ki az **alkalmazások** > **+ új alkalmazás** > **vászon**elemet.
 
     :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Vászon alkalmazás létrehozása" border="true":::
 
-1. Válassza ki a kívánt alkalmazás típusát. Ehhez a bemutatóhoz hozzon létre egy **üres alkalmazást** a **telefon elrendezésével**. Megjelenik a **Power Apps Studio.**
+1. Válassza ki az alkalmazás típusát. Ebben az oktatóanyagban hozzon létre egy **üres alkalmazást** a **telefonos elrendezéssel**. Ekkor megjelenik a **Power apps Studio** .
 
-1. Miután a stúdióban, válassza ki az **Adatforrások** fülre, és kattintson az új összekötő az imént létrehozott. A mi esetünkben, ez az úgynevezett *AzureSearchQuery*. Kattintson **a Kapcsolat hozzáadása gombra.**
+1. A Studióban válassza az **adatforrások** fület, majd kattintson az imént létrehozott új összekötőre. A mi esetünkben a *AzureSearchQuery*nevezzük. Kattintson **a kapcsolatok hozzáadása**lehetőségre.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="összekötő csatlakoztatása" border="true":::
+   Adja meg a lekérdezési API-kulcsot.
 
-    Most *az AzureSearchQuery* egy olyan adatforrás, amely az alkalmazásból használható.
-    
-1. Keresse meg a **Beszúrás lapot,** hogy néhány vezérlőt is hozzáadhassunk az űrlapunkhoz.
+    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="összekötő összekötése" border="true":::
 
-    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Vezérlők beszúrása" border="true":::
+    Most a *AzureSearchQuery* olyan adatforrás, amely elérhető az alkalmazásból.
 
-1.  Szúrja be a következő elemeket:
-    -   "Lekérdezés:" értékkel rendelkező szöveges címke
-    -   Szövegbeviteli elem (nevezzük *txtQuery-nek*, alapértelmezett érték: "*")
-    -   Egy gomb a "Keresés" szöveggel 
-    -   A Függőleges Galéria nevű (nevezzük *galleryResults*)
-    
-    Az űrlapnak valahogy így kell kinéznie:
+1. A **Beszúrás lapon**adjon hozzá néhány vezérlőt a vászonhoz.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Vezérlők elrendezése" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Vezérlőelemek beszúrása" border="true":::
 
-1. Ha azt szeretné, hogy a **Keresés gomb** lekérdezést adjon ki, jelölje ki a gombot, és illessze be a következő műveletet **az OnSelect művelethez:**
+1. Szúrja be a következő elemeket:
+
+   * Egy "Query:" értéket tartalmazó szöveges címke
+   * Szövegbeviteli elem (hívja meg a *txtQuery*, alapértelmezett érték: "*")
+   * A "keresés" szöveget tartalmazó gomb 
+   * Egy függőleges katalógus (meghívása *galleryResults*)
+
+    A vászonnak a következőhöz hasonlóan kell kinéznie:
+
+    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Vezérlőelemek elrendezése" border="true":::
+
+1. Ha szeretné, hogy a **Keresés gomb** egy lekérdezést adjon ki, illessze be a következő műveletet a **OnSelect**:
 
     ```
     If(!IsBlank(txtQuery.Text),
-        ClearCollect(azResult, AzureSearchQuery.Get({search: txtQuery.Text}).value))
+        ClearCollect(azResult, AzureSearchQuery.Query({search: txtQuery.Text}).value))
     ```
 
-    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Gomb a kijelöléshez" border="true":::
- 
-    Ez a művelet hatására a gomb egy *új, azResult* nevű gyűjteményt frissít a keresési lekérdezés eredményével, a *txtQuery* szövegmezőben lévő szöveget használva lekérdezési kifejezésként.
-    
-1.  Következő lépésként összekapcsoljuk az általunk létrehozott függőleges galériát az *azResult* gyűjteményével. Jelölje ki a gyűjteményvezérlőt, és hajtsa végre a következő műveleteket a tulajdonságok ablaktábláján.
+   Az alábbi képernyőfelvételen a **OnSelect** művelet szerkesztőléc látható.
 
-    -  **Állítsa a DataSource-t** *azResult beállításra.*
-    
-    -  Válassza ki **azt az elrendezést,** amely az indexben lévő adatok típusa alapján működik. Ebben az esetben a *cím,* a felirat és a test elrendezését használtuk.
-    
-    -  **A Mezők szerkesztése**és a megjelenítendő mezők kiválasztása.
+       :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Button OnSelect" border="true":::
 
-    Mivel az összekötő definiálásakor mintaeredményt adtunk meg, az alkalmazás tisztában van az indexben elérhető mezőkkel.
+   Ez a művelet azt eredményezi, hogy a gomb egy új, *azResult* nevű gyűjteményt fog frissíteni a keresési lekérdezés eredményével, és a *txtQuery* szövegmezőben lévő szöveget használja lekérdezési kifejezésként.
+
+   > [!NOTE]
+   > Ha a képlet szintaktikai hiba jelenik meg, akkor a "The Function" ClearCollect "függvényben érvénytelen függvények szerepelnek":
+   > 
+   > * Először győződjön meg arról, hogy az összekötő hivatkozása helyes. Törölje az összekötő nevét, és kezdje el beírni az összekötő nevét. Az IntelliSense a megfelelő összekötőt és műveletet javasolja.
+   > 
+   > * Ha a hiba továbbra is fennáll, törölje, majd hozza létre újra az összekötőt. Ha egy összekötő több példánya is van, előfordulhat, hogy az alkalmazás nem megfelelő.
+   > 
+
+1. Csatolja a függőleges katalógus vezérlőelemet az előző lépés végrehajtásakor létrehozott *azResult* -gyűjteményhez. 
+
+   Válassza ki a katalógus vezérlőelemet, és hajtsa végre a következő műveleteket a Tulajdonságok ablaktáblán.
+
+   * **Adatforrás** beállítása *azResult*.
+   * Válasszon olyan **elrendezést** , amely az indexben található adattípuson alapul. Ebben az esetben a *címet, az alcím és a szövegtörzs* elrendezését használtuk.
+   * **Szerkessze a mezőket**, és válassza ki a megjeleníteni kívánt mezőket.
+
+    Mivel az összekötő meghatározásakor a minta eredményét adta meg, az alkalmazás tisztában van az indexben elérhető mezőkkel.
     
     :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="Katalógusmezők" border="true":::   
  
-1.  Nyomja **le az F5 billentyűt** az alkalmazás előnézetének megtekintéséhez.  
+1. Nyomja le az **F5** billentyűt az alkalmazás villámnézetének megtekintéséhez.  
 
-    Ne feledje, hogy a mezők számított értékekre állíthatók be.      
-    A példában a *"Kép, cím és felirat"* elrendezés t, valamint a *Kép* függvény tanmenetének összefűzéseként `"https://mystore.blob.core.windows.net/multilang/" & ThisItem.metadata_storage_name`az adatok és a fájlnév (például ) beállításával az alábbi eredményt adja.
+    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="A kész alkalmazás" border="true":::    
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="A kész alkalmazás" border="true":::        
+<!--     Remember that the fields can be set to calculated values.
+
+    For the example, setting using the *"Image, Title and Subtitle"* layout and specifying the *Image* function as the concatenation of the root path for the data and the file name (for instance, `"https://mystore.blob.core.windows.net/multilang/" & ThisItem.metadata_storage_name`) will produce the result below.
+
+    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Final app" border="true":::         -->
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+
+A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
+
+Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ és online oktatás a [Power Apps tanulási katalógusában.](https://docs.microsoft.com/powerapps/learning-catalog/get-started)
+A Power apps lehetővé teszi az egyéni alkalmazások gyors alkalmazásának fejlesztését. Most, hogy már tudja, hogyan csatlakozhat egy keresési indexhez, többet tudhat meg arról, hogyan hozhat létre Rich vizualizációs élményt egy egyéni Power App-alkalmazásban.
+
+> [!div class="nextstepaction"]
+> [Power apps learning-katalógus](https://docs.microsoft.com/powerapps/learning-catalog/get-started)
 

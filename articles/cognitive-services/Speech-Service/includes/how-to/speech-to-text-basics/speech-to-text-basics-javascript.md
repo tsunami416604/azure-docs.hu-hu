@@ -4,28 +4,28 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: b11194640c4d049c90f85974022908dce6b4fd79
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2d6e53f8a69a3e214d7d4621e899fd2e5394c7f2
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399815"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131636"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy rendelkezik egy Azure-fiók és a Speech szolgáltatás-előfizetés. Ha nem rendelkezik fiókkal és előfizetéssel, [próbálja ki ingyen a Beszédszolgáltatást.](../../../get-started.md)
+Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-előfizetéssel. Ha nem rendelkezik fiókkal és előfizetéssel, [próbálja ki ingyenesen a Speech szolgáltatást](../../../get-started.md).
 
-## <a name="install-the-speech-sdk"></a>A beszédfelismerési SDK telepítése
+## <a name="install-the-speech-sdk"></a>A Speech SDK telepítése
 
-Mielőtt bármit megtehetne, telepítenie kell a <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript Speech <span class="docon docon-navigate-external x-hidden-focus"> </span>SDK-t. </a> A platformtól függően kövesse az alábbi utasításokat:
+Mielőtt bármit elvégezhet, telepítenie kell a <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript SPEECH SDK <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>-t. A platformtól függően kövesse az alábbi utasításokat:
 
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js<span 
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node. js<span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webböngésző<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
-Ezenkívül a célkörnyezettől függően használja az alábbiak egyikét:
+Emellett a cél környezettől függően a következők egyikét használja:
 
-# <a name="import"></a>[Importálása](#tab/import)
+# <a name="import"></a>[importálása](#tab/import)
 
 ```javascript
 import {
@@ -39,45 +39,45 @@ import {
 } from "microsoft-cognitiveservices-speech-sdk";
 ```
 
-További információ: `import` <a href="https://javascript.info/import-export" target="_blank">export and <span class="docon docon-navigate-external x-hidden-focus"> </span>import </a>.
+További információ `import`: <a href="https://javascript.info/import-export" target="_blank">Exportálás és importálás <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
-# <a name="require"></a>[Igényel](#tab/require)
+# <a name="require"></a>[igényel](#tab/require)
 
 ```javascript
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-További információ: `require` <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+További információ `require`: <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">Mi szükséges? <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 
 # <a name="script"></a>[szkriptet.](#tab/script)
 
-Töltse le és bontsa ki a <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript Speech <span class="docon docon-navigate-external x-hidden-focus"></span> SDK</a> *microsoft.cognitiveservices.speech.bundle.js* fájlt, és helyezze el a HTML-fájl számára elérhető mappában.
+Töltse le és csomagolja ki a <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> </a> *Microsoft. cognitiveservices. Speech. Bundle. js* fájlt, és helyezze el a HTML-fájl számára elérhető mappába.
 
 ```html
 <script src="microsoft.cognitiveservices.speech.bundle.js"></script>;
 ```
 
 > [!TIP]
-> Ha webböngészőt céloz meg, és `<script>` a címkét használja; az `sdk` előtag nem szükséges. Az `sdk` előtag a `require` modul elnevezésére használt alias.
+> Ha webböngészőt céloz meg, és használja a `<script>` címkét; az `sdk` előtag nem szükséges. Az `sdk` előtag a `require` modul elnevezésére szolgáló alias.
 
 ---
 
-## <a name="create-a-speech-configuration"></a>Beszédkonfiguráció létrehozása
+## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-A beszédfelismerési szolgáltatás hívásához létre kell hoznia [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)egy . Ez az osztály az előfizetéssel kapcsolatos információkat is tartalmaz, például a kulcsot és a kapcsolódó régiót, végpontot, állomást vagy engedélyezési jogkivonatot.
+A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest). Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
 
 > [!NOTE]
-> Függetlenül attól, hogy beszédfelismerést, beszédszintetizálást, fordítást vagy szándékfelismerést végez, mindig létrehoz egy konfigurációt.
+> Függetlenül attól, hogy elvégezte-e a beszédfelismerést, a beszédfelismerést, a fordítást vagy a szándék felismerését, mindig hozzon létre egy konfigurációt.
 
-Többféleképpen is inicializálhatja a következőket: [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)
+Az alábbiakat többféleképpen lehet inicializálni [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest):
 
-* Előfizetéssel: adja át a kulcsot és a társított régióban.
-* Végpont: adja át a beszédszolgáltatás végpont. A kulcs vagy engedélyezési jogkivonat nem kötelező.
-* Állomással: adja át az állomáscímet. A kulcs vagy engedélyezési jogkivonat nem kötelező.
-* Egy engedélyezési jogkivonattal: adja át egy engedélyezési jogkivonatot és a társított régiót.
+* Előfizetéssel: adjon egy kulcsot és a hozzá tartozó régiót.
+* Egy végponttal: pass a Speech Service-végponton. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
+* Gazdagép esetén: adjon meg egy gazdagép-címeket. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
+* Engedélyezési jogkivonattal: adjon meg egy engedélyezési jogkivonatot és a hozzá tartozó régiót.
 
-Vessünk egy pillantást arra, [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) hogyan jön létre az a egy kulcs és régió használatával. A [régióazonosító](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) megkereséséhez tekintse meg a régiótámogatási lapot.
+Nézzük meg [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) , hogyan jön létre egy kulcs és régió használatával. A régió azonosítójának megkereséséhez tekintse meg a [régiók támogatása](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) lapot.
 
 ```javascript
 const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -85,46 +85,46 @@ const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourS
 
 ## <a name="initialize-a-recognizer"></a>Felismerő inicializálása
 
-Miután létrehozott egy [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)t, a következő lépés [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)a . inicializálása. Amikor inicializál egy, [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)akkor át `speechConfig`kell adnia a . Ez biztosítja a hitelesítő adatokat, amelyek a beszédszolgáltatás érvényesítéséhez szükséges.
+Miután létrehozta a [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)-t, a következő lépés a inicializálása [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest). A [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)inicializálásakor át kell adnia a `speechConfig`következőt:. Ez biztosítja azokat a hitelesítő adatokat, amelyeknek a beszédfelismerési szolgáltatásnak a kérelmét ellenőriznie kell.
 
-Ha az eszköz alapértelmezett mikrofonjával ismeri fel a beszédet, [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) a következőket kell tennie:
+Ha az eszköz alapértelmezett mikrofonjának használatával ismeri fel a beszédet, a [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) következőképpen kell kinéznie:
 
 ```javascript
 const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
-Ha meg szeretné adni a hangbemeneti eszközt, akkor [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) létre `audioConfig` kell hoznia [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)egy és meg kell adnia a paramétert a inicializálásakor.
+Ha meg szeretné adni a hangbemeneti eszközt, létre kell hoznia egy [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) -t, és meg `audioConfig` kell adnia a paramétert [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)a inicializálásakor.
 
 > [!TIP]
-> [További információ arról, hogyan szerezheti be a hangbemeneti eszköz eszközazonosítóját.](../../../how-to-select-audio-input-devices.md)
+> [Ismerje meg, hogyan kérheti le az eszköz azonosítóját a hangbemeneti eszközhöz](../../../how-to-select-audio-input-devices.md).
 
-Hivatkozzon `AudioConfig` az objektumra az alábbiak szerint:
+Az objektumra a `AudioConfig` következőképpen hivatkozhat:
 
 ```javascript
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
-const speechConfig = SpeechConfig.fromSubscription(speechConfig, audioConfig);
+const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
-Ha mikrofon használata helyett hangfájlt szeretne biztosítani, akkor is meg `audioConfig`kell adnia egy . Ez azonban csak akkor végezhető el, ha **a Node.js programot célozza** meg, és amikor [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest)hívást `fromDefaultMicrophoneInput`helyett létrehoz egy , meg fogja hívni `fromWavFileOutput` és átadni a `filename` paramétert.
+Ha mikrofon használata helyett hangfájlt szeretne biztosítani, akkor továbbra is meg kell adnia a következőt: `audioConfig`. Ez azonban csak akkor hajtható végre, ha a **Node. js** -t célozza meg [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest), és a hívása `fromDefaultMicrophoneInput`helyett a `fromWavFileOutput` `filename` paramétert hívja meg és adja át.
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
-const speechConfig = SpeechConfig.fromSubscription(speechConfig, audioConfig);
+const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
 ## <a name="recognize-speech"></a>Beszéd felismerése
 
-A [C#](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) beszédsdk a beszédfelismerési SDK-osztálya néhány olyan módszert tartalmaz, amelyeket a beszédfelismeréshez használhat.
+A C#-hoz készült Speech SDK [felismerő osztálya](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) néhány olyan módszert tesz elérhetővé, amelyet a beszédfelismeréshez használhat.
 
-* Egylövéses felismerés (aszinkron) – Nem blokkoló (aszinkron) módban végzi a felismerést. Ez felismeri az egyetlen utterance (kifejezés). Az egyetlen utterance (kifejezés) végét a csend figyelése határozza meg a végén, vagy amíg legfeljebb 15 másodpercnyi hang feldolgozása meg nem történik.
-* Folyamatos felismerés (aszinkron) – Aszinkron módon folyamatos felismerési műveletet kezdeményez. A felhasználó regisztrálja az eseményeket, és kezeli a különböző alkalmazásállapot. Az aszinkron folyamatos felismerés leállításához [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)hívja meg a hívást.
+* Single-shot felismerés (aszinkron) – az elismerést nem blokkoló (aszinkron) módban végzi. Ez egyetlen Kimondás felismerését fogja felismerni. Az egyetlen kiírás végének meghatározása úgy történik, hogy a csendet figyeli a végén, vagy legfeljebb 15 másodperces hangot dolgoz fel.
+* Folyamatos felismerés (aszinkron) – aszinkron módon kezdeményezi a folyamatos felismerési műveletet. A felhasználó regisztrálja az eseményeket, és kezeli a különböző alkalmazási állapotokat. Az aszinkron folyamatos felismerés leállításához [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)hívja meg a következőt:.
 
 > [!NOTE]
-> További információ a [beszédfelismerési mód kiválasztásáról.](../../../how-to-choose-recognition-mode.md)
+> További információ a [beszédfelismerési mód kiválasztásáról](../../../how-to-choose-recognition-mode.md).
 
-### <a name="single-shot-recognition"></a>Egylövetű felismerés
+### <a name="single-shot-recognition"></a>Egyszeri felvétel felismerése
 
-Íme egy példa az aszinkron egylövéses felismerésre a következők használatával: [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync)
+Íme egy példa az aszinkron egyszeri felvételre a használatával [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizeonceasync):
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -132,11 +132,11 @@ recognizer.recognizeOnceAsync(result => {
 });
 ```
 
-Az eredmény kezeléséhez kódot kell írnia. Ez a minta a [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognitionresult?view=azure-node-latest#reason)következőket értékeli:
+Az eredmény kezeléséhez meg kell írnia egy kódot. Ez a példa a [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognitionresult?view=azure-node-latest#reason)következőket értékeli ki:
 
-* Kinyomtatja a felismerés eredményét:`ResultReason.RecognizedSpeech`
-* Ha nincs egyezés a felismeréssel, értesítse a felhasználót:`ResultReason.NoMatch`
-* Ha hiba történik, nyomtassa ki a hibaüzenetet:`ResultReason.Canceled`
+* Kinyomtatja az eredmények felismerésének eredményét:`ResultReason.RecognizedSpeech`
+* Ha nincs felismerési egyezés, tájékoztassa a felhasználót:`ResultReason.NoMatch`
+* Ha hiba történt, nyomtassa ki a hibaüzenetet:`ResultReason.Canceled`
 
 ```javascript
 switch (result.reason) {
@@ -163,20 +163,20 @@ switch (result.reason) {
 
 ### <a name="continuous-recognition"></a>Folyamatos felismerés
 
-Folyamatos felismerés egy kicsit több szó, mint egy-shot felismerés. A felismerési eredmények `Recognizing`elérése `Recognized`érdekében elő kell fizetnie a , és `Canceled` eseményekre. A felismerés leállításához [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)fel kell hívnia a programot. Íme egy példa arra, hogyan történik a folyamatos felismerés egy hangbemeneti fájlban.
+A folyamatos felismerés valamivel többet vesz igénybe, mint a single-shot felismerés. A felismerési eredmények beszerzéséhez `Recognizing`elő `Recognized`kell fizetnie a, a és `Canceled` az eseményekre. Az felismerés leállításához hívja [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync)meg a következőt:. Íme egy példa arra, hogyan történik a folyamatos felismerés egy hangbemeneti fájlon.
 
-Kezdjük a bemenet meghatározásával és a [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)következő inicializálásával:
+Első lépésként definiáljuk a bemenetet, és inicializáljuk a [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)következőket:
 
 ```javascript
 const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
-Feliratkozunk a rendszerből küldött [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)eseményekre.
+A szolgáltatásból érkező eseményekre fogunk előfizetni [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest).
 
-* [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizing): Jelzés a közbenső felismerési eredményeket tartalmazó eseményekre.
-* [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognized): Jelzés a végső felismerési eredményeket tartalmazó eseményekre (sikeres felismerési kísérlet jelzése).
-* [`sessionStopped`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#sessionstopped): A felismerési munkamenet (művelet) végét jelző események jelzése.
-* [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#canceled): Jelzés a visszavont felismerési eredményeket tartalmazó eseményekhez (olyan felismerési kísérlet jelzése, amelyet ennek eredményeként vagy közvetlen törlési kérelem, vagy átvitel- vagy protokollhiba miatt töröltek).
+* [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognizing): A köztes felismerési eredményeket tartalmazó események jelzése.
+* [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#recognized): A végső felismerési eredményeket tartalmazó események jelzése (sikeres felismerési kísérletet jelezve).
+* [`sessionStopped`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#sessionstopped): Az elismerési munkamenet végét jelző események jelzése (művelet).
+* [`canceled`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#canceled): A megszakított felismerési eredményeket tartalmazó események jelzése (olyan felismerési kísérletet jelez, amelyet a rendszer az eredmény vagy a közvetlen törlési kérelem miatt megszakított, vagy ha egy átviteli vagy protokollhiba történt).
 
 ```javascript
 recognizer.recognizing = (s, e) => {
@@ -210,7 +210,7 @@ recognizer.sessionStopped = (s, e) => {
 };
 ```
 
-Mindent felállítva, hívhatjuk [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync).
+Minden beállítással meghívhatjuk [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest#stopcontinuousrecognitionasync).
 
 ```javascript
 // Starts continuous recognition. Uses stopContinuousRecognitionAsync() to stop recognition.
@@ -222,49 +222,49 @@ recognizer.startContinuousRecognitionAsync();
 
 ### <a name="dictation-mode"></a>Diktálási mód
 
-Folyamatos felismerés használataesetén engedélyezheti a diktálás feldolgozását a megfelelő "Diktálás engedélyezése" funkcióval. Ezzel a móddal a beszédfelismerési konfigurációs példány értelmezi a mondatstruktúrák, például az írásjelek szóleírását. Például a "A városban él" kimondott szöveget a "A városban él?" szövegként értelmezi.
+Folyamatos felismerés használatakor engedélyezheti a diktálás feldolgozását a megfelelő "diktálás engedélyezése" funkció használatával. Ez a mód azt eredményezi, hogy a beszédfelismerési konfigurációs példány értelmezi a mondatok (például a központozás) szövegének leírását. A "Do You Live in Town kérdőjel" kifejezés például "a városban él?" szöveget fogja értelmezni.
 
-A diktálási mód engedélyezéséhez használja a [`enableDictation`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--) módszerét a on. [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)
+A diktálási mód engedélyezéséhez használja a [`enableDictation`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#enabledictation--) metódust a [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)alkalmazásban.
 
 ```javascript
 speechConfig.enableDictation();
 ```
 
-## <a name="change-source-language"></a>Forrásnyelv módosítása
+## <a name="change-source-language"></a>Forrás nyelvének módosítása
 
-A beszédfelismerés gyakori feladata a bemeneti (vagy forrás) nyelv megadása. Vessünk egy pillantást arra, hogyan változtatná meg a beviteli nyelvet olaszra. A kódban keresse [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)meg a , majd adja hozzá ezt a sort közvetlenül alatta.
+A beszédfelismerés általános feladata, hogy megadja a bemeneti (vagy a forrás) nyelvet. Vessünk egy pillantást arra, hogyan változtathatja meg a szövegbeviteli nyelvet az olasz nyelvre. A kódban keresse meg [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest), majd adja hozzá ezt a sort közvetlenül alatta.
 
 ```javascript
 speechConfig.speechRecognitionLanguage = "it-IT";
 ```
 
-A [`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#speechrecognitionlanguage) tulajdonság nyelv-területi formátumú karakterláncot vár. A támogatott [területi beállítások/nyelvek](../../../language-support.md)listájának **Területi** oszlopában bármilyen értéket megadhat.
+A [`speechRecognitionLanguage`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#speechrecognitionlanguage) tulajdonság nyelvi területi beállítású karakterláncot vár. A **területi beállítások** oszlopban bármilyen értéket megadhat a támogatott [területi beállítások/nyelvek](../../../language-support.md)listájában.
 
-## <a name="improve-recognition-accuracy"></a>A felismerés pontosságának javítása
+## <a name="improve-recognition-accuracy"></a>Az elismerés pontosságának javítása
 
-A Beszéd beszéddel többféleképpen is javíthatja a felismerés pontosságát. A Kifejezéslisták kifejezéssel azonosítják a hangadatokban szereplő ismert kifejezéseket, például egy személy nevét vagy egy adott helyet. A kifejezéslistához egyetlen szó vagy teljes kifejezés adható. Az elismerés során a kifejezéslista egy bejegyzését használja, ha a teljes kifejezés pontos egyezése szerepel a hangban. Ha nem talál pontos egyezést a kifejezéssel, az elismerés nem segít.
+A beszédfelismerési pontosságot többféleképpen is javíthatja a beszédben, és a kifejezések listáját is megtekintheti. A kifejezések listája a hangadatokban található ismert kifejezések azonosítására szolgál, például egy személy nevéhez vagy egy adott helyhez. Az egyes szavak vagy teljes kifejezések hozzáadhatók egy kifejezési listához. Az elismerés során a rendszer a kifejezések listájában szereplő bejegyzést használja, ha a teljes kifejezés pontos egyezése szerepel a hangban. Ha a kifejezés pontos egyezése nem található, az elismerés nem támogatott.
 
 > [!IMPORTANT]
-> A Kifejezéslista szolgáltatás csak angol nyelven érhető el.
+> A kifejezés lista szolgáltatás csak angol nyelven érhető el.
 
-Kifejezéslista használatához először hozzon létre egy [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest) objektumot, [`addPhrase`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest#addphrase-string-)majd adjon hozzá konkrét szavakat és kifejezéseket a használatával.
+A kifejezések listájának használatához először hozzon létre [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest) egy objektumot, majd adjon hozzá konkrét szavakat és [`addPhrase`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest#addphrase-string-)kifejezéseket a következővel:.
 
-A következő [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest) felismerésre vagy a beszédfelismerési szolgáltatáshoz való újracsatlakozást követően végrehajtott módosítások.
+A következő felismerés [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest) vagy a beszédfelismerési szolgáltatás újrakapcsolódása után a módosítások érvénybe lépnek.
 
 ```javascript
 const phraseList = PhraseListGrammar.fromRecognizer(recognizer);
 phraseList.addPhrase("Supercalifragilisticexpialidocious");
 ```
 
-Ha törölnie kell a kifejezéslistát:
+Ha törölnie kell a kifejezések listáját:
 
 ```javascript
 phraseList.clear();
 ```
 
-### <a name="other-options-to-improve-recognition-accuracy"></a>Egyéb lehetőségek a felismerés pontosságának javítására
+### <a name="other-options-to-improve-recognition-accuracy"></a>Egyéb lehetőségek az elismerés pontosságának növeléséhez
 
-A kifejezéslisták csak egy lehetőség a felismerés pontosságának javítására. További lehetőségek: 
+A kifejezések listája csak egyetlen lehetőség az elismerés pontosságának javítására. További lehetőségek: 
 
 * [Pontosság javítása Custom Speech segítségével](../../../how-to-custom-speech.md)
 * [Pontosság javítása bérlőmodellekkel](../../../tutorial-tenant-model.md)

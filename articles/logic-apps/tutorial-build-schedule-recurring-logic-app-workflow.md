@@ -1,42 +1,45 @@
 ---
-title: Ütemezésalapú automatizált munkafolyamatok létrehozása
-description: Oktatóanyag – Ütemezésalapú, ismétlődő és automatizált munkafolyamat létrehozása az Azure Logic Apps használatával
+title: Ütemterv-alapú automatizált munkafolyamatok összeállítása
+description: Oktatóanyag – ütemezett, ismétlődő és automatizált munkafolyamatok létrehozása Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75456633"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146526"
 ---
-# <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: Automatizált, ütemezésalapú, ismétlődő munkafolyamatok létrehozása az Azure Logic Apps használatával
+# <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: automatizált, ütemezett és ismétlődő munkafolyamatok létrehozása Azure Logic Apps használatával
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre egy [logikai alkalmazást,](../logic-apps/logic-apps-overview.md) és automatizálhat egy ütemezés szerint futó ismétlődő munkafolyamatot. Pontosabban ez a példa logikai alkalmazás fut minden hétköznap reggel, és ellenőrzi az utazási idő, beleértve a forgalmat, két hely között. Ha az idő meghaladja a megadott határértéket, a logikai alkalmazás e-mailt küld, amely az utazási időt és az úti cél eléréséhez szükséges többletidőt tartalmazza.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre egy [logikai alkalmazást](../logic-apps/logic-apps-overview.md) , és hogyan automatizálhat egy ütemezett, ismétlődő munkafolyamatot. Ez a példa a logikai alkalmazást minden hétköznap reggel futtatja, és ellenőrzi az utazási időt, beleértve a forgalmat, két hely között. Ha az idő meghaladja a megadott határértéket, a logikai alkalmazás e-mailt küld, amely az utazási időt és az úti cél eléréséhez szükséges többletidőt tartalmazza.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Üres logikai alkalmazás létrehozása.
-> * Adjon hozzá egy ismétlődési eseményindítót, amely meghatározza a logikai alkalmazás ütemezését.
-> * Adjon hozzá egy Bing Térképek-műveletet, amely lekéri egy útvonal utazási idejét.
-> * Adjon hozzá egy műveletet, amely létrehoz egy változót, átalakítja az utazási időt másodpercről percre, és tárolja a változót eredményező adatokat.
+> * Adjon hozzá egy ismétlődési eseményindítót, amely meghatározza a logikai alkalmazás ütemtervét.
+> * Adjon hozzá egy olyan Bing Maps műveletet, amely egy útvonal utazási idejét kapja meg.
+> * Olyan műveletet adhat hozzá, amely létrehoz egy változót, az utazási időt másodpercről percre konvertálja, és a változót eredményezi.
 > * Feltétel hozzáadása, amely összehasonlítja az utazási időt a megadott határértékkel.
-> * Adjon hozzá egy műveletet, amely e-mailt küld Önnek, ha az utazási idő meghaladja a korlátot.
+> * Adjon hozzá egy műveletet, amely e-mailt küld, ha az utazási idő meghaladja a korlátot.
 
 Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz hasonlít:
 
-![Magas szintű logikai alkalmazás-munkafolyamat – áttekintés](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
+![Magas szintű Logic apps-munkafolyamat – áttekintés](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, a kezdés előtt [regisztráljon egy ingyenes Azure-fiókot.](https://azure.microsoft.com/free/)
+* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [regisztráljon egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/) Kezdés előtt.
 
-* E-mail fiók egy e-mail szolgáltatótól, amelyet a Logic Apps támogat, például az Office 365 Outlook, a Outlook.com vagy a Gmail. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](https://docs.microsoft.com/connectors/). Ez a rövid útmutató Office 365 Outlook-fiókot használ. Ha másik e-mail fiókot használ, az általános lépések változatlanok maradnak, de a felhasználói felület kissé eltérhet.
+* Egy Logic Apps által támogatott e-mail-szolgáltatótól (például Office 365 Outlook, Outlook.com vagy Gmail) származó e-mail-fiók. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](https://docs.microsoft.com/connectors/). Ez a rövid útmutató egy Office 365 Outlook-fiókot használ. Ha más e-mail-fiókot használ, az általános lépések változatlanok maradnak, de a felhasználói felület némileg eltérő lehet.
+
+  > [!IMPORTANT]
+  > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Az útvonal megtételéhez szükséges idő lekéréséhez szükség van a Bing Térképek API hozzáférési kulcsára. A kulcs lekéréséhez kövesse a [Bing Térképek-kulcs lekérése](https://docs.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key) lépéseit.
 
@@ -46,64 +49,64 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja h
 
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása
 
-1. Az Azure főmenüjében válassza az > **Erőforrás-integrációs** > **logikai alkalmazás** **létrehozása**lehetőséget.
+1. Az Azure fő menüjében válassza az **erőforrás** > létrehozása**integrációs** > **logikai alkalmazás**lehetőséget.
 
-   ![A logikai alkalmazás-erőforrás létrehozása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
+   ![A logikai alkalmazás erőforrásának létrehozása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
 1. A **Logikai alkalmazás létrehozása** területen adja meg a logikai alkalmazás alábbi adatait az itt látható módon. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
-   ![A logikai alkalmazással kapcsolatos információk biztosítása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
+   ![Adja meg a logikai alkalmazással kapcsolatos információkat](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
-   | **Név** | LA-TravelTime | A logikai alkalmazás neve, amely csak betűket,`-`számokat, kötőjeleket ( ), aláhúzást (`_`), zárójeleket (`(`, `)`és pontokat (`.`tartalmazhat. Ez a példa az "LA-TravelTime" kifejezést használja. |
-   | **Előfizetés** | <*azure-előfizetés-neve*> | Az Azure-előfizetés neve |
-   | **Erőforráscsoport** | LA-TravelTime-RG | Az Azure [erőforráscsoport](../azure-resource-manager/management/overview.md)neve, amely a kapcsolódó erőforrások rendszerezésére szolgál. Ez a példa az "LA-TravelTime-RG" értéket használja. |
-   | **Helyen** | USA nyugati régiója | TA régió, ahol a logikai alkalmazás adatait tárolja. Ez a példa a "West USA" (USA nyugati) |
+   | **Név** | LA-TravelTime | A logikai alkalmazás neve, amely csak betűket, számokat`-`, kötőjeleket (), aláhúzásokat (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "LA-TravelTime" kifejezést használja. |
+   | **Előfizetés** | <*saját-Azure-előfizetés-név*> | Az Azure-előfizetés neve |
+   | **Erőforráscsoport** | LA-TravelTime-RG | A kapcsolódó erőforrások rendszerezéséhez használt [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md)neve. Ez a példa a "LA-TravelTime-RG" protokollt használja. |
+   | **Hely** | USA nyugati régiója | A logikai alkalmazás adatainak tárolására szolgáló AA-régió. Ez a példa a "West US"-t használja. |
    | **Log Analytics** | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. |
    ||||
 
-1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztárán válassza **az Értesítések** > **ugrás az erőforráshoz** lehetőséget az üzembe helyezett logikai alkalmazáshoz.
+1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztáron válassza az **értesítések** > **Ugrás az erőforráshoz** lehetőséget a telepített logikai alkalmazáshoz.
 
-   ![Ugrás az új logikai alkalmazás-erőforrásra](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
+   ![Ugrás az új Logic app-erőforrásra](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
-   Vagy megkeresheti és kiválaszthatja a logikai alkalmazást a név beírásával a keresőmezőbe.
+   Vagy megkeresheti és kiválaszthatja a logikai alkalmazást úgy, hogy beírja a nevet a keresőmezőbe.
 
-   A Logic Apps Designer megnyílik, és egy oldalt jelenít meg egy bevezető videót és a gyakran használt eseményindítókat és logikai alkalmazásmintákat. A **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet.
+   Megnyílik a Logic Apps Designer, és egy bemutató videót és gyakran használt triggereket és logikai alkalmazási mintákat tartalmazó oldalt jelenít meg. A **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet.
 
-   ![Üres logikai alkalmazássablon kijelölése](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-logic-app-template.png)
+   ![Üres logikai alkalmazás sablonjának kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-logic-app-template.png)
 
-Ezután adja hozzá az Ismétlődés [eseményindítót,](../logic-apps/logic-apps-overview.md#logic-app-concepts)amely egy megadott ütemezés alapján aktiválódik. Minden logikai alkalmazást egy eseményindítónak kell indítania, amely akkor aktiválódik, ha egy adott esemény bekövetkezik, vagy ha az új adatok teljesítenek egy adott feltételt. További információkért lásd: [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Ezután adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely a megadott ütemezésen alapul. Minden logikai alkalmazást egy eseményindítónak kell indítania, amely akkor aktiválódik, ha egy adott esemény bekövetkezik, vagy ha az új adatok teljesítenek egy adott feltételt. További információkért lásd: [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="add-the-recurrence-trigger"></a>Az Ismétlődés eseményindító hozzáadása
+## <a name="add-the-recurrence-trigger"></a>Az ismétlődési eseményindító hozzáadása
 
-1. A Logic App Designer keresőmezőjében adja meg az "ismétlődés" kifejezést szűrőként. Az **Eseményindítók** listában válassza az **Ismétlődés** eseményindítót.
+1. A Logic app Designerben a keresőmezőbe írja be szűrőként az "Ismétlődés" kifejezést. Az **Eseményindítók** listából válassza ki az **ismétlődési** eseményindítót.
 
    !["Ismétlődés" eseményindító hozzáadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-1. Az **Ismétlődés** alakzaton jelölje ki a **három pont** (**...**) gombot, majd kattintson **az Átnevezés gombra.** Nevezze át az eseményindítót a következő leírásra: `Check travel time every weekday morning`
+1. Az **ismétlődési** alakzaton válassza a három pontot (**..**.), **majd az** **Átnevezés**lehetőséget. Nevezze át az eseményindítót a következő leírásra: `Check travel time every weekday morning`
 
-   ![Az Ismétlődés eseményindító leírásának átnevezése](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
+   ![Az ismétlődési eseményindító leírásának átnevezése](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
-1. Az eseményindítón belül módosítsa ezeket a tulajdonságokat.
+1. Módosítsa ezeket a tulajdonságokat az triggeren belül.
 
-   ![Az Ismétlődés eseményindító időközének és gyakoriságának módosítása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
+   ![Az ismétlődési eseményindító intervallumának és gyakoriságának módosítása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Intervallum** | Igen | 1 | Az ellenőrzések között kivárt intervallumok száma |
-   | **Frekvencia** | Igen | Hét | Az ismétlődéshez használni kívánt időegység |
+   | **Időköz** | Igen | 1 | Az ellenőrzések között kivárt intervallumok száma |
+   | **Gyakoriság** | Igen | Hét | Az ismétlődéshez használni kívánt időegység |
    |||||
 
-1. Az **Intervallum** és **gyakoriság csoportban**nyissa meg az **Új paraméter hozzáadása** listát, és jelölje ki azokat a tulajdonságokat, amelyeket hozzá szeretne adni az eseményindítóhoz.
+1. Az **intervallum** és a **gyakoriság**területen nyissa meg az **új paraméter hozzáadása** listát, és válassza ki ezeket a tulajdonságokat az triggerhez való hozzáadáshoz.
 
    * **Ezeken a napokon**
    * **Ezekben az órákban**
    * **Ezekben a percekben**
 
-   ![Tulajdonságok hozzáadása az Ismétlődés eseményindítóhoz](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
+   ![Az ismétlődési eseményindító tulajdonságainak hozzáadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
 
-1. Most állítsa be a további tulajdonságok értékeit az itt látható és leírt módon.
+1. Most állítsa be a további tulajdonságok értékeit az itt látható módon.
 
    ![Az ütemezés és az ismétlődés részleteinek megadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
 
@@ -120,7 +123,7 @@ Ezután adja hozzá az Ismétlődés [eseményindítót,](../logic-apps/logic-ap
 
    ![Alakzat összecsukása a részletek elrejtéséhez](./media/tutorial-build-scheduled-recurring-logic-app-workflow/collapse-trigger-shape.png)
 
-1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés gombot.**
+1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
 A logikai alkalmazás most már működőképes, de az ismétlődésen kívül nem csinál semmit. Most adjunk hozzá egy műveletet, amely az eseményindítóra válaszol.
 
@@ -128,43 +131,43 @@ A logikai alkalmazás most már működőképes, de az ismétlődésen kívül n
 
 Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely lekéri az utazási időt két pont között. A Logic Apps biztosít egy összekötőt a Bing Térképek API-hoz, hogy könnyedén lekérhesse ezt az információt. Mielőtt hozzákezdene ehhez a feladathoz, ellenőrizze, hogy rendelkezik-e az oktatóanyag előfeltételeiben említett Bing Térképek API-kulccsal.
 
-1. A Logic App Designer az eseményindító alatt válassza az **Új lépés lehetőséget.**
+1. A Logic app Designerben az trigger alatt válassza az **új lépés**lehetőséget.
 
-1. A **Művelet kiválasztása**csoportban válassza a **Normál**lehetőséget. A keresőmezőbe írja be szűrőként a "bing térképek" kifejezést, és válassza az **Útvonal beírása** műveletet.
+1. A **válasszon műveletet**területen válassza a **standard**lehetőséget. A keresőmezőbe írja be szűrőként a "Bing Maps" kifejezést, majd válassza az **Útvonal lekérése** műveletet.
 
-   ![Válassza az "Útvonal bekerülése" műveletet](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-get-route-action.png)
+   ![Válassza az "útvonal lekérése" műveletet](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-get-route-action.png)
 
-1. Ha nem rendelkezik Bing Térképek-kapcsolattal, a rendszer arra kéri, hogy hozzon létre egyet. Adja meg ezeket a kapcsolatrészleteket, és válassza **a Létrehozás gombot.**
+1. Ha nem rendelkezik Bing Térképek-kapcsolattal, a rendszer arra kéri, hogy hozzon létre egyet. Adja meg ezeket a kapcsolati adatokat, és válassza a **Létrehozás**lehetőséget.
 
-   ![Kapcsolat létrehozása a Bing Maps API-val](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
+   ![A Bing Maps API-hoz való kapcsolódás létrehozása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Kapcsolat neve** | Igen | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" szolgáltatást használja. |
-   | **API-kulcs** | Igen | <*a-Bing-Maps-kulcs*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](https://msdn.microsoft.com/library/ff428642.aspx). |
+   | **Kapcsolat neve** | Igen | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" kifejezést használja. |
+   | **API-kulcs** | Igen | <*a-Bing-Maps-Key*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](https://msdn.microsoft.com/library/ff428642.aspx). |
    |||||
 
 1. Nevezze át a műveletet a következő leírásra: `Get route and travel time with traffic`
 
-1. A műveleten belül nyissa meg az **Új paraméter hozzáadása listát**, és jelölje ki azokat a tulajdonságokat, amelyeket hozzá szeretne adni a művelethez.
+1. A műveleten belül nyissa meg az **új paraméter hozzáadása listát**, és válassza ki ezeket a tulajdonságokat a művelethez való hozzáadáshoz.
 
-   * **Optimalizálja**
+   * **Optimalizálás**
    * **Távolság mértékegysége**
    * **Közlekedési mód**
 
-   ![Tulajdonságok hozzáadása az "Útvonal bekerülése" művelethez](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-bing-maps-action-properties.png) 
+   ![Tulajdonságok hozzáadása az "útvonal lekérése" művelethez](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-bing-maps-action-properties.png) 
 
-1. Most állítsa be a művelet tulajdonságainak értékeit az itt látható és leírt módon.
+1. Most állítsa be a művelet tulajdonságainak értékeit az itt látható módon, az itt leírtak szerint.
 
-   ![Adja meg az "Útvonal bekerülése" művelet részleteit](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
+   ![Az "útvonal lekérése" művelet részleteinek megadása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **1. útvonalpont** | Igen | <*kezdő hely*> | Az útvonal kiindulópontja |
-   | **2. útvonalpont** | Igen | <*végpont-hely*> | Az útvonal célállomása |
-   | **Optimalizálja** | Nem | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a "timeWithTraffic" paramétert. |
-   | **Távolság mértékegysége** | Nem | <*az ön által előnyben részesített*> | Az útvonalhoz használt távolság-mértékegység. Ez a példa a "Mérföld" az egység. |
-   | **Közlekedési mód** | Nem | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza a "Vezetés" módot. |
+   | **1. útvonalpont** | Igen | <*Start – hely*> | Az útvonal kiindulópontja |
+   | **2. útvonalpont** | Igen | <*végső hely*> | Az útvonal célállomása |
+   | **Optimalizálás** | Nem | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a "timeWithTraffic" paramétert. |
+   | **Távolság mértékegysége** | Nem | <*saját preferencia*> | Az útvonalhoz használt távolság-mértékegység. Ez a példa az "Mile" egységet használja egységként. |
+   | **Közlekedési mód** | Nem | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza a "vezetés" módot. |
    ||||
 
    További információk ezekről a paraméterekről: [Útvonal kiszámítása](https://docs.microsoft.com/bingmaps/rest-services/routes/calculate-a-route).
@@ -173,17 +176,17 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
 Ezután hozzon létre egy változót a jelenlegi utazási idő átalakításához, és másodpercek helyett percekként való tárolásához. Így nem kell megismételnie az átalakítást, és egyszerűbben használhatja az értéket a későbbi lépésekben. 
 
-## <a name="create-a-variable-to-store-travel-time"></a>Változó létrehozása az utazási idő tárolásához
+## <a name="create-a-variable-to-store-travel-time"></a>Az utazási idő tárolására szolgáló változó létrehozása
 
-Előfordulhat, hogy a munkafolyamatban lévő adatokon szeretne műveleteket futtatni, majd az eredményeket későbbi műveletekben használni. Ha az egyszerű újrafelhasználás vagy hivatkozás érdekében menteni szeretné az eredményeket, létrehozhat változókat a feldolgozás utáni tárolásukhoz. A logikai alkalmazásban csak a legfelső szinten hozhat létre változókat.
+Időnként előfordulhat, hogy a munkafolyamatban lévő adatokon szeretné futtatni a műveleteket, majd az eredményeket a későbbi műveletekben használja. Ha az egyszerű újrafelhasználás vagy hivatkozás érdekében menteni szeretné az eredményeket, létrehozhat változókat a feldolgozás utáni tárolásukhoz. A logikai alkalmazásban csak a legfelső szinten hozhat létre változókat.
 
-Alapértelmezés szerint az előző **Útvonal begetése** művelet az aktuális utazási időt adja vissza a forgalommal másodpercben az **Utazási időtartam forgalom** tulajdonságból. Ha átalakítja, és inkább percekként tárolja az értéket, később átalakítás nélkül, egyszerűbben tudja felhasználni.
+Alapértelmezés szerint az előző **Útvonal lekérése** művelet a jelenlegi utazási időt adja vissza az **utazási időtartam forgalmi** tulajdonságának másodpercben megadott forgalmával. Ha átalakítja, és inkább percekként tárolja az értéket, később átalakítás nélkül, egyszerűbben tudja felhasználni.
 
-1. Az **Útvonal beszerezése** művelet csoportban válassza az **Új lépés lehetőséget.**
+1. Az **Útvonal lekérése** művelet alatt válassza az **új lépés**lehetőséget.
 
-1. A **Művelet kiválasztása** **csoportban**válassza a Beépített lehetőséget. A keresőmezőbe írja be a "változók" szót, és válassza a **Változó inicializálása** műveletet.
+1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be a "változók" kifejezést, majd válassza a **változó inicializálása** műveletet.
 
-   ![Válassza a "Változó inicializálása" műveletet](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
+   ![A "változó inicializálása" művelet kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
 1. Nevezze át a műveletet a következő leírásra: `Create variable to store travel time`
 
@@ -191,86 +194,86 @@ Alapértelmezés szerint az előző **Útvonal begetése** művelet az aktuális
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Név** | Igen | travelTime | A változó neve. Ez a példa a "travelTime" szót használja. |
+   | **Név** | Igen | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
    | **Típus** | Igen | Egész szám | A változó adattípusa |
    | **Érték** | Nem| Egy kifejezés, amely átalakítja a jelenlegi utazási időt másodpercekből percekké (lásd a táblázat alatti lépéseket). | A változó kezdeti értéke |
    ||||
 
-   1. Az **Érték** tulajdonság kifejezésének létrehozásához kattintson a mezőben, hogy a dinamikus tartalomlista megjelenjen. Ha szükséges, állítsa szélesebbre a böngésző ablakát, amíg meg nem jelenik a lista. A dinamikus tartalomlistában válassza a **Kifejezés**lehetőséget.
+   1. Az **érték** tulajdonsághoz tartozó kifejezés létrehozásához kattintson a szövegmezőbe, hogy megjelenjen a dinamikus tartalmak listája. Ha szükséges, állítsa szélesebbre a böngésző ablakát, amíg meg nem jelenik a lista. A dinamikus tartalom listában válassza a **kifejezés**lehetőséget.
 
-      ![Információ biztosítása a "Változó inicializálása" művelethez](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings.png)
+      ![Információ megadása a "változó inicializálása" művelethez](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings.png)
 
-      Ha néhány szerkesztési mezőben kattint, megjelenik a dinamikus tartalomlista. Ez a lista a korábbi műveletek azon tulajdonságait jeleníti meg, amelyeket bemenetként használhat a munkafolyamatban. A dinamikus tartalomlistában van egy kifejezésszerkesztő, ahol kiválaszthatja a műveletek futtatásához szükséges függvényeket. A kifejezésszerkesztő csak a dinamikus tartalmak listájában jelenik meg.
+      Amikor rákattint néhány szerkesztési mezőre, megjelenik a dinamikus tartalmak listája. Ez a lista a korábbi műveletek azon tulajdonságait jeleníti meg, amelyeket bemenetként használhat a munkafolyamatban. A dinamikus tartalom lista egy kifejezés-szerkesztővel rendelkezik, ahol kiválaszthatja a műveletek futtatásához szükséges függvényeket. A kifejezésszerkesztő csak a dinamikus tartalmak listájában jelenik meg.
 
    1. A kifejezésszerkesztőbe írja be a következő kifejezést: `div(,60)`
 
       ![Írja be a következő kifejezést: „div(,60)”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
    1. Vigye az egérmutatót a kifejezésre, a bal oldali zárójel (**(**) és a vessző (**,**) közé. 
-   válassza **a Dinamikus tartalom**lehetőséget.
+   Válassza a **dinamikus tartalom**lehetőséget.
 
-      ![Pozíciókurzor, válassza a "Dinamikus tartalom" lehetőséget](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-3.png)
+      ![Vigye a kurzort a "dinamikus tartalom" elemre.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-3.png)
 
    1. A dinamikus tartalmak listájában válassza az **Utazás időtartama forgalommal** lehetőséget.
 
-      ![Válassza ki az "Utazási időtartam forgalom" tulajdonságot](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-4.png)
+      ![Az "utazás időtartama forgalom" tulajdonság kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-4.png)
 
-   1. Miután a tulajdonságértéke feloldódik a kifejezésen belül, válassza az **OK gombot.**
+   1. Ha a tulajdonság értéke feloldódik a kifejezésen belül, válassza az **OK**gombot.
 
-      ![A kifejezés létrehozásának befejezéséhez válassza az "OK" lehetőséget.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
+      ![A kifejezés létrehozásához kattintson az OK gombra.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
 
-      Az **Érték** tulajdonság most az itt látható módon jelenik meg:
+      Az **érték** tulajdonság most megjelenik az itt látható módon:
 
-      ![Az "Érték" tulajdonság feloldott kifejezéssel jelenik meg](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
+      ![Az "érték" tulajdonság megoldott kifejezéssel jelenik meg](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
 
 1. Mentse a logikai alkalmazást.
 
 Ezután adjon hozzá egy feltételt, amely ellenőrzi, hogy a jelenlegi utazás idő meghaladja-e a megadott határértéket.
 
-## <a name="compare-the-travel-time-with-limit"></a>Az utazási idő összehasonlítása a limittel
+## <a name="compare-the-travel-time-with-limit"></a>Az utazási idő összehasonlítása a korláttal
 
-1. Az előző művelet alatt válassza az **Új lépés lehetőséget.**
+1. Az előző művelet alatt válassza az **új lépés**lehetőséget.
 
-1. A **Művelet kiválasztása** **csoportban**válassza a Beépített lehetőséget. A keresőmezőbe írja be szűrőként a "feltétel" szót. A műveletek listájában válassza a **Feltétel** műveletet.
+1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be szűrőként a "feltétel" kifejezést. A műveletek listából válassza ki a **feltétel** műveletet.
 
-   ![Válassza a "Feltétel" műveletet](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
+   ![A "feltétel" művelet kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
 1. Nevezze át a feltételt a következő leírásra: `If travel time exceeds limit`
 
-1. Hozzon létre egy feltételt, amely ellenőrzi, hogy a **travelTime** tulajdonság értéke meghaladja-e a megadott korlátot az itt leírtak és látható módon:
+1. Hozzon létre egy olyan feltételt, amely ellenőrzi, hogy a **travelTime** tulajdonság értéke meghaladja-e a megadott korlátot az itt leírt módon:
 
-   1. Ebben az állapotban kattintson a Feltétel bal oldalán lévő **Érték kiválasztása** mezőben.
+   1. A feltételben kattintson a feltétel bal oldalán található **érték választása** mezőre.
 
-   1. A megjelenő dinamikus tartalomlistában a **Változók**csoportban válassza ki a **travelTime** tulajdonságot.
+   1. A megjelenő dinamikus tartalom listából válassza ki a **travelTime** tulajdonságot a **változók**alatt.
 
-      ![Építsd meg az állapot bal oldalát](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
+      ![A feltétel bal oldali felépítése](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   1. A középső összehasonlító mezőben válassza ki a **nagyobb operátort, mint** a kezelő.
+   1. A középső összehasonlítás mezőben válassza a **nagyobb, mint** operátor elemet.
 
-   1. A **Feltétel** jobb oldalán található Érték kiválasztása mezőjébe írja be ezt a korlátot:`15`
+   1. A feltétel jobb oldalán található **érték választása** mezőben adja meg a következő korlátot:`15`
 
-      Ha elkészült, a feltétel így néz ki:
+      Ha elkészült, a feltétel a következő példához hasonlóan néz ki:
 
-      ![Kész állapot az utazási idő ellenőrzéséhez](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![Az utazási idő ellenőrzését befejező feltétel](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. Mentse a logikai alkalmazást.
 
-Ezután adja hozzá a futáshoz, ha az utazási idő meghaladja a korlátot.
+Ezután adja hozzá a futtatandó műveletet, ha az utazási idő meghaladja a korlátot.
 
 ## <a name="send-email-when-limit-exceeded"></a>E-mail küldése a határérték túllépésekor
 
 Ezután adjon hozzá egy műveletet, amely e-mailt küld, ha az utazási idő meghaladja a határértéket. Az e-mail a jelenlegi utazási időt és a megadott útvonal teljesítéséhez szükséges többletidőt tartalmazza.
 
-1. A **Feltétel Ha igaz** ága esetén válassza a Művelet **hozzáadása**lehetőséget.
+1. A feltétel **igaz** ága esetén válassza a **művelet hozzáadása**lehetőséget.
 
-1. A **Művelet kiválasztása**csoportban válassza a **Normál**lehetőséget. A keresőmezőbe írja be az "E-mail küldése" szót. A lista sok eredményt ad vissza, ezért először válassza ki a kívánt e-mail-összekötőt, például:
+1. A **válasszon műveletet**területen válassza a **standard**lehetőséget. A keresőmezőbe írja be az "e-mail küldése" kifejezést. A lista számos eredményt ad vissza, ezért először válassza ki a kívánt e-mail összekötőt, például:
 
-   ![Válassza ki a kívánt e-mail-összekötőt](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
+   ![Válassza ki a kívánt e-mail összekötőt](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
 
-   * Azure-munkahelyi vagy iskolai fiókok esetén válassza az **Office 365 Outlook**lehetőséget.
-   * Személyes Microsoft-fiókok esetén válassza **a Outlook.com**lehetőséget.
+   * Munkahelyi vagy iskolai Azure-fiókok esetében válassza az **Office 365 Outlook** lehetőséget.
+   * Személyes Microsoft-fiókok esetében válassza az **Outlook.com** lehetőséget.
 
-1. Amikor megjelennek az összekötő lépései, válassza a használni kívánt "e-mail küldése művelet" lehetőséget, például:
+1. Amikor megjelenik az összekötő műveletei, válassza a használni kívánt e-mail küldése műveletet, például:
 
    ![Az „e-mail küldése” művelet kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-send-email-action.png)
 
@@ -286,11 +289,11 @@ Ezután adjon hozzá egy műveletet, amely e-mailt küld, ha az utazási idő me
 
    1. Írja be a `Current travel time (minutes):` szöveget, záró szóközzel. 
 
-   1. A dinamikus tartalomlista **Változók**területén válassza a **Tovább**lehetőséget.
+   1. A dinamikus tartalom lista **változók**területén válassza a **továbbiak**lehetőséget.
 
-      ![A "travelTime" változó megkeresése](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-travelTime-variable.png)
+      !["TravelTime" változó keresése](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-travelTime-variable.png)
 
-   1. Miután **a TravelTime** megjelenik **a Változók**csoportban, válassza a **travelTime**lehetőséget.
+   1. Miután a **travelTime** megjelenik a **változók**területen, válassza a **travelTime**lehetőséget.
 
       ![Írja be a tárgy szövegét, valamint egy kifejezést, amely az utazási időt adja vissza](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-travelTime-variable.png)
 
@@ -298,7 +301,7 @@ Ezután adjon hozzá egy műveletet, amely e-mailt küld, ha az utazási idő me
 
    1. Írja be a `Add extra travel time (minutes):` szöveget, záró szóközzel.
 
-   1. A dinamikus tartalomlistában válassza a **Kifejezés**lehetőséget.
+   1. A dinamikus tartalom listában válassza a **kifejezés**lehetőséget.
 
       ![Kifejezés létrehozása az e-mail törzséhez](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings.png)
 
@@ -306,43 +309,43 @@ Ezután adjon hozzá egy műveletet, amely e-mailt küld, ha az utazási idő me
 
       ![Írja be a kifejezést az utazási idő többletperceinek kiszámításához](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-2.png)
 
-   1. Vigye az egérmutatót a kifejezésre, a bal oldali zárójel (**(**) és a vessző (**,**) közé. Válassza **a Dinamikus tartalom lehetőséget**.
+   1. Vigye az egérmutatót a kifejezésre, a bal oldali zárójel (**(**) és a vessző (**,**) közé. Válassza a **dinamikus tartalom**lehetőséget.
 
       ![Folytassa az utazási idő többletperceit kiszámító kifejezés létrehozását](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-3.png)
 
    1. A **Változók** alatt válassza a **travelTime** elemet.
 
-      ![A kifejezésben használni kívánt "travelTime" tulajdonság kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-4.png)
+      ![A kifejezésben használandó "travelTime" tulajdonság kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-4.png)
 
-   1. Miután a tulajdonság feloldódik a kifejezésen belül, válassza az **OK gombot.**
+   1. Miután a tulajdonság feloldódik a kifejezésen belül, kattintson az **OK gombra**.
 
-      ![A "Body" tulajdonság feloldása után válassza az "OK" lehetőséget](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
+      ![A "Body" tulajdonság feloldása után válassza az OK lehetőséget](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
 
-      A **Body** tulajdonság most az itt látható módon jelenik meg:
+      Ekkor megjelenik a **Body (törzs** ) tulajdonság, ahogy az itt látható:
 
-      ![Megoldott "Törzs" tulajdonság a kifejezésben](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
+      !["Body" tulajdonság megoldva a kifejezésben](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
 
 1. Mentse a logikai alkalmazást.
 
 Következő lépésként tesztelje a logikai alkalmazást, amely most az alábbi példára hasonlít:
 
-![Kész példa logikai alkalmazás munkafolyamata](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
+![A logikai alkalmazás munkafolyamatának befejezett példája](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
 
 ## <a name="run-your-logic-app"></a>A logikai alkalmazás futtatása
 
-A logikai alkalmazás manuális elindításához a tervező eszköztárának futtatása lehetőségre kattintson a **Futtatás gombra.**
+A logikai alkalmazás manuális elindításához a tervező eszköztárán válassza a **Futtatás**lehetőséget.
 
-* Ha az aktuális utazási idő a korlát alatt marad, a logikai alkalmazás nem csinál semmi mást, és vár, vagy a következő intervallum ellenőrzése előtt újra. 
+* Ha a jelenlegi utazási idő a korlát alatt marad, a logikai alkalmazás nem tesz mást, és megvárja, vagy a következő intervallumot, mielőtt újra ellenőriz. 
 
-* Ha az aktuális utazási idő meghaladja a korlátot, e-mailt kap az aktuális utazási időről és a korlátot meghaladó percek számáról. Íme egy példa a logikai alkalmazás által küldött e-mailre:
+* Ha a jelenlegi utazási idő meghaladja a korlátot, egy e-mailt kap az aktuális utazási idővel és a korlát feletti percek számával. Íme egy példa a logikai alkalmazás által küldött e-mailre:
 
-![Példa küldött e-mailre, amely az utazási időt mutatja](./media/tutorial-build-scheduled-recurring-logic-app-workflow/received-example-email-notification.png)
+![Példa az utazási időt megjelenítő e-mail küldésére](./media/tutorial-build-scheduled-recurring-logic-app-workflow/received-example-email-notification.png)
 
 Ha nem kap e-mailt, ellenőrizze a levélszemét mappát. Előfordulhat, hogy az ilyen típusú levelek fennakadnak a levélszemétszűrőn. Ha nem biztos abban, hogy a logikai alkalmazás megfelelően futott-e, tekintse meg a [logikai alkalmazás hibaelhárításával foglalkozó szakaszt](../logic-apps/logic-apps-diagnosing-failures.md).
 
 Gratulálunk, sikeresen létrehozott és futtatott egy ütemezésen alapuló, ismétlődő logikai alkalmazást. 
 
-Az **Ismétlődés eseményindítót** használó egyéb logikai alkalmazások létrehozásához tekintse meg ezeket a sablonokat, amelyek a logikai alkalmazás létrehozása után érhetők el:
+Az **ismétlődési** eseményindítót használó egyéb logikai alkalmazások létrehozásához tekintse meg ezeket a sablonokat, amelyek a logikai alkalmazás létrehozása után érhetők el:
 
 * Napi emlékeztetők küldésének beállítása.
 * Régebbi Azure-blobok törlése.
@@ -350,15 +353,15 @@ Az **Ismétlődés eseményindítót** használó egyéb logikai alkalmazások l
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a minta logikai alkalmazás, törölje a logikai alkalmazást és a kapcsolódó erőforrásokat tartalmazó erőforráscsoport. 
+Ha már nincs szüksége a minta logikai alkalmazásra, törölje a logikai alkalmazást és a kapcsolódó erőforrásokat tartalmazó erőforráscsoportot. 
 
 1. Az Azure főmenüjében lépjen az **Erőforráscsoportok** elemre, és válassza ki a logikai alkalmazás erőforráscsoportját.
 
-1. Kattintson az erőforráscsoport menü **Áttekintés** > **törlése Erőforráscsoport parancsára.** 
+1. Az erőforráscsoport menüben válassza az **Áttekintés** > az**erőforráscsoport törlése**elemet. 
 
    ![„Áttekintés” > „Erőforráscsoport törlése”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 
-1. Adja meg az erőforráscsoport nevét megerősítésként, és válassza a **Törlés gombot.**
+1. Adja meg az erőforráscsoport nevét megerősítésként, majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

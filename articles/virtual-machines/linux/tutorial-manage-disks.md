@@ -15,16 +15,16 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 1949b66ee48036163e92cb37c275e9117d6a74b4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: be2a52f1a9071e9d4bb77ab4439291fd58cd828b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460018"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129373"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Oktatóanyag – Azure-lemezek kezelése az Azure CLI használatával
 
-Az Azure-beli virtuális gépek (VM-ek) lemezeket használnak az operációs rendszerek, alkalmazások és adatok tárolására. Virtuális gép létrehozásakor fontos, hogy válasszon a lemez mérete és konfigurációja a várt számítási feladatoknak megfelelő. Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe és kezelhet virtuálisgép-lemezeket. Az alábbiakkal fog megismerkedni:
+Az Azure-beli virtuális gépek (VM-ek) lemezeket használnak az operációs rendszerek, alkalmazások és adatok tárolására. Amikor létrehoz egy virtuális gépet, fontos, hogy a várt számítási feladatnak megfelelő méretű lemezt és konfigurációt válasszon. Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe és kezelhet virtuálisgép-lemezeket. Az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Operációsrendszer-lemezek és ideiglenes lemezek
@@ -32,7 +32,6 @@ Az Azure-beli virtuális gépek (VM-ek) lemezeket használnak az operációs ren
 > * Standard és Prémium lemezek
 > * Lemezek teljesítménye
 > * Adatlemezek csatolása és előkészítése
-> * Lemezek átméretezése
 > * Lemez-pillanatképek
 
 
@@ -50,7 +49,7 @@ Alkalmazások telepítéséhez és adatok tárolásához további adatlemezek ad
 
 ## <a name="vm-disk-types"></a>Virtuálisgép-lemezek típusai
 
-Az Azure kétféle lemezt biztosít, a standard és a prémium szintű.
+Az Azure kétféle lemezt biztosít a standard és a prémium szinthez.
 
 ### <a name="standard-disk"></a>Standard lemez
 
@@ -67,9 +66,9 @@ Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, na
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
-Az Azure Cloud Shell egy ingyenes interaktív rendszerhéj, amely segítségével futtathatja a cikkben leírt lépéseket. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
+A Azure Cloud Shell egy ingyenes interaktív felület, amellyel a cikkben ismertetett lépéseket futtathatja. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
-A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk jobb felső sarkából lehetőséget. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/powershell](https://shell.azure.com/bash)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a kód jobb felső sarkában lévő **kipróbálás** lehetőséget. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/bash). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-and-attach-disks"></a>Lemezek létrehozása és csatolása
 
@@ -177,13 +176,13 @@ Most, hogy a lemez konfigurálva lett, zárja be az SSH-munkamenetet.
 exit
 ```
 
-## <a name="take-a-disk-snapshot"></a>Lemezpillanatkép készítése
+## <a name="take-a-disk-snapshot"></a>Lemez pillanatképének készítése
 
-A lemezpillanatképek létrehozása során az Azure egy csak olvasható, adott időponthoz kötött másolatot hoz létre a lemezről. Az Azure-beli virtuális gépekről készült pillanatképek akkor lehetnek hasznosak, ha a virtuális gépek állapotának gyors mentésére van szükség a konfiguráció módosítása előtt. Probléma vagy hiba esetén a virtuális gép pillanatkép használatával visszaállítható. Ha a virtuális gép egynél több lemezzel rendelkezik, az egyes lemezekről egymástól független pillanatképek készülnek. Alkalmazáskonzisztens biztonsági másolatok készítéséhez érdemes lehet leállítania a virtuális gépet a lemezpillanatképek készítése előtt. Másik megoldásként használhatja az [Azure Backup szolgáltatást](/azure/backup/) is, amelynek segítségével automatikus biztonsági mentést végezhet, miközben a virtuális gép fut.
+A lemezpillanatképek létrehozása során az Azure egy csak olvasható, adott időponthoz kötött másolatot hoz létre a lemezről. Az Azure-beli virtuális gépekről készült pillanatképek akkor lehetnek hasznosak, ha a virtuális gépek állapotának gyors mentésére van szükség a konfiguráció módosítása előtt. Probléma vagy hiba esetén a virtuális gép visszaállítható egy pillanatkép használatával. Ha a virtuális gép egynél több lemezzel rendelkezik, az egyes lemezekről egymástól független pillanatképek készülnek. Alkalmazáskonzisztens biztonsági másolatok készítéséhez érdemes lehet leállítania a virtuális gépet a lemezpillanatképek készítése előtt. Másik megoldásként használhatja az [Azure Backup szolgáltatást](/azure/backup/) is, amelynek segítségével automatikus biztonsági mentést végezhet, miközben a virtuális gép fut.
 
 ### <a name="create-snapshot"></a>Pillanatkép készítése
 
-A virtuálisgép-lemez pillanatképének elkészítése előtt szükség van a lemez azonosítójára vagy nevére. Használja az [az vm show](/cli/azure/vm#az-vm-show) parancsot a lemezazonosító visszaadásához. A példában a lemezazonosítót egy változó tárolja, így az egy későbbi lépésben majd felhasználható.
+A virtuálisgép-lemez pillanatképének elkészítése előtt szükség van a lemez azonosítójára vagy nevére. A lemez AZONOSÍTÓjának visszaküldéséhez használja az az [VM show](/cli/azure/vm#az-vm-show) paranccsal. A példában a lemezazonosítót egy változó tárolja, így az egy későbbi lépésben majd felhasználható.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -265,7 +264,6 @@ Ebben az oktatóanyagban a virtuálisgép-lemezekkel kapcsolatos témakörökkel
 > * Standard és Prémium lemezek
 > * Lemezek teljesítménye
 > * Adatlemezek csatolása és előkészítése
-> * Lemezek átméretezése
 > * Lemez-pillanatképek
 
 Folytassa a következő oktatóanyaggal, amely a virtuális gép konfigurálásának automatizálását ismerteti.

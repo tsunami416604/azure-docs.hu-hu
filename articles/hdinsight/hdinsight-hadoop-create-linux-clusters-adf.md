@@ -1,62 +1,62 @@
 ---
-title: 'Oktatóanyag: Igény szerinti fürtök az Azure HDInsightban a Data Factory segítségével'
-description: Oktatóanyag – Ismerje meg, hogyan hozhat létre igény szerinti Apache Hadoop-fürtöket a HDInsightban az Azure Data Factory használatával.
+title: 'Oktatóanyag: igény szerinti fürtök az Azure HDInsight-ban Data Factory'
+description: Oktatóanyag – megtudhatja, hogyan hozhat létre igény szerinti Apache Hadoop-fürtöket a HDInsight-ben Azure Data Factory használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 03/18/2020
-ms.openlocfilehash: b184a42c52384440445181ac44c616c3139e064f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/24/2020
+ms.openlocfilehash: 7112c3cb1555d3b34e52301e92e21c1bf3601c86
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130689"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148358"
 ---
-# <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: Igény szerinti Apache Hadoop-fürtök létrehozása a HDInsightban az Azure Data Factory használatával
+# <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Data Factory használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre [apache Hadoop-fürtöt](./hadoop/apache-hadoop-introduction.md) igény szerint az Azure HDInsightban az Azure Data Factory használatával. Ezután az Azure Data Factory adatfolyamatait használja a Hive-feladatok futtatásához és a fürt törléséhez. Az oktatóanyag végére megtudhatja, hogyan futtathat egy big data-feladatot, ahol a fürt létrehozása, a feladatfuttatása és a fürt törlése ütemezés szerint történik.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre igény szerinti [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) -fürtöt az Azure HDInsight Azure Data Factory használatával. Ezután a Azure Data Factoryban lévő adatfolyamatok használatával futtathatja a kaptár-feladatokat, és törölheti a fürtöt. Ebből az oktatóanyagból megtudhatja, hogyan hajthat `operationalize` végre egy Big Data-feladatot, ahol a fürt létrehozása, a feladatok futtatása és a fürt törlése ütemezhető.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Azure Storage-fiók létrehozása
-> * Az Azure Data Factory tevékenységének megismerése
-> * Adatgyár létrehozása az Azure Portal használatával
+> * Azure Data Factory tevékenység ismertetése
+> * Adatelőállító létrehozása Azure Portal használatával
 > * Társított szolgáltatások létrehozása
 > * Folyamat létrehozása
 > * Folyamat aktiválása
 > * Folyamat monitorozása
 > * Kimenet ellenőrzése
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A PowerShell [Az modul](https://docs.microsoft.com/powershell/azure/overview) telepítve van.
+* A PowerShell az [modul](https://docs.microsoft.com/powershell/azure/overview) telepítve van.
 
-* Egy Azure Active Directory egyszerű szolgáltatás. Miután létrehozta a szolgáltatásnév, győződjön meg róla, hogy lekéri az **alkalmazás azonosítóját** és **a hitelesítési kulcsot** a csatolt cikk utasításait használva. Ezekre az értékekre az oktatóanyag későbbi részében van szüksége. Győződjön meg arról is, hogy az egyszerű szolgáltatás az előfizetés *közreműködői* szerepkörének vagy a fürt létrehozásának a lapjában lévő erőforráscsoport nak a tagja. A szükséges értékek beolvasására és a megfelelő szerepkörök hozzárendelésére vonatkozó útmutatásért olvassa el az [Azure Active Directory egyszerű szolgáltatásának létrehozása című témakört.](../active-directory/develop/howto-create-service-principal-portal.md)
+* Egy Azure Active Directory egyszerű szolgáltatás. Miután létrehozta a szolgáltatásnevet, ügyeljen rá, hogy az **alkalmazás azonosítóját** és a **hitelesítési kulcsot** a csatolt cikkben található utasítások alapján kérje le. Ezekre az értékekre később szüksége lesz az oktatóanyagban. Győződjön meg arról is, hogy az egyszerű szolgáltatás tagja az előfizetés *közreműködői* szerepkörének, vagy az az erőforráscsoport, amelyben a fürt létrejött. A szükséges értékek lekérésére és a megfelelő szerepkörök hozzárendelésére vonatkozó utasításokért lásd: [Azure Active Directory egyszerű szolgáltatásnév létrehozása](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="create-preliminary-azure-objects"></a>Előzetes Azure-objektumok létrehozása
 
-Ebben a szakaszban különböző objektumokat hoz létre, amelyeket az igény szerint létrehozott HDInsight-fürthöz fog használni. A létrehozott tárfiók tartalmazza a minta `partitionweblogs.hql` [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájlt, amely segítségével szimulálja a minta Apache Hive-feladat, amely fut a fürtön.
+Ebben a szakaszban különféle objektumokat hoz létre, amelyeket az igény szerint létrehozott HDInsight-fürthöz fog használni. A létrehozott Storage-fiók tartalmazni fogja a minta HiveQL `partitionweblogs.hql`parancsfájlt, amely a fürtön futó példa Apache Hive-feladatok szimulálására használható.
 
-Ez a szakasz egy Azure PowerShell-parancsfájlt használ a tárfiók létrehozásához és a tárfiókon belüli szükséges fájlok másolásához. Az Azure PowerShell-mintparancsfájl ebben a szakaszban a következő feladatokat hajtja végre:
+Ez a szakasz egy Azure PowerShell parancsfájllal hozza létre a Storage-fiókot, és átmásolja a szükséges fájlokat a Storage-fiókon belül. A jelen szakaszban található Azure PowerShell-minta parancsfájl a következő feladatokat hajtja végre:
 
 1. Bejelentkezik az Azure-ba.
 2. Létrehoz egy Azure-erőforráscsoportot.
 3. Létrehoz egy Azure Storage-fiókot.
-4. Blob-tároló létrehozása a tárfiókban
-5. Másolja a minta HiveQL parancsfájl (**partitionweblogs.hql**) a Blob tároló. A parancsfájl elérhető [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql)a. A mintaparancsfájl már elérhető egy másik nyilvános Blob-tárolóban. Az alábbi PowerShell-parancsfájl másolatot készít ezekről a fájlokról az általa létrehozott Azure Storage-fiókba.
+4. BLOB-tároló létrehozása a Storage-fiókban
+5. A HiveQL parancsfájl (**partitionweblogs. HQL**) másolása a blob-tárolóból. A szkript a következő címen [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql)érhető el:. A minta parancsfájl már elérhető egy másik nyilvános blob-tárolóban. Az alábbi PowerShell-parancsfájl másolatot készít a fájlokról az általa létrehozott Azure Storage-fiókba.
 
-### <a name="create-storage-account-and-copy-files"></a>Tárfiók létrehozása és fájlok másolása
+### <a name="create-storage-account-and-copy-files"></a>Storage-fiók létrehozása és fájlok másolása
 
 > [!IMPORTANT]  
-> Adja meg az Azure erőforráscsoport és a parancsfájl által létrehozott Azure storage-fiók nevét.
-> Írja le **az erőforráscsoport nevét,** **a tárfiók nevét**és a parancsfájl által kimenetelét lekimenetelt **tárfiókkulcsot.** Szükséged van rájuk a következő részben.
+> Adja meg az Azure-erőforráscsoport és a parancsfájl által létrehozandó Azure Storage-fiók nevét.
+> Írja le az **erőforráscsoport nevét**, a **Storage-fiók nevét**és a Storage- **fiók kulcsát** , amelyet a parancsfájl kibont. A következő szakaszban kell lennie.
 
 ```powershell
 $resourceGroupName = "<Azure Resource Group Name>"
@@ -151,220 +151,220 @@ write-host "Storage Account Key: $destStorageAccountKey"
 Write-host "`nScript completed" -ForegroundColor Green
 ```
 
-### <a name="verify-storage-account"></a>Tárfiók ellenőrzése
+### <a name="verify-storage-account"></a>Storage-fiók ellenőrzése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Bal oldalon keresse meg az **Összes szolgáltatás** > **általános** > **erőforráscsoportját.**
-1. Válassza ki a PowerShell-parancsfájlban létrehozott erőforráscsoport nevét. Használja a szűrőt, ha túl sok erőforráscsoport szerepel a listában.
-1. Az **Áttekintés** nézetben egy erőforrás jelenik meg a listában, hacsak nem osztja meg az erőforráscsoportot más projektekkel. Ez az erőforrás a korábban megadott névvel rendelkező tárfiók. Válassza ki a tárfiók nevét.
-1. Válassza a **Tárolók csempét.**
-1. Válassza ki az **adfgetstarted** tárolót. Megjelenik egy **hivescripts**nevű mappa.
-1. Nyissa meg a mappát, és győződjön meg róla, hogy tartalmazza a minta script fájlt, **partitionweblogs.hql**.
+1. A bal oldalon navigáljon az **összes szolgáltatás** > **általános** > **erőforráscsoporthoz**.
+1. Válassza ki a PowerShell-parancsfájlban létrehozott erőforráscsoport-nevet. Ha túl sok erőforráscsoport van felsorolva, használja a szűrőt.
+1. Az **Áttekintés** nézetből egyetlen erőforrás jelenik meg, hacsak nem osztja meg az erőforráscsoportot más projektekkel. Ez az erőforrás a korábban megadott névvel rendelkező Storage-fiók. Válassza ki a Storage-fiók nevét.
+1. Válassza ki a **tárolók** csempét.
+1. Válassza ki a **adfgetstarted** tárolót. Ekkor megjelenik egy nevű **`hivescripts`** mappa.
+1. Nyissa meg a mappát, és győződjön meg róla, hogy tartalmazza a minta parancsfájlt, a **partitionweblogs. HQL**fájlt.
 
-## <a name="understand-the-azure-data-factory-activity"></a>Ismerje meg az Azure Data Factory tevékenységét
+## <a name="understand-the-azure-data-factory-activity"></a>A Azure Data Factory tevékenység ismertetése
 
-[Az Azure Data Factory](../data-factory/introduction.md) vezényli és automatizálja az adatok mozgását és átalakítását. Az Azure Data Factory létrehozhat egy HDInsight Hadoop-fürtöt, amely éppen időben dolgozfel egy bemeneti adatszeletet, és törölheti a fürtöt, amikor a feldolgozás befejeződött.
+[Azure Data Factory](../data-factory/introduction.md) összehangolja és automatizálja az adatáthelyezést és-átalakítást. Azure Data Factory létrehozhat egy HDInsight Hadoop-fürtöt a bemeneti adatszelet feldolgozásához és a fürt törléséhez a feldolgozás befejezésekor.
 
-Az Azure Data Factoryban egy adat-előállító egy vagy több adatfolyamattal rendelkezhet. Az adatfolyamat egy vagy több tevékenységet is rendelkezik. Kétféle tevékenység létezik:
+Azure Data Factoryban egy adatfeldolgozó egy vagy több adatfolyamattal rendelkezhet. Az adatfolyamatok egy vagy több tevékenységgel rendelkeznek. A tevékenységek két típusa létezik:
 
-* [Adatmozgatási tevékenységek](../data-factory/copy-activity-overview.md). Az adatmozgatási tevékenységek segítségével adatokat helyezhet át a forrásadattárból a céladattárba.
-* [Adatátalakítási tevékenységek](../data-factory/transform-data.md). Az adatátalakítási tevékenységek segítségével alakítja át/dolgozza fel az adatokat. A HDInsight Hive-tevékenység a Data Factory által támogatott átalakítási tevékenységek egyike. A Hive átalakítási tevékenység ebben az oktatóanyagban.
+* [Adatáthelyezési tevékenységek](../data-factory/copy-activity-overview.md). Az adatáthelyezési tevékenységekkel adatok helyezhetők át a forrás adattárból a célhely adattárba.
+* [Az Adatátalakítási tevékenységek](../data-factory/transform-data.md). Az Adatátalakítási tevékenységek segítségével alakíthatja át vagy dolgozza fel az adatfeldolgozási tevékenységeket. A HDInsight kaptár tevékenység a Data Factory által támogatott átalakítási tevékenységek egyike. Ebben az oktatóanyagban a struktúra-átalakítási tevékenységet kell használnia.
 
-Ebben a cikkben konfigurálja a Hive-tevékenység et egy igény szerinti HDInsight Hadoop-fürt létrehozásához. Amikor a tevékenység adatok feldolgozására fut, a következők történnek:
+Ebben a cikkben a struktúra tevékenységét konfigurálja egy igény szerinti HDInsight Hadoop-fürt létrehozásához. Amikor a tevékenység futtatja az adatfeldolgozást, a következő történik:
 
-1. A HDInsight Hadoop-fürt automatikusan létrejön a szelet feldolgozásához.
+1. A rendszer automatikusan létrehoz egy An méretű HDInsight Hadoop-fürtöt a szelet feldolgozásához.
 
-2. A bemeneti adatok feldolgozása egy HiveQL parancsfájl futtatásával történik a fürtön. Ebben az oktatóanyagban a hive-tevékenységhez társított HiveQL-parancsfájl a következő műveleteket hajtja végre:
+2. A bemeneti adatokat a rendszer egy HiveQL parancsfájl futtatásával dolgozza fel a fürtön. Ebben az oktatóanyagban a kaptár tevékenységhez társított HiveQL-szkript a következő műveleteket végzi el:
 
-    * A meglévő tábla (*hivesampletable*) segítségével hozzon létre egy másik táblát **HiveSampleOut**.
-    * Feltölti a **HiveSampleOut** táblát, amely csak az eredeti *hivesampletable*adott oszlopaival jelenik meg.
+    * A meglévő táblát (*hivesampletable*) használja egy másik tábla **HiveSampleOut**létrehozásához.
+    * Feltölti a **HiveSampleOut** táblát az eredeti *hivesampletable*megadott oszlopokkal.
 
-3. A HDInsight Hadoop-fürt a feldolgozás befejezése után törlődik, és a fürt a beállított ideig (timeToLive beállítás) tétlen. Ha a következő adatszelet jelenleg használhatóAz Élő tétlen idő vel történő feldolgozáshoz, akkor ugyanaz ta-fürt lesz a szelet feldolgozásához.  
+3. A HDInsight Hadoop-fürt a feldolgozás befejeződése után törlődik, és a fürt üresjáratban van a beállított ideig (timeToLive-beállítás). Ha a következő adatszelet ebben a timeToLive üresjárati időben is elérhető, akkor a szelet feldolgozásához ugyanazt a fürtöt használja a rendszer.  
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. A bal oldali menüben keresse meg a **+ Erőforrás-elemzési** > **Analytics** > **adatgyár**közötti navigálást.
+2. A bal oldali menüben navigáljon az **`+ Create a resource`**  >  **elemzési** > **Data Factory**elemre.
 
-    ![Az Azure Data Factory a portálon](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Az Azure Data Factory a portálon")
+    ![Azure Data Factory a portálon](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory a portálon")
 
-3. Adja meg vagy jelölje ki az **Új adatgyár** csempe következő értékeit:
+3. Adja meg vagy válassza ki a következő értékeket az **új adatok gyári** csempéhez:
 
     |Tulajdonság  |Érték  |
     |---------|---------|
-    |Név | Adja meg az adat-előállító nevét. A névnek globálisan egyedinek kell lennie.|
-    |Verzió | Hagyjuk a **V2-nél.** |
+    |Name (Név) | Adja meg az adatelőállító nevét. A névnek globálisan egyedinek kell lennie.|
+    |Verzió | Távozás: **v2**. |
     |Előfizetés | Válassza ki az Azure-előfizetését. |
     |Erőforráscsoport | Válassza ki a PowerShell-parancsfájl használatával létrehozott erőforráscsoportot. |
-    |Hely | A hely automatikusan a megadott helyre lesz beállítva az erőforráscsoport korábbi létrehozásakor. Ebben az oktatóanyagban a hely **az USA keleti részére**van állítva. |
+    |Hely | A helyet a rendszer automatikusan a megadott helyre állítja be a korábban létrehozott erőforráscsoport létrehozásakor. Ebben az oktatóanyagban a hely az **USA keleti**régiójában van beállítva. |
     |GIT engedélyezése|Törölje a jelet a jelölőnégyzetből.|
 
-    ![Az Azure Data Factory létrehozása az Azure Portal használatával](./media/hdinsight-hadoop-create-linux-clusters-adf/azure-portal-create-data-factory.png "Az Azure Data Factory létrehozása az Azure Portal használatával")
+    ![Azure Data Factory létrehozása a Azure Portal használatával](./media/hdinsight-hadoop-create-linux-clusters-adf/azure-portal-create-data-factory.png "Azure Data Factory létrehozása a Azure Portal használatával")
 
-4. Kattintson a **Létrehozás** gombra. Az adat-előállító létrehozása 2–4 percet is igénybe vehet.
+4. Kattintson a **Létrehozás** gombra. Az adatelőállítók létrehozása 2 – 4 perc közötti időt is igénybe vehet.
 
-5. Az adat-előállító létrehozása után kap egy **telepítési sikeres** értesítést egy Ugrás **az erőforrásra** gombbal.  Válassza **az Ugrás az erőforrásra** lehetőséget a Data Factory alapértelmezett nézetének megnyitásához.
+5. Miután létrehozta az adatelőállítót, az **üzembe helyezés sikeres** értesítés jelenik meg az **erőforrás keresése** gombbal.  Válassza az **erőforrás** megnyitása lehetőséget az Data Factory alapértelmezett nézetének megnyitásához.
 
-6. Válassza **a Szerzői & figyelő** lehetőséget az Azure Data Factory szerzői és figyelési portál elindításához.
+6. Válassza a **létrehozás & a figyelő** lehetőséget a Azure Data Factory szerzői műveletek és figyelési portál elindításához.
 
-    ![Az Azure Data Factory portál áttekintése](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Az Azure Data Factory áttekintése")
+    ![Azure Data Factory portál áttekintése](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory áttekintése")
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 
-Ebben a szakaszban két összekapcsolt szolgáltatást hoz össze az adat-előállítón belül.
+Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előállítóban.
 
-* Egy **Azure Storage-beli társított szolgáltatást**, amely egy Azure Storage-fiókot társít az adat-előállítóhoz. Ezt a tárterületet csak az igény szerinti HDInsight-fürt használja. A fürtön futtatott Hive-parancsfájlt is tartalmazza.
-* Igény **szerinti HDInsight-kapcsolt szolgáltatás.** Az Azure Data Factory automatikusan létrehoz egy HDInsight-fürtöt, és futtatja a Hive-parancsfájlt. Ezt követően pedig törli a HDInsight-fürtöt, miután a fürt egy előre meghatározott ideig tétlen volt.
+* Egy **Azure Storage-beli társított szolgáltatást**, amely egy Azure Storage-fiókot társít az adat-előállítóhoz. Ezt a tárterületet csak az igény szerinti HDInsight-fürt használja. Emellett tartalmazza a fürtön futtatott struktúra-parancsfájlt is.
+* **Igény szerinti HDInsight társított szolgáltatás**. A Azure Data Factory automatikusan létrehoz egy HDInsight-fürtöt, és futtatja a kaptár parancsfájlt. Ezt követően pedig törli a HDInsight-fürtöt, miután a fürt egy előre meghatározott ideig tétlen volt.
 
 ### <a name="create-an-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása
 
-1. A **Let's get's started** lap bal oldali ablaktáblájában válassza a **Szerző** ikont.
+1. Az **első lépések** oldal bal oldali paneljén válassza a **Szerző** ikont.
 
-    ![Azure Data Factory-kapcsolattal összekapcsolt szolgáltatás létrehozása](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-edit-tab.png "Azure Data Factory-kapcsolattal összekapcsolt szolgáltatás létrehozása")
+    ![Azure Data Factory társított szolgáltatás létrehozása](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-edit-tab.png "Azure Data Factory társított szolgáltatás létrehozása")
 
-2. Válassza a **Kapcsolatok** lehetőséget az ablak bal alsó sarkában, majd a **+Új**lehetőséget.
+2. Válassza a **kapcsolatok** lehetőséget az ablak bal alsó sarkában, majd válassza az **+ új**lehetőséget.
 
-    ![Kapcsolatok létrehozása az Azure Data Factoryban](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-create-new-connection.png "Kapcsolatok létrehozása az Azure Data Factoryban")
+    ![Kapcsolatok létrehozása Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-create-new-connection.png "Kapcsolatok létrehozása Azure Data Factory")
 
-3. Az **Új csatolt szolgáltatás** párbeszédpanelen válassza az **Azure Blob Storage** lehetőséget, majd kattintson a Folytatás **gombra.**
+3. Az **új társított szolgáltatás** párbeszédpanelen válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás**gombra.
 
-    ![Azure Storage-alapú szolgáltatás létrehozása adatgyárhoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Azure Storage-alapú szolgáltatás létrehozása adatgyárhoz")
+    ![Azure Storage-beli társított szolgáltatás létrehozása Data Factoryhoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Azure Storage-beli társított szolgáltatás létrehozása Data Factoryhoz")
 
-4. Adja meg a következő értékeket a tárolóhoz csatolt szolgáltatáshoz:
+4. Adja meg a következő értékeket a Storage társított szolgáltatáshoz:
 
     |Tulajdonság |Érték |
     |---|---|
-    |Név |Írja be a `HDIStorageLinkedService` (igen) kifejezést.|
-    |Azure-előfizetés |Válassza ki az előfizetést a legördülő listából.|
-    |Storage account name (Tárfiók neve) |Válassza ki a PowerShell-parancsfájl részeként létrehozott Azure Storage-fiók.|
+    |Name (Név) |Írja be a `HDIStorageLinkedService` (igen) kifejezést.|
+    |Azure-előfizetés |Válassza ki az előfizetését a legördülő listából.|
+    |Storage account name (Tárfiók neve) |Válassza ki a PowerShell-parancsfájl részeként létrehozott Azure Storage-fiókot.|
 
-    Válassza **a Kapcsolat tesztelése** lehetőséget, majd ha sikeres, válassza a **Létrehozás lehetőséget.**
+    Válassza a **kapcsolatok tesztelése** és sikeres, majd a **Létrehozás**lehetőséget.
 
-    ![Az Azure Storage-hoz csatolt szolgáltatás nevének megadására](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Az Azure Storage-hoz csatolt szolgáltatás nevének megadására")
+    ![Adja meg az Azure Storage társított szolgáltatás nevét](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Adja meg az Azure Storage társított szolgáltatás nevét")
 
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>Igény szerinti HDInsight társított szolgáltatás létrehozása
 
 1. Kattintson ismét az **+ Új** gombra egy további társított szolgáltatás létrehozásához.
 
-2. Az **Új csatolt szolgáltatás** ablakban válassza a **Számítás** lapot.
+2. Az **új társított szolgáltatás** ablakban válassza a **számítás** lapot.
 
-3. Válassza az **Azure HDInsight**lehetőséget, majd a **Folytatás**lehetőséget.
+3. Válassza az **Azure HDInsight**lehetőséget, majd kattintson a **Continue (folytatás**) gombra.
 
-    ![HDInsight-csatolt szolgáltatás létrehozása az Azure Data Factory számára](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "HDInsight-csatolt szolgáltatás létrehozása az Azure Data Factory számára")
+    ![HDInsight társított szolgáltatás létrehozása a Azure Data Factoryhoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "HDInsight társított szolgáltatás létrehozása a Azure Data Factoryhoz")
 
-4. Az **Új csatolt szolgáltatás** ablakban adja meg a következő értékeket, a többit pedig hagyja alapértelmezettként:
+4. Az **új társított szolgáltatás** ablakban adja meg a következő értékeket, és hagyja a többi értéket alapértelmezettként:
 
     | Tulajdonság | Érték |
     | --- | --- |
-    | Név | Írja be a `HDInsightLinkedService` (igen) kifejezést.|
-    | Típus | Válassza **az Igény szerinti HDInsight lehetőséget.** |
+    | Name (Név) | Írja be a `HDInsightLinkedService` (igen) kifejezést.|
+    | Típus | **Igény szerinti HDInsight**kiválasztása. |
     | Azure Storage társított szolgáltatás | Válassza a(z) `HDIStorageLinkedService` lehetőséget. |
     | Fürt típusa | **Hadoop** kiválasztása |
-    | Élettartam | Adja meg azt az időtartamot, amelynek a HDInsight-fürt elérhetővé válik az automatikus törlés előtt.|
-    | Egyszerű szolgáltatás azonosítója | Adja meg az azure Active Directory egyszerű szolgáltatás az előfeltételek részeként létrehozott alkalmazásazonosítóját. |
-    | Egyszerű szolgáltatáskulcs | Adja meg az Azure Active Directory egyszerű szolgáltatáshitelesítési kulcsát. |
-    | Fürtnév előtagja | Adjon meg egy értéket, amely elő lesz rögzítve az adat-előállító által létrehozott összes fürttípushoz. |
-    |Előfizetés |Válassza ki az előfizetést a legördülő listából.|
+    | Élettartam | Adja meg azt az időtartamot, ameddig szeretné, hogy a HDInsight-fürt elérhető legyen az automatikus törlés előtt.|
+    | Egyszerű szolgáltatásnév azonosítója | Adja meg az előfeltételek részeként létrehozott Azure Active Directory egyszerű szolgáltatásnév alkalmazás-AZONOSÍTÓját. |
+    | Egyszerű szolgáltatásnév kulcsa | Adja meg a Azure Active Directory egyszerű szolgáltatásnév hitelesítési kulcsát. |
+    | Fürt neve előtag | Adjon meg egy értéket, amely az összes, az adatelőállító által létrehozott fürt típusához előtaggal lesz ellátva. |
+    |Előfizetés |Válassza ki az előfizetését a legördülő listából.|
     | Erőforráscsoport kiválasztása | Válassza ki a korábban használt PowerShell-parancsfájl részeként létrehozott erőforráscsoportot.|
-    | Operációs rendszer típusa/Fürt SSH-felhasználóneve | Gyakran adjon meg egy `sshuser`SSH-felhasználónevet. |
-    | Operációs rendszer típusa/Fürt SSH-jelszava | Jelszó megadása az SSH-felhasználó számára |
-    | Operációs rendszer típusa/fürt felhasználóneve | Gyakran adja meg a `admin`fürt felhasználónevét. |
-    | Operációs rendszer típusa/fürtjel | Adjon meg jelszót a fürtfelhasználószámára. |
+    | Operációs rendszer típusa/fürt SSH-felhasználóneve | Írjon be egy SSH-felhasználónevet `sshuser`, általában. |
+    | Operációs rendszer típusa/fürt SSH-jelszava | Adja meg az SSH-felhasználó jelszavát |
+    | Operációs rendszer típusa/fürt felhasználóneve | Adja meg a fürthöz tartozó felhasználónevet, általában `admin`a nevet. |
+    | Operációs rendszer típusa/fürt jelszava | Adja meg a fürt felhasználójának jelszavát. |
 
-    Ezután válassza **a Létrehozás lehetőséget.**
+    Ezután válassza a **Létrehozás**lehetőséget.
 
-    ![Értékek biztosítása a HDInsight-csatolt szolgáltatáshoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "Értékek biztosítása a HDInsight-csatolt szolgáltatáshoz")
+    ![Adja meg a HDInsight társított szolgáltatás értékeit](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "Adja meg a HDInsight társított szolgáltatás értékeit")
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-1. Válassza **+** a (plusz) gombot, majd a **Folyamat**lehetőséget.
+1. Válassza a **+** (plusz) gombot, majd válassza a **folyamat**elemet.
 
-    ![Folyamat létrehozása az Azure Data Factoryban](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Folyamat létrehozása az Azure Data Factoryban")
+    ![Folyamat létrehozása Azure Data Factoryban](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Folyamat létrehozása Azure Data Factoryban")
 
-1. A **Tevékenységek** eszközkészletben bontsa ki a **HDInsight**csomópontot, és húzza a **Hive-tevékenységet** a folyamattervező felületére. Az **Általános** lapon adja meg a tevékenység nevét.
+1. A **tevékenységek** eszközkészletben bontsa ki a **HDInsight**csomópontot, és húzza a **kaptár** tevékenységet a folyamat tervező felületére. Az **általános** lapon adja meg a tevékenység nevét.
 
-    ![Tevékenységek hozzáadása a Data Factory folyamathoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "Tevékenységek hozzáadása a Data Factory folyamathoz")
+    ![Tevékenységek hozzáadása Data Factory folyamathoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "Tevékenységek hozzáadása Data Factory folyamathoz")
 
-1. Győződjön meg arról, hogy a Hive-tevékenység ki van jelölve, válassza ki a **HDI-fürt** lapot, és a **HDInsight csatolt szolgáltatás** legördülő listájában válassza ki a korábban létrehozott csatolt szolgáltatást, **a HDInsight-szolgáltatást**a HDInsight számára.
+1. Győződjön meg arról, hogy a kaptár tevékenység van kiválasztva, majd válassza a **HDI-fürt** fület. A **HDInsight társított szolgáltatás** legördülő listájában válassza ki a korábban létrehozott társított szolgáltatást a HDInsight **HDInsightLinkedService**.
 
-    ![A folyamat HDInsight-fürtjének részleteinek biztosítása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "A folyamat HDInsight-fürtjének részleteinek biztosítása")
+    ![HDInsight-fürt adatainak megadása a folyamathoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "HDInsight-fürt adatainak megadása a folyamathoz")
 
-1. Válassza a **Parancsfájl** lapot, és hajtsa végre a következő lépéseket:
+1. Válassza a **szkript** fület, és végezze el a következő lépéseket:
 
-    1. Parancsfájlalapú **szolgáltatás**esetén válassza a **HDIStorageLinkedService** elemet a legördülő listából. Ez az érték a korábban létrehozott, tárolóhoz csatolt szolgáltatás.
+    1. A **parancsfájlhoz társított szolgáltatás**esetében válassza a **HDIStorageLinkedService** lehetőséget a legördülő listából. Ez az érték a korábban létrehozott Storage társított szolgáltatás.
 
-    1. A **Fájlelérési út**esetében válassza a **Tároló tallózása** lehetőséget, és keresse meg azt a helyet, ahol a minta Hive-parancsfájl elérhető. Ha korábban futtatta a PowerShell-parancsfájlt, ennek a helynek kell lennie. `adfgetstarted/hivescripts/partitionweblogs.hql`
+    1. A **fájl elérési útja**területen válassza a **Tallózás tároló** lehetőséget, és navigáljon arra a helyre, ahol a minta struktúra-parancsfájl elérhető. Ha korábban futtatta a PowerShell-parancsfájlt, ennek a `adfgetstarted/hivescripts/partitionweblogs.hql`helynek a következőnek kell lennie:.
 
-        ![A folyamat Hive-parancsfájl részleteinek biztosítása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "A folyamat Hive-parancsfájl részleteinek biztosítása")
+        ![A folyamathoz tartozó struktúra-parancsfájl részleteinek megadása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "A folyamathoz tartozó struktúra-parancsfájl részleteinek megadása")
 
-    1. A Speciális > **paraméterek** **csoportban**válassza az **Automatikus kitöltés parancsfájlból**lehetőséget. Ez a beállítás a Hive-parancsfájlban olyan paramétereket keres, amelyek futásidőben értékeket igényelnek.
+    1. A **speciális** > **Paraméterek**területen válassza **`Auto-fill from script`** a elemet. Ez a beállítás minden olyan paramétert megkeres a kaptár-parancsfájlban, amely futásidőben értéket igényel.
 
-    1. Az **érték** mezőbe írja be a meglévő `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/`mappát a formátumba. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az az elérési út, ahol a parancsfájl kimenete tárolódik. A `wasbs` séma azért szükséges, mert a tárfiókok most már a biztonságos átvitel alapértelmezés szerint engedélyezve van.
+    1. Az **érték** szövegmezőben adja hozzá a meglévő mappát a formátum `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/`mezőben. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az elérési út a parancsfájl kimenetét fogja tárolni. A `wasbs` séma azért szükséges, mert a Storage-fiókok esetében alapértelmezés szerint engedélyezve van a biztonságos átvitel.
 
-        ![A Hive-parancsfájl paramétereinek megadása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "A Hive-parancsfájl paramétereinek megadása")
+        ![Adja meg a kaptár parancsfájl paramétereit](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Adja meg a kaptár parancsfájl paramétereit")
 
-1. Válassza **az Érvényesítés** lehetőséget a folyamat érvényesítéséhez. Az **>>** érvényesítési ablak bezárásához kattintson a (jobbra nyíl) gombra.
+1. A folyamat érvényesítéséhez kattintson az **Érvényesítés** elemre. Az érvényesítési ablak bezárásához kattintson a **>>** (jobbra mutató nyíl) gombra.
 
-    ![Az Azure Data Factory-folyamat ellenőrzése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png "Az Azure Data Factory-folyamat ellenőrzése")
+    ![A Azure Data Factory folyamat ellenőrzése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png "A Azure Data Factory folyamat ellenőrzése")
 
-1. Végül válassza **az összes közzététele** az összetevők az Azure Data Factory közzétételéhez.
+1. Végül válassza az **összes közzététele** lehetőséget az összetevők közzétételéhez Azure Data Factory.
 
-    ![Az Azure Data Factory-folyamat közzététele](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png "Az Azure Data Factory-folyamat közzététele")
+    ![A Azure Data Factory-folyamat közzététele](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png "A Azure Data Factory-folyamat közzététele")
 
 ## <a name="trigger-a-pipeline"></a>Folyamat aktiválása
 
-1. A tervezőfelület eszköztárán válassza az **Eseményindító** > hozzáadása**most**lehetőséget.
+1. A tervező felületének eszköztárán válassza az **aktiválási** > **trigger hozzáadása most**lehetőséget.
 
-    ![Az Azure Data Factory folyamatának aktiválása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "Az Azure Data Factory folyamatának aktiválása")
+    ![A Azure Data Factory folyamat elindítása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "A Azure Data Factory folyamat elindítása")
 
-2. Az előugró ablak sávjában válassza az **OK gombot.**
+2. Kattintson az **OK gombra** az előugró oldali sávon.
 
 ## <a name="monitor-a-pipeline"></a>Folyamat monitorozása
 
-1. Váltson a bal oldali **Monitorozás** lapra. Ekkor a folyamat futása megjelenik a **Pipeline Runs** (Folyamatfuttatások) listában. Figyelje meg a futtatás állapotát az **Állapot** oszlopban.
+1. Váltson a bal oldali **Monitorozás** lapra. Ekkor a folyamat futása megjelenik a **Pipeline Runs** (Folyamatfuttatások) listában. Figyelje meg a Futtatás állapotát az **állapot** oszlopban.
 
-    ![Az Azure Data Factory-folyamat figyelése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "Az Azure Data Factory-folyamat figyelése")
+    ![A Azure Data Factory folyamat figyelése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "A Azure Data Factory folyamat figyelése")
 
 1. Az állapot frissítéséhez kattintson a **Frissítés** gombra.
 
-1. A **Tevékenység futtatásak megtekintése** ikont is kiválaszthatja a folyamathoz társított tevékenységfuttatás megtekintéséhez. Az alábbi képernyőképen csak egy tevékenységfuttatáslátható, mivel csak egy tevékenység van a létrehozott folyamatban. Az előző nézetre való visszaváltáshoz válassza a **Folyamatok** elemet a lap tetejének felé.
+1. Azt is megteheti, hogy kijelöli a **tevékenység** futtatása ikont, hogy megjelenjen-e a folyamathoz társított tevékenység. Az alábbi képernyőképen csak egy tevékenység fut, mivel a létrehozott folyamatnak csak egy tevékenysége van. Ha vissza szeretne térni az előző nézetre, válassza a **folyamatok** lehetőséget az oldal tetején.
 
-    ![Az Azure Data Factory folyamattevékenységének figyelése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "Az Azure Data Factory folyamattevékenységének figyelése")
+    ![A Azure Data Factoryi folyamat tevékenységének figyelése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "A Azure Data Factoryi folyamat tevékenységének figyelése")
 
 ## <a name="verify-the-output"></a>Kimenet ellenőrzése
 
-1. A kimenet ellenőrzéséhez az Azure Portalon keresse meg az oktatóanyaghoz használt tárfiókot. A következő mappákat vagy tárolókat kell látnia:
+1. A kimenet ellenőrzéséhez a Azure Portal navigáljon az oktatóanyaghoz használt Storage-fiókhoz. A következő mappákat vagy tárolókat kell látnia:
 
-    * Megjelenik egy **adfgerstarted/outputfolder,** amely a folyamat részeként futtatott Hive-parancsfájl kimenetét tartalmazza.
+    * Megjelenik egy **adfgerstarted/OutputFolder** , amely a folyamat részeként futtatott struktúra-parancsfájl kimenetét tartalmazza.
 
-    * Megjelenik egy **adfhdidatafactory-\<csatolt szolgáltatás-név>-\<időbélyeg>** tároló. Ez a tároló a folyamatfuttatása részeként létrehozott HDInsight-fürt alapértelmezett tárolási helye.
+    * Megjelenik egy **adfhdidatafactory\<-linked-service-Name>-\<timestamp>** tároló. Ez a tároló a folyamat futtatásának részeként létrehozott HDInsight-fürt alapértelmezett tárolási helye.
 
-    * Megjelenik egy **adfjobs** tároló, amely rendelkezik az Azure Data Factory feladat naplók.  
+    * Megjelenik egy olyan **adfjobs** -tároló, amely tartalmazza a Azure Data Factory feladatok naplóit.  
 
-        ![Az Azure Data Factory folyamatkimenetének ellenőrzése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "Az Azure Data Factory folyamatkimenetének ellenőrzése")
+        ![A Azure Data Factory folyamat kimenetének ellenőrzése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "A Azure Data Factory folyamat kimenetének ellenőrzése")
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az igény szerinti HDInsight-fürt létrehozása esetén nem kell explicit módon törölnie a HDInsight-fürtöt. A fürt törlődik a folyamat létrehozásakor megadott konfiguráció alapján. Azonban még a fürt törlése után is léteznek a fürthöz társított tárfiókok. Ez a viselkedés szándékosan, hogy az adatok érintetlenek maradhassanak. Ha azonban nem szeretné megtartani az adatokat, törölheti a létrehozott tárfiókot.
+Az igény szerinti HDInsight-fürt létrehozásakor nem szükséges explicit módon törölni a HDInsight-fürtöt. A rendszer a folyamat létrehozásakor megadott konfiguráció alapján törli a fürtöt. Még a fürt törlése után is a fürthöz társított Storage-fiókok továbbra is fennállnak. Ez a viselkedés úgy van kialakítva, hogy ne legyenek érintetlenek az adatai. Ha azonban nem szeretné megőrizni az adatmegőrzést, törölheti a létrehozott Storage-fiókot.
 
-Azt is megteheti, hogy törli az oktatóanyaghoz létrehozott teljes erőforráscsoportot. Ez törli a tárfiókot és az Azure Data Factory, amely a létrehozott.
+Vagy törölheti az oktatóanyaghoz létrehozott teljes erőforráscsoportot is. Ez a folyamat törli a Storage-fiókot és a létrehozott Azure Data Factory.
 
 ### <a name="delete-the-resource-group"></a>Az erőforráscsoport törlése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Válassza **az Erőforráscsoportok lehetőséget** a bal oldali ablaktáblán.
-1. Válassza ki a PowerShell-parancsfájlban létrehozott erőforráscsoport nevét. Használja a szűrőt, ha túl sok erőforráscsoport szerepel a listában. Megnyitja az erőforráscsoportot.
-1. Az **Erőforrások** csempén az alapértelmezett tárfiókkal és az adat-előállítóval kell rendelkeznie, hacsak nem osztja meg az erőforráscsoportot más projektekkel.
-1. Válassza az **Erőforráscsoport törlése** elemet. Ezzel törli a tárfiókot és a tárfiókban tárolt adatokat.
+1. Válassza az **erőforráscsoportok** lehetőséget a bal oldali ablaktáblán.
+1. Válassza ki a PowerShell-parancsfájlban létrehozott erőforráscsoport-nevet. Ha túl sok erőforráscsoport van felsorolva, használja a szűrőt. Ekkor megnyílik az erőforráscsoport.
+1. Az **erőforrások** csempén az alapértelmezett Storage-fiókkal és az adatelőállítóval kell rendelkeznie, hacsak nem osztja meg az erőforráscsoportot más projektekkel.
+1. Válassza az **Erőforráscsoport törlése** elemet. Ezzel törli a Storage-fiókot és a Storage-fiókban tárolt adatfájlokat.
 
-    ![Az Azure Portal erőforráscsoport törlése](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Erőforráscsoport törlése")
+    !["Azure Portal törlési erőforráscsoport"](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Erőforráscsoport törlése")
 
-1. A törlés megerősítéséhez adja meg az erőforráscsoport nevét, majd kattintson a **Törlés gombra.**
+1. Adja meg az erőforráscsoport nevét a törlés megerősítéséhez, majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan használhatja az Azure Data Factory t igény szerinti HDInsight-fürt létrehozásához és [az Apache Hive-feladatok](https://hive.apache.org/) futtatásához. A következő cikkből megtudhatja, hogyan hozhat létre HDInsight-fürtöket egyéni konfigurációval.
+Ebben a cikkben megtanulta, hogyan használhatja a Azure Data Factoryt igény szerinti HDInsight-fürt létrehozására, és Apache Hive feladatok futtatására. A következő cikkből megtudhatja, hogyan hozhat létre egyéni konfigurációval rendelkező HDInsight-fürtöket.
 
 > [!div class="nextstepaction"]
 > [Azure HDInsight-fürtök létrehozása egyéni konfigurációval](hdinsight-hadoop-provision-linux-clusters.md)
