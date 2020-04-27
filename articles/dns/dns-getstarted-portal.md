@@ -8,16 +8,16 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b34b45cba805d748dcc8a0c31340cd8116e1c80
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76937134"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160766"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Gyors útmutató: Azure DNS zóna és rekord létrehozása a Azure Portal használatával
 
-Az Azure DNS-t konfigurálhatja úgy, hogy feloldja a gazdagépneveket a nyilvános tartományban. Ha például megvásárolta a *contoso. xyz* tartománynevet a tartománynév-regisztrálótól, konfigurálhatja Azure DNS a *contoso. xyz* tartomány üzemeltetéséhez, és a *www. contoso. xyz* fájlnak a WEBKISZOLGÁLÓ vagy a webalkalmazás IP-címére való feloldásához.
+Az Azure DNS-t konfigurálhatja úgy, hogy feloldja a gazdagépneveket a nyilvános tartományban. Ha például megvásárolta a *contoso. xyz* tartománynevet a tartománynév-regisztrálótól, a Azure DNS konfigurálhatja a *contoso. xyz* tartomány üzemeltetéséhez és a webkiszolgáló vagy a webalkalmazás IP-címéhez való feloldáshoz *`www.contoso.xyz`* .
 
 Ebben a rövid útmutatóban létrehoz egy tesztelési tartományt, majd létrehoz egy címet a *www* feloldásához az IP- *10.10.10.10*.
 

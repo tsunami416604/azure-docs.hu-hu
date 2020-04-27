@@ -1,6 +1,6 @@
 ---
-title: Jogcímbarát alkalmazások – Azure AD alkalmazásproxy | Microsoft dokumentumok
-description: A helyszíni ASP.NET alkalmazások közzététele, amelyek elfogadják az ADFS-jogcímeket a felhasználók biztonságos táveléréséhez.
+title: Jogcímbarát alkalmazások – Azure AD alkalmazás proxy | Microsoft Docs
+description: Helyszíni ASP.NET-alkalmazások közzététele, amelyek elfogadják az ADFS jogcímeit a felhasználók biztonságos távoli eléréséhez.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,46 +16,46 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68477240"
 ---
-# <a name="working-with-claims-aware-apps-in-application-proxy"></a>Jogcímbarát alkalmazások használata az Alkalmazásproxyban
-[A jogcímbarát alkalmazások](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) átirányítást hajtanak végre a biztonsági jogkivonat-szolgáltatás (STS) szolgáltatásra. Az STS hitelesítő adatokat kér a felhasználótól egy jogkivonatért cserébe, majd átirányítja a felhasználót az alkalmazásba. Többféleképpen is engedélyezheti, hogy az alkalmazásproxy együttműködjön ezekkel az átirányításokkal. Ebben a cikkben konfigurálhatja a telepítést a jogcímbarát alkalmazásokhoz. 
+# <a name="working-with-claims-aware-apps-in-application-proxy"></a>Jogcímbarát alkalmazások használata az Application proxyban
+A [jogcímbarát alkalmazások](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) átirányítást hajtanak végre a biztonsági jogkivonat szolgáltatásban (STS). Az STS hitelesítő adatokat kér a felhasználótól egy jogkivonat számára, majd átirányítja a felhasználót az alkalmazáshoz. Az alkalmazásproxy használatának néhány módja van az ilyen átirányításokkal való együttműködéshez. Ez a cikk a jogcímbarát alkalmazások központi telepítésének konfigurálására használható. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Győződjön meg arról, hogy a jogcímbarát alkalmazás átirányítása a helyszíni hálózaton kívül érhető el. Az STS-t elérhetővé teheti, ha proxyn keresztül teszi elérhetővé, vagy külső kapcsolatokat engedélyez. 
+Győződjön meg arról, hogy a jogcímbarát alkalmazás által átirányított STS elérhető a helyszíni hálózaton kívülről. Az STS elérhetővé tételét proxyn keresztül vagy a külső kapcsolatok engedélyezésével teheti meg. 
 
 ## <a name="publish-your-application"></a>Az alkalmazás közzététele
 
-1. Tegye közzé az alkalmazást az [Alkalmazások közzététele alkalmazásproxyval](application-proxy-add-on-premises-application.md)című könyvben leírtaknak megfelelően.
-2. Nyissa meg az alkalmazás lapját a portálon, és válassza **az Egyszeri bejelentkezés**lehetőséget.
-3. Ha az **Azure Active Directoryt** választotta **előhitelesítési módszerként,** válassza az Azure **AD egyszeri bejelentkezésletiltva** **belső hitelesítési módszerként**lehetőséget. Ha **az Áterdei átszámítási** módszert választotta **előhitelesítési módszerként,** semmit sem kell módosítania.
+1. Tegye közzé az alkalmazást az Application [proxyval történő alkalmazások közzététele](application-proxy-add-on-premises-application.md)című részben leírt utasítások szerint.
+2. Navigáljon az alkalmazás lapra a portálon, és válassza az **egyszeri bejelentkezés**lehetőséget.
+3. Ha a **Azure Active Directory** az **előhitelesítési módszerként**választotta, akkor a **belső hitelesítési módszerként**válassza az **Azure ad egyszeri bejelentkezés letiltva** lehetőséget. Ha a **továbbítót** választotta **előhitelesítési módszerként**, nem kell semmit módosítania.
 
-## <a name="configure-adfs"></a>A DFS konfigurálása
+## <a name="configure-adfs"></a>Az ADFS konfigurálása
 
-Az ADFS-t kétféleképpen konfigurálhatja jogcímbarát alkalmazásokhoz. Az első az egyéni tartományok használatával. A második a WS-Federation-nél van. 
+Az ADFS-t kétféleképpen is konfigurálhatja a jogcímbarát alkalmazásokhoz. Az első az egyéni tartományok használata. A második a WS-Federation. 
 
-### <a name="option-1-custom-domains"></a>1. lehetőség: Egyéni tartományok
+### <a name="option-1-custom-domains"></a>1. lehetőség: egyéni tartományok
 
-Ha az alkalmazások összes belső URL-címe teljesen minősített tartománynév (FQDN), akkor [egyéni tartományokat](application-proxy-configure-custom-domain.md) konfigurálhat az alkalmazásokhoz. Az egyéni tartományok segítségével hozzon létre olyan külső URL-címeket, amelyek megegyeznek a belső URL-címekkel. Ha a külső URL-címek megfelelnek a belső URL-ek, majd az STS átirányítások munka, hogy a felhasználók a helyszíni vagy távoli. 
+Ha az alkalmazásokhoz tartozó összes belső URL-cím teljes tartománynevet (FQDN) használ, akkor [Egyéni tartományokat](application-proxy-configure-custom-domain.md) konfigurálhat az alkalmazásaihoz. Az egyéni tartományok használatával olyan külső URL-címeket hozhat létre, amelyek megegyeznek a belső URL-címekkel. Ha a külső URL-címek megfelelnek a belső URL-címeknek, az STS-átirányítások akkor működnek, ha a felhasználók helyszíni vagy távoliak. 
 
 ### <a name="option-2-ws-federation"></a>2. lehetőség: WS-Federation
 
-1. Nyissa meg az ADFS-kezelést.
-2. Nyissa meg **a Függő entitás megbízhatósági beállításait,** kattintson a jobb gombbal az alkalmazásproxyval közzékívánt alkalmazásra, és válassza a **Tulajdonságok parancsot.**  
+1. Nyissa meg az ADFS-kezelőt.
+2. Nyissa meg a **függő entitás megbízhatóságait**, kattintson a jobb gombbal az alkalmazásproxy által közzétett alkalmazásra, majd válassza a **Tulajdonságok**lehetőséget.  
 
-   ![A függő entitás megbízhatóságai a jobb gombbal az alkalmazás nevére kattintanak - képernyőkép](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
+   ![Függő entitás Megbízhatóságai – kattintson a jobb gombbal az alkalmazás nevére – képernyőkép](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
 
-3. A **Végpontok** lap **Végponttípusa csoportjában**válassza a **WS-Összevonás**lehetőséget.
-4. A **Megbízható URL csoportban**adja meg az alkalmazásproxyban megadott URL-címet a **Külső URL csoportban,** majd kattintson az **OK**gombra.  
+3. A **végpontok** lap **végpont típusa**területén válassza a **WS-Federation**elemet.
+4. A **megbízható URL**-cím területen adja meg a **külső URL-cím** alatt megadott alkalmazásproxy URL-címét, majd kattintson **az OK**gombra.  
 
-   ![Végpont hozzáadása - megbízható URL-érték beállítása - képernyőkép](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
+   ![Egy végponthoz beállított megbízható URL-érték hozzáadása – képernyőfelvétel](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>További lépések
-* [Egyszeri bejelentkezés engedélyezése](configure-single-sign-on-non-gallery-applications.md) olyan alkalmazásokhoz, amelyek nem jogcímbarát
-* [A natív ügyfélalkalmazások proxyalkalmazásokkal való interakciójának engedélyezése](application-proxy-configure-native-client-application.md)
+* [Egyszeri bejelentkezés engedélyezése](configure-single-sign-on-non-gallery-applications.md) a nem jogcímbarát alkalmazásokhoz
+* [Natív ügyfélalkalmazások engedélyezése a proxy alkalmazásokkal való kommunikációhoz](application-proxy-configure-native-client-application.md)
 
 

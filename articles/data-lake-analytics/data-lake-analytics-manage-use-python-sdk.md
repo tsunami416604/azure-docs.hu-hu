@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Analytics kezelése python használatával
-description: Ez a cikk bemutatja, hogyan használhatja a Pythont a Data Lake Analytics-fiókok, adatforrások, felhasználók & feladatok kezelésére.
+title: Azure Data Lake Analytics kezelése a Python használatával
+description: Ez a cikk azt ismerteti, hogyan használható a Python a Data Lake Analytics fiókok, adatforrások, felhasználók és & feladatok kezelésére.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: matt1883
@@ -10,42 +10,42 @@ ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: d40658e1510c9ae8a2e3e1f865df7ac95f61abfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68355983"
 ---
-# <a name="manage-azure-data-lake-analytics-using-python"></a>Az Azure Data Lake Analytics kezelése python használatával
+# <a name="manage-azure-data-lake-analytics-using-python"></a>Azure Data Lake Analytics kezelése a Python használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Ez a cikk ismerteti, hogyan kezelheti az Azure Data Lake Analytics-fiókok, adatforrások, felhasználók és feladatok python használatával.
+Ez a cikk bemutatja, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatforrásokat, felhasználókat és feladatokat a Python használatával.
 
 ## <a name="supported-python-versions"></a>Támogatott Python-verziók
 
-* A Python 64 bites verzióját használja.
-* Használhatja a szabványos Python disztribúció található **[Python.org letöltések](https://www.python.org/downloads/)**. 
-* Sok fejlesztő kényelmesnek találja az **[Anaconda Python disztribúció használatát.](https://www.anaconda.com/download/)**  
-* Ezt a cikket python 3.6-os verzióval írták a szabványos Python disztribúcióból
+* A Python 64-bites verzióját használja.
+* A **[Python.org downloads](https://www.python.org/downloads/)** címen található standard Python-disztribúciót is használhatja. 
+* Számos fejlesztő úgy találja, hogy kényelmes az **[anaconda Python-eloszlás](https://www.anaconda.com/download/)** használatát.  
+* Ez a cikk a Python 3,6-es verziójának a standard Python-disztribúcióból való használatával lett írva.
 
 ## <a name="install-azure-python-sdk"></a>Az Azure Python SDK telepítése
 
 Telepítse a következő modulokat:
 
-* Az **azure-mgmt-erőforrás** modul más Azure-modulokat tartalmaz az Active Directoryhoz, stb.
-* Az **azure-datalake-store** modul tartalmazza az Azure Data Lake Store fájlrendszer-műveleteket. 
-* Az **azure-mgmt-datalake-store** modul tartalmazza az Azure Data Lake Store fiókkezelési műveleteket.
-* Az **azure-mgmt-datalake-analytics** modul tartalmazza az Azure Data Lake Analytics-műveleteket. 
+* Az **Azure-mgmt-Resource** modul más Azure-modulokat is tartalmaz Active Directoryekhez stb.
+* Az **Azure-datalake-Store** modul tartalmazza a Azure Data Lake Store fájlrendszeri műveleteket. 
+* Az **Azure-mgmt-datalake-Store** modul tartalmazza a Azure Data Lake Store Fiókkezelés műveleteit.
+* Az **Azure-mgmt-datalake-Analytics** modul tartalmazza a Azure Data Lake Analytics műveleteket. 
 
-Először győződjön meg `pip` róla, hogy a legújabb a következő parancs futtatásával:
+Először győződjön meg arról, hogy rendelkezik `pip` a legújabb paranccsal a következő parancs futtatásával:
 
 ```
 python -m pip install --upgrade pip
 ```
 
-Ezt a dokumentumot a segítségével `pip version 9.0.1`írták.
+Ez a dokumentum a használatával `pip version 9.0.1`lett írva.
 
-A modulok `pip` parancssorból történő telepítéséhez használja a következő parancsokat:
+A következő `pip` parancsokkal telepítheti a modulokat a parancssorból:
 
 ```
 pip install azure-mgmt-resource
@@ -54,9 +54,9 @@ pip install azure-mgmt-datalake-store
 pip install azure-mgmt-datalake-analytics
 ```
 
-## <a name="create-a-new-python-script"></a>Új Python-parancsfájl létrehozása
+## <a name="create-a-new-python-script"></a>Új Python-szkript létrehozása
 
-Illessze be a következő kódot a parancsfájlba:
+Illessze be a következő kódot a szkriptbe:
 
 ```python
 # Use this only for Azure AD service-to-service authentication
@@ -95,15 +95,15 @@ import uuid
 import time
 ```
 
-Futtassa ezt a parancsfájlt annak ellenőrzéséhez, hogy a modulok importálhatók-e.
+Futtassa ezt a szkriptet annak ellenőrzéséhez, hogy a modulok importálhatók-e.
 
 ## <a name="authentication"></a>Hitelesítés
 
-### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktív felhasználói hitelesítés előugró ablakkal
+### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktív felhasználói hitelesítés előugró ablakban
 
-Ez a módszer nem támogatott.
+Ez a metódus nem támogatott.
 
-### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktív felhasználói hitelesítés eszközkóddal
+### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktív felhasználói hitelesítés egy eszköz kódjával
 
 ```python
 user = input(
@@ -112,7 +112,7 @@ password = getpass.getpass()
 credentials = UserPassCredentials(user, password)
 ```
 
-### <a name="noninteractive-authentication-with-spi-and-a-secret"></a>Nem interaktív hitelesítés SPI-vel és titkos
+### <a name="noninteractive-authentication-with-spi-and-a-secret"></a>Nem interaktív hitelesítés SPI-vel és titkos kulccsal
 
 ```python
 credentials = ServicePrincipalCredentials(
@@ -121,11 +121,11 @@ credentials = ServicePrincipalCredentials(
 
 ### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Nem interaktív hitelesítés API-val és tanúsítvánnyal
 
-Ez a módszer nem támogatott.
+Ez a metódus nem támogatott.
 
 ## <a name="common-script-variables"></a>Gyakori parancsfájl-változók
 
-Ezeket a változókat használják a mintákban.
+Ezeket a változókat a minták használják.
 
 ```python
 subid = '<Azure Subscription ID>'
@@ -153,7 +153,7 @@ armGroupResult = resourceClient.resource_groups.create_or_update(
 
 ## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics-fiók létrehozása
 
-Először hozzon létre egy áruházi fiókot.
+Először hozzon létre egy áruházbeli fiókot.
 
 ```python
 adlsAcctResult = adlsAcctClient.account.create(
@@ -164,7 +164,7 @@ adlsAcctResult = adlsAcctClient.account.create(
     )
 ).wait()
 ```
-Ezután hozzon létre egy ADLA-fiókot, amely az adott tárolót használja.
+Ezután hozzon létre egy ADLA-fiókot, amely ezt a tárolót használja.
 
 ```python
 adlaAcctResult = adlaAcctClient.account.create(
@@ -178,7 +178,7 @@ adlaAcctResult = adlaAcctClient.account.create(
 ).wait()
 ```
 
-## <a name="submit-a-job"></a>Feladat beküldése
+## <a name="submit-a-job"></a>Feladatok elküldése
 
 ```python
 script = """
@@ -206,7 +206,7 @@ jobResult = adlaJobClient.job.create(
 )
 ```
 
-## <a name="wait-for-a-job-to-end"></a>Várjon, amíg a feladat véget ér
+## <a name="wait-for-a-job-to-end"></a>Várakozás a feladatok befejezésére
 
 ```python
 jobResult = adlaJobClient.job.get(adla, jobId)
@@ -220,7 +220,7 @@ print('Job finished with result: ' + jobResult.result.value)
 ```
 
 ## <a name="list-pipelines-and-recurrences"></a>Folyamatok és ismétlődések listázása
-Attól függően, hogy a feladatok hoznak-e csővezeték- vagy ismétlődési metaadatokat, listázhatja a folyamatokat és az ismétlődéseket.
+Attól függően, hogy a feladatokhoz van-e csatolva folyamat vagy ismétlődési metaadatok, a folyamatokat és az ismétlődéseket is listázhatja.
 
 ```python
 pipelines = adlaJobClient.pipeline.list(adla)
@@ -234,11 +234,11 @@ for r in recurrences:
 
 ## <a name="manage-compute-policies"></a>Számítási házirendek kezelése
 
-A DataLakeAnalyticsManagementClient objektum módszereket biztosít a Data Lake Analytics-fiók számítási szabályzatainak kezeléséhez.
+A DataLakeAnalyticsAccountManagementClient objektum olyan metódusokat biztosít, amelyekkel felügyelhető a Data Lake Analytics fiók számítási házirendjeinek kezelése.
 
-### <a name="list-compute-policies"></a>Számítási házirendek listázása
+### <a name="list-compute-policies"></a>Számítási szabályzatok listázása
 
-A következő kód beolvassa a Data Lake Analytics-fiók számítási szabályzatainak listáját.
+A következő kód lekéri egy Data Lake Analytics fiók számítási házirendjeinek listáját.
 
 ```python
 policies = adlaAccountClient.computePolicies.listByAccount(rg, adla)
@@ -247,9 +247,9 @@ for p in policies:
           p.maxDegreeOfParallelismPerJob + 'Min priority / job: ' + p.minPriorityPerJob)
 ```
 
-### <a name="create-a-new-compute-policy"></a>Új számítási házirend létrehozása
+### <a name="create-a-new-compute-policy"></a>Új számítási szabályzat létrehozása
 
-A következő kód létrehoz egy új számítási szabályzatot a Data Lake Analytics-fiókhoz, a megadott felhasználó számára elérhető maximális Atus-t 50-re, a minimális feladatprioritást pedig 250-re állítva.
+A következő kód egy új számítási szabályzatot hoz létre egy Data Lake Analytics-fiókhoz, amely a megadott felhasználó számára elérhető maximális értéket adja meg 50-re, a feladat minimális prioritását pedig 250-re állítja.
 
 ```python
 userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde"
@@ -263,5 +263,5 @@ adlaAccountClient.computePolicies.createOrUpdate(
 
 - Ha ugyanezt az oktatóanyagot más eszközök használatával szeretné megtekinteni, kattintson az oldal tetején található lapválasztókra.
 - A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).
-- Felügyeleti feladatok: [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md).
+- Felügyeleti feladatokhoz lásd: [Azure Data Lake Analytics kezelése Azure Portal használatával](data-lake-analytics-manage-use-portal.md).
 

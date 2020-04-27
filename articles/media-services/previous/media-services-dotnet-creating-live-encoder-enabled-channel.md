@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69015508"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a .NET használatával
@@ -66,7 +66,7 @@ A következő lépések a gyakran használt élő adatfolyam-továbbítási alka
 11. Tegye közzé a programhoz társított adategységet egy OnDemand-kereső létrehozásával.
 
     >[!NOTE]
-    >Amikor az AMS-fiók jön létre egy **alapértelmezett** streamelési végpont ot a fiók **leállított** állapotban. A tartalom-továbbításhoz használt streamvégpontnak **Fut** állapotban kell lennie. 
+    >Az AMS-fiók létrehozásakor a rendszer **leállított** állapotban adja hozzá a fiókhoz az **alapértelmezett** folyamatos átviteli végpontot. A tartalom-továbbításhoz használt streamvégpontnak **Fut** állapotban kell lennie. 
 
 12. Amikor készen áll a streamelésre és az archiválásra, indítsa el a programot.
 13. Ha kívánja, a kódolólónak küldött jelzéssel hirdetést is elindíthat. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
@@ -98,7 +98,7 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 * Jelenleg az élő stream maximális javasolt időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen.
-* A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információt [ebben a cikkben](media-services-dotnet-manage-entities.md#limit-access-policies) talál.
+* A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
 ## <a name="download-sample"></a>Minta letöltése
 
@@ -106,7 +106,7 @@ Az ebben a cikkben leírt mintát [innen](https://azure.microsoft.com/documentat
 
 ## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>A .NET-keretrendszerhez készült Media Services SDK-val történő fejlesztés előkészítése
 
-Állítsa be a fejlesztői környezetet, és népesítse be az app.config fájlt a kapcsolatadataival, ahogy azt a Media Services fejlesztése a [.NET fájlban leírta.](media-services-dotnet-how-to-use.md) 
+Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
 
 ## <a name="code-example"></a>Mintakód
 

@@ -320,8 +320,6 @@
           href: troubleshoot/troubleshoot-synapse-studio.md
         - name: Az Azure Synapse Analytics Studio hibaelhárítása a PowerShellel
           href: troubleshoot/troubleshoot-synapse-studio-powershell.md
-        - name: Integrálás a Power BI-jal
-          items: null
 - name: Útmutató
   items:
     - name: Biztonságos
