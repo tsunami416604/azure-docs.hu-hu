@@ -1,6 +1,6 @@
 ---
-title: StorSimple virtuális tömb – problémamegoldás | Microsoft dokumentumok
-description: Ismerteti a StorSimple Device Manager diagnosztizálási képesség, és elmagyarázza, hogyan kell használni a StorSimple virtuális tömb hibaelhárításához.
+title: StorSimple virtuális tömb hibáinak megoldása | Microsoft Docs
+description: Ismerteti a StorSimple Eszközkezelő diagnosztizálására szolgáló képességet, és ismerteti, hogyan használható a StorSimple virtuális tömb hibaelhárítására.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,33 +15,33 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 9d222097f9fb99a24f6213584a3419ed777f4a22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61408438"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>A StorSimple Virtual Array hibaelhárítása a StorSimple-eszközkezelő szolgáltatással
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Eszközkezelő a szolgáltatás összefoglaló paneljén belüli **problémák diagnosztizálása és megoldása** lehetőséget biztosít, amely kiemeli a virtuális tömböt érintő gyakori problémákat és azok megoldását. Ez az oktatóanyag bemutatja a StorSimple Eszközkezelő szolgáltatásön belül biztosított önkiszolgáló hibaelhárítási képességet.
+A StorSimple Eszközkezelő a szolgáltatás összefoglalása panelen a **problémák diagnosztizálására és megoldására** szolgáló beállításokat biztosít, amely a virtuális tömbben előforduló, gyakran előforduló problémákra, valamint azok megoldására szolgál. Ez az oktatóanyag bemutatja a StorSimple Eszközkezelő szolgáltatáson belül elérhető önkiszolgáló hibaelhárítási képességet.
 
 ![Problémák diagnosztizálása és megoldása](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-main.png)
 
 ## <a name="diagnose-and-solve-issues"></a>Problémák diagnosztizálása és megoldása
 
-Megtekintheti a StorSimple virtuális tömb néhány gyakori problémáját, és áttekintheti a megoldásokat ezekre a problémákra közvetlenül a StorSimple Device Manager szolgáltatás összefoglaló panel.
+Megtekintheti a StorSimple virtuális tömbökkel kapcsolatos gyakori problémákat, és áttekintheti a megoldásokat a StorSimple Eszközkezelő szolgáltatás összefoglalási paneljéről.
 
-#### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>Probléma diagnosztizálása a virtuális tömbbel
+#### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>A virtuális tömbhöz tartozó probléma diagnosztizálása
 
-1. Kattintson **a Problémák diagnosztizálása és megoldása** elemre a StorSimple Eszközkezelő szolgáltatás összefoglaló paneljének bal oldali ablaktáblájában a gyakori problémák listájának megtekintéséhez.
+1. A gyakori problémák listájának megtekintéséhez kattintson a StorSimple Eszközkezelő szolgáltatások összegzése panel bal oldali paneljén található **problémák diagnosztizálása és megoldása** beállításra.
 
-2. **Bontsa ki** annak a problémának a tünetét, amellyel a probléma elhárításának **elősegítésére javasolt lépések** áttekintéséhez szükséges. Ha szeretné, áttekintheti a részletes dokumentációs hivatkozásokat is, amelyektovábbi hivatkozást tartalmaznak.
+2. **Bontsa ki** azt a problémát, amellyel kapcsolatban a probléma elhárítása érdekében az **ajánlott lépések** áttekintésével foglalkozunk. Ha szeretné, tekintse át a részletes dokumentációs hivatkozásokat is, amelyek további hivatkozásokat tartalmaznak.
    
-    ![Probléma elhárítása](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
+    ![Probléma megoldása](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 
-3. Ha nem talál hivatkozást a problémájára, vagy nem tudja megoldani, további segítségért forduljon a Microsoft támogatási szolgálatához.
+3. Ha nem talál hivatkozást a problémára, vagy nem oldja meg, forduljon Microsoft ügyfélszolgálata további segítségért.
 
 ## <a name="next-steps"></a>További lépések
-További információ a [támogatási jegy naplózásáról](storsimple-virtual-array-log-support-ticket.md)
+További információ a [támogatási jegyek naplózásáról](storsimple-virtual-array-log-support-ticket.md)
 

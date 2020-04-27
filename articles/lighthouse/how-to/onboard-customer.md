@@ -3,12 +3,12 @@ title: Ügyfél előkészítése az Azure által delegált erőforrás-kezelésh
 description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azure-beli delegált erőforrás-kezelési szolgáltatásba, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők.
 ms.date: 04/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bc9cadab966c4d9ae3ddbc12a75f42f69e0c12f
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 2b8bf3125dd97397f83a2a2cbf23090bce41ad40
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146317"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82161108"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 
@@ -199,6 +199,8 @@ Mivel ez egy előfizetési szintű telepítés, nem indítható el a Azure Porta
 
 > [!IMPORTANT]
 > Ezt az előfizetési szintű üzembe helyezést egy nem vendég fióknak kell végrehajtania az ügyfél bérlője számára, aki az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+>
+> Ha az előfizetés a [Cloud Solution Provider (CSP) programon](../concepts/cloud-solution-provider.md)keresztül lett létrehozva, akkor minden olyan felhasználó, aki rendelkezik [rendszergazdai ügynök](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) szerepkörrel a szolgáltatói bérlőben, végrehajthatja a telepítést.
 
 ### <a name="powershell"></a>PowerShell
 

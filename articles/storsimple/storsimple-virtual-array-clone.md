@@ -1,6 +1,6 @@
 ---
-title: StorSimple virtual array biztonsági mentés klónozása | Microsoft dokumentumok
-description: Ismerje meg, hogyan klónozhat egy biztonsági másolatot, és hogyan állíthatja helyre a storSimple virtuális tömbfájlfájlját.
+title: StorSimple virtuális tömb biztonsági mentésének klónozása | Microsoft Docs
+description: Ismerje meg, hogyan készíthet biztonsági mentést, és hogyan állíthatja helyre a fájlokat a StorSimple virtuális tömbből.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,127 +15,127 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60580856"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klónozás a StorSimple virtuális tömb biztonsági másolatából
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk részletesen ismerteti, hogyan klónozhat egy biztonsági mentési készletet a megosztások vagy kötetek a Microsoft Azure StorSimple virtuális tömb. A klónozott biztonsági másolat a törölt vagy elveszett fájlok helyreállítására szolgál. A cikk részletes lépéseket is tartalmaz egy elemszintű helyreállítás végrehajtásához a StorSimple virtuális tömb fájlkiszolgálóként konfigurálva.
+Ez a cikk részletesen ismerteti a megosztások vagy kötetek biztonsági másolatának klónozását a Microsoft Azure StorSimple virtuális tömbben. A klónozott biztonsági másolat egy törölt vagy elveszett fájl helyreállítására szolgál. A cikk részletesen ismerteti, hogyan hajtható végre egy elemszintű helyreállítás a fájlkiszolgálón konfigurált StorSimple virtuális tömbben.
 
 ## <a name="clone-shares-from-a-backup-set"></a>Megosztások klónozása biztonságimásolat-készletből
 
-**Mielőtt megpróbálna klónozni a megosztásokat, győződjön meg arról, hogy elegendő hely áll rendelkezésre az eszközön a művelet végrehajtásához.** Ha egy biztonsági másolatból szeretne klónozni, az [Azure Portalon](https://portal.azure.com/)hajtsa végre a következő lépéseket.
+**A megosztások klónozása előtt győződjön meg arról, hogy elegendő hely van az eszközön a művelet végrehajtásához.** A biztonsági másolatból történő klónozáshoz a [Azure Portal](https://portal.azure.com/)hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-clone-a-share"></a>Megosztás klónozása
 
-1. Keresse meg az **Eszközök** panelt. Jelölje ki, kattintson az eszközre, majd a **Megosztások gombra.** Jelölje ki a klónozni kívánt megosztást, kattintson a jobb gombbal a megosztásra a helyi menü meghívásához. Válassza a **Klónozás**lehetőséget.
+1. Tallózással keresse meg az **eszközök** panelt. Jelölje ki, majd kattintson az eszközre, majd kattintson a **megosztások**lehetőségre. Válassza ki a klónozott megosztást, kattintson a jobb gombbal a megosztásra a helyi menü meghívásához. Válassza a **klónozás**lehetőséget.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/cloneshare1.png)
-2. A **Klónozás** panelen kattintson a **Biztonsági mentés > kijelölése gombra,** majd tegye a következőket: 
+2. A **klónozás** panelen kattintson a **biztonsági mentés > válassza ki** , majd tegye a következőket: 
    
-   a.    Az eszköz biztonsági másolatának szűrése az időtartomány alapján. Az Elmúlt **7 nap**, **az Elmúlt 30 nap**és az Elmúlt **év**közül választhat.
+   a.    Az eszközön lévő biztonsági másolat szűrése az időtartomány alapján. Az **elmúlt 7 nap**, az **elmúlt 30 nap**és az **elmúlt év**közül választhat.
    
-   b.    A megjelenített szűrt biztonsági másolatok listájában válassza ki a klónozni kívánt biztonsági másolatot.
+   b.    A szűrt biztonsági másolatok listájában válassza ki a klónozott biztonsági mentést.
    
    c.    Kattintson az **OK** gombra.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/cloneshare3.png)
-3. A **Klónozás** panelen kattintson a **Célbeállítások** elemre, majd tegye a következőket:
+3. A **klónozás** panelen kattintson a **cél beállítások** elemre, majd tegye a következőket:
    
-   a.    Adja meg a megosztás nevét. A megosztási névnek 3-127 karaktert kell tartalmaznia.
+   a.    Adja meg a megosztás nevét. A megosztás nevének 3-127 karaktert kell tartalmaznia.
    
-   b.    Adja meg a klónozott megosztás leírását.
+   b.    Opcionálisan megadhatja a klónozott megosztás leírását.
    
-   c.    Nem módosíthatja a visszaállítani kívánt megosztás típusát. A rétegzett megosztás oka rétegzett, helyileg rögzített megosztás pedig helyileg rögzítettként van klónozva.
+   c.    A visszaállítani kívánt megosztás típusa nem módosítható. A többplatformos megosztások klónozott módon, egy helyileg rögzített megosztásként kerülnek klónozásra.
    
-   d.    A kapacitás egyenlő a klónozáshoz szükséges megosztás méretével.
+   d.    A kapacitás úgy van beállítva, hogy megegyezzen a klónozott megosztás méretétől.
    
-   e.    Rendelje hozzá a rendszergazdákat ehhez a megosztáshoz. A megosztási tulajdonságokat a Fájlkezelőn keresztül módosíthatja a klónozás befejezése után.
+   e.    Rendelje hozzá a rendszergazdákat ehhez a megosztáshoz. A klónozott tulajdonságok a fájlkezelő befejezése után is módosíthatók.
    
    f.    Kattintson az **OK** gombra.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
-4. Klónozási feladat indításához kattintson a **Klónozás** gombra. A feladat befejezése után elindul a klónozási művelet, és értesítést kap. A klónozás folyamatának figyeléséhez lépjen a **Feladatok** panelre, és kattintson a feladatra a feladat részleteinek megtekintéséhez.
-5. A klón sikeres létrehozása után lépjen vissza a **Megosztások** panelre az eszközön.
-6. Most már megtekintheti az új klónozott megosztást az eszköz megosztásainak listájában. A rétegzett megosztások rétegzett ként klónoznak, a helyileg rögzített megosztás pedig helyileg rögzített megosztásként.
+4. A klónozott feladatok elindításához kattintson a **klónozás** elemre. A feladatok befejezése után elindul a klónozási művelet, és értesítést kap. A klónozás állapotának figyeléséhez lépjen a **feladatok** panelre, és kattintson a feladatra a feladat részleteinek megtekintéséhez.
+5. A klón sikeres létrehozása után váltson vissza az eszköz **megosztások** paneljére.
+6. Most már megtekintheti az új klónozott megosztást az eszközön található megosztások listájában. A többplatformos megosztások klónozottként vannak beosztva, és helyileg rögzített megosztásként, helyileg rögzített megosztásként.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/cloneshare10.png)
 
 ## <a name="clone-volumes-from-a-backup-set"></a>Kötetek klónozása biztonságimásolat-készletből
 
-Egy biztonsági másolatból klónozni, az Azure Portalon, a megosztás klónozása kor hajtsa végre a hozzá hasonló lépéseket. A klónozási művelet klónozza a biztonsági mentést egy új kötetre ugyanazon a virtuális eszközön; nem klónozhat másik eszközre.
+A biztonsági másolatból való klónozáshoz a Azure Portal a megosztás klónozásakor a-hoz hasonló lépéseket kell végrehajtania. A klónozási művelet a biztonsági mentést egy új kötetre klónozott egy virtuális eszközön; nem lehet klónozást elválasztani egy másik eszközre.
 
 #### <a name="to-clone-a-volume"></a>Kötet klónozása
 
-1. Keresse meg az **Eszközök** panelt. Jelölje ki, kattintson az eszközre, majd a **Kötetek parancsra.** Jelölje ki a klónozni kívánt kötetet, kattintson a jobb gombbal a kötetre a helyi menü meghívásához. Válassza a **Klónozás**lehetőséget.
+1. Tallózással keresse meg az **eszközök** panelt. Jelölje ki, majd kattintson az eszközre, majd kattintson a **kötetek**elemre. Válassza ki a klónozott kötetet, kattintson a jobb gombbal a kötetre a helyi menü meghívásához. Válassza a **klónozás**lehetőséget.
    
    ![Kötet klónozása](./media/storsimple-virtual-array-clone/clonevolume1.png)
-2. A **Klónozás** panelen kattintson a **Biztonsági másolat** gombra, majd tegye a következőket: 
+2. A **klónozás** panelen kattintson a **biztonsági mentés** elemre, majd tegye a következőket: 
    
-   a.    Az eszköz biztonsági másolatának szűrése az időtartomány alapján. Az Elmúlt **7 nap**, **az Elmúlt 30 nap**és az Elmúlt **év**közül választhat. 
+   a.    Az eszközön lévő biztonsági másolat szűrése az időtartomány alapján. Az **elmúlt 7 nap**, az **elmúlt 30 nap**és az **elmúlt év**közül választhat. 
    
-   b.    A megjelenített szűrt biztonsági másolatok listájában válassza ki a klónozni kívánt biztonsági másolatot.
+   b.    A szűrt biztonsági másolatok listájában válassza ki a klónozott biztonsági mentést.
    
    c.    Kattintson az **OK** gombra.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume3.png)
-3. A **Klónozás** panelen kattintson a **Célhangerő-beállítások** elemre, majd tegye a következőket::
+3. A **klónozás** panelen kattintson a **cél kötet beállításai** lehetőségre, majd tegye a következőket:
    
    a. Az eszköz neve automatikusan kitöltődik.
    
-   b. Adja meg a **klónozott kötet**nevét. A kötet nevének 3–127 karaktert kell tartalmaznia.
+   b. Adja meg a **klónozott kötet**kötetének nevét. A kötet nevének 3 – 127 karaktert kell tartalmaznia.
    
-   c. A kötet típusa automatikusan az eredeti kötetre van beállítva. A rétegzett kötetek többrétegű ként klónozva vannak, és helyileg rögzített kötet et rögzítettként.
+   c. A kötet típusa automatikusan az eredeti kötetre lesz beállítva. A többszinten lévő köteteket a rendszer lépcsőzetesen, a helyileg rögzített kötetként pedig egy helyileg rögzített kötetként klónozott.
    
-   d. A **Csatlakoztatott állomások esetében**kattintson a **Kijelölés gombra.**
+   d. A **csatlakoztatott gazdagépek**esetében kattintson a **kiválasztás**elemre.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume4.png)
-4. A **Csatlakoztatott állomások** panelen válasszon egy meglévő ACR-ből, vagy adjon hozzá egy új ACR-t. Új ACR hozzáadásához meg kell adnia egy ACR nevet és a gazdaIQN-t. Kattintson a **Kiválasztás** gombra.
+4. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR közül, vagy adjon hozzá egy új ACR-t. Új ACR hozzáadásához meg kell adnia egy ACR-nevet és a gazdagép IQN. Kattintson a **Kiválasztás** gombra.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume5.png)
-5. Kattintson **a Klónozás** gombra a klónozási feladat elindításához.
+5. A klónozott feladatok elindításához kattintson a **klónozás** elemre.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume6.png)  
-6. A klónozási feladat létrehozása után megkezdődik a klónozás. A klón létrehozása után megjelenik a Kötetek panelen az eszközön. Vegye figyelembe, hogy a rétegzett kötetek rétegzett ként klónozva vannak, és a helyileg rögzített kötethelyileg rögzített kötetként klónozva lesz.
+6. A klónozási feladatok létrehozása után elindul a klónozás. A klón létrehozása után megjelenik az eszköz kötetek paneljén. Vegye figyelembe, hogy a többkötetes kötetek klónozása lépcsőzetesen történik, a helyileg rögzített kötetek pedig helyileg rögzített kötetként vannak klónozottak.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume8.png)
-7. Miután a kötet online megjelenik a kötetek listáján, a kötet használható. Az iSCSI-kezdeményező gazdagépen frissítse a célok listáját az iSCSI-kezdeményező tulajdonságai ablakban. A klónozott kötet nevét tartalmazó új célnak "inaktívként" kell megjelennie az állapotoszlopban.
-8. Jelölje ki a célt, és kattintson a **Csatlakozás gombra.** Miután a kezdeményező csatlakozott a célhoz, az állapotnak Csatlakoztatott állapotra kell **váltania.**
+7. Ha a kötet megjelenik a kötetek listáján, a kötet elérhetővé válik. Az iSCSI-kezdeményező gazdagépen frissítse a célok listáját az iSCSI-kezdeményező tulajdonságai ablakban. A klónozott kötet nevét tartalmazó új cél "inaktívként" jelenik meg az Állapot oszlopban.
+8. Válassza ki a célt, és kattintson a **kapcsolat**elemre. Miután a kezdeményező csatlakozott a célhoz, az állapotnak **csatlakoztatva**értékre kell váltania.
 9. A **Lemezkezelés** ablakban a csatlakoztatott kötetek az alábbi ábrán látható módon jelennek meg. Kattintson a jobb gombbal a felderített kötetre (kattintson a lemez nevére), majd kattintson az **Online** elemre.
 
 > [!IMPORTANT]
-> Ha egy kötetet vagy megosztást próbál klónozni egy biztonságimásolat-készletből, ha a klónozási feladat sikertelen, a portálon továbbra is létrejöhet egy célkötet vagy megosztás. Fontos, hogy törölje ezt a célkötetet vagy megosztást a portálon az ebből az elemből eredő jövőbeli problémák minimalizálása érdekében.
+> Ha egy kötetet vagy egy megosztást egy biztonságimásolat-készletből próbál meg klónozott, ha a klónozási művelet meghiúsul, akkor a rendszer a portálon is létrehozhat egy célként megadott kötetet vagy megosztást. Fontos, hogy a célként megadott kötetet vagy megosztást a portálon törölje, hogy az ebből az elemből fakadó jövőbeli problémákat csökkentse.
 > 
 > 
 
 ## <a name="item-level-recovery-ilr"></a>Elemszintű helyreállítás (ILR)
 
-Ez a kiadás bemutatja az elemszintű helyreállítást (ILR) egy fájlkiszolgálóként konfigurált StorSimple virtuális tömbön. A szolgáltatás lehetővé teszi, hogy részletes helyreállítása fájlok és mappák egy felhő biztonsági másolatot az összes megosztása a StorSimple eszközön. A törölt fájlokat önkiszolgáló modell segítségével lekérheti a legutóbbi biztonsági mentésekből.
+Ez a kiadás bemutatja az elemszintű helyreállítást (ILR) egy fájlkiszolgálóként konfigurált StorSimple virtuális tömbben. A funkció lehetővé teszi a fájlok és mappák részletes helyreállítását a StorSimple-eszközön lévő összes megosztás Felhőbeli biztonsági másolatából. A legutóbbi biztonsági mentésből törölt fájlokat kérhet le önkiszolgáló modell használatával.
 
-Minden megosztáshoz van egy *.backups* mappa, amely a legutóbbi biztonsági másolatokat tartalmazza. A kívánt biztonsági másolathoz navigálhat, átmásolhatja a megfelelő fájlokat és mappákat a biztonsági másolatból, és visszaállíthatja őket. Ez a szolgáltatás kiküszöböli a rendszergazdák hívásait a fájlok biztonsági másolatból történő visszaállításához.
+Minden megosztáshoz tartozik egy *. Backups* mappa, amely a legújabb biztonsági másolatokat tartalmazza. Navigáljon a kívánt biztonsági másolathoz, másolja a megfelelő fájlokat és mappákat a biztonsági másolatból, és állítsa vissza őket. Ez a szolgáltatás megszünteti a rendszergazdáknak a fájlok biztonsági másolatokból való visszaállítására irányuló hívásokat.
 
-1. Az ILR végrehajtásakor megtekintheti a biztonsági másolatokat a Fájlkezelőn keresztül. Kattintson arra a megosztásra, amelynek biztonsági mentését meg szeretné tekinteni. Az összes biztonsági másolatot tároló megosztás alatt létrehozott *.backups* mappa jelenik meg. Bontsa ki a *.backups mappát* a biztonsági mentések megtekintéséhez. A mappában a teljes biztonsági másolat hierarchia robbantott nézete látható. Ez a nézet igény szerint jön létre, és általában csak néhány másodpercet vesz igénybe a létrehozás.
+1. A ILR elvégzése során a Fájlkezelőben megtekintheti a biztonsági mentéseket. Kattintson arra a megosztásra, amelyre vonatkozóan meg szeretné jeleníteni a biztonsági mentést. Megjelenik az összes biztonsági mentést tároló megosztás alatt létrehozott *. Backups mappa.* Bontsa ki a *. Backups* mappát a biztonsági másolatok megtekintéséhez. A mappa a teljes biztonsági mentési hierarchia felrobbant nézetét jeleníti meg. Ez a nézet igény szerint jön létre, és általában csak néhány másodpercet vesz igénybe.
    
-   Az utolsó öt biztonsági másolat ily módon jelenik meg, és egy elemszintű helyreállítás hozható végre. Az öt legutóbbi biztonsági mentések tartalmazzák mind az alapértelmezett ütemezett és a manuális biztonsági mentések.
+   Az utolsó öt biztonsági mentés így jelenik meg, és az elemszintű helyreállítás végrehajtásához használható. Az öt legutóbbi biztonsági mentés tartalmazza az alapértelmezett ütemezett és a manuális biztonsági mentést is.
    
-   * **Ütemezett biztonsági mentések,** &gt;amelyeket Eszköznévként &lt;neveznek el DailySchedule-YYYYMMDD-HHMMSS-UTC néven.
-   * **Kézi biztonsági mentések** neve Ad-hoc-YYYYMMDD-HHMMSS-UTC.
+   * Az&gt;tulajdonsággal-ÉÉÉÉHHNN &lt;-HHMMSS-UTC néven nevű **ütemezett biztonsági mentések** .
+   * Az ad-hoc-ÉÉÉÉHHNN-HHMMSS-UTC nevű **manuális biztonsági másolatok** .
      
      ![](./media/storsimple-virtual-array-clone/image14.png)
 
-2. Azonosítsa a törölt fájl legújabb verzióját tartalmazó biztonsági másolatot. Bár a mappanév az előző esetekmindegyikében tartalmaz egy UTC-időbélyeget, a mappa létrehozásának időpontja a biztonsági mentés indításakor az eszköz tényleges ideje. A mappa időbélyege segítségével keresse meg és azonosítsa a biztonsági másolatokat.
+2. Azonosítsa a törölt fájl legújabb verzióját tartalmazó biztonsági mentést. Bár a mappa neve minden korábbi esetben UTC-időbélyeget tartalmaz, a mappa létrehozásának időpontja a tényleges eszköz, amikor a biztonsági mentés elindult. A biztonsági mentések megkereséséhez és azonosításához használja a mappa időbélyegét.
 
-3. Keresse meg a visszaállítani kívánt mappát vagy fájlt az előző lépésben azonosított biztonsági másolatban. Megjegyzés: csak azokat a fájlokat vagy mappákat tekintheti meg, amelyekhez engedéllyel rendelkezik. Ha bizonyos fájlokhoz vagy mappákhoz nem tud hozzáférni, forduljon egy megosztási rendszergazdához. A rendszergazda a Fájlkezelő segítségével szerkesztheti a megosztási engedélyeket, és hozzáférést biztosíthat az adott fájlhoz vagy mappához. Ajánlott eljárás, hogy a megosztási rendszergazda egyetlen felhasználó helyett felhasználói csoport.
+3. Keresse meg azt a mappát vagy fájlt, amelyet vissza szeretne állítani az előző lépésben azonosított biztonsági másolatban. Megjegyzés: csak azokat a fájlokat vagy mappákat tekintheti meg, amelyekhez jogosultsággal rendelkezik. Ha nem fér hozzá bizonyos fájlokhoz vagy mappákhoz, forduljon a megosztási rendszergazdához. A rendszergazda a fájlkezelő segítségével szerkesztheti a megosztási engedélyeket, és hozzáférést biztosíthat az adott fájlhoz vagy mappához. Ajánlott eljárás, hogy a megosztás rendszergazdája egyetlen felhasználó helyett felhasználói csoport legyen.
 
-4. Másolja a fájlt vagy a mappát a Megfelelő megosztásra a StorSimple fájlkiszolgálón.
+4. Másolja a fájlt vagy a mappát a megfelelő megosztásba a StorSimple fájlkiszolgálón.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [a StorSimple virtuális tömb felügyeletéről a helyi webes felhasználói felület használatával.](storsimple-ova-web-ui-admin.md)
+Tudjon meg többet arról, hogyan [felügyelheti a StorSimple virtuális tömböt a helyi webes felhasználói felület használatával](storsimple-ova-web-ui-admin.md).
 

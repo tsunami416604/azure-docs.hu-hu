@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés az Azure Data Lake Storage Gen1 szolgáltatásban az Azure Active Directory használatával | Microsoft dokumentumok
-description: Megtudhatja, hogyan hitelesítheti magát az Azure Data Lake Storage Gen1 szolgáltatással az Azure Active Directory használatával
+title: Hitelesítés Azure Data Lake Storage Gen1 a Azure Active Directory használatával | Microsoft Docs
+description: Megtudhatja, hogyan végezhet hitelesítést a Azure Data Lake Storage Gen1 használatával Azure Active Directory
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,40 +12,40 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: f83cf183bee930dd07c707b0eb49125cecd70b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60193594"
 ---
-# <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Hitelesítés az Azure Data Lake Storage Gen1 használatával az Azure Active Directory használatával
+# <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
 
-Az Azure Data Lake Storage Gen1 az Azure Active Directoryt használja a hitelesítéshez. A Data Lake Storage Gen1-tel működő alkalmazás létrehozása előtt el kell döntenie, hogyan hitelesítheti az alkalmazást az Azure Active Directoryval (Azure AD).
+A Azure Data Lake Storage Gen1 Azure Active Directory használ a hitelesítéshez. Az Data Lake Storage Gen1-vel működő alkalmazások készítése előtt el kell döntenie, hogyan hitelesítheti az alkalmazást Azure Active Directory (Azure AD) használatával.
 
 ## <a name="authentication-options"></a>Hitelesítési lehetőségek
 
-* Végfelhasználói hitelesítés – A végfelhasználó **Azure-hitelesítő** adatait a Data Lake Storage Gen1 hitelesítésére használják. A Data Lake Storage Gen1 használatával létrehozott alkalmazás kéri ezeket a felhasználói hitelesítő adatokat. Ennek eredményeképpen ez a hitelesítési mechanizmus *interaktív,* és az alkalmazás a bejelentkezett felhasználó környezetében fut. További információt és utasításokat a [Data Lake Storage Gen1 végfelhasználói hitelesítése című témakörben talál.](data-lake-store-end-user-authenticate-using-active-directory.md)
+* **Végfelhasználói hitelesítés** – a végfelhasználó Azure-beli hitelesítő adatai a Data Lake Storage Gen1 használatával történő hitelesítéshez használhatók. Az Ön által létrehozott alkalmazás Data Lake Storage Gen1 a felhasználói hitelesítő adatok megadását kéri. Ennek eredményeképpen ez a hitelesítési mechanizmus *interaktív* , és az alkalmazás a bejelentkezett felhasználó környezetében fut. További információ és útmutatás: [Data Lake Storage Gen1 végfelhasználói hitelesítése](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **Szolgáltatás-szolgáltatás hitelesítése** – Ezt a beállítást akkor használja, ha azt szeretné, hogy egy alkalmazás hitelesítse magát a Data Lake Storage Gen1 szolgáltatással. Ilyen esetekben hozzon létre egy Azure Active Directory (AD) alkalmazást, és használja a kulcsot az Azure AD-alkalmazás ból a Data Lake Storage Gen1 hitelesítéséhez. Ennek eredményeképpen ez a hitelesítési mechanizmus *nem interaktív.* További információt és utasításokat a [Data Lake Storage Gen1 szolgáltatás-szolgáltatás hitelesítése című témakörben talál.](data-lake-store-service-to-service-authenticate-using-active-directory.md)
+* **Szolgáltatások közötti hitelesítés** – ezt a beállítást akkor használja, ha azt szeretné, hogy egy alkalmazás a Data Lake Storage Gen1 használatával hitelesítse magát. Ilyen esetekben létre kell hoznia egy Azure Active Directory (AD-) alkalmazást, és az Azure AD-alkalmazás kulcsát használva hitelesítenie kell magát a Data Lake Storage Gen1. Ennek eredményeképpen ez a hitelesítési mechanizmus *nem interaktív*. További információ és útmutatás: [szolgáltatások közötti hitelesítés Data Lake Storage Gen1hoz](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
-Az alábbi táblázat bemutatja, hogyan támogatottak a végfelhasználók és a szolgáltatások között a hitelesítési mechanizmusok a Data Lake Storage Gen1 számára. Így olvashatja az asztalt.
+A következő táblázat bemutatja, hogyan támogatott a végfelhasználók és a szolgáltatások közötti hitelesítési mechanizmusok Data Lake Storage Gen1. Így olvashatja el a táblázatot.
 
-* A ✔* szimbólum azt jelzi, hogy a hitelesítési lehetőség támogatott, és egy olyan cikkre hivatkozik, amely bemutatja a hitelesítési beállítás használatát. 
+* A ✔ * jel azt jelzi, hogy a hitelesítési lehetőség támogatott, és hivatkozásokat tartalmaz egy cikkre, amely bemutatja, hogyan használható a hitelesítési lehetőség. 
 * A ✔ szimbólum azt jelzi, hogy a hitelesítési beállítás támogatott. 
-* Az üres cellák azt jelölik, hogy a hitelesítési beállítás nem támogatott.
+* Az üres cellák azt jelzik, hogy a hitelesítési beállítás nem támogatott.
 
 
-|Használja ezt a hitelesítési lehetőséget...                   |.NET         |Java     |PowerShell |Azure CLI | Python   |REST     |
+|Használja ezt a hitelesítési lehetőséget a következővel:...                   |.NET         |Java     |PowerShell |Azure CLI | Python   |REST     |
 |:---------------------------------------------|:------------|:--------|:----------|:-------------|:---------|:--------|
-|Végfelhasználó (MFA**nélkül)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)**(elavult)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
-|Végfelhasználó (MFA-val)                           |    **[✔*](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔*](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔*](data-lake-store-get-started-cli-2.0.md)**      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |
-|Szolgáltatás-szolgáltatás (ügyfélkulcs használatával)         |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔*](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔*](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔*](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
-|Szolgáltatás-szolgáltatás (ügyféltanúsítvány használatával) |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
+|Végfelhasználó (MFA * * nélkül)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔ *](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)**(elavult)     |    **[✔ *](data-lake-store-end-user-authenticate-rest-api.md)**    |
+|Végfelhasználó (MFA-val)                           |    **[✔ *](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔ *](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔ *](data-lake-store-get-started-cli-2.0.md)**      |    **[✔ *](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |
+|Szolgáltatások közötti (az ügyfél kulcsa)         |    **[✔ *](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔ *](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔ *](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔ *](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
+|Szolgáltatások közötti (ügyféltanúsítvány használatával) |    **[✔ *](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
 
-<i>* Kattintson a <b>✔\* </b> szimbólum. Ez egy kapcsolat.</i><br>
-<i>** Az MFA a többtényezős hitelesítést jelenti</i>
+<i>* Kattintson a <b>✔\* </b> szimbólumra. Ez egy hivatkozás.</i><br>
+<i>* * Az MFA a többtényezős hitelesítéshez</i>
 
-[Az Azure Active Directory hitelesítési forgatókönyvei](../active-directory/develop/authentication-scenarios.md) című témakörben további információt talál az Azure Active Directory hitelesítéshez való használatáról.
+Az Azure Active Directory hitelesítéshez való használatáról további információt a [Azure Active Directory hitelesítési forgatókönyvei](../active-directory/develop/authentication-scenarios.md) című témakörben talál.
 
 ## <a name="next-steps"></a>További lépések
 

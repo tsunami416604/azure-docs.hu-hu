@@ -1,6 +1,6 @@
 ---
-title: Az Azure NetApp-fájlok teljesítményével kapcsolatos szempontok | Microsoft dokumentumok
-description: Az Azure NetApp-fájlok teljesítményével kapcsolatos szempontok ismertetése.
+title: A Azure NetApp Files teljesítményével kapcsolatos megfontolások | Microsoft Docs
+description: A Azure NetApp Files teljesítményével kapcsolatos megfontolásokat ismerteti.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,51 +15,51 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
 ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67454138"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Az Azure NetApp Files teljesítményével kapcsolatos szempontok
 
-A kötet [átviteli korlátját](azure-netapp-files-service-levels.md) a kötethez rendelt kvóta és a kiválasztott szolgáltatásszint kombinációja határozza meg. Amikor teljesítményterveket készít az Azure NetApp-fájlokkal kapcsolatban, több szempontot is meg kell értenie. 
+A kötetek [átviteli sebességére vonatkozó korlátot](azure-netapp-files-service-levels.md) a kötethez rendelt kvóta és a kiválasztott szolgáltatási szint kombinációja határozza meg. Ha Azure NetApp Filesra vonatkozó teljesítménnyel kapcsolatos terveket készít, meg kell ismernie néhány szempontot. 
 
-## <a name="quota-and-throughput"></a>Kvóta és átviteli-átmenő  
+## <a name="quota-and-throughput"></a>Kvóta és átviteli sebesség  
 
-Az átviteli korlát csak egy meghatározó a tényleges teljesítmény, amely realizálva lesz.  
+Az átviteli sebesség korlátja csak a tényleges teljesítmény egyik meghatározó tényezője.  
 
-Tipikus tárolási teljesítmény szempontok, beleértve az olvasási és írási mix, az átviteli méret, véletlenszerű vagy szekvenciális minták, és sok más tényező hozzájárul a teljes teljesítmény szállított.  
+A tárolási teljesítmény jellemző szempontjai, beleértve az olvasási és írási kombinációt, az átvitel méretét, a véletlenszerű vagy szekvenciális mintákat, és számos más tényező is hozzájárul a teljes teljesítményhez.  
 
-A vizsgálat során megfigyelt maximális empirikus áteresztőteljesítmény 4500 MiB/s.  A prémium szintű tárolási szinten egy 70,31 TiB-szintű kötetkvóta olyan átviteli korlátot biztosít, amely elég magas ahhoz, hogy elérje ezt a teljesítményszintet.  
+A tesztelés során megfigyelt maximális empirikus teljesítmény 4 500 MiB/s.  A Premium Storage szintjén a 70,31 TiB mennyiségi kvótája olyan átviteli korlátot fog kiépíteni, amely elég magas a teljesítmény eléréséhez.  
 
-Ha a 70,31 TiB-t meghaladó mennyiségi kvótaösszegek hozzárendelését tervezi, további adatok tárolására további kvótát rendelhet egy kötethez. A hozzáadott kvóta azonban nem eredményezi a tényleges átviteli érték további növekedését.  
+Ha az 70,31 TiB-nál nagyobb mennyiségű mennyiségi kvóta kiosztását fontolgatja, további kvóták is hozzárendelhetők a további adattárolási kötetekhez. A hozzáadott kvóta azonban nem eredményez további növekedést a tényleges átviteli sebességben.  
 
-További információkért lásd [az Azure NetApp-fájlok teljesítményreferenciaértékeit.](azure-netapp-files-performance-benchmarks.md)
+További információért lásd [a Azure NetApp Files teljesítményének teljesítményteszteit](azure-netapp-files-performance-benchmarks.md) .
 
-## <a name="overprovisioning-the-volume-quota"></a>A mennyiségi kvóta túlterhelése
+## <a name="overprovisioning-the-volume-quota"></a>A mennyiségi kvóta túlzott kiépítése
 
-Ha egy számítási feladat teljesítménye átviteli korláthoz kötött, a kötetkvótát túlépítheti egy magasabb átviteli szint beállításához és nagyobb teljesítmény eléréséhez.  
+Ha a számítási feladatok teljesítménye a maximális átviteli sebesség, lehetséges, hogy a mennyiségi kvótát a magasabb átviteli sebesség beállítására és a nagyobb teljesítmény elérésére is lehetővé teszi.  
 
-Ha például a prémium szintű tárolási réteg egy kötete csak 500 GiB adattal rendelkezik, de 128 MiB/s átviteli forgalmat igényel, beállíthatja a kvótát 2 TiB-re, hogy az átviteli szint ennek megfelelően be van állítva (64 MiB/s/TB * 2 TiB = 128 MiB/s).  
+Ha például a Premium Storage-szinten lévő köteten csak 500-es adat van, de 128 MiB/s átviteli sebességre van szükség, beállíthatja a kvótát 2 TiB-ra, hogy az átviteli szint megfelelően legyen beállítva (64 MiB/s/TB * 2 TiB = 128 MiB/s).  
 
-Ha következetesen túlegy kötetet a nagyobb átviteli érték elérése érdekében, fontolja meg egy magasabb szolgáltatási szint helyett.  A fenti példában ugyanazt az átviteli korlátot a kötetkvóta felével érheti el az Ultra storage réteg használatával (128 MiB/s tib- onként * 1 TiB = 128 MiB/s).
+Ha következetesen túlépít egy kötetet a magasabb átviteli sebesség eléréséhez, érdemes inkább magasabb szolgáltatási szintet használni.  A fenti példában ugyanezt az átviteli korlátot a mennyiségi kvóta felé is elérheti az ultra Storage-rétegek használatával (128 MiB/s/TiB * 1 TiB = 128 MiB/s).
 
 ## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dinamikusan növekvő vagy csökkenő mennyiségi kvóta
 
-Ha a teljesítménykövetelmények ideiglenes jellegűek, vagy ha egy meghatározott ideig megnövekedett a teljesítményigénye, dinamikusan növelheti vagy csökkentheti a mennyiségi kvótát, hogy azonnal állítsa be az átviteli korlátot.  Vegye figyelembe a következő szempontokat: 
+Ha a teljesítményre vonatkozó követelmények átmeneti jellegűek, vagy ha egy meghatározott időtartamnál nagyobb teljesítményre van szükség, dinamikusan növelheti vagy csökkentheti a mennyiségi kvótát, hogy azonnal módosítsa az átviteli sebességet.  Vegye figyelembe az alábbi szempontokat: 
 
-* A kötetkvóta növelhető vagy csökkenthető az IO szüneteltetése nélkül, és a kötethez való hozzáférés nem szakad meg vagy nem befolyásolja.  
+* A mennyiségi kvóta az IO szüneteltetése nélkül növelhető vagy csökkenthető, és a kötethez való hozzáférés nem szakad meg, vagy nincs hatással rá.  
 
-    A kvótát egy aktív I/O-tranzakció során egy kötethez igazíthatja.  Vegye figyelembe, hogy a kötetkvóta soha nem csökkenthető a kötetben tárolt logikai adatok mennyisége alá.
+    A kvótát egy köteten lévő aktív I/O-tranzakció során is módosíthatja.  Vegye figyelembe, hogy a mennyiségi kvóta soha nem csökkenthető a köteten tárolt logikai adatmennyiség alatt.
 
-* A kötetkvóta módosításakor az átviteli korlát megfelelő változása szinte azonnali. 
+* A mennyiségi kvóta megváltozásakor az átviteli sebesség korlátjának megfelelő módosítása majdnem azonnali. 
 
-    A módosítás nem szakítja meg vagy befolyásolja a kötethez való hozzáférést vagy az I/O-t.  
+    A módosítás nem szakítja meg a kötet-vagy I/O-hozzáférést.  
 
-* A kötetkvóta beállításához módosítani kell a kapacitáskészlet méretét.  
+* A mennyiségi kvóta módosítása a kapacitási készlet méretének változását igényli.  
 
-    A kapacitáskészlet mérete dinamikusan és a kötet rendelkezésre állásának vagy az I/O-nak a befolyásolása nélkül állítható be.
+    A kapacitási készlet mérete dinamikusan módosítható, és nem befolyásolja a kötetek rendelkezésre állását vagy az I/O-t.
 
 ## <a name="next-steps"></a>További lépések
 

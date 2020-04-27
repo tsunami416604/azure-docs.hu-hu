@@ -1,6 +1,6 @@
 ---
-title: Licencelt lemezkép engedélyezése a laborban az Azure DevTest Labs ben | Microsoft dokumentumok
-description: Megtudhatja, hogy miként engedélyezheti a licencelt lemezképeket az Azure DevTest Labs ben az Azure Portal használatával
+title: Licencelt rendszerkép engedélyezése a laborban Azure DevTest Labs | Microsoft Docs
+description: Megtudhatja, hogyan engedélyezheti a licencelt rendszerképek használatát Azure DevTest Labs a Azure Portal
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,85 +15,85 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 11b6553fe8aceef0d3d15977998dd870c275128a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61294256"
 ---
-# <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Licencelt lemezkép engedélyezése a laborban az Azure DevTest Labsben
+# <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Licencelt rendszerkép engedélyezése a laborban Azure DevTest Labs
 
-Az Azure DevTest Labs, a licencelt lemezkép olyan, amely tartalmazza a feltételeket – általában egy harmadik féltől –, amelyet el kell fogadni, mielőtt a rendszerkép elérhető a felhasználók számára a laborban. A következő szakaszok ismertetik, hogyan működik a licencelt lemezképek, hogy azok a virtuális gépek létrehozásához használható.
+Azure DevTest Labs egy licenccel rendelkező rendszerkép olyan, amely feltételeket és kikötéseket tartalmaz – jellemzően egy harmadik féltől –, amelyet el kell fogadni ahhoz, hogy a rendszerkép elérhető legyen a tesztkörnyezet felhasználói számára. A következő szakaszok azt ismertetik, hogyan használhatók a licencelt lemezképek, hogy elérhetők legyenek a virtuális gépek létrehozásához.
 
-## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Annak meghatározása, hogy egy licencelt lemezkép elérhető-e a felhasználók számára
-Az első lépés, amely lehetővé teszi a felhasználók számára, hogy virtuális gépeket hozzanak létre egy licencelt lemezképből, hogy győződjön meg arról, hogy a feltételeket elfogadták a licencelt lemezképhez. A következő lépések bemutatják, hogyan tekintheti meg egy licencelt lemezkép ajánlati állapotát, és ha szükséges, hogyan fogadhatja el annak feltételeit.
+## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>Annak meghatározása, hogy elérhető-e egy licenccel rendelkező rendszerkép a felhasználók számára
+Az első lépés, amely lehetővé teszi, hogy a felhasználók virtuális gépeket hozzanak létre egy licencelt rendszerképből, győződjön meg arról, hogy a feltételek és kikötések el lettek fogadva a licencelt rendszerképhez. A következő lépések bemutatják, hogyan tekintheti meg egy licencelt rendszerkép ajánlati állapotát, és ha szükséges, elfogadhatja a használati feltételeit.
 
-1. Jelentkezzen be az [Azure Portalra.](https://go.microsoft.com/fwlink/p/?LinkID=525040)
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza a **Minden szolgáltatás**lehetőséget, majd a listából válassza a **DevTest Labs** elemet.
+1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 
 1. A laborok listájából válassza ki a kívánt labort.  
 
-1. A **bal**oldali panelen válassza a **Konfiguráció és házirendek**lehetőséget.
+1. A bal oldali panel **Beállítások**területén válassza a **konfiguráció és házirendek**elemet.
 
-1. A bal oldali panelen, a **VIRTUÁLISGÉP-ALAPZAT**csoportban válassza a **Marketplace-képek lehetőséget.** 
+1. A **virtuális gépek alapjainak**bal oldali paneljén válassza a **piactér lemezképek**lehetőséget. 
 
-    ![Marketplace-képek menüelem](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-marketplace-images.png)
+    ![Piactéri rendszerképek menüelem](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-marketplace-images.png)
 
-    Megjelenik az összes elérhető piactéri lemezkép listája, beleértve az egyes **lemezképek ajánlati állapotát** is.
+    Megjelenik az összes elérhető Piactéri lemezkép listája, beleértve az egyes lemezképek **ajánlati állapotát** is.
 
-    ![Az egyes képek ajánlati állapotát megjelenítő piactéri képek listája](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-offer-status.png)
+    ![Az egyes lemezképek ajánlati állapotát megjelenítő piactér-lemezképek listája](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-offer-status.png)
 
-    A licencelt kép egy 
+    A licencelt rendszerkép az ajánlat állapotát jeleníti meg 
     
-    - **Elfogadott feltételek:** a licencelt lemezkép a felhasználók számára elérhető a virtuális gépek létrehozásához. 
-    - **Feltételek felülvizsgálata szükséges:** a licencelt kép jelenleg nem érhető el a felhasználók számára. A licenc feltételeit el kell fogadni, mielőtt a tesztkörnyezet-felhasználók virtuális gépek létrehozására használhassák. 
+    - **Feltételek elfogadva:** a licenccel rendelkező felhasználók a virtuális gépek létrehozásához használhatók. 
+    - A **feltételek áttekintése szükséges:** a licencelt rendszerkép jelenleg nem érhető el a felhasználók számára. A licenc használati feltételeit el kell fogadni ahhoz, hogy a labor felhasználók virtuális gépeket hozzanak létre. 
 
-## <a name="making-a-licensed-image-available-to-lab-users"></a>Licencelt lemezkép elérhetővé tétele a laborfelhasználók számára
-Annak érdekében, hogy egy licencelt lemezkép elérhető legyen a tesztkörnyezet-felhasználók számára, a rendszergazdai engedélyekkel rendelkező tesztkörnyezet tulajdonosának először el kell fogadnia az adott licencelt lemezkép feltételeit. A licencelt lemezképhez társított előfizetés programozott központi telepítésének engedélyezése automatikusan elfogadja az adott lemezkép jogi feltételeit és adatvédelmi nyilatkozatait. [A Marketplace-lemezképek az Azure Resource Manager](https://azure.microsoft.com/blog/working-with-marketplace-images-on-azure-resource-manager/) használatával további információkat nyújt a marketplace-lemezképek programozott központi telepítéséről.
+## <a name="making-a-licensed-image-available-to-lab-users"></a>Licencelt rendszerkép elérhetővé tétele a labor felhasználói számára
+Annak biztosítása érdekében, hogy a labor felhasználói számára elérhető legyen egy licenccel rendelkező rendszerkép, a rendszergazdai jogosultsággal rendelkező labor tulajdonosának először el kell fogadnia az adott licencelt rendszerkép használati feltételeit. A programozott központi telepítés engedélyezése a licencelt rendszerképhez társított előfizetéshez automatikusan elfogadja az adott képhez tartozó jogi feltételeket és adatvédelmi nyilatkozatokat. A [Piactéri rendszerképek használata a Azure Resource Manageron](https://azure.microsoft.com/blog/working-with-marketplace-images-on-azure-resource-manager/) további információkat nyújt a Piactéri rendszerképek programozott üzembe helyezéséről.
 
-A licencelt lemezképek programozott központi telepítését az alábbi lépésekkel engedélyezheti:
+Az alábbi lépéseket követve engedélyezheti a programozott központi telepítést egy licencelt rendszerképhez:
 
-1. Az [Azure Portalon](https://go.microsoft.com/fwlink/p/?LinkID=525040)nyissa meg a **Marketplace-képek**listáját.
+1. A [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)lépjen a **piactér lemezképek**listájára.
 
-1. Azonosítsa azt a licencelt képet, amelyhez a felhasználóknak hozzáféréssel kell rendelkezniük, de feltételei nem lettek elfogadva. Például megjelenhet egy adatelemzési virtuális gép, amely a **Feltételek elfogadott** vagy a Feltételek szükséges ellenőrzésének állapotát jeleníti **meg.**
+1. Azonosítson egy licencelt rendszerképet, amelyhez a felhasználóknak hozzáférésre van szükségük, de a feltételek nem lettek elfogadva. Előfordulhat például, hogy egy olyan Data Science Virtual Machine jelenik meg, amely az **elfogadva** vagy a **feltételek felülvizsgálatához szükséges**állapotot jeleníti meg.
 
-    ![A Programozott központi telepítés ablak konfigurálása](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
+    ![Programozott telepítés ablakának konfigurálása](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
-   > Az adatelemzési virtuális gépek az Azure Virtuálisgép-lemezképek, amelyek előre telepítettek, konfigurálva és tesztelve számos népszerű eszközzel, amelyeket gyakran használnak adatelemzéshez, gépi tanuláshoz és AI-oktatáshoz. [Bevezetés az Azure Data Science Virtual Machine linuxos és Windows-alapú](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) nyújt nagy mennyiségű információt dsvms.
+   > Az adatelemzési virtuális gépek Azure-beli virtuálisgép-lemezképek, előre telepített, konfigurált és tesztelt számos olyan népszerű eszközzel, amelyet általában az adatelemzés, a gépi tanulás és a mesterséges intelligenciával kapcsolatos képzésekhez használnak. A [Linux és a Windows rendszerhez készült Azure Data Science Virtual Machine bemutatása](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) nagy mennyiségű információt nyújt a dsvm-ről.
    >
    >
 
-1. A kép **AJÁNLATÁLLAPOTA** oszlopában válassza a **Szükséges Feltételek felülvizsgálatlehetőséget.**
+1. A rendszerkép **ajánlat állapota** oszlopában válassza a **feltételek felülvizsgálat szükséges**elemet.
 
-1. A Programozott központi telepítés konfigurálása ablakban válassza az **Engedélyezés**lehetőséget.
+1. A programozott telepítés konfigurálása ablakban válassza az **Engedélyezés**lehetőséget.
 
-    ![A Programozott központi telepítés ablak konfigurálása](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-enable-programmatic-deployment.png)
+    ![Programozott telepítés ablakának konfigurálása](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-enable-programmatic-deployment.png)
 
    > [!IMPORTANT]
-   > Előfordulhat, hogy több előfizetés jelenik meg a Programozott központi telepítés konfigurálása ablakban. Győződjön meg arról, hogy csak a tervezett előfizetéshez engedélyezi a programozott központi telepítést.
+   > Előfordulhat, hogy több előfizetést is láthat a programozott telepítés konfigurálása ablakban. Győződjön meg arról, hogy csak a kívánt előfizetéshez engedélyezi a programozott üzembe helyezést.
    >
    >
 
 
 1. Kattintson a **Mentés** gombra. 
 
-    A marketplace-lemezképek listájában ez a kép mostantól **az elfogadott feltételeket** jeleníti meg, és a felhasználók számára elérhető virtuális gépek létrehozásához.
+    A Piactéri lemezképek listájában a kép mostantól az **elfogadott kifejezéseket** jeleníti meg, és elérhetővé válik a felhasználók számára virtuális gépek létrehozásához.
 
 > [!NOTE]
-> A felhasználók egyéni lemezképet hozhatnak létre licencelt lemezképből. További információt az [Egyéni lemezkép létrehozása VHD-fájlból](devtest-lab-create-template.md) című témakörben talál.
+> A felhasználók létrehozhatnak egyéni rendszerképet egy licencelt rendszerképből. További információ: [Egyéni rendszerkép létrehozása VHD-fájlból](devtest-lab-create-template.md) .
 >
 >
 
 
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 
-- [Egyéni képek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Egyéni lemezképek másolása az Azure DevTest Labs között](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Egyéni lemezképek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Egyéni rendszerképek másolása Azure DevTest Labs között](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>További lépések
 
 - [Egyéni rendszerkép létrehozása virtuális gépből](devtest-lab-create-custom-image-from-vm-using-portal.md)
-- [Egyéni kép létrehozása VHD-fájlból](devtest-lab-create-template.md)
+- [Egyéni rendszerkép létrehozása VHD-fájlból](devtest-lab-create-template.md)
 - [Virtuális gép hozzáadása a laborhoz](devtest-lab-add-vm.md)

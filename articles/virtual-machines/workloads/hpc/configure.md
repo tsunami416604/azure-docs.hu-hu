@@ -1,6 +1,6 @@
 ---
-title: Nagy teljesítményű számítástechnika - Azure virtuális gépek | Microsoft dokumentumok
-description: Ismerje meg a nagy teljesítményű számítástechnikát az Azure-ban.
+title: Nagy teljesítményű számítástechnika – Azure Virtual Machines | Microsoft Docs
+description: Ismerje meg az Azure nagy teljesítményű számítástechnikai szolgáltatásait.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 10549abfbdacf1fc1ae6b99f4cab20a290c32a2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67707827"
 ---
 # <a name="optimization-for-linux"></a>Optimalizálás Linuxra
 
-Ez a cikk néhány kulcsfontosságú technikát mutat be az operációs rendszer lemezképének optimalizálásához. További információ az [InfiniBand engedélyezéséről](enable-infiniband.md) és az operációs rendszer lemezképeinek optimalizálásáról.
+Ez a cikk néhány kulcsfontosságú technikát mutat be az operációs rendszer rendszerképének optimalizálásához. További információ a [InfiniBand engedélyezéséről](enable-infiniband.md) és az operációsrendszer-lemezképek optimalizálásáról.
 
 ## <a name="update-lis"></a>LIS frissítése
 
-Ha egyéni lemezkép használatával (például egy régebbi operációs rendszer, például a CentOS/RHEL 7.4 vagy 7.5) használatával telepíti a rendszert, frissítse a LIS-t a virtuális gépen.
+Ha egyéni rendszerkép használatával (például CentOS/RHEL 7,4 vagy 7,5) telepít üzembe helyezést, a virtuális gépen frissítse a LIS-t.
 
 ```bash
 wget https://aka.ms/lis
@@ -34,23 +34,23 @@ pushd LISISO
 ./upgrade.sh
 ```
 
-## <a name="reclaim-memory"></a>Memória visszaszerzése
+## <a name="reclaim-memory"></a>Memória visszaigénylése
 
-Növelje a hatékonyságot a memória automatikus visszanyerésével, hogy elkerülje a távoli memória-hozzáférést.
+A távoli memória-hozzáférés elkerülése érdekében a memória automatikus visszaigénylésével javítsa a hatékonyságot.
 
 ```bash
 echo 1 >/proc/sys/vm/zone_reclaim_mode
 ```
 
-A virtuális gép újraindítása után is megmarad:
+A virtuális gépek újraindítása után tegye meg a következőket:
 
 ```bash
 echo "vm.zone_reclaim_mode = 1" >> /etc/sysctl.conf sysctl -p
 ```
 
-## <a name="disable-firewall-and-selinux"></a>Tűzfal és SELinux letiltása
+## <a name="disable-firewall-and-selinux"></a>Tűzfal-és SELinux letiltása
 
-Tiltsa le a tűzfalat és az SELinux-ot.
+Tiltsa le a tűzfal-és SELinux.
 
 ```bash
 systemctl stop iptables.service
@@ -64,7 +64,7 @@ sed -i -e's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
 ## <a name="disable-cpupower"></a>Cpupower letiltása
 
-Tiltsa le a cpupower-t.
+Cpupower letiltása.
 
 ```bash
 service cpupower status
@@ -75,6 +75,6 @@ sudo systemctl disable cpupower
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az [InfiniBand engedélyezéséről](enable-infiniband.md) és az operációs rendszer lemezképeinek optimalizálásáról.
+* További információ a [InfiniBand engedélyezéséről](enable-infiniband.md) és az operációsrendszer-lemezképek optimalizálásáról.
 
-* További információ az Azure-beli [HPC-ről.](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)
+* További információ az Azure-beli [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) -ről.

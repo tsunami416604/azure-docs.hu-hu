@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cosmos DB Java Async SDK diagnosztizálása és hibaelhárítása
-description: Az Azure Cosmos DB-vel kapcsolatos problémák azonosításához, diagnosztizálásához és elhárításához olyan funkciókat használhat, mint az ügyféloldali naplózás és más külső eszközök.
+title: Azure Cosmos DB Java aszinkron SDK diagnosztizálása és megoldása
+description: A Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához használjon olyan szolgáltatásokat, mint az ügyféloldali naplózás és más külső eszközök.
 author: moderakh
 ms.service: cosmos-db
 ms.date: 04/30/2019
@@ -10,76 +10,76 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65519982"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>A Java Async SDK Azure Cosmos DB SQL API-fiókokkal való használatakor felmerülő hibák elhárítása
-Ez a cikk a [Java Async SDK](sql-api-sdk-async-java.md) Azure Cosmos DB SQL API-fiókokkal való használatakor ismerteti a gyakori problémákat, a kerülő megoldásokat, a diagnosztikai lépéseket és az eszközöket.
+Ez a cikk általános problémákról, megkerülő megoldásokról, diagnosztikai lépésekről és eszközökről tartalmaz Azure Cosmos DB SQL API-fiókkal rendelkező [Java ASZINKRON SDK](sql-api-sdk-async-java.md) -val.
 A Java Async SDK ügyféloldali logikai leképezést biztosít az Azure Cosmos DB SQL API eléréséhez. Ez a cikk azokat az eszközöket és módszereket ismerteti, amelyek segítenek megoldani a problémákat.
 
-Kezdje ezzel a listával:
+Kezdje a következő listával:
 
-* Tekintse meg a cikk [Gyakori problémák és kerülő megoldások] című szakaszát.
-* Nézd meg az SDK-t, amely nyílt forráskódú a [GitHubon.](https://github.com/Azure/azure-cosmosdb-java) Van egy [probléma szakasz,](https://github.com/Azure/azure-cosmosdb-java/issues) amely aktívan figyeli. Ellenőrizze, hogy van-e már benyújtani hasonló probléma a kerülő megoldással kapcsolatban.
-* Tekintse át a [teljesítményre vonatkozó tippeket,](performance-tips-async-java.md)és kövesse a javasolt eljárásokat.
-* Olvassa el a cikk többi részét, ha nem talált megoldást. Ezután fájl [egy GitHub probléma](https://github.com/Azure/azure-cosmosdb-java/issues).
+* Tekintse meg a jelen cikk [gyakori problémák és megoldások] című szakaszát.
+* Tekintse meg az SDK-t, amely elérhető [nyílt forráskódú a githubon](https://github.com/Azure/azure-cosmosdb-java). A [probléma szakasza](https://github.com/Azure/azure-cosmosdb-java/issues) aktívan van figyelve. Ellenőrizze, hogy a megkerülő megoldással kapcsolatos bármilyen hasonló probléma már be van-e jelölve.
+* Tekintse át a [teljesítménnyel kapcsolatos tippeket](performance-tips-async-java.md), és kövesse a javasolt eljárásokat.
+* Ha nem talál megoldást, olvassa el a cikk további részeit. Ezután egy [GitHub-problémát kell megadnia](https://github.com/Azure/azure-cosmosdb-java/issues).
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Gyakori hibák és áthidaló megoldásaik
 
-### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>Hálózati problémák, Netty olvasási időtúltöltési hiba, alacsony átviteli képesség, nagy késleltetés
+### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>Hálózati problémák, nettó olvasási időtúllépési hiba, alacsony átviteli sebesség, nagy késés
 
 #### <a name="general-suggestions"></a>Általános javaslatok
-* Győződjön meg arról, hogy az alkalmazás ugyanazon a régión fut, mint az Azure Cosmos DB-fiók. 
-* Ellenőrizze a CPU-használat a gazdagép, ahol az alkalmazás fut. Ha a processzorhasználat 90 százalék vagy annál nagyobb, futtassa az alkalmazást egy magasabb konfigurációval rendelkező gazdagépen. Vagy több gépen is terjesztheti a terhelést.
+* Győződjön meg arról, hogy az alkalmazás ugyanazon a régión fut, mint a Azure Cosmos DB-fiókja. 
+* Keresse meg a CPU-használatot azon a gazdagépen, amelyen az alkalmazás fut. Ha a CPU-használat 90 százalék vagy több, akkor futtassa az alkalmazást egy magasabb konfigurációval rendelkező gazdagépen. Vagy több gépen is terjesztheti a terhelést.
 
-#### <a name="connection-throttling"></a>Kapcsolat szabályozása
-A kapcsolat szabályozása a [gazdagép] en vagy az [Azure SNAT (PAT) port kimerülése]miatt fordulhat elő.
+#### <a name="connection-throttling"></a>Kapcsolatok szabályozása
+A kapcsolatok szabályozása akkor fordulhat elő, ha a gazdagép vagy az [Azure SNAT (Pat) portjának kimerülése]vagy a [Csatlakozás korlátja] .
 
-##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>Kapcsolati korlát a gazdagépen
-Egyes Linux rendszerek, például a Red Hat, a megnyitott fájlok teljes számára vonatkozó felső korláttal rendelkeznek. A Linux szoftvercsatornái fájlokként vannak megvalósítva, így ez a szám korlátozza a kapcsolatok teljes számát is.
+##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>A gazdagépre vonatkozó kapcsolatonként
+Bizonyos linuxos rendszerek (például a Red Hat) felső korláttal rendelkeznek a megnyitott fájlok teljes számánál. A Linux rendszerű szoftvercsatornák fájlokként vannak megvalósítva, így ez a szám a kapcsolatok teljes számát is korlátozza.
 Futtassa a következő parancsot.
 
 ```bash
 ulimit -a
 ```
-A "nofile" néven azonosított maximálisan engedélyezett nyitott fájlok számának legalább a kapcsolatkészlet méretének kétszeresének kell lennie. További információt a [Teljesítménytippek című témakörben talál.](performance-tips-async-java.md)
+A "nincs fájl" néven azonosított maximálisan engedélyezett megnyitott fájlok száma legalább dupla a kapcsolatok készletének mérete. További információ: teljesítménnyel kapcsolatos [tippek](performance-tips-async-java.md).
 
-##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Az Azure SNAT (PAT) port kimerülése
+##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Az Azure SNAT (PAT) portjának kimerülése
 
-Ha az alkalmazás nyilvános IP-cím nélküli Azure virtuális gépeken van telepítve, alapértelmezés szerint [az Azure SNAT-portok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) a virtuális gépen kívüli bármely végponthoz létesítenek kapcsolatokat. A virtuális gép és az Azure Cosmos DB-végpont között engedélyezett kapcsolatok számát az [Azure SNAT-konfiguráció](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)korlátozza.
+Ha az alkalmazás nyilvános IP-cím nélküli Azure-Virtual Machines van telepítve, alapértelmezés szerint az [Azure SNAT-portok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) kapcsolatot létesít a virtuális gépen kívüli végpontokkal. A virtuális gépről a Azure Cosmos DB végpont számára engedélyezett kapcsolatok számát az [Azure SNAT konfigurációja](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)korlátozza.
 
- Az Azure SNAT-portok csak akkor használatosak, ha a virtuális gép privát IP-címmel rendelkezik, és a virtuális gép egy folyamat próbál csatlakozni egy nyilvános IP-címet. Az Azure SNAT-korlátozás elkerülése érdekében két kerülő megoldás létezik:
+ Az Azure SNAT-portok használata csak akkor történik meg, ha a virtuális gép magánhálózati IP-címmel rendelkezik, és a virtuális gép egy folyamata megpróbál csatlakozni egy nyilvános IP-címhez. Az Azure SNAT-korlátozás elkerülése érdekében két Áthidaló megoldás létezik:
 
-* Adja hozzá az Azure Cosmos DB szolgáltatásvégpontját az Azure virtuális gépek virtuális hálózatának alhálózatához. További információ: [Azure Virtual Network service endpoints](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Adja hozzá Azure Cosmos DB szolgáltatási végpontját az Azure Virtual Machines Virtual Network alhálózatához. További információ: [Azure Virtual Network Service-végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
 
-    Ha a szolgáltatás végpontja engedélyezve van, a kérelmek et már nem küldi el a nyilvános IP-cím ről az Azure Cosmos DB. Ehelyett a virtuális hálózat és az alhálózati identitás küldése. Ez a módosítás tűzfal-leejtést eredményezhet, ha csak nyilvános IP-k engedélyezettek. Ha tűzfalat használ, a szolgáltatásvégpont engedélyezésekor vegyen fel egy alhálózatot a tűzfalhoz a [virtuális hálózati abeil-ek](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl)használatával.
+    Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
 * Rendeljen hozzá egy nyilvános IP-címet az Azure-beli virtuális géphez.
 
-##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Nem érhető el a szolgáltatás - tűzfal
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Nem érhető el a szolgáltatás – tűzfal
 ``ConnectTimeoutException``azt jelzi, hogy az SDK nem tudja elérni a szolgáltatást.
-A közvetlen mód használatakor az alábbihoz hasonló hiba léphet fel:
+A közvetlen mód használata esetén a következőhöz hasonló hibaüzenet jelenhet meg:
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
 ```
 
-Ha az alkalmazásgépen tűzfal fut, nyissa meg a 10 000 és 20 000 közötti porttartományt, amelyet a közvetlen mód használ.
-Kövesse a [gazdagép kapcsolati korlátját](#connection-limit-on-host)is .
+Ha az alkalmazás gépén fut egy tűzfal, nyissa meg a 10 000 – 20 000 portot, amelyet a közvetlen mód használ.
+Kövesse a [gazdagépen a kapcsolatok korlátját](#connection-limit-on-host)is.
 
 #### <a name="http-proxy"></a>HTTP-proxy
 
-Http-proxy használata esetén győződjön meg arról, hogy az támogatja `ConnectionPolicy`az SDK-ban konfigurált kapcsolatok számát.
-Ellenkező esetben csatlakozási problémákkal kell szembenéznie.
+Ha HTTP-proxyt használ, győződjön meg arról, hogy az képes támogatni az SDK `ConnectionPolicy`-ban konfigurált kapcsolatok számát.
+Ellenkező esetben a csatlakoztatási problémákkal szembesül.
 
-#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Érvénytelen kódolási minta: A Netty IO-szál blokkolása
+#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Érvénytelen kódolási minta: a nettó i/o-szál blokkolása
 
-Az SDK a [Netty](https://netty.io/) I/o-kódtár használatával kommunikál az Azure Cosmos DB-vel. Az SDK Async API-kkal rendelkezik, és a Netty nem blokkoló IO API-jait használja. Az SDK IO-munkája IO Netty szálakon történik. Az IO Netty-szálak száma úgy van beállítva, hogy megegyezik az alkalmazásgép PROCESSZORmagjainak számával. 
+Az SDK a [nettó](https://netty.io/) IO-függvénytárat használja a Azure Cosmos db való kommunikációhoz. Az SDK-ban aszinkron API-k szerepelnek, és a nem blokkoló i/o API-kat használ. Az SDK i/o-műveletek végrehajtása az IO-beli nettó szálakon történik. Az IO-beli virtuális gépek száma úgy van konfigurálva, hogy megegyezzen az alkalmazáshoz tartozó CPU-magok számával. 
 
-A Netty IO-szálak csak nem blokkoló Netty IO-munkákhoz használhatók. Az SDK visszaadja az API-meghívási eredményt az egyik Netty IO-szálon az alkalmazás kódjára. Ha az alkalmazás hosszú távú műveletet hajt végre, miután eredményeket kap a Netty szálon, az SDK nem rendelkezik elegendő IO-szálakkal a belső IO-munka elvégzéséhez. Az ilyen alkalmazáskódolás alacsony átviteli, nagy késést és `io.netty.handler.timeout.ReadTimeoutException` hibákat eredményezhet. A megoldás az, hogy váltani a szál, ha tudja, hogy a művelet időt vesz igénybe.
+A nettó i/o-szálak csak nem blokkoló, a nettó i/o-működéshez használhatók. Az SDK visszaadja az API meghívásának eredményét az egyik nettó i/o-szálon az alkalmazás kódjára. Ha az alkalmazás hosszú élettartamú műveletet hajt végre, miután az eredményeket kapott a nettó szálon, előfordulhat, hogy az SDK-ban nincs elég IO-szál a belső i/o-művelet elvégzéséhez. Az ilyen alkalmazások kódolása alacsony átviteli sebességet, nagy késést és `io.netty.handler.timeout.ReadTimeoutException` hibákat eredményezhet. A megkerülő megoldás a szál átállítása, ha tudja, hogy a művelet időt vesz igénybe.
 
-Tekintse meg például a következő kódrészletet. Előfordulhat, hogy a Netty szálon néhány ezredmásodpercnél hosszabb ideig tartó munkát végez. Ha igen, akkor végül olyan állapotba léphet, amelyben nincs Netty IO-szál az IO-munka feldolgozásához. Ennek eredményeképpen readtimeoutexception hibát kap.
+Tekintse meg például a következő kódrészletet. Előfordulhat, hogy hosszú távú munkát végez, amely több mint néhány ezredmásodpercet vesz igénybe a nettó szálon. Ha igen, akkor végül egy olyan állapotba kerülhet, amelyben nem szerepelnek a nettó i/o-szálak az IO-munka feldolgozásához. Ennek eredményeképpen ReadTimeoutException-hibát kap.
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -131,13 +131,13 @@ public void badCodeWithReadTimeoutException() throws Exception {
     assertThat(failureCount.get()).isGreaterThan(0);
 }
 ```
-   A megoldás az, hogy módosítja a szálat, amelyen a munkát, hogy időt vesz igénybe. Adja meg az alkalmazás ütemezőjének egypéldányát.
+   A megkerülő megoldással módosíthatja a szálat, amelyen időt vesz igénybe. Definiálja az ütemező egyedi példányát az alkalmazáshoz.
    ```java
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
    ```
-   Előfordulhat, hogy olyan munkát kell végeznie, amely időt vesz igénybe, például számításilag nehéz munkát végez, vagy blokkolja az IO-t. Ebben az esetben kapcsolja be a szálat egy, az API használatával az `customScheduler` `.observeOn(customScheduler)` Ön által biztosított dolgozóra.
+   Előfordulhat, hogy olyan munkát kell végeznie, amely időt vesz igénybe, például számítási feldolgozóként vagy az IO blokkolása. Ebben az esetben a szálat a `customScheduler` által az `.observeOn(customScheduler)` API-val megadott feldolgozónak állítsa be.
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -148,36 +148,36 @@ createObservable
             // ...
         );
 ```
-A `observeOn(customScheduler)`használatával felszabadítja a Netty IO-szálat, és átvált az egyéni ütemező által biztosított saját egyéni szálra. Ez a módosítás megoldja a problémát. Többé nem lesz `io.netty.handler.timeout.ReadTimeoutException` csődtömeg.
+A használatával `observeOn(customScheduler)`felszabadítja a nettó i/o-szálat, és átválthat az egyéni ütemező által biztosított saját egyéni szálra. Ez a módosítás megoldja a problémát. Többé nem jelenik meg `io.netty.handler.timeout.ReadTimeoutException` a hiba.
 
-### <a name="connection-pool-exhausted-issue"></a>A kapcsolatkészlet kimerült problémája
+### <a name="connection-pool-exhausted-issue"></a>A csatlakozókábel kimerült hibája
 
-`PoolExhaustedException`ügyféloldali hiba. Ez a hiba azt jelzi, hogy az alkalmazás munkaterhelése magasabb, mint amit az SDK-kapcsolatkészlet szolgálhat. Növelje a kapcsolatkészlet méretét, vagy ossza el a terhelést több alkalmazáson.
+`PoolExhaustedException`ügyféloldali hiba. Ez a hiba azt jelzi, hogy az alkalmazás számítási feladatának értéke magasabb, mint amit az SDK-kapcsolatfájl képes kiszolgálni. Növelje a kapcsolatok készletének méretét, vagy ossza meg több alkalmazás terhelését.
 
-### <a name="request-rate-too-large"></a>A kérelem aránya túl nagy
-Ez a hiba kiszolgálóoldali hiba. Azt jelzi, hogy felhasználta a kiosztott átviteli. Próbálkozzon később. Ha gyakran kap ilyen hibát, fontolja meg a gyűjtemény átviteli sorának növelését.
+### <a name="request-rate-too-large"></a>Túl nagy a kérelmek aránya
+Ez a hiba kiszolgálóoldali hiba. Azt jelzi, hogy a kiosztott átviteli sebességet használták. Próbálkozzon újra később. Ha ez a hiba gyakran előfordul, vegye figyelembe a gyűjtemény átviteli sebességének növekedését.
 
-### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Hiba az Azure Cosmos DB emulátorhoz való csatlakozáskor
+### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Sikertelen csatlakozás Azure Cosmos DB emulátorhoz
 
-Az Azure Cosmos DB emulátor HTTPS-tanúsítvány önaláírt. Ahhoz, hogy az SDK együttműködjön az emulátorral, importálja az emulátor tanúsítványt egy Java TrustStore-ba. További információ: [Export Azure Cosmos DB emulátor tanúsítványok](local-emulator-export-ssl-certificates.md).
+Az Azure Cosmos DB Emulator HTTPS-tanúsítványa önaláírt. Ahhoz, hogy az SDK működjön az emulátorral, importálja az Emulator-tanúsítványt egy Java-TrustStore. További információ: [Azure Cosmos db Emulator-tanúsítványok exportálása](local-emulator-export-ssl-certificates.md).
 
-### <a name="dependency-conflict-issues"></a>Függőségi problémák
+### <a name="dependency-conflict-issues"></a>Függőségi ütközések problémái
 
 ```console
 Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
 ```
 
-A fenti kivétel azt sugallja, hogy az RxJava lib egy régebbi verziójától függ (pl. 1.2.2). Az SDK az RxJava 1.3.8-ra támaszkodik, amely api-kat nem érhető el az RxJava korábbi verziójában. 
+A fenti kivétel azt sugallja, hogy a RxJava lib egy régebbi verziójával (például 1.2.2) függ. Az SDK azon RxJava-1.3.8 támaszkodik, amelyeken a RxJava korábbi verzióiban nem érhető el API-k. 
 
-Az ilyen issuses megoldásaz, hogy meghatározza, hogy mely más függőség hozza az RxJava-1.2.2-t, és kizárja az RxJava-1.2.2 tranzitív függőségét, és lehetővé teszi a CosmosDB SDK számára az újabb verzió t.
+Az ilyen issuses megkerülő megoldásnak meg kell határoznia, hogy a RxJava-1.2.2 milyen más függőséget biztosít, és zárja ki a RxJava-1.2.2-re irányuló tranzitív függőséget, és engedélyezze a CosmosDB SDK számára az újabb verziót.
 
-Annak megállapításához, hogy melyik tár hozza be az RxJava-1.2.2-t, futtassa a következő parancsot a projekt pom.xml fájlja mellett:
+A RxJava-1.2.2 nevű könyvtár azonosításához futtassa a következő parancsot a Project Pom. xml fájl mellett:
 ```bash
 mvn dependency:tree
 ```
-További információt a [maven függőségi fa útmutatóban talál.](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)
+További információt a [Maven függőségi fa útmutatójában](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)talál.
 
-Miután azonosította az RxJava-1.2.2-t, tranzitív függősége, amelytől a projekt egyéb függősége, módosíthatja a rendszerfájlban lévő lib függőséget, és kizárhatja az RxJava tranzitív függőséget:
+Miután azonosította a RxJava-1.2.2-t, a rendszer tranzitív függőségi viszonyban áll a projekt más függőségeivel, módosíthatja a lib-fájlban lévő függőséget a Pom-fájlban, és kizárhatja a RxJava tranzitív függőségét:
 
 ```xml
 <dependency>
@@ -193,14 +193,14 @@ Miután azonosította az RxJava-1.2.2-t, tranzitív függősége, amelytől a pr
 </dependency>
 ```
 
-További információt a [tranzitív függőségi útmutató kizárása című](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)témakörben talál.
+További információ: a [tranzitív függőségi útmutató kizárása](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
 
 
-## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>Ügyfél SDK-naplózásának engedélyezése
+## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>Ügyféloldali SDK naplózásának engedélyezése
 
-A Java Async SDK az SLF4j naplózási homlokzatot használja, amely támogatja a népszerű naplózási keretrendszerekbe, például a log4j-be és a logback-be való bejelentkezést.
+A Java aszinkron SDK SLF4j használ a naplózási homlokzatként, amely támogatja az olyan népszerű naplózási keretrendszerekbe való bejelentkezést, mint a log4j és a logback.
 
-Ha például a log4j naplózási keretrendszerként való használatát szeretné használni, adja hozzá a következő libeket a Java-osztályhoz.
+Ha például naplózási keretrendszerként szeretné használni a log4j-t, adja hozzá a következő libs-t a Java-osztályútvonal.
 
 ```xml
 <dependency>
@@ -215,7 +215,7 @@ Ha például a log4j naplózási keretrendszerként való használatát szeretn�
 </dependency>
 ```
 
-Is hozzá egy log4j config.
+Adjon hozzá egy log4j-konfigurációt is.
 ```
 # this is a sample log4j configuration
 
@@ -233,25 +233,25 @@ log4j.appender.A1.layout=org.apache.log4j.PatternLayout
 log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 ```
 
-További információ: [sfl4j logging manual](https://www.slf4j.org/manual.html).
+További információkért lásd a [sfl4j naplózási kézikönyvét](https://www.slf4j.org/manual.html).
 
-## <a name="os-network-statistics"></a><a name="netstats"></a>Operációs rendszer hálózati statisztikái
-Futtassa a netstat parancsot, hogy megtudja, `ESTABLISHED` `CLOSE_WAIT`hány kapcsolat van az olyan állapotokban, mint a és a .
+## <a name="os-network-statistics"></a><a name="netstats"></a>Operációs rendszer hálózati statisztikája
+A netstat parancs futtatásával megtudhatja, hogy hány kapcsolat van olyan állapotban, mint `ESTABLISHED` a `CLOSE_WAIT`és a.
 
-Linuxon futtathatja a következő parancsot.
+Linux rendszeren a következő parancsot futtathatja.
 ```bash
 netstat -nap
 ```
-Az eredményt csak az Azure Cosmos DB-végponthoz való kapcsolatokra szűrje.
+Az eredmény szűrése, hogy csak az Azure Cosmos DB végponthoz tartozó kapcsolatok legyenek.
 
-Az Azure Cosmos DB-végponthoz való `ESTABLISHED` kapcsolatok száma az állapot ban nem lehet nagyobb, mint a beállított kapcsolatkészlet mérete.
+Az Azure Cosmos DB végponthoz tartozó kapcsolatok száma az `ESTABLISHED` állapotban nem lehet nagyobb, mint a konfigurált kapcsolati készlet mérete.
 
-Az Azure Cosmos DB-végpont számos kapcsolata lehet az `CLOSE_WAIT` állapot. Több lehet, mint 1000. Egy magas szám azt jelzi, hogy a kapcsolatok létrejönnek és gyorsan lebontódnak. Ez a helyzet problémákat okozhat. További információt a [Gyakori problémák és kerülő megoldások] című szakaszban talál.
+Az Azure Cosmos DB végponttal létesített kapcsolatok lehetnek az `CLOSE_WAIT` állapotban. Lehet, hogy több mint 1 000. A magas érték azt jelzi, hogy a kapcsolatok létrehozása és leválasztása gyorsan megtörténik. Ez a helyzet valószínűleg problémákat okoz. További információt a [gyakori problémák és a megkerülő megoldások] című szakaszban talál.
 
  <!--Anchors-->
 [Gyakori hibák és áthidaló megoldásaik]: #common-issues-workarounds
 [Enable client SDK logging]: #enable-client-sice-logging
-[Kapcsolati korlát a gazdagépen]: #connection-limit-on-host
-[Az Azure SNAT (PAT) port kimerülése]: #snat
+[A gazdagépre vonatkozó kapcsolatonként]: #connection-limit-on-host
+[Az Azure SNAT (PAT) portjának kimerülése]: #snat
 
 

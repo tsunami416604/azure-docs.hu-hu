@@ -1,6 +1,6 @@
 ---
-title: Adatok áttelepítése a StorSimple 5000-7000 sorozatból a 8000-es sorozatú eszközbe| Microsoft dokumentumok
-description: Áttekintést és az Áttelepítés szolgáltatás előfeltételeit tartalmazza.
+title: A StorSimple 5000-7000-es sorozatba tartozó adatáttelepítés 8000 sorozatú eszközre | Microsoft Docs
+description: Áttekintést nyújt az áttelepítési funkció előfeltételeiről.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,116 +14,116 @@ ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60631655"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Adatok áttelepítése a StorSimple 5000-7000 sorozatból a 8000-es sorozatú eszközre
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Adatok migrálása a StorSimple 5000-7000 sorozatból az 8000 Series eszközre
 
 > [!IMPORTANT]
-> - 2019. július 31-én a StorSimple 5000/7000 sorozat a támogatási (EOS) státusz megszűnése felé tart. Azt javasoljuk, hogy a StorSimple 5000/7000 sorozatú ügyfelek a dokumentumban ismertetett alternatívák egyikére térjenek át.
-> - Az áttelepítés jelenleg egy támogatott művelet. Ha adatokat kíván áttelepíteni a StorSimple 5000-7000 sorozatú eszközről egy 8000-es sorozatú eszközre, az áttelepítést a Microsoft támogatási szolgálatával kell ütemeznie. A Microsoft támogatási szolgálata ezután engedélyezi az előfizetést az áttelepítéshez. További információt a [Támogatási jegy megnyitása című témakörben talál.](storsimple-8000-contact-microsoft-support.md)
-> - A szolgáltatáskérelem beküldése után az áttelepítési terv végrehajtása és az áttelepítés tényleges megkezdése néhány hétig is eltarthat.
-> - Mielőtt kapcsolatba lépne a Microsoft támogatási szolgálatával, mindenképpen tekintse át és töltse ki a cikkben megjelölt [áttelepítési előfeltételeket.](#migration-prerequisites)
+> - 2019. július 31-én a StorSimple 5000/7000-sorozat eléri a támogatási (EOS) állapot végét. Javasoljuk, hogy a StorSimple 5000/7000 Series-ügyfelek a dokumentumban ismertetett alternatívák egyikére váltsanak át.
+> - Az áttelepítés jelenleg egy támogatott művelet. Ha az StorSimple 5000-7000 Series-eszközről egy 8000 sorozatú eszközre szeretne áttelepíteni egy adatátviteli eszközt, az áttelepítést Microsoft ügyfélszolgálatatel kell ütemeznie. A Microsoft ügyfélszolgálata ezután engedélyezi az előfizetés áttelepítését. További információkért lásd: [támogatási jegy megnyitása](storsimple-8000-contact-microsoft-support.md).
+> - A szolgáltatáskérelem beírása után eltarthat néhány hétig, hogy végrehajtsa az áttelepítési tervet, és ténylegesen elindítsa az áttelepítést.
+> - Mielőtt felveszi Önnel a kapcsolatot a Microsoft ügyfélszolgálataval, tekintse át és fejezze be a cikkben szereplő [áttelepítési előfeltételeket](#migration-prerequisites) .
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk bemutatja az áttelepítési funkciót, amely lehetővé teszi a StorSimple 5000-7000 sorozatú ügyfelek számára, hogy áttelepítsék adataikat a StorSimple 8000 sorozatú fizikai eszközre vagy egy 8010/8020-as felhőalapú készülékre. Ez a cikk egy letölthető, lépésről-lépésre bemutatja az 5000-7000-es sorozatú örökölt eszközről egy 8000-es sorozatú fizikai vagy felhőalapú készülékre való áttelepítéshez szükséges lépéseket.
+Ez a cikk bemutatja az áttelepítési funkciót, amely lehetővé teszi, hogy a StorSimple 5000-7000 Series ügyfelei áttelepítse az StorSimple 8000 sorozatú fizikai eszközre vagy egy 8010/8020 felhőalapú berendezésbe. Ez a cikk a 5000-7000 sorozatú örökölt eszközről egy 8000 sorozatú fizikai vagy Felhőbeli készülékre való Migrálás lépéseire mutató részletes útmutatót is tartalmaz.
 
-Ez a cikk a helyszíni 8000-es sorozatú eszközökre és a StorSimple cloud appliance-ra egyaránt vonatkozik.
+Ez a cikk a helyszíni 8000 sorozatú eszközre, valamint a StorSimple Cloud Appliance is alkalmazható.
 
 
-## <a name="migration-feature-versus-host-side-migration"></a>Áttelepítési funkció és gazdagépoldali áttelepítés
+## <a name="migration-feature-versus-host-side-migration"></a>Áttelepítési funkció és a gazdagép-oldali áttelepítés
 
-Az adatokat áthelyezheti az áttelepítési funkcióval vagy a gazdagépoldali áttelepítés végrehajtásával. Ez a szakasz az egyes módszerek sajátosságait ismerteti, beleértve az előnyöket és hátrányokat is. Ezen információk alapján megtudhatja, hogy milyen módszert kíván végrehajtani az adatok áttelepítéséhez.
+Az adatok áthelyezhetők az áttelepítési szolgáltatással vagy egy gazdagép-oldali Migrálás használatával. Ez a szakasz az egyes módszerek sajátosságait ismerteti, beleértve az előnyeit és hátrányait. Ezekkel az információkkal kiderítheti, hogy melyik módszert kívánja folytatni az adatok áttelepíthetővé való átadásához.
 
-Az áttelepítési funkció egy vész-helyreállítási (DR) folyamatot szimulál 7000/5000 sorozatból 8000-es sorozatba. Ez a funkció lehetővé teszi az adatok áttelepítését 5000/7000 sorozatú formátumból 8000-es sorozatformátumba az Azure-ban. Az áttelepítési folyamat a StorSimple áttelepítési eszközzel indul. Az eszköz elindítja a biztonsági mentés metaadatainak letöltését és átalakítását a 8000-es sorozatú eszközön, majd a legújabb biztonsági mentést használja az eszközön lévő kötetek felfedéséhez.
+Az áttelepítési funkció szimulálja a vész-helyreállítási (DR) folyamatot az 7000/5000-es sorozatból a 8000-es sorozatba. Ez a funkció lehetővé teszi az adatok 5000/7000 adatsorozat-formátumból 8000 adatsorozat-formátumba való átadását az Azure-ban. Az áttelepítési folyamat a StorSimple áttelepítési eszköz használatával indítható el. Az eszköz elindítja a biztonsági mentési metaadatok letöltését és átalakítását az 8000 sorozatú eszközön, majd a legújabb biztonsági mentéssel teszi elérhetővé a köteteket az eszközön.
 
 |      | Előnyök                                                                                                                                     |Hátrányok                                                                                                                                                              |
 |------|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Az áttelepítési folyamat megőrzi az 5000/7000 sorozaton készített biztonsági mentések előzményeit.                                               | Amikor a felhasználók megpróbálnak hozzáférni az adatokhoz, ez az áttelepítés letölti az adatokat az Azure-ból, így az adatok letöltési költségeit.                                     |
-| 2.   | A gazdagép oldalon nem történik adat áttelepítése.                                                                                                     | A folyamatnak állásidőre van szüksége a biztonsági mentés kezdete és a 8000-es sorozatban felszínre került legutóbbi biztonsági mentés között (az áttelepítési eszközzel megbecsülhető). |
-| 3.   | Ez a folyamat megőrzi a 8000-es sorozatú eszközök összes házirendjét, sávszélesség-sablonját, titkosítását és egyéb beállításait.                      | A felhasználói hozzáférés csak a felhasználók által elért adatokat hozza vissza, és nem hidratálja a teljes adatkészletet.                                                  |
-| 4.   | Ez a folyamat további időt igényel az Azure összes régebbi biztonsági mentésének konvertálásához, amely aszinkron módon történik, anélkül, hogy befolyásolna az éles környezetet | Az áttelepítés csak felhőalapú konfigurációs szinten végezhető el.  A felhőkonfigurációban lévő egyes kötetek nem telepíthetők át külön-külön                       |
+| 1.   | Az áttelepítési folyamat megőrzi az 5000/7000 sorozaton elvégzett biztonsági másolatok előzményeit.                                               | Amikor a felhasználók megpróbálnak hozzáférni az adatokhoz, az áttelepítés az Azure-ból tölti le az adatait, így az adatletöltési költségekkel jár.                                     |
+| 2.   | A gazdagép oldalán nem történik adat áttelepítve.                                                                                                     | A folyamatnak a biztonsági mentés és a legújabb biztonsági mentés a 8000-es sorozatba való felszínének megkezdése közötti állásidőre van szüksége (az áttelepítési eszköz használatával becsülhető fel). |
+| 3.   | Ez a folyamat a 8000 sorozatú eszközökön lévő összes házirendet, sávszélesség-sablont, titkosítást és egyéb beállítást megőrzi.                      | A felhasználói hozzáférés csak a felhasználók által elért adatokat fogja visszahozni, és nem fogja kiszáradni a teljes adatkészletet.                                                  |
+| 4.   | Ehhez a folyamathoz további időre van szükség az Azure-ban az összes régebbi biztonsági mentés átalakításához, ami aszinkron módon történik az éles környezet nélkül | A Migrálás csak Felhőbeli konfigurációs szinten végezhető el.  A Felhőbeli konfigurációban lévő egyes kötetek nem telepíthetők át külön                       |
 
-A gazdagépoldali áttelepítés lehetővé teszi a 8000-es sorozat egymástól független beállítását, és az 5000/7000 sorozatú eszközről a 8000-es sorozatú eszközre történő másolást. Ez egyenértékű az adatok egyik tárolóeszközről a másikra történő áttelepítésével. Az adatok másolásához számos eszköz használható, például a Diskboss, a robocopy.
+A gazdagép-oldali áttelepítés lehetővé teszi, hogy a 8000-es sorozatok egymástól függetlenül legyenek, és az adatok másolása a 5000/7000 sorozatú eszközről a 8000 Series eszközre. Ez egyenértékű az adatok egyik tárolóeszközről a másikra való áttelepítésével. Az adatmásoláshoz különféle eszközök, például a Diskboss, a Robocopy használható.
 
 |      | Előnyök                                                                                                                      |Hátrányok                                                                                                                                                                                                      |
 |------|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Az áttelepítés fokozatosan, térfogatonként közelíthető meg.                                               | A korábbi biztonsági mentések (az 5000/7000 sorozaton) nem lesznek elérhetők a 8000-es sorozatú eszközön.                                                                                                       |
-| 2.   | Lehetővé teszi az adatok egyetlen tárfiókba történő összevonását az Azure-ban.                                                       | A 8000-es sorozat első felhőbiztonsági mentése hosszabb időt vesz igénybe, mivel a 8000-es sorozat összes adatának biztonsági mentését az Azure-ra kell készíteni.                                                                     |
-| 3.   | A sikeres áttelepítést követően az összes adat helyi a készüléken. Nincsenek késések az adatok elérésekor. | Az Azure storage-felhasználás növekedni fog, amíg az adatok törlődnek az 5000/7000 eszközről.                                                                                                        |
-| 4.   |                                                                                                                           | Ha a 7000/5000-es sorozatú eszköz nagy mennyiségű adattal rendelkezik, az áttelepítés során ezeket az adatokat le kell tölteni az azure-ból, ami az Azure-ból történő adatok letöltésével kapcsolatos költségeket és késéseket jelent. |
+| 1.   | A Migrálás többfázisú módon, mennyiségi alapon is megközelíthető.                                               | Az előző biztonsági másolatok (az 5000/7000-es sorozaton) nem lesznek elérhetők az 8000 Series eszközön.                                                                                                       |
+| 2.   | Lehetővé teszi az adategyesítést egyetlen Storage-fiókba az Azure-ban.                                                       | A felhőbe való első biztonsági mentés a 8000 sorozaton hosszabb időt vesz igénybe, mivel a 8000-es sorozat összes adattal biztonsági mentést kell készíteni az Azure-ba.                                                                     |
+| 3.   | A sikeres Migrálás után az összes érték helyi lesz a berendezésen. Az adatok elérésekor nincsenek késések. | Az Azure Storage-használat a 5000/7000-es eszközről az adatok törlése után növekszik.                                                                                                        |
+| 4.   |                                                                                                                           | Ha az 7000/5000-es sorozatú eszköz nagy mennyiségű adattal rendelkezik, az áttelepítés során az adatoknak le kell tölteniük az Azure-ból, ami az Azure-ból való adatletöltéssel kapcsolatos költségeket és késéseket is felmerül. |
 
-Ez a cikk csak az 5000/7000 és 8000 sorozatú eszköz áttelepítési funkciójára összpontosít. Az állomásoldali áttelepítésről további információt az [Áttelepítés más tárolóeszközökről](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf)című részében talál.
+Ez a cikk csak a 5000/7000 – 8000 sorozatú eszköz áttelepítési szolgáltatására koncentrál. A gazdagépek közötti áttelepítéssel kapcsolatos további információkért lépjen az [áttelepítés más tárolóeszközökből](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf)című témakörre.
 
-## <a name="migration-prerequisites"></a>Áttelepítési előfeltételek
+## <a name="migration-prerequisites"></a>Migrálás előfeltételei
 
-Íme az örökölt 5000-es vagy 7000-es sorozatú eszköz és a 8000-es sorozatú StorSimple eszköz áttelepítési előfeltételei.
+Az alábbi áttelepítési előfeltételek vonatkoznak az örökölt 5000 vagy 7000 sorozatú eszközre és az 8000 sorozatú StorSimple eszközre.
 
 > [!IMPORTANT]
-> Mielőtt szolgáltatási kérelmet nyújtana be a Microsoft támogatási szolgálatához, tekintse át és fejezze be az áttelepítési előfeltételeket.
+> Tekintse át és fejezze be az áttelepítésre vonatkozó előfeltételeket, mielőtt a szolgáltatáshoz Microsoft ügyfélszolgálata.
 
 ### <a name="for-the-50007000-series-device-source"></a>Az 5000/7000 sorozatú eszközhöz (forrás)
 
-Az áttelepítés megkezdése előtt győződjön meg arról, hogy:
+Az áttelepítés megkezdése előtt győződjön meg a következőket:
 
-* Az 5000-es vagy 7000-es sorozatú forráseszközzel rendelkezik; a készülék lehet élő vagy le.
+* Rendelkezik a 5000 vagy az 7000 sorozat forrásoldali eszközzel; az eszköz lehet élő vagy leállt.
 
     > [!IMPORTANT]
-    > Azt javasoljuk, hogy az áttelepítési folyamat során soros hozzáféréssel rendelkezik ehhez az eszközhöz. Ha bármilyen eszközprobléma merül ne fel, a soros hozzáférés segíthet a hibaelhárításban.
+    > Javasoljuk, hogy az áttelepítési folyamat során soros hozzáférést biztosítson az eszközhöz. Ha bármilyen eszközzel kapcsolatos probléma merül fel, a soros hozzáférés segítséget nyújthat a hibaelhárításhoz.
 
-* Az 5000-es vagy 7000-es sorozatú forráseszköz 2.1.1.518-as vagy újabb verziójú szoftververziót futtat. A korábbi verziók nem támogatottak.
-* Az 5000-es vagy 7000-es sorozat futtatásának ellenőrzéséhez tekintse meg a webes felhasználói felület jobb felső sarkát. Ez megjeleníti az eszköz által futtatott szoftververziót. Áttelepítés esetén az 5000-es vagy 7000-es sorozatnak a 2.1.1.518-as sorozatot kell futtatnia.
+* Az 5000-es vagy 7000-es adatsorozat-forrásoldali eszközön a szoftver v 2.1.1.518 vagy újabb verziója fut. A korábbi verziók nem támogatottak.
+* Annak ellenőrzéséhez, hogy a 5000-es vagy a 7000-es sorozat melyik verziója fut, tekintse meg a webes felhasználói felület jobb felső sarkában. Ekkor meg kell jelennie az eszköz által futtatott szoftver verziójának. Az áttelepítéshez a 5000-es vagy a 7000-es sorozatnak a v 2.1.1.518-t kell futtatnia.
 
-    ![Szoftververzió ellenőrzése az örökölt eszközön](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
+    ![Az örökölt eszközön lévő szoftververzió keresése](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Ha az élő eszköz nem fut a 2.1.1.518-as vagy újabb verzión, frissítse a rendszert a szükséges minimális verzióra. A részletes útmutatásért olvassa el [A rendszer frissítése a 2.1.1.518-as vagy 2.1.518-as fájlra](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)című információt.
-    * Ha a 2.1.1.518-as fájlt futtatja, nyissa meg a webes felhasználói felületet, és nézze meg, hogy vannak-e értesítések a rendszerleíró adatbázis-visszaállítási hibákról. Ha a rendszerleíró adatbázis visszaállítása nem sikerült, futtassa a rendszerleíró adatbázis visszaállítását. További információt a Rendszerleíró [adatbázis visszaállításának futtatása című](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry)segédprogramban talál.
-    * Ha olyan lefelé irányuló eszközzel rendelkezik, amely nem a 2.1.1.518-as műveletet futtatja, hajtson végre feladatátvételt egy 2.1.1.518-as vagyonfutó csereeszközre. Részletes utasításokat az 5000/7000-es sorozatú StorSimple-eszköz DR-ben talál.
-    * Biztonsági másolatot készít az eszköz adatairól egy felhőbeli pillanatkép készítésével.
-    * Ellenőrizze, hogy vannak-e más aktív biztonsági mentési feladatok, amelyek a forráseszközön futnak. Ez magában foglalja a storsimple adatvédelmi konzol gazdagép en a feladatokat. Várja meg, amíg az aktuális feladatok befejeződnek.
+    * Ha az élő eszköz nem a v 2.1.1.518 vagy újabb verzióját futtatja, frissítse a rendszert a szükséges minimális verzióra. Részletes útmutatást a [rendszer frissítése a v 2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)című témakörben talál.
+    * Ha a v 2.1.1.518-t futtatja, nyissa meg a webes felhasználói felületet, és ellenőrizze, hogy van-e értesítés a beállításjegyzék-visszaállítási hibákról. Ha a beállításjegyzék-visszaállítás sikertelen volt, futtassa a beállításjegyzék-visszaállítást. További információ: a [beállításjegyzék-visszaállítás futtatása](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry).
+    * Ha nem a v 2.1.1.518-t futtató eszközt használ, végezzen feladatátvételt a v 2.1.1.518-t futtató helyettesítő eszközön. Részletes utasításokért tekintse meg a 5000/7000 sorozatú StorSimple-eszköz DR.
+    * Készítsen biztonsági másolatot az eszköz adatairól egy Felhőbeli pillanatkép elkészítése révén.
+    * Keresse meg a forrásoldali eszközön futó egyéb aktív biztonsági mentési feladatokat. Ez magában foglalja a StorSimple-adatvédelmi konzol gazdagépének feladatait. Várjon, amíg az aktuális feladatok befejeződik.
 
 
-### <a name="for-the-8000-series-physical-device-target"></a>A 8000-es sorozatú fizikai eszközhöz (cél)
+### <a name="for-the-8000-series-physical-device-target"></a>Az 8000 sorozatú fizikai eszközhöz (cél)
 
-Az áttelepítés megkezdése előtt győződjön meg arról, hogy:
+Az áttelepítés megkezdése előtt győződjön meg a következőket:
 
-* A cél 8000-es sorozatú eszköz regisztrálva van és fut. További információ: A [StorSimple eszköz telepítése a StorSimple Manager szolgáltatással.](storsimple-8000-deployment-walkthrough-u2.md)
-* A 8000-es sorozatú eszközhöz telepítve van a legújabb StorSimple 8000 Series Update 5, és a 6.3.9600.17845 vagy újabb verzió fut. Ha az eszközön nincs telepítve a legújabb frissítések, az áttelepítés folytatása előtt telepítenie kell a legújabb frissítéseket. További információt a [8000-es sorozatú eszköz legújabb frissítésének telepítése című témakörben talál.](storsimple-8000-install-update-5.md)
-* Az Azure-előfizetés e-áttelepítés engedélyezve van. Ha az előfizetés nincs engedélyezve, lépjen kapcsolatba a Microsoft támogatási szolgálatával az áttelepítésre vonatkozó előfizetés engedélyezéséhez.
+* A cél 8000 sorozatú eszköz regisztrálva van és fut. További információ: [a StorSimple-eszköz üzembe helyezése StorSimple Manager szolgáltatással](storsimple-8000-deployment-walkthrough-u2.md).
+* Az 8000 sorozatú eszközön a legújabb StorSimple 8000 Series Update 5 van telepítve, és 6.3.9600.17845 vagy újabb verziót futtat. Ha az eszközön nincsenek telepítve a legújabb frissítések, telepítenie kell a legújabb frissítéseket, mielőtt folytatná az áttelepítést. További információ: a [legújabb frissítés telepítése az 8000 Series-eszközön](storsimple-8000-install-update-5.md).
+* Az Azure-előfizetése engedélyezve van az áttelepítéshez. Ha az előfizetése nincs engedélyezve, lépjen kapcsolatba Microsoft ügyfélszolgálata az előfizetés áttelepítésének engedélyezéséhez.
 
-### <a name="for-the-80108020-cloud-appliance-target"></a>A 8010/8020 felhőalapú készülékhez (cél)
+### <a name="for-the-80108020-cloud-appliance-target"></a>Az 8010/8020 Cloud Appliance (cél) esetében
 
-Az áttelepítés megkezdése előtt győződjön meg arról, hogy:
+Az áttelepítés megkezdése előtt győződjön meg a következőket:
 
-* A célfelhő-berendezés regisztrálva van és működik. További információ: A [StorSimple Cloud Appliance telepítése és kezelése.](storsimple-8000-cloud-appliance-u2.md)
-* A felhőalapú készüléken a legújabb StorSimple 8000 Series Update 5 szoftver verzió fut 6.3.9600.17845. Ha a felhőalapú készüléken nem fut az 5.frissítés, hozzon létre egy új 5. További információ: [8010/8020 felhőalapú készülék létrehozása.](storsimple-8000-cloud-appliance-u2.md)
+* A cél felhőalapú berendezés regisztrálva van és fut. További információ: [StorSimple Cloud Appliance üzembe helyezése és kezelése](storsimple-8000-cloud-appliance-u2.md).
+* A felhőalapú berendezés a legújabb StorSimple 8000 Series Update 5 szoftververzió 6.3.9600.17845 fut. Ha a felhőalapú készülék nem az 5. frissítést futtatja, hozzon létre egy új, 5. frissítéssel rendelkező felhőalapú készüléket, mielőtt folytatná az áttelepítést. További információ: [8010/8020 Cloud Appliance létrehozása](storsimple-8000-cloud-appliance-u2.md).
 
-### <a name="for-the-computer-running-storsimple-migration-tool"></a>A StorSimple áttelepítési eszközt futtató számítógéphez
+### <a name="for-the-computer-running-storsimple-migration-tool"></a>A StorSimple áttelepítési eszközt futtató számítógép esetén
 
-A StorSimple Áttelepítési eszköz egy felhasználói felületen alapuló eszköz, amely lehetővé teszi az adatok áttelepítését egy StorSimple 5000-7000 sorozatból egy 8000-es sorozatú eszközre. A StorSimple Áttelepítés eszköz telepítéséhez olyan számítógépet használjon, amely megfelel az alábbi követelményeknek.
+A StorSimple áttelepítési eszköz egy FELHASZNÁLÓIFELÜLET-alapú eszköz, amely lehetővé teszi az adatok áttelepítését egy StorSimple 5000-7000-sorozatból egy 8000 sorozatú eszközre. A StorSimple áttelepítési eszköz telepítéséhez használjon olyan számítógépet, amely megfelel az alábbi követelményeknek.
 
-A számítógép rendelkezik internetkapcsolattal és:
+A számítógép internetkapcsolattal rendelkezik, és:
 
-* A következő operációs rendszert futtatja
-    * Windows 10.Windows 10.
+* A a következő operációs rendszert futtatja
+    * Windows 10.
     * Windows Server 2012 R2 (vagy újabb) a StorSimple áttelepítési eszköz telepítéséhez.
-* A .NET 4.5.2 van telepítve.
-* Legalább 5 GB szabad terület teljen el az eszköz telepítéséhez és használatához.
+* Telepítve van a .NET 4.5.2.
+* Az eszköz telepítéséhez és használatához legalább 5 GB szabad terület szükséges.
 
 > [!TIP]
-> Ha a StorSimple-eszköz Windows Server-állomáshoz csatlakozik, telepítheti az áttelepítési eszközt a Windows Server gazdaszámítógépre.
+> Ha a StorSimple-eszköz egy Windows Server-gazdagéphez csatlakozik, akkor telepítheti az áttelepítési eszközt a Windows Server-gazdagépen.
 
 #### <a name="to-install-storsimple-migration-tool"></a>A StorSimple áttelepítési eszköz telepítése
 
-Hajtsa végre az alábbi lépéseket a StorSimple Áttelepítés iaspita eszköz telepítéséhez a számítógépre.
+A StorSimple áttelepítési eszköz telepítéséhez hajtsa végre a következő lépéseket a számítógépen.
 
-1. Másolja a _Mappát StorSimple8000SeriesMigrationTool_ a Windows számítógépre. Győződjön meg arról, hogy a szoftver másolási meghajtója elegendő hellyel rendelkezik.
+1. Másolja a _StorSimple8000SeriesMigrationTool_ mappát a Windows rendszerű számítógépre. Győződjön meg arról, hogy a meghajtó, ahová a szoftvert másolja, elegendő lemezterülettel rendelkezik.
 
-    Nyissa meg a mappában található _StorSimple8000SeriesMigrationTool.exe.config_ eszközkonfigurációs fájlt. Itt van a fájl részlete.
+    Nyissa meg az _StorSimple8000SeriesMigrationTool. exe. config_ nevű eszközt a mappában. Itt látható a fájl kódrészlete.
     
     ```xml
         <add key="UserName" value="username@xyz.com" />
@@ -134,20 +134,20 @@ Hajtsa végre az alábbi lépéseket a StorSimple Áttelepítés iaspita eszköz
         <add key="ResourceGroupName" value="YourResourceGroupName" />
 
     ```
-2. A kulcsoknak megfelelő értékeket szerkesztheti, és a következőre cserélheti:
+2. Szerkessze a kulcsoknak megfelelő értékeket, és cserélje le a következőre:
 
-    * `UserName`– Felhasználónév az Azure Portalra való bejelentkezéshez.
-    * `SubscriptionName and SubscriptionId`– Az Azure-előfizetés neve és azonosítója. A StorSimple Device Manager szolgáltatás céllapján az **Általános**csoportban kattintson a **Tulajdonságok gombra.** Másolja a szolgáltatáshoz társított Előfizetés-név és Előfizetés-azonosító másolását.
-    * `ResourceName`– A StorSimple Eszközkezelő szolgáltatás neve az Azure Portalon. A szerviztulajdonságok alatt is látható.
-    * `ResourceGroup`– A StorSimple Eszközkezelő szolgáltatáshoz társított erőforráscsoport neve az Azure Portalon. A szerviztulajdonságok alatt is látható.
-    ![A céleszköz szolgáltatástulajdonságainak ellenőrzése](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
-    * `TenantId`– Az Azure Active Directory-bérlői azonosító az Azure Portalon. Jelentkezzen be a Microsoft Azure-ba rendszergazdaként. A Microsoft Azure portalon kattintson az **Azure Active Directory**elemre. A **Kezelés** területen kattintson a **Tulajdonságok** elemre. A bérlőazonosító a **címtárazonosító** mezőben jelenik meg.
-    ![Bérlői azonosító ellenőrzése az Azure Active Directoryhoz](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
+    * `UserName`– A Felhasználónév Azure Portalba való bejelentkezéshez.
+    * `SubscriptionName and SubscriptionId`– Az Azure-előfizetés neve és azonosítója. A StorSimple Eszközkezelő szolgáltatás kezdőlapjának **általános**területén kattintson a **Tulajdonságok**elemre. Másolja a szolgáltatáshoz társított előfizetés nevét és előfizetési AZONOSÍTÓját.
+    * `ResourceName`– A StorSimple Eszközkezelő szolgáltatás neve a Azure Portalban. A szolgáltatás tulajdonságai területen is látható.
+    * `ResourceGroup`– A StorSimple Eszközkezelő szolgáltatáshoz társított erőforráscsoport neve a Azure Portal. A szolgáltatás tulajdonságai területen is látható.
+    ![Cél eszköz szolgáltatás tulajdonságainak megtekintése](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
+    * `TenantId`– Azure Active Directory a bérlő AZONOSÍTÓját a Azure Portalban. Jelentkezzen be Microsoft Azure rendszergazdaként. A Microsoft Azure Portal kattintson az **Azure Active Directory**elemre. A **Kezelés** területen kattintson a **Tulajdonságok** elemre. A bérlő azonosítója a **címtár-azonosító** mezőben látható.
+    ![Azure Active Directory bérlői AZONOSÍTÓjának megkeresése](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
-3.  Mentse a konfigurációs fájlon végzett módosításokat.
-4.  Az eszköz elindításához futtassa a _StorSimple8000SeriesMigrationTool.exe-t._ Amikor a rendszer hitelesítő adatokat kér, adja meg az előfizetéséhez társított hitelesítő adatokat az Azure Portalon. 
+3.  Mentse a konfigurációs fájlban végrehajtott módosításokat.
+4.  Futtassa a _StorSimple8000SeriesMigrationTool. exe fájlt_ az eszköz elindításához. Amikor a rendszer kéri a hitelesítő adatokat, adja meg az előfizetéséhez tartozó hitelesítő adatokat Azure Portalban. 
 5.  Megjelenik a StorSimple áttelepítési eszköz felhasználói felülete.
   
 
 ## <a name="next-steps"></a>További lépések
-Töltse le az [adatok StorSimple 5000-7000 sorozatból 8000-es sorozatú eszközre történő áttelepítésének](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)lépésenkénti útmutatóját.
+Töltse le az [adatok StorSimple 5000-7000-sorozatból egy 8000 sorozatú eszközre történő áttelepítésének](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)lépésenkénti útmutatóját.

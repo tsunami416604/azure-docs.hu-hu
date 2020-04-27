@@ -1,6 +1,6 @@
 ---
-title: Hibrid identitástervezés – többtényezős hitelesítési követelmények Azure | Microsoft dokumentumok
-description: Feltételes hozzáférés-vezérléssel az Azure Active Directory ellenőrzi a felhasználó hitelesítésekénél és az alkalmazáshoz való hozzáférés engedélyezésekor választott feltételeket. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítve lesz, és hozzáférést biztosít az alkalmazáshoz.
+title: Hybrid Identity design – multi-Factor Authentication-követelmények az Azure-ban | Microsoft Docs
+description: A feltételes hozzáférés-vezérléssel Azure Active Directory ellenőrzi a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés engedélyezése előtt kiválasztott konkrét feltételeket. Ha ezek a feltételek teljesülnek, a felhasználó hitelesíti és engedélyezi az alkalmazáshoz való hozzáférést.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,46 +18,46 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67109295"
 ---
-# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás többtényezős hitelesítési követelményeinek meghatározása
-A mobilitás ezen világában, amikor a felhasználók a felhőben és bármilyen eszközről férnek hozzá az adatokhoz és az alkalmazásokhoz, ez az információ biztosítása a legfontosabb.  Minden nap van egy új főcím egy biztonsági résről.  Bár nincs garancia az ilyen jogsértések ellen, a többtényezős hitelesítés további biztonsági réteget biztosít a jogsértések megelőzésére.
-Első ként értékelje ki a többtényezős hitelesítés szervezetkövetelményeinek. Ez azt, amit a szervezet próbál biztosítani.  Ez az értékelés fontos a többtényezős hitelesítéshez való csoportok felhasználóinak beállítására és engedélyezésére vonatkozó technikai követelmények meghatározásához.
+# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>A többtényezős hitelesítési követelmények meghatározása a hibrid identitás megoldásához
+A mobilitás ezen világában a felhasználók a felhőben és bármely eszközön hozzáférő adatokhoz és alkalmazásokhoz férnek hozzá.  Minden nap van egy új, biztonsági szabálysértéssel kapcsolatos főcím.  Bár az ilyen jellegű szabálysértések esetében nincs garancia, a többtényezős hitelesítés egy további biztonsági réteget biztosít, amely segít megelőzni ezeket a problémákat.
+Először értékelje a többtényezős hitelesítéshez szükséges szervezetekre vonatkozó követelményeket. Ez azt, hogy mi a szervezet számára a biztonság.  Ez az értékelés fontos a szervezetek felhasználói számára a többtényezős hitelesítéshez való beállításához és engedélyezéséhez szükséges technikai követelmények meghatározásához.
 
-Ügyeljen arra, hogy válaszoljon a következő:
+Ügyeljen rá, hogy válaszoljon a következőkre:
 
-* Vállalata próbálja biztonságossá tenni a Microsoft-alkalmazásokat? 
-* Hogyan teszik közzé ezeket az alkalmazásokat?
-* A vállalat távoli hozzáférést biztosít az alkalmazottak számára a helyszíni alkalmazások eléréséhez?
+* A vállalata a Microsoft-alkalmazások védelmét kísérli meg? 
+* Hogyan jelennek meg ezek az alkalmazások?
+* A vállalata olyan távelérést biztosít, amely lehetővé teszi az alkalmazottak számára a helyszíni alkalmazások elérését?
 
-Ha igen, milyen típusú távoli hozzáférés? Azt is ki kell értékelnie, hogy az alkalmazásokat elérő felhasználók hol találhatók. Ez az értékelés egy másik fontos lépés a megfelelő többtényezős hitelesítési stratégia meghatározásához. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
+Ha igen, milyen típusú távelérésre van lehetőség? Azt is ki kell értékelnie, hogy az alkalmazásokat elérő felhasználók hol találhatók. Ez a kiértékelés egy másik fontos lépés a megfelelő multi-Factor Authentication-stratégia definiálásához. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
 * Hol találhatók a felhasználók?
-* Lehet őket elhelyezni bárhol?
-* Szeretné-e a vállalata korlátozásokat megállapítani a felhasználó tartózkodási helye szerint?
+* Bárhol lehetnek?
+* A vállalata a felhasználó tartózkodási helye alapján kívánja létrehozni a korlátozásokat?
 
-Miután megértette ezeket a követelményeket, fontos, hogy a felhasználó többtényezős hitelesítésre vonatkozó követelményeit is kiértékelje. Ez az értékelés azért fontos, mert meghatározza a többtényezős hitelesítés bevezetésének követelményeit. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
+Ha megértette ezeket a követelményeket, fontos, hogy kiértékelje a felhasználó a többtényezős hitelesítésre vonatkozó követelményeit is. Ez az értékelés azért fontos, mert meghatározza a többtényezős hitelesítés működésének követelményeit. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* A felhasználók ismerik a többtényezős hitelesítést?
-* Szükség lesz-e bizonyos célokra a további hitelesítéshez?  
-  * Ha igen, mindig, amikor külső hálózatokról érkezik, vagy bizonyos alkalmazásokhoz fér hozzá, vagy más feltételek mellett?
-* A felhasználóknak képzésre lesz szükségük a többtényezős hitelesítés beállításáról és megvalósításáról?
-* Melyek azok a kulcsfontosságú forgatókönyvek, amelyeket a vállalat a felhasználók számára engedélyezni kíván a többtényezős hitelesítés engedélyezéséhez?
+* Ismerik a felhasználók a többtényezős hitelesítést?
+* Szükség van bizonyos felhasználásokra további hitelesítés biztosításához?  
+  * Ha igen, minden alkalommal, amikor külső hálózatokról érkezik, vagy bizonyos alkalmazásokhoz vagy más feltételekhez fér hozzá?
+* A felhasználóknak a többtényezős hitelesítés beállításához és megvalósításához kell betanítást alkalmazniuk?
+* Mik a legfontosabb forgatókönyvek, amelyekkel a vállalat engedélyezni szeretné a többtényezős hitelesítést a felhasználók számára?
 
-Az előző kérdések megválaszolása után képes lesz megérteni, hogy vannak-e már a helyszínen megvalósított többtényezős hitelesítések. Ez az értékelés fontos a többtényezős hitelesítéshez való csoportok felhasználóinak beállítására és engedélyezésére vonatkozó technikai követelmények meghatározásához. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
+Az előző kérdések megválaszolása után megtudhatja, hogy van-e már implementálva a többtényezős hitelesítés a helyszínen. Ez az értékelés fontos a szervezetek felhasználói számára a többtényezős hitelesítéshez való beállításához és engedélyezéséhez szükséges technikai követelmények meghatározásához. Ügyeljen arra, hogy válaszoljon a következő kérdésekre:
 
-* A vállalatnak védenie kell a kiemelt fiókokat az MFA-val?
-* A vállalatnak engedélyeznie kell az MFA-t bizonyos alkalmazásokhoz megfelelőségi okokból?
-* A vállalatnak engedélyeznie kell az MFA-t az alkalmazás összes jogosult felhasználója vagy csak a rendszergazdák számára?
-* Szüksége van arra, hogy az MFA mindig engedélyezve legyen, vagy csak akkor, ha a felhasználók a vállalati hálózaton kívül vannak bejelentkezve?
+* A vállalatának szüksége van az MFA-val rendelkező Kiemelt fiókok biztonságára?
+* A vállalatának engedélyezni kell az MFA használatát bizonyos alkalmazásoknak a megfelelőségi okokból?
+* A vállalatának engedélyeznie kell az MFA-t az alkalmazás összes jogosult felhasználója vagy csak a rendszergazdák számára?
+* Szükség van-e az MFA mindig engedélyezve vagy csak akkor, ha a felhasználók a vállalati hálózaton kívül vannak naplózva?
 
 ## <a name="next-steps"></a>További lépések
-[Hibrid identitásbevezetési stratégia definiálása](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+[Hibrid identitás-bevezetési stratégia definiálása](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
 ## <a name="see-also"></a>Lásd még
-[Tervezési szempontok – áttekintés](plan-hybrid-identity-design-considerations-overview.md)
+[Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
 

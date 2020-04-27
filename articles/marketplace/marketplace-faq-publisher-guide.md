@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 4b166af219c8983e5765ef4c884ced7eb0689f54
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 1cd536f4a7c3751e2b85f40e582c1eb1c5bf2c74
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106678"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160511"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft kereskedelmi piactér – gyakori kérdések
 
@@ -57,8 +57,9 @@ Az Azure piactéren az ügyfelek felfedezhetik az Azure-ra épülő vagy azokra 
 Az Azure Marketplace-ajánlatok a következőket vehetik fel:
 
 * [A web-alapú kirakat](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Azure Portal](https://portal.azure.com) <br>
-[!Note] Azure-fiókot igényel. Ha még nem rendelkezik ilyennel, a rendszer átirányítja az **üdvözli az Azure** oldalra, hogy létrehozzon egyet.  
+* [Azure Portal](https://portal.azure.com) <br> 
+>[!Note]
+>Azure-fiókot igényel. Ha még nem rendelkezik ilyennel, a rendszer átirányítja az **üdvözli az Azure** oldalra, hogy létrehozzon egyet.  
 * [Az Azure parancssori felülete (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -336,7 +337,7 @@ Az érdeklődők olyan ügyfelek, akik a piactéren telepítik termékeiket. Az,
 
 **Hol kaphatok segítséget az érdeklődői cél beállításakor?**
 
-További információ: a [partner Center – az ügyfél-érdeklődők dokumentációjának beszerzése](./partner-center-portal/commercial-marketplace-get-customer-leads.md) , illetve támogatási jegy [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) beküldése az ajánlat típusának és a vezető felügyeletének kiválasztásával.
+További információt a [partner Center – az ügyfél-érdeklődők](./partner-center-portal/commercial-marketplace-get-customer-leads.md) dokumentációjában talál, vagy támogatási jegyet küldhet a [Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1) segítségével, és kiválaszthatja az ajánlat típusát és az érdeklődők felügyeletét.
 
 **Meg kell-e adni egy érdeklődői célhelyet egy ajánlat közzétételéhez a piactéren?**
 

@@ -1,6 +1,6 @@
 ---
-title: Hálózati biztonsági csoportriasztásainak feloldása az Azure AD DS-ben | Microsoft dokumentumok
-description: A hálózati biztonsági csoport azure Active Directory tartományi szolgáltatásaihoz szükséges hálózati csoportkonfigurációs riasztások hibaelhárítása és feloldása
+title: Hálózati biztonsági csoportra vonatkozó riasztások feloldása az Azure AD DSban | Microsoft Docs
+description: Útmutató a hálózati biztonsági csoport konfigurációs értesítéseinek hibaelhárításához és megoldásához Azure Active Directory Domain Services
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,78 +12,78 @@ ms.topic: troubleshooting
 ms.date: 09/19/2019
 ms.author: iainfou
 ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71258002"
 ---
-# <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: Hálózati konfigurációs riasztások az Azure Active Directory tartományi szolgáltatásokban
+# <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: hálózati konfigurációval kapcsolatos riasztások Azure Active Directory Domain Services
 
-Ahhoz, hogy az alkalmazások és szolgáltatások megfelelően kommunikálhassanak az Azure Active Directory tartományi szolgáltatásokkal (Azure AD DS), bizonyos hálózati portok nak meg kell nyitva lenniük, hogy a forgalom forgalomban lehessen kommunikálni. Az Azure-ban a hálózati biztonsági csoportok használatával szabályozhatja a forgalom áramlását. Az Azure AD DS felügyelt tartomány állapotának állapota riasztást jelenít meg, ha a szükséges hálózati biztonsági csoportszabályok nincsenek érvényben.
+Ahhoz, hogy az alkalmazások és szolgáltatások megfelelően kommunikáljanak a Azure Active Directory Domain Servicesokkal (Azure AD DS), a forgalom áramlásának engedélyezése érdekében a megadott hálózati portoknak nyitva kell lenniük. Az Azure-ban hálózati biztonsági csoportok használatával szabályozhatja a forgalom áramlását. Egy Azure AD DS felügyelt tartomány állapota riasztást jelenít meg, ha a szükséges hálózati biztonsági csoportra vonatkozó szabályok nincsenek érvényben.
 
-Ez a cikk segít megérteni és megoldani a hálózati biztonsági csoport konfigurációs problémáira vonatkozó gyakori riasztásokat.
+Ez a cikk segít megérteni és elhárítani a hálózati biztonsági csoport konfigurációs problémáinak gyakori riasztásait.
 
-## <a name="alert-aadds104-network-error"></a>AADDS104 riasztás: Hálózati hiba
+## <a name="alert-aadds104-network-error"></a>Riasztás AADDS104: hálózati hiba
 
-### <a name="alert-message"></a>Figyelmeztető üzenet
+### <a name="alert-message"></a>Riasztási üzenet
 
-*A Microsoft nem tudja elérni a felügyelt tartomány tartományvezérlőit. Ez akkor fordulhat elő, ha a virtuális hálózaton konfigurált hálózati biztonsági csoport (NSG) blokkolja a felügyelt tartományhoz való hozzáférést. Egy másik lehetséges ok, ha van egy felhasználó által definiált útvonal, amely blokkolja a bejövő forgalmat az internetről.*
+*A Microsoft nem tudja elérni a tartományvezérlőket ehhez a felügyelt tartományhoz. Ez akkor fordulhat elő, ha a virtuális hálózaton konfigurált hálózati biztonsági csoport (NSG) blokkolja a hozzáférést a felügyelt tartományhoz. Egy másik lehetséges ok, ha van egy felhasználó által megadott útvonal, amely blokkolja az internetről érkező bejövő forgalmat.*
 
-Az Azure AD DS hálózati hibáinak leggyakoribb oka ima a hálózati biztonsági csoport szabályok. A virtuális hálózat hálózati biztonsági csoportjának lehetővé kell tennie a hozzáférést bizonyos portokhoz és protokollokhoz. Ha ezek a portok le vannak tiltva, az Azure platform nem tudja figyelni vagy frissíteni a felügyelt tartományt. Az Azure AD-címtár és az Azure AD DS felügyelt tartomány közötti szinkronizálás is hatással van. A szolgáltatás megszakításának elkerülése érdekében tartsa nyitva az alapértelmezett portokat.
+A hálózati biztonsági csoportra vonatkozó szabályok érvénytelenek az Azure-AD DS hálózati hibáinak leggyakoribb okai. A virtuális hálózathoz tartozó hálózati biztonsági csoportnak engedélyeznie kell az adott portokhoz és protokollokhoz való hozzáférést. Ha ezek a portok le vannak tiltva, az Azure platform nem tudja figyelni vagy frissíteni a felügyelt tartományt. Az Azure AD-címtár és az Azure AD DS felügyelt tartomány közötti szinkronizálás is hatással van. Ügyeljen arra, hogy az alapértelmezett portok nyitva maradjanak a szolgáltatás megszakadásának elkerülése érdekében.
 
 ## <a name="default-security-rules"></a>Alapértelmezett biztonsági szabályok
 
-A következő alapértelmezett bejövő és kimenő biztonsági szabályok vonatkoznak a hálózati biztonsági csoport egy Azure AD DS felügyelt tartományban. Ezek a szabályok biztonságossá teszik az Azure AD DS-t, és lehetővé teszik, hogy az Azure platform figyelje, kezelje és frissítse a felügyelt tartományt. A [biztonságos LDAP konfigurálása][configure-ldaps]esetén egy további szabály is lehet, amely lehetővé teszi a bejövő forgalmat.
+A következő alapértelmezett bejövő és kimenő biztonsági szabályok lesznek alkalmazva egy Azure AD DS felügyelt tartomány hálózati biztonsági csoportjára. Ezek a szabályok megőrzik az Azure AD DS védelmét, és lehetővé teszik az Azure platform számára a felügyelt tartomány figyelését, kezelését és frissítését. A [biztonságos LDAP konfigurálása][configure-ldaps]esetén további szabályt is használhat, amely engedélyezi a bejövő forgalmat.
 
 ### <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
-| Prioritás | Név | Port | Protocol (Protokoll) | Forrás | Cél | Műveletek |
+| Prioritás | Name (Név) | Port | Protocol (Protokoll) | Forrás | Cél | Műveletek |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithazuread | 443 | TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
-| 201      | Engedélyezett | 3389 | TCP | CorpNetSaw között | Bármelyik | Engedélyezés |
-| 301      | PsRemoting engedélyezése | 5986| TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
+| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Bármelyik | Engedélyezés |
+| 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
 | 65000    | AllVnetInBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerInBound | Bármelyik | Bármelyik | AzureLoadBalancer | Bármelyik | Engedélyezés |
 | 65500    | DenyAllInBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Megtagadás |
 
 ### <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
 
-| Prioritás | Név | Port | Protocol (Protokoll) | Forrás | Cél | Műveletek |
+| Prioritás | Name (Név) | Port | Protocol (Protokoll) | Forrás | Cél | Műveletek |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerOutBound | Bármelyik | Bármelyik |  Bármelyik | Internet | Engedélyezés |
 | 65500    | DenyAllOutBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Megtagadás |
 
 >[!NOTE]
-> Az Azure AD DS-nek korlátlan kimenő hozzáférést kell biztosítania a virtuális hálózatról. Nem javasoljuk, hogy hozzon létre olyan további szabályokat, amelyek korlátozzák a virtuális hálózat kimenő hozzáférését.
+> Az Azure AD DS a virtuális hálózat nem korlátozott kimenő hozzáférését igényli. Nem javasoljuk, hogy hozzon létre olyan további szabályokat, amelyek korlátozzák a kimenő hozzáférést a virtuális hálózat számára.
 
 ## <a name="verify-and-edit-existing-security-rules"></a>Meglévő biztonsági szabályok ellenőrzése és szerkesztése
 
-A meglévő biztonsági szabályok ellenőrzéséhez és az alapértelmezett portok megnyitásának ellenőrzéséhez hajtsa végre az alábbi lépéseket:
+A meglévő biztonsági szabályok ellenőrzéséhez és az alapértelmezett portok megnyitásához végezze el a következő lépéseket:
 
-1. Az Azure Portalon keressen és válasszon **hálózati biztonsági csoportokat.**
-1. Válassza ki a felügyelt tartományhoz társított hálózati biztonsági csoportot, például *az AADDS-contoso.com-NSG.*
-1. Az **Áttekintés** lapon a meglévő bejövő és kimenő biztonsági szabályok jelennek meg.
+1. A Azure Portal keresse meg és válassza ki a **hálózati biztonsági csoportok**elemet.
+1. Válassza ki a felügyelt tartományhoz társított hálózati biztonsági csoportot, például: *AADDS-contoso.com-NSG*.
+1. Az **Áttekintés** lapon megjelenik a meglévő bejövő és kimenő biztonsági szabályok.
 
-    Tekintse át a bejövő és kimenő szabályokat, és hasonlítsa össze az előző szakaszban a kötelező szabályok listájával. Szükség esetén jelölje ki, majd törölje azokat az egyéni szabályokat, amelyek blokkolják a szükséges forgalmat. Ha a szükséges szabályok bármelyike hiányzik, adjon hozzá egy szabályt a következő szakaszba.
+    Tekintse át a bejövő és kimenő szabályokat, és hasonlítsa össze az előző szakaszban szereplő kötelező szabályok listájával. Szükség esetén válassza ki, majd törölje a szükséges forgalmat blokkoló egyéni szabályokat. Ha a szükséges szabályok bármelyike hiányzik, adjon hozzá egy szabályt a következő szakaszban.
 
-    Miután hozzáadja vagy törli a szükséges forgalmat engedélyező szabályokat, az Azure AD DS felügyelt tartomány állapota két órán belül automatikusan frissíti magát, és eltávolítja a riasztást.
+    Miután hozzáadta vagy törli a szükséges forgalmat engedélyező szabályokat, az Azure AD DS felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
 ### <a name="add-a-security-rule"></a>Biztonsági szabály hozzáadása
 
-Hiányzó biztonsági szabály hozzáadásához hajtsa végre az alábbi lépéseket:
+Hiányzó biztonsági szabály hozzáadásához hajtsa végre a következő lépéseket:
 
-1. Az Azure Portalon keressen és válasszon **hálózati biztonsági csoportokat.**
-1. Válassza ki a felügyelt tartományhoz társított hálózati biztonsági csoportot, például *az AADDS-contoso.com-NSG.*
-1. A bal oldali panel **Beállítások területén** kattintson a Bejövő *biztonsági szabályok* vagy a Kimenő *biztonsági szabályok* elemre attól függően, hogy melyik szabályt kell hozzáadnia.
-1. Válassza **a Hozzáadás**lehetőséget, majd hozza létre a szükséges szabályt a port, a protokoll, az irány stb. Ha készen áll, válassza **az OK gombot.**
+1. A Azure Portal keresse meg és válassza ki a **hálózati biztonsági csoportok**elemet.
+1. Válassza ki a felügyelt tartományhoz társított hálózati biztonsági csoportot, például: *AADDS-contoso.com-NSG*.
+1. A bal oldali panel **Beállítások** területén kattintson a *bejövő biztonsági szabályok* vagy a *kimenő biztonsági szabályok* elemre attól függően, hogy melyik szabályt kell felvennie.
+1. Válassza a **Hozzáadás**lehetőséget, majd hozza létre a szükséges szabályt a port, a protokoll, az irány stb. alapján. Ha elkészült, kattintson **az OK gombra**.
 
-Néhány percet vesz igénybe a biztonsági szabály hozzáadása és megjelenítése a listában.
+A biztonsági szabály hozzáadására és megjelenítésére néhány percet vesz igénybe a lista.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha továbbra is problémák merülnek fel, [nyisson meg egy Azure-támogatási kérelmet][azure-support] további hibaelhárítási segítségért.
+Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

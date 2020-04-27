@@ -1,6 +1,6 @@
 ---
-title: Váratlan hozzájárulási kérdés, amikor bejelentkezik egy alkalmazásba | Microsoft dokumentumok
-description: Hibaelhárítás, ha egy felhasználó olyan azure AD-vel integrált alkalmazás hozzájárulási parancsát látja, amelyet nem várt
+title: Váratlan beleegyezés kérése egy alkalmazásba való bejelentkezéskor | Microsoft Docs
+description: Az Azure AD-vel integrált, nem várt alkalmazásokra vonatkozó jóváhagyást kérő felhasználó értesítése
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,38 +17,38 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83d043ecef152f977437e21e2caec40d1c40ce0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65781154"
 ---
-# <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Váratlan hozzájárulási kérdés, amikor bejelentkezik egy alkalmazásba
+# <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Váratlan beleegyezés kérése egy alkalmazásba való bejelentkezéskor
 
-Az Azure Active Directoryval integrálható alkalmazások futtatásához különböző erőforrásokhoz szükséges engedélyeket igényel. Ha ezek az erőforrások is integrálva vannak az Azure Active Directoryval, az Azure AD-hozzájárulási keretrendszer használatával az azok eléréséhez szükséges engedélyeket kérik. 
+Számos Azure Active Directory integrációt igénylő alkalmazásnak a futtatásához különböző erőforrásokhoz van szükségük. Ha ezek az erőforrások integrálva vannak a Azure Active Directoryba, a hozzáféréshez szükséges engedélyek az Azure AD-beli engedélyezési keretrendszer használatával is megtalálhatók. 
 
-Ez azt eredményezi, hogy egy alkalmazás első használatkor megjelenik egy jóváhagyási parancs, amely gyakran egyszeri művelet. 
+Ennek eredményeként a rendszer az alkalmazás első használatakor egy hozzájárulási kérést jelenít meg, amely gyakran egyszeri művelet. 
 
-## <a name="scenarios-in-which-users-see-consent-prompts"></a>Olyan esetek, amelyekben a felhasználók hozzájárulási utasításokat látnak
+## <a name="scenarios-in-which-users-see-consent-prompts"></a>Olyan forgatókönyvek, amelyekben a felhasználók a hozzájárulási kéréseket látják
 
-További kérések rejthetők különböző esetekben:
+További kérések várhatók különböző helyzetekben:
 
-* Az alkalmazás által igényelt engedélyek készlete megváltozott.
+* Az alkalmazás által igényelt engedélyek halmaza megváltozott.
 
-* Az alkalmazáshoz eredetileg hozzájáruló felhasználó nem volt rendszergazda, és most egy másik (nem rendszergazdai) felhasználó használja először az alkalmazást.
+* A felhasználó, aki eredetileg beleegyezett az alkalmazásba, nem rendszergazda, és most már egy másik (nem rendszergazda) felhasználó használja az alkalmazást az első alkalommal.
 
-* Az alkalmazáshoz eredetileg hozzájáruló felhasználó rendszergazda volt, de a teljes szervezet nevében nem.
+* A felhasználó, aki eredetileg beleegyezett az alkalmazásba, rendszergazdai jogosultságot kapott, de a teljes szervezet nevében nem járult hozzá.
 
-* Az alkalmazás [növekményes és dinamikus beleegyezést](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) használ további engedélyek kéréséhez a hozzájárulás kezdeti megadása után. Ez gyakran akkor használatos, ha egy alkalmazás nem kötelező szolgáltatásai további engedélyeket igényelnek az alapkonfiguráció működéséhez szükséges engedélyeken túl.
+* Az alkalmazás [növekményes és dinamikus beleegyezik](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) , hogy a beleegyező engedély megadása után további engedélyeket kérjen. Ezt gyakran akkor érdemes használni, ha egy alkalmazás opcionális funkciói további engedélyek megadását igénylik az alapkonfiguráció működéséhez szükségeseken túl.
 
-* A hozzájárulást az eredeti megadása után visszavonták.
+* A beleegyezést a kezdeti engedélyezés után visszavonták.
 
-* A fejlesztő úgy konfigurálta az alkalmazást, hogy minden használatkor kérje meg a hozzájárulási kérdést (megjegyzés: ez nem ajánlott eljárás).
+* A fejlesztő úgy konfigurálta az alkalmazást, hogy minden használatkor megkövetelje a beleegyezés kérését (Megjegyzés: ez nem ajánlott eljárás).
 
 ## <a name="next-steps"></a>További lépések
 
--   [Alkalmazások, engedélyek és hozzájárulás az Azure Active Directoryban (1.0-s végpont)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
+-   [Alkalmazások, engedélyek és beleegyezett Azure Active Directory (v 1.0 végpont)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
 
--   [Hatókörök, engedélyek és hozzájárulás az Azure Active Directoryban (2.0-s vagy os végpont)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
+-   [Hatókörök, engedélyek és beleegyezett a Azure Active Directory (v 2.0-végpont)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
 
 

@@ -1,6 +1,6 @@
 ---
-title: StorSimple Virtual Array feladatok megtekintése és kezelése | Microsoft dokumentumok
-description: Ez a témakör a StorSimple Device Manager szolgáltatás feladatok lap, és hogyan lehet használni a StorSimple virtuális tömb legutóbbi és jelenlegi feladatok nyomon követésére.
+title: StorSimple virtuális Array-feladatok megtekintése és kezelése | Microsoft Docs
+description: Ismerteti a StorSimple Eszközkezelő szolgáltatási feladatok lapját, valamint azt, hogy miként használható a legutóbbi és aktuális feladatok nyomon követésére a StorSimple virtuális tömbben.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,54 +15,54 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60302499"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömb feladatainak megtekintéséhez
+# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömbhöz tartozó feladatok megtekintéséhez
 ## <a name="overview"></a>Áttekintés
-A **Feladatok** panel egyetlen központi portált biztosít a StorSimple Eszközkezelő szolgáltatáshoz csatlakoztatott virtuális tömbökön elindított feladatok megtekintéséhez és kezeléséhez. Több virtuális eszköz futó, befejezett és sikertelen feladatait tekintheti meg. Az eredmények táblázatos formátumban jelennek meg.
+A **feladatok** panel egyetlen központi portált biztosít a StorSimple Eszközkezelő szolgáltatáshoz csatlakozó virtuális tömbökben elindított feladatok megtekintéséhez és kezeléséhez. Több virtuális eszközön is megtekintheti a futó, befejezett és sikertelen feladatokat. Az eredmények táblázatos formátumban jelennek meg.
 
-![Jobs penge](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
+![Feladatok panel](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 
-A következő mezők szűrésével gyorsan megtalálhatja az önt érdeklő feladatokat:
+Gyorsan megtalálhatja az Önt érdeklő feladatokat a következő mezők szűrésével:
 
-* **Időtartomány** – A feladatok a dátum és az idő tartománya alapján szűrhetők.
-* **Eszközök** – A feladatok a szolgáltatáshoz csatlakoztatott adott eszközön jönnek létre. A szűrt feladatok táblázatba foglalása a következő attribútumok alapján lesznek táblázatba foglalva:
+* **Időtartomány** – a feladatok a dátum-és időtartomány alapján szűrhetők.
+* **Eszközök** – a feladatok a szolgáltatáshoz csatlakoztatott adott eszközön kezdődnek. A szűrt feladatok a következő attribútumok alapján lesznek táblázatos formában:
   
-  * **Név** – A feladat neve lehet **All**, **Backup**, **Clone**, **Feladatátvétel,** **Frissítések letöltése**vagy **Frissítések telepítése.**
-  * **Állapot** – A feladatok lehetnek **Mind**, **Folyamatban,** **Sikeresek**vagy **Sikertelenek**vagy **Visszavontak.**
-  * **Entitás** – A feladatok kötethez, megosztáshoz vagy eszközhöz társíthatók.
-  * **Eszköz** – Annak az eszköznek a neve, amelyen a feladat elindult.
-  * **Started on** – A feladat elindításának időpontja.
-  * **Időtartam** – az az időtartam, amelyen a feladat futott.
-* **Állapot** – Az összes, futó, befejezett vagy sikertelen feladatot megkeresheti.
-* **Feladat típusa** – A feladat típusa lehet az összes, biztonsági mentés, visszaállítás, feladatátvétel, frissítések letöltése vagy frissítések telepítése.
+  * **Név** – a feladat neve lehet az **összes**, a **biztonsági mentés**, a **klónozás**, a **feladatátvétel**, a **frissítések letöltése**vagy a **frissítések telepítése**.
+  * **Állapot** – a feladatok lehetnek **mind**, **folyamatban**, **sikeres**vagy **sikertelen**, vagy **megszakadt**.
+  * **Entitás** – a feladatok egy kötethez, megosztáshoz vagy eszközhöz társíthatók.
+  * **Eszköz** – annak az eszköznek a neve, amelyen a feladatot elindították.
+  * **Elindítva** – a feladatok elindításának időpontja.
+  * **Időtartam** – a feladatok futtatásának időtartama.
+* **Állapot** – megkeresheti az összes, futó, befejezett vagy sikertelen feladatot.
+* **Feladattípus** – a feladattípus lehet az összes, a biztonsági mentés, a visszaállítás, a feladatátvétel, a frissítések letöltése vagy a frissítések telepítése.
 
 A feladatok listája 30 másodpercenként frissül.
 
 ## <a name="view-job-details"></a>Feladatok részleteinek megjelenítése
-Hajtsa végre az alábbi lépéseket bármely feladat részleteinek megtekintéséhez.
+A feladatok részleteinek megtekintéséhez hajtsa végre a következő lépéseket.
 
-#### <a name="to-view-job-details"></a>Feladat részleteinek megtekintése
-1. A **Feladatok** panelen jelenítse meg az önt érdeklő feladatot(oka)t a megfelelő szűrőkkel rendelkező lekérdezés futtatásával. Megkeresheti a befejezett vagy futó feladatokat.
+#### <a name="to-view-job-details"></a>A feladatok részleteinek megtekintése
+1. A **feladatok** panelen jelenítse meg azokat a feladatokat, amelyek érdeklik a megfelelő szűrőket tartalmazó lekérdezés futtatásával. Kereshet a befejezett vagy futó feladatok között.
 2. Válasszon ki egy feladatot a feladatok táblázatos listájából.
    
-    ![Munka penge](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
-3. A lap alján kattintson a **Részletek gombra.**
-4. A **Részletek** párbeszédpanelen megtekintheti az állapot-, a részleteket és az időstatisztikákat. A következő ábrán a Biztonsági másolat készítés részletei párbeszédpanel **látható.**
+    ![Feladatok panelje](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
+3. A lap alján kattintson a **részletek**elemre.
+4. A **részletek** párbeszédpanelen megtekintheti az állapot, a részletek és az idő statisztikáit. Az alábbi ábrán egy példa látható a **biztonsági mentési feladatok részletei** párbeszédpanelre.
    
     ![Feladat részletei](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)
 
-#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Feladathibák, ha a virtuális gép szünetel a hipervizorban
-Ha egy feladat folyamatban van a StorSimple virtuális tömb, és az eszköz (a hipervizorban kiépített virtuális gép) 15 percnél hosszabb ideig szünetel, a feladat sikertelen lesz. Ez annak köszönhető, hogy a StorSimple virtuális tömb ideje nincs szinkronban a Microsoft Azure-idő. 
+#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Sikertelen feladatok, ha a virtuális gép a hypervisorban szünetel
+Ha egy feladat folyamatban van a StorSimple virtuális tömbben, és az eszköz (a hypervisorban kiépített virtuális gép) 15 percnél hosszabb ideig szünetel, a feladat meghiúsul. Ennek az az oka, hogy a StorSimple virtuális tömbje nem szinkronizál a Microsoft Azure idővel. 
 
-A következő hibaüzenet jelenik meg: "Az eszköz ideje több mint 15 perccel nincs szinkronban a Microsoft Azure-idővel. Győződjön meg arról, hogy a hipervizor és az eszköz idők szinkronizálva vannak egy NTP-kiszolgálóval. Ellenőrizze, hogy nincsenek-e csatlakozási problémák. A kapcsolódási problémák elhárításához futtasson diagnosztikai teszteket a virtuális eszköz helyi webes felhasználói felületéről."
+A következő hibaüzenet jelenik meg: "az eszköz ideje nem szinkronizálható a Microsoft Azure idővel több mint 15 percen belül. Győződjön meg arról, hogy a hypervisor és az eszköz időpontját szinkronizálja egy NTP-kiszolgálóval. Ellenőrizze, hogy nincsenek-e kapcsolódási problémák. A kapcsolódási problémák elhárításához Futtasson diagnosztikai teszteket a virtuális eszköz helyi webes FELÜLETén. "
 
-Ezek a hibák a biztonsági mentési, visszaállítási, frissítési és feladatátvételi feladatokra vonatkoznak. Ha a virtuális gép a Hyper-V-ben van kiépítve, a gép végül szinkronizálja az időt a hipervizorral. Ha ez megtörténik, újraindíthatja a feladatot.
+Ezek a hibák a biztonsági mentési, visszaállítási, frissítési és feladatátvételi feladatokra vonatkoznak. Ha a virtuális gép a Hyper-V-ben lett kiépítve, a gép végül szinkronizálja az időt a hypervisorral. Ha ez bekövetkezik, indítsa újra a feladatot.
 
 ## <a name="next-steps"></a>További lépések
-[Ismerje meg, hogyan használhatja a helyi webes felhasználói felületet a StorSimple virtuális tömb felügyeletére.](storsimple-ova-web-ui-admin.md)
+[Megtudhatja, hogyan használhatja a helyi webes felhasználói felületet a StorSimple virtuális tömb felügyeletére](storsimple-ova-web-ui-admin.md).
 

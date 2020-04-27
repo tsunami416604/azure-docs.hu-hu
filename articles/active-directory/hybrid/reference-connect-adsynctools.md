@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: AdsyncTools PowerShell-hivatkozás | Microsoft dokumentumok'
-description: Ez a dokumentum az ADSyncTools.psm1 PowerShell-modul referenciainformációit tartalmazza.
+title: 'Azure AD Connect: ADSyncTools PowerShell-hivatkozás | Microsoft Docs'
+description: Ez a dokumentum a ADSyncTools. psm1 PowerShell-modulra vonatkozó információkat tartalmaz.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,19 +11,19 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a1b8abf15233c06e8ff9e507b315cc8a3703970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60454659"
 ---
-# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: AdsyncTools PowerShell-referencia
-A következő dokumentáció az Azure AD Connect részét képező ADSyncTools.psm1 PowerShell-modul referenciainformációit tartalmazza.
+# <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: ADSyncTools PowerShell-hivatkozás
+Az alábbi dokumentáció a Azure AD Connect ADSyncTools. psm1 PowerShell-moduljának hivatkozásait tartalmazza.
 
-## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid (Törlés-ADSyncToolsConsistencyGuid)
+## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Törölje az mS-Ds-konzisztenciaGuid az AD-felhasználó
+Az mS-DS-ConsistencyGuid törlése az AD-felhasználótól
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -32,7 +32,7 @@ Clear-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Törölje az mS-Ds-ConsistencyGuid értékét a cél AD-felhasználó számára
+A cél AD-felhasználóhoz tartozó mS-DS-ConsistencyGuid értékének törlése
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -49,7 +49,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-user"></a>-Felhasználó
-Az AD-ben beállított célfelhasználó
+A célként megadott felhasználó
 
 ```yaml
 Type: Object
@@ -65,12 +65,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-AdsyncToolsADModuleLoaded
+## <a name="confirm-adsynctoolsadmoduleloaded"></a>Megerősítés – ADSyncToolsADModuleLoaded
 
 ### <a name="synopsis"></a>SZINOPSZIS
-{{Töltse ki a Szinopszis}}
+{{Az Áttekintés}} kitöltése
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -79,7 +79,7 @@ Confirm-ADSyncToolsADModuleLoaded
 ```
 
 ### <a name="description"></a>LEÍRÁS
-{{A leírás kitöltése}}
+{{A Leírás}} kitöltése
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -88,12 +88,12 @@ Confirm-ADSyncToolsADModuleLoaded
 PS C:\> {{ Add example code here }}
 ```
 
-{{ Példaleírás hozzáadása itt }}
+{{Példa a Leírás hozzáadására}}
 
-## <a name="connect-adsyncdatabase"></a>Connect-AdSyncDatabase
+## <a name="connect-adsyncdatabase"></a>Kapcsolat – AdSyncDatabase
 
 ### <a name="synopsis"></a>SZINOPSZIS
-{{Töltse ki a Szinopszis}}
+{{Az Áttekintés}} kitöltése
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -103,7 +103,7 @@ Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <S
 ```
 
 ### <a name="description"></a>LEÍRÁS
-{{A leírás kitöltése}}
+{{A Leírás}} kitöltése
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -112,12 +112,12 @@ Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <S
 PS C:\> {{ Add example code here }}
 ```
 
-{{ Példaleírás hozzáadása itt }}
+{{Példa a Leírás hozzáadására}}
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-database"></a>-Adatbázis
-{{Adatbázis leírása}}
+#### <a name="-database"></a>– Adatbázis
+{{Fill adatbázis leírása}}
 
 ```yaml
 Type: String
@@ -131,8 +131,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-instance"></a>-Példány
-{{Fill instance description}}
+#### <a name="-instance"></a>– Példány
+{{Fill példány leírása}}
 
 ```yaml
 Type: String
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-password"></a>-Password
-{{Jelszó-leírás kitöltése}}
+{{Fill Password Description}}
 
 ```yaml
 Type: String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-server"></a>-Kiszolgáló
-{{Fill Server Description}}
+{{Fill kiszolgáló leírása}}
 
 ```yaml
 Type: String
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-username"></a>-UserName
-{{Felhasználónév kitöltése leírás}}
+{{Fill UserName Description}}
 
 ```yaml
 Type: String
@@ -193,12 +193,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-ADSyncToolsConsistencyInDMigration
+## <a name="export-adsynctoolsconsistencyguidmigration"></a>Exportálás – ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>SZINOPSZIS
-KonzisztenciaGuid jelentés exportálása
+ConsistencyGuid-jelentés exportálása
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -208,7 +208,7 @@ Export-ADSyncToolsConsistencyGuidMigration [-AlternativeLoginId] [-UserPrincipal
 ```
 
 ### <a name="description"></a>LEÍRÁS
-KonzisztenciaGuid jelentés létrehozása az Import-ADSyncToolsImmutableIdMigration importálási CSV-fájlja alapján
+ConsistencyGuid-jelentést hoz létre az import-ADSyncToolsImmutableIdMigration importálási CSV-fájlja alapján.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -224,8 +224,8 @@ Another example of how to use this cmdlet
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-alternativeloginid"></a>-AlternatívLoginId
-Alternatív bejelentkezési azonosító használata (e-mail)
+#### <a name="-alternativeloginid"></a>-AlternativeLoginId
+Alternatív bejelentkezési azonosító (e-mail) használata
 
 ```yaml
 Type: SwitchParameter
@@ -239,7 +239,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-userprincipalname"></a>-UserPrincipalName
+#### <a name="-userprincipalname"></a>– UserPrincipalName
 UserPrincipalName
 
 ```yaml
@@ -270,7 +270,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-output"></a>-Kimenet
-CsV- és LOG-fájlok kimeneti fájlneve
+Kimeneti fájlnév a CSV-fájlhoz és a NAPLÓFÁJLokhoz
 
 ```yaml
 Type: String
@@ -286,12 +286,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-adsyncsqlbrowserinstances"></a>Get-ADSyncSQLBrowserInstances
 
 ### <a name="synopsis"></a>SZINOPSZIS
-{{Töltse ki a Szinopszis}}
+{{Az Áttekintés}} kitöltése
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -300,7 +300,7 @@ Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-{{A leírás kitöltése}}
+{{A Leírás}} kitöltése
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -309,12 +309,12 @@ Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
 PS C:\> {{ Add example code here }}
 ```
 
-{{ Példaleírás hozzáadása itt }}
+{{Példa a Leírás hozzáadására}}
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-hostname"></a>-állomásnév
-{{Fill hostName Description}}
+#### <a name="-hostname"></a>– Állomásnév
+{{Fill hostName Leírás}}
 
 ```yaml
 Type: String
@@ -331,7 +331,7 @@ Accept wildcard characters: False
 ## <a name="get-adsynctoolsaduser"></a>Get-ADSyncToolsADuser
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Felhasználó beszereznie az AD-ből
+Felhasználó beolvasása az AD-ből
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -340,7 +340,7 @@ Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Eredményül egy AD-objektum, amely et do: Több erdő támogatása
+Egy AD-objektumot ad vissza: több erdő támogatása
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -357,7 +357,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-user"></a>-Felhasználó
-Az AD célfelhasználója a konzisztenciaGuid beállításához
+A ConsistencyGuid beállítására szolgáló felhasználó az AD-ben
 
 ```yaml
 Type: Object
@@ -373,12 +373,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-adsynctoolsconsistencyguid"></a>Get-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Az mS-Ds-ConsistencyGuid beszereznie az AD-felhasználótól
+Az mS-DS-ConsistencyGuid beszerzése az AD-felhasználótól
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -387,7 +387,7 @@ Get-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A cél AD-felhasználó mS-Ds-ConsistencyGuid attribútumában megadott értéket adja eredményül GUID formátumban.
+A célként megadott AD-felhasználó mS-DS-ConsistencyGuid attribútumában lévő értéket adja vissza GUID formátumban
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -404,7 +404,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-user"></a>-Felhasználó
-Az AD-ben beállított célfelhasználó
+A célként megadott felhasználó
 
 ```yaml
 Type: Object
@@ -420,12 +420,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-adsynctoolsobjectguid"></a>Get-ADSyncToolsObjectGuid
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Az ObjectGuid beszereznie az AD-felhasználótól
+ObjectGuid beolvasása az AD-felhasználótól
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -434,7 +434,7 @@ Get-ADSyncToolsObjectGuid [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A cél AD-felhasználó ObjektumGUID attribútumában megadott értéket adja eredményül GUID formátumban.
+A cél AD-felhasználó ObjectGUID attribútumában lévő értéket adja vissza GUID formátumban
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -451,7 +451,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-user"></a>-Felhasználó
-Az AD-ben beállított célfelhasználó
+A célként megadott felhasználó
 
 ```yaml
 Type: Object
@@ -467,12 +467,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsrunHistory
+## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Az AAD Connect futtatási előzményei
+HRE-kapcsolat futtatási előzményeinek beolvasása
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -481,7 +481,7 @@ Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Az AAD-csatlakozási futtatási előzményeit XML formátumban visszaadó függvény
+Függvény, amely visszaadja a HRE-kapcsolat futtatási előzményeit XML formátumban
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -497,8 +497,8 @@ Get-ADSyncToolsRunHistory -Days 1
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-days"></a>-Napok
-{{Fill days leírás}}
+#### <a name="-days"></a>-Nap
+{{Fill napok leírása}}
 
 ```yaml
 Type: Int32
@@ -514,12 +514,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorChanged
 
 ### <a name="synopsis"></a>SZINOPSZIS
-A SourceAnchor módosított hibáival rendelkező felhasználók beszerezni
+SourceAnchor-módosítási hibákkal rendelkező felhasználók beolvasása
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -528,7 +528,7 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A függvény lekérdezi az AAD Connect futtatási előzményeit, és exportálja a hibát jelző összes felhasználót: "SourceAnchor attribútum megváltozott."
+A függvény lekérdezi a HRE csatlakozási előzményeit, és exportálja az összes olyan felhasználót, aki a következő hibát jelentette: "a SourceAnchor attribútum megváltozott".
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -537,9 +537,9 @@ A függvény lekérdezi az AAD Connect futtatási előzményeit, és exportálja
 #Required Parameters
 ```
 
-$sourcePath = Read-Host -Prompt "Adja meg a\<naplófájl elérési útját fájlnévvel" Source_Path "\>Source_Path " $outputPath\<=\>Read-Host -Prompt "Adja meg a fájl elérési útját fájlnévvel" #" Out_Path "
+$sourcePath = Read-Host-prompt "adja meg a naplófájl elérési útját a következő\<fájlnévnél\>:" # "Source_Path" $OutputPath = Read-Host-prompt "adja meg a fájl elérési\<útját (fájlnév:" # "Out_Path\>"
  
- Get-ADSyncToolsUsersSourceAnchorChanged -sourcePath $sourcePath -outputPath $outputPath
+ Get-ADSyncToolsUsersSourceAnchorChanged-sourcePath $sourcePath-outputPath $outputPath
 
 #### <a name="example-2"></a>2. PÉLDA
 ```
@@ -548,8 +548,8 @@ Another example of how to use this cmdlet
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-sourcepath"></a>-sourcePath
-{{Fill sourcePath Description}}
+#### <a name="-sourcepath"></a>– sourcePath
+{{Fill sourcePath leírása}}
 
 ```yaml
 Type: Object
@@ -563,8 +563,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-outputpath"></a>-outputPath
-{{Fill outputPath Description}}
+#### <a name="-outputpath"></a>– outputPath
+{{Fill outputPath leírása}}
 
 ```yaml
 Type: Object
@@ -580,12 +580,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
+## <a name="import-adsynctoolsimmutableidmigration"></a>Importálás – ADSyncToolsImmutableIdMigration
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Nem módosítható azonosító importálása AAD-ból
+ImmutableID importálása a HRE-ből
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -595,7 +595,7 @@ Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFrom
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Létrehoz egy fájlt az összes Azure AD szinkronizált felhasználóval, amely az ImmutableID értéket GUID formátumban Követelmények: MSOnline PowerShell-modul
+Létrehoz egy fájlt az összes Azure AD szinkronizált felhasználóval, amely a ImmutableID értéket tartalmazza GUID formátumban követelmények: MSOnline PowerShell-modul
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -626,8 +626,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-includesyncusersfromrecyclebin"></a>-IncludesyncUsersFromRecyclebin
-Szinkronizált felhasználók beszereznie az Azure AD Lomtárból
+#### <a name="-includesyncusersfromrecyclebin"></a>-IncludeSyncUsersFromRecycleBin
+Szinkronizált felhasználók beolvasása az Azure AD Lomtárból
 
 ```yaml
 Type: SwitchParameter
@@ -643,13 +643,13 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
-## <a name="invoke-adsyncdatabasequery"></a>Invoke-AdSyncDatabaseQuery
+## <a name="invoke-adsyncdatabasequery"></a>Meghívás – AdSyncDatabaseQuery
 
 ### <a name="synopsis"></a>SZINOPSZIS
-{{Töltse ki a Szinopszis}}
+{{Az Áttekintés}} kitöltése
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -658,7 +658,7 @@ Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] 
 ```
 
 ### <a name="description"></a>LEÍRÁS
-{{A leírás kitöltése}}
+{{A Leírás}} kitöltése
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -667,12 +667,12 @@ Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] 
 PS C:\> {{ Add example code here }}
 ```
 
-{{ Példaleírás hozzáadása itt }}
+{{Példa a Leírás hozzáadására}}
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-query"></a>-Lekérdezés
-{{Fill Query Description}}
+#### <a name="-query"></a>– Lekérdezés
+{{Kitöltési lekérdezés leírása}}
 
 ```yaml
 Type: String
@@ -686,8 +686,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-sqlconnection"></a>-SqlConnection
-{{Fill SqlConnection Description}}
+#### <a name="-sqlconnection"></a>– SqlConnection
+{{Fill SqlConnection leírása}}
 
 ```yaml
 Type: SqlConnection
@@ -703,12 +703,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="remove-adsynctoolsexpiredcertificates"></a>Remove-ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Lejárt tanúsítványok eltávolítása a UserCertificate attribútumból
+Parancsfájl a lejárt tanúsítványok eltávolításához a UserCertificate attribútumból
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -718,10 +718,10 @@ Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boole
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Ez a parancsfájl az Active Directory tartomány célszervezeti egységéből származó összes objektumot átveszi – objektumosztály (felhasználó/számítógép) szerint szűrve, és törli a UserCertificate attribútumban található összes lejárt tanúsítványt.
-Alapértelmezés szerint (BackupOnly mód) csak a lejárt tanúsítványokat biztonsági másolatot készít egy fájlba, és nem hajt végre módosításokat az AD-ben.
-Ha a -BackupOnly $false-t használja, akkor az objektumok UserCertificate attribútumában található lejárt tanúsítvány a fájlba másolásután törlődik az AD-ből.
-A rendszer minden tanúsítványról külön fájlnévre készül: ObjectClass_ObjectGUID_CertThumprint.cer A parancsfájl csv formátumú naplófájlt is létrehoz, amely az összes érvényes vagy lejárt tanúsítvánnyal rendelkező felhasználót tartalmazza, beleértve a tényleges műveletet is (Kihagyott/exportált/törölt).
+Ez a szkript a Active Directory tartományban található cél szervezeti egységből származó összes objektumot az Object osztály (felhasználó/számítógép) alapján szűri, és törli a UserCertificate attribútum összes lejárt tanúsítványát.
+Alapértelmezés szerint (BackupOnly mód) csak a lejárt tanúsítványokat fogja menteni egy fájlba, és nem hajt végre semmilyen változást az AD-ben.
+Ha a-BackupOnly $false használja, akkor a UserCertificate attribútumban jelen lévő összes lejárt tanúsítvány törlődni fog az AD-ből a fájlba való másolás után.
+Minden tanúsítvány biztonsági mentése egy külön fájlnévre történik: ObjectClass_ObjectGUID_CertThumprint. cer a parancsfájl CSV formátumban is létrehoz egy naplófájlt, amely tartalmazza az összes olyan tanúsítványt, amely vagy amely érvényes vagy lejárt, beleértve az aktuálisan végrehajtott műveletet (kihagyott/exportált/törölt).
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -730,19 +730,19 @@ A rendszer minden tanúsítványról külön fájlnévre készül: ObjectClass_O
 Check all users in target OU - Expired Certificates will be copied to separated files and no certificates will be removed
 ```
 
-Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Users,OU=Corp,DC=Contoso,DC=com" -ObjectClass felhasználó
+Remove-ADSyncToolsExpiredCertificates-TargetOU "OU = Users, OU = Corp, DC = contoso, DC = com" – ObjectClass felhasználó
 
 #### <a name="example-2"></a>2. PÉLDA
 ```
 Delete Expired Certs from all Computer objects in target OU - Expired Certificates will be copied to files and removed from AD
 ```
 
-Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Computers,OU=Corp,DC=Contoso,DC=com" -ObjectClass computer -BackupOnly $false
+Remove-ADSyncToolsExpiredCertificates-TargetOU "OU = Computers, OU = Corp, DC = contoso, DC = com"-ObjectClass Computer-BackupOnly $false
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-targetou"></a>-TargetOU
-Célszervezeti egység AD-objektumok felkéséséhez
+Cél szervezeti egység az AD-objektumok kereséséhez
 
 ```yaml
 Type: String
@@ -757,7 +757,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-backuponly"></a>-BackupOnly
-A BackupOnly nem törli a tanúsítványokat az AD-ből
+A BackupOnly nem törli az AD-ből származó tanúsítványokat
 
 ```yaml
 Type: Boolean
@@ -771,8 +771,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-objectclass"></a>-ObjectClass
-Objektumosztály szűrője
+#### <a name="-objectclass"></a>– ObjectClass
+Objektumosztály-szűrő
 
 ```yaml
 Type: String
@@ -788,9 +788,9 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="repair-adsynctoolsautoupgradestate"></a>Javítás-ADSyncToolsAutoUpgradeState
+## <a name="repair-adsynctoolsautoupgradestate"></a>Javítás – ADSyncToolsAutoUpgradeState
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Rövid leírás
@@ -816,10 +816,10 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-## <a name="resolve-adsynchostaddress"></a>Resolve-ADSyncHostAddress
+## <a name="resolve-adsynchostaddress"></a>Megoldás – ADSyncHostAddress
 
 ### <a name="synopsis"></a>SZINOPSZIS
-{{Töltse ki a Szinopszis}}
+{{Az Áttekintés}} kitöltése
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -828,7 +828,7 @@ Resolve-ADSyncHostAddress [[-hostName] <String>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-{{A leírás kitöltése}}
+{{A Leírás}} kitöltése
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -837,12 +837,12 @@ Resolve-ADSyncHostAddress [[-hostName] <String>]
 PS C:\> {{ Add example code here }}
 ```
 
-{{ Példaleírás hozzáadása itt }}
+{{Példa a Leírás hozzáadására}}
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-hostname"></a>-állomásnév
-{{Fill hostName Description}}
+#### <a name="-hostname"></a>– Állomásnév
+{{Fill hostName Leírás}}
 
 ```yaml
 Type: String
@@ -856,10 +856,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="restore-adsynctoolsexpiredcertificates"></a>Restore-ADSyncToolsExpiredCertificates
+## <a name="restore-adsynctoolsexpiredcertificates"></a>Visszaállítás – ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>SZINOPSZIS
-(Teendő) Az AD UserCertificate attribútum visszaállítása tanúsítványfájlból
+(TEENDŐk) Az AD UserCertificate attribútumának visszaállítása tanúsítványfájl-fájlból
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -885,7 +885,7 @@ Another example of how to use this cmdlet
 ## <a name="set-adsynctoolsconsistencyguid"></a>Set-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>SZINOPSZIS
-MS-DS-ConsistencyGuid beállítása AD-felhasználón
+MS-DS-ConsistencyGuid beállítása az AD-felhasználón
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -894,7 +894,7 @@ Set-ADSyncToolsConsistencyGuid [-User] <Object> [-Value] <Object> [<CommonParame
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Érték beállítása mS-Ds-ConsistencyGuid attribútumban a cél AD-felhasználó számára
+Érték beállítása az mS-DS-ConsistencyGuid attribútumban a cél AD-felhasználó számára
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -911,7 +911,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-user"></a>-Felhasználó
-Az AD célfelhasználója a konzisztenciaGuid beállításához
+A ConsistencyGuid beállítására szolgáló felhasználó az AD-ben
 
 ```yaml
 Type: Object
@@ -925,8 +925,8 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-#### <a name="-value"></a>-Érték
-Nem módosítható azonosító (bájttömb, GUID, GUID karakterlánc vagy Base64 karakterlánc)
+#### <a name="-value"></a>– Érték
+ImmutableId (bájt tömb, GUID, GUID karakterlánc vagy Base64 karakterlánc)
 
 ```yaml
 Type: Object
@@ -942,12 +942,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="test-adsyncnetworkport"></a>Teszt-ADSyncNetworkPort
+## <a name="test-adsyncnetworkport"></a>Teszt – ADSyncNetworkPort
 
 ### <a name="synopsis"></a>SZINOPSZIS
-{{Töltse ki a Szinopszis}}
+{{Az Áttekintés}} kitöltése
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -956,7 +956,7 @@ Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-{{A leírás kitöltése}}
+{{A Leírás}} kitöltése
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -965,12 +965,12 @@ Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
 PS C:\> {{ Add example code here }}
 ```
 
-{{ Példaleírás hozzáadása itt }}
+{{Példa a Leírás hozzáadására}}
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-hostname"></a>-állomásnév
-{{Fill hostName Description}}
+#### <a name="-hostname"></a>– Állomásnév
+{{Fill hostName Leírás}}
 
 ```yaml
 Type: String
@@ -984,8 +984,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-port"></a>-port
-{{Fill port description}}
+#### <a name="-port"></a>– Port
+{{Fill port leírása}}
 
 ```yaml
 Type: String
@@ -999,10 +999,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="trace-adsynctoolsadimport"></a>Trace-AdsyncToolsADImport
+## <a name="trace-adsynctoolsadimport"></a>Nyomkövetés – ADSyncToolsADImport
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Nyomkövetési fájl létrehozása a fájlból és az AD importálási lépésből
+Nyomkövetési fájl létrehozása a és az AD importálási lépésből
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -1012,7 +1012,7 @@ Trace-ADSyncToolsADImport [[-ADConnectorXML] <String>] [[-dc] <String>] [[-rootD
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Az AAD Connect AD importálása összes ldap-lekérdezésének nyomon követése egy adott AD vízjel-ellenőrzőpontról (partíciócookie) fut. Az aktuális mappában ".\ADimportTrace_yyyyMMddHHmmss.log" nyomkövetési fájlt hoz létre.
+Egy HRE-összekötő AD-alkalmazás összes LDAP-lekérdezését nyomon követi egy adott AD-vízjel ellenőrzőpontján (partíció cookie). Létrehoz egy ". \ ADimportTrace_yyyyMMddHHmmss. log" nyomkövetési fájlt az aktuális mappában.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -1029,7 +1029,7 @@ Another example of how to use this cmdlet
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-adconnectorxml"></a>-ADConnectorXML
-{{Fill ADConnectorXML Description}}
+{{Fill ADConnectorXML leírása}}
 
 ```yaml
 Type: String
@@ -1043,8 +1043,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-dc"></a>-dc
-Az AD összekötő exportálásának XML-fájlja
+#### <a name="-dc"></a>– DC
+Az AD Connector exportálási XML-fájlja
 
 ```yaml
 Type: String
@@ -1058,8 +1058,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-rootdn"></a>-rootDN
-Céltartományvezérlő
+#### <a name="-rootdn"></a>– rootDN
+Cél tartományvezérlő
 
 ```yaml
 Type: String
@@ -1073,8 +1073,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-filter"></a>-szűrő
-Erdőgyökér DN
+#### <a name="-filter"></a>– szűrő
+Erdő gyökérszintű megkülönböztető neve
 
 ```yaml
 Type: String
@@ -1089,7 +1089,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipcredentials"></a>-SkipCredentials
-A nyomon követendő \> AD objektumok típusai * = az összes objektumtípus
+A nyomon követett \> ad-objektumok típusai * = minden objektumtípus
 
 ```yaml
 Type: SwitchParameter
@@ -1103,9 +1103,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-adwatermark"></a>-ADvízjel
-Ha már fut tartományi rendszergazdaként, nincs szükség AD-hitelesítő adatok megadására.
-A vízjel kézi bevitele AZ XML-fájl helyett, pl. $ADwatermark = "TVNEUwMAAAAAXyK9ir1zSAQAAAAAAAAAAA(...)"
+#### <a name="-adwatermark"></a>-ADwatermark
+Ha már fut tartományi rendszergazdaként, nincs szükség AD hitelesítő adatok megadására.
+Vízjel manuális bevitele XML-fájl helyett például: $ADwatermark = "TVNEUwMAAAAXyK9ir1zSAQAAAAAAAAAA (...)"
 
 ```yaml
 Type: String
@@ -1121,9 +1121,9 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
+## <a name="trace-adsynctoolsldapquery"></a>Nyomkövetés – ADSyncToolsLdapQuery
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Rövid leírás
@@ -1152,8 +1152,8 @@ Another example of how to use this cmdlet
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-context"></a>-Kontextus
-Param1 súgó leírása
+#### <a name="-context"></a>– Környezet
+A param1 súgójának leírása
 
 ```yaml
 Type: String
@@ -1168,7 +1168,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-server"></a>-Kiszolgáló
-Param2 súgó leírása
+A param2 súgójának leírása
 
 ```yaml
 Type: String
@@ -1183,7 +1183,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-port"></a>-Port
-Param2 súgó leírása
+A param2 súgójának leírása
 
 ```yaml
 Type: Int32
@@ -1197,8 +1197,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-filter"></a>-Szűrő
-Param2 súgó leírása
+#### <a name="-filter"></a>– Szűrő
+A param2 súgójának leírása
 
 ```yaml
 Type: String
@@ -1214,12 +1214,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
+## <a name="update-adsynctoolsconsistencyguidmigration"></a>Frissítés – ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Frissíti a felhasználókat az új Konzisztenciaguid (ImmutableId)
+A felhasználók frissítése az új ConsistencyGuid (ImmutableId)
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -1229,7 +1229,7 @@ Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-Imm
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Frissíti a felhasználókat a KonzisztenciaGuid jelentésből vett új KonzisztenciaGuid (ImmutableId) értékkel Ez a funkció támogatja a WhatIf kapcsolót Megjegyzés: A KonzisztenciaGuid jelentést tabulátólaliterel kell importálni
+Frissíti a felhasználókat a ConsistencyGuid jelentésből származó új ConsistencyGuid (ImmutableId) értékkel. Ez a függvény támogatja a WhatIf kapcsoló megjegyzését: a ConsistencyGuid jelentést a TAB Demiliter kell importálni.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -1245,8 +1245,8 @@ Import-Csv .\AllSyncUsersTEST-Report.csv -Delimiter "`t"| Update-ADSyncToolsCons
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-distinguishedname"></a>-Megkülönböztető név
-Megkülönböztető név
+#### <a name="-distinguishedname"></a>– DistinguishedName
+DistinguishedName
 
 ```yaml
 Type: String
@@ -1275,7 +1275,7 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-#### <a name="-action"></a>-Akció
+#### <a name="-action"></a>– Művelet
 Műveletek
 
 ```yaml
@@ -1291,7 +1291,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-output"></a>-Kimenet
-Naplófájlok kimeneti fájlneve
+NAPLÓFÁJLok kimeneti fájlneve
 
 ```yaml
 Type: String
@@ -1305,7 +1305,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Milenne
+#### <a name="-whatif"></a>– WhatIf
 Bemutatja, mi történne a parancsmag futtatásakor.
 A parancsmag nem fut.
 
@@ -1338,4 +1338,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).

@@ -1,6 +1,6 @@
 ---
-title: H264 Single Bitrate 720p For Android | Microsoft dokumentumok
-description: A témakör áttekintést ad a **H264 Single Bitrate 720p androidos** feladatkészletről.
+title: H264 Single bitráta 720p az Androidhoz | Microsoft Docs
+description: Ez a témakör áttekintést nyújt a **H264 Single bitráta 720p for Android** feladatának beállításáról.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: da44cf33882d2658b20f117053d486177117a5a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61131018"
 ---
 # <a name="h264-single-bitrate-720p-for-android"></a>H264 Single Bitrate 720p for Android
-`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási készleteket. Az a segítségével `preset name` megadhatja, hogy milyen formátumba szeretné kódolni a médiafájlt. Vagy létrehozhat saját JSON- vagy XML-alapú készleteket (UTF-8 vagy UTF-16 kódolással. Ezután adja át az egyéni készletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre beállított név listáját a [Media Encoder Standard feladatkészletek című témakörében tartalmazza.](media-services-mes-presets-overview.md)  
+`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási beállításkészleteket. A `preset name` (z) segítségével megadhatja, hogy melyik formátumban szeretné kódolni a médiafájlt. Vagy létrehozhat egy saját JSON-vagy XML-alapú előkészletet (UTF-8 vagy UTF-16 kódolás használatával). Ezután átadja az egyéni beállításkészletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre definiált név listájának megtekintéséhez tekintse meg a [Media Encoder standard feladat-előállítók](media-services-mes-presets-overview.md)című témakört.  
   
-Ez a `H264 Single Bitrate 720p for Android` témakör az előre beállított xml és JSON formátumban jelenik meg.  
+Ez a témakör az `H264 Single Bitrate 720p for Android` előre definiált XML-és JSON-formátumban jeleníti meg.  
   
-Ez az előre beállított rendszer egyetlen MP4-fájlt hoz létre 2000 kbps bitrátával és sztereó AAC-val. Az előre beállított profillal, bitrátával, mintavételi sebességgel stb. A készletek egyes elemeinek és az egyes elemek érvényes értékeinek magyarázatát a [Media Encoder Standard séma](media-services-mes-schema.md) témakörében talál.  
+Ez az előre definiált egy MP4-fájlt hoz létre, amelynek bitrátája 2000 kbps és sztereó AAC. A profil, a bitráta, a mintavételezési sebesség és az előre definiált beállítások részletes ismertetését az alábbi XML-vagy JSON-kód alapján ellenőrizheti. Az ezen alapbeállításokban található egyes elemek, valamint az egyes elemek érvényes értékeinek magyarázata a [Media Encoder standard séma](media-services-mes-schema.md) témakörben található.  
   
  XML  
   

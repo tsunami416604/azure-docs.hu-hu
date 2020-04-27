@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Szolgáltatáspéldányok szinkronizálása | Microsoft dokumentumok'
-description: Ez a lap az Azure AD-példányokkal kapcsolatos speciális szempontokat dokumentálja.
+title: 'Azure AD Connect: szinkronizálási szolgáltatás példányai | Microsoft Docs'
+description: Ez az oldal az Azure AD-példányokra vonatkozó különleges szempontokat dokumentálja.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,55 +17,55 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66298819"
 ---
-# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: A példányok speciális szempontjai
-Az Azure AD Connect leggyakrabban az Azure AD és az Office 365 világméretű példányával használatos. De vannak más esetek is, és ezek különböző követelményeket támasztanak az URL-ek és más speciális megfontolások esetében.
+# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: a példányokra vonatkozó különleges szempontok
+A Azure AD Connect leggyakrabban az Azure AD és az Office 365 világméretű példányával használják. Vannak azonban más példányok is, és ezek eltérő követelményekkel rendelkeznek az URL-címekhez és egyéb speciális megfontolásokhoz.
 
 ## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Germany
-A [Microsoft Cloud Germany](https://www.microsoft.de/cloud-deutschland) egy német megbízott által működtetett szuverén felhő.
+A [Microsoft Cloud Németország](https://www.microsoft.de/cloud-deutschland) egy németországi adatkezelő által működtetett szuverén felhő.
 
-| A proxykiszolgálón megnyitandó URL-címek |
+| A proxykiszolgálóhoz megnyitható URL-címek |
 | --- |
-| \*microsoftonline.de |
+| \*. microsoftonline.de |
 | \*.windows.net |
-| +Visszavont tanúsítványok listája |
+| + Visszavont tanúsítványok listája |
 
-Amikor bejelentkezik az Azure AD-bérlő, egy fiókot kell használnia a onmicrosoft.de tartományban.
+Amikor bejelentkezik az Azure AD-bérlőbe, egy fiókot kell használnia az onmicrosoft.de tartományban.
 
-A Microsoft Cloud Germany jelenleg nem található szolgáltatásai:
+A Microsoft Cloud Németországban jelenleg nem találhatók szolgáltatások:
 
-* **A jelszó-visszaírás** előzetes verziójú az Azure AD Connect 1.1.570.0-s verziójával és azt követően érhető el.
-* Más Azure AD Premium-szolgáltatások nem érhetők el.
+* A **jelszó visszaírási** a Azure ad Connect 1.1.570.0 és későbbi verziójának előzetes verziójához érhető el.
+* Más prémium szintű Azure AD szolgáltatások nem érhetők el.
 
 ## <a name="microsoft-azure-government"></a>Microsoft Azure Government
 A [Microsoft Azure Government felhő](https://azure.microsoft.com/features/gov/) az Egyesült Államok kormányának felhője.
 
-Ezt a felhőt a DirSync korábbi kiadásai is támogatták. Az Azure AD Connect 1.1.180-as buildjéből a felhő következő generációja támogatott. Ez a generáció csak az USA-ban alapú végpontokat használ, és a proxykiszolgálón megnyitható URL-címek egy másik listájával rendelkezik.
+Ezt a felhőt az rSync korábbi kiadásai támogatják. A Azure AD Connect build 1.1.180 a felhő következő generációja támogatott. Ez a generáció csak a US-alapú végpontokat használja, és más URL-címekkel rendelkezik, amelyeket meg kell nyitni a proxykiszolgálóhoz.
 
-| A proxykiszolgálón megnyitandó URL-címek |
+| A proxykiszolgálóhoz megnyitható URL-címek |
 | --- |
 | \*.microsoftonline.com |
 | \*.microsoftonline.us |
-| \*.windows.net (az Azure Government-bérlők automatikus észleléséhez szükséges) |
-| \*gov.us.microsoftonline.com |
-| +Visszavont tanúsítványok listája |
+| \*. windows.net (az automatikus Azure Government bérlői észleléshez szükséges) |
+| \*. gov.us.microsoftonline.com |
+| + Visszavont tanúsítványok listája |
 
 > [!NOTE]
-> Az Azure AD Connect 1.1.647.0-s verziójától az AzureInstance értékbeállítás beállítása a beállításjegyzékben már nem szükséges, feltéve, hogy a *.windows.net meg van nyitva a proxykiszolgáló(k)on. Azonban az ügyfelek számára, amelyek nem teszik lehetővé az internet-kapcsolat az Azure AD Connect-kiszolgáló(k) a következő manuális konfiguráció használható.
+> A Azure AD Connect verzió 1.1.647.0 kezdve a AzureInstance értékének a beállításjegyzékben való beállítása már nem szükséges, feltéve, hogy a *. windows.net meg van nyitva a proxykiszolgáló (ek) ben. Azonban azon ügyfelek esetében, akik nem engedélyezik az internetkapcsolatot a Azure AD Connect-kiszolgáló (k) on, a következő manuális konfiguráció használható.
 
-### <a name="manual-configuration"></a>Kézi konfiguráció
+### <a name="manual-configuration"></a>Manuális konfiguráció
 
-A következő manuális konfigurációs lépések biztosítják, hogy az Azure AD Connect az Azure Government szinkronizálási végpontokat használja.
+A következő kézi konfigurációs lépések segítségével biztosítható, hogy a Azure AD Connect Azure Government szinkronizálási végpontokat használjanak.
 
-1. Indítsa el az Azure AD Connect telepítését.
-2. Amikor megjelenik az első olyan oldal, ahol el kell fogadnia a eula-t, ne folytassa, hanem hagyja futni a telepítővarázslót.
-3. Indítsa el a regedit `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` et, `4`és módosítsa a rendszerleíró kulcsot az értékre.
-4. Lépjen vissza az Azure AD Connect telepítővarázslóhoz, fogadja el a eula-t, és folytassa. A telepítés során győződjön meg arról, hogy az **egyéni konfigurációs** telepítési útvonalat használja (és nem az Express telepítést), majd folytassa a telepítést a szokásos módon.
+1. Indítsa el a Azure AD Connect telepítést.
+2. Ha megjelenik az első olyan oldal, amelyben el kellene fogadnia a végfelhasználói licencszerződést, ne folytassa a telepítést, de ne hagyja a telepítő varázslót.
+3. Indítsa el a regeditt, `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` és módosítsa a `4`beállításkulcsot az értékre.
+4. Lépjen vissza a Azure AD Connect telepítővarázsló, fogadja el a végfelhasználói licencszerződést, és folytassa a következővel:. A telepítés során győződjön meg arról, hogy az **Egyéni konfiguráció** telepítési útvonalát (és nem az expressz telepítést) használja, majd a szokásos módon folytassa a telepítést.
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

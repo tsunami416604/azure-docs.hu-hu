@@ -1,6 +1,6 @@
 ---
-title: Események küldése és fogadása az Azure Event Hubs-tól a .NET használatával (legújabb)
-description: Ez a cikk egy forgatókönyvet biztosít egy .NET Core alkalmazás létrehozásához, amely eseményeket küld/fogad az Azure Event Hubs-ba/a legújabb Azure.Messaging.EventHubs csomag használatával.
+title: Események küldése vagy fogadása az Azure Event Hubs .NET használatával (legújabb)
+description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti, amely az Azure-Event Hubs a legújabb Azure. Messaging. EventHubs csomag használatával küld/fogad eseményeket.
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -13,52 +13,52 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2020
 ms.author: spelluru
-ms.openlocfilehash: bc8ec6cf4845eb100af5dcd80101f17102d2b7ac
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: fd4b41cc2fe97ad0c2f075884e21f4f2ffc01561
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682145"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159454"
 ---
-# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Események küldése és események fogadása az Azure Event Hubs-ból – .NET Core (Azure.Messaging.EventHubs) 
-Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket egy eseményközpontba, és hogyan fogadhat eseményeket az **Azure.Messaging.EventHubs** .NET Core függvénytár használatával. 
+# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Események küldése és fogadása az Azure Event Hubs-.NET Core-ból (Azure. Messaging. EventHubs) 
+Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről az **Azure. Messaging. EventHubs** .net Core könyvtár használatával. 
 
 > [!IMPORTANT]
-> Ez a rövid útmutató az új **Azure.Messaging.EventHubs-könyvtárat** használja. A régi **Microsoft.Azure.EventHubs-könyvtárat** használó rövid útmutatót az [Események küldése és fogadása a Microsoft.Azure.EventHubs-könyvtár használatával című témakörben](event-hubs-dotnet-standard-getstarted-send.md)található. 
+> Ez a rövid útmutató az új **Azure. Messaging. EventHubs** könyvtárat használja. A régi **Microsoft. Azure. EventHubs** könyvtárat használó gyors útmutató: [események küldése és fogadása a Microsoft. Azure. EventHubs könyvtár használatával](event-hubs-dotnet-standard-getstarted-send.md). 
 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha most írja be az Azure Event Hubs szolgáltatást, olvassa el [az Eseményközpontok áttekintése című témakört,](event-hubs-about.md) mielőtt ezt a rövid útmutatót elvégezné. 
+Ha még nem ismeri az Azure Event Hubsét, a rövid útmutató elvégzése előtt tekintse meg a [Event Hubs áttekintése](event-hubs-about.md) című témakört. 
 
-A rövid útmutató végrehajtásához a következő előfeltételekre van szükség:
+A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
-- **Microsoft Azure-előfizetés**. Az Azure-szolgáltatások, köztük az Azure Event Hubs használatához előfizetésre van szüksége.  Ha nem rendelkezik meglévő Azure-fiókkal, regisztrálhat egy [ingyenes próbaverzióra,](https://azure.microsoft.com/free/) vagy használhatja az MSDN-előfizetői előnyöket [a fiók létrehozásakor.](https://azure.microsoft.com)
-- **Microsoft Visual Studio 2019**. Az Azure Event Hubs ügyfélkódtár a C 8.0-s számban bevezetett új funkciókat használja.  A könyvtár továbbra is használható a C# régebbi verzióival, de néhány funkciója nem lesz elérhető.  A szolgáltatások engedélyezéséhez [a .NET Core 3.0-s verzióját kell megcéloznia,](/dotnet/standard/frameworks#how-to-specify-target-frameworks) vagy meg kell adnia a használni kívánt [nyelvi verziót](/dotnet/csharp/language-reference/configure-language-version#override-a-default) (8.0 vagy újabb). Ha a Visual Studio-t használja, a Visual Studio 2019 előtti verziók nem kompatibilisek a C# 8.0-s projektek létrehozásához szükséges eszközökkel. A Visual Studio 2019, beleértve az ingyenes közösségi kiadást, [itt](https://visualstudio.microsoft.com/vs/) tölthető le
-- **Hozzon létre egy Eseményközpontok névterét és egy eseményközpontot.** Az első lépés [az,](https://portal.azure.com) hogy az Azure Portal használatával hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazás által az eseményközponttal való kommunikációhoz szükséges felügyeleti hitelesítő adatokat. Névtér és eseményközpont létrehozásához kövesse a [cikkben](event-hubs-create.md)található eljárást. Ezután az **Event Hubs névtér kapcsolati karakterláncát a** cikk utasításainak követésével kapja [meg: Kapcsolati karakterlánc beszereznie](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A kapcsolati karakterláncot később használja ebben a rövid útmutatóban.
+- **Microsoft Azure előfizetés**. Az Azure-szolgáltatások, például az Azure Event Hubs használatához előfizetésre van szükség.  Ha még nem rendelkezik Azure-fiókkal, regisztrálhat az [ingyenes próbaverzióra](https://azure.microsoft.com/free/) , vagy a [fiók létrehozásakor](https://azure.microsoft.com)használhatja az MSDN-előfizetői előnyeit.
+- **Microsoft Visual Studio 2019**. Az Azure Event Hubs ügyféloldali kódtár a C# 8,0-ben bevezetett új funkciók használatát teszi lehetővé.  Továbbra is használhatja a kódtárat a C# régebbi verzióival, de bizonyos funkciói nem lesznek elérhetők.  Ezen funkciók engedélyezéséhez a .NET Core 3,0-es verzióját kell [megcéloznia](/dotnet/standard/frameworks#how-to-specify-target-frameworks) , vagy [meg kell adnia a használni kívánt nyelvi verziót](/dotnet/csharp/language-reference/configure-language-version#override-a-default) (8,0 vagy újabb). Ha a Visual studiót használja, a Visual Studio 2019 előtti verziói nem kompatibilisek a C# 8,0-projektek létrehozásához szükséges eszközökkel. A Visual Studio 2019, beleértve az ingyenes Community Editiont is, [itt](https://visualstudio.microsoft.com/vs/) tölthető le
+- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként a [Azure Portal](https://portal.azure.com) használatával hozzon létre egy Event Hubs típusú névteret, és szerezze be azokat a felügyeleti hitelesítő adatokat, amelyekre az alkalmazásnak szüksége van az Event hub-vel való kommunikációhoz. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást. Ezután szerezze be a **Event Hubs névtérhez tartozó kapcsolatok karakterláncot** a cikk utasításait követve: a [kapcsolatok karakterláncának beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A rövid útmutató későbbi részében használja a kapcsolatok karakterláncát.
 
 ## <a name="send-events"></a>Események küldése 
-Ez a szakasz bemutatja, hogyan hozhat létre .NET Core konzolalkalmazást események et egy eseményközpontba. 
+Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-alkalmazást, amely eseményeket küld az Event hub-nak. 
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
-1. Indítsa el a Visual Studio 2019-et. 
-1. Válassza **az Új projekt létrehozása**lehetőséget. 
-1. Az **Új projekt létrehozása** párbeszédpanelen tegye a következő lépéseket: Ha ez a párbeszédpanel nem jelenik meg, válassza a menü **Fájl parancsát,** válassza az **Új**lehetőséget, majd a **Project**lehetőséget. 
+1. Indítsa el a Visual Studio 2019 alkalmazást. 
+1. Válassza **az új projekt létrehozása**lehetőséget. 
+1. A **create a New Project (új projekt létrehozása** ) párbeszédpanelen hajtsa végre a következő lépéseket: Ha nem látja ezt a párbeszédpanelt, válassza a **fájl** lehetőséget a menüben, majd válassza az **új**, majd a **projekt**elemet. 
     1. Válassza a **C#** lehetőséget a programozási nyelvhez.
-    1. Válassza a **Konzol** lehetőséget az alkalmazás típusához. 
-    1. Válassza a **Konzolalkalmazás (.NET Core)** elemet az eredménylistából. 
-    1. Ezután válassza a **Tovább gombot.** 
+    1. Válassza ki a **konzolt** az alkalmazás típusához. 
+    1. Válassza ki a **Console app (.net Core)** elemet az eredmények listából. 
+    1. Ezután válassza a **tovább**lehetőséget. 
 
         ![A New project (Új projekt) párbeszédpanel](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
-1. Írja be az **EventHubsSender** értéket a projekt nevéhez, az **EventHubsQuickStart** nevet a megoldás nevéhez, majd válassza az **OK** gombot a projekt létrehozásához. 
+1. Adja meg a **EventHubsSender** a projekt neve mezőben, a **EventHubsQuickStart** , majd kattintson az **OK** gombra a projekt létrehozásához. 
 
-    ![C# > konzolalkalmazás](./media/getstarted-dotnet-standard-send-v2/project-solution-names.png)
+    ![C# > Console-alkalmazás](./media/getstarted-dotnet-standard-send-v2/project-solution-names.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
 
-1. A menüből válassza az **Eszközök** > **NuGet csomagkezelő** > **csomagkezelő konzolját.** 
-1. Futtassa a következő parancsot az **Azure.Messaging.EventHubs** NuGet csomag telepítéséhez:
+1. Válassza ki az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt** a menüből. 
+1. Futtassa az alábbi parancsot az **Azure. Messaging. EventHubs** NuGet-csomag telepítéséhez:
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs
@@ -67,7 +67,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre .NET Core konzolalkalmazást esemé
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Kód írása az üzenetek eseményközpontba való küldésére
 
-1. Adja hozzá `using` a következő állításokat a **Program.cs** fájl tetejéhez:
+1. Adja hozzá a `using` következő utasításokat a **program.cs** fájl elejéhez:
 
     ```csharp
     using System.Text;
@@ -76,14 +76,14 @@ Ez a szakasz bemutatja, hogyan hozhat létre .NET Core konzolalkalmazást esemé
     using Azure.Messaging.EventHubs.Producer;
     ```
 
-2. Adja hozzá az `Program` állandókat az Eseményközpontok kapcsolati karakterláncának és az eseményközpont nevének osztályához. Cserélje le a helyőrzőket zárójelben az eseményközpont létrehozásakor kapott megfelelő értékekre. Győződjön meg arról, hogy az `{Event Hubs namespace connection string}` a névtérszintű kapcsolati sztring, és nem az eseményközpont sztringje. 
+2. Adjon állandókat a `Program` osztályhoz az Event Hubs kapcsolati karakterlánc és az Event hub neve számára. Cserélje le a zárójelben lévő helyőrzőket az Event hub létrehozásakor kapott megfelelő értékekre. Győződjön meg arról, hogy az `{Event Hubs namespace connection string}` a névtérszintű kapcsolati sztring, és nem az eseményközpont sztringje. 
 
     ```csharp
     private const string connectionString = "<EVENT HUBS NAMESPACE - CONNECTION STRING>";
     private const string eventHubName = "<EVENT HUB NAME>";
     ```
 
-3. Cserélje `Main` le a `async Main` módszert a következő módszerrel. A részleteket lásd a kódmegjegyzésekben. 
+3. Cserélje le `Main` a metódust a `async Main` következő metódusra. A részletekért tekintse meg a kód megjegyzéseit. 
 
     ```csharp
         static async Task Main()
@@ -105,55 +105,55 @@ Ez a szakasz bemutatja, hogyan hozhat létre .NET Core konzolalkalmazást esemé
             }
         }
     ```
-5. Építse fel a projektet, és győződjön meg arról, hogy nincsenek hibák.
-6. Futtassa a programot, és várja meg a megerősítő üzenetet. 
-7. Az Azure Portalon ellenőrizheti, hogy az eseményközpont megkapta-e az üzeneteket. Váltson **az Üzenetek** nézetre a **Metrikák** szakaszban. A lap frissítése a diagram frissítéséhez. Eltarthat néhány másodpercig, amíg megis szállhat meg, hogy az üzenetek érkeztek. 
+5. Hozza létre a projektet, és ellenőrizze, hogy nincsenek-e hibák.
+6. Futtassa a programot, és várjon a megerősítő üzenetre. 
+7. A Azure Portalon ellenőrizheti, hogy az Event hub fogadta-e az üzeneteket. Váltson az **üzenetek** nézetre a **metrikák** szakaszban. Frissítse a lapot a diagram frissítéséhez. Eltarthat néhány másodpercig, amíg meg nem jelenik az üzenetek fogadása. 
 
-    [![Annak ellenőrzése, hogy az eseményközpont megkapta-e az üzeneteket](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
+    [![Annak ellenőrzése, hogy az Event hub fogadta-e az üzeneteket](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
-    > A teljes forráskódot további tájékoztató megjegyzésekkel együtt tekintse meg [ezt a fájlt a GitHubon](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample03_PublishAnEventBatch.cs)
+    > A teljes forráskódot további tájékoztató megjegyzésekkel tekintheti [meg a githubon](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample03_PublishAnEventBatch.cs) .
 
 ## <a name="receive-events"></a>Események fogadása
-Ez a szakasz azt mutatja be, hogyan írható meg egy .NET Core konzolalkalmazás, amely eseményközpontból fogad üzeneteket egy eseményprocesszor használatával. Az eseményfeldolgozó leegyszerűsíti az események fogadását az eseményközpontokból az állandó ellenőrzőpontok és az ilyen eseményközpontokból érkező párhuzamos fogadások kezelésével. Egy eseményfeldolgozó egy adott eseményközponthoz és egy fogyasztói csoporthoz van társítva. Az eseményközpontban több partícióról is fogad eseményeket, és átadja azokat egy kezelődelegáltnak a megadott kód használatával történő feldolgozáshoz. 
+Ez a szakasz bemutatja, hogyan írhat olyan .NET Core Console-alkalmazást, amely az Event hub-ból származó üzeneteket fogad egy eseményvezérelt processzor használatával. Az esemény-feldolgozó leegyszerűsíti az események fogadását az Event hubokból az állandó ellenőrzőpontok és a párhuzamos fogadások kezelésével az adott esemény hubokból. Egy esemény-feldolgozó társítva van egy adott Event hubhoz és egy fogyasztói csoporthoz. Az Event hub több partíciójának eseményeit fogadja el, amelyek az Ön által megadott kóddal való feldolgozásra szolgálnak. 
 
 
 > [!NOTE]
-> Ha az Azure Stack Hubon fut, akkor előfordulhat, hogy a storage blob SDK egy másik verzióját támogatja, mint az Azure-ban általában elérhető. Ha például az [Azure Stack Hub 2002-es verzióján](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)fut, a Storage szolgáltatás legmagasabb elérhető verziója a 2017-11-09-es verzió. Ebben az esetben az ebben a szakaszban ismertetett lépések mellett kódot is hozzá kell adnia a Storage service API 2017-11-09-es verziójának célzásához. Egy adott Storage API-verzió célzásával kapcsolatos példát tekintse meg [ezt a mintát a GitHubon.](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) Az Azure Stack Hubon támogatott Azure Storage-szolgáltatásverzióiról az [Azure Stack Hub storage: Különbségek és szempontok](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)című további információkért tekintse meg.
+> Ha Azure Stack hub-on fut, akkor a platform a Storage blob SDK egy másik verzióját is támogatja, mint az Azure-ban általában elérhető. Ha például [Azure stack Hub 2002-es verzióján](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)fut, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben a szakasz következő lépésein kívül kódot is hozzá kell adnia a Storage szolgáltatás API 2017-11-09-es verziójának célzásához. Az adott tárolási API-verzió célzásának példáját a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)tekintheti meg. Az Azure Stack hub által támogatott Azure Storage szolgáltatás verziójával kapcsolatos további információkért tekintse meg [Azure stack hub Storage: különbségek és megfontolások](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)című témakört.
 
-### <a name="create-an-azure-storage-and-a-blob-container"></a>Hozzon létre egy Azure Storage-tárolót és egy blobtárolót
-Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-tárolóként. Az Azure Storage-fiók létrehozásához kövesse az alábbi lépéseket. 
+### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure Storage és blob-tároló létrehozása
+Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-tárolóként. Egy Azure Storage-fiók létrehozásához kövesse az alábbi lépéseket. 
 
 1. [Azure Storage-fiók létrehozása](/azure/storage/common/storage-account-create?tabs=azure-portal)
 2. [Blobtároló létrehozása](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [A kapcsolati karakterlánc beszereznie a tárfiókhoz](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+3. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](../storage/common/storage-configure-connection-string.md)
 
-    Jegyezze fel a kapcsolati karakterláncot és a tároló nevét. A fogadási kódban fogja használni őket. 
+    Jegyezze fel a kapcsolatok sztringjét és a tároló nevét. Ezeket a fogadási kódban fogja használni. 
 
 
 ### <a name="create-a-project-for-the-receiver"></a>Projekt létrehozása a fogadó számára
 
-1. A Megoldáskezelő ablakban kattintson a jobb gombbal az **EventHubQuickStart** megoldásra, mutasson a **Hozzáadás**pontra, és válassza az **Új projekt**parancsot. 
-1. Válassza a **Console App (.NET Core)** lehetőséget, majd a **Tovább**gombot. 
-1. Írja be az **EventHubsReceiver értéket** a **projekt nevéhez,** és válassza a **Létrehozás gombot.** 
+1. A Megoldáskezelő ablakban kattintson a jobb gombbal a **EventHubQuickStart** -megoldásra, mutasson a **Hozzáadás**elemre, majd válassza az **új projekt**lehetőséget. 
+1. Válassza ki a **Console app (.net Core)** elemet, majd kattintson a **Tovább gombra**. 
+1. Adja meg a **EventHubsReceiver** a **projekt neveként**, majd válassza a **Létrehozás**lehetőséget. 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
 
-1. A menüből válassza az **Eszközök** > **NuGet csomagkezelő** > **csomagkezelő konzolját.** 
-1. Futtassa a következő parancsot az **Azure.Messaging.EventHubs** NuGet csomag telepítéséhez:
+1. Válassza ki az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt** a menüből. 
+1. Futtassa az alábbi parancsot az **Azure. Messaging. EventHubs** NuGet-csomag telepítéséhez:
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs
     ```
-1. Futtassa a következő parancsot az **Azure.Messaging.EventHubs.Processor** NuGet csomag telepítéséhez:
+1. Futtassa az alábbi parancsot az **Azure. Messaging. EventHubs. Processor** NuGet csomag telepítéséhez:
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs.Processor
     ```    
 
-### <a name="update-the-main-method"></a>A fő módszer frissítése 
+### <a name="update-the-main-method"></a>A Main metódus frissítése 
 
-1. Adja hozzá `using` a következő állításokat a **Program.cs** fájl tetején.
+1. Adja hozzá a `using` következő utasításokat a **program.cs** fájl elejéhez.
 
     ```csharp
     using System.Text;
@@ -163,7 +163,7 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
     using Azure.Messaging.EventHubs.Consumer;
     using Azure.Messaging.EventHubs.Processor;
     ```
-1. Adja hozzá az `Program` állandókat az Eseményközpontok kapcsolati karakterláncának és az eseményközpont nevének osztályához. Cserélje le a helyőrzőket zárójelben az eseményközpont létrehozásakor kapott megfelelő értékekre. Cserélje le a helyőrzőket zárójelben az eseményközpont és a tárfiók (hozzáférési kulcsok - elsődleges kapcsolati karakterlánc) létrehozásakor kapott megfelelő értékekre. Győződjön meg arról, hogy az `{Event Hubs namespace connection string}` a névtérszintű kapcsolati sztring, és nem az eseményközpont sztringje.
+1. Adjon állandókat a `Program` osztályhoz az Event Hubs kapcsolati karakterlánc és az Event hub neve számára. Cserélje le a zárójelben lévő helyőrzőket az Event hub létrehozásakor kapott megfelelő értékekre. Cserélje le a zárójelben lévő helyőrzőket az Event hub és a Storage-fiók létrehozásakor kapott megfelelő értékekre (hozzáférési kulcsok – elsődleges kapcsolati sztring). Győződjön meg arról, hogy az `{Event Hubs namespace connection string}` a névtérszintű kapcsolati sztring, és nem az eseményközpont sztringje.
 
     ```csharp
         private const string ehubNamespaceConnectionString = "<EVENT HUBS NAMESPACE - CONNECTION STRING>";
@@ -171,7 +171,7 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
         private const string blobStorageConnectionString = "<AZURE STORAGE CONNECTION STRING>";
         private const string blobContainerName = "<BLOB CONTAINER NAME>";
     ```
-3. Cserélje `Main` le a `async Main` módszert a következő módszerrel. A részleteket lásd a kódmegjegyzésekben. 
+3. Cserélje le `Main` a metódust a `async Main` következő metódusra. A részletekért tekintse meg a kód megjegyzéseit. 
 
     ```csharp
         static async Task Main()
@@ -199,7 +199,7 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
             await processor.StopProcessingAsync();
         }    
     ```
-1. Most adja hozzá a következő esemény- és hibakezelő metódusokat az osztályhoz. 
+1. Most adja hozzá a következő eseményt és hibakezelő metódusokat a osztályhoz. 
 
     ```csharp
         static async Task ProcessEventHandler(ProcessEventArgs eventArgs)
@@ -219,21 +219,21 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
             return Task.CompletedTask;
         }    
     ```
-1. Építse fel a projektet, és győződjön meg arról, hogy nincsenek hibák.
+1. Hozza létre a projektet, és ellenőrizze, hogy nincsenek-e hibák.
 
     > [!NOTE]
-    > A teljes forráskódot további tájékoztató megjegyzésekkel együtt tekintse meg [ezt a fájlt a GitHubon.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample01_HelloWorld.cs)
-6. Futtassa a fogadóalkalmazást. 
-1. Meg kell jelennie egy üzenetnek, hogy az esemény megérkezett. 
+    > A teljes forráskódot további tájékoztató megjegyzésekkel tekintheti [meg a githubon](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample01_HelloWorld.cs).
+6. Futtassa a fogadó alkalmazást. 
+1. Ekkor megjelenik egy üzenet, amely szerint az esemény érkezett. 
 
     ![Esemény érkezett](./media/getstarted-dotnet-standard-send-v2/event-received.png)
 
-    Ezek az események azt a három eseményt, amelyet korábban küldött az eseményközpontnak a feladó program futtatásával. 
+    Ezek az események a küldő program futtatásával korábban a következő három eseményt küldik el az Event hub számára. 
 
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a mintákat a GitHubon. 
 
-- [Az Event Hubs-minták a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
-- [Eseményprocesszor-minták a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
-- [Szerepköralapú hozzáférés-vezérlési (RBAC) minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+- [Event Hubs minták a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
+- [Event Processor-minták a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
+- [Szerepköralapú hozzáférés-vezérlés (RBAC) minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)

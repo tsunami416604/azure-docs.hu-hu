@@ -1,46 +1,46 @@
 ---
-title: Az Azure Piactér és az AppSource ütemterve
-description: Ütemterv a piactéren zajló eseményekhez
+title: Az Azure Marketplace és a AppSource menetrendje
+description: A piactéren zajló eseményekre vonatkozó ütemterv
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: 24e622f76e604d7c0c48e2f3c354e3b4aa64e549
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 0631859983944a7e33615106060d3ffb45a3c7bc
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084906"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160494"
 ---
-# <a name="microsoft-commercial-marketplace-roadmap"></a>A Microsoft kereskedelmi piactéri ütemterve
+# <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft kereskedelmi piactér – ütemterv
 
-Ez a dokumentum bemutatja, hogy mi a következő lépés a Microsoft kereskedelmi piacterén a kiadók, az eladók és az ügyfelek számára. Ez rögzíti néhány jelentős funkciók általunk elkövetett, egy durva időkeret, amikor számíthat arra, hogy látni őket, és frissíteni kell havonta. Ez nem egy átfogó listát az összes új funkciót, de célja, hogy betekintést nyújtson a legfontosabb beruházások. Ezek a szolgáltatáskészletek és a szállítási időkeretek aktuálisak és változhatnak.
+Ez a dokumentum áttekintést nyújt a Microsoft kereskedelmi piactérről a kiadók, az eladók és az ügyfelek számára. Rögzíti az általunk elkövetett jelentős funkciók némelyikét, egy durva időkeretet, amikor várhatóan látni fogja őket, és havonta frissülnek. Nem az összes új szolgáltatás átfogó listája, hanem a legfontosabb beruházásokkal való láthatóságot célozza meg. Ezek a szolgáltatáskészlet-készletek és a kézbesítési időkeretek naprakészek, és változhatnak.
 
-Várjuk javaslatait! Csatlakozzon a [Microsoft Partner Közösségben](https://www.microsoftpartnercommunity.com/) folytatott beszélgetéshez, és értesüljön az új funkciókkal, programokkal és eseményekkel kapcsolatos legújabb frissítésekről.
+Szívesen fogadjuk javaslatait! Csatlakozzon a [Microsoft partner közösségének](https://www.microsoftpartnercommunity.com/) beszélgetéséhez, és ismerkedjen meg az új funkciókkal, programokkal és eseményekkel kapcsolatos legújabb frissítésekkel.
 
 ## <a name="roadmap"></a>Ütemterv
-![A piac tér 2019.](./media/marketplace-publishers-guide/roadmap-nov19.png)
+![Marketplace-útiterv november 2019](./media/marketplace-publishers-guide/roadmap-nov19.png)
 
 ## <a name="recent-releases"></a>Legutóbbi kiadások
 
-Amint egy képesség éles, a rendszer eltávolítja az ütemtervből. A piactérhez hozzáadott funkciók az alábbi dokumentációban találhatók.
+Ha egy képesség élő, el lesz távolítva az ütemtervből. A piactérhez hozzáadott funkciók a következő dokumentációban találhatók.
 
-* [Piactér + CSP Update Blog](https://aka.ms/marketplacemarchupdateblog)
-* [Ajánlatok közzététele a KP-csatornában (ISV)](https://aka.ms/publishtocsp)
-* [Marketplace-ajánlatok viszonteladása](https://aka.ms/marketplaceincsp)
-* [Standard szerződés](https://aka.ms/standardcontract)
-* [SaaS teljesítésapi](https://aka.ms/saasapiv2)
-* [Marketplace Geos és valuták](https://aka.ms/marketplacegeos)
-* [Értékesítői elemzések](./partner-center-portal/analytics.md)
-* [Microsoft Build Piactér blogja](https://aka.ms/marketplacebuildblog)
-* [Piactér május frissítések Blog](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* Partnerközpont: [Fiókkezelő](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [fiók áttelepítésének](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / létrehozása a[CPP-ből](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
-* Partnerközpont: [SaaS-ajánlatközzétételi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [állapotfrissítés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-) / létrehozása meglévő[ajánlatajánlat-elemzés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics) [Update Existing Offer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / 
-* [Támogatás a piactérhez a Partnerközpontban](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* [Marketplace + CSP frissítési blog](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
+* [Ajánlatok közzététele a CSP-csatornán (ISV)](./cloud-solution-providers.md)
+* [Marketplace-ajánlatok viszonteladása (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
+* [Standard szintű szerződés a Microsoft kereskedelmi piactérről](./standard-contract.md)
+* [SaaS Fulfillment API-k](./partner-center-portal/pc-saas-fulfillment-apis.md)
+* [Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren](./marketplace-geo-availability-currencies.md)
+* [A partner Center kereskedelmi piactérének elemzései](./partner-center-portal/analytics.md)
+* [A Microsoft Build piactér blogja](https://azure.microsoft.com/blog/announcing-new-marketplace-revenue-opportunities/)
+* [Előfordulhat, hogy a piactér frissíti a blogot](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
+* Partneri központ: [fiók](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [kezelése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / fiók[áttelepítése a CPP-ből](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
+* Partneri központ [: Saas-ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [közzétételi állapotának](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
+) / [frissítése meglévő ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / -[elemzési ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics) létrehozása
+* [A piactér támogatásának beszerzése a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
 ## <a name="next-steps"></a>További lépések
 
-Keresse fel az Azure Piactér és az [AppSource Publisher Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) lapot.
+Látogasson el az [Azure Marketplace és a AppSource kiadói útmutató](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) oldalára.

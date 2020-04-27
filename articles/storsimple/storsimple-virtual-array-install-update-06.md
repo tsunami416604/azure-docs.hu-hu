@@ -1,6 +1,6 @@
 ---
-title: A 0.6-os frissítés telepítése a StorSimple virtual array-re | Microsoft dokumentumok
-description: A storSimple virtuális tömb webes felhasználói felületének használata a frissítések azure portal és gyorsjavítási módszer rel történő alkalmazásához
+title: Az 0,6-es frissítés telepítése a StorSimple virtuális tömbön | Microsoft Docs
+description: Ismerteti, hogyan használhatók a StorSimple virtuális tömb webes felhasználói felülete a frissítések alkalmazásához a Azure Portal és a gyorsjavítási módszer használatával
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,34 +15,34 @@ ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f0be5d8378cd1640d3052f2e56c8161e2c0b203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "62116891"
 ---
-# <a name="install-update-06-on-your-storsimple-virtual-array"></a>A 0.6-os frissítés telepítése a StorSimple virtuális tömbre
+# <a name="install-update-06-on-your-storsimple-virtual-array"></a>Az 0,6-es frissítés telepítése a StorSimple virtuális tömbön
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk ismerteti a 0.6-os frissítés telepítéséhez szükséges lépéseket a StorSimple virtuális tömba a helyi webes felhasználói felületen keresztül és az Azure Portalon keresztül. A szoftverfrissítéseket vagy gyorsjavításokat a StorSimple virtuális tömb naprakészen tartásához kell alkalmazni.
+Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a 0,6-es frissítés telepítéséhez a StorSimple virtuális tömbön a helyi webes felületen és a Azure Portal keresztül. A szoftverfrissítések vagy gyorsjavítások alkalmazása a StorSimple virtuális tömb naprakészen tartásához.
 
-A frissítés alkalmazása előtt javasoljuk, hogy először a köteteket vagy megosztásokat állítsa offline állapotba a gazdagépen, majd az eszközön. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Miután a kötetek vagy megosztások offline állapotba kerültek, manuális biztonsági másolatot kell készítenie az eszközről.
+A frissítés alkalmazása előtt javasoljuk, hogy a köteteket vagy a megosztásokat a gazdagépen, majd az eszközön offline állapotba helyezze. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. A kötetek vagy a megosztások offline állapotba helyezése után manuálisan kell biztonsági másolatot készíteni az eszközről.
 
 > [!IMPORTANT]
-> - A 0.6-os frissítés a **készülék 10.0.10293.0** szoftververziójának felel meg. A frissítés újdonságairól a [0.6-os frissítéshez kiadott megjegyzések](storsimple-virtual-array-update-06-release-notes.md)című részben talál további információt.
+> - Az 0,6-es frissítés megfelel az eszközön **10.0.10293.0** szoftver verziójának. A frissítéssel kapcsolatos újdonságokról a 0,6-es [frissítés kibocsátási megjegyzései](storsimple-virtual-array-update-06-release-notes.md)című témakörben olvashat bővebben.
 >
-> - Ha a 0.2-es vagy újabb frissítést futtatja, javasoljuk, hogy telepítse a frissítéseket az Azure Portalon keresztül. Ha a 0.1-es frissítés vagy a GA szoftververziókat futtatja, a 0.6-os frissítés telepítéséhez a helyi webes felhasználói felületen keresztül kell használnia a gyorsjavítási módszert.
+> - Ha a 0,2-es vagy újabb frissítést futtatja, javasoljuk, hogy telepítse a frissítéseket a Azure Portal használatával. Ha a 0,1-es vagy a GA-os verziót futtatja, a gyorsjavítást a helyi webes felületen keresztül kell használnia az 0,6-es frissítés telepítéséhez.
 >
-> - Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Tekintettel arra, hogy a StorSimple virtuális tömb egyetlen csomópontú eszköz, minden folyamatban lévő I/O megszakad, és az eszköz leállást tapasztal.
+> - Ne feledje, hogy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-A 0.2-es és újabb frissítés futtatásaesetén azt javasoljuk, hogy telepítse a frissítéseket az Azure Portalon keresztül. A portáleljárás megköveteli a felhasználótól a frissítések befrissítését, letöltését és telepítését. Ez az eljárás körülbelül 7 percet vesz igénybe. A frissítés vagy gyorsjavítás telepítéséhez hajtsa végre az alábbi lépéseket.
+Ha a 0,2-es vagy újabb frissítést futtatja, javasoljuk, hogy telepítse a frissítéseket a Azure Portal. A portál eljárása megköveteli a felhasználótól a frissítések vizsgálatát, letöltését és telepítését. Az eljárás végrehajtása körülbelül 7 percet vesz igénybe. A frissítés vagy a gyorsjavítás telepítéséhez hajtsa végre a következő lépéseket.
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-A telepítés befejezése után nyissa meg a StorSimple Eszközkezelő szolgáltatást. Válassza **az Eszközök lehetőséget,** majd jelölje ki az imént frissített eszközt, és kattintson rájuk. Nyissa meg **a Beállítások > > eszközfrissítések kezelése**lehetőséget. A megjelenített szoftververziónak **10.0.10293.0-nak**kell lennie.
+A telepítés befejezése után lépjen a StorSimple Eszközkezelő szolgáltatásra. Válassza az **eszközök** lehetőséget, majd válassza ki, majd kattintson az imént frissített eszközre. Válassza a **beállítások > > eszköz frissítéseinek kezelése lehetőséget**. A megjelenített szoftververzió **10.0.10293.0**kell lennie.
 
 ## <a name="use-the-local-web-ui"></a>A helyi webes felhasználói felület használata
 
@@ -57,73 +57,73 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás letöltése
 
-1. Indítsa el az [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)Internet Explorer t, és keresse meg a programot.
+1. Indítsa el az Internet Explorert, [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)és navigáljon a gombra.
 
-2. Ha először használja a Microsoft Update katalógust ezen a számítógépen, kattintson a **Telepítés** gombra, amikor a microsoft update katalógus bővítmény telepítésére van szüksége.
+2. Ha első alkalommal használja a Microsoft Update-katalógust ezen a számítógépen, kattintson a **telepítés** gombra, amikor a rendszer felszólítja az Microsoft Update Catalog bővítmény telepítésére.
 
-3. A Microsoft Update katalógus keresőmezőjébe írja be a letölteni kívánt gyorsjavítás Tudásbázisának (KB) számát. Írja be a **4023268** értéket a 0.6-os frissítéshez, majd kattintson a **Keresés**gombra.
+3. A Microsoft Update-katalógus keresőmező mezőjébe írja be a letölteni kívánt gyorsjavítás tudásbázisának (KB) számát. Adja meg a **4023268** -es frissítést a 0,6-es frissítéshez, majd kattintson a **Keresés**gombra.
    
-    Megjelenik a gyorsjavítás-lista, például a **StorSimple Virtual Array Update 0.6**.
+    Megjelenik a gyorsjavítások listája, például: **StorSimple Virtual Array Update 0,6**.
    
     ![Keresés a katalógusban](./media/storsimple-virtual-array-install-update-06/download1.png)
 
-4. Kattintson **a Letöltés gombra.**
+4. Kattintson a **Letöltés**gombra.
 
-5. Öt letöltandó fájlnak kell lennie. Töltse le ezeket a fájlokat egy mappába. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
+5. Öt fájlt kell látnia a letöltéshez. Töltse le ezeket a fájlokat egy mappába. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
 
-6. Nyissa meg azt a mappát, amelyben a fájlok találhatók.
-    ![Fájlok a csomagban](./media/storsimple-virtual-array-install-update-06/update06folder.png)
+6. Nyissa meg azt a mappát, ahol a fájlok találhatók.
+    ![A csomagban található fájlok](./media/storsimple-virtual-array-install-update-06/update06folder.png)
 
     A következőt fogja látni:
-    -  A Microsoft Update önálló `WindowsTH-KB3011067-x64`csomagfájlja . Ez a fájl az eszköz szoftverének frissítésére szolgál.
-    - A genfi monitoring `GenevaMonitoringAgentPackageInstaller`ügynök csomag fájl . Ez a fájl a figyelési és diagnosztikai szolgáltatás (MDS) ügynökének frissítésére szolgál. Kattintson duplán a fülkefájlra. Egy _.msi jelenik_ meg. Jelölje ki a fájlt, kattintson a jobb gombbal, majd **bontsa ki** a fájlt. Az _.msi_ fájl segítségével frissítheti az ügynököt.
+    -  Egy önálló csomagfájl Microsoft Update `WindowsTH-KB3011067-x64`. Ez a fájl az eszköz szoftverének frissítésére szolgál.
+    - Egy Genfi figyelési ügynök csomagfájl `GenevaMonitoringAgentPackageInstaller`. Ez a fájl a monitoring and Diagnostics szolgáltatás (MDS) ügynökének frissítésére szolgál. Kattintson duplán a cab-fájlra. Megjelenik egy _. msi fájl_ . Válassza ki a fájlt, kattintson rá a jobb gombbal, majd **bontsa** ki a fájlt. Az _. msi_ fájl segítségével frissítheti az ügynököt.
 
-        ![MDS-ügynökfrissítési fájl kibontása](./media/storsimple-virtual-array-install-update-06/extract-geneva-monitoring-agent-installer.png)
+        ![MDS-ügynök frissítési fájljának kibontása](./media/storsimple-virtual-array-install-update-06/extract-geneva-monitoring-agent-installer.png)
 
         > [!IMPORTANT]
-        > A StorSimple 0.5-ös (0.0.10293.0) frissítése esetén nem kell frissítenie az MDS-ügynököt.
+        > Ha a 0,5-es StorSimple-frissítést (0.0.10293.0) futtatja, nem kell frissítenie az MDS-ügynököt.
 
-    - Három fájl, amelyek a `windows8.1-kb4012213-x64`Windows`windows8.1-kb3205400-x64`kritikus `windows8.1-kb4019213-x64`biztonsági frissítéseit , , és .
+    - Három fájl, amelyek kritikus fontosságú Windows biztonsági frissítéseket `windows8.1-kb4012213-x64``windows8.1-kb3205400-x64`,, és `windows8.1-kb4019213-x64`rendszert tartalmaznak.
 
 
 ### <a name="install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
-A frissítés vagy a gyorsjavítás telepítése előtt győződjön meg arról, hogy a frissítést vagy a gyorsjavítást helyileg töltötte le a gazdagépen, vagy elérhető egy hálózati megosztáson keresztül.
+A frissítés vagy a gyorsjavítás telepítése előtt győződjön meg arról, hogy a frissítés vagy a gyorsjavítás le van töltve helyileg a gazdagépen, vagy elérhető egy hálózati megosztáson keresztül.
 
-Ezzel a módszerrel ga vagy Update 0.1 szoftververziókat futtató eszközökön telepíthet frissítéseket. Ez az eljárás körülbelül 12 percet vesz igénybe. A frissítés vagy gyorsjavítás telepítéséhez hajtsa végre az alábbi lépéseket.
+Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszközök frissítéseit. Az eljárás végrehajtása körülbelül 12 percet vesz igénybe. A frissítés vagy a gyorsjavítás telepítéséhez hajtsa végre a következő lépéseket.
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
-1. A helyi internetes felhasználói felületen nyissa meg a **Karbantartási** > **szoftverfrissítés című webhelyet.** Jegyezze fel a futtatott szoftververziót. Ha a **10.0.10290.0-t**futtatja, nem kell frissítenie az MDS-ügynököt a 6.
+1. A helyi webes kezelőfelületen lépjen a **karbantartási** > **szoftverfrissítés**elemre. Jegyezze fel a futtatott szoftver verzióját. Ha a **10.0.10290.0**-et futtatja, a 6. lépésben nem kell frissítenie az MDS-ügynököt.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. A **Fájl elérési útjának frissítése**mezőbe írja be a frissítés vagy a gyorsjavítás fájlnevét. A frissítési vagy gyorsjavítás-telepítési fájlba is tallózhat, ha hálózati megosztásra helyezi. Kattintson az **Alkalmaz** gombra.
+2. A **frissítési fájl elérési útja**mezőben adja meg a frissítés vagy a gyorsjavítás fájlnevét. Ha hálózati megosztásra helyezi, tallózással is megkeresheti a frissítés vagy a gyorsjavítás telepítési fájlját. Kattintson az **Alkalmaz** gombra.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
-3. Figyelmeztetés jelenik meg. Mivel a virtuális tömb egyetlen csomóponteszköz, a frissítés alkalmazása után az eszköz újraindul, és van állásidő. Kattintson az ellenőrzés ikonra.
+3. A rendszer figyelmeztetést jelenít meg. Mivel a virtuális tömb egyetlen csomópontos eszköz, a frissítés alkalmazása után az eszköz újraindul, és leállási idő van. Kattintson a pipa ikonra.
    
    ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
-4. A frissítés elindul. Az eszköz sikeres frissítése után újraindul. A helyi felhasználói felület nem érhető el ebben az időtartamban.
+4. A frissítés elindul. Az eszköz sikeres frissítése után újraindul. A helyi felhasználói felület ebben az időtartamban nem érhető el.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Az újraindítás befejezése után a **bejelentkezési** lapra kerül. Az eszközszoftver frissítésének ellenőrzéséhez a helyi webes felhasználói felületen nyissa meg a **Karbantartási** > **szoftverfrissítés című**részt. A megjelenített szoftververziónak **10.0.0.0.0.10293-nak** kell lennie a 0.6-os frissítéshez.
+5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási** > **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10293** kell lennie az 0,6-es frissítéshez.
    
    > [!NOTE]
-   > A szoftververziókat némileg eltérő módon jelentjük a helyi webes felhasználói felületen és az Azure Portalon. A helyi webes felhasználói felület például **a 10.0.0.0.0.10293-at** jelenti, az Azure Portal pedig **a 10.0.10293.0-t** ugyanahhoz a verzióhoz.
+   > A szoftver-verziókat a helyi webes KEZELŐFELÜLETen és a Azure Portal némileg eltérő módon jelentik be. A helyi webes felhasználói felület például a **10.0.0.0.0.10293** és a Azure Portal jelentések **10.0.10293.0** ugyanazt a verziót jelenti.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-06/update6m.png)
 
-6. A frissítés alkalmazása előtt hagyja ki ezt a lépést, ha a StorSimple Virtual Array Update 0.5 (**10.0.10290.0**) frissítést futtatta. A frissítés megkezdése előtt az 1. Ha a 0.5-ös frissítést futtatta, az MDS-ügynök már naprakész.
+6. Hagyja ki ezt a lépést, ha a StorSimple Virtual Array Update 0,5 (**10.0.10290.0**) alkalmazást futtatta a frissítés alkalmazása előtt. A frissítés megkezdése előtt az 1. lépésben megjegyezte a szoftver verzióját. Ha a 0,5-es frissítést futtatta, az MDS-ügynök már naprakész.
 
-    Ha a 0.5-ös frissítés előtt szoftververziót futtat, a következő lépés az MDS-ügynök frissítése. A **Szoftverfrissítés** lapon nyissa meg a Fájl frissítése `GenevaMonitoringAgentPackageInstaller.msi` elérési **útját,** és keresse meg a fájlt. Ismételje meg a 2-4. A virtuális tömb újraindítása után jelentkezzen be a helyi webes felhasználói felületre.
+    Ha a 0,5-es frissítés előtt szoftveres verziót futtat, a következő lépés az MDS-ügynök frissítése. A **szoftverfrissítés** lapon lépjen a **fájl frissítése elérési útra** , és keresse meg a `GenevaMonitoringAgentPackageInstaller.msi` fájlt. Ismételje meg a 2-4. lépést. A virtuális tömb újraindítása után jelentkezzen be a helyi webes felhasználói felületre.
 
-7. A Windows biztonsági javításának fájlok `windows8.1-kb4012213-x64``windows8.1-kb3205400-x64`használatával történő telepítéséhez ismételje meg a `windows8.1-kb4019213-x64`2-4. A virtuális tömb minden telepítés után újraindul, és be kell jelentkeznie a helyi webes felhasználói felületre.
+7. Ismételje meg a 2-4 lépést a Windows biztonsági javításoknak `windows8.1-kb4012213-x64`a`windows8.1-kb3205400-x64`fájlok, `windows8.1-kb4019213-x64`a és a használatával történő telepítéséhez. A virtuális tömb az egyes telepítések után újraindul, és be kell jelentkeznie a helyi webes felhasználói felületre.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [a StorSimple virtuális tömb felügyeletéről.](storsimple-ova-web-ui-admin.md)
+További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).
 

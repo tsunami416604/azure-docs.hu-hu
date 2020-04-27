@@ -1,34 +1,34 @@
 ---
-title: Azure-adatbázis a MySQL-videókhoz
-description: Ez az oldal az Azure Database for MySQL, a Microsoft által felügyelt MySQL-ajánlatok azure-beli tanulásához szükséges videotartalmakat sorolja fel.
+title: Azure Database for MySQL videók
+description: Ezen az oldalon a Learning Azure Database for MySQL, a Microsoft által felügyelt MySQL-ajánlatunk az Azure-ban való megismeréséhez kapcsolódó videók szerepelnek.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: c18604a9f4b95f4b586efaf3201dd0a679d8d316
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60342610"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL videók
 
-[Áttekintés: Azure-adatbázis a PostgreSQL-hez és a MySQL-hez](https://channel9.msdn.com/Events/Connect/2017/T147)
+[Áttekintés: Azure Database for PostgreSQL és MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-A PostgreSQL és az Azure Database for MySQL közösségi kiadású adatbázis-motorjait és egy teljes körűen felügyelt szolgáltatás képességeit egyesíti, így az alkalmazásokra összpontosíthat, ahelyett, hogy egy adatbázist kellene kezelnie. Hangoljon rá, hogy gyors áttekintést kapjon a szolgáltatás használatának előnyeiről, és tekintse meg a működés közbeni képességek et.
+Azure Database for PostgreSQL és Azure Database for MySQL összekapcsolja a közösségi kiadású adatbázis-motorokat és a teljes körűen felügyelt szolgáltatás funkcióit, így az adatbázis kezelése helyett az alkalmazásokra koncentrálhat. A bekapcsolásával gyorsan áttekintheti a szolgáltatás használatának előnyeit, és megtekintheti a működés funkcióit.
 
-[Mély merülés a MySQL és a PostgreSQL felügyelt szolgáltatási képességeiről](https://channel9.msdn.com/Events/Connect/2017/T148)
+[A MySQL és a PostgreSQL felügyelt szolgáltatási képességeinek részletes bemutatása](https://channel9.msdn.com/Events/Connect/2017/T148)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T148/player]
 
-A PostgreSQL és az Azure Database for MySQL a közösségi kiadásadatbázis-motorokat és a teljes körűen felügyelt szolgáltatás képességeit egyesíti. Hangoljon rá, hogy részletesen megismerhesse, hogyan működnek ezek a szolgáltatások – hogyan biztosítjuk a magas rendelkezésre állást és a gyors skálázást (másodperceken belül), hogy ön megfeleljen ügyfelei igényeinek. A biztonságés a világ szintű rendelkezésre állás néhány mögöttes befektetéséről is megismerheti.
+Azure Database for PostgreSQL és Azure Database for MySQL a közösségi kiadású adatbázis-motorokat és a teljes körűen felügyelt szolgáltatások képességeit. Ismerkedjen meg a szolgáltatással, és Ismerje meg, hogyan működnek ezek a szolgáltatások – hogyan biztosítjuk a magas rendelkezésre állást és a gyors skálázást (másodperceken belül), így Ön is teljesítheti az ügyfelek igényeit. Emellett a biztonsági és a globális rendelkezésre állással kapcsolatos alapvető beruházások némelyikét is megismerheti.
 
-[Az új Azure Database for MySQL szolgáltatás első lépései](https://channel9.msdn.com/events/Build/2017/B8045)
+[Ismerkedés az új Azure Database for MySQL szolgáltatással](https://channel9.msdn.com/events/Build/2017/B8045)
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/B8045/player]
 
-A 2017 májusi Microsoft //Build konferenciáról származó videóban megismerkedhet a Microsoft által felügyelt MySQL-ajánlatokkal az Azure-ban. A videó bemutatja a Microsoft nyílt forráskódú adatbázis-rendszerek azure-beli támogatásával kapcsolatos stratégiáját. A videó bemutatja, mit jelent Önnek fejlesztőként a MySQL-t az Azure-ban használó alkalmazások fejlesztése vagy üzembe helyezése. Ez a videó áttekintést nyújt a szolgáltatás architektúrájáról, és bemutatja, hogy a MySQL-adatbázis más Azure-szolgáltatásokkal, például webalkalmazásokkal van integrálva.
+Ebben a videóban a május 2017 Microsoft Build konferencián megismerheti a Microsoft felügyelt MySQL-ajánlatát az Azure-ban. A videó végigvezeti a Microsoft által az Azure-beli nyílt forráskódú adatbázis-rendszerek támogatásához szükséges stratégián. A videó bemutatja, hogy mit jelent Önnek fejlesztőként a MySQL-t használó alkalmazások fejlesztéséhez vagy üzembe helyezéséhez az Azure-ban. Ez a videó a szolgáltatás architektúrájának áttekintését mutatja be, és azt mutatja be, Azure Database for MySQL integrálva van más Azure-szolgáltatásokkal, például Web Appsokkal.

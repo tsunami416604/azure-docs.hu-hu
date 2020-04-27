@@ -1,6 +1,6 @@
 ---
-title: Kötet visszaállítása biztonsági mentésből egy StorSimple 8000 sorozaton | Microsoft dokumentumok
-description: A storSimple Eszközkezelő szolgáltatás biztonsági másolata katalógus használatával hogyan állítható vissza egy StorSimple-kötet egy biztonságimásolat-készletből.
+title: Kötet visszaállítása a biztonsági másolatból egy StorSimple 8000 sorozaton | Microsoft Docs
+description: A cikk azt ismerteti, hogy a StorSimple Eszközkezelő szolgáltatás biztonsági mentési katalógusával hogyan állíthatja vissza a StorSimple kötetét egy biztonságimásolat-készletből.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,132 +15,132 @@ ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60723390"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>StorSimple-kötet helyreállítása biztonságimásolat-készletből
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag a StorSimple 8000 sorozatú eszközön egy meglévő biztonságimásolat-készlet használatával végrehajtott visszaállítási műveletet ismerteti. A **Biztonsági másolat katalógus** panel segítségével visszaállíthatja a kötetet egy helyi vagy felhőbeli biztonsági mentésből. A **Biztonsági másolat katalógus** panel megjeleníti az összes biztonsági mentési készletek, amelyek akkor jönnek létre, amikor a manuális vagy automatikus biztonsági mentések készülnek. A biztonságimásolat-készletből történő visszaállítási művelet azonnal online állapotba hozza a kötetet, miközben az adatok a háttérben töltődnek le.
+Ez az oktatóanyag a StorSimple 8000 Series-eszközön végrehajtott visszaállítási műveletet ismerteti egy meglévő biztonságimásolat-készlet használatával. A **biztonsági mentési katalógus** panel használatával állíthatja vissza a kötetet egy helyi vagy Felhőbeli biztonsági másolatból. A **biztonságimásolat-katalógus** panel megjeleníti a manuális vagy automatikus biztonsági mentések során létrehozott összes biztonságimásolat-készletet. A biztonságimásolat-készlet visszaállítási művelete azonnal online állapotba helyezi a kötetet, miközben az adatok a háttérben letöltődnek.
 
-A visszaállítás elindításának másik módja az **Eszközök > [Az eszköz] > kötetek**. A **Kötetek** panelen jelöljön ki egy kötetet, kattintson a jobb gombbal a helyi menü meghívásához, majd válassza a **Visszaállítás parancsot.**
+Egy másik módszer a visszaállítás megkezdéséhez az **eszközök > [az eszköz] > kötetek**. A **kötetek** panelen válasszon ki egy kötetet, kattintson a jobb gombbal a helyi menü meghívásához, majd válassza a **visszaállítás**lehetőséget.
 
 ## <a name="before-you-restore"></a>A visszaállítás előtt
 
-A visszaállítás megkezdése előtt tekintse át a következő kikötéseket:
+A visszaállítás megkezdése előtt tekintse át a következő figyelmeztetéseket:
 
-* A visszaállítási művelet megkezdése előtt **offline állapotba kell helyeznie a kötetet** – A kötetet mind a gazdagépen, mind az eszközön offline állapotba kell helyeznie. Bár a visszaállítási művelet automatikusan online állapotba hozza a kötetet az eszközön, manuálisan kell online állapotba hoznia az eszközt a gazdagépen. A kötetet online állapotba hozhatja a gazdagépen, amint a kötet online állapotba kerül az eszközön. (Nem kell megvárnia, amíg a visszaállítási művelet befejeződik.) Az eljárásokért nyissa meg [a Kötet offline állapotba helyezése (Kötet offline állapotba helyezése) (Kötet offline állapotba helyezése) (Kötet offline állapotba helyezése)](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)
+* A visszaállítási művelet megkezdése előtt a **kötetet offline állapotba kell állítania** . a kötetet a gazdagépen és az eszközön is offline állapotban kell tartani. Bár a visszaállítási művelet automatikusan online állapotba helyezi a kötetet az eszközön, manuálisan kell az eszközt online állapotba helyezni a gazdagépen. A kötetet online állapotba helyezheti a gazdagépen, amint a kötet online állapotban van az eszközön. (Nem kell megvárnia, amíg a visszaállítási művelet be nem fejeződik.) Az eljárásokhoz lépjen a [kötet offline állapotba](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)állítása elemre.
 
-* **Kötettípus visszaállítás után** – A törölt kötetek visszaállítása a pillanatképben megadott típus alapján; ez azt, hogy a helyileg rögzített kötetek visszaállítása helyileg rögzített kötetek és a rétegzett kötetek rétegzett kötetek visszaállítása rétegzett kötetekként lesz visszaállítva.
+* **Kötet típusa visszaállítás után** – a törölt kötetek a pillanatkép típusa alapján lesznek visszaállítva. vagyis a helyileg rögzített kötetek a helyileg rögzített kötetekként lesznek visszaállítva, és a rendszer rétegű kötetekként állítja vissza a köteteket.
 
-    Meglévő kötetek esetén a kötet aktuális használati típusa felülbírálja a pillanatképben tárolt típust. Ha például egy kötetet egy olyan pillanatképből állít vissza, amely a kötettípus rétegzett rétegezése kor készült, és amely a kötettípus most helyileg rögzített (egy végrehajtott konverziós művelet miatt), akkor a kötet helyileg rögzített kötetként lesz visszaállítva. Hasonlóképpen, ha egy meglévő helyileg rögzített kötet ki lett bontva, és ezt követően visszaállították egy régebbi pillanatképből, amely et a kötet kisebb volt, a visszaállított kötet megtartja az aktuális kibontott méretet.
+    Meglévő kötetek esetében a kötet aktuális használati típusa felülbírálja a pillanatképben tárolt típust. Ha például egy kötetet egy olyan pillanatképből állít vissza, amely a kötet típusának meghatározásakor lett elvégezve, és a kötet típusa már helyileg rögzített (egy végrehajtott átalakítási művelet miatt), akkor a kötet helyileg rögzített kötetként lesz visszaállítva. Hasonlóképpen, ha egy meglévő, helyileg rögzített kötet ki lett bontva, és később vissza lett állítva egy korábbi pillanatképből, amelyet a kötet kisebb volt, akkor a visszaállított kötet megőrzi a jelenlegi kibontott méretet.
 
-    A kötet nem konvertálható rétegzett kötetből helyileg rögzített kötetté vagy helyileg rögzített kötetből rétegzett kötetre a kötet visszaállítása közben. Várjon, amíg a visszaállítási művelet befejeződik, majd a kötetet más típusra konvertálhatja. A kötetek konvertálásával kapcsolatban a Kötettípus módosítása című részről a [>, a Kötettípus módosítása](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)című részre talál. 
+    A köteteket nem konvertálhatja többrétegű kötetről helyileg rögzített kötetre, illetve helyileg rögzített kötetről egy többkötetes kötetre a kötet visszaállítása közben. Várjon, amíg a visszaállítási művelet befejeződik, majd alakítsa át a kötetet más típusra. A kötetek konvertálásával kapcsolatos információkért lépjen [a kötet típusának módosítása](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)elemre. 
 
-* **A kötet mérete tükröződik a visszaállított kötet** – Ez fontos szempont, ha egy helyben rögzített kötet, amely törölt (mert a helyileg rögzített kötetek teljesen kiépített). Győződjön meg arról, hogy elegendő hely áll rendelkezésre, mielőtt megpróbálna visszaállítani egy korábban törölt, helyileg rögzített kötetet.
+* **A kötet mérete tükröződik a visszaállított kötetben** – ez fontos szempont, ha olyan helyileg rögzített kötetet állít vissza, amely törölve lett (mivel a helyileg rögzített kötetek teljes mértékben kiépítve vannak). Győződjön meg arról, hogy elegendő lemezterülettel rendelkezik, mielőtt megkísérli visszaállítani a korábban törölt helyileg rögzített kötetet.
 
-* **A kötet visszaállítása közben nem bontható ki** – A kötet kibontása előtt várja meg, amíg a visszaállítási művelet befejeződik. A kötetek bővítéséről a [Kötet módosítása](storsimple-8000-manage-volumes-u2.md#modify-a-volume)című részről a Módosítás című részről talál.
+* A **kötetet nem lehet kibontani** a visszaállítás közben – várjon, amíg a visszaállítási művelet befejeződik, mielőtt megpróbálja kibővíteni a kötetet. A kötetek kibővítésével kapcsolatos információkért lépjen a [Kötet módosítása](storsimple-8000-manage-volumes-u2.md#modify-a-volume)elemre.
 
-* **A biztonsági mentést a helyi kötet visszaállítása közben is elvégezheti** – Az eljárásokhoz az [AStorSimple Eszközkezelő szolgáltatás használata biztonsági mentési házirendek kezelésére](storsimple-8000-manage-backup-policies-u2.md)című részre léphet.
+* **Helyi kötet visszaállításakor biztonsági mentést végezhet** – az eljárásokért lépjen [a StorSimple Eszközkezelő szolgáltatás használatára a biztonsági mentési házirendek kezeléséhez](storsimple-8000-manage-backup-policies-u2.md).
 
-* **A visszaállítási művelet megszakítása** – Ha megszakítja a visszaállítási feladatot, akkor a kötet visszaáll a visszaállítási művelet megkezdése előtti állapotba. Az eljárásokért nyissa meg [a Feladat törlése (Feladat törlése) (Feladat törlése) (Feladat törlése) (Feladat törlése) ( Feladat törlése) lehetőség](storsimple-8000-manage-jobs-u2.md#cancel-a-job)
+* **Visszaállíthat egy visszaállítási műveletet** – Ha megszakítja a visszaállítási feladatot, a kötet visszakerül a visszaállítási művelet elindítása előtt megadott állapotba. Az eljárásokért lépjen a [feladat megszakítása](storsimple-8000-manage-jobs-u2.md#cancel-a-job)elemre.
 
-## <a name="how-does-restore-work"></a>Hogyan működik a visszaállítás?
+## <a name="how-does-restore-work"></a>A visszaállítási művelet működése
 
-A 4-es vagy újabb frissítést futtató eszközök esetében egy hőtérkép-alapú visszaállítás van megvalósítva. Ahogy az állomás kéri az adatok eléréséhez az eszköz eléréséhez, ezeket a kérelmeket nyomon követi, és egy hőtérkép jön létre. A magas kérelemsebesség nagyobb hővel rendelkező adattömböket eredményez, míg az alacsonyabb kérelemsebesség alacsonyabb hővel rendelkező adattömbökké válik. Legalább kétszer kell hozzáférnie az adatokhoz ahhoz, hogy forróként legyen _megjelölve._ A módosított fájlok is _forróként_vannak megjelölve. Miután elindította a visszaállítást, az adatok proaktív hidratálása a hőtérkép alapján történik. A 4.
+A 4-es vagy újabb frissítést futtató eszközökön hő-alapú visszaállítást kell megvalósítani. Ahogy a gazdagép az adatelérési kérelmeket eléri az eszközön, a rendszer nyomon követi a kérelmeket, és létrehoz egy hő. A magas kérelmek gyakorisága nagyobb mennyiségű adattömböket eredményez, míg az alacsonyabb kérelmek aránya az alacsonyabb hőmérsékletű adattömbökre van lefordítva. Legalább kétszer hozzá kell férnie az adatokhoz _._ Egy módosított fájl is láthatóként van megjelölve _._ Miután elindította a visszaállítást, az adatkezelési folyamat az hő alapján történik. A 4-es frissítésnél korábbi verziók esetében az adatletöltés a visszaállítás során csak a hozzáférés alapján történik meg.
 
-A heatmap-alapú visszaállításokra a következő kikötések vonatkoznak:
+A következő kikötések vonatkoznak a hő-alapú visszaállításokra:
 
-* A hőtérkép-követés csak rétegzett kötetek esetén engedélyezett, és a helyileg rögzített kötetek nem támogatottak.
+* A hő követése csak a lépcsőzetes kötetek esetében engedélyezett, és a helyileg rögzített kötetek nem támogatottak.
 
-* A heatmap-alapú visszaállítás nem támogatott, ha egy kötetet másik eszközre állít. 
+* A hő-alapú visszaállítás nem támogatott a kötetek másik eszközre történő klónozásakor. 
 
-* Ha van egy helyi visszaállítás, és a helyi pillanatkép a kötet vissza kell állítani létezik az eszközön, akkor nem rehidratálja (az adatok már elérhető helyileg). 
+* Ha helyben történő visszaállítást végez, és a kötet visszaállítására szolgáló helyi pillanatkép létezik az eszközön, akkor nem történik meg a rehidratálás (mivel az adatok már helyileg is elérhetők). 
 
-* Alapértelmezés szerint visszaállításkor a rehidratálási feladatok kezdeményeződnek, amelyek proaktív módon rehidratálják az adatokat a hőtérkép alapján. 
+* Alapértelmezés szerint a visszaállításkor a rendszer kezdeményezi a rehidratáló feladatokat, amelyek proaktív módon rehidratálják az adatokon alapuló hő. 
 
-A 4-es frissítésben a Windows PowerShell-parancsmagok segítségével lekérdezheti a rehidratálási feladatokat, megszakíthatja a rehidratálási feladatot, és lekaphatja a rehidratálási feladat állapotát.
+A 4. frissítésben a Windows PowerShell-parancsmagok segítségével lekérdezheti a futó rehidratáló feladatokat, megszakíthatja a rehidratálás feladatát, és lekérheti a rehidratáló feladat állapotát.
 
-* `Get-HcsRehydrationJob`- Ez a parancsmag megkapja a rehidratációs feladat állapotát. Egyetlen rehidratálási feladat egy kötethez aktiválódik.
+* `Get-HcsRehydrationJob`– Ez a parancsmag beolvassa a rehidratáló feladatok állapotát. Egyetlen újrahidratáló feladatot indítunk el egy köteten.
 
-* `Set-HcsRehydrationJob`- Ez a parancsmag lehetővé teszi a rehidratálási feladat szüneteltetését, leállítását, folytatását, amikor a rehidratálás folyamatban van.
+* `Set-HcsRehydrationJob`– Ez a parancsmag lehetővé teszi a rehidratáló feladat szüneteltetését, leállítását, folytatását, ha a rehidratálás folyamatban van.
 
-A rehidratálási parancsmagokról a [Windows PowerShell-parancsmag storSimple-hez való hivatkozási at.](https://technet.microsoft.com/library/dn688168.aspx)
+A rehidratáló parancsmagokkal kapcsolatos további információkért nyissa meg a [Windows PowerShell-parancsmagok referenciáját a StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
-Automatikus rehidratálás, általában magasabb átmeneti olvasási teljesítmény várható. A fejlesztések tényleges nagysága különböző tényezőktől függ, például a hozzáférési mintát, az adatforgalomtól és az adattípustól. 
+Automatikus rehidratálás esetén általában nagyobb átmeneti olvasási teljesítmény várható. A tökéletesítések tényleges nagysága számos tényezőtől függ, például a hozzáférési mintával, az adatváltozással és az adattípussal. 
 
-A rehidratálási feladat megszakításához használhatja a PowerShell-parancsmag. Ha véglegesen le szeretné tiltani a rehidratálási feladatokat az összes jövőbeli visszaállításhoz, forduljon a [Microsoft támogatási szolgálatához.](storsimple-8000-contact-microsoft-support.md)
+A rehidratáló feladat megszakításához használhatja a PowerShell-parancsmagot. Ha végleg le szeretné tiltani a rehidratálás feladatait az összes jövőbeli visszaállításhoz, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md).
 
-## <a name="how-to-use-the-backup-catalog"></a>A biztonsági másolat katalógusának használata
+## <a name="how-to-use-the-backup-catalog"></a>A biztonsági mentési katalógus használata
 
-A **Biztonsági másolat katalógus** panel egy lekérdezést biztosít, amely segít a biztonságimásolat-készlet kiválasztásának szűkítése. A beolvasott biztonságimásolat-készletek et a következő paraméterek alapján szűrheti:
+A **biztonságimásolat-katalógus** panel egy olyan lekérdezést biztosít, amely segít a biztonságimásolat-készlet kijelölésének szűkítéséhez. A következő paraméterek alapján szűrheti a beolvasott biztonságimásolat-készleteket:
 
-* **Időtartomány** – A biztonsági másolat készlet létrehozásának dátum- és időtartománya.
-* **Eszköz** – Az az eszköz, amelyen a biztonsági másolat készlet készült.
-* **Biztonsági mentési házirend** vagy **kötet** – A biztonsági mentési házirend vagy a biztonsági másolathoz társított kötet.
+* **Time Range (időtartomány** ) – a biztonságimásolat-készlet létrehozásakor beállított dátum és időtartomány.
+* **Eszköz** – az eszköz, amelyen a biztonságimásolat-készlet létrejött.
+* **Biztonsági mentési házirend** vagy **kötet** – a biztonságimásolat-készlethez társított biztonsági mentési szabályzat vagy kötet.
 
-A szűrt biztonsági másolat-készletek táblázatba foglalása a következő attribútumok alapján lesznek táblázatba foglalva:
+A szűrt biztonságimásolat-készletek a következő attribútumok alapján lesznek táblázatos formában:
 
-* **Név** – A biztonsági másolat házirendjének vagy kötetének neve a biztonságimásolat-készlethez társítva.
-* **Típus** – Biztonsági másolat készletek lehetnek helyi pillanatképek vagy felhőbeli pillanatképek. A helyi pillanatkép az eszközön helyileg tárolt összes kötetadat biztonsági másolata, míg a felhőbeli pillanatkép a felhőben található kötetadatok biztonsági mentésére vonatkozik. A helyi pillanatképek gyorsabb hozzáférést biztosítanak, míg a felhőbeli pillanatképek az adatok rugalmasságához vannak kiválasztva.
-* **Méret** – A biztonságimásolat-készlet tényleges mérete.
-* **Létrehozva** – A biztonsági mentések létrehozásának dátuma és időpontja. 
-* **Kötetek** – A biztonságimásolat-készlethez társított kötetek száma.
-* **Kezdeményezett** – A biztonsági mentések automatikusan kezdeményezhetők ütemezés szerint vagy manuálisan a felhasználó által. (Biztonsági mentési házirend del ütemezheti a biztonsági mentéseket. Másik lehetőségként használhatja a **Biztonsági mentés készítése** lehetőséget interaktív vagy igény szerinti biztonsági mentés készítéséhez.)
+* **Name (név** ) – a biztonságimásolat-készlethez társított biztonsági mentési szabályzat vagy kötet neve.
+* **Típus** – a biztonságimásolat-készletek helyi Pillanatképek vagy Felhőbeli Pillanatképek lehetnek. A helyi pillanatkép az eszközön helyileg tárolt összes kötet-adatok biztonsági mentése, míg a Felhőbeli pillanatkép a felhőben található kötet-adatok biztonsági mentésére utal. A helyi Pillanatképek gyorsabb hozzáférést biztosítanak, míg a Felhőbeli Pillanatképek az adatrugalmasság érdekében vannak kiválasztva.
+* **Size (méret** ) – a biztonságimásolat-készlet tényleges mérete.
+* **Létrehozva** – a biztonsági másolatok létrehozásának dátuma és időpontja. 
+* **Kötetek** – a biztonságimásolat-készlethez társított kötetek száma.
+* **Kezdeményezve** – a biztonsági mentések ütemezése vagy manuálisan, egy felhasználó alapján automatikusan is elindíthatók. (A biztonsági mentések ütemezéséhez használhat biztonsági mentési szabályzatot is. Azt is megteheti, hogy a **biztonsági mentés** lehetőség használatával interaktív vagy igény szerinti biztonsági mentést készít.)
 
 ## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>A StorSimple kötet visszaállítása biztonsági másolatból
 
-A Katalógus **biztonsági mentése** panel segítségével visszaállíthatja a StorSimple kötet egy adott biztonsági mentés. Ne feledje azonban, hogy a kötet visszaállítása visszaállítja a kötetet arra az állapotra, amelyben a biztonsági mentés készítéseke során volt. A biztonsági mentési művelet után hozzáadott adatok elvesznek.
+A **biztonsági mentési katalógus** panel használatával visszaállíthatja a StorSimple kötetet egy adott biztonsági másolatból. Ne feledje azonban, hogy egy kötet visszaállítása visszaállítja a kötetet a biztonsági mentés során megjelenő állapotba. A biztonsági mentési művelet után hozzáadott összes adattal elvész a rendszer.
 
 > [!WARNING]
-> A biztonsági másolatból történő visszaállítás felülírja a meglévő köteteket a biztonsági mentésből. Ez a biztonsági mentés után írt adatok elvesztését okozhatja.
+> A biztonsági másolatból történő visszaállításkor a rendszer lecseréli a meglévő köteteket a biztonsági másolatból. Ennek hatására előfordulhat, hogy a biztonsági mentés után írt összes adatvesztés megszakad.
 
 
 ### <a name="to-restore-your-volume"></a>A kötet visszaállítása
-1. Nyissa meg a StorSimple Eszközkezelő szolgáltatást, és kattintson **a Katalógus biztonsági másolata**gombra.
+1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd kattintson a **biztonsági mentési katalógus**lehetőségre.
 
-2. Válasszon ki egy biztonságimentési készletet az alábbiak szerint:
+2. Válasszon egy biztonságimásolat-készletet a következők szerint:
    
-   1. Adja meg az időtartományt.
+   1. Határozza meg az időtartományt.
    2. Válassza ki a megfelelő eszközt.
-   3. A legördülő listában válassza ki a kijelölni kívánt biztonsági másolat kötet- vagy biztonsági mentési házirendet.
-   4. A lekérdezés végrehajtásához kattintson az **Alkalmaz** gombra.
+   3. A legördülő listában válassza ki a kijelölni kívánt biztonsági másolathoz tartozó kötetet vagy biztonsági mentési szabályzatot.
+   4. A lekérdezés végrehajtásához kattintson az **alkalmaz** gombra.
 
-      A kijelölt kötethez vagy biztonsági mentési házirendhez társított biztonsági másolatnak meg kell jelennie a biztonságimásolat-készletek listájában.
+      A kiválasztott kötethez vagy biztonsági mentési szabályzathoz társított biztonsági másolatoknak szerepelniük kell a biztonságimásolat-készletek listájában.
    
-      ![Biztonságimásolat-készlet lista](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
+      ![Biztonságimásolat-készlet listája](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
-3. Bontsa ki a biztonságimásolat-készletet a társított kötetek megtekintéséhez. Ezeket a köteteket a visszaállítás előtt offline állapotba kell helyezni a gazdagépen és az eszközön. Férjen hozzá az eszköz Kötetek paneljén lévő **kötetekhez,** majd kövesse a [Kötet offline állapotba helyezése](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) című rész lépéseit, és offline állapotba hozhatja őket.
+3. Bontsa ki a biztonságimásolat-készletet a társított kötetek megtekintéséhez. Ezeket a köteteket offline állapotba kell helyezni a gazdagépen és az eszközön, mielőtt azok visszaállíthatók. Nyissa meg a köteteket az eszköz **kötetek** paneljén, majd kövesse a kötetek [Offline](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) állapotba állítása című témakör lépéseit.
    
    > [!IMPORTANT]
-   > Mielőtt a köteteket offline állapotba helyezte volna az eszközön, győződjön meg arról, hogy a köteteket offline állapotba helyezte az állomáson. Ha nem helyezi offline állapotba a köteteket az állomáson, az adatsérüléshez vezethet.
+   > Először is győződjön meg arról, hogy a köteteket offline állapotba helyezte a gazdagépen, mielőtt a kötetek offline állapotba kerültek az eszközön. Ha nem végzi el a kötetek offline állapotba helyezését a gazdagépen, lehetséges, hogy adatsérülést eredményezhet.
    
-4. Lépjen vissza a **Katalógus biztonsági másolata** lapra, és jelöljön ki egy biztonságimásolat-készletet. Kattintson a jobb gombbal, majd a helyi menüben válassza a **Visszaállítás parancsot.**
+4. Váltson vissza a **biztonsági mentési katalógus** lapra, és válassza ki a biztonságimásolat-készletet. Kattintson a jobb gombbal, majd a helyi menüben válassza a **visszaállítás**lehetőséget.
 
-    ![Biztonságimásolat-készlet lista](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![Biztonságimásolat-készlet listája](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
-5. A rendszer a művelet megerősítését kéri. Tekintse át a visszaállítási adatokat, majd jelölje be a megerősítést kérő jelölőnégyzetet.
+5. A rendszer a művelet megerősítését kéri. Tekintse át a visszaállítási információkat, majd jelölje be a megerősítő jelölőnégyzetet.
    
     ![Megerősítő oldal](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7. Kattintson **a Visszaállítás gombra.** Ezzel olyan visszaállítási feladatot kezdeményez, amelyet a **Feladatok** lap elérésével tekinthet meg.
+7. Kattintson a **visszaállítás**gombra. Ez egy visszaállítási feladatot kezdeményez, amelyet a **feladatok** lap elérésével tekinthet meg.
 
    ![Megerősítő oldal](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
-8. A visszaállítás befejezése után ellenőrizze, hogy a kötetek tartalmát a biztonsági másolatkötetek cserélik-e.
+8. A visszaállítás befejeződése után ellenőrizze, hogy a kötetek tartalmát a biztonsági másolatból kötetekre cseréli-e a rendszer.
 
 
 ## <a name="if-the-restore-fails"></a>Ha a visszaállítás sikertelen
 
-Riasztást fog kapni, ha a visszaállítási művelet bármilyen okból sikertelen. Ebben az esetben frissítse a biztonsági másolat listát, és ellenőrizze, hogy a biztonsági másolat továbbra is érvényes-e. Ha a biztonsági mentés érvényes, és a felhőből állítja vissza a szolgáltatást, akkor a kapcsolódási problémák okozhatják a problémát.
+A rendszer riasztást küld, ha a visszaállítási művelet valamilyen okból meghiúsul. Ha ez történik, frissítse a biztonsági mentési listát annak ellenőrzéséhez, hogy a biztonsági másolat még érvényes-e. Ha a biztonsági mentés érvényes, és a felhőből állítja vissza, a kapcsolódási problémák okozhatják a problémát.
 
-A visszaállítási művelet befejezéséhez állítsa offline állapotba a kötetet az állomáson, majd próbálkozzon újra a visszaállítási művelettel. Vegye figyelembe, hogy a visszaállítási folyamat során végrehajtott kötetadatok módosításai elvesznek.
+A visszaállítási művelet befejezéséhez állítsa offline állapotba a kötetet a gazdagépen, majd próbálja megismételni a visszaállítási műveletet. Vegye figyelembe, hogy a visszaállítási folyamat során végrehajtott összes módosítás elvész.
 
 ## <a name="next-steps"></a>További lépések
-* További információ a [StorSimple kötetek kezeléséről.](storsimple-8000-manage-volumes-u2.md)
-* Ismerje meg, hogyan [használhatja a StorSimple Eszközkezelő szolgáltatást a StorSimple-eszköz felügyeletére.](storsimple-8000-manager-service-administration.md)
+* Ismerje meg, hogyan [kezelheti a StorSimple-köteteket](storsimple-8000-manage-volumes-u2.md).
+* Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 

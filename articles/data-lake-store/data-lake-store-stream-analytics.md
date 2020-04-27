@@ -1,6 +1,6 @@
 ---
-title: Adatok streamelése a Stream Analytics szolgáltatásból az Azure Data Lake Storage Gen1 szolgáltatásba | Microsoft dokumentumok
-description: Adatok streamelése az Azure Data Lake Storage Gen1 szolgáltatásba az Azure Stream Analytics segítségével
+title: Stream-adatok Stream Analyticsból a Azure Data Lake Storage Gen1ba | Microsoft Docs
+description: A Azure Stream Analytics használatával továbbíthatja az adatAzure Data Lake Storage Gen1
 services: data-lake-store,stream-analytics
 documentationcenter: ''
 author: twooley
@@ -13,110 +13,110 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60194855"
 ---
-# <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Adatok streamelése az Azure Storage Blobból az Azure Data Lake Storage Gen1 szolgáltatásba az Azure Stream Analytics használatával
-Ebben a cikkben megtudhatja, hogyan használhatja az Azure Data Lake Storage Gen1-et kimenetként egy Azure Stream Analytics-feladathoz. Ez a cikk bemutatja egy egyszerű forgatókönyv, amely beolvassa az adatokat egy Azure Storage blob (bemenet), és írja az adatokat a Data Lake Storage Gen1 (kimenet).
+# <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Adatok továbbítása Azure Storage Blobról Azure Data Lake Storage Gen1 a Azure Stream Analytics használatával
+Ebből a cikkből megtudhatja, hogyan használhatja a Azure Data Lake Storage Gen1 kimenetként egy Azure Stream Analytics feladatokhoz. Ez a cikk egy egyszerű forgatókönyvet mutat be, amely beolvassa az adatokat egy Azure Storage-blobból (bemenet), és az adatokat a Data Lake Storage Gen1ba (output) írja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Az Azure Storage-fiók.** Egy blob tároló ebből a fiókból a Stream Analytics-feladat adatok beviteléhez. Ebben az oktatóanyagban tegyük fel, hogy van egy storage-fiók nevű **storageforasa** és egy tároló a fiókban nevű **storageforasacontainer**. Miután létrehozta a tárolót, töltsön fel egy mintaadatfájlt. 
+* **Azure Storage-fiók**. A fiókból BLOB-tárolót fog használni egy Stream Analytics-feladathoz tartozó adatok beviteléhez. Ebben az oktatóanyagban tegyük fel, hogy rendelkezik egy **storageforasa** nevű Storage-fiókkal és egy **storageforasacontainer**nevű fiókban található tárolóval. Miután létrehozta a tárolót, töltsön fel egy minta adatfájlt. 
   
-* **A Data Lake Storage Gen1 fiók**. Kövesse az [Azure Data Lake Storage Gen1 használatának első](data-lake-store-get-started-portal.md)lépéseit az Azure Portal használatával című útmutatóban. Tegyük fel, hogy van egy Data Lake Storage Gen1 fiókja, a **myadlsg1.** 
+* **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Tegyük fel, hogy van egy **myadlsg1**nevű Data Lake Storage Gen1 fiókja. 
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
-Először hozzon létre egy Stream Analytics-feladatot, amely bemeneti forrást és kimeneti célt tartalmaz. Ebben az oktatóanyagban a forrás egy Azure blob tároló, és a cél a Data Lake Storage Gen1.
+Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz egy bemeneti forrást és egy kimeneti célhelyet. Ebben az oktatóanyagban a forrás egy Azure Blob-tároló, és a cél Data Lake Storage Gen1.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A bal oldali ablaktáblában kattintson a **Stream Analytics-feladatok**elemre, majd a **Hozzáadás**gombra.
+2. A bal oldali panelen kattintson a **stream Analytics feladatok**elemre, majd a **Hozzáadás**gombra.
 
-    ![Stream Analytics-feladat létrehozása](./media/data-lake-store-stream-analytics/create.job.png "Stream Analytics-feladat létrehozása")
+    ![Stream Analytics-feladatok létrehozása](./media/data-lake-store-stream-analytics/create.job.png "Stream Analytics-feladat létrehozása")
 
     > [!NOTE]
-    > Győződjön meg arról, hogy a feladat létrehozása ugyanabban a régióban, mint a tárfiók, vagy ha további költségeket az adatok régiók közötti áthelyezése.
+    > Győződjön meg arról, hogy a feladatot ugyanabban a régióban hozza létre, mint a Storage-fiókot, vagy ha további költségekkel jár az adatok régiók közötti áthelyezéséhez.
     >
 
-## <a name="create-a-blob-input-for-the-job"></a>Blob-bemenet létrehozása a feladathoz
+## <a name="create-a-blob-input-for-the-job"></a>BLOB-bemenet létrehozása a feladathoz
 
-1. Nyissa meg a Stream Analytics-feladat lapját, a bal oldali ablaktáblában kattintson a **Bemenetek** fülre, majd a **Hozzáadás**gombra.
+1. Nyissa meg a Stream Analytics-feladathoz tartozó lapot, a bal oldali panelen kattintson a **bemenetek** lapra, majd a **Hozzáadás**gombra.
 
-    ![Bemenet hozzáadása a feladathoz](./media/data-lake-store-stream-analytics/create.input.1.png "Bemenet hozzáadása a feladathoz")
+    ![Adjon hozzá egy bemenetet a feladathoz](./media/data-lake-store-stream-analytics/create.input.1.png "Adjon hozzá egy bemenetet a feladathoz")
 
-2. Az **Új beviteli** panelen adja meg a következő értékeket.
+2. Az **új beviteli** panelen adja meg a következő értékeket.
 
-    ![Bemenet hozzáadása a feladathoz](./media/data-lake-store-stream-analytics/create.input.2.png "Bemenet hozzáadása a feladathoz")
+    ![Adjon hozzá egy bemenetet a feladathoz](./media/data-lake-store-stream-analytics/create.input.2.png "Adjon hozzá egy bemenetet a feladathoz")
 
-   * A **Bemeneti alias**mezőbe írja be a feladat bemenetének egyedi nevét.
-   * A **Forrástípus mezőben**válassza **az Adatfolyam**lehetőséget.
-   * A **Forrás csoportban**válassza a **Blob storage**lehetőséget.
-   * **Előfizetés esetén**válassza a Blob storage használata az **aktuális előfizetésből**lehetőséget.
-   * A **Storage-fiók,** válassza ki a tárfiókot, amely az előfeltételek részeként létrehozott. 
-   * A **Tároló csoportban**válassza ki a kijelölt tárfiókban létrehozott tárolót.
-   * **Az Esemény szerializálási formátuma mezőben**válassza a **CSV**lehetőséget.
-   * A **Határoló jel**csoportban válassza a **tab (Lap) lehetőséget.**
-   * A **kódoláshoz**válassza az **UTF-8**lehetőséget.
+   * A **bemeneti alias**mezőben adjon meg egy egyedi nevet a bevitt adathoz.
+   * A **forrás típusa**beállításnál válassza az **adatfolyam**lehetőséget.
+   * A **forrás**mezőben válassza a **blob Storage**lehetőséget.
+   * Az **előfizetés**mezőben válassza a **blob Storage használata a jelenlegi előfizetésből**lehetőséget.
+   * A **Storage-fiók**területen válassza ki az előfeltételek részeként létrehozott Storage-fiókot. 
+   * A **tároló**mezőben válassza ki azt a tárolót, amelyet a kiválasztott Storage-fiókban hozott létre.
+   * Az **események szerializálási formátuma**beállításnál válassza a **CSV**lehetőséget.
+   * A **határolójelek**beállításnál válassza a **Tab**lehetőséget.
+   * A **kódoláshoz**válassza az **UTF-8**elemet.
 
-     Kattintson **a Létrehozás gombra.** A portál most hozzáadja a bemenetet, és teszteli a kapcsolatot.
+     Kattintson a **Létrehozás**gombra. A portál most hozzáadja a bemenetet, és teszteli a kapcsolódást.
 
 
-## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Data Lake Storage Gen1 kimenet létrehozása a feladathoz
+## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Data Lake Storage Gen1 kimenet létrehozása a feladatokhoz
 
-1. Nyissa meg a Stream Analytics-feladat **lapját,** kattintson a Kimenetek fülre, a **Hozzáadás**gombra, és válassza a **Data Lake Storage Gen1 lehetőséget.**
+1. Nyissa meg az Stream Analytics feladatokhoz tartozó lapot, kattintson a **kimenetek** lapra, kattintson a **Hozzáadás**gombra, és válassza a **Data Lake Storage Gen1**lehetőséget.
 
-    ![Kimenet hozzáadása a feladathoz](./media/data-lake-store-stream-analytics/create.output.1.png "Kimenet hozzáadása a feladathoz")
+    ![Kimenet hozzáadása a feladatokhoz](./media/data-lake-store-stream-analytics/create.output.1.png "Kimenet hozzáadása a feladatokhoz")
 
-2. Az **Új kimeneti** panelen adja meg a következő értékeket.
+2. Az **új kimenet** panelen adja meg a következő értékeket.
 
-    ![Kimenet hozzáadása a feladathoz](./media/data-lake-store-stream-analytics/create.output.2.png "Kimenet hozzáadása a feladathoz")
+    ![Kimenet hozzáadása a feladatokhoz](./media/data-lake-store-stream-analytics/create.output.2.png "Kimenet hozzáadása a feladatokhoz")
 
-    * A **Kimenetalias mezőbe**írja be a feladat kimenetének egyedi nevét. Ez egy rövid név, amely a lekérdezések kimenetének a Data Lake Storage Gen1 fiókra irányítására szolgál.
-    * A rendszer kérni fogja a Data Lake Storage Gen1 fiókhoz való hozzáférést. Kattintson **az Engedélyezés gombra.**
+    * A **kimeneti alias**mezőben adja meg a feladatok kimenetének egyedi nevét. Ez az a lekérdezésekben használt felhasználóbarát név, amely a lekérdezés kimenetét erre a Data Lake Storage Gen1 fiókra irányítja.
+    * A rendszer kérni fogja, hogy engedélyezze a hozzáférést a Data Lake Storage Gen1 fiókhoz. Kattintson az **Engedélyezés**gombra.
 
-3. Az **Új kimeneti** panelen adja meg a következő értékeket.
+3. Az **új kimenet** panelen folytassa a következő értékek megadásával.
 
-    ![Kimenet hozzáadása a feladathoz](./media/data-lake-store-stream-analytics/create.output.3.png "Kimenet hozzáadása a feladathoz")
+    ![Kimenet hozzáadása a feladatokhoz](./media/data-lake-store-stream-analytics/create.output.3.png "Kimenet hozzáadása a feladatokhoz")
 
-   * A **Fiók neve,** válassza ki a Data Lake Storage Gen1 fiókot már létrehozott, ahol azt szeretné, hogy a feladat kimenetét kell küldeni.
-   * Az **Elérési út előtag minta,** adja meg a fájl elérési útját a megadott Data Lake Storage Gen1 fiókban írt fájlokat.
-   * A **Dátum formátumban,** ha dátumtokent használt az előtag elérési útján, kiválaszthatja azt a dátumformátumot, amelyben a fájlok rendszerezve vannak.
-   * Az **Idő formátumban,** ha időjogkivonatot használt az előtag elérési útján, adja meg a fájlok rendszerezésének időformátumát.
-   * **Az Esemény szerializálási formátuma mezőben**válassza a **CSV**lehetőséget.
-   * A **Határoló jel**csoportban válassza a **tab (Lap) lehetőséget.**
-   * A **kódoláshoz**válassza az **UTF-8**lehetőséget.
+   * A **fióknév**mezőben válassza ki azt a Data Lake Storage Gen1 fiókot, amelyet már létrehozott, ahol a feladatok kimenetét el szeretné juttatni.
+   * Az **elérésiút-előtag mintája**mezőben adja meg a fájloknak a megadott Data Lake Storage Gen1 fiókban való írásához használt elérési utat.
+   * Ha a Date (dátum) **formátumot**használta az előtag elérési útján, akkor kiválaszthatja azt a dátumformátumot, amelyben a fájlok vannak rendszerezve.
+   * Ha az előtag elérési útján időtokent **használt, akkor**adja meg a fájlok rendszerezésének időformátumát.
+   * Az **események szerializálási formátuma**beállításnál válassza a **CSV**lehetőséget.
+   * A **határolójelek**beállításnál válassza a **Tab**lehetőséget.
+   * A **kódoláshoz**válassza az **UTF-8**elemet.
     
-     Kattintson **a Létrehozás gombra.** A portál most hozzáadja a kimenetet, és teszteli a kapcsolatot.
+     Kattintson a **Létrehozás**gombra. A portál most hozzáadja a kimenetet, és teszteli a kapcsolódást.
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
-1. A Stream Analytics-feladat futtatásához a **Lekérdezés** lapról kell futtatnia egy lekérdezést. Ebben az oktatóanyagban futtathatja a mintalekérdezést úgy, hogy a helyőrzőket a feladat bemeneti és kimeneti aliasaival helyettesíti, ahogy az az alábbi képernyőfelvételen látható.
+1. Stream Analytics feladatok futtatásához a **lekérdezés** lapon le kell futtatnia egy lekérdezést. Ebben az oktatóanyagban futtathatja a minta lekérdezést úgy, hogy lecseréli a helyőrzőket a feladathoz tartozó bemeneti és kimeneti Aliasokra, ahogy az alábbi képernyőfelvételen látható.
 
     ![A lekérdezés futtatása](./media/data-lake-store-stream-analytics/run.query.png "A lekérdezés futtatása")
 
-2. Kattintson a képernyő felső részén a **Mentés** **gombra,** majd az Áttekintés lapon kattintson a **Start**gombra. A párbeszédpanelen válassza az **Egyéni időpont**lehetőséget, majd adja meg az aktuális dátumot és időpontot.
+2. Kattintson a képernyő felső részén található **Mentés** elemre, majd az **Áttekintés** lapon kattintson a **Start**gombra. A párbeszédpanelen válassza az **Egyéni idő**lehetőséget, majd állítsa be az aktuális dátumot és időpontot.
 
-    ![Feladat idejének beállítása](./media/data-lake-store-stream-analytics/run.query.2.png "Feladat idejének beállítása")
+    ![Feladatütemezés beállítása](./media/data-lake-store-stream-analytics/run.query.2.png "Feladatütemezés beállítása")
 
-    A feladat elindításához kattintson az **Indítás** gombra. Akár pár percig is eltarthat, amíg elindítod a munkát.
+    A feladatok elindításához kattintson a **Start** gombra. A feladatok elindításához akár pár percet is igénybe vehet.
 
-3. A blobból származó adatok kiválasztásához indítsa el a feladatot, másolja a mintaadatfájlt a blobtárolóba. Beszerezhet egy mintaadatfájlt az [Azure Data Lake Git repository-ból.](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt) Ehhez a bemutatóhoz másoljuk a **fájlt vehicle1_09142014.csv**. Különböző ügyfelek, például az [Azure Storage Explorer](https://storageexplorer.com/)használatával adatokat tölthet fel egy blobtárolóba.
+3. Ha a feladatot úgy szeretné elindítani, hogy a blobból kiválassza az adatforrást, másolja a minta adatfájlt a blob-tárolóba. A [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)lekérhet egy minta adatfájlt. Ebben az oktatóanyagban másolja a **vehicle1_09142014. csv**fájlt. Az adatok blob-tárolóba való feltöltéséhez különböző ügyfeleket, például [Azure Storage Explorereket](https://storageexplorer.com/)használhat.
 
-4. Az **Áttekintés** lap **Figyelés**csoportjában tekintse meg az adatok feldolgozásának módját.
+4. Az **Áttekintés** lap **figyelés**területén tekintse meg az adatok feldolgozásának módját.
 
     ![Feladat monitorozása](./media/data-lake-store-stream-analytics/run.query.3.png "Feladat monitorozása")
 
-5. Végül ellenőrizheti, hogy a feladat kimeneti adatok elérhetők-e a Data Lake Storage Gen1 fiókban. 
+5. Végezetül Ellenőrizheti, hogy a feladatok kimeneti adatai elérhetők-e a Data Lake Storage Gen1 fiókban. 
 
     ![Kimenet ellenőrzése](./media/data-lake-store-stream-analytics/run.query.4.png "Kimenet ellenőrzése")
 
-    Az Adatkezelő ablaktáblán figyelje meg, hogy a kimenet a Data Lake Storage`streamanalytics/job/output/{date}/{time}`Gen1 kimeneti beállításaiban ( ) megadott mappaelérési útra van írva.  
+    A Adatkezelő ablaktáblán figyelje meg, hogy a kimenet a Data Lake Storage Gen1 output Settings (`streamanalytics/job/output/{date}/{time}`) paraméterben megadott elérési út mappájába íródik.  
 
 ## <a name="see-also"></a>Lásd még
-* [HDInsight-fürt létrehozása a Data Lake Storage Gen1 használatához](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Data Lake Storage Gen1 használatára szolgáló HDInsight-fürt létrehozása](data-lake-store-hdinsight-hadoop-use-portal.md)

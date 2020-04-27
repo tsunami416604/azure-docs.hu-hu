@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect és a felhasználók adatainak védelme | Microsoft dokumentumok
-description: Ez a dokumentum ismerteti, hogyan szerezhet gdpr-kompatibilitás az Azure AD Connect.
+title: Azure AD Connect és felhasználói adatvédelem | Microsoft Docs
+description: Ez a dokumentum ismerteti, hogyan szerezhet be Azure AD Connect GDPR-kompatibilitás.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,44 +16,44 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60455784"
 ---
-# <a name="user-privacy-and-azure-ad-connect"></a>A felhasználók adatainak védelme és az Azure AD Connect 
+# <a name="user-privacy-and-azure-ad-connect"></a>Felhasználói adatvédelem és Azure AD Connect 
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->Ez a cikk az Azure AD Connecttel és a felhasználók adatainak védelmével foglalkozik.  Az Azure AD Connect Állapotáról és a felhasználók adatairól az [itt](reference-connect-health-user-privacy.md)található cikkben olvashat.
+>Ez a cikk a Azure AD Connect és a felhasználói adatvédelmet tárgyalja.  A Azure AD Connect Health és a felhasználói adatok védelméről a cikk [itt](reference-connect-health-user-privacy.md)található.
 
-A felhasználók adatvédelmének javítása az Azure AD Connect telepítéseinél kétféleképpen:
+A Azure AD Connect-telepítések felhasználói adatainak fejlesztése kétféleképpen történhet:
 
-1.  Kérésre kikell nyerni egy személy adatait, és ki kell venni az adatokat az adott személytől a
-2.  Győződjön meg arról, hogy 48 órán túl nem őriz meg adatokat.
+1.  Kérelem esetén kinyerheti egy személy adatait, és eltávolíthatja az adott személy adatait a telepítésből.
+2.  Ügyeljen arra, hogy a 48 órán túli adatmegőrzés ne legyen megtartva.
 
-Az Azure AD Connect csapata a második lehetőséget ajánlja, mivel sokkal könnyebb megvalósítani és karbantartani.
+A Azure AD Connect csapat a második lehetőséget javasolja, mivel sokkal egyszerűbb megvalósítani és karbantartani.
 
-Az Azure AD Connect szinkronizálási kiszolgálója a következő felhasználói adatvédelmi adatokat tárolja:
-1.  Az **Azure AD Connect adatbázisban** lévő személy adatai
-2.  A **Windows eseménynapló-fájljaiban** lévő adatok, amelyek egy személyre vonatkozó információkat tartalmazhatnak
-3.  Az **Azure AD Connect telepítési naplófájljaiban** lévő adatok, amelyek egy személyről
+Egy Azure AD Connect szinkronizáló kiszolgáló a következő felhasználói adatvédelmi adatokat tárolja:
+1.  A **Azure ad Connect-adatbázisban** található személlyel kapcsolatos információk
+2.  A Windows- **eseménynaplók** olyan adatai, amelyek egy személyre vonatkozó információkat tartalmazhatnak
+3.  A **Azure ad Connect telepítési naplófájljaiban** lévő, személyre vonatkozó információkat tartalmazó fájlok
 
-Az Azure AD Connect-ügyfeleknek a következő irányelveket kell használniuk a felhasználói adatok eltávolításakor:
-1.  Az Azure AD Connect telepítési naplófájljait tartalmazó mappa tartalmának rendszeres törlése – legalább 48 óránként
-2.  Ez a termék eseménynaplókat is létrehozhat.  Ha többet szeretne megtudni az Eseménynaplók naplókról, olvassa el a [dokumentációt itt.](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx)
+Azure AD Connect ügyfeleknek a következő irányelveket kell használniuk a felhasználói adatvesztések eltávolításakor:
+1.  Törölje a Azure AD Connect telepítési naplófájlokat rendszeres időközönként tartalmazó mappa tartalmát – legalább 48 óránként
+2.  Ez a termék eseménynaplókat is létrehozhat.  Az eseménynaplók naplóival kapcsolatos további tudnivalókért tekintse meg a [dokumentációt itt](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
 
-Egy személy adatait automatikusan eltávolítja az Azure AD Connect adatbázisból, amikor az adott személy adatait eltávolítja a forrásrendszerből, ahonnan származnak. A rendszergazdák nem kötelesek a GDPR-kompatibilis konkrét műveletet végrehajtani.  Azonban azt követeli meg, hogy az Azure AD Connect-adatok legalább kétnaponta szinkronizálva legyenek az adatforrással.
+Egy személy adatait a rendszer automatikusan eltávolítja a Azure AD Connect-adatbázisból, ha az adott személy adatait eltávolítja a forrásból, ahonnan származik. Nem szükséges, hogy a rendszergazdák GDPR a megfelelő lépéseket.  Szükség van azonban arra, hogy a Azure AD Connect-adatait legalább két naponként szinkronizálja az adatforrással.
 
-## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>Az Azure AD Connect telepítési naplófájl-tartalmának törlése
-Rendszeresen ellenőrizze és törölje a **c:\programdata\aadconnect** mappa tartalmát – kivéve a **PersistedState.Xml** fájlt. Ez a fájl az Azure A Connect előző telepítésének állapotát tartja karban, és a frissítés telepítésekor használatos. Ez a fájl nem tartalmaz adatokat egy személyről, ezért nem szabad törölni.
+## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>A Azure AD Connect telepítési naplófájl mappa tartalmának törlése
+Rendszeresen vizsgálja meg és törölje a **c:\programdata\aadconnect** mappa tartalmát – kivéve a **PersistedState. XML** fájlt. Ez a fájl fenntartja az Azure-beli kapcsolat előző telepítésének állapotát, és a frissítés telepítésének végrehajtásakor használatos. Ez a fájl nem tartalmaz egy személy adatait, és nem törölhető.
 
 >[!IMPORTANT]
->Ne törölje a PersistedState.xml fájlt.  Ez a fájl nem tartalmaz felhasználói adatokat, és fenntartja az előző telepítés állapotát.
+>Ne törölje a PersistedState. xml fájlt.  Ez a fájl nem tartalmaz felhasználói adatokat, és fenntartja az előző telepítés állapotát.
 
-Áttekintheti és törölheti ezeket a fájlokat a Windows Intézővel, vagy az alábbihoz hasonló parancsfájlt használhat a szükséges műveletek végrehajtásához:
+Ezeket a fájlokat áttekintheti és törölheti a Windows Intéző használatával, vagy a szükséges műveletek elvégzéséhez a következőhöz hasonló parancsfájlt használhat:
 
 
 ```
@@ -64,24 +64,24 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
     } 
 ```
 
-### <a name="schedule-this-script-to-run-every-48-hours"></a>A parancsfájl ütemezése 48 óránként
-A parancsfájl 48 óránként történő futtatásának ütemezése az alábbi lépésekkel ütemezheti.
+### <a name="schedule-this-script-to-run-every-48-hours"></a>A parancsfájl ütemezett futtatása 48 óránként
+Az alábbi lépések végrehajtásával ütemezze a parancsfájlt minden 48 óránkénti futásra.
 
-1.  Mentse a parancsfájlt egy **fájlba, amelynek**kiterjesztése&#46;PS1 kiterjesztéssel, majd nyissa meg a Vezérlőpultot, és kattintson a **Rendszerek és biztonság parancsra.**
+1.  Mentse a parancsfájlt a **&#46;ps1**kiterjesztésű fájlba, majd nyissa meg a Vezérlőpultot, és kattintson a **rendszerek és biztonság**elemre.
     ![Rendszer](./media/reference-connect-user-privacy/gdpr2.png)
 
-2.  A Felügyeleti eszközök fejlécben kattintson a **Feladatok ütemezése gombra.**
+2.  A felügyeleti eszközök fejléc alatt kattintson az **ütemezett feladatok**lehetőségre.
     ![Tevékenység](./media/reference-connect-user-privacy/gdpr3.png)
-3.  A Feladatütemezőben kattintson a jobb gombbal a **Feladatütemezés könyvtárra,** és kattintson az **Egyszerű feladat létrehozása gombra...**
-4.  Írja be az új feladat nevét, majd kattintson a **Tovább gombra.**
-5.  Válassza a **Napi** lehetőséget a feladateseményindítóhoz, és kattintson a **Tovább**gombra.
-6.  Állítsa az ismétlődést **2 napra,** majd kattintson a **Tovább**gombra.
-7.  Válaszd a **Program indítása** műveletként lehetőséget, majd kattintson a **Tovább**gombra.
-8.  Írja be a **PowerShell** értéket a Program/parancsfájl mezőjébe, és az **Argumentumok hozzáadása (nem kötelező)** mezőbe írja be a korábban létrehozott parancsfájl teljes elérési útját, majd kattintson a **Tovább**gombra.
-9.  A következő képernyőn a létrehozni kívánt tevékenység összegzése látható. Ellenőrizze az értékeket, és kattintson a **Befejezés** gombra a feladat létrehozásához.
+3.  A Feladatütemezőben kattintson a jobb gombbal a **feladat-ütemezési könyvtárra** , majd kattintson az **alapszintű feladat létrehozása..** . elemre.
+4.  Adja meg az új feladat nevét, majd kattintson a **tovább**gombra.
+5.  Válassza a **napi** lehetőséget a feladat-triggerhez, majd kattintson a **tovább**gombra.
+6.  Állítsa be az ismétlődést **2 napra** , és kattintson a **tovább**gombra.
+7.  Válassza a **program elindítása** műveletként lehetőséget, majd kattintson a **tovább**gombra.
+8.  Írja be a **PowerShell** nevet a program/parancsfájl mezőbe, és az **argumentumok hozzáadása (nem kötelező)** mezőben adja meg a korábban létrehozott parancsfájl teljes elérési útját, majd kattintson a **tovább**gombra.
+9.  A következő képernyőn a létrehozandó feladat összegzése látható. Ellenőrizze az értékeket, majd kattintson a **Befejezés** gombra a feladat létrehozásához.
 
 
 
 ## <a name="next-steps"></a>További lépések
-* [A Microsoft adatvédelmi irányelveinek áttekintése az Adatvédelmi központban](https://www.microsoft.com/trustcenter)
-* [Az Azure AD Connect állapota és a felhasználók adatainak védelme](reference-connect-health-user-privacy.md)
+* [A Microsoft adatvédelmi szabályzatának áttekintése a megbízhatósági központban](https://www.microsoft.com/trustcenter)
+* [Azure AD Connect Health és felhasználói adatvédelem](reference-connect-health-user-privacy.md)

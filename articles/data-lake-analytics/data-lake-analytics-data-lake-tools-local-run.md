@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake U-SQL-parancsfájlok futtatása a helyi számítógépen
-description: Ismerje meg, hogyan használhatja az Azure Data Lake Tools for Visual Studio u-SQL-feladatok futtatását a helyi számítógépen.
+title: Azure Data Lake U-SQL-parancsfájlok futtatása a helyi gépen
+description: Megtudhatja, hogyan használhatja a Visual studióhoz készült Azure Data Lake-eszközöket a U-SQL-feladatok futtatásához a helyi gépen.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -11,102 +11,102 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "62113935"
 ---
-# <a name="run-u-sql-scripts-on-your-local-machine"></a>U-SQL-parancsfájlok futtatása a helyi számítógépen
+# <a name="run-u-sql-scripts-on-your-local-machine"></a>U-SQL-parancsfájlok futtatása a helyi gépen
 
-U-SQL-parancsfájlok fejlesztése kor időt és költséget takaríthat meg a parancsfájlok helyi futtatásával. Az Azure Data Lake Tools for Visual Studio támogatja az U-SQL-parancsfájlok futtatását a helyi számítógépen. 
+U-SQL-parancsfájlok fejlesztésekor a parancsfájlok helyi futtatásával időt és költségeket is megtakaríthat. Azure Data Lake Tools for Visual Studio támogatja a U-SQL-parancsfájlok futtatását a helyi gépen. 
 
-## <a name="basic-concepts-for-local-runs"></a>Alapvető fogalmak a helyi futtatásokhoz
+## <a name="basic-concepts-for-local-runs"></a>A helyi futtatások alapvető fogalmai
 
-Az alábbi diagram a helyi futtatás összetevőit mutatja be, és azt, hogy ezek az összetevők hogyan felelnek meg a felhőhöz való futtatáshoz.
+A következő diagramon a helyi Futtatás összetevői láthatók, valamint hogy ezek az összetevők hogyan képezik le a felhőalapú futtatást.
 
-|Összetevő|Helyi futtatás|Felhőalapú futtatás|
+|Összetevő|Helyi futtatás|Felhőbeli Futtatás|
 |---------|---------|---------|
-|Storage|Helyi adatgyökérmappa|Alapértelmezett Azure Data Lake Áruházbeli fiók|
-|Compute|U-SQL helyi futtatási motor|Az Azure Data Lake Analytics szolgáltatás|
-|Környezet futtatása|Munkakönyvtár a helyi számítógépen|Azure Data Lake Analytics-fürt|
+|Storage|Helyi adatgyökér mappa|Alapértelmezett Azure Data Lake Store fiók|
+|Compute|U-SQL helyi futtatási motor|Azure Data Lake Analytics szolgáltatás|
+|Környezet futtatása|Munkahelyi könyvtár a helyi gépen|Azure Data Lake Analytics fürt|
 
-Az alábbi szakaszok további információt nyújtanak a helyi futtatási összetevőkről.
+A következő szakaszokban további információk találhatók a helyi futtatási összetevőkről.
 
-### <a name="local-data-root-folders"></a>Helyi adatgyökérmappák
+### <a name="local-data-root-folders"></a>Helyi adatgyökér mappák
 
-A helyi adatgyökér mappa a helyi számítási fiók **helyi tárolója.** A helyi számítógép helyi fájlrendszerében lévő mappák lehetnek helyi adatgyökérmappa. Ez megegyezik a Data Lake Analytics-fiók alapértelmezett Azure Data Lake Store-fiókjával. Egy másik adatgyökérmappára való váltás olyan, mintha egy másik alapértelmezett áruházi fiókra váltana. 
+A helyi adatgyökér mappa a helyi számítási fiók **helyi tárolója** . A helyi számítógép helyi fájlrendszerének bármely mappája lehet helyi adatgyökér-mappa. Ez ugyanaz, mint egy Data Lake Analytics-fiók alapértelmezett Azure Data Lake Store fiókja. Más adatgyökér-mappára való váltás ugyanúgy történik, mint egy másik alapértelmezett áruházbeli fiókra való váltás. 
 
-Az adatgyökér mappa a következőképpen használatos:
-- Metaadatok tárolása. Ilyenek például az adatbázisok, táblák, táblaértékű függvények és szerelvények.
-- Keresse meg az U-SQL-parancsfájlokban relatív elérési utakként definiált bemeneti és kimeneti elérési utakat. A relatív elérési utak használatával egyszerűbb en üzembe helyezni az U-SQL-parancsfájlokat az Azure-ba.
+Az adatgyökér mappát a következőképpen kell használni:
+- Tárolja a metaadatokat. Ilyenek például az adatbázisok, táblák, táblázat értékű függvények és szerelvények.
+- Keresse meg a bemeneti és kimeneti útvonalakat, amelyek a U-SQL-parancsfájlok relatív elérési útjaiként vannak meghatározva. A relatív elérési utak használatával egyszerűbbé válik az U-SQL-parancsfájlok üzembe helyezése az Azure-ban.
 
-### <a name="u-sql-local-run-engines"></a>U-SQL helyi futtatási motorok
+### <a name="u-sql-local-run-engines"></a>U-SQL helyi futtatású motorok
 
-Az U-SQL helyi futtatási motor egy **helyi számítási fiók** u-SQL feladatokhoz. A felhasználók helyileg futtathatják az U-SQL-feladatokat az Azure Data Lake Tools for Visual Studio segítségével. A helyi futtatások az Azure Data Lake U-SQL SDK parancssori és programozási felületeken keresztül is támogatottak. További információ az [Azure Data Lake U-SQL SDK-ról.](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)
+A U-SQL helyi futtatási motorja a U-SQL-feladatok **helyi számítási fiókja** . A felhasználók a Azure Data Lake Tools for Visual Studio használatával helyileg futtathatják az U-SQL-feladatokat. A helyi futtatásokat a Azure Data Lake U-SQL SDK parancssori felület és a programozási felületek is támogatják. További információ a [Azure Data Lake U-SQL SDK-](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)ról.
 
 ### <a name="working-directories"></a>Munkakönyvtárak
 
-U-SQL parancsfájl futtatásakor működő könyvtármappára van szükség a fordítási eredmények gyorsítótárazásához, a naplók futtatásához és egyéb funkciók végrehajtásához. Az Azure Data Lake Tools for Visual Studio, a munkakönyvtár az U-SQL projekt munkakönyvtára. A . `<U-SQL project root path>/bin/debug>` A munkakönyvtár minden alkalommal törlődik, amikor új futtatás indul.
+Ha U-SQL-parancsfájlt futtat, a fordítási eredmények gyorsítótárazásához, a naplók futtatásához és más függvények elvégzéséhez szükség van egy munkakönyvtári mappára. A Visual studióhoz készült Azure Data Lake Tools esetében a munkakönyvtár a U-SQL projekt munkakönyvtára. Itt található: `<U-SQL project root path>/bin/debug>`. A munkakönyvtárat minden új Futtatás indításakor megtisztítjuk.
 
-## <a name="local-runs-in-microsoft-visual-studio"></a>Helyi futtatások a Microsoft Visual Studio alkalmazásban
+## <a name="local-runs-in-microsoft-visual-studio"></a>Helyi futtatások a Microsoft Visual Studióban
 
-Az Azure Data Lake Tools for Visual Studio beépített helyi futtatási motorral rendelkezik. A szerszámok helyi számítási fiókként felületezik a motort. U-SQL-parancsfájl helyi futtatásához válassza a **Helyi gép** vagy a **Helyi projekt** fiókot a parancsfájl szerkesztőmargó legördülő menüjében. Ezután válassza **a Küldés lehetőséget.**
+A Visual studióhoz készült Azure Data Lake eszközök beépített helyi futtatási motorral rendelkeznek. Az eszközök helyi számítási fiókként Surface a motort. Ha helyileg szeretne futtatni egy U-SQL-parancsfájlt, válassza ki a **helyi gép** vagy a **helyi projekt** fiókot a parancsfájl szerkesztői margója legördülő menüjében. Ezután válassza a **Submit (Küldés**) lehetőséget.
 
-![U-SQL-parancsfájl küldése helyi fiókba](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
+![U-SQL-szkript küldése helyi fiókba](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-submit-script-to-local-account.png) 
  
-## <a name="local-runs-with-a-local-machine-account"></a>Helyi futtatások helyi számítógép-fiókkal
+## <a name="local-runs-with-a-local-machine-account"></a>Helyi Futtatás helyi számítógép-fiókkal
 
-A **helyi számítógép fiók** egy megosztott helyi számítási fiók egyetlen helyi adatgyökér mappával, mint a helyi áruházi fiók. Alapértelmezés szerint az adatgyökérmappa a **\<C:\Users felhasználóneve>\AppData\Local\USQLDataRoot**. Ez is konfigurálható **eszközök** > **en Data Lake** > **beállítások és beállítások**.
+A helyi számítógép fiók egy helyi, helyi adatgyökér **-** mappával rendelkező megosztott helyi számítási fiók, amely a helyi tároló fiókja. Alapértelmezés szerint az adatgyökér mappa a következő helyen található **:\<C:\Users username> \appdata\local\usqldataroot**. Emellett az **eszközökön** > **Data Lake** > **beállítások és beállítások**segítségével is konfigurálható.
 
-![Helyi adatgyökérmappa konfigurálása](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
+![Helyi adatgyökér mappa konfigurálása](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   
-Egy U-SQL-projekt szükséges a helyi futtatáshoz. Az U-SQL-projekt munkakönyvtára az U-SQL helyi futtatási munkakönyvtárához használatos. A fordítási eredmények, a futtatási naplók és a feladatfuttatásával kapcsolatos egyéb fájlok a helyi futtatás során a munkakönyvtár mappája alatt jönnek létre és tárolódnak. Minden alkalommal, amikor újrafuttatja a parancsfájlt, a munkakönyvtárban lévő összes fájl törlődik és újragenerálódik.
+Helyi futtatáshoz egy U-SQL-projekt szükséges. A u-SQL projekt munkakönyvtára a U-SQL helyi Futtatás munkakönyvtárához használatos. A fordítási eredmények, a futtatási naplók és az egyéb feladatok futtatásával kapcsolatos fájlok a helyi futtatás során jönnek létre és tárolódnak a munkakönyvtár mappájában. Minden alkalommal, amikor Újrafuttatja a parancsfájlt, a munkakönyvtár összes fájlját megtisztítja és újra létrehozza.
 
-## <a name="local-runs-with-a-local-project-account"></a>Helyi futtatás helyi projektfiókkal
+## <a name="local-runs-with-a-local-project-account"></a>Helyi Futtatás helyi Project-fiókkal
 
-A **helyi projekt** fiók egy projekt-elkülönített helyi számítási fiók minden projekt egy elkülönített helyi adat gyökérmappát. Minden aktív U-SQL projekt, amely megnyílik a `(Local-project: <project name>)` Visual Studio Megoldáskezelőjében, rendelkezik megfelelő fiókkal. A fiókok a Visual Studio Kiszolgálókezelőjében és az U-SQL parancsfájlszerkesztő margóján is megjelennek.  
+A **helyi Project** -fiók egy elkülönített helyi adatgyökérkönyvtárral rendelkező projekt elkülönített helyi számítási fiókja. A Visual Studióban Megoldáskezelő megnyíló összes aktív U-SQL-projekthez `(Local-project: <project name>)` tartozik egy megfelelő fiók. A fiókok a Visual Studióban és a U-SQL parancsfájl-szerkesztő margóján is megjelennek.  
 
-A **Helyi projekt** fiók tiszta és elszigetelt fejlesztői környezetet biztosít. A **helyi számítógép fiók** rendelkezik egy megosztott helyi adatgyökér mappával, amely az összes helyi feladat metaadatait, valamint bemeneti és kimeneti adatait tárolja. A **Helyi projekt** fiók azonban létrehoz egy ideiglenes helyi adatgyökér-mappát egy U-SQL projekt munkakönyvtára alatt minden alkalommal, amikor egy U-SQL parancsfájl fut. Ez az ideiglenes adatgyökér-mappa törlődik, amikor újraépítés vagy újrafuttatás történik. 
+A **helyi projekt** fiók tiszta és elszigetelt fejlesztési környezetet biztosít. A helyi **számítógép** fiók rendelkezik egy megosztott helyi adatgyökérkönyvtárral, amely a metaadatokat és a bemeneti és kimeneti adatokat tárolja az összes helyi feladathoz. Egy **helyi Project-** fiók azonban létrehoz egy ideiglenes helyi adatgyökérkönyvtárat egy u-SQL-projekt munkakönyvtárában, minden alkalommal, amikor egy u-SQL-parancsfájl fut. Ezt az ideiglenes adatgyökér-mappát a rendszer Újraépítés vagy újrafuttatás esetén megtisztítja. 
 
-Az U-SQL-projekt egy projekthivatkozáson és tulajdonságon keresztül kezeli az elkülönített helyi futtatási környezetet. Az U-SQL parancsfájlok bemeneti adatforrásait konfigurálhatja a projektben és a hivatkozott adatbázis-környezetekben is.
+A U-SQL-projekt az elkülönített helyi futtatási környezetet egy projekt-referencián és tulajdonságon keresztül kezeli. Az U-SQL-parancsfájlok bemeneti adatforrásait a projektben és a hivatkozott adatbázis-környezetekben is konfigurálhatja.
 
-### <a name="manage-the-input-data-source-for-a-local-project-account"></a>Helyi projektfiók bemeneti adatforrásának kezelése 
+### <a name="manage-the-input-data-source-for-a-local-project-account"></a>Helyi Project-fiók bemeneti adatforrásának kezelése 
 
-Az U-SQL projekt létrehoz egy helyi adatgyökérmappát, és beállítja a **helyi projektfiók** adatait. Az ideiglenes adatgyökér-mappát az U-SQL projekt munkakönyvtára alatt minden alkalommal megtisztítja és újra létrehozza, amikor újraépíti és helyi futtatás történik. Az U-SQL projekt által konfigurált összes adatforrást a helyi feladat futtatása előtt ebbe az ideiglenes helyi adatgyökérmappába másolja a rendszer. 
+A U-SQL-projekt létrehoz egy helyi adatgyökér-mappát, és beállítja a **helyi Project-** fiókhoz tartozó összes adatát. A rendszer a U-SQL projekt munkakönyvtárában minden alkalommal megtisztítja és újra létrehozza az ideiglenes adatgyökér mappát, amikor Újraépítés és helyi Futtatás történik. A rendszer a U-SQL-projekt által konfigurált összes adatforrást a helyi feladatok futtatása előtt átmásolja erre az ideiglenes helyi adatgyökér mappájába. 
 
-Beállíthatja az adatforrások gyökérmappáját. Kattintson a jobb gombbal **az U-SQL projekt** > **tulajdonságtesztjéhez.****Property** >  Ha egy **Helyi projekt** fiókon u-SQL parancsfájlt futtat, a **Teszt adatforrás** mappában lévő összes fájl és almappa az ideiglenes helyi adatgyökérmappába kerül. Az almappák alá tartozó fájlok is szerepelnek. A helyi feladat futtatása után a kimeneti eredmények a projekt munkakönyvtárának ideiglenes helyi adatgyökérmappájában is megtalálhatók. Ez a kimenet törlődik, és törlődik, amikor a projekt újraépül és törlődik. 
+Beállíthatja az adatforrások gyökerét. Kattintson a jobb gombbal az **U-SQL Project** > **Property** > **test adatforrásra**. Ha U-SQL-parancsfájlt futtat egy **helyi projekt** fiókon, a rendszer a **teszt adatforrás** mappában található összes fájlt és almappát átmásolja az ideiglenes helyi adatgyökér mappába. Az almappákban található fájlok is szerepelnek. A helyi feladatok futtatása után a kimeneti eredmények a projekt munkakönyvtárának ideiglenes helyi adatok gyökérkönyvtárában is megtalálhatók. A rendszer ezt a kimenetet törli és megtisztítja a projekt újraépítése és tisztítása során. 
 
-![Projekt tesztadatforrásának konfigurálása](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
+![Projekt tesztelési adatforrásának konfigurálása](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-project-test-data-source.png)
 
-### <a name="manage-a-referenced-database-environment-for-a-local-project-account"></a>Helyi projektfiók hivatkozott **adatbáziskörnyezetének** kezelése 
+### <a name="manage-a-referenced-database-environment-for-a-local-project-account"></a>**Helyi projekthez** tartozó hivatkozott adatbázis-környezet kezelése 
 
-Ha egy U-SQL-lekérdezés u-SQL adatbázis-objektumokkal használ vagy lekérdezéseket használ, az U-SQL parancsfájl helyi futtatása előtt helyileg el kell készítenie az adatbázis-környezeteket. Helyi **projektfiók** esetén az U-SQL adatbázis-függőségeket U-SQL projekthivatkozások is kezelhetők. Az U-SQL adatbázis-projekthivatkozásokat hozzáadhatja az U-SQL projekthez. Mielőtt U-SQL-parancsfájlokat **futtatna** egy helyi projektfiókon, az összes hivatkozott adatbázis az ideiglenes helyi adatgyökérmappába kerül. És minden futtatáskor az ideiglenes adatgyökér mappa friss elkülönített környezetként törlődik.
+Ha egy U-SQL-lekérdezés U-SQL Database-objektumokat használ vagy kérdez le lekérdezéseket, az adatbázis-környezeteket helyileg kell elvégeznie az U-SQL-parancsfájl helyi futtatása előtt. **Helyi projekt** fiók esetében az u-SQL Database-függőségeket az u-SQL-projekt referenciái kezelhetik. U-SQL-projektre mutató hivatkozásokat adhat hozzá az u-SQL-projekthez. Mielőtt a U-SQL-parancsfájlokat egy **helyi projekt** fiókon futtatja, a rendszer az összes hivatkozott adatbázist telepíti az ideiglenes helyi adatgyökér mappájába. És minden egyes Futtatás esetén az ideiglenes adatgyökér mappa friss elkülönített környezetként van megtisztítva.
 
-Lásd ezt a kapcsolódó cikket:
-* Megtudhatja, hogy miként kezelheti az U-SQL adatbázis-definíciókat és hivatkozásokat [az U-SQL adatbázis-projektekben.](data-lake-analytics-data-lake-tools-develop-usql-database.md)
+Tekintse meg a kapcsolódó cikket:
+* Ismerje meg, hogyan kezelheti a U-SQL Database-definíciókat és-referenciákat az [u-SQL Database-projektekben](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
-## <a name="the-difference-between-local-machine-and-local-project-accounts"></a>A **helyi és** a **helyi projektfiókok** közötti különbség
+## <a name="the-difference-between-local-machine-and-local-project-accounts"></a>A **helyi** és a **helyi-Project** fiókok közötti különbség
 
-A **helyi-gépfiók** szimulálja az Azure Data Lake Analytics-fiókot a felhasználók helyi gépein. Az Azure Data Lake Analytics-fiókkal ugyanazt a felhasználói élményt osztja meg. A **helyi projektfiók** felhasználóbarát helyi fejlesztési környezetet biztosít. Ez a környezet segít a felhasználóknak az adatbázis-hivatkozások és a bemeneti adatok központi telepítésében, mielőtt helyileg futtatnák a parancsfájlokat. A **helyi számítógép fiók** egy közös állandó környezetet biztosít, amely az összes projekten keresztül elérhető. A **helyi projekt** fiók minden projekthez elkülönített fejlesztői környezetet biztosít. Minden futtatáshoz frissül. A **Helyi projekt** fiók gyorsabb fejlesztési élményt nyújt az új módosítások gyors alkalmazásával.
+A **helyi számítógép** fiók szimulál egy Azure Data Lake Analytics fiókot a felhasználók helyi gépén. A Azure Data Lake Analytics-fiókkal megegyező felhasználói élményben osztoznak. A **helyi Project-** fiók felhasználóbarát helyi fejlesztési környezetet biztosít. Ezzel a környezettel a felhasználók a parancsfájlok helyi futtatása előtt telepíthetik az adatbázis-referenciákat és a bemeneti adatokat. A **helyi számítógép** fiók olyan közös állandó környezetet biztosít, amely az összes projekten keresztül érhető el. A **helyi projekt** fiók minden projekt esetében elkülönített fejlesztési környezetet biztosít. Minden Futtatás esetén frissül. A **helyi Project-** fiók gyorsabb fejlesztési élményt nyújt az új módosítások gyors alkalmazásával.
 
-A **helyi és** a **helyi projektfiókok** közötti további különbségek az alábbi táblázatban találhatók:
+A **helyi gépek** és a **helyi** fiókok közötti különbségek a következő táblázatban láthatók:
 
-|Különbség szöge|Helyi-gép|Helyi projekt|
+|Különbségi szög|Helyi gép|Helyi projekt|
 |----------------|---------------|---------------|
-|Helyi hozzáférés|Minden projekt elérhető.|Csak a megfelelő projekt férhet hozzá ehhez a fiókhoz.|
-|Helyi adatgyökérmappa|Egy állandó helyi mappa. Konfigurálva **eszközök** > **Data Lake** > **beállítások és beállítások**.|Az U-SQL projekt munkakönyvtára alatt minden helyi futtatáshoz létrehozott ideiglenes mappa. A mappa törlődik, amikor újraépíti vagy újrafutja.|
-|U-SQL parancsfájl bemeneti adatai|Az állandó helyi adatgyökér-mappa relatív elérési útja.|Az **U-SQL projekttulajdonság** > **tesztadatforrása**. A program a helyi futtatás előtt az összes fájlt és almappát az ideiglenes adatgyökérmappába másolja.|
-|U-SQL parancsfájl kimeneti adatai|Relatív elérési út az állandó helyi adatgyökér-mappa alatt.|Kimenet az ideiglenes adatgyökérmappába. Az eredmények törlődnek, amikor újraépíti vagy újrafutja.|
-|Hivatkozott adatbázis telepítése|A hivatkozott adatbázisok nem települnek automatikusan, ha egy **helyi számítógép-fiókon** fut. Ugyanez vonatkozik az Azure Data Lake Analytics-fiókba való küldésre is.|A hivatkozott adatbázisok telepítése a helyi futtatás előtt automatikusan a **Helyi projekt** fiókba történik. Minden adatbázis-környezettörlődik, és újraüzembe helyezése, amikor egy újraépítés vagy újrafuttatás történik.|
+|Helyi hozzáférés|Az összes projekt számára elérhető.|Ehhez a fiókhoz csak a megfelelő projekt férhet hozzá.|
+|Helyi adatgyökér mappa|Állandó helyi mappa. **Eszközökön** > **Data Lake** > **beállítások és beállítások**segítségével konfigurálható.|A U-SQL projekt munkakönyvtárában minden helyi futtatáshoz létrehozott ideiglenes mappa. A rendszer megtisztítja a mappát, ha Újraépítés vagy újrafuttatás történik.|
+|Bemeneti adatok egy U-SQL-parancsfájlhoz|A relatív elérési út az állandó helyi adatgyökér mappában.|Állítsa be a **U-SQL Project Property** > **test adatforrást**. A rendszer az összes fájlt és almappát a helyi Futtatás előtt az ideiglenes adatgyökér mappájába másolja.|
+|Kimeneti adatokat egy U-SQL-parancsfájlhoz|Relatív elérési út az állandó helyi adatgyökér mappában.|Kimenet az ideiglenes adatgyökér mappájába. Az eredményeket a rendszer Újraépítés vagy újrafuttatás esetén megtisztítja.|
+|Hivatkozott adatbázis központi telepítése|A hivatkozott adatbázisok nem települnek automatikusan a **helyi számítógép-** fiókkal való futtatáskor. Ez ugyanaz, mint egy Azure Data Lake Analytics-fiókba való beküldéshez.|A hivatkozott adatbázisok automatikusan települnek a **helyi projekt** fiókba a helyi Futtatás előtt. Az adatbázis-környezetek tisztítása és újbóli üzembe helyezése az Újraépítés vagy a Futtatás során történik.|
 
-## <a name="a-local-run-with-the-u-sql-sdk"></a>Helyi futtatás az U-SQL SDK-val
+## <a name="a-local-run-with-the-u-sql-sdk"></a>Helyi Futtatás a U-SQL SDK-val
 
-Futhat U-SQL-parancsfájlokat helyileg a Visual Studióban, és az Azure Data Lake U-SQL SDK használatával helyileg futtathatja az U-SQL-parancsfájlokat parancssori és programozási felületekkel. Ezeken a felületeken keresztül automatizálhatja az U-SQL helyi futtatásokat és teszteket.
+A Visual Studióban helyileg futtathatja az U-SQL-parancsfájlokat, és a Azure Data Lake U-SQL SDK-val is futtathatja a U-SQL-parancsfájlokat a parancssori és a programozási felületek használatával helyileg. Ezen felületek segítségével automatizálhatja a U-SQL helyi futtatásokat és teszteket.
 
-További információ az [Azure Data Lake U-SQL SDK-ról.](data-lake-analytics-u-sql-sdk.md)
+További információ a [Azure Data Lake U-SQL SDK-](data-lake-analytics-u-sql-sdk.md)ról.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Ci/CD-folyamat beállítása az Azure Data Lake Analytics szolgáltatáshoz.](data-lake-analytics-cicd-overview.md)
-- [Az Azure Data Lake Analytics-kód tesztelése.](data-lake-analytics-cicd-test.md)
+- [CI/CD-folyamat beállítása Azure Data Lake Analyticshoz](data-lake-analytics-cicd-overview.md).
+- [A Azure Data Lake Analytics kód tesztelése](data-lake-analytics-cicd-test.md).

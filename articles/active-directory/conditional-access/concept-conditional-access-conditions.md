@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb14369275a111476867f2263766e1bb87b7c87d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295336"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160715"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -43,6 +43,9 @@ Az Azure AD feltételes hozzáférés a következő eszköz platformokat támoga
 - Windows Phone
 - Windows
 - macOS
+
+> [!WARNING]
+> A Microsoft tisztában van a feltételes hozzáférési szabályzatokkal és a macOS 10.15.4-alapú eszközökkel kapcsolatos problémával. További információ a blogbejegyzésben található, [ismert probléma: a feltételes hozzáférés váratlanul letiltja a MacOS 10.15.4 natív levelezési ügyfélprogramot vagy más alkalmazásokat](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283).
 
 Ha letiltja az örökölt hitelesítést a **többi ügyfél** feltételének használatával, beállíthatja az eszköz platformjának feltételeit is.
 
@@ -108,7 +111,7 @@ Windows 7 rendszeren az iOS, az Android és a macOS Azure AD az eszközt az Azur
 
 #### <a name="chrome-support"></a>Chrome-támogatás
 
-A **Windows 10-es Creators Update (1703-es verzió)** vagy újabb verziók Chrome-támogatásához telepítse a [Windows 10-es fiókok bővítményt](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). Erre a bővítményre akkor van szükség, ha egy feltételes hozzáférési szabályzat az eszközre vonatkozó adatokat igényel.
+A **Windows 10-es Creators Update (1703-es verzió)** vagy újabb verziók Chrome-támogatásához telepítse a [Windows 10-es fiókok bővítményt](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). Erre a bővítményre akkor van szükség, ha egy feltételes hozzáférési házirend eszköz-specifikus adatokat igényel.
 
 A bővítmény Chrome böngészőkbe való automatikus telepítéséhez hozza létre a következő beállításkulcsot:
 

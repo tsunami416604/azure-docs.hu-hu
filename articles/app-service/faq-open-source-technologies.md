@@ -1,6 +1,6 @@
 ---
-title: Nyílt forráskódú technológiák – gyakori kérdések
-description: Válaszok az Azure App Service nyílt forráskódú technológiáival kapcsolatos gyakori kérdésekre.
+title: Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések
+description: Választ kaphat a Azure App Service nyílt forráskódú technológiákkal kapcsolatos gyakori kérdésekre.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -9,124 +9,124 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a7a00e59db677e156037c007537ab1b54c1cfaf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672430"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159966"
 ---
-# <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiák – gyakori kérdések az Azure-beli webalkalmazásokhoz
+# <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések az Azure-beli Web Apps
 
-Ez a cikk választ ad az [Azure App Service webalkalmazások szolgáltatásának](https://azure.microsoft.com/services/app-service/web/)nyílt forráskódú technológiáival kapcsolatos gyakori kérdésekre .
+Ez a cikk a [Azure App Service Web Apps funkciójának](https://azure.microsoft.com/services/app-service/web/)nyílt forráskódú technológiákkal kapcsolatos problémákkal kapcsolatos gyakori kérdéseire (GYIK) ad válaszokat.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>Hogyan tudom bekapcsolni a PHP naplózást a PHP problémák elhárításához?
+## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>Hogyan bekapcsolja a PHP-naplózást a PHP-problémák megoldásához?
 
-A PHP naplózásának bekapcsolása:
+A PHP-naplózás bekapcsolása:
 
-1. Jelentkezzen be a [Kudu webhelyére.](https://*yourwebsitename*.scm.azurewebsites.net)
-2. A felső menüben válassza a **Debug Console** > **CMD**lehetőséget.
-3. Jelölje ki a **Webhely** mappát.
-4. Jelölje ki a **wwwroot** mappát.
-5. Jelölje **+** ki az ikont, majd az **Új fájl**lehetőséget.
-6. Állítsa a fájl nevet **.user.ini**.
-7. Jelölje ki a **.user.ini**jel melletti ceruza ikont.
-8. A fájlban adja hozzá ezt a kódot:`log_errors=on`
+1. Jelentkezzen be a **kudu webhelyére** (`https://*yourwebsitename*.scm.azurewebsites.net`).
+2. A felső menüben válassza a **Debug konzol** > **cmd**elemet.
+3. Válassza ki a **hely** mappáját.
+4. Válassza ki a **wwwroot** mappát.
+5. Válassza ki **+** az ikont, majd válassza az **új fájl**elemet.
+6. Állítsa a fájlnevet **. user. ini**névre.
+7. Válassza a **. user. ini**melletti ceruza ikont.
+8. A fájlban adja hozzá a következő kódot:`log_errors=on`
 9. Kattintson a **Mentés** gombra.
-10. Válassza a ceruza ikont a **wp-config.php**fájl mellett.
+10. Válassza a **wp-config. php**melletti ceruza ikont.
 11. Módosítsa a szöveget a következő kódra:
     ```php
     //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
     //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
     ```
-12. Az Azure Portalon a webalkalmazás menüjében indítsa újra a webalkalmazást.
+12. A Azure Portal webalkalmazás menüjében indítsa újra a webalkalmazást.
 
-További információt a [WordPress hibanaplók engedélyezése című témakörben talál.](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)
+További információ: a [WordPress-hibák naplózásának engedélyezése](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
 
-## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Hogyan naplózhatom a Python-alkalmazáshibákat az App Service-ben tárolt alkalmazásokban?
+## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Hogyan a Python-alkalmazások hibáit a App Serviceban üzemeltetett alkalmazásokban?
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
-## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Hogyan módosíthatom az App Service-ben üzemeltetett Node.js alkalmazás verzióját?
+## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Hogyan megváltoztathatja a App Service üzemeltetett Node. js-alkalmazás verzióját?
 
-A Node.js alkalmazás verziójának módosításához az alábbi lehetőségek közül választhat:
+A Node. js-alkalmazás verziójának módosításához a következő lehetőségek közül választhat:
 
-* Az Azure Portalon használja az **alkalmazásbeállításokat.**
-  1. Az Azure Portalon nyissa meg a webalkalmazást.
-  2. A **Beállítások** panelen válassza az **Alkalmazásbeállítások lehetőséget**.
-  3. Az **Alkalmazásbeállítások**ban WEBSITE_NODE_DEFAULT_VERSION vehet fel kulcsként, és a Node.js kívánt verzióját értékként.
-  4. Nyissa meg a [Kudu konzolt.](https://*yourwebsitename*.scm.azurewebsites.net)
-  5. A Node.js verzió ellenőrzéséhez írja be a következő parancsot:  
+* Az Azure Portalban használja az **Alkalmazásbeállítások alkalmazást**.
+  1. A Azure Portal nyissa meg a webalkalmazást.
+  2. A **Beállítások** panelen válassza az **Alkalmazásbeállítások**lehetőséget.
+  3. Az **Alkalmazásbeállítások**között megadhatja a kulcsként WEBSITE_NODE_DEFAULT_VERSION, valamint az értékként használni kívánt Node. js-verziót.
+  4. Nyissa meg a **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net`konzolt ().
+  5. A Node. js verziójának megadásához írja be a következő parancsot:  
      ```
      node -v
      ```
-* Módosítsa az iisnode.yml fájlt. Az iisnode.yml fájl Node.js verziójának módosítása csak az iisnode által használt futásidejű környezetet állítja be. A Kudu cmd és mások továbbra is a Node.js verziót használják, amely az **Azure Portalalkalmazás-beállításokban** van beállítva.
+* Módosítsa a iisnode. YML fájlt. A Node. js verziójának módosítása a iisnode. YML fájlban csak a iisnode által használt futásidejű környezetet állítja be. A kudu cmd és mások továbbra is a Azure Portal **alkalmazás beállításaiban** beállított Node. js-verziót használják.
 
-  Az iisnode.yml fájl manuális beállításához hozzon létre egy iisnode.yml fájlt az alkalmazás gyökérmappájában. A fájlban adja meg a következő sort:
+  A iisnode. YML manuális beállításához hozzon létre egy iisnode. YML fájlt az alkalmazás gyökérkönyvtárában. A fájlban adja meg a következő sort:
   ```yml
   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
   ```
    
-* Állítsa be az iisnode.yml fájlt a package.json használatával a forrásvezérlés telepítése során.
-  Az Azure forrásvezérlés telepítési folyamata a következő lépéseket foglalja magában:
-  1. Tartalmat helyezi át az Azure webappba.
-  2. Létrehoz egy alapértelmezett központi telepítési parancsfájlt, ha nincs egy (deploy.cmd, .deployment fájlok) a webalkalmazás gyökérmappájában.
-  3. Futtat egy központi telepítési parancsfájlt, amelyben létrehoz egy iisnode.yml fájlt, ha a Node.js verziót a package.json fájlban említi > motorban`"engines": {"node": "5.9.1","npm": "3.7.3"}`
-  4. Az iisnode.yml fájl kódsora a következő:
+* Állítsa be a iisnode. YML fájlt a verziókövetés üzembe helyezése során a Package. JSON használatával.
+  Az Azure-verziókövetés telepítési folyamata a következő lépésekkel jár:
+  1. Tartalmat helyez át az Azure-webalkalmazásba.
+  2. Létrehoz egy alapértelmezett telepítési parancsfájlt, ha nincs egyetlen (Deploy. cmd,. Deployment Files) a webalkalmazás gyökérkönyvtárában.
+  3. Futtat egy telepítési parancsfájlt, amelyben létrehoz egy iisnode. YML fájlt, ha megemlíti a Node. js-verziót a Package. JSON fájl > motorjában`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  4. A iisnode. YML fájl a következő kódrészlettel rendelkezik:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
       ```
 
-## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>Az App Service szolgáltatásban üzemeltetett WordPress alkalmazásban a "Hiba az adatbázis-kapcsolat létrehozása" üzenet jelenik meg. Hogyan háríthatók el a hibaelhárítás?
+## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>"Hiba történt az adatbázis-kapcsolatok létrehozásakor" üzenet jelenik meg a saját WordPress-alkalmazásban, amely a App Serviceban található. Hogyan a hibával kapcsolatban?
 
-Ha ezt a hibát látja az Azure WordPress alkalmazásban, a php_errors.log és a debug.log engedélyezéséhez hajtsa végre a [WordPress hibanaplók engedélyezése](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)című témakörben ismertetett lépéseket.
+Ha ezt a hibaüzenetet látja az Azure WordPress-alkalmazásban, a php_errors. log és a Debug. log naplófájl engedélyezéséhez végezze el a [WordPress-hibák naplózásának engedélyezése](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)című témakör lépéseit.
 
-Ha a naplók engedélyezve vannak, reprodukálja a hibát, majd ellenőrizze a naplókat, hogy elfogynak-e a kapcsolatok:
+Ha a naplók engedélyezve vannak, reprodukálja a hibát, majd ellenőrizze a naplókat, hogy kifogyott-e a kapcsolatok:
 ```
 [09-Oct-2015 00:03:13 UTC] PHP Warning: mysqli_real_connect(): (HY000/1226): User ‘abcdefghijk79' has exceeded the ‘max_user_connections’ resource (current value: 4) in D:\home\site\wwwroot\wp-includes\wp-db.php on line 1454
 ```
 
-Ha ezt a hibát a debug.log vagy a php_errors.log fájlokban látja, az alkalmazás túllépi a kapcsolatok számát. Ha a ClearDB szolgáltatásban üzemelteti a szolgáltatást, ellenőrizze, hogy hány kapcsolat érhető el a [szolgáltatási csomagban.](https://www.cleardb.com/pricing.view)
+Ha ezt a hibát a Debug. log vagy a php_errors. log fájlban látja, az alkalmazás túllépi a kapcsolatok számát. Ha a ClearDB-on üzemelteti, ellenőrizze a [szolgáltatási](https://www.cleardb.com/pricing.view)csomagban elérhető kapcsolatok számát.
 
-## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Hogyan debug egy Node.js app, amely az App Service-ben található?
+## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Hogyan a App Service üzemeltetett Node. js-alkalmazás hibakeresését?
 
-1.  Nyissa meg a [Kudu konzolt.](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole)
-2.  Nyissa meg az alkalmazásnaplók mappáját (D:\home\LogFiles\Application).
-3.  A logging_errors.txt fájlban ellenőrizze a tartalom szempontjából.
+1.  Nyissa meg a **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`konzolt ().
+2.  Nyissa meg az Application logs mappát (D:\home\LogFiles\Application).
+3.  A logging_errors. txt fájlban keresse meg a tartalmat.
 
-## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Hogyan telepíthetem a natív Python-modulokat egy App Service-webalkalmazásban vagy API-alkalmazásban?
+## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Hogyan natív Python-modulokat telepíthet egy App Service Web App vagy API-alkalmazásban?
 
-Előfordulhat, hogy egyes csomagok nem települnek az Azure-ban lévő pip használatával. Előfordulhat, hogy a csomag nem érhető el a Python csomagindexben, vagy fordítóra van szükség (a fordító nem érhető el azon a számítógépen, amelyen a webalkalmazás fut az App Service-ben). A natív modulok App Service-webalkalmazásokban és API-alkalmazásokban történő telepítéséről a [Python-modulok telepítése az App Service szolgáltatásban](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/)című témakörben talál további információt.
+Előfordulhat, hogy egyes csomagok nem települnek a pip használatával az Azure-ban. Előfordulhat, hogy a csomag nem érhető el a Python-csomag indexén, vagy szükség van egy fordítóra (a fordító nem érhető el a webalkalmazást App Service) futtató számítógépen. A natív modulok App Service webalkalmazásokban és API-alkalmazásokban való telepítésével kapcsolatos információkért lásd: [Python-modulok telepítése app Service-ben](https://blogs.msdn.microsoft.com/azureossds/2015/06/29/install-native-python-modules-on-azure-web-apps-api-apps/).
 
-## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>Hogyan telepíthetek egy Django-alkalmazást az App Service-be a Git és a Python új verziójával?
+## <a name="how-do-i-deploy-a-django-app-to-app-service-by-using-git-and-the-new-version-of-python"></a>Hogyan üzembe helyezhet egy Django-alkalmazást a git és a Python új verziójának használatával App Servicehoz?
 
-A Django telepítéséről a [Django alkalmazás telepítése az App Service szolgáltatásba című](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/)témakörben talál.
+További információ a Django telepítéséről: [Django-alkalmazás telepítése app Service](https://blogs.msdn.microsoft.com/azureossds/2016/08/25/deploying-django-app-to-azure-app-services-using-git-and-new-version-of-python/).
 
-## <a name="where-are-the-tomcat-log-files-located"></a>Hol találhatók a Tomcat naplófájlok?
+## <a name="where-are-the-tomcat-log-files-located"></a>Hol találhatók a Tomcat-naplófájlok?
 
-Azure Piactérhez és egyéni telepítésekhez:
+Az Azure Marketplace és az egyéni telepítések esetén:
 
 * Mappa helye: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
-* Érdekes fájlok:
-    * Catalina. *yyyy-mm-dd*.log
-    * gazda-menedzser. *yyyy-mm-dd*.log
-    * Localhost. *yyyy-mm-dd*.log
-    * Manager. *yyyy-mm-dd*.log
-    * site_access_log. *yyyy-mm-dd*.log
+* Fontos fájlok:
+    * Catalina. *éééé-hh-nn*. log
+    * gazdagép-kezelő. *éééé-hh-nn*. log
+    * localhost. *éééé-hh-nn*. log
+    * Manager. *éééé-hh-nn*. log
+    * site_access_log. *éééé-hh-nn*. log
 
 
-A **portálalkalmazás-beállítások** központi telepítései hez:
+Portál **alkalmazás beállításai** :
 
 * Mappa helye: D:\home\LogFiles
-* Érdekes fájlok:
-    * Catalina. *yyyy-mm-dd*.log
-    * gazda-menedzser. *yyyy-mm-dd*.log
-    * Localhost. *yyyy-mm-dd*.log
-    * Manager. *yyyy-mm-dd*.log
-    * site_access_log. *yyyy-mm-dd*.log
+* Fontos fájlok:
+    * Catalina. *éééé-hh-nn*. log
+    * gazdagép-kezelő. *éééé-hh-nn*. log
+    * localhost. *éééé-hh-nn*. log
+    * Manager. *éééé-hh-nn*. log
+    * site_access_log. *éééé-hh-nn*. log
 
-## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Hogyan háríthatók el a JDBC illesztőprogram csatlakozási hibái?
+## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Hogyan a JDBC illesztőprogram-kapcsolatok hibáinak elhárítása?
 
 A Tomcat-naplókban a következő üzenet jelenhet meg:
 
@@ -136,9 +136,9 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 A hiba elhárítása:
 
-1. Távolítsa el az sqljdbc*.jar fájlt az alkalmazás/könyvtár mappából.
-2. Ha az egyéni Tomcat vagy az Azure Marketplace Tomcat webkiszolgálót használja, másolja ezt a .jar fájlt a Tomcat lib mappába.
-3. Ha engedélyezi a Java-t az Azure Portalon (válassza a **Java 1.8** > **Tomcat-kiszolgálót),** másolja az sqljdbc.* jar fájlt az alkalmazással párhuzamos mappába. Ezután adja hozzá a következő osztályelérési beállítást a web.config fájlhoz:
+1. Távolítsa el az sqljdbc*. jar fájlt az alkalmazás/lib mappából.
+2. Ha az egyéni tomcat vagy az Azure Marketplace tomcat webkiszolgálót használja, másolja ezt a. jar-fájlt a Tomcat lib mappájába.
+3. Ha engedélyezi a javát a Azure Portalból (válassza a **Java 1,8** > **tomcat-kiszolgálót**), másolja a sqljdbc. * jar fájlt az alkalmazásával párhuzamos mappába. Ezután adja hozzá a következő osztályútvonal-beállítást a web. config fájlhoz:
 
     ```xml
     <httpPlatform>
@@ -149,9 +149,9 @@ A hiba elhárítása:
     </httpPlatform>
     ```
 
-## <a name="why-do-i-see-errors-when-i-attempt-to-copy-live-log-files"></a>Miért jelennek meg hibák, amikor élő naplófájlokat próbálok másolni?
+## <a name="why-do-i-see-errors-when-i-attempt-to-copy-live-log-files"></a>Miért látok hibaüzeneteket az élő naplófájlok másolásának megkísérlése során?
 
-Ha egy Java alkalmazás (például Tomcat) élő naplófájljait próbálja másolni, a következő FTP-hiba jelenhet meg:
+Ha a Java-alkalmazások (például a Tomcat) élő naplófájljainak másolását kísérli meg, akkor a következő FTP-hiba jelenhet meg:
 
 ```
 Error transferring file [filename] Copying files from remote side failed.
@@ -159,57 +159,57 @@ Error transferring file [filename] Copying files from remote side failed.
 The process cannot access the file because it is being used by another process.
 ```
 
-A hibaüzenet az FTP-ügyféltől függően változhat.
+Előfordulhat, hogy a hibaüzenet az FTP-ügyféltől függően változhat.
 
-Minden Java-alkalmazásrendelkezik ezzel a zárolási problémával. Csak a Kudu támogatja a fájl letöltését az alkalmazás futása közben.
+Minden Java-alkalmazás rendelkezik ezzel a zárolási hibával. Csak a kudu támogatja a fájl letöltését az alkalmazás futása közben.
 
-Leállítása az alkalmazás lehetővé teszi az FTP hozzáférést ezekhez a fájlokhoz.
+Az alkalmazás leállítása lehetővé teszi az FTP-hozzáférést ezekhez a fájlokhoz.
 
-Egy másik megoldás az, hogy írni egy WebJob, hogy fut az ütemezés, és másolja ezeket a fájlokat egy másik könyvtárba. Mintaprojektről a [CopyLogsJob](https://github.com/kamilsykora/CopyLogsJob) projekt ben.
+Egy másik megkerülő megoldás egy olyan Webjobs írása, amely egy ütemezett időpontban fut, és átmásolja ezeket a fájlokat egy másik könyvtárba. Egy minta projekt esetében tekintse meg a [CopyLogsJob](https://github.com/kamilsykora/CopyLogsJob) projektet.
 
-## <a name="where-do-i-find-the-log-files-for-jetty"></a>Hol találom a Jetty naplófájljait?
+## <a name="where-do-i-find-the-log-files-for-jetty"></a>Hol találhatók a Jetty naplófájljai?
 
-A Marketplace és az egyéni telepítések esetében a naplófájl a D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs mappában található. Ne feledje, hogy a mappa helye a használt móló verziójától függ. Az itt megadott elérési út például a 9.1.2-es mólóhoz. Keresse meg a jetty_*YYYY_MM_DD*.stderrout.log fájlt.
+A piactér és az egyéni telepítések esetében a naplófájl a D:\home\site\wwwroot\bin\jetty-Distribution-9.1.2.v20140210\logs mappában található. Vegye figyelembe, hogy a mappa helye a használt Jetty verziójától függ. Például az itt megadott elérési út a Jetty 9.1.2. Keresse meg a jetty_*YYYY_MM_DD*. stderrout. log naplófájlt.
 
-A portálalkalmazás-beállítások központi telepítései esetén a naplófájl d:\home\LogFiles mappában található. Keresse meg a jetty_ YYYY_MM_DD .stderrout.log*jetty_*
+A portál alkalmazás telepítése esetén a naplófájl a következő helyen található: D:\home\LogFiles. Keresse meg a jetty_*YYYY_MM_DD*. stderrout. log naplófájlt
 
-## <a name="can-i-send-email-from-my-azure-web-app"></a>Küldhetek e-mailt az Azure-webalkalmazásomból?
+## <a name="can-i-send-email-from-my-azure-web-app"></a>Küldhetek e-mailt az Azure-webalkalmazásból?
 
-Az App Service nem rendelkezik beépített e-mail funkcióval. Az alkalmazásból küldött e-mailek néhány jó alternatívát lásd a [Veremtúlcsordulás ról.](https://stackoverflow.com/questions/17666161/sending-email-from-azure)
+App Service nem rendelkezik beépített e-mail-funkcióval. Az alkalmazásból érkező e-mailek küldésének jó alternatíváiért tekintse meg ezt a [stack overflow vitát](https://stackoverflow.com/questions/17666161/sending-email-from-azure).
 
-## <a name="why-does-my-wordpress-site-redirect-to-another-url"></a>Miért irányít át a WordPress oldalam egy másik URL-re?
+## <a name="why-does-my-wordpress-site-redirect-to-another-url"></a>Miért történik a WordPress-oldalam átirányítása egy másik URL-címre?
 
-Ha nemrég áttért az Azure-ra, előfordulhat, hogy a WordPress átirányítja a régi domain URL-re. Ezt a MySQL adatbázis egyik beállítása okozza.
+Ha nemrég áttelepítette az Azure-ba, a WordPress átirányíthatja a régi tartomány URL-címét. Ezt a MySQL-adatbázis egyik beállítása okozza.
 
-A WordPress Buddy+ egy Azure-webhelybővítmény, amelynek segítségével közvetlenül az adatbázisban frissítheti az átirányítási URL-címet. A WordPress Buddy+ használatával kapcsolatos további információkért lásd: [WordPress eszközök és MySQL-áttelepítés a WordPress Buddy+ segítségével.](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
+A WordPress Buddy + egy Azure-beli hely bővítmény, amellyel az átirányítási URL-cím közvetlenül az adatbázisban frissíthető. A WordPress Buddy + használatával kapcsolatos további információkért lásd: [a WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)segítségével.
 
-Ha az átirányítási URL-t manuálisan szeretné frissíteni SQL-lekérdezések vagy PHPMyAdmin használatával, olvassa el a [WordPress: Rossz URL-re való átirányítás című témakört.](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/)
+Ha az átirányítási URL-címet az SQL-lekérdezések vagy a PHPMyAdmin használatával szeretné manuálisan frissíteni, tekintse meg a [WordPress: átirányítást a helytelen URL-címre](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
 
-## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hogyan változtathatom meg a WordPress bejelentkezési jelszavamat?
+## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hogyan módosítja a WordPress bejelentkezési jelszavát?
 
-Ha elfelejtette a WordPress bejelentkezési jelszavát, a WordPress Buddy+ segítségével frissítheti azt. A jelszó visszaállításához telepítse a WordPress Buddy+ Azure Site Extension alkalmazást, majd hajtsa végre a [WordPress eszközökben és a MySQL-áttelepítésben](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)leírt lépéseket a WordPress Buddy+ segítségével.
+Ha elfelejtette a WordPress bejelentkezési jelszavát, akkor a WordPress Buddy + használatával frissítheti azt. A jelszó alaphelyzetbe állításához telepítse a WordPress Buddy + Azure site bővítményt, majd hajtsa végre a [WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)használatával című témakörben ismertetett lépéseket.
 
-## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Nem tudok bejelentkezni a WordPress programba. Hogyan oldhatom meg ezt?
+## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Nem tudok bejelentkezni a WordPress webalkalmazásba. Hogyan oldhatom meg ezt?
 
-Ha úgy találja magát zárva a WordPress után a közelmúltban beiktatás egy plugin, lehet, hogy egy hibás plugin. WordPress Buddy + egy Azure Site Extension, amely segít letiltani dugó a WordPress. További információ: [WordPress eszközök és MySQL migráció wordpress buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+Ha úgy találja, hogy kizárta a WordPresst, miután nemrég telepített egy beépülő modult, lehet, hogy hibás a beépülő modul. A WordPress Buddy + egy Azure-beli bővítmény, amely segítséget nyújt a beépülő modulok letiltásához a WordPress webhelyén. További információ: [WordPress-eszközök és MySQL-áttelepítés a WordPress Buddy +-vel](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
-## <a name="how-do-i-migrate-my-wordpress-database"></a>Hogyan lehet áttelepíteni a WordPress adatbázis?
+## <a name="how-do-i-migrate-my-wordpress-database"></a>Hogyan áttelepíteni a WordPress-adatbázist?
 
-Több lehetősége van a WordPress webhelyéhez kapcsolódó MySQL adatbázis áttelepítésére:
+A WordPress-webhelyhez csatlakoztatott MySQL-adatbázis áttelepítésének több lehetősége van:
 
-* Fejlesztők: Használja a [parancssort vagy a PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* Nem fejlesztők: Használja [WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
+* Fejlesztők: a [parancssor vagy a phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/) használata
+* Nem fejlesztőknek: a [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) használata
 
-## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hogyan segíthetek biztonságosabbá tenni a WordPress-t?
+## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hogyan segít a WordPress biztonságosabbá tételében?
 
-A WordPress biztonsági gyakorlati tanácsairól az [Azure-beli WordPress-biztonság gal kapcsolatos gyakorlati tanácsok című témakörben](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/)olvashat.
+A WordPress biztonsági eljárásaival kapcsolatos további információkért lásd: [ajánlott eljárások a WordPress biztonságához az Azure-ban](https://blogs.msdn.microsoft.com/azureossds/2016/12/26/best-practices-for-wordpress-security-on-azure/).
 
-## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>A PHPMyAdmin szolgáltatást próbálom használni, és a "Hozzáférés megtagadva" üzenet jelenik meg. Hogyan oldhatom meg ezt?
+## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>A PHPMyAdmin használatával próbálkozom, és a "hozzáférés megtagadva" üzenet jelenik meg. Hogyan oldhatom meg ezt?
 
-Előfordulhat, hogy ez a probléma, ha a MySQL alkalmazáson belüli funkció még nem fut ebben az App Service-példányban. A probléma megoldásához próbáljon meg hozzáférni a webhelyhez. Ez elindítja a szükséges folyamatokat, beleértve a MySQL alkalmazáson belüli folyamatot. Annak ellenőrzéséhez, hogy a MySQL alkalmazáson belüli futása, a Process Explorer, győződjön meg arról, hogy mysqld.exe szerepel a folyamatokban.
+Ez a probléma akkor fordulhat elő, ha a beépített mySQL funkció még nem fut ebben a App Service-példányban. A probléma megoldásához próbálja meg elérni a webhelyét. Ez elindítja a szükséges folyamatokat, beleértve a beépített mySQL folyamatot is. Annak ellenőrzéséhez, hogy a beépített mySQL fut-e, a Process Explorerben ellenőrizze, hogy szerepel-e a mysqld. exe a folyamatokban.
 
-Miután biztosította, hogy a MySQL az alkalmazáson belüli fut, próbálja meg használni PHPMyAdmin.
+Miután meggyőződni arról, hogy a beépített mySQL fut, próbálkozzon a PHPMyAdmin használatával.
 
-## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>HTTP 403-as hibaüzenet jelenik meg, amikor a PHPMyadmin használatával megpróbálom importálni vagy exportálni a MySQL alkalmazáson belüli adatbázisomat. Hogyan oldhatom meg ezt?
+## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>HTTP 403 hibaüzenetet kapok, amikor a PHPMyadmin használatával megpróbálom importálni vagy exportálni az beépített mySQL-adatbázist. Hogyan oldhatom meg ezt?
 
-Ha a Chrome régebbi verzióját használja, előfordulhat, hogy egy ismert hibát tapasztal. A probléma megoldásához frissítsen a Chrome újabb verziójára. Próbáljon meg egy másik böngészőt is használni, például az Internet Explorert vagy a Microsoft Edge-et, ahol a probléma nem jelentkezik.
+Ha a Chrome egy régebbi verzióját használja, lehet, hogy ismert hibát észlelt. A probléma megoldásához frissítsen a Chrome újabb verziójára. Próbáljon másik böngészőt használni, például az Internet Explorert vagy a Microsoft Edge-t, ahol a probléma nem fordul elő.

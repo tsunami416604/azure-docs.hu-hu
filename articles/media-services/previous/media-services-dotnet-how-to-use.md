@@ -1,6 +1,6 @@
 ---
-title: Számítógép beállítása a Médiaszolgáltatások fejlesztéséhez a .NET segítségével
-description: Ismerje meg a Media Services SDK for .NET szolgáltatás ának előfeltételeit. Azt is megtudhatja, hogyan hozhat létre Visual Studio-alkalmazást.
+title: Számítógép beállítása Media Services-fejlesztéshez a .NET-tel
+description: Ismerkedjen meg a .NET-hez készült Media Services SDK-val való Media Services előfeltételeivel. Azt is megtudhatja, hogyan hozhat létre egy Visual Studio-alkalmazást.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,57 +15,57 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "64724115"
 ---
-# <a name="media-services-development-with-net"></a>Media Services fejlesztés a .NET segítségével 
+# <a name="media-services-development-with-net"></a>Media Services fejlesztés .NET-tel 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Ez a cikk a Media Services-alkalmazások .NET használatával történő fejlesztésének megkezdését ismerteti.
+Ez a cikk azt ismerteti, hogyan kezdheti el Media Services alkalmazások fejlesztését a .NET használatával.
 
-Az **Azure Media Services .NET SDK-könyvtár** lehetővé teszi, hogy a .NET használatával programozzon a Media Services szolgáltatással. A .NET használatával való fejlesztés megkönnyítése érdekében az **Azure Media Services .NET SDK Extensions** könyvtár a biztosított. Ez a tár a .NET-kódot leegyszerűsítő bővítménymetódusok és segédfunkciók készletét tartalmazza. Mindkét könyvtár elérhető a **NuGet** és a **GitHub segítségével.**
+A **Azure Media Services .net SDK** -kódtár lehetővé teszi a Media Services a .NET használatával való program használatát. Ahhoz, hogy még egyszerűbb legyen a .NET-fejlesztés, a **Azure Media Services .net SDK-bővítmények** könyvtára is elérhető. Ez a könyvtár a .NET-kód egyszerűsítését szolgáló kiterjesztési módszerek és segítő függvények készletét tartalmazza. Mindkét könyvtár elérhető a **NuGet** és a **githubon**keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Egy Media Services-fiók egy új vagy meglévő Azure-előfizetésben. Lásd a [Media Services-fiók létrehozása című cikket.](media-services-portal-create-account.md)
+* Egy Media Services-fiók egy új vagy meglévő Azure-előfizetésben. Tekintse [meg a Media Services-fiók létrehozását](media-services-portal-create-account.md)ismertető cikket.
 * Operációs rendszerek: Windows 10, Windows 7, Windows 2008 R2 vagy Windows 8.
-* . NET Framework 4.5 vagy újabb.
+* A .NET-keretrendszer 4,5-es vagy újabb verziója.
 * Visual Studio.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
-Ez a szakasz bemutatja, hogyan hozhat létre projektet a Visual Studióban, és hogyan állíthatja be a Media Services fejlesztéséhez.  Ebben az esetben a projekt egy C# Windows konzolalkalmazás, de az itt látható telepítési lépések más típusú projektekre is vonatkoznak, amelyeket Media Services-alkalmazásokhoz hozhat létre (például egy Windows Forms vagy egy ASP.NET webalkalmazáshoz).
+Ebből a szakaszból megtudhatja, hogyan hozhat létre egy projektet a Visual Studióban, és hogyan állíthatja be Media Services fejlesztéshez.  Ebben az esetben a projekt egy C# nyelvű Windows Console-alkalmazás, de az itt látható telepítési lépések a Media Services-alkalmazásokhoz (például egy Windows Forms alkalmazáshoz vagy egy ASP.NET-webalkalmazáshoz) létrehozott más típusú projektekre is érvényesek.
 
-Ez a szakasz bemutatja, hogyan vehet fel Media Services .NET SDK-bővítményeket és más függő könyvtárakat a **NuGet** segítségével.
+Ez a szakasz bemutatja, hogyan adhat hozzá Media Services .NET SDK-bővítményeket és más függő kódtárakat a **NuGet** használatával.
 
-Másik lehetőségként beszerezheti a legújabb Media Services .NET SDK biteket a GitHubról ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) vagy [github.com/Azure/azure-sdk-for-media-services-extensions),](https://github.com/Azure/azure-sdk-for-media-services-extensions)létrehozhatja a megoldást, és hozzáadhatja a hivatkozásokat az ügyfélprojekthez. Az összes szükséges függőség automatikusan letöltődik és kibontódik.
+Azt is megteheti, hogy letölti a legújabb Media Services .NET SDK-biteket a GitHubról ([GitHub.com/Azure/Azure-SDK-for-Media-Services](https://github.com/Azure/azure-sdk-for-media-services) vagy [GitHub.com/Azure/Azure-SDK-for-Media-Services-Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)), felépíti a megoldást, és hozzáadja a hivatkozásokat az ügyfél-projekthez. Az összes szükséges függőség letöltése és kinyerése automatikusan megtörténik.
 
-1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást. Írja be a **Név**, **Hely**és **Megoldás nevet,** majd kattintson az OK gombra.
+1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást. Adja meg a **nevet**, a **helyet**és a **megoldás nevét**, majd kattintson az OK gombra.
 2. Hozza létre a megoldást.
-3. A **NuGet** segítségével telepítheti és hozzáadhatja az **Azure Media Services .NET SDK-bővítményeket** (**windowsazure.mediaservices.extensions**). Ennek a csomagnak a telepítése a **Media Services .NET SDK**csomagot és az összes további szükséges függőséget is feltelepíti
+3. A **NuGet** használatával telepítse és vegye fel **Azure Media Services .net SDK-bővítményeket** (**windowsazure. Mediaservices. Extensions**). Ennek a csomagnak a telepítése a **Media Services .NET SDK**csomagot és az összes további szükséges függőséget is feltelepíti
    
-    Győződjön meg arról, hogy a NuGet legújabb verziója van telepítve. További információ és telepítési útmutató: [NuGet](https://nuget.codeplex.com/).
+    Győződjön meg arról, hogy a NuGet legújabb verziója van telepítve. További információt és telepítési útmutatót a következő témakörben talál: [NuGet](https://nuget.codeplex.com/).
 
-    1. A Megoldáskezelőben kattintson a jobb gombbal a projekt nevére, és válassza a **NuGet-csomagok kezelése parancsot.**
+    1. A Megoldáskezelőban kattintson a jobb gombbal a projekt nevére, és válassza a **NuGet-csomagok kezelése**lehetőséget.
 
     2. Megjelenik a Manage NuGet Packages (NuGet-csomagok kezelése) párbeszédpanel.
 
-    3. Az Online gyűjteményben keresse meg az Azure MediaServices-bővítményeket, válassza az **Azure Media Services .NET SDK Extensions** (**windowsazure.mediaservices.extensions**) lehetőséget, majd kattintson a **Telepítés** gombra.
+    3. Az online katalógusban keressen rá az Azure MediaServices Extensions kifejezésre, válassza a **Azure Media Services .net SDK-bővítmények** (**windowsazure. MediaServices. Extensions**) elemet, majd kattintson a **telepítés** gombra.
    
-    4. A projekt módosul, és a Media Services .NET SDK extensions, a Media Services .NET SDK és más függő szerelvények hivatkozásai kerülnek hozzáadásra.
-4. A tisztább fejlesztői környezet előmozdítása érdekében engedélyezd a NuGet csomag-visszaállítást. További információ: [NuGet csomagvisszaállítás"](https://docs.nuget.org/consume/package-restore).
-5. Hivatkozás hozzáadása a **System.Configuration** szerelvényhez. Ez a szerelvény a System.Configuration elemet tartalmazza. **ConfigurationManager** osztály, amely a konfigurációs fájlok (például Az App.config) elérésére szolgál.
+    4. A projekt módosult, és a Media Services .NET SDK-bővítményekre, Media Services .NET SDK-ra és más függő szerelvényekre hivatkozik.
+4. A tisztább fejlesztési környezet elősegítése érdekében érdemes lehet engedélyezni a NuGet-csomagok visszaállítását. További információ: NuGet- [csomag visszaállítása "](https://docs.nuget.org/consume/package-restore).
+5. Adjon hozzá egy hivatkozást a **System. Configuration** szerelvényhez. Ez a szerelvény tartalmazza a System. Configurationt. A konfigurációs fájlok eléréséhez használt **ConfigurationManager** osztály (például app. config).
    
-    1. Ha hivatkozásokat szeretne hozzáadni a Hivatkozások kezelése párbeszédpanelen, kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben. Ezután kattintson a **Hozzáadás**gombra, majd a **Hivatkozás... parancsra.**
+    1. Hivatkozások hozzáadásához a hivatkozások kezelése párbeszédpanelen kattintson a jobb gombbal a projekt nevére a Megoldáskezelő. Ezután kattintson a **Hozzáadás**, majd a **hivatkozás...** elemre.
    
-    2. Megjelenik a Hivatkozások kezelése párbeszédpanel.
-    3. A .NET keretszerelvények csoportban keresse meg és jelölje ki a System.Configuration szerelvényt, és nyomja **le az OK gombot.**
-6. Nyissa meg az App.config fájlt, és adjon hozzá egy **appBeállítások** szakaszt a fájlhoz. Állítsa be a Media Services API-hoz való csatlakozáshoz szükséges értékeket. További információ: [Access the Azure Media Services API with Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md). 
+    2. Megjelenik a hivatkozások kezelése párbeszédpanel.
+    3. A .NET-keretrendszer szerelvények területen keresse meg és válassza ki a System. Configuration szerelvényt, majd kattintson **az OK gombra**.
+6. Nyissa meg az app. config fájlt, és adjon hozzá egy **appSettings** szakaszt a fájlhoz. Adja meg a Media Services API-hoz való kapcsolódáshoz szükséges értékeket. További információ: [hozzáférés a Azure Media Services API-hoz az Azure ad-hitelesítéssel](media-services-use-aad-auth-to-access-ams-api.md). 
 
-    Állítsa be az okat az értékeket, amelyek a **service egyszerű** hitelesítési módszerrel való csatlakozáshoz szükségesek.
+    Állítsa be a kapcsolódáshoz szükséges értékeket az **egyszerű szolgáltatásnév** hitelesítési módszerének használatával.
 
         ```csharp
                 <configuration>
@@ -79,8 +79,8 @@ Másik lehetőségként beszerezheti a legújabb Media Services .NET SDK biteket
                 </configuration>
         ```
 
-7. Adja hozzá a **System.Configuration** hivatkozást a projekthez.
-8. A **meglévők felülírása** a Program.cs fájl elején lévő utasítások használatával a következő kóddal:
+7. Adja hozzá a **System. Configuration** hivatkozást a projekthez.
+8. Írja felül a meglévő **using** utasításokat a program.cs fájl elején a következő kóddal:
 
     ```csharp      
             using System;
@@ -92,11 +92,11 @@ Másik lehetőségként beszerezheti a legújabb Media Services .NET SDK biteket
             using System.Linq;
     ```
 
-    Ezen a ponton készen áll a Media Services-alkalmazások fejlesztésének megkezdésére.    
+    Ezen a ponton készen áll egy Media Services alkalmazás fejlesztésének megkezdésére.    
 
 ## <a name="example"></a>Példa
 
-Íme egy kis példa, amely csatlakozik az AMS API-hoz, és felsorolja az összes rendelkezésre álló médiaprocesszort.
+Íme egy kis példa, amely az AMS API-hoz csatlakozik, és felsorolja az összes elérhető adathordozó-processzort.
 
 ```csharp
         class Program
@@ -135,7 +135,7 @@ Másik lehetőségként beszerezheti a legújabb Media Services .NET SDK biteket
 
 ## <a name="next-steps"></a>További lépések
 
-Most [már csatlakozhat az AMS API-hoz,](media-services-use-aad-auth-to-access-ams-api.md) és [elkezdheti a fejlesztést.](media-services-dotnet-get-started.md)
+Most már [csatlakozhat az AMS API-hoz](media-services-use-aad-auth-to-access-ams-api.md) , és megkezdheti a [fejlesztést](media-services-dotnet-get-started.md).
 
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai

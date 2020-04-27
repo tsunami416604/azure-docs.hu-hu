@@ -18,17 +18,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381237"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect a Microsoft Cloud németországi adatközpontjában – nyilvános előzetes verzió
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 Az Azure AD Connect szinkronizálást biztosít a helyszíni Active Directory és az Azure Active Directory között.
 A [Microsoft Cloud németországi adatközpontja](https://azure.microsoft.com/global-infrastructure/germany/
-) esetében az eljárások jelentős részét a kezelőnek kell elvégeznie. A Microsoft Cloud Germany használatakor a következő információkat kell figyelembe vennie:
+) esetében az eljárások jelentős részét a kezelőnek kell elvégeznie. Microsoft Cloud Németország használatakor a következő információkat kell figyelembe vennie:
 
 * A következő URL-címeket meg kell nyitni egy proxykiszolgálón ahhoz, hogy sikeres lehessen a szinkronizálás:
   
@@ -42,13 +42,13 @@ A [Microsoft Cloud németországi adatközpontja](https://azure.microsoft.com/gl
 Az Azure AD Connect a portál Azure AD Connect paneljéről tölthető le.  Az Azure AD Connect panelt az alábbi útmutatás alapján keresheti meg.
 
 ### <a name="the-azure-ad-connect-blade"></a>Az Azure AD Connect panel
-Miután bejelentkezett az Azure Portalra:
+Miután bejelentkezett a Azure Portalba:
 
 1. Válassza a Tallózás lehetőséget.
 2. Válassza az Azure Active Directory elemet.
 3. Ezután válassza az Azure AD Connect elemet.
 
-A következő részletek jelennek meg:
+Ezeket a részleteket fogja látni:
 
 ![Az Azure AD Connect panel](./media/reference-connect-germany/germany1.png)
 
@@ -64,5 +64,5 @@ A következő táblázat a panelen látható funkciókat ismerteti.
 Az Azure AD Connect telepítéséhez használhatja az [itt](how-to-connect-install-roadmap.md) található dokumentációt.
 
 ## <a name="advanced-features-and-additional-information"></a>Speciális szolgáltatások és további információk
-Az egyéni beállításokkal vagy a speciális konfigurációkkal kapcsolatos további információkért látogasson el [a helyszíni identitások integrálása az Azure Active Directoryval című lapba.](whatis-hybrid-identity.md) Ez a lap a további útmutatással kapcsolatos információkat és hivatkozásokat ismerteti.
+További információ az egyéni beállításokról vagy a speciális konfigurációkról: [a helyszíni identitások integrálása a Azure Active Directory](whatis-hybrid-identity.md)használatával. Ez a lap a további útmutatással kapcsolatos információkat és hivatkozásokat ismerteti.
 

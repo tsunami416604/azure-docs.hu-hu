@@ -1,5 +1,5 @@
 ---
-title: Az Azure Blob-tárolási események küldése a webes végpontra – Powershell | Microsoft dokumentumok
+title: Azure Blob Storage-események küldése a webes végpontnak – PowerShell | Microsoft Docs
 description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
 author: normesta
 ms.author: normesta
@@ -9,15 +9,15 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68847157"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Rövid útmutató: Tárolási események irányítsa a webes végpontra a PowerShell segítségével
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Gyors útmutató: tárolási események továbbítása webes végponthoz a PowerShell használatával
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben az Azure PowerShell használatával előfizethet a Blob storage-eseményekre, eseményindítót indíthat el, és megtekintheti az eredményt. 
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben Azure PowerShellt használ a blob Storage-eseményekre való előfizetésre, az események aktiválására és az eredmény megtekintésére. 
 
 Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
@@ -29,17 +29,17 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk megköveteli, hogy az Azure PowerShell legújabb verzióját használja. Ha telepítenie vagy frissítenie kell, olvassa el [az Azure PowerShell telepítése és konfigurálása című témakört.](/powershell/azure/install-Az-ps)
+Ehhez a cikkhez a Azure PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne, olvassa el a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-Az-ps)című témakört.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a paranccsal, `Connect-AzAccount` és kövesse a képernyőn megjelenő utasításokat a hitelesítéshez.
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat a hitelesítéshez.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Ez a példa **a westus2-t használja,** és a kiválasztást egy változóban tárolja, hogy végig használhassa.
+Ez a példa **westus2** használ, és egy változóban tárolja a kijelölést az egészben való használatra.
 
 ```powershell
 $location = "westus2"
@@ -58,14 +58,14 @@ $resourceGroup = "gridResourceGroup"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Blobtároló események általános célú v2 tárfiókokban vagy Blob tárfiókokban érhetők el. Az **általános célú v2** fiókok olyan tárfiókok, amelyek a társzolgáltatások összes funkcióját támogatják, beleértve a blobokat, a fájlokat, az üzenetsorokat és a táblákat is. A **Blob storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobok (objektumok) az Azure Storage-ban tárolására. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. További információkat az [Azure Storage-fiókok áttekintésében](../common/storage-account-overview.md) találhat.
+Blobtároló események általános célú v2 tárfiókokban vagy Blob tárfiókokban érhetők el. Az **általános célú v2** fiókok olyan tárfiókok, amelyek a társzolgáltatások összes funkcióját támogatják, beleértve a blobokat, a fájlokat, az üzenetsorokat és a táblákat is. A **blob Storage-fiók** egy speciális Storage-fiók, amely az Azure Storage-ban lévő strukturálatlan adatait blobként (Objects) tárolja. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. További információkat az [Azure Storage-fiókok áttekintésében](../common/storage-account-overview.md) találhat.
 
-Hozzon létre egy Blob tárfiókot lrs replikációval a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)használatával, majd olvassa be a tárfiók környezetében, amely meghatározza a tárfiókot használni. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. Ebben a példában létrehoz egy **gridstorage** nevű tárfiókot helyileg redundáns tárolással (LRS). 
+Hozzon létre egy blob Storage-fiókot LRS-replikációval a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)használatával, majd kérje le a használni kívánt Storage-fiókot definiáló Storage-fiók környezetét. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. Ez a példa egy **gridstorage** nevű Storage-fiókot hoz létre helyileg redundáns tárolással (LRS). 
 
 > [!NOTE]
-> A tárfióknevek globális névtérben vannak, ezért néhány véletlenszerű karaktert hozzá kell fűzni a parancsfájlban megadott névhez.
+> A Storage-fiókok nevei globális névtérben vannak, ezért néhány véletlenszerű karaktert hozzá kell fűzni a parancsfájlban megadott névhez.
 
 ```powershell
 $storageName = "gridstorage"
@@ -103,7 +103,7 @@ A helynek megjelenített üzenetek nélkül kell megjelennie.
 
 ## <a name="subscribe-to-your-storage-account"></a>Előfizetés a tárfiókra
 
-Feliratkozik egy témakörre, és megmondja az Event Gridnek, hogy mely eseményeket szeretné nyomon követni. A következő példa előfizet a létrehozott tárfiókra, és az eseményértesítés végpontjaként továbbítja a webalkalmazás URL-címét. A webalkalmazás végpontjának az `/api/updates/` utótagot kell tartalmaznia.
+A témakörre való előfizetéssel megállapíthatja, hogy Event Grid mely eseményeket kívánja nyomon követni. Az alábbi példa előfizet a létrehozott Storage-fiókra, és átadja az URL-címet a webalkalmazásból az eseményekről szóló értesítés végpontjának. A webalkalmazás végpontjának az `/api/updates/` utótagot kell tartalmaznia.
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
@@ -121,7 +121,7 @@ Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfize
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Esemény kiváltása a Blob Storage-ból
 
-Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először hozzunk létre egy tárolót és egy objektumot. Ezután töltsük fel az objektumot a tárolóba.
+Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először hozzon létre egy tárolót és egy objektumot. Ezután töltse fel az objektumot a tárolóba.
 
 ```powershell
 $containerName = "gridcontainer"
@@ -162,7 +162,7 @@ Set-AzStorageBlobContent -File gridTestFile.txt -Container $containerName -Conte
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha azt tervezi, hogy továbbra is ezzel a tárfiókkal és esemény-előfizetéssel szeretne dolgozni, ne törölje a cikkben létrehozott erőforrásokat. Ha nem tervezi a folytatást, a következő paranccsal törölje a cikkben létrehozott erőforrásokat.
+Ha azt tervezi, hogy a Storage-fiókkal és az esemény-előfizetéssel folytatja a munkát, ne törölje a cikkben létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő parancs használatával törölheti a cikkben létrehozott erőforrásokat.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup

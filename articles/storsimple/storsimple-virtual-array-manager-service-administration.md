@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure StorSimple Manager virtuális tömb felügyelete | Microsoft dokumentumok
-description: Ismerje meg, hogyan kezelheti a StorSimple helyszíni virtuális tömb segítségével a StorSimple Eszközkezelő szolgáltatás az Azure Portalon.
+title: Microsoft Azure StorSimple Manager virtuális tömb felügyelete | Microsoft Docs
+description: Ismerje meg, hogyan kezelheti a StorSimple helyszíni virtuális tömbjét a Azure Portal StorSimple Eszközkezelő szolgáltatásának használatával.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,67 +15,67 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "62123805"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömb felügyeletéhez
-![beállítási folyamat](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
+![folyamat beállítása folyamatban](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk ismerteti a StorSimple Device Manager szolgáltatás felületét, beleértve a csatlakozás módját és a rendelkezésre álló különböző lehetőségeket, és hivatkozásokat tartalmaz az adott munkafolyamatokra, amelyek ezen a felhasználói felületen keresztül hajthatók végre.
+Ez a cikk ismerteti a StorSimple Eszközkezelő szolgáltatás felületét, beleértve a kapcsolódást és a rendelkezésre álló különböző lehetőségeket, valamint a felhasználói felületen keresztül elvégezhető konkrét munkafolyamatokra mutató hivatkozásokat is tartalmaz.
 
-Elolvasása után ezt a cikket, akkor tudni fogja, hogyan kell:
+A cikk elolvasása után a következőket fogja tudni:
 
-* Csatlakozás a StorSimple Eszközkezelő szolgáltatáshoz
-* Navigálás a StorSimple Eszközkezelő felhasználói felületén
-* A StorSimple virtuális tömb felügyelete a StorSimple Eszközkezelő szolgáltatáson keresztül
+* Kapcsolódás a StorSimple Eszközkezelő szolgáltatáshoz
+* Navigáljon a StorSimple Eszközkezelő felhasználói felületén
+* A StorSimple virtuális tömb felügyelete a StorSimple Eszközkezelő Service használatával
 
 > [!NOTE]
-> A StorSimple 8000 sorozatú eszközhöz elérhető felügyeleti lehetőségek megtekintéséhez válassza [a StorSimple-eszköz felügyelete a StorSimple-kezelő szolgáltatás használata című](storsimple-manager-service-administration.md)lehetőséget.
+> A StorSimple 8000 Series eszközhöz elérhető felügyeleti lehetőségek megtekintéséhez lépjen a [StorSimple Manager szolgáltatás használatára a StorSimple-eszköz felügyeletéhez](storsimple-manager-service-administration.md).
 > 
 > 
 
-## <a name="connect-to-the-storsimple-device-manager-service"></a>Csatlakozás a StorSimple Eszközkezelő szolgáltatáshoz
-A StorSimple Eszközkezelő szolgáltatás a Microsoft Azure-ban fut, és több StorSimple virtuális tömbhöz csatlakozik. Az eszközök kezeléséhez egy böngészőben futó központi Microsoft Azure-portált használ. A StorSimple Eszközkezelő szolgáltatáshoz való csatlakozáshoz tegye a következőket.
+## <a name="connect-to-the-storsimple-device-manager-service"></a>Kapcsolódás a StorSimple Eszközkezelő szolgáltatáshoz
+A StorSimple Eszközkezelő szolgáltatás Microsoft Azure fut, és több StorSimple virtuális tömbhöz csatlakozik. Az eszközök kezeléséhez egy böngészőben futó központi Microsoft Azure Portal fog használni. A StorSimple Eszközkezelő szolgáltatáshoz való kapcsolódáshoz tegye a következőket.
 
-#### <a name="to-connect-to-the-service"></a>Csatlakozás a szolgáltatáshoz
-1. Nyissa [https://ms.portal.azure.com](https://ms.portal.azure.com)meg a.
-2. Microsoft-fiók hitelesítő adatainak használatával jelentkezzen be a Microsoft Azure portálra (amely az ablaktábla jobb felső részén található).
-3. A Tallózás --> "Szűrő" lehetőséget a StorSimple eszközkezelőknél az adott előfizetés összes eszközkezelőjének megtekintéséhez.
+#### <a name="to-connect-to-the-service"></a>Kapcsolódás a szolgáltatáshoz
+1. Ugrás a [https://ms.portal.azure.com](https://ms.portal.azure.com)következőre:.
+2. A Microsoft-fiók hitelesítő adataival jelentkezzen be a Microsoft Azure Portalba (a panel jobb felső sarkában található).
+3. Navigáljon a Tallózás gombra – > "filter" a StorSimple-Eszközkezelőben az összes Eszközkezelő egy adott előfizetésben való megtekintéséhez.
 
-## <a name="use-the-storsimple-device-manager-service-to-perform-management-tasks"></a>Felügyeleti feladatok végrehajtása a StorSimple Eszközkezelő szolgáltatás sal
-Az alábbi táblázat a StorSimple Eszközkezelő szolgáltatás összegzése panelen elvégezhető összes gyakori felügyeleti feladat és összetett munkafolyamat összegzését mutatja be. Ezek a feladatok a kések alapján vannak rendszerezve, amelyeken elindulnak.
+## <a name="use-the-storsimple-device-manager-service-to-perform-management-tasks"></a>A StorSimple Eszközkezelő szolgáltatás használata felügyeleti feladatok végrehajtásához
+A következő táblázat a StorSimple Eszközkezelő szolgáltatás összefoglalási paneljén elvégezhető általános felügyeleti feladatok és összetett munkafolyamatok összegzését tartalmazza. Ezek a feladatok a kezdeményezett pengék alapján vannak rendszerezve.
 
-Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a táblázatban a megfelelő eljárásra.
+Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a megfelelő eljárásra a táblázatban.
 
-#### <a name="storsimple-device-manager-workflows"></a>StorSimple Eszközkezelő munkafolyamatai
-| Ha ezt akarod csinálni... | Az eljárás alkalmazása |
+#### <a name="storsimple-device-manager-workflows"></a>StorSimple Eszközkezelő munkafolyamatok
+| Ha ezt szeretné tenni... | Az eljárás használata |
 | --- | --- |
-| Szolgáltatás létrehozása</br>Szolgáltatás törlése</br>Szolgáltatásregisztrációs kulcs lekérése</br>A szolgáltatás regisztrációs kulcsának újragenerálása |[A StorSimple Eszközkezelő szolgáltatás telepítése](storsimple-virtual-array-manage-service.md) |
-| A tevékenységnaplók megtekintése |[A StorSimple szolgáltatás összegzésének használata](storsimple-virtual-array-service-summary.md) |
+| Szolgáltatás létrehozása</br>Szolgáltatás törlése</br>Szolgáltatásregisztrációs kulcs lekérése</br>A szolgáltatás regisztrációs kulcsának újbóli előállítása |[A StorSimple Eszközkezelő szolgáltatás üzembe helyezése](storsimple-virtual-array-manage-service.md) |
+| A tevékenység naplóinak megtekintése |[A StorSimple szolgáltatás összegzésének használata](storsimple-virtual-array-service-summary.md) |
 | Virtuális tömb inaktiválása</br>Virtuális tömb törlése |[Virtuális tömb inaktiválása vagy törlése](storsimple-virtual-array-deactivate-and-delete-device.md) |
-| Vészhelyreállítás és eszközfeladat-átvétel</br>Feladatátvételi előfeltételek</br>Üzletmenet-folytonossági vészhelyreállítás (BCDR)</br>Hibák a vészhelyreállítás során |[Vészhelyreállítás és eszközfeladat-átvétel a StorSimple virtuális tömbhöz](storsimple-virtual-array-failover-dr.md) |
-| Részvények és mennyiségek biztonsági és biztonsági tartaléka</br>Kézi biztonsági mentés készítése</br>A biztonsági mentés ütemezésének módosítása</br>Meglévő biztonsági mentések megtekintése |[A StorSimple virtuális tömb biztonsági elége](storsimple-virtual-array-backup.md) |
+| Vész-helyreállítás és eszközök feladatátvétele</br>Feladatátvételi előfeltételek</br>Üzletmenet-folytonossági katasztrófa-helyreállítás (BCDR)</br>Hibák a vész-helyreállítás során |[Vész-helyreállítási és eszköz-feladatátvétel a StorSimple virtuális tömbhöz](storsimple-virtual-array-failover-dr.md) |
+| Megosztások és kötetek biztonsági mentése</br>Manuális biztonsági mentés készítése</br>A biztonsági mentés ütemtervének módosítása</br>Meglévő biztonsági másolatok megtekintése |[A StorSimple virtuális tömb biztonsági mentése](storsimple-virtual-array-backup.md) |
 | Megosztások klónozása biztonságimásolat-készletből</br>Kötetek klónozása biztonságimásolat-készletből</br>Elemszintű helyreállítás (csak fájlkiszolgáló) |[Klónozás a StorSimple virtuális tömb biztonsági másolatából](storsimple-virtual-array-clone.md) |
-| A tárfiókok –</br>Tárfiók hozzáadása</br>Tárfiók szerkesztése</br>Tárfiók törlése |[A StorSimple virtuális tömb tárfiókjainak kezelése](storsimple-virtual-array-manage-storage-accounts.md) |
-| Hozzáférés-vezérlési rekordok – kapcsolat</br>Hozzáférés-vezérlési rekord hozzáadása vagy módosítása </br>Hozzáférés-vezérlési rekord törlése |[Hozzáférés-vezérlési rekordok kezelése a StorSimple virtuális tömbhöz](storsimple-virtual-array-manage-acrs.md) |
-| Feladatok részleteinek megjelenítése |[StorSimple virtuális tömbfeladatok kezelése](storsimple-virtual-array-manage-jobs.md) |
-| Riasztási beállítások konfigurálása</br>Riasztási értesítések fogadása</br>Riasztások kezelése</br>Figyelmeztetések áttekintése |[A StorSimple virtuális tömb riasztásainak megtekintése és kezelése](storsimple-virtual-array-manage-alerts.md) |
-| Az eszközrendszergazda jelszavának módosítása |[A StorSimple Virtual Array eszköz rendszergazdai jelszavának módosítása](storsimple-virtual-array-change-device-admin-password.md) |
+| Tudnivalók a Storage-fiókokról</br>Storage-fiók hozzáadása</br>Storage-fiók szerkesztése</br>Tárfiók törlése |[A StorSimple virtuális tömbhöz tartozó Storage-fiókok kezelése](storsimple-virtual-array-manage-storage-accounts.md) |
+| Hozzáférés-vezérlési rekordok</br>Hozzáférés-vezérlési rekord hozzáadása vagy módosítása </br>Hozzáférés-vezérlési rekord törlése |[A StorSimple virtuális tömb hozzáférés-vezérlési rekordjainak kezelése](storsimple-virtual-array-manage-acrs.md) |
+| Feladatok részleteinek megjelenítése |[StorSimple virtuális Array-feladatok kezelése](storsimple-virtual-array-manage-jobs.md) |
+| Riasztási beállítások konfigurálása</br>Riasztási értesítések fogadása</br>Riasztások kezelése</br>Riasztások áttekintése |[A StorSimple virtuális tömbhöz tartozó riasztások megtekintése és kezelése](storsimple-virtual-array-manage-alerts.md) |
+| Az eszköz rendszergazdai jelszavának módosítása |[StorSimple virtuális tömb eszköz rendszergazdai jelszavának módosítása](storsimple-virtual-array-change-device-admin-password.md) |
 | Szoftverfrissítések telepítése |[A virtuális tömb frissítése](storsimple-virtual-array-install-update.md) |
 
 > [!NOTE]
-> A helyi [webes felhasználói felületet](storsimple-ova-web-ui-admin.md) a következő feladatokhoz kell használnia:
+> A [helyi webes felhasználói felületet](storsimple-ova-web-ui-admin.md) a következő feladatokhoz kell használnia:
 > 
-> * [A szolgáltatásadat-titkosítási kulcs beolvasása](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)
+> * [A szolgáltatás adattitkosítási kulcsának beolvasása](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)
 > * [Támogatási csomag létrehozása](storsimple-ova-web-ui-admin.md#generate-a-log-package)
 > * [Virtuális tömb leállítása és újraindítása](storsimple-ova-web-ui-admin.md#shut-down-and-restart-your-device)
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-A webes felhasználói felületről és használatáról a [StorSimple webes felhasználói felület használata a StorSimple virtuális tömb felügyeletéhez](storsimple-ova-web-ui-admin.md)című lapban talál további információt.
+A webes felhasználói felületről és annak használatáról a [StorSimple webes felhasználói felületének használata a StorSimple virtuális tömb felügyeletéhez](storsimple-ova-web-ui-admin.md)című témakörben olvashat bővebben.
 

@@ -1,6 +1,6 @@
 ---
-title: Ismétlődő feladatok hibakeresése az Azure Data Lake Analytics szolgáltatásban
-description: Ismerje meg, hogyan használhatja az Azure Data Lake Tools for Visual Studio-t egy rendellenes ismétlődő feladat hibakereséséhez.
+title: Ismétlődő feladatok hibakeresése Azure Data Lake Analytics
+description: Ismerje meg, hogyan használható a Visual studióhoz készült Azure Data Lake Tools a rendellenes ismétlődő feladatok hibakereséséhez.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -10,63 +10,63 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60629757"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Rendellenes ismétlődő feladat hibaelhárítása
 
-Ez a cikk bemutatja, hogyan használhatja az [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) az ismétlődő feladatokkal kapcsolatos problémák elhárításához. További információ a folyamat- és ismétlődő feladatokról az Azure Data Lake és az [Azure HDInsight blogon.](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/)
+Ez a cikk bemutatja, hogyan használható a [Visual Studio Azure Data Lake-eszközei](https://aka.ms/adltoolsvs) az ismétlődő feladatokkal kapcsolatos problémák elhárításához. További információ a [Azure Data Lake és az Azure HDInsight blogban](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/)található folyamatokról és ismétlődő feladatokról.
 
-Az ismétlődő feladatok általában ugyanazt a lekérdezési logikát és hasonló bemeneti adatokat rendelkeznek. Tegyük fel például, hogy minden hétfő reggel 8-kor ismétlődő állás fut. a múlt heti heti aktív felhasználó számlálásához. Ezeknek a feladatoknak a parancsfájljai egy parancsfájlsablont osztanak meg, amely a lekérdezési logikát tartalmazza. Ezek a feladatok bemenetek a használati adatok a múlt héten. Ugyanazt a lekérdezési logikát és hasonló bemenetet általában azt jelenti, hogy ezek a feladatok teljesítménye hasonló és stabil. Ha az ismétlődő feladatok egyike hirtelen rendellenesen, sikertelenül vagy sokat lelassul, a következőket teheti:
+Az ismétlődő feladatok általában ugyanazokat a lekérdezési logikát és hasonló bemeneti adatokat használják. Tegyük fel például, hogy van egy ismétlődő feladatokkal, amely hétfőn reggel 8 órakor fut. a múlt heti aktív felhasználó számának megszámlálása. Ezeknek a feladatoknak a parancsfájljai egy parancsfájl-sablont osztanak meg, amely tartalmazza a lekérdezési logikát. Ezen feladatok bemenetei az elmúlt hét használati adatai. Ugyanaz a lekérdezési logika és a hasonló bevitel általában azt jelenti, hogy a feladatok teljesítménye hasonló és stabil. Ha az ismétlődő feladatok egyike hirtelen rendellenesen, meghiúsul, vagy lelassítja a műveletet, akkor érdemes lehet:
 
-- Tekintse meg az ismétlődő feladat előző futtatásaistatisztikai jelentéseit, hogy lássa, mi történt.
-- Hasonlítsa össze a rendellenes munkát egy normális, hogy kitaláljuk, mi változott.
+- Tekintse meg az ismétlődő feladatok előző futtatásának statisztikai jelentéseit, és tekintse meg, mi történt.
+- Hasonlítsa össze a rendellenes feladatot egy normál értékkel, hogy megtudja, mi változott.
 
-**Kapcsolódó feladatnézet** az Azure Data Lake Tools for Visual Studio segítségével felgyorsíthatja a hibaelhárítási folyamat mindkét esetben.
+A Azure Data Lake Tools for Visual Studio **kapcsolódó feladatokkal kapcsolatos nézete** segítséget nyújt a hibaelhárítási folyamat felgyorsításához mindkét esetben.
 
-## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>1. lépés: Ismétlődő feladatok keresése és a Kapcsolódó feladatnézet megnyitása
+## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>1. lépés: ismétlődő feladatok keresése és kapcsolódó feladatok megnyitása
 
-Ha a Kapcsolódó feladatnézet et szeretné használni egy ismétlődő feladatprobléma elhárításához, először meg kell találnia az ismétlődő feladatot a Visual Studióban, majd meg kell nyitnia a Kapcsolódó feladatnézetet.
+Ha egy ismétlődő feladattal kapcsolatos probléma elhárításához kapcsolódó feladatok nézettel szeretne segítséget használni, először meg kell keresnie az ismétlődő feladatot a Visual Studióban, majd meg kell nyitnia a kapcsolódó feladatok nézetet.
 
-### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>1. eset: Rendelkezik az ismétlődő feladat URL-címére
+### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>1. eset: az ismétlődő feladatokhoz tartozó URL-cím
 
-Az **Eszközök:** > **Data Lake** > **feladatnézet segítségével**beillesztheti a feladat URL-címét a Feladatnézet visual studio-ban való megnyitásához. Válassza **a Kapcsolódó feladatok megtekintése** lehetőséget a Kapcsolódó feladatnézet megnyitásához.
+Az **eszközök** > **Data Lake** > a**feladatok nézet**használatával beillesztheti a feladatok URL-címét a Visual Studióban a feladatok nézet megnyitásához. Válassza a **kapcsolódó feladatok megtekintése** elemet a kapcsolódó feladat nézet megnyitásához.
 
-![Kapcsolódó feladatok megtekintése hivatkozás a Data Lake Analytics Tools szolgáltatásban](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
+![Kapcsolódó feladatok hivatkozásának megtekintése Data Lake Analytics eszközökben](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  
-### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>2. eset: Rendelkezik az ismétlődő feladat folyamatával, de az URL-címmel nem.
+### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>2. eset: az ismétlődő feladatokhoz tartozó folyamat nem az URL-cím
 
-A Visual Studióban megnyithatja a Folyamatböngészőt a Kiszolgálókezelőn keresztül, > az Azure Data Lake Analytics-fiókját > **folyamatokhoz.** (Ha nem találja ezt a csomópontot a Kiszolgálókezelőben, [töltse le a legújabb beépülő modult.)](https://aka.ms/adltoolsvs) 
+A Visual Studióban megnyithatja a folyamat böngészőjét a Server Explorerrel > a Azure Data Lake Analytics-fiókját > **folyamatokat**. (Ha nem találja ezt a csomópontot a Server Explorerben, [töltse le a legújabb beépülő modult](https://aka.ms/adltoolsvs).) 
 
-![A folyamatok csomópontjának kiválasztása](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
+![A folyamatok csomópont kiválasztása](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
 
-A Pipeline Browserben a Data Lake Analytics-fiók összes folyamata a bal oldalon található. A folyamatok kibontásával megkeresheti az összes ismétlődő feladatot, majd kiválaszthatja a problémákkal kapcsolatos at. A kapcsolódó feladatnézet a jobb oldalon nyílik meg.
+A folyamat böngészőjében a Data Lake Analytics fiók összes folyamata megjelenik a bal oldalon. A folyamatok kibontásával megkeresheti az összes ismétlődő feladatot, majd kiválaszthatja, hogy milyen problémákkal rendelkezik. A kapcsolódó feladatok nézete a jobb oldalon nyílik meg.
 
-![Folyamat kiválasztása és kapcsolódó feladatnézet megnyitása](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
+![Folyamat kiválasztása és a kapcsolódó feladatok nézetének megnyitása](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
 
-## <a name="step-2-analyze-a-statistics-report"></a>2. lépés: Statisztikai jelentés elemzése
+## <a name="step-2-analyze-a-statistics-report"></a>2. lépés: statisztikai jelentés elemzése
 
-Az összefoglaló és a statisztikai jelentés a Kapcsolódó feladatnézet tetején jelenik meg. Itt megtalálhatja a probléma lehetséges kiváltó okát. 
+Egy összefoglaló és egy statisztikai jelentés a kapcsolódó feladatok nézetének tetején látható. Itt megtalálhatja a probléma lehetséges kiváltó okát. 
 
-1.  A jelentésben az X tengely a feladat beküldési idejét jeleníti meg. Használd, hogy megtaláld a rendellenes munkát.
-2.  Az alábbi ábrán látható folyamat segítségével ellenőrizheti a statisztikákat, és betekintést nyerhet a problémába és a lehetséges megoldásokba.
+1.  A jelentésben az X tengely megjeleníti a feladatok beküldésének idejét. Ezzel a művelettel megkeresheti a rendellenes feladatot.
+2.  A következő ábrán található folyamat segítségével tekintse át a statisztikákat, és tájékozódjon a problémáról és a lehetséges megoldásokról.
 
-![Folyamatábra a statisztikák ellenőrzéséhez](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
+![Feldolgozási diagram a statisztikák ellenőrzéséhez](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
 
-## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>3. lépés: Hasonlítsa össze a rendellenes munkát egy normál feladat
+## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>3. lépés: a rendellenes feladatok összevetése normál feladatokkal
 
-Az összes beküldött ismétlődő feladatot a Kapcsolódó feladatnézet alján található feladatlistában találja. Ha további elemzéseket és lehetséges megoldásokat szeretne megtudni, kattintson a jobb gombbal a rendellenes feladatra. A Feladat különbsége nézetben összehasonlíthatja a rendellenes feladatot egy korábbi normál feladattal.
+Az összes elküldött ismétlődő feladat a kapcsolódó feladatok nézetének alján található feladatlistán keresztül tekinthető meg. További megállapítások és lehetséges megoldások kereséséhez kattintson a jobb gombbal a rendellenes feladatokra. Használja a feladatok diff nézetet, hogy összehasonlítsa a rendellenes feladatot egy korábbi normál eggyel.
 
-![A feladatok összehasonlítására szolgáló helyi menü](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/compare-job.png)
+![Feladatok összehasonlítására szolgáló helyi menü](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/compare-job.png)
 
-Ügyeljen arra, hogy a nagy különbség a két munkahely. Ezek a különbségek valószínűleg okozza a teljesítmény problémákat. A további ellenőrzéshez kövesse az alábbi ábrán található lépéseket:
+Figyeljen a két feladat közötti nagy különbségekre. Ezek a különbségek valószínűleg a teljesítménnyel kapcsolatos problémákat okozzák. További információért kövesse az alábbi ábrán látható lépéseket:
 
-![Folyamatábra a feladatok közötti különbségek ellenőrzéséhez](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-diff-debugging-flow.png)
+![Feldolgozási diagram a feladatok közötti különbségek ellenőrzéséhez](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-diff-debugging-flow.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Adatdöntési problémák megoldása](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
-* [Hibakeresés, felhasználó által definiált C# kód a sikertelen U-SQL-feladatokhoz](data-lake-analytics-debug-u-sql-jobs.md)
+* [Adathibák elhárítása](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
+* [Felhasználó által definiált C# kód hibakeresése a sikertelen U-SQL-feladatokhoz](data-lake-analytics-debug-u-sql-jobs.md)

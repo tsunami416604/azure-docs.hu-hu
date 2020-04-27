@@ -1,6 +1,6 @@
 ---
-title: StorSimple virtual array megosztások kezelése | Microsoft dokumentumok
-description: Ismerteti a StorSimple Eszközkezelő, és elmagyarázza, hogyan használhatja a storSimple virtuális tömb megosztások kezelésére.
+title: StorSimple virtuális tömb megosztásának kezelése | Microsoft Docs
+description: Ismerteti a StorSimple Eszközkezelő, és ismerteti, hogyan használható a megosztások kezelése a StorSimple virtuális tömbben.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,133 +15,133 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 82a6cdb6c9a39a0d196049a7ba662681ea06b36a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "62116866"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Megosztások kezelése a StorSimple-eszközkezelő szolgáltatással a StorSimple Virtual Arrayben
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az oktatóanyag bemutatja, hogyan használhatja a StorSimple Eszközkezelő szolgáltatást a StorSimple virtuális tömb megosztások létrehozásához és kezeléséhez.
+Ez az oktatóanyag azt ismerteti, hogyan használható a StorSimple Eszközkezelő szolgáltatás a megosztások létrehozásához és kezeléséhez a StorSimple virtuális tömbben.
 
-A StorSimple Device Manager szolgáltatás egy bővítmény az Azure Portalon, amely lehetővé teszi a StorSimple-megoldás egyetlen webes felületről történő kezelését. A megosztások és a kötetek kezelése mellett a StorSimple Eszközkezelő szolgáltatással megtekintheti és kezelheti az eszközöket, megtekintheti a riasztásokat, kezelheti a biztonsági mentési házirendeket, és kezelheti a biztonsági mentési katalógust.
+A StorSimple Eszközkezelő szolgáltatás a Azure Portal egyik bővítménye, amely lehetővé teszi a StorSimple-megoldás egyetlen webes felületen való kezelését. A megosztások és kötetek kezelése mellett a StorSimple Eszközkezelő szolgáltatás segítségével megtekintheti és kezelheti az eszközöket, megtekintheti a riasztásokat, kezelheti a biztonsági mentési házirendeket, és kezelheti a biztonsági mentési katalógust.
 
-## <a name="share-types"></a>Megosztástípusok
+## <a name="share-types"></a>Megosztási típusok
 
-StorSimple részvények lehetnek:
+A StorSimple-megosztások a következőket tehetik:
 
-* **Helyileg rögzített:** Ezekben a megosztásokban lévő adatok mindig a tömbön maradnak, és nem ömlenek ki a felhőbe.
-* **Rétegzett:** Az ezekben a megosztásokban lévő adatok kiömlehetnek a felhőbe. Többszintű megosztás létrehozásakor a terület körülbelül 10 %-a a helyi szinten van kiépítve, és a terület 90 %-a a felhőben van kiépítve. Például ha 1 TB-os megosztást létesített, 100 GB-os hely a helyi térben, és 900 GB-ot használna a felhőben, amikor az adatrétegek. Ez viszont azt jelenti, hogy ha elfogy az összes helyi terület az eszközön, nem lehet kiépíteni egy rétegzett megosztás (mert a 10 %-os szükséges a helyi réteg nem lesz elérhető).
+* **Helyileg rögzített**: az ezekben a megosztásokban tárolt adatmennyiség mindig a tömbön marad, és nem kerül a felhőbe.
+* **Lépcsőzetes**: ezekben a megosztásokban lévő adatforgalom a felhőbe kerül. Többplatformos megosztás létrehozásakor a terület körülbelül 10%-a a helyi szinten van kiépítve, a terület 90%-a pedig a felhőben van kiépítve. Ha például 1 TB-os megosztást telepített, a 100 GB a helyi térben, a 900 GB pedig a felhőben lesz használatban az adatszintek esetében. Ez pedig azt jelenti, hogy ha elfogyott az eszközön lévő összes helyi terület, nem lehet kiépíteni egy többplatformos megosztást (mivel a helyi szinten szükséges 10% nem lesz elérhető).
 
-### <a name="provisioned-capacity"></a>Kiépített kapacitás
+### <a name="provisioned-capacity"></a>Kiosztott kapacitás
 
-Az egyes megosztástípusok maximális kiosztott kapacitását az alábbi táblázatban tájékírja.
+Tekintse meg az alábbi táblázatot az egyes megosztások maximális kiosztott kapacitásához.
 
 | **Korlátazonosító** | **Korlát** |
 | --- | --- |
-| A többszintű megosztás minimális mérete |500 GB |
-| Többszintű megosztás maximális mérete |20 TB |
-| Helyileg rögzített megosztás minimális mérete |50 GB |
-| Helyileg rögzített megosztás maximális mérete |2 TB |
+| Többszintű megosztás minimális mérete |500 GB |
+| Lépcsőzetes megosztás maximális mérete |20 TB |
+| Egy helyileg rögzített megosztás minimális mérete |50 GB |
+| Egy helyileg rögzített megosztás maximális mérete |2 TB |
 
-## <a name="the-shares-blade"></a>A Részvények panel
+## <a name="the-shares-blade"></a>A megosztások panel
 
-A StorSimple szolgáltatás összefoglaló **panelmegosztások** menüje megjeleníti az adott StorSimple tömb tárolási megosztásainak listáját, és lehetővé teszi azok kezelését.
+A StorSimple szolgáltatás összefoglaló paneljének **megosztások** menüjében megjelenik egy adott StorSimple-tömbben található tárolási megosztások listája, és így kezelheti azokat.
 
-![Részvények penge](./media/storsimple-virtual-array-manage-shares/shares-blade.png)
+![Megosztások panel](./media/storsimple-virtual-array-manage-shares/shares-blade.png)
 
-A megosztás attribútumok sorozatából áll:
+A megosztás számos attribútumból áll:
 
-* **Megosztási név** – Egyedi nek és a megosztás azonosításának segít.
-* **Állapot** – Lehet online vagy offline. Ha egy megosztás offline állapotban van, a megosztás felhasználói nem férhetnek hozzá.
-* **Típus** – Azt jelzi, hogy a megosztás **rétegzett** (alapértelmezett) vagy **helyileg rögzített.**
-* **Kapacitás** – megadja a használt adatok mennyiségét a megosztáson tárolható adatok teljes mennyiségéhez képest.
-* **Leírás** – Nem kötelező beállítás, amely segít a megosztás leírásában.
-* **Engedélyek** – A Windows Intézőn keresztül kezelhető megosztás NTFS-engedélyei.
-* **Biztonsági mentés** – A StorSimple virtuális tömb esetén az összes megosztás automatikusan engedélyezve van a biztonsági mentéshez.
+* **Megosztás neve** – egy leíró név, amelynek egyedinek kell lennie, és segít azonosítani a megosztást.
+* Status – online vagy offline **állapotú** lehet. Ha egy megosztás offline állapotban van, a megosztás felhasználói nem fognak tudni hozzáférni.
+* **Type (típus** ) – azt jelzi, hogy a megosztás **Lépcsőzetes** (alapértelmezett) vagy **helyileg rögzített**-e.
+* **Kapacitás** – meghatározza a megosztáson tárolható adatmennyiséghez képest felhasznált adatmennyiséget.
+* **Description (Leírás** ) – választható beállítás, amely segít a megosztás leírásában.
+* **Engedélyek** – a Windows Intéző használatával felügyelhető megosztás NTFS-engedélyei.
+* **Backup (biztonsági mentés** ) – a StorSimple virtuális tömb esetében az összes megosztás automatikusan engedélyezve lesz a biztonsági mentéshez.
 
 ![Megosztások részletei](./media/storsimple-virtual-array-manage-shares/share-details.png)
 
-Az oktatóanyag utasításaival hajtsa végre a következő feladatokat:
+Az oktatóanyag utasításait az alábbi feladatok végrehajtásához használhatja:
 
 * Megosztás hozzáadása
 * Megosztás módosítása
-* Megosztás használata kapcsolat nélküli módban
+* Megosztás offline állapotba helyezése
 * Megosztás törlése
 
 ## <a name="add-a-share"></a>Megosztás hozzáadása
 
-1. A StorSimple szolgáltatás összefoglaló panelen kattintson a **+ Megosztás hozzáadása** a parancssávról elemre. Ez megnyitja a **Megosztás hozzáadása** panelt.
+1. A StorSimple szolgáltatás összegzése panelen kattintson a **+ megosztás hozzáadása** parancsra a parancssorban. Ekkor megnyílik a **megosztás hozzáadása** panel.
 
     ![Megosztás hozzáadása](./media/storsimple-virtual-array-manage-shares/add-share.png)
 
-2. A **Megosztás hozzáadása** panelen tegye a következőket:
+2. A **megosztás hozzáadása** panelen tegye a következőket:
    
-   1. A **Név megosztása** mezőben adjon meg egy egyedi nevet a megosztásnak. A névnek 3–127 karakterből legtartalmazott karakterláncnak kell lennie.
+   1. A **megosztás neve** mezőbe írja be a megosztás egyedi nevét. A névnek olyan sztringnek kell lennie, amely 3 – 127 karaktert tartalmaz.
 
-   2. A megosztás nem kötelező **leírása.** A leírás segít azonosítani a részvénytulajdonosokat.
+   2. A megosztás opcionális **leírása** . A Leírás segítséget nyújt a megosztási tulajdonosok azonosításában.
 
-   3. A **Típus** legördülő listában adja meg, hogy **rétegzett** vagy **helyileg rögzített megosztást** szeretne-e létrehozni. A helyi garanciákat, alacsony késéseket és nagyobb teljesítményt igénylő számítási feladatok esetében válassza a **Helyileg rögzített megosztás lehetőséget.** Az összes többi adat esetében válassza **a Rétegzett** megosztás lehetőséget.
+   3. A **típus** legördülő listában adja meg, hogy létre kell-e hozni egy **Lépcsőzetes** vagy **helyileg rögzített** megosztást. Helyi garanciákat, kis késést és nagyobb teljesítményt igénylő munkaterhelések esetén válassza a **helyileg rögzített megosztás**lehetőséget. Az összes többi adattal válassza a **Lépcsőzetes** megosztás lehetőséget.
 
-   4. A **Kapacitás** mezőben adja meg a megosztás méretét. A rétegzett megosztásnak 500 GB és 20 TB között kell lennie, és a helyileg rögzített megosztásnak 50 GB és 2 TB között kell lennie.
+   4. A **kapacitás** mezőben adja meg a megosztás méretét. A többplatformos megosztásnak 500 GB és 20 TB közé kell esnie, és egy helyileg rögzített megosztásnak 50 GB és 2 TB között kell lennie.
 
-   5. A **Beállítás alapértelmezett teljes engedélyek beállítása** mezőben rendelje hozzá az engedélyeket a felhasználóhoz vagy a megosztást elérő csoporthoz. Adja meg a felhasználó vagy a _john@contoso.com_ felhasználói csoport nevét formátumban. Azt javasoljuk, hogy egy felhasználói csoport (nem pedig egy felhasználó), hogy rendszergazdai jogosultságokat elérni ezeket a megosztásokat. A hozzárendelt engedélyeket később a Fájlkezelővel módosíthatja.
-3. Ha befejezte a megosztás konfigurálását, kattintson a **Létrehozás gombra.** A megosztás a megadott beállításokkal jön létre, és megjelenik egy értesítés. Alapértelmezés szerint a biztonsági mentés engedélyezve lesz a megosztáshoz.
-4. A megosztás sikeres létrehozásának ellenőrzéséhez lépjen a **Megosztások** panelre. Meg kell jelennie a megosztás felsorolt.
+   5. Az **alapértelmezett teljes engedélyek beállítása** mezőben rendelje hozzá az engedélyeket a felhasználóhoz, vagy a megosztáshoz hozzáférő csoportot. Adja meg a felhasználó vagy a felhasználói csoport nevét _john@contoso.com_ formátumban. Azt javasoljuk, hogy egy felhasználói csoportot használjon (egyetlen felhasználó helyett), hogy a rendszergazdai jogosultságok hozzáférjenek a megosztásokhoz. A hozzárendelt engedélyeket később a Fájlkezelővel módosíthatja.
+3. Ha befejezte a megosztás konfigurálását, kattintson a **Létrehozás**gombra. A rendszer létrehoz egy megosztást a megadott beállításokkal, és értesítést fog látni. Alapértelmezés szerint a biztonsági mentés engedélyezve lesz a megosztáshoz.
+4. A megosztás sikeres létrejöttének ellenőrzéséhez nyissa meg a **megosztások** panelt. Ekkor meg kell jelennie a felsorolt megosztásnak.
    
-    ![Megosztás létrehozása siker](./media/storsimple-virtual-array-manage-shares/share-success.png)
+    ![Megosztás sikeres létrehozása](./media/storsimple-virtual-array-manage-shares/share-success.png)
 
 ## <a name="modify-a-share"></a>Megosztás módosítása
 
-Módosítsa a megosztást, ha módosítania kell a megosztás leírását. A megosztás létrehozása után más megosztási tulajdonságok nem módosíthatók.
+Ha módosítani szeretné a megosztás leírását, módosítsa a megosztást. A megosztás létrehozása után más megosztási tulajdonságok nem módosíthatók.
 
 #### <a name="to-modify-a-share"></a>Megosztás módosítása
 
-1. A StorSimple szolgáltatás összefoglaló **panelmegosztási** beállításából válassza ki azt a virtuális tömböt, amelyen a módosítani kívánt megosztás található.
-2. **Válassza ki** a megosztást az aktuális leírás megtekintéséhez és módosításához.
-3. Mentse a módosításokat a **Mentés** parancssávra kattintva. A megadott beállítások at alkalmazni, és megjelenik egy értesítést.
+1. A StorSimple szolgáltatás összegzése panel **megosztások** beállítása paneljén válassza ki azt a virtuális tömböt, amelyen a módosítani kívánt megosztás található.
+2. **Válassza ki** a megosztást az aktuális Leírás megtekintéséhez és a módosításhoz.
+3. Mentse a módosításokat a **Mentés** parancssáv gombra kattintva. A rendszer alkalmazza a megadott beállításokat, és értesítést fog látni.
    
     ![ Megosztás szerkesztése](./media/storsimple-virtual-array-manage-shares/share-edit.png)
 
-## <a name="take-a-share-offline"></a>Megosztás használata kapcsolat nélküli módban
+## <a name="take-a-share-offline"></a>Megosztás offline állapotba helyezése
 
-Előfordulhat, hogy offline állapotba kell helyeznie egy megosztást, amikor módosítani vagy törölni szeretné. Ha egy megosztás offline állapotban van, nem érhető el írási és írási hozzáféréssel. A megosztást offline állapotba kell helyeznie a gazdagépen és az eszközön is.
+Előfordulhat, hogy egy megosztást offline állapotba kell állítania, ha módosítani vagy törölni szeretné. Ha egy megosztás offline állapotban van, nem érhető el írási és olvasási hozzáféréssel. A megosztást offline állapotba kell helyeznie a gazdagépen és az eszközön is.
 
 #### <a name="to-take-a-share-offline"></a>Megosztás offline állapotba helyezése
 
-1. Mielőtt offline állapotba hozná, győződjön meg arról, hogy a kérdéses rész nincs használatban.
-2. A tömb megosztását a következő lépések végrehajtásával vegye igénybe a tömbön:
+1. Az offline állapotba helyezés előtt győződjön meg arról, hogy a szóban forgó megosztás nincs használatban.
+2. A következő lépések végrehajtásával végezze el a megosztást a tömbön offline állapotba:
    
-    1. A StorSimple szolgáltatás összefoglaló **panelmegosztási** beállításából válassza ki azt a virtuális tömböt, amelyen az offline kívánt megosztás takar.
+    1. A StorSimple szolgáltatás összegzése panel **megosztások** beállítása paneljén válassza ki azt a virtuális tömböt, amelyen az offline állapotú megosztást szeretné.
 
-    2. **Válassza ki** a megosztást, és kattintson **a ...** gombra (felváltva kattintson a jobb gombbal ebben a sorban), és a helyi menüben válassza a Kapcsolat nélküli **mód kiválasztását**.
+    2. **Válassza ki** a megosztást, és kattintson a **...** elemre (a jobb gombbal kattintson erre a sorra), majd a helyi menüben válassza az **Offline**állapotba állítás lehetőséget.
      
-        ![Kapcsolat nélküli megosztás](./media/storsimple-virtual-array-manage-shares/shares-offline.png)
+        ![Offline megosztás](./media/storsimple-virtual-array-manage-shares/shares-offline.png)
 
-    3. Tekintse át az offline **módba vétel** panelen található információkat, és erősítse meg, hogy elfogadja a műveletet. A megosztás offline állapotba hozásához kattintson a **Kapcsolat nélküli mód** ra. A folyamatban lévő műveletről értesítést fog látni.
+    3. Tekintse át az adatokat az **Offline** panelen, és erősítse meg a művelet elfogadását. Kattintson az **Offline** állapotba helyezés gombra a megosztás offline állapotba helyezéséhez. Ekkor megjelenik egy értesítés a folyamatban lévő műveletről.
 
-    4. Annak ellenőrzéséhez, hogy a megosztás sikeresen offline állapotba került-e, lépjen a **Megosztások** panelre. A megosztás állapotát offline állapotban kell látnia.
+    4. A megosztás offline állapotba helyezésének ellenőrzéséhez nyissa meg a **megosztások** panelt. A megosztás állapotát kapcsolat nélküli állapotban kell látni.
 
 ## <a name="delete-a-share"></a>Megosztás törlése
 
 > [!IMPORTANT]
-> A megosztást csak akkor törölheti, ha az offline állapotban van.
+> A megosztás csak akkor törölhető, ha offline állapotban van.
 
 
-A megosztás törléséhez hajtsa végre az alábbi lépéseket.
+Egy megosztás törléséhez hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-delete-a-share"></a>Megosztás törlése
 
-1. A StorSimple szolgáltatás összefoglaló **panelmegosztási** beállításából válassza ki azt a virtuális tömböt, amelyen a törölni kívánt megosztás található.
-2. **Jelölje ki** a megosztást, és kattintson **a ...** gombra (felváltva kattintson a jobb gombbal ebben a sorban), és a helyi menüben válassza a **Törlés parancsot.**
+1. A StorSimple szolgáltatás összegzése panel **megosztások** beállítása paneljén válassza ki azt a virtuális tömböt, amelyen a törölni kívánt megosztás található.
+2. **Válassza ki** a megosztást, és kattintson a **...** elemre (a jobb gombbal kattintson erre a sorra), majd a helyi menüben válassza a **Törlés**lehetőséget.
    
     ![Megosztás törlése](./media/storsimple-virtual-array-manage-shares/share-delete.png)
-3. Ellenőrizze a törölni kívánt megosztás állapotát. Ha a törölni kívánt megosztás nem offline állapotban van, először tegye offline állapotba. Kövesse a [Megosztás offline állapotba helyezése](#take-a-share-offline)című részben leírt lépéseket.
-4. Amikor megerősítést kér a **Törlés** panelen, fogadja el a megerősítést, és kattintson a **Törlés gombra.** A megosztás most törlődik, és a **Megosztások** panelen megjelenik a virtuális tömbben lévő megosztások frissített listája.
+3. Tekintse meg a törölni kívánt megosztás állapotát. Ha a törölni kívánt megosztás nem offline állapotban van, először kapcsolja offline állapotba. Kövesse a [megosztás offline állapotba](#take-a-share-offline)helyezése című témakör lépéseit.
+4. Amikor a rendszer megerősítést kér a **Törlés** panelen, fogadja el a megerősítést, és kattintson a **Törlés**gombra. A megosztás törölve lesz, és a **megosztások** panel a virtuális tömbben található megosztások frissített listáját jeleníti meg.
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [klónozhat egy StorSimple megosztást.](storsimple-virtual-array-clone.md)
+Útmutató StorSimple- [megosztás klónozásához](storsimple-virtual-array-clone.md).
 

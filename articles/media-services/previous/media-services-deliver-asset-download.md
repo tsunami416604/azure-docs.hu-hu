@@ -1,6 +1,6 @@
 ---
-title: A Media Services-kellékek letöltése a számítógépre - Azure | Microsoft dokumentumok
-description: További információ arról, hogy miként tölthet le kellékeket a számítógépre. A kódminták C# nyelven íródnak, és a Media Services SDK-t használják a .NET-hez.
+title: Media Services eszközök letöltése a számítógépre – Azure | Microsoft Docs
+description: További információ az eszközöknek a számítógépre való letöltéséről. A kód minták C# nyelven íródtak, és a .NET-hez készült Media Services SDK-t használják.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61465660"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Hogyan: Eszköz kézbesítése letöltéssel  
-Ez a cikk a Media Servicesszolgáltatásba feltöltött médiaeszközök kézbesítésének lehetőségeit ismerteti. A Media Services-tartalmakat számos alkalmazási forgatókönyvben is kézbesítheti. Kódolás után töltse le a létrehozott médiaeszközöket, vagy érje el őket egy streamelési lokátor használatával. A jobb teljesítmény és méretezhetőség érdekében tartalomkézbesítési hálózat (CDN) használatával is kézbesíthet tartalmakat.
+# <a name="how-to-deliver-an-asset-by-download"></a>Útmutató: eszköz kézbesítése letöltéssel  
+Ez a cikk a Media Servicesba feltöltött média-eszközök kézbesítésének lehetőségeit tárgyalja. Számos alkalmazási forgatókönyvben Media Services tartalmat is eljuttathat. A kódolást követően töltse le a generált adathordozó-eszközöket, vagy egy streaming Locator használatával hozzáférjen hozzájuk. A jobb teljesítmény és méretezhetőség érdekében Content Delivery Network (CDN) használatával is elvégezheti a tartalom továbbítását.
 
-Ez a példa bemutatja, hogyan tölthet le médiaeszközöket a Media Services szolgáltatásból a helyi számítógépre. A kód lekérdezi a Media Services-fiókhoz társított feladatokat feladatazonosító szerint, és hozzáfér az **OutputMediaAssets** gyűjteményéhez (amely egy vagy több kimeneti adathordozó-eszköz készlete, amely egy feladat futtatásából származik). Ez a példa bemutatja, hogyan tölthet le kimeneti médiaelemeket egy feladatból, de ugyanazt a megközelítést alkalmazhatja más eszközök letöltéséhez.
+Ez a példa azt mutatja be, hogyan tölthetők le a média eszközei Media Servicesről a helyi számítógépre. A kód lekérdezi a Media Services-fiókhoz társított feladatokat a feladat azonosítója alapján, és hozzáfér a **OutputMediaAssets** -gyűjteményhez (amely egy vagy több kimeneti adathordozó-eszköz készlete, amely egy feladat futtatását eredményezi). Ebből a példából megtudhatja, hogyan töltheti le a kimeneti adathordozó-eszközöket a feladatokból, de ugyanezt a módszert alkalmazhatja más eszközök letöltésére is.
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Használja ugyanazt a házirend-azonosítót, ha mindig ugyanazokat a napokat / hozzáférési engedélyeket használja, például a helymeghatározókra vonatkozó házirendeket, amelyek hosszú ideig a helyükön maradnak (nem feltöltési házirendek). További információt [ebben a cikkben](media-services-dotnet-manage-entities.md#limit-access-policies) talál.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Használja ugyanazt a házirend-azonosítót, ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja, például olyan lokátorokra vonatkozó házirendeket, amelyek hosszú ideig maradnak érvényben (nem feltöltési szabályzatok). További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
 ```csharp
     // Download the output asset of the specified job to a local folder.
@@ -88,5 +88,5 @@ Ez a példa bemutatja, hogyan tölthet le médiaeszközöket a Media Services sz
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[Streamelési tartalom biztosítása](media-services-deliver-streaming-content.md)
+[Továbbítási tartalom továbbítása](media-services-deliver-streaming-content.md)
 

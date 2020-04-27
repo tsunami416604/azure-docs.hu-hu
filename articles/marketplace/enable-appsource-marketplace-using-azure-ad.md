@@ -1,96 +1,96 @@
 ---
-title: Microsoft AppSource és Azure Marketplace-termékismertető engedélyezése az Azure Active Directory használatával | Azure
-description: Engedélyezze a hirdetéstípust az Azure Active Directory használatával az Azure Marketplace-en és az AppSource alkalmazás- és szolgáltatásközzétevők számára.
+title: Microsoft AppSource és az Azure Marketplace listázásának engedélyezése Azure Active Directory használatával | Azure
+description: Az Azure Marketplace-en és a AppSource az alkalmazások és szolgáltatások közzétevői számára való Azure Active Directory használatával engedélyezheti a listaelemek típusát.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: d2f33fc8b1bdd15b53ad9130b5cc598dd6d5ee1a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81684629"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160613"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>AppSource- és Marketplace-termékoldal engedélyezése az Azure Active Directory használatával
 
- Az Azure Active Directory (Azure AD) egy felhőalapú identitásszolgáltatás, amely lehetővé teszi a Microsoft-fiókkal való hitelesítést. Az Azure AD iparági szabványnak megfelelő keretrendszereket használ. [További információ az Azure Active Directoryról.](https://azure.microsoft.com/services/active-directory)
+ Azure Active Directory (Azure AD) egy felhőalapú identitás-szolgáltatás, amely lehetővé teszi a hitelesítést egy Microsoft-fiók. Az Azure AD az iparági szabványoknak megfelelő keretrendszereket használ. [További információ a Azure Active Directoryról](https://azure.microsoft.com/services/active-directory).
 
 ## <a name="azure-ad-benefits"></a>Az Azure AD előnyei
 
-A Microsoft AppSource és az Azure Marketplace-en lévő ügyfelek terméken belüli élményben használatosak a termékkatalógusokban való kereséshez. Ezek a műveletek megkövetelik az ügyfelektől, hogy jelentkezzenek be a termékbe. Az Azure AD-integráció a következő előnyökkel jár:
+A Microsoft AppSource és az Azure Marketplace ügyfelei a terméken belüli tapasztalatokat használják a listázási katalógusok kereséséhez. Ezeknek a műveleteknek a használatához a felhasználóknak be kell jelentkezniük a termékbe. Az Azure AD-integráció a következő előnyöket biztosítja:
 
-- Gyorsabb elköteleződés és optimalizált ügyfélélmény
+- Gyorsabb engagement és optimalizált felhasználói élmény
 - Egyszeri bejelentkezés (SSO) több millió vállalati felhasználó számára
-- Konzisztens, bejelentkezési élmény a különböző partnerek által közzétett alkalmazások között
-- Méretezhető, platformfüggetlen hitelesítés mobil- és felhőalapú alkalmazásokhoz
+- Konzisztens, bejelentkezési élmény különböző partnerek által közzétett alkalmazások között
+- Méretezhető, többplatformos hitelesítés mobil-és felhőalapú alkalmazásokhoz
 
 ## <a name="offers-that-require-azure-ad"></a>Az Azure AD-t igénylő ajánlatok
 
-Az AppSource és az Azure Marketplace különböző [beállítási lehetőségei és ajánlattípusai](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) eltérő követelményekkel rendelkeznek az Azure AD-implementációhoz. A részleteket lásd az alábbi táblázatban:
+A AppSource és az Azure Marketplace különböző [listázási lehetőségei és típusai](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) eltérő követelményekkel rendelkeznek az Azure ad megvalósításához. A részletekért tekintse meg az alábbi táblázatot:
 
-| **Ajánlat típusa**    | **Az Azure AD-sSO szükséges?**  |  |   |  |
+| **Ajánlat típusa**    | **Azure AD SSO szükséges?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-|  | Kapcsolat | Próbaverzió | Tesztverzió | Transact |
+|  | Kapcsolatfelvétel | Próbaverzió | Tesztverzió | Transact |
 | Virtuális gép | N/A | Nem | Nem | Nem |
-| Azure Apps (megoldássablon)  | N/A | N/A | N/A | N/A |
+| Azure-alkalmazások (megoldás-sablon)  | N/A | N/A | N/A | N/A |
 | Felügyelt alkalmazások  | N/A | N/A | N/A | Nem |
 | SaaS  | Nem | Igen | Igen | Igen |
 | Containers  | N/A | N/A | N/A | Nem |
 | Tanácsadási szolgáltatások  | Nem | N/A | N/A | N/A |
 
-A SaaS műszaki követelményeiről további információt a [SaaS-alkalmazások közzétételi útmutatójában talál.](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)
+További információ a SaaS-technikai követelményekről: [SaaS-alkalmazások ajánlat közzétételi útmutatója](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
 ## <a name="azure-ad-integration"></a>Azure AD-integráció
 
-- Az Azure AD-nek a termékismertetőbe való integrálásával történő egyszeri bejelentkezés engedélyezéséről az [Azure Active Directory fejlesztőknek című]( https://aka.ms/aaddev)témakörben talál tájékoztatást.
-- Az Azure AD egyszeri bejelentkezéssel kapcsolatos részletekért olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- További információ az egyszeri bejelentkezés engedélyezéséről az Azure AD-nek a listához való integrálásával: [Azure Active Directory for Developers]( https://docs.microsoft.com/azure/active-directory/develop/).
+- Az Azure AD egyszeri bejelentkezéssel kapcsolatos részletekért tekintse meg [a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
-## <a name="enable-a-trial-listing"></a>Próbalista engedélyezése
+## <a name="enable-a-trial-listing"></a>Próbaverziók listájának engedélyezése
 
-Az automatikus ügyfélbeállítás növelheti a konverzió valószínűségét. Amikor az ügyfél kiválasztja a próbaverziós adatlapot, és átirányítja a próbakörnyezetbe, közvetlenül is beállíthatja az ügyfelet anélkül, hogy további bejelentkezési lépéseket kellene megkövetelnie.
+Az automatizált ügyfelek telepítése növelheti a konverzió valószínűségét. Ha az ügyfél kiválasztja a próbaidőszakot, és a rendszer átirányítja a próbaverziós környezetbe, az ügyfelet közvetlenül a további bejelentkezési lépések megkövetelése nélkül is beállíthatja.
 
-A hitelesítés során az Azure AD egy jogkivonatot küld az alkalmazásnak vagy az ajánlatnak. A jogkivonat által biztosított felhasználói adatok lehetővé teszik egy felhasználói fiók létrehozását az alkalmazásban vagy az ajánlatban. További információ: [Mintatokenek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+A hitelesítés során az Azure AD jogkivonatot küld az alkalmazásnak vagy az ajánlatnak. A jogkivonat által megadott felhasználói adatok lehetővé teszik felhasználói fiók létrehozását az alkalmazásban vagy az ajánlatban. További információ: [minta tokenek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
-Ha az Azure AD segítségével engedélyezi az egykattintásos hitelesítést az alkalmazásban vagy a próbaverzióban, a következőket teszi:
+Ha az Azure AD-t használja az egykattintásos hitelesítés engedélyezéséhez az alkalmazásban vagy a próbaverzióban, a következőt kell tennie:
 
-- Egyszerűsítse az ügyfélélményt a Piactérről a próbaverziós adatlapra.
-- A terméken belüli élmény érzete akkor is megőrizheti, ha a felhasználót a Piactérről a tartományba vagy a próbakörnyezetbe irányítja át.
-- Csökkentse az elhagyás valószínűségét, amikor a felhasználók átirányításra kerülnek, mert nincsenek további bejelentkezési lépések.
-- Csökkentse a telepítési akadályokat az Azure AD-felhasználók nagy számú számára.
+- Egyszerűsítse a piactér felhasználói élményét a próbaverziós listához.
+- Ha a felhasználót a piactérről a tartományba vagy a próbaverziós környezetbe irányítja át, akkor is megtarthatja a terméken belüli élményt.
+- Csökkentse annak a valószínűségét, hogy a rendszer elutasítja a felhasználókat, mert nincsenek további bejelentkezési lépések.
+- Csökkentse az Azure AD-felhasználók nagy sokaságának üzembe helyezési korlátait.
 
 ## <a name="verify-azure-ad-integration"></a>Az Azure AD-integráció ellenőrzése
 
 ### <a name="multitenant-solutions"></a>Több-bérlős megoldások
 
-Az Azure AD segítségével támogassa a következő műveleteket:
+Az Azure AD használata a következő műveletek támogatásához:
 
-- Regisztrálja alkalmazását a Marketplace egyik kirakatában. További információkért tekintse meg [az alkalmazásregisztrációt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) vagy az [AppSource-minősítést.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)
-- Engedélyezze a többbérlős támogatási funkciót az Azure AD-ben, hogy egy kattintással elérhető próbaverziós élményt kapjon.
+- Az alkalmazás regisztrálása az egyik piactér-kirakatban. További információért tekintse meg az [alkalmazás regisztrációjának](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) vagy [AppSource minősítését](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified) .
+- Az Azure AD bérlős-támogatás funkciójának engedélyezésével egyetlen kattintással elsajátíthatja a próbaverziót.
 
-Ha most használja az Azure AD összevont egyszeri bejelentkezés, az alábbi lépésekkel:
+Ha most ismerkedik az Azure AD összevont egyszeri bejelentkezéssel, hajtsa végre a következő lépéseket:
 
-1. Regisztrálja alkalmazását a Piactéren.
-1. Az SSO fejlesztése az Azure AD-vel az [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) vagy [az OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)használatával.
-1. Engedélyezze a többbérlős támogatási funkciót az Azure AD-ben, hogy egy kattintással elérhető próbaverziós élményt nyújtson.
+1. Az alkalmazás regisztrálása a piactéren.
+1. Az SSO-t az Azure AD-vel [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) vagy [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)használatával fejlesztheti.
+1. Az Azure AD bérlős-támogatás funkciójának engedélyezése egy kattintással elérhető próbaverziót biztosít.
 
 ### <a name="single-tenant-solutions"></a>Egybérlős megoldások
 
-Az Azure AD használatával az alábbi műveletek egyikét támogatva:
+Az Azure AD használata a következő műveletek egyikének támogatásához használható:
 
-- Vendégfelhasználók hozzáadása a címtárhoz az [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)használatával.
-- Manuálisan állíthat be próbaverziókat az ügyfelek számára a **Kapcsolat** közzététele beállítással.
-- Ügyfélenkénti tesztvezetés kidolgozása.
-- Hozzon létre egy több-bérlős minta bemutató alkalmazást, amely egyszeri használatú.
+- Adja hozzá a vendég felhasználókat a címtárhoz az [Azure ad B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)használatával.
+- Manuálisan állítson be próbaverziókat az ügyfelek számára a **kapcsolat** küldése közzétételi lehetőség használatával.
+- Felhasználónkénti tesztelési meghajtó fejlesztése.
+- Hozzon létre egy több-bérlős minta bemutató alkalmazást, amely egyszeri bejelentkezést használ.
 
 ## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, 
 
-- [További információ](https://azuremarketplace.microsoft.com/sell) a piactérről.
+- [További](https://azuremarketplace.microsoft.com/sell) információ a Piactérről.
 
-A Partnerközpontban való regisztrációhoz kezdjen új ajánlatot létrehozni, vagy dolgozzon egy meglévőn:
+A partner Centerben való regisztrációhoz hozzon létre egy új ajánlatot, vagy dolgozzon egy meglévőn:
 
-- [Jelentkezzen be a Partnerközpontba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) az ajánlat létrehozásához vagy teljesítéséhez.
+- Az ajánlat létrehozásához vagy befejezéséhez [Jelentkezzen be a partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .

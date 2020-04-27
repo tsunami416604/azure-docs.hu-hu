@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cloud Shell-szerkesztő használata | Microsoft dokumentumok
-description: Az Azure Cloud Shell-szerkesztő használatának áttekintése.
+title: A Azure Cloud Shell szerkesztő használata | Microsoft Docs
+description: A Azure Cloud Shell-szerkesztő használatának áttekintése.
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60199208"
 ---
-# <a name="using-the-azure-cloud-shell-editor"></a>Az Azure Cloud Shell-szerkesztő használata
+# <a name="using-the-azure-cloud-shell-editor"></a>A Azure Cloud Shell szerkesztő használata
 
-Az Azure Cloud Shell tartalmaz egy integrált fájlszerkesztőt, amely a nyílt forráskódú [Monaco Szerkesztőből](https://github.com/Microsoft/monaco-editor)készült. A Cloud Shell szerkesztőjének támogatott funkciói közé tartozik a nyelvi kiemelés, a parancsválaszték és a fájlkezelő.
+A Azure Cloud Shell tartalmaz egy integrált fájlkezelőt, amely a nyílt forráskódú [Monaco-szerkesztőből](https://github.com/Microsoft/monaco-editor)készült. A Cloud Shell szerkesztőjének támogatott funkciói közé tartozik a nyelvi kiemelés, a parancsválaszték és a fájlkezelő.
 
-![Cloud Shell-szerkesztő](media/using-cloud-shell-editor/open-editor.png)
+![Cloud Shell szerkesztő](media/using-cloud-shell-editor/open-editor.png)
 
 ## <a name="opening-the-editor"></a>A szerkesztő megnyitása
 
@@ -37,20 +37,20 @@ A szerkesztő felhasználói felületről való megnyitásához kattintson a `{}
 
 ## <a name="closing-the-editor"></a>A szerkesztő bezárása
 
-A szerkesztő bezárásához `...` nyissa meg a műveletpanelt a `Close editor`szerkesztő jobb felső részén, és válassza a lehetőséget.
+A szerkesztő bezárásához nyissa meg `...` a szerkesztő jobb felső sarkában található művelet panelt, `Close editor`és válassza a elemet.
 
-![Szerkesztő bezárása](media/using-cloud-shell-editor/close-editor.png)
+![Szerkesztő lezárása](media/using-cloud-shell-editor/close-editor.png)
 
-## <a name="command-palette"></a>Parancspaletta
+## <a name="command-palette"></a>Parancs paletta
 
-A parancspaletta elindításához használja a `F1` kulcsot, ha a szerkesztőre van beállítva. A parancspaletta megnyitása a műveletpanelen keresztül is elvégezhető.
+A parancs-paletta elindításához használja `F1` a kulcsot, ha a fókusz be van állítva a szerkesztőben. A parancs-paletta megnyitása a műveleti panelen is megtehető.
 
-![Cmd paletta](media/using-cloud-shell-editor/cmd-palette.png)
+![Cmd-paletta](media/using-cloud-shell-editor/cmd-palette.png)
 
-## <a name="contributing-to-the-monaco-editor"></a>Hozzájárulás a monacói szerkesztőhöz
+## <a name="contributing-to-the-monaco-editor"></a>Hozzájárulás a Monaco-szerkesztőhöz
 
-A Cloud Shell szerkesztőnyelv-kiemelési támogatását a [Monaco Editor](https://github.com/Microsoft/monaco-editor)Monarch szintaxisdefinícióinak upstream funkciói támogatják. Ha meg szeretné tudni, hogyan lehet hozzájárulást tenni, olvassa el a [Monaco közreműködői útmutatót](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md).
+A Cloud Shell szerkesztőben támogatott nyelvi kiemelés támogatása a [Monacói szerkesztőben](https://github.com/Microsoft/monaco-editor)a Monarch szintaxis-definíciók használatával érhető el. A hozzájárulások létrehozásával kapcsolatban olvassa el a [Monaco közreműködői útmutatót](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md).
 
 ## <a name="next-steps"></a>További lépések
-[Próbálja ki a Bash in Cloud Shell](quickstart.md)
-rövid útmutatóját[Az integrált Cloud Shell-eszközök teljes listájának megtekintése](features.md)
+[Próbálja ki a bash-gyors útmutatót Cloud Shell](quickstart.md)
+[tekintse meg az integrált Cloud Shell eszközök teljes listáját](features.md)

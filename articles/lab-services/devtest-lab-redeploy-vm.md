@@ -1,6 +1,6 @@
 ---
-title: Virtuális gép újratelepítése egy tesztkörnyezetben az Azure DevTest Labsben | Microsoft dokumentumok
-description: Ismerje meg, hogyan helyezheti üzembe újra egy virtuális gépet (áthelyezés az egyik Azure-csomópontról a másikra) az Azure DevTest Labsben.
+title: Virtuális gép újbóli üzembe helyezése laborban Azure DevTest Labsban | Microsoft Docs
+description: Megtudhatja, hogyan telepítheti át a virtuális gépeket (az egyik Azure-csomópontról a másikra) Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60561624"
 ---
-# <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Virtuális gép újratelepítése egy laborban az Azure DevTest Labsben
-Ha nem tud csatlakozni egy virtuális géphez (VM) egy tesztkörnyezetben egy távoli asztali kapcsolaton keresztül, telepítse újra a virtuális gépet, és próbáljon meg újra csatlakozni hozzá. Virtuális gép újratelepítésekor a DevTest Labs áthelyezi a virtuális gép a csomópont, amelyen fut egy új csomópont az Azure-infrastruktúrán belül. Ezután elindítja a virtuális gép, miközben megtartja az összes konfigurációs beállítások és a kapcsolódó erőforrások. Ez a szolgáltatás megtakarítja a távoli asztali kapcsolat vagy a Windows-alapú virtuális gépek hez való hozzáférés hibaelhárításával töltött időt a laborban. 
+# <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Virtuális gép újbóli üzembe helyezése laborban Azure DevTest Labs
+Ha nem tud csatlakozni egy virtuális géphez a laborban távoli asztali kapcsolaton keresztül, telepítse újra a virtuális gépet, és próbálkozzon újra a csatlakozással. Egy virtuális gép újratelepítésekor a DevTest Labs áthelyezi a virtuális gépet abból a csomópontból, amelyen az Azure-infrastruktúrán belüli új csomópontra fut. Ezután elindítja a virtuális gépet, miközben megőrzi az összes konfigurációs beállítást és a kapcsolódó erőforrásokat. Ez a szolgáltatás időt takarít meg a távoli asztali kapcsolat vagy az alkalmazás Windows-alapú virtuális gépekhez való hozzáférésének hibaelhárítása során. 
 
-## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>Virtuális gép laborban való újratelepítésének lépései 
-Virtuális gép újratelepítése egy tesztkörnyezetben az Azure DevTest Labs, az alábbi lépésekkel: 
+## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>A virtuális gépek laboratóriumi üzembe helyezésének lépései 
+Egy virtuális gép Azure DevTest Labs tesztkörnyezetben való újratelepítéséhez hajtsa végre a következő lépéseket: 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
-2. Válassza az **Összes szolgáltatás**lehetőséget, majd a listából válassza a **DevTest Labs** elemet.
-3. A laborok listájából válassza ki azt a tesztkörnyezetet, amely tartalmazza az újratelepíteni kívánt virtuális gép.  
-4. A bal oldali panelen válassza a **Saját virtuális gépek**lehetőséget . 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+3. A Labs listából válassza ki azt a labort, amely tartalmazza az újratelepíteni kívánt virtuális gépet.  
+4. A bal oldali panelen válassza a **saját Virtual Machines**elemet. 
 5. A virtuális gépek listájából válasszon ki egy virtuális gépet.
-6. A virtuális gép virtuális gépe lapján válassza a bal oldali menü **MŰVELETEK** csoportban **az újratelepítés** lehetőséget.
+6. A virtuális gép virtuálisgép-lapján válassza a bal oldali menü **műveletek** területén található **újratelepítés** lehetőséget.
 
     ![Ismételt üzembe helyezés](media/devtest-lab-redeploy-vm/redeploy.png)
-7. Olvassa el a lapon található információkat, és válassza az **Újratelepítés gombot.** 9. Ellenőrizze az újraüzembe helyezési művelet állapotát az **Értesítések** ablakban.
+7. Olvassa el az oldalon található információkat, majd kattintson az újbóli **üzembe helyezés** gombra. 9. Az ismételt üzembe helyezési művelet állapotát az **értesítések** ablakban tekintheti meg.
 
-    ![Újracsoportosítás állapota](media/devtest-lab-redeploy-vm/redeploy-status.png)
+    ![Állapot újbóli üzembe helyezése](media/devtest-lab-redeploy-vm/redeploy-status.png)
 
 ## <a name="next-steps"></a>További lépések
-Megtudhatja, hogyan méretezheti át a virtuális gépeket az Azure DevTest Labsben, olvassa el [a Virtuális gép átméretezése.](devtest-lab-resize-vm.md)
+Megtudhatja, hogyan méretezheti át a virtuális gépeket a Azure DevTest Labsban: [virtuális gép](devtest-lab-resize-vm.md)átméretezése.
 
 

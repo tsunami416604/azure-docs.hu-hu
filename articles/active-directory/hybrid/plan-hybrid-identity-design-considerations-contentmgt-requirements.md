@@ -1,6 +1,6 @@
 ---
-title: Hibrid identitástervezés – tartalomkezelési követelmények Azure | Microsoft dokumentumok
-description: Betekintést nyújt a vállalkozás tartalomkezelési követelményeinek meghatározásába. Általában, ha a felhasználó saját eszközzel rendelkezik, előfordulhat, hogy több hitelesítő adatokat is, amelyek váltakozó szerint az alkalmazást, hogy az általuk használt. Fontos megkülönböztetni, hogy milyen tartalmat hoztak létre a személyes hitelesítő adatokkal szemben a vállalati hitelesítő adatokkal létrehozottakkal szemben. Az identitáskezelési megoldásnak képesnek kell lennie a felhőszolgáltatásokkal való interakcióra, hogy zökkenőmentes élményt nyújtson a végfelhasználónak, miközben biztosítja az adatvédelmüket és növeli az adatszivárgás elleni védelmet.
+title: Hybrid Identity design – tartalomkezelési követelmények az Azure-ban | Microsoft Docs
+description: Betekintést nyújt a vállalat tartalomkezelési követelményeinek meghatározására. Általában, ha egy felhasználó saját eszközével rendelkezik, több hitelesítő adat is tartozhat, amely az általuk használt alkalmazásnak megfelelően váltakozik majd. Fontos megkülönböztetni, hogy milyen tartalmak lettek létrehozva a személyes hitelesítő adatokkal, illetve a vállalati hitelesítő adatok használatával létrehozott tartalommal. A személyazonossági megoldásnak képesnek kell lennie a felhőalapú szolgáltatásokkal való interakcióra, hogy zökkenőmentes felhasználói élményt nyújtson a végfelhasználók számára, miközben gondoskodik az adatok védelméről, és növelheti az adatszivárgás elleni védelmet.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,50 +17,50 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "64918441"
 ---
-# <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás tartalomkezelési követelményeinek meghatározása
-A vállalat tartalomkezelési követelményeinek ismertetése közvetlenül befolyásolhatja a hibrid identitásmegoldás használatára vonatkozó döntést. A több eszköz elterjedése és a felhasználók azon képessége, hogy saját eszközeiket hozzák ([BYOD](https://aka.ms/byodcg)), a vállalatnak meg kell védenie saját adatait, de a felhasználók adatvédelmét is érintetlenül kell tartania. Általában, ha a felhasználó saját eszközzel rendelkezik, előfordulhat, hogy több hitelesítő adatokat is, amelyek váltakozó szerint az alkalmazást, hogy az általuk használt. Fontos megkülönböztetni, hogy milyen tartalmat hoztak létre a személyes hitelesítő adatokkal szemben a vállalati hitelesítő adatokkal létrehozottakkal szemben. Az identitáskezelési megoldásnak képesnek kell lennie a felhőszolgáltatásokkal való interakcióra, hogy zökkenőmentes élményt nyújtson a végfelhasználónak, miközben biztosítja az adatvédelmüket és növeli az adatszivárgás elleni védelmet. 
+# <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>A Hybrid Identity megoldás tartalomkezelési követelményeinek meghatározása
+A vállalat tartalomkezelési követelményeinek megismerése közvetlenül befolyásolhatja a hibrid identitási megoldás használatára vonatkozó döntését. Több eszköz elterjedése és a felhasználók képességeinek a saját eszközei ([BYOD](https://aka.ms/byodcg)) révén a vállalatnak meg kell őriznie a saját adatait, de a felhasználónak is érintetlenül kell tartania a felhasználói adatok védelmét. Általában, ha egy felhasználó saját eszközével rendelkezik, több hitelesítő adat is tartozhat, amely az általuk használt alkalmazásnak megfelelően váltakozik majd. Fontos megkülönböztetni, hogy milyen tartalmak lettek létrehozva a személyes hitelesítő adatokkal, illetve a vállalati hitelesítő adatok használatával létrehozott tartalommal. A személyazonossági megoldásnak képesnek kell lennie a felhőalapú szolgáltatásokkal való interakcióra, hogy zökkenőmentes felhasználói élményt nyújtson a végfelhasználók számára, miközben gondoskodik az adatok védelméről, és növelheti az adatszivárgás elleni védelmet. 
 
-Az Ön személyazonossági megoldását különböző technikai vezérlők használják ki annak érdekében, hogy tartalomkezelést biztosítson az alábbi ábra szerint:
+Az Ön személyazonossági megoldását különböző technikai szabályozások használják, amelyek az alábbi ábrán látható módon biztosítanak tartalomkezelést:
 
-![biztonsági ellenőrzések](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
+![biztonsági vezérlők](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
 
-**Biztonsági ellenőrzések, amelyek kihasználják az ön identitáskezelő rendszerét**
+**Az Identitáskezelés rendszerének kihasználására szolgáló biztonsági vezérlők**
 
-Általánosságban elmondható, hogy a tartalomkezelési követelmények a következő területeken használják ki az Ön identitáskezelési rendszerét:
+Általánosságban elmondható, hogy a tartalomkezelési követelmények a következő területeken fogják kihasználni az Identity Management rendszerét:
 
-* Adatvédelem: az erőforrást birtokló felhasználó azonosítása és a megfelelő vezérlők alkalmazása az integritás fenntartása érdekében.
-* Adatbesorolás: azonosítsa a felhasználót vagy csoportot, valamint az objektumhoz való hozzáférés szintjét a besorolása szerint. 
-* Adatszivárgás elleni védelem: a szivárgás elkerülése érdekében az adatok védelméért felelős biztonsági ellenőrzéseknek a felhasználó személyazonosságának ellenőrzése érdekében kapcsolatba kell lépniük az identitásrendszerrel. Ez a nyomvonal céljának naplózása szempontjából is fontos.
+* Adatvédelem: azonosítja az erőforrást birtokló felhasználót, és alkalmazza a megfelelő vezérlőket az integritás megőrzése érdekében.
+* Adatbesorolás: a felhasználó vagy csoport, valamint az objektumhoz való hozzáférés szintjének meghatározása a besorolása alapján. 
+* Adatszivárgások elleni védelem: az adatok védelméért felelős biztonsági ellenőrzéseknek a szivárgás elkerülése érdekében az identitás rendszerével kell együttműködni a felhasználó identitásának ellenőrzéséhez. Ez a naplózási nyomvonal szempontjából is fontos.
 
 > [!NOTE]
-> Olvassa el [az adatok besorolását a felhőre való felkészültség érdekében,](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) ha további információkat szeretne tudni az ajánlott eljárásokról és az adatbesorolásirányelveiről.
+> Az adatbesorolással kapcsolatos ajánlott eljárásokról és irányelvekről az adatok besorolása [a felhőalapú felkészültségről](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) című témakörben olvashat bővebben.
 > 
 > 
 
-A hibrid identitáskezelési megoldás tervezésekor győződjön meg arról, hogy a szervezet követelményeinek megfelelően válaszol a következő kérdésekre:
+A hibrid identitás megoldás megtervezése során győződjön meg arról, hogy a szervezet követelményeinek megfelelően a következő kérdések válaszolnak:
 
-* Rendelkezik a vállalat biztonsági ellenőrzéssel az adatvédelem érvényesítéséhez?
-  * Ha igen, a biztonsági vezérlők képesek lesznek integrálni a hibrid identitáskezelési megoldás, hogy ön fog elfogadni?
-* A vállalat használ adatbesorolást?
-  * Ha igen, a jelenlegi megoldás képes integrálni a hibrid identitásmegoldás, hogy fogsz elfogadni?
-* Van vállalata jelenleg bármilyen megoldással az adatszivárgásra? 
-  * Ha igen, a jelenlegi megoldás képes integrálni a hibrid identitásmegoldás, hogy fogsz elfogadni?
-* A vállalatnak naplóznia kell az erőforrásokhoz való hozzáférést?
+* Rendelkezik a vállalata biztonsági ellenőrzésekkel az adatvédelem érvénybe léptetéséhez?
+  * Ha igen, a biztonsági vezérlők integrálva lesznek a hibrid identitási megoldással, amelyet el szeretne fogadni?
+* A vállalata az adatbesorolást használja?
+  * Ha igen, a jelenlegi megoldás képes integrálni a hibrid identitási megoldással, amelyet el fog fogadni?
+* A vállalata jelenleg bármilyen megoldást kínál az adatszivárgásra? 
+  * Ha igen, a jelenlegi megoldás képes integrálni a hibrid identitási megoldással, amelyet el fog fogadni?
+* A vállalatának szüksége van az erőforrásokhoz való hozzáférés naplózására?
   * Ha igen, milyen típusú erőforrásokat?
   * Ha igen, milyen szintű információra van szükség?
-  * Ha igen, hol kell a naplónak lennie? A helyszínen vagy a felhőben?
-* A vállalatnak titkosítania kell a bizalmas adatokat tartalmazó e-maileket (SSN-ek, hitelkártyaszámok stb.)?
-* A vállalatnak titkosítania kell a külső üzleti partnerekkel megosztott összes dokumentumot/tartalmat?
-* A vállalatnak be kell tartatnia a vállalati irányelveket bizonyos típusú e-mailekre (nem válaszol mindenkinek, nem továbbítja)?
+  * Ha igen, akkor hol kell lennie a naplónak? A helyszínen vagy a felhőben?
+* A vállalatának titkosítania kell a bizalmas adatokat tartalmazó e-maileket (SSNs, hitelkártya-számok stb.)?
+* A vállalatának titkosítania kell a külső üzleti partnerekkel megosztott összes dokumentumot/tartalmat?
+* A vállalatának bizonyos típusú e-mailekre vonatkozó vállalati házirendeket kell kikényszeríteni (nem kell a választ adni, nem továbbítható)?
 
 > [!NOTE]
-> Minden válaszról készítsen feljegyzéseket, és ismerje meg a válaszok indokait. [Az Adatvédelmi stratégia meghatározása](plan-hybrid-identity-design-considerations-data-protection-strategy.md) az egyes lehetőségek rendelkezésre álló lehetőségeit és előnyeit/hátrányait veszi át.  A kérdések megválaszolásával kiválaszthatja, hogy melyik lehetőség felel meg legjobban üzleti igényeinek.
+> Minden válaszról készítsen feljegyzéseket, és ismerje meg a válaszok indokait. Az [adatvédelmi stratégia meghatározása](plan-hybrid-identity-design-considerations-data-protection-strategy.md) a rendelkezésre álló lehetőségeket, az egyes lehetőségek előnyeit és hátrányait veszi át.  A kérdések megválaszolása után kiválaszthatja, hogy melyik lehetőség felel meg legjobban az üzleti igényeinek.
 > 
 > 
 
@@ -68,5 +68,5 @@ A hibrid identitáskezelési megoldás tervezésekor győződjön meg arról, ho
 [A hozzáférés-vezérlésre vonatkozó követelmények meghatározása](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
 
 ## <a name="see-also"></a>Lásd még:
-[Tervezési szempontok – áttekintés](plan-hybrid-identity-design-considerations-overview.md)
+[Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
 

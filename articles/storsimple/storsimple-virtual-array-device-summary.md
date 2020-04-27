@@ -1,6 +1,6 @@
 ---
-title: StorSimple Virtual Array eszköz összefoglaló panel | Microsoft dokumentumok
-description: Ismerteti a StorSimple Eszközkezelő eszközösszefoglaló paneljét, és ismerteti, hogyan használhatja a StorSimple virtuális tömb állapotának figyelésére.
+title: StorSimple virtuális tömb eszközének összegzése panel | Microsoft Docs
+description: A StorSimple Eszközkezelő eszköz összefoglalási paneljét ismerteti, és ismerteti, hogyan használható a StorSimple virtuális tömb állapotának figyelésére.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 9edc0b552f5c2f38e646bc4b44dd8df5c16b0457
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61408506"
 ---
-# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>A StorSimple virtuális tömbhöz csatlakoztatott StorSimple Eszközkezelő eszközösszesítő paneljének használata
+# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>A StorSimple virtuális tömbhöz csatlakoztatott StorSimple-Eszközkezelő eszköz összefoglalási paneljének használata
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Eszközkezelő eszközpanel egy adott StorSimple Eszközkezelővel regisztrált StorSimple virtuális tömb összefoglaló nézetét tartalmazza, kiemelve azokat az eszközproblémákat, amelyek a rendszergazda figyelmére szorulnak. Ez az oktatóanyag bemutatja az eszköz összefoglaló paneljét, ismerteti a tartalmat és a funkciót, és ismerteti az ebből a panelből végrehajtható feladatokat.
+A StorSimple Eszközkezelő-eszköz panel egy adott StorSimple-Eszközkezelő regisztrált StorSimple virtuális tömb összegző nézetét jeleníti meg, kiemelve azokat az eszközöket, amelyeknek rendszergazdai beavatkozásra van szükségük. Ez az oktatóanyag bemutatja az eszköz összegzése panelt, ismerteti a tartalmat és a függvényt, és leírja a panelen végrehajtható feladatokat.
 
-A készülék összefoglaló paneljén a következő információk jelennek meg:
+Az eszköz összegzése panel a következő információkat jeleníti meg:
 
 ![Az eszköz irányítópultja](./media/storsimple-virtual-array-device-summary/device-blade.png)
 
@@ -35,25 +35,25 @@ A készülék összefoglaló paneljén a következő információk jelennek meg:
 
 ## <a name="management"></a>Kezelés
 
-A StorSimple eszköz panelen láthatja a StorSimple-eszköz kezeléséhez. A felügyeleti parancsok a penge tetején és a bal oldalon jelennek meg. Ezekkel a beállításokkal megosztásokat vagy köteteket adhat hozzá, vagy frissítheti vagy átveheti a virtuális tömböt.
+A StorSimple-eszköz panelen láthatja a StorSimple-eszköz felügyeletének beállításait. A panel tetején és a bal oldalon láthatók a felügyeleti parancsok. Ezeket a beállításokat megosztások vagy kötetek hozzáadására, illetve a virtuális tömb frissítésére vagy feladatátvételére használhatja.
 
-A lényegi terület rögzíti néhány fontos tulajdonság, mint például az állapot, modell, szoftver verzió, valamint egy linket a **webes felhasználói felület** a tömb. Ha belső hálózatot kezel, közvetlenül elindíthatja a [helyi webes felhasználói felületet](storsimple-ova-web-ui-admin.md) a virtuális tömb felügyeletéhez.
+Az Essentials terület a fontos tulajdonságok némelyikét rögzíti, például az állapotot, a modellt, a szoftvert, valamint a tömb **webes felületére** mutató hivatkozást. Ha belső hálózatot használ, a [helyi webes felhasználói felületet](storsimple-ova-web-ui-admin.md) közvetlenül is elindíthatja a virtuális tömb felügyeletéhez.
 
-![Az eszköz alapvető fontosságú](./media/storsimple-virtual-array-device-summary/device-essentials.png)
+![Eszköz Essentials](./media/storsimple-virtual-array-device-summary/device-essentials.png)
 
-## <a name="storsimple-device-summary"></a>StorSimple eszköz összegzése
+## <a name="storsimple-device-summary"></a>StorSimple-eszköz összegzése
 
-* A **Riasztások** csempe pillanatképet biztosít a virtuális tömb összes aktív riasztásáról, riasztássúlyosság a szerint csoportosítva. Kattintson a csempére a **Riasztások** panel megnyitásához, majd kattintson egy adott riasztásra a riasztástovábbi részleteinek megtekintéséhez, beleértve az ajánlott műveleteket is. A riasztást törölheti is, ha a probléma megoldódott.
+* A **riasztások** csempe tartalmazza a virtuális tömb összes aktív riasztását, a riasztás súlyossága szerint csoportosítva. A csempére kattintva nyissa meg a **riasztások** panelt, majd kattintson egy egyéni riasztásra, hogy megtekintse a riasztás további részleteit, beleértve az ajánlott műveleteket is. Ha a probléma megoldódott, törölheti is a riasztást.
 
-* A **Kapacitás** csempe megjeleníti az elsődleges tároló, amely ki van építve, és a virtuális eszközön marad az azonos számára rendelkezésre álló teljes tárterülethez képest. **Kiépített** utal, hogy a tárolási összeg, amely előkészített és használatra lefoglalt, **Fennmaradó** utal a fennmaradó kapacitás, amely kiépíthető az eszközön keresztül. A **fennmaradó rétegzett** kapacitás a rendelkezésre álló kapacitás, amely kiépíthető, beleértve a felhőt, míg a **fennmaradó helyi** a virtuális tömbhöz csatlakoztatott lemezeken fennmaradó kapacitás.
+* A **kapacitás** csempén látható az elsődleges tárterület, amelyet a rendszer a virtuális eszközön a rendelkezésre álló teljes tárterülethez viszonyítva kiépít és megmarad. A **kiépített** mennyiség a használatra előkészített és lefoglalt tárterületre utal, és a **fennmaradó** kapacitás az eszközön kiépíthető fennmaradó kapacitásra utal. A **fennmaradó többszintű** kapacitás a rendelkezésre álló kapacitás, amely tartalmazza a felhőt is, míg a **fennmaradó helyi** érték az ehhez a virtuális tömbhöz csatolt lemezeken fennmaradó kapacitás.
 
-* A **Használat** diagramban megtekintheti a virtuális tömbben használt elsődleges tárhelyet, valamint az elmúlt 7 nap ban felhasznált felhőalapú tárhelyet, az alapértelmezett időszakot. A diagram jobb felső sarkában található **Szerkesztés** beállítással válasszon másik időskálát.
+* A **használati** diagramon megtekintheti a virtuális tömbben használt elsődleges tárterületet, valamint az elmúlt 7 napban felhasznált Felhőbeli tárterületet, az alapértelmezett időtartamot. A diagram jobb felső sarkában található **Szerkesztés** lehetőséggel különböző időskálát választhat.
 
-* A **Megosztások** vagy **kötetek** csempe az eszköz megosztásainak vagy köteteinek állapotát összegző számát tartalmazza. Kattintson a csempére a **Megosztások** vagy **a Kötetek** lista panel megnyitásához, majd kattintson egy adott megosztásra vagy kötetre a tulajdonságainak megtekintéséhez vagy módosításához. További információt a [megosztások kezeléséről](storsimple-virtual-array-manage-shares.md) és [a kötetek kezeléséről](storsimple-virtual-array-manage-volumes.md)talál.
+* A **megosztások** vagy **kötetek** csempe az eszközön az állapot szerint csoportosított megosztások vagy kötetek számának összegzését tartalmazza. A csempére kattintva nyissa meg a **megosztások** vagy **kötetek** listája panelt, majd kattintson egy egyéni megosztásra vagy kötetre a tulajdonságainak megtekintéséhez vagy módosításához. További információ: a [megosztások kezelése](storsimple-virtual-array-manage-shares.md) vagy a [kötetek kezelése](storsimple-virtual-array-manage-volumes.md).
 
 ## <a name="next-steps"></a>További lépések
 Az alábbiak végrehajtásának módját ismerheti meg:
-- [Megosztások kezelése storSimple virtuális tömbön](storsimple-virtual-array-manage-shares.md)
+- [Megosztások kezelése StorSimple virtuális tömbben](storsimple-virtual-array-manage-shares.md)
     
-- [Kötetek kezelése StorSimple virtuális tömbön](storsimple-virtual-array-manage-volumes.md)
+- [Kötetek kezelése StorSimple virtuális tömbben](storsimple-virtual-array-manage-volumes.md)
 

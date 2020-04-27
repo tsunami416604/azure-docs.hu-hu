@@ -9,15 +9,15 @@ ms.date: 04/24/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 4311cd2174500df51e5006ff8f274d0737cc74d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67179287"
 ---
 |  |
 |--|
-|A felhasználó által hozzárendelt felügyelt identitások az Azure Active Directory előzetes verziójú szolgáltatása. Mielőtt nekikezdene, tekintse át az [ismert problémákat](~/articles/active-directory/managed-identities-azure-resources/known-issues.md). Az előzetes verziókról további információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+|A felhasználóhoz rendelt felügyelt identitások a Azure Active Directory előzetes verziójának funkciói. Mielőtt nekikezdene, tekintse át az [ismert problémákat](~/articles/active-directory/managed-identities-azure-resources/known-issues.md). További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |
 
 

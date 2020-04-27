@@ -1,6 +1,6 @@
 ---
-title: H264 Egybitráta 1080p Audio 5.1 | Microsoft dokumentumok
-description: A témakör áttekintést ad a **H264 Single Bitrate 1080p Audio 5.1** feladatkészletről.
+title: H264 Single bitráta, 1080p hang 5,1 | Microsoft Docs
+description: A témakör áttekintést nyújt a **H264 Single bitráta 1080P Audio 5,1** feladatról.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 83d1c279552a75b959c19fb37e859806571f48eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61463616"
 ---
 # <a name="h264-single-bitrate-1080p-audio-51"></a>H264 Single Bitrate 1080p Audio 5.1
 
-`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási készleteket. Az a segítségével `preset name` megadhatja, hogy milyen formátumba szeretné kódolni a médiafájlt. Vagy létrehozhat saját JSON- vagy XML-alapú készleteket (UTF-8 vagy UTF-16 kódolással. Ezután adja át az egyéni készletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre beállított név listáját a [Media Encoder Standard feladatkészletek című témakörében tartalmazza.](media-services-mes-presets-overview.md)  
+`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási beállításkészleteket. A `preset name` (z) segítségével megadhatja, hogy melyik formátumban szeretné kódolni a médiafájlt. Vagy létrehozhat egy saját JSON-vagy XML-alapú előkészletet (UTF-8 vagy UTF-16 kódolás használatával). Ezután átadja az egyéni beállításkészletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre definiált név listájának megtekintéséhez tekintse meg a [Media Encoder standard feladat-előállítók](media-services-mes-presets-overview.md)című témakört.  
   
- Ez a `H264 Single Bitrate 1080p Audio 5.1` témakör az előre beállított készletet jeleníti meg XML és JSON formátumban..  
+ Ez a témakör az `H264 Single Bitrate 1080p Audio 5.1` előre definiált XML-és JSON-formátumban jeleníti meg.  
   
- Ez a készlet egyetlen MP4-fájlt hoz létre 6750 kbps bitrátával és AAC 5.1-es hanggal. Az előre beállított profillal, bitrátával, mintavételi sebességgel stb. Az egyes elemek jelentéseiről és az egyes elemek érvényes értékeinek magyarázatáról a [Media Encoder Standard sémában](media-services-mes-schema.md)lehet eltekinteni.  
+ Ez az előre definiált egy MP4-fájlt hoz létre, amely 6750 kbps sebességű és AAC 5,1 hang. A profil, a bitráta, a mintavételezési sebesség és az előre definiált beállítások részletes ismertetését az alábbi XML-vagy JSON-kód alapján ellenőrizheti. Az egyes elemek leírását és az egyes elemek érvényes értékeit a [Media Encoder standard sémában](media-services-mes-schema.md)találja.  
   
  XML  
   

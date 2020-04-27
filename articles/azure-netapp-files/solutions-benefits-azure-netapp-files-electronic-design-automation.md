@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 8a287ec5cd33c9f2a96af7ad8162f7c8f54df118
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134168"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160153"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Az Azure NetApp Files használatának előnyei az elektronikus tervezési automatizáláshoz
 
@@ -77,9 +77,9 @@ A teljes munkaterhelés egy párhuzamosan futó funkcionális és fizikai fázis
 
 A funkcionális fázis kezdeti specifikációkat és logikai kialakítást tartalmaz. A fizikai fázis akkor zajlik le, amikor a logikai terv fizikai chipre lett konvertálva. A kijelentkezési és a kilépési fázisban a végső ellenőrzés befejeződött, és a rendszer a kialakítást egy öntödei üzemben tárolja.  
 
-A funkcionális fázisok egymás utáni és véletlenszerű olvasási és írási I/O-műveletek keverékét tartalmazzák. A funkcionális fázisok nagy mennyiségű metaadatok, például a fájl stat és a hozzáférési hívások. Bár a metaadat-műveletek mérete gyakorlatilag nem méret, az olvasási és írási műveletek tartománya kevesebb, mint 1 K és 16 K közé esik. A legtöbb olvasási érték 4 és 16 K között van.  A legtöbb írás 4 K vagy kevesebb.  A fizikai fázisok teljesen szekvenciális olvasási és írási műveletekből állnak, és 32 K és 64 K OP-méretek keverékével rendelkeznek.  
+A funkcionális fázis szekvenciális és véletlenszerű olvasási és írási I/O-műveleteket tartalmaz. A funkcionális fázis a metaadatok intenzív, például a fájl stat és a hozzáférési hívások. Bár a metaadat-műveletek mérete gyakorlatilag nem méret, az olvasási és írási műveletek tartománya kevesebb, mint 1 K és 16 K közé esik. A legtöbb olvasási érték 4 és 16 K között van.  A legtöbb írás 4 K vagy kevesebb. A fizikai fázis a szekvenciális olvasási és írási műveletekből tevődik össze, és 32 K és 64 K OP-méretek keverékével rendelkezik.  
 
-A fenti gráfokban a teljesítmény nagy része a számítási feladatok szekvenciális fizikai fázisaiból származik. Az I/O-műveletek a kis véletlenszerű és a metaadatokat igényes funkcionális fázisokból származnak. Mindkét fázis párhuzamosan zajlik. 
+A fenti gráfokban a teljesítmény nagy része a számítási feladatok szekvenciális fizikai fázisában található. Az I/O a kis véletlenszerű és a metaadatokat használó funkcionális fázisból származik. Mindkét fázis párhuzamosan zajlik. 
 
 Összefoglalva, az Azure-beli számítási feladatokhoz a Azure NetApp Files for EDA kialakításával méretezhető sávszélességet érhet el. 
 

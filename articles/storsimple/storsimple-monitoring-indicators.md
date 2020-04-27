@@ -1,6 +1,6 @@
 ---
-title: StorSimple monitoringmutatók | Microsoft dokumentumok
-description: A StorSimple eszköz állapotának ellenőrzésére használt fénykibocsátó diódákat (LED-eket) és hangjelzéseket ismerteti.
+title: StorSimple-figyelési mutatók | Microsoft Docs
+description: A StorSimple-eszköz állapotának figyelésére szolgáló fénykibocsátó diódákat (LED-eket) és hallható riasztásokat ismerteti.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,234 +15,234 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60630608"
 ---
-# <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Az eszköz kezeléséhez storSimple figyelési jelzők használata
+# <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple-figyelési mutatók használata az eszköz kezeléséhez
 
 
 ## <a name="overview"></a>Áttekintés
-A StorSimple eszköz fénykibocsátó diódákat (LED-eket) és riasztásokat tartalmaz, amelyek segítségével figyelheti a modulokat és a StorSimple eszköz általános állapotát. A figyelési mutatók megtalálhatók az eszköz elsődleges házának és az EBOD ház hardverösszetevőin. A monitorozási kijelzők lehetnek LED-ek vagy hallható riasztások.
+A StorSimple-eszköz olyan fénykibocsátó diódákat (LED-eket) és riasztásokat tartalmaz, amelyeket a StorSimple-eszköz moduljainak és általános állapotának figyelésére használhat. A figyelési mutatók az eszköz elsődleges bekerítésének és a EBOD ház hardveres összetevőin találhatók. A figyelési mutatók lehetnek LED-ek vagy hangos riasztások.
 
-A modul állapotát három LED-állapot jelzi: zöld, zöldvagy piros borostyánsárga vagy piros-borostyánsárga.  
+A modul állapota három LED-es állapottal jelezhető: zöld, zöld, piros-sárga vagy piros-sárga.  
 
-* A zöld LED-ek egészséges működési állapotot képviselnek.  
-* A zöldtől a pirosborossárgáig villogó LED-ek olyan nem kritikus körülmények jelenlétét jelzik, amelyek felhasználói beavatkozást igényelhetnek.  
-* A piros-borostyánsárga LED-ek azt jelzik, hogy kritikus hiba van a modulban.  
+* A zöld LED-ek kifogástalan működési állapotot jelentenek.  
+* A zöldről vörösre villogó LED-ek jelzik a nem kritikus feltételek jelenlétét, amelyek felhasználói beavatkozást igényelhetnek.  
+* A Red-Amber LED jelzi, hogy a modulban kritikus hiba van.  
 
-A cikk további részében a különböző figyelési jelzőLED-ek, azok helye a StorSimple eszközön, az eszköz állapota a LED-állapotok alapján, és a kapcsolódó hallható riasztások.
+A cikk további részében a különböző monitorozási mutatók, azok helyei a StorSimple-eszközön, az eszköz állapota a LED állapotok alapján, valamint a hozzájuk tartozó hallható riasztások.
 
-## <a name="front-panel-indicator-leds"></a>Az előlap jelzőLED-jei
-Az előlap, más néven a *műveleti panel* vagy *ops panel*, megjeleníti az összes modul összesített állapotát a rendszerben. Az előlap megegyezik a StorSimple elsődleges és az EBOD ház, és az alábbiakban látható.  
+## <a name="front-panel-indicator-leds"></a>Előlap kijelző LED-EK
+Az előlap, más néven operatív *panel* vagy *Ops panel*, megjeleníti a rendszeren lévő összes modul összesített állapotát. Az előlap megegyezik a StorSimple elsődleges és a EBOD bekerítésével, és az alábbi ábrán látható.  
 
-   ![Eszköz előlapján][1]
+   ![Eszköz elülső panelje][1]
 
-Az előlap a következő mutatókat tartalmazza:  
+Az előlapon a következő mutatók láthatók:  
 
-1. Elnémítás gomb
-2. Teljesítményjelző LED (zöld/piros-sárga)
-3. Modulhiba jelző LED (ON red-amber/OFF)
-4. Logikai hibajelző LED (ON red-amber/OFF
-5. Egységazonosító megjelenítése  
+1. Némítás gomb
+2. Power Indicator LED (zöld/piros-sárga)
+3. Modul hibás kijelzője LED (piros-Amber/OFF)
+4. Logikai hiba jelzője LED (piros-sárga/ki
+5. Egység AZONOSÍTÓjának megjelenítése  
 
-A fő különbség az előlapi LED-ek között az eszköz és az EBOD ház a **rendszer egység azonosító szám** látható a LED kijelzőn. Az eszközön megjelenő alapértelmezett egységazonosító **00**, míg az EBOD házon megjelenő alapértelmezett egységazonosító **01**. Ez lehetővé teszi, hogy gyorsan különbséget az eszköz és az EBOD ház, amikor az eszköz be van kapcsolva. Ha az eszköz ki van kapcsolva, használja az [új eszköz bekapcsolása](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) című részben megadott információkat az eszköz és az EBOD ház megkülönböztetéséhez.  
+Az eszköz és a EBOD ház előlapi LED-je közötti fő különbség a **rendszeregység azonosítójának** a LED-ben megjelenített száma. Az eszközön megjelenő alapértelmezett azonosító a **00**, míg a EBOD ház alapértelmezett azonosítójának értéke **01**. Ez lehetővé teszi, hogy az eszköz bekapcsolásakor gyorsan megkülönböztethető legyen az eszköz és a EBOD ház. Ha az eszköz ki van kapcsolva, használja az [új eszköz bekapcsolásával](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) , hogy megkülönböztesse az eszközt az EBOD házban.  
 
-## <a name="front-panel-led-status"></a>Az előlap LED állapota
-Az alábbi táblázat segítségével azonosíthatja az eszköz vagy az EBOD ház előlapján található LED-ek által jelzett állapotot.  
+## <a name="front-panel-led-status"></a>Előlapi LED állapota
+Az alábbi táblázat segítségével azonosíthatja a LED-ek által jelzett állapotot az eszköz vagy a EBOD-ház előlapján.  
 
-| A rendszer teljesítménye | Modulhiba | Logikai hiba | Riasztás | status |
+| Rendszerteljesítmény | Modul hibája | Logikai hiba | Riasztások | status |
 | --- | --- | --- | --- | --- |
-| Vörös borostyán |KI |KI |N/A |A hálózati áram elveszett, működő tartalék teljesítmény, vagy Hálózati áram be van kapcsolva, és a vezérlő modulok at eltávolították. |
-| Zöld |ON |ON |N/A |Ops panel bekapcsolása (5s) teszt állapota |
-| Zöld |KI |KI |N/A |Kapcsolja be, minden funkció jó |
-| Zöld |ON |N/A |PCM hiba LED-ek, ventilátor hiba LED-ek |Bármilyen PCM-hiba, ventilátorhiba, hőmérséklet felett vagy alatt |
-| Zöld |ON |N/A |I/O modul LED-ek |Bármilyen vezérlőmodul-hiba |
-| Zöld |ON |N/A |N/A |Ház logikai hibája |
-| Zöld |Flash |N/A |Modul állapot LED vezérlő modul. PCM hiba LED-ek, ventilátor hiba LED-ek |Ismeretlen vezérlőmodul típusa telepítve, I2C busz hiba, vezérlő modul létfontosságú termékadatok (VPD) konfigurációs hiba |
+| Vörös – sárga |KI |KI |N/A |Az AC-áramkimaradás, a biztonsági mentési teljesítmény vagy az AC-bekapcsolás, valamint a vezérlő modulok eltávolítása megtörtént. |
+| Zöld |ON |ON |N/A |Ops-panel bekapcsolása (5 mp) – tesztelési állapot |
+| Zöld |KI |KI |N/A |Bekapcsolás, minden funkció jó |
+| Zöld |ON |N/A |PCM-hibák, ventilátorok meghibásodási LED-EK |Bármilyen PCM-hiba, ventilátor meghibásodása, hőmérséklet felett vagy alatt |
+| Zöld |ON |N/A |I/O-modul LED-EK |Bármely vezérlő modul hibája |
+| Zöld |ON |N/A |N/A |Bekerítés logikai hibája |
+| Zöld |Flash |N/A |A modul állapota a vezérlő modulon vezetett. PCM-hibák, ventilátorok meghibásodási LED-EK |Ismeretlen a vezérlő modul típusa telepítve, az I2C Bus meghibásodása, a vezérlő modul létfontosságú termék-(VPD-) konfigurációs hibája |
 
-## <a name="power-cooling-module-pcm-indicator-leds"></a>Energiahűtő modul (PCM) jelző LED-ek
-Az energiahűtő modul (PCM) jelző LED-jei az elsődleges ház vagy az EBOD ház hátulján találhatók minden PCM modulon. Ez a témakör ismerteti, hogyan használhatja a következő LED-ek a StorSimple-eszköz állapotának figyeléséhez.  
+## <a name="power-cooling-module-pcm-indicator-leds"></a>Power hűtési modul (PCM) kijelző LED-EK
+Az energiagazdálkodási modul (PCM) kijelző LED-ek az elsődleges bekerítés vagy a EBOD hátoldalán találhatók minden PCM-modulon. Ez a témakör azt ismerteti, hogyan használható a következő LED-ek a StorSimple-eszköz állapotának figyelésére.  
 
-* PCM LED-ek az elsődleges házhoz
-* PCM LED-ek az EBOD házhoz
+* PCM-LED-ek az elsődleges ház számára
+* A EBOD-ház PCM-LED-je
 
-## <a name="pcm-leds-for-the-primary-enclosure"></a>PCM LED-ek az elsődleges házhoz
-A StorSimple eszköz 764 W-os PCM modullal rendelkezik, amely további akkumulátorral rendelkezik. A következő ábrán a készülék LED-panelje látható.  
+## <a name="pcm-leds-for-the-primary-enclosure"></a>PCM-LED-ek az elsődleges ház számára
+A StorSimple-eszközhöz egy 764W PCM-modul tartozik, amely egy további akkumulátort tartalmaz. Az alábbi ábrán az eszköz LED panelje látható.  
 
-   ![PCM LED-ek az elsődleges burkolaton][2]
+   ![PCM-LED-ek az elsődleges házban][2]
 
-LED jelmagyarázat:
+LED jelmagyarázata:
 
-1. Hálózati áramkimaradás
-2. Ventilátor hiba
-3. Akkumulátor hiba
-4. PCM – rendben
-5. Tartományvezérlő hibája
-6. Az akkumulátor jó  
+1. AC áramszünet
+2. Ventilátor meghibásodása
+3. Akkumulátor meghibásodása
+4. PCM OK
+5. TARTOMÁNYVEZÉRLŐi hiba
+6. Akkumulátor jó  
 
-A PCM állapota a LED panelen látható. A készülék PCM LED panel hat LED-ek. Ezek közül négy LED a tápegység és a ventilátor állapotát jeleníti meg. A fennmaradó két LED jelzi a tartalék akkumulátormodul állapotát a PCM-ben. Az alábbi táblázatok segítségével meghatározhatja a PCM állapotát.  
+A PCM állapota a LED panelen van megjelölve. Az eszköz PCM LED-paneljének hat LED-je van. Ezek közül négy LED a tápegység és a ventilátor állapotát jeleníti meg. A fennmaradó két LED a PCM biztonsági mentési akkumulátor moduljának állapotát jelzi. A PCM állapotának meghatározásához a következő táblázatok használhatók.  
 
-### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>PCM jelző LED-ek a tápegységhez és a ventilátorhoz
-| status | PCM OK (zöld) | A C sikertelen (sárga) | Ventilátor nem (borostyán) | Tartományvezérlő sikertelen (sárga) |
+### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>PCM kijelző LED-ek a tápegységhez és a ventilátorhoz
+| status | PCM OK (zöld) | AC sikertelen (Amber) | Ventilátor sikertelen (sárga) | TARTOMÁNYVEZÉRLŐi hiba (Amber) |
 | --- | --- | --- | --- | --- |
-| Nincs hálózati áram (a burkolathoz) |KI |KI |KI |KI |
-| Nincs hálózati áram (csak ez a PCM) |KI |ON |KI |ON |
-| AC jelen PCM ON - OK |ON |KI |KI |KI |
-| PCM nem (ventilátor nem) |KI |KI |ON |N/A |
-| PCM hiba (erősítő, túlfeszültség, áram felett) |KI |ON |ON |ON |
-| PCM (a tűréshatáron kívüli ventilátor) |ON |KI |KI |ON |
-| Készenléti üzemmód |Villogó |KI |KI |KI |
-| PCM firmware letöltése |KI |Villogó |Villogó |Villogó |
+| Nincs AC Power (bekerítés) |KI |KI |KI |KI |
+| Nincs AC-teljesítmény (csak ez a PCM) |KI |ON |KI |ON |
+| AC jelen PCM ON-OK |ON |KI |KI |KI |
+| PCM-hiba (ventilátor sikertelen) |KI |KI |ON |N/A |
+| PCM-hiba (több mint amp, over feszültség, aktuális) |KI |ON |ON |ON |
+| PCM (ventilátor a tűréshatáron kívül) |ON |KI |KI |ON |
+| Készenléti mód |Villogó |KI |KI |KI |
+| PCM belső vezérlőprogram letöltése |KI |Villogó |Villogó |Villogó |
 
-### <a name="pcm-indicator-leds-for-the-backup-battery"></a>A TARTALÉK akkumulátor PCM-jelző LED-jei
-| status | Akkumulátor jó (zöld) | Akkumulátor hiba (sárga) |
+### <a name="pcm-indicator-leds-for-the-backup-battery"></a>A biztonsági mentési akkumulátorhoz tartozó PCM kijelző LED-EK
+| status | Akkumulátor jó (zöld) | Akkumulátor hibája (Amber) |
 | --- | --- | --- |
 | Az akkumulátor nincs jelen |KI |KI |
-| Akkumulátor jelen és feltöltve |ON |KI |
-| Akkumulátor töltése vagy karbantartási kisütése |Villogó |KI |
-| Akkumulátor "puha" hiba (hasznosítható) |KI |Villogó |
-| Akkumulátor "kemény" hiba (nem hasznosítható) |KI |ON |
+| Akkumulátor jelen és felszámítva |ON |KI |
+| Az akkumulátor töltése vagy a karbantartás lezárása |Villogó |KI |
+| Akkumulátor "Soft" (helyreállítható) hibája |KI |Villogó |
+| Az akkumulátor "Hard" hibája (nem helyreállítható) |KI |ON |
 | Akkumulátor lefegyverezve |Villogó |KI |
 
-## <a name="pcm-leds-for-the-ebod-enclosure"></a>PCM LED-ek az EBOD házhoz
-Az EBOD ház 580 W-os PCM-el rendelkezik, és nincs további akkumulátor. Az EBOD ház PCM panelje csak a tápegységek és a ventilátor kijelző LED-jeit használja. A következő ábrán ezek a LED-ek láthatók.
+## <a name="pcm-leds-for-the-ebod-enclosure"></a>A EBOD-ház PCM-LED-je
+A EBOD-ház 580W PCM-vel rendelkezik, és nincs további akkumulátora. A EBOD-ház PCM panelje csak a tápegységek és a ventilátor kijelző-LED-ekkel rendelkezik. Az alábbi ábrán ezek a LED-ek láthatók.
 
-   ![PCM LED-ek az EBOD házon][3] 
+   ![PCM-LED-ek a EBOD ház][3] 
 
-Az alábbi táblázat segítségével meghatározhatja a PCM állapotát.  
+A PCM állapotának meghatározásához használja a következő táblázatot.  
 
-| status | PCM OK (zöld) | A C sikertelen (sárga) | Ventilátor nem (borostyán) | Tartományvezérlő sikertelen (sárga) |
+| status | PCM OK (zöld) | AC sikertelen (Amber) | Ventilátor sikertelen (sárga) | TARTOMÁNYVEZÉRLŐi hiba (Amber) |
 | --- | --- | --- | --- | --- |
-| Nincs hálózati áram (a burkolathoz) |KI |KI |KI |KI |
-| Nincs hálózati áram (csak ez a PCM) |KI |ON |KI |ON |
-| AC jelen PCM ON - OK |ON |KI |KI |KI |
-| PCM nem (ventilátor nem) |KI |KI |ON |X |
-| PCM hiba (erősítő, túlfeszültség, áramerősség |KI |ON |ON |ON |
-| PCM (a tűréshatáron kívüli ventilátor) |ON |KI |KI |ON |
+| Nincs AC Power (bekerítés) |KI |KI |KI |KI |
+| Nincs AC-teljesítmény (csak ez a PCM) |KI |ON |KI |ON |
+| AC jelen PCM ON – OK |ON |KI |KI |KI |
+| PCM-hiba (ventilátor sikertelen) |KI |KI |ON |X |
+| PCM-hiba (több mint amp, over feszültség, aktuális |KI |ON |ON |ON |
+| PCM (ventilátor a tűréshatáron kívül) |ON |KI |KI |ON |
 | Készenléti modell |Villogó |KI |KI |KI |
-| PCM firmware letöltése |KI |Villogó |Villogó |Villogó |
+| PCM belső vezérlőprogram letöltése |KI |Villogó |Villogó |Villogó |
 
-## <a name="controller-module-indicator-leds"></a>Vezérlőmodul jelző LED-ek
-A StorSimple eszköz LED-eket tartalmaz az elsődleges vezérlő és az EBOD vezérlő modulokhoz.   
+## <a name="controller-module-indicator-leds"></a>Vezérlő modul kijelző LED-EK
+A StorSimple eszköz LED-eket tartalmaz az elsődleges vezérlőhöz és a EBOD vezérlő moduljaihoz.   
 
-### <a name="monitoring-leds-for-the-primary-controller"></a>Led-ek figyelése az elsődleges vezérlőhöz
-A következő ábra segít azonosítani a LED-ek az elsődleges vezérlő. (Az összes összetevő fel van sorolva, hogy segítse a tájékozódás.)  
+### <a name="monitoring-leds-for-the-primary-controller"></a>Figyelési LED-ek az elsődleges vezérlőhöz
+Az alábbi ábrán az elsődleges vezérlőn lévő LED-ek azonosíthatók. (Az összes összetevő szerepel a Orientációs támogatásban.)  
 
-   ![Monitorozott LED-ek - elsődleges vezérlő][4]
+   ![Figyelő LED-ek – elsődleges vezérlő][4]
 
-Az alábbi táblázat segítségével megállapíthatja, hogy a vezérlőmodul megfelelően működik-e.  
+A következő táblázat segítségével meghatározhatja, hogy a vezérlő modul megfelelően működik-e.  
 
-### <a name="controller-indicator-leds"></a>Vezérlőjelző LED-ek
-| Led | Leírás |
+### <a name="controller-indicator-leds"></a>Vezérlő kijelző LED-EK
+| VEZETETT | Leírás |
 | --- | --- |
-| LED (kék) |Azt jelzi, hogy a modul azonosítása folyamatban van. Ha a kék LED villog egy futó vezérlőn, akkor a vezérlő az aktív vezérlő, a másik pedig a készenléti vezérlő. További információt [az Aktív vezérlő azonosítása az eszközön](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)című témakörben talál. |
-| Hiba LED (sárga) |A vezérlő hibáját jelzi. |
-| OK LED (zöld) |Az állandó zöld azt jelzi, hogy a vezérlő rendben van. A zöld villogás a vezérlő VPD konfigurációs hibáját jelzi. |
-| SAS tevékenység LED-ek (zöld) |Az állandó zöld azt jelzi, hogy a kapcsolat nem aktuális tevékenység. A zölden villogó zöld azt jelzi, hogy a kapcsolat folyamatos tevékenységet folytat. |
-| Ethernet állapotJELZŐ LED-ek |A jobb oldal a kapcsolat/hálózati tevékenységet jelzi: (folyamatos zöld) kapcsolat aktív, (villogó zöld) hálózati tevékenység. A bal oldal a hálózati sebességet jelzi: (sárga) 1000 Mb/s, (zöld) 100 Mb/s és (OFF) 10 Mb/s. Az összetevő modelltől függően ez a jelzőfény akkor is villoghat, ha a hálózati adapter nincs engedélyezve. |
-| POST LED-ek |A rendszerindítás folyamatát jelzi, amikor a vezérlő be van kapcsolva. Ha a StorSimple eszköz nem indul el, ez a LED segít a Microsoft-támogatásnak azonosítani a rendszerindítási folyamat azon pontját, ahol a hiba történt. |
+| AZONOSÍTÓ LED (kék) |Azt jelzi, hogy a modul azonosítva van. Ha a kék LED egy futó vezérlőn villog, akkor a vezérlő az aktív vezérlő, a másik pedig a készenléti vezérlő. További információ: [az aktív vezérlő azonosítása az eszközön](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
+| Hiba LED (Amber) |A vezérlő hibáját jelzi. |
+| OK LED (zöld) |A folyamatos zöld érték azt jelzi, hogy a vezérlő rendben van. A villogó zöld a vezérlő VPD konfigurációs hibáját jelzi. |
+| SAS-tevékenységek LED-ek (zöld) |Az állandó zöld állapot egy aktuális tevékenység nélküli kapcsolatokat jelez. A zöld villogás azt jelzi, hogy a kapcsolatok tevékenysége folyamatban van. |
+| Ethernet állapotú LED-EK |A jobb oldalon a kapcsolat/hálózati tevékenység: (állandó zöld) kapcsolat aktív, (zöld villogás) hálózati tevékenység látható. A bal oldalon a hálózati sebesség látható: (sárga) 1000 MB/s, (zöld) 100 MB/s és (ki) 10 MB/s. Az összetevő típusától függően ez a fény akkor is villoghat, ha a hálózati adapter nincs engedélyezve. |
+| UTÓLAGOS LED-EK |Jelzi a rendszerindítási folyamatot, amikor a vezérlő be van kapcsolva. Ha a StorSimple-eszköz nem indul el, ez a LED segít Microsoft ügyfélszolgálata azonosítani a rendszerindítási folyamat azon pontját, amelyen a hiba történt. |
 
 > [!IMPORTANT]
-> Ha a hiba LED világít, akkor probléma van a vezérlőmodullal, amely a vezérlő újraindításával megoldható. Ha a kontroller újraindítása nem oldja meg a problémát, forduljon a Microsoft támogatási szolgálatához.  
+> Ha a hiba LED-je világít, a vezérlő újraindításával a vezérlő modullal kapcsolatos probléma merülhet fel. Ha a vezérlő újraindítása nem oldja meg a problémát, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.  
 > 
 > 
 
-### <a name="monitoring-leds-for-the-ebod-ebod-enclosure"></a>LED-ek figyelése az EBOD (EBOD ház)
-A 6 Gb/s SAS EBOD-vezérlő mindegyike rendelkezik OLYAN LED-ekkel, amelyek az alábbi ábrán látható állapotukat jelzik.  
+### <a name="monitoring-leds-for-the-ebod-ebod-enclosure"></a>A EBOD figyelési LED-ek (EBOD ház)
+A 6 GB/s SAS EBOD-vezérlők mindegyike olyan LED-ekkel rendelkezik, amelyek az alábbi ábrán látható módon jelzik az állapotukat.  
 
-  ![LED-ek figyelése - EBOD ház][5]
+  ![Figyelő LED-EBOD ház][5]
 
-Az alábbi táblázat segítségével megállapíthatja, hogy az EBOD vezérlőmodul megfelelően működik-e.  
+A következő táblázat segítségével meghatározhatja, hogy a EBOD vezérlő modulja megfelelően működik-e.  
 
-### <a name="ebod-controller-module-indicator-leds"></a>EBOD vezérlőmodul jelző LED-ek
-| status | I/O modul OK (zöld) | I/O modulhiba (sárga) | Állomásport-tevékenység (zöld) |
+### <a name="ebod-controller-module-indicator-leds"></a>EBOD vezérlő modul kijelző LED-EK
+| status | I/O-modul OK (zöld) | I/O-modul hibája (Amber) | Gazdagép portjának tevékenysége (zöld) |
 | --- | --- | --- | --- |
-| Vezérlőmodul – OK |ON |KI |- |
-| Vezérlőmodul hibája |KI |ON |- |
-| Nincs külső állomásport-kapcsolat |- |- |KI |
-| Külső állomásport-kapcsolat – nincs tevékenység |- |- |ON |
-| Külső állomásport-kapcsolat - tevékenység |- |- |Villogó |
-| Vezérlőmodul metaadat-hibája |Villogó |- |- |
+| Vezérlő modul OK |ON |KI |- |
+| Vezérlő modul hibája |KI |ON |- |
+| Nincs külső gazda port-csatlakozás |- |- |KI |
+| Külső gazda portjának kapcsolatai – nincs tevékenység |- |- |ON |
+| Külső gazda portjának kapcsolatai – tevékenység |- |- |Villogó |
+| Hiba a vezérlő modul metaadatainak esetében |Villogó |- |- |
 
-## <a name="disk-drive-indicator-leds-for-the-primary-enclosure-and-ebod-enclosure"></a>Lemezmeghajtó-jelző LED-ek az elsődleges házhoz és az EBOD házhoz
-A StorSimple-eszköz lemezmeghajtók találhatók mind az elsődleges ház és az EBOD ház. Minden lemezmeghajtó az ebben a szakaszban leírtak szerint figyelőjelző LED-eket tartalmaz. 
+## <a name="disk-drive-indicator-leds-for-the-primary-enclosure-and-ebod-enclosure"></a>Lemezmeghajtó-kijelző LED-ek az elsődleges bekerítéshez és a EBOD-ház számára
+A StorSimple-eszköz az elsődleges és a EBOD-házban található lemezmeghajtókat is tartalmaz. Az egyes lemezmeghajtók az ebben a szakaszban leírtak szerint figyelő kijelző LED-eket tartalmaznak. 
 
-A lemezmeghajtók esetében a meghajtó állapotát egy zöld LED és egy piros sárga LED jelzi, amely minden meghajtóhordozó modul elejére van szerelve. A következő ábrán ezek a LED-ek láthatók.
+A lemezmeghajtók esetében a meghajtó állapotát egy zöld LED jelöli, és egy piros-sárga LED, amely az egyes meghajtó-szolgáltatói modulok elejére van csatlakoztatva. Az alábbi ábrán ezek a LED-ek láthatók.
 
-  ![Lemezmeghajtó LED-ek][6]
+  ![Lemezmeghajtók][6]
 
-Az alábbi táblázat segítségével meghatározhatja az egyes lemezmeghajtók állapotát, ami viszont hatással van az előlap LED-jének általános állapotára.  
+Az alábbi táblázat segítségével meghatározhatja az egyes lemezmeghajtók állapotát, ami viszont hatással van az előlapi LED általános állapotára.  
 
-### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>Az EBOD ház lemezmeghajtó-jelző LED-jei
-| status | Tevékenység OK LED (zöld) | Hiba LED (piros-sárga) | Társított ops panel LED |
+### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>Lemezmeghajtó-kijelző LED-ek a EBOD-ház számára
+| status | Tevékenység rendben LED (zöld) | Hiba LED (Red-Amber) | Társított Ops panel LED |
 | --- | --- | --- | --- |
-| Nincs telepítve meghajtó |KI |KI |None |
-| Telepített és működő meghajtó |Villogó be/ ki tevékenységgel |X |None |
-| SCSI-házszolgáltatások (SES) eszközidentitás-készlete |ON |Villogó 1 másodperc be /1 másodperc ki |None |
-| SES eszközhibabit beállítása |ON |ON |Logikai hiba (piros) |
-| Áramvezérlési áramkör hibája |KI |ON |Modulhiba (piros) |
+| Nincs meghajtó telepítve |KI |KI |None |
+| A meghajtó telepítve és működőképes |Villogás be/ki a tevékenységgel |X |None |
+| SCSI ház-szolgáltatás (SES) eszköz-identitás beállítása |ON |Villogó 1 másodperc on/1 másodperc |None |
+| SES eszköz-hibatűrő bit-készlet |ON |ON |Logikai hiba (piros) |
+| Energiagazdálkodási áramkör meghibásodása |KI |ON |Modul hibája (piros) |
 
 ## <a name="audible-alarms"></a>Hallható riasztások
-A StorSimple-eszköz hallható riasztásokat tartalmaz az elsődleges házhoz és az EBOD házhoz társítva. Mindkét ház előlapján (más néven műveleti panelen) hallható riasztás található. A hangjelzés azt jelzi, ha hiba helyzet áll fenn. A következő feltételek kapcsolják be a riasztást:  
+A StorSimple-eszköz az elsődleges bekerítéssel és a EBOD-bekerítéssel kapcsolatos hallható riasztásokat tartalmaz. Egy hallható riasztás a két ház előlapján (más néven az Ops-panelen) található. A hallható riasztás azt jelzi, hogy van-e meghibásodási feltétel. Az alábbi feltételek aktiválja a riasztást:  
 
-* Ventilátor hiba vagy hiba
-* Feszültség a hatótávolságon kívül
-* Hőmérsékleten felül vagy hőmérsékleten
-* Termikus túlcsordulás
+* Ventilátor hibája vagy meghibásodása
+* Tartományon kívüli feszültség
+* Túlterhelési vagy hőmérsékleti feltétel
+* Termikus túllépés
 * Rendszerhiba
 * Logikai hiba
-* Áramellátási hiba
-* Az energiahűtő modul (PCM) eltávolítása  
+* Energiaellátási hiba
+* Egy Power hűtő modul (PCM) eltávolítása  
 
-Az alábbi táblázat a különböző riasztási állapotokat ismerteti.  
+Az alábbi táblázat a riasztási állapotok különböző állapotát ismerteti.  
 
 ### <a name="alarm-states"></a>Riasztási állapotok
-| Riasztás állapota | Műveletek | Művelet az elnémító gomb lenyomásával |
+| Riasztás állapota | Műveletek | Művelet az Elnémítás gomb megnyomásával |
 | --- | --- | --- |
-| S0 |Normál mód: néma |Hangjelzés kétszer |
-| S1 |Hiba üzemmód: 1 másodperc be/1 másodperc ki |Átmenet S2 vagy S3 -ra (lásd a megjegyzéseket) |
-| S2 |Emlékeztető mód: szakaszos hangjelzés |None |
-| S3 |Némított üzemmód: néma |None |
-| S4 |Kritikus hibamód: folyamatos riasztás |Nem érhető el: a némítás nem aktív |
+| S0 |Normál mód: csendes |Dupla sípszó |
+| S1 |Hiba mód: 1 másodperc be/1 másodpercenként |Áttérés S2-re vagy S3-ra (lásd a megjegyzéseket) |
+| S2 |Emlékeztető mód: szaggatott sípszó |None |
+| S3 |Elnémult mód: csendes |None |
+| S4 |Kritikus hiba mód: folyamatos riasztás |Nem érhető el: az Elnémítás nem aktív |
 
 > [!NOTE]
-> * S1 riasztási állapotban, ha 2 percen belül nem nyomja meg a némítást, az állapot automatikusan S2 vagy S3 állapotba vált.  
-> * A riasztás szerint az S1 és S4 között a hibaállapot törlése után visszatér az S0-ba.  
-> * Az S4 kritikus hibaállapot bármely más állapotból megadható.  
+> * Ha a riasztási állapot S1, ha nem nyomja meg a MUTE 2 percen belül, az állapot automatikusan az S2 vagy az S3 értékre vált.  
+> * A riasztási állapotok S1-től S4-ig visszatérhetnek a S0 a hiba után.  
+> * Bármely más állapotból beírhatók a kritikus hiba állapotának S4 állapota.  
 
 
-A hangjelzést a műveleti panel némításgombjának megnyomásával némíthatja el. Ha a némítókapcsolót nem kézi működtetése után két perc múlva történik, automatikus némítás történik. Amikor a riasztás el van némítva, a hang rövid, szakaszos hangjelzéssel tovább fog hangzani, jelezve, hogy a probléma továbbra is fennáll. A riasztás néma lesz, ha minden probléma törlődik.
+A hallható riasztást az Ops panel némító gombjának megnyomásával állíthatja le. Ha az Elnémítás kapcsoló nem működik manuálisan, az automatikus némítás két perc után történik. Ha a riasztás el van némítva, az továbbra is rövid időszakos sípoló hangjelzéssel jelzi, hogy a probléma továbbra is fennáll. Ha az összes problémát törli, a riasztás csendes marad.
 
-Az alábbi táblázat a különböző riasztási feltételeket ismerteti.
+A következő táblázat ismerteti a különböző riasztási feltételeket.
 
-### <a name="alarm-conditions"></a>Riasztási körülmények
-| status | Severity | Riasztás | Ops panel LED |
+### <a name="alarm-conditions"></a>Riasztási feltételek
+| status | Severity | Riasztások | Az Ops panel LED |
 | --- | --- | --- | --- |
-| PCM riasztás – az egyenáram elvesztése egyetlen PCM-től |Hiba – nincs redundanciaveszteség |S1 |Modulhiba |
-| PCM riasztás – az egyenáram elvesztése egyetlen PCM-től |Hiba – a redundancia elvesztése |S1 |Modulhiba |
-| A PCM-ventilátor meghibásodik |Hiba – a redundancia elvesztése |S1 |Modulhiba |
-| Az SBB modul PCM hibát észlelt |Hiba |S1 |Modulhiba |
-| PCM eltávolítva |Konfigurációs hiba |None |Modulhiba |
-| Ház konfigurációs hibája |Hiba – kritikus |S1 |Modulhiba |
-| Alacsony figyelmeztető hőmérséklet riasztás |Figyelmeztetés |S1 |Modulhiba |
-| Magas figyelmeztető hőmérséklet riasztás |Figyelmeztetés |S1 |Modulhiba |
-| Túlmelegedés riasztás |Hiba – kritikus |S1 |Modulhiba |
-| I2C busz hiba |Hiba – a redundancia elvesztése |S1 |Modulhiba |
-| Ops panel kommunikációs hiba (I2C) |Hiba – kritikus |S1 |Modulhiba |
-| Vezérlő hiba |Hiba – kritikus |S1 |Modulhiba |
-| SBB interfész modul hibája |Hiba – kritikus |S1 |Modulhiba |
-| SBB interfész modul hiba – Nem maradt működő modul |Hiba – kritikus |S4 |Modulhiba |
-| SBB interfész modul eltávolítva |Figyelmeztetés |None |Modulhiba |
-| Meghajtó teljesítményvezérlési hibája |Figyelmeztetés – nincs áramveszteség |S1 |Modulhiba |
-| Meghajtó teljesítményvezérlési hibája |Hiba – kritikus; a meghajtó teljesítményének elvesztése |S1 |Modulhiba |
-| Meghajtó eltávolítva |Figyelmeztetés |None |Modulhiba |
-| Nem áll rendelkezésre elegendő energia |Figyelmeztetés |Nincs |Modulhiba |
+| PCM-riasztás – az egyenáramú teljesítmény elvesztése egyetlen PCM-ből |Hiba – a redundancia elvesztése nélkül |S1 |Modul hibája |
+| PCM-riasztás – az egyenáramú teljesítmény elvesztése egyetlen PCM-ből |Hiba – a redundancia elvesztése |S1 |Modul hibája |
+| Nem sikerült a PCM ventilátor |Hiba – a redundancia elvesztése |S1 |Modul hibája |
+| Az SBB-modul a PCM-hibát észlelte |Hiba |S1 |Modul hibája |
+| PCM eltávolítva |Konfigurációs hiba |None |Modul hibája |
+| Bekerítés konfigurációs hibája |Hiba – kritikus |S1 |Modul hibája |
+| Alacsony figyelmeztetési hőmérséklet riasztása |Figyelmeztetés |S1 |Modul hibája |
+| Magas figyelmeztetési hőmérséklet riasztása |Figyelmeztetés |S1 |Modul hibája |
+| Hőmérsékleti riasztás |Hiba – kritikus |S1 |Modul hibája |
+| I2C busz meghibásodása |Hiba – a redundancia elvesztése |S1 |Modul hibája |
+| Az Ops panel kommunikációs hibája (I2C) |Hiba – kritikus |S1 |Modul hibája |
+| Vezérlő hibája |Hiba – kritikus |S1 |Modul hibája |
+| Az SBB illesztőfelületi moduljának hibája |Hiba – kritikus |S1 |Modul hibája |
+| SBB illesztőfelület-modul hibája – nem maradt működő modul |Hiba – kritikus |S4 |Modul hibája |
+| Az SBB Interface modul eltávolítva |Figyelmeztetés |None |Modul hibája |
+| Energiaellátás-vezérlési hiba |Figyelmeztetés – a meghajtó tápellátásának elvesztése nélkül |S1 |Modul hibája |
+| Energiaellátás-vezérlési hiba |Hiba – kritikus; a meghajtó tápellátásának elvesztése |S1 |Modul hibája |
+| Meghajtó eltávolítva |Figyelmeztetés |None |Modul hibája |
+| Nem áll rendelkezésre elegendő energiaellátás |Figyelmeztetés |Nincs |Modul hibája |
 
 ## <a name="next-steps"></a>További lépések
-További információ a [StorSimple hardverösszetevőkről és állapotról.](storsimple-8000-monitor-hardware-status.md)
+További információ a [StorSimple hardveres összetevőiről és állapotáról](storsimple-8000-monitor-hardware-status.md).
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png

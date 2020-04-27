@@ -1,6 +1,6 @@
 ---
-title: Környezetek csatlakoztatása egy tesztkörnyezet virtuális hálózatához az Azure DevTest Labsben | Microsoft dokumentumok
-description: Megtudhatja, hogyan csatlakoztathat egy környezetet (például a Service Fabric-fürtöt) a labor virtuális hálózatához az Azure DevTest Labs ben
+title: Környezetek összekötése egy labor vnet a Azure DevTest Labsban | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztathatók a környezetek (például Service Fabric-fürt) a tesztkörnyezet virtuális hálózatához Azure DevTest Labs
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: bb8b5f7d6578390fd0f48c3de154cfdb034ac6c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60777168"
 ---
-# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Környezet csatlakoztatása a labor virtuális hálózatához az Azure DevTest Labs ben
-Az Azure DevTest Labs segítségével egyszerűen hozhat létre virtuális gépeket egy [laborban a beépített hálózatkezeléssel.](devtest-lab-configure-vnet.md) Ez egy nagy rugalmasságot azzal a képességgel, hogy [hozzon létre több VM környezetben](devtest-lab-test-env.md). Ez a cikk bemutatja, hogyan csatlakoztathat virtuális gépeket egy környezetben a tesztkörnyezet virtuális hálózatához. Az egyik forgatókönyv, ahol ezt a funkciót egy N-szintű alkalmazás beállítása egy SQL Server adatréteg, amely csatlakozik a labor virtuális hálózat, amely lehetővé teszi a teszt virtuális gépek a laborban való hozzáférés.  
+# <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Környezet összekötése a tesztkörnyezet virtuális hálózatával Azure DevTest Labs
+A Azure DevTest Labs segítségével egyszerűen hozhat létre virtuális gépeket egy [beépített hálózatkezeléssel](devtest-lab-configure-vnet.md)rendelkező tesztkörnyezetben. Nagy rugalmasságot biztosít a [több virtuális gépre kiterjedő környezetek létrehozásához](devtest-lab-test-env.md). Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a virtuális gépek egy környezetben a tesztkörnyezet virtuális hálózatához. Az egyik forgatókönyv, ahol ezt a funkciót használja, egy N szintű alkalmazást állít be egy olyan SQL Server adatréteggel, amely a labor VNet csatlakozik, és lehetővé teszi a tesztkörnyezet számára a tesztkörnyezetben való hozzáférést.  
 
-## <a name="sample-environment-that-uses-lab-vnet"></a>Labor virtuális hálózatot használó mintakörnyezet
-Az alábbiakban egy egyszerű környezeti sablont, amely összeköti a labor alhálózatát. Ebben a példában a `DTLSubnetId` paraméter annak az alhálózatnak az azonosítóját jelöli, amelyben a tesztkörnyezet létezik. A: hozzá van `$(LabSubnetId)`rendelve, amelyet a DevTest Labs automatikusan felold a labor alhálózatának azonosítójára. Ebben a definícióban a virtuális **gép hálózati adapterének** `DTLSubnetId` **alhálózati** tulajdonsága úgy van beállítva, hogy ugyanazt az alhálózatot csatlakozzon. 
+## <a name="sample-environment-that-uses-lab-vnet"></a>Laboratóriumi VNet használó mintavételi környezet
+Íme egy egyszerű környezeti sablon, amely összekapcsolja a tesztkörnyezet alhálózatát. Ebben a példában a `DTLSubnetId` paraméter annak az alhálózatnak az azonosítóját jelöli, amelyben a labor létezik. A hozzá van rendelve: `$(LabSubnetId)`, amelyet a DevTest Labs automatikusan feloldja a tesztkörnyezet alhálózatának azonosítójával. A jelen definícióban a virtuális gép **hálózati adapterének** `DTLSubnetId` **alhálózat** tulajdonsága úgy van beállítva, hogy ugyanahhoz az alhálózathoz csatlakozzon. 
 
 ```json
 {
@@ -161,4 +161,4 @@ Az alábbiakban egy egyszerű környezeti sablont, amely összeköti a labor alh
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő cikket az Azure Portal használatával a következő műveletek: [Indítsa újra a virtuális gép.](devtest-lab-restart-vm.md)
+Az alábbi cikkből megtudhatja, hogyan használhatja a Azure Portal a következő műveletek elvégzéséhez: [indítsa újra a virtuális gépet](devtest-lab-restart-vm.md).

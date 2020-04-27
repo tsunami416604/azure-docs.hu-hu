@@ -1,114 +1,114 @@
 ---
-title: Vezető menedzsment a kereskedelmi piacon | Azure Piactér és AppSource
-description: Az Ajánlatok és műszaki összetevők Azure Piactéren és AppSource-ban való közzétételével kapcsolatos különböző témakörök áttekintése
+title: Vezető felügyelet a kereskedelmi piactéren | Azure Marketplace és AppSource
+description: Az Azure Marketplace-en és a AppSource-on közzétett ajánlatokkal és technikai összetevőkkel kapcsolatos különböző témakörök áttekintése
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 09b02d043e970c68cdff0e3dc4f97328c9d74c84
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 6f93e00cb9f840b27578eb9a5b0c6a2cab1ac525
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383776"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160545"
 ---
-# <a name="lead-management-for-commercial-marketplace"></a>Vezető menedzsment a kereskedelmi piacon
+# <a name="lead-management-for-commercial-marketplace"></a>Vezető felügyelet a kereskedelmi piactéren
 
 
-Az ügyfelek minden jó üzlet központja. A mai termékfelvásárlások átalakítása során a marketingeseknek az ügyfelekkel való közvetlen kapcsolatra és a kapcsolat kiépítésére kell összpontosítaniuk. Ez az oka annak, hogy a kiváló minőségű érdeklődők létrehozása létfontosságú eszköz az értékesítési ciklushoz. Miután az ajánlatot a [Partner központban felsorolta,](https://partner.microsoft.com/)vannak olyan eszközök, amelyek lehetővé teszik, hogy programozott módon megkapja az ügyfél elérhetőségi adatait közvetlenül azután, hogy az ügyfél érdeklődést mutat, vagy telepíti a terméket a piacon. 
+Az ügyfelek a jó üzleti tevékenység központja. A mai termék beszerzésének átalakításakor a marketingeseknek az ügyfelek közvetlen csatlakoztatására és a kapcsolatok létrehozására kell összpontosítaniuk. A kiváló minőségű érdeklődők létrehozásának oka az értékesítési ciklus létfontosságú eszköze. Az ajánlatnak a [partner Centerben](https://partner.microsoft.com/)való listázása után olyan eszközök is elérhetők, amelyekkel programozott módon kaphatják meg az ügyfelek kapcsolattartási adatait, miután az ügyfél kifejezte érdeklődését, vagy üzembe helyezi a terméket a piactéren. 
 
 
 
-## <a name="what-are-leads-in-the-marketplace"></a>Mik azok az érdeklődők a piacon?
+## <a name="what-are-leads-in-the-marketplace"></a>Mik azok az érdeklődők a piactéren?
 
-Az érdeklődők olyan ügyfelektől származnak, akik érdeklődnek a Piactérről, vagy üzembe helyezik a termékeit. Függetlenül attól, hogy a termék szerepel-e az Azure Marketplace-en vagy az AppSource-ban, akkor az ügyfelektől is fogadhat érdeklődőket, ha megfelelően beállította a CRM-et a Partnerközpontban található adatlap(ok)ra. 
+Az érdeklődők olyan ügyfelektől származnak, akik érdeklik, vagy üzembe helyezik termékeiket a piactéren. Függetlenül attól, hogy a termék szerepel-e az Azure Marketplace-en vagy a AppSource-on, akkor is fogadhat érdeklődőket az ügyfelektől, ha a CRM-ből a partner Centerben lévő listára (k) megfelelően beállította. 
 
 
-## <a name="how-to-connect-your-crm-system-with-partner-center"></a>A CRM-rendszer csatlakoztatása a Partnerközponttal
+## <a name="how-to-connect-your-crm-system-with-partner-center"></a>A CRM rendszer összekapcsolásának módja a partneri központtal
 
-Az érdeklődők megszerzéséhez a Partnercenter érdeklődőkezelési összekötőjét úgy tervezték, hogy könnyen csatlakoztatható legyen a CRM-adatokhoz a rendelkezésre álló CRM-rendszer listájához. Mostantól könnyedén kihasználhatja a piactér által generált érdeklődőket anélkül, hogy jelentős mérnöki erőfeszítéseket tene egy külső rendszerrel való integrációérdekében.
+Az érdeklődők beszerzésének megkezdéséhez az ólom-felügyeleti összekötő a partner Centerben úgy lett kialakítva, hogy könnyen csatlakoztatható legyen a CRM-adatokhoz az elérhető CRM-rendszer listájához. Mostantól könnyedén kihasználhatja a piactér által generált érdeklődőket, és nem kell egy külső rendszerrel integrálni a jelentős mérnöki erőfeszítéseket.
 
-Az alábbiakban részletes en-step utasításokat olvashat alehetséges érdeklődői úti célok összekapcsolásához:
+Az alábbiakban részletes útmutatást talál az egyes lehetséges érdeklődői célok összekapcsolásáról:
 
-**Dynamics CRM Online** – Az [érdeklődőkezelés konfigurálása a Dynamics 365 for Customer Engagement alkalmazáshoz](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) című témakörben olvashat arról, hogyan konfigurálhatja a Dynamics CRM Online-t az érdeklődők levezetéséhez.
+**Dynamics CRM Online** – tekintse meg a Dynamics CRM Online-hoz való bevezetésének konfigurálására vonatkozó útmutatást a Dynamics [365](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) .
 
-**Marketo** - [Lásd: A Marketo vezetőkezelésének konfigurálása](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md) a Marketo lead configuration beállításával kapcsolatos utasításokért.
+**Marketo** – lásd: az [érdeklődők felügyeletének konfigurálása a Marketo-ben](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md) az érdeklődők beolvasásához szükséges Marketo-alapú konfiguráció beállításához.
 
-**Salesforce** – Az [érdeklődők kezelésének konfigurálása a Salesforce-hoz](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md) című témakörben található, amely a Salesforce-példány érdeklődők levezetéseként történő beállítására vonatkozó utasításokat tartalmaz.
+**Salesforce** – lásd: az [érdeklődők felügyeletének konfigurálása a Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md) számára, útmutatás a Salesforce-példány beállításához az érdeklődők beszerzéséhez.
 
-**Azure Table** – Tekintse [meg az érdeklődőkezelés konfigurálása egy Azure-táblázat használatával](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md) az Azure storage-fiók beállításával kapcsolatos utasításokat az Érdeklődők azure-táblában való levezetéséhez.
+**Azure-tábla** – lásd: az [érdeklődők felügyeletének beállítása egy Azure-táblázat segítségével](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md) , amely útmutatást nyújt az Azure Storage-fiók létrehozásához az érdeklődők Azure-táblázatban való beszerzéséhez.
 
-**Https Endpoint** – Tekintse meg [az érdeklődőkezelés konfigurálása HTTPS-végpont használatával](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md) a Https-végpont beállítása az érdeklődők levezetése utasításokat.
+**Https-végpont** – lásd: az [érdeklődők felügyeletének konfigurálása HTTPS-végponttal](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md) , útmutatás a https-végpont beállításához az érdeklődők beszerzéséhez.
 
-Miután megfelelően konfigurálta az érdeklődő célállomását, és elérte a Közzététel az ajánlaton, érvényesítjük a kapcsolatot, és elküldjük Önnek a tesztérdeklődőt. Amikor az ajánlat megtekintése előtt éles, akkor is tesztelheti a vezető kapcsolat, ha megpróbálja megszerezni az ajánlatot magad az előnézeti környezetben. Fontos, hogy az érdeklődőbeállítások naprakészek maradjanak, hogy ne veszítsd el az érdeklődőket, ezért mindenképpen frissítsd ezeket a kapcsolatokat, ha valami megváltozott a végén.
+Miután megfelelően konfigurálta az érdeklődői célhelyet, és az ajánlaton közzétette a találatot, a rendszer érvényesíti a kapcsolatokat, és elküld egy tesztelési érdeklődőt. Ha az ajánlat megtekintése előtt megtekinti az ajánlatot, akkor tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja meg saját maga is beszerezni az ajánlatot. Fontos, hogy az érdeklődői beállítások naprakészek maradjanak, hogy ne veszítse el az érdeklődőket, ezért ügyeljen arra, hogy frissítse ezeket a kapcsolatokat, ha valami módosult a végén.
 
-### <a name="what-are-the-next-steps"></a>Mik a következő lépések?
+### <a name="what-are-the-next-steps"></a>Mi a következő lépés?
 
-Miután a technikai beállítás a helyén van, be kell építenie ezeket az érdeklődőket a jelenlegi értékesítési & marketing stratégiájába és működési folyamataiba. Szeretnénk jobban megérteni a teljes értékesítési folyamatot, és szorosan együtt kívánunk működni Önnel a kiváló minőségű érdeklődők és elegendő adat biztosításában ahhoz, hogy sikeres legyen. Örömmel fogadjuk visszajelzését arról, hogyan optimalizálhatjuk és javíthatjuk az általunk küldött érdeklődőket további adatokkal, hogy ezek az ügyfelek sikeresek legyenek. Tudassa velünk, ha visszajelzést és javaslatokat szeretne adni annak érdekében, hogy értékesítési csapata sikeresebb legyen a Marketplace-érdeklődőkkel.
+A technikai beállítás bevezetését követően érdemes beépíteni ezeket az érdeklődőket az aktuális értékesítési & marketing stratégiába és működési folyamataiba. Fontos, hogy jobban megértsük a teljes értékesítési folyamatot, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne visszajelzést küldeni, és javaslatokat tesz arra, hogy az értékesítési csapata még nagyobb sikert biztosítson a piactéren.
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>Gyakori érdeklődőkonfigurációs hibák a Partnerközpontban való közzététel során
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>Gyakori vezető konfigurációs hibák a partner Centerben való közzététel során
 
-**Nem menthető az érdeklődő a Dynamics CRM rendszerbe. Ellenőrizze a Dynamics CRM-fiók beállításait. LastCRMError: Nem lehet bejelentkezni a Dynamics CRM, LastCRMException alkalmazásba:** 
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be. Keresse meg a Dynamics CRM-fiók beállításait. LastCRMError: nem lehet bejelentkezni a Dynamics CRM-be, LastCRMException:** 
 
-> Ha az O365-hitelesítés lett kiválasztva, ellenőrizze, hogy a felhasználói fiók és a jelszó érvényes-e. Ha az AAD lett kiválasztva, ellenőrizze, hogy a bérlőazonosító, az alkalmazásazonosító és az alkalmazás titkos kulcsa megegyezik-e az AAD-n beállított beállítással. Kövesse [az](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)itt található utasításokat. Ha a fiók felhasználóneve/jelszava érvényes, ellenőrizze, hogy rendelkezik-e hozzáféréssel a Dynamics 365-höz, és rendelkezik licenccel (11–15. lépés, ha Az Azure Active Directoryt vagy a Biztonsági beállításokat használja, ha Office-felhasználót használ). 
+> Ha a O365-hitelesítés be van jelölve, ellenőrizze, hogy érvényes-e a felhasználói fiók és a jelszó. Ha a HRE ki van jelölve, ellenőrizze, hogy a bérlő azonosítója, az alkalmazás azonosítója és az alkalmazás titkos kulcsa megegyezik-e a HRE beállított értékkel. Kövesse az [alábbi utasításokat.](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) Ha a fiók felhasználóneve/jelszava érvényes, ellenőrizze, hogy rendelkezik-e hozzáféréssel a Dynamics 365-hez, és van-e hozzárendelve licence (11-15. lépés, ha az Office-felhasználó használata esetén Azure Active Directory vagy biztonsági beállításokat használ). 
 
-**Nem menthető az érdeklődő a Dynamics CRM rendszerbe. A felhasználó nem rendelkezik létrehozási engedéllyel a leadsourcecode attribútumhoz az érdeklődő entitásban** 
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be. A felhasználó nem rendelkezik a leadsourcecode attribútum létrehozásához szükséges engedélyekkel az érdeklődő entitásban.** 
 
-> Az alkalmazás/felhasználó nem támogatja a Microsoft Piactér vezető írójának biztonsági szerepköreit. Ha office-felhasználót használ, kövesse a 11–15. [here](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)
+> Az alkalmazás/felhasználó hiányzó biztonsági szerepkör (ek) Microsoft Marketplace vezető író számára. Kövesse az 11-15-es lépéseket, ha Azure Active Directory vagy biztonsági beállításokat használ, ha itt az Office-felhasználó [van](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)használatban.
 
-**Nem menthető az érdeklődő a Dynamics CRM rendszerhez az AAD használatával. Kivétel:: A bérlő nem található. Ez a példány akkor fordulhat elő, ha nincsenek aktív előfizetések a bérlőhöz.**  
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: a bérlő nem található. Ez a példány akkor fordulhat elő, ha a bérlőhöz nem tartoznak aktív előfizetések.**  
 
-> Az érdeklődőkezelés szakaszban megadott címtárazonosító nem érvényes könyvtár. Kérjük, olvassa be a címtárazonosítót a [2.](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)
+> A vezető felügyeleti szakaszban megadott címtár-azonosító nem érvényes könyvtár. Szerezze be a címtár-azonosítót a 2. lépésben (Azure Active Directory alatt található utasítások [alapján).](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)
 
-**Nem menthető az érdeklődő a Dynamics CRM rendszerbe. LastCRMError: SecLib::RetrievePrivilegeForUser nem sikerült - nincs szerepkör hozzárendelve a felhasználóhoz.**  
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be. LastCRMError: SecLib:: a RetrievePrivilegeForUser sikertelen – egyetlen szerepkör sincs hozzárendelve a felhasználóhoz.**  
 
-> Megoldás: Biztonsági szerepkör hozzárendelése a Microsoft Piactér vezető írójához. Kövesse az [itt](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) található utasításokat a Biztonsági beállítások csoportban.
+> Megoldás: rendeljen biztonsági szerepkört Microsoft Marketplace vezető írója számára. Kövesse az utasításokat [itt](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) : biztonsági beállítások.
 
-**Nem menthető az érdeklődő a Dynamics CRM rendszerhez az AAD használatával. Kivétel:: Az azonosítóval rendelkező alkalmazás nem található a címtárban** 
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: az azonosítójú alkalmazás nem található a címtárban.** 
 
-> Az érdeklődőkezelés szakaszban megadott alkalmazásazonosító nem érvényes könyvtár. Kérjük, olvassa be a címtárazonosítót a 8. [here](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) 
+> A vezető felügyeleti szakaszban megadott alkalmazás-azonosító nem érvényes könyvtár. Szerezze be a [címtár-azonosítót](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)a 8. lépés (Azure Active Directory alatt) utasításai alapján. 
 
-**Nem menthető az érdeklődő a Dynamics CRM rendszerhez az AAD használatával. Kivétel:: A kért bérlői azonosító érvénytelen és nem érvényes külső tartományformátum.** 
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: a kért bérlői azonosító érvénytelen, és nem érvényes külső tartomány formátuma** 
 
-> Az érdeklődőkezelés szakaszban megadott címtárazonosító nem érvényes könyvtár. Kérjük, olvassa be a címtárazonosítót a 2. [here](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) 
+> A vezető felügyeleti szakaszban megadott címtár-azonosító nem érvényes könyvtár. Szerezze be a [címtár-azonosítót](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md)a 2. lépés (Azure Active Directory alatt) utasításai alapján. 
 
-**Nem menthető az érdeklődő a Dynamics CRM rendszerhez az AAD használatával. Kivétel:: Hiba a hitelesítő adatok érvényesítése miatt.: Érvénytelen ügyféltitok van megadva.** 
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: hiba történt a hitelesítő adatok érvényesítésekor.: Érvénytelen az ügyfél titkos kulcsa.** 
 
-> Megoldás: Jelentkezzen be az Azure Portalon, ellenőrizze, hogy az alkalmazáskulcs megegyezik-e a Partnerközpontban lévővel. Kérjük, hogy a [10.](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) 
+> Megoldás: Jelentkezzen be a Azure Portalba, és ellenőrizze, hogy az alkalmazás kulcsa megfelel-e a partneri központban. Adja meg a jelszót a 10. lépésben megadott utasítás alapján ( [Azure Active Directory).](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md) 
 
-**Nem menthető az érdeklődő a Dynamics CRM rendszerbe. LastCRMError: A kérelemcsatorna idővel több, mint várakozás a válasz után 00:02:00. Növelje a kérés hívásának átadott időtúltöltési értéket, vagy növelje a SendTimeout értékét a kötésen. A művelethez megadott idő lehet, hogy egy hosszabb időbevétel része volt.**  
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be. LastCRMError: a kérelem csatornájának időkorlátja lejárt, miközben a 00:02:00 utáni választ várt. Növelje meg a híváshoz átadott időtúllépési értéket a kérelemhez, vagy növelje a SendTimeout értékét a kötésben. Előfordulhat, hogy a művelethez megadott idő egy hosszú időtúllépés részét képezi.**  
 
-> Megoldás: Jelentkezzen be a Partnerközpontba, ellenőrizze a kirakat részleteit, >> érdeklődő cél >> URL-cím, ellenőrizze, hogy érvényes dinamikus CRM-példány-e.
+> Megoldás: Jelentkezzen be a partner központba, ellenőrizze a kirakat részleteit >>  >> URL-címet, és ellenőrizze, hogy érvényes-e a dinamikus CRM-példány.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**Mik azok az érdeklődők, és miért fontosak számomra kiadóként a Marketplace-en?** 
+**Mik azok az érdeklődők, és miért fontosak a piactéren a kiadók számára?** 
 
-Az érdeklődők olyan ügyfelek, akik a Marketplace-en telepítik a termékeit. Függetlenül attól, hogy a termék szerepel-e az [Azure Marketplace-en](https://azuremarketplace.microsoft.com) vagy az [AppSource-ban,](https://appsource.microsoft.com/)akkor a termék iránt érdeklődő ügyfelek érdeklődőket kaphat, ha beállította az ajánlat vezető célhelyét.  
+Az érdeklődők olyan ügyfelek, akik a piactéren telepítik termékeiket. Függetlenül attól, hogy a termék az [Azure Marketplace](https://azuremarketplace.microsoft.com) -en vagy a [AppSource](https://appsource.microsoft.com/)van-e felsorolva, fogadhat olyan ügyfeleket, akik érdeklődnek a termék iránt, ha a vezető célhelyet az ajánlatában állította be.  
 
-**Hol kaphatok segítséget az érdeklődő célhelyének beállításához?** 
+**Hol kaphatok segítséget az érdeklődői cél beállításakor?** 
 
-Itt talál dokumentációt: [Szerezzen be ügyfélérdeklődőket,](./partner-center-portal/commercial-marketplace-get-customer-leads.md) vagy küldjön be támogatási jegyet aka.ms/marketplacepublishersupport ajánlat típusának és érdeklődőkezelésének kiválasztásával. 
+A dokumentációt az [ügyfelek beszerzése](./partner-center-portal/commercial-marketplace-get-customer-leads.md) vagy támogatási jegy beküldése a [Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásban című cikk tartalmazza. Válassza az ajánlat típusa és az érdeklődő kezelése lehetőséget. 
 
-**Be kell állítanom egy érdeklődő célállomását ahhoz, hogy ajánlatot tegyek közzé a Marketplace-en?**
+**Meg kell-e adni egy érdeklődői célhelyet, hogy közzé lehessen tenni egy ajánlatot a piactéren?**
 
-Igen, ha a Kapcsolat i SaaS alkalmazást vagy a Tanácsadó szolgáltatásokat teszi közzé.  
+Igen, ha egy Contact me SaaS-alkalmazást vagy tanácsadói szolgáltatást tesz közzé.  
  
-**Hogyan győződhetek meg arról, hogy az érdeklődő konfigurációja helyes?**
+**Hogyan ellenőrizhető, hogy helyes-e az érdeklődő konfigurációja?**
 
-Az ajánlat és az érdeklődő célállomásának beállítása után tegye közzé az ajánlatot. Az érdeklődőérvényesítési lépéssel a Marketplace egy tesztérdeklődőt küld az ajánlatban konfigurált érdeklődő célállomásához. 
+Az ajánlat beállítása és az érdeklődő céljának közzététele után tegye közzé ajánlatát. Az érdeklődő ellenőrzésének lépésein a piactér egy tesztet küld az ajánlatában konfigurált vezető célhelyre. 
 
-**Hogyan találhatom meg a tesztvezetőt?**
+**Hogyan találhatom meg a tesztelési érdeklődőt?**
 
-Keressen rá a "MSFT_TEST" kifejezésre az érdeklődő célállomásán, itt egy mintateszt-érdeklődői nek adatai: 
+Keressen rá a "MSFT_TEST" kifejezésre a vezető célhelyen, íme egy példa a teszt érdeklődői adataira: 
 
-vállalat = MSFT_TEST_636573304831318844 
+Vállalat = MSFT_TEST_636573304831318844 
 
 ország = USA 
 
-leírás = MSFT_TEST_636573304831318844 
+Leírás = MSFT_TEST_636573304831318844 
 
 e-mail =MSFT_TEST_636573304831318844@test.com
 
@@ -120,26 +120,26 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844| \<Ajánlat neve> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \<Ajánlat neve> 
 
-oid = 00Do000000ZHog 
+OID = 00Do0000000ZHog 
 
 telefon = 1234567890 
 
 title = MSFT_TEST_636573304831318844 
 
-**Van egy élő ajánlatom, de nem látok semmi nyomot?**
+**Élő ajánlatom van, de nem látok semmilyen érdeklődőt?**
 
-Minden érdeklődő nek adatai lesznek átadva a kiválasztott érdeklődő célmezőiben, az érdeklődők a következő formátumban jelennek meg: **Forrás-Művelet| Ajánlat** 
+Az egyes érdeklődők a kiválasztott érdeklődői célhely mezőiben átadott adattal rendelkeznek, az érdeklődők ebben a formátumban fognak megjelenni: **forrásoldali művelet | Ajánlat** 
 
-  *Források:*
+  *Adatforrások*
 
     "AzureMarketplace", 
     "AzurePortal", 
     "TestDrive",  
     "SPZA" (acronym for AppSource) 
 
-  *Műveletek:*
+  *Műveletek*
 
     "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
     "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
@@ -151,7 +151,7 @@ Minden érdeklődő nek adatai lesznek átadva a kiválasztott érdeklődő cél
     "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
-  *Kínál:*
+  *Kínál*
 
     "checkpoint.check-point-r77-10sg-byol", 
     "bitnami.openedxcypress", 
@@ -159,7 +159,7 @@ Minden érdeklődő nek adatai lesznek átadva a kiválasztott érdeklődő cél
 
  
 
-  *Az ügyféladatok mintaadatai*
+  *Az ügyféladatok adatai*
 
     { 
 
@@ -179,32 +179,32 @@ Minden érdeklődő nek adatai lesznek átadva a kiválasztott érdeklődő cél
 
     } 
 
-További információ az [Érdeklődőink adatai](./partner-center-portal/commercial-marketplace-get-customer-leads.md)alatt. 
+További [információ a Lead info](./partner-center-portal/commercial-marketplace-get-customer-leads.md)alatt található. 
 
-**Az Azure BLOB-ot állítottam be érdeklődőcélomként, miért nem látom az érdeklődőt?** 
+**Az Azure BLOBot vezető célként konfiguráltam, miért nem látom az érdeklődőt?** 
 
-Az érdeklődő csak akkor íródik, ha az Azure BLOB storage-t választja az érdeklődő célhelyeként. Váltson az Azure-táblára, hogy valós időben megkapja az érdeklődőt.
+Az érdeklődő csak akkor lesz írva, ha az Azure BLOB Storage-t az érdeklődő célhelyként választja ki. Váltson át az Azure Table-re az érdeklődő valós idejű fogadásához.
 
-**Kaptam egy e-mailt a Marketplace-en, miért nem találom a vezető a CRM?**  
+**Kaptam egy e-mailt a piactérről, miért nem találom a vezetőt a CRM-ben?**  
 
-Lehetséges, hogy a végfelhasználó e-mail tartománya .edu-ból származik. Adatvédelmi okokból nem adunk át személyes azonosításra alkalmas adatokat .edu domainről. Támogatási [jegy](https://aka.ms/marketplacepublishersupport)beküldése .
+Lehetséges, hogy a végfelhasználó e-mail-tartománya az. edu címről származik. Adatvédelmi okokból nem adunk át személyes azonosításra alkalmas adatokat az. edu tartományból. Támogatási jegy küldése a [Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásban.
 
-**Az Azure Table/Azure BLOB-ot állítottam be vezető célként, hogyan tekinthetem meg az érdeklődőket?** 
+**Az Azure Table/Azure BLOBot az érdeklődői célként konfiguráltam, Hogyan tekinthetem meg az érdeklődőket?** 
 
-A blobot vagy a táblát az Azure Portalról érheti el, vagy ingyenesen letöltheti és telepítheti [az Azure Storage Explorert](https://azure.microsoft.com/features/storage-explorer/) az Azure storage-fiók tábláinak/blobjainak megtekintéséhez. 
+A blobot vagy a táblázatot elérheti Azure Portalból, vagy ingyenesen letöltheti és telepítheti [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) az Azure Storage-fiók táblái/Blobok megtekintésére is. 
 
-**Az Azure Table-t állítottam be érdeklődőcélként, értesítést kaphatok, ha a Marketplace új érdeklődőt küld?** 
+**Az Azure-táblázatot vezető célként konfiguráltam, értesítést kaphatok arról, ha új érdeklődőt küld a piactér?** 
 
-Igen, kövesse az utasításokat az Azure Table + Function beállításához a dokumentációban [itt.](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md) 
+Igen, kövesse az utasításokat az Azure Table + Function a dokumentációban történő beállításához [.](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md) 
 
-**A Salesforce-ot állítottam be érdeklődőcélként, miért nem találom az érdeklődőket?** 
+**Úgy konfiguráltam a Salesforce, hogy az érdeklődői célként miért nem találom az érdeklődőket?** 
 
-Ellenőrizze, hogy az érdeklődőkeresési űrlap kötelező mező-e egy választólista alapján. Ha igen, váltson át a mezőre egy nem kötelező szövegmezőre.  
+Ellenőrizze, hogy a web to Lead űrlap kötelező mező-e a lista alapján. Ha igen, váltson át a mezőre egy nem kötelező szövegmezőre.  
  
-**Volt egy kis gond a vezető úti célommal, és lemaradtam néhány nyomról. Elküldhetem őket e-mailben?** 
+**Probléma merült fel a vezető célhelyen, és néhány érdeklődőt kihagytam. Küldhetek nekem egy e-mailt?** 
 
-Az adatvédelmi irányelvek miatt nem oszthatjuk meg a vezető adatokat nem biztonságos e-mailben. 
+Adatvédelmi szabályzatok miatt a nem biztonságos e-mailen keresztül nem oszthatjuk meg az érdeklődői adatokat. 
 
-**Az Azure Storage-t (BLOB/Table) állítottam be érdeklődőcélként, mennyibe fog kerülni?** 
+**Beállítottam-e az Azure Storage-t (BLOB/Table) a vezető célként, Mennyibe kerül?** 
 
-Az érdeklődőgen adatok alacsonyak (<1 GB szinte minden megjelenítő esetében). A költség a kapott érdeklődők számától függ, ha egy hónap alatt 1000 érdeklődő érkezik, az körülbelül 50 centbe kerül. 
+A Lead Gen-adat alacsony (<1 GB szinte minden közzétevőhöz). A költségek a kapott érdeklődők számától függenek, ha az 1 000-es érdeklődők egy hónapon belül érkeznek, a költségek körülbelül 50 centet vesznek igénybe. 

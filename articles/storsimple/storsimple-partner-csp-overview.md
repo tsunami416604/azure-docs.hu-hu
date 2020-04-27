@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure StorSimple és a Cloud Solutions program áttekintése | Microsoft dokumentumok
-description: Áttekintés a StorSimple és a StorSimple-partnerek kripta- alkalmazásáról.
+title: A Microsoft Azure StorSimple és a Cloud Solutions program áttekintése | Microsoft Docs
+description: Áttekintés a StorSimple-partnerek StorSimple és CSP-ről.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,32 +15,32 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60628659"
 ---
-# <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Mi a StorSimple a Felhőalapú megoldások szolgáltatóinak program?
+# <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Mi a StorSimple a Cloud Solutions Providers programhoz?
 
 
 ## <a name="overview"></a>Áttekintés
 
-A Microsoft Azure StorSimple a vállalati tárolás egyedi megközelítése valódi hibrid felhőalapú tárolási képességekkel. Lehetővé teszi az ügyfelek számára, hogy kihasználják az inaktív adatok gazdaságos felhőalapú tárhelyét, miközben a legfontosabb adatokat a helyszínen tartják a legmagasabb szintű teljesítmény érdekében. 
+A Microsoft Azure StorSimple a nagyvállalati tárolók egyedi megközelítése a hibrid felhőalapú tárolási funkciókkal. Lehetővé teszi az ügyfelek számára, hogy kihasználják a gazdaságos Felhőbeli tárolás előnyeit az inaktív adathoz, miközben a legmagasabb szintű teljesítmény érdekében a kritikus fontosságú adataikat a helyszínen tartják. 
 
-A StorSimple Virtual Array for Cloud Solutions Provider (CSP) lehetővé teszi a partnerek számára, hogy kihasználják ezt a lehetőséget. A partnerek a microsoftos felhőszolgáltatások közvetlen kiépítésével, számlázásával és támogatásával rendelkeznek az ügyfelek teljes életciklusával. Röviden, a partnerek most már lebonyolítani a StorSimple együtt szolgáltatásaik az ügyfelek számára.
+A StorSimple Virtual Array for Cloud Solutions Provider (CSP) lehetővé teszi a partnerek számára, hogy kihasználják ezt a lehetőséget. A partnerek a Microsoft felhőalapú szolgáltatásainak közvetlen üzembe helyezésével, számlázásával és támogatásával rendelkeznek a teljes körű ügyfél-életciklussal. Röviden, a partnerek mostantól a StorSimple együtt a szolgáltatásaikat is felhasználhatják az ügyfeleknek.
 
-A StorSimple for CSP szolgáltatásról további információt az [Azure CSP áttekintő](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) oldalán talál.
+A CSP StorSimple kapcsolatos további információkért tekintse meg az [Azure CSP áttekintés](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) oldalát.
 
-A számlázással, az árképzéssal, az ösztönzőkkel és a csp-támogatással kapcsolatos további információkért látogasson el a [StorSimple webhelyre a kript.](storsimple-partner-csp-faq.md) 
+A számlázással, díjszabással, ösztönzőkkel és a CSP támogatásával kapcsolatos további információkért nyissa meg a [StorSimple a CSP-ben: GYIK](storsimple-partner-csp-faq.md). 
 
-## <a name="deploy-and-manage-storsimple-for-csp"></a>A StorSimple telepítése és kezelése a kriptagéphez
+## <a name="deploy-and-manage-storsimple-for-csp"></a>A CSP StorSimple üzembe helyezése és kezelése
 
-A StorSimple a CSP-hez használatalapú szolgáltatásként érhető el minden olyan piacon, ahol a StorSimple ma elérhető. A StorSimple a CSP-hez az Azure Portalt és a StorSimple Eszközkezelő szolgáltatást használja. A csp-partnerek létrehozhatnak egy StorSimple eszközkezelőt a StorSimple virtuális tömbök, megosztások, kötetek és biztonsági mentések kezelésére. A StorSimple Device Manager-szolgáltatáshoz regisztrált összes virtuális tömbfelügyelheti az Azure Portalon keresztül.
+A CSP StorSimple az összes olyan piacon elérhető, ahol a StorSimple jelenleg elérhető. A StorSimple for CSP a Azure Portal és a StorSimple Eszközkezelő szolgáltatást használja. A CSP-partner létrehozhat egy StorSimple-Eszközkezelő a virtuális tömbök, megosztások, kötetek és biztonsági mentések StorSimple kezeléséhez. A StorSimple Eszközkezelő szolgáltatásban regisztrált összes virtuális tömböt a Azure Portal használatával felügyelheti.
 
-További információért nyissa meg [a StorSimple virtuális tömb telepítése és kezelése a CSP számára](storsimple-partner-csp-deploy.md)című.
+További információkért látogasson el a [StorSimple virtuális tömb üzembe helyezése és kezelése a CSP-hez](storsimple-partner-csp-deploy.md)című témakörben.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha további kérdései vannak a StorSimple-vel kapcsolatban a kriptagépben, látogasson el a [StorSimple for CSP: Gyakran ismételt kérdésekre.](storsimple-partner-csp-faq.md)
-- Ha készen áll a StorSimple üzembe helyezésére, nyissa [meg a StorSimple központi telepítését a CSP számára.](storsimple-partner-csp-deploy.md)
+- Ha további kérdései vannak a CSP StorSimple kapcsolatban, keresse fel a [StorSimple for CSP: gyakori kérdések](storsimple-partner-csp-faq.md)című részt.
+- Ha készen áll a StorSimple üzembe helyezésére, lépjen a [StorSimple üzembe helyezése a CSP-hez](storsimple-partner-csp-deploy.md)című lépésre.

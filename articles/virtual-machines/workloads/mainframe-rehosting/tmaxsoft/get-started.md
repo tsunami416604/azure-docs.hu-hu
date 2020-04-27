@@ -1,45 +1,45 @@
 ---
-title: Ismerkedés a TmaxSoft OpenFrame-el az Azure virtuális gépeken
-description: Az IBM z/OS nagyszámítógépes számítási feladatainak újraüzemeltetése TmaxSoft OpenFrame környezet használatával azure-beli virtuális gépeken.Rehost your IBM z/OS mainframe workloads using TmaxSoft OpenFrame environment on Azure Virtual Machines (VMs).
+title: Ismerkedés az Azure Virtual Machines TmaxSoft OpenFrame Kiindulópontul
+description: Az IBM z/OS mainframe-alapú munkaterheléseket a TmaxSoft OpenFrame Kiindulópontul-környezettel helyezheti át az Azure Virtual Machines (VM) használatával.
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 408e0166e52af9efd3d4c64f1b29bddcfc1cca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61485427"
 ---
-# <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Ismerkedés a TmaxSoft OpenFrame-el az Azure-ban
+# <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Ismerkedés a TmaxSoft OpenFrame Kiindulópontul az Azure-ban
 
-A TmaxSoft OpenFrame segítségével vigye át meglévő nagyszámítógépes eszközeit a Microsoft Azure-ba. Ez a népszerű újraüzemeltetési megoldás emulációs környezetet hoz létre az Azure-ban, amely lehetővé teszi az alkalmazások gyors áttelepítését. Nincs szükség újraformázásra.
+Helyezze el meglévő mainframe-eszközeit, és helyezze át őket Microsoft Azure TmaxSoft OpenFrame Kiindulópontul használatával. Ez a népszerű visszaüzemeltetési megoldás egy emulációs környezetet hoz létre az Azure-ban, amely lehetővé teszi az alkalmazások gyors átköltöztetését. Nincs szükség újraformázásra.
 
-## <a name="openframe-rehosting-environment"></a>OpenFrame rehosting környezet
+## <a name="openframe-rehosting-environment"></a>OpenFrame Kiindulópontul-környezet újraüzemeltetése
 
-OpenFrame-környezet beállítása az Azure-ban fejlesztési, bemutatók, tesztelési vagy éles számítási feladatok hoz. Ahogy az alábbi ábra is mutatja, az OpenFrame több összetevőt is tartalmaz, amelyek az Azure-beli nagyszámítógépes emulációs környezetet hoznak létre. Az OpenFrame online szolgáltatásai például lecserélik a nagyszámítógépes köztes szoftvereket, például az IBM Ügyfélinformáció-ellenőrző Rendszert (CICS). Az OpenFrame Batch a TJES összetevőjével felváltja az IBM nagyszámítógép feladatbeviteli alrendszerét (JES). 
+OpenFrame Kiindulópontul-környezet létrehozása az Azure-ban fejlesztési, bemutatók, tesztelési és éles számítási feladatokhoz. Az alábbi ábrán látható, hogy a OpenFrame Kiindulópontul több olyan összetevőt tartalmaz, amelyek az Azure-ban létrehozzák a nagyszámítógépi emulációs környezetet. Például a OpenFrame Kiindulópontul online szolgáltatások cserélje le a nagyvállalati middleware-t, például az IBM Customer Information Control System (CICS) szolgáltatást. A OpenFrame Kiindulópontul Batch a TJES összetevővel helyettesíti az IBM mainframe-EK feladatának bejegyzési alrendszerét (csatlakoztatva). 
 
-![OpenFrame újrafogadási folyamat](media/openframe-01.png)
+![OpenFrame Kiindulópontul-újraüzemeltetési folyamat](media/openframe-01.png)
 
 > [!NOTE]
-> Az OpenFrame-környezet Azure-beli futtatásához érvényes terméklicenccel vagy a TmaxSoft próbalicencével kell rendelkeznie.
+> A OpenFrame Kiindulópontul-környezet Azure-beli futtatásához érvényes licenccel vagy próbaverziós licenccel kell rendelkeznie a TmaxSoft.
 
-## <a name="openframe-components"></a>OpenFrame-összetevők
+## <a name="openframe-components"></a>OpenFrame Kiindulópontul-összetevők
 
-A következő összetevők az Azure OpenFrame-környezetének részét képezik:
+A következő összetevők az Azure-beli OpenFrame Kiindulópontul-környezet részét képezik:
 
-- **Áttelepítési eszközök,** beleértve az OFMiner, egy megoldás, amely elemzi a nagyszámítógépek eszközök, majd áttelepíti azokat az Azure-ba.
-- **Fordítók**, beleértve az OFCOBOL-t, egy fordítót, amely a nagyszámítógép COBOL programjait értelmezi; OFPLI, amely értelmezi a mainframe PL / I programok; és ofasm, egy fordító, amely értelmezi a mainframe assembler programokat.
-- **Az előtér-összetevők,** beleértve a Java Enterprise User Solution (JEUS), a Java Enterprise Edition 6.OFGW tanúsítvánnyal rendelkező webalkalmazás-kiszolgálót és a 3270-es figyelőt tartalmazó OpenFrame átjáró-összetevőt.
-- **Alkalmazási** környezet. Az OpenFrame Base a teljes rendszert kezelő köztes szoftver. Az OpenFrame Server Type C (OSC) felváltja a nagyszámítógép köztes szoftverét és az IBM CICS-t.
-- **Relációs adatbázis**, például Tibero (látható), Oracle Database, Microsoft SQL Server, IBM Db2 vagy MySQL. Az OpenFrame-alkalmazások odbc protokollt használnak az adatbázissal való kommunikációhoz.
-- **Biztonság** a TACF-en keresztül, egy szolgáltatásmodul, amely szabályozza a felhasználók hozzáférését a rendszerekhez és erőforrásokhoz. 
-- **Az OFManager** egy olyan megoldás, amely az OpenFrame működési és felügyeleti funkcióit biztosítja a webes környezetben.
+- **Áttelepítési eszközök** , beleértve a OFMiner, a nagyszámítógépeket elemző megoldást, majd áttelepíti őket az Azure-ba.
+- **Fordítóprogramok**, beleértve a OFCOBOL, egy fordítót, amely a nagyszámítógép Cobol programját értelmezi. OFPLI, amely a nagyszámítógépek PL/I programjait értelmezi. a OFASM pedig egy fordító, amely a nagyvállalati szerelvények programjait értelmezi.
+- **Előtér** -összetevők, beleértve a Java Enterprise felhasználói megoldást (JEUS), egy webalkalmazás-kiszolgálót, amely a Java Enterprise Edition 6. OFGW, valamint a OpenFrame Kiindulópontul-átjáró összetevője, amely egy 3270-figyelőt biztosít.
+- **Alkalmazás** -környezet. A OpenFrame Kiindulópontul Base a teljes rendszer kezelésére szolgáló middleware. A OpenFrame Kiindulópontul Server Type C (OSC) a nagyszámítógépek köztes és az IBM CICS váltja fel.
+- A **kapcsolódó adatbázis**, például a Tibero (látható), a Oracle Database, a Microsoft SQL Server, az IBM DB2 vagy a MySQL. A OpenFrame Kiindulópontul alkalmazások az adatbázissal való kommunikációhoz az Open Database Connectivity (ODBC) protokollt használják.
+- **Biztonság** a TACF-on keresztül, amely a rendszerekhez és erőforrásokhoz való felhasználói hozzáférés szabályozását vezérli. 
+- A **OFManager** olyan megoldás, amely a OpenFrame Kiindulópontul működését és felügyeleti funkcióit biztosítja a webes környezetben.
 
-![OpenFrame architektúra](media/openframe-02.png)
+![OpenFrame Kiindulópontul architektúra](media/openframe-02.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [A TmaxSoft OpenFrame telepítése az Azure-ra](./install-openframe-azure.md)
+- [TmaxSoft-OpenFrame Kiindulópontul telepítése az Azure-ban](./install-openframe-azure.md)

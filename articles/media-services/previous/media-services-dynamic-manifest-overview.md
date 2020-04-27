@@ -1,6 +1,6 @@
 ---
-title: Szűrők és dinamikus jegyzékek | Microsoft dokumentumok
-description: Ez a témakör azt ismerteti, hogyan hozhat létre szűrőket, hogy az ügyfél használhassa őket az adatfolyam adott szakaszainak streameléséhez. A Media Services dinamikus jegyzékeket hoz létre a szelektív adatfolyam archiválására.
+title: Szűrők és dinamikus jegyzékfájlok | Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan hozhatók létre szűrők, hogy az ügyfél egy stream adott szakaszait továbbítsa. A Media Services dinamikus jegyzékfájlokat hoz létre a szelektív streaming archiválásához.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1234263fa800a17d0a5c235df54ca2751e3094bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69015846"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
 
-> [!div class="op_single_selector" title1="Válassza ki a Media Services használt verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
 > * [2-es verzió](media-services-dynamic-manifest-overview.md)
 > * [3-as verzió](../latest/filters-dynamic-manifest-overview.md)
 
-A 2.17-es kiadástól kezdve a Media Services lehetővé teszi, hogy szűrőket határozzon meg az eszközökhöz. Ezek a szűrők olyan kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek számára, hogy olyan műveleteket válasszanak, mint például: a videónak csak egy részét játssza le (a teljes videó lejátszása helyett), vagy csak a hang- és videointerpretációk egy részhalmazát adja meg, amelyet az ügyfél eszköze kezelni tud ( az eszközhöz társított összes interpretáció helyett). Az eszközök szűrése dinamikus **jegyzékeken**keresztül érhető el, amelyek az ügyfél kérésére jönnek létre a videó adott szűrő(k) alapján történő streamelésére.
+A 2,17-es verziótól kezdődően a Media Services lehetővé teszi az eszközökhöz tartozó szűrők megadását. Ezek a szűrők olyan kiszolgálóoldali szabályok, amelyek lehetővé teszik az ügyfelek számára a következő műveleteket: csak a videó egy szakaszának lejátszása (a teljes videó lejátszása helyett), vagy csak az adott eszköz által kezelhető hang-és videó-átadások egy részhalmazát kell megadnia (az objektumhoz társított összes kiadatás helyett). Az eszközök szűrése az ügyfél által a megadott szűrő (k) alapján a videó streamre való továbbítására szolgáló **dinamikus jegyzékfájlon**keresztül érhető el.
 
-Ez a témakör azokat a gyakori eseteket ismerteti, amelyekben a szűrők használata előnyös lehet az ügyfelek számára, és olyan témakörökre mutató hivatkozásokat, amelyek bemutatják a szűrők programozott létrehozását.
+Ez a témakör azokat a gyakori forgatókönyveket ismerteti, amelyekben a szűrők használata hasznos lehet az ügyfeleknek, és olyan témakörökre mutató hivatkozásokat tartalmaz, amelyek bemutatják, hogyan hozhat létre programozott módon a szűrőket.
 
 ## <a name="overview"></a>Áttekintés
-Amikor a tartalmat az ügyfeleknek kézbesíti (élő események vagy igény szerinti videó streamelése), a cél az, hogy kiváló minőségű videót juttasson el különböző eszközökre különböző hálózati feltételek mellett. E cél elérése érdekében tegye a következőket:
+A tartalomnak az ügyfeleknek való továbbításakor (élő események vagy igény szerinti videó közvetítése) a cél egy kiváló minőségű videó továbbítása különböző eszközökre különböző hálózati körülmények között. A cél eléréséhez tegye a következőket:
 
-* kódolja az adatfolyamot többsávszélességű[(adaptív bitráta)](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)videostreamre (ez gondoskodik a minőségről és a hálózati feltételekről) és 
-* a Media Services [dinamikus csomagolásával](media-services-dynamic-packaging-overview.md) dinamikusan újracsomagolhatja az adatfolyamot különböző protokollokba (ez gondoskodik a különböző eszközökön történő streamelésről). A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH. 
+* kódolja a streamet többszörös sávszélességű ([adaptív sávszélességű](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) video streambe (ez a minőség és a hálózati feltételekkel foglalkozik) 
+* használjon Media Services [dinamikus csomagolást](media-services-dynamic-packaging-overview.md) , hogy dinamikusan újracsomagolja a streamet különböző protokollokra (ez a streaming különböző eszközökön is gondoskodik). Media Services támogatja a következő adaptív sávszélességű adatfolyam-technológiák szállítását: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH. 
 
 ### <a name="manifest-files"></a>Jegyzékfájlok
-Amikor adaptív sávszélességű streameléshez kódol egy eszközt, létrejön egy **jegyzékfájl** (lejátszási lista) fájl (a fájl szövegalapú vagy XML-alapú). A **jegyzékfájl** olyan adatfolyam-metaadatokat tartalmaz, mint például: műsorszám típusa (hang, videó vagy szöveg), műsorszám neve, kezdési és befejezési idő, bitráta (tulajdonságok), műsorszavak, bemutatóablak (rögzített időtartamú csúszóablak), videokodek (FourCC). Arra is utasítja a játékost, hogy a következő töredéket szerezze be a következő elérhető lejátszható videótöredékekről és azok helyéről. A töredékek (vagy szegmensek) a videotartalom tényleges "részei".
+Ha adategységet kódol az adaptív sávszélességű adatfolyam-továbbításhoz, létrejön egy **jegyzékfájl** (Playlist) fájl (a fájl Text-alapú vagy XML-alapú). A **jegyzékfájl** olyan adatfolyam-metaadatokat tartalmaz, mint például a követés típusa (hang, videó vagy szöveg), a nyomon követési idő, a kezdő és a záró időpont, a bitráta (Tulajdonságok), a nyelvek nyomon követése, a bemutató ablak (rögzített időtartam csúszó ablaka), video codec (FourCC). Arra is utasítja a lejátszót, hogy a következő töredéket kérje le a következő lejátszható videó töredékekről és azok helyéről. A töredékek (vagy szegmensek) a videotartalom tényleges "darabjai".
 
-Íme egy példa egy jegyzékfájlra: 
+Példa egy jegyzékfájlra: 
 
     <?xml version="1.0" encoding="UTF-8"?>    
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="330187755" TimeScale="10000000">
@@ -73,121 +73,121 @@ Amikor adaptív sávszélességű streameléshez kódol egy eszközt, létrejön
     </SmoothStreamingMedia>
 
 ### <a name="dynamic-manifests"></a>Dinamikus jegyzékek
-Vannak olyan [esetek,](media-services-dynamic-manifest-overview.md#scenarios) amikor az ügyfél nek nagyobb rugalmasságra van szüksége, mint az alapértelmezett eszköz jegyzékfájljában leírtak. Példa:
+Előfordulhat, hogy az ügyfélnek több rugalmasságra van [szüksége, mint](media-services-dynamic-manifest-overview.md#scenarios) amit az alapértelmezett adategység jegyzékfájljában ismertetünk. Például:
 
-* Eszközspecifikus: csak a megadott interpretációkat és/vagy meghatározott nyelvi sávokat adja meg, amelyeket a tartalom lejátszására használt eszköz támogat ("interpretációs szűrés"). 
-* Csökkentse a jegyzékfájlt, hogy egy élő esemény ("alklipszűrés") részklipjét jelenítse meg.
-* A videó elejének levágása ("videó vágása").
-* Állítsa be a bemutatóablakot (DVR) annak érdekében, hogy a lejátszóban a DVR ablak ának korlátozott hossza biztosított ("bemutatóablak beállítása").
+* Eszköz-specifikus: csak a megadott kiadatások és/vagy a megadott nyelvi sávok továbbítására szolgál, amelyek a tartalom lejátszásához használhatók ("kiadatási szűrés"). 
+* Csökkentse a jegyzékfájlt az élő események ("alklipek szűrése") alklipének megjelenítéséhez.
+* Egy videó elejének vágása ("videó vágása").
+* A bemutató ablak (DVR) módosítása annak érdekében, hogy korlátozott hosszúságú legyen a DVR ablak a lejátszóban ("bemutató ablakának módosítása").
 
-E rugalmasság elérése érdekében a Media Services előre definiált [szűrőkön](media-services-dynamic-manifest-overview.md#filters)alapuló **dinamikus jegyzékeket** kínál.  Miután definiálta a szűrőket, az ügyfelek felhasználhatják őket a videó adott interpretációjának vagy alklipjeinek streamelésére. Ezek a szűrő(k) a streamelési URL-cím. A szűrők alkalmazhatók a [dinamikus csomagolás](media-services-dynamic-packaging-overview.md)által támogatott adaptív sávszélességű streamelési protokollokra: HLS, MPEG-DASH és Smooth Streaming. Példa:
+Ennek a rugalmasságnak a megvalósításához Media Services az előre definiált [szűrők](media-services-dynamic-manifest-overview.md#filters)alapján **dinamikus jegyzékfájlokat** kínál.  Miután definiálta a szűrőket, az ügyfelek felhasználhatják a videó egy adott kiadatásának vagy alvideoklipének továbbítására. A szűrő (ka) t a folyamatos átviteli URL-címben határozzák meg. A szűrők alkalmazhatók a [dinamikus csomagolás](media-services-dynamic-packaging-overview.md)által támogatott adaptív sávszélességű adatfolyam-továbbítási protokollokra: HLS, MPEG-DASH és Smooth streaming. Például:
 
 MPEG DASH URL-cím szűrővel
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)
 
-Sima streamelési URL-cím szűrővel
+URL-cím Smooth Streaming szűrővel
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)
 
 
-A tartalom kézbesítéséről és a folyamatos átvitelű URL-ek létrehozásáról a Tartalom áttekintése című témakörben olvashat [bővebben.](media-services-deliver-content-overview.md)
+A tartalmak továbbításával és a streaming URL-címek létrehozásával kapcsolatos további információkért lásd a [tartalom áttekintését](media-services-deliver-content-overview.md).
 
 > [!NOTE]
-> Vegye figyelembe, hogy a dinamikus jegyzékek nem módosítja az eszközt és az eszköz alapértelmezett jegyzékfájlját. Az ügyfél dönthet úgy, hogy szűrővel vagy anélkül kér adatfolyamot. 
+> Vegye figyelembe, hogy a dinamikus jegyzékfájlok nem változtatják meg az adott eszközre vonatkozó adategységet és az alapértelmezett jegyzékfájlt. Az ügyfél dönthet úgy, hogy szűrővel vagy anélkül is kér streamet. 
 > 
 > 
 
-### <a name="filters"></a><a id="filters"></a>Filters (Szűrők)
-Az eszközszűrőknek két típusa van: 
+### <a name="filters"></a><a id="filters"></a>Szűrők
+Az eszközök két típusa létezik: 
 
-* Globális szűrők (az Azure Media Services-fiók bármely eszközére alkalmazhatók, a fiók élettartama) és 
-* Helyi szűrők (csak olyan eszközre alkalmazható, amelyhez a szűrő t a létrehozáskor társítva volt, az eszköz élettartama). 
+* Globális szűrők (a Azure Media Services fiókban lévő összes eszközre alkalmazható, a fiók élettartama) és 
+* Helyi szűrők (csak olyan objektumra alkalmazhatók, amelynél a szűrő a létrehozáskor hozzá volt rendelve, az eszköz élettartama). 
 
-A globális és a helyi szűrőtípusok tulajdonságai pontosan megegyeznek. A fő különbség a kettő között az, hogy milyen típusú filer alkalmasabb. A globális szűrők általában alkalmasak olyan eszközprofilokhoz (interpretációs szűréshez), ahol helyi szűrők használhatók egy adott eszköz vágására.
+A globális és a helyi szűrési típusok pontosan ugyanazok a tulajdonságok. A kettő között a fő különbség, hogy mely forgatókönyvek esetében alkalmasabb a Filer-típus. A globális szűrők általában az eszközök profiljaihoz (kiadatási szűréshez) alkalmasak, ahol helyi szűrők használhatók egy adott eszköz kivágására.
 
-## <a name="common-scenarios"></a><a id="scenarios"></a>Gyakori forgatókönyvek
-Ahogy már említettük, amikor a tartalmat az ügyfeleknek kézbesítjük (élő események vagy igény szerinti videó közvetítése), a cél az, hogy kiváló minőségű videót juttasson el különböző eszközökre különböző hálózati körülmények között. Emellett előfordulhat, hogy más követelmények, amelyek magukban foglalják az eszközök szűrése és a **dinamikus jegyzékfájl**s használatával. A következő szakaszok rövid áttekintést nyújtanak a különböző szűrési forgatókönyvekről.
+## <a name="common-scenarios"></a><a id="scenarios"></a>Gyakori helyzetek
+Ahogy korábban is említettük, a tartalomnak az ügyfeleknek való továbbításakor (élő események vagy igény szerinti videó közvetítése) a cél az, hogy magas színvonalú videót nyújtson be különböző hálózati körülmények között különböző eszközökre. Emellett előfordulhat, hogy egyéb követelmények is vannak, amelyek az eszközök szűrését és a **dinamikus jegyzékfájlok**használatát igénylik. A következő részekben rövid áttekintést talál a különböző szűrési forgatókönyvekről.
 
-* Adja meg csak a hang- és videointerpretációk egy részét, amelyet bizonyos eszközök kezelni tudnak (az eszközhöz társított összes interpretáció helyett). 
-* A videónak csak egy részét játssza le (ahelyett, hogy az egész videót lejátszana).
-* Állítsa be a DVR prezentációs ablakát.
+* Csak a hang-és videó-továbbítások egy részhalmazát adhatja meg, amelyeket bizonyos eszközök kezelhetnek (az objektumhoz társított összes kiadatás helyett). 
+* Egy videó csak egy szakaszát játssza le (a teljes videó lejátszása helyett).
+* A DVR-bemutató ablakának módosítása.
 
-## <a name="rendition-filtering"></a>Interpretáció szűrése
-Dönthet úgy, hogy eszközét több kódolási profilba (H.264 Baseline, H.264 High, AACL, AACH, Dolby Digital Plus) és több féle bitrátába kódolja. Azonban nem minden ügyféleszköz támogatja az eszköz összes profilját és bitrátát. A régebbi Android-eszközök például csak a H.264 Baseline+AACL-t támogatják. Magasabb bitráták küldése olyan eszközre, amely nem tudja megszerezni az előnyöket, pazarolja a sávszélességet és az eszközszámítást. Az ilyen eszköznek meg kell fejtenie az összes megadott információt, csak a megjelenítéshez lekicsinyítette.
+## <a name="rendition-filtering"></a>Kiadatás szűrése
+Dönthet úgy is, hogy az eszközt több kódolási profilba kódolja (H. 264 alapkonfiguráció, H. 264 magas, AACL, AACH, Dolby Digital Plus) és több minőségi bitrátát. Azonban nem minden ügyféleszközök fogja támogatni az összes eszköz profilját és bitrátáját. Például a régebbi Android-eszközök csak a H. 264 Baseline + AACL támogatják. Nagyobb bitsebességek küldése olyan eszközre, amely nem tudja beolvasni az előnyöket, a hulladékok sávszélességét és az eszközök számítási felszámítását. Az eszköznek az összes megadott információt dekódolnia kell, csak a megjelenítéshez.
 
-A Dynamic Manifest segítségével olyan eszközprofilokat hozhat létre, mint a mobil, a konzol, a HD/SD stb., és felveheti azokat a számokat és tulajdonságokat, amelyeket az egyes profilok részének szeretne használni.
+A dinamikus jegyzékfájl használatával olyan eszközöket hozhat létre, mint például a mobil, a konzol, a HD/SD stb., valamint az egyes profilok részét képező zeneszámokat és tulajdonságokat is.
 
-![Példa interpretáció szűrésére][renditions2]
+![Példa a kiadatás szűrésére][renditions2]
 
-A következő példában egy kódoló segítségével kódolt a mezzanine eszköz hét ISO MP4s videó kiadatás (180p-től 1080p- ig). A kódolt eszköz dinamikusan csomagolható a következő streamelési protokollok bármelyikébe: HLS, Smooth és MPEG DASH.  A diagram tetején a HLS-jegyzékfájl a szűrők nélküli eszköz höz látható (mind a hét interpretációt tartalmazza).  A bal alsó sarokban megjelenik a HLS-jegyzékfájl, amelyre az "ott" nevű szűrőt alkalmazták. Az "ott" szűrő az 1Mbps alatti összes bitráta eltávolítását határozza meg, ami azt eredményezte, hogy az alsó két minőségi szint lelett távolítva a válaszban. A jobb alsó sarokban megjelenik a HLS jegyzékfájl, amelyre a "mobil" nevű szűrőt alkalmazták. A "mobil" szűrő azt határozza meg, hogy az okat eltávolítsuk azokat az interpretációkat, amelyek felbontása nagyobb, mint 720p, ami a két 1080p-s interpretáció eltávolítását eredményezte.
+A következő példában egy kódolót használtak egy köztes eszköz kódolásához hét ISO MP4 (180p és 1080p között). A kódolt eszköz dinamikusan becsomagolható a következő folyamatos átviteli protokollok bármelyikére: HLS, Smooth és MPEG DASH.  A diagram tetején megjelenik az objektum HLS-jegyzéke, amely nem tartalmaz szűrőket (ez mind a hét összes leképezését tartalmazza).  A bal alsó sarokban megjelenik a HLS jegyzékfájl, amelybe az "ott" nevű szűrő lett alkalmazva. Az "ott" szűrő azt adja meg, hogy a 1Mbps alatti összes bitrátát el szeretné távolítani, ami a válaszban az alsó két minőségi szintet eredményezi. A jobb alsó sarokban megjelenik a HLS jegyzékfájl, amelybe a "Mobile" nevű szűrő lett alkalmazva. A "mobil" szűrő meghatározza, hogy el lehessen távolítani azokat a leképezéseket, amelyekben a felbontás nagyobb, mint 720p, ami azt eredményezte, hogy a két 1080p-kiadatás kikerül.
 
-![Interpretáció szűrése][renditions1]
+![Kiadatás szűrése][renditions1]
 
-## <a name="removing-language-tracks"></a>Nyelvi sávok eltávolítása
-A vagyontárgyak között több hangnyelv is lehet, például angol, spanyol, francia stb. Általában a Player SDK-kezelők alapértelmezett hangsáv-kiválasztása és a felhasználónként elérhető hangsávok. Ez kihívást jelent, hogy dolgozzon ki ilyen Játékos SDK-k, igényel különböző megvalósítások között eszköz-specifikus játékos-keretrendszerek. Emellett egyes platformokon a Lejátszó API-k korlátozottak, és nem tartalmazzák a hangválasztó funkciót, ahol a felhasználók nem választhatják ki vagy módosíthatják az alapértelmezett hangsávot. Az eszközszűrőkkel szabályozhatja a viselkedést, ha olyan szűrőket hoz létre, amelyek csak a kívánt hangnyelveket tartalmazzák.
+## <a name="removing-language-tracks"></a>Nyelvi nyomon követések eltávolítása
+Az eszközök több hangnyelvt is tartalmazhatnak, például angol, spanyol, francia stb. Általában a Player SDK-kezelők alapértelmezett hangsáv-kiválasztási és elérhető hangsávok felhasználónként választhatók ki. Ez kihívást jelent az ilyen játékos SDK-k fejlesztéséhez, és ez különböző implementációkat igényel az eszközre jellemző Player-keretrendszerek között. Emellett bizonyos platformokon a lejátszó API-k korlátozottak, és nem tartalmazzák a hangkijelölési funkciót, ahol a felhasználók nem választhatják ki vagy nem változtathatják meg az alapértelmezett hangsávot. Az Asset Filters használatával szabályozhatja a viselkedést olyan szűrők létrehozásával, amelyek csak a kívánt hangnyelveket tartalmazzák.
 
-![Nyelvi sávok szűrése][language_filter]
+![Nyelvi nyomon követések szűrése][language_filter]
 
-## <a name="trimming-start-of-an-asset"></a>Eszköz vágási kezdete
-A legtöbb élő streamelési eseményben az operátorok néhány tesztet futtatnak a tényleges esemény előtt. Például, lehet, hogy egy pala, mint ez kezdete előtt az esemény: "Program indul egy pillanatra". Ha a program archiválás, a teszt és pala adatok is archivált, és tartalmazza a bemutatót. Ez az információ azonban nem jeleníthető meg az ügyfelek számára. A dinamikus jegyzékfájl segítségével létrehozhat egy indítási időszűrőt, és eltávolíthatja a nem kívánt adatokat a jegyzékfájlból.
+## <a name="trimming-start-of-an-asset"></a>Eszköz kivágásának kezdete
+A legtöbb élő közvetítési eseménynél a kezelők a tényleges esemény előtt futtassanak teszteket. Például tartalmazhatnak egy, az esemény megkezdése előtt megjelenő előlappal: "a program hamarosan megkezdődik". Ha a program archiválást tartalmaz, a rendszer archiválja a teszt-és az adattárat, és tartalmazza a bemutatót is. Ezek az információk azonban nem jelennek meg az ügyfelek számára. A dinamikus jegyzékfájl használatával létrehozhat egy kezdési időpontot, és eltávolíthatja a nemkívánatos adatokból a jegyzékfájlt.
 
 ![Vágás kezdete][trim_filter]
 
 ## <a name="creating-subclips-views-from-a-live-archive"></a>Alklipek (nézetek) létrehozása élő archívumból
-Sok élő esemény hosszú ideig fut, és az élő archívum több eseményt is tartalmazhat. Az élő esemény befejezése után a műsorszolgáltatók az élő archívumot logikai programindítási és -leállítási szekvenciákra szeretnék felbontani. Ezután tegye közzé ezeket a virtuális programokat külön-külön az élő archívum utófeldolgozása nélkül, és ne hozzon létre külön eszközöket (amelyek nem kapják meg a cdn-ek meglévő gyorsítótárazott töredékeinek előnyeit). Ilyen virtuális programok például egy futball- vagy kosárlabdajáték negyede, a baseball ban való inningek vagy bármely sportprogram egyedi eseményei.
+Sok élő esemény hosszú ideig fut, és az élő archiválás több eseményt is tartalmazhat. Az élő esemény vége után a műsorszolgáltatók érdemes lehet az élő archívumot feltörni a logikai programok indítására és leállítására. Ezután tegye közzé ezeket a virtuális programokat külön, az élő Archívum feldolgozása után, és ne hozzon létre külön objektumokat (amely nem használja ki a meglévő gyorsítótárazott töredékek előnyeit a CDNs). Ilyen virtuális programok például a labdarúgás vagy kosárlabda játékának, a baseball inning-nek vagy bármely sportesemény egyes eseményeinek a negyedévei.
 
-A dinamikus jegyzékfájl segítségével szűrőket hozhat létre a kezdési/befejezési időpontok használatával, és virtuális nézeteket hozhat létre az élő archívum tetején. 
+A dinamikus jegyzékfájl használatával szűrőket hozhat létre a kezdési és befejezési időpontok alapján, és virtuális nézeteket hozhat létre az élő Archívum tetején. 
 
-![Az alklip szűrője][subclip_filter]
+![Alklip szűrője][subclip_filter]
 
 Szűrt eszköz:
 
 ![Síelés][skiing]
 
-## <a name="adjusting-presentation-window-dvr"></a>Bemutatóablak beállítása (DVR)
-Jelenleg az Azure Media Services körkörös archívumot kínál, ahol az időtartam 5 perc és 25 óra között konfigurálható. A jegyzékfájl-szűrés segítségével az archívum tetején lévő görgetésre kijelölt DVR-ablakot hozhat létre adathordozó törlése nélkül. Sok olyan forgatókönyv van, ahol a műsorszolgáltatók korlátozott DVR ablakot szeretnének biztosítani az élő éllel való mozgáshoz, és ugyanakkor nagyobb archiválási ablakot tartanak. Előfordulhat, hogy a műsorszolgáltató a DVR ablakon kívüli adatokat szeretné használni a klipek kiemelésére, vagy különböző DVR-ablakokat szeretne biztosítani a különböző eszközökhöz. Például a legtöbb mobileszköz nem kezeli a nagy DVR-ablakokat (a mobileszközökhöz 2 perces DVR-ablak, asztali ügyfelek esetében pedig egy óra áll elő).
+## <a name="adjusting-presentation-window-dvr"></a>Bemutató ablak módosítása (DVR)
+A Azure Media Services jelenleg körkörös archiválást biztosít, ahol az időtartam 5 perc és 25 óra között konfigurálható. A jegyzékfájlok szűrésével az Archívum felső részén, az adathordozó törlése nélkül hozhat létre egy gördülő DVR-ablakot. A műsorszolgáltatók számos szituációban szeretnék biztosítani, hogy az élő Edge-vel való áthelyezés és a nagyobb archiválási időszak megtartása mellett egy korlátozott DVR-ablakot is biztosítson. A műsorszolgáltató érdemes lehet a DVR ablakon kívüli adatmennyiséget használni a klipek kiemeléséhez, vagy különböző DVR-ablakokat szeretne biztosítani különböző eszközökhöz. Előfordulhat például, hogy a mobileszközök többsége nem kezeli a nagyméretű DVR-ablakokat (a mobileszközök esetében 2 perces DVR-ablakot és asztali ügyfelek számára egy órát is igénybe vehet).
 
 ![DVR ablak][dvr_filter]
 
-## <a name="adjusting-livebackoff-live-position"></a>A LiveBackoff beállítása (élő pozíció)
-A jegyzékfájl-szűréssel néhány másodpercet távolíthat el az élő program élő éléről. A szűrés lehetővé teszi a műsorszolgáltatók számára, hogy az előnézeti közzétételi ponton megtekintsék a bemutatót, és hirdetésbeszúrási pontokat hozzanak létre, mielőtt a nézők megkapják az adatfolyamot (30 másodperccel visszakapcsolva). A műsorszolgáltatók ezután ezeket a hirdetéseket az ügyfélkeretükbe tolhatják, hogy még a hirdetési lehetőség előtt megkaphassák és feldolgozhassák az információkat.
+## <a name="adjusting-livebackoff-live-position"></a>LiveBackoff módosítása (élő pozíció)
+A jegyzékfájl szűrésével több másodpercet lehet eltávolítani egy élő program élő szélétől. A szűrés lehetővé teszi a műsorszolgáltatók számára, hogy megtekintsék a bemutatót az előnézeti közzétételi ponton, és hirdetmények beszúrási pontjait hozzanak létre, mielőtt a megtekintők megkapják a streamet (30 másodpercen belül A műsorszolgáltatók ezután leküldhetik ezeket a hirdetményeket az ügyfél-keretrendszerekbe, hogy a hirdetmények megkezdése előtt megkapják és feldolgozzák az információkat.
 
-A hirdetéstámogatás mellett a LiveBackoff beállítás sal a megtekintők pozíciójának beállítására is használható, így amikor az ügyfelek elsodródnak, és elérik az élő éleket, továbbra is kaphatnak töredékeket a kiszolgálóról, ahelyett, hogy HTTP 404-es vagy 412-es hibát kapnának.
+A hirdetmények támogatása mellett a LiveBackoff beállítással is beállíthatja a megjelenítők pozícióját, így ha az ügyfelek elsodródnak, és az élő peremhálózati állapotba kerülnek, a HTTP 404 vagy 412 hiba miatt továbbra is kaphatnak töredékeket a kiszolgálóról.
 
 ![livebackoff_filter][livebackoff_filter]
 
-## <a name="combining-multiple-rules-in-a-single-filter"></a>Több szabály egyesítése egyetlen szűrőben
-Több szűrési szabályt is kombinálhat egyetlen szűrőben. Példaként definiálhat egy "tartományszabályt", amely eltávolítja a palákat az élő archívumból, és kiszűri a rendelkezésre álló bitrátákat. Több szűrési szabály alkalmazásakor a végeredmény az összes szabály metszéspontja.
+## <a name="combining-multiple-rules-in-a-single-filter"></a>Több szabály kombinálása egyetlen szűrőben
+Egyetlen szűrőben több szűrési szabályt is egyesítheti. Például megadhat egy "tartományhoz tartozó szabályt", amellyel eltávolíthatja az élő archívumból a bevezetéseket, és kiszűrheti a rendelkezésre álló bitrátákat is. Több szűrési szabály alkalmazása esetén a végeredmény az összes szabály metszete.
 
 ![több szabály][multiple-rules]
 
 ## <a name="create-filters-programmatically"></a>Szűrők létrehozása programozott módon
-A következő cikk a Media Services szűrőkhöz kapcsolódó entitásait ismerteti. A cikk azt is bemutatja, hogyan hozhat létre programozott szűrőket.  
+A következő cikk a szűrőkhöz kapcsolódó entitásokat ismerteti Media Services. A cikk azt is bemutatja, hogyan hozhatók létre programozott módon szűrők.  
 
-[Hozzon létre szűrőket REST API-kkal.](media-services-rest-dynamic-manifest.md)
+[Hozzon létre szűrőket REST API](media-services-rest-dynamic-manifest.md)-kkal.
 
-## <a name="combining-multiple-filters-filter-composition"></a>Több szűrő kombinálása (szűrőösszetétel)
-Egy URL-címben több szűrőt is kombinálhat. 
+## <a name="combining-multiple-filters-filter-composition"></a>Több szűrő egyesítése (szűrő összetétele)
+Egyetlen URL-címben több szűrőt is egyesíthet. 
 
-A következő forgatókönyv bemutatja, hogy miért érdemes kombinálni a szűrőket:
+Az alábbi forgatókönyv azt mutatja be, hogy miért érdemes a szűrőket egyesíteni:
 
-1. Meg kell szűrni a videó tulajdonságait a mobil eszközök, mint például az Android vagy iPAD (annak érdekében, hogy korlátozza a videó tulajdonságait). A nem kívánt tulajdonságok eltávolításához hozzon létre egy globális szűrőt, amely megfelel az eszközprofiloknak. Ahogy azt a cikk korábbi része is említette, a globális szűrők minden eszközéhez használhatók ugyanazon médiaszolgáltatási fiókban, további társítás nélkül. 
-2. Azt is szeretné, hogy vágja le a kezdő és záró idő egy eszköz. Ennek elérése érdekében hozzon létre egy helyi szűrőt, és állítsa be a kezdési/befejezési időt. 
-3. Mindkét szűrőt kombinálni szeretné (kombináció nélkül minőségi szűrést kell hozzáadnia a vágási szűrőhöz, ami megnehezíti a szűrőhasználatot).
+1. A videók minőségének korlátozásához szűrnie kell a videó tulajdonságait (például Android vagy iPAD). A nemkívánatos tulajdonságok eltávolításához létre kell hoznia egy, az eszköz profiljaihoz megfelelő globális szűrőt. A cikkben korábban említettek szerint globális szűrők is használhatók az azonos Media Services-fiókkal rendelkező összes eszközhöz további társítás nélkül. 
+2. Egy eszköz kezdési és befejezési időpontját is el szeretné metszeni. Ennek eléréséhez hozzon létre egy helyi szűrőt, és állítsa be a kezdő és a záró időpontot. 
+3. Mindkét szűrőt kombinálni kívánja (kombináció nélkül, minőségi szűrést kell hozzáadnia a kivágási szűrőhöz, amely nehezebbé teszi a szűrési használatot).
 
-A szűrők kombinálásához pontosvesszővel tagolt jegyzék-/lista URL-címére kell beállítania a szűrőneveket. Tegyük fel, hogy van egy *MyMobileDevice nevű szűrője,* amely szűri a tulajdonságokat, és van egy másik nevű *MyStartTime* egy adott kezdési időpont beállításához. Kombinálhatja őket, mint ez:
+A szűrők egyesítéséhez pontosvesszővel elválasztva kell beállítania a szűrő nevét a jegyzékfájl/lista URL-címére. Tegyük fel, hogy rendelkezik egy *MyMobileDevice* nevű szűrővel, amely a tulajdonságokat szűri, és egy másik nevű *MyStartTime* rendelkezik egy adott kezdési időpont beállításához. A következőhöz hasonló módon kombinálhatja őket:
 
     http://teststreaming.streaming.mediaservices.windows.net/3d56a4d-b71d-489b-854f-1d67c0596966/64ff1f89-b430-43f8-87dd-56c87b7bd9e2.ism/Manifest(filter=MyMobileDevice;MyStartTime)
 
-Legfeljebb három szűrőt egyesíthet. 
+Legfeljebb három szűrőt lehet kombinálni. 
 
-További információ: [ebbe a](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) blogba.
+További információkért tekintse meg [ezt a](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) blogot.
 
-## <a name="know-issues-and-limitations"></a>Ismerje meg a problémákat és korlátozásokat
-* A dinamikus jegyzékfájl gop-határokban (kulcskeretekben) működik, így a vágás gop pontossággal rendelkezik. 
-* A helyi és globális szűrőkhöz ugyanazt a szűrőnevet használhatja. A helyi szűrők elsőbbséget élveznek, és felülírják a globális szűrőket.
-* Ha frissíti a szűrőt, akár 2 percet is igénybe vehet, amíg a streamelési végpont frissíti a szabályokat. Ha a tartalmat bizonyos szűrőkkel szolgálták ki (proxykban és CDN-gyorsítótárakban gyorsítótárazva), a szűrők frissítése a lejátszó meghibásodását eredményezheti. Javasoljuk, hogy törölje a gyorsítótárat a szűrő frissítése után. Ha ez a beállítás nem lehetséges, fontolja meg egy másik szűrő használatát.
+## <a name="know-issues-and-limitations"></a>Problémák és korlátozások
+* A dinamikus jegyzékfájl a GOP határain (kulcstárolókban) működik, ezért a Kivágás a GOP pontossággal rendelkezik. 
+* A helyi és a globális szűrőkhöz ugyanazt a nevet használhatja. A helyi szűrők magasabb prioritással rendelkeznek, és felülbírálják a globális szűrőket.
+* Ha frissít egy szűrőt, akár 2 percet is igénybe vehet, amíg a streaming-végpont frissíti a szabályokat. Ha a tartalom bizonyos szűrők (és a proxyk és CDN-gyorsítótárak gyorsítótárazása) használatával lett kézbesítve, akkor a szűrők frissítése a hibákhoz vezethet. A szűrő frissítése után ajánlott törölni a gyorsítótárat. Ha ez a beállítás nem lehetséges, érdemes lehet egy másik szűrőt használni.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -196,7 +196,7 @@ További információ: [ebbe a](https://azure.microsoft.com/blog/azure-media-ser
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[Tartalom kézbesítése az ügyfeleknek – áttekintés](media-services-deliver-content-overview.md)
+[Tartalom továbbítása az ügyfeleknek – áttekintés](media-services-deliver-content-overview.md)
 
 [renditions1]: ./media/media-services-dynamic-manifest-overview/media-services-rendition-filter.png
 [renditions2]: ./media/media-services-dynamic-manifest-overview/media-services-rendition-filter2.png

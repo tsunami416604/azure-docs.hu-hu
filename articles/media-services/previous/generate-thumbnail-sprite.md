@@ -1,6 +1,6 @@
 ---
-title: Miniatűr sprite létrehozása az Azure Media Services szolgáltatással | Microsoft dokumentumok
-description: Ez a témakör bemutatja, hogyan hozhat létre egy miniatűr sprite az Azure Media Services használatával.
+title: Miniatűr sprite létrehozása a Azure Media Serviceskal | Microsoft Docs
+description: Ebből a témakörből megtudhatja, hogyan hozhatja Azure Media Services a miniatűr Sprite-ot.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,26 +12,26 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61229050"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>Miniatűr sprite létrehozása  
 
-A Media Encoder Standard segítségével miniatűr sprite-ot hozhat létre, amely egy JPEG-fájl, amely több kis felbontású bélyegképet tartalmaz, egyetlen (nagy) képbe fűzve, egy VTT-fájllal együtt. Ez a VTT-fájl határozza meg az egyes miniatűrök által képviselt bemeneti videó időtartományát, valamint a miniatűr méretét és koordinátáit a nagy JPEG-fájlban. A videólejátszók a VTT fájlt és a sprite képet használják a "vizuális" keresősáv megjelenítéséhez, vizuális visszajelzést adva a nézőnek, amikor a videó idővonala mentén súrolja a vissza és előre.
+A Media Encoder Standard használatával létrehozhat egy miniatűr sprite-t, amely egy JPEG-fájl, amely több kis felbontású miniatűrt tartalmaz, és egyetlen (nagy) képként összefűzve, egy VTT-fájllal együtt. Ez a VTT-fájl megadja az időtartományt az egyes bélyegképek által reprezentált bemeneti videóban, valamint a miniatűr méretét és koordinátáit a nagyméretű JPEG-fájlon belül. A videolejátszó a VTT fájlt és a sprite-rendszerképet használja a "vizualizáció" seekbar megjelenítéséhez, és vizuális visszajelzést nyújtó megjelenítőt biztosít, amikor visszakerül a videó idővonalára, és továbbítja azokat.
 
-Annak érdekében, hogy a Media Encoder Standard segítségével létrehozhassa a Miniatűr Sprite-ot, az előre beállított:
+Ahhoz, hogy a Media Encoder Standardt a miniatűr sprite létrehozásához használni, az előre beállított:
 
-1. JPG miniatűr képformátumot kell használnia
-2. Meg kell adnia a Kezdő/Lépés/Tartomány értékeket időbélyegként vagy % értékként (és nem keretszámként) 
+1. A JPG miniatűr képformátumot kell használni
+2. Meg kell adni a kezdő/a érték/tartomány értékeket időbélyegként, vagy%-os értéket (és nem a keretek számát). 
     
-    1. Az időbélyegek és a % értékek összekeverése nem baj
+    1. Az időbélyegek és a (z)% Values együttes használata rendben van
 
-3. A SpriteColumn értéknek 1-nél nagyobb vagy azzal egyenlő nem negatív számmal kell rendelkeznie
+3. A SpriteColumn értéknek kell lennie, nem negatív számnak, vagy egyenlőnek kell lennie 1-nél
 
-    1. Ha a SpriteColumn értéke M >= 1, a kimeneti kép egy M oszlopokkal rendelkező téglalap. Ha a #2 keresztül létrehozott bélyegképek száma nem pontosan többszöröse az M-nek, az utolsó sor nem lesz teljes, és fekete képpontokkal marad.  
+    1. Ha a SpriteColumn értéke M >= 1, a kimeneti rendszerkép egy M oszlopot tartalmazó négyszög. Ha a #2on keresztül generált bélyegképek száma nem az M pontos többszöröse, akkor az utolsó sor hiányos lesz, és fekete képponttal marad.  
 
 Például:
 
@@ -68,9 +68,9 @@ Például:
 
 ## <a name="known-issues"></a>Ismert problémák
 
-1.  Egyetlen képsort tartalmazó sprite-kép nem generálhat sprite-képet (a SpriteColumn = 1 egyetlen oszlopos képet eredményez).
-2.  A sprite-képek közepes méretű JPEG-képekbe való darabolása még nem támogatott. Ezért ügyelni kell arra, hogy korlátozzák a miniatűrök számát és méretét, hogy az így keletkezett varrott Thumbnail Sprite körülbelül 8M pixel vagy annál kevesebb.
-3.  Az Azure Media Player támogatja a sprite-okat a Microsoft Edge, a Chrome és a Firefox böngészőkben. A VTT-elemzés nem támogatott az IE11-ben.
+1.  A sprite-lemezképek egyetlen sornyi képpel nem hozhatók létre (a SpriteColumn = 1 eredménye egyetlen oszlopból álló kép).
+2.  A sprite-lemezképek közepes méretű JPEG-képekre való darabolása még nem támogatott. Ezért ügyelni kell a bélyegképek számának és méretének korlátozására, hogy az eredményül kapott összefűzött miniatűr sprite a 8P képpont vagy annál kisebb legyen.
+3.  A Azure Media Player támogatja a sprite-ket a Microsoft Edge, a Chrome és a Firefox böngészőkben. A IE11 nem támogatja a VTT-elemzést.
 
 ## <a name="next-steps"></a>További lépések
 

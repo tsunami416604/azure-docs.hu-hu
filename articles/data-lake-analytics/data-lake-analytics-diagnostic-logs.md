@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Analytics diagnosztikai naplóinak engedélyezése és megtekintése
-description: Ismerje meg, hogyan állíthatja be és érheti el az Azure Data Lake Analytics diagnosztikai naplóit
+title: Diagnosztikai naplók engedélyezése és megtekintése Azure Data Lake Analytics
+description: Ismerje meg, hogyan állíthatja be és érheti el a diagnosztikai naplókat a Azure Data Lake Analytics
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
@@ -9,56 +9,56 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60616499"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics diagnosztikai naplóinak elérése
 
-A diagnosztikai naplózás lehetővé teszi az adatok elérésének naplózási nyomvonalainak gyűjtését. Ezek a naplók olyan információkat tartalmaznak, mint például:
+A diagnosztikai naplózás lehetővé teszi az adathozzáférés-naplózási nyomvonalak gyűjtését. Ezek a naplók olyan információkat tartalmaznak, mint például a következők:
 
-* Az adatokhoz hozzáférő felhasználók listája.
-* Az adatok elérésének gyakori adata.
-* A fiókban tárolt adatok nagy része.
+* Azon felhasználók listája, akik hozzáfértek az adatszolgáltatáshoz.
+* Az adathozzáférés gyakorisága.
+* A fiókban tárolt adatmennyiség mennyisége.
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Nyissa meg a Data Lake Analytics-fiókot, és válassza **a Diagnosztikai naplók lehetőséget** a __Figyelő__ szakaszban. Ezután válassza __a Diagnosztika bekapcsolása__lehetőséget.
+2. Nyissa meg Data Lake Analytics-fiókját, és válassza a **diagnosztikai naplók** lehetőséget a __figyelő__ szakaszban. Ezután válassza __a diagnosztika bekapcsolása__elemet.
 
-    ![A diagnosztika bekapcsolása a naplózási és naplók kéréséhez](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![Diagnosztika bekapcsolása a naplózási és a kérési naplók összegyűjtéséhez](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. A __Diagnosztikai beállítások párbeszédpanelen__adja meg a naplózási konfiguráció __nevét,__ majd adja meg a naplózási beállításokat.
+3. A __diagnosztikai beállítások__területen adja meg a naplózási konfiguráció __nevét__ , majd válassza a naplózási beállítások lehetőséget.
 
-    ![A diagnosztika bekapcsolása a naplózási és naplók kéréséhez](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Diagnosztikai naplók engedélyezése")
+    ![Diagnosztika bekapcsolása a naplózási és a kérési naplók összegyűjtéséhez](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Diagnosztikai naplók engedélyezése")
 
-   * Az adatokat három különböző módon tárolhatja/dolgozhatja fel.
+   * A három különböző módon tárolhatja/feldolgozhatja az adatfeldolgozást.
 
-     * Válassza __az Archiválás tárfiókba__ lehetőséget a naplók Azure-tárfiókban való tárolásához. Akkor használja ezt a beállítást, ha archiválni szeretné az adatokat. Ha ezt a lehetőséget választja, meg kell adnia egy Azure-tárfiókot a naplók mentéséhez.
+     * A naplók Azure Storage-fiókban való tárolásához válassza az __archiválás egy Storage-fiókba__ lehetőséget. Akkor használja ezt a lehetőséget, ha az adatok archiválását szeretné. Ha ezt a beállítást választja, meg kell adnia egy Azure Storage-fiókot, amelybe menteni szeretné a naplókat.
 
-     * Válassza a **Stream egy eseményközpontba** a naplóadatok egy Azure Event Hub. Akkor használja ezt a beállítást, ha a bejövő naplókvalós idejű elemzésére irányuló folyamata lefelé irányuló feldolgozási folyamattal rendelkezik. Ha ezt a lehetőséget választja, meg kell adnia a használni kívánt Azure Event Hub adatait.
+     * Válassza az adatfolyam küldése az **Event hub** -hoz lehetőséget, hogy továbbítsa az adatnaplót az Azure Event hub szolgáltatásba. Akkor használja ezt a beállítást, ha olyan alsóbb rétegbeli feldolgozási folyamattal rendelkezik, amely valós időben elemzi a bejövő naplókat. Ha ezt a lehetőséget választja, meg kell adnia a használni kívánt Azure Event hub részleteit.
 
-     * Válassza __a Küldés a Log Analytics szolgáltatásba__ lehetőséget az adatok nak az Azure Monitor szolgáltatásba való elküldéséhez. Akkor használja ezt a lehetőséget, ha az Azure Monitor naplók at szeretne használni a naplók összegyűjtéséhez és elemzéséhez.
-   * Adja meg, hogy naplónaplókat, vagy kérésnaplókat szeretne-e kapni, vagy mindkettőt.  A kérelemnapló minden API-kérelmet rögzít. A napló rögzíti az API-kérelem által aktivált összes műveletet.
+     * Kattintson a __küldés log Analytics__ gombra az adatAzure monitor szolgáltatásba való küldéséhez. Akkor használja ezt a beállítást, ha Azure Monitor naplókat kíván használni a naplók összegyűjtéséhez és elemzéséhez.
+   * Itt adhatja meg, hogy szeretné-e naplózni a naplókat vagy a kérelmeket, vagy mindkettőt.  A kérelmek naplója minden API-kérést rögzít. A napló az adott API-kérelem által aktivált összes műveletet rögzíti.
 
-   * Az __Archiválás tárfiókba lehetőségesetén__adja meg az adatok megőrzéséhez eltelt napok számát.
+   * A __Storage-fiókba való archiváláshoz__határozza meg, hogy hány nap elteltével szeretné megőrizni az adatok mennyiségét.
 
-   * Kattintson a __Mentés__ gombra.
+   * Kattintson a __Save__ (Mentés) gombra.
 
         > [!NOTE]
-        > A __Mentés__ gombra kattintás előtt ki kell választania az __Archiválás tárfiókba__, __az Adatfolyam-küldés eseményközpontba__ vagy a __Küldés a naplóelemzésbe__ lehetőséget.
+        > A __Save (Mentés__ ) gombra való kattintás előtt ki kell választania a __Storage-fiókba való archiválást__, a __streamet egy Event hub__ -ba, vagy __elküldeni log Analytics__ .
 
-### <a name="use-the-azure-storage-account-that-contains-log-data"></a>A naplóadatokat tartalmazó Azure Storage-fiók használata
+### <a name="use-the-azure-storage-account-that-contains-log-data"></a>A naplózási adatkészletet tartalmazó Azure Storage-fiók használata
 
-1. A naplózási adatokat tároló blobtárolók megjelenítéséhez nyissa meg a Data Lake Analytics naplózáshoz használt Azure Storage-fiókot, majd kattintson a __Blobok__elemre.
+1. A naplózási adattárolást tartalmazó blob-tárolók megjelenítéséhez nyissa meg a naplózáshoz Data Lake Analytics használt Azure Storage-fiókot, majd kattintson a __Blobok__elemre.
 
-   * A tároló **insights-logs-audit** tartalmazza a naplónaplókat.
-   * A tároló **insights-logs-kérelmek** tartalmazzák a kérelem naplók.
+   * A Container- **elemzések – naplók – naplózás** tartalmazza a naplókat.
+   * A Container-elemzések **– naplók – a kérelmek** a kérelmek naplóit tartalmazzák.
 
-2. A tárolókon belül a naplók a következő fájlszerkezetalatt tárolódnak:
+2. A tárolókban a naplófájlok a következő fájl struktúrában tárolódnak:
 
         resourceId=/
           SUBSCRIPTIONS/
@@ -77,23 +77,23 @@ A diagnosztikai naplózás lehetővé teszi az adatok elérésének naplózási 
                                     PT1H.json
 
    > [!NOTE]
-   > A `##` görbén szereplő bejegyzések tartalmazzák azt az évet, hónapot, napot és órát, amelyben a naplót létrehozták. A Data Lake Analytics óránként `m=` egy fájlt hoz `00`létre, így mindig tartalmaz egy értéket.
+   > Az `##` elérési úthoz tartozó bejegyzések a napló létrehozásának évét, hónapját, napját és óráját tartalmazzák. Data Lake Analytics óránként egy fájlt hoz létre, ezért `m=` mindig tartalmazza a értékét `00`.
 
     A napló teljes elérési útja például a következő lehet:
 
         https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
 
-    Hasonlóképpen, a kérelemnapló teljes elérési útja a következő lehet:
+    Hasonlóképpen a kérelmek naplójának teljes elérési útja a következő lehet:
 
         https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
 
-## <a name="log-structure"></a>Naplószerkezet
+## <a name="log-structure"></a>Naplózási struktúra
 
-A naplózási és kérelemnaplók strukturált JSON formátumúak.
+A naplózási és a kérési naplók strukturált JSON formátumúak.
 
-### <a name="request-logs"></a>Naplók kérése
+### <a name="request-logs"></a>Kérelmek naplói
 
-Az alábbiakban egy mintabejegyzés található a JSON-formátumú kérelemnaplóban. Minden blob rendelkezik egy **gyökérobjektummal, amelyet rekordoknak** neveznek, és amely naplóobjektumok tömbjét tartalmazza.
+Íme egy minta bejegyzés a JSON-formátumú kérelem naplójában. Mindegyik blob egyetlen **, a log** objektumokat tartalmazó tömböt tartalmazó főobjektummal rendelkezik.
 
     {
     "records":
@@ -123,34 +123,34 @@ Az alábbiakban egy mintabejegyzés található a JSON-formátumú kérelemnapl�
       ]
     }
 
-#### <a name="request-log-schema"></a>Naplóséma kérése
+#### <a name="request-log-schema"></a>Kérelem naplózási sémája
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| time |Sztring |A napló időbélyegzője (UTC-ben) |
-| resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyen a művelet et |
-| category |Sztring |A naplókategória. Például **a Kérések**. |
-| operationName |Sztring |A naplózott művelet neve. Például GetAggregatedJobHistory. |
+| time |Sztring |A napló időbélyegzője (UTC) |
+| resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
+| category |Sztring |A napló kategóriája. Például: **kérelmek**. |
+| operationName |Sztring |A naplózott művelet neve. Például: GetAggregatedJobHistory. |
 | resultType |Sztring |A művelet állapota, például 200. |
-| callerIpAddress |Sztring |A kérést küldő ügyfél IP-címe |
-| correlationId |Sztring |A napló azonosítója. Ezzel az értékkel csoportosíthatja a kapcsolódó naplóbejegyzéseket. |
+| callerIpAddress |Sztring |A kérést készítő ügyfél IP-címe |
+| correlationId |Sztring |A napló azonosítója. Ez az érték a kapcsolódó naplóbejegyzések csoportjának csoportosítására használható. |
 | identity |Objektum |A naplót létrehozó identitás |
-| properties |JSON |A részleteket lásd a következő szakaszban (Naplótulajdonságok kérése schema) |
+| properties |JSON |A részletekért tekintse meg a következő szakaszt (a kérelem naplójának tulajdonságai sémája). |
 
-#### <a name="request-log-properties-schema"></a>Naplótulajdonságainak kérése sémája
+#### <a name="request-log-properties-schema"></a>Kérelem naplójának tulajdonságai sémája
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| HttpMódszer |Sztring |A művelethez használt HTTP-módszer. Például get. |
-| Útvonal |Sztring |Az az útvonal, amelyen a műveletet végrehajtották |
-| RequestContentLength (RequestContentLength) |int |A HTTP-kérelem tartalomhossza |
-| Ügyfélkéréseazonosító |Sztring |A kérést egyedileg azonosító azonosító |
-| StartTime |Sztring |Az az időpont, amikor a kiszolgáló megkapta a kérést |
-| EndTime |Sztring |Az az időpont, amikor a szerver választ küldött |
+| HttpMethod |Sztring |A művelethez használt HTTP-metódus. Például: GET. |
+| Útvonal |Sztring |A művelet végrehajtásának elérési útja |
+| RequestContentLength |int |A HTTP-kérelem tartalmának hossza |
+| Ügyfélkérelem |Sztring |A kérést egyedileg azonosító azonosító |
+| StartTime |Sztring |Az az idő, amikor a kiszolgáló megkapta a kérést |
+| EndTime |Sztring |Az az idő, amikor a kiszolgáló választ küldött |
 
 ### <a name="audit-logs"></a>Naplók
 
-Az alábbiakban egy mintabejegyzés található a JSON-formátumú naplóban. Minden blob rendelkezik egy **gyökérobjektummal, amelyet rekordoknak** neveznek, és amely naplóobjektumok tömbjét tartalmazza.
+Íme egy minta bejegyzés a JSON-formátumú naplóban. Mindegyik blob egyetlen **, a log** objektumokat tartalmazó tömböt tartalmazó főobjektummal rendelkezik.
 
     {
     "records":
@@ -177,40 +177,40 @@ Az alábbiakban egy mintabejegyzés található a JSON-formátumú naplóban. Mi
 
 #### <a name="audit-log-schema"></a>Auditnapló sémája
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| time |Sztring |A napló időbélyegzője (UTC-ben) |
-| resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyen a művelet et |
-| category |Sztring |A naplókategória. **Például: Audit**. |
+| time |Sztring |A napló időbélyegzője (UTC) |
+| resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
+| category |Sztring |A napló kategóriája. Például: **naplózás**. |
 | operationName |Sztring |A naplózott művelet neve. Például: JobSubmitted. |
-| resultType |Sztring |A feladat állapotának alállapota (operationName). |
-| resultSignature |Sztring |További részletek a feladat állapotáról (operationName). |
+| resultType |Sztring |A feladatok állapotának (operationName) alállapota. |
+| resultSignature |Sztring |További részletek a feladatok állapotáról (operationName). |
 | identity |Sztring |A műveletet kérő felhasználó. Például: susan@contoso.com. |
-| properties |JSON |A részleteket lásd a következő szakaszban (Naplótulajdonságainak naplózási sémája). |
+| properties |JSON |A részletekért tekintse meg a következő szakaszt (naplózási napló tulajdonságai sémája). |
 
 > [!NOTE]
-> **resultType** és **resultSignature** információt ad meg egy művelet eredményéről, és csak akkor tartalmaz értéket, ha egy művelet befejeződött. Például csak akkor tartalmaznak értéket, ha **a OperationName** a **JobStarted** vagy a **JobEnded**értéket tartalmazza.
+> a **resultType** és a **resultSignature** adatokat biztosítanak egy művelet eredményéről, és csak akkor tartalmaznak értéket, ha egy művelet befejeződött. Például csak akkor tartalmaznak értéket, ha a **OperationName** **JobStarted** vagy **JobEnded**értéket tartalmaz.
 >
 >
 
-#### <a name="audit-log-properties-schema"></a>Naplótulajdonságainak sémája
+#### <a name="audit-log-properties-schema"></a>Naplózási napló tulajdonságai sémája
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | --- | --- | --- |
 | JobId |Sztring |A feladathoz rendelt azonosító |
-| Feladatneve |Sztring |A feladathoz megadott név |
-| Feladatruntime |Sztring |A feladat feldolgozásához használt futásidő |
-| SubmitTime |Sztring |A feladat elküldésének időpontja (UTC-ben) |
-| StartTime |Sztring |A feladat beküldés utáni futásának időpontja (UTC-ben) |
-| EndTime |Sztring |A feladat befejezésekor |
-| Párhuzamosság |Sztring |A beküldés során ehhez a feladathoz kért Data Lake Analytics-egységek száma |
+| JobName |Sztring |A feladatokhoz megadott név |
+| JobRunTime |Sztring |A feladatok feldolgozásához használt futtatókörnyezet |
+| SubmitTime |Sztring |A feladatok elküldésének időpontja (UTC) |
+| StartTime |Sztring |A művelet elindításának időpontja a beküldést követően (UTC) |
+| EndTime |Sztring |A feladatok befejezésének időpontja |
+| Párhuzamosság |Sztring |A feladatokhoz a küldés során kért Data Lake Analytics egységek száma |
 
 > [!NOTE]
-> **A SubmitTime**, **a StartTime**, **az EndTime**és a **Parallelism** információt nyújt egy műveletről. Ezek a bejegyzések csak akkor tartalmaznak értéket, ha a művelet elkezdődött vagy befejeződött. A **SubmitTime** például csak egy értéket tartalmaz, miután a **OperationName** értéke **JobSubmitted**.
+> A **SubmitTime**, a **kezdő időpont**, a **Befejezés**és a **párhuzamosság** a művelettel kapcsolatos információkat biztosít. Ezek a bejegyzések csak akkor tartalmaznak értéket, ha a művelet elindult vagy befejeződött. Például a **SubmitTime** csak akkor tartalmaz értéket, ha a **operationName** értéke **JobSubmitted**.
 
-## <a name="process-the-log-data"></a>A naplóadatok feldolgozása
+## <a name="process-the-log-data"></a>A napló adatfeldolgozása
 
-Az Azure Data Lake Analytics mintaként szolgál a naplóadatok feldolgozásához és elemzéséhez. A mintát a. [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)
+Azure Data Lake Analytics a naplófájlok feldolgozásának és elemzésének módját mutatja be. A minta a következő címen található [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample):.
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

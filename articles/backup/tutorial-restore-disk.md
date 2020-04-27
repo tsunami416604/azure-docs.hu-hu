@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan állíthatja vissza a lemezt, valamint hogyan h
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 31e2645a4a627793f13c37c543d9e08240e06930
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 56410b5302611d5de3d72f727e1a4c36bd49ca7e
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82113714"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160938"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Lemez visszaállítása és helyreállított virtuális gép létrehozása az Azure-ban
 
@@ -87,19 +87,20 @@ Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel ren
         --target-resource-group targetRG
     ```
 
-> [!WARNING]
-> Ha a cél-erőforráscsoport nincs megadva, a felügyelt lemezek nem felügyelt lemezként lesznek visszaállítva a megadott Storage-fiókba. Ennek jelentős következményei lesznek a visszaállítási időre, mivel a lemezek visszaállításához szükséges idő teljes mértékben a megadott Storage-fióktól függ. Az ügyfelek csak akkor kapják meg az azonnali visszaállítás előnyeit, ha a cél-erőforrás-csoport paraméter van megadva. Ha a felügyelt lemezeket nem felügyelt helyre szeretné visszaállítani, akkor ne adja meg a cél-erőforrás-csoport paramétert, hanem adja meg a Restore-as-Unmanaged-Disk paramétert az alább látható módon. Ez a paraméter az az 3.4.0-től kezdődően érhető el.
+    > [!WARNING]
+    > Ha a cél-erőforráscsoport nincs megadva, a felügyelt lemezek nem felügyelt lemezként lesznek visszaállítva a megadott Storage-fiókba. Ennek jelentős következményei lesznek a visszaállítási időre, mivel a lemezek visszaállításához szükséges idő teljes mértékben a megadott Storage-fióktól függ. Az ügyfelek csak akkor kapják meg az azonnali visszaállítás előnyeit, ha a cél-erőforrás-csoport paraméter van megadva. Ha a felügyelt lemezeket nem felügyelt helyre szeretné visszaállítani, akkor ne adja meg a cél-erőforrás-csoport paramétert, hanem adja meg a Restore-as-Unmanaged-Disk paramétert az alább látható módon. Ez a paraméter az az 3.4.0-től kezdődően érhető el.
 
     ```azurecli-interactive
     az backup restore restore-disks \
-        --resource-group myResourceGroup \
-        --vault-name myRecoveryServicesVault \
-        --container-name myVM \
-        --item-name myVM \
-        --storage-account mystorageaccount \
-        --rp-name myRecoveryPointName
-        --restore-as-unmanaged-disk
+    --resource-group myResourceGroup \
+    --vault-name myRecoveryServicesVault \
+    --container-name myVM \
+    --item-name myVM \
+    --storage-account mystorageaccount \
+    --rp-name myRecoveryPointName
+    --restore-as-unmanaged-disk
     ```
+
 Ez a művelet a felügyelt lemezeket nem felügyelt lemezként állítja vissza a megadott Storage-fiókba, és nem fogja használni az "Instant" visszaállítási funkciót. A CLI jövőbeli verzióiban kötelező megadni a cél-erőforrás-csoport paramétert vagy a "visszaállítás – nem felügyelt lemez" paramétert.
 
 ### <a name="unmanaged-disks-restore"></a>Nem felügyelt lemezek visszaállítása

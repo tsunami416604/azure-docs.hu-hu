@@ -1,6 +1,6 @@
 ---
-title: Az Azure Queue storage használata a Media Services-feladatértesítések figyelésére a .NET | Microsoft dokumentumok
-description: Ismerje meg, hogyan használhatja az Azure Queue storage-t a Media Services-feladatértesítések figyelésére. A kódminta C# nyelven íródott, és a Media Services SDK-t használja a .NET-hez.
+title: Az Azure üzenetsor-tároló használata Media Services feladatok értesítéseinek figyeléséhez a .NET-tel | Microsoft Docs
+description: Megtudhatja, hogyan használhatja az Azure üzenetsor-tárolót Media Services feladatok értesítéseinek figyelésére. A kód mintája C# nyelven íródott, és a .NET-hez készült Media Services SDK-t használja.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,61 +15,61 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "64868101"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Az Azure Queue storage használata a Media Services-feladatértesítések figyelésére a .NET használatával 
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Media Services feladatok értesítéseinek figyelése az Azure üzenetsor-tárolóval a .NET használatával 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Nézze meg a legújabb verziót, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [migrálási útmutató a v2-től a v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-A kódolási feladatok futtatásakor gyakran van szükség a feladat előrehaladásának nyomon követésére. Beállíthatja, hogy a Media Services értesítéseket küldjen az [Azure Queue storage-ba.](../../storage/storage-dotnet-how-to-use-queues.md) A feladat előrehaladását figyelheti a várólista-tárolóból érkező értesítések beszerzésével. 
+A kódolási feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. A Media Services konfigurálható úgy, hogy értesítéseket továbbítson az [Azure üzenetsor-tárolóba](../../storage/storage-dotnet-how-to-use-queues.md). A feladatok előrehaladását úgy figyelheti, hogy beolvassa az értesítéseket a várólista-tárolóból. 
 
-A várólista-tárolóba küldött üzenetek a világ bármely pontjáról elérhetők. A várólista tárolási üzenetküldési architektúrája megbízható és nagymértékben méretezhető. Az üzenetek várólistájának tárolásának lekérdezése más módszerekkel való használata ajánlott.
+A várólista-tárolóba küldött üzenetek a világ bármely pontján elérhetők. A várólista-tároló üzenetkezelési architektúrája megbízható és rugalmasan méretezhető. Az üzenetek lekérdezési várólistán való tárolását más módszerekkel ajánlott használni.
 
-A Media Services-értesítések meghallgatásának egyik gyakori forgatókönyve, ha olyan tartalomkezelő rendszert fejleszt, amelynek a kódolási feladat befejezése után további feladatokat kell végrehajtania (például a munkafolyamat következő lépésének elindításához vagy a közzétételhez tartalom).
+A Media Services értesítések figyelésének egyik gyakori forgatókönyve, ha olyan tartalomkezelő rendszer fejlesztését végzi, amely egy kódolási feladat befejezése után további feladatokat kell elvégeznie (például egy munkafolyamat következő lépésének elindításához vagy a tartalom közzétételéhez).
 
-Ez a cikk bemutatja, hogyan kaphat értesítési üzeneteket a várólista-tárolóból.  
+Ez a cikk bemutatja, hogyan kérhet le értesítési üzeneteket a várólista-tárolóból.  
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-A Várólista-tárolót használó Media Services-alkalmazások fejlesztésekor vegye figyelembe az alábbiakat:
+A várólista-tárolót használó Media Services alkalmazások fejlesztésekor vegye figyelembe a következőket:
 
-* A várólista-tárolás nem garantálja az első ként kirendelt (FIFO) megrendelt kézbesítést. További információ: [Azure Queues and Azure Service Bus Queues Compared and Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).
-* A várólista-tárolás nem leküldéses szolgáltatás. Meg kell szavazódozni a várólistát.
-* Tetszőleges számú várólistát használhat. További információ: [Queue Service REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
-* A várólista-tárolásnak vannak bizonyos korlátai és sajátosságai, amelyeket figyelembe kell venni. Ezeket az [Azure-várólisták és az Azure Service Bus-várólisták összehasonlítása és a Kontrasztos](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)című szolgáltatás ismerteti.
+* A várólista-tárolás nem garantálja, hogy az első kimenő (FIFO) rendezett kézbesítés nem garantált. További információ: az [Azure Queues és a Azure Service Bus Queues](https://msdn.microsoft.com/library/azure/hh767287.aspx)összevetése és összehasonlítása.
+* A várólista-tároló nem leküldéses szolgáltatás. Le kell kérdezni a várólistát.
+* Tetszőleges számú várólistát használhat. További információ: üzenetsor- [kezelési REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
+* A várólista-tároló bizonyos korlátozásokkal és sajátosságokkal rendelkezik. Ezeket az [Azure Queues és a Azure Service Bus Queues összevetése és kontrasztos](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)összevetése írja le.
 
-## <a name="net-code-example"></a>Példa .
+## <a name="net-code-example"></a>.NET-kód – példa
 
-Az ebben a szakaszban található kódpélda a következőket teszi:
+Az ebben a szakaszban szereplő kódrészlet a következő műveleteket végzi el:
 
-1. Az értesítési üzenet formátumához leképező **EncodingJobMessage** osztályt határozza meg. A kód deszerializálja a várólistából érkező üzeneteket az **EncodingJobMessage** típusú objektumokba.
-2. Betölti a Media Services és a Storage-fiók adatait az app.config fájlból. A példakód ezt az információt használja a **CloudMediaContext** és **a CloudQueue** objektumok létrehozásához.
-3. Létrehozza azt a várólistát, amely értesítési üzeneteket fogad a kódolási feladatról.
-4. Létrehozza a várólistához leképezett értesítésvégpontot.
-5. Csatolja az értesítés végpontját a feladathoz, és elküldi a kódolási feladatot. Egy feladathoz több értesítési végpont is csatolható.
-6. A **NotificationJobState.FinalStatesOnly** **metódusnak** adja át a értesítést. (Ebben a példában csak a feladatfeldolgozás végleges állapotai érdekelnek minket.)
+1. Meghatározza a **EncodingJobMessage** osztályt, amely az értesítési üzenet formátumára van leképezve. A kód deszerializálja a sorból fogadott üzeneteket a **EncodingJobMessage** -típus objektumaiba.
+2. Betölti a Media Services és a Storage-fiók adatait az app. config fájlból. A kód példa ezt az információt használja a **csatlakozáshoz szükséges cloudmediacontext** és a **CloudQueue** objektumok létrehozásához.
+3. Létrehozza azt a várólistát, amely értesítési üzeneteket fogad a kódolási feladatokról.
+4. Létrehozza a várólistára leképezett értesítési végpontot.
+5. Csatolja az értesítés végpontját a feladatokhoz, és elküldi a kódolási feladatot. A feladatokhoz több értesítési végpont is tartozhat.
+6. A **NotificationJobState. FinalStatesOnly** átadja a **AddNew** metódusnak. (Ebben a példában csak a feladatok feldolgozásának végső állapota érdekli.)
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-7. Ha átmegy **NotificationJobState.All**, megkapja az összes következő állapotváltozási értesítések: várólistára, ütemezett, feldolgozás, és kész. Azonban, mint korábban említettük, a várólista-tárolás nem garantálja a megrendelt szállítást. Üzenetek rendeléséhez használja a **Timestamp** tulajdonságot (az alábbi példában a **EncodingJobMessage** típusban definiálva). Ismétlődő üzenetek lehetségesek. Az ismétlődések ellenőrzéséhez használja az **ETag tulajdonságot** (az **EncodingJobMessage** típuson definiálva). Az is lehetséges, hogy egyes állapotmódosítási értesítések kimaradnak.
-8. Megvárja, amíg a feladat a kész állapotba kerül a várólista 10 másodpercenkénti ellenőrzésével. Az üzenetek törlése azok feldolgozása után.
-9. Törli a várólista és az értesítés végpontját.
+7. Ha átadja a **NotificationJobState. All**-t, a következő állapotváltozás-értesítések mindegyike megjelenik: üzenetsor, ütemezett, feldolgozás és Befejezés. A korábban említettek szerint azonban a várólista-tároló nem garantálja a rendezett kézbesítést. Az üzenetek megrendeléséhez használja az **időbélyegző** tulajdonságot (az alábbi példában az **EncodingJobMessage** típusban van megadva). Ismétlődő üzenetek is lehetségesek. Az ismétlődések kereséséhez használja a **ETAG tulajdonságot** (a **EncodingJobMessage** típusban definiálva). Az is lehetséges, hogy egyes állapot-módosítási értesítések kimaradnak.
+8. Megvárja, amíg a feladatoknak kész állapotba kell jutnia a várólista 10 másodpercenkénti ellenőrzésével. A feldolgozás után törli az üzeneteket.
+9. Törli az üzenetsor és az értesítési végpontot.
 
 > [!NOTE]
-> A feladat állapotának figyelésének ajánlott módja az értesítési üzenetek meghallgatása, ahogy az a következő példában látható:
+> A feladatok állapotának figyelésére ajánlott módszer az értesítési üzenetek figyelése, ahogy az az alábbi példában is látható:
 >
-> Másik lehetőségként ellenőrizheti egy feladat állapotát az **IJob.State** tulajdonság használatával.  Egy feladat befejezéséről szóló értesítési üzenet érkezhet, mielőtt az **IJob** állapota Kész állapotra **lenne állítva.** Az **IJob.State** tulajdonság a pontos állapotot tükrözi, kis késéssel.
+> Azt is megteheti, hogy a **IJob. State** tulajdonság használatával a feladatok állapotát is megtekintheti.  A feladatok befejezésére vonatkozó értesítési üzenet a **IJob** állapotának **Befejezettre**állítása előtt is megérkezik. A **IJob. State** tulajdonság a pontos állapotot mutatja kis késleltetéssel.
 >
 >
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
-1. Állítsa be a fejlesztői környezetet, és népesítse be az app.config fájlt a kapcsolatadataival, ahogy azt a Media Services fejlesztése a [.NET fájlban leírta.](media-services-dotnet-how-to-use.md) 
-2. Hozzon létre egy új mappát (a mappa bárhol lehet a helyi meghajtón), és másolja a kódolni és streamelni vagy fokozatosan letölteni kívánt .mp4 fájlt. Ebben a példában a "C:\Media" elérési utat használja a (C:\Media) elérési út.
-3. Hivatkozás hozzáadása a **System.Runtime.Serialization** könyvtárhoz.
+1. Állítsa be a fejlesztési környezetet, és töltse fel az app. config fájlt a következő témakörben ismertetett módon: [Media Services fejlesztés a .net](media-services-dotnet-how-to-use.md)-tel. 
+2. Hozzon létre egy új mappát (a mappa bárhol lehet a helyi meghajtón), és másoljon egy. MP4-fájlt, amelyet szeretne kódolni és továbbítani vagy fokozatosan letölteni. Ebben a példában a "C:\Media" útvonalat használja a rendszer.
+3. Adjon hozzá egy hivatkozást a **System. Runtime. szerializálási** könyvtárhoz.
 
 ### <a name="code"></a>Kód
 
@@ -342,7 +342,7 @@ namespace JobNotification
 }
 ```
 
-Az előző példa a következő kimenetet hozta létre: Az értékek eltérőek lehetnek.
+Az előző példa a következő kimenetet hozta létre: az értékek eltérőek lesznek.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

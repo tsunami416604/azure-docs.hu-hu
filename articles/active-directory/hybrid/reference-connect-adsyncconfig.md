@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADSyncConfig PowerShell-hivatkozás | Microsoft dokumentumok'
-description: Ez a dokumentum az ADSyncConfig.psm1 PowerShell modul referenciainformációit tartalmazza.
+title: 'Azure AD Connect: ADSyncConfig PowerShell-hivatkozás | Microsoft Docs'
+description: Ez a dokumentum a ADSyncConfig. psm1 PowerShell-modulra vonatkozó információkat tartalmaz.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,20 +11,20 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60381195"
 ---
-# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell-referencia
-A következő dokumentáció az Azure AD Connect részét képező ADSyncConfig.psm1 PowerShell-modul referenciainformációit tartalmazza.
+# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell-hivatkozás
+Az alábbi dokumentáció a Azure AD Connect ADSyncConfig. psm1 PowerShell-moduljának hivatkozásait tartalmazza.
 
 
-## <a name="get-adsyncadconnectoraccount"></a>Get-ADSyncADConnectorSzámla
+## <a name="get-adsyncadconnectoraccount"></a>Get-ADSyncADConnectorAccount
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Az egyes AD-összekötőkben konfigurált fióknév és tartomány lekért
+Az egyes AD-összekötők által konfigurált fiók nevének és tartományának beolvasása
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -33,7 +33,7 @@ Get-ADSyncADConnectorAccount
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Ez a függvény az AAD Connectben található "Get-ADSyncConnector" parancsmag használatával kéri le a kapcsolódási paraméterekből az AD-összekötő(k) fiókját megjelenítő táblát.
+Ez a függvény a "Get-ADSyncConnector" parancsmagot használja, amely megtalálható a HRE csatlakozásban a kapcsolódási paraméterekből való lekéréshez egy olyan tábla, amely az AD-összekötő (k) fiókot mutatja.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -42,10 +42,10 @@ Ez a függvény az AAD Connectben található "Get-ADSyncConnector" parancsmag h
 Get-ADSyncADConnectorAccount
 ```
 
-## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-AdsyncObjectsWithInheritanceDisabled
+## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-ADSyncObjectsWithInheritanceDisabled
 
 ### <a name="synopsis"></a>SZINOPSZIS
-AD-objektumok bekerülése engedélyörökléssel letiltva
+AD-objektumok letiltásának engedélyezése az engedélyek öröklésével
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -54,7 +54,7 @@ Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] 
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Az AD-ben végzett keresések a SearchBase paraméterből indulnak ki, és az ObjectClass paraméter szerint szűrt összes olyan objektumot visszaadják, amelyeka jelenleg le van tiltva az ACL örökléssel.
+A SearchBase paramétertől kezdődően megkeresi az AD-t, és visszaadja az összes olyan objektumot, amely a ObjectClass paraméter szerint szűrve van, és az ACL öröklődése jelenleg le
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -63,26 +63,26 @@ Az AD-ben végzett keresések a SearchBase paraméterből indulnak ki, és az Ob
 Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
+Get-ADSyncObjectsWithInheritanceDisabled-SearchBase "contoso"
 
 #### <a name="example-2"></a>2. PÉLDA
 ```
 Find 'user' objects with disabled inheritance in 'Contoso' domain
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
+Get-ADSyncObjectsWithInheritanceDisabled-SearchBase "contoso"-ObjectClass "felhasználó"
 
 #### <a name="example-3"></a>3. PÉLDA
 ```
 Find all types of objects with disabled inheritance in a OU
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
+Get-ADSyncObjectsWithInheritanceDisabled-SearchBase OU = AzureAD, DC = contoso, DC = com-ObjectClass ' * '
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-searchbase"></a>-SearchBase
-Az LDAP-lekérdezés SearchBase-je, amely lehet AD tartomány megkülönböztető neve vagy teljes tartományneve
+Az Active Directory tartományi DistinguishedName vagy teljes tartománynevet tartalmazó LDAP-lekérdezés SearchBase
 
 ```yaml
 Type: String
@@ -96,8 +96,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-objectclass"></a>-ObjectClass
-A keresendő objektumok osztálya, amely lehet '*' (bármely objektumosztályesetében), "felhasználó", "csoport", "tároló", stb. Alapértelmezés szerint ez a függvény a "organizationalUnit" objektumosztályra fog keresni.
+#### <a name="-objectclass"></a>– ObjectClass
+A keresendő objektumok osztálya lehet "*" (bármely objektumosztály esetében), "user", "Group", "Container" stb. Alapértelmezés szerint ez a függvény a "organizationalUnit" objektum osztályát fogja keresni.
 
 ```yaml
 Type: String
@@ -113,46 +113,46 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Az Active Directory erdő és tartomány inicializálása alapvető olvasási engedélyekhez.
+Az alapszintű olvasási engedélyek Active Directory erdő és tartomány inicializálása.
 
 ### <a name="syntax"></a>SZINTAXIS
 
-#### <a name="userdomain"></a>UserDomain (Felhasználói tartomány)
+#### <a name="userdomain"></a>UserDomain
 ```
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Megkülönböztető név
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [-SkipAdminSdHolders]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A Set-ADSyncBasicReadPermissions függvény megadja a szükséges engedélyeket az AD szinkronizálási fiókhoz, amelyek a következőket tartalmazzák:
+A set-ADSyncBasicReadPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
-Tulajdonsághozzáférés olvasása az összes leszármazott számítógép-objektum összes attribútumán
+Tulajdonság-hozzáférés beolvasása az összes leszármazott számítógép-objektum összes attribútumán
 2.
-Tulajdonsághozzáférés olvasása az összes leszármazott eszközobjektum összes attribútumán
+Tulajdonságok elérésének olvasása az összes leszármazott objektum összes attribútumán
 3.
-Tulajdonsághozzáférés olvasása az összes leszármazott foreignsecurityprincipal objektum összes attribútumán
+Tulajdonságok beolvasása a foreignsecurityprincipal összes leszármazott objektumához
 5.
-Tulajdonsághozzáférés olvasása az összes leszármazott felhasználói objektum összes attribútumán
+Tulajdonság-hozzáférés beolvasása az összes leszármazott felhasználói objektum összes attribútumán
 6.
-Tulajdonsághozzáférés olvasása az összes leszármazott inetorgperson objektum összes attribútumán
+Tulajdonságok elérésének beolvasása az összes olyan inetOrgPerson objektum összes attribútumán
 7.
-Tulajdonsághozzáférés olvasása az összes leszármazott csoportobjektum összes attribútumán
+Tulajdonságok elérésének beolvasása az összes leszármazott csoport objektumaira vonatkozóan
 8.
-Tulajdonsághozzáférés olvasása az összes leszármazott érintkezési objektum összes attribútumán
+Tulajdonságok elérésének olvasása az összes leszármazott kapcsolati objektum összes attribútumán
 
-Ezek az engedélyek az erdő összes tartományára vonatkoznak.
-Tetszés szerint megadhat egy Megkülönböztető nevet az ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD objektumra állítsa be (beleértve az alobjektumok öröklését is).
+Ezek az engedélyek az erdő összes tartományára érvényesek.
+Opcionálisan megadhat egy DistinguishedName a ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD-objektumra állítsa be (beleértve az alárendelt objektumok öröklését is).
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -178,8 +178,8 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnecto
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorszámlanév
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók neve a címtárban lévő objektumok kezeléséhez.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Annak a Active Directory fióknak a neve, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók tartománya a címtárban lévő objektumok kezeléséhez.
+A Active Directory fiók tartománya, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók Megkülönböztetőneve a címtárban lévő objektumok kezeléséhez.
+A Active Directory-fiók DistinguishedName, amelyet Azure AD Connect szinkronizálás használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-A cél AD objektum megkülönböztető neve az engedélyek beállításához (nem kötelező)
+A cél AD-objektum DistinguishedName az engedélyek beállításához (nem kötelező)
 
 ```yaml
 Type: String
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Választható paraméter, amely jelzi, hogy az AdminSDHolder tárolót nem kell-e frissíteni ezekkel az engedélyekkel
+Választható paraméter annak jelzésére, hogy a AdminSDHolder-tároló nem frissíthető-e ezekkel az engedélyekkel
 
 ```yaml
 Type: SwitchParameter
@@ -253,7 +253,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Milenne
+#### <a name="-whatif"></a>– WhatIf
 Bemutatja, mi történne a parancsmag futtatásakor.
 A parancsmag nem fut.
 
@@ -286,40 +286,40 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHibridpermissions
+## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Az Active Directory erdő és az Exchange Hybrid tartomány szolgáltatás ának inicializálása.
+A Active Directory erdő és tartomány inicializálása az Exchange Hybrid szolgáltatáshoz.
 
 ### <a name="syntax"></a>SZINTAXIS
 
-#### <a name="userdomain"></a>UserDomain (Felhasználói tartomány)
+#### <a name="userdomain"></a>UserDomain
 ```
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Megkülönböztető név
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [-SkipAdminSdHolders]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A Set-ADSyncExchangeHybridPermissions függvény megadja a szükséges engedélyeket az AD szinkronizálási fiókhoz, amelyek a következőket tartalmazzák:
+A set-ADSyncExchangeHybridPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
-Olvasási/írási tulajdonság-hozzáférés az összes leszármazott felhasználói objektum összes attribútumához
+Olvasási/írási tulajdonságok hozzáférése az összes leszármazott felhasználói objektum összes attribútumához
 2.
-Olvasási/írási tulajdonság-hozzáférés az összes leszármazott inetorgperson objektum összes attribútumához
+Olvasási/írási tulajdonság-hozzáférés az összes, a leszármazott inetOrgPerson objektum összes attribútumához
 3.
-Olvasási/írási tulajdonság-hozzáférés az összes leszármazott csoportobjektum összes attribútumához
+Olvasási/írási tulajdonságok hozzáférése az összes leszármazott csoport objektumainak összes attribútumán
 4.
-Olvasási/írási tulajdonság-hozzáférés az összes leszármazott érintkezési objektum összes attribútumához
+Olvasási/írási tulajdonságok hozzáférése az összes leszármazott kapcsolati objektum összes attribútumához
 
-Ezek az engedélyek az erdő összes tartományára vonatkoznak.
-Tetszés szerint megadhat egy Megkülönböztető nevet az ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD objektumra állítsa be (beleértve az alobjektumok öröklését is).
+Ezek az engedélyek az erdő összes tartományára érvényesek.
+Opcionálisan megadhat egy DistinguishedName a ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD-objektumra állítsa be (beleértve az alárendelt objektumok öröklését is).
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -345,8 +345,8 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADCon
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorszámlanév
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók neve a címtárban lévő objektumok kezeléséhez.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Annak a Active Directory fióknak a neve, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -361,7 +361,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók tartománya a címtárban lévő objektumok kezeléséhez.
+A Active Directory fiók tartománya, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -376,7 +376,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók Megkülönböztetőneve a címtárban lévő objektumok kezeléséhez.
+A Active Directory-fiók DistinguishedName, amelyet Azure AD Connect szinkronizálás használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -391,7 +391,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-A cél AD objektum megkülönböztető neve az engedélyek beállításához (nem kötelező)
+A cél AD-objektum DistinguishedName az engedélyek beállításához (nem kötelező)
 
 ```yaml
 Type: String
@@ -406,7 +406,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Választható paraméter, amely jelzi, hogy az AdminSDHolder tárolót nem kell-e frissíteni ezekkel az engedélyekkel
+Választható paraméter annak jelzésére, hogy a AdminSDHolder-tároló nem frissíthető-e ezekkel az engedélyekkel
 
 ```yaml
 Type: SwitchParameter
@@ -420,7 +420,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Milenne
+#### <a name="-whatif"></a>– WhatIf
 Bemutatja, mi történne a parancsmag futtatásakor.
 A parancsmag nem fut.
 
@@ -453,35 +453,35 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Az Active Directory erdő és tartomány inicializálása az Exchange Mail nyilvános mappájához szolgáltatás.
+A Active Directory erdő és tartomány inicializálása az Exchange-levelezés nyilvános mappája szolgáltatáshoz.
 
 ### <a name="syntax"></a>SZINTAXIS
 
-#### <a name="userdomain"></a>UserDomain (Felhasználói tartomány)
+#### <a name="userdomain"></a>UserDomain
 ```
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String>
  -ADConnectorAccountDomain <String> [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Megkülönböztető név
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A Set-ADSyncExchangeMailPublicFolderPermissions függvény megadja a szükséges engedélyeket az AD szinkronizálási fiókhoz, amelyek a következőket tartalmazzák:
+A set-ADSyncExchangeMailPublicFolderPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
-Tulajdonsághozzáférés olvasása az összes leszármazott nyilvános mappa objektum összes attribútumán
+Tulajdonságok beolvasása a publicfolder összes leszármazott objektumához
 
-Ezek az engedélyek az erdő összes tartományára vonatkoznak.
-Tetszés szerint megadhat egy Megkülönböztető nevet az ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD objektumra állítsa be (beleértve az alobjektumok öröklését is).
+Ezek az engedélyek az erdő összes tartományára érvényesek.
+Opcionálisan megadhat egy DistinguishedName a ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD-objektumra állítsa be (beleértve az alárendelt objektumok öröklését is).
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -507,8 +507,8 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnect
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorszámlanév
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók neve a címtárban lévő objektumok kezeléséhez.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Annak a Active Directory fióknak a neve, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -523,7 +523,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók tartománya a címtárban lévő objektumok kezeléséhez.
+A Active Directory fiók tartománya, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -538,7 +538,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók Megkülönböztetőneve a címtárban lévő objektumok kezeléséhez.
+A Active Directory-fiók DistinguishedName, amelyet Azure AD Connect szinkronizálás használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -553,7 +553,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-A cél AD objektum megkülönböztető neve az engedélyek beállításához (nem kötelező)
+A cél AD-objektum DistinguishedName az engedélyek beállításához (nem kötelező)
 
 ```yaml
 Type: String
@@ -568,7 +568,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Választható paraméter, amely jelzi, hogy az AdminSDHolder tárolót nem kell-e frissíteni ezekkel az engedélyekkel
+Választható paraméter annak jelzésére, hogy a AdminSDHolder-tároló nem frissíthető-e ezekkel az engedélyekkel
 
 ```yaml
 Type: SwitchParameter
@@ -582,7 +582,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Milenne
+#### <a name="-whatif"></a>– WhatIf
 Bemutatja, mi történne a parancsmag futtatásakor.
 A parancsmag nem fut.
 
@@ -615,34 +615,34 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Inicializálja az Active Directory erdőt és tartományt az mS-DS-ConsistencyGuid szolgáltatáshoz.
+Inicializálja Active Directory erdőjét és tartományát az mS-DS-ConsistencyGuid szolgáltatáshoz.
 
 ### <a name="syntax"></a>SZINTAXIS
 
-#### <a name="userdomain"></a>UserDomain (Felhasználói tartomány)
+#### <a name="userdomain"></a>UserDomain
 ```
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Megkülönböztető név
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A Set-ADSyncMsDsConsistencyGuidPermissions függvény megadja a szükséges engedélyeket az AD szinkronizálási fiókhoz, amelyek a következőket tartalmazzák:
+A set-ADSyncMsDsConsistencyGuidPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
-Olvasási/írási tulajdonság-hozzáférés az mS-DS-ConsistencyGuid attribútumon az összes leszármazott felhasználói objektumhoz
+Olvasási/írási tulajdonság-hozzáférés az mS-DS-ConsistencyGuid attribútumhoz az összes leszármazott felhasználói objektumhoz
 
-Ezek az engedélyek az erdő összes tartományára vonatkoznak.
-Tetszés szerint megadhat egy Megkülönböztető nevet az ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD objektumra állítsa be (beleértve az alobjektumok öröklését is).
+Ezek az engedélyek az erdő összes tartományára érvényesek.
+Opcionálisan megadhat egy DistinguishedName a ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD-objektumra állítsa be (beleértve az alárendelt objektumok öröklését is).
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -668,8 +668,8 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorszámlanév
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók neve a címtárban lévő objektumok kezeléséhez.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Annak a Active Directory fióknak a neve, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -684,7 +684,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók tartománya a címtárban lévő objektumok kezeléséhez.
+A Active Directory fiók tartománya, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -699,7 +699,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók Megkülönböztetőneve a címtárban lévő objektumok kezeléséhez.
+A Active Directory-fiók DistinguishedName, amelyet Azure AD Connect szinkronizálás használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -714,7 +714,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-A cél AD objektum megkülönböztető neve az engedélyek beállításához (nem kötelező)
+A cél AD-objektum DistinguishedName az engedélyek beállításához (nem kötelező)
 
 ```yaml
 Type: String
@@ -729,7 +729,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Választható paraméter, amely jelzi, hogy az AdminSDHolder tárolót nem kell-e frissíteni ezekkel az engedélyekkel
+Választható paraméter annak jelzésére, hogy a AdminSDHolder-tároló nem frissíthető-e ezekkel az engedélyekkel
 
 ```yaml
 Type: SwitchParameter
@@ -743,7 +743,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Milenne
+#### <a name="-whatif"></a>– WhatIf
 Bemutatja, mi történne a parancsmag futtatásakor.
 A parancsmag nem fut.
 
@@ -776,34 +776,34 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Az Active Directory erdő és tartomány inicializálása a jelszókivonat-szinkronizáláshoz.
+Inicializálja Active Directory erdőjét és tartományát a jelszó kivonatának szinkronizálásához.
 
 ### <a name="syntax"></a>SZINTAXIS
 
-#### <a name="userdomain"></a>UserDomain (Felhasználói tartomány)
+#### <a name="userdomain"></a>UserDomain
 ```
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Megkülönböztető név
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A Set-ADSyncPasswordHashSyncPermissions függvény megadja a szükséges engedélyeket az AD szinkronizálási fiókhoz, amelyek a következőket tartalmazzák:
+A set-ADSyncPasswordHashSyncPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
-Címtármódosítások replikálása
+Címtárbeli módosítások replikálása
 2.
-A címtár replikálása az összeset módosítja
+A címtár összes módosításának replikálása
 
-Ezek az engedélyek az erdő összes tartományához tartoznak.
+Ezeket az engedélyeket az erdő összes tartománya megkapja.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -819,8 +819,8 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=A
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorszámlanév
-Az Azure AD Connect Sync által a címtárban lévő objektumok kezeléséhez használt Active Directory-fiók neve.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Annak a Active Directory-fióknak a neve, amelyet a Azure AD Connect szinkronizálása a címtárban található objektumok kezeléséhez fog használni.
 
 ```yaml
 Type: String
@@ -835,7 +835,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Az Azure AD Connect Sync által a címtárban lévő objektumok kezeléséhez használt Active Directory-fiók tartománya.
+Annak a Active Directory fióknak a tartománya, amelyet az Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -850,7 +850,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-Az Azure AD Connect Sync által a címtárban lévő objektumok kezeléséhez használt Active Directory-fiók Megkülönböztető neve.
+Annak a Active Directory-fióknak a DistinguishedName, amelyet az Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -864,7 +864,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Milenne
+#### <a name="-whatif"></a>– WhatIf
 Bemutatja, mi történne a parancsmag futtatásakor.
 A parancsmag nem fut.
 
@@ -897,38 +897,38 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackEngedélyek
+## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Inicializálja az Active Directory erdőt és tartományt az Azure AD-ből történő jelszó-visszaíráshoz.
+Inicializálja Active Directory erdőjét és tartományát az Azure AD-vel való jelszó-visszaíráshoz.
 
 ### <a name="syntax"></a>SZINTAXIS
 
-#### <a name="userdomain"></a>UserDomain (Felhasználói tartomány)
+#### <a name="userdomain"></a>UserDomain
 ```
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Megkülönböztető név
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A Set-ADSyncPasswordWritebackPermissions függvény megadja a szükséges engedélyeket az AD szinkronizálási fiókhoz, amelyek a következőket tartalmazzák:
+A set-ADSyncPasswordWritebackPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
-Jelszó alaphelyzetbe állítása leszármazott felhasználói objektumokon
+Jelszó alaphelyzetbe állítása a leszármazott felhasználói objektumokon
 2.
-Tulajdonsághozzáférés írása lockoutTime attribútumon az összes leszármazott felhasználói objektumhoz
+Tulajdonság-hozzáférés írása a lockoutTime attribútumhoz az összes leszármazott felhasználói objektumhoz
 3.
-Tulajdonsághozzáférés írása a pwdLastSet attribútumra az összes leszármazott felhasználói objektumhoz
+Tulajdonság-hozzáférés írása a pwdLastSet attribútumhoz az összes leszármazott felhasználói objektumhoz
 
-Ezek az engedélyek az erdő összes tartományára vonatkoznak.
-Tetszés szerint megadhat egy Megkülönböztető nevet az ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD objektumra állítsa be (beleértve az alobjektumok öröklését is).
+Ezek az engedélyek az erdő összes tartományára érvényesek.
+Opcionálisan megadhat egy DistinguishedName a ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD-objektumra állítsa be (beleértve az alárendelt objektumok öröklését is).
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -954,8 +954,8 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -AD
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorszámlanév
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók neve a címtárban lévő objektumok kezeléséhez.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Annak a Active Directory fióknak a neve, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -970,7 +970,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók tartománya a címtárban lévő objektumok kezeléséhez.
+A Active Directory fiók tartománya, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -985,7 +985,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók Megkülönböztetőneve a címtárban lévő objektumok kezeléséhez.
+A Active Directory-fiók DistinguishedName, amelyet Azure AD Connect szinkronizálás használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -1000,7 +1000,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-A cél AD objektum megkülönböztető neve az engedélyek beállításához (nem kötelező)
+A cél AD-objektum DistinguishedName az engedélyek beállításához (nem kötelező)
 
 ```yaml
 Type: String
@@ -1015,7 +1015,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Választható paraméter, amely jelzi, hogy az AdminSDHolder tárolót nem kell-e frissíteni ezekkel az engedélyekkel
+Választható paraméter annak jelzésére, hogy a AdminSDHolder-tároló nem frissíthető-e ezekkel az engedélyekkel
 
 ```yaml
 Type: SwitchParameter
@@ -1029,7 +1029,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Milenne
+#### <a name="-whatif"></a>– WhatIf
 Bemutatja, mi történne a parancsmag futtatásakor.
 A parancsmag nem fut.
 
@@ -1062,14 +1062,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Szigorítsa az engedélyeket egy olyan AD-objektumon, amely egyébként nem szerepel az AD védett biztonsági csoportjában.
-Egy tipikus példa az AAD Connect által automatikusan létrehozott AD Connect fiók (MSOL).
-Ez a fiók replikálási engedélyekkel rendelkezik az összes tartományban, azonban könnyen felsérülhet, mivel nem védett.
+Szigorítsa az engedélyeket olyan AD-objektumon, amelyet semmilyen más AD-védelemmel ellátott biztonsági csoportban nem tartalmaz.
+Egy tipikus példa az HRE-kapcsolat által létrehozott AD csatlakozási fiók (MSOL).
+Ez a fiók replikálja az engedélyeket az összes tartományra vonatkozóan, azonban könnyen feloldható, mert nem védett.
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -1079,15 +1079,15 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A Set-ADSyncRestrictedPermissions függvény szigorítja a fiók által biztosított engedélyeket.
-Az engedélyek szigorítása a következő lépéseket foglalja magában:
+A set-ADSyncRestrictedPermissions függvény szigorítja az engedélyeket a megadott fiókkal.
+Az engedélyek szigorítása a következő lépésekkel jár:
 1.
-Öröklődés letiltása a megadott objektumon
+Öröklés letiltása a megadott objektumon
 2.
-Távolítsa el az adott objektum összes aces-ét, kivéve a SELF-re jellemző ACEs-eket.
-Azt akarjuk, hogy az alapértelmezett engedélyek ép, amikor a SELF.
+Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket.
+Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 3.
-Rendelje hozzá a következő speciális engedélyeket:
+Rendelje hozzá ezeket a konkrét engedélyeket:
 
         Type    Name                                        Access              Applies To
         =============================================================================================
@@ -1114,8 +1114,8 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN "CN=TestAccount1,CN=Users,
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-Annak az Active Directory-fióknak a megkülönböztető neve, amelynek engedélyeit meg kell szigorítani.
-Ez általában a MSOL_nnnnnnnnnn-fiók vagy az AD-összekötőben konfigurált egyéni tartományi fiók.
+Annak a Active Directory-fióknak a DistinguishedName, amelynek engedélyeit meg kell szigorítani.
+Ez általában az AD-összekötőben konfigurált MSOL_nnnnnnnnnn fiók vagy egyéni tartományi fiók.
 
 ```yaml
 Type: String
@@ -1130,7 +1130,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-credential"></a>-Credential
-Rendszergazdai hitelesítő adatok, amely rendelkezik az ADConnectorAccountDN-fiók engedélyeinek korlátozásához szükséges jogosultságokkal. Ez általában a vállalati vagy tartományi rendszergazda. A fiókfelkutatási hibák elkerülése érdekében használja a rendszergazdai fiók teljesen minősített tartománynevét.
+Rendszergazdai hitelesítő adatok, amelyek rendelkeznek a ADConnectorAccountDN-fiók engedélyeinek korlátozásához szükséges jogosultságokkal. Ez általában a vállalati vagy tartományi rendszergazda. A fiókok keresési hibáinak elkerülése érdekében használja a rendszergazdai fiók teljes tartománynevét.
 Példa: CONTOSO\admin
 
 ```yaml
@@ -1146,7 +1146,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-disablecredentialvalidation"></a>-DisableCredentialValidation
-A DisableCredentialValidation használat esetén a függvény nem ellenőrzi, hogy a -Credential címben megadott hitelesítő adatok érvényesek-e az AD-ben, és hogy a megadott fiók rendelkezik-e az ADConnectorAccountDN-fiók engedélyeinek korlátozásához szükséges jogosultságokkal.
+A DisableCredentialValidation használatakor a függvény nem vizsgálja meg, hogy a hitelesítő adatok megadott hitelesítő adatai érvényesek-e az AD-ben, és ha a megadott fiók rendelkezik a szükséges jogosultságokkal a ADConnectorAccountDN-fiók engedélyeinek korlátozásához.
 
 ```yaml
 Type: SwitchParameter
@@ -1160,7 +1160,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Milenne
+#### <a name="-whatif"></a>– WhatIf
 Bemutatja, mi történne a parancsmag futtatásakor.
 A parancsmag nem fut.
 
@@ -1193,35 +1193,35 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackEngedélyek
+## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Inicializálja az Active Directory erdőt és tartományt az Azure AD-ből történő csoport-visszaíráshoz.
+A Active Directory erdő és tartomány inicializálása az Azure AD-ből származó csoportos visszaírási.
 
 ### <a name="syntax"></a>SZINTAXIS
 
-#### <a name="userdomain"></a>UserDomain (Felhasználói tartomány)
+#### <a name="userdomain"></a>UserDomain
 ```
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String>
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>Megkülönböztető név
+#### <a name="distinguishedname"></a>DistinguishedName
 ```
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-A Set-ADSyncUnifiedGroupWritebackPermissions függvény megadja a szükséges engedélyeket az AD szinkronizálási fiókhoz, amelyek a következőket tartalmazzák:
+A set-ADSyncUnifiedGroupWritebackPermissions függvény megadja a szükséges engedélyeket az AD szinkronizációs fióknak, amely a következőket tartalmazza:
 1.
-Általános olvasási/írási, Törlési, Fa törlése és Gyermek törlése az összes csoportobjektum-típushoz és alobjektumhoz
+Általános olvasási/írási, törlési, törlési és Create\Delete gyermek az összes csoport típusú objektumhoz és alobjektumhoz
 
-Ezek az engedélyek az erdő összes tartományára vonatkoznak.
-Tetszés szerint megadhat egy Megkülönböztető nevet az ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD objektumra állítsa be (beleértve az alobjektumok öröklését is).
-Ebben az esetben az ADobjectDN lesz a csoportvisszaírással kapcsolatban a GroupWriteback funkcióval kapcsolatban kívánt tároló megkülönböztető neve.
+Ezek az engedélyek az erdő összes tartományára érvényesek.
+Opcionálisan megadhat egy DistinguishedName a ADobjectDN paraméterben, hogy ezeket az engedélyeket csak az adott AD-objektumra állítsa be (beleértve az alárendelt objektumok öröklését is).
+Ebben az esetben a ADobjectDN annak a tárolónak a megkülönböztető neve lesz, amelyet a GroupWriteback szolgáltatással szeretne összekapcsolni.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -1247,8 +1247,8 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector'
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorszámlanév
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók neve a címtárban lévő objektumok kezeléséhez.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
+Annak a Active Directory fióknak a neve, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -1263,7 +1263,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók tartománya a címtárban lévő objektumok kezeléséhez.
+A Active Directory fiók tartománya, amelyet a Azure AD Connect szinkronizálása használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -1278,7 +1278,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-Az Azure AD Connect Sync által használt vagy használni kívánt Active Directory-fiók Megkülönböztetőneve a címtárban lévő objektumok kezeléséhez.
+A Active Directory-fiók DistinguishedName, amelyet Azure AD Connect szinkronizálás használ a címtárban található objektumok kezeléséhez.
 
 ```yaml
 Type: String
@@ -1293,7 +1293,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-A cél AD objektum megkülönböztető neve az engedélyek beállításához (nem kötelező)
+A cél AD-objektum DistinguishedName az engedélyek beállításához (nem kötelező)
 
 ```yaml
 Type: String
@@ -1308,7 +1308,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Választható paraméter, amely jelzi, hogy az AdminSDHolder tárolót nem kell-e frissíteni ezekkel az engedélyekkel
+Választható paraméter annak jelzésére, hogy a AdminSDHolder-tároló nem frissíthető-e ezekkel az engedélyekkel
 
 ```yaml
 Type: SwitchParameter
@@ -1322,7 +1322,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-whatif"></a>-Milenne
+#### <a name="-whatif"></a>– WhatIf
 Bemutatja, mi történne a parancsmag futtatásakor.
 A parancsmag nem fut.
 
@@ -1355,12 +1355,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADobjectPermissions
+## <a name="show-adsyncadobjectpermissions"></a>ADSyncADObjectPermissions megjelenítése
 
 ### <a name="synopsis"></a>SZINOPSZIS
-Egy megadott AD objektum engedélyeit jeleníti meg.
+Megjeleníti egy megadott AD-objektum engedélyeit.
 
 ### <a name="syntax"></a>SZINTAXIS
 
@@ -1369,8 +1369,8 @@ Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>LEÍRÁS
-Ez a függvény az -ADobjectDN paraméterben megadott adott AD-objektumhoz jelenleg beállított összes AD-engedélyt adja vissza.
-Az ADobjectDN-t DistinguishedName formátumban kell megadni.
+Ez a függvény a-ADobjectDN paraméterben megadott AD-objektumhoz jelenleg beállított AD-engedélyeket adja vissza.
+A ADobjectDN DistinguishedName formátumban kell megadni.
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -1382,7 +1382,7 @@ Show-ADSyncADObjectPermissions -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ### <a name="parameters"></a>PARAMÉTEREK
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-{{Fill ADobjectDN Description}}
+{{Fill ADobjectDN leírása}}
 
 ```yaml
 Type: String
@@ -1398,4 +1398,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParametershttps://go.microsoft.com/fwlink/?LinkID=113216)( .
+További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
