@@ -39,6 +39,9 @@
         - name: Python
           href: /azure/databricks/languages/python
           maintainContext: true
+        - name: Koalas
+          href: /azure/databricks/languages/koalas
+          maintainContext: true
         - name: R
           items:
             - name: Útmutató az R felület használatához
@@ -1058,6 +1061,8 @@
             - name: Példa titkos munkafolyamatra
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: Ajánlott eljárások a GDPR-ral kapcsolatban
+          href: /azure/databricks/security/privacy/gdpr-delta
         - name: A fürt feldolgozó csomópontjai közötti forgalom titkosítása
           href: /azure/databricks/security/encryption/encrypt-otw
         - name: Felhasználó által kezelt kulcsok engedélyezése notebookokhoz
@@ -1611,8 +1616,24 @@
               href: /azure/databricks/dev-tools/api/latest/examples
               maintainContext: true
             - name: Hitelesítés
-              href: /azure/databricks/dev-tools/api/latest/authentication
-              maintainContext: true
+              items:
+                - name: Személyes hozzáférési jogkivonatok
+                  href: /azure/databricks/dev-tools/api/latest/authentication
+                  maintainContext: true
+                - name: Azure Active Directory- (AAD-) jogkivonatok
+                  items:
+                    - name: Az AAD-jogkivonatok hitelesítésének áttekintése
+                      href: /azure/databricks/dev-tools/api/latest/aad/index
+                      maintainContext: true
+                    - name: AAD-jogkivonat beszerzése az AAD-hitelesítési kódtár használatával
+                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
+                      maintainContext: true
+                    - name: AAD-jogkivonat beszerzése szolgáltatásnév használatával
+                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
+                      maintainContext: true
+                    - name: AAD hozzáférési jogkivonatok hibaelhárítása
+                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
+                      maintainContext: true
             - name: Fürtök
               href: /azure/databricks/dev-tools/api/latest/clusters
               maintainContext: true

@@ -13,30 +13,14 @@
       items:
         - name: A webes portál használata
           href: getting-started-build-a-classifier.md
-        - name: A .NET SDK használata
-          href: csharp-tutorial.md
-        - name: A Python SDK használata
-          href: python-tutorial.md
-        - name: A Java SDK használata
-          href: java-tutorial.md
-        - name: A Node.js SDK használata
-          href: node-tutorial.md
-        - name: A Go SDK használata
-          href: go-tutorial.md
+        - name: A Custom Vision SDK használata
+          href: quickstarts/image-classification.md
     - name: Objektumérzékelő készítése
       items:
         - name: A webes portál használata
           href: get-started-build-detector.md
-        - name: A .NET SDK használata
-          href: csharp-tutorial-od.md
-        - name: A Python SDK használata
-          href: python-tutorial-od.md
-        - name: A Java SDK használata
-          href: java-tutorial-od.md
-        - name: A Node.js SDK használata
-          href: node-tutorial-object-detection.md
-        - name: A Go SDK használata
-          href: go-tutorial-object-detection.md
+        - name: A Custom Vision SDK használata
+          href: quickstarts/object-detection.md
 - name: Oktatóanyagok
   items:
     - name: Vizuális állapotok jelentése IoT-eszközön

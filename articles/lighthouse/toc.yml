@@ -44,6 +44,9 @@
     - name: Ügyfelek megtekintése és kezelése
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: Delegáláshoz való hozzáférés eltávolítása
+      displayName: 'delete, undelegate'
+      href: ./how-to/remove-delegation.md
     - name: Azure Monitor-integráció
       items:
         - name: Az Azure Monitor-naplók nagy léptékű használata

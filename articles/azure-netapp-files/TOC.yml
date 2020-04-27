@@ -39,6 +39,8 @@
           href: azure-netapp-files-solution-architectures.md
         - name: Az Azure NetApp Files Oracle Database-szel való használatának előnyei
           href: solutions-benefits-azure-netapp-files-oracle-database.md
+        - name: Az Azure NetApp elektronikus tervautomatizálással való használatának előnyei
+          href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
     - name: Gyakori kérdések az Azure NetApp Filesról
       href: azure-netapp-files-faqs.md
 - name: Útmutatók

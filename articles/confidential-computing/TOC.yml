@@ -1,0 +1,33 @@
+- name: Azure Confidential Computing
+  href: overview.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: Létrehozás az Azure Portalon
+      href: quick-create-portal.md
+    - name: Létrehozás a Marketplace-szel
+      href: quick-create-marketplace.md
+- name: Alapelvek
+  expanded: true
+  items:
+    - name: Megoldások virtuális gépeken
+      href: virtual-machine-solutions.md
+- name: További források
+  expanded: true
+  items:
+    - name: GYIK
+      href: faq.md
+    - name: Visszajelzés a Confidential Computingról
+      href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
+    - name: StackOverflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-confidential-computing'
+    - name: Az Enclave SDK megnyitása
+      href: 'https://aka.ms/oesdkGitHubRepo'
+    - name: Confidential Computing Consortium
+      href: 'https://confidentialcomputing.io/'
+    - name: Virtual Machines az Azure-on
+      href: 'https://docs.microsoft.com/azure/virtual-machines/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2'
+    - name: Régiók
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines'

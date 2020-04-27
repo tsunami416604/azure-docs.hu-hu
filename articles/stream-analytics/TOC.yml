@@ -219,7 +219,7 @@
           href: stream-analytics-troubleshoot-output.md
         - name: Lekérdezési logika
           href: stream-analytics-troubleshoot-query.md
-        - name: Tevékenység és diagnosztikai naplók
+        - name: Tevékenység- és erőforrásnaplók
           href: stream-analytics-job-diagnostic-logs.md
         - name: Adathibák
           href: data-errors.md

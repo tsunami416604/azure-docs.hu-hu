@@ -83,7 +83,7 @@
           href: module-development.md
         - name: Fejlesztési környezet
           href: development-environment.md
-    - name: Környezet
+    - name: Üzembe helyezés
       items:
         - name: Üzembehelyezési jegyzék
           href: module-composition.md
@@ -168,13 +168,15 @@
         - name: Nagy léptékű üzembe helyezés
           items:
             - name: Azure Portal
-              href: how-to-deploy-monitor.md
+              href: how-to-deploy-at-scale.md
             - name: Azure CLI
-              href: how-to-deploy-monitor-cli.md
+              href: how-to-deploy-cli-at-scale.md
             - name: Visual Studio Code
-              href: how-to-deploy-monitor-vscode.md
+              href: how-to-deploy-vscode-at-scale.md
     - name: Üzembe helyezések monitorozása és diagnosztizálása
       items:
+        - name: Üzemelő IoT Edge-példányok monitorozása
+          href: how-to-monitor-iot-edge-deployments.md
         - name: Közvetlen EdgeAgent-metódusok
           href: how-to-edgeagent-direct-method.md
     - name: IoT Edge-eszközök használata átjáróként

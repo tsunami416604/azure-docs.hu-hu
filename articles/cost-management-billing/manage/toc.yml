@@ -89,7 +89,7 @@
           href: ea-portal-administration.md
         - name: A Microsoft ügyfélszerződés EA-feladatai
           href: mca-enterprise-operations.md
-        - name: Nagyvállalati szerződéses Azure-szerződések és -kiegészítések
+        - name: Azure nagyvállalati szerződések és a módosításaik
           href: ea-portal-agreements.md
         - name: Nagyvállalati regisztrációs számlák
           href: ea-portal-enrollment-invoices.md
@@ -107,7 +107,7 @@
       href: billing-troubleshoot-azure-payment-issues.md
     - name: Elutasított kártya
       href: troubleshoot-declined-card.md
-    - name: Regisztrációs problémák
+    - name: Azure-fiók regisztrációjával kapcsolatos problémák
       href: troubleshoot-azure-sign-up.md
     - name: Bejelentkezéssel kapcsolatos problémák az előfizetésben
       href: troubleshoot-sign-in-issue.md
