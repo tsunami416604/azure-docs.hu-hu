@@ -39,6 +39,8 @@
       items:
         - name: HDInsight-alapú Apache Hadoop-összetevők
           href: ./hdinsight-component-versioning.md
+        - name: Hortonworks kibocsátási megjegyzések
+          href: ./hortonworks-release-notes.md
         - name: Magas rendelkezésre állású összetevők
           href: ./hdinsight-high-availability-components.md
         - name: Apache Ambari az Azure HDInsightban
@@ -59,10 +61,17 @@
           href: ./cluster-management-best-practices.md
         - name: Rendelkezésre állás és megbízhatóság
           href: ./hdinsight-high-availability-linux.md
-        - name: Tárolási lehetőségek összehasonlítása
-          href: ./hdinsight-hadoop-compare-storage-options.md
         - name: Felhasználó által hozzárendelt felügyelt identitások kezelése
           href: ./hdinsight-managed-identities.md
+        - name: Tárolási lehetőségek összehasonlítása
+          href: hdinsight-hadoop-compare-storage-options.md
+          items:
+            - name: Az Azure Storage áttekintése
+              href: overview-azure-storage.md
+            - name: Az Azure Data Lake Storage Gen1 áttekintése
+              href: overview-data-lake-storage-gen1.md
+            - name: Az Azure Data Lake Storage Gen2 áttekintése
+              href: overview-data-lake-storage-gen2.md
     - name: Útmutató
       items:
         - name: Fürtök létrehozása
@@ -122,6 +131,8 @@
               href: hdinsight-hadoop-linux-use-ssh-unix.md
             - name: SSH-alagútkezelés használata
               href: hdinsight-linux-ambari-ssh-tunnel.md
+            - name: SCP használata a HDInsighttal
+              href: ./use-scp.md
             - name: Adatokhoz hozzáférésének korlátozása
               href: hdinsight-storage-sharedaccesssignature-permissions.md
             - name: Az Apache Ambari Views használatának engedélyezése felhasználók számára
@@ -216,6 +227,8 @@
           items:
             - name: Szkriptműveletek hibaelhárítása
               href: ./troubleshoot-script-action.md
+            - name: Erőforráslétrehozási hibák
+              href: ./troubleshoot-resource-creation-fails.md
     - name: Referencia
       items:
         - name: Azure PowerShell
