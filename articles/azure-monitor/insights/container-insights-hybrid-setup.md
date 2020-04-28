@@ -2,17 +2,37 @@
 title: Hibrid Kubernetes-fürtök konfigurálása a Azure Monitor for containers szolgáltatásban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható Azure Monitor a tárolók számára Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök figyelésére.
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: c0dbbf9f65aa96db1ebcd0b03552bba8d1f91863
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.date: 04/22/2020
+ms.openlocfilehash: a0008f7a2d6b808a8ff55d85330801305361d7c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82143168"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185965"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hibrid Kubernetes-fürtök konfigurálása Azure Monitor tárolók számára
 
 A tárolók Azure Monitor széles körű monitorozási élményt biztosítanak az Azure-ban üzemeltetett Azure Kubernetes szolgáltatás (ak) és az AK-os [motor](https://github.com/Azure/aks-engine)számára, amely az Azure-ban üzemeltetett, önállóan felügyelt Kubernetes-fürt. Ez a cikk bemutatja, hogyan engedélyezheti az Azure-on kívül üzemeltetett Kubernetes-fürtök figyelését, és így hasonló figyelési élményt érhet el.
+
+## <a name="supported-configurations"></a>Támogatott konfigurációk
+
+A következőt hivatalosan támogatja a tárolók Azure Monitor.
+
+* Környezetben 
+
+    * Helyszíni Kubernetes
+    
+    * AK-motor az Azure-ban és a Azure Stack. További információ: AK-beli [motor on Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
+    
+    * A [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) 4-es és újabb verziója, helyszíni vagy más felhőalapú környezetek.
+
+* A Kubernetes és a támogatási szabályzat verziói ugyanazok, mint a [támogatott AK](../../aks/supported-kubernetes-versions.md)-verziók.
+
+* Tároló-futtatókörnyezet: Docker, Moby és ICC-kompatibilis futtatókörnyezetek, például az ICC-O és a tárolók.
+
+* Linux RENDSZERű kiadás a Master és a Worker csomópontjaihoz: Ubuntu (18,04 LTS és 16,04 LTS) és Red Hat Enterprise Linux CoreOS 43,81.
+
+* Támogatott hozzáférés-vezérlés: Kubernetes RBAC és nem RBAC
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,10 +53,9 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 * A következő proxy-és tűzfal-konfigurációs információk szükségesek a Linux rendszerhez készült Log Analytics-ügynöknek a Azure Monitorval való kommunikációhoz:
 
     |Ügynök erőforrása|Portok |
-    |------|---------|   
-    |*.ods.opinsights.azure.com |443-es port |  
-    |*.oms.opinsights.azure.com |443-es port |  
-    |*.blob.core.windows.net |443-es port |  
+    |------|---------|
+    |*.ods.opinsights.azure.com |443-es port |
+    |*.oms.opinsights.azure.com |443-es port |
     |*. dc.services.visualstudio.com |443-es port |
 
 * A tároló ügynöknek a Kubelet kell `cAdvisor secure port: 10250` megnyitnia, vagy `unsecure port :10255` a fürt összes csomópontján meg kell nyitni a teljesítmény-metrikák gyűjtéséhez. Javasoljuk, hogy konfigurálja `secure port: 10250` a Kubelet cAdvisor, ha még nincs konfigurálva.
@@ -45,16 +64,6 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
 >[!IMPORTANT]
 >A hibrid Kubernetes-fürtök figyeléséhez támogatott minimális ügynök verziója ciprod10182019 vagy újabb.
-
-## <a name="supported-configurations"></a>Támogatott konfigurációk
-
-A következőt hivatalosan támogatja a tárolók Azure Monitor.
-
-- Környezetek: helyszíni Kubernetes, AK-motor az Azure-ban és Azure Stack. További információ: az [AK-motor Azure stackon](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
-- A Kubernetes és a támogatási szabályzat verziói ugyanazok, mint a [támogatott AK](../../aks/supported-kubernetes-versions.md)-verziók.
-- Tároló futtatókörnyezete: Docker és Moby
-- Linux RENDSZERű kiadás a Master és a Worker csomópontjaihoz: Ubuntu (18,04 LTS és 16,04 LTS)
-- Támogatott hozzáférés-vezérlés: Kubernetes RBAC és nem RBAC
 
 ## <a name="enable-monitoring"></a>Monitorozás engedélyezése
 
@@ -242,7 +251,7 @@ A `workspaceResourceId` **containerSolutionParams. JSON** fájlban a paraméter 
 ## <a name="install-the-chart"></a>A diagram telepítése
 
 >[!NOTE]
->A következő parancsok csak a Helm 2-es verziójára érvényesek. A--name paraméter használata nem alkalmazható a Helm 3-as verziójával.
+>A következő parancsok csak a Helm 2-es verziójára érvényesek. A `--name` paraméter használata nem alkalmazható a Helm 3-as verziójára.
 
 A HELM diagram engedélyezéséhez tegye a következőket:
 
@@ -272,6 +281,28 @@ A HELM diagram engedélyezéséhez tegye a következőket:
     $ helm install --name myrelease-1 \
     --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
+
+### <a name="enable-the-helm-chart-using-the-api-model"></a>A Helm diagram engedélyezése az API-modell használatával
+
+Megadhat egy addont az AK-motor fürt specifikációjának JSON-fájljában (más néven API-modellként). Ebben az addon-ben adja meg az Log Analytics `WorkspaceGUID` -munkaterület Base64 `WorkspaceKey` kódolású verzióját és a begyűjtött megfigyelési adatokat tároló munkaterületet.
+
+Az Azure Stack hub-fürt támogatott API-definíciói ebben a példában a- [kubernetes-Container-monitoring_existing_workspace_id_and_key. JSON](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json)fájlban találhatók. Pontosabban keresse meg az **addons** tulajdonságot a **kubernetesConfig**-ben:
+
+```json
+"orchestratorType": "Kubernetes",
+       "kubernetesConfig": {
+         "addons": [
+           {
+             "name": "container-monitoring",
+             "enabled": true,
+             "config": {
+               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
+             }
+           }
+         ]
+       }
+```
 
 ## <a name="configure-agent-data-collection"></a>Az ügynök adatgyűjtésének konfigurálása
 

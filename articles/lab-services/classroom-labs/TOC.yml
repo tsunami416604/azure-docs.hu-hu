@@ -108,6 +108,8 @@
           href: how-to-windows-shutdown.md
         - name: Támogatási információk megtekintése (oktató)
           href: lab-creator-support-information.md
+        - name: Diákok virtuális gépeinek elérése az oktatói nézetből
+          href: instructor-access-virtual-machines.md
     - name: Csatlakozás virtuális gépekhez osztályterem-tesztkörnyezetekben (tanuló)
       items:
         - name: Osztályterem-tesztkörnyezetek elérése

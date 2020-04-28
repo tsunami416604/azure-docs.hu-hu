@@ -1,6 +1,6 @@
 ---
 title: Kombinált regisztráció – Azure Active Directory
-description: Az Azure AD többtényezős hitelesítés és az önkiszolgáló jelszó-visszaállítás kombinált regisztrációjának hibaelhárítása
+description: Az Azure AD Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás együttes regisztrációjának hibaelhárítása
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,72 +12,72 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450938"
 ---
-# <a name="troubleshooting-combined-security-information-registration"></a>A biztonsági adatok kombinált regisztrációjának hibáinak elhárítása
+# <a name="troubleshooting-combined-security-information-registration"></a>A kombinált biztonsági információk regisztrációjának hibaelhárítása
 
-Az ebben a cikkben található információk célja, hogy a rendszergazdák, akik hibaelhárítási problémák által jelentett felhasználók a kombinált regisztrációs élményt.
+A cikkben található információk arra szolgálnak, hogy miként lehet a felhasználók által a kombinált regisztrációs élményben jelentett problémákkal kapcsolatos hibaelhárítást végző rendszergazdákat irányítani.
 
 ## <a name="audit-logs"></a>Naplók
 
-A kombinált regisztrációhoz naplózott események az Azure AD naplózási naplóinak hitelesítési módszerek kategóriájában találhatók.
+A kombinált regisztrációhoz naplózott események az Azure AD-naplók hitelesítési módszerek kategóriájában találhatók.
 
-![Az Azure AD naplózási naplóinak felülete regisztrációs eseményeket jelenít meg](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![Az Azure AD naplóinak kezelőfelülete, amely a regisztrációs eseményeket mutatja](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
-Az alábbi táblázat a kombinált regisztráció által generált összes naplózási eseményt sorolja fel:
+A következő táblázat felsorolja a kombinált regisztráció által generált összes naplózási eseményt:
 
 | Tevékenység | status | Ok | Leírás |
 | --- | --- | --- | --- |
-| A felhasználó regisztrálta az összes szükséges biztonsági adatot | Sikeres | A felhasználó regisztrálta az összes szükséges biztonsági adatot. | Ez az esemény akkor következik be, ha a felhasználó sikeresen befejezte a regisztrációt.|
-| A felhasználó regisztrálta az összes szükséges biztonsági adatot | Hiba | A felhasználó visszavonta a biztonsági adatok regisztrációját. | Ez az esemény akkor következik be, amikor a felhasználó megszakítja a regisztrációt a megszakítási módból.|
-| Felhasználó által regisztrált biztonsági adatok | Sikeres | Felhasználó által regisztrált *módszer*. | Ez az esemény akkor következik be, amikor a felhasználó regisztrál egy egyedi metódust. *Módszer* lehet Hitelesítő app, Telefon, E-mail, Biztonsági kérdések, App jelszó, Alternatív telefon, és így tovább.| 
-| A felhasználó áttekintette a biztonsági adatokat | Sikeres | A felhasználó sikeresen áttekintette a biztonsági adatokat. | Ez az esemény akkor következik be, amikor a felhasználó a **Jól néz ki** lehetőséget választja a biztonsági adatok ellenőrzéslapján.|
-| A felhasználó áttekintette a biztonsági adatokat | Hiba | A felhasználó nem tudta áttekinteni a biztonsági adatokat. | Ez az esemény akkor következik be, amikor a felhasználó a **Jól néz ki** lehetőséget választja a biztonsági adatok ellenőrzéslapján, de valami nem sikerül a háttérrendszeren.|
-| A felhasználó által törölt biztonsági adatok | Sikeres | A felhasználó által törölt *módszer*. | Ez az esemény akkor következik be, amikor a felhasználó töröl egy adott metódust. *Módszer* lehet Hitelesítő app, Telefon, E-mail, Biztonsági kérdések, App jelszó, Alternatív telefon, és így tovább.|
-| A felhasználó által törölt biztonsági adatok | Hiba | A felhasználó nem tudta törölni a *metódust*. | Ez az esemény akkor következik be, amikor a felhasználó megpróbál törölni egy metódust, de a kísérlet valamilyen okból sikertelen. *Módszer* lehet Hitelesítő app, Telefon, E-mail, Biztonsági kérdések, App jelszó, Alternatív telefon, és így tovább.|
-| A felhasználó módosította az alapértelmezett biztonsági adatokat | Sikeres | A felhasználó megváltoztatta a *metódus*alapértelmezett biztonsági adatait. | Ez az esemény akkor következik be, amikor a felhasználó módosítja az alapértelmezett módszert. *Módszer* lehet Hitelesítő app értesítés, A kódot az én hitelesítő app vagy token, Call +X XXXXXXXXXX, Szöveg egy kódot +X XXXXXXXXX, és így tovább.|
-| A felhasználó módosította az alapértelmezett biztonsági adatokat | Hiba | A felhasználó nem tudta módosítani a *metódus*alapértelmezett biztonsági adatait. | Ez az esemény akkor következik be, amikor a felhasználó megpróbálja módosítani az alapértelmezett módszert, de a kísérlet valamilyen okból sikertelen. *Módszer* lehet Hitelesítő app értesítés, A kódot az én hitelesítő app vagy token, Call +X XXXXXXXXXX, Szöveg egy kódot +X XXXXXXXXX, és így tovább.|
+| A felhasználó az összes szükséges biztonsági adatot regisztrálta | Sikeres | A felhasználó regisztrálta az összes szükséges biztonsági adatot. | Ez az esemény akkor következik be, amikor egy felhasználó sikeresen befejezte a regisztrációt.|
+| A felhasználó az összes szükséges biztonsági adatot regisztrálta | Hiba | A felhasználó megszakította a biztonsági adatok regisztrálását. | Ez az esemény akkor következik be, amikor egy felhasználó megszakítja a regisztrációt a megszakítási módból.|
+| Felhasználó által regisztrált biztonsági adatok | Sikeres | Felhasználó által regisztrált *metódus*. | Ez az esemény akkor következik be, amikor egy felhasználó egy egyéni metódust regisztrál. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.| 
+| A felhasználó által felülvizsgált biztonsági információ | Sikeres | A felhasználó sikeresen áttekintette a biztonsági adatokat. | Ez az esemény akkor következik be, amikor a felhasználó a biztonsági adatok áttekintése oldalon kiválasztja a **megfelelőt** .|
+| A felhasználó által felülvizsgált biztonsági információ | Hiba | A felhasználó nem tudta áttekinteni a biztonsági adatokat. | Ez az esemény akkor következik be, amikor a felhasználó a biztonsági adatok áttekintése lapon kiválasztja a **megfelelőt** , de a háttér nem működik.|
+| A felhasználó törölte a biztonsági adatokat | Sikeres | Felhasználó által törölt *metódus*. | Ez az esemény akkor következik be, amikor egy felhasználó töröl egy egyéni metódust. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.|
+| A felhasználó törölte a biztonsági adatokat | Hiba | A felhasználó nem tudta törölni a *metódust*. | Ez az esemény akkor következik be, amikor egy felhasználó megpróbál törölni egy metódust, de a kísérlet valamilyen okból meghiúsul. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.|
+| A felhasználó módosította az alapértelmezett biztonsági adatokat | Sikeres | A felhasználó megváltoztatta a *metódus*alapértelmezett biztonsági adatait. | Ez az esemény akkor következik be, amikor a felhasználó megváltoztatja az alapértelmezett metódust. A *metódus* lehet a hitelesítő alkalmazás értesítése, a saját hitelesítő alkalmazásból vagy tokenből származó kód, a Call + X xxxxxxxxxx, a szöveg a kód + x XXXXXXXXX, és így tovább.|
+| A felhasználó módosította az alapértelmezett biztonsági adatokat | Hiba | A felhasználó nem tudta módosítani az alapértelmezett biztonsági adatokat a *metódushoz*. | Ez az esemény akkor következik be, amikor egy felhasználó megpróbálja módosítani az alapértelmezett metódust, de a kísérlet valamilyen okból meghiúsul. A *metódus* lehet a hitelesítő alkalmazás értesítése, a saját hitelesítő alkalmazásból vagy tokenből származó kód, a Call + X xxxxxxxxxx, a szöveg a kód + x XXXXXXXXX, és így tovább.|
 
-## <a name="troubleshooting-interrupt-mode"></a>Megszakítási mód elhárítása
-
-| Hibajelenség | Hibaelhárítási lépések |
-| --- | --- |
-| Nem látom azáltal a várt módszereket. | 1. Ellenőrizze, hogy a felhasználó rendelkezik-e Azure AD-rendszergazdai szerepkörrel. Ha igen, tekintse meg az SSPR felügyeleti házirend-különbségeit. <br> 2. Határozza meg, hogy a felhasználó megszakad-e a többtényezős hitelesítés regisztrációs kényszerítése vagy az SSPR regisztrációs kényszerítése miatt. A "Kombinált regisztrációs módok" alatt találja meg a [folyamatábrát,](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes) hogy meghatározza, mely módszereket kell megjeleníteni. <br> 3. Határozza meg, hogy a közelmúltban hogyan módosult a többtényezős hitelesítés vagy az SSPR-házirend. Ha a módosítás legutóbbi volt, eltarthat egy ideig, amíg a frissített házirend propagálása megtörtén.|
-
-## <a name="troubleshooting-manage-mode"></a>Kezelési kezelési mód – hibaelhárítás
+## <a name="troubleshooting-interrupt-mode"></a>Megszakítási mód hibaelhárítása
 
 | Hibajelenség | Hibaelhárítási lépések |
 | --- | --- |
-| Nincs lehetőségem egy adott módszer hozzáadására. | 1. Határozza meg, hogy a módszer engedélyezve van-e a többtényezős hitelesítéshez vagy az SSPR-hez. <br> 2. Ha a módszer engedélyezve van, mentse újra a házirendeket, és várjon 1-2 órát a tesztelés előtt. <br> 3. Ha a metódus engedélyezve van, győződjön meg arról, hogy a felhasználó még nem állította be a beállítani kívánt módszer maximális számát.|
+| Nem látom a várt metódusokat. | 1. Ellenőrizze, hogy a felhasználó rendelkezik-e Azure AD-rendszergazdai szerepkörrel. Ha igen, tekintse meg a SSPR rendszergazdai szabályzatának eltéréseit. <br> 2. állapítsa meg, hogy a felhasználó meg van-e szakítva Multi-Factor Authentication regisztráció kényszerítése vagy a SSPR regisztrációjának kényszerítése miatt. Tekintse meg a [folyamatábrát](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes) a "kombinált regisztrációs üzemmódok" alatt, és határozza meg, hogy mely metódusokat kell megjeleníteni. <br> 3. határozza meg, hogy a Multi-Factor Authentication-vagy a SSPR-szabályzat Hogyan módosult a közelmúltban. Ha a módosítás nemrég történt, eltarthat egy ideig, amíg a frissített házirend propagálva lenne.|
+
+## <a name="troubleshooting-manage-mode"></a>Kezelési mód hibaelhárítása
+
+| Hibajelenség | Hibaelhárítási lépések |
+| --- | --- |
+| Nincs lehetőség egy adott metódus hozzáadására. | 1. Ellenőrizze, hogy a metódus engedélyezve van-e Multi-Factor Authentication vagy SSPR. <br> 2. Ha a metódus engedélyezve van, mentse újra a szabályzatokat, és várjon 1-2 órával a tesztelés előtt. <br> 3. Ha a metódus engedélyezve van, győződjön meg arról, hogy a felhasználó még nem állította be a beállított módszer maximális számát.|
 
 ## <a name="disable-combined-registration"></a>Kombinált regisztráció letiltása
 
-Amikor egy felhasználó regisztrál egy telefonszámot és/vagy mobilalkalmazást az új kombinált élményben, a szolgáltatásunk lebélyegzi az adott felhasználó metódusaihoz tartozó jelzők (StrongAuthenticationMethods) készletét. Ez a funkció lehetővé teszi a felhasználó számára, hogy többtényezős hitelesítést hajtson végre ezekkel a módszerekkel, amikor többtényezős hitelesítésre van szükség.
+Amikor egy felhasználó egy telefonszámot és/vagy egy Mobile-alkalmazást regisztrál az új kombinált felületen, a szolgáltatási bélyegzőket (StrongAuthenticationMethods) tartalmazó készletet hoz létre az adott felhasználó számára. Ez a funkció lehetővé teszi, hogy a felhasználó Multi-Factor Authenticationt hajtson végre ezekkel a módszerekkel, amikor Multi-Factor Authentication szükséges.
 
-Ha egy rendszergazda engedélyezi az előzetes verziót, a felhasználók regisztrálnak az új felületen keresztül, majd a rendszergazda letiltja az előnézetet, a felhasználók tudatlanul regisztrálhatnak a többtényezős hitelesítéshez is.
+Ha egy rendszergazda engedélyezte az előzetes verziót, a felhasználók regisztrálhatnak az új felhasználói felületre, majd a rendszergazda letiltja az előzetes verziót, és előfordulhat, hogy a felhasználók nem tudnak regisztrálni Multi-Factor Authentication is.
 
-Ha egy kombinált regisztrációt végző felhasználó a jelenlegi önkiszolgáló jelszó-visszaállítási [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)(SSPR) regisztrációs lapra lép a> on, a rendszer a többtényezős hitelesítést kéri, mielőtt elérnék az adott oldalt. Ez a lépés technikai szempontból várható, de ez az új felhasználók számára, akik korábban csak sspr regisztrált. Bár ez az extra lépés javítja a felhasználó biztonsági állapotát azáltal, hogy egy másik biztonsági szintet biztosít, a rendszergazdák érdemes lehet visszavonni a felhasználókat, hogy ők már nem képesek végrehajtani a többtényezős hitelesítést.  
+Ha az egyesített regisztrációt befejező felhasználó az aktuális önkiszolgáló jelszó-visszaállítási (SSPR) regisztrációs oldalra kerül [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup), a rendszer a felhasználótól a laphoz való hozzáférés előtt megkéri a multi-Factor Authentication elvégzésére. Ez a lépés technikai szempontból várható, de olyan felhasználók számára is új, akik korábban csak SSPR voltak regisztrálva. Bár ez az extra lépés javítja a felhasználó biztonsági állapotát azáltal, hogy egy másik biztonsági szintet biztosít, a rendszergazdák visszaállíthatják a felhasználókat, hogy már ne tudják végrehajtani a Multi-Factor Authentication.  
 
-### <a name="how-to-roll-back-users"></a>A felhasználók visszaállítása
+### <a name="how-to-roll-back-users"></a>Felhasználók visszaállítása
 
-Ha rendszergazdaként szeretné alaphelyzetbe állítani a felhasználó többtényezős hitelesítési beállításait, használhatja a következő szakaszban biztosított PowerShell-parancsfájlt. A parancsfájl törli a Felhasználó mobilalkalmazásának és/vagy telefonszámának StrongAuthenticationMethods tulajdonságát. Ha ezt a parancsfájlt a felhasználók számára futtatja, újra regisztrálniuk kell őket a többtényezős hitelesítéshez, ha szükségük van rá. Azt javasoljuk, hogy tesztelje a visszaállítást egy vagy két felhasználóval, mielőtt az összes érintett felhasználót visszaállítja.
+Ha rendszergazdaként szeretné alaphelyzetbe állítani a felhasználó Multi-Factor Authentication beállításait, használhatja a következő szakaszban megadott PowerShell-parancsfájlt. A szkript törli a felhasználó StrongAuthenticationMethods tulajdonságát és/vagy telefonszámát. Ha ezt a parancsfájlt a felhasználók számára futtatja, akkor újra kell regisztrálnia Multi-Factor Authentication, ha szükségük van rá. Javasoljuk, hogy az összes érintett felhasználó visszaállítása előtt tesztelje a visszaállítást egy vagy két felhasználóval.
 
-Az alábbi lépések segítségével visszaállíthatja a felhasználókat vagy felhasználói csoportokat.
+Az alábbi lépések segítséget nyújtanak a felhasználók vagy felhasználócsoportok visszaállításában.
 
 #### <a name="prerequisites"></a>Előfeltételek
 
-1. Telepítse a megfelelő Azure AD PowerShell-modulokat. Egy PowerShell-ablakban futtassa ezeket a parancsokat a modulok telepítéséhez:
+1. Telepítse a megfelelő Azure AD PowerShell-modulokat. A PowerShell-ablakban futtassa a következő parancsokat a modulok telepítéséhez:
 
    ```powershell
    Install-Module -Name MSOnline
    Import-Module MSOnline
    ```
 
-1. Mentse az érintett felhasználói objektumazonosítók listáját a számítógépre, soronként egy azonosítóval rendelkező szövegfájlként. Jegyezze fel a fájl helyét.
+1. Mentse az érintett felhasználói objektumok azonosítóinak listáját a számítógépre szövegfájlként egy AZONOSÍTÓval, soronként. Jegyezze fel a fájl helyét.
 1. Mentse a következő parancsfájlt a számítógépre, és jegyezze fel a parancsfájl helyét:
 
    ```powershell
@@ -139,22 +139,22 @@ Az alábbi lépések segítségével visszaállíthatja a felhasználókat vagy 
    }
    ```
 
-#### <a name="rollback"></a>Visszagurítás
+#### <a name="rollback"></a>Visszaállítási
 
-Egy PowerShell-ablakban futtassa a következő parancsot, megadva a parancsfájl és a felhasználói fájl helyét. Amikor a rendszer kéri, adja meg a globális rendszergazdai hitelesítő adatokat. A parancsfájl minden egyes felhasználói frissítési művelet eredményét adja ki.
+A PowerShell-ablakban futtassa a következő parancsot, amely biztosítja a parancsfájl-és a felhasználói fájlok helyét. Ha a rendszer kéri, adja meg a globális rendszergazdai hitelesítő adatokat. A parancsfájl az egyes felhasználói frissítési műveletek eredményét fogja kiadni.
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-updated-experience"></a>A frissített élmény letiltása
+### <a name="disable-the-updated-experience"></a>A frissített felhasználói felület letiltása
 
-A felhasználók frissített élményének letiltásához hajtsa végre az alábbi lépéseket:
+A frissített felhasználói élmény letiltásához hajtsa végre az alábbi lépéseket:
 
-1. Jelentkezzen be az Azure Portalon felhasználói rendszergazdaként.
-2. Nyissa meg az **Azure Active Directory** > **felhasználói beállításai** > **: A hozzáférési panel előnézeti szolgáltatásainak kezelése című lapban.**
-3. A **Felhasználók csoportban a biztonsági adatok regisztrálásához és kezeléséhez használhatjuk az előnézeti funkciókat,** állítsa a választógombot **Nincs**beállításra, majd válassza a **Mentés lehetőséget.**
+1. Jelentkezzen be a Azure Portal felhasználói rendszergazdaként.
+2. Nyissa meg **Azure Active Directory** > **felhasználói beállítások** > **kezelése beállítások a hozzáférési panel előzetes verziójának funkcióit**.
+3. A **felhasználók a biztonsági adatok regisztrálásához és kezeléséhez az előzetes verziójú funkciókat használhatják**, a választót a **none**értékre állíthatja, majd a **Save (Mentés**) lehetőséget is választhatja.
 
-A felhasználók a továbbiakban nem lesznek arra kérik, hogy a frissített felület használatával regisztráljanak.
+A rendszer a továbbiakban nem fogja tudni regisztrálni a felhasználókat a frissített felhasználói élmény használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ az önkiszolgáló jelszó-visszaállítás és az Azure többtényezős hitelesítésegyüttes regisztrációjáról](concept-registration-mfa-sspr-combined.md)
+* [További információ az önkiszolgáló jelszó-visszaállítás és az Azure-Multi-Factor Authentication együttes regisztrálásáról](concept-registration-mfa-sspr-combined.md)

@@ -17,7 +17,7 @@
       items:
         - name: Tömeges meghívás a PowerShellen keresztül
           href: bulk-invite-powershell.md
-        - name: Tömeges meghívás a portálon keresztül (előzetes verzió)
+        - name: Tömeges meghívás a portálon keresztül
           href: tutorial-bulk-invite.md
         - name: Többtényezős hitelesítés kényszerítése
           href: b2b-tutorial-require-mfa.md
