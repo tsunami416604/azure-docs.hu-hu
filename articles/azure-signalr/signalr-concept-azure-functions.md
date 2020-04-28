@@ -1,28 +1,28 @@
 ---
-title: Valós idejű alkalmazás létrehozása – Azure Functions & Azure SignalR szolgáltatás
-description: Ismerje meg, hogyan fejleszthet valós idejű kiszolgáló nélküli webalkalmazást az Azure SignalR-szolgáltatással a következő példában.
+title: Valós idejű app-Azure Functions & Azure Signaler szolgáltatás létrehozása
+description: Megtudhatja, hogyan fejleszthet valós idejű kiszolgáló nélküli webalkalmazásokat az Azure Signaler szolgáltatással az alábbi példa alapján.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74157622"
 ---
-# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Valós idejű alkalmazások készítése az Azure Functions és az Azure SignalR szolgáltatás segítségével
+# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Valós idejű alkalmazások létrehozása a Azure Functions és az Azure Signaler szolgáltatással
 
 Mivel az Azure SignalR szolgáltatás és az Azure Functions teljeskörűen felügyelt, nagymértékben skálázható szolgáltatások, amelyek lehetővé teszik, hogy az infrastruktúra-kezelés helyett az alkalmazások létrehozására összpontosítson, gyakran használják együtt őket, hogy valós idejű kommunikációt biztosítsanak a [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetekben.
 
 > [!NOTE]
-> Ismerje meg a SignalR és az Azure Functions együttes használatát az interaktív oktatóanyagban Az automatikus frissítések engedélyezése egy webes alkalmazásban az [Azure Functions és a SignalR szolgáltatás használatával.](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
+> Ismerkedjen meg a Signaler és a Azure Functions együttes használatával az interaktív oktatóanyagban, amely [lehetővé teszi az automatikus frissítések használatát egy webalkalmazásban a Azure functions és a signaler szolgáltatás használatával](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr).
 
 ## <a name="integrate-real-time-communications-with-azure-services"></a>Valós idejű kommunikáció integrálása Azure-szolgáltatásokkal
 
-Az Azure Functions lehetővé [teszi,](../azure-functions/supported-languages.md)hogy több nyelven írjon kódot, beleértve a JavaScript, Python, C#, és a Java, amely elindítja, amikor események történnek a felhőben. Ilyen események például a következők:
+Azure Functions lehetővé teszi, hogy [különböző nyelveken](../azure-functions/supported-languages.md), például a JavaScript, a Python, a C# és a Java nyelven is írjon kódot, amely a Felhőbeli események bekövetkezésekor aktiválódik. Ilyen események például a következők:
 
 * HTTP- és webhookkérések
 * Rendszeres időzítők
@@ -66,9 +66,9 @@ A SignalR szolgáltatás lehetővé teszi, hogy üzeneteket továbbítson az ös
 
 Ez a cikk áttekintést nyújtott arról, hogyan használható az Azure Functions és a SignalR szolgáltatás számos különböző kiszolgáló nélküli, valós idejű üzenetküldési forgatókönyv engedélyezésére.
 
-Az Azure Functions és a SignalR szolgáltatás együttes használatával kapcsolatos részletekért látogasson el az alábbi forrásokba:
+A Azure Functions és a Signaler szolgáltatás használatával kapcsolatos részletes információkért tekintse meg a következő forrásokat:
 
-* [Az Azure Functions fejlesztése és konfigurálása a SignalR szolgáltatással](signalr-concept-serverless-development-config.md)
+* [Azure Functions fejlesztés és konfigurálás a Signaler szolgáltatással](signalr-concept-serverless-development-config.md)
 * [Automatikus frissítések engedélyezése webalkalmazásban az Azure Functions és a SignalR Service használatával](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 További információért kövesse az alábbi rövid útmutatók egyikét.

@@ -1,7 +1,7 @@
 ---
 title: Szabályok testreszabása a PowerShell használatával
 titleSuffix: Azure Web Application Firewall
-description: Ez a cikk a Web Application Firewall-szabályok testreszabásáról nyújt tájékoztatást az Application Gateway powershell-ben.
+description: Ez a cikk azt ismerteti, hogyan szabható testre a webalkalmazási tűzfalszabályok a Application Gateway a PowerShell használatával.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,29 +9,29 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74048513"
 ---
-# <a name="customize-web-application-firewall-rules-using-powershell"></a>Webalkalmazás-tűzfal szabályainak testreszabása a PowerShell használatával
+# <a name="customize-web-application-firewall-rules-using-powershell"></a>Webalkalmazási tűzfalszabályok testreszabása a PowerShell használatával
 
-Az Azure Application Gateway webalkalmazás-tűzfal (WAF) védelmet nyújt a webalkalmazások számára. Ezeket a védelmet az Open Web Application Security Project (OWASP) core rule set (CRS) biztosítja. Egyes szabályok hamis pozitív akta, és blokkolja a valós forgalmat. Ezért az Application Gateway lehetővé teszi a szabálycsoportok és szabályok testreszabását. Az adott szabálycsoportokról és szabályokról a [Webapplication Firewall CRS szabálycsoportok és szabályok listája](application-gateway-crs-rulegroups-rules.md)című témakörben talál további információt.
+Az Azure Application Gateway webalkalmazási tűzfal (WAF) védelmet biztosít a webalkalmazások számára. Ezeket a védelmet a nyílt Web Application Security Project (OWASP) alapszintű szabálykészlet (CRS) adja meg. Bizonyos szabályok hamis pozitív és valós adatforgalom blokkolására vezethetnek. Emiatt a Application Gateway lehetővé teszi a szabályok csoportjának és szabályainak testreszabását. További információ az adott szabályok csoportjairól és szabályairól: a [webalkalmazási TŰZFAL CRS-szabályait tartalmazó csoportok és szabályok listája](application-gateway-crs-rulegroups-rules.md).
 
-## <a name="view-rule-groups-and-rules"></a>Szabálycsoportok és szabályok megtekintése
+## <a name="view-rule-groups-and-rules"></a>Szabálykészlet és szabályok megtekintése
 
-Az alábbi kódpéldák bemutatják, hogyan tekintheti meg a WAF-kompatibilis alkalmazásátjárón konfigurálható szabályokat és szabálycsoportokat.
+A következő példák azt mutatják be, hogyan tekinthetők meg a WAF-kompatibilis Application Gateway-ben konfigurálható szabályok és szabálykészlet.
 
-### <a name="view-rule-groups"></a>Szabálycsoportok megtekintése
+### <a name="view-rule-groups"></a>Szabálykészlet megtekintése
 
-A következő példa bemutatja, hogyan tekintheti meg a szabálycsoportokat:
+Az alábbi példa bemutatja, hogyan lehet megtekinteni a szabályok csoportjait:
 
 ```powershell
 Get-AzApplicationGatewayAvailableWafRuleSets
 ```
 
-A következő kimenet az előző példa csonkolt válasza:
+A következő kimenet egy csonkolt válasz az előző példából:
 
 ```
 OWASP (Ver. 3.0):
@@ -85,7 +85,7 @@ OWASP (Ver. 3.0):
 
 ## <a name="disable-rules"></a>Szabályok letiltása
 
-A következő példa `911011` letiltja a szabályokat és `911012` az alkalmazásátjárót:
+A következő példa letiltja a `911011` szabályokat `911012` és az Application Gateway-t:
 
 ```powershell
 $disabledrules=New-AzApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-911-METHOD-ENFORCEMENT -Rules 911011,911012
@@ -95,20 +95,20 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="mandatory-rules"></a>Kötelező szabályok
 
-Az alábbi lista olyan feltételeket tartalmaz, amelyek miatt a WAF letiltja a kérelmet megelőzési módban (észlelési módban kivételként naplózzák őket). Ezek nem konfigurálhatók vagy tilthatók le:
+Az alábbi lista olyan feltételeket tartalmaz, amelyek hatására a WAF megakadályozhatja a kérést a megelőzési módban (az észlelési módban, kivételként naplózva). Ezeket nem lehet konfigurálni vagy letiltani:
 
-* A kérelemtörzs elemzése sikertelena a kérelem blokkolása esetén, kivéve, ha a testvizsgálat ki van kapcsolva (XML, JSON, űrlapadatok)
-* A kérelemtörzs (fájlok nélkül) az adatok hossza nagyobb, mint a beállított korlát
-* A kérelemtörzs (a fájlokkal együtt) nagyobb, mint a korlát
+* A kérés törzsének elemzése nem sikerült, mert a rendszer letiltja a kérést, kivéve, ha a test ellenőrzése ki van kapcsolva (XML, JSON, Form)
+* A kérelem törzse (fájlok nélkül) az adathossz nagyobb a beállított határértéknél.
+* A kérelem törzse (beleértve a fájlokat) nagyobb, mint a korlát
 * Belső hiba történt a WAF motorban
 
-CRS 3.x specifikus:
+CRS 3. x-specifikus:
 
-* A bejövő anomáliapontszám túllépte a küszöbértéket
+* A bejövő anomália pontszáma túllépte a küszöbértéket
 
 ## <a name="next-steps"></a>További lépések
 
-A letiltott szabályok konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információt az [Application Gateway Diagnosztika című témakörben talál.](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)
+A letiltott szabályok konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: [Application Gateway diagnosztika](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

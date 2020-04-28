@@ -1,6 +1,6 @@
 ---
-title: Hyper-V (VMM-mel) hálózati leképezés a Site Recovery segítségével
-description: Ez a témakör azt ismerteti, hogy miként állíthatja be a hálózati leképezést a (VMM-felhőkben kezelt) hyper-V virtuális gépek vész-helyreállítási rendszeréhez az Azure-ba az Azure Site Recovery szolgáltatással.
+title: A Hyper-V (VMM) hálózati leképezésének ismertetése Site Recovery
+description: Ismerteti, hogyan lehet hálózati leképezést beállítani a VMM-felhőkben felügyelt Hyper-V virtuális gépek vész-helyreállítására az Azure-ba Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,119 +8,119 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74082563"
 ---
-# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hálózati leképezés előkészítése a Hyper-V VM vész-helyreállítási azure-ba
+# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hálózati leképezés előkészítése a Hyper-V virtuális gép vész-helyreállítására az Azure-ba
 
 
-Ez a cikk segít megérteni és felkészülni a hálózati leképezésre, amikor a System Center virtuálisgép-kezelőben (VMM) replikálja a Hyper-V VM-felhőket az Azure-ba vagy egy másodlagos helyre az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás használatával.
+Ez a cikk segítséget nyújt a hálózati leképezés megismeréséhez és előkészítéséhez, ha System Center Virtual Machine Manager-(VMM-) felhőkben lévő Hyper-V virtuális gépeket az Azure-ba vagy egy másodlagos helyre replikálja a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával.
 
 
-## <a name="prepare-network-mapping-for-replication-to-azure"></a>Hálózati hozzárendelés előkészítése az Azure-beli replikációhoz
+## <a name="prepare-network-mapping-for-replication-to-azure"></a>Hálózati leképezés előkészítése az Azure-ba való replikáláshoz
 
-Amikor az Azure-ba replikál, hálózati leképezések a virtuális gép hálózatok egy forrás VMM-kiszolgálón, és a cél az Azure virtuális hálózatok. A leképezés a következőket hajtja végre:
--  **Hálózati kapcsolat**– Biztosítja, hogy a replikált Azure-beli virtuális gépek a csatlakoztatott hálózathoz csatlakozzanak. Minden olyan gép, amely ugyanazon a hálózaton feladatátvételt ad, csatlakozhat egymáshoz, még akkor is, ha különböző helyreállítási tervekben feladatátvételt adtak le.
-- **Hálózati átjáró**– Ha egy hálózati átjáró van beállítva a cél Azure-hálózaton, a virtuális gépek csatlakozhatnak más helyszíni virtuális gépekhez.
+Ha az Azure-ba replikálódik, a hálózati leképezési leképezések a forrás VMM-kiszolgálón lévő virtuálisgép-hálózatok és az Azure-beli virtuális hálózatok céljára vannak leképezve. A leképezés a következőket hajtja végre:
+-  **Hálózati kapcsolat**– gondoskodik arról, hogy a replikált Azure-beli virtuális gépek a csatlakoztatott hálózathoz kapcsolódjanak. Az ugyanazon a hálózaton feladatátvételt okozó összes gép csatlakozhat egymáshoz, még akkor is, ha azok feladatátvétele különböző helyreállítási tervekben történt.
+- **Hálózati átjáró**– ha hálózati átjáró van beállítva a cél Azure-hálózaton, a virtuális gépek csatlakozhatnak más helyszíni virtuális gépekhez.
 
-A hálózatleképezés a következőképpen működik:
+A hálózati megfeleltetés a következőképpen működik:
 
-- Leképezhet egy forrás VMM VM-hálózatot egy Azure virtuális hálózathoz.
-- Miután a feladatátvételi Azure-beli virtuális gépek a forráshálózatban csatlakozik a leképezett cél virtuális hálózathoz.
-- A forrás virtuálisgép-hálózathoz hozzáadott új virtuális gépek replikáció esetén csatlakoznak a leképezett Azure-hálózathoz.
+- A forrás-VMM virtuálisgép-hálózatot egy Azure-beli virtuális hálózatra képezi le.
+- Miután a forrásoldali hálózaton lévő feladatátvételi Azure-beli virtuális gépek csatlakozni fognak a leképezett célként megadott virtuális hálózathoz.
+- A forrásként szolgáló virtuálisgép-hálózathoz hozzáadott új virtuális gépek a replikáláskor csatlakoznak a leképezett Azure-hálózathoz.
 - Ha a célhálózatban már több alhálózat működik, és ezek egyikének ugyanaz a neve, mint annak, amelyen a forrás virtuális gép is található, a replika virtuális gép a feladatátvételt követően ehhez a cél alhálózathoz fog csatlakozni.
 - Ha nem létezik egyező nevű alhálózat, a virtuális gép a hálózat első virtuális alhálózatához csatlakozik.
 
-## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>Hálózati hozzárendelés előkészítése másodlagos helyre való replikációhoz
+## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>Hálózati leképezés előkészítése másodlagos helyre történő replikáláshoz
 
-Amikor egy másodlagos helyre replikál, hálózati leképezések a virtuális gép hálózatok a forrás VMM-kiszolgálón, és a virtuális gép hálózatok a cél VMM-kiszolgálón. A leképezés a következőket hajtja végre:
+Ha másodlagos helyre végzi a replikálást, a hálózati leképezések a forrás VMM-kiszolgálón lévő virtuálisgép-hálózatok és a virtuálisgép-hálózatok között a cél VMM-kiszolgálón vannak. A leképezés a következőket hajtja végre:
 
-- **Hálózati kapcsolat**– A feladatátvétel után a megfelelő hálózatokhoz csatlakoztatja a virtuális gépeket. A replika virtuális gép csatlakozik a célhálózathoz, amely le van képezve a forráshálózathoz.
-- **Optimális virtuális gép elhelyezése**– Optimálisan helyezi a replika virtuális gépek a Hyper-V gazdakiszolgálókon. A replika virtuális gépek olyan állomásokon vannak elhelyezve, amelyek hozzáférhetnek a leképezett virtuálisgép-hálózatokhoz.
-- **Nincs hálózati hozzárendelés**– Ha nem konfigurálja a hálózati hozzárendelést, a replika virtuális gépek nem csatlakoznak semmilyen virtuálisgép-hálózathoz a feladatátvétel után.
+- **Hálózati kapcsolat**– a virtuális gépeket a megfelelő hálózatokhoz csatlakoztatja a feladatátvételt követően. A replika virtuális gép a forrás hálózatra leképezett célként megadott hálózathoz fog csatlakozni.
+- **Optimális**virtuálisgép-elhelyezés – optimálisan helyezi el a replika virtuális gépeket a Hyper-V-gazdagép-kiszolgálókon. A replika virtuális gépek olyan gazdagépekre vannak elhelyezve, amelyek hozzáférnek a leképezett virtuálisgép-hálózatokhoz.
+- **Nincs hálózati leképezés**– ha nem konfigurálja a hálózati leképezést, a replika virtuális gépek nem lesznek csatlakoztatva a feladatátvételt követően bármely virtuálisgép-hálózathoz.
 
-A hálózatleképezés a következőképpen működik:
+A hálózati megfeleltetés a következőképpen működik:
 
-- A hálózati leképezés konfigurálható virtuálisgép-hálózatok között két VMM-kiszolgálón, vagy egyetlen VMM-kiszolgálón, ha két helyet ugyanaz a kiszolgáló kezel.
-- Ha a leképezés megfelelően van konfigurálva, és a replikáció engedélyezve van, az elsődleges helyen lévő virtuális gép csatlakozik a hálózathoz, és a célhelyen lévő replikája csatlakozik a csatlakoztatott hálózathoz.
-- Amikor kiválaszt egy cél virtuálisgép-hálózatot a site recovery hálózati leképezése során, a forrás virtuálisgép-hálózatot használó VMM-forrásfelhők jelennek meg, valamint a védelemre használt célfelhőkben elérhető célvirtuálisgép-hálózatok.
-- Ha a célhálózat több alhálózattal rendelkezik, és az egyik alhálózat neve megegyezik azzal az alhálózattal, amelyen a forrásvirtuális gép található, majd a replika virtuális gépe a feladatátvétel után csatlakozik a célalhálózathoz. Ha nincs egyező nevű célalhálózat, a virtuális gép a hálózat első alhálózatához csatlakozik.
+- A hálózati leképezés két VMM-kiszolgálón vagy egyetlen VMM-kiszolgálón konfigurálható a virtuálisgép-hálózatok között, ha két helyet ugyanazon kiszolgáló felügyel.
+- Ha a leképezés megfelelően van konfigurálva, és a replikáció engedélyezve van, az elsődleges helyen található virtuális gép csatlakoztatva lesz egy hálózathoz, és a célhelyen lévő replika csatlakoztatva lesz a csatlakoztatott hálózathoz.
+- Amikor kijelöl egy célként megadott virtuálisgép-hálózatot a Site Recovery hálózati leképezés során, a forrásként szolgáló virtuálisgép-hálózatot használó VMM jelenik meg, valamint az elérhető célként megadott virtuálisgép-hálózatok a védelemhez használt cél virtuális gépeken.
+- Ha a célként megadott hálózat több alhálózattal rendelkezik, és az egyik alhálózatnak ugyanaz a neve, mint annak az alhálózatnak, amelyen a forrás virtuális gép található, akkor a replika virtuális gép a feladatátvételt követően csatlakozik a célként megadott alhálózathoz. Ha nincs olyan célként megadott alhálózat, amelynek a neve megegyezik, a virtuális gép a hálózat első alhálózatához fog csatlakozni.
 
 ## <a name="example"></a>Példa
 
-Íme egy példa, hogy bemutassa ezt a mechanizmust. Vegyünk egy szervezetet, két helyszínnel New Yorkban és Chicagóban.
+Az alábbi példa szemlélteti ezt a mechanizmust. Vessünk egy olyan szervezetet, amelyben két helyszín található a New York-i és Chicago-ban.
 
-**Helyen** | **VMM-kiszolgáló** | **Virtuálisgép-hálózatok** | **Hozzárendelve**
+**Hely** | **VMM-kiszolgáló** | **Virtuálisgép-hálózatok** | **Leképezve erre**
 ---|---|---|---
-New York | VMM-NewYork között| VMNetwork1-NewYork | Leképezve a VMNetwork1-Chicago-ra
- |  | VMNetwork2-NewYork | Nincs leképezve
-Chicago | VMM-Chicago között| VMNetwork1-Chicago | Leképezve a VMNetwork1-NewYork-ra
- | | VMNetwork2-Chicago | Nincs leképezve
+New York | VMM – NewYork| VMNetwork1 – NewYork | Leképezve a VMNetwork1-Chicago-hoz
+ |  | VMNetwork2 – NewYork | Nincs leképezve
+Chicago | VMM – Chicago| VMNetwork1 – Chicago | Leképezve a következőre: VMNetwork1-NewYork
+ | | VMNetwork2 – Chicago | Nincs leképezve
 
 Ebben a példában:
 
-- Ha egy replika virtuális gép jön létre minden virtuális gép, amely csatlakozik a VMNetwork1-NewYork, akkor csatlakozik a VMNetwork1-Chicago.
-- Ha egy replika virtuális gép jön létre a VMNetwork2-NewYork vagy VMNetwork2-Chicago, nem fog csatlakozni semmilyen hálózathoz.
+- Ha a VMNetwork1-NewYork csatlakoztatott virtuális gépekhez hoz létre replika virtuális gépet, akkor az a VMNetwork1-Chicago-hoz csatlakozik.
+- Ha a VMNetwork2-NewYork vagy a VMNetwork2-Chicago számára hoz létre replika virtuális gépet, az nem fog csatlakozni egyetlen hálózathoz sem.
 
-A VMM-felhők a példaszervezetben és a felhőkhöz társított logikai hálózatok beállításával hozhatók létre.
+A VMM-felhők beállítása a példánkban és a felhőkhöz társított logikai hálózatok között történik.
 
-### <a name="cloud-protection-settings"></a>Felhővédelmi beállítások
+### <a name="cloud-protection-settings"></a>A Cloud Protection beállításai
 
 **Védett felhő** | **A felhő védelme** | **Logikai hálózat (New York)**  
 ---|---|---
-Aranyfelhő1 | Aranyfelhő2 |
+GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
-Aranyfelhő2 | <p>NA</p><p></p> | <p>LogikaiHálózat1-NewYork</p><p>LogikaiHálózat1-Chicago</p>
-SilverCloud2 | <p>NA</p><p></p> | <p>LogikaiHálózat1-NewYork</p><p>LogikaiHálózat1-Chicago</p>
+GoldCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1 – NewYork</p><p>LogicalNetwork1 – Chicago</p>
+SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1 – NewYork</p><p>LogicalNetwork1 – Chicago</p>
 
 ### <a name="logical-and-vm-network-settings"></a>Logikai és virtuális gép hálózati beállításai
 
-**Helyen** | **Logikai hálózat** | **Kapcsolódó virtuális gép hálózat**
+**Hely** | **Logikai hálózat** | **Társított virtuálisgép-hálózat**
 ---|---|---
-New York | LogikaiHálózat1-NewYork | VMNetwork1-NewYork
-Chicago | LogikaiHálózat1-Chicago | VMNetwork1-Chicago
- | LogikaiHálózat2Chicago | VMNetwork2-Chicago
+New York | LogicalNetwork1 – NewYork | VMNetwork1 – NewYork
+Chicago | LogicalNetwork1 – Chicago | VMNetwork1 – Chicago
+ | LogicalNetwork2Chicago | VMNetwork2 – Chicago
 
-### <a name="target-network-settings"></a>Hálózati beállítások célzása
+### <a name="target-network-settings"></a>Célként megadott hálózati beállítások
 
-Ezek a beállítások alapján, amikor kiválasztja a cél virtuális gép hálózat, az alábbi táblázat ban látható a választási lehetőségek, amelyek elérhetők lesznek.
+Ezen beállítások alapján a cél virtuálisgép-hálózat kiválasztásakor a következő táblázat a választható lehetőségeket tartalmazza.
 
-**Kiválasztás** | **Védett felhő** | **A felhő védelme** | **Rendelkezésre álló célhálózat**
+**Kiválasztás** | **Védett felhő** | **A felhő védelme** | **Elérhető célként megadott hálózat**
 ---|---|---|---
-VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | Elérhető
- | Aranyfelhő1 | Aranyfelhő2 | Elérhető
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Nem érhető el
- | Aranyfelhő1 | Aranyfelhő2 | Elérhető
+VMNetwork1 – Chicago | SilverCloud1 | SilverCloud2 | Elérhető
+ | GoldCloud1 | GoldCloud2 | Elérhető
+VMNetwork2 – Chicago | SilverCloud1 | SilverCloud2 | Nem érhető el
+ | GoldCloud1 | GoldCloud2 | Elérhető
 
 
-Ha a célhálózat több alhálózattal rendelkezik, és az egyik alhálózat neve megegyezik azzal az alhálózattal, amelyen a forrásvirtuális gép található, akkor a replika virtuális gépe a feladatátvétel után csatlakozik a célalhálózathoz. Ha nem létezik egyező nevű alhálózat, a virtuális gép a hálózat első virtuális gépéhez csatlakozik.
+Ha a célként megadott hálózat több alhálózattal rendelkezik, és az egyik alhálózatnak ugyanaz a neve, mint annak az alhálózatnak, amelyen a forrás virtuális gép található, akkor a replika virtuális gép a feladatátvételt követően a cél alhálózathoz fog csatlakozni. Ha nem létezik egyező nevű alhálózat, a virtuális gép a hálózat első virtuális gépéhez csatlakozik.
 
 
-### <a name="failback-behavior"></a>Feladat-visszavételi viselkedés
+### <a name="failback-behavior"></a>Feladat-visszavétel viselkedése
 
-Ha meg szeretné tekinteni, hogy mi történik a feladat-visszavétel (fordított replikáció) esetén, tegyük fel, hogy a VMNetwork1-NewYork le van képezve a VMNetwork1-Chicago-ra, a következő beállításokkal.
+Ha szeretné megtekinteni, hogy mi történik a feladat-visszavétel (visszirányú replikálás) esetén, tegyük fel, hogy a VMNetwork1-NewYork VMNetwork1-Chicago-ra van leképezve a következő beállításokkal.
 
 
-**Vm** | **Virtuálisgép-hálózathoz csatlakoztatva**
+**VM** | **Csatlakoztatva a VM-hálózathoz**
 ---|---
-VM1 | VMNetwork1-Hálózat
-VM2 (a VM1 másolata) | VMNetwork1-Chicago
+VM1 | VMNetwork1 – hálózat
+VM2 (VM1-replika) | VMNetwork1 – Chicago
 
-Ezekkel a beállításokkal tekintse át, mi történik néhány lehetséges forgatókönyv esetén.
+Ezekkel a beállításokkal vizsgáljuk meg, hogy mi történik néhány lehetséges forgatókönyvben.
 
 **Forgatókönyv** | **Eredmény**
 ---|---
-Nincs változás a virtuális gép-2 hálózati tulajdonságaiban a feladatátvétel után. | A VM-1 továbbra is csatlakozik a forráshálózathoz.
-A Virtuálisgép-2 hálózati tulajdonságai a feladatátvétel után módosulnak, és le vannak választva. | A VM-1 nincs csatlakoztatva.
-A Virtuálisgép-2 hálózati tulajdonságai a feladatátvétel után módosulnak, és a VMNetwork2-Chicago-hoz csatlakoznak. | Ha a VMNetwork2-Chicago nincs leképezve, a VM-1 lelesz választva.
-A VMNetwork1-Chicago hálózati leképezése megváltozott. | A VM-1 csatlakozik a hálózathoz, amely most a VMNetwork1-Chicago-hoz lesz leképezve.
+A feladatátvétel után a 2. virtuális gép hálózati tulajdonságaiban nincs változás. | A VM-1 továbbra is csatlakoztatva van a forrás hálózathoz.
+A 2. virtuális gép hálózati tulajdonságai a feladatátvétel után módosulnak, és a kapcsolat megszakadt. | A VM-1 kapcsolat megszakadt.
+A 2. virtuális gép hálózati tulajdonságai a feladatátvétel után módosulnak, és a VMNetwork2-Chicago-hoz csatlakoznak. | Ha a VMNetwork2-Chicago nincs leképezve, a VM-1 le lesz választva.
+A VMNetwork1-Chicago hálózati leképezése módosult. | A VM-1 a VMNetwork1-Chicago-hoz hozzárendelt hálózathoz lesz csatlakoztatva.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [További információ a](hyper-v-vmm-networking.md) IP-címzés feladatátvétel után egy másodlagos VMM-helyre.
-- [További információ a](concepts-on-premises-to-azure-networking.md) IP-címzés az Azure-ba történő feladatátvétel után.
+- [További](hyper-v-vmm-networking.md) információ IP-címzés feladatátvétel után másodlagos VMM-helyre.
+- [További](concepts-on-premises-to-azure-networking.md) információ IP-címzés az Azure-ba történő feladatátvétel után.

@@ -1,89 +1,89 @@
 ---
 title: Feladatátvétel és javítás – Azure Cache for Redis
-description: Ismerje meg a feladatátvételt, a javítást és a Redis-hez való Azure Cache frissítési folyamatát.
+description: Ismerje meg a feladatátvételt, a javítást, valamint az Azure cache Redis-hez készült frissítési folyamatát.
 author: asasine
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74122191"
 ---
-# <a name="failover-and-patching-for-azure-cache-for-redis"></a>Feladatátvétel és javítás a Redis Azure-gyorsítótárához
+# <a name="failover-and-patching-for-azure-cache-for-redis"></a>Feladatátvétel és javítás a Redis készült Azure cache-hez
 
-Rugalmas és sikeres ügyfélalkalmazások létrehozásához fontos, hogy a Redis-gyorsítótár használatával tisztában ismerje meg a feladatátvételt. A feladatátvétel a tervezett felügyeleti műveletek része lehet, vagy nem tervezett hardver- vagy hálózati hibák okozhatják. A gyorsítótár feladatátvétel gyakori használata akkor történik, amikor a felügyeleti szolgáltatás az Azure-gyorsítótárat redis bináris fájlokhoz javítja. Ez a cikk ismerteti, mi a feladatátvétel, hogyan történik a javítás során, és hogyan hozhat létre egy rugalmas ügyfélalkalmazás.
+Rugalmas és sikeres ügyfélalkalmazások kiépítéséhez elengedhetetlen a feladatátvétel megismerése az Azure cache for Redis szolgáltatás kontextusában. A feladatátvétel a tervezett felügyeleti műveletek része lehet, vagy a nem tervezett hardver-vagy hálózati hibák okozzák. A gyorsítótár-feladatátvétel gyakori használata akkor következik be, amikor a felügyeleti szolgáltatás az Azure cache-t az Redis bináris fájljaihoz is felhasználja. Ez a cikk ismerteti a feladatátvételt, a javítások során felmerülő tudnivalókat és a rugalmas ügyfélalkalmazás felépítését.
 
 ## <a name="what-is-a-failover"></a>Mi az a feladatátvétel?
 
-Kezdjük az Azure Cache for Redis feladatátvétel áttekintésével.
+Kezdjük azzal, hogy áttekintjük az Azure cache Redis-hez készült feladatátvételét.
 
 ### <a name="a-quick-summary-of-cache-architecture"></a>A gyorsítótár-architektúra gyors összefoglalása
 
-A gyorsítótár több virtuális gépből áll, különálló, privát IP-címekkel. Minden virtuális gép, más néven csomópont, egyetlen virtuális IP-címmel rendelkező megosztott terheléselosztóhoz csatlakozik. Minden csomópont futtatja a Redis-kiszolgálófolyamatot, és az állomásnév és a Redis portok segítségével érhető el. Minden csomópont mesternek vagy replikacsomópontnak minősül. Amikor egy ügyfélalkalmazás gyorsítótárhoz csatlakozik, a forgalma ezen a terheléselosztón megy keresztül, és automatikusan a fő csomóponthoz kerül.
+A gyorsítótár több, különálló, magánhálózati IP-címmel rendelkező virtuális gépről épül fel. Minden virtuális gép (más néven csomópont) egy megosztott terheléselosztó egyetlen virtuális IP-címmel van csatlakoztatva. Mindegyik csomópont futtatja a Redis-kiszolgáló folyamatát, és az állomásnév és a Redis-portok segítségével érhető el. Az egyes csomópontok fő vagy replika csomópontnak tekintendők. Amikor egy ügyfélalkalmazás egy gyorsítótárhoz csatlakozik, a forgalma áthalad ezen a terheléselosztóon, és automatikusan átirányítja a fő csomóponthoz.
 
-Az alapszintű gyorsítótárban az egyetlen csomópont mindig egy főkiszolgáló. A standard vagy prémium szintű gyorsítótárban két csomópont van: az egyik a fő, a másik pedig a replika. Mivel a Standard és a Prémium szintű gyorsítótárak több csomóponton, előfordulhat, hogy egy csomópont nem érhető el, míg a másik továbbra is a kérelmek feldolgozása. Fürtözött gyorsítótárak készülnek sok szilánkok, mindegyik különböző fő- és replika-csomópontokkal. Lehet, hogy az egyik szilánk nem, míg a többi elérhető marad.
+Alapszintű gyorsítótárban az egyetlen csomópont mindig a főkiszolgáló. Standard vagy prémium szintű gyorsítótárban két csomópont létezik: az egyiket a főkiszolgálóként, a másik pedig a replikát választja. Mivel a standard és a prémium gyorsítótárak több csomóponttal rendelkeznek, előfordulhat, hogy egy csomópont nem érhető el, míg a másik folytatja a kérelmek feldolgozását. A fürtözött gyorsítótárak számos szegmensből állnak, amelyek mindegyike különböző fő-és replika-csomópontokkal rendelkezik. Előfordulhat, hogy az egyik szegmens nem áll le, amíg a többiek elérhetők maradnak.
 
 > [!NOTE]
-> Az alapszintű gyorsítótár nem rendelkezik több csomóponttal, és nem kínál szolgáltatásiszint-szerződést (SLA) a rendelkezésre álláshoz. Az alapszintű gyorsítótárak csak fejlesztési és tesztelési célokra ajánlottak. A rendelkezésre állás növelése standard vagy prémium szintű gyorsítótár használata többcsomópontos központi telepítéshez.
+> Az alapszintű gyorsítótár nem rendelkezik több csomóponttal, és nem biztosít szolgáltatói szerződést (SLA) a rendelkezésre állásához. Az alapszintű gyorsítótárak használata csak fejlesztési és tesztelési célokra ajánlott. A rendelkezésre állás növeléséhez használjon standard vagy prémium szintű gyorsítótárat a több csomópontos telepítéshez.
 
-### <a name="explanation-of-a-failover"></a>Feladatátvétel magyarázata
+### <a name="explanation-of-a-failover"></a>A feladatátvétel magyarázata
 
-Feladatátvétel akkor történik, amikor egy replikacsomópont főcsomóponttá lépteti magát, és a régi főcsomópont bezárja a meglévő kapcsolatokat. Miután a fő csomópont jön vissza, észreveszi a szerepkörök változását, és lefekálja magát, hogy legyen egy replika. Ezután csatlakozik az új főkiszolgálóhoz, és szinkronizálja az adatokat. A feladatátvétel lehet tervezett vagy nem tervezett.
+Feladatátvétel akkor történik, amikor egy replika csomópontja maga is főcsomópontként válik elérhetővé, és a régi főcsomópont lezárja a meglévő kapcsolatokat. A főcsomópont biztonsági mentése után észreveszi a szerepkörök változását, és lefokozza magát replikaként. Ezután csatlakozik az új főkiszolgálóhoz, és szinkronizálja az adatokat. Előfordulhat, hogy A feladatátvétel tervezett vagy nem tervezett.
 
-A *tervezett feladatátvétel* a rendszerfrissítések során történik, például a Redis-javítás vagy az operációs rendszer frissítése, valamint a felügyeleti műveletek, például a méretezés és az újraindítás során. Mivel a csomópontok előzetes értesítést kapnak a frissítésről, együttműködhetnek a szerepkörök cseréjével, és gyorsan frissíthetik a változás terheléselosztóját. A tervezett feladatátvétel általában kevesebb, mint 1 másodperc alatt befejeződik.
+Egy *tervezett feladatátvétel* a rendszerfrissítések során történik, például a Redis javításához vagy az operációs rendszer frissítéseihez, valamint a felügyeleti műveletekhez, például a skálázáshoz és az újraindításhoz. Mivel a csomópontok előzetes értesítést kapnak a frissítésről, a szerepkörök együttműködési felcserélése és a változás terheléselosztó gyors frissítése is megtörtént. A tervezett feladatátvétel általában kevesebb, mint 1 másodperc alatt fejeződik be.
 
-Nem *tervezett feladatátvétel* történhet hardverhiba, hálózati hiba vagy a fő csomópont egyéb váratlan leállása miatt. A replikacsomópont előlépteti magát mesterré, de a folyamat hosszabb időt vesz igénybe. A replikacsomópontnak először észlelnie kell, hogy a fő csomópontja nem érhető el a feladatátvételi folyamat kezdeményezése előtt. A replikacsomópontnak azt is ellenőriznie kell, hogy ez a nem tervezett hiba nem átmeneti vagy helyi, a szükségtelen feladatátvétel elkerülése érdekében. Az észlelés késleltetése azt jelenti, hogy a nem tervezett feladatátvétel általában 10–15 másodpercen belül befejeződik.
+A nem *tervezett feladatátvételt* hardverhiba, hálózati hiba vagy más váratlan kimaradás okozhatja a fő csomópont számára. A replika csomópont elősegíti a főkiszolgálót, de a folyamat tovább tart. A replika csomópontnak először azt kell megállapítania, hogy a fő csomópontja nem érhető el, mielőtt kezdeményezni tudja a feladatátvételi folyamatot. A replika csomópontnak azt is ellenőriznie kell, hogy ez a nem tervezett hiba nem átmeneti vagy helyi, a szükségtelen feladatátvétel elkerülése érdekében. Ez az észlelési késleltetés azt jelenti, hogy egy nem tervezett feladatátvétel általában 10 – 15 másodpercen belül fejeződik be.
 
 ## <a name="how-does-patching-occur"></a>Hogyan történik a javítás?
 
-Az Azure Cache for Redis szolgáltatás rendszeresen frissíti a gyorsítótárat a legújabb platform funkciókkal és javításokkal. Gyorsítótár javításához a szolgáltatás az alábbi lépéseket követi:
+A Redis szolgáltatáshoz készült Azure cache rendszeresen frissíti a gyorsítótárat a legújabb platform-funkciókkal és javításokkal. A gyorsítótár javításához a szolgáltatás a következő lépéseket követi:
 
-1. A felügyeleti szolgáltatás kiválaszt egy csomópontot a javításhoz.
-1. Ha a kijelölt csomópont fő csomópont, a megfelelő replikacsomópont együttműködően népszerűsíti magát. Ez a promóció tervezett feladatátvételnek minősül.
-1. A kijelölt csomópont újraindul az új módosítások, és jön vissza a replika csomópont.
-1. A replikacsomópont csatlakozik a főcsomóponthoz, és szinkronizálja az adatokat.
-1. Amikor az adatszinkronizálás befejeződött, a javítási folyamat megismétlődik a többi csomópont esetében.
+1. A kezelési szolgáltatás kiválasztja az egyik csomópontot a javításhoz.
+1. Ha a kijelölt csomópont egy fő csomópont, akkor a megfelelő replika csomópont is támogatja magát. Ez az előléptetés tervezett feladatátvételnek minősül.
+1. A kiválasztott csomópont újraindul az új módosítások elvégzéséhez, és biztonsági másolatot készít a replika csomópontként.
+1. A replika csomópont csatlakozik a fő csomóponthoz, és szinkronizálja az adatokat.
+1. Az adatszinkronizálás befejezésekor a javítási folyamat megismétli a többi csomópontot.
 
-Mivel a javítás tervezett feladatátvétel, a replikacsomópont gyorsan előlépteti magát főkiszolgálóvá, és megkezdi a kérelmek és az új kapcsolatok kiszolgálását. Az alapszintű gyorsítótárak nem rendelkeznek replikacsomól, és a frissítés befejezéséig nem érhetők el. A fürtözött gyorsítótár minden egyes szegmense külön-külön van javítva, és nem zárja be a kapcsolatot egy másik szegmenshez.
+Mivel a javítások tervezett feladatátvételt végeznek, a replika csomópont gyorsan elősegíti magát a főkiszolgálónak, és megkezdi a karbantartási kérelmek és az új kapcsolatok megkezdését. Az alapszintű gyorsítótárak nem rendelkeznek replika-csomóponttal, és nem érhetők el, amíg a frissítés be nem fejeződik. A fürtözött gyorsítótár minden szegmense külön van kijavítottan, és nem zárul a kapcsolat egy másik szegmenshez.
 
 > [!IMPORTANT]
-> A csomópontok at az adatvesztés megelőzése érdekében egyenként javítják. Az alapvető gyorsítótárak adatvesztést okoznak. Fürtözött gyorsítótárak javítása egy shard egy időben.
+> Az adatvesztés elkerülése érdekében a csomópontok egyenként is kijavítottak. Az alapszintű gyorsítótárak adatvesztéssel fognak rendelkezni. A fürtözött gyorsítótárak egyszerre csak egy szegmenst javítottak.
 
-Ugyanabban az erőforráscsoportban és régióban több gyorsítótár is egyesével van javítva.  A különböző erőforráscsoportokban vagy különböző régiókban lévő gyorsítótárak egyszerre javíthatók.
+Egyszerre több gyorsítótár is található egy adott erőforráscsoport és régió esetében.  A különböző erőforráscsoportok vagy különböző régiókba tartozó gyorsítótárak egyidejűleg is kijavíthatók.
 
-Mivel a teljes adatszinkronizálás a folyamat megismétlése előtt történik, nem valószínű, hogy adatvesztés következne be standard vagy prémium szintű gyorsítótár használata esetén. Az adatvesztés elleni védelem az adatok [exportálásával](cache-how-to-import-export-data.md#export) és az adatmegőrzés engedélyezésével tovább védheti az [adatvesztést.](cache-how-to-premium-persistence.md)
+Mivel a folyamat megismétlése előtt a teljes adatszinkronizálás történik, az adatvesztés nem valószínű, ha standard vagy prémium szintű gyorsítótárat használ. További védelmet biztosíthat az adatvesztés ellen az [adatexportálás](cache-how-to-import-export-data.md#export) és az [adatmegőrzés](cache-how-to-premium-persistence.md)engedélyezése mellett.
 
-## <a name="additional-cache-load"></a>További gyorsítótár-terhelés
+## <a name="additional-cache-load"></a>További gyorsítótár-betöltés
 
-Feladatátvétel esetén a standard és prémium szintű gyorsítótáraknak replikálniuk kell az adatokat az egyik csomópontról a másikra. Ez a replikáció némi terhelésnövekedést okoz mind a kiszolgálómemóriában, mind a processzorban. Ha a gyorsítótár-példány már erősen be van töltve, az ügyfélalkalmazások megnövekedett késést tapasztalhatnak. Szélsőséges esetekben az ügyfélalkalmazások időbeli elállási kivételeket kaphatnak. A további terhelés hatásának csökkentése érdekében [konfigurálja](cache-configure.md#memory-policies) a gyorsítótár beállítását. `maxmemory-reserved`
+Ha feladatátvétel történik, a standard és a prémium gyorsítótárnak az egyik csomópontról a másikra kell replikálnia az adatait. Ez a replikálás némi terhelést okoz a kiszolgáló memóriájában és a CPU-ban is. Ha a gyorsítótár-példány már be van töltve, az ügyfélalkalmazások nagyobb késéssel találkozhatnak. Szélsőséges esetekben előfordulhat, hogy az ügyfélalkalmazások időtúllépési kivételeket kapnak. A további terhelés hatásának enyhítése érdekében [konfigurálja](cache-configure.md#memory-policies) a gyorsítótár `maxmemory-reserved` beállításait.
 
-## <a name="how-does-a-failover-affect-my-client-application"></a>Hogyan befolyásolja a feladatátvétel az ügyfélalkalmazást?
+## <a name="how-does-a-failover-affect-my-client-application"></a>Hogyan befolyásolja a feladatátvétel az ügyfélalkalmazás alkalmazását?
 
-Az ügyfélalkalmazás által látott hibák száma attól függ, hogy hány művelet volt függőben a kapcsolaton a feladatátvétel időpontjában. Minden kapcsolat, amely a kapcsolatokat bezáró csomóponton keresztül továbbítja a kapcsolatokat, hibákat fog látni. Számos ügyfélkódtárak különböző típusú hibákat okozhatnak a kapcsolatok megszakításakor, beleértve az időtúllépési kivételeket, a kapcsolatkivételeket vagy a szoftvercsatorna-kivételeket. A kivételek száma és típusa attól függ, hogy a kódelérési úton hol van a kérelem, amikor a gyorsítótár bezárja kapcsolatait. Például egy művelet, amely küld egy kérelmet, de nem kapott választ, ha a feladatátvétel esetén előfordulhat, hogy időtúllépési kivételt kaphat. A lezárt kapcsolatobjektumúj kérései csatlakozási kivételeket kapnak, amíg az újracsatlakozás sikeresen meg nem történik.
+Az ügyfélalkalmazás által látott hibák száma attól függ, hogy a feladatátvétel során hány művelet van függőben a kapcsolatban. Az összes olyan kapcsolat, amely a kapcsolat lezárt csomópontján keresztül van átirányítva, hibaüzeneteket fog látni. Számos ügyfél-függvénytár különböző típusú hibákat tud eldobni a kapcsolatok megszakításakor, beleértve az időtúllépési kivételeket, a csatlakozási kivételeket vagy a szoftvercsatorna kivételeit. A kivételek száma és típusa attól függ, hogy hol található a kód elérési útja, amikor a gyorsítótár lezárja a kapcsolatait. Például egy olyan művelet, amely kérelmet küld, de nem kapott választ, ha a feladatátvétel során időtúllépési kivételt tapasztalhat. A lezárt kapcsolatok objektumon lévő új kérések a kapcsolatok kivételeit kapják, amíg az újracsatlakoztatás sikeresen megtörténik.
 
-A legtöbb ügyfélkódtárak megpróbálnak újra csatlakozni a gyorsítótárhoz, ha erre vannak konfigurálva. Az előre nem látható hibák azonban időnként helyreállíthatatlan állapotba helyezhetik a könyvtár objektumait. Ha a hibák egy előre beállított nál hosszabb ideig maradnak meg, a kapcsolatobjektumot újra létre kell hozni. A Microsoft.NET és más objektumorientált nyelveken a kapcsolat újrateremtése az alkalmazás újraindítása nélkül [a Lazy\<\> T minta](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)használatával valósítható meg.
+A legtöbb ügyfél-függvénytár megpróbál újracsatlakozni a gyorsítótárhoz, ha erre van konfigurálva. Az előre nem látható hibák azonban esetenként nem állíthatók helyre a függvénytár-objektumokat. Ha a hibák hosszabb ideig tartanak, mint az előre beállított időtartam, a rendszer újból létrehozza a kapcsolatok objektumát. A Microsoft.NET és más objektumorientált nyelveken az alkalmazás újraindítása nélkül, [\<lusta T\> minta](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)használatával lehet újból létrehozni a kapcsolatokat.
 
-### <a name="how-do-i-make-my-application-resilient"></a>Hogyan tehetem rugalmassá az alkalmazásomat?
+### <a name="how-do-i-make-my-application-resilient"></a>Hogyan rugalmasan tehetem az alkalmazást?
 
-Mivel nem tudja teljesen elkerülni a feladatátvételt, írja meg az ügyfélalkalmazásokat a kapcsolattörések és a sikertelen kérelmek rugalmassága érdekében. Bár a legtöbb ügyfélkódtár automatikusan újracsatlakozik a gyorsítótár végpontjára, néhány közülük megpróbálja újramegpróbálni a sikertelen kérelmeket. Az alkalmazásforgatókönyvtől függően érdemes lehet újrapróbálkozási logikát használni a visszalépéssel.
+Mivel nem tudja teljesen elkerülni a feladatátvételt, megírhatja az ügyfélalkalmazások rugalmasságát a kapcsolódási szünetek és a sikertelen kérelmek esetében. Bár a legtöbb ügyfél-függvénytár automatikusan újracsatlakozik a gyorsítótár-végponthoz, néhányan megpróbálják újrapróbálkozni a sikertelen kérelmeket. Az alkalmazás forgatókönyvének függvényében érdemes lehet az újrapróbálkozási logikát használni a leállítási.
 
-Az ügyfélalkalmazások rugalmasságának teszteléséhez használja az [újraindítást](cache-administration.md#reboot) manuális eseményindítóként a kapcsolatmegszakítások hoz. Azt is javasoljuk, hogy a frissítéseket a gyorsítótárba [ütemezze.](cache-administration.md#schedule-updates) Mondja meg a felügyeleti szolgáltatásnak, hogy alkalmazza a Redis futásidejű javításokat a megadott heti ablakokban. Ezek az ablakok általában olyan időszakok, amikor az ügyfélalkalmazás forgalma alacsony, a lehetséges incidensek elkerülése érdekében.
+Az ügyfélalkalmazás rugalmasságának teszteléséhez használjon [újraindítást](cache-administration.md#reboot) manuális triggerként a kapcsolódási szünetekhez. Javasoljuk továbbá, hogy a frissítéseket a gyorsítótárban [ütemezze](cache-administration.md#schedule-updates) . Adja meg a kezelési szolgáltatást, hogy Redis-futtatókörnyezeti javításokat alkalmazzon a megadott heti Windows rendszerben. Ezek a Windows-alkalmazások jellemzően olyan időszakok, amikor az ügyfélalkalmazások forgalma alacsony, így elkerülhetők a lehetséges incidensek.
 
-### <a name="client-network-configuration-changes"></a>Ügyfél hálózati konfigurációjának módosításai
+### <a name="client-network-configuration-changes"></a>Ügyfél hálózata – konfigurációs változások
 
-Bizonyos ügyféloldali hálózati konfigurációs módosítások "Nincs elérhető kapcsolat" hibát okozhatnak. Ezek a változások a következőklehetnek:
+Bizonyos ügyféloldali hálózat – a konfigurációs változások "nincs elérhető elérhetőség" hibaüzenetet válthatnak ki. Ilyen változások például a következők lehetnek:
 
-- Az ügyfélalkalmazás virtuális IP-címének felcserélése az átmeneti és az éles tárolóhelyek között.
-- Az alkalmazás példányainak méretének vagy számának méretezése.
+- Egy ügyfélalkalmazás virtuális IP-címének cseréje átmeneti és üzemi tárolóhelyek között.
+- Az alkalmazáshoz tartozó példányok méretének vagy számának skálázása.
 
-Az ilyen módosítások egy percnél rövidebb kapcsolódási problémát okozhatnak. Az ügyfélalkalmazás valószínűleg elveszíti a kapcsolatot más külső hálózati erőforrások mellett az Azure Cache for Redis szolgáltatás.
+Ezek a változások olyan kapcsolódási problémát okozhatnak, amely egy percnél rövidebb ideig tart. Az ügyfélalkalmazás valószínűleg elveszti a kapcsolatát más külső hálózati erőforrásokkal, a Redis szolgáltatáshoz készült Azure cache mellett.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Ütemezze](cache-administration.md#schedule-updates) a gyorsítótár frissítéseit.
-- Tesztelje az alkalmazások rugalmasságát [újraindítással.](cache-administration.md#reboot)
-- [Állítsa be a](cache-configure.md#memory-policies) memóriafoglalásokat és -házirendeket.
+- A gyorsítótár [frissítéseinek ütemezett időpontja](cache-administration.md#schedule-updates) .
+- Az alkalmazások rugalmasságának tesztelése [Újraindítás](cache-administration.md#reboot)használatával.
+- Memória-foglalások és-házirendek [konfigurálása](cache-configure.md#memory-policies) .

@@ -1,6 +1,6 @@
 ---
-title: A dinamikus csoporttagságokkal kapcsolatos problémák megoldása - Azure AD | Microsoft dokumentumok
-description: Hibaelhárítási tippek az Azure Active Directory dinamikus csoporttagságával kapcsolatban
+title: A dinamikus csoporttagságok problémáinak elhárítása – Azure AD | Microsoft Docs
+description: Hibaelhárítási tippek a dinamikus csoporttagság Azure Active Directory
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,20 +14,20 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74026544"
 ---
-# <a name="troubleshoot-and-resolve-groups-issues"></a>Csoportokproblémáinak elhárítása és megoldása
+# <a name="troubleshoot-and-resolve-groups-issues"></a>A csoportok problémáinak elhárítása és megoldása
 
-## <a name="troubleshooting-group-creation-issues"></a>Csoportlétrehozással kapcsolatos problémák elhárítása
+## <a name="troubleshooting-group-creation-issues"></a>Csoportos létrehozással kapcsolatos problémák elhárítása
 
-**Letiltottam a biztonsági csoport létrehozását az Azure Portalon, de a powershellen keresztül továbbra is létrehozható csoportok** A **felhasználó biztonsági csoportokat hozhat létre** az Azure Portalok beállítás az Azure Portalon szabályozza, hogy a nem rendszergazdai felhasználók hozhatnak létre biztonsági csoportokat az Access panelen vagy az Azure Portalon. Nem szabályozza a biztonsági csoportok létrehozását a Powershellen keresztül.
+**Letiltottam a biztonsági csoport létrehozását a Azure Portalban, de a csoportok továbbra** is létrehozhatók a PowerShell használatával A **felhasználók létrehozhatnak biztonsági csoportokat az Azure-portálok** beállításában a Azure Portal meghatározza, hogy a nem rendszergazda felhasználók hozhatnak-e létre biztonsági csoportokat a hozzáférési panelen vagy a Azure Portalban. Nem szabályozza a biztonsági csoportok létrehozását a PowerShell használatával.
 
-A nem rendszergazda felhasználók csoportlétrehozásának letiltása a Powershellben:
-1. Ellenőrizze, hogy a nem rendszergazda felhasználók hozhatnak-e létre csoportokat:
+A nem rendszergazda felhasználók csoport létrehozásának letiltása a PowerShellben:
+1. Győződjön meg arról, hogy a nem rendszergazda felhasználók számára engedélyezett a csoportok létrehozása:
    
 
    ```powershell
@@ -35,40 +35,40 @@ A nem rendszergazda felhasználók csoportlétrehozásának letiltása a Powersh
    ```
 
   
-2. Ha visszaadja `UsersPermissionToCreateGroupsEnabled : True`a lehetőséget, akkor a nem rendszergazda felhasználók csoportokat hozhatnak létre. A szolgáltatás letiltása:
+2. Ha visszatér `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda felhasználók létrehozhatnak csoportokat. A funkció letiltása:
   
 
    ``` 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
    ```
 
-<br/>**Kaptam egy max csoportok megengedett hiba, amikor megpróbál létrehozni egy dinamikus csoport Powershell**<br/>
-Ha a Powershellben olyan üzenet jelenik meg, amely a _dinamikus csoportházirendek maximálisan engedélyezett csoportok számát_jelzi, ez azt jelenti, hogy elérte a bérlő dinamikus csoportjaira vonatkozó maximális korlátot. A dinamikus csoportok maximális száma bérlőnként 5000.
+<br/>**Egy dinamikus csoport a PowerShellben való létrehozásakor engedélyezett maximális csoportok hibaüzenetet kaptam**<br/>
+Ha egy üzenet jelenik meg a PowerShellben, amely jelzi, hogy a _dinamikus csoportházirendek maximálisan engedélyezett csoportok száma elérte a megengedett értéket_, ez azt jelenti, hogy elérte a dinamikus csoportok maximális korlátját a bérlőben. A dinamikus csoportok maximális száma egy bérlőn 5 000.
 
-Új dinamikus csoportok létrehozásához először törölnie kell néhány meglévő dinamikus csoportot. Nem lehet megemelni a határt.
+Új dinamikus csoportok létrehozásához először törölnie kell néhány meglévő dinamikus csoportot. Nincs lehetőség a korlát növelésére.
 
 ## <a name="troubleshooting-dynamic-memberships-for-groups"></a>Dinamikus csoporttagságok hibaelhárítása
 
-**Beállítottam egy szabályt egy csoportra, de a csoportban nem lett frissítés a tagság**<br/>
-1. Ellenőrizze a szabályban lévő felhasználói vagy eszközattribútumok értékeit. Győződjön meg arról, hogy vannak olyan felhasználók, akik megfelelnek a szabálynak. Eszközök esetén ellenőrizze az eszköz tulajdonságait, hogy a szinkronizált attribútumok tartalmazzák-e a várt értékeket.<br/>
-2. Ellenőrizze a tagság feldolgozási állapotát, és ellenőrizze, hogy befejeződött-e. A csoport **áttekintése** lapján ellenőrizheti a [tagság feldolgozási állapotát](groups-create-rule.md#check-processing-status-for-a-rule) és az utolsó frissített dátumot.
+**Konfiguráltam egy szabályt egy csoporton, de nem frissültek tagságok a csoportban**<br/>
+1. Ellenőrizze a szabályban a felhasználó vagy az eszköz attribútumainak értékeit. Ellenőrizze, hogy vannak-e olyan felhasználók, akik megfelelnek a szabálynak. Eszközök esetében ellenőrizze az eszköz tulajdonságait, hogy minden szinkronizált attribútum tartalmazza-e a várt értékeket.<br/>
+2. Ellenőrizze, hogy befejeződött-e a tagság feldolgozási állapota. A csoport **Áttekintés** lapján megtekintheti a [tagság feldolgozási állapotát](groups-create-rule.md#check-processing-status-for-a-rule) és a legutóbbi frissítés dátumát.
 
-Ha minden jól néz ki, kérjük, hagyjon egy kis időt a csoport nak, hogy feltöltsék. Az első feltöltésnél és szabálymódosítás után a bérlő méretétől függően ez akár 24 órát is jelenthet.
+Ha minden jól látható, hagyjon némi időt a csoport feltöltésére. Az első feltöltésnél és szabálymódosítás után a bérlő méretétől függően ez akár 24 órát is jelenthet.
 
-**Beállítottam egy szabályt, de most a szabály meglévő tagjai törlődnek**<br/>Ez az elvárt működés. A csoport meglévő tagjai törlődnek, ha egy szabály engedélyezve van vagy módosul. A szabály kiértékeléséből visszaadott felhasználók a csoport tagjaként kerülnek hozzáadásra.
+**Konfiguráltam egy szabályt, de mostantól a szabály meglévő tagjai törlődnek.**<br/>Ez az elvárt működés. A csoport meglévő tagjai el lesznek távolítva, amikor egy szabály engedélyezve van vagy megváltozott. A szabály kiértékelésével visszaadott felhasználók tagként lesznek hozzáadva a csoporthoz.
 
-**Nem látom, hogy a tagság azonnal megváltozik, amikor hozzáadok vagy módosítok egy szabályt, miért ne?**<br/>A dedikált tagsági értékelés rendszeres időközönként, aszinkron háttérfolyamat tal történik. A folyamat élettartamát a címtárban lévő felhasználók száma és a szabály alapján létrehozott csoport mérete határozza meg. A kis számú felhasználóval rendelkező könyvtárak általában néhány percen belül láthatják a csoporttagság változásait. A nagy számú felhasználóval rendelkező könyvtárak feltöltése 30 percet vagy hosszabb időt is igénybe vehet.
+**Nem látom azonnal a tagsági változásokat, amikor hozzáadok vagy módosítok egy szabályt, miért nem?**<br/>A dedikált tagság kiértékelése rendszeres időközönként, aszinkron háttérbeli folyamaton történik. A folyamat hosszának meghatározása a címtárban lévő felhasználók száma és a szabály eredményeképpen létrehozott csoport mérete alapján történik. A kis számú felhasználót tartalmazó könyvtárak általában kevesebb, mint néhány perc alatt megjelennek a csoporttagság változásai. A sok felhasználóval rendelkező címtárak akár 30 percet vagy hosszabb időt is igénybe vehetnek.
 
-**Hogyan kényszeríthetem a csoport feldolgozását?**<br/>
-Jelenleg nincs mód arra, hogy automatikusan elindítja a csoportot igény szerint feldolgozandó. Az újrafeldolgozást azonban manuálisan is elindíthatja a tagsági szabály frissítésével, hogy a végén szóközt adjon hozzá.  
+**Hogyan lehet kényszeríteni a csoport feldolgozását most?**<br/>
+Jelenleg nem lehet automatikusan elindítani a csoportot a feldolgozás igény szerint. Az újrafeldolgozást azonban manuálisan is aktiválhatja úgy, hogy a tagsági szabályt úgy frissíti, hogy a végén szóközt adjon hozzá.  
 
-**Szabályfeldolgozási hibával találkoztam**<br/>Az alábbi táblázat a dinamikus tagsági szabályok gyakori hibáit és azok kijavítását sorolja fel.
+**Szabály-feldolgozási hiba történt**<br/>Az alábbi táblázat a dinamikus tagsági szabályok gyakori hibáit és azok javítását ismerteti.
 
-| Szabályelemző hiba | Hibahasználat | Javított használat |
+| Szabály-elemzési hiba | Hiba használata | Javított használat |
 | --- | --- | --- |
-| Hiba: Az attribútum nem támogatott. |(user.invalidProperty -eq "Érték") |(user.department -eq "érték")<br/><br/>Győződjön meg arról, hogy az attribútum szerepel a [támogatott tulajdonságok listáján.](groups-dynamic-membership.md#supported-properties) |
-| Hiba: Az operátor nem támogatott attribútummal. |(user.accountEnabled -tartalmazza igaz) |(user.accountEnabled -eq igaz)<br/><br/>A használt operátor nem támogatott a tulajdonságtípushoz (ebben a példában a -contains nem használható logikai típuson). Használja a megfelelő operátorokat a tulajdonságtípushoz. |
-| Hiba: Lekérdezésfordítási hiba. | 1. (user.department -eq "Értékesítés") (user.department -eq "Marketing")<br>2. (user.userPrincipalName -match@domain.ext"* ") | 1. Hiányzó operátor. -és -vagy -vagy két illesztési predikátum használata<br>(user.department -eq "Értékesítés") -vagy (user.department -eq "Marketing")<br>2. Hiba a reguláris kifejezésben, amelyet a -match<br>(user.userPrincipalName -match ".*@domain.ext")<br>vagy alternatívaként: (user.userPrincipalName@domain.ext-match " $") |
+| Hiba: az attribútum nem támogatott. |(User. invalidProperty-EQ "value") |(User. Department-EQ "value")<br/><br/>Győződjön meg arról, hogy az attribútum a [támogatott tulajdonságok listáján](groups-dynamic-membership.md#supported-properties)található. |
+| Hiba: az operátor nem támogatott az attribútumon. |(User. accountEnabled – igaz értéket tartalmaz) |(User. accountEnabled – EQ true)<br/><br/>A használt operátor nem támogatott a tulajdonság típusaként (ebben a példában a-tartalmazza a logikai típus nem használható). A tulajdonság típusához használja a megfelelő operátorokat. |
+| Hiba: a lekérdezés fordítási hibája. | 1. (felhasználó. részleg – EQ "értékesítés") (felhasználó. részleg – EQ "marketing")<br>2. (User. userPrincipalName-Match "*@domain.ext") | 1. hiányzó operátor. A és a vagy a két illesztési predikátum használata<br>(felhasználó. részleg – EQ "értékesítés") – vagy (User. Department-EQ "marketing")<br>2. hiba a-egyezéssel használt reguláris kifejezésben<br>(User. userPrincipalName-Match ". *@domain.ext")<br>vagy másik lehetőségként: (User. userPrincipalName-@domain.extMatch "$") |
 
 ## <a name="next-steps"></a>További lépések
 

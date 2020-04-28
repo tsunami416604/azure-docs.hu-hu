@@ -1,7 +1,7 @@
 ---
-title: OData logikai operátorhivatkozás
+title: OData logikai operátor referenciája
 titleSuffix: Azure Cognitive Search
-description: Szintaxis és hivatkozási dokumentáció az OData logikai operátorok, és vagy, és nem az Azure Cognitive Search lekérdezések.
+description: Szintaxis és dokumentáció a OData logikai operátorok, valamint, illetve, illetve az Azure Cognitive Search-lekérdezések használata esetén.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,25 +20,25 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113190"
 ---
-# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>OData logikai operátorok az `and` `or`Azure Cognitive Search - , ,`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>OData logikai operátorok az Azure- `and`ban `or`Cognitive Search-,,`not`
 
-Az Azure Cognitive Search [oData-szűrőkifejezései](query-odata-filter-orderby-syntax.md) logikai `false`kifejezések, amelyek kiértékelése vagy `true` a. Összetett szűrőt úgy írhat, hogy [egyszerűbb szűrőket ír,](search-query-odata-comparison-operators.md) és a logikai operátorok segítségével a [Logikai algebrából](https://en.wikipedia.org/wiki/Boolean_algebra)ír:
+Az Azure Cognitive Search [OData](query-odata-filter-orderby-syntax.md) olyan logikai kifejezések, amelyek kiértékelése `true` vagy `false`. Az összetett szűrőket úgy írhatja be, hogy az [egyszerűbb szűrők](search-query-odata-comparison-operators.md) sorozatát írja le, és a logikai operátorok segítségével készíti el őket a logikai [algebra](https://en.wikipedia.org/wiki/Boolean_algebra)használatával:
 
-- `and`: Bináris operátor, amely `true` azt a értéket értékeli, hogy `true`a bal és a jobb alkifejezése i.
-- `or`: Bináris operátor, amely `true` azt a értéket értékeli, hogy `true`a bal vagy a jobb alkifejezése közül az egyik nek a lesz-e a eredménye.
-- `not`: Olyan unáris operátor, amely azt a értéket értékeli, `true` hogy `false`a részkifejezése kiértékeli-e a értéket, és fordítva.
+- `and`: Egy bináris operátor, amely kiértékeli, hogy `true` a bal és a jobb oldali alkifejezések is kiértékelésre kerülnek-e. `true`
+- `or`: Egy bináris operátor, amely kiértékeli, hogy `true` a bal vagy a jobb oldali alkifejezések valamelyike `true`kiértékeli-e.
+- `not`: Egy egyoperandusú operátor, amely `true` kiértékeli `false`, hogy az alkifejezés kiértékelése és fordítva.
 
-Ezek a [gyűjteményoperátorokkal `any` és `all` ](search-query-odata-collection-operators.md)a , lehetővé teszik olyan szűrők kialakítását, amelyek nagyon összetett keresési feltételeket fejezhetnek ki.
+Ezek a [gyűjtemény-operátorokkal `any` együtt, `all`és ](search-query-odata-collection-operators.md)lehetővé teszik olyan szűrők összeállítását, amelyek nagyon összetett keresési feltételeket tudnak kifejezni.
 
 ## <a name="syntax"></a>Szintaxis
 
-A következő EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) határozza meg a logikai operátorokat használó OData-kifejezések nyelvtanát.
+A következő EBNF ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a logikai operátorokat használó OData-kifejezések nyelvtanát határozza meg.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -48,29 +48,29 @@ logical_expression ::=
     | 'not' boolean_expression
 ```
 
-Interaktív szintaktikai diagram is elérhető:
+Az interaktív szintaxis diagram is elérhető:
 
 > [!div class="nextstepaction"]
-> [OData-szintaktikai diagram az Azure Cognitive Search szolgáltatáshoz](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
+> [Az Azure Cognitive Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
 
 > [!NOTE]
-> Lásd: [OData kifejezés szintaxis referencia az Azure Cognitive Search](search-query-odata-syntax-reference.md) a teljes EBNF.
+> Tekintse meg az [Azure Cognitive Search OData-kifejezés szintaxisának referenciáját](search-query-odata-syntax-reference.md) a teljes EBNF.
 
-A logikai kifejezéseknek két formája`and`/`or`van: bináris ( ), ahol két`not`részkifejezés van, és unary ( ), ahol csak egy van. Az alkifejezések bármilyen típusú logikai kifejezések lehetnek:
+A logikai kifejezések két formája`and`/`or`létezik: bináris (), ahol két alkifejezés létezik, és az unáris (`not`), ahol csak egy szerepel. Az alkifejezések bármely típusú logikai kifejezés lehet:
 
-- Mezők vagy tartományváltozók típusúak`Edm.Boolean`
-- Típusú értékeket `Edm.Boolean`visszaadó `geo.intersects` függvények, például vagy`search.ismatch`
+- Mezők vagy tartomány típusú változók`Edm.Boolean`
+- Függvények, amelyek típusú `Edm.Boolean`értékeket adnak vissza, például `geo.intersects` vagy`search.ismatch`
 - [Összehasonlító kifejezések](search-query-odata-comparison-operators.md), például`rating gt 4`
-- [Gyűjteménykifejezések](search-query-odata-collection-operators.md), például`Rooms/any(room: room/Type eq 'Deluxe Room')`
-- A logikai `true` konstansok vagy `false`.
-- A használatával készült `and`egyéb `or`logikai `not`kifejezések , a és a.
+- [Gyűjtési kifejezések](search-query-odata-collection-operators.md), például`Rooms/any(room: room/Type eq 'Deluxe Room')`
+- A logikai literálok `true` vagy `false`.
+- Egyéb, a, `and` `or`és `not`a használatával létrehozott logikai kifejezések.
 
 > [!IMPORTANT]
-> Vannak olyan helyzetek, amikor nem mindenfajta részkifejezés `and` / `or`használható a , különösen a lambda kifejezéseken belül. A részleteket az [Azure Cognitive Search OData-gyűjteményoperátorai](search-query-odata-collection-operators.md#limitations) az Azure Cognitive Search webhelyen találja.
+> Vannak olyan helyzetek `and` / `or`, amelyekben nem használhatók az alkifejezések, különösen lambda kifejezéseken belül. Részletekért lásd: [OData Collection Operators in Azure Cognitive Search](search-query-odata-collection-operators.md#limitations) .
 
 ### <a name="logical-operators-and-null"></a>Logikai operátorok és`null`
 
-A legtöbb logikai kifejezés, például `null` a függvények és az összehasonlítások nem `null` tudnak értékeket `x and null` létrehozni, és a logikai operátorok nem alkalmazhatók közvetlenül a konstansra (például nem engedélyezett). A logikai mezők `null`azonban lehetnek , ezért tisztában `or`kell `not` lennie azzal, hogy a és az `and`operátorok hogyan viselkednek null jelenlétében. Ezt a következő táblázat foglalja össze, ahol `b` a `Edm.Boolean`mező típusa található:
+A legtöbb logikai kifejezés, például a függvények és az összehasonlítások nem hozhatnak létre `null` értékeket, és a logikai operátorok nem alkalmazhatók közvetlenül a `x and null` `null` konstansra (például nem megengedett). A logikai mezők azonban `null`lehetnek, ezért tisztában kell lennie azzal, hogy a, `and` `or`a és `not` a operátorok hogyan működnek a nullák jelenlétében. Ezt a következő táblázat foglalja össze, ahol `b` a egy típusú `Edm.Boolean`mező:
 
 | Kifejezés | Eredmény, `b` ha`null` |
 | --- | --- |
@@ -87,29 +87,29 @@ A legtöbb logikai kifejezés, például `null` a függvények és az összehaso
 | `b or true` | `true` |
 | `b or false` | `false` |
 
-Amikor egy logikai `b` mező önmagában jelenik meg egy szűrőkifejezésben, `b eq true`úgy viselkedik, mintha meg lett volna írva , így ha `b` van, `null`a kifejezés eredménye `false`a . Hasonlóképpen, `not b` úgy viselkedik, mint `not (b eq true)`, `true`így értékeli a . Ily módon `null` a mezők ugyanúgy `false`viselkednek, mint a . Ez összhangban van azzal, ahogyan viselkednek, `and` `or`ha más kifejezésekkel kombinálják, és amint az a fenti táblázatban látható. Ennek ellenére a `false` (`b eq false`) közvetlen `false`összehasonlítás a következőpéldául: Más szóval, `null` nem `false`egyenlő , annak ellenére, hogy úgy viselkedik, mint a logikai kifejezések.
+Ha egy logikai mező `b` önmagában egy szűrési kifejezésben jelenik meg, akkor úgy viselkedik, mintha `b eq true`megírták volna, tehát ha `b` van `null`, a kifejezés kiértékeli `false`a következőt:. Hasonlóképpen, `not b` úgy viselkedik `not (b eq true)`, hogy kiértékeli a `true`következőt:. Így a mezők ugyanúgy `null` viselkednek, mint `false`. Ez összhangban van azzal, ahogyan a és `and` `or`a használatával más kifejezésekkel kombinálva, ahogy az a fenti táblázatban is látható. Ennek ellenére a közvetlen összehasonlítás `false` () továbbra is kiértékeli a`b eq false` `false`következőt:. Más szóval, `null` nem egyenlő a `false`(z) értékkel, még akkor is, ha a logikai kifejezésekben hasonlóan viselkedik.
 
 ## <a name="examples"></a>Példák
 
-Olyan dokumentumok `rating` egyeztetése, amelyeknél a mező 3 és 5 között van, a következőket is beleértve:
+Olyan dokumentumok egyeztetése `rating` , amelyekben a mező 3 és 5 közötti, beleértve a következőket:
 
     rating ge 3 and rating le 5
 
-Olyan dokumentumok egyeztetése, `ratings` amelyekben a mező minden eleme 3-nál kisebb vagy 5-nél nagyobb:
+Olyan dokumentumok egyeztetése, amelyekben `ratings` a mező minden eleme kisebb, mint 3, vagy több mint 5:
 
     ratings/all(r: r lt 3 or r gt 5)
 
-Egyezik `location` azokkal a dokumentumokkal, amelyeknél a mező az adott sokszögen belül van, és a dokumentum nem tartalmazza a "nyilvános" kifejezést.
+Egyezteti a dokumentumokat `location` , ahol a mező a megadott sokszögen belül van, és a dokumentum nem tartalmazza a "Public" kifejezést.
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
 
-Match dokumentumok szállodák Vancouver, Kanada, ahol van egy deluxe szoba alapáron kevesebb, mint 160:
+A következőhöz tartozó dokumentumok egyeztetése: Vancouver, Kanada, ahol van egy Deluxe szoba, amelynek alapdíja 160-nál kisebb:
 
     Address/City eq 'Vancouver' and Address/Country eq 'Canada' and Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 160)
 
 ## <a name="next-steps"></a>További lépések  
 
-- [Szűrők az Azure Cognitive Search szolgáltatásban](search-filters.md)
-- [Az Azure Cognitive Search OData-kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
-- [Az Azure Cognitive Search OData-kifejezés szintaxisának hivatkozása](search-query-odata-syntax-reference.md)
-- [Az Azure Cognitive Search REST API-&#41;&#40;dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Szűrők az Azure Cognitive Search](search-filters.md)
+- [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
+- [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

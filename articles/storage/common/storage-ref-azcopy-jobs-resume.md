@@ -1,6 +1,6 @@
 ---
-title: azcopy állások folytatódnak | Microsoft dokumentumok
-description: Ez a cikk az azcopy-feladatok folytatási parancsának referenciaadatait tartalmazza.
+title: azcopy-feladatok folytatása | Microsoft Docs
+description: Ez a cikk a azcopy-feladatok folytatására szolgáló parancsra vonatkozó tudnivalókat tartalmaz.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,15 +9,15 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 3ee7879475801660b5200dddca88a0a81b2b6b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74034144"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
-Folytatja a meglévő feladatot az adott feladatazonosítóval.
+Folytatja a meglévő feladatot a megadott AZONOSÍTÓJÚ feladattal.
 
 ## <a name="synopsis"></a>Áttekintés
 
@@ -25,29 +25,29 @@ Folytatja a meglévő feladatot az adott feladatazonosítóval.
 azcopy jobs resume [jobID] [flags]
 ```
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó koncepcionális cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele az AzCopy és blob tárhellyel](storage-use-azcopy-blobs.md)
-- [Adatátvitel átvitele az AzCopy programmal és a fájltárolással](storage-use-azcopy-files.md)
-- [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Beállítások
 
 |Beállítás|Leírás|
 |--|--|
-|--cél-sas karakterlánc|Az adott JobId úti cél célSAS-a.|
-|--karakterlánc kizárása|Szűrő: A feladat folytatásakor zárja ki ezeket a sikertelen átvitel(eke)t. A fájlokat a ";" (a)|
-|-h, --segítség|A folytatási parancs súgótartalmának megjelenítése.|
-|--karakterláncot is tartalmaz|Szűrő: csak ezeket a sikertelen átvitel(eke)t tartalmazza a feladat folytatásakor. A fájlokat a ";" (a)|
-|--forrás-sas karakterlánc |forrás SAS forrás az adott JobId.|
+|--cél-sas-karakterlánc|Az adott JobId céljának cél SAS-je.|
+|– karakterlánc kizárása|Szűrő: a sikertelen átvitel (ek) kizárása a feladatok folytatásakor. A fájlokat ";" karakterrel kell elválasztani.|
+|-h,-– Súgó|A folytatási parancshoz tartozó súgótartalom megjelenítése.|
+|--karakterlánc belefoglalása|Szűrő: csak ezeket a sikertelen átviteleket adja meg a feladatok folytatásakor. A fájlokat ";" karakterrel kell elválasztani.|
+|--Source-sas karakterlánc |a forrás SAS-forrása az adott JobId.|
 
-## <a name="options-inherited-from-parent-commands"></a>Szülőparancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
 |Beállítás|Leírás|
 |---|---|
-|--sapka-mbps uint32|Az átviteli sebesség felső határa megabit/másodpercben. A pillanatonkénti átviteli kapacitás kissé eltérhet a kupaktól. Ha ez a beállítás nulla, vagy nincs megadva, az átviteli áteresztőmód nem lesz korlátozva.|
-|--kimenet-típusú karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték a "szöveg".|
+|--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
+|--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
 ## <a name="see-also"></a>Lásd még
 

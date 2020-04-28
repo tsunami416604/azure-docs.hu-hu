@@ -1,6 +1,6 @@
 ---
-title: azcopy env | Microsoft dokumentumok
-description: Ez a cikk az azcopy env parancsra vonatkozó referenciainformációkat tartalmaz.
+title: azcopy env | Microsoft Docs
+description: Ez a cikk a azcopy env parancsra vonatkozó tudnivalókat tartalmaz.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,15 +9,15 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: cc0ed5f1eec76bedc21106c90e5e82332e27ce3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74033746"
 ---
 # <a name="azcopy-env"></a>azcopy env
 
-Az AzCopy viselkedését konfiguráló környezeti változók megjelenítése.
+Megjeleníti a AzCopy viselkedését beállító környezeti változókat.
 
 ## <a name="synopsis"></a>Áttekintés
 
@@ -26,28 +26,28 @@ azcopy env [flags]
 ```
 
 > [!IMPORTANT]
-> Ha egy környezeti változót a parancssorból állít be, az a változó olvasható lesz a parancssori előzményekben. Fontolja meg a parancssori előzmények hitelesítő adatait tartalmazó változók törlését. Ha meg szeretné tartani, hogy a változók ne jelenjenek meg az előzményekben, parancsfájl segítségével kérheti a felhasználótól a hitelesítő adatait, és beállíthatja a környezeti változót.
+> Ha egy környezeti változót a parancssor használatával állít be, akkor ez a változó a parancssori előzményekben olvasható. Érdemes lehet a parancssori előzményekből származó hitelesítő adatokat tartalmazó változókat törölni. Ahhoz, hogy a változók megjelenjenek az előzményekben, egy parancsfájl használatával megkérheti a felhasználótól a hitelesítő adataikat, és beállíthatja a környezeti változót.
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó koncepcionális cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele az AzCopy és blob tárhellyel](storage-use-azcopy-blobs.md)
-- [Adatátvitel átvitele az AzCopy programmal és a fájltárolással](storage-use-azcopy-files.md)
-- [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Beállítások
 
 |Beállítás|Leírás|
 |--|--|
-|-h, --segítség|Az env parancs súgótartalmának megjelenítése. |
-|--show-érzékeny|Érzékeny/titkos környezeti változók megjelenítése.|
+|-h,-– Súgó|Megjeleníti a env parancshoz tartozó súgó tartalmát. |
+|--bizalmas megjelenítés|Érzékeny/titkos környezeti változókat jelenít meg.|
 
-## <a name="options-inherited-from-parent-commands"></a>Szülőparancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
 |Beállítás|Leírás|
 |---|---|
-|--sapka-mbps uint32|Az átviteli sebesség felső határa megabit/másodpercben. A pillanatonkénti átviteli kapacitás kissé eltérhet a kupaktól. Ha ez a beállítás nulla, vagy nincs megadva, az átviteli áteresztőmód nem lesz korlátozva.|
-|--kimenet-típusú karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték a "szöveg".|
+|--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
+|--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
 ## <a name="see-also"></a>Lásd még
 

@@ -1,6 +1,6 @@
 ---
-title: Webalkalmazás-tűzfal házirend társítása meglévő Azure-alkalmazásátjáróhoz
-description: Megtudhatja, hogyan társíthat webalkalmazás-tűzfal-szabályzatot egy meglévő Azure Application Gateway-hez.
+title: Webalkalmazási tűzfal szabályzatának hozzárendelése meglévő Azure-Application Gateway
+description: Megtudhatja, hogyan társíthat egy webalkalmazási tűzfal-házirendet egy meglévő Azure-Application Gateway.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,17 +8,17 @@ ms.service: web-application-firewall
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: 1ed2e0cf8cc8cd841d8779462d62ba4852774a3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083905"
 ---
-# <a name="associate-a-waf-policy-with-an-existing-application-gateway"></a>WAF-házirend társítása meglévő alkalmazásátjáróhoz
+# <a name="associate-a-waf-policy-with-an-existing-application-gateway"></a>WAF szabályzat hozzárendelése meglévő Application Gateway
 
-Az Azure PowerShell segítségével [waf-szabályzatot hozhat létre,](create-waf-policy-ag.md)de lehet, hogy már rendelkezik egy Application Gateway-rel, és csak egy WAF-szabályzatot szeretne hozzárendelni. Ebben a cikkben, akkor nem csak, hogy; waf-szabályzatot hoz létre, és társítja azt egy már meglévő Application Gateway-hez. 
+A Azure PowerShell használatával [létrehozhat egy WAF-házirendet](create-waf-policy-ag.md), de lehet, hogy már rendelkezik Application Gateway, és csak egy WAF-szabályzatot szeretne hozzárendelni hozzá. Ebben a cikkben a következő műveleteket hajtja végre: létrehoz egy WAF házirendet, és hozzárendeli egy már meglévő Application Gatewayhoz. 
 
-1. Az alkalmazásátjáró ra és a tűzfalházirendre vonatkozó házirend beszerezhető. Ha nem rendelkezik meglévő tűzfalházirenddel, olvassa el a 2. 
+1. Szerezze be a Application Gateway és a tűzfal házirendjét. Ha nem rendelkezik meglévő tűzfal-házirenddel, tekintse meg a 2. lépést. 
 
    ```azurepowershell-interactive
       Connect-AzAccount
@@ -29,17 +29,17 @@ Az Azure PowerShell segítségével [waf-szabályzatot hozhat létre,](create-wa
       $policy = Get-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>`
    ```
 
-2. (Nem kötelező) Hozzon létre egy tűzfalházirendet.
+2. Választható Hozzon létre egy tűzfal-házirendet.
 
    ```azurepowershell-interactive
       New-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>'
       $policy = Get-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>`
    ```
    > [!NOTE]
-   > Ha ezt a WAF-házirendet a WAF-konfigurációról a WAF-házirendre való áttéréshez hozza létre, akkor a házirendnek a régi Konfigurációpontos másolatának kell lennie. Ez azt jelenti, hogy minden kizárásnak, egyéni szabálynak, letiltott szabálycsoportnak stb.-nak pontosan ugyanolyannak kell lennie, mint a WAF konfigurációban.
-3. (Nem kötelező) A WAF-szabályzatot igény szerint konfigurálhatja. Ez magában foglalja az egyéni szabályokat, a szabályok/szabálycsoportok letiltását, a kizárásokat, a fájlfeltöltési korlátok beállítását stb. Ha kihagyja ezt a lépést, az összes alapértelmezett beállítás ki lesz jelölve. 
+   > Ha úgy hozza létre ezt a WAF-szabályzatot, hogy egy WAF-konfigurációból egy WAF-házirendre váltson át, akkor a házirendnek a régi konfiguráció pontos másolatát kell használnia. Ez azt jelenti, hogy minden kizárási, egyéni szabály, letiltott szabálykészlet stb. pontosan meg kell egyeznie a WAF konfigurációban találhatótal.
+3. Választható A WAF házirendet az igényeinek megfelelően konfigurálhatja. Ez magában foglalja az egyéni szabályokat, a szabályok/szabályok letiltását, a kizárásokat, a fájlfeltöltés korlátozásának beállítását stb. Ha kihagyja ezt a lépést, az összes alapértelmezett érték lesz kiválasztva. 
    
-4. Mentse a házirendet, és csatolja az Application Gateway-hez. 
+4. Mentse a szabályzatot, és csatolja a Application Gatewayhoz. 
    
    ```azurepowershell-interactive
       #Save the policy itself

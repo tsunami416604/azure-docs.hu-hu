@@ -1,7 +1,7 @@
 ---
-title: Referencia bemenetek és outputok a skillsets
+title: A szakértelmével lévő bemenetek és kimenetek referenciái
 titleSuffix: Azure Cognitive Search
-description: Bemutatja a jegyzet szintaxisát, és hogyan hivatkozik egy jegyzetre egy askillset bemeneteiben és kimeneteiben egy AI-bővítési folyamatban az Azure Cognitive Search-ben.
+description: Ismerteti a jegyzet szintaxisát, valamint azt, hogyan lehet egy készségkészlet bemenetében és kimenetében lévő jegyzeteket az Azure Cognitive Search AI-dúsítási folyamatában.
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
@@ -9,33 +9,33 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113868"
 ---
-# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Hogyan lehet hivatkozni a jegyzetekre az Azure Cognitive Search skillsetben?
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Megjegyzések áttekintése egy Azure Cognitive Search készségkészlet
 
-Ebben a cikkben megtudhatja, hogyan hivatkozhat a szakértelem-definíciók ban lévő jegyzetekre, példákkal a különböző forgatókönyvek szemléltetésére. Ahogy a dokumentum tartalma egy sor készségen keresztül áramlik, a program jegyzetekkel gazdagítja. A jegyzetek bemenetként használhatók a későbbi dúsításhoz, vagy leképezhetők egy index kimeneti mezőjére. 
+Ebből a cikkből megtudhatja, hogyan hivatkozhat a megjegyzésekre a szaktudás-definíciókban, példákkal illusztrálva a különböző forgatókönyveket. Mivel a dokumentumok tartalma szaktudáson keresztül áramlik, a jegyzetek használatával gazdagítva lesz. A jegyzetek használhatók bemenetként a további alsóbb rétegbeli dúsításhoz, vagy egy index kimeneti mezőjéhez is hozzárendelve. 
  
-Ebben a cikkben példák az Azure [Blob indexelők](search-howto-indexing-azure-blob-storage.md) által a dokumentum repedési fázis részeként automatikusan létrehozott *tartalommezőalapján.* Blob-tárolóból származó dokumentumokra való hivatkozáskor `"/document/content"`használjon olyan formátumot, mint például a , ahol a *tartalommező* a *dokumentum*része. 
+A cikkben szereplő példák az [Azure Blob-indexek](search-howto-indexing-azure-blob-storage.md) által automatikusan generált *tartalom* mező alapján jelennek meg a dokumentum repedési fázisának részeként. Ha blob-tárolóból származó dokumentumokra hivatkozik, használjon például egy olyan formátumot `"/document/content"`, amelyben a *Content (tartalom* ) mező a *dokumentum*részét képezi. 
 
-## <a name="background-concepts"></a>Háttérfogalmak
+## <a name="background-concepts"></a>Háttérbeli fogalmak
 
-A szintaxis áttekintése előtt tekintsünk át néhány fontos fogalmat, hogy jobban megértsd a cikk későbbi részében megadott példákat.
+A szintaxis felülvizsgálata előtt tekintse át a néhány fontos fogalmat, hogy jobban megértse a jelen cikk későbbi részében ismertetett példákat.
 
 | Időtartam | Leírás |
 |------|-------------|
-| Bővített dokumentum | A bővített dokumentum egy belső struktúra, amelyet a folyamat hoz létre és használ a dokumentumhoz kapcsolódó összes jegyzet tárolására. Gondoljon a bővített dokumentumra a jegyzetek fájaként. Általában egy korábbi jegyzetből létrehozott jegyzet lesz a gyermeke.<p/>A bővített dokumentumok csak a skillset-végrehajtás időtartamára léteznek. Miután a tartalom le lett képezve a keresési indexhez, a bővített dokumentumra már nincs szükség. Bár nem lép kapcsolatba közvetlenül a bővített dokumentumokkal, hasznos, ha egy skillset létrehozásakor rendelkezik a dokumentumok mentális modelljével. |
-| Dúsítási környezet | Az a környezet, amelyben a dúsítás történik, amelynek szempontjából az elem gazdagodik. Alapértelmezés szerint a dúsítási `"/document"` környezet az egyes dokumentumokra ható szinten van. Amikor egy szakértelem fut, a szakértelem kimenetei [a megadott környezet tulajdonságaivá](#example-2)válnak.|
+| Dúsított dokumentum | A dúsított dokumentumok egy belső struktúra, amelyet a folyamat hozott létre, és amely a dokumentumhoz kapcsolódó összes jegyzet tárolására szolgál. Tekintse meg a dúsított dokumentumokat jegyzetekkel ellátott faszerkezetként. Általában egy korábbi jegyzetből létrehozott jegyzet lesz a gyermeke.<p/>A dúsított dokumentumok csak a készségkészlet végrehajtásának időtartamára léteznek. Ha a tartalom a keresési indexre van leképezve, a bővített dokumentumra már nincs szükség. Bár a dúsított dokumentumokkal nem folytatja közvetlenül a kapcsolatot, a készségkészlet létrehozásakor hasznos lehet a dokumentumok mentális modellje. |
+| Dúsítási környezet | Az a környezet, amelyben a gazdagodás zajlik, és amely alapján a rendszer kibővíti az elemet. Alapértelmezés szerint a dúsítási környezet az `"/document"` egyes dokumentumokra kiterjedő szinten van. A szaktudás futtatásakor a szaktudás kimenetei [a definiált környezet tulajdonságai](#example-2)lesznek.|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>1. példa: Egyszerű jegyzethivatkozás
+## <a name="example-1-simple-annotation-reference"></a>1. példa: egyszerű jegyzet leírása
 
-Az Azure Blob storage-ban tegyük fel, hogy számos olyan fájltalálható, amely az entitásfelismerés használatával kiszeretne nyerni személyek nevére mutató hivatkozásokat. Az alábbi szakértelem-meghatározásban a teljes dokumentum szöveges ábrázolása látható, `"/document/content"` az "emberek" pedig a személyekként azonosított entitások teljes nevének kinyerése.
+Tegyük fel, hogy az Azure Blob Storage-ban számos olyan fájl található, amely az Entity Recognition használatával kinyerni kívánt személyek nevére mutató hivatkozásokat tartalmaz. Az alábbi `"/document/content"` szakértelem-definícióban a teljes dokumentum szöveges ábrázolása, a "személyek" pedig teljes nevek kinyerése a személyként azonosított entitások számára.
 
-Mivel az alapértelmezett `"/document"`környezet a , a személyek `"/document/people"`listája most már hivatkozhat . Ebben a `"/document/people"` konkrét esetben egy jegyzet, amely most már leképezhető egy mező egy indexben, vagy használt egy másik szakértelem ugyanabban skillset.
+Mivel az alapértelmezett környezet a `"/document"`, a felhasználók listája most már hivatkozhat `"/document/people"`. Ebben az esetben `"/document/people"` egy jegyzet, amely most már leképezhető egy index egy mezőjére, vagy egy másik, ugyanabban a készségkészlet lévő képességben.
 
 ```json
   {
@@ -59,11 +59,11 @@ Mivel az alapértelmezett `"/document"`környezet a , a személyek `"/document/p
 
 <a name="example-2"></a>
 
-## <a name="example-2-reference-an-array-within-a-document"></a>2. példa: Dokumentumon belüli tömbre való hivatkozás
+## <a name="example-2-reference-an-array-within-a-document"></a>2. példa: egy tömbre mutató hivatkozás egy dokumentumon belül
 
-Ez a példa az előzőre épül, amely bemutatja, hogyan lehet egy dúsítási lépést többször meghívni ugyanazon a dokumentumon. Tegyük fel, hogy az előző példa egy karakterlánctömböt hozott létre 10 fős névvel egyetlen dokumentumból. Ésszerű következő lépés lehet egy második gazdagítás, amely kinyeri a vezetéknevet egy teljes névből. Mivel 10 név van, azt szeretné, hogy ezt a lépést 10-szer hívják meg ebben a dokumentumban, egyszer minden egyes személy esetében. 
+Ez a példa az előzőre épül, amely azt mutatja be, hogyan hívhat meg egyszerre többször a dúsítási lépést ugyanazzal a dokumentummal. Tegyük fel, hogy az előző példa olyan karakterláncok tömbjét generálta, amelyek 10 személy névvel rendelkeznek egyetlen dokumentumból. Egy ésszerű következő lépés lehet egy második dúsítás, amely Kinyeri a vezetéknevet a teljes névben. Mivel a rendszer 10 nevet használ, ezt a lépést a jelen dokumentumban 10 alkalommal kell meghívni, minden személyre egyszer. 
 
-A megfelelő számú ismétlés meghívásához állítsa be `"/document/people/*"`a környezetet úgy,`"*"`hogy a csillag ( ) a bővített dokumentum összes `"/document/people"`csomópontját a származékaként ábrázolja. Bár ez a szakértelem csak egyszer van definiálva a skills tömbben, a dokumentum on-line tagjainak a dokumentumon belüli minden egyes tagra van meghívva, amíg az összes tagot fel nem dolgozzák.
+A megfelelő számú iteráció meghívásához állítsa be a kontextust `"/document/people/*"`úgy, hogy a csillag`"*"`() a kibővített dokumentum összes csomópontját a következőként jelenítse `"/document/people"`meg. Bár ez a képesség csak egyszer van definiálva a szaktudás tömbben, a rendszer minden tag számára meghívja a dokumentumot, amíg az összes tagot fel nem dolgozza.
 
 ```json
   {
@@ -87,15 +87,15 @@ A megfelelő számú ismétlés meghívásához állítsa be `"/document/people/
   }
 ```
 
-Ha a jegyzetek tömbök vagy karakterláncok gyűjteményei, érdemes lehet a tömb egésze helyett bizonyos tagokat megcélozni. A fenti példa létrehoz egy `"last"` jegyzetet, amelyet a környezet által képviselt egyes csomópontok alatt hívnak meg. Ha a jegyzetek családjára szeretne hivatkozni, használhatja a szintaxist. `"/document/people/*/last"` Ha egy adott megjegyzésre szeretne hivatkozni, használhat explicit indexet: `"/document/people/1/last`" a dokumentumban azonosított első személy vezetéknevére. Figyelje meg, hogy ebben a szintaxistömbben a "0 indexelt" elem található.
+Ha a jegyzetek tömbök vagy sztringek gyűjteményei, előfordulhat, hogy a tömb egésze helyett meghatározott tagokat szeretne megcélozni. A fenti példa létrehoz egy jegyzetet, `"last"` amelyet a környezet által jelzett csomópontok alatt nevezünk. Ha ezt a családot szeretné megtekinteni a megjegyzések közül, használhatja a szintaxist `"/document/people/*/last"`. Ha egy adott jegyzetre szeretne hivatkozni, használhat egy explicit indexet: `"/document/people/1/last`"a dokumentumban azonosított első személy vezetéknevének hivatkozásához. Figyelje meg, hogy ebben a szintaxisban a tömbök "0 indexelt".
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>3. példa: Hivatkozási tagok egy tömbön belül
+## <a name="example-3-reference-members-within-an-array"></a>3. példa: a tömbben lévő hivatkozási tagok
 
-Néha egy adott típusú összes jegyzetet kell csoportosítania ahhoz, hogy átadják őket egy adott szakértelemnek. Vegyünk egy hipotetikus egyéni szakértelem, amely azonosítja a leggyakoribb vezetéknév az összes kinyert 2. Ha csak az egyéni szakértelem vezetéknevét szeretné `"/document"` megadni, adja `"/document/people/*/lastname"`meg a környezetet a és a bemeneti szövegként.
+Előfordulhat, hogy egy adott típushoz tartozó összes jegyzetet egy adott szaktudásba kell átadnia. Vegyünk egy feltételezett egyéni képességet, amely a 2. példában kinyert összes vezetéknevet azonosítja a leggyakoribb vezetéknevek közül. Ha csak az utolsó nevet szeretné megadni az egyéni szakértelem számára, adja meg a `"/document"` kontextust és a `"/document/people/*/lastname"`bemenetet a következőként:.
 
-Figyelje meg, `"/document/people/*/lastname"` hogy a számossága nagyobb, mint a dokumentum. 10 vezetéknév-csomópont lehet, miközben csak egy dokumentumcsomópont tartozik ehhez a dokumentumhoz. Ebben az esetben a rendszer automatikusan `"/document/people/*/lastname"` létrehoz egy tömböt, amely a dokumentum összes elemét tartalmazza.
+Figyelje meg, hogy a kardinális `"/document/people/*/lastname"` érték nagyobb, mint a dokumentum. A dokumentumhoz csak egy dokumentum-csomópont tartozhat. Ebben az esetben a rendszer automatikusan létrehoz egy tömböt, amely `"/document/people/*/lastname"` tartalmazza a dokumentum összes elemét.
 
 ```json
   {
@@ -121,7 +121,7 @@ Figyelje meg, `"/document/people/*/lastname"` hogy a számossága nagyobb, mint 
 
 
 ## <a name="see-also"></a>Lásd még
-+ [Egyéni szakértelem integrálása egy gazdagítási folyamatba](cognitive-search-custom-skill-interface.md)
-+ [Hogyan definiálni a skillset](cognitive-search-defining-skillset.md)
-+ [Szakértelemkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Bővített mezők hozzárendelése indexhez](cognitive-search-output-field-mapping.md)
++ [Egyéni szakértelem integrálása a dúsítási folyamatba](cognitive-search-custom-skill-interface.md)
++ [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
++ [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [A dúsított mezők indexhez való leképezése](cognitive-search-output-field-mapping.md)

@@ -1,5 +1,5 @@
 ---
-title: Az App Service konfigurálása a PowerShell használatával
+title: App Service konfigurálása a PowerShell használatával
 titleSuffix: Azure Application Gateway
 description: Ez a cikk a webalkalmazások háttérrendszeri gazdagépekként, meglévő vagy új Application Gatewayen történő beállításához nyújt útmutatást.
 services: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74089514"
 ---
-# <a name="configure-app-service-with-application-gateway-using-powershell"></a>Az App Service konfigurálása az Application Gateway használatával a PowerShell használatával
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>App Service konfigurálása a Application Gateway PowerShell használatával
 
-Az alkalmazásátjáró lehetővé teszi, hogy egy App Service-alkalmazás vagy más több-bérlős szolgáltatás háttérkészlet-tagként. Ebben a cikkben megtudhatja, hogy konfigurálja az App Service-alkalmazást az Application Gateway segítségével. Az első példa meglévő Application Gateway konfigurálását mutatja be egy webalkalmazás háttérkészlettagként való használatára. A második példa egy új Application Gateway létrehozását mutatja be egy olyan webalkalmazással, amely egy háttérkészlet tagja.
+Az Application Gateway lehetővé teszi, hogy egy App Service alkalmazást vagy más, több-bérlős szolgáltatást háttérbeli készlet tagjaként. Ebből a cikkből megtudhatja, hogyan konfigurálhat egy App Service alkalmazást Application Gateway használatával. Az első példa meglévő Application Gateway konfigurálását mutatja be egy webalkalmazás háttérkészlettagként való használatára. A második példa egy új Application Gateway létrehozását mutatja be egy olyan webalkalmazással, amely egy háttérkészlet tagja.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -160,9 +160,9 @@ DnsSettings              : {
 
 ## <a name="restrict-access"></a>Hozzáférés korlátozása
 
-Az ezekben a példákban telepített webalkalmazások nyilvános IP-címeket használnak, amelyek közvetlenül az internetről érhetők el. Ez segít a hibaelhárításban, amikor új funkcióról tanul, és új dolgokat próbál ki. Ha azonban egy funkciót éles környezetben kíván telepíteni, további korlátozásokat kell hozzáadnia.
+A példákban telepített webalkalmazások nyilvános IP-címeket használnak, amelyek közvetlenül az internetről érhetők el. Ez segít a hibaelhárításban az új funkciók megismerése és új dolgok kipróbálása során. Ha azonban éles környezetben szeretne üzembe helyezni egy szolgáltatást, további korlátozásokat is fel szeretne venni.
 
-A webalkalmazásokhoz való hozzáférést az [Azure App Service statikus IP-korlátozásainak használatával korlátozhatja.](../app-service/app-service-ip-restrictions.md) Korlátozhatja például a webalkalmazást, hogy az csak az alkalmazásátjáróból érkező forgalmat fogadjon. Az alkalmazásszolgáltatás IP-korlátozási szolgáltatásával az alkalmazásátjáró VIP-címét sorolja fel az egyetlen hozzáféréssel rendelkező címként.
+A webalkalmazásokhoz való hozzáférés korlátozásának egyik módja a [Azure app Service statikus IP-korlátozások](../app-service/app-service-ip-restrictions.md)használata. Például korlátozhatja a webalkalmazást úgy, hogy az csak az Application gatewaytől kapjon forgalmat. Az App Service IP-korlátozási funkciója segítségével az Application Gateway VIP-t csak az elérési címmel listázhatja.
 
 ## <a name="next-steps"></a>További lépések
 

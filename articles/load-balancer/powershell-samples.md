@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-minták – Azure-terheléselosztó
-description: Ezekkel a mintákkal a virtuális gépeken több webhelyre irányuló forgalom terheléselosztása, valamint az Azure Load Balancer ha-alapú virtuális gépekforgalma.
+title: Azure PowerShell minták – Azure Load Balancer
+description: Ezekkel a mintákkal a forgalom a virtuális gépeken több webhelyre és a virtuális gépek felé irányuló adatforgalom terhelését Azure Load Balancer.
 services: virtual-network
 documentationcenter: load-balancer
 author: asudbring
@@ -13,18 +13,18 @@ ms.workload: infrastructure
 ms.date: 12/10/2018
 ms.author: allensu
 ms.openlocfilehash: 4311c1dca2ad299ac8b064769db5eb928e6a4513
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74048715"
 ---
-# <a name="azure-powershell-samples-for-load-balancer"></a>Azure PowerShell-minták a terheléselosztóhoz
+# <a name="azure-powershell-samples-for-load-balancer"></a>Azure PowerShell minták a Load Balancer
 
-Az alábbi táblázat az Azure PowerShell használatával készített parancsfájlokra mutató hivatkozásokat tartalmaz.
+Az alábbi táblázat a Azure PowerShell használatával létrehozott parancsfájlokra mutató hivatkozásokat tartalmaz.
 
 | | |
 |-|-|
-| [Terheléselosztási forgalom a virtuális gépekre a magas rendelkezésre állás érdekében](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Több virtuális gépet hoz létre magas rendelkezésre állású és terheléselosztásos konfigurációban. |
-| [Több webhely terheléselosztása a virtuális gépeken](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Két virtuális gépet hoz létre több IP-konfigurációval, amelyek egy Azure-os terheléselosztón keresztül elérhető Azure rendelkezésre állási csoporthoz csatlakoznak. |
+| [A virtuális gépek forgalmának elosztása magas rendelkezésre állás érdekében](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Több virtuális gépet hoz létre egy magasan elérhető és terheléselosztásos konfigurációban. |
+| [Terheléselosztás több webhelyről a virtuális gépeken](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Két, több IP-konfigurációval rendelkező virtuális gépet hoz létre, amelyek egy Azure-beli rendelkezésre állási készlethez csatlakoznak, és egy Azure Load Balanceron keresztül |
 | | |

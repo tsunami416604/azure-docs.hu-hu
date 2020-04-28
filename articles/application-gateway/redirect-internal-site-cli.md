@@ -1,7 +1,7 @@
 ---
-title: Belső átirányítás cli használatával
+title: Belső átirányítás a parancssori felület használatával
 titleSuffix: Azure Application Gateway
-description: Ismerje meg, hogyan hozhat létre egy alkalmazásátjárót, amely átirányítja a belső webes forgalmat a megfelelő készletaz Azure CLI használatával.
+description: Megtudhatja, hogyan hozhat létre olyan Application Gatewayt, amely az Azure CLI használatával átirányítja a belső webes forgalmat a megfelelő készletbe.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 7d37e36a4cdfed462904e2d02871345ad89d7ac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74074548"
 ---
-# <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Alkalmazásátjáró létrehozása belső átirányítással az Azure CLI használatával
+# <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Application Gateway létrehozása belső átirányítás használatával az Azure CLI-vel
 
-Az Azure CLI segítségével konfigurálhatja a [webes forgalom átirányítását,](multiple-site-overview.md) amikor létrehoz egy [alkalmazásátjárót.](overview.md) Ebben az oktatóanyagban egy háttérkészletet definiál egy virtuális gép méretezési készlet használatával. Ezután konfigurálja a figyelők és a szabályok alapján a tartományok, amelyek a saját, győződjön meg arról, hogy a webes forgalom érkezik a megfelelő készlet. Ez az oktatóanyag feltételezi, hogy több tartomány tulajdonosa, és példákat használ a *\.www contoso.com* és a www *\.contoso.org.*
+Az Azure CLI használatával konfigurálhatja a [webes forgalom átirányítását](multiple-site-overview.md) az [Application Gateway](overview.md)létrehozásakor. Ebben az oktatóanyagban egy háttér-készletet határoz meg egy virtuálisgép-méretezési csoport használatával. Ezután a figyelőket és szabályokat a saját tartományán alapulva konfigurálhatja, hogy a webes forgalom a megfelelő készlethez jusson. Ez az oktatóanyag feltételezi, hogy több tartománya van, és példákat használ a *www\.-contoso.com* és a *www\.-contoso.org*.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -25,10 +25,10 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * A hálózat beállítása
 > * Application Gateway létrehozása
 > * Figyelők és átirányítási szabály hozzáadása
-> * Virtuálisgép-méretezési készlet létrehozása a háttérkészlettel
+> * Virtuálisgép-méretezési csoport létrehozása a háttér-készlettel
 > * CNAME rekord létrehozása a tartományban
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása 
 
-Hozza létre a *myVNet* nevű virtuális hálózatot és a *myAGSubnet* nevű alhálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. Ezután hozzáadhatja a *myBackendSubnet* nevű alhálózatot, amelyre a hálózati [virtuális hálózat létrehozása](/cli/azure/network/vnet/subnet)használatával a kiszolgálók háttérkészletéhez szükség van. Hozza létre a *myAGPublicIPAddress* elnevezésű nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal.
+Hozza létre a *myVNet* nevű virtuális hálózatot és a *myAGSubnet* nevű alhálózatot az [az network vnet create](/cli/azure/network/vnet) paranccsal. Ezután hozzáadhatja a *myBackendSubnet* nevű alhálózatot, amely a kiszolgálók háttér-készletéhez szükséges, az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet)paranccsal. Hozza létre a *myAGPublicIPAddress* elnevezésű nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal.
 
 ```azurecli-interactive
 az network vnet create \
@@ -97,7 +97,7 @@ Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmaz�
 
 ## <a name="add-listeners-and-rules"></a>Figyelők és szabályok hozzáadása 
 
-A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre a két tartományhoz. Ebben a példában a hallgatók a *\.www contoso.com* és a *www\.contoso.org*domainjein jönnek létre.
+A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre a két tartományhoz. Ebben a példában a rendszer figyelőket hoz létre a *www\.contoso.com* és a *www\.contoso.org*tartományához.
 
 Adja hozzá a forgalom irányításához szükséges háttérfigyelőket az [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) paranccsal.
 
@@ -118,9 +118,9 @@ az network application-gateway http-listener create \
   --host-name www.contoso.org   
   ```
 
-### <a name="add-the-redirection-configuration"></a>Az átirányítási konfiguráció hozzáadása
+### <a name="add-the-redirection-configuration"></a>Az átirányítás konfigurációjának hozzáadása
 
-Adja hozzá a *www\.consoto.org-től* érkező forgalmat küldő átirányítási konfigurációt az alkalmazásátjárówww *\.contoso.com* figyelőjéhez a [hálózati alkalmazás-átjáró átirányítási-konfiguráció létrehozása segítségével.](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)
+Adja hozzá az átirányítási konfigurációt, amely forgalmat küld a *www\.consoto.org* az Application gatewayben lévő *www\.-contoso.com* figyelőnek az az [Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)paranccsal.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -135,7 +135,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-routing-rules"></a>Útválasztási szabályok hozzáadása
 
-A szabályok feldolgozása a létrehozásuk sorrendjében történik, és a forgalom az alkalmazásátjárónak küldött URL-címnek megfelelő első szabály használatával történik. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
+A szabályok a létrehozásuk sorrendjében lesznek feldolgozva, és a forgalom az Application Gatewaynek eljuttatott URL-címnek megfelelő első szabály használatával lesz átirányítva. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
 
 Ebben a példában két új szabályt hoz létre, és törli a létrehozott alapértelmezett szabályt.  A szabályt az [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) paranccsal adhatja hozzá.
 
@@ -162,7 +162,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a példában egy virtuálisgép-méretezési csoportot hoz létre, amely támogatja a létrehozott háttérkészletet. A létrehozott méretezési csoport neve *myvmss,* és két virtuálisgép-példányt tartalmaz, amelyekre telepíti az NGINX-et.
+Ebben a példában egy virtuálisgép-méretezési csoport jön létre, amely támogatja a létrehozott háttér-készletet. A létrehozott méretezési csoport neve *myvmss* , és két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-t telepíti.
 
 ```azurecli-interactive
 az vmss create \
@@ -182,7 +182,7 @@ az vmss create \
 
 ### <a name="install-nginx"></a>Az NGINX telepítése
 
-Futtassa ezt a parancsot a parancsértelmező ablakban:
+Futtassa ezt a parancsot a rendszerhéj ablakban:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -209,11 +209,11 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Adja meg a tartománya nevét a böngésző címsorában. Mint például,\/http: /www.contoso.com.
+Adja meg a tartománya nevét a böngésző címsorában. Például:, http:\//www.contoso.com.
 
 ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-Módosítsa a címet a másik tartomány,\/például http: /www.contoso.org, és látnia kell, hogy\.a forgalom már átirányítva vissza a figyelő a www contoso.com.
+Módosítsa a címeket a másik tartományra, például http:\//www.contoso.org, és látnia kell, hogy a forgalom át lett irányítva a figyelőhöz a www\.-contoso.com.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -222,5 +222,5 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A hálózat beállítása
 > * Application Gateway létrehozása
 > * Figyelők és átirányítási szabály hozzáadása
-> * Virtuálisgép-méretezési készlet létrehozása a háttérkészlettel
+> * Virtuálisgép-méretezési csoport létrehozása a háttér-készlettel
 > * CNAME rekord létrehozása a tartományban

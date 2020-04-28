@@ -1,5 +1,5 @@
 ---
-title: Az Azure Site Recovery adattitkosítási szolgáltatásának eprecációja | Microsoft dokumentumok
+title: A Azure Site Recovery adattitkosítási funkció elavulása | Microsoft Docs
 description: Részletek regarig Azure Site Recovery adattitkosítási funkció
 services: site-recovery
 author: rajani-janaki-ram
@@ -9,39 +9,39 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: rajanaki
 ms.openlocfilehash: 5e74466891a5926d8ae8feb3c1c48348ecf3cfe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74134995"
 ---
-# <a name="deprecation-of-site-recovery-data-encryption-feature"></a>A Webhely-helyreállítási adattitkosítási szolgáltatás eprektálása
+# <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Site Recovery adattitkosítási funkció elavulása
 
-Ez a dokumentum ismerteti az eprecation részleteket és a javítási műveletet kell végrehajtania, ha a Site Recovery adattitkosítási funkciót használja a Hyper-V virtuális gépek Azure-ba történő vészhelyreállítása konfigurálása során. 
+Ez a dokumentum az elavultság részleteit és a Szervizelési műveletet ismerteti, ha a Site Recovery adattitkosítási funkciót használja, miközben a Hyper-V virtuális gépek vész-helyreállítását az Azure-ba konfigurálja. 
 
-## <a name="deprecation-information"></a>Eprekation információk
-
-
-A Site Recovery adattitkosítási szolgáltatás elérhető volt a Hyper-V virtuális gépek et védő ügyfelek számára, hogy a replikált adatok védettek legyenek a biztonsági fenyegetésekkel szemben. ez a funkció **2019.** Ez helyébe a fejlettebb [titkosítás i inaktív](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/) funkció, amely a [storage service encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) (SSE) . Az SSE-vel az adatok titkosítva vannak, mielőtt a tárolóba kerülne, és visszafejtenék az Azure-ba, és az Azure-ba való feladatátvételkor a virtuális gépek a titkosított tárfiókokból futnak, lehetővé téve a jobb helyreállítási idő célkitűzést (RTO).
-
-Kérjük, vegye figyelembe, hogy ha Ön már meglévő ügyfél, aki ezt a funkciót használja, akkor az eprecációs részletekkel és a javítási lépésekkel kapcsolatos kommunikációt kapott volna. 
+## <a name="deprecation-information"></a>Elavult információ
 
 
-## <a name="what-are-the-implications"></a>Milyen következményekkel jár?
+A Site Recovery adattitkosítási funkció elérhető volt a Hyper-V virtuális gépeket védő ügyfelek számára, így biztosítva, hogy a replikált adatok védve legyenek a biztonsági fenyegetések ellen. Ez a funkció a **2019. december 30-ig**lesz elavult. Az [Storage Service encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) (SSE) szolgáltatást használó [Rest-titkosítást](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/) használja. Az SSE használatával a rendszer titkosítja az adatok titkosítását, mielőtt megőrzi a tárolást és visszafejti a lekérést, és az Azure-ba történő feladatátvétel után a virtuális gépek a titkosított Storage-fiókokból fognak futni, ami lehetővé teszi a helyreállítási időre vonatkozó célkitűzés (RTO) javítását.
 
-**2019. december 30-a**után a kivisszavonult titkosítási szolgáltatást továbbra is használó virtuális gépek nem hajthatnak végre feladatátvételt. 
+Vegye figyelembe, hogy ha Ön már használja ezt a szolgáltatást, az elavult részletekkel és a Szervizelési lépésekkel kapcsolatban kapott kommunikációt. 
+
+
+## <a name="what-are-the-implications"></a>Mik a következményei?
+
+**2019. december 30-ig**minden olyan virtuális gép, amely továbbra is a kivont titkosítási funkciót használja, nem lesz engedélyezve a feladatátvétel. 
 
 ## <a name="required-action"></a>Szükséges művelet
-A sikeres feladatátvételi műveletek folytatásához és a replikációk az alábbi lépéseket hajtsák végre:
+A sikeres feladatátvételi műveletek folytatásához és a replikáláshoz kövesse az alábbi lépéseket:
 
-Kövesse az alábbi lépéseket az egyes virtuális gépek: 
-1.  [A replikáció letiltása](https://docs.microsoft.com/azure/site-recovery/site-recovery-manage-registration-and-protection#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario).
+Kövesse az alábbi lépéseket minden virtuális géphez: 
+1.  [Tiltsa le a replikációt](https://docs.microsoft.com/azure/site-recovery/site-recovery-manage-registration-and-protection#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario).
 2.  [Hozzon létre egy új replikációs házirendet](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-tutorial#set-up-a-replication-policy).
-3.  [Engedélyezze a replikációt,](https://docs.microsoft.com/azure/site-recovery/hyper-v-vmm-azure-tutorial#enable-replication) és válasszon ki egy olyan tárfiókot, amelyen az SSE engedélyezve van.
+3.  [Engedélyezze a replikálást](https://docs.microsoft.com/azure/site-recovery/hyper-v-vmm-azure-tutorial#enable-replication) , és válasszon egy olyan Storage-fiókot, amelyen engedélyezve van az SSE.
 
-Miután befejezte a kezdeti replikációt a tárfiókok sse engedélyezve van, a virtuális gépek fogja használni titkosítás inaktív azure site recovery.
+Miután a kezdeti replikálást az SSE-t használó Storage-fiókokba tette, a virtuális gépek titkosítást fognak használni a Azure Site Recovery.
 
 
 ## <a name="next-steps"></a>További lépések
-Tervezze meg a javítási lépések végrehajtását, és legkorábban hajtsa végre azokat. Abban az esetben, ha bármilyen kérdése van ezzel az eprecációval kapcsolatban, kérjük, forduljon a Microsoft támogatási szolgálatához. Ha többet szeretne megtudni a Hyper-V azure-forgatókönyvről, olvassa el [itt.](hyper-v-vmm-architecture.md)
+Tervezze meg a Szervizelési lépések elvégzését, és hajtsa végre azokat a leghamarabb. Ha az elavult lekérdezéssel kapcsolatban bármilyen kérdése van, kérjük, lépjen kapcsolatba Microsoft ügyfélszolgálata. Ha többet szeretne megtudni a Hyper-V – Azure forgatókönyvről, tekintse meg [itt](hyper-v-vmm-architecture.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Adatlemez leválasztása Linux os virtuális gépről – Azure
-description: Ismerje meg, hogyan választhat le egy adatlemezt egy virtuális gépről az Azure CLI vagy az Azure Portal használatával.
+title: Adatlemez leválasztása Linux rendszerű virtuális gépről – Azure
+description: Megtudhatja, hogyan választhat adatlemezt az Azure-beli virtuális gépről az Azure CLI vagy a Azure Portal használatával.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
@@ -8,33 +8,33 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74036372"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Adatlemez leválasztása Linux rendszerű virtuális gépről
 
-Ha már nincs szüksége egy virtuális géphez csatolt adatlemezre, könnyedén leválaszthatja. Ezzel eltávolítja a lemezt a virtuális gépről, de nem távolítja el a tárolóból. Ebben a cikkben egy Ubuntu LTS 16.04 disztribúcióval dolgozunk. Ha más disztribúciót használ, a lemez leválasztására vonatkozó utasítások eltérőek lehetnek.
+Ha már nincs szüksége egy virtuális géphez csatolt adatlemezre, könnyedén leválaszthatja. Ezzel eltávolítja a lemezt a virtuális gépről, de nem távolítja el a tárolóból. Ebben a cikkben egy Ubuntu LTS 16,04-disztribúciót dolgozunk. Ha más eloszlást használ, a lemez leválasztásának utasításai eltérőek lehetnek.
 
 > [!WARNING]
-> Ha leválaszt egy lemezt, az nem törlődik automatikusan. Ha előfizetett a Prémium szintű tárhelyre, továbbra is tárolási díjat kell fizetnie a lemezért. További információ: [Díjszabás és számlázás a Prémium szintű storage használata esetén.](https://azure.microsoft.com/pricing/details/storage/page-blobs/)
+> Ha leválaszt egy lemezt, nem törlődik automatikusan. Ha prémium szintű tárterületre iratkozott fel, akkor továbbra is a lemez tárolási díjait számítjuk fel. További információkért tekintse meg a [díjszabást és a számlázást Premium Storage használatakor](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
 Ha ismét használni szeretné a lemezen lévő adatokat, újból csatolhatja ugyanahhoz vagy egy másik virtuális géphez.  
 
 
 ## <a name="connect-to-the-vm-to-unmount-the-disk"></a>Csatlakozás a virtuális géphez a lemez leválasztásához
 
-Mielőtt leválaszthatná a lemezt a CLI vagy a portál használatával, le kell választania a lemezt, és el kell távolítania a hivatkozásokat, ha az fstab fájlból.
+Mielőtt leválasztja a lemezt a parancssori felület vagy a portál használatával, le kell választania a lemezt, és el kell távolítania a hivatkozásokat az fstab-fájlból.
 
-Csatlakozzon a virtuális géphez. Ebben a példában a virtuális gép nyilvános IP-címe *10.0.1.4* az *azureuser*felhasználó névvel: 
+Csatlakozzon a virtuális géphez. Ebben a példában a virtuális gép nyilvános IP-címét *10.0.1.4* a username *azureuser*: 
 
 ```bash
 ssh azureuser@10.0.1.4
 ```
 
-Először keresse meg a leválasztani kívánt adatlemezt. A következő példa a dmesg segítségével szűri az SCSI-lemezeket:
+Először keresse meg a leválasztani kívánt adatlemezt. Az alábbi példa a dmesg-et használja az SCSI-lemezek szűrésére:
 
 ```bash
 dmesg | grep SCSI
@@ -50,7 +50,7 @@ A kimenet a következő példához hasonló:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Itt, *sdc* a lemez, hogy szeretnénk leválasztani. Azt is meg kell ragadnia a lemez UUID azonosítóját.
+Itt a *SDC* a leválasztani kívánt lemez. Meg kell ragadni a lemez UUID-azonosítóját is.
 
 ```bash
 sudo -i blkid
@@ -65,12 +65,12 @@ A kimenet a következő példához hasonlóan néz ki:
 ```
 
 
-Az */etc/fstab* fájl szerkesztése a lemezre mutató hivatkozások eltávolításához. 
+Szerkessze az */etc/fstab* fájlt a lemezre mutató hivatkozások eltávolításához. 
 
 > [!NOTE]
-> Az **/etc/fstab** fájl helytelen szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos a dolgában, a fájl megfelelő szerkesztésével kapcsolatos információkért olvassa el a disztribúció dokumentációját. Azt is javasoljuk, hogy az /etc/fstab fájl biztonsági mentése szerkesztés előtt létrejön.
+> Az **/etc/fstab** fájl nem megfelelő szerkesztése nem indítható rendszert eredményezhet. Ha nem biztos a dolgában, a fájl megfelelő szerkesztésével kapcsolatos információkért olvassa el a disztribúció dokumentációját. Azt is javasoljuk, hogy a Szerkesztés előtt hozza létre az/etc/fstab fájl biztonsági másolatát.
 
-Nyissa meg az */etc/fstab* fájlt egy szövegszerkesztőben az alábbiak szerint:
+Nyissa meg az */etc/fstab* fájlt egy szövegszerkesztőben a következőképpen:
 
 ```bash
 sudo vi /etc/fstab
@@ -82,16 +82,16 @@ Ebben a példában a következő sort törölni kell az */etc/fstab* fájlból:
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-A `umount` lemez leválasztására használható. A következő példa leválasztása a */dev/sdc1* partíciót a */datadrive* csatlakoztatási pontról:
+A `umount` lemez leválasztásához használja a következőt:. Az alábbi példa leválasztja a */dev/sdc1* partíciót a */datadrive* csatlakoztatási pontról:
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
 ```
 
 
-## <a name="detach-a-data-disk-using-azure-cli"></a>Adatlemez leválasztása az Azure CLI használatával 
+## <a name="detach-a-data-disk-using-azure-cli"></a>Adatlemez leválasztása az Azure CLI-vel 
 
-Ez a példa leválasztja a *myDataDisk* lemezt a *myResourceGroup myVM*nevű vm-ről. *myVM*
+Ez a példa leválasztja a *myDataDisk* lemezt a *myVM* nevű virtuális gépről a *myResourceGroup*-ben.
 
 ```azurecli
 az vm disk detach \
@@ -100,23 +100,23 @@ az vm disk detach \
     -n myDataDisk
 ```
 
-A lemez a tárolóban marad, de már nem csatlakozik a virtuális géphez.
+A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Adatlemez leválasztása a portállal
 
-1. A bal oldali menüben válassza a **Virtuális gépek**lehetőséget.
-2. Válassza ki azt a virtuális gépet, amely rendelkezik a leválasztani kívánt adatlemezzel, és kattintson a **Leállítás** gombra a virtuális gép felszabadításához.
-3. A virtuális gép ablaktábláján válassza a **Lemezek**lehetőséget.
-4. A **Lemezek** ablaktábla tetején válassza a **Szerkesztés**lehetőséget.
-5. A **Lemezek** ablaktáblán, a leválasztani kívánt adatlemez jobb széléről ![kattintson](./media/detach-disk/detach.png) a Leválasztás gombra a képleválasztás gombra.
-5. A lemez eltávolítása után kattintson a Mentés gombra az ablaktábla tetején.
-6. A virtuális gép ablaktábláján kattintson az **Áttekintés gombra,** majd az ablaktábla tetején található **Start** gombra a virtuális gép újraindításához.
+1. A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
+2. Válassza ki azt a virtuális gépet, amelyen a leválasztani kívánt adatlemez található, és kattintson a **Leállítás** gombra a virtuális gép felszabadításához.
+3. A virtuális gép ablaktáblán válassza a **lemezek**elemet.
+4. A **lemezek** ablaktábla tetején válassza a **Szerkesztés**lehetőséget.
+5. A **lemezek** ablaktáblán a leválasztani kívánt adatlemez jobb szélén kattintson a ![Leválasztás gombra, majd a lemezkép](./media/detach-disk/detach.png) leválasztása gombra.
+5. A lemez eltávolítása után kattintson a panel tetején található Mentés gombra.
+6. A virtuális gép ablaktáblán kattintson az **Áttekintés** elemre, majd kattintson a panel tetején található **Start** gombra a virtuális gép újraindításához.
 
-A lemez a tárolóban marad, de már nem csatlakozik a virtuális géphez.
+A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ha újra fel szeretné használni az adatlemezt, egyszerűen [csatolhatja egy másik virtuális géphez.](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Ha újra fel szeretné használni az adatlemezt, egyszerűen [csatolhatja azt egy másik virtuális géphez](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

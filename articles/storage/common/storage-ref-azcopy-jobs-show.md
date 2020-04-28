@@ -1,6 +1,6 @@
 ---
-title: azcopy jobs show | Microsoft dokumentumok
-description: Ez a cikk az azcopy-feladatok megjelenítési parancsának referenciainformációit tartalmazza.
+title: azcopy-feladatok megjelenítése | Microsoft Docs
+description: Ez a cikk a azcopy Jobs show paranccsal kapcsolatos tudnivalókat tartalmazza.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,48 +9,48 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 7b5f566757dd77a61f252b123d0c9c1b74303fbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74034123"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy jobs show
 
-Az adott feladatazonosító részletes információit jeleníti meg.
+Részletes információkat jelenít meg a megadott AZONOSÍTÓJÚ feladatról.
 
 ## <a name="synopsis"></a>Áttekintés
 
-Ha csak a feladatazonosítót adja meg jelző nélkül, akkor a feladat folyamatösszefoglalása kerül visszaadásra.
+Ha a rendszer csak a AZONOSÍTÓJÚ feladatot adja meg jelző nélkül, akkor a rendszer visszaküldi a feladatokhoz tartozó folyamat összegzését.
 
-A parancs futtatásakor megjelenő bájtszámok és készültségi százalékok csak a feladatban befejezett fájlokat tükrözik. Nem tükrözik a részben befejezett fájlokat.
+A parancs futtatásakor megjelenő bájtok száma és százalékos készültsége csak a feladatokban befejezett fájlokat tükrözi. Nem tükrözik a részben befejezett fájlokat.
 
-Ha `with-status` a jelző be van állítva, akkor a megadott értékkel rendelkező feladatban lévő átvitelek listája jelenik meg.
+Ha a `with-status` jelző be van állítva, a rendszer megjeleníti a megadott értékkel rendelkező feladatban szereplő adatátvitelek listáját.
 
 ```azcopy
 azcopy jobs show [jobID] [flags]
 ```
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó koncepcionális cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele az AzCopy és blob tárhellyel](storage-use-azcopy-blobs.md)
-- [Adatátvitel átvitele az AzCopy programmal és a fájltárolással](storage-use-azcopy-files.md)
-- [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Beállítások
 
 |Beállítás|Leírás|
 |--|--|
-|-h, --segítség|A show parancs súgótartalmának megjelenítése.|
-|--állapottal karakterlánc|Csak az ezzel az állapottal rendelkező feladat átvitelét sorolja fel, a rendelkezésre álló értékeket: Elindítva, Sikeres, Sikertelen|
+|-h,-– Súgó|Megjeleníti a show parancs súgójának tartalmát.|
+|--with-status sztring|Csak az adott állapotú feladatok átvitelének listázása, elérhető értékek: elindítva, sikeres, sikertelen|
 
-## <a name="options-inherited-from-parent-commands"></a>Szülőparancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
 |Beállítás|Leírás|
 |---|---|
-|--sapka-mbps uint32|Az átviteli sebesség felső határa megabit/másodpercben. A pillanatonkénti átviteli kapacitás kissé eltérhet a kupaktól. Ha ez a beállítás nulla, vagy nincs megadva, az átviteli áteresztőmód nem lesz korlátozva.|
-|--kimenet-típusú karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték a "szöveg".|
+|--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
+|--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
 ## <a name="see-also"></a>Lásd még
 

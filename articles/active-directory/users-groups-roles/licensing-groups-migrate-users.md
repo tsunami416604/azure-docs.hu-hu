@@ -1,6 +1,6 @@
 ---
-title: Közvetlen licenccel rendelkező felhasználók hozzáadása a csoportos licenceléshez - Azure AD | Microsoft dokumentumok
-description: Az egyéni felhasználói licencekről a csoportalapú licencelésre való áttelepítés az Azure Active Directory használatával
+title: Közvetlen licenccel rendelkező felhasználók hozzáadása a licenceléshez – Azure AD | Microsoft Docs
+description: Áttelepítés az egyes felhasználói licencekről a csoport alapú licencelésre Azure Active Directory használatával
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
@@ -17,73 +17,73 @@ ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74025681"
 ---
-# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Az egyéni licenccel rendelkező felhasználók áttelepítése csoportokba licencelési csoportokba
+# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Egyéni licenccel rendelkező felhasználók áttelepítése licencelési csoportokba
 
-Előfordulhat, hogy a szervezetek felhasználói számára közvetlen hozzárendelés útján meglévő licenceket telepít; azaz powershell-parancsfájlok vagy más eszközök használata az egyes felhasználói licencek hozzárendeléséhez. Mielőtt elkezdené használni a csoportalapú licencelést a szervezet licenceinek kezelésére, ezzel az áttelepítési tervvel zökkenőmentesen lecserélheti a meglévő megoldásokat a csoportalapú licencelésre.
+Előfordulhat, hogy a szervezet felhasználói számára közvetlen hozzárendeléssel telepített meglévő licencek vannak telepítve. Ez a PowerShell-parancsfájlok vagy más eszközök használata az egyes felhasználói licencek hozzárendeléséhez. Mielőtt elkezdi a csoportos licencelés használatát a szervezeten belüli licencek kezeléséhez, az áttelepítési terv segítségével zökkenőmentesen lecserélheti a meglévő megoldásokat a csoport alapú licenceléssel.
 
-A legfontosabb dolog, amit szem előtt kell tartani, hogy kerülnikell egy olyan helyzetet, amikor a csoportalapú licencelésre való áttérés azt eredményezi, hogy a felhasználók ideiglenesen elveszítik a jelenleg hozzárendelt licenceiket. Minden olyan folyamatot, amely a licencek eltávolítását eredményezheti, el kell kerülni annak elkerülése érdekében, hogy a felhasználók hozzáférjenek a szolgáltatásokhoz és az adataikhoz.
+A legfontosabb, hogy ne feledje, hogy el kell kerülnie azt a helyzetet, amikor a csoport alapú licencelésre való áttérés miatt a felhasználók átmenetileg elvesztik a jelenleg hozzárendelt licenceket. A licencek eltávolítását eredményező folyamatokat el kell kerülni, hogy el lehessen távolítani a felhasználókat a szolgáltatásokhoz és az azokhoz való hozzáférés elvesztésével járó kockázatokat.
 
 ## <a name="recommended-migration-process"></a>Ajánlott áttelepítési folyamat
 
-1. Meglévő automatizálási (például PowerShell) rendszerezi a licenc-hozzárendelést és a felhasználók eltávolítását. Hagyd úgy, ahogy van.
+1. Meglévő Automation (például PowerShell) segítségével kezeli a licencek hozzárendelését és eltávolítását a felhasználók számára. Ne futtassa a t.
 
-1. Hozzon létre egy új licencelési csoportot (vagy döntse el, hogy mely meglévő csoportokat használja), és győződjön meg arról, hogy az összes szükséges felhasználó tagként kerül hozzáadásra.
+1. Hozzon létre egy új licencelési csoportot (vagy döntse el, hogy mely meglévő csoportokat kívánja használni), és győződjön meg arról, hogy az összes szükséges felhasználó hozzá lesz adva tagként.
 
-1. Rendelje hozzá a szükséges licenceket ezekhez a csoportokhoz; a cél az, hogy tükrözze ugyanazt a licencelési állapot a meglévő automatizálás (például PowerShell) vonatkozik ezekre a felhasználókra.
+1. Rendelje hozzá a szükséges licenceket ezekhez a csoportokhoz; a cél az, hogy ugyanazt a licencelési állapotot tükrözze, amelyet a meglévő Automation (például a PowerShell) alkalmaz a felhasználókra.
 
-1. Ellenőrizze, hogy a licencek a csoportok összes felhasználóját alkalmazták-e. Ez az alkalmazás az egyes csoportok feldolgozási állapotának ellenőrzésével és a naplók ellenőrzésével végezhető el.
+1. Győződjön meg arról, hogy a licencek a csoportok összes felhasználójára lettek alkalmazva. Ez az alkalmazás úgy végezhető el, hogy ellenőrzi a feldolgozási állapotot az egyes csoportokon, és ellenőrzi a naplókat.
 
-   - Az egyes felhasználók at a licenc adatainak megtekintésével ellenőrizheti. Látni fogja, hogy ugyanazokat a licenceket rendelt "közvetlenül" és "örökölt" csoportokból.
+   - A licenc részleteinek megtekintésével az egyes felhasználókat is megvizsgálhatja. Látni fogja, hogy ugyanazok a licencek vannak hozzárendelve a "közvetlen" és "örökölt" csoportokhoz.
 
-   - PowerShell-parancsfájl futtatásával [ellenőrizheti, hogy a licencek hogyan vannak hozzárendelve a felhasználókhoz.](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses)
+   - Egy PowerShell-szkript futtatásával ellenőrizheti, hogy a [licencek hogyan vannak hozzárendelve a felhasználókhoz](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
 
-   - Ha ugyanazt a terméklicencet közvetlenül és egy csoporton keresztül is hozzárendeli a felhasználóhoz, a felhasználó csak egy licencet használ fel. Ezért az áttelepítéshez nincs szükség további licencre.
+   - Ha ugyanaz a licenc közvetlenül és egy csoporton keresztül van hozzárendelve a felhasználóhoz, akkor a felhasználó csak egy licencet használ fel. Ezért nincs szükség további licencekre az áttelepítés végrehajtásához.
 
-1. Ellenőrizze, hogy egyetlen licenc-hozzárendelés sem sikerült, ha ellenőrzi az egyes csoportokat a hibaállapotú felhasználók számára. További információt a [Csoport licencproblémáinak azonosítása és megoldása című](licensing-groups-resolve-problems.md)témakörben talál.
+1. Győződjön meg arról, hogy a licenc-hozzárendelések sikertelenek voltak. Ehhez ellenőrizze az egyes csoportokat a hibás állapotú felhasználók számára. További információ: [a csoport licencelési problémáinak azonosítása és megoldása](licensing-groups-resolve-problems.md).
 
-Fontolja meg az eredeti közvetlen hozzárendelések eltávolítását. Azt javasoljuk, hogy ezt fokozatosan, és figyelje az eredményt a felhasználók egy részhalmaza először. Ha az eredeti közvetlen hozzárendeléseket a felhasználókra hagyhatja, de amikor a felhasználók elhagyják a licencelt csoportokat, megtartják a közvetlenül hozzárendelt licenceket, ami lehet, hogy nem az, amit szeretne.
+Érdemes lehet eltávolítani az eredeti közvetlen hozzárendeléseket. Azt javasoljuk, hogy fokozatosan hajtsa végre, és figyelje meg az eredményt a felhasználók egy részhalmazán. Ha az eredeti közvetlen hozzárendeléseket el szeretné hagyni a felhasználók számára, de ha a felhasználók elhagyják a licenccel rendelkező csoportokat, megőrzik a közvetlenül hozzárendelt licenceket, amelyek esetleg nem a kívántak.
 
-## <a name="an-example"></a>Egy példa
+## <a name="an-example"></a>Példa
 
-Egy szervezetnek 1000 felhasználója van. Minden felhasználónak Szüksége van Office 365 Nagyvállalati E3 licencre. Jelenleg a szervezet rendelkezik egy PowerShell-parancsfájl a helyszínen, hozzáadása és eltávolítása a felhasználók tól, ahogy jönnek és mennek. A szervezet azonban le szeretné cserélni a parancsfájlt csoportalapú licenccel, hogy a licenceket az Azure AD automatikusan kezelhesse.
+A szervezetnek 1 000 felhasználója van. Minden felhasználónak Office 365 Enterprise E3 licenc szükséges. Jelenleg a szervezet rendelkezik egy helyszíni PowerShell-szkripttel, amely a felhasználóktól érkező licencek hozzáadásával és eltávolításával jár. A szervezet azonban a parancsfájlt csoportos licenceléssel szeretné helyettesíteni, így a licenceket az Azure AD automatikusan tudja felügyelni.
 
-Így nézhet ki az áttelepítési folyamat:
+Az áttelepítési folyamat így néz ki:
 
-1. Az Azure Portal használatával rendelje hozzá az Office 365 E3-licencet az Azure AD **Minden felhasználó** csoportjához.
+1. A Azure Portal használatával rendelje hozzá az Office 365 E3-licencet az Azure AD **összes felhasználó** csoportjához.
 
-1. Ellenőrizze, hogy a licenc-hozzárendelés befejeződött-e az összes felhasználó számára. Nyissa meg a csoport áttekintő lapját, válassza a **Licencek**lehetőséget, és ellenőrizze a feldolgozási állapotot a **Licencek** panel tetején.
+1. Győződjön meg arról, hogy az összes felhasználó számára befejeződött a licenc-hozzárendelés. Nyissa meg a csoport áttekintés lapját, válassza a **licencek**lehetőséget, majd a **licencek** panel felső részén tekintse meg a feldolgozás állapotát.
 
-   - Keresse meg a "Legújabb licencmódosítások at alkalmazták az összes felhasználóra" című lehetőséget a feldolgozás befejezésének megerősítéséhez.
+   - A feldolgozás befejezésének megerősítéséhez keresse meg a "legújabb licencelési módosítások alkalmazása az összes felhasználóra" lehetőséget.
 
-   - Keressen egy értesítést a tetején azokról a felhasználókról, akiknek a licenceit esetleg nem sikerült hozzárendelni. Elfogyott a licenc egyes felhasználók számára? Egyes felhasználók ütköző licenctervekkel rendelkeznek, amelyek megakadályozzák, hogy csoportlicenceket örököljenek?
+   - Tekintse meg az azon felhasználókra vonatkozó értesítéseket, akik számára nem sikerült a licencek hozzárendelése. Kifogytak a licencek egyes felhasználók számára? Vannak-e olyan ütköző licenccel rendelkező felhasználók, amelyek megakadályozzák a csoportos licencek öröklését?
 
-1. A helyszíni ellenőrzés egyes felhasználók, hogy ellenőrizze, hogy mind a közvetlen és a csoport licencek alkalmazva. Nyissa meg egy felhasználó profillapját, válassza a **Licencek**lehetőséget, és vizsgálja meg a licencek állapotát.
+1. Ellenőrizze, hogy vannak-e olyan felhasználók, akik ellenőrzik, hogy mind a közvetlen, mind a csoportos licenc alkalmazva van-e. Lépjen a felhasználó profil lapjára, válassza a **licencek**lehetőséget, és vizsgálja meg a licencek állapotát.
 
    - Ez a várt felhasználói állapot az áttelepítés során:
 
       ![a várt felhasználói állapot az áttelepítés során](./media/licensing-groups-migrate-users/expected-user-state.png)
 
-     Ez megerősíti, hogy a felhasználó rendelkezik közvetlen és örökölt licencekkel is. Látjuk, hogy az Office 365 E3 hozzá van rendelve.
+     Ezzel megerősíti, hogy a felhasználó közvetlen és örökölt licencekkel rendelkezik. Láthatjuk, hogy az Office 365 E3 van hozzárendelve.
 
-   - Válassza ki az egyes licenceket, hogy lássa, mely szolgáltatások vannak engedélyezve. Annak ellenőrzéséhez, hogy a közvetlen és a csoportlicencek pontosan ugyanazokat a szolgáltatásokat engedélyezik-e a felhasználó számára, válassza a **Hozzárendelések**lehetőséget.
+   - Válassza ki az egyes licenceket, és ellenőrizze, hogy mely szolgáltatások engedélyezettek. Annak ellenőrzéséhez, hogy a közvetlen és a csoportos licenc pontosan ugyanazokat a szolgáltatásokat engedélyezi-e a felhasználó számára, válassza a **hozzárendelések**lehetőséget.
 
-1. Miután meggyőződött arról, hogy mind a közvetlen, mind a csoportlicencek egyenértékűek, elkezdheti eltávolítani a közvetlen licenceket a felhasználóktól. Ezt úgy tesztelheti, hogy eltávolítja őket az egyes felhasználók számára a portálon, majd futtassa az automatizálási parancsfájlokat, hogy tömegesen eltávolítsák őket. Íme egy példa ugyanannak a felhasználónak, akinek a portálon keresztül eltávolított közvetlen licencei vannak eltávolítva. Figyelje meg, hogy a licenc állapota változatlan marad, de már nem látjuk a közvetlen hozzárendeléseket.
+1. Miután megerősítette, hogy a közvetlen és a csoportos licencek is egyenértékűek, megkezdheti a közvetlen licencek eltávolítását a felhasználóktól. Ezt úgy tesztelheti, ha eltávolítja őket a portál egyes felhasználóival, majd automatizálja az Automation-parancsfájlokat, hogy azok tömeges eltávolításra kerülnek. Íme egy példa arra a felhasználóra, aki a közvetlen licenceket eltávolította a portálon keresztül. Figyelje meg, hogy a licenc állapota változatlan marad, de a közvetlen hozzárendelések már nem láthatók.
 
-   ![a közvetlen licencek eltávolításának ellenőrzése](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
+   ![Győződjön meg arról, hogy a közvetlen licencek el vannak távolítva](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a csoportlicenc-kezelés egyéb forgatókönyveiről:
+További információ a csoportos licencek kezelésével kapcsolatos egyéb forgatókönyvekről:
 
-- [Mi a csoportalapú licencelés az Azure Active Directoryban?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+- [Mi a Azure Active Directory csoportos licencelése?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 - [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
 - [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
-- [Felhasználók áttelepítése a terméklicencek között az Azure Active Directory csoportalapú licencelésével](licensing-groups-change-licenses.md)
+- [Felhasználók áttelepítése licencek között a csoport alapú licencelés használatával Azure Active Directory](licensing-groups-change-licenses.md)
 - [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](licensing-group-advanced.md)
-- [Példák a Csoportalapú licenceléshez az Azure Active Directoryban](licensing-ps-examples.md)
+- [PowerShell-példák csoportházirend-alapú licenceléshez Azure Active Directory](licensing-ps-examples.md)

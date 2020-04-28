@@ -1,6 +1,6 @@
 ---
-title: Áttelepítési eszközök hozzáadása az Azure Áttelepítése szolgáltatásban
-description: Ismerje meg, hogyan adhat hozzá áttelepítési eszközöket az Azure Migrate szolgáltatásban.
+title: Áttelepítési eszközök hozzáadása a Azure Migrate
+description: Megtudhatja, hogyan adhat hozzá áttelepítési eszközöket a Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.manager: carmonm
@@ -8,72 +8,72 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: raynew
 ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74185960"
 ---
 # <a name="add-migration-tools"></a>Migrálási eszközök hozzáadása
 
-Ez a cikk bemutatja, hogyan adhat hozzá áttelepítési eszközöket az [Azure Áttelepítés szolgáltatásban.](migrate-overview.md)
+Ez a cikk bemutatja, hogyan adhat hozzá áttelepítési eszközöket a [Azure Migrate](migrate-overview.md).
 
-Az Azure Migrate az értékelések és az Azure-ba való migrálás eszközeinek központja. Ez magában foglalja a natív eszközök, eszközök által biztosított más Azure-szolgáltatások, és a külső független szoftverszállító (ISV) ajánlatok.
+Azure Migrate az Azure-ba való áttelepítéshez és az Azure-ba való Migrálás eszközeinek központja. A szolgáltatás magában foglalja a natív eszközöket, más Azure-szolgáltatások által biztosított eszközöket, valamint a külső gyártótól származó független szoftvergyártók (ISV) ajánlatait.
 
-Ha egy áttelepítési eszközt szeretne hozzáadni, és még nem állított be Azure Migrate projektet, kövesse ezt a [cikket.](how-to-add-tool-first-time.md)
+Ha szeretne hozzáadni egy áttelepítési eszközt, és még nem állított be Azure Migrate projektet, kövesse ezt a [cikket](how-to-add-tool-first-time.md).
 
 
 
-## <a name="selecting-an-isv-tool"></a>Független eszköz kiválasztása
+## <a name="selecting-an-isv-tool"></a>ISV-eszköz kiválasztása
 
-Ha az áttelepítéshez [is fontos eszköz](migrate-services-overview.md#isv-integration) lehetőséget választ, először is beszerezhet egy licencet, vagy regisztrálhat egy ingyenes próbaverzióra, a független eszközegyesítési irányelv szabályzatának megfelelően. Az egyes eszközökben van egy lehetőség az Azure Migrate való csatlakozáshoz. Telepítse az eszközt, és kövesse az eszköz utasításait és dokumentációját az eszköz munkaterület ének azure migratehez való csatlakoztatásához. 
+Ha egy ISV- [eszközt](migrate-services-overview.md#isv-integration) választ az áttelepítéshez, megkezdheti a licenc beszerzését vagy az ingyenes próbaverzióra való regisztrációt az ISV-szabályzatnak megfelelően. Minden eszközön lehetőség van a Azure Migratehoz való kapcsolódásra. Telepítse az eszközt, és kövesse az eszközre vonatkozó utasításokat és dokumentációt az eszköz munkaterületének Azure Migratehoz való összekapcsolásához. 
 
 ## <a name="select-a-migration-scenario"></a>Áttelepítési forgatókönyv kiválasztása
 
-1. Az Azure Migrate projektben kattintson **az Áttekintés gombra.**
+1. A Azure Migrate projektben kattintson az **Áttekintés**elemre.
 2. Válassza ki a használni kívánt áttelepítési forgatókönyvet:
 
-    - A gépek és munkaterhelések Azure-ba való áttelepítéséhez válassza **a Kiszolgálók felmassza és áttelepítése lehetőséget.**
-    - A helyszíni SQL-gépek áttelepítéséhez válassza **az Adatbázisok felmérése és áttelepítése**lehetőséget.
-    - A helyszíni webalkalmazások áttelepítéséhez válassza **a Webalkalmazások értékelése és áttelepítése**lehetőséget.
-    - Ha nagy mennyiségű helyszíni adatot szeretne áttelepíteni az Azure-ba offline módban, válassza **az Adatmező rendelése**lehetőséget.
+    - Ha gépeket és számítási feladatokat szeretne áttelepíteni az Azure-ba, válassza a **kiszolgálók felmérése és áttelepíteni**lehetőséget.
+    - A helyszíni SQL-gépek átköltöztetéséhez válassza az **adatbázisok felmérése és áttelepíteni**lehetőséget.
+    - A helyszíni webalkalmazások átköltöztetéséhez válassza a **webalkalmazások felmérése és áttelepíteni**lehetőséget.
+    - Ha nagy mennyiségű helyszíni adatátvitelt szeretne áttelepíteni az Azure-ba offline módban, válassza **az Data Box megrendelése**lehetőséget.
 
     ![Értékelési forgatókönyv](./media/how-to-migrate/assess-scenario.png)
 
-## <a name="select-a-server-migration-tool"></a>Kiszolgálóáttelepítési eszköz kijelölése
+## <a name="select-a-server-migration-tool"></a>Kiszolgáló áttelepítési eszközének kiválasztása
 
-1. Kattintson **a Kiszolgálók felmérése és áttelepítése gombra.**
-2. Ha még nem adott hozzá áttelepítési eszközöket az **Azure Migrate – Servers alkalmazásban,** az **Áttelepítési eszközök csoportban** **kattintson ide az áttelepítési eszköz hozzáadásához.** Ha már hozzáadott áttelepítési eszközöket, a **További áttelepítési eszközök hozzáadása**csoportban válassza a Módosítás **lehetőséget.**
+1. Kattintson **a kiszolgálók felmérése és migrálása**elemre.
+2. Ha még nem adott hozzá áttelepítési eszközöket a **Azure Migrate-kiszolgálókon**, az **áttelepítési eszközök**területen válassza az áttelepítési **eszköz hozzáadásához kattintson ide**. Ha már hozzáadott áttelepítési eszközöket, a **további áttelepítési eszközök hozzáadása**lapon válassza a **módosítás**lehetőséget.
 
     > [!NOTE]
-    > Ha egy másik projektre szeretne navigálni, az **Azure Áttelepítés – Kiszolgálók**csoportban válassza egy **másik áttelepítési projekt részleteinek megtekintése**lehetőséget, kattintson **ide.**
+    > Ha egy másik projekthez kell navigálnia, a **Azure Migrate-kiszolgálók**területen kattintson a **következő gombra** **egy másik áttelepítési projekt részleteinek megtekintéséhez**.
 
-3. Az **Azure Migrate**alkalmazásban válassza ki a használni kívánt áttelepítési eszközt.
-    - Ha az Azure Migrate Server Migration, beállíthatja, és futtathatja az áttelepítések közvetlenül az Azure Migrate projektben.
-    - Ha külső értékelési eszközt használ, keresse meg a szoftverszoftverhez megadott hivatkozást, és futtassa az áttelepítést az általuk megadott utasításoknak megfelelően.
+3. A **Azure Migrate**területen válassza ki a használni kívánt áttelepítési eszközt.
+    - Ha Azure Migrate kiszolgáló áttelepítését használja, beállíthatja és futtathatja az áttelepítést közvetlenül a Azure Migrate projektben.
+    - Ha harmadik féltől származó értékelési eszközt használ, navigáljon az ISV-hoz megadott hivatkozáshoz, és futtassa az áttelepítést az általuk megadott utasításoknak megfelelően.
 
-## <a name="select-a-database-migration-tool"></a>Adatbázis-áttelepítési eszköz kijelölése
+## <a name="select-a-database-migration-tool"></a>Adatbázis-áttelepítési eszköz kiválasztása
 
-1. Kattintson **az Adatbázisok értékelése és áttelepítése parancsra.**
-2. Az **Adatbázisok csoportban**kattintson az **Eszközök hozzáadása gombra.**
-3. Az Eszköz hozzáadása > **Az áttelepítés kiválasztása eszközben**jelölje ki az adatbázis áttelepítéséhez használni kívánt eszközt.
+1. Kattintson **az adatbázisok felmérése és migrálása** elemre.
+2. Az **adatbázisok**területen kattintson az **eszközök hozzáadása**elemre.
+3. Az eszköz hozzáadása > **válassza az áttelepítési eszköz**lehetőséget, majd válassza ki az adatbázis áttelepítéséhez használni kívánt eszközt.
 
 ## <a name="select-a-web-app-migration-tool"></a>Webalkalmazás-áttelepítési eszköz kiválasztása
 
-1. Kattintson **a Webalkalmazások értékelése és áttelepítése gombra.**
-2. Kövesse az Azure App Service áttelepítési eszközére mutató hivatkozást. Az áttelepítési eszközzel:
+1. Kattintson **a webalkalmazások felmérése és migrálása**elemre.
+2. Kövesse a Azure App Service áttelepítési eszközre mutató hivatkozást. Használja az áttelepítési eszközt a következőre:
 
-    - **Alkalmazások online felmérése:** Az Azure App Service Migration Assistant használatával felmérheti és áttelepítheti az alkalmazásokat egy nyilvános URL-címmel az interneten.
-    - **.NET/PHP**: Belső .NET és PHP alkalmazások esetén letöltheti és futtathatja az Áttelepítési segédet.
+    - **Alkalmazások online értékelése**: a Azure app Service Migration Assistant használatával a nyilvános URL-címmel rendelkező alkalmazásokat felhasználhatja és áttelepítheti az interneten.
+    - **.Net/php**: belső .net-és PHP-alkalmazások esetén letöltheti és futtathatja a Migration Assistant.
 
-## <a name="order-an-azure-data-box"></a>Azure-adatdoboz megrendelése
+## <a name="order-an-azure-data-box"></a>Azure Data Box megrendelése
 
-Nagy mennyiségű adat Azure-ba való áttelepítéséhez rendelhet egy Azure DAta Box offline adatátvitelhez.
+Nagy mennyiségű adatok Azure-ba történő átmásolásához rendeljen egy Azure-adatmezőt az offline adatforgalomhoz.
 
-1. Kattintson **az Adatmező rendelése gombra.**
-2. Az **Azure-adatok kiválasztása párbeszédpanelen**adja meg az előfizetést. 
-3. Az átvitel az Azure-ba való importálás lesz. Adja meg az adatforrást és az adatok Azure-régió célját.
+1. Kattintson **a Data Box megrendelése**lehetőségre.
+2. A **Azure Data Box kiválasztása**lapon adja meg az előfizetését. 
+3. Az átvitel az Azure-ba lesz importálva. Határozza meg az adatforrást és az Azure-régió célhelyét.
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az áttelepítést az Azure Migrate Server Migration for [Hyper-V](tutorial-migrate-hyper-v.md) vagy [vMware](tutorial-migrate-vmware.md) virtuális gépek használatával.
+A [Hyper-V](tutorial-migrate-hyper-v.md) -vagy [VMware](tutorial-migrate-vmware.md) -alapú virtuális gépekre Azure Migrate kiszolgáló áttelepítését használó áttelepítés kipróbálása.

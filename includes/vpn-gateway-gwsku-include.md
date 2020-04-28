@@ -9,48 +9,48 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74085245"
 ---
-Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot. Az Azure rendelkezésre állási zónáiban található virtuális hálózati átjáró termékfelhasználóiról az [Azure availability zones átjárótermék- és csoportkészletei.](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md)
+Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot. A Azure Availability Zones virtuális hálózati átjárói SKU-ban tekintse meg a [Azure Availability Zones Gateway SKU](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md)-ket.
 
 ###  <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>Átjáró-termékváltozatok alagút, kapcsolat és átviteli sebesség szerint
 
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
 > [!NOTE]
-> A VpnGw SKUs (VpnGw1, VpnGw1AZ, VpnGw22, VpnGw2AZ, VpnGw3, VpnGw4, VpnGw4, VpnGw5 és VpnGw5AZ) csak az Erőforrás-kezelő telepítési modelljéhez támogatott. A klasszikus virtuális hálózatok továbbra is a régi (örökölt) skus-okat kell használniuk.
->  * Az örökölt átjáró termékkészletekkel (alapszintű, szabványos és nagy teljesítményű) való munkáról a [VPN-átjáró termékkészletei (örökölt termékkészletek) című](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)témakörben talál.
->  * ExpressRoute-átjáró-ska-król az [ExpressRoute virtuális hálózati átjárói.](../articles/expressroute/expressroute-about-virtual-network-gateways.md)
+> A VpnGw SKU-ban (VpnGw1, VpnGw1AZ, VpnGw2, VpnGw2AZ, VpnGw3, VpnGw3AZ, VpnGw4, VpnGw4AZ, VpnGw5 és VpnGw5AZ) csak a Resource Manager-alapú üzemi modellben támogatottak. A klasszikus virtuális hálózatok továbbra is a régi (örökölt) SKU-ket használják.
+>  * További információ az örökölt átjárók (alapszintű, standard és HighPerformance) használatával kapcsolatban: [VPN Gateway SKU-EK (örökölt SKU-EK) használata](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
+>  * A ExpressRoute átjárók esetében lásd: [Virtual Network átjárók a ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).
 >
 
-###  <a name="gateway-skus-by-feature-set"></a><a name="feature"></a>Átjáró-skin szolgáltatáskészlet szerint
+###  <a name="gateway-skus-by-feature-set"></a><a name="feature"></a>Átjárók SKU-ként a szolgáltatáskészlet alapján
 
-Az új VPN-átjáró termékfelhasználói egyszerűsítik az átjárókon kínált szolgáltatáskészleteket:
+Az új VPN Gateway SKU-ra egyszerűsíti az átjárók által kínált szolgáltatáskészlet-készleteket:
 
-| **Sku**| **Szolgáltatások**|
+| **SKU**| **Szolgáltatások**|
 | ---    | ---         |
-|**Alap** (**)   | **Útvonalalapú VPN:** 10 alagút S2S/kapcsolatokhoz; nincs RADIUS-hitelesítés a P2S-hez; nincs IKEv2 a P2S-hez<br>**Házirendalapú VPN**: (IKEv1): 1 S2S/kapcsolatalagút; nincs P2S|
-| **Minden 1. generációs és 2.** | **Útvonalalapú VPN:** legfeljebb 30 alagút (*), P2S, BGP, aktív-aktív, egyéni IPsec/IKE házirend, ExpressRoute/VPN egymás mellett élés |
+|**Alapszintű** (* *)   | **Útvonal-alapú VPN**: 10 alagút a S2S/kapcsolatok számára; a P2S nem rendelkezik RADIUS-hitelesítéssel; nincs IKEv2 a P2S<br>**Házirend alapú VPN**: (IKEv1): 1 S2S/kapcsolati alagút; nincs P2S|
+| **Az összes Generation1 és Generation2 SKU, kivéve az alapszintű** | **Route-alapú VPN**: legfeljebb 30 alagút (*), P2S, BGP, aktív-aktív, egyéni IPSec/IKE-házirend, EXPRESSROUTE/VPN együttes létezése |
 |        |             |
 
-(*) Konfigurálhatja a "PolicyBasedTrafficSelectors" egy útvonal-alapú VPN-átjáró több helyszíni házirend-alapú tűzfaleszközök csatlakoztatásához. További részletekért tekintse meg a [VPN-átjárók több helyszíni házirendalapú VPN-eszközhöz való csatlakoztatása a PowerShellel](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) című cikket.
+(*) A "PolicyBasedTrafficSelectors" konfigurálható úgy, hogy egy Route-alapú VPN-átjárót több helyszíni házirend-alapú tűzfallal csatlakoztasson. További részletekért tekintse meg a [VPN-átjárók több helyszíni házirendalapú VPN-eszközhöz való csatlakoztatása a PowerShellel](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) című cikket.
 
-(\*\*) Az alapszintű termékváltozat örökölt termékváltozatnak számít. Az alapszintű termékváltozat bizonyos funkciókorlátozásokkal rendelkezik. Nem méretezhet át egy átjárót, amely egy egyszerű termékváltozatot használ az új átjáró termékváltozatok egyikéhez, ehelyett át kell váltania egy új termékváltozatra, amely magában foglalja a VPN-átjáró törlését és újbóli létrehozását.
+(\*\*) Az alapszintű SKU egy örökölt SKU-nak minősül. Az alapszintű SKU bizonyos szolgáltatási korlátozásokkal rendelkezik. Alapszintű SKU-t használó átjárót nem lehet átméretezni az új átjárók egyikére, ehelyett egy új SKU-ra kell váltania, amely magában foglalja a VPN-átjáró törlését és újbóli létrehozását.
 
-###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>Átjáró-ska -termelés és a fejlesztési-tesztelési számítási feladatok
+###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>Gateway SKU-gyártás és fejlesztési-tesztelési feladatok
 
 A szolgáltatói szerződések és a szolgáltatáskészletek eltérései miatt az alábbi termékváltozatokat javasoljuk termelés vs. dev-test környezetekhez:
 
-| **Munkateher**                       | **Termékváltozatok**               |
+| **Munkaterhelés**                       | **Termékváltozatok**               |
 | ---                                | ---                    |
-| **Termelés, kritikus fontosságú számítási feladatok** | Minden 1. generációs és 2. |
-| **Dev-test vagy a koncepció igazolása**   | Alap (**)                 |
+| **Termelés, kritikus fontosságú számítási feladatok** | Az összes Generation1 és Generation2 SKU, kivéve az alapszintű |
+| **Dev-test vagy a koncepció igazolása**   | Alapszintű (* *)                 |
 |                                    |                        |
 
-(\*\*) Az alapszintű termékváltozat örökölt termékváltozatnak minősül, és szolgáltatáskorlátozásokkal rendelkezik. Az alaptermékváltozat használata előtt ellenőrizze, hogy a szükséges szolgáltatás támogatott-e.
+(\*\*) Az alapszintű SKU egy örökölt SKU-nak minősül, és szolgáltatási korlátozásokkal rendelkezik. Az alapszintű SKU használata előtt ellenőrizze, hogy az Ön által igényelt szolgáltatás támogatott-e.
 
-Ha a régi termékváltozatokat (örökölt) használja, az éles termékváltozat-javaslatok standard és nagy teljesítményűek. A régi sk-okról és utasításokról az [Átjáró-ski-k (örökölt)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)című témakörben talál.
+Ha a régi SKU-t (örökölt) használja, a termelési SKU-javaslatok standard és HighPerformance. A régi SKU-ra vonatkozó információkkal és utasításokkal kapcsolatban lásd: [átjáró SKU-i (örökölt)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).

@@ -1,7 +1,7 @@
 ---
-title: Az OData-gyűjteményszűrőinek ismertetése
+title: A OData-gyűjtési szűrők ismertetése
 titleSuffix: Azure Cognitive Search
-description: Ismerje meg az OData-gyűjteményszűrők működésének mechanikáját az Azure Cognitive Search-lekérdezésekben, beleértve a gyűjtemények egyedi korlátait és viselkedését.
+description: Megtudhatja, hogyan működnek a OData-gyűjtési szűrők az Azure Cognitive Search lekérdezésekben, beleértve a gyűjtemények egyedi korlátozásait és viselkedését.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,45 +20,45 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113070"
 ---
-# <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Az OData-adatgyűjtési szűrők ismertetése az Azure Cognitive Search szolgáltatásban
+# <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>A OData-gyűjtési szűrők ismertetése az Azure Cognitive Search
 
-Az Azure Cognitive Search gyűjteménymezőinek [szűréséhez](query-odata-filter-orderby-syntax.md) használhatja a [ `any` és `all` ](search-query-odata-collection-operators.md) az operátorokat **lambda kifejezésekkel**együtt. A Lambda-kifejezések logikai kifejezések, amelyek **tartományváltozóra**hivatkoznak. A `any` `all` és operátorok hasonlóak a ciklus a `for` legtöbb programozási nyelvek, a tartomány változó figyelembe szerepét hurok változó, és a lambda kifejezés, mint a törzs a hurok. A tartományváltozó a gyűjtemény "aktuális" értékét veszi fel a hurok iterációja során.
+Az Azure Cognitive Search gyűjtemény mezőinek [szűréséhez](query-odata-filter-orderby-syntax.md) a [ `any` és `all` a operátort](search-query-odata-collection-operators.md) **lambda kifejezésekkel**együtt használhatja. A lambda kifejezés olyan logikai kifejezés, amely egy **tartomány változóra**hivatkozik. A `any` és `all` a kezelők a legtöbb programozási `for` nyelvben a hurokhoz hasonlóak, és a tartomány változó a Loop változó szerepét veszi át, a lambda kifejezést pedig a hurok törzsének. A Range változó a művelet "aktuális" értékét veszi át a hurok ismétlése során.
 
-Legalábbis fogalmilag így működik. A valóságban az Azure Cognitive Search a szűrőket a hurkok működésétől `for` teljesen eltérő módon valósítja meg. Ideális esetben ez a különbség láthatatlan lenne az Ön számára, de bizonyos helyzetekben nem. A végeredmény az, hogy vannak szabályok, amelyeket be kell tartania a lambda kifejezések írásakor.
+Ezek közül legalább a fogalmi módon működik. A valóságban az Azure Cognitive Search nagyon eltérő módon valósítja meg a szűrőket a `for` hurkok működéséhez. Ideális esetben ez a különbség láthatatlan lesz, de bizonyos helyzetekben nem. Ennek végeredménye az, hogy a lambda kifejezések írásakor követni kell a szükséges szabályokat.
 
-Ez a cikk ismerteti, hogy miért léteznek a gyűjteményszűrőkre vonatkozó szabályok, ha feltárja, hogy az Azure Cognitive Search hogyan hajtja végre ezeket a szűrőket. Ha komplex lambda kifejezésekkel rendelkező speciális szűrőket ír, hasznosnak találhatja ezt a cikket a szűrőkben lehetséges lehetőségek megértésében, és miért.
+Ez a cikk azt ismerteti, hogy az Azure Cognitive Search hogyan hajtja végre ezeket a szűrőket a gyűjtési szűrők szabályainak megismeréséhez. Ha összetett lambda kifejezésekkel rendelkező speciális szűrőket ír, akkor ez a cikk hasznos lehet a szűrőkben rejlő lehetőségek megismerésének kialakításában és a miért.
 
-A gyűjteményszűrők revonatkozó szabályairól, példákat is beleértve, az [Azure Cognitive Search OData-gyűjteményszűrőinek hibaelhárítása című témakörben olvashat.](search-query-troubleshoot-collection-filters.md)
+További információ a gyűjtési szűrők szabályairól, beleértve a példákat is: [OData-gyűjtési szűrők hibaelhárítása Az Azure Cognitive Searchban](search-query-troubleshoot-collection-filters.md).
 
-## <a name="why-collection-filters-are-limited"></a>Miért korlátozottak a kollekciós szűrők?
+## <a name="why-collection-filters-are-limited"></a>A gyűjtési szűrők korlátozása
 
-Három oka van annak, hogy miért nem minden szűrőfunkció támogatott minden típusú gyűjteményesetében:
+Három alapvető oka van annak, hogy az összes szűrési funkció nem támogatott az összes típusú gyűjtemény esetében:
 
-1. Bizonyos adattípusok esetében csak bizonyos operátorok támogatottak. Például nincs értelme összehasonlítani a logikai értékeket, `true` és `false` a `lt` `gt`, és így tovább.
-1. Az Azure Cognitive Search nem támogatja a `Collection(Edm.ComplexType)` **korrelált keresést** a típusú mezőkön.
-1. Az Azure Cognitive Search fordított indexeket használ a szűrők végrehajtására az összes típusú adat, beleértve a gyűjteményeket.
+1. Bizonyos adattípusok esetében csak bizonyos operátorok támogatottak. Így például `true` nem érdemes összehasonlítani a logikai értékeket, és `false` `lt`a, `gt`, és így tovább.
+1. Az Azure Cognitive Search nem támogatja a (z) típusú `Collection(Edm.ComplexType)`mezők **korrelált keresését** .
+1. Az Azure Cognitive Search invertált indexeket használ a szűrők végrehajtásához az összes típusú adathoz, beleértve a gyűjteményeket is.
 
-Az első ok csak annak a következménye, hogy az OData nyelv és az EDM típusú rendszer definiálva van. Az utolsó kettőt részletesebben ismertetjük a cikk többi részében.
+Az első ok a OData nyelv és a EDM típusának meghatározása. Az utolsó kettőt részletesebben ismertetjük a cikk további részében.
 
-## <a name="correlated-versus-uncorrelated-search"></a>Korrelált és nem kapcsolódó keresés
+## <a name="correlated-versus-uncorrelated-search"></a>Korrelált és nem korrelált keresés
 
-Ha összetett objektumok gyűjteményére több szűrőfeltételt alkalmaz, a feltételek **korrelálnak,** mivel *a gyűjtemény minden objektumára*vonatkoznak. A következő szűrő például olyan szállodákat ad vissza, amelyek legalább egy deluxe szobával rendelkeznek, 100-nál kisebb árral:
+Ha összetett objektumok gyűjteményéhez több szűrési feltételt alkalmaz, a feltételek **korrelálnak** , mivel azok *a gyűjtemény egyes objektumaira*vonatkoznak. A következő szűrő például olyan szállodákat ad vissza, amelyek legalább egy deluxe szobával rendelkeznek, 100-nál kisebb sebességgel:
 
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
 
-Ha a szűrés nem volt *korrelált*, a fenti szűrő visszaszállhat a szállodákba, ahol az egyik szoba deluxe, egy másik szoba alapdíja pedig kevesebb, mint 100. Ennek semmi értelme, mivel a lambda kifejezés mindkét záradéka ugyanarra a `room`tartományváltozóra vonatkozik, nevezetesen a . Ez az oka annak, hogy az ilyen szűrők korrelálnak.
+Ha a szűrés nem *korrelált*, a fenti szűrő olyan szállodákat ad vissza, amelyekben egy szoba Deluxe, egy másik helyiség pedig 100-nál kisebb alapértékkel rendelkezik. Ez nem lenne értelme, mivel a lambda kifejezés mindkét záradéka ugyanarra a tartományra vonatkozik, azaz `room`. Ez az oka, hogy az ilyen szűrők korrelálnak.
 
-A teljes szöveges kereséshez azonban nem lehet egy adott tartományváltozóra hivatkozni. Ha a mezőalapú kereséssel a következőhöz hasonló [teljes Lucene-lekérdezést](query-lucene-syntax.md) ad ki:
+A teljes szöveges kereséshez azonban nincs mód arra, hogy egy adott tartomány változóra hivatkozzon. Ha a mezőhöz tartozó kereséssel [teljes Lucene-lekérdezést](query-lucene-syntax.md) szeretne kiadni:
 
     Rooms/Type:deluxe AND Rooms/Description:"city view"
 
-lehet, hogy a szállodák vissza, ahol egy szoba deluxe, és egy másik szoba említi "városra néző" a leírásban. Például az alábbi `Id` dokumentum `1` a volna egyezik a lekérdezés:
+Előfordulhat, hogy a rendszer visszaküldi a szállodát, ahol az egyik szoba Deluxe, a leírásban pedig egy másik szoba a "City View" kifejezésre hivatkozik. Az alábbi `Id` `1` dokumentum például megfelel a lekérdezésnek:
 
 ```json
 {
@@ -80,39 +80,39 @@ lehet, hogy a szállodák vissza, ahol egy szoba deluxe, és egy másik szoba em
 }
 ```
 
-Ennek az `Rooms/Type` az oka, hogy a `Rooms/Type` teljes dokumentum ban a mező `Rooms/Description`összes elemzett kifejezésére vonatkozik, és hasonlóképpen a , ahogy az az alábbi táblázatokban látható.
+Ennek az az oka `Rooms/Type` , hogy a teljes dokumentumban a `Rooms/Type` mező összes elemzett feltételére hivatkozik, és hasonlóképpen `Rooms/Description`, az alábbi táblázatokban látható módon.
 
-Hogyan `Rooms/Type` történik a teljes szöveges keresés tárolása:
+`Rooms/Type` A teljes szöveges keresés tárolása:
 
-| Kifejezés`Rooms/Type` | Dokumentumazonosítók |
+| Kifejezés a`Rooms/Type` | Dokumentumok azonosítói |
 | --- | --- |
 | Deluxe | 1, 2 |
 | Standard | 1 |
 
-Hogyan `Rooms/Description` történik a teljes szöveges keresés tárolása:
+`Rooms/Description` A teljes szöveges keresés tárolása:
 
-| Kifejezés`Rooms/Description` | Dokumentumazonosítók |
+| Kifejezés a`Rooms/Description` | Dokumentumok azonosítói |
 | --- | --- |
 | Courtyard | 2 |
 | city | 1 |
-| Kert | 1 |
-| Nagy | 1 |
+| kertészkedni | 1 |
+| nagy | 1 |
 | Motel | 2 |
-| Szoba | 1, 2 |
+| szoba | 1, 2 |
 | Standard | 1 |
 | Suite | 1 |
-| Nézd | 1 |
+| megtekintése | 1 |
 
-Tehát ellentétben a fenti szűrő, amely alapvetően `Type` azt mondja: "mérkőzés dokumentumok, `BaseRate` ahol a szoba egyenlő "Deluxe Room", `Rooms/Type` és **hogy ugyanabban** `Rooms/Description` a szobában kevesebb, mint 100", a keresési lekérdezés azt mondja: "mérkőzés dokumentumok, ahol a "deluxe", és a "városnézet". Nincs fogalma az egyes szobák, amelyek területén lehet korrelál az utóbbi esetben.
+Tehát a fenti szűrővel ellentétben, ami alapvetően azt mondja, hogy "a dokumentumok `Type` egyeztetése, ha egy szoba a" Deluxe szoba " `BaseRate` értékkel rendelkezik, és ugyanazon a helyen kevesebb mint 100", `Rooms/Type` a keresési lekérdezés azt írja le, `Rooms/Description` **hogy** "a" Deluxe "kifejezést tartalmazó dokumentumok megfelelnek, és a" City View "kifejezéssel rendelkezik. Az egyes helyiségek nem rendelkeznek olyan fogalmakkal, amelyek mezői összekapcsolhatók az utóbbi esetben.
 
 > [!NOTE]
-> Ha szeretné, hogy az Azure Cognitive Search hozzáadja a korrelált keresés támogatását, kérjük, szavazzon erre a [User Voice elemre.](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections)
+> Ha szeretné megtekinteni az Azure Cognitive Searchhoz hozzáadott korrelált keresés támogatását, kérjük, szavazzon [erre a felhasználói hangelemre](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections).
 
-## <a name="inverted-indexes-and-collections"></a>Fordított indexek és gyűjtemények
+## <a name="inverted-indexes-and-collections"></a>Invertált indexek és gyűjtemények
 
-Lehet, hogy észrevette, hogy sokkal kevesebb korlátozás lambda kifejezések összetett gyűjtemények, `Collection(Edm.Int32)`mint `Collection(Edm.GeographyPoint)`vannak az egyszerű gyűjtemények, mint, , és így tovább. Ennek az az oka, hogy az Azure Cognitive Search az összetett gyűjteményeket aldokumentumok tényleges gyűjteményeként tárolja, míg az egyszerű gyűjtemények egyáltalán nem tárolódnak gyűjteményekként.
+Előfordulhat, hogy észrevette, hogy az összetett gyűjteményeknél jóval kevesebb korlátozás vonatkozik a lambda kifejezésekre, mint például a `Collection(Edm.Int32)`( `Collection(Edm.GeographyPoint)`z), és hasonló egyszerű gyűjtemények esetében. Ennek az az oka, hogy az Azure Cognitive Search az aldokumentumok tényleges gyűjteményei tárolja az összetett gyűjteményeket, míg az egyszerű gyűjtemények egyáltalán nem gyűjteményként vannak tárolva.
 
-Vegyünk például egy szűrhető `seasons` karakterlánc-gyűjteménymezőt, például egy online kiskereskedő indexében. Az indexbe feltöltött egyes dokumentumok a következőkre néznek ki:
+Tegyük fel például, hogy egy szűrhető karakterlánc `seasons` -gyűjtési mező, például egy online kiskereskedő indexe. Az indexbe feltöltött egyes dokumentumok így néznek ki:
 
 ```json
 {
@@ -136,60 +136,60 @@ Vegyünk például egy szűrhető `seasons` karakterlánc-gyűjteménymezőt, p�
 }
 ```
 
-A mező `seasons` értékeit egy **fordított indexnek**nevezett struktúrában tárolják, amely valahogy így néz ki:
+A `seasons` mező értékét egy **fordított index**nevű struktúrában tárolja a rendszer, amely a következőhöz hasonlóan néz ki:
 
-| Időtartam | Dokumentumazonosítók |
+| Időtartam | Dokumentumok azonosítói |
 | --- | --- |
-| Tavaszi | 1, 2 |
-| Nyári | 1 |
-| Esik | 1, 2 |
-| Téli | 2, 3 |
+| Spring | 1, 2 |
+| nyári | 1 |
+| esik | 1, 2 |
+| téli | 2, 3 |
 
-Ez az adatstruktúra egy kérdésre nagy sebességgel válaszol: Mely dokumentumok jelennek meg egy adott kifejezésben? A kérdés megválaszolása inkább egyszerű egyenlőségi ellenőrzésként működik, mint egy gyűjtemény feletti hurok. Valójában ez az oka annak, hogy a `eq` karakterlánc-gyűjtemények, az Azure `any`Cognitive Search csak lehetővé teszi, mint egy összehasonlító operátor belsejében lambda kifejezés.
+Ezt az adatszerkezetet úgy tervezték, hogy nagy sebességgel válaszoljon egy kérdésre: milyen dokumentumokon jelenik meg egy adott kifejezés? A kérdés megválaszolásához hasonlóan működik egy egyszerű egyenlőségi vizsgálat, mint egy gyűjteményben. Valójában ez azért van így, mert a karakterlánc-gyűjtemények esetében az Azure `eq` Cognitive Search csak a lambda kifejezésen belüli összehasonlítási `any`operátorként engedélyezi.
 
-Kiépítése az egyenlőség, a következő fogjuk nézni, hogyan lehet kombinálni több egyenlőség `or`ellenőrzések ugyanazon a tartomány változó . Úgy működik, köszönhetően algebra és [az elosztó tulajdonsága quantifiers](https://en.wikipedia.org/wiki/Existential_quantification#Negation). Ez a kifejezés:
+Az egyenlőségből való kiépítés után a következő lépésben megvizsgáljuk, hogyan lehet egyszerre több egyenlő ellenőrzést egyesíteni ugyanazon a `or`tartományon belüli változóban. Az algebra és [a mennyiségileg kiterjesztő tulajdonságának](https://en.wikipedia.org/wiki/Existential_quantification#Negation)köszönhetően működik. Ez a kifejezés:
 
     seasons/any(s: s eq 'winter' or s eq 'fall')
 
-egyenértékű a következőkkal:
+egyenértékű a következővel:
 
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
 
-és a két `any` részkifejezés mindegyike hatékonyan hajtható végre a fordított index használatával. Is, hála [a negation törvény quantifiers](https://en.wikipedia.org/wiki/Existential_quantification#Negation), ez a kifejezés:
+a két `any` alkifejezést pedig hatékonyan lehet végrehajtani a fordított index használatával. Emellett a mennyiségi felmondás [törvényének köszönhetően a](https://en.wikipedia.org/wiki/Existential_quantification#Negation)következő kifejezés:
 
     seasons/all(s: s ne 'winter' and s ne 'fall')
 
-egyenértékű a következőkkal:
+egyenértékű a következővel:
 
     not seasons/any(s: s eq 'winter' or s eq 'fall')
 
-ezért lehetséges a használatával és `all` `and` `ne` a alkalmazásával.
+Ezért lehetséges a és `all` `ne` `and`a használata.
 
 > [!NOTE]
-> Bár a részletek túlmutatnak e dokumentum hatókörén, ugyanezek az elvek kiterjednek a [távolságra és a tértéri pontok gyűjteményének metszéspontjaira](search-query-odata-geo-spatial-functions.md) is. Ez az oka annak, hogy: `any`
+> Bár a részletek ezen dokumentum hatókörén kívül esnek, ugyanazok az alapelvek a [földrajzi térbeli pontok gyűjteményeit is kiterjesztik a távolságra és a metszeti tesztekre](search-query-odata-geo-spatial-functions.md) . Ezért `any`:
 >
-> - `geo.intersects`nem lehet cáfolni
-> - `geo.distance`össze kell `lt` hasonlítani a`le`
-> - a kifejezéseket a `or``and`
+> - `geo.intersects`nem lehet megfosztani
+> - `geo.distance`össze kell hasonlítani `lt` a vagy a használatával`le`
+> - a `or`kifejezéseket kombinálni kell, nem`and`
 >
-> Az ezzel szemben `all`érvényes szabályok ra vonatkoznak.
+> A Converse szabályok érvényesek `all`.
 
-A kifejezések szélesebb `lt`skálája engedélyezett a , `gt`a , `le`és `ge` operátorokat támogató adattípusok `Collection(Edm.Int32)` gyűjteményeinek szűrésekénte, például. Pontosabban használhatja, `and` `or` valamint a `any`, mindaddig, amíg az alapul szolgáló összehasonlító kifejezések kombinálva `or`tartomány **összehasonlítások** segítségével `and`, amelyeket aztán tovább kombinálva . A logikai kifejezések ezen szerkezetét [disjunctive normal form (DNF) (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form)néven nevezik, más néven "AND-k csak-k". Ezzel szemben az ilyen adattípusokhoz tartozó `all` lambda kifejezéseknek [kötőhelyes normál (CNF) (KNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form)formátumban kell lenniük, más néven "legkülső régiók AND-i". Az Azure Cognitive Search lehetővé teszi az ilyen tartomány-összehasonlításokat, mert hatékonyan végrehajthatja azokat fordított indexek használatával, csakúgy, mint a karakterláncok gyors kifejezéskeresését.
+`lt`A `Collection(Edm.Int32)` (z),, és `le` `ge` operátorokat támogató `gt`adattípusok, például például a-gyűjtemények esetében a kifejezések szélesebb választéka engedélyezett. `and` Pontosabban használhatja a `or` -t és a- `any`t is, feltéve, hogy az alapul szolgáló összehasonlító kifejezések **tartományhoz viszonyítva vannak összehasonlítva** a használatával `and`, `or`amelyek ezután tovább kombinálhatók a használatával. A logikai kifejezések ezen struktúrájának neve [diszjunkt kötelezőségi Normal Form (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form), más néven "Örs of and". Ezzel szemben az `all` ehhez az adattípusokhoz tartozó lambda kifejezéseknek a [Conjunctive normál formában (cnf)](https://en.wikipedia.org/wiki/Conjunctive_normal_form)kell lenniük, más néven a "Örs and". Az Azure Cognitive Search lehetővé teszi az ilyen címtartomány-összehasonlításokat, mivel azokat a lefordított indexek hatékony használatával hajthatja végre, ugyanúgy, mint a karakterláncok gyors kifejezésének kereséséhez.
 
-Összefoglalva, itt vannak a szabályok a hüvelykujj, amit megengedett a lambda kifejezés:
+Összefoglalva: Itt láthatók a lambda kifejezésben engedélyezett, a következőre vonatkozó szabályok:
 
-- `any`Belül, *a pozitív ellenőrzések* mindig megengedettek, mint `geo.intersects`például az egyenlőség, a tartomány összehasonlítása, vagy `geo.distance` a "közelségre" hasonlít, `lt` `le` mint az egyenlőségre, amikor a távolság ellenőrzéséről van szó).
-- `any`Belül, `or` mindig megengedett. Csak olyan `and` adattípusokhoz használható, amelyek képesek tartományellenőrzéseket kifejezni, és csak akkor, ha and-ek (DNF) legkülső adatait használja.
-- Belül `all`a szabályok sztornírozva vannak - csak *negatív ellenőrzések* engedélyezettek, mindig használhatja, `and` és csak a legkülső régiók AND-jeként (CNF) kifejezett tartományellenőrzésekhez használható. `or`
+- `any`A *pozitív ellenőrzések* mindig megengedettek, például az egyenlőség, a tartomány-összehasonlítás `geo.intersects`, vagy `geo.distance` a ( `lt` z `le` ) vagy a ("Bezárás", mint az egyenlőség ellenőrzése, ha a távolságot ellenőrzi).
+- `or` A szolgáltatáson belül `any`mindig engedélyezett. Csak olyan adattípusokhoz használható `and` , amelyek expressz tartomány-ellenőrzéseket használhatnak, és csak akkor, ha a and (DNF)-t használja.
+- A-ben a szabályok fordítottak, csak a *negatív ellenőrzéseket* lehet használni, a mindig `and` használható, és csak a and-ben kifejezett tartomány-ellenőrzéseknél lehet használni `or` `all`
 
-A gyakorlatban ezek azok a szűrők, amelyeket a legnagyobb valószínűséggel használ. Ez még mindig hasznos, hogy megértsék a határait, hogy mi lehetséges mégis.
+A gyakorlatban ezek azok a szűrők típusai, amelyeknek a legvalószínűbb, hogy amúgy is használni fogjuk. Továbbra is hasznos lehet, ha tisztában van azzal, hogy mi is lehetséges.
 
-A szűrők típusainak használatára vonatkozó konkrét példákat az [Érvényes gyűjteményszűrők írása (Útmutató az érvényes gyűjteményszűrők írása) (Útmutató az érvényes gyűjteményszűrők írása) témakörben talál.](search-query-troubleshoot-collection-filters.md#bkmk_examples)
+Adott példákat, amelyek esetében engedélyezett a szűrők típusa, és amelyek nem léteznek, tekintse meg az [érvényes gyűjteményi szűrők írását](search-query-troubleshoot-collection-filters.md#bkmk_examples)ismertető témakört.
 
 ## <a name="next-steps"></a>További lépések  
 
-- [OData-gyűjteményszűrők hibaelhárítása az Azure Cognitive Search szolgáltatásban](search-query-troubleshoot-collection-filters.md)
-- [Szűrők az Azure Cognitive Search szolgáltatásban](search-filters.md)
-- [Az Azure Cognitive Search OData-kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
-- [Az Azure Cognitive Search OData-kifejezés szintaxisának hivatkozása](search-query-odata-syntax-reference.md)
-- [Az Azure Cognitive Search REST API-&#41;&#40;dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [OData-gyűjtési szűrők hibaelhárítása Az Azure-ban Cognitive Search](search-query-troubleshoot-collection-filters.md)
+- [Szűrők az Azure Cognitive Search](search-filters.md)
+- [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
+- [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

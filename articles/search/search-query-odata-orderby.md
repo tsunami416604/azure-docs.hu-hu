@@ -1,7 +1,7 @@
 ---
-title: OData rendelési hivatkozás
+title: OData rendelés – hivatkozás alapján
 titleSuffix: Azure Cognitive Search
-description: Szintaxis és nyelvi referencia dokumentáció az Azure Cognitive Search-lekérdezések rendelési szolgáltatásának kezeléséhez.
+description: Szintaxissal és nyelvi dokumentációval az Azure Cognitive Search-lekérdezésekben használt Order by használatával.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,19 +20,19 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113150"
 ---
-# <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Az OData $orderby szintaxist az Azure Cognitive Search szolgáltatásban
+# <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData $orderby szintaxis az Azure-ban Cognitive Search
 
- Az [OData **$orderby** paraméter](query-odata-filter-orderby-syntax.md) rel egyéni rendezési sorrendet alkalmazhat a keresési eredményekhez az Azure Cognitive Search szolgáltatásban. Ez a cikk részletesen ismerteti **a $orderby** szintaxisát. A keresési eredmények **bemutatásakor a $orderby** használatáról a Keresési eredmények használata az Azure Cognitive Search alkalmazásban című témakörben olvashat [bővebben.](search-pagination-page-layout.md)
+ A [OData **$OrderBy** paraméterrel](query-odata-filter-orderby-syntax.md) egyéni rendezési sorrendet alkalmazhat az Azure Cognitive Search keresési eredményeire. Ez a cikk részletesen ismerteti **$OrderBy** szintaxisát. A keresési eredmények megjelenítésével kapcsolatos további általános információkért lásd: a keresési eredmények **$OrderBy** használata [Az Azure-ban Cognitive Search](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Szintaxis
 
-A **$orderby** paraméter legfeljebb 32 **rendelési záradékot**tartalmazó, vesszővel tagolt listát fogad el . A rendelési záradék szintaxisát a következő EBNF[(Extended Backus-Naur Form):](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)
+A **$OrderBy** paraméter legfeljebb 32 **ORDER-BY záradék**vesszővel tagolt listáját fogadja el. Az ORDER-BY záradék szintaxisát a következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) írja le:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -42,45 +42,45 @@ order_by_clause ::= (field_path | sortable_function) ('asc' | 'desc')?
 sortable_function ::= geo_distance_call | 'search.score()'
 ```
 
-Interaktív szintaktikai diagram is elérhető:
+Az interaktív szintaxis diagram is elérhető:
 
 > [!div class="nextstepaction"]
-> [OData-szintaktikai diagram az Azure Cognitive Search szolgáltatáshoz](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
+> [Az Azure Cognitive Search OData szintaxisának diagramja](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> Lásd: [OData kifejezés szintaxis referencia az Azure Cognitive Search](search-query-odata-syntax-reference.md) a teljes EBNF.
+> Tekintse meg az [Azure Cognitive Search OData-kifejezés szintaxisának referenciáját](search-query-odata-syntax-reference.md) a teljes EBNF.
 
-Minden záradéknak van rendezési feltétele,`asc` amelyet egy `desc` rendezési irány követ (növekvő vagy csökkenő). Ha nem ad meg irányt, az alapértelmezett érték növekvő. A rendezési feltételek lehetnek `sortable` egy mező elérési útja, vagy a függvények [`geo.distance`](search-query-odata-geo-spatial-functions.md) vagy a függvények hívása. [`search.score`](search-query-odata-search-score-function.md)
+Az egyes záradékok rendezési feltételekkel rendelkeznek, opcionálisan egy rendezési irány után`asc` ( `desc` növekvő vagy csökkenő sorrendben). Ha nem ad meg irányt, az alapértelmezett érték a növekvő. A rendezési feltétel lehet egy `sortable` mező elérési útja vagy a [`geo.distance`](search-query-odata-geo-spatial-functions.md) vagy a [`search.score`](search-query-odata-search-score-function.md) függvények egyik hívása is.
 
-Ha több dokumentum nak ugyanaz `search.score` a rendezési feltétele, és a függvény nincs `Rating` használva (például ha numerikus mező szerint rendez, és három dokumentum mindegyike 4-es minősítéssel rendelkezik), a kapcsolatok csökkenő sorrendben lesznek törve a dokumentum pontszáma szerint. Ha a dokumentum pontszámok azonosak (például, ha nincs teljes szöveges keresési lekérdezés a kérelemben megadva), akkor a csatolt dokumentumok relatív sorrendje meghatározatlan.
+Ha több dokumentumra ugyanazok a rendezési feltételek tartoznak `search.score` , és a függvény nincs használatban (például ha egy numerikus `Rating` mező alapján rendezi a sort, és a három dokumentum minősítése 4), a kapcsolatok a dokumentum pontszáma szerint csökkenő sorrendben lesznek megszakítva. Ha a dokumentumok pontszámai megegyeznek (például ha nincs megadva teljes szöveges keresési lekérdezés a kérelemben), akkor a kötött dokumentumok relatív sorrendje nem kötelező.
 
-Több rendezési feltételt is megadhat. A kifejezések sorrendje határozza meg a végső rendezési sorrendet. Ha például a csökkenő pontszámot, majd a Minősítést `$orderby=search.score() desc,Rating desc`szeretné rendezni, a szintaxis a .
+Több rendezési feltételt is megadhat. A kifejezések sorrendje határozza meg a végső rendezési sorrendet. Például a pontszám csökkenő rendezéséhez, amelyet a minősítés követ, a szintaxis a következő: `$orderby=search.score() desc,Rating desc`.
 
-A **$orderby** `geo.distance` szintaxisa megegyezik a **$filter.** A `geo.distance` **$orderby**használata esetén annak a mezőnek, `Edm.GeographyPoint` amelyre vonatkozik, típusnak kell lennie, és annak is lennie `sortable`kell.
+A `geo.distance` **$OrderBy** szintaxisa megegyezik a **$Filter**. `geo.distance` **$OrderBy**használatakor a mezőnek, amelyre az vonatkozik, típusnak `Edm.GeographyPoint` kell lennie, és azt is `sortable`tartalmaznia kell.
 
-A **$orderby** `search.score` szintaxisa `search.score()`a . A `search.score` függvény nem vesz igénybe paramétereket.
+A **$OrderBy** szintaxisa a következő `search.score()` `search.score` :. A függvény `search.score` nem végez paramétereket.
 
 ## <a name="examples"></a>Példák
 
-A szállodák rendezése alapdíj szerint:
+A hotelek növekvő sorrendbe állítása alapdíj alapján:
 
     $orderby=BaseRate asc
 
-Rendezze a szállodákat minősítés szerint, majd az alapdíj szerint növekvő (ne feledje, hogy a növekvő az alapértelmezett):
+Rendezheti a szállodákat a minősítés alapján csökkenő sorrendben, majd az alaparány szerint növekvő értéket (ne feledje, hogy az emelkedő az alapértelmezett):
 
     $orderby=Rating desc,BaseRate
 
-Rendezze a szállodákat minősítés szerint, majd a megadott koordinátáktól való távolság szerint:
+Rendezheti a szállodákat a minősítés alapján csökkenő sorrendben, majd a megadott koordináták távolsága alapján:
 
     $orderby=Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 
-A hoteleket csökkenő sorrendben rendezheti a search.score és rating szerint, majd növekvő sorrendben az adott koordinátáktól való távolság szerint. Két azonos relevancia-pontszámmal és értékeléssel rendelkező szálloda között a legközelebbi szerepel először:
+A szállodákat csökkenő sorrendbe rendezheti kereséssel. pontszám és értékelés, majd növekvő sorrendben, a megadott koordináták távolsága alapján. A legközelebb álló pontszámok és minősítések két, egymással azonos vonatkozású, a legközelebb található:
 
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 
 ## <a name="next-steps"></a>További lépések  
 
-- [A keresési eredmények működése az Azure Cognitive Search szolgáltatásban](search-pagination-page-layout.md)
-- [Az Azure Cognitive Search OData-kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
-- [Az Azure Cognitive Search OData-kifejezés szintaxisának hivatkozása](search-query-odata-syntax-reference.md)
-- [Az Azure Cognitive Search REST API-&#41;&#40;dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Keresési eredmények használata az Azure-ban Cognitive Search](search-pagination-page-layout.md)
+- [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)
+- [Az Azure Cognitive Search OData-kifejezési szintaxisának referenciája](search-query-odata-syntax-reference.md)
+- [Dokumentumok keresése &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

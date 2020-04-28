@@ -1,6 +1,6 @@
 ---
-title: azcopy make | Microsoft dokumentumok
-description: Ez a cikk az azcopy make parancsra vonatkozó referenciainformációkat tartalmaz.
+title: azcopy make | Microsoft Docs
+description: Ez a cikk a azcopy make paranccsal kapcsolatos tudnivalókat tartalmazza.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,30 +9,30 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 67d685684c5227377a0f8a7e822a06e785a69d89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74034049"
 ---
 # <a name="azcopy-make"></a>azcopy make
 
-Tároló vagy fájlmegosztás létrehozása.
+Létrehoz egy tárolót vagy fájlmegosztást.
 
 ## <a name="synopsis"></a>Áttekintés
 
-Hozzon létre egy tárolót vagy fájlmegosztást, amelyet az adott erőforrás URL-címe képvisel.
+Hozzon létre egy tárolót vagy fájlmegosztást, amelyet a megadott erőforrás URL-címe képvisel.
 
 ```azcopy
 azcopy make [resourceURL] [flags]
 ```
 
-## <a name="related-conceptual-articles"></a>Kapcsolódó koncepcionális cikkek
+## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele az AzCopy és blob tárhellyel](storage-use-azcopy-blobs.md)
-- [Adatátvitel átvitele az AzCopy programmal és a fájltárolással](storage-use-azcopy-files.md)
-- [Az AzCopy konfigurálása, optimalizálása és hibaelhárítása](storage-use-azcopy-configure.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Példák
 
@@ -44,15 +44,15 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 
 |Beállítás|Leírás|
 |--|--|
-|-h, --segítség|A make parancs súgótartalmának megjelenítése. |
-|--kvóta-gb uint32|A megosztás maximális méretét adja meg gigabájtban (GiB), a 0 azt jelenti, hogy elfogadja a fájlszolgáltatás alapértelmezett kvótáját.|
+|-h,-– Súgó|Súgótartalom megjelenítése a make parancshoz. |
+|--kvóta-GB UInt32|Meghatározza a megosztás maximális méretét gigabájtban (GiB), 0 azt jelenti, hogy elfogadja a Fájlszolgáltatások alapértelmezett kvótáját.|
 
-## <a name="options-inherited-from-parent-commands"></a>Szülőparancsoktól örökölt beállítások
+## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
 |Beállítás|Leírás|
 |---|---|
-|--sapka-mbps uint32|Az átviteli sebesség felső határa megabit/másodpercben. A pillanatonkénti átviteli kapacitás kissé eltérhet a kupaktól. Ha ez a beállítás nulla, vagy nincs megadva, az átviteli áteresztőmód nem lesz korlátozva.|
-|--kimenet-típusú karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: szöveg, json. Az alapértelmezett érték a "szöveg".|
+|--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
+|--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
 ## <a name="see-also"></a>Lásd még
 

@@ -1,6 +1,6 @@
 ---
-title: Változáscsatorna feldolgozása az Azure Blob Storage-ban (előzetes verzió) | Microsoft dokumentumok
-description: Információ a módosítási hírcsatorna-naplók feldolgozásához .NET ügyfélalkalmazásban
+title: Adatváltozási hírcsatorna feldolgozása az Azure Blob Storage (előzetes verzió) | Microsoft Docs
+description: Megtudhatja, hogyan dolgozhatja fel az adatcsatorna-naplókat egy .NET-ügyfélalkalmazás esetében
 author: normesta
 ms.author: normesta
 ms.date: 11/04/2019
@@ -9,36 +9,36 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74111859"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Módosítási hírcsatorna feldolgozása az Azure Blob Storage-ban (előzetes verzió)
+# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Adatváltozási hírcsatorna feldolgozása az Azure Blob Storage (előzetes verzió)
 
-A változáscsatorna tranzakciós naplókat biztosít a blobok és a tárfiókblob-metaadatok változásairól. Ez a cikk bemutatja, hogyan olvashatja a módosítási hírcsatorna-rekordokat a blob változáscsatorna-processzorkódtár használatával.
+A módosítási hírcsatorna tranzakciós naplókat biztosít a blobok és a blob metaadatainak a Storage-fiókban történt változásairól. Ebből a cikkből megtudhatja, hogyan olvashatja el a módosítási hírcsatorna rekordjait a blob Change feed Processor Library használatával.
 
-Ha többet szeretne megtudni a módosítási hírcsatornáról, olvassa el a [Hírcsatorna módosítása az Azure Blob Storage (előzetes verzióban) című témakört.](storage-blob-change-feed.md)
+További információ a változási csatornáról: a [hírcsatorna módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md).
 
 > [!NOTE]
-> A módosítási hírcsatorna nyilvános előzetes verzióban érhető el, és a **westcentralus** és a **westus2** régiókban érhető el. Ha többet szeretne megtudni erről a funkcióról az ismert problémákkal és korlátozásokkal együtt, olvassa el a [Hírcsatorna támogatásának módosítása az Azure Blob Storage szolgáltatásban című témakört.](storage-blob-change-feed.md) A módosítási hírcsatorna-processzorkönyvtár mostantól a könyvtár általános elérhetővé adandóná.
+> A módosítási hírcsatorna nyilvános előzetes verzióban érhető el, és a **westcentralus** és **westus2** régiókban is elérhető. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és korlátozásokról, tekintse meg a [hírcsatorna-támogatás módosítása az Azure Blob Storageban](storage-blob-change-feed.md)című témakört. A módosítási hírcsatorna-feldolgozó függvénytárának változása mostantól változhat, és a tár általánosan elérhetővé válik.
 
-## <a name="get-the-blob-change-feed-processor-library"></a>A blobmódosítási hírcsatorna-folyamattár beszereznie
+## <a name="get-the-blob-change-feed-processor-library"></a>A blob Change feed Processor Library letöltése
 
-1. A Visual Studióban `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` adja hozzá az URL-címet a NuGet csomagforrásokhoz. 
+1. A Visual Studióban adja hozzá a `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` NuGet-csomag forrásaihoz tartozó URL-címet. 
 
-   Ebből megtudhatja, hogyan, lásd: [csomagforrások](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
+   További információ: [Package sources](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
 
-2. A NuGet csomagkezelőben keresse meg a **Microsoft.Azure.Storage.Changefeed** csomagot, és telepítse azt a projektre. 
+2. A NuGet csomagkezelő eszközben keresse meg a **Microsoft. Azure. Storage. Changefeed** csomagot, és telepítse a projektbe. 
 
-   Ebből megtudhatja, hogyan, olvassa el a Csomag keresése és telepítése című [témakört.](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)
+   További információt a [csomagok keresése és telepítése](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)című témakörben talál.
 
-## <a name="connect-to-the-storage-account"></a>Csatlakozás a tárfiókhoz
+## <a name="connect-to-the-storage-account"></a>Kapcsolódás a Storage-fiókhoz
 
-Elemezje a kapcsolati karakterláncot a [CloudStorageAccount.TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) metódus hívásával. 
+A [CloudStorageAccount. TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) metódus meghívásával elemezheti a kapcsolatok karakterláncát. 
 
-Ezután hozzon létre egy objektumot, amely a Blob Storage-ot képviseli a tárfiókban a [CloudStorageAccount.CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient) metódus hívásával.
+Ezután hozzon létre egy objektumot, amely a Storage-fiókban lévő Blob Storage jelképezi, és hívja meg a [CloudStorageAccount. CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient) metódust.
 
 ```cs
 public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageConnectionString)
@@ -58,16 +58,16 @@ public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageCon
 }
 ```
 
-## <a name="initialize-the-change-feed"></a>A módosítási hírcsatorna inicializálása
+## <a name="initialize-the-change-feed"></a>A változási csatorna inicializálása
 
-Adja hozzá a következőket a kódfájl tetejéhez. 
+Adja hozzá a következő using utasításokat a fájl elejéhez. 
 
 ```csharp
 using Avro.Generic;
 using ChangeFeedClient;
 ```
 
-Ezután hozzon létre egy példányt a **ChangeFeed** osztály hívja meg a **GetContainerReference** metódust. Adja át a változáscsatorna-tároló nevét.
+Ezután hozza létre a **ChangeFeed** osztály egy példányát a **GetContainerReference** metódus meghívásával. Adja át a változási hírcsatorna tárolójának nevét.
 
 ```csharp
 public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
@@ -82,14 +82,14 @@ public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
 }
 ```
 
-## <a name="reading-records"></a>Rekordok olvasása
+## <a name="reading-records"></a>Rekordok beolvasása
 
 > [!NOTE]
-> A változáscsatorna egy nem módosítható és csak olvasható entitás a tárfiókban. Tetszőleges számú alkalmazás képes egyszerre és függetlenül olvasni és feldolgozni a módosítási hírcsatornát saját kényelmük szerint. A rekordok nem törlődnek a módosítási hírcsatornából, amikor egy alkalmazás beolvassa őket. Az egyes elfogyasztott olvasó olvasási vagy iterációs állapota független, és csak az alkalmazás tartja karban.
+> A módosítási hírcsatorna egy nem módosítható és csak olvasható entitás a Storage-fiókban. Tetszőleges számú alkalmazás olvashatja és feldolgozhatja a változási csatornát párhuzamosan és önállóan, a saját kényelmében. A rendszer nem távolítja el a rekordokat a változási hírcsatornából, amikor egy alkalmazás beolvassa őket. Az egyes fogyasztási olvasók olvasási vagy iterációs állapota független, és csak az alkalmazás tartja karban.
 
-A rekordok olvasásának legegyszerűbb módja a **ChangeFeedReader** osztály egy példányának létrehozása. 
+A rekordok olvasásának legegyszerűbb módja, ha létrehozza a **ChangeFeedReader** osztály egy példányát. 
 
-Ez a példa végighalad a módosítási hírcsatorna összes rekordján, majd kinyomtatja a konzolra az egyes rekordok néhány értékét. 
+Ez a példa a változási hírcsatorna összes rekordját megismétli, majd a-konzolra a rekordok néhány értékét kinyomtatja. 
  
 ```csharp
 public async Task ProcessRecords(ChangeFeed changeFeed)
@@ -116,15 +116,15 @@ public async Task ProcessRecords(ChangeFeed changeFeed)
 }
 ```
 
-## <a name="resuming-reading-records-from-a-saved-position"></a>Rekordok olvasásának folytatása mentett helyről
+## <a name="resuming-reading-records-from-a-saved-position"></a>Rekordok olvasásának folytatása mentett pozícióból
 
-Dönthet úgy, hogy menti az olvasási pozíciót a módosítási hírcsatornában, és egy későbbi időpontban folytatja a rekordok iterációját. A **ChangeFeedReader.SerializeState()** metódussal bármikor mentheti a módosítási hírcsatorna iterációjának állapotát. Az állapot egy **karakterlánc,** és az alkalmazás mentheti az adott állapot alapján az alkalmazás design (Például: egy adatbázisvagy egy fájl).
+Dönthet úgy, hogy elmenti az olvasási pozícióját a változási hírcsatornában, és folytatja a rekordok későbbi megismétlését. A módosítási hírcsatorna iterációjának állapotát bármikor mentheti a **ChangeFeedReader. SerializeState ()** metódus használatával. Az állapot egy **karakterlánc** , és az alkalmazás a terv alapján mentheti az adott állapotot (például egy adatbázisba vagy egy fájlba).
 
 ```csharp
     string currentReadState = processor.SerializeState();
 ```
 
-A **ChangeFeedReader** **createTheAPasserAsync** metódussal folytathatja a szerkesztést az utolsó állapot rekordjaiközött.
+A **ChangeFeedReader** a **CreateChangeFeedReaderFromPointerAsync** metódus használatával folytathatja az utolsó állapotú rekordok megismétlését.
 
 ```csharp
 public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string lastReadState)
@@ -152,9 +152,9 @@ public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string l
 
 ```
 
-## <a name="stream-processing-of-records"></a>A nyilvántartások feldolgozásának streamelése
+## <a name="stream-processing-of-records"></a>Rekordok adatfolyam-feldolgozása
 
-Beállíthatja, hogy a módosítási hírcsatorna-bejegyzések et érkezésükkor feldolgozza. Lásd: [Műszaki adatok](storage-blob-change-feed.md#specifications).
+Megadhatja, hogy a megérkezéskor feldolgozza-e a változási adatcsatornákat. Lásd a [specifikációkat](storage-blob-change-feed.md#specifications).
 
 ```csharp
 public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
@@ -186,13 +186,13 @@ public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
 }
 ```
 
-## <a name="reading-records-within-a-time-range"></a>Rekordok olvasása egy időtartományon belül
+## <a name="reading-records-within-a-time-range"></a>Rekordok beolvasása egy időtartományon belül
 
-A módosítási hírcsatorna a változási esemény időpontja alapján óránkénti szegmensekbe van rendezve. Lásd: [Műszaki adatok](storage-blob-change-feed.md#specifications). Az adott időtartományba tartozó változáscsatorna-szegmensek rekordjait olvashatja.
+A változási csatornát óránkénti szegmensekre rendezi a változási esemény időpontja alapján. Lásd a [specifikációkat](storage-blob-change-feed.md#specifications). Az adott időtartományon belül eső változási hírcsatorna-szegmensek rekordjait is elolvashatja.
 
-Ez a példa az összes szegmens kezdési idejét kapja meg. Ezután végighalad a listán, amíg a kezdési idő túl nem lesz az utolsó fogyóeszköz-szegmens idején, vagy túl nem a kívánt tartomány befejezési ideje. 
+Ez a példa az összes szegmens kezdési idejét kéri le. Ezután ezt a listát ismétli meg addig, amíg a kezdési időpont nem haladja meg az utolsó felhasználó szegmens időpontját vagy a kívánt tartomány befejezési időpontját. 
 
-### <a name="selecting-segments-for-a-time-range"></a>Szegmensek kijelölése egy időtartományhoz
+### <a name="selecting-segments-for-a-time-range"></a>Szegmensek kiválasztása időtartományhoz
 
 ```csharp
 public async Task<List<DateTimeOffset>> GetChangeFeedSegmentRefsForTimeRange
@@ -235,9 +235,9 @@ public async Task<List<DateTimeOffset>> GetChangeFeedSegmentRefsForTimeRange
 }
 ```
 
-### <a name="reading-records-in-a-segment"></a>Rekordok olvasása egy szegmensben
+### <a name="reading-records-in-a-segment"></a>Rekordok beolvasása egy szegmensben
 
-Az egyes szegmensekből vagy szegmenstartományokból származó rekordokat olvashat.
+Az egyes szegmensek és szegmensek rekordjait is elolvashatja.
 
 ```csharp
 public async Task ProcessRecordsInSegment(ChangeFeed changeFeed, DateTimeOffset segmentOffset)
@@ -267,11 +267,11 @@ public async Task ProcessRecordsInSegment(ChangeFeed changeFeed, DateTimeOffset 
 }
 ```
 
-## <a name="read-records-starting-from-a-time"></a>Rekordok olvasása egy időponttól kezdve
+## <a name="read-records-starting-from-a-time"></a>Rekordok beolvasása egy adott időpontból
 
-A változáscsatorna rekordjait a kezdő szegmenstől a végéig olvashatja el. Az időtartományon belüli rekordok olvasásához hasonlóan felsorolhatja a szegmenseket, és kiválaszthatja azt a szegmenst, amelyből el szeretné kezdeni az iterációt.
+A változási hírcsatorna rekordjait egy kezdő szegmensből tekintheti meg, egészen a végéig. A rekordok időtartományon belüli olvasásához hasonlóan kilistázhatja a szegmenseket, és kiválaszthat egy szegmenst, amellyel megkezdheti az iterációt.
 
-Ez a példa az első feldolgozandó szegmens [DateTimeOffset értékét](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) kapja.
+Ez a példa beolvassa a feldolgozandó első szegmens [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) .
 
 ```csharp
 public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
@@ -304,7 +304,7 @@ public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
 }
 ```
 
-Ez a példa egy kezdő szegmens [DateTimeOffset dátum-eltolásától](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) kezdődően dolgozza fel a hírcsatorna-rekordok módosítását.
+Ez a példa a kezdő szegmens [DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) kezdődő adatcsatorna-rekordok módosítását dolgozza fel.
 
 ```csharp
 public async Task ProcessRecordsStartingFromSegment(ChangeFeed changeFeed, DateTimeOffset segmentStart)
@@ -367,8 +367,8 @@ private async Task<bool> IsSegmentConsumableAsync(ChangeFeed changeFeed, ChangeF
 ```
 
 >[!TIP]
-> A szegmens egy vagy több *adattömbfilePath*módosítási naplóilehetnek. Több *chunkFilePath* esetén a rendszer belsőleg particionált a rekordokat több szegmensre a közzétételi átviteli szint kezeléséhez. Garantált, hogy a szegmens minden partíciója tartalmazni fogja a kölcsönösen kizáró blobok módosításait, és egymástól függetlenül feldolgozható a rendezés megsértése nélkül. Használhatja a **ChangeFeedSegmentShardReader** osztály iterálni a rekordok a szegmens szintjén, ha ez a leghatékonyabb a forgatókönyv.
+> Az lehet, hogy a szegmensek egy vagy több *chunkFilePath*módosíthatják a hírcsatorna naplóit. Több *chunkFilePath* esetén a rendszeren belül több szegmensre particionálta a rekordokat a közzétételi teljesítmény kezeléséhez. Garantáljuk, hogy a szegmens minden partíciója tartalmazni fogja a kölcsönösen kizáró Blobok módosításait, és a rendelés megszegése nélkül is feldolgozhatók egymástól függetlenül. A **ChangeFeedSegmentShardReader** osztály segítségével megismételheti a rekordokat a szegmens szintjén, ha ez a leghatékonyabb megoldás a forgatókönyvhöz.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a hírcsatorna-naplók módosításáról. Lásd: [Hírcsatorna módosítása az Azure Blob Storage-ban (előzetes verzió)](storage-blob-change-feed.md)
+További információ a hírcsatorna-naplók változásáról. Lásd: [hírcsatorna módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)
